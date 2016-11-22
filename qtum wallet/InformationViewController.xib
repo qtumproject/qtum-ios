@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InformationViewController">
+            <connections>
+                <outlet property="amountTextField" destination="ZaH-j4-e6i" id="wvB-BV-oQG"/>
+                <outlet property="informationLabel" destination="osV-7y-EPC" id="5uI-Ox-GXf"/>
+                <outlet property="statusLabel" destination="2oM-vJ-bjy" id="npP-yN-haD"/>
+                <outlet property="toAddressTextField" destination="mUT-PF-Umk" id="ZKV-9w-A8D"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="GradientView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cj-eB-UCa">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osV-7y-EPC">
+                            <rect key="frame" x="8" y="30" width="359" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZaH-j4-e6i">
+                            <rect key="frame" x="8" y="66" width="359" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="geA-eF-KKW"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mUT-PF-Umk">
+                            <rect key="frame" x="8" y="111" width="359" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="83p-5h-AxX"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0d-1P-KR9">
+                            <rect key="frame" x="169" y="171" width="36" height="30"/>
+                            <state key="normal" title="Send"/>
+                            <connections>
+                                <action selector="send:" destination="-1" eventType="touchUpInside" id="3rK-vk-meX"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sending status label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oM-vJ-bjy">
+                            <rect key="frame" x="8" y="216" width="359" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0d-wa-iz0">
+                            <rect key="frame" x="172" y="267" width="30" height="30"/>
+                            <state key="normal" title="Exit"/>
+                            <connections>
+                                <action selector="exit:" destination="-1" eventType="touchUpInside" id="GJa-Tn-ezX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="mUT-PF-Umk" firstAttribute="leading" secondItem="6cj-eB-UCa" secondAttribute="leading" constant="8" id="4Bz-Fv-kTp"/>
+                        <constraint firstItem="E0d-1P-KR9" firstAttribute="centerX" secondItem="6cj-eB-UCa" secondAttribute="centerX" id="9c2-ST-hb7"/>
+                        <constraint firstAttribute="trailing" secondItem="2oM-vJ-bjy" secondAttribute="trailing" constant="8" id="CfO-qo-uKM"/>
+                        <constraint firstItem="ZaH-j4-e6i" firstAttribute="leading" secondItem="6cj-eB-UCa" secondAttribute="leading" constant="8" id="GHQ-M5-aAD"/>
+                        <constraint firstItem="osV-7y-EPC" firstAttribute="top" secondItem="6cj-eB-UCa" secondAttribute="top" constant="30" id="HVm-wO-urz"/>
+                        <constraint firstItem="D0d-wa-iz0" firstAttribute="top" secondItem="2oM-vJ-bjy" secondAttribute="bottom" constant="30" id="Qx4-Cl-bqN"/>
+                        <constraint firstItem="E0d-1P-KR9" firstAttribute="top" secondItem="mUT-PF-Umk" secondAttribute="bottom" constant="30" id="RLK-o8-LTF"/>
+                        <constraint firstItem="ZaH-j4-e6i" firstAttribute="top" secondItem="osV-7y-EPC" secondAttribute="bottom" constant="15" id="Tie-jk-ljA"/>
+                        <constraint firstAttribute="trailing" secondItem="osV-7y-EPC" secondAttribute="trailing" constant="8" id="d25-lu-s6d"/>
+                        <constraint firstAttribute="bottom" secondItem="D0d-wa-iz0" secondAttribute="bottom" id="dYT-mx-AgN"/>
+                        <constraint firstItem="2oM-vJ-bjy" firstAttribute="leading" secondItem="6cj-eB-UCa" secondAttribute="leading" constant="8" id="eFq-Oi-HLl"/>
+                        <constraint firstItem="ZaH-j4-e6i" firstAttribute="centerX" secondItem="6cj-eB-UCa" secondAttribute="centerX" id="emL-kz-KKy"/>
+                        <constraint firstItem="D0d-wa-iz0" firstAttribute="centerX" secondItem="6cj-eB-UCa" secondAttribute="centerX" id="foL-cc-h9H"/>
+                        <constraint firstItem="osV-7y-EPC" firstAttribute="leading" secondItem="6cj-eB-UCa" secondAttribute="leading" constant="8" id="grJ-1N-E0W"/>
+                        <constraint firstItem="mUT-PF-Umk" firstAttribute="top" secondItem="ZaH-j4-e6i" secondAttribute="bottom" constant="15" id="iwh-HP-hi3"/>
+                        <constraint firstItem="2oM-vJ-bjy" firstAttribute="top" secondItem="E0d-1P-KR9" secondAttribute="bottom" constant="15" id="tEB-mw-xAu"/>
+                        <constraint firstAttribute="trailing" secondItem="mUT-PF-Umk" secondAttribute="trailing" constant="8" id="wh0-oy-eAl"/>
+                        <constraint firstAttribute="trailing" secondItem="ZaH-j4-e6i" secondAttribute="trailing" constant="8" id="z6u-yz-gvb"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="6cj-eB-UCa" secondAttribute="bottom" id="1fX-cD-Oge"/>
+                <constraint firstAttribute="trailing" secondItem="6cj-eB-UCa" secondAttribute="trailing" id="313-UQ-ISK"/>
+                <constraint firstItem="6cj-eB-UCa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vL8-yT-WWA"/>
+                <constraint firstItem="6cj-eB-UCa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xkp-Ro-Aij"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

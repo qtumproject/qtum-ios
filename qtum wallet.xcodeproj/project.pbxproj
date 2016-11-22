@@ -1,0 +1,727 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E739104E1DE2E165008145A8 /* HistoryElement.m */; };
+		E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910521DE30BA8008145A8 /* QRCodeViewController.m */; };
+		E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */; };
+		E739105B1DE45398008145A8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E739105A1DE45398008145A8 /* BaseViewController.m */; };
+		E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396ADB1DDCBFCE0002CD47 /* BlockchainInfoManager.m */; };
+		E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AE01DDDEA2E0002CD47 /* GradientView.m */; };
+		E7396AE51DDDF5F20002CD47 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AE41DDDF5F20002CD47 /* StartViewController.m */; };
+		E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AE71DDEDEEC0002CD47 /* CircleGradientView.m */; };
+		E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AEB1DDEF7E30002CD47 /* MainViewController.m */; };
+		E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AEF1DDEF8030002CD47 /* AddressListViewController.m */; };
+		E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */; };
+		E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */; };
+		E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AFB1DDF19C90002CD47 /* AddressTableViewCell.m */; };
+		E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */; };
+		E74636861DCB300800A13318 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E74636851DCB300800A13318 /* Utils.m */; };
+		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
+		E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */; };
+		E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */; };
+		E7FD363D1DC4D07E00748177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363C1DC4D07E00748177 /* main.m */; };
+		E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363F1DC4D07E00748177 /* AppDelegate.m */; };
+		E7FD36431DC4D07E00748177 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36421DC4D07E00748177 /* ViewController.m */; };
+		E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36441DC4D07E00748177 /* Main.storyboard */; };
+		E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36471DC4D07E00748177 /* Assets.xcassets */; };
+		E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */; };
+		E7FD36561DC72BB000748177 /* KeysManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36551DC72BB000748177 /* KeysManager.m */; };
+		E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36591DC7308A00748177 /* FXKeychain.m */; };
+		E7FD365C1DC7360400748177 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
+		E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36651DC76EBC00748177 /* RequestManager.m */; };
+		E7FD366A1DC7733800748177 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36681DC7733800748177 /* InformationViewController.m */; };
+		E7FD366B1DC7733800748177 /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36691DC7733800748177 /* InformationViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
+		E739104D1DE2E165008145A8 /* HistoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryElement.h; sourceTree = "<group>"; };
+		E739104E1DE2E165008145A8 /* HistoryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryElement.m; sourceTree = "<group>"; };
+		E73910511DE30BA8008145A8 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		E73910521DE30BA8008145A8 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		E73910551DE424DD008145A8 /* BTCTransaction+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCTransaction+Extensions.h"; sourceTree = "<group>"; };
+		E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCTransaction+Extensions.m"; sourceTree = "<group>"; };
+		E73910591DE45398008145A8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		E739105A1DE45398008145A8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		E7396ADA1DDCBFCE0002CD47 /* BlockchainInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockchainInfoManager.h; sourceTree = "<group>"; };
+		E7396ADB1DDCBFCE0002CD47 /* BlockchainInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockchainInfoManager.m; sourceTree = "<group>"; };
+		E7396ADF1DDDEA2E0002CD47 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		E7396AE01DDDEA2E0002CD47 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		E7396AE31DDDF5F20002CD47 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		E7396AE41DDDF5F20002CD47 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		E7396AE61DDEDEEC0002CD47 /* CircleGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleGradientView.h; sourceTree = "<group>"; };
+		E7396AE71DDEDEEC0002CD47 /* CircleGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleGradientView.m; sourceTree = "<group>"; };
+		E7396AEA1DDEF7E30002CD47 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		E7396AEB1DDEF7E30002CD47 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		E7396AEE1DDEF8030002CD47 /* AddressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListViewController.h; sourceTree = "<group>"; };
+		E7396AEF1DDEF8030002CD47 /* AddressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListViewController.m; sourceTree = "<group>"; };
+		E7396AF21DDEF8260002CD47 /* NewPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentViewController.h; sourceTree = "<group>"; };
+		E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentViewController.m; sourceTree = "<group>"; };
+		E7396AF61DDF0C970002CD47 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
+		E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
+		E7396AFA1DDF19C90002CD47 /* AddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressTableViewCell.h; sourceTree = "<group>"; };
+		E7396AFB1DDF19C90002CD47 /* AddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTableViewCell.m; sourceTree = "<group>"; };
+		E7396AFD1DDF394C0002CD47 /* TextFieldWithLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLine.h; sourceTree = "<group>"; };
+		E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldWithLine.m; sourceTree = "<group>"; };
+		E74636841DCB300800A13318 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		E7DD00E81DC9BF9D00FD5335 /* TransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionManager.h; sourceTree = "<group>"; };
+		E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionManager.m; sourceTree = "<group>"; };
+		E7DD00F01DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCBlockchainInfo+QtumExplorer.h"; sourceTree = "<group>"; };
+		E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCBlockchainInfo+QtumExplorer.m"; sourceTree = "<group>"; };
+		E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCRequestManager.h; sourceTree = "<group>"; };
+		E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCRequestManager.m; sourceTree = "<group>"; };
+		E7FD36381DC4D07E00748177 /* qtum wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "qtum wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7FD363C1DC4D07E00748177 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E7FD363E1DC4D07E00748177 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E7FD363F1DC4D07E00748177 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E7FD36411DC4D07E00748177 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E7FD36421DC4D07E00748177 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E7FD36451DC4D07E00748177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E7FD36471DC4D07E00748177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E7FD364A1DC4D07E00748177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E7FD364C1DC4D07E00748177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7FD36541DC72BB000748177 /* KeysManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeysManager.h; sourceTree = "<group>"; };
+		E7FD36551DC72BB000748177 /* KeysManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeysManager.m; sourceTree = "<group>"; };
+		E7FD36581DC7308A00748177 /* FXKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXKeychain.h; sourceTree = "<group>"; };
+		E7FD36591DC7308A00748177 /* FXKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXKeychain.m; sourceTree = "<group>"; };
+		E7FD365B1DC7360400748177 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E7FD36611DC73D4600748177 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E7FD36641DC76EBC00748177 /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
+		E7FD36651DC76EBC00748177 /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
+		E7FD36671DC7733800748177 /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		E7FD36681DC7733800748177 /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
+		E7FD36691DC7733800748177 /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E7FD36351DC4D07E00748177 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7FD365C1DC7360400748177 /* Security.framework in Frameworks */,
+				0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		94DECCBC55E0AE7D7EF532E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */,
+				C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E73910501DE30B91008145A8 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				E73910511DE30BA8008145A8 /* QRCodeViewController.h */,
+				E73910521DE30BA8008145A8 /* QRCodeViewController.m */,
+			);
+			name = QRCode;
+			sourceTree = "<group>";
+		};
+		E73910541DE42457008145A8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E73910551DE424DD008145A8 /* BTCTransaction+Extensions.h */,
+				E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		E73910581DE45386008145A8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E73910591DE45398008145A8 /* BaseViewController.h */,
+				E739105A1DE45398008145A8 /* BaseViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		E7396ADD1DDCBFD20002CD47 /* BlockchainInfo */ = {
+			isa = PBXGroup;
+			children = (
+				E7396ADA1DDCBFCE0002CD47 /* BlockchainInfoManager.h */,
+				E7396ADB1DDCBFCE0002CD47 /* BlockchainInfoManager.m */,
+			);
+			name = BlockchainInfo;
+			sourceTree = "<group>";
+		};
+		E7396ADE1DDDEA0E0002CD47 /* Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				E7396ADF1DDDEA2E0002CD47 /* GradientView.h */,
+				E7396AE01DDDEA2E0002CD47 /* GradientView.m */,
+				E7396AE61DDEDEEC0002CD47 /* CircleGradientView.h */,
+				E7396AE71DDEDEEC0002CD47 /* CircleGradientView.m */,
+			);
+			name = Gradient;
+			sourceTree = "<group>";
+		};
+		E7396AE21DDDF5DC0002CD47 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AE31DDDF5F20002CD47 /* StartViewController.h */,
+				E7396AE41DDDF5F20002CD47 /* StartViewController.m */,
+			);
+			name = Start;
+			sourceTree = "<group>";
+		};
+		E7396AE91DDEF7CE0002CD47 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AF51DDF0C7D0002CD47 /* Cell */,
+				E7396AEA1DDEF7E30002CD47 /* MainViewController.h */,
+				E7396AEB1DDEF7E30002CD47 /* MainViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		E7396AED1DDEF7F10002CD47 /* AddressList */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AF91DDF19BE0002CD47 /* Cell */,
+				E7396AEE1DDEF8030002CD47 /* AddressListViewController.h */,
+				E7396AEF1DDEF8030002CD47 /* AddressListViewController.m */,
+			);
+			name = AddressList;
+			sourceTree = "<group>";
+		};
+		E7396AF11DDEF81A0002CD47 /* NewPayment */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AF21DDEF8260002CD47 /* NewPaymentViewController.h */,
+				E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */,
+			);
+			name = NewPayment;
+			sourceTree = "<group>";
+		};
+		E7396AF51DDF0C7D0002CD47 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AF61DDF0C970002CD47 /* HistoryTableViewCell.h */,
+				E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		E7396AF91DDF19BE0002CD47 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AFA1DDF19C90002CD47 /* AddressTableViewCell.h */,
+				E7396AFB1DDF19C90002CD47 /* AddressTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		E7396B001DDF3FFA0002CD47 /* TextFielfWithLine */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AFD1DDF394C0002CD47 /* TextFieldWithLine.h */,
+				E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */,
+			);
+			name = TextFielfWithLine;
+			sourceTree = "<group>";
+		};
+		E7DD00EB1DC9BFA300FD5335 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				E7DD00E81DC9BF9D00FD5335 /* TransactionManager.h */,
+				E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */,
+			);
+			name = Transaction;
+			sourceTree = "<group>";
+		};
+		E7DD00EF1DC9E5BD00FD5335 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E7DD00F01DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.h */,
+				E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		E7FD362F1DC4D07E00748177 = {
+			isa = PBXGroup;
+			children = (
+				E7FD363A1DC4D07E00748177 /* qtum wallet */,
+				E7FD36391DC4D07E00748177 /* Products */,
+				F94C279886F936AB7B4DA6F8 /* Frameworks */,
+				94DECCBC55E0AE7D7EF532E6 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		E7FD36391DC4D07E00748177 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7FD36381DC4D07E00748177 /* qtum wallet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
+			isa = PBXGroup;
+			children = (
+				E7FD36441DC4D07E00748177 /* Main.storyboard */,
+				E7FD36601DC73B7900748177 /* Application */,
+				E7DD00EF1DC9E5BD00FD5335 /* Categories */,
+				E7FD365F1DC73B6300748177 /* Managers */,
+				E7FD365E1DC73B2400748177 /* Views */,
+				E7FD365D1DC73ACB00748177 /* Library */,
+				E7FD36531DC72B4F00748177 /* Controllers */,
+				E7FD36521DC72B4400748177 /* Model */,
+				E7FD363B1DC4D07E00748177 /* Supporting Files */,
+			);
+			path = "qtum wallet";
+			sourceTree = "<group>";
+		};
+		E7FD363B1DC4D07E00748177 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E7FD36521DC72B4400748177 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E739104D1DE2E165008145A8 /* HistoryElement.h */,
+				E739104E1DE2E165008145A8 /* HistoryElement.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E7FD36531DC72B4F00748177 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E73910501DE30B91008145A8 /* QRCode */,
+				E7396AF11DDEF81A0002CD47 /* NewPayment */,
+				E7396AED1DDEF7F10002CD47 /* AddressList */,
+				E7396AE91DDEF7CE0002CD47 /* Main */,
+				E7396AE21DDDF5DC0002CD47 /* Start */,
+				E7FD36411DC4D07E00748177 /* ViewController.h */,
+				E7FD36421DC4D07E00748177 /* ViewController.m */,
+				E7FD36671DC7733800748177 /* InformationViewController.h */,
+				E7FD36681DC7733800748177 /* InformationViewController.m */,
+				E7FD36691DC7733800748177 /* InformationViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E7FD36571DC7307100748177 /* FXKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				E7FD36581DC7308A00748177 /* FXKeychain.h */,
+				E7FD36591DC7308A00748177 /* FXKeychain.m */,
+			);
+			name = FXKeychain;
+			sourceTree = "<group>";
+		};
+		E7FD365D1DC73ACB00748177 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				E73910581DE45386008145A8 /* Base */,
+				E73910541DE42457008145A8 /* Categories */,
+				E7FD36571DC7307100748177 /* FXKeychain */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		E7FD365E1DC73B2400748177 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7396B001DDF3FFA0002CD47 /* TextFielfWithLine */,
+				E7396ADE1DDDEA0E0002CD47 /* Gradient */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E7FD365F1DC73B6300748177 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E7396ADD1DDCBFD20002CD47 /* BlockchainInfo */,
+				E7DD00EB1DC9BFA300FD5335 /* Transaction */,
+				E7FD366C1DC773FF00748177 /* Request */,
+				E7FD36621DC769B500748177 /* Keys */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		E7FD36601DC73B7900748177 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E7FD363C1DC4D07E00748177 /* main.m */,
+				E7FD363E1DC4D07E00748177 /* AppDelegate.h */,
+				E7FD363F1DC4D07E00748177 /* AppDelegate.m */,
+				E7FD36471DC4D07E00748177 /* Assets.xcassets */,
+				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
+				E7FD364C1DC4D07E00748177 /* Info.plist */,
+				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
+				E74636841DCB300800A13318 /* Utils.h */,
+				E74636851DCB300800A13318 /* Utils.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		E7FD36621DC769B500748177 /* Keys */ = {
+			isa = PBXGroup;
+			children = (
+				E7FD36541DC72BB000748177 /* KeysManager.h */,
+				E7FD36551DC72BB000748177 /* KeysManager.m */,
+			);
+			name = Keys;
+			sourceTree = "<group>";
+		};
+		E7FD366C1DC773FF00748177 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				E7FD36641DC76EBC00748177 /* RequestManager.h */,
+				E7FD36651DC76EBC00748177 /* RequestManager.m */,
+				E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */,
+				E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		F94C279886F936AB7B4DA6F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7FD365B1DC7360400748177 /* Security.framework */,
+				0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E7FD36371DC4D07E00748177 /* qtum wallet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7FD364F1DC4D07E00748177 /* Build configuration list for PBXNativeTarget "qtum wallet" */;
+			buildPhases = (
+				F79955B856A388C1F1C8305A /* [CP] Check Pods Manifest.lock */,
+				E7FD36341DC4D07E00748177 /* Sources */,
+				E7FD36351DC4D07E00748177 /* Frameworks */,
+				E7FD36361DC4D07E00748177 /* Resources */,
+				094AC2E300B2D4BEF04A6420 /* [CP] Embed Pods Frameworks */,
+				BBDAA643D3F5A61C3D80AB51 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "qtum wallet";
+			productName = "qtum wallet";
+			productReference = E7FD36381DC4D07E00748177 /* qtum wallet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E7FD36301DC4D07E00748177 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = Designsters;
+				TargetAttributes = {
+					E7FD36371DC4D07E00748177 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = Q7Q43CUMWT;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E7FD36331DC4D07E00748177 /* Build configuration list for PBXProject "qtum wallet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E7FD362F1DC4D07E00748177;
+			productRefGroup = E7FD36391DC4D07E00748177 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7FD36371DC4D07E00748177 /* qtum wallet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E7FD36361DC4D07E00748177 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
+				E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */,
+				E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */,
+				E7FD366B1DC7733800748177 /* InformationViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		094AC2E300B2D4BEF04A6420 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBDAA643D3F5A61C3D80AB51 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F79955B856A388C1F1C8305A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E7FD36341DC4D07E00748177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
+				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
+				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
+				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
+				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
+				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
+				E7396AE51DDDF5F20002CD47 /* StartViewController.m in Sources */,
+				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
+				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
+				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
+				E7FD36431DC4D07E00748177 /* ViewController.m in Sources */,
+				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
+				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
+				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
+				E74636861DCB300800A13318 /* Utils.m in Sources */,
+				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
+				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
+				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
+				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
+				E7FD36561DC72BB000748177 /* KeysManager.m in Sources */,
+				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
+				E7FD366A1DC7733800748177 /* InformationViewController.m in Sources */,
+				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
+				E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */,
+				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E7FD36441DC4D07E00748177 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7FD36451DC4D07E00748177 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7FD364A1DC4D07E00748177 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E7FD364D1DC4D07E00748177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E7FD364E1DC4D07E00748177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E7FD36501DC4D07E00748177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/qtum wallet/PrefixHeader.pch";
+				INFOPLIST_FILE = "qtum wallet/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum-wallet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E7FD36511DC4D07E00748177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/qtum wallet/PrefixHeader.pch";
+				INFOPLIST_FILE = "qtum wallet/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum-wallet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E7FD36331DC4D07E00748177 /* Build configuration list for PBXProject "qtum wallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7FD364D1DC4D07E00748177 /* Debug */,
+				E7FD364E1DC4D07E00748177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7FD364F1DC4D07E00748177 /* Build configuration list for PBXNativeTarget "qtum wallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7FD36501DC4D07E00748177 /* Debug */,
+				E7FD36511DC4D07E00748177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E7FD36301DC4D07E00748177 /* Project object */;
+}
