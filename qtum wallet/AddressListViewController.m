@@ -8,6 +8,7 @@
 
 #import "AddressListViewController.h"
 #import "AddressTableViewCell.h"
+#import "PublicKeyViewController.h"
 #import "KeysManager.h"
 
 @interface AddressListViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -81,12 +82,20 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-     BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
+    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
     
-    UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    [pb setString:key.uncompressedPublicKeyAddress.string];
+    [self createAndPresentPublicKeyVCWithKey:key];
+}
+
+#pragma mark - Methods
+
+- (void)createAndPresentPublicKeyVCWithKey:(BTCKey *)key
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PublicKeyViewController *vc = (PublicKeyViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"PublicKeyViewController"];
+    vc.publicKeyString = key.uncompressedPublicKeyAddress.string;
     
-    [self showAlertWithTitle:nil mesage:@"Address copied" andActions:nil];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

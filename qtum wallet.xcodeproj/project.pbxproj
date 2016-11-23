@@ -12,6 +12,7 @@
 		E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910521DE30BA8008145A8 /* QRCodeViewController.m */; };
 		E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */; };
 		E739105B1DE45398008145A8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E739105A1DE45398008145A8 /* BaseViewController.m */; };
+		E739105F1DE5E131008145A8 /* PublicKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E739105E1DE5E131008145A8 /* PublicKeyViewController.m */; };
 		E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396ADB1DDCBFCE0002CD47 /* BlockchainInfoManager.m */; };
 		E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AE01DDDEA2E0002CD47 /* GradientView.m */; };
 		E7396AE51DDDF5F20002CD47 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AE41DDDF5F20002CD47 /* StartViewController.m */; };
@@ -52,6 +53,8 @@
 		E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCTransaction+Extensions.m"; sourceTree = "<group>"; };
 		E73910591DE45398008145A8 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		E739105A1DE45398008145A8 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		E739105D1DE5E131008145A8 /* PublicKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicKeyViewController.h; sourceTree = "<group>"; };
+		E739105E1DE5E131008145A8 /* PublicKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicKeyViewController.m; sourceTree = "<group>"; };
 		E7396ADA1DDCBFCE0002CD47 /* BlockchainInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockchainInfoManager.h; sourceTree = "<group>"; };
 		E7396ADB1DDCBFCE0002CD47 /* BlockchainInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockchainInfoManager.m; sourceTree = "<group>"; };
 		E7396ADF1DDDEA2E0002CD47 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
@@ -150,6 +153,15 @@
 				E739105A1DE45398008145A8 /* BaseViewController.m */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		E739105C1DE5E11F008145A8 /* PublicKey */ = {
+			isa = PBXGroup;
+			children = (
+				E739105D1DE5E131008145A8 /* PublicKeyViewController.h */,
+				E739105E1DE5E131008145A8 /* PublicKeyViewController.m */,
+			);
+			name = PublicKey;
 			sourceTree = "<group>";
 		};
 		E7396ADD1DDCBFD20002CD47 /* BlockchainInfo */ = {
@@ -308,6 +320,7 @@
 		E7FD36531DC72B4F00748177 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E739105C1DE5E11F008145A8 /* PublicKey */,
 				E73910501DE30B91008145A8 /* QRCode */,
 				E7396AF11DDEF81A0002CD47 /* NewPayment */,
 				E7396AED1DDEF7F10002CD47 /* AddressList */,
@@ -541,6 +554,7 @@
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				E7FD36431DC4D07E00748177 /* ViewController.m in Sources */,
+				E739105F1DE5E131008145A8 /* PublicKeyViewController.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
