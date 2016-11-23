@@ -177,7 +177,7 @@ static double FEE = 10000;
         BTCScript* sigScript = [[BTCScript alloc] init];
         NSData* d1 = tx.data;
         NSData* hash = [tx signatureHashForScript:txout.script inputIndex:i hashType:BTCSignatureHashTypeAll error:errorOut];
-        NSLog(@"Hash 1: %@", BTCIDFromHash(hash));
+        NSLog(@"Hash Sig: %@", BTCIDFromHash(hash));
         NSData* d2 = tx.data;
         
         NSAssert([d1 isEqual:d2], @"Transaction must not change within signatureHashForScript!");
@@ -205,7 +205,6 @@ static double FEE = 10000;
         [sigScript appendData:signatureForScript];
         [sigScript appendData:key.publicKey];
         
-        
         NSAssert([key isValidSignature:signature hash:hash], @"Signature must be valid");
         txin.signatureScript = sigScript;
     }
@@ -219,7 +218,7 @@ static double FEE = 10000;
         NSAssert(r, @"should verify first output");
 //    }
     
-    NSLog(@"Hash 2: %@", tx.transactionID);
+    NSLog(@"Hash tx: %@", tx.transactionID);
     return tx;
 }
 
@@ -244,6 +243,25 @@ static double FEE = 10000;
     }
     
     self.amountsAndAddresses = [NSArray arrayWithArray:mutArray];
+}
+
+//
+- (NSString *)hexadecimalString:(NSData *)data
+{
+    /* Returns hexadecimal string of NSData. Empty string if data is empty.   */
+    
+    const unsigned char *dataBuffer = (const unsigned char *)[data bytes];
+    
+    if (!dataBuffer)
+        return [NSString string];
+    
+    NSUInteger          dataLength  = [data length];
+    NSMutableString     *hexString  = [NSMutableString stringWithCapacity:(dataLength * 2)];
+    
+    for (int i = 0; i < dataLength; ++i)
+        [hexString appendString:[NSString stringWithFormat:@"%02lx", (unsigned long)dataBuffer[i]]];
+    
+    return [NSString stringWithString:hexString];
 }
 
 @end
