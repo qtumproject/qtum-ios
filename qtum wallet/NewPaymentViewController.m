@@ -145,7 +145,7 @@
     CGFloat kbDuration = [number floatValue];
     
     self.currentBalanceView.hidden = YES;
-    [self animateTopViewWithDuration:kbDuration consraintValue:55.0f];
+    [self animateTopViewWithDuration:kbDuration consraintValue:64.0f];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
