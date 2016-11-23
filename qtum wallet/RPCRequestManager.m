@@ -8,9 +8,10 @@
 
 #import "RPCRequestManager.h"
 #import <AFJSONRPCClient/AFJSONRPCClient.h>
+#import "KeysManager.h"
 
-NSString *const BASE_URL_RPC = @"http://user:pw@192.168.1.55:22822/";
-//NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
+//NSString *const BASE_URL_RPC = @"http://user:pw@192.168.1.55:22822/";
+NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
 NSString *const BASE_LABEL = @"qtum_mobile_wallet_1";
 
 @interface RPCRequestManager ()
@@ -75,7 +76,7 @@ NSString *const BASE_LABEL = @"qtum_mobile_wallet_1";
 - (void)registerKey:(NSString *)keyString new:(BOOL)new withSuccessHandler:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure
 {
     NSString *method = @"importaddress";
-    NSString *identifier = BASE_LABEL;
+    NSString *identifier = [KeysManager sharedInstance].label;
     BOOL needResearchInBlockChain = !new;
     BOOL lastParameter = NO;
     
@@ -163,7 +164,7 @@ NSString *const BASE_LABEL = @"qtum_mobile_wallet_1";
     NSNumber *someValue = @(0);
     NSNumber *flag = [NSNumber numberWithBool:true];
     
-    NSArray *params = @[BASE_LABEL, count, someValue, flag];
+    NSArray *params = @[[KeysManager sharedInstance].label, count, someValue, flag];
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError *error, NSString *message) {

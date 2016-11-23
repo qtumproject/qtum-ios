@@ -10,6 +10,6 @@
 
 @interface BTCTransaction (Extensions)
 
-@property (nonatomic) uint32_t time;
+- (NSString *)hexWithTime;
 
 @end

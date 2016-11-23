@@ -53,7 +53,7 @@ static double FEE = 10000;
     NSError *error;
     [self transaction:&error success:^(BTCTransaction *tx) {
         if (tx) {
-            [[RPCRequestManager sharedInstance] sendTransaction:tx.hex withSuccessHandler:^(id responseObject) {
+            [[RPCRequestManager sharedInstance] sendTransaction:tx.hexWithTime withSuccessHandler:^(id responseObject) {
                 success();
             } andFailureHandler:^(NSError *error, NSString *message) {
                 failure();
@@ -98,11 +98,6 @@ static double FEE = 10000;
 - (BTCTransaction *)transaction:(NSError**)errorOut
                  unspentOutputs:(NSArray *)unspentOutputs
 {
-//    if (key.publicKey == nil) {
-//        // public key not valid
-//        return nil;
-//    }
-    
     NSError *error = nil;
     NSArray *utxos = unspentOutputs;
     if (!utxos || utxos.count == 0) {
@@ -138,7 +133,6 @@ static double FEE = 10000;
     
     // Create a new transaction
     BTCTransaction* tx = [[BTCTransaction alloc] init];
-    tx.time = [[NSDate new] timeIntervalSince1970];
     BTCAmount spentCoins = 0;
     
     // Add all outputs as inputs

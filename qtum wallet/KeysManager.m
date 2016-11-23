@@ -11,9 +11,11 @@
 #import "RPCRequestManager.h"
 
 NSString const *kKeychainKey = @"qtum_wallet_private_keys";
+NSString const *kKeychainKeyLabel = @"qtum_wallet_label";
 
 @interface KeysManager ()
 
+@property (nonatomic, strong) NSString *label;
 @property (nonatomic, strong) NSArray *keys;
 @property (nonatomic, strong) NSArray *keysForTransaction;
 
@@ -62,28 +64,48 @@ NSString const *kKeychainKey = @"qtum_wallet_private_keys";
     }];
 }
 
+#pragma mark - 
+
+- (void)createNewLabel
+{
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    self.label = uuid;
+}
+
 #pragma mark - KeyChain
 
 - (BOOL)save
 {
     NSArray *savingArray = [self p_createArrayForSaving];
     
-    BOOL result = [[FXKeychain defaultKeychain] setObject:savingArray forKey:kKeychainKey];
-    return result;
+    BOOL resultKeys = [[FXKeychain defaultKeychain] setObject:savingArray forKey:kKeychainKey];
+    BOOL resultLabel = [[FXKeychain defaultKeychain] setObject:self.label forKey:kKeychainKeyLabel];
+    
+    return resultKeys && resultLabel;
 }
 
 - (void)load
 {
     NSArray *savedArrray = [[FXKeychain defaultKeychain] objectForKey:kKeychainKey];
-    
     [self p_createArrayFromSavedValues:savedArrray];
+    
+    NSString *label = [[FXKeychain defaultKeychain] objectForKey:kKeychainKeyLabel];
+    if (!label) {
+        [self createNewLabel];
+        [self save];
+    }else{
+        self.label = label;
+    }
 }
 
-- (BOOL)removeAllKeys
+- (void)removeAllKeys
 {
     self.keys = nil;
     self.keysForTransaction = nil;
-    return [[FXKeychain defaultKeychain] removeObjectForKey:kKeychainKey];
+    self.label = nil;
+    [[FXKeychain defaultKeychain] removeObjectForKey:kKeychainKey];
+    [[FXKeychain defaultKeychain] removeObjectForKey:kKeychainKeyLabel];
+    return;
 }
 
 - (NSArray *)p_createArrayForSaving
