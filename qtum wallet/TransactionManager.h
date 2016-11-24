@@ -10,10 +10,8 @@
 
 @interface TransactionManager : NSObject
 
-//- (instancetype) initWith:(BTCKey *)key andSendingValue:(NSNumber *)value toAddress:(NSString *)toAddress;
-//- (instancetype) initWithSendingValue:(NSNumber *)value toAddress:(NSString *)toAddress;
 - (instancetype) initWith:(NSArray *)amountsAndAddresses;
 
-- (void)sendTransactionWithSuccess:(void(^)())success andFailure:(void(^)())failure;
+- (void)sendTransactionWithSuccess:(void(^)())success andFailure:(void(^)(NSString *message))failure;
 
 @end

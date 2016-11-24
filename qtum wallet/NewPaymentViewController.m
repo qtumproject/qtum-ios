@@ -188,8 +188,9 @@
     [transactionManager sendTransactionWithSuccess:^{
         [SVProgressHUD showSuccessWithStatus:@"Done"];
         [weakSelf backbuttonPressed:nil];
-    } andFailure:^{
-        [SVProgressHUD showErrorWithStatus:@"Some Error"];
+    } andFailure:^(NSString *message){
+        [SVProgressHUD dismiss];
+        [weakSelf showAlertWithTitle:@"Error" mesage:message andActions:nil];
     }];
 }
 

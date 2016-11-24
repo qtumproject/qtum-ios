@@ -26,9 +26,6 @@ static double FEE = 10000;
 // Total amount for all addresses
 @property (nonatomic) BTCAmount totalAmount;
 
-@property (nonatomic, copy) void (^successBlock)(void);
-@property (nonatomic, copy) void (^failureBlock)(void);
-
 @end
 
 @implementation TransactionManager
@@ -43,10 +40,10 @@ static double FEE = 10000;
     return self;
 }
 
-- (void)sendTransactionWithSuccess:(void(^)())success andFailure:(void(^)())failure
+- (void)sendTransactionWithSuccess:(void(^)())success andFailure:(void(^)(NSString *message))failure
 {
     if (!self.amountsAndAddresses || self.amountsAndAddresses.count == 0) {
-        failure();
+        failure(@"Enter valid arress");
         return;
     }
     
@@ -56,13 +53,13 @@ static double FEE = 10000;
             [[RPCRequestManager sharedInstance] sendTransaction:tx.hexWithTime withSuccessHandler:^(id responseObject) {
                 success();
             } andFailureHandler:^(NSError *error, NSString *message) {
-                failure();
+                failure(@"Can not send transaction");
             }];
         }else{
-            failure();
+            failure(@"Can not create transaction");
         }
-    } andFailure:^{
-        failure();
+    } andFailure:^(NSString *message){
+        failure(message);
     }];
 }
 
@@ -70,11 +67,10 @@ static double FEE = 10000;
 
 - (void)transaction:(NSError**)errorOut
                                   success:(void(^)(BTCTransaction *tx))success
-                               andFailure:(void(^)())failure
+                               andFailure:(void(^)(NSString *message))failure
 {
     if (!self.keys || self.keys.count == 0) {
-        // public key not valid
-        failure();
+        failure(@"My public key not valid");
     }
     
     NSMutableArray *addresesForSending = [NSMutableArray new];
@@ -82,7 +78,7 @@ static double FEE = 10000;
         [addresesForSending addObject:key.uncompressedPublicKeyAddress.string];
     }
     if (addresesForSending.count == 0) {
-        failure();
+        failure(@"Public key not valid");
         return;
     }
     
@@ -90,7 +86,7 @@ static double FEE = 10000;
         BTCTransaction *tx = [self transaction:errorOut unspentOutputs:responseObject];
         success(tx);
     } andFailureHandler:^(NSError *error, NSString *message) {
-        failure();
+        failure(@"Can not get balance");
     }];
 }
 
@@ -156,7 +152,6 @@ static double FEE = 10000;
     BTCKey *firstKey = [self.keys firstObject];
     BTCTransactionOutput* changeOutput = [[BTCTransactionOutput alloc] initWithValue:(spentCoins - (totalAmount + FEE)) address:firstKey.uncompressedPublicKeyAddress];
     
-    // Idea: deterministically-randomly choose which output goes first to improve privacy.
     if (changeOutput.value > 0) {
         [tx addOutput:changeOutput];
     }
@@ -204,13 +199,11 @@ static double FEE = 10000;
     }
     
     // Some checking code
-//    {
-        BTCScriptMachine* sm = [[BTCScriptMachine alloc] initWithTransaction:tx inputIndex:0];
-        NSError* errore = nil;
-        BOOL r = [sm verifyWithOutputScript:[[(BTCTransactionOutput*)txouts[0] script] copy] error:&errore];
-        NSLog(@"Error: %@", errore);
-        NSAssert(r, @"should verify first output");
-//    }
+    BTCScriptMachine* sm = [[BTCScriptMachine alloc] initWithTransaction:tx inputIndex:0];
+    NSError* errore = nil;
+    BOOL r = [sm verifyWithOutputScript:[[(BTCTransactionOutput*)txouts[0] script] copy] error:&errore];
+    NSLog(@"Error: %@", errore);
+    NSAssert(r, @"should verify first output");
     
     NSLog(@"Hash tx: %@", tx.transactionID);
     return tx;

@@ -98,7 +98,7 @@
     __weak typeof(self) weakSelf = self;
     [transactionManager sendTransactionWithSuccess:^{
         weakSelf.statusLabel.text = @"Success";
-    } andFailure:^{
+    } andFailure:^(NSString *message){
         weakSelf.statusLabel.text = @"Failure";
     }];
 }
