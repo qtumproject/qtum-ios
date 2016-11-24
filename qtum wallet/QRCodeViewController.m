@@ -42,7 +42,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -62,7 +61,6 @@
                                                               previewView:self.cameraView];
     
     [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
-        
         if (success)
         {
             self.scanner.resultBlock = self.scanningCompletion;
@@ -70,7 +68,7 @@
             
         } else
         {
-            NSLog(@"Error");
+            [self showAlertWithTitle:@"Error" mesage:@"Camera premission not found" andActions:nil];
         }
     }];
 }

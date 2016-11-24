@@ -7,6 +7,7 @@
 //
 
 #import "PublicKeyViewController.h"
+#import "QRCodeManager.h"
 
 @interface PublicKeyViewController ()
 
@@ -49,24 +50,10 @@
 - (void)createQRCode
 {
     __weak typeof(self) weakSelf = self;
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *stringData = [weakSelf.publicKeyString dataUsingEncoding: NSUTF8StringEncoding];
-        
-        CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-        [qrFilter setValue:stringData forKey:@"inputMessage"];
-        [qrFilter setValue:@"H" forKey:@"inputCorrectionLevel"];
-        
-        CIImage *qrImage = qrFilter.outputImage;
-        float scaleX = weakSelf.publicKeyImageView.frame.size.width / qrImage.extent.size.width;
-        float scaleY = weakSelf.publicKeyImageView.frame.size.height / qrImage.extent.size.height;
-        
-        qrImage = [qrImage imageByApplyingTransform:CGAffineTransformMakeScale(scaleX, scaleY)];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            weakSelf.publicKeyImageView.image = [UIImage imageWithCIImage:qrImage];
-            [weakSelf.activityIndicator stopAnimating];
-        });
-    });
+    [QRCodeManager createQRCodeFromString:self.publicKeyString forSize:self.publicKeyImageView.frame.size withСompletionBlock:^(CIImage *image, NSString *message) {
+        weakSelf.publicKeyImageView.image = [UIImage imageWithCIImage:image];
+        [weakSelf.activityIndicator stopAnimating];
+    }];
 }
 
 #pragma mark - Actions

@@ -10,4 +10,6 @@
 
 @interface QRCodeManager : NSObject
 
++ (void)createQRCodeFromString:(NSString *)string forSize:(CGSize)size withСompletionBlock:(void(^)(CIImage *image, NSString *message))completionBlock;
+
 @end
