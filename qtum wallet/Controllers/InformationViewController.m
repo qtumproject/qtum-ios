@@ -42,7 +42,7 @@
     __weak typeof(self) weakSelf = self;
     NSMutableArray *array = [NSMutableArray new];
     for (BTCKey *key in [KeysManager sharedInstance].keys) {
-        [array addObject:key.uncompressedPublicKeyAddress.string];
+        [array addObject:key.address.string];
     }
     
     [BlockchainInfoManager getBalanceForAddreses:array withSuccessHandler:^(double responseObject) {

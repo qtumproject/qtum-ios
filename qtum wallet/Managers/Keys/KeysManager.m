@@ -37,6 +37,7 @@ NSString const *kKeychainKeyLabel = @"qtum_wallet_label";
 {
     self = [super init];
     if (self != nil) {
+//        [self removeAllKeys];
         [self load];
     }
     return self;
@@ -48,10 +49,30 @@ NSString const *kKeychainKeyLabel = @"qtum_wallet_label";
 {
     BTCKey *newKey = [[BTCKey alloc] init];
     
+    [self reggisterKey:newKey new:YES];
+}
+
+- (void)importKey:(NSString *)privateAddressString
+{
+    BTCKey *importKey = [[BTCKey alloc] initWithWIF:privateAddressString];
+    
+    for (BTCKey *addedKey in self.keys) {
+        if ([importKey.WIF isEqualToString:addedKey.WIF]) {
+            if (self.keyRegistered)
+                self.keyRegistered(NO);
+            return;
+        }
+    }
+    
+    [self reggisterKey:importKey new:NO];
+}
+
+- (void)reggisterKey:(BTCKey *)key new:(BOOL)new
+{
     __weak typeof (self) weakSelf = self;
-    [[RPCRequestManager sharedInstance] registerKey:newKey.uncompressedPublicKeyAddress.string new:YES withSuccessHandler:^(id responseObject) {
+    [[RPCRequestManager sharedInstance] registerKey:key.address.string new:new withSuccessHandler:^(id responseObject) {
         NSMutableArray *mutArray = [NSMutableArray arrayWithArray:weakSelf.keys];
-        [mutArray addObject:newKey];
+        [mutArray addObject:key];
         weakSelf.keys = [NSArray arrayWithArray:mutArray];
         weakSelf.keysForTransaction = [weakSelf.keys copy];
         [weakSelf save];

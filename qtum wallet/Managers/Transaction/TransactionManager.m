@@ -75,7 +75,7 @@ static double FEE = 10000;
     
     NSMutableArray *addresesForSending = [NSMutableArray new];
     for (BTCKey *key in self.keys) {
-        [addresesForSending addObject:key.uncompressedPublicKeyAddress.string];
+        [addresesForSending addObject:key.address.string];
     }
     if (addresesForSending.count == 0) {
         failure(@"Public key not valid");
@@ -150,7 +150,7 @@ static double FEE = 10000;
     }
     
     BTCKey *firstKey = [self.keys firstObject];
-    BTCTransactionOutput* changeOutput = [[BTCTransactionOutput alloc] initWithValue:(spentCoins - (totalAmount + FEE)) address:firstKey.uncompressedPublicKeyAddress];
+    BTCTransactionOutput* changeOutput = [[BTCTransactionOutput alloc] initWithValue:(spentCoins - (totalAmount + FEE)) address:firstKey.address];
     
     if (changeOutput.value > 0) {
         [tx addOutput:changeOutput];

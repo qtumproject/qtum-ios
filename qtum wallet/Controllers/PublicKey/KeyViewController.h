@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PublicKeyViewController : BaseViewController
+@interface KeyViewController : BaseViewController
 
-@property (nonatomic) NSString *publicKeyString;
+@property (nonatomic) BTCKey *key;
+@property (nonatomic) BOOL isPrivate;
 
 @end

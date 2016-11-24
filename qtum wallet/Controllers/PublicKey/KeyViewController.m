@@ -6,28 +6,39 @@
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
-#import "PublicKeyViewController.h"
+#import "KeyViewController.h"
 #import "QRCodeManager.h"
 
-@interface PublicKeyViewController ()
+@interface KeyViewController ()
+
+@property (nonatomic) NSString *keyString;
 
 @property (weak, nonatomic) IBOutlet UIImageView *publicKeyImageView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *privateKeyButton;
 
 - (IBAction)backButtonWasPressed:(id)sender;
+- (IBAction)pirvateKeyButtonWasPressed:(id)sender;
 @end
 
-@implementation PublicKeyViewController
+@implementation KeyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.privateKeyButton.hidden = self.isPrivate;
+    
+    self.titleLabel.text = self.isPrivate ? @"Private key" : @"Public Key";
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if (self.publicKeyString) {
+    if (self.key && !self.publicKeyImageView.image) {
+        self.keyString = self.isPrivate ? self.key.WIF : self.key.uncompressedPublicKeyAddress.string;
+        
         [self createQRCode];
         [self copyAddressAndShowMessage];
     }
@@ -42,7 +53,7 @@
 - (void)copyAddressAndShowMessage
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    [pb setString:self.publicKeyString];
+    [pb setString:self.keyString];
     
     [self showAlertWithTitle:nil mesage:@"Address copied" andActions:nil];
 }
@@ -50,7 +61,7 @@
 - (void)createQRCode
 {
     __weak typeof(self) weakSelf = self;
-    [QRCodeManager createQRCodeFromString:self.publicKeyString forSize:self.publicKeyImageView.frame.size withСompletionBlock:^(CIImage *image, NSString *message) {
+    [QRCodeManager createQRCodeFromString:self.keyString forSize:self.publicKeyImageView.frame.size withСompletionBlock:^(CIImage *image, NSString *message) {
         weakSelf.publicKeyImageView.image = [UIImage imageWithCIImage:image];
         [weakSelf.activityIndicator stopAnimating];
     }];
@@ -62,4 +73,14 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)pirvateKeyButtonWasPressed:(id)sender
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    KeyViewController *vc = (KeyViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"KeyViewController"];
+    vc.key = self.key;
+    vc.isPrivate = YES;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 @end

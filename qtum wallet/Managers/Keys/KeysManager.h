@@ -18,6 +18,7 @@
 @property (nonatomic, copy) void (^keyRegistered)(BOOL registered);
 
 - (void)createNewKey;
+- (void)importKey:(NSString *)privateAddress;
 - (BOOL)save;
 - (void)load;
 - (void)removeAllKeys;

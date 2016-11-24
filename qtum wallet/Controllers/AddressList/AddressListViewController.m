@@ -8,10 +8,11 @@
 
 #import "AddressListViewController.h"
 #import "AddressTableViewCell.h"
-#import "PublicKeyViewController.h"
+#import "KeyViewController.h"
 #import "KeysManager.h"
+#import "ImportKeyViewController.h"
 
-@interface AddressListViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AddressListViewController () <UITableViewDataSource, UITableViewDelegate, ImportKeyViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)backButtonPressed:(id)sender;
@@ -73,7 +74,7 @@
     
     BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
     
-    cell.puplicKeyLabel.text = key.uncompressedPublicKeyAddress.string;
+    cell.puplicKeyLabel.text = key.address.string;
     
     return cell;
 }
@@ -87,15 +88,34 @@
     [self createAndPresentPublicKeyVCWithKey:key];
 }
 
+#pragma mark - ImportKeyViewControllerDelegate
+
+- (void)addressImported
+{
+    [self.tableView reloadData];
+}
+
 #pragma mark - Methods
 
 - (void)createAndPresentPublicKeyVCWithKey:(BTCKey *)key
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PublicKeyViewController *vc = (PublicKeyViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"PublicKeyViewController"];
-    vc.publicKeyString = key.uncompressedPublicKeyAddress.string;
+    KeyViewController *vc = (KeyViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"KeyViewController"];
+    vc.key = key;
     
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *segueID = segue.identifier;
+    
+    if ([segueID isEqualToString:@"AddressListToImport"]) {
+        ImportKeyViewController *vc = (ImportKeyViewController *)segue.destinationViewController;
+        vc.delegate = self;
+    }
 }
 
 @end

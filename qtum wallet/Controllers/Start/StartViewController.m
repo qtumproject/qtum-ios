@@ -8,14 +8,14 @@
 
 #import "StartViewController.h"
 #import "KeysManager.h"
+#import "ImportKeyViewController.h"
 
-@interface StartViewController ()
+@interface StartViewController () <ImportKeyViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (weak, nonatomic) IBOutlet UIButton *restoreButton;
 
 - (IBAction)createNewButtonWasPressed:(id)sender;
-- (IBAction)restoreButtonWasPressed:(id)sender;
 
 @end
 
@@ -39,7 +39,6 @@
     [SVProgressHUD show];
     
     __weak typeof(self) weakSelf = self;
-    [[KeysManager sharedInstance] createNewKey];
     [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
         if (registered) {
             [SVProgressHUD showSuccessWithStatus:@"Done"];
@@ -49,17 +48,34 @@
         }
         [KeysManager sharedInstance].keyRegistered = nil;
     };
-}
-
-- (IBAction)restoreButtonWasPressed:(id)sender
-{
-    
+    [[KeysManager sharedInstance] createNewKey];
 }
 
 - (void)createAndShowMainVC
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    __weak typeof(self) weakSelf = self;
     [self presentViewController:vc animated:YES completion:nil];
 }
+
+#pragma mark - ImportKeyViewControllerDelegate
+
+- (void)addressImported
+{
+    [self createAndShowMainVC];
+}
+
+#pragma mark - 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *segueID = segue.identifier;
+    
+    if ([segueID isEqualToString:@"StartToImport"]) {
+        ImportKeyViewController *vc = (ImportKeyViewController *)segue.destinationViewController;
+        vc.delegate = self;
+    }
+}
+
 @end

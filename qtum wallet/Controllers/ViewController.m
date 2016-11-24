@@ -58,7 +58,7 @@
     
     BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
     cell.textLabel.text = key.privateKeyAddress.string;
-    cell.detailTextLabel.text = key.uncompressedPublicKeyAddress.string;
+    cell.detailTextLabel.text = key.address.string;
     
     return cell;
 }

@@ -162,7 +162,7 @@
 {
     NSMutableArray *array = [NSMutableArray new];
     for (BTCKey *key in [KeysManager sharedInstance].keys) {
-        [array addObject:key.uncompressedPublicKeyAddress.string];
+        [array addObject:key.address.string];
     }
     
     return [NSArray arrayWithArray:array];
