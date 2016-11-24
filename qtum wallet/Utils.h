@@ -10,6 +10,8 @@
 
 //extern NSString * const baseUrl;
 
-UIColor* customBlueColor();
-UIColor* textFieldLineColorSelected();
-UIColor* textFieldLineColorDeselected();
+UIColor *customBlueColor();
+UIColor *textFieldLineColorSelected();
+UIColor *textFieldLineColorDeselected();
+UIColor *historyRedColor();
+UIColor *historyGreenColor();

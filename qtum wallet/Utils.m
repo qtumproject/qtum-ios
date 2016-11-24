@@ -10,17 +10,27 @@
 
 //NSString *const stateDictKey = @"State";
 
-UIColor* customBlueColor()
+UIColor *customBlueColor()
 {
     return [UIColor colorWithRed:46/255.0f green:139/255.0f blue:186/255.0f alpha:1.0f];
 }
 
-UIColor* textFieldLineColorSelected()
+UIColor *historyRedColor()
+{
+    return [UIColor colorWithRed:255/255.0f green:107/255.0f blue:107/255.0f alpha:1.0f];
+}
+
+UIColor *historyGreenColor()
+{
+    return [UIColor colorWithRed:10/255.0f green:199/255.0f blue:161/255.0f alpha:1.0f];
+}
+
+UIColor *textFieldLineColorSelected()
 {
     return [UIColor colorWithRed:118/255.0f green:196/255.0f blue:230/255.0f alpha:1.0f];
 }
 
-UIColor* textFieldLineColorDeselected()
+UIColor *textFieldLineColorDeselected()
 {
     return [UIColor colorWithRed:169/255.0f green:185/255.0f blue:191/255.0f alpha:1.0f];
 }

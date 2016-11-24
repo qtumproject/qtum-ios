@@ -67,19 +67,7 @@
     }
     
     HistoryElement *element = self.historyArray[indexPath.row];
-    cell.addressLabel.text = element.address;
-    cell.amountLabel.text = element.amountString;
-    cell.dateLabel.text = element.dateString;
-    
-    if (element.send) {
-        cell.typeImage.image = [UIImage imageNamed:@"send"];
-        cell.typeLabel.text = @"Sent";
-    }else{
-        cell.typeImage.image = [UIImage imageNamed:@"received"];
-        cell.typeLabel.text = @"Received";
-    }
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.historyElement = element;
     
     return cell;
 }

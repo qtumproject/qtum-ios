@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HistoryElement.h"
 
 @interface HistoryTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *typeImage;
-@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (nonatomic) HistoryElement *historyElement;
 
 @end
