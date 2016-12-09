@@ -20,20 +20,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="6nh-ee-OQv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backround" translatesAutoresizingMaskIntoConstraints="NO" id="6nh-ee-OQv">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="OGr-Sq-AY3">
-                                <rect key="frame" x="114.5" y="300" width="145" height="66"/>
+                                <rect key="frame" x="128" y="250.5" width="119" height="106"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_txt" translatesAutoresizingMaskIntoConstraints="NO" id="dFi-O5-UR9">
+                                <rect key="frame" x="140" y="377.5" width="95" height="25"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OGr-Sq-AY3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Bwl-HF-Oxn"/>
+                            <constraint firstItem="OGr-Sq-AY3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-30" id="Bwl-HF-Oxn"/>
                             <constraint firstItem="6nh-ee-OQv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="HNG-Oj-RhR"/>
+                            <constraint firstItem="dFi-O5-UR9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KWt-GB-ry1"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="6nh-ee-OQv" secondAttribute="bottom" id="M2p-f3-0ch"/>
                             <constraint firstAttribute="trailing" secondItem="6nh-ee-OQv" secondAttribute="trailing" id="Rq7-Vb-qfI"/>
                             <constraint firstItem="6nh-ee-OQv" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="aFb-Az-Gs8"/>
+                            <constraint firstItem="dFi-O5-UR9" firstAttribute="top" secondItem="OGr-Sq-AY3" secondAttribute="bottom" constant="21" id="dMM-2j-03T"/>
                             <constraint firstItem="OGr-Sq-AY3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xnX-Ck-tJT"/>
                         </constraints>
                     </view>
@@ -44,7 +49,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg" width="320" height="568"/>
-        <image name="logo" width="145" height="66"/>
+        <image name="backround" width="320" height="568"/>
+        <image name="logo" width="119" height="106"/>
+        <image name="logo_txt" width="95" height="25"/>
     </resources>
 </document>

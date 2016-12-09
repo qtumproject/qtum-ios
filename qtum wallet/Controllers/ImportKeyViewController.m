@@ -42,9 +42,9 @@
 
 #pragma mark - QRCodeViewControllerDelegate
 
-- (void)qrCodeScanned:(NSString *)string
+- (void)qrCodeScanned:(NSDictionary *)dictionary
 {
-    self.addressTextField.text = string;
+    self.addressTextField.text = dictionary[PRIVATE_ADDRESS_STRING_KEY];;
 }
 
 #pragma mark - Actions
@@ -82,7 +82,7 @@
 {
     NSString *segueID = segue.identifier;
     
-    if ([segueID isEqualToString:@"ImportToQRCode"]) {
+    if ([segueID isEqualToString:@"ImportPtivateToQRCode"]) {
         QRCodeViewController *vc = (QRCodeViewController *)segue.destinationViewController;
         vc.delegate = self;
     }

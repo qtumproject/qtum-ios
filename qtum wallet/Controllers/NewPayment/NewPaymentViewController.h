@@ -11,5 +11,6 @@
 @interface NewPaymentViewController : BaseViewController
 
 @property (nonatomic) NSString *currentBalance;
+@property (nonatomic) NSDictionary *dictionary;
 
 @end

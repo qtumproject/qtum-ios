@@ -33,7 +33,7 @@
         AVMetadataMachineReadableCodeObject *code = codes.firstObject;
         
         if ([weakSelf.delegate respondsToSelector:@selector(qrCodeScanned:)]) {
-            [weakSelf.delegate qrCodeScanned:code.stringValue];
+            [weakSelf.delegate qrCodeScanned:[QRCodeManager getNewPaymentDictionaryFromString:code.stringValue]];
         }
         
         [weakSelf backButtonWasPressed:nil];
@@ -75,6 +75,10 @@
 
 - (IBAction)backButtonWasPressed:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if ([self.delegate respondsToSelector:@selector(showNextVC)]) {
+            [self.delegate showNextVC];
+        }
+    }];
 }
 @end

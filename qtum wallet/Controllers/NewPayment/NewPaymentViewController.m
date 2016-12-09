@@ -13,13 +13,10 @@
 
 @interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewheightConstraint;
-@property (weak, nonatomic) IBOutlet UIView *currentBalanceView;
+
 @property (weak, nonatomic) IBOutlet UIView *topView;
-@property (weak, nonatomic) IBOutlet UILabel *residueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
 
 - (IBAction)backbuttonPressed:(id)sender;
@@ -31,21 +28,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.balanceLabel.text = self.currentBalance;
-    self.topView.backgroundColor = [UIColor whiteColor];
     [self addDoneButtonToAmountTextField];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
+    if (self.dictionary) {
+        [self qrCodeScanned:self.dictionary];
+    }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-    
-    [self changeResidueHidden:YES];
+    self.residueValueLabel.text = self.currentBalance;
 }
 
 - (void)dealloc
@@ -63,17 +52,7 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if ([textField isEqual:self.amountTextField]) {
-        [self changeResidueHidden:NO];
-        [self calculateResidue:nil];
-    }
-    
-    return YES;
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    if ([textField isEqual:self.amountTextField]) {
-        [self changeResidueHidden:YES];
+//        [self calculateResidue:nil];
     }
     
     return YES;
@@ -116,12 +95,6 @@
     [self.amountTextField resignFirstResponder];
 }
 
-- (void)changeResidueHidden:(BOOL)hidden
-{
-    self.residueLabel.hidden = hidden;
-    self.residueValueLabel.hidden = hidden;
-}
-
 - (void)calculateResidue:(NSString *)string
 {
     double amount;
@@ -130,40 +103,10 @@
     }else{
         amount = [self.amountTextField.text doubleValue];
     }
-    double balance = [self.balanceLabel.text doubleValue];
+    double balance = [self.currentBalance doubleValue];
     
     double residue = balance - amount;
     self.residueValueLabel.text = [NSString stringWithFormat:@"%lf", residue];
-}
-
-#pragma mark - keyboard
-
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    NSDictionary *info = [notification userInfo];
-    NSNumber *number = [info objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-    CGFloat kbDuration = [number floatValue];
-    
-    self.currentBalanceView.hidden = YES;
-    [self animateTopViewWithDuration:kbDuration consraintValue:64.0f];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification
-{
-    NSDictionary *info = [notification userInfo];
-    NSNumber *number = [info objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-    CGFloat kbDuration = [number floatValue];
-    
-    self.currentBalanceView.hidden = NO;
-    [self animateTopViewWithDuration:kbDuration consraintValue:174.0f];
-}
-
-- (void)animateTopViewWithDuration:(CGFloat)duration consraintValue:(CGFloat)value
-{
-    self.topViewheightConstraint.constant = value;
-    [UIView animateWithDuration:duration animations:^{
-        [self.view layoutSubviews];
-    }];
 }
 
 #pragma mark - Action
@@ -196,10 +139,10 @@
 
 #pragma mark - QRCodeViewControllerDelegate
 
-- (void)qrCodeScanned:(NSString *)string
+- (void)qrCodeScanned:(NSDictionary *)dictionary
 {
-    string = [string stringByReplacingOccurrencesOfString:@"bitcoin:" withString:@""];
-    self.addressTextField.text = string;
+    self.addressTextField.text = dictionary[PUBLIC_ADDRESS_STRING_KEY];
+    self.amountTextField.text = dictionary[AMOUNT_STRING_KEY];
 }
 
 #pragma mark - 
@@ -208,7 +151,7 @@
 {
     NSString *segueID = segue.identifier;
     
-    if ([segueID isEqualToString:@"NewPaymentToQRCode"]) {
+    if ([segueID isEqualToString:@"NewPaymentToQrCode"]) {
         QRCodeViewController *vc = (QRCodeViewController *)segue.destinationViewController;
         
         vc.delegate = self;

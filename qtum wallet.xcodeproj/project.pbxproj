@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E739104E1DE2E165008145A8 /* HistoryElement.m */; };
 		E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910521DE30BA8008145A8 /* QRCodeViewController.m */; };
 		E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */; };
@@ -31,7 +32,6 @@
 		E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */; };
 		E7FD363D1DC4D07E00748177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363C1DC4D07E00748177 /* main.m */; };
 		E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363F1DC4D07E00748177 /* AppDelegate.m */; };
-		E7FD36431DC4D07E00748177 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36421DC4D07E00748177 /* ViewController.m */; };
 		E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36441DC4D07E00748177 /* Main.storyboard */; };
 		E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36471DC4D07E00748177 /* Assets.xcassets */; };
 		E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */; };
@@ -39,14 +39,14 @@
 		E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36591DC7308A00748177 /* FXKeychain.m */; };
 		E7FD365C1DC7360400748177 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
 		E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36651DC76EBC00748177 /* RequestManager.m */; };
-		E7FD366A1DC7733800748177 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36681DC7733800748177 /* InformationViewController.m */; };
-		E7FD366B1DC7733800748177 /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36691DC7733800748177 /* InformationViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
+		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
+		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewController.m; sourceTree = "<group>"; };
 		E739104D1DE2E165008145A8 /* HistoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryElement.h; sourceTree = "<group>"; };
 		E739104E1DE2E165008145A8 /* HistoryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryElement.m; sourceTree = "<group>"; };
 		E73910511DE30BA8008145A8 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
@@ -93,8 +93,6 @@
 		E7FD363C1DC4D07E00748177 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E7FD363E1DC4D07E00748177 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7FD363F1DC4D07E00748177 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E7FD36411DC4D07E00748177 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E7FD36421DC4D07E00748177 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E7FD36451DC4D07E00748177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7FD36471DC4D07E00748177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7FD364A1DC4D07E00748177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,9 +105,6 @@
 		E7FD36611DC73D4600748177 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E7FD36641DC76EBC00748177 /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
 		E7FD36651DC76EBC00748177 /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
-		E7FD36671DC7733800748177 /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
-		E7FD36681DC7733800748177 /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
-		E7FD36691DC7733800748177 /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +127,15 @@
 				C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
+			isa = PBXGroup;
+			children = (
+				E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */,
+				E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */,
+			);
+			name = Recieve;
 			sourceTree = "<group>";
 		};
 		E73910501DE30B91008145A8 /* QRCode */ = {
@@ -345,6 +349,7 @@
 		E7FD36531DC72B4F00748177 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E70550CA1DF96E2000B48DC1 /* Recieve */,
 				E7D241DA1DE709B5003E507B /* ImportKey */,
 				E7396AED1DDEF7F10002CD47 /* AddressList */,
 				E7396AE91DDEF7CE0002CD47 /* Main */,
@@ -352,11 +357,6 @@
 				E739105C1DE5E11F008145A8 /* Key */,
 				E73910501DE30B91008145A8 /* QRCode */,
 				E7396AE21DDDF5DC0002CD47 /* Start */,
-				E7FD36671DC7733800748177 /* InformationViewController.h */,
-				E7FD36681DC7733800748177 /* InformationViewController.m */,
-				E7FD36691DC7733800748177 /* InformationViewController.xib */,
-				E7FD36411DC4D07E00748177 /* ViewController.h */,
-				E7FD36421DC4D07E00748177 /* ViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -511,7 +511,6 @@
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
 				E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */,
 				E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */,
-				E7FD366B1DC7733800748177 /* InformationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,10 +577,10 @@
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
 				E7396AE51DDDF5F20002CD47 /* StartViewController.m in Sources */,
+				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
-				E7FD36431DC4D07E00748177 /* ViewController.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
@@ -594,7 +593,6 @@
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				E7FD36561DC72BB000748177 /* KeysManager.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
-				E7FD366A1DC7733800748177 /* InformationViewController.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,

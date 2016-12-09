@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-//extern NSString * const baseUrl;
+extern NSString const *PUBLIC_ADDRESS_STRING_KEY;
+extern NSString const *PRIVATE_ADDRESS_STRING_KEY;
+extern NSString const *AMOUNT_STRING_KEY;
 
 UIColor *customBlueColor();
 UIColor *textFieldLineColorSelected();

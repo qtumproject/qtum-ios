@@ -40,13 +40,14 @@
     self.dateLabel.text = historyElement.dateString;
     
     if (historyElement.send) {
-        self.amountLabel.textColor = historyRedColor();
-        self.typeImage.image = [UIImage imageNamed:@"send"];
+        self.typeLabel.textColor = historyRedColor();
+        self.typeImage.image = [UIImage imageNamed:@"history_send"];
         self.typeLabel.text = @"Sent";
+        self.typeLabel.textColor = historyRedColor();
     }else{
-        self.amountLabel.textColor = historyGreenColor();
-        self.typeImage.image = [UIImage imageNamed:@"received"];
+        self.typeImage.image = [UIImage imageNamed:@"history_receive"];
         self.typeLabel.text = @"Received";
+        self.typeLabel.textColor = historyGreenColor();
     }
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -61,8 +61,8 @@
 - (void)createQRCode
 {
     __weak typeof(self) weakSelf = self;
-    [QRCodeManager createQRCodeFromString:self.keyString forSize:self.publicKeyImageView.frame.size withСompletionBlock:^(CIImage *image, NSString *message) {
-        weakSelf.publicKeyImageView.image = [UIImage imageWithCIImage:image];
+    [QRCodeManager createQRCodeFromString:self.keyString forSize:self.publicKeyImageView.frame.size withCompletionBlock:^(UIImage *image) {
+        weakSelf.publicKeyImageView.image = image;
         [weakSelf.activityIndicator stopAnimating];
     }];
 }

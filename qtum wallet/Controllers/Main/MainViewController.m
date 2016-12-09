@@ -10,9 +10,13 @@
 #import "HistoryTableViewCell.h"
 #import "BlockchainInfoManager.h"
 #import "NewPaymentViewController.h"
+#import "RecieveViewController.h"
 #import "HistoryElement.h"
+#import "QRCodeViewController.h"
 
-@interface MainViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MainViewController () <UITableViewDelegate, UITableViewDataSource, QRCodeViewControllerDelegate>
+
+@property (nonatomic) NSDictionary *dictionaryForNewPayment;
 
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -121,6 +125,18 @@
     }];
 }
 
+#pragma mark - QRCodeViewControllerDelegate
+
+- (void)qrCodeScanned:(NSDictionary *)dictionary
+{
+    self.dictionaryForNewPayment = dictionary;
+}
+
+- (void)showNextVC
+{
+    [self performSegueWithIdentifier:@"FromMainToNewPayment" sender:self];
+}
+
 #pragma merk - Seque
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -131,6 +147,20 @@
         NewPaymentViewController *vc = (NewPaymentViewController *)segue.destinationViewController;
         
         vc.currentBalance = self.balanceLabel.text;
+        vc.dictionary = self.dictionaryForNewPayment;
+        self.dictionaryForNewPayment = nil;
+    }
+    
+    if ([segueID isEqualToString:@"MaintToRecieve"]) {
+        RecieveViewController *vc = (RecieveViewController *)segue.destinationViewController;
+        
+        vc.balance = self.balanceLabel.text;
+    }
+    
+    if ([segueID isEqualToString:@"MainToQrCode"]) {
+        QRCodeViewController *vc = (QRCodeViewController *)segue.destinationViewController;
+        
+        vc.delegate = self;
     }
 }
 @end

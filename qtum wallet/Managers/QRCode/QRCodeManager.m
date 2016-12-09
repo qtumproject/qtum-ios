@@ -10,7 +10,7 @@
 
 @implementation QRCodeManager
 
-+ (void)createQRCodeFromString:(NSString *)string forSize:(CGSize)size withСompletionBlock:(void(^)(CIImage *image, NSString *message))completionBlock;
++ (void)createQRCodeFromString:(NSString *)string forSize:(CGSize)size withCompletionBlock:(void(^)(UIImage *image))completionBlock;
 {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *stringData = [string dataUsingEncoding: NSUTF8StringEncoding];
@@ -25,10 +25,46 @@
         
         qrImage = [qrImage imageByApplyingTransform:CGAffineTransformMakeScale(scaleX, scaleY)];
         
+        CIContext *context = [CIContext contextWithOptions:nil];
+        UIImage *image = [UIImage imageWithCGImage:[context createCGImage:qrImage fromRect:qrImage.extent]];
+        
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            completionBlock(qrImage, nil);
+            completionBlock(image);
         });
     });
+}
+
++ (void)createQRCodeFromPublicAddress:(NSString *)publicAddressString andAmount:(NSString *)amountString forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock
+{
+    NSDictionary *dictionary = @{PUBLIC_ADDRESS_STRING_KEY : publicAddressString,
+                                 AMOUNT_STRING_KEY : amountString};
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                       options:0
+                                                         error:nil];
+    NSString *string = [[NSString alloc] initWithData:jsonData
+                                             encoding:NSUTF8StringEncoding];
+    
+    [self createQRCodeFromString:string forSize:size withCompletionBlock:^(UIImage *image) {
+        completionBlock(image);
+    }];
+}
+
++ (NSDictionary *)getNewPaymentDictionaryFromString:(NSString *)string
+{
+    if (!string) return nil;
+    
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    if (dictionary) {
+        return dictionary;
+    }else{
+        NSDictionary *dictionary = @{PUBLIC_ADDRESS_STRING_KEY : string,
+                                     AMOUNT_STRING_KEY : @"",
+                                     PRIVATE_ADDRESS_STRING_KEY : @""};
+        return dictionary;
+    }
 }
 
 @end

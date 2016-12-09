@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QRCodeManager.h"
 
 @protocol QRCodeViewControllerDelegate <NSObject>
 
-- (void)qrCodeScanned:(NSString *)string;
+- (void)qrCodeScanned:(NSDictionary *)dictionary;
+
+@optional
+- (void)showNextVC;
 
 @end
 
