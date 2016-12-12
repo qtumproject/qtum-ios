@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "UIAlertController+Extensions.h"
 
 @interface BaseViewController ()
 
@@ -54,8 +55,7 @@
 
 #pragma mark - Alerts
 
-- (void)showAlertWithTitle:(NSString *)title mesage:(NSString *)message andActions:(NSArray *)actions
-{
+- (void)showAlertWithTitle:(NSString *)title mesage:(NSString *)message andActions:(NSArray *)actions{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
     if (!actions || actions.count == 0) {
@@ -72,5 +72,15 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+- (void)showCameraPermissionAlertWithTitle:(NSString *)title mesage:(NSString *)message andActions:(NSArray *)actions{
+    UIAlertController* alert = [UIAlertController warningMessageWithSettingsButtonAndTitle:title
+                                                                                   message:message
+                                                                         withActionHandler:nil];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
 
 @end
