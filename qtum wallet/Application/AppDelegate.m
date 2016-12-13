@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "KeysManager.h"
+#import "ApplicationCoordinator.h"
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) ApplicationCoordinator* applicationCoordinator;
 
 @end
 
@@ -17,24 +19,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSString *rootVCkey;
-    if ([KeysManager sharedInstance].keys.count != 0) {
-        rootVCkey = @"MainViewController";
-    }else{
-        rootVCkey = @"StartViewController";
-    }
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:rootVCkey];
-    self.window.rootViewController = vc;
-    
-    [[SVProgressHUD appearance] setDefaultStyle:SVProgressHUDStyleCustom];
-    [[SVProgressHUD appearance] setForegroundColor:[UIColor colorWithRed:104/255.0f green:195/255.0f blue:207/255.0f alpha:1.0f]];
-    [[SVProgressHUD appearance] setBackgroundColor:[UIColor whiteColor]];
-    [[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-    [[SVProgressHUD appearance] setMinimumDismissTimeInterval:1];
-    
+
+    ApplicationCoordinator* coordinator = [[ApplicationCoordinator alloc] initWithAppDelegate:self];
+    [coordinator start];
+    self.applicationCoordinator = coordinator;
     return YES;
 }
 

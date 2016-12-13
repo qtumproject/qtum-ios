@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		B3210D141E00052900365FB6 /* GradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D131E00052900365FB6 /* GradientLayer.m */; };
+		B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D191E00142100365FB6 /* ViewWithGradientPoints.m */; };
+		B3210D201E001EC200365FB6 /* PinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D1F1E001EC200365FB6 /* PinViewController.m */; };
+		B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D221E002E2900365FB6 /* ApplicationCoordinator.m */; };
+		B3210D261E0030DB00365FB6 /* Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D251E0030DB00365FB6 /* Appearance.m */; };
+		B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */; };
+		B3210D311E00409600365FB6 /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D2E1E00409600365FB6 /* LGSideMenuController.m */; };
+		B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */; };
 		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E739104E1DE2E165008145A8 /* HistoryElement.m */; };
@@ -45,6 +53,21 @@
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		B3210D121E00052900365FB6 /* GradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientLayer.h; sourceTree = "<group>"; };
+		B3210D131E00052900365FB6 /* GradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLayer.m; sourceTree = "<group>"; };
+		B3210D181E00142100365FB6 /* ViewWithGradientPoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewWithGradientPoints.h; sourceTree = "<group>"; };
+		B3210D191E00142100365FB6 /* ViewWithGradientPoints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithGradientPoints.m; sourceTree = "<group>"; };
+		B3210D1E1E001EC200365FB6 /* PinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinViewController.h; sourceTree = "<group>"; };
+		B3210D1F1E001EC200365FB6 /* PinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinViewController.m; sourceTree = "<group>"; };
+		B3210D211E002E2900365FB6 /* ApplicationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationCoordinator.h; path = "qtum wallet/ApplicationCoordinator.h"; sourceTree = SOURCE_ROOT; };
+		B3210D221E002E2900365FB6 /* ApplicationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationCoordinator.m; path = "qtum wallet/ApplicationCoordinator.m"; sourceTree = SOURCE_ROOT; };
+		B3210D241E0030DB00365FB6 /* Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearance.h; sourceTree = "<group>"; };
+		B3210D251E0030DB00365FB6 /* Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearance.m; sourceTree = "<group>"; };
+		B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Regular.otf"; sourceTree = SOURCE_ROOT; };
+		B3210D2D1E00409600365FB6 /* LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuController.h; sourceTree = "<group>"; };
+		B3210D2E1E00409600365FB6 /* LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuController.m; sourceTree = "<group>"; };
+		B3210D2F1E00409600365FB6 /* UIViewController+LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LGSideMenuController.h"; sourceTree = "<group>"; };
+		B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LGSideMenuController.m"; sourceTree = "<group>"; };
 		B3846DD41DFEFA6500D6872C /* UIAlertController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Extensions.h"; sourceTree = "<group>"; };
 		B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Extensions.m"; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +155,34 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B3210D111E0004F900365FB6 /* Gradient Layer */ = {
+			isa = PBXGroup;
+			children = (
+				B3210D121E00052900365FB6 /* GradientLayer.h */,
+				B3210D131E00052900365FB6 /* GradientLayer.m */,
+				B3210D181E00142100365FB6 /* ViewWithGradientPoints.h */,
+				B3210D191E00142100365FB6 /* ViewWithGradientPoints.m */,
+			);
+			name = "Gradient Layer";
+			sourceTree = "<group>";
+		};
+		B3210D1D1E001E8900365FB6 /* PIN */ = {
+			isa = PBXGroup;
+			children = (
+				B3210D1E1E001EC200365FB6 /* PinViewController.h */,
+				B3210D1F1E001EC200365FB6 /* PinViewController.m */,
+			);
+			name = PIN;
+			sourceTree = "<group>";
+		};
+		B3210D271E00326B00365FB6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		B3846DD31DFEFA0800D6872C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +190,7 @@
 				B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */,
 			);
 			name = Extensions;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
@@ -199,6 +251,7 @@
 		E7396ADE1DDDEA0E0002CD47 /* Gradient */ = {
 			isa = PBXGroup;
 			children = (
+				B3210D111E0004F900365FB6 /* Gradient Layer */,
 				E7396AE61DDEDEEC0002CD47 /* CircleGradientView.h */,
 				E7396AE71DDEDEEC0002CD47 /* CircleGradientView.m */,
 				E7396ADF1DDDEA2E0002CD47 /* GradientView.h */,
@@ -329,7 +382,6 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
-				B3846DD31DFEFA0800D6872C /* Extensions */,
 				E7FD36601DC73B7900748177 /* Application */,
 				E7DD00EF1DC9E5BD00FD5335 /* Categories */,
 				E7FD36531DC72B4F00748177 /* Controllers */,
@@ -338,6 +390,10 @@
 				E7FD36521DC72B4400748177 /* Model */,
 				E7FD363B1DC4D07E00748177 /* Supporting Files */,
 				E7FD365E1DC73B2400748177 /* Views */,
+				B3210D2D1E00409600365FB6 /* LGSideMenuController.h */,
+				B3210D2E1E00409600365FB6 /* LGSideMenuController.m */,
+				B3210D2F1E00409600365FB6 /* UIViewController+LGSideMenuController.h */,
+				B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */,
 				E7FD36441DC4D07E00748177 /* Main.storyboard */,
 			);
 			path = "qtum wallet";
@@ -346,6 +402,7 @@
 		E7FD363B1DC4D07E00748177 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3210D271E00326B00365FB6 /* Fonts */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -362,6 +419,7 @@
 		E7FD36531DC72B4F00748177 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B3210D1D1E001E8900365FB6 /* PIN */,
 				E70550CA1DF96E2000B48DC1 /* Recieve */,
 				E7D241DA1DE709B5003E507B /* ImportKey */,
 				E7396AED1DDEF7F10002CD47 /* AddressList */,
@@ -386,6 +444,7 @@
 		E7FD365D1DC73ACB00748177 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				B3846DD31DFEFA0800D6872C /* Extensions */,
 				E73910581DE45386008145A8 /* Base */,
 				E73910541DE42457008145A8 /* Categories */,
 				E7FD36571DC7307100748177 /* FXKeychain */,
@@ -426,6 +485,10 @@
 				E74636841DCB300800A13318 /* Utils.h */,
 				E74636851DCB300800A13318 /* Utils.m */,
 				E7FD363C1DC4D07E00748177 /* main.m */,
+				B3210D211E002E2900365FB6 /* ApplicationCoordinator.h */,
+				B3210D221E002E2900365FB6 /* ApplicationCoordinator.m */,
+				B3210D241E0030DB00365FB6 /* Appearance.h */,
+				B3210D251E0030DB00365FB6 /* Appearance.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -521,6 +584,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
 				E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */,
 				E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */,
@@ -586,6 +650,7 @@
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
+				B3210D311E00409600365FB6 /* LGSideMenuController.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
@@ -593,16 +658,22 @@
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
+				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
+				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
+				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
 				E7D241DD1DE709D6003E507B /* ImportKeyViewController.m in Sources */,
+				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
+				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
+				B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				E7FD36561DC72BB000748177 /* KeysManager.m in Sources */,
