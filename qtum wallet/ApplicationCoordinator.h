@@ -17,7 +17,10 @@
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 -(void)start;
+-(void)startMainFlow;
+-(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)shoudShowMenu:(BOOL) flag;
+-(void)showMenu;
 -(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;
 -(void)setViewController:(UIViewController*) controller animated:(BOOL)animated;
 

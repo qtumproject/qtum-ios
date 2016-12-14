@@ -16,6 +16,8 @@
     [[SVProgressHUD appearance] setBackgroundColor:[UIColor whiteColor]];
     [[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [[SVProgressHUD appearance] setMinimumDismissTimeInterval:1];
+    
+    [[UITextField appearance] setTintColor:[UIColor whiteColor]];
 }
 
 @end

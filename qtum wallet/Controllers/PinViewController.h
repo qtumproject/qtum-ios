@@ -7,7 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CreatePinRootController.h"
+
+typedef NS_ENUM(NSInteger,PinType){
+    EnterType,
+    CreateType,
+    ConfirmType
+};
+
+@protocol PinCoordinator;
 
 @interface PinViewController : BaseViewController
+
+@property (weak,nonatomic) id <PinCoordinator> delegate;
+@property (assign,nonatomic) PinType type;
+
+@end
+
+@protocol PinCoordinator <NSObject>
+
+@required
+-(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completisiom;
+@optional
+-(void)confilmPinFailed;
 
 @end

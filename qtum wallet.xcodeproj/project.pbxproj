@@ -19,6 +19,9 @@
 		B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */; };
 		B3210D311E00409600365FB6 /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D2E1E00409600365FB6 /* LGSideMenuController.m */; };
 		B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */; };
+		B32142871E012A5800489BB1 /* CreatePinRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142861E012A5800489BB1 /* CreatePinRootController.m */; };
+		B321428A1E01477A00489BB1 /* AskPinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142891E01477A00489BB1 /* AskPinController.m */; };
+		B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B321428C1E0153F000489BB1 /* CustomTextField.m */; };
 		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E739104E1DE2E165008145A8 /* HistoryElement.m */; };
@@ -77,6 +80,12 @@
 		B3210D2E1E00409600365FB6 /* LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuController.m; sourceTree = "<group>"; };
 		B3210D2F1E00409600365FB6 /* UIViewController+LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LGSideMenuController.h"; sourceTree = "<group>"; };
 		B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LGSideMenuController.m"; sourceTree = "<group>"; };
+		B32142851E012A5800489BB1 /* CreatePinRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinRootController.h; sourceTree = "<group>"; };
+		B32142861E012A5800489BB1 /* CreatePinRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinRootController.m; sourceTree = "<group>"; };
+		B32142881E01477A00489BB1 /* AskPinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPinController.h; sourceTree = "<group>"; };
+		B32142891E01477A00489BB1 /* AskPinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPinController.m; sourceTree = "<group>"; };
+		B321428B1E0153F000489BB1 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		B321428C1E0153F000489BB1 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		B3846DD41DFEFA6500D6872C /* UIAlertController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Extensions.h"; sourceTree = "<group>"; };
 		B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Extensions.m"; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -189,8 +198,12 @@
 		B3210D1D1E001E8900365FB6 /* PIN */ = {
 			isa = PBXGroup;
 			children = (
+				B32142851E012A5800489BB1 /* CreatePinRootController.h */,
+				B32142861E012A5800489BB1 /* CreatePinRootController.m */,
 				B3210D1E1E001EC200365FB6 /* PinViewController.h */,
 				B3210D1F1E001EC200365FB6 /* PinViewController.m */,
+				B32142881E01477A00489BB1 /* AskPinController.h */,
+				B32142891E01477A00489BB1 /* AskPinController.m */,
 			);
 			name = PIN;
 			sourceTree = "<group>";
@@ -201,6 +214,16 @@
 				B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		B321428E1E0154F700489BB1 /* Text Field */ = {
+			isa = PBXGroup;
+			children = (
+				B321428B1E0153F000489BB1 /* CustomTextField.h */,
+				B321428C1E0153F000489BB1 /* CustomTextField.m */,
+			);
+			name = "Text Field";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		B3846DD31DFEFA0800D6872C /* Extensions */ = {
@@ -473,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				E7396ADE1DDDEA0E0002CD47 /* Gradient */,
+				B321428E1E0154F700489BB1 /* Text Field */,
 				E7396B001DDF3FFA0002CD47 /* TextFielfWithLine */,
 			);
 			path = Views;
@@ -675,6 +699,8 @@
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
 				B3210D311E00409600365FB6 /* LGSideMenuController.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
+				B32142871E012A5800489BB1 /* CreatePinRootController.m in Sources */,
+				B321428A1E01477A00489BB1 /* AskPinController.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				1101CF3E1E008DA20000E862 /* MenuViewController.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
@@ -697,6 +723,7 @@
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				1101CF3B1E008C9E0000E862 /* ContentController.m in Sources */,
+				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */,

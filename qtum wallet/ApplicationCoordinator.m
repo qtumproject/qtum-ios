@@ -11,6 +11,9 @@
 #import "Appearance.h"
 #import "RootViewController.h"
 #import "ContentController.h"
+#import "CreatePinRootController.h"
+#import "PinViewController.h"
+#import "AskPinController.h"
 
 @interface ApplicationCoordinator ()
 
@@ -52,19 +55,11 @@
 -(void)start{
     [Appearance setUp];
 
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSString *rootVCkey;
-    BOOL needSecurController = true;
     if ([KeysManager sharedInstance].keys.count && [KeysManager sharedInstance].PIN) {
-        rootVCkey = @"MainViewController";
-        needSecurController = true;
+        [self startAskPinFlow:nil];
     }else{
-        rootVCkey = @"StartViewController";
+        [self startWalletFlow];
     }
-    
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:rootVCkey];
-    self.appDelegate.window.rootViewController = [self congigSideMenuWithFirstController:viewController];
-    [self shoudShowMenu:NO];
 }
 
 -(UIViewController*)congigSideMenuWithFirstController:(UIViewController*) controller{
@@ -83,6 +78,9 @@
     self.root.shouldShowLeftView = flag;
 }
 
+#pragma mark - Navigation
+
+
 -(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated{
     [self.router pushViewController:controller animated:animated];
 }
@@ -94,5 +92,47 @@
 -(void)presentAsModal:(UIViewController*) controller animated:(BOOL)animated{
     [self.root presentViewController:controller animated:animated completion:nil];
 }
+
+-(void)showMenu{
+    [self.root showLeftViewAnimated:YES completionHandler:nil];
+}
+
+#pragma mark - Flows
+
+-(void)startWalletFlow{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"StartViewController"];
+    UINavigationController* rootNavigation = [[UINavigationController alloc]initWithRootViewController:viewController];
+    rootNavigation.navigationBar.hidden = YES;
+    self.appDelegate.window.rootViewController = rootNavigation;
+}
+
+-(void)startAskPinFlow:(void(^)()) completesion{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
+    AskPinController* askPinRoot = [[AskPinController alloc]initWithRootViewController:viewController];
+    askPinRoot.validatePinCompletesion = completesion;
+    viewController.delegate = askPinRoot;
+    viewController.type = EnterType;
+    self.appDelegate.window.rootViewController = askPinRoot;
+}
+
+-(void)startMainFlow{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    self.appDelegate.window.rootViewController = [self congigSideMenuWithFirstController:vc];
+    [self shoudShowMenu:YES];
+}
+
+-(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
+    CreatePinRootController* createPinRoot = [[CreatePinRootController alloc]initWithRootViewController:viewController];
+    createPinRoot.createPinCompletesion = completesion;
+    viewController.delegate = createPinRoot;
+    viewController.type = CreateType;
+    self.appDelegate.window.rootViewController = createPinRoot;
+}
+
 
 @end

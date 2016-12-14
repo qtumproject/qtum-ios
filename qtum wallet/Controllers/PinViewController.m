@@ -7,13 +7,16 @@
 //
 
 #import "PinViewController.h"
+#import "CustomTextField.h"
 
-@interface PinViewController () <UITextFieldDelegate>
+@interface PinViewController () <UITextFieldDelegate, CAAnimationDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *firstSymbolTextField;
-@property (weak, nonatomic) IBOutlet UITextField *secondSymbolTextField;
-@property (weak, nonatomic) IBOutlet UITextField *thirdSymbolTextField;
-@property (weak, nonatomic) IBOutlet UITextField *fourthSymbolTextField;
+@property (weak, nonatomic) IBOutlet CustomTextField *firstSymbolTextField;
+@property (weak, nonatomic) IBOutlet CustomTextField *secondSymbolTextField;
+@property (weak, nonatomic) IBOutlet CustomTextField *thirdSymbolTextField;
+@property (weak, nonatomic) IBOutlet CustomTextField *fourthSymbolTextField;
+@property (weak, nonatomic) IBOutlet UIView *pinContainer;
+@property (weak, nonatomic) IBOutlet UIButton *enterButton;
 
 @end
 
@@ -21,16 +24,62 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.firstSymbolTextField becomeFirstResponder];
+    [self configEnterButton];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+-(void)configEnterButton{
+    NSString* title;
+    switch (self.type) {
+        case EnterType:
+            title = @"Enter PIN";
+            break;
+        case CreateType:
+            title = @"Create PIN";
+            break;
+        case ConfirmType:
+            title = @"Repeat PIN";
+            break;
+            
+        default:
+            title = @"Enter PIN";
+            break;
+    }
+    [self.enterButton setTitle:title forState:UIControlStateNormal];
+}
 #pragma mark - Privat Methods
 
+-(void)validateAndSendPin{
+    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
+    __weak typeof(self) weakSelf = self;
+    if (pin.length == 4) {
+        [self.delegate confirmPin:pin andCompletision:^(BOOL success) {
+            if (!success) {
+                [weakSelf accessPinDenied];
+            }
+        }];
+    } else {
+        [self accessPinDenied];
+    }
+    [self.firstSymbolTextField becomeFirstResponder];
+}
 
--(void)redirectTextField:(UITextField*)textField{
+-(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed{
+    if (reversed) {
+        if ([textField isEqual:self.fourthSymbolTextField]) {
+            [self.thirdSymbolTextField becomeFirstResponder];
+        } else if ([textField isEqual:self.thirdSymbolTextField]) {
+            [self.secondSymbolTextField becomeFirstResponder];
+        } else if ([textField isEqual:self.secondSymbolTextField]) {
+            [self.firstSymbolTextField becomeFirstResponder];
+        } else if ([textField isEqual:self.firstSymbolTextField]) {
+            
+        }
+    } else {
         if ([textField isEqual:self.firstSymbolTextField]) {
             [self.secondSymbolTextField becomeFirstResponder];
         } else if ([textField isEqual:self.secondSymbolTextField]) {
@@ -38,8 +87,35 @@
         } else if ([textField isEqual:self.thirdSymbolTextField]) {
             [self.fourthSymbolTextField becomeFirstResponder];
         } else if ([textField isEqual:self.fourthSymbolTextField]) {
-            [self.fourthSymbolTextField resignFirstResponder];
+            [self validateAndSendPin];
         }
+    }
+}
+
+-(void)accessPinDenied {
+    CAKeyframeAnimation* shake = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
+    shake.duration = 0.6;
+    shake.values = @[@-20.0, @20.0, @-20.0, @20.0, @-10.0, @10.0, @-5.0, @5.0, @0.0];
+    shake.delegate = self;
+    [self.pinContainer.layer addAnimation:shake forKey:@"shake"];
+    [self clearPinTextFields];
+}
+
+-(void)clearPinTextFields{
+    self.firstSymbolTextField.text =
+    self.secondSymbolTextField.text =
+    self.thirdSymbolTextField.text =
+    self.fourthSymbolTextField.text = @"";
+}
+
+#pragma mark - CAAnimationDelegate
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    if (flag && self.type == ConfirmType) {
+        if ([self.delegate respondsToSelector:@selector(confilmPinFailed)]) {
+            [self.delegate confilmPinFailed];
+        }
+    }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -63,14 +139,16 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if (string.length && [string rangeOfString:@" "].location == NSNotFound) {
         textField.text = [string substringToIndex:1];
-        [self redirectTextField:textField];
+        [self redirectTextField:textField isReversed:NO];
     }else {
         textField.text = @"";
+        [self redirectTextField:textField isReversed:YES];
     }
     return NO;
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField{
+    NSLog(@"clear");
     return YES;
 }
 
@@ -83,7 +161,7 @@
 
 
 - (IBAction)actionEnterPin:(id)sender {
-    [self.view endEditing:YES];
+    [self validateAndSendPin];
 }
 
 @end

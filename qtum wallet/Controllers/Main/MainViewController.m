@@ -13,6 +13,7 @@
 #import "RecieveViewController.h"
 #import "HistoryElement.h"
 #import "QRCodeViewController.h"
+#import "ApplicationCoordinator.h"
 
 @interface MainViewController () <UITableViewDelegate, UITableViewDataSource, QRCodeViewControllerDelegate>
 
@@ -132,9 +133,14 @@
     self.dictionaryForNewPayment = dictionary;
 }
 
+#pragma mark - Actions
+
 - (void)showNextVC
 {
     [self performSegueWithIdentifier:@"FromMainToNewPayment" sender:self];
+}
+- (IBAction)actionShowMenu:(id)sender {
+    [[ApplicationCoordinator sharedInstance] showMenu];
 }
 
 #pragma merk - Seque
