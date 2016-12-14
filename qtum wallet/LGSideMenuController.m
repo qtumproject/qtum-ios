@@ -1257,7 +1257,7 @@
 
     self.waitingForUpdateStatusBar = YES;
 
-    [self statusBarAppearanceUpdate];
+    //[self statusBarAppearanceUpdate];
     [self setNeedsStatusBarAppearanceUpdate];
 
     // -----
@@ -1342,7 +1342,7 @@
 
     self.waitingForUpdateStatusBar = YES;
 
-    [self statusBarAppearanceUpdate];
+    //[self statusBarAppearanceUpdate];
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
@@ -1433,7 +1433,7 @@
 
     self.waitingForUpdateStatusBar = YES;
 
-    [self statusBarAppearanceUpdate];
+    //[self statusBarAppearanceUpdate];
     [self setNeedsStatusBarAppearanceUpdate];
 
     // -----
@@ -1518,7 +1518,7 @@
 
     self.waitingForUpdateStatusBar = YES;
 
-    [self statusBarAppearanceUpdate];
+    //[self statusBarAppearanceUpdate];
     [self setNeedsStatusBarAppearanceUpdate];
 }
 

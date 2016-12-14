@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		1101CF3B1E008C9E0000E862 /* ContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1101CF3A1E008C9E0000E862 /* ContentController.m */; };
+		1101CF3E1E008DA20000E862 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1101CF3D1E008DA20000E862 /* MenuViewController.m */; };
+		1101CF411E008DB40000E862 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1101CF401E008DB40000E862 /* RootViewController.m */; };
 		B3210D141E00052900365FB6 /* GradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D131E00052900365FB6 /* GradientLayer.m */; };
 		B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D191E00142100365FB6 /* ViewWithGradientPoints.m */; };
 		B3210D201E001EC200365FB6 /* PinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D1F1E001EC200365FB6 /* PinViewController.m */; };
@@ -52,6 +55,12 @@
 
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1101CF391E008C9E0000E862 /* ContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentController.h; sourceTree = "<group>"; };
+		1101CF3A1E008C9E0000E862 /* ContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentController.m; sourceTree = "<group>"; };
+		1101CF3C1E008DA20000E862 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		1101CF3D1E008DA20000E862 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		1101CF3F1E008DB40000E862 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		1101CF401E008DB40000E862 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
 		B3210D121E00052900365FB6 /* GradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientLayer.h; sourceTree = "<group>"; };
 		B3210D131E00052900365FB6 /* GradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLayer.m; sourceTree = "<group>"; };
@@ -146,6 +155,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1101CF421E00C5E70000E862 /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				B3210D2D1E00409600365FB6 /* LGSideMenuController.h */,
+				B3210D2E1E00409600365FB6 /* LGSideMenuController.m */,
+				B3210D2F1E00409600365FB6 /* UIViewController+LGSideMenuController.h */,
+				B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */,
+			);
+			name = "Side Menu";
+			sourceTree = "<group>";
+		};
 		94DECCBC55E0AE7D7EF532E6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,10 +410,7 @@
 				E7FD36521DC72B4400748177 /* Model */,
 				E7FD363B1DC4D07E00748177 /* Supporting Files */,
 				E7FD365E1DC73B2400748177 /* Views */,
-				B3210D2D1E00409600365FB6 /* LGSideMenuController.h */,
-				B3210D2E1E00409600365FB6 /* LGSideMenuController.m */,
-				B3210D2F1E00409600365FB6 /* UIViewController+LGSideMenuController.h */,
-				B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */,
+				1101CF421E00C5E70000E862 /* Side Menu */,
 				E7FD36441DC4D07E00748177 /* Main.storyboard */,
 			);
 			path = "qtum wallet";
@@ -489,6 +506,12 @@
 				B3210D221E002E2900365FB6 /* ApplicationCoordinator.m */,
 				B3210D241E0030DB00365FB6 /* Appearance.h */,
 				B3210D251E0030DB00365FB6 /* Appearance.m */,
+				1101CF391E008C9E0000E862 /* ContentController.h */,
+				1101CF3A1E008C9E0000E862 /* ContentController.m */,
+				1101CF3C1E008DA20000E862 /* MenuViewController.h */,
+				1101CF3D1E008DA20000E862 /* MenuViewController.m */,
+				1101CF3F1E008DB40000E862 /* RootViewController.h */,
+				1101CF401E008DB40000E862 /* RootViewController.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -653,6 +676,7 @@
 				B3210D311E00409600365FB6 /* LGSideMenuController.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
+				1101CF3E1E008DA20000E862 /* MenuViewController.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
 				E7396AE51DDDF5F20002CD47 /* StartViewController.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
@@ -665,12 +689,14 @@
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
+				1101CF411E008DB40000E862 /* RootViewController.m in Sources */,
 				E7D241DD1DE709D6003E507B /* ImportKeyViewController.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
+				1101CF3B1E008C9E0000E862 /* ContentController.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */,

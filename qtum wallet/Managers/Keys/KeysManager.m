@@ -12,12 +12,15 @@
 
 NSString const *kKeychainKey = @"qtum_wallet_private_keys";
 NSString const *kKeychainKeyLabel = @"qtum_wallet_label";
+NSString const *kUserPIN = @"PIN";
+
 
 @interface KeysManager ()
 
 @property (nonatomic, strong) NSString *label;
 @property (nonatomic, strong) NSArray *keys;
 @property (nonatomic, strong) NSArray *keysForTransaction;
+@property (nonatomic, strong) NSString* PIN;
 
 @end
 
@@ -106,6 +109,10 @@ NSString const *kKeychainKeyLabel = @"qtum_wallet_label";
     return resultKeys && resultLabel;
 }
 
+-(void)storePin:(NSString*) pin {
+    [[FXKeychain defaultKeychain] setObject:pin forKey:kUserPIN];
+}
+
 - (void)load
 {
     NSArray *savedArrray = [[FXKeychain defaultKeychain] objectForKey:kKeychainKey];
@@ -118,6 +125,7 @@ NSString const *kKeychainKeyLabel = @"qtum_wallet_label";
     }else{
         self.label = label;
     }
+    self.PIN = [[FXKeychain defaultKeychain] objectForKey:kUserPIN];
 }
 
 - (void)removeAllKeys

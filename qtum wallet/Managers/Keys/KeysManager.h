@@ -16,6 +16,8 @@
 @property (nonatomic, strong, readonly) NSArray *keysForTransaction;
 @property (nonatomic, strong, readonly) NSString *label;
 @property (nonatomic, copy) void (^keyRegistered)(BOOL registered);
+@property (nonatomic, strong, readonly) NSString* PIN;
+
 
 - (void)createNewKey;
 - (void)importKey:(NSString *)privateAddress;

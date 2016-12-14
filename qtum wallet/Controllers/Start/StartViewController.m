@@ -9,6 +9,7 @@
 #import "StartViewController.h"
 #import "KeysManager.h"
 #import "ImportKeyViewController.h"
+#import "ApplicationCoordinator.h"
 
 @interface StartViewController () <ImportKeyViewControllerDelegate>
 
@@ -55,8 +56,9 @@
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    __weak typeof(self) weakSelf = self;
-    [self presentViewController:vc animated:YES completion:nil];
+//    [self presentViewController:vc animated:YES completion:nil];
+    [[ApplicationCoordinator sharedInstance] setViewController:vc animated:YES];
+    [[ApplicationCoordinator sharedInstance] shoudShowMenu:YES];
 }
 
 #pragma mark - ImportKeyViewControllerDelegate
