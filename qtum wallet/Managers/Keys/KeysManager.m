@@ -15,7 +15,9 @@ NSString const *kKeychainKeyLabel = @"qtum_wallet_label";
 
 @interface KeysManager ()
 
+//label for register keys as 1 wallet, need for RPC
 @property (nonatomic, strong) NSString *label;
+
 @property (nonatomic, strong) NSArray *keys;
 @property (nonatomic, strong) NSArray *keysForTransaction;
 

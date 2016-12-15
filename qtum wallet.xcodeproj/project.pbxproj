@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
+		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
+		E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71AF24C1E0178C50068595B /* libCoreBitcoin.a */; };
+		E71AF24E1E0178EB0068595B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
+		E71AF2511E017D250068595B /* WordsArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2501E017D250068595B /* WordsArray.m */; };
+		E71AF2551E018F6A0068595B /* WalletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2541E018F6A0068595B /* WalletManager.m */; };
+		E727F1781E02749D0080E79D /* Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = E727F1771E02749D0080E79D /* Wallet.m */; };
 		E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E739104E1DE2E165008145A8 /* HistoryElement.m */; };
 		E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910521DE30BA8008145A8 /* QRCodeViewController.m */; };
 		E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */; };
@@ -41,12 +47,32 @@
 		E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36651DC76EBC00748177 /* RequestManager.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E71AF2471E0177910068595B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7FD36301DC4D07E00748177 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7FD36371DC4D07E00748177;
+			remoteInfo = "qtum wallet";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
 		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewController.m; sourceTree = "<group>"; };
+		E71AF2421E0177910068595B /* qtum walletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "qtum walletTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E71AF2441E0177910068595B /* qtum_walletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qtum_walletTests.m; sourceTree = "<group>"; };
+		E71AF2461E0177910068595B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E71AF24C1E0178C50068595B /* libCoreBitcoin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCoreBitcoin.a; path = "../../../Library/Developer/Xcode/DerivedData/qtum_wallet-arbewxanfsytvybnfcusgblmtdes/Build/Products/Debug-iphonesimulator/CoreBitcoin/libCoreBitcoin.a"; sourceTree = "<group>"; };
+		E71AF24F1E017D250068595B /* WordsArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsArray.h; sourceTree = "<group>"; };
+		E71AF2501E017D250068595B /* WordsArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsArray.m; sourceTree = "<group>"; };
+		E71AF2531E018F6A0068595B /* WalletManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletManager.h; sourceTree = "<group>"; };
+		E71AF2541E018F6A0068595B /* WalletManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletManager.m; sourceTree = "<group>"; };
+		E727F1761E02749D0080E79D /* Wallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wallet.h; sourceTree = "<group>"; };
+		E727F1771E02749D0080E79D /* Wallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wallet.m; sourceTree = "<group>"; };
 		E739104D1DE2E165008145A8 /* HistoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryElement.h; sourceTree = "<group>"; };
 		E739104E1DE2E165008145A8 /* HistoryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryElement.m; sourceTree = "<group>"; };
 		E73910511DE30BA8008145A8 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
@@ -108,6 +134,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E71AF23F1E0177910068595B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E71AF24E1E0178EB0068595B /* Security.framework in Frameworks */,
+				E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7FD36351DC4D07E00748177 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,6 +171,24 @@
 				E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */,
 			);
 			name = Recieve;
+			sourceTree = "<group>";
+		};
+		E71AF2431E0177910068595B /* qtum walletTests */ = {
+			isa = PBXGroup;
+			children = (
+				E71AF2441E0177910068595B /* qtum_walletTests.m */,
+				E71AF2461E0177910068595B /* Info.plist */,
+			);
+			path = "qtum walletTests";
+			sourceTree = "<group>";
+		};
+		E71AF2521E018F4F0068595B /* WalletManager */ = {
+			isa = PBXGroup;
+			children = (
+				E71AF2531E018F6A0068595B /* WalletManager.h */,
+				E71AF2541E018F6A0068595B /* WalletManager.m */,
+			);
+			name = WalletManager;
 			sourceTree = "<group>";
 		};
 		E73910501DE30B91008145A8 /* QRCode */ = {
@@ -299,6 +352,7 @@
 		E7FD362F1DC4D07E00748177 = {
 			isa = PBXGroup;
 			children = (
+				E71AF2431E0177910068595B /* qtum walletTests */,
 				F94C279886F936AB7B4DA6F8 /* Frameworks */,
 				94DECCBC55E0AE7D7EF532E6 /* Pods */,
 				E7FD36391DC4D07E00748177 /* Products */,
@@ -310,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				E7FD36381DC4D07E00748177 /* qtum wallet.app */,
+				E71AF2421E0177910068595B /* qtum walletTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -342,6 +397,8 @@
 			children = (
 				E739104D1DE2E165008145A8 /* HistoryElement.h */,
 				E739104E1DE2E165008145A8 /* HistoryElement.m */,
+				E727F1761E02749D0080E79D /* Wallet.h */,
+				E727F1771E02749D0080E79D /* Wallet.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -392,6 +449,7 @@
 		E7FD365F1DC73B6300748177 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E71AF2521E018F4F0068595B /* WalletManager */,
 				E7396ADD1DDCBFD20002CD47 /* BlockchainInfo */,
 				E7FD36621DC769B500748177 /* Keys */,
 				E7D241D61DE6D697003E507B /* QRCode */,
@@ -413,6 +471,8 @@
 				E74636841DCB300800A13318 /* Utils.h */,
 				E74636851DCB300800A13318 /* Utils.m */,
 				E7FD363C1DC4D07E00748177 /* main.m */,
+				E71AF24F1E017D250068595B /* WordsArray.h */,
+				E71AF2501E017D250068595B /* WordsArray.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -440,6 +500,7 @@
 		F94C279886F936AB7B4DA6F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E71AF24C1E0178C50068595B /* libCoreBitcoin.a */,
 				E7FD365B1DC7360400748177 /* Security.framework */,
 				0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */,
 			);
@@ -449,6 +510,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E71AF2411E0177910068595B /* qtum walletTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E71AF24B1E0177910068595B /* Build configuration list for PBXNativeTarget "qtum walletTests" */;
+			buildPhases = (
+				E71AF23E1E0177910068595B /* Sources */,
+				E71AF23F1E0177910068595B /* Frameworks */,
+				E71AF2401E0177910068595B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E71AF2481E0177910068595B /* PBXTargetDependency */,
+			);
+			name = "qtum walletTests";
+			productName = "qtum walletTests";
+			productReference = E71AF2421E0177910068595B /* qtum walletTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E7FD36371DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7FD364F1DC4D07E00748177 /* Build configuration list for PBXNativeTarget "qtum wallet" */;
@@ -478,6 +557,12 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Designsters;
 				TargetAttributes = {
+					E71AF2411E0177910068595B = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = Q7Q43CUMWT;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E7FD36371DC4D07E00748177;
+					};
 					E7FD36371DC4D07E00748177 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = Q7Q43CUMWT;
@@ -499,11 +584,19 @@
 			projectRoot = "";
 			targets = (
 				E7FD36371DC4D07E00748177 /* qtum wallet */,
+				E71AF2411E0177910068595B /* qtum walletTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E71AF2401E0177910068595B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7FD36361DC4D07E00748177 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -565,12 +658,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E71AF23E1E0177910068595B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7FD36341DC4D07E00748177 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
+				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
@@ -588,7 +690,9 @@
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
+				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
+				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				E7FD36561DC72BB000748177 /* KeysManager.m in Sources */,
@@ -600,6 +704,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E71AF2481E0177910068595B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7FD36371DC4D07E00748177 /* qtum wallet */;
+			targetProxy = E71AF2471E0177910068595B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E7FD36441DC4D07E00748177 /* Main.storyboard */ = {
@@ -623,6 +735,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E71AF2491E0177910068595B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				INFOPLIST_FILE = "qtum walletTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum-walletTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qtum wallet.app/qtum wallet";
+			};
+			name = Debug;
+		};
+		E71AF24A1E0177910068595B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				INFOPLIST_FILE = "qtum walletTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum-walletTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qtum wallet.app/qtum wallet";
+			};
+			name = Release;
+		};
 		E7FD364D1DC4D07E00748177 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -746,6 +884,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E71AF24B1E0177910068595B /* Build configuration list for PBXNativeTarget "qtum walletTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E71AF2491E0177910068595B /* Debug */,
+				E71AF24A1E0177910068595B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E7FD36331DC4D07E00748177 /* Build configuration list for PBXProject "qtum wallet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
