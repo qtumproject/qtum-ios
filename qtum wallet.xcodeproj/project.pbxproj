@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
 		E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71AF24C1E0178C50068595B /* libCoreBitcoin.a */; };
@@ -60,6 +61,8 @@
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		B3846DD41DFEFA6500D6872C /* UIAlertController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Extensions.h"; sourceTree = "<group>"; };
+		B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Extensions.m"; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
 		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewController.m; sourceTree = "<group>"; };
@@ -162,6 +165,15 @@
 				C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B3846DD31DFEFA0800D6872C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B3846DD41DFEFA6500D6872C /* UIAlertController+Extensions.h */,
+				B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
@@ -372,6 +384,7 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B3846DD31DFEFA0800D6872C /* Extensions */,
 				E7FD36601DC73B7900748177 /* Application */,
 				E7DD00EF1DC9E5BD00FD5335 /* Categories */,
 				E7FD36531DC72B4F00748177 /* Controllers */,
@@ -689,6 +702,7 @@
 				E7D241DD1DE709D6003E507B /* ImportKeyViewController.m in Sources */,
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
+				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,

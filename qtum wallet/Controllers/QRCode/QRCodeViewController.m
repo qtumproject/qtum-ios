@@ -59,16 +59,16 @@
                                                                             AVMetadataObjectTypeQRCode,
                                                                             AVMetadataObjectTypeAztecCode]
                                                               previewView:self.cameraView];
-    
+    __weak typeof(self) weakSelf = self;
     [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
         if (success)
         {
-            self.scanner.resultBlock = self.scanningCompletion;
-            [self.scanner startScanning];
+            weakSelf.scanner.resultBlock = weakSelf.scanningCompletion;
+            [weakSelf.scanner startScanning];
             
         } else
         {
-            [self showAlertWithTitle:@"Error" mesage:@"Camera premission not found" andActions:nil];
+            [weakSelf showCameraPermissionAlertWithTitle:@"Error" mesage:@"Camera premission not found" andActions:nil];
         }
     }];
 }
@@ -76,9 +76,11 @@
 - (IBAction)backButtonWasPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        if ([self.delegate respondsToSelector:@selector(showNextVC)]) {
-            [self.delegate showNextVC];
-        }
+#warning Dismiss commented
+        //TODO : fix logic
+//        if ([self.delegate respondsToSelector:@selector(showNextVC)]) {
+//            [self.delegate showNextVC];
+//        }
     }];
 }
 @end

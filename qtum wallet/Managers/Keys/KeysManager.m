@@ -39,6 +39,7 @@ NSString const *kKeychainKeyLabel = @"qtum_wallet_label";
 {
     self = [super init];
     if (self != nil) {
+        ///if you want to remove all keys - uncomment removeAllKeys
 //        [self removeAllKeys];
         [self load];
     }

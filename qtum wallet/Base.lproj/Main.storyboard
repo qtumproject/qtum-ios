@@ -70,8 +70,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have a wallet, yet." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-6x-bv7">
-                                <rect key="frame" x="64.5" y="292" width="191" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a wallet or restore a previous wallet key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-6x-bv7">
+                                <rect key="frame" x="20" y="274" width="280" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -82,6 +82,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="BNW-6x-bv7" firstAttribute="leading" secondItem="gue-Vz-KFt" secondAttribute="leading" constant="20" id="44o-mu-0Kq"/>
                             <constraint firstItem="xey-JP-Mw0" firstAttribute="centerX" secondItem="gue-Vz-KFt" secondAttribute="centerX" id="DYm-6x-ROo"/>
                             <constraint firstItem="nht-ae-Xfg" firstAttribute="top" secondItem="rbj-Fr-3Qw" secondAttribute="bottom" constant="21" id="Jtd-e4-qg9"/>
                             <constraint firstItem="PXv-jO-8sd" firstAttribute="top" secondItem="xey-JP-Mw0" secondAttribute="bottom" constant="54" id="MZX-8Q-3Bi"/>
@@ -92,6 +93,7 @@
                             <constraint firstItem="4fJ-qa-fmh" firstAttribute="centerX" secondItem="gue-Vz-KFt" secondAttribute="centerX" id="btS-5U-RPS"/>
                             <constraint firstItem="xey-JP-Mw0" firstAttribute="top" secondItem="BNW-6x-bv7" secondAttribute="bottom" constant="24" id="hms-1Z-lTK"/>
                             <constraint firstItem="nht-ae-Xfg" firstAttribute="centerX" secondItem="gue-Vz-KFt" secondAttribute="centerX" id="oai-sg-wQS"/>
+                            <constraint firstAttribute="trailing" secondItem="BNW-6x-bv7" secondAttribute="trailing" constant="20" id="oe7-Te-gIS"/>
                             <constraint firstItem="rbj-Fr-3Qw" firstAttribute="top" secondItem="gue-Vz-KFt" secondAttribute="top" constant="66" id="tLJ-MG-8El"/>
                             <constraint firstItem="BNW-6x-bv7" firstAttribute="centerX" secondItem="gue-Vz-KFt" secondAttribute="centerX" id="zP6-jR-seG"/>
                         </constraints>
@@ -151,8 +153,8 @@
                                             <constraint firstAttribute="height" constant="44" id="ziR-uf-Tad"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6e-Ha-1Og">
-                                        <rect key="frame" x="148.5" y="136" width="24" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6e-Ha-1Og">
+                                        <rect key="frame" x="142.5" y="136" width="36" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -657,8 +659,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BC3-MB-mmf">
-                                        <rect key="frame" x="287" y="76" width="23" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BC3-MB-mmf">
+                                        <rect key="frame" x="276" y="76" width="34" height="14"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                         <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -713,7 +715,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C01-lL-w9T">
-                                        <rect key="frame" x="179" y="74" width="104" height="17"/>
+                                        <rect key="frame" x="168" y="74" width="104" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1101,8 +1103,8 @@
                                                         <outlet property="delegate" destination="j5J-u3-Pg3" id="ykS-ei-haD"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16m-Hl-l49">
-                                                    <rect key="frame" x="271" y="101" width="29" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16m-Hl-l49">
+                                                    <rect key="frame" x="264" y="101" width="43" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.5450980392" green="0.74509803919999995" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1185,8 +1187,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tur-60-SFv">
-                                        <rect key="frame" x="287.5" y="76.5" width="22.5" height="13.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tur-60-SFv">
+                                        <rect key="frame" x="276" y="76.5" width="34" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                         <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1239,7 +1241,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJy-vQ-1QH">
-                                        <rect key="frame" x="180" y="74" width="103.5" height="17"/>
+                                        <rect key="frame" x="168.5" y="74" width="103.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>

@@ -26,7 +26,7 @@
 
 - (void)createAmountString
 {
-    self.amountString  = [NSString stringWithFormat:@"%@ BTC", [self.amount stringValue]];
+    self.amountString  = [NSString stringWithFormat:@"%@ QTUM", [self.amount stringValue]];
 }
 
 - (void)createDateString
