@@ -19,22 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSString *rootVCkey;
-    if ([KeysManager sharedInstance].keys.count != 0) {
-        rootVCkey = @"MainViewController";
-    }else{
-        rootVCkey = @"StartViewController";
-    }
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:rootVCkey];
-    self.window.rootViewController = vc;
-    
-    [[SVProgressHUD appearance] setDefaultStyle:SVProgressHUDStyleCustom];
-    [[SVProgressHUD appearance] setForegroundColor:[UIColor colorWithRed:104/255.0f green:195/255.0f blue:207/255.0f alpha:1.0f]];
-    [[SVProgressHUD appearance] setBackgroundColor:[UIColor whiteColor]];
-    [[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-    [[SVProgressHUD appearance] setMinimumDismissTimeInterval:1];
-    
+    [[ApplicationCoordinator sharedInstance] start];
     
     // TEST 1 create mnemonic
     NSString *password = @"1234";
@@ -89,18 +74,6 @@
     }
     
     return randomWords;
-}
-
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-}
-
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[ApplicationCoordinator sharedInstance] start];
-    return YES;
 }
 
 
