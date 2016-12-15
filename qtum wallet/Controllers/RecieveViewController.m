@@ -111,7 +111,7 @@
 
 - (IBAction)backButtonWasPressed:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)shareButtonWasPressed:(id)sender

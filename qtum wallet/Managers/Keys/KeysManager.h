@@ -16,12 +16,15 @@
 @property (nonatomic, strong, readonly) NSArray *keysForTransaction;
 @property (nonatomic, strong, readonly) NSString *label;
 @property (nonatomic, copy) void (^keyRegistered)(BOOL registered);
+@property (nonatomic, strong, readonly) NSString* PIN;
+
 
 - (void)createNewKey;
 - (void)importKey:(NSString *)privateAddress;
 - (BOOL)save;
 - (void)load;
 - (void)removeAllKeys;
+- (void)storePin:(NSString*) pin;
 
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
 + (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));

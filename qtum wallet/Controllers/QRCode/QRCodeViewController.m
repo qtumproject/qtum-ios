@@ -75,12 +75,13 @@
 
 - (IBAction)backButtonWasPressed:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:^{
 #warning Dismiss commented
         //TODO : fix logic
 //        if ([self.delegate respondsToSelector:@selector(showNextVC)]) {
 //            [self.delegate showNextVC];
 //        }
-    }];
+//    }];
 }
 @end

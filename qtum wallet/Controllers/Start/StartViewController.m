@@ -9,6 +9,7 @@
 #import "StartViewController.h"
 #import "KeysManager.h"
 #import "ImportKeyViewController.h"
+#import "ApplicationCoordinator.h"
 
 @interface StartViewController () <ImportKeyViewControllerDelegate>
 
@@ -36,27 +37,29 @@
 
 - (IBAction)createNewButtonWasPressed:(id)sender
 {
-    [SVProgressHUD show];
-    
     __weak typeof(self) weakSelf = self;
-    [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
-        if (registered) {
-            [SVProgressHUD showSuccessWithStatus:@"Done"];
-            [weakSelf createAndShowMainVC];
-        }else{
-            [SVProgressHUD showErrorWithStatus:@"Some Error"];
-        }
-        [KeysManager sharedInstance].keyRegistered = nil;
-    };
-    [[KeysManager sharedInstance] createNewKey];
+
+    [[ApplicationCoordinator sharedInstance] startCreatePinFlowWithCompletesion:^{
+        [SVProgressHUD show];
+        
+        [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
+            if (registered) {
+                [SVProgressHUD showSuccessWithStatus:@"Done"];
+                [weakSelf createAndShowMainVC];
+            }else{
+                [SVProgressHUD showErrorWithStatus:@"Some Error"];
+            }
+            [KeysManager sharedInstance].keyRegistered = nil;
+        };
+        [[KeysManager sharedInstance] createNewKey];
+        [[ApplicationCoordinator sharedInstance] startMainFlow];
+    }];
+
 }
 
 - (void)createAndShowMainVC
 {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    __weak typeof(self) weakSelf = self;
-    [self presentViewController:vc animated:YES completion:nil];
+
 }
 
 #pragma mark - ImportKeyViewControllerDelegate
