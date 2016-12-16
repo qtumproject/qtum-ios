@@ -22,6 +22,7 @@
 		B32142871E012A5800489BB1 /* CreatePinRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142861E012A5800489BB1 /* CreatePinRootController.m */; };
 		B321428A1E01477A00489BB1 /* AskPinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142891E01477A00489BB1 /* AskPinController.m */; };
 		B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B321428C1E0153F000489BB1 /* CustomTextField.m */; };
+		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
@@ -102,6 +103,8 @@
 		B32142891E01477A00489BB1 /* AskPinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPinController.m; sourceTree = "<group>"; };
 		B321428B1E0153F000489BB1 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		B321428C1E0153F000489BB1 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B3846DD41DFEFA6500D6872C /* UIAlertController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Extensions.h"; sourceTree = "<group>"; };
 		B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Extensions.m"; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +262,15 @@
 			);
 			name = "Text Field";
 			path = ..;
+			sourceTree = "<group>";
+		};
+		B36624BB1E03C55300CBC5B5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */,
+				B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		B3846DD31DFEFA0800D6872C /* Extensions */ = {
@@ -516,6 +528,7 @@
 		E7FD36531DC72B4F00748177 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B36624BB1E03C55300CBC5B5 /* Settings */,
 				B3210D1D1E001E8900365FB6 /* PIN */,
 				E70550CA1DF96E2000B48DC1 /* Recieve */,
 				E7D241DA1DE709B5003E507B /* ImportKey */,
@@ -806,6 +819,7 @@
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				1101CF3E1E008DA20000E862 /* MenuViewController.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
+				B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */,
 				E7396AE51DDDF5F20002CD47 /* StartViewController.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,

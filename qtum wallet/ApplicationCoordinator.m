@@ -14,6 +14,7 @@
 #import "CreatePinRootController.h"
 #import "PinViewController.h"
 #import "AskPinController.h"
+#import "SettingsViewController.h"
 
 @interface ApplicationCoordinator ()
 
@@ -95,6 +96,25 @@
 
 -(void)showMenu{
     [self.root showLeftViewAnimated:YES completionHandler:nil];
+}
+-(void)hideMenuWithCompletesion:(void(^)()) completision{
+    [self.root hideLeftViewAnimated:YES completionHandler:completision];
+}
+
+#pragma mark - Presenting Controllers
+
+-(void)showSettings{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    [self setViewController:viewController animated:NO];
+    [self hideMenuWithCompletesion:nil];
+}
+
+-(void)showWallet{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    [self setViewController:viewController animated:NO];
+    [self hideMenuWithCompletesion:nil];
 }
 
 #pragma mark - Flows

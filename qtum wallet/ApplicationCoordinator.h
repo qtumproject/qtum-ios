@@ -23,5 +23,7 @@
 -(void)showMenu;
 -(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;
 -(void)setViewController:(UIViewController*) controller animated:(BOOL)animated;
+-(void)showSettings;
+-(void)showWallet;
 
 @end

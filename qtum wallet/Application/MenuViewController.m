@@ -7,6 +7,7 @@
 //
 
 #import "MenuViewController.h"
+#import "ApplicationCoordinator.h"
 
 @interface MenuViewController ()
 
@@ -76,6 +77,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row) {
+        case 0:
+            break;
+        case 1:
+            [[ApplicationCoordinator sharedInstance] showWallet];
+            break;
+        case 2:
+            [[ApplicationCoordinator sharedInstance] showSettings];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 
