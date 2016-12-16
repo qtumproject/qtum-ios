@@ -39,21 +39,31 @@
         completision(NO);
     } else {
         self.firstPin = pin;
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
-        viewController.delegate = self;
-        viewController.type = ConfirmType;
-        [self setViewControllers:@[viewController] animated:YES];
+        [self showNewPinControllerWithType:ConfirmType];
     }
 }
 
+-(void)setAnimationState:(BOOL)isAnimating{
+    self.animating = isAnimating;
+}
+
+#pragma mark - Private Methods
+
+
 -(void)confilmPinFailed{
     self.firstPin = nil;
+    [self showNewPinControllerWithType:EnterType];
+}
+
+-(void)showNewPinControllerWithType:(PinType) type{
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
     viewController.delegate = self;
-    viewController.type = CreateType;
-    [self setViewControllers:@[viewController] animated:YES];
+    viewController.type = type;
+    if (!self.animating) {
+        self.animating = YES;
+        [self setViewControllers:@[viewController] animated:NO];
+    }
 }
 
 @end

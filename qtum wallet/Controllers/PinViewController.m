@@ -28,9 +28,18 @@
     [self configEnterButton];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if ([self.delegate respondsToSelector:@selector(setAnimationState:)]) {
+        [self.delegate setAnimationState:NO];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+#pragma mark - Configuration
 
 -(void)configEnterButton{
     NSString* title;
@@ -43,6 +52,12 @@
             break;
         case ConfirmType:
             title = @"Repeat PIN";
+            break;
+        case OldType:
+            title = @"Old PIN";
+            break;
+        case NewType:
+            title = @"New PIN";
             break;
             
         default:

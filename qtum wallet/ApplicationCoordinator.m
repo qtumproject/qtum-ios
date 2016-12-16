@@ -15,6 +15,7 @@
 #import "PinViewController.h"
 #import "AskPinController.h"
 #import "SettingsViewController.h"
+#import "ChangePinController.h"
 
 @interface ApplicationCoordinator ()
 
@@ -117,7 +118,27 @@
     [self hideMenuWithCompletesion:nil];
 }
 
+-(void)backToSettings{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    self.appDelegate.window.rootViewController = [self congigSideMenuWithFirstController:vc];
+    [self shoudShowMenu:YES];
+}
+
 #pragma mark - Flows
+
+
+-(void)startChangePinFlow{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
+    ChangePinController* changePinRoot = [[ChangePinController alloc]initWithRootViewController:viewController];
+    changePinRoot.changePinCompletesion =  ^(){
+        //[self backToSettings];
+    };
+    viewController.delegate = changePinRoot;
+    viewController.type = OldType;
+    [self presentAsModal:changePinRoot animated:YES];
+}
 
 -(void)startWalletFlow{
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

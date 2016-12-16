@@ -43,7 +43,7 @@ NSString const *kUserPIN = @"PIN";
     self = [super init];
     if (self != nil) {
         ///if you want to remove all keys - uncomment removeAllKeys
-        [self removeAllKeys];
+        //[self removeAllKeys];
         [self load];
     }
     return self;
@@ -112,7 +112,11 @@ NSString const *kUserPIN = @"PIN";
 }
 
 -(void)storePin:(NSString*) pin {
+    if ([[FXKeychain defaultKeychain] objectForKey:kUserPIN]) {
+        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPIN];
+    }
     [[FXKeychain defaultKeychain] setObject:pin forKey:kUserPIN];
+    self.PIN = pin;
 }
 
 - (void)load

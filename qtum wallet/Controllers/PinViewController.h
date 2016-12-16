@@ -12,7 +12,9 @@
 typedef NS_ENUM(NSInteger,PinType){
     EnterType,
     CreateType,
-    ConfirmType
+    ConfirmType,
+    NewType,
+    OldType
 };
 
 @protocol PinCoordinator;
@@ -30,5 +32,6 @@ typedef NS_ENUM(NSInteger,PinType){
 -(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completisiom;
 @optional
 -(void)confilmPinFailed;
+-(void)setAnimationState:(BOOL)isAnimating;
 
 @end

@@ -81,7 +81,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4y-jJ-hKS">
-                                                    <rect key="frame" x="50" y="14" width="53.5" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="54" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -111,7 +111,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z82-ev-3xe">
-                                                    <rect key="frame" x="50" y="14" width="46.5" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="47" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1887,15 +1887,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Change Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-Cr-FCn">
-                                                    <rect key="frame" x="8" y="0.0" width="270" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                                    <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQG-9n-m8r">
-                                                    <rect key="frame" x="0.0" y="45" width="320" height="0.5"/>
+                                                    <rect key="frame" x="0.0" y="45" width="320" height="1"/>
                                                     <color key="backgroundColor" red="0.94901960784313721" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="PLx-jW-Nkl"/>
@@ -1908,11 +1901,19 @@
                                                         <constraint firstAttribute="width" constant="7" id="aVb-5y-Y4m"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-Cr-FCn">
+                                                    <rect key="frame" x="17" y="15.5" width="60.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
+                                                    <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="PQG-9n-m8r" secondAttribute="bottom" id="3hE-Ef-Bke"/>
                                                 <constraint firstItem="PQG-9n-m8r" firstAttribute="leading" secondItem="aV6-1D-Qof" secondAttribute="leading" id="5bg-eM-3K9"/>
+                                                <constraint firstItem="anQ-Cr-FCn" firstAttribute="centerY" secondItem="aV6-1D-Qof" secondAttribute="centerY" id="HVX-US-Jfg"/>
                                                 <constraint firstAttribute="trailing" secondItem="kja-Hh-1ou" secondAttribute="trailing" constant="11" id="KSL-Q1-iSE"/>
+                                                <constraint firstItem="anQ-Cr-FCn" firstAttribute="leading" secondItem="aV6-1D-Qof" secondAttribute="leading" constant="17" id="PYG-HM-zMf"/>
                                                 <constraint firstAttribute="trailing" secondItem="PQG-9n-m8r" secondAttribute="trailing" id="Vel-1X-ybN"/>
                                                 <constraint firstItem="kja-Hh-1ou" firstAttribute="centerY" secondItem="aV6-1D-Qof" secondAttribute="centerY" id="b2u-a5-v6J"/>
                                             </constraints>
@@ -1925,34 +1926,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Wallet Backup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9H-c1-IsA">
-                                                    <rect key="frame" x="8" y="0.0" width="270" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                                    <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swb-IC-va2">
-                                                    <rect key="frame" x="0.0" y="45" width="320" height="0.5"/>
+                                                    <rect key="frame" x="0.0" y="45" width="320" height="1"/>
                                                     <color key="backgroundColor" red="0.94901960784313721" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="LCu-En-wh5"/>
                                                     </constraints>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosure" translatesAutoresizingMaskIntoConstraints="NO" id="91E-t8-D9Z">
-                                                    <rect key="frame" x="302" y="17.5" width="7" height="11"/>
+                                                    <rect key="frame" x="302" y="18" width="7" height="11"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="7" id="O77-jO-zkc"/>
                                                         <constraint firstAttribute="height" constant="11" id="rZg-Fi-fpM"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wallet Backup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9H-c1-IsA">
+                                                    <rect key="frame" x="17" y="15.5" width="74" height="14.5"/>
+                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
+                                                    <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Swb-IC-va2" secondAttribute="trailing" id="ENe-Hz-Ia5"/>
                                                 <constraint firstItem="Swb-IC-va2" firstAttribute="leading" secondItem="hhh-JQ-kC5" secondAttribute="leading" id="S6A-99-v9v"/>
                                                 <constraint firstAttribute="trailing" secondItem="91E-t8-D9Z" secondAttribute="trailing" constant="11" id="ZGY-DH-O8e"/>
+                                                <constraint firstItem="n9H-c1-IsA" firstAttribute="leading" secondItem="hhh-JQ-kC5" secondAttribute="leading" constant="17" id="cGR-1z-1dp"/>
                                                 <constraint firstItem="91E-t8-D9Z" firstAttribute="centerY" secondItem="hhh-JQ-kC5" secondAttribute="centerY" id="cRt-kl-Viw"/>
                                                 <constraint firstAttribute="bottom" secondItem="Swb-IC-va2" secondAttribute="bottom" id="go7-lY-nu2"/>
+                                                <constraint firstItem="n9H-c1-IsA" firstAttribute="centerY" secondItem="hhh-JQ-kC5" secondAttribute="centerY" id="lEw-NC-aUk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
