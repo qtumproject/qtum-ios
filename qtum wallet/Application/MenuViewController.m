@@ -28,7 +28,7 @@
 #pragma mark UITableViewDataSource 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -45,6 +45,10 @@
             break;
         case 2:
             cell = [tableView dequeueReusableCellWithIdentifier:@"settingsCell"];
+            [cell setSelectedBackgroundView:bgColorView];
+            break;
+        case 3:
+            cell = [tableView dequeueReusableCellWithIdentifier:@"exportCell"];
             [cell setSelectedBackgroundView:bgColorView];
             break;
             
@@ -68,6 +72,9 @@
         case 2:
             return 42;
             break;
+        case 3:
+            return 42;
+            break;
             
         default:
             break;
@@ -85,6 +92,9 @@
             break;
         case 2:
             [[ApplicationCoordinator sharedInstance] showSettings];
+            break;
+        case 3:
+            [[ApplicationCoordinator sharedInstance] showExportBrainKey];
             break;
             
         default:

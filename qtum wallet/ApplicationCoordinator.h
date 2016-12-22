@@ -23,11 +23,13 @@
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)startChangePinFlow;
 
--(void)shoudShowMenu:(BOOL) flag;
 -(void)showMenu;
--(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;
--(void)setViewController:(UIViewController*) controller animated:(BOOL)animated;
 -(void)showSettings;
 -(void)showWallet;
+-(void)showExportBrainKey;
+
+-(void)shoudShowMenu:(BOOL) flag;
+-(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;
+-(void)setViewController:(UIViewController*) controller animated:(BOOL)animated;
 
 @end

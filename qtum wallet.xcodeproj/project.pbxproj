@@ -23,6 +23,7 @@
 		B321428A1E01477A00489BB1 /* AskPinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142891E01477A00489BB1 /* AskPinController.m */; };
 		B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B321428C1E0153F000489BB1 /* CustomTextField.m */; };
 		B321E87A1E0BC8D200DC7DE5 /* ImportKeyCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */; };
+		B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */; };
 		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B36624C11E03E35D00CBC5B5 /* ChangePinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624C01E03E35D00CBC5B5 /* ChangePinController.m */; };
 		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
@@ -107,6 +108,8 @@
 		B321428C1E0153F000489BB1 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		B321E8781E0BC8D200DC7DE5 /* ImportKeyCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportKeyCoordinator.h; sourceTree = "<group>"; };
 		B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportKeyCoordinator.m; sourceTree = "<group>"; };
+		B321E87C1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportBrainKeyViewController.h; sourceTree = "<group>"; };
+		B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportBrainKeyViewController.m; sourceTree = "<group>"; };
 		B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B36624BF1E03E35D00CBC5B5 /* ChangePinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePinController.h; sourceTree = "<group>"; };
@@ -270,6 +273,15 @@
 			);
 			name = "Text Field";
 			path = ..;
+			sourceTree = "<group>";
+		};
+		B321E87B1E0BE35200DC7DE5 /* ExportKey */ = {
+			isa = PBXGroup;
+			children = (
+				B321E87C1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.h */,
+				B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */,
+			);
+			name = ExportKey;
 			sourceTree = "<group>";
 		};
 		B36624BB1E03C55300CBC5B5 /* Settings */ = {
@@ -538,6 +550,7 @@
 		E7FD36531DC72B4F00748177 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B321E87B1E0BE35200DC7DE5 /* ExportKey */,
 				B36624BB1E03C55300CBC5B5 /* Settings */,
 				B3210D1D1E001E8900365FB6 /* PIN */,
 				E70550CA1DF96E2000B48DC1 /* Recieve */,
@@ -848,6 +861,7 @@
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
+				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				1101CF3B1E008C9E0000E862 /* ContentController.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
