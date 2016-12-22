@@ -24,6 +24,8 @@
 		B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B321428C1E0153F000489BB1 /* CustomTextField.m */; };
 		B321E87A1E0BC8D200DC7DE5 /* ImportKeyCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */; };
 		B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */; };
+		B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8801E0C2C0F00DC7DE5 /* ImputTextView.m */; };
+		B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */; };
 		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B36624C11E03E35D00CBC5B5 /* ChangePinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624C01E03E35D00CBC5B5 /* ChangePinController.m */; };
 		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
@@ -109,6 +111,10 @@
 		B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportKeyCoordinator.m; sourceTree = "<group>"; };
 		B321E87C1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportBrainKeyViewController.h; sourceTree = "<group>"; };
 		B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportBrainKeyViewController.m; sourceTree = "<group>"; };
+		B321E87F1E0C2C0F00DC7DE5 /* ImputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImputTextView.h; sourceTree = "<group>"; };
+		B321E8801E0C2C0F00DC7DE5 /* ImputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImputTextView.m; sourceTree = "<group>"; };
+		B321E8821E0C3B1300DC7DE5 /* BottomShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomShadowView.h; sourceTree = "<group>"; };
+		B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomShadowView.m; sourceTree = "<group>"; };
 		B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B36624BF1E03E35D00CBC5B5 /* ChangePinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePinController.h; sourceTree = "<group>"; };
@@ -588,6 +594,10 @@
 				E7396ADE1DDDEA0E0002CD47 /* Gradient */,
 				B321428E1E0154F700489BB1 /* Text Field */,
 				E7396B001DDF3FFA0002CD47 /* TextFielfWithLine */,
+				B321E87F1E0C2C0F00DC7DE5 /* ImputTextView.h */,
+				B321E8801E0C2C0F00DC7DE5 /* ImputTextView.m */,
+				B321E8821E0C3B1300DC7DE5 /* BottomShadowView.h */,
+				B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -841,6 +851,7 @@
 				E7396AE51DDDF5F20002CD47 /* StartViewController.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
+				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
@@ -850,6 +861,7 @@
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
 				B36624C11E03E35D00CBC5B5 /* ChangePinController.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
+				B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */,
 				1101CF411E008DB40000E862 /* RootViewController.m in Sources */,
 				E7D241DD1DE709D6003E507B /* ImportKeyViewController.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,

@@ -11,7 +11,7 @@
 #import "QRCodeViewController.h"
 
 
-NSString* const textViewPlaceholder = @"Import Brand Key";
+NSString* const textViewPlaceholder = @"Your Brain-CODE";
 
 @interface ImportKeyViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate>
 
@@ -28,7 +28,7 @@ NSString* const textViewPlaceholder = @"Import Brand Key";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.brandKeyTextView.text = textViewPlaceholder;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,12 +67,21 @@ NSString* const textViewPlaceholder = @"Import Brand Key";
 {
     if (textView.text.length == 0) {
         textView.text = textViewPlaceholder;
-        textView.textColor = [UIColor lightGrayColor];
+        textView.textColor =  [UIColor colorWithRed:78/255. green:93/255. blue:111/255. alpha:0.53];
         self.brainKeyString = @"";
     } else {
         self.brainKeyString = textView.text;
     }
 }
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+    }
+    return YES;
+}
+
+
 #pragma mark - QRCodeViewControllerDelegate
 
 - (void)qrCodeScanned:(NSDictionary *)dictionary
@@ -109,6 +118,20 @@ NSString* const textViewPlaceholder = @"Import Brand Key";
 - (IBAction)backButtonWasPressed:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)actionCreateWallet:(id)sender {
+    [[ApplicationCoordinator sharedInstance] startCreatePinFlowWithCompletesion:^{
+        [SVProgressHUD show];
+        
+        [[WalletManager sharedInstance] createNewWalletWithName:@"" pin:@"" withSuccessHandler:^(Wallet *newWallet) {
+            [SVProgressHUD showSuccessWithStatus:@"Done"];
+            
+            [[ApplicationCoordinator sharedInstance] startMainFlow];
+        } andFailureHandler:^{
+            [SVProgressHUD showErrorWithStatus:@"Some Error"];
+        }];
+    }];
 }
 
 #pragma mark -

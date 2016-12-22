@@ -12,6 +12,8 @@
 
 @interface ExportBrainKeyViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *brainKeyView;
+@property (weak, nonatomic) IBOutlet NSString *brainKey;
+
 
 @end
 
@@ -20,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configurationBrainKeyLabel];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,7 +34,7 @@
 -(NSString*)stringForLabelWithArrayWords:(NSArray*) array {
     NSString* resultSting;
     for (id item in array) {
-        resultSting = resultSting ? [NSString stringWithFormat:@"%@\n%@",resultSting,item] : [NSString stringWithFormat:@"%@",item];
+        resultSting = resultSting ? [NSString stringWithFormat:@"%@ %@",resultSting,item] : [NSString stringWithFormat:@"%@",item];
     }
     return resultSting;
 }
@@ -39,13 +42,19 @@
 #pragma mark - Configuration 
 
 -(void)configurationBrainKeyLabel{
-    self.brainKeyView.text = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] getCurrentWallet].seedWords];
+    self.brainKeyView.text =
+    self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] getCurrentWallet].seedWords];
 }
 
 #pragma mark - Actions
 
 - (IBAction)showMenu:(id)sender {
     [[ApplicationCoordinator sharedInstance] showMenu];
+}
+
+- (IBAction)actionCopy:(id)sender {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.brainKey;
 }
 
 

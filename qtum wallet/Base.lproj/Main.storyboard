@@ -1377,14 +1377,13 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUD-tA-sQA">
-                                <rect key="frame" x="45" y="497" width="230" height="44"/>
+                                <rect key="frame" x="36" y="432" width="248" height="44"/>
                                 <color key="backgroundColor" red="0.20985329150000001" green="0.72564256189999998" blue="0.7855710387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="Qar-DI-yKx"/>
                                     <constraint firstAttribute="height" constant="44" id="Ytd-Jr-mOL"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Import">
+                                <state key="normal" title="Import Wallet">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" image="payment2"/>
@@ -1397,29 +1396,73 @@
                                     <action selector="importButtonWasPressed:" destination="Ko9-J8-ePG" eventType="touchUpInside" id="aXs-NN-2Tj"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Import Brand Key" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kUA-hC-Ib6">
-                                <rect key="frame" x="20" y="96" width="280" height="172"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kUA-hC-Ib6" customClass="ImputTextView">
+                                <rect key="frame" x="10" y="140" width="300" height="218"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.53000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="Ko9-J8-ePG" id="y62-Td-Dcq"/>
                                 </connections>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNa-Pe-klF">
+                                <rect key="frame" x="16" y="84" width="288" height="36"/>
+                                <string key="text">Enter your Brain-CODE to Import Wallet</string>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ou9-BP-jNp">
+                                <rect key="frame" x="36" y="496" width="248" height="44"/>
+                                <color key="backgroundColor" red="0.93682473899999996" green="0.94905275109999998" blue="0.95312517880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Dv9-Bo-nuL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Create Wallet">
+                                    <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionCreateWallet:" destination="Ko9-J8-ePG" eventType="touchUpInside" id="QIa-qD-2jh"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5G-xF-G9O" customClass="BottomShadowView">
+                                <rect key="frame" x="10" y="130" width="300" height="10"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="6GD-zp-cD6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="1w5-qY-0W0" firstAttribute="top" secondItem="nUD-tA-sQA" secondAttribute="bottom" constant="27" id="0zh-SX-7A8"/>
-                            <constraint firstItem="1w5-qY-0W0" firstAttribute="top" secondItem="kUA-hC-Ib6" secondAttribute="bottom" constant="300" id="4j4-SK-EcD"/>
+                            <constraint firstItem="ou9-BP-jNp" firstAttribute="top" secondItem="nUD-tA-sQA" secondAttribute="bottom" constant="20" id="EXq-3h-YxW"/>
+                            <constraint firstItem="nUD-tA-sQA" firstAttribute="top" secondItem="kUA-hC-Ib6" secondAttribute="bottom" constant="74" id="LAH-rD-pVt"/>
+                            <constraint firstItem="UNa-Pe-klF" firstAttribute="top" secondItem="ccy-id-IKV" secondAttribute="bottom" constant="20" id="MJD-zH-6sN"/>
                             <constraint firstItem="5t4-d9-huF" firstAttribute="top" secondItem="PFv-pp-o7U" secondAttribute="top" id="Nn4-Hf-GPm"/>
-                            <constraint firstItem="kUA-hC-Ib6" firstAttribute="top" secondItem="ccy-id-IKV" secondAttribute="bottom" constant="32" id="O0B-n4-MLq"/>
+                            <constraint firstItem="UNa-Pe-klF" firstAttribute="leading" secondItem="PFv-pp-o7U" secondAttribute="leadingMargin" id="Sbx-kE-JSl"/>
+                            <constraint firstItem="U5G-xF-G9O" firstAttribute="width" secondItem="kUA-hC-Ib6" secondAttribute="width" id="Ti6-xj-aJn"/>
+                            <constraint firstItem="U5G-xF-G9O" firstAttribute="centerX" secondItem="kUA-hC-Ib6" secondAttribute="centerX" id="Wob-Mi-jhC"/>
                             <constraint firstItem="nUD-tA-sQA" firstAttribute="centerX" secondItem="PFv-pp-o7U" secondAttribute="centerX" id="XDL-ix-IBu"/>
-                            <constraint firstAttribute="trailing" secondItem="kUA-hC-Ib6" secondAttribute="trailing" constant="20" id="ij4-bg-fbt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nUD-tA-sQA" secondAttribute="trailing" constant="20" id="Yuq-MJ-gfC"/>
+                            <constraint firstItem="1w5-qY-0W0" firstAttribute="top" secondItem="ou9-BP-jNp" secondAttribute="bottom" constant="28" id="bdV-QK-IgY"/>
+                            <constraint firstItem="nUD-tA-sQA" firstAttribute="leading" secondItem="PFv-pp-o7U" secondAttribute="leadingMargin" constant="20" id="e18-R8-G96"/>
+                            <constraint firstItem="kUA-hC-Ib6" firstAttribute="top" secondItem="UNa-Pe-klF" secondAttribute="bottom" constant="20" id="eAB-0u-wb4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ou9-BP-jNp" secondAttribute="trailing" constant="20" id="fSO-S9-x7U"/>
+                            <constraint firstAttribute="trailing" secondItem="kUA-hC-Ib6" secondAttribute="trailing" constant="10" id="ij4-bg-fbt"/>
                             <constraint firstItem="kUA-hC-Ib6" firstAttribute="centerX" secondItem="PFv-pp-o7U" secondAttribute="centerX" id="k7D-wV-v8o"/>
                             <constraint firstItem="5t4-d9-huF" firstAttribute="leading" secondItem="PFv-pp-o7U" secondAttribute="leading" id="lk2-HW-UwO"/>
                             <constraint firstAttribute="trailing" secondItem="5t4-d9-huF" secondAttribute="trailing" id="mbj-DK-wvW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UNa-Pe-klF" secondAttribute="trailing" id="t7J-uL-12y"/>
+                            <constraint firstItem="ou9-BP-jNp" firstAttribute="leading" secondItem="PFv-pp-o7U" secondAttribute="leadingMargin" constant="20" id="wWg-PW-6P5"/>
+                            <constraint firstItem="kUA-hC-Ib6" firstAttribute="top" secondItem="U5G-xF-G9O" secondAttribute="bottom" id="zyV-tM-3G8"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="N3Q-9Q-rHf" appends="YES" id="M8r-sL-rTL"/>
@@ -1954,7 +1997,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-Cr-FCn">
-                                                    <rect key="frame" x="17" y="16.5" width="60.5" height="14"/>
+                                                    <rect key="frame" x="17" y="16" width="61" height="15"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1993,7 +2036,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wallet Backup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9H-c1-IsA">
-                                                    <rect key="frame" x="17" y="16.5" width="74" height="14"/>
+                                                    <rect key="frame" x="17" y="16" width="74" height="15"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2091,8 +2134,8 @@
                                                     <action selector="showMenu:" destination="Ma2-K0-Bfa" eventType="touchUpInside" id="A02-hP-OsQ"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Brain Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo1-om-dGQ">
-                                                <rect key="frame" x="95" y="12" width="130" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Brain CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo1-om-dGQ">
+                                                <rect key="frame" x="86.5" y="12" width="147.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2118,20 +2161,39 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n2j-l8-CXF">
-                                <rect key="frame" x="36" y="84" width="248" height="464"/>
+                                <rect key="frame" x="36" y="84" width="248" height="392"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45S-0v-Psv">
+                                <rect key="frame" x="36" y="496" width="248" height="44"/>
+                                <color key="backgroundColor" red="0.93682473899999996" green="0.94905275109999998" blue="0.95312517880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vXg-bY-O9t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Copy Wallet Address">
+                                    <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gWE-Gd-y9h" firstAttribute="leading" secondItem="wRb-7Q-TsF" secondAttribute="leading" id="8FD-My-5Ux"/>
-                            <constraint firstItem="dfg-En-tNh" firstAttribute="top" secondItem="n2j-l8-CXF" secondAttribute="bottom" constant="20" id="LNf-Le-xyN"/>
+                            <constraint firstItem="45S-0v-Psv" firstAttribute="top" secondItem="n2j-l8-CXF" secondAttribute="bottom" constant="20" id="AMd-tS-jsf"/>
+                            <constraint firstItem="dfg-En-tNh" firstAttribute="top" secondItem="45S-0v-Psv" secondAttribute="bottom" constant="28" id="KlA-Ch-Y7X"/>
+                            <constraint firstItem="45S-0v-Psv" firstAttribute="leading" secondItem="wRb-7Q-TsF" secondAttribute="leadingMargin" constant="20" id="LJV-dt-dwJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n2j-l8-CXF" secondAttribute="trailing" constant="20" id="XQP-Op-96V"/>
                             <constraint firstItem="gWE-Gd-y9h" firstAttribute="top" secondItem="wRb-7Q-TsF" secondAttribute="top" id="aDz-4o-gR2"/>
                             <constraint firstItem="n2j-l8-CXF" firstAttribute="leading" secondItem="wRb-7Q-TsF" secondAttribute="leadingMargin" constant="20" id="f3t-Xc-1s2"/>
                             <constraint firstItem="n2j-l8-CXF" firstAttribute="top" secondItem="Ai9-HJ-0Kt" secondAttribute="bottom" constant="20" id="gP6-ls-DfA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="45S-0v-Psv" secondAttribute="trailing" constant="20" id="mV4-k9-jTR"/>
                             <constraint firstAttribute="trailing" secondItem="gWE-Gd-y9h" secondAttribute="trailing" id="tQ4-5p-5q3"/>
                         </constraints>
                     </view>
