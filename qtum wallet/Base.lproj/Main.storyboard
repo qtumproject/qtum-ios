@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Mg-gm-MeU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Mg-gm-MeU">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -81,7 +81,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4y-jJ-hKS">
-                                                    <rect key="frame" x="50" y="14" width="53.5" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="54" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -111,7 +111,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z82-ev-3xe">
-                                                    <rect key="frame" x="50" y="14" width="46.5" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="47" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -2117,25 +2117,26 @@
                                     <constraint firstAttribute="height" constant="64" id="yvC-gq-gF8"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tw-7R-s0z">
-                                <rect key="frame" x="20" y="84" width="280" height="0.0"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
-                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n2j-l8-CXF">
+                                <rect key="frame" x="36" y="84" width="248" height="464"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4tw-7R-s0z" firstAttribute="leading" secondItem="wRb-7Q-TsF" secondAttribute="leading" constant="20" id="56i-3D-JNY"/>
-                            <constraint firstItem="4tw-7R-s0z" firstAttribute="top" secondItem="gWE-Gd-y9h" secondAttribute="bottom" constant="20" id="6Fx-wW-kq9"/>
                             <constraint firstItem="gWE-Gd-y9h" firstAttribute="leading" secondItem="wRb-7Q-TsF" secondAttribute="leading" id="8FD-My-5Ux"/>
+                            <constraint firstItem="dfg-En-tNh" firstAttribute="top" secondItem="n2j-l8-CXF" secondAttribute="bottom" constant="20" id="LNf-Le-xyN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="n2j-l8-CXF" secondAttribute="trailing" constant="20" id="XQP-Op-96V"/>
                             <constraint firstItem="gWE-Gd-y9h" firstAttribute="top" secondItem="wRb-7Q-TsF" secondAttribute="top" id="aDz-4o-gR2"/>
-                            <constraint firstAttribute="trailing" secondItem="4tw-7R-s0z" secondAttribute="trailing" constant="20" id="hML-hc-a6b"/>
+                            <constraint firstItem="n2j-l8-CXF" firstAttribute="leading" secondItem="wRb-7Q-TsF" secondAttribute="leadingMargin" constant="20" id="f3t-Xc-1s2"/>
+                            <constraint firstItem="n2j-l8-CXF" firstAttribute="top" secondItem="Ai9-HJ-0Kt" secondAttribute="bottom" constant="20" id="gP6-ls-DfA"/>
                             <constraint firstAttribute="trailing" secondItem="gWE-Gd-y9h" secondAttribute="trailing" id="tQ4-5p-5q3"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="brainKeyLabel" destination="4tw-7R-s0z" id="xBY-5R-FaH"/>
+                        <outlet property="brainKeyView" destination="n2j-l8-CXF" id="IuR-FA-ag4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCY-CZ-zvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
