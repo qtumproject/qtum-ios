@@ -36,7 +36,9 @@
             [weakSelf.delegate qrCodeScanned:[QRCodeManager getNewPaymentDictionaryFromString:code.stringValue]];
         }
         
-        [weakSelf backButtonWasPressed:nil];
+        if ([weakSelf.delegate respondsToSelector:@selector(showNextVC)]) {
+            [weakSelf.delegate showNextVC];
+        }
     };
 }
 
@@ -75,13 +77,6 @@
 
 - (IBAction)backButtonWasPressed:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
-//    [self dismissViewControllerAnimated:YES completion:^{
-#warning Dismiss commented
-        //TODO : fix logic
-//        if ([self.delegate respondsToSelector:@selector(showNextVC)]) {
-//            [self.delegate showNextVC];
-//        }
-//    }];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end

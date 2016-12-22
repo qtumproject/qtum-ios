@@ -113,7 +113,7 @@
 
 - (IBAction)backbuttonPressed:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender

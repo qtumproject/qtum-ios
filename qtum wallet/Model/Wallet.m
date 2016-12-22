@@ -42,6 +42,10 @@ NSInteger const USERS_KEYS_COUNT = 100;
         self.pin = pin;
         self.countOfUsedKeys = USERS_KEYS_COUNT;
         self.seedWords = seedWords;
+        
+        if (!self.keyChain) {
+            return nil;
+        }
     }
     return self;
 }

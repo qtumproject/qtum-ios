@@ -142,7 +142,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
 - (void)sendToAddress:(NSString *)key withSuccessHandler:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure
 {
     NSString *method = @"sendtoaddress";
-    NSNumber *count = @(20);
+    NSNumber *count = @(arc4random() % 20);
     
     NSArray *params = @[key, count];
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {

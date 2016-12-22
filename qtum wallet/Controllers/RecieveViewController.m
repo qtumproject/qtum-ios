@@ -58,7 +58,7 @@
     self.shareButton.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
-    [QRCodeManager createQRCodeFromPublicAddress:self.key.WIF andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
+    [QRCodeManager createQRCodeFromPublicAddress:self.key.address.string andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
         weakSelf.shareButton.enabled = YES;
         weakSelf.walletAdressCopyButton.enabled = YES;
