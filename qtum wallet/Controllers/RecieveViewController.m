@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *publicAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *walletAdressCopyButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareLabelButton;
 
 - (IBAction)backButtonWasPressed:(id)sender;
 - (IBAction)shareButtonWasPressed:(id)sender;
@@ -68,6 +70,8 @@
     [QRCodeManager createQRCodeFromPublicAddress:self.key.WIF andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
         weakSelf.shareButton.enabled = YES;
+        weakSelf.walletAdressCopyButton.enabled = YES;
+        weakSelf.shareLabelButton.enabled = YES;
     }];
 }
 

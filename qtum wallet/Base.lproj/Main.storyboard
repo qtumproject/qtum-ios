@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Mg-gm-MeU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Mg-gm-MeU">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -921,7 +921,7 @@
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ0-ob-cJ6">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ0-ob-cJ6">
                                 <rect key="frame" x="20" y="497" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.9368247389793396" green="0.94905275106430054" blue="0.95312517881393433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -941,10 +941,20 @@
                                     <action selector="copeButtonWasPressed:" destination="J74-e4-ns6" eventType="touchUpInside" id="R8p-Wn-5Os"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4D4-I4-ydK">
+                                <rect key="frame" x="30" y="399" width="260" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PDw-Nn-JOj"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="shareButtonWasPressed:" destination="J74-e4-ns6" eventType="touchUpInside" id="Y33-QB-FSM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wBl-Pk-Pmc" secondAttribute="trailing" constant="20" id="6zI-lh-8H1"/>
+                            <constraint firstItem="4D4-I4-ydK" firstAttribute="centerY" secondItem="z4c-QW-1za" secondAttribute="centerY" id="7DF-r0-Ncp"/>
                             <constraint firstItem="z4c-QW-1za" firstAttribute="leading" secondItem="AfW-NH-wJK" secondAttribute="leading" constant="30" id="7vE-Ks-EGV"/>
                             <constraint firstItem="Bug-0m-hbf" firstAttribute="top" secondItem="AfW-NH-wJK" secondAttribute="top" id="Bbj-yx-hnL"/>
                             <constraint firstItem="wBl-Pk-Pmc" firstAttribute="leading" secondItem="AfW-NH-wJK" secondAttribute="leading" constant="20" id="FOK-Lf-wtt"/>
@@ -952,8 +962,10 @@
                             <constraint firstItem="ZJ0-ob-cJ6" firstAttribute="centerX" secondItem="AfW-NH-wJK" secondAttribute="centerX" id="P86-Fw-c8V"/>
                             <constraint firstItem="uWL-Ep-GSC" firstAttribute="top" secondItem="wBl-Pk-Pmc" secondAttribute="bottom" constant="50" id="Pwi-8D-kdf"/>
                             <constraint firstAttribute="trailing" secondItem="Bug-0m-hbf" secondAttribute="trailing" id="amh-c6-lEI"/>
+                            <constraint firstItem="4D4-I4-ydK" firstAttribute="width" secondItem="z4c-QW-1za" secondAttribute="width" id="blI-dU-S9h"/>
                             <constraint firstItem="z4c-QW-1za" firstAttribute="top" secondItem="uWL-Ep-GSC" secondAttribute="bottom" constant="27" id="eoL-rr-Mez"/>
                             <constraint firstItem="Bug-0m-hbf" firstAttribute="leading" secondItem="AfW-NH-wJK" secondAttribute="leading" id="iVn-Hs-uJb"/>
+                            <constraint firstItem="4D4-I4-ydK" firstAttribute="centerX" secondItem="AfW-NH-wJK" secondAttribute="centerX" id="qet-ZG-t4v"/>
                             <constraint firstItem="uWL-Ep-GSC" firstAttribute="centerX" secondItem="AfW-NH-wJK" secondAttribute="centerX" id="sXG-To-aTS"/>
                             <constraint firstAttribute="trailing" secondItem="z4c-QW-1za" secondAttribute="trailing" constant="30" id="tqI-W6-ttd"/>
                             <constraint firstItem="wBl-Pk-Pmc" firstAttribute="top" secondItem="Bug-0m-hbf" secondAttribute="bottom" constant="30" id="u9c-Oq-Z3q"/>
@@ -965,6 +977,8 @@
                         <outlet property="publicAddressLabel" destination="z4c-QW-1za" id="Md1-bk-3sH"/>
                         <outlet property="qrCodeImageView" destination="uWL-Ep-GSC" id="s4d-hc-8sQ"/>
                         <outlet property="shareButton" destination="Sed-p4-8b4" id="NDH-x8-v9F"/>
+                        <outlet property="shareLabelButton" destination="4D4-I4-ydK" id="Xdl-g1-Iga"/>
+                        <outlet property="walletAdressCopyButton" destination="ZJ0-ob-cJ6" id="nJj-Rk-Hx6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ld-iJ-a8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1902,7 +1916,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-Cr-FCn">
-                                                    <rect key="frame" x="17" y="15.5" width="60.5" height="14.5"/>
+                                                    <rect key="frame" x="17" y="16" width="61" height="15"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1941,7 +1955,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wallet Backup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9H-c1-IsA">
-                                                    <rect key="frame" x="17" y="15.5" width="74" height="14.5"/>
+                                                    <rect key="frame" x="17" y="16" width="74" height="15"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

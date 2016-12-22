@@ -19,6 +19,7 @@
 -(void)start;
 //flows
 -(void)startMainFlow;
+-(void)startWalletFlow;
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)startChangePinFlow;
 

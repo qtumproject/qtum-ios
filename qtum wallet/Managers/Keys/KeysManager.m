@@ -49,6 +49,18 @@ NSString const *kUserPIN = @"PIN";
     return self;
 }
 
+#pragma mark - Setter/Getter
+
+-(NSString*)label{
+    //bail if we remove label at logout
+    if (!_label) {
+        [self createNewLabel];
+        [self save];
+    }
+    return _label;
+}
+
+
 #pragma mark - 
 
 - (void)createNewKey
@@ -96,7 +108,7 @@ NSString const *kUserPIN = @"PIN";
 - (void)createNewLabel
 {
     NSString *uuid = [[NSUUID UUID] UUIDString];
-    self.label = uuid;
+    _label = uuid;
 }
 
 #pragma mark - KeyChain
@@ -106,7 +118,7 @@ NSString const *kUserPIN = @"PIN";
     NSArray *savingArray = [self p_createArrayForSaving];
     
     BOOL resultKeys = [[FXKeychain defaultKeychain] setObject:savingArray forKey:kKeychainKey];
-    BOOL resultLabel = [[FXKeychain defaultKeychain] setObject:self.label forKey:kKeychainKeyLabel];
+    BOOL resultLabel = [[FXKeychain defaultKeychain] setObject:_label forKey:kKeychainKeyLabel];
     
     return resultKeys && resultLabel;
 }
@@ -139,8 +151,10 @@ NSString const *kUserPIN = @"PIN";
     self.keys = nil;
     self.keysForTransaction = nil;
     self.label = nil;
+    self.PIN = nil;
     [[FXKeychain defaultKeychain] removeObjectForKey:kKeychainKey];
     [[FXKeychain defaultKeychain] removeObjectForKey:kKeychainKeyLabel];
+    [[FXKeychain defaultKeychain] removeObjectForKey:kUserPIN];
     return;
 }
 
