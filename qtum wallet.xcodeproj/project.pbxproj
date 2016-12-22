@@ -22,6 +22,7 @@
 		B32142871E012A5800489BB1 /* CreatePinRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142861E012A5800489BB1 /* CreatePinRootController.m */; };
 		B321428A1E01477A00489BB1 /* AskPinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142891E01477A00489BB1 /* AskPinController.m */; };
 		B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B321428C1E0153F000489BB1 /* CustomTextField.m */; };
+		B321E87A1E0BC8D200DC7DE5 /* ImportKeyCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */; };
 		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B36624C11E03E35D00CBC5B5 /* ChangePinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624C01E03E35D00CBC5B5 /* ChangePinController.m */; };
 		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
@@ -104,6 +105,8 @@
 		B32142891E01477A00489BB1 /* AskPinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPinController.m; sourceTree = "<group>"; };
 		B321428B1E0153F000489BB1 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		B321428C1E0153F000489BB1 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		B321E8781E0BC8D200DC7DE5 /* ImportKeyCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportKeyCoordinator.h; sourceTree = "<group>"; };
+		B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportKeyCoordinator.m; sourceTree = "<group>"; };
 		B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B36624BF1E03E35D00CBC5B5 /* ChangePinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePinController.h; sourceTree = "<group>"; };
@@ -452,6 +455,8 @@
 			children = (
 				E7D241DB1DE709D6003E507B /* ImportKeyViewController.h */,
 				E7D241DC1DE709D6003E507B /* ImportKeyViewController.m */,
+				B321E8781E0BC8D200DC7DE5 /* ImportKeyCoordinator.h */,
+				B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */,
 			);
 			name = ImportKey;
 			sourceTree = "<group>";
@@ -848,6 +853,7 @@
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
+				B321E87A1E0BC8D200DC7DE5 /* ImportKeyCoordinator.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */,

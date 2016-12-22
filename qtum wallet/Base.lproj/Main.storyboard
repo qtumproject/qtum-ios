@@ -81,7 +81,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4y-jJ-hKS">
-                                                    <rect key="frame" x="50" y="14" width="54" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="53.5" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -111,7 +111,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z82-ev-3xe">
-                                                    <rect key="frame" x="50" y="14" width="47" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="46.5" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1346,18 +1346,6 @@
                                     <constraint firstItem="ccy-id-IKV" firstAttribute="leading" secondItem="5t4-d9-huF" secondAttribute="leading" id="qqH-SN-0Ef"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bitcoin address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IFT-sQ-Vqd" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="94" width="280" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Nv0-Nb-kPv"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Ko9-J8-ePG" id="I17-j2-lN8"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUD-tA-sQA">
                                 <rect key="frame" x="45" y="497" width="230" height="44"/>
                                 <color key="backgroundColor" red="0.20985329150000001" green="0.72564256189999998" blue="0.7855710387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1379,24 +1367,44 @@
                                     <action selector="importButtonWasPressed:" destination="Ko9-J8-ePG" eventType="touchUpInside" id="aXs-NN-2Tj"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Import Brand Key" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kUA-hC-Ib6">
+                                <rect key="frame" x="20" y="96" width="280" height="172"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ko9-J8-ePG" id="y62-Td-Dcq"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1w5-qY-0W0" firstAttribute="top" secondItem="nUD-tA-sQA" secondAttribute="bottom" constant="27" id="0zh-SX-7A8"/>
-                            <constraint firstItem="IFT-sQ-Vqd" firstAttribute="leading" secondItem="PFv-pp-o7U" secondAttribute="leading" constant="20" id="Nc7-m8-uCw"/>
+                            <constraint firstItem="1w5-qY-0W0" firstAttribute="top" secondItem="kUA-hC-Ib6" secondAttribute="bottom" constant="300" id="4j4-SK-EcD"/>
                             <constraint firstItem="5t4-d9-huF" firstAttribute="top" secondItem="PFv-pp-o7U" secondAttribute="top" id="Nn4-Hf-GPm"/>
-                            <constraint firstItem="IFT-sQ-Vqd" firstAttribute="top" secondItem="5t4-d9-huF" secondAttribute="bottom" constant="30" id="Nvc-PH-XAo"/>
+                            <constraint firstItem="kUA-hC-Ib6" firstAttribute="top" secondItem="ccy-id-IKV" secondAttribute="bottom" constant="32" id="O0B-n4-MLq"/>
                             <constraint firstItem="nUD-tA-sQA" firstAttribute="centerX" secondItem="PFv-pp-o7U" secondAttribute="centerX" id="XDL-ix-IBu"/>
+                            <constraint firstAttribute="trailing" secondItem="kUA-hC-Ib6" secondAttribute="trailing" constant="20" id="ij4-bg-fbt"/>
+                            <constraint firstItem="kUA-hC-Ib6" firstAttribute="centerX" secondItem="PFv-pp-o7U" secondAttribute="centerX" id="k7D-wV-v8o"/>
                             <constraint firstItem="5t4-d9-huF" firstAttribute="leading" secondItem="PFv-pp-o7U" secondAttribute="leading" id="lk2-HW-UwO"/>
                             <constraint firstAttribute="trailing" secondItem="5t4-d9-huF" secondAttribute="trailing" id="mbj-DK-wvW"/>
-                            <constraint firstAttribute="trailing" secondItem="IFT-sQ-Vqd" secondAttribute="trailing" constant="20" id="ydt-QW-ZTC"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="N3Q-9Q-rHf" appends="YES" id="M8r-sL-rTL"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="addressTextField" destination="IFT-sQ-Vqd" id="e7l-RS-vZx"/>
+                        <outlet property="brandKeyTextView" destination="kUA-hC-Ib6" id="C2i-kG-zZN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jhc-vj-azJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="N3Q-9Q-rHf">
+                    <connections>
+                        <action selector="outsideTap:" destination="Ko9-J8-ePG" id="a3S-mD-1iP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="726" y="965"/>
         </scene>
@@ -1916,7 +1924,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-Cr-FCn">
-                                                    <rect key="frame" x="17" y="16" width="61" height="15"/>
+                                                    <rect key="frame" x="17" y="16.5" width="60.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1955,7 +1963,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wallet Backup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9H-c1-IsA">
-                                                    <rect key="frame" x="17" y="16" width="74" height="15"/>
+                                                    <rect key="frame" x="17" y="16.5" width="74" height="14"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2043,7 +2051,7 @@
         <image name="wallet" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="gcB-FN-MjK"/>
         <segue reference="tiI-b2-zmb"/>
-        <segue reference="AZr-Mx-IsF"/>
     </inferredMetricsTieBreakers>
 </document>

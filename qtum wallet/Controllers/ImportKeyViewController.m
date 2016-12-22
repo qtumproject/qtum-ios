@@ -11,9 +11,13 @@
 #import "QRCodeViewController.h"
 #import "KeysManager.h"
 
+NSString* const textViewPlaceholder = @"Import Brand Key";
+
 @interface ImportKeyViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
+@property (weak, nonatomic) IBOutlet UITextView *brandKeyTextView;
+@property (strong,nonatomic) NSString* brandKeyString;
 
 - (IBAction)importButtonWasPressed:(id)sender;
 - (IBAction)backButtonWasPressed:(id)sender;
@@ -32,6 +36,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Private Methods
+
+-(NSArray*)arrayOfWordsFromString:(NSString*)aString{
+    NSArray *array = [aString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    array = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];
+    return array;
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -40,6 +53,26 @@
     return YES;
 }
 
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:textViewPlaceholder]) {
+        textView.text = @"";
+        textView.textColor = [UIColor colorWithRed:78/255. green:93/255. blue:111/255. alpha:1];
+    }
+    
+    return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if (textView.text.length == 0) {
+        textView.text = textViewPlaceholder;
+        textView.textColor = [UIColor lightGrayColor];
+        self.brandKeyString = @"";
+    } else {
+        self.brandKeyString = textView.text;
+    }
+}
 #pragma mark - QRCodeViewControllerDelegate
 
 - (void)qrCodeScanned:(NSDictionary *)dictionary
@@ -71,9 +104,15 @@
     [[KeysManager sharedInstance] importKey:self.addressTextField.text];
 }
 
+- (IBAction)outsideTap:(id)sender{
+    [self.brandKeyTextView resignFirstResponder];
+    NSArray* array = [self arrayOfWordsFromString:self.brandKeyTextView.text];
+    
+}
+
 - (IBAction)backButtonWasPressed:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -

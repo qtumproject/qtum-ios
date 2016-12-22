@@ -16,6 +16,7 @@
 #import "AskPinController.h"
 #import "SettingsViewController.h"
 #import "ChangePinController.h"
+#import "ImportKeyCoordinator.h"
 
 @interface ApplicationCoordinator ()
 
@@ -174,6 +175,12 @@
     viewController.type = CreateType;
     self.appDelegate.window.rootViewController = createPinRoot;
 }
+//
+//-(void)startImportKeyFlow{
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ImportKeyViewController"];
+//    self.appDelegate.window.rootViewController = createImportRoot;
+//}
 
 
 @end
