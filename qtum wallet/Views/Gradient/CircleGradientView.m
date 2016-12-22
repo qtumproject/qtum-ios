@@ -42,7 +42,6 @@
     // Release objects
     CGColorSpaceRelease(colorSpace);
     CGGradientRelease(gradient);
-    
 }
 
 @end

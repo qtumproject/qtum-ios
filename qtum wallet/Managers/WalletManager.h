@@ -18,11 +18,20 @@
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 @property (nonatomic, readonly) NSMutableArray *wallets;
+@property (nonatomic, strong, readonly) NSString* PIN;
 
-- (Wallet *)createNewWalletWithName:(NSString *)name pin:(NSString *)pin;
-- (Wallet *)importWalletWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords countOfUsedKey:(NSInteger)countOfUsedKey;
+- (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure;
+- (void)importWalletWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure;
+
 - (void)removeWallet:(Wallet *)wallet;
-- (NSArray *)getAllWallets;
 - (void)removeAllWallets;
+- (void)storePin:(NSString*) pin;
+- (void)removePin;
+
+- (BOOL)haveWallets;
+
+- (Wallet *)getCurrentWallet;
+
+- (NSArray *)getAllWallets;
 
 @end

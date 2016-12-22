@@ -11,13 +11,14 @@
 #import "QRCodeViewController.h"
 #import "KeysManager.h"
 
+
 NSString* const textViewPlaceholder = @"Import Brand Key";
 
 @interface ImportKeyViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextView *brandKeyTextView;
-@property (strong,nonatomic) NSString* brandKeyString;
+@property (strong,nonatomic) NSString *brainKeyString;
 
 - (IBAction)importButtonWasPressed:(id)sender;
 - (IBAction)backButtonWasPressed:(id)sender;
@@ -68,9 +69,9 @@ NSString* const textViewPlaceholder = @"Import Brand Key";
     if (textView.text.length == 0) {
         textView.text = textViewPlaceholder;
         textView.textColor = [UIColor lightGrayColor];
-        self.brandKeyString = @"";
+        self.brainKeyString = @"";
     } else {
-        self.brandKeyString = textView.text;
+        self.brainKeyString = textView.text;
     }
 }
 #pragma mark - QRCodeViewControllerDelegate
@@ -86,28 +87,24 @@ NSString* const textViewPlaceholder = @"Import Brand Key";
 {
     [SVProgressHUD show];
     
-    __weak typeof(self) weakSelf = self;
-    [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
-        if (registered) {
-            [SVProgressHUD showSuccessWithStatus:@"Done"];
-            [weakSelf dismissViewControllerAnimated:YES completion:^(){
-                if ([weakSelf.delegate respondsToSelector:@selector(addressImported)]) {
-                    [weakSelf.delegate addressImported];
-                }
-            }];
-            
-        }else{
-            [SVProgressHUD showErrorWithStatus:@"Some Error"];
-        }
-        [KeysManager sharedInstance].keyRegistered = nil;
-    };
-    [[KeysManager sharedInstance] importKey:self.addressTextField.text];
+    NSArray *wordsArray = [self arrayOfWordsFromString:self.brainKeyString];
+    
+//    __weak typeof(self) weakSelf = self;
+    
+    [[WalletManager sharedInstance] importWalletWithName:@"" pin:@"" seedWords:wordsArray withSuccessHandler:^(Wallet *newWallet) {
+        [SVProgressHUD showSuccessWithStatus:@"Done"];
+        
+        [[ApplicationCoordinator sharedInstance] startCreatePinFlowWithCompletesion:^{
+            [[ApplicationCoordinator sharedInstance] startMainFlow];
+        }];
+    } andFailureHandler:^{
+        [SVProgressHUD showErrorWithStatus:@"Some Error"];
+    }];
 }
 
-- (IBAction)outsideTap:(id)sender{
+- (IBAction)outsideTap:(id)sender
+{
     [self.brandKeyTextView resignFirstResponder];
-    NSArray* array = [self arrayOfWordsFromString:self.brandKeyTextView.text];
-    
 }
 
 - (IBAction)backButtonWasPressed:(id)sender

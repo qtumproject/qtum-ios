@@ -131,6 +131,12 @@ NSString const *kUserPIN = @"PIN";
     self.PIN = pin;
 }
 
+- (void)removePin
+{
+    [[FXKeychain defaultKeychain] removeObjectForKey:kUserPIN];
+    self.PIN = nil;
+}
+
 - (void)load
 {
     NSArray *savedArrray = [[FXKeychain defaultKeychain] objectForKey:kKeychainKey];

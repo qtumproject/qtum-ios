@@ -58,7 +58,7 @@
 -(void)start{
     [Appearance setUp];
 
-    if ([KeysManager sharedInstance].keys.count && [KeysManager sharedInstance].PIN) {
+    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
         [self startAskPinFlow:nil];
     }else{
         [self startWalletFlow];

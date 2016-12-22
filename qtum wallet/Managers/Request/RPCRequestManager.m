@@ -73,10 +73,9 @@ NSString *const BASE_LABEL = @"qtum_mobile_wallet_1";
 
 #pragma mark - Methods
 
-- (void)registerKey:(NSString *)keyString new:(BOOL)new withSuccessHandler:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure
+- (void)registerKey:(NSString *)keyString identifier:(NSString *)identifier new:(BOOL)new withSuccessHandler:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure
 {
     NSString *method = @"importaddress";
-    NSString *identifier = [KeysManager sharedInstance].label;
     BOOL needResearchInBlockChain = !new;
     BOOL lastParameter = NO;
     
@@ -89,6 +88,17 @@ NSString *const BASE_LABEL = @"qtum_mobile_wallet_1";
         }else{
             failure(error, message);
         }
+    }];
+}
+
+- (void)registerKey:(NSString *)keyString new:(BOOL)new withSuccessHandler:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure
+{
+    NSString *identifier = [KeysManager sharedInstance].label;
+    
+    [self registerKey:keyString identifier:identifier new:new withSuccessHandler:^(id responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
     }];
 }
 

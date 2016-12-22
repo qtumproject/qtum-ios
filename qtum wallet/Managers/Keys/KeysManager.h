@@ -24,7 +24,9 @@
 - (BOOL)save;
 - (void)load;
 - (void)removeAllKeys;
+
 - (void)storePin:(NSString*) pin;
+- (void)removePin;
 
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
 + (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));

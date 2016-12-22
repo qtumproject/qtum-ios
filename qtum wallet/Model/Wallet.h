@@ -18,7 +18,7 @@
 @interface Wallet : NSObject
 
 - (instancetype)initWithName:(NSString *)name pin:(NSString *)pin;
-- (instancetype)initWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords countOfUsedKey:(NSInteger)countOfUsedKey;
+- (instancetype)initWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords;
 
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *pin;
@@ -29,7 +29,7 @@
 
 #warning Vova
 - (BTCKey *)getNewKey; // For RPC we need register new key in node, this code you can find in KeysManagers
-- (BTCKey *)getKeyAtIndex;
+- (BTCKey *)getKeyAtIndex:(NSUInteger)index;
 - (NSArray *)getAllKeys;
 
 @end

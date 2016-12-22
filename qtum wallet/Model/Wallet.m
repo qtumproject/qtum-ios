@@ -9,6 +9,7 @@
 #import "Wallet.h"
 
 NSInteger const WORDS_COUNT = 12;
+NSInteger const USERS_KEYS_COUNT = 100;
 
 @interface Wallet () <NSCoding>
 
@@ -27,19 +28,19 @@ NSInteger const WORDS_COUNT = 12;
     if (self) {
         self.name = name;
         self.pin = pin;
-        self.countOfUsedKeys = 0;
+        self.countOfUsedKeys = USERS_KEYS_COUNT;
         self.seedWords = [self generateWordsArray];
     }
     return self;
 }
 
-- (instancetype)initWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords countOfUsedKey:(NSInteger)countOfUsedKey
+- (instancetype)initWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords
 {
     self = [super init];
     if (self) {
         self.name = name;
         self.pin = pin;
-        self.countOfUsedKeys = countOfUsedKey;
+        self.countOfUsedKeys = USERS_KEYS_COUNT;
         self.seedWords = seedWords;
     }
     return self;
@@ -71,22 +72,22 @@ NSInteger const WORDS_COUNT = 12;
 
 - (BTCKey *)getNewKey
 {
-    BTCKey *newKey = [self.keyChain keyAtIndex:self.countOfUsedKeys];
-    self.countOfUsedKeys++;
-    [self walletDidChange];
+    uint randomedIndex = arc4random() % self.countOfUsedKeys;
+    
+    BTCKey *newKey = [self.keyChain keyAtIndex:randomedIndex];
     return newKey;
 }
 
-- (BTCKey *)getKeyAtIndex
+- (BTCKey *)getKeyAtIndex:(NSUInteger)index;
 {
-    return [self.keyChain keyAtIndex:self.countOfUsedKeys];
+    return [self.keyChain keyAtIndex:(uint)index];
 }
 
 - (NSArray *)getAllKeys
 {
     NSMutableArray *allKeys = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
-        [allKeys addObject:[self.keyChain keyAtIndex:i]];
+        [allKeys addObject:[self.keyChain keyAtIndex:(uint)i]];
     }
     return allKeys;
 }
@@ -132,7 +133,6 @@ NSInteger const WORDS_COUNT = 12;
 {
     [aCoder encodeObject:self.name forKey:@"Name"];
     [aCoder encodeObject:self.pin forKey:@"Pin"];
-    [aCoder encodeInteger:self.countOfUsedKeys forKey:@"CountOfUsedKeys"];
     [aCoder encodeObject:self.seedWords forKey:@"Seed"];
 }
 
@@ -140,14 +140,13 @@ NSInteger const WORDS_COUNT = 12;
 {
     NSString *name = [aDecoder decodeObjectForKey:@"Name"];
     NSString *pin = [aDecoder decodeObjectForKey:@"Pin"];
-    NSInteger countOfUsedKeys = [aDecoder decodeIntegerForKey:@"CountOfUsedKeys"];
     NSArray *seedWords = [aDecoder decodeObjectForKey:@"Seed"];
     
     self = [super init];
     if (self) {
         self.name = name;
         self.pin = pin;
-        self.countOfUsedKeys = countOfUsedKeys;
+        self.countOfUsedKeys = USERS_KEYS_COUNT;
         self.seedWords = seedWords;
     }
     

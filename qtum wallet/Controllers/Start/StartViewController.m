@@ -37,24 +37,17 @@
 
 - (IBAction)createNewButtonWasPressed:(id)sender
 {
-    __weak typeof(self) weakSelf = self;
-
     [[ApplicationCoordinator sharedInstance] startCreatePinFlowWithCompletesion:^{
         [SVProgressHUD show];
         
-        [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
-            if (registered) {
-                [SVProgressHUD showSuccessWithStatus:@"Done"];
-                [weakSelf createAndShowMainVC];
-            }else{
-                [SVProgressHUD showErrorWithStatus:@"Some Error"];
-            }
-            [KeysManager sharedInstance].keyRegistered = nil;
-        };
-        [[KeysManager sharedInstance] createNewKey];
-        [[ApplicationCoordinator sharedInstance] startMainFlow];
+        [[WalletManager sharedInstance] createNewWalletWithName:@"" pin:@"" withSuccessHandler:^(Wallet *newWallet) {
+            [SVProgressHUD showSuccessWithStatus:@"Done"];
+            
+            [[ApplicationCoordinator sharedInstance] startMainFlow];
+        } andFailureHandler:^{
+            [SVProgressHUD showErrorWithStatus:@"Some Error"];
+        }];
     }];
-
 }
 
 - (void)createAndShowMainVC
