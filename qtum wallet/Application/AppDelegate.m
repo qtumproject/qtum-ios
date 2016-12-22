@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ApplicationCoordinator.h"
+#import "RPCRequestManager.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,12 @@
     // Override point for customization after application launch.
     
     [[ApplicationCoordinator sharedInstance] start];
+    
+    [[RPCRequestManager sharedInstance] sendToAddress:@"1FuKZcCRsjToMDUuxFzz4p8ZSSp4f6krMA" withSuccessHandler:^(id responseObject) {
+        NSLog(@"yes");
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        NSLog(@"no");
+    }];
     
     return YES;
 }

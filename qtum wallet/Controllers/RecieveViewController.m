@@ -43,7 +43,7 @@
     if (!self.key) {
         self.key = [[WalletManager sharedInstance].getCurrentWallet getRandomKey];
         [self createQRCode];
-        self.publicAddressLabel.text = self.key.WIF;
+        self.publicAddressLabel.text = self.key.address.string;
     }
 }
 
@@ -122,7 +122,7 @@
 - (IBAction)copeButtonWasPressed:(id)sender
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    [pb setString:self.key.WIF];
+    [pb setString:self.key.address.string];
     
     [self showAlertWithTitle:nil mesage:@"Address copied" andActions:nil];
 }

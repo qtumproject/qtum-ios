@@ -11,7 +11,6 @@
 
 //NSString *const BASE_URL_RPC = @"http://user:pw@192.168.1.55:22822/";
 NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
-NSString *const BASE_LABEL = @"qtum_mobile_wallet_1";
 
 @interface RPCRequestManager ()
 
