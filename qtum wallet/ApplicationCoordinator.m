@@ -7,7 +7,6 @@
 //
 
 #import "ApplicationCoordinator.h"
-#import "KeysManager.h"
 #import "Appearance.h"
 #import "RootViewController.h"
 #import "ContentController.h"

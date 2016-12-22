@@ -8,7 +8,6 @@
 
 #import "SettingsViewController.h"
 #import "ApplicationCoordinator.h"
-#import "KeysManager.h"
 
 @interface SettingsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -29,7 +28,8 @@
 #pragma mark Actions
 
 - (IBAction)actionLogout:(id)sender {
-    [[KeysManager sharedInstance] removeAllKeys];
+    [[WalletManager sharedInstance] removeAllWallets];
+    [[WalletManager sharedInstance] removePin];
     [[ApplicationCoordinator sharedInstance] startWalletFlow];
 }
 - (IBAction)actionMenu:(id)sender {

@@ -9,7 +9,6 @@
 #import "ImportKeyViewController.h"
 #import "TextFieldWithLine.h"
 #import "QRCodeViewController.h"
-#import "KeysManager.h"
 
 
 NSString* const textViewPlaceholder = @"Import Brand Key";

@@ -60,7 +60,6 @@
 		E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36441DC4D07E00748177 /* Main.storyboard */; };
 		E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36471DC4D07E00748177 /* Assets.xcassets */; };
 		E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */; };
-		E7FD36561DC72BB000748177 /* KeysManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36551DC72BB000748177 /* KeysManager.m */; };
 		E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36591DC7308A00748177 /* FXKeychain.m */; };
 		E7FD365C1DC7360400748177 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
 		E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36651DC76EBC00748177 /* RequestManager.m */; };
@@ -179,8 +178,6 @@
 		E7FD36471DC4D07E00748177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7FD364A1DC4D07E00748177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7FD364C1DC4D07E00748177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7FD36541DC72BB000748177 /* KeysManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeysManager.h; sourceTree = "<group>"; };
-		E7FD36551DC72BB000748177 /* KeysManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeysManager.m; sourceTree = "<group>"; };
 		E7FD36581DC7308A00748177 /* FXKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXKeychain.h; sourceTree = "<group>"; };
 		E7FD36591DC7308A00748177 /* FXKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXKeychain.m; sourceTree = "<group>"; };
 		E7FD365B1DC7360400748177 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -639,8 +636,6 @@
 		E7FD36621DC769B500748177 /* Keys */ = {
 			isa = PBXGroup;
 			children = (
-				E7FD36541DC72BB000748177 /* KeysManager.h */,
-				E7FD36551DC72BB000748177 /* KeysManager.m */,
 			);
 			path = Keys;
 			sourceTree = "<group>";
@@ -873,7 +868,6 @@
 				B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
-				E7FD36561DC72BB000748177 /* KeysManager.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */,

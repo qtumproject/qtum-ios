@@ -9,7 +9,6 @@
 #import "AddressListViewController.h"
 #import "AddressTableViewCell.h"
 #import "KeyViewController.h"
-#import "KeysManager.h"
 #import "ImportKeyViewController.h"
 
 @interface AddressListViewController () <UITableViewDataSource, UITableViewDelegate, ImportKeyViewControllerDelegate>
@@ -45,24 +44,25 @@
 {
     [SVProgressHUD show];
     
-    __weak typeof(self) weakSelf = self;
-    [[KeysManager sharedInstance] createNewKey];
-    [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
-        if (registered) {
-            [SVProgressHUD showSuccessWithStatus:@"Done"];
-            [weakSelf.tableView reloadData];
-        }else{
-            [SVProgressHUD showErrorWithStatus:@"Some Error"];
-        }
-        [KeysManager sharedInstance].keyRegistered = nil;
-    };
+//    __weak typeof(self) weakSelf = self;
+//    [[KeysManager sharedInstance] createNewKey];
+//    [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
+//        if (registered) {
+//            [SVProgressHUD showSuccessWithStatus:@"Done"];
+//            [weakSelf.tableView reloadData];
+//        }else{
+//            [SVProgressHUD showErrorWithStatus:@"Some Error"];
+//        }
+//        [KeysManager sharedInstance].keyRegistered = nil;
+//    };
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [KeysManager sharedInstance].keys.count;
+//    return [KeysManager sharedInstance].keys.count;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,9 +72,9 @@
         cell = [[AddressTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"AddressTableViewCell"];
     }
     
-    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
+//    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
     
-    cell.puplicKeyLabel.text = key.address.string;
+//    cell.puplicKeyLabel.text = key.address.string;
     
     return cell;
 }
@@ -83,9 +83,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
+//    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
     
-    [self createAndPresentPublicKeyVCWithKey:key];
+//    [self createAndPresentPublicKeyVCWithKey:key];
 }
 
 #pragma mark - ImportKeyViewControllerDelegate

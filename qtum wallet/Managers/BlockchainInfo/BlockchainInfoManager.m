@@ -8,7 +8,6 @@
 
 #import "BlockchainInfoManager.h"
 #import "RPCRequestManager.h"
-#import "KeysManager.h"
 #import "HistoryElement.h"
 
 @implementation BlockchainInfoManager
@@ -161,7 +160,7 @@
 + (NSArray *)createAllKeysArray
 {
     NSMutableArray *array = [NSMutableArray new];
-    for (BTCKey *key in [KeysManager sharedInstance].keys) {
+    for (BTCKey *key in [[WalletManager sharedInstance].getCurrentWallet getAllKeys]) {
         [array addObject:key.address.string];
     }
     

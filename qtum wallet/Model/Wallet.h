@@ -27,9 +27,9 @@
 
 @property (nonatomic, weak) id<WalletDelegate> delegate;
 
-#warning Vova
-- (BTCKey *)getNewKey; // For RPC we need register new key in node, this code you can find in KeysManagers
+- (BTCKey *)getRandomKey;
 - (BTCKey *)getKeyAtIndex:(NSUInteger)index;
 - (NSArray *)getAllKeys;
+- (NSString *)getWorldsString;
 
 @end

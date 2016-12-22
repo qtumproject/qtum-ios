@@ -29,9 +29,9 @@
 #pragma mark - Private Methods 
 
 -(NSString*)stringForLabelWithArrayWords:(NSArray*) array {
-    NSString* resultSting;
+    NSString* resultSting = @"";
     for (id item in array) {
-        resultSting = [NSString stringWithFormat:@"%@/n%@",resultSting,item];
+        resultSting = [NSString stringWithFormat:@"%@\n%@",resultSting,item];
     }
     return resultSting;
 }
@@ -39,7 +39,7 @@
 #pragma mark - Configuration 
 
 -(void)configurationBrainKeyLabel{
-    self.brainKeyLabel.text = [self stringForLabelWithArrayWords:nil];
+    self.brainKeyLabel.text = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] getCurrentWallet].seedWords];
 }
 
 #pragma mark - Actions

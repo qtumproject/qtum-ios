@@ -124,11 +124,9 @@ NSString const *USER_PIN_KEY = @"PIN";
     for (NSInteger i = 0; i < wallet.countOfUsedKeys; i++) {
         BTCKey *key = [wallet getKeyAtIndex:i];
         
-        NSString *worlsString = [wallet.seedWords componentsJoinedByString:@" "];
-        
         dispatch_group_enter(self.registerGroup);
         NSLog(@"Enter");
-        [[RPCRequestManager sharedInstance] registerKey:key.address.string identifier:worlsString new:YES withSuccessHandler:^(id responseObject) {
+        [[RPCRequestManager sharedInstance] registerKey:key.address.string identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
             dispatch_group_leave(weakSelf.registerGroup);
             NSLog(@"Success");
         } andFailureHandler:^(NSError *error, NSString *message) {

@@ -7,7 +7,6 @@
 //
 
 #import "AskPinController.h"
-#import "KeysManager.h"
 #import "ApplicationCoordinator.h"
 
 @interface AskPinController ()
@@ -28,7 +27,7 @@
 #pragma mark - PinCoordinator
 
 -(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
-    if ([[KeysManager sharedInstance].PIN isEqualToString:pin]) {
+    if ([[WalletManager sharedInstance].PIN isEqualToString:pin]) {
         [[ApplicationCoordinator sharedInstance] startMainFlow];
     } else {
         completision(NO);

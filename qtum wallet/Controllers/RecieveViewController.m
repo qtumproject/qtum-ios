@@ -9,7 +9,6 @@
 #import "RecieveViewController.h"
 #import "TextFieldWithLine.h"
 #import "QRCodeManager.h"
-#import "KeysManager.h"
 
 @interface RecieveViewController () <UITextFieldDelegate>
 
@@ -42,17 +41,9 @@
     [super viewDidAppear:animated];
     
     if (!self.key) {
-        __weak typeof(self) weakSelf = self;
-        [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
-            if (registered) {
-                BTCKey *newKey = [[KeysManager sharedInstance].keys lastObject];
-                weakSelf.key = newKey;
-                [weakSelf createQRCode];
-                weakSelf.publicAddressLabel.text = weakSelf.key.WIF;
-            }
-            [KeysManager sharedInstance].keyRegistered = nil;
-        };
-        [[KeysManager sharedInstance] createNewKey];
+        self.key = [[WalletManager sharedInstance].getCurrentWallet getRandomKey];
+        [self createQRCode];
+        self.publicAddressLabel.text = self.key.WIF;
     }
 }
 

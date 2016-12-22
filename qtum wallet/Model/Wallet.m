@@ -70,7 +70,7 @@ NSInteger const USERS_KEYS_COUNT = 100;
 
 #pragma mark - Public Methods
 
-- (BTCKey *)getNewKey
+- (BTCKey *)getRandomKey
 {
     uint randomedIndex = arc4random() % self.countOfUsedKeys;
     
@@ -90,6 +90,11 @@ NSInteger const USERS_KEYS_COUNT = 100;
         [allKeys addObject:[self.keyChain keyAtIndex:(uint)i]];
     }
     return allKeys;
+}
+
+- (NSString *)getWorldsString
+{
+    return [self.seedWords componentsJoinedByString:@" "];
 }
 
 #pragma mark - Private Methods

@@ -8,7 +8,6 @@
 
 #import "CreatePinRootController.h"
 #import "ApplicationCoordinator.h"
-#import "KeysManager.h"
 
 @interface CreatePinRootController () 
 
@@ -32,7 +31,7 @@
 -(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
     if (self.firstPin && [self.firstPin isEqualToString:pin]) {
         if (self.createPinCompletesion) {
-            [[KeysManager sharedInstance] storePin:pin];
+            [[WalletManager sharedInstance] storePin:pin];
             self.createPinCompletesion();
         }
     } else if(self.firstPin) {

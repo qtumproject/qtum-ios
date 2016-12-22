@@ -10,7 +10,6 @@
 #import "RequestManager.h"
 #import "RPCRequestManager.h"
 #import "BlockchainInfoManager.h"
-#import "KeysManager.h"
 
 static double FEE = 10000;
 
@@ -34,7 +33,7 @@ static double FEE = 10000;
 {
     self = [super init];
     if (self) {
-        self.keys = [KeysManager sharedInstance].keysForTransaction;
+        self.keys = [[WalletManager sharedInstance] getCurrentWallet].getAllKeys;
         [self createAmountsAndAddresses:amountsAndAddresses];
     }
     return self;

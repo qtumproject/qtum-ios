@@ -8,7 +8,6 @@
 
 #import "ChangePinController.h"
 #import "ApplicationCoordinator.h"
-#import "KeysManager.h"
 
 @interface ChangePinController ()
 
@@ -33,7 +32,7 @@
 
 -(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
     if (!self.pinOld) {
-        if ([[KeysManager sharedInstance].PIN isEqualToString:pin]) {
+        if ([[WalletManager sharedInstance].PIN isEqualToString:pin]) {
             self.pinOld = pin;
             [self showNewPinControllerWithType:NewType];
         }else {
@@ -44,7 +43,7 @@
         [self showNewPinControllerWithType:NewType];
     } else {
         if (self.pinNew == pin) {
-            [[KeysManager sharedInstance] storePin:self.pinNew];
+            [[WalletManager sharedInstance] storePin:self.pinNew];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         } else {
             self.pinOld = nil;

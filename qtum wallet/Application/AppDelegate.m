@@ -19,9 +19,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[WalletManager sharedInstance] removeAllWallets];
-    [[KeysManager sharedInstance] removePin];
-    
     [[ApplicationCoordinator sharedInstance] start];
     
     return YES;

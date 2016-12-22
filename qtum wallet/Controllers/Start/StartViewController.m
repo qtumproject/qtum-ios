@@ -7,7 +7,6 @@
 //
 
 #import "StartViewController.h"
-#import "KeysManager.h"
 #import "ImportKeyViewController.h"
 #import "ApplicationCoordinator.h"
 

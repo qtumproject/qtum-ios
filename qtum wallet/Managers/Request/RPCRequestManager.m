@@ -8,7 +8,6 @@
 
 #import "RPCRequestManager.h"
 #import <AFJSONRPCClient/AFJSONRPCClient.h>
-#import "KeysManager.h"
 
 //NSString *const BASE_URL_RPC = @"http://user:pw@192.168.1.55:22822/";
 NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
@@ -93,7 +92,7 @@ NSString *const BASE_LABEL = @"qtum_mobile_wallet_1";
 
 - (void)registerKey:(NSString *)keyString new:(BOOL)new withSuccessHandler:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure
 {
-    NSString *identifier = [KeysManager sharedInstance].label;
+    NSString *identifier = @"Some new identitfier";
     
     [self registerKey:keyString identifier:identifier new:new withSuccessHandler:^(id responseObject) {
         success(responseObject);
@@ -174,7 +173,7 @@ NSString *const BASE_LABEL = @"qtum_mobile_wallet_1";
     NSNumber *someValue = @(0);
     NSNumber *flag = [NSNumber numberWithBool:true];
     
-    NSArray *params = @[[KeysManager sharedInstance].label, count, someValue, flag];
+    NSArray *params = @[[[WalletManager sharedInstance]getCurrentWallet].getWorldsString, count, someValue, flag];
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError *error, NSString *message) {
