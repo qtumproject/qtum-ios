@@ -145,6 +145,11 @@
     self.amountTextField.text = dictionary[AMOUNT_STRING_KEY];
 }
 
+- (void)showNextVC
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExportBrainKeyViewController : UIViewController
+@interface ExportBrainKeyViewController : BaseViewController
 
 @end
