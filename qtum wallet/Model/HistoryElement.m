@@ -26,7 +26,7 @@
 
 - (void)createAmountString
 {
-    self.amountString  = [NSString stringWithFormat:@"%@ QTUM", [self.amount stringValue]];
+    self.amountString  = [NSString stringWithFormat:@"%0.3f QTUM", [self.amount floatValue]];
 }
 
 - (void)createDateString
