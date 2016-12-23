@@ -11,7 +11,7 @@
 #import "WalletManager.h"
 
 @interface ExportBrainKeyViewController ()
-@property (weak, nonatomic) IBOutlet UITextView *brainKeyView;
+@property (weak, nonatomic) IBOutlet UILabel *brainKeyView;
 @property (weak, nonatomic) IBOutlet NSString *brainKey;
 
 

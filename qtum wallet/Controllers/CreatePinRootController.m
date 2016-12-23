@@ -48,6 +48,11 @@
 
 #pragma mark - Private Methods
 
+-(void)resignFirstResponderPin{
+    for (UIViewController* vc in self.viewControllers) {
+        [vc.view endEditing:YES];
+    }
+}
 
 -(void)confilmPinFailed{
     self.firstPin = nil;

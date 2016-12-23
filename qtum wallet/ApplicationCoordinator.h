@@ -26,7 +26,7 @@
 -(void)showMenu;
 -(void)showSettings;
 -(void)showWallet;
--(void)showExportBrainKey;
+-(void)showExportBrainKeyAnimated:(BOOL)animated;
 
 -(void)shoudShowMenu:(BOOL) flag;
 -(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;

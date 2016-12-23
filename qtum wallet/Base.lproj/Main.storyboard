@@ -1013,7 +1013,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ld-iJ-a8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2276" y="937"/>
+            <point key="canvasLocation" x="2276" y="956"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="ceO-da-bcH">
@@ -1408,7 +1408,8 @@
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNa-Pe-klF">
                                 <rect key="frame" x="16" y="84" width="288" height="36"/>
-                                <string key="text">Enter your Brain-CODE to Import Wallet</string>
+                                <string key="text">Enter your Brain-CODE
+ to Import Wallet</string>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1433,10 +1434,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5G-xF-G9O" customClass="BottomShadowView">
-                                <rect key="frame" x="10" y="130" width="300" height="10"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="10" y="139" width="300" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="0.52742627640845074" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="6GD-zp-cD6"/>
+                                    <constraint firstAttribute="height" constant="1" id="6GD-zp-cD6"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1479,7 +1480,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="726" y="965"/>
+            <point key="canvasLocation" x="724" y="957"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gNP-6n-CbV">
@@ -1782,7 +1783,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCE-VD-uT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1517" y="937"/>
+            <point key="canvasLocation" x="1517" y="956"/>
         </scene>
         <!--Key View Controller-->
         <scene sceneID="WzX-dE-jBC">
@@ -2134,8 +2135,8 @@
                                                     <action selector="showMenu:" destination="Ma2-K0-Bfa" eventType="touchUpInside" id="A02-hP-OsQ"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Brain CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo1-om-dGQ">
-                                                <rect key="frame" x="86.5" y="12" width="147.5" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Brain-CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo1-om-dGQ">
+                                                <rect key="frame" x="85" y="12" width="151" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2160,45 +2161,79 @@
                                     <constraint firstAttribute="height" constant="64" id="yvC-gq-gF8"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n2j-l8-CXF">
-                                <rect key="frame" x="36" y="84" width="248" height="392"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45S-0v-Psv">
-                                <rect key="frame" x="36" y="496" width="248" height="44"/>
-                                <color key="backgroundColor" red="0.93682473899999996" green="0.94905275109999998" blue="0.95312517880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8F-oM-nfj" customClass="BorderedLabel">
+                                <rect key="frame" x="10" y="143" width="300" height="66"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="0.79706756161971826" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="vXg-bY-O9t"/>
+                                    <constraint firstAttribute="height" constant="66" id="8z8-xa-EO6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Copy Wallet Address">
-                                    <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content=" asdasd asdasd asdasd ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="13" name="SFUIDisplay-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7l-AM-XVl">
+                                <rect key="frame" x="83" y="84" width="154" height="36"/>
+                                <string key="text">Copy Brain-CODE
+to Use it in Another App</string>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPD-cx-wsx" customClass="BottomShadowView">
+                                <rect key="frame" x="9" y="142" width="300" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="0fv-A9-5Ii"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa3-qD-7eH">
+                                <rect key="frame" x="36" y="496" width="248" height="44"/>
+                                <color key="backgroundColor" red="0.20985329150000001" green="0.72564256189999998" blue="0.7855710387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wNx-QF-7rl"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Copy Brain-CODE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="payment2"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionCopy:" destination="Ma2-K0-Bfa" eventType="touchUpInside" id="kbb-nh-1n6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="LPD-cx-wsx" firstAttribute="width" secondItem="P8F-oM-nfj" secondAttribute="width" id="0lc-Jm-zhR"/>
+                            <constraint firstItem="dfg-En-tNh" firstAttribute="top" secondItem="Qa3-qD-7eH" secondAttribute="bottom" constant="28" id="2Tp-RI-l5V"/>
+                            <constraint firstItem="G7l-AM-XVl" firstAttribute="top" secondItem="gWE-Gd-y9h" secondAttribute="bottom" constant="20" id="51W-fh-Svw"/>
+                            <constraint firstItem="P8F-oM-nfj" firstAttribute="leading" secondItem="LPD-cx-wsx" secondAttribute="leading" constant="1" id="62r-oI-F0B"/>
                             <constraint firstItem="gWE-Gd-y9h" firstAttribute="leading" secondItem="wRb-7Q-TsF" secondAttribute="leading" id="8FD-My-5Ux"/>
-                            <constraint firstItem="45S-0v-Psv" firstAttribute="top" secondItem="n2j-l8-CXF" secondAttribute="bottom" constant="20" id="AMd-tS-jsf"/>
-                            <constraint firstItem="dfg-En-tNh" firstAttribute="top" secondItem="45S-0v-Psv" secondAttribute="bottom" constant="28" id="KlA-Ch-Y7X"/>
-                            <constraint firstItem="45S-0v-Psv" firstAttribute="leading" secondItem="wRb-7Q-TsF" secondAttribute="leadingMargin" constant="20" id="LJV-dt-dwJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="n2j-l8-CXF" secondAttribute="trailing" constant="20" id="XQP-Op-96V"/>
+                            <constraint firstItem="P8F-oM-nfj" firstAttribute="top" secondItem="G7l-AM-XVl" secondAttribute="bottom" constant="23" id="9Gb-Sy-P33"/>
+                            <constraint firstItem="P8F-oM-nfj" firstAttribute="centerX" secondItem="wRb-7Q-TsF" secondAttribute="centerX" id="9hP-qz-kZ4"/>
+                            <constraint firstItem="G7l-AM-XVl" firstAttribute="centerX" secondItem="wRb-7Q-TsF" secondAttribute="centerX" id="Ql7-i1-8Bl"/>
+                            <constraint firstItem="P8F-oM-nfj" firstAttribute="top" secondItem="LPD-cx-wsx" secondAttribute="bottom" id="UEO-ZE-eXD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qa3-qD-7eH" secondAttribute="trailing" constant="20" id="WJv-CU-eET"/>
                             <constraint firstItem="gWE-Gd-y9h" firstAttribute="top" secondItem="wRb-7Q-TsF" secondAttribute="top" id="aDz-4o-gR2"/>
-                            <constraint firstItem="n2j-l8-CXF" firstAttribute="leading" secondItem="wRb-7Q-TsF" secondAttribute="leadingMargin" constant="20" id="f3t-Xc-1s2"/>
-                            <constraint firstItem="n2j-l8-CXF" firstAttribute="top" secondItem="Ai9-HJ-0Kt" secondAttribute="bottom" constant="20" id="gP6-ls-DfA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="45S-0v-Psv" secondAttribute="trailing" constant="20" id="mV4-k9-jTR"/>
+                            <constraint firstAttribute="trailing" secondItem="P8F-oM-nfj" secondAttribute="trailing" constant="10" id="reN-f2-bLH"/>
+                            <constraint firstItem="Qa3-qD-7eH" firstAttribute="centerX" secondItem="wRb-7Q-TsF" secondAttribute="centerX" id="ssN-di-rCB"/>
                             <constraint firstAttribute="trailing" secondItem="gWE-Gd-y9h" secondAttribute="trailing" id="tQ4-5p-5q3"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="brainKeyView" destination="n2j-l8-CXF" id="IuR-FA-ag4"/>
+                        <outlet property="brainKeyView" destination="P8F-oM-nfj" id="CsX-A0-ypB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCY-CZ-zvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2227,7 +2262,7 @@
         <image name="wallet" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gcB-FN-MjK"/>
-        <segue reference="tiI-b2-zmb"/>
+        <segue reference="PB7-SA-z5u"/>
+        <segue reference="AZr-Mx-IsF"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -80,7 +80,9 @@
     } else {
         [self accessPinDenied];
     }
-    [self.firstSymbolTextField becomeFirstResponder];
+    [self.view endEditing:YES];
+
+//    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed{
@@ -178,5 +180,6 @@
 - (IBAction)actionEnterPin:(id)sender {
     [self validateAndSendPin];
 }
+
 
 @end

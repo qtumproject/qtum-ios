@@ -118,10 +118,10 @@
     [self hideMenuWithCompletesion:nil];
 }
 
--(void)showExportBrainKey{
+-(void)showExportBrainKeyAnimated:(BOOL)animated{
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ExportBrainKeyViewController"];
-    [self setViewController:viewController animated:NO];
+    [self setViewController:viewController animated:animated];
     [self hideMenuWithCompletesion:nil];
 }
 

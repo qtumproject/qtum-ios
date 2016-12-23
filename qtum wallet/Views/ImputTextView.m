@@ -30,12 +30,13 @@
 
 -(void)configBorder{
     self.layer.borderColor = [UIColor colorWithRed:78/255. green:93/255. blue:111/255. alpha:0.2].CGColor;
-    self.layer.borderWidth = 1;
+    self.layer.borderWidth = 0.5;
+    self.layer.cornerRadius = 2;
 }
 
 #pragma mark - Drawing
 
-- (void)drawRect:(CGRect)rect {
-}
+//- (void)drawRect:(CGRect)rect {
+//}
 
 @end

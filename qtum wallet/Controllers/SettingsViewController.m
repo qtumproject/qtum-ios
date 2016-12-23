@@ -74,6 +74,8 @@
             [[ApplicationCoordinator sharedInstance] startChangePinFlow];
             break;
         case 1:
+            [[ApplicationCoordinator sharedInstance] showExportBrainKeyAnimated:YES];
+
             break;
             
         default:

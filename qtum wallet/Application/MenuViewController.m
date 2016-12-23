@@ -94,7 +94,7 @@
             [[ApplicationCoordinator sharedInstance] showSettings];
             break;
         case 3:
-            [[ApplicationCoordinator sharedInstance] showExportBrainKey];
+            [[ApplicationCoordinator sharedInstance] showExportBrainKeyAnimated:NO];
             break;
             
         default:

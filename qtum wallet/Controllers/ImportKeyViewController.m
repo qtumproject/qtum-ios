@@ -11,7 +11,7 @@
 #import "QRCodeViewController.h"
 
 
-NSString* const textViewPlaceholder = @"Your Brain-CODE";
+NSString* const textViewPlaceholder = @" Your Brain-CODE";
 
 @interface ImportKeyViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate>
 
