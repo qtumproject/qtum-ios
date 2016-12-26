@@ -16,6 +16,7 @@
 #import "SettingsViewController.h"
 #import "ChangePinController.h"
 #import "ImportKeyCoordinator.h"
+#import "TabBarController.h"
 
 @interface ApplicationCoordinator ()
 
@@ -57,11 +58,13 @@
 -(void)start{
     [Appearance setUp];
 
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
-        [self startAskPinFlow:nil];
-    }else{
-        [self startWalletFlow];
-    }
+//    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
+//        [self startAskPinFlow:nil];
+//    }else{
+//        [self startWalletFlow];
+//    }
+    TabBarController* tabBar = [TabBarController new];
+    self.appDelegate.window.rootViewController = tabBar;
 }
 
 -(UIViewController*)congigSideMenuWithFirstController:(UIViewController*) controller{
