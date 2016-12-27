@@ -10,8 +10,8 @@
 
 @interface UIViewController (Extension)
 
-+ (UIViewController*)controllerInStoryboard:(UIStoryboard*) storyboard withIdentifire:(NSString*) identifire;
-- (UIViewController*)controllerInStoryboard:(UIStoryboard*) storyboard;
++ (UIViewController*) controllerInStoryboard:(NSString*) storyboard withIdentifire:(NSString*) identifire;
+- (UIViewController*)controllerInStoryboard:(NSString*) storyboard;
 
 
 @end

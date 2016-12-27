@@ -12,6 +12,8 @@
 #import "HistoryNavigationCoordinator.h"
 #import "ProfileNavigationCoordinator.h"
 #import "UIViewController+Extension.h"
+#import "StartNavigationCoordinator.h"
+#import "TabBarController.h"
 
 @implementation ControllersFactory
 
@@ -33,27 +35,38 @@
 }
 
 -(UIViewController*)profileFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:[UIStoryboard storyboardWithName:@"Profile" bundle:nil] withIdentifire:@""];
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"Profile" withIdentifire:@""];
     ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 
 -(UIViewController*)newsFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:[UIStoryboard storyboardWithName:@"News" bundle:nil] withIdentifire:@""];
-    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:controller];
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"News" withIdentifire:@""];
+    NewsNavigationCoordinator* nav = [[NewsNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 
 -(UIViewController*)sendFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:[UIStoryboard storyboardWithName:@"Send" bundle:nil] withIdentifire:@""];
-    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:controller];
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"Send" withIdentifire:@""];
+    SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 
 -(UIViewController*)historyFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:[UIStoryboard storyboardWithName:@"History" bundle:nil] withIdentifire:@""];
-    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:controller];
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"History" withIdentifire:@""];
+    HistoryNavigationCoordinator* nav = [[HistoryNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
+}
+
+-(UIViewController*)createFlowNavigationCoordinator{
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"Start" withIdentifire:@""];
+    StartNavigationCoordinator* nav = [[StartNavigationCoordinator alloc] initWithRootViewController:controller];
+    return nav;
+}
+
+-(UIViewController*)createTabFlow{
+    TabBarController* tabBar = [TabBarController new];
+    return tabBar;
 }
 
 @end

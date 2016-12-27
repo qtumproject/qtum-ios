@@ -11,6 +11,10 @@
 		1101CF3B1E008C9E0000E862 /* ContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1101CF3A1E008C9E0000E862 /* ContentController.m */; };
 		1101CF3E1E008DA20000E862 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1101CF3D1E008DA20000E862 /* MenuViewController.m */; };
 		1101CF411E008DB40000E862 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1101CF401E008DB40000E862 /* RootViewController.m */; };
+		B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31CF71D1E124A25000BCF41 /* HistoryViewController.m */; };
+		B31CF7201E12514A000BCF41 /* Pin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31CF71F1E12514A000BCF41 /* Pin.storyboard */; };
+		B31CF7231E126C2C000BCF41 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31CF7221E126C2C000BCF41 /* Start.storyboard */; };
+		B31CF72A1E126EFB000BCF41 /* StartNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B31CF7291E126EFB000BCF41 /* StartNavigationCoordinator.m */; };
 		B3210D141E00052900365FB6 /* GradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D131E00052900365FB6 /* GradientLayer.m */; };
 		B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D191E00142100365FB6 /* ViewWithGradientPoints.m */; };
 		B3210D201E001EC200365FB6 /* PinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D1F1E001EC200365FB6 /* PinViewController.m */; };
@@ -22,7 +26,6 @@
 		B32142871E012A5800489BB1 /* CreatePinRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142861E012A5800489BB1 /* CreatePinRootController.m */; };
 		B321428A1E01477A00489BB1 /* AskPinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142891E01477A00489BB1 /* AskPinController.m */; };
 		B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B321428C1E0153F000489BB1 /* CustomTextField.m */; };
-		B321E87A1E0BC8D200DC7DE5 /* ImportKeyCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */; };
 		B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */; };
 		B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8801E0C2C0F00DC7DE5 /* ImputTextView.m */; };
 		B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */; };
@@ -99,6 +102,12 @@
 		1101CF3F1E008DB40000E862 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		1101CF401E008DB40000E862 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		B31CF71C1E124A25000BCF41 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		B31CF71D1E124A25000BCF41 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		B31CF71F1E12514A000BCF41 /* Pin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Pin.storyboard; sourceTree = "<group>"; };
+		B31CF7221E126C2C000BCF41 /* Start.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		B31CF7281E126EFB000BCF41 /* StartNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartNavigationCoordinator.h; sourceTree = "<group>"; };
+		B31CF7291E126EFB000BCF41 /* StartNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartNavigationCoordinator.m; sourceTree = "<group>"; };
 		B3210D121E00052900365FB6 /* GradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientLayer.h; sourceTree = "<group>"; };
 		B3210D131E00052900365FB6 /* GradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLayer.m; sourceTree = "<group>"; };
 		B3210D181E00142100365FB6 /* ViewWithGradientPoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewWithGradientPoints.h; sourceTree = "<group>"; };
@@ -120,8 +129,6 @@
 		B32142891E01477A00489BB1 /* AskPinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPinController.m; sourceTree = "<group>"; };
 		B321428B1E0153F000489BB1 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		B321428C1E0153F000489BB1 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
-		B321E8781E0BC8D200DC7DE5 /* ImportKeyCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportKeyCoordinator.h; sourceTree = "<group>"; };
-		B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportKeyCoordinator.m; sourceTree = "<group>"; };
 		B321E87C1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportBrainKeyViewController.h; sourceTree = "<group>"; };
 		B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportBrainKeyViewController.m; sourceTree = "<group>"; };
 		B321E87F1E0C2C0F00DC7DE5 /* ImputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImputTextView.h; sourceTree = "<group>"; };
@@ -144,12 +151,12 @@
 		B32C3CF51E1129270094C82C /* ControllersFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllersFactory.m; sourceTree = "<group>"; };
 		B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNavigationCoordinator.h; sourceTree = "<group>"; };
 		B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNavigationCoordinator.m; sourceTree = "<group>"; };
-		B32C3CFA1E112A300094C82C /* HistoryNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryNavigationCoordinator.h; sourceTree = "<group>"; };
-		B32C3CFB1E112A300094C82C /* HistoryNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryNavigationCoordinator.m; sourceTree = "<group>"; };
+		B32C3CFA1E112A300094C82C /* HistoryNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryNavigationCoordinator.h; path = Application/HistoryNavigationCoordinator.h; sourceTree = "<group>"; };
+		B32C3CFB1E112A300094C82C /* HistoryNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryNavigationCoordinator.m; path = Application/HistoryNavigationCoordinator.m; sourceTree = "<group>"; };
 		B32C3CFD1E112A470094C82C /* NewsNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsNavigationCoordinator.h; sourceTree = "<group>"; };
 		B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsNavigationCoordinator.m; sourceTree = "<group>"; };
-		B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendNavigationCoordinator.h; sourceTree = "<group>"; };
-		B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendNavigationCoordinator.m; sourceTree = "<group>"; };
+		B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendNavigationCoordinator.h; path = Application/SendNavigationCoordinator.h; sourceTree = "<group>"; };
+		B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendNavigationCoordinator.m; path = Application/SendNavigationCoordinator.m; sourceTree = "<group>"; };
 		B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B36624BF1E03E35D00CBC5B5 /* ChangePinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePinController.h; sourceTree = "<group>"; };
@@ -269,6 +276,36 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B31CF71B1E1249F9000BCF41 /* History Flow */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AF51DDF0C7D0002CD47 /* Cell */,
+				B32C3CFA1E112A300094C82C /* HistoryNavigationCoordinator.h */,
+				B32C3CFB1E112A300094C82C /* HistoryNavigationCoordinator.m */,
+				B31CF71C1E124A25000BCF41 /* HistoryViewController.h */,
+				B31CF71D1E124A25000BCF41 /* HistoryViewController.m */,
+			);
+			name = "History Flow";
+			sourceTree = "<group>";
+		};
+		B31CF7211E125C65000BCF41 /* Pin Flow */ = {
+			isa = PBXGroup;
+			children = (
+				B3210D1D1E001E8900365FB6 /* PIN */,
+			);
+			name = "Pin Flow";
+			sourceTree = "<group>";
+		};
+		B31CF7271E126E05000BCF41 /* Start Flow */ = {
+			isa = PBXGroup;
+			children = (
+				E7D241DA1DE709B5003E507B /* ImportKey */,
+				B31CF7281E126EFB000BCF41 /* StartNavigationCoordinator.h */,
+				B31CF7291E126EFB000BCF41 /* StartNavigationCoordinator.m */,
+			);
+			name = "Start Flow";
+			sourceTree = "<group>";
+		};
 		B3210D111E0004F900365FB6 /* Gradient Layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +330,7 @@
 				B36624C01E03E35D00CBC5B5 /* ChangePinController.m */,
 			);
 			name = PIN;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		B3210D271E00326B00365FB6 /* Fonts */ = {
@@ -352,6 +390,14 @@
 			);
 			name = Extensions;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		B386F5AD1E1297FF004D231B /* Send Flow */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AF11DDEF81A0002CD47 /* NewPayment */,
+			);
+			name = "Send Flow";
 			sourceTree = "<group>";
 		};
 		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
@@ -451,7 +497,6 @@
 		E7396AE91DDEF7CE0002CD47 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E7396AF51DDF0C7D0002CD47 /* Cell */,
 				E7396AEA1DDEF7E30002CD47 /* MainViewController.h */,
 				E7396AEB1DDEF7E30002CD47 /* MainViewController.m */,
 			);
@@ -474,7 +519,8 @@
 				E7396AF21DDEF8260002CD47 /* NewPaymentViewController.h */,
 				E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */,
 			);
-			path = NewPayment;
+			name = NewPayment;
+			path = Controllers/NewPayment;
 			sourceTree = "<group>";
 		};
 		E7396AF51DDF0C7D0002CD47 /* Cell */ = {
@@ -483,7 +529,8 @@
 				E7396AF61DDF0C970002CD47 /* HistoryTableViewCell.h */,
 				E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */,
 			);
-			path = Cell;
+			name = Cell;
+			path = Controllers/Main/Cell;
 			sourceTree = "<group>";
 		};
 		E7396AF91DDF19BE0002CD47 /* Cell */ = {
@@ -518,10 +565,9 @@
 			children = (
 				E7D241DB1DE709D6003E507B /* ImportKeyViewController.h */,
 				E7D241DC1DE709D6003E507B /* ImportKeyViewController.m */,
-				B321E8781E0BC8D200DC7DE5 /* ImportKeyCoordinator.h */,
-				B321E8791E0BC8D200DC7DE5 /* ImportKeyCoordinator.m */,
 			);
 			name = ImportKey;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		E7DD00EB1DC9BFA300FD5335 /* Transaction */ = {
@@ -565,6 +611,12 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B386F5AD1E1297FF004D231B /* Send Flow */,
+				B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */,
+				B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */,
+				B31CF7271E126E05000BCF41 /* Start Flow */,
+				B31CF7211E125C65000BCF41 /* Pin Flow */,
+				B31CF71B1E1249F9000BCF41 /* History Flow */,
 				B32C3CE61E111FD10094C82C /* Factory */,
 				E7FD36601DC73B7900748177 /* Application */,
 				E7DD00EF1DC9E5BD00FD5335 /* Categories */,
@@ -580,6 +632,8 @@
 				B32C3CDE1E111EC70094C82C /* News.storyboard */,
 				B32C3CE01E111ED50094C82C /* Profile.storyboard */,
 				B32C3CE21E111F900094C82C /* History.storyboard */,
+				B31CF71F1E12514A000BCF41 /* Pin.storyboard */,
+				B31CF7221E126C2C000BCF41 /* Start.storyboard */,
 			);
 			path = "qtum wallet";
 			sourceTree = "<group>";
@@ -608,12 +662,9 @@
 			children = (
 				B321E87B1E0BE35200DC7DE5 /* ExportKey */,
 				B36624BB1E03C55300CBC5B5 /* Settings */,
-				B3210D1D1E001E8900365FB6 /* PIN */,
 				E70550CA1DF96E2000B48DC1 /* Recieve */,
-				E7D241DA1DE709B5003E507B /* ImportKey */,
 				E7396AED1DDEF7F10002CD47 /* AddressList */,
 				E7396AE91DDEF7CE0002CD47 /* Main */,
-				E7396AF11DDEF81A0002CD47 /* NewPayment */,
 				E739105C1DE5E11F008145A8 /* Key */,
 				E73910501DE30B91008145A8 /* QRCode */,
 				E7396AE21DDDF5DC0002CD47 /* Start */,
@@ -698,12 +749,8 @@
 				B32C3CF21E1126200094C82C /* TabBarController.m */,
 				B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */,
 				B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */,
-				B32C3CFA1E112A300094C82C /* HistoryNavigationCoordinator.h */,
-				B32C3CFB1E112A300094C82C /* HistoryNavigationCoordinator.m */,
 				B32C3CFD1E112A470094C82C /* NewsNavigationCoordinator.h */,
 				B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */,
-				B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */,
-				B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -831,11 +878,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B32C3CE51E111FA90094C82C /* Send.storyboard in Resources */,
+				B31CF7201E12514A000BCF41 /* Pin.storyboard in Resources */,
 				B32C3CE11E111ED50094C82C /* Profile.storyboard in Resources */,
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
 				B32C3CE31E111F900094C82C /* History.storyboard in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
 				B32C3CDF1E111EC70094C82C /* News.storyboard in Resources */,
+				B31CF7231E126C2C000BCF41 /* Start.storyboard in Resources */,
 				E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */,
 				E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */,
 			);
@@ -905,6 +954,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
+				B31CF72A1E126EFB000BCF41 /* StartNavigationCoordinator.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
@@ -929,6 +979,7 @@
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
+				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
@@ -950,7 +1001,6 @@
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
-				B321E87A1E0BC8D200DC7DE5 /* ImportKeyCoordinator.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */,

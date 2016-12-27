@@ -14,7 +14,11 @@
 @interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
+@property (weak, nonatomic) IBOutlet UIView *adressUnderlineView;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
+@property (weak, nonatomic) IBOutlet UIView *amountUnderlineView;
+@property (weak, nonatomic) IBOutlet TextFieldWithLine *pinTextField;
+@property (weak, nonatomic) IBOutlet UIView *pinUnderlineView;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
@@ -28,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self addDoneButtonToAmountTextField];
+    //[self addDoneButtonToAmountTextField];
     
     if (self.dictionary) {
         [self qrCodeScanned:self.dictionary];
@@ -49,13 +53,29 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    if ([textField isEqual:self.amountTextField]) {
-//        [self calculateResidue:nil];
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    UIColor* underlineColor = [UIColor colorWithRed:54/255. green:185/255. blue:200/255. alpha:1];
+
+    if ([textField isEqual:self.addressTextField]) {
+        self.adressUnderlineView.backgroundColor = underlineColor;
+    }else if ([textField isEqual:self.amountTextField]) {
+        self.amountUnderlineView.backgroundColor = underlineColor;
+    }else if ([textField isEqual:self.pinTextField]) {
+        self.pinUnderlineView.backgroundColor = underlineColor;
     }
     
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    UIColor* underlineColor = [UIColor colorWithRed:189/255. green:198/255. blue:207/255. alpha:1];
+    if ([textField isEqual:self.addressTextField]) {
+        self.adressUnderlineView.backgroundColor = underlineColor;
+    }else if ([textField isEqual:self.amountTextField]) {
+        self.amountUnderlineView.backgroundColor = underlineColor;
+    }else if ([textField isEqual:self.pinTextField]) {
+        self.pinUnderlineView.backgroundColor = underlineColor;
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -135,6 +155,10 @@
         [SVProgressHUD dismiss];
         [weakSelf showAlertWithTitle:@"Error" mesage:message andActions:nil];
     }];
+}
+
+- (IBAction)actionVoidTap:(id)sender{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - QRCodeViewControllerDelegate

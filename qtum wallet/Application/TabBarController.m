@@ -36,11 +36,17 @@
     UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
     UIViewController* history = [[ControllersFactory sharedInstance] historyFlowTab];
     
-    [self setViewControllers:@[news,send,profile,history] animated:YES];
-    news.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"News" image:[UIImage imageNamed:@"news"] tag:0];
-    send.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Send" image:[UIImage imageNamed:@"send"] tag:1];
-    profile.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"profile"] tag:2];
-    history.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"History" image:[UIImage imageNamed:@"history"] tag:3];
+    [self setViewControllers:@[profile,history,news,send] animated:YES];
+
+    profile.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"profile"] tag:0];
+    history.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"History" image:[UIImage imageNamed:@"history"] tag:1];
+    news.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"News" image:[UIImage imageNamed:@"news"] tag:2];
+    send.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Send" image:[UIImage imageNamed:@"send"] tag:3];
+    
+    [profile.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
+    [history.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
+    [news.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
+    [send.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
 }
 
 

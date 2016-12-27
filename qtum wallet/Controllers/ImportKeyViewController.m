@@ -9,7 +9,7 @@
 #import "ImportKeyViewController.h"
 #import "TextFieldWithLine.h"
 #import "QRCodeViewController.h"
-
+#import "StartNavigationCoordinator.h"
 
 NSString* const textViewPlaceholder = @" Your Brain-CODE";
 
@@ -97,14 +97,15 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
     
     NSArray *wordsArray = [self arrayOfWordsFromString:self.brainKeyString];
     
-//    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     
     [[WalletManager sharedInstance] importWalletWithName:@"" pin:@"" seedWords:wordsArray withSuccessHandler:^(Wallet *newWallet) {
         [SVProgressHUD showSuccessWithStatus:@"Done"];
-        
-        [[ApplicationCoordinator sharedInstance] startCreatePinFlowWithCompletesion:^{
+        [weakSelf performSegueWithIdentifier:@"createPin" sender:nil];
+        StartNavigationCoordinator* coordinator = (StartNavigationCoordinator*)self.navigationController;
+        coordinator.createPinCompletesion = ^(){
             [[ApplicationCoordinator sharedInstance] startMainFlow];
-        }];
+        };
     } andFailureHandler:^{
         [SVProgressHUD showErrorWithStatus:@"Some Error"];
     }];
@@ -121,17 +122,19 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 }
 
 - (IBAction)actionCreateWallet:(id)sender {
-    [[ApplicationCoordinator sharedInstance] startCreatePinFlowWithCompletesion:^{
+    __weak typeof(self) weakSelf = self;
+    
+    [weakSelf performSegueWithIdentifier:@"createPin" sender:nil];
+    StartNavigationCoordinator* coordinator = (StartNavigationCoordinator*)self.navigationController;
+    coordinator.createPinCompletesion = ^(){
         [SVProgressHUD show];
-        
         [[WalletManager sharedInstance] createNewWalletWithName:@"" pin:@"" withSuccessHandler:^(Wallet *newWallet) {
             [SVProgressHUD showSuccessWithStatus:@"Done"];
-            
             [[ApplicationCoordinator sharedInstance] startMainFlow];
         } andFailureHandler:^{
             [SVProgressHUD showErrorWithStatus:@"Some Error"];
         }];
-    }];
+    };
 }
 
 #pragma mark -

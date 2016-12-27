@@ -81,7 +81,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4y-jJ-hKS">
-                                                    <rect key="frame" x="50" y="14" width="55.5" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="53.5" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -111,7 +111,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z82-ev-3xe">
-                                                    <rect key="frame" x="50" y="14" width="48" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="46.5" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yis-rr-HrE">
-                                                    <rect key="frame" x="50" y="14" width="77.5" height="16"/>
+                                                    <rect key="frame" x="50" y="14" width="74" height="16"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1182,12 +1182,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZS-TJ-3Ub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3032" y="937"/>
+            <point key="canvasLocation" x="3071" y="948"/>
         </scene>
-        <!--Pin View Controller-->
+        <!--View Controller-->
         <scene sceneID="qkf-HI-hN7">
             <objects>
-                <viewController storyboardIdentifier="PinViewController" automaticallyAdjustsScrollViewInsets="NO" id="5Mg-gm-MeU" customClass="PinViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PinViewController" automaticallyAdjustsScrollViewInsets="NO" id="5Mg-gm-MeU" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q5i-qe-O4h"/>
                         <viewControllerLayoutGuide type="bottom" id="kAJ-pt-f29"/>
@@ -1366,11 +1366,7 @@
                     </view>
                     <connections>
                         <outlet property="enterButton" destination="8N6-KZ-9vI" id="iq9-q3-dSN"/>
-                        <outlet property="firstSymbolTextField" destination="fOP-xu-3HQ" id="lTv-At-FVJ"/>
-                        <outlet property="fourthSymbolTextField" destination="Kyh-zI-3fg" id="fy7-4x-RCS"/>
                         <outlet property="pinContainer" destination="AdM-pt-0WH" id="a5s-VE-sBb"/>
-                        <outlet property="secondSymbolTextField" destination="emQ-Sm-x5z" id="m76-eX-O5M"/>
-                        <outlet property="thirdSymbolTextField" destination="3UM-QK-flI" id="ao6-dn-Iqf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cP-KO-DqG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1469,7 +1465,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kUA-hC-Ib6" customClass="ImputTextView">
-                                <rect key="frame" x="10" y="139" width="300" height="219"/>
+                                <rect key="frame" x="10" y="140" width="300" height="218"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.53000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
@@ -1479,7 +1475,7 @@
                                 </connections>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNa-Pe-klF">
-                                <rect key="frame" x="16" y="84" width="288" height="35"/>
+                                <rect key="frame" x="16" y="84" width="288" height="36"/>
                                 <string key="text">Enter your Brain-CODE
  to Import Wallet</string>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
@@ -1506,7 +1502,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5G-xF-G9O" customClass="BottomShadowView">
-                                <rect key="frame" x="10" y="138" width="300" height="1"/>
+                                <rect key="frame" x="10" y="139" width="300" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="0.52742627640845074" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="6GD-zp-cD6"/>
@@ -1687,10 +1683,10 @@
             </objects>
             <point key="canvasLocation" x="-34" y="960"/>
         </scene>
-        <!--New Payment View Controller-->
+        <!--View Controller-->
         <scene sceneID="QuI-rl-84w">
             <objects>
-                <viewController storyboardIdentifier="NewPaymentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j5J-u3-Pg3" customClass="NewPaymentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewPaymentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j5J-u3-Pg3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sFV-fi-WFP"/>
                         <viewControllerLayoutGuide type="bottom" id="5Re-a7-1f5"/>
@@ -1727,9 +1723,6 @@
                                                 <state key="highlighted" image="back">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="backbuttonPressed:" destination="j5J-u3-Pg3" eventType="touchUpInside" id="rc5-Ah-I0W"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3m-zq-rWj">
                                                 <rect key="frame" x="106" y="12" width="108" height="21"/>
@@ -1791,9 +1784,6 @@
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                <connections>
-                                    <outlet property="delegate" destination="j5J-u3-Pg3" id="7cL-QJ-Ru6"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SVB-et-sa2" customClass="TextFieldWithLine">
                                 <rect key="frame" x="20" y="187" width="280" height="40"/>
@@ -1804,9 +1794,6 @@
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                                <connections>
-                                    <outlet property="delegate" destination="j5J-u3-Pg3" id="MUQ-Hq-Fs8"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfU-mO-Ngy">
                                 <rect key="frame" x="20" y="497" width="280" height="44"/>
@@ -1826,9 +1813,6 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="makePaymentButtonWasPressed:" destination="j5J-u3-Pg3" eventType="touchUpInside" id="tVV-nc-DVE"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1847,15 +1831,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addressTextField" destination="glC-rm-7rT" id="Irw-q5-ZGG"/>
-                        <outlet property="amountTextField" destination="SVB-et-sa2" id="89B-lX-4o2"/>
                         <outlet property="residueValueLabel" destination="aJy-vQ-1QH" id="gOi-gg-ec3"/>
                         <outlet property="topView" destination="VYY-MF-AG3" id="K3b-pi-ZJP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCE-VD-uT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1517" y="956"/>
+            <point key="canvasLocation" x="1461" y="948"/>
         </scene>
         <!--Key View Controller-->
         <scene sceneID="WzX-dE-jBC">
@@ -2070,7 +2052,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-Cr-FCn">
-                                                    <rect key="frame" x="17" y="16.5" width="62.5" height="14"/>
+                                                    <rect key="frame" x="17" y="16.5" width="60.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2109,7 +2091,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wallet Backup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9H-c1-IsA">
-                                                    <rect key="frame" x="17" y="16.5" width="77.5" height="14"/>
+                                                    <rect key="frame" x="17" y="16.5" width="74" height="14"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2336,7 +2318,7 @@ to Use it in Another App</string>
         <image name="wallet" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PB7-SA-z5u"/>
-        <segue reference="AZr-Mx-IsF"/>
+        <segue reference="2H1-xg-RXU"/>
+        <segue reference="gcB-FN-MjK"/>
     </inferredMetricsTieBreakers>
 </document>

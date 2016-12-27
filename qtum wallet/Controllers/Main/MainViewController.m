@@ -144,6 +144,7 @@
 {
     [self performSegueWithIdentifier:@"FromMainToNewPayment" sender:self];
 }
+
 - (IBAction)actionShowMenu:(id)sender {
     [[ApplicationCoordinator sharedInstance] showMenu];
 }

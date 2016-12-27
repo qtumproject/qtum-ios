@@ -16,11 +16,20 @@
 
 @implementation TextFieldWithLine
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setTintColor:[UIColor colorWithRed:54/255. green:185/255. blue:200/255. alpha:1]];
+    }
+    return self;
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    self.lineView.frame = CGRectMake(0, self.frame.size.height - 1.0f, self.frame.size.width, 1.0f);
+    self.lineView.frame = CGRectMake(0, self.frame.size.height + 13.0f, self.frame.size.width, .5f);
 }
 
 - (UIView *)lineView

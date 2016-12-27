@@ -15,12 +15,12 @@
 //    return [storyboard instantiateViewControllerWithIdentifier:identifire];
 }
 
-+ (UIViewController*) controllerInStoryboard:(UIStoryboard*) storyboard withIdentifire:(NSString*) identifire{
-    return [self instantiateControllerInStoryboard:storyboard withIdentifire:identifire];
++ (UIViewController*) controllerInStoryboard:(NSString*) storyboard withIdentifire:(NSString*) identifire{
+    return [self instantiateControllerInStoryboard:[UIStoryboard storyboardWithName:storyboard bundle:nil] withIdentifire:identifire];
 }
 
-- (UIViewController*) controllerInStoryboard:(UIStoryboard*) storyboard{
-    return [UIViewController instantiateControllerInStoryboard:storyboard withIdentifire:self.nameOfClass];
+- (UIViewController*) controllerInStoryboard:(NSString*) storyboard{
+    return [UIViewController instantiateControllerInStoryboard:[UIStoryboard storyboardWithName:storyboard bundle:nil]  withIdentifire:self.nameOfClass];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "StartViewController.h"
 #import "ImportKeyViewController.h"
 #import "ApplicationCoordinator.h"
+#import "StartNavigationCoordinator.h"
 
 @interface StartViewController () <ImportKeyViewControllerDelegate>
 
@@ -36,17 +37,20 @@
 
 - (IBAction)createNewButtonWasPressed:(id)sender
 {
-    [[ApplicationCoordinator sharedInstance] startCreatePinFlowWithCompletesion:^{
+    __block __typeof (self) weakSelf = self;
+    
+    [weakSelf performSegueWithIdentifier:@"createPin" sender:nil];
+    StartNavigationCoordinator* coordinator = (StartNavigationCoordinator*)self.navigationController;
+    coordinator.createPinCompletesion = ^(){
         [SVProgressHUD show];
         
         [[WalletManager sharedInstance] createNewWalletWithName:@"" pin:@"" withSuccessHandler:^(Wallet *newWallet) {
             [SVProgressHUD showSuccessWithStatus:@"Done"];
-            
             [[ApplicationCoordinator sharedInstance] startMainFlow];
         } andFailureHandler:^{
             [SVProgressHUD showErrorWithStatus:@"Some Error"];
         }];
-    }];
+    };
 }
 
 - (void)createAndShowMainVC

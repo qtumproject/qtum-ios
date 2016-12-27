@@ -17,7 +17,10 @@
     [[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [[SVProgressHUD appearance] setMinimumDismissTimeInterval:1];
     
-    [[UITextField appearance] setTintColor:[UIColor whiteColor]];
+    //[[UITextField appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{
+                                                        NSFontAttributeName:[UIFont fontWithName:@"SFUIDisplay-Regular" size:11.0f]
+                                                        } forState:UIControlStateNormal];
 }
 
 @end

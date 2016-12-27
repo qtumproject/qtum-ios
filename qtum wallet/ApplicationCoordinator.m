@@ -15,14 +15,17 @@
 #import "AskPinController.h"
 #import "SettingsViewController.h"
 #import "ChangePinController.h"
-#import "ImportKeyCoordinator.h"
 #import "TabBarController.h"
+#import "UIViewController+Extension.h"
+#import "ControllersFactory.h"
 
 @interface ApplicationCoordinator ()
 
 @property (strong,nonatomic) AppDelegate* appDelegate;
 @property (strong,nonatomic) RootViewController* root;
 @property (strong,nonatomic) ContentController* router;
+@property (strong,nonatomic) ControllersFactory* controllersFactory;
+
 
 @end
 
@@ -43,7 +46,9 @@
 - (instancetype)initUniqueInstance
 {
     self = [super init];
-    if (self != nil) { }
+    if (self != nil) {
+        self.controllersFactory = [ControllersFactory sharedInstance];
+    }
     return self;
 }
 
@@ -63,8 +68,11 @@
 //    }else{
 //        [self startWalletFlow];
 //    }
-    TabBarController* tabBar = [TabBarController new];
-    self.appDelegate.window.rootViewController = tabBar;
+//    TabBarController* tabBar = [TabBarController new];
+//    self.appDelegate.window.rootViewController = tabBar;
+//    UIViewController* vc = [UIViewController controllerInStoryboard:@"Start" withIdentifire:@""];
+//    self.appDelegate.window.rootViewController = vc;
+    [self startMainFlow];
 }
 
 -(UIViewController*)congigSideMenuWithFirstController:(UIViewController*) controller{
@@ -137,6 +145,11 @@
 
 #pragma mark - Flows
 
+-(void)startStartFlow{
+    UIViewController* controller = [self.controllersFactory createFlowNavigationCoordinator];
+    self.appDelegate.window.rootViewController = controller;
+}
+
 
 -(void)startChangePinFlow{
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -169,10 +182,8 @@
 }
 
 -(void)startMainFlow{
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    self.appDelegate.window.rootViewController = [self congigSideMenuWithFirstController:vc];
-    [self shoudShowMenu:YES];
+    UIViewController* controller = [self.controllersFactory createTabFlow];
+    self.appDelegate.window.rootViewController = controller;
 }
 
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion{

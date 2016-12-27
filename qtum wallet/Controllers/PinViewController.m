@@ -9,6 +9,10 @@
 #import "PinViewController.h"
 #import "CustomTextField.h"
 
+const float bottomOffsetKeyboard = 300;
+const float bottomOffset = 28;
+
+
 @interface PinViewController () <UITextFieldDelegate, CAAnimationDelegate>
 
 @property (weak, nonatomic) IBOutlet CustomTextField *firstSymbolTextField;
@@ -16,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet CustomTextField *thirdSymbolTextField;
 @property (weak, nonatomic) IBOutlet CustomTextField *fourthSymbolTextField;
 @property (weak, nonatomic) IBOutlet UIView *pinContainer;
-@property (weak, nonatomic) IBOutlet UIButton *enterButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonsBottomOffset;
 
 @end
 
@@ -24,8 +28,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     [self.firstSymbolTextField becomeFirstResponder];
-    [self configEnterButton];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -39,33 +50,23 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Keyboard
+
+-(void)keyboardWillShow:(NSNotification *)sender{
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.buttonsBottomOffset.constant = bottomOffset + end.size.height;
+    NSTimeInterval duration = [[sender userInfo][UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [self changeConstraintsAnimatedWithTime:duration];
+}
+
+-(void)keyboardWillHide:(NSNotification *)sender{
+    self.buttonsBottomOffset.constant = bottomOffset;
+    NSTimeInterval duration = [[sender userInfo][UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [self changeConstraintsAnimatedWithTime:duration];
+}
+
 #pragma mark - Configuration
 
--(void)configEnterButton{
-    NSString* title;
-    switch (self.type) {
-        case EnterType:
-            title = @"Enter PIN";
-            break;
-        case CreateType:
-            title = @"Create PIN";
-            break;
-        case ConfirmType:
-            title = @"Repeat PIN";
-            break;
-        case OldType:
-            title = @"Old PIN";
-            break;
-        case NewType:
-            title = @"New PIN";
-            break;
-            
-        default:
-            title = @"Enter PIN";
-            break;
-    }
-    [self.enterButton setTitle:title forState:UIControlStateNormal];
-}
 #pragma mark - Privat Methods
 
 -(void)validateAndSendPin{
@@ -73,16 +74,18 @@
     __weak typeof(self) weakSelf = self;
     if (pin.length == 4) {
         [self.delegate confirmPin:pin andCompletision:^(BOOL success) {
-            if (!success) {
+            if (success) {
+                [weakSelf.view endEditing:YES];
+            }else {
                 [weakSelf accessPinDenied];
             }
         }];
+        [self clearPinTextFields];
+        [self.firstSymbolTextField becomeFirstResponder];
     } else {
         [self accessPinDenied];
     }
-    [self.view endEditing:YES];
 
-//    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed{
@@ -104,7 +107,7 @@
         } else if ([textField isEqual:self.thirdSymbolTextField]) {
             [self.fourthSymbolTextField becomeFirstResponder];
         } else if ([textField isEqual:self.fourthSymbolTextField]) {
-            [self validateAndSendPin];
+            //[self validateAndSendPin];
         }
     }
 }
@@ -123,6 +126,12 @@
     self.secondSymbolTextField.text =
     self.thirdSymbolTextField.text =
     self.fourthSymbolTextField.text = @"";
+}
+
+-(void)changeConstraintsAnimatedWithTime:(NSTimeInterval)time{
+    [UIView animateWithDuration:time animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 #pragma mark - CAAnimationDelegate
@@ -179,6 +188,10 @@
 
 - (IBAction)actionEnterPin:(id)sender {
     [self validateAndSendPin];
+}
+
+- (IBAction)actionCancel:(id)sender {
+    [self.view endEditing:YES];
 }
 
 

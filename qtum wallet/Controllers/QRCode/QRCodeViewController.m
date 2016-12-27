@@ -50,29 +50,32 @@
 {
     [super viewDidAppear:animated];
     
-    self.scanner = [[MTBBarcodeScanner alloc] initWithMetadataObjectTypes:@[AVMetadataObjectTypeUPCECode,
-                                                                            AVMetadataObjectTypeCode39Code,
-                                                                            AVMetadataObjectTypeCode39Mod43Code,
-                                                                            AVMetadataObjectTypeEAN13Code,
-                                                                            AVMetadataObjectTypeEAN8Code,
-                                                                            AVMetadataObjectTypeCode93Code,
-                                                                            AVMetadataObjectTypeCode128Code,
-                                                                            AVMetadataObjectTypePDF417Code,
-                                                                            AVMetadataObjectTypeQRCode,
-                                                                            AVMetadataObjectTypeAztecCode]
-                                                              previewView:self.cameraView];
-    __weak typeof(self) weakSelf = self;
-    [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
-        if (success)
-        {
-            weakSelf.scanner.resultBlock = weakSelf.scanningCompletion;
-            [weakSelf.scanner startScanning];
-            
-        } else
-        {
-            [weakSelf showCameraPermissionAlertWithTitle:@"Error" mesage:@"Camera premission not found" andActions:nil];
-        }
-    }];
+    if (!self.scanner) {
+        
+        self.scanner = [[MTBBarcodeScanner alloc] initWithMetadataObjectTypes:@[AVMetadataObjectTypeUPCECode,
+                                                                                AVMetadataObjectTypeCode39Code,
+                                                                                AVMetadataObjectTypeCode39Mod43Code,
+                                                                                AVMetadataObjectTypeEAN13Code,
+                                                                                AVMetadataObjectTypeEAN8Code,
+                                                                                AVMetadataObjectTypeCode93Code,
+                                                                                AVMetadataObjectTypeCode128Code,
+                                                                                AVMetadataObjectTypePDF417Code,
+                                                                                AVMetadataObjectTypeQRCode,
+                                                                                AVMetadataObjectTypeAztecCode]
+                                                                  previewView:self.cameraView];
+        __weak typeof(self) weakSelf = self;
+        [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
+            if (success)
+            {
+                weakSelf.scanner.resultBlock = weakSelf.scanningCompletion;
+                [weakSelf.scanner startScanning];
+                
+            } else
+            {
+                [weakSelf showCameraPermissionAlertWithTitle:@"Error" mesage:@"Camera premission not found" andActions:nil];
+            }
+        }];
+    }
 }
 
 - (IBAction)backButtonWasPressed:(id)sender

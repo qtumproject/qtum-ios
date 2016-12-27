@@ -23,5 +23,7 @@
 -(UIViewController*)createPinFlowController;
 -(UIViewController*)createWalletFlowController;
 
+-(UIViewController*)createFlowNavigationCoordinator;
+-(UIViewController*)createTabFlow;
 
 @end
