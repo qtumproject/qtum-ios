@@ -11,8 +11,7 @@
 @implementation UIViewController (Extension)
 
 + (UIViewController*) instantiateControllerInStoryboard:(UIStoryboard*) storyboard withIdentifire:(NSString*) identifire{
-    return [storyboard instantiateInitialViewController];
-//    return [storyboard instantiateViewControllerWithIdentifier:identifire];
+    return identifire ? [storyboard instantiateViewControllerWithIdentifier:identifire] : [storyboard instantiateInitialViewController];
 }
 
 + (UIViewController*) controllerInStoryboard:(NSString*) storyboard withIdentifire:(NSString*) identifire{

@@ -17,3 +17,22 @@ UIColor *textFieldLineColorSelected();
 UIColor *textFieldLineColorDeselected();
 UIColor *historyRedColor();
 UIColor *historyGreenColor();
+
+
+typedef NS_ENUM(NSInteger,PinType){
+    EnterType,
+    CreateType,
+    ConfirmType,
+    NewType,
+    OldType
+};
+
+@protocol PinCoordinator <NSObject>
+
+@required
+-(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completisiom;
+@optional
+-(void)confilmPinFailed;
+-(void)setAnimationState:(BOOL)isAnimating;
+
+@end

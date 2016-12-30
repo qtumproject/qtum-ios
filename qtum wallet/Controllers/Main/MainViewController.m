@@ -146,7 +146,7 @@
 }
 
 - (IBAction)actionShowMenu:(id)sender {
-    [[ApplicationCoordinator sharedInstance] showMenu];
+//    [[ApplicationCoordinator sharedInstance] showMenu];
 }
 
 #pragma merk - Seque

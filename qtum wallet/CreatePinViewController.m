@@ -1,37 +1,28 @@
 //
-//  PinViewController.m
+//  CreatePinViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 13.12.16.
+//  Created by Никита Федоренко on 30.12.16.
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
-#import "PinViewController.h"
+#import "CreatePinViewController.h"
 #import "CustomTextField.h"
+#import "StartNavigationCoordinator.h"
 
-const float bottomOffsetKeyboard = 300;
-const float bottomOffset = 25;
+@interface CreatePinViewController () <CAAnimationDelegate>
 
-
-@interface PinViewController () <UITextFieldDelegate, CAAnimationDelegate>
-
-@property (weak, nonatomic) IBOutlet UILabel *controllerTitle;
 @property (weak, nonatomic) IBOutlet CustomTextField *firstSymbolTextField;
 @property (weak, nonatomic) IBOutlet CustomTextField *secondSymbolTextField;
 @property (weak, nonatomic) IBOutlet CustomTextField *thirdSymbolTextField;
 @property (weak, nonatomic) IBOutlet CustomTextField *fourthSymbolTextField;
 @property (weak, nonatomic) IBOutlet UIView *pinContainer;
 @property (weak, nonatomic) IBOutlet UIView *incorrectPinView;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmButtonTopOffset;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelButtonTopOffset;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmButtonBottomOffset;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelButtonBottomOffset;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
 
 @end
 
-@implementation PinViewController
+@implementation CreatePinViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,10 +34,11 @@ const float bottomOffset = 25;
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    [self.firstSymbolTextField becomeFirstResponder];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -57,33 +49,17 @@ const float bottomOffset = 25;
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - Keyboard
 
 -(void)keyboardWillShow:(NSNotification *)sender{
-    NSTimeInterval duration = [[sender userInfo][UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-
-    [self.cancelButtonBottomOffset setActive:NO];
-    [self.cancelButtonTopOffset setActive:YES];
-
-    [self.confirmButtonBottomOffset setActive:NO];
-    [self.confirmButtonTopOffset setActive:YES];
-    
-    [self changeConstraintsAnimatedWithTime:duration];
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.gradientViewBottomOffset.constant = end.size.height;
+    [self.view layoutIfNeeded];
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
-    NSTimeInterval duration = [[sender userInfo][UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-
-    [self.cancelButtonBottomOffset setActive:YES];
-    [self.confirmButtonBottomOffset setActive:YES];
-    
-    [self.cancelButtonTopOffset setActive:NO];
-    [self.confirmButtonTopOffset setActive:NO];
-    [self changeConstraintsAnimatedWithTime:duration];
+    self.gradientViewBottomOffset.constant = 0;
+    [self.view layoutIfNeeded];
 }
 
 #pragma mark - Configuration
@@ -96,7 +72,7 @@ const float bottomOffset = 25;
     if (pin.length == 4) {
         [self.delegate confirmPin:pin andCompletision:^(BOOL success) {
             if (success) {
-                [weakSelf.view endEditing:YES];
+//                [weakSelf performSegueWithIdentifier:@"" sender:nil];
             }else {
                 [weakSelf accessPinDenied];
             }
@@ -106,7 +82,7 @@ const float bottomOffset = 25;
     } else {
         [self accessPinDenied];
     }
-
+    
 }
 
 -(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed{
@@ -134,6 +110,11 @@ const float bottomOffset = 25;
 }
 
 -(void)accessPinDenied {
+    [self shakeAndClearText];
+    [self actionIncorrectPin];
+}
+
+-(void)shakeAndClearText{
     CAKeyframeAnimation* shake = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
     shake.duration = 0.6;
     shake.values = @[@-20.0, @20.0, @-20.0, @20.0, @-10.0, @10.0, @-5.0, @5.0, @0.0];
@@ -158,7 +139,7 @@ const float bottomOffset = 25;
 #pragma mark - CAAnimationDelegate
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    if (flag && self.type == ConfirmType) {
+    if (flag) {
         if ([self.delegate respondsToSelector:@selector(confilmPinFailed)]) {
             [self.delegate confilmPinFailed];
         }
@@ -215,11 +196,7 @@ const float bottomOffset = 25;
     [self.view endEditing:YES];
 }
 
-#pragma mark - 
-
--(void)setCustomTitle:(NSString*) title{
-    self.controllerTitle.text = title;
-}
+#pragma mark -
 
 -(void)needBackButton:(BOOL) flag{
     

@@ -35,31 +35,31 @@
 }
 
 -(UIViewController*)profileFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Profile" withIdentifire:@""];
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"Profile" withIdentifire:nil];
     ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 
 -(UIViewController*)newsFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"News" withIdentifire:@""];
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"News" withIdentifire:nil];
     NewsNavigationCoordinator* nav = [[NewsNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 
 -(UIViewController*)sendFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Send" withIdentifire:@""];
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"Send" withIdentifire:nil];
     SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 
 -(UIViewController*)historyFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"History" withIdentifire:@""];
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"History" withIdentifire:nil];
     HistoryNavigationCoordinator* nav = [[HistoryNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 
 -(UIViewController*)createFlowNavigationCoordinator{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Start" withIdentifire:@""];
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"Start" withIdentifire:nil];
     StartNavigationCoordinator* nav = [[StartNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }

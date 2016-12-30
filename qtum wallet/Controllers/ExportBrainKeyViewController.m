@@ -7,7 +7,6 @@
 //
 
 #import "ExportBrainKeyViewController.h"
-#import "ApplicationCoordinator.h"
 #import "WalletManager.h"
 
 @interface ExportBrainKeyViewController ()
@@ -22,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configurationBrainKeyLabel];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,14 +46,15 @@
 
 #pragma mark - Actions
 
-- (IBAction)showMenu:(id)sender {
-    [[ApplicationCoordinator sharedInstance] showMenu];
-}
 
 - (IBAction)actionCopy:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.brainKey;
     [self showAlertWithTitle:nil mesage:@"Brain-CODE copied" andActions:nil];
+}
+
+- (IBAction)actionContinue:(id)sender {
+    [[ApplicationCoordinator sharedInstance] startMainFlow];
 }
 
 

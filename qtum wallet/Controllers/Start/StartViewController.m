@@ -39,18 +39,7 @@
 {
     __block __typeof (self) weakSelf = self;
     
-    [weakSelf performSegueWithIdentifier:@"createPin" sender:nil];
-    StartNavigationCoordinator* coordinator = (StartNavigationCoordinator*)self.navigationController;
-    coordinator.createPinCompletesion = ^(){
-        [SVProgressHUD show];
-        
-        [[WalletManager sharedInstance] createNewWalletWithName:@"" pin:@"" withSuccessHandler:^(Wallet *newWallet) {
-            [SVProgressHUD showSuccessWithStatus:@"Done"];
-            [[ApplicationCoordinator sharedInstance] startMainFlow];
-        } andFailureHandler:^{
-            [SVProgressHUD showErrorWithStatus:@"Some Error"];
-        }];
-    };
+    [weakSelf performSegueWithIdentifier:@"createWalletName" sender:nil];
 }
 
 - (void)createAndShowMainVC
@@ -75,6 +64,13 @@
         ImportKeyViewController *vc = (ImportKeyViewController *)segue.destinationViewController;
         vc.delegate = self;
     }
+}
+
+#pragma mark - Unwing seque
+
+-(IBAction)unwingToStart:(UIStoryboardSegue *)segue {
+    StartNavigationCoordinator* coordinator = (StartNavigationCoordinator*)self.navigationController;
+    [coordinator clear];
 }
 
 @end

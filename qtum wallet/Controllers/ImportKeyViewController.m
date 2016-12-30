@@ -18,6 +18,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextView *brandKeyTextView;
 @property (strong,nonatomic) NSString *brainKeyString;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
 
 - (IBAction)importButtonWasPressed:(id)sender;
 - (IBAction)backButtonWasPressed:(id)sender;
@@ -28,7 +29,16 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     self.brandKeyTextView.text = textViewPlaceholder;
+    [self.brandKeyTextView becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,11 +55,25 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
     return array;
 }
 
+
+#pragma mark - Notification
+
+-(void)keyboardWillShow:(NSNotification *)sender{
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.gradientViewBottomOffset.constant = end.size.height;
+    [self.view layoutIfNeeded];
+    
+}
+
+-(void)keyboardWillHide:(NSNotification *)sender{
+    self.gradientViewBottomOffset.constant = 0;
+    [self.view layoutIfNeeded];
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
     return YES;
 }
 

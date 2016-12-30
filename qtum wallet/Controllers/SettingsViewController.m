@@ -33,7 +33,7 @@
     [[ApplicationCoordinator sharedInstance] startWalletFlow];
 }
 - (IBAction)actionMenu:(id)sender {
-    [[ApplicationCoordinator sharedInstance] showMenu];
+//    [[ApplicationCoordinator sharedInstance] showMenu];
 }
 
 

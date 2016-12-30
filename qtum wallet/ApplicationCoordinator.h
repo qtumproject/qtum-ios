@@ -19,16 +19,14 @@
 -(void)start;
 //flows
 -(void)startMainFlow;
+-(void)startStartFlow;
 -(void)startWalletFlow;
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)startChangePinFlow;
 
--(void)showMenu;
--(void)showSettings;
 -(void)showWallet;
 -(void)showExportBrainKeyAnimated:(BOOL)animated;
 
--(void)shoudShowMenu:(BOOL) flag;
 -(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;
 -(void)setViewController:(UIViewController*) controller animated:(BOOL)animated;
 

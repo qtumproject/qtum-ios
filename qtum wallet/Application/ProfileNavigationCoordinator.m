@@ -7,8 +7,13 @@
 //
 
 #import "ProfileNavigationCoordinator.h"
+#import "PinViewController.h"
 
-@interface ProfileNavigationCoordinator ()
+@interface ProfileNavigationCoordinator () <PinCoordinator>
+
+@property (strong,nonatomic) NSString* pinNew;
+@property (strong,nonatomic) NSString* pinOld;
+@property (weak,nonatomic) PinViewController* pinController;
 
 @end
 
@@ -16,22 +21,58 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if ([viewController isKindOfClass:[PinViewController class]]) {
+        PinViewController* controller = (PinViewController*)viewController;
+        controller.type = ConfirmType;
+        controller.delegate = self;
+        self.pinController = controller;
+    }
+    [super pushViewController:viewController animated:animated];
 }
-*/
+
+#pragma mark - PinCoordinator
+
+-(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
+    if (!self.pinOld) {
+        if ([[WalletManager sharedInstance].PIN isEqualToString:pin]) {
+            //old pin confirmed
+            self.pinOld = pin;
+            [self.pinController setCustomTitle:@"Enter New PIN"];
+        }else {
+            completision(NO);
+            [self.pinController actionIncorrectPin];
+            [self.pinController setCustomTitle:@"Enter Old PIN"];
+        }
+    } else if(!self.pinNew) {
+        //entered new pin
+        self.pinNew = pin;
+        [self.pinController setCustomTitle:@"Repeate New PIN"];
+
+    } else {
+        if (self.pinNew == pin) {
+            //change pin for new one
+            [[WalletManager sharedInstance] storePin:self.pinNew];
+            [self popViewControllerAnimated:YES];
+            self.pinOld = nil;
+            self.pinNew = nil;
+        } else {
+            //confirming pin failed
+            self.pinOld = nil;
+            self.pinNew = nil;
+            completision(NO);
+            [self.pinController actionIncorrectPin];
+            [self.pinController setCustomTitle:@"Enter Old PIN"];
+        }
+    }
+}
+
 
 @end

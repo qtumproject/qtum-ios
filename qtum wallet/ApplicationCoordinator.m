@@ -8,8 +8,6 @@
 
 #import "ApplicationCoordinator.h"
 #import "Appearance.h"
-#import "RootViewController.h"
-#import "ContentController.h"
 #import "CreatePinRootController.h"
 #import "PinViewController.h"
 #import "AskPinController.h"
@@ -22,8 +20,7 @@
 @interface ApplicationCoordinator ()
 
 @property (strong,nonatomic) AppDelegate* appDelegate;
-@property (strong,nonatomic) RootViewController* root;
-@property (strong,nonatomic) ContentController* router;
+@property (strong,nonatomic) TabBarController* router;
 @property (strong,nonatomic) ControllersFactory* controllersFactory;
 
 
@@ -62,40 +59,18 @@
 
 -(void)start{
     [Appearance setUp];
-
-//    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
-//        [self startAskPinFlow:nil];
-//    }else{
-//        [self startWalletFlow];
-//    }
-//    TabBarController* tabBar = [TabBarController new];
-//    self.appDelegate.window.rootViewController = tabBar;
-//    UIViewController* vc = [UIViewController controllerInStoryboard:@"Start" withIdentifire:@""];
-//    self.appDelegate.window.rootViewController = vc;
-    [self startMainFlow];
-}
-
--(UIViewController*)congigSideMenuWithFirstController:(UIViewController*) controller{
-    ContentController *navigationController = [[ContentController alloc] initWithRootViewController:controller];
-    RootViewController *mainViewController = [RootViewController new];
-    mainViewController.rootViewController = navigationController;
-    
-    [mainViewController setupWithPresentationStyle:LGSideMenuPresentationStyleSlideAbove type:0];
-    self.root = mainViewController;
-    self.router = navigationController;
-
-    return mainViewController;
-}
-
--(void)shoudShowMenu:(BOOL) flag{
-    self.root.shouldShowLeftView = flag;
+    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
+        [self startMainFlow];
+    }else{
+        [self startStartFlow];
+    }
 }
 
 #pragma mark - Navigation
 
 
 -(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated{
-    [self.router pushViewController:controller animated:animated];
+//    [self.router pushViewController:controller animated:animated];
 }
 
 -(void)setViewController:(UIViewController*) controller animated:(BOOL)animated{
@@ -103,14 +78,7 @@
 }
 
 -(void)presentAsModal:(UIViewController*) controller animated:(BOOL)animated{
-    [self.root presentViewController:controller animated:animated completion:nil];
-}
-
--(void)showMenu{
-    [self.root showLeftViewAnimated:YES completionHandler:nil];
-}
--(void)hideMenuWithCompletesion:(void(^)()) completision{
-    [self.root hideLeftViewAnimated:YES completionHandler:completision];
+//    [self.root presentViewController:controller animated:animated completion:nil];
 }
 
 #pragma mark - Presenting Controllers
@@ -119,28 +87,18 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     [self setViewController:viewController animated:NO];
-    [self hideMenuWithCompletesion:nil];
 }
 
 -(void)showWallet{
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
     [self setViewController:viewController animated:NO];
-    [self hideMenuWithCompletesion:nil];
 }
 
 -(void)showExportBrainKeyAnimated:(BOOL)animated{
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ExportBrainKeyViewController"];
     [self setViewController:viewController animated:animated];
-    [self hideMenuWithCompletesion:nil];
-}
-
--(void)backToSettings{
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-    self.appDelegate.window.rootViewController = [self congigSideMenuWithFirstController:vc];
-    [self shoudShowMenu:YES];
 }
 
 #pragma mark - Flows
@@ -182,7 +140,8 @@
 }
 
 -(void)startMainFlow{
-    UIViewController* controller = [self.controllersFactory createTabFlow];
+    TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
+    self.router = controller;
     self.appDelegate.window.rootViewController = controller;
 }
 
@@ -195,12 +154,6 @@
     viewController.type = CreateType;
     self.appDelegate.window.rootViewController = createPinRoot;
 }
-//
-//-(void)startImportKeyFlow{
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ImportKeyViewController"];
-//    self.appDelegate.window.rootViewController = createImportRoot;
-//}
 
 
 @end

@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
-		1101CF3B1E008C9E0000E862 /* ContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1101CF3A1E008C9E0000E862 /* ContentController.m */; };
-		1101CF3E1E008DA20000E862 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1101CF3D1E008DA20000E862 /* MenuViewController.m */; };
-		1101CF411E008DB40000E862 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1101CF401E008DB40000E862 /* RootViewController.m */; };
 		B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31CF71D1E124A25000BCF41 /* HistoryViewController.m */; };
 		B31CF7201E12514A000BCF41 /* Pin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31CF71F1E12514A000BCF41 /* Pin.storyboard */; };
 		B31CF7231E126C2C000BCF41 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31CF7221E126C2C000BCF41 /* Start.storyboard */; };
@@ -21,8 +18,6 @@
 		B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D221E002E2900365FB6 /* ApplicationCoordinator.m */; };
 		B3210D261E0030DB00365FB6 /* Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D251E0030DB00365FB6 /* Appearance.m */; };
 		B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */; };
-		B3210D311E00409600365FB6 /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D2E1E00409600365FB6 /* LGSideMenuController.m */; };
-		B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */; };
 		B32142871E012A5800489BB1 /* CreatePinRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142861E012A5800489BB1 /* CreatePinRootController.m */; };
 		B321428A1E01477A00489BB1 /* AskPinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32142891E01477A00489BB1 /* AskPinController.m */; };
 		B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B321428C1E0153F000489BB1 /* CustomTextField.m */; };
@@ -42,9 +37,21 @@
 		B32C3CFC1E112A300094C82C /* HistoryNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CFB1E112A300094C82C /* HistoryNavigationCoordinator.m */; };
 		B32C3CFF1E112A470094C82C /* NewsNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */; };
 		B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */; };
+		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
 		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B36624C11E03E35D00CBC5B5 /* ChangePinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624C01E03E35D00CBC5B5 /* ChangePinController.m */; };
 		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
+		B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B01E1395E5004D231B /* ProfileViewController.m */; };
+		B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */; };
+		B386F5E41E163F41004D231B /* SF-UI-DISPLAY-LIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DC1E163F2B004D231B /* SF-UI-DISPLAY-LIGHT.OTF */; };
+		B386F5E51E163F41004D231B /* SF-UI-DISPLAY-SEMIBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DD1E163F2B004D231B /* SF-UI-DISPLAY-SEMIBOLD.OTF */; };
+		B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */; };
+		B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */; };
+		B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */; };
+		B386F5E91E163F41004D231B /* SF-UI-DISPLAY-HEAVY.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E11E163F2B004D231B /* SF-UI-DISPLAY-HEAVY.OTF */; };
+		B386F5EA1E163F41004D231B /* SF-UI-DISPLAY-MEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E21E163F2B004D231B /* SF-UI-DISPLAY-MEDIUM.OTF */; };
+		B386F5EB1E163F41004D231B /* SF-UI-DISPLAY-BLACK.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E31E163F2B004D231B /* SF-UI-DISPLAY-BLACK.OTF */; };
+		B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5ED1E16403B004D231B /* WalletNameViewController.m */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
 		E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71AF24C1E0178C50068595B /* libCoreBitcoin.a */; };
@@ -95,12 +102,6 @@
 
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1101CF391E008C9E0000E862 /* ContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentController.h; sourceTree = "<group>"; };
-		1101CF3A1E008C9E0000E862 /* ContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentController.m; sourceTree = "<group>"; };
-		1101CF3C1E008DA20000E862 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		1101CF3D1E008DA20000E862 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		1101CF3F1E008DB40000E862 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		1101CF401E008DB40000E862 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
 		B31CF71C1E124A25000BCF41 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		B31CF71D1E124A25000BCF41 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
@@ -119,10 +120,6 @@
 		B3210D241E0030DB00365FB6 /* Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearance.h; sourceTree = "<group>"; };
 		B3210D251E0030DB00365FB6 /* Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearance.m; sourceTree = "<group>"; };
 		B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Regular.otf"; sourceTree = SOURCE_ROOT; };
-		B3210D2D1E00409600365FB6 /* LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuController.h; sourceTree = "<group>"; };
-		B3210D2E1E00409600365FB6 /* LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuController.m; sourceTree = "<group>"; };
-		B3210D2F1E00409600365FB6 /* UIViewController+LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LGSideMenuController.h"; sourceTree = "<group>"; };
-		B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LGSideMenuController.m"; sourceTree = "<group>"; };
 		B32142851E012A5800489BB1 /* CreatePinRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinRootController.h; sourceTree = "<group>"; };
 		B32142861E012A5800489BB1 /* CreatePinRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinRootController.m; sourceTree = "<group>"; };
 		B32142881E01477A00489BB1 /* AskPinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPinController.h; sourceTree = "<group>"; };
@@ -149,20 +146,36 @@
 		B32C3CF21E1126200094C82C /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		B32C3CF41E1129270094C82C /* ControllersFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllersFactory.h; sourceTree = "<group>"; };
 		B32C3CF51E1129270094C82C /* ControllersFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllersFactory.m; sourceTree = "<group>"; };
-		B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNavigationCoordinator.h; sourceTree = "<group>"; };
-		B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNavigationCoordinator.m; sourceTree = "<group>"; };
+		B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileNavigationCoordinator.h; path = Application/ProfileNavigationCoordinator.h; sourceTree = "<group>"; };
+		B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileNavigationCoordinator.m; path = Application/ProfileNavigationCoordinator.m; sourceTree = "<group>"; };
 		B32C3CFA1E112A300094C82C /* HistoryNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryNavigationCoordinator.h; path = Application/HistoryNavigationCoordinator.h; sourceTree = "<group>"; };
 		B32C3CFB1E112A300094C82C /* HistoryNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryNavigationCoordinator.m; path = Application/HistoryNavigationCoordinator.m; sourceTree = "<group>"; };
 		B32C3CFD1E112A470094C82C /* NewsNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsNavigationCoordinator.h; sourceTree = "<group>"; };
 		B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsNavigationCoordinator.m; sourceTree = "<group>"; };
 		B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendNavigationCoordinator.h; path = Application/SendNavigationCoordinator.h; sourceTree = "<group>"; };
 		B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendNavigationCoordinator.m; path = Application/SendNavigationCoordinator.m; sourceTree = "<group>"; };
+		B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinViewController.h; sourceTree = "<group>"; };
+		B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinViewController.m; sourceTree = "<group>"; };
 		B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B36624BF1E03E35D00CBC5B5 /* ChangePinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePinController.h; sourceTree = "<group>"; };
 		B36624C01E03E35D00CBC5B5 /* ChangePinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePinController.m; sourceTree = "<group>"; };
 		B3846DD41DFEFA6500D6872C /* UIAlertController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Extensions.h"; sourceTree = "<group>"; };
 		B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Extensions.m"; sourceTree = "<group>"; };
+		B386F5AF1E1395E5004D231B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		B386F5B01E1395E5004D231B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
+		B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
+		B386F5DC1E163F2B004D231B /* SF-UI-DISPLAY-LIGHT.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-LIGHT.OTF"; sourceTree = SOURCE_ROOT; };
+		B386F5DD1E163F2B004D231B /* SF-UI-DISPLAY-SEMIBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-SEMIBOLD.OTF"; sourceTree = SOURCE_ROOT; };
+		B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-THIN.OTF"; sourceTree = SOURCE_ROOT; };
+		B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-ULTRALIGHT.OTF"; sourceTree = SOURCE_ROOT; };
+		B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-BOLD.OTF"; sourceTree = SOURCE_ROOT; };
+		B386F5E11E163F2B004D231B /* SF-UI-DISPLAY-HEAVY.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-HEAVY.OTF"; sourceTree = SOURCE_ROOT; };
+		B386F5E21E163F2B004D231B /* SF-UI-DISPLAY-MEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-MEDIUM.OTF"; sourceTree = SOURCE_ROOT; };
+		B386F5E31E163F2B004D231B /* SF-UI-DISPLAY-BLACK.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-BLACK.OTF"; sourceTree = SOURCE_ROOT; };
+		B386F5EC1E16403B004D231B /* WalletNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletNameViewController.h; sourceTree = "<group>"; };
+		B386F5ED1E16403B004D231B /* WalletNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletNameViewController.m; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
 		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewController.m; sourceTree = "<group>"; };
@@ -256,17 +269,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1101CF421E00C5E70000E862 /* Side Menu */ = {
-			isa = PBXGroup;
-			children = (
-				B3210D2D1E00409600365FB6 /* LGSideMenuController.h */,
-				B3210D2E1E00409600365FB6 /* LGSideMenuController.m */,
-				B3210D2F1E00409600365FB6 /* UIViewController+LGSideMenuController.h */,
-				B3210D301E00409600365FB6 /* UIViewController+LGSideMenuController.m */,
-			);
-			name = "Side Menu";
-			sourceTree = "<group>";
-		};
 		94DECCBC55E0AE7D7EF532E6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,9 +301,14 @@
 		B31CF7271E126E05000BCF41 /* Start Flow */ = {
 			isa = PBXGroup;
 			children = (
+				E7396AE21DDDF5DC0002CD47 /* Start */,
 				E7D241DA1DE709B5003E507B /* ImportKey */,
 				B31CF7281E126EFB000BCF41 /* StartNavigationCoordinator.h */,
 				B31CF7291E126EFB000BCF41 /* StartNavigationCoordinator.m */,
+				B386F5EC1E16403B004D231B /* WalletNameViewController.h */,
+				B386F5ED1E16403B004D231B /* WalletNameViewController.m */,
+				B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */,
+				B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */,
 			);
 			name = "Start Flow";
 			sourceTree = "<group>";
@@ -336,6 +343,14 @@
 		B3210D271E00326B00365FB6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				B386F5DC1E163F2B004D231B /* SF-UI-DISPLAY-LIGHT.OTF */,
+				B386F5DD1E163F2B004D231B /* SF-UI-DISPLAY-SEMIBOLD.OTF */,
+				B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */,
+				B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */,
+				B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */,
+				B386F5E11E163F2B004D231B /* SF-UI-DISPLAY-HEAVY.OTF */,
+				B386F5E21E163F2B004D231B /* SF-UI-DISPLAY-MEDIUM.OTF */,
+				B386F5E31E163F2B004D231B /* SF-UI-DISPLAY-BLACK.OTF */,
 				B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */,
 			);
 			name = Fonts;
@@ -396,8 +411,31 @@
 			isa = PBXGroup;
 			children = (
 				E7396AF11DDEF81A0002CD47 /* NewPayment */,
+				B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */,
+				B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */,
 			);
 			name = "Send Flow";
+			sourceTree = "<group>";
+		};
+		B386F5AE1E1392B1004D231B /* Prifile Flow */ = {
+			isa = PBXGroup;
+			children = (
+				B386F5B21E139C9E004D231B /* Cell */,
+				B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */,
+				B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */,
+				B386F5AF1E1395E5004D231B /* ProfileViewController.h */,
+				B386F5B01E1395E5004D231B /* ProfileViewController.m */,
+			);
+			name = "Prifile Flow";
+			sourceTree = "<group>";
+		};
+		B386F5B21E139C9E004D231B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */,
+				B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
@@ -491,7 +529,8 @@
 				E7396AE31DDDF5F20002CD47 /* StartViewController.h */,
 				E7396AE41DDDF5F20002CD47 /* StartViewController.m */,
 			);
-			path = Start;
+			name = Start;
+			path = Controllers/Start;
 			sourceTree = "<group>";
 		};
 		E7396AE91DDEF7CE0002CD47 /* Main */ = {
@@ -611,9 +650,8 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B386F5AE1E1392B1004D231B /* Prifile Flow */,
 				B386F5AD1E1297FF004D231B /* Send Flow */,
-				B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */,
-				B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */,
 				B31CF7271E126E05000BCF41 /* Start Flow */,
 				B31CF7211E125C65000BCF41 /* Pin Flow */,
 				B31CF71B1E1249F9000BCF41 /* History Flow */,
@@ -626,7 +664,6 @@
 				E7FD36521DC72B4400748177 /* Model */,
 				E7FD363B1DC4D07E00748177 /* Supporting Files */,
 				E7FD365E1DC73B2400748177 /* Views */,
-				1101CF421E00C5E70000E862 /* Side Menu */,
 				B32C3CE41E111FA90094C82C /* Send.storyboard */,
 				E7FD36441DC4D07E00748177 /* Main.storyboard */,
 				B32C3CDE1E111EC70094C82C /* News.storyboard */,
@@ -667,7 +704,6 @@
 				E7396AE91DDEF7CE0002CD47 /* Main */,
 				E739105C1DE5E11F008145A8 /* Key */,
 				E73910501DE30B91008145A8 /* QRCode */,
-				E7396AE21DDDF5DC0002CD47 /* Start */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -739,16 +775,8 @@
 				B3210D221E002E2900365FB6 /* ApplicationCoordinator.m */,
 				B3210D241E0030DB00365FB6 /* Appearance.h */,
 				B3210D251E0030DB00365FB6 /* Appearance.m */,
-				1101CF391E008C9E0000E862 /* ContentController.h */,
-				1101CF3A1E008C9E0000E862 /* ContentController.m */,
-				1101CF3C1E008DA20000E862 /* MenuViewController.h */,
-				1101CF3D1E008DA20000E862 /* MenuViewController.m */,
-				1101CF3F1E008DB40000E862 /* RootViewController.h */,
-				1101CF401E008DB40000E862 /* RootViewController.m */,
 				B32C3CF11E1126200094C82C /* TabBarController.h */,
 				B32C3CF21E1126200094C82C /* TabBarController.m */,
-				B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */,
-				B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */,
 				B32C3CFD1E112A470094C82C /* NewsNavigationCoordinator.h */,
 				B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */,
 			);
@@ -877,6 +905,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B386F5E41E163F41004D231B /* SF-UI-DISPLAY-LIGHT.OTF in Resources */,
+				B386F5E51E163F41004D231B /* SF-UI-DISPLAY-SEMIBOLD.OTF in Resources */,
+				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
+				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
+				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
+				B386F5E91E163F41004D231B /* SF-UI-DISPLAY-HEAVY.OTF in Resources */,
+				B386F5EA1E163F41004D231B /* SF-UI-DISPLAY-MEDIUM.OTF in Resources */,
+				B386F5EB1E163F41004D231B /* SF-UI-DISPLAY-BLACK.OTF in Resources */,
 				B32C3CE51E111FA90094C82C /* Send.storyboard in Resources */,
 				B31CF7201E12514A000BCF41 /* Pin.storyboard in Resources */,
 				B32C3CE11E111ED50094C82C /* Profile.storyboard in Resources */,
@@ -959,12 +995,11 @@
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
-				B3210D311E00409600365FB6 /* LGSideMenuController.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B32142871E012A5800489BB1 /* CreatePinRootController.m in Sources */,
+				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B321428A1E01477A00489BB1 /* AskPinController.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
-				1101CF3E1E008DA20000E862 /* MenuViewController.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
@@ -977,6 +1012,7 @@
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
+				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
@@ -987,9 +1023,9 @@
 				B36624C11E03E35D00CBC5B5 /* ChangePinController.m in Sources */,
 				B32C3CFF1E112A470094C82C /* NewsNavigationCoordinator.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
+				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
-				1101CF411E008DB40000E862 /* RootViewController.m in Sources */,
 				E7D241DD1DE709D6003E507B /* ImportKeyViewController.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
@@ -997,18 +1033,17 @@
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
-				1101CF3B1E008C9E0000E862 /* ContentController.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
-				B3210D321E00409600365FB6 /* UIViewController+LGSideMenuController.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
 				B32C3CF31E1126200094C82C /* TabBarController.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
+				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
 				E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
 				B32C3CFC1E112A300094C82C /* HistoryNavigationCoordinator.m in Sources */,

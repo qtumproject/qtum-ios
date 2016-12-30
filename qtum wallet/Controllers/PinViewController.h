@@ -9,13 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CreatePinRootController.h"
 
-typedef NS_ENUM(NSInteger,PinType){
-    EnterType,
-    CreateType,
-    ConfirmType,
-    NewType,
-    OldType
-};
 
 @protocol PinCoordinator;
 
@@ -24,14 +17,10 @@ typedef NS_ENUM(NSInteger,PinType){
 @property (weak,nonatomic) id <PinCoordinator> delegate;
 @property (assign,nonatomic) PinType type;
 
-@end
+-(void)setCustomTitle:(NSString*) title;
+-(void)actionIncorrectPin;
 
-@protocol PinCoordinator <NSObject>
-
-@required
--(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completisiom;
-@optional
--(void)confilmPinFailed;
--(void)setAnimationState:(BOOL)isAnimating;
 
 @end
+
+
