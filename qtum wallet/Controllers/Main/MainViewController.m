@@ -209,8 +209,7 @@
 
 #pragma mark - Actions
 - (IBAction)actionRecive:(id)sender {
-    [self performSegueWithIdentifier:@"recive" sender:self];
-
+    [self performSegueWithIdentifier:@"MaintToRecieve" sender:self];
 }
 
 - (void)showNextVC

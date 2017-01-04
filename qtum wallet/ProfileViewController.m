@@ -94,6 +94,7 @@
             image = [UIImage imageNamed:@"info_icon"];
             text = @"About";
         } else if (indexPath.row == 1) {
+            
             image = [UIImage imageNamed:@"info_icon"];
             text = @"Logout";
         }

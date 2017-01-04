@@ -119,7 +119,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 {
     [SVProgressHUD show];
     
-    NSArray *wordsArray = [self arrayOfWordsFromString:self.brainKeyString];
+    NSArray *wordsArray = [self arrayOfWordsFromString:self.brandKeyTextView.text];
     
     __weak typeof(self) weakSelf = self;
     
