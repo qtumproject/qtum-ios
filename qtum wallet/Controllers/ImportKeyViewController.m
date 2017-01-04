@@ -79,10 +79,10 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    if ([textView.text isEqualToString:textViewPlaceholder]) {
-        textView.text = @"";
-        textView.textColor = [UIColor colorWithRed:78/255. green:93/255. blue:111/255. alpha:1];
-    }
+//    if ([textView.text isEqualToString:textViewPlaceholder]) {
+//        textView.text = @"";
+////        textView.textColor = [UIColor colorWithRed:78/255. green:93/255. blue:111/255. alpha:1];
+//    }
     
     return YES;
 }
@@ -91,7 +91,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 {
     if (textView.text.length == 0) {
         textView.text = textViewPlaceholder;
-        textView.textColor =  [UIColor colorWithRed:78/255. green:93/255. blue:111/255. alpha:0.53];
+//        textView.textColor =  [UIColor colorWithRed:78/255. green:93/255. blue:111/255. alpha:0.53];
         self.brainKeyString = @"";
     } else {
         self.brainKeyString = textView.text;
@@ -99,8 +99,8 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
+    if ([textView.text isEqualToString:textViewPlaceholder]) {
+        textView.text = @"";
     }
     return YES;
 }

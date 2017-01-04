@@ -15,6 +15,7 @@ NSInteger const USERS_KEYS_COUNT = 100;
 
 @property (nonatomic) NSInteger countOfUsedKeys;
 @property (nonatomic) NSArray *seedWords;
+@property (nonatomic) BTCKey *lastRandomKey;
 
 @property (nonatomic) BTCKeychain *keyChain;
 
@@ -79,7 +80,16 @@ NSInteger const USERS_KEYS_COUNT = 100;
     uint randomedIndex = arc4random() % self.countOfUsedKeys;
     
     BTCKey *newKey = [self.keyChain keyAtIndex:randomedIndex];
+    self.lastRandomKey = newKey;
     return newKey;
+}
+
+-(BTCKey*)getLastRandomKeyOrRandomKey{
+    if (!self.lastRandomKey) {
+        return [self getRandomKey];
+    }else {
+        return self.lastRandomKey;
+    }
 }
 
 - (BTCKey *)getKeyAtIndex:(NSUInteger)index;

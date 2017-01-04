@@ -54,7 +54,7 @@
     } else if(!self.pinNew) {
         //entered new pin
         self.pinNew = pin;
-        [self.pinController setCustomTitle:@"Repeate New PIN"];
+        [self.pinController setCustomTitle:@"Repeat New PIN"];
 
     } else {
         if (self.pinNew == pin) {

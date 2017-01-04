@@ -11,6 +11,7 @@
 #import "CreatePinViewController.h"
 #import "ControllersFactory.h"
 #import "UIViewController+Extension.h"
+#import "ImportKeyViewController.h"
 
 @interface StartNavigationCoordinator () <UIGestureRecognizerDelegate>
 
@@ -66,8 +67,15 @@
 }
 
 -(void)goToRepeateExportBrainKey{
-    CreatePinViewController *controller = (CreatePinViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ExportBrainKeyViewController"];
+    ImportKeyViewController *controller = (ImportKeyViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ExportBrainKeyViewController"];
     [self pushViewController:controller animated:YES];
+}
+
+-(void)goToCheckPin{
+    if (!self.isAutrized){
+        CreatePinViewController *controller = (CreatePinViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ConfirmPinViewController"];
+        [self pushViewController:controller animated:YES];
+    }
 }
 
 -(void)createKeyChainEndGoToExport{

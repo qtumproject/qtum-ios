@@ -18,7 +18,7 @@
 -(UIViewController*)profileFlowTab;
 -(UIViewController*)newsFlowTab;
 -(UIViewController*)sendFlowTab;
--(UIViewController*)historyFlowTab;
+-(UIViewController*)walletFlowTab;
 -(UIViewController*)changePinFlowController;
 -(UIViewController*)createPinFlowController;
 -(UIViewController*)createWalletFlowController;

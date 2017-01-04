@@ -46,7 +46,7 @@
             return 1;
             break;
         case 1:
-            return 3;
+            return 2;
             break;
         case 2:
             return 2;
@@ -129,7 +129,7 @@
         } else if (indexPath.row == 1) {
             [[WalletManager sharedInstance] removeAllWallets];
             [[WalletManager sharedInstance] removePin];
-            [[ApplicationCoordinator sharedInstance] startStartFlow];
+            [[ApplicationCoordinator sharedInstance] startStartFlowWithAutorization:YES];
         }
     }
 }

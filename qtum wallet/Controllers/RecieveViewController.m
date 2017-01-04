@@ -41,7 +41,7 @@
     [super viewDidAppear:animated];
     
     if (!self.key) {
-        self.key = [[WalletManager sharedInstance].getCurrentWallet getRandomKey];
+        self.key = [[WalletManager sharedInstance].getCurrentWallet getLastRandomKeyOrRandomKey];
         [self createQRCode];
         self.publicAddressLabel.text = self.key.address.string;
     }

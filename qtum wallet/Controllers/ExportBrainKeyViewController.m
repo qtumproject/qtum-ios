@@ -57,5 +57,14 @@
     [[ApplicationCoordinator sharedInstance] startMainFlow];
 }
 
+- (IBAction)shareButtonWasPressed:(id)sender
+{
+    NSString *brainKey = self.brainKey;
+    
+    NSArray *sharedItems = @[brainKey];
+    UIActivityViewController *sharingVC = [[UIActivityViewController alloc] initWithActivityItems:sharedItems applicationActivities:nil];
+    [self presentViewController:sharingVC animated:YES completion:nil];
+}
+
 
 @end

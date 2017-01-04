@@ -34,21 +34,20 @@
     UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];
     UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
     UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
-    UIViewController* history = [[ControllersFactory sharedInstance] historyFlowTab];
+    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
     
-    [self setViewControllers:@[profile,history,news,send] animated:YES];
+    [self setViewControllers:@[wallet,profile,news,send] animated:YES];
 
     profile.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"profile"] tag:0];
-    history.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"History" image:[UIImage imageNamed:@"history"] tag:1];
+    wallet.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Wallet" image:[UIImage imageNamed:@"history"] tag:1];
     news.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"News" image:[UIImage imageNamed:@"news"] tag:2];
     send.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Send" image:[UIImage imageNamed:@"send"] tag:3];
     
     [profile.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
-    [history.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
+    [wallet.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [news.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [send.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

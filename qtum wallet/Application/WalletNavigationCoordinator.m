@@ -6,13 +6,13 @@
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
-#import "HistoryNavigationCoordinator.h"
+#import "WalletNavigationCoordinator.h"
 
-@interface HistoryNavigationCoordinator ()
+@interface WalletNavigationCoordinator ()
 
 @end
 
-@implementation HistoryNavigationCoordinator
+@implementation WalletNavigationCoordinator
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,7 +22,5 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-
 
 @end

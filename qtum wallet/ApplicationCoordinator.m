@@ -16,6 +16,10 @@
 #import "TabBarController.h"
 #import "UIViewController+Extension.h"
 #import "ControllersFactory.h"
+#import "StartNavigationCoordinator.h"
+
+
+#import "ImportKeyViewController.h"
 
 @interface ApplicationCoordinator ()
 
@@ -60,10 +64,14 @@
 -(void)start{
     [Appearance setUp];
     if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
-        [self startMainFlow];
+//        [self startMainFlow];
+        [self startStartFlowWithAutorization:NO];
+
     }else{
-        [self startStartFlow];
+        [self startStartFlowWithAutorization:YES];
     }
+//    ImportKeyViewController *controller = (ImportKeyViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ExportBrainKeyViewController"];
+//    self.appDelegate.window.rootViewController = controller;
 }
 
 #pragma mark - Navigation
@@ -103,8 +111,9 @@
 
 #pragma mark - Flows
 
--(void)startStartFlow{
-    UIViewController* controller = [self.controllersFactory createFlowNavigationCoordinator];
+-(void)startStartFlowWithAutorization:(BOOL)isAutorized{
+    StartNavigationCoordinator* controller = (StartNavigationCoordinator*)[self.controllersFactory createFlowNavigationCoordinator];
+    controller.isAutrized = isAutorized;
     self.appDelegate.window.rootViewController = controller;
 }
 

@@ -9,7 +9,7 @@
 #import "ControllersFactory.h"
 #import "SendNavigationCoordinator.h"
 #import "NewsNavigationCoordinator.h"
-#import "HistoryNavigationCoordinator.h"
+#import "WalletNavigationCoordinator.h"
 #import "ProfileNavigationCoordinator.h"
 #import "UIViewController+Extension.h"
 #import "StartNavigationCoordinator.h"
@@ -52,9 +52,9 @@
     return nav;
 }
 
--(UIViewController*)historyFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"History" withIdentifire:nil];
-    HistoryNavigationCoordinator* nav = [[HistoryNavigationCoordinator alloc] initWithRootViewController:controller];
+-(UIViewController*)walletFlowTab{
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"Wallet" withIdentifire:nil];
+    WalletNavigationCoordinator* nav = [[WalletNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 

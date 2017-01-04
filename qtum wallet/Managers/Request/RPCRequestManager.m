@@ -173,6 +173,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
     NSNumber *flag = [NSNumber numberWithBool:true];
     
     NSArray *params = @[[[WalletManager sharedInstance]getCurrentWallet].getWorldsString, count, someValue, flag];
+    
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError *error, NSString *message) {

@@ -16,10 +16,12 @@
 @property (strong,nonatomic,readonly) NSString* walletName;
 @property (strong,nonatomic,readonly) NSString* walletPin;
 @property (strong,nonatomic,readonly) NSArray* walletBrainKey;
+@property (assign,nonatomic) BOOL isAutrized;
 
 -(void)addWalletName:(NSString*)name;
 -(void)addPin:(NSString*)pin;
 -(void)addBrainKey:(NSArray*)key;
+-(void)goToCheckPin;
 
 -(void)clear;
 

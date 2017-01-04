@@ -27,6 +27,7 @@
 
 @property (nonatomic, weak) id<WalletDelegate> delegate;
 
+- (BTCKey *)getLastRandomKeyOrRandomKey;
 - (BTCKey *)getRandomKey;
 - (BTCKey *)getKeyAtIndex:(NSUInteger)index;
 - (NSArray *)getAllKeys;

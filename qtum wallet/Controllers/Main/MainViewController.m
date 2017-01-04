@@ -14,6 +14,7 @@
 #import "HistoryElement.h"
 #import "QRCodeViewController.h"
 #import "ApplicationCoordinator.h"
+#import "GradientViewWithAnimation.h"
 
 @interface MainViewController () <UITableViewDelegate, UITableViewDataSource, QRCodeViewControllerDelegate>
 
@@ -21,6 +22,15 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet GradientViewWithAnimation *topBoardView;
+@property (weak, nonatomic) IBOutlet UIView *quickInfoBoard;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBoardQuckBoardOffset;
+@property (weak, nonatomic) IBOutlet UIView *customNavigationBar;
+@property (weak, nonatomic) IBOutlet UIView *topSubstrateView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UILabel *adressLabel;
+@property (weak, nonatomic) IBOutlet UIView *shortInfoView;
+
 
 @property (nonatomic) BOOL balanceLoaded;
 @property (nonatomic) BOOL historyLoaded;
@@ -36,9 +46,15 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    CGFloat offset = self.topBoardView.frame.size.height + self.quickInfoBoard.frame.size.height;
+    self.tableView.contentInset =
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
+
     self.balanceLabel.text = @"0";
-    
     self.historyLoaded = YES;
+    
+    [self configRefreshControl];
+    [self configAdressLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,9 +62,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.topBoardView startAnimating];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -59,12 +75,26 @@
     [self refreshButtonWasPressed:nil];
 }
 
+#pragma mark - Configuration
+
+-(void)configRefreshControl{
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshButtonWasPressed:) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)configAdressLabel{
+    self.adressLabel.text = [WalletManager sharedInstance].getCurrentWallet.getRandomKey.address.string;
+}
+
 - (IBAction)refreshButtonWasPressed:(id)sender
 {
+    [self.refreshControl endRefreshing];
     [SVProgressHUD show];
-    
-    [self getBalance];
-    [self getHistory];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self getBalance];
+        [self getHistory];
+    });
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -85,6 +115,45 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return  self.historyArray.count;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    static CGFloat previousOffset;
+    NSInteger yOffset = scrollView.contentOffset.y < scrollView.contentInset.top * -1 ? scrollView.contentInset.top * -1 : scrollView.contentOffset.y;
+    
+    CGRect rect1 = self.topBoardView.frame;
+    CGRect rect2 = self.quickInfoBoard.frame;
+    CGRect rect3 = self.topSubstrateView.frame;
+
+
+    rect1.origin.y += previousOffset - yOffset;
+    
+//    //stop moving quic info bar
+//    if ( yOffset <= (self.customNavigationBar.frame.size.height + rect2.size.height) * -1) {
+//        rect2.origin.y += previousOffset - yOffset;
+//    }else {
+//        NSLog(@"%ld",(long)yOffset);
+//    }
+    rect2.origin.y += previousOffset - yOffset;
+    rect3.origin.y += previousOffset - yOffset;
+    
+    self.topBoardView.frame = rect1;
+    self.quickInfoBoard.frame = rect2;
+    self.topSubstrateView.frame = rect3;
+    
+    previousOffset = yOffset;
+    
+    NSLog(@"%ld",(long)yOffset);
+    
+    [self setUpNavigationBar];
+}
+
+-(void)setUpNavigationBar{
+    BOOL flag = self.quickInfoBoard.frame.origin.y <= self.customNavigationBar.frame.size.height;
+
+    self.customNavigationBar.backgroundColor = flag ? [UIColor colorWithRed:54/255. green:85/255. blue:200/255. alpha:1] : [UIColor clearColor];
+//    self.shortInfoView.hidden = !flag;
 }
 
 #pragma mark - Methods
@@ -139,6 +208,10 @@
 }
 
 #pragma mark - Actions
+- (IBAction)actionRecive:(id)sender {
+    [self performSegueWithIdentifier:@"recive" sender:self];
+
+}
 
 - (void)showNextVC
 {
@@ -169,9 +242,8 @@
         vc.balance = self.balanceLabel.text;
     }
     
-    if ([segueID isEqualToString:@"MainToQrCode"]) {
+    if ([segueID isEqualToString:@"qrCode"]) {
         QRCodeViewController *vc = (QRCodeViewController *)segue.destinationViewController;
-        
         vc.delegate = self;
     }
 }

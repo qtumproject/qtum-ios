@@ -25,16 +25,18 @@
 		B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8801E0C2C0F00DC7DE5 /* ImputTextView.m */; };
 		B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */; };
 		B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8861E0D07A000DC7DE5 /* BorderedLabel.m */; };
+		B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C471E1CD3FC00CD610B /* DiagramView.m */; };
+		B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */; };
 		B32C3CDF1E111EC70094C82C /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32C3CDE1E111EC70094C82C /* News.storyboard */; };
 		B32C3CE11E111ED50094C82C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32C3CE01E111ED50094C82C /* Profile.storyboard */; };
-		B32C3CE31E111F900094C82C /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32C3CE21E111F900094C82C /* History.storyboard */; };
+		B32C3CE31E111F900094C82C /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32C3CE21E111F900094C82C /* Wallet.storyboard */; };
 		B32C3CE51E111FA90094C82C /* Send.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32C3CE41E111FA90094C82C /* Send.storyboard */; };
 		B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */; };
 		B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEF1E11220E0094C82C /* UIViewController+Extension.m */; };
 		B32C3CF31E1126200094C82C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CF21E1126200094C82C /* TabBarController.m */; };
 		B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CF51E1129270094C82C /* ControllersFactory.m */; };
 		B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */; };
-		B32C3CFC1E112A300094C82C /* HistoryNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CFB1E112A300094C82C /* HistoryNavigationCoordinator.m */; };
+		B32C3CFC1E112A300094C82C /* WalletNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CFB1E112A300094C82C /* WalletNavigationCoordinator.m */; };
 		B32C3CFF1E112A470094C82C /* NewsNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */; };
 		B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */; };
 		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
@@ -134,9 +136,13 @@
 		B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomShadowView.m; sourceTree = "<group>"; };
 		B321E8851E0D07A000DC7DE5 /* BorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderedLabel.h; sourceTree = "<group>"; };
 		B321E8861E0D07A000DC7DE5 /* BorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedLabel.m; sourceTree = "<group>"; };
+		B3255C461E1CD3FC00CD610B /* DiagramView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramView.h; sourceTree = "<group>"; };
+		B3255C471E1CD3FC00CD610B /* DiagramView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramView.m; sourceTree = "<group>"; };
+		B3255C4A1E1CDD6500CD610B /* GradientViewWithAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientViewWithAnimation.h; sourceTree = "<group>"; };
+		B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientViewWithAnimation.m; sourceTree = "<group>"; };
 		B32C3CDE1E111EC70094C82C /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		B32C3CE01E111ED50094C82C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		B32C3CE21E111F900094C82C /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		B32C3CE21E111F900094C82C /* Wallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		B32C3CE41E111FA90094C82C /* Send.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Send.storyboard; sourceTree = "<group>"; };
 		B32C3CEB1E1120C50094C82C /* NSObject+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+Extension.h"; path = "Categories/NSObject+Extension.h"; sourceTree = "<group>"; };
 		B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Extension.m"; path = "Categories/NSObject+Extension.m"; sourceTree = "<group>"; };
@@ -148,8 +154,8 @@
 		B32C3CF51E1129270094C82C /* ControllersFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllersFactory.m; sourceTree = "<group>"; };
 		B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileNavigationCoordinator.h; path = Application/ProfileNavigationCoordinator.h; sourceTree = "<group>"; };
 		B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileNavigationCoordinator.m; path = Application/ProfileNavigationCoordinator.m; sourceTree = "<group>"; };
-		B32C3CFA1E112A300094C82C /* HistoryNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryNavigationCoordinator.h; path = Application/HistoryNavigationCoordinator.h; sourceTree = "<group>"; };
-		B32C3CFB1E112A300094C82C /* HistoryNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryNavigationCoordinator.m; path = Application/HistoryNavigationCoordinator.m; sourceTree = "<group>"; };
+		B32C3CFA1E112A300094C82C /* WalletNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletNavigationCoordinator.h; path = Application/WalletNavigationCoordinator.h; sourceTree = "<group>"; };
+		B32C3CFB1E112A300094C82C /* WalletNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletNavigationCoordinator.m; path = Application/WalletNavigationCoordinator.m; sourceTree = "<group>"; };
 		B32C3CFD1E112A470094C82C /* NewsNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsNavigationCoordinator.h; sourceTree = "<group>"; };
 		B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsNavigationCoordinator.m; sourceTree = "<group>"; };
 		B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendNavigationCoordinator.h; path = Application/SendNavigationCoordinator.h; sourceTree = "<group>"; };
@@ -278,16 +284,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B31CF71B1E1249F9000BCF41 /* History Flow */ = {
+		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
 				E7396AF51DDF0C7D0002CD47 /* Cell */,
-				B32C3CFA1E112A300094C82C /* HistoryNavigationCoordinator.h */,
-				B32C3CFB1E112A300094C82C /* HistoryNavigationCoordinator.m */,
+				B32C3CFA1E112A300094C82C /* WalletNavigationCoordinator.h */,
+				B32C3CFB1E112A300094C82C /* WalletNavigationCoordinator.m */,
 				B31CF71C1E124A25000BCF41 /* HistoryViewController.h */,
 				B31CF71D1E124A25000BCF41 /* HistoryViewController.m */,
 			);
-			name = "History Flow";
+			name = "Wallet Flow";
 			sourceTree = "<group>";
 		};
 		B31CF7211E125C65000BCF41 /* Pin Flow */ = {
@@ -373,6 +379,15 @@
 				B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */,
 			);
 			name = ExportKey;
+			sourceTree = "<group>";
+		};
+		B3255C491E1CD40300CD610B /* Diagram animation */ = {
+			isa = PBXGroup;
+			children = (
+				B3255C461E1CD3FC00CD610B /* DiagramView.h */,
+				B3255C471E1CD3FC00CD610B /* DiagramView.m */,
+			);
+			name = "Diagram animation";
 			sourceTree = "<group>";
 		};
 		B32C3CE61E111FD10094C82C /* Factory */ = {
@@ -519,6 +534,8 @@
 				E7396AE71DDEDEEC0002CD47 /* CircleGradientView.m */,
 				E7396ADF1DDDEA2E0002CD47 /* GradientView.h */,
 				E7396AE01DDDEA2E0002CD47 /* GradientView.m */,
+				B3255C4A1E1CDD6500CD610B /* GradientViewWithAnimation.h */,
+				B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */,
 			);
 			path = Gradient;
 			sourceTree = "<group>";
@@ -654,7 +671,7 @@
 				B386F5AD1E1297FF004D231B /* Send Flow */,
 				B31CF7271E126E05000BCF41 /* Start Flow */,
 				B31CF7211E125C65000BCF41 /* Pin Flow */,
-				B31CF71B1E1249F9000BCF41 /* History Flow */,
+				B31CF71B1E1249F9000BCF41 /* Wallet Flow */,
 				B32C3CE61E111FD10094C82C /* Factory */,
 				E7FD36601DC73B7900748177 /* Application */,
 				E7DD00EF1DC9E5BD00FD5335 /* Categories */,
@@ -668,7 +685,7 @@
 				E7FD36441DC4D07E00748177 /* Main.storyboard */,
 				B32C3CDE1E111EC70094C82C /* News.storyboard */,
 				B32C3CE01E111ED50094C82C /* Profile.storyboard */,
-				B32C3CE21E111F900094C82C /* History.storyboard */,
+				B32C3CE21E111F900094C82C /* Wallet.storyboard */,
 				B31CF71F1E12514A000BCF41 /* Pin.storyboard */,
 				B31CF7221E126C2C000BCF41 /* Start.storyboard */,
 			);
@@ -731,6 +748,7 @@
 		E7FD365E1DC73B2400748177 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3255C491E1CD40300CD610B /* Diagram animation */,
 				E7396ADE1DDDEA0E0002CD47 /* Gradient */,
 				B321428E1E0154F700489BB1 /* Text Field */,
 				E7396B001DDF3FFA0002CD47 /* TextFielfWithLine */,
@@ -917,7 +935,7 @@
 				B31CF7201E12514A000BCF41 /* Pin.storyboard in Resources */,
 				B32C3CE11E111ED50094C82C /* Profile.storyboard in Resources */,
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
-				B32C3CE31E111F900094C82C /* History.storyboard in Resources */,
+				B32C3CE31E111F900094C82C /* Wallet.storyboard in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
 				B32C3CDF1E111EC70094C82C /* News.storyboard in Resources */,
 				B31CF7231E126C2C000BCF41 /* Start.storyboard in Resources */,
@@ -1016,6 +1034,7 @@
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
+				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
@@ -1039,6 +1058,7 @@
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
+				B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */,
 				B32C3CF31E1126200094C82C /* TabBarController.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
@@ -1046,7 +1066,7 @@
 				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
 				E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
-				B32C3CFC1E112A300094C82C /* HistoryNavigationCoordinator.m in Sources */,
+				B32C3CFC1E112A300094C82C /* WalletNavigationCoordinator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

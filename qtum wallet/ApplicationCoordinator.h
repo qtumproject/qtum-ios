@@ -19,7 +19,7 @@
 -(void)start;
 //flows
 -(void)startMainFlow;
--(void)startStartFlow;
+-(void)startStartFlowWithAutorization:(BOOL) flag;
 -(void)startWalletFlow;
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)startChangePinFlow;

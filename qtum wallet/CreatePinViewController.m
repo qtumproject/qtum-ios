@@ -196,6 +196,18 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)actionJustConfirm:(id)sender {
+    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
+    if ([pin isEqualToString:[WalletManager sharedInstance].PIN]) {
+        [[WalletManager sharedInstance] storePin:pin];
+        [[ApplicationCoordinator sharedInstance] startMainFlow];
+    }else {
+        [self accessPinDenied];
+        [self clearPinTextFields];
+        [self.firstSymbolTextField becomeFirstResponder];
+    }
+}
+
 #pragma mark -
 
 -(void)needBackButton:(BOOL) flag{
