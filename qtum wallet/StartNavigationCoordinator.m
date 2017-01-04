@@ -52,7 +52,12 @@
     if (self.firstPin && [self.firstPin isEqualToString:pin]) {
         completision(YES);
         [self addPin:pin];
-        [self createKeyChainEndGoToExport];
+        if (self.createPinCompletesion) {
+            [[WalletManager sharedInstance] storePin:self.walletPin];
+            [self goToRepeateExportBrainKey];
+        } else {
+            [self createKeyChainEndGoToExport];
+        }
     } else if(self.firstPin) {
         completision(NO);
     } else {

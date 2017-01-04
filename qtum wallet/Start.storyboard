@@ -278,12 +278,13 @@
                     <connections>
                         <outlet property="brandKeyTextView" destination="RXe-A3-Ilq" id="IMD-UC-gXv"/>
                         <outlet property="gradientViewBottomOffset" destination="605-xm-psa" id="Qkk-r6-aIc"/>
+                        <segue destination="x3j-yi-Vzm" kind="show" identifier="createPin" id="c9Q-KI-ZIv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kw-LV-tFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kha-Bd-H6J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1241" y="860"/>
+            <point key="canvasLocation" x="1124" y="872"/>
         </scene>
         <!--Wallet Name View Controller-->
         <scene sceneID="jKC-JK-zXR">
@@ -1513,4 +1514,7 @@ to Use it in Another App</string>
         <image name="payment2" width="16" height="16"/>
         <image name="share" width="18" height="27"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="c9Q-KI-ZIv"/>
+    </inferredMetricsTieBreakers>
 </document>
