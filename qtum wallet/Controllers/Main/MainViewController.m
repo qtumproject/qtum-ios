@@ -30,6 +30,7 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UIView *shortInfoView;
+@property (weak, nonatomic) IBOutlet UILabel *wigetBalanceLabel;
 
 
 @property (nonatomic) BOOL balanceLoaded;
@@ -50,6 +51,7 @@
     self.tableView.contentInset =
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
 
+    self.wigetBalanceLabel.text =
     self.balanceLabel.text = @"0";
     self.historyLoaded = YES;
     
@@ -119,41 +121,35 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    static CGFloat previousOffset;
-    NSInteger yOffset = scrollView.contentOffset.y < scrollView.contentInset.top * -1 ? scrollView.contentInset.top * -1 : scrollView.contentOffset.y;
+    NSInteger yOffset = scrollView.contentOffset.y < scrollView.contentInset.top * -1 ? scrollView.contentInset.top : scrollView.contentOffset.y * -1;
     
-    CGRect rect1 = self.topBoardView.frame;
-    CGRect rect2 = self.quickInfoBoard.frame;
-    CGRect rect3 = self.topSubstrateView.frame;
+    [self calculatePositionForView:self.topBoardView withScrollOffset:yOffset withLimetedYValue:nil];
+    [self calculatePositionForView:self.quickInfoBoard withScrollOffset:yOffset withLimetedYValue:@(self.customNavigationBar.frame.size.height)];
+    [self calculatePositionForView:self.topSubstrateView withScrollOffset:yOffset withLimetedYValue:nil];
 
-
-    rect1.origin.y += previousOffset - yOffset;
-    
-//    //stop moving quic info bar
-//    if ( yOffset <= (self.customNavigationBar.frame.size.height + rect2.size.height) * -1) {
-//        rect2.origin.y += previousOffset - yOffset;
-//    }else {
-//        NSLog(@"%ld",(long)yOffset);
-//    }
-    rect2.origin.y += previousOffset - yOffset;
-    rect3.origin.y += previousOffset - yOffset;
-    
-    self.topBoardView.frame = rect1;
-    self.quickInfoBoard.frame = rect2;
-    self.topSubstrateView.frame = rect3;
-    
-    previousOffset = yOffset;
-    
-    NSLog(@"%ld",(long)yOffset);
-    
-    [self setUpNavigationBar];
+    [self setupNavigationBarPerformance];
 }
 
--(void)setUpNavigationBar{
-    BOOL flag = self.quickInfoBoard.frame.origin.y <= self.customNavigationBar.frame.size.height;
+-(void)calculatePositionForView:(UIView*)view withScrollOffset:(NSInteger)offset withLimetedYValue:(NSNumber*)value{
+    static CGFloat previousOffset;
+    CGRect rect = view.frame;
+    if (value) {
+        if (offset - rect.size.height < value.integerValue) {
+            rect.origin.y = value.integerValue;
+        }else if (offset >= rect.size.height + value.integerValue) {
+            rect.origin.y = offset - rect.size.height;
+        }
+    }else {
+        rect.origin.y += previousOffset + offset;
+    }
+    previousOffset = - offset;
+    view.frame = rect;
+}
 
+-(void)setupNavigationBarPerformance{
+    BOOL flag = self.quickInfoBoard.frame.origin.y <= self.customNavigationBar.frame.size.height;
     self.customNavigationBar.backgroundColor = flag ? [UIColor colorWithRed:54/255. green:85/255. blue:200/255. alpha:1] : [UIColor clearColor];
-//    self.shortInfoView.hidden = !flag;
+    self.shortInfoView.hidden = !flag;
 }
 
 #pragma mark - Methods
@@ -164,9 +160,9 @@
     
     __weak typeof(self) weakSelf = self;
     [BlockchainInfoManager getBalanceForAllAddresesWithSuccessHandler:^(double responseObject) {
+        weakSelf.wigetBalanceLabel.text =
         weakSelf.balanceLabel.text = [NSString stringWithFormat:@"%lf", responseObject];
         weakSelf.balanceLoaded = YES;
-        
         if (weakSelf.balanceLoaded && weakSelf.historyLoaded) {
             [SVProgressHUD dismiss];
         }
@@ -208,6 +204,7 @@
 }
 
 #pragma mark - Actions
+
 - (IBAction)actionRecive:(id)sender {
     [self performSegueWithIdentifier:@"MaintToRecieve" sender:self];
 }
@@ -215,10 +212,6 @@
 - (void)showNextVC
 {
     [self performSegueWithIdentifier:@"FromMainToNewPayment" sender:self];
-}
-
-- (IBAction)actionShowMenu:(id)sender {
-//    [[ApplicationCoordinator sharedInstance] showMenu];
 }
 
 #pragma merk - Seque
@@ -246,4 +239,5 @@
         vc.delegate = self;
     }
 }
+
 @end

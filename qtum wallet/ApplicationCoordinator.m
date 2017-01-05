@@ -10,9 +10,7 @@
 #import "Appearance.h"
 #import "CreatePinRootController.h"
 #import "PinViewController.h"
-#import "AskPinController.h"
 #import "SettingsViewController.h"
-#import "ChangePinController.h"
 #import "TabBarController.h"
 #import "UIViewController+Extension.h"
 #import "ControllersFactory.h"
@@ -119,15 +117,15 @@
 
 
 -(void)startChangePinFlow{
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
-    ChangePinController* changePinRoot = [[ChangePinController alloc]initWithRootViewController:viewController];
-    changePinRoot.changePinCompletesion =  ^(){
-        //[self backToSettings];
-    };
-    viewController.delegate = changePinRoot;
-    viewController.type = OldType;
-    [self presentAsModal:changePinRoot animated:YES];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
+//    ChangePinController* changePinRoot = [[ChangePinController alloc]initWithRootViewController:viewController];
+//    changePinRoot.changePinCompletesion =  ^(){
+//        //[self backToSettings];
+//    };
+//    viewController.delegate = changePinRoot;
+//    viewController.type = OldType;
+//    [self presentAsModal:changePinRoot animated:YES];
 }
 
 -(void)startWalletFlow{
@@ -139,13 +137,13 @@
 }
 
 -(void)startAskPinFlow:(void(^)()) completesion{
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
-    AskPinController* askPinRoot = [[AskPinController alloc]initWithRootViewController:viewController];
-    askPinRoot.validatePinCompletesion = completesion;
-    viewController.delegate = askPinRoot;
-    viewController.type = EnterType;
-    self.appDelegate.window.rootViewController = askPinRoot;
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
+//    AskPinController* askPinRoot = [[AskPinController alloc]initWithRootViewController:viewController];
+//    askPinRoot.validatePinCompletesion = completesion;
+//    viewController.delegate = askPinRoot;
+//    viewController.type = EnterType;
+//    self.appDelegate.window.rootViewController = askPinRoot;
 }
 
 -(void)startMainFlow{
