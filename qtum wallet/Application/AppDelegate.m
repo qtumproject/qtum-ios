@@ -22,14 +22,14 @@
     
     [[ApplicationCoordinator sharedInstance] start];
     
-//     Send money for our wallet
-    if ([[WalletManager sharedInstance] haveWallets]) {
-        [[RPCRequestManager sharedInstance] sendToAddress:[[[WalletManager sharedInstance] getCurrentWallet] getRandomKey].address.string withSuccessHandler:^(id responseObject) {
-            NSLog(@"yes");
-        } andFailureHandler:^(NSError *error, NSString *message) {
-            NSLog(@"no");
-        }];
-    }
+////     Send money for our wallet
+//    if ([[WalletManager sharedInstance] haveWallets]) {
+//        [[RPCRequestManager sharedInstance] sendToAddress:[[[WalletManager sharedInstance] getCurrentWallet] getRandomKey].address.string withSuccessHandler:^(id responseObject) {
+//            NSLog(@"yes");
+//        } andFailureHandler:^(NSError *error, NSString *message) {
+//            NSLog(@"no");
+//        }];
+//    }
     
     return YES;
 }

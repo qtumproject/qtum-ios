@@ -6,16 +6,11 @@
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PinController.h"
 #import "CreatePinRootController.h"
 
 
-@protocol PinCoordinator;
-
-@interface PinViewController : BaseViewController
-
-@property (weak,nonatomic) id <PinCoordinator> delegate;
-@property (assign,nonatomic) PinType type;
+@interface PinViewController : PinController
 
 -(void)setCustomTitle:(NSString*) title;
 -(void)actionIncorrectPin;

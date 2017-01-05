@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PinController.h"
 
 @protocol PinCoordinator;
 
-@interface CreatePinViewController : UIViewController
-
-@property (weak,nonatomic) id <PinCoordinator> delegate;
-@property (assign,nonatomic) PinType type;
+@interface CreatePinViewController : PinController
 
 @end
