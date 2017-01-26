@@ -6,10 +6,10 @@
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "CustomTextField.h"
 
-@interface PinController : UIViewController
+@interface PinController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet CustomTextField *firstSymbolTextField;
 @property (weak, nonatomic) IBOutlet CustomTextField *secondSymbolTextField;
@@ -23,5 +23,6 @@
 
 -(void)actionIncorrectPin;
 -(void)accessPinDenied;
+-(void)clearPinTextFields;
 
 @end
