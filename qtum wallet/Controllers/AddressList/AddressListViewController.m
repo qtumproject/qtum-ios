@@ -74,7 +74,7 @@
     
 //    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
     
-//    cell.puplicKeyLabel.text = key.address.string;
+//    cell.puplicKeyLabel.text = key.addressTestnet.string;
     
     return cell;
 }

@@ -223,6 +223,7 @@
                         <outlet property="pinUnderlineView" destination="aqe-03-CCS" id="o7C-nx-jeo"/>
                         <outlet property="residueValueLabel" destination="eX9-Q5-aZt" id="msL-0M-l2u"/>
                         <outlet property="topView" destination="lhA-My-fKS" id="Ynw-Fh-uBK"/>
+                        <segue destination="SPy-Uw-ObY" kind="unwind" identifier="FromMainToNewPayment" unwindAction="unwingToPayment:" id="ZRN-7z-WgM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWu-xo-mDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -232,7 +233,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1516" y="955.77211394302856"/>
+            <point key="canvasLocation" x="1514" y="956"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="3E3-ob-Eof">
@@ -328,8 +329,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jSS-2q-FST" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="SPy-Uw-ObY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="947"/>
+            <point key="canvasLocation" x="2422" y="956"/>
         </scene>
     </scenes>
     <resources>

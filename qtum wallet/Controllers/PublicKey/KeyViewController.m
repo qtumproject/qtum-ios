@@ -37,7 +37,7 @@
     [super viewDidAppear:animated];
     
     if (self.key && !self.publicKeyImageView.image) {
-        self.keyString = self.isPrivate ? self.key.WIF : self.key.uncompressedPublicKeyAddress.string;
+        self.keyString = self.isPrivate ? self.key.WIF : self.key.addressTestnet.string;
         
         [self createQRCode];
         [self copyAddressAndShowMessage];

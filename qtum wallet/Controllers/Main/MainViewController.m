@@ -86,7 +86,7 @@
 }
 
 -(void)configAdressLabel{
-    self.adressLabel.text = [WalletManager sharedInstance].getCurrentWallet.getRandomKey.address.string;
+    self.adressLabel.text = [WalletManager sharedInstance].getCurrentWallet.getRandomKey.addressTestnet.string;
 }
 
 - (IBAction)refreshButtonWasPressed:(id)sender
@@ -238,6 +238,10 @@
         QRCodeViewController *vc = (QRCodeViewController *)segue.destinationViewController;
         vc.delegate = self;
     }
+}
+
+-(void)unwindForSegue:(UIStoryboardSegue *)unwindSegue towardsViewController:(UIViewController *)subsequentVC{
+    
 }
 
 @end

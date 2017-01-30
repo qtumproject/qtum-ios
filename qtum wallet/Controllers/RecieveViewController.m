@@ -43,7 +43,7 @@
     if (!self.key) {
         self.key = [[WalletManager sharedInstance].getCurrentWallet getLastRandomKeyOrRandomKey];
         [self createQRCode];
-        self.publicAddressLabel.text = self.key.address.string;
+        self.publicAddressLabel.text = self.key.addressTestnet.string;
     }
 }
 
@@ -58,7 +58,7 @@
     self.shareButton.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
-    [QRCodeManager createQRCodeFromPublicAddress:self.key.address.string andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
+    [QRCodeManager createQRCodeFromPublicAddress:self.key.addressTestnet.string andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
         weakSelf.shareButton.enabled = YES;
         weakSelf.walletAdressCopyButton.enabled = YES;
@@ -122,7 +122,7 @@
 - (IBAction)copeButtonWasPressed:(id)sender
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    [pb setString:self.key.address.string];
+    [pb setString:self.key.addressTestnet.string];
     
     [self showAlertWithTitle:nil mesage:@"Address copied" andActions:nil];
 }
