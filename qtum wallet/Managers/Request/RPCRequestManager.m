@@ -9,7 +9,7 @@
 #import "RPCRequestManager.h"
 #import <AFJSONRPCClient/AFJSONRPCClient.h>
 
-NSString *const BASE_URL_RPC = @"http://user:pw@139.162.118.57:22822/";
+NSString *const BASE_URL_RPC = @"http://user:pw@139.162.119.184:22822/";
 //NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
 
 @interface RPCRequestManager ()
