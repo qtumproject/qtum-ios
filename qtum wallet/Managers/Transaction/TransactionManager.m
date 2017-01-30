@@ -176,7 +176,7 @@ static double FEE = 10000;
         
         BTCKey *key;
         for (BTCKey *someKey in self.keys) {
-            if ([someKey.addressTestnet.string isEqualToString:txout.script.standardAddress.string]) {
+            if ([someKey.addressTestnet.string isEqualToString:txout.script.scriptHashAddressTestnet.string]) {
                 key = someKey;
                 break;
             }
