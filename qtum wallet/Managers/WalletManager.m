@@ -126,7 +126,7 @@ NSString const *USER_PIN_KEY = @"PIN";
         
         dispatch_group_enter(self.registerGroup);
         NSLog(@"Enter");
-        [[RPCRequestManager sharedInstance] registerKey:key.addressTestnet.string identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
+        [[RPCRequestManager sharedInstance] registerKey:key.address.string identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
             dispatch_group_leave(weakSelf.registerGroup);
             NSLog(@"Success");
         } andFailureHandler:^(NSError *error, NSString *message) {

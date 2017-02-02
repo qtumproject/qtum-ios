@@ -86,7 +86,7 @@
 }
 
 -(void)configAdressLabel{
-    self.adressLabel.text = [WalletManager sharedInstance].getCurrentWallet.getRandomKey.addressTestnet.string;
+    self.adressLabel.text = [WalletManager sharedInstance].getCurrentWallet.getRandomKey.address.string;
 }
 
 - (IBAction)refreshButtonWasPressed:(id)sender

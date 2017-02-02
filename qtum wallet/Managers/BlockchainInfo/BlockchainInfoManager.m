@@ -161,7 +161,7 @@
 {
     NSMutableArray *array = [NSMutableArray new];
     for (BTCKey *key in [[WalletManager sharedInstance].getCurrentWallet getAllKeys]) {
-        [array addObject:key.addressTestnet.string];
+        [array addObject:key.address.string];
     }
     
     return [NSArray arrayWithArray:array];

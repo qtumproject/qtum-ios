@@ -74,7 +74,7 @@ static double FEE = 10000;
     
     NSMutableArray *addresesForSending = [NSMutableArray new];
     for (BTCKey *key in self.keys) {
-        [addresesForSending addObject:key.addressTestnet.string];
+        [addresesForSending addObject:key.address.string];
     }
     if (addresesForSending.count == 0) {
         failure(@"Public key not valid");
