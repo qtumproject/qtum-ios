@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     PUT
 };
 
-NSString *const BASE_URL = @"http://85.90.245.184/";
+NSString *const BASE_URL = @"http://139.162.178.174";
 
 @interface RequestManager()
 
