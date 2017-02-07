@@ -17,6 +17,10 @@
     return objc_getAssociatedObject(self, @selector(associatedObject));
 }
 
+-(BOOL)isNull{
+    return [self isKindOfClass:[NSNull class]];
+}
+
 - (void)setAssociatedObject:(id)associatedObject
 {
     objc_setAssociatedObject(self,

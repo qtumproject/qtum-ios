@@ -10,6 +10,8 @@
 
 @interface NSObject (TCAAssociating)
 
+-(BOOL)isNull;
+
 @property (nonatomic, retain) id associatedObject;
 
 @end

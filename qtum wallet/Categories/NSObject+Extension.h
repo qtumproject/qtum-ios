@@ -10,6 +10,9 @@
 
 @interface NSObject (Extension)
 
--(NSString*)nameOfClass;
+- (NSString*)nameOfClass;
+- (BOOL)isNull;
+- (void)setAssociatedObject:(id)associatedObjec;
+- (id)associatedObject;
 
 @end

@@ -26,5 +26,9 @@ extern NSString *const TCAAuthFailed;
 //Get History
 - (void)getHistory:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
+//Get News
+- (void)getNews:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+
 
 @end

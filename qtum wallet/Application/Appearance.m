@@ -19,8 +19,8 @@
     
     //[[UITextField appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBarItem appearance] setTitleTextAttributes:@{
-                                                        NSFontAttributeName:[UIFont fontWithName:@"SFUIDisplay-Regular" size:11.0f]
-                                                        } forState:UIControlStateNormal];
+                                                     NSFontAttributeName:            [UIFont fontWithName:@"SFUIDisplay-Regular" size:11.0f]}
+                                          forState:UIControlStateNormal];
     [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UITabBar class]]] setTintColor:[UIColor colorWithRed:83/255. green:97/255. blue:115/255. alpha:1]];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:83/255. green:97/255. blue:115/255. alpha:1], NSForegroundColorAttributeName, nil]
                                              forState:UIControlStateNormal];

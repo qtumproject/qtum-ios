@@ -157,4 +157,16 @@ NSString *const BASE_URL = @"http://139.162.178.174";
     }];
 }
 
+- (void)getNews:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    [self requestWithType:GET path:@"news/en" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+        NSLog(@"Succes");
+        
+    } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
+        failure(error,message);
+        NSLog(@"Failure");
+    }];
+}
+
+
 @end
