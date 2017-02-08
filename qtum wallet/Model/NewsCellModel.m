@@ -31,19 +31,17 @@
 }
 
 -(void)setupWithDict:(NSDictionary*)dict{
+    
     if ([dict isNull]) {return;}
     
     if (dict[@"date"] && ![dict[@"date"] isNull]) {
         self.date = dict[@"date"];
     }
-    if (dict[@"id"] && ![dict[@"id"] isNull]) {
-        self.identifire = dict[@"id"];
-    }
-    if (dict[@"image"] && ![dict[@"image"] isNull]) {
-        self.imageUrl = dict[@"image"];
-    }
     if (dict[@"link"] && ![dict[@"link"] isNull]) {
         self.title = dict[@"link"];
+    }
+    if (dict[@"id"] && ![dict[@"id"] isNull]) {
+        self.identifire = dict[@"id"];
     }
     if (dict[@"link"] && ![dict[@"link"] isNull]) {
         self.linkUrl = dict[@"link"];
@@ -51,7 +49,9 @@
     if (dict[@"short"] && ![dict[@"short"] isNull]) {
         self.shortString = dict[@"short"];
     }
-
+    if (dict[@"image"] && ![dict[@"image"] isNull]) {
+        self.imageUrl = dict[@"image"];
+    }
     if (dict[@"title"] && ![dict[@"title"] isNull]) {
         self.title = dict[@"title"];
     }

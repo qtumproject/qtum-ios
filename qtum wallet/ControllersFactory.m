@@ -34,6 +34,12 @@
     return self;
 }
 
+-(UIViewController*)sendFlowTab{
+    UIViewController* controller = [UIViewController controllerInStoryboard:@"Send" withIdentifire:nil];
+    SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] initWithRootViewController:controller];
+    return nav;
+}
+
 -(UIViewController*)profileFlowTab{
     UIViewController* controller = [UIViewController controllerInStoryboard:@"Profile" withIdentifire:nil];
     ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:controller];
@@ -46,11 +52,12 @@
     return nav;
 }
 
--(UIViewController*)sendFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Send" withIdentifire:nil];
-    SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] initWithRootViewController:controller];
-    return nav;
+-(UIViewController*)createTabFlow{
+    TabBarController* tabBar = [TabBarController new];
+    return tabBar;
 }
+
+
 
 -(UIViewController*)walletFlowTab{
     UIViewController* controller = [UIViewController controllerInStoryboard:@"Wallet" withIdentifire:nil];
@@ -64,9 +71,6 @@
     return nav;
 }
 
--(UIViewController*)createTabFlow{
-    TabBarController* tabBar = [TabBarController new];
-    return tabBar;
-}
+
 
 @end

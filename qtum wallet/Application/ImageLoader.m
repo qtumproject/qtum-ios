@@ -40,7 +40,6 @@
     return self;
 }
 
-
 #pragma mark - Lazy Getter
 
 
@@ -50,7 +49,6 @@
         _operationManager = [[AFHTTPRequestOperationManager alloc] init];
         _operationManager.responseSerializer = [AFImageResponseSerializer serializer];
     };
-
     return _operationManager;
 }
 
@@ -77,6 +75,7 @@
     else
         return nil;
 }
+
 
 -(void)getImageWithUrl:(NSString*)url withResultHandler:(void(^)(UIImage* image)) complete{
     if ([url isKindOfClass:[NSNull class]]) {
@@ -108,16 +107,16 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
 }
 
-- (void)createDir
-{
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *cacheDirectory = [paths objectAtIndex:0]; // Get documents folder
-    NSString *dataPath = [cacheDirectory stringByAppendingPathComponent:@"/temp"];
-
-    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
-        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
-}
+//- (void)createDir
+//{
+//    NSError *error;
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//    NSString *cacheDirectory = [paths objectAtIndex:0]; // Get documents folder
+//    NSString *dataPath = [cacheDirectory stringByAppendingPathComponent:@"/temp"];
+//
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+//        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
+//}
 
 - (void)saveFileWithUrl:(NSString *)url andFile:(id)file
 {

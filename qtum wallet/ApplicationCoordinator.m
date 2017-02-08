@@ -68,8 +68,6 @@
     }else{
         [self startStartFlowWithAutorization:YES];
     }
-//    ImportKeyViewController *controller = (ImportKeyViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ExportBrainKeyViewController"];
-//    self.appDelegate.window.rootViewController = controller;
 }
 
 #pragma mark - Navigation
@@ -137,13 +135,6 @@
 }
 
 -(void)startAskPinFlow:(void(^)()) completesion{
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
-//    AskPinController* askPinRoot = [[AskPinController alloc]initWithRootViewController:viewController];
-//    askPinRoot.validatePinCompletesion = completesion;
-//    viewController.delegate = askPinRoot;
-//    viewController.type = EnterType;
-//    self.appDelegate.window.rootViewController = askPinRoot;
 }
 
 -(void)startMainFlow{

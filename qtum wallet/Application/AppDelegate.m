@@ -25,7 +25,7 @@
     
     [[ApplicationCoordinator sharedInstance] start];
     
-//     Send money for our wallet
+////     Send money for our wallet
 //    if ([[WalletManager sharedInstance] haveWallets]) {
 //        [[RPCRequestManager sharedInstance] sendToAddress:[[[WalletManager sharedInstance] getCurrentWallet] getRandomKey].address.string withSuccessHandler:^(id responseObject) {
 //            NSLog(@"yes");
@@ -33,7 +33,7 @@
 //            NSLog(@"no");
 //        }];
 //    }
-    
+//
     return YES;
 }
 
