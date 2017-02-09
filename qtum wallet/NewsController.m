@@ -9,6 +9,7 @@
 #import "NewsController.h"
 #import "NewsCellModel.h"
 #import "NewsTableCell.h"
+#import "FirstNewTableCell.h"
 
 @interface NewsController ()
 
@@ -17,6 +18,9 @@
 @property (strong,nonatomic) NSMutableArray <NewsCellModel*> * dataArray;
 
 @end
+
+static NSInteger firstCellHeight = 325;
+static NSInteger cellHeight = 100;
 
 @implementation NewsController
 
@@ -115,16 +119,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* reuseIdentifire = @"NewsTableCell";
-    NewsTableCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifire];
-    NewsCellModel* object = self.dataArray[indexPath.row];
-    [cell setContentWithDict:object];
-    return cell;
+    static NSString* firstReuseIdentifire = @"FirstNewsTableCell";
+    
+    if (indexPath.row == 0) {
+        FirstNewTableCell *cell = [tableView dequeueReusableCellWithIdentifier:firstReuseIdentifire];
+        NewsCellModel* object = self.dataArray[indexPath.row];
+        [cell setContentWithDict:object];
+        return cell;
+    } else {
+        NewsTableCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifire];
+        NewsCellModel* object = self.dataArray[indexPath.row];
+        [cell setContentWithDict:object];
+        return cell;
+    }
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        return firstCellHeight;
+    }
+    return cellHeight;
 }
 
 
