@@ -71,6 +71,20 @@
     return nav;
 }
 
+-(UIViewController*)createPinFlowController{
+    return nil;
+}
+
+-(UIViewController*)createWalletFlowController{
+    return nil;
+}
+
+-(UIViewController*)changePinFlowController{
+    return nil;
+}
+
+
+
 
 
 @end
