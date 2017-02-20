@@ -8,14 +8,16 @@
 
 #import "NewsController.h"
 #import "NewsCellModel.h"
-#import "NewsTableCell.h"
-#import "FirstNewTableCell.h"
+#import "NewsDataSourceAndDelegate.h"
+
 
 @interface NewsController ()
 
 @property (strong,nonatomic)UIRefreshControl* refresh;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray <NewsCellModel*> * dataArray;
+@property (strong,nonatomic) NewsDataSourceAndDelegate* dataSourceAndDelegate;
+
 
 @end
 
@@ -29,6 +31,7 @@ static NSInteger cellHeight = 100;
     
     [self configTableView];
     [self configPullRefresh];
+    
     [self getData];
     
     [SVProgressHUD show];
@@ -43,19 +46,29 @@ static NSInteger cellHeight = 100;
     [self endEditing:nil];
 }
 
+
+#pragma mark - Getters
+
+
+-(NewsDataSourceAndDelegate*)dataSourceAndDelegate{
+    if (!_dataSourceAndDelegate) {
+        _dataSourceAndDelegate = [NewsDataSourceAndDelegate new];
+    }
+    return _dataSourceAndDelegate;
+}
+
 #pragma mark - Configuration
 
 -(void)configPullRefresh{
     self.refresh = [[UIRefreshControl alloc] init];
     [_refresh addTarget:self action:@selector(actionRefresh) forControlEvents:UIControlEventValueChanged];
+
     [self.tableView addSubview:self.refresh];
 }
 
 -(void)configTableView{
-   // self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.contentInset.top + 64, 0, 0, 0);
-    //self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.tableView.scrollIndicatorInsets.top + 64, 0, 0, 0);
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
-//    self.tableView.estimatedRowHeight = 270;
+    self.tableView.delegate = self.dataSourceAndDelegate;
+    self.tableView.dataSource = self.dataSourceAndDelegate;
 }
 
 #pragma mark - Private Methods
@@ -66,12 +79,12 @@ static NSInteger cellHeight = 100;
 
 -(void)parceResponse:(id)response{
     if (!response || ![response isKindOfClass:[NSArray class]]) { return; }
-    self.dataArray = @[].mutableCopy;
+    NSMutableArray* dataArray = @[].mutableCopy;
     for (id item in response) {
         NewsCellModel* object = [[NewsCellModel alloc] initWithDict:item];
-        [self.dataArray addObject:object];
+        [dataArray addObject:object];
     }
-    [self.refresh endRefreshing];
+    self.dataSourceAndDelegate.dataArray = dataArray;
     [self reloadTable];
 }
 
@@ -102,7 +115,6 @@ static NSInteger cellHeight = 100;
 }
 
 
-
 #pragma mark - Actions
 
 
@@ -110,78 +122,6 @@ static NSInteger cellHeight = 100;
     [self getData];
 }
 
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataArray.count;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString* reuseIdentifire = @"NewsTableCell";
-    static NSString* firstReuseIdentifire = @"FirstNewsTableCell";
-    
-    if (indexPath.row == 0) {
-        FirstNewTableCell *cell = [tableView dequeueReusableCellWithIdentifier:firstReuseIdentifire];
-        NewsCellModel* object = self.dataArray[indexPath.row];
-        [cell setContentWithDict:object];
-        return cell;
-    } else {
-        NewsTableCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifire];
-        NewsCellModel* object = self.dataArray[indexPath.row];
-        [cell setContentWithDict:object];
-        return cell;
-    }
-}
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        return firstCellHeight;
-    }
-    return cellHeight;
-}
-
-
-
-
-//#pragma mark - UIScrollViewDelegate
-//
-//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-//    [self endEditing:nil];
-//}
-//
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//}
-//
-//- (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView willDecelerate:(BOOL)decelerate
-//{
-//    if (!self.refresh.isHidden) {
-//        return;
-//    }
-//    CGPoint offset = aScrollView.contentOffset;
-//    CGRect bounds = aScrollView.bounds;
-//    CGSize size = aScrollView.contentSize;
-//    UIEdgeInsets inset = aScrollView.contentInset;
-//    float y = offset.y + bounds.size.height - inset.bottom;
-//    float h = size.height;
-//    
-//    float reload_distance = 50;
-//    if(y > h + reload_distance) {
-//        [self getDataWithReplacing:NO andSearchText:self.searchBar.text];
-//    }
-//}
-//
-//#pragma mark - Seque
-//
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    
-//}
 
 
 

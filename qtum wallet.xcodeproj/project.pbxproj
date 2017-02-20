@@ -39,6 +39,7 @@
 		B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */; };
 		B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32EBFED1E1E4380003AA578 /* PinController.m */; };
 		B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */; };
+		B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */; };
 		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
 		B351305D1E49BF6D0048A28C /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B351305C1E49BF6D0048A28C /* NewsController.m */; };
 		B35130611E49C9930048A28C /* NewsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130601E49C9930048A28C /* NewsCellModel.m */; };
@@ -162,6 +163,8 @@
 		B32EBFED1E1E4380003AA578 /* PinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinController.m; sourceTree = "<group>"; };
 		B32EBFEF1E1E4711003AA578 /* CreatePinRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinRootController.h; sourceTree = "<group>"; };
 		B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinRootController.m; sourceTree = "<group>"; };
+		B33EAF021E5B399C006125F3 /* NewsDataSourceAndDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDataSourceAndDelegate.h; sourceTree = "<group>"; };
+		B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDataSourceAndDelegate.m; sourceTree = "<group>"; };
 		B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinViewController.h; sourceTree = "<group>"; };
 		B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinViewController.m; sourceTree = "<group>"; };
 		B351305B1E49BF6D0048A28C /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
@@ -405,6 +408,27 @@
 			name = Factory;
 			sourceTree = "<group>";
 		};
+		B33EAF001E5B3920006125F3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B32C3CE41E111FA90094C82C /* Send.storyboard */,
+				E7FD36441DC4D07E00748177 /* Main.storyboard */,
+				B32C3CDE1E111EC70094C82C /* News.storyboard */,
+				B32C3CE01E111ED50094C82C /* Profile.storyboard */,
+				B32C3CE21E111F900094C82C /* Wallet.storyboard */,
+				B31CF71F1E12514A000BCF41 /* Pin.storyboard */,
+				B31CF7221E126C2C000BCF41 /* Start.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		B33EAF011E5B394D006125F3 /* Shared Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Shared Cells";
+			sourceTree = "<group>";
+		};
 		B351305E1E49BF720048A28C /* NewsFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +437,8 @@
 				B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */,
 				B351305B1E49BF6D0048A28C /* NewsController.h */,
 				B351305C1E49BF6D0048A28C /* NewsController.m */,
+				B33EAF021E5B399C006125F3 /* NewsDataSourceAndDelegate.h */,
+				B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */,
 			);
 			name = NewsFlow;
 			sourceTree = "<group>";
@@ -702,6 +728,7 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B33EAF011E5B394D006125F3 /* Shared Cells */,
 				B351305E1E49BF720048A28C /* NewsFlow */,
 				B386F5AE1E1392B1004D231B /* Prifile Flow */,
 				B386F5AD1E1297FF004D231B /* Send Flow */,
@@ -716,14 +743,8 @@
 				E7FD365F1DC73B6300748177 /* Managers */,
 				E7FD36521DC72B4400748177 /* Model */,
 				E7FD363B1DC4D07E00748177 /* Supporting Files */,
-				E7FD365E1DC73B2400748177 /* Views */,
-				B32C3CE41E111FA90094C82C /* Send.storyboard */,
-				E7FD36441DC4D07E00748177 /* Main.storyboard */,
-				B32C3CDE1E111EC70094C82C /* News.storyboard */,
-				B32C3CE01E111ED50094C82C /* Profile.storyboard */,
-				B32C3CE21E111F900094C82C /* Wallet.storyboard */,
-				B31CF71F1E12514A000BCF41 /* Pin.storyboard */,
-				B31CF7221E126C2C000BCF41 /* Start.storyboard */,
+				E7FD365E1DC73B2400748177 /* Shared Views */,
+				B33EAF001E5B3920006125F3 /* Storyboards */,
 			);
 			path = "qtum wallet";
 			sourceTree = "<group>";
@@ -785,7 +806,7 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		E7FD365E1DC73B2400748177 /* Views */ = {
+		E7FD365E1DC73B2400748177 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
 				B3255C491E1CD40300CD610B /* Diagram animation */,
@@ -799,6 +820,7 @@
 				B321E8851E0D07A000DC7DE5 /* BorderedLabel.h */,
 				B321E8861E0D07A000DC7DE5 /* BorderedLabel.m */,
 			);
+			name = "Shared Views";
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -1062,6 +1084,7 @@
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
+				B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
