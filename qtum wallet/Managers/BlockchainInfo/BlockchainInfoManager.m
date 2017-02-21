@@ -16,7 +16,7 @@
 + (void)getBalanceForAddreses:(NSArray *)keyAddreses withSuccessHandler:(void(^)(double responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
     [[RPCRequestManager sharedInstance] getListUnspentForKeys:keyAddreses withSuccessHandler:^(id responseObject) {
-        success([BlockchainInfoManager calculateBalance:responseObject]);
+        success([[self class] calculateBalance:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
@@ -50,7 +50,7 @@
 + (void)getunspentOutputs:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
     [[RPCRequestManager sharedInstance] getListUnspentForKeys:keyAddreses withSuccessHandler:^(id responseObject) {
-        success([BlockchainInfoManager createArray:responseObject]);
+        success([[self class] createArray:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
@@ -120,10 +120,10 @@
 
 + (NSArray *)createHistoryElements:(NSArray *)responseObject
 {
-    responseObject = [[responseObject reverseObjectEnumerator] allObjects];
+    NSArray* responseObjectLocal = [[responseObject reverseObjectEnumerator] allObjects];
     
     NSMutableArray *array = [NSMutableArray new];
-    for (NSDictionary *dictionary in responseObject) {
+    for (NSDictionary *dictionary in responseObjectLocal) {
         HistoryElement *element = [HistoryElement new];
         
         element.amount = dictionary[@"amount"];

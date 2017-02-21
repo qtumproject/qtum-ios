@@ -10,11 +10,11 @@
 
 @interface HistoryElement : NSObject
 
-@property (nonatomic) NSString *address;
-@property (nonatomic) NSNumber *amount;
-@property (nonatomic) NSString *amountString;
+@property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSNumber *amount;
+@property (nonatomic, copy) NSString *amountString;
 @property (nonatomic) NSNumber *dateNumber;
-@property (nonatomic) NSString *dateString;
+@property (nonatomic, copy) NSString *dateString;
 @property (nonatomic) BOOL send;
 
 @end

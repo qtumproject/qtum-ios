@@ -46,7 +46,7 @@
 {
     self = [super init];
     if (self != nil) {
-        self.controllersFactory = [ControllersFactory sharedInstance];
+        _controllersFactory = [ControllersFactory sharedInstance];
     }
     return self;
 }

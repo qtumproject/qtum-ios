@@ -20,9 +20,9 @@
 - (instancetype)initWithName:(NSString *)name pin:(NSString *)pin;
 - (instancetype)initWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords;
 
-@property (nonatomic) NSString *name;
-@property (nonatomic) NSString *pin;
-@property (nonatomic, readonly) NSArray *seedWords;
+@property (nonatomic,copy) NSString *name;
+@property (nonatomic,copy) NSString *pin;
+@property (nonatomic, readonly, copy) NSArray *seedWords;
 @property (nonatomic, readonly) NSInteger countOfUsedKeys;
 
 @property (nonatomic, weak) id<WalletDelegate> delegate;

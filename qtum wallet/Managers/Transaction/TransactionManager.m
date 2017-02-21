@@ -33,7 +33,7 @@ static double FEE = 10000;
 {
     self = [super init];
     if (self) {
-        self.keys = [[WalletManager sharedInstance] getCurrentWallet].getAllKeys;
+        _keys = [[WalletManager sharedInstance] getCurrentWallet].getAllKeys;
         [self createAmountsAndAddresses:amountsAndAddresses];
     }
     return self;

@@ -27,10 +27,10 @@ NSInteger const USERS_KEYS_COUNT = 100;
 {
     self = [super init];
     if (self) {
-        self.name = name;
-        self.pin = pin;
-        self.countOfUsedKeys = USERS_KEYS_COUNT;
-        self.seedWords = [self generateWordsArray];
+        _name = name;
+        _pin = pin;
+        _countOfUsedKeys = USERS_KEYS_COUNT;
+        _seedWords = [self generateWordsArray];
     }
     return self;
 }
@@ -39,12 +39,12 @@ NSInteger const USERS_KEYS_COUNT = 100;
 {
     self = [super init];
     if (self) {
-        self.name = name;
-        self.pin = pin;
-        self.countOfUsedKeys = USERS_KEYS_COUNT;
-        self.seedWords = seedWords;
+        _name = name;
+        _pin = pin;
+        _countOfUsedKeys = USERS_KEYS_COUNT;
+        _seedWords = seedWords;
         
-        if (!self.keyChain) {
+        if (!_keyChain) {
             return nil;
         }
     }
@@ -128,7 +128,7 @@ NSInteger const USERS_KEYS_COUNT = 100;
     
     while (i < WORDS_COUNT) {
         uint32_t rnd = arc4random_uniform((uint32_t)wordsArray().count);
-        NSString *randomWord = [wordsArray() objectAtIndex:rnd];
+        NSString *randomWord = wordsArray()[rnd];
         
         if (![randomWords containsObject:randomWord]) {
             [randomWords addObject:randomWord];

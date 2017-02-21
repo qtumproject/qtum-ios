@@ -21,8 +21,8 @@
 {
     self = [super init];
     if (self) {
-        self.center = center;
-        self.size = size;
+        _center = center;
+        _size = size;
         self.masksToBounds = NO;
         [self setNeedsDisplay];
     }

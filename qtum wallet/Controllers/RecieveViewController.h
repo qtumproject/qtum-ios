@@ -11,6 +11,6 @@
 @interface RecieveViewController : BaseViewController
 
 @property (nonatomic) BTCKey *key;
-@property (nonatomic) NSString *balance;
+@property (nonatomic, copy) NSString *balance;
 
 @end

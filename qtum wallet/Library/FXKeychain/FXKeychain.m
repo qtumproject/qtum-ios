@@ -104,7 +104,7 @@
     dispatch_once(&onceToken, ^{
         
         NSString *bundleID = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey];
-        sharedInstance = [[FXKeychain alloc] initWithService:bundleID
+        sharedInstance = [[self alloc] initWithService:bundleID
                                                  accessGroup:nil];
     });
 

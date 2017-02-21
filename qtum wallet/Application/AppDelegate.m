@@ -39,13 +39,13 @@
 
 - (NSArray *)getRandomWordsFromWordsArray:(NSInteger)count
 {
-    NSMutableArray *randomWords = [NSMutableArray new];
+    NSMutableArray *randomWords = @[].mutableCopy;
     
     NSInteger i = 0;
     
     while (i < count) {
         uint32_t rnd = arc4random_uniform((uint32_t)wordsArray().count);
-        NSString *randomWord = [wordsArray() objectAtIndex:rnd];
+        NSString *randomWord = wordsArray()[rnd];
         
         if (![randomWords containsObject:randomWord]) {
             [randomWords addObject:randomWord];

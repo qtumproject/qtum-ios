@@ -170,7 +170,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     NSString *method = @"listtransactions";
     NSNumber *count = @(10000000);
     NSNumber *someValue = @(0);
-    NSNumber *flag = [NSNumber numberWithBool:true];
+    NSNumber *flag = @YES;
     
     NSArray *params = @[[[WalletManager sharedInstance]getCurrentWallet].getWorldsString, count, someValue, flag];
     

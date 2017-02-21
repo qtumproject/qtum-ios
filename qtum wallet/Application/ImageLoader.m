@@ -59,7 +59,7 @@
 - (void)setUp
 {
     NSArray *pathList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *cachePath = [pathList objectAtIndex:0];
+    NSString *cachePath = pathList[0];
     NSString *cacheTemp = [cachePath stringByAppendingPathComponent:@"/temp"];
     self.cacheTempPath = cacheTemp;
     [self createDirAtPath:cacheTemp];
