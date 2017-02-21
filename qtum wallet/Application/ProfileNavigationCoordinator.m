@@ -32,7 +32,7 @@
     if ([viewController isKindOfClass:[PinViewController class]]) {
         PinViewController* controller = (PinViewController*)viewController;
         controller.type = ConfirmType;
-        controller.delegate = self;
+//        controller.delegate = self;
         self.pinController = controller;
     }
     [super pushViewController:viewController animated:animated];

@@ -34,9 +34,13 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if ([self.delegate respondsToSelector:@selector(setAnimationState:)]) {
-        [self.delegate setAnimationState:NO];
-    }
+//    if ([self.delegate respondsToSelector:@selector(setAnimationState:)]) {
+//        [self.delegate setAnimationState:NO];
+//    }
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Keyboard
@@ -54,21 +58,6 @@
 #pragma mark - Privat Methods
 
 -(void)validateAndSendPin{
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
-    __weak typeof(self) weakSelf = self;
-    if (pin.length == 4) {
-        [self.delegate confirmPin:pin andCompletision:^(BOOL success) {
-            if (success) {
-                //                [weakSelf performSegueWithIdentifier:@"" sender:nil];
-            }else {
-                [weakSelf accessPinDenied];
-            }
-        }];
-        [self clearPinTextFields];
-        [self.firstSymbolTextField becomeFirstResponder];
-    } else {
-        [self accessPinDenied];
-    }
     
 }
 
@@ -121,9 +110,9 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     if (flag) {
-        if ([self.delegate respondsToSelector:@selector(confilmPinFailed)]) {
-            [self.delegate confilmPinFailed];
-        }
+//        if ([self.delegate respondsToSelector:@selector(confilmPinFailed)]) {
+//            [self.delegate confilmPinFailed];
+//        }
     }
 }
 

@@ -11,7 +11,7 @@
 #import "QRCodeViewController.h"
 #import "StartNavigationCoordinator.h"
 
-NSString* const textViewPlaceholder = @" Your Brain-CODE";
+NSString* const textViewPlaceholder1 = @" Your Brain-CODE";
 
 @interface ImportKeyViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate>
 
@@ -37,7 +37,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    self.brandKeyTextView.text = textViewPlaceholder;
+    self.brandKeyTextView.text = textViewPlaceholder1;
     [self.brandKeyTextView becomeFirstResponder];
 }
 
@@ -62,7 +62,6 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.gradientViewBottomOffset.constant = end.size.height;
     [self.view layoutIfNeeded];
-    
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
@@ -90,7 +89,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     if (textView.text.length == 0) {
-        textView.text = textViewPlaceholder;
+        textView.text = textViewPlaceholder1;
 //        textView.textColor =  [UIColor colorWithRed:78/255. green:93/255. blue:111/255. alpha:0.53];
         self.brainKeyString = @"";
     } else {
@@ -99,7 +98,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([textView.text isEqualToString:textViewPlaceholder]) {
+    if ([textView.text isEqualToString:textViewPlaceholder1]) {
         textView.text = @"";
     }
     return YES;

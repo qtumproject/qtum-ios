@@ -14,6 +14,13 @@
 #import "UIViewController+Extension.h"
 #import "StartNavigationCoordinator.h"
 #import "TabBarController.h"
+#import "WalletNameViewController.h"
+#import "LoginViewController.h"
+#import "FirstAuthViewController.h"
+#import "RestoreWalletViewController.h"
+#import "CreatePinViewController.h"
+#import "RepeateViewController.h"
+#import "AuthNavigationController.h"
 
 @implementation ControllersFactory
 
@@ -69,6 +76,41 @@
     UIViewController* controller = [UIViewController controllerInStoryboard:@"Start" withIdentifire:nil];
     StartNavigationCoordinator* nav = [[StartNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
+}
+
+-(WalletNameViewController*)createWalletNameCreateController{
+    WalletNameViewController* controller = (WalletNameViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"WalletNameViewController"];
+    return controller;
+}
+
+-(LoginViewController*)createLoginController{
+    LoginViewController* controller = (LoginViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"LoginViewController"];
+    return controller;
+}
+
+-(FirstAuthViewController*)createFirstAuthController{
+    FirstAuthViewController* controller = (FirstAuthViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"FirstAuthViewController"];
+    return controller;
+}
+
+-(RestoreWalletViewController*)createRestoreWalletController{
+    RestoreWalletViewController* controller = (RestoreWalletViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RestoreWalletViewController"];
+    return controller;
+}
+
+-(CreatePinViewController*)createCreatePinController{
+    CreatePinViewController* controller = (CreatePinViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"CreatePinViewController"];
+    return controller;
+}
+
+-(RepeateViewController*)createRepeatePinController{
+    RepeateViewController* controller = (RepeateViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RepeateViewController"];
+    return controller;
+}
+
+-(AuthNavigationController*)createAuthNavigationController{
+    AuthNavigationController* controller = [[AuthNavigationController alloc]init];
+    return controller;
 }
 
 -(UIViewController*)createPinFlowController{

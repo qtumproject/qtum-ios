@@ -352,6 +352,10 @@
     return bezier3Path;
 }
 
+-(void)removeFromSuperview{
+    [super removeFromSuperview];
+}
+
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

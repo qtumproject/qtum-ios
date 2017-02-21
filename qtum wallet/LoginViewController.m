@@ -1,21 +1,21 @@
 //
-//  CreatePinViewController.m
+//  LoginViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 30.12.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Created by Никита Федоренко on 21.02.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
-#import "CreatePinViewController.h"
-#import "CustomTextField.h"
-#import "StartNavigationCoordinator.h"
+#import "LoginViewController.h"
+#import "LoginCoordinator.h"
 
-@interface CreatePinViewController () <CAAnimationDelegate>
+@interface LoginViewController ()<CAAnimationDelegate>
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
 
 @end
 
-@implementation CreatePinViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,37 +48,30 @@
 
 #pragma mark - Privat Methods
 
-
 #pragma mark - Actions
 
 
 - (IBAction)actionEnterPin:(id)sender {
-
-}
-- (IBAction)confirmButtomPressed:(id)sender {
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
     if (pin.length == 4) {
-        if ([self.delegate performSelector:@selector(didCreatedWalletName:)]) {
-            [self.delegate didCreatedWalletName:pin];
+        if ([self.delegate respondsToSelector:@selector(passwordDidEntered:)]) {
+            [self.delegate passwordDidEntered:pin];
         }
     } else {
-        [self accessPinDenied];
+        [self applyFailedPasswordAction];
     }
 }
 
 - (IBAction)actionCancel:(id)sender {
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
-    if (pin.length == 4) {
-        if ([self.delegate performSelector:@selector(didCreatedWalletName:)]) {
-            [self.delegate didCreatedWalletName:pin];
-        }
-    } else {
-        [self accessPinDenied];
+    if ([self.delegate respondsToSelector:@selector(confirmPasswordDidCanceled)]) {
+        [self.delegate confirmPasswordDidCanceled];
     }
-//    if ([self.delegate performSelector:@selector(cancelCreateWallet)]) {
-//        [self.delegate cancelCreateWallet];
-//    }
 }
 
+-(void)applyFailedPasswordAction{
+    [self accessPinDenied];
+    [self clearPinTextFields];
+    [self.firstSymbolTextField becomeFirstResponder];
+}
 
 @end

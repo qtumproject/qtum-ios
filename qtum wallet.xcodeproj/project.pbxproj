@@ -40,6 +40,13 @@
 		B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32EBFED1E1E4380003AA578 /* PinController.m */; };
 		B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */; };
 		B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */; };
+		B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */; };
+		B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */; };
+		B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF121E5C70EF006125F3 /* LoginViewController.m */; };
+		B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF161E5C7D45006125F3 /* FirstAuthViewController.m */; };
+		B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF191E5C84DF006125F3 /* RestoreWalletViewController.m */; };
+		B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF1C1E5C9020006125F3 /* RepeateViewController.m */; };
+		B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF1F1E5C9FC0006125F3 /* AuthNavigationController.m */; };
 		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
 		B351305D1E49BF6D0048A28C /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B351305C1E49BF6D0048A28C /* NewsController.m */; };
 		B35130611E49C9930048A28C /* NewsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130601E49C9930048A28C /* NewsCellModel.m */; };
@@ -165,6 +172,21 @@
 		B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinRootController.m; sourceTree = "<group>"; };
 		B33EAF021E5B399C006125F3 /* NewsDataSourceAndDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDataSourceAndDelegate.h; sourceTree = "<group>"; };
 		B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDataSourceAndDelegate.m; sourceTree = "<group>"; };
+		B33EAF051E5C5D9A006125F3 /* AuthCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthCoordinator.h; sourceTree = "<group>"; };
+		B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthCoordinator.m; sourceTree = "<group>"; };
+		B33EAF091E5C5E79006125F3 /* Coordinatorable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coordinatorable.h; sourceTree = "<group>"; };
+		B33EAF0B1E5C6CD2006125F3 /* LoginCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCoordinator.h; sourceTree = "<group>"; };
+		B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCoordinator.m; sourceTree = "<group>"; };
+		B33EAF111E5C70EF006125F3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B33EAF121E5C70EF006125F3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B33EAF151E5C7D45006125F3 /* FirstAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstAuthViewController.h; sourceTree = "<group>"; };
+		B33EAF161E5C7D45006125F3 /* FirstAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstAuthViewController.m; sourceTree = "<group>"; };
+		B33EAF181E5C84DF006125F3 /* RestoreWalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreWalletViewController.h; sourceTree = "<group>"; };
+		B33EAF191E5C84DF006125F3 /* RestoreWalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreWalletViewController.m; sourceTree = "<group>"; };
+		B33EAF1B1E5C9020006125F3 /* RepeateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeateViewController.h; sourceTree = "<group>"; };
+		B33EAF1C1E5C9020006125F3 /* RepeateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeateViewController.m; sourceTree = "<group>"; };
+		B33EAF1E1E5C9FC0006125F3 /* AuthNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthNavigationController.h; sourceTree = "<group>"; };
+		B33EAF1F1E5C9FC0006125F3 /* AuthNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthNavigationController.m; sourceTree = "<group>"; };
 		B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinViewController.h; sourceTree = "<group>"; };
 		B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinViewController.m; sourceTree = "<group>"; };
 		B351305B1E49BF6D0048A28C /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
@@ -245,8 +267,8 @@
 		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		E7D241D71DE6D6B1003E507B /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
 		E7D241D81DE6D6B1003E507B /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
-		E7D241DB1DE709D6003E507B /* ImportKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportKeyViewController.h; sourceTree = "<group>"; };
-		E7D241DC1DE709D6003E507B /* ImportKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportKeyViewController.m; sourceTree = "<group>"; };
+		E7D241DB1DE709D6003E507B /* ImportKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImportKeyViewController.h; path = Controllers/ImportKeyViewController.h; sourceTree = "<group>"; };
+		E7D241DC1DE709D6003E507B /* ImportKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImportKeyViewController.m; path = Controllers/ImportKeyViewController.m; sourceTree = "<group>"; };
 		E7DD00E81DC9BF9D00FD5335 /* TransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionManager.h; sourceTree = "<group>"; };
 		E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TransactionManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7DD00F01DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCBlockchainInfo+QtumExplorer.h"; sourceTree = "<group>"; };
@@ -320,19 +342,16 @@
 			name = "Pin Flow";
 			sourceTree = "<group>";
 		};
-		B31CF7271E126E05000BCF41 /* Start Flow */ = {
+		B31CF7271E126E05000BCF41 /* Auth Flow */ = {
 			isa = PBXGroup;
 			children = (
+				B33EAF141E5C7BCB006125F3 /* New Group */,
 				E7396AE21DDDF5DC0002CD47 /* Start */,
 				E7D241DA1DE709B5003E507B /* ImportKey */,
 				B31CF7281E126EFB000BCF41 /* StartNavigationCoordinator.h */,
 				B31CF7291E126EFB000BCF41 /* StartNavigationCoordinator.m */,
-				B386F5EC1E16403B004D231B /* WalletNameViewController.h */,
-				B386F5ED1E16403B004D231B /* WalletNameViewController.m */,
-				B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */,
-				B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */,
 			);
-			name = "Start Flow";
+			name = "Auth Flow";
 			sourceTree = "<group>";
 		};
 		B3210D111E0004F900365FB6 /* Gradient Layer */ = {
@@ -427,6 +446,46 @@
 			children = (
 			);
 			name = "Shared Cells";
+			sourceTree = "<group>";
+		};
+		B33EAF081E5C5E52006125F3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B33EAF091E5C5E79006125F3 /* Coordinatorable.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		B33EAF0A1E5C6CA6006125F3 /* Login Flow */ = {
+			isa = PBXGroup;
+			children = (
+				B33EAF0B1E5C6CD2006125F3 /* LoginCoordinator.h */,
+				B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */,
+				B33EAF111E5C70EF006125F3 /* LoginViewController.h */,
+				B33EAF121E5C70EF006125F3 /* LoginViewController.m */,
+			);
+			name = "Login Flow";
+			sourceTree = "<group>";
+		};
+		B33EAF141E5C7BCB006125F3 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				B33EAF051E5C5D9A006125F3 /* AuthCoordinator.h */,
+				B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */,
+				B33EAF151E5C7D45006125F3 /* FirstAuthViewController.h */,
+				B33EAF161E5C7D45006125F3 /* FirstAuthViewController.m */,
+				B386F5EC1E16403B004D231B /* WalletNameViewController.h */,
+				B386F5ED1E16403B004D231B /* WalletNameViewController.m */,
+				B33EAF181E5C84DF006125F3 /* RestoreWalletViewController.h */,
+				B33EAF191E5C84DF006125F3 /* RestoreWalletViewController.m */,
+				B33EAF1B1E5C9020006125F3 /* RepeateViewController.h */,
+				B33EAF1C1E5C9020006125F3 /* RepeateViewController.m */,
+				B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */,
+				B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */,
+				B33EAF1E1E5C9FC0006125F3 /* AuthNavigationController.h */,
+				B33EAF1F1E5C9FC0006125F3 /* AuthNavigationController.m */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		B351305E1E49BF720048A28C /* NewsFlow */ = {
@@ -674,8 +733,6 @@
 		E7D241DA1DE709B5003E507B /* ImportKey */ = {
 			isa = PBXGroup;
 			children = (
-				E7D241DB1DE709D6003E507B /* ImportKeyViewController.h */,
-				E7D241DC1DE709D6003E507B /* ImportKeyViewController.m */,
 			);
 			name = ImportKey;
 			path = Controllers;
@@ -728,11 +785,14 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B33EAF0A1E5C6CA6006125F3 /* Login Flow */,
 				B33EAF011E5B394D006125F3 /* Shared Cells */,
 				B351305E1E49BF720048A28C /* NewsFlow */,
 				B386F5AE1E1392B1004D231B /* Prifile Flow */,
 				B386F5AD1E1297FF004D231B /* Send Flow */,
-				B31CF7271E126E05000BCF41 /* Start Flow */,
+				B31CF7271E126E05000BCF41 /* Auth Flow */,
+				E7D241DB1DE709D6003E507B /* ImportKeyViewController.h */,
+				E7D241DC1DE709D6003E507B /* ImportKeyViewController.m */,
 				B31CF7211E125C65000BCF41 /* Pin Flow */,
 				B31CF71B1E1249F9000BCF41 /* Wallet Flow */,
 				B32C3CE61E111FD10094C82C /* Factory */,
@@ -744,6 +804,7 @@
 				E7FD36521DC72B4400748177 /* Model */,
 				E7FD363B1DC4D07E00748177 /* Supporting Files */,
 				E7FD365E1DC73B2400748177 /* Shared Views */,
+				B33EAF081E5C5E52006125F3 /* Protocols */,
 				B33EAF001E5B3920006125F3 /* Storyboards */,
 			);
 			path = "qtum wallet";
@@ -1073,10 +1134,14 @@
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
+				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
+				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
+				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
+				B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */,
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
 				B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */,
@@ -1092,6 +1157,7 @@
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
+				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
@@ -1100,6 +1166,7 @@
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
+				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				B32C3CFF1E112A470094C82C /* NewsNavigationCoordinator.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
 				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
@@ -1115,6 +1182,7 @@
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
+				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,

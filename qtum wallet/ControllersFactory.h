@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class WalletNameViewController;
+@class LoginViewController;
+@class FirstAuthViewController;
+@class RestoreWalletViewController;
+@class RepeateViewController;
+@class CreatePinViewController;
+@class AuthNavigationController;
+
 @interface ControllersFactory : NSObject
 
 + (instancetype)sharedInstance;
@@ -22,6 +30,13 @@
 -(UIViewController*)changePinFlowController;
 -(UIViewController*)createPinFlowController;
 -(UIViewController*)createWalletFlowController;
+-(WalletNameViewController*)createWalletNameCreateController;
+-(LoginViewController*)createLoginController;
+-(FirstAuthViewController*)createFirstAuthController;
+-(RestoreWalletViewController*)createRestoreWalletController;
+-(CreatePinViewController*)createCreatePinController;
+-(RepeateViewController*)createRepeatePinController;
+-(AuthNavigationController*)createAuthNavigationController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

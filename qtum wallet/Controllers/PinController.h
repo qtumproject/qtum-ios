@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *pinContainer;
 @property (weak, nonatomic) IBOutlet UIView *incorrectPinView;
 
-@property (weak,nonatomic) id <PinCoordinator> delegate;
+//@property (weak,nonatomic) id <PinCoordinator> delegate;
 @property (assign,nonatomic) PinType type;
 
 -(void)actionIncorrectPin;

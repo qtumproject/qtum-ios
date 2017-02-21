@@ -1,21 +1,20 @@
 //
-//  CreatePinViewController.m
+//  RepeateViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 30.12.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Created by Никита Федоренко on 21.02.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
-#import "CreatePinViewController.h"
-#import "CustomTextField.h"
-#import "StartNavigationCoordinator.h"
+#import "RepeateViewController.h"
 
-@interface CreatePinViewController () <CAAnimationDelegate>
+@interface RepeateViewController ()
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
 
 @end
 
-@implementation CreatePinViewController
+@implementation RepeateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,18 +47,14 @@
 
 #pragma mark - Privat Methods
 
-
 #pragma mark - Actions
 
 
 - (IBAction)actionEnterPin:(id)sender {
-
-}
-- (IBAction)confirmButtomPressed:(id)sender {
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
     if (pin.length == 4) {
-        if ([self.delegate performSelector:@selector(didCreatedWalletName:)]) {
-            [self.delegate didCreatedWalletName:pin];
+        if ([self.delegate performSelector:@selector(didEnteredSecondTimePass:)]) {
+            [self.delegate didEnteredSecondTimePass:pin];
         }
     } else {
         [self accessPinDenied];
@@ -67,17 +62,9 @@
 }
 
 - (IBAction)actionCancel:(id)sender {
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
-    if (pin.length == 4) {
-        if ([self.delegate performSelector:@selector(didCreatedWalletName:)]) {
-            [self.delegate didCreatedWalletName:pin];
-        }
-    } else {
-        [self accessPinDenied];
+    if ([self.delegate performSelector:@selector(cancelCreateWallet)]) {
+        [self.delegate cancelCreateWallet];
     }
-//    if ([self.delegate performSelector:@selector(cancelCreateWallet)]) {
-//        [self.delegate cancelCreateWallet];
-//    }
 }
 
 

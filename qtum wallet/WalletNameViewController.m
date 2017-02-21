@@ -35,6 +35,10 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Configuration
 
 -(void)configTextField{
@@ -65,11 +69,16 @@
 #pragma mark - Actions
 
 - (IBAction)actionConfirm:(id)sender {
-    StartNavigationCoordinator* coordinator = (StartNavigationCoordinator*)self.navigationController;
-    [coordinator addWalletName:self.nameTextField.text];
-    [self performSegueWithIdentifier:@"createPin" sender:nil];
+    if ([self.delegate respondsToSelector:@selector(didCreatedWalletName:)]) {
+        [self.delegate didCreatedWalletName:self.nameTextField.text];
+    }
 }
 
+- (IBAction)cancelButtonPressed:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {
+        [self.delegate cancelCreateWallet];
+    }
+}
 
 
 @end

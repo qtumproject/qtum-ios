@@ -15,6 +15,7 @@
 #import "UIViewController+Extension.h"
 #import "ControllersFactory.h"
 #import "StartNavigationCoordinator.h"
+#import "LoginCoordinator.h"
 
 
 #import "ImportKeyViewController.h"
@@ -24,6 +25,9 @@
 @property (strong,nonatomic) AppDelegate* appDelegate;
 @property (strong,nonatomic) TabBarController* router;
 @property (strong,nonatomic) ControllersFactory* controllersFactory;
+@property (strong,nonatomic) UIViewController* viewController;
+@property (strong,nonatomic) UINavigationController* navigationController;
+@property (nonatomic,strong) NSMutableArray *childCoordinators;
 
 
 @end
@@ -57,17 +61,26 @@
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
-#pragma mark - Start Flow
+#pragma mark - Lazy Getters
+
+- (NSMutableArray *)childCoordinators {
+    if (!_childCoordinators) {
+        self.childCoordinators = @[].mutableCopy;
+    }
+    return _childCoordinators;
+}
+
+#pragma mark - Start
 
 -(void)start{
     [Appearance setUp];
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
-//        [self startMainFlow];
-        [self startStartFlowWithAutorization:NO];
-
-    }else{
-        [self startStartFlowWithAutorization:YES];
-    }
+    [self startAuthFlow];
+//    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
+//        [self startStartFlowWithAutorization:NO];
+//
+//    }else{
+//        [self startStartFlowWithAutorization:YES];
+//    }
 }
 
 #pragma mark - Navigation
@@ -83,6 +96,12 @@
 
 -(void)presentAsModal:(UIViewController*) controller animated:(BOOL)animated{
 //    [self.root presentViewController:controller animated:animated completion:nil];
+}
+
+#pragma mark - ApplicationCoordinatorDelegate
+
+-(void)coordinatorDidLogin:(LoginCoordinator*)coordinator{
+    [self startMainFlow];
 }
 
 #pragma mark - Presenting Controllers
@@ -106,6 +125,24 @@
 }
 
 #pragma mark - Flows
+
+-(void)startAuthFlow{
+    //TODO create navigation by fabric
+    UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
+    self.appDelegate.window.rootViewController = navigationController;
+    AuthCoordinator* coordinator = [[AuthCoordinator alloc]initWithNavigationViewController:navigationController];
+    [coordinator start];
+    [self.childCoordinators addObject:coordinator];
+}
+
+-(void)startLoginFlow{
+    //TODO create navigation by fabric
+    UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
+    self.appDelegate.window.rootViewController = navigationController;
+    LoginCoordinator* coordinator = [[LoginCoordinator alloc]initWithNavigationViewController:navigationController];
+    [coordinator start];
+    [self.childCoordinators addObject:coordinator];
+}
 
 -(void)startStartFlowWithAutorization:(BOOL)isAutorized{
     StartNavigationCoordinator* controller = (StartNavigationCoordinator*)[self.controllersFactory createFlowNavigationCoordinator];
@@ -148,7 +185,7 @@
     PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
     CreatePinRootController* createPinRoot = [[CreatePinRootController alloc]initWithRootViewController:viewController];
     createPinRoot.createPinCompletesion = completesion;
-    viewController.delegate = createPinRoot;
+//    viewController.delegate = createPinRoot;
     viewController.type = CreateType;
     self.appDelegate.window.rootViewController = createPinRoot;
 }

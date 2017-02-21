@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Start View Controller-->
+        <!--First Auth View Controller-->
         <scene sceneID="0qQ-RG-nlc">
             <objects>
-                <viewController storyboardIdentifier="StartViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dBO-v0-fiZ" customClass="StartViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstAuthViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dBO-v0-fiZ" customClass="FirstAuthViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qip-VY-JD9"/>
                         <viewControllerLayoutGuide type="bottom" id="8FR-gb-fnp"/>
@@ -47,9 +47,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="bmg-ma-2DX" kind="show" identifier="StartToImport" id="r0I-kv-zvg">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <action selector="restoreButtonWasPressed:" destination="dBO-v0-fiZ" eventType="touchUpInside" id="M8Y-22-R7X"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKx-bF-rYK">
@@ -118,10 +116,10 @@
             </objects>
             <point key="canvasLocation" x="50" y="860"/>
         </scene>
-        <!--Import Key View Controller-->
+        <!--Restore Wallet View Controller-->
         <scene sceneID="eiw-E5-Ect">
             <objects>
-                <viewController storyboardIdentifier="ImportKeyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bmg-ma-2DX" customClass="ImportKeyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RestoreWalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bmg-ma-2DX" customClass="RestoreWalletViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TjX-r7-Z77"/>
                         <viewControllerLayoutGuide type="bottom" id="p5D-Cd-VGt"/>
@@ -216,6 +214,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="cancelButtonTapped:" destination="bmg-ma-2DX" eventType="touchUpInside" id="RSM-5B-QPW"/>
                                             <segue destination="kha-Bd-H6J" kind="unwind" unwindAction="unwingToStart:" id="NIe-8v-EXJ"/>
                                         </connections>
                                     </button>
@@ -284,7 +283,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kw-LV-tFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kha-Bd-H6J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="872"/>
+            <point key="canvasLocation" x="1152" y="982"/>
         </scene>
         <!--Wallet Name View Controller-->
         <scene sceneID="jKC-JK-zXR">
@@ -334,6 +333,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="cancelButtonPressed:" destination="x3j-yi-Vzm" eventType="touchUpInside" id="ktd-HU-1aE"/>
                                             <segue destination="HyP-Ls-OAh" kind="unwind" unwindAction="unwingToStart:" id="jQM-aA-EPj"/>
                                         </connections>
                                     </button>
@@ -393,7 +393,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-oZ-gm9">
-                                        <rect key="frame" x="55" y="420" width="265" height="22"/>
+                                        <rect key="frame" x="55" y="421" width="265" height="21"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="SFUIDisplay-Thin" family="SF UI Display" pointSize="18"/>
@@ -438,7 +438,6 @@
                     <connections>
                         <outlet property="gradientViewBottomOffset" destination="7Oh-6d-3nU" id="AgW-aH-NEM"/>
                         <outlet property="nameTextField" destination="YCi-oZ-gm9" id="aDf-mx-GMe"/>
-                        <segue destination="RM0-yE-Omf" kind="show" identifier="createPin" id="a0N-Nu-5nM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iSR-Z6-8nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -499,7 +498,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="Dwp-yv-zpW" kind="unwind" unwindAction="unwingToStart:" id="RBD-y1-2Q0"/>
+                                            <action selector="actionCancel:" destination="RM0-yE-Omf" eventType="touchUpInside" id="Vm6-nL-ZxU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fl-Ax-kEz">
@@ -518,7 +517,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="actionEnterPin:" destination="RM0-yE-Omf" eventType="touchUpInside" id="kmh-R6-i2h"/>
+                                            <action selector="confirmButtomPressed:" destination="RM0-yE-Omf" eventType="touchUpInside" id="E5M-1Z-N54"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltb-N3-UZR">
@@ -737,19 +736,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFU-zE-LW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="TSR-Uk-Uxp">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <exit id="Dwp-yv-zpW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1646" y="216"/>
         </scene>
-        <!--Create Pin View Controller-->
+        <!--Repeate View Controller-->
         <scene sceneID="92S-6f-1Yp">
             <objects>
-                <viewController storyboardIdentifier="RepeatePinViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9bz-Dw-y3y" customClass="CreatePinViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RepeateViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9bz-Dw-y3y" customClass="RepeateViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eOf-dQ-V2z"/>
                         <viewControllerLayoutGuide type="bottom" id="sgc-E7-ws9"/>
@@ -812,9 +805,6 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="actionEnterPin:" destination="9bz-Dw-y3y" eventType="touchUpInside" id="npg-2z-sz3"/>
-                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIt-Wc-s8G">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -1101,7 +1091,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSU-bl-tiW" customClass="BorderedLabel">
-                                <rect key="frame" x="10" y="143" width="355" height="66"/>
+                                <rect key="frame" x="10" y="142" width="355" height="66"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="qqZ-eh-wAf"/>
@@ -1118,7 +1108,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5Z-1Q-veB">
-                                <rect key="frame" x="111" y="84" width="154" height="36"/>
+                                <rect key="frame" x="107.5" y="84" width="161" height="35"/>
                                 <string key="text">Copy Brain-CODE
 to Use it in Another App</string>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
@@ -1126,7 +1116,7 @@ to Use it in Another App</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXD-Tv-PZF" customClass="BottomShadowView">
-                                <rect key="frame" x="9" y="142" width="355" height="1"/>
+                                <rect key="frame" x="9" y="141" width="355" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="2zn-jg-5gD"/>
@@ -1173,7 +1163,7 @@ to Use it in Another App</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can skip this step and export your  brain-code at any time you want." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqM-zM-reg">
-                                <rect key="frame" x="88" y="279" width="200" height="29"/>
+                                <rect key="frame" x="83.5" y="278" width="209" height="28"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                 <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="0.504456426056338" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1211,10 +1201,10 @@ to Use it in Another App</string>
             </objects>
             <point key="canvasLocation" x="3298" y="215"/>
         </scene>
-        <!--Create Pin View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="k0y-dF-jWx">
             <objects>
-                <viewController storyboardIdentifier="ConfirmPinViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KMe-Nb-QfL" customClass="CreatePinViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KMe-Nb-QfL" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pgy-MK-feP"/>
                         <viewControllerLayoutGuide type="bottom" id="JVR-u4-qwZ"/>
@@ -1259,6 +1249,7 @@ to Use it in Another App</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="actionCancel:" destination="KMe-Nb-QfL" eventType="touchUpInside" id="IlJ-tj-DnO"/>
                                             <segue destination="q1C-jF-UEz" kind="unwind" unwindAction="unwingToStart:" id="stl-WO-CaE"/>
                                         </connections>
                                     </button>
@@ -1278,7 +1269,7 @@ to Use it in Another App</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="actionJustConfirm:" destination="KMe-Nb-QfL" eventType="touchUpInside" id="mHN-kA-eGs"/>
+                                            <action selector="actionEnterPin:" destination="KMe-Nb-QfL" eventType="touchUpInside" id="C1D-Ud-aWe"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Az-uh-fvO">
@@ -1489,7 +1480,7 @@ to Use it in Another App</string>
                     <connections>
                         <outlet property="firstSymbolTextField" destination="tMJ-To-0GS" id="FVv-HX-5Id"/>
                         <outlet property="fourthSymbolTextField" destination="kDD-eJ-UBP" id="XiD-cX-NzS"/>
-                        <outlet property="gradientViewBottomOffset" destination="kRM-Uh-1Xv" id="26B-Mf-sJq"/>
+                        <outlet property="gradientViewBottomOffset" destination="kRM-Uh-1Xv" id="bIZ-VY-4TZ"/>
                         <outlet property="incorrectPinView" destination="pLE-ns-EHP" id="vZ3-ia-0YH"/>
                         <outlet property="pinContainer" destination="in6-Gk-ri5" id="ez1-7I-L9P"/>
                         <outlet property="secondSymbolTextField" destination="pEG-ob-dZZ" id="eZY-We-sv0"/>
@@ -1504,7 +1495,7 @@ to Use it in Another App</string>
                 </view>
                 <exit id="q1C-jF-UEz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2201" y="955"/>
+            <point key="canvasLocation" x="2202" y="982"/>
         </scene>
     </scenes>
     <resources>

@@ -41,7 +41,6 @@
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if ([viewController isKindOfClass:[CreatePinViewController class]]) {
         CreatePinViewController* controller = (CreatePinViewController*)viewController;
-        controller.delegate = self;
     }
     [super pushViewController:viewController animated:animated];
 }

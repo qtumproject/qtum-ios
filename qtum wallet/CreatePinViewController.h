@@ -6,11 +6,11 @@
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AuthCoordinator.h"
 #import "PinController.h"
 
-@protocol PinCoordinator;
-
 @interface CreatePinViewController : PinController
+
+@property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
 
 @end

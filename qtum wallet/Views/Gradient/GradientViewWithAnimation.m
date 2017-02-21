@@ -54,4 +54,7 @@
     }
 }
 
+-(void)dealloc{
+    NSLog(@"Dealocated");
+}
 @end
