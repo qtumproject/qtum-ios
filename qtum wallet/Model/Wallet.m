@@ -86,10 +86,18 @@ NSInteger const USERS_KEYS_COUNT = 100;
 
 -(BTCKey*)getLastRandomKeyOrRandomKey{
     if (!self.lastRandomKey) {
-        return [self getRandomKey];
+        BTCKey* key = [self getRandomKey];
+        [self storeastAdreesKey:key];
+        return key;
     }else {
         return self.lastRandomKey;
     }
+}
+
+-(void)storeastAdreesKey:(BTCKey*) btcKey{
+    NSUserDefaults *groupDefaults = [[NSUserDefaults alloc]
+                                  initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
+    [groupDefaults setObject:btcKey.address.string forKey:@"adressKey"];
 }
 
 - (BTCKey *)getKeyAtIndex:(NSUInteger)index;
