@@ -44,5 +44,11 @@
     }
 }
 
+-(void)confirmPasswordDidCanceled{
+    if ([self.delegate respondsToSelector:@selector(coordinatorDidCanceledLogin:)]) {
+        [self.delegate coordinatorDidCanceledLogin:self];
+    }
+}
+
 
 @end

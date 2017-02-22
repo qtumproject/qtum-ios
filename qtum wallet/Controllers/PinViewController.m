@@ -73,21 +73,21 @@ const float bottomOffset = 25;
 #pragma mark - Privat Methods
 
 -(void)validateAndSendPin{
-//    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
-//    __weak typeof(self) weakSelf = self;
-//    if (pin.length == 4) {
-//        [self.delegate confirmPin:pin andCompletision:^(BOOL success) {
-//            if (success) {
-//                [weakSelf.view endEditing:YES];
-//            }else {
-//                [weakSelf accessPinDenied];
-//            }
-//        }];
-//        [self clearPinTextFields];
-//        [self.firstSymbolTextField becomeFirstResponder];
-//    } else {
-//        [self accessPinDenied];
-//    }
+    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
+    __weak typeof(self) weakSelf = self;
+    if (pin.length == 4) {
+        [self.delegatePin confirmPin:pin andCompletision:^(BOOL success) {
+            if (success) {
+                [weakSelf.view endEditing:YES];
+            }else {
+                [weakSelf accessPinDenied];
+            }
+        }];
+        [self clearPinTextFields];
+        [self.firstSymbolTextField becomeFirstResponder];
+    } else {
+        [self accessPinDenied];
+    }
 
 }
 

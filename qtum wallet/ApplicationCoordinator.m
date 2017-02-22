@@ -103,6 +103,11 @@
     [self startMainFlow];
 }
 
+-(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator{
+    [self.childCoordinators removeObject:coordinator];
+    [self startAuthFlow];
+}
+
 -(void)coordinatorDidAuth:(AuthCoordinator*)coordinator{
     [self.childCoordinators removeObject:coordinator];
     [self startMainFlow];

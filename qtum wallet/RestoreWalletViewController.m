@@ -120,6 +120,9 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 
 -(void)restoreSucces{
     [SVProgressHUD showSuccessWithStatus:@"Done"];
+    if ([self.delegate respondsToSelector:@selector(didRestoreWallet)]) {
+        [self.delegate didRestoreWallet];
+    }
 }
 -(void)restoreFailed{
     [SVProgressHUD showErrorWithStatus:@"Some Error"];

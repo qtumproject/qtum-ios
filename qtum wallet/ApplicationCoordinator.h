@@ -15,6 +15,8 @@
 
 -(void)coordinatorDidAuth:(AuthCoordinator*)coordinator;
 -(void)coordinatorDidLogin:(LoginCoordinator*)coordinator;
+-(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator;
+
 
 @end
 
@@ -23,6 +25,7 @@
 
 -(void)start;
 //flows
+-(void)startAuthFlow;
 -(void)startMainFlow;
 -(void)startStartFlowWithAutorization:(BOOL) flag;
 -(void)startWalletFlow;

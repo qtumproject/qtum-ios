@@ -109,7 +109,7 @@
 
 -(void)didEnteredSecondTimePass:(NSString*)pass{
     __weak __typeof(self)weakSelf = self;
-    if ([self.walletPin isEqualToString:pass]) {
+    if ([self.walletPin isEqualToString:pass] && !self.isWalletExported) {
         [weakSelf.repeatePinController startCreateWallet];
         [[WalletManager sharedInstance] createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
             [[WalletManager sharedInstance] storePin:weakSelf.walletPin];
@@ -117,7 +117,10 @@
         } andFailureHandler:^{
             [weakSelf.repeatePinController endCreateWalletWithError:[NSError new]];
         }];
-    } else {
+    } else if ([self.walletPin isEqualToString:pass]){
+        [[WalletManager sharedInstance] storePin:weakSelf.walletPin];
+        [weakSelf.repeatePinController endCreateWalletWithError:nil];
+    }else {
         self.walletPin = nil;
         [self gotoCreatePinAgain];
     }
@@ -151,6 +154,7 @@
 
 -(void)cancelCreateWallet{
     [self resetToRootAnimated:YES];
+    self.walletExported = NO;
 }
 
 -(void)restoreButtonPressed{

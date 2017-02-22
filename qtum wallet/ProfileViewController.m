@@ -130,7 +130,7 @@
         } else if (indexPath.row == 1) {
             [[WalletManager sharedInstance] removeAllWallets];
             [[WalletManager sharedInstance] removePin];
-            [[ApplicationCoordinator sharedInstance] startStartFlowWithAutorization:YES];
+            [[ApplicationCoordinator sharedInstance] startAuthFlow];
         }
     }
 }
