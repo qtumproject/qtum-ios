@@ -51,15 +51,11 @@
 
 #pragma mark - Actions
 
-
-- (IBAction)actionEnterPin:(id)sender {
-
-}
 - (IBAction)confirmButtomPressed:(id)sender {
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
     if (pin.length == 4) {
-        if ([self.delegate performSelector:@selector(didCreatedWalletName:)]) {
-            [self.delegate didCreatedWalletName:pin];
+        if ([self.delegate respondsToSelector:@selector(didEnteredFirstTimePass:)]) {
+            [self.delegate didEnteredFirstTimePass:pin];
         }
     } else {
         [self accessPinDenied];
@@ -67,17 +63,9 @@
 }
 
 - (IBAction)actionCancel:(id)sender {
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
-    if (pin.length == 4) {
-        if ([self.delegate performSelector:@selector(didCreatedWalletName:)]) {
-            [self.delegate didCreatedWalletName:pin];
-        }
-    } else {
-        [self accessPinDenied];
+    if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {
+        [self.delegate cancelCreateWallet];
     }
-//    if ([self.delegate performSelector:@selector(cancelCreateWallet)]) {
-//        [self.delegate cancelCreateWallet];
-//    }
 }
 
 

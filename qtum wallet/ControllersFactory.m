@@ -21,6 +21,7 @@
 #import "CreatePinViewController.h"
 #import "RepeateViewController.h"
 #import "AuthNavigationController.h"
+#import "ExportWalletBrandKeyViewController.h"
 
 @implementation ControllersFactory
 
@@ -110,6 +111,11 @@
 
 -(AuthNavigationController*)createAuthNavigationController{
     AuthNavigationController* controller = [[AuthNavigationController alloc]init];
+    return controller;
+}
+
+-(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController{
+    ExportWalletBrandKeyViewController* controller = (ExportWalletBrandKeyViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ExportWalletBrandKeyViewController"];
     return controller;
 }
 

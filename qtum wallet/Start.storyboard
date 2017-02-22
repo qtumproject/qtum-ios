@@ -393,7 +393,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-oZ-gm9">
-                                        <rect key="frame" x="55" y="421" width="265" height="21"/>
+                                        <rect key="frame" x="55" y="420" width="265" height="22"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="SFUIDisplay-Thin" family="SF UI Display" pointSize="18"/>
@@ -787,7 +787,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="REc-qq-Hsw" kind="unwind" unwindAction="unwingToStart:" id="hvC-NH-lR0"/>
+                                            <action selector="actionCancel:" destination="9bz-Dw-y3y" eventType="touchUpInside" id="3Lu-sV-Ajy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAN-GA-w3I">
@@ -805,6 +805,9 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionEnterPin:" destination="9bz-Dw-y3y" eventType="touchUpInside" id="3Ka-pP-mfR"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIt-Wc-s8G">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -1027,14 +1030,13 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <exit id="REc-qq-Hsw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2449" y="215"/>
         </scene>
-        <!--Export Brain Key View Controller-->
+        <!--Export Wallet Brand Key View Controller-->
         <scene sceneID="ytV-HX-fZ6">
             <objects>
-                <viewController storyboardIdentifier="ExportBrainKeyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jXh-pH-VOj" customClass="ExportBrainKeyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExportWalletBrandKeyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jXh-pH-VOj" customClass="ExportWalletBrandKeyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GfT-Fh-2lf"/>
                         <viewControllerLayoutGuide type="bottom" id="qZv-op-Qav"/>
@@ -1091,7 +1093,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSU-bl-tiW" customClass="BorderedLabel">
-                                <rect key="frame" x="10" y="142" width="355" height="66"/>
+                                <rect key="frame" x="10" y="143" width="355" height="66"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="qqZ-eh-wAf"/>
@@ -1108,7 +1110,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5Z-1Q-veB">
-                                <rect key="frame" x="107.5" y="84" width="161" height="35"/>
+                                <rect key="frame" x="111" y="84" width="154" height="36"/>
                                 <string key="text">Copy Brain-CODE
 to Use it in Another App</string>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
@@ -1116,7 +1118,7 @@ to Use it in Another App</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXD-Tv-PZF" customClass="BottomShadowView">
-                                <rect key="frame" x="9" y="141" width="355" height="1"/>
+                                <rect key="frame" x="9" y="142" width="355" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="2zn-jg-5gD"/>
@@ -1163,7 +1165,7 @@ to Use it in Another App</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can skip this step and export your  brain-code at any time you want." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqM-zM-reg">
-                                <rect key="frame" x="83.5" y="278" width="209" height="28"/>
+                                <rect key="frame" x="88" y="279" width="200" height="29"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                 <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="0.504456426056338" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>

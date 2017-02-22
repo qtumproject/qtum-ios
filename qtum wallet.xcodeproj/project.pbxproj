@@ -47,6 +47,7 @@
 		B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF191E5C84DF006125F3 /* RestoreWalletViewController.m */; };
 		B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF1C1E5C9020006125F3 /* RepeateViewController.m */; };
 		B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF1F1E5C9FC0006125F3 /* AuthNavigationController.m */; };
+		B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF221E5D6955006125F3 /* ExportWalletBrandKeyViewController.m */; };
 		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
 		B351305D1E49BF6D0048A28C /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B351305C1E49BF6D0048A28C /* NewsController.m */; };
 		B35130611E49C9930048A28C /* NewsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130601E49C9930048A28C /* NewsCellModel.m */; };
@@ -187,6 +188,8 @@
 		B33EAF1C1E5C9020006125F3 /* RepeateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeateViewController.m; sourceTree = "<group>"; };
 		B33EAF1E1E5C9FC0006125F3 /* AuthNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthNavigationController.h; sourceTree = "<group>"; };
 		B33EAF1F1E5C9FC0006125F3 /* AuthNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthNavigationController.m; sourceTree = "<group>"; };
+		B33EAF211E5D6955006125F3 /* ExportWalletBrandKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportWalletBrandKeyViewController.h; sourceTree = "<group>"; };
+		B33EAF221E5D6955006125F3 /* ExportWalletBrandKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportWalletBrandKeyViewController.m; sourceTree = "<group>"; };
 		B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinViewController.h; sourceTree = "<group>"; };
 		B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinViewController.m; sourceTree = "<group>"; };
 		B351305B1E49BF6D0048A28C /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
@@ -472,6 +475,8 @@
 			children = (
 				B33EAF051E5C5D9A006125F3 /* AuthCoordinator.h */,
 				B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */,
+				B33EAF1E1E5C9FC0006125F3 /* AuthNavigationController.h */,
+				B33EAF1F1E5C9FC0006125F3 /* AuthNavigationController.m */,
 				B33EAF151E5C7D45006125F3 /* FirstAuthViewController.h */,
 				B33EAF161E5C7D45006125F3 /* FirstAuthViewController.m */,
 				B386F5EC1E16403B004D231B /* WalletNameViewController.h */,
@@ -482,8 +487,8 @@
 				B33EAF1C1E5C9020006125F3 /* RepeateViewController.m */,
 				B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */,
 				B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */,
-				B33EAF1E1E5C9FC0006125F3 /* AuthNavigationController.h */,
-				B33EAF1F1E5C9FC0006125F3 /* AuthNavigationController.m */,
+				B33EAF211E5D6955006125F3 /* ExportWalletBrandKeyViewController.h */,
+				B33EAF221E5D6955006125F3 /* ExportWalletBrandKeyViewController.m */,
 			);
 			name = "New Group";
 			sourceTree = "<group>";
@@ -1178,6 +1183,7 @@
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
+				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,

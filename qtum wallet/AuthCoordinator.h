@@ -22,11 +22,15 @@
 -(void)didRestoreWallet;
 -(void)restoreButtonPressed;
 -(void)createNewButtonPressed;
+-(void)didExportWallet;
 
 @end
+
+@protocol ApplicationCoordinatorDelegate;
 
 @interface AuthCoordinator : NSObject <Coordinatorable,AuthCoordinatorDelegate>
 
 -(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
+@property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
 @end

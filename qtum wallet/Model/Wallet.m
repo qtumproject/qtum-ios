@@ -27,10 +27,10 @@ NSInteger const USERS_KEYS_COUNT = 100;
 {
     self = [super init];
     if (self) {
-        _name = name;
-        _pin = pin;
-        _countOfUsedKeys = USERS_KEYS_COUNT;
-        _seedWords = [self generateWordsArray];
+        self.name = name;
+        self.pin = pin;
+        self.countOfUsedKeys = USERS_KEYS_COUNT;
+        self.seedWords = [self generateWordsArray];
     }
     return self;
 }
@@ -39,10 +39,10 @@ NSInteger const USERS_KEYS_COUNT = 100;
 {
     self = [super init];
     if (self) {
-        _name = name;
-        _pin = pin;
-        _countOfUsedKeys = USERS_KEYS_COUNT;
-        _seedWords = seedWords;
+        self.name = name;
+        self.pin = pin;
+        self.countOfUsedKeys = USERS_KEYS_COUNT;
+        self.seedWords = seedWords;
         
         if (!_keyChain) {
             return nil;

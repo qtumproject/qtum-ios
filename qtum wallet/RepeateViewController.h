@@ -13,4 +13,7 @@
 
 @property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
 
+-(void)startCreateWallet;
+-(void)endCreateWalletWithError:(NSError*)error;
+
 @end

@@ -12,6 +12,7 @@
 #import "RestoreWalletViewController.h"
 #import "RepeateViewController.h"
 #import "CreatePinViewController.h"
+#import "ExportWalletBrandKeyViewController.h"
 
 @interface AuthCoordinator ()
 
@@ -21,6 +22,7 @@
 @property (nonatomic, weak) RestoreWalletViewController *restoreWalletController;
 @property (nonatomic, weak) CreatePinViewController *createPinController;
 @property (nonatomic, weak) RepeateViewController *repeatePinController;
+@property (nonatomic, weak) ExportWalletBrandKeyViewController *exportWalletController;
 @property (copy, nonatomic) NSString* firstPin;
 @property (copy, nonatomic) NSString* walletName;
 @property (copy, nonatomic) NSString* walletPin;
@@ -81,6 +83,13 @@
     self.repeatePinController = controller;
 }
 
+-(void)gotoExportWallet{
+    ExportWalletBrandKeyViewController* controller = (ExportWalletBrandKeyViewController*)[[ControllersFactory sharedInstance] createExportWalletBrandKeyViewController];
+    controller.delegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
+    self.exportWalletController = controller;
+}
+
 -(void)gotoCreatePinAgain{
     [self resetToRootAnimated:YES];
     [self gotoCreatePin];
@@ -94,14 +103,23 @@
 }
 
 -(void)didEnteredFirstTimePass:(NSString*)pass{
-    self.firstPin = pass;
+    self.walletPin = pass;
+    [self gotoRepeatePin];
 }
 
 -(void)didEnteredSecondTimePass:(NSString*)pass{
-    if ([self.firstPin isEqualToString:pass]) {
-        [[WalletManager sharedInstance] storePin:self.walletPin];
+    __weak __typeof(self)weakSelf = self;
+    if ([self.walletPin isEqualToString:pass]) {
+        [weakSelf.repeatePinController startCreateWallet];
+        [[WalletManager sharedInstance] createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
+            [[WalletManager sharedInstance] storePin:weakSelf.walletPin];
+            [weakSelf.repeatePinController endCreateWalletWithError:nil];
+        } andFailureHandler:^{
+            [weakSelf.repeatePinController endCreateWalletWithError:[NSError new]];
+        }];
     } else {
-        
+        self.walletPin = nil;
+        [self gotoCreatePinAgain];
     }
 }
 
@@ -123,7 +141,7 @@
 }
 
 -(void)didCreateWallet{
-    
+    [self gotoExportWallet];
 }
 
 -(void)didRestoreWallet{
@@ -143,7 +161,11 @@
     [self gotoCreateWallet];
 }
 
-
+-(void)didExportWallet{
+    if ([self.delegate respondsToSelector:@selector(coordinatorDidAuth:)]) {
+        [self.delegate coordinatorDidAuth:self];
+    }
+}
 
 
 @end

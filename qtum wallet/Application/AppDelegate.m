@@ -22,7 +22,7 @@
 
 //     Remove all wallets
 //    [[WalletManager sharedInstance] removeAllWallets];
-        
+    
     [[ApplicationCoordinator sharedInstance] start];
     
 ////     Send money for our wallet

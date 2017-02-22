@@ -8,16 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+
 @protocol LoginCoordinatorDelegate <NSObject>
 
 -(void)passwordDidEntered:(NSString*)password;
 -(void)confirmPasswordDidCanceled;
 
-
 @end
+
+@protocol ApplicationCoordinatorDelegate;
 
 @interface LoginCoordinator : NSObject <Coordinatorable>
 
 -(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
+@property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
 @end

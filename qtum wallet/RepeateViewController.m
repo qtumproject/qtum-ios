@@ -53,7 +53,7 @@
 - (IBAction)actionEnterPin:(id)sender {
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
     if (pin.length == 4) {
-        if ([self.delegate performSelector:@selector(didEnteredSecondTimePass:)]) {
+        if ([self.delegate respondsToSelector:@selector(didEnteredSecondTimePass:)]) {
             [self.delegate didEnteredSecondTimePass:pin];
         }
     } else {
@@ -62,8 +62,28 @@
 }
 
 - (IBAction)actionCancel:(id)sender {
-    if ([self.delegate performSelector:@selector(cancelCreateWallet)]) {
+    if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {
         [self.delegate cancelCreateWallet];
+    }
+}
+
+#pragma mark - Public Methods
+
+-(void)startCreateWallet{
+    [SVProgressHUD show];
+}
+
+-(void)endCreateWalletWithError:(NSError*)error{
+    if (error) {
+        [SVProgressHUD showErrorWithStatus:@"Some Error"];
+        if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {
+            [self.delegate cancelCreateWallet];
+        }
+    }else {
+        [SVProgressHUD showSuccessWithStatus:@"Done"];
+        if ([self.delegate respondsToSelector:@selector(didCreateWallet)]) {
+            [self.delegate didCreateWallet];
+        }
     }
 }
 

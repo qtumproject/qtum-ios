@@ -74,13 +74,11 @@
 
 -(void)start{
     [Appearance setUp];
-    [self startAuthFlow];
-//    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
-//        [self startStartFlowWithAutorization:NO];
-//
-//    }else{
-//        [self startStartFlowWithAutorization:YES];
-//    }
+    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
+        [self startLoginFlow];
+    }else{
+        [self startAuthFlow];
+    }
 }
 
 #pragma mark - Navigation
@@ -101,8 +99,15 @@
 #pragma mark - ApplicationCoordinatorDelegate
 
 -(void)coordinatorDidLogin:(LoginCoordinator*)coordinator{
+    [self.childCoordinators removeObject:coordinator];
     [self startMainFlow];
 }
+
+-(void)coordinatorDidAuth:(AuthCoordinator*)coordinator{
+    [self.childCoordinators removeObject:coordinator];
+    [self startMainFlow];
+}
+
 
 #pragma mark - Presenting Controllers
 
@@ -131,6 +136,7 @@
     UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
     self.appDelegate.window.rootViewController = navigationController;
     AuthCoordinator* coordinator = [[AuthCoordinator alloc]initWithNavigationViewController:navigationController];
+    coordinator.delegate = self;
     [coordinator start];
     [self.childCoordinators addObject:coordinator];
 }
@@ -140,6 +146,7 @@
     UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
     self.appDelegate.window.rootViewController = navigationController;
     LoginCoordinator* coordinator = [[LoginCoordinator alloc]initWithNavigationViewController:navigationController];
+    coordinator.delegate = self;
     [coordinator start];
     [self.childCoordinators addObject:coordinator];
 }

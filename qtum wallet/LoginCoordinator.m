@@ -36,8 +36,9 @@
 
 -(void)passwordDidEntered:(NSString*)password{
     if ([password isEqualToString:[WalletManager sharedInstance].PIN]) {
-        [[WalletManager sharedInstance] storePin:password];
-        [[ApplicationCoordinator sharedInstance] coordinatorDidLogin:self];
+        if ([self.delegate respondsToSelector:@selector(coordinatorDidLogin:)]) {
+            [self.delegate coordinatorDidLogin:self];
+        }
     }else {
         [self.loginController applyFailedPasswordAction];
     }

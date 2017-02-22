@@ -15,6 +15,7 @@
 @class RepeateViewController;
 @class CreatePinViewController;
 @class AuthNavigationController;
+@class ExportWalletBrandKeyViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -37,6 +38,7 @@
 -(CreatePinViewController*)createCreatePinController;
 -(RepeateViewController*)createRepeatePinController;
 -(AuthNavigationController*)createAuthNavigationController;
+-(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;
