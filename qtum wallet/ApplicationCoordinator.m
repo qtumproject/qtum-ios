@@ -14,11 +14,9 @@
 #import "TabBarController.h"
 #import "UIViewController+Extension.h"
 #import "ControllersFactory.h"
-#import "StartNavigationCoordinator.h"
 #import "LoginCoordinator.h"
 
 
-#import "ImportKeyViewController.h"
 
 @interface ApplicationCoordinator ()
 
@@ -154,12 +152,6 @@
     coordinator.delegate = self;
     [coordinator start];
     [self.childCoordinators addObject:coordinator];
-}
-
--(void)startStartFlowWithAutorization:(BOOL)isAutorized{
-    StartNavigationCoordinator* controller = (StartNavigationCoordinator*)[self.controllersFactory createFlowNavigationCoordinator];
-    controller.isAutrized = isAutorized;
-    self.appDelegate.window.rootViewController = controller;
 }
 
 

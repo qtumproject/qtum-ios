@@ -7,7 +7,6 @@
 //
 
 #import "WalletNameViewController.h"
-#import "StartNavigationCoordinator.h"
 
 @interface WalletNameViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;

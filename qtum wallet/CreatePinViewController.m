@@ -8,7 +8,6 @@
 
 #import "CreatePinViewController.h"
 #import "CustomTextField.h"
-#import "StartNavigationCoordinator.h"
 
 @interface CreatePinViewController () <CAAnimationDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;

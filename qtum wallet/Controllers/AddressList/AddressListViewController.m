@@ -9,9 +9,8 @@
 #import "AddressListViewController.h"
 #import "AddressTableViewCell.h"
 #import "KeyViewController.h"
-#import "ImportKeyViewController.h"
 
-@interface AddressListViewController () <UITableViewDataSource, UITableViewDelegate, ImportKeyViewControllerDelegate>
+@interface AddressListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)backButtonPressed:(id)sender;
@@ -111,11 +110,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *segueID = segue.identifier;
-    
-    if ([segueID isEqualToString:@"AddressListToImport"]) {
-        ImportKeyViewController *vc = (ImportKeyViewController *)segue.destinationViewController;
-        vc.delegate = self;
-    }
+
 }
 
 @end

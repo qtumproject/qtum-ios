@@ -12,7 +12,6 @@
 #import "WalletNavigationCoordinator.h"
 #import "ProfileNavigationCoordinator.h"
 #import "UIViewController+Extension.h"
-#import "StartNavigationCoordinator.h"
 #import "TabBarController.h"
 #import "WalletNameViewController.h"
 #import "LoginViewController.h"
@@ -70,12 +69,6 @@
 -(UIViewController*)walletFlowTab{
     UIViewController* controller = [UIViewController controllerInStoryboard:@"Wallet" withIdentifire:nil];
     WalletNavigationCoordinator* nav = [[WalletNavigationCoordinator alloc] initWithRootViewController:controller];
-    return nav;
-}
-
--(UIViewController*)createFlowNavigationCoordinator{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Start" withIdentifire:nil];
-    StartNavigationCoordinator* nav = [[StartNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 

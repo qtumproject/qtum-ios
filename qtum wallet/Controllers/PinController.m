@@ -8,7 +8,6 @@
 
 #import "PinController.h"
 #import "CustomTextField.h"
-#import "StartNavigationCoordinator.h"
 
 @interface PinController () <CAAnimationDelegate>
 
