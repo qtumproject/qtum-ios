@@ -22,6 +22,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
+@property (strong,nonatomic) NSString* adressFomMessage;
+@property (strong,nonatomic) NSString* valueFromMessage;
+
 
 - (IBAction)backbuttonPressed:(id)sender;
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
@@ -39,6 +42,9 @@
     }
     
     self.residueValueLabel.text = self.currentBalance;
+    
+    self.addressTextField.text = self.adressFomMessage;
+    self.amountTextField.text = self.valueFromMessage;
 }
 
 - (void)dealloc
@@ -49,6 +55,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - iMessage
+
+-(void)setAdress:(NSString*)adress andValue:(NSString*)amount{
+    self.adressFomMessage = adress;
+    self.valueFromMessage = amount;
 }
 
 #pragma mark - UITextFieldDelegate

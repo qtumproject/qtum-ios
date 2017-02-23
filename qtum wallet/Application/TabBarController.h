@@ -10,4 +10,6 @@
 
 @interface TabBarController : UITabBarController
 
+-(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount;
+
 @end

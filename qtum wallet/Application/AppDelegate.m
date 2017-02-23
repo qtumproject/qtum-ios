@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ApplicationCoordinator.h"
 #import "RPCRequestManager.h"
+#import "NSString+Extension.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +23,7 @@
 
 //     Remove all wallets
 //    [[WalletManager sharedInstance] removeAllWallets];
-    
+
     [[ApplicationCoordinator sharedInstance] start];
     
 ////     Send money for our wallet
@@ -54,6 +55,12 @@
     }
     
     return randomWords;
+}
+;
+
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    [[ApplicationCoordinator sharedInstance] launchFromUrl:url];
+    return YES;
 }
 
 

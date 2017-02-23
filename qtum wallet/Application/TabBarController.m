@@ -8,8 +8,11 @@
 
 #import "TabBarController.h"
 #import "ControllersFactory.h"
+#import "NewPaymentViewController.h"
 
 @interface TabBarController ()
+
+@property (weak,nonatomic)NewPaymentViewController* paymentController;
 
 @end
 
@@ -46,6 +49,22 @@
     [wallet.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [news.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [send.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
+    
+    [self storeSendReference:send];
+}
+
+-(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount{
+    self.selectedIndex = 3;
+    [self.paymentController setAdress:adress andValue:amount];
+}
+
+-(void)storeSendReference:(UIViewController*)sendController{
+    if ([sendController isKindOfClass:[UINavigationController class]]){
+        UINavigationController* nav = (UINavigationController*)sendController;
+        if ([nav.viewControllers.firstObject isKindOfClass:[NewPaymentViewController class]]){
+            self.paymentController = nav.viewControllers.firstObject;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

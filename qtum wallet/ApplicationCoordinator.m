@@ -27,6 +27,8 @@
 @property (strong,nonatomic) UINavigationController* navigationController;
 @property (nonatomic,strong) NSMutableArray *childCoordinators;
 
+@property (nonatomic,strong) NSString *amount;
+@property (nonatomic,strong) NSString *adress;
 
 @end
 
@@ -144,6 +146,11 @@
     [self.childCoordinators addObject:coordinator];
 }
 
+-(void)logout{
+    [self startAuthFlow];
+    [self storeAuthorizedFlag:NO];
+}
+
 -(void)startLoginFlow{
     //TODO create navigation by fabric
     UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
@@ -180,8 +187,12 @@
 
 -(void)startMainFlow{
     TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
+    if (self.adress) {
+        [controller selectSendControllerWithAdress:self.adress andValue:self.amount];
+    }
     self.router = controller;
     self.appDelegate.window.rootViewController = controller;
+    [self storeAuthorizedFlag:YES];
 }
 
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion{
@@ -194,5 +205,38 @@
     self.appDelegate.window.rootViewController = createPinRoot;
 }
 
+
+#pragma iMessage Methods
+
+static NSString* isHasWalletKey = @"isHasWallet";
+
+-(void)storeAuthorizedFlag:(BOOL) flag{
+
+    [self.defaults setObject:flag ? @"YES" : @"NO" forKey:isHasWalletKey];
+    if ([self.defaults synchronize]) {
+        NSLog(@"Synch!!");
+    }
+}
+
+-(NSUserDefaults*)defaults{
+    if (!_defaults) {
+        _defaults = [[NSUserDefaults alloc]
+                     initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
+    }
+    return _defaults;
+}
+
+-(void)launchFromUrl:(NSURL*)url{
+    [self start];
+    [self pareceUrl:url];
+}
+
+-(void)pareceUrl:(NSURL*)url{
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
+                                                resolvingAgainstBaseURL:NO];
+    NSArray *queryItems = urlComponents.queryItems;
+    self.adress = [NSString valueForKey:@"adress" fromQueryItems:queryItems];
+    self.amount = [NSString valueForKey:@"amount" fromQueryItems:queryItems];
+}
 
 @end

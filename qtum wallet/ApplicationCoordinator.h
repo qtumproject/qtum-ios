@@ -22,6 +22,7 @@
 
 @interface ApplicationCoordinator : NSObject <Coordinatorable, ApplicationCoordinatorDelegate>
 
+@property (strong,nonatomic) NSUserDefaults* defaults;
 
 -(void)start;
 //flows
@@ -34,10 +35,12 @@
 
 -(void)showWallet;
 -(void)showExportBrainKeyAnimated:(BOOL)animated;
-
+-(void)logout;
 -(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;
 -(void)setViewController:(UIViewController*) controller animated:(BOOL)animated;
 
+//imessage
+-(void)launchFromUrl:(NSURL*)url;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

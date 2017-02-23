@@ -13,4 +13,6 @@
 @property (nonatomic, copy) NSString *currentBalance;
 @property (nonatomic, copy) NSDictionary *dictionary;
 
+-(void)setAdress:(NSString*)adress andValue:(NSString*)amount;
+
 @end

@@ -16,7 +16,6 @@ NSInteger const USERS_KEYS_COUNT = 100;
 @property (nonatomic) NSInteger countOfUsedKeys;
 @property (nonatomic) NSArray *seedWords;
 @property (nonatomic) BTCKey *lastRandomKey;
-
 @property (nonatomic) BTCKeychain *keyChain;
 
 @end
@@ -78,8 +77,8 @@ NSInteger const USERS_KEYS_COUNT = 100;
 - (BTCKey *)getRandomKey
 {
     uint randomedIndex = arc4random() % self.countOfUsedKeys;
-    
     BTCKey *newKey = [self.keyChain keyAtIndex:randomedIndex];
+    [self storeLastAdreesKey:newKey];
     self.lastRandomKey = newKey;
     return newKey;
 }
@@ -87,17 +86,17 @@ NSInteger const USERS_KEYS_COUNT = 100;
 -(BTCKey*)getLastRandomKeyOrRandomKey{
     if (!self.lastRandomKey) {
         BTCKey* key = [self getRandomKey];
-        [self storeastAdreesKey:key];
+        [self storeLastAdreesKey:key];
         return key;
     }else {
         return self.lastRandomKey;
     }
 }
 
--(void)storeastAdreesKey:(BTCKey*) btcKey{
-    NSUserDefaults *groupDefaults = [[NSUserDefaults alloc]
-                                  initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
-    [groupDefaults setObject:btcKey.address.string forKey:@"adressKey"];
+static NSString* adressKey = @"adress";
+
+-(void)storeLastAdreesKey:(BTCKey*) btcKey{
+    [[[ApplicationCoordinator sharedInstance] defaults] setObject:btcKey.address.string forKey:adressKey];
 }
 
 - (BTCKey *)getKeyAtIndex:(NSUInteger)index;
