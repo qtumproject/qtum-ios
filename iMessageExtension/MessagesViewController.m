@@ -7,8 +7,10 @@
 //
 
 #import "MessagesViewController.h"
+#import "GradientView.h"
 
 @interface MessagesViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *goToHostButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendMessageWithAdress;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
@@ -17,14 +19,17 @@
 @property (assign, nonatomic) BOOL isHasWallet;
 
 @property (weak, nonatomic) IBOutlet UIButton *requestExpandButton;
-@property (weak, nonatomic) IBOutlet UIView *compactPresentationView;
-@property (weak, nonatomic) IBOutlet UIView *expandedPresentationVIew;
+
 @property (weak, nonatomic) IBOutlet UIButton *mainActionButton;
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UIView *textFieldUnderline;
 @property (weak, nonatomic) IBOutlet UILabel *amountValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 
-
+@property (weak, nonatomic) IBOutlet UIView *compactPresentationView;
+@property (weak, nonatomic) IBOutlet UIView *expandedPresentationVIew;
+@property (weak, nonatomic) IBOutlet UIView *sendMessageExpandView;
+@property (weak, nonatomic) IBOutlet UIView *createWalletExpandView;
 
 @end
 
@@ -42,7 +47,7 @@ static NSString* sendAdressButtonText = @"Send adress";
     NSUserDefaults *myDefaults = [[NSUserDefaults alloc]
                                   initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
     NSString* boolAsString = [myDefaults valueForKey:isHasWalletKey];
-    self.isHasWallet = [boolAsString isEqualToString:@"YES"];
+    self.isHasWallet = [boolAsString isEqualToString:@"YES"] ? YES : NO;
     self.adress = [myDefaults valueForKey:adressKey];
     self.sendMessageWithAdress.hidden = !self.isHasWallet;
     self.goToHostButton.hidden = self.isHasWallet;
@@ -84,7 +89,6 @@ static NSString* sendAdressButtonText = @"Send adress";
 }
 
 -(void)gotoHostFromMessage:(MSMessage*)message {
-    NSURLComponents* components = [[NSURLComponents alloc] initWithURL:message.URL resolvingAgainstBaseURL:NO];
     NSString* adress = [self getAdressFromMessage:message];
     NSString* amount = [self getAmountFromMessage:message];
     [self openHostWithAdress:adress andAmount:amount];
@@ -102,13 +106,6 @@ static NSString* sendAdressButtonText = @"Send adress";
         NSLog(@"Opened HostApp - %@", success ? @"Yes" : @"NO");
     }];
 }
-- (IBAction)actionMain:(id)sender {
-    if (self.isHasWallet) {
-        [self actionSendMessage:nil];
-    }else {
-        [self actionCreateWallet:nil];
-    }
-}
 
 - (IBAction)actionVoidTap:(id)sender {
     [self.view endEditing:YES];
@@ -122,10 +119,10 @@ static NSString* sendAdressButtonText = @"Send adress";
 }
 
 -(UIImage*)imageForMessage{
-    UIView* backView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 300)];
+    GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 300)];
     backView.backgroundColor = [UIColor blackColor];
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(75, 75, 150, 150)];
-    label.text = @"Send Money to adress";
+    label.text = [NSString stringWithFormat:@"I need %@ qtum",self.amountTextField.text.length > 0 ? self.amountTextField.text : @"some"];
     [label sizeToFit];
     label.textColor = [UIColor whiteColor];
     [backView addSubview:label];
@@ -143,7 +140,7 @@ static NSString* sendAdressButtonText = @"Send adress";
     BOOL isMineMessage = ([self.activeConversation.localParticipantIdentifier isEqual:self.activeConversation.selectedMessage.senderParticipantIdentifier] || !self.activeConversation.selectedMessage);
     if (isExpand) {
         if (isMineMessage) {
-            if (isHasWalletKey) {
+            if (self.isHasWallet) {
                 [self prepareSendingAdressWithControll];
             } else {
                 [self prepareCreateWallet];
@@ -162,15 +159,12 @@ static NSString* sendAdressButtonText = @"Send adress";
 }
 
 -(void)prepareSendingAdressWithControll{
+    self.sendMessageExpandView.hidden = NO;
+    self.createWalletExpandView.hidden = YES;
     self.compactPresentationView.hidden = YES;
     self.expandedPresentationVIew.hidden = NO;
-    self.textLabel.text = sendAdressText;
-    self.textLabel.hidden = NO;
-    self.amountTextField.hidden = NO;
-    self.textFieldUnderline.hidden = NO;
-    self.mainActionButton.hidden = NO;
-    self.mainActionButton.titleLabel.text = sendAdressButtonText;
-    self.amountValueLabel.hidden = YES;
+    self.adressLabel.text = [self getAdressFromMessage:self.activeConversation.selectedMessage];
+    self.amountValueLabel.text = [self getAmountFromMessage:self.activeConversation.selectedMessage];
 }
 
 -(void)prepareSendingAdressWithoutControll{
@@ -186,19 +180,17 @@ static NSString* sendAdressButtonText = @"Send adress";
 }
 
 -(void)prepareCreateWallet{
-    self.compactPresentationView.hidden = YES;
+    self.sendMessageExpandView.hidden = YES;
+    self.createWalletExpandView.hidden = NO;
     self.expandedPresentationVIew.hidden = NO;
-    self.textLabel.text = registerText;
-    self.textLabel.hidden = NO;
-    self.amountTextField.hidden = YES;
-    self.textFieldUnderline.hidden = YES;
-    self.mainActionButton.hidden = NO;
-    self.mainActionButton.titleLabel.text = createWalletButtonText;
-    self.amountValueLabel.hidden = YES;
+    self.compactPresentationView.hidden = YES;
 }
 
 
 -(NSString*)getAdressFromMessage:(MSMessage*)message{
+    if (!message) {
+        return self.adress;
+    }
     NSURLComponents* components = [[NSURLComponents alloc] initWithURL:message.URL resolvingAgainstBaseURL:NO];
     NSString* adress;
     for (NSURLQueryItem* item in components.queryItems) {
@@ -210,6 +202,9 @@ static NSString* sendAdressButtonText = @"Send adress";
 }
 
 -(NSString*)getAmountFromMessage:(MSMessage*)message{
+    if (!message) {
+        return nil;
+    }
     NSURLComponents* components = [[NSURLComponents alloc] initWithURL:message.URL resolvingAgainstBaseURL:NO];
     NSString* amount;
     for (NSURLQueryItem* item in components.queryItems) {
