@@ -172,7 +172,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1P6-Rf-Gs3">
-                                                <rect key="frame" x="47" y="322" width="225" height="0.5"/>
+                                                <rect key="frame" x="47" y="322" width="225" height="1"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="wxw-ym-1wy"/>
@@ -207,17 +207,104 @@
                                             <constraint firstItem="1P6-Rf-Gs3" firstAttribute="centerX" secondItem="pFk-c1-ebA" secondAttribute="centerX" id="wZO-2a-9bS"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XN7-9A-NoP">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-qN-VLx">
+                                                <rect key="frame" x="31" y="266" width="117.5" height="50"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="16"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionCancelSendMoney:" destination="ObA-dk-sSI" eventType="touchUpInside" id="IaV-k7-BxB"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send me pls qtum" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ber-uP-fl9">
+                                                <rect key="frame" x="38" y="100" width="244" height="21"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88R-4f-3wr">
+                                                <rect key="frame" x="173.5" y="266" width="117.5" height="50"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" priority="750" constant="146" id="OfE-C4-xU3"/>
+                                                    <constraint firstAttribute="height" constant="50" id="ygB-Nf-cPC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="16"/>
+                                                <state key="normal" title="Send">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actiomSendMoney:" destination="ObA-dk-sSI" eventType="touchUpInside" id="x4l-vV-lR5"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="bcR-qN-VLx" firstAttribute="leading" secondItem="XN7-9A-NoP" secondAttribute="leading" constant="31" id="AVf-MQ-bYE"/>
+                                            <constraint firstItem="88R-4f-3wr" firstAttribute="centerY" secondItem="bcR-qN-VLx" secondAttribute="centerY" id="AgS-Z5-8k3"/>
+                                            <constraint firstItem="88R-4f-3wr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bcR-qN-VLx" secondAttribute="trailing" constant="25" id="H2S-Kg-CgE"/>
+                                            <constraint firstItem="Ber-uP-fl9" firstAttribute="top" secondItem="XN7-9A-NoP" secondAttribute="top" constant="100" id="JW6-jj-brb"/>
+                                            <constraint firstItem="88R-4f-3wr" firstAttribute="height" secondItem="bcR-qN-VLx" secondAttribute="height" id="XxS-GD-8HU"/>
+                                            <constraint firstItem="88R-4f-3wr" firstAttribute="width" secondItem="bcR-qN-VLx" secondAttribute="width" id="ffJ-Nb-PUl"/>
+                                            <constraint firstItem="Ber-uP-fl9" firstAttribute="centerX" secondItem="XN7-9A-NoP" secondAttribute="centerX" id="jNL-d0-ZnS"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ber-uP-fl9" secondAttribute="trailing" constant="38" id="m8a-nh-aZ6"/>
+                                            <constraint firstAttribute="trailing" secondItem="88R-4f-3wr" secondAttribute="trailing" constant="29" id="op1-PN-I0K"/>
+                                            <constraint firstItem="bcR-qN-VLx" firstAttribute="top" secondItem="Ber-uP-fl9" secondAttribute="bottom" constant="144.5" id="rZY-R5-CkW"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqi-95-3bs">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment declined" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-rg-tDz">
+                                                <rect key="frame" x="50" y="254" width="220" height="21"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="3hF-rg-tDz" firstAttribute="centerX" secondItem="Dqi-95-3bs" secondAttribute="centerX" id="6b4-fJ-Wgu"/>
+                                            <constraint firstAttribute="trailing" secondItem="3hF-rg-tDz" secondAttribute="trailing" constant="50" id="CI3-zr-myy"/>
+                                            <constraint firstItem="3hF-rg-tDz" firstAttribute="centerY" secondItem="Dqi-95-3bs" secondAttribute="centerY" id="cxV-6q-ywi"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="pFk-c1-ebA" secondAttribute="trailing" id="2Sg-UV-E2x"/>
+                                    <constraint firstAttribute="trailing" secondItem="XN7-9A-NoP" secondAttribute="trailing" id="4B7-mI-WpX"/>
                                     <constraint firstItem="pFk-c1-ebA" firstAttribute="top" secondItem="aLY-WW-w3z" secondAttribute="top" id="8n8-Gf-Ckj"/>
+                                    <constraint firstItem="XN7-9A-NoP" firstAttribute="leading" secondItem="aLY-WW-w3z" secondAttribute="leading" id="CNA-4g-QZr"/>
                                     <constraint firstAttribute="bottom" secondItem="pFk-c1-ebA" secondAttribute="bottom" id="DoM-po-zKI"/>
+                                    <constraint firstAttribute="bottom" secondItem="XN7-9A-NoP" secondAttribute="bottom" id="M3b-KC-Kwz"/>
                                     <constraint firstItem="okf-Ci-nZa" firstAttribute="top" secondItem="aLY-WW-w3z" secondAttribute="top" id="OQa-IK-siE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dqi-95-3bs" secondAttribute="trailing" id="ShS-p2-FRi"/>
                                     <constraint firstAttribute="bottom" secondItem="okf-Ci-nZa" secondAttribute="bottom" id="ZAH-sQ-CO0"/>
                                     <constraint firstAttribute="trailing" secondItem="okf-Ci-nZa" secondAttribute="trailing" id="aCA-Ss-oEG"/>
+                                    <constraint firstItem="XN7-9A-NoP" firstAttribute="top" secondItem="aLY-WW-w3z" secondAttribute="top" id="bQa-Ka-7nI"/>
                                     <constraint firstItem="pFk-c1-ebA" firstAttribute="leading" secondItem="aLY-WW-w3z" secondAttribute="leading" id="e99-Ig-RnB"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dqi-95-3bs" secondAttribute="bottom" id="oA8-s2-R8w"/>
                                     <constraint firstItem="okf-Ci-nZa" firstAttribute="leading" secondItem="aLY-WW-w3z" secondAttribute="leading" id="oXv-8q-bzV"/>
+                                    <constraint firstItem="Dqi-95-3bs" firstAttribute="top" secondItem="aLY-WW-w3z" secondAttribute="top" id="tIq-cP-nWe"/>
+                                    <constraint firstItem="Dqi-95-3bs" firstAttribute="leading" secondItem="aLY-WW-w3z" secondAttribute="leading" id="tYC-HX-p6I"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -245,6 +332,9 @@
                         <outlet property="compactPresentationView" destination="HTE-Oo-lJl" id="beY-CX-E4f"/>
                         <outlet property="createWalletExpandView" destination="okf-Ci-nZa" id="hNH-QK-cwp"/>
                         <outlet property="expandedPresentationVIew" destination="aLY-WW-w3z" id="EEf-av-xaN"/>
+                        <outlet property="finalizedExpandView" destination="Dqi-95-3bs" id="kIQ-NT-hvX"/>
+                        <outlet property="finalizedTextLabel" destination="3hF-rg-tDz" id="HIy-5E-omt"/>
+                        <outlet property="paymentArimentExpandView" destination="XN7-9A-NoP" id="FWN-r7-Bqd"/>
                         <outlet property="requestExpandButton" destination="TFT-MS-xVL" id="ZTf-4K-OVw"/>
                         <outlet property="sendMessageExpandView" destination="pFk-c1-ebA" id="TCS-s4-0CP"/>
                         <outlet property="textFieldUnderline" destination="1P6-Rf-Gs3" id="Coc-cx-Pes"/>
@@ -257,7 +347,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-67.200000000000003" y="138.53073463268368"/>
+            <point key="canvasLocation" x="-46" y="112"/>
         </scene>
     </scenes>
     <resources>

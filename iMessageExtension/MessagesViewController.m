@@ -16,7 +16,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (strong, nonatomic) NSString *adress;
 @property (strong, nonatomic) NSString *amount;
+@property (strong, nonatomic) MSMessage* storedPaymendMessage;
 @property (assign, nonatomic) BOOL isHasWallet;
+
+
+
 
 @property (weak, nonatomic) IBOutlet UIButton *requestExpandButton;
 
@@ -30,6 +34,12 @@
 @property (weak, nonatomic) IBOutlet UIView *expandedPresentationVIew;
 @property (weak, nonatomic) IBOutlet UIView *sendMessageExpandView;
 @property (weak, nonatomic) IBOutlet UIView *createWalletExpandView;
+@property (weak, nonatomic) IBOutlet UIView *paymentArimentExpandView;
+@property (weak, nonatomic) IBOutlet UIView *finalizedExpandView;
+@property (weak, nonatomic) IBOutlet UILabel *finalizedTextLabel;
+
+@property (assign, nonatomic) BOOL isPaymentInProcess;
+@property (assign, nonatomic) BOOL isCreatinNewInProcces;
 
 @end
 
@@ -39,6 +49,8 @@ static NSString* registerText = @"You have no wallets yet. Tap to create one.";
 static NSString* sendAdressText = @"Send your adress";
 static NSString* createWalletButtonText = @"Create wallet";
 static NSString* sendAdressButtonText = @"Send adress";
+static NSString* finalizedAgreeText = @"Yes, i will see what i can do";
+static NSString* finalizedDisagreeText = @"Sorry, but not now";
 
 @implementation MessagesViewController
 
@@ -52,7 +64,6 @@ static NSString* sendAdressButtonText = @"Send adress";
     self.sendMessageWithAdress.hidden = !self.isHasWallet;
     self.goToHostButton.hidden = self.isHasWallet;
     self.textLabel.text = self.isHasWallet ? sendAdressText : registerText;
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,10 +91,32 @@ static NSString* sendAdressButtonText = @"Send adress";
         message = [[MSMessage alloc] initWithSession:session];
     }
     MSMessageTemplateLayout* layout = [MSMessageTemplateLayout new];
-    layout.image = [self imageForMessage];
+    layout.image = [self imageForMessageWithText:[NSString stringWithFormat:@"I need %@ qtum",self.amountTextField.text.length > 0 ? self.amountTextField.text : @"some"]];
     message.layout = layout;
     message.shouldExpire = YES;
-    message.URL = [self createUrlForMessage];
+    message.URL = [self createUrlForMessageWithFinalized:NO andSucces:NO];
+    [conversation insertMessage:message completionHandler:nil];
+    [self dismiss];
+}
+
+- (IBAction)actionSendFinalizedMessage:(id)sender withText:(NSString*)text isAgree:(BOOL) flag{
+    
+    MSConversation* conversation = self.activeConversation;
+    MSSession* session;
+    MSMessage* message;
+    
+    if (self.activeConversation.selectedMessage) {
+        session = self.activeConversation.selectedMessage.session;
+        message = self.activeConversation.selectedMessage;
+    } else {
+        session = [[MSSession alloc] init];
+        message = [[MSMessage alloc] initWithSession:session];
+    }
+    MSMessageTemplateLayout* layout = [MSMessageTemplateLayout new];
+    layout.image = [self imageForMessageWithText:text];
+    message.layout = layout;
+    message.shouldExpire = YES;
+    message.URL = [self createUrlForMessageWithFinalized:YES andSucces:flag];
     [conversation insertMessage:message completionHandler:nil];
     [self requestPresentationStyle:MSMessagesAppPresentationStyleCompact];
 }
@@ -94,11 +127,16 @@ static NSString* sendAdressButtonText = @"Send adress";
     [self openHostWithAdress:adress andAmount:amount];
 }
 
--(NSURL*)createUrlForMessage{
+-(NSURL*)createUrlForMessageWithFinalized:(BOOL) finalized andSucces:(BOOL) success{
     NSURLComponents* components = [NSURLComponents new];
-    NSURLQueryItem* adress = [[NSURLQueryItem alloc] initWithName:@"adress" value:self.adress];
-    NSURLQueryItem* amount = [[NSURLQueryItem alloc] initWithName:@"amount" value:self.amountTextField.text];
-    components.queryItems = @[adress,amount];
+    NSURLQueryItem* adress = [[NSURLQueryItem alloc] initWithName:@"adress" value:finalized ? [self getAdressFromMessage:self.storedPaymendMessage] : self.adress];
+    NSURLQueryItem* amount = [[NSURLQueryItem alloc] initWithName:@"amount" value:finalized ? [self getAmountFromMessage:self.storedPaymendMessage] : self.amountTextField.text];
+    if (finalized) {
+        NSURLQueryItem* final = [[NSURLQueryItem alloc] initWithName:@"finalized" value:success ? @"YES" : @"NO"];
+        components.queryItems = @[adress,amount,final];
+    }else {
+        components.queryItems = @[adress,amount];
+    }
     return components.URL;
 }
 - (IBAction)actionCreateWallet:(id)sender {
@@ -110,6 +148,22 @@ static NSString* sendAdressButtonText = @"Send adress";
 - (IBAction)actionVoidTap:(id)sender {
     [self.view endEditing:YES];
 }
+- (IBAction)actiomSendMoney:(id)sender {
+    self.isPaymentInProcess = YES;
+    self.storedPaymendMessage = self.activeConversation.selectedMessage;
+    [self actionSendFinalizedMessage:nil withText:finalizedAgreeText isAgree:YES];
+}
+
+- (IBAction)actionCancelSendMoney:(id)sender {
+    [self actionSendFinalizedMessage:nil withText:finalizedDisagreeText isAgree:NO];
+}
+
+-(void)handleSendinMessage:(MSMessage*)message{
+    if (self.isPaymentInProcess) {
+        self.isPaymentInProcess = NO;
+        [self gotoHostFromMessage:_storedPaymendMessage ? _storedPaymendMessage : message];
+    }
+}
 
 -(void)openHostWithAdress:(NSString*)adress andAmount:(NSString*)amount{
     NSString* stringUrl = [NSString stringWithFormat:@"%@adressAndAmount/?adress=%@&amount=%@",@"host://",adress,amount];
@@ -118,12 +172,13 @@ static NSString* sendAdressButtonText = @"Send adress";
     }];
 }
 
--(UIImage*)imageForMessage{
+-(UIImage*)imageForMessageWithText:(NSString*)text{
     GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 300)];
     backView.backgroundColor = [UIColor blackColor];
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(75, 75, 150, 150)];
-    label.text = [NSString stringWithFormat:@"I need %@ qtum",self.amountTextField.text.length > 0 ? self.amountTextField.text : @"some"];
+    label.text = text;//;
     [label sizeToFit];
+    label.frame = CGRectMake(backView.frame.size.width/2 - label.frame.size.width/2, 75, 150, 150);
     label.textColor = [UIColor whiteColor];
     [backView addSubview:label];
     [self.view addSubview:backView];
@@ -138,8 +193,17 @@ static NSString* sendAdressButtonText = @"Send adress";
 -(void)updateControlsWithSyle:(MSMessagesAppPresentationStyle) style{
     BOOL isExpand = (self.presentationStyle == MSMessagesAppPresentationStyleExpanded);
     BOOL isMineMessage = ([self.activeConversation.localParticipantIdentifier isEqual:self.activeConversation.selectedMessage.senderParticipantIdentifier] || !self.activeConversation.selectedMessage);
+    BOOL isFinalized = [self getFinalizedFromMessage:self.activeConversation.selectedMessage];
     if (isExpand) {
-        if (isMineMessage) {
+        if (self.isCreatinNewInProcces) {
+            if (self.isHasWallet) {
+                [self prepareSendingAdressWithControll];
+            } else {
+                [self prepareCreateWallet];
+            }
+        }else if (isFinalized) {
+            [self prepareFinalized];
+        } else if (isMineMessage) {
             if (self.isHasWallet) {
                 [self prepareSendingAdressWithControll];
             } else {
@@ -147,12 +211,13 @@ static NSString* sendAdressButtonText = @"Send adress";
             }
         } else {
             if (self.isHasWallet) {
-                [self gotoHostFromMessage:self.activeConversation.selectedMessage];
+                [self preparePaymentAgriment];
             }else {
                 [self prepareCreateWallet];
             }
         }
     } else {
+        self.isCreatinNewInProcces = NO;
         self.compactPresentationView.hidden = NO;
         self.expandedPresentationVIew.hidden = YES;
     }
@@ -165,18 +230,8 @@ static NSString* sendAdressButtonText = @"Send adress";
     self.expandedPresentationVIew.hidden = NO;
     self.adressLabel.text = [self getAdressFromMessage:self.activeConversation.selectedMessage];
     self.amountValueLabel.text = [self getAmountFromMessage:self.activeConversation.selectedMessage];
-}
-
--(void)prepareSendingAdressWithoutControll{
-    self.compactPresentationView.hidden = YES;
-    self.expandedPresentationVIew.hidden = NO;
-    self.textLabel.text = [self getAdressFromMessage:self.activeConversation.selectedMessage];;
-    self.textLabel.hidden = NO;
-    self.amountTextField.hidden = YES;
-    self.textFieldUnderline.hidden = YES;
-    self.mainActionButton.hidden = YES;
-    self.amountValueLabel.hidden = NO;
-    self.amountValueLabel.text = [self getAmountFromMessage:self.activeConversation.selectedMessage];
+    self.paymentArimentExpandView.hidden = YES;
+    self.finalizedExpandView.hidden = YES;
 }
 
 -(void)prepareCreateWallet{
@@ -184,6 +239,27 @@ static NSString* sendAdressButtonText = @"Send adress";
     self.createWalletExpandView.hidden = NO;
     self.expandedPresentationVIew.hidden = NO;
     self.compactPresentationView.hidden = YES;
+    self.paymentArimentExpandView.hidden = YES;
+    self.finalizedExpandView.hidden = YES;
+}
+
+-(void)preparePaymentAgriment{
+    self.sendMessageExpandView.hidden = YES;
+    self.createWalletExpandView.hidden = YES;
+    self.expandedPresentationVIew.hidden = NO;
+    self.compactPresentationView.hidden = YES;
+    self.paymentArimentExpandView.hidden = NO;
+    self.finalizedExpandView.hidden = YES;
+}
+
+-(void)prepareFinalized{
+    self.sendMessageExpandView.hidden = YES;
+    self.createWalletExpandView.hidden = YES;
+    self.expandedPresentationVIew.hidden = NO;
+    self.compactPresentationView.hidden = YES;
+    self.paymentArimentExpandView.hidden = YES;
+    self.finalizedExpandView.hidden = NO;
+    self.finalizedTextLabel.text = [self isFinalizeSuccess] ? finalizedAgreeText : finalizedDisagreeText;
 }
 
 
@@ -214,7 +290,24 @@ static NSString* sendAdressButtonText = @"Send adress";
     }
     return amount;
 }
-#pragma mark - Conversation Handling
+
+-(NSString*)getFinalizedFromMessage:(MSMessage*)message{
+    if (!message) {
+        return nil;
+    }
+    NSURLComponents* components = [[NSURLComponents alloc] initWithURL:message.URL resolvingAgainstBaseURL:NO];
+    NSString* amount;
+    for (NSURLQueryItem* item in components.queryItems) {
+        if ([item.name isEqualToString:@"finalized"]) {
+            amount = item.value;
+        }
+    }
+    return amount;
+}
+
+-(BOOL)isFinalizeSuccess{
+    return [[self getFinalizedFromMessage:self.activeConversation.selectedMessage] isEqualToString:@"YES"] ? YES : NO;
+}
 
 -(void)didBecomeActiveWithConversation:(MSConversation *)conversation {
     [self updateControlsWithSyle:self.presentationStyle];
@@ -225,8 +318,10 @@ static NSString* sendAdressButtonText = @"Send adress";
 }
 
 -(void)willBecomeActiveWithConversation:(MSConversation *)conversation{
+    
 }
 - (IBAction)actionReauestExpand:(id)sender {
+    self.isCreatinNewInProcces = YES;
     [self requestPresentationStyle:MSMessagesAppPresentationStyleExpanded];
 }
 
@@ -238,7 +333,7 @@ static NSString* sendAdressButtonText = @"Send adress";
 }
 
 -(void)didStartSendingMessage:(MSMessage *)message conversation:(MSConversation *)conversation {
-    // Called when the user taps the send button.
+    [self handleSendinMessage:message];
 }
 
 -(void)didCancelSendingMessage:(MSMessage *)message conversation:(MSConversation *)conversation {
