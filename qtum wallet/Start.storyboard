@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1211,11 +1212,11 @@ to Use it in Another App</string>
                         <viewControllerLayoutGuide type="top" id="pgy-MK-feP"/>
                         <viewControllerLayoutGuide type="bottom" id="JVR-u4-qwZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nli-JH-xG5">
+                    <view key="view" contentMode="scaleToFill" id="nli-JH-xG5" customClass="GradientView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEU-Mn-NW0" customClass="GradientView">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEU-Mn-NW0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8sp-VY-gDh" customClass="DiagramView">
@@ -1228,7 +1229,7 @@ to Use it in Another App</string>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSmall" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIz-2h-0m2" customClass="DiagramView">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIz-2h-0m2" customClass="DiagramView">
                                         <rect key="frame" x="0.0" y="447" width="375" height="250"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1446,7 +1447,7 @@ to Use it in Another App</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="pLE-ns-EHP" firstAttribute="centerX" secondItem="sEU-Mn-NW0" secondAttribute="centerX" id="1eI-rc-9bL"/>
                                     <constraint firstItem="pLE-ns-EHP" firstAttribute="top" secondItem="in6-Gk-ri5" secondAttribute="bottom" constant="21" id="3bj-i5-w3V"/>
@@ -1469,12 +1470,22 @@ to Use it in Another App</string>
                                     <constraint firstItem="5Az-uh-fvO" firstAttribute="leading" secondItem="sEU-Mn-NW0" secondAttribute="leading" id="zRv-ke-yEB"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.14000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMc-To-HC6">
+                                <rect key="frame" x="0.0" y="667" width="359" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="6cH-om-WaR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.72156862749999995" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sEU-Mn-NW0" firstAttribute="leading" secondItem="nli-JH-xG5" secondAttribute="leading" id="Eut-Vq-Exh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eMc-To-HC6" secondAttribute="trailing" id="Lc8-3q-W5R"/>
                             <constraint firstAttribute="trailing" secondItem="sEU-Mn-NW0" secondAttribute="trailing" id="OOA-xD-fBC"/>
+                            <constraint firstItem="eMc-To-HC6" firstAttribute="leading" secondItem="nli-JH-xG5" secondAttribute="leading" id="WkH-hd-WCc"/>
                             <constraint firstItem="sEU-Mn-NW0" firstAttribute="top" secondItem="nli-JH-xG5" secondAttribute="top" id="f34-u7-Hrw"/>
+                            <constraint firstItem="eMc-To-HC6" firstAttribute="top" secondItem="sEU-Mn-NW0" secondAttribute="bottom" id="gzf-nL-doI"/>
                             <constraint firstItem="JVR-u4-qwZ" firstAttribute="top" secondItem="sEU-Mn-NW0" secondAttribute="bottom" id="kRM-Uh-1Xv"/>
                         </constraints>
                     </view>
@@ -1497,7 +1508,7 @@ to Use it in Another App</string>
                 </view>
                 <exit id="q1C-jF-UEz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2202" y="982"/>
+            <point key="canvasLocation" x="2200.8000000000002" y="981.85907046476768"/>
         </scene>
     </scenes>
     <resources>

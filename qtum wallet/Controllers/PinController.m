@@ -11,6 +11,8 @@
 
 @interface PinController () <CAAnimationDelegate>
 
+@property (assign,nonatomic,getter=isStopEditingFields) BOOL stopEditingFields;
+
 @end
 
 @implementation PinController
@@ -33,9 +35,11 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    if ([self.delegate respondsToSelector:@selector(setAnimationState:)]) {
-//        [self.delegate setAnimationState:NO];
-//    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)dealloc{

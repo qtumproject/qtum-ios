@@ -96,6 +96,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     message.shouldExpire = YES;
     message.URL = [self createUrlForMessageWithFinalized:NO andSucces:NO];
     [conversation insertMessage:message completionHandler:nil];
+    [self.view endEditing:YES];
     [self dismiss];
 }
 
@@ -175,11 +176,12 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 -(UIImage*)imageForMessageWithText:(NSString*)text{
     GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 300)];
     backView.backgroundColor = [UIColor blackColor];
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(75, 75, 150, 150)];
-    label.text = text;//;
-    [label sizeToFit];
-    label.frame = CGRectMake(backView.frame.size.width/2 - label.frame.size.width/2, 75, 150, 150);
+    UILabel* label = [[UILabel alloc] initWithFrame:backView.bounds];
+    label.text = text;//;
+    //[label sizeToFit];
+    //label.frame = CGRectMake(backView.frame.size.width/2 - label.frame.size.width/2, 75, 150, 150);
     label.textColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
     [backView addSubview:label];
     [self.view addSubview:backView];
     UIGraphicsBeginImageContextWithOptions(backView.frame.size, NO, [UIScreen mainScreen].scale);

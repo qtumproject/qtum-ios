@@ -33,6 +33,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+#pragma mark -
+
 - (IBAction)createNewButtonWasPressed:(id)sender{
     if ([self.delegate respondsToSelector:@selector(createNewButtonPressed)]) {
         [self.delegate createNewButtonPressed];

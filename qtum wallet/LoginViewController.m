@@ -12,6 +12,8 @@
 @interface LoginViewController ()<CAAnimationDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
+@property (assign, nonatomic) BOOL shoudDeclineKeboardDismiss;
+
 
 @end
 
@@ -19,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,6 +32,14 @@
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
 #pragma mark - Keyboard
 
 -(void)keyboardWillShow:(NSNotification *)sender{
@@ -40,8 +49,11 @@
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
-    self.gradientViewBottomOffset.constant = 0;
-    [self.view layoutIfNeeded];
+//    self.gradientViewBottomOffset.constant = 0;
+//    [self.view layoutIfNeeded];
+    if (!self.shoudDeclineKeboardDismiss) {
+        [self.firstSymbolTextField becomeFirstResponder];
+    }
 }
 
 #pragma mark - Configuration
@@ -63,6 +75,7 @@
 }
 
 - (IBAction)actionCancel:(id)sender {
+    self.shoudDeclineKeboardDismiss = YES;
     if ([self.delegate respondsToSelector:@selector(confirmPasswordDidCanceled)]) {
         [self.delegate confirmPasswordDidCanceled];
     }
