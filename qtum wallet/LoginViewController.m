@@ -12,7 +12,7 @@
 @interface LoginViewController ()<CAAnimationDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
-@property (assign, nonatomic) BOOL shoudDeclineKeboardDismiss;
+@property (assign, nonatomic) BOOL shoudKeboardDismiss;
 
 
 @end
@@ -49,9 +49,8 @@
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
-//    self.gradientViewBottomOffset.constant = 0;
-//    [self.view layoutIfNeeded];
-    if (!self.shoudDeclineKeboardDismiss) {
+    //when comes from imessage have problems with keyboard dissmisng
+    if (!self.shoudKeboardDismiss) {
         [self.firstSymbolTextField becomeFirstResponder];
     }
 }
@@ -64,6 +63,7 @@
 
 
 - (IBAction)actionEnterPin:(id)sender {
+    self.shoudKeboardDismiss = YES;
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
     if (pin.length == 4) {
         if ([self.delegate respondsToSelector:@selector(passwordDidEntered:)]) {
@@ -75,7 +75,7 @@
 }
 
 - (IBAction)actionCancel:(id)sender {
-    self.shoudDeclineKeboardDismiss = YES;
+    self.shoudKeboardDismiss = YES;
     if ([self.delegate respondsToSelector:@selector(confirmPasswordDidCanceled)]) {
         [self.delegate confirmPasswordDidCanceled];
     }

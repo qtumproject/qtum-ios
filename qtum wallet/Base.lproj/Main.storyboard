@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Mg-gm-MeU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Mg-gm-MeU">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1315,23 +1316,6 @@
                                     <constraint firstAttribute="trailing" secondItem="KcX-TS-RJL" secondAttribute="trailing" id="z6P-od-toJ"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="880-HF-C1F">
-                                <rect key="frame" x="128" y="268" width="65" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N6-KZ-9vI">
-                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
-                                        <state key="normal" title="Enter PIN">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="actionEnterPin:" destination="5Mg-gm-MeU" eventType="touchUpInside" id="L1y-t2-AkC"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="8N6-KZ-9vI" firstAttribute="centerX" secondItem="880-HF-C1F" secondAttribute="centerX" id="8uP-mJ-mAH"/>
-                                </constraints>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xlq-DX-cr2" customClass="ViewWithGradientPoints">
                                 <rect key="frame" x="124" y="65" width="72" height="64"/>
                                 <subviews>
@@ -1356,22 +1340,19 @@
                         <constraints>
                             <constraint firstItem="AdM-pt-0WH" firstAttribute="top" secondItem="lyN-S5-Qar" secondAttribute="bottom" constant="66" id="31X-ve-EQJ"/>
                             <constraint firstItem="lyN-S5-Qar" firstAttribute="centerX" secondItem="BqO-l3-KTn" secondAttribute="centerX" id="67x-SX-lSA"/>
-                            <constraint firstItem="880-HF-C1F" firstAttribute="centerX" secondItem="BqO-l3-KTn" secondAttribute="centerX" id="9Pk-GD-HrI"/>
                             <constraint firstItem="Xlq-DX-cr2" firstAttribute="centerX" secondItem="BqO-l3-KTn" secondAttribute="centerX" id="ITU-KX-nns"/>
-                            <constraint firstItem="8N6-KZ-9vI" firstAttribute="top" secondItem="AdM-pt-0WH" secondAttribute="bottom" constant="20" id="Pwi-Sb-ZGb"/>
                             <constraint firstItem="lyN-S5-Qar" firstAttribute="top" secondItem="5jS-U0-IPq" secondAttribute="bottom" constant="9.5" id="bXq-3e-KCx"/>
                             <constraint firstItem="AdM-pt-0WH" firstAttribute="centerX" secondItem="BqO-l3-KTn" secondAttribute="centerX" id="f24-IN-ofP"/>
                             <constraint firstItem="Xlq-DX-cr2" firstAttribute="centerY" secondItem="BqO-l3-KTn" secondAttribute="topMargin" constant="97" id="lbN-h5-4CH"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="enterButton" destination="8N6-KZ-9vI" id="iq9-q3-dSN"/>
                         <outlet property="pinContainer" destination="AdM-pt-0WH" id="a5s-VE-sBb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cP-KO-DqG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3969.375" y="958.09859154929575"/>
+            <point key="canvasLocation" x="3680" y="948"/>
         </scene>
         <!--Import Key View Controller-->
         <scene sceneID="gCL-wG-8CL">

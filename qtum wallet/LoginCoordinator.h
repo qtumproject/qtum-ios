@@ -18,9 +18,10 @@
 
 @protocol ApplicationCoordinatorDelegate;
 
-@interface LoginCoordinator : NSObject <Coordinatorable>
+@interface LoginCoordinator : BaseCoordinator <Coordinatorable>
+
+@property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
 -(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
-@property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
 @end

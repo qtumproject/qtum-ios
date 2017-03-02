@@ -7,7 +7,6 @@
 //
 
 #import "ApplicationCoordinator.h"
-#import "Appearance.h"
 #import "CreatePinRootController.h"
 #import "PinViewController.h"
 #import "SettingsViewController.h"
@@ -25,7 +24,6 @@
 @property (strong,nonatomic) ControllersFactory* controllersFactory;
 @property (strong,nonatomic) UIViewController* viewController;
 @property (strong,nonatomic) UINavigationController* navigationController;
-@property (nonatomic,strong) NSMutableArray *childCoordinators;
 
 @property (nonatomic,strong) NSString *amount;
 @property (nonatomic,strong) NSString *adress;
@@ -63,17 +61,11 @@
 
 #pragma mark - Lazy Getters
 
-- (NSMutableArray *)childCoordinators {
-    if (!_childCoordinators) {
-        self.childCoordinators = @[].mutableCopy;
-    }
-    return _childCoordinators;
-}
+
 
 #pragma mark - Start
 
 -(void)start{
-    [Appearance setUp];
     if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
         [self startLoginFlow];
     }else{
@@ -99,17 +91,17 @@
 #pragma mark - ApplicationCoordinatorDelegate
 
 -(void)coordinatorDidLogin:(LoginCoordinator*)coordinator{
-    [self.childCoordinators removeObject:coordinator];
+    [self removeDependency:coordinator];
     [self startMainFlow];
 }
 
 -(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator{
-    [self.childCoordinators removeObject:coordinator];
+    [self removeDependency:coordinator];
     [self startAuthFlow];
 }
 
 -(void)coordinatorDidAuth:(AuthCoordinator*)coordinator{
-    [self.childCoordinators removeObject:coordinator];
+    [self removeDependency:coordinator];
     [self startMainFlow];
 }
 
@@ -143,7 +135,7 @@
     AuthCoordinator* coordinator = [[AuthCoordinator alloc]initWithNavigationViewController:navigationController];
     coordinator.delegate = self;
     [coordinator start];
-    [self.childCoordinators addObject:coordinator];
+    [self addDependency:coordinator];
 }
 
 -(void)logout{
@@ -158,9 +150,8 @@
     LoginCoordinator* coordinator = [[LoginCoordinator alloc]initWithNavigationViewController:navigationController];
     coordinator.delegate = self;
     [coordinator start];
-    [self.childCoordinators addObject:coordinator];
+    [self addDependency:coordinator];
 }
-
 
 -(void)startChangePinFlow{
 //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

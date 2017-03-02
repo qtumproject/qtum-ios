@@ -17,10 +17,9 @@
 -(void)coordinatorDidLogin:(LoginCoordinator*)coordinator;
 -(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator;
 
-
 @end
 
-@interface ApplicationCoordinator : NSObject <Coordinatorable, ApplicationCoordinatorDelegate>
+@interface ApplicationCoordinator : BaseCoordinator <Coordinatorable, ApplicationCoordinatorDelegate>
 
 @property (strong,nonatomic) NSUserDefaults* defaults;
 

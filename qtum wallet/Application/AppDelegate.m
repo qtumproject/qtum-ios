@@ -10,6 +10,7 @@
 #import "ApplicationCoordinator.h"
 #import "RPCRequestManager.h"
 #import "NSString+Extension.h"
+#import "Appearance.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +26,8 @@
 //    [[WalletManager sharedInstance] removeAllWallets];
 
     [[ApplicationCoordinator sharedInstance] start];
+    [Appearance setUp];
+
     
 ////     Send money for our wallet
 //    if ([[WalletManager sharedInstance] haveWallets]) {

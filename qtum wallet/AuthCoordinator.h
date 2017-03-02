@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Coordinatorable.h"
+#import "BaseCoordinator.h"
 
 @protocol AuthCoordinatorDelegate <NSObject>
 
@@ -28,9 +28,10 @@
 
 @protocol ApplicationCoordinatorDelegate;
 
-@interface AuthCoordinator : NSObject <Coordinatorable,AuthCoordinatorDelegate>
+@interface AuthCoordinator : BaseCoordinator <Coordinatorable,AuthCoordinatorDelegate>
+
+@property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
 -(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
-@property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
 @end
