@@ -10,13 +10,13 @@
 
 @interface TabBarCoordinator ()
 
-@property (strong,nonatomic) UITabBarController* tabBarContoller;
+@property (strong,nonatomic) TabBarController* tabBarContoller;
 
 @end
 
 @implementation TabBarCoordinator
 
--(instancetype)initWithTabBarController:(UITabBarController*)tabBarController{
+-(instancetype)initWithTabBarController:(TabBarController*)tabBarController{
     self = [super init];
     if (self) {
         _tabBarContoller = tabBarController;
@@ -28,6 +28,26 @@
 
 -(void)start{
     
+}
+
+#pragma mark - TabBarCoordinatorDelegate
+
+-(void)newsTabDidSelectedWithController:(UIViewController*)controller{
+    [self checkTabsController:controller];
+    
+}
+-(void)sendTabDidSelectedWithController:(UIViewController*)controller{
+    [self checkTabsController:controller];
+}
+-(void)profileTabDidSelectedWithController:(UIViewController*)controller{
+    [self checkTabsController:controller];
+}
+-(void)walletTabDidSelectedWithController:(UIViewController*)controller{
+    [self checkTabsController:controller];
+}
+
+-(void)checkTabsController:(UIViewController*)controller{
+    NSAssert([controller isKindOfClass:[UINavigationController class]], @"Tabs must be navigation");
 }
 
 @end

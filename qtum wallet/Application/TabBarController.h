@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TabBarCoordinatorDelegate;
+
 @interface TabBarController : UITabBarController
+
+@property (weak,nonatomic) id <TabBarCoordinatorDelegate> coordinatorDelegate;
 
 -(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount;
 

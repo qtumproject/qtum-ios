@@ -9,6 +9,7 @@
 #import "TabBarController.h"
 #import "ControllersFactory.h"
 #import "NewPaymentViewController.h"
+#import "TabBarCoordinator.h"
 
 @interface TabBarController ()
 
@@ -33,10 +34,10 @@
 }
 
 -(void)configTabs{
-    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];
-    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
-    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
-    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
+    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];//[UINavigationController new];
+    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];//[UINavigationController new];
+    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];//[UINavigationController new];
+    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];//[UINavigationController new];
     
     [self setViewControllers:@[wallet,profile,news,send] animated:YES];
 
@@ -51,6 +52,18 @@
     [send.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     
     [self storeSendReference:send];
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+//    if (self.selectedIndex == 0) {
+//        [self.coordinatorDelegate walletTabDidSelectedWithController:viewController];
+//    }else if (self.selectedIndex == 1){
+//        [self.coordinatorDelegate profileTabDidSelectedWithController:viewController];
+//    }else if (self.selectedIndex == 2){
+//        [self.coordinatorDelegate newsTabDidSelectedWithController:viewController];
+//    }else if (self.selectedIndex == 3){
+//        [self.coordinatorDelegate sendTabDidSelectedWithController:viewController];
+//    }
 }
 
 -(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount{

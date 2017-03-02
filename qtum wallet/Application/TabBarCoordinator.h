@@ -8,13 +8,25 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseCoordinator.h"
+#import "TabBarController.h"
+
+
+@protocol TabBarCoordinatorDelegate <NSObject>
+
+@required
+-(void)newsTabDidSelectedWithController:(UIViewController*)controller;
+-(void)sendTabDidSelectedWithController:(UIViewController*)controller;
+-(void)profileTabDidSelectedWithController:(UIViewController*)controller;
+-(void)walletTabDidSelectedWithController:(UIViewController*)controller;
+
+@end
 
 @protocol ApplicationCoordinatorDelegate;
 
-@interface TabBarCoordinator : BaseCoordinator <Coordinatorable>
+@interface TabBarCoordinator : BaseCoordinator <Coordinatorable,TabBarCoordinatorDelegate>
 
 @property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
--(instancetype)initWithTabBarController:(UITabBarController*)tabBarController;
+-(instancetype)initWithTabBarController:(TabBarController*)tabBarController;
 
 @end

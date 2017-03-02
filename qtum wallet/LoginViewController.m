@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
 @property (assign, nonatomic) BOOL shoudKeboardDismiss;
 
-
 @end
 
 @implementation LoginViewController
