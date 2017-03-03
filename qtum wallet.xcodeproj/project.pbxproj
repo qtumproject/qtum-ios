@@ -77,6 +77,17 @@
 		B3DD275D1E681A8B00BB0635 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD275C1E681A8B00BB0635 /* SendCoordinator.m */; };
 		B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */; };
 		B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */; };
+		B3F06CF71E69879D006341F7 /* CreateTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* CreateTokenCoordinator.m */; };
+		B3F06CF91E69880D006341F7 /* CreateToken.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CF81E69880D006341F7 /* CreateToken.storyboard */; };
+		B3F06CFB1E698821006341F7 /* SubscribeToken.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CFA1E698821006341F7 /* SubscribeToken.storyboard */; };
+		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
+		B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */; };
+		B3F06D031E699244006341F7 /* TockenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D021E699244006341F7 /* TockenCell.m */; };
+		B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */; };
+		B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */; };
+		B3F06D0E1E69B597006341F7 /* CreateTokenStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D0D1E69B597006341F7 /* CreateTokenStep1ViewController.m */; };
+		B3F06D111E69B68B006341F7 /* CreateTokenStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D101E69B68B006341F7 /* CreateTokenStep2ViewController.m */; };
+		B3F06D141E69B69A006341F7 /* CreateTokenStep3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D131E69B69A006341F7 /* CreateTokenStep3ViewController.m */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
 		E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71AF24C1E0178C50068595B /* libCoreBitcoin.a */; };
@@ -277,6 +288,25 @@
 		B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletCoordinator.m; sourceTree = "<group>"; };
 		B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCoordinator.h; sourceTree = "<group>"; };
 		B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCoordinator.m; sourceTree = "<group>"; };
+		B3F06CF51E69879D006341F7 /* CreateTokenCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenCoordinator.h; sourceTree = "<group>"; };
+		B3F06CF61E69879D006341F7 /* CreateTokenCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenCoordinator.m; sourceTree = "<group>"; };
+		B3F06CF81E69880D006341F7 /* CreateToken.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateToken.storyboard; sourceTree = "<group>"; };
+		B3F06CFA1E698821006341F7 /* SubscribeToken.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SubscribeToken.storyboard; sourceTree = "<group>"; };
+		B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenCoordinator.h; sourceTree = "<group>"; };
+		B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenCoordinator.m; sourceTree = "<group>"; };
+		B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = SOURCE_ROOT; };
+		B3F06D011E699244006341F7 /* TockenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TockenCell.h; sourceTree = "<group>"; };
+		B3F06D021E699244006341F7 /* TockenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TockenCell.m; sourceTree = "<group>"; };
+		B3F06D041E699303006341F7 /* SubscribeTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenViewController.h; sourceTree = "<group>"; };
+		B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenViewController.m; sourceTree = "<group>"; };
+		B3F06D081E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataSourceDelegate.h; sourceTree = "<group>"; };
+		B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataSourceDelegate.m; sourceTree = "<group>"; };
+		B3F06D0C1E69B597006341F7 /* CreateTokenStep1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenStep1ViewController.h; sourceTree = "<group>"; };
+		B3F06D0D1E69B597006341F7 /* CreateTokenStep1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenStep1ViewController.m; sourceTree = "<group>"; };
+		B3F06D0F1E69B68B006341F7 /* CreateTokenStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenStep2ViewController.h; sourceTree = "<group>"; };
+		B3F06D101E69B68B006341F7 /* CreateTokenStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenStep2ViewController.m; sourceTree = "<group>"; };
+		B3F06D121E69B69A006341F7 /* CreateTokenStep3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenStep3ViewController.h; sourceTree = "<group>"; };
+		B3F06D131E69B69A006341F7 /* CreateTokenStep3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenStep3ViewController.m; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
 		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RecieveViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -438,6 +468,7 @@
 		B3210D271E00326B00365FB6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */,
 				B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */,
 				B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */,
 				B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */,
@@ -495,6 +526,8 @@
 				B32C3CE21E111F900094C82C /* Wallet.storyboard */,
 				B31CF71F1E12514A000BCF41 /* Pin.storyboard */,
 				B31CF7221E126C2C000BCF41 /* Start.storyboard */,
+				B3F06CF81E69880D006341F7 /* CreateToken.storyboard */,
+				B3F06CFA1E698821006341F7 /* SubscribeToken.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -624,6 +657,8 @@
 		B386F5AE1E1392B1004D231B /* Prifile Flow */ = {
 			isa = PBXGroup;
 			children = (
+				B3F06D0B1E69B55D006341F7 /* Create Token */,
+				B3F06D071E699371006341F7 /* Subscribe */,
 				B386F5B21E139C9E004D231B /* Cell */,
 				B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */,
 				B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */,
@@ -638,8 +673,38 @@
 			children = (
 				B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */,
 				B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */,
+				B3F06D011E699244006341F7 /* TockenCell.h */,
+				B3F06D021E699244006341F7 /* TockenCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		B3F06D071E699371006341F7 /* Subscribe */ = {
+			isa = PBXGroup;
+			children = (
+				B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */,
+				B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */,
+				B3F06D041E699303006341F7 /* SubscribeTokenViewController.h */,
+				B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */,
+				B3F06D081E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.h */,
+				B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */,
+			);
+			name = Subscribe;
+			sourceTree = "<group>";
+		};
+		B3F06D0B1E69B55D006341F7 /* Create Token */ = {
+			isa = PBXGroup;
+			children = (
+				B3F06CF51E69879D006341F7 /* CreateTokenCoordinator.h */,
+				B3F06CF61E69879D006341F7 /* CreateTokenCoordinator.m */,
+				B3F06D0C1E69B597006341F7 /* CreateTokenStep1ViewController.h */,
+				B3F06D0D1E69B597006341F7 /* CreateTokenStep1ViewController.m */,
+				B3F06D0F1E69B68B006341F7 /* CreateTokenStep2ViewController.h */,
+				B3F06D101E69B68B006341F7 /* CreateTokenStep2ViewController.m */,
+				B3F06D121E69B69A006341F7 /* CreateTokenStep3ViewController.h */,
+				B3F06D131E69B69A006341F7 /* CreateTokenStep3ViewController.m */,
+			);
+			name = "Create Token";
 			sourceTree = "<group>";
 		};
 		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
@@ -1162,14 +1227,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
 				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				B32C3CE51E111FA90094C82C /* Send.storyboard in Resources */,
 				B31CF7201E12514A000BCF41 /* Pin.storyboard in Resources */,
 				B32C3CE11E111ED50094C82C /* Profile.storyboard in Resources */,
+				B3F06CF91E69880D006341F7 /* CreateToken.storyboard in Resources */,
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
 				B32C3CE31E111F900094C82C /* Wallet.storyboard in Resources */,
+				B3F06CFB1E698821006341F7 /* SubscribeToken.storyboard in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
 				B32C3CDF1E111EC70094C82C /* News.storyboard in Resources */,
 				B31CF7231E126C2C000BCF41 /* Start.storyboard in Resources */,
@@ -1261,6 +1329,7 @@
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
+				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
@@ -1269,13 +1338,17 @@
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
 				B3DD275D1E681A8B00BB0635 /* SendCoordinator.m in Sources */,
+				B3F06D111E69B68B006341F7 /* CreateTokenStep2ViewController.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
 				B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */,
 				B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */,
+				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */,
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
+				B3F06D0E1E69B597006341F7 /* CreateTokenStep1ViewController.m in Sources */,
+				B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */,
 				B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
@@ -1297,11 +1370,13 @@
 				B32C3CFF1E112A470094C82C /* NewsNavigationCoordinator.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
 				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
+				B3F06CF71E69879D006341F7 /* CreateTokenCoordinator.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
+				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
@@ -1327,6 +1402,7 @@
 				B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
 				B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */,
+				B3F06D141E69B69A006341F7 /* CreateTokenStep3ViewController.m in Sources */,
 				B35130681E49DF910048A28C /* ImageLoader.m in Sources */,
 				B32C3CFC1E112A300094C82C /* WalletNavigationCoordinator.m in Sources */,
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,

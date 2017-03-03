@@ -8,10 +8,12 @@
 
 #import "ProfileViewController.h"
 #import "ProfileTableViewCell.h"
+#import "SubscribeTokenCoordinator.h"
 
 @interface ProfileViewController ()
 
 @property (weak, nonatomic) UIView* footerView;
+@property (strong,nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
 
 @end
 
@@ -21,8 +23,10 @@
     [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //TODO Make normal coordinator callback
+    self.subscribeCoordinator = nil;
 }
 
 #pragma mark - Setters/Getters
@@ -36,7 +40,7 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 
 
@@ -49,6 +53,9 @@
             return 2;
             break;
         case 2:
+            return 2;
+            break;
+        case 3:
             return 2;
             break;
             
@@ -88,14 +95,22 @@
             image = [UIImage imageNamed:@"import_wallet_icon"];
             text = @"Import";
         }
-    } else {
-
+    } else if(indexPath.section == 2){
+        if (indexPath.row == 0) {
+            image = [UIImage imageNamed:@"ic-token"];
+            text = @"Create Token";
+        } else if (indexPath.row == 1) {
+            
+            image = [UIImage imageNamed:@"ic-token-subscribe"];
+            text = @"Subscribe Token";
+        }
+    } else{
         if (indexPath.row == 0) {
             image = [UIImage imageNamed:@"info_icon"];
             text = @"About";
         } else if (indexPath.row == 1) {
             
-            image = [UIImage imageNamed:@"info_icon"];
+            image = [UIImage imageNamed:@"ic-logout"];
             text = @"Logout";
         }
     }
@@ -124,7 +139,13 @@
         } else if (indexPath.row == 2) {
             [self actionImport:nil];
         }
-    } else {
+    } else if(indexPath.section == 2) {
+        if (indexPath.row == 0) {
+            [self actionCreateToken:nil];
+        } else if (indexPath.row == 1) {
+            [self actionSubscribeToken:nil];
+        }
+    }else {
         if (indexPath.row == 0) {
             [self actionAbout:nil];
         } else if (indexPath.row == 1) {
@@ -144,7 +165,9 @@
         case 1:
             return self.footerView;
             break;
-            
+        case 2:
+            return self.footerView;
+            break;
         default:
             return nil;
             break;
@@ -157,6 +180,9 @@
             return 13;
             break;
         case 1:
+            return 13;
+            break;
+        case 2:
             return 13;
             break;
             
@@ -186,6 +212,15 @@
 
 -(IBAction)actionAbout:(id)sender{
     
+}
+
+-(IBAction)actionCreateToken:(id)sender{
+    
+}
+
+-(IBAction)actionSubscribeToken:(id)sender{
+    self.subscribeCoordinator = [[SubscribeTokenCoordinator alloc] initWithNavigationController:self.navigationController];
+    [self.subscribeCoordinator start];
 }
 
 #pragma mark - Unwing seque

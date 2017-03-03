@@ -16,6 +16,10 @@
 @class CreatePinViewController;
 @class AuthNavigationController;
 @class ExportWalletBrandKeyViewController;
+@class SubscribeTokenViewController;
+@class CreateTokenStep1ViewController;
+@class CreateTokenStep2ViewController;
+@class CreateTokenStep3ViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -39,6 +43,10 @@
 -(RepeateViewController*)createRepeatePinController;
 -(AuthNavigationController*)createAuthNavigationController;
 -(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
+-(SubscribeTokenViewController*)createSubscribeTokenViewController;
+-(CreateTokenStep3ViewController*)createCreateTokenStep3ViewController;
+-(CreateTokenStep2ViewController*)createCreateTokenStep2ViewController;
+-(CreateTokenStep1ViewController*)createCreateTokenStep1ViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

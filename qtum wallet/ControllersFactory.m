@@ -21,6 +21,11 @@
 #import "RepeateViewController.h"
 #import "AuthNavigationController.h"
 #import "ExportWalletBrandKeyViewController.h"
+#import "SubscribeTokenViewController.h"
+#import "CreateTokenStep1ViewController.h"
+#import "CreateTokenStep2ViewController.h"
+#import "CreateTokenStep3ViewController.h"
+
 
 @implementation ControllersFactory
 
@@ -109,6 +114,26 @@
 
 -(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController{
     ExportWalletBrandKeyViewController* controller = (ExportWalletBrandKeyViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ExportWalletBrandKeyViewController"];
+    return controller;
+}
+
+-(SubscribeTokenViewController*)createSubscribeTokenViewController{
+    SubscribeTokenViewController* controller = (SubscribeTokenViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
+    return controller;
+}
+
+-(CreateTokenStep3ViewController*)createCreateTokenStep3ViewController{
+    CreateTokenStep3ViewController* controller = (CreateTokenStep3ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep3ViewController"];
+    return controller;
+}
+
+-(CreateTokenStep2ViewController*)createCreateTokenStep2ViewController{
+    CreateTokenStep2ViewController* controller = (CreateTokenStep2ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep2ViewController"];
+    return controller;
+}
+
+-(CreateTokenStep1ViewController*)createCreateTokenStep1ViewController{
+    CreateTokenStep1ViewController* controller = (CreateTokenStep1ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep1ViewController"];
     return controller;
 }
 
