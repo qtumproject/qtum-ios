@@ -25,6 +25,7 @@
 #import "CreateTokenStep1ViewController.h"
 #import "CreateTokenStep2ViewController.h"
 #import "CreateTokenStep3ViewController.h"
+#import "CreateTokenStep4ViewController.h"
 
 
 @implementation ControllersFactory
@@ -135,6 +136,15 @@
 -(CreateTokenStep1ViewController*)createCreateTokenStep1ViewController{
     CreateTokenStep1ViewController* controller = (CreateTokenStep1ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep1ViewController"];
     return controller;
+}
+
+-(CreateTokenStep4ViewController*)createCreateTokenStep4ViewController{
+    CreateTokenStep4ViewController* controller = (CreateTokenStep4ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep4ViewController"];
+    return controller;
+}
+
+-(UIViewController*)createFlowNavigationCoordinator{
+    return nil;
 }
 
 -(UIViewController*)createPinFlowController{

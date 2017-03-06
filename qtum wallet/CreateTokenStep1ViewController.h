@@ -10,7 +10,7 @@
 
 @protocol CreateTokenCoordinatorDelegate;
 
-@interface CreateTokenStep1ViewController : UIViewController
+@interface CreateTokenStep1ViewController : BaseViewController
 
 @property (weak,nonatomic) id <CreateTokenCoordinatorDelegate> delegate;
 

@@ -9,11 +9,14 @@
 #import "ProfileViewController.h"
 #import "ProfileTableViewCell.h"
 #import "SubscribeTokenCoordinator.h"
+#import "CreateTokenCoordinator.h"
 
 @interface ProfileViewController ()
 
 @property (weak, nonatomic) UIView* footerView;
 @property (strong,nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
+@property (strong,nonatomic) CreateTokenCoordinator* createTokenCoordinator;
+
 
 @end
 
@@ -27,6 +30,7 @@
     [super viewDidAppear:animated];
     //TODO Make normal coordinator callback
     self.subscribeCoordinator = nil;
+    self.createTokenCoordinator = nil;
 }
 
 #pragma mark - Setters/Getters
@@ -215,7 +219,8 @@
 }
 
 -(IBAction)actionCreateToken:(id)sender{
-    
+    self.createTokenCoordinator = [[CreateTokenCoordinator alloc] initWithNavigationController:self.navigationController];
+    [self.createTokenCoordinator start];
 }
 
 -(IBAction)actionSubscribeToken:(id)sender{

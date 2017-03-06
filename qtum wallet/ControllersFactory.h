@@ -20,6 +20,8 @@
 @class CreateTokenStep1ViewController;
 @class CreateTokenStep2ViewController;
 @class CreateTokenStep3ViewController;
+@class CreateTokenStep4ViewController;
+
 
 @interface ControllersFactory : NSObject
 
@@ -47,9 +49,9 @@
 -(CreateTokenStep3ViewController*)createCreateTokenStep3ViewController;
 -(CreateTokenStep2ViewController*)createCreateTokenStep2ViewController;
 -(CreateTokenStep1ViewController*)createCreateTokenStep1ViewController;
+-(CreateTokenStep4ViewController*)createCreateTokenStep4ViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;
-
 
 @end

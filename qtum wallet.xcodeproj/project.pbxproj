@@ -65,6 +65,8 @@
 		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
 		B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */; };
 		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
+		B385B59F1E6D5B88003BB96C /* CreateTokenStep4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B59E1E6D5B88003BB96C /* CreateTokenStep4ViewController.m */; };
+		B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */; };
 		B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B01E1395E5004D231B /* ProfileViewController.m */; };
 		B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */; };
 		B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */; };
@@ -267,6 +269,10 @@
 		B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TCAAssociating.m"; sourceTree = "<group>"; };
 		B3846DD41DFEFA6500D6872C /* UIAlertController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Extensions.h"; sourceTree = "<group>"; };
 		B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Extensions.m"; sourceTree = "<group>"; };
+		B385B59D1E6D5B88003BB96C /* CreateTokenStep4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenStep4ViewController.h; sourceTree = "<group>"; };
+		B385B59E1E6D5B88003BB96C /* CreateTokenStep4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenStep4ViewController.m; sourceTree = "<group>"; };
+		B385B5A01E6D640E003BB96C /* CreateTokenNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenNavigationController.h; sourceTree = "<group>"; };
+		B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenNavigationController.m; sourceTree = "<group>"; };
 		B386F5AF1E1395E5004D231B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		B386F5B01E1395E5004D231B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
@@ -697,12 +703,16 @@
 			children = (
 				B3F06CF51E69879D006341F7 /* CreateTokenCoordinator.h */,
 				B3F06CF61E69879D006341F7 /* CreateTokenCoordinator.m */,
+				B385B5A01E6D640E003BB96C /* CreateTokenNavigationController.h */,
+				B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */,
 				B3F06D0C1E69B597006341F7 /* CreateTokenStep1ViewController.h */,
 				B3F06D0D1E69B597006341F7 /* CreateTokenStep1ViewController.m */,
 				B3F06D0F1E69B68B006341F7 /* CreateTokenStep2ViewController.h */,
 				B3F06D101E69B68B006341F7 /* CreateTokenStep2ViewController.m */,
 				B3F06D121E69B69A006341F7 /* CreateTokenStep3ViewController.h */,
 				B3F06D131E69B69A006341F7 /* CreateTokenStep3ViewController.m */,
+				B385B59D1E6D5B88003BB96C /* CreateTokenStep4ViewController.h */,
+				B385B59E1E6D5B88003BB96C /* CreateTokenStep4ViewController.m */,
 			);
 			name = "Create Token";
 			sourceTree = "<group>";
@@ -1355,6 +1365,7 @@
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
+				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
@@ -1377,6 +1388,7 @@
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
+				B385B59F1E6D5B88003BB96C /* CreateTokenStep4ViewController.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
