@@ -48,6 +48,7 @@
     self.wigetBalanceLabel.text =
     self.balanceLabel.text = @"0";
     self.historyLoaded = YES;
+    self.balanceLoaded = YES;
     
     [self configTableView];
     [self configRefreshControl];
@@ -88,18 +89,19 @@
     CGFloat offset = self.topBoardView.frame.size.height + self.quickInfoBoard.frame.size.height;
     self.tableView.contentInset =
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
-    self.tableView.delegate = self.delegateDataSource;
     self.tableView.dataSource = self.delegateDataSource;
 }
 
 - (IBAction)refreshButtonWasPressed:(id)sender
 {
     [self.refreshControl endRefreshing];
-    [SVProgressHUD show];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self getBalance];
-        [self getHistory];
-    });
+    if (self.balanceLoaded && self.historyLoaded) {
+        [SVProgressHUD show];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            [self getBalance];
+            [self getHistory];
+        });
+    }
 }
 
 
@@ -110,6 +112,10 @@
     [self calculatePositionForView:self.topBoardView withScrollOffset:yOffset withLimetedYValue:nil];
     [self calculatePositionForView:self.quickInfoBoard withScrollOffset:yOffset withLimetedYValue:@(self.customNavigationBar.frame.size.height)];
     [self calculatePositionForView:self.topSubstrateView withScrollOffset:yOffset withLimetedYValue:nil];
+    
+    if (scrollView.contentOffset.y < -350) {
+        [self refreshButtonWasPressed:nil];
+    }
 
     [self setupNavigationBarPerformance];
 }
