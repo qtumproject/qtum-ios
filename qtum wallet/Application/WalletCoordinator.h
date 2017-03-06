@@ -14,7 +14,6 @@
 -(void)refreshTableViewData;
 -(void)refreshTableViewBalance;
 
-
 @end
 
 @protocol TabBarCoordinatorDelegate;

@@ -11,6 +11,6 @@
 
 @interface NewsDataSourceAndDelegate : NSObject <UITableViewDelegate,UITableViewDataSource>
 
-@property (strong,nonatomic) NSMutableArray <NewsCellModel*> * dataArray;
+@property (copy,nonatomic) NSArray <NewsCellModel*> * dataArray;
 
 @end

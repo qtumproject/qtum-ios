@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @protocol WalletCoordinatorDelegate;
 @class WalletHistoryDelegateDataSource;
 

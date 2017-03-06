@@ -34,7 +34,7 @@
 		B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CF51E1129270094C82C /* ControllersFactory.m */; };
 		B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */; };
 		B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CFB1E112A300094C82C /* WalletNavigationController.m */; };
-		B32C3CFF1E112A470094C82C /* NewsNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */; };
+		B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CFE1E112A470094C82C /* NewsNavigationController.m */; };
 		B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */; };
 		B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32EBFED1E1E4380003AA578 /* PinController.m */; };
 		B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */; };
@@ -208,8 +208,8 @@
 		B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileNavigationCoordinator.m; path = Application/ProfileNavigationCoordinator.m; sourceTree = "<group>"; };
 		B32C3CFA1E112A300094C82C /* WalletNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletNavigationController.h; path = Application/WalletNavigationController.h; sourceTree = "<group>"; };
 		B32C3CFB1E112A300094C82C /* WalletNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletNavigationController.m; path = Application/WalletNavigationController.m; sourceTree = "<group>"; };
-		B32C3CFD1E112A470094C82C /* NewsNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsNavigationCoordinator.h; path = Application/NewsNavigationCoordinator.h; sourceTree = "<group>"; };
-		B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsNavigationCoordinator.m; path = Application/NewsNavigationCoordinator.m; sourceTree = "<group>"; };
+		B32C3CFD1E112A470094C82C /* NewsNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsNavigationController.h; path = Application/NewsNavigationController.h; sourceTree = "<group>"; };
+		B32C3CFE1E112A470094C82C /* NewsNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsNavigationController.m; path = Application/NewsNavigationController.m; sourceTree = "<group>"; };
 		B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendNavigationCoordinator.h; path = Application/SendNavigationCoordinator.h; sourceTree = "<group>"; };
 		B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendNavigationCoordinator.m; path = Application/SendNavigationCoordinator.m; sourceTree = "<group>"; };
 		B32EBFEC1E1E4380003AA578 /* PinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinController.h; sourceTree = "<group>"; };
@@ -294,8 +294,8 @@
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
 		B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCoordinator.m; sourceTree = "<group>"; };
-		B3DD27581E681A7A00BB0635 /* NewsCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCoordinator.h; sourceTree = "<group>"; };
-		B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCoordinator.m; sourceTree = "<group>"; };
+		B3DD27581E681A7A00BB0635 /* NewsCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsCoordinator.h; path = Application/NewsCoordinator.h; sourceTree = "<group>"; };
+		B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsCoordinator.m; path = Application/NewsCoordinator.m; sourceTree = "<group>"; };
 		B3DD275B1E681A8B00BB0635 /* SendCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCoordinator.h; sourceTree = "<group>"; };
 		B3DD275C1E681A8B00BB0635 /* SendCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCoordinator.m; sourceTree = "<group>"; };
 		B3DD275E1E681AA500BB0635 /* WalletCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletCoordinator.h; path = Application/WalletCoordinator.h; sourceTree = "<group>"; };
@@ -620,8 +620,10 @@
 			isa = PBXGroup;
 			children = (
 				B35130621E49DC480048A28C /* Cell */,
-				B32C3CFD1E112A470094C82C /* NewsNavigationCoordinator.h */,
-				B32C3CFE1E112A470094C82C /* NewsNavigationCoordinator.m */,
+				B3DD27581E681A7A00BB0635 /* NewsCoordinator.h */,
+				B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */,
+				B32C3CFD1E112A470094C82C /* NewsNavigationController.h */,
+				B32C3CFE1E112A470094C82C /* NewsNavigationController.m */,
 				B351305B1E49BF6D0048A28C /* NewsController.h */,
 				B351305C1E49BF6D0048A28C /* NewsController.m */,
 				B33EAF021E5B399C006125F3 /* NewsDataSourceAndDelegate.h */,
@@ -1073,8 +1075,6 @@
 				B3DD27531E68025200BB0635 /* TabBarCoordinator.m */,
 				B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */,
 				B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */,
-				B3DD27581E681A7A00BB0635 /* NewsCoordinator.h */,
-				B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */,
 				B3DD275B1E681A8B00BB0635 /* SendCoordinator.h */,
 				B3DD275C1E681A8B00BB0635 /* SendCoordinator.m */,
 				B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */,
@@ -1394,7 +1394,7 @@
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
-				B32C3CFF1E112A470094C82C /* NewsNavigationCoordinator.m in Sources */,
+				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
 				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
 				B3F06CF71E69879D006341F7 /* CreateTokenCoordinator.m in Sources */,

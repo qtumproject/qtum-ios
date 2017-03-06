@@ -6,13 +6,13 @@
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
-#import "NewsNavigationCoordinator.h"
+#import "NewsNavigationController.h"
 
-@interface NewsNavigationCoordinator ()
+@interface NewsNavigationController ()
 
 @end
 
-@implementation NewsNavigationCoordinator
+@implementation NewsNavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

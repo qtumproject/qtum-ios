@@ -8,7 +8,7 @@
 
 #import "ControllersFactory.h"
 #import "SendNavigationCoordinator.h"
-#import "NewsNavigationCoordinator.h"
+#import "NewsNavigationController.h"
 #import "ProfileNavigationCoordinator.h"
 #import "UIViewController+Extension.h"
 #import "TabBarController.h"
@@ -62,7 +62,7 @@
 
 -(UIViewController*)newsFlowTab{
     UIViewController* controller = [UIViewController controllerInStoryboard:@"News" withIdentifire:nil];
-    NewsNavigationCoordinator* nav = [[NewsNavigationCoordinator alloc] initWithRootViewController:controller];
+    NewsNavigationController* nav = [[NewsNavigationController alloc] initWithRootViewController:controller];
     return nav;
 }
 

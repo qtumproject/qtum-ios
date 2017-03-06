@@ -9,6 +9,7 @@
 #import "NewsController.h"
 #import "NewsCellModel.h"
 #import "NewsDataSourceAndDelegate.h"
+#import "NewsCoordinator.h"
 
 
 @interface NewsController ()
@@ -21,8 +22,6 @@
 
 @end
 
-static NSInteger firstCellHeight = 325;
-static NSInteger cellHeight = 100;
 
 @implementation NewsController
 
@@ -77,27 +76,15 @@ static NSInteger cellHeight = 100;
     [self.view endEditing:YES];
 }
 
--(void)parceResponse:(id)response{
-    if (!response || ![response isKindOfClass:[NSArray class]]) { return; }
-    NSMutableArray* dataArray = @[].mutableCopy;
-    for (id item in response) {
-        NewsCellModel* object = [[NewsCellModel alloc] initWithDict:item];
-        [dataArray addObject:object];
-    }
-    self.dataSourceAndDelegate.dataArray = dataArray;
+-(void)getData{
+    [SVProgressHUD show];
+    [self.delegate refreshTableViewData];
+}
+
+
+-(void)reloadTableView{
     [self reloadTable];
 }
-
--(void)getData{
-    __weak __typeof(self) weakSelf = self;
-    [[RequestManager sharedInstance] getNews:^(id responseObject) {
-        [weakSelf parceResponse:responseObject];
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        [weakSelf requestFailed];
-//        [UIAlertController showMessageWithTitle:@"Error" andMessage:@"Cant get data"];
-    }];
-}
-
 
 -(void)requestFailed{
     [self.refresh endRefreshing];
@@ -121,8 +108,6 @@ static NSInteger cellHeight = 100;
 -(void)actionRefresh{
     [self getData];
 }
-
-
 
 
 @end

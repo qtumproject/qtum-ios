@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsNavigationCoordinator : UINavigationController
+@interface NewsNavigationController : UINavigationController
 
 @end

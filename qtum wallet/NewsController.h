@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol NewsCoordinatorDelegate;
+@class NewsDataSourceAndDelegate;
+
 @interface NewsController : UIViewController
+
+@property (strong,nonatomic) NewsDataSourceAndDelegate* delegateDataSource;
+@property (weak,nonatomic) id <NewsCoordinatorDelegate> delegate;
+
+-(void)reloadTableView;
+-(void)failedToGetData;
 
 @end

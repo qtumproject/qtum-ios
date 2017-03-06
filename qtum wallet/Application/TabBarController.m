@@ -75,7 +75,7 @@
     }else if (self.selectedIndex == 1){
         //[self.coordinatorDelegate profileTabDidSelectedWithController:viewController];
     }else if (self.selectedIndex == 2){
-        //[self.coordinatorDelegate newsTabDidSelectedWithController:viewController];
+        [self.coordinatorDelegate newsTabDidSelectedWithController:viewController];
     }else if (self.selectedIndex == 3){
         //[self.coordinatorDelegate sendTabDidSelectedWithController:viewController];
     }

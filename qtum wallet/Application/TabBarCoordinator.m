@@ -8,6 +8,7 @@
 
 #import "TabBarCoordinator.h"
 #import "WalletCoordinator.h"
+#import "NewsCoordinator.h"
 
 @interface TabBarCoordinator ()
 
@@ -35,7 +36,9 @@
 
 -(void)newsTabDidSelectedWithController:(UIViewController*)controller{
     [self checkTabsController:controller];
-    
+    NewsCoordinator* coordinator = [[NewsCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
+    [coordinator start];
+    [self addDependency:coordinator];
 }
 -(void)sendTabDidSelectedWithController:(UIViewController*)controller{
     [self checkTabsController:controller];
