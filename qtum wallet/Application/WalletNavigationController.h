@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WalletNavigationCoordinator : UINavigationController
+@interface WalletNavigationController : UINavigationController
 
 @end

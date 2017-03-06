@@ -8,6 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WalletCoordinator : NSObject
+@protocol WalletCoordinatorDelegate <NSObject>
+
+@required
+-(void)refreshTableViewData;
+-(void)refreshTableViewBalance;
+
+
+@end
+
+@protocol TabBarCoordinatorDelegate;
+
+@interface WalletCoordinator : BaseCoordinator <WalletCoordinatorDelegate,Coordinatorable>
+
+@property (weak,nonatomic) id <TabBarCoordinatorDelegate> delegate;
+
+-(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 
 @end

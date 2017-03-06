@@ -15,12 +15,13 @@
 #import "QRCodeViewController.h"
 #import "ApplicationCoordinator.h"
 #import "GradientViewWithAnimation.h"
+#import "WalletHistoryDelegateDataSource.h"
+#import "WalletCoordinator.h"
 
-@interface MainViewController () <UITableViewDelegate, UITableViewDataSource, QRCodeViewControllerDelegate>
+@interface MainViewController () <QRCodeViewControllerDelegate>
 
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
 
-@property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet GradientViewWithAnimation *topBoardView;
 @property (weak, nonatomic) IBOutlet UIView *quickInfoBoard;
@@ -30,12 +31,10 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UIView *shortInfoView;
-@property (weak, nonatomic) IBOutlet UILabel *wigetBalanceLabel;
 
 
 @property (nonatomic) BOOL balanceLoaded;
 @property (nonatomic) BOOL historyLoaded;
-@property (nonatomic) NSArray *historyArray;
 
 - (IBAction)refreshButtonWasPressed:(id)sender;
 
@@ -45,23 +44,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    CGFloat offset = self.topBoardView.frame.size.height + self.quickInfoBoard.frame.size.height;
-    self.tableView.contentInset =
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
 
     self.wigetBalanceLabel.text =
     self.balanceLabel.text = @"0";
     self.historyLoaded = YES;
     
+    [self configTableView];
     [self configRefreshControl];
     [self configAdressLabel];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -89,6 +83,15 @@
     self.adressLabel.text = [WalletManager sharedInstance].getCurrentWallet.getRandomKey.address.string;
 }
 
+-(void)configTableView{
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    CGFloat offset = self.topBoardView.frame.size.height + self.quickInfoBoard.frame.size.height;
+    self.tableView.contentInset =
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
+    self.tableView.delegate = self.delegateDataSource;
+    self.tableView.dataSource = self.delegateDataSource;
+}
+
 - (IBAction)refreshButtonWasPressed:(id)sender
 {
     [self.refreshControl endRefreshing];
@@ -99,25 +102,6 @@
     });
 }
 
-#pragma mark - UITableViewDataSource, UITableViewDelegate
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCell"];
-    if (!cell) {
-        cell = [[HistoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HistoryTableViewCell"];
-    }
-    
-    HistoryElement *element = self.historyArray[indexPath.row];
-    cell.historyElement = element;
-    
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return  self.historyArray.count;
-}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
@@ -157,43 +141,41 @@
 - (void)getBalance
 {
     self.balanceLoaded = NO;
-    
-    __weak typeof(self) weakSelf = self;
-    [BlockchainInfoManager getBalanceForAllAddresesWithSuccessHandler:^(double responseObject) {
-        weakSelf.wigetBalanceLabel.text =
-        weakSelf.balanceLabel.text = [NSString stringWithFormat:@"%lf", responseObject];
-        weakSelf.balanceLoaded = YES;
-        if (weakSelf.balanceLoaded && weakSelf.historyLoaded) {
-            [SVProgressHUD dismiss];
-        }
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        weakSelf.balanceLoaded = YES;
-        if (weakSelf.balanceLoaded && weakSelf.historyLoaded) {
-            [SVProgressHUD showErrorWithStatus:@"Some error"];
-        }
-    }];
+    [self.delegate refreshTableViewBalance];
 }
 
 - (void)getHistory
 {
     self.historyLoaded = NO;
-    
-    __weak typeof(self) weakSelf = self;
-    [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
-        weakSelf.historyLoaded = YES;
-        weakSelf.historyArray = responseObject;
-        [weakSelf.tableView reloadData];
-        
-        if (weakSelf.balanceLoaded && weakSelf.historyLoaded) {
-            [SVProgressHUD dismiss];
-        }
-        NSLog(@"%@", responseObject);
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        weakSelf.historyLoaded = YES;
-        if (weakSelf.balanceLoaded && weakSelf.historyLoaded) {
-            [SVProgressHUD showErrorWithStatus:@"Some error"];
-        }
-    }];
+    [self.delegate refreshTableViewData];
+}
+
+-(void)reloadTableView{
+    [self.tableView reloadData];
+    self.historyLoaded = YES;
+    if (self.balanceLoaded && self.historyLoaded) {
+        [SVProgressHUD dismiss];
+    }
+}
+
+-(void)setBalance{
+    self.balanceLoaded = YES;
+    if (self.balanceLoaded && self.historyLoaded) {
+        [SVProgressHUD dismiss];
+    }
+}
+
+-(void)failedToGetData{
+    self.historyLoaded = YES;
+    if (self.balanceLoaded && self.historyLoaded) {
+        [SVProgressHUD showErrorWithStatus:@"Some error"];
+    }
+}
+-(void)failedToGetBalance{
+    self.balanceLoaded = YES;
+    if (self.balanceLoaded && self.historyLoaded) {
+        [SVProgressHUD showErrorWithStatus:@"Some error"];
+    }
 }
 
 #pragma mark - QRCodeViewControllerDelegate

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TabBarCoordinator;
 
 @protocol TabBarCoordinatorDelegate;
 

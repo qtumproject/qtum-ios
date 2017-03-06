@@ -6,13 +6,13 @@
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
-#import "WalletNavigationCoordinator.h"
+#import "WalletNavigationController.h"
 
-@interface WalletNavigationCoordinator ()
+@interface WalletNavigationController ()
 
 @end
 
-@implementation WalletNavigationCoordinator
+@implementation WalletNavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

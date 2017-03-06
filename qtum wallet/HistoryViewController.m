@@ -7,9 +7,9 @@
 //
 
 #import "HistoryViewController.h"
-#import "HistoryTableViewCell.h"
-#import "BlockchainInfoManager.h"
-#import "HistoryElement.h"
+#import "WalletHistoryDelegateDataSource.h"
+#import "WalletCoordinator.h"
+
 
 @interface HistoryViewController ()
 
@@ -17,13 +17,14 @@
 @property (nonatomic, strong) NSArray *historyArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-
 @end
 
 @implementation HistoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self.delegateDataSource;
+    self.tableView.dataSource = self.delegateDataSource;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,42 +53,20 @@
 - (void)getHistory
 {
     self.historyLoaded = NO;
-    
-    __weak typeof(self) weakSelf = self;
-    [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
-        weakSelf.historyLoaded = YES;
-        weakSelf.historyArray = responseObject;
-        [weakSelf.tableView reloadData];
-        
-        if (weakSelf.historyLoaded) {
-            [SVProgressHUD dismiss];
-        }
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        weakSelf.historyLoaded = YES;
-        if ( weakSelf.historyLoaded) {
-            [SVProgressHUD showErrorWithStatus:@"Some error"];
-        }
-    }];
+    [self.delegate refreshTableViewData];
 }
 
-#pragma mark - UITableViewDataSource, UITableViewDelegate
+#pragma mark - Public Methods
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCell"];
-    if (!cell) {
-        cell = [[HistoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HistoryTableViewCell"];
-    }
-    
-    HistoryElement *element = self.historyArray[indexPath.row];
-    cell.historyElement = element;
-    
-    return cell;
+-(void)reloadTableView{
+    self.historyLoaded = YES;
+    [SVProgressHUD dismiss];
+    [self.tableView reloadData];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return  self.historyArray.count;
+-(void)failedToGetData{
+    self.historyLoaded = YES;
+    [SVProgressHUD showErrorWithStatus:@"Some error"];
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "TabBarCoordinator.h"
+#import "WalletCoordinator.h"
 
 @interface TabBarCoordinator ()
 
@@ -44,6 +45,9 @@
 }
 -(void)walletTabDidSelectedWithController:(UIViewController*)controller{
     [self checkTabsController:controller];
+    WalletCoordinator* coordinator = [[WalletCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
+    [coordinator start];
+    [self addDependency:coordinator];
 }
 
 -(void)checkTabsController:(UIViewController*)controller{

@@ -14,6 +14,7 @@
 #import "UIViewController+Extension.h"
 #import "ControllersFactory.h"
 #import "LoginCoordinator.h"
+#import "TabBarCoordinator.h"
 
 
 
@@ -24,6 +25,8 @@
 @property (strong,nonatomic) ControllersFactory* controllersFactory;
 @property (strong,nonatomic) UIViewController* viewController;
 @property (strong,nonatomic) UINavigationController* navigationController;
+@property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
+
 
 @property (nonatomic,strong) NSString *amount;
 @property (nonatomic,strong) NSString *adress;
@@ -141,6 +144,7 @@
 -(void)logout{
     [self startAuthFlow];
     [self storeAuthorizedFlag:NO];
+    [self removeDependency:self.tabCoordinator];
 }
 
 -(void)startLoginFlow{
@@ -177,7 +181,13 @@
 }
 
 -(void)startMainFlow{
+    //TODO refarcor coordinator logic
     TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
+    TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
+    controller.coordinatorDelegate = coordinator;
+    self.tabCoordinator = coordinator;
+    [self addDependency:coordinator];
+    [coordinator start];
     if (self.adress) {
         [controller selectSendControllerWithAdress:self.adress andValue:self.amount];
     }

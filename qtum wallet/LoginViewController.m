@@ -60,7 +60,6 @@
 
 #pragma mark - Actions
 
-
 - (IBAction)actionEnterPin:(id)sender {
     self.shoudKeboardDismiss = YES;
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
@@ -78,6 +77,10 @@
     if ([self.delegate respondsToSelector:@selector(confirmPasswordDidCanceled)]) {
         [self.delegate confirmPasswordDidCanceled];
     }
+}
+
+-(void)actionEnter:(id)sender{
+    [self actionEnterPin:nil];
 }
 
 -(void)applyFailedPasswordAction{

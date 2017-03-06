@@ -11,7 +11,7 @@
 #import "NewPaymentViewController.h"
 #import "TabBarCoordinator.h"
 
-@interface TabBarController ()
+@interface TabBarController () <UITabBarControllerDelegate>
 
 @property (weak,nonatomic)NewPaymentViewController* paymentController;
 
@@ -19,10 +19,22 @@
 
 @implementation TabBarController
 
+#pragma mark - Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.delegate = self;
     [self configTabs];
     [self configTabBar];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //select controller
+    if ([self.customizableViewControllers.firstObject isKindOfClass:[UINavigationController class]]) {
+        [self.coordinatorDelegate walletTabDidSelectedWithController:self.customizableViewControllers.firstObject];
+    }
 }
 
 #pragma mark - Configuration
@@ -37,7 +49,7 @@
     UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];//[UINavigationController new];
     UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];//[UINavigationController new];
     UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];//[UINavigationController new];
-    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];//[UINavigationController new];
+    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
     
     [self setViewControllers:@[wallet,profile,news,send] animated:YES];
 
@@ -54,16 +66,19 @@
     [self storeSendReference:send];
 }
 
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    return YES;
+}
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
-//    if (self.selectedIndex == 0) {
-//        [self.coordinatorDelegate walletTabDidSelectedWithController:viewController];
-//    }else if (self.selectedIndex == 1){
-//        [self.coordinatorDelegate profileTabDidSelectedWithController:viewController];
-//    }else if (self.selectedIndex == 2){
-//        [self.coordinatorDelegate newsTabDidSelectedWithController:viewController];
-//    }else if (self.selectedIndex == 3){
-//        [self.coordinatorDelegate sendTabDidSelectedWithController:viewController];
-//    }
+    if (self.selectedIndex == 0) {
+        [self.coordinatorDelegate walletTabDidSelectedWithController:viewController];
+    }else if (self.selectedIndex == 1){
+        //[self.coordinatorDelegate profileTabDidSelectedWithController:viewController];
+    }else if (self.selectedIndex == 2){
+        //[self.coordinatorDelegate newsTabDidSelectedWithController:viewController];
+    }else if (self.selectedIndex == 3){
+        //[self.coordinatorDelegate sendTabDidSelectedWithController:viewController];
+    }
 }
 
 -(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount{

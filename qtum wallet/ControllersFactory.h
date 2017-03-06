@@ -21,6 +21,7 @@
 @class CreateTokenStep2ViewController;
 @class CreateTokenStep3ViewController;
 @class CreateTokenStep4ViewController;
+@class TabBarCoordinator;
 
 
 @interface ControllersFactory : NSObject
@@ -33,7 +34,7 @@
 -(UIViewController*)profileFlowTab;
 -(UIViewController*)newsFlowTab;
 -(UIViewController*)sendFlowTab;
--(UIViewController*)walletFlowTab;
+-(UINavigationController*)walletFlowTab;
 -(UIViewController*)changePinFlowController;
 -(UIViewController*)createPinFlowController;
 -(UIViewController*)createWalletFlowController;

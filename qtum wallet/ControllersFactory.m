@@ -9,7 +9,6 @@
 #import "ControllersFactory.h"
 #import "SendNavigationCoordinator.h"
 #import "NewsNavigationCoordinator.h"
-#import "WalletNavigationCoordinator.h"
 #import "ProfileNavigationCoordinator.h"
 #import "UIViewController+Extension.h"
 #import "TabBarController.h"
@@ -26,6 +25,8 @@
 #import "CreateTokenStep2ViewController.h"
 #import "CreateTokenStep3ViewController.h"
 #import "CreateTokenStep4ViewController.h"
+#import "HistoryViewController.h"
+#import "WalletNavigationController.h"
 
 
 @implementation ControllersFactory
@@ -71,10 +72,9 @@
 }
 
 
-
--(UIViewController*)walletFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Wallet" withIdentifire:nil];
-    WalletNavigationCoordinator* nav = [[WalletNavigationCoordinator alloc] initWithRootViewController:controller];
+-(UINavigationController*)walletFlowTab{
+    HistoryViewController* controller = (HistoryViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:nil];
+    WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:controller];
     return nav;
 }
 

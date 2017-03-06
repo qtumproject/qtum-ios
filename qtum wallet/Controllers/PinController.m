@@ -83,7 +83,7 @@
         } else if ([textField isEqual:self.thirdSymbolTextField]) {
             [self.fourthSymbolTextField becomeFirstResponder];
         } else if ([textField isEqual:self.fourthSymbolTextField]) {
-            //[self validateAndSendPin];
+            [self actionEnter:nil];
         }
     }
 }
@@ -158,6 +158,10 @@
 }
 
 #pragma mark - Actions
+
+-(void)actionEnter:(id)sender{
+    
+}
 
 #pragma mark -
 

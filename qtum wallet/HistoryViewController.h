@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WalletCoordinatorDelegate;
+@class WalletHistoryDelegateDataSource;
+
 @interface HistoryViewController : UIViewController
+
+@property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
+@property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
+
+-(void)reloadTableView;
+-(void)failedToGetData;
 
 @end
