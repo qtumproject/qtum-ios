@@ -17,7 +17,6 @@
 @property (strong,nonatomic)UIRefreshControl* refresh;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray <NewsCellModel*> * dataArray;
-@property (strong,nonatomic) NewsDataSourceAndDelegate* dataSourceAndDelegate;
 
 
 @end
@@ -49,13 +48,6 @@
 #pragma mark - Getters
 
 
--(NewsDataSourceAndDelegate*)dataSourceAndDelegate{
-    if (!_dataSourceAndDelegate) {
-        _dataSourceAndDelegate = [NewsDataSourceAndDelegate new];
-    }
-    return _dataSourceAndDelegate;
-}
-
 #pragma mark - Configuration
 
 -(void)configPullRefresh{
@@ -66,8 +58,8 @@
 }
 
 -(void)configTableView{
-    self.tableView.delegate = self.dataSourceAndDelegate;
-    self.tableView.dataSource = self.dataSourceAndDelegate;
+    self.tableView.delegate = self.delegateDataSource;
+    self.tableView.dataSource = self.delegateDataSource;
 }
 
 #pragma mark - Private Methods

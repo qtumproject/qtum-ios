@@ -14,7 +14,7 @@
 @interface NewsCoordinator ()
 
 @property (strong, nonatomic) UINavigationController* navigationController;
-@property (strong,nonatomic) NewsDataSourceAndDelegate* delegateDataSource;
+@property (strong, nonatomic) NewsDataSourceAndDelegate* delegateDataSource;
 @property (weak, nonatomic) NewsController* newsController;
 
 

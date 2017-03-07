@@ -55,4 +55,8 @@ static NSString* firstReuseIdentifire = @"FirstNewsTableCell";
     return cellHeight;
 }
 
+-(void)setDataArray:(NSArray<NewsCellModel *> *)dataArray{
+    _dataArray = dataArray;
+}
+
 @end
