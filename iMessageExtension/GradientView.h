@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, ColorType){
+    Blue,
+    Pink,
+    Green
+};
+
 @interface GradientView : UIView
+
+@property (assign,nonatomic) ColorType colorType;
 
 @end

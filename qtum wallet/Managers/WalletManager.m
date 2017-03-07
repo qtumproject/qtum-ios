@@ -125,7 +125,7 @@ NSString const *USER_PIN_KEY = @"PIN";
         BTCKey *key = [wallet getKeyAtIndex:i];
         
         dispatch_group_enter(self.registerGroup);
-        NSLog(@"Enter");
+        NSLog(@"Enter -- > %@",key.address.string);
         [[RPCRequestManager sharedInstance] registerKey:key.address.string identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
             dispatch_group_leave(weakSelf.registerGroup);
             NSLog(@"Success");

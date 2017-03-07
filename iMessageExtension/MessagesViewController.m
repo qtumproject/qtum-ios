@@ -174,8 +174,11 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 }
 
 -(UIImage*)imageForMessageWithText:(NSString*)text{
-    GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 300)];
+    GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 120)];
+    backView.colorType = Green;
     backView.backgroundColor = [UIColor blackColor];
+    UIImageView* waves = [[UIImageView alloc]initWithFrame:CGRectMake(0, 40, 300, 80)];
+    waves.image = [UIImage imageNamed:@"waves"];
     UILabel* label = [[UILabel alloc] initWithFrame:backView.bounds];
     label.text = text;//;
     //[label sizeToFit];
@@ -183,6 +186,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
     [backView addSubview:label];
+    [backView addSubview:waves];
     [self.view addSubview:backView];
     UIGraphicsBeginImageContextWithOptions(backView.frame.size, NO, [UIScreen mainScreen].scale);
     [backView drawViewHierarchyInRect:backView.bounds afterScreenUpdates:YES];
