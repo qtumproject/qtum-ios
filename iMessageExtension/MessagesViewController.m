@@ -171,7 +171,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 }
 
 -(UIImage*)imageForMessageWithText:(NSString*)text finalized:(BOOL) final isResultSuccess:(BOOL) succes{
-    GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 120)];
+    GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 100)];
     NSString* statusString;
     if (final && succes) {
         backView.colorType = Green;
@@ -187,12 +187,12 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     UIImageView* waves = [[UIImageView alloc]initWithFrame:CGRectMake(0, 40, 300, 80)];
     waves.image = [UIImage imageNamed:@"waves"];
     
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, backView.bounds.size.width, backView.bounds.size.height - 50)];
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, backView.bounds.size.width, 30)];
     label.text = text;//;
-    //[label sizeToFit];
+    [label sizeToFit];
     //label.frame = CGRectMake(backView.frame.size.width/2 - label.frame.size.width/2, 75, 150, 150);
     label.textColor = [UIColor whiteColor];
-    label.textAlignment = NSTextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentLeft;
     
     UILabel* statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, backView.frame.size.width - 20, 20)];
     statusLabel.text = statusString;
