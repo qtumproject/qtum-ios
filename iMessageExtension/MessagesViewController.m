@@ -19,9 +19,6 @@
 @property (strong, nonatomic) MSMessage* storedPaymendMessage;
 @property (assign, nonatomic) BOOL isHasWallet;
 
-
-
-
 @property (weak, nonatomic) IBOutlet UIButton *requestExpandButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *mainActionButton;
@@ -91,7 +88,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
         message = [[MSMessage alloc] initWithSession:session];
     }
     MSMessageTemplateLayout* layout = [MSMessageTemplateLayout new];
-    layout.image = [self imageForMessageWithText:[NSString stringWithFormat:@"I need %@ qtum",self.amountTextField.text.length > 0 ? self.amountTextField.text : @"some"]];
+    layout.image = [self imageForMessageWithText:[NSString stringWithFormat:@"transfer me %@ QTUM",self.amountTextField.text.length > 0 ? self.amountTextField.text : @"some"] finalized:NO isResultSuccess:NO];
     message.layout = layout;
     message.shouldExpire = YES;
     message.URL = [self createUrlForMessageWithFinalized:NO andSucces:NO];
@@ -114,7 +111,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
         message = [[MSMessage alloc] initWithSession:session];
     }
     MSMessageTemplateLayout* layout = [MSMessageTemplateLayout new];
-    layout.image = [self imageForMessageWithText:text];
+    layout.image = [self imageForMessageWithText:text finalized:YES isResultSuccess:flag];
     message.layout = layout;
     message.shouldExpire = YES;
     message.URL = [self createUrlForMessageWithFinalized:YES andSucces:flag];
@@ -152,11 +149,11 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 - (IBAction)actiomSendMoney:(id)sender {
     self.isPaymentInProcess = YES;
     self.storedPaymendMessage = self.activeConversation.selectedMessage;
-    [self actionSendFinalizedMessage:nil withText:finalizedAgreeText isAgree:YES];
+    [self actionSendFinalizedMessage:nil withText:[NSString stringWithFormat:@"transfer me %@ QTUM",[self getAmountFromMessage:self.storedPaymendMessage] > 0 ? [self getAmountFromMessage:self.storedPaymendMessage] : @"some"] isAgree:YES];
 }
 
 - (IBAction)actionCancelSendMoney:(id)sender {
-    [self actionSendFinalizedMessage:nil withText:finalizedDisagreeText isAgree:NO];
+    [self actionSendFinalizedMessage:nil withText:[NSString stringWithFormat:@"transfer me %@ QTUM",[self getAmountFromMessage:self.activeConversation.selectedMessage] > 0 ? [self getAmountFromMessage:self.activeConversation.selectedMessage] : @"some"] isAgree:NO];
 }
 
 -(void)handleSendinMessage:(MSMessage*)message{
@@ -173,18 +170,36 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     }];
 }
 
--(UIImage*)imageForMessageWithText:(NSString*)text{
+-(UIImage*)imageForMessageWithText:(NSString*)text finalized:(BOOL) final isResultSuccess:(BOOL) succes{
     GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 120)];
-    backView.colorType = Green;
+    NSString* statusString;
+    if (final && succes) {
+        backView.colorType = Green;
+        statusString = @"Waiting...";
+    } else if(final){
+        backView.colorType = Pink;
+        statusString = @"Canceled";
+    } else {
+        backView.colorType = Blue;
+    }
     backView.backgroundColor = [UIColor blackColor];
+    
     UIImageView* waves = [[UIImageView alloc]initWithFrame:CGRectMake(0, 40, 300, 80)];
     waves.image = [UIImage imageNamed:@"waves"];
-    UILabel* label = [[UILabel alloc] initWithFrame:backView.bounds];
+    
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, backView.bounds.size.width, backView.bounds.size.height - 50)];
     label.text = text;//;
     //[label sizeToFit];
     //label.frame = CGRectMake(backView.frame.size.width/2 - label.frame.size.width/2, 75, 150, 150);
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
+    
+    UILabel* statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, backView.frame.size.width - 20, 20)];
+    statusLabel.text = statusString;
+    statusLabel.textColor = [UIColor whiteColor];
+    statusLabel.textAlignment = NSTextAlignmentRight;
+    
+    [backView addSubview:statusLabel];
     [backView addSubview:label];
     [backView addSubview:waves];
     [self.view addSubview:backView];
