@@ -18,6 +18,7 @@
 -(void)sendTabDidSelectedWithController:(UIViewController*)controller;
 -(void)profileTabDidSelectedWithController:(UIViewController*)controller;
 -(void)walletTabDidSelectedWithController:(UIViewController*)controller;
+-(void)createPaymentFromWalletScanWithDict:(NSDictionary*) dict;
 
 @end
 

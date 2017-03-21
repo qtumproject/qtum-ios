@@ -13,6 +13,7 @@
 @required
 -(void)refreshTableViewData;
 -(void)refreshTableViewBalance;
+-(void)qrCodeScannedWithDict:(NSDictionary*) dict;
 
 @end
 

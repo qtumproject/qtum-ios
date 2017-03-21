@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 #import "WalletHistoryDelegateDataSource.h"
 #import "BlockchainInfoManager.h"
+#import "TabBarCoordinator.h"
 
 
 @interface WalletCoordinator ()
@@ -62,6 +63,11 @@
     } andFailureHandler:^(NSError *error, NSString *message) {
         [weakSelf.historyController failedToGetBalance];
     }];
+}
+
+-(void)qrCodeScannedWithDict:(NSDictionary*) dict{
+    [self.navigationController popViewControllerAnimated:NO];
+    [self.delegate createPaymentFromWalletScanWithDict:dict];
 }
 
 @end

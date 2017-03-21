@@ -49,12 +49,17 @@
 -(void)walletTabDidSelectedWithController:(UIViewController*)controller{
     [self checkTabsController:controller];
     WalletCoordinator* coordinator = [[WalletCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
+    coordinator.delegate = self;
     [coordinator start];
     [self addDependency:coordinator];
 }
 
 -(void)checkTabsController:(UIViewController*)controller{
     NSAssert([controller isKindOfClass:[UINavigationController class]], @"Tabs must be navigation");
+}
+
+-(void)createPaymentFromWalletScanWithDict:(NSDictionary*) dict{
+    [self.tabBarContoller selectSendControllerWithAdress:dict[@"publicAddress"] andValue:dict[@"amount"]];
 }
 
 @end

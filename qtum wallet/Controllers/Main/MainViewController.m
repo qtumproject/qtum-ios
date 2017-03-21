@@ -186,20 +186,14 @@
 
 #pragma mark - QRCodeViewControllerDelegate
 
-- (void)qrCodeScanned:(NSDictionary *)dictionary
-{
-    self.dictionaryForNewPayment = dictionary;
+- (void)qrCodeScanned:(NSDictionary *)dictionary{
+    [self.delegate qrCodeScannedWithDict:dictionary];
 }
 
 #pragma mark - Actions
 
 - (IBAction)actionRecive:(id)sender {
     [self performSegueWithIdentifier:@"MaintToRecieve" sender:self];
-}
-
-- (void)showNextVC {
-#warning TODO - swiching tabs
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma merk - Seque
