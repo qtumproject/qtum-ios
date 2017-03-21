@@ -17,6 +17,5 @@
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 - (void)getImageWithUrl:(NSString *)url withResultHandler:(void (^)(UIImage *image))complete;
--(void)getCropImageWithUrl:(NSString*)url withResultHandler:(void(^)(UIImage* image)) complete;
 
 @end

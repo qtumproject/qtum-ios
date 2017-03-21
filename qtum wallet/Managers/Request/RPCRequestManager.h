@@ -11,8 +11,6 @@
 
 @interface RPCRequestManager : NSObject <Requestable>
 
-@property (strong,nonatomic,readonly) id <RequestManagerAdapter> adapter;
-
 + (instancetype)sharedInstance;
 
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

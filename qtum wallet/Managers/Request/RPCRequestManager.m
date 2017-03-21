@@ -16,6 +16,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
 @interface RPCRequestManager ()
 
 @property (strong, nonatomic) AFJSONRPCClient *client;
+@property (strong,nonatomic) id <RequestManagerAdapter> adapter;
 
 @end
 

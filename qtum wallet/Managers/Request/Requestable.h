@@ -12,7 +12,7 @@
 @protocol Requestable <NSObject>
 
 @required
-@property (strong,nonatomic) id <RequestManagerAdapter> adapter;
+@property (strong,nonatomic,readonly) id <RequestManagerAdapter> adapter;
 
 + (instancetype)sharedInstance;
 
@@ -49,23 +49,18 @@
 
 // Some RPC help methods
 
-- (void)getInfoWithSuccessHandler:(void(^)(id responseObject))success
-                andFailureHandler:(void(^)(NSError *error, NSString* message))failure;
-
 - (void)sendToAddress:(NSString *)key
    withSuccessHandler:(void(^)(id responseObject))success
     andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
-
-- (void)generate:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 // News
 
 - (void)getNews:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 // Info
-
-- (void)getBlockchainInfo:(void(^)(id responseObject))success
-        andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+//
+//- (void)getBlockchainInfo:(void(^)(id responseObject))success
+//        andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 
 

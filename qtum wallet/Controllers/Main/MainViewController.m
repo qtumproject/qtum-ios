@@ -201,15 +201,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *segueID = segue.identifier;
-    
-    if ([segueID isEqualToString:@"FromMainToNewPayment"]) {
-        NewPaymentViewController *vc = (NewPaymentViewController *)segue.destinationViewController;
-        
-        vc.currentBalance = self.balanceLabel.text;
-        vc.dictionary = self.dictionaryForNewPayment;
-        self.dictionaryForNewPayment = nil;
-    }
-    
+
     if ([segueID isEqualToString:@"MaintToRecieve"]) {
         RecieveViewController *vc = (RecieveViewController *)segue.destinationViewController;
         

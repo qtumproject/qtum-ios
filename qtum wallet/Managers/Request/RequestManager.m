@@ -23,6 +23,7 @@ NSString *const BASE_URL = @"http://139.162.178.174";
 @interface RequestManager()
 
 @property (strong,nonatomic)AFHTTPRequestOperationManager* requestManager;
+@property (strong,nonatomic) id <RequestManagerAdapter> adapter;
 
 @end
 
@@ -135,18 +136,6 @@ NSString *const BASE_URL = @"http://139.162.178.174";
 
 #pragma mark - Methods
 
-
--(void)getBalanceByKey:(NSString *)publicKey withSuccessHandler:(void(^)(id responseObject)) success andFailureHandler:(void(^)(NSString* message)) failure
-{
-    NSString *path = [NSString stringWithFormat:@"ext/getbalance/%@", publicKey];
-    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
-        success(responseObject);
-        NSLog(@"Succes");
-    } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
-        failure(message);
-        NSLog(@"Failure");
-    }];
-}
 
 - (void)registerKey:(NSString *)keyString
          identifier:(NSString *)identifier new:(BOOL)new

@@ -180,12 +180,9 @@
 {
     self.addressTextField.text = dictionary[PUBLIC_ADDRESS_STRING_KEY];
     self.amountTextField.text = dictionary[AMOUNT_STRING_KEY];
-}
-
-- (void)showNextVC
-{
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 #pragma mark - 
 

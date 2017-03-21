@@ -13,7 +13,6 @@
 @interface PinViewController : PinController
 
 -(void)setCustomTitle:(NSString*) title;
--(void)actionIncorrectPin;
 
 
 @end

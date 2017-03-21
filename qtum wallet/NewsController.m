@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray <NewsCellModel*> * dataArray;
 
-
 @end
 
 
@@ -76,6 +75,10 @@
 
 -(void)reloadTableView{
     [self reloadTable];
+}
+
+-(void)failedToGetData{
+    
 }
 
 -(void)requestFailed{

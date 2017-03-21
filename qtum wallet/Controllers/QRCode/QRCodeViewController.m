@@ -35,10 +35,6 @@
         if ([weakSelf.delegate respondsToSelector:@selector(qrCodeScanned:)]) {
             [weakSelf.delegate qrCodeScanned:[QRCodeManager getNewPaymentDictionaryFromString:code.stringValue]];
         }
-        
-        if ([weakSelf.delegate respondsToSelector:@selector(showNextVC)]) {
-            [weakSelf.delegate showNextVC];
-        }
     };
 }
 

@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
 
 - (IBAction)importButtonWasPressed:(id)sender;
-- (IBAction)backButtonWasPressed:(id)sender;
 
 @end
 

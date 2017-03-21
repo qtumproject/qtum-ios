@@ -109,8 +109,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSString *segueID = segue.identifier;
-
 }
 
 @end

@@ -56,12 +56,11 @@ static NSString* deviceTokenKey = @"deviceTokenKey";
 
 #pragma mark - AppDelegate
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-    NSString * deviceTokenString = [[[[deviceToken description]
-                                      stringByReplacingOccurrencesOfString: @"<" withString: @""]
-                                     stringByReplacingOccurrencesOfString: @">" withString: @""]
-                                    stringByReplacingOccurrencesOfString: @" " withString: @""];
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+//    NSString * deviceTokenString = [[[[deviceToken description]
+//                                      stringByReplacingOccurrencesOfString: @"<" withString: @""]
+//                                     stringByReplacingOccurrencesOfString: @">" withString: @""]
+//                                    stringByReplacingOccurrencesOfString: @" " withString: @""];
     
     [[NSUserDefaults standardUserDefaults] setObject:[deviceToken description] forKey:deviceTokenKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
