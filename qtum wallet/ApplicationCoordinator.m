@@ -15,7 +15,7 @@
 #import "ControllersFactory.h"
 #import "LoginCoordinator.h"
 #import "TabBarCoordinator.h"
-
+#import "RPCRequestManager.h"
 
 
 @interface ApplicationCoordinator ()
@@ -26,6 +26,7 @@
 @property (strong,nonatomic) UIViewController* viewController;
 @property (strong,nonatomic) UINavigationController* navigationController;
 @property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
+@property (strong,nonatomic) RemoutNotificationManager* notificationManager;
 
 
 @property (nonatomic,strong) NSString *amount;
@@ -52,6 +53,7 @@
     self = [super init];
     if (self != nil) {
         _controllersFactory = [ControllersFactory sharedInstance];
+        _notificationManager = [RemoutNotificationManager new];
     }
     return self;
 }
@@ -96,6 +98,7 @@
 -(void)coordinatorDidLogin:(LoginCoordinator*)coordinator{
     [self removeDependency:coordinator];
     [self startMainFlow];
+    [self.notificationManager registerForRemoutNotifications];
 }
 
 -(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator{
@@ -106,6 +109,7 @@
 -(void)coordinatorDidAuth:(AuthCoordinator*)coordinator{
     [self removeDependency:coordinator];
     [self startMainFlow];
+    [self.notificationManager registerForRemoutNotifications];
 }
 
 
@@ -144,6 +148,7 @@
 -(void)logout{
     [self startAuthFlow];
     [self storeAuthorizedFlag:NO];
+    [self.notificationManager removeToken];
     [self removeDependency:self.tabCoordinator];
 }
 

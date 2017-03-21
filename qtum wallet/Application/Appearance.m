@@ -28,7 +28,6 @@
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{
                                                                                                  NSFontAttributeName: [UIFont fontWithName:@"MyriadPro-Regular" size:14],
                                                                                                  }];
-
 }
 
 @end

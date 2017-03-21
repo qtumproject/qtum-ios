@@ -8,6 +8,7 @@
 
 #import "RPCRequestManager.h"
 #import <AFJSONRPCClient/AFJSONRPCClient.h>
+#import "RPCAdapter.h"
 
 NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
 //NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
@@ -35,6 +36,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     self = [super init];
     
     if (self != nil) {
+        _adapter = [RPCAdapter new];
     }
     
     return self;
@@ -100,14 +102,17 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     }];
 }
 
-- (void)getListUnspentForKeys:(NSArray *)keys withSuccessHandler:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
-{
+- (void)getUnspentOutputsForAdreses:(NSArray*) addresses
+                         isAdaptive:(BOOL) adaptive
+                     successHandler:(void(^)(id responseObject))success
+                  andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
     NSString *method = @"listunspent";
     NSNumber *firt = @(0);
     NSNumber *last = @(20000);
-    
-    NSArray *params = @[firt, last, keys];
+    __weak __typeof(self)weakSelf = self;
+    NSArray *params = @[firt, last, addresses];
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {
+        responseObject = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
         success(responseObject);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
@@ -127,6 +132,23 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
         failure(error, message);
     }];
 }
+
+- (void)sendTransactionWithParam:(NSDictionary *)param
+     withSuccessHandler:(void(^)(id responseObject))success
+      andFailureHandler:(void(^)(NSString* message)) failure{
+    
+    NSLog(@"Hex : %@", param[@"data"]);
+    NSString *method = @"sendrawtransaction";
+    BOOL allowhighfees = YES;
+    
+    NSArray *params = @[param[@"data"], @(allowhighfees)];
+    [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure( message);
+    }];
+}
+
 
 - (void)getInfoWithSuccessHandler:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
@@ -165,20 +187,33 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     }];
 }
 
-- (void)getHistory:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure
-{
+- (void)getHistoryWithParam:(NSDictionary*) param
+               andAddresses:(NSArray*) addresses
+             successHandler:(void(^)(id responseObject))success
+          andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    
     NSString *method = @"listtransactions";
-    NSNumber *count = @(10000000);
+    NSNumber *count = @(10000000);;
     NSNumber *someValue = @(0);
     NSNumber *flag = @YES;
-    
     NSArray *params = @[[[WalletManager sharedInstance]getCurrentWallet].getWorldsString, count, someValue, flag];
+    __weak __typeof(self)weakSelf = self;
     
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {
+        responseObject = [weakSelf.adapter adaptiveDataForHistory:responseObject];
         success(responseObject);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
 }
+
+- (void)getNews:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    success(nil);
+}
+
+- (void)getBlockchainInfo:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    success(nil);
+}
+
 
 @end

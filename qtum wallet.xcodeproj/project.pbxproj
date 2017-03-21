@@ -59,6 +59,9 @@
 		B35130611E49C9930048A28C /* NewsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130601E49C9930048A28C /* NewsCellModel.m */; };
 		B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130641E49DCBC0048A28C /* NewsTableCell.m */; };
 		B35130681E49DF910048A28C /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130671E49DF910048A28C /* ImageLoader.m */; };
+		B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DF71E811D4500EBF094 /* RPCAdapter.m */; };
+		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
+		B3597DFE1E81517200EBF094 /* RemoutNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* RemoutNotificationManager.m */; };
 		B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35EE88C1E4C6963008F4403 /* FirstNewTableCell.m */; };
 		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
@@ -93,6 +96,7 @@
 		B3F06D0E1E69B597006341F7 /* CreateTokenStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D0D1E69B597006341F7 /* CreateTokenStep1ViewController.m */; };
 		B3F06D111E69B68B006341F7 /* CreateTokenStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D101E69B68B006341F7 /* CreateTokenStep2ViewController.m */; };
 		B3F06D141E69B69A006341F7 /* CreateTokenStep3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D131E69B69A006341F7 /* CreateTokenStep3ViewController.m */; };
+		B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
 		E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71AF24C1E0178C50068595B /* libCoreBitcoin.a */; };
@@ -258,6 +262,14 @@
 		B35130641E49DCBC0048A28C /* NewsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableCell.m; sourceTree = "<group>"; };
 		B35130661E49DF910048A28C /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLoader.h; sourceTree = "<group>"; };
 		B35130671E49DF910048A28C /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLoader.m; sourceTree = "<group>"; };
+		B3597DF41E7FABF800EBF094 /* Requestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Requestable.h; sourceTree = "<group>"; };
+		B3597DF51E811D0500EBF094 /* RequestManagerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManagerAdapter.h; sourceTree = "<group>"; };
+		B3597DF61E811D4500EBF094 /* RPCAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCAdapter.h; sourceTree = "<group>"; };
+		B3597DF71E811D4500EBF094 /* RPCAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCAdapter.m; sourceTree = "<group>"; };
+		B3597DF91E811D6500EBF094 /* ServerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerAdapter.h; sourceTree = "<group>"; };
+		B3597DFA1E811D6500EBF094 /* ServerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerAdapter.m; sourceTree = "<group>"; };
+		B3597DFC1E81517200EBF094 /* RemoutNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoutNotificationManager.h; sourceTree = "<group>"; };
+		B3597DFD1E81517200EBF094 /* RemoutNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoutNotificationManager.m; sourceTree = "<group>"; };
 		B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88B1E4C6963008F4403 /* FirstNewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstNewTableCell.h; sourceTree = "<group>"; };
@@ -321,6 +333,7 @@
 		B3F06D101E69B68B006341F7 /* CreateTokenStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenStep2ViewController.m; sourceTree = "<group>"; };
 		B3F06D121E69B69A006341F7 /* CreateTokenStep3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenStep3ViewController.h; sourceTree = "<group>"; };
 		B3F06D131E69B69A006341F7 /* CreateTokenStep3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenStep3ViewController.m; sourceTree = "<group>"; };
+		B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
 		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RecieveViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -612,6 +625,7 @@
 				B33EAF8F1E5EC263006125F3 /* MainInterface.storyboard */,
 				B33EAF921E5EC263006125F3 /* Assets.xcassets */,
 				B33EAF941E5EC263006125F3 /* Info.plist */,
+				B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */,
 			);
 			path = iMessageExtension;
 			sourceTree = "<group>";
@@ -1079,6 +1093,8 @@
 				B3DD275C1E681A8B00BB0635 /* SendCoordinator.m */,
 				B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */,
 				B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */,
+				B3597DFC1E81517200EBF094 /* RemoutNotificationManager.h */,
+				B3597DFD1E81517200EBF094 /* RemoutNotificationManager.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1097,6 +1113,12 @@
 				E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */,
 				E7FD36641DC76EBC00748177 /* RequestManager.h */,
 				E7FD36651DC76EBC00748177 /* RequestManager.m */,
+				B3597DF41E7FABF800EBF094 /* Requestable.h */,
+				B3597DF51E811D0500EBF094 /* RequestManagerAdapter.h */,
+				B3597DF61E811D4500EBF094 /* RPCAdapter.h */,
+				B3597DF71E811D4500EBF094 /* RPCAdapter.m */,
+				B3597DF91E811D6500EBF094 /* ServerAdapter.h */,
+				B3597DFA1E811D6500EBF094 /* ServerAdapter.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1189,6 +1211,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					E71AF2411E0177910068595B = {
@@ -1203,6 +1228,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -1234,6 +1262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				B33EAF931E5EC263006125F3 /* Assets.xcassets in Resources */,
 				B33EAF911E5EC263006125F3 /* MainInterface.storyboard in Resources */,
 			);
@@ -1358,6 +1387,7 @@
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
+				B3597DFE1E81517200EBF094 /* RemoutNotificationManager.m in Sources */,
 				B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */,
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
@@ -1376,6 +1406,7 @@
 				B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */,
 				B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
+				B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */,
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
@@ -1434,6 +1465,7 @@
 				B35130681E49DF910048A28C /* ImageLoader.m in Sources */,
 				B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */,
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,
+				B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

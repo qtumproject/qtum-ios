@@ -9,6 +9,7 @@
 #import "AFNetworking.h"
 #import "RequestManager.h"
 #import <CommonCrypto/CommonHMAC.h>
+#import "ServerAdapter.h"
 
 typedef NS_ENUM(NSInteger, RequestType){
     POST,
@@ -43,6 +44,7 @@ NSString *const BASE_URL = @"http://139.162.178.174";
 
     if (self != nil) {
         [self networkMonitoring];
+        _adapter = [ServerAdapter new];
     }
 
     return self;
@@ -57,7 +59,9 @@ NSString *const BASE_URL = @"http://139.162.178.174";
     if (!_requestManager) {
         AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
         [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
         [manager.requestSerializer setTimeoutInterval:15];
         _requestManager = manager;
     }
@@ -138,26 +142,77 @@ NSString *const BASE_URL = @"http://139.162.178.174";
     [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
         NSLog(@"Succes");
-        
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
         failure(message);
         NSLog(@"Failure");
     }];
 }
 
-- (void)sendTransaction:(NSDictionary *)dictionary withSuccessHandler:(void(^)(id responseObject)) success andFailureHandler:(void(^)(NSString* message)) failure
-{
-    [self requestWithType:GET path:@"" andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+- (void)registerKey:(NSString *)keyString
+         identifier:(NSString *)identifier new:(BOOL)new
+ withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    success(nil);
+}
+
+- (void)registerKey:(NSString *)keyString
+                new:(BOOL)new withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError *error, NSString* message))failure{
+    success(nil);
+}
+
+- (void)sendToAddress:(NSString *)key
+   withSuccessHandler:(void(^)(id responseObject))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    success(nil);
+}
+
+#pragma mark - Send Transactions
+
+- (void)sendTransactionWithParam:(NSDictionary *)param
+              withSuccessHandler:(void(^)(id responseObject))success
+               andFailureHandler:(void(^)(NSString* message)) failure{
+    
+    [self requestWithType:POST path:@"send-raw-transaction" andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(nil);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(message);
+    }];
+
+}
+
+
+- (void)getUnspentOutputsForAdreses:(NSArray*) addresses
+                         isAdaptive:(BOOL) adaptive
+                     successHandler:(void(^)(id responseObject))success
+                  andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    
+    NSMutableDictionary* param;
+    NSString* pathString;
+    __weak __typeof(self)weakSelf = self;
+    
+    if (addresses.count == 1) {
+        pathString = [NSString stringWithFormat:@"outputs/unspent/%@",addresses[0]];
+    } else {
+        pathString = @"outputs/unspent";
+        param = @{}.mutableCopy;
+        [param setObject:addresses forKey:@"addresses[]"];
+    }
+    
+    [self requestWithType:GET path:pathString andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
+        responseObject = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
         success(responseObject);
         NSLog(@"Succes");
-        
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
-        failure(message);
+        failure(error,message);
         NSLog(@"Failure");
     }];
 }
 
+#pragma mark - News
+
 - (void)getNews:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    
     [self requestWithType:GET path:@"news/en" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
         NSLog(@"Succes");
@@ -167,6 +222,47 @@ NSString *const BASE_URL = @"http://139.162.178.174";
         NSLog(@"Failure");
     }];
 }
+
+#pragma mark - History
+
+- (void)getHistoryWithParam:(NSDictionary*) param
+               andAddresses:(NSArray*) addresses
+             successHandler:(void(^)(id responseObject))success
+          andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+//    /history/{address}/{limit}/{offset}
+    NSMutableDictionary* adressesForParam;
+    NSString* pathString;
+    __weak __typeof(self)weakSelf = self;
+    if (addresses) {
+        pathString = [NSString stringWithFormat:@"%@/%@/%@",@"history",param[@"limit"],param[@"offset"]];
+        adressesForParam = @{}.mutableCopy;
+        [adressesForParam setObject:addresses forKey:@"addresses[]"];
+    }else {
+        pathString = [NSString stringWithFormat:@"%@/%@/%@/%@",@"history",param[@"address"],param[@"limit"],param[@"offset"]];
+    }
+
+    [self requestWithType:GET path:pathString andParams:adressesForParam withSuccessHandler:^(id  _Nonnull responseObject) {
+        responseObject = [weakSelf.adapter adaptiveDataForHistory:responseObject];
+        success(responseObject);
+        NSLog(@"Succes");
+    } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
+        failure(error,message);
+        NSLog(@"Failure");
+    }];
+}
+
+#pragma mark - Info
+
+- (void)getBlockchainInfo:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    [self requestWithType:GET path:@"blockchain/info" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+        NSLog(@"Succes");
+    } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
+        failure(error,message);
+        NSLog(@"Failure");
+    }];
+}
+
 
 
 @end

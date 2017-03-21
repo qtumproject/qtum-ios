@@ -15,7 +15,7 @@
 #pragma mark - Balance
 + (void)getBalanceForAddreses:(NSArray *)keyAddreses withSuccessHandler:(void(^)(double responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
-    [[RPCRequestManager sharedInstance] getListUnspentForKeys:keyAddreses withSuccessHandler:^(id responseObject) {
+    [[WalletManager sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
         success([[self class] calculateBalance:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
@@ -49,7 +49,7 @@
 
 + (void)getunspentOutputs:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
-    [[RPCRequestManager sharedInstance] getListUnspentForKeys:keyAddreses withSuccessHandler:^(id responseObject) {
+    [[WalletManager sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
         success([[self class] createArray:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
@@ -60,20 +60,36 @@
 {
     NSMutableArray* outputs = [NSMutableArray array];
     
+//    for (NSDictionary* item in responseObject) {
+//        BTCTransactionOutput* txout = [[BTCTransactionOutput alloc] init];
+//        
+//        txout.value = [self convertValueToAmount:[item[@"amount"] doubleValue]];
+//        txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"scriptPubKey"])];
+//        txout.index = [item[@"vout"] intValue];
+//        txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
+//        txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"txid"]]));
+//        
+//        [outputs addObject:txout];
+//        
+//        // Dictionary for outputs and address
+////        NSDictionary *dictionary = @{@"tout" : txout, @"address" : item[@"address"]};
+////        [outputs addObject:dictionary];
+//    }
+    
     for (NSDictionary* item in responseObject) {
         BTCTransactionOutput* txout = [[BTCTransactionOutput alloc] init];
         
         txout.value = [self convertValueToAmount:[item[@"amount"] doubleValue]];
-        txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"scriptPubKey"])];
+        txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"txout_scriptPubKey"])];
         txout.index = [item[@"vout"] intValue];
         txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
-        txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"txid"]]));
+        txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"tx_hash"]]));
         
         [outputs addObject:txout];
         
         // Dictionary for outputs and address
-//        NSDictionary *dictionary = @{@"tout" : txout, @"address" : item[@"address"]};
-//        [outputs addObject:dictionary];
+        //        NSDictionary *dictionary = @{@"tout" : txout, @"address" : item[@"address"]};
+        //        [outputs addObject:dictionary];
     }
     
     return outputs;
@@ -98,7 +114,7 @@
 + (void)getHistoryForAddresses:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
     __weak typeof(self) weakSelf = self;
-    [[RPCRequestManager sharedInstance] getHistory:^(id responseObject) {
+    [[WalletManager sharedInstance].requestManager getHistoryWithParam:@{} andAddresses:keyAddreses successHandler:^(id responseObject) {
         NSLog(@"%@", responseObject);
         success([weakSelf createHistoryElements:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
@@ -161,7 +177,9 @@
 {
     NSMutableArray *array = [NSMutableArray new];
     for (BTCKey *key in [[WalletManager sharedInstance].getCurrentWallet getAllKeys]) {
-        [array addObject:key.address.string];
+        if (key.address.string) {
+            [array addObject:key.address.string];
+        }
     }
     
     return [NSArray arrayWithArray:array];

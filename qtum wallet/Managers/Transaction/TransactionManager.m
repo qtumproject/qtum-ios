@@ -49,11 +49,12 @@ static double FEE = 10000;
     NSError *error;
     [self transaction:&error success:^(BTCTransaction *tx) {
         if (tx) {
-            [[RPCRequestManager sharedInstance] sendTransaction:tx.hexWithTime withSuccessHandler:^(id responseObject) {
+            [[WalletManager sharedInstance].requestManager sendTransactionWithParam:@{@"data":tx.hexWithTime,@"allowHighFee":@1} withSuccessHandler:^(id responseObject) {
                 success();
-            } andFailureHandler:^(NSError *error, NSString *message) {
+            } andFailureHandler:^(NSString *message) {
                 failure(@"Can not send transaction");
             }];
+
         }else{
             failure(@"Can not create transaction");
         }
@@ -110,7 +111,7 @@ static double FEE = 10000;
     }];
     
     NSMutableArray* txouts = [[NSMutableArray alloc] init];
-    long total = 0;
+    NSInteger total = 0;
     
     for (BTCTransactionOutput* txout in utxos) {
         if ([txout.script isPayToPublicKeyHashScript]) {

@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Requestable.h"
 
 extern NSString *const TCAAuthFailed;
 
+@interface RequestManager : NSObject <Requestable>
 
-@interface RequestManager : NSObject
-
-+ (instancetype)sharedInstance;
+@property (strong,nonatomic,readonly) id <RequestManagerAdapter> adapter;
 
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
 + (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
@@ -22,13 +22,5 @@ extern NSString *const TCAAuthFailed;
 //Methods
 - (void)getBalanceByKey:(NSString *)publicKey withSuccessHandler:(void(^)(id responseObject)) success andFailureHandler:(void(^)(NSString* message)) failure;
 - (void)sendTransaction:(NSDictionary *)dictionary withSuccessHandler:(void(^)(id responseObject)) success andFailureHandler:(void(^)(NSString* message)) failure;
-
-//Get History
-- (void)getHistory:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
-
-//Get News
-- (void)getNews:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
-
-
 
 @end

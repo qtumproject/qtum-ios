@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "AuthCoordinator.h"
 #import "LoginCoordinator.h"
+#import "RemoutNotificationManager.h"
 
 @protocol ApplicationCoordinatorDelegate <NSObject>
 
@@ -22,12 +23,12 @@
 @interface ApplicationCoordinator : BaseCoordinator <Coordinatorable, ApplicationCoordinatorDelegate>
 
 @property (strong,nonatomic) NSUserDefaults* defaults;
+@property (strong,nonatomic,readonly) RemoutNotificationManager* notificationManager;
 
 -(void)start;
 //flows
 -(void)startAuthFlow;
 -(void)startMainFlow;
--(void)startStartFlowWithAutorization:(BOOL) flag;
 -(void)startWalletFlow;
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)startChangePinFlow;

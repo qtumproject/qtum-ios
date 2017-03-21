@@ -39,6 +39,7 @@ NSString const *USER_PIN_KEY = @"PIN";
     self = [super init];
     if (self != nil) {
         [self load];
+        _requestManager = [RequestManager sharedInstance];
     }
     return self;
 }
@@ -126,7 +127,7 @@ NSString const *USER_PIN_KEY = @"PIN";
         
         dispatch_group_enter(self.registerGroup);
         NSLog(@"Enter -- > %@",key.address.string);
-        [[RPCRequestManager sharedInstance] registerKey:key.address.string identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
+        [[WalletManager sharedInstance].requestManager registerKey:key.address.string identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
             dispatch_group_leave(weakSelf.registerGroup);
             NSLog(@"Success");
         } andFailureHandler:^(NSError *error, NSString *message) {

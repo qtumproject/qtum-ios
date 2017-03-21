@@ -149,11 +149,11 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 - (IBAction)actiomSendMoney:(id)sender {
     self.isPaymentInProcess = YES;
     self.storedPaymendMessage = self.activeConversation.selectedMessage;
-    [self actionSendFinalizedMessage:nil withText:[NSString stringWithFormat:@"transfer me %@ QTUM",[self getAmountFromMessage:self.storedPaymendMessage] > 0 ? [self getAmountFromMessage:self.storedPaymendMessage] : @"some"] isAgree:YES];
+    [self actionSendFinalizedMessage:nil withText:[NSString stringWithFormat:@"transfer me %@ QTUM",[self getAmountFromMessage:self.storedPaymendMessage].length > 0 ? [self getAmountFromMessage:self.storedPaymendMessage] : @"some"] isAgree:YES];
 }
 
 - (IBAction)actionCancelSendMoney:(id)sender {
-    [self actionSendFinalizedMessage:nil withText:[NSString stringWithFormat:@"transfer me %@ QTUM",[self getAmountFromMessage:self.activeConversation.selectedMessage] > 0 ? [self getAmountFromMessage:self.activeConversation.selectedMessage] : @"some"] isAgree:NO];
+    [self actionSendFinalizedMessage:nil withText:[NSString stringWithFormat:@"transfer me %@ QTUM",[self getAmountFromMessage:self.activeConversation.selectedMessage].length > 0 ? [self getAmountFromMessage:self.activeConversation.selectedMessage] : @"some"] isAgree:NO];
 }
 
 -(void)handleSendinMessage:(MSMessage*)message{
@@ -175,7 +175,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     NSString* statusString;
     if (final && succes) {
         backView.colorType = Green;
-        statusString = @"Waiting...";
+        statusString = @"Wait...";
     } else if(final){
         backView.colorType = Pink;
         statusString = @"Canceled";
@@ -187,7 +187,8 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     UIImageView* waves = [[UIImageView alloc]initWithFrame:CGRectMake(0, 40, 300, 80)];
     waves.image = [UIImage imageNamed:@"waves"];
     
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, backView.bounds.size.width, 30)];
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, backView.bounds.size.width, 50)];
+    label.font = [UIFont fontWithName:label.font.fontName size:18];
     label.text = text;//;
     [label sizeToFit];
     //label.frame = CGRectMake(backView.frame.size.width/2 - label.frame.size.width/2, 75, 150, 150);
@@ -195,9 +196,11 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     label.textAlignment = NSTextAlignmentLeft;
     
     UILabel* statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, backView.frame.size.width - 20, 20)];
+    statusLabel.font = [UIFont fontWithName:label.font.fontName size:15];
     statusLabel.text = statusString;
     statusLabel.textColor = [UIColor whiteColor];
     statusLabel.textAlignment = NSTextAlignmentRight;
+
     
     [backView addSubview:statusLabel];
     [backView addSubview:label];
