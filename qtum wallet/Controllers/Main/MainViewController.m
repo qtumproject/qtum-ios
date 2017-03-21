@@ -197,10 +197,9 @@
     [self performSegueWithIdentifier:@"MaintToRecieve" sender:self];
 }
 
-- (void)showNextVC
-{
-#warning !!!!!
-    [self performSegueWithIdentifier:@"FromMainToNewPayment" sender:self];
+- (void)showNextVC {
+#warning TODO - swiching tabs
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma merk - Seque

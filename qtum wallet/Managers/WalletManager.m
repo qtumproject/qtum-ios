@@ -39,7 +39,7 @@ NSString const *USER_PIN_KEY = @"PIN";
     self = [super init];
     if (self != nil) {
         [self load];
-        _requestManager = [RequestManager sharedInstance];
+        _requestManager = [RPCRequestManager sharedInstance];
     }
     return self;
 }
