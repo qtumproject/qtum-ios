@@ -58,7 +58,9 @@
     self.shareButton.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
-    [QRCodeManager createQRCodeFromPublicAddress:self.key.address.string andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
+    NSString* keyString = [AppSettings sharedInstance].isMainNet ? self.key.address.string : self.key.addressTestnet.string;
+
+    [QRCodeManager createQRCodeFromPublicAddress:keyString andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
         weakSelf.shareButton.enabled = YES;
         weakSelf.walletAdressCopyButton.enabled = YES;
@@ -122,7 +124,8 @@
 - (IBAction)copeButtonWasPressed:(id)sender
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    [pb setString:self.key.address.string];
+    NSString* keyString = [AppSettings sharedInstance].isMainNet ? self.key.address.string : self.key.addressTestnet.string;
+    [pb setString:keyString];
     
     [self showAlertWithTitle:nil mesage:@"Address copied" andActions:nil];
 }

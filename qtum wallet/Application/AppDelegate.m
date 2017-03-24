@@ -8,9 +8,7 @@
 
 
 #import "AppDelegate.h"
-#import "ApplicationCoordinator.h"
 #import "RPCRequestManager.h"
-#import "NSString+Extension.h"
 #import "Appearance.h"
 
 
@@ -22,15 +20,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-
 //     Remove all wallets
 //    [[WalletManager sharedInstance] removeAllWallets];
 
     [[ApplicationCoordinator sharedInstance] start];
     [Appearance setUp];
+    [[AppSettings sharedInstance] setup];
 
-    
 //     Send money for our wallet
 //    if ([[WalletManager sharedInstance] haveWallets]) {
 //        [[WalletManager sharedInstance].requestManager sendToAddress:[[[WalletManager sharedInstance] getCurrentWallet] getRandomKey].address.string withSuccessHandler:^(id responseObject) {

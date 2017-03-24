@@ -216,5 +216,13 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     success(nil);
 }
 
+#pragma mark - BitCode
+
+- (void)generateTokenBitcodeWithDict:(NSDictionary *) param
+                  withSuccessHandler:(void(^)(id responseObject))success
+                   andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    
+    failure(nil, nil);
+}
 
 @end

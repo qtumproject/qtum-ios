@@ -177,8 +177,9 @@
 {
     NSMutableArray *array = [NSMutableArray new];
     for (BTCKey *key in [[WalletManager sharedInstance].getCurrentWallet getAllKeys]) {
-        if (key.address.string) {
-            [array addObject:key.address.string];
+        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        if (keyString) {
+            [array addObject:keyString];
         }
     }
     

@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     PUT
 };
 
-NSString *const BASE_URL = @"http://139.162.178.174";
+NSString *const BASE_URL = @"http://163.172.68.103:5931";
 
 @interface RequestManager()
 
@@ -167,7 +167,6 @@ NSString *const BASE_URL = @"http://139.162.178.174";
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(message);
     }];
-
 }
 
 
@@ -249,6 +248,19 @@ NSString *const BASE_URL = @"http://139.162.178.174";
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
         failure(error,message);
         NSLog(@"Failure");
+    }];
+}
+
+#pragma mark - BitCode
+
+- (void)generateTokenBitcodeWithDict:(NSDictionary *) param
+                  withSuccessHandler:(void(^)(id responseObject))success
+                   andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    
+    [self requestWithType:POST path:@"contracts/generate-token-bytecode" andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
     }];
 }
 

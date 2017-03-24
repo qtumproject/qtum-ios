@@ -62,6 +62,11 @@
 //- (void)getBlockchainInfo:(void(^)(id responseObject))success
 //        andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
+// Generate Token Bitcoin
+
+- (void)generateTokenBitcodeWithDict:(NSDictionary *) dict
+                  withSuccessHandler:(void(^)(id responseObject))success
+                   andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 
 @end

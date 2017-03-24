@@ -126,7 +126,28 @@
 }
 
 -(void)createStepFourFinishDidPressed{
-    [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
+//    {
+//        "initialSupply": uint256,
+//        "tokenName": String
+//        "decimalUnits": uint8
+//        "tokenSymbol": String
+//    }
+    [[WalletManager sharedInstance].requestManager generateTokenBitcodeWithDict:@{@"initialSupply" : self.tokenSupply,
+                                                                                  @"tokenName" : self.tokenName,
+                                                                                  @"decimalUnits" : self.tokenUnits,
+                                                                                  @"tokenSymbol" : self.tokenSymbol
+                                                                                  }
+                                                             withSuccessHandler:^(id responseObject) {
+        NSLog(@"  -->  %@",responseObject);
+        [[WalletManager sharedInstance].requestManager sendTransactionWithParam:@{@"data" : responseObject[@"bytecode"],@"allowHighFee":@1} withSuccessHandler:^(id responseObject) {
+            NSLog(@"%@", responseObject);
+        } andFailureHandler:^(NSString *message) {
+            NSLog(@"%@", message);
+        }];
+        [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        NSLog(@"Failed Request");
+    }];
 }
 
 @end

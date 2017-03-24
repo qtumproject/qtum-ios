@@ -96,7 +96,8 @@ NSInteger const USERS_KEYS_COUNT = 100;
 static NSString* adressKey = @"adress";
 
 -(void)storeLastAdreesKey:(BTCKey*) btcKey{
-    [[[ApplicationCoordinator sharedInstance] defaults] setObject:btcKey.address.string forKey:adressKey];
+    NSString* keyString = [AppSettings sharedInstance].isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
+    [[[ApplicationCoordinator sharedInstance] defaults] setObject:keyString forKey:adressKey];
 }
 
 - (BTCKey *)getKeyAtIndex:(NSUInteger)index;

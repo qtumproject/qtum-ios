@@ -37,7 +37,8 @@
     [super viewDidAppear:animated];
     
     if (self.key && !self.publicKeyImageView.image) {
-        self.keyString = self.isPrivate ? self.key.WIF : self.key.address.string;
+        NSString* keyString = [AppSettings sharedInstance].isMainNet ? self.key.address.string : self.key.addressTestnet.string;
+        self.keyString = self.isPrivate ? self.key.WIF : keyString;
         
         [self createQRCode];
         [self copyAddressAndShowMessage];
