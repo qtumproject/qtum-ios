@@ -119,6 +119,15 @@ static NSString* adressKey = @"adress";
     return [self.seedWords componentsJoinedByString:@" "];
 }
 
+- (NSArray <NSString*>*)getAllKeysAdreeses{
+    NSMutableArray *allKeysString = [NSMutableArray new];
+    for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
+        NSString* keyString = [AppSettings sharedInstance].isMainNet ? [self.keyChain keyAtIndex:(uint)i].address.string : [self.keyChain keyAtIndex:(uint)i].addressTestnet.string;
+        [allKeysString addObject:keyString];
+    }
+    return allKeysString;
+}
+
 #pragma mark - Private Methods
 
 - (BTCKeychain *)createKeychain

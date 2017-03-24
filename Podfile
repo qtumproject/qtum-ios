@@ -9,5 +9,7 @@ target 'qtum wallet' do
 	pod 'AFJSONRPCClient'
 	pod 'SVProgressHUD'
 	pod 'MTBBarcodeScanner', '~> 2.0.3'
+	pod 'SIOSocket', '~> 0.2.0'
+
 end
 

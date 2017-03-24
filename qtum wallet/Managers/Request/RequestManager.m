@@ -10,6 +10,7 @@
 #import "RequestManager.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import "ServerAdapter.h"
+#import "SocketManager.h"
 
 typedef NS_ENUM(NSInteger, RequestType){
     POST,
@@ -24,6 +25,8 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 
 @property (strong,nonatomic)AFHTTPRequestOperationManager* requestManager;
 @property (strong,nonatomic) id <RequestManagerAdapter> adapter;
+@property (strong,nonatomic) SocketManager *socketManager;
+
 
 @end
 
@@ -46,6 +49,12 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     if (self != nil) {
         [self networkMonitoring];
         _adapter = [ServerAdapter new];
+//        _socketManager = [SocketManager new];
+//        [_socketManager startWithHandler:^{
+//            [_socketManager subscripeToUpdateAdresses:[[WalletManager sharedInstance] getCurrentWallet].getAllKeysAdreeses withCompletession:^(NSArray *data) {
+//                NSLog(@"Updated");
+//            }];
+//        }];
     }
 
     return self;

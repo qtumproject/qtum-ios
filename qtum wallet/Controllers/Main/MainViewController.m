@@ -81,8 +81,8 @@
 }
 
 -(void)configAdressLabel{
-    
-    self.adressLabel.text = [WalletManager sharedInstance].getCurrentWallet.getRandomKey.address.string;
+    NSString* keyString = [AppSettings sharedInstance].isMainNet ? [WalletManager sharedInstance].getCurrentWallet.getRandomKey.address.string : [WalletManager sharedInstance].getCurrentWallet.getRandomKey.addressTestnet.string;
+    self.adressLabel.text = keyString;
 }
 
 -(void)configTableView{

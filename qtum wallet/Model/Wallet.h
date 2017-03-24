@@ -32,5 +32,7 @@
 - (BTCKey *)getKeyAtIndex:(NSUInteger)index;
 - (NSArray *)getAllKeys;
 - (NSString *)getWorldsString;
+- (NSArray <NSString*>*)getAllKeysAdreeses;
+
 
 @end
