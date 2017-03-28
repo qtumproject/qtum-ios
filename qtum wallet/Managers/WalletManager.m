@@ -113,7 +113,6 @@ NSString const *USER_PIN_KEY = @"PIN";
 
 #pragma mark - Private methods
 
-// Only for RPC
 - (void)registerWalletInNode:(Wallet *)wallet withSuccessHandler:(void(^)())success andFailureHandler:(void(^)())failure
 {
     self.registerGroup = dispatch_group_create();
@@ -126,9 +125,10 @@ NSString const *USER_PIN_KEY = @"PIN";
         BTCKey *key = [wallet getKeyAtIndex:i];
         
         dispatch_group_enter(self.registerGroup);
-        NSLog(@"Enter -- > %@",key.address.string);
         
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        NSLog(@"Enter -- > %@",keyString);
+
         [[WalletManager sharedInstance].requestManager registerKey:keyString identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
             dispatch_group_leave(weakSelf.registerGroup);
             NSLog(@"Success");

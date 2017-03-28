@@ -8,12 +8,13 @@
 
 #import "SocketManager.h"
 #import <SIOSocket/SIOSocket.h>
+@import SocketIO;
 
-static NSString *BASE_URL = @"http://192.168.1.41:3000/";
+static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 
 @interface SocketManager ()
 
-@property (strong, nonatomic) SIOSocket* currentSocket;
+@property (strong, nonatomic) SocketIOClient* currentSocket;
 @property (assign,nonatomic) ConnectionStatus status;
 @property (nonatomic, copy) void (^onUpdateAddresses)(NSArray*);
 
@@ -32,31 +33,43 @@ static NSString *BASE_URL = @"http://192.168.1.41:3000/";
 
 -(void)startWithHandler:(void(^)()) handler{
     __weak __typeof(self)weakSelf = self;
-    [SIOSocket socketWithHost:BASE_URL reconnectAutomatically:YES attemptLimit:-1 withDelay:2 maximumDelay:5 timeout:400 response:^(SIOSocket *socket) {
-        weakSelf.currentSocket = socket;
-        weakSelf.currentSocket.onConnect = ^(){
-            weakSelf.status = Connected;
-            handler();
-        };
+//    [SIOSocket socketWithHost:BASE_URL reconnectAutomatically:YES attemptLimit:-1 withDelay:2 maximumDelay:5 timeout:400 response:^(SIOSocket *socket) {
+//        weakSelf.currentSocket = socket;
+//        weakSelf.currentSocket.onConnect = ^(){
+//            weakSelf.status = Connected;
+//            handler();
+//        };
+//    }];
+    
+    NSURL* url = [[NSURL alloc] initWithString:BASE_URL];
+    self.currentSocket = [[SocketIOClient alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
+    
+    [self.currentSocket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        weakSelf.status = Connected;
+        handler();
     }];
+
+    
+    [self.currentSocket connect];
 }
 
 -(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler{
     
 //    [self.currentSocket emit:@"userConnectUpdate" args:@[@"quantumd/addressbalance",@[@"mh6LD7E5rHbgeTY1EuSf6b1fJKSjVzqaP8"]]];
     
-    [self.currentSocket on:@"userList" callback:^(SIOParameterArray *args) {
-        NSLog(@"Updated %@",args);
+    
+    [self.currentSocket on:@"quantumd/test" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        NSLog(@"%@",data);
     }];
     
-    [self.currentSocket on:@"userConnectUpdate" callback:^(SIOParameterArray *args) {
-        NSLog(@"Updated %@",args);
-    }];
+    [self.currentSocket emit:@"subscribe" with:@[@"quantumd/addressbalance",addresses]];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.currentSocket emit:@"connectUser" args:@[@"mh6LD7E5rHbgeTY1EuSf6b1fJKSjVzqaP8"]];
-    });
-
+    [self.currentSocket onAny:^(SocketAnyEvent * _Nonnull event) {
+        NSLog(@"%@",event);
+    }];
+    [self.currentSocket on:@"quantumd/addressbalance" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        NSLog(@"%@",data);
+    }];
 
 }
 

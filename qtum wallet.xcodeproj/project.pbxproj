@@ -79,6 +79,7 @@
 		B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */; };
 		B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */; };
 		B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5ED1E16403B004D231B /* WalletNameViewController.m */; };
+		B3C4553E1E89596A00420D7C /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3C4553D1E89596A00420D7C /* SocketIO.framework */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -305,6 +306,7 @@
 		B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-BOLD.OTF"; sourceTree = SOURCE_ROOT; };
 		B386F5EC1E16403B004D231B /* WalletNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletNameViewController.h; sourceTree = "<group>"; };
 		B386F5ED1E16403B004D231B /* WalletNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletNameViewController.m; sourceTree = "<group>"; };
+		B3C4553D1E89596A00420D7C /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = Carthage/Build/iOS/SocketIO.framework; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 			files = (
 				E7FD365C1DC7360400748177 /* Security.framework in Frameworks */,
 				0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */,
+				B3C4553E1E89596A00420D7C /* SocketIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,6 +1144,7 @@
 		F94C279886F936AB7B4DA6F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3C4553D1E89596A00420D7C /* SocketIO.framework */,
 				E71AF24C1E0178C50068595B /* libCoreBitcoin.a */,
 				E7FD365B1DC7360400748177 /* Security.framework */,
 				0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */,
@@ -1198,6 +1202,7 @@
 				094AC2E300B2D4BEF04A6420 /* [CP] Embed Pods Frameworks */,
 				BBDAA643D3F5A61C3D80AB51 /* [CP] Copy Pods Resources */,
 				B33EAF9B1E5EC263006125F3 /* Embed App Extensions */,
+				B3C4553C1E8958D900420D7C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1332,6 +1337,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B3C4553C1E8958D900420D7C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SocketIO.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 		BBDAA643D3F5A61C3D80AB51 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1359,7 +1378,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1538,6 +1557,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_ENTITLEMENTS = iMessageExtension/iMessageExtension.entitlements;
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1553,6 +1573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_ENTITLEMENTS = iMessageExtension/iMessageExtension.entitlements;
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1591,6 +1612,7 @@
 		E7FD364D1DC4D07E00748177 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1613,6 +1635,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1639,6 +1662,7 @@
 		E7FD364E1DC4D07E00748177 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1661,6 +1685,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1685,6 +1710,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qtum wallet/Application/PrefixHeader.pch";
 				INFOPLIST_FILE = "qtum wallet/Application/Info.plist";
@@ -1702,6 +1732,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qtum wallet/Application/PrefixHeader.pch";
 				INFOPLIST_FILE = "qtum wallet/Application/Info.plist";

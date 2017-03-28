@@ -43,7 +43,8 @@
     if (!self.key) {
         self.key = [[WalletManager sharedInstance].getCurrentWallet getLastRandomKeyOrRandomKey];
         [self createQRCode];
-        self.publicAddressLabel.text = self.key.address.string;
+        NSString* keyString = [AppSettings sharedInstance].isMainNet ? self.key.address.string : self.key.addressTestnet.string;
+        self.publicAddressLabel.text = keyString;
     }
 }
 

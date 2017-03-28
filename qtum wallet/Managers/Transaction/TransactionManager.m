@@ -179,7 +179,7 @@ static double FEE = 10000;
         BTCKey *key;
         for (BTCKey *someKey in self.keys) {
             NSString* keyString = [AppSettings sharedInstance].isMainNet ? someKey.address.string : someKey.addressTestnet.string;
-
+            NSString* txoutKeyString = [AppSettings sharedInstance].isMainNet ? txout.script.standardAddress.string : txout.script.standardAddress.string;
             if ([keyString isEqualToString:txout.script.standardAddress.string]) {
                 key = someKey;
                 break;

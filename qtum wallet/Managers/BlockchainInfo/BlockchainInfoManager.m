@@ -60,37 +60,37 @@
 {
     NSMutableArray* outputs = [NSMutableArray array];
     
-    for (NSDictionary* item in responseObject) {
-        BTCTransactionOutput* txout = [[BTCTransactionOutput alloc] init];
-        
-        txout.value = [self convertValueToAmount:[item[@"amount"] doubleValue]];
-        txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"scriptPubKey"])];
-        txout.index = [item[@"vout"] intValue];
-        txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
-        txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"txid"]]));
-        
-        [outputs addObject:txout];
-        
-        // Dictionary for outputs and address
-//        NSDictionary *dictionary = @{@"tout" : txout, @"address" : item[@"address"]};
-//        [outputs addObject:dictionary];
-    }
-    
 //    for (NSDictionary* item in responseObject) {
 //        BTCTransactionOutput* txout = [[BTCTransactionOutput alloc] init];
 //        
 //        txout.value = [self convertValueToAmount:[item[@"amount"] doubleValue]];
-//        txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"txout_scriptPubKey"])];
+//        txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"scriptPubKey"])];
 //        txout.index = [item[@"vout"] intValue];
 //        txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
-//        txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"tx_hash"]]));
+//        txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"txid"]]));
 //        
 //        [outputs addObject:txout];
 //        
 //        // Dictionary for outputs and address
-//        //        NSDictionary *dictionary = @{@"tout" : txout, @"address" : item[@"address"]};
-//        //        [outputs addObject:dictionary];
+////        NSDictionary *dictionary = @{@"tout" : txout, @"address" : item[@"address"]};
+////        [outputs addObject:dictionary];
 //    }
+    
+    for (NSDictionary* item in responseObject) {
+        BTCTransactionOutput* txout = [[BTCTransactionOutput alloc] init];
+        
+        txout.value = [self convertValueToAmount:[item[@"amount"] doubleValue]];
+        txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"txout_scriptPubKey"])];
+        txout.index = [item[@"vout"] intValue];
+        txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
+        txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"tx_hash"]]));
+        
+        [outputs addObject:txout];
+        
+        // Dictionary for outputs and address
+        //        NSDictionary *dictionary = @{@"tout" : txout, @"address" : item[@"address"]};
+        //        [outputs addObject:dictionary];
+    }
     
     return outputs;
 }
