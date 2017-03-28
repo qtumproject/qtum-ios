@@ -145,7 +145,7 @@
         element.amount = dictionary[@"amount"];
         element.address = dictionary[@"address"];
         element.dateNumber = dictionary[@"time"];
-        element.send = ![self checkIsMineAddress:element.address];
+        element.send = ![self checkIsMineAddress:dictionary];
         
         [array addObject:element];
     }
@@ -153,17 +153,24 @@
     return  array;
 }
 
-+ (BOOL)checkIsMineAddress:(NSString *)address
++ (BOOL)checkIsMineAddress:(NSDictionary *)dictionary
 {
-    NSArray *mineAddresses = [self createAllKeysArray];
+    NSSet* mineAddessesSet = [NSSet setWithArray:[self createAllKeysArray]];
+    NSMutableSet* outAddressesSet = [NSMutableSet new];
+    NSMutableSet* inAddressesSet = [NSMutableSet new];
     
-    for (NSString *mineAddress in mineAddresses) {
-        if ([address isEqualToString:mineAddress]) {
-            return YES;
-        }
+    for (NSDictionary* inObject in dictionary[@"vin"]) {
+        [inAddressesSet addObject:inObject[@"address"]];
     }
     
-    return NO;
+//    for (NSDictionary* outObject in dictionary[@"vout"]) {
+//        [inAddressesSet addObject:outObject[@"address"]];
+//    }
+    
+    if ([mineAddessesSet intersectsSet:inAddressesSet]) {
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Methods

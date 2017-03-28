@@ -138,9 +138,15 @@
 }
 
 -(void)setupNavigationBarPerformance{
-    BOOL flag = self.quickInfoBoard.frame.origin.y <= self.customNavigationBar.frame.size.height;
-    self.customNavigationBar.backgroundColor = flag ? [UIColor colorWithRed:54/255. green:85/255. blue:200/255. alpha:1] : [UIColor clearColor];
-    self.shortInfoView.hidden = !flag;
+    BOOL flag = self.quickInfoBoard.frame.origin.y <= self.customNavigationBar.frame.size.height + 50;
+    CGFloat customNavigationBarAlpha;
+    if (flag) {
+        customNavigationBarAlpha =  1 - (self.quickInfoBoard.frame.origin.y - self.customNavigationBar.frame.size.height) / 50;
+    } else {
+        customNavigationBarAlpha =  0;
+    }
+    self.customNavigationBar.backgroundColor = [UIColor colorWithRed:54/255. green:85/255. blue:200/255. alpha:customNavigationBarAlpha];
+    self.shortInfoView.alpha = customNavigationBarAlpha;
 }
 
 #pragma mark - Methods

@@ -22,8 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
-@property (strong,nonatomic) NSString* adressFomMessage;
-@property (strong,nonatomic) NSString* valueFromMessage;
+@property (strong,nonatomic) NSString* adress;
+@property (strong,nonatomic) NSString* amount;
 
 
 - (IBAction)backbuttonPressed:(id)sender;
@@ -60,15 +60,15 @@
 #pragma mark - Private Methods
 
 -(void)updateControls{
-    self.addressTextField.text = self.adressFomMessage;
-    self.amountTextField.text = self.valueFromMessage;
+    self.addressTextField.text = self.adress;
+    self.amountTextField.text = self.amount;
 }
 
 #pragma mark - iMessage
 
 -(void)setAdress:(NSString*)adress andValue:(NSString*)amount{
-    self.adressFomMessage = adress;
-    self.valueFromMessage = amount;
+    self.adress = adress;
+    self.amount = amount;
     [self updateControls];
 }
 
@@ -184,10 +184,10 @@
 
 #pragma mark - QRCodeViewControllerDelegate
 
-- (void)qrCodeScanned:(NSDictionary *)dictionary
-{
-    self.addressTextField.text = dictionary[PUBLIC_ADDRESS_STRING_KEY];
-    self.amountTextField.text = dictionary[AMOUNT_STRING_KEY];
+- (void)qrCodeScanned:(NSDictionary *)dictionary{
+    self.adress = dictionary[PUBLIC_ADDRESS_STRING_KEY];
+    self.amount = dictionary[AMOUNT_STRING_KEY];
+    [self updateControls];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
