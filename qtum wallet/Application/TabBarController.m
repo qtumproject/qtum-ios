@@ -69,6 +69,7 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
     return YES;
 }
+
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     if (self.selectedIndex == 0) {
         [self.coordinatorDelegate walletTabDidSelectedWithController:viewController];

@@ -50,12 +50,12 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     if (self != nil) {
         [self networkMonitoring];
         _adapter = [ServerAdapter new];
-        _socketManager = [SocketManager new];
-        [_socketManager startWithHandler:^{
-            [_socketManager subscripeToUpdateAdresses:[[WalletManager sharedInstance] getCurrentWallet].getAllKeysAdreeses withCompletession:^(NSArray *data) {
-                NSLog(@"Updated");
-            }];
-        }];
+//        _socketManager = [SocketManager new];
+//        [_socketManager startWithHandler:^{
+//            [_socketManager subscripeToUpdateAdresses:[[WalletManager sharedInstance] getCurrentWallet].getAllKeysAdreeses withCompletession:^(NSArray *data) {
+//                NSLog(@"Updated");
+//            }];
+//        }];
     }
 
     return self;

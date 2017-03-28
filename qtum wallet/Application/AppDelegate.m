@@ -22,10 +22,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //     Remove all wallets
 //    [[WalletManager sharedInstance] removeAllWallets];
-
+    [[AppSettings sharedInstance] setup];
     [[ApplicationCoordinator sharedInstance] start];
     [Appearance setUp];
-    [[AppSettings sharedInstance] setup];
 
 //     Send money for our wallet
 //    if ([[WalletManager sharedInstance] haveWallets]) {

@@ -40,15 +40,15 @@
     if (self.dictionary) {
         [self qrCodeScanned:self.dictionary];
     }
-    
     self.residueValueLabel.text = self.currentBalance;
-    
-    self.addressTextField.text = self.adressFomMessage;
-    self.amountTextField.text = self.valueFromMessage;
 }
 
-- (void)dealloc
-{
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self updateControls];
+}
+
+- (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -57,11 +57,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Private Methods
+
+-(void)updateControls{
+    self.addressTextField.text = self.adressFomMessage;
+    self.amountTextField.text = self.valueFromMessage;
+}
+
 #pragma mark - iMessage
 
 -(void)setAdress:(NSString*)adress andValue:(NSString*)amount{
     self.adressFomMessage = adress;
     self.valueFromMessage = amount;
+    [self updateControls];
 }
 
 #pragma mark - UITextFieldDelegate
