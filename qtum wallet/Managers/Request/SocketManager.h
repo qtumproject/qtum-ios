@@ -21,5 +21,7 @@ typedef NS_ENUM(NSInteger, ConnectionStatus) {
 
 -(void)startWithHandler:(void(^)()) handler;
 -(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler;
+-(void)stoptWithHandler:(void(^)()) handler;
+
 
 @end

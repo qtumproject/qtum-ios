@@ -225,4 +225,15 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     failure(nil, nil);
 }
 
+#pragma mark - Observing Socket
+
+
+- (void)startObservingAdresses:(NSArray*) addresses{
+    
+}
+
+- (void)stopObservingAdresses:(NSArray*) addresses{
+    
+}
+
 @end

@@ -11,26 +11,18 @@
 @implementation ServerAdapter
 
 - (id)adaptiveDataForHistory:(id) data{
-    return data;
-//    NSMutableArray* newDataArray = @[].mutableCopy;
-//    if ([data isKindOfClass:[NSArray class]]) {
-//        for (NSDictionary* dict in data) {
-//            NSMutableDictionary* newDataObject = [NSMutableDictionary dictionaryWithDictionary:dict];
-//            if (newDataObject[@"amount"] && ![newDataObject[@"amount"] isKindOfClass:[NSNull class]]) {
-//                NSInteger amount = [newDataObject[@"amount"] integerValue];
-//                // div to satoshi
-//                amount /= 100000000;
-//                [newDataObject setObject:@(amount) forKey:@"amount"];
-//            }
-//            [newDataArray addObject:[newDataObject copy]];
-//        }
-//    }
-//    
-//    return newDataArray.count > 0 ? newDataArray : data;
+    if ([data isKindOfClass:[NSArray class]]) {
+        return data;
+    } else if ([data[@"items"] isKindOfClass:[NSArray class]]){
+        return data[@"items"];
+    } else {
+        NSAssert([data isKindOfClass:[NSArray class]], @"data from history must constain array of items");
+    }
+    return nil;
 }
 
 - (id)adaptiveDataForOutputs:(id) data{
-    return [self adaptiveDataForHistory:data];
+    return data;
 }
 
 @end

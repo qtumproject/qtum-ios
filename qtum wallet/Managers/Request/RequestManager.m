@@ -50,12 +50,6 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     if (self != nil) {
         [self networkMonitoring];
         _adapter = [ServerAdapter new];
-//        _socketManager = [SocketManager new];
-//        [_socketManager startWithHandler:^{
-//            [_socketManager subscripeToUpdateAdresses:[[WalletManager sharedInstance] getCurrentWallet].getAllKeysAdreeses withCompletession:^(NSArray *data) {
-//                NSLog(@"Updated");
-//            }];
-//        }];
     }
 
     return self;
@@ -274,6 +268,22 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     }];
 }
 
+#pragma mark - Observing Socket
+
+
+- (void)startObservingAdresses:(NSArray*) addresses{
+    _socketManager = [SocketManager new];
+    [_socketManager startWithHandler:^{
+        [_socketManager subscripeToUpdateAdresses:[[WalletManager sharedInstance] getCurrentWallet].getAllKeysAdreeses withCompletession:^(NSArray *data) {
+            NSLog(@"Updated");
+        }];
+    }];
+}
+
+- (void)stopObservingAdresses:(NSArray*) addresses{
+    [_socketManager stoptWithHandler:nil];
+    _socketManager = nil;
+}
 
 
 @end

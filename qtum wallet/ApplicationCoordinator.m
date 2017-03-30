@@ -99,6 +99,7 @@
     [self removeDependency:coordinator];
     [self startMainFlow];
     [self.notificationManager registerForRemoutNotifications];
+    [[WalletManager sharedInstance] startObservingForAddresses];
 }
 
 -(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator{
@@ -110,6 +111,7 @@
     [self removeDependency:coordinator];
     [self startMainFlow];
     [self.notificationManager registerForRemoutNotifications];
+    [[WalletManager sharedInstance] startObservingForAddresses];
 }
 
 
@@ -150,6 +152,7 @@
     [self storeAuthorizedFlag:NO];
     [self.notificationManager removeToken];
     [self removeDependency:self.tabCoordinator];
+    [[WalletManager sharedInstance] stopObservingForAddresses];
 }
 
 -(void)startLoginFlow{

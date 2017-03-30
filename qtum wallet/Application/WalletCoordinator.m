@@ -11,6 +11,7 @@
 #import "WalletHistoryDelegateDataSource.h"
 #import "BlockchainInfoManager.h"
 #import "TabBarCoordinator.h"
+#import "HistoryDataStorage.h"
 
 
 @interface WalletCoordinator ()
@@ -44,17 +45,22 @@
 
 #pragma mark - WalletCoordinatorDelegate
 
--(void)refreshTableViewData{
-    __weak typeof(self) weakSelf = self;
-    [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
-        weakSelf.delegateDataSource.historyArray = responseObject;
-        [weakSelf.historyController reloadTableView];
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        [weakSelf.historyController failedToGetData];
-    }];
+-(void)refreshTableViewDataLocal:(BOOL) isLocal{
+    if (isLocal) {
+        self.delegateDataSource.historyArray = [[HistoryDataStorage sharedInstance] getHistory];
+        [self.historyController reloadTableView];
+    } else {
+        __weak typeof(self) weakSelf = self;
+        [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
+            weakSelf.delegateDataSource.historyArray = [responseObject copy];
+            [weakSelf.historyController reloadTableView];
+        } andFailureHandler:^(NSError *error, NSString *message) {
+            [weakSelf.historyController failedToGetData];
+        }];
+    }
 }
 
--(void)refreshTableViewBalance{
+-(void)refreshTableViewBalanceLocal:(BOOL) isLocal{
     __weak typeof(self) weakSelf = self;
     [BlockchainInfoManager getBalanceForAllAddresesWithSuccessHandler:^(double responseObject) {
         weakSelf.historyController.wigetBalanceLabel.text =

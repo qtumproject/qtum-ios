@@ -9,6 +9,7 @@
 #import "BlockchainInfoManager.h"
 #import "RPCRequestManager.h"
 #import "HistoryElement.h"
+#import "HistoryDataStorage.h"
 
 @implementation BlockchainInfoManager
 
@@ -115,10 +116,8 @@
 {
     __weak typeof(self) weakSelf = self;
     [[WalletManager sharedInstance].requestManager getHistoryWithParam:@{} andAddresses:keyAddreses successHandler:^(id responseObject) {
-        NSLog(@"%@", responseObject);
         success([weakSelf createHistoryElements:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
-        NSLog(@"%@", error);
         failure(error, message);
     }];
 }
@@ -150,13 +149,14 @@
         [array addObject:element];
     }
     
+    [[HistoryDataStorage sharedInstance] setHistory:array];
     return  array;
 }
 
 + (BOOL)checkIsMineAddress:(NSDictionary *)dictionary
 {
     NSSet* mineAddessesSet = [NSSet setWithArray:[self createAllKeysArray]];
-    NSMutableSet* outAddressesSet = [NSMutableSet new];
+//    NSMutableSet* outAddressesSet = [NSMutableSet new];
     NSMutableSet* inAddressesSet = [NSMutableSet new];
     
     for (NSDictionary* inObject in dictionary[@"vin"]) {

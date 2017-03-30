@@ -1,0 +1,26 @@
+//
+//  HistoryDataStorage.h
+//  qtum wallet
+//
+//  Created by Никита Федоренко on 30.03.17.
+//  Copyright © 2017 Designsters. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+@class HistoryElement;
+
+@interface HistoryDataStorage : NSObject
+
+- (NSArray<HistoryElement*>*)getHistory;
+- (void)setHistoryItem:(HistoryElement*) item;
+- (void)deleteHistoryItem:(HistoryElement*) item;
+- (HistoryElement*)updateHistoryItem:(HistoryElement*) item;
+- (void)setHistory:(NSArray<HistoryElement*>*) history;
+
+
++ (instancetype)sharedInstance;
+- (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
++ (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
++ (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
+
+@end

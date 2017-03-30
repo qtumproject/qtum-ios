@@ -53,6 +53,7 @@
     [self configTableView];
     [self configRefreshControl];
     [self configAdressLabel];
+    [self updateDataLocal:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +70,7 @@
     [super viewDidAppear:animated];
     
     // get all dataForScreen
-    [self refreshButtonWasPressed:nil];
+    [self updateDataLocal:YES];
 }
 
 #pragma mark - Configuration
@@ -93,16 +94,8 @@
     self.tableView.dataSource = self.delegateDataSource;
 }
 
-- (IBAction)refreshButtonWasPressed:(id)sender
-{
-    [self.refreshControl endRefreshing];
-    if (self.balanceLoaded && self.historyLoaded) {
-        [SVProgressHUD show];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            [self getBalance];
-            [self getHistory];
-        });
-    }
+- (IBAction)refreshButtonWasPressed:(id)sender{
+    [self updateDataLocal:NO];
 }
 
 
@@ -149,18 +142,34 @@
     self.shortInfoView.alpha = customNavigationBarAlpha;
 }
 
-#pragma mark - Methods
+#pragma mark - Private Methods
 
-- (void)getBalance
-{
-    self.balanceLoaded = NO;
-    [self.delegate refreshTableViewBalance];
+-(void)updateDataLocal:(BOOL)isLocal{
+    if (isLocal) {
+        [self getBalanceLocal:isLocal];
+        [self getHistoryLocal:isLocal];
+    } else {
+        [self.refreshControl endRefreshing];
+        if (self.balanceLoaded && self.historyLoaded) {
+            [SVProgressHUD show];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                [self getBalanceLocal:NO];
+                [self getHistoryLocal:NO];
+            });
+        }
+    }
 }
 
-- (void)getHistory
-{
+#pragma mark - Methods
+
+- (void)getBalanceLocal:(BOOL)isLocal{
+    self.balanceLoaded = NO;
+    [self.delegate refreshTableViewBalanceLocal:isLocal];
+}
+
+- (void)getHistoryLocal:(BOOL)isLocal{
     self.historyLoaded = NO;
-    [self.delegate refreshTableViewData];
+    [self.delegate refreshTableViewDataLocal:isLocal];
 }
 
 -(void)reloadTableView{

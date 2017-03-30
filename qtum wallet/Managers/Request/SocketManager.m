@@ -73,4 +73,8 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 
 }
 
+-(void)stoptWithHandler:(void(^)()) handler{
+    [self.currentSocket disconnect];
+}
+
 @end

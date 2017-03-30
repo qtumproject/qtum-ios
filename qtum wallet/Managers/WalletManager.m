@@ -153,8 +153,7 @@ NSString const *USER_PIN_KEY = @"PIN";
 
 #pragma mark - WalletDelegate
 
-- (void)walletDidChange:(id)wallet
-{
+- (void)walletDidChange:(id)wallet{
     [self save];
 }
 
@@ -192,6 +191,16 @@ NSString const *USER_PIN_KEY = @"PIN";
 {
     [[FXKeychain defaultKeychain] removeObjectForKey:USER_PIN_KEY];
     self.PIN = nil;
+}
+
+#pragma mark - Addresses Observing
+
+- (void)startObservingForAddresses{
+    [self.requestManager startObservingAdresses:[[self getCurrentWallet] getAllKeysAdreeses]];
+}
+
+- (void)stopObservingForAddresses{
+    [self.requestManager stopObservingAdresses:nil];
 }
 
 @end

@@ -69,4 +69,10 @@
                    andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 
+// Observing for events
+
+- (void)startObservingAdresses:(NSArray*) addresses;
+- (void)stopObservingAdresses:(NSArray*) addresses;
+
+
 @end
