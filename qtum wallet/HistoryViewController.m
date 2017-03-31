@@ -53,7 +53,7 @@
 - (void)getHistory
 {
     self.historyLoaded = NO;
-    [self.delegate refreshTableViewDataLocal:YES];
+    [self.delegate refreshTableViewDataLocal:NO];
 }
 
 #pragma mark - Public Methods

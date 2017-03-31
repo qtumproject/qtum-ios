@@ -234,9 +234,13 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     }
 
     [self requestWithType:GET path:pathString andParams:adressesForParam withSuccessHandler:^(id  _Nonnull responseObject) {
-        responseObject = [weakSelf.adapter adaptiveDataForHistory:responseObject];
-        success(responseObject);
-        NSLog(@"Succes");
+        __block id response = responseObject;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            response = [weakSelf.adapter adaptiveDataForHistory:response];
+            success(response);
+            NSLog(@"Succes");
+        });
+
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
         failure(error,message);
         NSLog(@"Failure");
@@ -273,6 +277,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 
 - (void)startObservingAdresses:(NSArray*) addresses{
     _socketManager = [SocketManager new];
+    _socketManager.delegate = self;
     [_socketManager startWithHandler:^{
         [_socketManager subscripeToUpdateAdresses:[[WalletManager sharedInstance] getCurrentWallet].getAllKeysAdreeses withCompletession:^(NSArray *data) {
             NSLog(@"Updated");

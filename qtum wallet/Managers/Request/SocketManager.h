@@ -18,6 +18,8 @@ typedef NS_ENUM(NSInteger, ConnectionStatus) {
 @interface SocketManager : NSObject
 
 @property (assign,nonatomic,readonly) ConnectionStatus status;
+@property (nonatomic, weak) id <Requestable> delegate;
+
 
 -(void)startWithHandler:(void(^)()) handler;
 -(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler;

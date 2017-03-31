@@ -25,4 +25,8 @@
     return data;
 }
 
+- (CGFloat)adaptiveDataForBalance:(CGFloat) balance{
+    return balance/=100000000;
+}
+
 @end

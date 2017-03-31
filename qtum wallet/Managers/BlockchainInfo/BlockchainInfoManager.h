@@ -20,6 +20,10 @@
 // History
 + (void)getHistoryForAddresses:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure;
 + (void)getHistoryForAllAddresesWithSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure;
++ (void)addHistoryElementWithDict:(NSDictionary*) dict;
+
+// Balance
++ (void)updateBalance:(CGFloat) balance;
 
 // Convert
 + (BTCAmount)convertValueToAmount:(double)value;

@@ -9,7 +9,13 @@
 #import <Foundation/Foundation.h>
 @class HistoryElement;
 
-@interface HistoryDataStorage : NSObject
+extern NSString *const HistoryUpdateEvent;
+extern NSString *const BalanceUpdateEvent;
+
+
+@interface HistoryAndBalanceDataStorage : NSObject
+
+@property (assign,nonatomic) CGFloat balance;
 
 - (NSArray<HistoryElement*>*)getHistory;
 - (void)setHistoryItem:(HistoryElement*) item;

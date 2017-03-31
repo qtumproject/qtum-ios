@@ -16,5 +16,8 @@
 @property (nonatomic) NSNumber *dateNumber;
 @property (nonatomic, copy) NSString *dateString;
 @property (nonatomic) BOOL send;
+@property (assign, nonatomic) BOOL confirmed;
+
+-(BOOL)isEqualElementWithoutConfimation:(HistoryElement*)object;
 
 @end

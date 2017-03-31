@@ -55,7 +55,7 @@
 		B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF9E1E5EE1EE006125F3 /* NSString+Extension.m */; };
 		B33EAFA21E5F20F9006125F3 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAFA11E5F20F9006125F3 /* GradientView.m */; };
 		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
-		B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */; };
+		B3487A211E8D2B2B00BC66F1 /* HistoryAndBalanceDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A201E8D2B2B00BC66F1 /* HistoryAndBalanceDataStorage.m */; };
 		B351305D1E49BF6D0048A28C /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B351305C1E49BF6D0048A28C /* NewsController.m */; };
 		B35130611E49C9930048A28C /* NewsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130601E49C9930048A28C /* NewsCellModel.m */; };
 		B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130641E49DCBC0048A28C /* NewsTableCell.m */; };
@@ -259,8 +259,8 @@
 		B33EAFA11E5F20F9006125F3 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinViewController.h; sourceTree = "<group>"; };
 		B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinViewController.m; sourceTree = "<group>"; };
-		B3487A1F1E8D2B2B00BC66F1 /* HistoryDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDataStorage.h; sourceTree = "<group>"; };
-		B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDataStorage.m; sourceTree = "<group>"; };
+		B3487A1F1E8D2B2B00BC66F1 /* HistoryAndBalanceDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryAndBalanceDataStorage.h; sourceTree = "<group>"; };
+		B3487A201E8D2B2B00BC66F1 /* HistoryAndBalanceDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryAndBalanceDataStorage.m; sourceTree = "<group>"; };
 		B351305B1E49BF6D0048A28C /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
 		B351305C1E49BF6D0048A28C /* NewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsController.m; sourceTree = "<group>"; };
 		B351305F1E49C9930048A28C /* NewsCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCellModel.h; sourceTree = "<group>"; };
@@ -1013,8 +1013,8 @@
 				E727F1771E02749D0080E79D /* Wallet.m */,
 				B351305F1E49C9930048A28C /* NewsCellModel.h */,
 				B35130601E49C9930048A28C /* NewsCellModel.m */,
-				B3487A1F1E8D2B2B00BC66F1 /* HistoryDataStorage.h */,
-				B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */,
+				B3487A1F1E8D2B2B00BC66F1 /* HistoryAndBalanceDataStorage.h */,
+				B3487A201E8D2B2B00BC66F1 /* HistoryAndBalanceDataStorage.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1473,7 +1473,7 @@
 				B3F06CF71E69879D006341F7 /* CreateTokenCoordinator.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
-				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
+				B3487A211E8D2B2B00BC66F1 /* HistoryAndBalanceDataStorage.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				E7396ADC1DDCBFCE0002CD47 /* BlockchainInfoManager.m in Sources */,

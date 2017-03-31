@@ -9,7 +9,7 @@
 #import "BlockchainInfoManager.h"
 #import "RPCRequestManager.h"
 #import "HistoryElement.h"
-#import "HistoryDataStorage.h"
+#import "HistoryAndBalanceDataStorage.h"
 
 @implementation BlockchainInfoManager
 
@@ -116,7 +116,9 @@
 {
     __weak typeof(self) weakSelf = self;
     [[WalletManager sharedInstance].requestManager getHistoryWithParam:@{} andAddresses:keyAddreses successHandler:^(id responseObject) {
-        success([weakSelf createHistoryElements:responseObject]);
+        NSArray* history = [weakSelf createHistoryElements:responseObject];
+        [[weakSelf class] updateHistoryWithArray:history];
+        success(history);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
@@ -133,24 +135,42 @@
     }];
 }
 
-+ (NSArray *)createHistoryElements:(NSArray *)responseObject
-{
-    NSArray* responseObjectLocal = [[responseObject reverseObjectEnumerator] allObjects];
++ (NSArray *)createHistoryElements:(NSArray *)responseObject{
     
+    NSArray* responseObjectLocal = [[responseObject reverseObjectEnumerator] allObjects];
     NSMutableArray *array = [NSMutableArray new];
+    
     for (NSDictionary *dictionary in responseObjectLocal) {
-        HistoryElement *element = [HistoryElement new];
-        
-        element.amount = dictionary[@"amount"];
-        element.address = dictionary[@"address"];
-        element.dateNumber = dictionary[@"time"];
-        element.send = ![self checkIsMineAddress:dictionary];
-        
+        HistoryElement *element = [[self class] createHistoryElement:dictionary];
         [array addObject:element];
     }
     
-    [[HistoryDataStorage sharedInstance] setHistory:array];
     return  array;
+}
+
+
++ (HistoryElement *)createHistoryElement:(NSDictionary *)dictionary{
+    
+    HistoryElement *element = [HistoryElement new];
+    element.amount = dictionary[@"amount"];
+    element.address = dictionary[@"address"];
+    element.dateNumber = ![dictionary[@"block_time"] isKindOfClass:[NSNull class]] ? dictionary[@"block_time"] : nil;
+    element.send = ![self checkIsMineAddress:dictionary];
+    element.confirmed = [dictionary[@"block_height"] floatValue] > 0;
+    return  element;
+}
+
++(void)updateHistoryWithArray:(NSArray <HistoryElement*>*) array{
+    [[HistoryAndBalanceDataStorage sharedInstance] setHistory:array];
+}
+
++(void)updateHistoryWithItem:(HistoryElement*) item{
+    [[HistoryAndBalanceDataStorage sharedInstance] setHistoryItem:item];
+}
+
++(void)addHistoryElementWithDict:(NSDictionary*) dict {
+    HistoryElement* item = [[self class] createHistoryElement:dict];
+    [[self class] updateHistoryWithItem:item];
 }
 
 + (BOOL)checkIsMineAddress:(NSDictionary *)dictionary
@@ -171,6 +191,10 @@
         return NO;
     }
     return YES;
+}
+
++ (void)updateBalance:(CGFloat) balance{
+    [HistoryAndBalanceDataStorage sharedInstance].balance = balance;
 }
 
 #pragma mark - Methods

@@ -8,6 +8,7 @@
 
 #import "SocketManager.h"
 #import <SIOSocket/SIOSocket.h>
+#import "BlockchainInfoManager.h"
 @import SocketIO;
 
 static NSString *BASE_URL = @"http://163.172.68.103:5931/";
@@ -17,6 +18,8 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 @property (strong, nonatomic) SocketIOClient* currentSocket;
 @property (assign,nonatomic) ConnectionStatus status;
 @property (nonatomic, copy) void (^onUpdateAddresses)(NSArray*);
+@property (nonatomic, copy) void (^startCallback)();
+
 
 
 @end
@@ -41,36 +44,43 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 //        };
 //    }];
     
+    self.startCallback = handler;
     NSURL* url = [[NSURL alloc] initWithString:BASE_URL];
     self.currentSocket = [[SocketIOClient alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
     
     [self.currentSocket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         weakSelf.status = Connected;
-        handler();
+        if (weakSelf.startCallback) {
+            weakSelf.startCallback();
+            weakSelf.startCallback = nil;
+        }
+    }];
+    
+    [self.currentSocket on:@"disconnected" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        weakSelf.status = Disconnected;
     }];
 
-    
     [self.currentSocket connect];
 }
 
 -(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler{
     
-//    [self.currentSocket emit:@"userConnectUpdate" args:@[@"quantumd/addressbalance",@[@"mh6LD7E5rHbgeTY1EuSf6b1fJKSjVzqaP8"]]];
-    
-    
-    [self.currentSocket on:@"quantumd/test" callback:^(NSArray* data, SocketAckEmitter* ack) {
-        NSLog(@"%@",data);
-    }];
-    
-    [self.currentSocket emit:@"subscribe" with:@[@"quantumd/addressbalance",addresses]];
-    
     [self.currentSocket onAny:^(SocketAnyEvent * _Nonnull event) {
-        NSLog(@"%@",event);
+        
     }];
-    [self.currentSocket on:@"quantumd/addressbalance" callback:^(NSArray* data, SocketAckEmitter* ack) {
-        NSLog(@"%@",data);
-    }];
+    
+    [self.currentSocket on:@"balance_changed" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
 
+        [BlockchainInfoManager updateBalance:[self.delegate.adapter adaptiveDataForBalance:[data[0][@"balance"] floatValue]]];
+    }];
+    
+    [self.currentSocket on:@"new_transaction" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
+        [BlockchainInfoManager addHistoryElementWithDict:(NSDictionary*)data[0]];
+    }];
+    
+    [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses]];
 }
 
 -(void)stoptWithHandler:(void(^)()) handler{

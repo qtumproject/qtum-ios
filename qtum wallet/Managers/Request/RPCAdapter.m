@@ -58,4 +58,8 @@
     return data;
 }
 
+- (CGFloat)adaptiveDataForBalance:(CGFloat) balance{
+    return balance;
+}
+
 @end

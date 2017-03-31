@@ -31,6 +31,10 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UIView *shortInfoView;
+@property (assign, nonatomic) BOOL canNewRequest;
+
+@property (assign, nonatomic) BOOL isFirstTimeUpdate;
+
 
 
 @property (nonatomic) BOOL balanceLoaded;
@@ -47,13 +51,15 @@
 
     self.wigetBalanceLabel.text =
     self.balanceLabel.text = @"0";
-    self.historyLoaded = YES;
+
     self.balanceLoaded = YES;
+    self.historyLoaded = YES;
+    self.isFirstTimeUpdate = YES;
+    self.canNewRequest = YES;
     
     [self configTableView];
     [self configRefreshControl];
     [self configAdressLabel];
-    [self updateDataLocal:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,7 +76,7 @@
     [super viewDidAppear:animated];
     
     // get all dataForScreen
-    [self updateDataLocal:YES];
+    [self updateDataLocal:!self.isFirstTimeUpdate];
 }
 
 #pragma mark - Configuration
@@ -95,7 +101,7 @@
 }
 
 - (IBAction)refreshButtonWasPressed:(id)sender{
-    [self updateDataLocal:NO];
+    [self updateDataLocal:!self.isFirstTimeUpdate];
 }
 
 
@@ -107,8 +113,11 @@
     [self calculatePositionForView:self.quickInfoBoard withScrollOffset:yOffset withLimetedYValue:@(self.customNavigationBar.frame.size.height)];
     [self calculatePositionForView:self.topSubstrateView withScrollOffset:yOffset withLimetedYValue:nil];
     
-    if (scrollView.contentOffset.y < -350) {
+    if (scrollView.contentOffset.y < -350 && self.canNewRequest) {
         [self refreshButtonWasPressed:nil];
+        self.canNewRequest = NO;
+    } else if(scrollView.contentOffset.y == -scrollView.contentInset.top){
+        self.canNewRequest = YES;
     }
 
     [self setupNavigationBarPerformance];
@@ -145,19 +154,22 @@
 #pragma mark - Private Methods
 
 -(void)updateDataLocal:(BOOL)isLocal{
-    if (isLocal) {
+    self.isFirstTimeUpdate = NO;
+    [self.refreshControl endRefreshing];
+    if (self.balanceLoaded && self.historyLoaded) {
+        [SVProgressHUD show];
         [self getBalanceLocal:isLocal];
         [self getHistoryLocal:isLocal];
-    } else {
-        [self.refreshControl endRefreshing];
-        if (self.balanceLoaded && self.historyLoaded) {
-            [SVProgressHUD show];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                [self getBalanceLocal:NO];
-                [self getHistoryLocal:NO];
-            });
-        }
     }
+
+//        [self.refreshControl endRefreshing];
+//        if (self.balanceLoaded && self.historyLoaded) {
+//            [SVProgressHUD show];
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//                [self getBalanceLocal:isLocal];
+//                [self getHistoryLocal:isLocal];
+//            });
+//        }
 }
 
 #pragma mark - Methods
@@ -173,10 +185,10 @@
 }
 
 -(void)reloadTableView{
-    [self.tableView reloadData];
     self.historyLoaded = YES;
     if (self.balanceLoaded && self.historyLoaded) {
         [SVProgressHUD dismiss];
+        [self.tableView reloadData];
     }
 }
 
