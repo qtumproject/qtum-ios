@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @protocol WalletCoordinatorDelegate;
+@protocol ControllerDelegate;
 @class WalletHistoryDelegateDataSource;
 
-@interface MainViewController : BaseViewController
+@interface MainViewController : BaseViewController <ControllerDelegate>
 
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;

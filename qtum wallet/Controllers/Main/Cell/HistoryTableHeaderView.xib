@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="379" height="32"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-iw-JB5">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-iw-JB5">
                     <rect key="frame" x="0.0" y="0.0" width="379" height="32"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQr-Rp-3dW">
@@ -37,7 +37,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.21063089369999999" green="0.33473819490000001" blue="0.78443151710000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.2470588235" green="0.21960784310000001" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="BQr-Rp-3dW" firstAttribute="leading" secondItem="ZfC-iw-JB5" secondAttribute="leading" constant="10" id="5mO-Rn-8zR"/>
                         <constraint firstAttribute="bottom" secondItem="cIh-Ux-8VG" secondAttribute="bottom" constant="6" id="EhK-Ka-brH"/>
@@ -80,6 +80,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="activityView" destination="hve-0r-WvQ" id="hSw-aL-IDs"/>
+                <outlet property="balanceLabel" destination="cIh-Ux-8VG" id="4P9-re-Xrh"/>
                 <outlet property="shortInfoView" destination="ZfC-iw-JB5" id="MFf-NB-px0"/>
             </connections>
             <point key="canvasLocation" x="-14.5" y="-1091.5"/>

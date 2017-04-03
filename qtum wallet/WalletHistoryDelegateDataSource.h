@@ -13,10 +13,18 @@
 @class WalletTypeCollectionDataSourceDelegate;
 
 
+@protocol ControllerDelegate <NSObject>
+
+- (void)fadeInNavigationBar;
+- (void)fadeOutNavigationBar;
+
+@end
+
 @interface WalletHistoryDelegateDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) WalletModel* wallet;
 @property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <ControllerDelegate> controllerDelegate;
 
 @end

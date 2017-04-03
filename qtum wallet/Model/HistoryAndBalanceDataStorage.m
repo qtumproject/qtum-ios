@@ -53,7 +53,7 @@ NSString *const BalanceUpdateEvent = @"BalanceUpdateEvent";
 #pragma mark Public Methods
 
 - (void)setHistory:(NSArray<HistoryElement*>*) history{
-    self.historyPrivate = history.mutableCopy;
+    self.historyPrivate = [[history reverseObjectEnumerator] allObjects].mutableCopy;
     [self notificateChangeHistory];
 }
 
@@ -72,7 +72,7 @@ NSString *const BalanceUpdateEvent = @"BalanceUpdateEvent";
     if (index < self.historyPrivate.count) {
         [self.historyPrivate replaceObjectAtIndex:index withObject:item];
     } else {
-        [self.historyPrivate addObject:item];
+        [self.historyPrivate insertObject:item atIndex:0];
     }
     [self notificateChangeHistory];
 }
@@ -91,7 +91,8 @@ NSString *const BalanceUpdateEvent = @"BalanceUpdateEvent";
 }
 
 - (void)addHistoryElements:(NSArray<HistoryElement*>*) elements{
-    [self.historyPrivate addObjectsFromArray:elements];
+//    self.historyPrivate = [[elements arrayByAddingObjectsFromArray:self.historyPrivate] mutableCopy];
+    [self.historyPrivate addObjectsFromArray:[[elements reverseObjectEnumerator] allObjects]];
     [self notificateChangeHistory];
 }
 

@@ -14,5 +14,9 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 @property (weak, nonatomic) IBOutlet UIView *activityView;
 @property (weak, nonatomic) IBOutlet UIView *shortInfoView;
+@property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
+
+- (void)fadeInActivity;
+- (void)fadeOutActivity;
 
 @end

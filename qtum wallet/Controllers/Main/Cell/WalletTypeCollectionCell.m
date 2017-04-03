@@ -19,8 +19,8 @@
 @implementation WalletTypeCollectionCell
 
 -(void)prepareForReuse {
-    self.adressValueLabel.text = @"0";
-    self.valueLabel.text = @"";
+//    self.adressValueLabel.text = @"0";
+//    self.valueLabel.text = @"";
     [self.animationLayer startAnimating];
 }
 

@@ -26,6 +26,7 @@
 @property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 @property (assign, nonatomic) NSInteger pageNumber;
+@property (strong, nonatomic) dispatch_queue_t requestQueue;
 
 @end
 
@@ -36,6 +37,7 @@
     if (self) {
         _navigationController = navigationController;
         _isFirstTimeUpdate = YES;
+        _requestQueue = dispatch_queue_create("com.pixelplex.requestQueue", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
@@ -78,7 +80,7 @@
 
 -(void)setLastPageForHistory:(NSInteger)lastPage needIncrease:(BOOL) inc{
     if (inc) {
-        self.pageNumber++;
+//        self.pageNumber++;
     } else {
         self.pageNumber = 0;
     }
@@ -87,7 +89,7 @@
 -(void)refreshTableViewDataLocal:(BOOL)isLocal{
     if (!isLocal) {
         __weak typeof(self) weakSelf = self;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        dispatch_async(_requestQueue, ^{
             [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (weakSelf.pageNumber > 0) {
@@ -95,14 +97,15 @@
                     } else {
                          [[HistoryAndBalanceDataStorage sharedInstance] setHistory:responseObject];
                     }
+                    weakSelf.pageNumber++;
                     weakSelf.isFirstTimeUpdate = NO;
                 });
             } andFailureHandler:^(NSError *error, NSString *message) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.historyController failedToGetData];
                 });
-            } andParam:@{@"limit" : @5,
-                         @"offset" : @(self.pageNumber * 5)}];
+            } andParam:@{@"limit" : @25,
+                         @"offset" : @(self.pageNumber * 25)}];
         });
     } else {
         self.delegateDataSource.wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] getHistory];
@@ -119,7 +122,7 @@
         [self.historyController setBalance];
     } else {
         __weak typeof(self) weakSelf = self;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        dispatch_async(_requestQueue, ^{
             [BlockchainInfoManager getBalanceForAllAddresesWithSuccessHandler:^(double responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     weakSelf.delegateDataSource.wallet.balance = [NSString stringWithFormat:@"%lf", responseObject];
@@ -130,6 +133,7 @@
             }];
         });
     }
+
 }
 
 -(void)qrCodeScannedWithDict:(NSDictionary*) dict{

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "MainViewController.h"
 #import "HistoryTableViewCell.h"
 #import "BlockchainInfoManager.h"
@@ -33,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UIView *shortInfoView;
 @property (assign, nonatomic) BOOL canNewRequest;
+@property (assign, nonatomic) BOOL isNavigationBarFadeout;
 
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 
@@ -104,11 +106,12 @@
 
 -(void)configTableView{
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-//    CGFloat offset = self.topBoardView.frame.size.height + self.quickInfoBoard.frame.size.height;
-//    self.tableView.contentInset =
-//    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
+    CGFloat offset = self.customNavigationBar.frame.size.height;
+    self.tableView.contentInset =
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
     self.tableView.dataSource = self.delegateDataSource;
     self.tableView.delegate = self.delegateDataSource;
+    self.delegateDataSource.controllerDelegate = self;
     
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderView" bundle:nil];
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
@@ -120,8 +123,8 @@
 }
 
 //
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
 //    NSInteger yOffset = scrollView.contentOffset.y < scrollView.contentInset.top * -1 ? scrollView.contentInset.top : scrollView.contentOffset.y * -1;
 //    
 //    [self calculatePositionForView:self.topBoardView withScrollOffset:yOffset withLimetedYValue:nil];
@@ -136,7 +139,14 @@
 //    }
 //
 //    [self setupNavigationBarPerformance];
-//}
+//    static CGFloat previousOffset;
+//    CGFloat scrollDiff = scrollView.contentOffset.y - previousOffset;
+//    CGFloat absoluteTop = 0;
+//    CGFloat absoluteBottom = scrollView.contentSize.height - scrollView.frame.size.height;
+//    BOOL isScrollingDown = scrollDiff > 0 && scrollView.contentOffset.y > absoluteTop;
+//    BOOL isScrollingTop = scrollDiff < 0 && scrollView.contentOffset.y < absoluteBottom;
+//    NSLog(@"%f",scrollDiff);
+}
 
 -(void)calculatePositionForView:(UIView*)view withScrollOffset:(NSInteger)offset withLimetedYValue:(NSNumber*)value{
     static CGFloat previousOffset;
@@ -166,6 +176,27 @@
     self.shortInfoView.alpha = customNavigationBarAlpha;
 }
 
+
+- (void)fadeInNavigationBar{
+    if (self.isNavigationBarFadeout) {
+        self.isNavigationBarFadeout = NO;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.customNavigationBar.layer.backgroundColor = [UIColor colorWithRed:63/255.0f green:56/255.0f blue:196/255.0f alpha:1.0].CGColor;
+        }];
+
+    }
+}
+- (void)fadeOutNavigationBar{
+    if (!self.isNavigationBarFadeout) {
+        self.isNavigationBarFadeout = YES;
+        self.customNavigationBar.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.customNavigationBar.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor;
+        }];
+    }
+}
+
+
 #pragma mark - Private Methods
 
 -(void)updateDataLocal:(BOOL)isLocal{
@@ -191,7 +222,11 @@
 }
 
 -(void)reloadTableView{
-    [self.tableView reloadData];
+//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+
     self.historyLoaded = YES;
     if (self.balanceLoaded && self.historyLoaded) {
         [SVProgressHUD dismiss];
@@ -200,7 +235,10 @@
 
 -(void)setBalance{
     self.balanceLoaded = YES;
-    [self.tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+    //[self.tableView reloadData];
     if (self.balanceLoaded && self.historyLoaded) {
         [SVProgressHUD dismiss];
     }

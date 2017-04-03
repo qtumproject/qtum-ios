@@ -8,14 +8,30 @@
 
 #import "HistoryHeaderVIew.h"
 
+@interface HistoryHeaderVIew ()
+
+@property (assign,nonatomic)BOOL isActivityFadeout;
+
+@end
+
 @implementation HistoryHeaderVIew
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)fadeInActivity{
+    if (_isActivityFadeout) {
+        self.isActivityFadeout = NO;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.activityView.alpha = 1;
+        }];
+    }
 }
-*/
+
+- (void)fadeOutActivity{
+    if (!_isActivityFadeout) {
+        self.isActivityFadeout = YES;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.activityView.alpha = 0;
+        }];
+    }
+}
 
 @end

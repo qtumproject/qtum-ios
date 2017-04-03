@@ -151,10 +151,11 @@
 + (HistoryElement *)createHistoryElement:(NSDictionary *)dictionary{
     
     HistoryElement *element = [HistoryElement new];
-    element.amount = dictionary[@"amount"];
+    CGFloat amount = [self calcAmount:dictionary];
+    element.amount = @(amount);
     element.address = dictionary[@"address"];
     element.dateNumber = ![dictionary[@"block_time"] isKindOfClass:[NSNull class]] ? dictionary[@"block_time"] : nil;
-    element.send = ![self checkIsMineAddress:dictionary];
+    element.send = amount > 0;
     element.confirmed = [dictionary[@"block_height"] floatValue] > 0;
     return  element;
 }
@@ -172,24 +173,33 @@
     [[self class] updateHistoryWithItem:item];
 }
 
-+ (BOOL)checkIsMineAddress:(NSDictionary *)dictionary
-{
-    NSSet* mineAddessesSet = [NSSet setWithArray:[self createAllKeysArray]];
-//    NSMutableSet* outAddressesSet = [NSMutableSet new];
-    NSMutableSet* inAddressesSet = [NSMutableSet new];
++ (CGFloat)calcAmount:(NSDictionary *)dictionary{
+    NSArray* mineAddessesArray = [self createAllKeysArray];
+    NSMutableDictionary* outAddressesSet = [NSMutableDictionary new];
+    NSMutableDictionary* inAddressesSet = [NSMutableDictionary new];
+    CGFloat outMoney = 0;
+    CGFloat inMoney = 0;
     
     for (NSDictionary* inObject in dictionary[@"vin"]) {
-        [inAddressesSet addObject:inObject[@"address"]];
+        [inAddressesSet setObject:inObject forKey:inObject[@"address"]];
     }
     
-//    for (NSDictionary* outObject in dictionary[@"vout"]) {
-//        [inAddressesSet addObject:outObject[@"address"]];
-//    }
-    
-    if ([mineAddessesSet intersectsSet:inAddressesSet]) {
-        return NO;
+    for (NSDictionary* outObject in dictionary[@"vout"]) {
+        [outAddressesSet setObject:outObject forKey:outObject[@"address"]];
     }
-    return YES;
+    
+    for (NSString* address in mineAddessesArray) {
+        NSDictionary* inNode = [inAddressesSet objectForKey:address];
+        NSDictionary* outNode = [outAddressesSet objectForKey:address];
+        if (inNode) {
+            inMoney += [inNode[@"value"] floatValue];
+        }
+        if (outNode) {
+            outMoney += [outNode[@"value"] floatValue];
+        }
+    }
+    
+    return inMoney - outMoney;
 }
 
 + (void)updateBalance:(CGFloat) balance{

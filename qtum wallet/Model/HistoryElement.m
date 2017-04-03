@@ -68,19 +68,19 @@
 }
 
 -(BOOL)isEqualElementWithoutConfimation:(HistoryElement*)object{
-    if (![self.address isEqualToString:object.address] && self.address && object.address) {
+    if (self.address && object.address && ![self.address isEqualToString:object.address]) {
         return NO;
     }
-    if (![self.amount isEqualToNumber:object.amount] && self.amount && object.amount) {
+    if (self.amount && object.amount && ![self.amount isEqualToNumber:object.amount]) {
         return NO;
     }
-    if (![self.amountString isEqualToString:object.amountString] && self.amountString && object.amountString) {
+    if (self.amountString && object.amountString && ![self.amountString isEqualToString:object.amountString] ) {
         return NO;
     }
-    if (![self.dateNumber isEqualToNumber:object.dateNumber] && self.dateNumber && object.dateNumber) {
+    if (self.dateNumber && object.dateNumber && ![self.dateNumber isEqualToNumber:object.dateNumber] ) {
         return NO;
     }
-    if (![self.dateString isEqualToString:object.dateString] && self.dateString && object.dateString) {
+    if (self.dateString && object.dateString && ![self.dateString isEqualToString:object.dateString]) {
         return NO;
     }
     if (!self.send == object.send) {

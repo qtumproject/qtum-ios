@@ -166,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wxm-c6-KId">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.94857591389999996" green="0.96074467900000005" blue="0.96896916629999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -180,7 +180,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sRS-R9-bVw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="211.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cgi-sy-bw6">
                                                         <size key="itemSize" width="374" height="212"/>
@@ -344,7 +344,7 @@
                                     <outlet property="delegate" destination="mEt-XV-9HF" id="pat-8n-ArN"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YP6-GK-BMP">
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YP6-GK-BMP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQG-C0-D8i">
@@ -379,6 +379,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="gQG-C0-D8i" firstAttribute="leading" secondItem="YP6-GK-BMP" secondAttribute="leading" id="YOy-Av-FM4"/>
                                     <constraint firstAttribute="height" constant="64" id="sYs-yR-GsJ"/>
@@ -391,7 +392,7 @@
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wxm-c6-KId" secondAttribute="trailing" id="9NH-gu-mwf"/>
-                            <constraint firstItem="wxm-c6-KId" firstAttribute="top" secondItem="CDL-Nz-vVR" secondAttribute="top" constant="64" id="IYU-l3-4H5"/>
+                            <constraint firstItem="wxm-c6-KId" firstAttribute="top" secondItem="CDL-Nz-vVR" secondAttribute="top" id="IYU-l3-4H5"/>
                             <constraint firstItem="wxm-c6-KId" firstAttribute="leading" secondItem="CDL-Nz-vVR" secondAttribute="leading" id="Zyg-h3-UaQ"/>
                             <constraint firstItem="bnH-1I-2rB" firstAttribute="top" secondItem="wxm-c6-KId" secondAttribute="bottom" id="bwL-Bv-Cl9"/>
                             <constraint firstItem="YP6-GK-BMP" firstAttribute="top" secondItem="CDL-Nz-vVR" secondAttribute="top" id="nAu-lX-Tlu"/>

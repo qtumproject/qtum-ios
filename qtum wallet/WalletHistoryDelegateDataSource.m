@@ -16,6 +16,7 @@
 
 @interface WalletHistoryDelegateDataSource ()
 
+@property(weak,nonatomic)HistoryHeaderVIew* sectionHeaderView;
 
 @end
 
@@ -75,6 +76,8 @@ static NSInteger countOfSections = 2;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section != 0) {
         HistoryHeaderVIew *sectionHeaderView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:SectionHeaderViewIdentifier];
+        sectionHeaderView.balanceLabel.text = self.wallet.balance;
+        self.sectionHeaderView = sectionHeaderView;
         return sectionHeaderView;
     }else {
         return nil;
@@ -83,6 +86,18 @@ static NSInteger countOfSections = 2;
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    static CGFloat previousOffset;
+    static CGFloat fixedHeaderPosition = 146;
+    CGFloat scrollDiff = scrollView.contentOffset.y - previousOffset;
+    BOOL isScrollingUp = scrollDiff > fixedHeaderPosition;
+
+    if (isScrollingUp) {
+        [self.controllerDelegate fadeInNavigationBar];
+        [self.sectionHeaderView fadeOutActivity];
+    } else {
+        [self.controllerDelegate fadeOutNavigationBar];
+        [self.sectionHeaderView fadeInActivity];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView willDecelerate:(BOOL)decelerate{
@@ -97,6 +112,7 @@ static NSInteger countOfSections = 2;
     if(y > h + reload_distance) {
         [self.delegate setLastPageForHistory:0 needIncrease:YES];
         [self.delegate refreshTableViewDataLocal:NO];
+        [self.delegate refreshTableViewBalanceLocal:YES];
     }
 }
 
