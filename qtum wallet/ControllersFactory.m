@@ -27,6 +27,7 @@
 #import "CreateTokenStep4ViewController.h"
 #import "HistoryViewController.h"
 #import "WalletNavigationController.h"
+#import "RecieveViewController.h"
 
 
 @implementation ControllersFactory
@@ -140,6 +141,11 @@
 
 -(CreateTokenStep4ViewController*)createCreateTokenStep4ViewController{
     CreateTokenStep4ViewController* controller = (CreateTokenStep4ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep4ViewController"];
+    return controller;
+}
+
+-(RecieveViewController*)createRecieveViewController{
+    RecieveViewController* controller = (RecieveViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"RecieveViewController"];
     return controller;
 }
 

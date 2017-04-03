@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WalletTypeCollectionDataSourceDelegate.h"
+
+static NSString *WalletTypeCollectionCellIdentifire = @"WalletTypeCollectionCellIdentifire";
 
 @interface WalletTypeCollectionCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeWalletLabel;
+@property (weak, nonatomic) IBOutlet UILabel *adressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *adressValueLabel;
+
+@property (weak, nonatomic) id <WalletCollectionCellDelegate> delegate;
+
+-(void)configWithObject:(id) object;
 
 @end

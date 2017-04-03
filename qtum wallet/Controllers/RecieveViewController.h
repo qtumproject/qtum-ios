@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WalletModel.h"
 
 @interface RecieveViewController : BaseViewController
 
-@property (nonatomic) BTCKey *key;
-@property (nonatomic, copy) NSString *balance;
+@property (nonatomic, strong) WalletModel *walletModel;
 
 @end

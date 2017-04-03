@@ -21,6 +21,7 @@
 @class CreateTokenStep2ViewController;
 @class CreateTokenStep3ViewController;
 @class CreateTokenStep4ViewController;
+@class RecieveViewController;
 @class TabBarCoordinator;
 
 
@@ -51,6 +52,7 @@
 -(CreateTokenStep2ViewController*)createCreateTokenStep2ViewController;
 -(CreateTokenStep1ViewController*)createCreateTokenStep1ViewController;
 -(CreateTokenStep4ViewController*)createCreateTokenStep4ViewController;
+-(RecieveViewController*)createRecieveViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

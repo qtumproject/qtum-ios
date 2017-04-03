@@ -90,11 +90,18 @@ NSString *const BalanceUpdateEvent = @"BalanceUpdateEvent";
     return nil;
 }
 
+- (void)addHistoryElements:(NSArray<HistoryElement*>*) elements{
+    [self.historyPrivate addObjectsFromArray:elements];
+    [self notificateChangeHistory];
+}
+
+
 
 -(void)setBalance:(CGFloat) balance{
     _balance = balance;
     [self notificateChangeBalance];
 }
+
 
 
 @end

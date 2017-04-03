@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wigetBalanceLabel;
 
-
 -(void)reloadTableView;
 -(void)setBalance;
 -(void)failedToGetData;

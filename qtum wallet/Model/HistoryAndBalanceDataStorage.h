@@ -18,6 +18,7 @@ extern NSString *const BalanceUpdateEvent;
 @property (assign,nonatomic) CGFloat balance;
 
 - (NSArray<HistoryElement*>*)getHistory;
+- (void)addHistoryElements:(NSArray<HistoryElement*>*) elements;
 - (void)setHistoryItem:(HistoryElement*) item;
 - (void)deleteHistoryItem:(HistoryElement*) item;
 - (HistoryElement*)updateHistoryItem:(HistoryElement*) item;

@@ -14,6 +14,9 @@
 -(void)refreshTableViewDataLocal:(BOOL)isLocal;
 -(void)refreshTableViewBalanceLocal:(BOOL)isLocal;
 -(void)qrCodeScannedWithDict:(NSDictionary*) dict;
+-(void)viewWillAppear;
+-(void)showAddressInfo;
+-(void)setLastPageForHistory:(NSInteger)lastPage needIncrease:(BOOL) inc;
 
 @end
 

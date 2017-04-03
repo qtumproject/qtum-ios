@@ -112,23 +112,22 @@
 
 #pragma mark - History
 
-+ (void)getHistoryForAddresses:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
++ (void)getHistoryForAddresses:(NSArray *)keyAddreses andParam:(NSDictionary*) param withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
     __weak typeof(self) weakSelf = self;
-    [[WalletManager sharedInstance].requestManager getHistoryWithParam:@{} andAddresses:keyAddreses successHandler:^(id responseObject) {
+    [[WalletManager sharedInstance].requestManager getHistoryWithParam:param andAddresses:keyAddreses successHandler:^(id responseObject) {
         NSArray* history = [weakSelf createHistoryElements:responseObject];
-        [[weakSelf class] updateHistoryWithArray:history];
         success(history);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
 }
 
-+ (void)getHistoryForAllAddresesWithSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
++ (void)getHistoryForAllAddresesWithSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure andParam:(NSDictionary*) param
 {
     NSArray *allKeys = [self createAllKeysArray];
     
-    [self getHistoryForAddresses:allKeys withSuccessHandler:^(NSArray *responseObject) {
+    [self getHistoryForAddresses:allKeys andParam:param withSuccessHandler:^(NSArray *responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);

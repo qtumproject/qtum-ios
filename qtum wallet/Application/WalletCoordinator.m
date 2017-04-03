@@ -12,14 +12,20 @@
 #import "BlockchainInfoManager.h"
 #import "TabBarCoordinator.h"
 #import "HistoryAndBalanceDataStorage.h"
+#import "WalletTypeCollectionDataSourceDelegate.h"
+#import "WalletModel.h"
+#import "RecieveViewController.h"
 
 
 @interface WalletCoordinator ()
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (weak, nonatomic) MainViewController* historyController;
+@property (strong, nonatomic) WalletModel* wallet;
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
+@property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
+@property (assign, nonatomic) NSInteger pageNumber;
 
 @end
 
@@ -43,49 +49,80 @@
 -(void)start{
     MainViewController* controller = (MainViewController*)self.navigationController.viewControllers[0];
     controller.delegate = self;
+    
+    [self configWalletModel];
+    self.collectionDelegateDataSource = [WalletTypeCollectionDataSourceDelegate new];
+    self.collectionDelegateDataSource.wallet = self.wallet;
+    self.collectionDelegateDataSource.delegate = self;
     self.delegateDataSource = [WalletHistoryDelegateDataSource new];
-    self.delegateDataSource.historyArray = @[];
+    self.delegateDataSource.delegate = self;
+    self.delegateDataSource.wallet = self.wallet;
+    self.delegateDataSource.collectionDelegateDataSource = self.collectionDelegateDataSource;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
+    
     [self subcribeEvents];
 }
 
 #pragma mark - WalletCoordinatorDelegate
 
+-(void)viewWillAppear{
+//    [self.historyController reloadTableView];
+}
+
+-(void)showAddressInfo{
+    RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
+    vc.walletModel = self.wallet;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)setLastPageForHistory:(NSInteger)lastPage needIncrease:(BOOL) inc{
+    if (inc) {
+        self.pageNumber++;
+    } else {
+        self.pageNumber = 0;
+    }
+}
+
 -(void)refreshTableViewDataLocal:(BOOL)isLocal{
-    if (self.isFirstTimeUpdate) {
+    if (!isLocal) {
         __weak typeof(self) weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    weakSelf.delegateDataSource.historyArray = [responseObject copy];
-                    [weakSelf.historyController reloadTableView];
+                    if (weakSelf.pageNumber > 0) {
+                        [[HistoryAndBalanceDataStorage sharedInstance] addHistoryElements:responseObject];
+                    } else {
+                         [[HistoryAndBalanceDataStorage sharedInstance] setHistory:responseObject];
+                    }
                     weakSelf.isFirstTimeUpdate = NO;
                 });
             } andFailureHandler:^(NSError *error, NSString *message) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.historyController failedToGetData];
                 });
-            }];
+            } andParam:@{@"limit" : @5,
+                         @"offset" : @(self.pageNumber * 5)}];
         });
     } else {
-        self.delegateDataSource.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] getHistory];
+        self.delegateDataSource.wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] getHistory];
         [self.historyController reloadTableView];
     }
 }
 
 -(void)refreshTableViewBalanceLocal:(BOOL)isLocal{
     if (isLocal) {
-        self.historyController.wigetBalanceLabel.text =
-        self.historyController.balanceLabel.text = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
+//        self.historyController.wigetBalanceLabel.text =
+//        self.historyController.balanceLabel.text = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
+//        [self.historyController setBalance];
+        self.delegateDataSource.wallet.balance = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
         [self.historyController setBalance];
     } else {
         __weak typeof(self) weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             [BlockchainInfoManager getBalanceForAllAddresesWithSuccessHandler:^(double responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    weakSelf.historyController.wigetBalanceLabel.text =
-                    weakSelf.historyController.balanceLabel.text = [NSString stringWithFormat:@"%lf", responseObject];
+                    weakSelf.delegateDataSource.wallet.balance = [NSString stringWithFormat:@"%lf", responseObject];
                     [weakSelf.historyController setBalance];
                 });
             } andFailureHandler:^(NSError *error, NSString *message) {
@@ -100,7 +137,17 @@
     [self.delegate createPaymentFromWalletScanWithDict:dict];
 }
 
+#pragma mark - Configuration
+
+-(void)configWalletModel{
+    self.wallet = [WalletModel new];
+    self.wallet.historyArray = @[];
+    NSString* keyString = [AppSettings sharedInstance].isMainNet ? [WalletManager sharedInstance].getCurrentWallet.getRandomKey.address.string : [WalletManager sharedInstance].getCurrentWallet.getRandomKey.addressTestnet.string;
+    self.wallet.activeAddress = keyString;
+}
+
 #pragma mark - Private Methods
+
 
 -(void)subcribeEvents{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHistory) name:HistoryUpdateEvent object:nil];
@@ -110,7 +157,7 @@
 -(void)updateHistory{
     __weak __typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.delegateDataSource.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] getHistory];
+        weakSelf.delegateDataSource.wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] getHistory];
         [weakSelf.historyController reloadTableView];
     });
 }
@@ -118,8 +165,7 @@
 -(void)updateBalance{
     __weak __typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.historyController.wigetBalanceLabel.text = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
-        weakSelf.historyController.balanceLabel.text = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
+         weakSelf.delegateDataSource.wallet.balance = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
         [weakSelf.historyController setBalance];
     });
 }

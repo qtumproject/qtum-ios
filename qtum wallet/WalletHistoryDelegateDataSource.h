@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WalletCoordinator.h"
 @class HistoryElement;
+@class WalletModel;
+@class WalletTypeCollectionDataSourceDelegate;
+
 
 @interface WalletHistoryDelegateDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic)NSArray <HistoryElement*>*historyArray;
+@property (strong, nonatomic) WalletModel* wallet;
+@property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
+@property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 
 @end

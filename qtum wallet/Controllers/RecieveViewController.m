@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.balanceLabel.text = self.balance;
+    self.balanceLabel.text = self.walletModel.balance;
     [self addDoneButtonToAmountTextField];
     self.shareButton.enabled = NO;
     // Do any additional setup after loading the view.
@@ -39,13 +39,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if (!self.key) {
-        self.key = [[WalletManager sharedInstance].getCurrentWallet getLastRandomKeyOrRandomKey];
-        [self createQRCode];
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? self.key.address.string : self.key.addressTestnet.string;
-        self.publicAddressLabel.text = keyString;
-    }
+
+    self.publicAddressLabel.text = self.walletModel.activeAddress;
+    [self createQRCode];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,7 +55,7 @@
     self.shareButton.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
-    NSString* keyString = [AppSettings sharedInstance].isMainNet ? self.key.address.string : self.key.addressTestnet.string;
+    NSString* keyString = self.walletModel.activeAddress;
 
     [QRCodeManager createQRCodeFromPublicAddress:keyString andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
@@ -125,7 +121,7 @@
 - (IBAction)copeButtonWasPressed:(id)sender
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    NSString* keyString = [AppSettings sharedInstance].isMainNet ? self.key.address.string : self.key.addressTestnet.string;
+    NSString* keyString = self.walletModel.activeAddress;
     [pb setString:keyString];
     
     [self showAlertWithTitle:nil mesage:@"Address copied" andActions:nil];

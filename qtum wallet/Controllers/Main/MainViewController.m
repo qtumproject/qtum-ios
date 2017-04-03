@@ -17,6 +17,7 @@
 #import "GradientViewWithAnimation.h"
 #import "WalletHistoryDelegateDataSource.h"
 #import "WalletCoordinator.h"
+#import "HistoryHeaderVIew.h"
 
 @interface MainViewController () <QRCodeViewControllerDelegate>
 
@@ -59,6 +60,7 @@
     
     [self configTableView];
     [self configRefreshControl];
+    self.navigationController.navigationBar.translucent = NO;
     [self configAdressLabel];
 }
 
@@ -68,7 +70,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.topBoardView startAnimating];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -83,8 +85,16 @@
 
 -(void)configRefreshControl{
     self.refreshControl = [[UIRefreshControl alloc]init];
+    self.refreshControl.tintColor = [UIColor whiteColor];
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshButtonWasPressed:) forControlEvents:UIControlEventValueChanged];
+    
+    //creating bacground for refresh controll
+    CGRect frame = self.tableView.bounds;
+    frame.origin.y = -frame.size.height;
+    UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
+    refreshBackgroundView.backgroundColor = [UIColor colorWithRed:63/255.0f green:56/255.0f blue:196/255.0f alpha:1.0f];
+    [self.tableView insertSubview:refreshBackgroundView atIndex:0];
 }
 
 -(void)configAdressLabel{
@@ -94,34 +104,39 @@
 
 -(void)configTableView{
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    CGFloat offset = self.topBoardView.frame.size.height + self.quickInfoBoard.frame.size.height;
-    self.tableView.contentInset =
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
+//    CGFloat offset = self.topBoardView.frame.size.height + self.quickInfoBoard.frame.size.height;
+//    self.tableView.contentInset =
+//    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
     self.tableView.dataSource = self.delegateDataSource;
+    self.tableView.delegate = self.delegateDataSource;
+    
+    UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderView" bundle:nil];
+    [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
 }
 
 - (IBAction)refreshButtonWasPressed:(id)sender{
+    [self.delegate setLastPageForHistory:0 needIncrease:NO];
     [self updateDataLocal:!self.isFirstTimeUpdate];
 }
 
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    NSInteger yOffset = scrollView.contentOffset.y < scrollView.contentInset.top * -1 ? scrollView.contentInset.top : scrollView.contentOffset.y * -1;
-    
-    [self calculatePositionForView:self.topBoardView withScrollOffset:yOffset withLimetedYValue:nil];
-    [self calculatePositionForView:self.quickInfoBoard withScrollOffset:yOffset withLimetedYValue:@(self.customNavigationBar.frame.size.height)];
-    [self calculatePositionForView:self.topSubstrateView withScrollOffset:yOffset withLimetedYValue:nil];
-    
-    if (scrollView.contentOffset.y < -350 && self.canNewRequest) {
-        [self refreshButtonWasPressed:nil];
-        self.canNewRequest = NO;
-    } else if(scrollView.contentOffset.y == -scrollView.contentInset.top){
-        self.canNewRequest = YES;
-    }
-
-    [self setupNavigationBarPerformance];
-}
+//
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    
+//    NSInteger yOffset = scrollView.contentOffset.y < scrollView.contentInset.top * -1 ? scrollView.contentInset.top : scrollView.contentOffset.y * -1;
+//    
+//    [self calculatePositionForView:self.topBoardView withScrollOffset:yOffset withLimetedYValue:nil];
+//    [self calculatePositionForView:self.quickInfoBoard withScrollOffset:yOffset withLimetedYValue:@(self.customNavigationBar.frame.size.height)];
+//    [self calculatePositionForView:self.topSubstrateView withScrollOffset:yOffset withLimetedYValue:nil];
+//    
+//    if (scrollView.contentOffset.y < -350 && self.canNewRequest) {
+//        [self refreshButtonWasPressed:nil];
+//        self.canNewRequest = NO;
+//    } else if(scrollView.contentOffset.y == -scrollView.contentInset.top){
+//        self.canNewRequest = YES;
+//    }
+//
+//    [self setupNavigationBarPerformance];
+//}
 
 -(void)calculatePositionForView:(UIView*)view withScrollOffset:(NSInteger)offset withLimetedYValue:(NSNumber*)value{
     static CGFloat previousOffset;
@@ -161,15 +176,6 @@
         [self getBalanceLocal:isLocal];
         [self getHistoryLocal:isLocal];
     }
-
-//        [self.refreshControl endRefreshing];
-//        if (self.balanceLoaded && self.historyLoaded) {
-//            [SVProgressHUD show];
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-//                [self getBalanceLocal:isLocal];
-//                [self getHistoryLocal:isLocal];
-//            });
-//        }
 }
 
 #pragma mark - Methods
@@ -181,19 +187,20 @@
 
 - (void)getHistoryLocal:(BOOL)isLocal{
     self.historyLoaded = NO;
-    [self.delegate refreshTableViewDataLocal:isLocal];
+    [self.delegate refreshTableViewDataLocal:NO];
 }
 
 -(void)reloadTableView{
+    [self.tableView reloadData];
     self.historyLoaded = YES;
     if (self.balanceLoaded && self.historyLoaded) {
         [SVProgressHUD dismiss];
-        [self.tableView reloadData];
     }
 }
 
 -(void)setBalance{
     self.balanceLoaded = YES;
+    [self.tableView reloadData];
     if (self.balanceLoaded && self.historyLoaded) {
         [SVProgressHUD dismiss];
     }
@@ -229,13 +236,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *segueID = segue.identifier;
-
-    if ([segueID isEqualToString:@"MaintToRecieve"]) {
-        RecieveViewController *vc = (RecieveViewController *)segue.destinationViewController;
-        
-        vc.balance = self.balanceLabel.text;
-    }
-    
     if ([segueID isEqualToString:@"qrCode"]) {
         QRCodeViewController *vc = (QRCodeViewController *)segue.destinationViewController;
         vc.delegate = self;

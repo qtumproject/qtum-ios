@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class HistoryElement;
 
 @interface BlockchainInfoManager : NSObject
 
@@ -18,10 +19,10 @@
 + (void)getunspentOutputs:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure;
 
 // History
-+ (void)getHistoryForAddresses:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure;
-+ (void)getHistoryForAllAddresesWithSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure;
++ (void)getHistoryForAddresses:(NSArray *)keyAddreses andParam:(NSDictionary*) param withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure;
++ (void)getHistoryForAllAddresesWithSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
+                                          andParam:(NSDictionary*) param;
 + (void)addHistoryElementWithDict:(NSDictionary*) dict;
-
 // Balance
 + (void)updateBalance:(CGFloat) balance;
 
