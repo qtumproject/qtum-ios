@@ -11,7 +11,7 @@
 @protocol WalletCoordinatorDelegate <NSObject>
 
 @required
--(void)refreshTableViewDataLocal:(BOOL)isLocal;
+-(void)refreshTableViewDataLocal:(BOOL)isLocal fromStart:(BOOL) flag;
 -(void)refreshTableViewBalanceLocal:(BOOL)isLocal;
 -(void)qrCodeScannedWithDict:(NSDictionary*) dict;
 -(void)viewWillAppear;

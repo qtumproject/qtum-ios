@@ -82,30 +82,40 @@
     if (inc) {
 //        self.pageNumber++;
     } else {
-        self.pageNumber = 0;
+        __weak typeof(self) weakSelf = self;
+        dispatch_async(_requestQueue, ^{
+            weakSelf.pageNumber = 0;
+        });
     }
 }
 
--(void)refreshTableViewDataLocal:(BOOL)isLocal{
+-(void)refreshTableViewDataLocal:(BOOL)isLocal fromStart:(BOOL) flag{
     if (!isLocal) {
         __weak typeof(self) weakSelf = self;
         dispatch_async(_requestQueue, ^{
+            [weakSelf.historyController startLoading];
             [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (weakSelf.pageNumber > 0) {
+                if (weakSelf.pageNumber > 0) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
                         [[HistoryAndBalanceDataStorage sharedInstance] addHistoryElements:responseObject];
-                    } else {
-                         [[HistoryAndBalanceDataStorage sharedInstance] setHistory:responseObject];
-                    }
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[HistoryAndBalanceDataStorage sharedInstance] setHistory:responseObject];
+                    });
+                }
+                if (flag) {
                     weakSelf.pageNumber++;
-                    weakSelf.isFirstTimeUpdate = NO;
-                });
+                } else {
+                    weakSelf.pageNumber = 0;
+                }
+                weakSelf.isFirstTimeUpdate = NO;
             } andFailureHandler:^(NSError *error, NSString *message) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.historyController failedToGetData];
                 });
             } andParam:@{@"limit" : @25,
-                         @"offset" : @(self.pageNumber * 25)}];
+                         @"offset" : @(weakSelf.pageNumber * 25)}];
         });
     } else {
         self.delegateDataSource.wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] getHistory];
@@ -115,14 +125,12 @@
 
 -(void)refreshTableViewBalanceLocal:(BOOL)isLocal{
     if (isLocal) {
-//        self.historyController.wigetBalanceLabel.text =
-//        self.historyController.balanceLabel.text = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
-//        [self.historyController setBalance];
         self.delegateDataSource.wallet.balance = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
         [self.historyController setBalance];
     } else {
         __weak typeof(self) weakSelf = self;
         dispatch_async(_requestQueue, ^{
+            [weakSelf.historyController startLoading];
             [BlockchainInfoManager getBalanceForAllAddresesWithSuccessHandler:^(double responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     weakSelf.delegateDataSource.wallet.balance = [NSString stringWithFormat:@"%lf", responseObject];

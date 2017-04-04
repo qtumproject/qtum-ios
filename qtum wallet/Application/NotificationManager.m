@@ -6,18 +6,18 @@
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
-#import "RemoutNotificationManager.h"
+#import "NotificationManager.h"
 #import <UserNotifications/UserNotifications.h>
 
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
-@interface RemoutNotificationManager () <UNUserNotificationCenterDelegate,UIApplicationDelegate>
+@interface NotificationManager () <UNUserNotificationCenterDelegate,UIApplicationDelegate>
 
 @end
 
 static NSString* deviceTokenKey = @"deviceTokenKey";
 
-@implementation RemoutNotificationManager
+@implementation NotificationManager
 
 - (void)registerForRemoutNotifications
 {
@@ -87,6 +87,27 @@ static NSString* deviceTokenKey = @"deviceTokenKey";
 //    }else{
 //        [[TCAPushNotificationManager sharedInstance] pushVCByUserInfo:userInfo];
 //    }
+}
+
+- (void)createLocalNotificationWithString:(NSString*) text andIdentifire:(NSString*)identifire{
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+        UNMutableNotificationContent* content = [UNMutableNotificationContent new];
+        content.title = @"Local Notification";
+        content.subtitle = @"QTUM";
+        content.body = text;
+        
+        UNTimeIntervalNotificationTrigger* triger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+        UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:identifire content:content trigger:triger];
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            NSLog(@"request added!");
+        }];
+    } else {
+        UILocalNotification* notification = [UILocalNotification new];
+        notification.alertBody = text;
+        notification.alertTitle = @"Local Notification";
+        notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
 }
 
 

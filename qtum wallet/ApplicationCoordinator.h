@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "AuthCoordinator.h"
 #import "LoginCoordinator.h"
-#import "RemoutNotificationManager.h"
+#import "NotificationManager.h"
 
 @protocol ApplicationCoordinatorDelegate <NSObject>
 
@@ -23,7 +23,7 @@
 @interface ApplicationCoordinator : BaseCoordinator <Coordinatorable, ApplicationCoordinatorDelegate>
 
 @property (strong,nonatomic) NSUserDefaults* defaults;
-@property (strong,nonatomic,readonly) RemoutNotificationManager* notificationManager;
+@property (strong,nonatomic,readonly) NotificationManager* notificationManager;
 
 -(void)start;
 //flows

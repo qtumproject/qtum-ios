@@ -70,7 +70,7 @@ static NSInteger countOfSections = 2;
     if (section == 0) {
         return 0;
     }
-    return 32.0f;
+    return 31.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -87,7 +87,7 @@ static NSInteger countOfSections = 2;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     static CGFloat previousOffset;
-    static CGFloat fixedHeaderPosition = 146;
+    static CGFloat fixedHeaderPosition = 148;
     CGFloat scrollDiff = scrollView.contentOffset.y - previousOffset;
     BOOL isScrollingUp = scrollDiff > fixedHeaderPosition;
 
@@ -111,7 +111,7 @@ static NSInteger countOfSections = 2;
     float reload_distance = 50;
     if(y > h + reload_distance) {
         [self.delegate setLastPageForHistory:0 needIncrease:YES];
-        [self.delegate refreshTableViewDataLocal:NO];
+        [self.delegate refreshTableViewDataLocal:NO fromStart:NO];
         [self.delegate refreshTableViewBalanceLocal:YES];
     }
 }

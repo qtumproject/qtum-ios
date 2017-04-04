@@ -26,7 +26,7 @@
 @property (strong,nonatomic) UIViewController* viewController;
 @property (strong,nonatomic) UINavigationController* navigationController;
 @property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
-@property (strong,nonatomic) RemoutNotificationManager* notificationManager;
+@property (strong,nonatomic) NotificationManager* notificationManager;
 
 
 @property (nonatomic,strong) NSString *amount;
@@ -53,7 +53,7 @@
     self = [super init];
     if (self != nil) {
         _controllersFactory = [ControllersFactory sharedInstance];
-        _notificationManager = [RemoutNotificationManager new];
+        _notificationManager = [NotificationManager new];
     }
     return self;
 }

@@ -56,7 +56,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
         }
     }];
     
-    [self.currentSocket on:@"disconnected" callback:^(NSArray* data, SocketAckEmitter* ack) {
+    [self.currentSocket on:@"disconnect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         weakSelf.status = Disconnected;
     }];
 
@@ -66,18 +66,21 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 -(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler{
     
     [self.currentSocket onAny:^(SocketAnyEvent * _Nonnull event) {
-        
+        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:[NSString stringWithFormat:@"any event - > %@",event.event] andIdentifire:@"onAny"];
     }];
     
     [self.currentSocket on:@"balance_changed" callback:^(NSArray* data, SocketAckEmitter* ack) {
+
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
 
         [BlockchainInfoManager updateBalance:[self.delegate.adapter adaptiveDataForBalance:[data[0][@"balance"] floatValue]]];
+        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Balance Changed" andIdentifire:@"balance_changed"];
     }];
     
     [self.currentSocket on:@"new_transaction" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
         [BlockchainInfoManager addHistoryElementWithDict:(NSDictionary*)data[0]];
+        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"New Transaction" andIdentifire:@"new_transaction"];
     }];
     
     [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses]];

@@ -155,7 +155,7 @@
     element.amount = @(amount);
     element.address = dictionary[@"address"];
     element.dateNumber = ![dictionary[@"block_time"] isKindOfClass:[NSNull class]] ? dictionary[@"block_time"] : nil;
-    element.send = amount > 0;
+    element.send = amount < 0;
     element.confirmed = [dictionary[@"block_height"] floatValue] > 0;
     return  element;
 }
@@ -174,32 +174,25 @@
 }
 
 + (CGFloat)calcAmount:(NSDictionary *)dictionary{
-    NSArray* mineAddessesArray = [self createAllKeysArray];
-    NSMutableDictionary* outAddressesSet = [NSMutableDictionary new];
-    NSMutableDictionary* inAddressesSet = [NSMutableDictionary new];
+    NSDictionary* hashTableAdresses = [self getHashTableOfKeys];
     CGFloat outMoney = 0;
     CGFloat inMoney = 0;
     
+    //if hashTable of adresses constain object, add this value to inValue
     for (NSDictionary* inObject in dictionary[@"vin"]) {
-        [inAddressesSet setObject:inObject forKey:inObject[@"address"]];
+        if ([hashTableAdresses objectForKey:inObject[@"address"]]) {
+            inMoney += [inObject[@"value"] floatValue];
+        }
     }
     
+    //if hashTable of adresses constain object, add this value to ouyValue
     for (NSDictionary* outObject in dictionary[@"vout"]) {
-        [outAddressesSet setObject:outObject forKey:outObject[@"address"]];
-    }
-    
-    for (NSString* address in mineAddessesArray) {
-        NSDictionary* inNode = [inAddressesSet objectForKey:address];
-        NSDictionary* outNode = [outAddressesSet objectForKey:address];
-        if (inNode) {
-            inMoney += [inNode[@"value"] floatValue];
-        }
-        if (outNode) {
-            outMoney += [outNode[@"value"] floatValue];
+        if ([hashTableAdresses objectForKey:outObject[@"address"]]) {
+            outMoney += [outObject[@"value"] floatValue];
         }
     }
-    
-    return inMoney - outMoney;
+
+    return outMoney - inMoney;
 }
 
 + (void)updateBalance:(CGFloat) balance{
@@ -224,6 +217,17 @@
     }
     
     return [NSArray arrayWithArray:array];
+}
+
++ (NSDictionary *)getHashTableOfKeys{
+    NSMutableDictionary *hashTable = [NSMutableDictionary new];
+    for (BTCKey *key in [[WalletManager sharedInstance].getCurrentWallet getAllKeys]) {
+        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        if (keyString) {
+            [hashTable setObject:[NSNull null] forKey:keyString];
+        }
+    }
+    return [hashTable copy];
 }
 
 @end

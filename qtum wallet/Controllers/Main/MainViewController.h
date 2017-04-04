@@ -23,5 +23,6 @@
 -(void)setBalance;
 -(void)failedToGetData;
 -(void)failedToGetBalance;
+-(void)startLoading;
 
 @end

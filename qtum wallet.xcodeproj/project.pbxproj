@@ -67,7 +67,7 @@
 		B35130681E49DF910048A28C /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130671E49DF910048A28C /* ImageLoader.m */; };
 		B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DF71E811D4500EBF094 /* RPCAdapter.m */; };
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
-		B3597DFE1E81517200EBF094 /* RemoutNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* RemoutNotificationManager.m */; };
+		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
 		B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35EE88C1E4C6963008F4403 /* FirstNewTableCell.m */; };
 		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
@@ -289,8 +289,8 @@
 		B3597DF71E811D4500EBF094 /* RPCAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCAdapter.m; sourceTree = "<group>"; };
 		B3597DF91E811D6500EBF094 /* ServerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerAdapter.h; sourceTree = "<group>"; };
 		B3597DFA1E811D6500EBF094 /* ServerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerAdapter.m; sourceTree = "<group>"; };
-		B3597DFC1E81517200EBF094 /* RemoutNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoutNotificationManager.h; sourceTree = "<group>"; };
-		B3597DFD1E81517200EBF094 /* RemoutNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoutNotificationManager.m; sourceTree = "<group>"; };
+		B3597DFC1E81517200EBF094 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
+		B3597DFD1E81517200EBF094 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
 		B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88B1E4C6963008F4403 /* FirstNewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstNewTableCell.h; sourceTree = "<group>"; };
@@ -1145,8 +1145,8 @@
 				B3DD275C1E681A8B00BB0635 /* SendCoordinator.m */,
 				B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */,
 				B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */,
-				B3597DFC1E81517200EBF094 /* RemoutNotificationManager.h */,
-				B3597DFD1E81517200EBF094 /* RemoutNotificationManager.m */,
+				B3597DFC1E81517200EBF094 /* NotificationManager.h */,
+				B3597DFD1E81517200EBF094 /* NotificationManager.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1460,7 +1460,7 @@
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
-				B3597DFE1E81517200EBF094 /* RemoutNotificationManager.m in Sources */,
+				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
 				B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */,
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,

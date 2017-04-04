@@ -55,8 +55,6 @@
     self.wigetBalanceLabel.text =
     self.balanceLabel.text = @"0";
 
-    self.balanceLoaded = YES;
-    self.historyLoaded = YES;
     self.isFirstTimeUpdate = YES;
     self.canNewRequest = YES;
     
@@ -64,6 +62,8 @@
     [self configRefreshControl];
     self.navigationController.navigationBar.translucent = NO;
     [self configAdressLabel];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,7 +72,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -80,7 +80,14 @@
     [super viewDidAppear:animated];
     
     // get all dataForScreen
-    [self updateDataLocal:!self.isFirstTimeUpdate];
+    if (self.isFirstTimeUpdate) {
+        self.isFirstTimeUpdate = NO;
+        [self getBalanceLocal:YES];
+        [self getHistoryLocal:NO fromStart:YES];
+    } else {
+        [self getBalanceLocal:YES];
+        [self getHistoryLocal:YES fromStart:NO];
+    }
 }
 
 #pragma mark - Configuration
@@ -117,10 +124,6 @@
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
 }
 
-- (IBAction)refreshButtonWasPressed:(id)sender{
-    [self.delegate setLastPageForHistory:0 needIncrease:NO];
-    [self updateDataLocal:!self.isFirstTimeUpdate];
-}
 
 //
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -203,9 +206,8 @@
     self.isFirstTimeUpdate = NO;
     [self.refreshControl endRefreshing];
     if (self.balanceLoaded && self.historyLoaded) {
-        [SVProgressHUD show];
         [self getBalanceLocal:isLocal];
-        [self getHistoryLocal:isLocal];
+        [self getHistoryLocal:isLocal fromStart:NO];
     }
 }
 
@@ -216,9 +218,9 @@
     [self.delegate refreshTableViewBalanceLocal:isLocal];
 }
 
-- (void)getHistoryLocal:(BOOL)isLocal{
+- (void)getHistoryLocal:(BOOL)isLocal fromStart:(BOOL) flag{
     self.historyLoaded = NO;
-    [self.delegate refreshTableViewDataLocal:NO];
+    [self.delegate refreshTableViewDataLocal:isLocal fromStart:flag];
 }
 
 -(void)reloadTableView{
@@ -244,6 +246,14 @@
     }
 }
 
+-(void)startLoading{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (![SVProgressHUD isVisible]) {
+            [SVProgressHUD show];
+        }
+    });
+}
+
 -(void)failedToGetData{
     self.historyLoaded = YES;
     if (self.balanceLoaded && self.historyLoaded) {
@@ -267,6 +277,12 @@
 
 - (IBAction)actionRecive:(id)sender {
     [self performSegueWithIdentifier:@"MaintToRecieve" sender:self];
+}
+
+
+- (IBAction)refreshButtonWasPressed:(id)sender{
+    [self.delegate setLastPageForHistory:0 needIncrease:NO];
+    [self updateDataLocal:NO];
 }
 
 #pragma merk - Seque
