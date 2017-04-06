@@ -18,7 +18,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 @property (strong, nonatomic) SocketIOClient* currentSocket;
 @property (assign,nonatomic) ConnectionStatus status;
 @property (nonatomic, copy) void (^onUpdateAddresses)(NSArray*);
-@property (nonatomic, copy) void (^startCallback)();
+@property (assign, nonatomic) BOOL isAlreadyInit;
 
 
 
@@ -34,7 +34,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     return self;
 }
 
--(void)startWithHandler:(void(^)()) handler{
+-(void)startAndSubscribeWithAddresses:(NSArray*) addresses andHandler:(void(^)()) handler{
     __weak __typeof(self)weakSelf = self;
 //    [SIOSocket socketWithHost:BASE_URL reconnectAutomatically:YES attemptLimit:-1 withDelay:2 maximumDelay:5 timeout:400 response:^(SIOSocket *socket) {
 //        weakSelf.currentSocket = socket;
@@ -44,16 +44,16 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 //        };
 //    }];
     
-    self.startCallback = handler;
     NSURL* url = [[NSURL alloc] initWithString:BASE_URL];
     self.currentSocket = [[SocketIOClient alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
     
     [self.currentSocket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         weakSelf.status = Connected;
-        if (weakSelf.startCallback) {
-            weakSelf.startCallback();
-            weakSelf.startCallback = nil;
+        if (!weakSelf.isAlreadyInit) {
+            [weakSelf subscribeToEvents];
+            weakSelf.isAlreadyInit = YES;
         }
+        [weakSelf subscripeToUpdateAdresses:addresses withCompletession:nil];
     }];
     
     [self.currentSocket on:@"disconnect" callback:^(NSArray* data, SocketAckEmitter* ack) {
@@ -64,15 +64,14 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 }
 
 -(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler{
-    
-    [self.currentSocket onAny:^(SocketAnyEvent * _Nonnull event) {
-        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:[NSString stringWithFormat:@"any event - > %@",event.event] andIdentifire:@"onAny"];
-    }];
-    
+    [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses]];
+}
+
+-(void)subscribeToEvents{
     [self.currentSocket on:@"balance_changed" callback:^(NSArray* data, SocketAckEmitter* ack) {
-
+        
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
-
+        
         [BlockchainInfoManager updateBalance:[self.delegate.adapter adaptiveDataForBalance:[data[0][@"balance"] floatValue]]];
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Balance Changed" andIdentifire:@"balance_changed"];
     }];
@@ -83,7 +82,9 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"New Transaction" andIdentifire:@"new_transaction"];
     }];
     
-    [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses]];
+//    [self.currentSocket onAny:^(SocketAnyEvent * _Nonnull event) {
+//        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:[NSString stringWithFormat:@"any event - > %@",event.event] andIdentifire:@"onAny"];
+//    }];
 }
 
 -(void)stoptWithHandler:(void(^)()) handler{

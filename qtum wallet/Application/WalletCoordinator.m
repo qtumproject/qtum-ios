@@ -28,6 +28,7 @@
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 @property (assign, nonatomic) NSInteger pageNumber;
 @property (strong, nonatomic) dispatch_queue_t requestQueue;
+@property (assign,nonatomic)BOOL isNewDataLoaded;
 
 @end
 
@@ -38,7 +39,9 @@
     if (self) {
         _navigationController = navigationController;
         _isFirstTimeUpdate = YES;
+        _isNewDataLoaded = YES;
         _requestQueue = dispatch_queue_create("com.pixelplex.requestQueue", DISPATCH_QUEUE_SERIAL);
+        [self subcribeEvents];
     }
     return self;
 }
@@ -63,8 +66,6 @@
     self.delegateDataSource.collectionDelegateDataSource = self.collectionDelegateDataSource;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
-    
-    [self subcribeEvents];
 }
 
 #pragma mark - WalletCoordinatorDelegate
@@ -79,48 +80,15 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)setLastPageForHistory:(NSInteger)lastPage needIncrease:(BOOL) inc{
-    if (inc) {
-//        self.pageNumber++;
-    } else {
-        __weak typeof(self) weakSelf = self;
-        dispatch_async(_requestQueue, ^{
-            weakSelf.pageNumber = 0;
-        });
+- (void)reloadTableViewData{
+    if (self.isNewDataLoaded) {
+        [self reloadHistory];
     }
 }
 
--(void)refreshTableViewDataLocal:(BOOL)isLocal fromStart:(BOOL) flag{
-    if (!isLocal) {
-        __weak typeof(self) weakSelf = self;
-        dispatch_async(_requestQueue, ^{
-            [weakSelf.historyController startLoading];
-            [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
-                if (weakSelf.pageNumber > 0) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[HistoryAndBalanceDataStorage sharedInstance] addHistoryElements:responseObject];
-                    });
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[HistoryAndBalanceDataStorage sharedInstance] setHistory:responseObject];
-                    });
-                }
-                if (flag) {
-                    weakSelf.pageNumber++;
-                } else {
-                    weakSelf.pageNumber = 0;
-                }
-                weakSelf.isFirstTimeUpdate = NO;
-            } andFailureHandler:^(NSError *error, NSString *message) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf.historyController failedToGetData];
-                });
-            } andParam:@{@"limit" : @25,
-                         @"offset" : @(weakSelf.pageNumber * 25)}];
-        });
-    } else {
-        self.delegateDataSource.wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] getHistory];
-        [self.historyController reloadTableView];
+- (void)refreshTableViewData{
+    if (self.isNewDataLoaded) {
+        [self refreshHistory];
     }
 }
 
@@ -171,6 +139,54 @@
 
 #pragma mark - Private Methods
 
+-(void)refreshHistory{
+    __weak typeof(self) weakSelf = self;
+    
+    self.isNewDataLoaded = NO;
+    dispatch_async(_requestQueue, ^{
+        
+        [weakSelf.historyController startLoading];
+        weakSelf.pageNumber ++;
+        [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[HistoryAndBalanceDataStorage sharedInstance] addHistoryElements:responseObject];
+                weakSelf.isNewDataLoaded = YES;
+            });
+            weakSelf.pageNumber++;
+            weakSelf.isFirstTimeUpdate = NO;
+        } andFailureHandler:^(NSError *error, NSString *message) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.historyController failedToGetData];
+                weakSelf.isNewDataLoaded = YES;
+            });
+        } andParam:@{@"limit" : @25,
+                     @"offset" : @(weakSelf.pageNumber * 25)}];
+    });
+}
+
+-(void)reloadHistory{
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(_requestQueue, ^{
+        [weakSelf.historyController startLoading];
+        weakSelf.pageNumber = 0;
+        [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[HistoryAndBalanceDataStorage sharedInstance] setHistory:responseObject];
+                weakSelf.isNewDataLoaded = YES;
+            });
+            weakSelf.isFirstTimeUpdate = NO;
+        } andFailureHandler:^(NSError *error, NSString *message) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.historyController failedToGetData];
+                weakSelf.isNewDataLoaded = YES;
+            });
+        } andParam:@{@"limit" : @25,
+                     @"offset" : @(weakSelf.pageNumber * 25)}];
+    });
+}
+
 
 -(void)subcribeEvents{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHistory) name:HistoryUpdateEvent object:nil];
@@ -180,7 +196,7 @@
 -(void)updateHistory{
     __weak __typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.delegateDataSource.wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] getHistory];
+        weakSelf.delegateDataSource.wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] historyPrivate];
         [weakSelf.historyController reloadTableView];
     });
 }

@@ -13,12 +13,12 @@
 @protocol WalletCoordinatorDelegate <NSObject>
 
 @required
-- (void)refreshTableViewDataLocal:(BOOL)isLocal fromStart:(BOOL) flag;
+- (void)reloadTableViewData;
+- (void)refreshTableViewData;
 - (void)refreshTableViewBalanceLocal:(BOOL)isLocal;
 - (void)qrCodeScannedWithDict:(NSDictionary*) dict;
 - (void)viewWillAppear;
 - (void)showAddressInfo;
-- (void)setLastPageForHistory:(NSInteger)lastPage needIncrease:(BOOL) inc;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 

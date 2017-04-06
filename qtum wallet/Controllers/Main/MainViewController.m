@@ -62,8 +62,6 @@
     [self configRefreshControl];
     self.navigationController.navigationBar.translucent = NO;
     [self configAdressLabel];
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,7 +70,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -81,12 +79,8 @@
     
     // get all dataForScreen
     if (self.isFirstTimeUpdate) {
+        [self.delegate reloadTableViewData];
         self.isFirstTimeUpdate = NO;
-        [self getBalanceLocal:YES];
-        [self getHistoryLocal:NO fromStart:YES];
-    } else {
-        [self getBalanceLocal:YES];
-        [self getHistoryLocal:YES fromStart:NO];
     }
 }
 
@@ -104,7 +98,6 @@
     UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
     refreshBackgroundView.backgroundColor = [UIColor colorWithRed:63/255.0f green:56/255.0f blue:196/255.0f alpha:1.0f];
     [self.tableView insertSubview:refreshBackgroundView atIndex:0];
-    
 }
 
 -(void)configAdressLabel{
@@ -124,7 +117,6 @@
     
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderView" bundle:nil];
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
-    
 }
 
 - (void)fadeInNavigationBar{
@@ -133,7 +125,6 @@
         [UIView animateWithDuration:0.2 animations:^{
             self.customNavigationBar.layer.backgroundColor = [UIColor colorWithRed:63/255.0f green:56/255.0f blue:196/255.0f alpha:1.0].CGColor;
         }];
-
     }
 }
 - (void)fadeOutNavigationBar{
@@ -148,14 +139,6 @@
 
 #pragma mark - Private Methods
 
--(void)updateDataLocal:(BOOL)isLocal{
-    self.isFirstTimeUpdate = NO;
-    [self.refreshControl endRefreshing];
-    if (self.balanceLoaded && self.historyLoaded) {
-        [self getBalanceLocal:isLocal];
-        [self getHistoryLocal:isLocal fromStart:NO];
-    }
-}
 
 #pragma mark - Methods
 
@@ -164,14 +147,10 @@
     [self.delegate refreshTableViewBalanceLocal:isLocal];
 }
 
-- (void)getHistoryLocal:(BOOL)isLocal fromStart:(BOOL) flag{
-    self.historyLoaded = NO;
-    [self.delegate refreshTableViewDataLocal:isLocal fromStart:flag];
-}
-
 -(void)reloadTableView{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     });
 
     self.historyLoaded = YES;
@@ -224,10 +203,10 @@
     [self performSegueWithIdentifier:@"MaintToRecieve" sender:self];
 }
 
-
 - (IBAction)refreshButtonWasPressed:(id)sender{
-    [self.delegate setLastPageForHistory:0 needIncrease:NO];
-    [self updateDataLocal:NO];
+    self.historyLoaded = YES;
+    self.balanceLoaded = YES;
+    [self.delegate reloadTableViewData];
 }
 
 #pragma merk - Seque

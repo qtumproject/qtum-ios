@@ -52,7 +52,6 @@
 
 - (void)getHistory{
     self.historyLoaded = NO;
-    [self.delegate refreshTableViewDataLocal:NO fromStart:YES];
 }
 
 #pragma mark - Public Methods

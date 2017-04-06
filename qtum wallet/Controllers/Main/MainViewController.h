@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WalletHistoryDelegateDataSource.h"
 
 @protocol WalletCoordinatorDelegate;
-@protocol ControllerDelegate;
-@class WalletHistoryDelegateDataSource;
 
 @interface MainViewController : BaseViewController <ControllerDelegate>
 

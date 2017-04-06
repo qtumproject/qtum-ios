@@ -116,8 +116,7 @@ static NSInteger countOfSections = 2;
     
     float reload_distance = 50;
     if(y > h + reload_distance) {
-        [self.delegate setLastPageForHistory:0 needIncrease:YES];
-        [self.delegate refreshTableViewDataLocal:NO fromStart:NO];
+        [self.delegate refreshTableViewData];
         [self.delegate refreshTableViewBalanceLocal:YES];
     }
 }
