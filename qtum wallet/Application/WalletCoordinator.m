@@ -15,6 +15,7 @@
 #import "WalletTypeCollectionDataSourceDelegate.h"
 #import "WalletModel.h"
 #import "RecieveViewController.h"
+#import "HistoryItemViewController.h"
 
 
 @interface WalletCoordinator ()
@@ -150,7 +151,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
-    NSLog(@"Cell Tapped");
+    HistoryItemViewController* controller = (HistoryItemViewController*)[[ControllersFactory sharedInstance] createHistoryItem];
+    controller.item = item;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{

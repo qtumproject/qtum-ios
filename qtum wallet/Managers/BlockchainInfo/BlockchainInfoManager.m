@@ -151,12 +151,7 @@
 + (HistoryElement *)createHistoryElement:(NSDictionary *)dictionary{
     
     HistoryElement *element = [HistoryElement new];
-    CGFloat amount = [self calcAmount:dictionary];
-    element.amount = @(amount);
-    element.address = dictionary[@"address"];
-    element.dateNumber = ![dictionary[@"block_time"] isKindOfClass:[NSNull class]] ? dictionary[@"block_time"] : nil;
-    element.send = amount < 0;
-    element.confirmed = [dictionary[@"block_height"] floatValue] > 0;
+    [element setupWithObject:dictionary];
     return  element;
 }
 
@@ -171,28 +166,6 @@
 +(void)addHistoryElementWithDict:(NSDictionary*) dict {
     HistoryElement* item = [[self class] createHistoryElement:dict];
     [[self class] updateHistoryWithItem:item];
-}
-
-+ (CGFloat)calcAmount:(NSDictionary *)dictionary{
-    NSDictionary* hashTableAdresses = [self getHashTableOfKeys];
-    CGFloat outMoney = 0;
-    CGFloat inMoney = 0;
-    
-    //if hashTable of adresses constain object, add this value to inValue
-    for (NSDictionary* inObject in dictionary[@"vin"]) {
-        if ([hashTableAdresses objectForKey:inObject[@"address"]]) {
-            inMoney += [inObject[@"value"] floatValue];
-        }
-    }
-    
-    //if hashTable of adresses constain object, add this value to ouyValue
-    for (NSDictionary* outObject in dictionary[@"vout"]) {
-        if ([hashTableAdresses objectForKey:outObject[@"address"]]) {
-            outMoney += [outObject[@"value"] floatValue];
-        }
-    }
-
-    return outMoney - inMoney;
 }
 
 + (void)updateBalance:(CGFloat) balance{

@@ -29,4 +29,8 @@
 // Convert
 + (BTCAmount)convertValueToAmount:(double)value;
 
+//Keys
+
++ (NSDictionary *)getHashTableOfKeys;
+
 @end

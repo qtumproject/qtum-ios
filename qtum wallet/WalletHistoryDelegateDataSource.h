@@ -17,6 +17,7 @@
 
 - (void)fadeInNavigationBar;
 - (void)fadeOutNavigationBar;
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
 
 @end
 
@@ -29,6 +30,7 @@
 
 @interface WalletHistoryDelegateDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
+@property (weak, nonatomic) UITableView* tableView;
 @property (strong, nonatomic) WalletModel* wallet;
 @property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;

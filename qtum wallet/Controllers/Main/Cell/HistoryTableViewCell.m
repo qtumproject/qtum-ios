@@ -37,8 +37,7 @@
     
     self.addressLabel.text = historyElement.address;
     self.amountLabel.text = historyElement.amountString;
-    self.dateLabel.text = historyElement.dateString;
-    
+    self.dateLabel.text = historyElement.shortDateString;
     
     if (historyElement.send) {
         self.typeImage.image = [UIImage imageNamed:@"history_send"];

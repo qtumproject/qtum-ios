@@ -14,10 +14,14 @@
 @property (nonatomic, copy) NSNumber *amount;
 @property (nonatomic, copy) NSString *amountString;
 @property (nonatomic) NSNumber *dateNumber;
-@property (nonatomic, copy) NSString *dateString;
+@property (nonatomic, copy) NSString *shortDateString;
+@property (nonatomic, copy) NSString *fullDateString;
 @property (nonatomic) BOOL send;
 @property (assign, nonatomic) BOOL confirmed;
+@property (strong, nonatomic) NSMutableArray *fromAddreses;
+@property (strong, nonatomic) NSMutableArray *toAddresses;
 
 -(BOOL)isEqualElementWithoutConfimation:(HistoryElement*)object;
+-(void)setupWithObject:(id)object;
 
 @end

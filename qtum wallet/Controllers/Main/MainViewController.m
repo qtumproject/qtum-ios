@@ -104,6 +104,7 @@
     UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
     refreshBackgroundView.backgroundColor = [UIColor colorWithRed:63/255.0f green:56/255.0f blue:196/255.0f alpha:1.0f];
     [self.tableView insertSubview:refreshBackgroundView atIndex:0];
+    
 }
 
 -(void)configAdressLabel{
@@ -112,73 +113,19 @@
 }
 
 -(void)configTableView{
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [self getFooterView];
     CGFloat offset = self.customNavigationBar.frame.size.height;
     self.tableView.contentInset =
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
     self.tableView.dataSource = self.delegateDataSource;
     self.tableView.delegate = self.delegateDataSource;
+    self.delegateDataSource.tableView = self.tableView;
     self.delegateDataSource.controllerDelegate = self;
     
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderView" bundle:nil];
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
-}
-
-
-//
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-//    NSInteger yOffset = scrollView.contentOffset.y < scrollView.contentInset.top * -1 ? scrollView.contentInset.top : scrollView.contentOffset.y * -1;
-//    
-//    [self calculatePositionForView:self.topBoardView withScrollOffset:yOffset withLimetedYValue:nil];
-//    [self calculatePositionForView:self.quickInfoBoard withScrollOffset:yOffset withLimetedYValue:@(self.customNavigationBar.frame.size.height)];
-//    [self calculatePositionForView:self.topSubstrateView withScrollOffset:yOffset withLimetedYValue:nil];
-//    
-//    if (scrollView.contentOffset.y < -350 && self.canNewRequest) {
-//        [self refreshButtonWasPressed:nil];
-//        self.canNewRequest = NO;
-//    } else if(scrollView.contentOffset.y == -scrollView.contentInset.top){
-//        self.canNewRequest = YES;
-//    }
-//
-//    [self setupNavigationBarPerformance];
-//    static CGFloat previousOffset;
-//    CGFloat scrollDiff = scrollView.contentOffset.y - previousOffset;
-//    CGFloat absoluteTop = 0;
-//    CGFloat absoluteBottom = scrollView.contentSize.height - scrollView.frame.size.height;
-//    BOOL isScrollingDown = scrollDiff > 0 && scrollView.contentOffset.y > absoluteTop;
-//    BOOL isScrollingTop = scrollDiff < 0 && scrollView.contentOffset.y < absoluteBottom;
-//    NSLog(@"%f",scrollDiff);
 }
-
--(void)calculatePositionForView:(UIView*)view withScrollOffset:(NSInteger)offset withLimetedYValue:(NSNumber*)value{
-    static CGFloat previousOffset;
-    CGRect rect = view.frame;
-    if (value) {
-        if (offset - rect.size.height < value.integerValue) {
-            rect.origin.y = value.integerValue;
-        }else if (offset >= rect.size.height + value.integerValue) {
-            rect.origin.y = offset - rect.size.height;
-        }
-    }else {
-        rect.origin.y += previousOffset + offset;
-    }
-    previousOffset = - offset;
-    view.frame = rect;
-}
-
--(void)setupNavigationBarPerformance{
-    BOOL flag = self.quickInfoBoard.frame.origin.y <= self.customNavigationBar.frame.size.height + 50;
-    CGFloat customNavigationBarAlpha;
-    if (flag) {
-        customNavigationBarAlpha =  1 - (self.quickInfoBoard.frame.origin.y - self.customNavigationBar.frame.size.height) / 50;
-    } else {
-        customNavigationBarAlpha =  0;
-    }
-    self.customNavigationBar.backgroundColor = [UIColor colorWithRed:54/255. green:85/255. blue:200/255. alpha:customNavigationBarAlpha];
-    self.shortInfoView.alpha = customNavigationBarAlpha;
-}
-
 
 - (void)fadeInNavigationBar{
     if (self.isNavigationBarFadeout) {
@@ -199,6 +146,20 @@
     }
 }
 
+
+
+-(UIView*)getFooterView{
+    UIView* footerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 40.0)];
+    
+    UIActivityIndicatorView * actInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    actInd.tag = 10;
+    actInd.frame = CGRectMake(150.0, 5.0, 20.0, 20.0);
+    actInd.hidesWhenStopped = YES;
+    [footerView addSubview:actInd];
+    
+    return footerView;
+}
 
 #pragma mark - Private Methods
 
@@ -224,7 +185,6 @@
 }
 
 -(void)reloadTableView{
-//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });

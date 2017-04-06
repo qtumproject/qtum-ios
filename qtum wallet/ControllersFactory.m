@@ -28,6 +28,7 @@
 #import "HistoryViewController.h"
 #import "WalletNavigationController.h"
 #import "RecieveViewController.h"
+#import "HistoryItemViewController.h"
 
 
 @implementation ControllersFactory
@@ -146,6 +147,11 @@
 
 -(RecieveViewController*)createRecieveViewController{
     RecieveViewController* controller = (RecieveViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"RecieveViewController"];
+    return controller;
+}
+
+-(HistoryItemViewController*)createHistoryItem{
+    HistoryItemViewController* controller = (HistoryItemViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"HistoryItemViewController"];
     return controller;
 }
 

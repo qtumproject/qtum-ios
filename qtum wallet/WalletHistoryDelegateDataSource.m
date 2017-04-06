@@ -85,6 +85,12 @@ static NSInteger countOfSections = 2;
 }
 
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     static CGFloat previousOffset;
     static CGFloat fixedHeaderPosition = 148;

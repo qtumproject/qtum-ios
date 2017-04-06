@@ -38,6 +38,11 @@
 		B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */; };
 		B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32EBFED1E1E4380003AA578 /* PinController.m */; };
 		B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */; };
+		B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */; };
+		B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B336017F1E963B6100243A21 /* HistoryItemHeaderView.xib */; };
+		B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601821E963BD200243A21 /* HistoryItemHeaderView.m */; };
+		B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601851E963EC800243A21 /* HistoryItemViewController.m */; };
+		B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */; };
 		B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */; };
 		B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */; };
 		B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */; };
@@ -230,6 +235,15 @@
 		B32EBFED1E1E4380003AA578 /* PinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinController.m; sourceTree = "<group>"; };
 		B32EBFEF1E1E4711003AA578 /* CreatePinRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinRootController.h; sourceTree = "<group>"; };
 		B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinRootController.m; sourceTree = "<group>"; };
+		B336017B1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemAddressCellTableViewCell.h; sourceTree = "<group>"; };
+		B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemAddressCellTableViewCell.m; sourceTree = "<group>"; };
+		B336017F1E963B6100243A21 /* HistoryItemHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryItemHeaderView.xib; sourceTree = "<group>"; };
+		B33601811E963BD200243A21 /* HistoryItemHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemHeaderView.h; sourceTree = "<group>"; };
+		B33601821E963BD200243A21 /* HistoryItemHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemHeaderView.m; sourceTree = "<group>"; };
+		B33601841E963EC800243A21 /* HistoryItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemViewController.h; sourceTree = "<group>"; };
+		B33601851E963EC800243A21 /* HistoryItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewController.m; sourceTree = "<group>"; };
+		B33601871E96546C00243A21 /* HistoryItemDelegateDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemDelegateDataSource.h; sourceTree = "<group>"; };
+		B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemDelegateDataSource.m; sourceTree = "<group>"; };
 		B33EAF021E5B399C006125F3 /* NewsDataSourceAndDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDataSourceAndDelegate.h; sourceTree = "<group>"; };
 		B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDataSourceAndDelegate.m; sourceTree = "<group>"; };
 		B33EAF051E5C5D9A006125F3 /* AuthCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthCoordinator.h; sourceTree = "<group>"; };
@@ -472,6 +486,7 @@
 		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
+				B33601791E963A0500243A21 /* History Item  */,
 				E7396AF51DDF0C7D0002CD47 /* Cell */,
 				B3DD275E1E681AA500BB0635 /* WalletCoordinator.h */,
 				B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */,
@@ -578,6 +593,38 @@
 				B32C3CF51E1129270094C82C /* ControllersFactory.m */,
 			);
 			name = Factory;
+			sourceTree = "<group>";
+		};
+		B33601791E963A0500243A21 /* History Item  */ = {
+			isa = PBXGroup;
+			children = (
+				B336017E1E963B4200243A21 /* Header */,
+				B336017A1E963A2200243A21 /* Cell */,
+				B33601841E963EC800243A21 /* HistoryItemViewController.h */,
+				B33601851E963EC800243A21 /* HistoryItemViewController.m */,
+				B33601871E96546C00243A21 /* HistoryItemDelegateDataSource.h */,
+				B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */,
+			);
+			name = "History Item ";
+			sourceTree = "<group>";
+		};
+		B336017A1E963A2200243A21 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B336017B1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.h */,
+				B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		B336017E1E963B4200243A21 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				B336017F1E963B6100243A21 /* HistoryItemHeaderView.xib */,
+				B33601811E963BD200243A21 /* HistoryItemHeaderView.h */,
+				B33601821E963BD200243A21 /* HistoryItemHeaderView.m */,
+			);
+			name = Header;
 			sourceTree = "<group>";
 		};
 		B33EAF001E5B3920006125F3 /* Storyboards */ = {
@@ -1337,6 +1384,7 @@
 			files = (
 				B385B5AA1E6DA3DD003BB96C /* WalletTypeCollectionCell.xib in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */,
+				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
 				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
@@ -1452,6 +1500,7 @@
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
+				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
 				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */,
@@ -1467,6 +1516,7 @@
 				B3DD275D1E681A8B00BB0635 /* SendCoordinator.m in Sources */,
 				B3F06D111E69B68B006341F7 /* CreateTokenStep2ViewController.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
+				B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */,
 				B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */,
 				B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */,
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
@@ -1498,6 +1548,7 @@
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
+				B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,
@@ -1528,6 +1579,7 @@
 				B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */,
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
 				B32C3CF31E1126200094C82C /* TabBarController.m in Sources */,
+				B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				B35130611E49C9930048A28C /* NewsCellModel.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
