@@ -42,11 +42,13 @@
     if (historyElement.send) {
         self.typeImage.image = [UIImage imageNamed:@"history_send"];
         self.typeLabel.text = @"Sent";
-        self.typeLabel.textColor = historyElement.confirmed ? historyRedColor() : historyGrayColor();
+        self.typeLabel.textColor =
+        self.typeImage.tintColor = historyElement.confirmed ? historyRedColor() : historyGrayColor();
     }else{
         self.typeImage.image = [UIImage imageNamed:@"history_receive"];
         self.typeLabel.text = @"Received";
-        self.typeLabel.textColor = historyElement.confirmed ? historyGreenColor() : historyGrayColor();
+        self.typeLabel.textColor =
+        self.typeImage.tintColor = historyElement.confirmed ? historyGreenColor() : historyGrayColor();
     }
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;

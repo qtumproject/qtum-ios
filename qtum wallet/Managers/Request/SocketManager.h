@@ -21,8 +21,7 @@ typedef NS_ENUM(NSInteger, ConnectionStatus) {
 @property (nonatomic, weak) id <Requestable> delegate;
 
 
--(void)startWithHandler:(void(^)()) handler;
--(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler;
+-(void)startAndSubscribeWithAddresses:(NSArray*) addresses andHandler:(void(^)()) handler;
 -(void)stoptWithHandler:(void(^)()) handler;
 
 

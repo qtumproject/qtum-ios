@@ -17,7 +17,6 @@
 
 - (void)fadeInNavigationBar;
 - (void)fadeOutNavigationBar;
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
 
 @end
 

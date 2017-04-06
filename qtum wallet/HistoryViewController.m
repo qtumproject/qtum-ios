@@ -50,8 +50,7 @@
 
 #pragma mark - Private Methods
 
-- (void)getHistory
-{
+- (void)getHistory{
     self.historyLoaded = NO;
     [self.delegate refreshTableViewDataLocal:NO fromStart:YES];
 }

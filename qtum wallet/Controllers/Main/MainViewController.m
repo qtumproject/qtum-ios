@@ -113,7 +113,7 @@
 }
 
 -(void)configTableView{
-    self.tableView.tableFooterView = [self getFooterView];
+    self.tableView.tableFooterView = [UIView new];
     CGFloat offset = self.customNavigationBar.frame.size.height;
     self.tableView.contentInset =
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
@@ -144,21 +144,6 @@
             self.customNavigationBar.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor;
         }];
     }
-}
-
-
-
--(UIView*)getFooterView{
-    UIView* footerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 40.0)];
-    
-    UIActivityIndicatorView * actInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
-    actInd.tag = 10;
-    actInd.frame = CGRectMake(150.0, 5.0, 20.0, 20.0);
-    actInd.hidesWhenStopped = YES;
-    [footerView addSubview:actInd];
-    
-    return footerView;
 }
 
 #pragma mark - Private Methods
