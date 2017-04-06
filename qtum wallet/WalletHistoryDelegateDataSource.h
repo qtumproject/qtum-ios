@@ -20,6 +20,13 @@
 
 @end
 
+@protocol TableViewDelegate <NSObject>
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
+
+@end
+
 @interface WalletHistoryDelegateDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) WalletModel* wallet;

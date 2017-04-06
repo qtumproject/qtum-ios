@@ -149,6 +149,14 @@
     [self.delegate createPaymentFromWalletScanWithDict:dict];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+    NSLog(@"Cell Tapped");
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+    
+}
+
 #pragma mark - Configuration
 
 -(void)configWalletModel{
@@ -181,5 +189,7 @@
         [weakSelf.historyController setBalance];
     });
 }
+
+
 
 @end

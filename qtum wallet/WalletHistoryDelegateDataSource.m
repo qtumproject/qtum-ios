@@ -70,7 +70,7 @@ static NSInteger countOfSections = 2;
     if (section == 0) {
         return 0;
     }
-    return 31.0f;
+    return 32.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -115,5 +115,16 @@ static NSInteger countOfSections = 2;
         [self.delegate refreshTableViewBalanceLocal:YES];
     }
 }
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.delegate tableView:tableView didSelectRowAtIndexPath:indexPath withItem:self.wallet.historyArray[indexPath.row]];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.delegate tableView:tableView didDeselectRowAtIndexPath:indexPath withItem:self.wallet.historyArray[indexPath.row]];
+}
+
 
 @end
