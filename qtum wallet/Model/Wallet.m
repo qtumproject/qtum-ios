@@ -133,7 +133,9 @@ static NSString* adressKey = @"adress";
 - (BTCKeychain *)createKeychain
 {
     BTCMnemonic *mnemonic = [[BTCMnemonic alloc] initWithWords:self.seedWords password:nil wordListType:BTCMnemonicWordListTypeUnknown];
-    BTCKeychain *keyChain = [[BTCKeychain alloc] initWithSeed:mnemonic.seed];
+//    BTCKeychain *keyChain = [[BTCKeychain alloc] initWithSeed:mnemonic.seed];
+    BTCKeychain *keyChain = [mnemonic.keychain derivedKeychainWithPath:@"m/0'/0'"];
+
     return keyChain;
 }
 
