@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		B30BAE2E1E9E3AA600CA795F /* TokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BAE2D1E9E3AA600CA795F /* TokenManager.m */; };
 		B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31CF71D1E124A25000BCF41 /* HistoryViewController.m */; };
 		B31CF7201E12514A000BCF41 /* Pin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31CF71F1E12514A000BCF41 /* Pin.storyboard */; };
 		B31CF7231E126C2C000BCF41 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31CF7221E126C2C000BCF41 /* Start.storyboard */; };
@@ -182,6 +183,8 @@
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		B30BAE2C1E9E3AA600CA795F /* TokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenManager.h; sourceTree = "<group>"; };
+		B30BAE2D1E9E3AA600CA795F /* TokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenManager.m; sourceTree = "<group>"; };
 		B31CF71C1E124A25000BCF41 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		B31CF71D1E124A25000BCF41 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		B31CF71F1E12514A000BCF41 /* Pin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Pin.storyboard; sourceTree = "<group>"; };
@@ -1160,6 +1163,8 @@
 				E7D241D61DE6D697003E507B /* QRCode */,
 				E7FD366C1DC773FF00748177 /* Request */,
 				E7DD00EB1DC9BFA300FD5335 /* Transaction */,
+				B30BAE2C1E9E3AA600CA795F /* TokenManager.h */,
+				B30BAE2D1E9E3AA600CA795F /* TokenManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1523,6 +1528,7 @@
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */,
+				B30BAE2E1E9E3AA600CA795F /* TokenManager.m in Sources */,
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				B385B5A91E6DA3DD003BB96C /* WalletTypeCollectionCell.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
