@@ -74,10 +74,10 @@ NSInteger const USERS_KEYS_COUNT = 100;
 
 #pragma mark - Public Methods
 
-- (BTCKey *)getRandomKey
-{
+- (BTCKey *)getRandomKey{
+    
     uint randomedIndex = arc4random() % self.countOfUsedKeys;
-    BTCKey *newKey = [self.keyChain keyAtIndex:randomedIndex];
+    BTCKey *newKey = [self.keyChain keyAtIndex:randomedIndex hardened:YES];
     [self storeLastAdreesKey:newKey];
     self.lastRandomKey = newKey;
     return newKey;
@@ -102,14 +102,14 @@ static NSString* adressKey = @"adress";
 
 - (BTCKey *)getKeyAtIndex:(NSUInteger)index;
 {
-    return [self.keyChain keyAtIndex:(uint)index];
+    return [self.keyChain keyAtIndex:(uint)index hardened:YES];
 }
 
 - (NSArray *)getAllKeys
 {
     NSMutableArray *allKeys = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
-        [allKeys addObject:[self.keyChain keyAtIndex:(uint)i]];
+        [allKeys addObject:[self.keyChain keyAtIndex:(uint)i hardened:YES]];
     }
     return allKeys;
 }
@@ -122,7 +122,8 @@ static NSString* adressKey = @"adress";
 - (NSArray <NSString*>*)getAllKeysAdreeses{
     NSMutableArray *allKeysString = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? [self.keyChain keyAtIndex:(uint)i].address.string : [self.keyChain keyAtIndex:(uint)i].addressTestnet.string;
+        BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
+        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
         [allKeysString addObject:keyString];
     }
     return allKeysString;

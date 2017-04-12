@@ -57,25 +57,9 @@
     }];
 }
 
-+ (NSArray *)createArray:(NSArray *)responseObject
-{
-    NSMutableArray* outputs = [NSMutableArray array];
++ (NSArray *)createArray:(NSArray *)responseObject{
     
-//    for (NSDictionary* item in responseObject) {
-//        BTCTransactionOutput* txout = [[BTCTransactionOutput alloc] init];
-//        
-//        txout.value = [self convertValueToAmount:[item[@"amount"] doubleValue]];
-//        txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"scriptPubKey"])];
-//        txout.index = [item[@"vout"] intValue];
-//        txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
-//        txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"txid"]]));
-//        
-//        [outputs addObject:txout];
-//        
-//        // Dictionary for outputs and address
-////        NSDictionary *dictionary = @{@"tout" : txout, @"address" : item[@"address"]};
-////        [outputs addObject:dictionary];
-//    }
+    NSMutableArray* outputs = [NSMutableArray array];
     
     for (NSDictionary* item in responseObject) {
         BTCTransactionOutput* txout = [[BTCTransactionOutput alloc] init];
@@ -87,19 +71,16 @@
         txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"tx_hash"]]));
         
         [outputs addObject:txout];
-        
-        // Dictionary for outputs and address
-        //        NSDictionary *dictionary = @{@"tout" : txout, @"address" : item[@"address"]};
-        //        [outputs addObject:dictionary];
     }
     
     return outputs;
 }
 
-+ (NSString *)invertHex:(NSString *)hexString
-{
++ (NSString *)invertHex:(NSString *)hexString{
+    
     NSMutableString *reversedString = [NSMutableString string];
     NSInteger charIndex = [hexString length];
+    
     while (hexString && charIndex > 0) {
         charIndex -= 2;
         NSRange subStrRange = NSMakeRange(charIndex, 2);
@@ -107,6 +88,7 @@
         [reversedString appendString:[substring substringWithRange:NSMakeRange(0, 1)]];
         [reversedString appendString:[substring substringWithRange:NSMakeRange(1, 1)]];
     }
+    
     return reversedString;
 }
 

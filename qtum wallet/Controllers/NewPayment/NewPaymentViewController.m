@@ -157,24 +157,24 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (IBAction)makePaymentButtonWasPressed:(id)sender
-{
+- (IBAction)makePaymentButtonWasPressed:(id)sender {
+    
     NSNumber *amount = @([self.amountTextField.text doubleValue]);
     NSString *address = self.addressTextField.text;
     
     NSArray *array = @[@{@"amount" : amount, @"address" : address}];
-    
-    TransactionManager *transactionManager = [[TransactionManager alloc] initWith:array];
-    
+        
     [SVProgressHUD show];
     
     __weak typeof(self) weakSelf = self;
-    [transactionManager sendTransactionWithSuccess:^{
-        [SVProgressHUD showSuccessWithStatus:@"Done"];
-        [weakSelf backbuttonPressed:nil];
-    } andFailure:^(NSString *message){
-        [SVProgressHUD dismiss];
-        [weakSelf showAlertWithTitle:@"Error" mesage:message andActions:nil];
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
+        if (!error) {
+            [SVProgressHUD showSuccessWithStatus:@"Done"];
+            [weakSelf backbuttonPressed:nil];
+        } else {
+            [SVProgressHUD dismiss];
+            [weakSelf showAlertWithTitle:@"Error" mesage:response andActions:nil];
+        }
     }];
 }
 

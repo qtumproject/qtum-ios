@@ -12,6 +12,8 @@
 #import "CreateTokenStep3ViewController.h"
 #import "CreateTokenStep4ViewController.h"
 #import "CreateTokenNavigationController.h"
+#import "TransactionManager.h"
+#import "NSString+Extension.h"
 
 
 @interface CreateTokenCoordinator ()
@@ -137,13 +139,19 @@
                                                                                   @"decimalUnits" : self.tokenUnits,
                                                                                   @"tokenSymbol" : self.tokenSymbol
                                                                                   }
-                                                             withSuccessHandler:^(id responseObject) {
+                                                             withSuccessHandler:^(id responseObject)
+    {
         NSLog(@"  -->  %@",responseObject);
-        [[WalletManager sharedInstance].requestManager sendTransactionWithParam:@{@"data" : responseObject[@"bytecode"],@"allowHighFee":@1} withSuccessHandler:^(id responseObject) {
-            NSLog(@"%@", responseObject);
-        } andFailureHandler:^(NSString *message) {
-            NSLog(@"%@", message);
-        }];
+         [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:[NSString dataFromHexString:responseObject[@"bytecode"]] andHandler:^(NSError *error, BTCTransaction *transaction) {
+             
+         }];
+//         TransactionManager *transactionManager = [[TransactionManager alloc] initWith:array];
+//                                                                 [transactionManager sendSmartTransaction:[NSString dataFromHexString:responseObject[@"bytecode"]] withSuccess:^(NSData* address){
+//                                                                     NSLog(@"Succes");
+//                                                                 } andFailure:^(NSString *message) {
+//                                                                     NSLog(@"Failed");
+//                                                                 }];
+
         [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
     } andFailureHandler:^(NSError *error, NSString *message) {
         NSLog(@"Failed Request");

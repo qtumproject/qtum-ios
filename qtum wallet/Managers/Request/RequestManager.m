@@ -167,7 +167,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
                andFailureHandler:(void(^)(NSString* message)) failure{
     
     [self requestWithType:POST path:@"send-raw-transaction" andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
-        success(nil);
+        success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(message);
     }];
