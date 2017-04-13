@@ -69,6 +69,7 @@
         txout.index = [item[@"vout"] intValue];
         txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
         txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"tx_hash"]]));
+        txout.blockHeight = [item[@"confirmations"] integerValue];
         
         [outputs addObject:txout];
     }

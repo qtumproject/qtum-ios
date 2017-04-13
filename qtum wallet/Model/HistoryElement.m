@@ -133,6 +133,7 @@
         self.dateNumber = ![object[@"block_time"] isKindOfClass:[NSNull class]] ? object[@"block_time"] : nil;
         self.address = object[@"address"];
         self.confirmed = [object[@"block_height"] floatValue] > 0;
+        self.txHash = object[@"tx_hash"];
         [self calcAmountAndAdresses:object];
     }
 }
@@ -158,8 +159,8 @@
     if (!self.send == object.send) {
         return NO;
     }
-    if (!self.confirmed == object.confirmed) {
-        return YES;
+    if (self.txHash && object.txHash && ![self.txHash isEqualToString:object.txHash]) {
+        return NO;
     }
     return YES;
 }

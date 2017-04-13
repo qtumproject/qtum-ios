@@ -136,7 +136,7 @@ static NSString* op_exec = @"c1";
         NSInteger total = 0;
         
         for (BTCTransactionOutput* txout in utxos) {
-            if ([txout.script isPayToPublicKeyHashScript]) {
+            if ([txout.script isPayToPublicKeyHashScript] && txout.confirmations > 0) {
                 [txouts addObject:txout];
                 total += txout.value;
             }
@@ -368,12 +368,15 @@ static NSString* op_exec = @"c1";
     
     NSUInteger gasPrice = 1;
     [script appendData:[NSData dataWithBytes:&gasPrice length:8]];
+//    
+//    NSMutableData* bitcodeWithOp = [NSMutableData dataWithData:bitcode];
+//    [bitcodeWithOp appendData:[NSString dataFromHexString:op_exec]];
+//    [script appendData:[NSData dataWithBytes:(__bridge const void * _Nullable)(bitcodeWithOp) length:bitcodeWithOp.length - 1]];
     
-    NSMutableData* bitcodeWithOp = [NSMutableData dataWithData:bitcode];
-    [bitcodeWithOp appendData:[NSString dataFromHexString:op_exec]];
-    [script appendData:bitcodeWithOp];
-    
-//    [script appendOpcode:OP_EXEC];
+    //    NSMutableData* bitcodeWithOp = [NSMutableData dataWithData:bitcode];
+    [script appendData:bitcode];
+
+    [script appendOpcode:0xc1];
     //[script appendData:[NSString dataFromHexString:@"0xc1"]];
 
 //    [script appendOpcode:[NSString dataFromHexString:@"0xc1"]];

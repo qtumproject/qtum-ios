@@ -96,8 +96,6 @@ NSString *const BalanceUpdateEvent = @"BalanceUpdateEvent";
     [self notificateChangeHistory];
 }
 
-
-
 -(void)setBalance:(CGFloat) balance{
     _balance = balance;
     [self notificateChangeBalance];
