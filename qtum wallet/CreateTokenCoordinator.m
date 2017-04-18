@@ -136,6 +136,7 @@
 //        "decimalUnits": uint8
 //        "tokenSymbol": String
 //    }
+    [SVProgressHUD show];
     [[WalletManager sharedInstance].requestManager generateTokenBitcodeWithDict:@{@"initialSupply" : self.tokenSupply,
                                                                                   @"tokenName" : self.tokenName,
                                                                                   @"decimalUnits" : self.tokenUnits,
@@ -148,6 +149,8 @@
              BTCTransactionInput* input = transaction.inputs[0];
              NSLog(@"%@",input.runTimeAddress);
              [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction];
+             [SVProgressHUD showSuccessWithStatus:@"Done"];
+             [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
          }];
 //         TransactionManager *transactionManager = [[TransactionManager alloc] initWith:array];
 //                                                                 [transactionManager sendSmartTransaction:[NSString dataFromHexString:responseObject[@"bytecode"]] withSuccess:^(NSData* address){
@@ -156,8 +159,9 @@
 //                                                                     NSLog(@"Failed");
 //                                                                 }];
 
-        [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
     } andFailureHandler:^(NSError *error, NSString *message) {
+        [SVProgressHUD showErrorWithStatus:@"Failed"];
+        [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
         NSLog(@"Failed Request");
     }];
 }

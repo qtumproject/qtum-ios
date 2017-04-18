@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -91,7 +90,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3sdf567b122c24f5d5x3243vxfve5478dcg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7Y-F7-P8X">
-                                                    <rect key="frame" x="10" y="15.5" width="355" height="14"/>
+                                                    <rect key="frame" x="10" y="15" width="355" height="14"/>
                                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -297,6 +296,7 @@
                                                                 <outlet property="adressLabel" destination="Ls7-UN-d2h" id="tO5-Uh-i6N"/>
                                                                 <outlet property="adressValueLabel" destination="01W-XE-HN8" id="bwG-B6-fie"/>
                                                                 <outlet property="animationLayer" destination="EuU-8E-B5e" id="1mm-HS-dki"/>
+                                                                <outlet property="showAddresButton" destination="cV2-4d-NcV" id="b3s-Hd-5LE"/>
                                                                 <outlet property="typeWalletLabel" destination="28M-75-AaF" id="mj0-fi-Tdv"/>
                                                                 <outlet property="valueLabel" destination="H7f-H3-Vke" id="0e2-2d-cwE"/>
                                                             </connections>
@@ -306,7 +306,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="sRS-R9-bVw" secondAttribute="bottom" id="FOQ-Kg-q2Z"/>
-                                                <constraint firstItem="sRS-R9-bVw" firstAttribute="top" secondItem="PTL-1F-voY" secondAttribute="topMargin" constant="-8" id="IAY-in-Mo7"/>
+                                                <constraint firstItem="sRS-R9-bVw" firstAttribute="top" secondItem="PTL-1F-voY" secondAttribute="top" id="IAY-in-Mo7"/>
                                                 <constraint firstAttribute="trailing" secondItem="sRS-R9-bVw" secondAttribute="trailing" id="sYI-mW-ouT"/>
                                                 <constraint firstItem="sRS-R9-bVw" firstAttribute="leading" secondItem="PTL-1F-voY" secondAttribute="leading" id="ueV-xa-IVm"/>
                                             </constraints>

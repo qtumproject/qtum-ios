@@ -10,6 +10,13 @@
 
 @implementation WalletModel
 
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _type = Walletable;
+    }
+    return self;
+}
 
 @end

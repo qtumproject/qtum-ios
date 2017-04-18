@@ -17,6 +17,7 @@ static NSString *WalletTypeCollectionCellIdentifire = @"WalletTypeCollectionCell
 @property (weak, nonatomic) IBOutlet UILabel *typeWalletLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressValueLabel;
+@property (weak, nonatomic) IBOutlet UIButton *showAddresButton;
 
 @property (weak, nonatomic) id <WalletCollectionCellDelegate> delegate;
 

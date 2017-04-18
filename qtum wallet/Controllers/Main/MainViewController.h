@@ -23,5 +23,9 @@
 -(void)failedToGetData;
 -(void)failedToGetBalance;
 -(void)startLoading;
+-(void)stopLoading;
+-(void)reloadHistorySection;
+
+
 
 @end

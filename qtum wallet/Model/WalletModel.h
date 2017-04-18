@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Walletable.h"
 @class HistoryElement;
 
-@interface WalletModel : NSObject
+@interface WalletModel : NSObject <Walletable>
 
 @property (strong, nonatomic)NSArray <HistoryElement*>*historyArray;
 @property (copy, nonatomic)NSString* balance;
 @property (copy, nonatomic)NSString* activeAddress;
+@property (assign, nonatomic) WalletableType type;
+@property (copy, nonatomic)NSString* signature;
 
 @end

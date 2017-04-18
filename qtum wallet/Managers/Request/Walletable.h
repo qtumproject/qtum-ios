@@ -7,17 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+@class HistoryElement;
 
-typedef NS_ENUM (NSInteger, WalletType) {
-    Wallet,
-    Token
+typedef NS_ENUM (NSInteger, WalletableType) {
+    Walletable,
+    Tokenable
 };
 
 @protocol Walletable <NSObject>
 
 @required
-@property (copy, nonatomic) NSString* name;
 @property (copy, nonatomic) NSString* balance;
-@property (assign, nonatomic) WalletType type;
+@property (assign, nonatomic) WalletableType type;
+@property (strong, nonatomic)NSArray <HistoryElement*>*historyArray;
+@property (copy, nonatomic)NSString* activeAddress;
+@property (copy, nonatomic)NSString* signature;
 
 @end

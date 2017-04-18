@@ -13,6 +13,8 @@
 
 @interface WalletManager : NSObject
 
+extern NSString *const TokenUpdateEvent;
+
 @property (nonatomic, readonly) NSMutableArray *wallets;
 @property (nonatomic, strong, readonly) NSString* PIN;
 @property (weak,nonatomic) id <Requestable> requestManager;
@@ -28,6 +30,7 @@
 - (NSArray *)getAllWallets;
 - (NSArray <Token*>*)gatAllTokens;
 - (void)addNewToken:(Token*) token;
+- (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance;
 - (void)clear;
 
 

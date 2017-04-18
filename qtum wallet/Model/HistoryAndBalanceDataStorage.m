@@ -9,11 +9,8 @@
 #import "HistoryAndBalanceDataStorage.h"
 #import "HistoryElement.h"
 
-
 NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
 NSString *const BalanceUpdateEvent = @"BalanceUpdateEvent";
-
-
 
 @interface HistoryAndBalanceDataStorage ()
 

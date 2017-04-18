@@ -41,6 +41,7 @@
     [aCoder encodeObject:self.symbol forKey:@"symbol"];
     [aCoder encodeObject:self.decimals forKey:@"decimals"];
     [aCoder encodeObject:self.totalSupply forKey:@"totalSupply"];
+    [aCoder encodeObject:@(self.balance) forKey:@"balance"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -50,6 +51,7 @@
     NSString *symbol = [aDecoder decodeObjectForKey:@"symbol"];
     NSString *decimals = [aDecoder decodeObjectForKey:@"decimals"];
     NSString *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
+    CGFloat balance = [[aDecoder decodeObjectForKey:@"balance"] floatValue];
     
     self = [super init];
     if (self) {
@@ -59,6 +61,7 @@
         self.symbol = symbol;
         self.decimals = decimals;
         self.totalSupply = totalSupply;
+        self.balance = balance;
     }
     
     return self;

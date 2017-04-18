@@ -13,6 +13,7 @@
 NSString const *WALLETS_KEY = @"qtum_wallet_wallets_keys";
 NSString const *TOKENS_KEY = @"qtum_token_tokens_keys";
 NSString const *USER_PIN_KEY = @"PIN";
+NSString *const TokenUpdateEvent = @"TokenUpdateEvent";
 
 @interface WalletManager () <WalletDelegate, TokenDelegate>
 
@@ -178,7 +179,8 @@ NSString const *USER_PIN_KEY = @"PIN";
 
 #pragma mark - TokenDelegate
 
-- (void)tokenDidChange:(id)wallet{
+- (void)tokenDidChange:(id)token{
+    [[NSNotificationCenter defaultCenter] postNotificationName:TokenUpdateEvent object:nil userInfo:nil];
     [self saveOnlyTokens];
 }
 
@@ -242,6 +244,18 @@ NSString const *USER_PIN_KEY = @"PIN";
 - (void)addNewToken:(Token*) token{
     token.delegate = self;
     [self.tokens addObject:token];
+    [self.requestManager startObservingForToken:token withHandler:nil];
+    [self tokenDidChange:token];
+}
+
+- (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
+    NSArray *filteredArray = [self.tokens filteredArrayUsingPredicate:predicate];
+    Token* token = filteredArray[0];
+    if (token) {
+        token.balance = [balance floatValue];
+        [self tokenDidChange:token];
+    }
 }
 
 #pragma mark - Addresses Observing

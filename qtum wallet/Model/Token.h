@@ -24,6 +24,7 @@
 @property (strong, nonatomic)NSString* decimals;
 @property (strong, nonatomic)NSString* name;
 @property (strong, nonatomic)NSString* totalSupply;
+@property (assign, nonatomic)CGFloat balance;
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
 -(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses;

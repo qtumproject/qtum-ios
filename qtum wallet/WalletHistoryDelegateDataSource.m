@@ -115,7 +115,7 @@ static NSInteger countOfSections = 2;
     float h = size.height;
     
     float reload_distance = 50;
-    if(y > h + reload_distance) {
+    if(y > h + reload_distance && offset.y > 0) {
         [self.delegate refreshTableViewData];
         [self.delegate refreshTableViewBalanceLocal:YES];
     }

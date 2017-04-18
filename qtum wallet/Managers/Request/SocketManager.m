@@ -89,8 +89,13 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"New Transaction" andIdentifire:@"new_transaction"];
     }];
     
-    [self.currentSocket onAny:^(SocketAnyEvent * _Nonnull event) {
-        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:[NSString stringWithFormat:@"any event - > %@",event.event] andIdentifire:@"onAny"];
+//    [self.currentSocket onAny:^(SocketAnyEvent * _Nonnull event) {
+//        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:[NSString stringWithFormat:@"any event - > %@",event.event] andIdentifire:@"onAny"];
+//    }];
+    
+    [self.currentSocket on:@"token_balance_change" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Token balance change" andIdentifire:@"token_balance_change"];
+        [[WalletManager sharedInstance] updateTokenWithAddress:((NSDictionary*)data[0])[@"contract_address"] withNewBalance:((NSDictionary*)data[0])[@"balances"][0][@"balance"]];
     }];
 }
 

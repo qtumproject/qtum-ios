@@ -18,7 +18,7 @@
 @end
 
 @interface WalletTypeCollectionDataSourceDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDataSource, WalletCollectionCellDelegate>
-@property (strong, nonatomic) WalletModel* wallet;
+@property (strong, nonatomic) NSArray<WalletModel*>* wallets;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 
 @end

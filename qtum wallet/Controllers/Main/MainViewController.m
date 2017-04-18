@@ -150,13 +150,20 @@
 -(void)reloadTableView{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
     });
 
     self.historyLoaded = YES;
     if (self.balanceLoaded && self.historyLoaded) {
         [SVProgressHUD dismiss];
     }
+}
+
+-(void)reloadHistorySection {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSRange range = NSMakeRange(1, 1);
+        NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
+        [self.tableView reloadSections:section withRowAnimation:UITableViewRowAnimationNone];
+    });
 }
 
 -(void)setBalance{
@@ -178,17 +185,29 @@
     });
 }
 
+-(void)stopLoading{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([SVProgressHUD isVisible]) {
+            [SVProgressHUD dismiss];
+        }
+    });
+}
+
 -(void)failedToGetData{
     self.historyLoaded = YES;
-    if (self.balanceLoaded && self.historyLoaded) {
-        [SVProgressHUD showErrorWithStatus:@"Some error"];
-    }
+    [SVProgressHUD showErrorWithStatus:@"Some error"];
+//
+//    if (self.balanceLoaded && self.historyLoaded) {
+//        [SVProgressHUD showErrorWithStatus:@"Some error"];
+//    }
 }
 -(void)failedToGetBalance{
     self.balanceLoaded = YES;
-    if (self.balanceLoaded && self.historyLoaded) {
-        [SVProgressHUD showErrorWithStatus:@"Some error"];
-    }
+    [SVProgressHUD showErrorWithStatus:@"Some error"];
+//
+//    if (self.balanceLoaded && self.historyLoaded) {
+//        [SVProgressHUD showErrorWithStatus:@"Some error"];
+//    }
 }
 
 #pragma mark - QRCodeViewControllerDelegate
@@ -206,6 +225,7 @@
 - (IBAction)refreshButtonWasPressed:(id)sender{
     self.historyLoaded = YES;
     self.balanceLoaded = YES;
+    [self.refreshControl endRefreshing];
     [self.delegate reloadTableViewData];
 }
 

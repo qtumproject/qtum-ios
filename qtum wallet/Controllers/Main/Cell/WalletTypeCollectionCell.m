@@ -26,9 +26,12 @@
 
 #pragma mark - Public Methods
 
--(void)configWithObject:(WalletModel*) object{
+-(void)configWithObject:(id <Walletable>) object{
+    self.showAddresButton.hidden = (object.type == Tokenable);
+    self.adressLabel.hidden = (object.type == Tokenable);
     self.adressValueLabel.text = object.activeAddress;
     self.valueLabel.text = object.balance;
+    self.typeWalletLabel.text = object.signature;
 }
 
 - (IBAction)actionShowAddressInfo:(id)sender {
