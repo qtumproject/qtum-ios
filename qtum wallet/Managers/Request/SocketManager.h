@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Token.h"
 
 typedef NS_ENUM(NSInteger, ConnectionStatus) {
     NotConnected,
@@ -23,6 +24,8 @@ typedef NS_ENUM(NSInteger, ConnectionStatus) {
 
 -(void)startAndSubscribeWithAddresses:(NSArray*) addresses andHandler:(void(^)()) handler;
 -(void)stoptWithHandler:(void(^)()) handler;
+
+-(void)startObservingToken:(Token*) token withHandler:(void(^)()) handler;
 
 
 @end

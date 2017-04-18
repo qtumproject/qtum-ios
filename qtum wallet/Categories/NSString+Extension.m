@@ -41,7 +41,7 @@
 }
 
 //
-- (NSString *)hexadecimalString:(NSData *)data {
++ (NSString *)hexadecimalString:(NSData *)data {
     /* Returns hexadecimal string of NSData. Empty string if data is empty.   */
     const unsigned char *dataBuffer = (const unsigned char *)[data bytes];
     

@@ -100,6 +100,7 @@
     [self startMainFlow];
     [self.notificationManager registerForRemoutNotifications];
     [[WalletManager sharedInstance] startObservingForAddresses];
+    [[WalletManager sharedInstance] startObservingForTokens];
 }
 
 -(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator{
@@ -112,6 +113,7 @@
     [self startMainFlow];
     [self.notificationManager registerForRemoutNotifications];
     [[WalletManager sharedInstance] startObservingForAddresses];
+    [[WalletManager sharedInstance] startObservingForTokens];
 }
 
 

@@ -11,6 +11,8 @@
 #import "RPCRequestManager.h"
 #import "BlockchainInfoManager.h"
 #import "NSString+Extension.h"
+#import "BTCTransactionInput+Extension.h"
+#import "BTCTransactionOutput+Address.h"
 
 static double FEE = 10000000;
 static NSString* op_exec = @"c1";
@@ -81,7 +83,7 @@ static NSString* op_exec = @"c1";
 
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*>*) walletKeys
                          andBitcode:(NSData*) bitcode
-                         andHandler:(void(^)(NSError* error, BTCTransaction * transaction)) completion {
+                         andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
     NSAssert(walletKeys.count > 0, @"Keys must be grater then zero");
     
@@ -93,12 +95,12 @@ static NSString* op_exec = @"c1";
         BTCTransaction *tx = [weakSelf createSmartContractUnspentOutputs:responseObject amount:0 bitcode:bitcode walletKeys:walletKeys];
         
         [weakSelf sendTransaction:tx withSuccess:^(id response){
-            completion(nil,tx);
+            completion(nil,tx,response[@"txid"]);
         } andFailure:^(NSString *message) {
-            completion([NSError new],nil);
+            completion([NSError new],nil,nil);
         }];
     } andFailureHandler:^(NSError *error, NSString *message) {
-        completion(error,nil);
+        completion(error,nil, nil);
     }];
 }
 
@@ -128,8 +130,11 @@ static NSString* op_exec = @"c1";
         
         // Sort utxo in order of
         utxos = [utxos sortedArrayUsingComparator:^(BTCTransactionOutput* obj1, BTCTransactionOutput* obj2) {
-            if ((obj1.value - obj2.value) < 0) return NSOrderedAscending;
-            else return NSOrderedDescending;
+            if (obj1.value > obj2.value){
+                return NSOrderedAscending;
+            } else {
+                return NSOrderedDescending;
+            }
         }];
         
         NSMutableArray* txouts = [[NSMutableArray alloc] init];
@@ -250,8 +255,11 @@ static NSString* op_exec = @"c1";
         
         // Sort utxo in order of
         utxos = [utxos sortedArrayUsingComparator:^(BTCTransactionOutput* obj1, BTCTransactionOutput* obj2) {
-            if ((obj1.value - obj2.value) < 0) return NSOrderedAscending;
-            else return NSOrderedDescending;
+            if (obj1.value > obj2.value){
+                return NSOrderedAscending;
+            } else {
+                return NSOrderedDescending;
+            }
         }];
         
         NSMutableArray* txouts = [[NSMutableArray alloc] init];
@@ -281,6 +289,7 @@ static NSString* op_exec = @"c1";
             BTCTransactionInput* txin = [[BTCTransactionInput alloc] init];
             txin.previousHash = txout.transactionHash;
             txin.previousIndex = txout.index;
+            txin.runTimeAddress = txout.runTimeAddress;
             [tx addInput:txin];
             spentCoins += txout.value;
         }

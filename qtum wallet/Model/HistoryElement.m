@@ -134,6 +134,7 @@
         self.address = object[@"address"];
         self.confirmed = [object[@"block_height"] floatValue] > 0;
         self.txHash = object[@"tx_hash"];
+        self.isSmartContractCreater = [object[@"contract_has_been_created"] boolValue];
         [self calcAmountAndAdresses:object];
     }
 }

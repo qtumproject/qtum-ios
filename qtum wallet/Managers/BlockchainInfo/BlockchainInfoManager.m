@@ -10,6 +10,9 @@
 #import "RPCRequestManager.h"
 #import "HistoryElement.h"
 #import "HistoryAndBalanceDataStorage.h"
+#import "BTCTransactionInput+Extension.h"
+#import "BTCTransactionOutput+Address.h"
+#import "TokenManager.h"
 
 @implementation BlockchainInfoManager
 
@@ -70,6 +73,7 @@
         txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
         txout.transactionHash = (BTCDataFromHex([self invertHex:item[@"tx_hash"]]));
         txout.blockHeight = [item[@"confirmations"] integerValue];
+        txout.runTimeAddress = item[@"address"];
         
         [outputs addObject:txout];
     }
@@ -135,6 +139,7 @@
     
     HistoryElement *element = [HistoryElement new];
     [element setupWithObject:dictionary];
+    [[TokenManager sharedInstance] checkSmartContract:element];
     return  element;
 }
 

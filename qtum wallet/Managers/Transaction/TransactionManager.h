@@ -24,7 +24,7 @@
 
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*>*) walletKeys
                          andBitcode:(NSData*) bitcode
-                         andHandler:(void(^)(NSError* error, BTCTransaction * transaction)) completion;
+                         andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion;
 
 //- (void)sendSmartTransaction:(NSData*) bitcode withSuccess:(void(^)(NSData* address))success andFailure:(void(^)(NSString *message))failure;
 

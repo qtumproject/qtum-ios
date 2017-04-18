@@ -24,7 +24,6 @@ extern NSString *const BalanceUpdateEvent;
 - (HistoryElement*)updateHistoryItem:(HistoryElement*) item;
 - (void)setHistory:(NSArray<HistoryElement*>*) history;
 
-
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
 + (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));

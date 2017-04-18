@@ -272,19 +272,39 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     }];
 }
 
+#pragma mark - Token 
+
+- (void)getTokenInfoWithDict:(NSDictionary*) dict
+          withSuccessHandler:(void(^)(id responseObject))success
+           andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    NSString* path = [NSString stringWithFormat:@"contracts/%@/params?keys=symbol,decimals,name,totalSupply",dict[@"addressContract"]];
+    
+    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
 #pragma mark - Observing Socket
 
 
 - (void)startObservingAdresses:(NSArray*) addresses{
     self.socketManager = [SocketManager new];
     self.socketManager.delegate = self;
-    [self.socketManager startAndSubscribeWithAddresses:[[WalletManager sharedInstance] getCurrentWallet].getAllKeysAdreeses andHandler:nil];
+    [self.socketManager startAndSubscribeWithAddresses:[[WalletManager sharedInstance] getCurrentWallet].getAllKeysAdreeses andHandler:^{
+    }];
 }
 
 - (void)stopObservingAdresses:(NSArray*) addresses{
     [_socketManager stoptWithHandler:nil];
     _socketManager = nil;
 }
+
+- (void)startObservingForToken:(Token*) token withHandler:(void(^)(id responseObject))completesion{
+    [self.socketManager startObservingToken:token withHandler:completesion];
+}
+
 
 
 @end

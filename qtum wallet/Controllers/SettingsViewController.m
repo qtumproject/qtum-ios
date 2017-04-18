@@ -28,8 +28,7 @@
 #pragma mark Actions
 
 - (IBAction)actionLogout:(id)sender {
-    [[WalletManager sharedInstance] removeAllWallets];
-    [[WalletManager sharedInstance] removePin];
+    [[WalletManager sharedInstance] clear];
     [[ApplicationCoordinator sharedInstance] startWalletFlow];
 }
 - (IBAction)actionMenu:(id)sender {

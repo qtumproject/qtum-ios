@@ -225,6 +225,12 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     failure(nil, nil);
 }
 
+- (void)getTokenInfoWithDict:(NSDictionary*) dict
+          withSuccessHandler:(void(^)(id responseObject))success
+           andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    failure([NSError new], @"You cant use token from RPC");
+}
+
 #pragma mark - Observing Socket
 
 

@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *fullDateString;
 @property (nonatomic) BOOL send;
 @property (assign, nonatomic) BOOL confirmed;
+@property (assign, nonatomic) BOOL isSmartContractCreater;
 @property (strong, nonatomic) NSMutableArray *fromAddreses;
 @property (strong, nonatomic) NSMutableArray *toAddresses;
 

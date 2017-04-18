@@ -14,6 +14,8 @@
 #import "CreateTokenNavigationController.h"
 #import "TransactionManager.h"
 #import "NSString+Extension.h"
+#import "BTCTransactionInput+Extension.h"
+#import "TokenManager.h"
 
 
 @interface CreateTokenCoordinator ()
@@ -142,8 +144,10 @@
                                                              withSuccessHandler:^(id responseObject)
     {
         NSLog(@"  -->  %@",responseObject);
-         [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:[NSString dataFromHexString:responseObject[@"bytecode"]] andHandler:^(NSError *error, BTCTransaction *transaction) {
-             
+         [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:[NSString dataFromHexString:responseObject[@"bytecode"]] andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
+             BTCTransactionInput* input = transaction.inputs[0];
+             NSLog(@"%@",input.runTimeAddress);
+             [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction];
          }];
 //         TransactionManager *transactionManager = [[TransactionManager alloc] initWith:array];
 //                                                                 [transactionManager sendSmartTransaction:[NSString dataFromHexString:responseObject[@"bytecode"]] withSuccess:^(NSData* address){

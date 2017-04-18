@@ -7,10 +7,16 @@
 //
 
 #import "TokenManager.h"
+#import "HistoryElement.h"
+#import "FXKeychain.h"
+#import "Token.h"
+
+static NSString* smartContractPretendentsKey = @"smartContractPretendentsKey";
 
 @interface TokenManager ()
 
 @property (strong, nonatomic) NSMutableDictionary* smartContractPretendents;
+@property (strong, nonatomic) NSMutableDictionary* tokens;
 
 @end
 
@@ -30,7 +36,7 @@
 {
     self = [super init];
     if (self != nil) {
-        [self load];
+        [self loadFromKeychain];
     }
     return self;
 }
@@ -43,20 +49,53 @@
     return _smartContractPretendents;
 }
 
--(void)load{
+-(NSMutableDictionary*)tokens{
     
+    if (!_tokens) {
+        _tokens = @{}.mutableCopy;
+    }
+    return _tokens;
 }
 
--(void)addSmartContractPretendent:(BTCTransaction*) transaction{
-    [self.smartContractPretendents setObject:transaction forKey:transaction.transactionID];
+-(void)loadFromKeychain{
+    self.smartContractPretendents = [[[FXKeychain defaultKeychain] objectForKey:smartContractPretendentsKey] mutableCopy];
 }
 
--(void)deleteSmartContractPretendent:(BTCTransaction*) transaction{
-    [self.smartContractPretendents removeObjectForKey:transaction.transactionID];
+-(void)saveInKeychain{
+    if ([[FXKeychain defaultKeychain] objectForKey:smartContractPretendentsKey]) {
+        [[FXKeychain defaultKeychain] removeObjectForKey:smartContractPretendentsKey];
+    }
+    [[FXKeychain defaultKeychain] setObject:[self.smartContractPretendents copy] forKey:smartContractPretendentsKey];
+}
+
+-(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key{
+    [self.smartContractPretendents setObject:addresses forKey:key];
+    [self saveInKeychain];
+}
+
+-(void)deleteSmartContractPretendentWithKey:(NSString*) key{
+    [self.smartContractPretendents removeObjectForKey:key];
 }
 
 -(void)updateSmartContractPretendent:(BTCTransaction*) transaction{
     //TODO update Token Transaction
+}
+
+-(void)checkSmartContract:(HistoryElement*) item {
+    
+    if (item.confirmed && item.isSmartContractCreater) {
+        NSString* key = item.txHash;
+        NSArray* tokenInfo = [self.smartContractPretendents objectForKey:key];
+        
+        if (tokenInfo) {
+            Token* token = [Token new];
+            [token setupWithHashTransaction:key andAddresses:tokenInfo];
+            [[WalletManager sharedInstance] addNewToken:token];
+            [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+            [self deleteSmartContractPretendentWithKey:key];
+            [self saveInKeychain];
+        }
+    }
 }
 
 @end

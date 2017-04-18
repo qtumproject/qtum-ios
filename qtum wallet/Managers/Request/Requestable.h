@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RequestManagerAdapter.h"
+#import "Token.h"
 
 @protocol Requestable <NSObject>
 
@@ -69,10 +70,18 @@
                    andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 
+// Token info
+
+- (void)getTokenInfoWithDict:(NSDictionary*) dict
+          withSuccessHandler:(void(^)(id responseObject))success
+           andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
 // Observing for events
 
 - (void)startObservingAdresses:(NSArray*) addresses;
 - (void)stopObservingAdresses:(NSArray*) addresses;
 
+- (void)startObservingForToken:(Token*) token withHandler:(void(^)(id responseObject))completesion;
+- (void)stopObservingForToken:(Token*) token;
 
 @end

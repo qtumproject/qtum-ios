@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Wallet.h"
 #import "Requestable.h"
+#import "Token.h"
 
 @interface WalletManager : NSObject
 
@@ -25,9 +26,14 @@
 - (BOOL)haveWallets;
 - (Wallet *)getCurrentWallet;
 - (NSArray *)getAllWallets;
+- (NSArray <Token*>*)gatAllTokens;
+- (void)addNewToken:(Token*) token;
+- (void)clear;
+
 
 - (void)startObservingForAddresses;
 - (void)stopObservingForAddresses;
+- (void)startObservingForTokens;
 
 
 + (instancetype)sharedInstance;
