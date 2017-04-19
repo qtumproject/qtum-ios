@@ -108,7 +108,7 @@ static NSString* op_exec = @"c1";
     
     if (transaction) {
         
-        [[WalletManager sharedInstance].requestManager sendTransactionWithParam:@{@"data":transaction.hexWithTime,@"allowHighFee":@1} withSuccessHandler:^(id responseObject) {
+        [[ApplicationCoordinator sharedInstance].requestManager sendTransactionWithParam:@{@"data":transaction.hexWithTime,@"allowHighFee":@1} withSuccessHandler:^(id responseObject) {
             success(responseObject);
         } andFailureHandler:^(NSString *message) {
             failure(@"Can not send transaction");

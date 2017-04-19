@@ -54,6 +54,7 @@
     if (self != nil) {
         _controllersFactory = [ControllersFactory sharedInstance];
         _notificationManager = [NotificationManager new];
+        _requestManager = [AppSettings sharedInstance].isRPC ? [RPCRequestManager sharedInstance] : [RequestManager sharedInstance];
     }
     return self;
 }
@@ -71,6 +72,7 @@
 #pragma mark - Start
 
 -(void)start{
+
     if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
         [self startLoginFlow];
     }else{
@@ -99,8 +101,8 @@
     [self removeDependency:coordinator];
     [self startMainFlow];
     [self.notificationManager registerForRemoutNotifications];
-    [[WalletManager sharedInstance] startObservingForAddresses];
-    [[WalletManager sharedInstance] startObservingForTokens];
+    [[WalletManager sharedInstance] startObservingForSpendable];
+    [[TokenManager sharedInstance] startObservingForSpendable];
 }
 
 -(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator{
@@ -109,11 +111,12 @@
 }
 
 -(void)coordinatorDidAuth:(AuthCoordinator*)coordinator{
+    
     [self removeDependency:coordinator];
     [self startMainFlow];
     [self.notificationManager registerForRemoutNotifications];
-    [[WalletManager sharedInstance] startObservingForAddresses];
-    [[WalletManager sharedInstance] startObservingForTokens];
+    [[WalletManager sharedInstance] startObservingForSpendable];
+    [[TokenManager sharedInstance] startObservingForSpendable];
 }
 
 
@@ -154,7 +157,8 @@
     [self storeAuthorizedFlag:NO];
     [self.notificationManager removeToken];
     [self removeDependency:self.tabCoordinator];
-    [[WalletManager sharedInstance] stopObservingForAddresses];
+    [[WalletManager sharedInstance] stopObservingForSpendable];
+    [[TokenManager sharedInstance] stopObservingForSpendable];
 }
 
 -(void)startLoginFlow{

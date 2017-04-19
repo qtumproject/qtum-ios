@@ -153,10 +153,10 @@
     wallet.balance =  [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
     wallet.signature = @"QTUM";
     [self.wallets addObject:wallet];
-    for (Token* token in [WalletManager sharedInstance].gatAllTokens) {
+    for (Token* token in [TokenManager sharedInstance].gatAllTokens) {
         TokenModel* model  = [TokenModel new];
         model.signature = token.symbol;
-        model.balance = [NSString stringWithFormat:@"%0.6f",token.balance];
+        model.balance = [NSString stringWithFormat:@"%@",token.balance];
         model.historyArray = @[];
         [self.wallets addObject:model];
     }
@@ -226,7 +226,7 @@
 -(void)subcribeEvents{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHistory) name:HistoryUpdateEvent object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBalance) name:BalanceUpdateEvent object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:TokenUpdateEvent object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:kTokenUpdateEvent object:nil];
 
 }
 

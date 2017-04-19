@@ -22,7 +22,7 @@
     self.contractAddress = [NSString hexadecimalString:hashData];
     
     __weak __typeof(self)weakSelf = self;
-    [[WalletManager sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : self.contractAddress} withSuccessHandler:^(id responseObject) {
+    [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : self.contractAddress} withSuccessHandler:^(id responseObject) {
         weakSelf.decimals = responseObject[@"decimals"];
         weakSelf.symbol = responseObject[@"symbol"];
         weakSelf.name = responseObject[@"name"];
@@ -33,6 +33,15 @@
     }];
 }
 
+
+-(void)updateBalance{
+    [self.manager updateBalanceOfSpendableObject:self];
+}
+
+-(void)updateHistory{
+    [self.manager updateHistoryOfSpendableObject:self];
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
     [aCoder encodeObject:self.name forKey:@"name"];
@@ -41,7 +50,7 @@
     [aCoder encodeObject:self.symbol forKey:@"symbol"];
     [aCoder encodeObject:self.decimals forKey:@"decimals"];
     [aCoder encodeObject:self.totalSupply forKey:@"totalSupply"];
-    [aCoder encodeObject:@(self.balance) forKey:@"balance"];
+    [aCoder encodeObject:self.balance forKey:@"balance"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -51,7 +60,7 @@
     NSString *symbol = [aDecoder decodeObjectForKey:@"symbol"];
     NSString *decimals = [aDecoder decodeObjectForKey:@"decimals"];
     NSString *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
-    CGFloat balance = [[aDecoder decodeObjectForKey:@"balance"] floatValue];
+    NSString *balance = [aDecoder decodeObjectForKey:@"balance"];
     
     self = [super init];
     if (self) {

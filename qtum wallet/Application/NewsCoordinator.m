@@ -45,7 +45,7 @@
 
 -(void)refreshTableViewData{
     __weak __typeof(self) weakSelf = self;
-    [[WalletManager sharedInstance].requestManager getNews:^(id responseObject) {
+    [[ApplicationCoordinator sharedInstance].requestManager getNews:^(id responseObject) {
         [weakSelf parceResponse:responseObject];
         [weakSelf.newsController reloadTableView];
     } andFailureHandler:^(NSError *error, NSString *message) {

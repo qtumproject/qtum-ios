@@ -24,6 +24,7 @@
 
 @property (strong,nonatomic) NSUserDefaults* defaults;
 @property (strong,nonatomic,readonly) NotificationManager* notificationManager;
+@property (strong,nonatomic) id <Requestable> requestManager;
 
 -(void)start;
 //flows

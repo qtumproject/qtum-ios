@@ -137,7 +137,7 @@
 //        "tokenSymbol": String
 //    }
     [SVProgressHUD show];
-    [[WalletManager sharedInstance].requestManager generateTokenBitcodeWithDict:@{@"initialSupply" : self.tokenSupply,
+    [[ApplicationCoordinator sharedInstance].requestManager generateTokenBitcodeWithDict:@{@"initialSupply" : self.tokenSupply,
                                                                                   @"tokenName" : self.tokenName,
                                                                                   @"decimalUnits" : self.tokenUnits,
                                                                                   @"tokenSymbol" : self.tokenSymbol

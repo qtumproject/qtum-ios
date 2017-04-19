@@ -80,6 +80,9 @@
 		B365CA631EA4ED540040A163 /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA621EA4ED540040A163 /* Token.m */; };
 		B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA6E1EA600F30040A163 /* NSData+Extension.m */; };
 		B365CA731EA646800040A163 /* TokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA721EA646800040A163 /* TokenModel.m */; };
+		B365CA761EA776BE0040A163 /* MetaWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA751EA776BE0040A163 /* MetaWallet.m */; };
+		B365CA791EA77D490040A163 /* TokensFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA781EA77D490040A163 /* TokensFactory.m */; };
+		B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA7B1EA77D590040A163 /* WalletsFactory.m */; };
 		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
 		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
@@ -328,6 +331,15 @@
 		B365CA701EA6441B0040A163 /* Walletable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Walletable.h; sourceTree = "<group>"; };
 		B365CA711EA646800040A163 /* TokenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenModel.h; sourceTree = "<group>"; };
 		B365CA721EA646800040A163 /* TokenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenModel.m; sourceTree = "<group>"; };
+		B365CA741EA776BE0040A163 /* MetaWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaWallet.h; sourceTree = "<group>"; };
+		B365CA751EA776BE0040A163 /* MetaWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaWallet.m; sourceTree = "<group>"; };
+		B365CA771EA77D490040A163 /* TokensFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensFactory.h; sourceTree = "<group>"; };
+		B365CA781EA77D490040A163 /* TokensFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokensFactory.m; sourceTree = "<group>"; };
+		B365CA7A1EA77D590040A163 /* WalletsFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletsFactory.h; sourceTree = "<group>"; };
+		B365CA7B1EA77D590040A163 /* WalletsFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletsFactory.m; sourceTree = "<group>"; };
+		B365CA7D1EA783640040A163 /* Spendable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spendable.h; sourceTree = "<group>"; };
+		B365CA7E1EA785160040A163 /* HistoryElementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryElementProtocol.h; sourceTree = "<group>"; };
+		B365CA7F1EA78B620040A163 /* Managerable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Managerable.h; path = Managers/Managerable.h; sourceTree = "<group>"; };
 		B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B371D87D1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TCAStyleProvider.h"; sourceTree = "<group>"; };
@@ -605,13 +617,17 @@
 			name = "Diagram animation";
 			sourceTree = "<group>";
 		};
-		B32C3CE61E111FD10094C82C /* Factory */ = {
+		B32C3CE61E111FD10094C82C /* Factorys */ = {
 			isa = PBXGroup;
 			children = (
 				B32C3CF41E1129270094C82C /* ControllersFactory.h */,
 				B32C3CF51E1129270094C82C /* ControllersFactory.m */,
+				B365CA771EA77D490040A163 /* TokensFactory.h */,
+				B365CA781EA77D490040A163 /* TokensFactory.m */,
+				B365CA7A1EA77D590040A163 /* WalletsFactory.h */,
+				B365CA7B1EA77D590040A163 /* WalletsFactory.m */,
 			);
-			name = Factory;
+			name = Factorys;
 			sourceTree = "<group>";
 		};
 		B33601791E963A0500243A21 /* History Item  */ = {
@@ -1078,7 +1094,7 @@
 				B386F5AD1E1297FF004D231B /* Send Flow */,
 				B31CF7211E125C65000BCF41 /* Pin Flow */,
 				B31CF71B1E1249F9000BCF41 /* Wallet Flow */,
-				B32C3CE61E111FD10094C82C /* Factory */,
+				B32C3CE61E111FD10094C82C /* Factorys */,
 				E7FD36601DC73B7900748177 /* Application */,
 				E7DD00EF1DC9E5BD00FD5335 /* Categories */,
 				E7FD36531DC72B4F00748177 /* Controllers */,
@@ -1093,6 +1109,9 @@
 				E7FD365E1DC73B2400748177 /* Shared Views */,
 				B33EAF081E5C5E52006125F3 /* Protocols */,
 				B33EAF001E5B3920006125F3 /* Storyboards */,
+				B365CA7F1EA78B620040A163 /* Managerable.h */,
+				B365CA7D1EA783640040A163 /* Spendable.h */,
+				B365CA7E1EA785160040A163 /* HistoryElementProtocol.h */,
 			);
 			path = "qtum wallet";
 			sourceTree = "<group>";
@@ -1183,6 +1202,8 @@
 		E7FD365F1DC73B6300748177 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				B365CA741EA776BE0040A163 /* MetaWallet.h */,
+				B365CA751EA776BE0040A163 /* MetaWallet.m */,
 				E71AF2521E018F4F0068595B /* WalletManager */,
 				E7396ADD1DDCBFD20002CD47 /* BlockchainInfo */,
 				E7FD36621DC769B500748177 /* Keys */,
@@ -1526,6 +1547,7 @@
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
+				B365CA791EA77D490040A163 /* TokensFactory.m in Sources */,
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
@@ -1567,6 +1589,7 @@
 				B3487A271E92234B00BC66F1 /* WalletTypeCellWithCollection.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */,
+				B365CA761EA776BE0040A163 /* MetaWallet.m in Sources */,
 				B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */,
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
 				B365CA631EA4ED540040A163 /* Token.m in Sources */,
@@ -1583,6 +1606,7 @@
 				B385B5A51E6D829C003BB96C /* WalletHistoryDelegateDataSource.m in Sources */,
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
+				B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */,

@@ -19,7 +19,7 @@
 #pragma mark - Balance
 + (void)getBalanceForAddreses:(NSArray *)keyAddreses withSuccessHandler:(void(^)(double responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
-    [[WalletManager sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
+    [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
         success([[self class] calculateBalance:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
@@ -53,7 +53,7 @@
 
 + (void)getunspentOutputs:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
-    [[WalletManager sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
+    [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
         success([[self class] createArray:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
@@ -102,7 +102,7 @@
 + (void)getHistoryForAddresses:(NSArray *)keyAddreses andParam:(NSDictionary*) param withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
     __weak typeof(self) weakSelf = self;
-    [[WalletManager sharedInstance].requestManager getHistoryWithParam:param andAddresses:keyAddreses successHandler:^(id responseObject) {
+    [[ApplicationCoordinator sharedInstance].requestManager getHistoryWithParam:param andAddresses:keyAddreses successHandler:^(id responseObject) {
         NSArray* history = [weakSelf createHistoryElements:responseObject];
         success(history);
     } andFailureHandler:^(NSError *error, NSString *message) {

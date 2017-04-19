@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HistoryElementProtocol.h"
+#import "Managerable.h"
 @class Token;
 
 @protocol TokenDelegate <NSObject>
@@ -16,15 +18,19 @@
 
 @end
 
-@interface Token : NSObject
+@interface Token : NSObject <Spendable>
+
+@property (copy, nonatomic) NSString* name;
+@property (copy, nonatomic) NSString* balance;
+@property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
+@property (copy, nonatomic)NSString* activeAddress;
+@property (copy, nonatomic)NSString* symbol;
+@property (weak, nonatomic)id <Managerable> manager;
 
 @property (copy, nonatomic)NSString* contractAddress;
 @property (strong, nonatomic)NSArray* adresses;
-@property (strong, nonatomic)NSString* symbol;
 @property (strong, nonatomic)NSString* decimals;
-@property (strong, nonatomic)NSString* name;
 @property (strong, nonatomic)NSString* totalSupply;
-@property (assign, nonatomic)CGFloat balance;
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
 -(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses;

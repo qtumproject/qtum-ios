@@ -11,12 +11,15 @@
 #import "FXKeychain.h"
 #import "Token.h"
 
-static NSString* smartContractPretendentsKey = @"smartContractPretendentsKey";
+NSString const *kTokenKeys = @"qtum_token_tokens_keys";
+NSString *const kTokenUpdateEvent = @"TokenUpdateEvent";
 
-@interface TokenManager ()
+static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
+
+@interface TokenManager () <TokenDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary* smartContractPretendents;
-@property (strong, nonatomic) NSMutableDictionary* tokens;
+@property (nonatomic, strong) NSMutableArray<Token*> *tokens;
 
 @end
 
@@ -36,7 +39,7 @@ static NSString* smartContractPretendentsKey = @"smartContractPretendentsKey";
 {
     self = [super init];
     if (self != nil) {
-        [self loadFromKeychain];
+        [self load];
     }
     return self;
 }
@@ -49,23 +52,63 @@ static NSString* smartContractPretendentsKey = @"smartContractPretendentsKey";
     return _smartContractPretendents;
 }
 
--(NSMutableDictionary*)tokens{
-    
+- (NSMutableArray<Token*>*)tokens {
     if (!_tokens) {
-        _tokens = @{}.mutableCopy;
+        _tokens = @[].mutableCopy;
     }
     return _tokens;
 }
 
--(void)loadFromKeychain{
-    self.smartContractPretendents = [[[FXKeychain defaultKeychain] objectForKey:smartContractPretendentsKey] mutableCopy];
+- (NSArray <Token*>*)gatAllTokens{
+    
+    return self.tokens;
+}
+
+- (BOOL)save {
+    
+    BOOL isSavedTokens = [[FXKeychain defaultKeychain] setObject:self.tokens forKey:kTokenKeys];
+    if ([[FXKeychain defaultKeychain] objectForKey:kSmartContractPretendentsKey]) {
+        [[FXKeychain defaultKeychain] removeObjectForKey:kSmartContractPretendentsKey];
+    }
+    [[FXKeychain defaultKeychain] setObject:[self.smartContractPretendents copy] forKey:kSmartContractPretendentsKey];
+    return isSavedTokens;
+}
+
+- (void)load {
+    
+    NSMutableArray *savedTokens = [[[FXKeychain defaultKeychain] objectForKey:kTokenKeys] mutableCopy];
+
+    for (Token *token in savedTokens) {
+        token.delegate = self;
+    }
+    self.smartContractPretendents = [[[FXKeychain defaultKeychain] objectForKey:kSmartContractPretendentsKey] mutableCopy];
+    self.tokens = savedTokens;
+}
+
+- (void)addNewToken:(Token*) token{
+    token.delegate = self;
+    [self.tokens addObject:token];
+    [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
+    [self tokenDidChange:token];
+}
+
+- (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
+    NSArray *filteredArray = [self.tokens filteredArrayUsingPredicate:predicate];
+    Token* token = filteredArray[0];
+    if (token) {
+        token.balance = balance;
+        [self tokenDidChange:token];
+    }
+}
+
+- (void)removeAllTokens{
+    
+    [self.tokens removeAllObjects];
 }
 
 -(void)saveInKeychain{
-    if ([[FXKeychain defaultKeychain] objectForKey:smartContractPretendentsKey]) {
-        [[FXKeychain defaultKeychain] removeObjectForKey:smartContractPretendentsKey];
-    }
-    [[FXKeychain defaultKeychain] setObject:[self.smartContractPretendents copy] forKey:smartContractPretendentsKey];
+
 }
 
 -(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key{
@@ -90,12 +133,53 @@ static NSString* smartContractPretendentsKey = @"smartContractPretendentsKey";
         if (tokenInfo) {
             Token* token = [Token new];
             [token setupWithHashTransaction:key andAddresses:tokenInfo];
-            [[WalletManager sharedInstance] addNewToken:token];
+            [self addNewToken:token];
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
             [self deleteSmartContractPretendentWithKey:key];
             [self saveInKeychain];
         }
     }
+}
+
+#pragma mark - TokenDelegate
+
+- (void)tokenDidChange:(id)token {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTokenUpdateEvent object:nil userInfo:nil];
+    [self save];
+}
+
+
+#pragma mark - Managerable
+
+-(void)updateSpendableObject:(id <Spendable>) object {
+    
+}
+
+-(void)updateBalanceOfSpendableObject:(id <Spendable>) object {
+    
+}
+
+-(void)updateHistoryOfSpendableObject:(id <Spendable>) object {
+    
+}
+
+-(void)startObservingForSpendable{
+    for (Token* token in self.tokens) {
+        [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
+    }
+}
+
+-(void)stopObservingForSpendable{
+    
+}
+
+-(void)loadSpendableObjects {
+    [self load];
+}
+
+-(void)saveSpendableObjects {
+    [self save];
 }
 
 @end

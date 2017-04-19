@@ -10,18 +10,14 @@
 #import "FXKeychain.h"
 #import "RPCRequestManager.h"
 
-NSString const *WALLETS_KEY = @"qtum_wallet_wallets_keys";
-NSString const *TOKENS_KEY = @"qtum_token_tokens_keys";
-NSString const *USER_PIN_KEY = @"PIN";
-NSString *const TokenUpdateEvent = @"TokenUpdateEvent";
+NSString const *kWalletKey = @"qtum_wallet_wallets_keys";
+NSString const *kUserPin = @"PIN";
 
-@interface WalletManager () <WalletDelegate, TokenDelegate>
+@interface WalletManager () <WalletDelegate>
 
 @property (nonatomic, strong) NSMutableArray *wallets;
-@property (nonatomic, strong) NSMutableArray<Token*> *tokens;
-@property (nonatomic) NSString* PIN;
-
-@property (nonatomic) dispatch_group_t registerGroup;
+@property (nonatomic, strong) NSString* PIN;
+@property (nonatomic, strong) dispatch_group_t registerGroup;
 
 @end
 
@@ -41,18 +37,25 @@ NSString *const TokenUpdateEvent = @"TokenUpdateEvent";
     self = [super init];
     if (self != nil) {
         [self load];
-        _requestManager = [AppSettings sharedInstance].isRPC ? [RPCRequestManager sharedInstance] : [RequestManager sharedInstance];
     }
     return self;
 }
 
+#pragma mark - Lazy Getters
+
+-(NSMutableArray*)wallets {
+    
+    if (!_wallets) {
+        _wallets = @[].mutableCopy;
+    }
+    return _wallets;
+}
+
 #pragma mark - Public Methods
 
-- (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure
-{
-    if (!self.wallets) self.wallets = [NSMutableArray new];
-    
-    Wallet *newWallet = [[Wallet alloc] initWithName:name pin:pin];
+- (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure {
+        
+    Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin];
     newWallet.delegate = self;
     
     __weak typeof(self) weakSelf = self;
@@ -71,9 +74,8 @@ NSString *const TokenUpdateEvent = @"TokenUpdateEvent";
           withSuccessHandler:(void(^)(Wallet *newWallet))success
            andFailureHandler:(void(^)())failure {
     
-    if (!self.wallets) self.wallets = [NSMutableArray new];
+    Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin seedWords:seedWords];
     
-    Wallet *newWallet = [[Wallet alloc] initWithName:name pin:pin seedWords:seedWords];
     if (!newWallet){
         failure();
         return;
@@ -91,19 +93,23 @@ NSString *const TokenUpdateEvent = @"TokenUpdateEvent";
 }
 
 - (Wallet *)getCurrentWallet {
+    
     return [self.wallets lastObject];
 }
 
 - (void)removeWallet:(Wallet *)wallet {
+    
     [self.wallets removeObject:wallet];
     [self save];
 }
 
 - (NSArray *)getAllWallets {
+    
     return [NSArray arrayWithArray:self.wallets];
 }
 
 - (BOOL)haveWallets {
+    
     return self.wallets.count != 0;
 }
 
@@ -112,14 +118,9 @@ NSString *const TokenUpdateEvent = @"TokenUpdateEvent";
     [self.wallets removeAllObjects];
 }
 
-- (void)removeAllTokens{
-    
-    [self.tokens removeAllObjects];
-}
-
 -(void)clear{
+    
     [self removePin];
-    [self removeAllTokens];
     [self removeAllWallets];
     [self save];
 }
@@ -142,7 +143,7 @@ NSString *const TokenUpdateEvent = @"TokenUpdateEvent";
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
         NSLog(@"Enter -- > %@",keyString);
 
-        [[WalletManager sharedInstance].requestManager registerKey:keyString identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
+        [[ApplicationCoordinator sharedInstance].requestManager registerKey:keyString identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
             dispatch_group_leave(weakSelf.registerGroup);
             NSLog(@"Success");
         } andFailureHandler:^(NSError *error, NSString *message) {
@@ -164,12 +165,6 @@ NSString *const TokenUpdateEvent = @"TokenUpdateEvent";
     });
 }
 
-- (NSMutableArray<Token*>*)tokens {
-    if (!_tokens) {
-        _tokens = @[].mutableCopy;
-    }
-    return _tokens;
-}
 
 #pragma mark - WalletDelegate
 
@@ -177,105 +172,77 @@ NSString *const TokenUpdateEvent = @"TokenUpdateEvent";
     [self save];
 }
 
-#pragma mark - TokenDelegate
-
-- (void)tokenDidChange:(id)token{
-    [[NSNotificationCenter defaultCenter] postNotificationName:TokenUpdateEvent object:nil userInfo:nil];
-    [self saveOnlyTokens];
-}
-
 #pragma mark - KeyChain
 
 - (BOOL)save {
     
-    BOOL isSavedWallets = [[FXKeychain defaultKeychain] setObject:self.wallets forKey:WALLETS_KEY];
-    BOOL isSavedTokens = [[FXKeychain defaultKeychain] setObject:self.tokens forKey:TOKENS_KEY];
-
-    return isSavedWallets && isSavedTokens;
-}
-
-- (BOOL)saveOnlyTokens{
-    
-    BOOL isSavedTokens = [[FXKeychain defaultKeychain] setObject:self.tokens forKey:TOKENS_KEY];
-    
-    return isSavedTokens;
+    BOOL isSavedWallets = [[FXKeychain defaultKeychain] setObject:self.wallets forKey:kWalletKey];
+    return isSavedWallets;
 }
 
 - (void)load {
     
-    NSMutableArray *savedWallets = [[[FXKeychain defaultKeychain] objectForKey:WALLETS_KEY] mutableCopy];
-    NSMutableArray *savedTokens = [[[FXKeychain defaultKeychain] objectForKey:TOKENS_KEY] mutableCopy];
+    NSMutableArray *savedWallets = [[[FXKeychain defaultKeychain] objectForKey:kWalletKey] mutableCopy];
 
     for (Wallet *wallet in savedWallets) {
         wallet.delegate = self;
     }
-    
-    for (Token *token in savedTokens) {
-        token.delegate = self;
-    }
-    
+
     self.wallets = savedWallets;
-    self.tokens = savedTokens;
-    
-    self.PIN = [[FXKeychain defaultKeychain] objectForKey:USER_PIN_KEY];
+    self.PIN = [[FXKeychain defaultKeychain] objectForKey:kUserPin];
 }
 
 -(void)storePin:(NSString*) pin {
-    if ([[FXKeychain defaultKeychain] objectForKey:USER_PIN_KEY]) {
-        [[FXKeychain defaultKeychain] removeObjectForKey:USER_PIN_KEY];
+    
+    if ([[FXKeychain defaultKeychain] objectForKey:kUserPin]) {
+        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
     }
-    [[FXKeychain defaultKeychain] setObject:pin forKey:USER_PIN_KEY];
+    [[FXKeychain defaultKeychain] setObject:pin forKey:kUserPin];
     self.PIN = pin;
 }
 
-- (void)removePin
-{
-    [[FXKeychain defaultKeychain] removeObjectForKey:USER_PIN_KEY];
+- (void)removePin {
+    
+    [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
     self.PIN = nil;
 }
 
 #pragma mark - Token
 
-- (NSArray <Token*>*)gatAllTokens{
+-(void)updateSpendableObject:(id <Spendable>) object{
     
-    return self.tokens;
 }
 
-- (void)addNewToken:(Token*) token{
-    token.delegate = self;
-    [self.tokens addObject:token];
-    [self.requestManager startObservingForToken:token withHandler:nil];
-    [self tokenDidChange:token];
+-(void)updateBalanceOfSpendableObject:(id <Spendable>) object{
+    
 }
 
-- (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
-    NSArray *filteredArray = [self.tokens filteredArrayUsingPredicate:predicate];
-    Token* token = filteredArray[0];
-    if (token) {
-        token.balance = [balance floatValue];
-        [self tokenDidChange:token];
-    }
+-(void)updateHistoryOfSpendableObject:(id <Spendable>) object{
+    
+}
+
+-(void)loadSpendableObjects{
+    [self load];
+}
+
+-(void)saveSpendableObjects{
+    [self save];
+}
+
+-(void)updateSpendableWithObject:(id) updateObject {
+    
 }
 
 #pragma mark - Addresses Observing
 
-- (void)startObservingForAddresses{
-    [self.requestManager startObservingAdresses:[[self getCurrentWallet] getAllKeysAdreeses]];
+-(void)startObservingForSpendable{
+    
+    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self getCurrentWallet] getAllKeysAdreeses]];
 }
 
-- (void)stopObservingForAddresses{
-    [self.requestManager stopObservingAdresses:nil];
+-(void)stopObservingForSpendable{
+    
+    [[ApplicationCoordinator sharedInstance].requestManager stopObservingAdresses:nil];
 }
-
-- (void)startObservingForTokens{
-    for (Token * token in self.tokens) {
-        [self.requestManager startObservingForToken:token withHandler:nil];
-    }
-}
-//
-//- (void)stopObservingForAddresses{
-//    [self.requestManager stopObservingAdresses:nil];
-//}
 
 @end
