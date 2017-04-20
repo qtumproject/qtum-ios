@@ -11,20 +11,21 @@
 #import "WalletHistoryDelegateDataSource.h"
 #import "BlockchainInfoManager.h"
 #import "TabBarCoordinator.h"
-#import "HistoryAndBalanceDataStorage.h"
+#import "HistoryDataStorage.h"
 #import "WalletTypeCollectionDataSourceDelegate.h"
 #import "WalletModel.h"
 #import "TokenModel.h"
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
 #import "Walletable.h"
+#import "Spendable.h"
 
 
 @interface WalletCoordinator ()
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (weak, nonatomic) MainViewController* historyController;
-@property (strong, nonatomic) NSMutableArray <Walletable>* wallets;
+@property (strong, nonatomic) NSMutableArray <Spendable>* wallets;
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
 @property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
@@ -32,6 +33,9 @@
 @property (assign, nonatomic) NSInteger pageWallet;
 @property (strong, nonatomic) dispatch_queue_t requestQueue;
 @property (assign,nonatomic)BOOL isNewDataLoaded;
+@property (assign,nonatomic)BOOL isBalanceLoaded;
+@property (assign,nonatomic)BOOL isHistoryLoaded;
+
 
 @end
 
@@ -79,7 +83,7 @@
 
 -(void)showAddressInfo{
     RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
-    vc.walletModel = self.wallets[self.pageWallet];
+    vc.wallet = self.wallets[self.pageWallet];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -93,6 +97,7 @@
 
 - (void)reloadTableViewData{
     if (self.isNewDataLoaded) {
+        [self refreshTableViewBalanceLocal:NO];
         [self reloadHistory];
     }
 }
@@ -104,27 +109,20 @@
 }
 
 -(void)refreshTableViewBalanceLocal:(BOOL)isLocal{
-    if (self.pageWallet == 0) {
-        if (isLocal) {
-            id <Walletable> wallet = self.wallets[0];
-            wallet.balance = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
-            [self.historyController setBalance];
-        } else {
-            __weak typeof(self) weakSelf = self;
-            dispatch_async(_requestQueue, ^{
-                [weakSelf.historyController startLoading];
-                [BlockchainInfoManager getBalanceForAllAddresesWithSuccessHandler:^(double responseObject) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        id <Walletable> wallet = weakSelf.wallets[0];
-                        wallet.balance = [NSString stringWithFormat:@"%lf", responseObject];
-                        [weakSelf.historyController setBalance];
-                    });
-                } andFailureHandler:^(NSError *error, NSString *message) {
-                    [weakSelf.historyController failedToGetBalance];
-                }];
-            });
-        }
-    }
+    
+    __weak __typeof(self)weakSelf = self;
+    dispatch_async(_requestQueue, ^{
+        weakSelf.isBalanceLoaded = NO;
+        [weakSelf.historyController startLoading];
+        [weakSelf.wallets[weakSelf.pageWallet] updateBalanceWithHandler:^(BOOL success) {
+            
+            weakSelf.isBalanceLoaded = YES;
+            if (success) {
+                [weakSelf.historyController reloadTableView];
+            }
+            [weakSelf stopRefreshing];
+        }];
+    });
 }
 
 -(void)qrCodeScannedWithDict:(NSDictionary*) dict{
@@ -146,20 +144,8 @@
 
 -(void)configWalletModels{
     self.wallets = @[].mutableCopy;
-    WalletModel* wallet = [WalletModel new];
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? [WalletManager sharedInstance].getCurrentWallet.getRandomKey.address.string : [WalletManager sharedInstance].getCurrentWallet.getRandomKey.addressTestnet.string;
-    wallet.historyArray = [HistoryAndBalanceDataStorage sharedInstance].historyPrivate;
-    wallet.activeAddress = keyString;
-    wallet.balance =  [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
-    wallet.signature = @"QTUM";
-    [self.wallets addObject:wallet];
-    for (Token* token in [TokenManager sharedInstance].gatAllTokens) {
-        TokenModel* model  = [TokenModel new];
-        model.signature = token.symbol;
-        model.balance = [NSString stringWithFormat:@"%@",token.balance];
-        model.historyArray = @[];
-        [self.wallets addObject:model];
-    }
+    [self.wallets addObject:[WalletManager sharedInstance].getCurrentWallet];
+    [self.wallets addObjectsFromArray:[TokenManager sharedInstance].gatAllTokens];
 }
 
 -(void)setWalletsToDelegates {
@@ -171,90 +157,75 @@
 #pragma mark - Private Methods
 
 -(void)refreshHistory{
-    if (self.pageWallet == 0) {
-        __weak typeof(self) weakSelf = self;
-        
-        self.isNewDataLoaded = NO;
-        dispatch_async(_requestQueue, ^{
-            
-            [weakSelf.historyController startLoading];
-            weakSelf.pageHistoryNumber ++;
-            [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[HistoryAndBalanceDataStorage sharedInstance] addHistoryElements:responseObject];
-                    weakSelf.isNewDataLoaded = YES;
-                });
-                weakSelf.pageHistoryNumber++;
-                weakSelf.isFirstTimeUpdate = NO;
-            } andFailureHandler:^(NSError *error, NSString *message) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf.historyController failedToGetData];
-                    weakSelf.isNewDataLoaded = YES;
-                });
-            } andParam:@{@"limit" : @25,
-                         @"offset" : @(weakSelf.pageHistoryNumber * 25)}];
-        });
-    }
+    
+    __weak __typeof(self)weakSelf = self;
+    dispatch_async(_requestQueue, ^{
+        [weakSelf.historyController startLoading];
+        weakSelf.isHistoryLoaded = NO;
+        id <Spendable> spendable = (id<Spendable>)(weakSelf.wallets[weakSelf.pageWallet]);
+        NSInteger index = spendable.historyStorage.pageIndex + 1; //next page
+        [weakSelf.wallets[weakSelf.pageWallet] updateHistoryWithHandler:^(BOOL success) {
+            weakSelf.isHistoryLoaded = YES;
+            if (success) {
+                [weakSelf.historyController reloadTableView];
+            }
+            [weakSelf stopRefreshing];
+        } andPage:index];
+    });
 }
 
 -(void)reloadHistory{
-    if (self.pageWallet == 0) {
-        __weak typeof(self) weakSelf = self;
-        dispatch_async(_requestQueue, ^{
-            [weakSelf.historyController startLoading];
-            weakSelf.pageHistoryNumber = 0;
-            [BlockchainInfoManager getHistoryForAllAddresesWithSuccessHandler:^(NSArray *responseObject) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[HistoryAndBalanceDataStorage sharedInstance] setHistory:responseObject];
-                    weakSelf.isNewDataLoaded = YES;
-                });
-                weakSelf.isFirstTimeUpdate = NO;
-            } andFailureHandler:^(NSError *error, NSString *message) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf.historyController failedToGetData];
-                    weakSelf.isNewDataLoaded = YES;
-                });
-            } andParam:@{@"limit" : @25,
-                         @"offset" : @(weakSelf.pageHistoryNumber * 25)}];
-        });
+    
+    __weak __typeof(self)weakSelf = self;
+    dispatch_async(_requestQueue, ^{
+        [weakSelf.historyController startLoading];
+        weakSelf.isHistoryLoaded = NO;
+        [weakSelf.wallets[weakSelf.pageWallet] updateHistoryWithHandler:^(BOOL success) {
+            weakSelf.isHistoryLoaded = YES;
+            if (success) {
+                [weakSelf.historyController reloadTableView];
+            }
+            [weakSelf stopRefreshing];
+        } andPage:0];
+    });
+}
+
+-(void)stopRefreshing{
+    if (self.isBalanceLoaded && self.isHistoryLoaded) {
+        [self.historyController stopLoading];
     }
 }
 
 
 -(void)subcribeEvents{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateHistory) name:HistoryUpdateEvent object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBalance) name:BalanceUpdateEvent object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:kTokenUpdateEvent object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:kWalletDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:kTokenDidChange object:nil];
 }
 
 -(void)updateHistory{
-    __weak __typeof(self)weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        id <Walletable> wallet = weakSelf.wallets[0];
-        wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] historyPrivate];
-        [weakSelf.historyController reloadTableView];
-    });
+//    __weak __typeof(self)weakSelf = self;
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        id <Walletable> wallet = weakSelf.wallets[0];
+//        wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] historyPrivate];
+//        [weakSelf.historyController reloadTableView];
+//    });
 }
 
 -(void)updateBalance{
-    __weak __typeof(self)weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        id <Walletable> wallet = weakSelf.wallets[0];
-        wallet.balance = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
-        [weakSelf.historyController setBalance];
-    });
+//    __weak __typeof(self)weakSelf = self;
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        id <Walletable> wallet = weakSelf.wallets[0];
+//        wallet.balance = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
+//        [weakSelf.historyController setBalance];
+//    });
 }
 
 -(void)updateTokens{
-    __weak __typeof(self)weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf configWalletModels];
-        [weakSelf setWalletsToDelegates];
-        [weakSelf.historyController reloadTableView];
-    });
+//    __weak __typeof(self)weakSelf = self;
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [weakSelf.historyController reloadTableView];
+//    });
 }
 
 @end

@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "Spendable.h"
 
+@protocol Spendable;
+
 @protocol Managerable <NSObject>
 
 -(void)updateSpendableObject:(id <Spendable>) object;
--(void)updateSpendableWithObject:(id) updateObject;
--(void)updateBalanceOfSpendableObject:(id <Spendable>) object;
--(void)updateHistoryOfSpendableObject:(id <Spendable>) object;
+-(void)updateSpendablesBalansesWithObject:(id) updateObject;
+-(void)updateSpendablesHistoriesWithObject:(id) updateObject;
+-(void)updateBalanceOfSpendableObject:(id <Spendable>) object withHandler:(void(^)(BOOL success)) complete;
+-(void)updateHistoryOfSpendableObject:(id <Spendable>) object withHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page;
 -(void)loadSpendableObjects;
 -(void)saveSpendableObjects;
 -(void)startObservingForSpendable;

@@ -26,12 +26,11 @@
 
 #pragma mark - Public Methods
 
--(void)configWithObject:(id <Walletable>) object{
-    self.showAddresButton.hidden = (object.type == Tokenable);
-    self.adressLabel.hidden = (object.type == Tokenable);
-    self.adressValueLabel.text = object.activeAddress;
-    self.valueLabel.text = object.balance;
-    self.typeWalletLabel.text = object.signature;
+-(void)configWithObject:(id <Spendable>) object{
+    self.adressLabel.text = ([object isKindOfClass:[Token class]]) ? @"Contract Address" : @"QTUM Address";
+    self.adressValueLabel.text = object.mainAddress;
+    self.valueLabel.text = [NSString stringWithFormat:@"%f",object.balance];
+    self.typeWalletLabel.text = object.symbol;
 }
 
 - (IBAction)actionShowAddressInfo:(id)sender {

@@ -39,7 +39,7 @@ static NSInteger countOfSections = 2;
             cell = [[HistoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HistoryTableViewCell"];
         }
         
-        HistoryElement *element = self.wallet.historyArray[indexPath.row];
+        HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
         cell.historyElement = element;
         return cell;
     }
@@ -54,11 +54,12 @@ static NSInteger countOfSections = 2;
     if (section == 0) {
         return 1;
     } else {
-        return  self.wallet.historyArray.count;
+        return  self.wallet.historyStorage.historyPrivate.count;
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.section == 0) {
         return 212;
     } else {
@@ -67,6 +68,7 @@ static NSInteger countOfSections = 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
     if (section == 0) {
         return 0;
     }
@@ -74,9 +76,10 @@ static NSInteger countOfSections = 2;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
     if (section != 0) {
         HistoryHeaderVIew *sectionHeaderView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:SectionHeaderViewIdentifier];
-        sectionHeaderView.balanceLabel.text = self.wallet.balance;
+        sectionHeaderView.balanceLabel.text = [NSString stringWithFormat:@"%0.6f",self.wallet.balance];
         self.sectionHeaderView = sectionHeaderView;
         return sectionHeaderView;
     }else {
@@ -117,18 +120,17 @@ static NSInteger countOfSections = 2;
     float reload_distance = 50;
     if(y > h + reload_distance && offset.y > 0) {
         [self.delegate refreshTableViewData];
-        [self.delegate refreshTableViewBalanceLocal:YES];
     }
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.delegate tableView:tableView didSelectRowAtIndexPath:indexPath withItem:self.wallet.historyArray[indexPath.row]];
+    [self.delegate tableView:tableView didSelectRowAtIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.delegate tableView:tableView didDeselectRowAtIndexPath:indexPath withItem:self.wallet.historyArray[indexPath.row]];
+    [self.delegate tableView:tableView didDeselectRowAtIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
 }
 
 

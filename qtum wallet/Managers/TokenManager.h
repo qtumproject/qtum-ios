@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class HistoryElement;
 
-extern NSString *const kTokenUpdateEvent;
+extern NSString *const kTokenDidChange;
 
 @interface TokenManager : NSObject <Managerable>
 

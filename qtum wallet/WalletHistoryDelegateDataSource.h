@@ -30,7 +30,7 @@
 @interface WalletHistoryDelegateDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) UITableView* tableView;
-@property (strong, nonatomic) WalletModel* wallet;
+@property (weak, nonatomic) id <Spendable> wallet;
 @property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak,nonatomic) id <ControllerDelegate> controllerDelegate;

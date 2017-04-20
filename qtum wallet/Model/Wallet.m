@@ -7,6 +7,7 @@
 //
 
 #import "Wallet.h"
+#import "HistoryDataStorage.h"
 
 NSInteger const WORDS_COUNT = 12;
 NSInteger const USERS_KEYS_COUNT = 100;
@@ -22,8 +23,7 @@ NSInteger const USERS_KEYS_COUNT = 100;
 
 @implementation Wallet
 
-- (instancetype)initWithName:(NSString *)name pin:(NSString *)pin
-{
+- (instancetype)initWithName:(NSString *)name pin:(NSString *)pin {
     self = [super init];
     if (self) {
         self.name = name;
@@ -34,8 +34,7 @@ NSInteger const USERS_KEYS_COUNT = 100;
     return self;
 }
 
-- (instancetype)initWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords
-{
+- (instancetype)initWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords {
     self = [super init];
     if (self) {
         self.name = name;
@@ -70,6 +69,18 @@ NSInteger const USERS_KEYS_COUNT = 100;
 {
     _pin = pin;
     [self walletDidChange];
+}
+
+#pragma mark - Getters
+
+-(NSArray <HistoryElementProtocol>*)historyArray{
+    return [self.historyStorage.historyPrivate copy];
+}
+-(NSString *)mainAddress{
+    
+    BTCKey* key = [self getLastRandomKeyOrRandomKey];
+    NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+    return keyString;
 }
 
 #pragma mark - Public Methods
@@ -164,6 +175,20 @@ static NSString* adressKey = @"adress";
     if ([self.delegate respondsToSelector:@selector(walletDidChange:)]) {
         [self.delegate walletDidChange:self];
     }
+}
+
+#pragma mark - Spendable
+
+-(void)updateBalanceWithHandler:(void (^)(BOOL))complete{
+    [self.manager updateBalanceOfSpendableObject:self withHandler:complete];
+}
+
+-(void)updateHistoryWithHandler:(void (^)(BOOL))complete andPage:(NSInteger) page{
+    [self.manager updateHistoryOfSpendableObject:self withHandler:complete andPage:page];
+}
+
+-(void)loadToMemory{
+    _historyStorage = [HistoryDataStorage new];
 }
 
 #pragma mark - NSCoding

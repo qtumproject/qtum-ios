@@ -9,19 +9,22 @@
 #import <Foundation/Foundation.h>
 #import "Managerable.h"
 #import "HistoryElementProtocol.h"
+#import "HistoryDataStorage.h"
 
 @protocol Managerable;
 
 @protocol Spendable <NSObject>
 
 @property (copy, nonatomic) NSString* name;
-@property (copy, nonatomic) NSString* balance;
-@property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
-@property (copy, nonatomic)NSString* activeAddress;
+@property (assign, nonatomic) CGFloat balance;
+@property (strong, nonatomic) HistoryDataStorage* historyStorage;
+@property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;
 @property (weak, nonatomic)id <Managerable> manager;
 
--(void)updateBalance;
--(void)updateHistory;
+-(void)updateBalanceWithHandler:(void(^)(BOOL success)) complete;
+-(void)updateHistoryWithHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page;
+-(void)loadToMemory;
+
 
 @end

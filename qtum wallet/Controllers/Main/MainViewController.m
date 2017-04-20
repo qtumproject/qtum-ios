@@ -150,12 +150,11 @@
 -(void)reloadTableView{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        self.historyLoaded = YES;
+        if (self.balanceLoaded && self.historyLoaded) {
+            [SVProgressHUD dismiss];
+        }
     });
-
-    self.historyLoaded = YES;
-    if (self.balanceLoaded && self.historyLoaded) {
-        [SVProgressHUD dismiss];
-    }
 }
 
 -(void)reloadHistorySection {
@@ -177,7 +176,7 @@
     }
 }
 
--(void)startLoading{
+-(void)startLoading {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (![SVProgressHUD isVisible]) {
             [SVProgressHUD show];
@@ -185,29 +184,20 @@
     });
 }
 
--(void)stopLoading{
+-(void)stopLoading {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if ([SVProgressHUD isVisible]) {
-            [SVProgressHUD dismiss];
-        }
+        [SVProgressHUD dismiss];
     });
 }
 
 -(void)failedToGetData{
     self.historyLoaded = YES;
     [SVProgressHUD showErrorWithStatus:@"Some error"];
-//
-//    if (self.balanceLoaded && self.historyLoaded) {
-//        [SVProgressHUD showErrorWithStatus:@"Some error"];
-//    }
 }
 -(void)failedToGetBalance{
     self.balanceLoaded = YES;
     [SVProgressHUD showErrorWithStatus:@"Some error"];
-//
-//    if (self.balanceLoaded && self.historyLoaded) {
-//        [SVProgressHUD showErrorWithStatus:@"Some error"];
-//    }
+
 }
 
 #pragma mark - QRCodeViewControllerDelegate
@@ -223,9 +213,10 @@
 }
 
 - (IBAction)refreshButtonWasPressed:(id)sender{
-    self.historyLoaded = YES;
-    self.balanceLoaded = YES;
-    [self.refreshControl endRefreshing];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.refreshControl endRefreshing];
+    });
     [self.delegate reloadTableViewData];
 }
 

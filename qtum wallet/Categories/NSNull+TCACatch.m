@@ -25,7 +25,7 @@
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     NSLog(@"NULL EXEPTION");
-    [NSException raise:NSInvalidArgumentException format:@"NULL EXEPTION"];
+    //[NSException raise:NSInvalidArgumentException format:@"NULL EXEPTION"];
 }
 
 @end

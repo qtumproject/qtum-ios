@@ -13,6 +13,11 @@
 @interface TabBarCoordinator ()
 
 @property (strong,nonatomic) TabBarController* tabBarContoller;
+@property (assign,nonatomic) BOOL walletsAlreadyStarted;
+@property (assign,nonatomic) BOOL sendAlreadyStarted;
+@property (assign,nonatomic) BOOL profileAlreadyStarted;
+@property (assign,nonatomic) BOOL newsAlreadyStarted;
+
 
 @end
 
@@ -35,23 +40,39 @@
 #pragma mark - TabBarCoordinatorDelegate
 
 -(void)newsTabDidSelectedWithController:(UIViewController*)controller{
-    [self checkTabsController:controller];
-    NewsCoordinator* coordinator = [[NewsCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
-    [coordinator start];
-    [self addDependency:coordinator];
+    
+    if (!self.newsAlreadyStarted) {
+        self.newsAlreadyStarted = YES;
+        [self checkTabsController:controller];
+        NewsCoordinator* coordinator = [[NewsCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
+        [coordinator start];
+        [self addDependency:coordinator];
+    }
 }
 -(void)sendTabDidSelectedWithController:(UIViewController*)controller{
-    [self checkTabsController:controller];
+    
+    if (!self.sendAlreadyStarted) {
+        self.sendAlreadyStarted = YES;
+        [self checkTabsController:controller];
+    }
 }
 -(void)profileTabDidSelectedWithController:(UIViewController*)controller{
-    [self checkTabsController:controller];
+    
+    if (!self.profileAlreadyStarted) {
+        self.profileAlreadyStarted = YES;
+        [self checkTabsController:controller];
+    }
 }
 -(void)walletTabDidSelectedWithController:(UIViewController*)controller{
-    [self checkTabsController:controller];
-    WalletCoordinator* coordinator = [[WalletCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
-    coordinator.delegate = self;
-    [coordinator start];
-    [self addDependency:coordinator];
+    
+    if (!self.walletsAlreadyStarted) {
+        self.walletsAlreadyStarted = YES;
+        [self checkTabsController:controller];
+        WalletCoordinator* coordinator = [[WalletCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
+        coordinator.delegate = self;
+        [coordinator start];
+        [self addDependency:coordinator];
+    }
 }
 
 -(void)checkTabsController:(UIViewController*)controller{

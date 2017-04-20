@@ -34,12 +34,22 @@
 }
 
 
--(void)updateBalance{
-    [self.manager updateBalanceOfSpendableObject:self];
+#pragma mark - Getters 
+
+-(NSString *)mainAddress{
+    return self.contractAddress;
 }
 
--(void)updateHistory{
-    [self.manager updateHistoryOfSpendableObject:self];
+-(void)updateBalanceWithHandler:(void (^)(BOOL))complete{
+    [self.manager updateBalanceOfSpendableObject:self withHandler:complete];
+}
+
+-(void)updateHistoryWithHandler:(void (^)(BOOL))complete andPage:(NSInteger) page{
+    [self.manager updateHistoryOfSpendableObject:self withHandler:complete andPage:page];
+}
+
+-(void)loadToMemory{
+    _historyStorage = [HistoryDataStorage new];
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
@@ -50,7 +60,7 @@
     [aCoder encodeObject:self.symbol forKey:@"symbol"];
     [aCoder encodeObject:self.decimals forKey:@"decimals"];
     [aCoder encodeObject:self.totalSupply forKey:@"totalSupply"];
-    [aCoder encodeObject:self.balance forKey:@"balance"];
+    [aCoder encodeObject:@(self.balance) forKey:@"balance"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -60,7 +70,7 @@
     NSString *symbol = [aDecoder decodeObjectForKey:@"symbol"];
     NSString *decimals = [aDecoder decodeObjectForKey:@"decimals"];
     NSString *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
-    NSString *balance = [aDecoder decodeObjectForKey:@"balance"];
+    CGFloat balance = [[aDecoder decodeObjectForKey:@"balance"] floatValue];
     
     self = [super init];
     if (self) {

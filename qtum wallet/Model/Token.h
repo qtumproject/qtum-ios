@@ -21,11 +21,13 @@
 @interface Token : NSObject <Spendable>
 
 @property (copy, nonatomic) NSString* name;
-@property (copy, nonatomic) NSString* balance;
+@property (assign, nonatomic) CGFloat balance;
 @property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
-@property (copy, nonatomic)NSString* activeAddress;
+@property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;
 @property (weak, nonatomic)id <Managerable> manager;
+@property (strong, nonatomic) HistoryDataStorage* historyStorage;
+
 
 @property (copy, nonatomic)NSString* contractAddress;
 @property (strong, nonatomic)NSArray* adresses;

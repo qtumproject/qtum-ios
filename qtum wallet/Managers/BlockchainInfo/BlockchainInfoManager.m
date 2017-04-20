@@ -9,7 +9,7 @@
 #import "BlockchainInfoManager.h"
 #import "RPCRequestManager.h"
 #import "HistoryElement.h"
-#import "HistoryAndBalanceDataStorage.h"
+#import "HistoryDataStorage.h"
 #import "BTCTransactionInput+Extension.h"
 #import "BTCTransactionOutput+Address.h"
 #import "TokenManager.h"
@@ -20,7 +20,7 @@
 + (void)getBalanceForAddreses:(NSArray *)keyAddreses withSuccessHandler:(void(^)(double responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure
 {
     [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
-        success([[self class] calculateBalance:responseObject]);
+      //  success([[self class] calculateBalance:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
@@ -37,17 +37,7 @@
     }];
 }
 
-+ (double)calculateBalance:(NSArray *)responseObject
-{
-    double balance = 0;
-    
-    for (NSDictionary *dictionary in responseObject) {
-        double amount = [dictionary[@"amount"] doubleValue];
-        balance += amount;
-    }
-    
-    return balance;
-}
+
 
 #pragma mark - Outputs
 
@@ -144,11 +134,11 @@
 }
 
 +(void)updateHistoryWithArray:(NSArray <HistoryElement*>*) array{
-    [[HistoryAndBalanceDataStorage sharedInstance] setHistory:array];
+//    [[HistoryAndBalanceDataStorage sharedInstance] setHistory:array];
 }
 
 +(void)updateHistoryWithItem:(HistoryElement*) item{
-    [[HistoryAndBalanceDataStorage sharedInstance] setHistoryItem:item];
+//    [[HistoryAndBalanceDataStorage sharedInstance] setHistoryItem:item];
 }
 
 +(void)addHistoryElementWithDict:(NSDictionary*) dict {
@@ -157,7 +147,7 @@
 }
 
 + (void)updateBalance:(CGFloat) balance{
-    [HistoryAndBalanceDataStorage sharedInstance].balance = balance;
+//    [HistoryAndBalanceDataStorage sharedInstance].balance = balance;
 }
 
 #pragma mark - Methods

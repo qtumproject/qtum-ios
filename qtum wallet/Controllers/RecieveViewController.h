@@ -11,6 +11,6 @@
 
 @interface RecieveViewController : BaseViewController
 
-@property (nonatomic, strong) WalletModel *walletModel;
+@property (nonatomic, weak) id <Spendable> wallet;
 
 @end

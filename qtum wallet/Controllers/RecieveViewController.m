@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.balanceLabel.text = self.walletModel.balance;
+    self.balanceLabel.text = [NSString stringWithFormat:@"%.6f", self.wallet.balance];
     [self addDoneButtonToAmountTextField];
     self.shareButton.enabled = NO;
     // Do any additional setup after loading the view.
@@ -40,7 +40,7 @@
 {
     [super viewDidAppear:animated];
 
-    self.publicAddressLabel.text = self.walletModel.activeAddress;
+    self.publicAddressLabel.text = self.wallet.mainAddress;
     [self createQRCode];
 }
 
@@ -55,7 +55,7 @@
     self.shareButton.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
-    NSString* keyString = self.walletModel.activeAddress;
+    NSString* keyString = self.wallet.mainAddress;
 
     [QRCodeManager createQRCodeFromPublicAddress:keyString andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
@@ -121,7 +121,7 @@
 - (IBAction)copeButtonWasPressed:(id)sender
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    NSString* keyString = self.walletModel.activeAddress;
+    NSString* keyString = self.wallet.mainAddress;
     [pb setString:keyString];
     
     [self showAlertWithTitle:nil mesage:@"Address copied" andActions:nil];

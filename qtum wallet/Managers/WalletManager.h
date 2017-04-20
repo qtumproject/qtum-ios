@@ -12,6 +12,8 @@
 #import "Token.h"
 #import "Managerable.h"
 
+extern NSString *const kWalletDidChange;
+
 @interface WalletManager : NSObject <Managerable>
 
 @property (nonatomic, readonly) NSMutableArray *wallets;

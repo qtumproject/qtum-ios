@@ -12,7 +12,7 @@
 #import "Token.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
-NSString *const kTokenUpdateEvent = @"TokenUpdateEvent";
+NSString *const kTokenDidChange = @"kTokenDidChange";
 
 static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
 
@@ -25,8 +25,8 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
 
 @implementation TokenManager
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
+    
     static TokenManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -35,14 +35,16 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
     return instance;
 }
 
-- (instancetype)initUniqueInstance
-{
+- (instancetype)initUniqueInstance {
+    
     self = [super init];
     if (self != nil) {
         [self load];
     }
     return self;
 }
+
+#pragma mark - Lazy Getters
 
 -(NSMutableDictionary*)smartContractPretendents{
     
@@ -59,10 +61,7 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
     return _tokens;
 }
 
-- (NSArray <Token*>*)gatAllTokens{
-    
-    return self.tokens;
-}
+#pragma mark - Storing Methods
 
 - (BOOL)save {
     
@@ -77,15 +76,70 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
 - (void)load {
     
     NSMutableArray *savedTokens = [[[FXKeychain defaultKeychain] objectForKey:kTokenKeys] mutableCopy];
-
+    
     for (Token *token in savedTokens) {
         token.delegate = self;
+        token.manager = self;
+        [token loadToMemory];
     }
     self.smartContractPretendents = [[[FXKeychain defaultKeychain] objectForKey:kSmartContractPretendentsKey] mutableCopy];
     self.tokens = savedTokens;
 }
 
+#pragma mark - Public Methods
+
+#pragma mark - Private Methods
+
+#pragma mark - Managerable
+
+-(void)updateSpendableObject:(id <Spendable>) object {
+    
+}
+
+-(void)updateBalanceOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete {
+    [complete copy];
+    complete(NO);
+    NSLog(@"complete ->%@",complete);
+}
+
+-(void)updateHistoryOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete andPage:(NSInteger) page{
+    [complete copy];
+    complete(NO);
+    object.historyStorage.pageIndex = page;
+    NSLog(@"complete ->%@",complete);
+}
+
+-(void)startObservingForSpendable{
+    
+    for (Token* token in self.tokens) {
+        [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
+    }
+}
+
+-(void)stopObservingForSpendable{
+    
+}
+
+
+-(void)loadSpendableObjects {
+    [self load];
+}
+
+-(void)saveSpendableObjects {
+    [self save];
+}
+
+-(void)updateSpendableWithObject:(id) updateObject{
+    
+}
+
+- (NSArray <Token*>*)gatAllTokens{
+    
+    return self.tokens;
+}
+
 - (void)addNewToken:(Token*) token{
+    
     token.delegate = self;
     [self.tokens addObject:token];
     [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
@@ -93,11 +147,12 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
 }
 
 - (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance{
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
     NSArray *filteredArray = [self.tokens filteredArrayUsingPredicate:predicate];
     Token* token = filteredArray[0];
     if (token) {
-        token.balance = balance;
+        token.balance = [balance floatValue];
         [self tokenDidChange:token];
     }
 }
@@ -107,16 +162,14 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
     [self.tokens removeAllObjects];
 }
 
--(void)saveInKeychain{
-
-}
-
 -(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key{
+    
     [self.smartContractPretendents setObject:addresses forKey:key];
-    [self saveInKeychain];
+    [self save];
 }
 
 -(void)deleteSmartContractPretendentWithKey:(NSString*) key{
+    
     [self.smartContractPretendents removeObjectForKey:key];
 }
 
@@ -136,7 +189,7 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
             [self addNewToken:token];
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
             [self deleteSmartContractPretendentWithKey:key];
-            [self saveInKeychain];
+            [self save];
         }
     }
 }
@@ -145,41 +198,16 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
 
 - (void)tokenDidChange:(id)token {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTokenUpdateEvent object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTokenDidChange object:nil userInfo:nil];
     [self save];
 }
 
-
-#pragma mark - Managerable
-
--(void)updateSpendableObject:(id <Spendable>) object {
+-(void)updateSpendablesBalansesWithObject:(id) updateObject{
     
 }
 
--(void)updateBalanceOfSpendableObject:(id <Spendable>) object {
+-(void)updateSpendablesHistoriesWithObject:(id) updateObject{
     
-}
-
--(void)updateHistoryOfSpendableObject:(id <Spendable>) object {
-    
-}
-
--(void)startObservingForSpendable{
-    for (Token* token in self.tokens) {
-        [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
-    }
-}
-
--(void)stopObservingForSpendable{
-    
-}
-
--(void)loadSpendableObjects {
-    [self load];
-}
-
--(void)saveSpendableObjects {
-    [self save];
 }
 
 @end

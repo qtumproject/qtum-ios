@@ -6,45 +6,24 @@
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
-#import "HistoryAndBalanceDataStorage.h"
+#import "HistoryDataStorage.h"
 #import "HistoryElement.h"
 
 NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
-NSString *const BalanceUpdateEvent = @"BalanceUpdateEvent";
 
-@interface HistoryAndBalanceDataStorage ()
+@interface HistoryDataStorage ()
 
 @property (strong, nonatomic) NSMutableArray<HistoryElement*>* historyPrivate;
 
 @end
 
-@implementation HistoryAndBalanceDataStorage
+@implementation HistoryDataStorage
 
-#pragma mark - Init
-
-+ (instancetype)sharedInstance {
-    static HistoryAndBalanceDataStorage *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
-    self = [super init];
-    if (self != nil) {}
-    return self;
-}
 
 #pragma mark - Private Methods
 
 -(void)notificateChangeHistory{
     [[NSNotificationCenter defaultCenter] postNotificationName:HistoryUpdateEvent object:nil userInfo:nil];
-}
-
--(void)notificateChangeBalance{
-    [[NSNotificationCenter defaultCenter] postNotificationName:BalanceUpdateEvent object:nil userInfo:nil];
 }
 
 #pragma mark Public Methods
@@ -92,12 +71,6 @@ NSString *const BalanceUpdateEvent = @"BalanceUpdateEvent";
     [self.historyPrivate addObjectsFromArray:[[elements reverseObjectEnumerator] allObjects]];
     [self notificateChangeHistory];
 }
-
--(void)setBalance:(CGFloat) balance{
-    _balance = balance;
-    [self notificateChangeBalance];
-}
-
 
 
 @end

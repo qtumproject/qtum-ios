@@ -9,15 +9,19 @@
 #import "WalletManager.h"
 #import "FXKeychain.h"
 #import "RPCRequestManager.h"
+#import "WalletManagerRequestAdapter.h"
+#import "HistoryDataStorage.h"
 
 NSString const *kWalletKey = @"qtum_wallet_wallets_keys";
 NSString const *kUserPin = @"PIN";
+NSString *const kWalletDidChange = @"kWalletDidChange";
 
 @interface WalletManager () <WalletDelegate>
 
 @property (nonatomic, strong) NSMutableArray *wallets;
 @property (nonatomic, strong) NSString* PIN;
 @property (nonatomic, strong) dispatch_group_t registerGroup;
+@property (strong ,nonatomic) WalletManagerRequestAdapter* requestAdapter;
 
 @end
 
@@ -37,6 +41,7 @@ NSString const *kUserPin = @"PIN";
     self = [super init];
     if (self != nil) {
         [self load];
+        _requestAdapter = [WalletManagerRequestAdapter new];
     }
     return self;
 }
@@ -51,12 +56,16 @@ NSString const *kUserPin = @"PIN";
     return _wallets;
 }
 
+
+
 #pragma mark - Public Methods
 
 - (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure {
         
     Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin];
     newWallet.delegate = self;
+    newWallet.manager = self;
+    [newWallet loadToMemory];
     
     __weak typeof(self) weakSelf = self;
     [self registerWalletInNode:newWallet withSuccessHandler:^{
@@ -81,6 +90,8 @@ NSString const *kUserPin = @"PIN";
         return;
     }
     newWallet.delegate = self;
+    newWallet.manager = self;
+    [newWallet loadToMemory];
     
     __weak typeof(self) weakSelf = self;
     [self registerWalletInNode:newWallet withSuccessHandler:^{
@@ -169,6 +180,7 @@ NSString const *kUserPin = @"PIN";
 #pragma mark - WalletDelegate
 
 - (void)walletDidChange:(id)wallet{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kWalletDidChange object:nil userInfo:nil];
     [self save];
 }
 
@@ -186,6 +198,8 @@ NSString const *kUserPin = @"PIN";
 
     for (Wallet *wallet in savedWallets) {
         wallet.delegate = self;
+        wallet.manager = self;
+        [wallet loadToMemory];
     }
 
     self.wallets = savedWallets;
@@ -213,23 +227,51 @@ NSString const *kUserPin = @"PIN";
     
 }
 
--(void)updateBalanceOfSpendableObject:(id <Spendable>) object{
+-(void)updateBalanceOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete{
     
+   // __weak __typeof(self)weakSelf = self;
+    [self.requestAdapter getBalanceForAddreses:[object getAllKeysAdreeses] withSuccessHandler:^(double balance) {
+    
+        object.balance = balance;
+        complete(YES);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        
+        complete(NO);
+    }];
 }
 
--(void)updateHistoryOfSpendableObject:(id <Spendable>) object{
-    
+-(void)updateHistoryOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page{
+    //__weak __typeof(self)weakSelf = self;
+    [self.requestAdapter getHistoryForAddresses:[object getAllKeysAdreeses] andParam:@{@"limit" : @25, @"offset" : @(page * 25)} withSuccessHandler:^(NSArray <HistoryElement*> *history) {
+        
+        if (page > object.historyStorage.pageIndex) {
+            [object.historyStorage addHistoryElements:history];
+        } else {
+            [object.historyStorage setHistory:history];
+        }
+        object.historyStorage.pageIndex = page;
+        complete(YES);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        
+        complete(NO);
+    }];
 }
 
 -(void)loadSpendableObjects{
+    
     [self load];
 }
 
 -(void)saveSpendableObjects{
+    
     [self save];
 }
 
--(void)updateSpendableWithObject:(id) updateObject {
+-(void)updateSpendablesBalansesWithObject:(NSNumber*) balance{
+    [self getCurrentWallet].balance = [balance floatValue];
+}
+
+-(void)updateSpendablesHistoriesWithObject:(id) updateObject{
     
 }
 
