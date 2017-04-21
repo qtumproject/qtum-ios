@@ -7,7 +7,6 @@
 //
 
 #import "HistoryElement.h"
-#import "BlockchainInfoManager.h"
 
 @implementation HistoryElement
 
@@ -121,7 +120,7 @@
 }
 
 - (NSDictionary *)getHashTableOfKeys{
-    return [BlockchainInfoManager getHashTableOfKeys];
+    return [[WalletManager sharedInstance] getHashTableOfKeys];
 }
 
 #pragma mark - Setup
@@ -157,7 +156,8 @@
     if (self.shortDateString && object.shortDateString && ![self.shortDateString isEqualToString:object.shortDateString]) {
         return NO;
     }
-    if (!self.send == object.send) {
+    
+    if (self.send != object.send) {
         return NO;
     }
     if (self.txHash && object.txHash && ![self.txHash isEqualToString:object.txHash]) {

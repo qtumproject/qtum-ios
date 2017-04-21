@@ -9,7 +9,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MainViewController.h"
 #import "HistoryTableViewCell.h"
-#import "BlockchainInfoManager.h"
 #import "NewPaymentViewController.h"
 #import "RecieveViewController.h"
 #import "HistoryElement.h"

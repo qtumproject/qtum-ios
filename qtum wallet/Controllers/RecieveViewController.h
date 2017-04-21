@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WalletModel.h"
 
 @interface RecieveViewController : BaseViewController
 

@@ -8,6 +8,9 @@
 
 #import "WalletManagerRequestAdapter.h"
 #import "HistoryElement.h"
+#import "NSString+Extension.h"
+#import "BTCTransactionInput+Extension.h"
+#import "BTCTransactionOutput+Address.h"
 
 @implementation WalletManagerRequestAdapter
 
@@ -31,6 +34,45 @@
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
+}
+
+#pragma mark - Outputs
+
+- (void)getunspentOutputs:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure {
+    
+    [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
+        success([self createArray:responseObject]);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+
+#pragma mark - Adapters Methods
+
+- (NSArray *)createArray:(NSArray *)responseObject{
+    
+    NSMutableArray* outputs = [NSMutableArray array];
+    
+    for (NSDictionary* item in responseObject) {
+        BTCTransactionOutput* txout = [[BTCTransactionOutput alloc] init];
+        
+        txout.value = [self convertValueToAmount:[item[@"amount"] doubleValue]];
+        txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"txout_scriptPubKey"])];
+        txout.index = [item[@"vout"] intValue];
+        txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
+        txout.transactionHash = (BTCDataFromHex([NSString invertHex:item[@"tx_hash"]]));
+        txout.blockHeight = [item[@"confirmations"] integerValue];
+        txout.runTimeAddress = item[@"address"];
+        
+        [outputs addObject:txout];
+    }
+    
+    return outputs;
+}
+
+- (BTCAmount)convertValueToAmount:(double)value {
+    return value * BTCCoin;
 }
 
 

@@ -12,12 +12,6 @@
 @class HistoryDataStorage;
 @class Wallet;
 
-@protocol WalletDelegate <NSObject>
-
-- (void)walletDidChange:(Wallet *)wallet;
-
-@end
-
 @interface Wallet : NSObject <Spendable>
 
 - (instancetype)initWithName:(NSString *)name pin:(NSString *)pin;
@@ -33,7 +27,6 @@
 @property (nonatomic, readonly, copy) NSArray *seedWords;
 @property (nonatomic, readonly) NSInteger countOfUsedKeys;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
-@property (nonatomic, weak) id<WalletDelegate> delegate;
 
 - (BTCKey *)getLastRandomKeyOrRandomKey;
 - (BTCKey *)getRandomKey;
@@ -41,6 +34,5 @@
 - (NSArray *)getAllKeys;
 - (NSString *)getWorldsString;
 - (NSArray <NSString*>*)getAllKeysAdreeses;
-
 
 @end

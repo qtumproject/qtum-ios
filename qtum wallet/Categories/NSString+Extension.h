@@ -13,5 +13,6 @@
 + (NSString *)valueForKey:(NSString *)key fromQueryItems:(NSArray *)queryItems;
 + (NSData *)dataFromHexString:(NSString *)string;
 + (NSString *)hexadecimalString:(NSData *)data;
++ (NSString *)invertHex:(NSString *)hexString;
 
 @end

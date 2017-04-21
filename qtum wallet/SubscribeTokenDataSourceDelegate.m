@@ -9,16 +9,16 @@
 #import "SubscribeTokenDataSourceDelegate.h"
 #import "TockenCell.h"
 
-
 @implementation SubscribeTokenDataSourceDelegate
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return self.tokensArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     TockenCell* cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
     if (!cell){
         cell = [[TockenCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tokenCellIdentifire];
@@ -26,6 +26,8 @@
     if (indexPath.row == 0) {
         cell.topSeparator.hidden = NO;
     }
+    id <Spendable> token = self.tokensArray[indexPath.row];
+    cell.label.text = token.name;
     return cell;
 }
 

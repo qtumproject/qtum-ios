@@ -61,16 +61,14 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
     return _tokens;
 }
 
-#pragma mark - Storing Methods
+#pragma mark - Keychain Methods
 
 - (BOOL)save {
     
     BOOL isSavedTokens = [[FXKeychain defaultKeychain] setObject:self.tokens forKey:kTokenKeys];
-    if ([[FXKeychain defaultKeychain] objectForKey:kSmartContractPretendentsKey]) {
-        [[FXKeychain defaultKeychain] removeObjectForKey:kSmartContractPretendentsKey];
-    }
-    [[FXKeychain defaultKeychain] setObject:[self.smartContractPretendents copy] forKey:kSmartContractPretendentsKey];
-    return isSavedTokens;
+    
+    BOOL isSavedPretendents = [[FXKeychain defaultKeychain] setObject:[self.smartContractPretendents copy] forKey:kSmartContractPretendentsKey];
+    return isSavedTokens && isSavedPretendents;
 }
 
 - (void)load {
@@ -90,48 +88,6 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
 
 #pragma mark - Private Methods
 
-#pragma mark - Managerable
-
--(void)updateSpendableObject:(id <Spendable>) object {
-    
-}
-
--(void)updateBalanceOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete {
-    [complete copy];
-    complete(NO);
-    NSLog(@"complete ->%@",complete);
-}
-
--(void)updateHistoryOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete andPage:(NSInteger) page{
-    [complete copy];
-    complete(NO);
-    object.historyStorage.pageIndex = page;
-    NSLog(@"complete ->%@",complete);
-}
-
--(void)startObservingForSpendable{
-    
-    for (Token* token in self.tokens) {
-        [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
-    }
-}
-
--(void)stopObservingForSpendable{
-    
-}
-
-
--(void)loadSpendableObjects {
-    [self load];
-}
-
--(void)saveSpendableObjects {
-    [self save];
-}
-
--(void)updateSpendableWithObject:(id) updateObject{
-    
-}
 
 - (NSArray <Token*>*)gatAllTokens{
     
@@ -162,6 +118,11 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
     [self.tokens removeAllObjects];
 }
 
+- (void)removeAllPretendents{
+    
+    [self.smartContractPretendents removeAllObjects];
+}
+
 -(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key{
     
     [self.smartContractPretendents setObject:addresses forKey:key];
@@ -187,6 +148,7 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
             Token* token = [Token new];
             [token setupWithHashTransaction:key andAddresses:tokenInfo];
             [self addNewToken:token];
+            token.manager = self;
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
             [self deleteSmartContractPretendentWithKey:key];
             [self save];
@@ -202,12 +164,67 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
     [self save];
 }
 
+#pragma mark - Managerable
+
+-(void)updateSpendableObject:(id <Spendable>) object {
+    
+}
+
+-(void)updateBalanceOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete {
+    [complete copy];
+    complete(NO);
+    NSLog(@"complete ->%@",complete);
+}
+
+-(void)updateHistoryOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete andPage:(NSInteger) page{
+    [complete copy];
+    complete(NO);
+    object.historyStorage.pageIndex = page;
+    NSLog(@"complete ->%@",complete);
+}
+
+-(void)startObservingForSpendable{
+    
+    for (Token* token in self.tokens) {
+        [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
+    }
+}
+
+-(void)stopObservingForSpendable{
+    //empty because wallet manager with stopin disconect from socket and this will also remove bserving from tokens too
+}
+
+
+-(void)loadSpendableObjects {
+    [self load];
+}
+
+-(void)saveSpendableObjects {
+    [self save];
+}
+
+-(void)updateSpendableWithObject:(id) updateObject{
+    
+}
+
+
 -(void)updateSpendablesBalansesWithObject:(id) updateObject{
     
 }
 
 -(void)updateSpendablesHistoriesWithObject:(id) updateObject{
     
+}
+
+-(void)spendableDidChange:(id <Spendable>) object{
+    [self tokenDidChange:object];
+}
+
+-(void)clear{
+    
+    [self removeAllTokens];
+    [self removeAllPretendents];
+    [self save];
 }
 
 @end

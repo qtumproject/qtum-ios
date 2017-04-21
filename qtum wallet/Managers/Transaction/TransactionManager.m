@@ -9,7 +9,6 @@
 #import "TransactionManager.h"
 #import "RequestManager.h"
 #import "RPCRequestManager.h"
-#import "BlockchainInfoManager.h"
 #import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
 #import "BTCTransactionOutput+Address.h"
@@ -67,7 +66,7 @@ static NSString* op_exec = @"c1";
     BTCAmount amount = [allPreparedValues[@"totalAmount"] doubleValue];
     NSArray* preparedAmountAndAddreses = allPreparedValues[@"amountsAndAddresses"];
     
-    [BlockchainInfoManager getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray *responseObject) {
+    [[WalletManager sharedInstance].requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray *responseObject) {
         
         BTCTransaction *tx = [weakSelf regularTransactionWithUnspentOutputs:responseObject amount:amount amountAndAddresses:preparedAmountAndAddreses walletKeys:walletKeys];
         
@@ -90,7 +89,7 @@ static NSString* op_exec = @"c1";
     __weak typeof(self) weakSelf = self;
     NSArray* walletAddreses = [self getAddressesFromKeys:walletKeys];
     
-    [BlockchainInfoManager getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray *responseObject) {
+    [[WalletManager sharedInstance].requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray *responseObject) {
         
         BTCTransaction *tx = [weakSelf createSmartContractUnspentOutputs:responseObject amount:0 bitcode:bitcode walletKeys:walletKeys];
         
@@ -377,33 +376,28 @@ static NSString* op_exec = @"c1";
     
     NSUInteger gasPrice = 1;
     [script appendData:[NSData dataWithBytes:&gasPrice length:8]];
-//    
-//    NSMutableData* bitcodeWithOp = [NSMutableData dataWithData:bitcode];
-//    [bitcodeWithOp appendData:[NSString dataFromHexString:op_exec]];
-//    [script appendData:[NSData dataWithBytes:(__bridge const void * _Nullable)(bitcodeWithOp) length:bitcodeWithOp.length - 1]];
-    
-    //    NSMutableData* bitcodeWithOp = [NSMutableData dataWithData:bitcode];
+
     [script appendData:bitcode];
 
     [script appendOpcode:0xc1];
-    //[script appendData:[NSString dataFromHexString:@"0xc1"]];
-
-//    [script appendOpcode:[NSString dataFromHexString:@"0xc1"]];
-    
     
     return script;
 }
 
+- (BTCAmount)convertValueToAmount:(double)value {
+    return value * BTCCoin;
+}
+
 #pragma mark - Prepare values for sending
 
-- (NSDictionary*)createAmountsAndAddresses:(NSArray *)array{
+- (NSDictionary*)createAmountsAndAddresses:(NSArray *)array {
     
     NSMutableArray *mutArray = [NSMutableArray new];
     BTCAmount totalAmount = 0;
     for (NSDictionary *dictionary in array) {
         
         BTCPublicKeyAddress *toPublicKeyAddress = [BTCPublicKeyAddress addressWithString:dictionary[@"address"]];
-        BTCAmount amount = [BlockchainInfoManager convertValueToAmount:[dictionary[@"amount"] doubleValue]];
+        BTCAmount amount = [self convertValueToAmount:[dictionary[@"amount"] doubleValue]];
         
         totalAmount += amount;
         

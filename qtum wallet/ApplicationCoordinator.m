@@ -153,10 +153,14 @@
 }
 
 -(void)logout{
+    
     [self startAuthFlow];
     [self storeAuthorizedFlag:NO];
     [self.notificationManager removeToken];
     [self removeDependency:self.tabCoordinator];
+    
+    [[WalletManager sharedInstance] clear];
+    [[TokenManager sharedInstance] clear];
     [[WalletManager sharedInstance] stopObservingForSpendable];
     [[TokenManager sharedInstance] stopObservingForSpendable];
 }
@@ -235,8 +239,7 @@ static NSString* isHasWalletKey = @"isHasWallet";
 
 -(NSUserDefaults*)defaults{
     if (!_defaults) {
-        _defaults = [[NSUserDefaults alloc]
-                     initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
+        _defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
     }
     return _defaults;
 }

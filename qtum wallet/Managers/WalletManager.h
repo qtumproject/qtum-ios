@@ -11,6 +11,7 @@
 #import "Requestable.h"
 #import "Token.h"
 #import "Managerable.h"
+#import "WalletManagerRequestAdapter.h"
 
 extern NSString *const kWalletDidChange;
 
@@ -18,6 +19,8 @@ extern NSString *const kWalletDidChange;
 
 @property (nonatomic, readonly) NSMutableArray *wallets;
 @property (nonatomic, strong, readonly) NSString* PIN;
+@property (strong ,nonatomic,readonly) WalletManagerRequestAdapter* requestAdapter;
+
 
 - (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure;
 - (void)importWalletWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure;
@@ -28,6 +31,7 @@ extern NSString *const kWalletDidChange;
 - (BOOL)haveWallets;
 - (Wallet *)getCurrentWallet;
 - (NSArray *)getAllWallets;
+- (NSDictionary *)getHashTableOfKeys;
 
 - (void)clear;
 

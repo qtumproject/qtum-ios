@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Spendable.h"
 
 @interface SubscribeTokenDataSourceDelegate : NSObject <UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) NSArray <Spendable>* tokensArray;
 
 @end

@@ -16,7 +16,7 @@ NSString const *kWalletKey = @"qtum_wallet_wallets_keys";
 NSString const *kUserPin = @"PIN";
 NSString *const kWalletDidChange = @"kWalletDidChange";
 
-@interface WalletManager () <WalletDelegate>
+@interface WalletManager ()
 
 @property (nonatomic, strong) NSMutableArray *wallets;
 @property (nonatomic, strong) NSString* PIN;
@@ -63,7 +63,6 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 - (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure {
         
     Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin];
-    newWallet.delegate = self;
     newWallet.manager = self;
     [newWallet loadToMemory];
     
@@ -89,7 +88,6 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
         failure();
         return;
     }
-    newWallet.delegate = self;
     newWallet.manager = self;
     [newWallet loadToMemory];
     
@@ -105,7 +103,18 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 - (Wallet *)getCurrentWallet {
     
-    return [self.wallets lastObject];
+    return [self.wallets firstObject];
+}
+
+- (NSDictionary *)getHashTableOfKeys{
+    NSMutableDictionary *hashTable = [NSMutableDictionary new];
+    for (BTCKey *key in [[self getCurrentWallet] getAllKeys]) {
+        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        if (keyString) {
+            [hashTable setObject:[NSNull null] forKey:keyString];
+        }
+    }
+    return [hashTable copy];
 }
 
 - (void)removeWallet:(Wallet *)wallet {
@@ -197,7 +206,6 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     NSMutableArray *savedWallets = [[[FXKeychain defaultKeychain] objectForKey:kWalletKey] mutableCopy];
 
     for (Wallet *wallet in savedWallets) {
-        wallet.delegate = self;
         wallet.manager = self;
         [wallet loadToMemory];
     }
@@ -221,7 +229,21 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     self.PIN = nil;
 }
 
-#pragma mark - Token
+#pragma mark - Managerable
+
+
+#pragma mark - Addresses Observing
+
+-(void)startObservingForSpendable{
+    
+    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self getCurrentWallet] getAllKeysAdreeses]];
+}
+
+-(void)stopObservingForSpendable{
+    
+    [[ApplicationCoordinator sharedInstance].requestManager stopObservingAdresses:nil];
+}
+
 
 -(void)updateSpendableObject:(id <Spendable>) object{
     
@@ -229,9 +251,9 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 -(void)updateBalanceOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete{
     
-   // __weak __typeof(self)weakSelf = self;
+    // __weak __typeof(self)weakSelf = self;
     [self.requestAdapter getBalanceForAddreses:[object getAllKeysAdreeses] withSuccessHandler:^(double balance) {
-    
+        
         object.balance = balance;
         complete(YES);
     } andFailureHandler:^(NSError *error, NSString *message) {
@@ -269,22 +291,16 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 -(void)updateSpendablesBalansesWithObject:(NSNumber*) balance{
     [self getCurrentWallet].balance = [balance floatValue];
+    [self spendableDidChange:[self getCurrentWallet]];
 }
 
--(void)updateSpendablesHistoriesWithObject:(id) updateObject{
-    
+-(void)updateSpendablesHistoriesWithObject:(NSDictionary*) dict{
+    HistoryElement* item = [self.requestAdapter createHistoryElement:dict];
+    [[self getCurrentWallet].historyStorage setHistoryItem:item];
 }
 
-#pragma mark - Addresses Observing
-
--(void)startObservingForSpendable{
-    
-    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self getCurrentWallet] getAllKeysAdreeses]];
-}
-
--(void)stopObservingForSpendable{
-    
-    [[ApplicationCoordinator sharedInstance].requestManager stopObservingAdresses:nil];
+-(void)spendableDidChange:(id <Spendable>) object{
+    [self walletDidChange:object];
 }
 
 @end

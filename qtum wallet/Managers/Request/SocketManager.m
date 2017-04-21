@@ -8,7 +8,7 @@
 
 #import "SocketManager.h"
 #import <SIOSocket/SIOSocket.h>
-#import "BlockchainInfoManager.h"
+
 @import SocketIO;
 
 static NSString *BASE_URL = @"http://163.172.68.103:5931/";
@@ -85,7 +85,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     
     [self.currentSocket on:@"new_transaction" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
-        [BlockchainInfoManager addHistoryElementWithDict:(NSDictionary*)data[0]];
+        [[WalletManager sharedInstance] updateSpendablesHistoriesWithObject:(NSDictionary*)data[0]];
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"New Transaction" andIdentifire:@"new_transaction"];
     }];
     

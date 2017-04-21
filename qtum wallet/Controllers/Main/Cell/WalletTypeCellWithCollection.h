@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WalletModel.h"
 
 static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletTypeCellWithCollectionIdentifire";
 
 @interface WalletTypeCellWithCollection : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) WalletModel *wallet;
 
 @end

@@ -40,6 +40,8 @@
     return self.contractAddress;
 }
 
+#pragma mark - Spendable
+
 -(void)updateBalanceWithHandler:(void (^)(BOOL))complete{
     [self.manager updateBalanceOfSpendableObject:self withHandler:complete];
 }
@@ -50,7 +52,14 @@
 
 -(void)loadToMemory{
     _historyStorage = [HistoryDataStorage new];
+    _historyStorage.spendableOwner = self;
 }
+
+-(void)historyDidChange{
+    [self.manager spendableDidChange:self];
+}
+
+#pragma  mark - NSCoder
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
@@ -64,6 +73,7 @@
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
     NSString *name = [aDecoder decodeObjectForKey:@"name"];
     NSString *contractAddress = [aDecoder decodeObjectForKey:@"contractAddress"];
     NSArray *adresses = [aDecoder decodeObjectForKey:@"adresses"];

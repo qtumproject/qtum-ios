@@ -57,4 +57,20 @@
     return [NSString stringWithString:hexString];
 }
 
++ (NSString *)invertHex:(NSString *)hexString{
+    
+    NSMutableString *reversedString = [NSMutableString string];
+    NSInteger charIndex = [hexString length];
+    
+    while (hexString && charIndex > 0) {
+        charIndex -= 2;
+        NSRange subStrRange = NSMakeRange(charIndex, 2);
+        NSString *substring = [hexString substringWithRange:subStrRange];
+        [reversedString appendString:[substring substringWithRange:NSMakeRange(0, 1)]];
+        [reversedString appendString:[substring substringWithRange:NSMakeRange(1, 1)]];
+    }
+    
+    return reversedString;
+}
+
 @end

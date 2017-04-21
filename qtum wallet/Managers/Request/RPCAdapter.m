@@ -15,7 +15,6 @@
 }
 
 - (id)adaptiveDataForOutputs:(id) data{
-#warning TODO findout important fields 
 //    NSMutableArray* newDataArray = @[].mutableCopy;
 //    if ([data isKindOfClass:[NSArray class]]) {
 //        for (NSDictionary* dict in data) {

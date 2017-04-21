@@ -12,7 +12,6 @@
 #import "WalletTypeCollectionDataSourceDelegate.h"
 #import "WalletTypeCellWithCollection.h"
 #import "HistoryHeaderVIew.h"
-#import "WalletModel.h"
 
 @interface WalletHistoryDelegateDataSource ()
 

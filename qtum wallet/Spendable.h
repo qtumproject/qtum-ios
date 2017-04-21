@@ -25,6 +25,7 @@
 -(void)updateBalanceWithHandler:(void(^)(BOOL success)) complete;
 -(void)updateHistoryWithHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page;
 -(void)loadToMemory;
+-(void)historyDidChange;
 
 
 @end

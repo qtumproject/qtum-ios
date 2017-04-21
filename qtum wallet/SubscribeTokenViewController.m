@@ -14,7 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) id <UITableViewDataSource,UITableViewDelegate> delegateDataSource;
 
 @end
 
@@ -38,13 +37,6 @@
 }
 
 #pragma mark - Accesers 
-
--(id<UITableViewDataSource,UITableViewDelegate>)delegateDataSource{
-    if (!_delegateDataSource) {
-        _delegateDataSource = [SubscribeTokenDataSourceDelegate new];
-    }
-    return _delegateDataSource;
-}
 
 - (IBAction)actionBack:(id)sender {
     [self.delegate didBackButtonPressed];

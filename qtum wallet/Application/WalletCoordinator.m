@@ -9,15 +9,11 @@
 #import "WalletCoordinator.h"
 #import "MainViewController.h"
 #import "WalletHistoryDelegateDataSource.h"
-#import "BlockchainInfoManager.h"
 #import "TabBarCoordinator.h"
 #import "HistoryDataStorage.h"
 #import "WalletTypeCollectionDataSourceDelegate.h"
-#import "WalletModel.h"
-#import "TokenModel.h"
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
-#import "Walletable.h"
 #import "Spendable.h"
 
 
@@ -199,17 +195,12 @@
 
 -(void)subcribeEvents{
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:kWalletDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSpendables) name:kWalletDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:kTokenDidChange object:nil];
 }
 
--(void)updateHistory{
-//    __weak __typeof(self)weakSelf = self;
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        id <Walletable> wallet = weakSelf.wallets[0];
-//        wallet.historyArray = [[HistoryAndBalanceDataStorage sharedInstance] historyPrivate];
-//        [weakSelf.historyController reloadTableView];
-//    });
+-(void)updateSpendables{
+    [self.historyController reloadTableView];
 }
 
 -(void)updateBalance{
@@ -222,10 +213,9 @@
 }
 
 -(void)updateTokens{
-//    __weak __typeof(self)weakSelf = self;
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [weakSelf.historyController reloadTableView];
-//    });
+    [self configWalletModels];
+    [self setWalletsToDelegates];
+    [self updateSpendables];
 }
 
 @end

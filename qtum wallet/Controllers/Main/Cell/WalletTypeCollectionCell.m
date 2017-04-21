@@ -7,7 +7,6 @@
 //
 
 #import "WalletTypeCollectionCell.h"
-#import "WalletModel.h"
 #import "GradientViewWithAnimation.h"
 
 @interface WalletTypeCollectionCell ()
@@ -19,8 +18,7 @@
 @implementation WalletTypeCollectionCell
 
 -(void)prepareForReuse {
-//    self.adressValueLabel.text = @"0";
-//    self.valueLabel.text = @"";
+    
     [self.animationLayer startAnimating];
 }
 

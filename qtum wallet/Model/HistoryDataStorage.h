@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-@class HistoryElement;
-
+#import "HistoryElement.h"
 extern NSString *const HistoryUpdateEvent;
 
 @interface HistoryDataStorage : NSObject
 
 @property (strong, nonatomic,readonly) NSMutableArray<HistoryElement*>* historyPrivate;
 @property (assign, nonatomic) NSInteger pageIndex;
+@property (weak, nonatomic) id <Spendable> spendableOwner;
 
 - (void)addHistoryElements:(NSArray<HistoryElement*>*) elements;
 - (void)setHistoryItem:(HistoryElement*) item;

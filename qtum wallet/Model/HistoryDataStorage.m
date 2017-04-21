@@ -7,7 +7,6 @@
 //
 
 #import "HistoryDataStorage.h"
-#import "HistoryElement.h"
 
 NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
 
@@ -23,7 +22,7 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
 #pragma mark - Private Methods
 
 -(void)notificateChangeHistory{
-    [[NSNotificationCenter defaultCenter] postNotificationName:HistoryUpdateEvent object:nil userInfo:nil];
+    [self.spendableOwner historyDidChange];
 }
 
 #pragma mark Public Methods
@@ -59,6 +58,7 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
 }
 
 - (HistoryElement*)updateHistoryItem:(HistoryElement*) item{
+    //TODO
     if ([self.historyPrivate containsObject:item]) {
         
     }
@@ -67,7 +67,7 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
 }
 
 - (void)addHistoryElements:(NSArray<HistoryElement*>*) elements{
-//    self.historyPrivate = [[elements arrayByAddingObjectsFromArray:self.historyPrivate] mutableCopy];
+    
     [self.historyPrivate addObjectsFromArray:[[elements reverseObjectEnumerator] allObjects]];
     [self notificateChangeHistory];
 }

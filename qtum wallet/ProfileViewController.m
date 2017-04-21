@@ -153,7 +153,6 @@
         if (indexPath.row == 0) {
             [self actionAbout:nil];
         } else if (indexPath.row == 1) {
-            [[WalletManager sharedInstance] clear];
             [[ApplicationCoordinator sharedInstance] logout];
         }
     }

@@ -62,13 +62,13 @@ NSInteger const USERS_KEYS_COUNT = 100;
 - (void)setName:(NSString *)name
 {
     _name = name;
-    [self walletDidChange];
+    [self.manager spendableDidChange:self];
 }
 
 - (void)setPin:(NSString *)pin
 {
     _pin = pin;
-    [self walletDidChange];
+    [self.manager spendableDidChange:self];
 }
 
 #pragma mark - Getters
@@ -76,12 +76,19 @@ NSInteger const USERS_KEYS_COUNT = 100;
 -(NSArray <HistoryElementProtocol>*)historyArray{
     return [self.historyStorage.historyPrivate copy];
 }
+
 -(NSString *)mainAddress{
     
     BTCKey* key = [self getLastRandomKeyOrRandomKey];
     NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
     return keyString;
 }
+
+-(NSString *)symbol{
+    
+    return @"QTUM";
+}
+
 
 #pragma mark - Public Methods
 
@@ -170,12 +177,6 @@ static NSString* adressKey = @"adress";
     return randomWords;
 }
 
-- (void)walletDidChange
-{
-    if ([self.delegate respondsToSelector:@selector(walletDidChange:)]) {
-        [self.delegate walletDidChange:self];
-    }
-}
 
 #pragma mark - Spendable
 
@@ -189,6 +190,11 @@ static NSString* adressKey = @"adress";
 
 -(void)loadToMemory{
     _historyStorage = [HistoryDataStorage new];
+    _historyStorage.spendableOwner = self;
+}
+
+-(void)historyDidChange{
+    [self.manager spendableDidChange:self];
 }
 
 #pragma mark - NSCoding
