@@ -81,6 +81,7 @@
 		B365CA791EA77D490040A163 /* TokensFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA781EA77D490040A163 /* TokensFactory.m */; };
 		B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA7B1EA77D590040A163 /* WalletsFactory.m */; };
 		B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA811EA8AA070040A163 /* WalletManagerRequestAdapter.m */; };
+		B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA871EAA3C820040A163 /* SmartTransactionManager.m */; };
 		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
 		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
@@ -332,6 +333,8 @@
 		B365CA7F1EA78B620040A163 /* Managerable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Managerable.h; sourceTree = "<group>"; };
 		B365CA801EA8AA070040A163 /* WalletManagerRequestAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletManagerRequestAdapter.h; sourceTree = "<group>"; };
 		B365CA811EA8AA070040A163 /* WalletManagerRequestAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletManagerRequestAdapter.m; sourceTree = "<group>"; };
+		B365CA861EAA3C820040A163 /* SmartTransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartTransactionManager.h; sourceTree = "<group>"; };
+		B365CA871EAA3C820040A163 /* SmartTransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartTransactionManager.m; sourceTree = "<group>"; };
 		B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B371D87D1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TCAStyleProvider.h"; sourceTree = "<group>"; };
@@ -1036,6 +1039,8 @@
 			children = (
 				E7DD00E81DC9BF9D00FD5335 /* TransactionManager.h */,
 				E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */,
+				B365CA861EAA3C820040A163 /* SmartTransactionManager.h */,
+				B365CA871EAA3C820040A163 /* SmartTransactionManager.m */,
 			);
 			name = "Transaction Controll Flow";
 			path = Managers/Transaction;
@@ -1574,6 +1579,7 @@
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
+				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
