@@ -7,7 +7,6 @@
 //
 
 #import "SocketManager.h"
-#import <SIOSocket/SIOSocket.h>
 
 @import SocketIO;
 

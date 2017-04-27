@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WZ6-tG-7Ii">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WZ6-tG-7Ii">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -150,7 +150,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Md-s8-YSL" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="259" width="335" height="17"/>
+                                <rect key="frame" x="20" y="198" width="335" height="17"/>
                                 <color key="tintColor" red="0.60297137499999998" green="0.86317712069999997" blue="0.88944160940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
@@ -160,14 +160,14 @@
                                 </connections>
                             </textField>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ulr-Ih-cQr">
-                                <rect key="frame" x="20" y="289" width="335" height="1"/>
+                                <rect key="frame" x="20" y="228" width="335" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.77647058820000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="qUG-Nz-RY9"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PIN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eOy-cm-MuA" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="320" width="335" height="17"/>
+                                <rect key="frame" x="20" y="259" width="335" height="17"/>
                                 <color key="tintColor" red="0.60297137499999998" green="0.86317712069999997" blue="0.88944160940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
@@ -177,34 +177,16 @@
                                 </connections>
                             </textField>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqe-03-CCS">
-                                <rect key="frame" x="20" y="350" width="335" height="1"/>
+                                <rect key="frame" x="20" y="289" width="335" height="1"/>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.77647058820000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="2zm-bU-Ffo"/>
-                                </constraints>
-                            </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contract Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-xJ-dO2" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="198" width="335" height="17"/>
-                                <color key="tintColor" red="0.60297137499999998" green="0.86317712069999997" blue="0.88944160940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                <connections>
-                                    <outlet property="delegate" destination="WZ6-tG-7Ii" id="1vF-zq-WXN"/>
-                                </connections>
-                            </textField>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szl-66-yTn">
-                                <rect key="frame" x="20" y="228" width="335" height="1"/>
-                                <color key="backgroundColor" red="0.74117647060000003" green="0.77647058820000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="0.5" id="aBL-19-X7a"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="mhj-xJ-dO2" secondAttribute="trailing" constant="20" id="4BD-aP-JSZ"/>
                             <constraint firstItem="aqe-03-CCS" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="4n7-Ij-BFh"/>
                             <constraint firstAttribute="trailing" secondItem="Ulr-Ih-cQr" secondAttribute="trailing" constant="20" id="5jo-Eb-6Gc"/>
                             <constraint firstItem="Acj-rW-ybZ" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="69q-Js-Ukk"/>
@@ -216,21 +198,16 @@
                             <constraint firstAttribute="trailing" secondItem="lhA-My-fKS" secondAttribute="trailing" id="MFV-79-NJn"/>
                             <constraint firstAttribute="trailing" secondItem="Acj-rW-ybZ" secondAttribute="trailing" constant="20" id="Md7-Nf-PgY"/>
                             <constraint firstItem="OaV-0u-WJO" firstAttribute="top" secondItem="Acj-rW-ybZ" secondAttribute="bottom" constant="13" id="Nki-rn-SzU"/>
-                            <constraint firstItem="7Md-s8-YSL" firstAttribute="top" secondItem="szl-66-yTn" secondAttribute="bottom" constant="30" id="OXa-ob-L0w"/>
                             <constraint firstItem="Acj-rW-ybZ" firstAttribute="top" secondItem="lhA-My-fKS" secondAttribute="bottom" constant="40" id="PDM-8d-Ewe"/>
                             <constraint firstItem="eOy-cm-MuA" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="SNa-nh-q5W"/>
                             <constraint firstItem="OaV-0u-WJO" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="SsS-u3-ccW"/>
-                            <constraint firstAttribute="trailing" secondItem="szl-66-yTn" secondAttribute="trailing" constant="20" id="Tw1-wd-hJy"/>
-                            <constraint firstItem="mhj-xJ-dO2" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="UXZ-TT-Oja"/>
                             <constraint firstAttribute="trailing" secondItem="OaV-0u-WJO" secondAttribute="trailing" constant="20" id="VND-jX-Hw8"/>
                             <constraint firstItem="aqe-03-CCS" firstAttribute="top" secondItem="eOy-cm-MuA" secondAttribute="bottom" constant="13" id="WoU-0a-7P8"/>
                             <constraint firstAttribute="trailing" secondItem="7Md-s8-YSL" secondAttribute="trailing" constant="20" id="ZBv-6Y-UZq"/>
                             <constraint firstItem="7Md-s8-YSL" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="ZyF-oX-u7n"/>
                             <constraint firstItem="lhA-My-fKS" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" id="bfR-op-AGm"/>
-                            <constraint firstItem="szl-66-yTn" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="fdZ-Qc-5Fn"/>
-                            <constraint firstItem="mhj-xJ-dO2" firstAttribute="top" secondItem="OaV-0u-WJO" secondAttribute="bottom" constant="30" id="h64-v3-quf"/>
+                            <constraint firstItem="7Md-s8-YSL" firstAttribute="top" secondItem="OaV-0u-WJO" secondAttribute="bottom" constant="30" id="ggE-0w-DjA"/>
                             <constraint firstItem="eOy-cm-MuA" firstAttribute="top" secondItem="Ulr-Ih-cQr" secondAttribute="bottom" constant="30" id="heJ-4t-jst"/>
-                            <constraint firstItem="szl-66-yTn" firstAttribute="top" secondItem="mhj-xJ-dO2" secondAttribute="bottom" constant="13" id="iRm-Vs-NY1"/>
                             <constraint firstItem="vpr-qJ-h5C" firstAttribute="top" secondItem="Ss7-mt-eh8" secondAttribute="bottom" constant="27" id="kIE-87-Tej"/>
                             <constraint firstAttribute="trailing" secondItem="aqe-03-CCS" secondAttribute="trailing" constant="20" id="tMi-UY-Ff3"/>
                         </constraints>
