@@ -84,7 +84,10 @@ static NSString* op_exec = @"c1";
                          andBitcode:(NSData*) bitcode
                          andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
-    NSAssert(walletKeys.count > 0, @"Keys must be grater then zero");
+    //NSAssert(walletKeys.count > 0, @"Keys must be grater then zero");
+    if (!walletKeys.count) {
+        completion([NSError new],nil,nil);
+    }
     
     __weak typeof(self) weakSelf = self;
     NSArray* walletAddreses = [self getAddressesFromKeys:walletKeys];

@@ -136,6 +136,7 @@
 //        "decimalUnits": uint8
 //        "tokenSymbol": String
 //    }
+    __weak __typeof(self)weakSelf = self;
     [SVProgressHUD show];
     [[ApplicationCoordinator sharedInstance].requestManager generateTokenBitcodeWithDict:@{@"initialSupply" : self.tokenSupply,
                                                                                   @"tokenName" : self.tokenName,
@@ -146,11 +147,17 @@
     {
         NSLog(@"  -->  %@",responseObject);
          [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:[NSString dataFromHexString:responseObject[@"bytecode"]] andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
-             BTCTransactionInput* input = transaction.inputs[0];
-             NSLog(@"%@",input.runTimeAddress);
-             [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction];
-             [SVProgressHUD showSuccessWithStatus:@"Done"];
-             [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
+             if (!error) {
+                 BTCTransactionInput* input = transaction.inputs[0];
+                 NSLog(@"%@",input.runTimeAddress);
+                 [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction];
+                 [SVProgressHUD showSuccessWithStatus:@"Done"];
+             } else {
+                 [SVProgressHUD showErrorWithStatus:@"Failed"];
+                 NSLog(@"Failed Request");
+             }
+             [weakSelf.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
+
          }];
 //         TransactionManager *transactionManager = [[TransactionManager alloc] initWith:array];
 //                                                                 [transactionManager sendSmartTransaction:[NSString dataFromHexString:responseObject[@"bytecode"]] withSuccess:^(NSData* address){
