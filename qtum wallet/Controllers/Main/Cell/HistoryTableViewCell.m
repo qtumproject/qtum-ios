@@ -41,12 +41,12 @@
     
     if (historyElement.send) {
         self.typeImage.image = [UIImage imageNamed:@"history_send"];
-        self.typeLabel.text = @"Sent";
+        self.typeLabel.text = NSLocalizedString(@"Sent", "");
         self.typeLabel.textColor =
         self.typeImage.tintColor = historyElement.confirmed ? historyRedColor() : historyGrayColor();
     }else{
         self.typeImage.image = [UIImage imageNamed:@"history_receive"];
-        self.typeLabel.text = @"Received";
+        self.typeLabel.text = NSLocalizedString(@"Received", "");
         self.typeLabel.textColor =
         self.typeImage.tintColor = historyElement.confirmed ? historyGreenColor() : historyGrayColor();
     }

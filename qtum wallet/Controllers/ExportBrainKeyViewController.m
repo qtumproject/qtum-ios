@@ -50,7 +50,7 @@
 - (IBAction)actionCopy:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.brainKey;
-    [self showAlertWithTitle:nil mesage:@"Brain-CODE copied" andActions:nil];
+    [self showAlertWithTitle:nil mesage:NSLocalizedString(@"Brain-CODE copied", "")  andActions:nil];
 }
 
 - (IBAction)actionContinue:(id)sender {

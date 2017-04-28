@@ -191,11 +191,11 @@
 
 -(void)failedToGetData{
     self.historyLoaded = YES;
-    [SVProgressHUD showErrorWithStatus:@"Some error"];
+    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some error", "")];
 }
 -(void)failedToGetBalance{
     self.balanceLoaded = YES;
-    [SVProgressHUD showErrorWithStatus:@"Some error"];
+    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some error", "")];
 
 }
 

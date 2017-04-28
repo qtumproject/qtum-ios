@@ -45,16 +45,16 @@
         if ([[WalletManager sharedInstance].PIN isEqualToString:pin]) {
             //old pin confirmed
             self.pinOld = pin;
-            [self.pinController setCustomTitle:@"Enter New PIN"];
+            [self.pinController setCustomTitle:NSLocalizedString(@"Enter New PIN", "")];
         }else {
             completision(NO);
             [self.pinController actionIncorrectPin];
-            [self.pinController setCustomTitle:@"Enter Old PIN"];
+            [self.pinController setCustomTitle:NSLocalizedString(@"Enter Old PIN", "")];
         }
     } else if(!self.pinNew) {
         //entered new pin
         self.pinNew = pin;
-        [self.pinController setCustomTitle:@"Repeat New PIN"];
+        [self.pinController setCustomTitle:NSLocalizedString(@"Repeat New PIN", "")];
 
     } else {
         if (self.pinNew == pin) {
@@ -69,7 +69,7 @@
             self.pinNew = nil;
             completision(NO);
             [self.pinController actionIncorrectPin];
-            [self.pinController setCustomTitle:@"Enter Old PIN"];
+            [self.pinController setCustomTitle:NSLocalizedString(@"Enter Old PIN", "")];
         }
     }
 }

@@ -68,7 +68,7 @@
                 
             } else
             {
-                [weakSelf showCameraPermissionAlertWithTitle:@"Error" mesage:@"Camera premission not found" andActions:nil];
+                [weakSelf showCameraPermissionAlertWithTitle:@"Error" mesage:NSLocalizedString(@"Camera premission not found", "") andActions:nil];
             }
         }];
     }

@@ -151,9 +151,9 @@
                  BTCTransactionInput* input = transaction.inputs[0];
                  NSLog(@"%@",input.runTimeAddress);
                  [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction];
-                 [SVProgressHUD showSuccessWithStatus:@"Done"];
+                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
              } else {
-                 [SVProgressHUD showErrorWithStatus:@"Failed"];
+                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed", "")];
                  NSLog(@"Failed Request");
              }
              [weakSelf.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
@@ -167,7 +167,7 @@
 //                                                                 }];
 
     } andFailureHandler:^(NSError *error, NSString *message) {
-        [SVProgressHUD showErrorWithStatus:@"Failed"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed", "")];
         [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
         NSLog(@"Failed Request");
     }];

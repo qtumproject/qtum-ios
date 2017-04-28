@@ -35,7 +35,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    self.brandKeyTextView.text = textViewPlaceholder;
+    self.brandKeyTextView.text = NSLocalizedString(textViewPlaceholder, "");
     [self.brandKeyTextView becomeFirstResponder];
 }
 
@@ -83,7 +83,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
     if (textView.text.length == 0) {
-        textView.text = textViewPlaceholder;
+        textView.text = NSLocalizedString(textViewPlaceholder, "");
         self.brainKeyString = @"";
     } else {
         self.brainKeyString = textView.text;
@@ -91,7 +91,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([textView.text isEqualToString:textViewPlaceholder]) {
+    if ([textView.text isEqualToString:NSLocalizedString(textViewPlaceholder, "")]) {
         textView.text = @"";
     }
     return YES;
@@ -118,13 +118,13 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 }
 
 -(void)restoreSucces{
-    [SVProgressHUD showSuccessWithStatus:@"Done"];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
     if ([self.delegate respondsToSelector:@selector(didRestoreWallet)]) {
         [self.delegate didRestoreWallet];
     }
 }
 -(void)restoreFailed{
-    [SVProgressHUD showErrorWithStatus:@"Some Error"];
+    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some Error", "")];
 }
 
 - (IBAction)outsideTap:(id)sender

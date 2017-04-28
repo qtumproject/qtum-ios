@@ -108,7 +108,7 @@
     }
     
     if (difference < currenDayTimeInterval + day) {
-        self.shortDateString = @"Yestarday";
+        self.shortDateString = NSLocalizedString(@"Yestarday", @"day at history cell");
         return;
     }
     

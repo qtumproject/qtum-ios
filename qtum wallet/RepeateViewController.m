@@ -75,12 +75,12 @@
 
 -(void)endCreateWalletWithError:(NSError*)error{
     if (error) {
-        [SVProgressHUD showErrorWithStatus:@"Some Error"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some Error", "")];
         if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {
             [self.delegate cancelCreateWallet];
         }
     }else {
-        [SVProgressHUD showSuccessWithStatus:@"Done"];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
         if ([self.delegate respondsToSelector:@selector(didCreateWallet)]) {
             [self.delegate didCreateWallet];
         }

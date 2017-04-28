@@ -43,7 +43,7 @@
 -(void)configTextField{
     UIColor *color = [UIColor whiteColor];
     self.nameTextField.attributedPlaceholder =
-    [[NSAttributedString alloc] initWithString:@"Enter Name"
+    [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Enter Name", "")
                                     attributes:@{
                                                  NSForegroundColorAttributeName: color,
                                                  NSFontAttributeName : [UIFont fontWithName:@"SFUIDisplay-Thin" size:16.0]

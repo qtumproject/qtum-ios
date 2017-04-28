@@ -124,7 +124,7 @@
     toolbar.barTintColor = [UIColor groupTableViewBackgroundColor];
     toolbar.items = @[
                       [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                      [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)],
+                      [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)],
                       ];
     [toolbar sizeToFit];
     
@@ -169,11 +169,11 @@
     __weak typeof(self) weakSelf = self;
     [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
         if (!error) {
-            [SVProgressHUD showSuccessWithStatus:@"Done"];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
             [weakSelf backbuttonPressed:nil];
         } else {
             [SVProgressHUD dismiss];
-            [weakSelf showAlertWithTitle:@"Error" mesage:response andActions:nil];
+            [weakSelf showAlertWithTitle:NSLocalizedString(@"Error", "") mesage:response andActions:nil];
         }
     }];
 }

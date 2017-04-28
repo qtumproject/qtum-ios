@@ -74,7 +74,7 @@
     toolbar.barTintColor = [UIColor groupTableViewBackgroundColor];
     toolbar.items = @[
                       [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                      [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)],
+                      [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)],
                       ];
     [toolbar sizeToFit];
     
@@ -124,6 +124,6 @@
     NSString* keyString = self.wallet.mainAddress;
     [pb setString:keyString];
     
-    [self showAlertWithTitle:nil mesage:@"Address copied" andActions:nil];
+    [self showAlertWithTitle:nil mesage:NSLocalizedString(@"Address copied", "") andActions:nil];
 }
 @end

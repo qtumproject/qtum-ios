@@ -68,6 +68,7 @@ static NSInteger baseButtonsButtomOffset = 30;
     } else {
         [self showAlertWithTitle:NSLocalizedString(@"Error", @"create tocken step 1") mesage:@"Please fill in all fields" andActions:nil];
     }
+    NSString* str = NSLocalizedString(@"Error 2", @"create tocken step 2");
 }
 
 - (IBAction)actionVoidTap:(id)sender {

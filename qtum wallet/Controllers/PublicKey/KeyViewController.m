@@ -29,7 +29,7 @@
     
     self.privateKeyButton.hidden = self.isPrivate;
     
-    self.titleLabel.text = self.isPrivate ? @"Private key" : @"Public Key";
+    self.titleLabel.text = self.isPrivate ? NSLocalizedString(@"Private key", "") : NSLocalizedString(@"Public Key", "");
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -56,7 +56,7 @@
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
     [pb setString:self.keyString];
     
-    [self showAlertWithTitle:nil mesage:@"Address copied" andActions:nil];
+    [self showAlertWithTitle:nil mesage:NSLocalizedString(@"Address copied", "") andActions:nil];
 }
 
 - (void)createQRCode

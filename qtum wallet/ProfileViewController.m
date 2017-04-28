@@ -86,36 +86,36 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             image = [UIImage imageNamed:@"language_icon"];
-            text = @"Language";
+            text = NSLocalizedString(@"Language", "");
         }
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             image = [UIImage imageNamed:@"pin_icon"];
-            text = @"Change Pin";
+            text = NSLocalizedString(@"Change Pin", "");
         } else if (indexPath.row == 1) {
             image = [UIImage imageNamed:@"backup_wallet_icon"];
-            text = @"Wallet Back Up";
+            text = NSLocalizedString(@"Wallet Back Up", "");
         } else if (indexPath.row == 2) {
             image = [UIImage imageNamed:@"import_wallet_icon"];
-            text = @"Import";
+            text = NSLocalizedString(@"Import", "");
         }
     } else if(indexPath.section == 2){
         if (indexPath.row == 0) {
             image = [UIImage imageNamed:@"ic-token"];
-            text = @"Create Token";
+            text = NSLocalizedString(@"Create Token", "");
         } else if (indexPath.row == 1) {
             
             image = [UIImage imageNamed:@"ic-token-subscribe"];
-            text = @"Subscribe Token";
+            text = NSLocalizedString(@"Subscribe Token", "");
         }
     } else{
         if (indexPath.row == 0) {
             image = [UIImage imageNamed:@"info_icon"];
-            text = @"About";
+            text = NSLocalizedString(@"About", "");
         } else if (indexPath.row == 1) {
             
             image = [UIImage imageNamed:@"ic-logout"];
-            text = @"Logout";
+            text = NSLocalizedString(@"Logout", "");
         }
     }
     

@@ -85,8 +85,8 @@ NSInteger const USERS_KEYS_COUNT = 100;
 }
 
 -(NSString *)symbol{
-    
-    return @"QTUM";
+
+    return  NSLocalizedString(@"QTUM", @"QTUM sybmol");
 }
 
 
