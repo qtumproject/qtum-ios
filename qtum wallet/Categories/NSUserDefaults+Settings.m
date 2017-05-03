@@ -10,6 +10,8 @@
 
 static NSString * const kSettingIsMainnet           = @"kSettingExtraMessages";
 static NSString * const kSettingIsRPCOn             = @"kSettingLongMessage";
+static NSString * const kLanguageSaveKey            = @"kLanguageSaveKey";
+
 
 @implementation NSUserDefaults (Settings)
 
@@ -27,6 +29,14 @@ static NSString * const kSettingIsRPCOn             = @"kSettingLongMessage";
 
 + (BOOL)isRPCOnSetting{
     return [[NSUserDefaults standardUserDefaults] boolForKey:kSettingIsRPCOn];
+}
+
++ (void)saveLanguage:(NSString*)lang{
+    [[NSUserDefaults standardUserDefaults] setObject:lang forKey:kLanguageSaveKey];
+}
+
++ (NSString*)getLanguage{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageSaveKey];
 }
 
 @end

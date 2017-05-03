@@ -16,5 +16,7 @@
 + (void)saveIsRPCOnSetting:(BOOL)value;
 + (BOOL)isRPCOnSetting;
 
++ (void)saveLanguage:(NSString*)lang;
++ (NSString*)getLanguage;
 
 @end

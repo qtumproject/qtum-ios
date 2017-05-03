@@ -90,6 +90,8 @@
 		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
 		B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */; };
 		B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */; };
+		B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B384F3DB1EB9BF4A0075F1E8 /* LanguageManager.m */; };
+		B384F3DF1EB9BF4A0075F1E8 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = B384F3DD1EB9BF4A0075F1E8 /* NSBundle+Language.m */; };
 		B385B59F1E6D5B88003BB96C /* CreateTokenStep4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B59E1E6D5B88003BB96C /* CreateTokenStep4ViewController.m */; };
 		B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */; };
 		B385B5A51E6D829C003BB96C /* WalletHistoryDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B5A41E6D829C003BB96C /* WalletHistoryDelegateDataSource.m */; };
@@ -358,6 +360,10 @@
 		B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TCAAssociating.m"; sourceTree = "<group>"; };
 		B3846DD41DFEFA6500D6872C /* UIAlertController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Extensions.h"; sourceTree = "<group>"; };
 		B3846DD51DFEFA6500D6872C /* UIAlertController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Extensions.m"; sourceTree = "<group>"; };
+		B384F3DA1EB9BF4A0075F1E8 /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
+		B384F3DB1EB9BF4A0075F1E8 /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
+		B384F3DC1EB9BF4A0075F1E8 /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
+		B384F3DD1EB9BF4A0075F1E8 /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
 		B385B59D1E6D5B88003BB96C /* CreateTokenStep4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenStep4ViewController.h; sourceTree = "<group>"; };
 		B385B59E1E6D5B88003BB96C /* CreateTokenStep4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenStep4ViewController.m; sourceTree = "<group>"; };
 		B385B5A01E6D640E003BB96C /* CreateTokenNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenNavigationController.h; sourceTree = "<group>"; };
@@ -463,7 +469,7 @@
 		E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCRequestManager.h; sourceTree = "<group>"; };
 		E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCRequestManager.m; sourceTree = "<group>"; };
 		E7FD36381DC4D07E00748177 /* qtum wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "qtum wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7FD363C1DC4D07E00748177 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E7FD363C1DC4D07E00748177 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Application/main.m; sourceTree = "<group>"; };
 		E7FD363E1DC4D07E00748177 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7FD363F1DC4D07E00748177 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E7FD36451DC4D07E00748177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -841,6 +847,18 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		B384F3D91EB9BF250075F1E8 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				B384F3DA1EB9BF4A0075F1E8 /* LanguageManager.h */,
+				B384F3DB1EB9BF4A0075F1E8 /* LanguageManager.m */,
+				B384F3DC1EB9BF4A0075F1E8 /* NSBundle+Language.h */,
+				B384F3DD1EB9BF4A0075F1E8 /* NSBundle+Language.m */,
+				B32EEC9D1EB356DA00512FED /* Localizable.strings */,
+			);
+			name = Localization;
+			sourceTree = "<group>";
+		};
 		B386F5AD1E1297FF004D231B /* Send Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1103,6 +1121,7 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B384F3D91EB9BF250075F1E8 /* Localization */,
 				B33EAF241E5DB039006125F3 /* qtum wallet.entitlements */,
 				B31CF7271E126E05000BCF41 /* Auth and Login */,
 				B33EAF011E5B394D006125F3 /* Shared Cells */,
@@ -1124,12 +1143,12 @@
 				E7FD363B1DC4D07E00748177 /* Supporting Files */,
 				E7FD36471DC4D07E00748177 /* Assets.xcassets */,
 				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
+				E7FD363C1DC4D07E00748177 /* main.m */,
 				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
 				E7FD364C1DC4D07E00748177 /* Info.plist */,
 				E7FD365E1DC73B2400748177 /* Shared Views */,
 				B33EAF081E5C5E52006125F3 /* Protocols */,
 				B33EAF001E5B3920006125F3 /* Storyboards */,
-				B32EEC9D1EB356DA00512FED /* Localizable.strings */,
 			);
 			path = "qtum wallet";
 			sourceTree = "<group>";
@@ -1228,7 +1247,6 @@
 				B3E3A1641E850572002A488F /* AppSettings.m */,
 				E74636841DCB300800A13318 /* Utils.h */,
 				E74636851DCB300800A13318 /* Utils.m */,
-				E7FD363C1DC4D07E00748177 /* main.m */,
 				B35130661E49DF910048A28C /* ImageLoader.h */,
 				B35130671E49DF910048A28C /* ImageLoader.m */,
 				E71AF24F1E017D250068595B /* WordsArray.h */,
@@ -1620,6 +1638,7 @@
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
+				B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */,
 				B385B59F1E6D5B88003BB96C /* CreateTokenStep4ViewController.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
@@ -1631,6 +1650,7 @@
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
+				B384F3DF1EB9BF4A0075F1E8 /* NSBundle+Language.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
 				B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */,
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
