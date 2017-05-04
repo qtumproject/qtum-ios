@@ -22,9 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.restoreButton setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.3f]];
-    [self.createButton setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.3f]];
     // Do any additional setup after loading the view.
 }
 

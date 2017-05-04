@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,12 @@
         </array>
         <array key="SFUIDisplay-Regular.otf">
             <string>SFUIDisplay-Regular</string>
+        </array>
+        <array key="euclidflexmedium.ttf">
+            <string>euclidflexmedium</string>
+        </array>
+        <array key="simplonmono-medium.ttf">
+            <string>simplonmono-medium</string>
         </array>
     </customFonts>
     <scenes>
@@ -26,85 +32,73 @@
                         <viewControllerLayoutGuide type="top" id="Qip-VY-JD9"/>
                         <viewControllerLayoutGuide type="bottom" id="8FR-gb-fnp"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7Yg-AK-IjQ" customClass="GradientView">
+                    <view key="view" contentMode="scaleToFill" id="7Yg-AK-IjQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Z45-n1-5DC">
-                                <rect key="frame" x="128" y="66" width="119" height="106"/>
+                                <rect key="frame" x="130" y="66" width="115" height="100"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KY1-s1-NTB">
-                                <rect key="frame" x="40" y="577" width="295" height="50"/>
-                                <color key="backgroundColor" red="0.5450980392" green="0.74509803919999995" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="112.5" y="577" width="150" height="50"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="sJW-Q7-1Qh"/>
+                                    <constraint firstAttribute="width" constant="150" id="wDw-9b-amn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="RESTORE">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="16"/>
+                                <state key="normal" title="IMPORT WALLET">
+                                    <color key="titleColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="restoreButtonWasPressed:" destination="dBO-v0-fiZ" eventType="touchUpInside" id="M8Y-22-R7X"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKx-bF-rYK">
-                                <rect key="frame" x="40" y="516" width="295" height="50"/>
-                                <color key="backgroundColor" red="0.5450980392" green="0.74509803919999995" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="112.5" y="516" width="150" height="50"/>
+                                <color key="backgroundColor" red="0.90588235294117647" green="0.33725490196078434" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0Nl-Vh-sJJ"/>
+                                    <constraint firstAttribute="width" constant="150" id="Rlh-wo-Alw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="16"/>
                                 <state key="normal" title="CREATE NEW">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="createNewButtonWasPressed:" destination="dBO-v0-fiZ" eventType="touchUpInside" id="kpZ-k2-KCT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a wallet or restore a previous wallet key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApH-nQ-YF3">
-                                <rect key="frame" x="54" y="447" width="267" height="15"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a wallet or restore a previous wallet key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApH-nQ-YF3">
+                                <rect key="frame" x="87.5" y="260.5" width="200" height="50.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="CCK-vf-XP6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="14"/>
+                                <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have a wallet yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbP-bR-TcN">
-                                <rect key="frame" x="20" y="405" width="335" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="20" y="216" width="335" height="19.5"/>
+                                <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="15"/>
+                                <color key="textColor" red="0.21176470588235294" green="0.6705882352941176" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_txt" translatesAutoresizingMaskIntoConstraints="NO" id="mXT-5V-uv4">
-                                <rect key="frame" x="140" y="193" width="95" height="25"/>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="mXT-5V-uv4" firstAttribute="centerX" secondItem="7Yg-AK-IjQ" secondAttribute="centerX" id="6Xb-CD-wMf"/>
                             <constraint firstItem="Z45-n1-5DC" firstAttribute="top" secondItem="7Yg-AK-IjQ" secondAttribute="top" constant="66" id="7xn-Cy-AyR"/>
                             <constraint firstAttribute="trailing" secondItem="CbP-bR-TcN" secondAttribute="trailing" constant="20" id="EAB-4K-SQY"/>
-                            <constraint firstItem="KY1-s1-NTB" firstAttribute="leading" secondItem="7Yg-AK-IjQ" secondAttribute="leading" constant="40" id="ENp-ac-oD1"/>
-                            <constraint firstAttribute="trailing" secondItem="FKx-bF-rYK" secondAttribute="trailing" constant="40" id="Eew-3a-CzC"/>
-                            <constraint firstAttribute="trailing" secondItem="KY1-s1-NTB" secondAttribute="trailing" constant="40" id="H6n-n4-ut0"/>
                             <constraint firstItem="ApH-nQ-YF3" firstAttribute="centerX" secondItem="7Yg-AK-IjQ" secondAttribute="centerX" id="Hty-Xz-ONL"/>
                             <constraint firstItem="CbP-bR-TcN" firstAttribute="centerX" secondItem="7Yg-AK-IjQ" secondAttribute="centerX" id="NPy-fo-qfV"/>
                             <constraint firstItem="Z45-n1-5DC" firstAttribute="centerX" secondItem="7Yg-AK-IjQ" secondAttribute="centerX" id="OZ4-oP-oOd"/>
-                            <constraint firstItem="ApH-nQ-YF3" firstAttribute="top" secondItem="CbP-bR-TcN" secondAttribute="bottom" constant="24" id="Ujq-gl-rSa"/>
-                            <constraint firstItem="mXT-5V-uv4" firstAttribute="top" secondItem="Z45-n1-5DC" secondAttribute="bottom" constant="21" id="b3b-XP-Jlh"/>
+                            <constraint firstItem="KY1-s1-NTB" firstAttribute="centerX" secondItem="7Yg-AK-IjQ" secondAttribute="centerX" id="Sjw-YK-sSR"/>
                             <constraint firstItem="KY1-s1-NTB" firstAttribute="top" secondItem="FKx-bF-rYK" secondAttribute="bottom" constant="11" id="bUz-cN-UVa"/>
+                            <constraint firstItem="FKx-bF-rYK" firstAttribute="centerX" secondItem="7Yg-AK-IjQ" secondAttribute="centerX" id="bZs-h5-l3G"/>
+                            <constraint firstItem="ApH-nQ-YF3" firstAttribute="top" secondItem="CbP-bR-TcN" secondAttribute="bottom" constant="25" id="ecV-co-xCY"/>
+                            <constraint firstItem="CbP-bR-TcN" firstAttribute="top" secondItem="Z45-n1-5DC" secondAttribute="bottom" constant="50" id="gYb-JX-N3P"/>
                             <constraint firstItem="8FR-gb-fnp" firstAttribute="top" secondItem="KY1-s1-NTB" secondAttribute="bottom" constant="40" id="iqd-Xv-QcW"/>
-                            <constraint firstItem="FKx-bF-rYK" firstAttribute="leading" secondItem="7Yg-AK-IjQ" secondAttribute="leading" constant="40" id="nDw-zx-3hx"/>
                             <constraint firstItem="CbP-bR-TcN" firstAttribute="leading" secondItem="7Yg-AK-IjQ" secondAttribute="leading" constant="20" id="peL-YT-TtD"/>
-                            <constraint firstItem="FKx-bF-rYK" firstAttribute="top" secondItem="ApH-nQ-YF3" secondAttribute="bottom" constant="54" id="sTA-AR-U0T"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hoo-UK-eV9"/>
@@ -1514,12 +1508,11 @@ to Use it in Another App</string>
     </scenes>
     <resources>
         <image name="back" width="8" height="15"/>
-        <image name="logo" width="119" height="106"/>
-        <image name="logo_txt" width="95" height="25"/>
+        <image name="logo" width="115" height="100"/>
         <image name="payment2" width="16" height="16"/>
         <image name="share" width="18" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c9Q-KI-ZIv"/>
+        <segue reference="hKQ-pH-Gbi"/>
     </inferredMetricsTieBreakers>
 </document>
