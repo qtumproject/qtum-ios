@@ -91,6 +91,7 @@
 -(void)accessPinDenied {
     [self shakeAndClearText];
     [self actionIncorrectPin];
+    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)shakeAndClearText{
@@ -125,21 +126,39 @@
     return YES;
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    
+    if ([textField isEqual:self.firstSymbolTextField]) {
+        self.firstInputViewHeight.constant = 4;
+    } else if ([textField isEqual:self.secondSymbolTextField]) {
+        self.secondInputViewHeight.constant = 4;
+    } else if ([textField isEqual:self.thirdSymbolTextField]) {
+        self.thridInputViewHeight.constant = 4;
+    } else if ([textField isEqual:self.fourthSymbolTextField]) {
+        self.fourthInputViewHeight.constant = 4;
+    }
+    [self.view setNeedsLayout];
 }
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     return YES;
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    
-}
-- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason NS_AVAILABLE_IOS(10_0){
-    
+    if ([textField isEqual:self.firstSymbolTextField]) {
+        self.firstInputViewHeight.constant = 2;
+    } else if ([textField isEqual:self.secondSymbolTextField]) {
+        self.secondInputViewHeight.constant = 2;
+    } else if ([textField isEqual:self.thirdSymbolTextField]) {
+        self.thridInputViewHeight.constant = 2;
+    } else if ([textField isEqual:self.fourthSymbolTextField]) {
+        self.fourthInputViewHeight.constant = 2;
+    }
+    [self.view setNeedsLayout];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+
+- (BOOL)textField:(CustomTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if (string.length && [string rangeOfString:@" "].location == NSNotFound) {
-        textField.text = [string substringToIndex:1];
+        textField.realText = [string substringToIndex:1];
+        textField.text = @"■";
         [self redirectTextField:textField isReversed:NO];
     }else {
         textField.text = @"";
@@ -159,9 +178,7 @@
 
 #pragma mark - Actions
 
--(void)actionEnter:(id)sender{
-    
-}
+-(void)actionEnter:(id)sender{ }
 
 #pragma mark -
 

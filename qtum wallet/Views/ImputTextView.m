@@ -29,9 +29,8 @@
 #pragma makr - Config
 
 -(void)configBorder{
-    self.layer.borderColor = [UIColor colorWithRed:255/255. green:255/255. blue:255/255. alpha:0.2].CGColor;
-    self.layer.borderWidth = 0.5;
-    self.layer.cornerRadius = 2;
+    self.layer.borderColor = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1].CGColor;
+    self.layer.borderWidth = 1;
 }
 
 #pragma mark - Drawing

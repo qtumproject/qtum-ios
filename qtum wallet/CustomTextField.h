@@ -10,4 +10,6 @@
 
 @interface CustomTextField : UITextField
 
+@property(copy,nonatomic) NSString* realText;
+
 @end

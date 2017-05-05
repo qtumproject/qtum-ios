@@ -17,6 +17,10 @@
 @property (weak, nonatomic) IBOutlet CustomTextField *fourthSymbolTextField;
 @property (weak, nonatomic) IBOutlet UIView *pinContainer;
 @property (weak, nonatomic) IBOutlet UIView *incorrectPinView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstInputViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondInputViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridInputViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourthInputViewHeight;
 
 @property (weak,nonatomic) id <PinCoordinator> delegatePin;
 @property (assign,nonatomic) PinType type;

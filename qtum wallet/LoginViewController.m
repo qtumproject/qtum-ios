@@ -62,7 +62,7 @@
 
 - (IBAction)actionEnterPin:(id)sender {
     self.shoudKeboardDismiss = YES;
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
+    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
     if (pin.length == 4) {
         if ([self.delegate respondsToSelector:@selector(passwordDidEntered:)]) {
             [self.delegate passwordDidEntered:pin];

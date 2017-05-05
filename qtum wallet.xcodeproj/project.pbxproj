@@ -23,7 +23,6 @@
 		B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8861E0D07A000DC7DE5 /* BorderedLabel.m */; };
 		B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2D91EBB643100C813D0 /* euclidflexmedium.ttf */; };
 		B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
-		B321F2DE1EBB646100C813D0 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DB1EBB643100C813D0 /* simplonmono-regular.ttf */; };
 		B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C471E1CD3FC00CD610B /* DiagramView.m */; };
 		B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */; };
 		B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */; };
@@ -50,6 +49,7 @@
 		B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601821E963BD200243A21 /* HistoryItemHeaderView.m */; };
 		B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601851E963EC800243A21 /* HistoryItemViewController.m */; };
 		B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */; };
+		B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */; };
 		B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */; };
 		B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */; };
 		B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */; };
@@ -222,7 +222,6 @@
 		B321E8861E0D07A000DC7DE5 /* BorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedLabel.m; sourceTree = "<group>"; };
 		B321F2D91EBB643100C813D0 /* euclidflexmedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = euclidflexmedium.ttf; sourceTree = SOURCE_ROOT; };
 		B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "simplonmono-medium.ttf"; sourceTree = SOURCE_ROOT; };
-		B321F2DB1EBB643100C813D0 /* simplonmono-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "simplonmono-regular.ttf"; sourceTree = SOURCE_ROOT; };
 		B3255C461E1CD3FC00CD610B /* DiagramView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagramView.h; sourceTree = "<group>"; };
 		B3255C471E1CD3FC00CD610B /* DiagramView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramView.m; sourceTree = "<group>"; };
 		B3255C4A1E1CDD6500CD610B /* GradientViewWithAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientViewWithAnimation.h; sourceTree = "<group>"; };
@@ -256,13 +255,9 @@
 		B32EEC781EB3548800512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Wallet.storyboard; sourceTree = "<group>"; };
 		B32EEC791EB3548E00512FED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Wallet.strings; sourceTree = "<group>"; };
 		B32EEC7D1EB3549400512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Pin.storyboard; sourceTree = "<group>"; };
-		B32EEC7E1EB3549700512FED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Pin.strings; sourceTree = "<group>"; };
 		B32EEC821EB354A100512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Start.storyboard; sourceTree = "<group>"; };
-		B32EEC831EB354A700512FED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Start.strings; sourceTree = "<group>"; };
 		B32EEC871EB354B300512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateToken.storyboard; sourceTree = "<group>"; };
-		B32EEC881EB354B800512FED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CreateToken.strings; sourceTree = "<group>"; };
 		B32EEC8C1EB354C200512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SubscribeToken.storyboard; sourceTree = "<group>"; };
-		B32EEC8D1EB354C600512FED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SubscribeToken.strings; sourceTree = "<group>"; };
 		B32EEC9C1EB356DA00512FED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B32EEC9E1EB356E100512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B336017B1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemAddressCellTableViewCell.h; sourceTree = "<group>"; };
@@ -274,6 +269,11 @@
 		B33601851E963EC800243A21 /* HistoryItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewController.m; sourceTree = "<group>"; };
 		B33601871E96546C00243A21 /* HistoryItemDelegateDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemDelegateDataSource.h; sourceTree = "<group>"; };
 		B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemDelegateDataSource.m; sourceTree = "<group>"; };
+		B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "simplonmono-regular.ttf"; sourceTree = SOURCE_ROOT; };
+		B33BD54D1EBCA11C0076B0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Start.strings; sourceTree = "<group>"; };
+		B33BD54F1EBCA12D0076B0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Pin.strings; sourceTree = "<group>"; };
+		B33BD5511EBCA13B0076B0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CreateToken.strings; sourceTree = "<group>"; };
+		B33BD5541EBCA1490076B0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SubscribeToken.strings; sourceTree = "<group>"; };
 		B33EAF021E5B399C006125F3 /* NewsDataSourceAndDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDataSourceAndDelegate.h; sourceTree = "<group>"; };
 		B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDataSourceAndDelegate.m; sourceTree = "<group>"; };
 		B33EAF051E5C5D9A006125F3 /* AuthCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthCoordinator.h; sourceTree = "<group>"; };
@@ -596,7 +596,6 @@
 			children = (
 				B321F2D91EBB643100C813D0 /* euclidflexmedium.ttf */,
 				B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */,
-				B321F2DB1EBB643100C813D0 /* simplonmono-regular.ttf */,
 				B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */,
 				B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */,
 				B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */,
@@ -604,6 +603,7 @@
 				B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */,
 				B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */,
 				B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */,
+				B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -1458,9 +1458,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
-				B321F2DE1EBB646100C813D0 /* simplonmono-regular.ttf in Resources */,
 				B385B5AA1E6DA3DD003BB96C /* WalletTypeCollectionCell.xib in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */,
 				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
@@ -1745,7 +1745,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC7D1EB3549400512FED /* Base */,
-				B32EEC7E1EB3549700512FED /* en */,
+				B33BD54F1EBCA12D0076B0C1 /* en */,
 			);
 			name = Pin.storyboard;
 			sourceTree = "<group>";
@@ -1754,7 +1754,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC821EB354A100512FED /* Base */,
-				B32EEC831EB354A700512FED /* en */,
+				B33BD54D1EBCA11C0076B0C1 /* en */,
 			);
 			name = Start.storyboard;
 			sourceTree = "<group>";
@@ -1763,7 +1763,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC871EB354B300512FED /* Base */,
-				B32EEC881EB354B800512FED /* en */,
+				B33BD5511EBCA13B0076B0C1 /* en */,
 			);
 			name = CreateToken.storyboard;
 			sourceTree = "<group>";
@@ -1772,7 +1772,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC8C1EB354C200512FED /* Base */,
-				B32EEC8D1EB354C600512FED /* en */,
+				B33BD5541EBCA1490076B0C1 /* en */,
 			);
 			name = SubscribeToken.storyboard;
 			sourceTree = "<group>";

@@ -11,6 +11,8 @@
 @interface RepeateViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
+@property (assign, nonatomic) BOOL creatingWalletDidEnd;
+
 
 @end
 
@@ -51,10 +53,11 @@
 
 
 - (IBAction)actionEnterPin:(id)sender {
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
+    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
     if (pin.length == 4) {
         if ([self.delegate respondsToSelector:@selector(didEnteredSecondTimePass:)]) {
             [self.delegate didEnteredSecondTimePass:pin];
+            self.creatingWalletDidEnd = YES;
         }
     } else {
         [self accessPinDenied];
@@ -67,6 +70,12 @@
     }
 }
 
+-(void)actionEnter:(id)sender{
+    if (!self.creatingWalletDidEnd) {
+        [self actionEnterPin:nil];
+    }
+}
+
 #pragma mark - Public Methods
 
 -(void)startCreateWallet{
@@ -74,6 +83,7 @@
 }
 
 -(void)endCreateWalletWithError:(NSError*)error{
+    self.creatingWalletDidEnd = YES;
     if (error) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some Error", "")];
         if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {

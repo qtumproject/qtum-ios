@@ -51,7 +51,7 @@
 #pragma mark - Actions
 
 - (IBAction)confirmButtomPressed:(id)sender {
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.text,self.secondSymbolTextField.text,self.thirdSymbolTextField.text,self.fourthSymbolTextField.text];
+    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
     if (pin.length == 4) {
         if ([self.delegate respondsToSelector:@selector(didEnteredFirstTimePass:)]) {
             [self.delegate didEnteredFirstTimePass:pin];
@@ -66,6 +66,11 @@
         [self.delegate cancelCreateWallet];
     }
 }
+
+-(void)actionEnter:(id)sender{
+    [self confirmButtomPressed:nil];
+}
+
 
 
 @end

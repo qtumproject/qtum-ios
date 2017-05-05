@@ -18,16 +18,16 @@
     [[SVProgressHUD appearance] setMinimumDismissTimeInterval:1];
     
     //[[UITextField appearance] setTintColor:[UIColor whiteColor]];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"SFUIDisplay-Regular" size:11.0f]}
-                                          forState:UIControlStateNormal];
-    [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UITabBar class]]] setTintColor:[UIColor colorWithRed:83/255. green:97/255. blue:115/255. alpha:1]];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{[UIColor colorWithRed:83/255. green:97/255. blue:115/255. alpha:1] : NSForegroundColorAttributeName}
-                                             forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{[UIColor colorWithRed:54/255. green:185/255. blue:200/255. alpha:1] : NSForegroundColorAttributeName}
-                                             forState:UIControlStateSelected];
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{
-                                                                                                 NSFontAttributeName: [UIFont fontWithName:@"MyriadPro-Regular" size:14],
-                                                                                                 }];
+//    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"SFUIDisplay-Regular" size:11.0f]}
+//                                          forState:UIControlStateNormal];
+//    [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UITabBar class]]] setTintColor:[UIColor colorWithRed:83/255. green:97/255. blue:115/255. alpha:1]];
+//    [[UITabBarItem appearance] setTitleTextAttributes:@{[UIColor colorWithRed:83/255. green:97/255. blue:115/255. alpha:1] : NSForegroundColorAttributeName}
+//                                             forState:UIControlStateNormal];
+//    [[UITabBarItem appearance] setTitleTextAttributes:@{[UIColor colorWithRed:54/255. green:185/255. blue:200/255. alpha:1] : NSForegroundColorAttributeName}
+//                                             forState:UIControlStateSelected];
+//    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{
+//                                                                                                 NSFontAttributeName: [UIFont fontWithName:@"MyriadPro-Regular" size:14],
+//                                                                                                 }];
 }
 
 @end
