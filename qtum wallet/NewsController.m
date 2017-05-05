@@ -78,7 +78,7 @@
 }
 
 -(void)failedToGetData{
-    
+    [SVProgressHUD dismiss];
 }
 
 -(void)requestFailed{

@@ -14,12 +14,17 @@ NSString const *AMOUNT_STRING_KEY = @"amount";
 
 UIColor *customBlueColor()
 {
-    return [UIColor colorWithRed:46/255.0f green:139/255.0f blue:186/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:46/255.0f green:154/255.0f blue:208/255.0f alpha:1.0f];
 }
 
 UIColor *historyRedColor()
 {
     return [UIColor colorWithRed:249/255.0f green:94/255.0f blue:134/255.0f alpha:1.0f];
+}
+
+UIColor *customBlackColor()
+{
+    return [UIColor colorWithRed:35/255.0f green:35/255.0f blue:40/255.0f alpha:1.0f];
 }
 
 UIColor *historyGreenColor()

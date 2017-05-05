@@ -18,6 +18,7 @@ UIColor *textFieldLineColorDeselected();
 UIColor *historyRedColor();
 UIColor *historyGreenColor();
 UIColor *historyGrayColor();
+UIColor *customBlackColor();
 
 
 typedef NS_ENUM(NSInteger,PinType){

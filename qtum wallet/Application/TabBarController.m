@@ -41,8 +41,8 @@
 
 -(void)configTabBar{
     self.tabBar.translucent = NO;
-    self.tabBar.tintColor =  [UIColor colorWithRed:54/255. green:185/255. blue:200/255. alpha:1];
-    self.tabBar.barTintColor = [UIColor colorWithRed:248/255. green:248/255. blue:248/255. alpha:1];
+    self.tabBar.tintColor =  customBlueColor();
+    self.tabBar.barTintColor = customBlackColor();
 }
 
 -(void)configTabs{

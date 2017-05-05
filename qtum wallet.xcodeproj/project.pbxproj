@@ -50,6 +50,7 @@
 		B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601851E963EC800243A21 /* HistoryItemViewController.m */; };
 		B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */; };
 		B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */; };
+		B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */; };
 		B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */; };
 		B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */; };
 		B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */; };
@@ -274,6 +275,8 @@
 		B33BD54F1EBCA12D0076B0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Pin.strings; sourceTree = "<group>"; };
 		B33BD5511EBCA13B0076B0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CreateToken.strings; sourceTree = "<group>"; };
 		B33BD5541EBCA1490076B0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SubscribeToken.strings; sourceTree = "<group>"; };
+		B33BD5551EBCA6890076B0C1 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		B33EAF021E5B399C006125F3 /* NewsDataSourceAndDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDataSourceAndDelegate.h; sourceTree = "<group>"; };
 		B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDataSourceAndDelegate.m; sourceTree = "<group>"; };
 		B33EAF051E5C5D9A006125F3 /* AuthCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthCoordinator.h; sourceTree = "<group>"; };
@@ -1101,6 +1104,8 @@
 				B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */,
 				B365CA6D1EA600F30040A163 /* NSData+Extension.h */,
 				B365CA6E1EA600F30040A163 /* NSData+Extension.m */,
+				B33BD5551EBCA6890076B0C1 /* UIImage+Extension.h */,
+				B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1630,6 +1635,7 @@
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
 				B385B5A51E6D829C003BB96C /* WalletHistoryDelegateDataSource.m in Sources */,
+				B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */,
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
 				B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */,
