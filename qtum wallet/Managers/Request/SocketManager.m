@@ -78,7 +78,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
         
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
         
-        [[WalletManager sharedInstance] updateSpendablesBalansesWithObject:@([self.delegate.adapter adaptiveDataForBalance:[data[0][@"balance"] floatValue]])];
+        [[WalletManager sharedInstance] updateSpendablesBalansesWithObject:[self.delegate.adapter adaptiveDataForBalance:data[0]]];
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Balance Changed" andIdentifire:@"balance_changed"];
     }];
     

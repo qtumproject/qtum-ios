@@ -23,18 +23,43 @@
     if (!cell){
         cell = [[TockenCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tokenCellIdentifire];
     }
-    if (indexPath.row == 0) {
-        cell.topSeparator.hidden = NO;
-    }
+
+    cell.topSeparator.hidden = NO;
+    
     id <Spendable> token = self.tokensArray[indexPath.row];
     cell.label.text = token.name;
+    [cell setSelectedBackgroundView:[self highlightedView]];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    TockenCell* cell = (TockenCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.topSeparator.backgroundColor = customBlackColor();
+    cell.label.textColor = customBlackColor();
+    cell.indicator.tintColor = customBlackColor();
+}
+
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TockenCell* cell = (TockenCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.topSeparator.backgroundColor = customBlueColor();
+    cell.label.textColor = customBlueColor();
+    cell.indicator.tintColor = customBlueColor();
+}
+
+#pragma mark - Lazy Getter
+
+-(UIView*)highlightedView{
+    UIView * selectedBackgroundView = [[UIView alloc] init];
+    [selectedBackgroundView setBackgroundColor:customRedColor()];
+    return selectedBackgroundView;
 }
 
 

@@ -17,6 +17,7 @@
 
 @property (copy, nonatomic) NSString* name;
 @property (assign, nonatomic) CGFloat balance;
+@property (assign, nonatomic) CGFloat unconfirmedBalance;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;
@@ -26,6 +27,5 @@
 -(void)updateHistoryWithHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page;
 -(void)loadToMemory;
 -(void)historyDidChange;
-
 
 @end

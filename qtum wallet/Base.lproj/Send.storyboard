@@ -10,8 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SFUIDisplay-Regular.otf">
-            <string>SFUIDisplay-Regular</string>
+        <array key="euclidflexmedium.ttf">
+            <string>euclidflexmedium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -28,41 +31,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhA-My-fKS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hv-qd-ZAA">
-                                        <rect key="frame" x="10" y="74" width="105" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="10" y="75" width="114" height="13.5"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Confirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyv-3a-7zA">
+                                        <rect key="frame" x="10" y="91.5" width="80.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgk-Rz-SVF">
-                                        <rect key="frame" x="331" y="76" width="34" height="14"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                        <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="338" y="77.5" width="27" height="13.5"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lp0-R5-bwt">
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5aN-IB-3s5">
-                                                <rect key="frame" x="3" y="0.0" width="30" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="EZe-CL-hbr"/>
-                                                </constraints>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="back"/>
-                                                <state key="highlighted" image="back">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="backbuttonPressed:" destination="WZ6-tG-7Ii" eventType="touchUpInside" id="l2i-cx-RSZ"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyT-Pb-j4C">
-                                                <rect key="frame" x="167" y="12" width="41" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <rect key="frame" x="166.5" y="11" width="42" height="23"/>
+                                                <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                                                <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADJ-xh-NqV">
@@ -71,6 +66,7 @@
                                                     <constraint firstAttribute="width" constant="44" id="4N9-EN-69h"/>
                                                     <constraint firstAttribute="height" constant="44" id="VqM-YL-b06"/>
                                                 </constraints>
+                                                <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="qrcode"/>
                                                 <connections>
                                                     <segue destination="Nik-n6-IGa" kind="show" identifier="NewPaymentToQrCode" id="dha-N6-iMv"/>
@@ -79,112 +75,132 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="5aN-IB-3s5" firstAttribute="leading" secondItem="Lp0-R5-bwt" secondAttribute="leading" constant="3" id="IPp-ES-jF0"/>
                                             <constraint firstAttribute="height" constant="44" id="LzV-UC-idn"/>
                                             <constraint firstAttribute="trailing" secondItem="ADJ-xh-NqV" secondAttribute="trailing" id="SEr-I3-u20"/>
                                             <constraint firstItem="nyT-Pb-j4C" firstAttribute="centerY" secondItem="Lp0-R5-bwt" secondAttribute="centerY" id="X6N-u8-5Vz"/>
-                                            <constraint firstAttribute="bottom" secondItem="5aN-IB-3s5" secondAttribute="bottom" id="nR0-5O-CVa"/>
-                                            <constraint firstItem="5aN-IB-3s5" firstAttribute="top" secondItem="Lp0-R5-bwt" secondAttribute="top" id="nZX-jU-J6v"/>
                                             <constraint firstItem="nyT-Pb-j4C" firstAttribute="centerX" secondItem="Lp0-R5-bwt" secondAttribute="centerX" id="sNZ-Jv-0pf"/>
                                             <constraint firstItem="ADJ-xh-NqV" firstAttribute="top" secondItem="Lp0-R5-bwt" secondAttribute="top" id="uuR-NX-BVI"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eX9-Q5-aZt">
-                                        <rect key="frame" x="223" y="74" width="104" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="214.5" y="74" width="119.5" height="17"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggl-34-cns">
+                                        <rect key="frame" x="214.5" y="90.5" width="119.5" height="17"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxh-vM-KbO">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="fKn-U3-qzc"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-li-MTE">
+                                        <rect key="frame" x="338" y="94" width="27" height="13.5"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.21063089369999999" green="0.33473819490000001" blue="0.78443151710000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="6Mv-li-MTE" secondAttribute="trailing" constant="10" id="0Au-hK-h4b"/>
                                     <constraint firstItem="9hv-qd-ZAA" firstAttribute="leading" secondItem="lhA-My-fKS" secondAttribute="leading" constant="10" id="3he-ab-vjB"/>
                                     <constraint firstItem="Lp0-R5-bwt" firstAttribute="leading" secondItem="lhA-My-fKS" secondAttribute="leading" id="6Eu-Eu-jhY"/>
-                                    <constraint firstAttribute="bottom" secondItem="eX9-Q5-aZt" secondAttribute="bottom" constant="6" id="75b-uK-cuN"/>
+                                    <constraint firstItem="Ggl-34-cns" firstAttribute="centerY" secondItem="Wyv-3a-7zA" secondAttribute="centerY" id="86k-ge-0hr"/>
                                     <constraint firstAttribute="trailing" secondItem="Lp0-R5-bwt" secondAttribute="trailing" id="8fi-Fp-wCO"/>
-                                    <constraint firstAttribute="height" constant="97" id="DCD-YX-n3v"/>
+                                    <constraint firstAttribute="height" constant="115" id="DCD-YX-n3v"/>
+                                    <constraint firstAttribute="trailing" secondItem="dxh-vM-KbO" secondAttribute="trailing" id="Hck-oW-H1X"/>
                                     <constraint firstItem="Lp0-R5-bwt" firstAttribute="top" secondItem="lhA-My-fKS" secondAttribute="top" constant="20" id="MNd-NO-EM5"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wyv-3a-7zA" secondAttribute="bottom" constant="10" id="P0X-Rp-Ng6"/>
+                                    <constraint firstItem="dxh-vM-KbO" firstAttribute="top" secondItem="lhA-My-fKS" secondAttribute="top" constant="64" id="WeL-vq-CFm"/>
                                     <constraint firstItem="pgk-Rz-SVF" firstAttribute="leading" secondItem="eX9-Q5-aZt" secondAttribute="trailing" constant="4" id="Y0b-J2-i5n"/>
-                                    <constraint firstAttribute="bottom" secondItem="9hv-qd-ZAA" secondAttribute="bottom" constant="7" id="Y9d-z1-ln2"/>
-                                    <constraint firstAttribute="bottom" secondItem="pgk-Rz-SVF" secondAttribute="bottom" constant="7" id="YqD-AC-abI"/>
+                                    <constraint firstItem="6Mv-li-MTE" firstAttribute="leading" secondItem="Ggl-34-cns" secondAttribute="trailing" constant="4" id="Yt5-bj-Jfx"/>
+                                    <constraint firstItem="eX9-Q5-aZt" firstAttribute="bottom" secondItem="pgk-Rz-SVF" secondAttribute="bottom" id="bnm-wz-GQW"/>
+                                    <constraint firstItem="Wyv-3a-7zA" firstAttribute="leading" secondItem="lhA-My-fKS" secondAttribute="leading" constant="10" id="bxT-zX-hVE"/>
+                                    <constraint firstItem="9hv-qd-ZAA" firstAttribute="top" secondItem="dxh-vM-KbO" secondAttribute="bottom" constant="10" id="gVf-EJ-b1x"/>
+                                    <constraint firstItem="dxh-vM-KbO" firstAttribute="leading" secondItem="lhA-My-fKS" secondAttribute="leading" id="hTa-79-0zQ"/>
                                     <constraint firstAttribute="trailing" secondItem="pgk-Rz-SVF" secondAttribute="trailing" constant="10" id="kge-65-XJU"/>
+                                    <constraint firstItem="6Mv-li-MTE" firstAttribute="bottom" secondItem="Ggl-34-cns" secondAttribute="bottom" id="rve-EE-mrr"/>
+                                    <constraint firstItem="eX9-Q5-aZt" firstAttribute="centerY" secondItem="9hv-qd-ZAA" secondAttribute="centerY" id="vRf-uE-jUK"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Receiver’s Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Acj-rW-ybZ" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="137" width="335" height="17"/>
-                                <color key="tintColor" red="0.60297137499999998" green="0.86317712069999997" blue="0.88944160940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
+                                <rect key="frame" x="20" y="155" width="335" height="20"/>
+                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="WZ6-tG-7Ii" id="fww-OY-QB1"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ss7-mt-eh8">
-                                <rect key="frame" x="48" y="596" width="280" height="44"/>
-                                <color key="backgroundColor" red="0.20985329150000001" green="0.72564256189999998" blue="0.7855710387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="113" y="596" width="150" height="44"/>
+                                <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="IDg-Lt-WNW"/>
+                                    <constraint firstAttribute="width" constant="150" id="IDg-Lt-WNW"/>
                                     <constraint firstAttribute="height" constant="44" id="nXY-XJ-KxX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Send">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="SEND">
+                                    <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted" image="payment2"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="makePaymentButtonWasPressed:" destination="WZ6-tG-7Ii" eventType="touchUpInside" id="ZDF-co-sI1"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaV-0u-WJO">
-                                <rect key="frame" x="20" y="167" width="335" height="1"/>
-                                <color key="backgroundColor" red="0.74117647058823533" green="0.77647058823529413" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="188" width="335" height="1"/>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="AQ1-Z1-1qP"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Md-s8-YSL" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="198" width="335" height="17"/>
-                                <color key="tintColor" red="0.60297137499999998" green="0.86317712069999997" blue="0.88944160940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
+                                <rect key="frame" x="20" y="219" width="335" height="20"/>
+                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="WZ6-tG-7Ii" id="1FF-Ms-TNH"/>
                                 </connections>
                             </textField>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ulr-Ih-cQr">
-                                <rect key="frame" x="20" y="228" width="335" height="1"/>
-                                <color key="backgroundColor" red="0.74117647060000003" green="0.77647058820000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="252" width="335" height="1"/>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="qUG-Nz-RY9"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PIN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eOy-cm-MuA" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="259" width="335" height="17"/>
-                                <color key="tintColor" red="0.60297137499999998" green="0.86317712069999997" blue="0.88944160940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
+                                <rect key="frame" x="20" y="283" width="335" height="20"/>
+                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="WZ6-tG-7Ii" id="VDH-zC-uD9"/>
                                 </connections>
                             </textField>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqe-03-CCS">
-                                <rect key="frame" x="20" y="289" width="335" height="1"/>
-                                <color key="backgroundColor" red="0.74117647060000003" green="0.77647058820000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="316" width="335" height="1"/>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="2zm-bU-Ffo"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="aqe-03-CCS" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="4n7-Ij-BFh"/>
@@ -224,6 +240,7 @@
                         <outlet property="pinUnderlineView" destination="aqe-03-CCS" id="o7C-nx-jeo"/>
                         <outlet property="residueValueLabel" destination="eX9-Q5-aZt" id="msL-0M-l2u"/>
                         <outlet property="topView" destination="lhA-My-fKS" id="Ynw-Fh-uBK"/>
+                        <outlet property="unconfirmedBalance" destination="Ggl-34-cns" id="e66-T0-MxX"/>
                         <segue destination="SPy-Uw-ObY" kind="unwind" identifier="FromMainToNewPayment" unwindAction="unwingToPayment:" id="ZRN-7z-WgM"/>
                     </connections>
                 </viewController>
@@ -234,7 +251,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1514" y="956"/>
+            <point key="canvasLocation" x="1512.8" y="955.77211394302856"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="3E3-ob-Eof">
@@ -259,7 +276,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="82N-H8-7ss"/>
                                                 </constraints>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="back">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -268,10 +285,10 @@
                                                     <action selector="backButtonWasPressed:" destination="Nik-n6-IGa" eventType="touchUpInside" id="I8s-qE-cWi"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-3f-mRF">
-                                                <rect key="frame" x="153" y="12" width="70" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-3f-mRF">
+                                                <rect key="frame" x="148" y="11" width="79" height="23"/>
+                                                <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                                                <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -286,7 +303,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.21063089369999999" green="0.33473819490000001" blue="0.78443151710000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="z1j-aI-OeO" secondAttribute="bottom" id="KBY-dx-vtW"/>
                                     <constraint firstAttribute="height" constant="64" id="Pe3-qh-dbc"/>
@@ -305,7 +322,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="zGX-91-Mk4" firstAttribute="centerX" secondItem="KOh-TX-UCk" secondAttribute="centerX" id="6Yl-Gb-3mZ"/>
                                     <constraint firstItem="zGX-91-Mk4" firstAttribute="leading" secondItem="KOh-TX-UCk" secondAttribute="leading" constant="35" id="LGg-fZ-8bm"/>
@@ -336,9 +353,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="8" height="15"/>
+        <image name="back" width="11" height="20"/>
         <image name="payment2" width="16" height="16"/>
         <image name="qr_overlay" width="16" height="16"/>
-        <image name="qrcode" width="21" height="21"/>
+        <image name="qrcode" width="20" height="20"/>
     </resources>
 </document>

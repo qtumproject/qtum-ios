@@ -10,6 +10,7 @@
 
 @interface ProfileTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *diclousereImageView;
 @property (weak, nonatomic) IBOutlet UILabel *profileCellTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileCellImage;
 

@@ -15,7 +15,7 @@ extern NSString const *AMOUNT_STRING_KEY;
 UIColor *customBlueColor();
 UIColor *textFieldLineColorSelected();
 UIColor *textFieldLineColorDeselected();
-UIColor *historyRedColor();
+UIColor *customRedColor();
 UIColor *historyGreenColor();
 UIColor *historyGrayColor();
 UIColor *customBlackColor();

@@ -23,10 +23,6 @@
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.firstSymbolTextField becomeFirstResponder];

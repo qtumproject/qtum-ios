@@ -43,12 +43,6 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 #pragma mark - Private Methods
 
 -(NSArray*)arrayOfWordsFromString:(NSString*)aString{

@@ -17,9 +17,9 @@ UIColor *customBlueColor()
     return [UIColor colorWithRed:46/255.0f green:154/255.0f blue:208/255.0f alpha:1.0f];
 }
 
-UIColor *historyRedColor()
+UIColor *customRedColor()
 {
-    return [UIColor colorWithRed:249/255.0f green:94/255.0f blue:134/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:231/255.0f green:86/255.0f blue:71/255.0f alpha:1.0f];
 }
 
 UIColor *customBlackColor()

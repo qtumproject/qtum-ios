@@ -11,7 +11,7 @@
 
 @interface WalletTypeCollectionCell ()
 
-@property (weak, nonatomic) IBOutlet GradientViewWithAnimation *animationLayer;
+@property (weak, nonatomic) IBOutlet UIView *animationLayer;
 
 @end
 
@@ -19,7 +19,7 @@
 
 -(void)prepareForReuse {
     
-    [self.animationLayer startAnimating];
+    //[self.animationLayer startAnimating];
 }
 
 #pragma mark - Public Methods
@@ -29,6 +29,7 @@
     self.adressValueLabel.text = object.mainAddress;
     self.valueLabel.text = [NSString stringWithFormat:@"%f",object.balance];
     self.typeWalletLabel.text = object.symbol;
+    self.unconfirmedValue.text = [NSString stringWithFormat:@"%f",object.unconfirmedBalance];
 }
 
 - (IBAction)actionShowAddressInfo:(id)sender {

@@ -9,6 +9,8 @@
 #import "SubscribeTokenViewController.h"
 #import "SubscribeTokenDataSourceDelegate.h"
 #import "SubscribeTokenCoordinator.h"
+#import "UIImage+Extension.h"
+#import "TockenCell.h"
 
 @interface SubscribeTokenViewController ()
 
@@ -22,11 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configTableView];
+    [self configSearchBar];
     [self.tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Configuration
@@ -36,9 +35,19 @@
     self.tableView.delegate = self.delegateDataSource;
 }
 
+-(void)configSearchBar{
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(8,0, self.view.frame.size.width - 16, 28)];
+    view.backgroundColor = customBlackColor();
+    UIImage *img = [UIImage changeViewToImage:view];
+    [self.searchBar setSearchFieldBackgroundImage:img forState:UIControlStateNormal];
+    [self.searchBar setImage:[UIImage imageNamed: @"Icon-search"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+}
+
+
 #pragma mark - Accesers 
 
 - (IBAction)actionBack:(id)sender {
+    
     [self.delegate didBackButtonPressed];
 }
 

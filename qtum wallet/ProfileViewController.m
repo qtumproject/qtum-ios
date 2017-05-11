@@ -17,7 +17,6 @@
 @property (strong,nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
 @property (strong,nonatomic) CreateTokenCoordinator* createTokenCoordinator;
 
-
 @end
 
 @implementation ProfileViewController
@@ -37,8 +36,14 @@
 
 -(UIView*)footerView{
     UIView* footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 13)];
-    footer.backgroundColor = [UIColor colorWithRed:236/255. green:236/255. blue:236/255. alpha:1];
+    footer.backgroundColor = [UIColor colorWithRed:36/255. green:41/255. blue:49/255. alpha:1];
     return footer;
+}
+
+-(UIView*)highlightedView{
+    UIView * selectedBackgroundView = [[UIView alloc] init];
+    [selectedBackgroundView setBackgroundColor:customRedColor()];
+    return selectedBackgroundView;
 }
 
 #pragma mark UITableViewDataSource
@@ -121,6 +126,9 @@
     
     cell.profileCellImage.image = image;
     cell.profileCellTextLabel.text = text;
+    cell.diclousereImageView.tintColor = customBlueColor();
+
+    [cell setSelectedBackgroundView:[self highlightedView]];
 }
 
 #pragma mark UITableViewDelegate
@@ -130,7 +138,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             [self actionLanguage:nil];
@@ -156,6 +164,22 @@
             [[ApplicationCoordinator sharedInstance] logout];
         }
     }
+}
+
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    ProfileTableViewCell* cell = (ProfileTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.profileCellImage.tintColor = customBlackColor();
+    cell.profileCellTextLabel.textColor = customBlackColor();
+    cell.diclousereImageView.tintColor = customBlackColor();
+}
+
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ProfileTableViewCell* cell = (ProfileTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.profileCellImage.tintColor = customBlueColor();
+    cell.profileCellTextLabel.textColor = customBlueColor();
+    cell.diclousereImageView.tintColor = customBlueColor();
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{

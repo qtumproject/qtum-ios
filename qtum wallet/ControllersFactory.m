@@ -110,7 +110,7 @@
     return controller;
 }
 
--(AuthNavigationController*)createAuthNavigationController{
+-(AuthNavigationController*)createAuthNavigationController {
     AuthNavigationController* controller = [[AuthNavigationController alloc]init];
     return controller;
 }

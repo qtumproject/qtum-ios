@@ -71,7 +71,7 @@ static NSInteger countOfSections = 2;
     if (section == 0) {
         return 0;
     }
-    return 32.0f;
+    return ceilf(32.0f);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

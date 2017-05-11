@@ -13,7 +13,6 @@
 @required
 - (id)adaptiveDataForHistory:(id) data;
 - (id)adaptiveDataForOutputs:(id) data;
-- (CGFloat)adaptiveDataForBalance:(CGFloat) balance;
-
+- (id)adaptiveDataForBalance:(id) balance;
 
 @end

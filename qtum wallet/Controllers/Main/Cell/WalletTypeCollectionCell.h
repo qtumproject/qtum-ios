@@ -13,6 +13,7 @@ static NSString *WalletTypeCollectionCellIdentifire = @"WalletTypeCollectionCell
 
 @interface WalletTypeCollectionCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedValue;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeWalletLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;

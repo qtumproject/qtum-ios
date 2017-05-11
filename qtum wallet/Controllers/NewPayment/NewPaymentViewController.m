@@ -22,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalance;
 @property (strong,nonatomic) NSString* adress;
 @property (strong,nonatomic) NSString* amount;
 
@@ -52,14 +53,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Private Methods
 
 -(void)updateControls{
+    
+    double amount = [self.amountTextField.text doubleValue];
+    
+    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.balance - amount];
+    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.unconfirmedBalance];
     self.addressTextField.text = self.adress;
     self.amountTextField.text = self.amount;
 }
@@ -107,7 +108,6 @@
         NSString *complededString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
         [self calculateResidue:complededString];
     }
-    
     return YES;
 }
 
@@ -136,15 +136,14 @@
     [self.amountTextField resignFirstResponder];
 }
 
-- (void)calculateResidue:(NSString *)string
-{
+- (void)calculateResidue:(NSString *)string {
     double amount;
     if (string) {
         amount = [string doubleValue];
     }else{
         amount = [self.amountTextField.text doubleValue];
     }
-    double balance = [self.currentBalance doubleValue];
+    double balance = [WalletManager sharedInstance].getCurrentWallet.balance;
     
     double residue = balance - amount;
     self.residueValueLabel.text = [NSString stringWithFormat:@"%lf", residue];

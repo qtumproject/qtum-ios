@@ -19,7 +19,14 @@
         [qrFilter setValue:stringData forKey:@"inputMessage"];
         [qrFilter setValue:@"H" forKey:@"inputCorrectionLevel"];
         
+        CIColor *iBackgroundColor =[CIColor colorWithCGColor:[customBlackColor() CGColor]];
+        CIColor *iForegroundColor =[CIColor colorWithCGColor:[customBlueColor() CGColor]];
+
         CIImage *qrImage = qrFilter.outputImage;
+        CIFilter *filterColor = [CIFilter filterWithName:@"CIFalseColor" keysAndValues:@"inputImage", qrImage, @"inputColor0", iForegroundColor, @"inputColor1", iBackgroundColor, nil];
+        //[filterColor setDefaults];
+        
+        qrImage = [filterColor valueForKey:@"outputImage"];
         float scaleX = size.width / qrImage.extent.size.width;
         float scaleY = size.height / qrImage.extent.size.height;
         

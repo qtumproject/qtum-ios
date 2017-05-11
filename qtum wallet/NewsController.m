@@ -51,6 +51,7 @@
 
 -(void)configPullRefresh{
     self.refresh = [[UIRefreshControl alloc] init];
+    self.refresh.tintColor = customBlueColor();
     [_refresh addTarget:self action:@selector(actionRefresh) forControlEvents:UIControlEventValueChanged];
 
     [self.tableView addSubview:self.refresh];

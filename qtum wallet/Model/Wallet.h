@@ -19,6 +19,7 @@
 
 @property (copy, nonatomic) NSString* name;
 @property (assign, nonatomic) CGFloat balance;
+@property (assign, nonatomic) CGFloat unconfirmedBalance;
 @property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;

@@ -20,7 +20,7 @@
     if (_isActivityFadeout) {
         self.isActivityFadeout = NO;
         [UIView animateWithDuration:0.2 animations:^{
-            self.activityView.alpha = 1;
+            self.alpha = 1;
         }];
     }
 }
@@ -29,7 +29,7 @@
     if (!_isActivityFadeout) {
         self.isActivityFadeout = YES;
         [UIView animateWithDuration:0.2 animations:^{
-            self.activityView.alpha = 0;
+            self.alpha = 0;
         }];
     }
 }

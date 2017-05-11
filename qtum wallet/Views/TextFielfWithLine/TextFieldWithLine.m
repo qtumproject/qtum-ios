@@ -11,6 +11,8 @@
 @interface TextFieldWithLine ()
 
 @property (nonatomic) UIView *lineView;
+@property (nonatomic, assign) CGFloat currentHeight;
+
 
 @end
 
@@ -20,45 +22,47 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [self setTintColor:[UIColor colorWithRed:54/255. green:185/255. blue:200/255. alpha:1]];
+        [self setTintColor:customBlueColor()];
+        _currentHeight = 1;
+        self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:@{NSForegroundColorAttributeName: customBlueColor()}];
     }
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
+    self.lineView.frame = CGRectMake(0, self.frame.size.height + 13.0f, self.frame.size.width, self.currentHeight);
     [super layoutSubviews];
-    
-    self.lineView.frame = CGRectMake(0, self.frame.size.height + 13.0f, self.frame.size.width, .5f);
 }
 
-- (UIView *)lineView
-{
+- (UIView *)lineView {
+    
     if (!_lineView) {
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectZero];
-        lineView.backgroundColor = textFieldLineColorDeselected();
+        lineView.backgroundColor = customBlueColor();
         _lineView = lineView;
-        
         [self addSubview:lineView];
     }
     
     return _lineView;
 }
 
-- (BOOL)becomeFirstResponder
-{
-    self.lineView.backgroundColor = textFieldLineColorSelected();
+- (BOOL)becomeFirstResponder {
+    
+    self.lineView.backgroundColor = customBlueColor();
+    self.currentHeight = 2;
+    [self setNeedsLayout];
     return [super becomeFirstResponder];
 }
 
-- (BOOL)resignFirstResponder
-{
-    self.lineView.backgroundColor = textFieldLineColorDeselected();
+- (BOOL)resignFirstResponder {
+    
+    self.lineView.backgroundColor = customBlueColor();
+    self.currentHeight = 1;
     return [super resignFirstResponder];
 }
 
-- (BOOL)shouldChangeTextInRange:(UITextRange *)range replacementText:(NSString *)text
-{
+- (BOOL)shouldChangeTextInRange:(UITextRange *)range replacementText:(NSString *)text {
+    
     return [super shouldChangeTextInRange:range replacementText:text];
 }
 

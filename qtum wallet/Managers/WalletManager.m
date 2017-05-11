@@ -289,8 +289,9 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     [self save];
 }
 
--(void)updateSpendablesBalansesWithObject:(NSNumber*) balance{
-    [self getCurrentWallet].balance = [balance floatValue];
+-(void)updateSpendablesBalansesWithObject:(NSDictionary*) balances{
+    [self getCurrentWallet].balance = [balances[@"balance"] floatValue];
+    [self getCurrentWallet].unconfirmedBalance = [balances[@"unconfirmedBalance"] floatValue];
     [self spendableDidChange:[self getCurrentWallet]];
 }
 

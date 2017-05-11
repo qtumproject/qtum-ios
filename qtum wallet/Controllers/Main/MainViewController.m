@@ -24,7 +24,6 @@
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet GradientViewWithAnimation *topBoardView;
 @property (weak, nonatomic) IBOutlet UIView *quickInfoBoard;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBoardQuckBoardOffset;
 @property (weak, nonatomic) IBOutlet UIView *customNavigationBar;
@@ -87,7 +86,7 @@
 
 -(void)configRefreshControl{
     self.refreshControl = [[UIRefreshControl alloc]init];
-    self.refreshControl.tintColor = [UIColor whiteColor];
+    self.refreshControl.tintColor = customBlackColor();
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshButtonWasPressed:) forControlEvents:UIControlEventValueChanged];
     
@@ -95,7 +94,7 @@
     CGRect frame = self.tableView.bounds;
     frame.origin.y = -frame.size.height;
     UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
-    refreshBackgroundView.backgroundColor = [UIColor colorWithRed:63/255.0f green:56/255.0f blue:196/255.0f alpha:1.0f];
+    refreshBackgroundView.backgroundColor = customBlueColor();
     [self.tableView insertSubview:refreshBackgroundView atIndex:0];
 }
 
@@ -122,16 +121,17 @@
     if (self.isNavigationBarFadeout) {
         self.isNavigationBarFadeout = NO;
         [UIView animateWithDuration:0.2 animations:^{
-            self.customNavigationBar.layer.backgroundColor = [UIColor colorWithRed:63/255.0f green:56/255.0f blue:196/255.0f alpha:1.0].CGColor;
+            self.customNavigationBar.layer.backgroundColor = customBlueColor().CGColor;
         }];
     }
 }
+
 - (void)fadeOutNavigationBar{
     if (!self.isNavigationBarFadeout) {
         self.isNavigationBarFadeout = YES;
-        self.customNavigationBar.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor;
+        self.customNavigationBar.layer.backgroundColor = customBlueColor().CGColor;
         [UIView animateWithDuration:0.2 animations:^{
-            self.customNavigationBar.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor;
+            self.customNavigationBar.layer.backgroundColor = customBlueColor().CGColor;
         }];
     }
 }

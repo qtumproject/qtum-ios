@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *publicAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalance;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *walletAdressCopyButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareLabelButton;
@@ -31,6 +32,8 @@
     [super viewDidLoad];
     
     self.balanceLabel.text = [NSString stringWithFormat:@"%.6f", self.wallet.balance];
+    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.6f", self.wallet.unconfirmedBalance];
+
     [self addDoneButtonToAmountTextField];
     self.shareButton.enabled = NO;
     // Do any additional setup after loading the view.
@@ -71,11 +74,12 @@
 {
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     toolbar.barStyle = UIBarStyleBlackTranslucent;
-    toolbar.barTintColor = [UIColor groupTableViewBackgroundColor];
+    toolbar.barTintColor = customBlueColor();
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
+    doneButton.tintColor = customBlackColor();
     toolbar.items = @[
                       [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                      [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)],
-                      ];
+                      doneButton];
     [toolbar sizeToFit];
     
     self.amountTextField.inputAccessoryView = toolbar;

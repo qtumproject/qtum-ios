@@ -25,8 +25,12 @@
     return data;
 }
 
-- (CGFloat)adaptiveDataForBalance:(CGFloat) balance{
-    return balance/=100000000;
+- (id)adaptiveDataForBalance:(id) balances{
+    if ([balances isKindOfClass:[NSDictionary class]]) {
+        return @{@"balance" : @([balances[@"balance"] floatValue] /100000000),
+                 @"unconfirmedBalance" : @([balances[@"unconfirmedBalance"] floatValue] /100000000)};
+    }
+    return nil;
 }
 
 @end
