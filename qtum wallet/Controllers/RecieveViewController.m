@@ -70,8 +70,7 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (void)addDoneButtonToAmountTextField
-{
+- (void)addDoneButtonToAmountTextField {
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     toolbar.barStyle = UIBarStyleBlackTranslucent;
     toolbar.barTintColor = customBlueColor();

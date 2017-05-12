@@ -19,7 +19,8 @@
     //if hashTable of adresses constain object, add this value to inValue
     for (NSDictionary* inObject in dictionary[@"vin"]) {
         
-        [self.fromAddreses addObject:inObject[@"address"]];
+        [self.fromAddreses addObject:@{@"address":inObject[@"address"],
+                                       @"value":inObject[@"value"]}];
         NSString* address = [hashTableAdresses objectForKey:inObject[@"address"]];
         if (address) {
             inMoney += [inObject[@"value"] floatValue];
@@ -28,7 +29,8 @@
     
     //if hashTable of adresses constain object, add this value to ouyValue
     for (NSDictionary* outObject in dictionary[@"vout"]) {
-        [self.toAddresses addObject:outObject[@"address"]];
+        [self.toAddresses addObject:@{@"address":outObject[@"address"],
+                                       @"value":outObject[@"value"]}];
         
         NSString* address = [hashTableAdresses objectForKey:outObject[@"address"]];
         if (address) {
@@ -91,7 +93,7 @@
     NSTimeInterval currenDayTimeInterval = (long)nowTimeInterval % (long)day;
     
     NSDateFormatter *fullDateFormater = [[NSDateFormatter alloc] init];
-    fullDateFormater.dateFormat = @"MMMM, d hh:mm:ss";
+    fullDateFormater.dateFormat = @"MMMM d, hh:mm:ss aa";
     fullDateFormater.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     
     self.fullDateString = [NSString stringWithFormat:@"%@", [fullDateFormater stringFromDate:date]];

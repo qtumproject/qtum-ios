@@ -14,12 +14,15 @@
 
 @interface HistoryItemViewController ()
 
-@property (weak, nonatomic) IBOutlet GradientViewWithAnimation *topBoeardView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIView *topBoeardView;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cointType;
 @property (weak, nonatomic) IBOutlet UILabel *receivedTimeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) HistoryItemDelegateDataSource* historyDelegateDataSource;
+@property (weak, nonatomic) IBOutlet UILabel *fromToLabel;
+@property (weak, nonatomic) IBOutlet UIView *notConfirmedDesk;
 
 @end
 
@@ -30,7 +33,9 @@
     [super viewDidLoad];
     [self configWithItem];
     [self configTableView];
-
+    
+    [self.pageControl setCurrentPage:0];
+    self.notConfirmedDesk.hidden = self.item.confirmed;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +45,7 @@
 #pragma mark - Private Methods
 
 -(void)configTableView{
+    
     UINib *nib = [UINib nibWithNibName:@"HistoryItemHeaderView" bundle:nil];
     [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:HistoryItemHeaderViewIdentifier];
     self.historyDelegateDataSource = [HistoryItemDelegateDataSource new];
@@ -50,13 +56,6 @@
 }
 
 -(void)configWithItem{
-
-    if (self.item.send) {
-        self.topBoeardView.colorType = Pink;
-    } else {
-        self.topBoeardView.colorType = Green;
-    }
-    
     self.balanceLabel.text = [NSString stringWithFormat:@"%0.6f",self.item.amount.floatValue];
     self.receivedTimeLabel.text = self.item.fullDateString;
 }
@@ -65,6 +64,20 @@
 
 - (IBAction)actionBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)didPressedPageControllAction:(id)sender {
+    
+    if (self.pageControl.currentPage == 1) {
+        [self.pageControl setCurrentPage:0];
+        self.fromToLabel.text = NSLocalizedString(@"From", @"From To Transaction");
+        self.historyDelegateDataSource.mode = From;
+    } else {
+        [self.pageControl setCurrentPage:1];
+        self.fromToLabel.text = NSLocalizedString(@"To", @"From To Transaction");
+        self.historyDelegateDataSource.mode = To;
+    }
+    [self.tableView reloadData];
 }
 
 @end

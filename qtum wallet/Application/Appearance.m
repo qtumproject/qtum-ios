@@ -9,6 +9,7 @@
 #import "Appearance.h"
 #import "UIImage+Extension.h"
 #import "TextFieldWithLine.h"
+#import "CustomTextField.h"
 
 @implementation Appearance
 
@@ -42,7 +43,13 @@
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:customBlueColor()];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setClearButtonMode:UITextFieldViewModeNever];
     [[UITextField appearance] setKeyboardAppearance:UIKeyboardAppearanceDark];
-    
+//    [[UITextField appearance] setTintColor:customBlueColor()];
+//    [[UITextView appearance] setTintColor:customBlueColor()];
+
+//    
+//    [[UITextField appearanceWhenContainedIn:[TextFieldWithLine class], nil] setTintColor:customBlueColor()];
+//    [[UITextField appearanceWhenContainedIn:[CustomTextField class], nil] setTintColor:customBlueColor()];
+
     [self configTabbarUndeline];
     [self configTabbarTopline];
 }

@@ -42,6 +42,7 @@
 -(void)configurationBrainKeyLabel{
     self.brainKeyView.text =
     self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] getCurrentWallet].seedWords];
+    [self.brainKeyView sizeToFit];
 }
 
 #pragma mark - Actions

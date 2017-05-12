@@ -73,6 +73,7 @@
 		B3487A271E92234B00BC66F1 /* WalletTypeCellWithCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A261E92234B00BC66F1 /* WalletTypeCellWithCollection.m */; };
 		B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3487A291E92383500BC66F1 /* HistoryTableHeaderView.xib */; };
 		B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A2C1E92392000BC66F1 /* HistoryHeaderVIew.m */; };
+		B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B34B69631EC5993A006BE3B0 /* CustomPageControl.m */; };
 		B351305D1E49BF6D0048A28C /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B351305C1E49BF6D0048A28C /* NewsController.m */; };
 		B35130611E49C9930048A28C /* NewsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130601E49C9930048A28C /* NewsCellModel.m */; };
 		B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130641E49DCBC0048A28C /* NewsTableCell.m */; };
@@ -320,6 +321,8 @@
 		B3487A291E92383500BC66F1 /* HistoryTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableHeaderView.xib; sourceTree = "<group>"; };
 		B3487A2B1E92392000BC66F1 /* HistoryHeaderVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryHeaderVIew.h; sourceTree = "<group>"; };
 		B3487A2C1E92392000BC66F1 /* HistoryHeaderVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryHeaderVIew.m; sourceTree = "<group>"; };
+		B34B69621EC5993A006BE3B0 /* CustomPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPageControl.h; sourceTree = "<group>"; };
+		B34B69631EC5993A006BE3B0 /* CustomPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPageControl.m; sourceTree = "<group>"; };
 		B351305B1E49BF6D0048A28C /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
 		B351305C1E49BF6D0048A28C /* NewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsController.m; sourceTree = "<group>"; };
 		B351305F1E49C9930048A28C /* NewsCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCellModel.h; sourceTree = "<group>"; };
@@ -775,6 +778,15 @@
 			name = Header;
 			sourceTree = "<group>";
 		};
+		B34B69611EC5990C006BE3B0 /* Page Control */ = {
+			isa = PBXGroup;
+			children = (
+				B34B69621EC5993A006BE3B0 /* CustomPageControl.h */,
+				B34B69631EC5993A006BE3B0 /* CustomPageControl.m */,
+			);
+			name = "Page Control";
+			sourceTree = "<group>";
+		};
 		B351305E1E49BF720048A28C /* NewsFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1226,6 +1238,7 @@
 		E7FD365E1DC73B2400748177 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				B34B69611EC5990C006BE3B0 /* Page Control */,
 				B3255C491E1CD40300CD610B /* Diagram animation */,
 				E7396ADE1DDDEA0E0002CD47 /* Gradient */,
 				B321428E1E0154F700489BB1 /* Text Field */,
@@ -1630,6 +1643,7 @@
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
+				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,

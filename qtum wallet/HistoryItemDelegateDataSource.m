@@ -22,7 +22,7 @@ static NSString* toAddressesHeaderTitle = @"To";
 #pragma mark - UItableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
+    if (self.mode == From) {
         return self.item.fromAddreses.count;
     } else {
         return self.item.toAddresses.count;
@@ -32,34 +32,36 @@ static NSString* toAddressesHeaderTitle = @"To";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HistoryItemAddressCellTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:HistoryItemAddressCellTableViewCellIdentifier forIndexPath:indexPath];
-    if (indexPath.section == 0) {
-        cell.addressLabel.text = self.item.fromAddreses[indexPath.row];
+    if (self.mode == From) {
+        cell.addressLabel.text = self.item.fromAddreses[indexPath.row][@"address"];
+        cell.valueLabel.text = [NSString stringWithFormat:@"%@ QTUM",self.item.fromAddreses[indexPath.row][@"value"]];
     } else {
-        cell.addressLabel.text = self.item.toAddresses[indexPath.row];
+        cell.addressLabel.text = self.item.toAddresses[indexPath.row][@"address"];
+        cell.valueLabel.text = [NSString stringWithFormat:@"%@ QTUM",self.item.toAddresses[indexPath.row][@"value"]];
     }
+//    [cell.valueLabel sizeToFit];
+//    [cell setNeedsLayout];
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 
 #pragma mark - UITableViewDelegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 25;
+    return 44;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 37;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    HistoryItemHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HistoryItemHeaderViewIdentifier];
-    header.headerTextLabel.text = section ? toAddressesHeaderTitle : fromAddressesHeaderTitle;
-    header.backgroundColor = [UIColor whiteColor];
-    return header;
-}
+//
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    HistoryItemHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HistoryItemHeaderViewIdentifier];
+//    header.headerTextLabel.text = section ? toAddressesHeaderTitle : fromAddressesHeaderTitle;
+//    header.backgroundColor = [UIColor whiteColor];
+//    return header;
+//}
 
 
 @end
