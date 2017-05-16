@@ -148,6 +148,9 @@
 		E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AFB1DDF19C90002CD47 /* AddressTableViewCell.m */; };
 		E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */; };
 		E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73D9C831ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard */; };
+		E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73D9C871ECB18A200A09CFE /* Splash.storyboard */; };
+		E73D9C8D1ECB19D000A09CFE /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8C1ECB19D000A09CFE /* SplashViewController.m */; };
+		E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */; };
 		E74636861DCB300800A13318 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E74636851DCB300800A13318 /* Utils.m */; };
 		E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D241D81DE6D6B1003E507B /* QRCodeManager.m */; };
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
@@ -471,6 +474,11 @@
 		E7396AFD1DDF394C0002CD47 /* TextFieldWithLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLine.h; sourceTree = "<group>"; };
 		E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldWithLine.m; sourceTree = "<group>"; };
 		E73D9C841ECB0D0D00A09CFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NoInternetConnectionPopUp.storyboard; sourceTree = "<group>"; };
+		E73D9C881ECB18A200A09CFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Splash.storyboard; sourceTree = "<group>"; };
+		E73D9C8B1ECB19D000A09CFE /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		E73D9C8C1ECB19D000A09CFE /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		E73D9C8E1ECB1A0600A09CFE /* AnimatedLogoImageVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLogoImageVIew.h; sourceTree = "<group>"; };
+		E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLogoImageVIew.m; sourceTree = "<group>"; };
 		E74636841DCB300800A13318 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		E7D241D71DE6D6B1003E507B /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
@@ -700,6 +708,7 @@
 				B32EEC811EB3549F00512FED /* Start.storyboard */,
 				B32EEC861EB354B100512FED /* CreateToken.storyboard */,
 				B32EEC8B1EB354C000512FED /* SubscribeToken.storyboard */,
+				E73D9C871ECB18A200A09CFE /* Splash.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1086,6 +1095,25 @@
 			name = PopUp;
 			sourceTree = "<group>";
 		};
+		E73D9C8A1ECB196400A09CFE /* Splash Screen */ = {
+			isa = PBXGroup;
+			children = (
+				E73D9C911ECB1A0900A09CFE /* Views */,
+				E73D9C8B1ECB19D000A09CFE /* SplashViewController.h */,
+				E73D9C8C1ECB19D000A09CFE /* SplashViewController.m */,
+			);
+			name = "Splash Screen";
+			sourceTree = "<group>";
+		};
+		E73D9C911ECB1A0900A09CFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E73D9C8E1ECB1A0600A09CFE /* AnimatedLogoImageVIew.h */,
+				E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		E7D241D61DE6D697003E507B /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1156,6 +1184,7 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				E73D9C8A1ECB196400A09CFE /* Splash Screen */,
 				B384F3D91EB9BF250075F1E8 /* Localization */,
 				B33EAF241E5DB039006125F3 /* qtum wallet.entitlements */,
 				B31CF7271E126E05000BCF41 /* Auth and Login */,
@@ -1498,6 +1527,7 @@
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				B32EEC661EB3545700512FED /* Send.storyboard in Resources */,
 				B32EEC7A1EB3549300512FED /* Pin.storyboard in Resources */,
+				E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */,
 				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
 				B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */,
@@ -1598,6 +1628,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E73D9C8D1ECB19D000A09CFE /* SplashViewController.m in Sources */,
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
@@ -1673,6 +1704,7 @@
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
 				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
 				B3F06CF71E69879D006341F7 /* CreateTokenCoordinator.m in Sources */,
+				E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
@@ -1830,6 +1862,14 @@
 				E73D9C841ECB0D0D00A09CFE /* Base */,
 			);
 			name = NoInternetConnectionPopUp.storyboard;
+			sourceTree = "<group>";
+		};
+		E73D9C871ECB18A200A09CFE /* Splash.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E73D9C881ECB18A200A09CFE /* Base */,
+			);
+			name = Splash.storyboard;
 			sourceTree = "<group>";
 		};
 		E7FD36441DC4D07E00748177 /* Main.storyboard */ = {
