@@ -108,7 +108,6 @@
 		B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */; };
 		B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */; };
 		B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5ED1E16403B004D231B /* WalletNameViewController.m */; };
-		B3C4553E1E89596A00420D7C /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3C4553D1E89596A00420D7C /* SocketIO.framework */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -148,6 +147,7 @@
 		E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */; };
 		E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AFB1DDF19C90002CD47 /* AddressTableViewCell.m */; };
 		E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */; };
+		E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73D9C831ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard */; };
 		E74636861DCB300800A13318 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E74636851DCB300800A13318 /* Utils.m */; };
 		E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D241D81DE6D6B1003E507B /* QRCodeManager.m */; };
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
@@ -470,6 +470,7 @@
 		E7396AFB1DDF19C90002CD47 /* AddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTableViewCell.m; sourceTree = "<group>"; };
 		E7396AFD1DDF394C0002CD47 /* TextFieldWithLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLine.h; sourceTree = "<group>"; };
 		E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldWithLine.m; sourceTree = "<group>"; };
+		E73D9C841ECB0D0D00A09CFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NoInternetConnectionPopUp.storyboard; sourceTree = "<group>"; };
 		E74636841DCB300800A13318 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		E7D241D71DE6D6B1003E507B /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
@@ -520,7 +521,6 @@
 			files = (
 				E7FD365C1DC7360400748177 /* Security.framework in Frameworks */,
 				0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */,
-				B3C4553E1E89596A00420D7C /* SocketIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +690,7 @@
 		B33EAF001E5B3920006125F3 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				E73D9C861ECB0D1600A09CFE /* PopUp */,
 				B32EEC681EB3545700512FED /* Send.storyboard */,
 				E7FD36441DC4D07E00748177 /* Main.storyboard */,
 				B32EEC6D1EB3546800512FED /* News.storyboard */,
@@ -1075,6 +1076,14 @@
 				E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */,
 			);
 			path = TextFielfWithLine;
+			sourceTree = "<group>";
+		};
+		E73D9C861ECB0D1600A09CFE /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				E73D9C831ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard */,
+			);
+			name = PopUp;
 			sourceTree = "<group>";
 		};
 		E7D241D61DE6D697003E507B /* QRCode */ = {
@@ -1489,6 +1498,7 @@
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				B32EEC661EB3545700512FED /* Send.storyboard in Resources */,
 				B32EEC7A1EB3549300512FED /* Pin.storyboard in Resources */,
+				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
 				B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */,
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
@@ -1561,7 +1571,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1814,6 +1824,14 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
+		E73D9C831ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E73D9C841ECB0D0D00A09CFE /* Base */,
+			);
+			name = NoInternetConnectionPopUp.storyboard;
+			sourceTree = "<group>";
+		};
 		E7FD36441DC4D07E00748177 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1993,6 +2011,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
@@ -2015,6 +2034,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
