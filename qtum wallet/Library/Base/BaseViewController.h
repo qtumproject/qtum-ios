@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ScrollableContentViewController <NSObject>
+
+@required
+@property (strong,nonatomic) UIScrollView* scrollView;
+
+@end
+
 @interface BaseViewController : UIViewController
 
 // !actions || actions.count == 0 - "ok" as standart

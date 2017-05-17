@@ -8,18 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseCoordinator.h"
+#import "ResultTokenCreateInputModel.h"
 
 @protocol CreateTokenCoordinatorDelegate <NSObject>
 
 @required
 -(void)createStepOneCancelDidPressed;
--(void)createStepOneNextDidPressedWithName:(NSString*) name andSymbol:(NSString*)symbol;
--(void)createStepTwoBackDidPressed;
--(void)createStepTwoNextDidPressedWithParam:(NSDictionary*)param;
--(void)createStepThreeBackDidPressed;
--(void)createStepThreeNextDidPressedWithSupply:(NSString*) supply andUnits:(NSString*)units;
--(void)createStepFourBackDidPressed;
--(void)createStepFourFinishDidPressed;
+-(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenCreateInputModel*>*) inputs;
+-(void)finishStepFinishDidPressed;
+-(void)finishStepBackDidPressed;
 
 @end
 
