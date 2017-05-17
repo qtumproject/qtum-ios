@@ -11,8 +11,6 @@
 @interface TextFieldWithLine ()
 
 @property (nonatomic) UIView *lineView;
-@property (nonatomic, assign) CGFloat currentHeight;
-
 
 @end
 

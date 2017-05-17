@@ -73,4 +73,19 @@
     return reversedString;
 }
 
++ (NSString*)stringFromCamelCase:(NSString*) camelString {
+    
+    NSMutableString *newStr = [NSMutableString string];
+    
+    for (NSInteger i=0; i<camelString.length; i++){
+        NSString *ch = [camelString substringWithRange:NSMakeRange(i, 1)];
+        if ([ch rangeOfCharacterFromSet:[NSCharacterSet uppercaseLetterCharacterSet]].location != NSNotFound) {
+            [newStr appendString:@" "];
+        }
+        [newStr appendString:ch];
+    }
+    NSLog(@"%@", newStr.capitalizedString);
+    return newStr.capitalizedString;
+}
+
 @end

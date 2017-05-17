@@ -6,10 +6,10 @@
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
-
 #import "AppDelegate.h"
 #import "RPCRequestManager.h"
 #import "Appearance.h"
+#import "ContractManager.h"
 
 
 @interface AppDelegate ()
@@ -38,6 +38,7 @@
 //        }];
 //    }
 //
+    [ContractManager sharedInstance];
     return YES;
 }
 
