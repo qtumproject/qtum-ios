@@ -229,7 +229,7 @@
                                     <constraint firstAttribute="bottom" secondItem="1c7-hU-jup" secondAttribute="bottom" id="pNc-Rf-OeO"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D4x-eT-4Qz">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4x-eT-4Qz">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan QR Code" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mp0-5z-Nmd">
@@ -247,7 +247,7 @@
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lga-b5-dmK">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lga-b5-dmK" customClass="TextFieldWithLine">
                                         <rect key="frame" x="15" y="310" width="345" height="20"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -264,6 +264,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="PsT-Z8-WmT" firstAttribute="width" secondItem="Lga-b5-dmK" secondAttribute="width" id="3kV-vO-ovg"/>
+                                    <constraint firstAttribute="bottom" secondItem="PsT-Z8-WmT" secondAttribute="bottom" id="47q-ef-7sC"/>
                                     <constraint firstItem="Lga-b5-dmK" firstAttribute="top" secondItem="3G7-cO-lIJ" secondAttribute="bottom" constant="30" id="6R0-aP-2IL"/>
                                     <constraint firstItem="Mp0-5z-Nmd" firstAttribute="top" secondItem="D4x-eT-4Qz" secondAttribute="top" constant="43" id="CsC-t5-jrj"/>
                                     <constraint firstAttribute="trailing" secondItem="Lga-b5-dmK" secondAttribute="trailing" constant="15" id="DgL-tR-Lwm"/>
@@ -276,11 +277,10 @@
                                     <constraint firstItem="Lga-b5-dmK" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="kXi-Er-dIg"/>
                                     <constraint firstItem="3G7-cO-lIJ" firstAttribute="top" secondItem="mKv-Kr-Khb" secondAttribute="bottom" constant="85" id="lXO-zC-w3Q"/>
                                     <constraint firstItem="PsT-Z8-WmT" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="nZ6-W1-Yds"/>
-                                    <constraint firstAttribute="bottom" secondItem="PsT-Z8-WmT" secondAttribute="bottom" id="o4Y-fy-id4"/>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEy-QK-OAM">
-                                <rect key="frame" x="68.5" y="547" width="238" height="50"/>
+                                <rect key="frame" x="68" y="577" width="238" height="50"/>
                                 <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="238" id="G2Q-nh-lTf"/>
@@ -297,19 +297,20 @@
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="zEy-QK-OAM" firstAttribute="centerX" secondItem="fRX-5m-Qli" secondAttribute="centerX" id="6yU-7u-3ts"/>
                             <constraint firstItem="782-2F-nGn" firstAttribute="leading" secondItem="fRX-5m-Qli" secondAttribute="leading" id="9f2-zp-dpK"/>
-                            <constraint firstItem="zEy-QK-OAM" firstAttribute="centerX" secondItem="fRX-5m-Qli" secondAttribute="centerX" id="CcG-eR-8zc"/>
                             <constraint firstItem="D4x-eT-4Qz" firstAttribute="top" secondItem="782-2F-nGn" secondAttribute="bottom" id="FRg-3B-cvr"/>
                             <constraint firstAttribute="trailing" secondItem="782-2F-nGn" secondAttribute="trailing" id="J9f-pP-yFR"/>
                             <constraint firstItem="D4x-eT-4Qz" firstAttribute="leading" secondItem="fRX-5m-Qli" secondAttribute="leading" id="OXn-SA-2Yy"/>
-                            <constraint firstItem="t8Y-Yf-LYM" firstAttribute="top" secondItem="zEy-QK-OAM" secondAttribute="bottom" constant="70" id="c0Y-01-njn"/>
                             <constraint firstItem="782-2F-nGn" firstAttribute="top" secondItem="fRX-5m-Qli" secondAttribute="top" id="eRh-Dn-wqA"/>
-                            <constraint firstItem="D4x-eT-4Qz" firstAttribute="centerX" secondItem="fRX-5m-Qli" secondAttribute="centerX" id="ev2-eC-api"/>
+                            <constraint firstItem="t8Y-Yf-LYM" firstAttribute="top" secondItem="zEy-QK-OAM" secondAttribute="bottom" constant="40" id="fSu-2s-CIy"/>
                             <constraint firstItem="t8Y-Yf-LYM" firstAttribute="top" secondItem="D4x-eT-4Qz" secondAttribute="bottom" id="o7p-v6-jQE"/>
                             <constraint firstAttribute="trailing" secondItem="D4x-eT-4Qz" secondAttribute="trailing" id="y6g-ic-bsd"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lineView" destination="PsT-Z8-WmT" id="4Jk-qp-SEP"/>
+                        <outlet property="scrollView" destination="D4x-eT-4Qz" id="YoC-Tg-pfK"/>
                         <outlet property="tokenAddressTextField" destination="Lga-b5-dmK" id="7AJ-97-HaS"/>
                     </connections>
                 </viewController>
