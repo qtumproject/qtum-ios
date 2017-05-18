@@ -24,6 +24,7 @@
 @class RecieveViewController;
 @class HistoryItemViewController;
 @class TabBarCoordinator;
+@class AddNewTokensViewController;
 
 
 @interface ControllersFactory : NSObject
@@ -49,6 +50,7 @@
 -(AuthNavigationController*)createAuthNavigationController;
 -(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
 -(SubscribeTokenViewController*)createSubscribeTokenViewController;
+-(AddNewTokensViewController*)createAddNewTokenViewController;
 -(CreateTokenStep3ViewController*)createCreateTokenStep3ViewController;
 -(CreateTokenStep2ViewController*)createCreateTokenStep2ViewController;
 -(CreateTokenStep1ViewController*)createCreateTokenStep1ViewController;

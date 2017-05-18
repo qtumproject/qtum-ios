@@ -9,11 +9,12 @@
 #import "SubscribeTokenCoordinator.h"
 #import "SubscribeTokenViewController.h"
 #import "SubscribeTokenDataSourceDelegate.h"
+#import "AddNewTokensViewController.h"
 
 @interface SubscribeTokenCoordinator ()
 
 @property (strong, nonatomic) UINavigationController* navigationController;
-@property (weak, nonatomic) SubscribeTokenViewController* subscribeViewController;
+@property (weak, nonatomic) AddNewTokensViewController* addNewTokenViewController;
 
 @end
 
@@ -30,12 +31,10 @@
 #pragma mark - Coordinatorable
 
 -(void)start{
-    SubscribeTokenViewController* controller = (SubscribeTokenViewController*)[[ControllersFactory sharedInstance] createSubscribeTokenViewController];
+    AddNewTokensViewController* controller = (AddNewTokensViewController*)[[ControllersFactory sharedInstance] createAddNewTokenViewController];
     [self.navigationController pushViewController:controller animated:YES];
     controller.delegate = self;
-    controller.delegateDataSource = [SubscribeTokenDataSourceDelegate new];
-    controller.delegateDataSource.tokensArray = (NSArray <Spendable>*)[[TokenManager sharedInstance] gatAllTokens];
-    self.subscribeViewController = controller;
+    self.addNewTokenViewController = controller;
 }
 
 #pragma mark - SubscribeTokenCoordinatorDelegate

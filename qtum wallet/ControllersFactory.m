@@ -29,6 +29,7 @@
 #import "WalletNavigationController.h"
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
+#import "AddNewTokensViewController.h"
 
 
 @implementation ControllersFactory
@@ -122,6 +123,11 @@
 
 -(SubscribeTokenViewController*)createSubscribeTokenViewController{
     SubscribeTokenViewController* controller = (SubscribeTokenViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
+    return controller;
+}
+
+-(AddNewTokensViewController*)createAddNewTokenViewController{
+    AddNewTokensViewController* controller = (AddNewTokensViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"AddNewTokens"];
     return controller;
 }
 
