@@ -9,6 +9,7 @@
 #import "ContractManager.h"
 #import "InterfaceInputFormModel.h"
 #import "ContractFileManager.h"
+#import "ContractArgumentsInterpretator.h"
 
 @implementation ContractManager
 
@@ -36,6 +37,20 @@
     
     InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[ContractFileManager getAbiFromBundle]];
     return interphase;
+}
+
+- (NSData*)getStandartTokenBitecodeWithParam:(NSDictionary*) args{
+    
+    NSMutableData* contractSource = [[ContractFileManager getBitcodeFromBundle] mutableCopy];
+    [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromDictionary:args]];
+    return [contractSource copy];
+}
+
+- (NSData*)getStandartTokenBitecodeWithArray:(NSArray*) args{
+    
+    NSMutableData* contractSource = [[ContractFileManager getBitcodeFromBundle] mutableCopy];
+    [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromArray:args]];
+    return [contractSource copy];
 }
 
 

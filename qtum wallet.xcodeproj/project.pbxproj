@@ -39,6 +39,8 @@
 		B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E11ECCC2D50081260A /* CustomAbiInterphaseViewController.m */; };
 		B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E51ECCC2FF0081260A /* AbiTextFieldWithLine.m */; };
 		B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E81ECCC4A20081260A /* FinishInputCell.m */; };
+		B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */; };
+		B32B32EE1ECDB3070081260A /* source-contract in Resources */ = {isa = PBXBuildFile; fileRef = B32B32ED1ECDB3070081260A /* source-contract */; };
 		B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */; };
 		B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEF1E11220E0094C82C /* UIViewController+Extension.m */; };
 		B32C3CF31E1126200094C82C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CF21E1126200094C82C /* TabBarController.m */; };
@@ -267,6 +269,9 @@
 		B32B32E51ECCC2FF0081260A /* AbiTextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiTextFieldWithLine.m; sourceTree = "<group>"; };
 		B32B32E71ECCC4A20081260A /* FinishInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishInputCell.h; sourceTree = "<group>"; };
 		B32B32E81ECCC4A20081260A /* FinishInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishInputCell.m; sourceTree = "<group>"; };
+		B32B32EA1ECD7B240081260A /* ContractArgumentsInterpretator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractArgumentsInterpretator.h; sourceTree = "<group>"; };
+		B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractArgumentsInterpretator.m; sourceTree = "<group>"; };
+		B32B32ED1ECDB3070081260A /* source-contract */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "source-contract"; sourceTree = "<group>"; };
 		B32C3CEB1E1120C50094C82C /* NSObject+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+Extension.h"; path = "Categories/NSObject+Extension.h"; sourceTree = "<group>"; };
 		B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Extension.m"; path = "Categories/NSObject+Extension.m"; sourceTree = "<group>"; };
 		B32C3CEE1E11220E0094C82C /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Extension.h"; path = "Categories/UIViewController+Extension.h"; sourceTree = "<group>"; };
@@ -1212,6 +1217,8 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B32B32EA1ECD7B240081260A /* ContractArgumentsInterpretator.h */,
+				B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */,
 				B32B32DB1ECCC2C70081260A /* ContractFileManager.h */,
 				B32B32DC1ECCC2C70081260A /* ContractFileManager.m */,
 				B32B32CC1ECCC2330081260A /* ContractManager.h */,
@@ -1241,6 +1248,7 @@
 				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
 				E7FD363C1DC4D07E00748177 /* main.m */,
 				B32B32C41ECCC1990081260A /* bitecode-contract */,
+				B32B32ED1ECDB3070081260A /* source-contract */,
 				B32B32C21ECCC1920081260A /* abi-contract */,
 				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
 				E7FD364C1DC4D07E00748177 /* Info.plist */,
@@ -1563,6 +1571,7 @@
 				B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
+				B32B32EE1ECDB3070081260A /* source-contract in Resources */,
 				B385B5AA1E6DA3DD003BB96C /* WalletTypeCollectionCell.xib in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */,
 				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
@@ -1708,6 +1717,7 @@
 				B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
 				B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */,
+				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
 				B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */,
 				B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */,
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,

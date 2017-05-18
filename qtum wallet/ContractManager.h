@@ -13,6 +13,8 @@
 @interface ContractManager : NSObject
 
 - (InterfaceInputFormModel*)getStandartTokenIntephase;
+- (NSData*)getStandartTokenBitecodeWithParam:(NSDictionary*) args;
+- (NSData*)getStandartTokenBitecodeWithArray:(NSArray*) args;
 
 + (instancetype)sharedInstance;
 

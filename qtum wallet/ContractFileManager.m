@@ -7,6 +7,8 @@
 //
 
 #import "ContractFileManager.h"
+#import "NSData+Extension.h"
+#import "NSString+Extension.h"
 
 @implementation ContractFileManager
 
@@ -21,14 +23,15 @@
 +(NSString*)getContractFromBundle{
     
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"source-contract"];
-    NSString *contract = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];;
+    NSString *contract = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     return contract;
 }
 
 +(NSData*)getBitcodeFromBundle{
     
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"bitecode-contract"];
-    NSData *bitecode = [NSData dataWithContentsOfFile:path];
+    NSString *contract = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSData *bitecode = [NSString dataFromHexString:contract];
     return bitecode;
 }
 
