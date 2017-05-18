@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (weak, nonatomic) AddNewTokensViewController* addNewTokenViewController;
+@property (weak, nonatomic) SubscribeTokenViewController* subscribeTokenViewController;
 
 @end
 
@@ -31,6 +32,15 @@
 #pragma mark - Coordinatorable
 
 -(void)start{
+    SubscribeTokenViewController* controller = (SubscribeTokenViewController*)[[ControllersFactory sharedInstance] createSubscribeTokenViewController];
+    [self.navigationController pushViewController:controller animated:YES];
+    controller.delegate = self;
+    controller.delegateDataSource = [SubscribeTokenDataSourceDelegate new];
+    controller.delegateDataSource.tokensArray = (NSArray <Spendable>*)[[TokenManager sharedInstance] gatAllTokens];
+    self.subscribeTokenViewController = controller;
+}
+
+-(void)showAddnewTokensViewController{
     AddNewTokensViewController* controller = (AddNewTokensViewController*)[[ControllersFactory sharedInstance] createAddNewTokenViewController];
     [self.navigationController pushViewController:controller animated:YES];
     controller.delegate = self;
@@ -41,6 +51,14 @@
 
 -(void)didBackButtonPressed{
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+-(void)didAddButtonPressed{
+    [self showAddnewTokensViewController];
+}
+
+-(void)didBackButtonPressedFromAddNewToken{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

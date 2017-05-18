@@ -20,6 +20,7 @@ const CGFloat TextFieldAlpha = 0.3f;
 
 - (IBAction)acitonBack:(id)sender;
 - (IBAction)actionAddTokens:(id)sender;
+- (IBAction)actionTap:(id)sender;
 
 @end
 
@@ -57,12 +58,17 @@ const CGFloat TextFieldAlpha = 0.3f;
 
 - (IBAction)acitonBack:(id)sender
 {
-    [self.delegate didBackButtonPressed];
+    [self.delegate didBackButtonPressedFromAddNewToken];
 }
 
 - (IBAction)actionAddTokens:(id)sender
 {
     
+}
+
+- (IBAction)actionTap:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 #pragma UITextFieldDelegate

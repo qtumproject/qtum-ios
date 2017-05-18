@@ -56,15 +56,25 @@
                                                     <action selector="actionBack:" destination="bpS-ul-0FJ" eventType="touchUpInside" id="kms-XA-itm"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cD-8S-7ok">
+                                                <rect key="frame" x="343" y="0.0" width="22" height="44"/>
+                                                <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="actionAddNew:" destination="bpS-ul-0FJ" eventType="touchUpInside" id="FIh-z7-jZB"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="jgl-bf-iTz" firstAttribute="top" secondItem="XBK-dk-Gdb" secondAttribute="top" id="5TZ-7f-skB"/>
                                             <constraint firstAttribute="bottom" secondItem="jgl-bf-iTz" secondAttribute="bottom" id="99Z-RS-yet"/>
+                                            <constraint firstAttribute="bottom" secondItem="6cD-8S-7ok" secondAttribute="bottom" id="9Bb-xb-gTv"/>
                                             <constraint firstItem="Zif-zY-tyq" firstAttribute="centerY" secondItem="XBK-dk-Gdb" secondAttribute="centerY" id="D8G-bz-dhR"/>
                                             <constraint firstItem="Zif-zY-tyq" firstAttribute="centerX" secondItem="XBK-dk-Gdb" secondAttribute="centerX" id="Sba-PL-uLs"/>
                                             <constraint firstItem="jgl-bf-iTz" firstAttribute="leading" secondItem="XBK-dk-Gdb" secondAttribute="leading" constant="3" id="aDp-OA-kZw"/>
+                                            <constraint firstAttribute="trailing" secondItem="6cD-8S-7ok" secondAttribute="trailing" constant="10" id="cfQ-uD-vao"/>
                                             <constraint firstAttribute="height" constant="44" id="ieW-tW-cFI"/>
+                                            <constraint firstItem="6cD-8S-7ok" firstAttribute="top" secondItem="XBK-dk-Gdb" secondAttribute="top" id="o2c-5F-ZmS"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -233,29 +243,29 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan QR Code" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mp0-5z-Nmd">
-                                        <rect key="frame" x="129" y="43" width="117" height="19.5"/>
+                                        <rect key="frame" x="129.5" y="43" width="117" height="19"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan_qr_code" translatesAutoresizingMaskIntoConstraints="NO" id="mKv-Kr-Khb">
-                                        <rect key="frame" x="131" y="92.5" width="112" height="83"/>
+                                        <rect key="frame" x="131" y="92" width="112" height="83"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Enter Token Address:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G7-cO-lIJ">
-                                        <rect key="frame" x="75" y="260.5" width="224" height="19.5"/>
+                                        <rect key="frame" x="75.5" y="260" width="224" height="19"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lga-b5-dmK" customClass="TextFieldWithLine">
-                                        <rect key="frame" x="15" y="310" width="345" height="20"/>
+                                        <rect key="frame" x="15" y="309" width="345" height="20"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                     </textField>
                                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PsT-Z8-WmT">
-                                        <rect key="frame" x="15" y="338" width="345" height="1"/>
+                                        <rect key="frame" x="15" y="337" width="345" height="1"/>
                                         <color key="backgroundColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="2l4-qm-vA0"/>
@@ -307,6 +317,9 @@
                             <constraint firstItem="t8Y-Yf-LYM" firstAttribute="top" secondItem="D4x-eT-4Qz" secondAttribute="bottom" id="o7p-v6-jQE"/>
                             <constraint firstAttribute="trailing" secondItem="D4x-eT-4Qz" secondAttribute="trailing" id="y6g-ic-bsd"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="iYV-aX-mok" appends="YES" id="Hrd-ag-0gY"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="lineView" destination="PsT-Z8-WmT" id="4Jk-qp-SEP"/>
@@ -315,6 +328,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuH-UR-AAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iYV-aX-mok">
+                    <connections>
+                        <action selector="actionTap:" destination="QEP-Jy-HQC" id="jtw-Uy-a8m"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1284" y="551.87406296851577"/>
         </scene>

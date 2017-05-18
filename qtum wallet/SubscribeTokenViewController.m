@@ -51,4 +51,8 @@
     [self.delegate didBackButtonPressed];
 }
 
+- (IBAction)actionAddNew:(id)sender
+{
+    [self.delegate didAddButtonPressed];
+}
 @end
