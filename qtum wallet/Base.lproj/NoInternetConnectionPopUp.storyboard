@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="simplonmono-medium.ttf">
+            <string>simplonmono-medium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="AEo-PG-Siw">
+            <objects>
+                <viewController id="u6g-sj-8vw" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sr9-z9-83F"/>
+                        <viewControllerLayoutGuide type="bottom" id="XnU-GG-lT6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BvD-YQ-B7y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NR0-Zm-OuA">
+                                <rect key="frame" x="59" y="174" width="257" height="149"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Internet Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrd-X7-7HQ">
+                                        <rect key="frame" x="28" y="22" width="201" height="18"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="15"/>
+                                        <color key="textColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzo-DJ-Wfe">
+                                        <rect key="frame" x="37.5" y="48" width="182.5" height="29"/>
+                                        <string key="text">Please check your network
+settings</string>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                                        <color key="textColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8a-Ou-1jd">
+                                        <rect key="frame" x="103.5" y="97" width="49" height="32"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="RETRY">
+                                            <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="o8a-Ou-1jd" secondAttribute="bottom" constant="20" id="20x-fr-9ua"/>
+                                    <constraint firstAttribute="trailing" secondItem="zrd-X7-7HQ" secondAttribute="trailing" constant="28" id="9rB-YW-YNk"/>
+                                    <constraint firstItem="o8a-Ou-1jd" firstAttribute="centerX" secondItem="NR0-Zm-OuA" secondAttribute="centerX" id="GHc-lB-STW"/>
+                                    <constraint firstItem="zrd-X7-7HQ" firstAttribute="top" secondItem="NR0-Zm-OuA" secondAttribute="top" constant="22" id="KjB-sl-nNT"/>
+                                    <constraint firstItem="nzo-DJ-Wfe" firstAttribute="top" secondItem="zrd-X7-7HQ" secondAttribute="bottom" constant="8" id="M9w-YX-yqA"/>
+                                    <constraint firstItem="nzo-DJ-Wfe" firstAttribute="centerX" secondItem="NR0-Zm-OuA" secondAttribute="centerX" id="Z28-Lx-cFO"/>
+                                    <constraint firstItem="zrd-X7-7HQ" firstAttribute="leading" secondItem="NR0-Zm-OuA" secondAttribute="leading" constant="28" id="gfh-q1-w0G"/>
+                                    <constraint firstItem="zrd-X7-7HQ" firstAttribute="centerX" secondItem="NR0-Zm-OuA" secondAttribute="centerX" id="qRg-0C-wkI"/>
+                                    <constraint firstItem="o8a-Ou-1jd" firstAttribute="top" secondItem="nzo-DJ-Wfe" secondAttribute="bottom" constant="20" id="tqm-4D-7UV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NR0-Zm-OuA" firstAttribute="centerY" secondItem="BvD-YQ-B7y" secondAttribute="centerY" constant="-85" id="YZm-OH-86b"/>
+                            <constraint firstItem="NR0-Zm-OuA" firstAttribute="centerX" secondItem="BvD-YQ-B7y" secondAttribute="centerX" id="f5w-Fe-Fe2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Clu-UW-tp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+</document>

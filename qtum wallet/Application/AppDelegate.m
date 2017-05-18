@@ -6,10 +6,10 @@
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
-
 #import "AppDelegate.h"
 #import "RPCRequestManager.h"
 #import "Appearance.h"
+#import "ContractManager.h"
 
 
 @interface AppDelegate ()
@@ -24,7 +24,10 @@
 //    [[WalletManager sharedInstance] removeAllWallets];
     [Appearance setUp];
     [[AppSettings sharedInstance] setup];
-    [[ApplicationCoordinator sharedInstance] start];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[ApplicationCoordinator sharedInstance] start];
+    });
 
 //     Send money for our wallet
 //    if ([[WalletManager sharedInstance] haveWallets]) {
@@ -35,6 +38,7 @@
 //        }];
 //    }
 //
+    [ContractManager sharedInstance];
     return YES;
 }
 

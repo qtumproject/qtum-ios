@@ -17,12 +17,10 @@
 @class AuthNavigationController;
 @class ExportWalletBrandKeyViewController;
 @class SubscribeTokenViewController;
-@class CreateTokenStep1ViewController;
-@class CreateTokenStep2ViewController;
-@class CreateTokenStep3ViewController;
-@class CreateTokenStep4ViewController;
 @class RecieveViewController;
 @class HistoryItemViewController;
+@class CustomAbiInterphaseViewController;
+@class CreateTokenFinishViewController;
 @class TabBarCoordinator;
 
 
@@ -49,12 +47,10 @@
 -(AuthNavigationController*)createAuthNavigationController;
 -(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
 -(SubscribeTokenViewController*)createSubscribeTokenViewController;
--(CreateTokenStep3ViewController*)createCreateTokenStep3ViewController;
--(CreateTokenStep2ViewController*)createCreateTokenStep2ViewController;
--(CreateTokenStep1ViewController*)createCreateTokenStep1ViewController;
--(CreateTokenStep4ViewController*)createCreateTokenStep4ViewController;
 -(RecieveViewController*)createRecieveViewController;
 -(HistoryItemViewController*)createHistoryItem;
+-(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
+-(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;
