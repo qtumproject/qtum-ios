@@ -24,6 +24,8 @@
 @class RecieveViewController;
 @class HistoryItemViewController;
 @class TabBarCoordinator;
+@class NoInternetConnectionPopUpViewController;
+@class PhotoLibraryPopUpViewController;
 
 
 @interface ControllersFactory : NSObject
@@ -55,6 +57,10 @@
 -(CreateTokenStep4ViewController*)createCreateTokenStep4ViewController;
 -(RecieveViewController*)createRecieveViewController;
 -(HistoryItemViewController*)createHistoryItem;
+
+// Pop ups
+-(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController;
+-(PhotoLibraryPopUpViewController*)createPhotoLibraryController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;
