@@ -15,5 +15,6 @@
 
 @optional
 -(instancetype)initWithViewController:(UIViewController*)viewController;
+-(instancetype)initWithPageViewController:(UIPageViewController*)pageViewController;
 
 @end

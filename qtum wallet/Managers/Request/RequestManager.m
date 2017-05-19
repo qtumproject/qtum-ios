@@ -28,7 +28,6 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 @property (strong,nonatomic) id <RequestManagerAdapter> adapter;
 @property (strong,nonatomic) SocketManager *socketManager;
 
-
 @end
 
 @implementation RequestManager

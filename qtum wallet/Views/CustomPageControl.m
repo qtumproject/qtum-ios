@@ -53,6 +53,7 @@
         if (dot == nil)
         {
             dot = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, view.frame.size.width, view.frame.size.height)];
+            dot.tintColor = self.tintColor;
             [view addSubview:dot];
         }
     }

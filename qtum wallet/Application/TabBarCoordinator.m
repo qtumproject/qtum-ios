@@ -63,6 +63,7 @@
         [self checkTabsController:controller];
     }
 }
+
 -(void)walletTabDidSelectedWithController:(UIViewController*)controller{
     
     if (!self.walletsAlreadyStarted) {

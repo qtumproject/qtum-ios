@@ -27,6 +27,9 @@
 #import "HistoryItemViewController.h"
 #import "CustomAbiInterphaseViewController.h"
 #import "CreateTokenFinishViewController.h"
+#import "BalancePageViewController.h"
+#import "MainViewController.h"
+#import "TokenListViewController.h"
 
 
 @implementation ControllersFactory
@@ -73,7 +76,8 @@
 
 
 -(UINavigationController*)walletFlowTab{
-    HistoryViewController* controller = (HistoryViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:nil];
+    BalancePageViewController* controller = [[BalancePageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    controller.view.backgroundColor = customBlackColor();
     WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:controller];
     return nav;
 }
@@ -133,6 +137,11 @@
     return controller;
 }
 
+-(MainViewController*)createMainViewController{
+    MainViewController* controller = (MainViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"MainViewController"];
+    return controller;
+}
+
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController{
     CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CustomAbiInterphaseViewController"];
     return controller;
@@ -140,6 +149,11 @@
 
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController{
     CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
+    return controller;
+}
+
+-(TokenListViewController*)createTokenListViewController{
+    TokenListViewController* controller = (TokenListViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenListViewController"];
     return controller;
 }
 

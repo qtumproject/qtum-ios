@@ -20,8 +20,10 @@
 - (void)viewWillAppear;
 - (void)showAddressInfo;
 - (void)pageDidChange:(NSInteger) page;
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
+- (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
+- (void)didDeselectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
 
 @end
 

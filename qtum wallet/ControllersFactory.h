@@ -21,8 +21,9 @@
 @class HistoryItemViewController;
 @class CustomAbiInterphaseViewController;
 @class CreateTokenFinishViewController;
+@class MainViewController;
+@class TokenListViewController;
 @class TabBarCoordinator;
-
 
 @interface ControllersFactory : NSObject
 
@@ -51,6 +52,8 @@
 -(HistoryItemViewController*)createHistoryItem;
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
+-(MainViewController*)createMainViewController;
+-(TokenListViewController*)createTokenListViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

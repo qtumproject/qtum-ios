@@ -1,17 +1,17 @@
 //
-//  WalletTypeCollectionCell.h
+//  WalletTypeCellWithCollection.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 06.03.17.
+//  Created by Никита Федоренко on 03.04.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "WalletTypeCollectionDataSourceDelegate.h"
+#import "WalletCoordinator.h"
 
-static NSString *WalletTypeCollectionCellIdentifire = @"WalletTypeCollectionCellIdentifire";
+static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIdentifire";
 
-@interface WalletTypeCollectionCell : UICollectionViewCell
+@interface WalletHeaderCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedValue;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
@@ -19,9 +19,6 @@ static NSString *WalletTypeCollectionCellIdentifire = @"WalletTypeCollectionCell
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressValueLabel;
 @property (weak, nonatomic) IBOutlet UIButton *showAddresButton;
-
-@property (weak, nonatomic) id <WalletCollectionCellDelegate> delegate;
-
--(void)configWithObject:(id) object;
+@property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 
 @end

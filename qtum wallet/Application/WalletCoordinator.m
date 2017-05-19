@@ -11,19 +11,21 @@
 #import "WalletHistoryDelegateDataSource.h"
 #import "TabBarCoordinator.h"
 #import "HistoryDataStorage.h"
-#import "WalletTypeCollectionDataSourceDelegate.h"
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
 #import "Spendable.h"
+#import "BalancePageViewController.h"
+#import "WalletNavigationController.h"
+#import "TokenListViewController.h"
 
 
 @interface WalletCoordinator ()
 
 @property (strong, nonatomic) UINavigationController* navigationController;
+@property (strong, nonatomic) BalancePageViewController* pageViewController;
 @property (weak, nonatomic) MainViewController* historyController;
 @property (strong, nonatomic) NSMutableArray <Spendable>* wallets;
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
-@property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 @property (assign, nonatomic) NSInteger pageHistoryNumber;
 @property (assign, nonatomic) NSInteger pageWallet;
@@ -31,7 +33,6 @@
 @property (assign,nonatomic)BOOL isNewDataLoaded;
 @property (assign,nonatomic)BOOL isBalanceLoaded;
 @property (assign,nonatomic)BOOL isHistoryLoaded;
-
 
 @end
 
@@ -56,19 +57,24 @@
 #pragma mark - Coordinatorable
 
 -(void)start{
-    MainViewController* controller = (MainViewController*)self.navigationController.viewControllers[0];
+    
+    MainViewController* controller = (MainViewController*)[[ControllersFactory sharedInstance] createMainViewController];
     controller.delegate = self;
     
     [self configWalletModels];
-    self.collectionDelegateDataSource = [WalletTypeCollectionDataSourceDelegate new];
-    self.collectionDelegateDataSource.wallets = self.wallets;
-    self.collectionDelegateDataSource.delegate = self;
     self.delegateDataSource = [WalletHistoryDelegateDataSource new];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
-    self.delegateDataSource.collectionDelegateDataSource = self.collectionDelegateDataSource;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
+    
+    TokenListViewController* tokenController = (TokenListViewController*)[[ControllersFactory sharedInstance] createTokenListViewController];
+    tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    tokenController.delegate = self;
+    controller.delegate = self;
+    
+    self.pageViewController = self.navigationController.viewControllers[0];
+    self.pageViewController.controllers = @[controller,tokenController];
 }
 
 #pragma mark - WalletCoordinatorDelegate
@@ -126,27 +132,34 @@
     [self.delegate createPaymentFromWalletScanWithDict:dict];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+- (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
     HistoryItemViewController* controller = (HistoryItemViewController*)[[ControllersFactory sharedInstance] createHistoryItem];
     controller.item = item;
     [self.navigationController pushViewController:controller animated:YES];
 }
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+- (void)didDeselectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
     
 }
+
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+    
+}
+
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+    
+}
+
 
 #pragma mark - Configuration
 
 -(void)configWalletModels{
     self.wallets = @[].mutableCopy;
     [self.wallets addObject:[WalletManager sharedInstance].getCurrentWallet];
-    [self.wallets addObjectsFromArray:[TokenManager sharedInstance].gatAllTokens];
+    //uncommend if need collection of tokens with wallets
+    //[self.wallets addObjectsFromArray:[TokenManager sharedInstance].gatAllTokens];
 }
 
 -(void)setWalletsToDelegates {
-    
-    self.collectionDelegateDataSource.wallets = self.wallets;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
 }
 

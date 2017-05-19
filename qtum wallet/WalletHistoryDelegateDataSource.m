@@ -9,8 +9,7 @@
 #import "WalletHistoryDelegateDataSource.h"
 #import "HistoryElement.h"
 #import "HistoryTableViewCell.h"
-#import "WalletTypeCollectionDataSourceDelegate.h"
-#import "WalletTypeCellWithCollection.h"
+#import "WalletHeaderCell.h"
 #import "HistoryHeaderVIew.h"
 
 @interface WalletHistoryDelegateDataSource ()
@@ -27,10 +26,14 @@ static NSInteger countOfSections = 2;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        WalletTypeCellWithCollection *cell = [tableView dequeueReusableCellWithIdentifier:WalletTypeCellWithCollectionIdentifire];
-        cell.collectionView.delegate = self.collectionDelegateDataSource;
-        cell.collectionView.dataSource = self.collectionDelegateDataSource;
-        [cell.collectionView reloadData];
+        WalletHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:WalletTypeCellWithCollectionIdentifire];
+        cell.delegate = self.delegate;
+        
+        cell.adressLabel.text = ([self.wallet isKindOfClass:[Token class]]) ? NSLocalizedString(@"Contract Address", "") : NSLocalizedString(@"QTUM Address", "");
+        cell.adressValueLabel.text = self.wallet.mainAddress;
+        cell.valueLabel.text = [NSString stringWithFormat:@"%f",self.wallet.balance];
+        cell.typeWalletLabel.text = self.wallet.symbol;
+        cell.unconfirmedValue.text = [NSString stringWithFormat:@"%f",self.wallet.unconfirmedBalance];
         return cell;
     } else {
         HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCell"];
@@ -125,11 +128,11 @@ static NSInteger countOfSections = 2;
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.delegate tableView:tableView didSelectRowAtIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
+    [self.delegate didSelectHistoryItemIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.delegate tableView:tableView didDeselectRowAtIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
+    [self.delegate didDeselectHistoryItemIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
 }
 
 
