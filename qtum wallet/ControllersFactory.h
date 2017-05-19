@@ -24,6 +24,7 @@
 @class TabBarCoordinator;
 @class NoInternetConnectionPopUpViewController;
 @class PhotoLibraryPopUpViewController;
+@class TokenDetailsViewController;
 
 
 @interface ControllersFactory : NSObject
@@ -53,6 +54,7 @@
 -(HistoryItemViewController*)createHistoryItem;
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
+-(TokenDetailsViewController*)createTokenDetailsViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController;

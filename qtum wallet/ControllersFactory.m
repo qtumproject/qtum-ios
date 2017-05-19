@@ -29,6 +29,7 @@
 #import "PhotoLibraryPopUpViewController.h"
 #import "CustomAbiInterphaseViewController.h"
 #import "CreateTokenFinishViewController.h"
+#import "TokenDetailsViewController.h"
 
 
 @implementation ControllersFactory
@@ -142,6 +143,11 @@
 
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController{
     CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
+    return controller;
+}
+
+-(TokenDetailsViewController *)createTokenDetailsViewController{
+    TokenDetailsViewController* controller = (TokenDetailsViewController*)[UIViewController controllerInStoryboard:@"TokenDetails" withIdentifire:@"TokenDetails"];
     return controller;
 }
 

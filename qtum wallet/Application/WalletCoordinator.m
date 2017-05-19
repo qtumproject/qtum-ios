@@ -15,6 +15,8 @@
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
 #import "Spendable.h"
+#import "TokenDetailsViewController.h"
+#import "TokenDetailsTableSource.h"
 
 
 @interface WalletCoordinator ()
@@ -32,6 +34,8 @@
 @property (assign,nonatomic)BOOL isBalanceLoaded;
 @property (assign,nonatomic)BOOL isHistoryLoaded;
 
+@property (weak, nonatomic) TokenDetailsViewController *tokenDetailsViewController;
+@property (strong, nonatomic) TokenDetailsTableSource *tokenDetailsTableSource;
 
 @end
 
@@ -78,8 +82,16 @@
 }
 
 -(void)showAddressInfo{
-    RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
-    vc.wallet = self.wallets[self.pageWallet];
+//    RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
+//    vc.wallet = self.wallets[self.pageWallet];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
+    self.tokenDetailsViewController = vc;
+    self.tokenDetailsTableSource = [TokenDetailsTableSource new];
+    vc.delegate = self;
+    [vc setTableSource:self.tokenDetailsTableSource];
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -216,6 +228,10 @@
     [self configWalletModels];
     [self setWalletsToDelegates];
     [self updateSpendables];
+}
+
+- (void)didBackPressed{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
