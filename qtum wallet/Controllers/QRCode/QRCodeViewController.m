@@ -76,6 +76,10 @@
 
 - (IBAction)backButtonWasPressed:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if ([self.delegate respondsToSelector:@selector(backButtonPressed)]) {
+        [self.delegate backButtonPressed];
+    }else{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 @end

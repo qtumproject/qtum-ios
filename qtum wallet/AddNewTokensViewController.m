@@ -15,12 +15,12 @@ const CGFloat TextFieldAlpha = 0.3f;
 @interface AddNewTokensViewController () <UITextFieldDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenAddressTextField;
-@property (weak, nonatomic) IBOutlet UIView *lineView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)acitonBack:(id)sender;
 - (IBAction)actionAddTokens:(id)sender;
 - (IBAction)actionTap:(id)sender;
+- (IBAction)actionScan:(id)sender;
 
 @end
 
@@ -71,23 +71,12 @@ const CGFloat TextFieldAlpha = 0.3f;
     [self.view endEditing:YES];
 }
 
+- (IBAction)actionScan:(id)sender
+{
+    [self.delegate didScanButtonPressed];
+}
+
 #pragma UITextFieldDelegate
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    self.lineView.alpha = 1.0f;
-    self.tokenAddressTextField.alpha = 1.0f;
-    
-    return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if ([textField.text isEqualToString: @""]) {
-        self.lineView.alpha = TextFieldAlpha;
-        self.tokenAddressTextField.alpha = TextFieldAlpha;
-    }
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

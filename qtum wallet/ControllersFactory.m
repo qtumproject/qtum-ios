@@ -30,6 +30,7 @@
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
 #import "AddNewTokensViewController.h"
+#import "QRCodeViewController.h"
 
 
 @implementation ControllersFactory
@@ -158,6 +159,11 @@
 
 -(HistoryItemViewController*)createHistoryItem{
     HistoryItemViewController* controller = (HistoryItemViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"HistoryItemViewController"];
+    return controller;
+}
+
+-(QRCodeViewController *)createQRCodeViewController{
+    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"QRCodeViewController"];
     return controller;
 }
 

@@ -14,7 +14,9 @@
 - (void)qrCodeScanned:(NSDictionary *)dictionary;
 
 @optional
+
 - (void)showNextVC;
+- (void)backButtonPressed;
 
 @end
 

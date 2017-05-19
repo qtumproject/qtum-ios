@@ -10,12 +10,14 @@
 #import "SubscribeTokenViewController.h"
 #import "SubscribeTokenDataSourceDelegate.h"
 #import "AddNewTokensViewController.h"
+#import "QRCodeViewController.h"
 
-@interface SubscribeTokenCoordinator ()
+@interface SubscribeTokenCoordinator () <QRCodeViewControllerDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (weak, nonatomic) AddNewTokensViewController* addNewTokenViewController;
 @property (weak, nonatomic) SubscribeTokenViewController* subscribeTokenViewController;
+@property (weak, nonatomic) QRCodeViewController* qrCodeViewController;
 
 @end
 
@@ -47,6 +49,13 @@
     self.addNewTokenViewController = controller;
 }
 
+-(void)showScanViewController{
+    QRCodeViewController *controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewController];
+    [self.navigationController pushViewController:controller animated:YES];
+    controller.delegate = self;
+    self.qrCodeViewController = controller;
+}
+
 #pragma mark - SubscribeTokenCoordinatorDelegate
 
 -(void)didBackButtonPressed{
@@ -57,7 +66,21 @@
     [self showAddnewTokensViewController];
 }
 
+-(void)didScanButtonPressed{
+    [self showScanViewController];
+}
+
 -(void)didBackButtonPressedFromAddNewToken{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - QRCodeViewControllerDelegate
+
+- (void)qrCodeScanned:(NSDictionary *)dictionary{
+    [self.navigationController popToViewController:self.subscribeTokenViewController animated:YES];
+}
+
+- (void)backButtonPressed{
     [self.navigationController popViewControllerAnimated:YES];
 }
 

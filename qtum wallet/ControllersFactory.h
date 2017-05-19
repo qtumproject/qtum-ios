@@ -25,6 +25,7 @@
 @class HistoryItemViewController;
 @class TabBarCoordinator;
 @class AddNewTokensViewController;
+@class QRCodeViewController;
 
 
 @interface ControllersFactory : NSObject
@@ -57,6 +58,7 @@
 -(CreateTokenStep4ViewController*)createCreateTokenStep4ViewController;
 -(RecieveViewController*)createRecieveViewController;
 -(HistoryItemViewController*)createHistoryItem;
+-(QRCodeViewController*)createQRCodeViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

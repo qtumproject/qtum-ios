@@ -243,50 +243,44 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan QR Code" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mp0-5z-Nmd">
-                                        <rect key="frame" x="129.5" y="43" width="117" height="19"/>
+                                        <rect key="frame" x="129" y="43" width="117" height="19"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan_qr_code" translatesAutoresizingMaskIntoConstraints="NO" id="mKv-Kr-Khb">
-                                        <rect key="frame" x="131" y="92" width="112" height="83"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Enter Token Address:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G7-cO-lIJ">
-                                        <rect key="frame" x="75.5" y="260" width="224" height="19"/>
+                                        <rect key="frame" x="76" y="260" width="224" height="19"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lga-b5-dmK" customClass="TextFieldWithLine">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lga-b5-dmK" customClass="TextFieldWithLine">
                                         <rect key="frame" x="15" y="309" width="345" height="20"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                     </textField>
-                                    <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PsT-Z8-WmT">
-                                        <rect key="frame" x="15" y="337" width="345" height="1"/>
-                                        <color key="backgroundColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="2l4-qm-vA0"/>
-                                        </constraints>
-                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CH-c2-QYM">
+                                        <rect key="frame" x="131.5" y="92" width="112" height="83"/>
+                                        <state key="normal" image="scan_qr_code"/>
+                                        <connections>
+                                            <action selector="actionScan:" destination="QEP-Jy-HQC" eventType="touchUpInside" id="Yi2-Mu-86S"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="PsT-Z8-WmT" firstAttribute="width" secondItem="Lga-b5-dmK" secondAttribute="width" id="3kV-vO-ovg"/>
-                                    <constraint firstAttribute="bottom" secondItem="PsT-Z8-WmT" secondAttribute="bottom" id="47q-ef-7sC"/>
+                                    <constraint firstItem="3G7-cO-lIJ" firstAttribute="top" secondItem="7CH-c2-QYM" secondAttribute="bottom" constant="85" id="43x-EK-OOh"/>
                                     <constraint firstItem="Lga-b5-dmK" firstAttribute="top" secondItem="3G7-cO-lIJ" secondAttribute="bottom" constant="30" id="6R0-aP-2IL"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lga-b5-dmK" secondAttribute="bottom" id="8ib-nk-ByC"/>
                                     <constraint firstItem="Mp0-5z-Nmd" firstAttribute="top" secondItem="D4x-eT-4Qz" secondAttribute="top" constant="43" id="CsC-t5-jrj"/>
                                     <constraint firstAttribute="trailing" secondItem="Lga-b5-dmK" secondAttribute="trailing" constant="15" id="DgL-tR-Lwm"/>
+                                    <constraint firstItem="7CH-c2-QYM" firstAttribute="top" secondItem="Mp0-5z-Nmd" secondAttribute="bottom" constant="30" id="OZG-uw-RzA"/>
                                     <constraint firstItem="3G7-cO-lIJ" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="Wov-Ay-eYY"/>
                                     <constraint firstItem="Lga-b5-dmK" firstAttribute="leading" secondItem="D4x-eT-4Qz" secondAttribute="leading" constant="15" id="dN2-Kk-jpo"/>
-                                    <constraint firstItem="mKv-Kr-Khb" firstAttribute="top" secondItem="Mp0-5z-Nmd" secondAttribute="bottom" constant="30" id="er7-zo-XhT"/>
+                                    <constraint firstItem="7CH-c2-QYM" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="ehp-Ry-nSg"/>
                                     <constraint firstItem="Mp0-5z-Nmd" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="fW9-DL-nzR"/>
-                                    <constraint firstItem="PsT-Z8-WmT" firstAttribute="top" secondItem="Lga-b5-dmK" secondAttribute="bottom" constant="8" id="g2Y-ap-qYZ"/>
-                                    <constraint firstItem="mKv-Kr-Khb" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="gGB-hT-mw2"/>
                                     <constraint firstItem="Lga-b5-dmK" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="kXi-Er-dIg"/>
-                                    <constraint firstItem="3G7-cO-lIJ" firstAttribute="top" secondItem="mKv-Kr-Khb" secondAttribute="bottom" constant="85" id="lXO-zC-w3Q"/>
-                                    <constraint firstItem="PsT-Z8-WmT" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="nZ6-W1-Yds"/>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEy-QK-OAM">
@@ -322,7 +316,6 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="lineView" destination="PsT-Z8-WmT" id="4Jk-qp-SEP"/>
                         <outlet property="scrollView" destination="D4x-eT-4Qz" id="YoC-Tg-pfK"/>
                         <outlet property="tokenAddressTextField" destination="Lga-b5-dmK" id="7AJ-97-HaS"/>
                     </connections>

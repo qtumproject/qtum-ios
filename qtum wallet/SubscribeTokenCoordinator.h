@@ -15,6 +15,7 @@
 -(void)didBackButtonPressed;
 -(void)didAddButtonPressed;
 -(void)didBackButtonPressedFromAddNewToken;
+-(void)didScanButtonPressed;
 
 @end
 
