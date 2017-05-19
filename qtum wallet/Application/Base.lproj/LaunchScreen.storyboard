@@ -21,25 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6nh-ee-OQv">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="OGr-Sq-AY3">
-                                <rect key="frame" x="130" y="253.5" width="115" height="100"/>
-                            </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_txt" translatesAutoresizingMaskIntoConstraints="NO" id="dFi-O5-UR9">
-                                <rect key="frame" x="140" y="374.5" width="95" height="25"/>
+                                <rect key="frame" x="130" y="208.5" width="115" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="6Wg-qF-0sM"/>
+                                    <constraint firstAttribute="height" constant="100" id="hqT-4C-AdS"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OGr-Sq-AY3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-30" id="Bwl-HF-Oxn"/>
-                            <constraint firstItem="6nh-ee-OQv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="HNG-Oj-RhR"/>
-                            <constraint firstItem="dFi-O5-UR9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KWt-GB-ry1"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="6nh-ee-OQv" secondAttribute="bottom" id="M2p-f3-0ch"/>
-                            <constraint firstAttribute="trailing" secondItem="6nh-ee-OQv" secondAttribute="trailing" id="Rq7-Vb-qfI"/>
-                            <constraint firstItem="6nh-ee-OQv" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="aFb-Az-Gs8"/>
-                            <constraint firstItem="dFi-O5-UR9" firstAttribute="top" secondItem="OGr-Sq-AY3" secondAttribute="bottom" constant="21" id="dMM-2j-03T"/>
+                            <constraint firstItem="OGr-Sq-AY3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-75" id="OUR-eC-GhK"/>
                             <constraint firstItem="OGr-Sq-AY3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xnX-Ck-tJT"/>
                         </constraints>
                     </view>
@@ -51,6 +43,5 @@
     </scenes>
     <resources>
         <image name="logo" width="115" height="100"/>
-        <image name="logo_txt" width="95" height="25"/>
     </resources>
 </document>

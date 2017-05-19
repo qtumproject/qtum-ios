@@ -11,47 +11,30 @@
 
 @interface BaseViewController ()
 
+
+
 @end
 
 @implementation BaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    if ([self conformsToProtocol:@protocol(ScrollableContentViewController)]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardFrameWillChange:)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardFrameWillChange:)
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-//- (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion
-//{
-//    if (flag) {
-//        CATransition *transition = [CATransition animation];
-//        transition.duration = 0.3;
-//        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//        transition.type = kCATransitionPush;
-//        transition.subtype = kCATransitionFromRight;
-//        [self.view.window.layer addAnimation:transition forKey:nil];
-//    }else{
-//        [super presentViewController:viewControllerToPresent animated:NO completion:completion];
-//    }
-//}
-//
-//- (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
-//{
-//    if (flag) {
-//        CATransition *transition = [CATransition animation];
-//        transition.duration = 0.3;
-//        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//        transition.type = kCATransitionPush;
-//        transition.subtype = kCATransitionFromLeft;
-//        [self.view.window.layer addAnimation:transition forKey:nil];
-//    }
-//    
-//    [super dismissViewControllerAnimated:NO completion:nil];
-//}
 
 #pragma mark - Alerts
 
@@ -79,6 +62,46 @@
                                                                          withActionHandler:nil];
     
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)keyboardFrameWillChange:(NSNotification *)sender {
+    
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    UIViewAnimationCurve curve = [[sender userInfo][UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    NSTimeInterval duration = [[sender userInfo][UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    UIViewAnimationOptions optionCurve = curve << 16;
+    
+    id <ScrollableContentViewController> scrollbaleSelf = (id<ScrollableContentViewController>)self;
+    UIScrollView *scrollView =  scrollbaleSelf.scrollView;
+    
+    CGRect keyboardRect = [self.view convertRect:end fromView:nil];
+    CGRect scrollViewRect = [self.view convertRect:scrollView.frame fromView:scrollView.superview];
+    
+    CGFloat scrollViewInsetDelta;
+    if (CGRectIntersectsRect(keyboardRect, self.view.frame) == YES)
+    scrollViewInsetDelta = CGRectIntersection(keyboardRect, scrollViewRect).size.height;
+    else
+    scrollViewInsetDelta = 0;
+    
+    void(^animations)() = ^{
+        
+        scrollView.contentInset = UIEdgeInsetsMake(scrollView.contentInset.top,
+                                                   scrollView.contentInset.left,
+                                                   scrollViewInsetDelta,
+                                                   scrollView.contentInset.right);
+        scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(scrollView.scrollIndicatorInsets.top,
+                                                            scrollView.scrollIndicatorInsets.left,
+                                                            scrollViewInsetDelta,
+                                                            scrollView.scrollIndicatorInsets.right);
+    };
+    
+    [UIView animateWithDuration:duration
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState|optionCurve
+                     animations:animations
+                     completion:NULL];
 }
 
 

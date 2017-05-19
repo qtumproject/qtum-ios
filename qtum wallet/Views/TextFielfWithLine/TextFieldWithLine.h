@@ -10,4 +10,6 @@
 
 @interface TextFieldWithLine : UITextField
 
+@property (nonatomic, assign) CGFloat currentHeight;
+
 @end

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ftx-vp-kcK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="euclidflexmedium.ttf">
+            <string>euclidflexmedium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="IMD-hM-aHs">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ftx-vp-kcK" customClass="SplashViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N5A-r1-5a0"/>
+                        <viewControllerLayoutGuide type="bottom" id="7SS-Vs-Vdg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ntL-kj-BMj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="8SM-cA-OmP" customClass="AnimatedLogoImageVIew">
+                                <rect key="frame" x="130" y="208.5" width="115" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="azK-au-FV0"/>
+                                    <constraint firstAttribute="height" constant="100" id="hnM-Pa-oNB"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMt-bJ-Wpi">
+                                <rect key="frame" x="146.5" y="344" width="82" height="33"/>
+                                <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="28"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait a few seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOn-Nw-sfa">
+                                <rect key="frame" x="116.5" y="603" width="142.5" height="14"/>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MOn-Nw-sfa" firstAttribute="centerX" secondItem="ntL-kj-BMj" secondAttribute="centerX" id="1mJ-dD-quG"/>
+                            <constraint firstItem="7SS-Vs-Vdg" firstAttribute="top" secondItem="MOn-Nw-sfa" secondAttribute="bottom" constant="50" id="7xT-uC-Bu2"/>
+                            <constraint firstItem="YMt-bJ-Wpi" firstAttribute="centerX" secondItem="ntL-kj-BMj" secondAttribute="centerX" id="Uc0-8j-T02"/>
+                            <constraint firstItem="8SM-cA-OmP" firstAttribute="centerY" secondItem="ntL-kj-BMj" secondAttribute="centerY" constant="-75" id="Uja-eE-bMV"/>
+                            <constraint firstItem="8SM-cA-OmP" firstAttribute="centerX" secondItem="ntL-kj-BMj" secondAttribute="centerX" id="lyR-iF-3m7"/>
+                            <constraint firstItem="YMt-bJ-Wpi" firstAttribute="top" secondItem="8SM-cA-OmP" secondAttribute="bottom" constant="35" id="xTm-oH-oUw"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="logoImageView" destination="8SM-cA-OmP" id="h09-zD-yBw"/>
+                        <outlet property="textLabel" destination="MOn-Nw-sfa" id="HKY-ch-BL7"/>
+                        <outlet property="titleLabel" destination="YMt-bJ-Wpi" id="z00-1Z-0dr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ugQ-TZ-6JC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="115" height="100"/>
+    </resources>
+</document>
