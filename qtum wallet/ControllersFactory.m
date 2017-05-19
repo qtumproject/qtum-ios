@@ -21,16 +21,15 @@
 #import "AuthNavigationController.h"
 #import "ExportWalletBrandKeyViewController.h"
 #import "SubscribeTokenViewController.h"
-#import "CreateTokenStep1ViewController.h"
-#import "CreateTokenStep2ViewController.h"
-#import "CreateTokenStep3ViewController.h"
-#import "CreateTokenStep4ViewController.h"
 #import "HistoryViewController.h"
 #import "WalletNavigationController.h"
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
 #import "NoInternetConnectionPopUpViewController.h"
 #import "PhotoLibraryPopUpViewController.h"
+#import "CustomAbiInterphaseViewController.h"
+#import "CreateTokenFinishViewController.h"
+
 
 @implementation ControllersFactory
 
@@ -126,26 +125,6 @@
     return controller;
 }
 
--(CreateTokenStep3ViewController*)createCreateTokenStep3ViewController{
-    CreateTokenStep3ViewController* controller = (CreateTokenStep3ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep3ViewController"];
-    return controller;
-}
-
--(CreateTokenStep2ViewController*)createCreateTokenStep2ViewController{
-    CreateTokenStep2ViewController* controller = (CreateTokenStep2ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep2ViewController"];
-    return controller;
-}
-
--(CreateTokenStep1ViewController*)createCreateTokenStep1ViewController{
-    CreateTokenStep1ViewController* controller = (CreateTokenStep1ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep1ViewController"];
-    return controller;
-}
-
--(CreateTokenStep4ViewController*)createCreateTokenStep4ViewController{
-    CreateTokenStep4ViewController* controller = (CreateTokenStep4ViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenStep4ViewController"];
-    return controller;
-}
-
 -(RecieveViewController*)createRecieveViewController{
     RecieveViewController* controller = (RecieveViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"RecieveViewController"];
     return controller;
@@ -153,6 +132,16 @@
 
 -(HistoryItemViewController*)createHistoryItem{
     HistoryItemViewController* controller = (HistoryItemViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"HistoryItemViewController"];
+    return controller;
+}
+
+-(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController{
+    CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CustomAbiInterphaseViewController"];
+    return controller;
+}
+
+-(CreateTokenFinishViewController*)createCreateTokenFinishViewController{
+    CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
     return controller;
 }
 
