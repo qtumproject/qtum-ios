@@ -25,6 +25,8 @@
 #import "WalletNavigationController.h"
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
+#import "NoInternetConnectionPopUpViewController.h"
+#import "PhotoLibraryPopUpViewController.h"
 #import "CustomAbiInterphaseViewController.h"
 #import "CreateTokenFinishViewController.h"
 
@@ -157,6 +159,18 @@
 
 -(UIViewController*)changePinFlowController{
     return nil;
+}
+
+#pragma mark - Pop ups
+
+-(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController{
+    NoInternetConnectionPopUpViewController* controller = (NoInternetConnectionPopUpViewController*)[UIViewController controllerInStoryboard:@"NoInternetConnectionPopUp" withIdentifire:@"NoInternetConnectionPopUp"];
+    return controller;
+}
+
+-(PhotoLibraryPopUpViewController*)createPhotoLibraryController{
+    PhotoLibraryPopUpViewController* controller = (PhotoLibraryPopUpViewController*)[UIViewController controllerInStoryboard:@"PhotoLibraryPopUp" withIdentifire:@"PhotoLibraryPopUp"];
+    return controller;
 }
 
 @end

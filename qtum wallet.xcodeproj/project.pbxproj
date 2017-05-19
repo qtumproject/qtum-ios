@@ -168,6 +168,11 @@
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
 		E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */; };
 		E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */; };
+		E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */; };
+		E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */; };
+		E7FA0CB91ECD914200702C4E /* PopUpsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB81ECD914200702C4E /* PopUpsManager.m */; };
+		E7FA0CBB1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FA0CBA1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard */; };
+		E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */; };
 		E7FD363D1DC4D07E00748177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363C1DC4D07E00748177 /* main.m */; };
 		E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363F1DC4D07E00748177 /* AppDelegate.m */; };
 		E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36441DC4D07E00748177 /* Main.storyboard */; };
@@ -522,6 +527,15 @@
 		E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCBlockchainInfo+QtumExplorer.m"; sourceTree = "<group>"; };
 		E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCRequestManager.h; sourceTree = "<group>"; };
 		E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCRequestManager.m; sourceTree = "<group>"; };
+		E7FA0CB11ECD80AF00702C4E /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
+		E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
+		E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewController.h; sourceTree = "<group>"; };
+		E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetConnectionPopUpViewController.m; sourceTree = "<group>"; };
+		E7FA0CB71ECD914200702C4E /* PopUpsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpsManager.h; sourceTree = "<group>"; };
+		E7FA0CB81ECD914200702C4E /* PopUpsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpsManager.m; sourceTree = "<group>"; };
+		E7FA0CBA1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoLibraryPopUp.storyboard; sourceTree = "<group>"; };
+		E7FA0CBC1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryPopUpViewController.h; sourceTree = "<group>"; };
+		E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryPopUpViewController.m; sourceTree = "<group>"; };
 		E7FD36381DC4D07E00748177 /* qtum wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "qtum wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FD363C1DC4D07E00748177 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Application/main.m; sourceTree = "<group>"; };
 		E7FD363E1DC4D07E00748177 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1124,6 +1138,7 @@
 			isa = PBXGroup;
 			children = (
 				E73D9C831ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard */,
+				E7FA0CBA1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard */,
 			);
 			name = PopUp;
 			sourceTree = "<group>";
@@ -1192,6 +1207,21 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		E7FA0CB01ECD808200702C4E /* Pop Ups */ = {
+			isa = PBXGroup;
+			children = (
+				E7FA0CB71ECD914200702C4E /* PopUpsManager.h */,
+				E7FA0CB81ECD914200702C4E /* PopUpsManager.m */,
+				E7FA0CB11ECD80AF00702C4E /* PopUpViewController.h */,
+				E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */,
+				E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */,
+				E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */,
+				E7FA0CBC1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.h */,
+				E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */,
+			);
+			name = "Pop Ups";
+			sourceTree = "<group>";
+		};
 		E7FD362F1DC4D07E00748177 = {
 			isa = PBXGroup;
 			children = (
@@ -1217,6 +1247,7 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				E7FA0CB01ECD808200702C4E /* Pop Ups */,
 				B32B32EA1ECD7B240081260A /* ContractArgumentsInterpretator.h */,
 				B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */,
 				B32B32DB1ECCC2C70081260A /* ContractFileManager.h */,
@@ -1574,6 +1605,7 @@
 				B32B32EE1ECDB3070081260A /* source-contract in Resources */,
 				B385B5AA1E6DA3DD003BB96C /* WalletTypeCollectionCell.xib in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */,
+				E7FA0CBB1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard in Resources */,
 				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
@@ -1712,6 +1744,7 @@
 				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
 				B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */,
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
+				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
 				B3DD275D1E681A8B00BB0635 /* SendCoordinator.m in Sources */,
 				B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */,
@@ -1720,6 +1753,7 @@
 				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
 				B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */,
 				B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */,
+				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
@@ -1785,8 +1819,10 @@
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
+				E7FA0CB91ECD914200702C4E /* PopUpsManager.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,
+				E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				B384F3DF1EB9BF4A0075F1E8 /* NSBundle+Language.m in Sources */,

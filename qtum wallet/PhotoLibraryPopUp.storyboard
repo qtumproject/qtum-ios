@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="simplonmono-medium.ttf">
+            <string>simplonmono-medium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Photo Library Pop Up View Controller-->
+        <scene sceneID="tOM-J6-Cr3">
+            <objects>
+                <viewController storyboardIdentifier="PhotoLibraryPopUp" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pE1-0R-5pb" customClass="PhotoLibraryPopUpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j6k-8v-6Z3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qak-3L-Gvq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VQq-d1-eZi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wH0-Rw-I8U">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2YA-VQ-or6">
+                                <rect key="frame" x="63.5" y="165" width="248" height="167"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si1-7A-g3F">
+                                        <rect key="frame" x="28" y="22" width="192" height="36"/>
+                                        <string key="text">QTUM App Would Like
+to Access Your Photos </string>
+                                        <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="15"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMt-cb-j7M">
+                                        <rect key="frame" x="21.5" y="66" width="204.5" height="29"/>
+                                        <string key="text">QTUM App will only upload
+and share photos you choose.</string>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TM2-CQ-Byw">
+                                        <rect key="frame" x="173" y="115" width="30" height="32"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="okButtonWasPressed:" destination="pE1-0R-5pb" eventType="touchUpInside" id="NcC-jC-lTZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfA-Dl-4c9">
+                                        <rect key="frame" x="25" y="115" width="108" height="32"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="DON'T ALLOW">
+                                            <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dontAllowButtonWasPressed:" destination="pE1-0R-5pb" eventType="touchUpInside" id="Vs0-D8-yll"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="TM2-CQ-Byw" firstAttribute="top" secondItem="lMt-cb-j7M" secondAttribute="bottom" constant="20" id="C3J-NZ-Zk9"/>
+                                    <constraint firstItem="cfA-Dl-4c9" firstAttribute="centerY" secondItem="TM2-CQ-Byw" secondAttribute="centerY" id="Ms6-yy-DVF"/>
+                                    <constraint firstItem="Si1-7A-g3F" firstAttribute="leading" secondItem="2YA-VQ-or6" secondAttribute="leading" constant="28" id="Rxp-GN-Wvq"/>
+                                    <constraint firstAttribute="bottom" secondItem="TM2-CQ-Byw" secondAttribute="bottom" constant="20" id="Ub6-ha-07H"/>
+                                    <constraint firstItem="cfA-Dl-4c9" firstAttribute="leading" secondItem="2YA-VQ-or6" secondAttribute="leading" constant="25" id="csy-wy-FmL"/>
+                                    <constraint firstItem="lMt-cb-j7M" firstAttribute="centerX" secondItem="2YA-VQ-or6" secondAttribute="centerX" id="dzU-jV-ZH9"/>
+                                    <constraint firstAttribute="trailing" secondItem="TM2-CQ-Byw" secondAttribute="trailing" constant="45" id="fH5-Bl-2se"/>
+                                    <constraint firstItem="lMt-cb-j7M" firstAttribute="top" secondItem="Si1-7A-g3F" secondAttribute="bottom" constant="8" id="hWB-jZ-kL3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Si1-7A-g3F" secondAttribute="trailing" constant="28" id="iAP-rA-fxi"/>
+                                    <constraint firstItem="Si1-7A-g3F" firstAttribute="top" secondItem="2YA-VQ-or6" secondAttribute="top" constant="22" id="sg3-Lv-CbA"/>
+                                    <constraint firstItem="Si1-7A-g3F" firstAttribute="centerX" secondItem="2YA-VQ-or6" secondAttribute="centerX" id="txq-eb-aPY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qak-3L-Gvq" firstAttribute="top" secondItem="wH0-Rw-I8U" secondAttribute="bottom" id="BaL-l5-eeA"/>
+                            <constraint firstItem="wH0-Rw-I8U" firstAttribute="leading" secondItem="VQq-d1-eZi" secondAttribute="leading" id="LJM-mg-egD"/>
+                            <constraint firstAttribute="trailing" secondItem="wH0-Rw-I8U" secondAttribute="trailing" id="emP-lc-rfR"/>
+                            <constraint firstItem="2YA-VQ-or6" firstAttribute="centerX" secondItem="VQq-d1-eZi" secondAttribute="centerX" id="k6l-iW-ZoN"/>
+                            <constraint firstItem="2YA-VQ-or6" firstAttribute="centerY" secondItem="VQq-d1-eZi" secondAttribute="centerY" constant="-85" id="sPU-f8-wOy"/>
+                            <constraint firstItem="wH0-Rw-I8U" firstAttribute="top" secondItem="VQq-d1-eZi" secondAttribute="top" id="vtG-RI-gxX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lH7-a2-JYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+</document>
