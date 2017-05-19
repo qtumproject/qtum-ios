@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
+@property (strong,nonatomic) NSArray<ResultTokenCreateInputModel*>* inputs;
 
 @end
 
@@ -52,8 +53,20 @@
 -(void)showFinishStepWithInputs:(NSArray<ResultTokenCreateInputModel*>*) inputs{
     CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[[ControllersFactory sharedInstance] createCreateTokenFinishViewController];
     controller.delegate = self;
+    self.inputs = inputs;
     controller.inputs = inputs;
     [self.modalNavigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - Logic
+
+-(NSArray*)argsFromInputs{
+    
+    NSMutableArray* args = @[].mutableCopy;
+    for (ResultTokenCreateInputModel* input in self.inputs) {
+        [args addObject:input.value];
+    }
+    return [args copy];
 }
 
 
@@ -73,49 +86,26 @@
 }
 
 -(void)finishStepFinishDidPressed{
-    /*
-//    {
-//        "initialSupply": uint256,
-//        "tokenName": String
-//        "decimalUnits": uint8
-//        "tokenSymbol": String
-//    }
+
     __weak __typeof(self)weakSelf = self;
     [SVProgressHUD show];
-    [[ApplicationCoordinator sharedInstance].requestManager generateTokenBitcodeWithDict:@{@"initialSupply" : self.tokenSupply,
-                                                                                  @"tokenName" : self.tokenName,
-                                                                                  @"decimalUnits" : self.tokenUnits,
-                                                                                  @"tokenSymbol" : self.tokenSymbol
-                                                                                  }
-                                                             withSuccessHandler:^(id responseObject)
-    {
-        NSLog(@"  -->  %@",responseObject);
-         [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:[NSString dataFromHexString:responseObject[@"bytecode"]] andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
-             if (!error) {
-                 BTCTransactionInput* input = transaction.inputs[0];
-                 NSLog(@"%@",input.runTimeAddress);
-                 [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction];
-                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
-             } else {
-                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed", "")];
-                 NSLog(@"Failed Request");
-             }
-             [weakSelf.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
-
-         }];
-//         TransactionManager *transactionManager = [[TransactionManager alloc] initWith:array];
-//                                                                 [transactionManager sendSmartTransaction:[NSString dataFromHexString:responseObject[@"bytecode"]] withSuccess:^(NSData* address){
-//                                                                     NSLog(@"Succes");
-//                                                                 } andFailure:^(NSString *message) {
-//                                                                     NSLog(@"Failed");
-//                                                                 }];
-
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed", "")];
-        [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
-        NSLog(@"Failed Request");
+    
+    NSData* contractWithArgs = [[ContractManager sharedInstance] getStandartTokenBitecodeWithArray:[self argsFromInputs]];
+    
+    [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:contractWithArgs andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
+        if (!error) {
+            BTCTransactionInput* input = transaction.inputs[0];
+            NSLog(@"%@",input.runTimeAddress);
+            [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
+        } else {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed", "")];
+            NSLog(@"Failed Request");
+        }
+        [weakSelf.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
+        
     }];
-     */
+
     [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

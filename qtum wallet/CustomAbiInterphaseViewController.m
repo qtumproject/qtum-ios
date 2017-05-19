@@ -58,7 +58,7 @@
         if ([textField isKindOfClass:[AbiTextFieldWithLine class]]) {
             ResultTokenCreateInputModel* input = [ResultTokenCreateInputModel new];
             input.name = textField.item.name;
-            input.value = textField.text;
+            input.value = textField.item.type == StringType ? textField.text : @([textField.text integerValue]);
             [inputsData addObject:input];
         }
     }
