@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 22.11.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
 #import "BaseViewController.h"

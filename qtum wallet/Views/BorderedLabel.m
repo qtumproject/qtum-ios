@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Никита Федоренко on 23.12.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
 #import "BorderedLabel.h"
