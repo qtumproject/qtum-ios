@@ -27,6 +27,9 @@ static NSString *const ActivityTokenIdentifier = @"ActivityTokenTableViewCell";
 
 @interface TokenDetailsTableSource()
 
+@property (nonatomic, weak) UIView *headerForSecondSection;
+@property (nonatomic) CGFloat standartOffsetY;
+
 @end
 
 @implementation TokenDetailsTableSource
@@ -84,9 +87,28 @@ static NSString *const ActivityTokenIdentifier = @"ActivityTokenTableViewCell";
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 1) {
         UITableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:ActivityHeaderIdentifier];
+        self.headerForSecondSection = headerCell;
         return  headerCell;
     }
     return nil;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y == 0.0f) {
+        self.standartOffsetY = self.headerForSecondSection.frame.origin.y;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat headerY = self.headerForSecondSection.frame.origin.y - scrollView.contentOffset.y;
+    
+    if (scrollView.contentOffset.y > self.standartOffsetY) {
+        headerY = 0.0f;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(scrollViewDidScrollWithSecondSectionHeaderY:)]) {
+        [self.delegate scrollViewDidScrollWithSecondSectionHeaderY:headerY];
+    }
 }
 
 #pragma mark - Private methods
