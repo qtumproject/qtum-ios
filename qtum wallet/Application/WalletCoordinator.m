@@ -82,10 +82,12 @@
 }
 
 -(void)showAddressInfo{
-//    RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
-//    vc.wallet = self.wallets[self.pageWallet];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
+    RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
+    vc.wallet = self.wallets[self.pageWallet];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)showTokenDetails{
     TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
     self.tokenDetailsViewController = vc;
     self.tokenDetailsTableSource = [TokenDetailsTableSource new];

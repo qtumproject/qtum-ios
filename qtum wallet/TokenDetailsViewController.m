@@ -11,7 +11,6 @@
 #import "TokenDetailsTableSource.h"
 
 CGFloat const HeightForHeaderView = 50.0f;
-CGFloat const AnimationDuration = 0.2f;
 
 @interface TokenDetailsViewController () <TokenDetailsTableSourceDelegate>
 
@@ -67,9 +66,6 @@ CGFloat const AnimationDuration = 0.2f;
     }
     
     self.heightConsctaintForHeaderView.constant = HeightForHeaderView - headerY;
-//    [UIView animateWithDuration:AnimationDuration animations:^{
-//        [self.view layoutIfNeeded];
-//    }];
 }
 
 @end
