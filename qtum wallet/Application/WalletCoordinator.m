@@ -2,7 +2,7 @@
 //  WalletCoordinator.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 02.03.17.
+//  Created by Vladimir Lebedevich on 02.03.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -17,13 +17,20 @@
 #import "BalancePageViewController.h"
 #import "WalletNavigationController.h"
 #import "TokenListViewController.h"
-
+#import "TokenFunctionViewController.h"
+#import "ContractManager.h"
+#import "TokenFunctionDetailViewController.h"
+#import "ResultTokenInputsModel.h"
+#import "ContractArgumentsInterpretator.h"
+#import "NSString+Extension.h"
 
 @interface WalletCoordinator ()
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) BalancePageViewController* pageViewController;
 @property (weak, nonatomic) MainViewController* historyController;
+@property (weak, nonatomic) TokenListViewController* tokenController;
+@property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 @property (strong, nonatomic) NSMutableArray <Spendable>* wallets;
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
@@ -72,6 +79,7 @@
     tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
     tokenController.delegate = self;
     controller.delegate = self;
+    self.tokenController = tokenController;
     
     self.pageViewController = self.navigationController.viewControllers[0];
     self.pageViewController.controllers = @[controller,tokenController];
@@ -141,14 +149,43 @@
     
 }
 
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+    TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
+    controller.formModel = [[ContractManager sharedInstance] getStandartTokenIntephase];
+    controller.delegate = self;
+    controller.token = item;
+    [self.navigationController pushViewController:controller animated:true];
+}
+
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
     
 }
 
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token{
+    TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
+    controller.function = item;
+    controller.delegate = self;
+    controller.token = token;
+    self.functionDetailController = controller;
+    [self.navigationController pushViewController:controller animated:true];
+}
+
+- (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
     
 }
 
+- (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
+                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
+                       andToken:(Token*) token {
+    
+    NSString* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item andParam:inputs];
+    __weak __typeof(self)weakSelf = self;
+    [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
+        NSString* data = responseObject[@"items"][0][@"output"];
+        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:item];
+        [weakSelf.functionDetailController showResultViewWithOutputs:array];
+    }];
+}
 
 #pragma mark - Configuration
 
@@ -212,8 +249,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:kTokenDidChange object:nil];
 }
 
--(void)updateSpendables{
+-(void)updateSpendables {
     [self.historyController reloadTableView];
+    self.tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    [self.tokenController reloadTable];
 }
 
 -(void)updateBalance{

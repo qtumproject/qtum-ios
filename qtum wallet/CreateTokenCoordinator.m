@@ -2,7 +2,7 @@
 //  CreateTokenCoordinator.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 03.03.17.
+//  Created by Vladimir Lebedevich on 03.03.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
-@property (strong,nonatomic) NSArray<ResultTokenCreateInputModel*>* inputs;
+@property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
 
 @end
 
@@ -50,7 +50,7 @@
 
 #pragma mark - Private Methods 
 
--(void)showFinishStepWithInputs:(NSArray<ResultTokenCreateInputModel*>*) inputs{
+-(void)showFinishStepWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs{
     CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[[ControllersFactory sharedInstance] createCreateTokenFinishViewController];
     controller.delegate = self;
     self.inputs = inputs;
@@ -63,7 +63,7 @@
 -(NSArray*)argsFromInputs{
     
     NSMutableArray* args = @[].mutableCopy;
-    for (ResultTokenCreateInputModel* input in self.inputs) {
+    for (ResultTokenInputsModel* input in self.inputs) {
         [args addObject:input.value];
     }
     return [args copy];
@@ -76,7 +76,7 @@
     [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenCreateInputModel*>*) inputs {
+-(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs {
 
     [self showFinishStepWithInputs:inputs];
 }

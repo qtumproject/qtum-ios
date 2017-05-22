@@ -63,9 +63,10 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     if (!_requestManager) {
         AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.responseSerializer =  [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+       
         [manager.requestSerializer setTimeoutInterval:15];
         _requestManager = manager;
     }
@@ -268,6 +269,20 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
+    }];
+}
+
+- (void)callFunctionToContractAddress:(NSString*) address
+                           withHashes:(NSArray*) hashes
+                          withHandler:(void(^)(id responseObject))completesion {
+
+    NSString* pathString = [NSString stringWithFormat:@"/contracts/%@/call",address];
+
+
+    [self requestWithType:POST path:pathString andParams:@{@"hashes" : hashes} withSuccessHandler:^(id  _Nonnull responseObject) {
+        completesion(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        completesion(error);
     }];
 }
 

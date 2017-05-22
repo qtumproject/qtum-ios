@@ -2,7 +2,7 @@
 //  UIImage+Extension.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 05.05.17.
+//  Created by Vladimir Lebedevich on 05.05.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 

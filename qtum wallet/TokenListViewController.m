@@ -2,7 +2,7 @@
 //  TokenListViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 19.05.17.
+//  Created by Vladimir Lebedevich on 19.05.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -19,6 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView reloadData];
+}
+
+
+#pragma mark - Coordinator invocation
+
+-(void)reloadTable{
     [self.tableView reloadData];
 }
 

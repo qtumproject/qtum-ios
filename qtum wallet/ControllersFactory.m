@@ -2,7 +2,7 @@
 //  ControllersFactory.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 26.12.16.
+//  Created by Vladimir Lebedevich on 26.12.16.
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
@@ -30,6 +30,8 @@
 #import "BalancePageViewController.h"
 #import "MainViewController.h"
 #import "TokenListViewController.h"
+#import "TokenFunctionViewController.h"
+#import "TokenFunctionDetailViewController.h"
 
 
 @implementation ControllersFactory
@@ -156,6 +158,17 @@
     TokenListViewController* controller = (TokenListViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenListViewController"];
     return controller;
 }
+
+-(TokenFunctionViewController*)createTokenFunctionViewController{
+    TokenFunctionViewController* controller = (TokenFunctionViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenFunctionViewController"];
+    return controller;
+}
+
+-(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController{
+    TokenFunctionDetailViewController* controller = (TokenFunctionDetailViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenFunctionDetailViewController"];
+    return controller;
+}
+
 
 -(UIViewController*)createFlowNavigationCoordinator{
     return nil;

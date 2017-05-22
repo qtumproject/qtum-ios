@@ -2,7 +2,7 @@
 //  TokenManager.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 12.04.17.
+//  Created by Vladimir Lebedevich on 12.04.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -12,7 +12,6 @@
 extern NSString *const kTokenDidChange;
 
 @interface TokenManager : NSObject <Managerable>
-
 
 - (NSArray <Token*>*)gatAllTokens;
 - (void)addNewToken:(Token*) token;
