@@ -553,6 +553,20 @@
 		E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCBlockchainInfo+QtumExplorer.m"; sourceTree = "<group>"; };
 		E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCRequestManager.h; sourceTree = "<group>"; };
 		E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCRequestManager.m; sourceTree = "<group>"; };
+		E7EA2CA71ED4189A00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
+		E7EA2CA81ED4189B00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		E7EA2CA91ED4189B00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/NoInternetConnectionPopUp.strings"; sourceTree = "<group>"; };
+		E7EA2CAA1ED4189B00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Send.strings"; sourceTree = "<group>"; };
+		E7EA2CAB1ED4189B00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		E7EA2CAC1ED4189B00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/News.strings"; sourceTree = "<group>"; };
+		E7EA2CAD1ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Profile.strings"; sourceTree = "<group>"; };
+		E7EA2CAE1ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Wallet.strings"; sourceTree = "<group>"; };
+		E7EA2CAF1ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Pin.strings"; sourceTree = "<group>"; };
+		E7EA2CB01ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Start.strings"; sourceTree = "<group>"; };
+		E7EA2CB11ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CreateToken.strings"; sourceTree = "<group>"; };
+		E7EA2CB21ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SubscribeToken.strings"; sourceTree = "<group>"; };
+		E7EA2CB31ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Splash.strings"; sourceTree = "<group>"; };
+		E7EA2CB41ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E7FA0CB11ECD80AF00702C4E /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
 		E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
 		E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewController.h; sourceTree = "<group>"; };
@@ -1624,6 +1638,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = E7FD362F1DC4D07E00748177;
 			productRefGroup = E7FD36391DC4D07E00748177 /* Products */;
@@ -1956,6 +1971,7 @@
 			children = (
 				B32EEC691EB3545800512FED /* Base */,
 				B33BD5611EC4A9E60076B0C1 /* en */,
+				E7EA2CAA1ED4189B00AFD5D0 /* zh-Hant */,
 			);
 			name = Send.storyboard;
 			sourceTree = "<group>";
@@ -1965,6 +1981,7 @@
 			children = (
 				B32EEC6E1EB3546A00512FED /* Base */,
 				B33BD5591EC4A9AC0076B0C1 /* en */,
+				E7EA2CAC1ED4189B00AFD5D0 /* zh-Hant */,
 			);
 			name = News.storyboard;
 			sourceTree = "<group>";
@@ -1974,6 +1991,7 @@
 			children = (
 				B32EEC731EB3547700512FED /* Base */,
 				B33BD55B1EC4A9BC0076B0C1 /* en */,
+				E7EA2CAD1ED4189C00AFD5D0 /* zh-Hant */,
 			);
 			name = Profile.storyboard;
 			sourceTree = "<group>";
@@ -1983,6 +2001,7 @@
 			children = (
 				B32EEC781EB3548800512FED /* Base */,
 				B33BD55D1EC4A9C90076B0C1 /* en */,
+				E7EA2CAE1ED4189C00AFD5D0 /* zh-Hant */,
 			);
 			name = Wallet.storyboard;
 			sourceTree = "<group>";
@@ -1992,6 +2011,7 @@
 			children = (
 				B32EEC7D1EB3549400512FED /* Base */,
 				B33BD55F1EC4A9D70076B0C1 /* en */,
+				E7EA2CAF1ED4189C00AFD5D0 /* zh-Hant */,
 			);
 			name = Pin.storyboard;
 			sourceTree = "<group>";
@@ -2001,6 +2021,7 @@
 			children = (
 				B32EEC821EB354A100512FED /* Base */,
 				B33BD54D1EBCA11C0076B0C1 /* en */,
+				E7EA2CB01ED4189C00AFD5D0 /* zh-Hant */,
 			);
 			name = Start.storyboard;
 			sourceTree = "<group>";
@@ -2010,6 +2031,7 @@
 			children = (
 				B32EEC871EB354B300512FED /* Base */,
 				B33BD5631EC4A9F30076B0C1 /* en */,
+				E7EA2CB11ED4189C00AFD5D0 /* zh-Hant */,
 			);
 			name = CreateToken.storyboard;
 			sourceTree = "<group>";
@@ -2019,6 +2041,7 @@
 			children = (
 				B32EEC8C1EB354C200512FED /* Base */,
 				B33BD5651EC4A9FD0076B0C1 /* en */,
+				E7EA2CB21ED4189C00AFD5D0 /* zh-Hant */,
 			);
 			name = SubscribeToken.storyboard;
 			sourceTree = "<group>";
@@ -2028,6 +2051,7 @@
 			children = (
 				B32EEC9C1EB356DA00512FED /* en */,
 				B32EEC9E1EB356E100512FED /* Base */,
+				E7EA2CB41ED4189C00AFD5D0 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2036,6 +2060,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B33EAF901E5EC263006125F3 /* Base */,
+				E7EA2CA71ED4189A00AFD5D0 /* zh-Hant */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -2044,6 +2069,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E73D9C841ECB0D0D00A09CFE /* Base */,
+				E7EA2CA91ED4189B00AFD5D0 /* zh-Hant */,
 			);
 			name = NoInternetConnectionPopUp.storyboard;
 			sourceTree = "<group>";
@@ -2052,6 +2078,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E73D9C881ECB18A200A09CFE /* Base */,
+				E7EA2CB31ED4189C00AFD5D0 /* zh-Hant */,
 			);
 			name = Splash.storyboard;
 			sourceTree = "<group>";
@@ -2060,6 +2087,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E7FD36451DC4D07E00748177 /* Base */,
+				E7EA2CAB1ED4189B00AFD5D0 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			path = .;
@@ -2069,6 +2097,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E7FD364A1DC4D07E00748177 /* Base */,
+				E7EA2CA81ED4189B00AFD5D0 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			path = Application/.;
