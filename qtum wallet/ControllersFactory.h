@@ -25,6 +25,7 @@
 @class NoInternetConnectionPopUpViewController;
 @class PhotoLibraryPopUpViewController;
 @class TokenDetailsViewController;
+@class LanguageViewController;
 
 
 @interface ControllersFactory : NSObject
@@ -55,6 +56,7 @@
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
 -(TokenDetailsViewController*)createTokenDetailsViewController;
+-(LanguageViewController*)createLanguageViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController;

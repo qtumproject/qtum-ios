@@ -30,6 +30,7 @@
 #import "CustomAbiInterphaseViewController.h"
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
+#import "LanguageViewController.h"
 
 
 @implementation ControllersFactory
@@ -123,6 +124,11 @@
 
 -(SubscribeTokenViewController*)createSubscribeTokenViewController{
     SubscribeTokenViewController* controller = (SubscribeTokenViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
+    return controller;
+}
+
+-(LanguageViewController*)createLanguageViewController{
+    LanguageViewController* controller = (LanguageViewController*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"LanguageViewController"];
     return controller;
 }
 

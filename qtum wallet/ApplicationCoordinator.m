@@ -16,6 +16,8 @@
 #import "LoginCoordinator.h"
 #import "TabBarCoordinator.h"
 #import "RPCRequestManager.h"
+#import "LanguageCoordinator.h"
+#import "ProfileViewController.h"
 
 
 @interface ApplicationCoordinator ()
@@ -193,6 +195,17 @@
     UINavigationController* rootNavigation = [[UINavigationController alloc]initWithRootViewController:viewController];
     rootNavigation.navigationBar.hidden = YES;
     self.appDelegate.window.rootViewController = rootNavigation;
+}
+
+- (void)startChangedLanguageFlow{
+    [self startMainFlow];
+    NSInteger profileIndex = 1;
+    [self.tabCoordinator showControllerByIndex:profileIndex];
+    UINavigationController *vc = (UINavigationController *)[self.tabCoordinator getViewControllerByIndex:profileIndex];
+    ProfileViewController *profile = [vc.viewControllers objectAtIndex:0];
+    LanguageCoordinator *languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:vc];
+    [profile saveLanguageCoordinator:languageCoordinator];
+    [languageCoordinator startWithoutAnimation];
 }
 
 -(void)startAskPinFlow:(void(^)()) completesion{

@@ -30,5 +30,7 @@
 
 -(instancetype)initWithTabBarController:(TabBarController*)tabBarController;
 
+-(void)showControllerByIndex:(NSInteger)index;
+-(UIViewController *)getViewControllerByIndex:(NSInteger)index;
 
 @end

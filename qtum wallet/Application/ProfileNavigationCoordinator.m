@@ -8,12 +8,14 @@
 
 #import "ProfileNavigationCoordinator.h"
 #import "PinViewController.h"
+#import "LanguageViewController.h"
 
 @interface ProfileNavigationCoordinator () <PinCoordinator>
 
 @property (strong,nonatomic) NSString* pinNew;
 @property (strong,nonatomic) NSString* pinOld;
 @property (weak,nonatomic) PinViewController* pinController;
+@property (weak,nonatomic) LanguageViewController* languageController;
 
 @end
 
