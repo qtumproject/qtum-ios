@@ -13,6 +13,7 @@
 @interface InterfaceInputFormModel : NSObject
 
 @property (strong, nonatomic, readonly) NSMutableArray<AbiinterfaceItem*>* functionItems;
+@property (strong, nonatomic, readonly) NSMutableArray<AbiinterfaceItem*>* propertyItems;
 @property (strong, nonatomic, readonly) AbiinterfaceItem* constructorItem;
 
 -(instancetype)initWithAbi:(NSDictionary*) abi;

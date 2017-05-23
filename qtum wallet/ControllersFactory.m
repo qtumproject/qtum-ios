@@ -32,6 +32,7 @@
 #import "TokenListViewController.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
+#import "TemplateTokenViewController.h"
 
 
 @implementation ControllersFactory
@@ -166,6 +167,11 @@
 
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController{
     TokenFunctionDetailViewController* controller = (TokenFunctionDetailViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenFunctionDetailViewController"];
+    return controller;
+}
+
+-(TemplateTokenViewController*)createTemplateTokenViewController{
+    TemplateTokenViewController* controller = (TemplateTokenViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
     return controller;
 }
 

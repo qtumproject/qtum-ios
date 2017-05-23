@@ -24,6 +24,7 @@
 @property (weak, nonatomic)id <Managerable> manager;
 
 -(void)updateBalanceWithHandler:(void(^)(BOOL success)) complete;
+-(void)updateHandler:(void(^)(BOOL success)) complete;
 -(void)updateHistoryWithHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page;
 -(void)loadToMemory;
 -(void)historyDidChange;

@@ -17,7 +17,7 @@ extern NSString *const kTokenDidChange;
 - (void)addNewToken:(Token*) token;
 - (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance;
 - (void)checkSmartContract:(HistoryElement*) item;
-- (void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key;
+- (void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(NSString*)templateName;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

@@ -23,6 +23,7 @@
 #import "ResultTokenInputsModel.h"
 #import "ContractArgumentsInterpretator.h"
 #import "NSString+Extension.h"
+#import "TransactionManager.h"
 
 @interface WalletCoordinator ()
 
@@ -151,7 +152,7 @@
 
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
     TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-    controller.formModel = [[ContractManager sharedInstance] getStandartTokenIntephase];
+    controller.formModel = [[ContractManager sharedInstance] getTokenIntephaseWithTemplate:item.templateName];
     controller.delegate = self;
     controller.token = item;
     [self.navigationController pushViewController:controller animated:true];
@@ -178,12 +179,22 @@
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
                        andToken:(Token*) token {
     
-    NSString* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item andParam:inputs];
+    if (![item.name isEqualToString:@""]) {
+        NSString* hashFuction = [[ContractManager sharedInstance] getStringHashOfFunction:item andParam:inputs];
+        __weak __typeof(self)weakSelf = self;
+        [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
+            NSString* data = responseObject[@"items"][0][@"output"];
+            NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:item];
+            [weakSelf.functionDetailController showResultViewWithOutputs:array];
+        }];
+    } else {
+
+    }
+    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item andParam:inputs];
     __weak __typeof(self)weakSelf = self;
-    [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
-        NSString* data = responseObject[@"items"][0][@"output"];
-        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:item];
-        [weakSelf.functionDetailController showResultViewWithOutputs:array];
+    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+        
+        [weakSelf.functionDetailController showResultViewWithOutputs:nil];
     }];
 }
 

@@ -11,6 +11,7 @@
 
 @interface InterfaceInputFormModel ()
 
+@property (strong, nonatomic) NSMutableArray<AbiinterfaceItem*>* propertyItems;
 @property (strong, nonatomic) NSMutableArray<AbiinterfaceItem*>* functionItems;
 @property (strong, nonatomic) AbiinterfaceItem* constructorItem;
 
@@ -31,7 +32,9 @@
     
     for (NSDictionary* item in abi) {
         AbiinterfaceItem* abiItem = [[AbiinterfaceItem alloc] initWithObject:item];
-        if (abiItem.type == Function) {
+        if (abiItem.type == Function && abiItem.constant) {
+            [self.propertyItems addObject:abiItem];
+        } else if(abiItem.type == Function) {
             [self.functionItems addObject:abiItem];
         } else if(abiItem.type == Constructor) {
             self.constructorItem = abiItem;
@@ -47,6 +50,14 @@
         _functionItems = @[].mutableCopy;
     }
     return _functionItems;
+}
+
+-(NSArray<AbiinterfaceItem *> *)propertyItems {
+    
+    if (!_propertyItems) {
+        _propertyItems = @[].mutableCopy;
+    }
+    return _propertyItems;
 }
 
 @end

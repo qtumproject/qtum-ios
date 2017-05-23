@@ -15,6 +15,9 @@ NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
 
 static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
+static NSString* kTemplateName = @"kTemplateName";
+static NSString* kAddresses = @"kAddress";
+
 
 @interface TokenManager () <TokenDelegate>
 
@@ -123,9 +126,10 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
     [self.smartContractPretendents removeAllObjects];
 }
 
--(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key{
+-(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(NSString*)templateName{
     
-    [self.smartContractPretendents setObject:addresses forKey:key];
+    [self.smartContractPretendents setObject:@{kAddresses : addresses,
+                                               kTemplateName : templateName} forKey:key];
     [self save];
 }
 
@@ -142,11 +146,13 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
     
     if (item.confirmed && item.isSmartContractCreater) {
         NSString* key = item.txHash;
-        NSArray* tokenInfo = [self.smartContractPretendents objectForKey:key];
+        NSDictionary* tokenInfo = [self.smartContractPretendents objectForKey:key];
+        NSArray* addresses = tokenInfo[kAddresses];
+        NSString* templateName = tokenInfo[kTemplateName];
         
         if (tokenInfo) {
             Token* token = [Token new];
-            [token setupWithHashTransaction:key andAddresses:tokenInfo];
+            [token setupWithHashTransaction:key andAddresses:addresses andTokenTemplate:templateName];
             [self addNewToken:token];
             token.manager = self;
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
@@ -166,8 +172,18 @@ static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
 
 #pragma mark - Managerable
 
--(void)updateSpendableObject:(id <Spendable>) object {
-    
+-(void)updateSpendableObject:(Token*) object {
+    __weak __typeof(self)weakSelf = self;
+    [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : object.contractAddress} withSuccessHandler:^(id responseObject) {
+        object.decimals = responseObject[@"decimals"];
+        object.symbol = responseObject[@"symbol"];
+        object.name = responseObject[@"name"];
+        object.totalSupply = responseObject[@"totalSupply"];
+        object.balance = [responseObject[@"totalSupply"] floatValue];
+        [weakSelf tokenDidChange:object];
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        NSLog(@"Error -> %@", error);
+    }];
 }
 
 -(void)updateBalanceOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete {

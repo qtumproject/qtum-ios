@@ -25,6 +25,7 @@
 @class TokenListViewController;
 @class TokenFunctionViewController;
 @class TokenFunctionDetailViewController;
+@class TemplateTokenViewController;
 @class TabBarCoordinator;
 
 @interface ControllersFactory : NSObject
@@ -58,6 +59,7 @@
 -(TokenListViewController*)createTokenListViewController;
 -(TokenFunctionViewController*)createTokenFunctionViewController;
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
+-(TemplateTokenViewController*)createTemplateTokenViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

@@ -10,8 +10,13 @@
 
 @interface ContractFileManager : NSObject
 
-+(NSDictionary*)getAbiFromBundle;
-+(NSString*)getContractFromBundle;
-+(NSData*)getBitcodeFromBundle;
++(NSDictionary*)getAbiFromBundleWithTemplate:(NSString*) templateName;
+
++(NSString*)getContractFromBundleWithTemplate:(NSString*) templateName;
+
++(NSData*)getBitcodeFromBundleWithTemplate:(NSString*) templateName;
+
++(NSArray<NSString*>*)getAvailebaleTemplates;
+
 
 @end

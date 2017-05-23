@@ -25,8 +25,6 @@
 		B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
 		B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C471E1CD3FC00CD610B /* DiagramView.m */; };
 		B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */; };
-		B32B32C31ECCC1920081260A /* abi-contract in Resources */ = {isa = PBXBuildFile; fileRef = B32B32C21ECCC1920081260A /* abi-contract */; };
-		B32B32C51ECCC1990081260A /* bitecode-contract in Resources */ = {isa = PBXBuildFile; fileRef = B32B32C41ECCC1990081260A /* bitecode-contract */; };
 		B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */; };
 		B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CA1ECCC2130081260A /* ResultTokenInputsModel.m */; };
 		B32B32CE1ECCC2330081260A /* ContractManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CD1ECCC2330081260A /* ContractManager.m */; };
@@ -40,7 +38,6 @@
 		B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E51ECCC2FF0081260A /* AbiTextFieldWithLine.m */; };
 		B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E81ECCC4A20081260A /* FinishInputCell.m */; };
 		B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */; };
-		B32B32EE1ECDB3070081260A /* source-contract in Resources */ = {isa = PBXBuildFile; fileRef = B32B32ED1ECDB3070081260A /* source-contract */; };
 		B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */; };
 		B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEF1E11220E0094C82C /* UIViewController+Extension.m */; };
 		B32C3CF31E1126200094C82C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CF21E1126200094C82C /* TabBarController.m */; };
@@ -127,6 +124,12 @@
 		B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5ED1E16403B004D231B /* WalletNameViewController.m */; };
 		B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */; };
 		B3C08B151ED3382300713B15 /* keccak.c in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B141ED3382300713B15 /* keccak.c */; };
+		B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */; };
+		B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */; };
+		B3C08B1D1ED459BF00713B15 /* Standart in Resources */ = {isa = PBXBuildFile; fileRef = B3C08B1C1ED459BF00713B15 /* Standart */; };
+		B3C08B1F1ED45BB900713B15 /* Version1 in Resources */ = {isa = PBXBuildFile; fileRef = B3C08B1E1ED45BB900713B15 /* Version1 */; };
+		B3C08B211ED45BC100713B15 /* Version2 in Resources */ = {isa = PBXBuildFile; fileRef = B3C08B201ED45BC100713B15 /* Version2 */; };
+		B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */; };
 		B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
@@ -248,8 +251,6 @@
 		B3255C471E1CD3FC00CD610B /* DiagramView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramView.m; sourceTree = "<group>"; };
 		B3255C4A1E1CDD6500CD610B /* GradientViewWithAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientViewWithAnimation.h; sourceTree = "<group>"; };
 		B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientViewWithAnimation.m; sourceTree = "<group>"; };
-		B32B32C21ECCC1920081260A /* abi-contract */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "abi-contract"; sourceTree = "<group>"; };
-		B32B32C41ECCC1990081260A /* bitecode-contract */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bitecode-contract"; sourceTree = "<group>"; };
 		B32B32C61ECCC1F90081260A /* InterfaceInputFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceInputFormModel.h; sourceTree = "<group>"; };
 		B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceInputFormModel.m; sourceTree = "<group>"; };
 		B32B32C91ECCC2130081260A /* ResultTokenInputsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultTokenInputsModel.h; sourceTree = "<group>"; };
@@ -276,7 +277,6 @@
 		B32B32E81ECCC4A20081260A /* FinishInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishInputCell.m; sourceTree = "<group>"; };
 		B32B32EA1ECD7B240081260A /* ContractArgumentsInterpretator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractArgumentsInterpretator.h; sourceTree = "<group>"; };
 		B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractArgumentsInterpretator.m; sourceTree = "<group>"; };
-		B32B32ED1ECDB3070081260A /* source-contract */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "source-contract"; sourceTree = "<group>"; };
 		B32C3CEB1E1120C50094C82C /* NSObject+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+Extension.h"; path = "Categories/NSObject+Extension.h"; sourceTree = "<group>"; };
 		B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Extension.m"; path = "Categories/NSObject+Extension.m"; sourceTree = "<group>"; };
 		B32C3CEE1E11220E0094C82C /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Extension.h"; path = "Categories/UIViewController+Extension.h"; sourceTree = "<group>"; };
@@ -450,6 +450,15 @@
 		B3C08B0A1ED2FE3000713B15 /* NSString+SHA3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SHA3.h"; sourceTree = "<group>"; };
 		B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHA3.m"; sourceTree = "<group>"; };
 		B3C08B141ED3382300713B15 /* keccak.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = keccak.c; sourceTree = "<group>"; };
+		B3C08B161ED44DD900713B15 /* TemplateTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTokenViewController.h; sourceTree = "<group>"; };
+		B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTokenViewController.m; sourceTree = "<group>"; };
+		B3C08B191ED44E4200713B15 /* TokenTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenTemplateCell.h; sourceTree = "<group>"; };
+		B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenTemplateCell.m; sourceTree = "<group>"; };
+		B3C08B1C1ED459BF00713B15 /* Standart */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Standart; sourceTree = "<group>"; };
+		B3C08B1E1ED45BB900713B15 /* Version1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Version1; sourceTree = "<group>"; };
+		B3C08B201ED45BC100713B15 /* Version2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Version2; sourceTree = "<group>"; };
+		B3C08B231ED467DA00713B15 /* TokenPropertyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenPropertyCell.h; sourceTree = "<group>"; };
+		B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenPropertyCell.m; sourceTree = "<group>"; };
 		B3C4553D1E89596A00420D7C /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = Carthage/Build/iOS/SocketIO.framework; sourceTree = "<group>"; };
 		B3CB56AC1ECEE8B300B23AE9 /* BalancePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancePageViewController.h; sourceTree = "<group>"; };
 		B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancePageViewController.m; sourceTree = "<group>"; };
@@ -940,6 +949,8 @@
 				B3827DE31ECF5E8D00E500DE /* TokenFunctionCell.m */,
 				B3827DD71ECF28EE00E500DE /* TokenCell.h */,
 				B3827DD81ECF28EE00E500DE /* TokenCell.m */,
+				B3C08B231ED467DA00713B15 /* TokenPropertyCell.h */,
+				B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1014,8 +1025,20 @@
 				B3F06D021E699244006341F7 /* TockenCell.m */,
 				B32B32E71ECCC4A20081260A /* FinishInputCell.h */,
 				B32B32E81ECCC4A20081260A /* FinishInputCell.m */,
+				B3C08B191ED44E4200713B15 /* TokenTemplateCell.h */,
+				B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		B3C08B221ED45BCD00713B15 /* Tokens Templates */ = {
+			isa = PBXGroup;
+			children = (
+				B3C08B1C1ED459BF00713B15 /* Standart */,
+				B3C08B1E1ED45BB900713B15 /* Version1 */,
+				B3C08B201ED45BC100713B15 /* Version2 */,
+			);
+			name = "Tokens Templates";
 			sourceTree = "<group>";
 		};
 		B3F06D071E699371006341F7 /* Subscribe */ = {
@@ -1042,6 +1065,8 @@
 				B32B32DF1ECCC2D50081260A /* CreateTokenFinishViewController.m */,
 				B32B32E01ECCC2D50081260A /* CustomAbiInterphaseViewController.h */,
 				B32B32E11ECCC2D50081260A /* CustomAbiInterphaseViewController.m */,
+				B3C08B161ED44DD900713B15 /* TemplateTokenViewController.h */,
+				B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */,
 			);
 			name = "Create Token";
 			sourceTree = "<group>";
@@ -1300,9 +1325,7 @@
 				E7FD36471DC4D07E00748177 /* Assets.xcassets */,
 				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
 				E7FD363C1DC4D07E00748177 /* main.m */,
-				B32B32C41ECCC1990081260A /* bitecode-contract */,
-				B32B32ED1ECDB3070081260A /* source-contract */,
-				B32B32C21ECCC1920081260A /* abi-contract */,
+				B3C08B221ED45BCD00713B15 /* Tokens Templates */,
 				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
 				E7FD364C1DC4D07E00748177 /* Info.plist */,
 				E7FD365E1DC73B2400748177 /* Shared Views */,
@@ -1622,9 +1645,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */,
+				B3C08B1F1ED45BB900713B15 /* Version1 in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
-				B32B32EE1ECDB3070081260A /* source-contract in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */,
 				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
@@ -1634,7 +1657,6 @@
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				B32EEC661EB3545700512FED /* Send.storyboard in Resources */,
 				B32EEC7A1EB3549300512FED /* Pin.storyboard in Resources */,
-				B32B32C31ECCC1920081260A /* abi-contract in Resources */,
 				E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */,
 				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
@@ -1646,8 +1668,9 @@
 				B32EEC6B1EB3546800512FED /* News.storyboard in Resources */,
 				B32EEC7F1EB3549F00512FED /* Start.storyboard in Resources */,
 				E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */,
+				B3C08B1D1ED459BF00713B15 /* Standart in Resources */,
 				E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */,
-				B32B32C51ECCC1990081260A /* bitecode-contract in Resources */,
+				B3C08B211ED45BC100713B15 /* Version2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1773,6 +1796,7 @@
 				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
 				B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */,
 				B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */,
+				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
@@ -1829,12 +1853,14 @@
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
+				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
 				B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
+				B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */,
 				B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,

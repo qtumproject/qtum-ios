@@ -15,6 +15,8 @@
 #import "CustomAbiInterphaseViewController.h"
 #import "ContractManager.h"
 #import "CreateTokenFinishViewController.h"
+#import "TemplateTokenViewController.h"
+#import "ContractFileManager.h"
 
 
 @interface CreateTokenCoordinator ()
@@ -22,6 +24,7 @@
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
 @property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
+@property (strong,nonatomic) NSString* templateName;
 
 @end
 
@@ -39,16 +42,24 @@
 
 -(void)start {
     
-    CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[[ControllersFactory sharedInstance] createCustomAbiInterphaseViewController];
+    TemplateTokenViewController* controller = (TemplateTokenViewController*)[[ControllersFactory sharedInstance] createTemplateTokenViewController];
     controller.delegate = self;
-    
-    controller.formModel = [[ContractManager sharedInstance] getStandartTokenIntephase];
+    controller.templateNames = [ContractFileManager getAvailebaleTemplates];
     CreateTokenNavigationController* modal = [[CreateTokenNavigationController alloc] initWithRootViewController:controller];
     self.modalNavigationController = modal;
     [self.navigationController presentViewController:modal animated:YES completion:nil];
 }
 
 #pragma mark - Private Methods 
+
+-(void)showStepWithFieldsAndTemplate:(NSString*)template{
+    CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[[ControllersFactory sharedInstance] createCustomAbiInterphaseViewController];
+    controller.delegate = self;
+    
+    controller.formModel = [[ContractManager sharedInstance] getTokenIntephaseWithTemplate:self.templateName];
+
+    [self.modalNavigationController pushViewController:controller animated:YES];
+}
 
 -(void)showFinishStepWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs{
     CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[[ControllersFactory sharedInstance] createCreateTokenFinishViewController];
@@ -90,13 +101,13 @@
     __weak __typeof(self)weakSelf = self;
     [SVProgressHUD show];
     
-    NSData* contractWithArgs = [[ContractManager sharedInstance] getStandartTokenBitecodeWithArray:[self argsFromInputs]];
+    NSData* contractWithArgs = [[ContractManager sharedInstance] getTokenBitecodeWithTemplate:self.templateName andArray:[self argsFromInputs]];
     
     [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:contractWithArgs andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
         if (!error) {
             BTCTransactionInput* input = transaction.inputs[0];
             NSLog(@"%@",input.runTimeAddress);
-            [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction];
+            [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:self.templateName];
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
         } else {
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed", "")];
@@ -107,6 +118,11 @@
     }];
 
     [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(NSString*) templateName {
+    self.templateName = templateName;
+    [self showStepWithFieldsAndTemplate:templateName];
 }
 
 @end

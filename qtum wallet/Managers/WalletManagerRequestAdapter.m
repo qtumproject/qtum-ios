@@ -50,7 +50,7 @@
 
 #pragma mark - Adapters Methods
 
-- (NSArray *)createArray:(NSArray *)responseObject{
+- (NSArray <BTCTransactionOutput*>*)createArray:(NSArray *)responseObject{
     
     NSMutableArray* outputs = [NSMutableArray array];
     

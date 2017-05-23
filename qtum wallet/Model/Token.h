@@ -34,8 +34,9 @@
 @property (strong, nonatomic)NSArray* adresses;
 @property (strong, nonatomic)NSString* decimals;
 @property (strong, nonatomic)NSString* totalSupply;
+@property (strong, nonatomic)NSString* templateName;
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
--(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses;
+-(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(NSString*) templateName;
 
 @end

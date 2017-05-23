@@ -68,7 +68,7 @@
 #pragma mark - Actions
 
 - (IBAction)didPressedCancelAction:(id)sender {
-    [self.delegate createStepOneCancelDidPressed];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)didPressedNextAction:(id)sender {

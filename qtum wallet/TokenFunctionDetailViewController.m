@@ -79,6 +79,7 @@
     for (id output in outputs) {
         [result appendFormat:@"%@",output];
     }
+    
     self.result.text = result.length > 0 ? result : @"There is no output";
     self.result.hidden = NO;
     self.scrollView.hidden = YES;
@@ -90,6 +91,7 @@
 
 - (IBAction)didPressedCancelAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+    [self.token updateHandler:nil];
 }
 
 - (IBAction)didPressedCallAction:(id)sender {

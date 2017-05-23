@@ -17,6 +17,7 @@
 -(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs;
 -(void)finishStepFinishDidPressed;
 -(void)finishStepBackDidPressed;
+-(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(NSString*) templateName;
 
 @end
 

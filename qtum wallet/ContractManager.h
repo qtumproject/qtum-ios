@@ -14,10 +14,11 @@
 
 @interface ContractManager : NSObject
 
-- (InterfaceInputFormModel*)getStandartTokenIntephase;
-- (NSData*)getStandartTokenBitecodeWithParam:(NSDictionary*) args;
-- (NSData*)getStandartTokenBitecodeWithArray:(NSArray*) args;
-- (NSString*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem andParam:(NSArray<ResultTokenInputsModel*>*) inputs;
+- (InterfaceInputFormModel*)getTokenIntephaseWithTemplate:(NSString*)templateName;
+- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args;
+- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args;
+- (NSString*)getStringHashOfFunction:(AbiinterfaceItem*) fuctionItem andParam:(NSArray<ResultTokenInputsModel*>*)inputs;
+- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem andParam:(NSArray<ResultTokenInputsModel*>*)inputs;
 
 + (instancetype)sharedInstance;
 
