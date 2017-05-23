@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class LanguageCoordinator;
+
 @interface ProfileViewController : UIViewController
+
+- (void)saveLanguageCoordinator:(LanguageCoordinator *)languageCoordinator;
 
 @end

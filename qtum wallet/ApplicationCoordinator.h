@@ -33,6 +33,7 @@
 -(void)startWalletFlow;
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)startChangePinFlow;
+-(void)startChangedLanguageFlow;
 
 -(void)showWallet;
 -(void)showExportBrainKeyAnimated:(BOOL)animated;

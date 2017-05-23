@@ -83,4 +83,12 @@
     [self.tabBarContoller selectSendControllerWithAdress:dict[@"publicAddress"] andValue:dict[@"amount"]];
 }
 
+-(void)showControllerByIndex:(NSInteger)index{
+    [self.tabBarContoller setSelectedViewController:[self.tabBarContoller.viewControllers objectAtIndex:index]];
+}
+
+-(UIViewController *)getViewControllerByIndex:(NSInteger)index{
+    return [self.tabBarContoller.viewControllers objectAtIndex:index];;
+}
+
 @end

@@ -177,6 +177,10 @@
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
 		E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */; };
 		E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */; };
+		E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CB71ED42DB500AFD5D0 /* LanguageViewController.m */; };
+		E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CBA1ED42DCB00AFD5D0 /* LanguageTableViewCell.m */; };
+		E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CBD1ED42DE100AFD5D0 /* LanguageTableSource.m */; };
+		E7EA2CC11ED4326E00AFD5D0 /* LanguageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CC01ED4326E00AFD5D0 /* LanguageCoordinator.m */; };
 		E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */; };
 		E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */; };
 		E7FA0CB91ECD914200702C4E /* PopUpsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB81ECD914200702C4E /* PopUpsManager.m */; };
@@ -567,6 +571,14 @@
 		E7EA2CB21ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SubscribeToken.strings"; sourceTree = "<group>"; };
 		E7EA2CB31ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Splash.strings"; sourceTree = "<group>"; };
 		E7EA2CB41ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E7EA2CB61ED42DB500AFD5D0 /* LanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageViewController.h; sourceTree = "<group>"; };
+		E7EA2CB71ED42DB500AFD5D0 /* LanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageViewController.m; sourceTree = "<group>"; };
+		E7EA2CB91ED42DCB00AFD5D0 /* LanguageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTableViewCell.h; sourceTree = "<group>"; };
+		E7EA2CBA1ED42DCB00AFD5D0 /* LanguageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTableViewCell.m; sourceTree = "<group>"; };
+		E7EA2CBC1ED42DE100AFD5D0 /* LanguageTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTableSource.h; sourceTree = "<group>"; };
+		E7EA2CBD1ED42DE100AFD5D0 /* LanguageTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTableSource.m; sourceTree = "<group>"; };
+		E7EA2CBF1ED4326E00AFD5D0 /* LanguageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageCoordinator.h; sourceTree = "<group>"; };
+		E7EA2CC01ED4326E00AFD5D0 /* LanguageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageCoordinator.m; sourceTree = "<group>"; };
 		E7FA0CB11ECD80AF00702C4E /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
 		E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
 		E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewController.h; sourceTree = "<group>"; };
@@ -995,6 +1007,7 @@
 		B386F5AE1E1392B1004D231B /* Prifile Flow */ = {
 			isa = PBXGroup;
 			children = (
+				E7EA2CB51ED42D9B00AFD5D0 /* Language */,
 				B3F06D0B1E69B55D006341F7 /* Create Token */,
 				B3F06D071E699371006341F7 /* Subscribe */,
 				B386F5B21E139C9E004D231B /* Cell */,
@@ -1278,6 +1291,29 @@
 				B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		E7EA2CB51ED42D9B00AFD5D0 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				E7EA2CBF1ED4326E00AFD5D0 /* LanguageCoordinator.h */,
+				E7EA2CC01ED4326E00AFD5D0 /* LanguageCoordinator.m */,
+				E7EA2CC21ED44F9A00AFD5D0 /* Cell */,
+				E7EA2CB61ED42DB500AFD5D0 /* LanguageViewController.h */,
+				E7EA2CB71ED42DB500AFD5D0 /* LanguageViewController.m */,
+				E7EA2CBC1ED42DE100AFD5D0 /* LanguageTableSource.h */,
+				E7EA2CBD1ED42DE100AFD5D0 /* LanguageTableSource.m */,
+			);
+			name = Language;
+			sourceTree = "<group>";
+		};
+		E7EA2CC21ED44F9A00AFD5D0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E7EA2CB91ED42DCB00AFD5D0 /* LanguageTableViewCell.h */,
+				E7EA2CBA1ED42DCB00AFD5D0 /* LanguageTableViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		E7FA0CB01ECD808200702C4E /* Pop Ups */ = {
@@ -1819,12 +1855,14 @@
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractManager.m in Sources */,
 				B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */,
+				E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */,
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
 				B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
 				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
+				E7EA2CC11ED4326E00AFD5D0 /* LanguageCoordinator.m in Sources */,
 				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */,
@@ -1850,6 +1888,7 @@
 				B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */,
 				B30BAE2E1E9E3AA600CA795F /* TokenManager.m in Sources */,
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
+				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
 				B385B5A91E6DA3DD003BB96C /* WalletTypeCollectionCell.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
@@ -1900,6 +1939,7 @@
 				B3F06CF71E69879D006341F7 /* CreateTokenCoordinator.m in Sources */,
 				E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */,
+				E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
