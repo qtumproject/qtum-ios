@@ -257,7 +257,6 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
         object.balance = balance;
         complete(YES);
     } andFailureHandler:^(NSError *error, NSString *message) {
-        
         complete(NO);
     }];
 }

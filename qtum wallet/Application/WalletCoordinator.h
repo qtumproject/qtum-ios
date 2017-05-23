@@ -22,6 +22,7 @@
 - (void)pageDidChange:(NSInteger) page;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
+- (void)didBackPressed;
 
 @end
 

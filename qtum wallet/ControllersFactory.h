@@ -26,6 +26,7 @@
 @class QRCodeViewController;
 @class NoInternetConnectionPopUpViewController;
 @class PhotoLibraryPopUpViewController;
+@class TokenDetailsViewController;
 
 
 @interface ControllersFactory : NSObject
@@ -57,6 +58,7 @@
 -(QRCodeViewController*)createQRCodeViewController;
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
+-(TokenDetailsViewController*)createTokenDetailsViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController;

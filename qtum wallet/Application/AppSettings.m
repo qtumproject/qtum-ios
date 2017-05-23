@@ -8,6 +8,8 @@
 
 #import "AppSettings.h"
 #import "NSUserDefaults+Settings.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppSettings ()
 
@@ -44,6 +46,12 @@
 -(void)setup{
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:NO];
+    
+    [self setupFabric];
+}
+
+-(void)setupFabric{
+    [Fabric with:@[[Crashlytics class]]];
 }
 
 #pragma mark - Accessory methods

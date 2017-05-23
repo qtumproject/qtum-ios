@@ -31,6 +31,7 @@
 #import "PhotoLibraryPopUpViewController.h"
 #import "CustomAbiInterphaseViewController.h"
 #import "CreateTokenFinishViewController.h"
+#import "TokenDetailsViewController.h"
 
 @implementation ControllersFactory
 
@@ -153,6 +154,13 @@
 
 -(QRCodeViewController *)createQRCodeViewController{
     QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"QRCodeViewController"];
+    
+    return controller;
+}
+
+-(TokenDetailsViewController *)createTokenDetailsViewController{
+    TokenDetailsViewController* controller = (TokenDetailsViewController*)[UIViewController controllerInStoryboard:@"TokenDetails" withIdentifire:@"TokenDetails"];
+
     return controller;
 }
 
