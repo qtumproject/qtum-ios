@@ -2,8 +2,8 @@
 //  Spendable.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 19.04.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 19.04.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -24,6 +24,7 @@
 @property (weak, nonatomic)id <Managerable> manager;
 
 -(void)updateBalanceWithHandler:(void(^)(BOOL success)) complete;
+-(void)updateHandler:(void(^)(BOOL success)) complete;
 -(void)updateHistoryWithHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page;
 -(void)loadToMemory;
 -(void)historyDidChange;

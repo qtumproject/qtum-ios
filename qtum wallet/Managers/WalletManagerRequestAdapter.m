@@ -2,8 +2,8 @@
 //  WalletManagerRequestAdapter.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 20.04.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 20.04.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import "WalletManagerRequestAdapter.h"
@@ -50,7 +50,7 @@
 
 #pragma mark - Adapters Methods
 
-- (NSArray *)createArray:(NSArray *)responseObject{
+- (NSArray <BTCTransactionOutput*>*)createArray:(NSArray *)responseObject{
     
     NSMutableArray* outputs = [NSMutableArray array];
     

@@ -5,8 +5,10 @@
 //  Created by Sharaev Vladimir on 31.10.16.
 //  Copyright © 2016 PixelPlex. All rights reserved.
 //
-
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
 #ifndef PrefixHeader_pch
+
 #define PrefixHeader_pch
 
 #import <CoreBitcoin/CoreBitcoin.h>
@@ -31,6 +33,7 @@
 #import "TokenManager.h"
 #import "LanguageManager.h"
 
+
 //#import "BTCTransactionInput+Extension.h"
 //#import "BTCTransactionOutput+Extension.h"
 
@@ -39,3 +42,4 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #endif /* PrefixHeader_pch */
+#endif

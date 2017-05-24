@@ -225,6 +225,12 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     failure(nil, nil);
 }
 
+- (void)callFunctionToContractAddress:(NSString*) address
+                           withHashes:(NSArray*) hashes
+                          withHandler:(void(^)(id responseObject))completesion {
+    completesion(nil);
+}
+
 - (void)getTokenInfoWithDict:(NSDictionary*) dict
           withSuccessHandler:(void(^)(id responseObject))success
            andFailureHandler:(void(^)(NSError * error, NSString* message))failure{

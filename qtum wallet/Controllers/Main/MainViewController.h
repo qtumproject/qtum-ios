@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "WalletHistoryDelegateDataSource.h"
+#import "Paginationable.h"
 
 @protocol WalletCoordinatorDelegate;
 
-@interface MainViewController : BaseViewController <ControllerDelegate>
+@interface MainViewController : BaseViewController <ControllerDelegate,Paginationable>
 
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;

@@ -2,14 +2,15 @@
 //  AppSettings.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 24.03.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 24.03.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import "AppSettings.h"
 #import "NSUserDefaults+Settings.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "LanguageManager.h"
 
 @interface AppSettings ()
 

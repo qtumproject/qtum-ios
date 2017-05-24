@@ -2,8 +2,8 @@
 //  RestoreWalletViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 21.02.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 21.02.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import "RestoreWalletViewController.h"

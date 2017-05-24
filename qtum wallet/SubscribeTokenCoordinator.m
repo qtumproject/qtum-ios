@@ -2,22 +2,18 @@
 //  SubscribeTokenCoordinator.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 03.03.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 03.03.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import "SubscribeTokenCoordinator.h"
 #import "SubscribeTokenViewController.h"
 #import "SubscribeTokenDataSourceDelegate.h"
-#import "AddNewTokensViewController.h"
-#import "QRCodeViewController.h"
 
-@interface SubscribeTokenCoordinator () <QRCodeViewControllerDelegate>
+@interface SubscribeTokenCoordinator ()
 
 @property (strong, nonatomic) UINavigationController* navigationController;
-@property (weak, nonatomic) AddNewTokensViewController* addNewTokenViewController;
-@property (weak, nonatomic) SubscribeTokenViewController* subscribeTokenViewController;
-@property (weak, nonatomic) QRCodeViewController* qrCodeViewController;
+@property (weak, nonatomic) SubscribeTokenViewController* subscribeViewController;
 
 @end
 
@@ -39,49 +35,13 @@
     controller.delegate = self;
     controller.delegateDataSource = [SubscribeTokenDataSourceDelegate new];
     controller.delegateDataSource.tokensArray = (NSArray <Spendable>*)[[TokenManager sharedInstance] gatAllTokens];
-    self.subscribeTokenViewController = controller;
-}
-
--(void)showAddnewTokensViewController{
-    AddNewTokensViewController* controller = (AddNewTokensViewController*)[[ControllersFactory sharedInstance] createAddNewTokenViewController];
-    [self.navigationController pushViewController:controller animated:YES];
-    controller.delegate = self;
-    self.addNewTokenViewController = controller;
-}
-
--(void)showScanViewController{
-    QRCodeViewController *controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewController];
-    [self.navigationController pushViewController:controller animated:YES];
-    controller.delegate = self;
-    self.qrCodeViewController = controller;
+    self.subscribeViewController = controller;
 }
 
 #pragma mark - SubscribeTokenCoordinatorDelegate
 
 -(void)didBackButtonPressed{
     [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
--(void)didAddButtonPressed{
-    [self showAddnewTokensViewController];
-}
-
--(void)didScanButtonPressed{
-    [self showScanViewController];
-}
-
--(void)didBackButtonPressedFromAddNewToken{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - QRCodeViewControllerDelegate
-
-- (void)qrCodeScanned:(NSDictionary *)dictionary{
-    [self.navigationController popToViewController:self.subscribeTokenViewController animated:YES];
-}
-
-- (void)backButtonPressed{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -2,20 +2,22 @@
 //  ProfileViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 28.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 28.12.16.
+//  Copyright © 2016 Designsters. All rights reserved.
 //
 
 #import "ProfileViewController.h"
 #import "ProfileTableViewCell.h"
 #import "SubscribeTokenCoordinator.h"
 #import "CreateTokenCoordinator.h"
+#import "LanguageCoordinator.h"
 
 @interface ProfileViewController ()
 
 @property (weak, nonatomic) UIView* footerView;
-@property (strong,nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
-@property (strong,nonatomic) CreateTokenCoordinator* createTokenCoordinator;
+@property (strong, nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
+@property (strong, nonatomic) CreateTokenCoordinator* createTokenCoordinator;
+@property (strong, nonatomic) LanguageCoordinator* languageCoordinator;
 
 @end
 
@@ -221,7 +223,12 @@
 #pragma mark - Actions 
 
 -(IBAction)actionLanguage:(id)sender{
-    
+    self.languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:self.navigationController];
+    [self.languageCoordinator start];
+}
+
+- (void)saveLanguageCoordinator:(LanguageCoordinator *)languageCoordinator{
+    self.languageCoordinator = languageCoordinator;
 }
 
 -(IBAction)actionChangePin:(id)sender{

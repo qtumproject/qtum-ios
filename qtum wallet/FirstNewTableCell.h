@@ -2,8 +2,8 @@
 //  FirstNewTableCell.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 09.02.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 09.02.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

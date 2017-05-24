@@ -2,8 +2,8 @@
 //  ApplicationCoordinator.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 13.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 13.12.16.
+//  Copyright © 2016 Designsters. All rights reserved.
 //
 
 #import "ApplicationCoordinator.h"
@@ -16,6 +16,8 @@
 #import "LoginCoordinator.h"
 #import "TabBarCoordinator.h"
 #import "RPCRequestManager.h"
+#import "LanguageCoordinator.h"
+#import "ProfileViewController.h"
 
 
 @interface ApplicationCoordinator ()
@@ -195,6 +197,17 @@
     self.appDelegate.window.rootViewController = rootNavigation;
 }
 
+- (void)startChangedLanguageFlow{
+    [self restartMainFlow];
+    NSInteger profileIndex = 1;
+    [self.tabCoordinator showControllerByIndex:profileIndex];
+    UINavigationController *vc = (UINavigationController *)[self.tabCoordinator getViewControllerByIndex:profileIndex];
+    ProfileViewController *profile = [vc.viewControllers objectAtIndex:0];
+    LanguageCoordinator *languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:vc];
+    [profile saveLanguageCoordinator:languageCoordinator];
+    [languageCoordinator startWithoutAnimation];
+}
+
 -(void)startAskPinFlow:(void(^)()) completesion{
 }
 
@@ -210,8 +223,22 @@
         [controller selectSendControllerWithAdress:self.adress andValue:self.amount];
     }
     self.router = controller;
-    self.appDelegate.window.rootViewController = controller;
     [self storeAuthorizedFlag:YES];
+}
+
+-(void)restartMainFlow {
+    
+    if (self.tabCoordinator) {
+        [self removeDependency:self.tabCoordinator];
+    }
+    TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
+    controller.isReload = YES;
+    TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
+    self.tabCoordinator = coordinator;
+    [self addDependency:coordinator];
+    controller.coordinatorDelegate = self.tabCoordinator;
+    [self.tabCoordinator start];
+    self.router = controller;
 }
 
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion{

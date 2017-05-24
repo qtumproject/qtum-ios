@@ -2,8 +2,8 @@
 //  ControllersFactory.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 26.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 26.12.16.
+//  Copyright © 2016 Designsters. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -21,13 +21,16 @@
 @class HistoryItemViewController;
 @class CustomAbiInterphaseViewController;
 @class CreateTokenFinishViewController;
+@class MainViewController;
+@class TokenListViewController;
+@class TokenFunctionViewController;
+@class TokenFunctionDetailViewController;
+@class TemplateTokenViewController;
 @class TabBarCoordinator;
-@class AddNewTokensViewController;
-@class QRCodeViewController;
 @class NoInternetConnectionPopUpViewController;
 @class PhotoLibraryPopUpViewController;
 @class TokenDetailsViewController;
-
+@class LanguageViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -52,17 +55,21 @@
 -(AuthNavigationController*)createAuthNavigationController;
 -(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
 -(SubscribeTokenViewController*)createSubscribeTokenViewController;
--(AddNewTokensViewController*)createAddNewTokenViewController;
 -(RecieveViewController*)createRecieveViewController;
 -(HistoryItemViewController*)createHistoryItem;
--(QRCodeViewController*)createQRCodeViewController;
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
 -(TokenDetailsViewController*)createTokenDetailsViewController;
+-(LanguageViewController*)createLanguageViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController;
 -(PhotoLibraryPopUpViewController*)createPhotoLibraryController;
+-(MainViewController*)createMainViewController;
+-(TokenListViewController*)createTokenListViewController;
+-(TokenFunctionViewController*)createTokenFunctionViewController;
+-(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
+-(TemplateTokenViewController*)createTemplateTokenViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

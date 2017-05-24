@@ -2,8 +2,8 @@
 //  TabBarController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 26.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 26.12.16.
+//  Copyright © 2016 Designsters. All rights reserved.
 //
 
 #import "TabBarController.h"
@@ -32,7 +32,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //select controller
-    if ([self.customizableViewControllers.firstObject isKindOfClass:[UINavigationController class]]) {
+    if ([self.customizableViewControllers.firstObject isKindOfClass:[UINavigationController class]] && !self.isReload) {
         [self.coordinatorDelegate walletTabDidSelectedWithController:self.customizableViewControllers.firstObject];
     }
 }
@@ -45,7 +45,7 @@
     self.tabBar.barTintColor = customBlackColor();
 }
 
--(void)configTabs{
+-(void)configTabs {
     UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];//[UINavigationController new];
     UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];//[UINavigationController new];
     UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];//[UINavigationController new];

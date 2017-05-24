@@ -2,8 +2,8 @@
 //  ApplicationCoordinator.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 13.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 13.12.16.
+//  Copyright © 2016 Designsters. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -30,9 +30,11 @@
 //flows
 -(void)startAuthFlow;
 -(void)startMainFlow;
+-(void)restartMainFlow;
 -(void)startWalletFlow;
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)startChangePinFlow;
+-(void)startChangedLanguageFlow;
 
 -(void)showWallet;
 -(void)showExportBrainKeyAnimated:(BOOL)animated;

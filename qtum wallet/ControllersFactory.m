@@ -2,8 +2,8 @@
 //  ControllersFactory.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 26.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 26.12.16.
+//  Copyright © 2016 Designsters. All rights reserved.
 //
 
 #import "ControllersFactory.h"
@@ -25,13 +25,19 @@
 #import "WalletNavigationController.h"
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
-#import "AddNewTokensViewController.h"
-#import "QRCodeViewController.h"
 #import "NoInternetConnectionPopUpViewController.h"
 #import "PhotoLibraryPopUpViewController.h"
 #import "CustomAbiInterphaseViewController.h"
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
+#import "LanguageViewController.h"
+#import "BalancePageViewController.h"
+#import "MainViewController.h"
+#import "TokenListViewController.h"
+#import "TokenFunctionViewController.h"
+#import "TokenFunctionDetailViewController.h"
+#import "TemplateTokenViewController.h"
+
 
 @implementation ControllersFactory
 
@@ -77,7 +83,8 @@
 
 
 -(UINavigationController*)walletFlowTab{
-    HistoryViewController* controller = (HistoryViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:nil];
+    BalancePageViewController* controller = [[BalancePageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    controller.view.backgroundColor = customBlackColor();
     WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:controller];
     return nav;
 }
@@ -127,8 +134,8 @@
     return controller;
 }
 
--(AddNewTokensViewController*)createAddNewTokenViewController{
-    AddNewTokensViewController* controller = (AddNewTokensViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"AddNewTokens"];
+-(LanguageViewController*)createLanguageViewController{
+    LanguageViewController* controller = (LanguageViewController*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"LanguageViewController"];
     return controller;
 }
 
@@ -142,6 +149,11 @@
     return controller;
 }
 
+-(MainViewController*)createMainViewController{
+    MainViewController* controller = (MainViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"MainViewController"];
+    return controller;
+}
+
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController{
     CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CustomAbiInterphaseViewController"];
     return controller;
@@ -152,17 +164,31 @@
     return controller;
 }
 
--(QRCodeViewController *)createQRCodeViewController{
-    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"QRCodeViewController"];
-    
-    return controller;
-}
-
 -(TokenDetailsViewController *)createTokenDetailsViewController{
-    TokenDetailsViewController* controller = (TokenDetailsViewController*)[UIViewController controllerInStoryboard:@"TokenDetails" withIdentifire:@"TokenDetails"];
-
+    TokenDetailsViewController* controller = (TokenDetailsViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
     return controller;
 }
+
+-(TokenListViewController*)createTokenListViewController{
+    TokenListViewController* controller = (TokenListViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenListViewController"];
+    return controller;
+}
+
+-(TokenFunctionViewController*)createTokenFunctionViewController{
+    TokenFunctionViewController* controller = (TokenFunctionViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenFunctionViewController"];
+    return controller;
+}
+
+-(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController{
+    TokenFunctionDetailViewController* controller = (TokenFunctionDetailViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenFunctionDetailViewController"];
+    return controller;
+}
+
+-(TemplateTokenViewController*)createTemplateTokenViewController{
+    TemplateTokenViewController* controller = (TemplateTokenViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
+    return controller;
+}
+
 
 -(UIViewController*)createFlowNavigationCoordinator{
     return nil;

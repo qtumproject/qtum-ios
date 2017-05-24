@@ -33,7 +33,6 @@
 @property (weak, nonatomic) IBOutlet UIView *shortInfoView;
 @property (assign, nonatomic) BOOL canNewRequest;
 @property (assign, nonatomic) BOOL isNavigationBarFadeout;
-
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 
 
@@ -203,6 +202,16 @@
 
 - (void)qrCodeScanned:(NSDictionary *)dictionary{
     [self.delegate qrCodeScannedWithDict:dictionary];
+}
+
+#pragma mark - Paginationalable
+
+-(void)setCurrentPage:(NSInteger) page{
+    
+}
+
+-(void)setNumberPages:(NSInteger) number{
+    
 }
 
 #pragma mark - Actions

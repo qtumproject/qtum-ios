@@ -2,8 +2,8 @@
 //  Requestable.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 20.03.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 20.03.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -83,5 +83,10 @@
 
 - (void)startObservingForToken:(Token*) token withHandler:(void(^)(id responseObject))completesion;
 - (void)stopObservingForToken:(Token*) token;
+
+// Observing for events
+
+- (void)callFunctionToContractAddress:(NSString*) address withHashes:(NSArray*) hashes withHandler:(void(^)(id responseObject))completesion;
+
 
 @end

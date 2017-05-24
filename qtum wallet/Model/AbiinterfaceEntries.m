@@ -2,8 +2,8 @@
 //  AbiinterfaceEntries.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 17.05.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 17.05.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import "AbiinterfaceEntries.h"
@@ -25,6 +25,7 @@
     
     if ([object isKindOfClass:[NSDictionary class]]) {
         _name = [object[@"name"] isKindOfClass:[NSNull class]] ? nil : [NSString stringFromCamelCase:object[@"name"]];
+        _typeAsString = object[@"type"];
         _type = [self determineTipe:object[@"type"]];
     }
 }

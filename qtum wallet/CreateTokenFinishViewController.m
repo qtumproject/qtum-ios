@@ -2,14 +2,14 @@
 //  CreateTokenFinishViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 17.05.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 17.05.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import "CreateTokenFinishViewController.h"
 #import "CreateTokenCoordinator.h"
 #import "FinishInputCell.h"
-#import "ResultTokenCreateInputModel.h"
+#import "ResultTokenInputsModel.h"
 
 @interface CreateTokenFinishViewController ()
 

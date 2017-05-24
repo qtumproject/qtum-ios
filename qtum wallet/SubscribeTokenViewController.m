@@ -2,8 +2,8 @@
 //  SubscribeTokenViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 03.03.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 03.03.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import "SubscribeTokenViewController.h"
@@ -51,8 +51,4 @@
     [self.delegate didBackButtonPressed];
 }
 
-- (IBAction)actionAddNew:(id)sender
-{
-    [self.delegate didAddButtonPressed];
-}
 @end

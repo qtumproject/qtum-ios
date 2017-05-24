@@ -2,8 +2,8 @@
 //  SmartTransactionManager.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 21.04.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 21.04.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import "SmartTransactionManager.h"
@@ -103,7 +103,7 @@ static NSString* op_exec = @"c1";
     
     if (transaction) {
         
-        [[ApplicationCoordinator sharedInstance].requestManager sendTransactionWithParam:@{@"data":transaction.hexWithTime,@"allowHighFee":@1} withSuccessHandler:^(id responseObject) {
+        [[ApplicationCoordinator sharedInstance].requestManager sendTransactionWithParam:@{@"data":transaction.hexWithTime,@"allowHighFee":@YES} withSuccessHandler:^(id responseObject) {
             success(responseObject);
         } andFailureHandler:^(NSString *message) {
             failure(@"Can not send transaction");
@@ -112,6 +112,7 @@ static NSString* op_exec = @"c1";
         failure (@"Cant Create Transaction");
     }
 }
+
 - (BTCTransaction *)regularTransactionWithUnspentOutputs:(NSArray *)unspentOutputs
                                                   amount:(CGFloat) amount
                                       amountAndAddresses:(NSArray*) amountAndAddresses

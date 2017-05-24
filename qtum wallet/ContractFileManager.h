@@ -2,16 +2,21 @@
 //  ContractFileManager.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 16.05.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 16.05.17.
+//  Copyright © 2017 Designsters. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @interface ContractFileManager : NSObject
 
-+(NSDictionary*)getAbiFromBundle;
-+(NSString*)getContractFromBundle;
-+(NSData*)getBitcodeFromBundle;
++(NSDictionary*)getAbiFromBundleWithTemplate:(NSString*) templateName;
+
++(NSString*)getContractFromBundleWithTemplate:(NSString*) templateName;
+
++(NSData*)getBitcodeFromBundleWithTemplate:(NSString*) templateName;
+
++(NSArray<NSString*>*)getAvailebaleTemplates;
+
 
 @end

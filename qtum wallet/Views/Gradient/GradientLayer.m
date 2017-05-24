@@ -2,8 +2,8 @@
 //  Gradient.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 13.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 13.12.16.
+//  Copyright © 2016 Designsters. All rights reserved.
 //
 
 #import "GradientLayer.h"

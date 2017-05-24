@@ -59,8 +59,9 @@
     
     __weak typeof(self) weakSelf = self;
     NSString* keyString = self.wallet.mainAddress;
+    BOOL isToken = [self.wallet isKindOfClass:[Token class]];
 
-    [QRCodeManager createQRCodeFromPublicAddress:keyString andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
+    [QRCodeManager createQRCodeFromPublicAddress:keyString isToken:isToken andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
         weakSelf.shareButton.enabled = YES;
         weakSelf.walletAdressCopyButton.enabled = YES;

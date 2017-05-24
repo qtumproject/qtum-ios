@@ -2,8 +2,8 @@
 //  UIAlertController+Extensions.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 12.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Vladimir Lebedevich on 12.12.16.
+//  Copyright © 2016 Designsters. All rights reserved.
 //
 
 #import "UIAlertController+Extensions.h"
