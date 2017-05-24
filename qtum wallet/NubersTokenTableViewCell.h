@@ -10,4 +10,7 @@
 
 @interface NubersTokenTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *initialSupplyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *decimalUnitsLabel;
+
 @end

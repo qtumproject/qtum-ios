@@ -11,6 +11,7 @@
 @class HistoryElement;
 @class AbiinterfaceItem;
 @class ResultTokenInputsModel;
+@protocol Spendable;
 
 @protocol WalletCoordinatorDelegate <NSObject>
 
@@ -20,7 +21,7 @@
 - (void)refreshTableViewBalanceLocal:(BOOL)isLocal;
 - (void)qrCodeScannedWithDict:(NSDictionary*) dict;
 - (void)viewWillAppear;
-- (void)showAddressInfo;
+- (void)showAddressInfoWithSpendable:(id <Spendable>) spendable;
 - (void)pageDidChange:(NSInteger) page;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
@@ -28,6 +29,7 @@
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 - (void)didDeselectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
+- (void)didPressedTokenFunctionWithItem:(Token*) item;
 - (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token;
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;

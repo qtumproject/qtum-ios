@@ -20,5 +20,6 @@ static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIden
 @property (weak, nonatomic) IBOutlet UILabel *adressValueLabel;
 @property (weak, nonatomic) IBOutlet UIButton *showAddresButton;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
+@property (weak, nonatomic) id <Spendable> spendable;
 
 @end

@@ -9,6 +9,7 @@
 #import "Utils.h"
 
 NSString const *PUBLIC_ADDRESS_STRING_KEY = @"publicAddress";
+NSString const *kIsToken = @"isToken";
 NSString const *PRIVATE_ADDRESS_STRING_KEY = @"privateAddress";
 NSString const *AMOUNT_STRING_KEY = @"amount";
 

@@ -34,6 +34,7 @@ static NSInteger countOfSections = 2;
         cell.valueLabel.text = [NSString stringWithFormat:@"%f",self.wallet.balance];
         cell.typeWalletLabel.text = self.wallet.symbol;
         cell.unconfirmedValue.text = [NSString stringWithFormat:@"%f",self.wallet.unconfirmedBalance];
+        cell.spendable = self.wallet;
         return cell;
     } else {
         HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCell"];

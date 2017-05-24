@@ -98,9 +98,9 @@
 //    [self.historyController reloadTableView];
 }
 
--(void)showAddressInfo{
+-(void)showAddressInfoWithSpendable:(id <Spendable>) spendable{
     RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
-    vc.wallet = self.wallets[self.pageWallet];
+    vc.wallet = spendable;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -162,16 +162,29 @@
     controller.item = item;
     [self.navigationController pushViewController:controller animated:YES];
 }
+
 - (void)didDeselectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
     
 }
 
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+- (void)didPressedTokenFunctionWithItem:(Token*) item {
     TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
     controller.formModel = [[ContractManager sharedInstance] getTokenIntephaseWithTemplate:item.templateName];
     controller.delegate = self;
     controller.token = item;
     [self.navigationController pushViewController:controller animated:true];
+}
+
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+
+    TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
+    self.tokenDetailsViewController = vc;
+    self.tokenDetailsTableSource = [TokenDetailsTableSource new];
+    vc.delegate = self;
+    vc.token = item;
+    [vc setTableSource:self.tokenDetailsTableSource];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{

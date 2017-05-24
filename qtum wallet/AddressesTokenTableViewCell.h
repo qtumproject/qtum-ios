@@ -10,4 +10,7 @@
 
 @interface AddressesTokenTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *addressNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
 @end

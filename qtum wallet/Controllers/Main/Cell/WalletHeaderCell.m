@@ -11,7 +11,7 @@
 @implementation WalletHeaderCell
 
 - (IBAction)showAddress:(id)sender {
-    [self.delegate showAddressInfo];
+    [self.delegate showAddressInfoWithSpendable:self.spendable];
 }
 
 @end

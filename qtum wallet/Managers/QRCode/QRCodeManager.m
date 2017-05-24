@@ -41,10 +41,11 @@
     });
 }
 
-+ (void)createQRCodeFromPublicAddress:(NSString *)publicAddressString andAmount:(NSString *)amountString forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock
++ (void)createQRCodeFromPublicAddress:(NSString *)publicAddressString isToken:(BOOL) isToken andAmount:(NSString *)amountString forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock
 {
     NSDictionary *dictionary = @{PUBLIC_ADDRESS_STRING_KEY : publicAddressString,
-                                 AMOUNT_STRING_KEY : amountString};
+                                 AMOUNT_STRING_KEY : amountString,
+                                 kIsToken : @(isToken)};
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
                                                        options:0
