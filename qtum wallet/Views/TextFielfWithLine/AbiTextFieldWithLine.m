@@ -2,7 +2,7 @@
 //  AbiTextFieldWithLine.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 17.05.17.
+//  Created by Vladimir Lebedevich on 17.05.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -52,13 +52,8 @@
         NSCharacterSet *cset = [NSCharacterSet symbolCharacterSet];
         NSRange range = [string rangeOfCharacterFromSet:cset];
         
-        if (range.location == NSNotFound) {
-            if (self.item.type == UInt8Type && [[textField.text stringByAppendingString:string] integerValue] > 255) {
+        if (range.location != NSNotFound || (self.item.type == UInt8Type && [[textField.text stringByAppendingString:string] integerValue] > 255)) {
                 return NO;
-            }
-            return YES;
-        } else {
-            return NO;
         }
     }
     return YES;

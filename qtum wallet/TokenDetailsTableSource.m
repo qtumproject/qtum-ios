@@ -7,9 +7,14 @@
 //
 
 #import "TokenDetailsTableSource.h"
+#import "BalanceTokenTableViewCell.h"
+#import "NubersTokenTableViewCell.h"
+#import "AddressesTokenTableViewCell.h"
+#import "ActivityTokenTableViewCell.h"
+#import "QTUMAddressTokenTableViewCell.h"
 
 static NSInteger const NumberOfSections = 2;
-static NSInteger const NumberOfRowsForFirstSection = 4;
+static NSInteger const NumberOfRowsForFirstSection = 5;
 
 static CGFloat const ActivityHeaderHeight = 34;
 static CGFloat const BalanceTokenHeight = 140;
@@ -25,7 +30,7 @@ static NSString *const NubersTokenIdentifier = @"NubersTokenTableViewCell";
 static NSString *const AddressesTokenIdentifier = @"AddressesTokenTableViewCell";
 static NSString *const ActivityTokenIdentifier = @"ActivityTokenTableViewCell";
 
-@interface TokenDetailsTableSource()
+@interface TokenDetailsTableSource() <QTUMAddressTokenTableViewCellDelegate>
 
 @property (nonatomic, weak) UIView *headerForSecondSection;
 @property (nonatomic) CGFloat standartOffsetY;
@@ -68,6 +73,9 @@ static NSString *const ActivityTokenIdentifier = @"ActivityTokenTableViewCell";
                 return NubersTokenHeight;
                 break;
             case 3:
+                return AddressesTokenHeight;
+                break;
+            case 4:
                 return AddressesTokenHeight;
                 break;
         }
@@ -114,24 +122,76 @@ static NSString *const ActivityTokenIdentifier = @"ActivityTokenTableViewCell";
 #pragma mark - Private methods
 
 - (UITableViewCell *)getCellForFirstSection:(UITableView *)tableView forRow:(NSInteger)row{
-    UITableViewCell *cell;
     
     switch (row) {
         case 0:
-            cell = [tableView dequeueReusableCellWithIdentifier:BalanceTokenIdentifier];
+            return [self configBalanceCellWithTableView:tableView forRow:row];
             break;
         case 1:
-            cell = [tableView dequeueReusableCellWithIdentifier:QTUMAddressTokenIdentifier];
+            return [self configQTUMAddressTokenCellWithTableView:tableView forRow:row];
             break;
         case 2:
-            cell = [tableView dequeueReusableCellWithIdentifier:NubersTokenIdentifier];
+            return [self configNubersTokenCellWithTableView:tableView forRow:row];
             break;
         case 3:
-            cell = [tableView dequeueReusableCellWithIdentifier:AddressesTokenIdentifier];
+            return [self configSenderAddressesTokenCellWithTableView:tableView forRow:row];
+            break;
+        case 4:
+            return [self configContractAddressesTokenCellWithTableView:tableView forRow:row];
             break;
     }
     
+    return [UITableViewCell new];
+}
+
+#pragma mark - Configuration Cells
+
+-(UITableViewCell *)configBalanceCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
+    BalanceTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:BalanceTokenIdentifier];
+    cell.availableBalanceLabel.text = [NSString stringWithFormat:@"%f",self.token.balance];
+    cell.notConfirmedBalanceLabel.text = [NSString stringWithFormat:@"%d",0];
     return cell;
 }
+
+-(UITableViewCell *)configQTUMAddressTokenCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
+    QTUMAddressTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:QTUMAddressTokenIdentifier];
+    cell.delegate = self;
+    cell.addressLabel.text = self.token.mainAddress;
+    return cell;
+}
+
+-(UITableViewCell *)configNubersTokenCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
+    NubersTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NubersTokenIdentifier];
+    cell.initialSupplyLabel.text = [NSString stringWithFormat:@"%@",self.token.totalSupply];
+    cell.decimalUnitsLabel.text = [NSString stringWithFormat:@"%@",self.token.decimals];
+    return cell;
+}
+
+-(UITableViewCell *)configSenderAddressesTokenCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
+    AddressesTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:AddressesTokenIdentifier];
+    cell.addressNameLabel.text = NSLocalizedString(@"Sender Address", @"");
+    cell.addressLabel.text = self.token.adresses.firstObject;
+    return cell;
+}
+
+-(UITableViewCell *)configContractAddressesTokenCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
+    AddressesTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:AddressesTokenIdentifier];
+    cell.addressNameLabel.text = NSLocalizedString(@"Contract Address", @"");
+    cell.addressLabel.text = self.token.mainAddress;
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+#pragma mark - QTUMAddressTokenTableViewCellDelegate
+
+- (void)actionPlus:(id)sender{
+    [self.delegate didPressedInfoActionWithToken:self.token];
+}
+
 
 @end

@@ -2,7 +2,7 @@
 //  RemoutNotificationManager.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 21.03.17.
+//  Created by Vladimir Lebedevich on 21.03.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 

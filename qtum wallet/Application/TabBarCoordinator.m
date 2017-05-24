@@ -2,7 +2,7 @@
 //  TabBarCoordinator.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 02.03.17.
+//  Created by Vladimir Lebedevich on 02.03.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -33,8 +33,8 @@
 
 #pragma mark - Coordinatorable
 
--(void)start{
-    
+-(void)start {
+    ((AppDelegate*)[UIApplication sharedApplication].delegate).window.rootViewController = self.tabBarContoller;
 }
 
 #pragma mark - TabBarCoordinatorDelegate
@@ -63,6 +63,7 @@
         [self checkTabsController:controller];
     }
 }
+
 -(void)walletTabDidSelectedWithController:(UIViewController*)controller{
     
     if (!self.walletsAlreadyStarted) {

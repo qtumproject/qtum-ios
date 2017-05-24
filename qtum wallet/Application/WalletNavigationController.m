@@ -2,7 +2,7 @@
 //  HistoryNavigationCoordinator.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 26.12.16.
+//  Created by Vladimir Lebedevich on 26.12.16.
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)didReceiveMemoryWarning {

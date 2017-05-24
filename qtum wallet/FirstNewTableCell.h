@@ -2,7 +2,7 @@
 //  FirstNewTableCell.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 09.02.17.
+//  Created by Vladimir Lebedevich on 09.02.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 

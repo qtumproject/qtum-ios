@@ -2,7 +2,7 @@
 //  CustomPageControl.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 12.05.17.
+//  Created by Vladimir Lebedevich on 12.05.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -53,6 +53,7 @@
         if (dot == nil)
         {
             dot = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, view.frame.size.width, view.frame.size.height)];
+            dot.tintColor = self.tintColor;
             [view addSubview:dot];
         }
     }

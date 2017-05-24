@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol QTUMAddressTokenTableViewCellDelegate <NSObject>
+
+@required
+- (void)actionPlus:(id)sender;
+
+@end
+
 @interface QTUMAddressTokenTableViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) id <QTUMAddressTokenTableViewCellDelegate> delegate;
 
 @end

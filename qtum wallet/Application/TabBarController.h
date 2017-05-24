@@ -2,7 +2,7 @@
 //  TabBarController.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 26.12.16.
+//  Created by Vladimir Lebedevich on 26.12.16.
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 @interface TabBarController : UITabBarController
 
 @property (weak,nonatomic) id <TabBarCoordinatorDelegate> coordinatorDelegate;
+@property (assign,nonatomic) BOOL isReload;
 
 -(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount;
 

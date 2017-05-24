@@ -2,7 +2,7 @@
 //  DiagramView.h
 //  DiagramAnimation
 //
-//  Created by Никита Федоренко on 29.12.16.
+//  Created by Vladimir Lebedevich on 29.12.16.
 //  Copyright © 2016 com.example. All rights reserved.
 //
 

@@ -50,7 +50,7 @@
     self.selectedCell = cell;
     
     [LanguageManager saveLanguageByIndex:indexPath.row];
-    if ([self.delegate performSelector:@selector(languageDidChanged)]) {
+    if ([self.delegate respondsToSelector:@selector(languageDidChanged)]) {
         [self.delegate languageDidChanged];
     }
 }

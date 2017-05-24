@@ -2,7 +2,7 @@
 //  TokenModel.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 17.04.17.
+//  Created by Vladimir Lebedevich on 17.04.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -34,8 +34,9 @@
 @property (strong, nonatomic)NSArray* adresses;
 @property (strong, nonatomic)NSString* decimals;
 @property (strong, nonatomic)NSString* totalSupply;
+@property (strong, nonatomic)NSString* templateName;
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
--(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses;
+-(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(NSString*) templateName;
 
 @end

@@ -10,9 +10,6 @@
 
 @interface BalanceTokenTableViewCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *availableBalanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *notConfirmedBalanceLabel;
-
 @end
 
 @implementation BalanceTokenTableViewCell

@@ -2,7 +2,7 @@
 //  CreatePinViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 30.12.16.
+//  Created by Vladimir Lebedevich on 30.12.16.
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  AbiInterfaceOutput.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 17.05.17.
+//  Created by Vladimir Lebedevich on 17.05.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 

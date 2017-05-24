@@ -10,7 +10,6 @@
 
 @interface QTUMAddressTokenTableViewCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
 @end
 
@@ -18,16 +17,15 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
-- (IBAction)actionPlus:(id)sender {
+- (void)actionPlus:(id)sender {
+    [self.delegate actionPlus:sender];
 }
 
 @end

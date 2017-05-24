@@ -2,7 +2,7 @@
 //  CustomAbiInterphaseViewController.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 17.05.17.
+//  Created by Vladimir Lebedevich on 17.05.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import "AbiTextFieldWithLine.h"
 #import "AbiinterfaceItem.h"
 #import "CreateTokenCoordinator.h"
-#import "ResultTokenCreateInputModel.h"
+#import "ResultTokenInputsModel.h"
 
 @interface CustomAbiInterphaseViewController ()
 
@@ -51,12 +51,12 @@
 
 #pragma mark - Private Methods
 
--(NSArray<ResultTokenCreateInputModel*>*)prepareInputsData {
+-(NSArray<ResultTokenInputsModel*>*)prepareInputsData {
     
     NSMutableArray* inputsData = @[].mutableCopy;
     for (AbiTextFieldWithLine* textField in self.scrollView.subviews) {
         if ([textField isKindOfClass:[AbiTextFieldWithLine class]]) {
-            ResultTokenCreateInputModel* input = [ResultTokenCreateInputModel new];
+            ResultTokenInputsModel* input = [ResultTokenInputsModel new];
             input.name = textField.item.name;
             input.value = textField.item.type == StringType ? textField.text : @([textField.text integerValue]);
             [inputsData addObject:input];
@@ -68,7 +68,7 @@
 #pragma mark - Actions
 
 - (IBAction)didPressedCancelAction:(id)sender {
-    [self.delegate createStepOneCancelDidPressed];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)didPressedNextAction:(id)sender {

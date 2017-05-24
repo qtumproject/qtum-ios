@@ -2,7 +2,7 @@
 //  ApplicationCoordinator.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 13.12.16.
+//  Created by Vladimir Lebedevich on 13.12.16.
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
@@ -30,6 +30,7 @@
 //flows
 -(void)startAuthFlow;
 -(void)startMainFlow;
+-(void)restartMainFlow;
 -(void)startWalletFlow;
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)startChangePinFlow;
