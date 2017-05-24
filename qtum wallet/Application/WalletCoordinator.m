@@ -195,17 +195,6 @@
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
                        andToken:(Token*) token {
     
-    if (![item.name isEqualToString:@""]) {
-        NSString* hashFuction = [[ContractManager sharedInstance] getStringHashOfFunction:item andParam:inputs];
-        __weak __typeof(self)weakSelf = self;
-        [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
-            NSString* data = responseObject[@"items"][0][@"output"];
-            NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:item];
-            [weakSelf.functionDetailController showResultViewWithOutputs:array];
-        }];
-    } else {
-
-    }
     NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item andParam:inputs];
     __weak __typeof(self)weakSelf = self;
     [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {

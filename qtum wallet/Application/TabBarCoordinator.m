@@ -33,8 +33,8 @@
 
 #pragma mark - Coordinatorable
 
--(void)start{
-    
+-(void)start {
+    ((AppDelegate*)[UIApplication sharedApplication].delegate).window.rootViewController = self.tabBarContoller;
 }
 
 #pragma mark - TabBarCoordinatorDelegate

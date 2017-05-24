@@ -32,7 +32,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //select controller
-    if ([self.customizableViewControllers.firstObject isKindOfClass:[UINavigationController class]]) {
+    if ([self.customizableViewControllers.firstObject isKindOfClass:[UINavigationController class]] && !self.isReload) {
         [self.coordinatorDelegate walletTabDidSelectedWithController:self.customizableViewControllers.firstObject];
     }
 }
@@ -45,7 +45,7 @@
     self.tabBar.barTintColor = customBlackColor();
 }
 
--(void)configTabs{
+-(void)configTabs {
     UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];//[UINavigationController new];
     UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];//[UINavigationController new];
     UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];//[UINavigationController new];

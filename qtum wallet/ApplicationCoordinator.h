@@ -30,6 +30,7 @@
 //flows
 -(void)startAuthFlow;
 -(void)startMainFlow;
+-(void)restartMainFlow;
 -(void)startWalletFlow;
 -(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 -(void)startChangePinFlow;

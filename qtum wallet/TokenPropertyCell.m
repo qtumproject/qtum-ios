@@ -34,16 +34,19 @@
     __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
         
-        NSString* data = responseObject[@"items"][0][@"output"];
-        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:object];
-        
-        NSMutableString* result = [NSMutableString new];
-        for (id output in array) {
-            [result appendFormat:@"%@",output];
+        if (![responseObject isKindOfClass:[NSError class]]) {
+            NSString* data = responseObject[@"items"][0][@"output"];
+            NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:object];
+            
+            NSMutableString* result = [NSMutableString new];
+            for (id output in array) {
+                [result appendFormat:@"%@",output];
+            }
+            weakSelf.activityIndicator.hidden = YES;
+            weakSelf.propertyValue.hidden = NO;
+            weakSelf.propertyValue.text = result;
         }
-        weakSelf.activityIndicator.hidden = YES;
-        weakSelf.propertyValue.hidden = NO;
-        weakSelf.propertyValue.text = result;
+
     }];
 }
 

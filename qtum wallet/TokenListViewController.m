@@ -25,8 +25,12 @@
 
 #pragma mark - Coordinator invocation
 
--(void)reloadTable{
-    [self.tableView reloadData];
+-(void)reloadTable {
+    
+    __weak __typeof(self)wealSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [wealSelf.tableView reloadData];
+    });
 }
 
 #pragma mark - UITableViewDelegate

@@ -14,6 +14,7 @@
 @interface TabBarController : UITabBarController
 
 @property (weak,nonatomic) id <TabBarCoordinatorDelegate> coordinatorDelegate;
+@property (assign,nonatomic) BOOL isReload;
 
 -(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount;
 
