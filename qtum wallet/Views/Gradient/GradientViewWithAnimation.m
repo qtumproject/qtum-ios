@@ -2,7 +2,7 @@
 //  GradientViewWithAnimation.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 04.01.17.
+//  Created by Vladimir Lebedevich on 04.01.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 

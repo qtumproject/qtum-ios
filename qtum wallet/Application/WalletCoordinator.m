@@ -2,7 +2,7 @@
 //  WalletCoordinator.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 02.03.17.
+//  Created by Vladimir Lebedevich on 02.03.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
@@ -11,21 +11,32 @@
 #import "WalletHistoryDelegateDataSource.h"
 #import "TabBarCoordinator.h"
 #import "HistoryDataStorage.h"
-#import "WalletTypeCollectionDataSourceDelegate.h"
 #import "RecieveViewController.h"
 #import "HistoryItemViewController.h"
 #import "Spendable.h"
 #import "TokenDetailsViewController.h"
 #import "TokenDetailsTableSource.h"
 
+#import "BalancePageViewController.h"
+#import "WalletNavigationController.h"
+#import "TokenListViewController.h"
+#import "TokenFunctionViewController.h"
+#import "ContractManager.h"
+#import "TokenFunctionDetailViewController.h"
+#import "ResultTokenInputsModel.h"
+#import "ContractArgumentsInterpretator.h"
+#import "NSString+Extension.h"
+#import "TransactionManager.h"
 
 @interface WalletCoordinator ()
 
 @property (strong, nonatomic) UINavigationController* navigationController;
+@property (strong, nonatomic) BalancePageViewController* pageViewController;
 @property (weak, nonatomic) MainViewController* historyController;
+@property (weak, nonatomic) TokenListViewController* tokenController;
+@property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 @property (strong, nonatomic) NSMutableArray <Spendable>* wallets;
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
-@property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 @property (assign, nonatomic) NSInteger pageHistoryNumber;
 @property (assign, nonatomic) NSInteger pageWallet;
@@ -60,19 +71,25 @@
 #pragma mark - Coordinatorable
 
 -(void)start{
-    MainViewController* controller = (MainViewController*)self.navigationController.viewControllers[0];
+    
+    MainViewController* controller = (MainViewController*)[[ControllersFactory sharedInstance] createMainViewController];
     controller.delegate = self;
     
     [self configWalletModels];
-    self.collectionDelegateDataSource = [WalletTypeCollectionDataSourceDelegate new];
-    self.collectionDelegateDataSource.wallets = self.wallets;
-    self.collectionDelegateDataSource.delegate = self;
     self.delegateDataSource = [WalletHistoryDelegateDataSource new];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
-    self.delegateDataSource.collectionDelegateDataSource = self.collectionDelegateDataSource;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
+    
+    TokenListViewController* tokenController = (TokenListViewController*)[[ControllersFactory sharedInstance] createTokenListViewController];
+    tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    tokenController.delegate = self;
+    controller.delegate = self;
+    self.tokenController = tokenController;
+    
+    self.pageViewController = self.navigationController.viewControllers[0];
+    self.pageViewController.controllers = @[controller,tokenController];
 }
 
 #pragma mark - WalletCoordinatorDelegate
@@ -140,14 +157,61 @@
     [self.delegate createPaymentFromWalletScanWithDict:dict];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+- (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
     HistoryItemViewController* controller = (HistoryItemViewController*)[[ControllersFactory sharedInstance] createHistoryItem];
     controller.item = item;
     [self.navigationController pushViewController:controller animated:YES];
 }
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+- (void)didDeselectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
     
+}
+
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+    TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
+    controller.formModel = [[ContractManager sharedInstance] getTokenIntephaseWithTemplate:item.templateName];
+    controller.delegate = self;
+    controller.token = item;
+    [self.navigationController pushViewController:controller animated:true];
+}
+
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+    
+}
+
+- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token{
+    TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
+    controller.function = item;
+    controller.delegate = self;
+    controller.token = token;
+    self.functionDetailController = controller;
+    [self.navigationController pushViewController:controller animated:true];
+}
+
+- (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
+    
+}
+
+- (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
+                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
+                       andToken:(Token*) token {
+    
+    if (![item.name isEqualToString:@""]) {
+        NSString* hashFuction = [[ContractManager sharedInstance] getStringHashOfFunction:item andParam:inputs];
+        __weak __typeof(self)weakSelf = self;
+        [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
+            NSString* data = responseObject[@"items"][0][@"output"];
+            NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:item];
+            [weakSelf.functionDetailController showResultViewWithOutputs:array];
+        }];
+    } else {
+
+    }
+    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item andParam:inputs];
+    __weak __typeof(self)weakSelf = self;
+    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+        
+        [weakSelf.functionDetailController showResultViewWithOutputs:nil];
+    }];
 }
 
 #pragma mark - Configuration
@@ -155,12 +219,11 @@
 -(void)configWalletModels{
     self.wallets = @[].mutableCopy;
     [self.wallets addObject:[WalletManager sharedInstance].getCurrentWallet];
-    [self.wallets addObjectsFromArray:[TokenManager sharedInstance].gatAllTokens];
+    //uncommend if need collection of tokens with wallets
+    //[self.wallets addObjectsFromArray:[TokenManager sharedInstance].gatAllTokens];
 }
 
 -(void)setWalletsToDelegates {
-    
-    self.collectionDelegateDataSource.wallets = self.wallets;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
 }
 
@@ -213,8 +276,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:kTokenDidChange object:nil];
 }
 
--(void)updateSpendables{
+-(void)updateSpendables {
     [self.historyController reloadTableView];
+    self.tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    [self.tokenController reloadTable];
 }
 
 -(void)updateBalance{

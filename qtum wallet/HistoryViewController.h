@@ -2,7 +2,7 @@
 //  HistoryViewController.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 27.12.16.
+//  Created by Vladimir Lebedevich on 27.12.16.
 //  Copyright © 2016 Designsters. All rights reserved.
 //
 
