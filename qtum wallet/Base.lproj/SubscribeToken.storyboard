@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -56,15 +56,25 @@
                                                     <action selector="actionBack:" destination="bpS-ul-0FJ" eventType="touchUpInside" id="kms-XA-itm"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cD-8S-7ok">
+                                                <rect key="frame" x="343" y="0.0" width="22" height="44"/>
+                                                <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="actionAddNew:" destination="bpS-ul-0FJ" eventType="touchUpInside" id="FIh-z7-jZB"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="jgl-bf-iTz" firstAttribute="top" secondItem="XBK-dk-Gdb" secondAttribute="top" id="5TZ-7f-skB"/>
                                             <constraint firstAttribute="bottom" secondItem="jgl-bf-iTz" secondAttribute="bottom" id="99Z-RS-yet"/>
+                                            <constraint firstAttribute="bottom" secondItem="6cD-8S-7ok" secondAttribute="bottom" id="9Bb-xb-gTv"/>
                                             <constraint firstItem="Zif-zY-tyq" firstAttribute="centerY" secondItem="XBK-dk-Gdb" secondAttribute="centerY" id="D8G-bz-dhR"/>
                                             <constraint firstItem="Zif-zY-tyq" firstAttribute="centerX" secondItem="XBK-dk-Gdb" secondAttribute="centerX" id="Sba-PL-uLs"/>
                                             <constraint firstItem="jgl-bf-iTz" firstAttribute="leading" secondItem="XBK-dk-Gdb" secondAttribute="leading" constant="3" id="aDp-OA-kZw"/>
+                                            <constraint firstAttribute="trailing" secondItem="6cD-8S-7ok" secondAttribute="trailing" constant="10" id="cfQ-uD-vao"/>
                                             <constraint firstAttribute="height" constant="44" id="ieW-tW-cFI"/>
+                                            <constraint firstItem="6cD-8S-7ok" firstAttribute="top" secondItem="XBK-dk-Gdb" secondAttribute="top" id="o2c-5F-ZmS"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -170,9 +180,159 @@
             </objects>
             <point key="canvasLocation" x="620" y="551.87406296851577"/>
         </scene>
+        <!--Add New Tokens View Controller-->
+        <scene sceneID="b96-Ky-2bR">
+            <objects>
+                <viewController storyboardIdentifier="AddNewTokens" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QEP-Jy-HQC" customClass="AddNewTokensViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hfz-u9-DiS"/>
+                        <viewControllerLayoutGuide type="bottom" id="t8Y-Yf-LYM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fRX-5m-Qli">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="782-2F-nGn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1c7-hU-jup">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Tokens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txs-8Z-pco">
+                                                <rect key="frame" x="120" y="11" width="136.5" height="23"/>
+                                                <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                                                <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BlQ-dW-GzY">
+                                                <rect key="frame" x="3" y="0.0" width="30" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="UCO-bz-VJa"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="back"/>
+                                                <state key="highlighted" image="back">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="acitonBack:" destination="QEP-Jy-HQC" eventType="touchUpInside" id="4TX-uy-8KP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="BlQ-dW-GzY" firstAttribute="leading" secondItem="1c7-hU-jup" secondAttribute="leading" constant="3" id="389-08-OuB"/>
+                                            <constraint firstAttribute="height" constant="44" id="EIZ-7X-SPe"/>
+                                            <constraint firstItem="BlQ-dW-GzY" firstAttribute="top" secondItem="1c7-hU-jup" secondAttribute="top" id="G9L-m4-FuN"/>
+                                            <constraint firstItem="txs-8Z-pco" firstAttribute="centerX" secondItem="1c7-hU-jup" secondAttribute="centerX" id="IEz-xn-Gbv"/>
+                                            <constraint firstItem="txs-8Z-pco" firstAttribute="centerY" secondItem="1c7-hU-jup" secondAttribute="centerY" id="mhp-9H-OIT"/>
+                                            <constraint firstAttribute="bottom" secondItem="BlQ-dW-GzY" secondAttribute="bottom" id="rO4-RD-fqT"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="NGB-Hq-Dmk"/>
+                                    <constraint firstItem="1c7-hU-jup" firstAttribute="leading" secondItem="782-2F-nGn" secondAttribute="leading" id="PhO-Cm-cwg"/>
+                                    <constraint firstAttribute="trailing" secondItem="1c7-hU-jup" secondAttribute="trailing" id="Qiv-8h-Rbw"/>
+                                    <constraint firstAttribute="bottom" secondItem="1c7-hU-jup" secondAttribute="bottom" id="pNc-Rf-OeO"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4x-eT-4Qz">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan QR Code" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mp0-5z-Nmd">
+                                        <rect key="frame" x="129.5" y="43" width="117" height="19"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Enter Token Address:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G7-cO-lIJ">
+                                        <rect key="frame" x="76.5" y="260" width="224" height="19"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lga-b5-dmK" customClass="TextFieldWithLine">
+                                        <rect key="frame" x="15" y="309" width="345" height="20"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CH-c2-QYM">
+                                        <rect key="frame" x="131.5" y="92" width="112" height="83"/>
+                                        <state key="normal" image="scan_qr_code"/>
+                                        <connections>
+                                            <action selector="actionScan:" destination="QEP-Jy-HQC" eventType="touchUpInside" id="Yi2-Mu-86S"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3G7-cO-lIJ" firstAttribute="top" secondItem="7CH-c2-QYM" secondAttribute="bottom" constant="85" id="43x-EK-OOh"/>
+                                    <constraint firstItem="Lga-b5-dmK" firstAttribute="top" secondItem="3G7-cO-lIJ" secondAttribute="bottom" constant="30" id="6R0-aP-2IL"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lga-b5-dmK" secondAttribute="bottom" id="8ib-nk-ByC"/>
+                                    <constraint firstItem="Mp0-5z-Nmd" firstAttribute="top" secondItem="D4x-eT-4Qz" secondAttribute="top" constant="43" id="CsC-t5-jrj"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lga-b5-dmK" secondAttribute="trailing" constant="15" id="DgL-tR-Lwm"/>
+                                    <constraint firstItem="7CH-c2-QYM" firstAttribute="top" secondItem="Mp0-5z-Nmd" secondAttribute="bottom" constant="30" id="OZG-uw-RzA"/>
+                                    <constraint firstItem="3G7-cO-lIJ" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="Wov-Ay-eYY"/>
+                                    <constraint firstItem="Lga-b5-dmK" firstAttribute="leading" secondItem="D4x-eT-4Qz" secondAttribute="leading" constant="15" id="dN2-Kk-jpo"/>
+                                    <constraint firstItem="7CH-c2-QYM" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="ehp-Ry-nSg"/>
+                                    <constraint firstItem="Mp0-5z-Nmd" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="fW9-DL-nzR"/>
+                                    <constraint firstItem="Lga-b5-dmK" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="kXi-Er-dIg"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEy-QK-OAM">
+                                <rect key="frame" x="68" y="577" width="238" height="50"/>
+                                <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="238" id="G2Q-nh-lTf"/>
+                                    <constraint firstAttribute="height" constant="50" id="peh-h5-0Wm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                <state key="normal" title="ADD TOKENS">
+                                    <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionAddTokens:" destination="QEP-Jy-HQC" eventType="touchUpInside" id="zzA-3s-GSC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zEy-QK-OAM" firstAttribute="centerX" secondItem="fRX-5m-Qli" secondAttribute="centerX" id="6yU-7u-3ts"/>
+                            <constraint firstItem="782-2F-nGn" firstAttribute="leading" secondItem="fRX-5m-Qli" secondAttribute="leading" id="9f2-zp-dpK"/>
+                            <constraint firstItem="D4x-eT-4Qz" firstAttribute="top" secondItem="782-2F-nGn" secondAttribute="bottom" id="FRg-3B-cvr"/>
+                            <constraint firstAttribute="trailing" secondItem="782-2F-nGn" secondAttribute="trailing" id="J9f-pP-yFR"/>
+                            <constraint firstItem="D4x-eT-4Qz" firstAttribute="leading" secondItem="fRX-5m-Qli" secondAttribute="leading" id="OXn-SA-2Yy"/>
+                            <constraint firstItem="782-2F-nGn" firstAttribute="top" secondItem="fRX-5m-Qli" secondAttribute="top" id="eRh-Dn-wqA"/>
+                            <constraint firstItem="t8Y-Yf-LYM" firstAttribute="top" secondItem="zEy-QK-OAM" secondAttribute="bottom" constant="40" id="fSu-2s-CIy"/>
+                            <constraint firstItem="t8Y-Yf-LYM" firstAttribute="top" secondItem="D4x-eT-4Qz" secondAttribute="bottom" id="o7p-v6-jQE"/>
+                            <constraint firstAttribute="trailing" secondItem="D4x-eT-4Qz" secondAttribute="trailing" id="y6g-ic-bsd"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="iYV-aX-mok" appends="YES" id="Hrd-ag-0gY"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="D4x-eT-4Qz" id="YoC-Tg-pfK"/>
+                        <outlet property="tokenAddressTextField" destination="Lga-b5-dmK" id="7AJ-97-HaS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kuH-UR-AAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iYV-aX-mok">
+                    <connections>
+                        <action selector="actionTap:" destination="QEP-Jy-HQC" id="jtw-Uy-a8m"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1284" y="551.87406296851577"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="11" height="20"/>
         <image name="ic-check" width="18" height="12"/>
+        <image name="scan_qr_code" width="112" height="83"/>
     </resources>
 </document>

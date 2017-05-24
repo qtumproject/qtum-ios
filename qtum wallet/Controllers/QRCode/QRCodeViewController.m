@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 21.11.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
 #import "QRCodeViewController.h"
@@ -76,6 +76,10 @@
 
 - (IBAction)backButtonWasPressed:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if ([self.delegate respondsToSelector:@selector(backButtonPressed)]) {
+        [self.delegate backButtonPressed];
+    }else{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 @end

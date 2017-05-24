@@ -3,7 +3,7 @@
 //  qtum walletTests
 //
 //  Created by Sharaev Vladimir on 14.12.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

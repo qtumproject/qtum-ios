@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 21.11.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,7 +14,9 @@
 - (void)qrCodeScanned:(NSDictionary *)dictionary;
 
 @optional
+
 - (void)showNextVC;
+- (void)backButtonPressed;
 
 @end
 
