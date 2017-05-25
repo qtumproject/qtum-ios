@@ -38,6 +38,14 @@
 }
 
 
+- (AbiinterfaceItem*)getTokenStandartTransferMethodInterface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[ContractFileManager getAbiFromBundle]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"transfer"];
+    NSArray *filteredArray = [interphase.functionItems filteredArrayUsingPredicate:predicate];
+    return filteredArray.firstObject;
+}
+
 - (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName {
     
     InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[ContractFileManager getAbiFromBundleWithTemplate:templateName]];

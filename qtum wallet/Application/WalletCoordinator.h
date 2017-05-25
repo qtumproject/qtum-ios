@@ -28,15 +28,12 @@
 - (void)didBackPressed;
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 - (void)didDeselectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
 - (void)didPressedTokenFunctionWithItem:(Token*) item;
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token;
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
 - (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
                        andToken:(Token*) token;
-
 
 @end
 

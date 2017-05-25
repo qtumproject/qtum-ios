@@ -10,10 +10,18 @@
 #import "Token.h"
 #import "WalletCoordinator.h"
 
+@protocol TokenListViewControllerDelegate <NSObject>
+
+@required
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
+
+@end
+
 @interface TokenListViewController : UIViewController
 
 @property (strong, nonatomic) NSArray<Token*>* tokens;
-@property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <TokenListViewControllerDelegate> delegate;
 
 -(void)reloadTable;
 

@@ -28,7 +28,7 @@
 #import "NSString+Extension.h"
 #import "TransactionManager.h"
 
-@interface WalletCoordinator ()
+@interface WalletCoordinator () <TokenListViewControllerDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) BalancePageViewController* pageViewController;

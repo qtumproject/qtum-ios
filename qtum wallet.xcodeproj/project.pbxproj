@@ -139,6 +139,8 @@
 		B3E1591E1ED5BED700D70A87 /* Version1 in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591C1ED5BED700D70A87 /* Version1 */; };
 		B3E1591F1ED5BED700D70A87 /* Version2 in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591D1ED5BED700D70A87 /* Version2 */; };
 		B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */; };
+		B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */; };
+		B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159281ED6E3C500D70A87 /* ChoseTokenPaymentCell.m */; };
 		B3E3A1651E850572002A488F /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1641E850572002A488F /* AppSettings.m */; };
 		B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */; };
 		B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A18A1E852F27002A488F /* SocketManager.m */; };
@@ -497,6 +499,10 @@
 		B3E1591D1ED5BED700D70A87 /* Version2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Version2; sourceTree = "<group>"; };
 		B3E159201ED6B1A200D70A87 /* AddNewTokensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTokensViewController.h; sourceTree = "<group>"; };
 		B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTokensViewController.m; sourceTree = "<group>"; };
+		B3E159231ED6E2C200D70A87 /* ChoseTokenPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentViewController.h; sourceTree = "<group>"; };
+		B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseTokenPaymentViewController.m; sourceTree = "<group>"; };
+		B3E159271ED6E3C500D70A87 /* ChoseTokenPaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentCell.h; sourceTree = "<group>"; };
+		B3E159281ED6E3C500D70A87 /* ChoseTokenPaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseTokenPaymentCell.m; sourceTree = "<group>"; };
 		B3E3A1631E850572002A488F /* AppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettings.h; sourceTree = "<group>"; };
 		B3E3A1641E850572002A488F /* AppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettings.m; sourceTree = "<group>"; };
 		B3E3A1671E8505EC002A488F /* NSUserDefaults+Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Settings.h"; sourceTree = "<group>"; };
@@ -1113,6 +1119,15 @@
 			name = "Tokens Templates";
 			sourceTree = "<group>";
 		};
+		B3E159261ED6E39F00D70A87 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B3E159271ED6E3C500D70A87 /* ChoseTokenPaymentCell.h */,
+				B3E159281ED6E3C500D70A87 /* ChoseTokenPaymentCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		B3F06D071E699371006341F7 /* Subscribe */ = {
 			isa = PBXGroup;
 			children = (
@@ -1231,8 +1246,11 @@
 		E7396AF11DDEF81A0002CD47 /* NewPayment */ = {
 			isa = PBXGroup;
 			children = (
+				B3E159261ED6E39F00D70A87 /* Cell */,
 				E7396AF21DDEF8260002CD47 /* NewPaymentViewController.h */,
 				E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */,
+				B3E159231ED6E2C200D70A87 /* ChoseTokenPaymentViewController.h */,
+				B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */,
 			);
 			name = NewPayment;
 			path = Controllers/NewPayment;
@@ -1974,6 +1992,7 @@
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
+				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,
 				B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */,
 				B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */,
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
@@ -2042,6 +2061,7 @@
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E73D37011ECF1684009173BD /* ActivityTokenTableViewCell.m in Sources */,
+				B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */,
 				B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */,
 				B3C08B151ED3382300713B15 /* keccak.c in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,

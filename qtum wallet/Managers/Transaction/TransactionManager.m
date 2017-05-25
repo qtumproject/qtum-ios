@@ -12,6 +12,7 @@
 #import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
 #import "BTCTransactionOutput+Address.h"
+#import "ContractManager.h"
 
 static double FEE = 10000000;
 static NSString* op_exec = @"c1";
@@ -77,6 +78,20 @@ static NSString* op_exec = @"c1";
         }];
     } andFailureHandler:^(NSError *error, NSString *message) {
         completion(error,nil);
+    }];
+}
+
+- (void)sendTransactionToToken:(Token*) token
+                     toAddress:(NSString*) toAddress
+                        amount:(CGFloat) amount
+                    andHandler:(void(^)(NSError* error, id response)) completion{
+    
+    
+    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item andParam:inputs];
+    __weak __typeof(self)weakSelf = self;
+    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+        
+        [weakSelf.functionDetailController showResultViewWithOutputs:nil];
     }];
 }
 

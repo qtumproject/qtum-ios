@@ -36,4 +36,9 @@
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
                 andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion;
 
+- (void)sendTransactionToToken:(Token*) token
+                     toAddress:(NSString*) toAddress
+                        amount:(CGFloat) amount
+                    andHandler:(void(^)(NSError* error, id response)) completion;
+
 @end

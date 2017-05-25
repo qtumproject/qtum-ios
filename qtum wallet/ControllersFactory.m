@@ -39,6 +39,7 @@
 #import "TemplateTokenViewController.h"
 #import "AddNewTokensViewController.h"
 #import "QRCodeViewController.h"
+#import "ChoseTokenPaymentViewController.h"
 
 
 @implementation ControllersFactory
@@ -198,6 +199,11 @@
 
 -(QRCodeViewController*)createQRCodeViewControllerForSubscribe{
     QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"QRCodeViewController"];
+    return controller;
+}
+
+-(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController{
+    ChoseTokenPaymentViewController* controller = (ChoseTokenPaymentViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"ChoseTokenPaymentViewController"];
     return controller;
 }
 
