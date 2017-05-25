@@ -34,5 +34,6 @@
 @property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak,nonatomic) id <ControllerDelegate> controllerDelegate;
+@property (nonatomic) BOOL haveTokens;
 
 @end

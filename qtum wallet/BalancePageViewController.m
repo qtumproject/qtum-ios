@@ -20,7 +20,6 @@
     
     self.delegate = self;
     self.dataSource = self;
-    
 }
 
 #pragma mark - Getters
@@ -71,5 +70,19 @@
     return self.controllers[nextIndex];
 }
 
+#pragma makr - Public Methods
+
+-(void)scrollToIndex:(NSInteger)index animated:(BOOL)animated{
+    
+    if (index < 0 || index >= _controllers.count) {
+        return;
+    }
+    
+    [self setViewControllers:@[[_controllers objectAtIndex:index]] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:nil];
+}
+
+- (void)setScrollEnable:(BOOL)enable{
+    self.dataSource = enable ? self : nil;
+}
 
 @end

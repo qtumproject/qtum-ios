@@ -27,14 +27,11 @@ static NSInteger countOfSections = 2;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         WalletHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:WalletTypeCellWithCollectionIdentifire];
-        cell.delegate = self.delegate;
         
-        cell.adressLabel.text = ([self.wallet isKindOfClass:[Token class]]) ? NSLocalizedString(@"Contract Address", "") : NSLocalizedString(@"QTUM Address", "");
-        cell.adressValueLabel.text = self.wallet.mainAddress;
-        cell.valueLabel.text = [NSString stringWithFormat:@"%f",self.wallet.balance];
-        cell.typeWalletLabel.text = self.wallet.symbol;
-        cell.unconfirmedValue.text = [NSString stringWithFormat:@"%f",self.wallet.unconfirmedBalance];
-        cell.spendable = self.wallet;
+        cell.delegate = self.delegate;
+        [cell setData:self.wallet];
+        [cell setCellType:[self getHeaderCellType]];
+        
         return cell;
     } else {
         HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCell"];
@@ -64,7 +61,17 @@ static NSInteger countOfSections = 2;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-        return 212;
+        switch ([self getHeaderCellType]) {
+            case HeaderCellTypeWithoutPageControl:
+                return 192;
+            case HeaderCellTypeWithoutNotCorfirmedBalance:
+                return 161;
+            case HeaderCellTypeWithoutAll:
+                return 152;
+            case HeaderCellTypeAllVisible:
+            default:
+                return 152;
+        }
     } else {
         return 75;
     }
@@ -136,5 +143,23 @@ static NSInteger countOfSections = 2;
     [self.delegate didDeselectHistoryItemIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
 }
 
+#pragma mark - Private Methods
+
+- (HeaderCellType)getHeaderCellType{
+    
+    if (self.wallet.unconfirmedBalance == 0.0f && !self.haveTokens) {
+        return HeaderCellTypeWithoutAll;
+    }
+    
+    if (self.wallet.unconfirmedBalance == 0.0f) {
+        return HeaderCellTypeWithoutNotCorfirmedBalance;
+    }
+    
+    if (!self.haveTokens) {
+        return HeaderCellTypeWithoutPageControl;
+    }
+    
+    return HeaderCellTypeAllVisible;
+}
 
 @end

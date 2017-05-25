@@ -79,6 +79,7 @@
     self.delegateDataSource = [WalletHistoryDelegateDataSource new];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
+    self.delegateDataSource.haveTokens = [[TokenManager sharedInstance] gatAllTokens].count > 0;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
     
@@ -90,6 +91,7 @@
     
     self.pageViewController = self.navigationController.viewControllers[0];
     self.pageViewController.controllers = @[controller,tokenController];
+    [self.pageViewController setScrollEnable:[[TokenManager sharedInstance] gatAllTokens].count > 0];
 }
 
 #pragma mark - WalletCoordinatorDelegate
@@ -271,7 +273,6 @@
     }
 }
 
-
 -(void)subcribeEvents{
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSpendables) name:kWalletDidChange object:nil];
@@ -279,9 +280,14 @@
 }
 
 -(void)updateSpendables {
+    NSArray *tokensArray = [[TokenManager sharedInstance] gatAllTokens];
+    self.delegateDataSource.haveTokens = tokensArray.count > 0;
     [self.historyController reloadTableView];
-    self.tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    self.tokenController.tokens = tokensArray;
     [self.tokenController reloadTable];
+    
+    [self.pageViewController scrollToIndex:0 animated:YES];
+    [self.pageViewController setScrollEnable:tokensArray.count > 0];
 }
 
 -(void)updateBalance{
