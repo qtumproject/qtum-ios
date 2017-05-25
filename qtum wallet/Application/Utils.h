@@ -10,6 +10,7 @@
 
 extern NSString const *PUBLIC_ADDRESS_STRING_KEY;
 extern NSString const *PRIVATE_ADDRESS_STRING_KEY;
+extern NSString const *EXPORT_CONTRACTS_TOKENS_KEY;
 extern NSString const *AMOUNT_STRING_KEY;
 extern NSString const *kIsToken;
 

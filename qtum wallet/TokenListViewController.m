@@ -8,10 +8,14 @@
 
 #import "TokenListViewController.h"
 #import "TokenCell.h"
+#import "QRCodeManager.h"
+
+NSString *const ShareContractTokensText = @"It's my tokens";
 
 @interface TokenListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
 @end
 
@@ -22,11 +26,16 @@
     [self.tableView reloadData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    if ([SVProgressHUD isVisible]) {
+        [SVProgressHUD dismiss];
+    }
+}
+
 
 #pragma mark - Coordinator invocation
 
 -(void)reloadTable {
-    
     __weak __typeof(self)wealSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [wealSelf.tableView reloadData];
@@ -57,6 +66,53 @@
     TokenCell* cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
     [cell setupWithObject:self.tokens[indexPath.row]];
     return cell;
+}
+
+#pragma mark - Actions
+
+- (IBAction)actionShare:(id)sender {
+    [self createAndShareQRCode];
+}
+
+#pragma mark - Share Tokens
+
+- (void)createAndShareQRCode{
+    
+    if (self.tokens.count == 0) {
+        [SVProgressHUD showErrorWithStatus:@"You haven't tokens for share"];
+        return;
+    }
+    
+    if (![SVProgressHUD isVisible]) {
+        [SVProgressHUD show];
+    }
+    
+    NSMutableArray *array = [NSMutableArray new];
+    for (Token *token in self.tokens) {
+        [array addObject:token.contractAddress];
+    }
+    
+    NSArray *ar = @[@"asdf", @"asdf"];
+    
+    __weak typeof(self) weakSelf = self;
+    [QRCodeManager createQRCodeFromContractsTokensArray:[NSArray arrayWithArray:ar] forSize:CGSizeMake(500, 500) withCompletionBlock:^(UIImage *image) {
+        [SVProgressHUD dismiss];
+        if (!image) {
+            [SVProgressHUD showErrorWithStatus:@"Error in QRCodeCreation"];
+        }else{
+            [weakSelf shareQRCode:image];
+        }
+    }];
+}
+
+- (void)shareQRCode:(UIImage *)image{
+    NSString *text = ShareContractTokensText;
+    UIImage *qrCode = image;
+    
+    NSArray *sharedItems = @[qrCode, text];
+    UIActivityViewController *sharingVC = [[UIActivityViewController alloc] initWithActivityItems:sharedItems applicationActivities:nil];
+    
+    [self presentViewController:sharingVC animated:YES completion:nil];
 }
 
 @end

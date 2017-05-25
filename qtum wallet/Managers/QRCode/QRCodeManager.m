@@ -47,11 +47,18 @@
                                  AMOUNT_STRING_KEY : amountString,
                                  kIsToken : @(isToken)};
     
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
-                                                       options:0
-                                                         error:nil];
-    NSString *string = [[NSString alloc] initWithData:jsonData
-                                             encoding:NSUTF8StringEncoding];
+    NSString *string = [self createStringFromDictionary:dictionary];
+    
+    [self createQRCodeFromString:string forSize:size withCompletionBlock:^(UIImage *image) {
+        completionBlock(image);
+    }];
+}
+
++ (void)createQRCodeFromContractsTokensArray:(NSArray *)array forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *))completionBlock
+{
+    NSDictionary *dictionary = @{EXPORT_CONTRACTS_TOKENS_KEY : array};
+    
+    NSString *string = [self createStringFromDictionary:dictionary];
     
     [self createQRCodeFromString:string forSize:size withCompletionBlock:^(UIImage *image) {
         completionBlock(image);
@@ -73,6 +80,18 @@
                                      PRIVATE_ADDRESS_STRING_KEY : @""};
         return dictionary;
     }
+}
+
+#pragma mark - private methods
+
++ (NSString *)createStringFromDictionary:(NSDictionary *)dictionary{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                       options:0
+                                                         error:nil];
+    NSString *string = [[NSString alloc] initWithData:jsonData
+                                             encoding:NSUTF8StringEncoding];
+    
+    return string;
 }
 
 @end

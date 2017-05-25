@@ -866,6 +866,9 @@
                                                 </constraints>
                                                 <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="share"/>
+                                                <connections>
+                                                    <action selector="actionShare:" destination="RQz-Bn-0Xw" eventType="touchUpInside" id="MOM-E2-i3y"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -998,6 +1001,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="shareButton" destination="1Py-wP-ixQ" id="zvh-WP-4x1"/>
                         <outlet property="tableView" destination="UML-TT-QYP" id="6iY-2d-VYP"/>
                     </connections>
                 </viewController>
