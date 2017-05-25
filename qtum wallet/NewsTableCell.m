@@ -11,24 +11,20 @@
 @implementation NewsTableCell
 
 -(void)prepareForReuse {
-    self.customImageView.image = [UIImage imageNamed:@"no-image"];
-    self.customTopLabel.text = @"";
-    self.customBottomLabel.text = @"";
+    self.titleLabel.text = @"";
+    self.descriptionLabel.text = @"";
+    self.dateLabel.text = @"";
 }
 
 #pragma mark - Public Methods
 
 -(void)setContentWithDict:(NewsCellModel*) object {
-    __weak __typeof(self)weakSelf = self;
-    NSString* url = object.imageUrl;
-    self.customImageView.associatedObject = url;
-    [[ImageLoader sharedInstance] getImageWithUrl:url withResultHandler:^(UIImage *image) {
-        if ([weakSelf.customImageView.associatedObject isEqualToString:url] && image) {
-            weakSelf.customImageView.image = image;
-        }
-    }];
-    self.customTopLabel.text = object.title;
-    self.customBottomLabel.text = [NSString stringWithFormat:@"%@", object.date];
+    self.descriptionLabel.text = object.shortString;
+    self.titleLabel.text = object.title;
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"dd MMM"];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[LanguageManager currentLanguageCode]]];
+    self.dateLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:object.date]];
 }
 
 @end

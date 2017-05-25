@@ -51,13 +51,16 @@
 
 -(void)configPullRefresh{
     self.refresh = [[UIRefreshControl alloc] init];
-    self.refresh.tintColor = customBlueColor();
-    [_refresh addTarget:self action:@selector(actionRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.refresh setTintColor:customBlueColor()];
+    [self.refresh addTarget:self action:@selector(actionRefresh) forControlEvents:UIControlEventValueChanged];
 
     [self.tableView addSubview:self.refresh];
 }
 
 -(void)configTableView{
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 120.0f;
+    
     self.tableView.delegate = self.delegateDataSource;
     self.tableView.dataSource = self.delegateDataSource;
 }
@@ -99,7 +102,6 @@
 
 
 #pragma mark - Actions
-
 
 -(void)actionRefresh{
     [self getData];

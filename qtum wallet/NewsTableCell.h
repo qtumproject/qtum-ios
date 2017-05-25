@@ -11,9 +11,10 @@
 
 @interface NewsTableCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *customImageView;
-@property (weak, nonatomic) IBOutlet UILabel *customTopLabel;
-@property (weak, nonatomic) IBOutlet UILabel *customBottomLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 
 -(void)setContentWithDict:(NewsCellModel*) object;
 
