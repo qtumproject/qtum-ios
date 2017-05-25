@@ -13,6 +13,7 @@
 @required
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
 - (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
+- (void)resetToDefaults;
 
 @end
 

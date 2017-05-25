@@ -38,7 +38,7 @@
 
 - (void)sendTransactionToToken:(Token*) token
                      toAddress:(NSString*) toAddress
-                        amount:(CGFloat) amount
-                    andHandler:(void(^)(NSError* error, id response)) completion;
+                        amount:(NSNumber*) amount
+                    andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion;
 
 @end

@@ -49,6 +49,8 @@
             nextStingOffset += (constantOffset * [dict[@"shift"] integerValue]);
             [stringDict setObject:dict[@"data"] forKey:@"value"];
             [stringsArray addObject:[stringDict copy]];
+        } else if ([array[i] isKindOfClass:[NSData class]]) {
+            //TODO create ADDRESS type
         }
     }
     

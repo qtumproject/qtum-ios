@@ -83,15 +83,14 @@ static NSString* op_exec = @"c1";
 
 - (void)sendTransactionToToken:(Token*) token
                      toAddress:(NSString*) toAddress
-                        amount:(CGFloat) amount
-                    andHandler:(void(^)(NSError* error, id response)) completion{
+                        amount:(NSNumber*) amount
+                    andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
-    
-    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item andParam:inputs];
+    AbiinterfaceItem* transferMethod = [[ContractManager sharedInstance] getTokenStandartTransferMethodInterface];
+    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:transferMethod andParam:@[toAddress,amount]];
     __weak __typeof(self)weakSelf = self;
     [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
-        
-        [weakSelf.functionDetailController showResultViewWithOutputs:nil];
+        completion(error,transaction,hashTransaction);
     }];
 }
 

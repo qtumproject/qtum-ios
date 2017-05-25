@@ -32,9 +32,11 @@
     Token* token = self.tokens[indexPath.row];
     if ([token isEqual:self.activeToken]) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        self.activeToken = nil;
+        [self.delegate resetToDefaults];
     } else {
         [self.delegate didSelectTokenIndexPath:indexPath withItem:token];
-        self.activeToken = nil;
+
     }
 }
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

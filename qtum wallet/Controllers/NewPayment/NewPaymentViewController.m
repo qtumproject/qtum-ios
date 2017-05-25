@@ -60,7 +60,7 @@
     self.tokenDisclousureImage.hidden =
     self.tokenUnderlineView.hidden = !isTokensExists;
     self.tokenDisclousureImage.tintColor = customBlueColor();
-    
+    self.tokenTextField.text =  NSLocalizedString(@"QTUM (Default)", @"");
     self.residueValueLabel.text = self.currentBalance;
 }
 
@@ -83,6 +83,35 @@
     self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.unconfirmedBalance];
     self.addressTextField.text = self.adress;
     self.amountTextField.text = self.amount;
+}
+
+-(void)payWithWallet {
+    
+    NSNumber *amount = @([self.amountTextField.text doubleValue]);
+    NSString *address = self.addressTextField.text;
+    
+    NSArray *array = @[@{@"amount" : amount, @"address" : address}];
+    
+    [SVProgressHUD show];
+    
+    __weak typeof(self) weakSelf = self;
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
+        if (!error) {
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
+            [weakSelf backbuttonPressed:nil];
+        } else {
+            [SVProgressHUD dismiss];
+            [weakSelf showAlertWithTitle:NSLocalizedString(@"Error", "") mesage:response andActions:nil];
+        }
+    }];
+}
+
+-(void)payWithToken {
+    
+    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:self.addressTextField.text amount:@([self.amountTextField.text doubleValue]) andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
+        
+    }];
+    
 }
 
 #pragma mark - iMessage
@@ -178,23 +207,11 @@
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
     
-    NSNumber *amount = @([self.amountTextField.text doubleValue]);
-    NSString *address = self.addressTextField.text;
-    
-    NSArray *array = @[@{@"amount" : amount, @"address" : address}];
-        
-    [SVProgressHUD show];
-    
-    __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
-        if (!error) {
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
-            [weakSelf backbuttonPressed:nil];
-        } else {
-            [SVProgressHUD dismiss];
-            [weakSelf showAlertWithTitle:NSLocalizedString(@"Error", "") mesage:response andActions:nil];
-        }
-    }];
+    if (self.token) {
+        [self payWithToken];
+    } else {
+        [self payWithWallet];
+    }
 }
 
 - (IBAction)actionVoidTap:(id)sender{
@@ -228,6 +245,11 @@
 
 - (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
     
+}
+
+- (void)resetToDefaults{
+    self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+    self.token = nil;
 }
 
 #pragma mark - 
