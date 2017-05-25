@@ -15,8 +15,6 @@
 
 @end
 
-static NSInteger firstCellHeight = 325;
-static NSInteger cellHeight = 100;
 static NSString* reuseIdentifire = @"NewsTableCell";
 static NSString* firstReuseIdentifire = @"FirstNewsTableCell";
 
@@ -29,30 +27,16 @@ static NSString* firstReuseIdentifire = @"FirstNewsTableCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        FirstNewTableCell *cell = [tableView dequeueReusableCellWithIdentifier:firstReuseIdentifire];
-        NewsCellModel* object = self.dataArray[indexPath.row];
-        [cell setContentWithDict:object];
-        return cell;
-    } else {
         NewsTableCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifire];
         NewsCellModel* object = self.dataArray[indexPath.row];
         [cell setContentWithDict:object];
         return cell;
-    }
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        return firstCellHeight;
-    }
-    return cellHeight;
 }
 
 -(void)setDataArray:(NSArray<NewsCellModel *> *)dataArray{
