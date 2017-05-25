@@ -56,7 +56,7 @@
     CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[[ControllersFactory sharedInstance] createCustomAbiInterphaseViewController];
     controller.delegate = self;
     
-    controller.formModel = [[ContractManager sharedInstance] getTokenIntephaseWithTemplate:self.templateName];
+    controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:self.templateName];
 
     [self.modalNavigationController pushViewController:controller animated:YES];
 }

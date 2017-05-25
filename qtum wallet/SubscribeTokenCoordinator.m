@@ -9,8 +9,11 @@
 #import "SubscribeTokenCoordinator.h"
 #import "SubscribeTokenViewController.h"
 #import "SubscribeTokenDataSourceDelegate.h"
+#import "AddNewTokensViewController.h"
+#import "QRCodeViewController.h"
+#import "ContractManager.h"
 
-@interface SubscribeTokenCoordinator ()
+@interface SubscribeTokenCoordinator () <QRCodeViewControllerDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (weak, nonatomic) SubscribeTokenViewController* subscribeViewController;
@@ -44,4 +47,56 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+-(void)didAddNewPressed {
+    AddNewTokensViewController* controller = (AddNewTokensViewController*)[[ControllersFactory sharedInstance] createAddNewTokensViewController];
+    controller.delegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)didBackButtonPressedFromAddNewToken{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)didScanButtonPressed {
+    QRCodeViewController* controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewControllerForSubscribe];
+    controller.delegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - QRCodeViewControllerDelegate
+
+- (void)showNextVC {
+    
+}
+
+- (void)backButtonPressed{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)qrCodeScanned:(NSDictionary *)dictionary {
+    BOOL isToken = [dictionary[@"isToken"] boolValue];
+//    if (isToken) {
+//        NSString* hashFuction = [[ContractManager sharedInstance] getStringHashOfFunction:object andParam:nil];
+//        __weak __typeof(self)weakSelf = self;
+//        [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
+//            
+//            if (![responseObject isKindOfClass:[NSError class]]) {
+//                NSString* data = responseObject[@"items"][0][@"output"];
+//                NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:object];
+//                
+//                NSMutableString* result = [NSMutableString new];
+//                for (id output in array) {
+//                    [result appendFormat:@"%@",output];
+//                }
+//                weakSelf.activityIndicator.hidden = YES;
+//                weakSelf.propertyValue.hidden = NO;
+//                weakSelf.propertyValue.text = result;
+//            }
+//        }];
+//    }
+}
+
+-(void)didAddNewTokenWithAddress:(NSString*) address{
+    
+}
 @end

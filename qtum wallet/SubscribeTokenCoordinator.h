@@ -13,6 +13,10 @@
 @protocol SubscribeTokenCoordinatorDelegate <NSObject>
 
 -(void)didBackButtonPressed;
+-(void)didAddNewPressed;
+-(void)didBackButtonPressedFromAddNewToken;
+-(void)didScanButtonPressed;
+-(void)didAddNewTokenWithAddress:(NSString*) address;
 
 @end
 

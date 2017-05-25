@@ -37,27 +37,8 @@
     return self;
 }
 
-//- (InterfaceInputFormModel*)getStandartTokenIntephase {
-//    
-//    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[ContractFileManager getAbiFromBundle]];
-//    return interphase;
-//}
-//
-//- (NSData*)getStandartTokenBitecodeWithParam:(NSDictionary*) args{
-//    
-//    NSMutableData* contractSource = [[ContractFileManager get] mutableCopy];
-//    [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromDictionary:args]];
-//    return [contractSource copy];
-//}
-//
-//- (NSData*)getStandartTokenBitecodeWithArray:(NSArray*) args{
-//    
-//    NSMutableData* contractSource = [[ContractFileManager getBitcodeFromBundle] mutableCopy];
-//    [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromArray:args]];
-//    return [contractSource copy];
-//}
 
-- (InterfaceInputFormModel*)getTokenIntephaseWithTemplate:(NSString*)templateName {
+- (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName {
     
     InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[ContractFileManager getAbiFromBundleWithTemplate:templateName]];
     return interphase;

@@ -37,6 +37,8 @@
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "TemplateTokenViewController.h"
+#import "AddNewTokensViewController.h"
+#import "QRCodeViewController.h"
 
 
 @implementation ControllersFactory
@@ -186,6 +188,16 @@
 
 -(TemplateTokenViewController*)createTemplateTokenViewController{
     TemplateTokenViewController* controller = (TemplateTokenViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
+    return controller;
+}
+
+-(AddNewTokensViewController*)createAddNewTokensViewController{
+    AddNewTokensViewController* controller = (AddNewTokensViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"AddNewTokensViewController"];
+    return controller;
+}
+
+-(QRCodeViewController*)createQRCodeViewControllerForSubscribe{
+    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"QRCodeViewController"];
     return controller;
 }
 

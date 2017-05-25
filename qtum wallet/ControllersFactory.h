@@ -31,6 +31,8 @@
 @class PhotoLibraryPopUpViewController;
 @class TokenDetailsViewController;
 @class LanguageViewController;
+@class AddNewTokensViewController;
+@class QRCodeViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -39,6 +41,7 @@
 + (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
+//Controllers
 -(UIViewController*)profileFlowTab;
 -(UIViewController*)newsFlowTab;
 -(UIViewController*)sendFlowTab;
@@ -61,6 +64,8 @@
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
 -(TokenDetailsViewController*)createTokenDetailsViewController;
 -(LanguageViewController*)createLanguageViewController;
+-(AddNewTokensViewController*)createAddNewTokensViewController;
+-(QRCodeViewController*)createQRCodeViewControllerForSubscribe;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController;
