@@ -169,7 +169,7 @@
 
 - (void)didPressedTokenFunctionWithItem:(Token*) item {
     TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-    controller.formModel = [[ContractManager sharedInstance] getTokenIntephaseWithTemplate:item.templateName];
+    controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:item.templateName];
     controller.delegate = self;
     controller.token = item;
     [self.navigationController pushViewController:controller animated:true];

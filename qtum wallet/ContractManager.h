@@ -14,7 +14,7 @@
 
 @interface ContractManager : NSObject
 
-- (InterfaceInputFormModel*)getTokenIntephaseWithTemplate:(NSString*)templateName;
+- (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName;
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args;
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args;
 - (NSString*)getStringHashOfFunction:(AbiinterfaceItem*) fuctionItem andParam:(NSArray<ResultTokenInputsModel*>*)inputs;
