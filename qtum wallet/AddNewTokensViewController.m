@@ -61,9 +61,8 @@ const CGFloat TextFieldAlpha = 0.3f;
     [self.delegate didBackButtonPressedFromAddNewToken];
 }
 
-- (IBAction)actionAddTokens:(id)sender
-{
-    
+- (IBAction)actionAddTokens:(id)sender {
+    [self.delegate didAddNewTokenWithAddress:self.tokenAddressTextField.text];
 }
 
 - (IBAction)actionTap:(id)sender

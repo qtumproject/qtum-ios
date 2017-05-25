@@ -138,6 +138,7 @@
 		B3E1591B1ED5A87D00D70A87 /* TokenDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591A1ED5A87D00D70A87 /* TokenDetails.storyboard */; };
 		B3E1591E1ED5BED700D70A87 /* Version1 in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591C1ED5BED700D70A87 /* Version1 */; };
 		B3E1591F1ED5BED700D70A87 /* Version2 in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591D1ED5BED700D70A87 /* Version2 */; };
+		B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */; };
 		B3E3A1651E850572002A488F /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1641E850572002A488F /* AppSettings.m */; };
 		B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */; };
 		B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A18A1E852F27002A488F /* SocketManager.m */; };
@@ -494,6 +495,8 @@
 		B3E1591A1ED5A87D00D70A87 /* TokenDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TokenDetails.storyboard; sourceTree = "<group>"; };
 		B3E1591C1ED5BED700D70A87 /* Version1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Version1; sourceTree = "<group>"; };
 		B3E1591D1ED5BED700D70A87 /* Version2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Version2; sourceTree = "<group>"; };
+		B3E159201ED6B1A200D70A87 /* AddNewTokensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTokensViewController.h; sourceTree = "<group>"; };
+		B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTokensViewController.m; sourceTree = "<group>"; };
 		B3E3A1631E850572002A488F /* AppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettings.h; sourceTree = "<group>"; };
 		B3E3A1641E850572002A488F /* AppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettings.m; sourceTree = "<group>"; };
 		B3E3A1671E8505EC002A488F /* NSUserDefaults+Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Settings.h"; sourceTree = "<group>"; };
@@ -1119,6 +1122,8 @@
 				B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */,
 				B3F06D081E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.h */,
 				B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */,
+				B3E159201ED6B1A200D70A87 /* AddNewTokensViewController.h */,
+				B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */,
 			);
 			name = Subscribe;
 			sourceTree = "<group>";
@@ -1946,6 +1951,7 @@
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
 				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
+				B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */,
 				B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */,
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
 				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
