@@ -29,11 +29,18 @@ static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIden
 @property (weak, nonatomic) IBOutlet UIButton *showAddresButton;
 @property (weak, nonatomic) IBOutlet CustomPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UILabel *notConfirmedTitleLabel;
+@property (weak, nonatomic) IBOutlet UIView *separatorView;
+@property (weak, nonatomic) IBOutlet UILabel *availableTitleLabel;
 
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak, nonatomic) id <Spendable> spendable;
 
 - (void)setData:(id <Spendable>)wallet;
 - (void)setCellType:(HeaderCellType)type;
+
+- (void)cellYPositionChanged:(CGFloat)yPosition scrolledDelta:(CGFloat)scrolledDelta;
+- (BOOL)needShowHeader:(CGFloat)yPosition;
+
++ (CGFloat)getHeaderHeight;
 
 @end

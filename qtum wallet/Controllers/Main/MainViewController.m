@@ -19,6 +19,8 @@
 #import "WalletCoordinator.h"
 #import "HistoryHeaderVIew.h"
 
+CGFloat const HeaderHeightShowed = 50.0f;
+
 @interface MainViewController () <QRCodeViewControllerDelegate>
 
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
@@ -35,7 +37,10 @@
 @property (assign, nonatomic) BOOL isNavigationBarFadeout;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *availabelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *uncorfirmedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedTextLabel;
 
 @property (nonatomic) BOOL balanceLoaded;
 @property (nonatomic) BOOL historyLoaded;
@@ -48,7 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+ 
     self.wigetBalanceLabel.text =
     self.balanceLabel.text = @"0";
 
@@ -104,9 +109,6 @@
 
 -(void)configTableView{
     self.tableView.tableFooterView = [UIView new];
-    CGFloat offset = self.customNavigationBar.frame.size.height;
-    self.tableView.contentInset =
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
     self.tableView.dataSource = self.delegateDataSource;
     self.tableView.delegate = self.delegateDataSource;
     self.delegateDataSource.tableView = self.tableView;
@@ -133,6 +135,22 @@
             self.customNavigationBar.layer.backgroundColor = customBlueColor().CGColor;
         }];
     }
+}
+
+- (void)needShowHeader{
+    if (self.headerHeightConstraint.constant == HeaderHeightShowed) {
+        return;
+    }
+    
+    self.headerHeightConstraint.constant = HeaderHeightShowed;
+}
+
+- (void)needHideHeader{
+    if (self.headerHeightConstraint.constant == 0.0f) {
+        return;
+    }
+    
+    self.headerHeightConstraint.constant = 0;
 }
 
 #pragma mark - Private Methods

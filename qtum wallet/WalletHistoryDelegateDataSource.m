@@ -15,6 +15,7 @@
 @interface WalletHistoryDelegateDataSource ()
 
 @property(weak,nonatomic)HistoryHeaderVIew* sectionHeaderView;
+@property (nonatomic, assign) CGFloat lastContentOffset;
 
 @end
 
@@ -39,8 +40,8 @@ static NSInteger countOfSections = 2;
             cell = [[HistoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HistoryTableViewCell"];
         }
         
-        HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
-        cell.historyElement = element;
+//        HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
+//        cell.historyElement = element;
         return cell;
     }
 }
@@ -54,6 +55,7 @@ static NSInteger countOfSections = 2;
     if (section == 0) {
         return 1;
     } else {
+        return 25;
         return  self.wallet.historyStorage.historyPrivate.count;
     }
 }
@@ -70,7 +72,7 @@ static NSInteger countOfSections = 2;
                 return 152;
             case HeaderCellTypeAllVisible:
             default:
-                return 152;
+                return 212;
         }
     } else {
         return 75;
@@ -105,18 +107,21 @@ static NSInteger countOfSections = 2;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    static CGFloat previousOffset;
-    static CGFloat fixedHeaderPosition = 148;
-    CGFloat scrollDiff = scrollView.contentOffset.y - previousOffset;
-    BOOL isScrollingUp = scrollDiff > fixedHeaderPosition;
-
-    if (isScrollingUp) {
-        [self.controllerDelegate fadeInNavigationBar];
-        [self.sectionHeaderView fadeOutActivity];
-    } else {
-        [self.controllerDelegate fadeOutNavigationBar];
-        [self.sectionHeaderView fadeInActivity];
-    }
+    CGFloat scrollDiff = scrollView.contentOffset.y - self.lastContentOffset;
+    self.lastContentOffset = scrollView.contentOffset.y;
+    
+//    static CGFloat previousOffset;
+//    static CGFloat fixedHeaderPosition = 148;
+//    BOOL isScrollingUp = scrollDiff > fixedHeaderPosition;
+//    if (isScrollingUp) {
+//        [self.controllerDelegate fadeInNavigationBar];
+//        [self.sectionHeaderView fadeOutActivity];
+//    } else {
+//        [self.controllerDelegate fadeOutNavigationBar];
+//        [self.sectionHeaderView fadeInActivity];
+//    }
+    
+    [self didScrollForheaderCell:scrollView scrolledDelta:scrollDiff];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView willDecelerate:(BOOL)decelerate{
@@ -147,6 +152,8 @@ static NSInteger countOfSections = 2;
 
 - (HeaderCellType)getHeaderCellType{
     
+    return HeaderCellTypeAllVisible;
+    
     if (self.wallet.unconfirmedBalance == 0.0f && !self.haveTokens) {
         return HeaderCellTypeWithoutAll;
     }
@@ -160,6 +167,37 @@ static NSInteger countOfSections = 2;
     }
     
     return HeaderCellTypeAllVisible;
+}
+
+- (void)didScrollForheaderCell:(UIScrollView *)scrollView scrolledDelta:(CGFloat)scrolledDelta{
+    NSIndexPath *headerIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    WalletHeaderCell *headerCell = [self.tableView cellForRowAtIndexPath:headerIndexPath];
+    if (!headerCell) {
+        return;
+    }
+    
+    if (self.sectionHeaderView) {
+        CGFloat headerHeight = [WalletHeaderCell getHeaderHeight];
+        CGFloat headerPosition = self.sectionHeaderView.frame.origin.y - scrollView.contentOffset.y;
+        if (headerPosition <= headerHeight) {
+            scrollView.contentInset = UIEdgeInsetsMake(headerHeight, 0, 0, 0);
+        }else{
+            scrollView.contentInset = UIEdgeInsetsZero;
+        }
+    }
+    
+    CGFloat position = headerCell.frame.origin.y - scrollView.contentOffset.y;
+    [headerCell cellYPositionChanged:position scrolledDelta:scrolledDelta];
+    
+    if ([headerCell needShowHeader:position]) {
+        if ([self.controllerDelegate respondsToSelector:@selector(needShowHeader)]) {
+            [self.controllerDelegate needShowHeader];
+        }
+    }else{
+        if ([self.controllerDelegate respondsToSelector:@selector(needHideHeader)]) {
+            [self.controllerDelegate needHideHeader];
+        }
+    }
 }
 
 @end
