@@ -81,8 +81,6 @@
     
     self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.balance - amount];
     self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.unconfirmedBalance];
-    self.addressTextField.text = self.adress;
-    self.amountTextField.text = self.amount;
 }
 
 -(void)payWithWallet {
@@ -108,16 +106,19 @@
 
 -(void)payWithToken {
     
+    [SVProgressHUD show];
     [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:self.addressTextField.text amount:@([self.amountTextField.text doubleValue]) andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
         
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(error ? @"Failed" : @"Done", "")];
     }];
-    
 }
 
 #pragma mark - iMessage
 
 -(void)setAdress:(NSString*)adress andValue:(NSString*)amount{
+    self.addressTextField.text =
     self.adress = adress;
+    self.amountTextField.text =
     self.amount = amount;
     [self updateControls];
 }

@@ -18,8 +18,9 @@
 - (AbiinterfaceItem*)getTokenStandartTransferMethodInterface;
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args;
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args;
-- (NSString*)getStringHashOfFunction:(AbiinterfaceItem*) fuctionItem andParam:(NSArray<ResultTokenInputsModel*>*)inputs;
-- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem andParam:(NSArray<ResultTokenInputsModel*>*)inputs;
+- (NSString*)getStringHashOfFunction:(AbiinterfaceItem*) fuctionItem;
+- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem;
+- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param;
 
 + (instancetype)sharedInstance;
 

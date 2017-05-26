@@ -208,7 +208,13 @@
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
                        andToken:(Token*) token {
     
-    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item andParam:inputs];
+    NSMutableArray* param = @[].mutableCopy;
+    for (int i = 0; i < inputs.count; i++) {
+        [param addObject:inputs[i].value];
+    }
+    
+    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item appendingParam:param];
+    
     __weak __typeof(self)weakSelf = self;
     [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
         

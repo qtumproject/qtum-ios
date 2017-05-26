@@ -66,7 +66,7 @@
     return [contractSource copy];
 }
 
-- (NSString*)getStringHashOfFunction:(AbiinterfaceItem*) fuctionItem andParam:(NSArray<ResultTokenInputsModel*>*)inputs{
+- (NSString*)getStringHashOfFunction:(AbiinterfaceItem*) fuctionItem{
     
     NSMutableString* param = [NSMutableString new];
     for (int i = 0; i < fuctionItem.inputs.count; i++) {
@@ -77,19 +77,36 @@
         }
     }
     NSString* functionSignature = [NSString stringWithFormat:@"%@(%@)",fuctionItem.name,param];
-    //        NSString* functionSignature = @"name()";
-    
-    
     return [[functionSignature sha3:256] substringToIndex:8];
 }
 
-- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem andParam:(NSArray<ResultTokenInputsModel*>*)inputs{
+- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem {
     
-    return [NSString dataFromHexString:[self getStringHashOfFunction:fuctionItem andParam:inputs]];
+    return [NSString dataFromHexString:[self getStringHashOfFunction:fuctionItem]];
 }
 
-
-
+- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param{
+    
+    NSAssert(fuctionItem.inputs.count == param.count, @"Function interface param count and param count must be equal");
+    NSMutableData* hashFunction = [[self getHashOfFunction:fuctionItem] mutableCopy];
+    NSMutableArray* mutableParam = [param mutableCopy];
+    for (int i = 0; i < param.count; i++) {
+        if (fuctionItem.inputs[i].type == AddressType && [param[i] isKindOfClass:[NSString class]]) {
+            NSData* hexDataFromBase58 = [param[i] dataFromBase58];
+            if (hexDataFromBase58.length == 25) {
+                NSData* addressData = [hexDataFromBase58 subdataWithRange:NSMakeRange(1, 20)];
+                [mutableParam replaceObjectAtIndex:i withObject:addressData];
+            } else {
+                return nil;
+            }
+        }
+    }
+    
+    NSData* args = [ContractArgumentsInterpretator contactArgumentsFromArray:[mutableParam copy]];
+    [hashFunction appendData:args];
+    
+    return [hashFunction copy];
+}
 
 
 @end

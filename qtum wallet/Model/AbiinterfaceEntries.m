@@ -38,6 +38,8 @@
         return UInt8Type;
     } else if ([typeString isEqualToString:@"string"]) {
         return StringType;
+    } else if ([typeString isEqualToString:@"address"]) {
+        return AddressType;
     }
     
     return BoolType;

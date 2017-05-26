@@ -30,7 +30,7 @@
     [self.activityIndicator startAnimating];
     self.propertyName.text = object.name;
     
-    NSString* hashFuction = [[ContractManager sharedInstance] getStringHashOfFunction:object andParam:nil];
+    NSString* hashFuction = [[ContractManager sharedInstance] getStringHashOfFunction:object];
     __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
         
