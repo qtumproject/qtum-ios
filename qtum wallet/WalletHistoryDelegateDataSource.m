@@ -40,8 +40,8 @@ static NSInteger countOfSections = 2;
             cell = [[HistoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HistoryTableViewCell"];
         }
         
-//        HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
-//        cell.historyElement = element;
+        HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
+        cell.historyElement = element;
         return cell;
     }
 }
@@ -55,7 +55,6 @@ static NSInteger countOfSections = 2;
     if (section == 0) {
         return 1;
     } else {
-        return 25;
         return  self.wallet.historyStorage.historyPrivate.count;
     }
 }
@@ -110,17 +109,6 @@ static NSInteger countOfSections = 2;
     CGFloat scrollDiff = scrollView.contentOffset.y - self.lastContentOffset;
     self.lastContentOffset = scrollView.contentOffset.y;
     
-//    static CGFloat previousOffset;
-//    static CGFloat fixedHeaderPosition = 148;
-//    BOOL isScrollingUp = scrollDiff > fixedHeaderPosition;
-//    if (isScrollingUp) {
-//        [self.controllerDelegate fadeInNavigationBar];
-//        [self.sectionHeaderView fadeOutActivity];
-//    } else {
-//        [self.controllerDelegate fadeOutNavigationBar];
-//        [self.sectionHeaderView fadeInActivity];
-//    }
-    
     [self didScrollForheaderCell:scrollView scrolledDelta:scrollDiff];
 }
 
@@ -151,8 +139,6 @@ static NSInteger countOfSections = 2;
 #pragma mark - Private Methods
 
 - (HeaderCellType)getHeaderCellType{
-    
-    return HeaderCellTypeAllVisible;
     
     if (self.wallet.unconfirmedBalance == 0.0f && !self.haveTokens) {
         return HeaderCellTypeWithoutAll;

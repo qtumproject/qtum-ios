@@ -73,6 +73,8 @@ CGFloat const HeaderHeightShowed = 50.0f;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    WalletHistoryDelegateDataSource *source = (WalletHistoryDelegateDataSource *)self.tableView.dataSource;
+    [self reloadHeader:source.wallet];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -166,6 +168,8 @@ CGFloat const HeaderHeightShowed = 50.0f;
 -(void)reloadTableView{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        WalletHistoryDelegateDataSource *source = (WalletHistoryDelegateDataSource *)self.tableView.dataSource;
+        [self reloadHeader:source.wallet];
         self.historyLoaded = YES;
         if (self.balanceLoaded && self.historyLoaded) {
             [SVProgressHUD dismiss];
@@ -181,12 +185,22 @@ CGFloat const HeaderHeightShowed = 50.0f;
     });
 }
 
+- (void)reloadHeader:(id <Spendable>)wallet{
+    
+    self.unconfirmedTextLabel.hidden =
+    self.uncorfirmedLabel.hidden = wallet.unconfirmedBalance == 0.0f;
+    
+    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%f",wallet.unconfirmedBalance];
+    self.availabelLabel.text = [NSString stringWithFormat:@"%f",wallet.balance];
+}
+
 -(void)setBalance{
     self.balanceLoaded = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        WalletHistoryDelegateDataSource *source = (WalletHistoryDelegateDataSource *)self.tableView.dataSource;
+        [self reloadHeader:source.wallet];
     });
-    //[self.tableView reloadData];
     if (self.balanceLoaded && self.historyLoaded) {
         [SVProgressHUD dismiss];
     }
