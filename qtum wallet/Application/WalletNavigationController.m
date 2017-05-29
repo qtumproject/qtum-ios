@@ -8,7 +8,7 @@
 
 #import "WalletNavigationController.h"
 
-@interface WalletNavigationController ()
+@interface WalletNavigationController () <UIGestureRecognizerDelegate>
 
 @end
 
@@ -18,6 +18,8 @@
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.interactivePopGestureRecognizer.delegate = self;
+    self.interactivePopGestureRecognizer.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {

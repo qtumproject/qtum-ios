@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = customBlueColor();
+    bgColorView.backgroundColor = customRedColor();
     [self setSelectedBackgroundView:bgColorView];
 }
 

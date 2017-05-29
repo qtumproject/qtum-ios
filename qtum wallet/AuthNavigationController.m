@@ -18,7 +18,8 @@
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
     self.interactivePopGestureRecognizer.delegate = self;
-    self.interactivePopGestureRecognizer.enabled = NO;}
+    self.interactivePopGestureRecognizer.enabled = NO;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

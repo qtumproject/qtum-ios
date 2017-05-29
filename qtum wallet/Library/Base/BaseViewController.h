@@ -12,6 +12,7 @@
 
 @required
 @property (strong,nonatomic) UIScrollView* scrollView;
+@property (assign,nonatomic) UIEdgeInsets originInsets;
 
 @end
 
