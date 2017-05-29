@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "WalletCoordinator.h"
+#import "CustomPageControl.h"
+
+typedef enum {
+    HeaderCellTypeAllVisible,
+    HeaderCellTypeWithoutNotCorfirmedBalance,
+    HeaderCellTypeWithoutPageControl,
+    HeaderCellTypeWithoutAll
+} HeaderCellType;
 
 static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIdentifire";
 
@@ -19,7 +27,20 @@ static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIden
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressValueLabel;
 @property (weak, nonatomic) IBOutlet UIButton *showAddresButton;
+@property (weak, nonatomic) IBOutlet CustomPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UILabel *notConfirmedTitleLabel;
+@property (weak, nonatomic) IBOutlet UIView *separatorView;
+@property (weak, nonatomic) IBOutlet UILabel *availableTitleLabel;
+
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak, nonatomic) id <Spendable> spendable;
+
+- (void)setData:(id <Spendable>)wallet;
+- (void)setCellType:(HeaderCellType)type;
+
+- (void)cellYPositionChanged:(CGFloat)yPosition scrolledDelta:(CGFloat)scrolledDelta;
+- (BOOL)needShowHeader:(CGFloat)yPosition;
+
++ (CGFloat)getHeaderHeight;
 
 @end

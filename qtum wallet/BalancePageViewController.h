@@ -15,4 +15,7 @@
 @property (strong, nonatomic) NSArray <UIViewController <Paginationable>*>* controllers;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> coordinatorDelegate;
 
+- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;
+- (void)setScrollEnable:(BOOL)enable;
+
 @end

@@ -19,6 +19,8 @@
 #import "WalletCoordinator.h"
 #import "HistoryHeaderVIew.h"
 
+CGFloat const HeaderHeightShowed = 50.0f;
+
 @interface MainViewController () <QRCodeViewControllerDelegate>
 
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
@@ -35,7 +37,10 @@
 @property (assign, nonatomic) BOOL isNavigationBarFadeout;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *availabelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *uncorfirmedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedTextLabel;
 
 @property (nonatomic) BOOL balanceLoaded;
 @property (nonatomic) BOOL historyLoaded;
@@ -48,7 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+ 
     self.wigetBalanceLabel.text =
     self.balanceLabel.text = @"0";
 
@@ -68,6 +73,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    WalletHistoryDelegateDataSource *source = (WalletHistoryDelegateDataSource *)self.tableView.dataSource;
+    [self reloadHeader:source.wallet];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -104,9 +111,6 @@
 
 -(void)configTableView{
     self.tableView.tableFooterView = [UIView new];
-    CGFloat offset = self.customNavigationBar.frame.size.height;
-    self.tableView.contentInset =
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(offset, 0, 0, 0);
     self.tableView.dataSource = self.delegateDataSource;
     self.tableView.delegate = self.delegateDataSource;
     self.delegateDataSource.tableView = self.tableView;
@@ -135,6 +139,22 @@
     }
 }
 
+- (void)needShowHeader{
+    if (self.headerHeightConstraint.constant == HeaderHeightShowed) {
+        return;
+    }
+    
+    self.headerHeightConstraint.constant = HeaderHeightShowed;
+}
+
+- (void)needHideHeader{
+    if (self.headerHeightConstraint.constant == 0.0f) {
+        return;
+    }
+    
+    self.headerHeightConstraint.constant = 0;
+}
+
 #pragma mark - Private Methods
 
 
@@ -148,6 +168,8 @@
 -(void)reloadTableView{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        WalletHistoryDelegateDataSource *source = (WalletHistoryDelegateDataSource *)self.tableView.dataSource;
+        [self reloadHeader:source.wallet];
         self.historyLoaded = YES;
         if (self.balanceLoaded && self.historyLoaded) {
             [SVProgressHUD dismiss];
@@ -163,12 +185,22 @@
     });
 }
 
+- (void)reloadHeader:(id <Spendable>)wallet{
+    
+    self.unconfirmedTextLabel.hidden =
+    self.uncorfirmedLabel.hidden = wallet.unconfirmedBalance == 0.0f;
+    
+    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%f",wallet.unconfirmedBalance];
+    self.availabelLabel.text = [NSString stringWithFormat:@"%f",wallet.balance];
+}
+
 -(void)setBalance{
     self.balanceLoaded = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        WalletHistoryDelegateDataSource *source = (WalletHistoryDelegateDataSource *)self.tableView.dataSource;
+        [self reloadHeader:source.wallet];
     });
-    //[self.tableView reloadData];
     if (self.balanceLoaded && self.historyLoaded) {
         [SVProgressHUD dismiss];
     }

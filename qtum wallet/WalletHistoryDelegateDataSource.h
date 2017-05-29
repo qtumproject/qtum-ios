@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WalletCoordinator.h"
+
 @class HistoryElement;
 @class WalletModel;
 @class WalletTypeCollectionDataSourceDelegate;
@@ -15,6 +16,8 @@
 
 @protocol ControllerDelegate <NSObject>
 
+- (void)needShowHeader;
+- (void)needHideHeader;
 - (void)fadeInNavigationBar;
 - (void)fadeOutNavigationBar;
 
@@ -34,5 +37,6 @@
 @property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak,nonatomic) id <ControllerDelegate> controllerDelegate;
+@property (nonatomic) BOOL haveTokens;
 
 @end
