@@ -10,8 +10,10 @@
 #import "TransactionManager.h"
 #import "QRCodeViewController.h"
 #import "TextFieldWithLine.h"
+#import "TokenListViewController.h"
+#import "ChoseTokenPaymentViewController.h"
 
-@interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate>
+@interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate,ChoseTokenPaymentViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet UIView *adressUnderlineView;
@@ -19,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIView *amountUnderlineView;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *pinTextField;
 @property (weak, nonatomic) IBOutlet UIView *pinUnderlineView;
+@property (weak, nonatomic) IBOutlet UIView *tokenUnderlineView;
+@property (weak, nonatomic) IBOutlet UIButton *tokenButton;
+@property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *tokenDisclousureImage;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
@@ -26,6 +32,10 @@
 @property (strong,nonatomic) NSString* adress;
 @property (strong,nonatomic) NSString* amount;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *withoutTokensConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *withTokensConstraint;
+
+@property (strong,nonatomic) Token* token;
 
 - (IBAction)backbuttonPressed:(id)sender;
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
@@ -41,6 +51,16 @@
     if (self.dictionary) {
         [self qrCodeScanned:self.dictionary];
     }
+    
+    BOOL isTokensExists = [TokenManager sharedInstance].gatAllTokens.count;
+    
+    self.withTokensConstraint.active = isTokensExists;
+    self.withoutTokensConstraint.active =
+    self.tokenButton.hidden =
+    self.tokenDisclousureImage.hidden =
+    self.tokenUnderlineView.hidden = !isTokensExists;
+    self.tokenDisclousureImage.tintColor = customBlueColor();
+    self.tokenTextField.text =  NSLocalizedString(@"QTUM (Default)", @"");
     self.residueValueLabel.text = self.currentBalance;
 }
 
@@ -61,14 +81,44 @@
     
     self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.balance - amount];
     self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.unconfirmedBalance];
-    self.addressTextField.text = self.adress;
-    self.amountTextField.text = self.amount;
+}
+
+-(void)payWithWallet {
+    
+    NSNumber *amount = @([self.amountTextField.text doubleValue]);
+    NSString *address = self.addressTextField.text;
+    
+    NSArray *array = @[@{@"amount" : amount, @"address" : address}];
+    
+    [SVProgressHUD show];
+    
+    __weak typeof(self) weakSelf = self;
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
+        if (!error) {
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
+            [weakSelf backbuttonPressed:nil];
+        } else {
+            [SVProgressHUD dismiss];
+            [weakSelf showAlertWithTitle:NSLocalizedString(@"Error", "") mesage:response andActions:nil];
+        }
+    }];
+}
+
+-(void)payWithToken {
+    
+    [SVProgressHUD show];
+    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:self.addressTextField.text amount:@([self.amountTextField.text doubleValue]) andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
+        
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(error ? @"Failed" : @"Done", "")];
+    }];
 }
 
 #pragma mark - iMessage
 
 -(void)setAdress:(NSString*)adress andValue:(NSString*)amount{
+    self.addressTextField.text =
     self.adress = adress;
+    self.amountTextField.text =
     self.amount = amount;
     [self updateControls];
 }
@@ -158,27 +208,23 @@
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
     
-    NSNumber *amount = @([self.amountTextField.text doubleValue]);
-    NSString *address = self.addressTextField.text;
-    
-    NSArray *array = @[@{@"amount" : amount, @"address" : address}];
-        
-    [SVProgressHUD show];
-    
-    __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
-        if (!error) {
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
-            [weakSelf backbuttonPressed:nil];
-        } else {
-            [SVProgressHUD dismiss];
-            [weakSelf showAlertWithTitle:NSLocalizedString(@"Error", "") mesage:response andActions:nil];
-        }
-    }];
+    if (self.token) {
+        [self payWithToken];
+    } else {
+        [self payWithWallet];
+    }
 }
 
 - (IBAction)actionVoidTap:(id)sender{
     [self.view endEditing:YES];
+}
+
+- (IBAction)didPressedChoseTokensAction:(id)sender {
+    ChoseTokenPaymentViewController* tokenController = (ChoseTokenPaymentViewController*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
+    tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    tokenController.delegate = self;
+    tokenController.activeToken = self.token;
+    [self.navigationController pushViewController:tokenController animated:YES];
 }
 
 #pragma mark - QRCodeViewControllerDelegate
@@ -190,6 +236,22 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - TokenListViewControllerDelegate
+
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+    self.token = item;
+    self.tokenTextField.text = item.name;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+    
+}
+
+- (void)resetToDefaults{
+    self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+    self.token = nil;
+}
 
 #pragma mark - 
 

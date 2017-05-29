@@ -18,5 +18,7 @@
 
 +(NSArray<NSString*>*)getAvailebaleTemplates;
 
++(NSDictionary*)getAbiFromBundle;
+
 
 @end

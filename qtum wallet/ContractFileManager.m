@@ -13,12 +13,8 @@
 
 @implementation ContractFileManager
 
-+(NSDictionary*)getAbiFromBundle{
-    
-    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"abi-contract"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    NSDictionary* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    return jsonAbi;
++(NSDictionary*)getAbiFromBundle{    
+    return [self getAbiFromBundleWithTemplate:@"Standart"];
 }
 
 +(NSString*)getContractFromBundle{

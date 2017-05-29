@@ -25,10 +25,25 @@
     return data;
 }
 
-- (id)adaptiveDataForBalance:(id) balances{
+- (id)adaptiveDataForBalance:(id) balances {
+    
     if ([balances isKindOfClass:[NSDictionary class]]) {
         return @{@"balance" : @([balances[@"balance"] floatValue] /100000000),
                  @"unconfirmedBalance" : @([balances[@"unconfirmedBalance"] floatValue] /100000000)};
+    }
+    return nil;
+}
+
+- (NSDictionary*)adaptiveDataForContractBalances:(id) data {
+    
+    if ([data[0] isKindOfClass:[NSDictionary class]]) {
+        NSDictionary* dataDict = data[0];
+        CGFloat balance = 0;
+        for (NSDictionary* dict in dataDict[@"balances"]) {
+            balance += [dict[@"balance"] floatValue];
+        }
+        return @{@"balance" : @(balance),
+                 @"contract_address" : dataDict[@"contract_address"]};
     }
     return nil;
 }

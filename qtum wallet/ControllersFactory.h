@@ -33,6 +33,7 @@
 @class LanguageViewController;
 @class AddNewTokensViewController;
 @class QRCodeViewController;
+@class ChoseTokenPaymentViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -66,6 +67,7 @@
 -(LanguageViewController*)createLanguageViewController;
 -(AddNewTokensViewController*)createAddNewTokensViewController;
 -(QRCodeViewController*)createQRCodeViewControllerForSubscribe;
+-(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController;

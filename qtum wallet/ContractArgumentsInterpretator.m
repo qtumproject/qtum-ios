@@ -49,6 +49,10 @@
             nextStingOffset += (constantOffset * [dict[@"shift"] integerValue]);
             [stringDict setObject:dict[@"data"] forKey:@"value"];
             [stringsArray addObject:[stringDict copy]];
+        } else if ([array[i] isKindOfClass:[NSData class]]) {
+            NSData* param = array[i];
+            nextStingOffset += constantOffset;
+            [args appendData:[self uint256DataFromData:param]];
         }
     }
     
@@ -83,6 +87,13 @@
     [data increaseLengthBy:32 * shift - data.length];
     return @{@"data":data,
              @"shift" : @(shift > 0 ? shift - 1: shift)};
+}
+
++(NSData*)uint256DataFromData:(NSData*) aData {
+    NSMutableData* emptyData = [NSMutableData new];
+    [emptyData increaseLengthBy:32 - aData.length];
+    [emptyData appendData:aData];
+    return emptyData;
 }
 
 +(NSArray*)аrrayFromContractArguments:(NSData*) data andInterface:(AbiinterfaceItem*) interface {
