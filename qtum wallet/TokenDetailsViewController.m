@@ -17,7 +17,6 @@ CGFloat const HeightForHeaderView = 50.0f;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *availableBalanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *notConfirmedBalanceLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConsctaintForHeaderView;
 
 @property (nonatomic, weak) TokenDetailsTableSource *source;

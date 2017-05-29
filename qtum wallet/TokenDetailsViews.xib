@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="simplonmono-medium.ttf">
+            <string>simplonmono-medium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="TdC-jz-53k" customClass="BalanceTokenView">
+            <rect key="frame" x="0.0" y="0.0" width="301" height="79"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8m-lB-9TL">
+                    <rect key="frame" x="88.5" y="45" width="124.5" height="14"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1I-jz-v6q">
+                    <rect key="frame" x="142" y="15" width="17.5" height="34"/>
+                    <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="D1I-jz-v6q" firstAttribute="top" secondItem="TdC-jz-53k" secondAttribute="top" constant="15" id="fRb-os-el5"/>
+                <constraint firstItem="B8m-lB-9TL" firstAttribute="centerX" secondItem="TdC-jz-53k" secondAttribute="centerX" id="pO6-ej-gor"/>
+                <constraint firstItem="B8m-lB-9TL" firstAttribute="top" secondItem="TdC-jz-53k" secondAttribute="top" constant="45" id="rCq-XP-5hx"/>
+                <constraint firstItem="D1I-jz-v6q" firstAttribute="centerX" secondItem="TdC-jz-53k" secondAttribute="centerX" id="rXu-em-g1L"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="balanceTextLabel" destination="B8m-lB-9TL" id="opo-Fc-hZF"/>
+                <outlet property="balanceValueLabel" destination="D1I-jz-v6q" id="LfK-DF-51B"/>
+                <outlet property="centerConstraintBalanceText" destination="pO6-ej-gor" id="wiV-F3-1R9"/>
+                <outlet property="centerConstraintBalanceValue" destination="rXu-em-g1L" id="rMU-eq-Ef1"/>
+                <outlet property="topConstraintBalanceText" destination="rCq-XP-5hx" id="hiZ-Cv-zkV"/>
+                <outlet property="topConstraintBalanceValue" destination="fRb-os-el5" id="PeU-ml-ST6"/>
+            </connections>
+            <point key="canvasLocation" x="413.5" y="-767.5"/>
+        </view>
+        <view contentMode="scaleToFill" id="sK0-Yn-xrH" customClass="QTUMAddressTokenView">
+            <rect key="frame" x="0.0" y="0.0" width="299" height="46"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41C-AC-dvM">
+                    <rect key="frame" x="0.0" y="5.5" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="HdC-1R-t8J"/>
+                        <constraint firstAttribute="height" constant="35" id="eEr-BZ-YT0"/>
+                    </constraints>
+                    <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" image="add_plus"/>
+                    <connections>
+                        <action selector="actionPlus:" destination="sK0-Yn-xrH" eventType="touchUpInside" id="LsM-k6-3BN"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zp-1M-57K">
+                    <rect key="frame" x="38" y="23" width="248" height="16"/>
+                    <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="13"/>
+                    <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-UY-HJB">
+                    <rect key="frame" x="38" y="9" width="80.5" height="13"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
+                    <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="6zp-1M-57K" secondAttribute="trailing" constant="13" id="02d-Km-0tF"/>
+                <constraint firstItem="9HT-UY-HJB" firstAttribute="leading" secondItem="sK0-Yn-xrH" secondAttribute="leading" constant="38" id="7gd-JX-Umy"/>
+                <constraint firstItem="41C-AC-dvM" firstAttribute="leading" secondItem="sK0-Yn-xrH" secondAttribute="leading" id="7hG-2u-MuR"/>
+                <constraint firstItem="6zp-1M-57K" firstAttribute="leading" secondItem="sK0-Yn-xrH" secondAttribute="leading" constant="38" id="IlM-A7-puS"/>
+                <constraint firstAttribute="bottom" secondItem="6zp-1M-57K" secondAttribute="bottom" constant="7" id="JCH-IR-12v"/>
+                <constraint firstItem="41C-AC-dvM" firstAttribute="centerY" secondItem="sK0-Yn-xrH" secondAttribute="centerY" id="oi8-zc-hg1"/>
+                <constraint firstItem="6zp-1M-57K" firstAttribute="top" secondItem="9HT-UY-HJB" secondAttribute="bottom" constant="1" id="p3I-bD-c6T"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addressLabel" destination="6zp-1M-57K" id="KfW-q5-W2P"/>
+            </connections>
+            <point key="canvasLocation" x="413" y="-651"/>
+        </view>
+        <view contentMode="scaleToFill" id="Qt8-sT-hFa" customClass="NubersTokenView">
+            <rect key="frame" x="0.0" y="0.0" width="299" height="53"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Supply:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-LX-tgN">
+                    <rect key="frame" x="10" y="8" width="100.5" height="13"/>
+                    <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decimal Units:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khj-ob-7gd">
+                    <rect key="frame" x="10" y="32" width="94" height="13"/>
+                    <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 000 000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzb-zO-KRa">
+                    <rect key="frame" x="212" y="5" width="77" height="17"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lev-Gt-RUi">
+                    <rect key="frame" x="280" y="29" width="9" height="17"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0b6-LX-tgN" firstAttribute="top" secondItem="Qt8-sT-hFa" secondAttribute="top" constant="8" id="6XE-gI-Ezp"/>
+                <constraint firstItem="0b6-LX-tgN" firstAttribute="leading" secondItem="Qt8-sT-hFa" secondAttribute="leading" constant="10" id="Anf-rN-2eT"/>
+                <constraint firstAttribute="trailing" secondItem="kzb-zO-KRa" secondAttribute="trailing" constant="10" id="JwQ-8g-eYy"/>
+                <constraint firstAttribute="trailing" secondItem="lev-Gt-RUi" secondAttribute="trailing" constant="10" id="R1n-WR-mvr"/>
+                <constraint firstItem="lev-Gt-RUi" firstAttribute="centerY" secondItem="khj-ob-7gd" secondAttribute="centerY" constant="-1" id="Rgb-qR-xer"/>
+                <constraint firstItem="kzb-zO-KRa" firstAttribute="centerY" secondItem="0b6-LX-tgN" secondAttribute="centerY" constant="-1" id="hQQ-y5-V4h"/>
+                <constraint firstItem="khj-ob-7gd" firstAttribute="leading" secondItem="Qt8-sT-hFa" secondAttribute="leading" constant="10" id="r04-Te-h4I"/>
+                <constraint firstAttribute="bottom" secondItem="khj-ob-7gd" secondAttribute="bottom" constant="8" id="t1e-zm-OJ0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="decimalUnitsLabel" destination="lev-Gt-RUi" id="O8G-C5-NNs"/>
+                <outlet property="initialSupplyLabel" destination="kzb-zO-KRa" id="CIo-9c-HkR"/>
+            </connections>
+            <point key="canvasLocation" x="412.5" y="-549.5"/>
+        </view>
+        <view contentMode="scaleToFill" id="v58-Ep-5Qe" customClass="AddressesTokenView">
+            <rect key="frame" x="0.0" y="0.0" width="301" height="47"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8v-ha-IV5">
+                    <rect key="frame" x="10" y="8" width="281" height="13"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8v-1h-Gd2">
+                    <rect key="frame" x="10" y="23" width="281" height="16"/>
+                    <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="r8v-ha-IV5" firstAttribute="leading" secondItem="v58-Ep-5Qe" secondAttribute="leading" constant="10" id="0QP-4E-ldn"/>
+                <constraint firstAttribute="bottom" secondItem="p8v-1h-Gd2" secondAttribute="bottom" constant="8" id="Ft1-Bq-tny"/>
+                <constraint firstAttribute="trailing" secondItem="r8v-ha-IV5" secondAttribute="trailing" constant="10" id="X9l-3b-1yB"/>
+                <constraint firstItem="r8v-ha-IV5" firstAttribute="top" secondItem="v58-Ep-5Qe" secondAttribute="top" constant="8" id="bwe-NO-ahF"/>
+                <constraint firstAttribute="trailing" secondItem="p8v-1h-Gd2" secondAttribute="trailing" constant="10" id="r52-MI-UXH"/>
+                <constraint firstItem="p8v-1h-Gd2" firstAttribute="leading" secondItem="v58-Ep-5Qe" secondAttribute="leading" constant="10" id="wpo-x0-50m"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addressLabel" destination="p8v-1h-Gd2" id="Rbr-Ex-A7d"/>
+                <outlet property="addressNameLabel" destination="r8v-ha-IV5" id="QQA-bq-zgh"/>
+            </connections>
+            <point key="canvasLocation" x="414" y="-440"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add_plus" width="17" height="17"/>
+    </resources>
+</document>
