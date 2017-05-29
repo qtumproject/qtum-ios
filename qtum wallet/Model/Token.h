@@ -38,5 +38,6 @@
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
 -(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(NSString*) templateName;
+-(void)setupWithContractAddresse:(NSString*) contractAddresse;
 
 @end

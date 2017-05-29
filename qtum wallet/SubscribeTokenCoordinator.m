@@ -74,29 +74,17 @@
 }
 
 - (void)qrCodeScanned:(NSDictionary *)dictionary {
-    BOOL isToken = [dictionary[@"isToken"] boolValue];
-//    if (isToken) {
-//        NSString* hashFuction = [[ContractManager sharedInstance] getStringHashOfFunction:object andParam:nil];
-//        __weak __typeof(self)weakSelf = self;
-//        [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
-//            
-//            if (![responseObject isKindOfClass:[NSError class]]) {
-//                NSString* data = responseObject[@"items"][0][@"output"];
-//                NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:object];
-//                
-//                NSMutableString* result = [NSMutableString new];
-//                for (id output in array) {
-//                    [result appendFormat:@"%@",output];
-//                }
-//                weakSelf.activityIndicator.hidden = YES;
-//                weakSelf.propertyValue.hidden = NO;
-//                weakSelf.propertyValue.text = result;
-//            }
-//        }];
-//    }
+    [self.navigationController popViewControllerAnimated:YES];
+    if ([dictionary[EXPORT_CONTRACTS_TOKENS_KEY] isKindOfClass:[NSArray class]]) {
+        for (NSString* contractAddress in dictionary[EXPORT_CONTRACTS_TOKENS_KEY]) {
+            [[TokenManager sharedInstance] addNewTokenWithContractAddress:contractAddress];
+        }
+    }
 }
 
 -(void)didAddNewTokenWithAddress:(NSString*) address{
-    
+    if (address) {
+        [[TokenManager sharedInstance] addNewTokenWithContractAddress:address];
+    }
 }
 @end

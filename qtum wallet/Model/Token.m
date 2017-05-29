@@ -35,6 +35,12 @@
     }];
 }
 
+-(void)setupWithContractAddresse:(NSString*) contractAddresse {
+
+    self.contractAddress = contractAddresse;
+    self.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+}
+
 
 #pragma mark - Getters 
 
