@@ -9,6 +9,7 @@
 #import "Token.h"
 #import "NSString+Extension.h"
 #import "NSData+Extension.h"
+#import "NSDate+Extension.h"
 
 @implementation Token
 
@@ -20,10 +21,12 @@
     hashData = [[hashData BTCHash160] mutableCopy];
     self.adresses = addresses;
     self.contractAddress = [NSString hexadecimalString:hashData];
+    self.localName = [self.contractAddress substringToIndex:6];
     self.templateModel = templateModel;
     
     __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : self.contractAddress} withSuccessHandler:^(id responseObject) {
+        weakSelf.creationDate = [NSDate date];
         weakSelf.decimals = responseObject[@"decimals"];
         weakSelf.symbol = responseObject[@"symbol"];
         weakSelf.name = responseObject[@"name"];
@@ -38,27 +41,38 @@
 -(void)setupWithContractAddresse:(NSString*) contractAddresse {
 
     self.contractAddress = contractAddresse;
+    self.creationDate = [NSDate date];
+    self.localName = [self.contractAddress substringToIndex:6];
     self.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+}
+
+-(NSString*)creationDateString {
+    
+    return self.creationDate ? [self.creationDate formatedDateString] : nil;
 }
 
 
 #pragma mark - Getters 
 
--(NSString *)mainAddress{
+-(NSString *)mainAddress {
+    
     return self.contractAddress;
 }
 
 #pragma mark - Spendable
 
--(void)updateBalanceWithHandler:(void (^)(BOOL))complete{
+-(void)updateBalanceWithHandler:(void (^)(BOOL))complete {
+    
     [self.manager updateBalanceOfSpendableObject:self withHandler:complete];
 }
 
--(void)updateHistoryWithHandler:(void (^)(BOOL))complete andPage:(NSInteger) page{
+-(void)updateHistoryWithHandler:(void (^)(BOOL))complete andPage:(NSInteger) page {
+    
     [self.manager updateHistoryOfSpendableObject:self withHandler:complete andPage:page];
 }
 
--(void)loadToMemory{
+-(void)loadToMemory {
+    
     _historyStorage = [HistoryDataStorage new];
     _historyStorage.spendableOwner = self;
 }
@@ -75,6 +89,8 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
     [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.localName forKey:@"localName"];
+    [aCoder encodeObject:self.creationDate forKey:@"creationDate"];
     [aCoder encodeObject:self.templateModel forKey:@"templateModel"];
     [aCoder encodeObject:self.contractAddress forKey:@"contractAddress"];
     [aCoder encodeObject:self.adresses forKey:@"adresses"];
@@ -88,6 +104,8 @@
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
     
     NSString *name = [aDecoder decodeObjectForKey:@"name"];
+    NSString *localName = [aDecoder decodeObjectForKey:@"localName"];
+    NSDate *creationDate = [aDecoder decodeObjectForKey:@"creationDate"];
     TemplateModel *templateModel = [aDecoder decodeObjectForKey:@"templateModel"];
     NSString *contractAddress = [aDecoder decodeObjectForKey:@"contractAddress"];
     NSArray *adresses = [aDecoder decodeObjectForKey:@"adresses"];
@@ -100,6 +118,8 @@
     self = [super init];
     if (self) {
         self.name = name;
+        self.localName = localName;
+        self.creationDate = creationDate;
         self.templateModel = templateModel;
         self.contractAddress = contractAddress;
         self.adresses = adresses;

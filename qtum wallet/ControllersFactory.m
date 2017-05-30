@@ -41,7 +41,7 @@
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
 #import "ChooseSmartContractViewController.h"
-
+#import "SmartContractsListViewController.h"
 
 @implementation ControllersFactory
 
@@ -213,6 +213,10 @@
     return controller;
 }
 
+-(SmartContractsListViewController*)createSmartContractsListViewController{
+    SmartContractsListViewController* controller = (SmartContractsListViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
+    return controller;
+}
 
 -(UIViewController*)createFlowNavigationCoordinator{
     return nil;

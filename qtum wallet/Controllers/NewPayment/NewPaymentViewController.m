@@ -52,7 +52,7 @@
         [self qrCodeScanned:self.dictionary];
     }
     
-    BOOL isTokensExists = [TokenManager sharedInstance].gatAllTokens.count;
+    BOOL isTokensExists = [TokenManager sharedInstance].getAllTokens.count;
     
     self.withTokensConstraint.active = isTokensExists;
     self.withoutTokensConstraint.active =
@@ -221,7 +221,7 @@
 
 - (IBAction)didPressedChoseTokensAction:(id)sender {
     ChoseTokenPaymentViewController* tokenController = (ChoseTokenPaymentViewController*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
-    tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    tokenController.tokens = [[TokenManager sharedInstance] getAllTokens];
     tokenController.delegate = self;
     tokenController.activeToken = self.token;
     [self.navigationController pushViewController:tokenController animated:YES];

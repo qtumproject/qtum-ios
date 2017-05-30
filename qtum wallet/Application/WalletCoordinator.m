@@ -79,19 +79,19 @@
     self.delegateDataSource = [WalletHistoryDelegateDataSource new];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
-    self.delegateDataSource.haveTokens = [[TokenManager sharedInstance] gatAllTokens].count > 0;
+    self.delegateDataSource.haveTokens = [[TokenManager sharedInstance] getAllTokens].count > 0;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
     
     TokenListViewController* tokenController = (TokenListViewController*)[[ControllersFactory sharedInstance] createTokenListViewController];
-    tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    tokenController.tokens = [[TokenManager sharedInstance] getAllTokens];
     tokenController.delegate = self;
     controller.delegate = self;
     self.tokenController = tokenController;
     
     self.pageViewController = self.navigationController.viewControllers[0];
     self.pageViewController.controllers = @[controller,tokenController];
-    [self.pageViewController setScrollEnable:[[TokenManager sharedInstance] gatAllTokens].count > 0];
+    [self.pageViewController setScrollEnable:[[TokenManager sharedInstance] getAllTokens].count > 0];
 }
 
 #pragma mark - WalletCoordinatorDelegate
@@ -170,6 +170,7 @@
 }
 
 - (void)didPressedTokenFunctionWithItem:(Token*) item {
+    
     if (item.templateModel) {
         TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
         controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:item.templateModel.templateName];
@@ -179,23 +180,13 @@
     }
 }
 
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
-
-    TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
-    self.tokenDetailsViewController = vc;
-    self.tokenDetailsTableSource = [TokenDetailsTableSource new];
-    vc.delegate = self;
-    vc.token = item;
-    [vc setTableSource:self.tokenDetailsTableSource];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 - (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
     
 }
 
-- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token{
+- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token {
+    
     TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
     controller.function = item;
     controller.delegate = self;
@@ -288,7 +279,8 @@
 }
 
 -(void)updateSpendables {
-    NSArray *tokensArray = [[TokenManager sharedInstance] gatAllTokens];
+    
+    NSArray *tokensArray = [[TokenManager sharedInstance] getAllTokens];
     self.delegateDataSource.haveTokens = tokensArray.count > 0;
     [self.historyController reloadTableView];
     self.tokenController.tokens = tokensArray;

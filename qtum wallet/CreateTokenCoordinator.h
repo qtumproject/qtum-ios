@@ -10,6 +10,7 @@
 #import "BaseCoordinator.h"
 #import "ResultTokenInputsModel.h"
 @class TemplateModel;
+@class AbiinterfaceItem;
 
 @protocol CreateTokenCoordinatorDelegate <NSObject>
 
@@ -24,7 +25,13 @@
 -(void)didPressedQuit;
 -(void)didPressedBack;
 -(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel;
-
+-(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Token*) contract;
+-(void)didPressedTokenFunctionWithItem:(Token*) item;
+-(void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token;
+-(void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
+-(void)didCallFunctionWithItem:(AbiinterfaceItem*) item
+                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
+                       andToken:(Token*) token ;
 
 @end
 

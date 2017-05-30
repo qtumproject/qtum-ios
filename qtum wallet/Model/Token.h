@@ -23,6 +23,7 @@
 @interface Token : NSObject <Spendable>
 
 @property (copy, nonatomic) NSString* name;
+@property (copy, nonatomic) NSString* localName;
 @property (assign, nonatomic) CGFloat balance;
 @property (assign, nonatomic) CGFloat unconfirmedBalance;
 @property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
@@ -37,6 +38,9 @@
 @property (strong, nonatomic)NSString* decimals;
 @property (strong, nonatomic)NSString* totalSupply;
 @property (strong, nonatomic) TemplateModel* templateModel;
+@property (strong, nonatomic) NSDate* creationDate;
+@property (copy, nonatomic, readonly) NSString* creationDateString;
+
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
 -(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(TemplateModel*) templateModel;

@@ -18,6 +18,11 @@
 #import "TemplateTokenViewController.h"
 #import "ContractFileManager.h"
 #import "ChooseSmartContractViewController.h"
+#import "SmartContractsListViewController.h"
+#import "TokenDetailsViewController.h"
+#import "TokenDetailsTableSource.h"
+#import "TokenFunctionViewController.h"
+#import "TokenFunctionDetailViewController.h"
 
 
 @interface CreateTokenCoordinator ()
@@ -26,6 +31,7 @@
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
 @property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
 @property (strong,nonatomic) TemplateModel* templateModel;
+@property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 
 @end
 
@@ -62,6 +68,14 @@
 
 -(void)showMyPyblishedContract {
     
+    SmartContractsListViewController* controller = (SmartContractsListViewController*)[[ControllersFactory sharedInstance] createSmartContractsListViewController];
+    controller.delegate = self;
+    
+    NSArray *sortedContracts = [[[TokenManager sharedInstance] getAllContracts] sortedArrayUsingComparator: ^(Token *t1, Token *t2) {
+        return [t1.creationDate compare:t2.creationDate];
+    }];
+    controller.contracts = sortedContracts;
+    [self.modalNavigationController pushViewController:controller animated:YES];
 }
 
 -(void)showContractStore {
@@ -85,6 +99,17 @@
     self.inputs = inputs;
     controller.inputs = inputs;
     [self.modalNavigationController pushViewController:controller animated:YES];
+}
+
+-(void)showContractsFunction:(Token*) contract {
+    
+    if (contract.templateModel) {
+        TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
+        controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:contract.templateModel.templateName];
+        controller.delegate = self;
+        controller.token = contract;
+        [self.modalNavigationController pushViewController:controller animated:true];
+    }
 }
 
 #pragma mark - Logic
@@ -143,6 +168,44 @@
     self.templateModel = templateModel;
     [self showStepWithFieldsAndTemplate:templateModel.templateName];
 }
+
+-(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Token*) contract {
+    [self didSelectContractWithIndexPath:indexPath withContract:contract];
+}
+
+- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token {
+    
+    TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
+    controller.function = item;
+    controller.delegate = self;
+    controller.token = token;
+    self.functionDetailController = controller;
+    [self.navigationController pushViewController:controller animated:true];
+}
+
+- (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
+    
+}
+
+- (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
+                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
+                       andToken:(Token*) token {
+    
+    NSMutableArray* param = @[].mutableCopy;
+    for (int i = 0; i < inputs.count; i++) {
+        [param addObject:inputs[i].value];
+    }
+    
+    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item appendingParam:param];
+    
+    __weak __typeof(self)weakSelf = self;
+    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+        
+        [weakSelf.functionDetailController showResultViewWithOutputs:nil];
+    }];
+}
+
+
 
 -(void)didSelectContractStore {
     [self showContractStore];

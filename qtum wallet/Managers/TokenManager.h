@@ -13,7 +13,8 @@ extern NSString *const kTokenDidChange;
 
 @interface TokenManager : NSObject <Managerable>
 
-- (NSArray <Token*>*)gatAllTokens;
+- (NSArray <Token*>*)getAllContracts;
+- (NSArray <Token*>*)getAllTokens;
 - (void)addNewToken:(Token*) token;
 - (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance;
 - (void)checkSmartContract:(HistoryElement*) item;
