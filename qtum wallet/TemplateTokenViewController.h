@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CreateTokenCoordinator.h"
+#import "TemplateModel.h"
 
 @interface TemplateTokenViewController : UIViewController
 
-@property (strong, nonatomic) NSArray <NSString*>* templateNames;
+@property (strong, nonatomic) NSArray <TemplateModel*>* templateModels;
 @property (weak,nonatomic) id <CreateTokenCoordinatorDelegate> delegate;
 
 @end

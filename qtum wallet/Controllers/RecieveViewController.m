@@ -86,13 +86,11 @@
     self.amountTextField.inputAccessoryView = toolbar;
 }
 
-- (void)done:(id)sender
-{
+- (void)done:(id)sender {
     [self.amountTextField resignFirstResponder];
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     self.shareButton.enabled = NO;
     
     return YES;

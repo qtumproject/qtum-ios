@@ -15,7 +15,7 @@ NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
 
 static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
-static NSString* kTemplateName = @"kTemplateName";
+static NSString* kTemplateModel = @"kTemplateModel";
 static NSString* kAddresses = @"kAddress";
 
 
@@ -126,10 +126,10 @@ static NSString* kAddresses = @"kAddress";
     [self.smartContractPretendents removeAllObjects];
 }
 
--(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(NSString*)templateName{
+-(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(TemplateModel*)templateModel{
     
     [self.smartContractPretendents setObject:@{kAddresses : addresses,
-                                               kTemplateName : templateName} forKey:key];
+                                               kTemplateModel : templateModel} forKey:key];
     [self save];
 }
 
@@ -148,11 +148,11 @@ static NSString* kAddresses = @"kAddress";
         NSString* key = item.txHash;
         NSDictionary* tokenInfo = [self.smartContractPretendents objectForKey:key];
         NSArray* addresses = tokenInfo[kAddresses];
-        NSString* templateName = tokenInfo[kTemplateName];
+        TemplateModel* templateModel = (TemplateModel*)tokenInfo[kTemplateModel];
         
         if (tokenInfo) {
             Token* token = [Token new];
-            [token setupWithHashTransaction:key andAddresses:addresses andTokenTemplate:templateName];
+            [token setupWithHashTransaction:key andAddresses:addresses andTokenTemplate:templateModel];
             [self addNewToken:token];
             token.manager = self;
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];

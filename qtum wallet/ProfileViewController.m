@@ -109,7 +109,7 @@
     } else if(indexPath.section == 2){
         if (indexPath.row == 0) {
             image = [UIImage imageNamed:@"ic-token"];
-            text = NSLocalizedString(@"Create Token", "");
+            text = NSLocalizedString(@"Smart Contracts", "");
         } else if (indexPath.row == 1) {
             
             image = [UIImage imageNamed:@"ic-token-subscribe"];

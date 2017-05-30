@@ -125,7 +125,6 @@
 		B3C08B151ED3382300713B15 /* keccak.c in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B141ED3382300713B15 /* keccak.c */; };
 		B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */; };
 		B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */; };
-		B3C08B1D1ED459BF00713B15 /* Standart in Resources */ = {isa = PBXBuildFile; fileRef = B3C08B1C1ED459BF00713B15 /* Standart */; };
 		B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */; };
 		B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */; };
 		B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */; };
@@ -136,8 +135,6 @@
 		B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */; };
 		B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */; };
 		B3E1591B1ED5A87D00D70A87 /* TokenDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591A1ED5A87D00D70A87 /* TokenDetails.storyboard */; };
-		B3E1591E1ED5BED700D70A87 /* Version1 in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591C1ED5BED700D70A87 /* Version1 */; };
-		B3E1591F1ED5BED700D70A87 /* Version2 in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591D1ED5BED700D70A87 /* Version2 */; };
 		B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */; };
 		B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */; };
 		B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159281ED6E3C500D70A87 /* ChoseTokenPaymentCell.m */; };
@@ -151,6 +148,11 @@
 		B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */; };
 		B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */; };
 		B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */; };
+		B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */; };
+		B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */; };
+		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
+		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
+		B3F76A941EDDB81600108DE9 /* Contracts in Resources */ = {isa = PBXBuildFile; fileRef = B3F76A931EDDB81600108DE9 /* Contracts */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
 		E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71AF24C1E0178C50068595B /* libCoreBitcoin.a */; };
@@ -475,7 +477,6 @@
 		B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTokenViewController.m; sourceTree = "<group>"; };
 		B3C08B191ED44E4200713B15 /* TokenTemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenTemplateCell.h; sourceTree = "<group>"; };
 		B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenTemplateCell.m; sourceTree = "<group>"; };
-		B3C08B1C1ED459BF00713B15 /* Standart */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Standart; sourceTree = "<group>"; };
 		B3C08B231ED467DA00713B15 /* TokenPropertyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenPropertyCell.h; sourceTree = "<group>"; };
 		B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenPropertyCell.m; sourceTree = "<group>"; };
 		B3C4553D1E89596A00420D7C /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = Carthage/Build/iOS/SocketIO.framework; sourceTree = "<group>"; };
@@ -495,8 +496,6 @@
 		B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCoordinator.h; sourceTree = "<group>"; };
 		B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCoordinator.m; sourceTree = "<group>"; };
 		B3E1591A1ED5A87D00D70A87 /* TokenDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TokenDetails.storyboard; sourceTree = "<group>"; };
-		B3E1591C1ED5BED700D70A87 /* Version1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Version1; sourceTree = "<group>"; };
-		B3E1591D1ED5BED700D70A87 /* Version2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Version2; sourceTree = "<group>"; };
 		B3E159201ED6B1A200D70A87 /* AddNewTokensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTokensViewController.h; sourceTree = "<group>"; };
 		B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTokensViewController.m; sourceTree = "<group>"; };
 		B3E159231ED6E2C200D70A87 /* ChoseTokenPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentViewController.h; sourceTree = "<group>"; };
@@ -521,6 +520,19 @@
 		B3F06D081E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataSourceDelegate.h; sourceTree = "<group>"; };
 		B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataSourceDelegate.m; sourceTree = "<group>"; };
 		B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = "<group>"; };
+		B3F76A6E1EDD667D00108DE9 /* ChooseSmartContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSmartContractViewController.h; sourceTree = "<group>"; };
+		B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseSmartContractViewController.m; sourceTree = "<group>"; };
+		B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiseSmartContractCell.h; sourceTree = "<group>"; };
+		B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiseSmartContractCell.m; sourceTree = "<group>"; };
+		B3F76A741EDD6F6400108DE9 /* TemplateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateModel.h; sourceTree = "<group>"; };
+		B3F76A751EDD6F6400108DE9 /* TemplateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateModel.m; sourceTree = "<group>"; };
+		B3F76A7B1EDDABBE00108DE9 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		B3F76A7E1EDDB3D000108DE9 /* Crowdsale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Crowdsale; path = "qtum wallet/Contracts/Crowdsale"; sourceTree = "<group>"; };
+		B3F76A7F1EDDB3D000108DE9 /* Standart */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Standart; path = "qtum wallet/Contracts/Standart"; sourceTree = "<group>"; };
+		B3F76A801EDDB3D000108DE9 /* Version1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Version1; path = "qtum wallet/Contracts/Version1"; sourceTree = "<group>"; };
+		B3F76A811EDDB3D000108DE9 /* Version2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Version2; path = "qtum wallet/Contracts/Version2"; sourceTree = "<group>"; };
+		B3F76A931EDDB81600108DE9 /* Contracts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Contracts; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
 		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RecieveViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -1105,6 +1117,8 @@
 				B32B32E81ECCC4A20081260A /* FinishInputCell.m */,
 				B3C08B191ED44E4200713B15 /* TokenTemplateCell.h */,
 				B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */,
+				B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */,
+				B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1112,9 +1126,7 @@
 		B3C08B221ED45BCD00713B15 /* Tokens Templates */ = {
 			isa = PBXGroup;
 			children = (
-				B3E1591C1ED5BED700D70A87 /* Version1 */,
-				B3E1591D1ED5BED700D70A87 /* Version2 */,
-				B3C08B1C1ED459BF00713B15 /* Standart */,
+				B3F76A931EDDB81600108DE9 /* Contracts */,
 			);
 			name = "Tokens Templates";
 			sourceTree = "<group>";
@@ -1156,6 +1168,8 @@
 				B32B32E11ECCC2D50081260A /* CustomAbiInterphaseViewController.m */,
 				B3C08B161ED44DD900713B15 /* TemplateTokenViewController.h */,
 				B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */,
+				B3F76A6E1EDD667D00108DE9 /* ChooseSmartContractViewController.h */,
+				B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */,
 			);
 			name = "Create Token";
 			sourceTree = "<group>";
@@ -1390,6 +1404,8 @@
 				B365CA6E1EA600F30040A163 /* NSData+Extension.m */,
 				B33BD5551EBCA6890076B0C1 /* UIImage+Extension.h */,
 				B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */,
+				B3F76A7B1EDDABBE00108DE9 /* NSDate+Extension.h */,
+				B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1435,6 +1451,10 @@
 		E7FD362F1DC4D07E00748177 = {
 			isa = PBXGroup;
 			children = (
+				B3F76A7E1EDDB3D000108DE9 /* Crowdsale */,
+				B3F76A7F1EDDB3D000108DE9 /* Standart */,
+				B3F76A801EDDB3D000108DE9 /* Version1 */,
+				B3F76A811EDDB3D000108DE9 /* Version2 */,
 				E71AF2431E0177910068595B /* qtum walletTests */,
 				B33EAF8B1E5EC262006125F3 /* iMessageExtension */,
 				F94C279886F936AB7B4DA6F8 /* Frameworks */,
@@ -1527,6 +1547,8 @@
 				B35130601E49C9930048A28C /* NewsCellModel.m */,
 				B3487A1F1E8D2B2B00BC66F1 /* HistoryDataStorage.h */,
 				B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */,
+				B3F76A741EDD6F6400108DE9 /* TemplateModel.h */,
+				B3F76A751EDD6F6400108DE9 /* TemplateModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1825,18 +1847,16 @@
 				B32EEC7A1EB3549300512FED /* Pin.storyboard in Resources */,
 				E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */,
 				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
+				B3F76A941EDDB81600108DE9 /* Contracts in Resources */,
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
 				B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */,
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
-				B3E1591E1ED5BED700D70A87 /* Version1 in Resources */,
 				B32EEC751EB3548600512FED /* Wallet.storyboard in Resources */,
 				B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */,
-				B3E1591F1ED5BED700D70A87 /* Version2 in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
 				B32EEC6B1EB3546800512FED /* News.storyboard in Resources */,
 				B32EEC7F1EB3549F00512FED /* Start.storyboard in Resources */,
 				E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */,
-				B3C08B1D1ED459BF00713B15 /* Standart in Resources */,
 				E7FD36461DC4D07E00748177 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1995,8 +2015,11 @@
 				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,
 				B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */,
 				B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */,
+				B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */,
+				B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */,
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
 				B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */,
+				B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */,
 				E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				B32B32DD1ECCC2C70081260A /* ContractFileManager.m in Sources */,
@@ -2067,6 +2090,7 @@
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				E7FA0CB91ECD914200702C4E /* PopUpsManager.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
+				B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */,
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,
 				E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,

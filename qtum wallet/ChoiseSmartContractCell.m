@@ -1,29 +1,29 @@
 //
-//  TokenTemplateCell.m
+//  ChoiseSmartContractCell.m
 //  qtum wallet
 //
-//  Created by Vladimir Lebedevich on 23.05.17.
+//  Created by Никита Федоренко on 30.05.17.
 //  Copyright © 2017 Designsters. All rights reserved.
 //
 
-#import "TokenTemplateCell.h"
+#import "ChoiseSmartContractCell.h"
 
-@interface TokenTemplateCell ()
-
+@interface ChoiseSmartContractCell ()
 
 @end
 
-@implementation TokenTemplateCell
+@implementation ChoiseSmartContractCell
 
 - (void)awakeFromNib {
     
     [super awakeFromNib];
     
-    self.disclousureImage.tintColor = customBlueColor();
+    self.disclosure.tintColor = customBlueColor();
     
     UIView *bgColorView = [[UIView alloc] init];
     bgColorView.backgroundColor = customRedColor();
     [self setSelectedBackgroundView:bgColorView];
 }
+
 
 @end

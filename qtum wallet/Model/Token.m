@@ -12,7 +12,7 @@
 
 @implementation Token
 
--(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(NSString*) templateName {
+-(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(TemplateModel*) templateModel {
     
     NSMutableData* hashData = [[NSData reverseData:[NSString dataFromHexString:hash]] mutableCopy];
     uint32_t vinIndex = 0;
@@ -20,7 +20,7 @@
     hashData = [[hashData BTCHash160] mutableCopy];
     self.adresses = addresses;
     self.contractAddress = [NSString hexadecimalString:hashData];
-    self.templateName = templateName;
+    self.templateModel = templateModel;
     
     __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : self.contractAddress} withSuccessHandler:^(id responseObject) {
@@ -75,7 +75,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
     [aCoder encodeObject:self.name forKey:@"name"];
-    [aCoder encodeObject:self.templateName forKey:@"templateName"];
+    [aCoder encodeObject:self.templateModel forKey:@"templateModel"];
     [aCoder encodeObject:self.contractAddress forKey:@"contractAddress"];
     [aCoder encodeObject:self.adresses forKey:@"adresses"];
     [aCoder encodeObject:self.symbol forKey:@"symbol"];
@@ -88,7 +88,7 @@
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
     
     NSString *name = [aDecoder decodeObjectForKey:@"name"];
-    NSString *templateName = [aDecoder decodeObjectForKey:@"templateName"];
+    TemplateModel *templateModel = [aDecoder decodeObjectForKey:@"templateModel"];
     NSString *contractAddress = [aDecoder decodeObjectForKey:@"contractAddress"];
     NSArray *adresses = [aDecoder decodeObjectForKey:@"adresses"];
     NSString *symbol = [aDecoder decodeObjectForKey:@"symbol"];
@@ -100,7 +100,7 @@
     self = [super init];
     if (self) {
         self.name = name;
-        self.templateName = templateName;
+        self.templateModel = templateModel;
         self.contractAddress = contractAddress;
         self.adresses = adresses;
         self.symbol = symbol;

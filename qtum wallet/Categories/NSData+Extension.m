@@ -12,7 +12,7 @@
 
 + (NSData *)reverseData:(NSData *)data {
     const char *bytes = [data bytes];
-    int idx = [data length] - 1;
+    int idx = (int)([data length] - 1);
     char *reversedBytes = calloc(sizeof(char),[data length]);
     for (int i = 0; i < [data length]; i++) {
         reversedBytes[idx--] = bytes[i];

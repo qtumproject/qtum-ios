@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseCoordinator.h"
 #import "ResultTokenInputsModel.h"
+@class TemplateModel;
 
 @protocol CreateTokenCoordinatorDelegate <NSObject>
 
@@ -17,7 +18,13 @@
 -(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs;
 -(void)finishStepFinishDidPressed;
 -(void)finishStepBackDidPressed;
--(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(NSString*) templateName;
+-(void)didSelectContractStore;
+-(void)didSelectPublishedContracts;
+-(void)didSelectNewContracts;
+-(void)didPressedQuit;
+-(void)didPressedBack;
+-(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel;
+
 
 @end
 

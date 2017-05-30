@@ -15,13 +15,5 @@
     // Initialization code
 }
 
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    
-//    [super setSelected:selected animated:animated];
-//    
-//    UIView * selectedBackgroundView = [[UIView alloc] init];
-//    [selectedBackgroundView setBackgroundColor:customRedColor()];
-//    [self setSelectedBackgroundView:selectedBackgroundView];
-//}
 
 @end

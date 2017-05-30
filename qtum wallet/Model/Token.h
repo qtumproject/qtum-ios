@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "HistoryElementProtocol.h"
 #import "Managerable.h"
+#import "TemplateModel.h"
+
 @class Token;
 
 @protocol TokenDelegate <NSObject>
@@ -34,10 +36,10 @@
 @property (strong, nonatomic)NSArray* adresses;
 @property (strong, nonatomic)NSString* decimals;
 @property (strong, nonatomic)NSString* totalSupply;
-@property (strong, nonatomic)NSString* templateName;
+@property (strong, nonatomic) TemplateModel* templateModel;
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
--(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(NSString*) templateName;
+-(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(TemplateModel*) templateModel;
 -(void)setupWithContractAddresse:(NSString*) contractAddresse;
 
 @end

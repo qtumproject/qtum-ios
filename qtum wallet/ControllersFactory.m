@@ -40,6 +40,7 @@
 #import "AddNewTokensViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
+#import "ChooseSmartContractViewController.h"
 
 
 @implementation ControllersFactory
@@ -204,6 +205,11 @@
 
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController{
     ChoseTokenPaymentViewController* controller = (ChoseTokenPaymentViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"ChoseTokenPaymentViewController"];
+    return controller;
+}
+
+-(ChooseSmartContractViewController*)createChooseSmartContractViewController{
+    ChooseSmartContractViewController* controller = (ChooseSmartContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ChooseSmartContractViewController"];
     return controller;
 }
 

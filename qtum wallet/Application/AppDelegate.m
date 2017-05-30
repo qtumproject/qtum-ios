@@ -10,8 +10,7 @@
 #import "RPCRequestManager.h"
 #import "Appearance.h"
 #import "ContractManager.h"
-#import "ContractArgumentsInterpretator.h"
-
+#import "ContractFileManager.h"
 
 @interface AppDelegate ()
 
@@ -39,7 +38,7 @@
 //        }];
 //    }
 //
-    [ContractArgumentsInterpretator contactArgumentsFromArray:nil];
+    [ContractFileManager sharedInstance];
     return YES;
 }
 

@@ -40,7 +40,7 @@
 
 - (AbiinterfaceItem*)getTokenStandartTransferMethodInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[ContractFileManager getAbiFromBundle]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance]getAbiFromBundle]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"transfer"];
     NSArray *filteredArray = [interphase.functionItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
@@ -48,20 +48,20 @@
 
 - (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName {
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[ContractFileManager getAbiFromBundleWithTemplate:templateName]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getAbiFromBundleWithTemplate:templateName]];
     return interphase;
 }
 
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args{
     
-    NSMutableData* contractSource = [[ContractFileManager getBitcodeFromBundleWithTemplate:templateName] mutableCopy];
+    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeFromBundleWithTemplate:templateName] mutableCopy];
     [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromDictionary:args]];
     return [contractSource copy];
 }
 
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args{
     
-    NSMutableData* contractSource = [[ContractFileManager getBitcodeFromBundleWithTemplate:templateName] mutableCopy];
+    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeFromBundleWithTemplate:templateName] mutableCopy];
     [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromArray:args]];
     return [contractSource copy];
 }
