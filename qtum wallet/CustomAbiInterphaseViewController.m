@@ -12,8 +12,9 @@
 #import "CreateTokenCoordinator.h"
 #import "ResultTokenInputsModel.h"
 
-@interface CustomAbiInterphaseViewController ()
+@interface CustomAbiInterphaseViewController () <AbiTextFieldWithLineDelegate>
 
+@property (assign, nonatomic) NSInteger activeTextFieldTag;
 
 @end
 
@@ -45,6 +46,8 @@
         AbiTextFieldWithLine* textField = [[AbiTextFieldWithLine alloc] initWithFrame:CGRectMake(xoffset, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement, widthOfElement, heighOfElement) andInterfaceItem:self.formModel.constructorItem.inputs[i]];
         heighOfPrevElement = heighOfElement;
         textField.inputAccessoryView = [self createToolBarInput];
+        textField.customDelegate = self;
+        textField.tag = i;
         [self.scrollView addSubview:textField];
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
                                                  yoffset * i + heighOfPrevElement * i + yoffsetFirstElement + heighOfElement);
@@ -73,13 +76,18 @@
 
 
 - (UIToolbar*)createToolBarInput {
+    
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
-    toolbar.barStyle = UIBarStyleBlackTranslucent;
-    toolbar.barTintColor = customBlueColor();
+    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.translucent = NO;
+    toolbar.barTintColor = customBlackColor();
+    
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", "") style:UIBarButtonItemStyleDone target:self action:@selector(didPressedCancelAction:)];
-    doneButton.tintColor = customBlackColor();
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(didPressedNextAction:)];
-    cancelButton.tintColor = customBlackColor();
+    doneButton.tintColor = customBlueColor();
+    
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", "") style:UIBarButtonItemStyleDone target:self action:@selector(didPressedNextOnTextField:)];
+    cancelButton.tintColor = customBlueColor();
+    
     toolbar.items = @[doneButton,
                       [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                       cancelButton];
@@ -87,10 +95,27 @@
     return toolbar;
 }
 
+#pragma mark - AbiTextFieldWithLineDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.activeTextFieldTag = textField.tag;
+}
+
 #pragma mark - Actions
 
 - (IBAction)didPressedCancelAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)didPressedNextOnTextField:(id)sender {
+    
+    if (self.activeTextFieldTag < self.formModel.constructorItem.inputs.count - 1) {
+        UITextField* texField = (UITextField*)[self.scrollView viewWithTag:self.activeTextFieldTag + 1];
+        [texField becomeFirstResponder];
+    } else {
+        [self didPressedNextAction:nil];
+        [self didVoidTapAction:nil];
+    }
 }
 
 - (IBAction)didPressedNextAction:(id)sender {

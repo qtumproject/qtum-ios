@@ -74,6 +74,7 @@
 }
 
 - (void)qrCodeScanned:(NSDictionary *)dictionary {
+    
     [self.navigationController popViewControllerAnimated:YES];
     if ([dictionary[EXPORT_CONTRACTS_TOKENS_KEY] isKindOfClass:[NSArray class]]) {
         for (NSString* contractAddress in dictionary[EXPORT_CONTRACTS_TOKENS_KEY]) {

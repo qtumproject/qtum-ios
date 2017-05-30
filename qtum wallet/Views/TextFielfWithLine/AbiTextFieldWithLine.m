@@ -59,4 +59,11 @@
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    if ([self.customDelegate respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
+        [self.customDelegate textFieldDidBeginEditing:textField];
+    }
+}
+
 @end

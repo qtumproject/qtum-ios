@@ -73,10 +73,11 @@
 
 - (void)addDoneButtonToAmountTextField {
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
-    toolbar.barStyle = UIBarStyleBlackTranslucent;
-    toolbar.barTintColor = customBlueColor();
+    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.translucent = NO;
+    toolbar.barTintColor = customBlackColor();
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
-    doneButton.tintColor = customBlackColor();
+    doneButton.tintColor = customBlueColor();
     toolbar.items = @[
                       [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                       doneButton];
