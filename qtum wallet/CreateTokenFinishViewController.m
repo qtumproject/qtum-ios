@@ -13,12 +13,15 @@
 
 @interface CreateTokenFinishViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation CreateTokenFinishViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 85, 0);
 }
 
 - (void)didReceiveMemoryWarning {

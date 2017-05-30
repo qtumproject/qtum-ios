@@ -49,7 +49,9 @@
 //    
 //    [[UITextField appearanceWhenContainedIn:[TextFieldWithLine class], nil] setTintColor:customBlueColor()];
 //    [[UITextField appearanceWhenContainedIn:[CustomTextField class], nil] setTintColor:customBlueColor()];
-
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : customBlueColor(),
+                                                            NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:16.0f]}
+                                                forState:UIControlStateNormal];
     [self configTabbarUndeline];
     [self configTabbarTopline];
 }

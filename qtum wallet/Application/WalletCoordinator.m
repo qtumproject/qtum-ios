@@ -170,11 +170,13 @@
 }
 
 - (void)didPressedTokenFunctionWithItem:(Token*) item {
-    TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-    controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:item.templateName];
-    controller.delegate = self;
-    controller.token = item;
-    [self.navigationController pushViewController:controller animated:true];
+    if (item.templateName) {
+        TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
+        controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:item.templateName];
+        controller.delegate = self;
+        controller.token = item;
+        [self.navigationController pushViewController:controller animated:true];
+    }
 }
 
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{

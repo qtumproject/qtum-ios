@@ -230,7 +230,10 @@
 #pragma mark - QRCodeViewControllerDelegate
 
 - (void)qrCodeScanned:(NSDictionary *)dictionary{
+    
+    self.addressTextField.text =
     self.adress = dictionary[PUBLIC_ADDRESS_STRING_KEY];
+    self.amountTextField.text =
     self.amount = dictionary[AMOUNT_STRING_KEY];
     [self updateControls];
     [self.navigationController popViewControllerAnimated:YES];

@@ -162,6 +162,22 @@ static NSString* kAddresses = @"kAddress";
     }
 }
 
+-(void)addNewTokenWithContractAddress:(NSString*) contractAddress {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",contractAddress];
+    NSArray *filteredArray = [self.tokens filteredArrayUsingPredicate:predicate];
+    
+    if (!filteredArray.count && contractAddress) {
+        Token* token = [Token new];
+        [token setupWithContractAddresse:contractAddress];
+        token.manager = self;
+        [self addNewToken:token];
+        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+        [self save];
+        [self tokenDidChange:nil];
+    }
+}
+
 #pragma mark - TokenDelegate
 
 - (void)tokenDidChange:(id)token {
