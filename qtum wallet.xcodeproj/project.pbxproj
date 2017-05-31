@@ -1021,10 +1021,6 @@
 				B3827DE11ECF4ED500E500DE /* Cell */,
 				B3827DDE1ECF292E00E500DE /* TokenListViewController.h */,
 				B3827DDF1ECF292E00E500DE /* TokenListViewController.m */,
-				B3827DE51ECF673900E500DE /* TokenFunctionViewController.h */,
-				B3827DE61ECF673900E500DE /* TokenFunctionViewController.m */,
-				B3827DE81ED2C74900E500DE /* TokenFunctionDetailViewController.h */,
-				B3827DE91ED2C74900E500DE /* TokenFunctionDetailViewController.m */,
 			);
 			name = Token;
 			sourceTree = "<group>";
@@ -1032,12 +1028,8 @@
 		B3827DE11ECF4ED500E500DE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B3827DE21ECF5E8D00E500DE /* TokenFunctionCell.h */,
-				B3827DE31ECF5E8D00E500DE /* TokenFunctionCell.m */,
 				B3827DD71ECF28EE00E500DE /* TokenCell.h */,
 				B3827DD81ECF28EE00E500DE /* TokenCell.m */,
-				B3C08B231ED467DA00713B15 /* TokenPropertyCell.h */,
-				B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1131,6 +1123,17 @@
 			name = "Tokens Templates";
 			sourceTree = "<group>";
 		};
+		B3D555EC1EDF4DA400CBDFCF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B3827DE21ECF5E8D00E500DE /* TokenFunctionCell.h */,
+				B3827DE31ECF5E8D00E500DE /* TokenFunctionCell.m */,
+				B3C08B231ED467DA00713B15 /* TokenPropertyCell.h */,
+				B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		B3E159261ED6E39F00D70A87 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1158,6 +1161,7 @@
 		B3F06D0B1E69B55D006341F7 /* Contract */ = {
 			isa = PBXGroup;
 			children = (
+				B3D555EC1EDF4DA400CBDFCF /* Cells */,
 				B3F06CF51E69879D006341F7 /* ContractCoordinator.h */,
 				B3F06CF61E69879D006341F7 /* ContractCoordinator.m */,
 				B385B5A01E6D640E003BB96C /* CreateTokenNavigationController.h */,
@@ -1172,6 +1176,10 @@
 				B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */,
 				B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */,
 				B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */,
+				B3827DE51ECF673900E500DE /* TokenFunctionViewController.h */,
+				B3827DE61ECF673900E500DE /* TokenFunctionViewController.m */,
+				B3827DE81ED2C74900E500DE /* TokenFunctionDetailViewController.h */,
+				B3827DE91ED2C74900E500DE /* TokenFunctionDetailViewController.m */,
 			);
 			name = Contract;
 			sourceTree = "<group>";

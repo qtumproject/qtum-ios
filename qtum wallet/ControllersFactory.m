@@ -179,12 +179,12 @@
 }
 
 -(TokenFunctionViewController*)createTokenFunctionViewController{
-    TokenFunctionViewController* controller = (TokenFunctionViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenFunctionViewController"];
+    TokenFunctionViewController* controller = (TokenFunctionViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionViewController"];
     return controller;
 }
 
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController{
-    TokenFunctionDetailViewController* controller = (TokenFunctionDetailViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenFunctionDetailViewController"];
+    TokenFunctionDetailViewController* controller = (TokenFunctionDetailViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionDetailViewController"];
     return controller;
 }
 
