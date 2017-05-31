@@ -91,35 +91,6 @@ CGFloat const HeaderHeight = 50.0f;
     [self changeAlphaByPercent:percentOfPosition];
 }
 
-- (void)changePositionForLabel:(UILabel *)label andPercent:(CGFloat)percent values:(NSArray *)values constraints:(NSArray*)constraints isLeft:(BOOL)isLeft{
-    
-    CGFloat minTop = [values[0] floatValue];
-    CGFloat maxTop = [values[1] floatValue];
-    CGFloat minFont = [values[2] floatValue];
-    CGFloat maxFont = [values[3] floatValue];
-    
-    NSLayoutConstraint *topContsraint = constraints[0];
-    NSLayoutConstraint *centerContsraint = constraints[1];
-    
-    CGFloat newFont = maxFont - (maxFont - minFont) * percent;
-    if (newFont < minFont) newFont = minFont;
-    if (newFont > maxFont) newFont = maxFont;
-    label.font = [label.font fontWithSize:newFont];
-    
-    CGFloat newTop = percent * (maxTop - minTop) + minTop;
-    if (newTop < minTop) newTop = minTop;
-    if (newTop > maxTop) newTop = maxTop;
-    topContsraint.constant = newTop;
-    
-    CGFloat offset = 15.0f;
-    CGFloat minCenter = 0.0f;
-    CGFloat maxCenter = (self.contentView.frame.size.width - label.frame.size.width) / 2.0f - offset;
-    CGFloat newCenter = minCenter + (maxCenter - minCenter) * percent * 3;
-    if (newCenter < minCenter) newCenter = minCenter;
-    if (newCenter > maxCenter) newCenter = maxCenter;
-    centerContsraint.constant = newCenter * (isLeft ? -1 : 1);
-}
-
 - (void)changeAlphaByPercent:(CGFloat)percent{
     CGFloat minAlphaForLabel = 0.6f;
     CGFloat maxAlphaForLabel = 1.0f;

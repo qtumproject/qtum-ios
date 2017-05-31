@@ -100,21 +100,45 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    CGFloat headerY = self.headerForSecondSection.frame.origin.y - scrollView.contentOffset.y;
-//    
-//    if (scrollView.contentOffset.y > self.standartOffsetY) {
-//        headerY = 0.0f;
-//    }
-//    
-//    if ([self.delegate respondsToSelector:@selector(scrollViewDidScrollWithSecondSectionHeaderY:)]) {
-//        [self.delegate scrollViewDidScrollWithSecondSectionHeaderY:headerY];
-//    }
-    
+
     CGFloat scrollDiff = self.lastContentOffset - scrollView.contentOffset.y;
     CGFloat position = self.mainCell.frame.origin.y - scrollView.contentOffset.y;
+    
     [self.mainCell changeTopConstaintsByPosition:position diff:scrollDiff];
     
+    if (self.headerForSecondSection) {
+        CGFloat headerHeight = [MainTokenTableViewCell getHeaderHeight];
+        CGFloat headerPosition = self.headerForSecondSection.frame.origin.y - scrollView.contentOffset.y;
+        if (headerPosition <= headerHeight || [self.mainCell needShowHeader:position diff:scrollDiff]) {
+            scrollView.contentInset = UIEdgeInsetsMake(headerHeight, 0, 0, 0);
+        }else{
+            scrollView.contentInset = UIEdgeInsetsZero;
+        }
+    }
+    
+    if ([self.mainCell needShowHeader:position diff:scrollDiff]) {
+        if ([self.delegate respondsToSelector:@selector(needShowHeader)]) {
+            [self.delegate needShowHeader];
+        }
+    }else{
+        if ([self.delegate respondsToSelector:@selector(needHideHeader)]) {
+            [self.delegate needHideHeader];
+        }
+    }
+    
     self.lastContentOffset = scrollView.contentOffset.y;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    NSLog(@"scrollViewDidEndDecelerating");
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    NSLog(@"scrollViewDidEndDragging");
+    
+    if (!self.mainCell) return;
+    CGFloat diff = [self.mainCell lastRect:scrollView.contentOffset.y];
+    [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y - diff) animated:YES];
 }
 
 #pragma mark - Private methods
@@ -124,6 +148,8 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
     MainTokenTableViewCell *cell = (MainTokenTableViewCell *)[tableView dequeueReusableCellWithIdentifier:MainTokenIdentifier];
     if (!cell) {
         cell = [[MainTokenTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MainTokenIdentifier];
+        cell.contentView.backgroundColor = customBlueColor();
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     UIView *view;
@@ -141,42 +167,6 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
     
     self.mainCell = cell;
     
-    return cell;
-}
-
-#pragma mark - Configuration Cells
-
--(UITableViewCell *)configBalanceCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
-    BalanceTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:BalanceTokenIdentifier];
-    cell.balanceValueLabel.text = [NSString stringWithFormat:@"%f",self.token.balance];
-    return cell;
-}
-
--(UITableViewCell *)configQTUMAddressTokenCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
-    QTUMAddressTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:QTUMAddressTokenIdentifier];
-    cell.delegate = self;
-    cell.addressLabel.text = self.token.mainAddress;
-    return cell;
-}
-
--(UITableViewCell *)configNubersTokenCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
-    NubersTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:NubersTokenIdentifier];
-    cell.initialSupplyLabel.text = [NSString stringWithFormat:@"%@",self.token.totalSupply];
-    cell.decimalUnitsLabel.text = [NSString stringWithFormat:@"%@",self.token.decimals];
-    return cell;
-}
-
--(UITableViewCell *)configSenderAddressesTokenCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
-    AddressesTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:AddressesTokenIdentifier];
-    cell.addressNameLabel.text = NSLocalizedString(@"Sender Address", @"");
-    cell.addressLabel.text = self.token.adresses.firstObject;
-    return cell;
-}
-
--(UITableViewCell *)configContractAddressesTokenCellWithTableView:(UITableView *)tableView forRow:(NSInteger)row {
-    AddressesTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:AddressesTokenIdentifier];
-    cell.addressNameLabel.text = NSLocalizedString(@"Contract Address", @"");
-    cell.addressLabel.text = self.token.mainAddress;
     return cell;
 }
 

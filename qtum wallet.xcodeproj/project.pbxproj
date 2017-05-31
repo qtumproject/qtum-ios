@@ -189,6 +189,8 @@
 		E78903601EDC6769004243F0 /* NubersTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035F1EDC6769004243F0 /* NubersTokenView.m */; };
 		E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903621EDC678C004243F0 /* AddressesTokenView.m */; };
 		E78903661EDC6F06004243F0 /* MainTokenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903651EDC6F06004243F0 /* MainTokenTableViewCell.m */; };
+		E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */; };
+		E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */; };
 		E78D0C991ED2DF2E00CB91FF /* TokenDetailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */; };
 		E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D241D81DE6D6B1003E507B /* QRCodeManager.m */; };
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
@@ -599,6 +601,10 @@
 		E78903621EDC678C004243F0 /* AddressesTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressesTokenView.m; sourceTree = "<group>"; };
 		E78903641EDC6F06004243F0 /* MainTokenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTokenTableViewCell.h; sourceTree = "<group>"; };
 		E78903651EDC6F06004243F0 /* MainTokenTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTokenTableViewCell.m; sourceTree = "<group>"; };
+		E78903671EDD57D2004243F0 /* AnimatedLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLabelTableViewCell.h; sourceTree = "<group>"; };
+		E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLabelTableViewCell.m; sourceTree = "<group>"; };
+		E789036A1EDDA980004243F0 /* ViewWithAnimatedLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewWithAnimatedLine.h; sourceTree = "<group>"; };
+		E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithAnimatedLine.m; sourceTree = "<group>"; };
 		E78D0C971ED2DF2E00CB91FF /* TokenDetailsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsTableView.h; sourceTree = "<group>"; };
 		E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsTableView.m; sourceTree = "<group>"; };
 		E7D241D71DE6D6B1003E507B /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
@@ -1281,6 +1287,8 @@
 				E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */,
 				B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */,
 				B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */,
+				E78903671EDD57D2004243F0 /* AnimatedLabelTableViewCell.h */,
+				E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */,
 			);
 			name = Cell;
 			path = Controllers/Main/Cell;
@@ -1616,6 +1624,8 @@
 				B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */,
 				B321E8851E0D07A000DC7DE5 /* BorderedLabel.h */,
 				B321E8861E0D07A000DC7DE5 /* BorderedLabel.m */,
+				E789036A1EDDA980004243F0 /* ViewWithAnimatedLine.h */,
+				E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */,
 			);
 			name = "Shared Views";
 			path = Views;
@@ -2000,6 +2010,7 @@
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
 				E7EA2CC11ED4326E00AFD5D0 /* LanguageCoordinator.m in Sources */,
+				E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */,
 				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */,
@@ -2012,6 +2023,7 @@
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
 				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
+				E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */,
 				B3DD275D1E681A8B00BB0635 /* SendCoordinator.m in Sources */,
 				B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,

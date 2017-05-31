@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AnimatedLabelTableViewCell.h"
 
-@interface MainTokenTableViewCell : UITableViewCell
+@interface MainTokenTableViewCell : AnimatedLabelTableViewCell
 
 - (UIView *)addViewOrReturnContainViewForUpdate:(UIView *)view withHeight:(CGFloat)height;
 - (void)changeTopConstaintsByPosition:(CGFloat)position diff:(CGFloat)diff;
+
+- (BOOL)needShowHeader:(CGFloat)yPosition diff:(CGFloat)diff;
++ (CGFloat)getHeaderHeight;
+- (CGFloat)lastRect:(CGFloat)position;
 
 @end
