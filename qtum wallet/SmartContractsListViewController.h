@@ -11,7 +11,7 @@
 
 @interface SmartContractsListViewController : UIViewController
 
-@property (strong, nonatomic) NSArray <Token*>* contracts;
+@property (strong, nonatomic) NSArray <Contract*>* contracts;
 @property (weak,nonatomic) id <CreateTokenCoordinatorDelegate> delegate;
 
 @end

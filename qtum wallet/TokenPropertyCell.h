@@ -18,6 +18,6 @@ static NSString* tokenPropertyCelldentifire = @"tokenPropertyCelldentifire";
 @property (weak, nonatomic) IBOutlet UILabel *propertyValue;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
--(void)setupWithObject:(AbiinterfaceItem*)object andToken:(Token*) token;
+-(void)setupWithObject:(AbiinterfaceItem*)object andToken:(Contract*) token;
 
 @end

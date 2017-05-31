@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "AbiinterfaceItem.h"
 #import "WalletCoordinator.h"
-@class Token;
+@class Contract;
 
 @interface TokenFunctionDetailViewController : UIViewController
 
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (strong,nonatomic) AbiinterfaceItem* function;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak,nonatomic) Token* token;
+@property (weak,nonatomic) Contract* token;
 
 -(void)showResultViewWithOutputs:(NSArray*) outputs;
 

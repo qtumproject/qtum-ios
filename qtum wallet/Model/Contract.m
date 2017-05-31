@@ -6,12 +6,12 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "Token.h"
+#import "Contract.h"
 #import "NSString+Extension.h"
 #import "NSData+Extension.h"
 #import "NSDate+Extension.h"
 
-@implementation Token
+@implementation Contract
 
 -(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(TemplateModel*) templateModel {
     

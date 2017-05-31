@@ -35,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withoutTokensConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withTokensConstraint;
 
-@property (strong,nonatomic) Token* token;
+@property (strong,nonatomic) Contract* token;
 
 - (IBAction)backbuttonPressed:(id)sender;
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
@@ -241,13 +241,13 @@
 
 #pragma mark - TokenListViewControllerDelegate
 
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
     self.token = item;
     self.tokenTextField.text = item.name;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
     
 }
 

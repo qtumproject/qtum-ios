@@ -11,16 +11,16 @@
 @protocol ChoseTokenPaymentViewControllerDelegate <NSObject>
 
 @required
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item;
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
 - (void)resetToDefaults;
 
 @end
 
 @interface ChoseTokenPaymentViewController : UIViewController
 
-@property (weak, nonatomic)NSArray <Token*>* tokens;
-@property (weak, nonatomic)Token* activeToken;
+@property (weak, nonatomic)NSArray <Contract*>* tokens;
+@property (weak, nonatomic)Contract* activeToken;
 @property (weak, nonatomic)id <ChoseTokenPaymentViewControllerDelegate> delegate;
 
 @end

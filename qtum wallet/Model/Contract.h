@@ -11,16 +11,16 @@
 #import "Managerable.h"
 #import "TemplateModel.h"
 
-@class Token;
+@class Contract;
 
 @protocol TokenDelegate <NSObject>
 
 @required
-- (void)tokenDidChange:(Token *)token;
+- (void)tokenDidChange:(Contract *)contract;
 
 @end
 
-@interface Token : NSObject <Spendable>
+@interface Contract : NSObject <Spendable>
 
 @property (copy, nonatomic) NSString* name;
 @property (copy, nonatomic) NSString* localName;

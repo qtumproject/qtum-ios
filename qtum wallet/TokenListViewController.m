@@ -88,7 +88,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
     }
     
     NSMutableArray *array = [NSMutableArray new];
-    for (Token *token in self.tokens) {
+    for (Contract *token in self.tokens) {
         
         [array addObject:token.contractAddress];
     }

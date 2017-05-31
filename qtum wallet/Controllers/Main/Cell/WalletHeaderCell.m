@@ -31,7 +31,7 @@ CGFloat const HeaderHeight = 50.0f;
 }
 
 - (void)setData:(Wallet *)wallet{
-    self.adressLabel.text = ([wallet isKindOfClass:[Token class]]) ? NSLocalizedString(@"Contract Address", "") : NSLocalizedString(@"QTUM Address", "");
+    self.adressLabel.text = ([wallet isKindOfClass:[Contract class]]) ? NSLocalizedString(@"Contract Address", "") : NSLocalizedString(@"QTUM Address", "");
     self.adressValueLabel.text = wallet.mainAddress;
     self.valueLabel.text = [NSString stringWithFormat:@"%f",wallet.balance];
     self.typeWalletLabel.text = wallet.symbol;

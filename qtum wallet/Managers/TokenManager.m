@@ -9,7 +9,7 @@
 #import "TokenManager.h"
 #import "HistoryElement.h"
 #import "FXKeychain.h"
-#import "Token.h"
+#import "Contract.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -22,7 +22,7 @@ static NSString* kAddresses = @"kAddress";
 @interface TokenManager () <TokenDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary* smartContractPretendents;
-@property (nonatomic, strong) NSMutableArray<Token*> *contracts;
+@property (nonatomic, strong) NSMutableArray<Contract*> *contracts;
 
 @end
 
@@ -57,7 +57,7 @@ static NSString* kAddresses = @"kAddress";
     return _smartContractPretendents;
 }
 
-- (NSMutableArray<Token*>*)contracts {
+- (NSMutableArray<Contract*>*)contracts {
     
     if (!_contracts) {
         _contracts = @[].mutableCopy;
@@ -77,9 +77,10 @@ static NSString* kAddresses = @"kAddress";
 
 - (void)load {
     
+    [NSKeyedUnarchiver setClass:[Contract class] forClassName:@"Token"];
     NSMutableArray *savedTokens = [[[FXKeychain defaultKeychain] objectForKey:kTokenKeys] mutableCopy];
     
-    for (Token *token in savedTokens) {
+    for (Contract *token in savedTokens) {
         token.delegate = self;
         token.manager = self;
         [token loadToMemory];
@@ -93,18 +94,18 @@ static NSString* kAddresses = @"kAddress";
 #pragma mark - Private Methods
 
 
-- (NSArray <Token*>*)getAllTokens {
+- (NSArray <Contract*>*)getAllTokens {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i",TokenType];
     return [self.contracts filteredArrayUsingPredicate:predicate];
 }
 
-- (NSArray <Token*>*)getAllContracts {
+- (NSArray <Contract*>*)getAllContracts {
     
     return self.contracts;
 }
 
-- (void)addNewToken:(Token*) token{
+- (void)addNewToken:(Contract*) token{
     
     token.delegate = self;
     [self.contracts addObject:token];
@@ -116,7 +117,7 @@ static NSString* kAddresses = @"kAddress";
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
     NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
-    Token* token = filteredArray[0];
+    Contract* token = filteredArray[0];
     if (token) {
         token.balance = [balance floatValue];
         [self tokenDidChange:token];
@@ -158,7 +159,7 @@ static NSString* kAddresses = @"kAddress";
         TemplateModel* templateModel = (TemplateModel*)tokenInfo[kTemplateModel];
         
         if (tokenInfo) {
-            Token* token = [Token new];
+            Contract* token = [Contract new];
             [token setupWithHashTransaction:key andAddresses:addresses andTokenTemplate:templateModel];
             [self addNewToken:token];
             token.manager = self;
@@ -175,7 +176,7 @@ static NSString* kAddresses = @"kAddress";
     NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
     
     if (!filteredArray.count && contractAddress) {
-        Token* token = [Token new];
+        Contract* token = [Contract new];
         [token setupWithContractAddresse:contractAddress];
         token.manager = self;
         [self addNewToken:token];
@@ -195,7 +196,7 @@ static NSString* kAddresses = @"kAddress";
 
 #pragma mark - Managerable
 
--(void)updateSpendableObject:(Token*) object {
+-(void)updateSpendableObject:(Contract*) object {
     __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : object.contractAddress} withSuccessHandler:^(id responseObject) {
         object.decimals = responseObject[@"decimals"];
@@ -224,7 +225,7 @@ static NSString* kAddresses = @"kAddress";
 
 -(void)startObservingForSpendable{
     
-    for (Token* token in self.contracts) {
+    for (Contract* token in self.contracts) {
         [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
     }
 }

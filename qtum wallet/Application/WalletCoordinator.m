@@ -171,7 +171,7 @@
     
 }
 
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
 
     TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
     self.tokenDetailsViewController = vc;
@@ -183,11 +183,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
     
 }
 
-- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token {
+- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token {
     
     TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
     controller.function = item;
@@ -203,7 +203,7 @@
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Token*) token {
+                       andToken:(Contract*) token {
     
     NSMutableArray* param = @[].mutableCopy;
     for (int i = 0; i < inputs.count; i++) {

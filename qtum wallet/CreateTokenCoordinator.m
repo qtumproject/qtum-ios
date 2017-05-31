@@ -71,7 +71,7 @@
     SmartContractsListViewController* controller = (SmartContractsListViewController*)[[ControllersFactory sharedInstance] createSmartContractsListViewController];
     controller.delegate = self;
     
-    NSArray *sortedContracts = [[[TokenManager sharedInstance] getAllContracts] sortedArrayUsingComparator: ^(Token *t1, Token *t2) {
+    NSArray *sortedContracts = [[[TokenManager sharedInstance] getAllContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
         return [t1.creationDate compare:t2.creationDate];
     }];
     controller.contracts = sortedContracts;
@@ -101,7 +101,7 @@
     [self.modalNavigationController pushViewController:controller animated:YES];
 }
 
--(void)showContractsFunction:(Token*) contract {
+-(void)showContractsFunction:(Contract*) contract {
     
     if (contract.templateModel) {
         TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
@@ -189,7 +189,7 @@
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Token*) token {
+                       andToken:(Contract*) token {
     
     NSMutableArray* param = @[].mutableCopy;
     for (int i = 0; i < inputs.count; i++) {

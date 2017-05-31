@@ -52,7 +52,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Token* contract = self.contracts[indexPath.row];
+    Contract* contract = self.contracts[indexPath.row];
     SmartContractListItemCell* cell = [tableView dequeueReusableCellWithIdentifier:smartContractListItemCellIdentifire];
     cell.contractName.text = contract.localName;
     cell.typeIdentifire.text = contract.templateModel.templateTypeString;

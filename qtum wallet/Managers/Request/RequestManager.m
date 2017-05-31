@@ -315,7 +315,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     _socketManager = nil;
 }
 
-- (void)startObservingForToken:(Token*) token withHandler:(void(^)(id responseObject))completesion{
+- (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion{
     [self.socketManager startObservingToken:token withHandler:completesion];
 }
 

@@ -95,7 +95,7 @@
 		B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35EE88C1E4C6963008F4403 /* FirstNewTableCell.m */; };
 		B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA591EA4D8E30040A163 /* BTCTransactionInput+Extension.m */; };
 		B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA5F1EA4DBC10040A163 /* BTCTransactionOutput+Address.m */; };
-		B365CA631EA4ED540040A163 /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA621EA4ED540040A163 /* Token.m */; };
+		B365CA631EA4ED540040A163 /* Contract.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA621EA4ED540040A163 /* Contract.m */; };
 		B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA6E1EA600F30040A163 /* NSData+Extension.m */; };
 		B365CA791EA77D490040A163 /* TokensFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA781EA77D490040A163 /* TokensFactory.m */; };
 		B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA7B1EA77D590040A163 /* WalletsFactory.m */; };
@@ -419,8 +419,8 @@
 		B365CA591EA4D8E30040A163 /* BTCTransactionInput+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCTransactionInput+Extension.m"; sourceTree = "<group>"; };
 		B365CA5E1EA4DBC10040A163 /* BTCTransactionOutput+Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCTransactionOutput+Address.h"; sourceTree = "<group>"; };
 		B365CA5F1EA4DBC10040A163 /* BTCTransactionOutput+Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCTransactionOutput+Address.m"; sourceTree = "<group>"; };
-		B365CA611EA4ED540040A163 /* Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Token.h; path = ../Model/Token.h; sourceTree = "<group>"; };
-		B365CA621EA4ED540040A163 /* Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Token.m; path = ../Model/Token.m; sourceTree = "<group>"; };
+		B365CA611EA4ED540040A163 /* Contract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contract.h; path = ../Model/Contract.h; sourceTree = "<group>"; };
+		B365CA621EA4ED540040A163 /* Contract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contract.m; path = ../Model/Contract.m; sourceTree = "<group>"; };
 		B365CA6D1EA600F30040A163 /* NSData+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Extension.h"; sourceTree = "<group>"; };
 		B365CA6E1EA600F30040A163 /* NSData+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Extension.m"; sourceTree = "<group>"; };
 		B365CA771EA77D490040A163 /* TokensFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensFactory.h; sourceTree = "<group>"; };
@@ -994,8 +994,8 @@
 			children = (
 				B30BAE2C1E9E3AA600CA795F /* TokenManager.h */,
 				B30BAE2D1E9E3AA600CA795F /* TokenManager.m */,
-				B365CA611EA4ED540040A163 /* Token.h */,
-				B365CA621EA4ED540040A163 /* Token.m */,
+				B365CA611EA4ED540040A163 /* Contract.h */,
+				B365CA621EA4ED540040A163 /* Contract.m */,
 			);
 			name = Token;
 			sourceTree = "<group>";
@@ -2030,7 +2030,7 @@
 				B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */,
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
 				B32B32E21ECCC2D50081260A /* CreateTokenFinishViewController.m in Sources */,
-				B365CA631EA4ED540040A163 /* Token.m in Sources */,
+				B365CA631EA4ED540040A163 /* Contract.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,

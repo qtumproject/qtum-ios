@@ -83,7 +83,7 @@ static NSString* op_exec = @"c1";
     }];
 }
 
-- (void)sendTransactionToToken:(Token*) token
+- (void)sendTransactionToToken:(Contract*) token
                      toAddress:(NSString*) toAddress
                         amount:(NSNumber*) amount
                     andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion {
