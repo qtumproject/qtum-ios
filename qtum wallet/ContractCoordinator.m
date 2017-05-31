@@ -1,12 +1,12 @@
 //
-//  CreateTokenCoordinator.m
+//  ContractCoordinator.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 03.03.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "CreateTokenCoordinator.h"
+#import "ContractCoordinator.h"
 #import "CreateTokenNavigationController.h"
 #import "TransactionManager.h"
 #import "NSString+Extension.h"
@@ -25,7 +25,7 @@
 #import "TokenFunctionDetailViewController.h"
 
 
-@interface CreateTokenCoordinator ()
+@interface ContractCoordinator ()
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
@@ -35,7 +35,7 @@
 
 @end
 
-@implementation CreateTokenCoordinator
+@implementation ContractCoordinator
 
 -(instancetype)initWithNavigationController:(UINavigationController*)navigationController{
     self = [super init];
@@ -124,7 +124,7 @@
 }
 
 
-#pragma mark - CreateTokenCoordinatorDelegate
+#pragma mark - ContractCoordinatorDelegate
 
 -(void)createStepOneCancelDidPressed{
     [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
@@ -169,11 +169,11 @@
     [self showStepWithFieldsAndTemplate:templateModel.templateName];
 }
 
--(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Token*) contract {
+-(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Contract*) contract {
     [self showContractsFunction:contract];
 }
 
-- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token {
+- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token {
     
     TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
     controller.function = item;

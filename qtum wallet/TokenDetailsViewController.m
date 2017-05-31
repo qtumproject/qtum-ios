@@ -42,7 +42,6 @@ CGFloat const HeightForHeaderView = 50.0f;
 #pragma mark - Actions
 
 - (IBAction)actionShare:(id)sender {
-    [self.delegate didPressedTokenFunctionWithItem:self.token];
 }
 
 - (IBAction)actionBack:(id)sender {

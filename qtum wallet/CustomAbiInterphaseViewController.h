@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "InterfaceInputFormModel.h"
 
-@protocol CreateTokenCoordinatorDelegate;
+@protocol ContractCoordinatorDelegate;
 
 @interface CustomAbiInterphaseViewController : BaseViewController <ScrollableContentViewController>
 
-@property (weak,nonatomic) id <CreateTokenCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 @property (strong,nonatomic) InterfaceInputFormModel* formModel;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (assign,nonatomic) UIEdgeInsets originInsets;

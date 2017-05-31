@@ -57,7 +57,7 @@
     return data;
 }
 
-- (CGFloat)adaptiveDataForBalance:(CGFloat) balance{
+- (id)adaptiveDataForBalance:(id) balance{
     return balance;
 }
 

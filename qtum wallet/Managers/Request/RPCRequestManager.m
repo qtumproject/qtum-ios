@@ -248,4 +248,13 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     
 }
 
+- (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion{
+    
+}
+
+- (void)stopObservingForToken:(Contract*) token {
+    
+}
+
+
 @end

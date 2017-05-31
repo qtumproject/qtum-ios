@@ -34,7 +34,6 @@
 @property (strong, nonatomic) BalancePageViewController* pageViewController;
 @property (weak, nonatomic) MainViewController* historyController;
 @property (weak, nonatomic) TokenListViewController* tokenController;
-@property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 @property (strong, nonatomic) NSMutableArray <Spendable>* wallets;
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
@@ -187,36 +186,8 @@
     
 }
 
-- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token {
-    
-    TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
-    controller.function = item;
-    controller.delegate = self;
-    controller.token = token;
-    self.functionDetailController = controller;
-    [self.navigationController pushViewController:controller animated:true];
-}
-
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
     
-}
-
-- (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
-                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Contract*) token {
-    
-    NSMutableArray* param = @[].mutableCopy;
-    for (int i = 0; i < inputs.count; i++) {
-        [param addObject:inputs[i].value];
-    }
-    
-    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item appendingParam:param];
-    
-    __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
-        
-        [weakSelf.functionDetailController showResultViewWithOutputs:nil];
-    }];
 }
 
 #pragma mark - Configuration

@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 @class ResultTokenInputsModel;
 
-@protocol CreateTokenCoordinatorDelegate;
+@protocol ContractCoordinatorDelegate;
 
 @interface CreateTokenFinishViewController : UIViewController
 
-@property (weak,nonatomic) id <CreateTokenCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 @property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
 
 @end

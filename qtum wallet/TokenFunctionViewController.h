@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "InterfaceInputFormModel.h"
-#import "CreateTokenCoordinator.h"
+#import "ContractCoordinator.h"
 @class Token;
 
 @interface TokenFunctionViewController : UIViewController
 
 @property (strong,nonatomic) InterfaceInputFormModel* formModel;
-@property (weak,nonatomic) id <CreateTokenCoordinatorDelegate> delegate;
-@property (weak,nonatomic) Token* token;
+@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
+@property (weak,nonatomic) Contract* token;
 
 @end

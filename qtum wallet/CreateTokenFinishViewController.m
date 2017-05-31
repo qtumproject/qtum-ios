@@ -7,7 +7,7 @@
 //
 
 #import "CreateTokenFinishViewController.h"
-#import "CreateTokenCoordinator.h"
+#import "ContractCoordinator.h"
 #import "FinishInputCell.h"
 #import "ResultTokenInputsModel.h"
 

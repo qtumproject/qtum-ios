@@ -319,6 +319,10 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     [self.socketManager startObservingToken:token withHandler:completesion];
 }
 
+- (void)stopObservingForToken:(Contract*) token {
+    
+}
+
 
 
 @end

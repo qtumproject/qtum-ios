@@ -24,11 +24,6 @@
                          andBitcode:(NSData*) bitcode
                          andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion;
 
-- (void)callSmartContractWithKeys:(NSArray<BTCKey*>*) walletKeys
-                         andBitcode:(NSData*) bitcode
-                         andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion;
-
-
 - (void)callTokenWithAddress:(NSData*) contractAddress
                 andBitcode:(NSData*) bitcode
                fromAddress:(NSString*) fromAddress

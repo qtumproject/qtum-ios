@@ -23,17 +23,10 @@
 - (void)viewWillAppear;
 - (void)showAddressInfoWithSpendable:(id <Spendable>) spendable;
 - (void)pageDidChange:(NSInteger) page;
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 - (void)didBackPressed;
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 - (void)didDeselectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
-- (void)didPressedTokenFunctionWithItem:(Contract*) item;
-- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token;
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
-- (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
-                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Contract*) token;
 
 @end
 

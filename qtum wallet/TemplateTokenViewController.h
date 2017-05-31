@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CreateTokenCoordinator.h"
+#import "ContractCoordinator.h"
 #import "TemplateModel.h"
 
 @interface TemplateTokenViewController : UIViewController
 
 @property (strong, nonatomic) NSArray <TemplateModel*>* templateModels;
-@property (weak,nonatomic) id <CreateTokenCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 
 @end

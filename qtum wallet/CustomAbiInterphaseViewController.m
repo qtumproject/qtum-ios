@@ -9,7 +9,7 @@
 #import "CustomAbiInterphaseViewController.h"
 #import "AbiTextFieldWithLine.h"
 #import "AbiinterfaceItem.h"
-#import "CreateTokenCoordinator.h"
+#import "ContractCoordinator.h"
 #import "ResultTokenInputsModel.h"
 
 @interface CustomAbiInterphaseViewController () <AbiTextFieldWithLineDelegate>
