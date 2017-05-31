@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 02.03.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "WalletCoordinator.h"
@@ -106,7 +106,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)showTokenDetails{
+-(void)showTokenDetails {
+    
     TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
     self.tokenDetailsViewController = vc;
     self.tokenDetailsTableSource = [TokenDetailsTableSource new];
@@ -116,7 +117,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)pageDidChange:(NSInteger)page{
+-(void)pageDidChange:(NSInteger)page {
+    
     if (self.pageWallet != page) {
         self.pageWallet = page;
         self.delegateDataSource.wallet = self.wallets[self.pageWallet];
@@ -169,17 +171,17 @@
     
 }
 
-- (void)didPressedTokenFunctionWithItem:(Token*) item {
-    
-    if (item.templateModel) {
-        TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-        controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:item.templateModel.templateName];
-        controller.delegate = self;
-        controller.token = item;
-        [self.navigationController pushViewController:controller animated:true];
-    }
-}
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
 
+    TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
+    self.tokenDetailsViewController = vc;
+    self.tokenDetailsTableSource = [TokenDetailsTableSource new];
+    vc.delegate = self;
+    vc.token = item;
+    [vc setTableSource:self.tokenDetailsTableSource];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
     

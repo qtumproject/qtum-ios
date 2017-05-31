@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 03.03.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "CreateTokenCoordinator.h"
@@ -170,7 +170,7 @@
 }
 
 -(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Token*) contract {
-    [self didSelectContractWithIndexPath:indexPath withContract:contract];
+    [self showContractsFunction:contract];
 }
 
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token {
@@ -180,7 +180,7 @@
     controller.delegate = self;
     controller.token = token;
     self.functionDetailController = controller;
-    [self.navigationController pushViewController:controller animated:true];
+    [self.modalNavigationController pushViewController:controller animated:true];
 }
 
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{

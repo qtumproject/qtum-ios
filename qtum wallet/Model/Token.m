@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 17.04.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "Token.h"
@@ -23,10 +23,10 @@
     self.contractAddress = [NSString hexadecimalString:hashData];
     self.localName = [self.contractAddress substringToIndex:6];
     self.templateModel = templateModel;
+    self.creationDate = [NSDate date];
     
     __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : self.contractAddress} withSuccessHandler:^(id responseObject) {
-        weakSelf.creationDate = [NSDate date];
         weakSelf.decimals = responseObject[@"decimals"];
         weakSelf.symbol = responseObject[@"symbol"];
         weakSelf.name = responseObject[@"name"];
