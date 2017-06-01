@@ -131,10 +131,18 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     NSLog(@"scrollViewDidEndDecelerating");
+    
+    if (!self.mainCell) return;
+    CGFloat diff = [self.mainCell lastRect:scrollView.contentOffset.y];
+    [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y - diff) animated:YES];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     NSLog(@"scrollViewDidEndDragging");
+    
+    if (decelerate) {
+        return;
+    }
     
     if (!self.mainCell) return;
     CGFloat diff = [self.mainCell lastRect:scrollView.contentOffset.y];

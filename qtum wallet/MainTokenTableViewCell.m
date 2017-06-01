@@ -209,16 +209,31 @@
     for (NSInteger i = array.count - 2; i >= 0; i--) {
         underLast = [array objectAtIndex:i];
         
-        if (underLast.frame.origin.y != last.frame.origin.y) {
+        if (underLast.frame.origin.y + underLast.frame.size.height != last.frame.origin.y + last.frame.size.height) {
             break;
         }
     }
     
     CGFloat moveDiff;
-    if (last.frame.origin.y < underLast.frame.origin.y + underLast.frame.size.height / 2.0f) {
-        moveDiff = - (last.frame.origin.y - underLast.frame.origin.y);
+    if ([last isEqual:[self.views firstObject]]) {
+        CGFloat moveDistanсe = last.frame.size.height - [MainTokenTableViewCell getHeaderHeight];
+        CGFloat value = last.frame.origin.y + last.frame.size.height - position - [MainTokenTableViewCell getHeaderHeight];
+        
+        if (value > 0 && value < moveDistanсe) {
+            if (value < moveDistanсe / 2.0f) {
+                moveDiff = value - moveDistanсe;
+            }else{
+                moveDiff = moveDistanсe - value;
+            }
+        }else{
+            moveDiff = 0.0f;
+        }
     }else{
-        moveDiff = underLast.frame.origin.y + underLast.frame.size.height - last.frame.origin.y;
+        if (underLast.frame.origin.y + underLast.frame.size.height > last.frame.origin.y + last.frame.size.height / 2.0f) {
+            moveDiff = - (last.frame.origin.y + last.frame.size.height - underLast.frame.origin.y - underLast.frame.size.height);
+        }else{
+            moveDiff = underLast.frame.origin.y + underLast.frame.size.height - last.frame.origin.y;
+        }
     }
     
     return moveDiff;
