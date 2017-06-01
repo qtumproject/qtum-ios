@@ -72,13 +72,13 @@ CGFloat const HeaderHeight = 50.0f;
     // formats
     // minTop, maxTop, minFont, maxFont
     // top, center
-    NSArray *value1 = @[@(20), @(maxYPosition + 8.0f), @(14), @(28)];
+    NSArray *value1 = @[@(20), @(maxYPosition + 8.0f), @(14), @(28), @(1.0f), @(1.0f)];
     NSArray *constraints1 = @[self.availableTopConstraint, self.availableCenterConstraint];
-    NSArray *value2 = @[@(56), @(maxYPosition + 10), @(11), @(12)];
+    NSArray *value2 = @[@(56), @(maxYPosition + 10), @(11), @(12), @(1.0f), @(1.0f)];
     NSArray *constraints2 = @[self.availableTextTopConstraint, self.availableTextCenterConstraint];
-    NSArray *value3 = @[@(86), @(maxYPosition + 25.0f), @(14), @(16)];
+    NSArray *value3 = @[@(86), @(maxYPosition + 25.0f), @(14), @(16), @(1.0f), @(0.6f)];
     NSArray *constraints3 = @[self.uncorfirmedTopConstraint, self.unconfirmedCenterConsctraint];
-    NSArray *value4 = @[@(107), @(maxYPosition + 28.0f), @(11), @(12)];
+    NSArray *value4 = @[@(107), @(maxYPosition + 28.0f), @(11), @(12), @(1.0f), @(0.6f)];
     NSArray *constraints4 = @[self.uncorfirmedTextTopConstraint, self.unconfirmedTextCenterConstraint];
     
     
@@ -97,7 +97,7 @@ CGFloat const HeaderHeight = 50.0f;
     CGFloat minAlphaForPage = 0.0f;
     CGFloat maxAlphaForPage = 1.0f;
     
-    self.notConfirmedTitleLabel.alpha = self.unconfirmedValue.alpha = maxAlphaForLabel - (maxAlphaForLabel - minAlphaForLabel) * percent;
+//    self.notConfirmedTitleLabel.alpha = self.unconfirmedValue.alpha = maxAlphaForLabel - (maxAlphaForLabel - minAlphaForLabel) * percent;
     self.pageControl.alpha = maxAlphaForPage - (maxAlphaForPage - minAlphaForPage) * percent;
 }
 

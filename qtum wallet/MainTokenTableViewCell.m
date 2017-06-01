@@ -98,12 +98,12 @@
     CGFloat percentForChangeLabel = (firstView.frame.size.height - (position + self.contentView.frame.size.height)) / maxYPosition;;
     
     // formats
-    // minTop, maxTop, minFont, maxFont
+    // minTop, maxTop, minFont, maxFont, firstAlpha, lastAlpha
     // top, center
-    NSArray *value1 = @[@(15), @(maxYPosition + 15.0f), @(14), @(28)];
+    NSArray *value1 = @[@(15), @(maxYPosition + 15.0f), @(14), @(28), @(1.0f), @(1.0f)];
     NSArray *constraints1 = @[firstView.topConstraintBalanceValue, firstView.centerConstraintBalanceValue];
     
-    NSArray *value2 = @[@(45), @(maxYPosition + 17.0f), @(11), @(12)];
+    NSArray *value2 = @[@(45), @(maxYPosition + 17.0f), @(11), @(12), @(1.0f), @(1.0f)];
     NSArray *constraints2 = @[firstView.topConstraintBalanceText, firstView.centerConstraintBalanceText];
     
     [self changePositionForLabel:firstView.balanceValueLabel andPercent:percentForChangeLabel values:value1 constraints:constraints1 isLeft:NO];

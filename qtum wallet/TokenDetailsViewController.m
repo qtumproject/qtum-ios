@@ -37,6 +37,7 @@ CGFloat const HeightForHeaderView = 50.0f;
     self.tableView.delegate = self.source;
     
     [self.headerVIew setRightConstraint:self.trailingForLineConstraint];
+    [self updateHeader:self.token];
 }
 
 - (void)setTableSource:(TokenDetailsTableSource *)source{
@@ -60,11 +61,11 @@ CGFloat const HeightForHeaderView = 50.0f;
 }
 
 - (void)needShowHeader{
-    if (self.heightConsctaintForHeaderView.constant == 50.0f) {
+    if (self.heightConsctaintForHeaderView.constant == HeightForHeaderView) {
         return;
     }
     
-    self.heightConsctaintForHeaderView.constant = 50.0f;
+    self.heightConsctaintForHeaderView.constant = HeightForHeaderView;
     [self.headerVIew showAnimation];
 }
 
@@ -74,6 +75,12 @@ CGFloat const HeightForHeaderView = 50.0f;
     }
     
     self.heightConsctaintForHeaderView.constant = 0;
+}
+
+#pragma mark - Methods
+
+- (void)updateHeader:(Token *)token{
+    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%f",self.token.balance];
 }
 
 @end

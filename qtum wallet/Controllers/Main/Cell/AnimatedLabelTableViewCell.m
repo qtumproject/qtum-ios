@@ -48,6 +48,27 @@
     if (newCenter < minCenter) newCenter = minCenter;
     if (newCenter > maxCenter) newCenter = maxCenter;
     centerContsraint.constant = newCenter * (isLeft ? -1 : 1);
+    
+    [self changeAplha:label andPercent:percent values:values];
+}
+
+- (void)changeAplha:(UILabel *)label andPercent:(CGFloat)percent values:(NSArray *)values{
+    CGFloat firstAlpha = [values[4] floatValue];
+    CGFloat lastAlpha = [values[5] floatValue];
+    CGFloat centerAlpha = 0.5f;
+    
+    
+    CGFloat alpha;
+    CGFloat newPercent;
+    if (percent <= 0.5f) {
+        newPercent = percent / 0.5f;
+        alpha = firstAlpha - (firstAlpha - centerAlpha) * newPercent;
+    }else{
+        newPercent = (percent - 0.5f) / 0.5f;
+        alpha = centerAlpha + (lastAlpha - centerAlpha) * newPercent;
+    }
+    
+    label.alpha = alpha;
 }
 
 @end
