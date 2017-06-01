@@ -169,7 +169,7 @@
 }
 
 -(TokenDetailsViewController *)createTokenDetailsViewController{
-    TokenDetailsViewController* controller = (TokenDetailsViewController*)[UIViewController controllerInStoryboard:@"TokenDetails" withIdentifire:@"TokenDetailsViewController"];
+    TokenDetailsViewController* controller = (TokenDetailsViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
     return controller;
 }
 
