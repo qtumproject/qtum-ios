@@ -3,11 +3,11 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 17.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "CreateTokenFinishViewController.h"
-#import "CreateTokenCoordinator.h"
+#import "ContractCoordinator.h"
 #import "FinishInputCell.h"
 #import "ResultTokenInputsModel.h"
 
@@ -22,10 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 85, 0);
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - UITableViewDelegate

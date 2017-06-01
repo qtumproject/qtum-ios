@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 23.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -18,6 +18,6 @@ static NSString* tokenPropertyCelldentifire = @"tokenPropertyCelldentifire";
 @property (weak, nonatomic) IBOutlet UILabel *propertyValue;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
--(void)setupWithObject:(AbiinterfaceItem*)object andToken:(Token*) token;
+-(void)setupWithObject:(AbiinterfaceItem*)object andToken:(Contract*) token;
 
 @end

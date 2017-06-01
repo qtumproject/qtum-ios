@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 26.12.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
 #import "ControllersFactory.h"
@@ -40,7 +40,8 @@
 #import "AddNewTokensViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
-
+#import "ChooseSmartContractViewController.h"
+#import "SmartContractsListViewController.h"
 
 @implementation ControllersFactory
 
@@ -178,12 +179,12 @@
 }
 
 -(TokenFunctionViewController*)createTokenFunctionViewController{
-    TokenFunctionViewController* controller = (TokenFunctionViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenFunctionViewController"];
+    TokenFunctionViewController* controller = (TokenFunctionViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionViewController"];
     return controller;
 }
 
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController{
-    TokenFunctionDetailViewController* controller = (TokenFunctionDetailViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenFunctionDetailViewController"];
+    TokenFunctionDetailViewController* controller = (TokenFunctionDetailViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionDetailViewController"];
     return controller;
 }
 
@@ -207,6 +208,15 @@
     return controller;
 }
 
+-(ChooseSmartContractViewController*)createChooseSmartContractViewController{
+    ChooseSmartContractViewController* controller = (ChooseSmartContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ChooseSmartContractViewController"];
+    return controller;
+}
+
+-(SmartContractsListViewController*)createSmartContractsListViewController{
+    SmartContractsListViewController* controller = (SmartContractsListViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
+    return controller;
+}
 
 -(UIViewController*)createFlowNavigationCoordinator{
     return nil;

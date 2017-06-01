@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 17.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "TextFieldWithLine.h"
@@ -11,6 +11,7 @@
 
 @protocol AbiTextFieldWithLineDelegate <NSObject>
 
+@optional
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
 - (void)textFieldDidBeginEditing:(UITextField *)textField;
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField;

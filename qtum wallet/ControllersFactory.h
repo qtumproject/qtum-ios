@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 26.12.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -33,6 +33,8 @@
 @class LanguageViewController;
 @class AddNewTokensViewController;
 @class QRCodeViewController;
+@class ChooseSmartContractViewController;
+@class SmartContractsListViewController;
 @class ChoseTokenPaymentViewController;
 
 @interface ControllersFactory : NSObject
@@ -68,6 +70,8 @@
 -(AddNewTokensViewController*)createAddNewTokensViewController;
 -(QRCodeViewController*)createQRCodeViewControllerForSubscribe;
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
+-(ChooseSmartContractViewController*)createChooseSmartContractViewController;
+-(SmartContractsListViewController*)createSmartContractsListViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController;

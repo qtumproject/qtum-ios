@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 24.03.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "SocketManager.h"
@@ -102,7 +102,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     [self.currentSocket disconnect];
 }
 
--(void)startObservingToken:(Token*) token withHandler:(void(^)()) handler{
+-(void)startObservingToken:(Contract*) token withHandler:(void(^)()) handler{
     __weak __typeof(self)weakSelf = self;
     dispatch_block_t block = ^{
         [weakSelf.currentSocket emit:@"subscribe" with:@[@"token_balance_change",@{@"contract_address" : token.contractAddress, @"addresses" : token.adresses}]];

@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 03.03.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "SubscribeTokenCoordinator.h"
@@ -32,12 +32,13 @@
 
 #pragma mark - Coordinatorable
 
--(void)start{
+-(void)start {
+    
     SubscribeTokenViewController* controller = (SubscribeTokenViewController*)[[ControllersFactory sharedInstance] createSubscribeTokenViewController];
     [self.navigationController pushViewController:controller animated:YES];
     controller.delegate = self;
     controller.delegateDataSource = [SubscribeTokenDataSourceDelegate new];
-    controller.delegateDataSource.tokensArray = (NSArray <Spendable>*)[[TokenManager sharedInstance] gatAllTokens];
+    controller.delegateDataSource.tokensArray = (NSArray <Spendable>*)[[TokenManager sharedInstance] getAllTokens];
     self.subscribeViewController = controller;
 }
 

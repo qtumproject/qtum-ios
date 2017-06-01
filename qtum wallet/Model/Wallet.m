@@ -193,6 +193,10 @@ static NSString* adressKey = @"adress";
     _historyStorage.spendableOwner = self;
 }
 
+-(void)updateHandler:(void(^)(BOOL success)) complete {
+    complete(NO);
+}
+
 -(void)historyDidChange{
     [self.manager spendableDidChange:self];
 }

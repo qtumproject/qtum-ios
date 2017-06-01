@@ -3,11 +3,11 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 19.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "TokenCell.h"
-#import "Token.h"
+#import "Contract.h"
 
 @interface TokenCell ()
 
@@ -21,7 +21,7 @@
 
 @implementation TokenCell
 
--(void)setupWithObject:(Token *)token {
+-(void)setupWithObject:(Contract *)token {
     
     self.tokenName.text = token.name;
     self.mainSymbol.text = @"QTUM";

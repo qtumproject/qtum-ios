@@ -42,7 +42,6 @@ CGFloat const HeightForHeaderView = 50.0f;
 #pragma mark - Actions
 
 - (IBAction)actionShare:(id)sender {
-    [self.delegate didPressedTokenFunctionWithItem:self.token];
 }
 
 - (IBAction)actionBack:(id)sender {
@@ -69,7 +68,7 @@ CGFloat const HeightForHeaderView = 50.0f;
     self.heightConsctaintForHeaderView.constant = HeightForHeaderView - headerY;
 }
 
-- (void)didPressedInfoActionWithToken:(Token*) token {
+- (void)didPressedInfoActionWithToken:(Contract*) token {
     [self.delegate showAddressInfoWithSpendable:token];
 }
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Wallet.h"
 #import "Requestable.h"
-#import "Token.h"
+#import "Contract.h"
 #import "Managerable.h"
 #import "WalletManagerRequestAdapter.h"
 
