@@ -9,6 +9,7 @@
 #import "TokenDetailsViewController.h"
 #import "WalletCoordinator.h"
 #import "TokenDetailsTableSource.h"
+#import "ViewWithAnimatedLine.h"
 
 CGFloat const HeightForHeaderView = 50.0f;
 
@@ -17,8 +18,9 @@ CGFloat const HeightForHeaderView = 50.0f;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *availableBalanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *notConfirmedBalanceLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConsctaintForHeaderView;
+@property (weak, nonatomic) IBOutlet ViewWithAnimatedLine *headerVIew;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
 
 @property (nonatomic, weak) TokenDetailsTableSource *source;
 
@@ -33,6 +35,9 @@ CGFloat const HeightForHeaderView = 50.0f;
     self.source.token = self.token;
     self.tableView.dataSource = self.source;
     self.tableView.delegate = self.source;
+    
+    [self.headerVIew setRightConstraint:self.trailingForLineConstraint];
+    [self updateHeader:self.token];
 }
 
 - (void)setTableSource:(TokenDetailsTableSource *)source{
@@ -50,26 +55,31 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 #pragma mark - TokenDetailsTableSourceDelegate
 
-- (void)scrollViewDidScrollWithSecondSectionHeaderY:(CGFloat)headerY{
-    CGFloat newConstant = HeightForHeaderView - headerY;
-    
-    if (newConstant < 0) {
-        newConstant = 0;
-    }
-    
-    if (newConstant > HeightForHeaderView) {
-        newConstant = HeightForHeaderView;
-    }
-    
-    if (self.heightConsctaintForHeaderView.constant == newConstant || self.heightConsctaintForHeaderView.constant == newConstant) {
+- (void)didPressedInfoActionWithToken:(Contract*)token {
+    [self.delegate showAddressInfoWithSpendable:token];
+}
+
+- (void)needShowHeader{
+    if (self.heightConsctaintForHeaderView.constant == HeightForHeaderView) {
         return;
     }
     
-    self.heightConsctaintForHeaderView.constant = HeightForHeaderView - headerY;
+    self.heightConsctaintForHeaderView.constant = HeightForHeaderView;
+    [self.headerVIew showAnimation];
 }
 
-- (void)didPressedInfoActionWithToken:(Contract*) token {
-    [self.delegate showAddressInfoWithSpendable:token];
+- (void)needHideHeader{
+    if (self.heightConsctaintForHeaderView.constant == 0.0f) {
+        return;
+    }
+    
+    self.heightConsctaintForHeaderView.constant = 0;
+}
+
+#pragma mark - Methods
+
+- (void)updateHeader:(Contract *)token{
+    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%f",self.token.balance];
 }
 
 @end

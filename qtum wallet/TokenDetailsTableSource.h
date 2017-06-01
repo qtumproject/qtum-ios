@@ -11,8 +11,9 @@
 
 @protocol TokenDetailsTableSourceDelegate <NSObject>
 
-- (void)scrollViewDidScrollWithSecondSectionHeaderY:(CGFloat)headerY;
-- (void)didPressedInfoActionWithToken:(Contract*) token;
+- (void)needShowHeader;
+- (void)needHideHeader;
+- (void)didPressedInfoActionWithToken:(Contract*)token;
 
 @end
 

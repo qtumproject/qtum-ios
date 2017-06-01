@@ -158,6 +158,7 @@ static NSInteger countOfSections = 2;
 - (void)didScrollForheaderCell:(UIScrollView *)scrollView scrolledDelta:(CGFloat)scrolledDelta{
     NSIndexPath *headerIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     WalletHeaderCell *headerCell = [self.tableView cellForRowAtIndexPath:headerIndexPath];
+    
     if (!headerCell) {
         return;
     }

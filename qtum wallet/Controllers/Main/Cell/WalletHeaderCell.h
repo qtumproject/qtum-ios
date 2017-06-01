@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WalletCoordinator.h"
 #import "CustomPageControl.h"
+#import "AnimatedLabelTableViewCell.h"
 
 typedef enum {
     HeaderCellTypeAllVisible,
@@ -19,7 +20,7 @@ typedef enum {
 
 static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIdentifire";
 
-@interface WalletHeaderCell : UITableViewCell
+@interface WalletHeaderCell : AnimatedLabelTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedValue;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;

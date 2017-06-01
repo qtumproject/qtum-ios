@@ -187,6 +187,14 @@
 		E73D9C8D1ECB19D000A09CFE /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8C1ECB19D000A09CFE /* SplashViewController.m */; };
 		E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */; };
 		E74636861DCB300800A13318 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E74636851DCB300800A13318 /* Utils.m */; };
+		E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */; };
+		E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903591EDC66D0004243F0 /* BalanceTokenView.m */; };
+		E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035C1EDC674C004243F0 /* QTUMAddressTokenView.m */; };
+		E78903601EDC6769004243F0 /* NubersTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035F1EDC6769004243F0 /* NubersTokenView.m */; };
+		E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903621EDC678C004243F0 /* AddressesTokenView.m */; };
+		E78903661EDC6F06004243F0 /* MainTokenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903651EDC6F06004243F0 /* MainTokenTableViewCell.m */; };
+		E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */; };
+		E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */; };
 		E78D0C991ED2DF2E00CB91FF /* TokenDetailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */; };
 		E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D241D81DE6D6B1003E507B /* QRCodeManager.m */; };
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
@@ -595,6 +603,21 @@
 		E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLogoImageVIew.m; sourceTree = "<group>"; };
 		E74636841DCB300800A13318 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TokenDetailsViews.xib; sourceTree = "<group>"; };
+		E78903581EDC66D0004243F0 /* BalanceTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTokenView.h; sourceTree = "<group>"; };
+		E78903591EDC66D0004243F0 /* BalanceTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceTokenView.m; sourceTree = "<group>"; };
+		E789035B1EDC674C004243F0 /* QTUMAddressTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTUMAddressTokenView.h; sourceTree = "<group>"; };
+		E789035C1EDC674C004243F0 /* QTUMAddressTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTUMAddressTokenView.m; sourceTree = "<group>"; };
+		E789035E1EDC6769004243F0 /* NubersTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NubersTokenView.h; sourceTree = "<group>"; };
+		E789035F1EDC6769004243F0 /* NubersTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NubersTokenView.m; sourceTree = "<group>"; };
+		E78903611EDC678C004243F0 /* AddressesTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressesTokenView.h; sourceTree = "<group>"; };
+		E78903621EDC678C004243F0 /* AddressesTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressesTokenView.m; sourceTree = "<group>"; };
+		E78903641EDC6F06004243F0 /* MainTokenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTokenTableViewCell.h; sourceTree = "<group>"; };
+		E78903651EDC6F06004243F0 /* MainTokenTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTokenTableViewCell.m; sourceTree = "<group>"; };
+		E78903671EDD57D2004243F0 /* AnimatedLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLabelTableViewCell.h; sourceTree = "<group>"; };
+		E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLabelTableViewCell.m; sourceTree = "<group>"; };
+		E789036A1EDDA980004243F0 /* ViewWithAnimatedLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewWithAnimatedLine.h; sourceTree = "<group>"; };
+		E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithAnimatedLine.m; sourceTree = "<group>"; };
 		E78D0C971ED2DF2E00CB91FF /* TokenDetailsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsTableView.h; sourceTree = "<group>"; };
 		E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsTableView.m; sourceTree = "<group>"; };
 		E7D241D71DE6D6B1003E507B /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
@@ -1288,6 +1311,8 @@
 				E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */,
 				B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */,
 				B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */,
+				E78903671EDD57D2004243F0 /* AnimatedLabelTableViewCell.h */,
+				E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */,
 			);
 			name = Cell;
 			path = Controllers/Main/Cell;
@@ -1316,6 +1341,7 @@
 		E73D36EE1ECF14AA009173BD /* TokenDetails */ = {
 			isa = PBXGroup;
 			children = (
+				E78903571EDC66B4004243F0 /* Views */,
 				E73D36F21ECF15AE009173BD /* Cells */,
 				E73D36EF1ECF14CE009173BD /* TokenDetailsViewController.h */,
 				E73D36F01ECF14CE009173BD /* TokenDetailsViewController.m */,
@@ -1340,6 +1366,8 @@
 				E73D37001ECF1684009173BD /* ActivityTokenTableViewCell.m */,
 				E73D37021ECF1771009173BD /* QTUMAddressTokenTableViewCell.h */,
 				E73D37031ECF1771009173BD /* QTUMAddressTokenTableViewCell.m */,
+				E78903641EDC6F06004243F0 /* MainTokenTableViewCell.h */,
+				E78903651EDC6F06004243F0 /* MainTokenTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1368,6 +1396,22 @@
 			children = (
 				E73D9C8E1ECB1A0600A09CFE /* AnimatedLogoImageVIew.h */,
 				E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E78903571EDC66B4004243F0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */,
+				E78903581EDC66D0004243F0 /* BalanceTokenView.h */,
+				E78903591EDC66D0004243F0 /* BalanceTokenView.m */,
+				E789035B1EDC674C004243F0 /* QTUMAddressTokenView.h */,
+				E789035C1EDC674C004243F0 /* QTUMAddressTokenView.m */,
+				E789035E1EDC6769004243F0 /* NubersTokenView.h */,
+				E789035F1EDC6769004243F0 /* NubersTokenView.m */,
+				E78903611EDC678C004243F0 /* AddressesTokenView.h */,
+				E78903621EDC678C004243F0 /* AddressesTokenView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1608,6 +1652,8 @@
 				B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */,
 				B321E8851E0D07A000DC7DE5 /* BorderedLabel.h */,
 				B321E8861E0D07A000DC7DE5 /* BorderedLabel.m */,
+				E789036A1EDDA980004243F0 /* ViewWithAnimatedLine.h */,
+				E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */,
 			);
 			name = "Shared Views";
 			path = Views;
@@ -1758,7 +1804,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = Designsters;
+				ORGANIZATIONNAME = PixelPlex;
 				TargetAttributes = {
 					B33EAF871E5EC262006125F3 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1857,6 +1903,8 @@
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
 				B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */,
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
+				E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */,
+				B3E1591E1ED5BED700D70A87 /* Version1 in Resources */,
 				B32EEC751EB3548600512FED /* Wallet.storyboard in Resources */,
 				B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
@@ -1966,6 +2014,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E73D9C8D1ECB19D000A09CFE /* SplashViewController.m in Sources */,
+				E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */,
 				B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */,
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
@@ -1988,6 +2037,7 @@
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
 				E7EA2CC11ED4326E00AFD5D0 /* LanguageCoordinator.m in Sources */,
+				E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */,
 				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */,
@@ -2000,6 +2050,7 @@
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
 				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
+				E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */,
 				B3DD275D1E681A8B00BB0635 /* SendCoordinator.m in Sources */,
 				B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
@@ -2045,6 +2096,7 @@
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
+				E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */,
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
 				E73D36FE1ECF1636009173BD /* AddressesTokenTableViewCell.m in Sources */,
@@ -2064,6 +2116,7 @@
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
+				E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */,
 				B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */,
 				B3827DE71ECF673900E500DE /* TokenFunctionViewController.m in Sources */,
 				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,
@@ -2120,6 +2173,8 @@
 				B3827DE41ECF5E8D00E500DE /* TokenFunctionCell.m in Sources */,
 				E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */,
 				B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */,
+				E78903661EDC6F06004243F0 /* MainTokenTableViewCell.m in Sources */,
+				E78903601EDC6769004243F0 /* NubersTokenView.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
 				B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */,
 				B35130681E49DF910048A28C /* ImageLoader.m in Sources */,
