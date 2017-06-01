@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 13.12.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
 #import "Appearance.h"
@@ -49,7 +49,9 @@
 //    
 //    [[UITextField appearanceWhenContainedIn:[TextFieldWithLine class], nil] setTintColor:customBlueColor()];
 //    [[UITextField appearanceWhenContainedIn:[CustomTextField class], nil] setTintColor:customBlueColor()];
-
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : customBlueColor(),
+                                                            NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:16.0f]}
+                                                forState:UIControlStateNormal];
     [self configTabbarUndeline];
     [self configTabbarTopline];
 }

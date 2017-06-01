@@ -11,8 +11,6 @@
 
 @interface BaseViewController ()
 
-
-
 @end
 
 @implementation BaseViewController
@@ -80,10 +78,11 @@
     CGRect scrollViewRect = [self.view convertRect:scrollView.frame fromView:scrollView.superview];
     
     CGFloat scrollViewInsetDelta;
-    if (CGRectIntersectsRect(keyboardRect, self.view.frame) == YES)
-    scrollViewInsetDelta = CGRectIntersection(keyboardRect, scrollViewRect).size.height;
-    else
-    scrollViewInsetDelta = 0;
+    if (CGRectIntersectsRect(keyboardRect, self.view.frame) == YES) {
+        scrollViewInsetDelta = CGRectIntersection(keyboardRect, scrollViewRect).size.height;
+    } else {
+        scrollViewInsetDelta = scrollbaleSelf.originInsets.bottom;
+    }
     
     void(^animations)() = ^{
         

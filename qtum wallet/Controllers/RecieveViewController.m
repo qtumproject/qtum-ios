@@ -59,7 +59,7 @@
     
     __weak typeof(self) weakSelf = self;
     NSString* keyString = self.wallet.mainAddress;
-    BOOL isToken = [self.wallet isKindOfClass:[Token class]];
+    BOOL isToken = [self.wallet isKindOfClass:[Contract class]];
 
     [QRCodeManager createQRCodeFromPublicAddress:keyString isToken:isToken andAmount:self.amountTextField.text forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
@@ -73,10 +73,11 @@
 
 - (void)addDoneButtonToAmountTextField {
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
-    toolbar.barStyle = UIBarStyleBlackTranslucent;
-    toolbar.barTintColor = customBlueColor();
+    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.translucent = NO;
+    toolbar.barTintColor = customBlackColor();
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
-    doneButton.tintColor = customBlackColor();
+    doneButton.tintColor = customBlueColor();
     toolbar.items = @[
                       [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                       doneButton];
@@ -85,13 +86,11 @@
     self.amountTextField.inputAccessoryView = toolbar;
 }
 
-- (void)done:(id)sender
-{
+- (void)done:(id)sender {
     [self.amountTextField resignFirstResponder];
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     self.shareButton.enabled = NO;
     
     return YES;

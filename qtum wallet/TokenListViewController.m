@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 19.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "TokenListViewController.h"
@@ -88,14 +88,13 @@ NSString *const ShareContractTokensText = @"It's my tokens";
     }
     
     NSMutableArray *array = [NSMutableArray new];
-    for (Token *token in self.tokens) {
+    for (Contract *token in self.tokens) {
+        
         [array addObject:token.contractAddress];
     }
     
-    NSArray *ar = @[@"asdf", @"asdf"];
-    
     __weak typeof(self) weakSelf = self;
-    [QRCodeManager createQRCodeFromContractsTokensArray:[NSArray arrayWithArray:ar] forSize:CGSizeMake(500, 500) withCompletionBlock:^(UIImage *image) {
+    [QRCodeManager createQRCodeFromContractsTokensArray:[array copy] forSize:CGSizeMake(500, 500) withCompletionBlock:^(UIImage *image) {
         [SVProgressHUD dismiss];
         if (!image) {
             [SVProgressHUD showErrorWithStatus:@"Error in QRCodeCreation"];

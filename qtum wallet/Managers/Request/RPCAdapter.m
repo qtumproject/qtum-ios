@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 21.03.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "RPCAdapter.h"
@@ -57,7 +57,7 @@
     return data;
 }
 
-- (CGFloat)adaptiveDataForBalance:(CGFloat) balance{
+- (id)adaptiveDataForBalance:(id) balance{
     return balance;
 }
 

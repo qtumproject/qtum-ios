@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 17.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "AbiinterfaceEntries.h"
@@ -24,7 +24,7 @@
 -(void)setUpWithObject:(id) object {
     
     if ([object isKindOfClass:[NSDictionary class]]) {
-        _name = [object[@"name"] isKindOfClass:[NSNull class]] ? nil : [NSString stringFromCamelCase:object[@"name"]];
+        _name = [object[@"name"] isKindOfClass:[NSNull class]] ? nil : [[NSString stringFromCamelCase:object[@"name"]] stringByReplacingOccurrencesOfString:@"_" withString:@""];
         _typeAsString = object[@"type"];
         _type = [self determineTipe:object[@"type"]];
     }

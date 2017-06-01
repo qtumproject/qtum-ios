@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 25.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "ChoseTokenPaymentViewController.h"
@@ -29,7 +29,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    Token* token = self.tokens[indexPath.row];
+    Contract* token = self.tokens[indexPath.row];
     if ([token isEqual:self.activeToken]) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         self.activeToken = nil;
@@ -54,8 +54,8 @@
     ChoseTokenPaymentCell* cell = [tableView dequeueReusableCellWithIdentifier:choseTokenPaymentCellIdentifire];
     cell.tokenName.text = self.tokens[indexPath.row].name;
     cell.mainBalance.text = [NSString stringWithFormat:@"%f",self.tokens[indexPath.row].balance];
-    cell.balance.text = [NSString stringWithFormat:@"%f",0.];
-    cell.balanceSymbol.text = self.tokens[indexPath.row].symbol;
+    cell.balance.text = [NSString stringWithFormat:@"%f",0.0];
+    cell.balanceSymbol.text = @"";
     
     if ([self.activeToken isEqual:self.tokens[indexPath.row]]) {
         [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];

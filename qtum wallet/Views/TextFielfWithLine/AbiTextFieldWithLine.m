@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 17.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "AbiTextFieldWithLine.h"
@@ -57,6 +57,13 @@
         }
     }
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    if ([self.customDelegate respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
+        [self.customDelegate textFieldDidBeginEditing:textField];
+    }
 }
 
 @end

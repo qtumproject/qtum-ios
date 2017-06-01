@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 02.03.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "WalletCoordinator.h"
@@ -34,7 +34,6 @@
 @property (strong, nonatomic) BalancePageViewController* pageViewController;
 @property (weak, nonatomic) MainViewController* historyController;
 @property (weak, nonatomic) TokenListViewController* tokenController;
-@property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 @property (strong, nonatomic) NSMutableArray <Spendable>* wallets;
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
@@ -79,19 +78,19 @@
     self.delegateDataSource = [WalletHistoryDelegateDataSource new];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
-    self.delegateDataSource.haveTokens = [[TokenManager sharedInstance] gatAllTokens].count > 0;
+    self.delegateDataSource.haveTokens = [[TokenManager sharedInstance] getAllTokens].count > 0;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
     
     TokenListViewController* tokenController = (TokenListViewController*)[[ControllersFactory sharedInstance] createTokenListViewController];
-    tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    tokenController.tokens = [[TokenManager sharedInstance] getAllTokens];
     tokenController.delegate = self;
     controller.delegate = self;
     self.tokenController = tokenController;
     
     self.pageViewController = self.navigationController.viewControllers[0];
     self.pageViewController.controllers = @[controller,tokenController];
-    [self.pageViewController setScrollEnable:[[TokenManager sharedInstance] gatAllTokens].count > 0];
+    [self.pageViewController setScrollEnable:[[TokenManager sharedInstance] getAllTokens].count > 0];
 }
 
 #pragma mark - WalletCoordinatorDelegate
@@ -106,7 +105,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)showTokenDetails{
+-(void)showTokenDetails {
+    
     TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
     self.tokenDetailsViewController = vc;
     self.tokenDetailsTableSource = [TokenDetailsTableSource new];
@@ -116,7 +116,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)pageDidChange:(NSInteger)page{
+-(void)pageDidChange:(NSInteger)page {
+    
     if (self.pageWallet != page) {
         self.pageWallet = page;
         self.delegateDataSource.wallet = self.wallets[self.pageWallet];
@@ -169,15 +170,7 @@
     
 }
 
-- (void)didPressedTokenFunctionWithItem:(Token*) item {
-    TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-    controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:item.templateName];
-    controller.delegate = self;
-    controller.token = item;
-    [self.navigationController pushViewController:controller animated:true];
-}
-
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
 
     TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
     self.tokenDetailsViewController = vc;
@@ -189,39 +182,12 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
     
-}
-
-- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Token*) token{
-    TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
-    controller.function = item;
-    controller.delegate = self;
-    controller.token = token;
-    self.functionDetailController = controller;
-    [self.navigationController pushViewController:controller animated:true];
 }
 
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
     
-}
-
-- (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
-                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Token*) token {
-    
-    NSMutableArray* param = @[].mutableCopy;
-    for (int i = 0; i < inputs.count; i++) {
-        [param addObject:inputs[i].value];
-    }
-    
-    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item appendingParam:param];
-    
-    __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
-        
-        [weakSelf.functionDetailController showResultViewWithOutputs:nil];
-    }];
 }
 
 #pragma mark - Configuration
@@ -286,7 +252,8 @@
 }
 
 -(void)updateSpendables {
-    NSArray *tokensArray = [[TokenManager sharedInstance] gatAllTokens];
+    
+    NSArray *tokensArray = [[TokenManager sharedInstance] getAllTokens];
     self.delegateDataSource.haveTokens = tokensArray.count > 0;
     [self.historyController reloadTableView];
     self.tokenController.tokens = tokensArray;

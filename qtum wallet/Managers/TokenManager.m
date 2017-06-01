@@ -3,26 +3,26 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 12.04.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "TokenManager.h"
 #import "HistoryElement.h"
 #import "FXKeychain.h"
-#import "Token.h"
+#import "Contract.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
 
 static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
-static NSString* kTemplateName = @"kTemplateName";
+static NSString* kTemplateModel = @"kTemplateModel";
 static NSString* kAddresses = @"kAddress";
 
 
 @interface TokenManager () <TokenDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary* smartContractPretendents;
-@property (nonatomic, strong) NSMutableArray<Token*> *tokens;
+@property (nonatomic, strong) NSMutableArray<Contract*> *contracts;
 
 @end
 
@@ -57,18 +57,19 @@ static NSString* kAddresses = @"kAddress";
     return _smartContractPretendents;
 }
 
-- (NSMutableArray<Token*>*)tokens {
-    if (!_tokens) {
-        _tokens = @[].mutableCopy;
+- (NSMutableArray<Contract*>*)contracts {
+    
+    if (!_contracts) {
+        _contracts = @[].mutableCopy;
     }
-    return _tokens;
+    return _contracts;
 }
 
 #pragma mark - Keychain Methods
 
 - (BOOL)save {
     
-    BOOL isSavedTokens = [[FXKeychain defaultKeychain] setObject:self.tokens forKey:kTokenKeys];
+    BOOL isSavedTokens = [[FXKeychain defaultKeychain] setObject:self.contracts forKey:kTokenKeys];
     
     BOOL isSavedPretendents = [[FXKeychain defaultKeychain] setObject:[self.smartContractPretendents copy] forKey:kSmartContractPretendentsKey];
     return isSavedTokens && isSavedPretendents;
@@ -76,15 +77,16 @@ static NSString* kAddresses = @"kAddress";
 
 - (void)load {
     
+    [NSKeyedUnarchiver setClass:[Contract class] forClassName:@"Token"];
     NSMutableArray *savedTokens = [[[FXKeychain defaultKeychain] objectForKey:kTokenKeys] mutableCopy];
     
-    for (Token *token in savedTokens) {
+    for (Contract *token in savedTokens) {
         token.delegate = self;
         token.manager = self;
         [token loadToMemory];
     }
     self.smartContractPretendents = [[[FXKeychain defaultKeychain] objectForKey:kSmartContractPretendentsKey] mutableCopy];
-    self.tokens = savedTokens;
+    self.contracts = savedTokens;
 }
 
 #pragma mark - Public Methods
@@ -92,15 +94,21 @@ static NSString* kAddresses = @"kAddress";
 #pragma mark - Private Methods
 
 
-- (NSArray <Token*>*)gatAllTokens{
+- (NSArray <Contract*>*)getAllTokens {
     
-    return self.tokens;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i",TokenType];
+    return [self.contracts filteredArrayUsingPredicate:predicate];
 }
 
-- (void)addNewToken:(Token*) token{
+- (NSArray <Contract*>*)getAllContracts {
+    
+    return self.contracts;
+}
+
+- (void)addNewToken:(Contract*) token{
     
     token.delegate = self;
-    [self.tokens addObject:token];
+    [self.contracts addObject:token];
     [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
     [self tokenDidChange:token];
 }
@@ -108,8 +116,8 @@ static NSString* kAddresses = @"kAddress";
 - (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance{
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
-    NSArray *filteredArray = [self.tokens filteredArrayUsingPredicate:predicate];
-    Token* token = filteredArray[0];
+    NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
+    Contract* token = filteredArray[0];
     if (token) {
         token.balance = [balance floatValue];
         [self tokenDidChange:token];
@@ -118,7 +126,7 @@ static NSString* kAddresses = @"kAddress";
 
 - (void)removeAllTokens{
     
-    [self.tokens removeAllObjects];
+    [self.contracts removeAllObjects];
 }
 
 - (void)removeAllPretendents{
@@ -126,10 +134,10 @@ static NSString* kAddresses = @"kAddress";
     [self.smartContractPretendents removeAllObjects];
 }
 
--(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(NSString*)templateName{
+-(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(TemplateModel*)templateModel{
     
     [self.smartContractPretendents setObject:@{kAddresses : addresses,
-                                               kTemplateName : templateName} forKey:key];
+                                               kTemplateModel : templateModel} forKey:key];
     [self save];
 }
 
@@ -148,17 +156,33 @@ static NSString* kAddresses = @"kAddress";
         NSString* key = item.txHash;
         NSDictionary* tokenInfo = [self.smartContractPretendents objectForKey:key];
         NSArray* addresses = tokenInfo[kAddresses];
-        NSString* templateName = tokenInfo[kTemplateName];
+        TemplateModel* templateModel = (TemplateModel*)tokenInfo[kTemplateModel];
         
         if (tokenInfo) {
-            Token* token = [Token new];
-            [token setupWithHashTransaction:key andAddresses:addresses andTokenTemplate:templateName];
+            Contract* token = [Contract new];
+            [token setupWithHashTransaction:key andAddresses:addresses andTokenTemplate:templateModel];
             [self addNewToken:token];
             token.manager = self;
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
             [self deleteSmartContractPretendentWithKey:key];
             [self save];
         }
+    }
+}
+
+-(void)addNewTokenWithContractAddress:(NSString*) contractAddress {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",contractAddress];
+    NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
+    
+    if (!filteredArray.count && contractAddress) {
+        Contract* token = [Contract new];
+        [token setupWithContractAddresse:contractAddress];
+        token.manager = self;
+        [self addNewToken:token];
+        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+        [self save];
+        [self tokenDidChange:nil];
     }
 }
 
@@ -172,7 +196,7 @@ static NSString* kAddresses = @"kAddress";
 
 #pragma mark - Managerable
 
--(void)updateSpendableObject:(Token*) object {
+-(void)updateSpendableObject:(Contract*) object {
     __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : object.contractAddress} withSuccessHandler:^(id responseObject) {
         object.decimals = responseObject[@"decimals"];
@@ -201,7 +225,7 @@ static NSString* kAddresses = @"kAddress";
 
 -(void)startObservingForSpendable{
     
-    for (Token* token in self.tokens) {
+    for (Contract* token in self.contracts) {
         [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
     }
 }

@@ -35,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withoutTokensConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withTokensConstraint;
 
-@property (strong,nonatomic) Token* token;
+@property (strong,nonatomic) Contract* token;
 
 - (IBAction)backbuttonPressed:(id)sender;
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
@@ -52,7 +52,7 @@
         [self qrCodeScanned:self.dictionary];
     }
     
-    BOOL isTokensExists = [TokenManager sharedInstance].gatAllTokens.count;
+    BOOL isTokensExists = [TokenManager sharedInstance].getAllTokens.count;
     
     self.withTokensConstraint.active = isTokensExists;
     self.withoutTokensConstraint.active =
@@ -221,7 +221,7 @@
 
 - (IBAction)didPressedChoseTokensAction:(id)sender {
     ChoseTokenPaymentViewController* tokenController = (ChoseTokenPaymentViewController*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
-    tokenController.tokens = [[TokenManager sharedInstance] gatAllTokens];
+    tokenController.tokens = [[TokenManager sharedInstance] getAllTokens];
     tokenController.delegate = self;
     tokenController.activeToken = self.token;
     [self.navigationController pushViewController:tokenController animated:YES];
@@ -230,7 +230,10 @@
 #pragma mark - QRCodeViewControllerDelegate
 
 - (void)qrCodeScanned:(NSDictionary *)dictionary{
+    
+    self.addressTextField.text =
     self.adress = dictionary[PUBLIC_ADDRESS_STRING_KEY];
+    self.amountTextField.text =
     self.amount = dictionary[AMOUNT_STRING_KEY];
     [self updateControls];
     [self.navigationController popViewControllerAnimated:YES];
@@ -238,13 +241,13 @@
 
 #pragma mark - TokenListViewControllerDelegate
 
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
     self.token = item;
     self.tokenTextField.text = item.name;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Token*) item{
+- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
     
 }
 

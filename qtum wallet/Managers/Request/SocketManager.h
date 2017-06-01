@@ -3,11 +3,11 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 24.03.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "Token.h"
+#import "Contract.h"
 
 typedef NS_ENUM(NSInteger, ConnectionStatus) {
     NotConnected,
@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, ConnectionStatus) {
 -(void)startAndSubscribeWithAddresses:(NSArray*) addresses andHandler:(void(^)()) handler;
 -(void)stoptWithHandler:(void(^)()) handler;
 
--(void)startObservingToken:(Token*) token withHandler:(void(^)()) handler;
+-(void)startObservingToken:(Contract*) token withHandler:(void(^)()) handler;
 
 
 @end

@@ -3,24 +3,27 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 17.04.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "HistoryElementProtocol.h"
 #import "Managerable.h"
-@class Token;
+#import "TemplateModel.h"
+
+@class Contract;
 
 @protocol TokenDelegate <NSObject>
 
 @required
-- (void)tokenDidChange:(Token *)token;
+- (void)tokenDidChange:(Contract *)contract;
 
 @end
 
-@interface Token : NSObject <Spendable>
+@interface Contract : NSObject <Spendable>
 
 @property (copy, nonatomic) NSString* name;
+@property (copy, nonatomic) NSString* localName;
 @property (assign, nonatomic) CGFloat balance;
 @property (assign, nonatomic) CGFloat unconfirmedBalance;
 @property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
@@ -34,9 +37,13 @@
 @property (strong, nonatomic)NSArray* adresses;
 @property (strong, nonatomic)NSString* decimals;
 @property (strong, nonatomic)NSString* totalSupply;
-@property (strong, nonatomic)NSString* templateName;
+@property (strong, nonatomic) TemplateModel* templateModel;
+@property (strong, nonatomic) NSDate* creationDate;
+@property (copy, nonatomic, readonly) NSString* creationDateString;
+
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
--(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(NSString*) templateName;
+-(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(TemplateModel*) templateModel;
+-(void)setupWithContractAddresse:(NSString*) contractAddresse;
 
 @end

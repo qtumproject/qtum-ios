@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 23.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "TokenPropertyCell.h"
@@ -23,7 +23,7 @@
     // Configure the view for the selected state
 }
 
--(void)setupWithObject:(AbiinterfaceItem*)object andToken:(Token*) token {
+-(void)setupWithObject:(AbiinterfaceItem*)object andToken:(Contract*) token {
     
     self.propertyValue.hidden = YES;
     self.activityIndicator.hidden = NO;

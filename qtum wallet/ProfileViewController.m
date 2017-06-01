@@ -3,20 +3,20 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 28.12.16.
-//  Copyright © 2016 Designsters. All rights reserved.
+//  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
 #import "ProfileViewController.h"
 #import "ProfileTableViewCell.h"
 #import "SubscribeTokenCoordinator.h"
-#import "CreateTokenCoordinator.h"
+#import "ContractCoordinator.h"
 #import "LanguageCoordinator.h"
 
 @interface ProfileViewController ()
 
 @property (weak, nonatomic) UIView* footerView;
 @property (strong, nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
-@property (strong, nonatomic) CreateTokenCoordinator* createTokenCoordinator;
+@property (strong, nonatomic) ContractCoordinator* ContractCoordinator;
 @property (strong, nonatomic) LanguageCoordinator* languageCoordinator;
 
 @end
@@ -31,7 +31,7 @@
     [super viewDidAppear:animated];
     //TODO Make normal coordinator callback
     self.subscribeCoordinator = nil;
-    self.createTokenCoordinator = nil;
+    self.ContractCoordinator = nil;
 }
 
 #pragma mark - Setters/Getters
@@ -109,7 +109,7 @@
     } else if(indexPath.section == 2){
         if (indexPath.row == 0) {
             image = [UIImage imageNamed:@"ic-token"];
-            text = NSLocalizedString(@"Create Token", "");
+            text = NSLocalizedString(@"Smart Contracts", "");
         } else if (indexPath.row == 1) {
             
             image = [UIImage imageNamed:@"ic-token-subscribe"];
@@ -248,8 +248,8 @@
 }
 
 -(IBAction)actionCreateToken:(id)sender{
-    self.createTokenCoordinator = [[CreateTokenCoordinator alloc] initWithNavigationController:self.navigationController];
-    [self.createTokenCoordinator start];
+    self.ContractCoordinator = [[ContractCoordinator alloc] initWithNavigationController:self.navigationController];
+    [self.ContractCoordinator start];
 }
 
 -(IBAction)actionSubscribeToken:(id)sender{

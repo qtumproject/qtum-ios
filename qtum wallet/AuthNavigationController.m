@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 21.02.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "AuthNavigationController.h"
@@ -18,7 +18,8 @@
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
     self.interactivePopGestureRecognizer.delegate = self;
-    self.interactivePopGestureRecognizer.enabled = NO;}
+    self.interactivePopGestureRecognizer.enabled = NO;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

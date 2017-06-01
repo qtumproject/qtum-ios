@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 25.05.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import "ChoseTokenPaymentCell.h"
@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = customBlueColor();
+    bgColorView.backgroundColor = customRedColor();
     [self setSelectedBackgroundView:bgColorView];
 }
 

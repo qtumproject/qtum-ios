@@ -3,12 +3,12 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 20.03.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "RequestManagerAdapter.h"
-#import "Token.h"
+#import "Contract.h"
 
 @protocol Requestable <NSObject>
 
@@ -81,8 +81,8 @@
 - (void)startObservingAdresses:(NSArray*) addresses;
 - (void)stopObservingAdresses:(NSArray*) addresses;
 
-- (void)startObservingForToken:(Token*) token withHandler:(void(^)(id responseObject))completesion;
-- (void)stopObservingForToken:(Token*) token;
+- (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion;
+- (void)stopObservingForToken:(Contract*) token;
 
 // Observing for events
 

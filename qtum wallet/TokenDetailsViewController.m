@@ -47,7 +47,6 @@ CGFloat const HeightForHeaderView = 50.0f;
 #pragma mark - Actions
 
 - (IBAction)actionShare:(id)sender {
-    [self.delegate didPressedTokenFunctionWithItem:self.token];
 }
 
 - (IBAction)actionBack:(id)sender {
@@ -56,7 +55,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 #pragma mark - TokenDetailsTableSourceDelegate
 
-- (void)didPressedInfoActionWithToken:(Token*) token {
+- (void)didPressedInfoActionWithToken:(Contract*)token {
     [self.delegate showAddressInfoWithSpendable:token];
 }
 
@@ -79,7 +78,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 #pragma mark - Methods
 
-- (void)updateHeader:(Token *)token{
+- (void)updateHeader:(Contract *)token{
     self.availableBalanceLabel.text = [NSString stringWithFormat:@"%f",self.token.balance];
 }
 

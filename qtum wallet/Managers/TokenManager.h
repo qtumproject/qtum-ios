@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 12.04.17.
-//  Copyright © 2017 Designsters. All rights reserved.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,11 +13,13 @@ extern NSString *const kTokenDidChange;
 
 @interface TokenManager : NSObject <Managerable>
 
-- (NSArray <Token*>*)gatAllTokens;
-- (void)addNewToken:(Token*) token;
+- (NSArray <Contract*>*)getAllContracts;
+- (NSArray <Contract*>*)getAllTokens;
+- (void)addNewToken:(Contract*) token;
 - (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance;
 - (void)checkSmartContract:(HistoryElement*) item;
-- (void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(NSString*)templateName;
+- (void)addNewTokenWithContractAddress:(NSString*) contractAddress;
+- (void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(TemplateModel*)templateModel;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

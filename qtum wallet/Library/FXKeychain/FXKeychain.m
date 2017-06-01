@@ -32,6 +32,7 @@
 
 
 #import "FXKeychain.h"
+#import "Contract.h"
 
 
 #import <Availability.h>
