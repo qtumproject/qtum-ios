@@ -79,7 +79,6 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
         
         [[WalletManager sharedInstance] updateSpendablesBalansesWithObject:[self.delegate.adapter adaptiveDataForBalance:data[0]]];
-        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Balance Changed" andIdentifire:@"balance_changed"];
     }];
     
     [self.currentSocket on:@"new_transaction" callback:^(NSArray* data, SocketAckEmitter* ack) {
@@ -93,7 +92,6 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 //    }];
     
     [self.currentSocket on:@"token_balance_change" callback:^(NSArray* data, SocketAckEmitter* ack) {
-        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Token balance change" andIdentifire:@"token_balance_change"];
         [[TokenManager sharedInstance] updateTokenWithAddress:((NSDictionary*)data[0])[@"contract_address"] withNewBalance:((NSDictionary*)data[0])[@"balances"][0][@"balance"]];
     }];
 }

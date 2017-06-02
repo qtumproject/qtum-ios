@@ -90,6 +90,7 @@ static NSString* deviceTokenKey = @"deviceTokenKey";
 }
 
 - (void)createLocalNotificationWithString:(NSString*) text andIdentifire:(NSString*)identifire{
+    
     if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
         UNMutableNotificationContent* content = [UNMutableNotificationContent new];
         content.title = @"Local Notification";
@@ -99,7 +100,6 @@ static NSString* deviceTokenKey = @"deviceTokenKey";
         UNTimeIntervalNotificationTrigger* triger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
         UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:identifire content:content trigger:triger];
         [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-            NSLog(@"request added!");
         }];
     } else {
         UILocalNotification* notification = [UILocalNotification new];

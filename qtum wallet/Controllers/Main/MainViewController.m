@@ -189,7 +189,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
 
 - (void)reloadHeader:(id <Spendable>)wallet{
     
-    BOOL haveUncorfirmed = wallet.unconfirmedBalance > 0.0f;
+    BOOL haveUncorfirmed = wallet.unconfirmedBalance != 0.0f;
     self.availableTextTopConstraint.constant = haveUncorfirmed ? 10.0f : 17.0f;
     self.availableValueTopConstraint.constant = haveUncorfirmed ? 8.0f : 15.0f;
     
