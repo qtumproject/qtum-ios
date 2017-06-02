@@ -44,11 +44,15 @@
         self.typeLabel.text = NSLocalizedString(@"Sent", "");
         self.typeLabel.textColor =
         self.typeImage.tintColor = customBlueColor();
+        
+        self.addressLabel.text = [historyElement.toAddresses firstObject][@"address"];
     }else{
         self.typeImage.image = [UIImage imageNamed:@"history_receive"];
         self.typeLabel.text = NSLocalizedString(@"Received", "");
         self.typeLabel.textColor =
         self.typeImage.tintColor = customBlueColor();
+        
+        self.addressLabel.text = [historyElement.fromAddreses firstObject][@"address"];
     }
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;

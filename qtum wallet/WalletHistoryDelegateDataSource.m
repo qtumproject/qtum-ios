@@ -91,7 +91,6 @@ static NSInteger countOfSections = 2;
     
     if (section != 0) {
         HistoryHeaderVIew *sectionHeaderView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:SectionHeaderViewIdentifier];
-        sectionHeaderView.balanceLabel.text = [NSString stringWithFormat:@"%0.6f",self.wallet.balance];
         self.sectionHeaderView = sectionHeaderView;
         return sectionHeaderView;
     }else {
