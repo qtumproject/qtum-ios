@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ContractCoordinator.h"
 
-@interface SmartContractsListViewController : UIViewController
+@interface SmartContractsListViewController : BaseViewController
 
 @property (strong, nonatomic) NSArray <Contract*>* contracts;
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;

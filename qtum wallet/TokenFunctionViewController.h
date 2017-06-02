@@ -11,7 +11,7 @@
 #import "ContractCoordinator.h"
 @class Token;
 
-@interface TokenFunctionViewController : UIViewController
+@interface TokenFunctionViewController : BaseViewController
 
 @property (strong,nonatomic) InterfaceInputFormModel* formModel;
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;

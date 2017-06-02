@@ -17,7 +17,7 @@
 
 @end
 
-@interface ChoseTokenPaymentViewController : UIViewController
+@interface ChoseTokenPaymentViewController : BaseViewController
 
 @property (weak, nonatomic)NSArray <Contract*>* tokens;
 @property (weak, nonatomic)Contract* activeToken;

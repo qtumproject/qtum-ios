@@ -11,7 +11,7 @@
 #import "ContractCoordinator.h"
 @class Contract;
 
-@interface TokenFunctionDetailViewController : UIViewController
+@interface TokenFunctionDetailViewController : BaseViewController
 
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 @property (strong,nonatomic) AbiinterfaceItem* function;

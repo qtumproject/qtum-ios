@@ -11,7 +11,7 @@
 
 @protocol ContractCoordinatorDelegate;
 
-@interface CreateTokenFinishViewController : UIViewController
+@interface CreateTokenFinishViewController : BaseViewController
 
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 @property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;

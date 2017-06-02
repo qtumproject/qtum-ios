@@ -11,7 +11,7 @@
 @class TokenDetailsTableSource;
 @protocol WalletCoordinatorDelegate;
 
-@interface TokenDetailsViewController : UIViewController
+@interface TokenDetailsViewController : BaseViewController
 
 @property (nonatomic, weak) id<WalletCoordinatorDelegate> delegate;
 @property (nonatomic, strong) Contract* token;

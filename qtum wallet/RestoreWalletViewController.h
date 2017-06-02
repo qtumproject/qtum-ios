@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AuthCoordinator.h"
 
-@interface RestoreWalletViewController : UIViewController
+@interface RestoreWalletViewController : BaseViewController
 
 @property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
 

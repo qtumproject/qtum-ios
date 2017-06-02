@@ -10,7 +10,7 @@
 #import "NoInternetConnectionPopUpViewController.h"
 #import "PhotoLibraryPopUpViewController.h"
 
-@interface PopUpsManager()
+@interface PopUpsManager() <PopUpViewControllerDelegate>
 
 @property (nonatomic, weak) PopUpViewController *currentPopUp;
 
@@ -33,8 +33,14 @@
 - (instancetype)initUniqueInstance
 {
     self = [super init];
-    if (self != nil) { }
+    if (self != nil){
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noInternetConnetion) name:NO_INTERNET_CONNECTION_ERROR_KEY object:nil];
+    }
     return self;
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Creation of pop-up
@@ -55,7 +61,10 @@
 
 - (void)showNoIntenterConnetionsPopUp:(id<PopUpViewControllerDelegate>)delegate presenter:(UIViewController *)presenter  completion:(void (^)(void))completion
 {
-    [self checkAndHideCurrentPopUp:[NoInternetConnectionPopUpViewController class]];
+    BOOL needShow = [self checkAndHideCurrentPopUp:[NoInternetConnectionPopUpViewController class]];
+    if (!needShow) {
+        return;
+    }
     
     NoInternetConnectionPopUpViewController *controller = [self createNoInternetConnetion];
     controller.delegate = delegate;
@@ -65,7 +74,10 @@
 
 - (void)showPhotoLibraryPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion
 {
-    [self checkAndHideCurrentPopUp:[PhotoLibraryPopUpViewController class]];
+    BOOL needShow = [self checkAndHideCurrentPopUp:[PhotoLibraryPopUpViewController class]];
+    if (!needShow) {
+        return;
+    }
     
     PhotoLibraryPopUpViewController *controller = [self createPhotoLibrary];
     controller.delegate = delegate;
@@ -78,16 +90,29 @@
     if (self.currentPopUp == nil) return;
     
     [self.currentPopUp hide:animated completion:completion];
+    self.currentPopUp = nil;
 }
 
 #pragma mark - Private Methods
 
-- (void)checkAndHideCurrentPopUp:(Class)class
+- (BOOL)checkAndHideCurrentPopUp:(Class)class
 {
-    if (self.currentPopUp == nil) return;
-    if ([self.currentPopUp isKindOfClass:class]) return;
+    if (!self.currentPopUp) return true;
+    if ([self.currentPopUp isKindOfClass:class]) return false;
     
     [self hideCurrentPopUp:NO completion:nil];
+    return true;
+}
+
+- (void)noInternetConnetion{
+    UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
+    [self showNoIntenterConnetionsPopUp:self presenter:root completion:nil];
+}
+
+#pragma mark - PopUpViewControllerDelegate
+
+- (void)okButtonPressed{
+    [self hideCurrentPopUp:YES completion:nil];
 }
 
 @end

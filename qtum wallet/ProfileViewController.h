@@ -10,7 +10,7 @@
 
 @class LanguageCoordinator;
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : BaseViewController
 
 - (void)saveLanguageCoordinator:(LanguageCoordinator *)languageCoordinator;
 

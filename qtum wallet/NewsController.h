@@ -11,7 +11,7 @@
 @protocol NewsCoordinatorDelegate;
 @class NewsDataSourceAndDelegate;
 
-@interface NewsController : UIViewController
+@interface NewsController : BaseViewController
 
 @property (strong,nonatomic) NewsDataSourceAndDelegate* delegateDataSource;
 @property (weak,nonatomic) id <NewsCoordinatorDelegate> delegate;

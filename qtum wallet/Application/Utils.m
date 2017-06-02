@@ -13,6 +13,8 @@ NSString const *EXPORT_CONTRACTS_TOKENS_KEY = @"export_contracts_tokens";
 NSString const *kIsToken = @"isToken";
 NSString const *PRIVATE_ADDRESS_STRING_KEY = @"privateAddress";
 NSString const *AMOUNT_STRING_KEY = @"amount";
+NSString *NO_INTERNET_CONNECTION_ERROR_KEY = @"no_internet_connection_erro_key";
+
 
 UIColor *customBlueColor()
 {

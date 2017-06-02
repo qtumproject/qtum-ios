@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AuthCoordinator.h"
 
-@interface FirstAuthViewController : UIViewController
+@interface FirstAuthViewController : BaseViewController
 
 @property (weak,nonatomic)id <AuthCoordinatorDelegate> delegate;
 

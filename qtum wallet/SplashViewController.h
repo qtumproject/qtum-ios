@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "AuthCoordinator.h"
 
-@interface SplashViewController : UIViewController
+@interface SplashViewController : BaseViewController
 
 @end
