@@ -18,6 +18,7 @@
 #import "WalletHistoryDelegateDataSource.h"
 #import "WalletCoordinator.h"
 #import "HistoryHeaderVIew.h"
+#import "ViewWithAnimatedLine.h"
 
 CGFloat const HeaderHeightShowed = 50.0f;
 
@@ -26,21 +27,21 @@ CGFloat const HeaderHeightShowed = 50.0f;
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *quickInfoBoard;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBoardQuckBoardOffset;
 @property (weak, nonatomic) IBOutlet UIView *customNavigationBar;
-@property (weak, nonatomic) IBOutlet UIView *topSubstrateView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
-@property (weak, nonatomic) IBOutlet UIView *shortInfoView;
 @property (assign, nonatomic) BOOL canNewRequest;
 @property (assign, nonatomic) BOOL isNavigationBarFadeout;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 
+
+@property (weak, nonatomic) IBOutlet ViewWithAnimatedLine *headerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *availabelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *uncorfirmedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedTextLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTextTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableValueTopConstraint;
 
 @property (nonatomic) BOOL balanceLoaded;
 @property (nonatomic) BOOL historyLoaded;
@@ -145,6 +146,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
     }
     
     self.headerHeightConstraint.constant = HeaderHeightShowed;
+    [self.headerView showAnimation];
 }
 
 - (void)needHideHeader{
@@ -187,8 +189,12 @@ CGFloat const HeaderHeightShowed = 50.0f;
 
 - (void)reloadHeader:(id <Spendable>)wallet{
     
+    BOOL haveUncorfirmed = wallet.unconfirmedBalance > 0.0f;
+    self.availableTextTopConstraint.constant = haveUncorfirmed ? 10.0f : 17.0f;
+    self.availableValueTopConstraint.constant = haveUncorfirmed ? 8.0f : 15.0f;
+    
     self.unconfirmedTextLabel.hidden =
-    self.uncorfirmedLabel.hidden = wallet.unconfirmedBalance == 0.0f;
+    self.uncorfirmedLabel.hidden = !haveUncorfirmed;
     
     self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%f",wallet.unconfirmedBalance];
     self.availabelLabel.text = [NSString stringWithFormat:@"%f",wallet.balance];

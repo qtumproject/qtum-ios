@@ -517,8 +517,8 @@
                                     <constraint firstAttribute="trailing" secondItem="gQG-C0-D8i" secondAttribute="trailing" id="zUS-x9-wja"/>
                                 </constraints>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-nK-6WR">
-                                <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-nK-6WR" customClass="ViewWithAnimatedLine">
+                                <rect key="frame" x="0.0" y="64" width="375" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iv7-z9-t2O">
                                         <rect key="frame" x="291.5" y="9" width="68.5" height="17"/>
@@ -599,8 +599,11 @@
                     <connections>
                         <outlet property="adressLabel" destination="R6B-vc-ynF" id="eiE-Kr-gk8"/>
                         <outlet property="availabelLabel" destination="iv7-z9-t2O" id="hdr-OC-e0o"/>
+                        <outlet property="availableTextTopConstraint" destination="AyF-ZL-pRW" id="1tv-KN-z5H"/>
+                        <outlet property="availableValueTopConstraint" destination="QCG-Bl-k7C" id="6vw-LC-ylB"/>
                         <outlet property="customNavigationBar" destination="YP6-GK-BMP" id="Nuj-BL-g7D"/>
                         <outlet property="headerHeightConstraint" destination="ZxO-ay-UJg" id="1be-Mz-YpC"/>
+                        <outlet property="headerView" destination="uc4-nK-6WR" id="xWA-Jt-8HU"/>
                         <outlet property="tableView" destination="wxm-c6-KId" id="1Bc-7E-dld"/>
                         <outlet property="unconfirmedTextLabel" destination="owV-Mm-9sn" id="U15-nc-Cly"/>
                         <outlet property="uncorfirmedLabel" destination="0m9-ga-s3w" id="Owu-pK-9qP"/>
