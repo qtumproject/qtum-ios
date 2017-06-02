@@ -160,7 +160,8 @@
     [self.delegate createPaymentFromWalletScanWithDict:dict];
 }
 
-- (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item{
+- (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item {
+    
     HistoryItemViewController* controller = (HistoryItemViewController*)[[ControllersFactory sharedInstance] createHistoryItem];
     controller.item = item;
     [self.navigationController pushViewController:controller animated:YES];

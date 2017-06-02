@@ -24,7 +24,6 @@
     NSInteger nextStingOffset = 0;
     NSInteger constantOffset = 32;
     NSMutableArray* stringsArray = @[].mutableCopy;
-
     
     for (int i = 0; i < array.count; i++) {
         
