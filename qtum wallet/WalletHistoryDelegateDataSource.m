@@ -33,6 +33,7 @@ static NSInteger countOfSections = 2;
         cell.delegate = self.delegate;
         [cell setData:self.wallet];
         [cell setCellType:[self getHeaderCellType]];
+        [self didScrollForheaderCell:tableView];
         
         return cell;
     } else {
@@ -109,7 +110,7 @@ static NSInteger countOfSections = 2;
     CGFloat scrollDiff = scrollView.contentOffset.y - self.lastContentOffset;
     self.lastContentOffset = scrollView.contentOffset.y;
     
-    [self didScrollForheaderCell:scrollView scrolledDelta:scrollDiff];
+    [self didScrollForheaderCell:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView willDecelerate:(BOOL)decelerate{
@@ -159,7 +160,7 @@ static NSInteger countOfSections = 2;
     return HeaderCellTypeAllVisible;
 }
 
-- (void)didScrollForheaderCell:(UIScrollView *)scrollView scrolledDelta:(CGFloat)scrolledDelta{
+- (void)didScrollForheaderCell:(UIScrollView *)scrollView{
     NSIndexPath *headerIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     WalletHeaderCell *headerCell = [self.tableView cellForRowAtIndexPath:headerIndexPath];
     
@@ -178,7 +179,7 @@ static NSInteger countOfSections = 2;
     }
     
     CGFloat position = headerCell.frame.origin.y - scrollView.contentOffset.y;
-    [headerCell cellYPositionChanged:position scrolledDelta:scrolledDelta];
+    [headerCell cellYPositionChanged:position];
     
     if ([headerCell needShowHeader:position]) {
         if ([self.controllerDelegate respondsToSelector:@selector(needShowHeader)]) {

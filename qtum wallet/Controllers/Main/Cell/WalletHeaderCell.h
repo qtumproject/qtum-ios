@@ -39,7 +39,7 @@ static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIden
 - (void)setData:(id <Spendable>)wallet;
 - (void)setCellType:(HeaderCellType)type;
 
-- (void)cellYPositionChanged:(CGFloat)yPosition scrolledDelta:(CGFloat)scrolledDelta;
+- (void)cellYPositionChanged:(CGFloat)yPosition;
 - (BOOL)needShowHeader:(CGFloat)yPosition;
 
 + (CGFloat)getHeaderHeight;

@@ -69,7 +69,7 @@ CGFloat const HeaderHeight = 50.0f;
 
 #pragma mark - Animation
 
-- (void)cellYPositionChanged:(CGFloat)yPosition scrolledDelta:(CGFloat)scrolledDelta{
+- (void)cellYPositionChanged:(CGFloat)yPosition{
     CGFloat maxYPosition = self.separatorView.frame.origin.y - HeaderHeight;
     
     // formats
