@@ -127,7 +127,8 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
         failure(error,message);
     }else if (!operation.response){
         if (!self.requestManager.reachabilityManager.isReachable) {
-            failure(error,@"No Internet Connection Found");
+            failure(error,NO_INTERNET_CONNECTION_ERROR_KEY);
+            [[NSNotificationCenter defaultCenter] postNotificationName:NO_INTERNET_CONNECTION_ERROR_KEY object:nil];
         }
         else {
             failure(error,@"This action can not be performed");

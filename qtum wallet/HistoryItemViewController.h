@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class HistoryElement;
 
-@interface HistoryItemViewController : UIViewController
+@interface HistoryItemViewController : BaseViewController
 
 @property (strong, nonatomic)HistoryElement* item;
 

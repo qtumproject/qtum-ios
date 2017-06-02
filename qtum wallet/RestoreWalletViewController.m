@@ -117,6 +117,7 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
         [self.delegate didRestoreWallet];
     }
 }
+
 -(void)restoreFailed{
     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some Error", "")];
 }

@@ -10,7 +10,7 @@
 
 @protocol LanguageCoordinatorDelegate;
 
-@interface LanguageViewController : UIViewController
+@interface LanguageViewController : BaseViewController
 
 @property (nonatomic) id<UITableViewDelegate, UITableViewDataSource> tableSource;
 @property (nonatomic, weak) id<LanguageCoordinatorDelegate> delegate;

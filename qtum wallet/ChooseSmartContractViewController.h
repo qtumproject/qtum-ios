@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ContractCoordinator.h"
 
-@interface ChooseSmartContractViewController : UIViewController
+@interface ChooseSmartContractViewController : BaseViewController
 
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 

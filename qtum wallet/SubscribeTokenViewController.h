@@ -11,7 +11,7 @@
 
 @protocol SubscribeTokenCoordinatorDelegate;
 
-@interface SubscribeTokenViewController : UIViewController
+@interface SubscribeTokenViewController : BaseViewController
 
 @property (weak,nonatomic) id <SubscribeTokenCoordinatorDelegate> delegate;
 @property (strong, nonatomic) SubscribeTokenDataSourceDelegate* delegateDataSource;

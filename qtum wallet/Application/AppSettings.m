@@ -11,6 +11,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "LanguageManager.h"
+#import "PopUpsManager.h"
 
 @interface AppSettings ()
 
@@ -47,6 +48,7 @@
 -(void)setup{
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:NO];
+    [PopUpsManager sharedInstance];
     
     [self setupFabric];
 }

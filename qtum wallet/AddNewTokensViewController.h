@@ -10,7 +10,7 @@
 
 @protocol SubscribeTokenCoordinatorDelegate;
 
-@interface AddNewTokensViewController : UIViewController
+@interface AddNewTokensViewController : BaseViewController
 
 @property (weak,nonatomic) id<SubscribeTokenCoordinatorDelegate> delegate;
 

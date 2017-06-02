@@ -11,7 +11,7 @@
 @protocol WalletCoordinatorDelegate;
 @class WalletHistoryDelegateDataSource;
 
-@interface HistoryViewController : UIViewController
+@interface HistoryViewController : BaseViewController
 
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;

@@ -10,7 +10,7 @@
 #import "ContractCoordinator.h"
 #import "TemplateModel.h"
 
-@interface TemplateTokenViewController : UIViewController
+@interface TemplateTokenViewController : BaseViewController
 
 @property (strong, nonatomic) NSArray <TemplateModel*>* templateModels;
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
