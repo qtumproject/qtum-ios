@@ -8,6 +8,12 @@
 
 #import "BorderedLabel.h"
 
+@interface BorderedLabel()
+
+@property (nonatomic) UIView *borderView;
+
+@end
+
 @implementation BorderedLabel
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -20,13 +26,19 @@
 }
 
 -(void)configBorder{
-    self.layer.borderColor = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1].CGColor;
-    self.layer.borderWidth = 1;
+    self.borderView = [UIView new];
+    self.borderView.backgroundColor = [UIColor clearColor];
+    self.borderView.layer.borderColor = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1].CGColor;
+    self.borderView.layer.borderWidth = 1;
+    [self addSubview:self.borderView];
 }
 
 - (void)drawTextInRect:(CGRect)rect{
     UIEdgeInsets insets = {0, 10, 0, 10};
     [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
+    self.borderView.frame = CGRectMake(0.0f, -7.0f, self.frame.size.width, self.frame.size.height + 16.0f);
 }
+
+
 
 @end

@@ -47,11 +47,10 @@
 #pragma mark - Accesers 
 
 - (IBAction)actionBack:(id)sender {
-    
     [self.delegate didBackButtonPressed];
 }
 - (IBAction)didPressesAddNewAction:(id)sender {
-    [self.delegate didAddNewPressed];
+//    [self.delegate didAddNewPressed];
 }
 
 

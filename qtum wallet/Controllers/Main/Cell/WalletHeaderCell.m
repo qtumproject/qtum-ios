@@ -22,6 +22,8 @@ CGFloat const HeaderHeight = 50.0f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *unconfirmedCenterConsctraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *unconfirmedTextCenterConstraint;
 
+@property (nonatomic) HeaderCellType type;
+
 @end
 
 @implementation WalletHeaderCell
@@ -40,7 +42,8 @@ CGFloat const HeaderHeight = 50.0f;
 }
 
 - (void)setCellType:(HeaderCellType)type{
-    switch (type) {
+    self.type = type;
+    switch (self.type) {
         case HeaderCellTypeAllVisible:
             self.pageControl.hidden = NO;
             self.unconfirmedValue.hidden = NO;
@@ -66,15 +69,22 @@ CGFloat const HeaderHeight = 50.0f;
 
 #pragma mark - Animation
 
-- (void)cellYPositionChanged:(CGFloat)yPosition scrolledDelta:(CGFloat)scrolledDelta{
+- (void)cellYPositionChanged:(CGFloat)yPosition{
     CGFloat maxYPosition = self.separatorView.frame.origin.y - HeaderHeight;
     
     // formats
     // minTop, maxTop, minFont, maxFont
     // top, center
-    NSArray *value1 = @[@(20), @(maxYPosition + 8.0f), @(14), @(28), @(1.0f), @(1.0f)];
+    NSArray *value1;
+    NSArray *value2;
+    if (self.type == HeaderCellTypeAllVisible || self.type == HeaderCellTypeWithoutPageControl) {
+        value1 = @[@(20), @(maxYPosition + 8.0f), @(14), @(28), @(1.0f), @(1.0f)];
+        value2 = @[@(56), @(maxYPosition + 10), @(11), @(12), @(1.0f), @(1.0f)];
+    }else{
+        value1 = @[@(20), @(maxYPosition + 15.0f), @(14), @(28), @(1.0f), @(1.0f)];
+        value2 = @[@(56), @(maxYPosition + 17.0f), @(11), @(12), @(1.0f), @(1.0f)];
+    }
     NSArray *constraints1 = @[self.availableTopConstraint, self.availableCenterConstraint];
-    NSArray *value2 = @[@(56), @(maxYPosition + 10), @(11), @(12), @(1.0f), @(1.0f)];
     NSArray *constraints2 = @[self.availableTextTopConstraint, self.availableTextCenterConstraint];
     NSArray *value3 = @[@(86), @(maxYPosition + 25.0f), @(14), @(16), @(1.0f), @(0.6f)];
     NSArray *constraints3 = @[self.uncorfirmedTopConstraint, self.unconfirmedCenterConsctraint];
@@ -92,12 +102,9 @@ CGFloat const HeaderHeight = 50.0f;
 }
 
 - (void)changeAlphaByPercent:(CGFloat)percent{
-    CGFloat minAlphaForLabel = 0.6f;
-    CGFloat maxAlphaForLabel = 1.0f;
     CGFloat minAlphaForPage = 0.0f;
     CGFloat maxAlphaForPage = 1.0f;
     
-//    self.notConfirmedTitleLabel.alpha = self.unconfirmedValue.alpha = maxAlphaForLabel - (maxAlphaForLabel - minAlphaForLabel) * percent;
     self.pageControl.alpha = maxAlphaForPage - (maxAlphaForPage - minAlphaForPage) * percent;
 }
 
