@@ -20,7 +20,7 @@
 
 @end
 
-NSString* const textViewPlaceholder = @" Your Brain-CODE";
+NSString* const textViewPlaceholder = @"Your Brain-CODE";
 
 
 @implementation RestoreWalletViewController
@@ -72,6 +72,9 @@ NSString* const textViewPlaceholder = @" Your Brain-CODE";
 }
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    if ([textView.text isEqualToString:textViewPlaceholder]) {
+        textView.selectedRange = NSMakeRange(0,0);
+    }
     return YES;
 }
 
