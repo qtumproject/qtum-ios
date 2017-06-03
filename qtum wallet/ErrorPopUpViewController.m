@@ -23,27 +23,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (IBAction)actionOk:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(okButtonPressed)]) {
-        [self.delegate okButtonPressed];
-    }
-}
-
-- (IBAction)actionCancel:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(cancelButtonPressed)]) {
-        [self.delegate cancelButtonPressed];
-    }
-}
-
-- (void)setContent:(PopUpContent *)content{
-    [super setContent:content];
     
+    PopUpContent *content = [self getContent];
     self.titleLabel.text = content.titleString;
     self.messageLabel.text = content.messageString;
     [self.okButton setTitle:content.okButtonTitle forState:UIControlStateNormal];
     [self.cancelButton setTitle:content.cancelButtonTitle forState:UIControlStateNormal];
+}
+
+- (IBAction)actionOk:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(okButtonPressed:)]) {
+        [self.delegate okButtonPressed:self];
+    }
+}
+
+- (IBAction)actionCancel:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(cancelButtonPressed:)]) {
+        [self.delegate cancelButtonPressed:self];
+    }
 }
 
 @end

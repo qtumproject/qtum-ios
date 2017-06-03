@@ -183,6 +183,7 @@
 		E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */; };
 		E73CF6D11EE2D6FC0044DF78 /* PopUpContent.m in Sources */ = {isa = PBXBuildFile; fileRef = E73CF6D01EE2D6FC0044DF78 /* PopUpContent.m */; };
 		E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */; };
+		E73CF6D71EE2F0D90044DF78 /* NSError+NoInternet.m in Sources */ = {isa = PBXBuildFile; fileRef = E73CF6D61EE2F0D90044DF78 /* NSError+NoInternet.m */; };
 		E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D36F01ECF14CE009173BD /* TokenDetailsViewController.m */; };
 		E73D36F51ECF15D1009173BD /* BalanceTokenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D36F41ECF15D1009173BD /* BalanceTokenTableViewCell.m */; };
 		E73D36FB1ECF161E009173BD /* NubersTokenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D36FA1ECF161E009173BD /* NubersTokenTableViewCell.m */; };
@@ -602,6 +603,8 @@
 		E73CF6D01EE2D6FC0044DF78 /* PopUpContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpContent.m; sourceTree = "<group>"; };
 		E73CF6D21EE2E1230044DF78 /* PopUpContentGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpContentGenerator.h; sourceTree = "<group>"; };
 		E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpContentGenerator.m; sourceTree = "<group>"; };
+		E73CF6D51EE2F0D90044DF78 /* NSError+NoInternet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+NoInternet.h"; sourceTree = "<group>"; };
+		E73CF6D61EE2F0D90044DF78 /* NSError+NoInternet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+NoInternet.m"; sourceTree = "<group>"; };
 		E73D36EF1ECF14CE009173BD /* TokenDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsViewController.h; sourceTree = "<group>"; };
 		E73D36F01ECF14CE009173BD /* TokenDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsViewController.m; sourceTree = "<group>"; };
 		E73D36F31ECF15D1009173BD /* BalanceTokenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTokenTableViewCell.h; sourceTree = "<group>"; };
@@ -1484,6 +1487,8 @@
 				B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */,
 				B3F76A7B1EDDABBE00108DE9 /* NSDate+Extension.h */,
 				B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */,
+				E73CF6D51EE2F0D90044DF78 /* NSError+NoInternet.h */,
+				E73CF6D61EE2F0D90044DF78 /* NSError+NoInternet.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -2188,6 +2193,7 @@
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */,
 				E7FA0CB91ECD914200702C4E /* PopUpsManager.m in Sources */,
+				E73CF6D71EE2F0D90044DF78 /* NSError+NoInternet.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
 				B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */,
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,

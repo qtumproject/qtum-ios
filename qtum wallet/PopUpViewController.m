@@ -33,7 +33,7 @@
 }
 
 - (void)setContent:(PopUpContent *)content{
-    self.content = content;
+    _content = content;
 }
 
 - (PopUpContent *)getContent{

@@ -20,6 +20,9 @@
 // show methods
 - (void)showNoIntenterConnetionsPopUp:(id<PopUpViewControllerDelegate>)delegate presenter:(UIViewController *)presenter  completion:(void (^)(void))completion;
 - (void)showPhotoLibraryPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter  completion:(void (^)(void))completion;
+- (void)showErrorPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
+- (void)showInformationPopUp:(id<PopUpViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
+- (void)showConfirmPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 
 // hide methods
 - (void)hideCurrentPopUp:(BOOL)animated completion:(void (^)(void))completion;

@@ -158,7 +158,8 @@
 - (BOOL)checkAndHideCurrentPopUp:(Class)class withContent:(PopUpContent *)content
 {
     if (!self.currentPopUp) return true;
-    if ([self.currentPopUp isKindOfClass:class] && [[self.currentPopUp getContent] isEqual:content]) return false;
+    BOOL contentEqual = [self.currentPopUp getContent] ? [[self.currentPopUp getContent] isEqual:content] : true;
+    if ([self.currentPopUp isKindOfClass:class] && contentEqual) return false;
     
     [self hideCurrentPopUp:NO completion:nil];
     return true;
@@ -171,7 +172,7 @@
 
 #pragma mark - PopUpViewControllerDelegate
 
-- (void)okButtonPressed{
+- (void)okButtonPressed:(PopUpViewController *)sender{
     [self hideCurrentPopUp:YES completion:nil];
 }
 

@@ -23,7 +23,13 @@
 }
 
 - (BOOL)isEqual:(PopUpContent *)object{
-    return [self.titleString isEqualToString:object.titleString] && [self.messageString isEqualToString:object.messageString] && [self.okButtonTitle isEqualToString:object.okButtonTitle] && [self.cancelButtonTitle isEqualToString:object.cancelButtonTitle];
+    
+    BOOL title = self.titleString ? [self.titleString isEqualToString:object.titleString] : YES;
+    BOOL message = self.messageString ? [self.messageString isEqualToString:object.messageString] : YES;
+    BOOL okTitle = self.okButtonTitle ? [self.okButtonTitle isEqualToString:object.okButtonTitle] : YES;
+    BOOL cancelTitle = self.cancelButtonTitle ? [self.cancelButtonTitle isEqualToString:object.cancelButtonTitle] : YES;
+    
+    return title && message && okTitle && cancelTitle;
 }
 
 @end

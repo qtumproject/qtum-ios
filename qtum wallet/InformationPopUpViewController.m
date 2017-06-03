@@ -19,18 +19,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    PopUpContent *content = [self getContent];
+    self.titleLabel.text = content.titleString;
+    [self.okButton setTitle:content.okButtonTitle forState:UIControlStateNormal];
 }
 
 - (IBAction)actionOk:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(okButtonPressed)]) {
-        [self.delegate okButtonPressed];
+    if ([self.delegate respondsToSelector:@selector(okButtonPressed:)]) {
+        [self.delegate okButtonPressed:self];
     }
 }
 
-- (void)setContent:(PopUpContent *)content{
-    [super setContent:content];
-    
-    self.titleLabel.text = content.titleString;
-}
 
 @end

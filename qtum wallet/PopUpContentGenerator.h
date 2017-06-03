@@ -15,5 +15,6 @@
 + (PopUpContent *)getContentForOupsPopUp;
 + (PopUpContent *)getContentForUpdateBalance;
 + (PopUpContent *)getContentForPhotoLibrary;
++ (PopUpContent *)getContentForCreateContract;
 
 @end

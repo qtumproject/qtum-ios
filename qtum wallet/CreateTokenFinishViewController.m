@@ -10,8 +10,9 @@
 #import "ContractCoordinator.h"
 #import "FinishInputCell.h"
 #import "ResultTokenInputsModel.h"
+#import "PopUpsManager.h"
 
-@interface CreateTokenFinishViewController ()
+@interface CreateTokenFinishViewController () <PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -52,6 +53,30 @@
 
 - (IBAction)didFinishPressedAction:(id)sender {
     [self.delegate finishStepFinishDidPressed];
+}
+
+#pragma mark - methods
+
+- (void)showCompletedPopUp{
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForCreateContract] presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+}
+
+- (void)showErrorPopUp{
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+}
+
+#pragma mark - PopUpWithTwoButtonsViewControllerDelegate
+
+- (void)okButtonPressed:(PopUpViewController *)sender{
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    if ([[sender getContent] isEqual:[PopUpContentGenerator getContentForCreateContract]]) {
+        [self.delegate didPressedQuit];
+    }
+}
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender{
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [self.delegate didPressedQuit];
 }
 
 @end

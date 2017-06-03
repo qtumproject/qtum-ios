@@ -9,18 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "PopUpContent.h"
 
-@protocol PopUpViewControllerDelegate <NSObject>
-
-- (void)okButtonPressed;
-
-@end
-
-@protocol PopUpWithTwoButtonsViewControllerDelegate <PopUpViewControllerDelegate>
-
-- (void)cancelButtonPressed;
-
-@end
-
 @interface PopUpViewController : UIViewController
 
 - (void)showFromViewController:(UIViewController *)controller animated:(BOOL)animated completion:(void (^)(void))completion;
@@ -28,5 +16,17 @@
 
 - (void)setContent:(PopUpContent *)content;
 - (PopUpContent *)getContent;
+
+@end
+
+@protocol PopUpViewControllerDelegate <NSObject>
+
+- (void)okButtonPressed:(PopUpViewController *)sender;
+
+@end
+
+@protocol PopUpWithTwoButtonsViewControllerDelegate <PopUpViewControllerDelegate>
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender;
 
 @end

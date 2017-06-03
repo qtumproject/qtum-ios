@@ -29,15 +29,15 @@
 
 - (IBAction)dontAllowButtonWasPressed:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(cancelButtonPressed)]) {
-        [self.delegate cancelButtonPressed];
+    if ([self.delegate respondsToSelector:@selector(cancelButtonPressed:)]) {
+        [self.delegate cancelButtonPressed:self];
     }
 }
 
 - (IBAction)okButtonWasPressed:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(okButtonPressed)]) {
-        [self.delegate okButtonPressed];
+    if ([self.delegate respondsToSelector:@selector(okButtonPressed:)]) {
+        [self.delegate okButtonPressed:self];
     }
 }
 @end
