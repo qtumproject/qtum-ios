@@ -42,6 +42,9 @@
 #import "ChoseTokenPaymentViewController.h"
 #import "ChooseSmartContractViewController.h"
 #import "SmartContractsListViewController.h"
+#import "InformationPopUpViewController.h"
+#import "ConfirmPopUpViewController.h"
+#import "ErrorPopUpViewController.h"
 
 @implementation ControllersFactory
 
@@ -236,13 +239,28 @@
 
 #pragma mark - Pop ups
 
--(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController{
+-(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController{
     NoInternetConnectionPopUpViewController* controller = (NoInternetConnectionPopUpViewController*)[UIViewController controllerInStoryboard:@"NoInternetConnectionPopUp" withIdentifire:@"NoInternetConnectionPopUp"];
     return controller;
 }
 
--(PhotoLibraryPopUpViewController*)createPhotoLibraryController{
+-(PhotoLibraryPopUpViewController*)createPhotoLibraryPopUpViewController{
     PhotoLibraryPopUpViewController* controller = (PhotoLibraryPopUpViewController*)[UIViewController controllerInStoryboard:@"PhotoLibraryPopUp" withIdentifire:@"PhotoLibraryPopUp"];
+    return controller;
+}
+
+- (ErrorPopUpViewController *)createErrorPopUpViewController{
+    ErrorPopUpViewController* controller = (ErrorPopUpViewController*)[UIViewController controllerInStoryboard:@"ErrorPopUp" withIdentifire:@"ErrorPopUp"];
+    return controller;
+}
+
+- (InformationPopUpViewController *)createInformationPopUpViewController{
+    InformationPopUpViewController* controller = (InformationPopUpViewController*)[UIViewController controllerInStoryboard:@"InformationPopUp" withIdentifire:@"InformationPopUp"];
+    return controller;
+}
+
+- (ConfirmPopUpViewController *)createConfirmPopUpViewController{
+    ConfirmPopUpViewController* controller = (ConfirmPopUpViewController*)[UIViewController controllerInStoryboard:@"ConfirmPopUp" withIdentifire:@"ConfirmPopUp"];
     return controller;
 }
 

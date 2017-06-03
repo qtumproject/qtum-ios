@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PopUpViewController.h"
+#import "PopUpContentGenerator.h"
 
 @interface PopUpsManager : NSObject
 

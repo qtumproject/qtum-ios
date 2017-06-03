@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PopUpContent.h"
 
 @protocol PopUpViewControllerDelegate <NSObject>
 
@@ -24,5 +25,8 @@
 
 - (void)showFromViewController:(UIViewController *)controller animated:(BOOL)animated completion:(void (^)(void))completion;
 - (void)hide:(BOOL)animated completion:(void (^)(void))completion;
+
+- (void)setContent:(PopUpContent *)content;
+- (PopUpContent *)getContent;
 
 @end

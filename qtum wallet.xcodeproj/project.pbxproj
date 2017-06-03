@@ -175,6 +175,14 @@
 		E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */; };
 		E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AFB1DDF19C90002CD47 /* AddressTableViewCell.m */; };
 		E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */; };
+		E73CF6C11EE2BEA80044DF78 /* ErrorPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73CF6C01EE2BEA80044DF78 /* ErrorPopUp.storyboard */; };
+		E73CF6C31EE2CD370044DF78 /* InformationPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73CF6C21EE2CD370044DF78 /* InformationPopUp.storyboard */; };
+		E73CF6C51EE2CE8A0044DF78 /* ConfirmPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73CF6C41EE2CE8A0044DF78 /* ConfirmPopUp.storyboard */; };
+		E73CF6C81EE2CF970044DF78 /* ErrorPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73CF6C71EE2CF970044DF78 /* ErrorPopUpViewController.m */; };
+		E73CF6CB1EE2CFA40044DF78 /* InformationPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73CF6CA1EE2CFA40044DF78 /* InformationPopUpViewController.m */; };
+		E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */; };
+		E73CF6D11EE2D6FC0044DF78 /* PopUpContent.m in Sources */ = {isa = PBXBuildFile; fileRef = E73CF6D01EE2D6FC0044DF78 /* PopUpContent.m */; };
+		E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */; };
 		E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D36F01ECF14CE009173BD /* TokenDetailsViewController.m */; };
 		E73D36F51ECF15D1009173BD /* BalanceTokenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D36F41ECF15D1009173BD /* BalanceTokenTableViewCell.m */; };
 		E73D36FB1ECF161E009173BD /* NubersTokenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D36FA1ECF161E009173BD /* NubersTokenTableViewCell.m */; };
@@ -581,6 +589,19 @@
 		E7396AFB1DDF19C90002CD47 /* AddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTableViewCell.m; sourceTree = "<group>"; };
 		E7396AFD1DDF394C0002CD47 /* TextFieldWithLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLine.h; sourceTree = "<group>"; };
 		E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldWithLine.m; sourceTree = "<group>"; };
+		E73CF6C01EE2BEA80044DF78 /* ErrorPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ErrorPopUp.storyboard; sourceTree = "<group>"; };
+		E73CF6C21EE2CD370044DF78 /* InformationPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InformationPopUp.storyboard; sourceTree = "<group>"; };
+		E73CF6C41EE2CE8A0044DF78 /* ConfirmPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConfirmPopUp.storyboard; sourceTree = "<group>"; };
+		E73CF6C61EE2CF970044DF78 /* ErrorPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorPopUpViewController.h; sourceTree = "<group>"; };
+		E73CF6C71EE2CF970044DF78 /* ErrorPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorPopUpViewController.m; sourceTree = "<group>"; };
+		E73CF6C91EE2CFA40044DF78 /* InformationPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopUpViewController.h; sourceTree = "<group>"; };
+		E73CF6CA1EE2CFA40044DF78 /* InformationPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationPopUpViewController.m; sourceTree = "<group>"; };
+		E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPopUpViewController.h; sourceTree = "<group>"; };
+		E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPopUpViewController.m; sourceTree = "<group>"; };
+		E73CF6CF1EE2D6FC0044DF78 /* PopUpContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpContent.h; sourceTree = "<group>"; };
+		E73CF6D01EE2D6FC0044DF78 /* PopUpContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpContent.m; sourceTree = "<group>"; };
+		E73CF6D21EE2E1230044DF78 /* PopUpContentGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpContentGenerator.h; sourceTree = "<group>"; };
+		E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpContentGenerator.m; sourceTree = "<group>"; };
 		E73D36EF1ECF14CE009173BD /* TokenDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsViewController.h; sourceTree = "<group>"; };
 		E73D36F01ECF14CE009173BD /* TokenDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsViewController.m; sourceTree = "<group>"; };
 		E73D36F31ECF15D1009173BD /* BalanceTokenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTokenTableViewCell.h; sourceTree = "<group>"; };
@@ -1377,6 +1398,9 @@
 			children = (
 				E73D9C831ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard */,
 				E7FA0CBA1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard */,
+				E73CF6C01EE2BEA80044DF78 /* ErrorPopUp.storyboard */,
+				E73CF6C21EE2CD370044DF78 /* InformationPopUp.storyboard */,
+				E73CF6C41EE2CE8A0044DF78 /* ConfirmPopUp.storyboard */,
 			);
 			name = PopUp;
 			sourceTree = "<group>";
@@ -1498,6 +1522,16 @@
 				E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */,
 				E7FA0CBC1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.h */,
 				E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */,
+				E73CF6C61EE2CF970044DF78 /* ErrorPopUpViewController.h */,
+				E73CF6C71EE2CF970044DF78 /* ErrorPopUpViewController.m */,
+				E73CF6C91EE2CFA40044DF78 /* InformationPopUpViewController.h */,
+				E73CF6CA1EE2CFA40044DF78 /* InformationPopUpViewController.m */,
+				E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */,
+				E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */,
+				E73CF6CF1EE2D6FC0044DF78 /* PopUpContent.h */,
+				E73CF6D01EE2D6FC0044DF78 /* PopUpContent.m */,
+				E73CF6D21EE2E1230044DF78 /* PopUpContentGenerator.h */,
+				E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */,
 			);
 			name = "Pop Ups";
 			sourceTree = "<group>";
@@ -1883,6 +1917,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E73CF6C31EE2CD370044DF78 /* InformationPopUp.storyboard in Resources */,
 				B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
@@ -1893,10 +1928,12 @@
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
 				B32EEC9B1EB356DA00512FED /* Localizable.strings in Resources */,
+				E73CF6C11EE2BEA80044DF78 /* ErrorPopUp.storyboard in Resources */,
 				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				B32EEC661EB3545700512FED /* Send.storyboard in Resources */,
 				B32EEC7A1EB3549300512FED /* Pin.storyboard in Resources */,
+				E73CF6C51EE2CE8A0044DF78 /* ConfirmPopUp.storyboard in Resources */,
 				E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */,
 				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
 				B3F76A941EDDB81600108DE9 /* Contracts in Resources */,
@@ -2096,8 +2133,11 @@
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
 				E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */,
+				E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */,
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
+				E73CF6D11EE2D6FC0044DF78 /* PopUpContent.m in Sources */,
+				E73CF6C81EE2CF970044DF78 /* ErrorPopUpViewController.m in Sources */,
 				E73D36FE1ECF1636009173BD /* AddressesTokenTableViewCell.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
@@ -2175,11 +2215,13 @@
 				E78903661EDC6F06004243F0 /* MainTokenTableViewCell.m in Sources */,
 				E78903601EDC6769004243F0 /* NubersTokenView.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
+				E73CF6CB1EE2CFA40044DF78 /* InformationPopUpViewController.m in Sources */,
 				B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */,
 				B35130681E49DF910048A28C /* ImageLoader.m in Sources */,
 				B3827DEA1ED2C74900E500DE /* TokenFunctionDetailViewController.m in Sources */,
 				B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */,
 				B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */,
+				E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */,
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,
 				B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */,
 			);

@@ -10,6 +10,8 @@
 
 @interface PopUpViewController ()
 
+@property (nonatomic) PopUpContent *content;
+
 @end
 
 @implementation PopUpViewController
@@ -28,6 +30,14 @@
 - (void)hide:(BOOL)animated completion:(void (^)(void))completion
 {
     [self dismissViewControllerAnimated:animated completion:completion];
+}
+
+- (void)setContent:(PopUpContent *)content{
+    self.content = content;
+}
+
+- (PopUpContent *)getContent{
+    return self.content;
 }
 
 @end
