@@ -9,7 +9,9 @@
 #import "BalancePageViewController.h"
 #import "CustomPageControl.h"
 
-@interface BalancePageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
+@interface BalancePageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate>
+
+@property (nonatomic) NSInteger currentIndex;
 
 @end
 
@@ -20,6 +22,17 @@
     
     self.delegate = self;
     self.dataSource = self;
+    
+    [self setDelegateToScrollView];
+}
+
+- (void)setDelegateToScrollView{
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:[UIScrollView class]]) {
+            ((UIScrollView *)view).delegate = self;
+            break;
+        }
+    }
 }
 
 #pragma mark - Getters
@@ -70,6 +83,12 @@
     return self.controllers[nextIndex];
 }
 
+-(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+    
+    NSUInteger index = [self.controllers indexOfObject: [pageViewController.viewControllers firstObject]];
+    self.currentIndex = index;
+}
+
 #pragma makr - Public Methods
 
 -(void)scrollToIndex:(NSInteger)index animated:(BOOL)animated{
@@ -83,6 +102,25 @@
 
 - (void)setScrollEnable:(BOOL)enable{
     self.dataSource = enable ? self : nil;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    if (self.currentIndex == 0 && scrollView.contentOffset.x < scrollView.bounds.size.width) {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+    } else if (self.currentIndex == self.controllers.count - 1 && scrollView.contentOffset.x > scrollView.bounds.size.width) {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    if (self.currentIndex == 0 && scrollView.contentOffset.x <= scrollView.bounds.size.width) {
+        *targetContentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+    } else if (self.currentIndex == self.controllers.count - 1 && scrollView.contentOffset.x >= scrollView.bounds.size.width) {
+        *targetContentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+    }
 }
 
 @end
