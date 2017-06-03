@@ -34,7 +34,7 @@
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYF-uv-dMs">
-                                <rect key="frame" x="30" y="162" width="315" height="173.5"/>
+                                <rect key="frame" x="30" y="162.5" width="315" height="173"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsf-Ei-fzp">
                                         <rect key="frame" x="20" y="54" width="275" height="18"/>
@@ -43,19 +43,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THk-hZ-XMo">
-                                        <rect key="frame" x="20" y="82" width="275" height="14.5"/>
+                                        <rect key="frame" x="20" y="82" width="275" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yY3-8c-aKI">
-                                        <rect key="frame" x="157.5" y="121.5" width="157.5" height="32"/>
+                                        <rect key="frame" x="157.5" y="121" width="157.5" height="32"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <state key="normal" title="TRY AGAIN">
                                             <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="actionOk:" destination="LQZ-jf-i0C" eventType="touchUpInside" id="kTk-c5-Gz1"/>
+                                            <action selector="actionCancel:" destination="LQZ-jf-i0C" eventType="touchUpInside" id="NqW-vt-E8i"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkj-nE-6OT">
@@ -65,14 +65,14 @@
                                             <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="actionCancel:" destination="LQZ-jf-i0C" eventType="touchUpInside" id="7l6-H9-PHK"/>
+                                            <action selector="actionOk:" destination="LQZ-jf-i0C" eventType="touchUpInside" id="bUT-Sd-Fbg"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-error" translatesAutoresizingMaskIntoConstraints="NO" id="f1U-5S-Ihy">
                                         <rect key="frame" x="144.5" y="17" width="26" height="22"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3HK-YE-IeN">
-                                        <rect key="frame" x="0.0" y="168.5" width="315" height="5"/>
+                                        <rect key="frame" x="0.0" y="168" width="315" height="5"/>
                                         <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="5" id="jsI-JR-IBV"/>
@@ -117,9 +117,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="wkj-nE-6OT" id="h0h-V5-Ljj"/>
+                        <outlet property="cancelButton" destination="yY3-8c-aKI" id="fUK-Db-kJ8"/>
                         <outlet property="messageLabel" destination="THk-hZ-XMo" id="fdP-Rg-4OK"/>
-                        <outlet property="okButton" destination="yY3-8c-aKI" id="ZyY-xo-wU8"/>
+                        <outlet property="okButton" destination="wkj-nE-6OT" id="fOh-bu-vap"/>
                         <outlet property="titleLabel" destination="hsf-Ei-fzp" id="UyH-Qe-lvx"/>
                     </connections>
                 </viewController>

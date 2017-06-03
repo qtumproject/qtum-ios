@@ -15,8 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
 
-
-
 @end
 
 @implementation ErrorPopUpViewController

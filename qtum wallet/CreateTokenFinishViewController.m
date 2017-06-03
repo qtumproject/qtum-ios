@@ -69,14 +69,11 @@
 
 - (void)okButtonPressed:(PopUpViewController *)sender{
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
-    if ([[sender getContent] isEqual:[PopUpContentGenerator getContentForCreateContract]]) {
-        [self.delegate didPressedQuit];
-    }
+    [self.delegate didPressedQuit];
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender{
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
-    [self.delegate didPressedQuit];
 }
 
 @end

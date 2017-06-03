@@ -12,8 +12,9 @@
 #import "TextFieldWithLine.h"
 #import "TokenListViewController.h"
 #import "ChoseTokenPaymentViewController.h"
+#import "PopUpsManager.h"
 
-@interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate,ChoseTokenPaymentViewControllerDelegate>
+@interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate,ChoseTokenPaymentViewControllerDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet UIView *adressUnderlineView;
@@ -94,12 +95,14 @@
     
     __weak typeof(self) weakSelf = self;
     [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
+        [SVProgressHUD dismiss];
         if (!error) {
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
-            [weakSelf backbuttonPressed:nil];
-        } else {
-            [SVProgressHUD dismiss];
-            [weakSelf showAlertWithTitle:NSLocalizedString(@"Error", "") mesage:response andActions:nil];
+            [weakSelf showCompletedPopUp];
+        }else{
+            if ([error isNoInternetConnectionError]) {
+                return;
+            }
+            [weakSelf showErrorPopUp];
         }
     }];
 }
@@ -107,10 +110,42 @@
 -(void)payWithToken {
     
     [SVProgressHUD show];
+    __weak typeof(self) weakSelf = self;
     [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:self.addressTextField.text amount:@([self.amountTextField.text doubleValue]) andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
-        
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(error ? @"Failed" : @"Done", "")];
+        [SVProgressHUD dismiss];
+        if (!error) {
+            [weakSelf showCompletedPopUp];
+        }else{
+            if ([error isNoInternetConnectionError]) {
+                return;
+            }
+            [weakSelf showErrorPopUp];
+        }
     }];
+}
+
+- (void)showCompletedPopUp{
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForSend] presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+}
+
+- (void)showErrorPopUp{
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+}
+
+#pragma mark - PopUpWithTwoButtonsViewControllerDelegate
+
+- (void)okButtonPressed:(PopUpViewController *)sender{
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [self backbuttonPressed:self];
+}
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender{
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    if (self.token) {
+        [self payWithToken];
+    } else {
+        [self payWithWallet];
+    }
 }
 
 #pragma mark - iMessage
