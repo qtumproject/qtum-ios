@@ -54,8 +54,6 @@
     
     ChooseSmartContractViewController* controller = (ChooseSmartContractViewController*)[[ControllersFactory sharedInstance] createChooseSmartContractViewController];
     controller.delegate = self;
-//    CreateTokenNavigationController* modal = [[CreateTokenNavigationController alloc] initWithRootViewController:controller];
-//    self.modalNavigationController = modal;
     self.chooseSmartContractViewController = controller;
     [self.navigationController pushViewController:controller animated:YES];
 }
