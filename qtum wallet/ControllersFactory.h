@@ -36,6 +36,9 @@
 @class ChooseSmartContractViewController;
 @class SmartContractsListViewController;
 @class ChoseTokenPaymentViewController;
+@class ErrorPopUpViewController;
+@class InformationPopUpViewController;
+@class ConfirmPopUpViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -72,15 +75,18 @@
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 -(ChooseSmartContractViewController*)createChooseSmartContractViewController;
 -(SmartContractsListViewController*)createSmartContractsListViewController;
-
-// Pop ups
--(NoInternetConnectionPopUpViewController*)createNoInternetConnectionController;
--(PhotoLibraryPopUpViewController*)createPhotoLibraryController;
 -(MainViewController*)createMainViewController;
 -(TokenListViewController*)createTokenListViewController;
 -(TokenFunctionViewController*)createTokenFunctionViewController;
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
 -(TemplateTokenViewController*)createTemplateTokenViewController;
+
+// Pop ups
+-(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
+-(PhotoLibraryPopUpViewController*)createPhotoLibraryPopUpViewController;
+-(ErrorPopUpViewController*)createErrorPopUpViewController;
+-(InformationPopUpViewController*)createInformationPopUpViewController;
+-(ConfirmPopUpViewController*)createConfirmPopUpViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

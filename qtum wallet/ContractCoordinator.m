@@ -31,7 +31,10 @@
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
 @property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
 @property (strong,nonatomic) TemplateModel* templateModel;
+
 @property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
+@property (weak, nonatomic) CreateTokenFinishViewController *createFinishViewController;
+@property (weak, nonatomic) ChooseSmartContractViewController *chooseSmartContractViewController;
 
 @end
 
@@ -51,9 +54,8 @@
     
     ChooseSmartContractViewController* controller = (ChooseSmartContractViewController*)[[ControllersFactory sharedInstance] createChooseSmartContractViewController];
     controller.delegate = self;
-    CreateTokenNavigationController* modal = [[CreateTokenNavigationController alloc] initWithRootViewController:controller];
-    self.modalNavigationController = modal;
-    [self.navigationController presentViewController:modal animated:YES completion:nil];
+    self.chooseSmartContractViewController = controller;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - Private Methods 
@@ -63,7 +65,7 @@
     TemplateTokenViewController* controller = (TemplateTokenViewController*)[[ControllersFactory sharedInstance] createTemplateTokenViewController];
     controller.delegate = self;
     controller.templateModels = [[ContractFileManager sharedInstance] getAvailebaleTemplates];
-    [self.modalNavigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)showMyPyblishedContract {
@@ -75,7 +77,7 @@
         return [t1.creationDate compare:t2.creationDate];
     }];
     controller.contracts = sortedContracts;
-    [self.modalNavigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)showContractStore {
@@ -89,7 +91,7 @@
     
     controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:self.templateModel.templateName];
 
-    [self.modalNavigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)showFinishStepWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs {
@@ -98,7 +100,8 @@
     controller.delegate = self;
     self.inputs = inputs;
     controller.inputs = inputs;
-    [self.modalNavigationController pushViewController:controller animated:YES];
+    self.createFinishViewController = controller;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)showContractsFunction:(Contract*) contract {
@@ -108,7 +111,7 @@
         controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:contract.templateModel.templateName];
         controller.delegate = self;
         controller.token = contract;
-        [self.modalNavigationController pushViewController:controller animated:true];
+        [self.navigationController pushViewController:controller animated:true];
     }
 }
 
@@ -127,7 +130,7 @@
 #pragma mark - ContractCoordinatorDelegate
 
 -(void)createStepOneCancelDidPressed{
-    [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs {
@@ -137,7 +140,7 @@
 
 -(void)finishStepBackDidPressed {
     
-    [self.modalNavigationController popViewControllerAnimated:YES];
+    [self.navigationController popToViewController:self.chooseSmartContractViewController animated:YES];
 }
 
 -(void)finishStepFinishDidPressed{
@@ -148,19 +151,20 @@
     NSData* contractWithArgs = [[ContractManager sharedInstance] getTokenBitecodeWithTemplate:self.templateModel.templateName andArray:[self argsFromInputs]];
     
     [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:contractWithArgs andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
+        [SVProgressHUD dismiss];
         if (!error) {
             BTCTransactionInput* input = transaction.inputs[0];
             NSLog(@"%@",input.runTimeAddress);
-            [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:self.templateModel];
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
+            [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel];
+            
+            [weakSelf.createFinishViewController showCompletedPopUp];
         } else {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Failed", "")];
-            NSLog(@"Failed Request");
+            if ([error isNoInternetConnectionError]) {
+                return;
+            }
+            [weakSelf.createFinishViewController showErrorPopUp];
         }
-        [weakSelf.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
     }];
-
-    [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel {
@@ -180,7 +184,7 @@
     controller.delegate = self;
     controller.token = token;
     self.functionDetailController = controller;
-    [self.modalNavigationController pushViewController:controller animated:true];
+    [self.navigationController pushViewController:controller animated:true];
 }
 
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
@@ -221,12 +225,12 @@
 
 -(void)didPressedQuit {
     
-    [self.modalNavigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)didPressedBack {
     
-    [self.modalNavigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

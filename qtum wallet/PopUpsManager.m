@@ -9,6 +9,9 @@
 #import "PopUpsManager.h"
 #import "NoInternetConnectionPopUpViewController.h"
 #import "PhotoLibraryPopUpViewController.h"
+#import "InformationPopUpViewController.h"
+#import "ConfirmPopUpViewController.h"
+#import "ErrorPopUpViewController.h"
 
 @interface PopUpsManager() <PopUpViewControllerDelegate>
 
@@ -47,13 +50,28 @@
 
 - (NoInternetConnectionPopUpViewController *)createNoInternetConnetion
 {
-    NoInternetConnectionPopUpViewController *controller = [[ControllersFactory sharedInstance] createNoInternetConnectionController];
+    NoInternetConnectionPopUpViewController *controller = [[ControllersFactory sharedInstance] createNoInternetConnectionPopUpViewController];
     return controller;
 }
 
 - (PhotoLibraryPopUpViewController *)createPhotoLibrary
 {
-    PhotoLibraryPopUpViewController *controller = [[ControllersFactory sharedInstance] createPhotoLibraryController];
+    PhotoLibraryPopUpViewController *controller = [[ControllersFactory sharedInstance] createPhotoLibraryPopUpViewController];
+    return controller;
+}
+
+- (ErrorPopUpViewController *)createErrorPopUp{
+    ErrorPopUpViewController *controller = [[ControllersFactory sharedInstance] createErrorPopUpViewController];
+    return controller;
+}
+
+- (InformationPopUpViewController *)createInformationPopUp{
+    InformationPopUpViewController *controller = [[ControllersFactory sharedInstance] createInformationPopUpViewController];
+    return controller;
+}
+
+- (ConfirmPopUpViewController *)createConfirmPopUp{
+    ConfirmPopUpViewController *controller = [[ControllersFactory sharedInstance] createConfirmPopUpViewController];
     return controller;
 }
 
@@ -61,7 +79,7 @@
 
 - (void)showNoIntenterConnetionsPopUp:(id<PopUpViewControllerDelegate>)delegate presenter:(UIViewController *)presenter  completion:(void (^)(void))completion
 {
-    BOOL needShow = [self checkAndHideCurrentPopUp:[NoInternetConnectionPopUpViewController class]];
+    BOOL needShow = [self checkAndHideCurrentPopUp:[NoInternetConnectionPopUpViewController class] withContent:nil];
     if (!needShow) {
         return;
     }
@@ -74,13 +92,55 @@
 
 - (void)showPhotoLibraryPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion
 {
-    BOOL needShow = [self checkAndHideCurrentPopUp:[PhotoLibraryPopUpViewController class]];
+    BOOL needShow = [self checkAndHideCurrentPopUp:[PhotoLibraryPopUpViewController class] withContent:nil];
     if (!needShow) {
         return;
     }
     
     PhotoLibraryPopUpViewController *controller = [self createPhotoLibrary];
     controller.delegate = delegate;
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+}
+
+- (void)showErrorPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
+    
+    BOOL needShow = [self checkAndHideCurrentPopUp:[ErrorPopUpViewController class] withContent:content];
+    if (!needShow) {
+        return;
+    }
+    
+    ErrorPopUpViewController *controller = [self createErrorPopUp];
+    controller.delegate = delegate;
+    [controller setContent:content];
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+}
+
+- (void)showInformationPopUp:(id<PopUpViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
+    
+    BOOL needShow = [self checkAndHideCurrentPopUp:[InformationPopUpViewController class] withContent:content];
+    if (!needShow) {
+        return;
+    }
+    
+    InformationPopUpViewController *controller = [self createInformationPopUp];
+    controller.delegate = delegate;
+    [controller setContent:content];
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+}
+
+- (void)showConfirmPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
+    
+    BOOL needShow = [self checkAndHideCurrentPopUp:[ConfirmPopUpViewController class] withContent:content];
+    if (!needShow) {
+        return;
+    }
+    
+    ConfirmPopUpViewController *controller = [self createConfirmPopUp];
+    controller.delegate = delegate;
+    [controller setContent:content];
     self.currentPopUp = controller;
     [controller showFromViewController:presenter animated:YES completion:completion];
 }
@@ -95,10 +155,11 @@
 
 #pragma mark - Private Methods
 
-- (BOOL)checkAndHideCurrentPopUp:(Class)class
+- (BOOL)checkAndHideCurrentPopUp:(Class)class withContent:(PopUpContent *)content
 {
     if (!self.currentPopUp) return true;
-    if ([self.currentPopUp isKindOfClass:class]) return false;
+    BOOL contentEqual = [self.currentPopUp getContent] ? [[self.currentPopUp getContent] isEqual:content] : true;
+    if ([self.currentPopUp isKindOfClass:class] && contentEqual) return false;
     
     [self hideCurrentPopUp:NO completion:nil];
     return true;
@@ -111,7 +172,7 @@
 
 #pragma mark - PopUpViewControllerDelegate
 
-- (void)okButtonPressed{
+- (void)okButtonPressed:(PopUpViewController *)sender{
     [self hideCurrentPopUp:YES completion:nil];
 }
 

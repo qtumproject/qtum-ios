@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="simplonmono-medium.ttf">
+            <string>simplonmono-medium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Confirm Pop Up View Controller-->
+        <scene sceneID="aqB-E1-uRc">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmPopUp" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iIw-7Q-0BX" customClass="ConfirmPopUpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O2a-Oj-ysC"/>
+                        <viewControllerLayoutGuide type="bottom" id="5iT-32-UQM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kkR-BU-iBX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIv-5j-in3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMn-C4-S2G">
+                                <rect key="frame" x="30" y="165" width="315" height="168"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoz-gH-8qx">
+                                        <rect key="frame" x="20" y="50" width="275" height="36"/>
+                                        <string key="text">QTUM App would like to
+access your photos</string>
+                                        <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="15"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qej-fG-Otb">
+                                        <rect key="frame" x="157.5" y="116" width="157.5" height="32"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="TRY AGAIN">
+                                            <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionOk:" destination="iIw-7Q-0BX" eventType="touchUpInside" id="ty0-cc-Fln"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqn-no-ceB">
+                                        <rect key="frame" x="0.0" y="116" width="157.5" height="32"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="DON’T ALLOW">
+                                            <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionCancel:" destination="iIw-7Q-0BX" eventType="touchUpInside" id="zgs-Nx-kjk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Aoz-gH-8qx" firstAttribute="leading" secondItem="JMn-C4-S2G" secondAttribute="leading" constant="20" id="CbH-zW-PGz"/>
+                                    <constraint firstItem="Qqn-no-ceB" firstAttribute="leading" secondItem="JMn-C4-S2G" secondAttribute="leading" id="IQB-kL-99r"/>
+                                    <constraint firstItem="qej-fG-Otb" firstAttribute="top" secondItem="Aoz-gH-8qx" secondAttribute="bottom" constant="30" id="Jvu-y3-uiu"/>
+                                    <constraint firstItem="Qqn-no-ceB" firstAttribute="centerY" secondItem="qej-fG-Otb" secondAttribute="centerY" id="KZf-Xq-5d3"/>
+                                    <constraint firstItem="Aoz-gH-8qx" firstAttribute="centerX" secondItem="JMn-C4-S2G" secondAttribute="centerX" id="TXF-0W-xRJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="qej-fG-Otb" secondAttribute="trailing" id="XoR-i0-Prh"/>
+                                    <constraint firstItem="Aoz-gH-8qx" firstAttribute="top" secondItem="JMn-C4-S2G" secondAttribute="top" constant="50" id="c1R-Xc-P2u"/>
+                                    <constraint firstItem="Qqn-no-ceB" firstAttribute="width" secondItem="qej-fG-Otb" secondAttribute="width" id="kYd-d1-Gtn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Aoz-gH-8qx" secondAttribute="trailing" constant="20" id="oXR-uC-egU"/>
+                                    <constraint firstItem="qej-fG-Otb" firstAttribute="leading" secondItem="Qqn-no-ceB" secondAttribute="trailing" id="pZR-ns-WO1"/>
+                                    <constraint firstAttribute="bottom" secondItem="qej-fG-Otb" secondAttribute="bottom" constant="20" id="yIa-rt-Iuj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JMn-C4-S2G" firstAttribute="leading" secondItem="kkR-BU-iBX" secondAttribute="leading" constant="30" id="EIg-k8-F4d"/>
+                            <constraint firstAttribute="trailing" secondItem="EIv-5j-in3" secondAttribute="trailing" id="OGK-WT-bFs"/>
+                            <constraint firstItem="EIv-5j-in3" firstAttribute="top" secondItem="kkR-BU-iBX" secondAttribute="top" id="OSs-Vf-5uk"/>
+                            <constraint firstItem="5iT-32-UQM" firstAttribute="top" secondItem="EIv-5j-in3" secondAttribute="bottom" id="YfR-CA-dtt"/>
+                            <constraint firstItem="JMn-C4-S2G" firstAttribute="centerY" secondItem="kkR-BU-iBX" secondAttribute="centerY" constant="-85" id="h5x-N0-1fQ"/>
+                            <constraint firstAttribute="trailing" secondItem="JMn-C4-S2G" secondAttribute="trailing" constant="30" id="mYg-DB-vSP"/>
+                            <constraint firstItem="EIv-5j-in3" firstAttribute="leading" secondItem="kkR-BU-iBX" secondAttribute="leading" id="q3A-Qa-mB3"/>
+                            <constraint firstItem="JMn-C4-S2G" firstAttribute="centerX" secondItem="kkR-BU-iBX" secondAttribute="centerX" id="zLE-rE-fwy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Qqn-no-ceB" id="YJG-3U-KUg"/>
+                        <outlet property="okButton" destination="qej-fG-Otb" id="GAq-rN-HJK"/>
+                        <outlet property="titleLabel" destination="Aoz-gH-8qx" id="mma-lf-bJ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N1G-TH-fV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+</document>

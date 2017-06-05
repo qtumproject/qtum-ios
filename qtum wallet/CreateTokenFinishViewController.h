@@ -16,4 +16,7 @@
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 @property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
 
+- (void)showErrorPopUp;
+- (void)showCompletedPopUp;
+
 @end

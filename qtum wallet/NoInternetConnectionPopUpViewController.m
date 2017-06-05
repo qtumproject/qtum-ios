@@ -23,8 +23,8 @@
 
 - (IBAction)retryButtonPressed:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(okButtonPressed)]) {
-        [self.delegate okButtonPressed];
+    if ([self.delegate respondsToSelector:@selector(okButtonPressed:)]) {
+        [self.delegate okButtonPressed:self];
     }
 }
 @end
