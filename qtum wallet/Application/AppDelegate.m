@@ -11,6 +11,7 @@
 #import "Appearance.h"
 #import "ContractManager.h"
 #import "ContractFileManager.h"
+#import "iOSSessionManager.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,7 @@
 //     Remove all wallets
 //    [[WalletManager sharedInstance] removeAllWallets];
     
+    [iOSSessionManager sharedInstance];
     [Appearance setUp];
     [[AppSettings sharedInstance] setup];
     
@@ -81,6 +83,34 @@
     [[ApplicationCoordinator sharedInstance].notificationManager application:application didReceiveRemoteNotification:userInfo];
 }
 
+#pragma tast
 
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
+    NSLog(@"1");
+}
+
+- (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(nullable NSDictionary *)userInfo reply:(void(^)(NSDictionary * __nullable replyInfo))reply {
+    NSLog(@"2");
+    reply(@{@"asf" : @"asdfasdf"});
+}
+
+- (void)applicationShouldRequestHealthAuthorization:(UIApplication *)application {
+    NSLog(@"3");
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    NSLog(@"4");
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    NSLog(@"5");
+}
+
+- (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)application {
+    NSLog(@"6");
+}
+- (void)applicationProtectedDataDidBecomeAvailable:(UIApplication *)application    {
+    NSLog(@"7");
+}
 
 @end

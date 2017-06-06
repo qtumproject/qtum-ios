@@ -162,6 +162,17 @@
 		E71AF2511E017D250068595B /* WordsArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2501E017D250068595B /* WordsArray.m */; };
 		E71AF2551E018F6A0068595B /* WalletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2541E018F6A0068595B /* WalletManager.m */; };
 		E727F1781E02749D0080E79D /* Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = E727F1771E02749D0080E79D /* Wallet.m */; };
+		E730AB581EE6A5D100132711 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E730AB561EE6A5D100132711 /* Interface.storyboard */; };
+		E730AB5A1EE6A5D100132711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E730AB591EE6A5D100132711 /* Assets.xcassets */; };
+		E730AB611EE6A5D100132711 /* QTUM Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E730AB601EE6A5D100132711 /* QTUM Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E730AB691EE6A5D100132711 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB681EE6A5D100132711 /* InterfaceController.m */; };
+		E730AB6C1EE6A5D100132711 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB6B1EE6A5D100132711 /* ExtensionDelegate.m */; };
+		E730AB6F1EE6A5D200132711 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB6E1EE6A5D200132711 /* NotificationController.m */; };
+		E730AB721EE6A5D200132711 /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB711EE6A5D200132711 /* ComplicationController.m */; };
+		E730AB741EE6A5D200132711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E730AB731EE6A5D200132711 /* Assets.xcassets */; };
+		E730AB781EE6A5D200132711 /* QTUM Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E730AB541EE6A5D100132711 /* QTUM Watch.app */; };
+		E730AB851EE6A64700132711 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB841EE6A64700132711 /* SessionManager.m */; };
+		E730AB881EE6ACCA00132711 /* iOSSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB871EE6ACCA00132711 /* iOSSessionManager.m */; };
 		E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E739104E1DE2E165008145A8 /* HistoryElement.m */; };
 		E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910521DE30BA8008145A8 /* QRCodeViewController.m */; };
 		E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */; };
@@ -242,6 +253,20 @@
 			remoteGlobalIDString = E7FD36371DC4D07E00748177;
 			remoteInfo = "qtum wallet";
 		};
+		E730AB621EE6A5D100132711 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7FD36301DC4D07E00748177 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E730AB5F1EE6A5D100132711;
+			remoteInfo = "QTUM Watch Extension";
+		};
+		E730AB761EE6A5D200132711 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7FD36301DC4D07E00748177 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E730AB531EE6A5D100132711;
+			remoteInfo = "QTUM Watch";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -254,6 +279,28 @@
 				B33EAF971E5EC263006125F3 /* iMessageExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E730AB7E1EE6A5D200132711 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E730AB611EE6A5D100132711 /* QTUM Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E730AB801EE6A5D200132711 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E730AB781EE6A5D200132711 /* QTUM Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -564,6 +611,26 @@
 		E71AF2541E018F6A0068595B /* WalletManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletManager.m; sourceTree = "<group>"; };
 		E727F1761E02749D0080E79D /* Wallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wallet.h; path = ../Model/Wallet.h; sourceTree = "<group>"; };
 		E727F1771E02749D0080E79D /* Wallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Wallet.m; path = ../Model/Wallet.m; sourceTree = "<group>"; };
+		E730AB541EE6A5D100132711 /* QTUM Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QTUM Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E730AB571EE6A5D100132711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		E730AB591EE6A5D100132711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E730AB5B1EE6A5D100132711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E730AB601EE6A5D100132711 /* QTUM Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QTUM Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E730AB661EE6A5D100132711 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		E730AB671EE6A5D100132711 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		E730AB681EE6A5D100132711 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		E730AB6A1EE6A5D100132711 /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		E730AB6B1EE6A5D100132711 /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		E730AB6D1EE6A5D100132711 /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		E730AB6E1EE6A5D200132711 /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		E730AB701EE6A5D200132711 /* ComplicationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplicationController.h; sourceTree = "<group>"; };
+		E730AB711EE6A5D200132711 /* ComplicationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplicationController.m; sourceTree = "<group>"; };
+		E730AB731EE6A5D200132711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E730AB751EE6A5D200132711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E730AB831EE6A64700132711 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
+		E730AB841EE6A64700132711 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
+		E730AB861EE6ACCA00132711 /* iOSSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSSessionManager.h; sourceTree = "<group>"; };
+		E730AB871EE6ACCA00132711 /* iOSSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iOSSessionManager.m; sourceTree = "<group>"; };
 		E739104D1DE2E165008145A8 /* HistoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryElement.h; sourceTree = "<group>"; };
 		E739104E1DE2E165008145A8 /* HistoryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryElement.m; sourceTree = "<group>"; };
 		E73910511DE30BA8008145A8 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
@@ -712,6 +779,13 @@
 			files = (
 				E71AF24E1E0178EB0068595B /* Security.framework in Frameworks */,
 				E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E730AB5D1EE6A5D100132711 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1249,6 +1323,60 @@
 			path = "qtum walletTests";
 			sourceTree = "<group>";
 		};
+		E730AB551EE6A5D100132711 /* QTUM Watch */ = {
+			isa = PBXGroup;
+			children = (
+				E730AB561EE6A5D100132711 /* Interface.storyboard */,
+				E730AB591EE6A5D100132711 /* Assets.xcassets */,
+				E730AB5B1EE6A5D100132711 /* Info.plist */,
+			);
+			path = "QTUM Watch";
+			sourceTree = "<group>";
+		};
+		E730AB641EE6A5D100132711 /* QTUM Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E730AB821EE6A62100132711 /* Manages */,
+				E730AB811EE6A61300132711 /* Controllers */,
+				E730AB731EE6A5D200132711 /* Assets.xcassets */,
+				E730AB751EE6A5D200132711 /* Info.plist */,
+				E730AB651EE6A5D100132711 /* Supporting Files */,
+			);
+			path = "QTUM Watch Extension";
+			sourceTree = "<group>";
+		};
+		E730AB651EE6A5D100132711 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E730AB661EE6A5D100132711 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E730AB811EE6A61300132711 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E730AB671EE6A5D100132711 /* InterfaceController.h */,
+				E730AB681EE6A5D100132711 /* InterfaceController.m */,
+				E730AB6A1EE6A5D100132711 /* ExtensionDelegate.h */,
+				E730AB6B1EE6A5D100132711 /* ExtensionDelegate.m */,
+				E730AB6D1EE6A5D100132711 /* NotificationController.h */,
+				E730AB6E1EE6A5D200132711 /* NotificationController.m */,
+				E730AB701EE6A5D200132711 /* ComplicationController.h */,
+				E730AB711EE6A5D200132711 /* ComplicationController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E730AB821EE6A62100132711 /* Manages */ = {
+			isa = PBXGroup;
+			children = (
+				E730AB831EE6A64700132711 /* SessionManager.h */,
+				E730AB841EE6A64700132711 /* SessionManager.m */,
+			);
+			name = Manages;
+			sourceTree = "<group>";
+		};
 		E73910501DE30B91008145A8 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1546,6 +1674,8 @@
 			children = (
 				E71AF2431E0177910068595B /* qtum walletTests */,
 				B33EAF8B1E5EC262006125F3 /* iMessageExtension */,
+				E730AB551EE6A5D100132711 /* QTUM Watch */,
+				E730AB641EE6A5D100132711 /* QTUM Watch Extension */,
 				F94C279886F936AB7B4DA6F8 /* Frameworks */,
 				94DECCBC55E0AE7D7EF532E6 /* Pods */,
 				E7FD36391DC4D07E00748177 /* Products */,
@@ -1559,6 +1689,8 @@
 				E7FD36381DC4D07E00748177 /* qtum wallet.app */,
 				E71AF2421E0177910068595B /* qtum walletTests.xctest */,
 				B33EAF881E5EC262006125F3 /* iMessageExtension.appex */,
+				E730AB541EE6A5D100132711 /* QTUM Watch.app */,
+				E730AB601EE6A5D100132711 /* QTUM Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1738,6 +1870,8 @@
 				B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */,
 				B3597DFC1E81517200EBF094 /* NotificationManager.h */,
 				B3597DFD1E81517200EBF094 /* NotificationManager.m */,
+				E730AB861EE6ACCA00132711 /* iOSSessionManager.h */,
+				E730AB871EE6ACCA00132711 /* iOSSessionManager.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1812,6 +1946,40 @@
 			productReference = E71AF2421E0177910068595B /* qtum walletTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E730AB531EE6A5D100132711 /* QTUM Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E730AB7F1EE6A5D200132711 /* Build configuration list for PBXNativeTarget "QTUM Watch" */;
+			buildPhases = (
+				E730AB521EE6A5D100132711 /* Resources */,
+				E730AB7E1EE6A5D200132711 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E730AB631EE6A5D100132711 /* PBXTargetDependency */,
+			);
+			name = "QTUM Watch";
+			productName = "QTUM Watch";
+			productReference = E730AB541EE6A5D100132711 /* QTUM Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		E730AB5F1EE6A5D100132711 /* QTUM Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E730AB7D1EE6A5D200132711 /* Build configuration list for PBXNativeTarget "QTUM Watch Extension" */;
+			buildPhases = (
+				E730AB5C1EE6A5D100132711 /* Sources */,
+				E730AB5D1EE6A5D100132711 /* Frameworks */,
+				E730AB5E1EE6A5D100132711 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "QTUM Watch Extension";
+			productName = "QTUM Watch Extension";
+			productReference = E730AB601EE6A5D100132711 /* QTUM Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		E7FD36371DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7FD364F1DC4D07E00748177 /* Build configuration list for PBXNativeTarget "qtum wallet" */;
@@ -1825,11 +1993,13 @@
 				B33EAF9B1E5EC263006125F3 /* Embed App Extensions */,
 				B3C4553C1E8958D900420D7C /* ShellScript */,
 				E78D0C9A1ED2F02800CB91FF /* ShellScript */,
+				E730AB801EE6A5D200132711 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				B33EAF961E5EC263006125F3 /* PBXTargetDependency */,
+				E730AB771EE6A5D200132711 /* PBXTargetDependency */,
 			);
 			name = "qtum wallet";
 			productName = "qtum wallet";
@@ -1864,6 +2034,16 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = E7FD36371DC4D07E00748177;
 					};
+					E730AB531EE6A5D100132711 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = Q7Q43CUMWT;
+						ProvisioningStyle = Automatic;
+					};
+					E730AB5F1EE6A5D100132711 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = Q7Q43CUMWT;
+						ProvisioningStyle = Automatic;
+					};
 					E7FD36371DC4D07E00748177 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = Q7Q43CUMWT;
@@ -1896,6 +2076,8 @@
 				E7FD36371DC4D07E00748177 /* qtum wallet */,
 				E71AF2411E0177910068595B /* qtum walletTests */,
 				B33EAF871E5EC262006125F3 /* iMessageExtension */,
+				E730AB531EE6A5D100132711 /* QTUM Watch */,
+				E730AB5F1EE6A5D100132711 /* QTUM Watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -1915,6 +2097,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E730AB521EE6A5D100132711 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E730AB5A1EE6A5D100132711 /* Assets.xcassets in Resources */,
+				E730AB581EE6A5D100132711 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E730AB5E1EE6A5D100132711 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E730AB741EE6A5D200132711 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2047,6 +2246,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E730AB5C1EE6A5D100132711 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E730AB851EE6A64700132711 /* SessionManager.m in Sources */,
+				E730AB6C1EE6A5D100132711 /* ExtensionDelegate.m in Sources */,
+				E730AB721EE6A5D200132711 /* ComplicationController.m in Sources */,
+				E730AB691EE6A5D100132711 /* InterfaceController.m in Sources */,
+				E730AB6F1EE6A5D200132711 /* NotificationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2192,6 +2403,7 @@
 				B3C08B151ED3382300713B15 /* keccak.c in Sources */,
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */,
+				E730AB881EE6ACCA00132711 /* iOSSessionManager.m in Sources */,
 				E7FA0CB91ECD914200702C4E /* PopUpsManager.m in Sources */,
 				E73CF6D71EE2F0D90044DF78 /* NSError+NoInternet.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
@@ -2245,6 +2457,16 @@
 			isa = PBXTargetDependency;
 			target = E7FD36371DC4D07E00748177 /* qtum wallet */;
 			targetProxy = E71AF2471E0177910068595B /* PBXContainerItemProxy */;
+		};
+		E730AB631EE6A5D100132711 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E730AB5F1EE6A5D100132711 /* QTUM Watch Extension */;
+			targetProxy = E730AB621EE6A5D100132711 /* PBXContainerItemProxy */;
+		};
+		E730AB771EE6A5D200132711 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E730AB531EE6A5D100132711 /* QTUM Watch */;
+			targetProxy = E730AB761EE6A5D200132711 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2348,6 +2570,14 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
+		E730AB561EE6A5D100132711 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E730AB571EE6A5D100132711 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		E73D9C831ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2434,6 +2664,74 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum-walletTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qtum wallet.app/qtum wallet";
+			};
+			name = Release;
+		};
+		E730AB791EE6A5D200132711 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				IBSC_MODULE = QTUM_Watch_Extension;
+				INFOPLIST_FILE = "QTUM Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		E730AB7A1EE6A5D200132711 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				IBSC_MODULE = QTUM_Watch_Extension;
+				INFOPLIST_FILE = "QTUM Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
+		E730AB7B1EE6A5D200132711 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				INFOPLIST_FILE = "QTUM Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		E730AB7C1EE6A5D200132711 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				INFOPLIST_FILE = "QTUM Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};
 			name = Release;
 		};
@@ -2605,6 +2903,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E730AB7D1EE6A5D200132711 /* Build configuration list for PBXNativeTarget "QTUM Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E730AB7B1EE6A5D200132711 /* Debug */,
+				E730AB7C1EE6A5D200132711 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E730AB7F1EE6A5D200132711 /* Build configuration list for PBXNativeTarget "QTUM Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E730AB791EE6A5D200132711 /* Debug */,
+				E730AB7A1EE6A5D200132711 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		E7FD36331DC4D07E00748177 /* Build configuration list for PBXProject "qtum wallet" */ = {
 			isa = XCConfigurationList;
