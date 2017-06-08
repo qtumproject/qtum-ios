@@ -45,6 +45,7 @@
 #import "InformationPopUpViewController.h"
 #import "ConfirmPopUpViewController.h"
 #import "ErrorPopUpViewController.h"
+#import "LoaderPopUpViewController.h"
 
 @implementation ControllersFactory
 
@@ -254,13 +255,18 @@
     return controller;
 }
 
-- (InformationPopUpViewController *)createInformationPopUpViewController{
+-(InformationPopUpViewController *)createInformationPopUpViewController{
     InformationPopUpViewController* controller = (InformationPopUpViewController*)[UIViewController controllerInStoryboard:@"InformationPopUp" withIdentifire:@"InformationPopUp"];
     return controller;
 }
 
 - (ConfirmPopUpViewController *)createConfirmPopUpViewController{
     ConfirmPopUpViewController* controller = (ConfirmPopUpViewController*)[UIViewController controllerInStoryboard:@"ConfirmPopUp" withIdentifire:@"ConfirmPopUp"];
+    return controller;
+}
+
+- (LoaderPopUpViewController *)createLoaderViewController{
+    LoaderPopUpViewController* controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUp"];
     return controller;
 }
 

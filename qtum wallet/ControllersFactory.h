@@ -39,6 +39,7 @@
 @class ErrorPopUpViewController;
 @class InformationPopUpViewController;
 @class ConfirmPopUpViewController;
+@class LoaderPopUpViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -87,6 +88,7 @@
 -(ErrorPopUpViewController*)createErrorPopUpViewController;
 -(InformationPopUpViewController*)createInformationPopUpViewController;
 -(ConfirmPopUpViewController*)createConfirmPopUpViewController;
+-(LoaderPopUpViewController *)createLoaderViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

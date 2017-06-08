@@ -73,7 +73,7 @@
 
 -(void)showResultViewWithOutputs:(NSArray*) outputs {
     
-    [SVProgressHUD dismiss];
+    [[PopUpsManager sharedInstance] dismissLoader];
     
     NSMutableString* result = [NSMutableString new];
     for (id output in outputs) {
@@ -95,7 +95,7 @@
 }
 
 - (IBAction)didPressedCallAction:(id)sender {
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     [self.delegate didCallFunctionWithItem:self.function andParam:[self prepareInputsData] andToken:self.token];
 }
 

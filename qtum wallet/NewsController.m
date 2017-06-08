@@ -31,7 +31,7 @@
     
     [self getData];
     
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     self.tableView.hidden = YES;
 }
 
@@ -73,7 +73,7 @@
 }
 
 -(void)getData{
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     [self.delegate refreshTableViewData];
 }
 
@@ -83,19 +83,19 @@
 }
 
 -(void)failedToGetData{
-    [SVProgressHUD dismiss];
+    [[PopUpsManager sharedInstance] dismissLoader];
 }
 
 -(void)requestFailed{
     [self.refresh endRefreshing];
-    [SVProgressHUD dismiss];
+    [[PopUpsManager sharedInstance] dismissLoader];
 }
 
 -(void)reloadTable{
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         weakSelf.tableView.hidden = NO;
-        [SVProgressHUD dismiss];
+        [[PopUpsManager sharedInstance] dismissLoader];
         [weakSelf.tableView reloadData];
         [weakSelf.refresh endRefreshing];
     });

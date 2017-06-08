@@ -11,7 +11,6 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "LanguageManager.h"
-#import "PopUpsManager.h"
 
 @interface AppSettings ()
 

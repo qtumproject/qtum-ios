@@ -75,7 +75,7 @@
 #pragma mark - Public Methods
 
 -(void)startCreateWallet{
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
 }
 
 -(void)endCreateWalletWithError:(NSError*)error{

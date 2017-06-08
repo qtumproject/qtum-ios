@@ -23,6 +23,10 @@
 - (void)showErrorPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 - (void)showInformationPopUp:(id<PopUpViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 - (void)showConfirmPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
+- (void)showLoaderPopUp;
+
+// dismiss methods
+- (void)dismissLoader;
 
 // hide methods
 - (void)hideCurrentPopUp:(BOOL)animated completion:(void (^)(void))completion;
