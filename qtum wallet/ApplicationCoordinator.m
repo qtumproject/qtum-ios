@@ -272,14 +272,15 @@ static NSString* isHasWalletKey = @"isHasWallet";
 }
 
 -(void)launchFromUrl:(NSURL*)url{
-    [self start];
     [self pareceUrl:url];
+    [self start];
 }
 
 -(void)pareceUrl:(NSURL*)url{
     NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
                                                 resolvingAgainstBaseURL:NO];
     NSArray *queryItems = urlComponents.queryItems;
+    
     self.adress = [NSString valueForKey:@"adress" fromQueryItems:queryItems];
     self.amount = [NSString valueForKey:@"amount" fromQueryItems:queryItems];
 }
