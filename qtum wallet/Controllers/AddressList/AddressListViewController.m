@@ -41,7 +41,7 @@
 
 - (IBAction)createNewButtonWasPressed:(id)sender
 {
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     
 //    __weak typeof(self) weakSelf = self;
 //    [[KeysManager sharedInstance] createNewKey];

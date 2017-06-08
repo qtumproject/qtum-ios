@@ -44,7 +44,7 @@
 
 - (IBAction)actionRefreshButton:(id)sender
 {
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     [self getHistory];
 }
 
@@ -58,7 +58,7 @@
 
 -(void)reloadTableView{
     self.historyLoaded = YES;
-    [SVProgressHUD dismiss];
+    [[PopUpsManager sharedInstance] dismissLoader];
     [self.tableView reloadData];
 }
 

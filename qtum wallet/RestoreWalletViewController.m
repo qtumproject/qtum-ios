@@ -101,7 +101,7 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 
 - (IBAction)importButtonWasPressed:(id)sender
 {
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     NSArray *wordsArray = [self arrayOfWordsFromString:self.brandKeyTextView.text];
     if ([self.delegate respondsToSelector:@selector(didRestorePressedWithWords:)]) {
         [self.delegate didRestorePressedWithWords:wordsArray];

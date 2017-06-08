@@ -174,7 +174,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
         [self reloadHeader:source.wallet];
         self.historyLoaded = YES;
         if (self.balanceLoaded && self.historyLoaded) {
-            [SVProgressHUD dismiss];
+            [[PopUpsManager sharedInstance] dismissLoader];
         }
     });
 }
@@ -208,21 +208,19 @@ CGFloat const HeaderHeightShowed = 50.0f;
         [self reloadHeader:source.wallet];
     });
     if (self.balanceLoaded && self.historyLoaded) {
-        [SVProgressHUD dismiss];
+        [[PopUpsManager sharedInstance] dismissLoader];
     }
 }
 
 -(void)startLoading {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (![SVProgressHUD isVisible]) {
-            [SVProgressHUD show];
-        }
+        [[PopUpsManager sharedInstance] showLoaderPopUp];
     });
 }
 
 -(void)stopLoading {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [SVProgressHUD dismiss];
+        [[PopUpsManager sharedInstance] dismissLoader];
     });
 }
 

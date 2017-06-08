@@ -12,7 +12,6 @@
 #import "TextFieldWithLine.h"
 #import "TokenListViewController.h"
 #import "ChoseTokenPaymentViewController.h"
-#import "PopUpsManager.h"
 
 @interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate,ChoseTokenPaymentViewControllerDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -91,11 +90,11 @@
     
     NSArray *array = @[@{@"amount" : amount, @"address" : address}];
     
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
     [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
-        [SVProgressHUD dismiss];
+        [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             [weakSelf showCompletedPopUp];
         }else{
@@ -109,10 +108,10 @@
 
 -(void)payWithToken {
     
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
     [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:self.addressTextField.text amount:@([self.amountTextField.text doubleValue]) andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
-        [SVProgressHUD dismiss];
+        [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             [weakSelf showCompletedPopUp];
         }else{

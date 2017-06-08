@@ -10,7 +10,6 @@
 #import "ContractCoordinator.h"
 #import "FinishInputCell.h"
 #import "ResultTokenInputsModel.h"
-#import "PopUpsManager.h"
 
 @interface CreateTokenFinishViewController () <PopUpWithTwoButtonsViewControllerDelegate>
 

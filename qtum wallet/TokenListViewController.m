@@ -27,9 +27,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    if ([SVProgressHUD isVisible]) {
-        [SVProgressHUD dismiss];
-    }
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
 }
 
 
@@ -83,9 +81,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
         return;
     }
     
-    if (![SVProgressHUD isVisible]) {
-        [SVProgressHUD show];
-    }
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     
     NSMutableArray *array = [NSMutableArray new];
     for (Contract *token in self.tokens) {
@@ -95,7 +91,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
     
     __weak typeof(self) weakSelf = self;
     [QRCodeManager createQRCodeFromContractsTokensArray:[array copy] forSize:CGSizeMake(500, 500) withCompletionBlock:^(UIImage *image) {
-        [SVProgressHUD dismiss];
+        [[PopUpsManager sharedInstance] dismissLoader];
         if (!image) {
             [SVProgressHUD showErrorWithStatus:@"Error in QRCodeCreation"];
         }else{

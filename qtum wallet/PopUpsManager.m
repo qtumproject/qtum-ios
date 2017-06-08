@@ -12,6 +12,7 @@
 #import "InformationPopUpViewController.h"
 #import "ConfirmPopUpViewController.h"
 #import "ErrorPopUpViewController.h"
+#import "LoaderPopUpViewController.h"
 
 @interface PopUpsManager() <PopUpViewControllerDelegate>
 
@@ -75,7 +76,30 @@
     return controller;
 }
 
+- (LoaderPopUpViewController *)createLoaderPopUp{
+    LoaderPopUpViewController *controller = [[ControllersFactory sharedInstance] createLoaderViewController];
+    return controller;
+}
+
 #pragma mark - Public Methods
+
+- (void)showLoaderPopUp {
+    BOOL needShow = [self checkAndHideCurrentPopUp:[LoaderPopUpViewController class] withContent:nil];
+    if (!needShow) {
+        return;
+    }
+    
+    LoaderPopUpViewController *controller = [self createLoaderPopUp];
+    self.currentPopUp = controller;
+    UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
+    [controller showFromViewController:root animated:YES completion:nil];
+}
+
+- (void)dismissLoader {
+    if ([self.currentPopUp isKindOfClass:[LoaderPopUpViewController class]]) {
+        [self hideCurrentPopUp:YES completion:nil];
+    }
+}
 
 - (void)showNoIntenterConnetionsPopUp:(id<PopUpViewControllerDelegate>)delegate presenter:(UIViewController *)presenter  completion:(void (^)(void))completion
 {
