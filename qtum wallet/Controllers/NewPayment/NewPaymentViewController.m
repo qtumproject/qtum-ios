@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withTokensConstraint;
 
 @property (strong,nonatomic) Contract* token;
+@property (nonatomic) BOOL needUpdateTexfFields;
 
 - (IBAction)backbuttonPressed:(id)sender;
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
@@ -67,6 +68,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    if (self.needUpdateTexfFields) {
+        self.addressTextField.text = self.adress;
+        self.amountTextField.text = self.amount;
+    }
+
     [self updateControls];
 }
 
@@ -151,11 +158,10 @@
 #pragma mark - iMessage
 
 -(void)setAdress:(NSString*)adress andValue:(NSString*)amount{
-    self.addressTextField.text =
+    
     self.adress = adress;
-    self.amountTextField.text =
     self.amount = amount;
-    [self updateControls];
+    self.needUpdateTexfFields = YES;
 }
 
 #pragma mark - UITextFieldDelegate

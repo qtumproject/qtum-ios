@@ -21,8 +21,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//     Remove all wallets
-//    [[WalletManager sharedInstance] removeAllWallets];
     
     [iOSSessionManager sharedInstance];
     [Appearance setUp];
@@ -32,15 +30,6 @@
         [[ApplicationCoordinator sharedInstance] start];
     });
 
-//     Send money for our wallet
-//    if ([[WalletManager sharedInstance] haveWallets]) {
-//        [[WalletManager sharedInstance].requestManager sendToAddress:[[[WalletManager sharedInstance] getCurrentWallet] getRandomKey].address.string withSuccessHandler:^(id responseObject) {
-//            NSLog(@"yes");
-//        } andFailureHandler:^(NSError *error, NSString *message) {
-//            NSLog(@"no");
-//        }];
-//    }
-//
     [ContractFileManager sharedInstance];
     return YES;
 }
@@ -81,36 +70,6 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [[ApplicationCoordinator sharedInstance].notificationManager application:application didReceiveRemoteNotification:userInfo];
-}
-
-#pragma tast
-
-- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
-    NSLog(@"1");
-}
-
-- (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(nullable NSDictionary *)userInfo reply:(void(^)(NSDictionary * __nullable replyInfo))reply {
-    NSLog(@"2");
-    reply(@{@"asf" : @"asdfasdf"});
-}
-
-- (void)applicationShouldRequestHealthAuthorization:(UIApplication *)application {
-    NSLog(@"3");
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSLog(@"4");
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    NSLog(@"5");
-}
-
-- (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)application {
-    NSLog(@"6");
-}
-- (void)applicationProtectedDataDidBecomeAvailable:(UIApplication *)application    {
-    NSLog(@"7");
 }
 
 @end
