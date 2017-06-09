@@ -231,19 +231,21 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 #pragma mark - Managerable
 
+-(void)startObservingForSpendable:(id <Spendable>) spendable {
+}
 
-#pragma mark - Addresses Observing
+-(void)stopObservingForSpendable:(id <Spendable>) spendable {
+}
 
--(void)startObservingForSpendable{
-    
+-(void)startObservingForAllSpendable {
     [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self getCurrentWallet] getAllKeysAdreeses]];
 }
 
--(void)stopObservingForSpendable{
-    
+-(void)stopObservingForAllSpendable {
     [[ApplicationCoordinator sharedInstance].requestManager stopObservingAdresses:nil];
 }
 
+#pragma mark - Addresses Observing
 
 -(void)updateSpendableObject:(id <Spendable>) object{
     

@@ -17,6 +17,7 @@
 -(void)didBackButtonPressedFromAddNewToken;
 -(void)didScanButtonPressed;
 -(void)didAddNewTokenWithAddress:(NSString*) address;
+-(void)didSelectContract:(Contract*) contract;
 
 @end
 

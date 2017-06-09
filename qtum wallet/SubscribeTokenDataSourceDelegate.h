@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Spendable.h"
 
+@protocol SubscribeTokenDataSourceDelegateDelegate <NSObject>
+
+- (void)tableView:(UITableView *)tableView didSelectContract:(Contract *) contract;
+
+@end
+
 @interface SubscribeTokenDataSourceDelegate : NSObject <UITableViewDelegate,UITableViewDataSource>
 
-@property (weak, nonatomic) NSArray <Spendable>* tokensArray;
+@property (strong, nonatomic) NSArray <Spendable>* tokensArray;
+@property (weak, nonatomic) id <SubscribeTokenDataSourceDelegateDelegate> delegate;
 
 @end

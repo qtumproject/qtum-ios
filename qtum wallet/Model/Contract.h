@@ -24,6 +24,7 @@
 
 @property (copy, nonatomic) NSString* name;
 @property (copy, nonatomic) NSString* localName;
+@property (assign, nonatomic) BOOL isActive;
 @property (assign, nonatomic) CGFloat balance;
 @property (assign, nonatomic) CGFloat unconfirmedBalance;
 @property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;

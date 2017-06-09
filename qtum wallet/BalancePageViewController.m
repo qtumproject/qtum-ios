@@ -12,6 +12,9 @@
 @interface BalancePageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate>
 
 @property (nonatomic) NSInteger currentIndex;
+@property (assign,nonatomic) BOOL needSwipeBack;
+@property (weak,nonatomic) UIScrollView* scrollView;
+
 
 @end
 
@@ -26,10 +29,23 @@
     [self setDelegateToScrollView];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.needSwipeBack) {
+        [self scrollToRootIfNeededAnimated:NO];
+    }
+}
+
 - (void)setDelegateToScrollView{
     for (UIView *view in self.view.subviews) {
         if ([view isKindOfClass:[UIScrollView class]]) {
             ((UIScrollView *)view).delegate = self;
+            self.scrollView = (UIScrollView *)view;
             break;
         }
     }
@@ -96,12 +112,30 @@
     if (index < 0 || index >= _controllers.count) {
         return;
     }
-    
+
     [self setViewControllers:@[[_controllers objectAtIndex:index]] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:nil];
+    self.currentIndex = index;
 }
 
-- (void)setScrollEnable:(BOOL)enable{
-    self.dataSource = enable ? self : nil;
+-(void)scrollToRootIfNeededAnimated:(BOOL)animated{
+    
+    if (self.isViewLoaded && self.view.window && self.currentIndex) {
+        [self scrollToIndex:0 animated:animated];
+        self.needSwipeBack = NO;
+        [self setScrollEnable:NO];
+    } else if (self.currentIndex){
+        self.needSwipeBack = true;
+    }else {
+        [self setScrollEnable:NO];
+    }
+}
+
+-(void)setScrollingToTokensAvailableIfNeeded {
+    [self setScrollEnable:YES];
+}
+
+- (void)setScrollEnable:(BOOL)enable {
+    self.scrollView.scrollEnabled = enable;
 }
 
 #pragma mark - UIScrollViewDelegate

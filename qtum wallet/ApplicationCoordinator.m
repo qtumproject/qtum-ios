@@ -103,8 +103,8 @@
     [self removeDependency:coordinator];
     [self startMainFlow];
     [self.notificationManager registerForRemoutNotifications];
-    [[WalletManager sharedInstance] startObservingForSpendable];
-    [[TokenManager sharedInstance] startObservingForSpendable];
+    [[WalletManager sharedInstance] startObservingForAllSpendable];
+    [[TokenManager sharedInstance] startObservingForAllSpendable];
 }
 
 -(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator{
@@ -117,8 +117,8 @@
     [self removeDependency:coordinator];
     [self startMainFlow];
     [self.notificationManager registerForRemoutNotifications];
-    [[WalletManager sharedInstance] startObservingForSpendable];
-    [[TokenManager sharedInstance] startObservingForSpendable];
+    [[WalletManager sharedInstance] startObservingForAllSpendable];
+    [[TokenManager sharedInstance] startObservingForAllSpendable];
 }
 
 
@@ -163,8 +163,8 @@
     
     [[WalletManager sharedInstance] clear];
     [[TokenManager sharedInstance] clear];
-    [[WalletManager sharedInstance] stopObservingForSpendable];
-    [[TokenManager sharedInstance] stopObservingForSpendable];
+    [[WalletManager sharedInstance] stopObservingForAllSpendable];
+    [[TokenManager sharedInstance] stopObservingForAllSpendable];
 }
 
 -(void)startLoginFlow{

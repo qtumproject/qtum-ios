@@ -2060,7 +2060,7 @@
 					E7FD36371DC4D07E00748177 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = Q7Q43CUMWT;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2871,6 +2871,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "529b4df7-24ce-4773-aa63-a2b74de1d79a";
+				PROVISIONING_PROFILE_SPECIFIER = QTUMDev;
 			};
 			name = Debug;
 		};
@@ -2896,6 +2898,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "529b4df7-24ce-4773-aa63-a2b74de1d79a";
+				PROVISIONING_PROFILE_SPECIFIER = QTUMDev;
 			};
 			name = Release;
 		};
