@@ -98,6 +98,25 @@
     }];
 }
 
+-(BOOL)writeNewAbi:(NSDictionary*) abi withPathName:(NSString*) newTeplateName {
+    
+    NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],newTeplateName];
+
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:NULL];
+    }
+    
+    NSError *err = nil;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:abi];
+    [data writeToFile:path atomically:YES];
+    
+    if (err != nil) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 -(NSDate*)getDateOfCreationTemplate:(NSString*) templateName {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@",[self contractDirectory],templateName];

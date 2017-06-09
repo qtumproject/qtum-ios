@@ -10,6 +10,7 @@
 #import "HistoryElement.h"
 #import "FXKeychain.h"
 #import "Contract.h"
+#import "ContractManager.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -190,6 +191,36 @@ static NSString* kAddresses = @"kAddress";
         [self save];
         [self tokenDidChange:nil];
     }
+}
+
+-(BOOL)addNewContractWithContractAddress:(NSString*) contractAddress withAbi:(NSString*) abiStr andWithName:(NSString*) contractName {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",contractAddress];
+    NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
+    
+    if (!filteredArray.count && contractAddress) {
+        
+        Contract* contract = [Contract new];
+        contract.contractAddress = contractAddress;
+        contract.creationDate = [NSDate date];
+        contract.localName = contractName;
+        contract.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+        contract.manager = self;
+        
+        TemplateModel* template = [[ContractManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+        
+        if (template) {
+            
+            contract.templateModel = template;
+            [self addNewToken:contract];
+            [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+            [self save];
+            [self tokenDidChange:nil];
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark - TokenDelegate
