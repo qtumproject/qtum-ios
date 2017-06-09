@@ -24,6 +24,7 @@
     self.localName = [self.contractAddress substringToIndex:6];
     self.templateModel = templateModel;
     self.creationDate = [NSDate date];
+    self.isActive = YES;
     
     __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : self.contractAddress} withSuccessHandler:^(id responseObject) {

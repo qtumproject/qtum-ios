@@ -23,7 +23,7 @@
 
 -(NSDate*)getDateOfCreationTemplate:(NSString*) templateName;
 
--(BOOL)writeNewAbi:(NSDictionary*) abi withPathName:(NSString*) newTeplateName;
+-(BOOL)writeNewAbi:(NSArray*) abi withPathName:(NSString*) newTeplateName;
 
 + (instancetype)sharedInstance;
 

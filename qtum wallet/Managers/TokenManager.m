@@ -206,6 +206,7 @@ static NSString* kAddresses = @"kAddress";
         contract.localName = contractName;
         contract.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
         contract.manager = self;
+        contract.isActive = YES;
         
         TemplateModel* template = [[ContractManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
         
@@ -243,7 +244,7 @@ static NSString* kAddresses = @"kAddress";
         object.balance = [responseObject[@"totalSupply"] floatValue];
         [weakSelf tokenDidChange:object];
     } andFailureHandler:^(NSError *error, NSString *message) {
-        NSLog(@"Error -> %@", error);
+        NSLog(@"Error -> %@", error);                            
     }];
 }
 

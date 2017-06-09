@@ -63,7 +63,7 @@
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templateName];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    NSDictionary* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSDictionary* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     return jsonAbi;
 }
 
@@ -98,17 +98,22 @@
     }];
 }
 
--(BOOL)writeNewAbi:(NSDictionary*) abi withPathName:(NSString*) newTeplateName {
+-(BOOL)writeNewAbi:(NSArray*) abi withPathName:(NSString*) newTeplateName {
     
-    NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],newTeplateName];
+    NSString* folderPath = [NSString stringWithFormat:@"%@/%@",[self contractDirectory],newTeplateName];
+    NSString* filePath = [NSString stringWithFormat:@"%@/abi-contract",folderPath];
 
-    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:NULL];
+
+    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:NO attributes:nil error:NULL];
     }
     
     NSError *err = nil;
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:abi];
-    [data writeToFile:path atomically:YES];
+    
+    NSMutableData *jsonData = [[NSJSONSerialization dataWithJSONObject:abi
+                                                               options:0 
+                                                                 error:&err] copy];
+    [jsonData writeToFile:filePath atomically:YES];
     
     if (err != nil) {
         return NO;

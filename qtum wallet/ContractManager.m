@@ -110,8 +110,11 @@
 
 - (TemplateModel*)createNewContractTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
     
-    NSData *data = [abi dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSError *err = nil;
+    NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
+                                                   options:NSJSONReadingMutableContainers
+                                                     error:&err];
+    // access the dictionaries
     if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:contractAddress]) {
         TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:UndefinedContractType];
         return customToken;
@@ -121,8 +124,11 @@
 
 - (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
     
-    NSData *data = [abi dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSError *err = nil;
+    NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
+                                    options:NSJSONReadingMutableContainers
+                                      error:&err];
+
     if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:contractAddress]) {
         TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType];
         return customToken;
