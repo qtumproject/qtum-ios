@@ -99,6 +99,7 @@
     [aCoder encodeObject:self.totalSupply forKey:@"totalSupply"];
     [aCoder encodeObject:@(self.balance) forKey:@"balance"];
     [aCoder encodeObject:@(self.unconfirmedBalance) forKey:@"unconfirmedBalance"];
+    [aCoder encodeObject:@(self.isActive) forKey:@"isActive"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -114,6 +115,7 @@
     NSString *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
     CGFloat balance = [[aDecoder decodeObjectForKey:@"balance"] floatValue];
     CGFloat unconfirmedBalance = [[aDecoder decodeObjectForKey:@"unconfirmedBalance"] floatValue];
+    BOOL isActive = [[aDecoder decodeObjectForKey:@"isActive"] boolValue];
     
     self = [super init];
     if (self) {
@@ -128,6 +130,7 @@
         self.totalSupply = totalSupply;
         self.balance = balance;
         self.unconfirmedBalance = unconfirmedBalance;
+        self.isActive = isActive;
     }
     
     return self;

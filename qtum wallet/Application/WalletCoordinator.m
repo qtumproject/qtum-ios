@@ -78,12 +78,12 @@
     self.delegateDataSource = [WalletHistoryDelegateDataSource new];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
-    self.delegateDataSource.haveTokens = [[TokenManager sharedInstance] getAllTokens].count > 0;
+    self.delegateDataSource.haveTokens = [[TokenManager sharedInstance] getAllActiveTokens].count > 0;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
     
     TokenListViewController* tokenController = (TokenListViewController*)[[ControllersFactory sharedInstance] createTokenListViewController];
-    tokenController.tokens = [[TokenManager sharedInstance] getAllTokens];
+    tokenController.tokens = [[TokenManager sharedInstance] getAllActiveTokens];
     tokenController.delegate = self;
     controller.delegate = self;
     self.tokenController = tokenController;
@@ -254,14 +254,17 @@
 
 -(void)updateSpendables {
     
-    NSArray *tokensArray = [[TokenManager sharedInstance] getAllTokens];
+    NSArray *tokensArray = [[TokenManager sharedInstance] getAllActiveTokens];
     self.delegateDataSource.haveTokens = tokensArray.count > 0;
     [self.historyController reloadTableView];
     self.tokenController.tokens = tokensArray;
     [self.tokenController reloadTable];
     
-    [self.pageViewController scrollToIndex:0 animated:YES];
-    [self.pageViewController setScrollEnable:tokensArray.count > 0];
+    if (tokensArray.count == 0) {
+        [self.pageViewController scrollToRootIfNeededAnimated:YES];
+    } else {
+        [self.pageViewController setScrollingToTokensAvailableIfNeeded];
+    }
 }
 
 -(void)updateBalance{

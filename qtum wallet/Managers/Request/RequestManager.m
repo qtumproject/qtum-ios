@@ -321,7 +321,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 }
 
 - (void)stopObservingForToken:(Contract*) token {
-    
+    [self.socketManager stopObservingToken:token withHandler:nil];
 }
 
 

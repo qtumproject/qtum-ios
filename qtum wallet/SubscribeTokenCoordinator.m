@@ -39,6 +39,7 @@
     controller.delegate = self;
     controller.delegateDataSource = [SubscribeTokenDataSourceDelegate new];
     controller.delegateDataSource.tokensArray = (NSArray <Spendable>*)[[TokenManager sharedInstance] getAllTokens];
+    controller.delegateDataSource.delegate = controller;
     self.subscribeViewController = controller;
 }
 
@@ -62,6 +63,17 @@
     QRCodeViewController* controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewControllerForSubscribe];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)didSelectContract:(Contract*) contract {
+    
+    contract.isActive = !contract.isActive;
+    if (contract.isActive) {
+        [[TokenManager sharedInstance] startObservingForSpendable:contract];
+    } else {
+        [[TokenManager sharedInstance] stopObservingForSpendable:contract];
+    }
+    [[TokenManager sharedInstance] spendableDidChange:contract];
 }
 
 #pragma mark - QRCodeViewControllerDelegate

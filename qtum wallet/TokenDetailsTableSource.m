@@ -21,7 +21,6 @@
 
 static NSInteger const NumberOfSections = 2;
 static NSInteger const NumberOfRowsForFirstSection = 1;
-static NSInteger const CountOfViewInFirstCell = 4;
 
 static CGFloat const ActivityHeaderHeight = 34;
 static CGFloat const BalanceTokenHeight = 84;

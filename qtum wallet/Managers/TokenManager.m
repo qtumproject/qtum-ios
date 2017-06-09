@@ -100,6 +100,12 @@ static NSString* kAddresses = @"kAddress";
     return [self.contracts filteredArrayUsingPredicate:predicate];
 }
 
+- (NSArray <Contract*>*)getAllActiveTokens {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i && isActive == YES",TokenType];
+    return [self.contracts filteredArrayUsingPredicate:predicate];
+}
+
 - (NSArray <Contract*>*)getAllContracts {
     
     return self.contracts;
@@ -223,17 +229,28 @@ static NSString* kAddresses = @"kAddress";
     NSLog(@"complete ->%@",complete);
 }
 
--(void)startObservingForSpendable{
+-(void)startObservingForSpendable:(id <Spendable>) spendable {
+    [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:spendable withHandler:nil];
+}
+
+-(void)stopObservingForSpendable:(id <Spendable>) spendable {
+    [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:spendable];
+}
+
+-(void)startObservingForAllSpendable {
     
-    for (Contract* token in self.contracts) {
+    NSArray <Contract*>* activeContract = [self getAllActiveTokens];
+    for (Contract* token in activeContract) {
         [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
     }
 }
 
--(void)stopObservingForSpendable{
-    //empty because wallet manager with stopin disconect from socket and this will also remove bserving from tokens too
+-(void)stopObservingForAllSpendable {
+    NSArray <Contract*>* activeContract = [self getAllActiveTokens];
+    for (Contract* token in activeContract) {
+        [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:token];
+    }
 }
-
 
 -(void)loadSpendableObjects {
     [self load];

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SubscribeTokenDataSourceDelegate;
+#import "SubscribeTokenDataSourceDelegate.h"
 
 @protocol SubscribeTokenCoordinatorDelegate;
 
-@interface SubscribeTokenViewController : BaseViewController
+@interface SubscribeTokenViewController : BaseViewController <SubscribeTokenDataSourceDelegateDelegate>
 
 @property (weak,nonatomic) id <SubscribeTokenCoordinatorDelegate> delegate;
 @property (strong, nonatomic) SubscribeTokenDataSourceDelegate* delegateDataSource;

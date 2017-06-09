@@ -107,9 +107,8 @@ static NSInteger countOfSections = 2;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat scrollDiff = scrollView.contentOffset.y - self.lastContentOffset;
-    self.lastContentOffset = scrollView.contentOffset.y;
     
+    self.lastContentOffset = scrollView.contentOffset.y;
     [self didScrollForheaderCell:scrollView];
 }
 

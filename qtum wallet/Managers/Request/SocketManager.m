@@ -108,5 +108,13 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     [_requestQueue addOperationWithBlock:block];
 }
 
+-(void)stopObservingToken:(Contract*) token withHandler:(void(^)()) handler{
+    __weak __typeof(self)weakSelf = self;
+    dispatch_block_t block = ^{
+        [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : token.contractAddress, @"addresses" : token.adresses}]];
+    };
+    [_requestQueue addOperationWithBlock:block];
+}
+
 
 @end

@@ -25,7 +25,12 @@
     [super viewDidLoad];
     [self configTableView];
     [self configSearchBar];
-    [self.tableView reloadData];
+    [self updateTable];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable) name:kTokenDidChange object:nil];
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Configuration
@@ -43,6 +48,14 @@
     [self.searchBar setImage:[UIImage imageNamed: @"Icon-search"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
 }
 
+#pragma mark - Private Methods
+
+-(void)updateTable{
+    __weak __typeof(self)weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.tableView reloadData];
+    });
+}
 
 #pragma mark - Accesers 
 
@@ -51,6 +64,10 @@
 }
 - (IBAction)didPressesAddNewAction:(id)sender {
 //    [self.delegate didAddNewPressed];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectContract:(Contract *) contract {
+    [self.delegate didSelectContract:contract];
 }
 
 

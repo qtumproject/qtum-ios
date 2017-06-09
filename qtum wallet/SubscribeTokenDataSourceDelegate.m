@@ -24,9 +24,9 @@
         cell = [[TockenCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tokenCellIdentifire];
     }
 
+    Contract* token = self.tokensArray[indexPath.row];
     cell.topSeparator.hidden = NO;
-    
-    id <Spendable> token = self.tokensArray[indexPath.row];
+    cell.indicator.hidden = !token.isActive;
     cell.label.text = token.name;
     [cell setSelectedBackgroundView:[self highlightedView]];
     return cell;
@@ -35,6 +35,9 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.delegate respondsToSelector:@selector(tableView:didSelectContract:)]) {
+        [self.delegate tableView:tableView didSelectContract:self.tokensArray[indexPath.row]];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
