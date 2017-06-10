@@ -22,7 +22,7 @@
     
     [super viewDidLoad];
     
-    self.contractTypes = @[NSLocalizedString(@"Crate Contract", @""),NSLocalizedString(@"My Contracts", @""),NSLocalizedString(@"Contacts Store", @"")];
+    self.contractTypes = @[NSLocalizedString(@"My New Contracts", @""),NSLocalizedString(@"My Published Contracts", @""),NSLocalizedString(@"Contacts Store", @"")];
     [self.tableView reloadData];
 }
 
@@ -79,13 +79,13 @@
     
     if (indexPath.row == 0) {
         
-        cell.image.image =  [UIImage imageNamed:@"ic-token"];
+        cell.image.image =  [UIImage imageNamed:@"ic-smartContract"];
     } else if (indexPath.row == 1) {
         
-        cell.image.image = [UIImage imageNamed:@"ic-token-subscribe"];
+        cell.image.image = [UIImage imageNamed:@"ic-publichedContracts"];
     } else if (indexPath.row == 2) {
         
-        cell.image.image = [UIImage imageNamed:@"info_icon"];
+        cell.image.image = [UIImage imageNamed:@"ic-contractStore"];
     }
     
     return cell;

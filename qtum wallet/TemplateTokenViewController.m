@@ -9,7 +9,7 @@
 #import "TemplateTokenViewController.h"
 #import "TokenTemplateCell.h"
 
-@interface TemplateTokenViewController ()
+@interface TemplateTokenViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -38,18 +38,22 @@
     
     TokenTemplateCell* cell = (TokenTemplateCell*)[tableView cellForRowAtIndexPath:indexPath];
     cell.disclousureImage.tintColor =
-    cell.tokenIdentifire.textColor =
+    cell.tokenIdentifire.backgroundColor =
     cell.creationDate.textColor =
     cell.templateName.textColor = customBlackColor();
+    
+    cell.tokenIdentifire.textColor = customRedColor();
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TokenTemplateCell* cell = (TokenTemplateCell*)[tableView cellForRowAtIndexPath:indexPath];
     cell.disclousureImage.tintColor =
-    cell.tokenIdentifire.textColor =
+    cell.tokenIdentifire.backgroundColor =
     cell.creationDate.textColor =
     cell.templateName.textColor = customBlueColor();
+    
+    cell.tokenIdentifire.textColor = customBlackColor();
 }
 
 
@@ -65,9 +69,18 @@
     TemplateModel* template = self.templateModels[indexPath.row];
     TokenTemplateCell* cell = [tableView dequeueReusableCellWithIdentifier:tokenTemplateCellIdentifire];
     cell.templateName.text = template.templateName;
-    cell.tokenIdentifire.text = template.templateTypeString;
+    cell.tokenIdentifire.text = [template.templateTypeString uppercaseString];
     cell.creationDate.text = template.creationDateString;
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 31;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"TemplatesHeaderView"];
+    return  headerCell;
 }
 
 - (IBAction)didPressedBackAction:(id)sender {

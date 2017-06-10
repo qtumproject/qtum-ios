@@ -7,7 +7,7 @@
 //
 
 #import "CustomAbiInterphaseViewController.h"
-#import "AbiTextFieldWithLine.h"
+#import "TextFieldParameterView.h"
 #import "AbiinterfaceItem.h"
 #import "ContractCoordinator.h"
 #import "ResultTokenInputsModel.h"
@@ -27,31 +27,67 @@
 
 #pragma mark - Configuration
 
+- (void)confixHeaderFields {
+    
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic-token_not_empty"]];
+    image.frame = CGRectMake(10.0f, 22.0f, image.frame.size.width, image.frame.size.height);
+    [self.scrollView addSubview:image];
+    
+    UILabel *type = [[UILabel alloc] init];
+    type.text = NSLocalizedString(@"Token", nil);
+    type.textColor = customBlueColor();
+    type.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
+    [type sizeToFit];
+    type.frame = CGRectMake(image.frame.origin.x + image.frame.size.width + 5.0f,
+                            image.frame.origin.y + image.frame.size.height / 2.0f - type.frame.size.height / 2.0f,
+                            type.frame.size.width,
+                            type.frame.size.height);
+    
+    [self.scrollView addSubview:type];
+}
+
 -(void)configTextFields {
     
-    NSInteger xoffset = 20;
-    NSInteger yoffset = 30;
-    NSInteger yoffsetFirstElement = 30;
+    NSInteger yoffset = 0;
+    NSInteger yoffsetFirstElement = 60;
     NSInteger heighOfPrevElement = 0;
-    NSInteger heighOfElement = 30;
-    NSInteger widthOfElement = CGRectGetWidth(self.view.frame) - xoffset * 2;
+    NSInteger heighOfElement = 100;
     NSInteger scrollViewTopOffset = 88;
-    NSInteger scrollViewBottomInset = 105;
+    NSInteger scrollViewBottomInset = 49;
 
 
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, scrollViewTopOffset, CGRectGetWidth(self.view.frame), self.view.frame.size.height - scrollViewTopOffset)];
     self.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
+    [self confixHeaderFields];
+    
     for (int i = 0; i < self.formModel.constructorItem.inputs.count; i++) {
-        AbiTextFieldWithLine* textField = [[AbiTextFieldWithLine alloc] initWithFrame:CGRectMake(xoffset, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement, widthOfElement, heighOfElement) andInterfaceItem:self.formModel.constructorItem.inputs[i]];
+        TextFieldParameterView *parameterView = (TextFieldParameterView *)[[[NSBundle mainBundle] loadNibNamed:@"FieldsViews" owner:self options:nil] lastObject];
+        parameterView.frame = CGRectMake(0.0f, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement, CGRectGetWidth(self.view.frame), heighOfElement);
+        [parameterView.titleLabel setText:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Parameter", nil), i + 1]];
+        [parameterView.textField setItem:self.formModel.constructorItem.inputs[i]];
         heighOfPrevElement = heighOfElement;
-        textField.inputAccessoryView = [self createToolBarInput];
-        textField.customDelegate = self;
-        textField.tag = i;
-        [self.scrollView addSubview:textField];
+        parameterView.textField.inputAccessoryView = [self createToolBarInput];
+        parameterView.textField.customDelegate = self;
+        parameterView.tag = i;
+        
+        [self.scrollView addSubview:parameterView];
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
                                                  yoffset * i + heighOfPrevElement * i + yoffsetFirstElement + heighOfElement);
     }
+    
+    UIButton *nextButton = [[UIButton alloc] init];
+    nextButton.frame = CGRectMake((self.view.frame.size.width - 150.0f) / 2.0f, yoffset * self.formModel.constructorItem.inputs.count - 1 + heighOfPrevElement * self.formModel.constructorItem.inputs.count - 1 + yoffsetFirstElement + 30.0f, 150, 32.0f);
+    [nextButton setTitle:NSLocalizedString(@"NEXT", nil) forState:UIControlStateNormal];
+    nextButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
+    [nextButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
+    [nextButton setBackgroundColor:customRedColor()];
+    [nextButton addTarget:self action:@selector(didPressedNextAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:nextButton];
+    
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
+                                             nextButton.frame.origin.y + nextButton.frame.size.height + 30.0f);
+    
     self.scrollView.contentInset =
     self.originInsets = UIEdgeInsetsMake(0, 0, scrollViewBottomInset, 0);
     [self.view addSubview:self.scrollView];
@@ -63,11 +99,11 @@
 -(NSArray<ResultTokenInputsModel*>*)prepareInputsData {
     
     NSMutableArray* inputsData = @[].mutableCopy;
-    for (AbiTextFieldWithLine* textField in self.scrollView.subviews) {
-        if ([textField isKindOfClass:[AbiTextFieldWithLine class]]) {
+    for (TextFieldParameterView* parameter in self.scrollView.subviews) {
+        if ([parameter isKindOfClass:[TextFieldParameterView class]]) {
             ResultTokenInputsModel* input = [ResultTokenInputsModel new];
-            input.name = textField.item.name;
-            input.value = textField.item.type == StringType ? textField.text : @([textField.text integerValue]);
+            input.name = parameter.textField.item.name;
+            input.value = parameter.textField.item.type == StringType ? parameter.textField.text : @([parameter.textField.text integerValue]);
             [inputsData addObject:input];
         }
     }
@@ -98,7 +134,7 @@
 #pragma mark - AbiTextFieldWithLineDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    self.activeTextFieldTag = textField.tag;
+    self.activeTextFieldTag = textField.superview.tag;
 }
 
 #pragma mark - Actions
@@ -110,7 +146,8 @@
 - (IBAction)didPressedNextOnTextField:(id)sender {
     
     if (self.activeTextFieldTag < self.formModel.constructorItem.inputs.count - 1) {
-        UITextField* texField = (UITextField*)[self.scrollView viewWithTag:self.activeTextFieldTag + 1];
+        TextFieldParameterView *parameter = [self.scrollView viewWithTag:self.activeTextFieldTag + 1];
+        UITextField* texField = parameter.textField;
         [texField becomeFirstResponder];
     } else {
         [self didPressedNextAction:nil];

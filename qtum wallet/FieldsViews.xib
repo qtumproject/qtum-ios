@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="euclidflexmedium.ttf">
+            <string>euclidflexmedium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SwitchParameterView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECm-8O-ROo">
+                    <rect key="frame" x="10" y="18" width="46.5" height="23"/>
+                    <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9YI-iz-7cJ">
+                    <rect key="frame" x="10" y="99" width="310" height="1"/>
+                    <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="2y3-ig-0SV"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="False" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2s-Zj-hHk">
+                    <rect key="frame" x="10" y="65" width="49" height="19.5"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="waves" offImage="waves" translatesAutoresizingMaskIntoConstraints="NO" id="LHj-Ge-9nK">
+                    <rect key="frame" x="74" y="59" width="51" height="31"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="onTintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="thumbTintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="actionValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="Lvv-FR-vGU"/>
+                    </connections>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="True" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlQ-Na-2z0">
+                    <rect key="frame" x="138" y="65" width="39" height="19.5"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9YI-iz-7cJ" secondAttribute="bottom" id="12N-Ww-TxC"/>
+                <constraint firstItem="j2s-Zj-hHk" firstAttribute="centerY" secondItem="LHj-Ge-9nK" secondAttribute="centerY" id="G8k-Cf-XIv"/>
+                <constraint firstItem="9YI-iz-7cJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="SKP-97-a2c"/>
+                <constraint firstItem="LHj-Ge-9nK" firstAttribute="leading" secondItem="j2s-Zj-hHk" secondAttribute="trailing" constant="15" id="Z8L-0t-h90"/>
+                <constraint firstItem="ECm-8O-ROo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="aBX-b6-Eyg"/>
+                <constraint firstItem="hlQ-Na-2z0" firstAttribute="leading" secondItem="LHj-Ge-9nK" secondAttribute="trailing" constant="15" id="cg2-Qc-97p"/>
+                <constraint firstAttribute="trailing" secondItem="9YI-iz-7cJ" secondAttribute="trailing" id="dfT-BZ-sYn"/>
+                <constraint firstItem="j2s-Zj-hHk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="f0B-vB-QPy"/>
+                <constraint firstItem="hlQ-Na-2z0" firstAttribute="centerY" secondItem="LHj-Ge-9nK" secondAttribute="centerY" id="oVq-hw-rT2"/>
+                <constraint firstItem="ECm-8O-ROo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="pUz-UA-i0Q"/>
+                <constraint firstItem="9YI-iz-7cJ" firstAttribute="top" secondItem="LHj-Ge-9nK" secondAttribute="bottom" constant="9" id="qHA-hw-GsU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="falseLabel" destination="j2s-Zj-hHk" id="0l8-lp-0cg"/>
+                <outlet property="switchView" destination="LHj-Ge-9nK" id="qB6-Y6-LIZ"/>
+                <outlet property="titleLabel" destination="ECm-8O-ROo" id="vfk-hw-5nE"/>
+                <outlet property="trueLabel" destination="hlQ-Na-2z0" id="Tlf-56-FlZ"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="60"/>
+        </view>
+        <view contentMode="scaleToFill" id="DG8-Xq-PeE" customClass="TextFieldParameterView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIa-D9-c1j">
+                    <rect key="frame" x="10" y="18" width="46.5" height="23"/>
+                    <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nip-5g-Fch" customClass="AbiTextFieldWithLine">
+                    <rect key="frame" x="10" y="65" width="300" height="20"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PIa-D9-c1j" firstAttribute="top" secondItem="DG8-Xq-PeE" secondAttribute="top" constant="18" id="7Qm-QM-Ijo"/>
+                <constraint firstAttribute="trailing" secondItem="Nip-5g-Fch" secondAttribute="trailing" constant="10" id="8Sd-IH-ioz"/>
+                <constraint firstAttribute="bottom" secondItem="Nip-5g-Fch" secondAttribute="bottom" constant="15" id="Guh-ri-5iy"/>
+                <constraint firstItem="PIa-D9-c1j" firstAttribute="leading" secondItem="DG8-Xq-PeE" secondAttribute="leading" constant="10" id="Sg5-w5-A4e"/>
+                <constraint firstItem="Nip-5g-Fch" firstAttribute="leading" secondItem="DG8-Xq-PeE" secondAttribute="leading" constant="10" id="aqG-uU-dvY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="textField" destination="Nip-5g-Fch" id="l7J-Z8-vOD"/>
+                <outlet property="titleLabel" destination="PIa-D9-c1j" id="Iuk-oU-szV"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="240"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="waves" width="208" height="47"/>
+    </resources>
+</document>
