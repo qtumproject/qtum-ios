@@ -22,6 +22,8 @@
 - (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem;
 - (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param;
 
+- (TemplateModel*)createNewContractTemplateWithAbi:(NSString*)abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
+
 + (instancetype)sharedInstance;
 
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

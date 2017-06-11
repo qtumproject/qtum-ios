@@ -43,6 +43,9 @@
 
 @end
 
+static NSInteger withTokenOffset = 80;
+static NSInteger withoutTokenOffset = 30;
+
 @implementation NewPaymentViewController
 
 - (void)viewDidLoad {
@@ -88,15 +91,15 @@
     
     BOOL isTokensExists = [TokenManager sharedInstance].getAllActiveTokens.count;
     
-    self.withTokensConstraint.active = isTokensExists;
-    self.withoutTokensConstraint.active =
     self.tokenButton.hidden =
     self.tokenDisclousureImage.hidden =
     self.tokenTextField.hidden =
     self.tokenUnderlineView.hidden = !isTokensExists;
+    self.withoutTokensConstraint.constant = isTokensExists ? withTokenOffset : withoutTokenOffset;
     self.tokenDisclousureImage.tintColor = customBlueColor();
     self.tokenTextField.text =  self.token ? self.token.name : NSLocalizedString(@"QTUM (Default)", @"");
     self.residueValueLabel.text = self.currentBalance;
+    [self.view layoutSubviews];
 }
 
 -(void)payWithWallet {

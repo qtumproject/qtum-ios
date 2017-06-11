@@ -63,7 +63,7 @@
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templateName];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    NSDictionary* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSDictionary* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     return jsonAbi;
 }
 
@@ -96,6 +96,30 @@
                                                      error:&error];
         }
     }];
+}
+
+-(BOOL)writeNewAbi:(NSArray*) abi withPathName:(NSString*) newTeplateName {
+    
+    NSString* folderPath = [NSString stringWithFormat:@"%@/%@",[self contractDirectory],newTeplateName];
+    NSString* filePath = [NSString stringWithFormat:@"%@/abi-contract",folderPath];
+
+
+    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:NO attributes:nil error:NULL];
+    }
+    
+    NSError *err = nil;
+    
+    NSMutableData *jsonData = [[NSJSONSerialization dataWithJSONObject:abi
+                                                               options:0 
+                                                                 error:&err] copy];
+    [jsonData writeToFile:filePath atomically:YES];
+    
+    if (err != nil) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 -(NSDate*)getDateOfCreationTemplate:(NSString*) templateName {
