@@ -21,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore Contracts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-fx-2u7">
-                    <rect key="frame" x="99.5" y="15" width="165.5" height="19.5"/>
+                    <rect key="frame" x="102.5" y="15.5" width="165.5" height="19"/>
                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Xt-IS-9fJ">
-                    <rect key="frame" x="54.5" y="12.5" width="25" height="25"/>
+                    <rect key="frame" x="57.5" y="12.5" width="25" height="25"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-checkbox" translatesAutoresizingMaskIntoConstraints="NO" id="hDX-Pb-3an">
                             <rect key="frame" x="6.5" y="8" width="13" height="9"/>
@@ -35,8 +35,8 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="hDX-Pb-3an" firstAttribute="centerX" secondItem="8Xt-IS-9fJ" secondAttribute="centerX" id="3ex-6H-UEZ"/>
                         <constraint firstAttribute="width" constant="25" id="DqY-Ox-qhg"/>
-                        <constraint firstItem="hDX-Pb-3an" firstAttribute="centerX" secondItem="8Xt-IS-9fJ" secondAttribute="centerX" id="QJF-8j-Wd0"/>
                         <constraint firstItem="hDX-Pb-3an" firstAttribute="centerY" secondItem="8Xt-IS-9fJ" secondAttribute="centerY" id="cXv-AI-GV4"/>
                         <constraint firstAttribute="height" constant="25" id="qBp-TW-4i4"/>
                     </constraints>
@@ -44,9 +44,9 @@
             </subviews>
             <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="W6s-fx-2u7" firstAttribute="centerX" secondItem="3sc-3g-CRv" secondAttribute="centerX" constant="22" id="KZ8-cj-rk9"/>
                 <constraint firstItem="8Xt-IS-9fJ" firstAttribute="centerY" secondItem="3sc-3g-CRv" secondAttribute="centerY" id="LLt-fY-zs1"/>
                 <constraint firstItem="W6s-fx-2u7" firstAttribute="centerY" secondItem="3sc-3g-CRv" secondAttribute="centerY" id="kmK-GN-ZPf"/>
+                <constraint firstItem="8Xt-IS-9fJ" firstAttribute="centerX" secondItem="3sc-3g-CRv" secondAttribute="centerX" constant="-90" id="s7t-vs-WdN"/>
                 <constraint firstItem="W6s-fx-2u7" firstAttribute="leading" secondItem="8Xt-IS-9fJ" secondAttribute="trailing" constant="20" id="wCo-6V-EPU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

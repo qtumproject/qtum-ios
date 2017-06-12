@@ -48,6 +48,7 @@
 #import "LoaderPopUpViewController.h"
 #import "WatchContractViewController.h"
 #import "RestoreContractsViewController.h"
+#import "RestoreContractsPopUpViewController.h"
 
 @implementation ControllersFactory
 
@@ -280,6 +281,11 @@
 
 - (LoaderPopUpViewController *)createLoaderViewController{
     LoaderPopUpViewController* controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUp"];
+    return controller;
+}
+
+- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController{
+    RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUp"];
     return controller;
 }
 
