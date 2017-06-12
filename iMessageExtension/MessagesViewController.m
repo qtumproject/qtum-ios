@@ -171,27 +171,19 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 }
 
 -(UIImage*)imageForMessageWithText:(NSString*)text finalized:(BOOL) final isResultSuccess:(BOOL) succes{
-    GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 100)];
+    UIView* backView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 100)];
     NSString* statusString;
     if (final && succes) {
-        backView.colorType = Green;
         statusString = @"Wait...";
     } else if(final){
-        backView.colorType = Pink;
         statusString = @"Canceled";
-    } else {
-        backView.colorType = Blue;
     }
-    backView.backgroundColor = [UIColor blackColor];
+    backView.backgroundColor = customBlueColor();
     
-    UIImageView* waves = [[UIImageView alloc]initWithFrame:CGRectMake(0, 40, 300, 80)];
-    waves.image = [UIImage imageNamed:@"waves"];
-    
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, backView.bounds.size.width, 50)];
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(20, 58, backView.bounds.size.width, 50)];
     label.font = [UIFont fontWithName:label.font.fontName size:18];
-    label.text = text;//;
+    label.text = text;
     [label sizeToFit];
-    //label.frame = CGRectMake(backView.frame.size.width/2 - label.frame.size.width/2, 75, 150, 150);
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentLeft;
     
@@ -200,11 +192,13 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     statusLabel.text = statusString;
     statusLabel.textColor = [UIColor whiteColor];
     statusLabel.textAlignment = NSTextAlignmentRight;
-
     
+    UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(0,  0, backView.frame.size.width, 40)];
+    blackView.backgroundColor = customBlackColor();
+    
+    [backView addSubview:blackView];
     [backView addSubview:statusLabel];
     [backView addSubview:label];
-    [backView addSubview:waves];
     [self.view addSubview:backView];
     UIGraphicsBeginImageContextWithOptions(backView.frame.size, NO, [UIScreen mainScreen].scale);
     [backView drawViewHierarchyInRect:backView.bounds afterScreenUpdates:YES];
@@ -372,6 +366,23 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 
 -(void)didTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
     [self updateControlsWithSyle:presentationStyle];
+}
+
+#pragma mark - Сolors
+
+UIColor *customBlueColor()
+{
+    return [UIColor colorWithRed:46/255.0f green:154/255.0f blue:208/255.0f alpha:1.0f];
+}
+
+UIColor *customRedColor()
+{
+    return [UIColor colorWithRed:231/255.0f green:86/255.0f blue:71/255.0f alpha:1.0f];
+}
+
+UIColor *customBlackColor()
+{
+    return [UIColor colorWithRed:35/255.0f green:35/255.0f blue:40/255.0f alpha:1.0f];
 }
 
 @end
