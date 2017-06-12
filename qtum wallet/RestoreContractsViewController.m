@@ -72,7 +72,7 @@
         
         [buttons addObject:button];
         
-        NSDictionary *metrics = @{@"height" : @(40.0f), @"offset" : @(20.0f)};
+        NSDictionary *metrics = @{@"height" : @(40.0f), @"offset" : @(10.0f)};
         NSDictionary *views;
         NSArray *verticalConstraints;
         if (i == 0) {
@@ -123,11 +123,30 @@
 #pragma mark - CheckboxButtonDelegate and buttons Logic
 
 - (void)didStateChanged:(CheckboxButton *)sender {
-    
+    if (self.buttons.count - 1 == [self.buttons indexOfObject:sender]) {
+        [self setCheckForAllButtons:[sender isChecked]];
+    }else{
+        [self checkAllSelectedAndChangeLastButton];
+    }
 }
 
-- (BOOL)checkAllSelectedAndChangeLastButton {
+- (void)checkAllSelectedAndChangeLastButton {
+    BOOL allSelected = YES;
+    for (NSInteger i = 0; i < self.buttons.count - 1; i++) {
+        CheckboxButton *button = self.buttons[i];
+        
+        if (![button isChecked]) {
+            allSelected = NO;
+        }
+    }
+    CheckboxButton *lastButton = [self.buttons lastObject];
+    [lastButton setCheck:allSelected];
+}
 
+- (void)setCheckForAllButtons:(BOOL)value {
+    for (CheckboxButton *button in self.buttons) {
+        [button setCheck:value];
+    }
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
