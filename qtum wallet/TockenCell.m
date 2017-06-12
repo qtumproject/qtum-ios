@@ -16,6 +16,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.indicator.tintColor = customBlueColor();
 }
 
 -(void)updateConstraints{

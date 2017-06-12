@@ -20,6 +20,7 @@
 -(void)finishStepFinishDidPressed;
 -(void)finishStepBackDidPressed;
 -(void)didSelectContractStore;
+-(void)didSelectWatchContracts;
 -(void)didSelectPublishedContracts;
 -(void)didSelectNewContracts;
 -(void)didPressedQuit;

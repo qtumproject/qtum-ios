@@ -99,9 +99,8 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 
 #pragma mark - Actions
 
-- (IBAction)importButtonWasPressed:(id)sender
-{
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+- (IBAction)importButtonWasPressed:(id)sender {
+    //[[PopUpsManager sharedInstance] showLoaderPopUp];
     NSArray *wordsArray = [self arrayOfWordsFromString:self.brandKeyTextView.text];
     if ([self.delegate respondsToSelector:@selector(didRestorePressedWithWords:)]) {
         [self.delegate didRestorePressedWithWords:wordsArray];
@@ -115,6 +114,7 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 }
 
 -(void)restoreSucces{
+    [[PopUpsManager sharedInstance] dismissLoader];
     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
     if ([self.delegate respondsToSelector:@selector(didRestoreWallet)]) {
         [self.delegate didRestoreWallet];
@@ -122,6 +122,7 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 }
 
 -(void)restoreFailed{
+    [[PopUpsManager sharedInstance] dismissLoader];
     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some Error", "")];
 }
 

@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray <Contract*>* filteredTokensArray;
+
 
 @end
 
@@ -38,6 +40,7 @@
 -(void)configTableView{
     self.tableView.dataSource = self.delegateDataSource;
     self.tableView.delegate = self.delegateDataSource;
+    self.delegateDataSource.tokensArray = self.tokensArray;
 }
 
 -(void)configSearchBar{
@@ -57,6 +60,15 @@
     });
 }
 
+-(NSArray <Contract*>*)filteringContractsName:(NSArray <Contract*>*) contracts containsText:(NSString*) containtsText {
+    if (containtsText.length > 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name BEGINSWITH %@",containtsText];
+        return [contracts filteredArrayUsingPredicate:predicate];
+    } else {
+        return contracts;
+    }
+}
+
 #pragma mark - Accesers 
 
 - (IBAction)actionBack:(id)sender {
@@ -70,5 +82,11 @@
     [self.delegate didSelectContract:contract];
 }
 
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    self.delegateDataSource.tokensArray = [self filteringContractsName:[self.tokensArray copy] containsText:searchText];
+    [self updateTable];
+}
 
 @end

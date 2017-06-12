@@ -64,6 +64,7 @@
 
 -(void)failedToGetData{
     self.historyLoaded = YES;
+    [[PopUpsManager sharedInstance] dismissLoader];
     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some error", "Tabs")];
 }
 

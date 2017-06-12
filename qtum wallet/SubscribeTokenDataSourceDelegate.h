@@ -17,7 +17,7 @@
 
 @interface SubscribeTokenDataSourceDelegate : NSObject <UITableViewDelegate,UITableViewDataSource>
 
-@property (strong, nonatomic) NSArray <Spendable>* tokensArray;
+@property (strong, nonatomic) NSArray <Contract*>* tokensArray;
 @property (weak, nonatomic) id <SubscribeTokenDataSourceDelegateDelegate> delegate;
 
 @end

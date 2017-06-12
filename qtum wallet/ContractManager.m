@@ -108,5 +108,34 @@
     return [hashFunction copy];
 }
 
+- (TemplateModel*)createNewContractTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
+    
+    NSError *err = nil;
+    NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
+                                                   options:NSJSONReadingMutableContainers
+                                                     error:&err];
+    // access the dictionaries
+    if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:contractAddress]) {
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:UndefinedContractType];
+        return customToken;
+    }
+    return nil;
+}
+
+- (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
+    
+    NSError *err = nil;
+    NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
+                                    options:NSJSONReadingMutableContainers
+                                      error:&err];
+
+    if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:contractAddress]) {
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType];
+        return customToken;
+    }
+    return nil;
+}
+
+
 
 @end

@@ -46,6 +46,7 @@
 #import "ConfirmPopUpViewController.h"
 #import "ErrorPopUpViewController.h"
 #import "LoaderPopUpViewController.h"
+#import "WatchContractViewController.h"
 
 @implementation ControllersFactory
 
@@ -219,6 +220,12 @@
 
 -(SmartContractsListViewController*)createSmartContractsListViewController{
     SmartContractsListViewController* controller = (SmartContractsListViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
+    return controller;
+}
+
+
+-(WatchContractViewController*)createWatchContractViewController{
+    WatchContractViewController* controller = (WatchContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
     return controller;
 }
 
