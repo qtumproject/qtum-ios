@@ -75,11 +75,12 @@
 #pragma mark - Public Methods
 
 -(void)startCreateWallet{
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+//    [[PopUpsManager sharedInstance] showLoaderPopUp];
 }
 
 -(void)endCreateWalletWithError:(NSError*)error{
     self.creatingWalletDidEnd = YES;
+//    [[PopUpsManager sharedInstance] dismissLoader];
     if (error) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some Error", "")];
         if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {

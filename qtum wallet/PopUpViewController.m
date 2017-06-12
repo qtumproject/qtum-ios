@@ -9,6 +9,7 @@
 #import "PopUpViewController.h"
 
 BOOL ShowInUIWindow = YES;
+CGFloat AnimationDuration = 0.3f;
 
 @interface PopUpViewController ()
 
@@ -28,7 +29,15 @@ BOOL ShowInUIWindow = YES;
     
     if (ShowInUIWindow) {
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        [window addSubview:self.view];
+        if (animated) {
+            self.view.alpha = 0.0f;
+            [window addSubview:self.view];
+            [UIView animateWithDuration:AnimationDuration animations:^{
+                self.view.alpha = 1.0f;
+            }];
+        }else{
+            [window addSubview:self.view];
+        }
     }else{
         [controller presentViewController:self animated:animated completion:completion];
     }
@@ -37,7 +46,15 @@ BOOL ShowInUIWindow = YES;
 - (void)hide:(BOOL)animated completion:(void (^)(void))completion
 {
     if (ShowInUIWindow) {
-        [self.view removeFromSuperview];
+        if (animated) {
+            [UIView animateWithDuration:AnimationDuration animations:^{
+                self.view.alpha = 0.0f;
+            } completion:^(BOOL finished) {
+                [self.view removeFromSuperview];
+            }];
+        }else{
+            [self.view removeFromSuperview];
+        }
     }else{
         [self dismissViewControllerAnimated:animated completion:completion];
     }

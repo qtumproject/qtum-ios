@@ -114,7 +114,7 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 }
 
 -(void)restoreSucces{
-    //[[PopUpsManager sharedInstance] dismissLoader];
+    [[PopUpsManager sharedInstance] dismissLoader];
     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
     if ([self.delegate respondsToSelector:@selector(didRestoreWallet)]) {
         [self.delegate didRestoreWallet];
@@ -122,8 +122,8 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 }
 
 -(void)restoreFailed{
-    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some Error", "")];
     [[PopUpsManager sharedInstance] dismissLoader];
+    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some Error", "")];
 }
 
 - (IBAction)outsideTap:(id)sender

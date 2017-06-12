@@ -27,6 +27,7 @@
 #pragma mark - Private Methods
 
 -(void)createSmartContract {
+    [[PopUpsManager sharedInstance] dismissLoader];
     if ([[TokenManager sharedInstance] addNewContractWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text]) {
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
         [self.delegate didPressedBack];
@@ -40,7 +41,7 @@
 }
 
 - (IBAction)didPressedOkAction:(id)sender {
-    [SVProgressHUD show];
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
     [self createSmartContract];
 }
 
