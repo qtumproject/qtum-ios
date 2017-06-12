@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -211,7 +211,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-qN-VLx">
-                                                <rect key="frame" x="31" y="266" width="117.5" height="50"/>
+                                                <rect key="frame" x="31" y="265" width="117.5" height="50"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="16"/>
                                                 <state key="normal" title="Cancel">
@@ -227,14 +227,14 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send me pls qtum" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ber-uP-fl9">
-                                                <rect key="frame" x="38" y="100" width="244" height="21"/>
+                                                <rect key="frame" x="38" y="100" width="244" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88R-4f-3wr">
-                                                <rect key="frame" x="173.5" y="266" width="117.5" height="50"/>
+                                                <rect key="frame" x="173.5" y="265" width="117.5" height="50"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" priority="750" constant="146" id="OfE-C4-xU3"/>
@@ -272,7 +272,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment declined" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-rg-tDz">
-                                                <rect key="frame" x="50" y="254" width="220" height="21"/>
+                                                <rect key="frame" x="50" y="254.5" width="220" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -331,7 +331,7 @@
                         <outlet property="amountTextField" destination="q5c-DY-rhD" id="KLe-nk-qPV"/>
                         <outlet property="compactPresentationView" destination="HTE-Oo-lJl" id="beY-CX-E4f"/>
                         <outlet property="createWalletExpandView" destination="okf-Ci-nZa" id="hNH-QK-cwp"/>
-                        <outlet property="expandedPresentationVIew" destination="aLY-WW-w3z" id="EEf-av-xaN"/>
+                        <outlet property="expandedPresentationView" destination="aLY-WW-w3z" id="wsl-Sm-PM1"/>
                         <outlet property="finalizedExpandView" destination="Dqi-95-3bs" id="kIQ-NT-hvX"/>
                         <outlet property="finalizedTextLabel" destination="3hF-rg-tDz" id="HIy-5E-omt"/>
                         <outlet property="paymentArimentExpandView" destination="XN7-9A-NoP" id="FWN-r7-Bqd"/>
@@ -351,7 +351,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="119" height="106"/>
+        <image name="logo" width="115" height="100"/>
         <image name="logo_txt" width="95" height="25"/>
     </resources>
 </document>

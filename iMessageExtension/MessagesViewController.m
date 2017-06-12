@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *compactPresentationView;
-@property (weak, nonatomic) IBOutlet UIView *expandedPresentationVIew;
+@property (weak, nonatomic) IBOutlet UIView *expandedPresentationView;
 @property (weak, nonatomic) IBOutlet UIView *sendMessageExpandView;
 @property (weak, nonatomic) IBOutlet UIView *createWalletExpandView;
 @property (weak, nonatomic) IBOutlet UIView *paymentArimentExpandView;
@@ -243,7 +243,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     } else {
         self.isCreatinNewInProcces = NO;
         self.compactPresentationView.hidden = NO;
-        self.expandedPresentationVIew.hidden = YES;
+        self.expandedPresentationView.hidden = YES;
     }
 }
 
@@ -251,7 +251,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     self.sendMessageExpandView.hidden = NO;
     self.createWalletExpandView.hidden = YES;
     self.compactPresentationView.hidden = YES;
-    self.expandedPresentationVIew.hidden = NO;
+    self.expandedPresentationView.hidden = NO;
     self.adressLabel.text = [self getAdressFromMessage:self.activeConversation.selectedMessage];
     self.amountValueLabel.text = [self getAmountFromMessage:self.activeConversation.selectedMessage];
     self.paymentArimentExpandView.hidden = YES;
@@ -261,7 +261,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 -(void)prepareCreateWallet{
     self.sendMessageExpandView.hidden = YES;
     self.createWalletExpandView.hidden = NO;
-    self.expandedPresentationVIew.hidden = NO;
+    self.expandedPresentationView.hidden = NO;
     self.compactPresentationView.hidden = YES;
     self.paymentArimentExpandView.hidden = YES;
     self.finalizedExpandView.hidden = YES;
@@ -270,7 +270,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 -(void)preparePaymentAgriment{
     self.sendMessageExpandView.hidden = YES;
     self.createWalletExpandView.hidden = YES;
-    self.expandedPresentationVIew.hidden = NO;
+    self.expandedPresentationView.hidden = NO;
     self.compactPresentationView.hidden = YES;
     self.paymentArimentExpandView.hidden = NO;
     self.finalizedExpandView.hidden = YES;
@@ -279,7 +279,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 -(void)prepareFinalized{
     self.sendMessageExpandView.hidden = YES;
     self.createWalletExpandView.hidden = YES;
-    self.expandedPresentationVIew.hidden = NO;
+    self.expandedPresentationView.hidden = NO;
     self.compactPresentationView.hidden = YES;
     self.paymentArimentExpandView.hidden = YES;
     self.finalizedExpandView.hidden = NO;
