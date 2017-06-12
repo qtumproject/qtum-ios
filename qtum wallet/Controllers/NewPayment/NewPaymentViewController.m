@@ -40,7 +40,11 @@
 
 - (IBAction)backbuttonPressed:(id)sender;
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
+
 @end
+
+static NSInteger withTokenOffset = 80;
+static NSInteger withoutTokenOffset = 30;
 
 @implementation NewPaymentViewController
 
@@ -51,18 +55,7 @@
     
     if (self.dictionary) {
         [self qrCodeScanned:self.dictionary];
-    }
-    
-    BOOL isTokensExists = [TokenManager sharedInstance].getAllTokens.count;
-    
-    self.withTokensConstraint.active = isTokensExists;
-    self.withoutTokensConstraint.active =
-    self.tokenButton.hidden =
-    self.tokenDisclousureImage.hidden =
-    self.tokenUnderlineView.hidden = !isTokensExists;
-    self.tokenDisclousureImage.tintColor = customBlueColor();
-    self.tokenTextField.text =  NSLocalizedString(@"QTUM (Default)", @"");
-    self.residueValueLabel.text = self.currentBalance;
+    }    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -72,7 +65,7 @@
         self.addressTextField.text = self.adress;
         self.amountTextField.text = self.amount;
     }
-
+    [self checkActiveToken];
     [self updateControls];
 }
 
@@ -82,12 +75,31 @@
 
 #pragma mark - Private Methods
 
+-(void)checkActiveToken {
+    
+    if (![[TokenManager sharedInstance].getAllActiveTokens containsObject:self.token]) {
+        self.token = nil;
+    }
+}
+
 -(void)updateControls{
     
     double amount = [self.amountTextField.text doubleValue];
     
     self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.balance - amount];
     self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.unconfirmedBalance];
+    
+    BOOL isTokensExists = [TokenManager sharedInstance].getAllActiveTokens.count;
+    
+    self.tokenButton.hidden =
+    self.tokenDisclousureImage.hidden =
+    self.tokenTextField.hidden =
+    self.tokenUnderlineView.hidden = !isTokensExists;
+    self.withoutTokensConstraint.constant = isTokensExists ? withTokenOffset : withoutTokenOffset;
+    self.tokenDisclousureImage.tintColor = customBlueColor();
+    self.tokenTextField.text =  self.token ? self.token.name : NSLocalizedString(@"QTUM (Default)", @"");
+    self.residueValueLabel.text = self.currentBalance;
+    [self.view layoutSubviews];
 }
 
 -(void)payWithWallet {
@@ -261,7 +273,6 @@
 
 - (IBAction)didPressedChoseTokensAction:(id)sender {
     ChoseTokenPaymentViewController* tokenController = (ChoseTokenPaymentViewController*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
-    tokenController.tokens = [[TokenManager sharedInstance] getAllTokens];
     tokenController.delegate = self;
     tokenController.activeToken = self.token;
     [self.navigationController pushViewController:tokenController animated:YES];

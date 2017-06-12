@@ -10,6 +10,7 @@
 #import "HistoryElement.h"
 #import "FXKeychain.h"
 #import "Contract.h"
+#import "ContractManager.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -100,6 +101,12 @@ static NSString* kAddresses = @"kAddress";
     return [self.contracts filteredArrayUsingPredicate:predicate];
 }
 
+- (NSArray <Contract*>*)getAllActiveTokens {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i && isActive == YES",TokenType];
+    return [self.contracts filteredArrayUsingPredicate:predicate];
+}
+
 - (NSArray <Contract*>*)getAllContracts {
     
     return self.contracts;
@@ -186,6 +193,37 @@ static NSString* kAddresses = @"kAddress";
     }
 }
 
+-(BOOL)addNewContractWithContractAddress:(NSString*) contractAddress withAbi:(NSString*) abiStr andWithName:(NSString*) contractName {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",contractAddress];
+    NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
+    
+    if (!filteredArray.count && contractAddress) {
+        
+        Contract* contract = [Contract new];
+        contract.contractAddress = contractAddress;
+        contract.creationDate = [NSDate date];
+        contract.localName = contractName;
+        contract.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+        contract.manager = self;
+        contract.isActive = YES;
+        
+        TemplateModel* template = [[ContractManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+        
+        if (template) {
+            
+            contract.templateModel = template;
+            [self addNewToken:contract];
+            [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+            [self save];
+            [self tokenDidChange:nil];
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 #pragma mark - TokenDelegate
 
 - (void)tokenDidChange:(id)token {
@@ -206,7 +244,7 @@ static NSString* kAddresses = @"kAddress";
         object.balance = [responseObject[@"totalSupply"] floatValue];
         [weakSelf tokenDidChange:object];
     } andFailureHandler:^(NSError *error, NSString *message) {
-        NSLog(@"Error -> %@", error);
+        NSLog(@"Error -> %@", error);                            
     }];
 }
 
@@ -223,17 +261,28 @@ static NSString* kAddresses = @"kAddress";
     NSLog(@"complete ->%@",complete);
 }
 
--(void)startObservingForSpendable{
+-(void)startObservingForSpendable:(id <Spendable>) spendable {
+    [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:spendable withHandler:nil];
+}
+
+-(void)stopObservingForSpendable:(id <Spendable>) spendable {
+    [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:spendable];
+}
+
+-(void)startObservingForAllSpendable {
     
-    for (Contract* token in self.contracts) {
+    NSArray <Contract*>* activeContract = [self getAllActiveTokens];
+    for (Contract* token in activeContract) {
         [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
     }
 }
 
--(void)stopObservingForSpendable{
-    //empty because wallet manager with stopin disconect from socket and this will also remove bserving from tokens too
+-(void)stopObservingForAllSpendable {
+    NSArray <Contract*>* activeContract = [self getAllActiveTokens];
+    for (Contract* token in activeContract) {
+        [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:token];
+    }
 }
-
 
 -(void)loadSpendableObjects {
     [self load];

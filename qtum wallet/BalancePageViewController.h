@@ -16,6 +16,8 @@
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> coordinatorDelegate;
 
 - (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;
+- (void)scrollToRootIfNeededAnimated:(BOOL)animated;
+- (void)setScrollingToTokensAvailableIfNeeded;
 - (void)setScrollEnable:(BOOL)enable;
 
 @end

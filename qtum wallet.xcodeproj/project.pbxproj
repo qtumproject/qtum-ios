@@ -121,6 +121,7 @@
 		B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */; };
 		B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */; };
 		B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5ED1E16403B004D231B /* WalletNameViewController.m */; };
+		B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */; };
 		B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */; };
 		B3C08B151ED3382300713B15 /* keccak.c in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B141ED3382300713B15 /* keccak.c */; };
 		B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */; };
@@ -540,6 +541,8 @@
 		B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-BOLD.OTF"; sourceTree = SOURCE_ROOT; };
 		B386F5EC1E16403B004D231B /* WalletNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletNameViewController.h; sourceTree = "<group>"; };
 		B386F5ED1E16403B004D231B /* WalletNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletNameViewController.m; sourceTree = "<group>"; };
+		B387AB381EEAD8C5001D2FF1 /* WatchContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewController.h; sourceTree = "<group>"; };
+		B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchContractViewController.m; sourceTree = "<group>"; };
 		B3C08B091ED2FE3000713B15 /* keccak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keccak.h; sourceTree = "<group>"; };
 		B3C08B0A1ED2FE3000713B15 /* NSString+SHA3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SHA3.h"; sourceTree = "<group>"; };
 		B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHA3.m"; sourceTree = "<group>"; };
@@ -1252,6 +1255,15 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		B387AB371EEAD8A6001D2FF1 /* Watch Contract */ = {
+			isa = PBXGroup;
+			children = (
+				B387AB381EEAD8C5001D2FF1 /* WatchContractViewController.h */,
+				B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */,
+			);
+			name = "Watch Contract";
+			sourceTree = "<group>";
+		};
 		B3C08B221ED45BCD00713B15 /* Tokens Templates */ = {
 			isa = PBXGroup;
 			children = (
@@ -1299,6 +1311,7 @@
 			isa = PBXGroup;
 			children = (
 				E72631221EEAA7EC005AED8F /* Views */,
+				B387AB371EEAD8A6001D2FF1 /* Watch Contract */,
 				B3D555EC1EDF4DA400CBDFCF /* Cells */,
 				B3F06CF51E69879D006341F7 /* ContractCoordinator.h */,
 				B3F06CF61E69879D006341F7 /* ContractCoordinator.m */,
@@ -2081,7 +2094,7 @@
 					E7FD36371DC4D07E00748177 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = Q7Q43CUMWT;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2317,6 +2330,7 @@
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractManager.m in Sources */,
+				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
 				B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */,
 				E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */,
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
@@ -2895,6 +2909,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "529b4df7-24ce-4773-aa63-a2b74de1d79a";
+				PROVISIONING_PROFILE_SPECIFIER = QTUMDev;
 			};
 			name = Debug;
 		};
@@ -2920,6 +2936,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "529b4df7-24ce-4773-aa63-a2b74de1d79a";
+				PROVISIONING_PROFILE_SPECIFIER = QTUMDev;
 			};
 			name = Release;
 		};

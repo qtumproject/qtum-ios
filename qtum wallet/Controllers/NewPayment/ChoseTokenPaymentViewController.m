@@ -19,6 +19,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tokens = [[TokenManager sharedInstance] getAllActiveTokens];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenDidChange) name:kTokenDidChange object:nil];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Private Methods
+
+-(void)tokenDidChange {
+    self.tokens = [[TokenManager sharedInstance] getAllActiveTokens];
+    if (!self.tokens.count) {
+        [self.navigationController popViewControllerAnimated:NO];
+    } else {
+        __weak __typeof(self)weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.tableView reloadData];
+        });
+    }
+}
+
+-(void)updateTable {
+    
+    __weak __typeof(self)weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        weakSelf.tokens = [[TokenManager sharedInstance] getAllActiveTokens];
+        [weakSelf.tableView reloadData];
+    });
 }
 
 #pragma mark - UITableViewDelegate

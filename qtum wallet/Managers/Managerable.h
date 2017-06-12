@@ -21,8 +21,10 @@
 -(void)updateHistoryOfSpendableObject:(id <Spendable>) object withHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page;
 -(void)loadSpendableObjects;
 -(void)saveSpendableObjects;
--(void)startObservingForSpendable;
--(void)stopObservingForSpendable;
+-(void)startObservingForSpendable:(id <Spendable>) spendable;
+-(void)stopObservingForSpendable:(id <Spendable>) spendable;
+-(void)startObservingForAllSpendable;
+-(void)stopObservingForAllSpendable;
 -(void)clear;
 
 @end

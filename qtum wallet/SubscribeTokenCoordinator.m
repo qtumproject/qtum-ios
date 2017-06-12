@@ -30,6 +30,18 @@
     return self;
 }
 
+#pragma mark - Private Methods
+
+-(NSArray <Contract*>*)sortingContractsByDate:(NSArray <Contract*>*) contracts {
+    NSArray <Contract*>* sortedArray;
+    sortedArray = [contracts sortedArrayUsingComparator:^NSComparisonResult(Contract* a, Contract* b) {
+        NSDate *first = [(Contract*)a creationDate];
+        NSDate *second = [(Contract*)b creationDate];
+        return [first compare:second];
+    }];
+    return sortedArray;
+}
+
 #pragma mark - Coordinatorable
 
 -(void)start {
@@ -38,7 +50,8 @@
     [self.navigationController pushViewController:controller animated:YES];
     controller.delegate = self;
     controller.delegateDataSource = [SubscribeTokenDataSourceDelegate new];
-    controller.delegateDataSource.tokensArray = (NSArray <Spendable>*)[[TokenManager sharedInstance] getAllTokens];
+    controller.tokensArray = [self sortingContractsByDate:[[TokenManager sharedInstance] getAllTokens]];
+    controller.delegateDataSource.delegate = controller;
     self.subscribeViewController = controller;
 }
 
@@ -62,6 +75,17 @@
     QRCodeViewController* controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewControllerForSubscribe];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)didSelectContract:(Contract*) contract {
+    
+    contract.isActive = !contract.isActive;
+    if (contract.isActive) {
+        [[TokenManager sharedInstance] startObservingForSpendable:contract];
+    } else {
+        [[TokenManager sharedInstance] stopObservingForSpendable:contract];
+    }
+    [[TokenManager sharedInstance] spendableDidChange:contract];
 }
 
 #pragma mark - QRCodeViewControllerDelegate

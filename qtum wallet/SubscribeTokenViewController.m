@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray <Contract*>* filteredTokensArray;
+
 
 @end
 
@@ -25,7 +27,12 @@
     [super viewDidLoad];
     [self configTableView];
     [self configSearchBar];
-    [self.tableView reloadData];
+    [self updateTable];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable) name:kTokenDidChange object:nil];
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Configuration
@@ -33,6 +40,7 @@
 -(void)configTableView{
     self.tableView.dataSource = self.delegateDataSource;
     self.tableView.delegate = self.delegateDataSource;
+    self.delegateDataSource.tokensArray = self.tokensArray;
 }
 
 -(void)configSearchBar{
@@ -43,6 +51,23 @@
     [self.searchBar setImage:[UIImage imageNamed: @"Icon-search"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
 }
 
+#pragma mark - Private Methods
+
+-(void)updateTable{
+    __weak __typeof(self)weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.tableView reloadData];
+    });
+}
+
+-(NSArray <Contract*>*)filteringContractsName:(NSArray <Contract*>*) contracts containsText:(NSString*) containtsText {
+    if (containtsText.length > 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name BEGINSWITH %@",containtsText];
+        return [contracts filteredArrayUsingPredicate:predicate];
+    } else {
+        return contracts;
+    }
+}
 
 #pragma mark - Accesers 
 
@@ -53,5 +78,15 @@
 //    [self.delegate didAddNewPressed];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectContract:(Contract *) contract {
+    [self.delegate didSelectContract:contract];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    self.delegateDataSource.tokensArray = [self filteringContractsName:[self.tokensArray copy] containsText:searchText];
+    [self updateTable];
+}
 
 @end
