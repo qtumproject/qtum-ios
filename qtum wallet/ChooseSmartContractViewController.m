@@ -22,7 +22,7 @@
     
     [super viewDidLoad];
     
-    self.contractTypes = @[NSLocalizedString(@"Crate Contract", @""),NSLocalizedString(@"My Contracts", @""),NSLocalizedString(@"Contacts Store", @""),NSLocalizedString(@"Watch Contract", @"")];
+    self.contractTypes = @[NSLocalizedString(@"Crate Contract", @""),NSLocalizedString(@"My Contracts", @""),NSLocalizedString(@"Contacts Store", @""),NSLocalizedString(@"Watch Contract", @""), NSLocalizedString(@"Restore Contract", @"")];
     [self.tableView reloadData];
 }
 
@@ -49,6 +49,9 @@
     } else if (indexPath.row == 3) {
         
         [self.delegate didSelectWatchContracts];
+    } else if (indexPath.row == 4) {
+        
+        [self.delegate didSelectRestoreContract];
     }
 }
 
@@ -92,6 +95,8 @@
     } else if (indexPath.row == 3) {
         
         cell.image.image = [UIImage imageNamed:@"ic-token-subscribe"];
+    } else if (indexPath.row == 4) {
+        cell.image.image = [UIImage imageNamed:@"ic-contract_restore"];
     }
     
     return cell;

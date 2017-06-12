@@ -47,6 +47,7 @@
 #import "ErrorPopUpViewController.h"
 #import "LoaderPopUpViewController.h"
 #import "WatchContractViewController.h"
+#import "RestoreContractsViewController.h"
 
 @implementation ControllersFactory
 
@@ -226,6 +227,11 @@
 
 -(WatchContractViewController*)createWatchContractViewController{
     WatchContractViewController* controller = (WatchContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
+    return controller;
+}
+
+-(RestoreContractsViewController*)createRestoreContractViewController{
+    RestoreContractsViewController* controller = (RestoreContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContracts"];
     return controller;
 }
 
