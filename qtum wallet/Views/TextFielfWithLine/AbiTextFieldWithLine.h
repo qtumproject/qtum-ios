@@ -27,6 +27,6 @@
 -(instancetype)initWithFrame:(CGRect)frame andInterfaceItem:(AbiinterfaceInput*) item;
 
 @property (weak, nonatomic) id <AbiTextFieldWithLineDelegate> customDelegate;
-@property (strong,nonatomic, readonly)AbiinterfaceInput* item;
+@property (strong, nonatomic) AbiinterfaceInput* item;
 
 @end

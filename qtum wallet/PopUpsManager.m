@@ -97,7 +97,7 @@
 
 - (void)dismissLoader {
     if ([self.currentPopUp isKindOfClass:[LoaderPopUpViewController class]]) {
-        [self hideCurrentPopUp:YES completion:nil];
+        [self hideCurrentPopUp:NO completion:nil];
     }
 }
 

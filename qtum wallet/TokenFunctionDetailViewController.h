@@ -11,12 +11,13 @@
 #import "ContractCoordinator.h"
 @class Contract;
 
-@interface TokenFunctionDetailViewController : BaseViewController
+@interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController>
 
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 @property (strong,nonatomic) AbiinterfaceItem* function;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak,nonatomic) Contract* token;
+@property (assign,nonatomic) UIEdgeInsets originInsets;
 
 -(void)showResultViewWithOutputs:(NSArray*) outputs;
 

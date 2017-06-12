@@ -165,6 +165,9 @@
 		E71AF24E1E0178EB0068595B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
 		E71AF2511E017D250068595B /* WordsArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2501E017D250068595B /* WordsArray.m */; };
 		E71AF2551E018F6A0068595B /* WalletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2541E018F6A0068595B /* WalletManager.m */; };
+		E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72631231EEAA806005AED8F /* FieldsViews.xib */; };
+		E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72631261EEAA9A7005AED8F /* SwitchParameterView.m */; };
+		E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72631291EEAAC5B005AED8F /* TextFieldParameterView.m */; };
 		E727F1781E02749D0080E79D /* Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = E727F1771E02749D0080E79D /* Wallet.m */; };
 		E730AB581EE6A5D100132711 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E730AB561EE6A5D100132711 /* Interface.storyboard */; };
 		E730AB5A1EE6A5D100132711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E730AB591EE6A5D100132711 /* Assets.xcassets */; };
@@ -620,6 +623,11 @@
 		E71AF2501E017D250068595B /* WordsArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsArray.m; sourceTree = "<group>"; };
 		E71AF2531E018F6A0068595B /* WalletManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletManager.h; sourceTree = "<group>"; };
 		E71AF2541E018F6A0068595B /* WalletManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletManager.m; sourceTree = "<group>"; };
+		E72631231EEAA806005AED8F /* FieldsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldsViews.xib; sourceTree = "<group>"; };
+		E72631251EEAA9A7005AED8F /* SwitchParameterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchParameterView.h; sourceTree = "<group>"; };
+		E72631261EEAA9A7005AED8F /* SwitchParameterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchParameterView.m; sourceTree = "<group>"; };
+		E72631281EEAAC5B005AED8F /* TextFieldParameterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldParameterView.h; sourceTree = "<group>"; };
+		E72631291EEAAC5B005AED8F /* TextFieldParameterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldParameterView.m; sourceTree = "<group>"; };
 		E727F1761E02749D0080E79D /* Wallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wallet.h; path = ../Model/Wallet.h; sourceTree = "<group>"; };
 		E727F1771E02749D0080E79D /* Wallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Wallet.m; path = ../Model/Wallet.m; sourceTree = "<group>"; };
 		E730AB541EE6A5D100132711 /* QTUM Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QTUM Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1302,6 +1310,7 @@
 		B3F06D0B1E69B55D006341F7 /* Contract */ = {
 			isa = PBXGroup;
 			children = (
+				E72631221EEAA7EC005AED8F /* Views */,
 				B387AB371EEAD8A6001D2FF1 /* Watch Contract */,
 				B3D555EC1EDF4DA400CBDFCF /* Cells */,
 				B3F06CF51E69879D006341F7 /* ContractCoordinator.h */,
@@ -1342,6 +1351,18 @@
 				E71AF2461E0177910068595B /* Info.plist */,
 			);
 			path = "qtum walletTests";
+			sourceTree = "<group>";
+		};
+		E72631221EEAA7EC005AED8F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E72631251EEAA9A7005AED8F /* SwitchParameterView.h */,
+				E72631261EEAA9A7005AED8F /* SwitchParameterView.m */,
+				E72631231EEAA806005AED8F /* FieldsViews.xib */,
+				E72631281EEAAC5B005AED8F /* TextFieldParameterView.h */,
+				E72631291EEAAC5B005AED8F /* TextFieldParameterView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		E730AB551EE6A5D100132711 /* QTUM Watch */ = {
@@ -2152,6 +2173,7 @@
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */,
+				E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */,
 				E7FA0CBB1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard in Resources */,
 				B3E1591B1ED5A87D00D70A87 /* TokenDetails.storyboard in Resources */,
 				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
@@ -2342,6 +2364,7 @@
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
+				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */,
@@ -2385,6 +2408,7 @@
 				E73CF6C81EE2CF970044DF78 /* ErrorPopUpViewController.m in Sources */,
 				E73D36FE1ECF1636009173BD /* AddressesTokenTableViewCell.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
+				E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
