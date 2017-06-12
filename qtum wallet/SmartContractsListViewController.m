@@ -9,7 +9,7 @@
 #import "SmartContractsListViewController.h"
 #import "SmartContractListItemCell.h"
 
-@interface SmartContractsListViewController ()
+@interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -30,17 +30,21 @@
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
     
     SmartContractListItemCell* cell = (SmartContractListItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.typeIdentifire.textColor =
+    cell.typeIdentifire.backgroundColor =
     cell.creationDate.textColor =
     cell.contractName.textColor = customBlackColor();
+    
+    cell.typeIdentifire.textColor = customRedColor();
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SmartContractListItemCell* cell = (SmartContractListItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.typeIdentifire.textColor =
+    cell.typeIdentifire.backgroundColor =
     cell.creationDate.textColor =
     cell.contractName.textColor = customBlueColor();
+    
+    cell.typeIdentifire.textColor = customBlackColor();
 }
 
 #pragma mark - UITableViewDataSource
@@ -55,9 +59,22 @@
     Contract* contract = self.contracts[indexPath.row];
     SmartContractListItemCell* cell = [tableView dequeueReusableCellWithIdentifier:smartContractListItemCellIdentifire];
     cell.contractName.text = contract.localName;
-    cell.typeIdentifire.text = contract.templateModel.templateTypeString;
+    cell.typeIdentifire.text = [contract.templateModel.templateTypeString uppercaseString];
     cell.creationDate.text = contract.creationDateString;
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 31;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 45;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"ContractsHeaderView"];
+    return  headerCell;
 }
 
 - (IBAction)didPressedBackAction:(id)sender {

@@ -10,26 +10,41 @@
 
 @interface AbiTextFieldWithLine () <UITextFieldDelegate>
 
-@property (strong,nonatomic)AbiinterfaceInput* item;
 
 @end
 
 @implementation AbiTextFieldWithLine
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
 -(instancetype)initWithFrame:(CGRect)frame andInterfaceItem:(AbiinterfaceInput*) item {
     
     self = [super initWithFrame:frame];
     if (self) {
-        self.keyboardType = (item.type == UInt256Type || item.type == UInt8Type) ? UIKeyboardTypeDecimalPad : UIKeyboardTypeDefault;
-        self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:item.name attributes:@{NSForegroundColorAttributeName: customBlueColor()}];
-        [self setTintColor:customBlueColor()];
-        self.textColor = customBlueColor();
-        self.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
-        self.currentHeight = 1;
-        _item = item;
-        self.delegate = self;
+        [self setup];
+        [self setItem:item];
     }
     return self;
+}
+
+- (void)setup {
+    [self setTintColor:customBlueColor()];
+    self.textColor = customBlueColor();
+    self.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
+    self.currentHeight = 1;
+    self.delegate = self;
+}
+
+- (void)setItem:(AbiinterfaceInput *)item {
+    self.keyboardType = (item.type == UInt256Type || item.type == UInt8Type) ? UIKeyboardTypeDecimalPad : UIKeyboardTypeDefault;
+    self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:item.name attributes:@{NSForegroundColorAttributeName: customBlueColor()}];
+    _item = item;
 }
 
 - (BOOL)shouldChangeTextInRange:(UITextRange *)range replacementText:(NSString *)text {

@@ -108,7 +108,7 @@
         }
     } else if(indexPath.section == 2){
         if (indexPath.row == 0) {
-            image = [UIImage imageNamed:@"ic-token"];
+            image = [UIImage imageNamed:@"ic-smartContract"];
             text = NSLocalizedString(@"Smart Contracts", "");
         } else if (indexPath.row == 1) {
             
