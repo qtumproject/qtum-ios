@@ -35,12 +35,14 @@
 
 
 @property (copy, nonatomic)NSString* contractAddress;
+@property (copy, nonatomic)NSString* contractCreationAddressAddress;
 @property (strong, nonatomic)NSArray* adresses;
 @property (strong, nonatomic)NSString* decimals;
 @property (strong, nonatomic)NSString* totalSupply;
 @property (strong, nonatomic) TemplateModel* templateModel;
 @property (strong, nonatomic) NSDate* creationDate;
 @property (copy, nonatomic, readonly) NSString* creationDateString;
+@property (strong, nonatomic) NSDictionary* addressBalanceDictionary;
 
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 

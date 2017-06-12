@@ -92,10 +92,21 @@ static NSString* op_exec = @"c1";
 
     AbiinterfaceItem* transferMethod = [[ContractManager sharedInstance] getTokenStandartTransferMethodInterface];
     NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
-    
-    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
-        completion(error,transaction,hashTransaction);
+    NSString* __block addressWithAmountValue;
+    [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
+        if (balance.floatValue > amount.floatValue) {
+            addressWithAmountValue = address;
+            *stop = YES;
+        }
     }];
+    
+    if (addressWithAmountValue) {
+        [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:addressWithAmountValue toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+            completion(error,transaction,hashTransaction);
+        }];
+    } else {
+        completion([NSError new],nil,nil);
+    }
 }
 
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*>*) walletKeys

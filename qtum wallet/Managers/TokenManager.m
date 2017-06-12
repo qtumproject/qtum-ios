@@ -131,6 +131,23 @@ static NSString* kAddresses = @"kAddress";
     }
 }
 
+- (void)updateTokenWithContractAddress:(NSString*) address withAddressBalanceDictionary:(NSDictionary*) addressBalance {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
+    NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
+    Contract* token = filteredArray[0];
+    if (token) {
+        NSMutableDictionary* newAddressBalance = token.addressBalanceDictionary ? [token.addressBalanceDictionary mutableCopy] : @{}.mutableCopy;
+        for (NSDictionary* dict in addressBalance[@"balances"]) {
+            
+            NSString* addressKey = dict[@"address"];
+            [newAddressBalance setObject:@([dict[@"balance"] floatValue]) forKey:addressKey];
+        }
+        token.addressBalanceDictionary = [newAddressBalance copy];
+        [self tokenDidChange:token];
+    }
+}
+
 - (void)removeAllTokens{
     
     [self.contracts removeAllObjects];

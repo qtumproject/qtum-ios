@@ -241,7 +241,7 @@
     [self showWatchContract];
 }
 
--(void)didSelectWatchTokenss {
+-(void)didSelectWatchTokens {
     [self showWatchTokens];
 }
 

@@ -18,6 +18,7 @@ extern NSString *const kTokenDidChange;
 - (NSArray <Contract*>*)getAllActiveTokens;
 - (void)addNewToken:(Contract*) token;
 - (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance;
+- (void)updateTokenWithContractAddress:(NSString*) address withAddressBalanceDictionary:(NSDictionary*) addressBalance;
 - (void)checkSmartContract:(HistoryElement*) item;
 - (void)addNewTokenWithContractAddress:(NSString*) contractAddress;
 - (void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(TemplateModel*)templateModel;

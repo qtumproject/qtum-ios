@@ -19,7 +19,8 @@
     uint32_t vinIndex = 0;
     [hashData appendBytes:&vinIndex length:1];
     hashData = [[hashData BTCHash160] mutableCopy];
-    self.adresses = addresses;
+    self.contractCreationAddressAddress = addresses.firstObject;
+    self.adresses =  [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
     self.contractAddress = [NSString hexadecimalString:hashData];
     self.localName = [self.contractAddress substringToIndex:6];
     self.templateModel = templateModel;
@@ -60,6 +61,16 @@
     return self.contractAddress;
 }
 
+-(CGFloat)balance {
+    
+    NSArray* values = self.addressBalanceDictionary.allValues;
+    CGFloat balance = 0;
+    for (NSNumber* balanceValue in values) {
+        balance += balanceValue.floatValue;
+    }
+    return balance;
+}
+
 #pragma mark - Spendable
 
 -(void)updateBalanceWithHandler:(void (^)(BOOL))complete {
@@ -90,6 +101,8 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
     [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.contractCreationAddressAddress forKey:@"contractCreationAddressAddress"];
+    [aCoder encodeObject:self.addressBalanceDictionary forKey:@"addressBalanceDictionary"];
     [aCoder encodeObject:self.localName forKey:@"localName"];
     [aCoder encodeObject:self.creationDate forKey:@"creationDate"];
     [aCoder encodeObject:self.templateModel forKey:@"templateModel"];
@@ -106,6 +119,8 @@
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
     
     NSString *name = [aDecoder decodeObjectForKey:@"name"];
+    NSString *contractCreationAddressAddress = [aDecoder decodeObjectForKey:@"contractCreationAddressAddress"];
+    NSDictionary* addressBalanceDictionary = [aDecoder decodeObjectForKey:@"addressBalanceDictionary"];
     NSString *localName = [aDecoder decodeObjectForKey:@"localName"];
     NSDate *creationDate = [aDecoder decodeObjectForKey:@"creationDate"];
     TemplateModel *templateModel = [aDecoder decodeObjectForKey:@"templateModel"];
@@ -121,6 +136,8 @@
     self = [super init];
     if (self) {
         self.name = name;
+        self.addressBalanceDictionary = addressBalanceDictionary;
+        self.contractCreationAddressAddress = contractCreationAddressAddress;
         self.localName = localName;
         self.creationDate = creationDate;
         self.templateModel = templateModel;
