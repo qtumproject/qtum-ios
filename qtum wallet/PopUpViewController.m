@@ -8,6 +8,8 @@
 
 #import "PopUpViewController.h"
 
+BOOL ShowInUIWindow = YES;
+
 @interface PopUpViewController ()
 
 @property (nonatomic) PopUpContent *content;
@@ -24,12 +26,21 @@
 {
     if (controller == nil) return;
     
-    [controller presentViewController:self animated:animated completion:completion];
+    if (ShowInUIWindow) {
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        [window addSubview:self.view];
+    }else{
+        [controller presentViewController:self animated:animated completion:completion];
+    }
 }
 
 - (void)hide:(BOOL)animated completion:(void (^)(void))completion
 {
-    [self dismissViewControllerAnimated:animated completion:completion];
+    if (ShowInUIWindow) {
+        [self.view removeFromSuperview];
+    }else{
+        [self dismissViewControllerAnimated:animated completion:completion];
+    }
 }
 
 - (void)setContent:(PopUpContent *)content{
