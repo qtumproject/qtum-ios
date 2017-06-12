@@ -24,6 +24,9 @@ extern NSString *const kTokenDidChange;
 - (BOOL)addNewContractWithContractAddress:(NSString*) contractAddress
                                   withAbi:(NSString*) abiStr
                               andWithName:(NSString*) contractName;
+- (BOOL)addNewTokenWithContractAddress:(NSString*) contractAddress
+                                  withAbi:(NSString*) abiStr
+                              andWithName:(NSString*) contractName;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

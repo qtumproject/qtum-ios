@@ -47,6 +47,7 @@
 #import "ErrorPopUpViewController.h"
 #import "LoaderPopUpViewController.h"
 #import "WatchContractViewController.h"
+#import "WatchTokensViewController.h"
 
 @implementation ControllersFactory
 
@@ -226,6 +227,12 @@
 
 -(WatchContractViewController*)createWatchContractViewController{
     WatchContractViewController* controller = (WatchContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
+    return controller;
+}
+
+
+-(WatchTokensViewController*)createWatchTokensViewController{
+    WatchTokensViewController* controller = (WatchTokensViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
     return controller;
 }
 

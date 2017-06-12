@@ -24,6 +24,7 @@
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "WatchContractViewController.h"
+#import "WatchTokensViewController.h"
 
 
 @interface ContractCoordinator ()
@@ -88,11 +89,12 @@
 -(void)showWatchContract {
     WatchContractViewController* controller = (WatchContractViewController*)[[ControllersFactory sharedInstance] createWatchContractViewController];
     controller.delegate = self;
-//
-//    NSArray *sortedContracts = [[[TokenManager sharedInstance] getAllContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
-//        return [t1.creationDate compare:t2.creationDate];
-//    }];
-//    controller.contracts = sortedContracts;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)showWatchTokens {
+    WatchTokensViewController* controller = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
+    controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -237,6 +239,10 @@
 
 -(void)didSelectWatchContracts {
     [self showWatchContract];
+}
+
+-(void)didSelectWatchTokenss {
+    [self showWatchTokens];
 }
 
 -(void)didPressedQuit {

@@ -40,6 +40,7 @@
 @class InformationPopUpViewController;
 @class ConfirmPopUpViewController;
 @class WatchContractViewController;
+@class WatchTokensViewController;
 @class LoaderPopUpViewController;
 
 @interface ControllersFactory : NSObject
@@ -83,6 +84,7 @@
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
 -(TemplateTokenViewController*)createTemplateTokenViewController;
 -(WatchContractViewController*)createWatchContractViewController;
+-(WatchTokensViewController*)createWatchTokensViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
