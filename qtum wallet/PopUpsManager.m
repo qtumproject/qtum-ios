@@ -16,7 +16,7 @@
 
 @interface PopUpsManager() <PopUpViewControllerDelegate>
 
-@property (nonatomic, weak) PopUpViewController *currentPopUp;
+@property (nonatomic) PopUpViewController *currentPopUp;
 
 @end
 
