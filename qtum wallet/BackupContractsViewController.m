@@ -7,6 +7,7 @@
 //
 
 #import "BackupContractsViewController.h"
+#import "BackupFileManager.h"
 
 @interface BackupContractsViewController () <UIDocumentMenuDelegate, UIDocumentPickerDelegate, PopUpViewControllerDelegate>
 
@@ -33,6 +34,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [BackupFileManager getBackupFile:^(NSDictionary *file) {
+        NSLog(@"%@",file);
+    }];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self fileWasCreatedWithURL:nil andSize:1024];
     });

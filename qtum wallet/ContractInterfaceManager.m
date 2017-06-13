@@ -1,12 +1,12 @@
 //
-//  ContractManager.m
+//  ContractInterfaceManager.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 16.05.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "ContractManager.h"
+#import "ContractInterfaceManager.h"
 #import "InterfaceInputFormModel.h"
 #import "ContractFileManager.h"
 #import "ContractArgumentsInterpretator.h"
@@ -15,11 +15,11 @@
 #import "NSString+SHA3.h"
 #import "NSString+Extension.h"
 
-@implementation ContractManager
+@implementation ContractInterfaceManager
 
 + (instancetype)sharedInstance {
     
-    static ContractManager *instance;
+    static ContractInterfaceManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[super alloc] initUniqueInstance];

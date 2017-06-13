@@ -11,7 +11,7 @@
 #import "SubscribeTokenDataSourceDelegate.h"
 #import "AddNewTokensViewController.h"
 #import "QRCodeViewController.h"
-#import "ContractManager.h"
+#import "ContractInterfaceManager.h"
 
 @interface SubscribeTokenCoordinator () <QRCodeViewControllerDelegate>
 
@@ -50,7 +50,7 @@
     [self.navigationController pushViewController:controller animated:YES];
     controller.delegate = self;
     controller.delegateDataSource = [SubscribeTokenDataSourceDelegate new];
-    controller.tokensArray = [self sortingContractsByDate:[[TokenManager sharedInstance] getAllTokens]];
+    controller.tokensArray = [self sortingContractsByDate:[[ContractManager sharedInstance] getAllTokens]];
     controller.delegateDataSource.delegate = controller;
     self.subscribeViewController = controller;
 }
@@ -81,11 +81,11 @@
     
     contract.isActive = !contract.isActive;
     if (contract.isActive) {
-        [[TokenManager sharedInstance] startObservingForSpendable:contract];
+        [[ContractManager sharedInstance] startObservingForSpendable:contract];
     } else {
-        [[TokenManager sharedInstance] stopObservingForSpendable:contract];
+        [[ContractManager sharedInstance] stopObservingForSpendable:contract];
     }
-    [[TokenManager sharedInstance] spendableDidChange:contract];
+    [[ContractManager sharedInstance] spendableDidChange:contract];
 }
 
 #pragma mark - QRCodeViewControllerDelegate
@@ -103,14 +103,14 @@
     [self.navigationController popViewControllerAnimated:YES];
     if ([dictionary[EXPORT_CONTRACTS_TOKENS_KEY] isKindOfClass:[NSArray class]]) {
         for (NSString* contractAddress in dictionary[EXPORT_CONTRACTS_TOKENS_KEY]) {
-            [[TokenManager sharedInstance] addNewTokenWithContractAddress:contractAddress];
+            [[ContractManager sharedInstance] addNewTokenWithContractAddress:contractAddress];
         }
     }
 }
 
 -(void)didAddNewTokenWithAddress:(NSString*) address{
     if (address) {
-        [[TokenManager sharedInstance] addNewTokenWithContractAddress:address];
+        [[ContractManager sharedInstance] addNewTokenWithContractAddress:address];
     }
 }
 @end

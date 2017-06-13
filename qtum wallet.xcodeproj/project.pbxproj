@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
-		B30BAE2E1E9E3AA600CA795F /* TokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BAE2D1E9E3AA600CA795F /* TokenManager.m */; };
+		B30BAE2E1E9E3AA600CA795F /* ContractManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BAE2D1E9E3AA600CA795F /* ContractManager.m */; };
 		B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31CF71D1E124A25000BCF41 /* HistoryViewController.m */; };
 		B3210D141E00052900365FB6 /* GradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D131E00052900365FB6 /* GradientLayer.m */; };
 		B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D191E00142100365FB6 /* ViewWithGradientPoints.m */; };
@@ -27,7 +27,7 @@
 		B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */; };
 		B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */; };
 		B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CA1ECCC2130081260A /* ResultTokenInputsModel.m */; };
-		B32B32CE1ECCC2330081260A /* ContractManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CD1ECCC2330081260A /* ContractManager.m */; };
+		B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CD1ECCC2330081260A /* ContractInterfaceManager.m */; };
 		B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32D01ECCC2AC0081260A /* AbiinterfaceEntries.m */; };
 		B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32D21ECCC2AC0081260A /* AbiinterfaceInput.m */; };
 		B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32D41ECCC2AC0081260A /* AbiinterfaceItem.m */; };
@@ -123,6 +123,8 @@
 		B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5ED1E16403B004D231B /* WalletNameViewController.m */; };
 		B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */; };
 		B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */; };
+		B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB401EF04474001D2FF1 /* BackupFileManager.m */; };
+		B387AB441EF04911001D2FF1 /* TemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB431EF04911001D2FF1 /* TemplateManager.m */; };
 		B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */; };
 		B3C08B151ED3382300713B15 /* keccak.c in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B141ED3382300713B15 /* keccak.c */; };
 		B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */; };
@@ -323,8 +325,8 @@
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
-		B30BAE2C1E9E3AA600CA795F /* TokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenManager.h; sourceTree = "<group>"; };
-		B30BAE2D1E9E3AA600CA795F /* TokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenManager.m; sourceTree = "<group>"; };
+		B30BAE2C1E9E3AA600CA795F /* ContractManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractManager.h; sourceTree = "<group>"; };
+		B30BAE2D1E9E3AA600CA795F /* ContractManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractManager.m; sourceTree = "<group>"; };
 		B31CF71C1E124A25000BCF41 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		B31CF71D1E124A25000BCF41 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		B3210D121E00052900365FB6 /* GradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientLayer.h; sourceTree = "<group>"; };
@@ -358,8 +360,8 @@
 		B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceInputFormModel.m; sourceTree = "<group>"; };
 		B32B32C91ECCC2130081260A /* ResultTokenInputsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultTokenInputsModel.h; sourceTree = "<group>"; };
 		B32B32CA1ECCC2130081260A /* ResultTokenInputsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultTokenInputsModel.m; sourceTree = "<group>"; };
-		B32B32CC1ECCC2330081260A /* ContractManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractManager.h; sourceTree = "<group>"; };
-		B32B32CD1ECCC2330081260A /* ContractManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractManager.m; sourceTree = "<group>"; };
+		B32B32CC1ECCC2330081260A /* ContractInterfaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractInterfaceManager.h; sourceTree = "<group>"; };
+		B32B32CD1ECCC2330081260A /* ContractInterfaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractInterfaceManager.m; sourceTree = "<group>"; };
 		B32B32CF1ECCC2AC0081260A /* AbiinterfaceEntries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiinterfaceEntries.h; sourceTree = "<group>"; };
 		B32B32D01ECCC2AC0081260A /* AbiinterfaceEntries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiinterfaceEntries.m; sourceTree = "<group>"; };
 		B32B32D11ECCC2AC0081260A /* AbiinterfaceInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiinterfaceInput.h; sourceTree = "<group>"; };
@@ -553,6 +555,10 @@
 		B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchContractViewController.m; sourceTree = "<group>"; };
 		B387AB3C1EEE85D2001D2FF1 /* WatchTokensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchTokensViewController.h; sourceTree = "<group>"; };
 		B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchTokensViewController.m; sourceTree = "<group>"; };
+		B387AB3F1EF04474001D2FF1 /* BackupFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupFileManager.h; sourceTree = "<group>"; };
+		B387AB401EF04474001D2FF1 /* BackupFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupFileManager.m; sourceTree = "<group>"; };
+		B387AB421EF04911001D2FF1 /* TemplateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateManager.h; sourceTree = "<group>"; };
+		B387AB431EF04911001D2FF1 /* TemplateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateManager.m; sourceTree = "<group>"; };
 		B3C08B091ED2FE3000713B15 /* keccak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keccak.h; sourceTree = "<group>"; };
 		B3C08B0A1ED2FE3000713B15 /* NSString+SHA3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SHA3.h"; sourceTree = "<group>"; };
 		B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHA3.m"; sourceTree = "<group>"; };
@@ -1149,8 +1155,8 @@
 		B365CA841EAA38BA0040A163 /* Token */ = {
 			isa = PBXGroup;
 			children = (
-				B30BAE2C1E9E3AA600CA795F /* TokenManager.h */,
-				B30BAE2D1E9E3AA600CA795F /* TokenManager.m */,
+				B30BAE2C1E9E3AA600CA795F /* ContractManager.h */,
+				B30BAE2D1E9E3AA600CA795F /* ContractManager.m */,
 				B365CA611EA4ED540040A163 /* Contract.h */,
 				B365CA621EA4ED540040A163 /* Contract.m */,
 			);
@@ -1810,12 +1816,16 @@
 			isa = PBXGroup;
 			children = (
 				E7FA0CB01ECD808200702C4E /* Pop Ups */,
+				B387AB421EF04911001D2FF1 /* TemplateManager.h */,
+				B387AB431EF04911001D2FF1 /* TemplateManager.m */,
+				B387AB3F1EF04474001D2FF1 /* BackupFileManager.h */,
+				B387AB401EF04474001D2FF1 /* BackupFileManager.m */,
 				B32B32EA1ECD7B240081260A /* ContractArgumentsInterpretator.h */,
 				B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */,
 				B32B32DB1ECCC2C70081260A /* ContractFileManager.h */,
 				B32B32DC1ECCC2C70081260A /* ContractFileManager.m */,
-				B32B32CC1ECCC2330081260A /* ContractManager.h */,
-				B32B32CD1ECCC2330081260A /* ContractManager.m */,
+				B32B32CC1ECCC2330081260A /* ContractInterfaceManager.h */,
+				B32B32CD1ECCC2330081260A /* ContractInterfaceManager.m */,
 				E73D9C8A1ECB196400A09CFE /* Splash Screen */,
 				B384F3D91EB9BF250075F1E8 /* Localization */,
 				B33EAF241E5DB039006125F3 /* qtum wallet.entitlements */,
@@ -2401,7 +2411,7 @@
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
-				B32B32CE1ECCC2330081260A /* ContractManager.m in Sources */,
+				B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */,
 				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
 				B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */,
 				E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */,
@@ -2440,7 +2450,7 @@
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */,
-				B30BAE2E1E9E3AA600CA795F /* TokenManager.m in Sources */,
+				B30BAE2E1E9E3AA600CA795F /* ContractManager.m in Sources */,
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
@@ -2548,6 +2558,7 @@
 				B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */,
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
 				B32C3CF31E1126200094C82C /* TabBarController.m in Sources */,
+				B387AB441EF04911001D2FF1 /* TemplateManager.m in Sources */,
 				B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */,
@@ -2557,6 +2568,7 @@
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
 				B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */,
+				B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */,
 				B3827DE41ECF5E8D00E500DE /* TokenFunctionCell.m in Sources */,
 				E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */,
 				B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */,

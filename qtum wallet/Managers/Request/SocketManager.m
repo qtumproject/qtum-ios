@@ -94,8 +94,8 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     [self.currentSocket on:@"token_balance_change" callback:^(NSArray* data, SocketAckEmitter* ack) {
         //NSDictionary* adressAndBalanceDict = [self.delegate.adapter adaptiveDataForContractBalances:data];
 
-        //[[TokenManager sharedInstance] updateTokenWithAddress:adressAndBalanceDict[@"contract_address"] withNewBalance:adressAndBalanceDict[@"balance"]];
-        [[TokenManager sharedInstance] updateTokenWithContractAddress:data[0][@"contract_address"] withAddressBalanceDictionary:data[0]];
+        //[[ContractManager sharedInstance] updateTokenWithAddress:adressAndBalanceDict[@"contract_address"] withNewBalance:adressAndBalanceDict[@"balance"]];
+        [[ContractManager sharedInstance] updateTokenWithContractAddress:data[0][@"contract_address"] withAddressBalanceDictionary:data[0]];
 
     }];
 }

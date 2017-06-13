@@ -40,6 +40,22 @@
     }
 }
 
+-(NSString*)templateTypeStringForBackup {
+    
+    switch (self.type) {
+        case TokenType:
+            return @"token";
+        case NotmalContract:
+            return @"contract";
+        case CrowdsaleType:
+            return @"crowdsale";
+        case UndefinedContractType:
+            return @"undefined";
+        default:
+            return @"";
+    }
+}
+
 -(NSDate*)creationDate {
     return [[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.templateName];
 }

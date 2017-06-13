@@ -11,6 +11,7 @@
 #import "AbiinterfaceItem.h"
 #import "ContractCoordinator.h"
 #import "ResultTokenInputsModel.h"
+#import "AbiTextFieldWithLine.h"
 
 @interface CustomAbiInterphaseViewController () <AbiTextFieldWithLineDelegate>
 

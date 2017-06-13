@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tokens = [[TokenManager sharedInstance] getAllActiveTokens];
+    self.tokens = [[ContractManager sharedInstance] getAllActiveTokens];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenDidChange) name:kTokenDidChange object:nil];
 }
 
@@ -30,7 +30,7 @@
 #pragma mark - Private Methods
 
 -(void)tokenDidChange {
-    self.tokens = [[TokenManager sharedInstance] getAllActiveTokens];
+    self.tokens = [[ContractManager sharedInstance] getAllActiveTokens];
     if (!self.tokens.count) {
         [self.navigationController popViewControllerAnimated:NO];
     } else {
@@ -45,7 +45,7 @@
     
     __weak __typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.tokens = [[TokenManager sharedInstance] getAllActiveTokens];
+        weakSelf.tokens = [[ContractManager sharedInstance] getAllActiveTokens];
         [weakSelf.tableView reloadData];
     });
 }

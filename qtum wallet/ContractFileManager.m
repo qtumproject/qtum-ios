@@ -139,7 +139,6 @@
     }
 }
 
-
 -(NSArray<TemplateModel*>*)getAvailebaleTemplates {
     
     TemplateModel* standartToken = [[TemplateModel alloc] initWithTemplateName:@"Standart" andType:TokenType];

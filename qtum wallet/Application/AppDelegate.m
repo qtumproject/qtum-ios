@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "RPCRequestManager.h"
 #import "Appearance.h"
-#import "ContractManager.h"
+#import "ContractInterfaceManager.h"
 #import "ContractFileManager.h"
 #import "iOSSessionManager.h"
 

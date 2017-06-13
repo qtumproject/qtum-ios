@@ -1,16 +1,16 @@
 //
-//  TokenManager.m
+//  ContractManager.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 12.04.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "TokenManager.h"
+#import "ContractManager.h"
 #import "HistoryElement.h"
 #import "FXKeychain.h"
 #import "Contract.h"
-#import "ContractManager.h"
+#import "ContractInterfaceManager.h"
 #import "ContractArgumentsInterpretator.h"
 #import "NSData+Extension.h"
 
@@ -22,18 +22,18 @@ static NSString* kTemplateModel = @"kTemplateModel";
 static NSString* kAddresses = @"kAddress";
 
 
-@interface TokenManager () <TokenDelegate>
+@interface ContractManager () <TokenDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary* smartContractPretendents;
 @property (nonatomic, strong) NSMutableArray<Contract*> *contracts;
 
 @end
 
-@implementation TokenManager
+@implementation ContractManager
 
 + (instancetype)sharedInstance {
     
-    static TokenManager *instance;
+    static ContractManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[super alloc] initUniqueInstance];
@@ -243,7 +243,7 @@ static NSString* kAddresses = @"kAddress";
         contract.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
         contract.manager = self;
         
-        TemplateModel* template = [[ContractManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+        TemplateModel* template = [[ContractInterfaceManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
         
         if (template) {
             
@@ -277,7 +277,7 @@ static NSString* kAddresses = @"kAddress";
         contract.manager = self;
         contract.isActive = YES;
         
-        TemplateModel* template = [[ContractManager sharedInstance] createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+        TemplateModel* template = [[ContractInterfaceManager sharedInstance] createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
         
         if (template) {
             
@@ -310,15 +310,15 @@ static NSString* kAddresses = @"kAddress";
     
     if (token.templateModel.type == TokenType) {
         
-        AbiinterfaceItem* nameProperty = [[ContractManager sharedInstance] getTokenStandartNamePropertyInterface];
-        AbiinterfaceItem* totalSupplyProperty = [[ContractManager sharedInstance] getTokenStandartTotalSupplyPropertyInterface];
-        AbiinterfaceItem* symbolProperty = [[ContractManager sharedInstance] getTokenStandartSymbolPropertyInterface];
-        AbiinterfaceItem* decimalProperty = [[ContractManager sharedInstance] getTokenStandartDecimalPropertyInterface];
+        AbiinterfaceItem* nameProperty = [[ContractInterfaceManager sharedInstance] getTokenStandartNamePropertyInterface];
+        AbiinterfaceItem* totalSupplyProperty = [[ContractInterfaceManager sharedInstance] getTokenStandartTotalSupplyPropertyInterface];
+        AbiinterfaceItem* symbolProperty = [[ContractInterfaceManager sharedInstance] getTokenStandartSymbolPropertyInterface];
+        AbiinterfaceItem* decimalProperty = [[ContractInterfaceManager sharedInstance] getTokenStandartDecimalPropertyInterface];
         
-        NSString* hashFuctionName = [[ContractManager sharedInstance] getStringHashOfFunction:nameProperty];
-        NSString* hashFuctionTotalSupply = [[ContractManager sharedInstance] getStringHashOfFunction:totalSupplyProperty];
-        NSString* hashFuctionSymbol = [[ContractManager sharedInstance] getStringHashOfFunction:symbolProperty];
-        NSString* hashFuctionDecimal = [[ContractManager sharedInstance] getStringHashOfFunction:decimalProperty];
+        NSString* hashFuctionName = [[ContractInterfaceManager sharedInstance] getStringHashOfFunction:nameProperty];
+        NSString* hashFuctionTotalSupply = [[ContractInterfaceManager sharedInstance] getStringHashOfFunction:totalSupplyProperty];
+        NSString* hashFuctionSymbol = [[ContractInterfaceManager sharedInstance] getStringHashOfFunction:symbolProperty];
+        NSString* hashFuctionDecimal = [[ContractInterfaceManager sharedInstance] getStringHashOfFunction:decimalProperty];
         
         [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuctionName, hashFuctionTotalSupply, hashFuctionSymbol, hashFuctionDecimal] withHandler:^(id responseObject) {
             
@@ -419,6 +419,36 @@ static NSString* kAddresses = @"kAddress";
     [self removeAllTokens];
     [self removeAllPretendents];
     [self save];
+}
+
+#pragma mark - Backup
+
+static NSString* kPublishDate = @"publishDate";
+static NSString* kNameKey = @"name";
+static NSString* kContractAddressKey = @"contractAddress";
+static NSString* kContractCreationAddressKey = @"contractCreationAddres";
+static NSString* kIsActiveKey = @"isActive";
+static NSString* kTypeKey = @"type";
+static NSString* kTemplateKey = @"template";
+
+-(NSArray<NSDictionary*>*)backupDescription {
+    
+    NSMutableArray* backupArray = @[].mutableCopy;
+    
+    for (int i = 0; i < self.contracts.count; i++) {
+        NSMutableDictionary* backupItem = @{}.mutableCopy;
+        Contract* contract = self.contracts[i];
+        [backupItem setObject:contract.creationDate forKey:kPublishDate];
+        [backupItem setObject:contract.localName forKey:kNameKey];
+        [backupItem setObject:contract.contractAddress forKey:kContractAddressKey];
+        [backupItem setObject:contract.contractCreationAddressAddress ? contract.contractCreationAddressAddress : @"" forKey:kContractCreationAddressKey];
+        [backupItem setObject:@(contract.isActive) forKey:kIsActiveKey];
+        [backupItem setObject:contract.templateModel.templateTypeStringForBackup forKey:kTypeKey];
+        [backupItem setObject:@(contract.templateModel.type) forKey:kTemplateKey];
+        [backupArray addObject:backupItem];
+    }
+    
+    return backupArray.copy;
 }
 
 @end

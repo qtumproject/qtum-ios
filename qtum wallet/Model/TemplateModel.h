@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, TemplateType) {
 
 @property (copy, nonatomic) NSString* templateName;
 @property (copy, nonatomic,readonly) NSString* templateTypeString;
+@property (copy, nonatomic,readonly) NSString* templateTypeStringForBackup;
 @property (strong, nonatomic,readonly) NSDate* creationDate;
 @property (copy, nonatomic,readonly) NSString* creationDateString;
 @property (assign, nonatomic) TemplateType type;
