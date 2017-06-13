@@ -23,6 +23,7 @@
 -(void)didSelectWatchContracts;
 -(void)didSelectPublishedContracts;
 -(void)didSelectNewContracts;
+-(void)didSelectRestoreContract;
 -(void)didPressedQuit;
 -(void)didPressedBack;
 -(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel;

@@ -137,7 +137,7 @@
 		B3DD275D1E681A8B00BB0635 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD275C1E681A8B00BB0635 /* SendCoordinator.m */; };
 		B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */; };
 		B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */; };
-		B3E1591B1ED5A87D00D70A87 /* TokenDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591A1ED5A87D00D70A87 /* TokenDetails.storyboard */; };
+		B3E1591B1ED5A87D00D70A87 /* OnlyDesign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591A1ED5A87D00D70A87 /* OnlyDesign.storyboard */; };
 		B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */; };
 		B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */; };
 		B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159281ED6E3C500D70A87 /* ChoseTokenPaymentCell.m */; };
@@ -160,6 +160,11 @@
 		E71271921EE9925600A130A0 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E71271911EE9925600A130A0 /* SpinnerView.m */; };
 		E71271941EE9AC5B00A130A0 /* LoaderPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */; };
 		E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */; };
+		E713A47B1EEE966100A2FA40 /* CheckButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E713A47A1EEE966100A2FA40 /* CheckButton.xib */; };
+		E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E713A47D1EEE98E900A2FA40 /* CheckboxButton.m */; };
+		E713A4811EEE9FF800A2FA40 /* RestoreContractsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E713A4801EEE9FF800A2FA40 /* RestoreContractsViewController.m */; };
+		E713A4831EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E713A4821EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard */; };
+		E713A4861EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */; };
 		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
 		E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71AF24C1E0178C50068595B /* libCoreBitcoin.a */; };
 		E71AF24E1E0178EB0068595B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
@@ -573,7 +578,7 @@
 		B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletCoordinator.m; path = Application/WalletCoordinator.m; sourceTree = "<group>"; };
 		B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCoordinator.h; sourceTree = "<group>"; };
 		B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCoordinator.m; sourceTree = "<group>"; };
-		B3E1591A1ED5A87D00D70A87 /* TokenDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TokenDetails.storyboard; sourceTree = "<group>"; };
+		B3E1591A1ED5A87D00D70A87 /* OnlyDesign.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnlyDesign.storyboard; sourceTree = "<group>"; };
 		B3E159201ED6B1A200D70A87 /* AddNewTokensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTokensViewController.h; sourceTree = "<group>"; };
 		B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTokensViewController.m; sourceTree = "<group>"; };
 		B3E159231ED6E2C200D70A87 /* ChoseTokenPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentViewController.h; sourceTree = "<group>"; };
@@ -615,6 +620,14 @@
 		E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoaderPopUp.storyboard; sourceTree = "<group>"; };
 		E71271951EE9ADAB00A130A0 /* LoaderPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewController.h; sourceTree = "<group>"; };
 		E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderPopUpViewController.m; sourceTree = "<group>"; };
+		E713A47A1EEE966100A2FA40 /* CheckButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckButton.xib; sourceTree = "<group>"; };
+		E713A47C1EEE98E900A2FA40 /* CheckboxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckboxButton.h; sourceTree = "<group>"; };
+		E713A47D1EEE98E900A2FA40 /* CheckboxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckboxButton.m; sourceTree = "<group>"; };
+		E713A47F1EEE9FF800A2FA40 /* RestoreContractsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsViewController.h; sourceTree = "<group>"; };
+		E713A4801EEE9FF800A2FA40 /* RestoreContractsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsViewController.m; sourceTree = "<group>"; };
+		E713A4821EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RestoreContractsPopUp.storyboard; sourceTree = "<group>"; };
+		E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsPopUpViewController.h; sourceTree = "<group>"; };
+		E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsPopUpViewController.m; sourceTree = "<group>"; };
 		E71AF2421E0177910068595B /* qtum walletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "qtum walletTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71AF2441E0177910068595B /* qtum_walletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qtum_walletTests.m; sourceTree = "<group>"; };
 		E71AF2461E0177910068595B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -995,7 +1008,7 @@
 				B32EEC861EB354B100512FED /* CreateToken.storyboard */,
 				B32EEC8B1EB354C000512FED /* SubscribeToken.storyboard */,
 				E73D9C871ECB18A200A09CFE /* Splash.storyboard */,
-				B3E1591A1ED5A87D00D70A87 /* TokenDetails.storyboard */,
+				B3E1591A1ED5A87D00D70A87 /* OnlyDesign.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1310,6 +1323,7 @@
 		B3F06D0B1E69B55D006341F7 /* Contract */ = {
 			isa = PBXGroup;
 			children = (
+				E713A4781EEE964800A2FA40 /* RestoreContract */,
 				E72631221EEAA7EC005AED8F /* Views */,
 				B387AB371EEAD8A6001D2FF1 /* Watch Contract */,
 				B3D555EC1EDF4DA400CBDFCF /* Cells */,
@@ -1342,6 +1356,26 @@
 				E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */,
 			);
 			name = Recieve;
+			sourceTree = "<group>";
+		};
+		E713A4781EEE964800A2FA40 /* RestoreContract */ = {
+			isa = PBXGroup;
+			children = (
+				E713A4791EEE965000A2FA40 /* Views */,
+				E713A47F1EEE9FF800A2FA40 /* RestoreContractsViewController.h */,
+				E713A4801EEE9FF800A2FA40 /* RestoreContractsViewController.m */,
+			);
+			name = RestoreContract;
+			sourceTree = "<group>";
+		};
+		E713A4791EEE965000A2FA40 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E713A47A1EEE966100A2FA40 /* CheckButton.xib */,
+				E713A47C1EEE98E900A2FA40 /* CheckboxButton.h */,
+				E713A47D1EEE98E900A2FA40 /* CheckboxButton.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		E71AF2431E0177910068595B /* qtum walletTests */ = {
@@ -1575,6 +1609,7 @@
 				E73CF6C21EE2CD370044DF78 /* InformationPopUp.storyboard */,
 				E73CF6C41EE2CE8A0044DF78 /* ConfirmPopUp.storyboard */,
 				E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */,
+				E713A4821EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard */,
 			);
 			name = PopUp;
 			sourceTree = "<group>";
@@ -1692,6 +1727,8 @@
 			children = (
 				E7FA0CB71ECD914200702C4E /* PopUpsManager.h */,
 				E7FA0CB81ECD914200702C4E /* PopUpsManager.m */,
+				E73CF6CF1EE2D6FC0044DF78 /* PopUpContent.h */,
+				E73CF6D01EE2D6FC0044DF78 /* PopUpContent.m */,
 				E7FA0CB11ECD80AF00702C4E /* PopUpViewController.h */,
 				E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */,
 				E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */,
@@ -1704,12 +1741,12 @@
 				E73CF6CA1EE2CFA40044DF78 /* InformationPopUpViewController.m */,
 				E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */,
 				E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */,
-				E73CF6CF1EE2D6FC0044DF78 /* PopUpContent.h */,
-				E73CF6D01EE2D6FC0044DF78 /* PopUpContent.m */,
 				E73CF6D21EE2E1230044DF78 /* PopUpContentGenerator.h */,
 				E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */,
 				E71271951EE9ADAB00A130A0 /* LoaderPopUpViewController.h */,
 				E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */,
+				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
+				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
 			);
 			name = "Pop Ups";
 			sourceTree = "<group>";
@@ -2102,6 +2139,9 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -2175,7 +2215,7 @@
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */,
 				E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */,
 				E7FA0CBB1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard in Resources */,
-				B3E1591B1ED5A87D00D70A87 /* TokenDetails.storyboard in Resources */,
+				B3E1591B1ED5A87D00D70A87 /* OnlyDesign.storyboard in Resources */,
 				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
@@ -2195,10 +2235,12 @@
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
 				E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */,
 				B32EEC751EB3548600512FED /* Wallet.storyboard in Resources */,
+				E713A47B1EEE966100A2FA40 /* CheckButton.xib in Resources */,
 				B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
 				B32EEC6B1EB3546800512FED /* News.storyboard in Resources */,
 				B32EEC7F1EB3549F00512FED /* Start.storyboard in Resources */,
+				E713A4831EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard in Resources */,
 				E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2381,6 +2423,7 @@
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
 				B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */,
 				B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */,
+				E713A4861EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m in Sources */,
 				E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				B32B32DD1ECCC2C70081260A /* ContractFileManager.m in Sources */,
@@ -2397,6 +2440,7 @@
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				E73D36FB1ECF161E009173BD /* NubersTokenTableViewCell.m in Sources */,
+				E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */,
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
@@ -2491,6 +2535,7 @@
 				B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */,
 				B35130681E49DF910048A28C /* ImageLoader.m in Sources */,
 				B3827DEA1ED2C74900E500DE /* TokenFunctionDetailViewController.m in Sources */,
+				E713A4811EEE9FF800A2FA40 /* RestoreContractsViewController.m in Sources */,
 				B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */,
 				B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */,
 				E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */,
@@ -2896,6 +2941,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2909,8 +2955,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "529b4df7-24ce-4773-aa63-a2b74de1d79a";
-				PROVISIONING_PROFILE_SPECIFIER = QTUMDev;
+				PROVISIONING_PROFILE = "ebf87941-e6ba-4b3a-96e6-bc4e7eca82f3";
+				PROVISIONING_PROFILE_SPECIFIER = QTUM_DEV;
 			};
 			name = Debug;
 		};
@@ -2923,6 +2969,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2936,8 +2983,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "529b4df7-24ce-4773-aa63-a2b74de1d79a";
-				PROVISIONING_PROFILE_SPECIFIER = QTUMDev;
+				PROVISIONING_PROFILE = "73d43d91-74ea-4bf0-a0fc-30cebeabc82a";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.pixelplex.qtum-wallet";
 			};
 			name = Release;
 		};

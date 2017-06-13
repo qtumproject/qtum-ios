@@ -24,6 +24,7 @@
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "WatchContractViewController.h"
+#import "RestoreContractsViewController.h"
 
 
 @interface ContractCoordinator ()
@@ -93,6 +94,13 @@
 //        return [t1.creationDate compare:t2.creationDate];
 //    }];
 //    controller.contracts = sortedContracts;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)showRestoreContract {
+    RestoreContractsViewController* controller = (RestoreContractsViewController*)[[ControllersFactory sharedInstance] createRestoreContractViewController];
+    controller.delegate = self;
+
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -237,6 +245,10 @@
 
 -(void)didSelectWatchContracts {
     [self showWatchContract];
+}
+
+- (void)didSelectRestoreContract {
+    [self showRestoreContract];
 }
 
 -(void)didPressedQuit {
