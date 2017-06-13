@@ -28,7 +28,7 @@
 
 #pragma makr - Config
 
--(void)configBorder{
+-(void)configBorder {
     self.layer.borderColor = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1].CGColor;
     self.layer.borderWidth = 1;
 }
