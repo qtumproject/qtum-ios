@@ -22,7 +22,7 @@
     
     [super viewDidLoad];
     
-    self.contractTypes = @[NSLocalizedString(@"Crate Contract", @""),NSLocalizedString(@"My Contracts", @""),NSLocalizedString(@"Contacts Store", @""),NSLocalizedString(@"Watch Contract", @""), NSLocalizedString(@"Restore Contract", @"")];
+    self.contractTypes = @[NSLocalizedString(@"Crate Contract", @""),NSLocalizedString(@"My Contracts", @""),NSLocalizedString(@"Contacts Store", @""),NSLocalizedString(@"Watch Contract", @""), NSLocalizedString(@"Restore Contracts", @""), NSLocalizedString(@"Backup Contracts", @"")];
     [self.tableView reloadData];
 }
 
@@ -38,20 +38,17 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if (indexPath.row == 0) {
-        
         [self.delegate didSelectNewContracts];
     } else if (indexPath.row == 1) {
-        
         [self.delegate didSelectPublishedContracts];
     } else if (indexPath.row == 2) {
-        
         [self.delegate didSelectContractStore];
     } else if (indexPath.row == 3) {
-        
         [self.delegate didSelectWatchContracts];
     } else if (indexPath.row == 4) {
-        
         [self.delegate didSelectRestoreContract];
+    } else if (indexPath.row == 5) {
+        [self.delegate didSelectBackupContract];
     }
 }
 
@@ -93,6 +90,8 @@
         cell.image.image = [UIImage imageNamed:@"ic-token-subscribe"];
     } else if (indexPath.row == 4) {
         cell.image.image = [UIImage imageNamed:@"ic-contract_restore"];
+    } else if (indexPath.row == 5) {
+        cell.image.image = [UIImage imageNamed:@"ic_contr_backup"];
     }
     
     return cell;

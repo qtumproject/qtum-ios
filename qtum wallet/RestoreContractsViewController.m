@@ -104,7 +104,7 @@
         return;
     }
     
-    NSArray *types = @[(NSString*)kUTTypeImage,(NSString*)kUTTypeSpreadsheet,(NSString*)kUTTypePresentation,(NSString*)kUTTypeDatabase,(NSString*)kUTTypeFolder,(NSString*)kUTTypeZipArchive,(NSString*)kUTTypeVideo];
+    NSArray *types = @[(NSString*)kUTTypeImage,(NSString*)kUTTypeSpreadsheet,(NSString*)kUTTypePresentation,(NSString*)kUTTypeDatabase,(NSString*)kUTTypeFolder,(NSString*)kUTTypeZipArchive,(NSString*)kUTTypeVideo, (NSString*)kUTTypePDF, (NSString*)kUTTypeRTF];
     UIDocumentMenuViewController *vc = [[UIDocumentMenuViewController alloc] initWithDocumentTypes:types inMode:UIDocumentPickerModeImport];
     vc.delegate = self;
     [self presentViewController:vc animated:YES completion:nil];
@@ -170,7 +170,7 @@
     
     self.fileUrl = url;
     NSData *fileData = [NSData dataWithContentsOfURL:url];
-    NSString *fileSizeString = [NSByteCountFormatter stringFromByteCount:fileData.length countStyle:NSByteCountFormatterCountStyleFile];;
+    NSString *fileSizeString = [NSByteCountFormatter stringFromByteCount:fileData.length countStyle:NSByteCountFormatterCountStyleFile];
     self.sizeLabel.text = fileSizeString;
     self.haveFile = YES;
     

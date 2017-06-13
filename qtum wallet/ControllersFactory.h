@@ -43,6 +43,7 @@
 @class LoaderPopUpViewController;
 @class RestoreContractsViewController;
 @class RestoreContractsPopUpViewController;
+@class BackupContractsViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -86,6 +87,7 @@
 -(TemplateTokenViewController*)createTemplateTokenViewController;
 -(WatchContractViewController*)createWatchContractViewController;
 -(RestoreContractsViewController*)createRestoreContractViewController;
+-(BackupContractsViewController*)createBackupContractViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
