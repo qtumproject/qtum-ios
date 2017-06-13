@@ -21,6 +21,7 @@
 -(void)finishStepBackDidPressed;
 -(void)didSelectContractStore;
 -(void)didSelectWatchContracts;
+-(void)didSelectWatchTokens;
 -(void)didSelectPublishedContracts;
 -(void)didSelectNewContracts;
 -(void)didSelectRestoreContract;

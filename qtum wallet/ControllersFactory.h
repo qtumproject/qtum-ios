@@ -40,6 +40,7 @@
 @class InformationPopUpViewController;
 @class ConfirmPopUpViewController;
 @class WatchContractViewController;
+@class WatchTokensViewController;
 @class LoaderPopUpViewController;
 @class RestoreContractsViewController;
 @class RestoreContractsPopUpViewController;
@@ -86,6 +87,7 @@
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
 -(TemplateTokenViewController*)createTemplateTokenViewController;
 -(WatchContractViewController*)createWatchContractViewController;
+-(WatchTokensViewController*)createWatchTokensViewController;
 -(RestoreContractsViewController*)createRestoreContractViewController;
 -(BackupContractsViewController*)createBackupContractViewController;
 

@@ -122,6 +122,7 @@
 		B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */; };
 		B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5ED1E16403B004D231B /* WalletNameViewController.m */; };
 		B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */; };
+		B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */; };
 		B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */; };
 		B3C08B151ED3382300713B15 /* keccak.c in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B141ED3382300713B15 /* keccak.c */; };
 		B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */; };
@@ -550,6 +551,8 @@
 		B386F5ED1E16403B004D231B /* WalletNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletNameViewController.m; sourceTree = "<group>"; };
 		B387AB381EEAD8C5001D2FF1 /* WatchContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewController.h; sourceTree = "<group>"; };
 		B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchContractViewController.m; sourceTree = "<group>"; };
+		B387AB3C1EEE85D2001D2FF1 /* WatchTokensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchTokensViewController.h; sourceTree = "<group>"; };
+		B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchTokensViewController.m; sourceTree = "<group>"; };
 		B3C08B091ED2FE3000713B15 /* keccak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keccak.h; sourceTree = "<group>"; };
 		B3C08B0A1ED2FE3000713B15 /* NSString+SHA3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SHA3.h"; sourceTree = "<group>"; };
 		B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHA3.m"; sourceTree = "<group>"; };
@@ -1282,6 +1285,15 @@
 			name = "Watch Contract";
 			sourceTree = "<group>";
 		};
+		B387AB3B1EEE8584001D2FF1 /* Watch Tokens */ = {
+			isa = PBXGroup;
+			children = (
+				B387AB3C1EEE85D2001D2FF1 /* WatchTokensViewController.h */,
+				B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */,
+			);
+			name = "Watch Tokens";
+			sourceTree = "<group>";
+		};
 		B3C08B221ED45BCD00713B15 /* Tokens Templates */ = {
 			isa = PBXGroup;
 			children = (
@@ -1330,6 +1342,7 @@
 			children = (
 				E7B758501EEFDB02004AF200 /* BackupContacts */,
 				E713A4781EEE964800A2FA40 /* RestoreContracts */,
+				B387AB3B1EEE8584001D2FF1 /* Watch Tokens */,
 				E72631221EEAA7EC005AED8F /* Views */,
 				B387AB371EEAD8A6001D2FF1 /* Watch Contract */,
 				B3D555EC1EDF4DA400CBDFCF /* Cells */,
@@ -2482,6 +2495,7 @@
 				B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				E73D36F51ECF15D1009173BD /* BalanceTokenTableViewCell.m in Sources */,
+				B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
