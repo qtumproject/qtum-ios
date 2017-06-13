@@ -50,6 +50,7 @@
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
 #import "RestoreContractsPopUpViewController.h"
+#import "BackupContractsViewController.h"
 
 @implementation ControllersFactory
 
@@ -240,6 +241,11 @@
 
 -(RestoreContractsViewController*)createRestoreContractViewController{
     RestoreContractsViewController* controller = (RestoreContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContracts"];
+    return controller;
+}
+
+-(BackupContractsViewController*)createBackupContractViewController{
+    BackupContractsViewController* controller = (BackupContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContracts"];
     return controller;
 }
 

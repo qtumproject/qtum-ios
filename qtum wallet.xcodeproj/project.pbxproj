@@ -229,6 +229,8 @@
 		E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */; };
 		E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */; };
 		E78D0C991ED2DF2E00CB91FF /* TokenDetailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */; };
+		E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758521EEFDB32004AF200 /* BackupContractsViewController.m */; };
+		E7B758571EEFE7AB004AF200 /* testFile.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E7B758561EEFE7AB004AF200 /* testFile.pdf */; };
 		E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D241D81DE6D6B1003E507B /* QRCodeManager.m */; };
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
 		E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */; };
@@ -746,6 +748,9 @@
 		E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithAnimatedLine.m; sourceTree = "<group>"; };
 		E78D0C971ED2DF2E00CB91FF /* TokenDetailsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsTableView.h; sourceTree = "<group>"; };
 		E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsTableView.m; sourceTree = "<group>"; };
+		E7B758511EEFDB32004AF200 /* BackupContractsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupContractsViewController.h; sourceTree = "<group>"; };
+		E7B758521EEFDB32004AF200 /* BackupContractsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupContractsViewController.m; sourceTree = "<group>"; };
+		E7B758561EEFE7AB004AF200 /* testFile.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = testFile.pdf; sourceTree = "<group>"; };
 		E7D241D71DE6D6B1003E507B /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
 		E7D241D81DE6D6B1003E507B /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
 		E7DD00E81DC9BF9D00FD5335 /* TransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionManager.h; sourceTree = "<group>"; };
@@ -1335,8 +1340,9 @@
 		B3F06D0B1E69B55D006341F7 /* Contract */ = {
 			isa = PBXGroup;
 			children = (
+				E7B758501EEFDB02004AF200 /* BackupContacts */,
+				E713A4781EEE964800A2FA40 /* RestoreContracts */,
 				B387AB3B1EEE8584001D2FF1 /* Watch Tokens */,
-				E713A4781EEE964800A2FA40 /* RestoreContract */,
 				E72631221EEAA7EC005AED8F /* Views */,
 				B387AB371EEAD8A6001D2FF1 /* Watch Contract */,
 				B3D555EC1EDF4DA400CBDFCF /* Cells */,
@@ -1371,14 +1377,14 @@
 			name = Recieve;
 			sourceTree = "<group>";
 		};
-		E713A4781EEE964800A2FA40 /* RestoreContract */ = {
+		E713A4781EEE964800A2FA40 /* RestoreContracts */ = {
 			isa = PBXGroup;
 			children = (
 				E713A4791EEE965000A2FA40 /* Views */,
 				E713A47F1EEE9FF800A2FA40 /* RestoreContractsViewController.h */,
 				E713A4801EEE9FF800A2FA40 /* RestoreContractsViewController.m */,
 			);
-			name = RestoreContract;
+			name = RestoreContracts;
 			sourceTree = "<group>";
 		};
 		E713A4791EEE965000A2FA40 /* Views */ = {
@@ -1662,6 +1668,16 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		E7B758501EEFDB02004AF200 /* BackupContacts */ = {
+			isa = PBXGroup;
+			children = (
+				E7B758561EEFE7AB004AF200 /* testFile.pdf */,
+				E7B758511EEFDB32004AF200 /* BackupContractsViewController.h */,
+				E7B758521EEFDB32004AF200 /* BackupContractsViewController.m */,
+			);
+			name = BackupContacts;
+			sourceTree = "<group>";
+		};
 		E7D241D61DE6D697003E507B /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1742,6 +1758,8 @@
 				E7FA0CB81ECD914200702C4E /* PopUpsManager.m */,
 				E73CF6CF1EE2D6FC0044DF78 /* PopUpContent.h */,
 				E73CF6D01EE2D6FC0044DF78 /* PopUpContent.m */,
+				E73CF6D21EE2E1230044DF78 /* PopUpContentGenerator.h */,
+				E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */,
 				E7FA0CB11ECD80AF00702C4E /* PopUpViewController.h */,
 				E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */,
 				E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */,
@@ -1754,8 +1772,6 @@
 				E73CF6CA1EE2CFA40044DF78 /* InformationPopUpViewController.m */,
 				E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */,
 				E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */,
-				E73CF6D21EE2E1230044DF78 /* PopUpContentGenerator.h */,
-				E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */,
 				E71271951EE9ADAB00A130A0 /* LoaderPopUpViewController.h */,
 				E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */,
 				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
@@ -2248,6 +2264,7 @@
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
 				E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */,
 				B32EEC751EB3548600512FED /* Wallet.storyboard in Resources */,
+				E7B758571EEFE7AB004AF200 /* testFile.pdf in Resources */,
 				E713A47B1EEE966100A2FA40 /* CheckButton.xib in Resources */,
 				B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
@@ -2449,6 +2466,7 @@
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
+				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,

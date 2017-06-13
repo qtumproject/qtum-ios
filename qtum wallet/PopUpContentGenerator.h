@@ -17,5 +17,6 @@
 + (PopUpContent *)getContentForPhotoLibrary;
 + (PopUpContent *)getContentForCreateContract;
 + (PopUpContent *)getContentForSend;
++ (PopUpContent *)getContentForCompletedBackupFile;
 
 @end

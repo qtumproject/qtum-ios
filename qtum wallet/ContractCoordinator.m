@@ -26,6 +26,7 @@
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
+#import "BackupContractsViewController.h"
 
 
 @interface ContractCoordinator ()
@@ -103,6 +104,13 @@
     RestoreContractsViewController* controller = (RestoreContractsViewController*)[[ControllersFactory sharedInstance] createRestoreContractViewController];
     controller.delegate = self;
 
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)showBackupContract {
+    BackupContractsViewController* controller = (BackupContractsViewController*)[[ControllersFactory sharedInstance] createBackupContractViewController];
+    controller.delegate = self;
+    
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -261,6 +269,10 @@
 
 - (void)didSelectRestoreContract {
     [self showRestoreContract];
+}
+
+- (void)didSelectBackupContract {
+    [self showBackupContract];
 }
 
 -(void)didPressedQuit {
