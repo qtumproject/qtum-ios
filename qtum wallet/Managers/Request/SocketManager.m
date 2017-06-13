@@ -73,7 +73,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses]];
 }
 
--(void)subscribeToEvents{
+-(void)subscribeToEvents {
     [self.currentSocket on:@"balance_changed" callback:^(NSArray* data, SocketAckEmitter* ack) {
         
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
@@ -92,7 +92,11 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 //    }];
     
     [self.currentSocket on:@"token_balance_change" callback:^(NSArray* data, SocketAckEmitter* ack) {
-        [[TokenManager sharedInstance] updateTokenWithAddress:((NSDictionary*)data[0])[@"contract_address"] withNewBalance:((NSDictionary*)data[0])[@"balances"][0][@"balance"]];
+        //NSDictionary* adressAndBalanceDict = [self.delegate.adapter adaptiveDataForContractBalances:data];
+
+        //[[TokenManager sharedInstance] updateTokenWithAddress:adressAndBalanceDict[@"contract_address"] withNewBalance:adressAndBalanceDict[@"balance"]];
+        [[TokenManager sharedInstance] updateTokenWithContractAddress:data[0][@"contract_address"] withAddressBalanceDictionary:data[0]];
+
     }];
 }
 
@@ -103,7 +107,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 -(void)startObservingToken:(Contract*) token withHandler:(void(^)()) handler{
     __weak __typeof(self)weakSelf = self;
     dispatch_block_t block = ^{
-        [weakSelf.currentSocket emit:@"subscribe" with:@[@"token_balance_change",@{@"contract_address" : token.contractAddress, @"addresses" : token.adresses}]];
+        [weakSelf.currentSocket emit:@"subscribe" with:@[@"token_balance_change",@{@"contract_address" : token.contractAddress, @"addresses" : [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys]}]];
     };
     [_requestQueue addOperationWithBlock:block];
 }

@@ -46,6 +46,39 @@
     return filteredArray.firstObject;
 }
 
+- (AbiinterfaceItem*)getTokenStandartNamePropertyInterface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance]getAbiFromBundle]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"name"];
+    NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
+    return filteredArray.firstObject;
+}
+
+- (AbiinterfaceItem*)getTokenStandartTotalSupplyPropertyInterface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getAbiFromBundle]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"totalSupply"];
+    NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
+    return filteredArray.firstObject;
+}
+
+- (AbiinterfaceItem*)getTokenStandartSymbolPropertyInterface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance]getAbiFromBundle]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"symbol"];
+    NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
+    return filteredArray.firstObject;
+}
+
+
+- (AbiinterfaceItem*)getTokenStandartDecimalPropertyInterface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getAbiFromBundle]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"decimals"];
+    NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
+    return filteredArray.firstObject;
+}
+
 - (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName {
     
     InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getAbiFromBundleWithTemplate:templateName]];

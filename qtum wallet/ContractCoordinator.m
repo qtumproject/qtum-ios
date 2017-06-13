@@ -24,6 +24,7 @@
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "WatchContractViewController.h"
+#import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
 
 
@@ -89,11 +90,12 @@
 -(void)showWatchContract {
     WatchContractViewController* controller = (WatchContractViewController*)[[ControllersFactory sharedInstance] createWatchContractViewController];
     controller.delegate = self;
-//
-//    NSArray *sortedContracts = [[[TokenManager sharedInstance] getAllContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
-//        return [t1.creationDate compare:t2.creationDate];
-//    }];
-//    controller.contracts = sortedContracts;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)showWatchTokens {
+    WatchTokensViewController* controller = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
+    controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -220,10 +222,16 @@
         [param addObject:inputs[i].value];
     }
     
+    NSMutableArray<NSString*>* __block addressWithTokensValue = @[].mutableCopy;
+    [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
+        if (balance.floatValue > 0) {
+            [addressWithTokensValue addObject:address];
+        }
+    }];
     NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item appendingParam:param];
     
     __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:addressWithTokensValue toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
         
         [weakSelf.functionDetailController showResultViewWithOutputs:nil];
     }];
@@ -245,6 +253,10 @@
 
 -(void)didSelectWatchContracts {
     [self showWatchContract];
+}
+
+-(void)didSelectWatchTokens {
+    [self showWatchTokens];
 }
 
 - (void)didSelectRestoreContract {

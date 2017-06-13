@@ -12,5 +12,6 @@
 
 - (id)adaptiveDataForHistory:(id) data;
 - (id)adaptiveDataForOutputs:(id) data;
+- (NSDictionary*)adaptiveDataForContractBalances:(id) data;
 
 @end
