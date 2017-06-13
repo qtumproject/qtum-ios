@@ -15,7 +15,6 @@
 @interface ContractManager : NSObject
 
 - (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName;
-- (AbiinterfaceItem*)getTokenStandartTransferMethodInterface;
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args;
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args;
 - (NSString*)getStringHashOfFunction:(AbiinterfaceItem*) fuctionItem;
@@ -24,6 +23,12 @@
 
 - (TemplateModel*)createNewContractTemplateWithAbi:(NSString*)abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
 - (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
+
+- (AbiinterfaceItem*)getTokenStandartTransferMethodInterface;
+- (AbiinterfaceItem*)getTokenStandartNamePropertyInterface;
+- (AbiinterfaceItem*)getTokenStandartTotalSupplyPropertyInterface;
+- (AbiinterfaceItem*)getTokenStandartSymbolPropertyInterface;
+- (AbiinterfaceItem*)getTokenStandartDecimalPropertyInterface;
 
 + (instancetype)sharedInstance;
 

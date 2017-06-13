@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @class HistoryElement;
+@class Contract;
 
 extern NSString *const kTokenDidChange;
 

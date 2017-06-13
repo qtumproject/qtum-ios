@@ -13,41 +13,6 @@
 
 @implementation Contract
 
--(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(TemplateModel*) templateModel {
-    
-    NSMutableData* hashData = [[NSData reverseData:[NSString dataFromHexString:hash]] mutableCopy];
-    uint32_t vinIndex = 0;
-    [hashData appendBytes:&vinIndex length:1];
-    hashData = [[hashData BTCHash160] mutableCopy];
-    self.contractCreationAddressAddress = addresses.firstObject;
-    self.adresses =  [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
-    self.contractAddress = [NSString hexadecimalString:hashData];
-    self.localName = [self.contractAddress substringToIndex:6];
-    self.templateModel = templateModel;
-    self.creationDate = [NSDate date];
-    self.isActive = YES;
-    
-    __weak __typeof(self)weakSelf = self;
-    [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : self.contractAddress} withSuccessHandler:^(id responseObject) {
-        weakSelf.decimals = responseObject[@"decimals"];
-        weakSelf.symbol = responseObject[@"symbol"];
-        weakSelf.name = responseObject[@"name"];
-        weakSelf.totalSupply = responseObject[@"totalSupply"];
-        weakSelf.balance = [responseObject[@"totalSupply"] floatValue];
-        [weakSelf.delegate tokenDidChange:weakSelf];
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        NSLog(@"Error -> %@", error);
-    }];
-}
-
--(void)setupWithContractAddresse:(NSString*) contractAddresse {
-
-    self.contractAddress = contractAddresse;
-    self.creationDate = [NSDate date];
-    self.localName = [self.contractAddress substringToIndex:6];
-    self.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
-}
-
 -(NSString*)creationDateString {
     
     return self.creationDate ? [self.creationDate formatedDateString] : nil;

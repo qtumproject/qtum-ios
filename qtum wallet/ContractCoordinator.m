@@ -214,10 +214,16 @@
         [param addObject:inputs[i].value];
     }
     
+    NSMutableArray<NSString*>* __block addressWithTokensValue = @[].mutableCopy;
+    [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
+        if (balance.floatValue > 0) {
+            [addressWithTokensValue addObject:address];
+        }
+    }];
     NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item appendingParam:param];
     
     __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddress:token.adresses.firstObject toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:addressWithTokensValue toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
         
         [weakSelf.functionDetailController showResultViewWithOutputs:nil];
     }];

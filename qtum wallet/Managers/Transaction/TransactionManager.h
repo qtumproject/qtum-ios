@@ -26,7 +26,7 @@
 
 - (void)callTokenWithAddress:(NSData*) contractAddress
                 andBitcode:(NSData*) bitcode
-               fromAddress:(NSString*) fromAddress
+               fromAddresses:(NSArray<NSString*>*) fromAddresses
                  toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
                 andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion;

@@ -11,6 +11,8 @@
 #import "FXKeychain.h"
 #import "Contract.h"
 #import "ContractManager.h"
+#import "ContractArgumentsInterpretator.h"
+#import "NSData+Extension.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -90,10 +92,10 @@ static NSString* kAddresses = @"kAddress";
     self.contracts = savedTokens;
 }
 
-#pragma mark - Public Methods
 
 #pragma mark - Private Methods
 
+#pragma mark - Public Methods
 
 - (NSArray <Contract*>*)getAllTokens {
     
@@ -184,10 +186,22 @@ static NSString* kAddresses = @"kAddress";
         
         if (tokenInfo) {
             Contract* token = [Contract new];
-            [token setupWithHashTransaction:key andAddresses:addresses andTokenTemplate:templateModel];
+            NSMutableData* hashData = [[NSData reverseData:[NSString dataFromHexString:key]] mutableCopy];
+            uint32_t vinIndex = 0;
+            [hashData appendBytes:&vinIndex length:1];
+            hashData = [[hashData BTCHash160] mutableCopy];
+            token.contractCreationAddressAddress = addresses.firstObject;
+            token.adresses =  [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+            token.contractAddress = [NSString hexadecimalString:hashData];
+            token.localName = [token.contractAddress substringToIndex:6];
+            token.templateModel = templateModel;
+            token.creationDate = [NSDate date];
+            token.isActive = YES;
+            //[token setupWithHashTransaction:key andAddresses:addresses andTokenTemplate:templateModel];
             [self addNewToken:token];
             token.manager = self;
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+            [self updateSpendableObject:token];
             [self deleteSmartContractPretendentWithKey:key];
             [self save];
         }
@@ -201,10 +215,15 @@ static NSString* kAddresses = @"kAddress";
     
     if (!filteredArray.count && contractAddress) {
         Contract* token = [Contract new];
-        [token setupWithContractAddresse:contractAddress];
+        token.contractAddress = contractAddress;
+        token.creationDate = [NSDate date];
+        token.localName = [token.contractAddress substringToIndex:6];
+        token.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+        //[token setupWithContractAddresse:contractAddress];
         token.manager = self;
         [self addNewToken:token];
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+        [self updateSpendableObject:token];
         [self save];
         [self tokenDidChange:nil];
     }
@@ -231,6 +250,7 @@ static NSString* kAddresses = @"kAddress";
             contract.templateModel = template;
             [self addNewToken:contract];
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+            [self updateSpendableObject:contract];
             [self save];
             [self tokenDidChange:nil];
             return YES;
@@ -264,6 +284,7 @@ static NSString* kAddresses = @"kAddress";
             contract.templateModel = template;
             [self addNewToken:contract];
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+            [self updateSpendableObject:contract];
             [self save];
             [self tokenDidChange:nil];
             return YES;
@@ -283,18 +304,53 @@ static NSString* kAddresses = @"kAddress";
 
 #pragma mark - Managerable
 
--(void)updateSpendableObject:(Contract*) object {
+-(void)updateSpendableObject:(Contract*) token {
+    
     __weak __typeof(self)weakSelf = self;
-    [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : object.contractAddress} withSuccessHandler:^(id responseObject) {
-        object.decimals = responseObject[@"decimals"];
-        object.symbol = responseObject[@"symbol"];
-        object.name = responseObject[@"name"];
-        object.totalSupply = responseObject[@"totalSupply"];
-        object.balance = [responseObject[@"totalSupply"] floatValue];
-        [weakSelf tokenDidChange:object];
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        NSLog(@"Error -> %@", error);                            
-    }];
+    
+    if (token.templateModel.type == TokenType) {
+        
+        AbiinterfaceItem* nameProperty = [[ContractManager sharedInstance] getTokenStandartNamePropertyInterface];
+        AbiinterfaceItem* totalSupplyProperty = [[ContractManager sharedInstance] getTokenStandartTotalSupplyPropertyInterface];
+        AbiinterfaceItem* symbolProperty = [[ContractManager sharedInstance] getTokenStandartSymbolPropertyInterface];
+        AbiinterfaceItem* decimalProperty = [[ContractManager sharedInstance] getTokenStandartDecimalPropertyInterface];
+        
+        NSString* hashFuctionName = [[ContractManager sharedInstance] getStringHashOfFunction:nameProperty];
+        NSString* hashFuctionTotalSupply = [[ContractManager sharedInstance] getStringHashOfFunction:totalSupplyProperty];
+        NSString* hashFuctionSymbol = [[ContractManager sharedInstance] getStringHashOfFunction:symbolProperty];
+        NSString* hashFuctionDecimal = [[ContractManager sharedInstance] getStringHashOfFunction:decimalProperty];
+        
+        [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuctionName, hashFuctionTotalSupply, hashFuctionSymbol, hashFuctionDecimal] withHandler:^(id responseObject) {
+            
+            if (![responseObject isKindOfClass:[NSError class]] && [responseObject[@"items"] isKindOfClass:[NSArray class]]) {
+                
+                for (NSDictionary* item in responseObject[@"items"]) {
+                    NSString* hash = item[@"hash"];
+                    NSString* output = item[@"output"];
+                    
+                    if ([hash isEqualToString:hashFuctionName.uppercaseString]) {
+                        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:nameProperty];
+                        token.name = array[0];
+                    } else if ([hash isEqualToString:hashFuctionTotalSupply.uppercaseString]) {
+                        
+                        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:totalSupplyProperty];
+                        token.totalSupply = array[0];
+                        
+                    } else if ([hash isEqualToString:hashFuctionSymbol.uppercaseString]) {
+                        
+                        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:symbolProperty];
+                        token.symbol = array[0];
+                    } else if ([hash isEqualToString:hashFuctionDecimal.uppercaseString]) {
+                        
+                        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:decimalProperty];
+                        token.decimals = array[0];
+                    }
+                    
+                }
+                [weakSelf tokenDidChange:token];
+            }
+        }];
+    }
 }
 
 -(void)updateBalanceOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete {

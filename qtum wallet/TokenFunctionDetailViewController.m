@@ -91,7 +91,6 @@
 
 - (IBAction)didPressedCancelAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-    [self.token updateHandler:nil];
 }
 
 - (IBAction)didPressedCallAction:(id)sender {
