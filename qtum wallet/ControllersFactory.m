@@ -48,6 +48,8 @@
 #import "LoaderPopUpViewController.h"
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
+#import "RestoreContractsViewController.h"
+#import "RestoreContractsPopUpViewController.h"
 
 @implementation ControllersFactory
 
@@ -236,6 +238,11 @@
     return controller;
 }
 
+-(RestoreContractsViewController*)createRestoreContractViewController{
+    RestoreContractsViewController* controller = (RestoreContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContracts"];
+    return controller;
+}
+
 -(UIViewController*)createFlowNavigationCoordinator{
     return nil;
 }
@@ -281,6 +288,11 @@
 
 - (LoaderPopUpViewController *)createLoaderViewController{
     LoaderPopUpViewController* controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUp"];
+    return controller;
+}
+
+- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController{
+    RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUp"];
     return controller;
 }
 

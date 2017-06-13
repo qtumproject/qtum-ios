@@ -22,7 +22,7 @@
     
     [super viewDidLoad];
     
-    self.contractTypes = @[NSLocalizedString(@"Crate Contract", @""),NSLocalizedString(@"My Contracts", @""),NSLocalizedString(@"Contacts Store", @""),NSLocalizedString(@"Watch Contract", @""), NSLocalizedString(@"Watch Token", @"")];
+    self.contractTypes = @[NSLocalizedString(@"Crate Contract", @""),NSLocalizedString(@"My Contracts", @""),NSLocalizedString(@"Contacts Store", @""),NSLocalizedString(@"Watch Contract", @""), NSLocalizedString(@"Watch Token", @""), NSLocalizedString(@"Restore Contract", @"")];
     [self.tableView reloadData];
 }
 
@@ -52,6 +52,9 @@
     } else if (indexPath.row == 4) {
         
         [self.delegate didSelectWatchTokens];
+    } else if (indexPath.row == 5) {
+        
+        [self.delegate didSelectRestoreContract];
     }
 }
 
@@ -85,19 +88,22 @@
     
     if (indexPath.row == 0) {
         
-        cell.image.image =  [UIImage imageNamed:@"ic-token"];
+        cell.image.image =  [UIImage imageNamed:@"ic-smartContract"];
     } else if (indexPath.row == 1) {
         
-        cell.image.image = [UIImage imageNamed:@"ic-token-subscribe"];
+        cell.image.image = [UIImage imageNamed:@"ic-publichedContracts"];
     } else if (indexPath.row == 2) {
         
-        cell.image.image = [UIImage imageNamed:@"info_icon"];
+        cell.image.image = [UIImage imageNamed:@"ic-contractStore"];
     } else if (indexPath.row == 3) {
         
         cell.image.image = [UIImage imageNamed:@"ic-token-subscribe"];
     } else if (indexPath.row == 4) {
         
         cell.image.image =  [UIImage imageNamed:@"ic-token"];
+    } else if (indexPath.row == 5) {
+        
+        cell.image.image = [UIImage imageNamed:@"ic-contract_restore"];
     }
     
     return cell;

@@ -13,6 +13,7 @@
 @interface TokenFunctionViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *contractAddressLabel;
 
 @end
 
@@ -22,6 +23,7 @@
     
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable) name:kWalletDidChange object:nil];
+    self.contractAddressLabel.text = self.token.mainAddress;
 }
 
 -(void)dealloc{
@@ -34,6 +36,7 @@
     __weak __typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf.tableView reloadData];
+        weakSelf.contractAddressLabel.text = weakSelf.token.mainAddress;
     });
 }
 
@@ -45,6 +48,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section) {
         [self.delegate didSelectFunctionIndexPath:indexPath withItem:self.formModel.functionItems[indexPath.row] andToken:self.token];
     }
@@ -53,6 +57,28 @@
     if (indexPath.section) {
         [self.delegate didDeselectFunctionIndexPath:indexPath withItem:self.formModel.functionItems[indexPath.row]];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        return;
+    }
+    
+    TokenFunctionCell* cell = (TokenFunctionCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.disclousere.tintColor =
+    cell.functionName.textColor = customBlackColor();
+}
+
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        return;
+    }
+    
+    TokenFunctionCell* cell = (TokenFunctionCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.disclousere.tintColor =
+    cell.functionName.textColor = customBlueColor();
 }
 
 #pragma mark - UITableViewDataSource

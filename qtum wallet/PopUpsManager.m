@@ -13,10 +13,11 @@
 #import "ConfirmPopUpViewController.h"
 #import "ErrorPopUpViewController.h"
 #import "LoaderPopUpViewController.h"
+#import "RestoreContractsPopUpViewController.h"
 
 @interface PopUpsManager() <PopUpViewControllerDelegate>
 
-@property (nonatomic, weak) PopUpViewController *currentPopUp;
+@property (nonatomic) PopUpViewController *currentPopUp;
 
 @end
 
@@ -81,6 +82,11 @@
     return controller;
 }
 
+- (RestoreContractsPopUpViewController *)createRestoreContractPopUp{
+    RestoreContractsPopUpViewController *controller = [[ControllersFactory sharedInstance] createRestoreContractsPopUpViewController];
+    return controller;
+}
+
 #pragma mark - Public Methods
 
 - (void)showLoaderPopUp {
@@ -97,7 +103,7 @@
 
 - (void)dismissLoader {
     if ([self.currentPopUp isKindOfClass:[LoaderPopUpViewController class]]) {
-        [self hideCurrentPopUp:YES completion:nil];
+        [self hideCurrentPopUp:NO completion:nil];
     }
 }
 
@@ -153,6 +159,20 @@
     [controller setContent:content];
     self.currentPopUp = controller;
     [controller showFromViewController:presenter animated:YES completion:completion];
+}
+
+- (RestoreContractsPopUpViewController *)showRestoreContractsPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
+    
+    BOOL needShow = [self checkAndHideCurrentPopUp:[RestoreContractsPopUpViewController class] withContent:nil];
+    if (!needShow) {
+        return nil;
+    }
+    
+    RestoreContractsPopUpViewController *controller = [self createRestoreContractPopUp];
+    controller.delegate = delegate;
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+    return controller;
 }
 
 - (void)showConfirmPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion{

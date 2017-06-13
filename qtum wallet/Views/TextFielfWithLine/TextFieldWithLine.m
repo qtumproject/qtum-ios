@@ -22,7 +22,9 @@
     if (self) {
         [self setTintColor:customBlueColor()];
         _currentHeight = 1;
-        self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:@{NSForegroundColorAttributeName: customBlueColor()}];
+        if (self.placeholder) {
+            self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:@{NSForegroundColorAttributeName: customBlueColor()}];
+        }
     }
     return self;
 }

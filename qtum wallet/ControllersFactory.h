@@ -42,6 +42,8 @@
 @class WatchContractViewController;
 @class WatchTokensViewController;
 @class LoaderPopUpViewController;
+@class RestoreContractsViewController;
+@class RestoreContractsPopUpViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -85,6 +87,7 @@
 -(TemplateTokenViewController*)createTemplateTokenViewController;
 -(WatchContractViewController*)createWatchContractViewController;
 -(WatchTokensViewController*)createWatchTokensViewController;
+-(RestoreContractsViewController*)createRestoreContractViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
@@ -93,6 +96,7 @@
 -(InformationPopUpViewController*)createInformationPopUpViewController;
 -(ConfirmPopUpViewController*)createConfirmPopUpViewController;
 -(LoaderPopUpViewController *)createLoaderViewController;
+- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

@@ -7,14 +7,16 @@
 //
 
 #import "TokenFunctionDetailViewController.h"
-#import "AbiTextFieldWithLine.h"
+#import "TextFieldParameterView.h"
 #import "ResultTokenInputsModel.h"
 
-@interface TokenFunctionDetailViewController ()
+@interface TokenFunctionDetailViewController () <AbiTextFieldWithLineDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *callButton;
 @property (weak, nonatomic) IBOutlet UILabel *result;
+
+@property (assign, nonatomic) NSInteger activeTextFieldTag;
 
 @end
 
@@ -29,28 +31,47 @@
 
 -(void)configTextFields {
     
-    NSInteger xoffset = 20;
-    NSInteger yoffset = 30;
-    NSInteger yoffsetFirstElement = 30;
+    NSInteger yoffset = 0;
+    NSInteger yoffsetFirstElement = 0;
     NSInteger heighOfPrevElement = 0;
-    NSInteger heighOfElement = 30;
-    NSInteger widthOfElement = CGRectGetWidth(self.view.frame) - xoffset * 2;
-    NSInteger scrollViewTopOffset = 88;
-    NSInteger scrollViewBottomOffset = 100;
+    NSInteger heighOfElement = 100;
+    NSInteger scrollViewTopOffset = 64;
+    NSInteger scrollViewBottomOffset = 49;
 
     
     
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, scrollViewTopOffset, CGRectGetWidth(self.view.frame), self.view.frame.size.height - scrollViewTopOffset - scrollViewBottomOffset)];
+    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, scrollViewTopOffset, CGRectGetWidth(self.view.frame), self.view.frame.size.height - scrollViewTopOffset)];
     self.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
     for (int i = 0; i < self.function.inputs.count; i++) {
-        AbiTextFieldWithLine* textField = [[AbiTextFieldWithLine alloc] initWithFrame:CGRectMake(xoffset, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement, widthOfElement, heighOfElement) andInterfaceItem:self.function.inputs[i]];
+        TextFieldParameterView *parameter = (TextFieldParameterView *)[[[NSBundle mainBundle] loadNibNamed:@"FieldsViews" owner:self options:nil] lastObject];
+        parameter.frame = CGRectMake(0.0, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement, CGRectGetWidth(self.view.frame), heighOfElement);
+        [parameter.textField setItem:self.function.inputs[i]];
+        [parameter.titleLabel setText:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Parameter", nil), i + 1]];
         heighOfPrevElement = heighOfElement;
-        [self.scrollView addSubview:textField];
-        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
-                                                 yoffset * i + heighOfPrevElement * i + yoffsetFirstElement + heighOfElement);
+        parameter.textField.inputAccessoryView = [self createToolBarInput];
+        parameter.textField.customDelegate = self;
+        parameter.tag = i;
+        
+        [self.scrollView addSubview:parameter];
+        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement + heighOfElement);
     }
+    
+    UIButton *callButton = [[UIButton alloc] init];
+    callButton.frame = CGRectMake((self.view.frame.size.width - 150.0f) / 2.0f, yoffset * self.function.inputs.count - 1 + heighOfPrevElement * self.function.inputs.count - 1 + yoffsetFirstElement + 30.0f, 150, 32.0f);
+    [callButton setTitle:NSLocalizedString(@"CALL", nil) forState:UIControlStateNormal];
+    callButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
+    [callButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
+    [callButton setBackgroundColor:customRedColor()];
+    [callButton addTarget:self action:@selector(didPressedCallAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:callButton];
+    
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
+                                             callButton.frame.origin.y + callButton.frame.size.height + 30.0f);
+    
     [self.view addSubview:self.scrollView];
+    self.scrollView.contentInset =
+    self.originInsets = UIEdgeInsetsMake(0, 0, scrollViewBottomOffset, 0);
 }
 
 #pragma mark - Private Methods
@@ -58,15 +79,41 @@
 -(NSArray<ResultTokenInputsModel*>*)prepareInputsData {
     
     NSMutableArray* inputsData = @[].mutableCopy;
-    for (AbiTextFieldWithLine* textField in self.scrollView.subviews) {
-        if ([textField isKindOfClass:[AbiTextFieldWithLine class]]) {
+    for (TextFieldParameterView* parameter in self.scrollView.subviews) {
+        if ([parameter isKindOfClass:[TextFieldParameterView class]]) {
             ResultTokenInputsModel* input = [ResultTokenInputsModel new];
-            input.name = textField.item.name;
-            input.value = textField.item.type == StringType ? textField.text : @([textField.text integerValue]);
+            input.name = parameter.textField.item.name;
+            input.value = parameter.textField.item.type == StringType ? parameter.textField.text : @([parameter.textField.text integerValue]);
             [inputsData addObject:input];
         }
     }
     return [inputsData copy];
+}
+
+- (UIToolbar*)createToolBarInput {
+    
+    UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.translucent = NO;
+    toolbar.barTintColor = customBlackColor();
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", "") style:UIBarButtonItemStyleDone target:self action:@selector(didPressedCancelAction:)];
+    doneButton.tintColor = customBlueColor();
+    
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", "") style:UIBarButtonItemStyleDone target:self action:@selector(didPressedNextOnTextField:)];
+    cancelButton.tintColor = customBlueColor();
+    
+    toolbar.items = @[doneButton,
+                      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                      cancelButton];
+    [toolbar sizeToFit];
+    return toolbar;
+}
+
+#pragma mark - AbiTextFieldWithLineDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.activeTextFieldTag = textField.superview.tag;
 }
 
 #pragma mark - Public Methods 
@@ -89,11 +136,24 @@
 
 #pragma mark - Actions
 
+- (IBAction)didPressedNextOnTextField:(id)sender {
+    
+    if (self.activeTextFieldTag < self.function.inputs.count - 1) {
+        TextFieldParameterView *parameter = [self.scrollView viewWithTag:self.activeTextFieldTag + 1];
+        UITextField* texField = parameter.textField;
+        [texField becomeFirstResponder];
+    } else {
+        [self didPressedCallAction:nil];
+        [self didVoidTapAction:nil];
+    }
+}
+
 - (IBAction)didPressedCancelAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)didPressedCallAction:(id)sender {
+    [self didVoidTapAction:nil];
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     [self.delegate didCallFunctionWithItem:self.function andParam:[self prepareInputsData] andToken:self.token];
 }
