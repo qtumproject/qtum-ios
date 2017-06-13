@@ -26,10 +26,6 @@ NSString *const ShareContractTokensText = @"It's my tokens";
     [self.tableView reloadData];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
-}
-
 
 #pragma mark - Coordinator invocation
 
