@@ -12,6 +12,8 @@
 
 NSString *MainMessageKey = @"message_key";
 NSString *GetQRCodeMessageKey = @"get_qr_code";
+NSString *GetWalletInformation = @"get_wallet_information";
+NSString *StatusKey = @"status";
 
 @interface iOSSessionManager() <WCSessionDelegate>
 
@@ -115,45 +117,41 @@ NSString *GetQRCodeMessageKey = @"get_qr_code";
             
             replyHandler(dictionary);
         }];
+    } else if ([key isEqualToString:GetWalletInformation]) {
+        CGFloat width = [message[@"width"] floatValue];
+        [[WalletManager sharedInstance].getCurrentWallet updateBalanceWithHandler:^(BOOL success) {
+            if (success) {
+                [[WalletManager sharedInstance].getCurrentWallet updateHistoryWithHandler:^(BOOL success) {
+                    if (success) {
+                        Wallet *wallet = [WalletManager sharedInstance].getCurrentWallet;
+                        NSString *address = wallet.mainAddress;
+                        NSNumber *availableBalance = @(wallet.balance);
+                        NSNumber *unconfirmedBalance = @(wallet.unconfirmedBalance);
+                        NSArray *history = wallet.historyStorage.historyPrivate;
+                        NSMutableArray *historyDictionary = [NSMutableArray new];
+                        for (HistoryElement *element in history) {
+                            [historyDictionary addObject:[element dictionaryFromElementForWatch]];
+                        }
+                        [QRCodeManager createQRCodeFromString:address forSize:CGSizeMake(width, width) withCompletionBlock:^(UIImage *image) {
+                            NSDictionary *dictionary = @{@"address" : address,
+                                                         @"availableBalance" : availableBalance,
+                                                         @"unconfirmedBalance" : unconfirmedBalance,
+                                                         @"history" : historyDictionary,
+                                                         @"image" : UIImagePNGRepresentation(image)};
+                            
+                            replyHandler(dictionary);
+                        }];
+                    } else {
+                        NSDictionary *dictionary = @{StatusKey : @(NO)};
+                        replyHandler(dictionary);
+                    }
+                } andPage:0];
+            }else {
+                NSDictionary *dictionary = @{StatusKey : @(NO)};
+                replyHandler(dictionary);
+            }
+        }];
     }
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the incoming message data caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessageData:(NSData *)messageData{
-    NSLog(@"didReceiveMessage with reply : data : %@", messageData);
-}
-
-/** Called on the delegate of the receiver when the sender sends message data that expects a reply. Will be called on startup if the incoming message data caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessageData:(NSData *)messageData replyHandler:(void(^)(NSData *replyMessageData))replyHandler{
-    NSLog(@"didReceiveMessage with reply : data : %@", messageData);
-}
-
-
-/** -------------------------- Background Transfers ------------------------- */
-
-/** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
-- (void)session:(WCSession *)session didReceiveApplicationContext:(NSDictionary<NSString *, id> *)applicationContext{
-    NSLog(@"didReceiveApplicationContext : applicationContext : %@", applicationContext);
-}
-
-/** Called on the sending side after the user info transfer has successfully completed or failed with an error. Will be called on next launch if the sender was not running when the user info finished. */
-- (void)session:(WCSession * __nonnull)session didFinishUserInfoTransfer:(WCSessionUserInfoTransfer *)userInfoTransfer error:(nullable NSError *)error{
-    NSLog(@"didFinishUserInfoTransfer : %@", userInfoTransfer);
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the user info finished transferring when the receiver was not running. */
-- (void)session:(WCSession *)session didReceiveUserInfo:(NSDictionary<NSString *, id> *)userInfo{
-    NSLog(@"didReceiveUserInfo : %@", userInfo);
-}
-
-/** Called on the sending side after the file transfer has successfully completed or failed with an error. Will be called on next launch if the sender was not running when the transfer finished. */
-- (void)session:(WCSession *)session didFinishFileTransfer:(WCSessionFileTransfer *)fileTransfer error:(nullable NSError *)error{
-    NSLog(@"didFinishFileTransfer : %@", fileTransfer);
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the file finished transferring when the receiver was not running. The incoming file will be located in the Documents/Inbox/ folder when being delivered. The receiver must take ownership of the file by moving it to another location. The system will remove any content that has not been moved when this delegate method returns. */
-- (void)session:(WCSession *)session didReceiveFile:(WCSessionFile *)file{
-    NSLog(@"didReceiveFile : %@", file);
 }
 
 @end

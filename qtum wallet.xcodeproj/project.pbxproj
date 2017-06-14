@@ -181,7 +181,7 @@
 		E730AB581EE6A5D100132711 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E730AB561EE6A5D100132711 /* Interface.storyboard */; };
 		E730AB5A1EE6A5D100132711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E730AB591EE6A5D100132711 /* Assets.xcassets */; };
 		E730AB611EE6A5D100132711 /* QTUM Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E730AB601EE6A5D100132711 /* QTUM Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E730AB691EE6A5D100132711 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB681EE6A5D100132711 /* InterfaceController.m */; };
+		E730AB691EE6A5D100132711 /* QRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB681EE6A5D100132711 /* QRCodeController.m */; };
 		E730AB6C1EE6A5D100132711 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB6B1EE6A5D100132711 /* ExtensionDelegate.m */; };
 		E730AB6F1EE6A5D200132711 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB6E1EE6A5D200132711 /* NotificationController.m */; };
 		E730AB721EE6A5D200132711 /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB711EE6A5D200132711 /* ComplicationController.m */; };
@@ -232,6 +232,18 @@
 		E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */; };
 		E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */; };
 		E78D0C991ED2DF2E00CB91FF /* TokenDetailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */; };
+		E7B7585A1EF016FD004AF200 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758591EF016FD004AF200 /* WalletController.m */; };
+		E7B7585F1EF017C5004AF200 /* BalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7585E1EF017C5004AF200 /* BalanceCell.m */; };
+		E7B758601EF01AF2004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
+		E7B758611EF01AF2004AF200 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */; };
+		E7B758621EF01AF3004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
+		E7B758631EF01AF3004AF200 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */; };
+		E7B758641EF01B01004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
+		E7B758651EF01B01004AF200 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */; };
+		E7B758681EF01C75004AF200 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758671EF01C75004AF200 /* HistoryCell.m */; };
+		E7B7586C1EF12D67004AF200 /* SplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7586B1EF12D67004AF200 /* SplashController.m */; };
+		E7B758711EF139F7004AF200 /* WatchWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758701EF139F7004AF200 /* WatchWallet.m */; };
+		E7B758741EF13A89004AF200 /* WatchHistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758731EF13A89004AF200 /* WatchHistoryElement.m */; };
 		E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758521EEFDB32004AF200 /* BackupContractsViewController.m */; };
 		E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D241D81DE6D6B1003E507B /* QRCodeManager.m */; };
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
@@ -662,8 +674,8 @@
 		E730AB5B1EE6A5D100132711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E730AB601EE6A5D100132711 /* QTUM Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QTUM Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E730AB661EE6A5D100132711 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		E730AB671EE6A5D100132711 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
-		E730AB681EE6A5D100132711 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		E730AB671EE6A5D100132711 /* QRCodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCodeController.h; sourceTree = "<group>"; };
+		E730AB681EE6A5D100132711 /* QRCodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRCodeController.m; sourceTree = "<group>"; };
 		E730AB6A1EE6A5D100132711 /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
 		E730AB6B1EE6A5D100132711 /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
 		E730AB6D1EE6A5D100132711 /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
@@ -756,6 +768,18 @@
 		E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithAnimatedLine.m; sourceTree = "<group>"; };
 		E78D0C971ED2DF2E00CB91FF /* TokenDetailsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsTableView.h; sourceTree = "<group>"; };
 		E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsTableView.m; sourceTree = "<group>"; };
+		E7B758581EF016FD004AF200 /* WalletController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletController.h; sourceTree = "<group>"; };
+		E7B758591EF016FD004AF200 /* WalletController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletController.m; sourceTree = "<group>"; };
+		E7B7585D1EF017C5004AF200 /* BalanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceCell.h; sourceTree = "<group>"; };
+		E7B7585E1EF017C5004AF200 /* BalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceCell.m; sourceTree = "<group>"; };
+		E7B758661EF01C75004AF200 /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
+		E7B758671EF01C75004AF200 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
+		E7B7586A1EF12D67004AF200 /* SplashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashController.h; sourceTree = "<group>"; };
+		E7B7586B1EF12D67004AF200 /* SplashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashController.m; sourceTree = "<group>"; };
+		E7B7586F1EF139F7004AF200 /* WatchWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchWallet.h; sourceTree = "<group>"; };
+		E7B758701EF139F7004AF200 /* WatchWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchWallet.m; sourceTree = "<group>"; };
+		E7B758721EF13A89004AF200 /* WatchHistoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchHistoryElement.h; sourceTree = "<group>"; };
+		E7B758731EF13A89004AF200 /* WatchHistoryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchHistoryElement.m; sourceTree = "<group>"; };
 		E7B758511EEFDB32004AF200 /* BackupContractsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupContractsViewController.h; sourceTree = "<group>"; };
 		E7B758521EEFDB32004AF200 /* BackupContractsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupContractsViewController.m; sourceTree = "<group>"; };
 		E7D241D71DE6D6B1003E507B /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
@@ -923,8 +947,9 @@
 		B3210D271E00326B00365FB6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				B321F2D91EBB643100C813D0 /* euclidflexmedium.ttf */,
 				B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */,
+				B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */,
+				B321F2D91EBB643100C813D0 /* euclidflexmedium.ttf */,
 				B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */,
 				B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */,
 				B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */,
@@ -932,7 +957,6 @@
 				B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */,
 				B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */,
 				B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */,
-				B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -1438,6 +1462,7 @@
 		E730AB641EE6A5D100132711 /* QTUM Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E7B7586E1EF139D4004AF200 /* Model */,
 				E730AB821EE6A62100132711 /* Manages */,
 				E730AB811EE6A61300132711 /* Controllers */,
 				E730AB731EE6A5D200132711 /* Assets.xcassets */,
@@ -1458,8 +1483,10 @@
 		E730AB811EE6A61300132711 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E730AB671EE6A5D100132711 /* InterfaceController.h */,
-				E730AB681EE6A5D100132711 /* InterfaceController.m */,
+				E7B758691EF12D47004AF200 /* Splash */,
+				E7B7585B1EF017A6004AF200 /* Wallet */,
+				E730AB671EE6A5D100132711 /* QRCodeController.h */,
+				E730AB681EE6A5D100132711 /* QRCodeController.m */,
 				E730AB6A1EE6A5D100132711 /* ExtensionDelegate.h */,
 				E730AB6B1EE6A5D100132711 /* ExtensionDelegate.m */,
 				E730AB6D1EE6A5D100132711 /* NotificationController.h */,
@@ -1673,6 +1700,47 @@
 				E78903621EDC678C004243F0 /* AddressesTokenView.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		E7B7585B1EF017A6004AF200 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				E7B7585C1EF017B0004AF200 /* Cells */,
+				E7B758581EF016FD004AF200 /* WalletController.h */,
+				E7B758591EF016FD004AF200 /* WalletController.m */,
+			);
+			name = Wallet;
+			sourceTree = "<group>";
+		};
+		E7B7585C1EF017B0004AF200 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E7B7585D1EF017C5004AF200 /* BalanceCell.h */,
+				E7B7585E1EF017C5004AF200 /* BalanceCell.m */,
+				E7B758661EF01C75004AF200 /* HistoryCell.h */,
+				E7B758671EF01C75004AF200 /* HistoryCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		E7B758691EF12D47004AF200 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				E7B7586A1EF12D67004AF200 /* SplashController.h */,
+				E7B7586B1EF12D67004AF200 /* SplashController.m */,
+			);
+			name = Splash;
+			sourceTree = "<group>";
+		};
+		E7B7586E1EF139D4004AF200 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E7B7586F1EF139F7004AF200 /* WatchWallet.h */,
+				E7B758701EF139F7004AF200 /* WatchWallet.m */,
+				E7B758721EF13A89004AF200 /* WatchHistoryElement.h */,
+				E7B758731EF13A89004AF200 /* WatchHistoryElement.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		E7B758501EEFDB02004AF200 /* BackupContacts */ = {
@@ -2216,8 +2284,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
+				E7B758651EF01B01004AF200 /* simplonmono-regular.ttf in Resources */,
 				B33EAF931E5EC263006125F3 /* Assets.xcassets in Resources */,
 				B33EAF911E5EC263006125F3 /* MainInterface.storyboard in Resources */,
+				E7B758641EF01B01004AF200 /* simplonmono-medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2233,7 +2303,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E730AB5A1EE6A5D100132711 /* Assets.xcassets in Resources */,
+				E7B758611EF01AF2004AF200 /* simplonmono-regular.ttf in Resources */,
 				E730AB581EE6A5D100132711 /* Interface.storyboard in Resources */,
+				E7B758601EF01AF2004AF200 /* simplonmono-medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2241,7 +2313,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7B758631EF01AF3004AF200 /* simplonmono-regular.ttf in Resources */,
 				E730AB741EE6A5D200132711 /* Assets.xcassets in Resources */,
+				E7B758621EF01AF3004AF200 /* simplonmono-medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2387,8 +2461,14 @@
 			files = (
 				E730AB851EE6A64700132711 /* SessionManager.m in Sources */,
 				E730AB6C1EE6A5D100132711 /* ExtensionDelegate.m in Sources */,
+				E7B758681EF01C75004AF200 /* HistoryCell.m in Sources */,
+				E7B758741EF13A89004AF200 /* WatchHistoryElement.m in Sources */,
+				E7B7586C1EF12D67004AF200 /* SplashController.m in Sources */,
 				E730AB721EE6A5D200132711 /* ComplicationController.m in Sources */,
-				E730AB691EE6A5D100132711 /* InterfaceController.m in Sources */,
+				E730AB691EE6A5D100132711 /* QRCodeController.m in Sources */,
+				E7B758711EF139F7004AF200 /* WatchWallet.m in Sources */,
+				E7B7585F1EF017C5004AF200 /* BalanceCell.m in Sources */,
+				E7B7585A1EF016FD004AF200 /* WalletController.m in Sources */,
 				E730AB6F1EE6A5D200132711 /* NotificationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
