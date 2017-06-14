@@ -143,9 +143,9 @@
 - (NSDictionary *)dictionaryFromElementForWatch {
     NSString *address = self.send ? [self.toAddresses firstObject][@"address"] : [self.fromAddreses firstObject][@"address"];
     
-    NSDictionary *dictionary = @{@"address" : address,
-                                 @"date" : self.shortDateString,
-                                 @"amount" : self.amountString,
+    NSDictionary *dictionary = @{@"address" : address ? address : @"",
+                                 @"date" : self.shortDateString ? self.shortDateString : @"",
+                                 @"amount" : self.amountString ? self.amountString : @"",
                                  @"send" : @(self.send)};
     
     return dictionary;

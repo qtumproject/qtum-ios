@@ -22,6 +22,7 @@
     self.address = dictionary[@"address"];
     self.availableBalance = dictionary[@"availableBalance"];
     self.unconfirmedBalance = dictionary[@"unconfirmedBalance"];
+    self.imageData = dictionary[@"image"];
     
     NSMutableArray *mutableArray = [NSMutableArray new];
     for (NSDictionary *dic in dictionary[@"history"]) {

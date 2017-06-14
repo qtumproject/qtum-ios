@@ -118,7 +118,7 @@ NSString *StatusKey = @"status";
             replyHandler(dictionary);
         }];
     } else if ([key isEqualToString:GetWalletInformation]) {
-        
+        CGFloat width = [message[@"width"] floatValue];
         [[WalletManager sharedInstance].getCurrentWallet updateBalanceWithHandler:^(BOOL success) {
             if (success) {
                 [[WalletManager sharedInstance].getCurrentWallet updateHistoryWithHandler:^(BOOL success) {
@@ -132,12 +132,15 @@ NSString *StatusKey = @"status";
                         for (HistoryElement *element in history) {
                             [historyDictionary addObject:[element dictionaryFromElementForWatch]];
                         }
-                        NSDictionary *dictionary = @{@"address" : address,
-                                                     @"availableBalance" : availableBalance,
-                                                     @"unconfirmedBalance" : unconfirmedBalance,
-                                                     @"history" : historyDictionary};
-                        
-                        replyHandler(dictionary);
+                        [QRCodeManager createQRCodeFromString:address forSize:CGSizeMake(width, width) withCompletionBlock:^(UIImage *image) {
+                            NSDictionary *dictionary = @{@"address" : address,
+                                                         @"availableBalance" : availableBalance,
+                                                         @"unconfirmedBalance" : unconfirmedBalance,
+                                                         @"history" : historyDictionary,
+                                                         @"image" : UIImagePNGRepresentation(image)};
+                            
+                            replyHandler(dictionary);
+                        }];
                     } else {
                         NSDictionary *dictionary = @{StatusKey : @(NO)};
                         replyHandler(dictionary);

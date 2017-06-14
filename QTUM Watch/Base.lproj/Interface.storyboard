@@ -14,50 +14,45 @@
             <objects>
                 <controller identifier="SplashController" id="pcR-KU-HYZ" customClass="SplashController">
                     <items>
-                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="11" id="nld-bf-I8x">
+                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="nld-bf-I8x">
                             <items>
-                                <imageView alignment="center" image="HomeScreenIcon" id="KEJ-am-ybb"/>
-                                <label alignment="center" text="QTUM" id="IQ8-uh-EmO">
-                                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <imageView alignment="center" image="HomeScreenIcon" contentMode="center" id="KEJ-am-ybb"/>
+                                <button width="1" alignment="left" title="QTUM" id="v3U-JV-RwV">
+                                    <color key="titleColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
-                                </label>
+                                    <connections>
+                                        <action selector="showWaller" destination="pcR-KU-HYZ" id="ErZ-PD-rmn"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="walletButton" destination="v3U-JV-RwV" id="2i6-Dy-P99"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="-24" y="331"/>
         </scene>
-        <!--QRCodeController-->
+        <!--QRCode-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="QRCodeController" id="AgC-eL-Hgc" customClass="QRCodeController">
+                <controller identifier="QRCode" id="AgC-eL-Hgc" customClass="QRCodeController">
                     <items>
-                        <imageView height="133" alignment="left" id="y2N-Vl-60p"/>
-                        <label width="136" alignment="left" text="Tap reload" textAlignment="center" numberOfLines="0" id="tt6-HR-A3J">
-                            <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </label>
-                        <button width="1" alignment="left" title="Reload" id="HJW-iQ-HiY">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="reloadAction" destination="AgC-eL-Hgc" id="ygU-sF-uah"/>
-                            </connections>
-                        </button>
+                        <imageView width="1" height="1" alignment="center" verticalAlignment="center" contentMode="center" id="y2N-Vl-60p"/>
                     </items>
                     <connections>
                         <outlet property="imageView" destination="y2N-Vl-60p" id="M5b-ah-zBd"/>
-                        <outlet property="reloadButton" destination="HJW-iQ-HiY" id="tST-Xd-XU9"/>
-                        <outlet property="statusLabel" destination="tt6-HR-A3J" id="rQg-eq-laC"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="355"/>
         </scene>
-        <!--Wallet-->
+        <!--My Wallet-->
         <scene sceneID="nHD-Kn-dWN">
             <objects>
-                <controller identifier="WalletController" title="Wallet" alwaysBounce="YES" id="cSr-Fm-otP" customClass="WalletController">
+                <controller identifier="WalletController" title="My Wallet" alwaysBounce="YES" id="cSr-Fm-otP" customClass="WalletController">
                     <items>
                         <table alignment="left" id="NVx-Ho-ojp">
                             <items>
@@ -77,7 +72,7 @@
                                             <label width="1" alignment="left" text="QTUM" textAlignment="center" id="4j4-kW-nyq">
                                                 <fontDescription key="font" type="system" pointSize="13"/>
                                             </label>
-                                            <group width="1" height="9" alignment="left" id="NOY-Jc-7KI"/>
+                                            <group width="1" height="8" alignment="left" id="NOY-Jc-7KI"/>
                                             <group width="1" alignment="left" spacing="5" id="GzW-HU-NjY">
                                                 <items>
                                                     <group width="4" height="4" alignment="center" verticalAlignment="center" radius="2" id="KCB-sI-rh3">
@@ -91,11 +86,14 @@
                                             <label width="1" alignment="left" alpha="0.80000000000000004" text="QTUM" textAlignment="center" id="wQY-fJ-Hvm">
                                                 <fontDescription key="font" type="system" pointSize="10"/>
                                             </label>
-                                            <group width="1" height="10" alignment="left" id="87Z-eT-9vL"/>
-                                            <button width="123" height="15" alignment="center" title="Button" id="ZdD-Er-CGY">
+                                            <group width="1" height="7" alignment="left" id="87Z-eT-9vL"/>
+                                            <button width="123" height="12" alignment="center" title="Button" id="ZdD-Er-CGY">
                                                 <color key="titleColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="font" type="system" pointSize="9"/>
+                                                <connections>
+                                                    <action selector="showQRCode" destination="VzF-68-Wm6" id="Fi4-JW-7um"/>
+                                                </connections>
                                             </button>
                                         </items>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -13,6 +13,10 @@
 
 @interface SplashController() <SessionManagerDelegate>
 
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *walletButton;
+
+@property (nonatomic) WatchWallet *wallet;
+
 @end
 
 @implementation SplashController
@@ -20,17 +24,16 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     
+    [self.walletButton setEnabled:NO];
+    [self.walletButton setTitle:@"Loading..."];
     [SessionManager sharedInstance].delegate = self;;
-    // Configure interface objects here.
 }
 
 - (void)willActivate {
-    // This method is called when watch view controller is about to be visible to user
     [super willActivate];
 }
 
 - (void)didDeactivate {
-    // This method is called when watch view controller is no longer visible
     [super didDeactivate];
 }
 
@@ -39,9 +42,14 @@
 - (void)activationDidCompleteWithState:(WCSessionActivationState)activationState {
     if (activationState == WCSessionActivationStateActivated) {
         __weak typeof(self) weakSelf = self;
-        [[SessionManager sharedInstance] getInformationForWalletScreenWithReplyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
+        [[SessionManager sharedInstance] getInformationForWalletScreenWithSize:[WKInterfaceDevice currentDevice].screenBounds.size.width replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
+            
             WatchWallet *wallet = [[WatchWallet alloc] initWithDictionary:replyMessage];
-            [weakSelf showWalletScreen:wallet];
+            
+            [weakSelf.walletButton setTitle:@"QTUM"];
+            [weakSelf.walletButton setEnabled:YES];
+            weakSelf.wallet = wallet;
+            [weakSelf showWaller];
         } errorHandler:^(NSError * _Nonnull error) {
             NSLog(@"Error");
         }];
@@ -50,8 +58,8 @@
     }
 }
 
-- (void)showWalletScreen:(WatchWallet *)wallet {
-    [self presentControllerWithName:@"WalletController" context:wallet];
+- (IBAction)showWaller {
+    [self presentControllerWithName:@"WalletController" context:self.wallet];
 }
 
 @end

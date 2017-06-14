@@ -12,7 +12,7 @@
 #import "BalanceCell.h"
 #import "HistoryCell.h"
 
-@interface WalletController()
+@interface WalletController() <BalanceCellDelegaete>
 
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceTable *table;
 @property (nonatomic) WatchWallet *wallet;
@@ -34,6 +34,7 @@
     [self.table setRowTypes:mutArray];
     
     BalanceCell *balance = [self.table rowControllerAtIndex:0];
+    balance.delegate = self;
     [balance.address setTitle:self.wallet.address];
     [balance.availableBalance setText:[self.wallet.availableBalance stringValue]];
     [balance.notConfirmedBalance setText:[self.wallet.unconfirmedBalance stringValue]];
@@ -58,6 +59,14 @@
     // This method is called when watch view controller is no longer visible
     [super didDeactivate];
 }
+
+#pragma mark - BalanceCellDelegaete
+
+-(void)showQRCode {
+    [self presentControllerWithName:@"QRCode" context:self.wallet];
+}
+
+#pragma mark - Colors
 
 UIColor *customBlueColor()
 {

@@ -67,8 +67,9 @@ const NSString *GetWalletInformation = @"get_wallet_information";
     [self sendMessage:dictionary replyHandler:replyHandler errorHandler:errorHandler];
 }
 
-- (void)getInformationForWalletScreenWithReplyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler {
-    NSDictionary *dictionary = @{MainMessageKey : GetWalletInformation};
+- (void)getInformationForWalletScreenWithSize:(NSInteger)width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler {
+    NSDictionary *dictionary = @{MainMessageKey : GetWalletInformation,
+                                 @"width" : @(width)};
     
     [self sendMessage:dictionary replyHandler:replyHandler errorHandler:errorHandler];
 }

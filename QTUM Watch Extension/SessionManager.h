@@ -24,7 +24,7 @@
 + (instancetype _Nonnull ) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 - (void)sendGetQRCodeForSize:(NSInteger)width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler;
-- (void)getInformationForWalletScreenWithReplyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler;
+- (void)getInformationForWalletScreenWithSize:(NSInteger)width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler;
 
 @property (nonatomic, weak) id<SessionManagerDelegate> delegate;
 
