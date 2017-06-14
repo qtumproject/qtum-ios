@@ -15,7 +15,10 @@
 + (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
--(NSArray<TemplateModel*>*)getAvailebaleTemplates;
--(NSArray<NSDictionary*>*)backupDescription;
+- (NSArray<TemplateModel*>*)getAvailebaleTemplates;
+- (TemplateModel*)createNewContractTemplateWithAbi:(NSString*)abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
+- (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
+- (NSArray<NSDictionary*>*)backupDescription;
+
 
 @end

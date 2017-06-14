@@ -9,6 +9,7 @@
 #import "TemplateManager.h"
 #import "FXKeychain.h"
 #import "ContractFileManager.h"
+#import "NSString+Extension.h"
 
 @interface TemplateManager ()
 
@@ -68,12 +69,40 @@ static NSString* kBitecode = @"bitecode";
 
 -(NSArray<TemplateModel*>*)getStandartPackOfTemplates {
     
-    TemplateModel* standartToken = [[TemplateModel alloc] initWithTemplateName:@"Standart" andType:TokenType];
-    TemplateModel* v1Token = [[TemplateModel alloc] initWithTemplateName:@"Version1" andType:TokenType];
-    TemplateModel* v2Token = [[TemplateModel alloc] initWithTemplateName:@"Version2" andType:TokenType];
-    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType];
+    TemplateModel* standartToken = [[TemplateModel alloc] initWithTemplateName:@"Standart" andType:TokenType withUiid:1];
+    TemplateModel* v1Token = [[TemplateModel alloc] initWithTemplateName:@"Version1" andType:TokenType withUiid:2];
+    TemplateModel* v2Token = [[TemplateModel alloc] initWithTemplateName:@"Version2" andType:TokenType withUiid:3];
+    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType withUiid:4];
     
     return @[standartToken,v1Token,v2Token,crowdsale];
+}
+
+- (TemplateModel*)createNewContractTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
+    
+    NSError *err = nil;
+    NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:&err];
+    // access the dictionaries
+    if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:contractAddress]) {
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:UndefinedContractType withUiid:self.templates.count + 1];
+        return customToken;
+    }
+    return nil;
+}
+
+- (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
+    
+    NSError *err = nil;
+    NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:&err];
+    
+    if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:contractAddress]) {
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withUiid:self.templates.count + 1];
+        return customToken;
+    }
+    return nil;
 }
 
 -(NSArray<TemplateModel*>*)getAvailebaleTemplates {
@@ -89,17 +118,18 @@ static NSString* kBitecode = @"bitecode";
         NSMutableDictionary* backupItem = @{}.mutableCopy;
         TemplateModel* template = self.templates[i];
         ContractFileManager* fileManager = [ContractFileManager sharedInstance];
-        [backupItem setObject:@(i) forKey:kUiidKey];
+        [backupItem setObject:@(template.uiid) forKey:kUiidKey];
         [backupItem setObject:template.templateName ? template.templateName : @"" forKey:kNameKey];
         [backupItem setObject:template.templateTypeStringForBackup forKey:kTypeKey];
-        [backupItem setObject:template.creationDate forKey:kCreationDateKey];
-        [backupItem setObject:[fileManager getContractFromBundleWithTemplate:template.templateName] forKey:kSourceKey];
-        [backupItem setObject:[fileManager getAbiFromBundleWithTemplate:template.templateName] forKey:kAbiKey];
-        [backupItem setObject:[fileManager getBitcodeFromBundleWithTemplate:template.templateName] forKey:kBitecode];
+        [backupItem setObject:template.creationFormattedDateString forKey:kCreationDateKey];
+        [backupItem setObject:[fileManager getContractWithTemplate:template.templateName] forKey:kSourceKey];
+        [backupItem setObject:[fileManager getEscapeAbiWithTemplate:template.templateName] forKey:kAbiKey];
+        [backupItem setObject:[NSString hexadecimalString:[fileManager getBitcodeWithTemplate:template.templateName]] forKey:kBitecode];
         [backupArray addObject:backupItem];
     }
     
     return backupArray.copy;
 }
+
 
 @end

@@ -43,8 +43,8 @@
 @property (strong, nonatomic) TemplateModel* templateModel;
 @property (strong, nonatomic) NSDate* creationDate;
 @property (copy, nonatomic, readonly) NSString* creationDateString;
+@property (copy, nonatomic, readonly) NSString* creationFormattedDateString;
 @property (strong, nonatomic) NSDictionary* addressBalanceDictionary;
-
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
 

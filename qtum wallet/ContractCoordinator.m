@@ -27,6 +27,7 @@
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
 #import "BackupContractsViewController.h"
+#import "TemplateManager.h"
 
 
 @interface ContractCoordinator ()
@@ -68,7 +69,7 @@
     
     TemplateTokenViewController* controller = (TemplateTokenViewController*)[[ControllersFactory sharedInstance] createTemplateTokenViewController];
     controller.delegate = self;
-    controller.templateModels = [[ContractFileManager sharedInstance] getAvailebaleTemplates];
+    controller.templateModels = [[TemplateManager sharedInstance] getAvailebaleTemplates];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

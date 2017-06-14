@@ -10,6 +10,6 @@
 
 @interface BackupFileManager : NSObject
 
-+ (void)getBackupFile:(void (^)(NSDictionary *file))completionBlock;
++(void)getBackupFile:(void (^)(NSDictionary *file, NSString* path, NSInteger size)) completionBlock;
 
 @end

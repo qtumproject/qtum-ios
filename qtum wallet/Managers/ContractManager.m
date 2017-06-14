@@ -13,6 +13,7 @@
 #import "ContractInterfaceManager.h"
 #import "ContractArgumentsInterpretator.h"
 #import "NSData+Extension.h"
+#import "TemplateManager.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -243,7 +244,7 @@ static NSString* kAddresses = @"kAddress";
         contract.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
         contract.manager = self;
         
-        TemplateModel* template = [[ContractInterfaceManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+        TemplateModel* template = [[TemplateManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
         
         if (template) {
             
@@ -277,7 +278,7 @@ static NSString* kAddresses = @"kAddress";
         contract.manager = self;
         contract.isActive = YES;
         
-        TemplateModel* template = [[ContractInterfaceManager sharedInstance] createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+        TemplateModel* template = [[TemplateManager sharedInstance] createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
         
         if (template) {
             
@@ -438,13 +439,13 @@ static NSString* kTemplateKey = @"template";
     for (int i = 0; i < self.contracts.count; i++) {
         NSMutableDictionary* backupItem = @{}.mutableCopy;
         Contract* contract = self.contracts[i];
-        [backupItem setObject:contract.creationDate forKey:kPublishDate];
+        [backupItem setObject:contract.creationFormattedDateString forKey:kPublishDate];
         [backupItem setObject:contract.localName forKey:kNameKey];
         [backupItem setObject:contract.contractAddress forKey:kContractAddressKey];
         [backupItem setObject:contract.contractCreationAddressAddress ? contract.contractCreationAddressAddress : @"" forKey:kContractCreationAddressKey];
         [backupItem setObject:@(contract.isActive) forKey:kIsActiveKey];
         [backupItem setObject:contract.templateModel.templateTypeStringForBackup forKey:kTypeKey];
-        [backupItem setObject:@(contract.templateModel.type) forKey:kTemplateKey];
+        [backupItem setObject:@(contract.templateModel.uiid) forKey:kTemplateKey];
         [backupArray addObject:backupItem];
     }
     
