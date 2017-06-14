@@ -47,6 +47,10 @@
 #import "ErrorPopUpViewController.h"
 #import "LoaderPopUpViewController.h"
 #import "WatchContractViewController.h"
+#import "WatchTokensViewController.h"
+#import "RestoreContractsViewController.h"
+#import "RestoreContractsPopUpViewController.h"
+#import "BackupContractsViewController.h"
 
 @implementation ControllersFactory
 
@@ -229,6 +233,22 @@
     return controller;
 }
 
+
+-(WatchTokensViewController*)createWatchTokensViewController{
+    WatchTokensViewController* controller = (WatchTokensViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
+    return controller;
+}
+
+-(RestoreContractsViewController*)createRestoreContractViewController{
+    RestoreContractsViewController* controller = (RestoreContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContracts"];
+    return controller;
+}
+
+-(BackupContractsViewController*)createBackupContractViewController{
+    BackupContractsViewController* controller = (BackupContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContracts"];
+    return controller;
+}
+
 -(UIViewController*)createFlowNavigationCoordinator{
     return nil;
 }
@@ -274,6 +294,11 @@
 
 - (LoaderPopUpViewController *)createLoaderViewController{
     LoaderPopUpViewController* controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUp"];
+    return controller;
+}
+
+- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController{
+    RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUp"];
     return controller;
 }
 

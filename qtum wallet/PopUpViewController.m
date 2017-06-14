@@ -34,9 +34,12 @@ CGFloat AnimationDuration = 0.3f;
             [window addSubview:self.view];
             [UIView animateWithDuration:AnimationDuration animations:^{
                 self.view.alpha = 1.0f;
+            } completion:^(BOOL finished) {
+                if (completion) completion();
             }];
         }else{
             [window addSubview:self.view];
+            if (completion) completion();
         }
     }else{
         [controller presentViewController:self animated:animated completion:completion];
@@ -51,9 +54,11 @@ CGFloat AnimationDuration = 0.3f;
                 self.view.alpha = 0.0f;
             } completion:^(BOOL finished) {
                 [self.view removeFromSuperview];
+                if (completion) completion();
             }];
         }else{
             [self.view removeFromSuperview];
+            if (completion) completion();
         }
     }else{
         [self dismissViewControllerAnimated:animated completion:completion];

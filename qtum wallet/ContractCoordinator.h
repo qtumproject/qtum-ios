@@ -21,8 +21,11 @@
 -(void)finishStepBackDidPressed;
 -(void)didSelectContractStore;
 -(void)didSelectWatchContracts;
+-(void)didSelectWatchTokens;
 -(void)didSelectPublishedContracts;
 -(void)didSelectNewContracts;
+-(void)didSelectRestoreContract;
+-(void)didSelectBackupContract;
 -(void)didPressedQuit;
 -(void)didPressedBack;
 -(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel;

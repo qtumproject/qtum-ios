@@ -1,12 +1,12 @@
 //
-//  ContractManager.m
+//  ContractInterfaceManager.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 16.05.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "ContractManager.h"
+#import "ContractInterfaceManager.h"
 #import "InterfaceInputFormModel.h"
 #import "ContractFileManager.h"
 #import "ContractArgumentsInterpretator.h"
@@ -15,11 +15,11 @@
 #import "NSString+SHA3.h"
 #import "NSString+Extension.h"
 
-@implementation ContractManager
+@implementation ContractInterfaceManager
 
 + (instancetype)sharedInstance {
     
-    static ContractManager *instance;
+    static ContractInterfaceManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[super alloc] initUniqueInstance];
@@ -40,28 +40,61 @@
 
 - (AbiinterfaceItem*)getTokenStandartTransferMethodInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance]getAbiFromBundle]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"transfer"];
     NSArray *filteredArray = [interphase.functionItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
 }
 
+- (AbiinterfaceItem*)getTokenStandartNamePropertyInterface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"name"];
+    NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
+    return filteredArray.firstObject;
+}
+
+- (AbiinterfaceItem*)getTokenStandartTotalSupplyPropertyInterface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"totalSupply"];
+    NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
+    return filteredArray.firstObject;
+}
+
+- (AbiinterfaceItem*)getTokenStandartSymbolPropertyInterface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"symbol"];
+    NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
+    return filteredArray.firstObject;
+}
+
+
+- (AbiinterfaceItem*)getTokenStandartDecimalPropertyInterface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"decimals"];
+    NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
+    return filteredArray.firstObject;
+}
+
 - (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName {
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getAbiFromBundleWithTemplate:templateName]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getAbiWithTemplate:templateName]];
     return interphase;
 }
 
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args{
     
-    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeFromBundleWithTemplate:templateName] mutableCopy];
+    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeWithTemplate:templateName] mutableCopy];
     [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromDictionary:args]];
     return [contractSource copy];
 }
 
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args{
     
-    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeFromBundleWithTemplate:templateName] mutableCopy];
+    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeWithTemplate:templateName] mutableCopy];
     [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromArray:args]];
     return [contractSource copy];
 }
@@ -107,35 +140,5 @@
     
     return [hashFunction copy];
 }
-
-- (TemplateModel*)createNewContractTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
-    
-    NSError *err = nil;
-    NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
-                                                   options:NSJSONReadingMutableContainers
-                                                     error:&err];
-    // access the dictionaries
-    if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:contractAddress]) {
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:UndefinedContractType];
-        return customToken;
-    }
-    return nil;
-}
-
-- (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
-    
-    NSError *err = nil;
-    NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
-                                    options:NSJSONReadingMutableContainers
-                                      error:&err];
-
-    if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:contractAddress]) {
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType];
-        return customToken;
-    }
-    return nil;
-}
-
-
 
 @end

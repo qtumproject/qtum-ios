@@ -54,12 +54,12 @@
     [self copyAllFilesFormPath:fromPath toPath:toPath];
 }
 
--(NSDictionary*)getAbiFromBundle {
+-(NSDictionary*)getStandartAbi {
     
-    return [self getAbiFromBundleWithTemplate:@"Standart"];
+    return [self getAbiWithTemplate:@"Standart"];
 }
 
--(NSDictionary*)getAbiFromBundleWithTemplate:(NSString*) templateName {
+-(NSDictionary*)getAbiWithTemplate:(NSString*) templateName {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templateName];
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -67,14 +67,21 @@
     return jsonAbi;
 }
 
--(NSString*)getContractFromBundleWithTemplate:(NSString*) templateName {
+-(NSString*)getEscapeAbiWithTemplate:(NSString*) templateName {
+    
+    NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templateName];
+    NSString *abi = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    return abi;
+}
+
+-(NSString*)getContractWithTemplate:(NSString*) templateName {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/source-contract",[self contractDirectory],templateName];
     NSString *contract = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     return contract;
 }
 
--(NSData*)getBitcodeFromBundleWithTemplate:(NSString*) templateName {
+-(NSData*)getBitcodeWithTemplate:(NSString*) templateName {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/bitecode-contract",[self contractDirectory],templateName];
     NSString *contract = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -139,15 +146,5 @@
     }
 }
 
-
--(NSArray<TemplateModel*>*)getAvailebaleTemplates {
-    
-    TemplateModel* standartToken = [[TemplateModel alloc] initWithTemplateName:@"Standart" andType:TokenType];
-    TemplateModel* v1Token = [[TemplateModel alloc] initWithTemplateName:@"Version1" andType:TokenType];
-    TemplateModel* v2Token = [[TemplateModel alloc] initWithTemplateName:@"Version2" andType:TokenType];
-    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType];
-
-    return @[standartToken,v1Token,v2Token,crowdsale];
-}
 
 @end

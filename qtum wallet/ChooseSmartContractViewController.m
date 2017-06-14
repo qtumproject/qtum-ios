@@ -22,7 +22,8 @@
     
     [super viewDidLoad];
     
-    self.contractTypes = @[NSLocalizedString(@"Crate Contract", @""),NSLocalizedString(@"My Contracts", @""),NSLocalizedString(@"Contacts Store", @""),NSLocalizedString(@"Watch Contract", @"")];
+    self.contractTypes = @[NSLocalizedString(@"My New Contracts", @""),NSLocalizedString(@"My Published Contracts", @""),NSLocalizedString(@"Contacts Store", @""),NSLocalizedString(@"Watch Contract", @""), NSLocalizedString(@"Watch Token", @""), NSLocalizedString(@"Backup Contracts", @""), NSLocalizedString(@"Restore Contracts", @"")];
+
     [self.tableView reloadData];
 }
 
@@ -37,18 +38,31 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    if (indexPath.row == 0) {
-        
-        [self.delegate didSelectNewContracts];
-    } else if (indexPath.row == 1) {
-        
-        [self.delegate didSelectPublishedContracts];
-    } else if (indexPath.row == 2) {
-        
-        [self.delegate didSelectContractStore];
-    } else if (indexPath.row == 3) {
-        
-        [self.delegate didSelectWatchContracts];
+    switch (indexPath.row) {
+        case 0:
+            [self.delegate didSelectNewContracts];
+            break;
+        case 1:
+            [self.delegate didSelectPublishedContracts];
+            break;
+        case 2:
+            [self.delegate didSelectContractStore];
+            break;
+        case 3:
+            [self.delegate didSelectWatchContracts];
+            break;
+        case 4:
+            [self.delegate didSelectWatchTokens];
+            break;
+        case 5:
+            [self.delegate didSelectBackupContract];
+            break;
+        case 6:
+            [self.delegate didSelectRestoreContract];
+            break;
+        default:
+            NSLog(@"Incorrect index");
+            break;
     }
 }
 
@@ -80,15 +94,35 @@
     ChoiseSmartContractCell* cell = [tableView dequeueReusableCellWithIdentifier:choiseSmartContractCellIdentifire];
     cell.smartContractType.text = self.contractTypes[indexPath.row];
     
-    if (indexPath.row == 0) {
-        cell.image.image =  [UIImage imageNamed:@"ic-smartContract"];
-    } else if (indexPath.row == 1) {
-        cell.image.image = [UIImage imageNamed:@"ic-publichedContracts"];
-    } else if (indexPath.row == 2) {
-        cell.image.image = [UIImage imageNamed:@"ic-contractStore"];
-    } else if (indexPath.row == 3) {
-        cell.image.image = [UIImage imageNamed:@"ic-token-subscribe"];
+    UIImage *imageForCell;
+    switch (indexPath.row) {
+        case 0:
+            imageForCell =  [UIImage imageNamed:@"ic-smartContract"];
+            break;
+        case 1:
+            imageForCell = [UIImage imageNamed:@"ic-publichedContracts"];
+            break;
+        case 2:
+            imageForCell = [UIImage imageNamed:@"ic-contractStore"];
+            break;
+        case 3:
+            imageForCell = [UIImage imageNamed:@"ic-contract_watch"];
+            break;
+        case 4:
+            imageForCell =  [UIImage imageNamed:@"ic_token_watch"];
+            break;
+        case 5:
+            imageForCell = [UIImage imageNamed:@"ic_contr_backup"];
+            break;
+        case 6:
+            imageForCell = [UIImage imageNamed:@"ic-contract_restore"];
+            break;
+        default:
+            NSLog(@"Incorrect index");
+            break;
     }
+    
+    cell.image.image = imageForCell;
     
     return cell;
 }

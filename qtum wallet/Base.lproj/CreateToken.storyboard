@@ -1336,13 +1336,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxN-pE-Q1E">
-                                                    <rect key="frame" x="10" y="7.5" width="26.5" height="15.5"/>
+                                                    <rect key="frame" x="10" y="8.5" width="26.5" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-Eu-hd4">
-                                                    <rect key="frame" x="283.5" y="7.5" width="81.5" height="15.5"/>
+                                                    <rect key="frame" x="283.5" y="8.5" width="81.5" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1783,13 +1783,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaG-qH-8vV">
-                                                    <rect key="frame" x="10" y="7.5" width="45" height="15.5"/>
+                                                    <rect key="frame" x="10" y="8.5" width="45" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8y-05-u4j">
-                                                    <rect key="frame" x="283.5" y="7.5" width="81.5" height="15.5"/>
+                                                    <rect key="frame" x="283.5" y="8.5" width="81.5" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2099,7 +2099,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contract Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDo-6G-OkB">
-                                        <rect key="frame" x="10" y="9" width="355" height="13.5"/>
+                                        <rect key="frame" x="10" y="9" width="355" height="13"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2159,7 +2159,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Contract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6we-hg-tCI">
-                                                <rect key="frame" x="121.5" y="11" width="132" height="23"/>
+                                                <rect key="frame" x="122" y="11" width="132" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2240,60 +2240,85 @@
                                     <action selector="didPressedCancelAction:" destination="bv1-xJ-VK3" eventType="touchUpInside" id="pj1-ma-sQR"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contract Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Yh-7I-OXO" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="94" width="335" height="20"/>
-                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contract Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gqk-rI-R3b" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="144" width="335" height="20"/>
-                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mGW-Lj-dq0" customClass="ImputTextView">
-                                <rect key="frame" x="10" y="204" width="355" height="100"/>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwf-jb-d8z">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contract Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JjH-AD-0q9" customClass="TextFieldWithLine">
+                                        <rect key="frame" x="18" y="30" width="339" height="20"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Y8e-i3-MKp"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contract Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EUD-Hf-ygV" customClass="TextFieldWithLine">
+                                        <rect key="frame" x="18" y="90" width="339" height="20"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="TkT-rD-3PK"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nuX-Jb-sqS" customClass="ImputTextView">
+                                        <rect key="frame" x="18" y="180" width="339" height="150"/>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="UQp-3x-KWS"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abi Interface" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwQ-FK-PmM">
+                                        <rect key="frame" x="22" y="150" width="126.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="KUt-xf-LEa"/>
+                                    <constraint firstItem="nuX-Jb-sqS" firstAttribute="top" secondItem="gwQ-FK-PmM" secondAttribute="bottom" constant="10" id="5Ax-4g-e6U"/>
+                                    <constraint firstItem="nuX-Jb-sqS" firstAttribute="top" secondItem="EUD-Hf-ygV" secondAttribute="bottom" constant="70" id="If5-B8-ZgF"/>
+                                    <constraint firstItem="JjH-AD-0q9" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="18" id="KbP-OC-BS1"/>
+                                    <constraint firstAttribute="bottom" secondItem="nuX-Jb-sqS" secondAttribute="bottom" constant="20" id="QKb-mT-yGY"/>
+                                    <constraint firstAttribute="trailing" secondItem="JjH-AD-0q9" secondAttribute="trailing" constant="18" id="Qr5-PW-lJk"/>
+                                    <constraint firstItem="EUD-Hf-ygV" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="18" id="Rkh-1H-T58"/>
+                                    <constraint firstItem="JjH-AD-0q9" firstAttribute="top" secondItem="Zwf-jb-d8z" secondAttribute="top" constant="30" id="SMS-ps-tgj"/>
+                                    <constraint firstItem="nuX-Jb-sqS" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="18" id="SwC-E7-J4t"/>
+                                    <constraint firstAttribute="trailing" secondItem="nuX-Jb-sqS" secondAttribute="trailing" constant="18" id="c4H-k5-i4J"/>
+                                    <constraint firstItem="gwQ-FK-PmM" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="22" id="gXY-qe-DGi"/>
+                                    <constraint firstItem="EUD-Hf-ygV" firstAttribute="top" secondItem="JjH-AD-0q9" secondAttribute="bottom" constant="40" id="mJL-Uh-5zW"/>
+                                    <constraint firstAttribute="trailing" secondItem="EUD-Hf-ygV" secondAttribute="trailing" constant="18" id="oWL-8B-BMV"/>
+                                    <constraint firstItem="JjH-AD-0q9" firstAttribute="centerX" secondItem="Zwf-jb-d8z" secondAttribute="centerX" id="ymw-28-19A"/>
                                 </constraints>
-                                <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                            </textView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Gqk-rI-R3b" firstAttribute="leading" secondItem="ACQ-Qh-S08" secondAttribute="leading" constant="20" id="1hm-jq-mbC"/>
                             <constraint firstItem="QA9-wk-RLR" firstAttribute="centerX" secondItem="ACQ-Qh-S08" secondAttribute="centerX" constant="-75" id="2te-Da-ahm"/>
                             <constraint firstItem="QA9-wk-RLR" firstAttribute="centerY" secondItem="aAS-Ri-wJy" secondAttribute="centerY" id="6ez-iT-yvq"/>
                             <constraint firstItem="Qiy-El-MgM" firstAttribute="top" secondItem="ACQ-Qh-S08" secondAttribute="top" id="7yr-G2-rYQ"/>
-                            <constraint firstItem="5Yh-7I-OXO" firstAttribute="top" secondItem="Qiy-El-MgM" secondAttribute="bottom" constant="30" id="ASL-SB-0FL"/>
-                            <constraint firstItem="mGW-Lj-dq0" firstAttribute="top" secondItem="Gqk-rI-R3b" secondAttribute="bottom" constant="40" id="ENe-pP-uxO"/>
-                            <constraint firstItem="Gqk-rI-R3b" firstAttribute="top" secondItem="5Yh-7I-OXO" secondAttribute="bottom" constant="30" id="J8F-sa-apn"/>
-                            <constraint firstItem="5Yh-7I-OXO" firstAttribute="leading" secondItem="ACQ-Qh-S08" secondAttribute="leading" constant="20" id="SVM-zb-9NE"/>
                             <constraint firstItem="uAK-Wz-BEZ" firstAttribute="top" secondItem="aAS-Ri-wJy" secondAttribute="bottom" constant="30" id="Ten-21-V6N"/>
-                            <constraint firstItem="mGW-Lj-dq0" firstAttribute="leading" secondItem="ACQ-Qh-S08" secondAttribute="leading" constant="10" id="WQu-EC-CJO"/>
-                            <constraint firstAttribute="trailing" secondItem="Gqk-rI-R3b" secondAttribute="trailing" constant="20" id="Yp4-6t-Xx2"/>
                             <constraint firstItem="aAS-Ri-wJy" firstAttribute="centerX" secondItem="ACQ-Qh-S08" secondAttribute="centerX" constant="75" id="afD-KY-XX9"/>
+                            <constraint firstItem="Zwf-jb-d8z" firstAttribute="leading" secondItem="ACQ-Qh-S08" secondAttribute="leading" id="eNK-pY-E9r"/>
+                            <constraint firstItem="Zwf-jb-d8z" firstAttribute="top" secondItem="Qiy-El-MgM" secondAttribute="bottom" id="qZ2-Wp-da4"/>
                             <constraint firstAttribute="trailing" secondItem="Qiy-El-MgM" secondAttribute="trailing" id="ri3-Sy-7ed"/>
-                            <constraint firstAttribute="trailing" secondItem="mGW-Lj-dq0" secondAttribute="trailing" constant="10" id="tOP-zd-7fR"/>
                             <constraint firstItem="Qiy-El-MgM" firstAttribute="leading" secondItem="ACQ-Qh-S08" secondAttribute="leading" id="vsu-ll-YF6"/>
-                            <constraint firstAttribute="trailing" secondItem="5Yh-7I-OXO" secondAttribute="trailing" constant="20" id="y9F-uf-XUM"/>
+                            <constraint firstItem="uAK-Wz-BEZ" firstAttribute="top" secondItem="Zwf-jb-d8z" secondAttribute="bottom" id="ycE-AY-zDt"/>
+                            <constraint firstAttribute="trailing" secondItem="Zwf-jb-d8z" secondAttribute="trailing" id="yvd-1H-qMM"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="fwg-ew-JFL" appends="YES" id="2h8-fF-LZk"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="abiTextView" destination="mGW-Lj-dq0" id="GIp-Fr-kqX"/>
-                        <outlet property="contractAddressTextField" destination="Gqk-rI-R3b" id="XFs-Fb-xSA"/>
-                        <outlet property="contractNameField" destination="5Yh-7I-OXO" id="E1L-zB-GsQ"/>
+                        <outlet property="scrollView" destination="Zwf-jb-d8z" id="X3f-SP-6vP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KSp-rQ-CNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2303,7 +2328,194 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="308" y="2150"/>
+            <point key="canvasLocation" x="289" y="2127"/>
+        </scene>
+        <!--Watch Tokens View Controller-->
+        <scene sceneID="JJk-Lh-HAR">
+            <objects>
+                <viewController storyboardIdentifier="WatchTokensViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p1l-ra-yfR" customClass="WatchTokensViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cMh-fr-73P"/>
+                        <viewControllerLayoutGuide type="bottom" id="B7e-4N-IUE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gju-bg-KLs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="526-FK-AHW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CkW-QW-LtO" customClass="TextFieldWithLine">
+                                        <rect key="frame" x="18" y="30" width="339" height="20"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ccK-LX-4Hw" customClass="TextFieldWithLine">
+                                        <rect key="frame" x="18" y="90" width="339" height="20"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FFu-w8-j4W" customClass="ImputTextView">
+                                        <rect key="frame" x="18" y="180" width="339" height="150"/>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="Oia-0k-sPA"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.1803921568627451" green="0.60392156862745094" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abi Interface" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ds-uS-Qqi">
+                                        <rect key="frame" x="22" y="150" width="126.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FFu-w8-j4W" firstAttribute="leading" secondItem="526-FK-AHW" secondAttribute="leading" constant="18" id="2fo-FJ-jGj"/>
+                                    <constraint firstItem="FFu-w8-j4W" firstAttribute="top" secondItem="8ds-uS-Qqi" secondAttribute="bottom" constant="10" id="94x-8H-v6C"/>
+                                    <constraint firstAttribute="trailing" secondItem="FFu-w8-j4W" secondAttribute="trailing" constant="18" id="C80-Em-NtM"/>
+                                    <constraint firstAttribute="trailing" secondItem="CkW-QW-LtO" secondAttribute="trailing" constant="18" id="J3L-0i-WPO"/>
+                                    <constraint firstItem="CkW-QW-LtO" firstAttribute="centerX" secondItem="526-FK-AHW" secondAttribute="centerX" id="Meq-eN-ZgB"/>
+                                    <constraint firstItem="8ds-uS-Qqi" firstAttribute="leading" secondItem="526-FK-AHW" secondAttribute="leading" constant="22" id="QpC-A0-fq5"/>
+                                    <constraint firstAttribute="bottom" secondItem="FFu-w8-j4W" secondAttribute="bottom" constant="20" id="TRw-n7-qQm"/>
+                                    <constraint firstItem="FFu-w8-j4W" firstAttribute="top" secondItem="ccK-LX-4Hw" secondAttribute="bottom" constant="70" id="azW-dX-GNj"/>
+                                    <constraint firstItem="CkW-QW-LtO" firstAttribute="top" secondItem="526-FK-AHW" secondAttribute="top" constant="30" id="fkL-xx-XFR"/>
+                                    <constraint firstItem="CkW-QW-LtO" firstAttribute="leading" secondItem="526-FK-AHW" secondAttribute="leading" constant="18" id="ftA-dl-BAZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ccK-LX-4Hw" secondAttribute="trailing" constant="18" id="n5W-fh-rUH"/>
+                                    <constraint firstItem="ccK-LX-4Hw" firstAttribute="top" secondItem="CkW-QW-LtO" secondAttribute="bottom" constant="40" id="qHZ-hI-uU6"/>
+                                    <constraint firstItem="ccK-LX-4Hw" firstAttribute="leading" secondItem="526-FK-AHW" secondAttribute="leading" constant="18" id="zxf-SS-Jkz"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPS-j2-Ujl">
+                                <rect key="frame" x="45" y="601" width="135" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="RUO-3H-Qhh"/>
+                                    <constraint firstAttribute="height" constant="36" id="Rvw-Ws-pYR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressedCancelAction:" destination="p1l-ra-yfR" eventType="touchUpInside" id="Y57-KJ-WwD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbs-hm-xZA">
+                                <rect key="frame" x="195" y="601" width="135" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="7DM-qb-gIg"/>
+                                    <constraint firstAttribute="width" constant="135" id="w4e-FR-yeT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="highlighted" image="payment2"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressedOkAction:" destination="p1l-ra-yfR" eventType="touchUpInside" id="UEX-0v-5UY"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ue-D9-yO0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAX-rI-W1x">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Tokens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4p-Bb-ezn">
+                                                <rect key="frame" x="131" y="11" width="113" height="23"/>
+                                                <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                                                <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMl-Ba-b2a">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="2em-2H-zmQ"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="back"/>
+                                                <state key="highlighted" image="back">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didPressedBackAction:" destination="p1l-ra-yfR" eventType="touchUpInside" id="s9g-Dj-HDU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="fMl-Ba-b2a" firstAttribute="leading" secondItem="kAX-rI-W1x" secondAttribute="leading" id="DW0-39-NwB"/>
+                                            <constraint firstAttribute="height" constant="44" id="ESj-Mo-BvC"/>
+                                            <constraint firstAttribute="bottom" secondItem="fMl-Ba-b2a" secondAttribute="bottom" id="I7U-R0-Dhb"/>
+                                            <constraint firstItem="P4p-Bb-ezn" firstAttribute="centerY" secondItem="kAX-rI-W1x" secondAttribute="centerY" id="aC6-Tm-mWr"/>
+                                            <constraint firstItem="P4p-Bb-ezn" firstAttribute="centerX" secondItem="kAX-rI-W1x" secondAttribute="centerX" id="sWG-9Z-84g"/>
+                                            <constraint firstItem="fMl-Ba-b2a" firstAttribute="top" secondItem="kAX-rI-W1x" secondAttribute="top" id="vsa-of-NsO"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kAX-rI-W1x" secondAttribute="bottom" id="Fmb-d5-ppm"/>
+                                    <constraint firstAttribute="height" constant="64" id="Ry4-ym-u0R"/>
+                                    <constraint firstItem="kAX-rI-W1x" firstAttribute="leading" secondItem="4ue-D9-yO0" secondAttribute="leading" id="bjY-qW-Lu5"/>
+                                    <constraint firstAttribute="trailing" secondItem="kAX-rI-W1x" secondAttribute="trailing" id="gWR-Yp-Yks"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4ue-D9-yO0" secondAttribute="trailing" id="4td-TI-v69"/>
+                            <constraint firstItem="fPS-j2-Ujl" firstAttribute="centerX" secondItem="Gju-bg-KLs" secondAttribute="centerX" constant="-75" id="5IS-rE-M30"/>
+                            <constraint firstItem="B7e-4N-IUE" firstAttribute="top" secondItem="Rbs-hm-xZA" secondAttribute="bottom" constant="30" id="7yN-TE-Obb"/>
+                            <constraint firstAttribute="trailing" secondItem="526-FK-AHW" secondAttribute="trailing" id="8Rg-EB-frA"/>
+                            <constraint firstItem="Rbs-hm-xZA" firstAttribute="centerX" secondItem="Gju-bg-KLs" secondAttribute="centerX" constant="75" id="Cfb-2a-Qgh"/>
+                            <constraint firstItem="4ue-D9-yO0" firstAttribute="top" secondItem="Gju-bg-KLs" secondAttribute="top" id="GdH-at-dhR"/>
+                            <constraint firstAttribute="bottom" secondItem="526-FK-AHW" secondAttribute="bottom" id="IXq-uM-bWr"/>
+                            <constraint firstItem="526-FK-AHW" firstAttribute="leading" secondItem="Gju-bg-KLs" secondAttribute="leading" id="MCC-fn-2di"/>
+                            <constraint firstItem="4ue-D9-yO0" firstAttribute="leading" secondItem="Gju-bg-KLs" secondAttribute="leading" id="kOD-3A-Sbh"/>
+                            <constraint firstItem="526-FK-AHW" firstAttribute="top" secondItem="4ue-D9-yO0" secondAttribute="bottom" id="y51-U7-DN4"/>
+                            <constraint firstItem="fPS-j2-Ujl" firstAttribute="centerY" secondItem="Rbs-hm-xZA" secondAttribute="centerY" id="yZ4-MV-3xM"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="OVc-Wm-i1M" appends="YES" id="CMb-Ay-D0r"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="abiTextView" destination="FFu-w8-j4W" id="COl-ka-fRL"/>
+                        <outlet property="contractAddressTextField" destination="ccK-LX-4Hw" id="BKc-YC-jjC"/>
+                        <outlet property="contractNameField" destination="CkW-QW-LtO" id="byR-WJ-azZ"/>
+                        <outlet property="scrollView" destination="526-FK-AHW" id="6VU-VP-0tx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X5k-xi-Rjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OVc-Wm-i1M">
+                    <connections>
+                        <action selector="didVoidTapAction:" destination="p1l-ra-yfR" id="gbS-8y-I98"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-666" y="2118"/>
         </scene>
     </scenes>
     <resources>

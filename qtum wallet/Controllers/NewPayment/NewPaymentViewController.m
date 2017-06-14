@@ -77,7 +77,7 @@ static NSInteger withoutTokenOffset = 30;
 
 -(void)checkActiveToken {
     
-    if (![[TokenManager sharedInstance].getAllActiveTokens containsObject:self.token]) {
+    if (![[ContractManager sharedInstance].getAllActiveTokens containsObject:self.token]) {
         self.token = nil;
     }
 }
@@ -89,7 +89,7 @@ static NSInteger withoutTokenOffset = 30;
     self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.balance - amount];
     self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.unconfirmedBalance];
     
-    BOOL isTokensExists = [TokenManager sharedInstance].getAllActiveTokens.count;
+    BOOL isTokensExists = [ContractManager sharedInstance].getAllActiveTokens.count;
     
     self.tokenButton.hidden =
     self.tokenDisclousureImage.hidden =

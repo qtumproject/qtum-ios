@@ -10,6 +10,9 @@
 
 @interface NSDate (Extension)
 
+@property (strong, nonatomic, readonly) NSString* string;
+
 - (NSString*)formatedDateString;
+
 
 @end

@@ -13,43 +13,13 @@
 
 @implementation Contract
 
--(void)setupWithHashTransaction:(NSString*) hash andAddresses:(NSArray*) addresses andTokenTemplate:(TemplateModel*) templateModel {
-    
-    NSMutableData* hashData = [[NSData reverseData:[NSString dataFromHexString:hash]] mutableCopy];
-    uint32_t vinIndex = 0;
-    [hashData appendBytes:&vinIndex length:1];
-    hashData = [[hashData BTCHash160] mutableCopy];
-    self.adresses = addresses;
-    self.contractAddress = [NSString hexadecimalString:hashData];
-    self.localName = [self.contractAddress substringToIndex:6];
-    self.templateModel = templateModel;
-    self.creationDate = [NSDate date];
-    self.isActive = YES;
-    
-    __weak __typeof(self)weakSelf = self;
-    [[ApplicationCoordinator sharedInstance].requestManager getTokenInfoWithDict:@{@"addressContract" : self.contractAddress} withSuccessHandler:^(id responseObject) {
-        weakSelf.decimals = responseObject[@"decimals"];
-        weakSelf.symbol = responseObject[@"symbol"];
-        weakSelf.name = responseObject[@"name"];
-        weakSelf.totalSupply = responseObject[@"totalSupply"];
-        weakSelf.balance = [responseObject[@"totalSupply"] floatValue];
-        [weakSelf.delegate tokenDidChange:weakSelf];
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        NSLog(@"Error -> %@", error);
-    }];
-}
-
--(void)setupWithContractAddresse:(NSString*) contractAddresse {
-
-    self.contractAddress = contractAddresse;
-    self.creationDate = [NSDate date];
-    self.localName = [self.contractAddress substringToIndex:6];
-    self.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
-}
-
 -(NSString*)creationDateString {
     
     return self.creationDate ? [self.creationDate formatedDateString] : nil;
+}
+
+-(NSString*)creationFormattedDateString {
+    return  self.creationDate ? [self.creationDate string] : nil;
 }
 
 
@@ -58,6 +28,16 @@
 -(NSString *)mainAddress {
     
     return self.contractAddress;
+}
+
+-(CGFloat)balance {
+    
+    NSArray* values = self.addressBalanceDictionary.allValues;
+    CGFloat balance = 0;
+    for (NSNumber* balanceValue in values) {
+        balance += balanceValue.floatValue;
+    }
+    return balance;
 }
 
 #pragma mark - Spendable
@@ -90,6 +70,8 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
     [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.contractCreationAddressAddress forKey:@"contractCreationAddressAddress"];
+    [aCoder encodeObject:self.addressBalanceDictionary forKey:@"addressBalanceDictionary"];
     [aCoder encodeObject:self.localName forKey:@"localName"];
     [aCoder encodeObject:self.creationDate forKey:@"creationDate"];
     [aCoder encodeObject:self.templateModel forKey:@"templateModel"];
@@ -106,6 +88,8 @@
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
     
     NSString *name = [aDecoder decodeObjectForKey:@"name"];
+    NSString *contractCreationAddressAddress = [aDecoder decodeObjectForKey:@"contractCreationAddressAddress"];
+    NSDictionary* addressBalanceDictionary = [aDecoder decodeObjectForKey:@"addressBalanceDictionary"];
     NSString *localName = [aDecoder decodeObjectForKey:@"localName"];
     NSDate *creationDate = [aDecoder decodeObjectForKey:@"creationDate"];
     TemplateModel *templateModel = [aDecoder decodeObjectForKey:@"templateModel"];
@@ -121,6 +105,8 @@
     self = [super init];
     if (self) {
         self.name = name;
+        self.addressBalanceDictionary = addressBalanceDictionary;
+        self.contractCreationAddressAddress = contractCreationAddressAddress;
         self.localName = localName;
         self.creationDate = creationDate;
         self.templateModel = templateModel;
