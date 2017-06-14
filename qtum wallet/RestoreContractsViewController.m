@@ -104,7 +104,7 @@
         return;
     }
     
-    NSArray *types = @[(NSString*)kUTTypeImage,(NSString*)kUTTypeSpreadsheet,(NSString*)kUTTypePresentation,(NSString*)kUTTypeDatabase,(NSString*)kUTTypeFolder,(NSString*)kUTTypeZipArchive,(NSString*)kUTTypeVideo, (NSString*)kUTTypePDF, (NSString*)kUTTypeRTF];
+    NSArray *types = @[(NSString*)kUTTypeJSON,(NSString*)kUTTypeFolder,(NSString*)kUTTypeZipArchive];
     UIDocumentMenuViewController *vc = [[UIDocumentMenuViewController alloc] initWithDocumentTypes:types inMode:UIDocumentPickerModeImport];
     vc.delegate = self;
     [self presentViewController:vc animated:YES completion:nil];
