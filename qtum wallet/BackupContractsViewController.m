@@ -7,6 +7,7 @@
 //
 
 #import "BackupContractsViewController.h"
+#import "BackupFileManager.h"
 
 @interface BackupContractsViewController () <UIDocumentMenuDelegate, UIDocumentPickerDelegate, PopUpViewControllerDelegate>
 
@@ -14,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *fileNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fileSizeLabel;
 @property (weak, nonatomic) IBOutlet UIView *loaderView;
+@property (assign, nonatomic) BOOL isBackupCreated;
+
 
 @property (nonatomic) NSString *filePath;
 
@@ -33,9 +36,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self fileWasCreatedWithURL:nil andSize:1024];
-    });
+    __weak __typeof(self) weakSelf = self;
+    if (!self.isBackupCreated) {
+        [BackupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
+            NSLog(@"%@",file);
+            [weakSelf fileWasCreatedWithURL:path andSize:size];
+            weakSelf.isBackupCreated = YES;
+        }];
+    }
 }
 
 - (IBAction)actionBack:(id)sender {
@@ -48,9 +56,9 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)fileWasCreatedWithURL:(NSURL *)url andSize:(NSUInteger)size {
+- (void)fileWasCreatedWithURL:(NSString *)path andSize:(NSUInteger)size {
     
-    self.filePath = [[NSBundle mainBundle] pathForResource:@"testFile" ofType:@"pdf"];
+    self.filePath = path;
     NSString *fileSizeString = [NSByteCountFormatter stringFromByteCount:size countStyle:NSByteCountFormatterCountStyleFile];
     self.fileSizeLabel.text = fileSizeString;
     

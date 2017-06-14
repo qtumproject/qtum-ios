@@ -27,7 +27,7 @@
 #pragma mark - Private Methods
 
 -(void)createSmartContract {
-    if ([[TokenManager sharedInstance] addNewTokenWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text]) {
+    if ([[ContractManager sharedInstance] addNewTokenWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text]) {
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
         [self.delegate didPressedBack];
     } else {

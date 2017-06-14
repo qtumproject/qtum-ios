@@ -93,7 +93,7 @@
     
     HistoryElement *element = [HistoryElement new];
     [element setupWithObject:dictionary];
-    [[TokenManager sharedInstance] checkSmartContract:element];
+    [[ContractManager sharedInstance] checkSmartContract:element];
     return  element;
 }
 

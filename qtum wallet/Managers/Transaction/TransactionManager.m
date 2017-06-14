@@ -12,7 +12,7 @@
 #import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
 #import "BTCTransactionOutput+Address.h"
-#import "ContractManager.h"
+#import "ContractInterfaceManager.h"
 #import "NS+BTCBase58.h"
 #import "ContractArgumentsInterpretator.h"
 
@@ -90,8 +90,8 @@ static NSString* op_exec = @"c1";
     
     
 
-    AbiinterfaceItem* transferMethod = [[ContractManager sharedInstance] getTokenStandartTransferMethodInterface];
-    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
+    AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] getTokenStandartTransferMethodInterface];
+    NSData* hashFuction = [[ContractInterfaceManager sharedInstance] getHashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
     NSString* __block addressWithAmountValue;
     [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
         if (balance.floatValue > amount.floatValue) {

@@ -10,7 +10,7 @@
 #import "HistoryElementProtocol.h"
 #import "Managerable.h"
 #import "TemplateModel.h"
-#import "TokenManager.h"
+#import "ContractManager.h"
 
 @class Contract;
 
@@ -31,7 +31,7 @@
 @property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;
-@property (weak, nonatomic) TokenManager* manager;
+@property (weak, nonatomic) ContractManager* manager;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
 
 
@@ -43,8 +43,8 @@
 @property (strong, nonatomic) TemplateModel* templateModel;
 @property (strong, nonatomic) NSDate* creationDate;
 @property (copy, nonatomic, readonly) NSString* creationDateString;
+@property (copy, nonatomic, readonly) NSString* creationFormattedDateString;
 @property (strong, nonatomic) NSDictionary* addressBalanceDictionary;
-
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
 

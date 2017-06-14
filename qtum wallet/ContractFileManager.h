@@ -11,22 +11,21 @@
 
 @interface ContractFileManager : NSObject
 
--(NSDictionary*)getAbiFromBundleWithTemplate:(NSString*) templateName;
+-(NSDictionary*) getAbiWithTemplate:(NSString*) templateName;
 
--(NSString*)getContractFromBundleWithTemplate:(NSString*) templateName;
+-(NSString*) getEscapeAbiWithTemplate:(NSString*) templateName;
 
--(NSData*)getBitcodeFromBundleWithTemplate:(NSString*) templateName;
+-(NSString*)getContractWithTemplate:(NSString*) templateName;
 
--(NSArray<TemplateModel*>*)getAvailebaleTemplates;
+-(NSData*)getBitcodeWithTemplate:(NSString*) templateName;
 
--(NSDictionary*)getAbiFromBundle;
+-(NSDictionary*)getStandartAbi;
 
 -(NSDate*)getDateOfCreationTemplate:(NSString*) templateName;
 
 -(BOOL)writeNewAbi:(NSArray*) abi withPathName:(NSString*) newTeplateName;
 
 + (instancetype)sharedInstance;
-
 
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
 + (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));

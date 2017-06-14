@@ -1,5 +1,5 @@
 //
-//  TokenManager.h
+//  ContractManager.h
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 12.04.17.
@@ -13,7 +13,7 @@
 
 extern NSString *const kTokenDidChange;
 
-@interface TokenManager : NSObject <Managerable>
+@interface ContractManager : NSObject <Managerable>
 
 - (NSArray <Contract*>*)getAllContracts;
 - (NSArray <Contract*>*)getAllTokens;
@@ -30,6 +30,8 @@ extern NSString *const kTokenDidChange;
 - (BOOL)addNewTokenWithContractAddress:(NSString*) contractAddress
                                   withAbi:(NSString*) abiStr
                               andWithName:(NSString*) contractName;
+
+-(NSArray<NSDictionary*>*)backupDescription;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
