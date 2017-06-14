@@ -9,7 +9,7 @@
 #import "MessagesViewController.h"
 #import "GradientView.h"
 
-@interface MessagesViewController ()
+@interface MessagesViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *goToHostButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendMessageWithAdress;
@@ -38,9 +38,16 @@
 @property (assign, nonatomic) BOOL isPaymentInProcess;
 @property (assign, nonatomic) BOOL isCreatinNewInProcces;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendScreenTitleTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendScreenCenterViewYConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendScreenTitleTopLandscapeConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendScreenCenterViewYLandscapeConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *sendAddressLabel;
+
 @end
 
 static NSString* isHasWalletKey = @"isHasWallet";
+static NSString* WalletAddressKey = @"walletAddress";
 static NSString* adressKey = @"adress";
 static NSString* registerText = @"You have no wallets yet. Tap to create one.";
 static NSString* sendAdressText = @"Send your adress";
@@ -56,11 +63,14 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     NSUserDefaults *myDefaults = [[NSUserDefaults alloc]
                                   initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
     NSString* boolAsString = [myDefaults valueForKey:isHasWalletKey];
+    [self.sendAddressLabel setText:[myDefaults valueForKey:WalletAddressKey]];
     self.isHasWallet = [boolAsString isEqualToString:@"YES"] ? YES : NO;
     self.adress = [myDefaults valueForKey:adressKey];
     self.sendMessageWithAdress.hidden = !self.isHasWallet;
     self.goToHostButton.hidden = self.isHasWallet;
     self.textLabel.text = self.isHasWallet ? sendAdressText : registerText;
+    
+    self.amountTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -383,6 +393,36 @@ UIColor *customRedColor()
 UIColor *customBlackColor()
 {
     return [UIColor colorWithRed:35/255.0f green:35/255.0f blue:40/255.0f alpha:1.0f];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    self.sendScreenTitleTopConstraint.constant = self.sendScreenTitleTopConstraint.constant - 40.0f;
+    self.sendScreenTitleTopLandscapeConstraint.constant = self.sendScreenTitleTopLandscapeConstraint.constant - 60.0f;
+    self.sendScreenCenterViewYConstraint.constant = self.sendScreenCenterViewYConstraint.constant - 60.0f;
+    self.sendScreenCenterViewYLandscapeConstraint.constant = self.sendScreenCenterViewYLandscapeConstraint.constant - 90.0f;
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    
+    self.sendScreenTitleTopConstraint.constant = self.sendScreenTitleTopConstraint.constant + 40.0f;
+    self.sendScreenTitleTopLandscapeConstraint.constant = self.sendScreenTitleTopLandscapeConstraint.constant + 60.0f;
+    self.sendScreenCenterViewYConstraint.constant = self.sendScreenCenterViewYConstraint.constant + 60.0f;
+    self.sendScreenCenterViewYLandscapeConstraint.constant = self.sendScreenCenterViewYLandscapeConstraint.constant + 90.0f;
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+    return YES;
 }
 
 @end

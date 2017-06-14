@@ -157,7 +157,7 @@
 -(void)logout{
     
     [self startAuthFlow];
-    [self storeAuthorizedFlag:NO];
+    [self storeAuthorizedFlag:NO andMainAddress:nil];
     [self.notificationManager removeToken];
     [self removeDependency:self.tabCoordinator];
     
@@ -223,7 +223,7 @@
         [controller selectSendControllerWithAdress:self.adress andValue:self.amount];
     }
     self.router = controller;
-    [self storeAuthorizedFlag:YES];
+    [self storeAuthorizedFlag:YES andMainAddress:[WalletManager sharedInstance].getCurrentWallet.mainAddress];
 }
 
 -(void)restartMainFlow {
@@ -255,10 +255,12 @@
 #pragma iMessage Methods
 
 static NSString* isHasWalletKey = @"isHasWallet";
+static NSString* WalletAddressKey = @"walletAddress";
 
--(void)storeAuthorizedFlag:(BOOL) flag{
+-(void)storeAuthorizedFlag:(BOOL)flag andMainAddress:(NSString *)address{
 
     [self.defaults setObject:flag ? @"YES" : @"NO" forKey:isHasWalletKey];
+    [self.defaults setObject:address forKey:WalletAddressKey];
     if ([self.defaults synchronize]) {
         NSLog(@"Synch!!");
     }
