@@ -11,9 +11,9 @@
 #import "TransactionManager.h"
 #import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
-#import "TokenManager.h"
-#import "CustomAbiInterphaseViewController.h"
 #import "ContractManager.h"
+#import "CustomAbiInterphaseViewController.h"
+#import "ContractInterfaceManager.h"
 #import "CreateTokenFinishViewController.h"
 #import "TemplateTokenViewController.h"
 #import "ContractFileManager.h"
@@ -26,6 +26,8 @@
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
+#import "BackupContractsViewController.h"
+#import "TemplateManager.h"
 
 
 @interface ContractCoordinator ()
@@ -67,7 +69,7 @@
     
     TemplateTokenViewController* controller = (TemplateTokenViewController*)[[ControllersFactory sharedInstance] createTemplateTokenViewController];
     controller.delegate = self;
-    controller.templateModels = [[ContractFileManager sharedInstance] getAvailebaleTemplates];
+    controller.templateModels = [[TemplateManager sharedInstance] getAvailebaleTemplates];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -76,7 +78,7 @@
     SmartContractsListViewController* controller = (SmartContractsListViewController*)[[ControllersFactory sharedInstance] createSmartContractsListViewController];
     controller.delegate = self;
     
-    NSArray *sortedContracts = [[[TokenManager sharedInstance] getAllContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
+    NSArray *sortedContracts = [[[ContractManager sharedInstance] getAllContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
         return [t1.creationDate compare:t2.creationDate];
     }];
     controller.contracts = sortedContracts;
@@ -106,12 +108,19 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+-(void)showBackupContract {
+    BackupContractsViewController* controller = (BackupContractsViewController*)[[ControllersFactory sharedInstance] createBackupContractViewController];
+    controller.delegate = self;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 -(void)showStepWithFieldsAndTemplate:(NSString*)template{
     
     CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[[ControllersFactory sharedInstance] createCustomAbiInterphaseViewController];
     controller.delegate = self;
     
-    controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:self.templateModel.templateName];
+    controller.formModel = [[ContractInterfaceManager sharedInstance] getTokenInterfaceWithTemplate:self.templateModel.templateName];
 
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -130,7 +139,7 @@
     
     if (contract.templateModel) {
         TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-        controller.formModel = [[ContractManager sharedInstance] getTokenInterfaceWithTemplate:contract.templateModel.templateName];
+        controller.formModel = [[ContractInterfaceManager sharedInstance] getTokenInterfaceWithTemplate:contract.templateModel.templateName];
         controller.delegate = self;
         controller.token = contract;
         [self.navigationController pushViewController:controller animated:true];
@@ -170,14 +179,14 @@
     __weak __typeof(self)weakSelf = self;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
-    NSData* contractWithArgs = [[ContractManager sharedInstance] getTokenBitecodeWithTemplate:self.templateModel.templateName andArray:[self argsFromInputs]];
+    NSData* contractWithArgs = [[ContractInterfaceManager sharedInstance] getTokenBitecodeWithTemplate:self.templateModel.templateName andArray:[self argsFromInputs]];
     
     [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:contractWithArgs andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             BTCTransactionInput* input = transaction.inputs[0];
             NSLog(@"%@",input.runTimeAddress);
-            [[TokenManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel];
+            [[ContractManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel];
             
             [weakSelf.createFinishViewController showCompletedPopUp];
         } else {
@@ -228,7 +237,7 @@
             [addressWithTokensValue addObject:address];
         }
     }];
-    NSData* hashFuction = [[ContractManager sharedInstance] getHashOfFunction:item appendingParam:param];
+    NSData* hashFuction = [[ContractInterfaceManager sharedInstance] getHashOfFunction:item appendingParam:param];
     
     __weak __typeof(self)weakSelf = self;
     [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:addressWithTokensValue toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
@@ -261,6 +270,10 @@
 
 - (void)didSelectRestoreContract {
     [self showRestoreContract];
+}
+
+- (void)didSelectBackupContract {
+    [self showBackupContract];
 }
 
 -(void)didPressedQuit {

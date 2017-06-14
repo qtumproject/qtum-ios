@@ -36,4 +36,9 @@
     return content;
 }
 
++ (PopUpContent *)getContentForCompletedBackupFile{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"File saved successfully" message:nil okTitle:@"OK" cancelTitle:nil];
+    return content;
+}
+
 @end

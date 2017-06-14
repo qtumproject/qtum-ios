@@ -1,5 +1,5 @@
 //
-//  ContractManager.h
+//  ContractInterfaceManager.h
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 16.05.17.
@@ -12,7 +12,7 @@
 @class AbiinterfaceItem;
 @class ResultTokenInputsModel;
 
-@interface ContractManager : NSObject
+@interface ContractInterfaceManager : NSObject
 
 - (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName;
 - (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args;
@@ -21,8 +21,6 @@
 - (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem;
 - (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param;
 
-- (TemplateModel*)createNewContractTemplateWithAbi:(NSString*)abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
-- (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
 
 - (AbiinterfaceItem*)getTokenStandartTransferMethodInterface;
 - (AbiinterfaceItem*)getTokenStandartNamePropertyInterface;

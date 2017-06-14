@@ -21,7 +21,7 @@
 #import "WalletNavigationController.h"
 #import "TokenListViewController.h"
 #import "TokenFunctionViewController.h"
-#import "ContractManager.h"
+#import "ContractInterfaceManager.h"
 #import "TokenFunctionDetailViewController.h"
 #import "ResultTokenInputsModel.h"
 #import "ContractArgumentsInterpretator.h"
@@ -78,19 +78,19 @@
     self.delegateDataSource = [WalletHistoryDelegateDataSource new];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
-    self.delegateDataSource.haveTokens = [[TokenManager sharedInstance] getAllActiveTokens].count > 0;
+    self.delegateDataSource.haveTokens = [[ContractManager sharedInstance] getAllActiveTokens].count > 0;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
     
     TokenListViewController* tokenController = (TokenListViewController*)[[ControllersFactory sharedInstance] createTokenListViewController];
-    tokenController.tokens = [[TokenManager sharedInstance] getAllActiveTokens];
+    tokenController.tokens = [[ContractManager sharedInstance] getAllActiveTokens];
     tokenController.delegate = self;
     controller.delegate = self;
     self.tokenController = tokenController;
     
     self.pageViewController = self.navigationController.viewControllers[0];
     self.pageViewController.controllers = @[controller,tokenController];
-    [self.pageViewController setScrollEnable:[[TokenManager sharedInstance] getAllTokens].count > 0];
+    [self.pageViewController setScrollEnable:[[ContractManager sharedInstance] getAllTokens].count > 0];
 }
 
 #pragma mark - WalletCoordinatorDelegate
@@ -197,7 +197,7 @@
     self.wallets = @[].mutableCopy;
     [self.wallets addObject:[WalletManager sharedInstance].getCurrentWallet];
     //uncommend if need collection of tokens with wallets
-    //[self.wallets addObjectsFromArray:[TokenManager sharedInstance].gatAllTokens];
+    //[self.wallets addObjectsFromArray:[ContractManager sharedInstance].gatAllTokens];
 }
 
 -(void)setWalletsToDelegates {
@@ -254,7 +254,7 @@
 
 -(void)updateSpendables {
     
-    NSArray *tokensArray = [[TokenManager sharedInstance] getAllActiveTokens];
+    NSArray *tokensArray = [[ContractManager sharedInstance] getAllActiveTokens];
     self.delegateDataSource.haveTokens = tokensArray.count > 0;
     [self.historyController reloadTableView];
     self.tokenController.tokens = tokensArray;

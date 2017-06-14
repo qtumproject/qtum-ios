@@ -18,6 +18,10 @@
     return self.creationDate ? [self.creationDate formatedDateString] : nil;
 }
 
+-(NSString*)creationFormattedDateString {
+    return  self.creationDate ? [self.creationDate string] : nil;
+}
+
 
 #pragma mark - Getters 
 

@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ContractCoordinator.h"
 
-@interface WatchTokensViewController : UIViewController
+@interface WatchTokensViewController : BaseViewController <ScrollableContentViewController>
 
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (assign,nonatomic) UIEdgeInsets originInsets;
 
 @end
