@@ -25,5 +25,6 @@
 
 -(BOOL)isEqualElementWithoutConfimation:(HistoryElement*)object;
 -(void)setupWithObject:(id)object;
+-(NSDictionary *)dictionaryFromElementForWatch;
 
 @end

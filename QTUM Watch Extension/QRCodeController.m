@@ -6,10 +6,10 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "InterfaceController.h"
+#import "QRCodeController.h"
 #import "SessionManager.h"
 
-@interface InterfaceController ()
+@interface QRCodeController ()
 
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceImage *imageView;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *reloadButton;
@@ -18,7 +18,7 @@
 @end
 
 
-@implementation InterfaceController
+@implementation QRCodeController
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];

@@ -140,6 +140,17 @@
     }
 }
 
+- (NSDictionary *)dictionaryFromElementForWatch {
+    NSString *address = self.send ? [self.toAddresses firstObject][@"address"] : [self.fromAddreses firstObject][@"address"];
+    
+    NSDictionary *dictionary = @{@"address" : address,
+                                 @"date" : self.shortDateString,
+                                 @"amount" : self.amountString,
+                                 @"send" : @(self.send)};
+    
+    return dictionary;
+}
+
 #pragma mark - Equal
 
 -(BOOL)isEqualElementWithoutConfimation:(HistoryElement*)object{

@@ -7,10 +7,10 @@
 //
 
 #import "SessionManager.h"
-#import <WatchConnectivity/WatchConnectivity.h>
 
 const NSString *MainMessageKey = @"message_key";
 const NSString *GetQRCodeMessageKey = @"get_qr_code";
+const NSString *GetWalletInformation = @"get_wallet_information";
 
 @interface SessionManager() <WCSessionDelegate>
 
@@ -49,8 +49,8 @@ const NSString *GetQRCodeMessageKey = @"get_qr_code";
 }
 
 - (void)sendMessage:(NSDictionary *)dictionary replyHandler:(nullable void (^)(NSDictionary<NSString *, id> *replyMessage))replyHandler errorHandler:(nullable void (^)(NSError *error))errorHandler{
-    
-    if (self.currentState == WCSessionActivationStateActivated && [WCSession defaultSession].isReachable) {
+    //&& [WCSession defaultSession].isReachable
+    if (self.currentState == WCSessionActivationStateActivated ) {
         WCSession *session = [WCSession defaultSession];
         [session sendMessage:dictionary replyHandler:replyHandler errorHandler:errorHandler];
     }else{
@@ -67,12 +67,22 @@ const NSString *GetQRCodeMessageKey = @"get_qr_code";
     [self sendMessage:dictionary replyHandler:replyHandler errorHandler:errorHandler];
 }
 
+- (void)getInformationForWalletScreenWithReplyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler {
+    NSDictionary *dictionary = @{MainMessageKey : GetWalletInformation};
+    
+    [self sendMessage:dictionary replyHandler:replyHandler errorHandler:errorHandler];
+}
+
 #pragma mark - WCSessionDelegate
 
 /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
 - (void)session:(WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(nullable NSError *)error{
-    self.currentState = activationState;
     NSLog(@"WCSession activationDidCompleteWithState :  %ld", (long)activationState);
+    self.currentState = activationState;
+    
+    if ([self.delegate respondsToSelector:@selector(activationDidCompleteWithState:)]) {
+        [self.delegate activationDidCompleteWithState:self.currentState];
+    }
 }
 
 /** ------------------------- iOS App State For Watch ------------------------ */
@@ -120,34 +130,6 @@ const NSString *GetQRCodeMessageKey = @"get_qr_code";
 /** Called on the delegate of the receiver when the sender sends message data that expects a reply. Will be called on startup if the incoming message data caused the receiver to launch. */
 - (void)session:(WCSession *)session didReceiveMessageData:(NSData *)messageData replyHandler:(void(^)(NSData *replyMessageData))replyHandler{
     NSLog(@"didReceiveMessage with reply : data : %@", messageData);
-}
-
-
-/** -------------------------- Background Transfers ------------------------- */
-
-/** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
-- (void)session:(WCSession *)session didReceiveApplicationContext:(NSDictionary<NSString *, id> *)applicationContext{
-    NSLog(@"didReceiveApplicationContext : applicationContext : %@", applicationContext);
-}
-
-/** Called on the sending side after the user info transfer has successfully completed or failed with an error. Will be called on next launch if the sender was not running when the user info finished. */
-- (void)session:(WCSession * __nonnull)session didFinishUserInfoTransfer:(WCSessionUserInfoTransfer *)userInfoTransfer error:(nullable NSError *)error{
-    NSLog(@"didFinishUserInfoTransfer : %@", userInfoTransfer);
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the user info finished transferring when the receiver was not running. */
-- (void)session:(WCSession *)session didReceiveUserInfo:(NSDictionary<NSString *, id> *)userInfo{
-    NSLog(@"didReceiveUserInfo : %@", userInfo);
-}
-
-/** Called on the sending side after the file transfer has successfully completed or failed with an error. Will be called on next launch if the sender was not running when the transfer finished. */
-- (void)session:(WCSession *)session didFinishFileTransfer:(WCSessionFileTransfer *)fileTransfer error:(nullable NSError *)error{
-    NSLog(@"didFinishFileTransfer : %@", fileTransfer);
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the file finished transferring when the receiver was not running. The incoming file will be located in the Documents/Inbox/ folder when being delivered. The receiver must take ownership of the file by moving it to another location. The system will remove any content that has not been moved when this delegate method returns. */
-- (void)session:(WCSession *)session didReceiveFile:(WCSessionFile *)file{
-    NSLog(@"didReceiveFile : %@", file);
 }
 
 
