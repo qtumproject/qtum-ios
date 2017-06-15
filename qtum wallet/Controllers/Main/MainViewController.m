@@ -42,6 +42,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedTextLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTextTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableValueTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topForTableConstraint;
 
 @property (nonatomic) BOOL balanceLoaded;
 @property (nonatomic) BOOL historyLoaded;
