@@ -9,7 +9,7 @@
 #import "MessagesViewController.h"
 #import "GradientView.h"
 
-@interface MessagesViewController ()
+@interface MessagesViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *goToHostButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendMessageWithAdress;
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *compactPresentationView;
-@property (weak, nonatomic) IBOutlet UIView *expandedPresentationVIew;
+@property (weak, nonatomic) IBOutlet UIView *expandedPresentationView;
 @property (weak, nonatomic) IBOutlet UIView *sendMessageExpandView;
 @property (weak, nonatomic) IBOutlet UIView *createWalletExpandView;
 @property (weak, nonatomic) IBOutlet UIView *paymentArimentExpandView;
@@ -38,9 +38,16 @@
 @property (assign, nonatomic) BOOL isPaymentInProcess;
 @property (assign, nonatomic) BOOL isCreatinNewInProcces;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendScreenTitleTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendScreenCenterViewYConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendScreenTitleTopLandscapeConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendScreenCenterViewYLandscapeConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *sendAddressLabel;
+
 @end
 
 static NSString* isHasWalletKey = @"isHasWallet";
+static NSString* WalletAddressKey = @"walletAddress";
 static NSString* adressKey = @"adress";
 static NSString* registerText = @"You have no wallets yet. Tap to create one.";
 static NSString* sendAdressText = @"Send your adress";
@@ -56,11 +63,14 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     NSUserDefaults *myDefaults = [[NSUserDefaults alloc]
                                   initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
     NSString* boolAsString = [myDefaults valueForKey:isHasWalletKey];
+    [self.sendAddressLabel setText:[myDefaults valueForKey:WalletAddressKey]];
     self.isHasWallet = [boolAsString isEqualToString:@"YES"] ? YES : NO;
     self.adress = [myDefaults valueForKey:adressKey];
     self.sendMessageWithAdress.hidden = !self.isHasWallet;
     self.goToHostButton.hidden = self.isHasWallet;
     self.textLabel.text = self.isHasWallet ? sendAdressText : registerText;
+    
+    self.amountTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -171,27 +181,19 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 }
 
 -(UIImage*)imageForMessageWithText:(NSString*)text finalized:(BOOL) final isResultSuccess:(BOOL) succes{
-    GradientView* backView = [[GradientView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 100)];
+    UIView* backView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width,  self.view.frame.size.height, 300, 100)];
     NSString* statusString;
     if (final && succes) {
-        backView.colorType = Green;
         statusString = @"Wait...";
     } else if(final){
-        backView.colorType = Pink;
         statusString = @"Canceled";
-    } else {
-        backView.colorType = Blue;
     }
-    backView.backgroundColor = [UIColor blackColor];
+    backView.backgroundColor = customBlueColor();
     
-    UIImageView* waves = [[UIImageView alloc]initWithFrame:CGRectMake(0, 40, 300, 80)];
-    waves.image = [UIImage imageNamed:@"waves"];
-    
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, backView.bounds.size.width, 50)];
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(20, 58, backView.bounds.size.width, 50)];
     label.font = [UIFont fontWithName:label.font.fontName size:18];
-    label.text = text;//;
+    label.text = text;
     [label sizeToFit];
-    //label.frame = CGRectMake(backView.frame.size.width/2 - label.frame.size.width/2, 75, 150, 150);
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentLeft;
     
@@ -200,11 +202,13 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     statusLabel.text = statusString;
     statusLabel.textColor = [UIColor whiteColor];
     statusLabel.textAlignment = NSTextAlignmentRight;
-
     
+    UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(0,  0, backView.frame.size.width, 40)];
+    blackView.backgroundColor = customBlackColor();
+    
+    [backView addSubview:blackView];
     [backView addSubview:statusLabel];
     [backView addSubview:label];
-    [backView addSubview:waves];
     [self.view addSubview:backView];
     UIGraphicsBeginImageContextWithOptions(backView.frame.size, NO, [UIScreen mainScreen].scale);
     [backView drawViewHierarchyInRect:backView.bounds afterScreenUpdates:YES];
@@ -243,7 +247,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     } else {
         self.isCreatinNewInProcces = NO;
         self.compactPresentationView.hidden = NO;
-        self.expandedPresentationVIew.hidden = YES;
+        self.expandedPresentationView.hidden = YES;
     }
 }
 
@@ -251,7 +255,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     self.sendMessageExpandView.hidden = NO;
     self.createWalletExpandView.hidden = YES;
     self.compactPresentationView.hidden = YES;
-    self.expandedPresentationVIew.hidden = NO;
+    self.expandedPresentationView.hidden = NO;
     self.adressLabel.text = [self getAdressFromMessage:self.activeConversation.selectedMessage];
     self.amountValueLabel.text = [self getAmountFromMessage:self.activeConversation.selectedMessage];
     self.paymentArimentExpandView.hidden = YES;
@@ -261,7 +265,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 -(void)prepareCreateWallet{
     self.sendMessageExpandView.hidden = YES;
     self.createWalletExpandView.hidden = NO;
-    self.expandedPresentationVIew.hidden = NO;
+    self.expandedPresentationView.hidden = NO;
     self.compactPresentationView.hidden = YES;
     self.paymentArimentExpandView.hidden = YES;
     self.finalizedExpandView.hidden = YES;
@@ -270,7 +274,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 -(void)preparePaymentAgriment{
     self.sendMessageExpandView.hidden = YES;
     self.createWalletExpandView.hidden = YES;
-    self.expandedPresentationVIew.hidden = NO;
+    self.expandedPresentationView.hidden = NO;
     self.compactPresentationView.hidden = YES;
     self.paymentArimentExpandView.hidden = NO;
     self.finalizedExpandView.hidden = YES;
@@ -279,7 +283,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 -(void)prepareFinalized{
     self.sendMessageExpandView.hidden = YES;
     self.createWalletExpandView.hidden = YES;
-    self.expandedPresentationVIew.hidden = NO;
+    self.expandedPresentationView.hidden = NO;
     self.compactPresentationView.hidden = YES;
     self.paymentArimentExpandView.hidden = YES;
     self.finalizedExpandView.hidden = NO;
@@ -372,6 +376,53 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 
 -(void)didTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
     [self updateControlsWithSyle:presentationStyle];
+}
+
+#pragma mark - Сolors
+
+UIColor *customBlueColor()
+{
+    return [UIColor colorWithRed:46/255.0f green:154/255.0f blue:208/255.0f alpha:1.0f];
+}
+
+UIColor *customRedColor()
+{
+    return [UIColor colorWithRed:231/255.0f green:86/255.0f blue:71/255.0f alpha:1.0f];
+}
+
+UIColor *customBlackColor()
+{
+    return [UIColor colorWithRed:35/255.0f green:35/255.0f blue:40/255.0f alpha:1.0f];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    self.sendScreenTitleTopConstraint.constant = self.sendScreenTitleTopConstraint.constant - 40.0f;
+    self.sendScreenTitleTopLandscapeConstraint.constant = self.sendScreenTitleTopLandscapeConstraint.constant - 60.0f;
+    self.sendScreenCenterViewYConstraint.constant = self.sendScreenCenterViewYConstraint.constant - 60.0f;
+    self.sendScreenCenterViewYLandscapeConstraint.constant = self.sendScreenCenterViewYLandscapeConstraint.constant - 90.0f;
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    
+    self.sendScreenTitleTopConstraint.constant = self.sendScreenTitleTopConstraint.constant + 40.0f;
+    self.sendScreenTitleTopLandscapeConstraint.constant = self.sendScreenTitleTopLandscapeConstraint.constant + 60.0f;
+    self.sendScreenCenterViewYConstraint.constant = self.sendScreenCenterViewYConstraint.constant + 60.0f;
+    self.sendScreenCenterViewYLandscapeConstraint.constant = self.sendScreenCenterViewYLandscapeConstraint.constant + 90.0f;
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+    return YES;
 }
 
 @end
