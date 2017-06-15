@@ -146,7 +146,11 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
          identifier:(NSString *)identifier new:(BOOL)new
  withSuccessHandler:(void(^)(id responseObject))success
   andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
+    
+    
     success(nil);
+    
+    
 }
 
 - (void)registerKey:(NSString *)keyString

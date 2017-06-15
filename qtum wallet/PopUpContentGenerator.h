@@ -18,5 +18,6 @@
 + (PopUpContent *)getContentForCreateContract;
 + (PopUpContent *)getContentForSend;
 + (PopUpContent *)getContentForCompletedBackupFile;
++ (PopUpContent *)getContentForBrainCodeCopied;
 
 @end

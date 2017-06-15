@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextView *brandKeyTextView;
 @property (strong,nonatomic) NSString *brainKeyString;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomForButtonsConstraint;
 
 - (IBAction)importButtonWasPressed:(id)sender;
 
@@ -56,12 +56,12 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 
 -(void)keyboardWillShow:(NSNotification *)sender{
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.gradientViewBottomOffset.constant = end.size.height;
+    self.bottomForButtonsConstraint.constant = end.size.height;
     [self.view layoutIfNeeded];
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
-    self.gradientViewBottomOffset.constant = 0;
+    self.bottomForButtonsConstraint.constant = 0;
     [self.view layoutIfNeeded];
 }
 

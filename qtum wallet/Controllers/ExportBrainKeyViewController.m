@@ -9,10 +9,10 @@
 #import "ExportBrainKeyViewController.h"
 #import "WalletManager.h"
 
-@interface ExportBrainKeyViewController ()
+@interface ExportBrainKeyViewController () <PopUpViewControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *brainKeyView;
 @property (weak, nonatomic) IBOutlet NSString *brainKey;
-
 
 @end
 
@@ -51,7 +51,8 @@
 - (IBAction)actionCopy:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.brainKey;
-    [self showAlertWithTitle:nil mesage:NSLocalizedString(@"Brain-CODE copied", "")  andActions:nil];
+    
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForBrainCodeCopied] presenter:self completion:nil];
 }
 
 - (IBAction)actionContinue:(id)sender {
@@ -67,5 +68,10 @@
     [self presentViewController:sharingVC animated:YES completion:nil];
 }
 
+#pragma mark - PopUpViewControllerDelegate
+
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
 
 @end

@@ -34,9 +34,8 @@
 }
 
 - (void)drawTextInRect:(CGRect)rect{
-    UIEdgeInsets insets = {0, 10, 0, 10};
-    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
-    self.borderView.frame = CGRectMake(0.0f, -7.0f, self.frame.size.width, self.frame.size.height + 16.0f);
+    [super drawTextInRect:rect];
+    self.borderView.frame = CGRectMake(-7.0f, -7.0f, self.frame.size.width + 14.0f, self.frame.size.height + 16.0f);
 }
 
 
