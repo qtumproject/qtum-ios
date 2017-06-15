@@ -85,7 +85,7 @@ static NSInteger countOfSections = 2;
     if (section == 0) {
         return 0;
     }
-    return ceilf(32.0f);
+    return 32;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -170,10 +170,10 @@ static NSInteger countOfSections = 2;
     if (self.sectionHeaderView) {
         CGFloat headerHeight = [WalletHeaderCell getHeaderHeight];
         CGFloat headerPosition = self.sectionHeaderView.frame.origin.y - scrollView.contentOffset.y;
-        if (headerPosition <= headerHeight) {
-            scrollView.contentInset = UIEdgeInsetsMake(headerHeight, 0, 0, 0);
+        if (headerPosition <= headerHeight ) {
+            [self.controllerDelegate needShowHeaderForSecondSeciton];
         }else{
-            scrollView.contentInset = UIEdgeInsetsZero;
+            [self.controllerDelegate needHideHeaderForSecondSeciton];
         }
     }
     

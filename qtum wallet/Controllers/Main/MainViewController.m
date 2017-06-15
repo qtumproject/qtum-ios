@@ -43,6 +43,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTextTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableValueTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topForTableConstraint;
+@property (weak, nonatomic) IBOutlet UIView *viewForHeaderInSecondSection;
 
 @property (nonatomic) BOOL balanceLoaded;
 @property (nonatomic) BOOL historyLoaded;
@@ -122,25 +123,6 @@ CGFloat const HeaderHeightShowed = 50.0f;
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
 }
 
-- (void)fadeInNavigationBar{
-    if (self.isNavigationBarFadeout) {
-        self.isNavigationBarFadeout = NO;
-        [UIView animateWithDuration:0.2 animations:^{
-            self.customNavigationBar.layer.backgroundColor = customBlueColor().CGColor;
-        }];
-    }
-}
-
-- (void)fadeOutNavigationBar{
-    if (!self.isNavigationBarFadeout) {
-        self.isNavigationBarFadeout = YES;
-        self.customNavigationBar.layer.backgroundColor = customBlueColor().CGColor;
-        [UIView animateWithDuration:0.2 animations:^{
-            self.customNavigationBar.layer.backgroundColor = customBlueColor().CGColor;
-        }];
-    }
-}
-
 - (void)needShowHeader{
     if (self.headerHeightConstraint.constant == HeaderHeightShowed) {
         return;
@@ -148,6 +130,13 @@ CGFloat const HeaderHeightShowed = 50.0f;
     
     self.headerHeightConstraint.constant = HeaderHeightShowed;
     [self.headerView showAnimation];
+}
+
+- (void)needShowHeaderForSecondSeciton {
+    self.viewForHeaderInSecondSection.hidden = NO;
+}
+- (void)needHideHeaderForSecondSeciton {
+    self.viewForHeaderInSecondSection.hidden = YES;
 }
 
 - (void)needHideHeader{
