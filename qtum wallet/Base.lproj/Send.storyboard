@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WZ6-tG-7Ii">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WZ6-tG-7Ii">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -146,11 +146,11 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ss7-mt-eh8">
-                                <rect key="frame" x="113" y="596" width="150" height="44"/>
+                                <rect key="frame" x="113" y="608" width="150" height="32"/>
                                 <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="IDg-Lt-WNW"/>
-                                    <constraint firstAttribute="height" constant="44" id="nXY-XJ-KxX"/>
+                                    <constraint firstAttribute="height" constant="32" id="nXY-XJ-KxX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -167,19 +167,9 @@
                                 <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="WZ6-tG-7Ii" id="1FF-Ms-TNH"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PIN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eOy-cm-MuA" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="303" width="335" height="19"/>
-                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="WZ6-tG-7Ii" id="VDH-zC-uD9"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chose Token" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="55o-z3-dxc" customClass="TextFieldWithLine">
@@ -218,13 +208,11 @@
                             <constraint firstItem="lhA-My-fKS" firstAttribute="top" secondItem="AtG-Xz-5W5" secondAttribute="top" id="8UK-ES-2CV"/>
                             <constraint firstItem="7Md-s8-YSL" firstAttribute="top" secondItem="Acj-rW-ybZ" secondAttribute="bottom" constant="80" id="B1x-bS-kKs"/>
                             <constraint firstAttribute="trailing" secondItem="u50-Ga-hFT" secondAttribute="trailing" constant="20" id="EmF-tW-33v"/>
-                            <constraint firstAttribute="trailing" secondItem="eOy-cm-MuA" secondAttribute="trailing" constant="20" id="Eno-qL-Uy7"/>
                             <constraint firstItem="u50-Ga-hFT" firstAttribute="bottom" secondItem="F9k-FY-gPy" secondAttribute="bottom" constant="-9" id="Hyt-LN-Jwr"/>
                             <constraint firstItem="Ss7-mt-eh8" firstAttribute="centerX" secondItem="AtG-Xz-5W5" secondAttribute="centerX" id="KlG-ZO-teo"/>
                             <constraint firstAttribute="trailing" secondItem="lhA-My-fKS" secondAttribute="trailing" id="MFV-79-NJn"/>
                             <constraint firstAttribute="trailing" secondItem="Acj-rW-ybZ" secondAttribute="trailing" constant="20" id="Md7-Nf-PgY"/>
                             <constraint firstItem="Acj-rW-ybZ" firstAttribute="top" secondItem="lhA-My-fKS" secondAttribute="bottom" constant="40" id="PDM-8d-Ewe"/>
-                            <constraint firstItem="eOy-cm-MuA" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="SNa-nh-q5W"/>
                             <constraint firstItem="F9k-FY-gPy" firstAttribute="centerX" secondItem="55o-z3-dxc" secondAttribute="centerX" id="UFQ-sn-wjD"/>
                             <constraint firstAttribute="trailing" secondItem="55o-z3-dxc" secondAttribute="trailing" constant="20" id="VYq-Ud-OX5"/>
                             <constraint firstAttribute="trailing" secondItem="7Md-s8-YSL" secondAttribute="trailing" constant="20" id="ZBv-6Y-UZq"/>
@@ -233,7 +221,6 @@
                             <constraint firstItem="55o-z3-dxc" firstAttribute="top" secondItem="Acj-rW-ybZ" secondAttribute="bottom" constant="30" id="ajI-G0-f55"/>
                             <constraint firstItem="F9k-FY-gPy" firstAttribute="centerY" secondItem="55o-z3-dxc" secondAttribute="centerY" id="bG7-Kc-VSN"/>
                             <constraint firstItem="lhA-My-fKS" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" id="bfR-op-AGm"/>
-                            <constraint firstItem="eOy-cm-MuA" firstAttribute="top" secondItem="7Md-s8-YSL" secondAttribute="bottom" constant="30" id="gEU-gp-nNM"/>
                             <constraint firstItem="F9k-FY-gPy" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="jLk-1E-Z9r"/>
                             <constraint firstItem="vpr-qJ-h5C" firstAttribute="top" secondItem="Ss7-mt-eh8" secondAttribute="bottom" constant="27" id="kIE-87-Tej"/>
                             <constraint firstItem="F9k-FY-gPy" firstAttribute="centerX" secondItem="AtG-Xz-5W5" secondAttribute="centerX" id="nPd-yN-Zm4"/>
@@ -245,7 +232,6 @@
                     <connections>
                         <outlet property="addressTextField" destination="Acj-rW-ybZ" id="S73-VN-6Bw"/>
                         <outlet property="amountTextField" destination="7Md-s8-YSL" id="qJw-IF-VdC"/>
-                        <outlet property="pinTextField" destination="eOy-cm-MuA" id="56I-Ev-L9J"/>
                         <outlet property="residueValueLabel" destination="eX9-Q5-aZt" id="msL-0M-l2u"/>
                         <outlet property="tokenButton" destination="F9k-FY-gPy" id="5VO-9F-Zak"/>
                         <outlet property="tokenDisclousureImage" destination="u50-Ga-hFT" id="LcD-nZ-AzD"/>

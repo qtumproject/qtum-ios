@@ -10,7 +10,7 @@
 #import "TextFieldWithLine.h"
 #import "QRCodeManager.h"
 
-@interface RecieveViewController () <UITextFieldDelegate>
+@interface RecieveViewController () <UITextFieldDelegate, PopUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *qrCodeImageView;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
@@ -127,6 +127,13 @@
     NSString* keyString = self.wallet.mainAddress;
     [pb setString:keyString];
     
-    [self showAlertWithTitle:nil mesage:NSLocalizedString(@"Address copied", "") andActions:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForAddressCopied] presenter:self completion:nil];
 }
+
+#pragma mark - PopUpViewControllerDelegate
+
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
+
 @end
