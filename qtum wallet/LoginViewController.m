@@ -11,7 +11,7 @@
 
 @interface LoginViewController ()<CAAnimationDelegate>
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForCancelButton;
 @property (assign, nonatomic) BOOL shoudKeboardDismiss;
 
 @end
@@ -43,7 +43,7 @@
 
 -(void)keyboardWillShow:(NSNotification *)sender{
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.gradientViewBottomOffset.constant = end.size.height;
+    self.bottomConstraintForCancelButton.constant = end.size.height;
     [self.view layoutIfNeeded];
 }
 
