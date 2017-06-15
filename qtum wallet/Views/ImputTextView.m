@@ -10,6 +10,8 @@
 
 @interface ImputTextView ()
 
+@property (nonatomic) UIView *borderView;
+
 @end
 
 @implementation ImputTextView
@@ -17,7 +19,7 @@
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self configBorder];
+        [self config];
     }
     return self;
 }
@@ -28,14 +30,12 @@
 
 #pragma makr - Config
 
--(void)configBorder {
+-(void)config {
     self.layer.borderColor = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1].CGColor;
     self.layer.borderWidth = 1;
+    self.textContainerInset = UIEdgeInsetsMake(6, 4, 6, 4);
 }
 
 #pragma mark - Drawing
-
-//- (void)drawRect:(CGRect)rect {
-//}
 
 @end
