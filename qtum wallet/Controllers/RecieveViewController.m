@@ -30,13 +30,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.balanceLabel.text = [NSString stringWithFormat:@"%.6f", self.wallet.balance];
-    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.6f", self.wallet.unconfirmedBalance];
 
     [self addDoneButtonToAmountTextField];
     self.shareButton.enabled = NO;
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.balanceLabel.text = [NSString stringWithFormat:@"%.3f", self.wallet.balance];
+    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f", self.wallet.unconfirmedBalance];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -104,6 +108,23 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if ([string isEqualToString:@","]) {
+        return ![textField.text containsString:string] && !(textField.text.length == 0);
+    }
+    
+    return YES;
+}
+
+- (NSString *)getCorrectAmountString {
+    NSMutableString *amountString = [self.amountTextField.text mutableCopy];
+    if ([amountString containsString:@","]) {
+        [amountString replaceCharactersInRange:[amountString rangeOfString:@","] withString:@"."];
+    }
+    return [NSString stringWithString:amountString];
+}
+
 #pragma mark - Action
 
 - (IBAction)backButtonWasPressed:(id)sender
@@ -115,6 +136,11 @@
 {
     NSString *text = self.publicAddressLabel.text;
     UIImage *qrCode = self.qrCodeImageView.image;
+    
+    double amount = [[self getCorrectAmountString] doubleValue];
+    if (amount > 0) {
+        text = [NSString stringWithFormat:@"My address: %@ and amount: %.3f", text, amount];
+    }
     
     NSArray *sharedItems = @[qrCode, text];
     UIActivityViewController *sharingVC = [[UIActivityViewController alloc] initWithActivityItems:sharedItems applicationActivities:nil];

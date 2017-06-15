@@ -96,7 +96,7 @@ const float bottomOffset = 25;
 }
 
 - (IBAction)actionCancel:(id)sender {
-    [self.view endEditing:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 
