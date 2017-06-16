@@ -153,12 +153,16 @@
     
     if (self.fileUrl) {
         
-        RestoreContractsPopUpViewController *poUp = [[PopUpsManager sharedInstance] showRestoreContractsPopUp:self presenter:self completion:nil];
-
+        [BackupFileManager getQuickInfoFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(NSString *date, NSString *version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount) {
+            RestoreContractsPopUpViewController *poUp = [[PopUpsManager sharedInstance] showRestoreContractsPopUp:self presenter:self completion:nil];
+            poUp.dateLabel.text = date;
+            poUp.versionLabel.text = version;
+            poUp.tokensCountLabel.text = [NSString stringWithFormat:@"%li",(long)tokenCount];
+            poUp.contractsCountLabel.text = [NSString stringWithFormat:@"%li",(long)contractCount];
+            poUp.templateCounLabel.text = [NSString stringWithFormat:@"%li",(long)templateCount];
+        }];
+        
     }
-
-    
-    // TODO ADD VALUES TO POP-UP
 }
 
 - (IBAction)actionBack:(id)sender {

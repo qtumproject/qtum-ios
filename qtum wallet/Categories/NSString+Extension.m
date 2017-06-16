@@ -100,4 +100,12 @@
     return randomString;
 }
 
+- (NSDate*)date {
+    
+    NSDateFormatter *fullDateFormater = [[NSDateFormatter alloc] init];
+    fullDateFormater.dateFormat = @"Y-M-d hh:mm:ss";
+    fullDateFormater.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    return [fullDateFormater dateFromString:self];
+}
+
 @end

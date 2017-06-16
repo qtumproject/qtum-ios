@@ -16,5 +16,6 @@
 + (NSString *)invertHex:(NSString *)hexString;
 + (NSString *)stringFromCamelCase:(NSString*) camelString;
 + (NSString *)randomStringWithLength: (int) len;
+- (NSDate*)date;
 
 @end
