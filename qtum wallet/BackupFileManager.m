@@ -61,13 +61,16 @@ static NSString* kPlatformVersionKey = @"platformVersion";
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type == %@",@"token"];
             filteredArray = [array filteredArrayUsingPredicate:predicate];
            tokenCount = filteredArray.count;
-        } else if (option & Contracts) {
+        }
+        
+        if (option & Contracts) {
             
             NSArray* array = backup[kContractsKey];
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type != %@",@"token"];
             filteredArray = [array filteredArrayUsingPredicate:predicate];
             contractCount = filteredArray.count;
         }
+        
         date = [[backup[kDateCreateKey] date] formatedDateString];
         version = backup[kFileVersionKey];
         completionBlock(date,version,contractCount,templateCount,tokenCount);
