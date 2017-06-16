@@ -96,32 +96,34 @@
 }
 
 +(NSArray*)аrrayFromContractArguments:(NSData*) data andInterface:(AbiinterfaceItem*) interface {
-    
-    NSData* argumentsData = [data mutableCopy];
-    NSMutableArray* argumentsArray = @[].mutableCopy;
-    
-    for (int i = 0; i < interface.outputs.count; i++) {
+    if (data.length > 0){
+        NSData* argumentsData = [data mutableCopy];
+        NSMutableArray* argumentsArray = @[].mutableCopy;
         
-        if(interface.outputs[i].type == UInt8Type || interface.outputs[i].type == UInt256Type) {
+        for (int i = 0; i < interface.outputs.count; i++) {
             
-            NSNumber* arg = @([self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]]);
-            if (arg){
-                [argumentsArray addObject:arg];
-                argumentsData = [argumentsData subdataWithRange:NSMakeRange(32, argumentsData.length - 32)];
-            }
-        } else if(interface.outputs[i].type == StringType) {
-            
-            NSUInteger offset = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]];
-            NSUInteger length = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(32, 32)]];
-            NSString* stringArg = [self stringFromData:[argumentsData subdataWithRange:NSMakeRange(64, length)]];
-            if (stringArg){
-                [argumentsArray addObject:stringArg];
-                argumentsData = [argumentsData subdataWithRange:NSMakeRange(offset + length, argumentsData.length - offset - length)];
+            if(interface.outputs[i].type == UInt8Type || interface.outputs[i].type == UInt256Type) {
+                
+                NSNumber* arg = @([self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]]);
+                if (arg){
+                    [argumentsArray addObject:arg];
+                    argumentsData = [argumentsData subdataWithRange:NSMakeRange(32, argumentsData.length - 32)];
+                }
+            } else if(interface.outputs[i].type == StringType) {
+                
+                NSUInteger offset = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]];
+                NSUInteger length = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(32, 32)]];
+                NSString* stringArg = [self stringFromData:[argumentsData subdataWithRange:NSMakeRange(64, length)]];
+                if (stringArg){
+                    [argumentsArray addObject:stringArg];
+                    argumentsData = [argumentsData subdataWithRange:NSMakeRange(offset + length, argumentsData.length - offset - length)];
+                }
             }
         }
+        return argumentsArray;
+    } else {
+        return nil;
     }
-    
-    return argumentsArray;
 }
 
 +(NSString*)stringFromData:(NSData*) data {

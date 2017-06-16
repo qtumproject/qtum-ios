@@ -224,6 +224,7 @@
 		E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */; };
 		E73ECB611EF15EB40088C89D /* iMessageTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */; };
 		E74636861DCB300800A13318 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E74636851DCB300800A13318 /* Utils.m */; };
+		E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */; };
 		E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */; };
 		E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903591EDC66D0004243F0 /* BalanceTokenView.m */; };
 		E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035C1EDC674C004243F0 /* QTUMAddressTokenView.m */; };
@@ -755,6 +756,8 @@
 		E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMessageTextFieldWithLine.m; sourceTree = "<group>"; };
 		E74636841DCB300800A13318 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		E777786A1EF3E54E00948682 /* BTCAddress+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCAddress+Extension.h"; sourceTree = "<group>"; };
+		E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Extension.m"; sourceTree = "<group>"; };
 		E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TokenDetailsViews.xib; sourceTree = "<group>"; };
 		E78903581EDC66D0004243F0 /* BalanceTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTokenView.h; sourceTree = "<group>"; };
 		E78903591EDC66D0004243F0 /* BalanceTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceTokenView.m; sourceTree = "<group>"; };
@@ -1531,6 +1534,8 @@
 				B365CA591EA4D8E30040A163 /* BTCTransactionInput+Extension.m */,
 				B365CA5E1EA4DBC10040A163 /* BTCTransactionOutput+Address.h */,
 				B365CA5F1EA4DBC10040A163 /* BTCTransactionOutput+Address.m */,
+				E777786A1EF3E54E00948682 /* BTCAddress+Extension.h */,
+				E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -2639,6 +2644,7 @@
 				B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */,
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,
 				E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */,
+				E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				B384F3DF1EB9BF4A0075F1E8 /* NSBundle+Language.m in Sources */,
@@ -2939,11 +2945,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
 				INFOPLIST_FILE = "QTUM Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -2956,11 +2965,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
 				INFOPLIST_FILE = "QTUM Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -3089,8 +3101,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ebf87941-e6ba-4b3a-96e6-bc4e7eca82f3";
-				PROVISIONING_PROFILE_SPECIFIER = QTUM_DEV;
+				PROVISIONING_PROFILE = "8f2184f1-6c3d-48be-854f-d7a753168a75";
+				PROVISIONING_PROFILE_SPECIFIER = QTUMDEV;
 			};
 			name = Debug;
 		};
@@ -3103,7 +3115,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q7Q43CUMWT;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3117,8 +3129,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "73d43d91-74ea-4bf0-a0fc-30cebeabc82a";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.pixelplex.qtum-wallet";
+				PROVISIONING_PROFILE = "8f2184f1-6c3d-48be-854f-d7a753168a75";
+				PROVISIONING_PROFILE_SPECIFIER = QTUMDEV;
 			};
 			name = Release;
 		};

@@ -16,29 +16,24 @@
 @interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate,ChoseTokenPaymentViewControllerDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
-@property (weak, nonatomic) IBOutlet UIView *adressUnderlineView;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
-@property (weak, nonatomic) IBOutlet UIView *amountUnderlineView;
-@property (weak, nonatomic) IBOutlet TextFieldWithLine *pinTextField;
-@property (weak, nonatomic) IBOutlet UIView *pinUnderlineView;
-@property (weak, nonatomic) IBOutlet UIView *tokenUnderlineView;
-@property (weak, nonatomic) IBOutlet UIButton *tokenButton;
+
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenTextField;
+@property (weak, nonatomic) IBOutlet UIButton *tokenButton;
 @property (weak, nonatomic) IBOutlet UIImageView *tokenDisclousureImage;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalance;
-@property (strong,nonatomic) NSString* adress;
-@property (strong,nonatomic) NSString* amount;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withoutTokensConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *withTokensConstraint;
+
+@property (strong,nonatomic) NSString* adress;
+@property (strong,nonatomic) NSString* amount;
 
 @property (strong,nonatomic) Contract* token;
 @property (nonatomic) BOOL needUpdateTexfFields;
 
-- (IBAction)backbuttonPressed:(id)sender;
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
 
 @end
@@ -51,7 +46,7 @@ static NSInteger withoutTokenOffset = 30;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //[self addDoneButtonToAmountTextField];
+//    [self addDoneButtonToAmountTextField];
     
     if (self.dictionary) {
         [self qrCodeScanned:self.dictionary];
@@ -84,27 +79,23 @@ static NSInteger withoutTokenOffset = 30;
 
 -(void)updateControls{
     
-    double amount = [self.amountTextField.text doubleValue];
-    
-    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.balance - amount];
+    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.balance];
     self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.unconfirmedBalance];
     
     BOOL isTokensExists = [ContractManager sharedInstance].getAllActiveTokens.count;
-    
-    self.tokenButton.hidden =
-    self.tokenDisclousureImage.hidden =
     self.tokenTextField.hidden =
-    self.tokenUnderlineView.hidden = !isTokensExists;
+    self.tokenButton.hidden =
+    self.tokenDisclousureImage.hidden = !isTokensExists;
     self.withoutTokensConstraint.constant = isTokensExists ? withTokenOffset : withoutTokenOffset;
     self.tokenDisclousureImage.tintColor = customBlueColor();
     self.tokenTextField.text =  self.token ? self.token.name : NSLocalizedString(@"QTUM (Default)", @"");
-    self.residueValueLabel.text = self.currentBalance;
+    
     [self.view layoutSubviews];
 }
 
--(void)payWithWallet {
+-(void)payWithWallet:(NSString *)amountString {
     
-    NSNumber *amount = @([self.amountTextField.text doubleValue]);
+    NSNumber *amount = @([amountString doubleValue]);
     NSString *address = self.addressTextField.text;
     
     NSArray *array = @[@{@"amount" : amount, @"address" : address}];
@@ -125,11 +116,11 @@ static NSInteger withoutTokenOffset = 30;
     }];
 }
 
--(void)payWithToken {
+-(void)payWithToken:(NSString *)amountString {
     
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:self.addressTextField.text amount:@([self.amountTextField.text doubleValue]) andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
+    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:self.addressTextField.text amount:@([amountString doubleValue]) andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             [weakSelf showCompletedPopUp];
@@ -154,22 +145,21 @@ static NSInteger withoutTokenOffset = 30;
 
 - (void)okButtonPressed:(PopUpViewController *)sender{
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
-    [self backbuttonPressed:self];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender{
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
     if (self.token) {
-        [self payWithToken];
+        [self payWithToken:[self getCorrectAmountString]];
     } else {
-        [self payWithWallet];
+        [self payWithWallet:[self getCorrectAmountString]];
     }
 }
 
 #pragma mark - iMessage
 
 -(void)setAdress:(NSString*)adress andValue:(NSString*)amount{
-    
     self.adress = adress;
     self.amount = amount;
     self.needUpdateTexfFields = YES;
@@ -178,92 +168,62 @@ static NSInteger withoutTokenOffset = 30;
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    UIColor* underlineColor = [UIColor colorWithRed:54/255. green:185/255. blue:200/255. alpha:1];
+    return YES;
+}
 
-    if ([textField isEqual:self.addressTextField]) {
-        self.adressUnderlineView.backgroundColor = underlineColor;
-    }else if ([textField isEqual:self.amountTextField]) {
-        self.amountUnderlineView.backgroundColor = underlineColor;
-    }else if ([textField isEqual:self.pinTextField]) {
-        self.pinUnderlineView.backgroundColor = underlineColor;
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
+    if (textField == self.amountTextField) {
+        if ([string isEqualToString:@","]) {
+            return ![textField.text containsString:string] && !(textField.text.length == 0);
+        }
     }
     
     return YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    UIColor* underlineColor = [UIColor colorWithRed:189/255. green:198/255. blue:207/255. alpha:1];
-    if ([textField isEqual:self.addressTextField]) {
-        self.adressUnderlineView.backgroundColor = underlineColor;
-    }else if ([textField isEqual:self.amountTextField]) {
-        self.amountUnderlineView.backgroundColor = underlineColor;
-    }else if ([textField isEqual:self.pinTextField]) {
-        self.pinUnderlineView.backgroundColor = underlineColor;
-    }
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if ([textField isEqual:self.amountTextField]) {
-        NSMutableString *newString = [textField.text mutableCopy];
-        [newString replaceCharactersInRange:range withString:string];
-        NSString *complededString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        [self calculateResidue:complededString];
-    }
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
 }
 
-- (void)addDoneButtonToAmountTextField
-{
+- (void)addDoneButtonToAmountTextField {
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
-    toolbar.barStyle = UIBarStyleBlackTranslucent;
-    toolbar.barTintColor = [UIColor groupTableViewBackgroundColor];
-    toolbar.items = @[
-                      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                      [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)],
-                      ];
+    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.translucent = NO;
+    toolbar.barTintColor = customBlackColor();
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
+    doneItem.tintColor = customBlueColor();
+    toolbar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                      doneItem];
     [toolbar sizeToFit];
     
     self.amountTextField.inputAccessoryView = toolbar;
 }
 
-- (void)done:(id)sender
-{
+- (void)done:(id)sender {
     [self.amountTextField resignFirstResponder];
 }
 
-- (void)calculateResidue:(NSString *)string {
-    double amount;
-    if (string) {
-        amount = [string doubleValue];
-    }else{
-        amount = [self.amountTextField.text doubleValue];
+- (NSString *)getCorrectAmountString {
+    NSMutableString *amountString = [self.amountTextField.text mutableCopy];
+    if ([amountString containsString:@","]) {
+        [amountString replaceCharactersInRange:[amountString rangeOfString:@","] withString:@"."];
     }
-    double balance = [WalletManager sharedInstance].getCurrentWallet.balance;
-    
-    double residue = balance - amount;
-    self.residueValueLabel.text = [NSString stringWithFormat:@"%lf", residue];
+    return [NSString stringWithString:amountString];
 }
 
 #pragma mark - Action
 
-- (IBAction)backbuttonPressed:(id)sender
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
-    
     if (self.token) {
-        [self payWithToken];
+        [self payWithToken:[self getCorrectAmountString]];
     } else {
-        [self payWithWallet];
+        [self payWithWallet:[self getCorrectAmountString]];
     }
 }
 
@@ -318,11 +278,6 @@ static NSInteger withoutTokenOffset = 30;
         
         vc.delegate = self;
     }
-}
-
--(IBAction)unwingToPayment:(UIStoryboardSegue *)segue {
-//    StartNavigationCoordinator* coordinator = (StartNavigationCoordinator*)self.navigationController;
-//    [coordinator clear];
 }
 
 @end

@@ -18,8 +18,8 @@
 
 - (void)needShowHeader;
 - (void)needHideHeader;
-- (void)fadeInNavigationBar;
-- (void)fadeOutNavigationBar;
+- (void)needShowHeaderForSecondSeciton;
+- (void)needHideHeaderForSecondSeciton;
 
 @end
 

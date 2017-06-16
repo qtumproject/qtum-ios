@@ -16,10 +16,8 @@ const float bottomOffset = 25;
 @interface PinViewController () <UITextFieldDelegate, CAAnimationDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *controllerTitle;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmButtonTopOffset;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelButtonTopOffset;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmButtonBottomOffset;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelButtonBottomOffset;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomForButtonsConstraint;
 
 
 @end
@@ -28,10 +26,7 @@ const float bottomOffset = 25;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -46,26 +41,23 @@ const float bottomOffset = 25;
 #pragma mark - Keyboard
 
 -(void)keyboardWillShow:(NSNotification *)sender{
-    NSTimeInterval duration = [[sender userInfo][UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-
-    [self.cancelButtonBottomOffset setActive:NO];
-    [self.cancelButtonTopOffset setActive:YES];
-
-    [self.confirmButtonBottomOffset setActive:NO];
-    [self.confirmButtonTopOffset setActive:YES];
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
-    [self changeConstraintsAnimatedWithTime:duration];
+    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    CGFloat tapBarHeight = 0.0f;
+    if ([vc isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tapBarVC = (UITabBarController *)vc;
+        tapBarHeight = tapBarVC.tabBar.frame.size.height;
+    }
+    
+    self.bottomForButtonsConstraint.constant = end.size.height - tapBarHeight;
+    [self.view layoutIfNeeded];
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
-    NSTimeInterval duration = [[sender userInfo][UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-
-    [self.cancelButtonBottomOffset setActive:YES];
-    [self.confirmButtonBottomOffset setActive:YES];
-    
-    [self.cancelButtonTopOffset setActive:NO];
-    [self.confirmButtonTopOffset setActive:NO];
-    [self changeConstraintsAnimatedWithTime:duration];
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.bottomForButtonsConstraint.constant = end.size.height;
+    [self.view layoutIfNeeded];
 }
 
 #pragma mark - Configuration
@@ -104,7 +96,7 @@ const float bottomOffset = 25;
 }
 
 - (IBAction)actionCancel:(id)sender {
-    [self.view endEditing:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 

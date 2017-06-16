@@ -14,7 +14,6 @@
 
 -(void)setCustomTitle:(NSString*) title;
 
-
 @end
 
 

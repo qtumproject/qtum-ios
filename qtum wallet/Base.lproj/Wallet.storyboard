@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mEt-XV-9HF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mEt-XV-9HF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -45,13 +45,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVd-Fi-2G9">
-                                        <rect key="frame" x="46.5" y="75" width="238.5" height="34"/>
+                                        <rect key="frame" x="47" y="75" width="238.5" height="34"/>
                                         <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="28"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1v-Dh-WHs">
-                                        <rect key="frame" x="295" y="88" width="39" height="19"/>
+                                        <rect key="frame" x="295.5" y="88" width="39" height="19"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -171,7 +171,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXu-VK-uXJ">
-                                                <rect key="frame" x="139.5" y="10" width="97.5" height="23"/>
+                                                <rect key="frame" x="139" y="10" width="97.5" height="23"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -518,7 +518,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-nK-6WR" customClass="ViewWithAnimatedLine">
-                                <rect key="frame" x="0.0" y="64" width="375" height="25"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iv7-z9-t2O">
                                         <rect key="frame" x="291.5" y="9" width="68.5" height="17"/>
@@ -578,10 +578,38 @@
                                     <constraint firstAttribute="trailing" secondItem="0m9-ga-s3w" secondAttribute="trailing" constant="15" id="z0z-WK-Smt"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPy-UH-CSe">
+                                <rect key="frame" x="0.0" y="114" width="375" height="32"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIq-fp-0RY">
+                                        <rect key="frame" x="0.0" y="30" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="ixy-rJ-hnw"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kR-xg-M7a">
+                                        <rect key="frame" x="10" y="8.5" width="43" height="15.5"/>
+                                        <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="iIq-fp-0RY" secondAttribute="bottom" constant="1" id="goh-c4-hBz"/>
+                                    <constraint firstAttribute="trailing" secondItem="iIq-fp-0RY" secondAttribute="trailing" id="hIM-rN-QzK"/>
+                                    <constraint firstAttribute="height" constant="32" id="hV8-ln-LPN"/>
+                                    <constraint firstItem="0kR-xg-M7a" firstAttribute="leading" secondItem="NPy-UH-CSe" secondAttribute="leading" constant="10" id="jEt-XZ-ySo"/>
+                                    <constraint firstItem="iIq-fp-0RY" firstAttribute="leading" secondItem="NPy-UH-CSe" secondAttribute="leading" id="w8h-c0-EFc"/>
+                                    <constraint firstItem="0kR-xg-M7a" firstAttribute="centerY" secondItem="NPy-UH-CSe" secondAttribute="centerY" id="xSx-xu-gKz"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.24705882352941178" green="0.2196078431372549" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NPy-UH-CSe" secondAttribute="trailing" id="3jd-8u-3nw"/>
                             <constraint firstItem="uc4-nK-6WR" firstAttribute="leading" secondItem="CDL-Nz-vVR" secondAttribute="leading" id="4tY-DR-lKk"/>
                             <constraint firstItem="uc4-nK-6WR" firstAttribute="top" secondItem="YP6-GK-BMP" secondAttribute="bottom" id="6mn-hh-YTR"/>
                             <constraint firstAttribute="trailing" secondItem="wxm-c6-KId" secondAttribute="trailing" id="9NH-gu-mwf"/>
@@ -591,6 +619,8 @@
                             <constraint firstItem="bnH-1I-2rB" firstAttribute="top" secondItem="wxm-c6-KId" secondAttribute="bottom" id="bwL-Bv-Cl9"/>
                             <constraint firstItem="YP6-GK-BMP" firstAttribute="top" secondItem="CDL-Nz-vVR" secondAttribute="top" id="nAu-lX-Tlu"/>
                             <constraint firstItem="YP6-GK-BMP" firstAttribute="leading" secondItem="CDL-Nz-vVR" secondAttribute="leading" id="ntl-Ch-XyL"/>
+                            <constraint firstItem="NPy-UH-CSe" firstAttribute="leading" secondItem="CDL-Nz-vVR" secondAttribute="leading" id="tuQ-eg-8rD"/>
+                            <constraint firstItem="NPy-UH-CSe" firstAttribute="top" secondItem="gQG-C0-D8i" secondAttribute="bottom" constant="50" id="vQn-oh-dYb"/>
                             <constraint firstAttribute="trailing" secondItem="YP6-GK-BMP" secondAttribute="trailing" id="zg9-uZ-aIy"/>
                         </constraints>
                     </view>
@@ -605,8 +635,10 @@
                         <outlet property="headerHeightConstraint" destination="ZxO-ay-UJg" id="1be-Mz-YpC"/>
                         <outlet property="headerView" destination="uc4-nK-6WR" id="xWA-Jt-8HU"/>
                         <outlet property="tableView" destination="wxm-c6-KId" id="1Bc-7E-dld"/>
+                        <outlet property="topForTableConstraint" destination="SYt-w9-c8Q" id="wJy-iY-B05"/>
                         <outlet property="unconfirmedTextLabel" destination="owV-Mm-9sn" id="U15-nc-Cly"/>
                         <outlet property="uncorfirmedLabel" destination="0m9-ga-s3w" id="Owu-pK-9qP"/>
+                        <outlet property="viewForHeaderInSecondSection" destination="NPy-UH-CSe" id="e9A-sy-6NO"/>
                         <segue destination="JYU-5f-lNi" kind="show" identifier="MaintToRecieve" id="CYI-85-9gp"/>
                     </connections>
                 </viewController>
@@ -647,7 +679,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BN8-Bl-VYs">
-                                                <rect key="frame" x="148.5" y="11" width="79" height="23"/>
+                                                <rect key="frame" x="149" y="11" width="79" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -934,7 +966,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Tokens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxX-WI-p4x">
-                                                <rect key="frame" x="133.5" y="11" width="109.5" height="23"/>
+                                                <rect key="frame" x="133" y="11" width="109.5" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1184,13 +1216,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmr-lt-g2J">
-                                                    <rect key="frame" x="126" y="45" width="124.5" height="14"/>
+                                                    <rect key="frame" x="125.5" y="45" width="124.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcE-lx-YXE">
-                                                    <rect key="frame" x="179.5" y="15" width="17.5" height="34"/>
+                                                    <rect key="frame" x="179" y="15" width="17.5" height="34"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="28"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1392,7 +1424,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4R-3f-Vfs">
-                                                    <rect key="frame" x="10" y="9.5" width="43" height="15.5"/>
+                                                    <rect key="frame" x="10" y="10" width="43" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
