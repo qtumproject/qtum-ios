@@ -81,7 +81,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ChoseTokenPaymentCell* cell = [tableView dequeueReusableCellWithIdentifier:choseTokenPaymentCellIdentifire];
-    cell.tokenName.text = self.tokens[indexPath.row].name;
+    cell.tokenName.text = self.tokens[indexPath.row].localName;
     cell.mainBalance.text = [NSString stringWithFormat:@"%f",self.tokens[indexPath.row].balance];
     cell.balance.text = [NSString stringWithFormat:@"%f",0.0];
     cell.balanceSymbol.text = @"";

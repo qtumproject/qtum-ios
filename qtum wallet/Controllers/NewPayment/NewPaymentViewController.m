@@ -88,7 +88,7 @@ static NSInteger withoutTokenOffset = 30;
     self.tokenDisclousureImage.hidden = !isTokensExists;
     self.withoutTokensConstraint.constant = isTokensExists ? withTokenOffset : withoutTokenOffset;
     self.tokenDisclousureImage.tintColor = customBlueColor();
-    self.tokenTextField.text =  self.token ? self.token.name : NSLocalizedString(@"QTUM (Default)", @"");
+    self.tokenTextField.text =  self.token ? self.token.localName : NSLocalizedString(@"QTUM (Default)", @"");
     
     [self.view layoutSubviews];
 }
@@ -254,7 +254,7 @@ static NSInteger withoutTokenOffset = 30;
 
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
     self.token = item;
-    self.tokenTextField.text = item.name;
+    self.tokenTextField.text = item.localName;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
