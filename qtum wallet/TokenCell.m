@@ -23,7 +23,7 @@
 
 -(void)setupWithObject:(Contract *)token {
     
-    self.tokenName.text = token.name;
+    self.tokenName.text = token.localName;
     self.mainSymbol.text = @"QTUM";
     self.symbol.text = @"QTUM";
     self.mainValue.text = [NSString stringWithFormat:@"%f",token.balance];

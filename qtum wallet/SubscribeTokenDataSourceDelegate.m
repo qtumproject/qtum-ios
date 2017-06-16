@@ -27,7 +27,7 @@
     Contract* token = self.tokensArray[indexPath.row];
     cell.topSeparator.hidden = NO;
     cell.indicator.hidden = !token.isActive;
-    cell.label.text = token.name;
+    cell.label.text = token.localName;
     [cell setSelectedBackgroundView:[self highlightedView]];
     return cell;
 }
