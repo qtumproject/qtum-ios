@@ -415,7 +415,7 @@ static NSString* kAddresses = @"kAddress";
     [self tokenDidChange:object];
 }
 
--(void)clear{
+-(void)clear {
     
     [self removeAllTokens];
     [self removeAllPretendents];
@@ -432,7 +432,7 @@ static NSString* kIsActiveKey = @"isActive";
 static NSString* kTypeKey = @"type";
 static NSString* kTemplateKey = @"template";
 
--(NSArray<NSDictionary*>*)backupDescription {
+-(NSArray<NSDictionary*>*)decodeDataForBackup {
     
     NSMutableArray* backupArray = @[].mutableCopy;
     
@@ -450,6 +450,30 @@ static NSString* kTemplateKey = @"template";
     }
     
     return backupArray.copy;
+}
+
+-(void)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates {
+    
+    for (NSDictionary* contractDict in backup) {
+
+        Contract* contract = [Contract new];
+        contract.localName = contractDict[kNameKey];
+        contract.contractAddress = contractDict[kContractAddressKey];
+        contract.contractCreationAddressAddress = contractDict[kContractCreationAddressKey];
+        contract.creationDate = [NSDate date];
+        contract.isActive = [contractDict[kIsActiveKey] boolValue];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uiidFromRestore == %i",[contractDict[kTemplateKey] integerValue]];
+        NSArray* filteredTemplates = [templates filteredArrayUsingPredicate:predicate];
+        if (filteredTemplates.count > 0) {
+            contract.templateModel = filteredTemplates[0];
+            [self addNewToken:contract];
+            [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
+            [self updateSpendableObject:contract];
+            [self save];
+            [self tokenDidChange:nil];
+        }
+    }
 }
 
 @end

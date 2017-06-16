@@ -79,22 +79,22 @@
     return filteredArray.firstObject;
 }
 
-- (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName {
+- (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templatePath {
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getAbiWithTemplate:templateName]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getAbiWithTemplate:templatePath]];
     return interphase;
 }
 
-- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args{
+- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templatePath andParam:(NSDictionary*) args{
     
-    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeWithTemplate:templateName] mutableCopy];
+    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeWithTemplate:templatePath] mutableCopy];
     [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromDictionary:args]];
     return [contractSource copy];
 }
 
-- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args{
+- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templatePath andArray:(NSArray*) args{
     
-    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeWithTemplate:templateName] mutableCopy];
+    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeWithTemplate:templatePath] mutableCopy];
     [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromArray:args]];
     return [contractSource copy];
 }

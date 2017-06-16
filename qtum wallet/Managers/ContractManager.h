@@ -31,7 +31,8 @@ extern NSString *const kTokenDidChange;
                                   withAbi:(NSString*) abiStr
                               andWithName:(NSString*) contractName;
 
--(NSArray<NSDictionary*>*)backupDescription;
+- (NSArray<NSDictionary*>*)decodeDataForBackup;
+- (void)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

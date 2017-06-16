@@ -11,8 +11,8 @@
 @implementation NSString (Extension)
 
 +(NSString *)valueForKey:(NSString *)key
-           fromQueryItems:(NSArray *)queryItems
-{
+           fromQueryItems:(NSArray *)queryItems {
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@", key];
     NSURLQueryItem *queryItem = [[queryItems
                                   filteredArrayUsingPredicate:predicate]
@@ -20,8 +20,8 @@
     return queryItem.value;
 }
 
-+ (NSData *)dataFromHexString:(NSString *)string
-{
++ (NSData *)dataFromHexString:(NSString *)string {
+    
     string = [string lowercaseString];
     NSMutableData *data= [NSMutableData new];
     unsigned char whole_byte;
@@ -86,6 +86,18 @@
     }
     NSLog(@"%@", newStr.capitalizedString);
     return newStr.capitalizedString;
+}
+
++ (NSString *) randomStringWithLength: (int) len {
+    
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((uint32_t)[letters length])]];
+    }
+    
+    return randomString;
 }
 
 @end

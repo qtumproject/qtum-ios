@@ -18,6 +18,7 @@
 #import "RPCRequestManager.h"
 #import "LanguageCoordinator.h"
 #import "ProfileViewController.h"
+#import "TemplateManager.h"
 
 
 @interface ApplicationCoordinator ()
@@ -163,6 +164,7 @@
     
     [[WalletManager sharedInstance] clear];
     [[ContractManager sharedInstance] clear];
+    [[TemplateManager sharedInstance] clear];
     [[WalletManager sharedInstance] stopObservingForAllSpendable];
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
 }

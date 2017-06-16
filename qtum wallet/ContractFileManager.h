@@ -11,19 +11,21 @@
 
 @interface ContractFileManager : NSObject
 
--(NSDictionary*) getAbiWithTemplate:(NSString*) templateName;
+- (NSDictionary*) getAbiWithTemplate:(NSString*) templatePath;
 
--(NSString*) getEscapeAbiWithTemplate:(NSString*) templateName;
+- (NSString*) getEscapeAbiWithTemplate:(NSString*) templatePath;
 
--(NSString*)getContractWithTemplate:(NSString*) templateName;
+- (NSString*)getContractWithTemplate:(NSString*) templatePath;
 
--(NSData*)getBitcodeWithTemplate:(NSString*) templateName;
+- (NSData*)getBitcodeWithTemplate:(NSString*) templatePath;
 
--(NSDictionary*)getStandartAbi;
+- (NSDictionary*)getStandartAbi;
 
--(NSDate*)getDateOfCreationTemplate:(NSString*) templateName;
+- (NSDate*)getDateOfCreationTemplate:(NSString*) templatePath;
 
--(BOOL)writeNewAbi:(NSArray*) abi withPathName:(NSString*) newTeplateName;
+- (BOOL)writeNewAbi:(NSArray*) abi withPathName:(NSString*) templatePath;
+- (BOOL)writeNewBitecode:(NSString*) bitecode withPathName:(NSString*) templatePath;
+- (BOOL)writeNewSource:(NSString*) source withPathName:(NSString*) templatePath;
 
 + (instancetype)sharedInstance;
 

@@ -19,14 +19,21 @@ typedef NS_ENUM(NSInteger, TemplateType) {
 @interface TemplateModel : NSObject
 
 @property (copy, nonatomic) NSString* templateName;
-@property (copy, nonatomic,readonly) NSString* templateTypeString;
-@property (copy, nonatomic,readonly) NSString* templateTypeStringForBackup;
-@property (strong, nonatomic,readonly) NSDate* creationDate;
-@property (copy, nonatomic,readonly) NSString* creationDateString;
-@property (copy, nonatomic,readonly) NSString* creationFormattedDateString;
+@property (copy, nonatomic) NSString* path;
+@property (copy, nonatomic ,readonly) NSString* templateTypeString;
+@property (copy, nonatomic, readonly) NSString* templateTypeStringForBackup;
+@property (strong, nonatomic, readonly) NSDate* creationDate;
+@property (copy, nonatomic, readonly) NSString* creationDateString;
+@property (copy, nonatomic, readonly) NSString* creationFormattedDateString;
 @property (assign, nonatomic) TemplateType type;
 @property (assign, nonatomic) NSInteger uiid;
+@property (assign, nonatomic) NSInteger uiidFromRestore;
 
--(instancetype)initWithTemplateName:(NSString*) templateName andType:(TemplateType) type withUiid:(NSInteger) uiid;
+- (instancetype)initWithTemplateName:(NSString*) templateName
+                            andType:(TemplateType) type
+                           withUiid:(NSInteger) uiid
+                               path:(NSString*) path;
+
++ (TemplateType)templateTypeFromForBackupString:(NSString*) type;
 
 @end

@@ -12,13 +12,17 @@
 
 @implementation TemplateModel
 
--(instancetype)initWithTemplateName:(NSString*) templateName andType:(TemplateType) type withUiid:(NSInteger) uiid {
+-(instancetype)initWithTemplateName:(NSString*) templateName
+                            andType:(TemplateType) type
+                           withUiid:(NSInteger) uiid
+                            path:(NSString*) path {
 
     self = [super init];
     if (self) {
         _templateName = templateName;
         _type = type;
         _uiid = uiid;
+        _path = path;
     }
     return self;
 }
@@ -57,16 +61,31 @@
     }
 }
 
++(TemplateType)templateTypeFromForBackupString:(NSString*) type {
+    
+    if ([type isEqualToString:@"token"]) {
+        return TokenType;
+    } else if ([type isEqualToString:@"contract"]) {
+        return NotmalContract;
+    } else if ([type isEqualToString:@"crowdsale"]) {
+        return CrowdsaleType;
+    } else if ([type isEqualToString:@"undefined"]) {
+        return UndefinedContractType;
+    } else {
+        return UndefinedContractType;
+    }
+}
+
 -(NSDate*)creationDate {
-    return [[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.templateName];
+    return [[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.path];
 }
 
 -(NSString*)creationDateString {
-    return [[[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.templateName] formatedDateString];
+    return [[[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.path] formatedDateString];
 }
 
 -(NSString*)creationFormattedDateString {
-    return [[[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.templateName] string];
+    return [[[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.path] string];
 }
 
 #pragma  mark - NSCoder
@@ -76,6 +95,7 @@
     [aCoder encodeObject:self.templateName forKey:@"templateName"];
     [aCoder encodeObject:@(self.type) forKey:@"type"];
     [aCoder encodeObject:@(self.uiid) forKey:@"uiid"];
+    [aCoder encodeObject:self.path forKey:@"path"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -83,12 +103,15 @@
     NSString *templateName = [aDecoder decodeObjectForKey:@"templateName"];
     NSInteger type = [[aDecoder decodeObjectForKey:@"type"] integerValue];
     NSInteger uiid = [[aDecoder decodeObjectForKey:@"uiid"] integerValue];
+    NSString *path = [aDecoder decodeObjectForKey:@"path"];
+
 
     self = [super init];
     if (self) {
         _templateName = templateName;
         _type = type;
         _uiid = uiid;
+        _path = path;
     }
     
     return self;

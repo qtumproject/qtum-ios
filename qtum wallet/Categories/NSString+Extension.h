@@ -14,6 +14,7 @@
 + (NSData *)dataFromHexString:(NSString *)string;
 + (NSString *)hexadecimalString:(NSData *)data;
 + (NSString *)invertHex:(NSString *)hexString;
-+ (NSString*)stringFromCamelCase:(NSString*) camelString;
++ (NSString *)stringFromCamelCase:(NSString*) camelString;
++ (NSString *)randomStringWithLength: (int) len;
 
 @end

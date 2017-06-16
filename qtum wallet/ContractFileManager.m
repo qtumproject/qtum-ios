@@ -10,6 +10,7 @@
 #import "NSData+Extension.h"
 #import "NSString+Extension.h"
 #import "TokenCell.h"
+#import "TemplateManager.h"
 
 @implementation ContractFileManager
 
@@ -56,34 +57,34 @@
 
 -(NSDictionary*)getStandartAbi {
     
-    return [self getAbiWithTemplate:@"Standart"];
+    return [self getAbiWithTemplate:[[TemplateManager sharedInstance] getStandartTokenTemplate].path];
 }
 
--(NSDictionary*)getAbiWithTemplate:(NSString*) templateName {
+-(NSDictionary*)getAbiWithTemplate:(NSString*) templatePath {
     
-    NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templateName];
+    NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templatePath];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSDictionary* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     return jsonAbi;
 }
 
--(NSString*)getEscapeAbiWithTemplate:(NSString*) templateName {
+-(NSString*)getEscapeAbiWithTemplate:(NSString*) templatePath {
     
-    NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templateName];
+    NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templatePath];
     NSString *abi = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     return abi;
 }
 
--(NSString*)getContractWithTemplate:(NSString*) templateName {
+-(NSString*)getContractWithTemplate:(NSString*) templatePath {
     
-    NSString* path = [NSString stringWithFormat:@"%@/%@/source-contract",[self contractDirectory],templateName];
+    NSString* path = [NSString stringWithFormat:@"%@/%@/source-contract",[self contractDirectory],templatePath];
     NSString *contract = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     return contract;
 }
 
--(NSData*)getBitcodeWithTemplate:(NSString*) templateName {
+-(NSData*)getBitcodeWithTemplate:(NSString*) templatePath {
     
-    NSString* path = [NSString stringWithFormat:@"%@/%@/bitecode-contract",[self contractDirectory],templateName];
+    NSString* path = [NSString stringWithFormat:@"%@/%@/bitecode-contract",[self contractDirectory], templatePath];
     NSString *contract = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     NSData *bitecode = [NSString dataFromHexString:contract];
     return bitecode;
@@ -105,9 +106,9 @@
     }];
 }
 
--(BOOL)writeNewAbi:(NSArray*) abi withPathName:(NSString*) newTeplateName {
+-(BOOL)writeNewAbi:(NSArray*) abi withPathName:(NSString*) templatePath {
     
-    NSString* folderPath = [NSString stringWithFormat:@"%@/%@",[self contractDirectory],newTeplateName];
+    NSString* folderPath = [NSString stringWithFormat:@"%@/%@",[self contractDirectory], templatePath];
     NSString* filePath = [NSString stringWithFormat:@"%@/abi-contract",folderPath];
 
 
@@ -122,28 +123,52 @@
                                                                  error:&err] copy];
     [jsonData writeToFile:filePath atomically:YES];
     
-    if (err != nil) {
-        return NO;
-    } else {
-        return YES;
-    }
+    return err ? NO : YES;
 }
 
--(NSDate*)getDateOfCreationTemplate:(NSString*) templateName {
+-(BOOL)writeNewBitecode:(NSString*) bitecode withPathName:(NSString*) templatePath {
     
-    NSString* path = [NSString stringWithFormat:@"%@/%@",[self contractDirectory],templateName];
+    NSString* folderPath = [NSString stringWithFormat:@"%@/%@",[self contractDirectory],templatePath];
+    NSString* filePath = [NSString stringWithFormat:@"%@/bitecode-contract",folderPath];
+    
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:NO attributes:nil error:NULL];
+    }
+    
+    NSError *err = nil;
+    
+    [bitecode writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+    
+    return err ? NO : YES;
+}
+
+-(BOOL)writeNewSource:(NSString*) source withPathName:(NSString*) path {
+    
+    NSString* folderPath = [NSString stringWithFormat:@"%@/%@",[self contractDirectory],path];
+    NSString* filePath = [NSString stringWithFormat:@"%@/source-contract",folderPath];
+    
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:NO attributes:nil error:NULL];
+    }
+    
+    NSError *err = nil;
+    
+    [source writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+    
+    return err ? NO : YES;
+}
+
+-(NSDate*)getDateOfCreationTemplate:(NSString*) templatePath {
+    
+    NSString* path = [NSString stringWithFormat:@"%@/%@",[self contractDirectory],templatePath];
     NSArray* resContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
     
     NSFileManager* fm = [NSFileManager defaultManager];
     NSDictionary* attrs = [fm attributesOfItemAtPath:[path stringByAppendingPathComponent:resContents[0]] error:nil];
     
-    if (attrs) {
-        
-        return (NSDate*)[attrs objectForKey: NSFileCreationDate];
-    } else {
-        
-        return nil;
-    }
+    return attrs ? (NSDate*)[attrs objectForKey: NSFileCreationDate] : nil;
 }
 
 
