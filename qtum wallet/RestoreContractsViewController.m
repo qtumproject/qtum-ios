@@ -10,6 +10,8 @@
 #import "CheckboxButton.h"
 #import "RestoreContractsPopUpViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "BackupFileManager.h"
+#import "ErrorPopUpViewController.h"
 
 
 @interface RestoreContractsViewController () <CheckboxButtonDelegate, PopUpWithTwoButtonsViewControllerDelegate, UIDocumentMenuDelegate, UIDocumentPickerDelegate>
@@ -21,10 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIView *containerForButtons;
 @property (weak, nonatomic) IBOutlet UIView *fileView;
 
-@property (nonatomic) NSMutableArray *buttons;
+@property (strong, nonatomic) NSMutableArray <CheckboxButton*> *buttons;
 
-@property (nonatomic) BOOL haveFile;
-@property (nonatomic) NSURL *fileUrl;
+@property (assign, nonatomic) BOOL haveFile;
+@property (strong, nonatomic) NSURL *fileUrl;
 
 @end
 
@@ -93,9 +95,46 @@
     }
 }
 
+#pragma mark - Private Methods 
+
+-(BackupOption)checkRestoreButtonsStateForRestore {
+    
+    BackupOption option = (Tokens | Templates | Contracts);
+    for (int i = 0; i < self.buttons.count; i++) {
+        if (!self.buttons[i].isChecked) {
+            switch (i) {
+                case 0:
+                    option &= ~Templates;
+                    break;
+                case 1:
+                    option &= ~Contracts;
+                    break;
+                case 2:
+                    option &= ~Tokens;
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+    }
+        
+    return option;
+}
+
+-(void)clearControls {
+    
+    self.haveFile = NO;
+    self.fileUrl = nil;
+    self.sizeLabel.text = @"";
+    [self setupViewForFile];
+    [self setCheckForAllButtons:NO];
+}
+
 #pragma mark - Actions
 
 - (void)actionSelectFile {
+    
     if (self.haveFile) {
         self.haveFile = NO;
         self.fileUrl = nil;
@@ -111,7 +150,13 @@
 }
 
 - (IBAction)actionRestore:(id)sender {
-    RestoreContractsPopUpViewController *poUp = [[PopUpsManager sharedInstance] showRestoreContractsPopUp:self presenter:self completion:nil];
+    
+    if (self.fileUrl) {
+        
+        RestoreContractsPopUpViewController *poUp = [[PopUpsManager sharedInstance] showRestoreContractsPopUp:self presenter:self completion:nil];
+
+    }
+
     
     // TODO ADD VALUES TO POP-UP
 }
@@ -123,6 +168,7 @@
 #pragma mark - CheckboxButtonDelegate and buttons Logic
 
 - (void)didStateChanged:(CheckboxButton *)sender {
+    
     if (self.buttons.count - 1 == [self.buttons indexOfObject:sender]) {
         [self setCheckForAllButtons:[sender isChecked]];
     }else{
@@ -131,8 +177,10 @@
 }
 
 - (void)checkAllSelectedAndChangeLastButton {
+    
     BOOL allSelected = YES;
     for (NSInteger i = 0; i < self.buttons.count - 1; i++) {
+        
         CheckboxButton *button = self.buttons[i];
         
         if (![button isChecked]) {
@@ -144,6 +192,7 @@
 }
 
 - (void)setCheckForAllButtons:(BOOL)value {
+    
     for (CheckboxButton *button in self.buttons) {
         [button setCheck:value];
     }
@@ -152,7 +201,21 @@
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+
+    if ([sender isKindOfClass:[ErrorPopUpViewController class]]) {
+        
+        [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+        
+    } else {
+        [BackupFileManager setBackupFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(BOOL success) {
+            if (success) {
+                [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+            } else {
+                [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:self completion:nil];
+            }
+        }];
+    }
+    [self clearControls];
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {

@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Spendable.h"
+#import "Clearable.h"
 
 @protocol Spendable;
 
-@protocol Managerable <NSObject>
+@protocol Managerable <Clearable>
 
 -(void)spendableDidChange:(id <Spendable>) object;
 -(void)updateSpendableObject:(id <Spendable>) object;
@@ -25,6 +26,5 @@
 -(void)stopObservingForSpendable:(id <Spendable>) spendable;
 -(void)startObservingForAllSpendable;
 -(void)stopObservingForAllSpendable;
--(void)clear;
 
 @end

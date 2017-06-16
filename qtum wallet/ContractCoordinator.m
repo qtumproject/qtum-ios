@@ -120,7 +120,7 @@
     CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[[ControllersFactory sharedInstance] createCustomAbiInterphaseViewController];
     controller.delegate = self;
     
-    controller.formModel = [[ContractInterfaceManager sharedInstance] getTokenInterfaceWithTemplate:self.templateModel.templateName];
+    controller.formModel = [[ContractInterfaceManager sharedInstance] getTokenInterfaceWithTemplate:self.templateModel.path];
 
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -139,7 +139,7 @@
     
     if (contract.templateModel) {
         TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-        controller.formModel = [[ContractInterfaceManager sharedInstance] getTokenInterfaceWithTemplate:contract.templateModel.templateName];
+        controller.formModel = [[ContractInterfaceManager sharedInstance] getTokenInterfaceWithTemplate:contract.templateModel.path];
         controller.delegate = self;
         controller.token = contract;
         [self.navigationController pushViewController:controller animated:true];
@@ -179,7 +179,7 @@
     __weak __typeof(self)weakSelf = self;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
-    NSData* contractWithArgs = [[ContractInterfaceManager sharedInstance] getTokenBitecodeWithTemplate:self.templateModel.templateName andArray:[self argsFromInputs]];
+    NSData* contractWithArgs = [[ContractInterfaceManager sharedInstance] getTokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
     
     [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andBitcode:contractWithArgs andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
         [[PopUpsManager sharedInstance] dismissLoader];
@@ -201,7 +201,7 @@
 -(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel {
     
     self.templateModel = templateModel;
-    [self showStepWithFieldsAndTemplate:templateModel.templateName];
+    [self showStepWithFieldsAndTemplate:templateModel.path];
 }
 
 -(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Contract*) contract {
