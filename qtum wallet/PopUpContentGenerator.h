@@ -19,5 +19,6 @@
 + (PopUpContent *)getContentForSend;
 + (PopUpContent *)getContentForCompletedBackupFile;
 + (PopUpContent *)getContentForBrainCodeCopied;
++ (PopUpContent *)getContentForAddressCopied;
 
 @end

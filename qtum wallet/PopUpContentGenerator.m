@@ -46,4 +46,9 @@
     return content;
 }
 
++ (PopUpContent *)getContentForAddressCopied{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Address copied", "") message:nil okTitle:NSLocalizedString(@"OK", "") cancelTitle:nil];
+    return content;
+}
+
 @end
