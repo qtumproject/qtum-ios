@@ -463,7 +463,7 @@ static NSString* kTemplateKey = @"template";
         contract.creationDate = [NSDate date];
         contract.isActive = [contractDict[kIsActiveKey] boolValue];
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uiidFromRestore == %i",[contractDict[kTemplateKey] integerValue]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uiidFromRestore == %i",templates .count - [contractDict[kTemplateKey] integerValue] - 1];
         NSArray* filteredTemplates = [templates filteredArrayUsingPredicate:predicate];
         if (filteredTemplates.count > 0) {
             contract.templateModel = filteredTemplates[0];
