@@ -34,6 +34,46 @@ static NSString* kPlatformVersionKey = @"platformVersion";
     completionBlock(backup.copy,filePath,fileSize);
 }
 
++ (void)getQuickInfoFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(NSString* date, NSString* version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount)) completionBlock {
+    
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    if (data) {
+        
+        NSString* date;
+        NSString* version;
+        NSInteger contractCount = 0;
+        NSInteger templateCount = 0;
+        NSInteger tokenCount = 0;
+        
+        NSDictionary* backup = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        
+        NSArray* filteredArray;
+        
+        if (option & Templates && [backup[kTemplatesKey] isKindOfClass:[NSArray class]]) {
+            
+            templateCount = ((NSArray*)backup[kTemplatesKey]).count;
+        }
+        
+        if (option & Tokens) {
+            
+            NSArray* array = backup[kContractsKey];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type == %@",@"token"];
+            filteredArray = [array filteredArrayUsingPredicate:predicate];
+           tokenCount = filteredArray.count;
+        } else if (option & Contracts) {
+            
+            NSArray* array = backup[kContractsKey];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type != %@",@"token"];
+            filteredArray = [array filteredArrayUsingPredicate:predicate];
+            contractCount = filteredArray.count;
+        }
+        date = [[backup[kDateCreateKey] date] formatedDateString];
+        version = backup[kFileVersionKey];
+        completionBlock(date,version,contractCount,templateCount,tokenCount);
+    }
+}
+
 + (void)setBackupFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(BOOL success)) completionBlock {
     
     NSData *data = [NSData dataWithContentsOfURL:url];

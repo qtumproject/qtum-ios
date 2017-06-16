@@ -18,5 +18,6 @@ typedef NS_OPTIONS(NSInteger, BackupOption) {
 
 +(void)getBackupFile:(void (^)(NSDictionary *file, NSString* path, NSInteger size)) completionBlock;
 +(void)setBackupFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(BOOL success)) completionBlock;
++(void)getQuickInfoFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(NSString* date, NSString* version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount)) completionBlock;
 
 @end

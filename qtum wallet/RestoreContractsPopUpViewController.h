@@ -16,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contractsCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tokensCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *croudsaleCounLabel;
+@property (weak, nonatomic) IBOutlet UILabel *templateCounLabel;
 
 @end
