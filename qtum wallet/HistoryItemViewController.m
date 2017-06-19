@@ -12,6 +12,9 @@
 #import "HistoryItemHeaderView.h"
 #import "HistoryItemDelegateDataSource.h"
 
+CGFloat confirmedConstant = 150.0f;
+CGFloat notConfirmedConstant = 180.0f;
+
 @interface HistoryItemViewController ()
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
@@ -23,6 +26,7 @@
 @property (strong,nonatomic) HistoryItemDelegateDataSource* historyDelegateDataSource;
 @property (weak, nonatomic) IBOutlet UILabel *fromToLabel;
 @property (weak, nonatomic) IBOutlet UIView *notConfirmedDesk;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBoardHeightConstraint;
 
 @end
 
@@ -36,6 +40,7 @@
     
     [self.pageControl setCurrentPage:0];
     self.notConfirmedDesk.hidden = self.item.confirmed;
+    self.topBoardHeightConstraint.constant = self.item.confirmed ? confirmedConstant : notConfirmedConstant;
 }
 
 - (void)didReceiveMemoryWarning {

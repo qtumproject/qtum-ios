@@ -13,4 +13,6 @@
 
 @property (nonatomic) HistoryElement *historyElement;
 
+- (void)changeHighlight:(BOOL)value;
+
 @end

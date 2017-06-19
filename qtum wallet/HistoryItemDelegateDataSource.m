@@ -39,8 +39,7 @@ static NSString* toAddressesHeaderTitle = @"To";
         cell.addressLabel.text = self.item.toAddresses[indexPath.row][@"address"];
         cell.valueLabel.text = [NSString stringWithFormat:@"%@ QTUM",self.item.toAddresses[indexPath.row][@"value"]];
     }
-//    [cell.valueLabel sizeToFit];
-//    [cell setNeedsLayout];
+
     return cell;
 }
 
@@ -53,15 +52,6 @@ static NSString* toAddressesHeaderTitle = @"To";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44;
 }
-
-//
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    HistoryItemHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HistoryItemHeaderViewIdentifier];
-//    header.headerTextLabel.text = section ? toAddressesHeaderTitle : fromAddressesHeaderTitle;
-//    header.backgroundColor = [UIColor whiteColor];
-//    return header;
-//}
 
 
 @end
