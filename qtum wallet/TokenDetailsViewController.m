@@ -21,6 +21,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConsctaintForHeaderView;
 @property (weak, nonatomic) IBOutlet ViewWithAnimatedLine *headerVIew;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
+@property (weak, nonatomic) IBOutlet UIView *activityView;
 
 @property (nonatomic, weak) TokenDetailsTableSource *source;
 
@@ -74,6 +75,13 @@ CGFloat const HeightForHeaderView = 50.0f;
     }
     
     self.heightConsctaintForHeaderView.constant = 0;
+}
+
+- (void)needShowHeaderForSecondSeciton {
+    self.activityView.hidden = NO;
+}
+- (void)needHideHeaderForSecondSeciton {
+    self.activityView.hidden = YES;
 }
 
 #pragma mark - Methods

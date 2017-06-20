@@ -13,6 +13,8 @@
 
 - (void)needShowHeader;
 - (void)needHideHeader;
+- (void)needShowHeaderForSecondSeciton;
+- (void)needHideHeaderForSecondSeciton;
 - (void)didPressedInfoActionWithToken:(Contract*)token;
 
 @end

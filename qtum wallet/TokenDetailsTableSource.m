@@ -63,7 +63,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
     if (section == 0) {
         return NumberOfRowsForFirstSection;
     }else{
-        return 20;
+        return 0;
     }
 }
 
@@ -109,9 +109,9 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
         CGFloat headerHeight = [MainTokenTableViewCell getHeaderHeight];
         CGFloat headerPosition = self.headerForSecondSection.frame.origin.y - scrollView.contentOffset.y;
         if (headerPosition <= headerHeight || [self.mainCell needShowHeader:position diff:scrollDiff]) {
-            scrollView.contentInset = UIEdgeInsetsMake(headerHeight, 0, 0, 0);
+            [self.delegate needShowHeaderForSecondSeciton];
         }else{
-            scrollView.contentInset = UIEdgeInsetsZero;
+            [self.delegate needHideHeaderForSecondSeciton];
         }
     }
     
