@@ -62,7 +62,7 @@
 
 -(NSArray <Contract*>*)filteringContractsName:(NSArray <Contract*>*) contracts containsText:(NSString*) containtsText {
     if (containtsText.length > 0) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name BEGINSWITH %@",containtsText];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"localName CONTAINS[cd] %@",containtsText];
         return [contracts filteredArrayUsingPredicate:predicate];
     } else {
         return contracts;
