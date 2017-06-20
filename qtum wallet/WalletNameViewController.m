@@ -62,19 +62,20 @@
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
-    self.buttonsBottomConstraint.constant = 0;
-    [self.view layoutIfNeeded];
+
 }
 
 #pragma mark - Actions
 
 - (IBAction)actionConfirm:(id)sender {
+    [self.nameTextField resignFirstResponder];
     if ([self.delegate respondsToSelector:@selector(didCreatedWalletName:)]) {
         [self.delegate didCreatedWalletName:self.nameTextField.text];
     }
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
+    [self.nameTextField resignFirstResponder];
     if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {
         [self.delegate cancelCreateWallet];
     }
