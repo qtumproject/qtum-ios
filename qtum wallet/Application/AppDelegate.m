@@ -15,6 +15,8 @@
 
 @interface AppDelegate ()
 
+@property (assign, nonatomic) BOOL aplicationCoordinatorStarted;
+
 @end
 
 @implementation AppDelegate
@@ -27,7 +29,10 @@
     [[AppSettings sharedInstance] setup];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[ApplicationCoordinator sharedInstance] start];
+        if (!self.aplicationCoordinatorStarted) {
+            [[ApplicationCoordinator sharedInstance] start];
+            self.aplicationCoordinatorStarted  = YES;
+        }
     });
 
     [ContractFileManager sharedInstance];
@@ -52,8 +57,11 @@
     return randomWords;
 }
 
--(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
-    [[ApplicationCoordinator sharedInstance] launchFromUrl:url];
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    if (!self.aplicationCoordinatorStarted) {
+        [[ApplicationCoordinator sharedInstance] launchFromUrl:url];
+        self.aplicationCoordinatorStarted  = YES;
+    }
     return YES;
 }
 
