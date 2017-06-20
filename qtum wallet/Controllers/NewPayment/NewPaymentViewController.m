@@ -12,6 +12,7 @@
 #import "TextFieldWithLine.h"
 #import "TokenListViewController.h"
 #import "ChoseTokenPaymentViewController.h"
+#import "InformationPopUpViewController.h"
 
 @interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate,ChoseTokenPaymentViewControllerDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -145,6 +146,9 @@ static NSInteger withoutTokenOffset = 30;
 
 - (void)okButtonPressed:(PopUpViewController *)sender{
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    if ([sender isKindOfClass:[InformationPopUpViewController class]]) {
+        [self clearFields];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -155,6 +159,15 @@ static NSInteger withoutTokenOffset = 30;
     } else {
         [self payWithWallet:[self getCorrectAmountString]];
     }
+}
+
+- (void)clearFields {
+    self.addressTextField.text = @"";
+    self.amountTextField.text = @"";
+    self.amount = nil;
+    self.token = nil;
+    
+    [self updateControls];
 }
 
 #pragma mark - iMessage
