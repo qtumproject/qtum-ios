@@ -31,8 +31,8 @@ static NSInteger countOfSections = 2;
         WalletHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:WalletTypeCellWithCollectionIdentifire];
         
         cell.delegate = self.delegate;
-        [cell setData:self.wallet];
         [cell setCellType:[self getHeaderCellType]];
+        [cell setData:self.wallet];
         [self didScrollForheaderCell:tableView];
         
         return cell;

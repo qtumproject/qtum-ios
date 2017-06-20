@@ -37,8 +37,8 @@
     label.font = [label.font fontWithSize:newFont];
     
     CGFloat newTop = percent * (maxTop - minTop) + minTop;
-    if (newTop < minTop) newTop = minTop;
-    if (newTop > maxTop) newTop = maxTop;
+    if (newTop < minTop && percent != 0) newTop = minTop;
+    if (newTop > maxTop && percent != 0) newTop = maxTop;
     topContsraint.constant = newTop;
     
     CGFloat offset = 15.0f;

@@ -35,6 +35,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
 @property (weak, nonatomic) IBOutlet ViewWithAnimatedLine *headerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *availabelLabel;
@@ -67,6 +68,8 @@ CGFloat const HeaderHeightShowed = 50.0f;
     [self configRefreshControl];
     self.navigationController.navigationBar.translucent = NO;
     [self configAdressLabel];
+    
+    [self.headerView setRightConstraint:self.trailingForLineConstraint];
 }
 
 - (void)didReceiveMemoryWarning {
