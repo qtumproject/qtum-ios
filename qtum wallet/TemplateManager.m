@@ -24,7 +24,7 @@ static NSString* kCreationDateKey = @"creationDate";
 static NSString* kTypeKey = @"type";
 static NSString* kSourceKey = @"source";
 static NSString* kAbiKey = @"abi";
-static NSString* kBitecode = @"bitecode";
+static NSString* kBitecode = @"bytecode";
 static int templatePathStringLengh = 10;
 static NSString* standartTokenPath = @"StandardPath";
 
