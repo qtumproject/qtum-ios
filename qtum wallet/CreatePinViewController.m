@@ -35,8 +35,6 @@
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
-    self.gradientViewBottomOffset.constant = 0;
-    [self.view layoutIfNeeded];
 }
 
 #pragma mark - Configuration
@@ -49,6 +47,7 @@
 - (IBAction)confirmButtomPressed:(id)sender {
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
     if (pin.length == 4) {
+        [self.view endEditing:YES];
         if ([self.delegate respondsToSelector:@selector(didEnteredFirstTimePass:)]) {
             [self.delegate didEnteredFirstTimePass:pin];
         }

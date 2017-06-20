@@ -84,7 +84,8 @@
     cell.tokenName.text = self.tokens[indexPath.row].localName;
     cell.mainBalance.text = [NSString stringWithFormat:@"%f",self.tokens[indexPath.row].balance];
     cell.balance.text = [NSString stringWithFormat:@"%f",0.0];
-    cell.balanceSymbol.text = @"";
+    cell.balanceSymbol.text =
+    cell.mainBalanceSymbol.text = self.tokens[indexPath.row].symbol;
     
     if ([self.activeToken isEqual:self.tokens[indexPath.row]]) {
         [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
