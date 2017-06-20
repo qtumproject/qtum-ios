@@ -38,7 +38,8 @@
             nextStingOffset += constantOffset;
             NSString* param = array[i];
             
-            NSInteger length = param.length;
+            //because not all symbols decoding as 2 bite
+            NSInteger length = [param dataUsingEncoding:NSUTF8StringEncoding].length * 2;
             //[args appendData:[NSData reverseData:[self uint256DataFromInt:length]]];
             [stringDict setObject:[NSData reverseData:[self uint256DataFromInt:length]] forKey:@"length"];
             nextStingOffset += constantOffset;

@@ -331,22 +331,29 @@ static NSString* kAddresses = @"kAddress";
                     
                     if ([hash isEqualToString:hashFuctionName.uppercaseString]) {
                         NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:nameProperty];
-                        token.name = array[0];
+                        if (array.count > 0) {
+                            token.name = array[0];
+                        }
                     } else if ([hash isEqualToString:hashFuctionTotalSupply.uppercaseString]) {
                         
                         NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:totalSupplyProperty];
-                        token.totalSupply = array[0];
+                        if (array.count > 0) {
+                            token.totalSupply = array[0];
+                        }
                         
                     } else if ([hash isEqualToString:hashFuctionSymbol.uppercaseString]) {
                         
                         NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:symbolProperty];
-                        token.symbol = array[0];
+                        if (array.count > 0) {
+                            token.symbol = array[0];
+                        }
                     } else if ([hash isEqualToString:hashFuctionDecimal.uppercaseString]) {
                         
                         NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:decimalProperty];
-                        token.decimals = array[0];
+                        if (array.count > 0) {
+                            token.decimals = array[0];
+                        }
                     }
-                    
                 }
                 [weakSelf tokenDidChange:token];
             }
