@@ -30,7 +30,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     self = [super init];
     if (self) {
         _requestQueue = [[NSOperationQueue alloc] init];
-        _requestQueue.maxConcurrentOperationCount = 1;
+        _requestQueue.maxConcurrentOperationCount = 0;
     }
     return self;
 }
