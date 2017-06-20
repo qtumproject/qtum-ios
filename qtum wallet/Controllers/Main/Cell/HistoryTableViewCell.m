@@ -22,13 +22,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = customRedColor();
+    [self setSelectedBackgroundView:bgColorView];
 }
 
 - (void)setHistoryElement:(HistoryElement *)historyElement
@@ -54,8 +51,17 @@
         
         self.addressLabel.text = [historyElement.fromAddreses firstObject][@"address"];
     }
+}
+
+- (void)changeHighlight:(BOOL)value {
+    self.typeImage.tintColor =
+    self.typeLabel.textColor =
+    self.amountLabel.textColor =
+    self.dateLabel.textColor =
+    self.addressLabel.textColor = value ? customBlackColor() : customBlueColor();
     
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.addressLabel.alpha =
+    self.dateLabel.alpha = value ? 1.0f : 0.4f;
 }
 
 @end

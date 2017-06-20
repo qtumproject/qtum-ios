@@ -99,6 +99,26 @@ static NSInteger countOfSections = 2;
     }
 }
 
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section != 1) {
+        return;
+    }
+    
+    HistoryTableViewCell* cell = (HistoryTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section != 1) {
+        return;
+    }
+    
+    HistoryTableViewCell* cell = (HistoryTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:NO];
+}
+
 
 #pragma mark - UIScrollViewDelegate
 
@@ -129,6 +149,7 @@ static NSInteger countOfSections = 2;
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section) {
         [self.delegate didSelectHistoryItemIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
     }
