@@ -265,7 +265,8 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 -(void)updateHistoryOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page{
     //__weak __typeof(self)weakSelf = self;
-    [self.requestAdapter getHistoryForAddresses:[object getAllKeysAdreeses] andParam:@{@"limit" : @25, @"offset" : @(page * 25)} withSuccessHandler:^(NSArray <HistoryElement*> *history) {
+    static NSInteger batch = 10;
+    [self.requestAdapter getHistoryForAddresses:[object getAllKeysAdreeses] andParam:@{@"limit" : @(batch), @"offset" : @(page * batch)} withSuccessHandler:^(NSArray <HistoryElement*> *history) {
         
         if (page > object.historyStorage.pageIndex) {
             [object.historyStorage addHistoryElements:history];
