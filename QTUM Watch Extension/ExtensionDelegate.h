@@ -8,6 +8,14 @@
 
 #import <WatchKit/WatchKit.h>
 
+@protocol ExtensionDelegateDelegate <NSObject>
+
+- (void)applicationDidFinishLaunching;
+- (void)applicationDidBecomeActive;
+- (void)applicationWillResignActive;
+
+@end
+
 @interface ExtensionDelegate : NSObject <WKExtensionDelegate>
 
 @end
