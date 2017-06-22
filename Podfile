@@ -11,5 +11,6 @@ target 'qtum wallet' do
 	pod 'MTBBarcodeScanner', '~> 2.0.3'
 	pod 'Fabric'
 	pod 'Crashlytics'
+	pod 'Firebase/Core'
 end
 

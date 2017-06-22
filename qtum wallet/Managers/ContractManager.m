@@ -470,13 +470,10 @@ static NSString* kTemplateKey = @"template";
         contract.creationDate = [NSDate date];
         contract.isActive = [contractDict[kIsActiveKey] boolValue];
         
-        TemplateModel* filteredTemplate;
-        NSInteger index = [contractDict[kTemplateKey] integerValue];
-        if (templates .count > index) {
-            filteredTemplate = templates[index];
-        }
-        if (filteredTemplate) {
-            contract.templateModel = filteredTemplate;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uiidFromRestore == %i",[contractDict[kTemplateKey] integerValue]];
+        NSArray* filteredTemplates = [templates filteredArrayUsingPredicate:predicate];
+        if (filteredTemplates.count > 0) {
+            contract.templateModel = filteredTemplates[0];
             [self addNewToken:contract];
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"Contract Created" andIdentifire:@"contract_created"];
             [self updateSpendableObject:contract];

@@ -85,6 +85,7 @@
 		B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3487A291E92383500BC66F1 /* HistoryTableHeaderView.xib */; };
 		B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A2C1E92392000BC66F1 /* HistoryHeaderVIew.m */; };
 		B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B34B69631EC5993A006BE3B0 /* CustomPageControl.m */; };
+		B34BF46F1EFBEC8F00EED85A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34BF46E1EFBEC8F00EED85A /* GoogleService-Info.plist */; };
 		B351305D1E49BF6D0048A28C /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B351305C1E49BF6D0048A28C /* NewsController.m */; };
 		B35130611E49C9930048A28C /* NewsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130601E49C9930048A28C /* NewsCellModel.m */; };
 		B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130641E49DCBC0048A28C /* NewsTableCell.m */; };
@@ -490,6 +491,7 @@
 		B3487A2C1E92392000BC66F1 /* HistoryHeaderVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryHeaderVIew.m; sourceTree = "<group>"; };
 		B34B69621EC5993A006BE3B0 /* CustomPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPageControl.h; sourceTree = "<group>"; };
 		B34B69631EC5993A006BE3B0 /* CustomPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPageControl.m; sourceTree = "<group>"; };
+		B34BF46E1EFBEC8F00EED85A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B351305B1E49BF6D0048A28C /* NewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
 		B351305C1E49BF6D0048A28C /* NewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsController.m; sourceTree = "<group>"; };
 		B351305F1E49C9930048A28C /* NewsCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCellModel.h; sourceTree = "<group>"; };
@@ -843,6 +845,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		288DB2799DDC77AE01F9FFA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B33EAF851E5EC262006125F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1935,6 +1944,7 @@
 				B3C08B221ED45BCD00713B15 /* Tokens Templates */,
 				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
 				E7FD364C1DC4D07E00748177 /* Info.plist */,
+				B34BF46E1EFBEC8F00EED85A /* GoogleService-Info.plist */,
 				E7FD365E1DC73B2400748177 /* Shared Views */,
 				B33EAF081E5C5E52006125F3 /* Protocols */,
 				B33EAF001E5B3920006125F3 /* Storyboards */,
@@ -2157,6 +2167,7 @@
 			buildPhases = (
 				E730AB521EE6A5D100132711 /* Resources */,
 				E730AB7E1EE6A5D200132711 /* Embed App Extensions */,
+				288DB2799DDC77AE01F9FFA0 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2362,6 +2373,7 @@
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
 				E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */,
 				B32EEC751EB3548600512FED /* Wallet.storyboard in Resources */,
+				B34BF46F1EFBEC8F00EED85A /* GoogleService-Info.plist in Resources */,
 				E713A47B1EEE966100A2FA40 /* CheckButton.xib in Resources */,
 				B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
@@ -2444,7 +2456,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
