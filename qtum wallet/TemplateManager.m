@@ -78,10 +78,10 @@ static NSString* standartTokenPath = @"StandardPath";
 
 -(NSArray<TemplateModel*>*)getStandartPackOfTemplates {
     
-    TemplateModel* standartToken = [[TemplateModel alloc] initWithTemplateName:@"Standart" andType:TokenType withUiid:1 path:@"Standart"];
-    TemplateModel* v1Token = [[TemplateModel alloc] initWithTemplateName:@"Version1" andType:TokenType withUiid:2 path:@"Version1"];
-    TemplateModel* v2Token = [[TemplateModel alloc] initWithTemplateName:@"Version2" andType:TokenType withUiid:3 path:@"Version2"];
-    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType withUiid:4 path:@"Crowdsale"];
+    TemplateModel* standartToken = [[TemplateModel alloc] initWithTemplateName:@"Standart" andType:TokenType withUiid:0 path:@"Standart" isFull:YES];
+    TemplateModel* v1Token = [[TemplateModel alloc] initWithTemplateName:@"Version1" andType:TokenType withUiid:1 path:@"Version1" isFull:YES];
+    TemplateModel* v2Token = [[TemplateModel alloc] initWithTemplateName:@"Version2" andType:TokenType withUiid:2 path:@"Version2" isFull:YES];
+    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType withUiid:3 path:@"Crowdsale" isFull:YES];
     
     return @[standartToken,v1Token,v2Token,crowdsale];
 }
@@ -94,7 +94,9 @@ static NSString* standartTokenPath = @"StandardPath";
                                                          error:&err];
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
     if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath]) {
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:UndefinedContractType withUiid:self.templates.count + 1 path:filePath];
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:UndefinedContractType withUiid:self.templates.count  path:filePath isFull:NO];
+        [self.templates addObject:customToken];
+        [self save];
         return customToken;
     }
     return nil;
@@ -109,7 +111,9 @@ static NSString* standartTokenPath = @"StandardPath";
     
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
     if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath]) {
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withUiid:self.templates.count + 1 path:filePath];
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withUiid:self.templates.count  path:filePath isFull:NO];
+        [self.templates addObject:customToken];
+        [self save];
         return customToken;
     }
     return nil;
@@ -132,7 +136,9 @@ static NSString* standartTokenPath = @"StandardPath";
         [[ContractFileManager sharedInstance] writeNewBitecode:bitecode withPathName:filePath] &&
         [[ContractFileManager sharedInstance] writeNewSource:source withPathName:filePath]) {
         
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withUiid:self.templates.count + 1 path:filePath];
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withUiid:self.templates.count  path:filePath isFull:YES];
+        [self.templates addObject:customToken];
+        [self save];
         return customToken;
     }
     
@@ -147,27 +153,41 @@ static NSString* standartTokenPath = @"StandardPath";
     NSArray *jsonAbi;
     NSError *err;
     BOOL proccesWithoutErrors = YES;
+    BOOL abiSuccess = YES;
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
 
-    if (abi) {
+    if (abi.length > 0) {
         err = nil;
         jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
                                                   options:NSJSONReadingMutableContainers
                                                     error:&err];
         proccesWithoutErrors = proccesWithoutErrors & [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath];
+        abiSuccess = proccesWithoutErrors;
     }
     
-    if (bitecode) {
+    if (bitecode.length > 0) {
         proccesWithoutErrors = proccesWithoutErrors & [[ContractFileManager sharedInstance] writeNewBitecode:bitecode withPathName:filePath];
+    } else {
+        proccesWithoutErrors = NO;
     }
 
-    if (source) {
+    if (source.length > 0) {
         proccesWithoutErrors = proccesWithoutErrors & [[ContractFileManager sharedInstance] writeNewSource:source withPathName:filePath];
+    }  else {
+        proccesWithoutErrors = NO;
     }
     
     if (proccesWithoutErrors) {
         
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:templateName andType:type withUiid:self.templates.count + 1 path:filePath];
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:templateName andType:type withUiid:self.templates.count  path:filePath isFull:YES];
+        [self.templates addObject:customToken];
+        [self save];
+        return customToken;
+    } else if(abiSuccess){
+        
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:templateName andType:type withUiid:self.templates.count  path:filePath isFull:NO];
+        [self.templates addObject:customToken];
+        [self save];
         return customToken;
     }
     
@@ -176,7 +196,8 @@ static NSString* standartTokenPath = @"StandardPath";
 
 -(NSArray<TemplateModel*>*)getAvailebaleTemplates {
     
-    return self.templates.copy;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFullTemplate == YES"];
+    return [self.templates filteredArrayUsingPredicate:predicate];
 }
 
 -(NSArray<NSDictionary*>*)decodeDataForBackup {
@@ -191,9 +212,10 @@ static NSString* standartTokenPath = @"StandardPath";
         [backupItem setObject:template.templateName ? template.templateName : @"" forKey:kNameKey];
         [backupItem setObject:template.templateTypeStringForBackup forKey:kTypeKey];
         [backupItem setObject:template.creationFormattedDateString forKey:kCreationDateKey];
-        [backupItem setObject:[fileManager getContractWithTemplate:template.path] forKey:kSourceKey];
         [backupItem setObject:[fileManager getEscapeAbiWithTemplate:template.path] forKey:kAbiKey];
-        [backupItem setObject:[NSString hexadecimalString:[fileManager getBitcodeWithTemplate:template.path]] forKey:kBitecode];
+        //need to check is full template, coz it may have no source and bytecode
+        [backupItem setObject:template.isFullTemplate ? [fileManager getContractWithTemplate:template.path] : @"" forKey:kSourceKey];
+        [backupItem setObject:template.isFullTemplate ? [NSString hexadecimalString:[fileManager getBitcodeWithTemplate:template.path]] : @"" forKey:kBitecode];
         [backupArray addObject:backupItem];
     }
     
@@ -208,12 +230,9 @@ static NSString* standartTokenPath = @"StandardPath";
         TemplateModel* templateModel = [self createNewTemplateWithAbi:template[kAbiKey] bitecode:template[kBitecode] source:template[kSourceKey] type:[TemplateModel templateTypeFromForBackupString:template[kTypeKey]]  andName:template[kNameKey]];
         templateModel.uiidFromRestore = [template[kUiidKey] integerValue];
         if (templateModel) {
-            [self.templates addObject:templateModel];
             [newTemplates addObject:templateModel];
         }
     }
-    
-    [self save];
     
     return [newTemplates copy];
 }
@@ -223,7 +242,5 @@ static NSString* standartTokenPath = @"StandardPath";
     self.templates = [[self getStandartPackOfTemplates] mutableCopy];
     [self save];
 }
-
-
 
 @end

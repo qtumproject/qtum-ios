@@ -15,7 +15,8 @@
 -(instancetype)initWithTemplateName:(NSString*) templateName
                             andType:(TemplateType) type
                            withUiid:(NSInteger) uiid
-                            path:(NSString*) path {
+                            path:(NSString*) path
+                             isFull:(BOOL) isFullTemplate {
 
     self = [super init];
     if (self) {
@@ -23,6 +24,7 @@
         _type = type;
         _uiid = uiid;
         _path = path;
+        _isFullTemplate = isFullTemplate;
     }
     return self;
 }
@@ -96,6 +98,7 @@
     [aCoder encodeObject:@(self.type) forKey:@"type"];
     [aCoder encodeObject:@(self.uiid) forKey:@"uiid"];
     [aCoder encodeObject:self.path forKey:@"path"];
+    [aCoder encodeObject:@(self.isFullTemplate) forKey:@"isFullTemplate"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -104,6 +107,7 @@
     NSInteger type = [[aDecoder decodeObjectForKey:@"type"] integerValue];
     NSInteger uiid = [[aDecoder decodeObjectForKey:@"uiid"] integerValue];
     NSString *path = [aDecoder decodeObjectForKey:@"path"];
+    BOOL isFullTemplate = [[aDecoder decodeObjectForKey:@"isFullTemplate"] boolValue];
 
 
     self = [super init];
@@ -112,6 +116,7 @@
         _type = type;
         _uiid = uiid;
         _path = path;
+        _isFullTemplate = isFullTemplate;
     }
     
     return self;
