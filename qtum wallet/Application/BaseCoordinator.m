@@ -49,5 +49,10 @@
     }];
 }
 
+-(void)removeAllDependencys {
+    
+    self.childCoordinators = nil;
+}
+
 
 @end

@@ -30,6 +30,7 @@
 @property (strong,nonatomic) UINavigationController* navigationController;
 @property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
 @property (strong,nonatomic) NotificationManager* notificationManager;
+@property (assign, nonatomic) BOOL confirmingPin;
 
 
 @property (nonatomic,strong) NSString *amount;
@@ -62,12 +63,26 @@
     return self;
 }
 
+#pragma mark - Public Methods
+
+-(void)startConfirmPinFlow {
+    self.confirmingPin = YES;
+    [self startLoginFlow];
+}
+
 #pragma mark - Privat Methods
 
 -(AppDelegate*)appDelegate{
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
+- (UINavigationController*)navigationController {
+    
+    if (!_navigationController) {
+        _navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
+    }
+    return _navigationController;
+}
 #pragma mark - Lazy Getters
 
 
@@ -76,10 +91,10 @@
 
 -(void)start{
 
+    [self startAuthFlow];
+
     if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
         [self startLoginFlow];
-    }else{
-        [self startAuthFlow];
     }
 }
 
@@ -100,15 +115,16 @@
 
 #pragma mark - ApplicationCoordinatorDelegate
 
--(void)coordinatorDidLogin:(LoginCoordinator*)coordinator{
-    [self removeDependency:coordinator];
+-(void)coordinatorDidLogin:(LoginCoordinator*)coordinator {
+    
     [self startMainFlow];
     [self.notificationManager registerForRemoutNotifications];
     [[WalletManager sharedInstance] startObservingForAllSpendable];
     [[ContractManager sharedInstance] startObservingForAllSpendable];
 }
 
--(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator{
+-(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator {
+    
     [self removeDependency:coordinator];
     [self startAuthFlow];
 }
@@ -122,22 +138,29 @@
     [[ContractManager sharedInstance] startObservingForAllSpendable];
 }
 
+-(void)coordinatorRequestForLogin {
+    [self startLoginFlow];
+}
+
 
 #pragma mark - Presenting Controllers
 
--(void)showSettings{
+-(void)showSettings {
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     [self setViewController:viewController animated:NO];
 }
 
--(void)showWallet{
+-(void)showWallet {
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
     [self setViewController:viewController animated:NO];
 }
 
--(void)showExportBrainKeyAnimated:(BOOL)animated{
+-(void)showExportBrainKeyAnimated:(BOOL)animated {
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ExportBrainKeyViewController"];
     [self setViewController:viewController animated:animated];
@@ -145,17 +168,16 @@
 
 #pragma mark - Flows
 
--(void)startAuthFlow{
-    //TODO create navigation by fabric
-    UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
-    self.appDelegate.window.rootViewController = navigationController;
-    AuthCoordinator* coordinator = [[AuthCoordinator alloc]initWithNavigationViewController:navigationController];
+-(void)startAuthFlow {
+    
+    self.appDelegate.window.rootViewController = self.navigationController;
+    AuthCoordinator* coordinator = [[AuthCoordinator alloc] initWithNavigationViewController:self.navigationController];
     coordinator.delegate = self;
     [coordinator start];
     [self addDependency:coordinator];
 }
 
--(void)logout{
+-(void)logout {
     
     [self startAuthFlow];
     [self storeAuthorizedFlag:NO andMainAddress:nil];
@@ -169,11 +191,9 @@
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
 }
 
--(void)startLoginFlow{
-    //TODO create navigation by fabric
-    UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
-    self.appDelegate.window.rootViewController = navigationController;
-    LoginCoordinator* coordinator = [[LoginCoordinator alloc]initWithNavigationViewController:navigationController];
+-(void)startLoginFlow {
+    
+    LoginCoordinator* coordinator = [[LoginCoordinator alloc]initWithNavigationViewController:self.navigationController];
     coordinator.delegate = self;
     [coordinator start];
     [self addDependency:coordinator];
@@ -191,7 +211,7 @@
 //    [self presentAsModal:changePinRoot animated:YES];
 }
 
--(void)startWalletFlow{
+-(void)startWalletFlow {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"StartViewController"];
     UINavigationController* rootNavigation = [[UINavigationController alloc]initWithRootViewController:viewController];
@@ -215,6 +235,7 @@
 
 -(void)startMainFlow{
     //TODO refarcor coordinator logic
+    [self removeAllDependencys];
     TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
     controller.coordinatorDelegate = coordinator;
@@ -268,7 +289,8 @@ static NSString* WalletAddressKey = @"walletAddress";
     }
 }
 
--(NSUserDefaults*)defaults{
+-(NSUserDefaults*)defaults {
+    
     if (!_defaults) {
         _defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
     }

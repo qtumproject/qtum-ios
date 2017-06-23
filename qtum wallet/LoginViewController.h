@@ -13,5 +13,6 @@
 @property (weak,nonatomic) id <LoginCoordinatorDelegate> delegate;
 
 -(void)applyFailedPasswordAction;
+-(void)showLoginFields;
 
 @end

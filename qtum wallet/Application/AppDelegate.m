@@ -67,6 +67,10 @@
     return YES;
 }
 
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [[ApplicationCoordinator sharedInstance] startLoginFlow];
+}
+
 #pragma mark - Notifications
 
 

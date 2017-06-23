@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (weak, nonatomic) IBOutlet UIButton *restoreButton;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomButtonsOffset;
 
 - (IBAction)createNewButtonWasPressed:(id)sender;
 
@@ -22,19 +24,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self configurateButtons];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Configuration
+
+-(void)configurateButtons {
+    
+    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
+        self.createButton.backgroundColor = [UIColor clearColor];
+        [self.createButton setTitleColor:customBlueColor() forState:UIControlStateNormal];
+        self.loginButton.hidden = NO;
+    } else {
+        self.createButton.backgroundColor = customRedColor();
+        [self.createButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
+        self.loginButton.hidden = YES;
+    }
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-}
-
-#pragma mark -
+#pragma mark - Actions
 
 - (IBAction)createNewButtonWasPressed:(id)sender{
     if ([self.delegate respondsToSelector:@selector(createNewButtonPressed)]) {
@@ -45,6 +53,12 @@
 - (IBAction)restoreButtonWasPressed:(id)sender {
     if ([self.delegate respondsToSelector:@selector(restoreButtonPressed)]) {
         [self.delegate restoreButtonPressed];
+    }
+}
+
+- (IBAction)loginButtonWasPressed:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(restoreButtonPressed)]) {
+        [self.delegate didLoginPressed];
     }
 }
 

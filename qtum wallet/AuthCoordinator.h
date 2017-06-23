@@ -16,6 +16,7 @@
 -(void)didEnteredSecondTimePass:(NSString*)pass;
 -(void)didRestorePressedWithWords:(NSArray*)words;
 -(void)didCreateWalletPressedFromRestore;
+-(void)didLoginPressed;
 -(void)cancelCreateWallet;
 -(void)restoreWalletCancelDidPressed;
 -(void)didCreateWallet;

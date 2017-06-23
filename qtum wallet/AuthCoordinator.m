@@ -46,7 +46,7 @@
     [self resetToRootAnimated:NO];
 }
 
--(void)resetToRootAnimated:(BOOL)animated{
+-(void)resetToRootAnimated:(BOOL)animated {
     FirstAuthViewController* controller = (FirstAuthViewController*)[[ControllersFactory sharedInstance] createFirstAuthController];
     controller.delegate = self;
     animated ? [self.navigationController popToRootViewControllerAnimated:YES] : [self.navigationController setViewControllers:@[controller]];
@@ -133,6 +133,11 @@
     } andFailureHandler:^{
         [weakSelf.restoreWalletController restoreFailed];
     }];
+}
+
+-(void)didLoginPressed {
+    
+    [self.delegate coordinatorRequestForLogin];
 }
 
 -(void)didCreateWalletPressedFromRestore{

@@ -31,9 +31,7 @@
     
     self = [super init];
     
-    if (self != nil) {
-
-    }
+    if (self != nil) { }
     return self;
 }
 

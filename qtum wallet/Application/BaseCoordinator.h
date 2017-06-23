@@ -13,5 +13,6 @@
 
 -(void)addDependency:(id <Coordinatorable>) coordinator;
 -(void)removeDependency:(id <Coordinatorable>) coordinator;
+-(void)removeAllDependencys;
 
 @end

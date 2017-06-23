@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForCancelButton;
 @property (assign, nonatomic) BOOL shoudKeboardDismiss;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
@@ -20,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,7 +30,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -81,6 +82,12 @@
 
 -(void)actionEnter:(id)sender{
     [self actionEnterPin:nil];
+}
+
+-(void)showLoginFields {
+    self.pinContainer.hidden = NO;
+    self.cancelButton.hidden = NO;
+    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)applyFailedPasswordAction{
