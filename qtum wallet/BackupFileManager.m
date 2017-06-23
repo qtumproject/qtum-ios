@@ -52,23 +52,31 @@ static NSString* kPlatformVersionKey = @"platformVersion";
         
         if (option & Templates && [backup[kTemplatesKey] isKindOfClass:[NSArray class]]) {
             
-            templateCount = ((NSArray*)backup[kTemplatesKey]).count;
+            NSArray* templates = ((NSArray*)backup[kTemplatesKey]);
+            if ([templates isKindOfClass:[NSArray class]]) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bytecode.length > 0 && source.length > 0"];
+                templateCount = [templates filteredArrayUsingPredicate:predicate].count;
+            }
         }
         
         if (option & Tokens) {
             
             NSArray* array = backup[kContractsKey];
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type == %@",@"token"];
-            filteredArray = [array filteredArrayUsingPredicate:predicate];
-           tokenCount = filteredArray.count;
+            if ([array isKindOfClass:[NSArray class]]) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type == %@",@"token"];
+                filteredArray = [array filteredArrayUsingPredicate:predicate];
+                tokenCount = filteredArray.count;
+            }
         }
         
         if (option & Contracts) {
             
             NSArray* array = backup[kContractsKey];
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type != %@",@"token"];
-            filteredArray = [array filteredArrayUsingPredicate:predicate];
-            contractCount = filteredArray.count;
+            if ([array isKindOfClass:[NSArray class]]) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type != %@",@"token"];
+                filteredArray = [array filteredArrayUsingPredicate:predicate];
+                contractCount = filteredArray.count;
+            }
         }
         
         date = [[backup[kDateCreateKey] date] formatedDateString];
@@ -84,7 +92,6 @@ static NSString* kPlatformVersionKey = @"platformVersion";
         
         NSDictionary* backup = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
-        NSArray<TemplateModel*>* newTemplates = [[TemplateManager sharedInstance] encodeDataForBacup:backup[kTemplatesKey]];
         
         NSArray* filteredArray;
         if (option & Tokens && option & Contracts) {
@@ -101,6 +108,31 @@ static NSString* kPlatformVersionKey = @"platformVersion";
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type != %@",@"token"];
             filteredArray = [array filteredArrayUsingPredicate:predicate];
         }
+        
+        NSMutableSet* usefullTemplatesIndexes = [NSMutableSet new];
+        
+        for (NSDictionary* contract in filteredArray) {
+            
+            if ([contract[@"template"] isKindOfClass:[NSString class]]) {
+                if ([contract[@"template"] integerValue]) {
+                    [usefullTemplatesIndexes addObject:@([contract[@"template"] integerValue])];
+                }
+            } else if ([contract[@"template"] isKindOfClass:[NSNumber class]]) {
+                [usefullTemplatesIndexes addObject:@([contract[@"template"] integerValue])];
+            }
+        }
+        
+        NSArray* templatesCondidats = [backup[kTemplatesKey] isKindOfClass:[NSArray class]] ? backup[kTemplatesKey] : @[];
+        NSMutableArray* usefullTemplatesCondidats = @[].mutableCopy;
+        
+        for (NSNumber* templteIndex in usefullTemplatesIndexes) {
+            NSInteger index = [templteIndex integerValue];
+            if (templatesCondidats.count > index) {
+                [usefullTemplatesCondidats addObject:templatesCondidats[index]];
+            }
+        }
+        
+        NSArray<TemplateModel*>* newTemplates = [[TemplateManager sharedInstance] encodeDataForBacup:[usefullTemplatesCondidats copy]];
         
         if (filteredArray.count > 0) {
             

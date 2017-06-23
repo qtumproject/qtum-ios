@@ -25,8 +25,13 @@
     [super awakeWithContext:context];
     
     [self.walletButton setEnabled:NO];
-    [self.walletButton setTitle:@"Loading..."];
-    [SessionManager sharedInstance].delegate = self;;
+    [SessionManager sharedInstance].delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:@"applicationDidBecomeActive" object:nil];
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)willActivate {
@@ -37,22 +42,43 @@
     [super didDeactivate];
 }
 
-#pragma mark - SessionManagerDelegate
+#pragma mark - Private Methods 
 
-- (void)activationDidCompleteWithState:(WCSessionActivationState)activationState {
-    if (activationState == WCSessionActivationStateActivated) {
-        __weak typeof(self) weakSelf = self;
-        [[SessionManager sharedInstance] getInformationForWalletScreenWithSize:[WKInterfaceDevice currentDevice].screenBounds.size.width replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
-            
+-(void)getDataFromHostAppAndConfigSelf {
+    __weak typeof(self) weakSelf = self;
+    
+    [self.walletButton setTitle:@"Loading..."];
+    [[SessionManager sharedInstance] getInformationForWalletScreenWithSize:[WKInterfaceDevice currentDevice].screenBounds.size.width replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
+        
+        if (!replyMessage[@"error"]) {
             WatchWallet *wallet = [[WatchWallet alloc] initWithDictionary:replyMessage];
             
             [weakSelf.walletButton setTitle:@"QTUM"];
             [weakSelf.walletButton setEnabled:YES];
             weakSelf.wallet = wallet;
             [weakSelf showWaller];
-        } errorHandler:^(NSError * _Nonnull error) {
-            NSLog(@"Error");
-        }];
+        } else {
+            [weakSelf.walletButton setTitle:@"No Wallet"];
+        }
+        
+    } errorHandler:^(NSError * _Nonnull error) {
+        [weakSelf.walletButton setTitle:@"Error, reload app"];
+    }];
+}
+
+#pragma mark - App Notifications
+
+-(void)applicationDidBecomeActive{
+    [self dismissController];
+
+    [self getDataFromHostAppAndConfigSelf];
+}
+
+#pragma mark - SessionManagerDelegate
+
+- (void)activationDidCompleteWithState:(WCSessionActivationState)activationState {
+    if (activationState == WCSessionActivationStateActivated) {
+        [self getDataFromHostAppAndConfigSelf];
     }else{
         NSLog(@"Error activation");
     }

@@ -12,6 +12,7 @@
 #import "ContractInterfaceManager.h"
 #import "ContractFileManager.h"
 #import "iOSSessionManager.h"
+@import Firebase;
 
 @interface AppDelegate ()
 
@@ -27,6 +28,7 @@
     [iOSSessionManager sharedInstance];
     [Appearance setUp];
     [[AppSettings sharedInstance] setup];
+    [FIRApp configure];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (!self.aplicationCoordinatorStarted) {

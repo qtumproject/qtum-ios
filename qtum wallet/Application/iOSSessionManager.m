@@ -14,6 +14,7 @@ NSString *MainMessageKey = @"message_key";
 NSString *GetQRCodeMessageKey = @"get_qr_code";
 NSString *GetWalletInformation = @"get_wallet_information";
 NSString *StatusKey = @"status";
+NSString *kErrorKey = @"error";
 
 @interface iOSSessionManager() <WCSessionDelegate>
 
@@ -119,6 +120,13 @@ NSString *StatusKey = @"status";
         }];
     } else if ([key isEqualToString:GetWalletInformation]) {
         CGFloat width = [message[@"width"] floatValue];
+        
+        if (![WalletManager sharedInstance].getCurrentWallet) {
+            NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
+            replyHandler(dictionary);
+            return;
+        }
+        
         [[WalletManager sharedInstance].getCurrentWallet updateBalanceWithHandler:^(BOOL success) {
             if (success) {
                 [[WalletManager sharedInstance].getCurrentWallet updateHistoryWithHandler:^(BOOL success) {
