@@ -55,11 +55,9 @@ static NSString* kTemplateUiidKey = @"template";
         
         if (option & Templates && [backup[kTemplatesKey] isKindOfClass:[NSArray class]]) {
             
-            NSArray* templates = ((NSArray*)backup[kTemplatesKey]);
-            if ([templates isKindOfClass:[NSArray class]]) {
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bytecode.length > 0 && source.length > 0"];
-                templateCount = [templates filteredArrayUsingPredicate:predicate].count;
-            }
+            NSArray* templates = backup[kTemplatesKey];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bytecode.length > 0 && source.length > 0"];
+            templateCount = [templates filteredArrayUsingPredicate:predicate].count;
         }
         
         if ([backup[kContractsKey] isKindOfClass:[NSArray class]]) {
