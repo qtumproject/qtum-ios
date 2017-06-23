@@ -17,6 +17,10 @@ static NSString* kDateCreateKey = @"date_create";
 static NSString* kPlatformKey = @"platform";
 static NSString* kFileVersionKey = @"fileVersion";
 static NSString* kPlatformVersionKey = @"platformVersion";
+static NSString* kBackupFileNameKey = @"backup.json";
+static NSString* kCurrentPlatformValueKey = @"ios";
+static NSString* kCurrentFileVersionValueKey = @"1.0";
+static NSString* kTemplateUiidKey = @"template";
 
 @implementation BackupFileManager
 
@@ -26,10 +30,10 @@ static NSString* kPlatformVersionKey = @"platformVersion";
     [backup setObject:[[ContractManager sharedInstance] decodeDataForBackup] forKey:kContractsKey];
     [backup setObject:[[TemplateManager sharedInstance] decodeDataForBackup] forKey:kTemplatesKey];
     [backup setObject:[[NSDate date] string] forKey:kDateCreateKey];
-    [backup setObject:@"ios" forKey:kPlatformKey];
-    [backup setObject:@"1.0" forKey:kFileVersionKey];
+    [backup setObject:kCurrentPlatformValueKey forKey:kPlatformKey];
+    [backup setObject:kCurrentFileVersionValueKey forKey:kFileVersionKey];
     [backup setObject:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forKey:kPlatformVersionKey];
-    NSString* filePath = [DataOperation SaveFileWithName:@"backup.json" DataSource:backup.copy];
+    NSString* filePath = [DataOperation SaveFileWithName:kBackupFileNameKey DataSource:backup.copy];
     NSInteger fileSize = (NSInteger)[[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil] fileSize];
     completionBlock(backup.copy,filePath,fileSize);
 }
@@ -47,7 +51,6 @@ static NSString* kPlatformVersionKey = @"platformVersion";
         
         NSDictionary* backup = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
-        
         NSArray* filteredArray;
         
         if (option & Templates && [backup[kTemplatesKey] isKindOfClass:[NSArray class]]) {
@@ -59,20 +62,18 @@ static NSString* kPlatformVersionKey = @"platformVersion";
             }
         }
         
-        if (option & Tokens) {
+        if ([backup[kContractsKey] isKindOfClass:[NSArray class]]) {
             
             NSArray* array = backup[kContractsKey];
-            if ([array isKindOfClass:[NSArray class]]) {
+            
+            if (option & Tokens) {
+                
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type == %@",@"token"];
                 filteredArray = [array filteredArrayUsingPredicate:predicate];
                 tokenCount = filteredArray.count;
             }
-        }
-        
-        if (option & Contracts) {
-            
-            NSArray* array = backup[kContractsKey];
-            if ([array isKindOfClass:[NSArray class]]) {
+            if (option & Contracts) {
+                
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type != %@",@"token"];
                 filteredArray = [array filteredArrayUsingPredicate:predicate];
                 contractCount = filteredArray.count;
@@ -88,12 +89,13 @@ static NSString* kPlatformVersionKey = @"platformVersion";
 + (void)setBackupFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(BOOL success)) completionBlock {
     
     NSData *data = [NSData dataWithContentsOfURL:url];
+    
     if (data) {
         
         NSDictionary* backup = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
-        
         NSArray* filteredArray;
+        
         if (option & Tokens && option & Contracts) {
             
             filteredArray = backup[kContractsKey];
@@ -113,12 +115,12 @@ static NSString* kPlatformVersionKey = @"platformVersion";
         
         for (NSDictionary* contract in filteredArray) {
             
-            if ([contract[@"template"] isKindOfClass:[NSString class]]) {
-                if ([contract[@"template"] integerValue]) {
-                    [usefullTemplatesIndexes addObject:@([contract[@"template"] integerValue])];
+            if ([contract[kTemplateUiidKey] isKindOfClass:[NSString class]]) {
+                if ([contract[kTemplateUiidKey] integerValue]) {
+                    [usefullTemplatesIndexes addObject:@([contract[kTemplateUiidKey] integerValue])];
                 }
-            } else if ([contract[@"template"] isKindOfClass:[NSNumber class]]) {
-                [usefullTemplatesIndexes addObject:@([contract[@"template"] integerValue])];
+            } else if ([contract[kTemplateUiidKey] isKindOfClass:[NSNumber class]]) {
+                [usefullTemplatesIndexes addObject:@([contract[kTemplateUiidKey] integerValue])];
             }
         }
         
