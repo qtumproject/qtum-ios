@@ -79,14 +79,14 @@
 -(void)prepareDataObserving {
     
     [self.notificationManager registerForRemoutNotifications];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        [[WalletManager sharedInstance] startObservingForAllSpendable];
-//        [[ContractManager sharedInstance] startObservingForAllSpendable];
-//    });
-   dispatch_async(dispatch_get_main_queue(), ^{
-       [[WalletManager sharedInstance] startObservingForAllSpendable];
-       [[ContractManager sharedInstance] startObservingForAllSpendable];
-   });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[WalletManager sharedInstance] startObservingForAllSpendable];
+        [[ContractManager sharedInstance] startObservingForAllSpendable];
+    });
+//   dispatch_async(dispatch_get_main_queue(), ^{
+//       [[WalletManager sharedInstance] startObservingForAllSpendable];
+//       [[ContractManager sharedInstance] startObservingForAllSpendable];
+//   });
 }
 
 #pragma mark - Lazy Getters

@@ -2,7 +2,7 @@
 //  ConfirmPinCoordinator.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 23.06.17.
+//  Created by Vladimir Lebedevich on 23.06.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
