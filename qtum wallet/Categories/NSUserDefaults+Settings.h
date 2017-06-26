@@ -19,4 +19,16 @@
 + (void)saveLanguage:(NSString*)lang;
 + (NSString*)getLanguage;
 
++ (void)saveIsFingerpringAllowed:(BOOL)value;
++ (BOOL)isFingerprintAllowed;
+
++ (void)saveIsFingerpringEnabled:(BOOL)value;
++ (BOOL)isFingerprintEnabled;
+
++ (void)saveDeviceToken:(NSString*)lang;
++ (NSString*)getDeviceToken;
+
++ (void)savePrevDeviceToken:(NSString*)lang;
++ (NSString*)getPrevDeviceToken;
+
 @end

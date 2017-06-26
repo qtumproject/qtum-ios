@@ -8,10 +8,13 @@
 
 #import "NSUserDefaults+Settings.h"
 
-static NSString * const kSettingIsMainnet           = @"kSettingExtraMessages";
-static NSString * const kSettingIsRPCOn             = @"kSettingLongMessage";
-static NSString * const kLanguageSaveKey            = @"kLanguageSaveKey";
-
+NSString * const kSettingIsMainnet           = @"kSettingExtraMessages";
+NSString * const kSettingIsRPCOn             = @"kSettingLongMessage";
+NSString * const kFingerpringAllowed         = @"kFingerpringAllowed";
+NSString * const kFingerpringEnabled         = @"kFingerpringEnabled";
+NSString * const kLanguageSaveKey            = @"kLanguageSaveKey";
+NSString * const kDeviceTokenKey             = @"kDeviceTokenKey";
+NSString * const kPrevDeviceTokenKey         = @"kPrevDeviceTokenKey";
 
 @implementation NSUserDefaults (Settings)
 
@@ -19,16 +22,16 @@ static NSString * const kLanguageSaveKey            = @"kLanguageSaveKey";
     [[NSUserDefaults standardUserDefaults] setBool:value forKey:kSettingIsMainnet];
 }
 
-+ (BOOL)isMainnetSetting{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kSettingIsMainnet];
-}
-
 + (void)saveIsRPCOnSetting:(BOOL)value{
     [[NSUserDefaults standardUserDefaults] setBool:value forKey:kSettingIsRPCOn];
 }
 
-+ (BOOL)isRPCOnSetting{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kSettingIsRPCOn];
++ (void)saveIsFingerpringAllowed:(BOOL)value{
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:kFingerpringAllowed];
+}
+
++ (void)saveIsFingerpringEnabled:(BOOL)value{
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:kFingerpringEnabled];
 }
 
 + (void)saveLanguage:(NSString*)lang{
@@ -38,5 +41,39 @@ static NSString * const kLanguageSaveKey            = @"kLanguageSaveKey";
 + (NSString*)getLanguage{
     return [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageSaveKey];
 }
+
++ (BOOL)isRPCOnSetting{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kSettingIsRPCOn];
+}
+
++ (BOOL)isFingerprintAllowed{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kFingerpringAllowed];
+}
+
++ (BOOL)isFingerprintEnabled{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kFingerpringEnabled];
+}
+
++ (BOOL)isMainnetSetting{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kSettingIsMainnet];
+}
+
++ (void)saveDeviceToken:(NSString*)lang {
+    [[NSUserDefaults standardUserDefaults] setObject:lang forKey:kDeviceTokenKey];
+}
+
++ (NSString*)getDeviceToken {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceTokenKey];
+}
+
++ (void)savePrevDeviceToken:(NSString*)lang {
+    [[NSUserDefaults standardUserDefaults] setObject:lang forKey:kPrevDeviceTokenKey];
+}
+
++ (NSString*)getPrevDeviceToken {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kPrevDeviceTokenKey];
+}
+
+
 
 @end

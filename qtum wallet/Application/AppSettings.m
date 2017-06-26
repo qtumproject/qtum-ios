@@ -11,6 +11,9 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "LanguageManager.h"
+#import <LocalAuthentication/LocalAuthentication.h>
+@import Firebase;
+
 
 @interface AppSettings ()
 
@@ -48,12 +51,27 @@
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:NO];
     [PopUpsManager sharedInstance];
-    
     [self setupFabric];
+    [self setupFingerpring];
 }
 
 -(void)setupFabric{
     [Fabric with:@[[Crashlytics class]]];
+}
+
+-(void)setupFirebase {
+    [FIRApp configure];
+}
+
+-(void)setupFingerpring {
+    
+    LAContext *myContext = [[LAContext alloc] init];
+    NSError *authError = nil;
+    
+    
+    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
+ 
+    }
 }
 
 #pragma mark - Accessory methods
