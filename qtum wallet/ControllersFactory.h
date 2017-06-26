@@ -45,6 +45,7 @@
 @class RestoreContractsViewController;
 @class RestoreContractsPopUpViewController;
 @class BackupContractsViewController;
+@class QStoreViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -90,6 +91,7 @@
 -(WatchTokensViewController*)createWatchTokensViewController;
 -(RestoreContractsViewController*)createRestoreContractViewController;
 -(BackupContractsViewController*)createBackupContractViewController;
+-(QStoreViewController*)createQStoreViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;

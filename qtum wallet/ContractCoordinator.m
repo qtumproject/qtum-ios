@@ -28,6 +28,7 @@
 #import "RestoreContractsViewController.h"
 #import "BackupContractsViewController.h"
 #import "TemplateManager.h"
+#import "QStoreViewController.h"
 
 
 @interface ContractCoordinator ()
@@ -86,7 +87,10 @@
 }
 
 -(void)showContractStore {
+    QStoreViewController* controller = (QStoreViewController*)[[ControllersFactory sharedInstance] createQStoreViewController];
+    controller.delegate = self;
     
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)showWatchContract {

@@ -51,6 +51,7 @@
 #import "RestoreContractsViewController.h"
 #import "RestoreContractsPopUpViewController.h"
 #import "BackupContractsViewController.h"
+#import "QStoreViewController.h"
 
 @implementation ControllersFactory
 
@@ -227,6 +228,10 @@
     return controller;
 }
 
+-(QStoreViewController*)createQStoreViewController{
+    QStoreViewController* controller = (QStoreViewController*)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreViewController"];
+    return controller;
+}
 
 -(WatchContractViewController*)createWatchContractViewController{
     WatchContractViewController* controller = (WatchContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
