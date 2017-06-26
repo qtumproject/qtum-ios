@@ -8,20 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-
-@protocol LoginCoordinatorDelegate <NSObject>
-
--(void)passwordDidEntered:(NSString*)password;
--(void)confirmPasswordDidCanceled;
-
-@end
+typedef NS_ENUM(NSInteger, LoginMode){
+    StartFirstSession,
+    StartNewSession
+};
 
 @protocol ApplicationCoordinatorDelegate;
 
 @interface LoginCoordinator : BaseCoordinator <Coordinatorable>
 
-@property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
+@property (weak, nonatomic) id <ApplicationCoordinatorDelegate> delegate;
+@property (assign, nonatomic) LoginMode mode;
 
--(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
+- (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;
 
 @end

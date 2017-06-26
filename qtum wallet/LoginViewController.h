@@ -7,12 +7,11 @@
 //
 
 #import "PinController.h"
+#import "LoginViewOutput.h"
+#import "LoginViewOutputDelegate.h"
 
-@interface LoginViewController : PinController
+@interface LoginViewController : PinController <LoginViewOutput>
 
-@property (weak,nonatomic) id <LoginCoordinatorDelegate> delegate;
-
--(void)applyFailedPasswordAction;
--(void)showLoginFields;
+@property (weak,nonatomic) id <LoginViewOutputDelegate> delegate;
 
 @end

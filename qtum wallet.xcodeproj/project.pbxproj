@@ -485,6 +485,9 @@
 		B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinViewController.m; sourceTree = "<group>"; };
 		B346AE1C1EFD57BC00241C61 /* ConfirmPinCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinCoordinator.h; sourceTree = "<group>"; };
 		B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinCoordinator.m; sourceTree = "<group>"; };
+		B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutput.h; sourceTree = "<group>"; };
+		B346AE201F00ECE300241C61 /* LoginViewOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutputDelegate.h; sourceTree = "<group>"; };
+		B346AE211F00EEDE00241C61 /* Presentable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presentable.h; sourceTree = "<group>"; };
 		B3487A1F1E8D2B2B00BC66F1 /* HistoryDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDataStorage.h; sourceTree = "<group>"; };
 		B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDataStorage.m; sourceTree = "<group>"; };
 		B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHeaderCell.h; sourceTree = "<group>"; };
@@ -1085,6 +1088,7 @@
 				B33EAF091E5C5E79006125F3 /* Coordinatorable.h */,
 				B3CB56AF1ECF06D200B23AE9 /* Paginationable.h */,
 				B32CCB161EF4026700383119 /* Clearable.h */,
+				B346AE211F00EEDE00241C61 /* Presentable.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1096,6 +1100,8 @@
 				B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */,
 				B33EAF111E5C70EF006125F3 /* LoginViewController.h */,
 				B33EAF121E5C70EF006125F3 /* LoginViewController.m */,
+				B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */,
+				B346AE201F00ECE300241C61 /* LoginViewOutputDelegate.h */,
 			);
 			name = "Login Flow";
 			sourceTree = "<group>";

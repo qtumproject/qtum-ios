@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "LoginCoordinator.h"
+#import "LoginViewOutputDelegate.h"
 
 @interface LoginViewController ()<CAAnimationDelegate>
 
@@ -20,6 +21,7 @@
 @implementation LoginViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self.firstSymbolTextField becomeFirstResponder];
 }
@@ -62,6 +64,7 @@
 #pragma mark - Actions
 
 - (IBAction)actionEnterPin:(id)sender {
+    
     self.shoudKeboardDismiss = YES;
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
     if (pin.length == 4) {

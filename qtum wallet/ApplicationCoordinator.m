@@ -27,7 +27,7 @@
 @property (strong,nonatomic) TabBarController* router;
 @property (strong,nonatomic) ControllersFactory* controllersFactory;
 @property (strong,nonatomic) UIViewController* viewController;
-@property (strong,nonatomic) UINavigationController* navigationController;
+@property (weak,nonatomic) UINavigationController* navigationController;
 @property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
 @property (strong,nonatomic) NotificationManager* notificationManager;
 @property (assign, nonatomic) BOOL confirmingPin;
@@ -67,7 +67,7 @@
 
 -(void)startConfirmPinFlow {
     self.confirmingPin = YES;
-    [self startLoginFlow];
+    [self startLoginFlowWithMode:StartFirstSession];
 }
 
 #pragma mark - Privat Methods
@@ -76,25 +76,30 @@
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
-- (UINavigationController*)navigationController {
+-(void)prepareDataObserving {
     
-    if (!_navigationController) {
-        _navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
-    }
-    return _navigationController;
+    [self.notificationManager registerForRemoutNotifications];
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [[WalletManager sharedInstance] startObservingForAllSpendable];
+//        [[ContractManager sharedInstance] startObservingForAllSpendable];
+//    });
+   dispatch_async(dispatch_get_main_queue(), ^{
+       [[WalletManager sharedInstance] startObservingForAllSpendable];
+       [[ContractManager sharedInstance] startObservingForAllSpendable];
+   });
 }
-#pragma mark - Lazy Getters
 
+#pragma mark - Lazy Getters
 
 
 #pragma mark - Start
 
 -(void)start{
 
-    [self startAuthFlow];
-
     if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
-        [self startLoginFlow];
+        [self startLoginFlowWithMode:StartFirstSession];
+    } else {
+        [self startAuthFlow];
     }
 }
 
@@ -117,31 +122,30 @@
 
 -(void)coordinatorDidLogin:(LoginCoordinator*)coordinator {
     
-    [self startMainFlow];
-    [self.notificationManager registerForRemoutNotifications];
-    [[WalletManager sharedInstance] startObservingForAllSpendable];
-    [[ContractManager sharedInstance] startObservingForAllSpendable];
+    [self removeDependency:coordinator];
+    //if it was fisrst starting login
+    if (coordinator.mode == StartFirstSession) {
+        [self startMainFlow];
+        [self prepareDataObserving];
+    }
 }
 
 -(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator {
     
     [self removeDependency:coordinator];
     [self startAuthFlow];
+    [self prepareDataObserving];
 }
 
 -(void)coordinatorDidAuth:(AuthCoordinator*)coordinator{
     
     [self removeDependency:coordinator];
     [self startMainFlow];
-    [self.notificationManager registerForRemoutNotifications];
-    [[WalletManager sharedInstance] startObservingForAllSpendable];
-    [[ContractManager sharedInstance] startObservingForAllSpendable];
 }
 
--(void)coordinatorRequestForLogin {
-    [self startLoginFlow];
+- (void)coordinatorRequestForLogin {
+    [self startLoginFlowWithMode:StartFirstSession];
 }
-
 
 #pragma mark - Presenting Controllers
 
@@ -170,10 +174,12 @@
 
 -(void)startAuthFlow {
     
-    self.appDelegate.window.rootViewController = self.navigationController;
-    AuthCoordinator* coordinator = [[AuthCoordinator alloc] initWithNavigationViewController:self.navigationController];
+    UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
+    self.appDelegate.window.rootViewController = navigationController;
+    AuthCoordinator* coordinator = [[AuthCoordinator alloc] initWithNavigationViewController:navigationController];
     coordinator.delegate = self;
     [coordinator start];
+    self.navigationController = navigationController;
     [self addDependency:coordinator];
 }
 
@@ -191,10 +197,17 @@
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
 }
 
--(void)startLoginFlow {
+- (void)startLoginFlowWithMode:(LoginMode) mode {
     
-    LoginCoordinator* coordinator = [[LoginCoordinator alloc]initWithNavigationViewController:self.navigationController];
+    if (mode == StartFirstSession) {
+        UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
+        self.appDelegate.window.rootViewController = navigationController;
+        self.navigationController = navigationController;
+    }
+    
+    LoginCoordinator* coordinator = [[LoginCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
     coordinator.delegate = self;
+    coordinator.mode = mode;
     [coordinator start];
     [self addDependency:coordinator];
 }
@@ -233,9 +246,8 @@
 -(void)startAskPinFlow:(void(^)()) completesion{
 }
 
--(void)startMainFlow{
-    //TODO refarcor coordinator logic
-    [self removeAllDependencys];
+-(void)startMainFlow {
+
     TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
     controller.coordinatorDelegate = coordinator;
@@ -264,7 +276,8 @@
     self.router = controller;
 }
 
--(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion{
+-(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion {
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
     CreatePinRootController* createPinRoot = [[CreatePinRootController alloc]initWithRootViewController:viewController];
@@ -302,7 +315,8 @@ static NSString* WalletAddressKey = @"walletAddress";
     [self start];
 }
 
--(void)pareceUrl:(NSURL*)url{
+-(void)pareceUrl:(NSURL*)url {
+    
     NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
                                                 resolvingAgainstBaseURL:NO];
     NSArray *queryItems = urlComponents.queryItems;

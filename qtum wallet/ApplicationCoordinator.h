@@ -14,10 +14,10 @@
 
 @protocol ApplicationCoordinatorDelegate <NSObject>
 
--(void)coordinatorDidAuth:(AuthCoordinator*)coordinator;
--(void)coordinatorDidLogin:(LoginCoordinator*)coordinator;
--(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator;
--(void)coordinatorRequestForLogin;
+- (void)coordinatorDidAuth:(AuthCoordinator*)coordinator;
+- (void)coordinatorDidLogin:(LoginCoordinator*)coordinator;
+- (void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator;
+- (void)coordinatorRequestForLogin;
 
 @end
 
@@ -29,23 +29,23 @@
 
 -(void)start;
 //flows
--(void)startAuthFlow;
--(void)startLoginFlow;
--(void)startMainFlow;
--(void)restartMainFlow;
--(void)startWalletFlow;
--(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
--(void)startChangePinFlow;
--(void)startChangedLanguageFlow;
+- (void)startAuthFlow;
+- (void)startLoginFlowWithMode:(LoginMode) mode;
+- (void)startMainFlow;
+- (void)restartMainFlow;
+- (void)startWalletFlow;
+- (void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
+- (void)startChangePinFlow;
+- (void)startChangedLanguageFlow;
 
--(void)showWallet;
--(void)showExportBrainKeyAnimated:(BOOL)animated;
--(void)logout;
--(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;
--(void)setViewController:(UIViewController*) controller animated:(BOOL)animated;
+- (void)showWallet;
+- (void)showExportBrainKeyAnimated:(BOOL)animated;
+- (void)logout;
+- (void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;
+- (void)setViewController:(UIViewController*) controller animated:(BOOL)animated;
 
 //imessage
--(void)launchFromUrl:(NSURL*)url;
+- (void)launchFromUrl:(NSURL*)url;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

@@ -68,7 +68,8 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[ApplicationCoordinator sharedInstance] startLoginFlow];
+    [[PopUpsManager sharedInstance] dismissLoader];
+    [[ApplicationCoordinator sharedInstance] startLoginFlowWithMode:StartNewSession];
 }
 
 #pragma mark - Notifications
