@@ -25,8 +25,8 @@
 
 @implementation NotificationManager
 
-- (void)registerForRemoutNotifications
-{
+- (void)registerForRemoutNotifications {
+    
     if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         center.delegate = self;
@@ -57,16 +57,6 @@
     return [NSUserDefaults getPrevDeviceToken];
 }
 
--(void)storeDeviceToken{
-    
-    NSString* token = [[FIRInstanceID instanceID] token];
-    NSString* prevToken = [NSUserDefaults getDeviceToken];
-    [NSUserDefaults saveDeviceToken:token];
-    [NSUserDefaults savePrevDeviceToken:([prevToken isEqualToString:token]) ? @"" : prevToken];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-
 #pragma mark - UNUserNotificationCenterDelegate
 
 //Called when a notification is delivered to a foreground app.
@@ -89,19 +79,36 @@
     [self storeDeviceToken];
 }
 
-
--(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+- (void)registerForPushNotifications {
     
-}
-
-- (void)registerForPushNotifications
-{
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
     NSLog(@"PUSH NOTIFICATION : %@", userInfo);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"didFailToRegisterForRemoteNotificationsWithError : %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
+}
+
+#pragma mark - Private Methods
+
+-(void)storeDeviceToken{
+    
+    NSString* token = [[FIRInstanceID instanceID] token];
+    NSString* prevToken = [NSUserDefaults getDeviceToken];
+    [NSUserDefaults saveDeviceToken:token];
+    [NSUserDefaults savePrevDeviceToken:([prevToken isEqualToString:token]) ? @"" : prevToken];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)createLocalNotificationWithString:(NSString*) text andIdentifire:(NSString*)identifire {
@@ -125,27 +132,16 @@
     }
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    NSLog(@"Message ID: %@", userInfo[@"gcm.message_id"]);
-    [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
-    
-    NSLog(@"userInfo=>%@", userInfo);
-}
-
 - (void)tokenRefreshNotification:(NSNotification *)notification {
-    
-    NSLog(@"instanceId_notification=>%@",[notification object]);
-    NSString* InstanceID = [NSString stringWithFormat:@"%@",[notification object]];
     
     [self connectToFcm];
 }
 
 - (void)connectToFcm {
     
+    __weak __typeof(self)weakSelf = self;
     [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) {
-        if (error != nil) {
+        if (error) {
             NSLog(@"Unable to connect to FCM. %@", error);
         } else {
             
@@ -153,12 +149,9 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self storeDeviceToken];
+                    [weakSelf storeDeviceToken];
                     [[WalletManager sharedInstance] startObservingForAllSpendable];
                     [[ContractManager sharedInstance] startObservingForAllSpendable];
-
-                    NSLog(@"instanceId_tokenRefreshNotification22=>%@",[[FIRInstanceID instanceID] token]);
-                    
                 });
             });
         }
