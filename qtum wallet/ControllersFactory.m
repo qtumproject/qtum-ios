@@ -51,6 +51,7 @@
 #import "RestoreContractsViewController.h"
 #import "RestoreContractsPopUpViewController.h"
 #import "BackupContractsViewController.h"
+#import "EnableFingerprintViewController.h"
 
 @implementation ControllersFactory
 
@@ -246,6 +247,11 @@
 
 -(BackupContractsViewController*)createBackupContractViewController{
     BackupContractsViewController* controller = (BackupContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContracts"];
+    return controller;
+}
+
+-(EnableFingerprintViewController*)createEnableFingerprintViewController{
+    EnableFingerprintViewController* controller = (EnableFingerprintViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"EnableFingerprintViewController"];
     return controller;
 }
 

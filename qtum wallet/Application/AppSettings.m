@@ -58,13 +58,11 @@
 }
 
 -(void)setupFingerpring {
-    
-    LAContext *myContext = [[LAContext alloc] init];
-    NSError *authError = nil;
-    
-    
-    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
- 
+
+    if( SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"8.0") && [[[LAContext alloc] init] canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
+        [NSUserDefaults saveIsFingerpringAllowed:YES];
+    } else {
+        [NSUserDefaults saveIsFingerpringAllowed:NO];
     }
 }
 
@@ -76,6 +74,14 @@
 
 -(BOOL)isRPC{
     return [NSUserDefaults isRPCOnSetting];
+}
+
+-(BOOL)isFingerprintEnabled{
+    return [NSUserDefaults isFingerprintAllowed] && [NSUserDefaults isFingerprintEnabled];
+}
+
+-(BOOL)isFingerprintAllowed{
+    return [NSUserDefaults isFingerprintAllowed];
 }
 
 @end

@@ -12,6 +12,8 @@
 
 @property (assign, nonatomic, readonly) BOOL isMainNet;
 @property (assign, nonatomic, readonly) BOOL isRPC;
+@property (assign, nonatomic, readonly) BOOL isFingerprintEnabled;
+@property (assign, nonatomic, readonly) BOOL isFingerprintAllowed;
 
 
 -(void)setup;

@@ -36,7 +36,10 @@
     controller.delegate = self;
     [self displayContentController:controller];
     self.loginController = controller;
-    [self showFingerprint];
+    
+    if ([AppSettings sharedInstance].isFingerprintEnabled) {
+        [self showFingerprint];
+    }
 }
 
 - (void)displayContentController: (UIViewController*) content {

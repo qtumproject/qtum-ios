@@ -39,6 +39,7 @@
 //#import "BTCTransactionInput+Extension.h"
 //#import "BTCTransactionOutput+Extension.h"
 
+#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

@@ -201,7 +201,7 @@
 
 - (void)startSecurityFlow {
     
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN && !self.securityFlowRunning) {
+    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN && !self.securityFlowRunning ) {
         [self startLoginFlowWithMode:StartNewSession];
     }
 }
