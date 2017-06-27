@@ -75,7 +75,7 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
     
-    [[FIRInstanceID instanceID] setAPNSToken:deviceToken type:FIRInstanceIDAPNSTokenTypeSandbox];
+    [[FIRInstanceID instanceID] setAPNSToken:deviceToken type:FIRInstanceIDAPNSTokenTypeProd];
     [self storeDeviceToken];
 }
 
@@ -113,7 +113,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 
 - (void)createLocalNotificationWithString:(NSString*) text andIdentifire:(NSString*)identifire {
     
-    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")) {
+        
         UNMutableNotificationContent* content = [UNMutableNotificationContent new];
         content.title = @"Local Notification";
         content.subtitle = @"QTUM";
@@ -121,8 +122,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
         
         UNTimeIntervalNotificationTrigger* triger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
         UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:identifire content:content trigger:triger];
-        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-        }];
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
     } else {
         UILocalNotification* notification = [UILocalNotification new];
         notification.alertBody = text;
