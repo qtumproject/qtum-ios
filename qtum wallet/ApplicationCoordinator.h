@@ -22,7 +22,6 @@
 
 @interface ApplicationCoordinator : BaseCoordinator <Coordinatorable, ApplicationCoordinatorDelegate>
 
-@property (strong,nonatomic) NSUserDefaults* defaults;
 @property (strong,nonatomic,readonly) NotificationManager* notificationManager;
 @property (strong,nonatomic) id <Requestable> requestManager;
 

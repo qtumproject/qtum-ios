@@ -257,24 +257,12 @@
 
 #pragma iMessage Methods
 
-static NSString* isHasWalletKey = @"isHasWallet";
-static NSString* WalletAddressKey = @"walletAddress";
-
 -(void)storeAuthorizedFlag:(BOOL)flag andMainAddress:(NSString *)address{
 
-    [self.defaults setObject:flag ? @"YES" : @"NO" forKey:isHasWalletKey];
-    [self.defaults setObject:address forKey:WalletAddressKey];
-    if ([self.defaults synchronize]) {
-        NSLog(@"Synch!!");
-    }
+    [NSUserDefaults saveIsHaveWalletKey:flag ? @"YES" : @"NO" ];
+    [NSUserDefaults saveWalletAddressKey:address];
 }
 
--(NSUserDefaults*)defaults{
-    if (!_defaults) {
-        _defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
-    }
-    return _defaults;
-}
 
 -(void)launchFromUrl:(NSURL*)url{
     [self pareceUrl:url];

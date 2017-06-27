@@ -18,6 +18,8 @@ NSString * const kPrevDeviceTokenKey         = @"kPrevDeviceTokenKey";
 NSString * const kWalletAddressKey           = @"kWalletAddressKey";
 NSString * const kIsHaveWallet               = @"kIsHaveWallet";
 
+NSString * const kGroupIdentifire            = @"group.com.pixelplex.qtum-wallet";
+
 
 
 @implementation NSUserDefaults (Settings)
@@ -79,21 +81,24 @@ NSString * const kIsHaveWallet               = @"kIsHaveWallet";
 }
 
 + (void)saveWalletAddressKey:(NSString*) key {
-    [[NSUserDefaults standardUserDefaults] setObject:key forKey:kWalletAddressKey];
+    [[self groupDefaults] setObject:key forKey:kWalletAddressKey];
 }
 
 + (NSString*)getWalletAddressKey {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kWalletAddressKey];
+    return [[self groupDefaults] objectForKey:kWalletAddressKey];
 }
 
-+ (void)saveIsHaveWalletKey:(BOOL) key {
-    [[NSUserDefaults standardUserDefaults] setBool:key forKey:kIsHaveWallet];
++ (void)saveIsHaveWalletKey:(NSString*) key {
+    [[self groupDefaults] setObject:key forKey:kIsHaveWallet];
     
 }
-+ (BOOL)isHaveWalletKey {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kIsHaveWallet];
++ (NSString*)isHaveWalletKey {
+    return [[self groupDefaults] objectForKey:kIsHaveWallet];
 }
 
++ (NSUserDefaults*)groupDefaults {
+    return [[NSUserDefaults alloc] initWithSuiteName:kGroupIdentifire];
+}
 
 
 @end

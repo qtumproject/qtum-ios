@@ -34,7 +34,7 @@
 + (void)saveWalletAddressKey:(NSString*) key;
 + (NSString*)getWalletAddressKey;
 
-+ (void)saveIsHaveWalletKey:(BOOL) key;
-+ (BOOL)isHaveWalletKey;
++ (void)saveIsHaveWalletKey:(NSString*) key;
++ (NSString*)isHaveWalletKey;
 
 @end
