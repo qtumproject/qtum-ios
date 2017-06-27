@@ -16,7 +16,9 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
-
 - (void)createLocalNotificationWithString:(NSString*) text andIdentifire:(NSString*)identifire;
+
+- (NSString*)getToken;
+- (NSString*)getPrevToken;
 
 @end

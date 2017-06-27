@@ -19,4 +19,22 @@
 + (void)saveLanguage:(NSString*)lang;
 + (NSString*)getLanguage;
 
++ (void)saveIsFingerpringAllowed:(BOOL)value;
++ (BOOL)isFingerprintAllowed;
+
++ (void)saveIsFingerpringEnabled:(BOOL)value;
++ (BOOL)isFingerprintEnabled;
+
++ (void)saveDeviceToken:(NSString*) token;
++ (NSString*)getDeviceToken;
+
++ (void)savePrevDeviceToken:(NSString*) token;
++ (NSString*)getPrevDeviceToken;
+
++ (void)saveWalletAddressKey:(NSString*) key;
++ (NSString*)getWalletAddressKey;
+
++ (void)saveIsHaveWalletKey:(NSString*) key;
++ (NSString*)isHaveWalletKey;
+
 @end

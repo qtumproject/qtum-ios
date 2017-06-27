@@ -8,6 +8,7 @@
 
 #import "NotificationManager.h"
 #import <UserNotifications/UserNotifications.h>
+#import "NSUserDefaults+Settings.h"
 
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -15,7 +16,6 @@
 
 @end
 
-static NSString* deviceTokenKey = @"deviceTokenKey";
 
 @implementation NotificationManager
 
@@ -36,9 +36,18 @@ static NSString* deviceTokenKey = @"deviceTokenKey";
 }
 
 
--(void)removeToken{
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:deviceTokenKey];
+-(void)removeToken {
+    [NSUserDefaults saveDeviceToken:nil];
 }
+
+- (NSString*)getToken {
+    return [NSUserDefaults getDeviceToken];
+}
+
+- (NSString*)getPrevToken {
+    return [NSUserDefaults getPrevDeviceToken];
+}
+
 
 #pragma mark - UNUserNotificationCenterDelegate
 
@@ -56,16 +65,17 @@ static NSString* deviceTokenKey = @"deviceTokenKey";
 
 #pragma mark - AppDelegate
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-//    NSString * deviceTokenString = [[[[deviceToken description]
-//                                      stringByReplacingOccurrencesOfString: @"<" withString: @""]
-//                                     stringByReplacingOccurrencesOfString: @">" withString: @""]
-//                                    stringByReplacingOccurrencesOfString: @" " withString: @""];
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
     
-    [[NSUserDefaults standardUserDefaults] setObject:[deviceToken description] forKey:deviceTokenKey];
+    NSString * deviceTokenString = [[[[deviceToken description]
+                                      stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                                     stringByReplacingOccurrencesOfString: @">" withString: @""]
+                                    stringByReplacingOccurrencesOfString: @" " withString: @""];
+    
+    NSString* prevToken = [NSUserDefaults getDeviceToken];
+    [NSUserDefaults saveDeviceToken:deviceTokenString];
+    [NSUserDefaults savePrevDeviceToken:([prevToken isEqualToString:deviceTokenString]) ? @"" : prevToken];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-   // [[TCARequestManager sharedInstance] registForPushNotificationWithSuccessHandler:nil andFailureHandler:nil];
 }
 
 
@@ -79,8 +89,7 @@ static NSString* deviceTokenKey = @"deviceTokenKey";
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"PUSH NOTIFICATION : %@", userInfo);
 //    if (application.applicationState == UIApplicationStateActive) {
 //        [[TCAPushNotificationManager sharedInstance] showPushNotificationWithUserInfo:userInfo];
@@ -89,7 +98,7 @@ static NSString* deviceTokenKey = @"deviceTokenKey";
 //    }
 }
 
-- (void)createLocalNotificationWithString:(NSString*) text andIdentifire:(NSString*)identifire{
+- (void)createLocalNotificationWithString:(NSString*) text andIdentifire:(NSString*)identifire {
     
     if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
         UNMutableNotificationContent* content = [UNMutableNotificationContent new];
