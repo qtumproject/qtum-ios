@@ -29,8 +29,8 @@
 -(void)start;
 //flows
 - (void)startAuthFlow;
-- (void)startLoginFlowWithMode:(LoginMode) mode;
 - (void)startMainFlow;
+- (void)startSecurityFlow;
 - (void)restartMainFlow;
 - (void)startWalletFlow;
 - (void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;

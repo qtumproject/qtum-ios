@@ -31,7 +31,7 @@
 @property (weak,nonatomic) UINavigationController* navigationController;
 @property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
 @property (strong,nonatomic) NotificationManager* notificationManager;
-@property (assign, nonatomic) BOOL confirmingPin;
+@property (assign, nonatomic) BOOL securityFlowRunning;
 
 
 @property (nonatomic,strong) NSString *amount;
@@ -67,7 +67,6 @@
 #pragma mark - Public Methods
 
 -(void)startConfirmPinFlow {
-    self.confirmingPin = YES;
     [self startLoginFlowWithMode:StartFirstSession];
 }
 
@@ -123,6 +122,7 @@
 
 -(void)coordinatorDidLogin:(LoginCoordinator*)coordinator {
     
+    self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
     //if it was fisrst starting login
     if (coordinator.mode == StartFirstSession) {
@@ -133,6 +133,7 @@
 
 -(void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator {
     
+    self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
     [self startAuthFlow];
     [self prepareDataObserving];
@@ -188,14 +189,21 @@
     
     [self startAuthFlow];
     [self storeAuthorizedFlag:NO andMainAddress:nil];
-    [self.notificationManager removeToken];
     [self removeDependency:self.tabCoordinator];
-    
+    [[WalletManager sharedInstance] stopObservingForAllSpendable];
+    [[ContractManager sharedInstance] stopObservingForAllSpendable];
+    [self.notificationManager removeToken];
     [[WalletManager sharedInstance] clear];
     [[ContractManager sharedInstance] clear];
     [[TemplateManager sharedInstance] clear];
-    [[WalletManager sharedInstance] stopObservingForAllSpendable];
-    [[ContractManager sharedInstance] stopObservingForAllSpendable];
+
+}
+
+- (void)startSecurityFlow {
+    
+    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN && !self.securityFlowRunning) {
+        [self startLoginFlowWithMode:StartNewSession];
+    }
 }
 
 - (void)startLoginFlowWithMode:(LoginMode) mode {
@@ -210,6 +218,7 @@
     coordinator.delegate = self;
     coordinator.mode = mode;
     [coordinator start];
+    self.securityFlowRunning = YES;
     [self addDependency:coordinator];
 }
 
