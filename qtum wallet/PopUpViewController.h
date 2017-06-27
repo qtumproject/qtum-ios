@@ -30,3 +30,10 @@
 - (void)cancelButtonPressed:(PopUpViewController *)sender;
 
 @end
+
+@protocol SecurityPopupViewControllerDelegate <NSObject>
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender;
+- (void)confirmButtonPressed:(PopUpViewController *)sender withPin:(NSString*) pin;
+
+@end

@@ -13,12 +13,18 @@ typedef NS_ENUM(NSInteger, LoginMode){
     StartNewSession
 };
 
+typedef NS_ENUM(NSInteger, SecurityType){
+    SecurityController,
+    SecurityPopup,
+};
+
 @protocol ApplicationCoordinatorDelegate;
 
 @interface LoginCoordinator : BaseCoordinator <Coordinatorable>
 
 @property (weak, nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 @property (assign, nonatomic) LoginMode mode;
+@property (assign, nonatomic) SecurityType type;
 
 - (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;
 

@@ -12,7 +12,6 @@
 const float bottomOffsetKeyboard = 300;
 const float bottomOffset = 25;
 
-
 @interface PinViewController () <UITextFieldDelegate, CAAnimationDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *controllerTitle;

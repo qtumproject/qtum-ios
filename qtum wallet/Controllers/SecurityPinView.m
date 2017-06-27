@@ -1,70 +1,22 @@
 //
-//  CreatePinViewController.m
+//  SecurityPinView.m
 //  qtum wallet
 //
-//  Created by Vladimir Lebedevich on 30.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Никита Федоренко on 27.06.17.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "PinController.h"
-#import "CustomTextField.h"
+#import "SecurityPinView.h"
 
-@interface PinController () <CAAnimationDelegate>
+@interface SecurityPinView () <UITextFieldDelegate, CAAnimationDelegate>
 
-@property (assign,nonatomic,getter=isStopEditingFields) BOOL stopEditingFields;
 
 @end
 
-@implementation PinController
+@implementation SecurityPinView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - Keyboard
-
--(void)keyboardWillShow:(NSNotification *)sender{
-    [self.view layoutIfNeeded];
-}
-
--(void)keyboardWillHide:(NSNotification *)sender{
-    [self.view layoutIfNeeded];
-}
-
-#pragma mark - Configuration
-
-#pragma mark - Privat Methods
-
--(void)validateAndSendPin{
+-(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed {
     
-}
-
--(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed{
     if (reversed) {
         if ([textField isEqual:self.fourthSymbolTextField]) {
             [self.thirdSymbolTextField becomeFirstResponder];
@@ -94,7 +46,7 @@
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
--(void)shakeAndClearText{
+-(void)shakeAndClearText {
     CAKeyframeAnimation* shake = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
     shake.duration = 0.6;
     shake.values = @[@-20.0, @20.0, @-20.0, @20.0, @-10.0, @10.0, @-5.0, @5.0, @0.0];
@@ -114,9 +66,9 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     if (flag) {
-//        if ([self.delegate respondsToSelector:@selector(confilmPinFailed)]) {
-//            [self.delegate confilmPinFailed];
-//        }
+        //        if ([self.delegate respondsToSelector:@selector(confilmPinFailed)]) {
+        //            [self.delegate confilmPinFailed];
+        //        }
     }
 }
 
@@ -135,13 +87,12 @@
     } else if ([textField isEqual:self.fourthSymbolTextField]) {
         self.fourthInputViewHeight.constant = 4;
     }
-    [self.view setNeedsLayout];
+    [self setNeedsLayout];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     return YES;
 }
-
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if ([textField isEqual:self.firstSymbolTextField]) {
         self.firstInputViewHeight.constant = 2;
@@ -152,11 +103,11 @@
     } else if ([textField isEqual:self.fourthSymbolTextField]) {
         self.fourthInputViewHeight.constant = 2;
     }
-    [self.view setNeedsLayout];
+    [self setNeedsLayout];
 }
 
 
-- (BOOL)textField:(CustomTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+- (BOOL)textField:(CustomTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if (string.length && [string rangeOfString:@" "].location == NSNotFound) {
         textField.realText = [string substringToIndex:1];
         textField.text = @"■";
@@ -173,7 +124,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self.view endEditing:YES];
+    [self endEditing:YES];
     return YES;
 }
 
@@ -183,7 +134,7 @@
 
 #pragma mark -
 
--(void)actionIncorrectPin {
+-(void)actionIncorrectPin{
     [self.incorrectPinView setAlpha:0.0f];
     
     [UIView animateWithDuration:2.0f animations:^{
@@ -194,6 +145,5 @@
         } completion:nil];
     }];
 }
-
 
 @end

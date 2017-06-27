@@ -13,6 +13,7 @@
 #import "TokenListViewController.h"
 #import "ChoseTokenPaymentViewController.h"
 #import "InformationPopUpViewController.h"
+#import "SecurityPopupViewController.h"
 
 @interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate,ChoseTokenPaymentViewControllerDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -233,6 +234,9 @@ static NSInteger withoutTokenOffset = 30;
 #pragma mark - Action
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
+    
+    [[PopUpsManager sharedInstance] showSecurityPopup:self presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+    return;
     if (self.token) {
         [self payWithToken:[self getCorrectAmountString]];
     } else {

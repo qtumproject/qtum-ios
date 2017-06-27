@@ -14,6 +14,7 @@
 #import "ErrorPopUpViewController.h"
 #import "LoaderPopUpViewController.h"
 #import "RestoreContractsPopUpViewController.h"
+#import "SecurityPopupViewController.h"
 
 @interface PopUpsManager() <PopUpViewControllerDelegate>
 
@@ -74,6 +75,11 @@
 
 - (ConfirmPopUpViewController *)createConfirmPopUp{
     ConfirmPopUpViewController *controller = [[ControllersFactory sharedInstance] createConfirmPopUpViewController];
+    return controller;
+}
+
+- (SecurityPopupViewController *)createSecurityPopUp{
+    SecurityPopupViewController *controller = [[ControllersFactory sharedInstance] createSecurityPopupViewController];
     return controller;
 }
 
@@ -186,6 +192,19 @@
     ConfirmPopUpViewController *controller = [self createConfirmPopUp];
     controller.delegate = delegate;
     [controller setContent:content];
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+}
+
+- (void)showSecurityPopup:(id<SecurityPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
+    
+    BOOL needShow = [self checkAndHideCurrentPopUp:[SecurityPopupViewController class] withContent:nil];
+    if (!needShow) {
+        return;
+    }
+    
+    SecurityPopupViewController *controller = [self createSecurityPopUp];
+    controller.delegate = delegate;
     self.currentPopUp = controller;
     [controller showFromViewController:presenter animated:YES completion:completion];
 }

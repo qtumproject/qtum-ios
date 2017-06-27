@@ -52,6 +52,7 @@
 #import "RestoreContractsPopUpViewController.h"
 #import "BackupContractsViewController.h"
 #import "EnableFingerprintViewController.h"
+#import "SecurityPopupViewController.h"
 
 @implementation ControllersFactory
 
@@ -305,6 +306,11 @@
 
 - (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController{
     RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUp"];
+    return controller;
+}
+
+- (SecurityPopupViewController *)createSecurityPopupViewController{
+    SecurityPopupViewController* controller = (SecurityPopupViewController *)[UIViewController controllerInStoryboard:@"SecurityPopup" withIdentifire:@"SecurityPopupViewController"];
     return controller;
 }
 

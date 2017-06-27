@@ -46,6 +46,7 @@
 @class RestoreContractsPopUpViewController;
 @class BackupContractsViewController;
 @class EnableFingerprintViewController;
+@class SecurityPopupViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -94,13 +95,14 @@
 -(EnableFingerprintViewController*)createEnableFingerprintViewController;
 
 // Pop ups
--(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
--(PhotoLibraryPopUpViewController*)createPhotoLibraryPopUpViewController;
--(ErrorPopUpViewController*)createErrorPopUpViewController;
--(InformationPopUpViewController*)createInformationPopUpViewController;
--(ConfirmPopUpViewController*)createConfirmPopUpViewController;
--(LoaderPopUpViewController *)createLoaderViewController;
+- (NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
+- (PhotoLibraryPopUpViewController*)createPhotoLibraryPopUpViewController;
+- (ErrorPopUpViewController*)createErrorPopUpViewController;
+- (InformationPopUpViewController*)createInformationPopUpViewController;
+- (ConfirmPopUpViewController*)createConfirmPopUpViewController;
+- (LoaderPopUpViewController *)createLoaderViewController;
 - (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
+- (SecurityPopupViewController *)createSecurityPopupViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;
