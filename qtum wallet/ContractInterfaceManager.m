@@ -30,10 +30,6 @@
 - (instancetype)initUniqueInstance {
     
     self = [super init];
-    
-    if (self != nil) {
-
-    }
     return self;
 }
 

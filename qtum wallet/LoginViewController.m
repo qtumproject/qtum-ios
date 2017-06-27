@@ -8,18 +8,22 @@
 
 #import "LoginViewController.h"
 #import "LoginCoordinator.h"
+#import "LoginViewOutputDelegate.h"
 
 @interface LoginViewController ()<CAAnimationDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForCancelButton;
 @property (assign, nonatomic) BOOL shoudKeboardDismiss;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,7 +32,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -61,6 +64,7 @@
 #pragma mark - Actions
 
 - (IBAction)actionEnterPin:(id)sender {
+    
     self.shoudKeboardDismiss = YES;
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
     if (pin.length == 4) {
@@ -81,6 +85,12 @@
 
 -(void)actionEnter:(id)sender{
     [self actionEnterPin:nil];
+}
+
+-(void)showLoginFields {
+    self.pinContainer.hidden = NO;
+    self.cancelButton.hidden = NO;
+    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)applyFailedPasswordAction{

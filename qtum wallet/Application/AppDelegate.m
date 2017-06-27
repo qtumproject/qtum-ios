@@ -65,10 +65,12 @@
     return YES;
 }
 
-
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [[PopUpsManager sharedInstance] dismissLoader];
+    [[ApplicationCoordinator sharedInstance] startSecurityFlow];
+}
 
 #pragma mark - Notifications
-
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     [[ApplicationCoordinator sharedInstance].notificationManager application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];

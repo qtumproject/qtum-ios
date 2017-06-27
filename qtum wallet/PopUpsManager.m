@@ -90,6 +90,7 @@
 #pragma mark - Public Methods
 
 - (void)showLoaderPopUp {
+    
     BOOL needShow = [self checkAndHideCurrentPopUp:[LoaderPopUpViewController class] withContent:nil];
     if (!needShow) {
         return;

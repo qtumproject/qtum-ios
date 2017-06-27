@@ -31,6 +31,10 @@
     return self;
 }
 
+-(void)dealloc {
+    
+}
+
 #pragma mark - Coordinatorable
 
 -(void)start {

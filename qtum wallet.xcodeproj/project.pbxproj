@@ -81,6 +81,7 @@
 		B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF9E1E5EE1EE006125F3 /* NSString+Extension.m */; };
 		B33EAFA21E5F20F9006125F3 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAFA11E5F20F9006125F3 /* GradientView.m */; };
 		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
+		B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */; };
 		B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */; };
 		B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3487A291E92383500BC66F1 /* HistoryTableHeaderView.xib */; };
 		B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A2C1E92392000BC66F1 /* HistoryHeaderVIew.m */; };
@@ -482,6 +483,11 @@
 		B33EAFA11E5F20F9006125F3 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinViewController.h; sourceTree = "<group>"; };
 		B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinViewController.m; sourceTree = "<group>"; };
+		B346AE1C1EFD57BC00241C61 /* ConfirmPinCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinCoordinator.h; sourceTree = "<group>"; };
+		B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinCoordinator.m; sourceTree = "<group>"; };
+		B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutput.h; sourceTree = "<group>"; };
+		B346AE201F00ECE300241C61 /* LoginViewOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutputDelegate.h; sourceTree = "<group>"; };
+		B346AE211F00EEDE00241C61 /* Presentable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presentable.h; sourceTree = "<group>"; };
 		B3487A1F1E8D2B2B00BC66F1 /* HistoryDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDataStorage.h; sourceTree = "<group>"; };
 		B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDataStorage.m; sourceTree = "<group>"; };
 		B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHeaderCell.h; sourceTree = "<group>"; };
@@ -931,6 +937,7 @@
 		B31CF7271E126E05000BCF41 /* Auth and Login */ = {
 			isa = PBXGroup;
 			children = (
+				B346AE1B1EFD579600241C61 /* Confirm Pin */,
 				B33EAF0A1E5C6CA6006125F3 /* Login Flow */,
 				B33EAF141E5C7BCB006125F3 /* Auth */,
 			);
@@ -1081,6 +1088,7 @@
 				B33EAF091E5C5E79006125F3 /* Coordinatorable.h */,
 				B3CB56AF1ECF06D200B23AE9 /* Paginationable.h */,
 				B32CCB161EF4026700383119 /* Clearable.h */,
+				B346AE211F00EEDE00241C61 /* Presentable.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1092,6 +1100,8 @@
 				B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */,
 				B33EAF111E5C70EF006125F3 /* LoginViewController.h */,
 				B33EAF121E5C70EF006125F3 /* LoginViewController.m */,
+				B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */,
+				B346AE201F00ECE300241C61 /* LoginViewOutputDelegate.h */,
 			);
 			name = "Login Flow";
 			sourceTree = "<group>";
@@ -1135,6 +1145,15 @@
 				B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */,
 			);
 			path = iMessageExtension;
+			sourceTree = "<group>";
+		};
+		B346AE1B1EFD579600241C61 /* Confirm Pin */ = {
+			isa = PBXGroup;
+			children = (
+				B346AE1C1EFD57BC00241C61 /* ConfirmPinCoordinator.h */,
+				B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */,
+			);
+			name = "Confirm Pin";
 			sourceTree = "<group>";
 		};
 		B3487A281E92380B00BC66F1 /* Header */ = {
@@ -2609,6 +2628,7 @@
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
 				B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */,
+				B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				E73D36F51ECF15D1009173BD /* BalanceTokenTableViewCell.m in Sources */,
 				B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */,

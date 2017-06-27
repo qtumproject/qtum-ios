@@ -10,7 +10,7 @@
 
 @interface BaseCoordinator ()
 
-@property (strong,nonatomic) NSMutableArray <Coordinatorable>* childCoordinators;
+@property (strong, atomic) NSMutableArray <Coordinatorable>* childCoordinators;
 
 @end
 
@@ -42,11 +42,12 @@
 -(void)removeDependency:(id <Coordinatorable>) coordinator{
     NSAssert(coordinator != nil, @"Coordinator cant be nil");
     
-    [self.childCoordinators enumerateObjectsUsingBlock:^(id <Coordinatorable>  _Nonnull coordinator, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([coordinator isEqual:coordinator]) {
-            [self.childCoordinators removeObjectAtIndex:idx];
-        }
-    }];
+    [self.childCoordinators removeObject:coordinator];
+}
+
+-(void)removeAllDependencys {
+    
+    self.childCoordinators = nil;
 }
 
 
