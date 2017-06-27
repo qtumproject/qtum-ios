@@ -232,6 +232,8 @@
 		E784F8BE1F015CE400A513BF /* QStoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8BD1F015CE400A513BF /* QStoreCollectionViewCell.m */; };
 		E784F8C21F023C1800A513BF /* QStoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C11F023C1800A513BF /* QStoreTableViewCell.m */; };
 		E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C41F023C4F00A513BF /* QStoreTableSource.m */; };
+		E784F8C71F0259AF00A513BF /* SourceCodePopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */; };
+		E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */; };
 		E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */; };
 		E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903591EDC66D0004243F0 /* BalanceTokenView.m */; };
 		E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035C1EDC674C004243F0 /* QTUMAddressTokenView.m */; };
@@ -777,6 +779,9 @@
 		E784F8C11F023C1800A513BF /* QStoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreTableViewCell.m; sourceTree = "<group>"; };
 		E784F8C31F023C4F00A513BF /* QStoreTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreTableSource.h; sourceTree = "<group>"; };
 		E784F8C41F023C4F00A513BF /* QStoreTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreTableSource.m; sourceTree = "<group>"; };
+		E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SourceCodePopUp.storyboard; sourceTree = "<group>"; };
+		E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceCodePopUpViewController.h; sourceTree = "<group>"; };
+		E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceCodePopUpViewController.m; sourceTree = "<group>"; };
 		E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TokenDetailsViews.xib; sourceTree = "<group>"; };
 		E78903581EDC66D0004243F0 /* BalanceTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTokenView.h; sourceTree = "<group>"; };
 		E78903591EDC66D0004243F0 /* BalanceTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceTokenView.m; sourceTree = "<group>"; };
@@ -1703,6 +1708,7 @@
 				E73CF6C41EE2CE8A0044DF78 /* ConfirmPopUp.storyboard */,
 				E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */,
 				E713A4821EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard */,
+				E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */,
 			);
 			name = PopUp;
 			sourceTree = "<group>";
@@ -1915,6 +1921,8 @@
 				E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */,
 				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
 				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
+				E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */,
+				E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */,
 			);
 			name = "Pop Ups";
 			sourceTree = "<group>";
@@ -2398,6 +2406,7 @@
 				E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */,
 				E7FA0CBB1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard in Resources */,
 				B3E1591B1ED5A87D00D70A87 /* OnlyDesign.storyboard in Resources */,
+				E784F8C71F0259AF00A513BF /* SourceCodePopUp.storyboard in Resources */,
 				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				E784F8B41F01556800A513BF /* QStore.storyboard in Resources */,
@@ -2661,6 +2670,7 @@
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
+				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */,

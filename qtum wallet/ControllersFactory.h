@@ -46,6 +46,7 @@
 @class RestoreContractsPopUpViewController;
 @class BackupContractsViewController;
 @class QStoreViewController;
+@class SourceCodePopUpViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -100,7 +101,8 @@
 -(InformationPopUpViewController*)createInformationPopUpViewController;
 -(ConfirmPopUpViewController*)createConfirmPopUpViewController;
 -(LoaderPopUpViewController *)createLoaderViewController;
-- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
+-(RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
+-(SourceCodePopUpViewController *)createSourceCodePopUpViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

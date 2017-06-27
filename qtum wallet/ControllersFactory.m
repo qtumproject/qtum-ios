@@ -52,6 +52,7 @@
 #import "RestoreContractsPopUpViewController.h"
 #import "BackupContractsViewController.h"
 #import "QStoreViewController.h"
+#import "SourceCodePopUpViewController.h"
 
 @implementation ControllersFactory
 
@@ -304,6 +305,11 @@
 
 - (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController{
     RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUp"];
+    return controller;
+}
+
+- (SourceCodePopUpViewController *)createSourceCodePopUpViewController{
+    SourceCodePopUpViewController* controller = (SourceCodePopUpViewController *)[UIViewController controllerInStoryboard:@"SourceCodePopUp" withIdentifire:@"SourceCodePop"];
     return controller;
 }
 

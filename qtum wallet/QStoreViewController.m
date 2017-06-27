@@ -9,8 +9,9 @@
 #import "QStoreViewController.h"
 #import "QStoreTableSource.h"
 #import "UIImage+Extension.h"
+#import "ContractFileManager.h"
 
-@interface QStoreViewController () <UISearchBarDelegate>
+@interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -51,13 +52,27 @@
 }
 
 - (IBAction)actionCategories:(id)sender {
-    NSLog(@"Categories");
+    PopUpContent *content = [PopUpContentGenerator getContentForSourceCode];
+    NSString *code = [[ContractFileManager sharedInstance] getContractWithTemplate:@"Standart"];
+    content.messageString = code;
+    
+    [[PopUpsManager sharedInstance] showSourceCodePopUp:self withContent:content presenter:self completion:nil];
 }
 
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.searchBar resignFirstResponder];
+}
+
+#pragma mark - PopUpWithTwoButtonsViewControllerDelegate
+
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender {
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 
 @end
