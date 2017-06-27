@@ -25,10 +25,16 @@
 + (void)saveIsFingerpringEnabled:(BOOL)value;
 + (BOOL)isFingerprintEnabled;
 
-+ (void)saveDeviceToken:(NSString*)lang;
++ (void)saveDeviceToken:(NSString*) token;
 + (NSString*)getDeviceToken;
 
-+ (void)savePrevDeviceToken:(NSString*)lang;
++ (void)savePrevDeviceToken:(NSString*) token;
 + (NSString*)getPrevDeviceToken;
+
++ (void)saveWalletAddressKey:(NSString*) key;
++ (NSString*)getWalletAddressKey;
+
++ (void)saveIsHaveWalletKey:(BOOL) key;
++ (BOOL)isHaveWalletKey;
 
 @end

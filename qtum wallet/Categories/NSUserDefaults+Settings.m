@@ -15,6 +15,10 @@ NSString * const kFingerpringEnabled         = @"kFingerpringEnabled";
 NSString * const kLanguageSaveKey            = @"kLanguageSaveKey";
 NSString * const kDeviceTokenKey             = @"kDeviceTokenKey";
 NSString * const kPrevDeviceTokenKey         = @"kPrevDeviceTokenKey";
+NSString * const kWalletAddressKey           = @"kWalletAddressKey";
+NSString * const kIsHaveWallet               = @"kIsHaveWallet";
+
+
 
 @implementation NSUserDefaults (Settings)
 
@@ -72,6 +76,22 @@ NSString * const kPrevDeviceTokenKey         = @"kPrevDeviceTokenKey";
 
 + (NSString*)getPrevDeviceToken {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kPrevDeviceTokenKey];
+}
+
++ (void)saveWalletAddressKey:(NSString*) key {
+    [[NSUserDefaults standardUserDefaults] setObject:key forKey:kWalletAddressKey];
+}
+
++ (NSString*)getWalletAddressKey {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kWalletAddressKey];
+}
+
++ (void)saveIsHaveWalletKey:(BOOL) key {
+    [[NSUserDefaults standardUserDefaults] setBool:key forKey:kIsHaveWallet];
+    
+}
++ (BOOL)isHaveWalletKey {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kIsHaveWallet];
 }
 
 

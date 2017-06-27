@@ -19,6 +19,7 @@
 #import "LanguageCoordinator.h"
 #import "ProfileViewController.h"
 #import "TemplateManager.h"
+#import "NSUserDefaults+Settings.h"
 
 
 @interface ApplicationCoordinator ()
