@@ -256,6 +256,11 @@
 		E7B7586C1EF12D67004AF200 /* SplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7586B1EF12D67004AF200 /* SplashController.m */; };
 		E7B758711EF139F7004AF200 /* WatchWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758701EF139F7004AF200 /* WatchWallet.m */; };
 		E7B758741EF13A89004AF200 /* WatchHistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758731EF13A89004AF200 /* WatchHistoryElement.m */; };
+		E7CE63621F027EC200C147B9 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63611F027EC200C147B9 /* CustomSearchBar.m */; };
+		E7CE63651F028C0600C147B9 /* SelectSearchTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */; };
+		E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */; };
+		E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE636A1F029EEF00C147B9 /* QStoreSearchTableViewCell.m */; };
+		E7CE636D1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE636B1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib */; };
 		E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D241D81DE6D6B1003E507B /* QRCodeManager.m */; };
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
 		E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */; };
@@ -813,6 +818,14 @@
 		E7B758701EF139F7004AF200 /* WatchWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchWallet.m; sourceTree = "<group>"; };
 		E7B758721EF13A89004AF200 /* WatchHistoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchHistoryElement.h; sourceTree = "<group>"; };
 		E7B758731EF13A89004AF200 /* WatchHistoryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchHistoryElement.m; sourceTree = "<group>"; };
+		E7CE63601F027EC200C147B9 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
+		E7CE63611F027EC200C147B9 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
+		E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSearchTypeView.xib; sourceTree = "<group>"; };
+		E7CE63661F028E8F00C147B9 /* SelectSearchTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSearchTypeView.h; sourceTree = "<group>"; };
+		E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSearchTypeView.m; sourceTree = "<group>"; };
+		E7CE63691F029EEF00C147B9 /* QStoreSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreSearchTableViewCell.h; sourceTree = "<group>"; };
+		E7CE636A1F029EEF00C147B9 /* QStoreSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreSearchTableViewCell.m; sourceTree = "<group>"; };
+		E7CE636B1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QStoreSearchTableViewCell.xib; sourceTree = "<group>"; };
 		E7D241D71DE6D6B1003E507B /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
 		E7D241D81DE6D6B1003E507B /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
 		E7DD00E81DC9BF9D00FD5335 /* TransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionManager.h; sourceTree = "<group>"; };
@@ -1735,6 +1748,7 @@
 		E784F8B51F015B5500A513BF /* QStore */ = {
 			isa = PBXGroup;
 			children = (
+				E7CE63631F0289ED00C147B9 /* Views */,
 				E784F8BF1F015CE700A513BF /* CollectionVIew */,
 				E784F8B61F015B7100A513BF /* QStoreViewController.h */,
 				E784F8B71F015B7100A513BF /* QStoreViewController.m */,
@@ -1821,6 +1835,19 @@
 				E7B758731EF13A89004AF200 /* WatchHistoryElement.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E7CE63631F0289ED00C147B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */,
+				E7CE63661F028E8F00C147B9 /* SelectSearchTypeView.h */,
+				E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */,
+				E7CE63691F029EEF00C147B9 /* QStoreSearchTableViewCell.h */,
+				E7CE636A1F029EEF00C147B9 /* QStoreSearchTableViewCell.m */,
+				E7CE636B1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		E7D241D61DE6D697003E507B /* QRCode */ = {
@@ -2092,6 +2119,8 @@
 				E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */,
 				E71271901EE9925600A130A0 /* SpinnerView.h */,
 				E71271911EE9925600A130A0 /* SpinnerView.m */,
+				E7CE63601F027EC200C147B9 /* CustomSearchBar.h */,
+				E7CE63611F027EC200C147B9 /* CustomSearchBar.m */,
 			);
 			name = "Shared Views";
 			path = Views;
@@ -2398,6 +2427,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7CE63651F028C0600C147B9 /* SelectSearchTypeView.xib in Resources */,
 				E73CF6C31EE2CD370044DF78 /* InformationPopUp.storyboard in Resources */,
 				B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
@@ -2418,6 +2448,7 @@
 				B32EEC661EB3545700512FED /* Send.storyboard in Resources */,
 				B32EEC7A1EB3549300512FED /* Pin.storyboard in Resources */,
 				E73CF6C51EE2CE8A0044DF78 /* ConfirmPopUp.storyboard in Resources */,
+				E7CE636D1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib in Resources */,
 				E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */,
 				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
 				B3F76A941EDDB81600108DE9 /* Contracts in Resources */,
@@ -2577,6 +2608,7 @@
 				E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */,
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
 				B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */,
+				E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
 				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
@@ -2660,6 +2692,7 @@
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
 				B385B5A51E6D829C003BB96C /* WalletHistoryDelegateDataSource.m in Sources */,
 				B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */,
+				E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */,
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
@@ -2710,6 +2743,7 @@
 				E730AB881EE6ACCA00132711 /* iOSSessionManager.m in Sources */,
 				E7FA0CB91ECD914200702C4E /* PopUpsManager.m in Sources */,
 				E73CF6D71EE2F0D90044DF78 /* NSError+NoInternet.m in Sources */,
+				E7CE63621F027EC200C147B9 /* CustomSearchBar.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
 				B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */,
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,

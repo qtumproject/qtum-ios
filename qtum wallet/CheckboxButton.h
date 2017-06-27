@@ -15,6 +15,7 @@
 - (void)setTitle:(NSString *)value;
 - (void)setCheck:(BOOL)value;
 - (BOOL)isChecked;
+- (void)setSquareBackroundColor:(UIColor *)color;
 
 @property (nonatomic, weak) id<CheckboxButtonDelegate> delegate;
 

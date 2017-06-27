@@ -8,15 +8,19 @@
 
 #import "QStoreViewController.h"
 #import "QStoreTableSource.h"
-#import "UIImage+Extension.h"
 #import "ContractFileManager.h"
+#import "CustomSearchBar.h"
+#import "SelectSearchTypeView.h"
 
-@interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate>
+@interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate, SelectSearchTypeViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet CustomSearchBar *searchBar;
 
 @property (nonatomic) QStoreTableSource *source;
+@property (nonatomic) SelectSearchTypeView *selectSearchType;
+@property (nonatomic) UIView *containerForSearchElements;
+@property (nonatomic) NSLayoutConstraint *bottomConstraintForContainer;
 
 @end
 
@@ -29,19 +33,94 @@
     self.tableView.delegate = self.source;
     self.tableView.dataSource = self.source;
     [self.tableView setDecelerationRate:0.8f];
-//    UIScrollViewDecelerationRateFast
-    [self configSearchBar];
-}
-
--(void)configSearchBar{
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(8,0, self.view.frame.size.width - 16, 28)];
-    view.backgroundColor = customBlackColor();
-    UIImage *img = [UIImage changeViewToImage:view];
-    [self.searchBar setSearchFieldBackgroundImage:img forState:UIControlStateNormal];
-    [self.searchBar setImage:[UIImage imageNamed: @"Icon-search"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
     
     self.searchBar.delegate = self;
+    
+    [self createContainer];
+    [self createSelectSearchView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)createContainer {
+    self.containerForSearchElements = [UIView new];
+    self.containerForSearchElements.translatesAutoresizingMaskIntoConstraints = NO;
+    self.containerForSearchElements.backgroundColor = customBlackColor();
+    self.containerForSearchElements.alpha = 0.0f;
+    
+    [self.view addSubview:self.containerForSearchElements];
+    
+    NSDictionary *views = @{@"containerForSearchElements" : self.containerForSearchElements, @"search" : self.searchBar};
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[search]-0-[containerForSearchElements]" options:0 metrics:nil views:views];
+    NSArray *horisontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[containerForSearchElements]-0-|" options:0 metrics:nil views:views];
+    self.bottomConstraintForContainer = [NSLayoutConstraint constraintWithItem:self.containerForSearchElements attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+    
+    [self.view addConstraint:self.bottomConstraintForContainer];
+    [self.view addConstraints:horisontalConstraints];
+    [self.view addConstraints:verticalConstraints];
+}
+
+- (void)createSelectSearchView {
+    self.selectSearchType = [[[NSBundle mainBundle] loadNibNamed:@"SelectSearchTypeView" owner:self options:nil] firstObject];
+    self.selectSearchType.alpha = 1.0f;
+    self.selectSearchType.translatesAutoresizingMaskIntoConstraints = NO;
+    self.selectSearchType.delegate = self;
+    
+    [self.containerForSearchElements addSubview:self.selectSearchType];
+    
+    NSDictionary *views = @{@"selectSearchType" : self.selectSearchType};
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[selectSearchType(28)]" options:0 metrics:nil views:views];
+    NSArray *horisontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[selectSearchType]-0-|" options:0 metrics:nil views:views];
+    
+    [self.containerForSearchElements addConstraints:horisontalConstraints];
+    [self.containerForSearchElements addConstraints:verticalConstraints];
+}
+
+#pragma mark - Notifications
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGFloat duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    
+    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    CGFloat tapBarHeight = 0.0f;
+    if ([vc isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tapBarVC = (UITabBarController *)vc;
+        tapBarHeight = tapBarVC.tabBar.frame.size.height;
+    }
+    
+    self.bottomConstraintForContainer.constant = kbSize.height - tapBarHeight;
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.containerForSearchElements.alpha = 1.0f;
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    CGFloat duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.containerForSearchElements.alpha = 0.0f;
+    }];
+}
+
+#pragma mark - Actions
 
 - (IBAction)actionBack:(id)sender {
     [self.delegate didPressedBack];
@@ -59,9 +138,28 @@
     [[PopUpsManager sharedInstance] showSourceCodePopUp:self withContent:content presenter:self completion:nil];
 }
 
+#pragma mark - SelectSearchTypeViewDelegate
+
+- (void)selectIndexChanged:(NSInteger)index {
+    NSLog(@"Current index : %ld", (long)index);
+}
+
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [self.searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    [self.searchBar setShowsCancelButton:NO animated:YES];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [self.searchBar setText:@""];
     [self.searchBar resignFirstResponder];
 }
 
