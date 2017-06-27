@@ -12,5 +12,6 @@ target 'qtum wallet' do
 	pod 'Fabric'
 	pod 'Crashlytics'
 	pod 'Firebase/Core'
+	pod 'Firebase/Messaging'
 end
 
