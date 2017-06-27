@@ -47,7 +47,7 @@
 }
 
 -(void)resetToRootAnimated:(BOOL)animated {
-    
+
     FirstAuthViewController* controller = (FirstAuthViewController*)[[ControllersFactory sharedInstance] createFirstAuthController];
     controller.delegate = self;
     animated ? [self.navigationController popToRootViewControllerAnimated:YES] : [self.navigationController setViewControllers:@[controller]];
@@ -108,7 +108,8 @@
     [self gotoRepeatePin];
 }
 
--(void)didEnteredSecondTimePass:(NSString*)pass{
+-(void)didEnteredSecondTimePass:(NSString*)pass {
+    
     __weak __typeof(self)weakSelf = self;
     if ([self.walletPin isEqualToString:pass] && !self.isWalletExported) {
         [weakSelf.repeatePinController startCreateWallet];

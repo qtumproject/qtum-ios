@@ -8,6 +8,7 @@
 
 #import "Wallet.h"
 #import "HistoryDataStorage.h"
+#import "NSUserDefaults+Settings.h"
 
 NSInteger const WORDS_COUNT = 12;
 NSInteger const USERS_KEYS_COUNT = 100;
@@ -111,11 +112,9 @@ NSInteger const USERS_KEYS_COUNT = 100;
     }
 }
 
-static NSString* adressKey = @"adress";
-
 -(void)storeLastAdreesKey:(BTCKey*) btcKey{
     NSString* keyString = [AppSettings sharedInstance].isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
-    [[[ApplicationCoordinator sharedInstance] defaults] setObject:keyString forKey:adressKey];
+    [NSUserDefaults saveWalletAddressKey:keyString];
 }
 
 - (BTCKey *)getKeyAtIndex:(NSUInteger)index;

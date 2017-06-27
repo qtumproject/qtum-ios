@@ -127,7 +127,7 @@ static NSString* kAddresses = @"kAddress";
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
     NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
-    Contract* token = filteredArray[0];
+    Contract* token = filteredArray.count ? filteredArray[0] : nil;
     if (token) {
         token.balance = [balance floatValue];
         [self tokenDidChange:token];
@@ -138,7 +138,7 @@ static NSString* kAddresses = @"kAddress";
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
     NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
-    Contract* token = filteredArray[0];
+    Contract* token = filteredArray.count ? filteredArray[0] : nil;
     if (token) {
         NSMutableDictionary* newAddressBalance = token.addressBalanceDictionary ? [token.addressBalanceDictionary mutableCopy] : @{}.mutableCopy;
         for (NSDictionary* dict in addressBalance[@"balances"]) {
