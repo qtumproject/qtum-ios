@@ -74,7 +74,7 @@
     
     NSString* prevToken = [NSUserDefaults getDeviceToken];
     [NSUserDefaults saveDeviceToken:deviceTokenString];
-    [NSUserDefaults savePrevDeviceToken:prevToken];
+    [NSUserDefaults savePrevDeviceToken:([prevToken isEqualToString:deviceTokenString]) ? @"" : prevToken];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

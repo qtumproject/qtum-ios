@@ -70,12 +70,13 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     [_requestQueue addOperationWithBlock:block];
 }
 
--(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler{
+-(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler {
+    
     NSString* token  = [[ApplicationCoordinator sharedInstance].notificationManager getToken];
     NSString* prevToken  = [[ApplicationCoordinator sharedInstance].notificationManager getPrevToken];
 
     [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses, @{@"notificationToken" : token,
-                                                                                   @"prevToken" : prevToken,
+                                                                                   @"prevToken" : prevToken ? prevToken : [NSNull null],
                                                                                    @"language" : @"en"}]];
 }
 

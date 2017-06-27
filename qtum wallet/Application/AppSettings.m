@@ -53,6 +53,7 @@
     [PopUpsManager sharedInstance];
     [self setupFabric];
     [self setupFingerpring];
+    [self setupFirebase];
 }
 
 -(void)setupFabric{
