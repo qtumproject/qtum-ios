@@ -244,7 +244,8 @@
     self.router = controller;
 }
 
--(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion{
+-(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion {
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
     CreatePinRootController* createPinRoot = [[CreatePinRootController alloc]initWithRootViewController:viewController];
@@ -257,19 +258,19 @@
 
 #pragma iMessage Methods
 
--(void)storeAuthorizedFlag:(BOOL)flag andMainAddress:(NSString *)address{
+-(void)storeAuthorizedFlag:(BOOL)flag andMainAddress:(NSString *)address {
 
     [NSUserDefaults saveIsHaveWalletKey:flag ? @"YES" : @"NO" ];
     [NSUserDefaults saveWalletAddressKey:address];
 }
 
 
--(void)launchFromUrl:(NSURL*)url{
+-(void)launchFromUrl:(NSURL*)url {
     [self pareceUrl:url];
     [self start];
 }
 
--(void)pareceUrl:(NSURL*)url{
+-(void)pareceUrl:(NSURL*)url {
     NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
                                                 resolvingAgainstBaseURL:NO];
     NSArray *queryItems = urlComponents.queryItems;

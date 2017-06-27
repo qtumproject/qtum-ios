@@ -9,6 +9,12 @@
 #import "NotificationManager.h"
 #import <UserNotifications/UserNotifications.h>
 #import "NSUserDefaults+Settings.h"
+@import Firebase;
+@import FirebaseMessaging;
+@import UserNotifications;
+@import FirebaseInstanceID;
+
+
 
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -19,8 +25,8 @@
 
 @implementation NotificationManager
 
-- (void)registerForRemoutNotifications
-{
+- (void)registerForRemoutNotifications {
+    
     if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         center.delegate = self;
@@ -33,6 +39,9 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
     }
+    
+    [FIRApp configure];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:) name:kFIRInstanceIDTokenRefreshNotification object:nil];
 }
 
 
@@ -47,7 +56,6 @@
 - (NSString*)getPrevToken {
     return [NSUserDefaults getPrevDeviceToken];
 }
-
 
 #pragma mark - UNUserNotificationCenterDelegate
 
@@ -67,40 +75,46 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
     
-    NSString * deviceTokenString = [[[[deviceToken description]
-                                      stringByReplacingOccurrencesOfString: @"<" withString: @""]
-                                     stringByReplacingOccurrencesOfString: @">" withString: @""]
-                                    stringByReplacingOccurrencesOfString: @" " withString: @""];
-    
-    NSString* prevToken = [NSUserDefaults getDeviceToken];
-    [NSUserDefaults saveDeviceToken:deviceTokenString];
-    [NSUserDefaults savePrevDeviceToken:([prevToken isEqualToString:deviceTokenString]) ? @"" : prevToken];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[FIRInstanceID instanceID] setAPNSToken:deviceToken type:FIRInstanceIDAPNSTokenTypeProd];
+    [self storeDeviceToken];
 }
 
-
--(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+- (void)registerForPushNotifications {
     
-}
-
-- (void)registerForPushNotifications
-{
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
     NSLog(@"PUSH NOTIFICATION : %@", userInfo);
-//    if (application.applicationState == UIApplicationStateActive) {
-//        [[TCAPushNotificationManager sharedInstance] showPushNotificationWithUserInfo:userInfo];
-//    }else{
-//        [[TCAPushNotificationManager sharedInstance] pushVCByUserInfo:userInfo];
-//    }
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"didFailToRegisterForRemoteNotificationsWithError : %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
+}
+
+#pragma mark - Private Methods
+
+-(void)storeDeviceToken{
+    
+    NSString* token = [[FIRInstanceID instanceID] token];
+    NSString* prevToken = [NSUserDefaults getDeviceToken];
+    [NSUserDefaults saveDeviceToken:token];
+    [NSUserDefaults savePrevDeviceToken:([prevToken isEqualToString:token]) ? @"" : prevToken];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)createLocalNotificationWithString:(NSString*) text andIdentifire:(NSString*)identifire {
     
-    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")) {
+        
         UNMutableNotificationContent* content = [UNMutableNotificationContent new];
         content.title = @"Local Notification";
         content.subtitle = @"QTUM";
@@ -108,8 +122,7 @@
         
         UNTimeIntervalNotificationTrigger* triger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
         UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:identifire content:content trigger:triger];
-        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-        }];
+        [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
     } else {
         UILocalNotification* notification = [UILocalNotification new];
         notification.alertBody = text;
@@ -117,6 +130,32 @@
         notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     }
+}
+
+- (void)tokenRefreshNotification:(NSNotification *)notification {
+    
+    [self connectToFcm];
+}
+
+- (void)connectToFcm {
+    
+    __weak __typeof(self)weakSelf = self;
+    [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Unable to connect to FCM. %@", error);
+        } else {
+            
+            //NSLog(@"InstanceID_connectToFcm = %@", InstanceID);
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf storeDeviceToken];
+                    [[WalletManager sharedInstance] startObservingForAllSpendable];
+                    [[ContractManager sharedInstance] startObservingForAllSpendable];
+                });
+            });
+        }
+    }];
 }
 
 
