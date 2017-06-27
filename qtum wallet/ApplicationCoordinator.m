@@ -300,19 +300,19 @@
 
 #pragma iMessage Methods
 
--(void)storeAuthorizedFlag:(BOOL)flag andMainAddress:(NSString *)address{
+-(void)storeAuthorizedFlag:(BOOL)flag andMainAddress:(NSString *)address {
 
     [NSUserDefaults saveIsHaveWalletKey:flag ? @"YES" : @"NO" ];
     [NSUserDefaults saveWalletAddressKey:address];
 }
 
--(void)launchFromUrl:(NSURL*)url{
+-(void)launchFromUrl:(NSURL*)url {
     [self pareceUrl:url];
     [self start];
 }
 
 -(void)pareceUrl:(NSURL*)url {
-    
+
     NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
                                                 resolvingAgainstBaseURL:NO];
     NSArray *queryItems = urlComponents.queryItems;

@@ -12,8 +12,6 @@
 #import <Crashlytics/Crashlytics.h>
 #import "LanguageManager.h"
 #import <LocalAuthentication/LocalAuthentication.h>
-@import Firebase;
-
 
 @interface AppSettings ()
 
@@ -53,15 +51,10 @@
     [PopUpsManager sharedInstance];
     [self setupFabric];
     [self setupFingerpring];
-    [self setupFirebase];
 }
 
 -(void)setupFabric{
     [Fabric with:@[[Crashlytics class]]];
-}
-
--(void)setupFirebase {
-    [FIRApp configure];
 }
 
 -(void)setupFingerpring {

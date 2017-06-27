@@ -75,9 +75,9 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     NSString* token  = [[ApplicationCoordinator sharedInstance].notificationManager getToken];
     NSString* prevToken  = [[ApplicationCoordinator sharedInstance].notificationManager getPrevToken];
 
-    [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses, @{@"notificationToken" : token,
-                                                                                   @"prevToken" : prevToken ? prevToken : [NSNull null],
-                                                                                   @"language" : @"en"}]];
+    [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses, @{@"notificationToken" : token ?: [NSNull null],
+                                                                                   @"prevToken" : prevToken ?: [NSNull null],
+                                                                                   @"language" : [LanguageManager currentLanguageCode]}]];
 }
 
 -(void)subscribeToEvents {
@@ -102,8 +102,8 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 
 -(void)stoptWithHandler:(void(^)()) handler {
     NSString* token  = [[ApplicationCoordinator sharedInstance].notificationManager getToken];
-    [self.currentSocket emit:@"unsubscribe" with:@[@"balance_subscribe",[NSNull null], @{@"notificationToken" : token}]];
-    [self.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",[NSNull null], @{@"notificationToken" : token}]];
+    [self.currentSocket emit:@"unsubscribe" with:@[@"balance_subscribe",[NSNull null], @{@"notificationToken" : token ?: [NSNull null]}]];
+    [self.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",[NSNull null], @{@"notificationToken" : token ?: [NSNull null]}]];
 
     [self.currentSocket disconnect];
 }
@@ -115,9 +115,9 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     NSString* prevToken  = [[ApplicationCoordinator sharedInstance].notificationManager getPrevToken];
     dispatch_block_t block = ^{
         if (weakToken) {
-            [weakSelf.currentSocket emit:@"subscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken,
-                                                                                                                                                                                                                         @"prevToken" : prevToken,
-                                                                                                                                                                                                                         @"language" : @"en"}]];
+            [weakSelf.currentSocket emit:@"subscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null],
+                                                                                                                                                                                                                         @"prevToken" : prevToken ?: [NSNull null],
+                                                                                                                                                                                                                         @"language" : [LanguageManager currentLanguageCode]}]];
         }
     };
     [_requestQueue addOperationWithBlock:block];
@@ -128,7 +128,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     __weak __typeof(Contract*)weakToken = token;
     dispatch_block_t block = ^{
         if (weakToken) {
-            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys]}, @{@"notificationToken" : token}]];
+            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys]}, @{@"notificationToken" : token ?: [NSNull null]}]];
         }
     };
     [_requestQueue addOperationWithBlock:block];
