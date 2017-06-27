@@ -230,6 +230,8 @@
 		E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8B71F015B7100A513BF /* QStoreViewController.m */; };
 		E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8BA1F015C4C00A513BF /* QStoreCollectionViewSource.m */; };
 		E784F8BE1F015CE400A513BF /* QStoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8BD1F015CE400A513BF /* QStoreCollectionViewCell.m */; };
+		E784F8C21F023C1800A513BF /* QStoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C11F023C1800A513BF /* QStoreTableViewCell.m */; };
+		E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C41F023C4F00A513BF /* QStoreTableSource.m */; };
 		E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */; };
 		E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903591EDC66D0004243F0 /* BalanceTokenView.m */; };
 		E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035C1EDC674C004243F0 /* QTUMAddressTokenView.m */; };
@@ -771,6 +773,10 @@
 		E784F8BA1F015C4C00A513BF /* QStoreCollectionViewSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreCollectionViewSource.m; sourceTree = "<group>"; };
 		E784F8BC1F015CE400A513BF /* QStoreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreCollectionViewCell.h; sourceTree = "<group>"; };
 		E784F8BD1F015CE400A513BF /* QStoreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreCollectionViewCell.m; sourceTree = "<group>"; };
+		E784F8C01F023C1800A513BF /* QStoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreTableViewCell.h; sourceTree = "<group>"; };
+		E784F8C11F023C1800A513BF /* QStoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreTableViewCell.m; sourceTree = "<group>"; };
+		E784F8C31F023C4F00A513BF /* QStoreTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreTableSource.h; sourceTree = "<group>"; };
+		E784F8C41F023C4F00A513BF /* QStoreTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreTableSource.m; sourceTree = "<group>"; };
 		E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TokenDetailsViews.xib; sourceTree = "<group>"; };
 		E78903581EDC66D0004243F0 /* BalanceTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTokenView.h; sourceTree = "<group>"; };
 		E78903591EDC66D0004243F0 /* BalanceTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceTokenView.m; sourceTree = "<group>"; };
@@ -1733,10 +1739,14 @@
 		E784F8BF1F015CE700A513BF /* CollectionVIew */ = {
 			isa = PBXGroup;
 			children = (
+				E784F8C31F023C4F00A513BF /* QStoreTableSource.h */,
+				E784F8C41F023C4F00A513BF /* QStoreTableSource.m */,
 				E784F8B91F015C4C00A513BF /* QStoreCollectionViewSource.h */,
 				E784F8BA1F015C4C00A513BF /* QStoreCollectionViewSource.m */,
 				E784F8BC1F015CE400A513BF /* QStoreCollectionViewCell.h */,
 				E784F8BD1F015CE400A513BF /* QStoreCollectionViewCell.m */,
+				E784F8C01F023C1800A513BF /* QStoreTableViewCell.h */,
+				E784F8C11F023C1800A513BF /* QStoreTableViewCell.m */,
 			);
 			name = CollectionVIew;
 			sourceTree = "<group>";
@@ -2622,6 +2632,7 @@
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				E73D36FB1ECF161E009173BD /* NubersTokenTableViewCell.m in Sources */,
+				E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */,
 				E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */,
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
@@ -2729,6 +2740,7 @@
 				B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */,
 				B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */,
 				E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */,
+				E784F8C21F023C1800A513BF /* QStoreTableViewCell.m in Sources */,
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,
 				B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */,
 			);

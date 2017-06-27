@@ -12,17 +12,15 @@
 @implementation QStoreCollectionViewSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return 25;
+    return 26;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     QStoreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QStoreCollectionViewCell" forIndexPath:indexPath];
-    
-    
     
     return cell;
 }
+
+
 
 @end
