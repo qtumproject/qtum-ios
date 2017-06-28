@@ -10,12 +10,18 @@
 #import "QStoreTableSource.h"
 #import "QStoreTableViewCell.h"
 
+@interface QStoreTableSource() <QStoreCollectionViewSourceDelegate>
+
+@end
+
 @implementation QStoreTableSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QStoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[QStoreTableViewCell getIdentifier]];
     
-    [cell setCollectionViewSource:[QStoreCollectionViewSource new]];
+    QStoreCollectionViewSource *source = [QStoreCollectionViewSource new];
+    [cell setCollectionViewSource:source];
+    source.delegate = self;
     
     return cell;
 }
@@ -24,22 +30,20 @@
     return 10;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    UITableViewCell *header = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
-//    
-//    return header;
-//}
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 33;
-//}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return [QStoreTableViewCell getHeightCellForRowCount:2];
     }
     
     return [QStoreTableViewCell getHeightCellForRowCount:1];
+}
+
+#pragma mark - QStoreCollectionViewSourceDelegate
+
+- (void)didSelectCollectionCell {
+    if ([self.delegate respondsToSelector:@selector(didSelectCollectionCell)]) {
+        [self.delegate didSelectCollectionCell];
+    }
 }
 
 @end

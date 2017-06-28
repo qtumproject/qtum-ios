@@ -23,6 +23,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(didSelectSearchCell)]) {
+        [self.delegate didSelectSearchCell];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{

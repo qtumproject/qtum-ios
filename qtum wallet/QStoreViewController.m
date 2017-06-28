@@ -8,12 +8,11 @@
 
 #import "QStoreViewController.h"
 #import "QStoreTableSource.h"
-#import "ContractFileManager.h"
 #import "CustomSearchBar.h"
 #import "SelectSearchTypeView.h"
 #import "QStoreSearchTableSource.h"
 
-@interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate, SelectSearchTypeViewDelegate>
+@interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate, SelectSearchTypeViewDelegate, QStoreTableSourceDelegate, QStoreSearchTableSourceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet CustomSearchBar *searchBar;
@@ -33,6 +32,7 @@
     [super viewDidLoad];
     
     self.source = [QStoreTableSource new];
+    self.source.delegate = self;
     self.tableView.delegate = self.source;
     self.tableView.dataSource = self.source;
     [self.tableView setDecelerationRate:0.8f];
@@ -42,6 +42,10 @@
     [self createContainer];
     [self createSelectSearchView];
     [self createSearchTableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -52,6 +56,12 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -96,6 +106,7 @@
 
 - (void)createSearchTableView {
     self.searchSource = [QStoreSearchTableSource new];
+    self.searchSource.delegate = self;
     
     self.searchTableView = [UITableView new];
     self.searchTableView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -155,15 +166,11 @@
 }
 
 - (IBAction)actionAdd:(id)sender {
-    NSLog(@"Add");
+    
 }
 
 - (IBAction)actionCategories:(id)sender {
-    PopUpContent *content = [PopUpContentGenerator getContentForSourceCode];
-    NSString *code = [[ContractFileManager sharedInstance] getContractWithTemplate:@"Standart"];
-    content.messageString = code;
-    
-    [[PopUpsManager sharedInstance] showSourceCodePopUp:self withContent:content presenter:self completion:nil];
+    [self.delegate didSelectQStoreCategories];
 }
 
 #pragma mark - SelectSearchTypeViewDelegate
@@ -199,6 +206,18 @@
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
+
+#pragma mark - QStoreTableSourceDelegate
+
+- (void)didSelectCollectionCell {
+    [self.delegate didSelectQStoreContract];
+}
+
+#pragma mark - QStoreSearchTableSourceDelegate
+
+- (void)didSelectSearchCell {
+    [self.delegate didSelectQStoreContract];
 }
 
 @end

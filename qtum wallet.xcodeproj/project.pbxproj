@@ -162,6 +162,12 @@
 		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
 		B3F76A941EDDB81600108DE9 /* Contracts in Resources */ = {isa = PBXBuildFile; fileRef = B3F76A931EDDB81600108DE9 /* Contracts */; };
 		E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */; };
+		E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E703530E1F03AC41004ECCC9 /* QStoreListViewController.m */; };
+		E70353121F03AC59004ECCC9 /* QStoreListTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353111F03AC59004ECCC9 /* QStoreListTableSource.m */; };
+		E70353151F03AC6D004ECCC9 /* QStoreListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353141F03AC6D004ECCC9 /* QStoreListTableViewCell.m */; };
+		E70353191F03C30E004ECCC9 /* QStoreContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353181F03C30E004ECCC9 /* QStoreContractViewController.m */; };
+		E703531B1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E703531A1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard */; };
+		E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E703531D1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E71271921EE9925600A130A0 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E71271911EE9925600A130A0 /* SpinnerView.m */; };
 		E71271941EE9AC5B00A130A0 /* LoaderPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */; };
@@ -659,6 +665,17 @@
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		E70353081F039297004ECCC9 /* QStoreSearchTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreSearchTableSource.h; sourceTree = "<group>"; };
 		E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreSearchTableSource.m; sourceTree = "<group>"; };
+		E703530D1F03AC41004ECCC9 /* QStoreListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreListViewController.h; sourceTree = "<group>"; };
+		E703530E1F03AC41004ECCC9 /* QStoreListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreListViewController.m; sourceTree = "<group>"; };
+		E70353101F03AC59004ECCC9 /* QStoreListTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreListTableSource.h; sourceTree = "<group>"; };
+		E70353111F03AC59004ECCC9 /* QStoreListTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreListTableSource.m; sourceTree = "<group>"; };
+		E70353131F03AC6D004ECCC9 /* QStoreListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreListTableViewCell.h; sourceTree = "<group>"; };
+		E70353141F03AC6D004ECCC9 /* QStoreListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreListTableViewCell.m; sourceTree = "<group>"; };
+		E70353171F03C30E004ECCC9 /* QStoreContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractViewController.h; sourceTree = "<group>"; };
+		E70353181F03C30E004ECCC9 /* QStoreContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreContractViewController.m; sourceTree = "<group>"; };
+		E703531A1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConfirmPurchasePopUp.storyboard; sourceTree = "<group>"; };
+		E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPurchasePopUpViewController.h; sourceTree = "<group>"; };
+		E703531D1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPurchasePopUpViewController.m; sourceTree = "<group>"; };
 		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
 		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RecieveViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E71271901EE9925600A130A0 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
@@ -1473,6 +1490,39 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		E703530B1F03ABBC004ECCC9 /* ListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E703530D1F03AC41004ECCC9 /* QStoreListViewController.h */,
+				E703530E1F03AC41004ECCC9 /* QStoreListViewController.m */,
+				E70353101F03AC59004ECCC9 /* QStoreListTableSource.h */,
+				E70353111F03AC59004ECCC9 /* QStoreListTableSource.m */,
+				E70353131F03AC6D004ECCC9 /* QStoreListTableViewCell.h */,
+				E70353141F03AC6D004ECCC9 /* QStoreListTableViewCell.m */,
+			);
+			name = ListScreen;
+			sourceTree = "<group>";
+		};
+		E703530C1F03ABBF004ECCC9 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E70353071F039262004ECCC9 /* Search */,
+				E784F8BF1F015CE700A513BF /* CollectionVIew */,
+				E784F8B61F015B7100A513BF /* QStoreViewController.h */,
+				E784F8B71F015B7100A513BF /* QStoreViewController.m */,
+			);
+			name = MainScreen;
+			sourceTree = "<group>";
+		};
+		E70353161F03C2F4004ECCC9 /* ContractScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E70353171F03C30E004ECCC9 /* QStoreContractViewController.h */,
+				E70353181F03C30E004ECCC9 /* QStoreContractViewController.m */,
+			);
+			name = ContractScreen;
+			sourceTree = "<group>";
+		};
 		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
 			isa = PBXGroup;
 			children = (
@@ -1740,6 +1790,7 @@
 				E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */,
 				E713A4821EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard */,
 				E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */,
+				E703531A1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard */,
 			);
 			name = PopUp;
 			sourceTree = "<group>";
@@ -1766,10 +1817,9 @@
 		E784F8B51F015B5500A513BF /* QStore */ = {
 			isa = PBXGroup;
 			children = (
-				E70353071F039262004ECCC9 /* Search */,
-				E784F8BF1F015CE700A513BF /* CollectionVIew */,
-				E784F8B61F015B7100A513BF /* QStoreViewController.h */,
-				E784F8B71F015B7100A513BF /* QStoreViewController.m */,
+				E70353161F03C2F4004ECCC9 /* ContractScreen */,
+				E703530C1F03ABBF004ECCC9 /* MainScreen */,
+				E703530B1F03ABBC004ECCC9 /* ListScreen */,
 			);
 			name = QStore;
 			sourceTree = "<group>";
@@ -1955,6 +2005,8 @@
 				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
 				E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */,
 				E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */,
+				E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */,
+				E703531D1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m */,
 			);
 			name = "Pop Ups";
 			sourceTree = "<group>";
@@ -2467,6 +2519,7 @@
 				E713A47B1EEE966100A2FA40 /* CheckButton.xib in Resources */,
 				B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
+				E703531B1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard in Resources */,
 				B32EEC6B1EB3546800512FED /* News.storyboard in Resources */,
 				B32EEC7F1EB3549F00512FED /* Start.storyboard in Resources */,
 				E713A4831EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard in Resources */,
@@ -2614,6 +2667,7 @@
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
 				B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */,
 				E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */,
+				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
 				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
@@ -2628,6 +2682,7 @@
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
 				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
 				B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */,
+				E70353151F03AC6D004ECCC9 /* QStoreListTableViewCell.m in Sources */,
 				B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */,
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
 				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
@@ -2651,6 +2706,7 @@
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
+				E70353121F03AC59004ECCC9 /* QStoreListTableSource.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
 				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,
 				B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */,
@@ -2661,6 +2717,7 @@
 				B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */,
 				B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */,
 				E713A4861EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m in Sources */,
+				E70353191F03C30E004ECCC9 /* QStoreContractViewController.m in Sources */,
 				E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				B32B32DD1ECCC2C70081260A /* ContractFileManager.m in Sources */,
@@ -2773,6 +2830,7 @@
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
 				B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */,
+				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,
 				B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */,
 				B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */,
 				B3827DE41ECF5E8D00E500DE /* TokenFunctionCell.m in Sources */,

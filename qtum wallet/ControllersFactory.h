@@ -47,6 +47,9 @@
 @class BackupContractsViewController;
 @class QStoreViewController;
 @class SourceCodePopUpViewController;
+@class QStoreListViewController;
+@class QStoreContractViewController;
+@class ConfirmPurchasePopUpViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -93,6 +96,8 @@
 -(RestoreContractsViewController*)createRestoreContractViewController;
 -(BackupContractsViewController*)createBackupContractViewController;
 -(QStoreViewController*)createQStoreViewController;
+-(QStoreListViewController*)createQStoreListViewController;
+-(QStoreContractViewController*)createQStoreContractViewController;
 
 // Pop ups
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
@@ -103,6 +108,7 @@
 -(LoaderPopUpViewController *)createLoaderViewController;
 -(RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
 -(SourceCodePopUpViewController *)createSourceCodePopUpViewController;
+-(ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UIViewController*)createTabFlow;

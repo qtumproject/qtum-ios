@@ -21,6 +21,10 @@
     return cell;
 }
 
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.delegate respondsToSelector:@selector(didSelectCollectionCell)]) {
+        [self.delegate didSelectCollectionCell];
+    }
+}
 
 @end

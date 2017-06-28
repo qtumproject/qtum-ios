@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol QStoreSearchTableSourceDelegate <NSObject>
+
+- (void)didSelectSearchCell;
+
+@end
+
 @interface QStoreSearchTableSource : NSObject <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, weak) id<QStoreSearchTableSourceDelegate> delegate;
 
 @end

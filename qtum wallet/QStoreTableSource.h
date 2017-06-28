@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol QStoreTableSourceDelegate <NSObject>
+
+- (void)didSelectCollectionCell;
+
+@end
+
 @interface QStoreTableSource : NSObject <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, weak) id<QStoreTableSourceDelegate> delegate;
 
 @end
