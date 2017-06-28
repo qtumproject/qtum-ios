@@ -8,13 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, LoginMode){
-    StartFirstSession,
-    StartNewSession
-};
-
-typedef NS_ENUM(NSInteger, SecurityType){
+typedef NS_ENUM(NSInteger, SecurityType) {
+    
     SecurityController,
+    LoginController,
     SecurityPopup,
 };
 
@@ -23,7 +20,6 @@ typedef NS_ENUM(NSInteger, SecurityType){
 @interface LoginCoordinator : BaseCoordinator <Coordinatorable>
 
 @property (weak, nonatomic) id <ApplicationCoordinatorDelegate> delegate;
-@property (assign, nonatomic) LoginMode mode;
 @property (assign, nonatomic) SecurityType type;
 
 - (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;

@@ -95,6 +95,15 @@ static NSInteger withoutTokenOffset = 30;
     [self.view layoutSubviews];
 }
 
+-(void)payAction {
+    
+    if (self.token) {
+        [self payWithToken:[self getCorrectAmountString]];
+    } else {
+        [self payWithWallet:[self getCorrectAmountString]];
+    }
+}
+
 -(void)payWithWallet:(NSString *)amountString {
     
     NSNumber *amount = @([amountString doubleValue]);
@@ -220,6 +229,7 @@ static NSInteger withoutTokenOffset = 30;
 }
 
 - (void)done:(id)sender {
+    
     [self.amountTextField resignFirstResponder];
 }
 
@@ -235,13 +245,12 @@ static NSInteger withoutTokenOffset = 30;
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
     
-    [[PopUpsManager sharedInstance] showSecurityPopup:self presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
-    return;
-    if (self.token) {
-        [self payWithToken:[self getCorrectAmountString]];
-    } else {
-        [self payWithWallet:[self getCorrectAmountString]];
-    }
+    __weak __typeof(self) weakSelf = self;
+    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SecurityPopup andHandler:^(BOOL success) {
+        if (success) {
+            [weakSelf payAction];
+        }
+    }];
 }
 
 - (IBAction)actionVoidTap:(id)sender{

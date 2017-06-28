@@ -45,12 +45,6 @@
     }
 }
 
--(void)accessPinDenied {
-    [self shakeAndClearText];
-    [self actionIncorrectPin];
-    [self.firstSymbolTextField becomeFirstResponder];
-}
-
 -(void)shakeAndClearText {
     CAKeyframeAnimation* shake = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
     shake.duration = 0.6;
@@ -145,7 +139,13 @@
             [self.delegate confirmButtonPressed:self withPin:pin];
         }
     } else {
-        [self accessPinDenied];
+        [self applyFailedPasswordAction];
+    }
+}
+
+- (IBAction)didPresseCancelAction:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(cancelButtonPressed:)]) {
+        [self.delegate cancelButtonPressed:self];
     }
 }
 
@@ -162,5 +162,15 @@
         } completion:nil];
     }];
 }
+
+#pragma mark - LoginViewOutput
+
+- (void)applyFailedPasswordAction {
+    
+    [self shakeAndClearText];
+    [self actionIncorrectPin];
+    [self.firstSymbolTextField becomeFirstResponder];
+}
+
 
 @end

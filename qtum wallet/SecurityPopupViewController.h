@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomTextField.h"
+#import "LoginViewOutput.h"
 
-@interface SecurityPopupViewController : PopUpViewController
+@interface SecurityPopupViewController : PopUpViewController <LoginViewOutput>
 
 @property (nonatomic, weak) id<SecurityPopupViewControllerDelegate> delegate;
 
@@ -24,8 +25,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridInputViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourthInputViewHeight;
 
-- (void)actionIncorrectPin;
-- (void)accessPinDenied;
+- (void)applyFailedPasswordAction;
 - (void)clearPinTextFields;
 
 @end

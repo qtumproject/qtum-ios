@@ -196,17 +196,13 @@
     [controller showFromViewController:presenter animated:YES completion:completion];
 }
 
-- (void)showSecurityPopup:(id<SecurityPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
-    
-    BOOL needShow = [self checkAndHideCurrentPopUp:[SecurityPopupViewController class] withContent:nil];
-    if (!needShow) {
-        return;
-    }
-    
+- (SecurityPopupViewController*)showSecurityPopup:(id<SecurityPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
+
     SecurityPopupViewController *controller = [self createSecurityPopUp];
     controller.delegate = delegate;
     self.currentPopUp = controller;
     [controller showFromViewController:presenter animated:YES completion:completion];
+    return controller;
 }
 
 - (void)hideCurrentPopUp:(BOOL)animated completion:(void (^)(void))completion

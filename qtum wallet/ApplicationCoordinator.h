@@ -18,6 +18,8 @@
 - (void)coordinatorDidLogin:(LoginCoordinator*)coordinator;
 - (void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator;
 - (void)coordinatorRequestForLogin;
+- (void)coordinatorDidPassSecurity:(LoginCoordinator*)coordinator;
+- (void)coordinatorDidCancelePassSecurity:(LoginCoordinator*)coordinator;
 
 @end
 
@@ -30,7 +32,7 @@
 //flows
 - (void)startAuthFlow;
 - (void)startMainFlow;
-- (void)startSecurityFlow;
+- (void)startSecurityFlowWithType:(SecurityType) type  andHandler:(void(^)(BOOL)) handler;
 - (void)restartMainFlow;
 - (void)startWalletFlow;
 - (void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
