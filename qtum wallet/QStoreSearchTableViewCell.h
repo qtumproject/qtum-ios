@@ -10,4 +10,6 @@
 
 @interface QStoreSearchTableViewCell : UITableViewCell
 
+- (void)changeHighlight:(BOOL)value;
+
 @end

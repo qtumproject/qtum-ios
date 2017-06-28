@@ -161,6 +161,7 @@
 		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
 		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
 		B3F76A941EDDB81600108DE9 /* Contracts in Resources */ = {isa = PBXBuildFile; fileRef = B3F76A931EDDB81600108DE9 /* Contracts */; };
+		E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */; };
 		E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */; };
 		E71271921EE9925600A130A0 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E71271911EE9925600A130A0 /* SpinnerView.m */; };
 		E71271941EE9AC5B00A130A0 /* LoaderPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */; };
@@ -656,6 +657,8 @@
 		B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		B3F76A931EDDB81600108DE9 /* Contracts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Contracts; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
+		E70353081F039297004ECCC9 /* QStoreSearchTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreSearchTableSource.h; sourceTree = "<group>"; };
+		E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreSearchTableSource.m; sourceTree = "<group>"; };
 		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
 		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RecieveViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E71271901EE9925600A130A0 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
@@ -1455,6 +1458,21 @@
 			name = Contract;
 			sourceTree = "<group>";
 		};
+		E70353071F039262004ECCC9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */,
+				E7CE63661F028E8F00C147B9 /* SelectSearchTypeView.h */,
+				E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */,
+				E70353081F039297004ECCC9 /* QStoreSearchTableSource.h */,
+				E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */,
+				E7CE63691F029EEF00C147B9 /* QStoreSearchTableViewCell.h */,
+				E7CE636A1F029EEF00C147B9 /* QStoreSearchTableViewCell.m */,
+				E7CE636B1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
 			isa = PBXGroup;
 			children = (
@@ -1748,7 +1766,7 @@
 		E784F8B51F015B5500A513BF /* QStore */ = {
 			isa = PBXGroup;
 			children = (
-				E7CE63631F0289ED00C147B9 /* Views */,
+				E70353071F039262004ECCC9 /* Search */,
 				E784F8BF1F015CE700A513BF /* CollectionVIew */,
 				E784F8B61F015B7100A513BF /* QStoreViewController.h */,
 				E784F8B71F015B7100A513BF /* QStoreViewController.m */,
@@ -1835,19 +1853,6 @@
 				E7B758731EF13A89004AF200 /* WatchHistoryElement.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		E7CE63631F0289ED00C147B9 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */,
-				E7CE63661F028E8F00C147B9 /* SelectSearchTypeView.h */,
-				E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */,
-				E7CE63691F029EEF00C147B9 /* QStoreSearchTableViewCell.h */,
-				E7CE636A1F029EEF00C147B9 /* QStoreSearchTableViewCell.m */,
-				E7CE636B1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		E7D241D61DE6D697003E507B /* QRCode */ = {
@@ -2723,6 +2728,7 @@
 				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */,
+				E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */,
 				E73D37041ECF1771009173BD /* QTUMAddressTokenTableViewCell.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
 				B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */,

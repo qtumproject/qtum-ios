@@ -11,6 +11,7 @@
 #import "ContractFileManager.h"
 #import "CustomSearchBar.h"
 #import "SelectSearchTypeView.h"
+#import "QStoreSearchTableSource.h"
 
 @interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate, SelectSearchTypeViewDelegate>
 
@@ -18,9 +19,11 @@
 @property (weak, nonatomic) IBOutlet CustomSearchBar *searchBar;
 
 @property (nonatomic) QStoreTableSource *source;
-@property (nonatomic) SelectSearchTypeView *selectSearchType;
+@property (nonatomic) QStoreSearchTableSource *searchSource;
 @property (nonatomic) UIView *containerForSearchElements;
 @property (nonatomic) NSLayoutConstraint *bottomConstraintForContainer;
+@property (nonatomic) SelectSearchTypeView *selectSearchType;
+@property (nonatomic) UITableView *searchTableView;
 
 @end
 
@@ -38,6 +41,7 @@
     
     [self createContainer];
     [self createSelectSearchView];
+    [self createSearchTableView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -90,6 +94,29 @@
     [self.containerForSearchElements addConstraints:verticalConstraints];
 }
 
+- (void)createSearchTableView {
+    self.searchSource = [QStoreSearchTableSource new];
+    
+    self.searchTableView = [UITableView new];
+    self.searchTableView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.searchTableView.dataSource = self.searchSource;
+    self.searchTableView.delegate = self.searchSource;
+    [self.searchTableView reloadData];
+    [self.searchTableView registerNib:[UINib nibWithNibName:@"QStoreSearchTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"QStoreSearchTableViewCell"];
+    self.searchTableView.separatorColor = customBlueColor();
+    self.searchTableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
+    self.searchTableView.backgroundColor = customBlackColor();
+    
+    [self.containerForSearchElements addSubview:self.searchTableView];
+    
+    NSDictionary *views = @{@"searchTableView" : self.searchTableView, @"selectSearchType" : self.selectSearchType};
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[selectSearchType]-0-[searchTableView]-0-|" options:0 metrics:nil views:views];
+    NSArray *horisontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[searchTableView]-0-|" options:0 metrics:nil views:views];
+    
+    [self.containerForSearchElements addConstraints:horisontalConstraints];
+    [self.containerForSearchElements addConstraints:verticalConstraints];
+}
+
 #pragma mark - Notifications
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -104,10 +131,11 @@
         tapBarHeight = tapBarVC.tabBar.frame.size.height;
     }
     
-    self.bottomConstraintForContainer.constant = kbSize.height - tapBarHeight;
+    self.bottomConstraintForContainer.constant = - (kbSize.height - tapBarHeight);
     
     [UIView animateWithDuration:duration animations:^{
         self.containerForSearchElements.alpha = 1.0f;
+        [self.view layoutIfNeeded];
     }];
 }
 
