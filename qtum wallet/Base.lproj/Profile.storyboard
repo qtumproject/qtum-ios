@@ -172,6 +172,69 @@
                                             <outlet property="profileCellTextLabel" destination="JT0-n1-vPl" id="dQM-m9-IkT"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="profileCellWithSeparatorAndSwitch" rowHeight="45" id="2aJ-dg-Ueg" customClass="ProfileTableViewCell">
+                                        <rect key="frame" x="0.0" y="118" width="375" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2aJ-dg-Ueg" id="qiK-ut-R0S">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAD-so-60f">
+                                                    <rect key="frame" x="58" y="13.5" width="49" height="19"/>
+                                                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                                    <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="jY8-KV-PkA">
+                                                    <rect key="frame" x="20" y="12" width="20" height="20"/>
+                                                    <color key="tintColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="fSE-4E-gHA"/>
+                                                        <constraint firstAttribute="width" priority="250" constant="20" id="r06-m0-FD8"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBv-Zc-ZEt">
+                                                    <rect key="frame" x="20" y="0.0" width="355" height="1"/>
+                                                    <color key="backgroundColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="IG2-Em-Xfd"/>
+                                                    </constraints>
+                                                </view>
+                                                <switch opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eQ0-ef-wTp">
+                                                    <rect key="frame" x="311" y="7" width="51" height="31"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="onTintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="thumbTintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didSwitchFingerprintSettingsAction:" destination="NMe-U2-LQD" eventType="valueChanged" id="c1c-jt-QGB"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ZBv-Zc-ZEt" secondAttribute="trailing" id="JGT-qu-Mki"/>
+                                                <constraint firstItem="jY8-KV-PkA" firstAttribute="leading" secondItem="qiK-ut-R0S" secondAttribute="leading" constant="20" id="SzM-RI-N6W"/>
+                                                <constraint firstAttribute="trailing" secondItem="eQ0-ef-wTp" secondAttribute="trailing" constant="15" id="gzx-Wp-yR4"/>
+                                                <constraint firstItem="eQ0-ef-wTp" firstAttribute="centerY" secondItem="qiK-ut-R0S" secondAttribute="centerY" id="ipc-bf-h6z"/>
+                                                <constraint firstItem="ZBv-Zc-ZEt" firstAttribute="leading" secondItem="qiK-ut-R0S" secondAttribute="leading" constant="20" id="lf0-4B-MkR"/>
+                                                <constraint firstItem="ZBv-Zc-ZEt" firstAttribute="top" secondItem="qiK-ut-R0S" secondAttribute="top" id="o89-GK-cm0"/>
+                                                <constraint firstItem="lAD-so-60f" firstAttribute="centerY" secondItem="qiK-ut-R0S" secondAttribute="centerY" id="rV3-s3-HUq"/>
+                                                <constraint firstItem="jY8-KV-PkA" firstAttribute="centerY" secondItem="qiK-ut-R0S" secondAttribute="centerY" id="xne-WC-FHS"/>
+                                                <constraint firstItem="lAD-so-60f" firstAttribute="leading" secondItem="qiK-ut-R0S" secondAttribute="leading" constant="58" id="yxF-7L-Xil"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="profileCellImage" destination="jY8-KV-PkA" id="v5o-j0-H6H"/>
+                                            <outlet property="profileCellTextLabel" destination="lAD-so-60f" id="pEV-Uo-fAX"/>
+                                            <outlet property="switchControl" destination="eQ0-ef-wTp" id="Ae1-HZ-wP0"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="NMe-U2-LQD" id="yxm-Rk-650"/>

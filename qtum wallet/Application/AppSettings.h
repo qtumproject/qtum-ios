@@ -15,8 +15,8 @@
 @property (assign, nonatomic, readonly) BOOL isFingerprintEnabled;
 @property (assign, nonatomic, readonly) BOOL isFingerprintAllowed;
 
-
 -(void)setup;
+-(void)setFingerprintEnabled:(BOOL)enabled;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

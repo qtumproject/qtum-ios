@@ -18,7 +18,6 @@
 
 @end
 
-
 @implementation NotificationManager
 
 - (void)registerForRemoutNotifications {

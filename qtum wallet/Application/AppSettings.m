@@ -84,4 +84,10 @@
     return [NSUserDefaults isFingerprintAllowed];
 }
 
+#pragma mark - Private Methods 
+
+-(void)setFingerprintEnabled:(BOOL)enabled {
+    [NSUserDefaults saveIsFingerpringEnabled:enabled];
+}
+
 @end
