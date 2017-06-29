@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ConfirmPinCoordinator : NSObject
+@class ConfirmPinCoordinator;
+
+@protocol ConfirmPinCoordinatorDelegate <NSObject>
+
+- (void)coordinatorDidConfirm:(ConfirmPinCoordinator*)coordinator;
+- (void)coordinatorDidCanceledConfirm:(ConfirmPinCoordinator*)coordinator;
+
+@end
+
+@interface ConfirmPinCoordinator : BaseCoordinator <Coordinatorable>
+
+@property (weak, nonatomic) id <ConfirmPinCoordinatorDelegate> delegate;
+- (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;
 
 @end

@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    PopUpContent *content = [self getContent];
+    PopUpContent *content = [self content];
     self.titleLabel.text = content.titleString;
     self.messageLabel.text = content.messageString;
     [self.okButton setTitle:content.okButtonTitle forState:UIControlStateNormal];

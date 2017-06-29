@@ -38,11 +38,11 @@
     NSString *code = [[ContractFileManager sharedInstance] getContractWithTemplate:@"Standart"];
     content.messageString = code;
     
-    [[PopUpsManager sharedInstance] showSourceCodePopUp:self withContent:content presenter:self completion:nil];
+    [[PopUpsManager sharedInstance] showSourceCodePopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (IBAction)actionPurchase:(id)sender {
-    [[PopUpsManager sharedInstance] showConfirmPurchasePopUp:self presenter:self completion:nil];
+    [[PopUpsManager sharedInstance] showConfirmPurchasePopUp:self presenter:nil completion:nil];
 }
 
 - (IBAction)actionBack:(id)sender {

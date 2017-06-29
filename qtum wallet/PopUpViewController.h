@@ -14,8 +14,7 @@
 - (void)showFromViewController:(UIViewController *)controller animated:(BOOL)animated completion:(void (^)(void))completion;
 - (void)hide:(BOOL)animated completion:(void (^)(void))completion;
 
-- (void)setContent:(PopUpContent *)content;
-- (PopUpContent *)getContent;
+@property (strong, nonatomic) PopUpContent *content;
 
 @end
 
@@ -28,5 +27,12 @@
 @protocol PopUpWithTwoButtonsViewControllerDelegate <PopUpViewControllerDelegate>
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender;
+
+@end
+
+@protocol SecurityPopupViewControllerDelegate <NSObject>
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender;
+- (void)confirmButtonPressed:(PopUpViewController *)sender withPin:(NSString*) pin;
 
 @end

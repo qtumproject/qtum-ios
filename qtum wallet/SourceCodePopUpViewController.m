@@ -43,7 +43,7 @@
 }
 
 - (void)setupForContent {
-    PopUpContent *content = [self getContent];
+    PopUpContent *content = [self content];
     [self.okButton setTitle:content.okButtonTitle forState:UIControlStateNormal];
     [self.titleLabel setText:content.titleString];
     [self.textView setText:content.messageString];

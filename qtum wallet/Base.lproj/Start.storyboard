@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -127,6 +128,7 @@
                     <connections>
                         <outlet property="bottomButtonsOffset" destination="iqd-Xv-QcW" id="DIa-l2-G81"/>
                         <outlet property="createButton" destination="FKx-bF-rYK" id="VLN-Gu-fpx"/>
+                        <outlet property="invitationTextLabel" destination="CbP-bR-TcN" id="n79-Iu-Fze"/>
                         <outlet property="loginButton" destination="bZ1-JG-7ln" id="KDS-sr-24E"/>
                         <outlet property="restoreButton" destination="KY1-s1-NTB" id="h8M-P6-WXv"/>
                         <segue destination="x3j-yi-Vzm" kind="show" identifier="createWalletName" id="hKQ-pH-Gbi"/>
@@ -1065,7 +1067,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwg-qQ-y9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="2u0-Qs-2mE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3296.8000000000002" y="214.54272863568218"/>
+            <point key="canvasLocation" x="4214" y="208"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="k0y-dF-jWx">
@@ -1128,7 +1130,7 @@
                                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Veq-XE-LK4">
-                                                        <rect key="frame" x="138" y="11" width="100" height="23"/>
+                                                        <rect key="frame" x="137.5" y="11" width="100" height="23"/>
                                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1349,8 +1351,116 @@
             </objects>
             <point key="canvasLocation" x="2200.8000000000002" y="981.85907046476768"/>
         </scene>
+        <!--Enable Fingerprint View Controller-->
+        <scene sceneID="qCs-vv-khC">
+            <objects>
+                <viewController storyboardIdentifier="EnableFingerprintViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hbr-uO-8kb" customClass="EnableFingerprintViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mG6-ws-DMc"/>
+                        <viewControllerLayoutGuide type="bottom" id="qKN-PX-zSf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cBE-E5-vDP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dte-nL-GFE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilM-jx-K5h">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AN2-Zm-hCw">
+                                                <rect key="frame" x="152" y="11" width="71" height="23"/>
+                                                <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="AN2-Zm-hCw" firstAttribute="centerX" secondItem="ilM-jx-K5h" secondAttribute="centerX" id="8yJ-w8-AD5"/>
+                                            <constraint firstItem="AN2-Zm-hCw" firstAttribute="centerY" secondItem="ilM-jx-K5h" secondAttribute="centerY" id="Sub-hv-fCA"/>
+                                            <constraint firstAttribute="height" constant="44" id="r57-HZ-yLK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ilM-jx-K5h" secondAttribute="bottom" id="Xyy-qi-Yiu"/>
+                                    <constraint firstAttribute="trailing" secondItem="ilM-jx-K5h" secondAttribute="trailing" id="ocZ-oq-gR4"/>
+                                    <constraint firstItem="ilM-jx-K5h" firstAttribute="leading" secondItem="Dte-nL-GFE" secondAttribute="leading" id="p0c-Qc-orf"/>
+                                    <constraint firstAttribute="height" constant="64" id="qTr-yB-syh"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-fingerprint" translatesAutoresizingMaskIntoConstraints="NO" id="bRx-zl-KsC">
+                                <rect key="frame" x="136" y="130" width="102" height="102"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="102" id="hHT-UP-oVh"/>
+                                    <constraint firstAttribute="width" secondItem="bRx-zl-KsC" secondAttribute="height" multiplier="1:1" id="uxG-Lb-VnJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-aK-iup">
+                                <rect key="frame" x="119.5" y="257" width="136.5" height="38.5"/>
+                                <string key="text">Login to QTUM
+using Touch ID</string>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b73-4W-Yxk">
+                                <rect key="frame" x="92.5" y="584" width="190" height="33"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="07u-1l-x6i"/>
+                                    <constraint firstAttribute="height" constant="33" id="zmP-sd-Sqs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                <state key="normal" title="NOT NOW">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPresseCancelAction:" destination="Hbr-uO-8kb" eventType="touchUpInside" id="YcK-1I-4B0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1C-4D-HED">
+                                <rect key="frame" x="92" y="525" width="190" height="33"/>
+                                <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="2nD-xg-Oib"/>
+                                    <constraint firstAttribute="width" constant="190" id="xqr-w3-A4d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                <state key="normal" title="ENABLE TOUCH ID">
+                                    <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPresseEnableAction:" destination="Hbr-uO-8kb" eventType="touchUpInside" id="Drm-Nc-hSw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="b73-4W-Yxk" firstAttribute="centerX" secondItem="cBE-E5-vDP" secondAttribute="centerX" id="GUy-YR-jnH"/>
+                            <constraint firstItem="KQg-aK-iup" firstAttribute="top" secondItem="bRx-zl-KsC" secondAttribute="bottom" constant="25" id="KXO-lT-gUL"/>
+                            <constraint firstItem="KQg-aK-iup" firstAttribute="centerX" secondItem="cBE-E5-vDP" secondAttribute="centerX" id="NO3-Lg-Vta"/>
+                            <constraint firstItem="Dte-nL-GFE" firstAttribute="top" secondItem="cBE-E5-vDP" secondAttribute="top" id="Xiy-UO-Myz"/>
+                            <constraint firstItem="b73-4W-Yxk" firstAttribute="top" secondItem="W1C-4D-HED" secondAttribute="bottom" constant="26" id="eKa-e4-5cU"/>
+                            <constraint firstItem="bRx-zl-KsC" firstAttribute="top" secondItem="Dte-nL-GFE" secondAttribute="top" constant="130" id="iOf-gb-4SS"/>
+                            <constraint firstAttribute="trailing" secondItem="Dte-nL-GFE" secondAttribute="trailing" id="nho-gs-Hjd"/>
+                            <constraint firstItem="qKN-PX-zSf" firstAttribute="top" secondItem="b73-4W-Yxk" secondAttribute="bottom" constant="50" id="qVi-CQ-teH"/>
+                            <constraint firstItem="W1C-4D-HED" firstAttribute="centerX" secondItem="cBE-E5-vDP" secondAttribute="centerX" id="rJb-WI-ThH"/>
+                            <constraint firstItem="bRx-zl-KsC" firstAttribute="centerX" secondItem="cBE-E5-vDP" secondAttribute="centerX" id="rOa-Nx-emk"/>
+                            <constraint firstItem="Dte-nL-GFE" firstAttribute="leading" secondItem="cBE-E5-vDP" secondAttribute="leading" id="uWV-7t-vxL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7yf-E9-dOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3340" y="215"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ic-fingerprint" width="106" height="106"/>
         <image name="logo" width="115" height="100"/>
         <image name="payment2" width="16" height="16"/>
         <image name="share" width="20" height="21"/>

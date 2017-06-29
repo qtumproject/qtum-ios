@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *restoreButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomButtonsOffset;
+@property (weak, nonatomic) IBOutlet UILabel *invitationTextLabel;
 
 - (IBAction)createNewButtonWasPressed:(id)sender;
 
@@ -35,11 +36,14 @@
         self.createButton.backgroundColor = [UIColor clearColor];
         [self.createButton setTitleColor:customBlueColor() forState:UIControlStateNormal];
         self.loginButton.hidden = NO;
+        self.invitationTextLabel.text = NSLocalizedString(@"Login to QTUM \nDon't have a wallet yet?", @"");
     } else {
         self.createButton.backgroundColor = customRedColor();
         [self.createButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
         self.loginButton.hidden = YES;
+        self.invitationTextLabel.text = NSLocalizedString(@"You don’t have a wallet yet.", @"");
     }
+//    [self.invitationTextLabel layoutIfNeeded];
 }
 
 #pragma mark - Actions

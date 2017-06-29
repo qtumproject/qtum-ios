@@ -107,6 +107,10 @@
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
 		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
 		B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */; };
+		B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE11F02872000142252 /* EnableFingerprintViewController.m */; };
+		B381CBE51F0291CB00142252 /* SecurityPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */; };
+		B381CBE71F02933400142252 /* SecurityPopup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B381CBE61F02933400142252 /* SecurityPopup.storyboard */; };
+		B381CBEA1F029CB200142252 /* SecurityPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE91F029CB200142252 /* SecurityPinView.m */; };
 		B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3827DD81ECF28EE00E500DE /* TokenCell.m */; };
 		B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3827DDF1ECF292E00E500DE /* TokenListViewController.m */; };
 		B3827DE41ECF5E8D00E500DE /* TokenFunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3827DE31ECF5E8D00E500DE /* TokenFunctionCell.m */; };
@@ -150,6 +154,7 @@
 		B3E3A1651E850572002A488F /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1641E850572002A488F /* AppSettings.m */; };
 		B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */; };
 		B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A18A1E852F27002A488F /* SocketManager.m */; };
+		B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE93711F04E19100550C60 /* SecurityCoordinator.m */; };
 		B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* ContractCoordinator.m */; };
 		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
 		B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */; };
@@ -565,6 +570,13 @@
 		B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+TCACatch.m"; sourceTree = "<group>"; };
 		B371D8811E3A1D3B00A13EA3 /* NSObject+TCAAssociating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TCAAssociating.h"; sourceTree = "<group>"; };
 		B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TCAAssociating.m"; sourceTree = "<group>"; };
+		B381CBE01F02872000142252 /* EnableFingerprintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnableFingerprintViewController.h; sourceTree = "<group>"; };
+		B381CBE11F02872000142252 /* EnableFingerprintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnableFingerprintViewController.m; sourceTree = "<group>"; };
+		B381CBE31F0291CB00142252 /* SecurityPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityPopupViewController.h; sourceTree = "<group>"; };
+		B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityPopupViewController.m; sourceTree = "<group>"; };
+		B381CBE61F02933400142252 /* SecurityPopup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SecurityPopup.storyboard; sourceTree = "<group>"; };
+		B381CBE81F029CB200142252 /* SecurityPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityPinView.h; sourceTree = "<group>"; };
+		B381CBE91F029CB200142252 /* SecurityPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityPinView.m; sourceTree = "<group>"; };
 		B3827DD71ECF28EE00E500DE /* TokenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenCell.h; sourceTree = "<group>"; };
 		B3827DD81ECF28EE00E500DE /* TokenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenCell.m; sourceTree = "<group>"; };
 		B3827DDE1ECF292E00E500DE /* TokenListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenListViewController.h; sourceTree = "<group>"; };
@@ -647,6 +659,8 @@
 		B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Settings.m"; sourceTree = "<group>"; };
 		B3E3A1891E852F27002A488F /* SocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketManager.h; sourceTree = "<group>"; };
 		B3E3A18A1E852F27002A488F /* SocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketManager.m; sourceTree = "<group>"; };
+		B3EE93701F04E19100550C60 /* SecurityCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityCoordinator.h; sourceTree = "<group>"; };
+		B3EE93711F04E19100550C60 /* SecurityCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityCoordinator.m; sourceTree = "<group>"; };
 		B3F06CF51E69879D006341F7 /* ContractCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractCoordinator.h; sourceTree = "<group>"; };
 		B3F06CF61E69879D006341F7 /* ContractCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractCoordinator.m; sourceTree = "<group>"; };
 		B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenCoordinator.h; sourceTree = "<group>"; };
@@ -1017,6 +1031,8 @@
 				B3210D1F1E001EC200365FB6 /* PinViewController.m */,
 				B32EBFEF1E1E4711003AA578 /* CreatePinRootController.h */,
 				B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */,
+				B381CBE81F029CB200142252 /* SecurityPinView.h */,
+				B381CBE91F029CB200142252 /* SecurityPinView.m */,
 			);
 			name = PIN;
 			path = Controllers;
@@ -1181,6 +1197,8 @@
 				B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */,
 				B33EAF211E5D6955006125F3 /* ExportWalletBrandKeyViewController.h */,
 				B33EAF221E5D6955006125F3 /* ExportWalletBrandKeyViewController.m */,
+				B381CBE01F02872000142252 /* EnableFingerprintViewController.h */,
+				B381CBE11F02872000142252 /* EnableFingerprintViewController.m */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -1445,6 +1463,15 @@
 				B3E159281ED6E3C500D70A87 /* ChoseTokenPaymentCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		B3EE936F1F04E0D700550C60 /* Security Flow */ = {
+			isa = PBXGroup;
+			children = (
+				B3EE93701F04E19100550C60 /* SecurityCoordinator.h */,
+				B3EE93711F04E19100550C60 /* SecurityCoordinator.m */,
+			);
+			name = "Security Flow";
 			sourceTree = "<group>";
 		};
 		B3F06D071E699371006341F7 /* Subscribe */ = {
@@ -1808,6 +1835,7 @@
 				E73CF6C41EE2CE8A0044DF78 /* ConfirmPopUp.storyboard */,
 				E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */,
 				E713A4821EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard */,
+				B381CBE61F02933400142252 /* SecurityPopup.storyboard */,
 				E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */,
 				E703531A1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard */,
 			);
@@ -2022,6 +2050,8 @@
 				E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */,
 				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
 				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
+				B381CBE31F0291CB00142252 /* SecurityPopupViewController.h */,
+				B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */,
 				E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */,
 				E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */,
 				E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */,
@@ -2059,6 +2089,7 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B3EE936F1F04E0D700550C60 /* Security Flow */,
 				E7FA0CB01ECD808200702C4E /* Pop Ups */,
 				B387AB421EF04911001D2FF1 /* TemplateManager.h */,
 				B387AB431EF04911001D2FF1 /* TemplateManager.m */,
@@ -2526,6 +2557,7 @@
 				E73CF6C51EE2CE8A0044DF78 /* ConfirmPopUp.storyboard in Resources */,
 				E7CE636D1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib in Resources */,
 				E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */,
+				B381CBE71F02933400142252 /* SecurityPopup.storyboard in Resources */,
 				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
 				B3F76A941EDDB81600108DE9 /* Contracts in Resources */,
 				E71271941EE9AC5B00A130A0 /* LoaderPopUp.storyboard in Resources */,
@@ -2678,6 +2710,7 @@
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
+				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */,
 				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
@@ -2721,6 +2754,7 @@
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */,
+				B381CBE51F0291CB00142252 /* SecurityPopupViewController.m in Sources */,
 				B30BAE2E1E9E3AA600CA795F /* ContractManager.m in Sources */,
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
@@ -2777,6 +2811,7 @@
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
+				B381CBEA1F029CB200142252 /* SecurityPinView.m in Sources */,
 				B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */,
 				B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
@@ -2841,6 +2876,7 @@
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
 				B32C3CF31E1126200094C82C /* TabBarController.m in Sources */,
 				B387AB441EF04911001D2FF1 /* TemplateManager.m in Sources */,
+				B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */,
 				B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */,

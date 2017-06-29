@@ -61,7 +61,7 @@
             return 1;
             break;
         case 1:
-            return 2;
+            return [AppSettings sharedInstance].isFingerprintAllowed ? 3 : 2;
             break;
         case 2:
             return 2;
@@ -79,10 +79,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ProfileTableViewCell* cell;
     if (indexPath.row > 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"profileCellWithSeparator"];
+
+        if (indexPath.section == 1 && indexPath.row == 2) {
+            cell = [tableView dequeueReusableCellWithIdentifier:switchCellReuseIdentifire];
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:separatorCellReuseIdentifire];
+        }
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"profileCell"];
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:normalCellReuseIdentifire];
     }
+    
     [self configurateCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -103,8 +110,9 @@
             image = [UIImage imageNamed:@"backup_wallet_icon"];
             text = NSLocalizedString(@"Wallet Back Up", "");
         } else if (indexPath.row == 2) {
-            image = [UIImage imageNamed:@"import_wallet_icon"];
-            text = NSLocalizedString(@"Import", "");
+            image = [UIImage imageNamed:@"ic-touchID"];
+            text = NSLocalizedString(@"Touch ID", "");
+            cell.switchControl.on = [AppSettings sharedInstance].isFingerprintEnabled;
         }
     } else if(indexPath.section == 2){
         if (indexPath.row == 0) {
@@ -139,7 +147,8 @@
     return 48;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -150,8 +159,6 @@
             [self actionChangePin:nil];
         } else if (indexPath.row == 1) {
             [self actionWalletBackup:nil];
-        } else if (indexPath.row == 2) {
-            [self actionImport:nil];
         }
     } else if(indexPath.section == 2) {
         if (indexPath.row == 0) {
@@ -168,20 +175,24 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ProfileTableViewCell* cell = (ProfileTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.profileCellImage.tintColor = customBlackColor();
-    cell.profileCellTextLabel.textColor = customBlackColor();
-    cell.diclousereImageView.tintColor = customBlackColor();
+    if (![cell.reuseIdentifier isEqualToString:switchCellReuseIdentifire]) {
+        cell.profileCellImage.tintColor = customBlackColor();
+        cell.profileCellTextLabel.textColor = customBlackColor();
+        cell.diclousereImageView.tintColor = customBlackColor();
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ProfileTableViewCell* cell = (ProfileTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.profileCellImage.tintColor = customBlueColor();
-    cell.profileCellTextLabel.textColor = customBlueColor();
-    cell.diclousereImageView.tintColor = customBlueColor();
+    if (![cell.reuseIdentifier isEqualToString:switchCellReuseIdentifire]) {
+        cell.profileCellImage.tintColor = customBlueColor();
+        cell.profileCellTextLabel.textColor = customBlueColor();
+        cell.diclousereImageView.tintColor = customBlueColor();
+    }
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -222,7 +233,13 @@
 
 #pragma mark - Actions 
 
+- (IBAction)didSwitchFingerprintSettingsAction:(UISwitch*) sender {
+    
+    [[AppSettings sharedInstance] setFingerprintEnabled:sender.isOn];
+}
+
 -(IBAction)actionLanguage:(id)sender{
+    
     self.languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:self.navigationController];
     [self.languageCoordinator start];
 }
@@ -237,10 +254,6 @@
 
 -(IBAction)actionWalletBackup:(id)sender{
     [self performSegueWithIdentifier:@"exportBrainKey" sender:nil];
-}
-
--(IBAction)actionImport:(id)sender{
-    [self performSegueWithIdentifier:@"importBrainKey" sender:nil];
 }
 
 -(IBAction)actionAbout:(id)sender{

@@ -45,6 +45,8 @@
 @class RestoreContractsViewController;
 @class RestoreContractsPopUpViewController;
 @class BackupContractsViewController;
+@class EnableFingerprintViewController;
+@class SecurityPopupViewController;
 @class QStoreViewController;
 @class SourceCodePopUpViewController;
 @class QStoreListViewController;
@@ -95,6 +97,17 @@
 -(WatchTokensViewController*)createWatchTokensViewController;
 -(RestoreContractsViewController*)createRestoreContractViewController;
 -(BackupContractsViewController*)createBackupContractViewController;
+-(EnableFingerprintViewController*)createEnableFingerprintViewController;
+
+// Pop ups
+- (NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
+- (PhotoLibraryPopUpViewController*)createPhotoLibraryPopUpViewController;
+- (ErrorPopUpViewController*)createErrorPopUpViewController;
+- (InformationPopUpViewController*)createInformationPopUpViewController;
+- (ConfirmPopUpViewController*)createConfirmPopUpViewController;
+- (LoaderPopUpViewController *)createLoaderViewController;
+- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
+- (SecurityPopupViewController *)createSecurityPopupViewController;
 -(QStoreViewController*)createQStoreViewController;
 -(QStoreListViewController*)createQStoreListViewController;
 -(QStoreContractViewController*)createQStoreContractViewController;
