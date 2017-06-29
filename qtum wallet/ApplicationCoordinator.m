@@ -34,6 +34,9 @@
 @property (weak,nonatomic) LoginCoordinator* loginCoordinator;
 @property (weak,nonatomic) SecurityCoordinator* securityCoordinator;
 @property (assign, nonatomic) BOOL securityFlowRunning;
+@property (assign, nonatomic) BOOL authFlowRunning;
+@property (assign, nonatomic) BOOL mainFlowRunning;
+@property (assign, nonatomic) BOOL loginFlowRunning;
 @property (nonatomic, copy) void (^securityCompletesion)(BOOL success);
 
 @property (nonatomic,strong) NSString *amount;
@@ -206,6 +209,10 @@
 
 -(void)startAuthFlow {
     
+    self.authFlowRunning = YES;
+    self.mainFlowRunning = NO;
+    self.loginFlowRunning = NO;
+
     UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
     self.appDelegate.window.rootViewController = navigationController;
     AuthCoordinator* coordinator = [[AuthCoordinator alloc] initWithNavigationViewController:navigationController];
@@ -236,14 +243,17 @@
         [[PopUpsManager sharedInstance] hideCurrentPopUp:NO completion:nil];
     }
     
-    ConfirmPinCoordinator* coordinator = [[ConfirmPinCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
-    coordinator.delegate = self;
-    [coordinator start];
-    self.securityFlowRunning = YES;
-    [self addDependency:coordinator];
+    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN && !self.authFlowRunning && !self.loginFlowRunning) {
+        ConfirmPinCoordinator* coordinator = [[ConfirmPinCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
+        coordinator.delegate = self;
+        [coordinator start];
+        self.securityFlowRunning = YES;
+        [self addDependency:coordinator];
+    }
 }
 
 - (void)startSecurityFlowWithHandler:(void(^)(BOOL)) handler {
+    
     SecurityCoordinator* coordinator = [[SecurityCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
     coordinator.delegate = self;
     [coordinator start];
@@ -254,6 +264,10 @@
 }
 
 - (void)startLoginFlow{
+    
+    self.loginFlowRunning = YES;
+    self.mainFlowRunning = NO;
+    self.authFlowRunning = NO;
     
     UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
     self.appDelegate.window.rootViewController = navigationController;
@@ -268,15 +282,6 @@
 }
 
 -(void)startChangePinFlow{
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
-//    ChangePinController* changePinRoot = [[ChangePinController alloc]initWithRootViewController:viewController];
-//    changePinRoot.changePinCompletesion =  ^(){
-//        //[self backToSettings];
-//    };
-//    viewController.delegate = changePinRoot;
-//    viewController.type = OldType;
-//    [self presentAsModal:changePinRoot animated:YES];
 }
 
 -(void)coordinatorRequestForLogin {
@@ -284,6 +289,7 @@
 }
 
 -(void)startWalletFlow {
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"StartViewController"];
     UINavigationController* rootNavigation = [[UINavigationController alloc]initWithRootViewController:viewController];
@@ -306,6 +312,10 @@
 }
 
 -(void)startMainFlow {
+    
+    self.mainFlowRunning = YES;
+    self.authFlowRunning = NO;
+    self.loginFlowRunning = NO;
 
     TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
@@ -341,7 +351,6 @@
     PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
     CreatePinRootController* createPinRoot = [[CreatePinRootController alloc]initWithRootViewController:viewController];
     createPinRoot.createPinCompletesion = completesion;
-//    viewController.delegate = createPinRoot;
     viewController.type = CreateType;
     self.appDelegate.window.rootViewController = createPinRoot;
 }
