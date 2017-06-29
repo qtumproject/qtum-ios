@@ -145,11 +145,11 @@ static NSInteger withoutTokenOffset = 30;
 }
 
 - (void)showCompletedPopUp{
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForSend] presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForSend] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp{
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate

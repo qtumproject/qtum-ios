@@ -44,7 +44,7 @@
 
 -(void)showSecurityPopup {
     
-    SecurityPopupViewController* controller = [[PopUpsManager sharedInstance] showSecurityPopup:self presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+    SecurityPopupViewController* controller = [[PopUpsManager sharedInstance] showSecurityPopup:self presenter:nil completion:nil];
     controller.delegate = self;
     self.loginOutput = controller;
 }

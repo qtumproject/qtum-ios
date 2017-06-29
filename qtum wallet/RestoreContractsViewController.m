@@ -154,7 +154,7 @@
     if (self.fileUrl) {
         
         [BackupFileManager getQuickInfoFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(NSString *date, NSString *version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount) {
-            RestoreContractsPopUpViewController *poUp = [[PopUpsManager sharedInstance] showRestoreContractsPopUp:self presenter:self completion:nil];
+            RestoreContractsPopUpViewController *poUp = [[PopUpsManager sharedInstance] showRestoreContractsPopUp:self presenter:nil completion:nil];
             poUp.dateLabel.text = date;
             poUp.versionLabel.text = version;
             poUp.tokensCountLabel.text = [NSString stringWithFormat:@"%li",(long)tokenCount];
@@ -215,7 +215,7 @@
             if (success) {
                 [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
             } else {
-                [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:self completion:nil];
+                [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:nil completion:nil];
             }
         }];
     }

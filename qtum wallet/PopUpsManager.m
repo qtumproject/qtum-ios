@@ -116,8 +116,7 @@
     
     LoaderPopUpViewController *controller = [self createLoaderPopUp];
     self.currentPopUp = controller;
-    UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
-    [controller showFromViewController:root animated:YES completion:nil];
+    [controller showFromViewController:nil animated:YES completion:nil];
 }
 
 - (void)dismissLoader {
@@ -267,8 +266,7 @@
 }
 
 - (void)noInternetConnetion{
-    UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
-    [self showNoIntenterConnetionsPopUp:self presenter:root completion:nil];
+    [self showNoIntenterConnetionsPopUp:self presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpViewControllerDelegate

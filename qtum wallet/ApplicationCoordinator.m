@@ -232,6 +232,8 @@
     
     if (self.securityCoordinator) {
         [self.securityCoordinator cancelPin];
+    } else {
+        [[PopUpsManager sharedInstance] hideCurrentPopUp:NO completion:nil];
     }
     
     ConfirmPinCoordinator* coordinator = [[ConfirmPinCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];

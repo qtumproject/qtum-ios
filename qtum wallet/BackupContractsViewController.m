@@ -77,7 +77,7 @@
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForCompletedBackupFile] presenter:self completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForCompletedBackupFile] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpViewControllerDelegate

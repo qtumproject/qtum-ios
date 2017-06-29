@@ -51,7 +51,7 @@
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.brainKey;
     
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForBrainCodeCopied] presenter:self completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForBrainCodeCopied] presenter:nil completion:nil];
 }
 
 - (IBAction)actionContinue:(id)sender {
