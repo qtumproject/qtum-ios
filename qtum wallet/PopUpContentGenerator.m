@@ -51,4 +51,9 @@
     return content;
 }
 
++ (PopUpContent *)getContentForSourceCode{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Source Code", "") message:nil okTitle:NSLocalizedString(@"Copy", "") cancelTitle:nil];
+    return content;
+}
+
 @end

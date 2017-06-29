@@ -1,4 +1,4 @@
-//
+;//
 //  ContractManager.h
 //  qtum wallet
 //

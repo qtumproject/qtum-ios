@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak,nonatomic) Contract* token;
 @property (assign,nonatomic) UIEdgeInsets originInsets;
+@property (nonatomic) BOOL fromQStore;
 
 -(void)showResultViewWithOutputs:(NSArray*) outputs;
 

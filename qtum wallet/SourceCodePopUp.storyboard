@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="simplonmono-medium.ttf">
+            <string>simplonmono-medium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Source Code Pop Up View Controller-->
+        <scene sceneID="kyF-Ud-JWh">
+            <objects>
+                <viewController storyboardIdentifier="SourceCodePop" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9oa-ON-fWb" customClass="SourceCodePopUpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dBp-wb-wub"/>
+                        <viewControllerLayoutGuide type="bottom" id="mRJ-et-hr9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ck7-d0-bHv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qZH-I3-DOl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wH-Rp-g9K" customClass="Rest">
+                                <rect key="frame" x="30" y="162" width="315" height="344"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source Code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xe-VV-Bri">
+                                        <rect key="frame" x="20" y="22" width="275" height="18"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="15"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaX-xV-QJ0">
+                                        <rect key="frame" x="0.5" y="292" width="314" height="32"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="COPY">
+                                            <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionCopy:" destination="9oa-ON-fWb" eventType="touchUpInside" id="ZzX-uO-rGH"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lHp-AQ-RJn">
+                                        <rect key="frame" x="20" y="62" width="275" height="200"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="ceA-FV-LKx"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFt-wn-dvV">
+                                        <rect key="frame" x="270" y="1" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="aa1-Xj-Nof"/>
+                                            <constraint firstAttribute="width" constant="44" id="nLe-Aj-n2T"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="ic-close"/>
+                                        <connections>
+                                            <action selector="actionCancel:" destination="9oa-ON-fWb" eventType="touchUpInside" id="r1w-1v-6ND"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="aaX-xV-QJ0" firstAttribute="centerX" secondItem="2wH-Rp-g9K" secondAttribute="centerX" id="0t4-Hh-1bZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="rFt-wn-dvV" secondAttribute="trailing" constant="1" id="CSg-99-Cg7"/>
+                                    <constraint firstAttribute="trailing" secondItem="aaX-xV-QJ0" secondAttribute="trailing" id="CfA-ro-w0U"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Xe-VV-Bri" secondAttribute="trailing" constant="20" id="Cya-uj-bcL"/>
+                                    <constraint firstAttribute="trailing" secondItem="lHp-AQ-RJn" secondAttribute="trailing" constant="20" id="FFd-fO-IvB"/>
+                                    <constraint firstItem="8Xe-VV-Bri" firstAttribute="top" secondItem="2wH-Rp-g9K" secondAttribute="top" constant="22" id="Qqi-QN-aYO"/>
+                                    <constraint firstItem="aaX-xV-QJ0" firstAttribute="top" secondItem="lHp-AQ-RJn" secondAttribute="bottom" constant="30" id="fsL-7U-h59"/>
+                                    <constraint firstAttribute="bottom" secondItem="aaX-xV-QJ0" secondAttribute="bottom" constant="20" id="iWi-SN-JAS"/>
+                                    <constraint firstItem="lHp-AQ-RJn" firstAttribute="top" secondItem="8Xe-VV-Bri" secondAttribute="bottom" constant="22" id="ryY-eZ-07T"/>
+                                    <constraint firstItem="lHp-AQ-RJn" firstAttribute="leading" secondItem="2wH-Rp-g9K" secondAttribute="leading" constant="20" id="w37-QP-fdg"/>
+                                    <constraint firstItem="8Xe-VV-Bri" firstAttribute="centerX" secondItem="2wH-Rp-g9K" secondAttribute="centerX" id="xAj-hu-aPr"/>
+                                    <constraint firstItem="rFt-wn-dvV" firstAttribute="top" secondItem="2wH-Rp-g9K" secondAttribute="top" constant="1" id="z5g-i6-zcC"/>
+                                    <constraint firstItem="8Xe-VV-Bri" firstAttribute="leading" secondItem="2wH-Rp-g9K" secondAttribute="leading" constant="20" id="zf4-oW-N2T"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qZH-I3-DOl" firstAttribute="leading" secondItem="Ck7-d0-bHv" secondAttribute="leading" id="LJy-2U-UXH"/>
+                            <constraint firstItem="2wH-Rp-g9K" firstAttribute="centerX" secondItem="Ck7-d0-bHv" secondAttribute="centerX" id="UiW-bc-kDm"/>
+                            <constraint firstItem="2wH-Rp-g9K" firstAttribute="leading" secondItem="Ck7-d0-bHv" secondAttribute="leading" constant="30" id="Unc-YL-5JK"/>
+                            <constraint firstItem="mRJ-et-hr9" firstAttribute="top" secondItem="qZH-I3-DOl" secondAttribute="bottom" id="YTQ-QY-IZj"/>
+                            <constraint firstAttribute="trailing" secondItem="2wH-Rp-g9K" secondAttribute="trailing" constant="30" id="Z27-Ir-g1o"/>
+                            <constraint firstItem="qZH-I3-DOl" firstAttribute="top" secondItem="Ck7-d0-bHv" secondAttribute="top" id="aqf-xI-HWF"/>
+                            <constraint firstAttribute="trailing" secondItem="qZH-I3-DOl" secondAttribute="trailing" id="loR-ve-QXL"/>
+                            <constraint firstItem="2wH-Rp-g9K" firstAttribute="centerY" secondItem="Ck7-d0-bHv" secondAttribute="centerY" id="vPw-A9-TN6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="okButton" destination="aaX-xV-QJ0" id="4sl-YL-Wlm"/>
+                        <outlet property="textView" destination="lHp-AQ-RJn" id="zWf-5v-Auo"/>
+                        <outlet property="titleLabel" destination="8Xe-VV-Bri" id="yEm-iZ-P0a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SRn-tT-gil" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic-close" width="14" height="14"/>
+    </resources>
+</document>

@@ -53,6 +53,11 @@
 #import "BackupContractsViewController.h"
 #import "EnableFingerprintViewController.h"
 #import "SecurityPopupViewController.h"
+#import "QStoreViewController.h"
+#import "SourceCodePopUpViewController.h"
+#import "QStoreListViewController.h"
+#import "QStoreContractViewController.h"
+#import "ConfirmPurchasePopUpViewController.h"
 
 @implementation ControllersFactory
 
@@ -229,6 +234,20 @@
     return controller;
 }
 
+-(QStoreViewController*)createQStoreViewController{
+    QStoreViewController* controller = (QStoreViewController*)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreViewController"];
+    return controller;
+}
+
+-(QStoreListViewController*)createQStoreListViewController{
+    QStoreListViewController* controller = (QStoreListViewController*)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreListViewController"];
+    return controller;
+}
+
+-(QStoreContractViewController*)createQStoreContractViewController{
+    QStoreContractViewController* controller = (QStoreContractViewController*)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreContractViewController"];
+    return controller;
+}
 
 -(WatchContractViewController*)createWatchContractViewController{
     WatchContractViewController* controller = (WatchContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
@@ -309,8 +328,19 @@
     return controller;
 }
 
+- (SourceCodePopUpViewController *)createSourceCodePopUpViewController{
+    SourceCodePopUpViewController* controller = (SourceCodePopUpViewController *)[UIViewController controllerInStoryboard:@"SourceCodePopUp" withIdentifire:@"SourceCodePop"];
+    return controller;
+}
+
 - (SecurityPopupViewController *)createSecurityPopupViewController{
     SecurityPopupViewController* controller = (SecurityPopupViewController *)[UIViewController controllerInStoryboard:@"SecurityPopup" withIdentifire:@"SecurityPopupViewController"];
+    return controller;
+}
+
+
+- (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController{
+    ConfirmPurchasePopUpViewController* controller = (ConfirmPurchasePopUpViewController *)[UIViewController controllerInStoryboard:@"ConfirmPurchasePopUp" withIdentifire:@"ConfirmPurchasePopUp"];
     return controller;
 }
 

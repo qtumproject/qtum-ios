@@ -12,6 +12,7 @@
 
 @property (nonatomic) BOOL checked;
 @property (nonatomic) BOOL isSetup;
+@property (nonatomic) UIColor *squareBackroundColor;
 
 @property (weak, nonatomic) IBOutlet UIView *checkView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -20,6 +21,14 @@
 @end
 
 @implementation CheckboxButton
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.squareBackroundColor = customBlackColor();
+    }
+    return self;
+}
 
 - (void)setup {
     self.checkView.layer.borderWidth = 2.0f;
@@ -64,12 +73,17 @@
     [self.titleLabel setText:value];
 }
 
+-(void)setSquareBackroundColor:(UIColor *)color {
+    _squareBackroundColor = color;
+    [self changeViewByCheckState];
+}
+
 #pragma mark - Private
 
 - (void)changeViewByCheckState {
     self.checkImageView.hidden = !self.checked;
     self.checkView.layer.borderColor = self.checked ? customRedColor().CGColor : customBlueColor().CGColor;
-    self.checkView.backgroundColor = self.checked ? customRedColor() : customBlackColor();
+    self.checkView.backgroundColor = self.checked ? customRedColor() : self.squareBackroundColor;
 }
 
 @end

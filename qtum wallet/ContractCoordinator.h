@@ -28,13 +28,17 @@
 -(void)didSelectBackupContract;
 -(void)didPressedQuit;
 -(void)didPressedBack;
+-(void)didSelectQStoreCategories;
+-(void)didSelectQStoreCategory;
+-(void)didSelectQStoreContract;
+-(void)didSelectQStoreContractDetails;
 -(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel;
 -(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Contract*) contract;
 -(void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token;
 -(void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
 -(void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Contract*) token ;
+                       andToken:(Contract*) token;
 
 @end
 

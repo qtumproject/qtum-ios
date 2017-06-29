@@ -39,6 +39,7 @@
     //color for text in searchfield
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:customBlueColor(),
                                                                                                  NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:15.0f]}];
+
     //color for placeholder in searchfield
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:customBlueColor()];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setClearButtonMode:UITextFieldViewModeNever];
