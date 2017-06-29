@@ -88,6 +88,8 @@
                                     
                                 }
                             }];
+    } else {
+        [self showSecurityPopup];
     }
 }
 

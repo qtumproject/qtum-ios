@@ -37,6 +37,8 @@
 @property (assign, nonatomic) BOOL authFlowRunning;
 @property (assign, nonatomic) BOOL mainFlowRunning;
 @property (assign, nonatomic) BOOL loginFlowRunning;
+@property (assign, nonatomic) BOOL confirmFlowRunning;
+
 @property (nonatomic, copy) void (^securityCompletesion)(BOOL success);
 
 @property (nonatomic,strong) NSString *amount;
@@ -212,6 +214,7 @@
     self.authFlowRunning = YES;
     self.mainFlowRunning = NO;
     self.loginFlowRunning = NO;
+    self.confirmFlowRunning = NO;
 
     UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
     self.appDelegate.window.rootViewController = navigationController;
@@ -243,7 +246,7 @@
         [[PopUpsManager sharedInstance] hideCurrentPopUp:NO completion:nil];
     }
     
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN && !self.authFlowRunning && !self.loginFlowRunning) {
+    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN && !self.authFlowRunning && !self.loginFlowRunning && !self.securityFlowRunning) {
         ConfirmPinCoordinator* coordinator = [[ConfirmPinCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
         coordinator.delegate = self;
         [coordinator start];
@@ -268,6 +271,8 @@
     self.loginFlowRunning = YES;
     self.mainFlowRunning = NO;
     self.authFlowRunning = NO;
+    self.confirmFlowRunning = NO;
+    self.securityFlowRunning = YES;
     
     UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
     self.appDelegate.window.rootViewController = navigationController;
@@ -276,7 +281,6 @@
     LoginCoordinator* coordinator = [[LoginCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
     coordinator.delegate = self;
     [coordinator start];
-    self.securityFlowRunning = YES;
     self.loginCoordinator = coordinator;
     [self addDependency:coordinator];
 }

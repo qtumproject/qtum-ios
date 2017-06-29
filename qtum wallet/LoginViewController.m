@@ -23,6 +23,11 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+//    [self.firstSymbolTextField becomeFirstResponder];
+}
+
+-(void)didMoveToParentViewController:(UIViewController *)parent {
+    [super didMoveToParentViewController:parent];
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
