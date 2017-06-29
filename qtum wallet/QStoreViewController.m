@@ -189,8 +189,9 @@
     [self.searchBar setShowsCancelButton:YES animated:YES];
 }
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
     [self.searchBar setShowsCancelButton:NO animated:YES];
+    return YES;
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
