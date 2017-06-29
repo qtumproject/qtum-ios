@@ -34,11 +34,11 @@
 
 -(void)start {
     
-    [self showSecurityLoginController];
-    
     if ([AppSettings sharedInstance].isFingerprintEnabled) {
         [self showFingerprint];
     }
+    
+    [self showSecurityLoginController];
 }
 
 #pragma mark - Presentation
