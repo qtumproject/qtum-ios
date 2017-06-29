@@ -1,26 +1,25 @@
 //
-//  LoginCoordinator.m
+//  SecurityCoordinator.m
 //  qtum wallet
 //
-//  Created by Vladimir Lebedevich on 21.02.17.
+//  Created by Никита Федоренко on 29.06.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "LoginCoordinator.h"
-#import "LoginViewController.h"
-#import <LocalAuthentication/LocalAuthentication.h>
-#import "LoginViewOutputDelegate.h"
+#import "SecurityCoordinator.h"
 #import "LoginViewOutput.h"
 #import "SecurityPopupViewController.h"
+#import <LocalAuthentication/LocalAuthentication.h>
+#import "LoginViewOutputDelegate.h"
 
-@interface LoginCoordinator () <LoginViewOutputDelegate, SecurityPopupViewControllerDelegate>
+@interface SecurityCoordinator () <SecurityPopupViewControllerDelegate>
 
 @property (strong,nonatomic) UIViewController *containerViewController;
 @property (weak,nonatomic) id <LoginViewOutput> loginOutput;
 
 @end
 
-@implementation LoginCoordinator
+@implementation SecurityCoordinator
 
 -(instancetype)initWithParentViewContainer:(UIViewController*) containerViewController {
     
@@ -31,24 +30,22 @@
     return self;
 }
 
-#pragma mark - Coordinator
-
 -(void)start {
     
-    [self showSecurityLoginController];
-
     if ([AppSettings sharedInstance].isFingerprintEnabled) {
+        
         [self showFingerprint];
+    } else {
+        
+        [self showSecurityPopup];
     }
+
 }
 
-#pragma mark - Presentation
-
--(void)showSecurityLoginController {
+-(void)showSecurityPopup {
     
-    LoginViewController* controller = (LoginViewController*)[[ControllersFactory sharedInstance] createLoginController];
+    SecurityPopupViewController* controller = [[PopUpsManager sharedInstance] showSecurityPopup:self presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
     controller.delegate = self;
-    [self displayContentController:controller];
     self.loginOutput = controller;
 }
 
@@ -59,7 +56,7 @@
     NSString *reason = @"Login";
     
     __weak __typeof(self) weakSelf = self;
-
+    
     if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
         [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                   localizedReason:reason
@@ -68,39 +65,38 @@
                                     dispatch_async(dispatch_get_main_queue(), ^{
                                         [weakSelf loginUser];
                                     });
+                                } else {
+                                    
+                                    switch (error.code) {
+                                        case kLAErrorSystemCancel:
+                                        case kLAErrorAuthenticationFailed:
+                                        case kLAErrorUserCancel: {
+                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                [weakSelf cancelPin];
+                                            });
+                                            break;
+                                        }
+                                        case kLAErrorUserFallback: {
+                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                [weakSelf showSecurityPopup];
+                                            });
+                                        }
+                                        default: {
+                                            break;
+                                        }
+                                    }
+                                    
                                 }
                             }];
     }
-}
-
-#pragma mark - Actions
-
-- (void)cancelButtonPressed:(PopUpViewController *)sender {
-    
-    [self cancelPin];
-}
-
-- (void)confirmButtonPressed:(PopUpViewController *)sender withPin:(NSString*) pin {
-    
-    [self enterPin:pin];
-}
-
--(void)passwordDidEntered:(NSString*)password {
-    
-    [self enterPin:password];
-}
-
--(void)confirmPasswordDidCanceled {
-    
-    [self cancelPin];
 }
 
 #pragma mark - Private Methods
 
 -(void)cancelPin {
     
-    if ([self.delegate respondsToSelector:@selector(coordinatorDidCanceledLogin:)]) {
-        [self.delegate coordinatorDidCanceledLogin:self];
+    if ([self.delegate respondsToSelector:@selector(coordinatorDidCancelePassSecurity:)]) {
+        [self.delegate coordinatorDidCancelePassSecurity:self];
     }
     
     [self hideContentController:(UIViewController*)self.loginOutput];
@@ -109,8 +105,8 @@
 
 -(void)loginUser {
     
-    if ([self.delegate respondsToSelector:@selector(coordinatorDidLogin:)]) {
-        [self.delegate coordinatorDidLogin:self];
+    if ([self.delegate respondsToSelector:@selector(coordinatorDidPassSecurity:)]) {
+        [self.delegate coordinatorDidPassSecurity:self];
     }
     
     [self hideContentController:(UIViewController*)self.loginOutput];
@@ -123,6 +119,16 @@
     }else {
         [self.loginOutput applyFailedPasswordAction];
     }
+}
+
+#pragma mark - SecurityPopupViewControllerDelegate
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender {
+    [self cancelPin];
+}
+
+- (void)confirmButtonPressed:(PopUpViewController *)sender withPin:(NSString*) pin {
+    [self enterPin:pin];
 }
 
 #pragma mark - Add/Remove from parent

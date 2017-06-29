@@ -31,10 +31,10 @@
 @property (weak,nonatomic) UINavigationController* navigationController;
 @property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
 @property (strong,nonatomic) NotificationManager* notificationManager;
+@property (weak,nonatomic) LoginCoordinator* loginCoordinator;
+@property (weak,nonatomic) SecurityCoordinator* securityCoordinator;
 @property (assign, nonatomic) BOOL securityFlowRunning;
 @property (nonatomic, copy) void (^securityCompletesion)(BOOL success);
-
-
 
 @property (nonatomic,strong) NSString *amount;
 @property (nonatomic,strong) NSString *adress;
@@ -45,8 +45,8 @@
 
 #pragma mark - Initialization
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
+    
     static ApplicationCoordinator *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -76,7 +76,10 @@
 
 -(void)prepareDataObserving {
     
-    [self.notificationManager registerForRemoutNotifications];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.notificationManager registerForRemoutNotifications];
+    });
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [[WalletManager sharedInstance] startObservingForAllSpendable];
         [[ContractManager sharedInstance] startObservingForAllSpendable];
@@ -91,7 +94,7 @@
 -(void)start{
 
     if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
-        [self startLoginFlowWithType:LoginController];
+        [self startLoginFlow];
     } else {
         [self startAuthFlow];
     }
@@ -112,7 +115,24 @@
 //    [self.root presentViewController:controller animated:animated completion:nil];
 }
 
-#pragma mark - ApplicationCoordinatorDelegate
+#pragma mark - ConfirmPinCoordinatorDelegate
+
+- (void)coordinatorDidConfirm:(ConfirmPinCoordinator*)coordinator {
+    
+    self.securityFlowRunning = NO;
+    [self removeDependency:coordinator];
+}
+
+- (void)coordinatorDidCanceledConfirm:(ConfirmPinCoordinator*)coordinator {
+    
+    self.securityFlowRunning = NO;
+    [self removeDependency:coordinator];
+    [[WalletManager sharedInstance] stopObservingForAllSpendable];
+    [[ContractManager sharedInstance] stopObservingForAllSpendable];
+    [self startAuthFlow];
+}
+
+#pragma mark - LoginCoordinatorDelegate
 
 -(void)coordinatorDidLogin:(LoginCoordinator*)coordinator {
     
@@ -126,10 +146,15 @@
     
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
+    [[WalletManager sharedInstance] stopObservingForAllSpendable];
+    [[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self startAuthFlow];
 }
 
+#pragma mark - SecurityCoordinatorDelegate
+
 - (void)coordinatorDidPassSecurity:(LoginCoordinator*)coordinator {
+    
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
     if (self.securityCompletesion) {
@@ -145,6 +170,8 @@
         self.securityCompletesion(NO);
     }
 }
+
+#pragma mark - AuthCoordinatorDelegate
 
 -(void)coordinatorDidAuth:(AuthCoordinator*)coordinator{
     
@@ -199,30 +226,42 @@
     [[WalletManager sharedInstance] clear];
     [[ContractManager sharedInstance] clear];
     [[TemplateManager sharedInstance] clear];
-
 }
 
-- (void)startSecurityFlowWithType:(SecurityType) type  andHandler:(void(^)(BOOL)) handler{
+- (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler {
     
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN && !self.securityFlowRunning ) {
-        [self startLoginFlowWithType:type];
-        self.securityCompletesion = handler;
+    if (self.securityCoordinator) {
+        [self.securityCoordinator cancelPin];
     }
+    
+    ConfirmPinCoordinator* coordinator = [[ConfirmPinCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
+    coordinator.delegate = self;
+    [coordinator start];
+    self.securityFlowRunning = YES;
+    [self addDependency:coordinator];
 }
 
-- (void)startLoginFlowWithType:(SecurityType) type{
+- (void)startSecurityFlowWithHandler:(void(^)(BOOL)) handler {
+    SecurityCoordinator* coordinator = [[SecurityCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
+    coordinator.delegate = self;
+    [coordinator start];
+    self.securityFlowRunning = YES;
+    [self addDependency:coordinator];
+    self.securityCoordinator = coordinator;
+    self.securityCompletesion = handler;
+}
+
+- (void)startLoginFlow{
     
-    if (type == LoginController) {
-        UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
-        self.appDelegate.window.rootViewController = navigationController;
-        self.navigationController = navigationController;
-    }
+    UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
+    self.appDelegate.window.rootViewController = navigationController;
+    self.navigationController = navigationController;
     
     LoginCoordinator* coordinator = [[LoginCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
     coordinator.delegate = self;
-    coordinator.type = type;
     [coordinator start];
-    self.securityFlowRunning = type == SecurityController;
+    self.securityFlowRunning = YES;
+    self.loginCoordinator = coordinator;
     [self addDependency:coordinator];
 }
 
@@ -239,7 +278,7 @@
 }
 
 -(void)coordinatorRequestForLogin {
-    [self startLoginFlowWithType:LoginController];
+    [self startLoginFlow];
 }
 
 -(void)startWalletFlow {

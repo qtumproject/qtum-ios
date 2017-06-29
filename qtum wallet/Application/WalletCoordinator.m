@@ -95,10 +95,6 @@
 
 #pragma mark - WalletCoordinatorDelegate
 
--(void)viewWillAppear{
-//    [self.historyController reloadTableView];
-}
-
 -(void)showAddressInfoWithSpendable:(id <Spendable>) spendable{
     RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
     vc.wallet = spendable;

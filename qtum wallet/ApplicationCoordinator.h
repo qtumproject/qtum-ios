@@ -10,20 +10,18 @@
 #import "AppDelegate.h"
 #import "AuthCoordinator.h"
 #import "LoginCoordinator.h"
+#import "SecurityCoordinator.h"
+#import "ConfirmPinCoordinator.h"
 #import "NotificationManager.h"
 
 @protocol ApplicationCoordinatorDelegate <NSObject>
 
 - (void)coordinatorDidAuth:(AuthCoordinator*)coordinator;
-- (void)coordinatorDidLogin:(LoginCoordinator*)coordinator;
-- (void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator;
 - (void)coordinatorRequestForLogin;
-- (void)coordinatorDidPassSecurity:(LoginCoordinator*)coordinator;
-- (void)coordinatorDidCancelePassSecurity:(LoginCoordinator*)coordinator;
 
 @end
 
-@interface ApplicationCoordinator : BaseCoordinator <Coordinatorable, ApplicationCoordinatorDelegate>
+@interface ApplicationCoordinator : BaseCoordinator <Coordinatorable, ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate>
 
 @property (strong,nonatomic,readonly) NotificationManager* notificationManager;
 @property (strong,nonatomic) id <Requestable> requestManager;
@@ -32,7 +30,8 @@
 //flows
 - (void)startAuthFlow;
 - (void)startMainFlow;
-- (void)startSecurityFlowWithType:(SecurityType) type  andHandler:(void(^)(BOOL)) handler;
+- (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler;
+- (void)startSecurityFlowWithHandler:(void(^)(BOOL)) handler;
 - (void)restartMainFlow;
 - (void)startWalletFlow;
 - (void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;

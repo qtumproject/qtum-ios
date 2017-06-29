@@ -14,8 +14,7 @@
 - (void)showFromViewController:(UIViewController *)controller animated:(BOOL)animated completion:(void (^)(void))completion;
 - (void)hide:(BOOL)animated completion:(void (^)(void))completion;
 
-- (void)setContent:(PopUpContent *)content;
-- (PopUpContent *)getContent;
+@property (strong, nonatomic) PopUpContent *content;
 
 @end
 

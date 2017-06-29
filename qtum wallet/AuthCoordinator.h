@@ -27,7 +27,6 @@
 -(void)didEnableFingerprint:(BOOL) enabled;
 -(void)didCancelEnableFingerprint;
 
-
 @end
 
 @protocol ApplicationCoordinatorDelegate;

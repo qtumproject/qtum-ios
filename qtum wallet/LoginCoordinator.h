@@ -15,11 +15,18 @@ typedef NS_ENUM(NSInteger, SecurityType) {
     SecurityPopup,
 };
 
-@protocol ApplicationCoordinatorDelegate;
+@class LoginCoordinator;
+
+@protocol LoginCoordinatorDelegate <NSObject>
+
+- (void)coordinatorDidLogin:(LoginCoordinator*)coordinator;
+- (void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator;
+
+@end
 
 @interface LoginCoordinator : BaseCoordinator <Coordinatorable>
 
-@property (weak, nonatomic) id <ApplicationCoordinatorDelegate> delegate;
+@property (weak, nonatomic) id <LoginCoordinatorDelegate> delegate;
 @property (assign, nonatomic) SecurityType type;
 
 - (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;

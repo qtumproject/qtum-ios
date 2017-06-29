@@ -154,6 +154,7 @@
 		B3E3A1651E850572002A488F /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1641E850572002A488F /* AppSettings.m */; };
 		B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */; };
 		B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A18A1E852F27002A488F /* SocketManager.m */; };
+		B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE93711F04E19100550C60 /* SecurityCoordinator.m */; };
 		B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* ContractCoordinator.m */; };
 		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
 		B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */; };
@@ -638,6 +639,8 @@
 		B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Settings.m"; sourceTree = "<group>"; };
 		B3E3A1891E852F27002A488F /* SocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketManager.h; sourceTree = "<group>"; };
 		B3E3A18A1E852F27002A488F /* SocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketManager.m; sourceTree = "<group>"; };
+		B3EE93701F04E19100550C60 /* SecurityCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityCoordinator.h; sourceTree = "<group>"; };
+		B3EE93711F04E19100550C60 /* SecurityCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityCoordinator.m; sourceTree = "<group>"; };
 		B3F06CF51E69879D006341F7 /* ContractCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractCoordinator.h; sourceTree = "<group>"; };
 		B3F06CF61E69879D006341F7 /* ContractCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractCoordinator.m; sourceTree = "<group>"; };
 		B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenCoordinator.h; sourceTree = "<group>"; };
@@ -1406,6 +1409,15 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		B3EE936F1F04E0D700550C60 /* Security Flow */ = {
+			isa = PBXGroup;
+			children = (
+				B3EE93701F04E19100550C60 /* SecurityCoordinator.h */,
+				B3EE93711F04E19100550C60 /* SecurityCoordinator.m */,
+			);
+			name = "Security Flow";
+			sourceTree = "<group>";
+		};
 		B3F06D071E699371006341F7 /* Subscribe */ = {
 			isa = PBXGroup;
 			children = (
@@ -1941,6 +1953,7 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B3EE936F1F04E0D700550C60 /* Security Flow */,
 				E7FA0CB01ECD808200702C4E /* Pop Ups */,
 				B387AB421EF04911001D2FF1 /* TemplateManager.h */,
 				B387AB431EF04911001D2FF1 /* TemplateManager.m */,
@@ -2708,6 +2721,7 @@
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
 				B32C3CF31E1126200094C82C /* TabBarController.m in Sources */,
 				B387AB441EF04911001D2FF1 /* TemplateManager.m in Sources */,
+				B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */,
 				B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */,

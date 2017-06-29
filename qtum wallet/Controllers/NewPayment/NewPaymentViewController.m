@@ -246,7 +246,7 @@ static NSInteger withoutTokenOffset = 30;
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
     
     __weak __typeof(self) weakSelf = self;
-    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SecurityPopup andHandler:^(BOOL success) {
+    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithHandler:^(BOOL success) {
         if (success) {
             [weakSelf payAction];
         }

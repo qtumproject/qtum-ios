@@ -20,6 +20,11 @@
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+}
+
 -(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed {
     
     if (reversed) {
