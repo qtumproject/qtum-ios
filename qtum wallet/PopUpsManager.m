@@ -14,6 +14,8 @@
 #import "ErrorPopUpViewController.h"
 #import "LoaderPopUpViewController.h"
 #import "RestoreContractsPopUpViewController.h"
+#import "SourceCodePopUpViewController.h"
+#import "ConfirmPurchasePopUpViewController.h"
 
 @interface PopUpsManager() <PopUpViewControllerDelegate>
 
@@ -84,6 +86,16 @@
 
 - (RestoreContractsPopUpViewController *)createRestoreContractPopUp{
     RestoreContractsPopUpViewController *controller = [[ControllersFactory sharedInstance] createRestoreContractsPopUpViewController];
+    return controller;
+}
+
+- (SourceCodePopUpViewController *)createSourceCodePopUp{
+    SourceCodePopUpViewController *controller = [[ControllersFactory sharedInstance] createSourceCodePopUpViewController];
+    return controller;
+}
+
+- (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUp{
+    ConfirmPurchasePopUpViewController *controller = [[ControllersFactory sharedInstance] createConfirmPurchasePopUpViewController];
     return controller;
 }
 
@@ -188,6 +200,34 @@
     [controller setContent:content];
     self.currentPopUp = controller;
     [controller showFromViewController:presenter animated:YES completion:completion];
+}
+
+- (void)showSourceCodePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion {
+    
+    BOOL needShow = [self checkAndHideCurrentPopUp:[SourceCodePopUpViewController class] withContent:content];
+    if (!needShow) {
+        return;
+    }
+    
+    SourceCodePopUpViewController *controller = [self createSourceCodePopUp];
+    controller.delegate = delegate;
+    [controller setContent:content];
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+}
+
+- (ConfirmPurchasePopUpViewController *)showConfirmPurchasePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion {
+    
+    BOOL needShow = [self checkAndHideCurrentPopUp:[ConfirmPurchasePopUpViewController class] withContent:nil];
+    if (!needShow) {
+        return nil;
+    }
+    
+    ConfirmPurchasePopUpViewController *controller = [self createConfirmPurchasePopUp];
+    controller.delegate = delegate;
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+    return controller;
 }
 
 - (void)hideCurrentPopUp:(BOOL)animated completion:(void (^)(void))completion

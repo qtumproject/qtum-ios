@@ -10,6 +10,8 @@
 #import "PopUpViewController.h"
 #import "PopUpContentGenerator.h"
 
+@class ConfirmPurchasePopUpViewController;
+
 @interface PopUpsManager : NSObject
 
 + (instancetype)sharedInstance;
@@ -25,6 +27,8 @@
 - (void)showConfirmPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 - (void)showLoaderPopUp;
 - (RestoreContractsPopUpViewController *)showRestoreContractsPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
+- (void)showSourceCodePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
+- (ConfirmPurchasePopUpViewController *)showConfirmPurchasePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 
 // dismiss methods
 - (void)dismissLoader;

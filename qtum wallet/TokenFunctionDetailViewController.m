@@ -38,8 +38,6 @@
     NSInteger scrollViewTopOffset = 64;
     NSInteger scrollViewBottomOffset = 49;
 
-    
-    
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, scrollViewTopOffset, CGRectGetWidth(self.view.frame), self.view.frame.size.height - scrollViewTopOffset)];
     self.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
@@ -57,17 +55,19 @@
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement + heighOfElement);
     }
     
-    UIButton *callButton = [[UIButton alloc] init];
-    callButton.frame = CGRectMake((self.view.frame.size.width - 150.0f) / 2.0f, yoffset * self.function.inputs.count - 1 + heighOfPrevElement * self.function.inputs.count - 1 + yoffsetFirstElement + 30.0f, 150, 32.0f);
-    [callButton setTitle:NSLocalizedString(@"CALL", nil) forState:UIControlStateNormal];
-    callButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
-    [callButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
-    [callButton setBackgroundColor:customRedColor()];
-    [callButton addTarget:self action:@selector(didPressedCallAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.scrollView addSubview:callButton];
-    
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
-                                             callButton.frame.origin.y + callButton.frame.size.height + 30.0f);
+    if (!self.fromQStore) {
+        UIButton *callButton = [[UIButton alloc] init];
+        callButton.frame = CGRectMake((self.view.frame.size.width - 150.0f) / 2.0f, yoffset * self.function.inputs.count - 1 + heighOfPrevElement * self.function.inputs.count - 1 + yoffsetFirstElement + 30.0f, 150, 32.0f);
+        [callButton setTitle:NSLocalizedString(@"CALL", nil) forState:UIControlStateNormal];
+        callButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
+        [callButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
+        [callButton setBackgroundColor:customRedColor()];
+        [callButton addTarget:self action:@selector(didPressedCallAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.scrollView addSubview:callButton];
+        
+        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
+                                                 callButton.frame.origin.y + callButton.frame.size.height + 30.0f);
+    }
     
     [self.view addSubview:self.scrollView];
     self.scrollView.contentInset =

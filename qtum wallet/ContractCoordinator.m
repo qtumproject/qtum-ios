@@ -28,6 +28,9 @@
 #import "RestoreContractsViewController.h"
 #import "BackupContractsViewController.h"
 #import "TemplateManager.h"
+#import "QStoreViewController.h"
+#import "QStoreListViewController.h"
+#import "QStoreContractViewController.h"
 
 
 @interface ContractCoordinator ()
@@ -86,7 +89,26 @@
 }
 
 -(void)showContractStore {
+    QStoreViewController* controller = (QStoreViewController*)[[ControllersFactory sharedInstance] createQStoreViewController];
+    controller.delegate = self;
     
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)showQStoreList:(QStoreListType)type categoryTitle:(NSString *)categoryTitle {
+    QStoreListViewController* controller = (QStoreListViewController*)[[ControllersFactory sharedInstance] createQStoreListViewController];
+    controller.delegate = self;
+    controller.type = type;
+    controller.categoryTitle = categoryTitle;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)showQStoreContract {
+    QStoreContractViewController* controller = (QStoreContractViewController*)[[ControllersFactory sharedInstance] createQStoreContractViewController];
+    controller.delegate = self;
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)showWatchContract {
@@ -210,10 +232,16 @@
 
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token {
     
+    [self didSelectFunctionIndexPath:indexPath withItem:item andToken:token fromQStore:NO];
+}
+
+- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token fromQStore:(BOOL)fromQStore {
+    
     TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
     controller.function = item;
     controller.delegate = self;
     controller.token = token;
+    controller.fromQStore = fromQStore;
     self.functionDetailController = controller;
     [self.navigationController pushViewController:controller animated:true];
 }
@@ -246,8 +274,6 @@
     }];
 }
 
-
-
 -(void)didSelectContractStore {
     [self showContractStore];
 }
@@ -274,6 +300,22 @@
 
 - (void)didSelectBackupContract {
     [self showBackupContract];
+}
+
+- (void)didSelectQStoreCategories {
+    [self showQStoreList:QStoreCategories categoryTitle:nil];
+}
+
+- (void)didSelectQStoreCategory {
+    [self showQStoreList:QStoreContracts categoryTitle:@"Some category"];
+}
+
+- (void)didSelectQStoreContract {
+    [self showQStoreContract];
+}
+
+- (void)didSelectQStoreContractDetails {
+    [self didSelectFunctionIndexPath:nil withItem:nil andToken:nil fromQStore:YES];
 }
 
 -(void)didPressedQuit {
