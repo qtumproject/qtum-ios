@@ -2,7 +2,7 @@
 //  SecurityCoordinator.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 29.06.17.
+//  Created by Vladimir Lebedevich on 29.06.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
@@ -88,6 +88,8 @@
                                     
                                 }
                             }];
+    } else {
+        [self showSecurityPopup];
     }
 }
 
