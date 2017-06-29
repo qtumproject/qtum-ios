@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -76,7 +76,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a wallet or restore a previous wallet key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApH-nQ-YF3">
-                                <rect key="frame" x="87.5" y="260.5" width="200" height="50.5"/>
+                                <rect key="frame" x="87.5" y="258.5" width="200" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="CCK-vf-XP6"/>
                                 </constraints>
@@ -85,7 +85,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have a wallet yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbP-bR-TcN">
-                                <rect key="frame" x="20" y="216" width="335" height="19.5"/>
+                                <rect key="frame" x="20" y="216" width="335" height="17.5"/>
                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="15"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -128,6 +128,7 @@
                     <connections>
                         <outlet property="bottomButtonsOffset" destination="iqd-Xv-QcW" id="DIa-l2-G81"/>
                         <outlet property="createButton" destination="FKx-bF-rYK" id="VLN-Gu-fpx"/>
+                        <outlet property="invitationTextLabel" destination="CbP-bR-TcN" id="n79-Iu-Fze"/>
                         <outlet property="loginButton" destination="bZ1-JG-7ln" id="KDS-sr-24E"/>
                         <outlet property="restoreButton" destination="KY1-s1-NTB" id="h8M-P6-WXv"/>
                         <segue destination="x3j-yi-Vzm" kind="show" identifier="createWalletName" id="hKQ-pH-Gbi"/>
