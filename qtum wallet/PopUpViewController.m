@@ -8,69 +8,59 @@
 
 #import "PopUpViewController.h"
 
-BOOL ShowInUIWindow = YES;
 CGFloat AnimationDuration = 0.3f;
 
 @interface PopUpViewController ()
 
-@property (nonatomic) PopUpContent *content;
+@property (assign, nonatomic) BOOL showInUIWindow;
 
 @end
 
 @implementation PopUpViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
 }
 
-- (void)showFromViewController:(UIViewController *)controller animated:(BOOL)animated completion:(void (^)(void))completion
-{
-    if (controller == nil) return;
+- (void)showFromViewController:(UIViewController *)controller animated:(BOOL)animated completion:(void (^)(void))completion {
     
-    if (ShowInUIWindow) {
-        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        if (animated) {
-            self.view.alpha = 0.0f;
-            [window addSubview:self.view];
-            [UIView animateWithDuration:AnimationDuration animations:^{
-                self.view.alpha = 1.0f;
-            } completion:^(BOOL finished) {
-                if (completion) completion();
-            }];
-        }else{
-            [window addSubview:self.view];
+    self.showInUIWindow = !controller;
+    UIView* rootView;
+    
+    if (self.showInUIWindow) {
+        rootView = [UIApplication sharedApplication].keyWindow;
+    } else {
+        rootView = controller.view;
+    }
+    
+    if (animated) {
+        self.view.alpha = 0.0f;
+        [rootView addSubview:self.view];
+        [UIView animateWithDuration:AnimationDuration animations:^{
+            self.view.alpha = 1.0f;
+        } completion:^(BOOL finished) {
             if (completion) completion();
-        }
+        }];
     }else{
-        [controller presentViewController:self animated:animated completion:completion];
+        [rootView addSubview:self.view];
+        if (completion) completion();
     }
 }
 
-- (void)hide:(BOOL)animated completion:(void (^)(void))completion
-{
-    if (ShowInUIWindow) {
-        if (animated) {
-            [UIView animateWithDuration:AnimationDuration animations:^{
-                self.view.alpha = 0.0f;
-            } completion:^(BOOL finished) {
-                [self.view removeFromSuperview];
-                if (completion) completion();
-            }];
-        }else{
+- (void)hide:(BOOL)animated completion:(void (^)(void))completion {
+    
+    if (animated) {
+        [UIView animateWithDuration:AnimationDuration animations:^{
+            self.view.alpha = 0.0f;
+        } completion:^(BOOL finished) {
             [self.view removeFromSuperview];
             if (completion) completion();
-        }
+        }];
     }else{
-        [self dismissViewControllerAnimated:animated completion:completion];
+        [self.view removeFromSuperview];
+        if (completion) completion();
     }
-}
-
-- (void)setContent:(PopUpContent *)content{
-    _content = content;
-}
-
-- (PopUpContent *)getContent{
-    return self.content;
 }
 
 @end

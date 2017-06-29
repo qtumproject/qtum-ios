@@ -11,6 +11,5 @@
 @protocol LoginViewOutput <NSObject>
 
 -(void)applyFailedPasswordAction;
--(void)showLoginFields;
 
 @end

@@ -13,6 +13,8 @@
 #import "RepeateViewController.h"
 #import "CreatePinViewController.h"
 #import "ExportWalletBrandKeyViewController.h"
+#import "EnableFingerprintViewController.h"
+#import "NSUserDefaults+Settings.h"
 
 @interface AuthCoordinator ()
 
@@ -84,6 +86,12 @@
     self.repeatePinController = controller;
 }
 
+-(void)gotoFingerpringOption {
+    EnableFingerprintViewController* controller = (EnableFingerprintViewController*)[[ControllersFactory sharedInstance] createEnableFingerprintViewController];
+    controller.delegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 -(void)gotoExportWallet{
     ExportWalletBrandKeyViewController* controller = (ExportWalletBrandKeyViewController*)[[ControllersFactory sharedInstance] createExportWalletBrandKeyViewController];
     controller.delegate = self;
@@ -150,8 +158,13 @@
     [self resetToRootAnimated:YES];
 }
 
--(void)didCreateWallet{
-    [self gotoExportWallet];
+-(void)didCreateWallet {
+    
+    if ([NSUserDefaults isFingerprintAllowed]) {
+        [self gotoFingerpringOption];
+    } else {
+        [self gotoExportWallet];
+    }
 }
 
 -(void)didRestoreWallet{
@@ -176,6 +189,16 @@
     if ([self.delegate respondsToSelector:@selector(coordinatorDidAuth:)]) {
         [self.delegate coordinatorDidAuth:self];
     }
+}
+
+-(void)didEnableFingerprint:(BOOL) enabled {
+    [NSUserDefaults saveIsFingerpringEnabled:enabled];
+    [self gotoExportWallet];
+}
+
+-(void)didCancelEnableFingerprint {
+    [NSUserDefaults saveIsFingerpringEnabled:NO];
+    [self gotoExportWallet];
 }
 
 

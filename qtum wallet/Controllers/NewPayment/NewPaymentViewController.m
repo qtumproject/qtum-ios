@@ -13,6 +13,7 @@
 #import "TokenListViewController.h"
 #import "ChoseTokenPaymentViewController.h"
 #import "InformationPopUpViewController.h"
+#import "SecurityPopupViewController.h"
 
 @interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate,ChoseTokenPaymentViewControllerDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -94,6 +95,15 @@ static NSInteger withoutTokenOffset = 30;
     [self.view layoutSubviews];
 }
 
+-(void)payAction {
+    
+    if (self.token) {
+        [self payWithToken:[self getCorrectAmountString]];
+    } else {
+        [self payWithWallet:[self getCorrectAmountString]];
+    }
+}
+
 -(void)payWithWallet:(NSString *)amountString {
     
     NSNumber *amount = @([amountString doubleValue]);
@@ -135,11 +145,11 @@ static NSInteger withoutTokenOffset = 30;
 }
 
 - (void)showCompletedPopUp{
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForSend] presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForSend] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp{
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:[UIApplication sharedApplication].delegate.window.rootViewController completion:nil];
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
@@ -219,6 +229,7 @@ static NSInteger withoutTokenOffset = 30;
 }
 
 - (void)done:(id)sender {
+    
     [self.amountTextField resignFirstResponder];
 }
 
@@ -233,11 +244,13 @@ static NSInteger withoutTokenOffset = 30;
 #pragma mark - Action
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
-    if (self.token) {
-        [self payWithToken:[self getCorrectAmountString]];
-    } else {
-        [self payWithWallet:[self getCorrectAmountString]];
-    }
+    
+    __weak __typeof(self) weakSelf = self;
+    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithHandler:^(BOOL success) {
+        if (success) {
+            [weakSelf payAction];
+        }
+    }];
 }
 
 - (IBAction)actionVoidTap:(id)sender{

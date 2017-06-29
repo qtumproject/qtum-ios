@@ -14,6 +14,7 @@
 #import "ErrorPopUpViewController.h"
 #import "LoaderPopUpViewController.h"
 #import "RestoreContractsPopUpViewController.h"
+#import "SecurityPopupViewController.h"
 #import "SourceCodePopUpViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
 
@@ -79,6 +80,11 @@
     return controller;
 }
 
+- (SecurityPopupViewController *)createSecurityPopUp{
+    SecurityPopupViewController *controller = [[ControllersFactory sharedInstance] createSecurityPopupViewController];
+    return controller;
+}
+
 - (LoaderPopUpViewController *)createLoaderPopUp{
     LoaderPopUpViewController *controller = [[ControllersFactory sharedInstance] createLoaderViewController];
     return controller;
@@ -110,8 +116,7 @@
     
     LoaderPopUpViewController *controller = [self createLoaderPopUp];
     self.currentPopUp = controller;
-    UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
-    [controller showFromViewController:root animated:YES completion:nil];
+    [controller showFromViewController:nil animated:YES completion:nil];
 }
 
 - (void)dismissLoader {
@@ -216,6 +221,16 @@
     [controller showFromViewController:presenter animated:YES completion:completion];
 }
 
+- (SecurityPopupViewController*)showSecurityPopup:(id<SecurityPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
+
+    SecurityPopupViewController *controller = [self createSecurityPopUp];
+    controller.delegate = delegate;
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+    return controller;
+}
+
+
 - (ConfirmPurchasePopUpViewController *)showConfirmPurchasePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion {
     
     BOOL needShow = [self checkAndHideCurrentPopUp:[ConfirmPurchasePopUpViewController class] withContent:nil];
@@ -243,7 +258,7 @@
 - (BOOL)checkAndHideCurrentPopUp:(Class)class withContent:(PopUpContent *)content
 {
     if (!self.currentPopUp) return true;
-    BOOL contentEqual = [self.currentPopUp getContent] ? [[self.currentPopUp getContent] isEqual:content] : true;
+    BOOL contentEqual = [self.currentPopUp content] ? [[self.currentPopUp content] isEqual:content] : true;
     if ([self.currentPopUp isKindOfClass:class] && contentEqual) return false;
     
     [self hideCurrentPopUp:NO completion:nil];
@@ -251,8 +266,7 @@
 }
 
 - (void)noInternetConnetion{
-    UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
-    [self showNoIntenterConnetionsPopUp:self presenter:root completion:nil];
+    [self showNoIntenterConnetionsPopUp:self presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpViewControllerDelegate

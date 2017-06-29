@@ -153,7 +153,7 @@
     NSString* keyString = self.wallet.mainAddress;
     [pb setString:keyString];
     
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForAddressCopied] presenter:self completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForAddressCopied] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpViewControllerDelegate

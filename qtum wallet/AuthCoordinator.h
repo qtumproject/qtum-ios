@@ -24,6 +24,8 @@
 -(void)restoreButtonPressed;
 -(void)createNewButtonPressed;
 -(void)didExportWallet;
+-(void)didEnableFingerprint:(BOOL) enabled;
+-(void)didCancelEnableFingerprint;
 
 @end
 

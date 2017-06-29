@@ -51,6 +51,8 @@
 #import "RestoreContractsViewController.h"
 #import "RestoreContractsPopUpViewController.h"
 #import "BackupContractsViewController.h"
+#import "EnableFingerprintViewController.h"
+#import "SecurityPopupViewController.h"
 #import "QStoreViewController.h"
 #import "SourceCodePopUpViewController.h"
 #import "QStoreListViewController.h"
@@ -268,6 +270,11 @@
     return controller;
 }
 
+-(EnableFingerprintViewController*)createEnableFingerprintViewController{
+    EnableFingerprintViewController* controller = (EnableFingerprintViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"EnableFingerprintViewController"];
+    return controller;
+}
+
 -(UIViewController*)createFlowNavigationCoordinator{
     return nil;
 }
@@ -325,6 +332,12 @@
     SourceCodePopUpViewController* controller = (SourceCodePopUpViewController *)[UIViewController controllerInStoryboard:@"SourceCodePopUp" withIdentifire:@"SourceCodePop"];
     return controller;
 }
+
+- (SecurityPopupViewController *)createSecurityPopupViewController{
+    SecurityPopupViewController* controller = (SecurityPopupViewController *)[UIViewController controllerInStoryboard:@"SecurityPopup" withIdentifire:@"SecurityPopupViewController"];
+    return controller;
+}
+
 
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController{
     ConfirmPurchasePopUpViewController* controller = (ConfirmPurchasePopUpViewController *)[UIViewController controllerInStoryboard:@"ConfirmPurchasePopUp" withIdentifire:@"ConfirmPurchasePopUp"];

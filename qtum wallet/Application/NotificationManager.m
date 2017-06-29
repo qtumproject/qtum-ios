@@ -14,14 +14,9 @@
 @import UserNotifications;
 @import FirebaseInstanceID;
 
-
-
-#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-
 @interface NotificationManager () <UNUserNotificationCenterDelegate,UIApplicationDelegate>
 
 @end
-
 
 @implementation NotificationManager
 
@@ -75,7 +70,7 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
     
-    [[FIRInstanceID instanceID] setAPNSToken:deviceToken type:FIRInstanceIDAPNSTokenTypeProd];
+    [[FIRInstanceID instanceID] setAPNSToken:deviceToken type:FIRInstanceIDAPNSTokenTypeSandbox];
     [self storeDeviceToken];
 }
 
