@@ -47,7 +47,7 @@
 
 -(void)setup{
     [NSUserDefaults saveIsRPCOnSetting:NO];
-    [NSUserDefaults saveIsMainnetSetting:NO];
+    [NSUserDefaults saveIsMainnetSetting:YES];
     [PopUpsManager sharedInstance];
     [self setupFabric];
     [self setupFingerpring];
