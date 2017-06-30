@@ -15,8 +15,8 @@ extern NSString *const kTokenDidChange;
 
 @interface ContractManager : NSObject <Managerable>
 
-- (NSArray <Contract*>*)getAllContracts;
-- (NSArray <Contract*>*)getAllTokens;
+- (NSArray <Contract*>*)allContracts;
+- (NSArray <Contract*>*)allTokens;
 - (NSArray <Contract*>*)getAllActiveTokens;
 - (void)addNewToken:(Contract*) token;
 - (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance;

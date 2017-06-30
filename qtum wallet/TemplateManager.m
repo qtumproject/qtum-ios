@@ -208,14 +208,14 @@ static NSString* standartTokenPath = @"StandardPath";
         NSMutableDictionary* backupItem = @{}.mutableCopy;
         TemplateModel* template = self.templates[i];
         ContractFileManager* fileManager = [ContractFileManager sharedInstance];
-        [backupItem setObject:@(i) forKey:kUiidKey];
-        [backupItem setObject:template.templateName ? template.templateName : @"" forKey:kNameKey];
-        [backupItem setObject:template.templateTypeStringForBackup forKey:kTypeKey];
-        [backupItem setObject:template.creationFormattedDateString forKey:kCreationDateKey];
-        [backupItem setObject:[fileManager getEscapeAbiWithTemplate:template.path] forKey:kAbiKey];
+        backupItem[kUiidKey] = @(i);
+        backupItem[kNameKey] = template.templateName ?: @"";
+        backupItem[kTypeKey] = template.templateTypeStringForBackup;
+        backupItem[kCreationDateKey] = template.creationFormattedDateString;
+        backupItem[kAbiKey] = [fileManager escapeAbiWithTemplate:template.path];
         //need to check is full template, coz it may have no source and bytecode
-        [backupItem setObject:template.isFullTemplate ? [fileManager getContractWithTemplate:template.path] : @"" forKey:kSourceKey];
-        [backupItem setObject:template.isFullTemplate ? [NSString hexadecimalString:[fileManager getBitcodeWithTemplate:template.path]] : @"" forKey:kBitecode];
+        backupItem[kSourceKey] = template.isFullTemplate ? [fileManager contractWithTemplate:template.path] : @"";
+        backupItem[kBitecode] = template.isFullTemplate ? [NSString hexadecimalString:[fileManager bitcodeWithTemplate:template.path]] : @"";
         [backupArray addObject:backupItem];
     }
     

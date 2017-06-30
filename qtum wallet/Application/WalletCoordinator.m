@@ -90,7 +90,7 @@
     
     self.pageViewController = self.navigationController.viewControllers[0];
     self.pageViewController.controllers = @[controller,tokenController];
-    [self.pageViewController setScrollEnable:[[ContractManager sharedInstance] getAllTokens].count > 0];
+    [self.pageViewController setScrollEnable:[[ContractManager sharedInstance] allTokens].count > 0];
 }
 
 #pragma mark - WalletCoordinatorDelegate
@@ -191,7 +191,7 @@
 
 -(void)configWalletModels{
     self.wallets = @[].mutableCopy;
-    [self.wallets addObject:[WalletManager sharedInstance].getCurrentWallet];
+    [self.wallets addObject:[WalletManager sharedInstance].сurrentWallet];
     //uncommend if need collection of tokens with wallets
     //[self.wallets addObjectsFromArray:[ContractManager sharedInstance].gatAllTokens];
 }

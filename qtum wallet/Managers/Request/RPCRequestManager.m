@@ -113,8 +113,8 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     __weak __typeof(self)weakSelf = self;
     NSArray *params = @[firt, last, addresses];
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {
-        responseObject = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
-        success(responseObject);
+        id adaptiveResponse = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
+        success(adaptiveResponse);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
@@ -197,12 +197,12 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     NSNumber *count = @(10000000);;
     NSNumber *someValue = @(0);
     NSNumber *flag = @YES;
-    NSArray *params = @[[[WalletManager sharedInstance]getCurrentWallet].getWorldsString, count, someValue, flag];
+    NSArray *params = @[[[WalletManager sharedInstance]сurrentWallet].worldsString, count, someValue, flag];
     __weak __typeof(self)weakSelf = self;
     
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {
-        responseObject = [weakSelf.adapter adaptiveDataForHistory:responseObject];
-        success(responseObject);
+        id adaptiveResponse = [weakSelf.adapter adaptiveDataForHistory:responseObject];
+        success(adaptiveResponse);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
@@ -231,7 +231,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     completesion(nil);
 }
 
-- (void)getTokenInfoWithDict:(NSDictionary*) dict
+- (void)tokenInfoWithDict:(NSDictionary*) dict
           withSuccessHandler:(void(^)(id responseObject))success
            andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
     failure([NSError new], @"You cant use token from RPC");

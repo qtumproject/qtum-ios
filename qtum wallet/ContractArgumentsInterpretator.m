@@ -41,13 +41,13 @@
             //because not all symbols decoding as 2 bite
             NSInteger length = [param dataUsingEncoding:NSUTF8StringEncoding].length * 2;
             //[args appendData:[NSData reverseData:[self uint256DataFromInt:length]]];
-            [stringDict setObject:[NSData reverseData:[self uint256DataFromInt:length]] forKey:@"length"];
+            stringDict[@"length"] = [NSData reverseData:[self uint256DataFromInt:length]];
             nextStingOffset += constantOffset;
-            [stringDict setObject:[NSData reverseData:[self uint256DataFromInt:nextStingOffset]] forKey:@"offset"];
+            stringDict[@"offset"] = [NSData reverseData:[self uint256DataFromInt:nextStingOffset]];
             NSDictionary* dict = [self uint256DataFromString:param];
             //[args appendData:dict[@"data"]];
             nextStingOffset += (constantOffset * [dict[@"shift"] integerValue]);
-            [stringDict setObject:dict[@"data"] forKey:@"value"];
+            stringDict[@"value"] = dict[@"data"];
             [stringsArray addObject:[stringDict copy]];
         } else if ([array[i] isKindOfClass:[NSData class]]) {
             NSData* param = array[i];

@@ -57,11 +57,11 @@
 #pragma mark - methods
 
 - (void)showCompletedPopUp{
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForCreateContract] presenter:nil completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForCreateContract] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp{
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:nil completion:nil];
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate

@@ -98,7 +98,7 @@ static NSString* kAddresses = @"kAddress";
 
 #pragma mark - Public Methods
 
-- (NSArray <Contract*>*)getAllTokens {
+- (NSArray <Contract*>*)allTokens {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i",TokenType];
     return [self.contracts filteredArrayUsingPredicate:predicate];
@@ -110,7 +110,7 @@ static NSString* kAddresses = @"kAddress";
     return [self.contracts filteredArrayUsingPredicate:predicate];
 }
 
-- (NSArray <Contract*>*)getAllContracts {
+- (NSArray <Contract*>*)allContracts {
     
     return self.contracts;
 }
@@ -144,7 +144,7 @@ static NSString* kAddresses = @"kAddress";
         for (NSDictionary* dict in addressBalance[@"balances"]) {
             
             NSString* addressKey = dict[@"address"];
-            [newAddressBalance setObject:@([dict[@"balance"] floatValue]) forKey:addressKey];
+            newAddressBalance[addressKey] = @([dict[@"balance"] floatValue]);
         }
         token.addressBalanceDictionary = [newAddressBalance copy];
         [self tokenDidChange:token];
@@ -163,8 +163,8 @@ static NSString* kAddresses = @"kAddress";
 
 -(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(TemplateModel*)templateModel{
     
-    [self.smartContractPretendents setObject:@{kAddresses : addresses,
-                                               kTemplateModel : templateModel} forKey:key];
+    self.smartContractPretendents[key] = @{kAddresses : addresses,
+                                           kTemplateModel : templateModel};
     [self save];
 }
 
@@ -181,7 +181,7 @@ static NSString* kAddresses = @"kAddress";
     
     if (item.confirmed && item.isSmartContractCreater) {
         NSString* key = item.txHash;
-        NSDictionary* tokenInfo = [self.smartContractPretendents objectForKey:key];
+        NSDictionary* tokenInfo = self.smartContractPretendents[key];
         NSArray* addresses = tokenInfo[kAddresses];
         TemplateModel* templateModel = (TemplateModel*)tokenInfo[kTemplateModel];
         
@@ -192,7 +192,7 @@ static NSString* kAddresses = @"kAddress";
             [hashData appendBytes:&vinIndex length:1];
             hashData = [[hashData BTCHash160] mutableCopy];
             token.contractCreationAddressAddress = addresses.firstObject;
-            token.adresses =  [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+            token.adresses =  [[[WalletManager sharedInstance] hashTableOfKeys] allKeys];
             token.contractAddress = [NSString hexadecimalString:hashData];
             token.localName = [token.contractAddress substringToIndex:6];
             token.templateModel = templateModel;
@@ -219,7 +219,7 @@ static NSString* kAddresses = @"kAddress";
         token.contractAddress = contractAddress;
         token.creationDate = [NSDate date];
         token.localName = [token.contractAddress substringToIndex:6];
-        token.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+        token.adresses = [[[WalletManager sharedInstance] hashTableOfKeys] allKeys];
         //[token setupWithContractAddresse:contractAddress];
         token.manager = self;
         [self addNewToken:token];
@@ -241,7 +241,7 @@ static NSString* kAddresses = @"kAddress";
         contract.contractAddress = contractAddress;
         contract.creationDate = [NSDate date];
         contract.localName = contractName;
-        contract.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+        contract.adresses = [[[WalletManager sharedInstance] hashTableOfKeys] allKeys];
         contract.manager = self;
         
         TemplateModel* template = [[TemplateManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
@@ -266,7 +266,7 @@ static NSString* kAddresses = @"kAddress";
                            andWithName:(NSString*) contractName {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",contractAddress];
-    NSArray *filteredArray = [self.getAllTokens filteredArrayUsingPredicate:predicate];
+    NSArray *filteredArray = [self.allTokens filteredArrayUsingPredicate:predicate];
     
     if (!filteredArray.count && contractAddress) {
         
@@ -274,7 +274,7 @@ static NSString* kAddresses = @"kAddress";
         contract.contractAddress = contractAddress;
         contract.creationDate = [NSDate date];
         contract.localName = contractName;
-        contract.adresses = [[[WalletManager sharedInstance] getHashTableOfKeys] allKeys];
+        contract.adresses = [[[WalletManager sharedInstance] hashTableOfKeys] allKeys];
         contract.manager = self;
         contract.isActive = YES;
         
@@ -311,15 +311,15 @@ static NSString* kAddresses = @"kAddress";
     
     if (token.templateModel.type == TokenType) {
         
-        AbiinterfaceItem* nameProperty = [[ContractInterfaceManager sharedInstance] getTokenStandartNamePropertyInterface];
-        AbiinterfaceItem* totalSupplyProperty = [[ContractInterfaceManager sharedInstance] getTokenStandartTotalSupplyPropertyInterface];
-        AbiinterfaceItem* symbolProperty = [[ContractInterfaceManager sharedInstance] getTokenStandartSymbolPropertyInterface];
-        AbiinterfaceItem* decimalProperty = [[ContractInterfaceManager sharedInstance] getTokenStandartDecimalPropertyInterface];
+        AbiinterfaceItem* nameProperty = [[ContractInterfaceManager sharedInstance] tokenStandartNamePropertyInterface];
+        AbiinterfaceItem* totalSupplyProperty = [[ContractInterfaceManager sharedInstance] tokenStandartTotalSupplyPropertyInterface];
+        AbiinterfaceItem* symbolProperty = [[ContractInterfaceManager sharedInstance] tokenStandartSymbolPropertyInterface];
+        AbiinterfaceItem* decimalProperty = [[ContractInterfaceManager sharedInstance] tokenStandartDecimalPropertyInterface];
         
-        NSString* hashFuctionName = [[ContractInterfaceManager sharedInstance] getStringHashOfFunction:nameProperty];
-        NSString* hashFuctionTotalSupply = [[ContractInterfaceManager sharedInstance] getStringHashOfFunction:totalSupplyProperty];
-        NSString* hashFuctionSymbol = [[ContractInterfaceManager sharedInstance] getStringHashOfFunction:symbolProperty];
-        NSString* hashFuctionDecimal = [[ContractInterfaceManager sharedInstance] getStringHashOfFunction:decimalProperty];
+        NSString* hashFuctionName = [[ContractInterfaceManager sharedInstance] stringHashOfFunction:nameProperty];
+        NSString* hashFuctionTotalSupply = [[ContractInterfaceManager sharedInstance] stringHashOfFunction:totalSupplyProperty];
+        NSString* hashFuctionSymbol = [[ContractInterfaceManager sharedInstance] stringHashOfFunction:symbolProperty];
+        NSString* hashFuctionDecimal = [[ContractInterfaceManager sharedInstance] stringHashOfFunction:decimalProperty];
         
         [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuctionName, hashFuctionTotalSupply, hashFuctionSymbol, hashFuctionDecimal] withHandler:^(id responseObject) {
             
@@ -446,13 +446,13 @@ static NSString* kTemplateKey = @"template";
     for (int i = 0; i < self.contracts.count; i++) {
         NSMutableDictionary* backupItem = @{}.mutableCopy;
         Contract* contract = self.contracts[i];
-        [backupItem setObject:contract.creationFormattedDateString forKey:kPublishDate];
-        [backupItem setObject:contract.localName forKey:kNameKey];
-        [backupItem setObject:contract.contractAddress forKey:kContractAddressKey];
-        [backupItem setObject:contract.contractCreationAddressAddress ? contract.contractCreationAddressAddress : @"" forKey:kContractCreationAddressKey];
-        [backupItem setObject:@(contract.isActive) forKey:kIsActiveKey];
-        [backupItem setObject:contract.templateModel.templateTypeStringForBackup forKey:kTypeKey];
-        [backupItem setObject:@(contract.templateModel.uiid) forKey:kTemplateKey];
+        backupItem[kPublishDate] = contract.creationFormattedDateString;
+        backupItem[kNameKey] = contract.localName;
+        backupItem[kContractAddressKey] = contract.contractAddress;
+        backupItem[kContractCreationAddressKey] = contract.contractCreationAddressAddress ?: @"";
+        backupItem[kIsActiveKey] = @(contract.isActive);
+        backupItem[kTypeKey] = contract.templateModel.templateTypeStringForBackup;
+        backupItem[kTemplateKey] = @(contract.templateModel.uiid);
         [backupArray addObject:backupItem];
     }
     

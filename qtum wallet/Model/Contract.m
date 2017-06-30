@@ -104,20 +104,20 @@
     
     self = [super init];
     if (self) {
-        self.name = name;
-        self.addressBalanceDictionary = addressBalanceDictionary;
-        self.contractCreationAddressAddress = contractCreationAddressAddress;
-        self.localName = localName;
-        self.creationDate = creationDate;
-        self.templateModel = templateModel;
-        self.contractAddress = contractAddress;
-        self.adresses = adresses;
-        self.symbol = symbol;
-        self.decimals = decimals;
-        self.totalSupply = totalSupply;
-        self.balance = balance;
-        self.unconfirmedBalance = unconfirmedBalance;
-        self.isActive = isActive;
+        _name = name;
+        _addressBalanceDictionary = addressBalanceDictionary;
+        _contractCreationAddressAddress = contractCreationAddressAddress;
+        _localName = localName;
+        _creationDate = creationDate;
+        _templateModel = templateModel;
+        _contractAddress = contractAddress;
+        _adresses = adresses;
+        _symbol = symbol;
+        _decimals = decimals;
+        _totalSupply = totalSupply;
+        _balance = balance;
+        _unconfirmedBalance = unconfirmedBalance;
+        _isActive = isActive;
     }
     
     return self;

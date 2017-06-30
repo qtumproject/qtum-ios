@@ -29,7 +29,7 @@
 -(void) updateDots
 {
     for (int i = 0; i < [self.subviews count]; i++) {
-        UIImageView * dot = [self imageViewForSubview:  [self.subviews objectAtIndex: i]];
+        UIImageView * dot = [self imageViewForSubview:  self.subviews[i]];
         if (i == self.currentPage) {
             dot.image = self.activeImage;
         } else {

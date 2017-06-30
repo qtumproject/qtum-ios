@@ -27,9 +27,9 @@
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.topConstraints = [NSMutableArray new];
-        self.views = [NSMutableArray new];
-        self.heights = [NSMutableArray new];
+        _topConstraints = [NSMutableArray new];
+        _views = [NSMutableArray new];
+        _heights = [NSMutableArray new];
     }
     return self;
 }
@@ -93,7 +93,7 @@
 - (void)changeTopConstaintsByPosition:(CGFloat)position diff:(CGFloat)diff{
     
     BalanceTokenView *firstView = (BalanceTokenView *)[self.views firstObject];
-    CGFloat maxYPosition = firstView.frame.size.height - [MainTokenTableViewCell getHeaderHeight];
+    CGFloat maxYPosition = firstView.frame.size.height - [[self class] getHeaderHeight];
     
     CGFloat percentForChangeLabel = (firstView.frame.size.height - (position + self.contentView.frame.size.height)) / maxYPosition;;
     
@@ -166,11 +166,11 @@
 - (BOOL)needShowHeader:(CGFloat)yPosition diff:(CGFloat)diff{
     UIView *firstView = [self.views firstObject];
     NSLayoutConstraint *constr = [self.constraints firstObject];
-    CGFloat maxYPosition = firstView.frame.size.height - [MainTokenTableViewCell getHeaderHeight];
+    CGFloat maxYPosition = firstView.frame.size.height - [[self class] getHeaderHeight];
     
     CGFloat percentOfPosition;
     if (diff <= 0.0f) {
-        percentOfPosition = 1.0f - (yPosition + constr.constant + self.frame.size.height) / [MainTokenTableViewCell getHeaderHeight];
+        percentOfPosition = 1.0f - (yPosition + constr.constant + self.frame.size.height) / [[self class] getHeaderHeight];
         return percentOfPosition > 0;
     }else{
         percentOfPosition = (firstView.frame.size.height - (yPosition + self.contentView.frame.size.height)) / maxYPosition;
@@ -207,7 +207,7 @@
     UIView *last = [array lastObject];
     UIView *underLast;
     for (NSInteger i = array.count - 2; i >= 0; i--) {
-        underLast = [array objectAtIndex:i];
+        underLast = array[i];
         
         if (underLast.frame.origin.y + underLast.frame.size.height != last.frame.origin.y + last.frame.size.height) {
             break;
@@ -216,8 +216,8 @@
     
     CGFloat moveDiff;
     if ([last isEqual:[self.views firstObject]]) {
-        CGFloat moveDistanсe = last.frame.size.height - [MainTokenTableViewCell getHeaderHeight];
-        CGFloat value = last.frame.origin.y + last.frame.size.height - position - [MainTokenTableViewCell getHeaderHeight];
+        CGFloat moveDistanсe = last.frame.size.height - [[self class] getHeaderHeight];
+        CGFloat value = last.frame.origin.y + last.frame.size.height - position - [[self class] getHeaderHeight];
         
         if (value > 0 && value < moveDistanсe) {
             if (value < moveDistanсe / 2.0f) {

@@ -34,68 +34,68 @@
 }
 
 
-- (AbiinterfaceItem*)getTokenStandartTransferMethodInterface{
+- (AbiinterfaceItem*)tokenStandartTransferMethodInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"transfer"];
     NSArray *filteredArray = [interphase.functionItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
 }
 
-- (AbiinterfaceItem*)getTokenStandartNamePropertyInterface{
+- (AbiinterfaceItem*)tokenStandartNamePropertyInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"name"];
     NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
 }
 
-- (AbiinterfaceItem*)getTokenStandartTotalSupplyPropertyInterface{
+- (AbiinterfaceItem*)tokenStandartTotalSupplyPropertyInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"totalSupply"];
     NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
 }
 
-- (AbiinterfaceItem*)getTokenStandartSymbolPropertyInterface{
+- (AbiinterfaceItem*)tokenStandartSymbolPropertyInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"symbol"];
     NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
 }
 
 
-- (AbiinterfaceItem*)getTokenStandartDecimalPropertyInterface{
+- (AbiinterfaceItem*)tokenStandartDecimalPropertyInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getStandartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"decimals"];
     NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
 }
 
-- (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templatePath {
+- (InterfaceInputFormModel*)tokenInterfaceWithTemplate:(NSString*)templatePath {
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] getAbiWithTemplate:templatePath]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance]abiWithTemplate:templatePath]];
     return interphase;
 }
 
-- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templatePath andParam:(NSDictionary*) args{
+- (NSData*)tokenBitecodeWithTemplate:(NSString*)templatePath andParam:(NSDictionary*) args{
     
-    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeWithTemplate:templatePath] mutableCopy];
+    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] bitcodeWithTemplate:templatePath] mutableCopy];
     [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromDictionary:args]];
     return [contractSource copy];
 }
 
-- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templatePath andArray:(NSArray*) args{
+- (NSData*)tokenBitecodeWithTemplate:(NSString*)templatePath andArray:(NSArray*) args{
     
-    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] getBitcodeWithTemplate:templatePath] mutableCopy];
+    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] bitcodeWithTemplate:templatePath] mutableCopy];
     [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromArray:args]];
     return [contractSource copy];
 }
 
-- (NSString*)getStringHashOfFunction:(AbiinterfaceItem*) fuctionItem{
+- (NSString*)stringHashOfFunction:(AbiinterfaceItem*) fuctionItem{
     
     NSMutableString* param = [NSMutableString new];
     for (int i = 0; i < fuctionItem.inputs.count; i++) {
@@ -109,22 +109,22 @@
     return [[functionSignature sha3:256] substringToIndex:8];
 }
 
-- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem {
+- (NSData*)hashOfFunction:(AbiinterfaceItem*) fuctionItem {
     
-    return [NSString dataFromHexString:[self getStringHashOfFunction:fuctionItem]];
+    return [NSString dataFromHexString:[self stringHashOfFunction:fuctionItem]];
 }
 
-- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param{
+- (NSData*)hashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param{
     
     NSAssert(fuctionItem.inputs.count == param.count, @"Function interface param count and param count must be equal");
-    NSMutableData* hashFunction = [[self getHashOfFunction:fuctionItem] mutableCopy];
+    NSMutableData* hashFunction = [[self hashOfFunction:fuctionItem] mutableCopy];
     NSMutableArray* mutableParam = [param mutableCopy];
     for (int i = 0; i < param.count; i++) {
         if (fuctionItem.inputs[i].type == AddressType && [param[i] isKindOfClass:[NSString class]]) {
             NSData* hexDataFromBase58 = [param[i] dataFromBase58];
             if (hexDataFromBase58.length == 25) {
                 NSData* addressData = [hexDataFromBase58 subdataWithRange:NSMakeRange(1, 20)];
-                [mutableParam replaceObjectAtIndex:i withObject:addressData];
+                mutableParam[i] = addressData;
             } else {
                 return nil;
             }

@@ -89,11 +89,11 @@
 }
 
 -(void)showControllerByIndex:(NSInteger)index{
-    [self.tabBarContoller setSelectedViewController:[self.tabBarContoller.viewControllers objectAtIndex:index]];
+    [self.tabBarContoller setSelectedViewController:self.tabBarContoller.viewControllers[index]];
 }
 
 -(UIViewController *)getViewControllerByIndex:(NSInteger)index{
-    return [self.tabBarContoller.viewControllers objectAtIndex:index];;
+    return self.tabBarContoller.viewControllers[index];
 }
 
 @end

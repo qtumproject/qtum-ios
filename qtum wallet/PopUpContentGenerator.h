@@ -12,14 +12,14 @@
 
 @interface PopUpContentGenerator : NSObject
 
-+ (PopUpContent *)getContentForOupsPopUp;
-+ (PopUpContent *)getContentForUpdateBalance;
-+ (PopUpContent *)getContentForPhotoLibrary;
-+ (PopUpContent *)getContentForCreateContract;
-+ (PopUpContent *)getContentForSend;
-+ (PopUpContent *)getContentForCompletedBackupFile;
-+ (PopUpContent *)getContentForBrainCodeCopied;
-+ (PopUpContent *)getContentForAddressCopied;
-+ (PopUpContent *)getContentForSourceCode;
++ (PopUpContent *)contentForOupsPopUp;
++ (PopUpContent *)contentForUpdateBalance;
++ (PopUpContent *)contentForPhotoLibrary;
++ (PopUpContent *)contentForCreateContract;
++ (PopUpContent *)contentForSend;
++ (PopUpContent *)contentForCompletedBackupFile;
++ (PopUpContent *)contentForBrainCodeCopied;
++ (PopUpContent *)contentForAddressCopied;
++ (PopUpContent *)contentForSourceCode;
 
 @end

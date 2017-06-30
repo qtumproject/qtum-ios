@@ -34,8 +34,8 @@
 }
 
 - (IBAction)actionSourceCode:(id)sender {
-    PopUpContent *content = [PopUpContentGenerator getContentForSourceCode];
-    NSString *code = [[ContractFileManager sharedInstance] getContractWithTemplate:@"Standart"];
+    PopUpContent *content = [PopUpContentGenerator contentForSourceCode];
+    NSString *code = [[ContractFileManager sharedInstance] contractWithTemplate:@"Standart"];
     content.messageString = code;
     
     [[PopUpsManager sharedInstance] showSourceCodePopUp:self withContent:content presenter:nil completion:nil];

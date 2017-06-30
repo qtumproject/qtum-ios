@@ -54,7 +54,7 @@
 -(void)showFingerprint {
     
     LAContext *myContext = [[LAContext alloc] init];
-    NSError *authError = nil;
+    NSError *authError;
     NSString *reason = @"Login";
     
     __weak __typeof(self) weakSelf = self;

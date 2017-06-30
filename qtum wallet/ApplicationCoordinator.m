@@ -306,7 +306,7 @@
     NSInteger profileIndex = 1;
     [self.tabCoordinator showControllerByIndex:profileIndex];
     UINavigationController *vc = (UINavigationController *)[self.tabCoordinator getViewControllerByIndex:profileIndex];
-    ProfileViewController *profile = [vc.viewControllers objectAtIndex:0];
+    ProfileViewController *profile = vc.viewControllers[0];
     LanguageCoordinator *languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:vc];
     [profile saveLanguageCoordinator:languageCoordinator];
     [languageCoordinator startWithoutAnimation];
@@ -331,7 +331,7 @@
         [controller selectSendControllerWithAdress:self.adress andValue:self.amount];
     }
     self.router = controller;
-    [self storeAuthorizedFlag:YES andMainAddress:[WalletManager sharedInstance].getCurrentWallet.mainAddress];
+    [self storeAuthorizedFlag:YES andMainAddress:[WalletManager sharedInstance].сurrentWallet.mainAddress];
 }
 
 -(void)restartMainFlow {

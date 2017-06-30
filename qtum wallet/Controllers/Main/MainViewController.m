@@ -111,7 +111,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
 }
 
 -(void)configAdressLabel{
-    NSString* keyString = [AppSettings sharedInstance].isMainNet ? [WalletManager sharedInstance].getCurrentWallet.getRandomKey.address.string : [WalletManager sharedInstance].getCurrentWallet.getRandomKey.addressTestnet.string;
+    NSString* keyString = [AppSettings sharedInstance].isMainNet ? [WalletManager sharedInstance].сurrentWallet.randomKey.address.string : [WalletManager sharedInstance].сurrentWallet.randomKey.addressTestnet.string;
     self.adressLabel.text = keyString;
 }
 

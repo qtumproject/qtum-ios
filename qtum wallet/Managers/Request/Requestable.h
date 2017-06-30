@@ -72,7 +72,7 @@
 
 // Token info
 
-- (void)getTokenInfoWithDict:(NSDictionary*) dict
+- (void)tokenInfoWithDict:(NSDictionary*) dict
           withSuccessHandler:(void(^)(id responseObject))success
            andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 

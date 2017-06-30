@@ -20,6 +20,11 @@
 
 @implementation NotificationManager
 
+-(void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)registerForRemoutNotifications {
     
     if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
@@ -44,11 +49,11 @@
     [NSUserDefaults saveDeviceToken:nil];
 }
 
-- (NSString*)getToken {
+- (NSString*)token {
     return [NSUserDefaults getDeviceToken];
 }
 
-- (NSString*)getPrevToken {
+- (NSString*)prevToken {
     return [NSUserDefaults getPrevDeviceToken];
 }
 

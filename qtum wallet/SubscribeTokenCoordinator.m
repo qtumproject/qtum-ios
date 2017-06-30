@@ -50,7 +50,7 @@
     [self.navigationController pushViewController:controller animated:YES];
     controller.delegate = self;
     controller.delegateDataSource = [SubscribeTokenDataSourceDelegate new];
-    controller.tokensArray = [self sortingContractsByDate:[[ContractManager sharedInstance] getAllTokens]];
+    controller.tokensArray = [self sortingContractsByDate:[[ContractManager sharedInstance] allTokens]];
     controller.delegateDataSource.delegate = controller;
     self.subscribeViewController = controller;
 }

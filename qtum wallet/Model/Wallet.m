@@ -25,54 +25,55 @@ NSInteger const USERS_KEYS_COUNT = 100;
 @implementation Wallet
 
 - (instancetype)initWithName:(NSString *)name pin:(NSString *)pin {
+    
     self = [super init];
     if (self) {
-        self.name = name;
-        self.pin = pin;
-        self.countOfUsedKeys = USERS_KEYS_COUNT;
-        self.seedWords = [self generateWordsArray];
+        _name = name;
+        _pin = pin;
+        _countOfUsedKeys = USERS_KEYS_COUNT;
+        _seedWords = [self generateWordsArray];
+        [_manager spendableDidChange:self];
     }
     return self;
 }
 
 - (instancetype)initWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords {
+    
     self = [super init];
     if (self) {
-        self.name = name;
-        self.pin = pin;
-        self.countOfUsedKeys = USERS_KEYS_COUNT;
-        self.seedWords = seedWords;
-        
-        if (!_keyChain) {
-            return nil;
-        }
+        _name = name;
+        _pin = pin;
+        _countOfUsedKeys = USERS_KEYS_COUNT;
+        _seedWords = seedWords;
+        [_manager spendableDidChange:self];
+
     }
     return self;
 }
 
 #pragma mamrk - Setters
 
-- (void)setSeedWords:(NSArray *)seedWords
-{
-    _seedWords = seedWords;
-    if (!self.keyChain) {
-        self.keyChain = [self createKeychain];
-    }
-}
-
-- (void)setName:(NSString *)name
-{
+- (void)setName:(NSString *)name {
+    
     _name = name;
     [self.manager spendableDidChange:self];
 }
 
-- (void)setPin:(NSString *)pin
-{
+- (void)setPin:(NSString *)pin {
+    
     _pin = pin;
     [self.manager spendableDidChange:self];
 }
 
 #pragma mark - Getters
+
+-(BTCKeychain*)keyChain {
+    
+    if (!_keyChain) {
+        _keyChain = [self createKeychain];
+    }
+    return _keyChain;
+}
 
 -(NSArray <HistoryElementProtocol>*)historyArray{
     return [self.historyStorage.historyPrivate copy];
@@ -80,7 +81,7 @@ NSInteger const USERS_KEYS_COUNT = 100;
 
 -(NSString *)mainAddress{
     
-    BTCKey* key = [self getLastRandomKeyOrRandomKey];
+    BTCKey* key = [self lastRandomKeyOrRandomKey];
     NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
     return keyString;
 }
@@ -93,7 +94,7 @@ NSInteger const USERS_KEYS_COUNT = 100;
 
 #pragma mark - Public Methods
 
-- (BTCKey *)getRandomKey{
+- (BTCKey *)randomKey{
     
     uint randomedIndex = arc4random() % self.countOfUsedKeys;
     BTCKey *newKey = [self.keyChain keyAtIndex:randomedIndex hardened:YES];
@@ -102,9 +103,9 @@ NSInteger const USERS_KEYS_COUNT = 100;
     return newKey;
 }
 
--(BTCKey*)getLastRandomKeyOrRandomKey{
+-(BTCKey*)lastRandomKeyOrRandomKey{
     if (!self.lastRandomKey) {
-        BTCKey* key = [self getRandomKey];
+        BTCKey* key = [self randomKey];
         [self storeLastAdreesKey:key];
         return key;
     }else {
@@ -117,12 +118,12 @@ NSInteger const USERS_KEYS_COUNT = 100;
     [NSUserDefaults saveWalletAddressKey:keyString];
 }
 
-- (BTCKey *)getKeyAtIndex:(NSUInteger)index;
+- (BTCKey *)keyAtIndex:(NSUInteger)index;
 {
     return [self.keyChain keyAtIndex:(uint)index hardened:YES];
 }
 
-- (NSArray *)getAllKeys
+- (NSArray *)allKeys
 {
     NSMutableArray *allKeys = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
@@ -131,12 +132,12 @@ NSInteger const USERS_KEYS_COUNT = 100;
     return allKeys;
 }
 
-- (NSString *)getWorldsString
+- (NSString *)worldsString
 {
     return [self.seedWords componentsJoinedByString:@" "];
 }
 
-- (NSArray <NSString*>*)getAllKeysAdreeses{
+- (NSArray <NSString*>*)allKeysAdreeses {
     NSMutableArray *allKeysString = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
@@ -217,10 +218,11 @@ NSInteger const USERS_KEYS_COUNT = 100;
     
     self = [super init];
     if (self) {
-        self.name = name;
-        self.pin = pin;
-        self.countOfUsedKeys = USERS_KEYS_COUNT;
-        self.seedWords = seedWords;
+        _name = name;
+        _pin = pin;
+        _countOfUsedKeys = USERS_KEYS_COUNT;
+        _seedWords = seedWords;
+        [_manager spendableDidChange:nil];
     }
     
     return self;

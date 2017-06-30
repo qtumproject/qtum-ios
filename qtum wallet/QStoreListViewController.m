@@ -67,8 +67,8 @@
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    CGFloat duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    CGSize kbSize = [info[UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGFloat duration = [info[UIKeyboardAnimationDurationUserInfoKey] floatValue]; 
     
     UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
     CGFloat tapBarHeight = 0.0f;
@@ -86,7 +86,7 @@
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
-    CGFloat duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    CGFloat duration = [info[UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
     self.bottomConstraintForTable.constant = 0;
     

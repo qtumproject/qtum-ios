@@ -90,8 +90,8 @@ static NSString* op_exec = @"c1";
     
     
 
-    AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] getTokenStandartTransferMethodInterface];
-    NSData* hashFuction = [[ContractInterfaceManager sharedInstance] getHashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
+    AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] tokenStandartTransferMethodInterface];
+    NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
     NSString* __block addressWithAmountValue;
     [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
         if (balance.floatValue > amount.floatValue) {
@@ -101,7 +101,7 @@ static NSString* op_exec = @"c1";
     }];
     
     if (addressWithAmountValue) {
-        [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[WalletManager sharedInstance].сurrentWallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
             completion(error,transaction,hashTransaction);
         }];
     } else {

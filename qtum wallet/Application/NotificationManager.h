@@ -20,7 +20,7 @@
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 - (void)createLocalNotificationWithString:(NSString*) text andIdentifire:(NSString*)identifire;
 
-- (NSString*)getToken;
-- (NSString*)getPrevToken;
+- (NSString*)token;
+- (NSString*)prevToken;
 
 @end

@@ -81,8 +81,8 @@ static NSInteger withoutTokenOffset = 30;
 
 -(void)updateControls{
     
-    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.balance];
-    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.unconfirmedBalance];
+    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].сurrentWallet.balance];
+    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].сurrentWallet.unconfirmedBalance];
     
     BOOL isTokensExists = [ContractManager sharedInstance].getAllActiveTokens.count;
     self.tokenTextField.hidden =
@@ -114,7 +114,7 @@ static NSInteger withoutTokenOffset = 30;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].сurrentWallet allKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             [weakSelf showCompletedPopUp];
@@ -145,11 +145,11 @@ static NSInteger withoutTokenOffset = 30;
 }
 
 - (void)showCompletedPopUp{
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForSend] presenter:nil completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp{
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:nil completion:nil];
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate

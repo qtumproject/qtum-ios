@@ -29,11 +29,11 @@
 @property (nonatomic, readonly) NSInteger countOfUsedKeys;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
 
-- (BTCKey *)getLastRandomKeyOrRandomKey;
-- (BTCKey *)getRandomKey;
-- (BTCKey *)getKeyAtIndex:(NSUInteger)index;
-- (NSArray *)getAllKeys;
-- (NSString *)getWorldsString;
-- (NSArray <NSString*>*)getAllKeysAdreeses;
+- (BTCKey *)lastRandomKeyOrRandomKey;
+- (BTCKey *)randomKey;
+- (BTCKey *)keyAtIndex:(NSUInteger)index;
+- (NSArray *)allKeys;
+- (NSString *)worldsString;
+- (NSArray <NSString*>*)allKeysAdreeses;
 
 @end

@@ -193,12 +193,13 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     } else {
         pathString = @"outputs/unspent";
         param = @{}.mutableCopy;
-        [param setObject:addresses forKey:@"addresses[]"];
+        param[@"addresses[]"] = addresses;
     }
     
     [self requestWithType:GET path:pathString andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
-        responseObject = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
-        success(responseObject);
+        
+        id adaptiveResponse = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
+        success(adaptiveResponse);
         NSLog(@"Succes");
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
         failure(error,message);
@@ -233,7 +234,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     if (addresses) {
         pathString = [NSString stringWithFormat:@"%@/%@/%@",@"history",param[@"limit"],param[@"offset"]];
         adressesForParam = @{}.mutableCopy;
-        [adressesForParam setObject:addresses forKey:@"addresses[]"];
+        adressesForParam[@"addresses[]"] = addresses;
     }else {
         pathString = [NSString stringWithFormat:@"%@/%@/%@/%@",@"history",param[@"address"],param[@"limit"],param[@"offset"]];
     }
@@ -293,7 +294,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 
 #pragma mark - Token 
 
-- (void)getTokenInfoWithDict:(NSDictionary*) dict
+- (void)tokenInfoWithDict:(NSDictionary*) dict
           withSuccessHandler:(void(^)(id responseObject))success
            andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
     NSString* path = [NSString stringWithFormat:@"contracts/%@/params?keys=symbol,decimals,name,totalSupply",dict[@"addressContract"]];
@@ -311,7 +312,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 - (void)startObservingAdresses:(NSArray*) addresses{
     self.socketManager = [SocketManager new];
     self.socketManager.delegate = self;
-    [self.socketManager startAndSubscribeWithAddresses:[[WalletManager sharedInstance] getCurrentWallet].getAllKeysAdreeses andHandler:^{
+    [self.socketManager startAndSubscribeWithAddresses:[[WalletManager sharedInstance] сurrentWallet].allKeysAdreeses andHandler:^{
     }];
 }
 
