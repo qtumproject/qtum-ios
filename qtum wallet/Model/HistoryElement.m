@@ -12,7 +12,7 @@
 
 
 - (void)calcAmountAndAdresses:(NSDictionary *)dictionary{
-    NSDictionary* hashTableAdresses = [self getHashTableOfKeys];
+    NSDictionary* hashTableAdresses = [self hashTableOfKeys];
     CGFloat outMoney = 0;
     CGFloat inMoney = 0;
     
@@ -21,7 +21,7 @@
         
         [self.fromAddreses addObject:@{@"address":inObject[@"address"],
                                        @"value":inObject[@"value"]}];
-        NSString* address = [hashTableAdresses objectForKey:inObject[@"address"]];
+        NSString* address = hashTableAdresses[inObject[@"address"]];
         if (address) {
             inMoney += [inObject[@"value"] floatValue];
         }
@@ -32,7 +32,7 @@
         [self.toAddresses addObject:@{@"address":outObject[@"address"],
                                        @"value":outObject[@"value"]}];
         
-        NSString* address = [hashTableAdresses objectForKey:outObject[@"address"]];
+        NSString* address = hashTableAdresses[outObject[@"address"]];
         if (address) {
             outMoney += [outObject[@"value"] floatValue];
         }
@@ -121,8 +121,8 @@
     self.shortDateString = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
 }
 
-- (NSDictionary *)getHashTableOfKeys{
-    return [[WalletManager sharedInstance] getHashTableOfKeys];
+- (NSDictionary *)hashTableOfKeys{
+    return [[WalletManager sharedInstance] hashTableOfKeys];
 }
 
 #pragma mark - Setup
@@ -143,9 +143,9 @@
 - (NSDictionary *)dictionaryFromElementForWatch {
     NSString *address = self.send ? [self.toAddresses firstObject][@"address"] : [self.fromAddreses firstObject][@"address"];
     
-    NSDictionary *dictionary = @{@"address" : address ? address : @"",
-                                 @"date" : self.shortDateString ? self.shortDateString : @"",
-                                 @"amount" : self.amountString ? self.amountString : @"",
+    NSDictionary *dictionary = @{@"address" : address ?: @"",
+                                 @"date" : self.shortDateString ?: @"",
+                                 @"amount" : self.amountString ?: @"",
                                  @"send" : @(self.send)};
     
     return dictionary;

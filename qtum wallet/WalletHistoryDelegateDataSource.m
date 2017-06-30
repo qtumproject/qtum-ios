@@ -31,7 +31,7 @@ static NSInteger countOfSections = 2;
         WalletHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:WalletTypeCellWithCollectionIdentifire];
         
         cell.delegate = self.delegate;
-        [cell setCellType:[self getHeaderCellType]];
+        [cell setCellType:[self headerCellType]];
         [cell setData:self.wallet];
         [self didScrollForheaderCell:tableView];
         
@@ -64,7 +64,7 @@ static NSInteger countOfSections = 2;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-        switch ([self getHeaderCellType]) {
+        switch ([self headerCellType]) {
             case HeaderCellTypeWithoutPageControl:
                 return 192;
             case HeaderCellTypeWithoutNotCorfirmedBalance:
@@ -163,7 +163,7 @@ static NSInteger countOfSections = 2;
 
 #pragma mark - Private Methods
 
-- (HeaderCellType)getHeaderCellType{
+- (HeaderCellType)headerCellType{
     
     if (self.wallet.unconfirmedBalance == 0.0f && !self.haveTokens) {
         return HeaderCellTypeWithoutAll;

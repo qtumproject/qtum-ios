@@ -14,19 +14,19 @@
 
 @interface ContractInterfaceManager : NSObject
 
-- (InterfaceInputFormModel*)getTokenInterfaceWithTemplate:(NSString*)templateName;
-- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args;
-- (NSData*)getTokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args;
-- (NSString*)getStringHashOfFunction:(AbiinterfaceItem*) fuctionItem;
-- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem;
-- (NSData*)getHashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param;
+- (InterfaceInputFormModel*)tokenInterfaceWithTemplate:(NSString*)templateName;
+- (NSData*)tokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args;
+- (NSData*)tokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args;
+- (NSString*)stringHashOfFunction:(AbiinterfaceItem*) fuctionItem;
+- (NSData*)hashOfFunction:(AbiinterfaceItem*) fuctionItem;
+- (NSData*)hashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param;
 
 
-- (AbiinterfaceItem*)getTokenStandartTransferMethodInterface;
-- (AbiinterfaceItem*)getTokenStandartNamePropertyInterface;
-- (AbiinterfaceItem*)getTokenStandartTotalSupplyPropertyInterface;
-- (AbiinterfaceItem*)getTokenStandartSymbolPropertyInterface;
-- (AbiinterfaceItem*)getTokenStandartDecimalPropertyInterface;
+- (AbiinterfaceItem*)tokenStandartTransferMethodInterface;
+- (AbiinterfaceItem*)tokenStandartNamePropertyInterface;
+- (AbiinterfaceItem*)tokenStandartTotalSupplyPropertyInterface;
+- (AbiinterfaceItem*)tokenStandartSymbolPropertyInterface;
+- (AbiinterfaceItem*)tokenStandartDecimalPropertyInterface;
 
 + (instancetype)sharedInstance;
 

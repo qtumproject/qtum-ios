@@ -23,14 +23,17 @@
 @implementation CheckboxButton
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.squareBackroundColor = customBlackColor();
+        _squareBackroundColor = customBlackColor();
+        [self changeViewByCheckState];
     }
     return self;
 }
 
 - (void)setup {
+    
     self.checkView.layer.borderWidth = 2.0f;
     [self changeViewByCheckState];
     
@@ -39,6 +42,7 @@
 }
 
 - (void)layoutSubviews {
+    
     [super layoutSubviews];
     
     if (!self.isSetup) {
@@ -50,6 +54,7 @@
 #pragma mark - Actions
 
 - (void)actionTap {
+    
     self.checked = !self.checked;
     [self changeViewByCheckState];
     

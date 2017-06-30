@@ -19,7 +19,7 @@
 
 @interface ChoseTokenPaymentViewController : BaseViewController
 
-@property (strong, nonatomic) NSArray <Contract*>* tokens;
+@property (copy, nonatomic) NSArray <Contract*>* tokens;
 @property (weak, nonatomic)Contract* activeToken;
 @property (weak, nonatomic)id <ChoseTokenPaymentViewControllerDelegate> delegate;
 

@@ -19,7 +19,7 @@
 }
 
 - (void)setContent:(PopUpContent *)content {
-    NSLog(@"Pop-up not for content!!!");
+    DLog(@"Pop-up not for content!!!");
 }
 
 - (IBAction)backAction:(id)sender {

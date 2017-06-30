@@ -42,6 +42,11 @@ const CGFloat TextFieldAlpha = 0.3f;
     self.scrollView.delegate = self;
 }
 
+-(void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Notifications Handlers
 
 -(void)keyboardWillShow:(NSNotification *)sender{

@@ -258,7 +258,7 @@
 - (BOOL)checkAndHideCurrentPopUp:(Class)class withContent:(PopUpContent *)content
 {
     if (!self.currentPopUp) return true;
-    BOOL contentEqual = [self.currentPopUp content] ? [[self.currentPopUp content] isEqual:content] : true;
+    BOOL contentEqual = [self.currentPopUp content] ? [[self.currentPopUp content] isEqualContent:content] : true;
     if ([self.currentPopUp isKindOfClass:class] && contentEqual) return false;
     
     [self hideCurrentPopUp:NO completion:nil];

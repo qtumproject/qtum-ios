@@ -129,7 +129,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    NSLog(@"scrollViewDidEndDecelerating");
+    DLog(@"scrollViewDidEndDecelerating");
     
     if (!self.mainCell) return;
     CGFloat diff = [self.mainCell lastRect:scrollView.contentOffset.y];
@@ -137,7 +137,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    NSLog(@"scrollViewDidEndDragging");
+    DLog(@"scrollViewDidEndDragging");
     
     if (decelerate) {
         return;
@@ -180,38 +180,46 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 #pragma mark - Configuration Views
 
 -(BalanceTokenView *)createOrUpdateBalanceTokenView:(BalanceTokenView *)view {
-    if (!view) {
-        view = (BalanceTokenView *)[self getViewFromXib:[BalanceTokenView class]];
+    
+    BalanceTokenView* updatedView = view;
+    if (!updatedView) {
+        updatedView = (BalanceTokenView *)[self getViewFromXib:[BalanceTokenView class]];
     }
-    view.balanceValueLabel.text = [NSString stringWithFormat:@"%f",self.token.balance];
-    return view;
+    updatedView.balanceValueLabel.text = [NSString stringWithFormat:@"%f",self.token.balance];
+    return updatedView;
 }
 
 -(QTUMAddressTokenView *)createOrUpdateQTUMAddressTokenView:(QTUMAddressTokenView *)view  {
-    if (!view) {
-        view = (QTUMAddressTokenView *)[self getViewFromXib:[QTUMAddressTokenView class]];
+    
+    QTUMAddressTokenView* updatedView = view;
+    if (!updatedView) {
+        updatedView = (QTUMAddressTokenView *)[self getViewFromXib:[QTUMAddressTokenView class]];
     }
-    view.delegate = self;
-    view.addressLabel.text = self.token.mainAddress;
-    return view;
+    updatedView.delegate = self;
+    updatedView.addressLabel.text = self.token.mainAddress;
+    return updatedView;
 }
 
 -(NubersTokenView *)createOrUpdateNubersTokenView:(NubersTokenView *)view {
-    if (!view) {
-        view = (NubersTokenView *)[self getViewFromXib:[NubersTokenView class]];
+    
+    NubersTokenView* updatedView = view;
+    if (!updatedView) {
+        updatedView = (NubersTokenView *)[self getViewFromXib:[NubersTokenView class]];
     }
-    view.initialSupplyLabel.text = [NSString stringWithFormat:@"%@", self.token.totalSupply];
-    view.decimalUnitsLabel.text = [NSString stringWithFormat:@"%@", self.token.decimals];
-    return view;
+    updatedView.initialSupplyLabel.text = [NSString stringWithFormat:@"%@", self.token.totalSupply];
+    updatedView.decimalUnitsLabel.text = [NSString stringWithFormat:@"%@", self.token.decimals];
+    return updatedView;
 }
 
 -(AddressesTokenView *)createOrUpdateAddressesTokenView:(AddressesTokenView *)view {
-    if (!view) {
-        view = (AddressesTokenView *)[self getViewFromXib:[AddressesTokenView class]];
+    
+    AddressesTokenView* updatedView = view;
+    if (!updatedView) {
+        updatedView = (AddressesTokenView *)[self getViewFromXib:[AddressesTokenView class]];
     }
-    view.addressNameLabel.text = NSLocalizedString(@"Sender Address", @"");
-    view.addressLabel.text = self.token.adresses.firstObject;
-    return view;
+    updatedView.addressNameLabel.text = NSLocalizedString(@"Sender Address", @"");
+    updatedView.addressLabel.text = self.token.adresses.firstObject;
+    return updatedView;
 }
 
 - (UIView *)getViewFromXib:(Class)class{

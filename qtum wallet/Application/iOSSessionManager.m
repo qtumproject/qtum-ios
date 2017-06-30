@@ -43,9 +43,9 @@ NSString *kErrorKey = @"error";
             WCSession *session = [WCSession defaultSession];
             session.delegate = self;
             [session activateSession];
-            NSLog(@"WCSession is supported");
+            DLog(@"WCSession is supported");
         }else{
-            NSLog(@"WCSession is NOT supported");
+            DLog(@"WCSession is NOT supported");
         }
     }
     
@@ -56,9 +56,9 @@ NSString *kErrorKey = @"error";
     if (self.currentState == WCSessionActivationStateActivated) {
         WCSession *session = [WCSession defaultSession];
         [session sendMessage:@{@"hello" : message} replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
-            NSLog(@"WCSession activationDidCompleteWithState :  %@", replyMessage);
+            DLog(@"WCSession activationDidCompleteWithState :  %@", replyMessage);
         } errorHandler:^(NSError * _Nonnull error) {
-            NSLog(@"Error send message");
+            DLog(@"Error send message");
         }];
     }
 }
@@ -68,7 +68,7 @@ NSString *kErrorKey = @"error";
 /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
 - (void)session:(WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(nullable NSError *)error{
     self.currentState = activationState;
-    NSLog(@"WCSession activationDidCompleteWithState :  %ld", (long)activationState);
+    DLog(@"WCSession activationDidCompleteWithState :  %ld", (long)activationState);
 }
 
 /** ------------------------- iOS App State For Watch ------------------------ */
@@ -76,41 +76,41 @@ NSString *kErrorKey = @"error";
 /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
 - (void)sessionDidBecomeInactive:(WCSession *)session{
     self.currentState = session.activationState;
-    NSLog(@"sessionDidBecomeInactive");
+    DLog(@"sessionDidBecomeInactive");
 }
 
 /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
 - (void)sessionDidDeactivate:(WCSession *)session{
     self.currentState = session.activationState;
-    NSLog(@"sessionDidDeactivate");
+    DLog(@"sessionDidDeactivate");
 }
 
 /** Called when any of the Watch state properties change. */
 - (void)sessionWatchStateDidChange:(WCSession *)session{
     self.currentState = session.activationState;
-    NSLog(@"sessionWatchStateDidChange : state = %ld", (long)session.activationState);
+    DLog(@"sessionWatchStateDidChange : state = %ld", (long)session.activationState);
 }
 
 /** ------------------------- Interactive Messaging ------------------------- */
 
 /** Called when the reachable state of the counterpart app changes. The receiver should check the reachable property on receiving this delegate callback. */
 - (void)sessionReachabilityDidChange:(WCSession *)session{
-    NSLog(@"sessionReachabilityDidChange");
+    DLog(@"sessionReachabilityDidChange");
 }
 
 /** Called on the delegate of the receiver. Will be called on startup if the incoming message caused the receiver to launch. */
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message{
-    NSLog(@"sessionReachabilityDidChange : message : %@", message);
+    DLog(@"sessionReachabilityDidChange : message : %@", message);
 }
 
 /** Called on the delegate of the receiver when the sender sends a message that expects a reply. Will be called on startup if the incoming message caused the receiver to launch. */
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message replyHandler:(void(^)(NSDictionary<NSString *, id> *replyMessage))replyHandler{
-    NSLog(@"didReceiveMessage with reply : message : %@", message);
+    DLog(@"didReceiveMessage with reply : message : %@", message);
     
     NSString *key = message[MainMessageKey];
     if ([key isEqualToString:GetQRCodeMessageKey]) {
         CGFloat width = [message[@"width"] floatValue];
-        NSString *address = [WalletManager sharedInstance].getCurrentWallet.mainAddress;
+        NSString *address = [WalletManager sharedInstance].сurrentWallet.mainAddress;
         
         [QRCodeManager createQRCodeFromString:address forSize:CGSizeMake(width, width) withCompletionBlock:^(UIImage *image) {
             NSDictionary *dictionary = @{@"data" : UIImagePNGRepresentation(image),
@@ -121,17 +121,17 @@ NSString *kErrorKey = @"error";
     } else if ([key isEqualToString:GetWalletInformation]) {
         CGFloat width = [message[@"width"] floatValue];
         
-        if (![WalletManager sharedInstance].getCurrentWallet) {
+        if (![WalletManager sharedInstance].сurrentWallet) {
             NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
             replyHandler(dictionary);
             return;
         }
         
-        [[WalletManager sharedInstance].getCurrentWallet updateBalanceWithHandler:^(BOOL success) {
+        [[WalletManager sharedInstance].сurrentWallet updateBalanceWithHandler:^(BOOL success) {
             if (success) {
-                [[WalletManager sharedInstance].getCurrentWallet updateHistoryWithHandler:^(BOOL success) {
+                [[WalletManager sharedInstance].сurrentWallet updateHistoryWithHandler:^(BOOL success) {
                     if (success) {
-                        Wallet *wallet = [WalletManager sharedInstance].getCurrentWallet;
+                        Wallet *wallet = [WalletManager sharedInstance].сurrentWallet;
                         NSString *address = wallet.mainAddress;
                         NSNumber *availableBalance = @(wallet.balance);
                         NSNumber *unconfirmedBalance = @(wallet.unconfirmedBalance);

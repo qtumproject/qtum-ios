@@ -14,15 +14,15 @@
     
     self = [super init];
     if (self) {
-        self.titleString = title;
-        self.messageString = message;
-        self.okButtonTitle = okTitle;
-        self.cancelButtonTitle = cancelTitle;
+        _titleString = title;
+        _messageString = message;
+        _okButtonTitle = okTitle;
+        _cancelButtonTitle = cancelTitle;
     }
     return self;
 }
 
-- (BOOL)isEqual:(PopUpContent *)object{
+- (BOOL)isEqualContent:(PopUpContent *)object{
     
     BOOL title = self.titleString ? [self.titleString isEqualToString:object.titleString] : YES;
     BOOL message = self.messageString ? [self.messageString isEqualToString:object.messageString] : YES;

@@ -27,12 +27,12 @@ static NSString* kTemplateUiidKey = @"template";
 +(void)getBackupFile:(void (^)(NSDictionary *file, NSString* path, NSInteger size)) completionBlock {
     
     NSMutableDictionary* backup = @{}.mutableCopy;
-    [backup setObject:[[ContractManager sharedInstance] decodeDataForBackup] forKey:kContractsKey];
-    [backup setObject:[[TemplateManager sharedInstance] decodeDataForBackup] forKey:kTemplatesKey];
-    [backup setObject:[[NSDate date] string] forKey:kDateCreateKey];
-    [backup setObject:kCurrentPlatformValueKey forKey:kPlatformKey];
-    [backup setObject:kCurrentFileVersionValueKey forKey:kFileVersionKey];
-    [backup setObject:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forKey:kPlatformVersionKey];
+    backup[kContractsKey] = [[ContractManager sharedInstance] decodeDataForBackup];
+    backup[kTemplatesKey] = [[TemplateManager sharedInstance] decodeDataForBackup];
+    backup[kDateCreateKey] = [[NSDate date] string];
+    backup[kPlatformKey] = kCurrentPlatformValueKey;
+    backup[kFileVersionKey] = kCurrentFileVersionValueKey;
+    backup[kPlatformVersionKey] = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
     NSString* filePath = [DataOperation SaveFileWithName:kBackupFileNameKey DataSource:backup.copy];
     NSInteger fileSize = (NSInteger)[[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil] fileSize];
     completionBlock(backup.copy,filePath,fileSize);

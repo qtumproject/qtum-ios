@@ -20,7 +20,7 @@
 @property (copy, nonatomic) NSString* name;
 @property (assign, nonatomic) CGFloat balance;
 @property (assign, nonatomic) CGFloat unconfirmedBalance;
-@property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
+@property (copy, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;
 @property (weak, nonatomic)id <Managerable> manager;
@@ -29,11 +29,11 @@
 @property (nonatomic, readonly) NSInteger countOfUsedKeys;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
 
-- (BTCKey *)getLastRandomKeyOrRandomKey;
-- (BTCKey *)getRandomKey;
-- (BTCKey *)getKeyAtIndex:(NSUInteger)index;
-- (NSArray *)getAllKeys;
-- (NSString *)getWorldsString;
-- (NSArray <NSString*>*)getAllKeysAdreeses;
+- (BTCKey *)lastRandomKeyOrRandomKey;
+- (BTCKey *)randomKey;
+- (BTCKey *)keyAtIndex:(NSUInteger)index;
+- (NSArray *)allKeys;
+- (NSString *)worldsString;
+- (NSArray <NSString*>*)allKeysAdreeses;
 
 @end

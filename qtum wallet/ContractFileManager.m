@@ -35,7 +35,7 @@
 }
 
 -(NSString*)documentDirectory{
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
 }
 
 -(NSString*)contractDirectory{
@@ -55,12 +55,12 @@
     [self copyAllFilesFormPath:fromPath toPath:toPath];
 }
 
--(NSDictionary*)getStandartAbi {
+-(NSDictionary*)standartAbi {
     
-    return [self getAbiWithTemplate:[[TemplateManager sharedInstance] getStandartTokenTemplate].path];
+    return [self abiWithTemplate:[[TemplateManager sharedInstance] standartTokenTemplate].path];
 }
 
--(NSDictionary*)getAbiWithTemplate:(NSString*) templatePath {
+-(NSDictionary*)abiWithTemplate:(NSString*) templatePath {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templatePath];
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -68,21 +68,21 @@
     return jsonAbi;
 }
 
--(NSString*)getEscapeAbiWithTemplate:(NSString*) templatePath {
+-(NSString*)escapeAbiWithTemplate:(NSString*) templatePath {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templatePath];
     NSString *abi = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     return abi;
 }
 
--(NSString*)getContractWithTemplate:(NSString*) templatePath {
+-(NSString*)contractWithTemplate:(NSString*) templatePath {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/source-contract",[self contractDirectory],templatePath];
     NSString *contract = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     return contract;
 }
 
--(NSData*)getBitcodeWithTemplate:(NSString*) templatePath {
+-(NSData*)bitcodeWithTemplate:(NSString*) templatePath {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/bitecode-contract",[self contractDirectory], templatePath];
     NSString *contract = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -160,7 +160,7 @@
     return err ? NO : YES;
 }
 
--(NSDate*)getDateOfCreationTemplate:(NSString*) templatePath {
+-(NSDate*)dateOfCreationTemplate:(NSString*) templatePath {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@",[self contractDirectory],templatePath];
     NSArray* resContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
@@ -168,7 +168,7 @@
     NSFileManager* fm = [NSFileManager defaultManager];
     NSDictionary* attrs = [fm attributesOfItemAtPath:[path stringByAppendingPathComponent:resContents[0]] error:nil];
     
-    return attrs ? (NSDate*)[attrs objectForKey: NSFileCreationDate] : nil;
+    return attrs ? (NSDate*)attrs[NSFileCreationDate] : nil;
 }
 
 

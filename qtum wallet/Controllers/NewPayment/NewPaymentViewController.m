@@ -74,17 +74,17 @@ static NSInteger withoutTokenOffset = 30;
 
 -(void)checkActiveToken {
     
-    if (![[ContractManager sharedInstance].getAllActiveTokens containsObject:self.token]) {
+    if (![[ContractManager sharedInstance].allActiveTokens containsObject:self.token]) {
         self.token = nil;
     }
 }
 
 -(void)updateControls{
     
-    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.balance];
-    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].getCurrentWallet.unconfirmedBalance];
+    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].сurrentWallet.balance];
+    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].сurrentWallet.unconfirmedBalance];
     
-    BOOL isTokensExists = [ContractManager sharedInstance].getAllActiveTokens.count;
+    BOOL isTokensExists = [ContractManager sharedInstance].allActiveTokens.count;
     self.tokenTextField.hidden =
     self.tokenButton.hidden =
     self.tokenDisclousureImage.hidden = !isTokensExists;
@@ -92,15 +92,16 @@ static NSInteger withoutTokenOffset = 30;
     self.tokenDisclousureImage.tintColor = customBlueColor();
     self.tokenTextField.text =  self.token ? self.token.localName : NSLocalizedString(@"QTUM (Default)", @"");
     
-    [self.view layoutSubviews];
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
 }
 
 -(void)payAction {
     
     if (self.token) {
-        [self payWithToken:[self getCorrectAmountString]];
+        [self payWithToken:[self correctAmountString]];
     } else {
-        [self payWithWallet:[self getCorrectAmountString]];
+        [self payWithWallet:[self correctAmountString]];
     }
 }
 
@@ -114,7 +115,7 @@ static NSInteger withoutTokenOffset = 30;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].getCurrentWallet getAllKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].сurrentWallet allKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             [weakSelf showCompletedPopUp];
@@ -145,11 +146,11 @@ static NSInteger withoutTokenOffset = 30;
 }
 
 - (void)showCompletedPopUp{
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForSend] presenter:nil completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp{
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:nil completion:nil];
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
@@ -165,9 +166,9 @@ static NSInteger withoutTokenOffset = 30;
 - (void)cancelButtonPressed:(PopUpViewController *)sender{
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
     if (self.token) {
-        [self payWithToken:[self getCorrectAmountString]];
+        [self payWithToken:[self correctAmountString]];
     } else {
-        [self payWithWallet:[self getCorrectAmountString]];
+        [self payWithWallet:[self correctAmountString]];
     }
 }
 
@@ -233,7 +234,7 @@ static NSInteger withoutTokenOffset = 30;
     [self.amountTextField resignFirstResponder];
 }
 
-- (NSString *)getCorrectAmountString {
+- (NSString *)correctAmountString {
     NSMutableString *amountString = [self.amountTextField.text mutableCopy];
     if ([amountString containsString:@","]) {
         [amountString replaceCharactersInRange:[amountString rangeOfString:@","] withString:@"."];

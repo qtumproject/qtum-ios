@@ -18,7 +18,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setup];
+        [self setupWithItem:nil];
     }
     return self;
 }
@@ -27,21 +27,23 @@
     
     self = [super initWithFrame:frame];
     if (self) {
-        [self setup];
-        [self setItem:item];
+        [self setupWithItem:item];
     }
     return self;
 }
 
-- (void)setup {
+- (void)setupWithItem:(AbiinterfaceInput*) item {
+    
     [self setTintColor:customBlueColor()];
     self.textColor = customBlueColor();
     self.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
     self.currentHeight = 1;
     self.delegate = self;
+    self.item = item;
 }
 
 - (void)setItem:(AbiinterfaceInput *)item {
+    
     self.keyboardType = (item.type == UInt256Type || item.type == UInt8Type) ? UIKeyboardTypeDecimalPad : UIKeyboardTypeDefault;
     self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:item.name attributes:@{NSForegroundColorAttributeName: customBlueColor()}];
     _item = item;

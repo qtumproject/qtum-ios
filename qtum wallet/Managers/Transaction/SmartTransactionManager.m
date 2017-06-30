@@ -191,7 +191,7 @@ static NSString* op_exec = @"c1";
             BTCScript* sigScript = [[BTCScript alloc] init];
             NSData* d1 = tx.data;
             NSData* hash = [tx signatureHashForScript:txout.script inputIndex:i hashType:BTCSignatureHashTypeAll error:nil];
-            NSLog(@"Hash Sig: %@", BTCIDFromHash(hash));
+            DLog(@"Hash Sig: %@", BTCIDFromHash(hash));
             NSData* d2 = tx.data;
             
             NSAssert([d1 isEqual:d2], @"Transaction must not change within signatureHashForScript!");
@@ -228,10 +228,10 @@ static NSString* op_exec = @"c1";
         BTCScriptMachine* sm = [[BTCScriptMachine alloc] initWithTransaction:tx inputIndex:0];
         NSError* errore = nil;
         BOOL r = [sm verifyWithOutputScript:[[(BTCTransactionOutput*)txouts[0] script] copy] error:&errore];
-        NSLog(@"Error: %@", errore);
+        DLog(@"Error: %@", errore);
         NSAssert(r, @"should verify first output");
         
-        NSLog(@"Hash tx: %@", tx.transactionID);
+        DLog(@"Hash tx: %@", tx.transactionID);
         return tx;
     }
     
@@ -313,7 +313,7 @@ static NSString* op_exec = @"c1";
             BTCScript* sigScript = [[BTCScript alloc] init];
             NSData* d1 = tx.data;
             NSData* hash = [tx signatureHashForScript:txout.script inputIndex:i hashType:BTCSignatureHashTypeAll error:nil];
-            NSLog(@"Hash Sig: %@", BTCIDFromHash(hash));
+            DLog(@"Hash Sig: %@", BTCIDFromHash(hash));
             NSData* d2 = tx.data;
             
             NSAssert([d1 isEqual:d2], @"Transaction must not change within signatureHashForScript!");
@@ -350,10 +350,10 @@ static NSString* op_exec = @"c1";
         BTCScriptMachine* sm = [[BTCScriptMachine alloc] initWithTransaction:tx inputIndex:0];
         NSError* errore = nil;
         BOOL r = [sm verifyWithOutputScript:[[(BTCTransactionOutput*)txouts[0] script] copy] error:&errore];
-        NSLog(@"Error: %@", errore);
+        DLog(@"Error: %@", errore);
         NSAssert(r, @"should verify first output");
         
-        NSLog(@"Hash tx: %@", tx.transactionID);
+        DLog(@"Hash tx: %@", tx.transactionID);
         return tx;
     }
     

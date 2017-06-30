@@ -12,7 +12,7 @@
 
 @interface BalancePageViewController : UIPageViewController 
 
-@property (strong, nonatomic) NSArray <UIViewController <Paginationable>*>* controllers;
+@property (copy, nonatomic) NSArray <UIViewController <Paginationable>*>* controllers;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> coordinatorDelegate;
 
 - (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;

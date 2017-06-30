@@ -157,7 +157,6 @@
                                 <state key="normal" title="SEND">
                                     <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <state key="highlighted" image="payment2"/>
                                 <connections>
                                     <action selector="makePaymentButtonWasPressed:" destination="WZ6-tG-7Ii" eventType="touchUpInside" id="ZDF-co-sI1"/>
                                 </connections>
@@ -284,7 +283,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-3f-mRF">
-                                                <rect key="frame" x="148" y="11" width="79" height="23"/>
+                                                <rect key="frame" x="148.5" y="11" width="79" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -312,7 +311,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOh-TX-UCk" userLabel="Camera View">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr_overlay" translatesAutoresizingMaskIntoConstraints="NO" id="zGX-91-Mk4">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zGX-91-Mk4">
                                         <rect key="frame" x="35" y="149" width="305" height="305"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -534,8 +533,6 @@
     <resources>
         <image name="back" width="11" height="20"/>
         <image name="deisclosure_dark" width="5" height="9"/>
-        <image name="payment2" width="16" height="16"/>
-        <image name="qr_overlay" width="16" height="16"/>
         <image name="qrcode" width="20" height="20"/>
         <image name="share" width="20" height="21"/>
     </resources>

@@ -32,7 +32,7 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
     [self notificateChangeHistory];
 }
 
-- (NSArray<HistoryElement*>*)getHistory{
+- (NSArray<HistoryElement*>*)history{
     return [_historyPrivate copy];
 }
 
@@ -45,7 +45,7 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
     }];
 
     if (index < self.historyPrivate.count) {
-        [self.historyPrivate replaceObjectAtIndex:index withObject:item];
+        self.historyPrivate[index] = item;
     } else {
         [self.historyPrivate insertObject:item atIndex:0];
     }

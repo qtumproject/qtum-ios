@@ -215,7 +215,7 @@
             if (success) {
                 [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
             } else {
-                [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator getContentForOupsPopUp] presenter:nil completion:nil];
+                [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
             }
         }];
     }

@@ -18,7 +18,7 @@
     if ([arrayPath count] <= 0) {
         return nil;
     }
-    NSString *stringPath = [arrayPath objectAtIndex:0];
+    NSString *stringPath = arrayPath[0];
     NSString *stringFile=[stringPath stringByAppendingPathComponent:FileName];
     
 
@@ -34,7 +34,7 @@
         return nil;
     }
     
-    NSString *stringPath = [arrayPath objectAtIndex:0];
+    NSString *stringPath = arrayPath[0];
     NSString *stringFile = [stringPath stringByAppendingPathComponent:FileName];
     
     NSError * err;
@@ -66,7 +66,7 @@
             return NO;
         }
         
-        NSString *stringPath = [arrayPath objectAtIndex:0];
+        NSString *stringPath = arrayPath[0];
         NSString *stringFile=[stringPath stringByAppendingPathComponent:fileName];
 
         [fileManager changeCurrentDirectoryPath:[stringPath stringByExpandingTildeInPath]];
@@ -120,7 +120,7 @@
 #pragma mark - DataMethods
 
 +(BOOL)DataSaveDictWith:(NSMutableDictionary *)dictSave fileName:(NSString *)fileName {
-    NSMutableArray *arraySource = [DataOperation GetFileWithName:fileName];
+    NSMutableArray *arraySource = [self GetFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
@@ -130,35 +130,35 @@
     }else {
         return NO;
     }
-    [DataOperation SaveFileWithName:fileName DataSource:arraySource];
+    [self SaveFileWithName:fileName DataSource:arraySource];
     return YES;
 }
 
 
 +(BOOL)DataDeleteDictWithKey:(NSString *)key  KeyValue:(NSString *)keyValue fileName:(NSString *)fileName {
-    NSMutableArray *arraySource = [DataOperation GetFileWithName:fileName];
+    NSMutableArray *arraySource = [self GetFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
     
     for (NSMutableDictionary *dictSub in arraySource) {
-        if ([[dictSub objectForKey:key] isEqualToString:keyValue]) {
+        if ([dictSub[key] isEqualToString:keyValue]) {
             [arraySource removeObject:dictSub];
             break;
         }
     }
-    [DataOperation SaveFileWithName:fileName DataSource:arraySource];
+    [self SaveFileWithName:fileName DataSource:arraySource];
     return YES;
 }
 
 
 +(NSMutableDictionary *)DataGetDictWithKey:(NSString *)key KeyValue:(NSString *)keyValue fileName:(NSString *)fileName {
-    NSMutableArray *arraySource = [DataOperation GetFileWithName:fileName];
+    NSMutableArray *arraySource = [self GetFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
     for (NSMutableDictionary *dictSub in arraySource) {
-        if ([[dictSub objectForKey:key] isEqualToString:keyValue]) {
+        if ([dictSub[key] isEqualToString:keyValue]) {
             return dictSub;
         }
     }
@@ -170,31 +170,31 @@
 + (NSString *)appPath
 {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSUserDomainMask, YES);
-	return [paths objectAtIndex:0];
+	return paths[0];
 }
 
 + (NSString *)docPath
 {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	return [paths objectAtIndex:0];
+	return paths[0];
 }
 
 + (NSString *)libPrefPath
 {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-	return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Preference"];
+	return [paths[0] stringByAppendingFormat:@"/Preference"];
 }
 
 + (NSString *)libCachePath
 {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-	return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Caches"];
+	return [paths[0] stringByAppendingFormat:@"/Caches"];
 }
 
 + (NSString *)tmpPath
 {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-	return [[paths objectAtIndex:0] stringByAppendingFormat:@"/tmp"];
+	return [paths[0] stringByAppendingFormat:@"/tmp"];
 }
 
 + (BOOL)hasLive:(NSString *)path

@@ -130,7 +130,7 @@
     NSData *data = UIImagePNGRepresentation(file);
     [data writeToFile:localPath atomically:YES];
     if (err != nil) {
-        NSLog(@"We have an error.");
+        DLog(@"We have an error.");
     }
 }
 

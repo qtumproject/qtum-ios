@@ -41,7 +41,7 @@
 
 -(void)configurationBrainKeyLabel{
     self.brainKeyLabel.text =
-    self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] getCurrentWallet].seedWords];
+    self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] сurrentWallet].seedWords];
 }
 
 #pragma mark - Actions
@@ -51,7 +51,7 @@
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.brainKey;
     
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForBrainCodeCopied] presenter:nil completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForBrainCodeCopied] presenter:nil completion:nil];
 }
 
 - (IBAction)actionContinue:(id)sender {

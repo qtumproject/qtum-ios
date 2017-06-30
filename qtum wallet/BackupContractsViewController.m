@@ -39,7 +39,7 @@
     __weak __typeof(self) weakSelf = self;
     if (!self.isBackupCreated) {
         [BackupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
-            NSLog(@"%@",file);
+            DLog(@"%@",file);
             [weakSelf fileWasCreatedWithURL:path andSize:size];
             weakSelf.isBackupCreated = YES;
         }];
@@ -77,7 +77,7 @@
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator getContentForCompletedBackupFile] presenter:nil completion:nil];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForCompletedBackupFile] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpViewControllerDelegate

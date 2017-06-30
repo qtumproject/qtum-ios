@@ -20,7 +20,7 @@
 
 @interface TokenListViewController : BaseViewController
 
-@property (strong, nonatomic) NSArray<Contract*>* tokens;
+@property (copy, nonatomic) NSArray<Contract*>* tokens;
 @property (weak,nonatomic) id <TokenListViewControllerDelegate> delegate;
 
 -(void)reloadTable;

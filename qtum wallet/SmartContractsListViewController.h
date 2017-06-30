@@ -11,7 +11,7 @@
 
 @interface SmartContractsListViewController : BaseViewController
 
-@property (strong, nonatomic) NSArray <Contract*>* contracts;
+@property (copy, nonatomic) NSArray <Contract*>* contracts;
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 
 @end

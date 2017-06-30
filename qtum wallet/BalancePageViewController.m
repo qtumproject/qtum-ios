@@ -109,11 +109,11 @@
 
 -(void)scrollToIndex:(NSInteger)index animated:(BOOL)animated{
     
-    if (index < 0 || index >= _controllers.count) {
+    if (index < 0 || index >= self.controllers.count) {
         return;
     }
 
-    [self setViewControllers:@[[_controllers objectAtIndex:index]] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:nil];
+    [self setViewControllers:@[self.controllers[index]] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:nil];
     self.currentIndex = index;
 }
 

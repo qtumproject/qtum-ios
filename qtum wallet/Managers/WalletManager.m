@@ -101,17 +101,17 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     }];
 }
 
-- (Wallet *)getCurrentWallet {
+- (Wallet *)сurrentWallet {
     
     return [self.wallets firstObject];
 }
 
-- (NSDictionary *)getHashTableOfKeys{
+- (NSDictionary *)hashTableOfKeys{
     NSMutableDictionary *hashTable = [NSMutableDictionary new];
-    for (BTCKey *key in [[self getCurrentWallet] getAllKeys]) {
+    for (BTCKey *key in [[self сurrentWallet] allKeys]) {
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
         if (keyString) {
-            [hashTable setObject:[NSNull null] forKey:keyString];
+            hashTable[keyString] = [NSNull null];
         }
     }
     return [hashTable copy];
@@ -123,7 +123,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     [self save];
 }
 
-- (NSArray *)getAllWallets {
+- (NSArray *)allWallets {
     
     return [NSArray arrayWithArray:self.wallets];
 }
@@ -156,26 +156,26 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
     __weak typeof(self) weakSelf = self;
     for (NSInteger i = 0; i < wallet.countOfUsedKeys; i++) {
-        BTCKey *key = [wallet getKeyAtIndex:i];
+        BTCKey *key = [wallet keyAtIndex:i];
         
         dispatch_group_enter(self.registerGroup);
         
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
-        NSLog(@"Enter -- > %@",keyString);
+        DLog(@"Enter -- > %@",keyString);
 
-        [[ApplicationCoordinator sharedInstance].requestManager registerKey:keyString identifier:wallet.getWorldsString new:YES withSuccessHandler:^(id responseObject) {
+        [[ApplicationCoordinator sharedInstance].requestManager registerKey:keyString identifier:wallet.worldsString new:YES withSuccessHandler:^(id responseObject) {
             dispatch_group_leave(weakSelf.registerGroup);
-            NSLog(@"Success");
+            DLog(@"Success");
         } andFailureHandler:^(NSError *error, NSString *message) {
             isAllCompleted = NO;
             dispatch_group_leave(weakSelf.registerGroup);
-            NSLog(@"Fail");
+            DLog(@"Fail");
         }];
     }
     
     dispatch_group_notify(self.registerGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"All comleted");
+            DLog(@"All comleted");
             if (isAllCompleted) {
                 success();
             }else {
@@ -238,7 +238,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 }
 
 -(void)startObservingForAllSpendable {
-    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self getCurrentWallet] getAllKeysAdreeses]];
+    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self сurrentWallet] allKeysAdreeses]];
 }
 
 -(void)stopObservingForAllSpendable {
@@ -254,7 +254,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 -(void)updateBalanceOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete{
     
     // __weak __typeof(self)weakSelf = self;
-    [self.requestAdapter getBalanceForAddreses:[object getAllKeysAdreeses] withSuccessHandler:^(double balance) {
+    [self.requestAdapter getBalanceForAddreses:[object allKeysAdreeses] withSuccessHandler:^(double balance) {
         
         object.balance = balance;
         complete(YES);
@@ -266,7 +266,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 -(void)updateHistoryOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page{
     //__weak __typeof(self)weakSelf = self;
     static NSInteger batch = 10;
-    [self.requestAdapter getHistoryForAddresses:[object getAllKeysAdreeses] andParam:@{@"limit" : @(batch), @"offset" : @(page * batch)} withSuccessHandler:^(NSArray <HistoryElement*> *history) {
+    [self.requestAdapter getHistoryForAddresses:[object allKeysAdreeses] andParam:@{@"limit" : @(batch), @"offset" : @(page * batch)} withSuccessHandler:^(NSArray <HistoryElement*> *history) {
         
         if (page > object.historyStorage.pageIndex) {
             [object.historyStorage addHistoryElements:history];
@@ -292,14 +292,14 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 }
 
 -(void)updateSpendablesBalansesWithObject:(NSDictionary*) balances{
-    [self getCurrentWallet].balance = [balances[@"balance"] floatValue];
-    [self getCurrentWallet].unconfirmedBalance = [balances[@"unconfirmedBalance"] floatValue];
-    [self spendableDidChange:[self getCurrentWallet]];
+    [self сurrentWallet].balance = [balances[@"balance"] floatValue];
+    [self сurrentWallet].unconfirmedBalance = [balances[@"unconfirmedBalance"] floatValue];
+    [self spendableDidChange:[self сurrentWallet]];
 }
 
 -(void)updateSpendablesHistoriesWithObject:(NSDictionary*) dict{
     HistoryElement* item = [self.requestAdapter createHistoryElement:dict];
-    [[self getCurrentWallet].historyStorage setHistoryItem:item];
+    [[self сurrentWallet].historyStorage setHistoryItem:item];
 }
 
 -(void)spendableDidChange:(id <Spendable>) object{

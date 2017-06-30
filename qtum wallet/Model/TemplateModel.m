@@ -79,15 +79,15 @@
 }
 
 -(NSDate*)creationDate {
-    return [[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.path];
+    return [[ContractFileManager sharedInstance] dateOfCreationTemplate:self.path];
 }
 
 -(NSString*)creationDateString {
-    return [[[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.path] formatedDateString];
+    return [[[ContractFileManager sharedInstance] dateOfCreationTemplate:self.path] formatedDateString];
 }
 
 -(NSString*)creationFormattedDateString {
-    return [[[ContractFileManager sharedInstance] getDateOfCreationTemplate:self.path] string];
+    return [[[ContractFileManager sharedInstance] dateOfCreationTemplate:self.path] string];
 }
 
 #pragma  mark - NSCoder

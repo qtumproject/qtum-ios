@@ -90,8 +90,8 @@ static NSString* op_exec = @"c1";
     
     
 
-    AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] getTokenStandartTransferMethodInterface];
-    NSData* hashFuction = [[ContractInterfaceManager sharedInstance] getHashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
+    AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] tokenStandartTransferMethodInterface];
+    NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
     NSString* __block addressWithAmountValue;
     [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
         if (balance.floatValue > amount.floatValue) {
@@ -101,7 +101,7 @@ static NSString* op_exec = @"c1";
     }];
     
     if (addressWithAmountValue) {
-        [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[WalletManager sharedInstance].getCurrentWallet.getAllKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[WalletManager sharedInstance].сurrentWallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
             completion(error,transaction,hashTransaction);
         }];
     } else {
@@ -267,7 +267,7 @@ static NSString* op_exec = @"c1";
             BTCScript* sigScript = [[BTCScript alloc] init];
             NSData* d1 = tx.data;
             NSData* hash = [tx signatureHashForScript:txout.script inputIndex:i hashType:BTCSignatureHashTypeAll error:nil];
-            NSLog(@"Hash Sig: %@", BTCIDFromHash(hash));
+            DLog(@"Hash Sig: %@", BTCIDFromHash(hash));
             NSData* d2 = tx.data;
             
             NSAssert([d1 isEqual:d2], @"Transaction must not change within signatureHashForScript!");
@@ -304,10 +304,10 @@ static NSString* op_exec = @"c1";
         BTCScriptMachine* sm = [[BTCScriptMachine alloc] initWithTransaction:tx inputIndex:0];
         NSError* errore = nil;
         BOOL r = [sm verifyWithOutputScript:[[(BTCTransactionOutput*)txouts[0] script] copy] error:&errore];
-        NSLog(@"Error: %@", errore);
+        DLog(@"Error: %@", errore);
         NSAssert(r, @"should verify first output");
         
-        NSLog(@"Hash tx: %@", tx.transactionID);
+        DLog(@"Hash tx: %@", tx.transactionID);
         return tx;
     }
     
@@ -392,7 +392,7 @@ static NSString* op_exec = @"c1";
             BTCScript* sigScript = [[BTCScript alloc] init];
             NSData* d1 = tx.data;
             NSData* hash = [tx signatureHashForScript:txout.script inputIndex:i hashType:BTCSignatureHashTypeAll error:nil];
-            NSLog(@"Hash Sig: %@", BTCIDFromHash(hash));
+            DLog(@"Hash Sig: %@", BTCIDFromHash(hash));
             NSData* d2 = tx.data;
             
             NSAssert([d1 isEqual:d2], @"Transaction must not change within signatureHashForScript!");
@@ -429,10 +429,10 @@ static NSString* op_exec = @"c1";
         BTCScriptMachine* sm = [[BTCScriptMachine alloc] initWithTransaction:tx inputIndex:0];
         NSError* errore = nil;
         BOOL r = [sm verifyWithOutputScript:[[(BTCTransactionOutput*)txouts[0] script] copy] error:&errore];
-        NSLog(@"Error: %@", errore);
+        DLog(@"Error: %@", errore);
         NSAssert(r, @"should verify first output");
         
-        NSLog(@"Hash tx: %@", tx.transactionID);
+        DLog(@"Hash tx: %@", tx.transactionID);
         return tx;
     }
     
@@ -514,7 +514,7 @@ static NSString* op_exec = @"c1";
             BTCScript* sigScript = [[BTCScript alloc] init];
             NSData* d1 = tx.data;
             NSData* hash = [tx signatureHashForScript:txout.script inputIndex:i hashType:BTCSignatureHashTypeAll error:nil];
-            NSLog(@"Hash Sig: %@", BTCIDFromHash(hash));
+            DLog(@"Hash Sig: %@", BTCIDFromHash(hash));
             NSData* d2 = tx.data;
             
             NSAssert([d1 isEqual:d2], @"Transaction must not change within signatureHashForScript!");
@@ -551,10 +551,10 @@ static NSString* op_exec = @"c1";
         BTCScriptMachine* sm = [[BTCScriptMachine alloc] initWithTransaction:tx inputIndex:0];
         NSError* errore = nil;
         BOOL r = [sm verifyWithOutputScript:[[(BTCTransactionOutput*)txouts[0] script] copy] error:&errore];
-        NSLog(@"Error: %@", errore);
+        DLog(@"Error: %@", errore);
         NSAssert(r, @"should verify first output");
         
-        NSLog(@"Hash tx: %@", tx.transactionID);
+        DLog(@"Hash tx: %@", tx.transactionID);
         return tx;
     }
     
