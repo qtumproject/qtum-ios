@@ -364,14 +364,14 @@ static NSString* kAddresses = @"kAddress";
 -(void)updateBalanceOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete {
     [complete copy];
     complete(NO);
-    NSLog(@"complete ->%@",complete);
+    DLog(@"complete ->%@",complete);
 }
 
 -(void)updateHistoryOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL))complete andPage:(NSInteger) page{
     [complete copy];
     complete(NO);
     object.historyStorage.pageIndex = page;
-    NSLog(@"complete ->%@",complete);
+    DLog(@"complete ->%@",complete);
 }
 
 -(void)startObservingForSpendable:(id <Spendable>) spendable {

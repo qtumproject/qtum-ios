@@ -55,7 +55,7 @@
 }
 
 -(void)dealloc{
-    NSLog(@"Dealocated");
+    DLog(@"Dealocated");
 }
 
 @end

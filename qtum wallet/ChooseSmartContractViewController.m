@@ -67,7 +67,7 @@
             [self.delegate didSelectRestoreContract];
             break;
         default:
-            NSLog(@"Incorrect index");
+            DLog(@"Incorrect index");
             break;
     }
 }
@@ -124,7 +124,7 @@
             imageForCell = [UIImage imageNamed:@"ic-contract_restore"];
             break;
         default:
-            NSLog(@"Incorrect index");
+            DLog(@"Incorrect index");
             break;
     }
     

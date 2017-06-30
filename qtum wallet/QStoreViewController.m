@@ -176,7 +176,7 @@
 #pragma mark - SelectSearchTypeViewDelegate
 
 - (void)selectIndexChanged:(NSInteger)index {
-    NSLog(@"Current index : %ld", (long)index);
+    DLog(@"Current index : %ld", (long)index);
 }
 
 #pragma mark - UISearchBarDelegate

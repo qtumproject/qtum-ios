@@ -39,7 +39,7 @@
     __weak __typeof(self) weakSelf = self;
     if (!self.isBackupCreated) {
         [BackupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
-            NSLog(@"%@",file);
+            DLog(@"%@",file);
             [weakSelf fileWasCreatedWithURL:path andSize:size];
             weakSelf.isBackupCreated = YES;
         }];

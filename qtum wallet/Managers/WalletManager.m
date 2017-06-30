@@ -161,21 +161,21 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
         dispatch_group_enter(self.registerGroup);
         
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
-        NSLog(@"Enter -- > %@",keyString);
+        DLog(@"Enter -- > %@",keyString);
 
         [[ApplicationCoordinator sharedInstance].requestManager registerKey:keyString identifier:wallet.worldsString new:YES withSuccessHandler:^(id responseObject) {
             dispatch_group_leave(weakSelf.registerGroup);
-            NSLog(@"Success");
+            DLog(@"Success");
         } andFailureHandler:^(NSError *error, NSString *message) {
             isAllCompleted = NO;
             dispatch_group_leave(weakSelf.registerGroup);
-            NSLog(@"Fail");
+            DLog(@"Fail");
         }];
     }
     
     dispatch_group_notify(self.registerGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"All comleted");
+            DLog(@"All comleted");
             if (isAllCompleted) {
                 success();
             }else {

@@ -200,10 +200,10 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
         
         id adaptiveResponse = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
         success(adaptiveResponse);
-        NSLog(@"Succes");
+        DLog(@"Succes");
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
         failure(error,message);
-        NSLog(@"Failure");
+        DLog(@"Failure");
     }];
 }
 
@@ -213,11 +213,11 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     
     [self requestWithType:GET path:@"news/en" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
-        NSLog(@"Succes");
+        DLog(@"Succes");
         
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
         failure(error,message);
-        NSLog(@"Failure");
+        DLog(@"Failure");
     }];
 }
 
@@ -244,12 +244,12 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             response = [weakSelf.adapter adaptiveDataForHistory:response];
             success(response);
-            NSLog(@"Succes");
+            DLog(@"Succes");
         });
 
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
         failure(error,message);
-        NSLog(@"Failure");
+        DLog(@"Failure");
     }];
 }
 
@@ -258,10 +258,10 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 - (void)getBlockchainInfo:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
     [self requestWithType:GET path:@"blockchain/info" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
-        NSLog(@"Succes");
+        DLog(@"Succes");
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
         failure(error,message);
-        NSLog(@"Failure");
+        DLog(@"Failure");
     }];
 }
 

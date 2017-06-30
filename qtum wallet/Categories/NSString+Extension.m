@@ -84,7 +84,7 @@
         }
         [newStr appendString:ch];
     }
-    NSLog(@"%@", newStr.capitalizedString);
+    DLog(@"%@", newStr.capitalizedString);
     return newStr.capitalizedString;
 }
 

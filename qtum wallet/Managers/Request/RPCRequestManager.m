@@ -122,7 +122,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
 
 - (void)sendTransaction:(NSString *)transactionHexString withSuccessHandler:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure
 {
-    NSLog(@"Hex : %@", transactionHexString);
+    DLog(@"Hex : %@", transactionHexString);
     NSString *method = @"sendrawtransaction";
     BOOL allowhighfees = YES;
     
@@ -138,7 +138,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
      withSuccessHandler:(void(^)(id responseObject))success
       andFailureHandler:(void(^)(NSString* message)) failure{
     
-    NSLog(@"Hex : %@", param[@"data"]);
+    DLog(@"Hex : %@", param[@"data"]);
     NSString *method = @"sendrawtransaction";
     BOOL allowhighfees = YES;
     

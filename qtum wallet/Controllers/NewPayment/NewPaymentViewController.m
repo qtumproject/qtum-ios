@@ -92,7 +92,8 @@ static NSInteger withoutTokenOffset = 30;
     self.tokenDisclousureImage.tintColor = customBlueColor();
     self.tokenTextField.text =  self.token ? self.token.localName : NSLocalizedString(@"QTUM (Default)", @"");
     
-    [self.view layoutSubviews];
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
 }
 
 -(void)payAction {

@@ -207,7 +207,7 @@
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             BTCTransactionInput* input = transaction.inputs[0];
-            NSLog(@"%@",input.runTimeAddress);
+            DLog(@"%@",input.runTimeAddress);
             [[ContractManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel];
             
             [weakSelf.createFinishViewController showCompletedPopUp];
