@@ -57,7 +57,7 @@
 
 -(NSDictionary*)standartAbi {
     
-    return [self abiWithTemplate:[[TemplateManager sharedInstance] getStandartTokenTemplate].path];
+    return [self abiWithTemplate:[[TemplateManager sharedInstance] standartTokenTemplate].path];
 }
 
 -(NSDictionary*)abiWithTemplate:(NSString*) templatePath {

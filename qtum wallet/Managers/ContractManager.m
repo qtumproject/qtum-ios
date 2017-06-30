@@ -104,7 +104,7 @@ static NSString* kAddresses = @"kAddress";
     return [self.contracts filteredArrayUsingPredicate:predicate];
 }
 
-- (NSArray <Contract*>*)getAllActiveTokens {
+- (NSArray <Contract*>*)allActiveTokens {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i && isActive == YES",TokenType];
     return [self.contracts filteredArrayUsingPredicate:predicate];
@@ -384,14 +384,14 @@ static NSString* kAddresses = @"kAddress";
 
 -(void)startObservingForAllSpendable {
     
-    NSArray <Contract*>* activeContract = [self getAllActiveTokens];
+    NSArray <Contract*>* activeContract = [self allActiveTokens];
     for (Contract* token in activeContract) {
         [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
     }
 }
 
 -(void)stopObservingForAllSpendable {
-    NSArray <Contract*>* activeContract = [self getAllActiveTokens];
+    NSArray <Contract*>* activeContract = [self allActiveTokens];
     for (Contract* token in activeContract) {
         [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:token];
     }

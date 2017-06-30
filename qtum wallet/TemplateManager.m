@@ -57,7 +57,7 @@ static NSString* standartTokenPath = @"StandardPath";
     NSMutableArray *savedTemplates = [[[FXKeychain defaultKeychain] objectForKey:kAvailableTemplates] mutableCopy];
     
     if (!savedTemplates.count) {
-        self.templates = [[self getStandartPackOfTemplates] mutableCopy];
+        self.templates = [[self standartPackOfTemplates] mutableCopy];
         [self save];
     } else {
         self.templates = savedTemplates;
@@ -70,13 +70,13 @@ static NSString* standartTokenPath = @"StandardPath";
     return templatesSaved;
 }
 
--(TemplateModel*)getStandartTokenTemplate {
+-(TemplateModel*)standartTokenTemplate {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateName == %@ && path == %@",@"Standart",@"Standart"];
     NSArray* tepmlates = [self.templates filteredArrayUsingPredicate:predicate];
     return tepmlates.firstObject;
 }
 
--(NSArray<TemplateModel*>*)getStandartPackOfTemplates {
+-(NSArray<TemplateModel*>*)standartPackOfTemplates {
     
     TemplateModel* standartToken = [[TemplateModel alloc] initWithTemplateName:@"Standart" andType:TokenType withUiid:0 path:@"Standart" isFull:YES];
     TemplateModel* v1Token = [[TemplateModel alloc] initWithTemplateName:@"Version1" andType:TokenType withUiid:1 path:@"Version1" isFull:YES];
@@ -194,7 +194,7 @@ static NSString* standartTokenPath = @"StandardPath";
     return nil;
 }
 
--(NSArray<TemplateModel*>*)getAvailebaleTemplates {
+-(NSArray<TemplateModel*>*)availebaleTemplates {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFullTemplate == YES"];
     return [self.templates filteredArrayUsingPredicate:predicate];
@@ -239,7 +239,7 @@ static NSString* standartTokenPath = @"StandardPath";
 
 -(void)clear {
     
-    self.templates = [[self getStandartPackOfTemplates] mutableCopy];
+    self.templates = [[self standartPackOfTemplates] mutableCopy];
     [self save];
 }
 

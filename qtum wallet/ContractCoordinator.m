@@ -72,7 +72,7 @@
     
     TemplateTokenViewController* controller = (TemplateTokenViewController*)[[ControllersFactory sharedInstance] createTemplateTokenViewController];
     controller.delegate = self;
-    controller.templateModels = [[TemplateManager sharedInstance] getAvailebaleTemplates];
+    controller.templateModels = [[TemplateManager sharedInstance] availebaleTemplates];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

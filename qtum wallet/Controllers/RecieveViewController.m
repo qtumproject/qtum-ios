@@ -117,7 +117,7 @@
     return YES;
 }
 
-- (NSString *)getCorrectAmountString {
+- (NSString *)correctAmountString {
     NSMutableString *amountString = [self.amountTextField.text mutableCopy];
     if ([amountString containsString:@","]) {
         [amountString replaceCharactersInRange:[amountString rangeOfString:@","] withString:@"."];
@@ -137,7 +137,7 @@
     NSString *text = self.publicAddressLabel.text;
     UIImage *qrCode = self.qrCodeImageView.image;
     
-    double amount = [[self getCorrectAmountString] doubleValue];
+    double amount = [[self correctAmountString] doubleValue];
     if (amount > 0) {
         text = [NSString stringWithFormat:@"My address: %@ and amount: %.3f", text, amount];
     }

@@ -32,7 +32,7 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
     [self notificateChangeHistory];
 }
 
-- (NSArray<HistoryElement*>*)getHistory{
+- (NSArray<HistoryElement*>*)history{
     return [_historyPrivate copy];
 }
 

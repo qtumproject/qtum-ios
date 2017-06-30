@@ -78,12 +78,12 @@
     self.delegateDataSource = [WalletHistoryDelegateDataSource new];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
-    self.delegateDataSource.haveTokens = [[ContractManager sharedInstance] getAllActiveTokens].count > 0;
+    self.delegateDataSource.haveTokens = [[ContractManager sharedInstance] allActiveTokens].count > 0;
     controller.delegateDataSource = self.delegateDataSource;
     self.historyController = controller;
     
     TokenListViewController* tokenController = (TokenListViewController*)[[ControllersFactory sharedInstance] createTokenListViewController];
-    tokenController.tokens = [[ContractManager sharedInstance] getAllActiveTokens];
+    tokenController.tokens = [[ContractManager sharedInstance] allActiveTokens];
     tokenController.delegate = self;
     controller.delegate = self;
     self.tokenController = tokenController;
@@ -250,7 +250,7 @@
 
 -(void)updateSpendables {
     
-    NSArray *tokensArray = [[ContractManager sharedInstance] getAllActiveTokens];
+    NSArray *tokensArray = [[ContractManager sharedInstance] allActiveTokens];
     self.delegateDataSource.haveTokens = tokensArray.count > 0;
     [self.historyController reloadTableView];
     self.tokenController.tokens = tokensArray;
