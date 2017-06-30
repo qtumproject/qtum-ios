@@ -10,6 +10,6 @@
 
 @interface BTCTransactionOutput (Address)
 
-@property (strong, nonatomic) NSString *runTimeAddress;
+@property (copy, nonatomic) NSString *runTimeAddress;
 
 @end

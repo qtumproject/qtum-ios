@@ -14,7 +14,7 @@
 @interface CreateTokenFinishViewController : BaseViewController
 
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
-@property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
+@property (copy,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
 
 - (void)showErrorPopUp;
 - (void)showCompletedPopUp;

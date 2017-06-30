@@ -120,7 +120,7 @@
 #pragma mark - DataMethods
 
 +(BOOL)DataSaveDictWith:(NSMutableDictionary *)dictSave fileName:(NSString *)fileName {
-    NSMutableArray *arraySource = [DataOperation GetFileWithName:fileName];
+    NSMutableArray *arraySource = [self GetFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
@@ -130,7 +130,7 @@
     }else {
         return NO;
     }
-    [DataOperation SaveFileWithName:fileName DataSource:arraySource];
+    [self SaveFileWithName:fileName DataSource:arraySource];
     return YES;
 }
 
@@ -147,13 +147,14 @@
             break;
         }
     }
-    [DataOperation SaveFileWithName:fileName DataSource:arraySource];
+    [self SaveFileWithName:fileName DataSource:arraySource];
     return YES;
 }
 
 
 +(NSMutableDictionary *)DataGetDictWithKey:(NSString *)key KeyValue:(NSString *)keyValue fileName:(NSString *)fileName {
-    NSMutableArray *arraySource = [DataOperation GetFileWithName:fileName];
+    
+    NSMutableArray *arraySource = [self GetFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
@@ -167,20 +168,20 @@
 
 #pragma mark - SandBoxMethods
 
-+ (NSString *)appPath
-{
++ (NSString *)appPath {
+    
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSUserDomainMask, YES);
 	return [paths objectAtIndex:0];
 }
 
-+ (NSString *)docPath
-{
++ (NSString *)docPath {
+    
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	return [paths objectAtIndex:0];
 }
 
-+ (NSString *)libPrefPath
-{
++ (NSString *)libPrefPath {
+    
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
 	return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Preference"];
 }
@@ -191,14 +192,14 @@
 	return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Caches"];
 }
 
-+ (NSString *)tmpPath
-{
++ (NSString *)tmpPath {
+    
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
 	return [[paths objectAtIndex:0] stringByAppendingFormat:@"/tmp"];
 }
 
-+ (BOOL)hasLive:(NSString *)path
-{
++ (BOOL)hasLive:(NSString *)path {
+    
 	if ( NO == [[NSFileManager defaultManager] fileExistsAtPath:path] )
 	{
 		return [[NSFileManager defaultManager] createDirectoryAtPath:path

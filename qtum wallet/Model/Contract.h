@@ -28,7 +28,7 @@
 @property (assign, nonatomic) BOOL isActive;
 @property (assign, nonatomic) CGFloat balance;
 @property (assign, nonatomic) CGFloat unconfirmedBalance;
-@property (strong, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
+@property (copy, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;
 @property (weak, nonatomic) ContractManager* manager;
@@ -37,14 +37,14 @@
 
 @property (copy, nonatomic)NSString* contractAddress;
 @property (copy, nonatomic)NSString* contractCreationAddressAddress;
-@property (strong, nonatomic)NSArray* adresses;
-@property (strong, nonatomic)NSString* decimals;
-@property (strong, nonatomic)NSString* totalSupply;
+@property (copy, nonatomic)NSArray* adresses;
+@property (copy, nonatomic)NSString* decimals;
+@property (copy, nonatomic)NSString* totalSupply;
 @property (strong, nonatomic) TemplateModel* templateModel;
 @property (strong, nonatomic) NSDate* creationDate;
 @property (copy, nonatomic, readonly) NSString* creationDateString;
 @property (copy, nonatomic, readonly) NSString* creationFormattedDateString;
-@property (strong, nonatomic) NSDictionary* addressBalanceDictionary;
+@property (copy, nonatomic) NSDictionary* addressBalanceDictionary;
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
 

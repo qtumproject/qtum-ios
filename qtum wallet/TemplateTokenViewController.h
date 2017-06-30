@@ -12,7 +12,7 @@
 
 @interface TemplateTokenViewController : BaseViewController
 
-@property (strong, nonatomic) NSArray <TemplateModel*>* templateModels;
+@property (copy, nonatomic) NSArray <TemplateModel*>* templateModels;
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 
 @end

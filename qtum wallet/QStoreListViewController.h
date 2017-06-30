@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, QStoreListType) {
 
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 
-@property (nonatomic) QStoreListType type;
-@property (nonatomic) NSString *categoryTitle;
+@property (assign, nonatomic) QStoreListType type;
+@property (copy, nonatomic) NSString *categoryTitle;
 
 @end

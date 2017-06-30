@@ -10,10 +10,10 @@
 
 @interface PopUpContent : NSObject
 
-@property (nonatomic) NSString *titleString;
-@property (nonatomic) NSString *messageString;
-@property (nonatomic) NSString *okButtonTitle;
-@property (nonatomic) NSString *cancelButtonTitle;
+@property (copy, nonatomic) NSString *titleString;
+@property (copy, nonatomic) NSString *messageString;
+@property (copy, nonatomic) NSString *okButtonTitle;
+@property (copy, nonatomic) NSString *cancelButtonTitle;
 
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message okTitle:(NSString *)okTitle cancelTitle:(NSString *)cancelTitle;
 
