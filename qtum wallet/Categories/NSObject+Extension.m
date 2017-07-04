@@ -8,6 +8,7 @@
 
 #import "NSObject+Extension.h"
 #import <objc/runtime.h>
+#import "Presentable.h"
 
 
 @implementation NSObject (Extension)
@@ -30,6 +31,14 @@
 - (id)associatedObject
 {
     return objc_getAssociatedObject(self, @selector(associatedObject));
+}
+
+- (UIViewController*)toPresente {
+    
+    if ([self conformsToProtocol:@protocol(Presentable)] && [self isKindOfClass:[UIViewController class]]) {
+        return (UIViewController*)self;
+    }
+    return nil;
 }
 
 @end

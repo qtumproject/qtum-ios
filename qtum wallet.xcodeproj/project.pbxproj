@@ -368,6 +368,10 @@
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
 		B3054E2E1F0B9EE4001B1F63 /* SendCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCoordinator.h; sourceTree = "<group>"; };
 		B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCoordinator.m; sourceTree = "<group>"; };
+		B3054E321F0BBAFE001B1F63 /* NewPaymentOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutput.h; sourceTree = "<group>"; };
+		B3054E331F0BBB29001B1F63 /* NewPaymentOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutputDelegate.h; sourceTree = "<group>"; };
+		B3054E351F0BC037001B1F63 /* ChoseTokenPaymentOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentOutput.h; sourceTree = "<group>"; };
+		B3054E361F0BC045001B1F63 /* ChoseTokenPaymentOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentOutputDelegate.h; sourceTree = "<group>"; };
 		B30BAE2C1E9E3AA600CA795F /* ContractManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractManager.h; sourceTree = "<group>"; };
 		B30BAE2D1E9E3AA600CA795F /* ContractManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContractManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B31CF71C1E124A25000BCF41 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
@@ -970,6 +974,28 @@
 				C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B3054E311F0BBACD001B1F63 /* NewPaymentOutput */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AF21DDEF8260002CD47 /* NewPaymentViewController.h */,
+				E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */,
+				B3054E321F0BBAFE001B1F63 /* NewPaymentOutput.h */,
+				B3054E331F0BBB29001B1F63 /* NewPaymentOutputDelegate.h */,
+			);
+			name = NewPaymentOutput;
+			sourceTree = "<group>";
+		};
+		B3054E341F0BC011001B1F63 /* ChoseTokenPaymentOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B3E159231ED6E2C200D70A87 /* ChoseTokenPaymentViewController.h */,
+				B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */,
+				B3054E351F0BC037001B1F63 /* ChoseTokenPaymentOutput.h */,
+				B3054E361F0BC045001B1F63 /* ChoseTokenPaymentOutputDelegate.h */,
+			);
+			name = ChoseTokenPaymentOutput;
 			sourceTree = "<group>";
 		};
 		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
@@ -1749,10 +1775,8 @@
 			isa = PBXGroup;
 			children = (
 				B3E159261ED6E39F00D70A87 /* Cell */,
-				E7396AF21DDEF8260002CD47 /* NewPaymentViewController.h */,
-				E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */,
-				B3E159231ED6E2C200D70A87 /* ChoseTokenPaymentViewController.h */,
-				B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */,
+				B3054E311F0BBACD001B1F63 /* NewPaymentOutput */,
+				B3054E341F0BC011001B1F63 /* ChoseTokenPaymentOutput */,
 			);
 			name = NewPayment;
 			path = Controllers/NewPayment;

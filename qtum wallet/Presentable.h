@@ -10,6 +10,4 @@
 
 @protocol Presentable <NSObject>
 
--(UIViewController*)toPresente;
-
 @end

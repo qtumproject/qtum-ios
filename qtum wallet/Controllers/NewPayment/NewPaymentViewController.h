@@ -7,27 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewPaymentOutputDelegate.h"
+#import "NewPaymentOutput.h"
 
-@protocol NewPaymentViewControllerDelegate <NSObject>
-
-- (void)showQRCodeScaner;
-- (void)showChooseToken;
-- (void)didPressedSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount;
-
-@end
-
-@interface NewPaymentViewController : BaseViewController
-
-@property (weak, nonatomic) id <NewPaymentViewControllerDelegate> delegate;
+@interface NewPaymentViewController : BaseViewController <NewPaymentOutput>
 
 @property (nonatomic, copy) NSString *currentBalance;
 @property (nonatomic, copy) NSDictionary *dictionary;
+@property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
 
 -(void)setAdress:(NSString*)adress andValue:(NSString*)amount;
--(void)updateContentWithContract:(Contract*) contract;
--(void)updateContentFromQRCode:(NSDictionary*) qrCodeDict;
--(void)showErrorPopUp;
--(void)showCompletedPopUp;
--(void)showLoaderPopUp;
 
 @end

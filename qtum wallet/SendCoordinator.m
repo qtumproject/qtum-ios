@@ -11,11 +11,14 @@
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
 #import "TransactionManager.h"
+#import "NewPaymentOutput.h"
+#import "ChoseTokenPaymentOutput.h"
+#import "NSObject+Extension.h"
 
-@interface SendCoordinator () <NewPaymentViewControllerDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentViewControllerDelegate>
+@interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
-@property (strong, nonatomic) NewPaymentViewController* paymentViewController;
+@property (strong, nonatomic) NSObject <NewPaymentOutput>* paymentOutput;
 @property (strong,nonatomic) Contract* token;
 
 @end
@@ -33,9 +36,9 @@
 
 -(void)start {
     
-    NewPaymentViewController* controller = (NewPaymentViewController*)[[ControllersFactory sharedInstance] createNewPaymentViewController];
+    id <NewPaymentOutput> controller = (id <NewPaymentOutput>)[[ControllersFactory sharedInstance] createNewPaymentViewController];
     controller.delegate = self;
-    self.paymentViewController = controller;
+    self.paymentOutput = controller;
     [self.navigationController setViewControllers:@[controller]];
 }
 
@@ -81,15 +84,15 @@
 #pragma mark - Popup
 
 -(void)showErrorPopUp {
-    [self.paymentViewController showErrorPopUp];
+    [self.paymentOutput showErrorPopUp];
 }
 
 -(void)showCompletedPopUp {
-    [self.paymentViewController showCompletedPopUp];
+    [self.paymentOutput showCompletedPopUp];
 }
 
 -(void)showLoaderPopUp {
-    [self.paymentViewController showLoaderPopUp];
+    [self.paymentOutput showLoaderPopUp];
 }
 
 #pragma mark - NewPaymentViewControllerDelegate
@@ -102,10 +105,10 @@
 }
 - (void)showChooseToken {
     
-    ChoseTokenPaymentViewController* tokenController = (ChoseTokenPaymentViewController*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
+    NSObject <ChoseTokenPaymentOutput>* tokenController = (NSObject <ChoseTokenPaymentOutput>*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
     tokenController.delegate = self;
     tokenController.activeToken = self.token;
-    [self.navigationController pushViewController:tokenController animated:YES];
+    [self.navigationController pushViewController:[tokenController toPresente] animated:YES];
 }
 
 - (void)didPressedSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
@@ -131,7 +134,7 @@
 
 - (void)qrCodeScanned:(NSDictionary *)dictionary {
     
-    [self.paymentViewController updateContentFromQRCode:dictionary];
+    [self.paymentOutput updateContentFromQRCode:dictionary];
 }
 
 - (void)showNextVC {
@@ -149,7 +152,7 @@
     
     self.token = item;
     [self.navigationController popViewControllerAnimated:YES];
-    [self.paymentViewController updateContentWithContract:item];
+    [self.paymentOutput updateContentWithContract:item];
 }
 
 - (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
@@ -158,7 +161,7 @@
 
 - (void)resetToDefaults {
     
-    [self.paymentViewController updateContentWithContract:nil];
+    [self.paymentOutput updateContentWithContract:nil];
     self.token = nil;
 }
 
