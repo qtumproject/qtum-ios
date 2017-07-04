@@ -78,7 +78,7 @@
     }else if (self.selectedIndex == 2){
         [self.coordinatorDelegate newsTabDidSelectedWithController:viewController];
     }else if (self.selectedIndex == 3){
-        //[self.coordinatorDelegate sendTabDidSelectedWithController:viewController];
+        [self.coordinatorDelegate sendTabDidSelectedWithController:viewController];
     }
 }
 

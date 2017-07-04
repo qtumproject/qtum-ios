@@ -9,15 +9,15 @@
 #import "TabBarCoordinator.h"
 #import "WalletCoordinator.h"
 #import "NewsCoordinator.h"
+#import "SendCoordinator.h"
 
-@interface TabBarCoordinator ()
+@interface TabBarCoordinator () <NewsCoordinatorDelegate, SendCoordinatorDelegate>
 
 @property (strong,nonatomic) TabBarController* tabBarContoller;
 @property (assign,nonatomic) BOOL walletsAlreadyStarted;
 @property (assign,nonatomic) BOOL sendAlreadyStarted;
 @property (assign,nonatomic) BOOL profileAlreadyStarted;
 @property (assign,nonatomic) BOOL newsAlreadyStarted;
-
 
 @end
 
@@ -57,6 +57,10 @@
     
     if (!self.sendAlreadyStarted) {
         self.sendAlreadyStarted = YES;
+        SendCoordinator* coordinator = [[SendCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
+        coordinator.delegate = self;
+        [coordinator start];
+        [self addDependency:coordinator];
         [self checkTabsController:controller];
     }
 }
@@ -95,5 +99,13 @@
 -(UIViewController *)getViewControllerByIndex:(NSInteger)index{
     return self.tabBarContoller.viewControllers[index];
 }
+
+#pragma mark - NewsCoordinatorDelegate
+
+-(void)refreshTableViewData {
+    
+}
+
+
 
 @end

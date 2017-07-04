@@ -58,6 +58,7 @@
 #import "QStoreListViewController.h"
 #import "QStoreContractViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
+#import "NewPaymentViewController.h"
 
 @implementation ControllersFactory
 
@@ -79,18 +80,18 @@
 }
 
 -(UIViewController*)sendFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Send" withIdentifire:nil];
-    SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] initWithRootViewController:controller];
+    SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] init];
     return nav;
 }
 
--(UIViewController*)profileFlowTab{
+-(UIViewController*)profileFlowTab {
     UIViewController* controller = [UIViewController controllerInStoryboard:@"Profile" withIdentifire:nil];
     ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:controller];
     return nav;
 }
 
--(UIViewController*)newsFlowTab{
+-(UIViewController*)newsFlowTab {
+    
     UIViewController* controller = [UIViewController controllerInStoryboard:@"News" withIdentifire:nil];
     NewsNavigationController* nav = [[NewsNavigationController alloc] initWithRootViewController:controller];
     return nav;
@@ -102,11 +103,24 @@
 }
 
 
--(UINavigationController*)walletFlowTab{
+-(UINavigationController*)walletFlowTab {
+    
     BalancePageViewController* controller = [[BalancePageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     controller.view.backgroundColor = customBlackColor();
     WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:controller];
     return nav;
+}
+
+-(NewPaymentViewController*)createNewPaymentViewController {
+    
+    NewPaymentViewController* controller = (NewPaymentViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"NewPaymentViewController"];
+    return controller;
+}
+
+- (QRCodeViewController*)createQRCodeViewControllerForSend {
+    
+    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"QRCodeViewController"];
+    return controller;
 }
 
 -(WalletNameViewController*)createWalletNameCreateController{

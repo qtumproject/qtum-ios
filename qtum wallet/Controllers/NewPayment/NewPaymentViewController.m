@@ -15,7 +15,7 @@
 #import "InformationPopUpViewController.h"
 #import "SecurityPopupViewController.h"
 
-@interface NewPaymentViewController () <UITextFieldDelegate, QRCodeViewControllerDelegate,ChoseTokenPaymentViewControllerDelegate, PopUpWithTwoButtonsViewControllerDelegate>
+@interface NewPaymentViewController () <UITextFieldDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
@@ -49,10 +49,7 @@ static NSInteger withoutTokenOffset = 30;
     [super viewDidLoad];
     
 //    [self addDoneButtonToAmountTextField];
-    
-    if (self.dictionary) {
-        [self qrCodeScanned:self.dictionary];
-    }    
+    self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @""); 
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -90,59 +87,14 @@ static NSInteger withoutTokenOffset = 30;
     self.tokenDisclousureImage.hidden = !isTokensExists;
     self.withoutTokensConstraint.constant = isTokensExists ? withTokenOffset : withoutTokenOffset;
     self.tokenDisclousureImage.tintColor = customBlueColor();
-    self.tokenTextField.text =  self.token ? self.token.localName : NSLocalizedString(@"QTUM (Default)", @"");
     
     [self.view setNeedsLayout];
     [self.view layoutIfNeeded];
 }
 
--(void)payAction {
-    
-    if (self.token) {
-        [self payWithToken:[self correctAmountString]];
-    } else {
-        [self payWithWallet:[self correctAmountString]];
-    }
-}
 
--(void)payWithWallet:(NSString *)amountString {
-    
-    NSNumber *amount = @([amountString doubleValue]);
-    NSString *address = self.addressTextField.text;
-    
-    NSArray *array = @[@{@"amount" : amount, @"address" : address}];
-    
+- (void)showLoaderPopUp {
     [[PopUpsManager sharedInstance] showLoaderPopUp];
-    
-    __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].сurrentWallet allKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
-        [[PopUpsManager sharedInstance] dismissLoader];
-        if (!error) {
-            [weakSelf showCompletedPopUp];
-        }else{
-            if ([error isNoInternetConnectionError]) {
-                return;
-            }
-            [weakSelf showErrorPopUp];
-        }
-    }];
-}
-
--(void)payWithToken:(NSString *)amountString {
-    
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
-    __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:self.addressTextField.text amount:@([amountString doubleValue]) andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
-        [[PopUpsManager sharedInstance] dismissLoader];
-        if (!error) {
-            [weakSelf showCompletedPopUp];
-        }else{
-            if ([error isNoInternetConnectionError]) {
-                return;
-            }
-            [weakSelf showErrorPopUp];
-        }
-    }];
 }
 
 - (void)showCompletedPopUp{
@@ -155,7 +107,8 @@ static NSInteger withoutTokenOffset = 30;
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
-- (void)okButtonPressed:(PopUpViewController *)sender{
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
     if ([sender isKindOfClass:[InformationPopUpViewController class]]) {
         [self clearFields];
@@ -163,13 +116,9 @@ static NSInteger withoutTokenOffset = 30;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)cancelButtonPressed:(PopUpViewController *)sender{
+- (void)cancelButtonPressed:(PopUpViewController *)sender {
+    
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
-    if (self.token) {
-        [self payWithToken:[self correctAmountString]];
-    } else {
-        [self payWithWallet:[self correctAmountString]];
-    }
 }
 
 - (void)clearFields {
@@ -183,7 +132,8 @@ static NSInteger withoutTokenOffset = 30;
 
 #pragma mark - iMessage
 
--(void)setAdress:(NSString*)adress andValue:(NSString*)amount{
+-(void)setAdress:(NSString*)adress andValue:(NSString*)amount {
+    
     self.adress = adress;
     self.amount = amount;
     self.needUpdateTexfFields = YES;
@@ -216,6 +166,7 @@ static NSInteger withoutTokenOffset = 30;
 }
 
 - (void)addDoneButtonToAmountTextField {
+    
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     toolbar.barStyle = UIBarStyleDefault;
     toolbar.translucent = NO;
@@ -235,6 +186,7 @@ static NSInteger withoutTokenOffset = 30;
 }
 
 - (NSString *)correctAmountString {
+    
     NSMutableString *amountString = [self.amountTextField.text mutableCopy];
     if ([amountString containsString:@","]) {
         [amountString replaceCharactersInRange:[amountString rangeOfString:@","] withString:@"."];
@@ -246,65 +198,42 @@ static NSInteger withoutTokenOffset = 30;
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
     
-    __weak __typeof(self) weakSelf = self;
-    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithHandler:^(BOOL success) {
-        if (success) {
-            [weakSelf payAction];
-        }
-    }];
+    NSNumber *amount = @([[self correctAmountString] doubleValue]);
+    NSString *address = self.addressTextField.text;
+    [self.delegate didPressedSendActionWithAddress:address andAmount:amount];
+
 }
 
 - (IBAction)actionVoidTap:(id)sender{
+    
     [self.view endEditing:YES];
 }
 
 - (IBAction)didPressedChoseTokensAction:(id)sender {
-    ChoseTokenPaymentViewController* tokenController = (ChoseTokenPaymentViewController*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
-    tokenController.delegate = self;
-    tokenController.activeToken = self.token;
-    [self.navigationController pushViewController:tokenController animated:YES];
+    
+    [self.delegate showChooseToken];
 }
 
-#pragma mark - QRCodeViewControllerDelegate
-
-- (void)qrCodeScanned:(NSDictionary *)dictionary{
+- (IBAction)didPressedScanQRCode:(id)sender {
     
-    self.addressTextField.text =
-    self.adress = dictionary[PUBLIC_ADDRESS_STRING_KEY];
-    self.amountTextField.text =
-    self.amount = dictionary[AMOUNT_STRING_KEY];
-    [self updateControls];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate showQRCodeScaner];
 }
 
 #pragma mark - TokenListViewControllerDelegate
 
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
-    self.token = item;
-    self.tokenTextField.text = item.localName;
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
+-(void)updateContentWithContract:(Contract*) contract {
     
+    self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
 }
 
-- (void)resetToDefaults{
-    self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
-    self.token = nil;
-}
-
-#pragma mark - 
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSString *segueID = segue.identifier;
+-(void)updateContentFromQRCode:(NSDictionary*) qrCodeDict {
     
-    if ([segueID isEqualToString:@"NewPaymentToQrCode"]) {
-        QRCodeViewController *vc = (QRCodeViewController *)segue.destinationViewController;
-        
-        vc.delegate = self;
-    }
+    self.addressTextField.text =
+    self.adress = qrCodeDict[PUBLIC_ADDRESS_STRING_KEY];
+    self.amountTextField.text =
+    self.amount = qrCodeDict[AMOUNT_STRING_KEY];
+    [self updateControls];
 }
+
 
 @end

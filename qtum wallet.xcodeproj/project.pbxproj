@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */; };
 		B30BAE2E1E9E3AA600CA795F /* ContractManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BAE2D1E9E3AA600CA795F /* ContractManager.m */; };
 		B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31CF71D1E124A25000BCF41 /* HistoryViewController.m */; };
 		B3210D141E00052900365FB6 /* GradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D131E00052900365FB6 /* GradientLayer.m */; };
@@ -144,7 +145,6 @@
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
-		B3DD275D1E681A8B00BB0635 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD275C1E681A8B00BB0635 /* SendCoordinator.m */; };
 		B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */; };
 		B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */; };
 		B3E1591B1ED5A87D00D70A87 /* OnlyDesign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591A1ED5A87D00D70A87 /* OnlyDesign.storyboard */; };
@@ -366,6 +366,8 @@
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		B3054E2E1F0B9EE4001B1F63 /* SendCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCoordinator.h; sourceTree = "<group>"; };
+		B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCoordinator.m; sourceTree = "<group>"; };
 		B30BAE2C1E9E3AA600CA795F /* ContractManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractManager.h; sourceTree = "<group>"; };
 		B30BAE2D1E9E3AA600CA795F /* ContractManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContractManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B31CF71C1E124A25000BCF41 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
@@ -640,8 +642,6 @@
 		B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCoordinator.m; sourceTree = "<group>"; };
 		B3DD27581E681A7A00BB0635 /* NewsCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsCoordinator.h; path = Application/NewsCoordinator.h; sourceTree = "<group>"; };
 		B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsCoordinator.m; path = Application/NewsCoordinator.m; sourceTree = "<group>"; };
-		B3DD275B1E681A8B00BB0635 /* SendCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCoordinator.h; sourceTree = "<group>"; };
-		B3DD275C1E681A8B00BB0635 /* SendCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCoordinator.m; sourceTree = "<group>"; };
 		B3DD275E1E681AA500BB0635 /* WalletCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletCoordinator.h; path = Application/WalletCoordinator.h; sourceTree = "<group>"; };
 		B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletCoordinator.m; path = Application/WalletCoordinator.m; sourceTree = "<group>"; };
 		B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCoordinator.h; sourceTree = "<group>"; };
@@ -1381,6 +1381,8 @@
 				E7396AF11DDEF81A0002CD47 /* NewPayment */,
 				B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */,
 				B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */,
+				B3054E2E1F0B9EE4001B1F63 /* SendCoordinator.h */,
+				B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */,
 			);
 			name = "Send Flow";
 			sourceTree = "<group>";
@@ -2267,8 +2269,6 @@
 				B3DD27531E68025200BB0635 /* TabBarCoordinator.m */,
 				B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */,
 				B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */,
-				B3DD275B1E681A8B00BB0635 /* SendCoordinator.h */,
-				B3DD275C1E681A8B00BB0635 /* SendCoordinator.m */,
 				B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */,
 				B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */,
 				B3597DFC1E81517200EBF094 /* NotificationManager.h */,
@@ -2702,6 +2702,7 @@
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
+				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
 				B365CA791EA77D490040A163 /* TokensFactory.m in Sources */,
@@ -2740,7 +2741,6 @@
 				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
 				E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */,
-				B3DD275D1E681A8B00BB0635 /* SendCoordinator.m in Sources */,
 				B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
 				B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */,

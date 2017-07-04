@@ -52,6 +52,7 @@
 @class QStoreListViewController;
 @class QStoreContractViewController;
 @class ConfirmPurchasePopUpViewController;
+@class NewPaymentViewController;
 
 @interface ControllersFactory : NSObject
 
@@ -98,6 +99,8 @@
 -(RestoreContractsViewController*)createRestoreContractViewController;
 -(BackupContractsViewController*)createBackupContractViewController;
 -(EnableFingerprintViewController*)createEnableFingerprintViewController;
+-(NewPaymentViewController*)createNewPaymentViewController;
+-(QRCodeViewController*)createQRCodeViewControllerForSend;
 
 // Pop ups
 - (NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
