@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "AuthCoordinator.h"
 
+@protocol RestoreWalletViewControllerDelegate <NSObject>
+
+-(void)didRestorePressedWithWords:(NSArray*)words;
+-(void)didRestoreWallet;
+-(void)restoreWalletCancelDidPressed;
+
+@end
+
 @interface RestoreWalletViewController : BaseViewController
 
-@property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <RestoreWalletViewControllerDelegate> delegate;
 
 -(void)restoreSucces;
 -(void)restoreFailed;

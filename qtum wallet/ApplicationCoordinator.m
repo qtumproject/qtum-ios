@@ -186,27 +186,6 @@
 
 #pragma mark - Presenting Controllers
 
--(void)showSettings {
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-    [self setViewController:viewController animated:NO];
-}
-
--(void)showWallet {
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    [self setViewController:viewController animated:NO];
-}
-
--(void)showExportBrainKeyAnimated:(BOOL)animated {
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ExportBrainKeyViewController"];
-    [self setViewController:viewController animated:animated];
-}
-
 #pragma mark - Flows
 
 -(void)startAuthFlow {
@@ -285,7 +264,8 @@
     [self addDependency:coordinator];
 }
 
--(void)startChangePinFlow{
+-(void)startChangePinFlow {
+    
 }
 
 -(void)coordinatorRequestForLogin {
@@ -301,7 +281,8 @@
     self.appDelegate.window.rootViewController = rootNavigation;
 }
 
-- (void)startChangedLanguageFlow{
+- (void)startChangedLanguageFlow {
+    
     [self restartMainFlow];
     NSInteger profileIndex = 1;
     [self.tabCoordinator showControllerByIndex:profileIndex];
@@ -310,9 +291,6 @@
     LanguageCoordinator *languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:vc];
     [profile saveLanguageCoordinator:languageCoordinator];
     [languageCoordinator startWithoutAnimation];
-}
-
--(void)startAskPinFlow:(void(^)()) completesion{
 }
 
 -(void)startMainFlow {
@@ -348,17 +326,6 @@
     [self.tabCoordinator start];
     self.router = controller;
 }
-
--(void)startCreatePinFlowWithCompletesion:(void(^)()) completesion {
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
-    CreatePinRootController* createPinRoot = [[CreatePinRootController alloc]initWithRootViewController:viewController];
-    createPinRoot.createPinCompletesion = completesion;
-    viewController.type = CreateType;
-    self.appDelegate.window.rootViewController = createPinRoot;
-}
-
 
 #pragma iMessage Methods
 

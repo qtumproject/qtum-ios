@@ -16,23 +16,19 @@
 
 @protocol ApplicationCoordinatorDelegate <NSObject>
 
-- (void)coordinatorDidAuth:(AuthCoordinator*)coordinator;
-- (void)coordinatorRequestForLogin;
-
 @end
 
-@interface ApplicationCoordinator : BaseCoordinator <Coordinatorable, ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate>
+@interface ApplicationCoordinator : BaseCoordinator <Coordinatorable, ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
 @property (strong,nonatomic,readonly) NotificationManager* notificationManager;
 @property (strong,nonatomic) id <Requestable> requestManager;
 
 -(void)start;
 //flows
-- (void)startAuthFlow;
+
 - (void)startMainFlow;
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler;
 - (void)startSecurityFlowWithHandler:(void(^)(BOOL)) handler;
-- (void)restartMainFlow;
 - (void)startWalletFlow;
 - (void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
 - (void)startChangePinFlow;

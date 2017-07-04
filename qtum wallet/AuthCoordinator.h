@@ -9,23 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "BaseCoordinator.h"
 
+@class AuthCoordinator;
+
 @protocol AuthCoordinatorDelegate <NSObject>
 
--(void)didCreatedWalletName:(NSString*)name;
--(void)didEnteredFirstTimePass:(NSString*)pass;
--(void)didEnteredSecondTimePass:(NSString*)pass;
--(void)didRestorePressedWithWords:(NSArray*)words;
--(void)didCreateWalletPressedFromRestore;
--(void)didLoginPressed;
--(void)cancelCreateWallet;
--(void)restoreWalletCancelDidPressed;
--(void)didCreateWallet;
--(void)didRestoreWallet;
--(void)restoreButtonPressed;
--(void)createNewButtonPressed;
--(void)didExportWallet;
--(void)didEnableFingerprint:(BOOL) enabled;
--(void)didCancelEnableFingerprint;
+- (void)coordinatorDidAuth:(AuthCoordinator*)coordinator;
+- (void)coordinatorRequestForLogin;
 
 @end
 
@@ -33,7 +22,7 @@
 
 @interface AuthCoordinator : BaseCoordinator <Coordinatorable,AuthCoordinatorDelegate>
 
-@property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
 
 -(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
 

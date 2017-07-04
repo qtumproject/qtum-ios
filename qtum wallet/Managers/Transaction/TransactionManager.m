@@ -567,7 +567,7 @@ static NSString* op_exec = @"c1";
     BTCScript* script = [[BTCScript alloc] init];
     
     uint32_t ver = 1;
-    [script appendData:[NSData dataWithBytes:&ver length:1]];
+    [script appendData:[NSData dataWithBytes:&ver length:4]];
 
     NSUInteger gasLimit = 2000000;
     [script appendData:[NSData dataWithBytes:&gasLimit length:8]];
@@ -586,7 +586,7 @@ static NSString* op_exec = @"c1";
     BTCScript* script = [[BTCScript alloc] init];
     
     uint32_t ver = 1;
-    [script appendData:[NSData dataWithBytes:&ver length:1]];
+    [script appendData:[NSData dataWithBytes:&ver length:4]];
     
     NSUInteger gasLimit = 2000000;
     [script appendData:[NSData dataWithBytes:&gasLimit length:8]];

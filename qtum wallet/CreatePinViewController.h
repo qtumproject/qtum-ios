@@ -9,8 +9,15 @@
 #import "AuthCoordinator.h"
 #import "PinController.h"
 
+@protocol CreatePinViewControllerDelegate <NSObject>
+
+-(void)cancelCreateWallet;
+-(void)didEnteredFirstTimePass:(NSString*)pass;
+
+@end
+
 @interface CreatePinViewController : PinController
 
-@property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <CreatePinViewControllerDelegate> delegate;
 
 @end

@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol EnableFingerprintViewControllerDelegate <NSObject>
+
+-(void)didEnableFingerprint:(BOOL) enabled;
+-(void)didCancelEnableFingerprint;
+
+@end
+
 @interface EnableFingerprintViewController : UIViewController
 
-@property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <EnableFingerprintViewControllerDelegate> delegate;
 
 @end

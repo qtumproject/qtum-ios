@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "AuthCoordinator.h"
 
+@protocol FirstAuthViewControllerDelegate <NSObject>
+
+-(void)didLoginPressed;
+-(void)restoreButtonPressed;
+-(void)createNewButtonPressed;
+
+@end
+
 @interface FirstAuthViewController : BaseViewController
 
-@property (weak,nonatomic)id <AuthCoordinatorDelegate> delegate;
+@property (weak,nonatomic)id <FirstAuthViewControllerDelegate> delegate;
 
 @end

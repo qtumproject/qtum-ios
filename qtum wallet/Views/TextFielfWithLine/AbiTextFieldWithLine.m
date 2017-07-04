@@ -39,7 +39,9 @@
     self.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
     self.currentHeight = 1;
     self.delegate = self;
-    self.item = item;
+    if (item) {
+        self.item = item;
+    }
 }
 
 - (void)setItem:(AbiinterfaceInput *)item {
