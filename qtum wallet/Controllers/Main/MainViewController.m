@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MainViewController.h"
 #import "HistoryTableViewCell.h"
-#import "NewPaymentViewController.h"
+#import "NewPaymentDarkViewController.h"
 #import "RecieveViewController.h"
 #import "HistoryElement.h"
 #import "QRCodeViewController.h"

@@ -247,6 +247,8 @@
 		E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C41F023C4F00A513BF /* QStoreTableSource.m */; };
 		E784F8C71F0259AF00A513BF /* SourceCodePopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */; };
 		E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */; };
+		E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */; };
+		E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */; };
 		E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */; };
 		E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903591EDC66D0004243F0 /* BalanceTokenView.m */; };
 		E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035C1EDC674C004243F0 /* QTUMAddressTokenView.m */; };
@@ -831,6 +833,10 @@
 		E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SourceCodePopUp.storyboard; sourceTree = "<group>"; };
 		E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceCodePopUpViewController.h; sourceTree = "<group>"; };
 		E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceCodePopUpViewController.m; sourceTree = "<group>"; };
+		E7881B721F0BC63C00BD6AB2 /* NewPaymentLightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentLightViewController.h; sourceTree = "<group>"; };
+		E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentLightViewController.m; sourceTree = "<group>"; };
+		E7881B751F0BC6E200BD6AB2 /* NewPaymentDarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentDarkViewController.h; sourceTree = "<group>"; };
+		E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentDarkViewController.m; sourceTree = "<group>"; };
 		E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TokenDetailsViews.xib; sourceTree = "<group>"; };
 		E78903581EDC66D0004243F0 /* BalanceTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTokenView.h; sourceTree = "<group>"; };
 		E78903591EDC66D0004243F0 /* BalanceTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceTokenView.m; sourceTree = "<group>"; };
@@ -979,10 +985,14 @@
 		B3054E311F0BBACD001B1F63 /* NewPaymentOutput */ = {
 			isa = PBXGroup;
 			children = (
-				E7396AF21DDEF8260002CD47 /* NewPaymentViewController.h */,
-				E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */,
 				B3054E321F0BBAFE001B1F63 /* NewPaymentOutput.h */,
 				B3054E331F0BBB29001B1F63 /* NewPaymentOutputDelegate.h */,
+				E7396AF21DDEF8260002CD47 /* NewPaymentViewController.h */,
+				E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */,
+				E7881B721F0BC63C00BD6AB2 /* NewPaymentLightViewController.h */,
+				E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */,
+				E7881B751F0BC6E200BD6AB2 /* NewPaymentDarkViewController.h */,
+				E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */,
 			);
 			name = NewPaymentOutput;
 			sourceTree = "<group>";
@@ -2797,6 +2807,7 @@
 				E70353191F03C30E004ECCC9 /* QStoreContractViewController.m in Sources */,
 				E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
+				E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */,
 				B32B32DD1ECCC2C70081260A /* ContractFileManager.m in Sources */,
 				B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */,
 				B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */,
@@ -2816,6 +2827,7 @@
 				E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */,
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
+				E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */,
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
 				E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */,
 				E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */,

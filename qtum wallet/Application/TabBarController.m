@@ -8,12 +8,12 @@
 
 #import "TabBarController.h"
 #import "ControllersFactory.h"
-#import "NewPaymentViewController.h"
+#import "NewPaymentDarkViewController.h"
 #import "TabBarCoordinator.h"
 
 @interface TabBarController () <UITabBarControllerDelegate>
 
-@property (weak,nonatomic)NewPaymentViewController* paymentController;
+@property (weak,nonatomic)NewPaymentDarkViewController* paymentController;
 
 @end
 
@@ -90,7 +90,7 @@
 -(void)storeSendReference:(UIViewController*)sendController{
     if ([sendController isKindOfClass:[UINavigationController class]]){
         UINavigationController* nav = (UINavigationController*)sendController;
-        if ([nav.viewControllers.firstObject isKindOfClass:[NewPaymentViewController class]]){
+        if ([nav.viewControllers.firstObject isKindOfClass:[NewPaymentDarkViewController class]]){
             self.paymentController = nav.viewControllers.firstObject;
         }
     }

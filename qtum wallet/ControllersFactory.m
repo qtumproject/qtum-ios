@@ -58,7 +58,7 @@
 #import "QStoreListViewController.h"
 #import "QStoreContractViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
-#import "NewPaymentViewController.h"
+#import "NewPaymentOutput.h"
 
 @implementation ControllersFactory
 
@@ -111,9 +111,9 @@
     return nav;
 }
 
--(NewPaymentViewController*)createNewPaymentViewController {
+-(NSObject<NewPaymentOutput>*)createNewPaymentDarkViewController {
     
-    NewPaymentViewController* controller = (NewPaymentViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"NewPaymentViewController"];
+    NSObject<NewPaymentOutput>* controller = (NSObject<NewPaymentOutput>*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"NewPayment"];
     return controller;
 }
 

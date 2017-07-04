@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+Extension.h"
+#import "NSUserDefaults+Settings.h"
 
 @implementation UIViewController (Extension)
 
@@ -15,7 +16,16 @@
 }
 
 + (UIViewController*) controllerInStoryboard:(NSString*) storyboard withIdentifire:(NSString*) identifire{
-    return [self instantiateControllerInStoryboard:[UIStoryboard storyboardWithName:storyboard bundle:nil] withIdentifire:identifire];
+    NSMutableString *mutString = [identifire mutableCopy];
+    if ([identifire isEqualToString:@"NewPayment"]) {
+        if ([NSUserDefaults isDarkSchemeSetting]) {
+            [mutString appendString:@"Dark"];
+        }else{
+            [mutString appendString:@"Light"];
+        }
+    }
+    
+    return [self instantiateControllerInStoryboard:[UIStoryboard storyboardWithName:storyboard bundle:nil] withIdentifire:mutString];
 }
 
 - (UIViewController*) controllerInStoryboard:(NSString*) storyboard{

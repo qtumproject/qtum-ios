@@ -7,13 +7,12 @@
 //
 
 #import "SendCoordinator.h"
-#import "NewPaymentViewController.h"
+#import "NewPaymentDarkViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
 #import "TransactionManager.h"
 #import "NewPaymentOutput.h"
 #import "ChoseTokenPaymentOutput.h"
-#import "NSObject+Extension.h"
 
 @interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate>
 
@@ -36,7 +35,7 @@
 
 -(void)start {
     
-    id <NewPaymentOutput> controller = (id <NewPaymentOutput>)[[ControllersFactory sharedInstance] createNewPaymentViewController];
+    id <NewPaymentOutput> controller = [[ControllersFactory sharedInstance] createNewPaymentDarkViewController];
     controller.delegate = self;
     self.paymentOutput = controller;
     [self.navigationController setViewControllers:@[controller]];

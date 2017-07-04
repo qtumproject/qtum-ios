@@ -17,6 +17,7 @@ NSString * const kDeviceTokenKey             = @"kDeviceTokenKey";
 NSString * const kPrevDeviceTokenKey         = @"kPrevDeviceTokenKey";
 NSString * const kWalletAddressKey           = @"kWalletAddressKey";
 NSString * const kIsHaveWallet               = @"kIsHaveWallet";
+NSString * const kIsDarkScheme               = @"kIsDarkScheme";
 
 NSString * const kGroupIdentifire            = @"group.com.pixelplex.qtum-wallet";
 
@@ -100,5 +101,12 @@ NSString * const kGroupIdentifire            = @"group.com.pixelplex.qtum-wallet
     return [[NSUserDefaults alloc] initWithSuiteName:kGroupIdentifire];
 }
 
++ (void)saveIsDarkSchemeSetting:(BOOL)value{
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:kIsDarkScheme];
+}
+
++ (BOOL)isDarkSchemeSetting{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kIsDarkScheme];
+}
 
 @end
