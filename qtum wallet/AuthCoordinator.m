@@ -16,7 +16,7 @@
 #import "EnableFingerprintViewController.h"
 #import "NSUserDefaults+Settings.h"
 
-@interface AuthCoordinator ()
+@interface AuthCoordinator () <FirstAuthViewControllerDelegate, WalletNameViewControllerDelegate, RestoreWalletViewControllerDelegate, CreatePinViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) FirstAuthViewController *firstController;
@@ -30,7 +30,6 @@
 @property (copy, nonatomic) NSString* walletPin;
 @property (copy, nonatomic) NSArray* walletBrainKey;
 @property (assign, nonatomic, getter=isWalletExported) BOOL walletExported;
-
 
 @end
 
@@ -148,10 +147,6 @@
 -(void)didLoginPressed {
     
     [self.delegate coordinatorRequestForLogin];
-}
-
--(void)didCreateWalletPressedFromRestore{
-    
 }
 
 -(void)restoreWalletCancelDidPressed{

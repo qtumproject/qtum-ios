@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ExportWalletBrandKeyViewControllerDelegate <NSObject>
+
+-(void)didExportWallet;
+
+@end
+
 @interface ExportWalletBrandKeyViewController : BaseViewController
 
-@property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <ExportWalletBrandKeyViewControllerDelegate> delegate;
 
 @end

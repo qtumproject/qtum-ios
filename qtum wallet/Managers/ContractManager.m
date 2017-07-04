@@ -189,7 +189,7 @@ static NSString* kAddresses = @"kAddress";
             Contract* token = [Contract new];
             NSMutableData* hashData = [[NSData reverseData:[NSString dataFromHexString:key]] mutableCopy];
             uint32_t vinIndex = 0;
-            [hashData appendBytes:&vinIndex length:1];
+            [hashData appendBytes:&vinIndex length:4];
             hashData = [[hashData BTCHash160] mutableCopy];
             token.contractCreationAddressAddress = addresses.firstObject;
             token.adresses =  [[[WalletManager sharedInstance] hashTableOfKeys] allKeys];

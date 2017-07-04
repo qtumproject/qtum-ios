@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "AuthCoordinator.h"
 
+@protocol WalletNameViewControllerDelegate <NSObject>
+
+-(void)cancelCreateWallet;
+-(void)didCreatedWalletName:(NSString*)name;
+
+@end
+
 @interface WalletNameViewController : BaseViewController
 
-@property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <WalletNameViewControllerDelegate> delegate;
 
 @end
