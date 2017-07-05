@@ -197,7 +197,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     NSNumber *count = @(10000000);;
     NSNumber *someValue = @(0);
     NSNumber *flag = @YES;
-    NSArray *params = @[[[WalletManager sharedInstance]сurrentWallet].worldsString, count, someValue, flag];
+    NSArray *params = @[[[WalletManager sharedInstance] currentWallet].worldsString, count, someValue, flag];
     __weak __typeof(self)weakSelf = self;
     
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {

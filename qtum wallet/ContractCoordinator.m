@@ -203,7 +203,7 @@
     
     NSData* contractWithArgs = [[ContractInterfaceManager sharedInstance] tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
     
-    [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].сurrentWallet.allKeys andBitcode:contractWithArgs andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
+    [[TransactionManager sharedInstance] createSmartContractWithKeys:[WalletManager sharedInstance].currentWallet.allKeys andBitcode:contractWithArgs andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             BTCTransactionInput* input = transaction.inputs[0];
@@ -268,7 +268,7 @@
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:item appendingParam:param];
     
     __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:addressWithTokensValue toAddress:nil walletKeys:[WalletManager sharedInstance].сurrentWallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:addressWithTokensValue toAddress:nil walletKeys:[WalletManager sharedInstance].currentWallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
         
         [weakSelf.functionDetailController showResultViewWithOutputs:nil];
     }];

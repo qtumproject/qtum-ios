@@ -7,24 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WalletHistoryTableSource.h"
-#import "Paginationable.h"
+#import "WalletTableSource.h"
+#import "WalletOutput.h"
 
-@protocol WalletCoordinatorDelegate;
+@interface WalletViewController : BaseViewController <ControllerDelegate, WalletOutput>
 
-@interface WalletViewController : BaseViewController <ControllerDelegate>
+// Output property
+@property (strong, nonatomic) WalletTableSource* tableSource;
+@property (weak, nonatomic) id <WalletOutputDelegate> delegate;
 
-@property (strong,nonatomic) WalletHistoryTableSource* delegateDataSource;
-@property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *wigetBalanceLabel;
-
--(void)reloadTableView;
--(void)setBalance;
--(void)failedToGetData;
--(void)failedToGetBalance;
--(void)startLoading;
--(void)stopLoading;
--(void)reloadHistorySection;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

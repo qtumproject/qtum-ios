@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "WalletCoordinator.h"
+#import "WalletHeaderCell.h"
+#import "HistoryHeaderVIew.h"
 
 @class HistoryElement;
-@class WalletModel;
-@class WalletTypeCollectionDataSourceDelegate;
-
 
 @protocol ControllerDelegate <NSObject>
 
+@optional
 - (void)needShowHeader;
 - (void)needHideHeader;
 - (void)needShowHeaderForSecondSeciton;
@@ -30,13 +30,19 @@
 
 @end
 
-@interface WalletHistoryTableSource : NSObject <UITableViewDelegate, UITableViewDataSource>
+@interface WalletTableSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) UITableView* tableView;
+@property (weak, nonatomic) UITableView *tableView;
+
 @property (weak, nonatomic) id <Spendable> wallet;
-@property (strong,nonatomic) WalletTypeCollectionDataSourceDelegate* collectionDelegateDataSource;
-@property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
-@property (weak,nonatomic) id <ControllerDelegate> controllerDelegate;
+@property (weak, nonatomic) id <WalletCoordinatorDelegate> delegate;
+@property (weak, nonatomic) id <ControllerDelegate> controllerDelegate;
+
 @property (nonatomic) BOOL haveTokens;
+
+@property (nonatomic, weak, readonly) HistoryHeaderVIew *sectionHeaderView;
+@property (nonatomic, readonly) CGFloat lastContentOffset;
+
+- (HeaderCellType)headerCellType;
 
 @end

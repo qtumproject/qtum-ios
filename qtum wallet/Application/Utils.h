@@ -24,6 +24,9 @@ UIColor *historyGreenColor();
 UIColor *historyGrayColor();
 UIColor *customBlackColor();
 
+// Light Colors
+UIColor *lightBlueColor();
+
 
 typedef NS_ENUM(NSInteger,PinType){
     EnterType,

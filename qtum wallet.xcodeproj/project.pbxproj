@@ -121,7 +121,7 @@
 		B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B384F3DB1EB9BF4A0075F1E8 /* LanguageManager.m */; };
 		B384F3DF1EB9BF4A0075F1E8 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = B384F3DD1EB9BF4A0075F1E8 /* NSBundle+Language.m */; };
 		B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */; };
-		B385B5A51E6D829C003BB96C /* WalletHistoryTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B5A41E6D829C003BB96C /* WalletHistoryTableSource.m */; };
+		B385B5A51E6D829C003BB96C /* WalletTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B5A41E6D829C003BB96C /* WalletTableSource.m */; };
 		B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B01E1395E5004D231B /* ProfileViewController.m */; };
 		B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */; };
 		B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */; };
@@ -339,6 +339,15 @@
 		E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */; };
 		E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */; };
 		E78D0C991ED2DF2E00CB91FF /* TokenDetailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */; };
+		E79846241F0D0056002A516A /* WalletViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E79846231F0D0056002A516A /* WalletViewControllerDark.m */; };
+		E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E79846261F0D0068002A516A /* WalletViewControllerLight.m */; };
+		E798462A1F0D1E40002A516A /* HistoryTableViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E79846291F0D1E40002A516A /* HistoryTableViewCellDark.m */; };
+		E798462D1F0D1E50002A516A /* HistoryTableViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E798462C1F0D1E50002A516A /* HistoryTableViewCellLight.m */; };
+		E79846321F0D2373002A516A /* WalletHeaderCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E79846311F0D2373002A516A /* WalletHeaderCellLight.m */; };
+		E79846361F0D23CB002A516A /* WalletHeaderCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E79846351F0D23CB002A516A /* WalletHeaderCellDark.m */; };
+		E798463A1F0D2899002A516A /* WalletTableSourceDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E79846391F0D2899002A516A /* WalletTableSourceDark.m */; };
+		E798463D1F0D28A3002A516A /* WalletTableSourceLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E798463C1F0D28A3002A516A /* WalletTableSourceLight.m */; };
+		E79846401F0D2F57002A516A /* TableSourcesFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E798463F1F0D2F57002A516A /* TableSourcesFactory.m */; };
 		E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758521EEFDB32004AF200 /* BackupContractsViewController.m */; };
 		E7B7585A1EF016FD004AF200 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758591EF016FD004AF200 /* WalletController.m */; };
 		E7B7585F1EF017C5004AF200 /* BalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7585E1EF017C5004AF200 /* BalanceCell.m */; };
@@ -684,8 +693,8 @@
 		B384F3DD1EB9BF4A0075F1E8 /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
 		B385B5A01E6D640E003BB96C /* CreateTokenNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenNavigationController.h; sourceTree = "<group>"; };
 		B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenNavigationController.m; sourceTree = "<group>"; };
-		B385B5A31E6D829C003BB96C /* WalletHistoryTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHistoryTableSource.h; sourceTree = "<group>"; };
-		B385B5A41E6D829C003BB96C /* WalletHistoryTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletHistoryTableSource.m; sourceTree = "<group>"; };
+		B385B5A31E6D829C003BB96C /* WalletTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletTableSource.h; path = ../../../WalletTableSource.h; sourceTree = "<group>"; };
+		B385B5A41E6D829C003BB96C /* WalletTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletTableSource.m; path = ../../../WalletTableSource.m; sourceTree = "<group>"; };
 		B386F5AF1E1395E5004D231B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		B386F5B01E1395E5004D231B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
@@ -952,6 +961,26 @@
 		E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithAnimatedLine.m; sourceTree = "<group>"; };
 		E78D0C971ED2DF2E00CB91FF /* TokenDetailsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsTableView.h; sourceTree = "<group>"; };
 		E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsTableView.m; sourceTree = "<group>"; };
+		E78FD6521F0CF425007BD355 /* WalletOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletOutput.h; sourceTree = "<group>"; };
+		E78FD6541F0CF5AA007BD355 /* WalletOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletOutputDelegate.h; sourceTree = "<group>"; };
+		E79846221F0D0056002A516A /* WalletViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewControllerDark.h; sourceTree = "<group>"; };
+		E79846231F0D0056002A516A /* WalletViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewControllerDark.m; sourceTree = "<group>"; };
+		E79846251F0D0068002A516A /* WalletViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewControllerLight.h; sourceTree = "<group>"; };
+		E79846261F0D0068002A516A /* WalletViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewControllerLight.m; sourceTree = "<group>"; };
+		E79846281F0D1E40002A516A /* HistoryTableViewCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCellDark.h; sourceTree = "<group>"; };
+		E79846291F0D1E40002A516A /* HistoryTableViewCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCellDark.m; sourceTree = "<group>"; };
+		E798462B1F0D1E50002A516A /* HistoryTableViewCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCellLight.h; sourceTree = "<group>"; };
+		E798462C1F0D1E50002A516A /* HistoryTableViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCellLight.m; sourceTree = "<group>"; };
+		E79846301F0D2373002A516A /* WalletHeaderCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHeaderCellLight.h; sourceTree = "<group>"; };
+		E79846311F0D2373002A516A /* WalletHeaderCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletHeaderCellLight.m; sourceTree = "<group>"; };
+		E79846341F0D23CB002A516A /* WalletHeaderCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHeaderCellDark.h; sourceTree = "<group>"; };
+		E79846351F0D23CB002A516A /* WalletHeaderCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletHeaderCellDark.m; sourceTree = "<group>"; };
+		E79846381F0D2899002A516A /* WalletTableSourceDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletTableSourceDark.h; sourceTree = "<group>"; };
+		E79846391F0D2899002A516A /* WalletTableSourceDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletTableSourceDark.m; sourceTree = "<group>"; };
+		E798463B1F0D28A3002A516A /* WalletTableSourceLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletTableSourceLight.h; sourceTree = "<group>"; };
+		E798463C1F0D28A3002A516A /* WalletTableSourceLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletTableSourceLight.m; sourceTree = "<group>"; };
+		E798463E1F0D2F57002A516A /* TableSourcesFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableSourcesFactory.h; sourceTree = "<group>"; };
+		E798463F1F0D2F57002A516A /* TableSourcesFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSourcesFactory.m; sourceTree = "<group>"; };
 		E7B758511EEFDB32004AF200 /* BackupContractsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupContractsViewController.h; sourceTree = "<group>"; };
 		E7B758521EEFDB32004AF200 /* BackupContractsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BackupContractsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7B758581EF016FD004AF200 /* WalletController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletController.h; sourceTree = "<group>"; };
@@ -1222,6 +1251,8 @@
 				B365CA781EA77D490040A163 /* TokensFactory.m */,
 				B365CA7A1EA77D590040A163 /* WalletsFactory.h */,
 				B365CA7B1EA77D590040A163 /* WalletsFactory.m */,
+				E798463E1F0D2F57002A516A /* TableSourcesFactory.h */,
+				E798463F1F0D2F57002A516A /* TableSourcesFactory.m */,
 			);
 			name = Factories;
 			sourceTree = "<group>";
@@ -1890,13 +1921,10 @@
 		E7396AF51DDF0C7D0002CD47 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				E79846371F0D2665002A516A /* TableSource */,
+				E798462F1F0D2343002A516A /* WalletHeaderCell */,
+				E798462E1F0D1E6E002A516A /* HistoryTableViewCell */,
 				B3487A281E92380B00BC66F1 /* Header */,
-				E7396AF61DDF0C970002CD47 /* HistoryTableViewCell.h */,
-				E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */,
-				B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */,
-				B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */,
-				E78903671EDD57D2004243F0 /* AnimatedLabelTableViewCell.h */,
-				E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */,
 			);
 			name = Cell;
 			path = Controllers/Main/Cell;
@@ -2044,10 +2072,14 @@
 			isa = PBXGroup;
 			children = (
 				E7396AF51DDF0C7D0002CD47 /* Cell */,
-				B385B5A31E6D829C003BB96C /* WalletHistoryTableSource.h */,
-				B385B5A41E6D829C003BB96C /* WalletHistoryTableSource.m */,
+				E78FD6521F0CF425007BD355 /* WalletOutput.h */,
+				E78FD6541F0CF5AA007BD355 /* WalletOutputDelegate.h */,
 				E7396AEA1DDEF7E30002CD47 /* WalletViewController.h */,
 				E7396AEB1DDEF7E30002CD47 /* WalletViewController.m */,
+				E79846221F0D0056002A516A /* WalletViewControllerDark.h */,
+				E79846231F0D0056002A516A /* WalletViewControllerDark.m */,
+				E79846251F0D0068002A516A /* WalletViewControllerLight.h */,
+				E79846261F0D0068002A516A /* WalletViewControllerLight.m */,
 			);
 			name = WalletOutput;
 			sourceTree = "<group>";
@@ -2066,6 +2098,47 @@
 				E78903621EDC678C004243F0 /* AddressesTokenView.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		E798462E1F0D1E6E002A516A /* HistoryTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E79846281F0D1E40002A516A /* HistoryTableViewCellDark.h */,
+				E79846291F0D1E40002A516A /* HistoryTableViewCellDark.m */,
+				E798462B1F0D1E50002A516A /* HistoryTableViewCellLight.h */,
+				E798462C1F0D1E50002A516A /* HistoryTableViewCellLight.m */,
+				E7396AF61DDF0C970002CD47 /* HistoryTableViewCell.h */,
+				E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */,
+			);
+			name = HistoryTableViewCell;
+			sourceTree = "<group>";
+		};
+		E798462F1F0D2343002A516A /* WalletHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				E78903671EDD57D2004243F0 /* AnimatedLabelTableViewCell.h */,
+				E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */,
+				B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */,
+				B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */,
+				E79846301F0D2373002A516A /* WalletHeaderCellLight.h */,
+				E79846311F0D2373002A516A /* WalletHeaderCellLight.m */,
+				E79846341F0D23CB002A516A /* WalletHeaderCellDark.h */,
+				E79846351F0D23CB002A516A /* WalletHeaderCellDark.m */,
+			);
+			name = WalletHeaderCell;
+			sourceTree = "<group>";
+		};
+		E79846371F0D2665002A516A /* TableSource */ = {
+			isa = PBXGroup;
+			children = (
+				B385B5A31E6D829C003BB96C /* WalletTableSource.h */,
+				B385B5A41E6D829C003BB96C /* WalletTableSource.m */,
+				E79846381F0D2899002A516A /* WalletTableSourceDark.h */,
+				E79846391F0D2899002A516A /* WalletTableSourceDark.m */,
+				E798463B1F0D28A3002A516A /* WalletTableSourceLight.h */,
+				E798463C1F0D28A3002A516A /* WalletTableSourceLight.m */,
+			);
+			name = TableSource;
 			sourceTree = "<group>";
 		};
 		E7B758501EEFDB02004AF200 /* BackupContacts */ = {
@@ -3010,6 +3083,7 @@
 				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,
 				B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */,
 				B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */,
+				E798462A1F0D1E40002A516A /* HistoryTableViewCellDark.m in Sources */,
 				B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */,
 				B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */,
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
@@ -3053,7 +3127,7 @@
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
-				B385B5A51E6D829C003BB96C /* WalletHistoryTableSource.m in Sources */,
+				B385B5A51E6D829C003BB96C /* WalletTableSource.m in Sources */,
 				B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */,
 				E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */,
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,
@@ -3089,6 +3163,7 @@
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */,
 				E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */,
+				E79846401F0D2F57002A516A /* TableSourcesFactory.m in Sources */,
 				E73D37041ECF1771009173BD /* QTUMAddressTokenTableViewCell.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
 				B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */,
@@ -3099,6 +3174,7 @@
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
+				E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */,
 				E73D37011ECF1684009173BD /* ActivityTokenTableViewCell.m in Sources */,
 				E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */,
 				B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */,
@@ -3115,10 +3191,14 @@
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,
 				E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */,
 				E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */,
+				E798463A1F0D2899002A516A /* WalletTableSourceDark.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				B384F3DF1EB9BF4A0075F1E8 /* NSBundle+Language.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
+				E798462D1F0D1E50002A516A /* HistoryTableViewCellLight.m in Sources */,
+				E79846361F0D23CB002A516A /* WalletHeaderCellDark.m in Sources */,
+				E798463D1F0D28A3002A516A /* WalletTableSourceLight.m in Sources */,
 				B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */,
 				B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */,
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
@@ -3129,6 +3209,7 @@
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */,
 				B35130611E49C9930048A28C /* NewsCellModel.m in Sources */,
+				E79846321F0D2373002A516A /* WalletHeaderCellLight.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
@@ -3137,6 +3218,7 @@
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,
 				B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */,
 				B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */,
+				E79846241F0D0056002A516A /* WalletViewControllerDark.m in Sources */,
 				B3827DE41ECF5E8D00E500DE /* TokenFunctionCell.m in Sources */,
 				E7396AFC1DDF19C90002CD47 /* AddressTableViewCell.m in Sources */,
 				B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */,

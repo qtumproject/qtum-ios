@@ -309,7 +309,7 @@
         [controller selectSendControllerWithAdress:self.adress andValue:self.amount];
     }
     self.router = controller;
-    [self storeAuthorizedFlag:YES andMainAddress:[WalletManager sharedInstance].сurrentWallet.mainAddress];
+    [self storeAuthorizedFlag:YES andMainAddress:[WalletManager sharedInstance].currentWallet.mainAddress];
 }
 
 -(void)restartMainFlow {

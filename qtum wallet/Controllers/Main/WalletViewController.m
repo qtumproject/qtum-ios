@@ -15,40 +15,27 @@
 #import "QRCodeViewController.h"
 #import "ApplicationCoordinator.h"
 #import "GradientViewWithAnimation.h"
-#import "WalletHistoryTableSource.h"
+#import "WalletTableSource.h"
 #import "WalletCoordinator.h"
 #import "HistoryHeaderVIew.h"
-#import "ViewWithAnimatedLine.h"
-
-CGFloat const HeaderHeightShowed = 50.0f;
 
 @interface WalletViewController ()
 
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *customNavigationBar;
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
-@property (weak, nonatomic) IBOutlet UILabel *adressLabel;
-@property (assign, nonatomic) BOOL canNewRequest;
-@property (assign, nonatomic) BOOL isNavigationBarFadeout;
-@property (assign, nonatomic) BOOL isFirstTimeUpdate;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
-@property (weak, nonatomic) IBOutlet ViewWithAnimatedLine *headerView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *availabelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *uncorfirmedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedTextLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTextTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableValueTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topForTableConstraint;
-@property (weak, nonatomic) IBOutlet UIView *viewForHeaderInSecondSection;
 
-@property (nonatomic) BOOL balanceLoaded;
-@property (nonatomic) BOOL historyLoaded;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
-- (void)refreshButtonWasPressed:(id)sender;
+@property (assign, nonatomic) BOOL balanceLoaded;
+@property (assign, nonatomic) BOOL historyLoaded;
+@property (assign, nonatomic) BOOL isFirstTimeUpdate;
+
+@property (nonatomic) id<Spendable> wallet;
 
 @end
 
@@ -57,37 +44,31 @@ CGFloat const HeaderHeightShowed = 50.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    self.wigetBalanceLabel.text =
-    self.balanceLabel.text = @"0";
-
     self.isFirstTimeUpdate = YES;
-    self.canNewRequest = YES;
     
     [self configTableView];
     [self configRefreshControl];
-    self.navigationController.navigationBar.translucent = NO;
-    [self configAdressLabel];
-    
-    [self.headerView setRightConstraint:self.trailingForLineConstraint];
 }
 
 - (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
+    
     [self.tableView reloadData];
-    WalletHistoryTableSource *source = (WalletHistoryTableSource *)self.tableView.dataSource;
-    [self reloadHeader:source.wallet];
+    [self reloadHeader:self.wallet];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
+    
     [super viewDidAppear:animated];
     
     if (self.isFirstTimeUpdate) {
-        [self.delegate reloadTableViewData];
+        [self.delegate didReloadTableViewData];
         self.isFirstTimeUpdate = NO;
     }
 }
@@ -95,57 +76,23 @@ CGFloat const HeaderHeightShowed = 50.0f;
 #pragma mark - Configuration
 
 -(void)configRefreshControl{
+    
     self.refreshControl = [[UIRefreshControl alloc]init];
     self.refreshControl.tintColor = customBlackColor();
     [self.tableView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(refreshButtonWasPressed:) forControlEvents:UIControlEventValueChanged];
-    
-    //creating bacground for refresh controll
-    CGRect frame = self.tableView.bounds;
-    frame.origin.y = -frame.size.height;
-    UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
-    refreshBackgroundView.backgroundColor = customBlueColor();
-    [self.tableView insertSubview:refreshBackgroundView atIndex:0];
-}
-
--(void)configAdressLabel{
-    NSString* keyString = [AppSettings sharedInstance].isMainNet ? [WalletManager sharedInstance].сurrentWallet.randomKey.address.string : [WalletManager sharedInstance].сurrentWallet.randomKey.addressTestnet.string;
-    self.adressLabel.text = keyString;
+    [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
 }
 
 -(void)configTableView{
+    
     self.tableView.tableFooterView = [UIView new];
-    self.tableView.dataSource = self.delegateDataSource;
-    self.tableView.delegate = self.delegateDataSource;
-    self.delegateDataSource.tableView = self.tableView;
-    self.delegateDataSource.controllerDelegate = self;
+    self.tableView.dataSource = self.tableSource;
+    self.tableView.delegate = self.tableSource;
+    self.tableSource.tableView = self.tableView;
+    self.tableSource.controllerDelegate = self;
     
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderView" bundle:nil];
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
-}
-
-- (void)needShowHeader{
-    if (self.headerHeightConstraint.constant == HeaderHeightShowed) {
-        return;
-    }
-    
-    self.headerHeightConstraint.constant = HeaderHeightShowed;
-    [self.headerView showAnimation];
-}
-
-- (void)needShowHeaderForSecondSeciton {
-    self.viewForHeaderInSecondSection.hidden = NO;
-}
-- (void)needHideHeaderForSecondSeciton {
-    self.viewForHeaderInSecondSection.hidden = YES;
-}
-
-- (void)needHideHeader{
-    if (self.headerHeightConstraint.constant == 0.0f) {
-        return;
-    }
-    
-    self.headerHeightConstraint.constant = 0;
 }
 
 #pragma mark - Private Methods
@@ -153,16 +100,10 @@ CGFloat const HeaderHeightShowed = 50.0f;
 
 #pragma mark - Methods
 
-- (void)getBalanceLocal:(BOOL)isLocal{
-    self.balanceLoaded = NO;
-    [self.delegate refreshTableViewBalanceLocal:isLocal];
-}
-
--(void)reloadTableView{
+-(void)reloadTableView {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
-        WalletHistoryTableSource *source = (WalletHistoryTableSource *)self.tableView.dataSource;
-        [self reloadHeader:source.wallet];
+        [self reloadHeader:self.wallet];
         self.historyLoaded = YES;
         if (self.balanceLoaded && self.historyLoaded) {
             [[PopUpsManager sharedInstance] dismissLoader];
@@ -170,37 +111,17 @@ CGFloat const HeaderHeightShowed = 50.0f;
     });
 }
 
--(void)reloadHistorySection {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSRange range = NSMakeRange(1, 1);
-        NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
-        [self.tableView reloadSections:section withRowAnimation:UITableViewRowAnimationNone];
-    });
-}
-
-- (void)reloadHeader:(id <Spendable>)wallet{
+- (void)reloadHeader:(id<Spendable>)wallet {
     
-    BOOL haveUncorfirmed = wallet.unconfirmedBalance != 0.0f;
+    BOOL haveUncorfirmed = self.wallet.unconfirmedBalance != 0.0f;
     self.availableTextTopConstraint.constant = haveUncorfirmed ? 10.0f : 17.0f;
     self.availableValueTopConstraint.constant = haveUncorfirmed ? 8.0f : 15.0f;
     
     self.unconfirmedTextLabel.hidden =
     self.uncorfirmedLabel.hidden = !haveUncorfirmed;
     
-    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%f",wallet.unconfirmedBalance];
-    self.availabelLabel.text = [NSString stringWithFormat:@"%f",wallet.balance];
-}
-
--(void)setBalance{
-    self.balanceLoaded = YES;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-        WalletHistoryTableSource *source = (WalletHistoryTableSource *)self.tableView.dataSource;
-        [self reloadHeader:source.wallet];
-    });
-    if (self.balanceLoaded && self.historyLoaded) {
-        [[PopUpsManager sharedInstance] dismissLoader];
-    }
+    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%f", self.wallet.unconfirmedBalance];
+    self.availabelLabel.text = [NSString stringWithFormat:@"%f", self.wallet.balance];
 }
 
 -(void)startLoading {
@@ -217,36 +138,23 @@ CGFloat const HeaderHeightShowed = 50.0f;
 
 -(void)failedToGetData{
     self.historyLoaded = YES;
-    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some error", "")];
 }
 
 -(void)failedToGetBalance{
     self.balanceLoaded = YES;
-    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some error", "")];
-
 }
 
-#pragma mark - QRCodeViewControllerDelegate
-
-- (void)qrCodeScanned:(NSDictionary *)dictionary{
-    [self.delegate didQRCodeScannedWithDict:dictionary];
+- (void)refreshFromRefreshControl {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.refreshControl endRefreshing];
+    });
+    [self.delegate didReloadTableViewData];
 }
 
 #pragma mark - Actions
 
-- (IBAction)actionRecive:(id)sender {
-    [self performSegueWithIdentifier:@"MaintToRecieve" sender:self];
-}
-
-- (void)refreshButtonWasPressed:(id)sender {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.refreshControl endRefreshing];
-    });
-    [self.delegate reloadTableViewData];
-}
-
 - (IBAction)actionQRCode:(id)sender {
-    [self.delegate showQRCodeScan];
+    [self.delegate didShowQRCodeScan];
 }
 
 @end

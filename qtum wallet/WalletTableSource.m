@@ -6,52 +6,28 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "WalletHistoryTableSource.h"
+#import "WalletTableSource.h"
 #import "HistoryElement.h"
 #import "HistoryTableViewCell.h"
-#import "WalletHeaderCell.h"
-#import "HistoryHeaderVIew.h"
 
-@interface WalletHistoryTableSource ()
+@interface WalletTableSource ()
 
-@property(weak,nonatomic)HistoryHeaderVIew* sectionHeaderView;
+@property(nonatomic, weak) HistoryHeaderVIew *sectionHeaderView;
 @property (nonatomic, assign) CGFloat lastContentOffset;
 
 @end
 
 static NSInteger countOfSections = 2;
 
-@implementation WalletHistoryTableSource
+@implementation WalletTableSource
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.section == 0) {
-        WalletHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:WalletTypeCellWithCollectionIdentifire];
-        
-        cell.delegate = self.delegate;
-        [cell setCellType:[self headerCellType]];
-        [cell setData:self.wallet];
-        [self didScrollForheaderCell:tableView];
-        
-        return cell;
-    } else {
-        HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCell"];
-        if (!cell) {
-            cell = [[HistoryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HistoryTableViewCell"];
-        }
-        
-        HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
-        cell.historyElement = element;
-        return cell;
-    }
-}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { return nil; }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return countOfSections;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
@@ -61,24 +37,7 @@ static NSInteger countOfSections = 2;
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.section == 0) {
-        switch ([self headerCellType]) {
-            case HeaderCellTypeWithoutPageControl:
-                return 192;
-            case HeaderCellTypeWithoutNotCorfirmedBalance:
-                return 161;
-            case HeaderCellTypeWithoutAll:
-                return 152;
-            case HeaderCellTypeAllVisible:
-            default:
-                return 212;
-        }
-    } else {
-        return 75;
-    }
-}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { return 0; }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
@@ -129,7 +88,6 @@ static NSInteger countOfSections = 2;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     self.lastContentOffset = scrollView.contentOffset.y;
-    [self didScrollForheaderCell:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView willDecelerate:(BOOL)decelerate{
@@ -155,12 +113,6 @@ static NSInteger countOfSections = 2;
     }
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section) {
-        [self.delegate didDeselectHistoryItemIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
-    }
-}
-
 #pragma mark - Private Methods
 
 - (HeaderCellType)headerCellType{
@@ -178,38 +130,6 @@ static NSInteger countOfSections = 2;
     }
     
     return HeaderCellTypeAllVisible;
-}
-
-- (void)didScrollForheaderCell:(UIScrollView *)scrollView{
-    NSIndexPath *headerIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    WalletHeaderCell *headerCell = [self.tableView cellForRowAtIndexPath:headerIndexPath];
-    
-    if (!headerCell) {
-        return;
-    }
-    
-    if (self.sectionHeaderView) {
-        CGFloat headerHeight = [WalletHeaderCell getHeaderHeight];
-        CGFloat headerPosition = self.sectionHeaderView.frame.origin.y - scrollView.contentOffset.y;
-        if (headerPosition <= headerHeight ) {
-            [self.controllerDelegate needShowHeaderForSecondSeciton];
-        }else{
-            [self.controllerDelegate needHideHeaderForSecondSeciton];
-        }
-    }
-    
-    CGFloat position = headerCell.frame.origin.y - scrollView.contentOffset.y;
-    [headerCell cellYPositionChanged:position];
-    
-    if ([headerCell needShowHeader:position]) {
-        if ([self.controllerDelegate respondsToSelector:@selector(needShowHeader)]) {
-            [self.controllerDelegate needShowHeader];
-        }
-    }else{
-        if ([self.controllerDelegate respondsToSelector:@selector(needHideHeader)]) {
-            [self.controllerDelegate needHideHeader];
-        }
-    }
 }
 
 @end

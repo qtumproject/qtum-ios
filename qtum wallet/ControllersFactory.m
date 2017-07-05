@@ -32,7 +32,6 @@
 #import "TokenDetailsViewController.h"
 #import "LanguageViewController.h"
 #import "BalancePageViewController.h"
-#import "WalletViewController.h"
 #import "TokenListViewController.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
@@ -58,7 +57,9 @@
 #import "QStoreListViewController.h"
 #import "QStoreContractViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
+
 #import "NewPaymentOutput.h"
+#import "WalletOutput.h"
 
 @implementation ControllersFactory
 
@@ -183,8 +184,8 @@
     return controller;
 }
 
--(WalletViewController*)createWalletViewController{
-    WalletViewController* controller = (WalletViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"WalletViewController"];
+-(NSObject<WalletOutput> *)createWalletViewController{
+    NSObject<WalletOutput> *controller = (NSObject<WalletOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"WalletViewController"];
     return controller;
 }
 

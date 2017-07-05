@@ -50,7 +50,7 @@
     [self showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].сurrentWallet allKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].currentWallet allKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             [weakSelf showCompletedPopUp];

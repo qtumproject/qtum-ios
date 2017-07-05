@@ -18,22 +18,15 @@
 @required
 
 // Table reload
-- (void)reloadTableViewData;
 - (void)refreshTableViewData;
-- (void)refreshTableViewBalanceLocal:(BOOL)isLocal;
 
 // Show
 - (void)showAddressInfoWithSpendable:(id <Spendable>) spendable;
-- (void)showQRCodeScan;
-
-- (void)pageDidChange:(NSInteger) page;
 
 // Some actions
 - (void)didQRCodeScannedWithDict:(NSDictionary*)dict;
 - (void)didBackPressed;
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*)item;
-- (void)didDeselectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*)item;
-- (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*)item;
 
 @end
 

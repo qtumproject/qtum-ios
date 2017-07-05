@@ -29,7 +29,7 @@ extern NSString *const kWalletDidChange;
 - (void)storePin:(NSString*) pin;
 - (void)removePin;
 - (BOOL)haveWallets;
-- (Wallet *)сurrentWallet;
+- (Wallet *)currentWallet;
 - (NSArray *)allWallets;
 - (NSDictionary *)hashTableOfKeys;
 

@@ -41,9 +41,6 @@ NSString *const ShareContractTokensText = @"It's my tokens";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.delegate didSelectTokenIndexPath:indexPath withItem:self.tokens[indexPath.row]];
 }
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.delegate didDeselectTokenIndexPath:indexPath withItem:self.tokens[indexPath.row]];
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 46;

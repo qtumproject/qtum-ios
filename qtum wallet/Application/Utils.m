@@ -50,3 +50,10 @@ UIColor *textFieldLineColorDeselected()
 {
     return [UIColor colorWithRed:189/255.0f green:198/255.0f blue:207/255.0f alpha:1.0f];
 }
+
+// Light Colors
+
+UIColor *lightBlueColor()
+{
+    return [UIColor colorWithRed:237/255.0f green:246/255.0f blue:248/255.0f alpha:1.0f];
+}

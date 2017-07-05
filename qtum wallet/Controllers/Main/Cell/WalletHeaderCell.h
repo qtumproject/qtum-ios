@@ -18,13 +18,10 @@ typedef enum {
     HeaderCellTypeWithoutAll
 } HeaderCellType;
 
-static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIdentifire";
-
 @interface WalletHeaderCell : AnimatedLabelTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedValue;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *typeWalletLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressValueLabel;
 @property (weak, nonatomic) IBOutlet UIButton *showAddresButton;
@@ -35,6 +32,7 @@ static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIden
 
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak, nonatomic) id <Spendable> spendable;
+@property (nonatomic, readonly) HeaderCellType type;
 
 - (void)setData:(id <Spendable>)wallet;
 - (void)setCellType:(HeaderCellType)type;

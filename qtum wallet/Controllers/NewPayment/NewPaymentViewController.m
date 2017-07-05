@@ -80,8 +80,8 @@ static NSInteger withoutTokenOffset = 30;
 
 -(void)updateControls{
     
-    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].сurrentWallet.balance];
-    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].сurrentWallet.unconfirmedBalance];
+    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].currentWallet.balance];
+    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
     
     BOOL isTokensExists = [ContractManager sharedInstance].allActiveTokens.count;
     self.tokenTextField.hidden =

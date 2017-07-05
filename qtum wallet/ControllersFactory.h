@@ -21,7 +21,6 @@
 @class HistoryItemViewController;
 @class CustomAbiInterphaseViewController;
 @class CreateTokenFinishViewController;
-@class WalletViewController;
 @class TokenListViewController;
 @class TokenFunctionViewController;
 @class TokenFunctionDetailViewController;
@@ -52,7 +51,9 @@
 @class QStoreListViewController;
 @class QStoreContractViewController;
 @class ConfirmPurchasePopUpViewController;
+
 @protocol NewPaymentOutput;
+@protocol WalletOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -88,7 +89,6 @@
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 -(ChooseSmartContractViewController*)createChooseSmartContractViewController;
 -(SmartContractsListViewController*)createSmartContractsListViewController;
--(WalletViewController*)createWalletViewController;
 -(TokenListViewController*)createTokenListViewController;
 -(TokenFunctionViewController*)createTokenFunctionViewController;
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
@@ -99,6 +99,7 @@
 -(BackupContractsViewController*)createBackupContractViewController;
 -(EnableFingerprintViewController*)createEnableFingerprintViewController;
 -(NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
+-(NSObject<WalletOutput> *)createWalletViewController;
 
 -(QRCodeViewController*)createQRCodeViewControllerForWallet;
 -(QRCodeViewController*)createQRCodeViewControllerForSend;
