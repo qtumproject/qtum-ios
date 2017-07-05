@@ -7,7 +7,7 @@
 //
 
 #import "HistoryViewController.h"
-#import "WalletHistoryDelegateDataSource.h"
+#import "WalletHistoryTableSource.h"
 #import "WalletCoordinator.h"
 
 

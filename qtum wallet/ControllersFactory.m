@@ -32,7 +32,7 @@
 #import "TokenDetailsViewController.h"
 #import "LanguageViewController.h"
 #import "BalancePageViewController.h"
-#import "MainViewController.h"
+#import "WalletViewController.h"
 #import "TokenListViewController.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
@@ -183,8 +183,8 @@
     return controller;
 }
 
--(MainViewController*)createMainViewController{
-    MainViewController* controller = (MainViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"MainViewController"];
+-(WalletViewController*)createWalletViewController{
+    WalletViewController* controller = (WalletViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"WalletViewController"];
     return controller;
 }
 
@@ -230,6 +230,11 @@
 
 -(QRCodeViewController*)createQRCodeViewControllerForSubscribe{
     QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"QRCodeViewController"];
+    return controller;
+}
+
+-(QRCodeViewController*)createQRCodeViewControllerForWallet{
+    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"QRCodeViewController"];
     return controller;
 }
 

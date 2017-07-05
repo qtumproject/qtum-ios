@@ -6,13 +6,13 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "WalletHistoryDelegateDataSource.h"
+#import "WalletHistoryTableSource.h"
 #import "HistoryElement.h"
 #import "HistoryTableViewCell.h"
 #import "WalletHeaderCell.h"
 #import "HistoryHeaderVIew.h"
 
-@interface WalletHistoryDelegateDataSource ()
+@interface WalletHistoryTableSource ()
 
 @property(weak,nonatomic)HistoryHeaderVIew* sectionHeaderView;
 @property (nonatomic, assign) CGFloat lastContentOffset;
@@ -21,7 +21,7 @@
 
 static NSInteger countOfSections = 2;
 
-@implementation WalletHistoryDelegateDataSource
+@implementation WalletHistoryTableSource
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 

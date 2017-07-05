@@ -121,7 +121,7 @@
 		B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B384F3DB1EB9BF4A0075F1E8 /* LanguageManager.m */; };
 		B384F3DF1EB9BF4A0075F1E8 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = B384F3DD1EB9BF4A0075F1E8 /* NSBundle+Language.m */; };
 		B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */; };
-		B385B5A51E6D829C003BB96C /* WalletHistoryDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B5A41E6D829C003BB96C /* WalletHistoryDelegateDataSource.m */; };
+		B385B5A51E6D829C003BB96C /* WalletHistoryTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B385B5A41E6D829C003BB96C /* WalletHistoryTableSource.m */; };
 		B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B01E1395E5004D231B /* ProfileViewController.m */; };
 		B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */; };
 		B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */; };
@@ -210,7 +210,7 @@
 		E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E739105E1DE5E131008145A8 /* KeyViewController.m */; };
 		E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AE01DDDEA2E0002CD47 /* GradientView.m */; };
 		E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AE71DDEDEEC0002CD47 /* CircleGradientView.m */; };
-		E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AEB1DDEF7E30002CD47 /* MainViewController.m */; };
+		E7396AEC1DDEF7E30002CD47 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AEB1DDEF7E30002CD47 /* WalletViewController.m */; };
 		E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AEF1DDEF8030002CD47 /* AddressListViewController.m */; };
 		E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AF31DDEF8260002CD47 /* NewPaymentViewController.m */; };
 		E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */; };
@@ -247,8 +247,6 @@
 		E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C41F023C4F00A513BF /* QStoreTableSource.m */; };
 		E784F8C71F0259AF00A513BF /* SourceCodePopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */; };
 		E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */; };
-		E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */; };
-		E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */; };
 		E7881B0D1F0BB63400BD6AB2 /* SplashLight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0C1F0BB63400BD6AB2 /* SplashLight.storyboard */; };
 		E7881B1F1F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */; };
 		E7881B201F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */; };
@@ -330,6 +328,8 @@
 		E7881B6C1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */; };
 		E7881B6D1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */; };
 		E7881B6E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */; };
+		E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */; };
+		E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */; };
 		E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */; };
 		E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903591EDC66D0004243F0 /* BalanceTokenView.m */; };
 		E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035C1EDC674C004243F0 /* QTUMAddressTokenView.m */; };
@@ -684,8 +684,8 @@
 		B384F3DD1EB9BF4A0075F1E8 /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
 		B385B5A01E6D640E003BB96C /* CreateTokenNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenNavigationController.h; sourceTree = "<group>"; };
 		B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenNavigationController.m; sourceTree = "<group>"; };
-		B385B5A31E6D829C003BB96C /* WalletHistoryDelegateDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHistoryDelegateDataSource.h; sourceTree = "<group>"; };
-		B385B5A41E6D829C003BB96C /* WalletHistoryDelegateDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletHistoryDelegateDataSource.m; sourceTree = "<group>"; };
+		B385B5A31E6D829C003BB96C /* WalletHistoryTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHistoryTableSource.h; sourceTree = "<group>"; };
+		B385B5A41E6D829C003BB96C /* WalletHistoryTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletHistoryTableSource.m; sourceTree = "<group>"; };
 		B386F5AF1E1395E5004D231B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		B386F5B01E1395E5004D231B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
@@ -847,8 +847,8 @@
 		E7396AE01DDDEA2E0002CD47 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		E7396AE61DDEDEEC0002CD47 /* CircleGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleGradientView.h; sourceTree = "<group>"; };
 		E7396AE71DDEDEEC0002CD47 /* CircleGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleGradientView.m; sourceTree = "<group>"; };
-		E7396AEA1DDEF7E30002CD47 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Controllers/Main/MainViewController.h; sourceTree = "<group>"; };
-		E7396AEB1DDEF7E30002CD47 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MainViewController.m; path = Controllers/Main/MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		E7396AEA1DDEF7E30002CD47 /* WalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletViewController.h; path = Controllers/Main/WalletViewController.h; sourceTree = "<group>"; };
+		E7396AEB1DDEF7E30002CD47 /* WalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = WalletViewController.m; path = Controllers/Main/WalletViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7396AEE1DDEF8030002CD47 /* AddressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListViewController.h; sourceTree = "<group>"; };
 		E7396AEF1DDEF8030002CD47 /* AddressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AddressListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7396AF21DDEF8260002CD47 /* NewPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentViewController.h; sourceTree = "<group>"; };
@@ -914,10 +914,6 @@
 		E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SourceCodePopUp.storyboard; sourceTree = "<group>"; };
 		E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceCodePopUpViewController.h; sourceTree = "<group>"; };
 		E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceCodePopUpViewController.m; sourceTree = "<group>"; };
-		E7881B721F0BC63C00BD6AB2 /* NewPaymentLightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentLightViewController.h; sourceTree = "<group>"; };
-		E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentLightViewController.m; sourceTree = "<group>"; };
-		E7881B751F0BC6E200BD6AB2 /* NewPaymentDarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentDarkViewController.h; sourceTree = "<group>"; };
-		E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentDarkViewController.m; sourceTree = "<group>"; };
 		E7881B0C1F0BB63400BD6AB2 /* SplashLight.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SplashLight.storyboard; sourceTree = "<group>"; };
 		E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-black.otf"; sourceTree = SOURCE_ROOT; };
 		E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-bold.otf"; sourceTree = SOURCE_ROOT; };
@@ -935,6 +931,10 @@
 		E7881B1C1F0BB7C700BD6AB2 /* proximanovacond-regularit.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanovacond-regularit.otf"; sourceTree = SOURCE_ROOT; };
 		E7881B1D1F0BB7C700BD6AB2 /* proximanovacond-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanovacond-semibold.otf"; sourceTree = SOURCE_ROOT; };
 		E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanovacond-semiboldit.otf"; sourceTree = SOURCE_ROOT; };
+		E7881B721F0BC63C00BD6AB2 /* NewPaymentLightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentLightViewController.h; sourceTree = "<group>"; };
+		E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentLightViewController.m; sourceTree = "<group>"; };
+		E7881B751F0BC6E200BD6AB2 /* NewPaymentDarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentDarkViewController.h; sourceTree = "<group>"; };
+		E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentDarkViewController.m; sourceTree = "<group>"; };
 		E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TokenDetailsViews.xib; sourceTree = "<group>"; };
 		E78903581EDC66D0004243F0 /* BalanceTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTokenView.h; sourceTree = "<group>"; };
 		E78903591EDC66D0004243F0 /* BalanceTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceTokenView.m; sourceTree = "<group>"; };
@@ -1109,7 +1109,7 @@
 		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
-				E7396AF51DDF0C7D0002CD47 /* Cell */,
+				E7881B781F0BDC3400BD6AB2 /* WalletOutput */,
 				E73D36EE1ECF14AA009173BD /* TokenDetails */,
 				B3827DDA1ECF28F300E500DE /* Token */,
 				B33601791E963A0500243A21 /* History Item  */,
@@ -1119,10 +1119,6 @@
 				B32C3CFB1E112A300094C82C /* WalletNavigationController.m */,
 				B31CF71C1E124A25000BCF41 /* HistoryViewController.h */,
 				B31CF71D1E124A25000BCF41 /* HistoryViewController.m */,
-				B385B5A31E6D829C003BB96C /* WalletHistoryDelegateDataSource.h */,
-				B385B5A41E6D829C003BB96C /* WalletHistoryDelegateDataSource.m */,
-				E7396AEA1DDEF7E30002CD47 /* MainViewController.h */,
-				E7396AEB1DDEF7E30002CD47 /* MainViewController.m */,
 				B3CB56AC1ECEE8B300B23AE9 /* BalancePageViewController.h */,
 				B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */,
 			);
@@ -2042,6 +2038,18 @@
 				E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */,
 			);
 			name = FontsLight;
+			sourceTree = "<group>";
+		};
+		E7881B781F0BDC3400BD6AB2 /* WalletOutput */ = {
+			isa = PBXGroup;
+			children = (
+				E7396AF51DDF0C7D0002CD47 /* Cell */,
+				B385B5A31E6D829C003BB96C /* WalletHistoryTableSource.h */,
+				B385B5A41E6D829C003BB96C /* WalletHistoryTableSource.m */,
+				E7396AEA1DDEF7E30002CD47 /* WalletViewController.h */,
+				E7396AEB1DDEF7E30002CD47 /* WalletViewController.m */,
+			);
+			name = WalletOutput;
 			sourceTree = "<group>";
 		};
 		E78903571EDC66B4004243F0 /* Views */ = {
@@ -2980,7 +2988,7 @@
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
 				E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */,
 				B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */,
-				E7396AEC1DDEF7E30002CD47 /* MainViewController.m in Sources */,
+				E7396AEC1DDEF7E30002CD47 /* WalletViewController.m in Sources */,
 				B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */,
 				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
 				B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */,
@@ -3045,7 +3053,7 @@
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
-				B385B5A51E6D829C003BB96C /* WalletHistoryDelegateDataSource.m in Sources */,
+				B385B5A51E6D829C003BB96C /* WalletHistoryTableSource.m in Sources */,
 				B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */,
 				E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */,
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,

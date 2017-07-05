@@ -7,8 +7,8 @@
 //
 
 #import "WalletCoordinator.h"
-#import "MainViewController.h"
-#import "WalletHistoryDelegateDataSource.h"
+#import "WalletViewController.h"
+#import "WalletHistoryTableSource.h"
 #import "TabBarCoordinator.h"
 #import "HistoryDataStorage.h"
 #import "RecieveViewController.h"
@@ -16,6 +16,7 @@
 #import "Spendable.h"
 #import "TokenDetailsViewController.h"
 #import "TokenDetailsTableSource.h"
+#import "QRCodeViewController.h"
 
 #import "BalancePageViewController.h"
 #import "WalletNavigationController.h"
@@ -28,14 +29,14 @@
 #import "NSString+Extension.h"
 #import "TransactionManager.h"
 
-@interface WalletCoordinator () <TokenListViewControllerDelegate>
+@interface WalletCoordinator () <TokenListViewControllerDelegate, QRCodeViewControllerDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) BalancePageViewController* pageViewController;
-@property (weak, nonatomic) MainViewController* historyController;
+@property (weak, nonatomic) WalletViewController* historyController;
 @property (weak, nonatomic) TokenListViewController* tokenController;
 @property (strong, nonatomic) NSMutableArray <Spendable>* wallets;
-@property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
+@property (strong,nonatomic) WalletHistoryTableSource* delegateDataSource;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 @property (assign, nonatomic) NSInteger pageHistoryNumber;
 @property (assign, nonatomic) NSInteger pageWallet;
@@ -67,15 +68,21 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - QRCodeViewControllerDelegate
+
+- (void)didQRCodeScannedWithDict:(NSDictionary *)dict {
+    
+}
+
 #pragma mark - Coordinatorable
 
 -(void)start{
     
-    MainViewController* controller = (MainViewController*)[[ControllersFactory sharedInstance] createMainViewController];
+    WalletViewController* controller = (WalletViewController*)[[ControllersFactory sharedInstance] createWalletViewController];
     controller.delegate = self;
     
     [self configWalletModels];
-    self.delegateDataSource = [WalletHistoryDelegateDataSource new];
+    self.delegateDataSource = [WalletHistoryTableSource new];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallets[self.pageWallet];
     self.delegateDataSource.haveTokens = [[ContractManager sharedInstance] allActiveTokens].count > 0;
@@ -109,6 +116,12 @@
     vc.delegate = self;
     [vc setTableSource:self.tokenDetailsTableSource];
     
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)showQRCodeScan {
+    QRCodeViewController *vc = [[ControllersFactory sharedInstance] createQRCodeViewControllerForWallet];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -192,8 +205,6 @@
 -(void)configWalletModels{
     self.wallets = @[].mutableCopy;
     [self.wallets addObject:[WalletManager sharedInstance].сurrentWallet];
-    //uncommend if need collection of tokens with wallets
-    //[self.wallets addObjectsFromArray:[ContractManager sharedInstance].gatAllTokens];
 }
 
 -(void)setWalletsToDelegates {
@@ -202,7 +213,7 @@
 
 #pragma mark - Private Methods
 
--(void)refreshHistory{
+-(void)refreshHistory {
     
     __weak __typeof(self)weakSelf = self;
     dispatch_async(_requestQueue, ^{
@@ -220,7 +231,7 @@
     });
 }
 
--(void)reloadHistory{
+-(void)reloadHistory {
     
     __weak __typeof(self)weakSelf = self;
     dispatch_async(_requestQueue, ^{
@@ -261,15 +272,6 @@
     } else {
         [self.pageViewController setScrollingToTokensAvailableIfNeeded];
     }
-}
-
--(void)updateBalance{
-//    __weak __typeof(self)weakSelf = self;
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        id <Walletable> wallet = weakSelf.wallets[0];
-//        wallet.balance = [NSString stringWithFormat:@"%lf", [HistoryAndBalanceDataStorage sharedInstance].balance];
-//        [weakSelf.historyController setBalance];
-//    });
 }
 
 -(void)updateTokens{

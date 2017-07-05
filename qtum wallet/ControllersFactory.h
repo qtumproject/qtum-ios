@@ -21,7 +21,7 @@
 @class HistoryItemViewController;
 @class CustomAbiInterphaseViewController;
 @class CreateTokenFinishViewController;
-@class MainViewController;
+@class WalletViewController;
 @class TokenListViewController;
 @class TokenFunctionViewController;
 @class TokenFunctionDetailViewController;
@@ -85,11 +85,10 @@
 -(TokenDetailsViewController*)createTokenDetailsViewController;
 -(LanguageViewController*)createLanguageViewController;
 -(AddNewTokensViewController*)createAddNewTokensViewController;
--(QRCodeViewController*)createQRCodeViewControllerForSubscribe;
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 -(ChooseSmartContractViewController*)createChooseSmartContractViewController;
 -(SmartContractsListViewController*)createSmartContractsListViewController;
--(MainViewController*)createMainViewController;
+-(WalletViewController*)createWalletViewController;
 -(TokenListViewController*)createTokenListViewController;
 -(TokenFunctionViewController*)createTokenFunctionViewController;
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
@@ -100,7 +99,10 @@
 -(BackupContractsViewController*)createBackupContractViewController;
 -(EnableFingerprintViewController*)createEnableFingerprintViewController;
 -(NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
+
+-(QRCodeViewController*)createQRCodeViewControllerForWallet;
 -(QRCodeViewController*)createQRCodeViewControllerForSend;
+-(QRCodeViewController*)createQRCodeViewControllerForSubscribe;
 
 // Pop ups
 - (NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;

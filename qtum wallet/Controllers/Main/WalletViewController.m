@@ -7,7 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "MainViewController.h"
+#import "WalletViewController.h"
 #import "HistoryTableViewCell.h"
 #import "NewPaymentDarkViewController.h"
 #import "RecieveViewController.h"
@@ -15,14 +15,14 @@
 #import "QRCodeViewController.h"
 #import "ApplicationCoordinator.h"
 #import "GradientViewWithAnimation.h"
-#import "WalletHistoryDelegateDataSource.h"
+#import "WalletHistoryTableSource.h"
 #import "WalletCoordinator.h"
 #import "HistoryHeaderVIew.h"
 #import "ViewWithAnimatedLine.h"
 
 CGFloat const HeaderHeightShowed = 50.0f;
 
-@interface MainViewController () <QRCodeViewControllerDelegate>
+@interface WalletViewController ()
 
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
 
@@ -33,7 +33,6 @@ CGFloat const HeaderHeightShowed = 50.0f;
 @property (assign, nonatomic) BOOL canNewRequest;
 @property (assign, nonatomic) BOOL isNavigationBarFadeout;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
-
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
 @property (weak, nonatomic) IBOutlet ViewWithAnimatedLine *headerView;
@@ -49,11 +48,11 @@ CGFloat const HeaderHeightShowed = 50.0f;
 @property (nonatomic) BOOL balanceLoaded;
 @property (nonatomic) BOOL historyLoaded;
 
-- (IBAction)refreshButtonWasPressed:(id)sender;
+- (void)refreshButtonWasPressed:(id)sender;
 
 @end
 
-@implementation MainViewController
+@implementation WalletViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,7 +78,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-    WalletHistoryDelegateDataSource *source = (WalletHistoryDelegateDataSource *)self.tableView.dataSource;
+    WalletHistoryTableSource *source = (WalletHistoryTableSource *)self.tableView.dataSource;
     [self reloadHeader:source.wallet];
 }
 
@@ -87,7 +86,6 @@ CGFloat const HeaderHeightShowed = 50.0f;
 {
     [super viewDidAppear:animated];
     
-    // get all dataForScreen
     if (self.isFirstTimeUpdate) {
         [self.delegate reloadTableViewData];
         self.isFirstTimeUpdate = NO;
@@ -163,7 +161,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
 -(void)reloadTableView{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
-        WalletHistoryDelegateDataSource *source = (WalletHistoryDelegateDataSource *)self.tableView.dataSource;
+        WalletHistoryTableSource *source = (WalletHistoryTableSource *)self.tableView.dataSource;
         [self reloadHeader:source.wallet];
         self.historyLoaded = YES;
         if (self.balanceLoaded && self.historyLoaded) {
@@ -197,7 +195,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
     self.balanceLoaded = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
-        WalletHistoryDelegateDataSource *source = (WalletHistoryDelegateDataSource *)self.tableView.dataSource;
+        WalletHistoryTableSource *source = (WalletHistoryTableSource *)self.tableView.dataSource;
         [self reloadHeader:source.wallet];
     });
     if (self.balanceLoaded && self.historyLoaded) {
@@ -221,6 +219,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
     self.historyLoaded = YES;
     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some error", "")];
 }
+
 -(void)failedToGetBalance{
     self.balanceLoaded = YES;
     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some error", "")];
@@ -230,17 +229,7 @@ CGFloat const HeaderHeightShowed = 50.0f;
 #pragma mark - QRCodeViewControllerDelegate
 
 - (void)qrCodeScanned:(NSDictionary *)dictionary{
-    [self.delegate qrCodeScannedWithDict:dictionary];
-}
-
-#pragma mark - Paginationalable
-
--(void)setCurrentPage:(NSInteger) page{
-    
-}
-
--(void)setNumberPages:(NSInteger) number{
-    
+    [self.delegate didQRCodeScannedWithDict:dictionary];
 }
 
 #pragma mark - Actions
@@ -249,27 +238,15 @@ CGFloat const HeaderHeightShowed = 50.0f;
     [self performSegueWithIdentifier:@"MaintToRecieve" sender:self];
 }
 
-- (IBAction)refreshButtonWasPressed:(id)sender{
-
+- (void)refreshButtonWasPressed:(id)sender {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.refreshControl endRefreshing];
     });
     [self.delegate reloadTableViewData];
 }
 
-#pragma merk - Seque
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSString *segueID = segue.identifier;
-    if ([segueID isEqualToString:@"qrCode"]) {
-        QRCodeViewController *vc = (QRCodeViewController *)segue.destinationViewController;
-        vc.delegate = self;
-    }
-}
-
--(void)unwindForSegue:(UIStoryboardSegue *)unwindSegue towardsViewController:(UIViewController *)subsequentVC{
-    
+- (IBAction)actionQRCode:(id)sender {
+    [self.delegate showQRCodeScan];
 }
 
 @end

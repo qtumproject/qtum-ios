@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WalletHistoryDelegateDataSource.h"
+#import "WalletHistoryTableSource.h"
 #import "Paginationable.h"
 
 @protocol WalletCoordinatorDelegate;
 
-@interface MainViewController : BaseViewController <ControllerDelegate,Paginationable>
+@interface WalletViewController : BaseViewController <ControllerDelegate>
 
-@property (strong,nonatomic) WalletHistoryDelegateDataSource* delegateDataSource;
+@property (strong,nonatomic) WalletHistoryTableSource* delegateDataSource;
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wigetBalanceLabel;
@@ -26,7 +26,5 @@
 -(void)startLoading;
 -(void)stopLoading;
 -(void)reloadHistorySection;
-
-
 
 @end
