@@ -45,7 +45,7 @@
 #ifdef DEBUG
 #   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
-#   define NSLog(...) (void)0
+#   define DLog(fmt, ...)
 #endif
 
 #endif /* PrefixHeader_pch */
