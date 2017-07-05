@@ -31,7 +31,6 @@
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
 @property (strong,nonatomic) AppDelegate* appDelegate;
-@property (strong,nonatomic) TabBarController* router;
 @property (strong,nonatomic) ControllersFactory* controllersFactory;
 @property (strong,nonatomic) UIViewController* viewController;
 @property (weak,nonatomic) UINavigationController* navigationController;
@@ -198,14 +197,15 @@
 -(void)logout {
     
     [self startAuthFlow];
-    [self storeAuthorizedFlag:NO andMainAddress:nil];
     [self removeDependency:self.tabCoordinator];
     [[WalletManager sharedInstance] stopObservingForAllSpendable];
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
-    [self.notificationManager removeToken];
+    [self.notificationManager clear];
+    [self.openUrlManager clear];
     [[WalletManager sharedInstance] clear];
     [[ContractManager sharedInstance] clear];
     [[TemplateManager sharedInstance] clear];
+
 }
 
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler {
@@ -286,15 +286,17 @@
 
     TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
-    controller.coordinatorDelegate = coordinator;
+    controller.outputDelegate = coordinator;
     self.tabCoordinator = coordinator;
     [self addDependency:coordinator];
-    [coordinator start];
+    
     if (self.adress) {
-        [controller selectSendControllerWithAdress:self.adress andValue:self.amount];
+        [coordinator startFromSendWithAddress:self.adress andAmount:self.amount];
+    } else {
+        [coordinator start];
+
     }
-    self.router = controller;
-    [self storeAuthorizedFlag:YES andMainAddress:[WalletManager sharedInstance].сurrentWallet.mainAddress];
+    [self.openUrlManager storeAuthToYesWithAdddress:[WalletManager sharedInstance].сurrentWallet.mainAddress];
 }
 
 -(void)restartMainFlow {
@@ -307,32 +309,8 @@
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
     self.tabCoordinator = coordinator;
     [self addDependency:coordinator];
-    controller.coordinatorDelegate = self.tabCoordinator;
+    controller.outputDelegate = self.tabCoordinator;
     [self.tabCoordinator start];
-    self.router = controller;
-}
-
-#pragma iMessage Methods
-
--(void)storeAuthorizedFlag:(BOOL)flag andMainAddress:(NSString *)address {
-
-    [NSUserDefaults saveIsHaveWalletKey:flag ? @"YES" : @"NO" ];
-    [NSUserDefaults saveWalletAddressKey:address];
-}
-
--(void)launchFromUrl:(NSURL*)url {
-    [self pareceUrl:url];
-    [self start];
-}
-
--(void)pareceUrl:(NSURL*)url {
-
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
-                                                resolvingAgainstBaseURL:NO];
-    NSArray *queryItems = urlComponents.queryItems;
-    
-    self.adress = [NSString valueForKey:@"adress" fromQueryItems:queryItems];
-    self.amount = [NSString valueForKey:@"amount" fromQueryItems:queryItems];
 }
 
 @end

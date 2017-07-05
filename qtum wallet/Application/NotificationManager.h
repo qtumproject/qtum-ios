@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NotificationManager : NSObject
+@interface NotificationManager : NSObject <Clearable>
 
 - (void)registerForRemoutNotifications;
-- (void)removeToken;
+- (void)clear;
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;

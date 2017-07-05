@@ -10,10 +10,11 @@
 #import "ControllersFactory.h"
 #import "NewPaymentDarkViewController.h"
 #import "TabBarCoordinator.h"
+#import "Presentable.h"
 
-@interface TabBarController () <UITabBarControllerDelegate>
+@interface TabBarController () <UITabBarControllerDelegate, Presentable>
 
-@property (weak,nonatomic)NewPaymentDarkViewController* paymentController;
+@property (weak,nonatomic)id <NewPaymentOutput> paymentOutput;
 
 @end
 
@@ -33,7 +34,7 @@
     [super viewWillAppear:animated];
     //select controller
     if ([self.customizableViewControllers.firstObject isKindOfClass:[UINavigationController class]] && !self.isReload) {
-        [self.coordinatorDelegate walletTabDidSelectedWithController:self.customizableViewControllers.firstObject];
+        [self.outputDelegate didSelecteWalletTabWithController:self.customizableViewControllers.firstObject];
     }
 }
 
@@ -46,9 +47,10 @@
 }
 
 -(void)configTabs {
-    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];//[UINavigationController new];
-    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];//[UINavigationController new];
-    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];//[UINavigationController new];
+    
+    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];
+    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
+    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
     UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
     
     [self setViewControllers:@[wallet,profile,news,send] animated:YES];
@@ -66,32 +68,37 @@
     [self storeSendReference:send];
 }
 
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    
     return YES;
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     if (self.selectedIndex == 0) {
-        [self.coordinatorDelegate walletTabDidSelectedWithController:viewController];
+        [self.outputDelegate didSelecteWalletTabWithController:viewController];
     }else if (self.selectedIndex == 1){
         //[self.coordinatorDelegate profileTabDidSelectedWithController:viewController];
     }else if (self.selectedIndex == 2){
-        [self.coordinatorDelegate newsTabDidSelectedWithController:viewController];
+        [self.outputDelegate didSelecteNewsTabWithController:viewController];
     }else if (self.selectedIndex == 3){
-        [self.coordinatorDelegate sendTabDidSelectedWithController:viewController];
+        [self.outputDelegate didSelecteSendTabWithController:viewController];
     }
 }
 
 -(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount{
     self.selectedIndex = 3;
-    [self.paymentController setAdress:adress andValue:amount];
+    [self.paymentOutput setAdress:adress andValue:amount];
 }
 
--(void)storeSendReference:(UIViewController*)sendController{
-    if ([sendController isKindOfClass:[UINavigationController class]]){
+-(void)storeSendReference:(UIViewController*)sendController {
+    
+    if ([sendController isKindOfClass:[UINavigationController class]]) {
+        
         UINavigationController* nav = (UINavigationController*)sendController;
-        if ([nav.viewControllers.firstObject isKindOfClass:[NewPaymentDarkViewController class]]){
-            self.paymentController = nav.viewControllers.firstObject;
+        
+        if ([nav.viewControllers.firstObject conformsToProtocol:@protocol(NewPaymentOutput)]){
+            
+            self.paymentOutput = nav.viewControllers.firstObject;
         }
     }
 }
