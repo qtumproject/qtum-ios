@@ -10,6 +10,7 @@
 #import "BaseCoordinator.h"
 
 @class NotificationManager;
+@class OpenURLManager;
 
 @protocol ApplicationCoordinatorDelegate <NSObject>
 
@@ -18,6 +19,7 @@
 @interface ApplicationCoordinator : BaseCoordinator
 
 @property (strong,nonatomic,readonly) NotificationManager* notificationManager;
+@property (strong,nonatomic,readonly) OpenURLManager* openUrlManager;
 @property (strong,nonatomic) id <Requestable> requestManager;
 
 -(void)start;
@@ -26,11 +28,9 @@
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler;
 - (void)startSecurityFlowWithHandler:(void(^)(BOOL)) handler;
 - (void)startChangedLanguageFlow;
+- (void)startFromOpenURLWithAddress:(NSString*) address andAmount:(NSString*) amount;
 
 - (void)logout;
-
-//imessage
-- (void)launchFromUrl:(NSURL*)url;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

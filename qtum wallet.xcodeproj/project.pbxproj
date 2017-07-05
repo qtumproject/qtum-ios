@@ -161,6 +161,7 @@
 		B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */; };
 		B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */; };
 		B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */; };
+		B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F5797A1F0D251C00A13571 /* OpenURLManager.m */; };
 		B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */; };
 		B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */; };
 		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
@@ -757,6 +758,8 @@
 		B3F06D081E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataSourceDelegate.h; sourceTree = "<group>"; };
 		B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataSourceDelegate.m; sourceTree = "<group>"; };
 		B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = "<group>"; };
+		B3F579791F0D251C00A13571 /* OpenURLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenURLManager.h; sourceTree = "<group>"; };
+		B3F5797A1F0D251C00A13571 /* OpenURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenURLManager.m; sourceTree = "<group>"; };
 		B3F76A6E1EDD667D00108DE9 /* ChooseSmartContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSmartContractViewController.h; sourceTree = "<group>"; };
 		B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ChooseSmartContractViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiseSmartContractCell.h; sourceTree = "<group>"; };
@@ -2419,6 +2422,8 @@
 				B3597DFD1E81517200EBF094 /* NotificationManager.m */,
 				E730AB861EE6ACCA00132711 /* iOSSessionManager.h */,
 				E730AB871EE6ACCA00132711 /* iOSSessionManager.m */,
+				B3F579791F0D251C00A13571 /* OpenURLManager.h */,
+				B3F5797A1F0D251C00A13571 /* OpenURLManager.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -2983,6 +2988,7 @@
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
+				B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */,
 				E70353121F03AC59004ECCC9 /* QStoreListTableSource.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
 				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,

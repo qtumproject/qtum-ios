@@ -10,6 +10,7 @@
 #import "Appearance.h"
 #import "ContractFileManager.h"
 #import "NotificationManager.h"
+#import "OpenURLManager.h"
 #import "iOSSessionManager.h"
 
 @interface AppDelegate ()
@@ -58,7 +59,7 @@
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     if (!self.aplicationCoordinatorStarted) {
-        [[ApplicationCoordinator sharedInstance] launchFromUrl:url];
+        [[ApplicationCoordinator sharedInstance].openUrlManager launchFromUrl:url];
         self.aplicationCoordinatorStarted  = YES;
     }
     return YES;

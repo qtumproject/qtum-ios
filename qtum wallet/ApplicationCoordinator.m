@@ -25,6 +25,7 @@
 #import "SecurityCoordinator.h"
 #import "AppDelegate.h"
 #import "ConfirmPinCoordinator.h"
+#import "OpenURLManager.h"
 
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
@@ -71,6 +72,7 @@
     if (self != nil) {
         _controllersFactory = [ControllersFactory sharedInstance];
         _notificationManager = [NotificationManager new];
+        _openUrlManager = [OpenURLManager new];
         _requestManager = [AppSettings sharedInstance].isRPC ? [RPCRequestManager sharedInstance] : [RequestManager sharedInstance];
     }
     return self;
@@ -267,6 +269,13 @@
     LanguageCoordinator *languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:vc];
     [profile saveLanguageCoordinator:languageCoordinator];
     [languageCoordinator startWithoutAnimation];
+}
+
+- (void)startFromOpenURLWithAddress:(NSString*) address andAmount:(NSString*) amount {
+    
+    self.adress = address;
+    self.amount = amount;
+    [self start];
 }
 
 -(void)startMainFlow {
