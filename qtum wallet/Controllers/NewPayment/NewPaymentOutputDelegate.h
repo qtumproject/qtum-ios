@@ -10,8 +10,9 @@
 
 @protocol NewPaymentOutputDelegate <NSObject>
 
-- (void)showQRCodeScaner;
-- (void)showChooseToken;
-- (void)didPressedSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount;
+- (void)didPresseQRCodeScaner;
+- (void)didPresseChooseToken;
+- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount;
+- (void)didViewLoad;
 
 @end

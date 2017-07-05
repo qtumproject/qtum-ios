@@ -14,10 +14,15 @@
 
 @property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
 
--(void)updateContentWithContract:(Contract*) contract;
--(void)updateContentFromQRCode:(NSDictionary*) qrCodeDict;
--(void)showErrorPopUp;
--(void)showCompletedPopUp;
--(void)showLoaderPopUp;
+- (void)updateControlsWithTokenExist:(BOOL) isExist
+                      walletBalance:(CGFloat) walletBalance
+             andUnconfimrmedBalance:(CGFloat) walletUnconfirmedBalance;
+- (void)updateContentWithContract:(Contract*) contract;
+- (void)updateContentFromQRCode:(NSDictionary*) qrCodeDict;
+- (void)clearFields;
+- (void)showErrorPopUp;
+- (void)showCompletedPopUp;
+- (void)showLoaderPopUp;
+- (void)hideLoaderPopUp;
 
 @end

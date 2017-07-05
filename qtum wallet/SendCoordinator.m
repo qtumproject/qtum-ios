@@ -17,7 +17,8 @@
 @interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
-@property (strong, nonatomic) NSObject <NewPaymentOutput>* paymentOutput;
+@property (weak, nonatomic) NSObject <NewPaymentOutput>* paymentOutput;
+@property (weak, nonatomic) NSObject <ChoseTokenPaymentOutput>* tokenPaymentOutput;
 @property (strong,nonatomic) Contract* token;
 
 @end
@@ -33,12 +34,28 @@
     return self;
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)start {
     
     id <NewPaymentOutput> controller = [[ControllersFactory sharedInstance] createNewPaymentDarkViewController];
     controller.delegate = self;
     self.paymentOutput = controller;
     [self.navigationController setViewControllers:@[controller]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokensDidChange) name:kTokenDidChange object:nil];
+}
+
+#pragma mark - Observing
+
+-(void)tokensDidChange {
+    
+    if (self.tokenPaymentOutput) {
+        [self.tokenPaymentOutput updateWithTokens:[ContractManager sharedInstance].allActiveTokens];
+    }
+    
+    [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].сurrentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].сurrentWallet.unconfirmedBalance];
 }
 
 #pragma mark - Private Methods
@@ -68,7 +85,10 @@
     [self showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
     [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amount andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
-        [[PopUpsManager sharedInstance] dismissLoader];
+        
+        [weakSelf hideLoaderPopUp];
+        [weakSelf.paymentOutput clearFields];
+        
         if (!error) {
             [weakSelf showCompletedPopUp];
         }else{
@@ -81,6 +101,10 @@
 }
 
 #pragma mark - Popup
+
+-(void)hideLoaderPopUp {
+    [self.paymentOutput hideLoaderPopUp];
+}
 
 -(void)showErrorPopUp {
     [self.paymentOutput showErrorPopUp];
@@ -96,21 +120,28 @@
 
 #pragma mark - NewPaymentViewControllerDelegate
 
-- (void)showQRCodeScaner {
+-(void)didViewLoad {
+    [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].сurrentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].сurrentWallet.unconfirmedBalance];
+}
+
+- (void)didPresseQRCodeScaner {
     
     QRCodeViewController* controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewControllerForSend];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
-- (void)showChooseToken {
+
+- (void)didPresseChooseToken {
     
     NSObject <ChoseTokenPaymentOutput>* tokenController = (NSObject <ChoseTokenPaymentOutput>*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
     tokenController.delegate = self;
     tokenController.activeToken = self.token;
+    [tokenController updateWithTokens:[ContractManager sharedInstance].allActiveTokens];
+    self.tokenPaymentOutput = tokenController;
     [self.navigationController pushViewController:[tokenController toPresente] animated:YES];
 }
 
-- (void)didPressedSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
+- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
     
     __weak __typeof (self) weakSelf = self;
     [[ApplicationCoordinator sharedInstance] startSecurityFlowWithHandler:^(BOOL success) {
@@ -134,6 +165,7 @@
 - (void)qrCodeScanned:(NSDictionary *)dictionary {
     
     [self.paymentOutput updateContentFromQRCode:dictionary];
+    [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].сurrentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].сurrentWallet.unconfirmedBalance];
 }
 
 - (void)showNextVC {
@@ -158,11 +190,17 @@
     
 }
 
-- (void)resetToDefaults {
+- (void)didResetToDefaults {
     
     [self.paymentOutput updateContentWithContract:nil];
     self.token = nil;
 }
+
+- (void)didPressedBackAction {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 
 

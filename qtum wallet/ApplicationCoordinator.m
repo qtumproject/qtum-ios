@@ -182,6 +182,7 @@
     
     [self removeDependency:coordinator];
     [self startMainFlow];
+    [self prepareDataObserving];
 }
 
 #pragma mark - Presenting Controllers
