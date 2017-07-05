@@ -8,6 +8,7 @@
 
 #import "SocketManager.h"
 #import "ApplicationCoordinator.h"
+#import "NotificationManager.h"
 
 @import SocketIO;
 

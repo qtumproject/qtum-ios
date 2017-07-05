@@ -7,10 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "RPCRequestManager.h"
 #import "Appearance.h"
-#import "ContractInterfaceManager.h"
 #import "ContractFileManager.h"
+#import "NotificationManager.h"
 #import "iOSSessionManager.h"
 
 @interface AppDelegate ()

@@ -10,6 +10,7 @@
 #import "WalletCoordinator.h"
 #import "NewsCoordinator.h"
 #import "SendCoordinator.h"
+#import "AppDelegate.h"
 
 @interface TabBarCoordinator () <NewsCoordinatorDelegate, SendCoordinatorDelegate>
 

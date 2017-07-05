@@ -9,7 +9,6 @@
 #import "ApplicationCoordinator.h"
 #import "CreatePinRootController.h"
 #import "PinViewController.h"
-#import "SettingsViewController.h"
 #import "TabBarController.h"
 #import "UIViewController+Extension.h"
 #import "ControllersFactory.h"
@@ -20,9 +19,15 @@
 #import "ProfileViewController.h"
 #import "TemplateManager.h"
 #import "NSUserDefaults+Settings.h"
+#import "NotificationManager.h"
+#import "AuthCoordinator.h"
+#import "LoginCoordinator.h"
+#import "SecurityCoordinator.h"
+#import "AppDelegate.h"
+#import "ConfirmPinCoordinator.h"
 
 
-@interface ApplicationCoordinator ()
+@interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
 @property (strong,nonatomic) AppDelegate* appDelegate;
 @property (strong,nonatomic) TabBarController* router;
@@ -71,13 +76,14 @@
     return self;
 }
 
-#pragma mark - Public Methods
+#pragma mark - Lazy Getters
 
-#pragma mark - Privat Methods
-
--(AppDelegate*)appDelegate{
+-(AppDelegate*)appDelegate {
+    
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
+
+#pragma mark - Privat Methods
 
 -(void)prepareDataObserving {
     
@@ -91,8 +97,7 @@
     });
 }
 
-#pragma mark - Lazy Getters
-
+#pragma mark - Public Methods
 
 #pragma mark - Start
 
@@ -103,21 +108,6 @@
     } else {
         [self startAuthFlow];
     }
-}
-
-#pragma mark - Navigation
-
-
--(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated{
-//    [self.router pushViewController:controller animated:animated];
-}
-
--(void)setViewController:(UIViewController*) controller animated:(BOOL)animated{
-    [self.router setViewControllers:@[controller] animated:animated];
-}
-
--(void)presentAsModal:(UIViewController*) controller animated:(BOOL)animated{
-//    [self.root presentViewController:controller animated:animated completion:nil];
 }
 
 #pragma mark - ConfirmPinCoordinatorDelegate
@@ -184,8 +174,6 @@
     [self startMainFlow];
     [self prepareDataObserving];
 }
-
-#pragma mark - Presenting Controllers
 
 #pragma mark - Flows
 
@@ -265,21 +253,8 @@
     [self addDependency:coordinator];
 }
 
--(void)startChangePinFlow {
-    
-}
-
 -(void)coordinatorRequestForLogin {
     [self startLoginFlow];
-}
-
--(void)startWalletFlow {
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"StartViewController"];
-    UINavigationController* rootNavigation = [[UINavigationController alloc]initWithRootViewController:viewController];
-    rootNavigation.navigationBar.hidden = YES;
-    self.appDelegate.window.rootViewController = rootNavigation;
 }
 
 - (void)startChangedLanguageFlow {

@@ -55,10 +55,6 @@
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForBrainCodeCopied] presenter:nil completion:nil];
 }
 
-- (IBAction)actionContinue:(id)sender {
-    [[ApplicationCoordinator sharedInstance] startMainFlow];
-}
-
 - (IBAction)shareButtonWasPressed:(id)sender
 {
     NSString *brainKey = self.brainKey;
