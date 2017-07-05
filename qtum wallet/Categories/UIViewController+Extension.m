@@ -12,10 +12,12 @@
 @implementation UIViewController (Extension)
 
 + (UIViewController*) instantiateControllerInStoryboard:(UIStoryboard*) storyboard withIdentifire:(NSString*) identifire{
+    
     return identifire ? [storyboard instantiateViewControllerWithIdentifier:identifire] : [storyboard instantiateInitialViewController];
 }
 
-+ (UIViewController*) controllerInStoryboard:(NSString*) storyboard withIdentifire:(NSString*) identifire{
++ (UIViewController*) controllerInStoryboard:(NSString*) storyboard withIdentifire:(NSString*) identifire {
+    
     NSMutableString *mutString = [identifire mutableCopy];
     if ([identifire isEqualToString:@"NewPayment"] || [identifire isEqualToString:@"WalletViewController"]) {
         if ([NSUserDefaults isDarkSchemeSetting]) {

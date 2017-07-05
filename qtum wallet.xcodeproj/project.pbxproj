@@ -104,7 +104,6 @@
 		B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA7B1EA77D590040A163 /* WalletsFactory.m */; };
 		B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA811EA8AA070040A163 /* WalletManagerRequestAdapter.m */; };
 		B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA871EAA3C820040A163 /* SmartTransactionManager.m */; };
-		B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */; };
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
 		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
 		B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */; };
@@ -162,6 +161,7 @@
 		B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */; };
 		B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */; };
 		B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */; };
+		B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F5797A1F0D251C00A13571 /* OpenURLManager.m */; };
 		B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */; };
 		B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */; };
 		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
@@ -627,16 +627,16 @@
 		B35130601E49C9930048A28C /* NewsCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCellModel.m; sourceTree = "<group>"; };
 		B35130631E49DCBC0048A28C /* NewsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableCell.h; sourceTree = "<group>"; };
 		B35130641E49DCBC0048A28C /* NewsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableCell.m; sourceTree = "<group>"; };
-		B35130661E49DF910048A28C /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLoader.h; sourceTree = "<group>"; };
-		B35130671E49DF910048A28C /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ImageLoader.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B35130661E49DF910048A28C /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = Application/ImageLoader.h; sourceTree = "<group>"; };
+		B35130671E49DF910048A28C /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ImageLoader.m; path = Application/ImageLoader.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B3597DF41E7FABF800EBF094 /* Requestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Requestable.h; sourceTree = "<group>"; };
 		B3597DF51E811D0500EBF094 /* RequestManagerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManagerAdapter.h; sourceTree = "<group>"; };
 		B3597DF61E811D4500EBF094 /* RPCAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCAdapter.h; sourceTree = "<group>"; };
 		B3597DF71E811D4500EBF094 /* RPCAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCAdapter.m; sourceTree = "<group>"; };
 		B3597DF91E811D6500EBF094 /* ServerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerAdapter.h; sourceTree = "<group>"; };
 		B3597DFA1E811D6500EBF094 /* ServerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerAdapter.m; sourceTree = "<group>"; };
-		B3597DFC1E81517200EBF094 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
-		B3597DFD1E81517200EBF094 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
+		B3597DFC1E81517200EBF094 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationManager.h; path = Application/NotificationManager.h; sourceTree = "<group>"; };
+		B3597DFD1E81517200EBF094 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationManager.m; path = Application/NotificationManager.m; sourceTree = "<group>"; };
 		B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88B1E4C6963008F4403 /* FirstNewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstNewTableCell.h; sourceTree = "<group>"; };
@@ -660,8 +660,6 @@
 		B365CA811EA8AA070040A163 /* WalletManagerRequestAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletManagerRequestAdapter.m; sourceTree = "<group>"; };
 		B365CA861EAA3C820040A163 /* SmartTransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartTransactionManager.h; sourceTree = "<group>"; };
 		B365CA871EAA3C820040A163 /* SmartTransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartTransactionManager.m; sourceTree = "<group>"; };
-		B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B371D87D1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TCAStyleProvider.h"; sourceTree = "<group>"; };
 		B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TCAStyleProvider.m"; sourceTree = "<group>"; };
 		B371D87F1E3A1D3B00A13EA3 /* NSNull+TCACatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+TCACatch.h"; sourceTree = "<group>"; };
@@ -769,6 +767,10 @@
 		B3F06D081E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataSourceDelegate.h; sourceTree = "<group>"; };
 		B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataSourceDelegate.m; sourceTree = "<group>"; };
 		B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = "<group>"; };
+		B3F579791F0D251C00A13571 /* OpenURLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenURLManager.h; path = Application/OpenURLManager.h; sourceTree = "<group>"; };
+		B3F5797A1F0D251C00A13571 /* OpenURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenURLManager.m; path = Application/OpenURLManager.m; sourceTree = "<group>"; };
+		B3F5797F1F0D2A1F00A13571 /* TabbarOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarOutput.h; sourceTree = "<group>"; };
+		B3F579801F0D2A3200A13571 /* TabbarOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarOutputDelegate.h; sourceTree = "<group>"; };
 		B3F76A6E1EDD667D00108DE9 /* ChooseSmartContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSmartContractViewController.h; sourceTree = "<group>"; };
 		B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ChooseSmartContractViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiseSmartContractCell.h; sourceTree = "<group>"; };
@@ -1472,15 +1474,6 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		B36624BB1E03C55300CBC5B5 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				B36624BC1E03C58100CBC5B5 /* SettingsViewController.h */,
-				B36624BD1E03C58100CBC5B5 /* SettingsViewController.m */,
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
 		B3827DDA1ECF28F300E500DE /* Token */ = {
 			isa = PBXGroup;
 			children = (
@@ -1683,6 +1676,44 @@
 				B3827DE91ED2C74900E500DE /* TokenFunctionDetailViewController.m */,
 			);
 			name = Contract;
+			sourceTree = "<group>";
+		};
+		B3F5797D1F0D292900A13571 /* TabBarOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B32C3CF11E1126200094C82C /* TabBarController.h */,
+				B32C3CF21E1126200094C82C /* TabBarController.m */,
+				B3DD27521E68025200BB0635 /* TabBarCoordinator.h */,
+				B3DD27531E68025200BB0635 /* TabBarCoordinator.m */,
+				B3F5797F1F0D2A1F00A13571 /* TabbarOutput.h */,
+				B3F579801F0D2A3200A13571 /* TabbarOutputDelegate.h */,
+			);
+			name = TabBarOutput;
+			sourceTree = "<group>";
+		};
+		B3F5797E1F0D297900A13571 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B387AB421EF04911001D2FF1 /* TemplateManager.h */,
+				B387AB431EF04911001D2FF1 /* TemplateManager.m */,
+				B387AB3F1EF04474001D2FF1 /* BackupFileManager.h */,
+				B387AB401EF04474001D2FF1 /* BackupFileManager.m */,
+				B32B32EA1ECD7B240081260A /* ContractArgumentsInterpretator.h */,
+				B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */,
+				B32B32DB1ECCC2C70081260A /* ContractFileManager.h */,
+				B32B32DC1ECCC2C70081260A /* ContractFileManager.m */,
+				B32B32CC1ECCC2330081260A /* ContractInterfaceManager.h */,
+				B32B32CD1ECCC2330081260A /* ContractInterfaceManager.m */,
+				B387AB451EF12FDA001D2FF1 /* DataOperation.h */,
+				B387AB461EF12FDA001D2FF1 /* DataOperation.m */,
+				B35130661E49DF910048A28C /* ImageLoader.h */,
+				B35130671E49DF910048A28C /* ImageLoader.m */,
+				B3597DFC1E81517200EBF094 /* NotificationManager.h */,
+				B3597DFD1E81517200EBF094 /* NotificationManager.m */,
+				B3F579791F0D251C00A13571 /* OpenURLManager.h */,
+				B3F5797A1F0D251C00A13571 /* OpenURLManager.m */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		E70353071F039262004ECCC9 /* Search */ = {
@@ -2328,20 +2359,9 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B3F5797E1F0D297900A13571 /* Services */,
 				B3EE936F1F04E0D700550C60 /* Security Flow */,
 				E7FA0CB01ECD808200702C4E /* Pop Ups */,
-				B387AB421EF04911001D2FF1 /* TemplateManager.h */,
-				B387AB431EF04911001D2FF1 /* TemplateManager.m */,
-				B387AB451EF12FDA001D2FF1 /* DataOperation.h */,
-				B387AB461EF12FDA001D2FF1 /* DataOperation.m */,
-				B387AB3F1EF04474001D2FF1 /* BackupFileManager.h */,
-				B387AB401EF04474001D2FF1 /* BackupFileManager.m */,
-				B32B32EA1ECD7B240081260A /* ContractArgumentsInterpretator.h */,
-				B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */,
-				B32B32DB1ECCC2C70081260A /* ContractFileManager.h */,
-				B32B32DC1ECCC2C70081260A /* ContractFileManager.m */,
-				B32B32CC1ECCC2330081260A /* ContractInterfaceManager.h */,
-				B32B32CD1ECCC2330081260A /* ContractInterfaceManager.m */,
 				E73D9C8A1ECB196400A09CFE /* Splash Screen */,
 				B384F3D91EB9BF250075F1E8 /* Localization */,
 				B33EAF241E5DB039006125F3 /* qtum wallet.entitlements */,
@@ -2417,7 +2437,6 @@
 			isa = PBXGroup;
 			children = (
 				B321E87B1E0BE35200DC7DE5 /* ExportKey */,
-				B36624BB1E03C55300CBC5B5 /* Settings */,
 				E70550CA1DF96E2000B48DC1 /* Recieve */,
 				E7396AED1DDEF7F10002CD47 /* AddressList */,
 				E739105C1DE5E11F008145A8 /* Key */,
@@ -2487,30 +2506,23 @@
 		E7FD36601DC73B7900748177 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				B3F5797D1F0D292900A13571 /* TabBarOutput */,
 				E7FD363E1DC4D07E00748177 /* AppDelegate.h */,
 				E7FD363F1DC4D07E00748177 /* AppDelegate.m */,
 				B3E3A1631E850572002A488F /* AppSettings.h */,
 				B3E3A1641E850572002A488F /* AppSettings.m */,
 				E74636841DCB300800A13318 /* Utils.h */,
 				E74636851DCB300800A13318 /* Utils.m */,
-				B35130661E49DF910048A28C /* ImageLoader.h */,
-				B35130671E49DF910048A28C /* ImageLoader.m */,
 				E71AF24F1E017D250068595B /* WordsArray.h */,
 				E71AF2501E017D250068595B /* WordsArray.m */,
 				B3210D211E002E2900365FB6 /* ApplicationCoordinator.h */,
 				B3210D221E002E2900365FB6 /* ApplicationCoordinator.m */,
 				B3210D241E0030DB00365FB6 /* Appearance.h */,
 				B3210D251E0030DB00365FB6 /* Appearance.m */,
-				B32C3CF11E1126200094C82C /* TabBarController.h */,
-				B32C3CF21E1126200094C82C /* TabBarController.m */,
-				B3DD27521E68025200BB0635 /* TabBarCoordinator.h */,
-				B3DD27531E68025200BB0635 /* TabBarCoordinator.m */,
 				B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */,
 				B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */,
 				B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */,
 				B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */,
-				B3597DFC1E81517200EBF094 /* NotificationManager.h */,
-				B3597DFD1E81517200EBF094 /* NotificationManager.m */,
 				E730AB861EE6ACCA00132711 /* iOSSessionManager.h */,
 				E730AB871EE6ACCA00132711 /* iOSSessionManager.m */,
 			);
@@ -3065,7 +3077,6 @@
 				B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */,
 				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
 				B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */,
-				B36624BE1E03C58100CBC5B5 /* SettingsViewController.m in Sources */,
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
@@ -3078,6 +3089,7 @@
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
+				B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */,
 				E70353121F03AC59004ECCC9 /* QStoreListTableSource.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
 				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,

@@ -33,12 +33,9 @@
 @property (strong,nonatomic) NSString* adress;
 @property (strong,nonatomic) NSString* amount;
 
-@property (strong,nonatomic) Contract* token;
 @property (nonatomic) BOOL needUpdateTexfFields;
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
-
-
 
 @end
 
@@ -48,42 +45,39 @@ static NSInteger withoutTokenOffset = 30;
 @implementation NewPaymentViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
-//    [self addDoneButtonToAmountTextField];
-    self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @""); 
+    self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
     
     if (self.needUpdateTexfFields) {
         self.addressTextField.text = self.adress;
         self.amountTextField.text = self.amount;
     }
-    [self checkActiveToken];
-    [self updateControls];
+    
+    [self.delegate didViewLoad];
 }
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - Private Methods
+#pragma mark - NewPaymentOutput
 
--(void)checkActiveToken {
+-(void)updateControlsWithTokenExist:(BOOL) isExist
+                      walletBalance:(CGFloat) walletBalance
+             andUnconfimrmedBalance:(CGFloat) walletUnconfirmedBalance {
     
-    if (![[ContractManager sharedInstance].allActiveTokens containsObject:self.token]) {
-        self.token = nil;
-    }
-}
+    //updating constraints and activity info
+    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f", walletBalance];
+    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f", walletUnconfirmedBalance];
 
--(void)updateControls{
-    
-    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].currentWallet.balance];
-    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f",[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
-    
-    BOOL isTokensExists = [ContractManager sharedInstance].allActiveTokens.count;
+    BOOL isTokensExists = isExist;
     self.tokenTextField.hidden =
     self.tokenButton.hidden =
     self.tokenDisclousureImage.hidden = !isTokensExists;
@@ -107,6 +101,31 @@ static NSInteger withoutTokenOffset = 30;
     [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
 }
 
+- (void)hideLoaderPopUp {
+    [[PopUpsManager sharedInstance] dismissLoader];
+}
+
+- (void)clearFields {
+    
+    self.addressTextField.text = @"";
+    self.amountTextField.text = @"";
+    self.amount = nil;
+    self.adress = nil;
+}
+
+-(void)updateContentWithContract:(Contract*) contract {
+    
+    self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+}
+
+-(void)updateContentFromQRCode:(NSDictionary*) qrCodeDict {
+    
+    self.addressTextField.text =
+    self.adress = qrCodeDict[PUBLIC_ADDRESS_STRING_KEY];
+    self.amountTextField.text =
+    self.amount = qrCodeDict[AMOUNT_STRING_KEY];
+}
+
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
@@ -123,15 +142,6 @@ static NSInteger withoutTokenOffset = 30;
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 
-- (void)clearFields {
-    self.addressTextField.text = @"";
-    self.amountTextField.text = @"";
-    self.amount = nil;
-    self.token = nil;
-    
-    [self updateControls];
-}
-
 #pragma mark - iMessage
 
 -(void)setAdress:(NSString*)adress andValue:(NSString*)amount {
@@ -142,14 +152,6 @@ static NSInteger withoutTokenOffset = 30;
 }
 
 #pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    
-}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
 
@@ -202,7 +204,7 @@ static NSInteger withoutTokenOffset = 30;
     
     NSNumber *amount = @([[self correctAmountString] doubleValue]);
     NSString *address = self.addressTextField.text;
-    [self.delegate didPressedSendActionWithAddress:address andAmount:amount];
+    [self.delegate didPresseSendActionWithAddress:address andAmount:amount];
 
 }
 
@@ -213,28 +215,12 @@ static NSInteger withoutTokenOffset = 30;
 
 - (IBAction)didPressedChoseTokensAction:(id)sender {
     
-    [self.delegate showChooseToken];
+    [self.delegate didPresseChooseToken];
 }
 
 - (IBAction)didPressedScanQRCode:(id)sender {
     
-    [self.delegate showQRCodeScaner];
-}
-
-#pragma mark - TokenListViewControllerDelegate
-
--(void)updateContentWithContract:(Contract*) contract {
-    
-    self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
-}
-
--(void)updateContentFromQRCode:(NSDictionary*) qrCodeDict {
-    
-    self.addressTextField.text =
-    self.adress = qrCodeDict[PUBLIC_ADDRESS_STRING_KEY];
-    self.amountTextField.text =
-    self.amount = qrCodeDict[AMOUNT_STRING_KEY];
-    [self updateControls];
+    [self.delegate didPresseQRCodeScaner];
 }
 
 

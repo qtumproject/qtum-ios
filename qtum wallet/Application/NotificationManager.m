@@ -44,6 +44,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:) name:kFIRInstanceIDTokenRefreshNotification object:nil];
 }
 
+-(void)clear {
+    
+    [self removeToken];
+}
 
 -(void)removeToken {
     [NSUserDefaults saveDeviceToken:nil];

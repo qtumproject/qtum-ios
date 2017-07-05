@@ -16,6 +16,4 @@
 @property (nonatomic, copy) NSDictionary *dictionary;
 @property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
 
--(void)setAdress:(NSString*)adress andValue:(NSString*)amount;
-
 @end

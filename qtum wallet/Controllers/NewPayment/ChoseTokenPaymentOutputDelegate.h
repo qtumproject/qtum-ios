@@ -13,6 +13,7 @@
 @required
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
 - (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
-- (void)resetToDefaults;
+- (void)didPressedBackAction;
+- (void)didResetToDefaults;
 
 @end

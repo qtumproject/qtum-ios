@@ -14,23 +14,21 @@
 @protocol TabBarCoordinatorDelegate <NSObject>
 
 @required
--(void)newsTabDidSelectedWithController:(UIViewController*)controller;
--(void)sendTabDidSelectedWithController:(UIViewController*)controller;
--(void)profileTabDidSelectedWithController:(UIViewController*)controller;
--(void)walletTabDidSelectedWithController:(UIViewController*)controller;
+
 -(void)createPaymentFromWalletScanWithDict:(NSDictionary*) dict;
 
 @end
 
 @protocol ApplicationCoordinatorDelegate;
 
-@interface TabBarCoordinator : BaseCoordinator <Coordinatorable,TabBarCoordinatorDelegate>
+@interface TabBarCoordinator : BaseCoordinator <Coordinatorable,TabBarCoordinatorDelegate, TabbarOutputDelegate>
 
 @property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
--(instancetype)initWithTabBarController:(TabBarController*)tabBarController;
+- (instancetype)initWithTabBarController:(UITabBarController*)tabBarController;
 
--(void)showControllerByIndex:(NSInteger)index;
--(UIViewController *)getViewControllerByIndex:(NSInteger)index;
+- (void)startFromSendWithAddress:(NSString*)address andAmount:(NSString*) amount;
+- (void)showControllerByIndex:(NSInteger)index;
+- (UIViewController *)getViewControllerByIndex:(NSInteger)index;
 
 @end
