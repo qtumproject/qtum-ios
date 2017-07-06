@@ -13,6 +13,7 @@
 @property (strong, nonatomic)CAShapeLayer* animationLayer;
 @property (strong, nonatomic)NSArray <UIBezierPath *>* arrayOfPaths;
 @property (assign, nonatomic)BOOL animating;
+@property (assign, nonatomic) CGRect animationRect;
 
 @end
 
@@ -97,10 +98,13 @@
 #pragma mark - Private Methods
 
 -(void)startAmimate {
-    if (self.animating) {
+    if (self.animating && self.animationRect.size.height == self.bounds.size.height) {
         return;
     }
+    [self.animationLayer removeAllAnimations];
+    
     self.animating = YES;
+    self.animationRect = self.bounds;
     
     CAKeyframeAnimation *customFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"path"];
     NSArray *pathValues = @[(id)self.arrayOfPaths[0].CGPath,(id)self.arrayOfPaths[1].CGPath,(id)self.arrayOfPaths[2].CGPath,(id)self.arrayOfPaths[3].CGPath,(id)self.arrayOfPaths[4].CGPath];
@@ -113,7 +117,7 @@
     customFrameAnimation.repeatCount = HUGE_VALF;
     customFrameAnimation.duration = 10;
     customFrameAnimation.delegate = self;
-    [self.animationLayer addAnimation:customFrameAnimation forKey:@""];
+    [self.animationLayer addAnimation:customFrameAnimation forKey:@"Animation key"];
 }
 
 -(UIBezierPath*)pathOne{

@@ -12,8 +12,8 @@
 
 @interface WalletTableSource ()
 
-@property(nonatomic, weak) HistoryHeaderVIew *sectionHeaderView;
 @property (nonatomic, assign) CGFloat lastContentOffset;
+@property (nonatomic, weak) HistoryHeaderVIew *sectionHeaderView;
 
 @end
 
@@ -24,6 +24,8 @@ static NSInteger countOfSections = 2;
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { return nil; }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { return 0; }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return countOfSections;
@@ -36,8 +38,6 @@ static NSInteger countOfSections = 2;
         return  self.wallet.historyStorage.historyPrivate.count;
     }
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { return 0; }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
@@ -81,13 +81,13 @@ static NSInteger countOfSections = 2;
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    
-}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{ }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     self.lastContentOffset = scrollView.contentOffset.y;
+    
+    [self didScrollForheaderCell:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView willDecelerate:(BOOL)decelerate{
@@ -130,6 +130,44 @@ static NSInteger countOfSections = 2;
     }
     
     return HeaderCellTypeAllVisible;
+}
+
+#pragma mark - Public Methods
+
+- (void)didScrollForheaderCell:(UIScrollView *)scrollView{
+    NSIndexPath *headerIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    WalletHeaderCell *headerCell = [self.tableView cellForRowAtIndexPath:headerIndexPath];
+    
+    if (!headerCell) {
+        return;
+    }
+    
+    if (self.sectionHeaderView) {
+        CGFloat headerHeight = [headerCell getHeaderHeight];
+        CGFloat headerPosition = self.sectionHeaderView.frame.origin.y - scrollView.contentOffset.y;
+        if (headerPosition <= headerHeight ) {
+            if ([self.controllerDelegate respondsToSelector:@selector(needShowHeaderForSecondSeciton)]) {
+                [self.controllerDelegate needShowHeaderForSecondSeciton];
+            }
+        }else{
+            if ([self.controllerDelegate respondsToSelector:@selector(needHideHeaderForSecondSeciton)]) {
+                [self.controllerDelegate needHideHeaderForSecondSeciton];
+            }
+        }
+    }
+    
+    CGFloat position = headerCell.frame.origin.y - scrollView.contentOffset.y;
+    [headerCell cellYPositionChanged:position];
+    
+    if ([headerCell needShowHeader:position]) {
+        if ([self.controllerDelegate respondsToSelector:@selector(needShowHeader:)]) {
+            [self.controllerDelegate needShowHeader:[headerCell percentForShowHideHeader:position]];
+        }
+    }else{
+        if ([self.controllerDelegate respondsToSelector:@selector(needHideHeader:)]) {
+            [self.controllerDelegate needHideHeader:[headerCell percentForShowHideHeader:position]];
+        }
+    }
 }
 
 @end

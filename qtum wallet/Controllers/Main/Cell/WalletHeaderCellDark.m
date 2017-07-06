@@ -73,7 +73,7 @@ CGFloat const WalletHeaderCellDarkHeaderHeight = 50.0f;
     return percentOfPosition >= 1;
 }
 
-+ (CGFloat)getHeaderHeight{
+- (CGFloat)getHeaderHeight{
     return WalletHeaderCellDarkHeaderHeight;
 }
 

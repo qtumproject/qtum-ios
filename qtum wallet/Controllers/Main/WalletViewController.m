@@ -23,14 +23,6 @@
 
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
 
-@property (weak, nonatomic) IBOutlet UILabel *availabelLabel;
-@property (weak, nonatomic) IBOutlet UILabel *uncorfirmedLabel;
-@property (weak, nonatomic) IBOutlet UILabel *unconfirmedTextLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTextTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableValueTopConstraint;
-
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
-
 @property (assign, nonatomic) BOOL balanceLoaded;
 @property (assign, nonatomic) BOOL historyLoaded;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
@@ -75,13 +67,7 @@
 
 #pragma mark - Configuration
 
--(void)configRefreshControl{
-    
-    self.refreshControl = [[UIRefreshControl alloc]init];
-    self.refreshControl.tintColor = customBlackColor();
-    [self.tableView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
-}
+-(void)configRefreshControl { }
 
 -(void)configTableView{
     
@@ -90,9 +76,6 @@
     self.tableView.delegate = self.tableSource;
     self.tableSource.tableView = self.tableView;
     self.tableSource.controllerDelegate = self;
-    
-    UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderView" bundle:nil];
-    [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
 }
 
 #pragma mark - Private Methods
@@ -113,15 +96,15 @@
 
 - (void)reloadHeader:(id<Spendable>)wallet {
     
-    BOOL haveUncorfirmed = self.wallet.unconfirmedBalance != 0.0f;
+    BOOL haveUncorfirmed = wallet.unconfirmedBalance != 0.0f;
     self.availableTextTopConstraint.constant = haveUncorfirmed ? 10.0f : 17.0f;
     self.availableValueTopConstraint.constant = haveUncorfirmed ? 8.0f : 15.0f;
     
     self.unconfirmedTextLabel.hidden =
     self.uncorfirmedLabel.hidden = !haveUncorfirmed;
     
-    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%f", self.wallet.unconfirmedBalance];
-    self.availabelLabel.text = [NSString stringWithFormat:@"%f", self.wallet.balance];
+    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%f", wallet.unconfirmedBalance];
+    self.availabelLabel.text = [NSString stringWithFormat:@"%f", wallet.balance];
 }
 
 -(void)startLoading {
@@ -155,6 +138,19 @@
 
 - (IBAction)actionQRCode:(id)sender {
     [self.delegate didShowQRCodeScan];
+}
+
+#pragma mark - TableSourceDelegate
+
+- (void)needShowHeader:(CGFloat)percent { }
+
+- (void)needHideHeader:(CGFloat)percent { }
+
+- (void)needShowHeaderForSecondSeciton {
+    self.viewForHeaderInSecondSection.hidden = NO;
+}
+- (void)needHideHeaderForSecondSeciton {
+    self.viewForHeaderInSecondSection.hidden = YES;
 }
 
 @end

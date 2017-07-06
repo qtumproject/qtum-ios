@@ -16,17 +16,10 @@
 @protocol ControllerDelegate <NSObject>
 
 @optional
-- (void)needShowHeader;
-- (void)needHideHeader;
+- (void)needShowHeader:(CGFloat)percent;
+- (void)needHideHeader:(CGFloat)percent;
 - (void)needShowHeaderForSecondSeciton;
 - (void)needHideHeaderForSecondSeciton;
-
-@end
-
-@protocol TableViewDelegate <NSObject>
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
 
 @end
 
@@ -44,5 +37,6 @@
 @property (nonatomic, readonly) CGFloat lastContentOffset;
 
 - (HeaderCellType)headerCellType;
+- (void)didScrollForheaderCell:(UIScrollView *)scrollView;
 
 @end

@@ -14,9 +14,7 @@ CGFloat const WalletHeaderHeightShowedDark = 50.0f;
 @interface WalletViewControllerDark ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
-@property (weak, nonatomic) IBOutlet ViewWithAnimatedLine *headerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeightConstraint;
-@property (weak, nonatomic) IBOutlet UIView *viewForHeaderInSecondSection;
 
 @end
 
@@ -25,15 +23,27 @@ CGFloat const WalletHeaderHeightShowedDark = 50.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.headerView setRightConstraint:self.trailingForLineConstraint];
-    [self createBackroundForRefreshArea];
+    [(ViewWithAnimatedLine *)self.headerView setRightConstraint:self.trailingForLineConstraint];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (void)createBackroundForRefreshArea {
+- (void)configTableView {
+    
+    [super configTableView];
+    
+    UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderViewDark" bundle:nil];
+    [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
+}
+
+-(void)configRefreshControl {
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    self.refreshControl.tintColor = customBlackColor();
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
     
     CGRect frame = self.tableView.bounds;
     frame.origin.y = -frame.size.height;
@@ -44,23 +54,16 @@ CGFloat const WalletHeaderHeightShowedDark = 50.0f;
 
 #pragma mark - TableSourceDelegate
 
-- (void)needShowHeader{
+- (void)needShowHeader:(CGFloat)percent {
     if (self.headerHeightConstraint.constant == WalletHeaderHeightShowedDark) {
         return;
     }
     
     self.headerHeightConstraint.constant = WalletHeaderHeightShowedDark;
-    [self.headerView showAnimation];
+    [(ViewWithAnimatedLine *)self.headerView showAnimation];
 }
 
-- (void)needShowHeaderForSecondSeciton {
-    self.viewForHeaderInSecondSection.hidden = NO;
-}
-- (void)needHideHeaderForSecondSeciton {
-    self.viewForHeaderInSecondSection.hidden = YES;
-}
-
-- (void)needHideHeader{
+- (void)needHideHeader:(CGFloat)percent {
     if (self.headerHeightConstraint.constant == 0.0f) {
         return;
     }

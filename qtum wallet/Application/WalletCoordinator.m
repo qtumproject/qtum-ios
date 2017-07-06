@@ -82,9 +82,9 @@
     
     NSObject<WalletOutput> *controller = [[ControllersFactory sharedInstance] createWalletViewController];
     controller.delegate = self;
-    [controller setWallet:self.wallet];
     
     [self configWallet];
+    [controller setWallet:self.wallet];
     self.delegateDataSource = [[TableSourcesFactory sharedInstance] createWalletSource];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallet;
@@ -156,6 +156,7 @@
 
 -(void)setWalletToDelegates {
     self.delegateDataSource.wallet = self.wallet;
+    [self.walletViewController setWallet:self.wallet];
 }
 
 #pragma mark - Private Methods

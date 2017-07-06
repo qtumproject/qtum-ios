@@ -32,14 +32,16 @@ typedef enum {
 
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak, nonatomic) id <Spendable> spendable;
+
 @property (nonatomic, readonly) HeaderCellType type;
 
 - (void)setData:(id <Spendable>)wallet;
 - (void)setCellType:(HeaderCellType)type;
-
 - (void)cellYPositionChanged:(CGFloat)yPosition;
+
 - (BOOL)needShowHeader:(CGFloat)yPosition;
 
-+ (CGFloat)getHeaderHeight;
+- (CGFloat)percentForShowHideHeader:(CGFloat)yPosition;
+- (CGFloat)getHeaderHeight;
 
 @end

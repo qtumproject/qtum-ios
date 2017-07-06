@@ -84,7 +84,7 @@
 		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
 		B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */; };
 		B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */; };
-		B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3487A291E92383500BC66F1 /* HistoryTableHeaderView.xib */; };
+		B3487A2A1E92383500BC66F1 /* HistoryTableHeaderViewDark.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3487A291E92383500BC66F1 /* HistoryTableHeaderViewDark.xib */; };
 		B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A2C1E92392000BC66F1 /* HistoryHeaderVIew.m */; };
 		B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B34B69631EC5993A006BE3B0 /* CustomPageControl.m */; };
 		B34BF46F1EFBEC8F00EED85A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34BF46E1EFBEC8F00EED85A /* GoogleService-Info.plist */; };
@@ -238,6 +238,7 @@
 		E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */; };
 		E73ECB611EF15EB40088C89D /* iMessageTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */; };
 		E74636861DCB300800A13318 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E74636851DCB300800A13318 /* Utils.m */; };
+		E75220461F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75220451F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib */; };
 		E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */; };
 		E784F8B41F01556800A513BF /* QStore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E784F8B31F01556800A513BF /* QStore.storyboard */; };
 		E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8B71F015B7100A513BF /* QStoreViewController.m */; };
@@ -248,41 +249,16 @@
 		E784F8C71F0259AF00A513BF /* SourceCodePopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */; };
 		E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */; };
 		E7881B0D1F0BB63400BD6AB2 /* SplashLight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0C1F0BB63400BD6AB2 /* SplashLight.storyboard */; };
-		E7881B1F1F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */; };
-		E7881B201F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */; };
-		E7881B211F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */; };
-		E7881B221F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */; };
-		E7881B231F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */; };
 		E7881B241F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B251F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B261F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B271F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B281F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
-		E7881B291F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B111F0BB7C700BD6AB2 /* proximanova-boldit.otf */; };
-		E7881B2A1F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B111F0BB7C700BD6AB2 /* proximanova-boldit.otf */; };
-		E7881B2B1F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B111F0BB7C700BD6AB2 /* proximanova-boldit.otf */; };
-		E7881B2C1F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B111F0BB7C700BD6AB2 /* proximanova-boldit.otf */; };
-		E7881B2D1F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B111F0BB7C700BD6AB2 /* proximanova-boldit.otf */; };
-		E7881B2E1F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B121F0BB7C700BD6AB2 /* proximanova-extrabold.otf */; };
-		E7881B2F1F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B121F0BB7C700BD6AB2 /* proximanova-extrabold.otf */; };
-		E7881B301F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B121F0BB7C700BD6AB2 /* proximanova-extrabold.otf */; };
-		E7881B311F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B121F0BB7C700BD6AB2 /* proximanova-extrabold.otf */; };
-		E7881B321F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B121F0BB7C700BD6AB2 /* proximanova-extrabold.otf */; };
 		E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B341F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B351F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B361F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B371F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
-		E7881B381F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B141F0BB7C700BD6AB2 /* proximanova-lightitalic.otf */; };
-		E7881B391F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B141F0BB7C700BD6AB2 /* proximanova-lightitalic.otf */; };
-		E7881B3A1F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B141F0BB7C700BD6AB2 /* proximanova-lightitalic.otf */; };
-		E7881B3B1F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B141F0BB7C700BD6AB2 /* proximanova-lightitalic.otf */; };
-		E7881B3C1F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B141F0BB7C700BD6AB2 /* proximanova-lightitalic.otf */; };
-		E7881B3D1F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B151F0BB7C700BD6AB2 /* proximanova-regitalic.otf */; };
-		E7881B3E1F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B151F0BB7C700BD6AB2 /* proximanova-regitalic.otf */; };
-		E7881B3F1F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B151F0BB7C700BD6AB2 /* proximanova-regitalic.otf */; };
-		E7881B401F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B151F0BB7C700BD6AB2 /* proximanova-regitalic.otf */; };
-		E7881B411F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B151F0BB7C700BD6AB2 /* proximanova-regitalic.otf */; };
 		E7881B421F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B431F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B441F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
@@ -293,41 +269,6 @@
 		E7881B491F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
 		E7881B4A1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
 		E7881B4B1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
-		E7881B4C1F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B181F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf */; };
-		E7881B4D1F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B181F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf */; };
-		E7881B4E1F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B181F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf */; };
-		E7881B4F1F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B181F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf */; };
-		E7881B501F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B181F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf */; };
-		E7881B511F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B191F0BB7C700BD6AB2 /* proximanovacond-light.otf */; };
-		E7881B521F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B191F0BB7C700BD6AB2 /* proximanovacond-light.otf */; };
-		E7881B531F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B191F0BB7C700BD6AB2 /* proximanovacond-light.otf */; };
-		E7881B541F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B191F0BB7C700BD6AB2 /* proximanovacond-light.otf */; };
-		E7881B551F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B191F0BB7C700BD6AB2 /* proximanovacond-light.otf */; };
-		E7881B561F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1A1F0BB7C700BD6AB2 /* proximanovacond-lightit.otf */; };
-		E7881B571F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1A1F0BB7C700BD6AB2 /* proximanovacond-lightit.otf */; };
-		E7881B581F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1A1F0BB7C700BD6AB2 /* proximanovacond-lightit.otf */; };
-		E7881B591F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1A1F0BB7C700BD6AB2 /* proximanovacond-lightit.otf */; };
-		E7881B5A1F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1A1F0BB7C700BD6AB2 /* proximanovacond-lightit.otf */; };
-		E7881B5B1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1B1F0BB7C700BD6AB2 /* proximanovacond-regular.otf */; };
-		E7881B5C1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1B1F0BB7C700BD6AB2 /* proximanovacond-regular.otf */; };
-		E7881B5D1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1B1F0BB7C700BD6AB2 /* proximanovacond-regular.otf */; };
-		E7881B5E1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1B1F0BB7C700BD6AB2 /* proximanovacond-regular.otf */; };
-		E7881B5F1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1B1F0BB7C700BD6AB2 /* proximanovacond-regular.otf */; };
-		E7881B601F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1C1F0BB7C700BD6AB2 /* proximanovacond-regularit.otf */; };
-		E7881B611F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1C1F0BB7C700BD6AB2 /* proximanovacond-regularit.otf */; };
-		E7881B621F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1C1F0BB7C700BD6AB2 /* proximanovacond-regularit.otf */; };
-		E7881B631F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1C1F0BB7C700BD6AB2 /* proximanovacond-regularit.otf */; };
-		E7881B641F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1C1F0BB7C700BD6AB2 /* proximanovacond-regularit.otf */; };
-		E7881B651F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1D1F0BB7C700BD6AB2 /* proximanovacond-semibold.otf */; };
-		E7881B661F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1D1F0BB7C700BD6AB2 /* proximanovacond-semibold.otf */; };
-		E7881B671F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1D1F0BB7C700BD6AB2 /* proximanovacond-semibold.otf */; };
-		E7881B681F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1D1F0BB7C700BD6AB2 /* proximanovacond-semibold.otf */; };
-		E7881B691F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1D1F0BB7C700BD6AB2 /* proximanovacond-semibold.otf */; };
-		E7881B6A1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */; };
-		E7881B6B1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */; };
-		E7881B6C1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */; };
-		E7881B6D1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */; };
-		E7881B6E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */; };
 		E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */; };
 		E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */; };
 		E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */; };
@@ -615,7 +556,7 @@
 		B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDataStorage.m; sourceTree = "<group>"; };
 		B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHeaderCell.h; sourceTree = "<group>"; };
 		B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletHeaderCell.m; sourceTree = "<group>"; };
-		B3487A291E92383500BC66F1 /* HistoryTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableHeaderView.xib; sourceTree = "<group>"; };
+		B3487A291E92383500BC66F1 /* HistoryTableHeaderViewDark.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableHeaderViewDark.xib; sourceTree = "<group>"; };
 		B3487A2B1E92392000BC66F1 /* HistoryHeaderVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryHeaderVIew.h; sourceTree = "<group>"; };
 		B3487A2C1E92392000BC66F1 /* HistoryHeaderVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryHeaderVIew.m; sourceTree = "<group>"; };
 		B34B69621EC5993A006BE3B0 /* CustomPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPageControl.h; sourceTree = "<group>"; };
@@ -909,6 +850,7 @@
 		E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMessageTextFieldWithLine.m; sourceTree = "<group>"; };
 		E74636841DCB300800A13318 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		E75220451F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableHeaderViewLight.xib; sourceTree = "<group>"; };
 		E777786A1EF3E54E00948682 /* BTCAddress+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCAddress+Extension.h"; sourceTree = "<group>"; };
 		E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Extension.m"; sourceTree = "<group>"; };
 		E784F8B31F01556800A513BF /* QStore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QStore.storyboard; sourceTree = "<group>"; };
@@ -926,22 +868,10 @@
 		E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceCodePopUpViewController.h; sourceTree = "<group>"; };
 		E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceCodePopUpViewController.m; sourceTree = "<group>"; };
 		E7881B0C1F0BB63400BD6AB2 /* SplashLight.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SplashLight.storyboard; sourceTree = "<group>"; };
-		E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-black.otf"; sourceTree = SOURCE_ROOT; };
 		E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-bold.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B111F0BB7C700BD6AB2 /* proximanova-boldit.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-boldit.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B121F0BB7C700BD6AB2 /* proximanova-extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-extrabold.otf"; sourceTree = SOURCE_ROOT; };
 		E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-light.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B141F0BB7C700BD6AB2 /* proximanova-lightitalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-lightitalic.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B151F0BB7C700BD6AB2 /* proximanova-regitalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-regitalic.otf"; sourceTree = SOURCE_ROOT; };
 		E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-regular.otf"; sourceTree = SOURCE_ROOT; };
 		E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-semibold.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B181F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-semibolditalic.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B191F0BB7C700BD6AB2 /* proximanovacond-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanovacond-light.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B1A1F0BB7C700BD6AB2 /* proximanovacond-lightit.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanovacond-lightit.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B1B1F0BB7C700BD6AB2 /* proximanovacond-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanovacond-regular.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B1C1F0BB7C700BD6AB2 /* proximanovacond-regularit.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanovacond-regularit.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B1D1F0BB7C700BD6AB2 /* proximanovacond-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanovacond-semibold.otf"; sourceTree = SOURCE_ROOT; };
-		E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanovacond-semiboldit.otf"; sourceTree = SOURCE_ROOT; };
 		E7881B721F0BC63C00BD6AB2 /* NewPaymentLightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentLightViewController.h; sourceTree = "<group>"; };
 		E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentLightViewController.m; sourceTree = "<group>"; };
 		E7881B751F0BC6E200BD6AB2 /* NewPaymentDarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentDarkViewController.h; sourceTree = "<group>"; };
@@ -1397,9 +1327,10 @@
 		B3487A281E92380B00BC66F1 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				B3487A291E92383500BC66F1 /* HistoryTableHeaderView.xib */,
 				B3487A2B1E92392000BC66F1 /* HistoryHeaderVIew.h */,
 				B3487A2C1E92392000BC66F1 /* HistoryHeaderVIew.m */,
+				B3487A291E92383500BC66F1 /* HistoryTableHeaderViewDark.xib */,
+				E75220451F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib */,
 			);
 			name = Header;
 			sourceTree = "<group>";
@@ -1949,7 +1880,7 @@
 			path = Controllers/NewPayment;
 			sourceTree = "<group>";
 		};
-		E7396AF51DDF0C7D0002CD47 /* Cell */ = {
+		E7396AF51DDF0C7D0002CD47 /* Table */ = {
 			isa = PBXGroup;
 			children = (
 				E79846371F0D2665002A516A /* TableSource */,
@@ -1957,7 +1888,7 @@
 				E798462E1F0D1E6E002A516A /* HistoryTableViewCell */,
 				B3487A281E92380B00BC66F1 /* Header */,
 			);
-			name = Cell;
+			name = Table;
 			path = Controllers/Main/Cell;
 			sourceTree = "<group>";
 		};
@@ -2079,22 +2010,10 @@
 		E7881B0E1F0BB7A800BD6AB2 /* FontsLight */ = {
 			isa = PBXGroup;
 			children = (
-				E7881B0F1F0BB7C700BD6AB2 /* proximanova-black.otf */,
 				E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */,
-				E7881B111F0BB7C700BD6AB2 /* proximanova-boldit.otf */,
-				E7881B121F0BB7C700BD6AB2 /* proximanova-extrabold.otf */,
 				E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */,
-				E7881B141F0BB7C700BD6AB2 /* proximanova-lightitalic.otf */,
-				E7881B151F0BB7C700BD6AB2 /* proximanova-regitalic.otf */,
 				E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */,
 				E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */,
-				E7881B181F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf */,
-				E7881B191F0BB7C700BD6AB2 /* proximanovacond-light.otf */,
-				E7881B1A1F0BB7C700BD6AB2 /* proximanovacond-lightit.otf */,
-				E7881B1B1F0BB7C700BD6AB2 /* proximanovacond-regular.otf */,
-				E7881B1C1F0BB7C700BD6AB2 /* proximanovacond-regularit.otf */,
-				E7881B1D1F0BB7C700BD6AB2 /* proximanovacond-semibold.otf */,
-				E7881B1E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf */,
 			);
 			name = FontsLight;
 			sourceTree = "<group>";
@@ -2102,7 +2021,7 @@
 		E7881B781F0BDC3400BD6AB2 /* WalletOutput */ = {
 			isa = PBXGroup;
 			children = (
-				E7396AF51DDF0C7D0002CD47 /* Cell */,
+				E7396AF51DDF0C7D0002CD47 /* Table */,
 				E78FD6521F0CF425007BD355 /* WalletOutput.h */,
 				E78FD6541F0CF5AA007BD355 /* WalletOutputDelegate.h */,
 				E7396AEA1DDEF7E30002CD47 /* WalletViewController.h */,
@@ -2134,12 +2053,12 @@
 		E798462E1F0D1E6E002A516A /* HistoryTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E7396AF61DDF0C970002CD47 /* HistoryTableViewCell.h */,
+				E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */,
 				E79846281F0D1E40002A516A /* HistoryTableViewCellDark.h */,
 				E79846291F0D1E40002A516A /* HistoryTableViewCellDark.m */,
 				E798462B1F0D1E50002A516A /* HistoryTableViewCellLight.h */,
 				E798462C1F0D1E50002A516A /* HistoryTableViewCellLight.m */,
-				E7396AF61DDF0C970002CD47 /* HistoryTableViewCell.h */,
-				E7396AF71DDF0C970002CD47 /* HistoryTableViewCell.m */,
 			);
 			name = HistoryTableViewCell;
 			sourceTree = "<group>";
@@ -2151,10 +2070,10 @@
 				E78903681EDD57D2004243F0 /* AnimatedLabelTableViewCell.m */,
 				B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */,
 				B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */,
-				E79846301F0D2373002A516A /* WalletHeaderCellLight.h */,
-				E79846311F0D2373002A516A /* WalletHeaderCellLight.m */,
 				E79846341F0D23CB002A516A /* WalletHeaderCellDark.h */,
 				E79846351F0D23CB002A516A /* WalletHeaderCellDark.m */,
+				E79846301F0D2373002A516A /* WalletHeaderCellLight.h */,
+				E79846311F0D2373002A516A /* WalletHeaderCellLight.m */,
 			);
 			name = WalletHeaderCell;
 			sourceTree = "<group>";
@@ -2744,25 +2663,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7881B3A1F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */,
-				E7881B211F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */,
 				B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				E7B758651EF01B01004AF200 /* simplonmono-regular.ttf in Resources */,
-				E7881B621F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */,
 				E7881B351F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				B33EAF931E5EC263006125F3 /* Assets.xcassets in Resources */,
-				E7881B671F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */,
-				E7881B2B1F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */,
-				E7881B5D1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */,
-				E7881B6C1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */,
 				E7881B491F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
-				E7881B301F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */,
-				E7881B4E1F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */,
-				E7881B581F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */,
 				B33EAF911E5EC263006125F3 /* MainInterface.storyboard in Resources */,
-				E7881B3F1F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */,
 				E7881B441F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7881B531F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */,
 				E7B758641EF01B01004AF200 /* simplonmono-medium.ttf in Resources */,
 				E7881B261F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
 			);
@@ -2772,22 +2679,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7881B2A1F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */,
 				E7881B431F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7881B201F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */,
-				E7881B2F1F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */,
-				E7881B571F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */,
-				E7881B3E1F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */,
-				E7881B6B1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */,
-				E7881B611F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */,
-				E7881B521F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */,
-				E7881B5C1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */,
-				E7881B391F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */,
 				E7881B341F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				E7881B481F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
-				E7881B661F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */,
 				E7881B251F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
-				E7881B4D1F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2797,24 +2692,12 @@
 			files = (
 				E730AB5A1EE6A5D100132711 /* Assets.xcassets in Resources */,
 				E7881B451F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7881B631F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */,
-				E7881B3B1F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */,
-				E7881B401F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */,
 				E7881B271F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
 				E7B758611EF01AF2004AF200 /* simplonmono-regular.ttf in Resources */,
-				E7881B5E1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */,
 				E7881B361F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				E730AB581EE6A5D100132711 /* Interface.storyboard in Resources */,
-				E7881B6D1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */,
-				E7881B2C1F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */,
 				E7B758601EF01AF2004AF200 /* simplonmono-medium.ttf in Resources */,
-				E7881B311F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */,
-				E7881B4F1F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */,
-				E7881B591F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */,
 				E7881B4A1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
-				E7881B221F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */,
-				E7881B681F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */,
-				E7881B541F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2822,24 +2705,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7881B641F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */,
-				E7881B2D1F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */,
-				E7881B5A1F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */,
-				E7881B6E1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */,
-				E7881B411F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */,
-				E7881B501F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */,
-				E7881B551F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */,
 				E7881B281F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
 				E7B758631EF01AF3004AF200 /* simplonmono-regular.ttf in Resources */,
-				E7881B3C1F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */,
-				E7881B691F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */,
 				E7881B461F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7881B5F1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */,
-				E7881B321F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */,
 				E7881B4B1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 				E730AB741EE6A5D200132711 /* Assets.xcassets in Resources */,
 				E7881B371F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
-				E7881B231F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */,
 				E7B758621EF01AF3004AF200 /* simplonmono-medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2853,7 +2724,7 @@
 				B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
-				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderView.xib in Resources */,
+				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderViewDark.xib in Resources */,
 				E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */,
 				E7FA0CBB1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard in Resources */,
 				B3E1591B1ED5A87D00D70A87 /* OnlyDesign.storyboard in Resources */,
@@ -2861,35 +2732,26 @@
 				E784F8C71F0259AF00A513BF /* SourceCodePopUp.storyboard in Resources */,
 				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
-				E7881B5B1F0BB7C700BD6AB2 /* proximanovacond-regular.otf in Resources */,
 				E7881B0D1F0BB63400BD6AB2 /* SplashLight.storyboard in Resources */,
 				E784F8B41F01556800A513BF /* QStore.storyboard in Resources */,
-				E7881B4C1F0BB7C700BD6AB2 /* proximanova-semibolditalic.otf in Resources */,
 				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
 				B32EEC9B1EB356DA00512FED /* Localizable.strings in Resources */,
 				E73CF6C11EE2BEA80044DF78 /* ErrorPopUp.storyboard in Resources */,
-				E7881B2E1F0BB7C700BD6AB2 /* proximanova-extrabold.otf in Resources */,
 				E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 				B32EEC661EB3545700512FED /* Send.storyboard in Resources */,
-				E7881B6A1F0BB7C700BD6AB2 /* proximanovacond-semiboldit.otf in Resources */,
 				B32EEC7A1EB3549300512FED /* Pin.storyboard in Resources */,
 				E73CF6C51EE2CE8A0044DF78 /* ConfirmPopUp.storyboard in Resources */,
 				E7CE636D1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib in Resources */,
-				E7881B511F0BB7C700BD6AB2 /* proximanovacond-light.otf in Resources */,
 				E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */,
 				B381CBE71F02933400142252 /* SecurityPopup.storyboard in Resources */,
 				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
 				B3F76A941EDDB81600108DE9 /* Contracts in Resources */,
 				E71271941EE9AC5B00A130A0 /* LoaderPopUp.storyboard in Resources */,
-				E7881B561F0BB7C700BD6AB2 /* proximanovacond-lightit.otf in Resources */,
-				E7881B651F0BB7C700BD6AB2 /* proximanovacond-semibold.otf in Resources */,
-				E7881B3D1F0BB7C700BD6AB2 /* proximanova-regitalic.otf in Resources */,
+				E75220461F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib in Resources */,
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
-				E7881B291F0BB7C700BD6AB2 /* proximanova-boldit.otf in Resources */,
-				E7881B381F0BB7C700BD6AB2 /* proximanova-lightitalic.otf in Resources */,
 				B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */,
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
 				E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */,
@@ -2898,8 +2760,6 @@
 				B34BF46F1EFBEC8F00EED85A /* GoogleService-Info.plist in Resources */,
 				E713A47B1EEE966100A2FA40 /* CheckButton.xib in Resources */,
 				B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */,
-				E7881B601F0BB7C700BD6AB2 /* proximanovacond-regularit.otf in Resources */,
-				E7881B1F1F0BB7C700BD6AB2 /* proximanova-black.otf in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
 				E703531B1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard in Resources */,
 				B32EEC6B1EB3546800512FED /* News.storyboard in Resources */,

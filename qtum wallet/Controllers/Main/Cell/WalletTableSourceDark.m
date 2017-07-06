@@ -52,45 +52,4 @@
     }
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    [super scrollViewDidScroll:scrollView];
-    
-    [self didScrollForheaderCell:scrollView];
-}
-
-#pragma mark - Private Methods
-
-- (void)didScrollForheaderCell:(UIScrollView *)scrollView{
-    NSIndexPath *headerIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    WalletHeaderCellDark *headerCell = [self.tableView cellForRowAtIndexPath:headerIndexPath];
-    
-    if (!headerCell) {
-        return;
-    }
-    
-    if (self.sectionHeaderView) {
-        CGFloat headerHeight = [WalletHeaderCell getHeaderHeight];
-        CGFloat headerPosition = self.sectionHeaderView.frame.origin.y - scrollView.contentOffset.y;
-        if (headerPosition <= headerHeight ) {
-            [self.controllerDelegate needShowHeaderForSecondSeciton];
-        }else{
-            [self.controllerDelegate needHideHeaderForSecondSeciton];
-        }
-    }
-    
-    CGFloat position = headerCell.frame.origin.y - scrollView.contentOffset.y;
-    [headerCell cellYPositionChanged:position];
-    
-    if ([headerCell needShowHeader:position]) {
-        if ([self.controllerDelegate respondsToSelector:@selector(needShowHeader)]) {
-            [self.controllerDelegate needShowHeader];
-        }
-    }else{
-        if ([self.controllerDelegate respondsToSelector:@selector(needHideHeader)]) {
-            [self.controllerDelegate needHideHeader];
-        }
-    }
-}
-
 @end

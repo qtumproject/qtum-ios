@@ -19,10 +19,10 @@
             case HeaderCellTypeWithoutPageControl:
             case HeaderCellTypeWithoutNotCorfirmedBalance:
             case HeaderCellTypeWithoutAll:
-                return 100;
+                return 164;
             case HeaderCellTypeAllVisible:
             default:
-                return 150;
+                return 214;
         }
     } else {
         return 55;
@@ -37,7 +37,7 @@
         cell.delegate = self.delegate;
         [cell setCellType:[self headerCellType]];
         [cell setData:self.wallet];
-//        [self didScrollForheaderCell:tableView];
+        [self didScrollForheaderCell:tableView];
         
         return cell;
     } else {
@@ -48,13 +48,6 @@
         
         return cell;
     }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    [super scrollViewDidScroll:scrollView];
-    
-//    [self didScrollForheaderCell:scrollView];
 }
 
 @end

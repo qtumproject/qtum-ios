@@ -62,6 +62,8 @@
 
 - (BOOL)needShowHeader:(CGFloat)yPosition { return NO; }
 
-+ (CGFloat)getHeaderHeight{ return 0; }
+- (CGFloat)percentForShowHideHeader:(CGFloat)yPosition { return 1; };
+
+- (CGFloat)getHeaderHeight{ return 0; }
 
 @end

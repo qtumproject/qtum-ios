@@ -22,5 +22,6 @@
 - (void)failedToGetBalance;
 - (void)startLoading;
 - (void)stopLoading;
+- (void)reloadHeader:(id<Spendable>)wallet;
 
 @end

@@ -57,3 +57,13 @@ UIColor *lightBlueColor()
 {
     return [UIColor colorWithRed:237/255.0f green:246/255.0f blue:248/255.0f alpha:1.0f];
 }
+
+UIColor *lightDarkBlueColor()
+{
+    return [UIColor colorWithRed:54/255.0f green:85/255.0f blue:200/255.0f alpha:1.0f];
+}
+
+UIColor *lightDarkBlueColorForGradient()
+{
+    return [UIColor colorWithRed:63/255.0f green:56/255.0f blue:196/255.0f alpha:1.0f];
+}
