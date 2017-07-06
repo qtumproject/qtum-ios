@@ -188,6 +188,8 @@
 		E71AF24E1E0178EB0068595B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
 		E71AF2511E017D250068595B /* WordsArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2501E017D250068595B /* WordsArray.m */; };
 		E71AF2551E018F6A0068595B /* WalletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2541E018F6A0068595B /* WalletManager.m */; };
+		E71B72F01F0E9137004BECEA /* PageControlItemLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B72EF1F0E9137004BECEA /* PageControlItemLight.m */; };
+		E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B72F21F0E9263004BECEA /* PageControlLight.m */; };
 		E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72631231EEAA806005AED8F /* FieldsViews.xib */; };
 		E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72631261EEAA9A7005AED8F /* SwitchParameterView.m */; };
 		E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72631291EEAAC5B005AED8F /* TextFieldParameterView.m */; };
@@ -239,6 +241,7 @@
 		E73ECB611EF15EB40088C89D /* iMessageTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */; };
 		E74636861DCB300800A13318 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E74636851DCB300800A13318 /* Utils.m */; };
 		E75220461F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75220451F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib */; };
+		E752204B1F0E70E60028D152 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E752204A1F0E70E60028D152 /* PageControl.m */; };
 		E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */; };
 		E784F8B41F01556800A513BF /* QStore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E784F8B31F01556800A513BF /* QStore.storyboard */; };
 		E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8B71F015B7100A513BF /* QStoreViewController.m */; };
@@ -310,6 +313,8 @@
 		E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D241D81DE6D6B1003E507B /* QRCodeManager.m */; };
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
 		E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */; };
+		E7DE59901F0E8562006E0E1B /* PageControlItemDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DE598F1F0E8562006E0E1B /* PageControlItemDark.m */; };
+		E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DE59921F0E882A006E0E1B /* PageControlDark.m */; };
 		E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */; };
 		E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CB71ED42DB500AFD5D0 /* LanguageViewController.m */; };
 		E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CBA1ED42DCB00AFD5D0 /* LanguageTableViewCell.m */; };
@@ -758,6 +763,10 @@
 		E71AF2501E017D250068595B /* WordsArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsArray.m; sourceTree = "<group>"; };
 		E71AF2531E018F6A0068595B /* WalletManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletManager.h; sourceTree = "<group>"; };
 		E71AF2541E018F6A0068595B /* WalletManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletManager.m; sourceTree = "<group>"; };
+		E71B72EE1F0E9137004BECEA /* PageControlItemLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlItemLight.h; sourceTree = "<group>"; };
+		E71B72EF1F0E9137004BECEA /* PageControlItemLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlItemLight.m; sourceTree = "<group>"; };
+		E71B72F11F0E9263004BECEA /* PageControlLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlLight.h; sourceTree = "<group>"; };
+		E71B72F21F0E9263004BECEA /* PageControlLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlLight.m; sourceTree = "<group>"; };
 		E72631231EEAA806005AED8F /* FieldsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldsViews.xib; sourceTree = "<group>"; };
 		E72631251EEAA9A7005AED8F /* SwitchParameterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchParameterView.h; sourceTree = "<group>"; };
 		E72631261EEAA9A7005AED8F /* SwitchParameterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchParameterView.m; sourceTree = "<group>"; };
@@ -851,6 +860,9 @@
 		E74636841DCB300800A13318 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		E75220451F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableHeaderViewLight.xib; sourceTree = "<group>"; };
+		E75220491F0E70E60028D152 /* PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControl.h; sourceTree = "<group>"; };
+		E752204A1F0E70E60028D152 /* PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl.m; sourceTree = "<group>"; };
+		E752204C1F0E73720028D152 /* PageControlItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlItem.h; sourceTree = "<group>"; };
 		E777786A1EF3E54E00948682 /* BTCAddress+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCAddress+Extension.h"; sourceTree = "<group>"; };
 		E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Extension.m"; sourceTree = "<group>"; };
 		E784F8B31F01556800A513BF /* QStore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QStore.storyboard; sourceTree = "<group>"; };
@@ -941,6 +953,10 @@
 		E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TransactionManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7DD00F01DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCBlockchainInfo+QtumExplorer.h"; sourceTree = "<group>"; };
 		E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCBlockchainInfo+QtumExplorer.m"; sourceTree = "<group>"; };
+		E7DE598E1F0E8562006E0E1B /* PageControlItemDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlItemDark.h; sourceTree = "<group>"; };
+		E7DE598F1F0E8562006E0E1B /* PageControlItemDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlItemDark.m; sourceTree = "<group>"; };
+		E7DE59911F0E882A006E0E1B /* PageControlDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlDark.h; sourceTree = "<group>"; };
+		E7DE59921F0E882A006E0E1B /* PageControlDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlDark.m; sourceTree = "<group>"; };
 		E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCRequestManager.h; sourceTree = "<group>"; };
 		E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCRequestManager.m; sourceTree = "<group>"; };
 		E7EA2CA71ED4189A00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
@@ -1338,6 +1354,13 @@
 		B34B69611EC5990C006BE3B0 /* Page Control */ = {
 			isa = PBXGroup;
 			children = (
+				E7DE59941F0E882F006E0E1B /* Items */,
+				E75220491F0E70E60028D152 /* PageControl.h */,
+				E752204A1F0E70E60028D152 /* PageControl.m */,
+				E7DE59911F0E882A006E0E1B /* PageControlDark.h */,
+				E7DE59921F0E882A006E0E1B /* PageControlDark.m */,
+				E71B72F11F0E9263004BECEA /* PageControlLight.h */,
+				E71B72F21F0E9263004BECEA /* PageControlLight.m */,
 				B34B69621EC5993A006BE3B0 /* CustomPageControl.h */,
 				B34B69631EC5993A006BE3B0 /* CustomPageControl.m */,
 			);
@@ -2191,6 +2214,18 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		E7DE59941F0E882F006E0E1B /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				E752204C1F0E73720028D152 /* PageControlItem.h */,
+				E7DE598E1F0E8562006E0E1B /* PageControlItemDark.h */,
+				E7DE598F1F0E8562006E0E1B /* PageControlItemDark.m */,
+				E71B72EE1F0E9137004BECEA /* PageControlItemLight.h */,
+				E71B72EF1F0E9137004BECEA /* PageControlItemLight.m */,
+			);
+			name = Items;
+			sourceTree = "<group>";
+		};
 		E7EA2CB51ED42D9B00AFD5D0 /* Language */ = {
 			isa = PBXGroup;
 			children = (
@@ -2910,6 +2945,7 @@
 				E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */,
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
 				B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */,
+				E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */,
 				E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */,
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
@@ -2946,10 +2982,12 @@
 				B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */,
 				B381CBE51F0291CB00142252 /* SecurityPopupViewController.m in Sources */,
 				B30BAE2E1E9E3AA600CA795F /* ContractManager.m in Sources */,
+				E71B72F01F0E9137004BECEA /* PageControlItemLight.m in Sources */,
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
 				B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */,
+				E7DE59901F0E8562006E0E1B /* PageControlItemDark.m in Sources */,
 				E70353121F03AC59004ECCC9 /* QStoreListTableSource.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
 				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,
@@ -2973,8 +3011,10 @@
 				B32B32E21ECCC2D50081260A /* CreateTokenFinishViewController.m in Sources */,
 				B365CA631EA4ED540040A163 /* Contract.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
+				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
+				E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,

@@ -9,6 +9,7 @@
 #import "TokenListViewController.h"
 #import "TokenCell.h"
 #import "QRCodeManager.h"
+#import "PageControl.h"
 
 NSString *const ShareContractTokensText = @"It's my tokens";
 
@@ -16,6 +17,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet PageControl *pageControl;
 
 @end
 
@@ -24,6 +26,9 @@ NSString *const ShareContractTokensText = @"It's my tokens";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView reloadData];
+    
+    [self.pageControl setPagesCount:2];
+    [self.pageControl setSelectedPage:1];
 }
 
 

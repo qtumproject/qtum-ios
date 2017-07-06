@@ -28,6 +28,7 @@ UIColor *customBlackColor();
 UIColor *lightBlueColor();
 UIColor *lightDarkBlueColor();
 UIColor *lightDarkBlueColorForGradient();
+UIColor *lightBlackColor();
 
 
 typedef NS_ENUM(NSInteger,PinType){
