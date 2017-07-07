@@ -293,7 +293,7 @@
     UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
     UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
     UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
-    [controller setControllerForNews:news forSend:send forWallet:profile forProfile:wallet];
+    [controller setControllerForNews:news forSend:send forWallet:wallet forProfile:profile];
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
     controller.outputDelegate = coordinator;
     self.tabCoordinator = coordinator;
@@ -321,7 +321,7 @@
     UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
     UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
     UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
-    [controller setControllerForNews:news forSend:send forWallet:profile forProfile:wallet];
+    [controller setControllerForNews:news forSend:send forWallet:wallet forProfile:profile];
     controller.outputDelegate = self.tabCoordinator;
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
     self.tabCoordinator = coordinator;

@@ -20,10 +20,10 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [self setTintColor:customBlueColor()];
+        [self setTintColor:textFieldWithLinePlaceholderColor()];
         _currentHeight = 1;
         if (self.placeholder) {
-            self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:@{NSForegroundColorAttributeName: customBlueColor()}];
+            self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:@{NSForegroundColorAttributeName: textFieldWithLinePlaceholderColor()}];
         }
     }
     return self;
@@ -38,7 +38,7 @@
     
     if (!_lineView) {
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectZero];
-        lineView.backgroundColor = customBlueColor();
+        lineView.backgroundColor = textFieldUnderlineColorDeselected();
         _lineView = lineView;
         [self addSubview:lineView];
     }
@@ -48,7 +48,7 @@
 
 - (BOOL)becomeFirstResponder {
     
-    self.lineView.backgroundColor = customBlueColor();
+    self.lineView.backgroundColor = textFieldUnderlineColorSelected();
     self.currentHeight = 2;
     [self setNeedsLayout];
     return [super becomeFirstResponder];
@@ -56,7 +56,7 @@
 
 - (BOOL)resignFirstResponder {
     
-    self.lineView.backgroundColor = customBlueColor();
+    self.lineView.backgroundColor = textFieldUnderlineColorDeselected();
     self.currentHeight = 1;
     return [super resignFirstResponder];
 }

@@ -34,7 +34,7 @@
                    wallet:(UIViewController*)walletController
                   profile:(UIViewController*)profileController {
     
-    [self setViewControllers:@[profileController,walletController,newsController,sendController] animated:YES];
+    [self setViewControllers:@[walletController,profileController,newsController,sendController] animated:YES];
     
     profileController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Profile", "Tabs") image:[UIImage imageNamed:@"profile"] tag:0];
     walletController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Wallet", "Tabs") image:[UIImage imageNamed:@"history"] tag:1];
