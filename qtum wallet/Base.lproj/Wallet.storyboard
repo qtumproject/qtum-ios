@@ -377,16 +377,19 @@
                                                                 <constraint firstAttribute="height" constant="1" id="jbe-c5-5QI"/>
                                                             </constraints>
                                                         </view>
-                                                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="hUm-UZ-QBT" customClass="CustomPageControl">
-                                                            <rect key="frame" x="176.5" y="126.5" width="23" height="37"/>
-                                                            <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </pageControl>
+                                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="40" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="VLp-Qx-3qW" customClass="PageControlDark">
+                                                            <rect key="frame" x="167.5" y="138.5" width="40" height="9"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="9" id="Aia-uJ-6ti"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="sO9-7I-q20" firstAttribute="top" secondItem="M33-8G-bPe" secondAttribute="top" constant="86" id="1jU-up-xvx"/>
+                                                        <constraint firstItem="aew-N9-OcZ" firstAttribute="top" secondItem="VLp-Qx-3qW" secondAttribute="bottom" constant="16" id="24S-PZ-x1E"/>
                                                         <constraint firstItem="Qdv-Gk-oJt" firstAttribute="top" secondItem="M33-8G-bPe" secondAttribute="top" constant="56" id="4Pw-mj-3o3"/>
-                                                        <constraint firstItem="hUm-UZ-QBT" firstAttribute="centerX" secondItem="M33-8G-bPe" secondAttribute="centerX" id="4pg-wH-2Ab"/>
                                                         <constraint firstItem="THj-x2-OrV" firstAttribute="leading" secondItem="M33-8G-bPe" secondAttribute="leading" id="6rf-do-3Zc"/>
                                                         <constraint firstAttribute="trailing" secondItem="9fb-mV-8Xf" secondAttribute="trailing" constant="45" id="95X-Dq-RkR"/>
                                                         <constraint firstItem="9fb-mV-8Xf" firstAttribute="top" secondItem="cKW-Ii-4vg" secondAttribute="bottom" constant="1" id="CR7-Xs-atc"/>
@@ -394,7 +397,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="THj-x2-OrV" secondAttribute="bottom" constant="5" id="KYf-Ni-Vih"/>
                                                         <constraint firstAttribute="bottom" secondItem="aew-N9-OcZ" secondAttribute="bottom" constant="47" id="LGY-SZ-MiJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="cKW-Ii-4vg" secondAttribute="trailing" constant="45" id="Pcx-EX-eHx"/>
-                                                        <constraint firstItem="aew-N9-OcZ" firstAttribute="top" secondItem="hUm-UZ-QBT" secondAttribute="bottom" id="Rlz-N9-kDz"/>
+                                                        <constraint firstItem="VLp-Qx-3qW" firstAttribute="centerX" secondItem="M33-8G-bPe" secondAttribute="centerX" id="QrW-G9-Lyr"/>
                                                         <constraint firstItem="YS4-QT-iHA" firstAttribute="top" secondItem="M33-8G-bPe" secondAttribute="top" constant="107" id="Um8-LA-poG"/>
                                                         <constraint firstAttribute="trailing" secondItem="aew-N9-OcZ" secondAttribute="trailing" id="Umv-kV-LU7"/>
                                                         <constraint firstAttribute="bottom" secondItem="9fb-mV-8Xf" secondAttribute="bottom" constant="7" id="WAx-YD-eof"/>
@@ -425,7 +428,7 @@
                                             <outlet property="availableTitleLabel" destination="Qdv-Gk-oJt" id="IOd-yQ-ngp"/>
                                             <outlet property="availableTopConstraint" destination="jEb-gU-pMh" id="7j9-uO-InE"/>
                                             <outlet property="notConfirmedTitleLabel" destination="YS4-QT-iHA" id="CjA-y3-ZTS"/>
-                                            <outlet property="pageControl" destination="hUm-UZ-QBT" id="yUw-6r-3Of"/>
+                                            <outlet property="pageControl" destination="VLp-Qx-3qW" id="QSw-J8-ywn"/>
                                             <outlet property="separatorView" destination="aew-N9-OcZ" id="Y7y-vR-crp"/>
                                             <outlet property="showAddresButton" destination="THj-x2-OrV" id="GQZ-44-Vy1"/>
                                             <outlet property="unconfirmedCenterConsctraint" destination="yM9-3N-EZh" id="YN2-Bs-87f"/>

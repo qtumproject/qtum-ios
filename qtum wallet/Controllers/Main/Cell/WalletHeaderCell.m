@@ -26,6 +26,8 @@
     self.valueLabel.text = [NSString stringWithFormat:@"%f",wallet.balance];
     self.unconfirmedValue.text = [NSString stringWithFormat:@"%f",wallet.unconfirmedBalance];
     self.spendable = wallet;
+    
+    [self.pageControl setPagesCount:2];
 }
 
 - (void)setCellType:(HeaderCellType)type{

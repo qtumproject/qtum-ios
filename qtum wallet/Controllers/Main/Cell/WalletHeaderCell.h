@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WalletCoordinator.h"
-#import "CustomPageControl.h"
+#import "PageControl.h"
 #import "AnimatedLabelTableViewCell.h"
 
 typedef enum {
@@ -25,7 +25,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressValueLabel;
 @property (weak, nonatomic) IBOutlet UIButton *showAddresButton;
-@property (weak, nonatomic) IBOutlet CustomPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet PageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UILabel *notConfirmedTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *separatorView;
 @property (weak, nonatomic) IBOutlet UILabel *availableTitleLabel;
