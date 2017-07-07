@@ -15,4 +15,6 @@
 @property (weak,nonatomic) id <TabbarOutputDelegate> outputDelegate;
 @property (assign,nonatomic) BOOL isReload;
 
+-(void)storeSendReference:(UIViewController*)sendController;
+
 @end

@@ -11,7 +11,7 @@
 #import "NewsNavigationController.h"
 #import "ProfileNavigationCoordinator.h"
 #import "UIViewController+Extension.h"
-#import "TabBarController.h"
+#import "TabBarControllerDark.h"
 #import "WalletNameViewController.h"
 #import "LoginViewController.h"
 #import "FirstAuthViewController.h"
@@ -98,8 +98,8 @@
     return nav;
 }
 
--(UIViewController*)createTabFlow{
-    TabBarController* tabBar = [TabBarController new];
+-(UITabBarController <TabbarOutput>*)createTabFlow {
+    TabBarControllerDark* tabBar = [TabBarControllerDark new];
     return tabBar;
 }
 

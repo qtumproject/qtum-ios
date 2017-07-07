@@ -23,14 +23,21 @@
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.delegate = self;
-    [self configTabs];
-    [self configTabBar];
-    
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)setControllerForNews:(UIViewController*)newsController
+                    forSend:(UIViewController*)sendController
+                  forWallet:(UIViewController*)walletController
+                 forProfile:(UIViewController*)profileController {
+    
+    [self setViewControllers:@[walletController,profileController,newsController,sendController] animated:YES];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
     //select controller
     if ([self.customizableViewControllers.firstObject isKindOfClass:[UINavigationController class]] && !self.isReload) {
@@ -39,34 +46,6 @@
 }
 
 #pragma mark - Configuration
-
--(void)configTabBar{
-    self.tabBar.translucent = NO;
-    self.tabBar.tintColor =  customBlueColor();
-    self.tabBar.barTintColor = customBlackColor();
-}
-
--(void)configTabs {
-    
-    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];
-    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
-    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
-    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
-    
-    [self setViewControllers:@[wallet,profile,news,send] animated:YES];
-
-    profile.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Profile", "Tabs") image:[UIImage imageNamed:@"profile"] tag:0];
-    wallet.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Wallet", "Tabs") image:[UIImage imageNamed:@"history"] tag:1];
-    news.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"News", "Tabs") image:[UIImage imageNamed:@"news"] tag:2];
-    send.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Send", "Tabs") image:[UIImage imageNamed:@"send"] tag:3];
-    
-    [profile.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
-    [wallet.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
-    [news.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
-    [send.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
-    
-    [self storeSendReference:send];
-}
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     
@@ -85,7 +64,8 @@
     }
 }
 
--(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount{
+-(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount {
+    
     self.selectedIndex = 3;
     [self.paymentOutput setAdress:adress andValue:amount];
 }

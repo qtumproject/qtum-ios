@@ -54,6 +54,8 @@
 @protocol NewPaymentOutput;
 @protocol WalletOutput;
 @protocol TokenListOutput;
+@protocol TabbarOutput;
+
 
 @interface ControllersFactory : NSObject
 
@@ -121,6 +123,6 @@
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
--(UIViewController*)createTabFlow;
+-(UITabBarController <TabbarOutput>*)createTabFlow;
 
 @end

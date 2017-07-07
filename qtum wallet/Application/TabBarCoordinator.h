@@ -25,7 +25,7 @@
 
 @property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
-- (instancetype)initWithTabBarController:(UITabBarController*)tabBarController;
+- (instancetype)initWithTabBarController:(UITabBarController<TabbarOutput>*)tabBarController;
 
 - (void)startFromSendWithAddress:(NSString*)address andAmount:(NSString*) amount;
 - (void)showControllerByIndex:(NSInteger)index;

@@ -24,7 +24,7 @@
 
 @implementation TabBarCoordinator
 
--(instancetype)initWithTabBarController:(TabBarController*)tabBarController{
+-(instancetype)initWithTabBarController:(UITabBarController<TabbarOutput>*)tabBarController{
     self = [super init];
     if (self) {
         _tabbarOutput = tabBarController;
@@ -54,6 +54,7 @@
         [self addDependency:coordinator];
     }
 }
+
 -(void)didSelecteSendTabWithController:(UIViewController*)controller{
     
     if (!self.sendAlreadyStarted) {
@@ -65,6 +66,7 @@
         [self checkTabsController:controller];
     }
 }
+
 -(void)didSelecteProfileTabWithController:(UIViewController*)controller{
     
     if (!self.profileAlreadyStarted) {

@@ -16,5 +16,10 @@
 @property (assign,nonatomic) BOOL isReload;
 
 -(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount;
+-(void)setControllerForNews:(UIViewController*)newsController
+                    forSend:(UIViewController*)sendController
+                  forWallet:(UIViewController*)walletController
+                 forProfile:(UIViewController*)profileController;
+
 
 @end
