@@ -11,5 +11,7 @@
 @protocol LoginViewOutput <NSObject>
 
 -(void)applyFailedPasswordAction;
+-(void)startEditing;
+-(void)stopEditing;
 
 @end
