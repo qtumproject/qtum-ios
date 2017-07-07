@@ -9,6 +9,7 @@
 #import "WalletCoordinator.h"
 
 #import "WalletOutput.h"
+#import "BalancePageOutput.h"
 
 #import "WalletTableSource.h"
 #import "TabBarCoordinator.h"
@@ -20,7 +21,6 @@
 #import "TokenDetailsTableSource.h"
 #import "QRCodeViewController.h"
 
-#import "BalancePageViewController.h"
 #import "WalletNavigationController.h"
 #import "TokenListViewController.h"
 #import "TokenFunctionViewController.h"
@@ -35,7 +35,7 @@
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
-@property (strong, nonatomic) BalancePageViewController* pageViewController;
+@property (strong, nonatomic) NSObject<BalancePageOutput>* pageViewController;
 @property (weak, nonatomic) NSObject<WalletOutput> *walletViewController;
 @property (weak, nonatomic) TokenListViewController* tokenController;
 @property (weak, nonatomic) TokenDetailsViewController *tokenDetailsViewController;
@@ -98,14 +98,14 @@
     controller.delegate = self;
     self.tokenController = tokenController;
     
-    self.pageViewController = self.navigationController.viewControllers[0];
+    self.pageViewController = (NSObject<BalancePageOutput> *)self.navigationController.viewControllers[0];
     self.pageViewController.controllers = @[controller,tokenController];
     [self.pageViewController setScrollEnable:[[ContractManager sharedInstance] allTokens].count > 0];
 }
 
 #pragma mark - WalletCoordinatorDelegate
 
--(void)showAddressInfoWithSpendable:(id <Spendable>) spendable{
+-(void)showAddressInfoWithSpendable:(id <Spendable>) spendable {
     
     RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
     vc.wallet = spendable;

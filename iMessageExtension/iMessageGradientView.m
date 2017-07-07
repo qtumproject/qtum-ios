@@ -6,9 +6,9 @@
 //  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
-#import "GradientView.h"
+#import "iMessageGradientView.h"
 
-@interface GradientView ()
+@interface iMessageGradientView ()
 
 @property (nonatomic) CAGradientLayer *gradientLayer;
 @property (strong, nonatomic) UIColor* fromColor;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation GradientView
+@implementation iMessageGradientView
 
 - (void)layoutSubviews
 {

@@ -7,17 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Paginationable.h"
-#import "WalletCoordinator.h"
+#import "BalancePageOutput.h"
+#import "Presentable.h"
 
-@interface BalancePageViewController : UIPageViewController 
+@interface BalancePageViewController : UIPageViewController  <BalancePageOutput, Presentable>
 
 @property (copy, nonatomic) NSArray <UIViewController <Paginationable>*>* controllers;
-@property (weak,nonatomic) id <WalletCoordinatorDelegate> coordinatorDelegate;
+@property (nonatomic, readonly) NSInteger currentIndex;
 
-- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;
-- (void)scrollToRootIfNeededAnimated:(BOOL)animated;
-- (void)setScrollingToTokensAvailableIfNeeded;
-- (void)setScrollEnable:(BOOL)enable;
+- (void)changeCurrentIndex:(NSInteger)index;
 
 @end

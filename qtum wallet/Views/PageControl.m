@@ -128,7 +128,7 @@
             
             [views setObject:view forKey:first];
             [views setObject:[self.pagesItems objectAtIndex:i + 1] forKey:second];
-            [widthConstraintString appendString:[NSString stringWithFormat:@"|-0-[%@]-space-[%@]", first, second]];
+            [widthConstraintString appendString:[NSString stringWithFormat:@"H:|-0-[%@]-space-[%@]", first, second]];
         } else if (i == self.pagesItems.count - 1) {
             [widthConstraintString appendString:[NSString stringWithFormat:@"-0-|"]];
         } else {

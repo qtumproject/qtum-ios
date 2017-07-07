@@ -19,7 +19,7 @@
 + (UIViewController*) controllerInStoryboard:(NSString*) storyboard withIdentifire:(NSString*) identifire {
     
     NSMutableString *mutString = [identifire mutableCopy];
-    if ([identifire isEqualToString:@"NewPayment"] || [identifire isEqualToString:@"WalletViewController"]) {
+    if ([identifire isEqualToString:@"NewPayment"] || [identifire isEqualToString:@"WalletViewController"] || [identifire isEqualToString:@"BalancePageViewController"]) {
         if ([NSUserDefaults isDarkSchemeSetting]) {
             [mutString appendString:@"Dark"];
         }else{

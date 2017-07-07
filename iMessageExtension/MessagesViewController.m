@@ -7,7 +7,7 @@
 //
 
 #import "MessagesViewController.h"
-#import "GradientView.h"
+#import "iMessageGradientView.h"
 
 @interface MessagesViewController () <UITextFieldDelegate>
 

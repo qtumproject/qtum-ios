@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, ColorType){
     Green
 };
 
-@interface GradientView : UIView
+@interface iMessageGradientView : UIView
 
 @property (assign,nonatomic) ColorType colorType;
 

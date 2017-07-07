@@ -31,7 +31,6 @@
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
 #import "LanguageViewController.h"
-#import "BalancePageViewController.h"
 #import "TokenListViewController.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
@@ -60,6 +59,7 @@
 
 #import "NewPaymentOutput.h"
 #import "WalletOutput.h"
+#import "BalancePageOutput.h"
 
 @implementation ControllersFactory
 
@@ -106,9 +106,8 @@
 
 -(UINavigationController*)walletFlowTab {
     
-    BalancePageViewController* controller = [[BalancePageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    controller.view.backgroundColor = customBlackColor();
-    WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:controller];
+    NSObject<BalancePageOutput> *controller = (NSObject<BalancePageOutput>*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"BalancePageViewController"];
+    WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:[controller toPresente]];
     return nav;
 }
 
