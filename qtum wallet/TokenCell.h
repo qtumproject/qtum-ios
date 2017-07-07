@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString* tokenCellIdentifire = @"TokenCellIdentifire";
+static NSString* tokenCellIdentifire = @"TokenCell";
 
 @interface TokenCell : UITableViewCell
 
--(void)setupWithObject:(id)object;
+@property (weak, nonatomic) IBOutlet UILabel *tokenName;
+@property (weak, nonatomic) IBOutlet UILabel *mainSymbol;
+@property (weak, nonatomic) IBOutlet UILabel *symbol;
+@property (weak, nonatomic) IBOutlet UILabel *mainValue;
+@property (weak, nonatomic) IBOutlet UILabel *value;
+
+- (void)setupWithObject:(id)object;
+- (void)changeHighlight:(BOOL)value;
 
 @end

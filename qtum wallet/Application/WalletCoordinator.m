@@ -10,6 +10,7 @@
 
 #import "WalletOutput.h"
 #import "BalancePageOutput.h"
+#import "TokenListOutput.h"
 
 #import "WalletTableSource.h"
 #import "TabBarCoordinator.h"
@@ -31,13 +32,13 @@
 #import "NSString+Extension.h"
 #import "TransactionManager.h"
 
-@interface WalletCoordinator () <TokenListViewControllerDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
 @property (strong, nonatomic) NSObject<BalancePageOutput>* pageViewController;
 @property (weak, nonatomic) NSObject<WalletOutput> *walletViewController;
-@property (weak, nonatomic) TokenListViewController* tokenController;
+@property (weak, nonatomic) NSObject<TokenListOutput> *tokenController;
 @property (weak, nonatomic) TokenDetailsViewController *tokenDetailsViewController;
 
 @property (assign, nonatomic) BOOL isNewDataLoaded;
@@ -92,14 +93,14 @@
     controller.tableSource = self.delegateDataSource;
     self.walletViewController = controller;
     
-    TokenListViewController* tokenController = (TokenListViewController*)[[ControllersFactory sharedInstance] createTokenListViewController];
+    NSObject<TokenListOutput>* tokenController = [[ControllersFactory sharedInstance] createTokenListViewController];
     tokenController.tokens = [[ContractManager sharedInstance] allActiveTokens];
     tokenController.delegate = self;
     controller.delegate = self;
     self.tokenController = tokenController;
     
     self.pageViewController = (NSObject<BalancePageOutput> *)self.navigationController.viewControllers[0];
-    self.pageViewController.controllers = @[controller,tokenController];
+    self.pageViewController.controllers = @[controller, tokenController];
     [self.pageViewController setScrollEnable:[[ContractManager sharedInstance] allTokens].count > 0];
 }
 
@@ -135,6 +136,8 @@
     controller.item = item;
     [self.navigationController pushViewController:controller animated:YES];
 }
+
+#pragma mark - TokenListOutputDelegate
 
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
 

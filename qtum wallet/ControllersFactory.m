@@ -31,7 +31,6 @@
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
 #import "LanguageViewController.h"
-#import "TokenListViewController.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "TemplateTokenViewController.h"
@@ -60,6 +59,7 @@
 #import "NewPaymentOutput.h"
 #import "WalletOutput.h"
 #import "BalancePageOutput.h"
+#import "TokenListOutput.h"
 
 @implementation ControllersFactory
 
@@ -203,8 +203,8 @@
     return controller;
 }
 
--(TokenListViewController*)createTokenListViewController{
-    TokenListViewController* controller = (TokenListViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenListViewController"];
+-(NSObject<TokenListOutput> *)createTokenListViewController{
+    NSObject<TokenListOutput> *controller = (NSObject<TokenListOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenListViewController"];
     return controller;
 }
 

@@ -7,21 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Contract.h"
-#import "WalletCoordinator.h"
+#import "TokenListOutput.h"
 
-@protocol TokenListViewControllerDelegate <NSObject>
+@interface TokenListViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource, TokenListOutput>
 
-@required
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
-
-@end
-
-@interface TokenListViewController : BaseViewController
-
-@property (copy, nonatomic) NSArray<Contract*>* tokens;
-@property (weak,nonatomic) id <TokenListViewControllerDelegate> delegate;
-
--(void)reloadTable;
+@property (copy, nonatomic) NSArray<Contract*> *tokens;
+@property (weak, nonatomic) id <TokenListOutputDelegate> delegate;
 
 @end

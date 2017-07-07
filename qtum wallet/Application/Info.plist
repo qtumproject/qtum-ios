@@ -20,6 +20,10 @@
 	<string>We need your camera to scan QR Code</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.9</string>
+	<key>UIMainStoryboardFile</key>
+	<string>SplashLight</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -36,10 +40,6 @@
 	</dict>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>0.9</string>
-	<key>UIMainStoryboardFile</key>
-	<string>SplashLight</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -66,6 +66,7 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>proximanova-regitalic.otf</string>
 		<string>proximanova-semibold.otf</string>
 		<string>proximanova-regular.otf</string>
 		<string>proximanova-light.otf</string>

@@ -9,15 +9,12 @@
 #import "TokenListViewController.h"
 #import "TokenCell.h"
 #import "QRCodeManager.h"
-#import "PageControl.h"
 
 NSString *const ShareContractTokensText = @"It's my tokens";
 
-@interface TokenListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TokenListViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
-@property (weak, nonatomic) IBOutlet PageControl *pageControl;
 
 @end
 
@@ -26,9 +23,6 @@ NSString *const ShareContractTokensText = @"It's my tokens";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView reloadData];
-    
-    [self.pageControl setPagesCount:2];
-    [self.pageControl setSelectedPage:1];
 }
 
 
@@ -43,14 +37,26 @@ NSString *const ShareContractTokensText = @"It's my tokens";
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     [self.delegate didSelectTokenIndexPath:indexPath withItem:self.tokens[indexPath.row]];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 46;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { return 0; }
+
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TokenCell *cell = (TokenCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:YES];
 }
 
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TokenCell *cell = (TokenCell*)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:NO];
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -58,11 +64,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
     return self.tokens.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TokenCell* cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
-    [cell setupWithObject:self.tokens[indexPath.row]];
-    return cell;
-}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { return nil; }
 
 #pragma mark - Actions
 

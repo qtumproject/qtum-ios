@@ -244,6 +244,11 @@
 		E752204B1F0E70E60028D152 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E752204A1F0E70E60028D152 /* PageControl.m */; };
 		E760F4911F0F6D8B0056D042 /* BalancePageViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4901F0F6D8B0056D042 /* BalancePageViewControllerDark.m */; };
 		E760F4941F0F6DA80056D042 /* BalancePageViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4931F0F6DA80056D042 /* BalancePageViewControllerLight.m */; };
+		E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4991F0F89610056D042 /* TokenListViewControllerDark.m */; };
+		E760F49D1F0F89730056D042 /* TokenListViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F49C1F0F89730056D042 /* TokenListViewControllerLight.m */; };
+		E760F4A11F0F8E8F0056D042 /* proximanova-regitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E760F4A01F0F8E8F0056D042 /* proximanova-regitalic.otf */; };
+		E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4A31F0F8F890056D042 /* TokenCellDark.m */; };
+		E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4A61F0F8F930056D042 /* TokenCellLight.m */; };
 		E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */; };
 		E784F8B41F01556800A513BF /* QStore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E784F8B31F01556800A513BF /* QStore.storyboard */; };
 		E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8B71F015B7100A513BF /* QStoreViewController.m */; };
@@ -870,6 +875,17 @@
 		E760F4921F0F6DA80056D042 /* BalancePageViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancePageViewControllerLight.h; sourceTree = "<group>"; };
 		E760F4931F0F6DA80056D042 /* BalancePageViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancePageViewControllerLight.m; sourceTree = "<group>"; };
 		E760F4951F0F6DC90056D042 /* BalancePageOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BalancePageOutput.h; sourceTree = "<group>"; };
+		E760F4981F0F89610056D042 /* TokenListViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenListViewControllerDark.h; sourceTree = "<group>"; };
+		E760F4991F0F89610056D042 /* TokenListViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenListViewControllerDark.m; sourceTree = "<group>"; };
+		E760F49B1F0F89730056D042 /* TokenListViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenListViewControllerLight.h; sourceTree = "<group>"; };
+		E760F49C1F0F89730056D042 /* TokenListViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenListViewControllerLight.m; sourceTree = "<group>"; };
+		E760F49E1F0F89880056D042 /* TokenListOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokenListOutput.h; sourceTree = "<group>"; };
+		E760F49F1F0F89980056D042 /* TokenListOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokenListOutputDelegate.h; sourceTree = "<group>"; };
+		E760F4A01F0F8E8F0056D042 /* proximanova-regitalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-regitalic.otf"; sourceTree = SOURCE_ROOT; };
+		E760F4A21F0F8F890056D042 /* TokenCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenCellDark.h; sourceTree = "<group>"; };
+		E760F4A31F0F8F890056D042 /* TokenCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenCellDark.m; sourceTree = "<group>"; };
+		E760F4A51F0F8F930056D042 /* TokenCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenCellLight.h; sourceTree = "<group>"; };
+		E760F4A61F0F8F930056D042 /* TokenCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenCellLight.m; sourceTree = "<group>"; };
 		E777786A1EF3E54E00948682 /* BTCAddress+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCAddress+Extension.h"; sourceTree = "<group>"; };
 		E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Extension.m"; sourceTree = "<group>"; };
 		E784F8B31F01556800A513BF /* QStore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QStore.storyboard; sourceTree = "<group>"; };
@@ -1096,7 +1112,7 @@
 				E760F48E1F0F6CAA0056D042 /* BalancePageOutput */,
 				E7881B781F0BDC3400BD6AB2 /* WalletOutput */,
 				E73D36EE1ECF14AA009173BD /* TokenDetails */,
-				B3827DDA1ECF28F300E500DE /* Token */,
+				B3827DDA1ECF28F300E500DE /* TokenListOutput */,
 				B33601791E963A0500243A21 /* History Item  */,
 				B3DD275E1E681AA500BB0635 /* WalletCoordinator.h */,
 				B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */,
@@ -1434,14 +1450,20 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		B3827DDA1ECF28F300E500DE /* Token */ = {
+		B3827DDA1ECF28F300E500DE /* TokenListOutput */ = {
 			isa = PBXGroup;
 			children = (
 				B3827DE11ECF4ED500E500DE /* Cell */,
+				E760F49E1F0F89880056D042 /* TokenListOutput.h */,
+				E760F49F1F0F89980056D042 /* TokenListOutputDelegate.h */,
 				B3827DDE1ECF292E00E500DE /* TokenListViewController.h */,
 				B3827DDF1ECF292E00E500DE /* TokenListViewController.m */,
+				E760F4981F0F89610056D042 /* TokenListViewControllerDark.h */,
+				E760F4991F0F89610056D042 /* TokenListViewControllerDark.m */,
+				E760F49B1F0F89730056D042 /* TokenListViewControllerLight.h */,
+				E760F49C1F0F89730056D042 /* TokenListViewControllerLight.m */,
 			);
-			name = Token;
+			name = TokenListOutput;
 			sourceTree = "<group>";
 		};
 		B3827DE11ECF4ED500E500DE /* Cell */ = {
@@ -1449,6 +1471,10 @@
 			children = (
 				B3827DD71ECF28EE00E500DE /* TokenCell.h */,
 				B3827DD81ECF28EE00E500DE /* TokenCell.m */,
+				E760F4A21F0F8F890056D042 /* TokenCellDark.h */,
+				E760F4A31F0F8F890056D042 /* TokenCellDark.m */,
+				E760F4A51F0F8F930056D042 /* TokenCellLight.h */,
+				E760F4A61F0F8F930056D042 /* TokenCellLight.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -2053,6 +2079,7 @@
 		E7881B0E1F0BB7A800BD6AB2 /* FontsLight */ = {
 			isa = PBXGroup;
 			children = (
+				E760F4A01F0F8E8F0056D042 /* proximanova-regitalic.otf */,
 				E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */,
 				E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */,
 				E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */,
@@ -2795,6 +2822,7 @@
 				E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
+				E760F4A11F0F8E8F0056D042 /* proximanova-regitalic.otf in Resources */,
 				E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 				B32EEC661EB3545700512FED /* Send.storyboard in Resources */,
 				B32EEC7A1EB3549300512FED /* Pin.storyboard in Resources */,
@@ -2946,6 +2974,7 @@
 				E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */,
 				B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */,
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
+				E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
@@ -2980,6 +3009,7 @@
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
+				E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */,
 				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
 				B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */,
 				E70353151F03AC6D004ECCC9 /* QStoreListTableViewCell.m in Sources */,
@@ -3034,6 +3064,7 @@
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
+				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
 				E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
@@ -3163,6 +3194,7 @@
 				B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */,
 				B35130681E49DF910048A28C /* ImageLoader.m in Sources */,
 				E784F8BE1F015CE400A513BF /* QStoreCollectionViewCell.m in Sources */,
+				E760F49D1F0F89730056D042 /* TokenListViewControllerLight.m in Sources */,
 				B3827DEA1ED2C74900E500DE /* TokenFunctionDetailViewController.m in Sources */,
 				E713A4811EEE9FF800A2FA40 /* RestoreContractsViewController.m in Sources */,
 				B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */,
