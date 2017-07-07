@@ -77,7 +77,7 @@
     if (self.selectedIndex == 0) {
         [self.outputDelegate didSelecteWalletTabWithController:viewController];
     }else if (self.selectedIndex == 1){
-        //[self.coordinatorDelegate profileTabDidSelectedWithController:viewController];
+        [self.outputDelegate didSelecteProfileTabWithController:viewController];
     }else if (self.selectedIndex == 2){
         [self.outputDelegate didSelecteNewsTabWithController:viewController];
     }else if (self.selectedIndex == 3){

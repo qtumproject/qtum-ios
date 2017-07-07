@@ -10,14 +10,8 @@
 #import "ProfileTableViewCell.h"
 #import "SubscribeTokenCoordinator.h"
 #import "ContractCoordinator.h"
-#import "LanguageCoordinator.h"
 
 @interface ProfileViewController ()
-
-@property (weak, nonatomic) UIView* footerView;
-@property (strong, nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
-@property (strong, nonatomic) ContractCoordinator* ContractCoordinator;
-@property (strong, nonatomic) LanguageCoordinator* languageCoordinator;
 
 @end
 
@@ -29,31 +23,19 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    //TODO Make normal coordinator callback
-    self.subscribeCoordinator = nil;
-    self.ContractCoordinator = nil;
 }
 
 #pragma mark - Setters/Getters
 
--(UIView*)footerView{
-    UIView* footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 13)];
-    footer.backgroundColor = [UIColor colorWithRed:36/255. green:41/255. blue:49/255. alpha:1];
-    return footer;
-}
+-(UIView *)getFooterView { return nil; }
 
--(UIView*)highlightedView{
-    UIView * selectedBackgroundView = [[UIView alloc] init];
-    [selectedBackgroundView setBackgroundColor:customRedColor()];
-    return selectedBackgroundView;
-}
+-(UIView *)getHighlightedView { return nil; }
 
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
@@ -67,9 +49,8 @@
             return 2;
             break;
         case 3:
-            return 2;
+            return 3;
             break;
-            
         default:
             return 0;
             break;
@@ -79,14 +60,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ProfileTableViewCell* cell;
     if (indexPath.row > 0) {
-
         if (indexPath.section == 1 && indexPath.row == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:switchCellReuseIdentifire];
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:separatorCellReuseIdentifire];
         }
     } else {
-        
         cell = [tableView dequeueReusableCellWithIdentifier:normalCellReuseIdentifire];
     }
     
@@ -94,7 +73,7 @@
     return cell;
 }
 
--(void)configurateCell:(ProfileTableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath{
+- (void)configurateCell:(ProfileTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     UIImage* image;
     NSString* text;
     if (indexPath.section == 0) {
@@ -129,6 +108,10 @@
             text = NSLocalizedString(@"About", "");
         } else if (indexPath.row == 1) {
             
+            image = [UIImage imageNamed:@"ic-themes"];
+            text = NSLocalizedString(@"Themes", "");
+        }else if (indexPath.row == 2) {
+            
             image = [UIImage imageNamed:@"ic-logout"];
             text = NSLocalizedString(@"Logout", "");
         }
@@ -136,9 +119,8 @@
     
     cell.profileCellImage.image = image;
     cell.profileCellTextLabel.text = text;
-    cell.diclousereImageView.tintColor = customBlueColor();
 
-    [cell setSelectedBackgroundView:[self highlightedView]];
+    [cell setSelectedBackgroundView:[self getHighlightedView]];
 }
 
 #pragma mark UITableViewDelegate
@@ -152,46 +134,26 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [self actionLanguage:nil];
+            [self actionLanguage];
         }
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            [self actionChangePin:nil];
+            [self actionChangePin];
         } else if (indexPath.row == 1) {
-            [self actionWalletBackup:nil];
+            [self actionWalletBackup];
         }
     } else if(indexPath.section == 2) {
         if (indexPath.row == 0) {
-            [self actionCreateToken:nil];
+            [self actionCreateToken];
         } else if (indexPath.row == 1) {
-            [self actionSubscribeToken:nil];
+            [self actionSubscribeToken];
         }
     }else {
         if (indexPath.row == 0) {
-            [self actionAbout:nil];
+            [self actionAbout];
         } else if (indexPath.row == 1) {
-            [[ApplicationCoordinator sharedInstance] logout];
+            [self actionLogout];
         }
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    ProfileTableViewCell* cell = (ProfileTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    if (![cell.reuseIdentifier isEqualToString:switchCellReuseIdentifire]) {
-        cell.profileCellImage.tintColor = customBlackColor();
-        cell.profileCellTextLabel.textColor = customBlackColor();
-        cell.diclousereImageView.tintColor = customBlackColor();
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    ProfileTableViewCell* cell = (ProfileTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    if (![cell.reuseIdentifier isEqualToString:switchCellReuseIdentifire]) {
-        cell.profileCellImage.tintColor = customBlueColor();
-        cell.profileCellTextLabel.textColor = customBlueColor();
-        cell.diclousereImageView.tintColor = customBlueColor();
     }
 }
 
@@ -199,13 +161,9 @@
 
     switch (section) {
         case 0:
-            return self.footerView;
-            break;
         case 1:
-            return self.footerView;
-            break;
         case 2:
-            return self.footerView;
+            return [self getFooterView];
             break;
         default:
             return nil;
@@ -216,15 +174,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     switch (section) {
         case 0:
-            return 13;
-            break;
         case 1:
-            return 13;
-            break;
         case 2:
             return 13;
             break;
-            
         default:
             return 0;
             break;
@@ -233,46 +186,42 @@
 
 #pragma mark - Actions 
 
-- (IBAction)didSwitchFingerprintSettingsAction:(UISwitch*) sender {
-    
-    [[AppSettings sharedInstance] setFingerprintEnabled:sender.isOn];
+- (void)didSwitchFingerprintSettingsAction:(UISwitch *)sender {
+    [self.delegate didChangeFingerprintSettings:sender.isOn];
 }
 
--(IBAction)actionLanguage:(id)sender{
-    
-    self.languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:self.navigationController];
-    [self.languageCoordinator start];
+- (void)actionLanguage {
+    [self.delegate didPressedLanguage];
 }
 
-- (void)saveLanguageCoordinator:(LanguageCoordinator *)languageCoordinator{
-    self.languageCoordinator = languageCoordinator;
-}
-
--(IBAction)actionChangePin:(id)sender{
+- (void)actionChangePin {
+    [self.delegate didPressedChangePin];
     [self performSegueWithIdentifier:@"changePin" sender:nil];
 }
 
--(IBAction)actionWalletBackup:(id)sender{
+- (void)actionWalletBackup {
+    [self.delegate didPressedWalletBackup];
     [self performSegueWithIdentifier:@"exportBrainKey" sender:nil];
 }
 
--(IBAction)actionAbout:(id)sender{
-    
+- (void)actionAbout {
+    [self.delegate didPressedAbout];
 }
 
--(IBAction)actionCreateToken:(id)sender{
-    self.ContractCoordinator = [[ContractCoordinator alloc] initWithNavigationController:self.navigationController];
-    [self.ContractCoordinator start];
+- (void)actionCreateToken {
+    [self.delegate didPressedCreateToken];
 }
 
--(IBAction)actionSubscribeToken:(id)sender{
-    self.subscribeCoordinator = [[SubscribeTokenCoordinator alloc] initWithNavigationController:self.navigationController];
-    [self.subscribeCoordinator start];
+- (void)actionSubscribeToken {
+    [self.delegate didPressedSubscribeToken];
 }
 
-#pragma mark - Unwing seque
+- (void)actionLogout {
+    [self.delegate didPressedLogout];
+}
 
--(IBAction)unwingToProfile:(UIStoryboardSegue *)segue {
+- (void)actionThemes {
+    [self.delegate didPressedThemes];
 }
 
 

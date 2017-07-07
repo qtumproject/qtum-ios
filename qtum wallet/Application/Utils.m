@@ -72,3 +72,8 @@ UIColor *lightBlackColor()
 {
     return [UIColor colorWithRed:83/255.0f green:97/255.0f blue:115/255.0f alpha:1.0f];
 }
+
+UIColor *lightBlackColor78()
+{
+    return [UIColor colorWithRed:78/255.0f green:93/255.0f blue:111/255.0f alpha:1.0f];
+}

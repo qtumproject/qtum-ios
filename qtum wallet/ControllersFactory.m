@@ -60,6 +60,7 @@
 #import "WalletOutput.h"
 #import "BalancePageOutput.h"
 #import "TokenListOutput.h"
+#import "ProfileOutput.h"
 
 @implementation ControllersFactory
 
@@ -86,8 +87,8 @@
 }
 
 -(UIViewController*)profileFlowTab {
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Profile" withIdentifire:nil];
-    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:controller];
+    NSObject<ProfileOutput> *controller = (NSObject<ProfileOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ProfileViewController"];
+    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:[controller toPresente]];
     return nav;
 }
 
