@@ -18,24 +18,26 @@
 
 @end
 
+static NSInteger textfieldsWithButtonHeight = 250;
+
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-//    [self.firstSymbolTextField becomeFirstResponder];
+    self.bottomConstraintForCancelButton.constant = self.view.frame.size.height / 2. - textfieldsWithButtonHeight / 2.;
 }
 
 -(void)didMoveToParentViewController:(UIViewController *)parent {
+    
     [super didMoveToParentViewController:parent];
-    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 
@@ -49,7 +51,8 @@
 }
 #pragma mark - Keyboard
 
--(void)keyboardWillShow:(NSNotification *)sender{
+-(void)keyboardWillShow:(NSNotification *)sender {
+    
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.bottomConstraintForCancelButton.constant = end.size.height;
     [self.view layoutIfNeeded];
@@ -60,6 +63,16 @@
     if (!self.shoudKeboardDismiss) {
         [self.firstSymbolTextField becomeFirstResponder];
     }
+}
+
+-(void)startEditing {
+    
+    [self.firstSymbolTextField becomeFirstResponder];
+}
+
+-(void)stopEditing {
+    
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Configuration
