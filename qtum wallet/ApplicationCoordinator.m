@@ -16,7 +16,6 @@
 #import "TabBarCoordinator.h"
 #import "RPCRequestManager.h"
 #import "LanguageCoordinator.h"
-#import "ProfileViewController.h"
 #import "TemplateManager.h"
 #import "NSUserDefaults+Settings.h"
 #import "NotificationManager.h"
@@ -26,18 +25,22 @@
 #import "AppDelegate.h"
 #import "ConfirmPinCoordinator.h"
 #import "OpenURLManager.h"
+#import "ProfileCoordinator.h"
 
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
 @property (strong,nonatomic) AppDelegate* appDelegate;
-@property (strong,nonatomic) ControllersFactory* controllersFactory;
-@property (strong,nonatomic) UIViewController* viewController;
-@property (weak,nonatomic) UINavigationController* navigationController;
-@property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
 @property (strong,nonatomic) NotificationManager* notificationManager;
+@property (strong,nonatomic) ControllersFactory* controllersFactory;
+
+@property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
 @property (weak,nonatomic) LoginCoordinator* loginCoordinator;
 @property (weak,nonatomic) SecurityCoordinator* securityCoordinator;
+
+@property (strong,nonatomic) UIViewController* viewController;
+@property (weak,nonatomic) UINavigationController* navigationController;
+
 @property (assign, nonatomic) BOOL securityFlowRunning;
 @property (assign, nonatomic) BOOL authFlowRunning;
 @property (assign, nonatomic) BOOL mainFlowRunning;
@@ -265,10 +268,11 @@
     NSInteger profileIndex = 1;
     [self.tabCoordinator showControllerByIndex:profileIndex];
     UINavigationController *vc = (UINavigationController *)[self.tabCoordinator getViewControllerByIndex:profileIndex];
-    ProfileViewController *profile = vc.viewControllers[0];
-    LanguageCoordinator *languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:vc];
-    [profile saveLanguageCoordinator:languageCoordinator];
-    [languageCoordinator startWithoutAnimation];
+    
+    ProfileCoordinator *coordinator = [[ProfileCoordinator alloc] initWithNavigationController:vc];
+    [coordinator start];
+    [self.tabCoordinator addDependency:coordinator];
+    [coordinator showLanguage];
 }
 
 - (void)startFromOpenURLWithAddress:(NSString*) address andAmount:(NSString*) amount {

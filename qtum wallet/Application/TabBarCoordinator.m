@@ -10,6 +10,7 @@
 #import "WalletCoordinator.h"
 #import "NewsCoordinator.h"
 #import "SendCoordinator.h"
+#import "ProfileCoordinator.h"
 #import "AppDelegate.h"
 
 @interface TabBarCoordinator () <NewsCoordinatorDelegate, SendCoordinatorDelegate>
@@ -72,6 +73,10 @@
     if (!self.profileAlreadyStarted) {
         self.profileAlreadyStarted = YES;
         [self checkTabsController:controller];
+        
+        ProfileCoordinator *coordinator = [[ProfileCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
+        [coordinator start];
+        [self addDependency:coordinator];
     }
 }
 
@@ -114,7 +119,6 @@
 #pragma mark - NewsCoordinatorDelegate
 
 -(void)refreshTableViewData {
-
 }
 
 @end

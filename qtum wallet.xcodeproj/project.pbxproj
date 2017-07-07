@@ -145,7 +145,6 @@
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
 		B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */; };
-		B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */; };
 		B3E1591B1ED5A87D00D70A87 /* OnlyDesign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E1591A1ED5A87D00D70A87 /* OnlyDesign.storyboard */; };
 		B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */; };
 		B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */; };
@@ -251,6 +250,9 @@
 		E760F4A11F0F8E8F0056D042 /* proximanova-regitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E760F4A01F0F8E8F0056D042 /* proximanova-regitalic.otf */; };
 		E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4A31F0F8F890056D042 /* TokenCellDark.m */; };
 		E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4A61F0F8F930056D042 /* TokenCellLight.m */; };
+		E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4A91F0FA23D0056D042 /* ProfileCoordinator.m */; };
+		E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4B01F0FAB930056D042 /* ProfileViewControllerDark.m */; };
+		E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */; };
 		E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */; };
 		E784F8B41F01556800A513BF /* QStore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E784F8B31F01556800A513BF /* QStore.storyboard */; };
 		E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8B71F015B7100A513BF /* QStoreViewController.m */; };
@@ -693,8 +695,6 @@
 		B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsCoordinator.m; path = Application/NewsCoordinator.m; sourceTree = "<group>"; };
 		B3DD275E1E681AA500BB0635 /* WalletCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletCoordinator.h; path = Application/WalletCoordinator.h; sourceTree = "<group>"; };
 		B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletCoordinator.m; path = Application/WalletCoordinator.m; sourceTree = "<group>"; };
-		B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCoordinator.h; sourceTree = "<group>"; };
-		B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCoordinator.m; sourceTree = "<group>"; };
 		B3E1591A1ED5A87D00D70A87 /* OnlyDesign.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnlyDesign.storyboard; sourceTree = "<group>"; };
 		B3E159201ED6B1A200D70A87 /* AddNewTokensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTokensViewController.h; sourceTree = "<group>"; };
 		B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTokensViewController.m; sourceTree = "<group>"; };
@@ -892,6 +892,14 @@
 		E760F4A31F0F8F890056D042 /* TokenCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenCellDark.m; sourceTree = "<group>"; };
 		E760F4A51F0F8F930056D042 /* TokenCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenCellLight.h; sourceTree = "<group>"; };
 		E760F4A61F0F8F930056D042 /* TokenCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenCellLight.m; sourceTree = "<group>"; };
+		E760F4A81F0FA23D0056D042 /* ProfileCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCoordinator.h; sourceTree = "<group>"; };
+		E760F4A91F0FA23D0056D042 /* ProfileCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCoordinator.m; sourceTree = "<group>"; };
+		E760F4AB1F0FA4F20056D042 /* ProfileOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileOutput.h; sourceTree = "<group>"; };
+		E760F4AE1F0FA5440056D042 /* ProfileOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileOutputDelegate.h; sourceTree = "<group>"; };
+		E760F4AF1F0FAB930056D042 /* ProfileViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewControllerDark.h; sourceTree = "<group>"; };
+		E760F4B01F0FAB930056D042 /* ProfileViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerDark.m; sourceTree = "<group>"; };
+		E760F4B21F0FABA00056D042 /* ProfileViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewControllerLight.h; sourceTree = "<group>"; };
+		E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerLight.m; sourceTree = "<group>"; };
 		E777786A1EF3E54E00948682 /* BTCAddress+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCAddress+Extension.h"; sourceTree = "<group>"; };
 		E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Extension.m"; sourceTree = "<group>"; };
 		E784F8B31F01556800A513BF /* QStore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QStore.storyboard; sourceTree = "<group>"; };
@@ -1534,26 +1542,21 @@
 			name = "Send Flow";
 			sourceTree = "<group>";
 		};
-		B386F5AE1E1392B1004D231B /* Prifile Flow */ = {
+		B386F5AE1E1392B1004D231B /* Profile Flow */ = {
 			isa = PBXGroup;
 			children = (
+				E760F4AC1F0FA5170056D042 /* ProfileOutput */,
 				E7EA2CB51ED42D9B00AFD5D0 /* Language */,
 				B3F06D0B1E69B55D006341F7 /* Contract */,
 				B3F06D071E699371006341F7 /* Subscribe */,
 				B386F5B21E139C9E004D231B /* Cell */,
-				B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */,
-				B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */,
-				B386F5AF1E1395E5004D231B /* ProfileViewController.h */,
-				B386F5B01E1395E5004D231B /* ProfileViewController.m */,
 			);
-			name = "Prifile Flow";
+			name = "Profile Flow";
 			sourceTree = "<group>";
 		};
 		B386F5B21E139C9E004D231B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */,
-				B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */,
 				B3F06D011E699244006341F7 /* TockenCell.h */,
 				B3F06D021E699244006341F7 /* TockenCell.m */,
 				B32B32E71ECCC4A20081260A /* FinishInputCell.h */,
@@ -2085,6 +2088,33 @@
 			name = BalancePageOutput;
 			sourceTree = "<group>";
 		};
+		E760F4AC1F0FA5170056D042 /* ProfileOutput */ = {
+			isa = PBXGroup;
+			children = (
+				E760F4A81F0FA23D0056D042 /* ProfileCoordinator.h */,
+				E760F4A91F0FA23D0056D042 /* ProfileCoordinator.m */,
+				E760F4AD1F0FA5290056D042 /* Cell */,
+				E760F4AB1F0FA4F20056D042 /* ProfileOutput.h */,
+				E760F4AE1F0FA5440056D042 /* ProfileOutputDelegate.h */,
+				B386F5AF1E1395E5004D231B /* ProfileViewController.h */,
+				B386F5B01E1395E5004D231B /* ProfileViewController.m */,
+				E760F4AF1F0FAB930056D042 /* ProfileViewControllerDark.h */,
+				E760F4B01F0FAB930056D042 /* ProfileViewControllerDark.m */,
+				E760F4B21F0FABA00056D042 /* ProfileViewControllerLight.h */,
+				E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */,
+			);
+			name = ProfileOutput;
+			sourceTree = "<group>";
+		};
+		E760F4AD1F0FA5290056D042 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */,
+				B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		E784F8B51F015B5500A513BF /* QStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -2403,7 +2433,9 @@
 				B31CF7271E126E05000BCF41 /* Auth and Login */,
 				B33EAF011E5B394D006125F3 /* Shared Cells */,
 				B351305E1E49BF720048A28C /* NewsFlow */,
-				B386F5AE1E1392B1004D231B /* Prifile Flow */,
+				B386F5AE1E1392B1004D231B /* Profile Flow */,
+				B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */,
+				B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */,
 				B386F5AD1E1297FF004D231B /* Send Flow */,
 				B31CF7211E125C65000BCF41 /* Pin Flow */,
 				B31CF71B1E1249F9000BCF41 /* Wallet Flow */,
@@ -2556,8 +2588,6 @@
 				B3210D251E0030DB00365FB6 /* Appearance.m */,
 				B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */,
 				B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */,
-				B3DD27611E681AC200BB0635 /* ProfileCoordinator.h */,
-				B3DD27621E681AC200BB0635 /* ProfileCoordinator.m */,
 				E730AB861EE6ACCA00132711 /* iOSSessionManager.h */,
 				E730AB871EE6ACCA00132711 /* iOSSessionManager.m */,
 			);
@@ -3056,7 +3086,6 @@
 				E7396AEC1DDEF7E30002CD47 /* WalletViewController.m in Sources */,
 				B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */,
 				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
-				B3DD27631E681AC200BB0635 /* ProfileCoordinator.m in Sources */,
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
@@ -3154,6 +3183,7 @@
 				B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */,
 				E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */,
 				E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */,
+				E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */,
 				E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
@@ -3210,10 +3240,12 @@
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */,
 				B35130611E49C9930048A28C /* NewsCellModel.m in Sources */,
+				E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */,
 				E79846321F0D2373002A516A /* WalletHeaderCellLight.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
+				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
 				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
 				B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */,
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,
