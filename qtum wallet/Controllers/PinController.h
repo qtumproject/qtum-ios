@@ -25,8 +25,9 @@
 @property (weak,nonatomic) id <PinCoordinator> delegatePin;
 @property (assign,nonatomic) PinType type;
 
--(void)actionIncorrectPin;
--(void)accessPinDenied;
--(void)clearPinTextFields;
+- (void)actionIncorrectPin;
+- (void)accessPinDenied;
+- (void)clearPinTextFields;
+- (void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed;
 
 @end

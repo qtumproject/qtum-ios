@@ -63,7 +63,6 @@
 		B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601821E963BD200243A21 /* HistoryItemHeaderView.m */; };
 		B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601851E963EC800243A21 /* HistoryItemViewController.m */; };
 		B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */; };
-		B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */; };
 		B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */; };
 		B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */; };
 		B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */; };
@@ -162,6 +161,12 @@
 		B3EE8F481F13708500131823 /* ChoseTokenPaymentViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F471F13708500131823 /* ChoseTokenPaymentViewControllerDark.m */; };
 		B3EE8F4B1F13766C00131823 /* QRCodeViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F4A1F13766C00131823 /* QRCodeViewControllerDark.m */; };
 		B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F4D1F13767900131823 /* QRCodeViewControllerLight.m */; };
+		B3EE8F511F13B4CE00131823 /* LoginViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F501F13B4CE00131823 /* LoginViewControllerDark.m */; };
+		B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F531F13B4DF00131823 /* LoginViewControllerLight.m */; };
+		B3EE8F561F13BA7000131823 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */; };
+		B3EE8F571F13BAE000131823 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */; };
+		B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F701F13C4B400131823 /* FirstAuthViewControllerDark.m */; };
+		B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F731F13C4C400131823 /* FirstAuthViewControllerLight.m */; };
 		B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE93711F04E19100550C60 /* SecurityCoordinator.m */; };
 		B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* ContractCoordinator.m */; };
 		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
@@ -315,11 +320,8 @@
 		E7B7585A1EF016FD004AF200 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758591EF016FD004AF200 /* WalletController.m */; };
 		E7B7585F1EF017C5004AF200 /* BalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7585E1EF017C5004AF200 /* BalanceCell.m */; };
 		E7B758601EF01AF2004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
-		E7B758611EF01AF2004AF200 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */; };
 		E7B758621EF01AF3004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
-		E7B758631EF01AF3004AF200 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */; };
 		E7B758641EF01B01004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
-		E7B758651EF01B01004AF200 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */; };
 		E7B758681EF01C75004AF200 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758671EF01C75004AF200 /* HistoryCell.m */; };
 		E7B7586C1EF12D67004AF200 /* SplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7586B1EF12D67004AF200 /* SplashController.m */; };
 		E7B758711EF139F7004AF200 /* WatchWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758701EF139F7004AF200 /* WatchWallet.m */; };
@@ -526,7 +528,6 @@
 		B33601851E963EC800243A21 /* HistoryItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewController.m; sourceTree = "<group>"; };
 		B33601871E96546C00243A21 /* HistoryItemDelegateDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemDelegateDataSource.h; sourceTree = "<group>"; };
 		B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemDelegateDataSource.m; sourceTree = "<group>"; };
-		B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "simplonmono-regular.ttf"; sourceTree = SOURCE_ROOT; };
 		B33BD54D1EBCA11C0076B0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Start.strings; sourceTree = "<group>"; };
 		B33BD5551EBCA6890076B0C1 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
@@ -738,6 +739,29 @@
 		B3EE8F4A1F13766C00131823 /* QRCodeViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewControllerDark.m; sourceTree = "<group>"; };
 		B3EE8F4C1F13767900131823 /* QRCodeViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewControllerLight.h; sourceTree = "<group>"; };
 		B3EE8F4D1F13767900131823 /* QRCodeViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewControllerLight.m; sourceTree = "<group>"; };
+		B3EE8F4F1F13B4CE00131823 /* LoginViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewControllerDark.h; sourceTree = "<group>"; };
+		B3EE8F501F13B4CE00131823 /* LoginViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewControllerDark.m; sourceTree = "<group>"; };
+		B3EE8F521F13B4DF00131823 /* LoginViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewControllerLight.h; sourceTree = "<group>"; };
+		B3EE8F531F13B4DF00131823 /* LoginViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewControllerLight.m; sourceTree = "<group>"; };
+		B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "simplonmono-regular.ttf"; sourceTree = SOURCE_ROOT; };
+		B3EE8F5A1F13BF9200131823 /* FirstAuthOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstAuthOutput.h; sourceTree = "<group>"; };
+		B3EE8F5B1F13BFAA00131823 /* WalletNameOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletNameOutput.h; sourceTree = "<group>"; };
+		B3EE8F5C1F13BFBE00131823 /* RestoreWalletOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreWalletOutput.h; sourceTree = "<group>"; };
+		B3EE8F5D1F13BFD800131823 /* RepeateOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeateOutput.h; sourceTree = "<group>"; };
+		B3EE8F5E1F13BFF000131823 /* CreatePinOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinOutput.h; sourceTree = "<group>"; };
+		B3EE8F5F1F13C00500131823 /* ExportWalletBrandKeyOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportWalletBrandKeyOutput.h; sourceTree = "<group>"; };
+		B3EE8F601F13C0F500131823 /* EnableFingerprintOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnableFingerprintOutput.h; sourceTree = "<group>"; };
+		B3EE8F621F13C12600131823 /* RestoreWalletOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreWalletOutputDelegate.h; sourceTree = "<group>"; };
+		B3EE8F631F13C13600131823 /* RepeateOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeateOutputDelegate.h; sourceTree = "<group>"; };
+		B3EE8F641F13C14600131823 /* FirstAuthOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstAuthOutputDelegate.h; sourceTree = "<group>"; };
+		B3EE8F651F13C15500131823 /* WalletNameOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletNameOutputDelegate.h; sourceTree = "<group>"; };
+		B3EE8F661F13C1AD00131823 /* CreatePinOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinOutputDelegate.h; sourceTree = "<group>"; };
+		B3EE8F671F13C1BD00131823 /* ExportWalletBrandKeyOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportWalletBrandKeyOutputDelegate.h; sourceTree = "<group>"; };
+		B3EE8F681F13C1CA00131823 /* EnableFingerprintOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnableFingerprintOutputDelegate.h; sourceTree = "<group>"; };
+		B3EE8F6F1F13C4B400131823 /* FirstAuthViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstAuthViewControllerDark.h; sourceTree = "<group>"; };
+		B3EE8F701F13C4B400131823 /* FirstAuthViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstAuthViewControllerDark.m; sourceTree = "<group>"; };
+		B3EE8F721F13C4C400131823 /* FirstAuthViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstAuthViewControllerLight.h; sourceTree = "<group>"; };
+		B3EE8F731F13C4C400131823 /* FirstAuthViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstAuthViewControllerLight.m; sourceTree = "<group>"; };
 		B3EE93701F04E19100550C60 /* SecurityCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityCoordinator.h; sourceTree = "<group>"; };
 		B3EE93711F04E19100550C60 /* SecurityCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityCoordinator.m; sourceTree = "<group>"; };
 		B3F06CF51E69879D006341F7 /* ContractCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractCoordinator.h; sourceTree = "<group>"; };
@@ -1221,9 +1245,9 @@
 			isa = PBXGroup;
 			children = (
 				B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */,
-				B33BD54A1EBC6B330076B0C1 /* simplonmono-regular.ttf */,
 				B321F2D91EBB643100C813D0 /* euclidflexmedium.ttf */,
 				B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */,
+				B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */,
 				B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */,
 				B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */,
 				B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */,
@@ -1350,12 +1374,10 @@
 		B33EAF0A1E5C6CA6006125F3 /* Login Flow */ = {
 			isa = PBXGroup;
 			children = (
+				B3EE8F581F13BEF400131823 /* Controllers */,
+				B3EE8F591F13BF0100131823 /* Protocols */,
 				B33EAF0B1E5C6CD2006125F3 /* LoginCoordinator.h */,
 				B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */,
-				B33EAF111E5C70EF006125F3 /* LoginViewController.h */,
-				B33EAF121E5C70EF006125F3 /* LoginViewController.m */,
-				B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */,
-				B346AE201F00ECE300241C61 /* LoginViewOutputDelegate.h */,
 			);
 			name = "Login Flow";
 			sourceTree = "<group>";
@@ -1363,24 +1385,17 @@
 		B33EAF141E5C7BCB006125F3 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				B3EE8F6E1F13C2D800131823 /* ExportWalletBrandKeyOutput */,
+				B3EE8F6D1F13C2C100131823 /* CreatePinOutput */,
+				B3EE8F6C1F13C2AC00131823 /* RepeatePinOutput */,
+				B3EE8F6B1F13C28C00131823 /* RestoreWalletOutput */,
+				B3EE8F6A1F13C27200131823 /* WalletNameOutput */,
+				B3EE8F691F13C24500131823 /* FirstAuthOutput */,
+				B3EE8F611F13C10200131823 /* EnableFingerprintOutput */,
 				B33EAF051E5C5D9A006125F3 /* AuthCoordinator.h */,
 				B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */,
 				B33EAF1E1E5C9FC0006125F3 /* AuthNavigationController.h */,
 				B33EAF1F1E5C9FC0006125F3 /* AuthNavigationController.m */,
-				B33EAF151E5C7D45006125F3 /* FirstAuthViewController.h */,
-				B33EAF161E5C7D45006125F3 /* FirstAuthViewController.m */,
-				B386F5EC1E16403B004D231B /* WalletNameViewController.h */,
-				B386F5ED1E16403B004D231B /* WalletNameViewController.m */,
-				B33EAF181E5C84DF006125F3 /* RestoreWalletViewController.h */,
-				B33EAF191E5C84DF006125F3 /* RestoreWalletViewController.m */,
-				B33EAF1B1E5C9020006125F3 /* RepeateViewController.h */,
-				B33EAF1C1E5C9020006125F3 /* RepeateViewController.m */,
-				B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */,
-				B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */,
-				B33EAF211E5D6955006125F3 /* ExportWalletBrandKeyViewController.h */,
-				B33EAF221E5D6955006125F3 /* ExportWalletBrandKeyViewController.m */,
-				B381CBE01F02872000142252 /* EnableFingerprintViewController.h */,
-				B381CBE11F02872000142252 /* EnableFingerprintViewController.m */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -1686,6 +1701,109 @@
 				B3DD27531E68025200BB0635 /* TabBarCoordinator.m */,
 			);
 			name = Coordinator;
+			sourceTree = "<group>";
+		};
+		B3EE8F581F13BEF400131823 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B33EAF111E5C70EF006125F3 /* LoginViewController.h */,
+				B33EAF121E5C70EF006125F3 /* LoginViewController.m */,
+				B3EE8F4F1F13B4CE00131823 /* LoginViewControllerDark.h */,
+				B3EE8F501F13B4CE00131823 /* LoginViewControllerDark.m */,
+				B3EE8F521F13B4DF00131823 /* LoginViewControllerLight.h */,
+				B3EE8F531F13B4DF00131823 /* LoginViewControllerLight.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B3EE8F591F13BF0100131823 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */,
+				B346AE201F00ECE300241C61 /* LoginViewOutputDelegate.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		B3EE8F611F13C10200131823 /* EnableFingerprintOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B381CBE01F02872000142252 /* EnableFingerprintViewController.h */,
+				B381CBE11F02872000142252 /* EnableFingerprintViewController.m */,
+				B3EE8F601F13C0F500131823 /* EnableFingerprintOutput.h */,
+				B3EE8F681F13C1CA00131823 /* EnableFingerprintOutputDelegate.h */,
+			);
+			name = EnableFingerprintOutput;
+			sourceTree = "<group>";
+		};
+		B3EE8F691F13C24500131823 /* FirstAuthOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B33EAF151E5C7D45006125F3 /* FirstAuthViewController.h */,
+				B33EAF161E5C7D45006125F3 /* FirstAuthViewController.m */,
+				B3EE8F5A1F13BF9200131823 /* FirstAuthOutput.h */,
+				B3EE8F641F13C14600131823 /* FirstAuthOutputDelegate.h */,
+				B3EE8F6F1F13C4B400131823 /* FirstAuthViewControllerDark.h */,
+				B3EE8F701F13C4B400131823 /* FirstAuthViewControllerDark.m */,
+				B3EE8F721F13C4C400131823 /* FirstAuthViewControllerLight.h */,
+				B3EE8F731F13C4C400131823 /* FirstAuthViewControllerLight.m */,
+			);
+			name = FirstAuthOutput;
+			sourceTree = "<group>";
+		};
+		B3EE8F6A1F13C27200131823 /* WalletNameOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B386F5EC1E16403B004D231B /* WalletNameViewController.h */,
+				B386F5ED1E16403B004D231B /* WalletNameViewController.m */,
+				B3EE8F5B1F13BFAA00131823 /* WalletNameOutput.h */,
+				B3EE8F651F13C15500131823 /* WalletNameOutputDelegate.h */,
+			);
+			name = WalletNameOutput;
+			sourceTree = "<group>";
+		};
+		B3EE8F6B1F13C28C00131823 /* RestoreWalletOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B3EE8F5C1F13BFBE00131823 /* RestoreWalletOutput.h */,
+				B3EE8F621F13C12600131823 /* RestoreWalletOutputDelegate.h */,
+				B33EAF181E5C84DF006125F3 /* RestoreWalletViewController.h */,
+				B33EAF191E5C84DF006125F3 /* RestoreWalletViewController.m */,
+			);
+			name = RestoreWalletOutput;
+			sourceTree = "<group>";
+		};
+		B3EE8F6C1F13C2AC00131823 /* RepeatePinOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B33EAF1B1E5C9020006125F3 /* RepeateViewController.h */,
+				B3EE8F5D1F13BFD800131823 /* RepeateOutput.h */,
+				B3EE8F631F13C13600131823 /* RepeateOutputDelegate.h */,
+				B33EAF1C1E5C9020006125F3 /* RepeateViewController.m */,
+			);
+			name = RepeatePinOutput;
+			sourceTree = "<group>";
+		};
+		B3EE8F6D1F13C2C100131823 /* CreatePinOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B3EE8F5E1F13BFF000131823 /* CreatePinOutput.h */,
+				B3EE8F661F13C1AD00131823 /* CreatePinOutputDelegate.h */,
+				B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */,
+				B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */,
+			);
+			name = CreatePinOutput;
+			sourceTree = "<group>";
+		};
+		B3EE8F6E1F13C2D800131823 /* ExportWalletBrandKeyOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B3EE8F5F1F13C00500131823 /* ExportWalletBrandKeyOutput.h */,
+				B3EE8F671F13C1BD00131823 /* ExportWalletBrandKeyOutputDelegate.h */,
+				B33EAF211E5D6955006125F3 /* ExportWalletBrandKeyViewController.h */,
+				B33EAF221E5D6955006125F3 /* ExportWalletBrandKeyViewController.m */,
+			);
+			name = ExportWalletBrandKeyOutput;
 			sourceTree = "<group>";
 		};
 		B3EE936F1F04E0D700550C60 /* Security Flow */ = {
@@ -2854,7 +2972,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
-				E7B758651EF01B01004AF200 /* simplonmono-regular.ttf in Resources */,
 				E7881B351F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				B33EAF931E5EC263006125F3 /* Assets.xcassets in Resources */,
 				E7881B491F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
@@ -2883,7 +3000,6 @@
 				E730AB5A1EE6A5D100132711 /* Assets.xcassets in Resources */,
 				E7881B451F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
 				E7881B271F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
-				E7B758611EF01AF2004AF200 /* simplonmono-regular.ttf in Resources */,
 				E7881B361F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				E730AB581EE6A5D100132711 /* Interface.storyboard in Resources */,
 				E7B758601EF01AF2004AF200 /* simplonmono-medium.ttf in Resources */,
@@ -2895,8 +3011,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3EE8F561F13BA7000131823 /* simplonmono-regular.ttf in Resources */,
 				E7881B281F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
-				E7B758631EF01AF3004AF200 /* simplonmono-regular.ttf in Resources */,
 				E7881B461F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
 				E7881B4B1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 				E730AB741EE6A5D200132711 /* Assets.xcassets in Resources */,
@@ -2909,9 +3025,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3EE8F571F13BAE000131823 /* simplonmono-regular.ttf in Resources */,
 				E7CE63651F028C0600C147B9 /* SelectSearchTypeView.xib in Resources */,
 				E73CF6C31EE2CD370044DF78 /* InformationPopUp.storyboard in Resources */,
-				B33BD54B1EBC6B580076B0C1 /* simplonmono-regular.ttf in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderViewDark.xib in Resources */,
@@ -3132,11 +3248,13 @@
 				E7396AEC1DDEF7E30002CD47 /* WalletViewController.m in Sources */,
 				B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */,
 				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
+				B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */,
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
+				B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */,
 				B381CBE51F0291CB00142252 /* SecurityPopupViewController.m in Sources */,
@@ -3210,6 +3328,7 @@
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
+				B3EE8F511F13B4CE00131823 /* LoginViewControllerDark.m in Sources */,
 				B381CBEA1F029CB200142252 /* SecurityPinView.m in Sources */,
 				B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */,
 				B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */,
@@ -3238,6 +3357,7 @@
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
+				B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */,
 				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */,

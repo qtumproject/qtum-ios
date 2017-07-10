@@ -55,7 +55,7 @@
 @protocol WalletOutput;
 @protocol TokenListOutput;
 @protocol TabbarOutput;
-
+@protocol FirstAuthOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -74,7 +74,7 @@
 -(UIViewController*)createWalletFlowController;
 -(WalletNameViewController*)createWalletNameCreateController;
 -(LoginViewController*)createLoginController;
--(FirstAuthViewController*)createFirstAuthController;
+-(NSObject<FirstAuthOutput>*)createFirstAuthController;
 -(RestoreWalletViewController*)createRestoreWalletController;
 -(CreatePinViewController*)createCreatePinController;
 -(RepeateViewController*)createRepeatePinController;

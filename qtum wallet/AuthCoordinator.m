@@ -15,11 +15,12 @@
 #import "ExportWalletBrandKeyViewController.h"
 #import "EnableFingerprintViewController.h"
 #import "NSUserDefaults+Settings.h"
+#import "FirstAuthOutputDelegate.h"
 
-@interface AuthCoordinator () <FirstAuthViewControllerDelegate, WalletNameViewControllerDelegate, RestoreWalletViewControllerDelegate, CreatePinViewControllerDelegate>
+@interface AuthCoordinator () <FirstAuthOutputDelegate, WalletNameViewControllerDelegate, RestoreWalletViewControllerDelegate, CreatePinViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
-@property (nonatomic, weak) FirstAuthViewController *firstController;
+@property (nonatomic, weak) NSObject<FirstAuthOutput> *firstController;
 @property (nonatomic, weak) WalletNameViewController *createWalletController;
 @property (nonatomic, weak) RestoreWalletViewController *restoreWalletController;
 @property (nonatomic, weak) CreatePinViewController *createPinController;
@@ -49,13 +50,13 @@
 
 -(void)resetToRootAnimated:(BOOL)animated {
 
-    FirstAuthViewController* controller = (FirstAuthViewController*)[[ControllersFactory sharedInstance] createFirstAuthController];
+    NSObject<FirstAuthOutput>* controller = (FirstAuthViewController*)[[ControllersFactory sharedInstance] createFirstAuthController];
     controller.delegate = self;
-    animated ? [self.navigationController popToRootViewControllerAnimated:YES] : [self.navigationController setViewControllers:@[controller]];
+    animated ? [self.navigationController popToRootViewControllerAnimated:YES] : [self.navigationController setViewControllers:@[[controller toPresent]]];
     self.firstController = controller;
 }
 
--(void)gotoCreateWallet{
+-(void)gotoCreateWallet {
     WalletNameViewController* controller = (WalletNameViewController*)[[ControllersFactory sharedInstance] createWalletNameCreateController];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
@@ -103,6 +104,24 @@
     [self gotoCreatePin];
 }
 
+#pragma mark - FirstAuthOutputDelegate
+
+-(void)didLoginPressed {
+    
+    [self.delegate coordinatorRequestForLogin];
+}
+
+-(void)didRestoreButtonPressed {
+    
+    [self gotoRestoreWallet];
+}
+
+-(void)didCreateNewButtonPressed {
+    
+    [self gotoCreateWallet];
+}
+
+
 #pragma mark - AuthCoordinatorDelegate
 
 -(void)didCreatedWalletName:(NSString*)name{
@@ -144,10 +163,7 @@
     }];
 }
 
--(void)didLoginPressed {
-    
-    [self.delegate coordinatorRequestForLogin];
-}
+
 
 -(void)restoreWalletCancelDidPressed{
     [self resetToRootAnimated:YES];
@@ -170,14 +186,6 @@
 -(void)cancelCreateWallet{
     [self resetToRootAnimated:YES];
     self.walletExported = NO;
-}
-
--(void)restoreButtonPressed{
-    [self gotoRestoreWallet];
-}
-
--(void)createNewButtonPressed{
-    [self gotoCreateWallet];
 }
 
 -(void)didExportWallet{

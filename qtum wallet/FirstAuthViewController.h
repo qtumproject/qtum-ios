@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "AuthCoordinator.h"
+#import "FirstAuthOutputDelegate.h"
+#import "FirstAuthOutput.h"
 
-@protocol FirstAuthViewControllerDelegate <NSObject>
+@interface FirstAuthViewController : BaseViewController <FirstAuthOutput>
 
--(void)didLoginPressed;
--(void)restoreButtonPressed;
--(void)createNewButtonPressed;
+@property (weak,nonatomic)id <FirstAuthOutputDelegate> delegate;
 
-@end
-
-@interface FirstAuthViewController : BaseViewController
-
-@property (weak,nonatomic)id <FirstAuthViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIButton *createButton;
+@property (weak, nonatomic) IBOutlet UIButton *restoreButton;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomButtonsOffset;
+@property (weak, nonatomic) IBOutlet UILabel *invitationTextLabel;
 
 @end

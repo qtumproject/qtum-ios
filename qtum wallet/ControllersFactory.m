@@ -63,6 +63,7 @@
 #import "BalancePageOutput.h"
 #import "TokenListOutput.h"
 #import "ProfileOutput.h"
+#import "FirstAuthOutput.h"
 
 @implementation ControllersFactory
 
@@ -90,7 +91,7 @@
 
 -(UIViewController*)profileFlowTab {
     NSObject<ProfileOutput> *controller = (NSObject<ProfileOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ProfileViewController"];
-    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:[controller toPresente]];
+    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:[controller toPresent]];
     return nav;
 }
 
@@ -114,7 +115,7 @@
 -(UINavigationController*)walletFlowTab {
     
     NSObject<BalancePageOutput> *controller = (NSObject<BalancePageOutput>*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"BalancePageViewController"];
-    WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:[controller toPresente]];
+    WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:[controller toPresent]];
     return nav;
 }
 
@@ -140,8 +141,8 @@
     return controller;
 }
 
--(FirstAuthViewController*)createFirstAuthController{
-    FirstAuthViewController* controller = (FirstAuthViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"FirstAuthViewController"];
+-(NSObject<FirstAuthOutput>*)createFirstAuthController{
+    NSObject<FirstAuthOutput>* controller = (FirstAuthViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"FirstAuthViewController"];
     return controller;
 }
 
