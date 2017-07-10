@@ -122,20 +122,28 @@
     for (NSInteger i = 0; i < self.pagesItems.count; i++) {
         
         UIView<PageControlItem> *view = [self.pagesItems objectAtIndex:i];
-        if (i == 0) {
+        if ( self.pagesItems.count == 1) {
             NSString *first = [NSString stringWithFormat:@"current%ld", (long)i];
-            NSString *second = [NSString stringWithFormat:@"current%ld", (long)i + 1];
-            
             [views setObject:view forKey:first];
-            [views setObject:[self.pagesItems objectAtIndex:i + 1] forKey:second];
-            [widthConstraintString appendString:[NSString stringWithFormat:@"H:|-0-[%@]-space-[%@]", first, second]];
-        } else if (i == self.pagesItems.count - 1) {
-            [widthConstraintString appendString:[NSString stringWithFormat:@"-0-|"]];
-        } else {
-            NSString *next = [NSString stringWithFormat:@"current%ld", (long)i + 1];
-            [views setObject:[self.pagesItems objectAtIndex:i + 1] forKey:next];
             
-            [widthConstraintString appendString:[NSString stringWithFormat:@"-space-[%@]", next]];
+            NSString *string = [NSString stringWithFormat:@"H:|-0-[%@]-0-|", first];
+            [widthConstraintString appendString:string];
+        } else {
+            if (i == 0) {
+                NSString *first = [NSString stringWithFormat:@"current%ld", (long)i];
+                NSString *second = [NSString stringWithFormat:@"current%ld", (long)i + 1];
+                
+                [views setObject:view forKey:first];
+                [views setObject:[self.pagesItems objectAtIndex:i + 1] forKey:second];
+                [widthConstraintString appendString:[NSString stringWithFormat:@"H:|-0-[%@]-space-[%@]", first, second]];
+            } else if (i == self.pagesItems.count - 1) {
+                [widthConstraintString appendString:[NSString stringWithFormat:@"-0-|"]];
+            } else {
+                NSString *next = [NSString stringWithFormat:@"current%ld", (long)i + 1];
+                [views setObject:[self.pagesItems objectAtIndex:i + 1] forKey:next];
+                
+                [widthConstraintString appendString:[NSString stringWithFormat:@"-space-[%@]", next]];
+            }
         }
         
         CGFloat width = (i == self.selectedPage) ? [view getSelectedWidth] : [view getNotSelectedWidth];

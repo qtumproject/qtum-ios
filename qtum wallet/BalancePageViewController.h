@@ -10,10 +10,11 @@
 #import "BalancePageOutput.h"
 #import "Presentable.h"
 
-@interface BalancePageViewController : UIPageViewController  <BalancePageOutput, Presentable>
+@interface BalancePageViewController : BaseViewController  <BalancePageOutput, Presentable>
 
 @property (copy, nonatomic) NSArray <UIViewController <Paginationable>*>* controllers;
 @property (nonatomic, readonly) NSInteger currentIndex;
+@property (nonatomic, readonly) UIView *container;
 
 - (void)changeCurrentIndex:(NSInteger)index;
 

@@ -9,12 +9,15 @@
 #import "BalancePageViewController.h"
 #import "CustomPageControl.h"
 
-@interface BalancePageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate>
+@interface BalancePageViewController () <UIScrollViewDelegate>
+
 
 @property (nonatomic) NSInteger currentIndex;
-@property (assign,nonatomic) BOOL needSwipeBack;
-@property (weak,nonatomic) UIScrollView* scrollView;
+@property (assign, nonatomic) BOOL needSwipeBack;
+@property (assign, nonatomic) BOOL viewWasShowed;
 
+@property (nonatomic) UIView *container;
+@property (nonatomic) UIScrollView *scrollView;
 
 @end
 
@@ -23,15 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.delegate = self;
-    self.dataSource = self;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [self setDelegateToScrollView];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-
+    [self createScrollView];
+    [self addControllersToScroll];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -39,70 +37,114 @@
     if (self.needSwipeBack) {
         [self scrollToRootIfNeededAnimated:NO];
     }
+    
+    self.viewWasShowed = YES;
 }
 
-- (void)setDelegateToScrollView{
-    for (UIView *view in self.view.subviews) {
-        if ([view isKindOfClass:[UIScrollView class]]) {
-            ((UIScrollView *)view).delegate = self;
-            self.scrollView = (UIScrollView *)view;
-            break;
+- (UIView *)container {
+    if (!_container) {
+        _container = [UIView new];
+        _container.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        [self.view addSubview:_container];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[container]-0-|" options:0 metrics:nil views:@{@"container" : _container}]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[container]-0-|" options:0 metrics:nil views:@{@"container" : _container}]];
+    }
+    return _container;
+}
+
+- (void)createScrollView {
+    if (!_scrollView) {
+        _scrollView = [UIScrollView new];
+        _scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.pagingEnabled = YES;
+        _scrollView.delegate = self;
+        
+        [self.view addSubview:_scrollView];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scroll]-0-|" options:0 metrics:nil views:@{@"scroll" : _scrollView}]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[scroll]-0-|" options:0 metrics:nil views:@{@"scroll" : _scrollView}]];
+    }
+}
+
+- (void)addControllersToScroll {
+    
+    for (UIView *view in self.scrollView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    NSMutableString *horisontalString = [NSMutableString new];
+    NSMutableDictionary *views = [NSMutableDictionary new];
+    NSMutableArray *centerY = [NSMutableArray new];
+    NSMutableArray *vertical = [NSMutableArray new];
+    NSMutableArray *equalWidths = [NSMutableArray new];
+    
+    for (NSInteger i = 0; i < self.controllers.count; i++) {
+        UIViewController *vc = [self.controllers objectAtIndex:i];
+        [self addChildViewController:vc];
+        UIView *view = vc.view;
+        view.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.scrollView addSubview:view];
+        
+        NSString *string;
+        NSString *current = [NSString stringWithFormat:@"view%ld", (long)i];
+        if (self.controllers.count == 1) {
+            [views setObject:view forKey:current];
+            string = [NSString stringWithFormat:@"H:|-0-[%@]-0-|", current];
+        } else {
+            if (i == 0) {
+                [views setObject:view forKey:current];
+                NSString *next = [NSString stringWithFormat:@"view%ld", (long)i + 1];
+                [views setObject:[self.controllers objectAtIndex:i + 1].view forKey:next];
+                
+                string = [NSString stringWithFormat:@"H:|-0-[%@]-0-[%@]", current, next];
+            } else if (i == self.controllers.count - 1) {
+                string = [NSString stringWithFormat:@"-0-|"];
+            }else {
+                NSString *next = [NSString stringWithFormat:@"view%ld", (long)i + 1];
+                [views setObject:[self.controllers objectAtIndex:i + 1].view forKey:next];
+                
+                string = [NSString stringWithFormat:@"-0-[%@]", next];
+            }
         }
+        
+        [horisontalString appendString:string];
+        
+        NSLayoutConstraint *centerYConstraint = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view.superview attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f];
+        
+        [centerY addObject:centerYConstraint];
+        
+        NSArray *array = [NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|-0-[%@]-0-|", current] options:0 metrics:nil views:@{current : view}];
+        
+        [vertical addObjectsFromArray:array];
+        
+        NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view.superview attribute:NSLayoutAttributeWidth multiplier:1.0f constant:0];
+        
+        [equalWidths addObject:equalWidth];
+    }
+    
+    NSArray *horisontal = [NSLayoutConstraint constraintsWithVisualFormat:horisontalString options:0 metrics:nil views:views];
+    
+    [self.scrollView addConstraints:horisontal];
+    [self.scrollView addConstraints:centerY];
+    [self.scrollView addConstraints:vertical];
+    [self.scrollView addConstraints:equalWidths];
+    
+    for (UIViewController *vc in _controllers) {
+        [vc didMoveToParentViewController:self];
     }
 }
 
-#pragma mark - Getters
-
--(void)setControllers:(NSArray <UIViewController <Paginationable>*>*)controllers {
+- (void)setControllers:(NSArray <UIViewController <Paginationable>*>*)controllers {
     
-    [self setViewControllers:@[controllers.firstObject] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     _controllers = controllers;
-}
-
-#pragma mark - UIPageViewControllerDelegate
-
-#pragma mark - UIPageViewControllerDataSource
-
-- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController{
     
-    NSInteger viewControllerIndex = [self.controllers indexOfObject:(UIViewController <Paginationable>*)viewController];
-    NSInteger prevIndex = viewControllerIndex - 1;
-    
-    if (prevIndex < 0) {
-        return nil;
+    if (self.viewWasShowed) {
+        [self addControllersToScroll];
     }
-    
-    if (self.controllers.count < prevIndex) {
-        return nil;
-    }
-    
-    
-    return self.controllers[prevIndex];
-}
-
-- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
- 
-    
-    NSInteger viewControllerIndex = [self.controllers indexOfObject:(UIViewController <Paginationable>*)viewController];
-    NSInteger nextIndex = viewControllerIndex + 1;
-    
-    NSInteger orderedViewControllersCount =  self.controllers.count;
-
-    if (orderedViewControllersCount == nextIndex) {
-        return nil;
-    }
-    
-    if (orderedViewControllersCount < nextIndex) {
-        return nil;
-    }
-    
-    return self.controllers[nextIndex];
-}
-
--(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
-    
-    NSUInteger index = [self.controllers indexOfObject: [pageViewController.viewControllers firstObject]];
-    [self changeCurrentIndex:index];
 }
 
 #pragma makr - Public Methods
@@ -113,7 +155,7 @@
         return;
     }
 
-    [self setViewControllers:@[self.controllers[index]] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:nil];
+    [self.scrollView scrollRectToVisible:CGRectMake(index * self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height) animated:animated];
     [self changeCurrentIndex:index];
 }
 
@@ -141,7 +183,6 @@
 #pragma mark - Private Methods
 
 - (void)changeCurrentIndex:(NSInteger)index {
-    
     self.currentIndex = index;
 }
 
@@ -149,18 +190,25 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
-    if (self.currentIndex == 0 && scrollView.contentOffset.x < scrollView.bounds.size.width) {
-        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
-    } else if (self.currentIndex == self.controllers.count - 1 && scrollView.contentOffset.x > scrollView.bounds.size.width) {
-        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+    if (scrollView.contentOffset.x <= 0) {
+        scrollView.contentOffset = CGPointMake(0, 0);
+    } else if (scrollView.contentOffset.x >= scrollView.bounds.size.width * (self.controllers.count - 1)) {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width * (self.controllers.count - 1), 0);
+    }
+    
+    if ((NSInteger)scrollView.contentOffset.x % (NSInteger)scrollView.bounds.size.width == 0) {
+        
+        NSInteger index = scrollView.contentOffset.x / scrollView.bounds.size.width;
+        [self changeCurrentIndex:index];
     }
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    if (self.currentIndex == 0 && scrollView.contentOffset.x <= scrollView.bounds.size.width) {
-        *targetContentOffset = CGPointMake(scrollView.bounds.size.width, 0);
-    } else if (self.currentIndex == self.controllers.count - 1 && scrollView.contentOffset.x >= scrollView.bounds.size.width) {
-        *targetContentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+    
+    if (scrollView.contentOffset.x < 0) {
+        scrollView.contentOffset = CGPointMake(0, 0);
+    } else if (scrollView.contentOffset.x > scrollView.bounds.size.width * (self.controllers.count - 1)) {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width * (self.controllers.count - 1), 0);
     }
 }
 
