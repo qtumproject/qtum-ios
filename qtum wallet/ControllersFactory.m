@@ -30,7 +30,6 @@
 #import "CustomAbiInterphaseViewController.h"
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
-#import "LanguageViewController.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "TemplateTokenViewController.h"
@@ -61,6 +60,7 @@
 #import "BalancePageOutput.h"
 #import "TokenListOutput.h"
 #import "ProfileOutput.h"
+#import "LanguageOutput.h"
 
 @implementation ControllersFactory
 
@@ -169,8 +169,8 @@
     return controller;
 }
 
--(LanguageViewController*)createLanguageViewController{
-    LanguageViewController* controller = (LanguageViewController*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"LanguageViewController"];
+-(NSObject<LanguageOutput> *)createLanguageViewController{
+    NSObject<LanguageOutput> *controller = (NSObject<LanguageOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"LanguageViewController"];
     return controller;
 }
 

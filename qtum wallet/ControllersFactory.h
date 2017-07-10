@@ -28,7 +28,6 @@
 @class NoInternetConnectionPopUpViewController;
 @class PhotoLibraryPopUpViewController;
 @class TokenDetailsViewController;
-@class LanguageViewController;
 @class AddNewTokensViewController;
 @class QRCodeViewController;
 @class ChooseSmartContractViewController;
@@ -55,6 +54,7 @@
 @protocol WalletOutput;
 @protocol TokenListOutput;
 @protocol TabbarOutput;
+@protocol LanguageOutput;
 
 
 @interface ControllersFactory : NSObject
@@ -86,7 +86,6 @@
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
 -(TokenDetailsViewController*)createTokenDetailsViewController;
--(LanguageViewController*)createLanguageViewController;
 -(AddNewTokensViewController*)createAddNewTokensViewController;
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 -(ChooseSmartContractViewController*)createChooseSmartContractViewController;
@@ -99,9 +98,11 @@
 -(RestoreContractsViewController*)createRestoreContractViewController;
 -(BackupContractsViewController*)createBackupContractViewController;
 -(EnableFingerprintViewController*)createEnableFingerprintViewController;
+
 -(NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
 -(NSObject<WalletOutput> *)createWalletViewController;
 -(NSObject<TokenListOutput> *)createTokenListViewController;
+-(NSObject<LanguageOutput> *)createLanguageViewController;
 
 -(QRCodeViewController*)createQRCodeViewControllerForWallet;
 -(QRCodeViewController*)createQRCodeViewControllerForSend;

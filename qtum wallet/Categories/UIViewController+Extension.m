@@ -26,7 +26,8 @@
         [identifire isEqualToString:@"TokenListViewController"] ||
         [identifire isEqualToString:@"ProfileViewController"] ||
         [identifire isEqualToString:@"ChoseTokenPaymentViewController"] ||
-        [identifire isEqualToString:@"QRCodeViewController"]) {
+        [identifire isEqualToString:@"QRCodeViewController"] ||
+        [identifire isEqualToString:@"LanguageViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             [mutString appendString:@"Dark"];
