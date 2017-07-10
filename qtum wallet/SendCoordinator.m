@@ -2,7 +2,7 @@
 //  SendCoordinator.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 04.07.17.
+//  Created by Vladimir Lebedevich on 04.07.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
@@ -13,8 +13,10 @@
 #import "TransactionManager.h"
 #import "NewPaymentOutput.h"
 #import "ChoseTokenPaymentOutput.h"
+#import "ChooseTokenPaymentDelegateDataSourceProtocol.h"
+#import "ChooseTokekPaymentDelegateDataSourceDelegate.h"
 
-@interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate>
+@interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (weak, nonatomic) NSObject <NewPaymentOutput>* paymentOutput;
@@ -135,7 +137,9 @@
     
     NSObject <ChoseTokenPaymentOutput>* tokenController = (NSObject <ChoseTokenPaymentOutput>*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
     tokenController.delegate = self;
-    tokenController.activeToken = self.token;
+    tokenController.delegateDataSource = [[TableSourcesFactory sharedInstance] createSendTokenPaymentSource];
+    tokenController.delegateDataSource.activeToken = self.token;
+    tokenController.delegateDataSource.delegate = self;
     [tokenController updateWithTokens:[ContractManager sharedInstance].allActiveTokens];
     self.tokenPaymentOutput = tokenController;
     [self.navigationController pushViewController:[tokenController toPresente] animated:YES];
@@ -162,22 +166,26 @@
 
 #pragma mark - QRCodeViewControllerDelegate
 
-- (void)qrCodeScanned:(NSDictionary *)dictionary {
+- (void)didQRCodeScannedWithDict:(NSDictionary*)dict {
     
-    [self.paymentOutput updateContentFromQRCode:dictionary];
+    [self.paymentOutput updateContentFromQRCode:dict];
     [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
 }
 
-- (void)showNextVC {
-    
-}
-
-- (void)backButtonPressed {
+- (void)didBackPressed {
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 #pragma mark - ChoseTokenPaymentViewControllerDelegate
+
+- (void)didPressedBackAction {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - ChoseTokenPaymentOutputDelegate
 
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item {
     
@@ -186,22 +194,12 @@
     [self.paymentOutput updateContentWithContract:item];
 }
 
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
-    
-}
-
 - (void)didResetToDefaults {
     
     [self.paymentOutput updateContentWithContract:nil];
     self.token = nil;
 }
 
-- (void)didPressedBackAction {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
-
-
-
+ 
 @end

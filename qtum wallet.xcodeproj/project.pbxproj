@@ -154,6 +154,14 @@
 		B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A18A1E852F27002A488F /* SocketManager.m */; };
 		B3EE8F281F0E109300131823 /* TabBarControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F271F0E109300131823 /* TabBarControllerLight.m */; };
 		B3EE8F2B1F0E10AB00131823 /* TabBarControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F2A1F0E10AB00131823 /* TabBarControllerDark.m */; };
+		B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F301F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m */; };
+		B3EE8F341F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F331F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m */; };
+		B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F3B1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m */; };
+		B3EE8F3F1F136F6200131823 /* ChoseTokenPaymentCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F3E1F136F6200131823 /* ChoseTokenPaymentCellDark.m */; };
+		B3EE8F421F136FAA00131823 /* ChooseTokenPaymentCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F411F136FAA00131823 /* ChooseTokenPaymentCellLight.m */; };
+		B3EE8F481F13708500131823 /* ChoseTokenPaymentViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F471F13708500131823 /* ChoseTokenPaymentViewControllerDark.m */; };
+		B3EE8F4B1F13766C00131823 /* QRCodeViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F4A1F13766C00131823 /* QRCodeViewControllerDark.m */; };
+		B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F4D1F13767900131823 /* QRCodeViewControllerLight.m */; };
 		B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE93711F04E19100550C60 /* SecurityCoordinator.m */; };
 		B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* ContractCoordinator.m */; };
 		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
@@ -714,6 +722,24 @@
 		B3EE8F271F0E109300131823 /* TabBarControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarControllerLight.m; sourceTree = "<group>"; };
 		B3EE8F291F0E10AB00131823 /* TabBarControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarControllerDark.h; sourceTree = "<group>"; };
 		B3EE8F2A1F0E10AB00131823 /* TabBarControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarControllerDark.m; sourceTree = "<group>"; };
+		B3EE8F2F1F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTokenPaymentDelegateDataSourceDark.h; sourceTree = "<group>"; };
+		B3EE8F301F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTokenPaymentDelegateDataSourceDark.m; sourceTree = "<group>"; };
+		B3EE8F321F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTokenPaymentDelegateDataSourceLight.h; sourceTree = "<group>"; };
+		B3EE8F331F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTokenPaymentDelegateDataSourceLight.m; sourceTree = "<group>"; };
+		B3EE8F351F13548C00131823 /* ChooseTokenPaymentDelegateDataSourceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTokenPaymentDelegateDataSourceProtocol.h; sourceTree = "<group>"; };
+		B3EE8F361F13556100131823 /* ChooseTokekPaymentDelegateDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTokekPaymentDelegateDataSourceDelegate.h; sourceTree = "<group>"; };
+		B3EE8F3A1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentViewControllerLight.h; sourceTree = "<group>"; };
+		B3EE8F3B1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseTokenPaymentViewControllerLight.m; sourceTree = "<group>"; };
+		B3EE8F3D1F136F6200131823 /* ChoseTokenPaymentCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentCellDark.h; sourceTree = "<group>"; };
+		B3EE8F3E1F136F6200131823 /* ChoseTokenPaymentCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseTokenPaymentCellDark.m; sourceTree = "<group>"; };
+		B3EE8F401F136FAA00131823 /* ChooseTokenPaymentCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTokenPaymentCellLight.h; sourceTree = "<group>"; };
+		B3EE8F411F136FAA00131823 /* ChooseTokenPaymentCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTokenPaymentCellLight.m; sourceTree = "<group>"; };
+		B3EE8F461F13708500131823 /* ChoseTokenPaymentViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentViewControllerDark.h; sourceTree = "<group>"; };
+		B3EE8F471F13708500131823 /* ChoseTokenPaymentViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseTokenPaymentViewControllerDark.m; sourceTree = "<group>"; };
+		B3EE8F491F13766C00131823 /* QRCodeViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewControllerDark.h; sourceTree = "<group>"; };
+		B3EE8F4A1F13766C00131823 /* QRCodeViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewControllerDark.m; sourceTree = "<group>"; };
+		B3EE8F4C1F13767900131823 /* QRCodeViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewControllerLight.h; sourceTree = "<group>"; };
+		B3EE8F4D1F13767900131823 /* QRCodeViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewControllerLight.m; sourceTree = "<group>"; };
 		B3EE93701F04E19100550C60 /* SecurityCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityCoordinator.h; sourceTree = "<group>"; };
 		B3EE93711F04E19100550C60 /* SecurityCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityCoordinator.m; sourceTree = "<group>"; };
 		B3F06CF51E69879D006341F7 /* ContractCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractCoordinator.h; sourceTree = "<group>"; };
@@ -1122,6 +1148,16 @@
 				B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */,
 				B3054E351F0BC037001B1F63 /* ChoseTokenPaymentOutput.h */,
 				B3054E361F0BC045001B1F63 /* ChoseTokenPaymentOutputDelegate.h */,
+				B3EE8F2F1F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.h */,
+				B3EE8F301F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m */,
+				B3EE8F321F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.h */,
+				B3EE8F331F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m */,
+				B3EE8F351F13548C00131823 /* ChooseTokenPaymentDelegateDataSourceProtocol.h */,
+				B3EE8F361F13556100131823 /* ChooseTokekPaymentDelegateDataSourceDelegate.h */,
+				B3EE8F3A1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.h */,
+				B3EE8F3B1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m */,
+				B3EE8F461F13708500131823 /* ChoseTokenPaymentViewControllerDark.h */,
+				B3EE8F471F13708500131823 /* ChoseTokenPaymentViewControllerDark.m */,
 			);
 			name = ChoseTokenPaymentOutput;
 			sourceTree = "<group>";
@@ -1619,6 +1655,10 @@
 			children = (
 				B3E159271ED6E3C500D70A87 /* ChoseTokenPaymentCell.h */,
 				B3E159281ED6E3C500D70A87 /* ChoseTokenPaymentCell.m */,
+				B3EE8F3D1F136F6200131823 /* ChoseTokenPaymentCellDark.h */,
+				B3EE8F3E1F136F6200131823 /* ChoseTokenPaymentCellDark.m */,
+				B3EE8F401F136FAA00131823 /* ChooseTokenPaymentCellLight.h */,
+				B3EE8F411F136FAA00131823 /* ChooseTokenPaymentCellLight.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1905,6 +1945,10 @@
 			children = (
 				E73910511DE30BA8008145A8 /* QRCodeViewController.h */,
 				E73910521DE30BA8008145A8 /* QRCodeViewController.m */,
+				B3EE8F491F13766C00131823 /* QRCodeViewControllerDark.h */,
+				B3EE8F4A1F13766C00131823 /* QRCodeViewControllerDark.m */,
+				B3EE8F4C1F13767900131823 /* QRCodeViewControllerLight.h */,
+				B3EE8F4D1F13767900131823 /* QRCodeViewControllerLight.m */,
 			);
 			path = QRCode;
 			sourceTree = "<group>";
@@ -3051,6 +3095,8 @@
 				E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
+				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
+				B3EE8F421F136FAA00131823 /* ChooseTokenPaymentCellLight.m in Sources */,
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
@@ -3132,6 +3178,7 @@
 				B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */,
 				B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */,
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
+				B3EE8F481F13708500131823 /* ChoseTokenPaymentViewControllerDark.m in Sources */,
 				B32B32E21ECCC2D50081260A /* CreateTokenFinishViewController.m in Sources */,
 				B365CA631EA4ED540040A163 /* Contract.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
@@ -3140,6 +3187,7 @@
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
+				B3EE8F341F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m in Sources */,
 				E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
@@ -3182,6 +3230,7 @@
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
+				B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */,
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
@@ -3213,6 +3262,7 @@
 				B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */,
 				B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
+				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */,
@@ -3234,6 +3284,7 @@
 				E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */,
 				E798463A1F0D2899002A516A /* WalletTableSourceDark.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
+				B3EE8F3F1F136F6200131823 /* ChoseTokenPaymentCellDark.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				B384F3DF1EB9BF4A0075F1E8 /* NSBundle+Language.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
@@ -3251,6 +3302,7 @@
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
 				B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */,
 				B35130611E49C9930048A28C /* NewsCellModel.m in Sources */,
+				B3EE8F4B1F13766C00131823 /* QRCodeViewControllerDark.m in Sources */,
 				E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */,
 				E79846321F0D2373002A516A /* WalletHeaderCellLight.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
