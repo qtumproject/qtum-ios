@@ -25,8 +25,8 @@
 -(void)configTabBar {
     
     self.tabBar.translucent = NO;
-    self.tabBar.tintColor =  customBlueColor();
-    self.tabBar.barTintColor = customBlackColor();
+    self.tabBar.tintColor =  lightDarkGrayColor();
+    self.tabBar.barTintColor = lightBlueColor();
 }
 
 -(void)configTabsWithNews:(UIViewController*)newsController
@@ -41,11 +41,11 @@
     
     [self setViewControllers:@[wallet,profile,news,send] animated:YES];
     
-    profile.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Profile", "Tabs") image:[UIImage imageNamed:@"profile"] tag:0];
-    wallet.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Wallet", "Tabs") image:[UIImage imageNamed:@"history"] tag:1];
-    news.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"News", "Tabs") image:[UIImage imageNamed:@"news"] tag:2];
-    send.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Send", "Tabs") image:[UIImage imageNamed:@"send"] tag:3];
-    
+    profile.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Profile", "Tabs") image:[UIImage imageNamed:@"ic-profile-light"] tag:0];
+    wallet.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Wallet", "Tabs") image:[UIImage imageNamed:@"ic-wallet-light"] tag:1];
+    news.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"News", "Tabs") image:[UIImage imageNamed:@"ic-news-light"] tag:2];
+    send.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Send", "Tabs") image:[UIImage imageNamed:@"ic-send-light"] tag:3];
+
     [profile.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [wallet.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [news.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];

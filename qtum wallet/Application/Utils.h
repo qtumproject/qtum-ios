@@ -31,6 +31,9 @@ UIColor *lightDarkBlueColorForGradient();
 UIColor *lightBlackColor();
 UIColor *lightBlackColor78();
 UIColor *lightGreenColor();
+UIColor *lightTabBarTopLineColor();
+UIColor *lightGrayColor();
+UIColor *lightDarkGrayColor();
 
 // colors setters depend on theme
 

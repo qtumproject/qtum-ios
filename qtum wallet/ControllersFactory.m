@@ -55,6 +55,8 @@
 #import "QStoreListViewController.h"
 #import "QStoreContractViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
+#import "TabBarControllerLight.h"
+#import "NSUserDefaults+Settings.h"
 
 #import "NewPaymentOutput.h"
 #import "WalletOutput.h"
@@ -100,8 +102,12 @@
 }
 
 -(UITabBarController <TabbarOutput>*)createTabFlow {
-    TabBarControllerDark* tabBar = [TabBarControllerDark new];
-    return tabBar;
+    
+    if ([NSUserDefaults isDarkSchemeSetting]) {
+        return [TabBarControllerDark new];
+    } else {
+        return [TabBarControllerLight new];
+    }
 }
 
 
