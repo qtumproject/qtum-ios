@@ -11,7 +11,7 @@
 #import "NewsNavigationController.h"
 #import "ProfileNavigationCoordinator.h"
 #import "UIViewController+Extension.h"
-#import "TabBarController.h"
+#import "TabBarControllerDark.h"
 #import "WalletNameViewController.h"
 #import "LoginViewController.h"
 #import "FirstAuthViewController.h"
@@ -31,9 +31,6 @@
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
 #import "LanguageViewController.h"
-#import "BalancePageViewController.h"
-#import "MainViewController.h"
-#import "TokenListViewController.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "TemplateTokenViewController.h"
@@ -59,6 +56,12 @@
 #import "QStoreContractViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
 
+#import "NewPaymentOutput.h"
+#import "WalletOutput.h"
+#import "BalancePageOutput.h"
+#import "TokenListOutput.h"
+#import "ProfileOutput.h"
+
 @implementation ControllersFactory
 
 + (instancetype)sharedInstance
@@ -79,34 +82,46 @@
 }
 
 -(UIViewController*)sendFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Send" withIdentifire:nil];
-    SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] initWithRootViewController:controller];
+    SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] init];
     return nav;
 }
 
--(UIViewController*)profileFlowTab{
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"Profile" withIdentifire:nil];
-    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:controller];
+-(UIViewController*)profileFlowTab {
+    NSObject<ProfileOutput> *controller = (NSObject<ProfileOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ProfileViewController"];
+    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:[controller toPresente]];
     return nav;
 }
 
--(UIViewController*)newsFlowTab{
+-(UIViewController*)newsFlowTab {
+    
     UIViewController* controller = [UIViewController controllerInStoryboard:@"News" withIdentifire:nil];
     NewsNavigationController* nav = [[NewsNavigationController alloc] initWithRootViewController:controller];
     return nav;
 }
 
--(UIViewController*)createTabFlow{
-    TabBarController* tabBar = [TabBarController new];
+-(UITabBarController <TabbarOutput>*)createTabFlow {
+    TabBarControllerDark* tabBar = [TabBarControllerDark new];
     return tabBar;
 }
 
 
--(UINavigationController*)walletFlowTab{
-    BalancePageViewController* controller = [[BalancePageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    controller.view.backgroundColor = customBlackColor();
-    WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:controller];
+-(UINavigationController*)walletFlowTab {
+    
+    NSObject<BalancePageOutput> *controller = (NSObject<BalancePageOutput>*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"BalancePageViewController"];
+    WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:[controller toPresente]];
     return nav;
+}
+
+-(NSObject<NewPaymentOutput>*)createNewPaymentDarkViewController {
+    
+    NSObject<NewPaymentOutput>* controller = (NSObject<NewPaymentOutput>*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"NewPayment"];
+    return controller;
+}
+
+- (QRCodeViewController*)createQRCodeViewControllerForSend {
+    
+    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"QRCodeViewController"];
+    return controller;
 }
 
 -(WalletNameViewController*)createWalletNameCreateController{
@@ -169,8 +184,8 @@
     return controller;
 }
 
--(MainViewController*)createMainViewController{
-    MainViewController* controller = (MainViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"MainViewController"];
+-(NSObject<WalletOutput> *)createWalletViewController{
+    NSObject<WalletOutput> *controller = (NSObject<WalletOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"WalletViewController"];
     return controller;
 }
 
@@ -189,8 +204,8 @@
     return controller;
 }
 
--(TokenListViewController*)createTokenListViewController{
-    TokenListViewController* controller = (TokenListViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenListViewController"];
+-(NSObject<TokenListOutput> *)createTokenListViewController{
+    NSObject<TokenListOutput> *controller = (NSObject<TokenListOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenListViewController"];
     return controller;
 }
 
@@ -216,6 +231,11 @@
 
 -(QRCodeViewController*)createQRCodeViewControllerForSubscribe{
     QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"QRCodeViewController"];
+    return controller;
+}
+
+-(QRCodeViewController*)createQRCodeViewControllerForWallet{
+    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"QRCodeViewController"];
     return controller;
 }
 

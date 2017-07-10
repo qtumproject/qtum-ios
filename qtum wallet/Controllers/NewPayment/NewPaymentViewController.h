@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewPaymentOutputDelegate.h"
+#import "NewPaymentOutput.h"
 
-@interface NewPaymentViewController : BaseViewController
+@interface NewPaymentViewController : BaseViewController <NewPaymentOutput>
 
 @property (nonatomic, copy) NSString *currentBalance;
 @property (nonatomic, copy) NSDictionary *dictionary;
-
--(void)setAdress:(NSString*)adress andValue:(NSString*)amount;
+@property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
 
 @end

@@ -19,7 +19,7 @@
 
 @interface NewsCoordinator : BaseCoordinator <Coordinatorable,NewsCoordinatorDelegate>
 
-@property (weak,nonatomic) id <TabBarCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <NewsCoordinatorDelegate> delegate;
 
 -(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 

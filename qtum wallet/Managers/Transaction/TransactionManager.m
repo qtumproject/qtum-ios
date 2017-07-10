@@ -101,7 +101,7 @@ static NSString* op_exec = @"c1";
     }];
     
     if (addressWithAmountValue) {
-        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[WalletManager sharedInstance].сurrentWallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[WalletManager sharedInstance].currentWallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
             completion(error,transaction,hashTransaction);
         }];
     } else {

@@ -23,17 +23,20 @@
 #import "NSObject+Extension.h"
 #import "RequestManager.h"
 #import "ImageLoader.h"
-#import "ControllersFactory.h"
 #import "NSString+Extension.h"
 #import "AppSettings.h"
 #import "Spendable.h"
 #import "Managerable.h"
-#import "TokensFactory.h"
-#import "WalletsFactory.h"
 #import "ContractManager.h"
 #import "LanguageManager.h"
 #import "NSError+NoInternet.h"
 #import "PopUpsManager.h"
+#import "NSObject+Extension.h"
+
+#import "ControllersFactory.h"
+#import "TokensFactory.h"
+#import "WalletsFactory.h"
+#import "TableSourcesFactory.h"
 
 
 //#import "BTCTransactionInput+Extension.h"
@@ -44,7 +47,7 @@
 #ifdef DEBUG
 #   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
-#   define NSLog(...) (void)0
+#   define DLog(fmt, ...)
 #endif
 
 #endif /* PrefixHeader_pch */

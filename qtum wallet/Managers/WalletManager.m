@@ -101,14 +101,14 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     }];
 }
 
-- (Wallet *)сurrentWallet {
+- (Wallet *)currentWallet {
     
     return [self.wallets firstObject];
 }
 
 - (NSDictionary *)hashTableOfKeys{
     NSMutableDictionary *hashTable = [NSMutableDictionary new];
-    for (BTCKey *key in [[self сurrentWallet] allKeys]) {
+    for (BTCKey *key in [[self currentWallet] allKeys]) {
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
         if (keyString) {
             hashTable[keyString] = [NSNull null];
@@ -238,7 +238,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 }
 
 -(void)startObservingForAllSpendable {
-    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self сurrentWallet] allKeysAdreeses]];
+    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self currentWallet] allKeysAdreeses]];
 }
 
 -(void)stopObservingForAllSpendable {
@@ -292,14 +292,14 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 }
 
 -(void)updateSpendablesBalansesWithObject:(NSDictionary*) balances{
-    [self сurrentWallet].balance = [balances[@"balance"] floatValue];
-    [self сurrentWallet].unconfirmedBalance = [balances[@"unconfirmedBalance"] floatValue];
-    [self spendableDidChange:[self сurrentWallet]];
+    [self currentWallet].balance = [balances[@"balance"] floatValue];
+    [self currentWallet].unconfirmedBalance = [balances[@"unconfirmedBalance"] floatValue];
+    [self spendableDidChange:[self currentWallet]];
 }
 
 -(void)updateSpendablesHistoriesWithObject:(NSDictionary*) dict{
     HistoryElement* item = [self.requestAdapter createHistoryElement:dict];
-    [[self сurrentWallet].historyStorage setHistoryItem:item];
+    [[self currentWallet].historyStorage setHistoryItem:item];
 }
 
 -(void)spendableDidChange:(id <Spendable>) object{

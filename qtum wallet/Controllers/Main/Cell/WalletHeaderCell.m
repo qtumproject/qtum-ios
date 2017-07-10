@@ -8,19 +8,7 @@
 
 #import "WalletHeaderCell.h"
 
-CGFloat const HeaderHeight = 50.0f;
-
 @interface WalletHeaderCell ()
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTextTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *uncorfirmedTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *uncorfirmedTextTopConstraint;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableCenterConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTextCenterConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *unconfirmedCenterConsctraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *unconfirmedTextCenterConstraint;
 
 @property (nonatomic) HeaderCellType type;
 
@@ -36,9 +24,10 @@ CGFloat const HeaderHeight = 50.0f;
     self.adressLabel.text = ([wallet isKindOfClass:[Contract class]]) ? NSLocalizedString(@"Contract Address", "") : NSLocalizedString(@"QTUM Address", "");
     self.adressValueLabel.text = wallet.mainAddress;
     self.valueLabel.text = [NSString stringWithFormat:@"%f",wallet.balance];
-    self.typeWalletLabel.text = wallet.symbol;
     self.unconfirmedValue.text = [NSString stringWithFormat:@"%f",wallet.unconfirmedBalance];
     self.spendable = wallet;
+    
+    [self.pageControl setPagesCount:2];
 }
 
 - (void)setCellType:(HeaderCellType)type{
@@ -69,54 +58,14 @@ CGFloat const HeaderHeight = 50.0f;
 
 #pragma mark - Animation
 
-- (void)cellYPositionChanged:(CGFloat)yPosition{
-    CGFloat maxYPosition = self.separatorView.frame.origin.y - HeaderHeight;
-    
-    // formats
-    // minTop, maxTop, minFont, maxFont
-    // top, center
-    NSArray *value1;
-    NSArray *value2;
-    if (self.type == HeaderCellTypeAllVisible || self.type == HeaderCellTypeWithoutPageControl) {
-        value1 = @[@(20), @(maxYPosition + 8.0f), @(14), @(28), @(1.0f), @(1.0f)];
-        value2 = @[@(56), @(maxYPosition + 10), @(11), @(12), @(1.0f), @(1.0f)];
-    }else{
-        value1 = @[@(20), @(maxYPosition + 15.0f), @(14), @(28), @(1.0f), @(1.0f)];
-        value2 = @[@(56), @(maxYPosition + 17.0f), @(11), @(12), @(1.0f), @(1.0f)];
-    }
-    NSArray *constraints1 = @[self.availableTopConstraint, self.availableCenterConstraint];
-    NSArray *constraints2 = @[self.availableTextTopConstraint, self.availableTextCenterConstraint];
-    NSArray *value3 = @[@(86), @(maxYPosition + 25.0f), @(14), @(16), @(1.0f), @(0.6f)];
-    NSArray *constraints3 = @[self.uncorfirmedTopConstraint, self.unconfirmedCenterConsctraint];
-    NSArray *value4 = @[@(107), @(maxYPosition + 28.0f), @(11), @(12), @(1.0f), @(0.6f)];
-    NSArray *constraints4 = @[self.uncorfirmedTextTopConstraint, self.unconfirmedTextCenterConstraint];
-    
-    
-    CGFloat percentOfPosition = yPosition / - maxYPosition;
-    [self changePositionForLabel:self.valueLabel andPercent:percentOfPosition values:value1 constraints:constraints1 isLeft:NO];
-    [self changePositionForLabel:self.availableTitleLabel andPercent:percentOfPosition values:value2 constraints:constraints2 isLeft:YES];
-    [self changePositionForLabel:self.unconfirmedValue andPercent:percentOfPosition values:value3 constraints:constraints3 isLeft:NO];
-    [self changePositionForLabel:self.notConfirmedTitleLabel andPercent:percentOfPosition values:value4 constraints:constraints4 isLeft:YES];
+- (void)cellYPositionChanged:(CGFloat)yPosition { }
 
-    [self changeAlphaByPercent:percentOfPosition];
-}
+- (void)changeAlphaByPercent:(CGFloat)percent { }
 
-- (void)changeAlphaByPercent:(CGFloat)percent{
-    CGFloat minAlphaForPage = 0.0f;
-    CGFloat maxAlphaForPage = 1.0f;
-    
-    self.pageControl.alpha = maxAlphaForPage - (maxAlphaForPage - minAlphaForPage) * percent;
-}
+- (BOOL)needShowHeader:(CGFloat)yPosition { return NO; }
 
-- (BOOL)needShowHeader:(CGFloat)yPosition{
-    CGFloat maxYPosition = self.separatorView.frame.origin.y - HeaderHeight;
-    CGFloat percentOfPosition = yPosition / - maxYPosition;
-    
-    return percentOfPosition >= 1;
-}
+- (CGFloat)percentForShowHideHeader:(CGFloat)yPosition { return 1; };
 
-+ (CGFloat)getHeaderHeight{
-    return HeaderHeight;
-}
+- (CGFloat)getHeaderHeight{ return 0; }
 
 @end

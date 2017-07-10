@@ -110,7 +110,7 @@ NSString *kErrorKey = @"error";
     NSString *key = message[MainMessageKey];
     if ([key isEqualToString:GetQRCodeMessageKey]) {
         CGFloat width = [message[@"width"] floatValue];
-        NSString *address = [WalletManager sharedInstance].сurrentWallet.mainAddress;
+        NSString *address = [WalletManager sharedInstance].currentWallet.mainAddress;
         
         [QRCodeManager createQRCodeFromString:address forSize:CGSizeMake(width, width) withCompletionBlock:^(UIImage *image) {
             NSDictionary *dictionary = @{@"data" : UIImagePNGRepresentation(image),
@@ -121,17 +121,17 @@ NSString *kErrorKey = @"error";
     } else if ([key isEqualToString:GetWalletInformation]) {
         CGFloat width = [message[@"width"] floatValue];
         
-        if (![WalletManager sharedInstance].сurrentWallet) {
+        if (![WalletManager sharedInstance].currentWallet) {
             NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
             replyHandler(dictionary);
             return;
         }
         
-        [[WalletManager sharedInstance].сurrentWallet updateBalanceWithHandler:^(BOOL success) {
+        [[WalletManager sharedInstance].currentWallet updateBalanceWithHandler:^(BOOL success) {
             if (success) {
-                [[WalletManager sharedInstance].сurrentWallet updateHistoryWithHandler:^(BOOL success) {
+                [[WalletManager sharedInstance].currentWallet updateHistoryWithHandler:^(BOOL success) {
                     if (success) {
-                        Wallet *wallet = [WalletManager sharedInstance].сurrentWallet;
+                        Wallet *wallet = [WalletManager sharedInstance].currentWallet;
                         NSString *address = wallet.mainAddress;
                         NSNumber *availableBalance = @(wallet.balance);
                         NSNumber *unconfirmedBalance = @(wallet.unconfirmedBalance);

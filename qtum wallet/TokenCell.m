@@ -11,12 +11,6 @@
 
 @interface TokenCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *tokenName;
-@property (weak, nonatomic) IBOutlet UILabel *mainSymbol;
-@property (weak, nonatomic) IBOutlet UILabel *symbol;
-@property (weak, nonatomic) IBOutlet UILabel *mainValue;
-@property (weak, nonatomic) IBOutlet UILabel *value;
-
 @end
 
 @implementation TokenCell
@@ -28,5 +22,7 @@
     self.symbol.text = NSLocalizedString(@"QTUM", @"");
     self.mainValue.text = [NSString stringWithFormat:@"%f",token.balance];
 }
+
+- (void)changeHighlight:(BOOL)value { }
 
 @end

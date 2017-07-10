@@ -7,10 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "RPCRequestManager.h"
 #import "Appearance.h"
-#import "ContractInterfaceManager.h"
 #import "ContractFileManager.h"
+#import "NotificationManager.h"
+#import "OpenURLManager.h"
 #import "iOSSessionManager.h"
 
 @interface AppDelegate ()
@@ -25,41 +25,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [iOSSessionManager sharedInstance];
+    [ContractFileManager sharedInstance];
     [Appearance setUp];
     [[AppSettings sharedInstance] setup];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
         if (!self.aplicationCoordinatorStarted) {
             [[ApplicationCoordinator sharedInstance] start];
             self.aplicationCoordinatorStarted  = YES;
         }
     });
 
-    [ContractFileManager sharedInstance];
     return YES;
-}
-
-- (NSArray *)getRandomWordsFromWordsArray:(NSInteger)count
-{
-    NSMutableArray *randomWords = @[].mutableCopy;
-    NSInteger i = 0;
-    
-    while (i < count) {
-        uint32_t rnd = arc4random_uniform((uint32_t)wordsArray().count);
-        NSString *randomWord = wordsArray()[rnd];
-        
-        if (![randomWords containsObject:randomWord]) {
-            [randomWords addObject:randomWord];
-            i++;
-        }
-    }
-    
-    return randomWords;
 }
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     if (!self.aplicationCoordinatorStarted) {
-        [[ApplicationCoordinator sharedInstance] launchFromUrl:url];
+        [[ApplicationCoordinator sharedInstance].openUrlManager launchFromUrl:url];
         self.aplicationCoordinatorStarted  = YES;
     }
     return YES;

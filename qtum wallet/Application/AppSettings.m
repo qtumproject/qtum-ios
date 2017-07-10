@@ -45,7 +45,9 @@
 
 #pragma mark - Private Methods
 
--(void)setup{
+-(void)setup {
+    
+    [NSUserDefaults saveIsDarkSchemeSetting:NO];
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:YES];
     [PopUpsManager sharedInstance];

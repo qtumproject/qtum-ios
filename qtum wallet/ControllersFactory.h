@@ -21,8 +21,6 @@
 @class HistoryItemViewController;
 @class CustomAbiInterphaseViewController;
 @class CreateTokenFinishViewController;
-@class MainViewController;
-@class TokenListViewController;
 @class TokenFunctionViewController;
 @class TokenFunctionDetailViewController;
 @class TemplateTokenViewController;
@@ -52,6 +50,12 @@
 @class QStoreListViewController;
 @class QStoreContractViewController;
 @class ConfirmPurchasePopUpViewController;
+
+@protocol NewPaymentOutput;
+@protocol WalletOutput;
+@protocol TokenListOutput;
+@protocol TabbarOutput;
+
 
 @interface ControllersFactory : NSObject
 
@@ -84,12 +88,9 @@
 -(TokenDetailsViewController*)createTokenDetailsViewController;
 -(LanguageViewController*)createLanguageViewController;
 -(AddNewTokensViewController*)createAddNewTokensViewController;
--(QRCodeViewController*)createQRCodeViewControllerForSubscribe;
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 -(ChooseSmartContractViewController*)createChooseSmartContractViewController;
 -(SmartContractsListViewController*)createSmartContractsListViewController;
--(MainViewController*)createMainViewController;
--(TokenListViewController*)createTokenListViewController;
 -(TokenFunctionViewController*)createTokenFunctionViewController;
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
 -(TemplateTokenViewController*)createTemplateTokenViewController;
@@ -98,6 +99,13 @@
 -(RestoreContractsViewController*)createRestoreContractViewController;
 -(BackupContractsViewController*)createBackupContractViewController;
 -(EnableFingerprintViewController*)createEnableFingerprintViewController;
+-(NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
+-(NSObject<WalletOutput> *)createWalletViewController;
+-(NSObject<TokenListOutput> *)createTokenListViewController;
+
+-(QRCodeViewController*)createQRCodeViewControllerForWallet;
+-(QRCodeViewController*)createQRCodeViewControllerForSend;
+-(QRCodeViewController*)createQRCodeViewControllerForSubscribe;
 
 // Pop ups
 - (NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
@@ -115,6 +123,6 @@
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
--(UIViewController*)createTabFlow;
+-(UITabBarController <TabbarOutput>*)createTabFlow;
 
 @end

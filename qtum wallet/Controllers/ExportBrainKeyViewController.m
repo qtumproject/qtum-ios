@@ -41,7 +41,7 @@
 
 -(void)configurationBrainKeyLabel{
     self.brainKeyView.text =
-    self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] сurrentWallet].seedWords];
+    self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] currentWallet].seedWords];
     [self.brainKeyView sizeToFit];
 }
 
@@ -53,10 +53,6 @@
     pasteboard.string = self.brainKey;
     
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForBrainCodeCopied] presenter:nil completion:nil];
-}
-
-- (IBAction)actionContinue:(id)sender {
-    [[ApplicationCoordinator sharedInstance] startMainFlow];
 }
 
 - (IBAction)shareButtonWasPressed:(id)sender

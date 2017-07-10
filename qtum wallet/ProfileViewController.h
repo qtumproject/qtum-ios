@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProfileOutput.h"
+#import "Presentable.h"
 
-@class LanguageCoordinator;
+@class ProfileTableViewCell;
 
-@interface ProfileViewController : BaseViewController
+@interface ProfileViewController : BaseViewController <ProfileOutput, UITableViewDelegate, UITableViewDataSource, Presentable>
 
-- (void)saveLanguageCoordinator:(LanguageCoordinator *)languageCoordinator;
+@property (nonatomic, weak) id<ProfileOutputDelegate> delegate;
+
+-(UIView *)getFooterView;
+-(UIView *)getHighlightedView;
+-(void)configurateCell:(ProfileTableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath;
 
 @end

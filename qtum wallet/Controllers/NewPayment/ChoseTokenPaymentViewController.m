@@ -12,6 +12,7 @@
 @interface ChoseTokenPaymentViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (copy, nonatomic) NSArray <Contract*>* tokens;
 
 @end
 
@@ -19,33 +20,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tokens = [[ContractManager sharedInstance] allActiveTokens];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenDidChange) name:kTokenDidChange object:nil];
 }
 
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - Private Methods
-
--(void)tokenDidChange {
-    self.tokens = [[ContractManager sharedInstance] allActiveTokens];
-    if (!self.tokens.count) {
-        [self.navigationController popViewControllerAnimated:NO];
-    } else {
-        __weak __typeof(self)weakSelf = self;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.tableView reloadData];
-        });
-    }
-}
-
--(void)updateTable {
+-(void)viewWillAppear:(BOOL)animated {
     
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
+-(void)updateWithTokens:(NSArray <Contract*>*) tokens {
+    
+    self.tokens = tokens;
     __weak __typeof(self)weakSelf = self;
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.tokens = [[ContractManager sharedInstance] allActiveTokens];
+        
         [weakSelf.tableView reloadData];
     });
 }
@@ -58,23 +47,26 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     Contract* token = self.tokens[indexPath.row];
     if ([token isEqual:self.activeToken]) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         self.activeToken = nil;
-        [self.delegate resetToDefaults];
+        [self.delegate didResetToDefaults];
     } else {
         [self.delegate didSelectTokenIndexPath:indexPath withItem:token];
 
     }
 }
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     [self.delegate didDeselectTokenIndexPath:indexPath withItem:self.tokens[indexPath.row]];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return self.tokens.count;
 }
 
@@ -94,7 +86,8 @@
 }
 
 - (IBAction)didPressedBackAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self.delegate didPressedBackAction];
 }
 
 @end

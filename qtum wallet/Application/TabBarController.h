@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TabBarCoordinator;
+#import "TabbarOutput.h"
+#import "TabbarOutputDelegate.h"
 
-@protocol TabBarCoordinatorDelegate;
+@interface TabBarController : UITabBarController <TabbarOutput>
 
-@interface TabBarController : UITabBarController
-
-@property (weak,nonatomic) id <TabBarCoordinatorDelegate> coordinatorDelegate;
+@property (weak,nonatomic) id <TabbarOutputDelegate> outputDelegate;
 @property (assign,nonatomic) BOOL isReload;
 
--(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount;
+-(void)storeSendReference:(UIViewController*)sendController;
 
 @end

@@ -27,19 +27,10 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];    
 }
 
 -(void)dealloc{
@@ -56,13 +47,15 @@
     [self.view layoutIfNeeded];
 }
 
+-(void)keyboardDidShow:(NSNotification *)sender {
+    //need to be overrided
+}
+
 #pragma mark - Configuration
 
 #pragma mark - Privat Methods
 
--(void)validateAndSendPin{
-    
-}
+-(void)validateAndSendPin { }
 
 -(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed{
     if (reversed) {
@@ -89,6 +82,7 @@
 }
 
 -(void)accessPinDenied {
+    
     [self shakeAndClearText];
     [self actionIncorrectPin];
     [self.firstSymbolTextField becomeFirstResponder];
@@ -125,6 +119,7 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     return YES;
 }
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     if ([textField isEqual:self.firstSymbolTextField]) {
         self.firstInputViewHeight.constant = 4;

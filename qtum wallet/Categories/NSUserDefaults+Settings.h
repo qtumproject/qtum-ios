@@ -37,4 +37,7 @@
 + (void)saveIsHaveWalletKey:(NSString*) key;
 + (NSString*)isHaveWalletKey;
 
++ (void)saveIsDarkSchemeSetting:(BOOL)value;
++ (BOOL)isDarkSchemeSetting;
+
 @end

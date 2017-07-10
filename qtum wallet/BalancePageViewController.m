@@ -102,7 +102,7 @@
 -(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     
     NSUInteger index = [self.controllers indexOfObject: [pageViewController.viewControllers firstObject]];
-    self.currentIndex = index;
+    [self changeCurrentIndex:index];
 }
 
 #pragma makr - Public Methods
@@ -114,7 +114,7 @@
     }
 
     [self setViewControllers:@[self.controllers[index]] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:nil];
-    self.currentIndex = index;
+    [self changeCurrentIndex:index];
 }
 
 -(void)scrollToRootIfNeededAnimated:(BOOL)animated{
@@ -136,6 +136,13 @@
 
 - (void)setScrollEnable:(BOOL)enable {
     self.scrollView.scrollEnabled = enable;
+}
+
+#pragma mark - Private Methods
+
+- (void)changeCurrentIndex:(NSInteger)index {
+    
+    self.currentIndex = index;
 }
 
 #pragma mark - UIScrollViewDelegate

@@ -9,7 +9,6 @@
 #import "ApplicationCoordinator.h"
 #import "CreatePinRootController.h"
 #import "PinViewController.h"
-#import "SettingsViewController.h"
 #import "TabBarController.h"
 #import "UIViewController+Extension.h"
 #import "ControllersFactory.h"
@@ -17,22 +16,31 @@
 #import "TabBarCoordinator.h"
 #import "RPCRequestManager.h"
 #import "LanguageCoordinator.h"
-#import "ProfileViewController.h"
 #import "TemplateManager.h"
 #import "NSUserDefaults+Settings.h"
+#import "NotificationManager.h"
+#import "AuthCoordinator.h"
+#import "LoginCoordinator.h"
+#import "SecurityCoordinator.h"
+#import "AppDelegate.h"
+#import "ConfirmPinCoordinator.h"
+#import "OpenURLManager.h"
+#import "ProfileCoordinator.h"
 
 
-@interface ApplicationCoordinator ()
+@interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
 @property (strong,nonatomic) AppDelegate* appDelegate;
-@property (strong,nonatomic) TabBarController* router;
-@property (strong,nonatomic) ControllersFactory* controllersFactory;
-@property (strong,nonatomic) UIViewController* viewController;
-@property (weak,nonatomic) UINavigationController* navigationController;
-@property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
 @property (strong,nonatomic) NotificationManager* notificationManager;
+@property (strong,nonatomic) ControllersFactory* controllersFactory;
+
+@property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
 @property (weak,nonatomic) LoginCoordinator* loginCoordinator;
 @property (weak,nonatomic) SecurityCoordinator* securityCoordinator;
+
+@property (strong,nonatomic) UIViewController* viewController;
+@property (weak,nonatomic) UINavigationController* navigationController;
+
 @property (assign, nonatomic) BOOL securityFlowRunning;
 @property (assign, nonatomic) BOOL authFlowRunning;
 @property (assign, nonatomic) BOOL mainFlowRunning;
@@ -66,18 +74,20 @@
     if (self != nil) {
         _controllersFactory = [ControllersFactory sharedInstance];
         _notificationManager = [NotificationManager new];
+        _openUrlManager = [OpenURLManager new];
         _requestManager = [AppSettings sharedInstance].isRPC ? [RPCRequestManager sharedInstance] : [RequestManager sharedInstance];
     }
     return self;
 }
 
-#pragma mark - Public Methods
+#pragma mark - Lazy Getters
 
-#pragma mark - Privat Methods
-
--(AppDelegate*)appDelegate{
+-(AppDelegate*)appDelegate {
+    
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
+
+#pragma mark - Privat Methods
 
 -(void)prepareDataObserving {
     
@@ -91,8 +101,7 @@
     });
 }
 
-#pragma mark - Lazy Getters
-
+#pragma mark - Public Methods
 
 #pragma mark - Start
 
@@ -103,21 +112,6 @@
     } else {
         [self startAuthFlow];
     }
-}
-
-#pragma mark - Navigation
-
-
--(void)pushViewController:(UIViewController*) controller animated:(BOOL)animated{
-//    [self.router pushViewController:controller animated:animated];
-}
-
--(void)setViewController:(UIViewController*) controller animated:(BOOL)animated{
-    [self.router setViewControllers:@[controller] animated:animated];
-}
-
--(void)presentAsModal:(UIViewController*) controller animated:(BOOL)animated{
-//    [self.root presentViewController:controller animated:animated completion:nil];
 }
 
 #pragma mark - ConfirmPinCoordinatorDelegate
@@ -182,9 +176,8 @@
     
     [self removeDependency:coordinator];
     [self startMainFlow];
+    [self prepareDataObserving];
 }
-
-#pragma mark - Presenting Controllers
 
 #pragma mark - Flows
 
@@ -207,14 +200,15 @@
 -(void)logout {
     
     [self startAuthFlow];
-    [self storeAuthorizedFlag:NO andMainAddress:nil];
     [self removeDependency:self.tabCoordinator];
     [[WalletManager sharedInstance] stopObservingForAllSpendable];
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
-    [self.notificationManager removeToken];
+    [self.notificationManager clear];
+    [self.openUrlManager clear];
     [[WalletManager sharedInstance] clear];
     [[ContractManager sharedInstance] clear];
     [[TemplateManager sharedInstance] clear];
+
 }
 
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler {
@@ -264,21 +258,8 @@
     [self addDependency:coordinator];
 }
 
--(void)startChangePinFlow {
-    
-}
-
 -(void)coordinatorRequestForLogin {
     [self startLoginFlow];
-}
-
--(void)startWalletFlow {
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"StartViewController"];
-    UINavigationController* rootNavigation = [[UINavigationController alloc]initWithRootViewController:viewController];
-    rootNavigation.navigationBar.hidden = YES;
-    self.appDelegate.window.rootViewController = rootNavigation;
 }
 
 - (void)startChangedLanguageFlow {
@@ -287,10 +268,18 @@
     NSInteger profileIndex = 1;
     [self.tabCoordinator showControllerByIndex:profileIndex];
     UINavigationController *vc = (UINavigationController *)[self.tabCoordinator getViewControllerByIndex:profileIndex];
-    ProfileViewController *profile = vc.viewControllers[0];
-    LanguageCoordinator *languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:vc];
-    [profile saveLanguageCoordinator:languageCoordinator];
-    [languageCoordinator startWithoutAnimation];
+    
+    ProfileCoordinator *coordinator = [[ProfileCoordinator alloc] initWithNavigationController:vc];
+    [coordinator start];
+    [self.tabCoordinator addDependency:coordinator];
+    [coordinator showLanguage];
+}
+
+- (void)startFromOpenURLWithAddress:(NSString*) address andAmount:(NSString*) amount {
+    
+    self.adress = address;
+    self.amount = amount;
+    [self start];
 }
 
 -(void)startMainFlow {
@@ -299,17 +288,25 @@
     self.authFlowRunning = NO;
     self.loginFlowRunning = NO;
 
-    TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
+    UITabBarController <TabbarOutput>* controller = [self.controllersFactory createTabFlow];
+    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];
+    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
+    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
+    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
+    [controller setControllerForNews:news forSend:send forWallet:wallet forProfile:profile];
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
-    controller.coordinatorDelegate = coordinator;
+    controller.outputDelegate = coordinator;
     self.tabCoordinator = coordinator;
     [self addDependency:coordinator];
-    [coordinator start];
+    
     if (self.adress) {
-        [controller selectSendControllerWithAdress:self.adress andValue:self.amount];
+        [coordinator startFromSendWithAddress:self.adress andAmount:self.amount];
+    } else {
+        [coordinator start];
+
     }
-    self.router = controller;
-    [self storeAuthorizedFlag:YES andMainAddress:[WalletManager sharedInstance].сurrentWallet.mainAddress];
+
+    [self.openUrlManager storeAuthToYesWithAdddress:[WalletManager sharedInstance].currentWallet.mainAddress];
 }
 
 -(void)restartMainFlow {
@@ -317,37 +314,19 @@
     if (self.tabCoordinator) {
         [self removeDependency:self.tabCoordinator];
     }
-    TabBarController* controller = (TabBarController*)[self.controllersFactory createTabFlow];
+    
+    UITabBarController <TabbarOutput>* controller = [self.controllersFactory createTabFlow];
     controller.isReload = YES;
+    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];
+    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
+    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
+    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
+    [controller setControllerForNews:news forSend:send forWallet:wallet forProfile:profile];
+    controller.outputDelegate = self.tabCoordinator;
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
     self.tabCoordinator = coordinator;
     [self addDependency:coordinator];
-    controller.coordinatorDelegate = self.tabCoordinator;
-    [self.tabCoordinator start];
-    self.router = controller;
-}
-
-#pragma iMessage Methods
-
--(void)storeAuthorizedFlag:(BOOL)flag andMainAddress:(NSString *)address {
-
-    [NSUserDefaults saveIsHaveWalletKey:flag ? @"YES" : @"NO" ];
-    [NSUserDefaults saveWalletAddressKey:address];
-}
-
--(void)launchFromUrl:(NSURL*)url {
-    [self pareceUrl:url];
-    [self start];
-}
-
--(void)pareceUrl:(NSURL*)url {
-
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
-                                                resolvingAgainstBaseURL:NO];
-    NSArray *queryItems = urlComponents.queryItems;
-    
-    self.adress = [NSString valueForKey:@"adress" fromQueryItems:queryItems];
-    self.amount = [NSString valueForKey:@"amount" fromQueryItems:queryItems];
+    [coordinator start];
 }
 
 @end

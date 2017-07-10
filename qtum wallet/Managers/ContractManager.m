@@ -14,6 +14,7 @@
 #import "ContractArgumentsInterpretator.h"
 #import "NSData+Extension.h"
 #import "TemplateManager.h"
+#import "NotificationManager.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";

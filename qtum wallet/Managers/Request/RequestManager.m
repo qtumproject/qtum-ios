@@ -312,7 +312,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 - (void)startObservingAdresses:(NSArray*) addresses{
     self.socketManager = [SocketManager new];
     self.socketManager.delegate = self;
-    [self.socketManager startAndSubscribeWithAddresses:[[WalletManager sharedInstance] сurrentWallet].allKeysAdreeses andHandler:^{
+    [self.socketManager startAndSubscribeWithAddresses:[[WalletManager sharedInstance] currentWallet].allKeysAdreeses andHandler:^{
     }];
 }
 

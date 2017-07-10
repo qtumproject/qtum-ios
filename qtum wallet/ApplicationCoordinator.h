@@ -7,41 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppDelegate.h"
-#import "AuthCoordinator.h"
-#import "LoginCoordinator.h"
-#import "SecurityCoordinator.h"
-#import "ConfirmPinCoordinator.h"
-#import "NotificationManager.h"
+#import "BaseCoordinator.h"
+
+@class NotificationManager;
+@class OpenURLManager;
 
 @protocol ApplicationCoordinatorDelegate <NSObject>
 
 @end
 
-@interface ApplicationCoordinator : BaseCoordinator <Coordinatorable, ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
+@interface ApplicationCoordinator : BaseCoordinator
 
 @property (strong,nonatomic,readonly) NotificationManager* notificationManager;
+@property (strong,nonatomic,readonly) OpenURLManager* openUrlManager;
 @property (strong,nonatomic) id <Requestable> requestManager;
 
 -(void)start;
 //flows
 
-- (void)startMainFlow;
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler;
 - (void)startSecurityFlowWithHandler:(void(^)(BOOL)) handler;
-- (void)startWalletFlow;
-- (void)startCreatePinFlowWithCompletesion:(void(^)()) completesion;
-- (void)startChangePinFlow;
 - (void)startChangedLanguageFlow;
+- (void)startFromOpenURLWithAddress:(NSString*) address andAmount:(NSString*) amount;
 
-- (void)showWallet;
-- (void)showExportBrainKeyAnimated:(BOOL)animated;
 - (void)logout;
-- (void)pushViewController:(UIViewController*) controller animated:(BOOL)animated;
-- (void)setViewController:(UIViewController*) controller animated:(BOOL)animated;
-
-//imessage
-- (void)launchFromUrl:(NSURL*)url;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

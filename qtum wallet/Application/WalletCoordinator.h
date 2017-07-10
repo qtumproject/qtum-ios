@@ -16,23 +16,23 @@
 @protocol WalletCoordinatorDelegate <NSObject>
 
 @required
-- (void)reloadTableViewData;
+
+// Table reload
 - (void)refreshTableViewData;
-- (void)refreshTableViewBalanceLocal:(BOOL)isLocal;
-- (void)qrCodeScannedWithDict:(NSDictionary*) dict;
-- (void)viewWillAppear;
+
+// Show
 - (void)showAddressInfoWithSpendable:(id <Spendable>) spendable;
-- (void)pageDidChange:(NSInteger) page;
+
+// Some actions
+- (void)didQRCodeScannedWithDict:(NSDictionary*)dict;
 - (void)didBackPressed;
-- (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
-- (void)didDeselectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item;
-- (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
+- (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*)item;
 
 @end
 
 @protocol TabBarCoordinatorDelegate;
 
-@interface WalletCoordinator : BaseCoordinator <WalletCoordinatorDelegate,Coordinatorable>
+@interface WalletCoordinator : BaseCoordinator <WalletCoordinatorDelegate, Coordinatorable>
 
 @property (weak,nonatomic) id <TabBarCoordinatorDelegate> delegate;
 

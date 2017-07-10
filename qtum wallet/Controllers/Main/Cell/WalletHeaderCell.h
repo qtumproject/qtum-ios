@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WalletCoordinator.h"
-#import "CustomPageControl.h"
+#import "PageControl.h"
 #import "AnimatedLabelTableViewCell.h"
 
 typedef enum {
@@ -18,17 +18,14 @@ typedef enum {
     HeaderCellTypeWithoutAll
 } HeaderCellType;
 
-static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIdentifire";
-
 @interface WalletHeaderCell : AnimatedLabelTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedValue;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *typeWalletLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressValueLabel;
 @property (weak, nonatomic) IBOutlet UIButton *showAddresButton;
-@property (weak, nonatomic) IBOutlet CustomPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet PageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UILabel *notConfirmedTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *separatorView;
 @property (weak, nonatomic) IBOutlet UILabel *availableTitleLabel;
@@ -36,12 +33,15 @@ static NSString *WalletTypeCellWithCollectionIdentifire = @"WalletHeaderCellIden
 @property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak, nonatomic) id <Spendable> spendable;
 
+@property (nonatomic, readonly) HeaderCellType type;
+
 - (void)setData:(id <Spendable>)wallet;
 - (void)setCellType:(HeaderCellType)type;
-
 - (void)cellYPositionChanged:(CGFloat)yPosition;
+
 - (BOOL)needShowHeader:(CGFloat)yPosition;
 
-+ (CGFloat)getHeaderHeight;
+- (CGFloat)percentForShowHideHeader:(CGFloat)yPosition;
+- (CGFloat)getHeaderHeight;
 
 @end

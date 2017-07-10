@@ -9,24 +9,26 @@
 #import "TabBarCoordinator.h"
 #import "WalletCoordinator.h"
 #import "NewsCoordinator.h"
+#import "SendCoordinator.h"
+#import "ProfileCoordinator.h"
+#import "AppDelegate.h"
 
-@interface TabBarCoordinator ()
+@interface TabBarCoordinator () <NewsCoordinatorDelegate, SendCoordinatorDelegate>
 
-@property (strong,nonatomic) TabBarController* tabBarContoller;
+@property (strong,nonatomic) UITabBarController <TabbarOutput>* tabbarOutput;
 @property (assign,nonatomic) BOOL walletsAlreadyStarted;
 @property (assign,nonatomic) BOOL sendAlreadyStarted;
 @property (assign,nonatomic) BOOL profileAlreadyStarted;
 @property (assign,nonatomic) BOOL newsAlreadyStarted;
 
-
 @end
 
 @implementation TabBarCoordinator
 
--(instancetype)initWithTabBarController:(TabBarController*)tabBarController{
+-(instancetype)initWithTabBarController:(UITabBarController<TabbarOutput>*)tabBarController{
     self = [super init];
     if (self) {
-        _tabBarContoller = tabBarController;
+        _tabbarOutput = tabBarController;
     }
     return self;
 }
@@ -38,12 +40,12 @@
 #pragma mark - Coordinatorable
 
 -(void)start {
-    ((AppDelegate*)[UIApplication sharedApplication].delegate).window.rootViewController = self.tabBarContoller;
+    ((AppDelegate*)[UIApplication sharedApplication].delegate).window.rootViewController = [self.tabbarOutput toPresente];
 }
 
 #pragma mark - TabBarCoordinatorDelegate
 
--(void)newsTabDidSelectedWithController:(UIViewController*)controller{
+-(void)didSelecteNewsTabWithController:(UIViewController*)controller{
     
     if (!self.newsAlreadyStarted) {
         self.newsAlreadyStarted = YES;
@@ -53,22 +55,32 @@
         [self addDependency:coordinator];
     }
 }
--(void)sendTabDidSelectedWithController:(UIViewController*)controller{
+
+-(void)didSelecteSendTabWithController:(UIViewController*)controller{
     
     if (!self.sendAlreadyStarted) {
         self.sendAlreadyStarted = YES;
-        [self checkTabsController:controller];
-    }
-}
--(void)profileTabDidSelectedWithController:(UIViewController*)controller{
-    
-    if (!self.profileAlreadyStarted) {
-        self.profileAlreadyStarted = YES;
+        SendCoordinator* coordinator = [[SendCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
+        coordinator.delegate = self;
+        [coordinator start];
+        [self addDependency:coordinator];
         [self checkTabsController:controller];
     }
 }
 
--(void)walletTabDidSelectedWithController:(UIViewController*)controller{
+-(void)didSelecteProfileTabWithController:(UIViewController*)controller{
+    
+    if (!self.profileAlreadyStarted) {
+        self.profileAlreadyStarted = YES;
+        [self checkTabsController:controller];
+        
+        ProfileCoordinator *coordinator = [[ProfileCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
+        [coordinator start];
+        [self addDependency:coordinator];
+    }
+}
+
+-(void)didSelecteWalletTabWithController:(UIViewController*)controller{
     
     if (!self.walletsAlreadyStarted) {
         self.walletsAlreadyStarted = YES;
@@ -85,15 +97,28 @@
 }
 
 -(void)createPaymentFromWalletScanWithDict:(NSDictionary*) dict{
-    [self.tabBarContoller selectSendControllerWithAdress:dict[@"publicAddress"] andValue:dict[@"amount"]];
+    [self.tabbarOutput selectSendControllerWithAdress:dict[@"publicAddress"] andValue:dict[@"amount"]];
 }
 
--(void)showControllerByIndex:(NSInteger)index{
-    [self.tabBarContoller setSelectedViewController:self.tabBarContoller.viewControllers[index]];
+-(void)showControllerByIndex:(NSInteger)index {
+    
+    [self.tabbarOutput setSelectedViewController:self.tabbarOutput.viewControllers[index]];
 }
 
--(UIViewController *)getViewControllerByIndex:(NSInteger)index{
-    return self.tabBarContoller.viewControllers[index];
+-(UIViewController *)getViewControllerByIndex:(NSInteger)index {
+    
+    return self.tabbarOutput.viewControllers[index];
+}
+
+- (void)startFromSendWithAddress:(NSString*)address andAmount:(NSString*) amount {
+    [self start];
+    [self.tabbarOutput selectSendControllerWithAdress:address andValue:amount];
+}
+
+
+#pragma mark - NewsCoordinatorDelegate
+
+-(void)refreshTableViewData {
 }
 
 @end

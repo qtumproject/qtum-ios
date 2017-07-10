@@ -32,8 +32,8 @@
         
         AVMetadataMachineReadableCodeObject *code = codes.firstObject;
         
-        if ([weakSelf.delegate respondsToSelector:@selector(qrCodeScanned:)]) {
-            [weakSelf.delegate qrCodeScanned:[QRCodeManager getNewPaymentDictionaryFromString:code.stringValue]];
+        if ([weakSelf.delegate respondsToSelector:@selector(didQRCodeScannedWithDict:)]) {
+            [weakSelf.delegate didQRCodeScannedWithDict:[QRCodeManager getNewPaymentDictionaryFromString:code.stringValue]];
         }
     };
 }
@@ -76,8 +76,8 @@
 
 - (IBAction)backButtonWasPressed:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(backButtonPressed)]) {
-        [self.delegate backButtonPressed];
+    if ([self.delegate respondsToSelector:@selector(didBackPressed)]) {
+        [self.delegate didBackPressed];
     }else{
         [self.navigationController popToRootViewControllerAnimated:YES];
     }

@@ -12,10 +12,9 @@
 
 NSString *const ShareContractTokensText = @"It's my tokens";
 
-@interface TokenListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TokenListViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
 @end
 
@@ -38,17 +37,26 @@ NSString *const ShareContractTokensText = @"It's my tokens";
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     [self.delegate didSelectTokenIndexPath:indexPath withItem:self.tokens[indexPath.row]];
 }
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.delegate didDeselectTokenIndexPath:indexPath withItem:self.tokens[indexPath.row]];
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { return 0; }
+
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TokenCell *cell = (TokenCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 46;
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TokenCell *cell = (TokenCell*)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:NO];
 }
-
 
 #pragma mark - UITableViewDataSource
 
@@ -56,11 +64,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
     return self.tokens.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TokenCell* cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
-    [cell setupWithObject:self.tokens[indexPath.row]];
-    return cell;
-}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { return nil; }
 
 #pragma mark - Actions
 

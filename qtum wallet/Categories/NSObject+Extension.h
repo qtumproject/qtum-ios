@@ -14,5 +14,6 @@
 - (BOOL)isNull;
 - (void)setAssociatedObject:(id)associatedObjec;
 - (id)associatedObject;
+- (UIViewController*)toPresente;
 
 @end

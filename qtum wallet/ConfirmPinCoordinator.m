@@ -34,11 +34,11 @@
 
 -(void)start {
     
+    [self showSecurityLoginController];
+
     if ([AppSettings sharedInstance].isFingerprintEnabled) {
         [self showFingerprint];
     }
-    
-    [self showSecurityLoginController];
 }
 
 #pragma mark - Presentation
@@ -59,15 +59,20 @@
     
     __weak __typeof(self) weakSelf = self;
     
+    CGFloat touchIdDelayAnimation = 0.25;
+    
     if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
         [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                   localizedReason:reason
                             reply:^(BOOL success, NSError *error) {
-                                if (success) {
-                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(touchIdDelayAnimation * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                    
+                                    if (success) {
                                         [weakSelf loginUser];
-                                    });
-                                }
+                                    } else {
+                                        [weakSelf.loginOutput startEditing];
+                                    }
+                                });
                             }];
     }
 }

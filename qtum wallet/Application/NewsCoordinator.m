@@ -32,7 +32,7 @@
 
 #pragma mark - Coordinatorable
 
--(void)start{
+-(void)start {
     NewsController* controller = (NewsController*)self.navigationController.viewControllers[0];
     controller.delegate = self;
     self.delegateDataSource = [NewsDataSourceAndDelegate new];
