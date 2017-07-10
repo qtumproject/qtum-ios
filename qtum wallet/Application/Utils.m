@@ -84,6 +84,21 @@ UIColor *lightBlackColor78()
     return [UIColor colorWithRed:78/255.0f green:93/255.0f blue:111/255.0f alpha:1.0f];
 }
 
+UIColor *lightTabBarTopLineColor()
+{
+    return [UIColor colorWithRed:231/255.0f green:240/255.0f blue:242/255.0f alpha:1.0f];
+}
+
+UIColor *lightGrayColor()
+{
+    return [UIColor colorWithRed:83/255.0f green:97/255.0f blue:115/255.0f alpha:0.6f];
+}
+
+UIColor *lightDarkGrayColor()
+{
+    return [UIColor colorWithRed:83/255.0f green:97/255.0f blue:115/255.0f alpha:1.0f];
+}
+
 // colors setters depend on theme
 
 UIColor *textFieldUnderlineColorSelected()

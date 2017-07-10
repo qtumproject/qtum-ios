@@ -10,6 +10,6 @@
 
 @interface Appearance : NSObject
 
-+(void)setUp;
++ (void)setUp;
 
 @end
