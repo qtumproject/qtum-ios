@@ -159,6 +159,7 @@
 - (IBAction)didPressedNextAction:(id)sender {
     [self.delegate createStepOneNextDidPressedWithInputs:[self prepareInputsData]];
 }
+
 - (IBAction)didVoidTapAction:(id)sender {
     [self.view endEditing:YES];
 }
