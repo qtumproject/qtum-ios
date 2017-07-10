@@ -19,14 +19,18 @@
 + (UIViewController*) controllerInStoryboard:(NSString*) storyboard withIdentifire:(NSString*) identifire {
     
     NSMutableString *mutString = [identifire mutableCopy];
+    
     if ([identifire isEqualToString:@"NewPayment"] ||
         [identifire isEqualToString:@"WalletViewController"] ||
         [identifire isEqualToString:@"BalancePageViewController"] ||
         [identifire isEqualToString:@"TokenListViewController"] ||
-        [identifire isEqualToString:@"ProfileViewController"]) {
+        [identifire isEqualToString:@"ProfileViewController"] ||
+        [identifire isEqualToString:@"ChoseTokenPaymentViewController"] ||
+        [identifire isEqualToString:@"QRCodeViewController"]) {
+        
         if ([NSUserDefaults isDarkSchemeSetting]) {
             [mutString appendString:@"Dark"];
-        }else{
+        } else {
             [mutString appendString:@"Light"];
         }
     }

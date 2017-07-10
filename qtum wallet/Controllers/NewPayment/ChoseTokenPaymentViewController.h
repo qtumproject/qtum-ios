@@ -10,10 +10,11 @@
 #import "ChoseTokenPaymentOutput.h"
 #import "ChoseTokenPaymentOutputDelegate.h"
 #import "Presentable.h"
+#import "ChooseTokenPaymentDelegateDataSourceProtocol.h"
 
 @interface ChoseTokenPaymentViewController : BaseViewController <ChoseTokenPaymentOutput, Presentable>
 
-@property (weak, nonatomic) Contract* activeToken;
+@property (strong, nonatomic) id <ChooseTokenPaymentDelegateDataSourceProtocol> delegateDataSource;
 @property (weak, nonatomic) id <ChoseTokenPaymentOutputDelegate> delegate;
 
 @end

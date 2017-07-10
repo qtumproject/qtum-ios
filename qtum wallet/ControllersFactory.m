@@ -239,7 +239,7 @@
     return controller;
 }
 
--(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController{
+-(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController {
     ChoseTokenPaymentViewController* controller = (ChoseTokenPaymentViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"ChoseTokenPaymentViewController"];
     return controller;
 }

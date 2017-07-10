@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class WalletTableSource;
+@protocol ChooseTokenPaymentDelegateDataSourceProtocol;
 
 @interface TableSourcesFactory : NSObject
 
@@ -18,5 +19,6 @@
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 - (WalletTableSource *)createWalletSource;
+- (NSObject <ChooseTokenPaymentDelegateDataSourceProtocol> *)createSendTokenPaymentSource;
 
 @end

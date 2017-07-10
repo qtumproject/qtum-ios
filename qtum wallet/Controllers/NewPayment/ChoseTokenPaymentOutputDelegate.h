@@ -2,7 +2,7 @@
 //  ChoseTokenPaymentOutputDelegate.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 04.07.17.
+//  Created by Vladimir Lebedevich on 04.07.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
@@ -11,9 +11,6 @@
 @protocol ChoseTokenPaymentOutputDelegate <NSObject>
 
 @required
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
 - (void)didPressedBackAction;
-- (void)didResetToDefaults;
 
 @end
