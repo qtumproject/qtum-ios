@@ -37,7 +37,11 @@
     [self showSecurityLoginController];
 
     if ([AppSettings sharedInstance].isFingerprintEnabled) {
+        
         [self showFingerprint];
+    } else {
+        
+        [self.loginOutput startEditing];
     }
 }
 

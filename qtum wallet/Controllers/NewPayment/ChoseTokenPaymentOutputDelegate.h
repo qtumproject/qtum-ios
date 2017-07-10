@@ -11,9 +11,6 @@
 @protocol ChoseTokenPaymentOutputDelegate <NSObject>
 
 @required
-- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
 - (void)didPressedBackAction;
-- (void)didResetToDefaults;
 
 @end
