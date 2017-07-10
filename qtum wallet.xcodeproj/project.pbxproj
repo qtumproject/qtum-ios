@@ -241,6 +241,8 @@
 		E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */; };
 		E73ECB611EF15EB40088C89D /* iMessageTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */; };
 		E74636861DCB300800A13318 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E74636851DCB300800A13318 /* Utils.m */; };
+		E748578A1F13B25D00DCF9A6 /* TextFieldWithLineDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E74857891F13B25D00DCF9A6 /* TextFieldWithLineDark.m */; };
+		E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E748578D1F13B26E00DCF9A6 /* TextFieldWithLineLight.m */; };
 		E75220461F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75220451F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib */; };
 		E752204B1F0E70E60028D152 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E752204A1F0E70E60028D152 /* PageControl.m */; };
 		E760F4911F0F6D8B0056D042 /* BalancePageViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4901F0F6D8B0056D042 /* BalancePageViewControllerDark.m */; };
@@ -872,6 +874,10 @@
 		E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMessageTextFieldWithLine.m; sourceTree = "<group>"; };
 		E74636841DCB300800A13318 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		E74857881F13B25D00DCF9A6 /* TextFieldWithLineDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLineDark.h; sourceTree = "<group>"; };
+		E74857891F13B25D00DCF9A6 /* TextFieldWithLineDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldWithLineDark.m; sourceTree = "<group>"; };
+		E748578C1F13B26E00DCF9A6 /* TextFieldWithLineLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLineLight.h; sourceTree = "<group>"; };
+		E748578D1F13B26E00DCF9A6 /* TextFieldWithLineLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldWithLineLight.m; sourceTree = "<group>"; };
 		E75220451F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableHeaderViewLight.xib; sourceTree = "<group>"; };
 		E75220491F0E70E60028D152 /* PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControl.h; sourceTree = "<group>"; };
 		E752204A1F0E70E60028D152 /* PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl.m; sourceTree = "<group>"; };
@@ -1998,6 +2004,10 @@
 			children = (
 				E7396AFD1DDF394C0002CD47 /* TextFieldWithLine.h */,
 				E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */,
+				E74857881F13B25D00DCF9A6 /* TextFieldWithLineDark.h */,
+				E74857891F13B25D00DCF9A6 /* TextFieldWithLineDark.m */,
+				E748578C1F13B26E00DCF9A6 /* TextFieldWithLineLight.h */,
+				E748578D1F13B26E00DCF9A6 /* TextFieldWithLineLight.m */,
 				B32B32E41ECCC2FF0081260A /* AbiTextFieldWithLine.h */,
 				B32B32E51ECCC2FF0081260A /* AbiTextFieldWithLine.m */,
 			);
@@ -3129,6 +3139,7 @@
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
+				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
 				E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
@@ -3271,6 +3282,7 @@
 				E784F8C21F023C1800A513BF /* QStoreTableViewCell.m in Sources */,
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,
 				B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */,
+				E748578A1F13B25D00DCF9A6 /* TextFieldWithLineDark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

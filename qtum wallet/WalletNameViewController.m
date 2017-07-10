@@ -27,7 +27,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    [self configTextField];
+
     [self.nameTextField becomeFirstResponder];
 }
 
@@ -37,19 +37,6 @@
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - Configuration
-
--(void)configTextField{
-    UIColor *color = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1];
-    self.nameTextField.attributedPlaceholder =
-    [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Enter Name", "")
-                                    attributes:@{
-                                                 NSForegroundColorAttributeName: color,
-                                                 NSFontAttributeName : [UIFont fontWithName:@"simplonmono-regular" size:16.0]
-                                                 }
-     ];
 }
 
 #pragma mark - Notification
