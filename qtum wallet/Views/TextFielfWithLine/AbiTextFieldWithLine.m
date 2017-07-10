@@ -51,24 +51,10 @@
     _item = item;
 }
 
-- (BOOL)shouldChangeTextInRange:(UITextRange *)range replacementText:(NSString *)text {
-    if (self.item.type == UInt8Type || self.item.type == UInt256Type) {
-        NSCharacterSet *cset = [NSCharacterSet symbolCharacterSet];
-        NSRange range = [text rangeOfCharacterFromSet:cset];
-        
-        if (range.location == NSNotFound) {
-            return YES;
-        } else {
-            return NO;
-        }
-    }
-    return NO;
-}
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     if (self.item.type == UInt8Type || self.item.type == UInt256Type) {
-        NSCharacterSet *cset = [NSCharacterSet symbolCharacterSet];
+        NSCharacterSet *cset = [NSCharacterSet decimalDigitCharacterSet].invertedSet;
         NSRange range = [string rangeOfCharacterFromSet:cset];
         
         if (range.location != NSNotFound || (self.item.type == UInt8Type && [[textField.text stringByAppendingString:string] integerValue] > 255)) {
