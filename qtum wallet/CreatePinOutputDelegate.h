@@ -10,4 +10,7 @@
 
 @protocol CreatePinOutputDelegate <NSObject>
 
+-(void)didCancelPressedOnCreateWallet;
+-(void)didEntererFirstPin:(NSString*)pin;
+
 @end

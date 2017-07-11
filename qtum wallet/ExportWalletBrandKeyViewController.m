@@ -16,7 +16,10 @@
 
 @end
 
+
 @implementation ExportWalletBrandKeyViewController
+
+@synthesize delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,8 +58,9 @@
 }
 
 - (IBAction)actionContinue:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(didExportWallet)]) {
-        [self.delegate didExportWallet];
+    
+    if ([self.delegate respondsToSelector:@selector(didExportWalletPressed)]) {
+        [self.delegate didExportWalletPressed];
     }
 }
 

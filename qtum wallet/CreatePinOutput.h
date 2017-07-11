@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CreatePinOutputDelegate.h"
 
 @protocol CreatePinOutput <NSObject>
+
+@property (weak,nonatomic) id <CreatePinOutputDelegate> delegate;
 
 @end

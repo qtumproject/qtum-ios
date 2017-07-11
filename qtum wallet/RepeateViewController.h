@@ -8,20 +8,9 @@
 
 #import "PinController.h"
 #import "AuthCoordinator.h"
+#import "RepeateOutputDelegate.h"
+#import "RepeateOutput.h"
 
-@protocol RepeateViewControllerDelegate <NSObject>
-
--(void)didCreateWallet;
--(void)cancelCreateWallet;
--(void)didEnteredSecondTimePass:(NSString*)pass;
-
-@end
-
-@interface RepeateViewController : PinController
-
-@property (weak,nonatomic) id <RepeateViewControllerDelegate> delegate;
-
--(void)startCreateWallet;
--(void)endCreateWalletWithError:(NSError*)error;
+@interface RepeateViewController : PinController <RepeateOutput>
 
 @end

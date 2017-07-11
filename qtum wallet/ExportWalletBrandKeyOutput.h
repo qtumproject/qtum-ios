@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ExportWalletBrandKeyOutputDelegate.h"
 
 @protocol ExportWalletBrandKeyOutput <NSObject>
+
+@property (weak,nonatomic) id <ExportWalletBrandKeyOutputDelegate> delegate;
 
 @end

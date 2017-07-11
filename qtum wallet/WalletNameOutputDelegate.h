@@ -10,4 +10,7 @@
 
 @protocol WalletNameOutputDelegate <NSObject>
 
+-(void)didCancelPressedOnWalletName;
+-(void)didCreatedWalletPressedWithName:(NSString*)name;
+
 @end

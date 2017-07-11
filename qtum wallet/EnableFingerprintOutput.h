@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EnableFingerprintOutputDelegate.h"
 
 @protocol EnableFingerprintOutput <NSObject>
+
+@property (weak,nonatomic) id <EnableFingerprintOutputDelegate> delegate;
 
 @end

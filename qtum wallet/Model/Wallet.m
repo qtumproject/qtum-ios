@@ -46,7 +46,6 @@ NSInteger const USERS_KEYS_COUNT = 100;
         _countOfUsedKeys = USERS_KEYS_COUNT;
         _seedWords = seedWords;
         [_manager spendableDidChange:self];
-
     }
     return self;
 }

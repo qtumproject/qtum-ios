@@ -17,6 +17,8 @@
 
 @implementation WalletNameViewController
 
+@synthesize delegate;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -54,7 +56,7 @@
 
 #pragma mark - Notification
 
--(void)keyboardWillShow:(NSNotification *)sender{
+-(void)keyboardWillShow:(NSNotification *)sender {
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.buttonsBottomConstraint.constant = end.size.height;
     [self.view layoutIfNeeded];
@@ -68,16 +70,18 @@
 #pragma mark - Actions
 
 - (IBAction)actionConfirm:(id)sender {
+    
     [self.nameTextField resignFirstResponder];
-    if ([self.delegate respondsToSelector:@selector(didCreatedWalletName:)]) {
-        [self.delegate didCreatedWalletName:self.nameTextField.text];
+    if ([self.delegate respondsToSelector:@selector(didCreatedWalletPressedWithName:)]) {
+        [self.delegate didCreatedWalletPressedWithName:self.nameTextField.text];
     }
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
+    
     [self.nameTextField resignFirstResponder];
-    if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {
-        [self.delegate cancelCreateWallet];
+    if ([self.delegate respondsToSelector:@selector(didCancelPressedOnWalletName)]) {
+        [self.delegate didCancelPressedOnWalletName];
     }
 }
 

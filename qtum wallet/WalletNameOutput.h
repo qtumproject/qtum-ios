@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WalletNameOutputDelegate.h"
 
 @protocol WalletNameOutput <NSObject>
+
+@property (weak,nonatomic) id <WalletNameOutputDelegate> delegate;
 
 @end

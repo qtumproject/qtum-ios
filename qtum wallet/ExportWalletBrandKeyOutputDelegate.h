@@ -10,4 +10,6 @@
 
 @protocol ExportWalletBrandKeyOutputDelegate <NSObject>
 
+-(void)didExportWalletPressed;
+
 @end
