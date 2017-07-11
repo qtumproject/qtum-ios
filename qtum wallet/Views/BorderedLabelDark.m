@@ -14,4 +14,16 @@
     return customBlueColor();
 }
 
+- (UIColor *)getBackroundColor{
+    return [UIColor clearColor];
+}
+
+- (UIView *)getBorderView {
+    return [UIView new];
+}
+
+- (CGFloat)getInsets {
+    return 7.0f;
+}
+
 @end

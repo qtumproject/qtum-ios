@@ -25,31 +25,60 @@
     return self;
 }
 
+- (void)layoutSubviews {
+    
+    [self createAndAddConstraints];
+    [super layoutSubviews];
+    [self.superview layoutIfNeeded];
+    NSLog(@"%@", self.borderView);
+}
+
 -(void)configBorder{
-    self.borderView = [UIView new];
-    self.borderView.backgroundColor = [UIColor clearColor];
+    
+    self.borderView = [self getBorderView];
+    self.borderView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.borderView.backgroundColor = [self getBackroundColor];
     self.borderView.layer.borderColor = [self getBorderColor].CGColor;
     self.borderView.layer.borderWidth = 1;
     self.borderView.layer.cornerRadius = 2;
     self.borderView.layer.masksToBounds = YES;
-    [self.layer insertSublayer:self.borderView.layer atIndex:0];
 }
 
-- (void)drawTextInRect:(CGRect)rect{
-    [super drawTextInRect:rect];
-//    self.borderView.frame = CGRectMake(-7.0f, -7.0f, self.frame.size.width + 14.0f, self.frame.size.height + 16.0f);
-}
-
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
+- (void)createAndAddConstraints {
     
-    self.borderView.frame = CGRectMake(-7.0f, -7.0f, self.frame.size.width + 14.0f, self.frame.size.height + 16.0f);
+    if (self.borderView.superview) {
+        return;
+    }
+    
+    [self.superview insertSubview:self.borderView atIndex:0];
+    
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.borderView attribute:NSLayoutAttributeTop multiplier:1.0f constant:[self getInsets]];
+    
+    NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.borderView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:[self getInsets]];
+    
+    NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.borderView attribute:NSLayoutAttributeRight multiplier:1.0f constant:-[self getInsets]];
+    
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.borderView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-[self getInsets] - 2.0f];
+    
+    [self.superview addConstraints:@[top, left, right, bottom]];
 }
 
 #pragma mark - Public
 
 - (UIColor *)getBorderColor {
     return customBlueColor();
+}
+
+- (UIColor *)getBackroundColor{
+    return [UIColor clearColor];
+}
+
+- (UIView *)getBorderView {
+    return [UIView new];
+}
+
+- (CGFloat)getInsets {
+    return 14.0f;
 }
 
 @end

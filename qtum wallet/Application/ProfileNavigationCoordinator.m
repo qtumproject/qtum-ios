@@ -15,7 +15,6 @@
 @property (strong,nonatomic) NSString* pinNew;
 @property (strong,nonatomic) NSString* pinOld;
 @property (weak,nonatomic) PinViewController* pinController;
-@property (weak,nonatomic) LanguageViewController* languageController;
 
 @end
 
@@ -42,7 +41,7 @@
 
 #pragma mark - PinCoordinator
 
--(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
+- (void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success))completision {
     if (!self.pinOld) {
         if ([[WalletManager sharedInstance].PIN isEqualToString:pin]) {
             //old pin confirmed

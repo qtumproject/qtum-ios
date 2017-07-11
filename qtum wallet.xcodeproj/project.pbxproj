@@ -455,8 +455,8 @@
 		B3210D131E00052900365FB6 /* GradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLayer.m; sourceTree = "<group>"; };
 		B3210D181E00142100365FB6 /* ViewWithGradientPoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewWithGradientPoints.h; sourceTree = "<group>"; };
 		B3210D191E00142100365FB6 /* ViewWithGradientPoints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithGradientPoints.m; sourceTree = "<group>"; };
-		B3210D1E1E001EC200365FB6 /* PinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinViewController.h; sourceTree = "<group>"; };
-		B3210D1F1E001EC200365FB6 /* PinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinViewController.m; sourceTree = "<group>"; };
+		B3210D1E1E001EC200365FB6 /* PinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinViewController.h; path = Controllers/PinViewController.h; sourceTree = "<group>"; };
+		B3210D1F1E001EC200365FB6 /* PinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PinViewController.m; path = Controllers/PinViewController.m; sourceTree = "<group>"; };
 		B3210D211E002E2900365FB6 /* ApplicationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationCoordinator.h; path = "qtum wallet/ApplicationCoordinator.h"; sourceTree = SOURCE_ROOT; };
 		B3210D221E002E2900365FB6 /* ApplicationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationCoordinator.m; path = "qtum wallet/ApplicationCoordinator.m"; sourceTree = SOURCE_ROOT; };
 		B3210D241E0030DB00365FB6 /* Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearance.h; sourceTree = "<group>"; };
@@ -1080,6 +1080,8 @@
 		E7C101B71F13CBC700848526 /* BorderedLabelLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedLabelLight.m; sourceTree = "<group>"; };
 		E7C101B91F14B5DB00848526 /* InnerShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerShadowView.h; sourceTree = "<group>"; };
 		E7C101BA1F14B5DB00848526 /* InnerShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerShadowView.m; sourceTree = "<group>"; };
+		E7C101BD1F14ED7300848526 /* ChangePinOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePinOutput.h; sourceTree = "<group>"; };
+		E7C101BE1F14ED7C00848526 /* ChangePinOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePinOutputDelegate.h; sourceTree = "<group>"; };
 		E7CE63601F027EC200C147B9 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
 		E7CE63611F027EC200C147B9 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSearchTypeView.xib; sourceTree = "<group>"; };
@@ -1282,8 +1284,6 @@
 		B3210D1D1E001E8900365FB6 /* PIN */ = {
 			isa = PBXGroup;
 			children = (
-				B3210D1E1E001EC200365FB6 /* PinViewController.h */,
-				B3210D1F1E001EC200365FB6 /* PinViewController.m */,
 				B32EBFEF1E1E4711003AA578 /* CreatePinRootController.h */,
 				B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */,
 				B381CBE81F029CB200142252 /* SecurityPinView.h */,
@@ -1639,6 +1639,7 @@
 		B386F5AE1E1392B1004D231B /* Profile Flow */ = {
 			isa = PBXGroup;
 			children = (
+				E7C101BC1F14ED4900848526 /* ChangePinOutput */,
 				E760F4AC1F0FA5170056D042 /* ProfileOutput */,
 				E7EA2CB51ED42D9B00AFD5D0 /* LanguageOutput */,
 				E748579D1F13C43D00DCF9A6 /* ExportBrainKeyOutput */,
@@ -2525,6 +2526,17 @@
 			name = BorderedLabel;
 			sourceTree = "<group>";
 		};
+		E7C101BC1F14ED4900848526 /* ChangePinOutput */ = {
+			isa = PBXGroup;
+			children = (
+				E7C101BD1F14ED7300848526 /* ChangePinOutput.h */,
+				E7C101BE1F14ED7C00848526 /* ChangePinOutputDelegate.h */,
+				B3210D1E1E001EC200365FB6 /* PinViewController.h */,
+				B3210D1F1E001EC200365FB6 /* PinViewController.m */,
+			);
+			name = ChangePinOutput;
+			sourceTree = "<group>";
+		};
 		E7D241D61DE6D697003E507B /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -2710,16 +2722,16 @@
 				E7FD365F1DC73B6300748177 /* Spendable Controll Flow */,
 				E7FD36521DC72B4400748177 /* Model */,
 				E7FD363B1DC4D07E00748177 /* Supporting Files */,
-				E7FD36471DC4D07E00748177 /* Assets.xcassets */,
-				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
-				E7FD363C1DC4D07E00748177 /* main.m */,
-				B3C08B221ED45BCD00713B15 /* Tokens Templates */,
-				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
-				E7FD364C1DC4D07E00748177 /* Info.plist */,
-				B34BF46E1EFBEC8F00EED85A /* GoogleService-Info.plist */,
 				E7FD365E1DC73B2400748177 /* Shared Views */,
 				B33EAF081E5C5E52006125F3 /* Protocols */,
 				B33EAF001E5B3920006125F3 /* Storyboards */,
+				B3C08B221ED45BCD00713B15 /* Tokens Templates */,
+				E7FD36471DC4D07E00748177 /* Assets.xcassets */,
+				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
+				E7FD363C1DC4D07E00748177 /* main.m */,
+				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
+				E7FD364C1DC4D07E00748177 /* Info.plist */,
+				B34BF46E1EFBEC8F00EED85A /* GoogleService-Info.plist */,
 			);
 			path = "qtum wallet";
 			sourceTree = "<group>";

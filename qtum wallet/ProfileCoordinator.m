@@ -70,6 +70,7 @@
 
 - (void)didPressedChangePin {
     
+    
 }
 
 - (void)didPressedWalletBackup {
