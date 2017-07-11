@@ -24,7 +24,6 @@
 #import "HistoryViewController.h"
 #import "WalletNavigationController.h"
 #import "RecieveViewController.h"
-#import "HistoryItemViewController.h"
 #import "NoInternetConnectionPopUpViewController.h"
 #import "PhotoLibraryPopUpViewController.h"
 #import "CustomAbiInterphaseViewController.h"
@@ -65,6 +64,7 @@
 #import "FirstAuthOutput.h"
 #import "LanguageOutput.h"
 #import "ExportBrainKeyOutput.h"
+#import "HistoryItemOutput.h"
 
 @implementation ControllersFactory
 
@@ -192,8 +192,8 @@
     return controller;
 }
 
--(HistoryItemViewController*)createHistoryItem{
-    HistoryItemViewController* controller = (HistoryItemViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"HistoryItemViewController"];
+-(NSObject<HistoryItemOutput> *)createHistoryItem{
+    NSObject<HistoryItemOutput> *controller = (NSObject<HistoryItemOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"HistoryItemViewController"];
     return controller;
 }
 

@@ -9,24 +9,25 @@
 #import "HistoryItemViewController.h"
 #import "GradientViewWithAnimation.h"
 #import "HistoryElement.h"
-#import "HistoryItemHeaderView.h"
 #import "HistoryItemDelegateDataSource.h"
+#import "PageControl.h"
 
-CGFloat confirmedConstant = 150.0f;
-CGFloat notConfirmedConstant = 180.0f;
+@interface HistoryItemViewController () <UIScrollViewDelegate>
 
-@interface HistoryItemViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-@property (weak, nonatomic) IBOutlet UIView *topBoeardView;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cointType;
 @property (weak, nonatomic) IBOutlet UILabel *receivedTimeLabel;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong,nonatomic) HistoryItemDelegateDataSource* historyDelegateDataSource;
+
+@property (weak, nonatomic) IBOutlet UITableView *fromTable;
+@property (weak, nonatomic) IBOutlet UITableView *toTable;
+
 @property (weak, nonatomic) IBOutlet UILabel *fromToLabel;
-@property (weak, nonatomic) IBOutlet UIView *notConfirmedDesk;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBoardHeightConstraint;
+@property (weak, nonatomic) IBOutlet PageControl *pageControl;
+
+@property (strong,nonatomic) HistoryItemDelegateDataSource* fromHistoryTableSource;
+@property (strong,nonatomic) HistoryItemDelegateDataSource* toHistoryTableSource;
 
 @end
 
@@ -35,12 +36,14 @@ CGFloat notConfirmedConstant = 180.0f;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self configWithItem];
-    [self configTableView];
     
-    [self.pageControl setCurrentPage:0];
-    self.notConfirmedDesk.hidden = self.item.confirmed;
-    self.topBoardHeightConstraint.constant = self.item.confirmed ? confirmedConstant : notConfirmedConstant;
+    [self configWithItem];
+    [self configTables];
+    
+    [self.pageControl setPagesCount:2];
+    [self.pageControl setSelectedPage:0];
+    
+    self.scrollView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,40 +52,65 @@ CGFloat notConfirmedConstant = 180.0f;
 
 #pragma mark - Private Methods
 
--(void)configTableView{
+-(void)configTables {
     
-    UINib *nib = [UINib nibWithNibName:@"HistoryItemHeaderView" bundle:nil];
-    [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:HistoryItemHeaderViewIdentifier];
-    self.historyDelegateDataSource = [HistoryItemDelegateDataSource new];
-    self.historyDelegateDataSource.item = self.item;
-    self.tableView.delegate = self.historyDelegateDataSource;
-    self.tableView.dataSource = self.historyDelegateDataSource;
-    [self.tableView reloadData];
+    self.fromHistoryTableSource = [HistoryItemDelegateDataSource new];
+    self.fromHistoryTableSource.item = self.item;
+    self.fromHistoryTableSource.mode = From;
+    
+    self.toHistoryTableSource = [HistoryItemDelegateDataSource new];
+    self.toHistoryTableSource.item = self.item;
+    self.toHistoryTableSource.mode = To;
+    
+    self.fromTable.delegate = self.toHistoryTableSource;
+    self.fromTable.dataSource = self.toHistoryTableSource;
+    
+    self.toTable.delegate = self.toHistoryTableSource;
+    self.toTable.dataSource = self.toHistoryTableSource;
 }
 
--(void)configWithItem{
+- (void)configWithItem {
+    
     self.balanceLabel.text = [NSString stringWithFormat:@"%0.6f",self.item.amount.floatValue];
     self.receivedTimeLabel.text = self.item.fullDateString;
+}
+
+- (void)changeCurrentIndex:(NSInteger)index {
+    
+    [self.pageControl setSelectedPage:index];
+    self.fromToLabel.text = (index == 0) ? NSLocalizedString(@"From", @"From To Transaction") : NSLocalizedString(@"To", @"From To Transaction");
 }
 
 #pragma mark - Actions
 
 - (IBAction)actionBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate didBackPressed];
 }
 
-- (IBAction)didPressedPageControllAction:(id)sender {
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (self.pageControl.currentPage == 1) {
-        [self.pageControl setCurrentPage:0];
-        self.fromToLabel.text = NSLocalizedString(@"From", @"From To Transaction");
-        self.historyDelegateDataSource.mode = From;
-    } else {
-        [self.pageControl setCurrentPage:1];
-        self.fromToLabel.text = NSLocalizedString(@"To", @"From To Transaction");
-        self.historyDelegateDataSource.mode = To;
+    if (scrollView.contentOffset.x <= 0) {
+        scrollView.contentOffset = CGPointMake(0, 0);
+    } else if (scrollView.contentOffset.x >= scrollView.bounds.size.width) {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
     }
-    [self.tableView reloadData];
+    
+    if ((NSInteger)scrollView.contentOffset.x % (NSInteger)scrollView.bounds.size.width == 0) {
+        
+        NSInteger index = scrollView.contentOffset.x / scrollView.bounds.size.width;
+        [self changeCurrentIndex:index];
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    
+    if (scrollView.contentOffset.x <= 0) {
+        scrollView.contentOffset = CGPointMake(0, 0);
+    } else if (scrollView.contentOffset.x >= scrollView.bounds.size.width) {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+    }
 }
 
 @end

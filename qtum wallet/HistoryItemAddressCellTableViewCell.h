@@ -14,5 +14,6 @@ static NSString *HistoryItemAddressCellTableViewCellIdentifier = @"HistoryItemAd
 
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currencyLabel;
 
 @end

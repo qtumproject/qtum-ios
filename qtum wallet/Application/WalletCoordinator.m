@@ -11,12 +11,12 @@
 #import "WalletOutput.h"
 #import "BalancePageOutput.h"
 #import "TokenListOutput.h"
+#import "HistoryItemOutput.h"
 
 #import "WalletTableSource.h"
 #import "TabBarCoordinator.h"
 #import "HistoryDataStorage.h"
 #import "RecieveViewController.h"
-#import "HistoryItemViewController.h"
 #import "Spendable.h"
 #import "TokenDetailsViewController.h"
 #import "TokenDetailsTableSource.h"
@@ -32,7 +32,7 @@
 #import "NSString+Extension.h"
 #import "TransactionManager.h"
 
-@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
@@ -132,9 +132,10 @@
 
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item {
     
-    HistoryItemViewController* controller = (HistoryItemViewController*)[[ControllersFactory sharedInstance] createHistoryItem];
+    NSObject<HistoryItemOutput> *controller = [[ControllersFactory sharedInstance] createHistoryItem];
     controller.item = item;
-    [self.navigationController pushViewController:controller animated:YES];
+    controller.delegate = self;
+    [self.navigationController pushViewController:[controller toPresent] animated:YES];
 }
 
 #pragma mark - TokenListOutputDelegate
@@ -234,7 +235,6 @@
 }
 
 - (void)didBackPressed{
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
