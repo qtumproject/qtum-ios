@@ -23,7 +23,6 @@
 #import "SubscribeTokenViewController.h"
 #import "HistoryViewController.h"
 #import "WalletNavigationController.h"
-#import "RecieveViewController.h"
 #import "NoInternetConnectionPopUpViewController.h"
 #import "PhotoLibraryPopUpViewController.h"
 #import "CustomAbiInterphaseViewController.h"
@@ -65,6 +64,7 @@
 #import "LanguageOutput.h"
 #import "ExportBrainKeyOutput.h"
 #import "HistoryItemOutput.h"
+#import "RecieveOutput.h"
 
 @implementation ControllersFactory
 
@@ -187,8 +187,8 @@
     return controller;
 }
 
--(RecieveViewController*)createRecieveViewController{
-    RecieveViewController* controller = (RecieveViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"RecieveViewController"];
+-(NSObject<RecieveOutput> *)createRecieveViewController{
+    NSObject<RecieveOutput> *controller = (NSObject<RecieveOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"RecieveViewController"];
     return controller;
 }
 

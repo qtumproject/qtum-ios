@@ -36,6 +36,8 @@ UIColor *lightGrayColor();
 UIColor *lightDarkGrayColor();
 
 // colors setters depend on theme
+UIColor *getQRCodeBackroundColor();
+UIColor *getQRCodeMainColor();
 
 UIColor *lightTextFieldPlaceholderColor();
 UIColor *lightTextFieldLineDeselected();

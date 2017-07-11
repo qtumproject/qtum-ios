@@ -343,6 +343,8 @@
 		E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101BA1F14B5DB00848526 /* InnerShadowView.m */; };
 		E7C101C11F15073800848526 /* HistoryItemViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101C01F15073800848526 /* HistoryItemViewControllerDark.m */; };
 		E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101C31F15074A00848526 /* HistoryItemViewControllerLight.m */; };
+		E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101CB1F1529EC00848526 /* RecieveViewControllerDark.m */; };
+		E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */; };
 		E7CE63621F027EC200C147B9 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63611F027EC200C147B9 /* CustomSearchBar.m */; };
 		E7CE63651F028C0600C147B9 /* SelectSearchTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */; };
 		E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */; };
@@ -832,8 +834,8 @@
 		E703531A1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConfirmPurchasePopUp.storyboard; sourceTree = "<group>"; };
 		E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPurchasePopUpViewController.h; sourceTree = "<group>"; };
 		E703531D1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPurchasePopUpViewController.m; sourceTree = "<group>"; };
-		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
-		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RecieveViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecieveViewController.h; path = Controllers/RecieveViewController.h; sourceTree = "<group>"; };
+		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RecieveViewController.m; path = Controllers/RecieveViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E71271901EE9925600A130A0 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		E71271911EE9925600A130A0 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoaderPopUp.storyboard; sourceTree = "<group>"; };
@@ -1085,6 +1087,12 @@
 		E7C101C31F15074A00848526 /* HistoryItemViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewControllerLight.m; sourceTree = "<group>"; };
 		E7C101C51F15086100848526 /* HistoryItemOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryItemOutput.h; sourceTree = "<group>"; };
 		E7C101C61F15086A00848526 /* HistoryItemOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryItemOutputDelegate.h; sourceTree = "<group>"; };
+		E7C101C81F1529CE00848526 /* RecieveOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecieveOutput.h; sourceTree = "<group>"; };
+		E7C101C91F1529DA00848526 /* RecieveOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecieveOutputDelegate.h; sourceTree = "<group>"; };
+		E7C101CA1F1529EC00848526 /* RecieveViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewControllerDark.h; sourceTree = "<group>"; };
+		E7C101CB1F1529EC00848526 /* RecieveViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewControllerDark.m; sourceTree = "<group>"; };
+		E7C101CD1F1529F700848526 /* RecieveViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewControllerLight.h; sourceTree = "<group>"; };
+		E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewControllerLight.m; sourceTree = "<group>"; };
 		E7CE63601F027EC200C147B9 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
 		E7CE63611F027EC200C147B9 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSearchTypeView.xib; sourceTree = "<group>"; };
@@ -1240,6 +1248,7 @@
 		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
+				E7C101C71F15298400848526 /* RecieveOutput */,
 				E760F48E1F0F6CAA0056D042 /* BalancePageOutput */,
 				E7881B781F0BDC3400BD6AB2 /* WalletOutput */,
 				E73D36EE1ECF14AA009173BD /* TokenDetails */,
@@ -2004,15 +2013,6 @@
 			name = ContractScreen;
 			sourceTree = "<group>";
 		};
-		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
-			isa = PBXGroup;
-			children = (
-				E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */,
-				E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */,
-			);
-			name = Recieve;
-			sourceTree = "<group>";
-		};
 		E713A4781EEE964800A2FA40 /* RestoreContracts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2535,6 +2535,21 @@
 			name = ChangePinOutput;
 			sourceTree = "<group>";
 		};
+		E7C101C71F15298400848526 /* RecieveOutput */ = {
+			isa = PBXGroup;
+			children = (
+				E7C101C81F1529CE00848526 /* RecieveOutput.h */,
+				E7C101C91F1529DA00848526 /* RecieveOutputDelegate.h */,
+				E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */,
+				E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */,
+				E7C101CA1F1529EC00848526 /* RecieveViewControllerDark.h */,
+				E7C101CB1F1529EC00848526 /* RecieveViewControllerDark.m */,
+				E7C101CD1F1529F700848526 /* RecieveViewControllerLight.h */,
+				E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */,
+			);
+			name = RecieveOutput;
+			sourceTree = "<group>";
+		};
 		E7D241D61DE6D697003E507B /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -2773,7 +2788,6 @@
 		E7FD36531DC72B4F00748177 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E70550CA1DF96E2000B48DC1 /* Recieve */,
 				E7396AED1DDEF7F10002CD47 /* AddressList */,
 				E739105C1DE5E11F008145A8 /* Key */,
 				E73910501DE30B91008145A8 /* QRCode */,
@@ -3318,6 +3332,7 @@
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
+				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */,
 				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
@@ -3363,6 +3378,7 @@
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
+				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
 				B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				E74857931F13BA4100DCF9A6 /* LanguageViewControllerDark.m in Sources */,

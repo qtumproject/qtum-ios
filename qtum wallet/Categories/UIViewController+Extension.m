@@ -35,7 +35,8 @@
         [identifire isEqualToString:@"EnableFingerprintViewController"] || 
         [identifire isEqualToString:@"LanguageViewController"] ||
         [identifire isEqualToString:@"ExportBrainKeyViewController"] ||
-        [identifire isEqualToString:@"HistoryItemViewController"]) {
+        [identifire isEqualToString:@"HistoryItemViewController"] ||
+        [identifire isEqualToString:@"RecieveViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             
