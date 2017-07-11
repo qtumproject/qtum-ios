@@ -62,8 +62,8 @@
     self.toHistoryTableSource.item = self.item;
     self.toHistoryTableSource.mode = To;
     
-    self.fromTable.delegate = self.toHistoryTableSource;
-    self.fromTable.dataSource = self.toHistoryTableSource;
+    self.fromTable.delegate = self.fromHistoryTableSource;
+    self.fromTable.dataSource = self.fromHistoryTableSource;
     
     self.toTable.delegate = self.toHistoryTableSource;
     self.toTable.dataSource = self.toHistoryTableSource;
