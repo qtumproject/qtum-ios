@@ -61,6 +61,7 @@
 #import "TokenListOutput.h"
 #import "ProfileOutput.h"
 #import "LanguageOutput.h"
+#import "ExportBrainKeyOutput.h"
 
 @implementation ControllersFactory
 
@@ -171,6 +172,11 @@
 
 -(NSObject<LanguageOutput> *)createLanguageViewController{
     NSObject<LanguageOutput> *controller = (NSObject<LanguageOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"LanguageViewController"];
+    return controller;
+}
+
+-(NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController{
+    NSObject<ExportBrainKeyOutput> *controller = (NSObject<ExportBrainKeyOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ExportBrainKeyViewController"];
     return controller;
 }
 

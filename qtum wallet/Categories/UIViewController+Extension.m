@@ -27,7 +27,8 @@
         [identifire isEqualToString:@"ProfileViewController"] ||
         [identifire isEqualToString:@"ChoseTokenPaymentViewController"] ||
         [identifire isEqualToString:@"QRCodeViewController"] ||
-        [identifire isEqualToString:@"LanguageViewController"]) {
+        [identifire isEqualToString:@"LanguageViewController"] ||
+        [identifire isEqualToString:@"ExportBrainKeyViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             [mutString appendString:@"Dark"];

@@ -201,7 +201,6 @@
 
 - (void)actionWalletBackup {
     [self.delegate didPressedWalletBackup];
-    [self performSegueWithIdentifier:@"exportBrainKey" sender:nil];
 }
 
 - (void)actionAbout {

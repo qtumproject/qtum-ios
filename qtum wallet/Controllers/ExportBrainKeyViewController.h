@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExportBrainKeyOutput.h"
+#import "Presentable.h"
 
-@interface ExportBrainKeyViewController : BaseViewController
+@interface ExportBrainKeyViewController : BaseViewController <ExportBrainKeyOutput, Presentable>
+
+@property (nonatomic, weak) id<ExportBrainKeyOutputDelegate> delegate;
 
 @end

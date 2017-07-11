@@ -93,3 +93,8 @@ UIColor *lightTextFieldPlaceholderColor()
 {
     return [UIColor colorWithRed:166/255.0f green:174/255.0f blue:183/255.0f alpha:0.5f];
 }
+
+UIColor *lightBorderLabelBackroundColor()
+{
+    return [UIColor colorWithRed:247/255.0f green:247/255.0f blue:247/255.0f alpha:1.0f];
+}

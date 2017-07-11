@@ -261,7 +261,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="k4c-yZ-wIZ" kind="show" identifier="exportBrainKey" id="OW9-aj-Vr9"/>
                         <segue destination="xNM-Gw-MqH" kind="show" identifier="changePin" id="j5n-Ve-2AN"/>
                     </connections>
                 </viewController>
@@ -272,7 +271,7 @@
         <!--Export Brain Key View Controller-->
         <scene sceneID="MKl-gh-VNj">
             <objects>
-                <viewController storyboardIdentifier="ExportBrainKeyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k4c-yZ-wIZ" customClass="ExportBrainKeyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExportBrainKeyViewControllerDark" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k4c-yZ-wIZ" customClass="ExportBrainKeyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Mq-Nt-y1b"/>
                         <viewControllerLayoutGuide type="bottom" id="4lt-9T-Gzd"/>
@@ -298,7 +297,7 @@
                                                 </state>
                                                 <state key="highlighted" image="back"/>
                                                 <connections>
-                                                    <segue destination="hlq-HB-AxO" kind="unwind" unwindAction="unwingToProfile:" id="hFn-oH-ppb"/>
+                                                    <action selector="actionBack:" destination="k4c-yZ-wIZ" eventType="touchUpInside" id="Yhl-pE-9bo"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Brain-CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKF-SE-wQA">
@@ -343,7 +342,7 @@
                                     <constraint firstItem="FF8-te-vyz" firstAttribute="leading" secondItem="1Cv-pK-HAD" secondAttribute="leading" id="un4-bu-GBe"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" asdasd asdasd asdasd asfd asdf gsdf hgja aqt rejdf цуквапы" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OH6-AZ-FfC" customClass="BorderedLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" asdasd asdasd asdasd asfd asdf gsdf hgja aqt rejdf цуквапы" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OH6-AZ-FfC" customClass="BorderedLabelDark">
                                 <rect key="frame" x="30" y="143" width="315" height="38.5"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
@@ -399,9 +398,8 @@ to Use it in Another App</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ap9-YZ-vxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="hlq-HB-AxO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="793" y="-504"/>
+            <point key="canvasLocation" x="793" y="-500"/>
         </scene>
         <!--Pin View Controller-->
         <scene sceneID="FLV-ka-XxS">
@@ -422,7 +420,7 @@ to Use it in Another App</string>
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Old PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxO-lN-Wwu">
-                                                <rect key="frame" x="132.5" y="10" width="112" height="23"/>
+                                                <rect key="frame" x="131.5" y="10" width="112" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.1803921568627451" green="0.60392156860000001" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -438,7 +436,7 @@ to Use it in Another App</string>
                                                 </state>
                                                 <state key="highlighted" image="back"/>
                                                 <connections>
-                                                    <segue destination="Y8L-db-C8o" kind="unwind" unwindAction="unwingToProfile:" id="YAt-Pt-KWK"/>
+                                                    <action selector="actionBack:" destination="xNM-Gw-MqH" eventType="touchUpInside" id="c16-Rb-cjQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -672,7 +670,6 @@ to Use it in Another App</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFX-kN-hMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Y8L-db-C8o" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="793" y="1687"/>
         </scene>
@@ -1030,7 +1027,6 @@ to Use it in Another App</string>
                     </view>
                     <connections>
                         <segue destination="xNM-Gw-MqH" kind="show" identifier="changePin" id="RL7-33-70e"/>
-                        <segue destination="k4c-yZ-wIZ" kind="show" identifier="exportBrainKey" id="fVe-hy-Kuj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8s-dN-zt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1165,6 +1161,141 @@ to Use it in Another App</string>
             </objects>
             <point key="canvasLocation" x="-23" y="934"/>
         </scene>
+        <!--Export Brain Key View Controller-->
+        <scene sceneID="C5G-Oe-0zF">
+            <objects>
+                <viewController storyboardIdentifier="ExportBrainKeyViewControllerLight" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BUo-ys-7FY" customClass="ExportBrainKeyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nKd-o3-bQy"/>
+                        <viewControllerLayoutGuide type="bottom" id="94a-lR-moQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x6S-AS-mFN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VL2-DD-yjX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEj-ba-MUa">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EqM-55-rfe">
+                                                <rect key="frame" x="3" y="0.0" width="30" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="6gd-3O-15r"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="back">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="back"/>
+                                                <connections>
+                                                    <action selector="actionBack:" destination="BUo-ys-7FY" eventType="touchUpInside" id="C4S-uq-iGV"/>
+                                                    <segue destination="uaK-Hi-0OP" kind="unwind" unwindAction="unwingToProfile:" id="4eC-UH-Roz"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Brain-CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-ch-yU0">
+                                                <rect key="frame" x="115.5" y="14" width="145" height="17"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cp-Re-Y5g">
+                                                <rect key="frame" x="335" y="0.0" width="40" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="rFu-Io-UXv"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="share">
+                                                    <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="shareButtonWasPressed:" destination="BUo-ys-7FY" eventType="touchUpInside" id="H4o-hW-LPZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Ef5-pX-TXg"/>
+                                            <constraint firstAttribute="bottom" secondItem="EqM-55-rfe" secondAttribute="bottom" id="IBt-04-4BQ"/>
+                                            <constraint firstItem="EqM-55-rfe" firstAttribute="top" secondItem="zEj-ba-MUa" secondAttribute="top" id="NEX-Vq-Z6w"/>
+                                            <constraint firstItem="a9D-ch-yU0" firstAttribute="centerX" secondItem="zEj-ba-MUa" secondAttribute="centerX" id="Oeu-0G-5U2"/>
+                                            <constraint firstAttribute="bottom" secondItem="6Cp-Re-Y5g" secondAttribute="bottom" id="Uic-iG-GJN"/>
+                                            <constraint firstItem="6Cp-Re-Y5g" firstAttribute="top" secondItem="zEj-ba-MUa" secondAttribute="top" id="Umv-88-qtZ"/>
+                                            <constraint firstItem="EqM-55-rfe" firstAttribute="leading" secondItem="zEj-ba-MUa" secondAttribute="leading" constant="3" id="Yhr-qw-2Yy"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Cp-Re-Y5g" secondAttribute="trailing" id="dXm-AP-bpd"/>
+                                            <constraint firstItem="a9D-ch-yU0" firstAttribute="centerY" secondItem="zEj-ba-MUa" secondAttribute="centerY" id="qqi-mK-TSf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.21022042630000001" green="0.33204489949999999" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="zEj-ba-MUa" firstAttribute="leading" secondItem="VL2-DD-yjX" secondAttribute="leading" id="7ke-Ra-8dL"/>
+                                    <constraint firstAttribute="trailing" secondItem="zEj-ba-MUa" secondAttribute="trailing" id="Nvx-VP-aYU"/>
+                                    <constraint firstAttribute="bottom" secondItem="zEj-ba-MUa" secondAttribute="bottom" id="s9e-ZN-bhK"/>
+                                    <constraint firstAttribute="height" constant="64" id="wiZ-kd-Aat"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" asdasd asdasd asdasd asfd asdf gsdf hgja aqt rejdf цуквапы" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUA-BL-gt5" customClass="BorderedLabelLight">
+                                <rect key="frame" x="30" y="143" width="315" height="38.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdA-B1-Hci">
+                                <rect key="frame" x="36" y="589" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.21176470588235294" green="0.72549019607843135" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Bq1-lE-bDT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="COPY BRAIN-CODE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionCopy:" destination="BUo-ys-7FY" eventType="touchUpInside" id="rjK-Mz-ULh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9w-TB-oOB">
+                                <rect key="frame" x="108.5" y="241.5" width="158" height="30"/>
+                                <string key="text">Copy Brain-CODE
+to Use it in Another App</string>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sUA-BL-gt5" secondAttribute="trailing" constant="30" id="0VU-Pu-pTB"/>
+                            <constraint firstItem="VL2-DD-yjX" firstAttribute="leading" secondItem="x6S-AS-mFN" secondAttribute="leading" id="DpD-KN-rcz"/>
+                            <constraint firstItem="sUA-BL-gt5" firstAttribute="top" secondItem="zEj-ba-MUa" secondAttribute="bottom" constant="79" id="EGs-IP-asD"/>
+                            <constraint firstItem="VL2-DD-yjX" firstAttribute="top" secondItem="x6S-AS-mFN" secondAttribute="top" id="Ha2-e8-hf0"/>
+                            <constraint firstAttribute="trailing" secondItem="VL2-DD-yjX" secondAttribute="trailing" id="Ojp-9U-rxQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YdA-B1-Hci" secondAttribute="trailing" constant="20" id="Q3b-XM-Ova"/>
+                            <constraint firstItem="sUA-BL-gt5" firstAttribute="leading" secondItem="x6S-AS-mFN" secondAttribute="leading" constant="30" id="XyS-fd-SRA"/>
+                            <constraint firstItem="A9w-TB-oOB" firstAttribute="top" secondItem="sUA-BL-gt5" secondAttribute="bottom" constant="60" id="fK1-qX-ok3"/>
+                            <constraint firstItem="YdA-B1-Hci" firstAttribute="centerX" secondItem="x6S-AS-mFN" secondAttribute="centerX" id="fX3-JA-2Mh"/>
+                            <constraint firstItem="A9w-TB-oOB" firstAttribute="centerX" secondItem="x6S-AS-mFN" secondAttribute="centerX" id="fzp-y9-ruN"/>
+                            <constraint firstItem="94a-lR-moQ" firstAttribute="top" secondItem="YdA-B1-Hci" secondAttribute="bottom" constant="28" id="hB1-tm-QCZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="brainKeyView" destination="sUA-BL-gt5" id="tTM-X3-EAm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xz3-MA-qcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uaK-Hi-0OP" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="-501"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="11" height="20"/>
@@ -1175,6 +1306,5 @@ to Use it in Another App</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RL7-33-70e"/>
-        <segue reference="fVe-hy-Kuj"/>
     </inferredMetricsTieBreakers>
 </document>

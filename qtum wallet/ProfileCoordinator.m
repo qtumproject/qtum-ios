@@ -9,16 +9,18 @@
 #import "ProfileCoordinator.h"
 #import "ProfileOutput.h"
 #import "LanguageOutput.h"
+#import "ExportBrainKeyOutput.h"
 
 #import "SubscribeTokenCoordinator.h"
 #import "ContractCoordinator.h"
 
-@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate>
+@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrainKeyOutputDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
 @property (nonatomic, weak) NSObject<ProfileOutput> *profileViewController;
 @property (nonatomic, weak) NSObject<LanguageOutput> *languageController;
+@property (nonatomic, weak) NSObject<ExportBrainKeyOutput> *exportBrainKeyController;
 
 @property (strong, nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
 @property (strong, nonatomic) ContractCoordinator* ContractCoordinator;
@@ -72,6 +74,9 @@
 
 - (void)didPressedWalletBackup {
     
+    self.exportBrainKeyController = [[ControllersFactory sharedInstance] createExportBrainKeyViewController];
+    self.exportBrainKeyController.delegate = self;
+    [self.navigationController pushViewController:[self.exportBrainKeyController toPresente] animated:YES];
 }
 
 - (void)didPressedAbout {

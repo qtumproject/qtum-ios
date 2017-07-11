@@ -55,6 +55,7 @@
 @protocol TokenListOutput;
 @protocol TabbarOutput;
 @protocol LanguageOutput;
+@protocol ExportBrainKeyOutput;
 
 
 @interface ControllersFactory : NSObject
@@ -103,6 +104,7 @@
 -(NSObject<WalletOutput> *)createWalletViewController;
 -(NSObject<TokenListOutput> *)createTokenListViewController;
 -(NSObject<LanguageOutput> *)createLanguageViewController;
+-(NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController;
 
 -(QRCodeViewController*)createQRCodeViewControllerForWallet;
 -(QRCodeViewController*)createQRCodeViewControllerForSend;

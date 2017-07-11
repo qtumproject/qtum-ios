@@ -33,6 +33,7 @@ UIColor *lightBlackColor78();
 UIColor *lightGreenColor();
 UIColor *lightTextFieldPlaceholderColor();
 UIColor *lightTextFieldLineDeselected();
+UIColor *lightBorderLabelBackroundColor();
 
 typedef NS_ENUM(NSInteger,PinType){
     EnterType,
