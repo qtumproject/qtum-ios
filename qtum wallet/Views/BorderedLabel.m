@@ -49,7 +49,7 @@
 #pragma mark - Public
 
 - (UIColor *)getBorderColor {
-    return [UIColor whiteColor];
+    return customBlueColor();
 }
 
 @end
