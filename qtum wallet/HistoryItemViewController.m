@@ -71,7 +71,7 @@
 
 - (void)configWithItem {
     
-    self.balanceLabel.text = [NSString stringWithFormat:@"%0.6f",self.item.amount.floatValue];
+    self.balanceLabel.text = [NSString stringWithFormat:@"%0.6f", self.item.amount.floatValue];
     self.receivedTimeLabel.text = self.item.fullDateString;
 }
 
