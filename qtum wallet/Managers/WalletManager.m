@@ -103,7 +103,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 - (Wallet *)currentWallet {
     
-    return [self.wallets firstObject];
+    return [self.wallets lastObject];
 }
 
 - (NSDictionary *)hashTableOfKeys{

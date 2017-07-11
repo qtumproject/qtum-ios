@@ -28,7 +28,6 @@
 @class NoInternetConnectionPopUpViewController;
 @class PhotoLibraryPopUpViewController;
 @class TokenDetailsViewController;
-@class LanguageViewController;
 @class AddNewTokensViewController;
 @class QRCodeViewController;
 @class ChooseSmartContractViewController;
@@ -56,6 +55,8 @@
 @protocol TokenListOutput;
 @protocol TabbarOutput;
 @protocol FirstAuthOutput;
+@protocol LanguageOutput;
+@protocol ExportBrainKeyOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -86,7 +87,6 @@
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
 -(TokenDetailsViewController*)createTokenDetailsViewController;
--(LanguageViewController*)createLanguageViewController;
 -(AddNewTokensViewController*)createAddNewTokensViewController;
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 -(ChooseSmartContractViewController*)createChooseSmartContractViewController;
@@ -99,9 +99,12 @@
 -(RestoreContractsViewController*)createRestoreContractViewController;
 -(BackupContractsViewController*)createBackupContractViewController;
 -(EnableFingerprintViewController*)createEnableFingerprintViewController;
+
 -(NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
 -(NSObject<WalletOutput> *)createWalletViewController;
 -(NSObject<TokenListOutput> *)createTokenListViewController;
+-(NSObject<LanguageOutput> *)createLanguageViewController;
+-(NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController;
 
 -(QRCodeViewController*)createQRCodeViewControllerForWallet;
 -(QRCodeViewController*)createQRCodeViewControllerForSend;

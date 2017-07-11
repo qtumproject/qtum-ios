@@ -13,6 +13,6 @@
 @interface ProfileCoordinator : BaseCoordinator <Coordinatorable>
 
 - (instancetype)initWithNavigationController:(UINavigationController*)navigationController;
-- (void)showLanguage;
+- (void)startFromLanguage;
 
 @end

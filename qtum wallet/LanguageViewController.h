@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LanguageOutput.h"
+#import "Presentable.h"
 
-@protocol LanguageCoordinatorDelegate;
+@interface LanguageViewController : BaseViewController <LanguageOutput, Presentable>
 
-@interface LanguageViewController : BaseViewController
+@property (nonatomic, weak) id<LanguageOutputDelegate> delegate;
 
-@property (nonatomic) id<UITableViewDelegate, UITableViewDataSource> tableSource;
-@property (nonatomic, weak) id<LanguageCoordinatorDelegate> delegate;
+- (NSString *)getCellIdentifier;
 
 @end

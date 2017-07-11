@@ -17,5 +17,6 @@
 @interface LanguageTableSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) id<LanguageTableSourceDelegate> delegate;
+@property (nonatomic) NSString *cellIdentifier;
 
 @end

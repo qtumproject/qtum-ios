@@ -32,7 +32,9 @@
         [identifire isEqualToString:@"RepeateViewController"] ||
         [identifire isEqualToString:@"CreatePinViewController"] ||
         [identifire isEqualToString:@"WalletNameViewController"] ||
-        [identifire isEqualToString:@"EnableFingerprintViewController"]) {
+        [identifire isEqualToString:@"EnableFingerprintViewController"] || 
+        [identifire isEqualToString:@"LanguageViewController"] ||
+        [identifire isEqualToString:@"ExportBrainKeyViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

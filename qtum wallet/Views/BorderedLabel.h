@@ -10,4 +10,8 @@
 
 @interface BorderedLabel : UILabel
 
+@property (nonatomic, readonly) UIView *borderView;
+
+- (UIColor *)getBorderColor;
+
 @end

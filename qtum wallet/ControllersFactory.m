@@ -30,7 +30,6 @@
 #import "CustomAbiInterphaseViewController.h"
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
-#import "LanguageViewController.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "TemplateTokenViewController.h"
@@ -64,6 +63,8 @@
 #import "TokenListOutput.h"
 #import "ProfileOutput.h"
 #import "FirstAuthOutput.h"
+#import "LanguageOutput.h"
+#import "ExportBrainKeyOutput.h"
 
 @implementation ControllersFactory
 
@@ -176,8 +177,13 @@
     return controller;
 }
 
--(LanguageViewController*)createLanguageViewController{
-    LanguageViewController* controller = (LanguageViewController*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"LanguageViewController"];
+-(NSObject<LanguageOutput> *)createLanguageViewController{
+    NSObject<LanguageOutput> *controller = (NSObject<LanguageOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"LanguageViewController"];
+    return controller;
+}
+
+-(NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController{
+    NSObject<ExportBrainKeyOutput> *controller = (NSObject<ExportBrainKeyOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ExportBrainKeyViewController"];
     return controller;
 }
 

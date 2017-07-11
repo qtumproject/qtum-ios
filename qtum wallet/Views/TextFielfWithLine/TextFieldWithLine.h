@@ -12,4 +12,11 @@
 
 @property (nonatomic, assign) CGFloat currentHeight;
 
+@property (nonatomic, readonly) UILabel *placeholderLabel;
+
+- (UIColor *)getUnderlineColorDeselected;
+- (UIColor *)getUnderlineColorSelected;
+- (UIColor *)getPlaceholderColor;
+- (UIFont *)getPlaceholderFont;
+
 @end

@@ -15,7 +15,6 @@
 #import "LoginCoordinator.h"
 #import "TabBarCoordinator.h"
 #import "RPCRequestManager.h"
-#import "LanguageCoordinator.h"
 #import "TemplateManager.h"
 #import "NSUserDefaults+Settings.h"
 #import "NotificationManager.h"
@@ -270,9 +269,9 @@
     UINavigationController *vc = (UINavigationController *)[self.tabCoordinator getViewControllerByIndex:profileIndex];
     
     ProfileCoordinator *coordinator = [[ProfileCoordinator alloc] initWithNavigationController:vc];
-    [coordinator start];
     [self.tabCoordinator addDependency:coordinator];
-    [coordinator showLanguage];
+    [coordinator startFromLanguage];
+    
 }
 
 - (void)startFromOpenURLWithAddress:(NSString*) address andAmount:(NSString*) amount {
