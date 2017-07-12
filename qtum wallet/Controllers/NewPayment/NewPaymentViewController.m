@@ -39,8 +39,8 @@
 
 @end
 
-static NSInteger withTokenOffset = 80;
-static NSInteger withoutTokenOffset = 30;
+static NSInteger withTokenOffset = 100;
+static NSInteger withoutTokenOffset = 40;
 
 @implementation NewPaymentViewController
 
