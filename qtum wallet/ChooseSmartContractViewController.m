@@ -24,7 +24,7 @@
     
     self.contractTypes = @[NSLocalizedString(@"My New Contracts", @""),
                            NSLocalizedString(@"My Published Contracts", @""),
-//                           NSLocalizedString(@"Contacts Store", @""),
+//                           NSLocalizedString(@"Contracts Store", @""),
                            NSLocalizedString(@"Watch Contract", @""),
                            NSLocalizedString(@"Watch Token", @""),
                            NSLocalizedString(@"Backup Contracts", @""),
