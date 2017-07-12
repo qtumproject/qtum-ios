@@ -36,7 +36,8 @@
         [identifire isEqualToString:@"LanguageViewController"] ||
         [identifire isEqualToString:@"ExportBrainKeyViewController"] ||
         [identifire isEqualToString:@"HistoryItemViewController"] ||
-        [identifire isEqualToString:@"RecieveViewController"]) {
+        [identifire isEqualToString:@"RecieveViewController"] ||
+        [identifire isEqualToString:@"ConfirmPinForExportViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

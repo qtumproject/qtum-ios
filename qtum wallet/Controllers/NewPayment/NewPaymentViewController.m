@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalance;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withoutTokensConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonBottomOffset;
 
 @property (strong,nonatomic) NSString* adress;
 @property (strong,nonatomic) NSString* amount;
@@ -41,12 +42,22 @@
 
 static NSInteger withTokenOffset = 100;
 static NSInteger withoutTokenOffset = 40;
+static NSInteger sendButtomBottomOffset = 27;
 
 @implementation NewPaymentViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     
     self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
 }
@@ -221,6 +232,21 @@ static NSInteger withoutTokenOffset = 40;
 - (IBAction)didPressedScanQRCode:(id)sender {
     
     [self.delegate didPresseQRCodeScaner];
+}
+
+#pragma mark - Keyboard
+
+-(void)keyboardWillShow:(NSNotification *)sender {
+    
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.sendButtonBottomOffset.constant = end.size.height + sendButtomBottomOffset - self.tabBarController.tabBar.frame.size.height;
+    [self.view layoutIfNeeded];
+}
+
+-(void)keyboardWillHide:(NSNotification *)sender{
+
+    self.sendButtonBottomOffset.constant = sendButtomBottomOffset;
+    [self.view layoutIfNeeded];
 }
 
 

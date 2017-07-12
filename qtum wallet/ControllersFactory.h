@@ -76,6 +76,7 @@
 -(UIViewController*)createWalletFlowController;
 -(WalletNameViewController*)createWalletNameCreateController;
 -(NSObject<LoginViewOutput>*)createLoginController;
+-(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController;
 -(NSObject<FirstAuthOutput>*)createFirstAuthController;
 -(RestoreWalletViewController*)createRestoreWalletController;
 -(CreatePinViewController*)createCreatePinController;

@@ -158,6 +158,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 -(void)didContinieObservingForSpendable {
     
     if (self.observingForSpendableStopped) {
+        [self startObservingForAllSpendable];
         [self updateHistoryOfSpendableObject:self.currentWallet withHandler:nil andPage:0];
     }
     self.observingForSpendableStopped = NO;
@@ -290,7 +291,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 -(void)updateHistoryOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page{
     //__weak __typeof(self)weakSelf = self;
-    static NSInteger batch = 10;
+    static NSInteger batch = 25;
     [self.requestAdapter getHistoryForAddresses:[object allKeysAdreeses] andParam:@{@"limit" : @(batch), @"offset" : @(page * batch)} withSuccessHandler:^(NSArray <HistoryElement*> *history) {
         
         if (page > object.historyStorage.pageIndex) {

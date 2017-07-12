@@ -53,11 +53,17 @@
 
 -(void)tokensDidChange {
     
-    if (self.tokenPaymentOutput) {
-        [self.tokenPaymentOutput updateWithTokens:[ContractManager sharedInstance].allActiveTokens];
-    }
+    __weak __typeof(self)weakSelf = self;
     
-    [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (weakSelf.tokenPaymentOutput) {
+            [weakSelf.tokenPaymentOutput updateWithTokens:[ContractManager sharedInstance].allActiveTokens];
+        }
+        
+        [weakSelf.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+    });
+
 }
 
 #pragma mark - Private Methods
