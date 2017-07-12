@@ -105,9 +105,9 @@ static NSString* op_exec = @"c1";
     if (addressWithAmountValue) {
         [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[WalletManager sharedInstance].currentWallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
             if (error) {
-                completion(TransactionManagerErrorTypeNone, transaction,hashTransaction);
+                completion([error isNoInternetConnectionError] ? TransactionManagerErrorTypeNoInternetConnection : TransactionManagerErrorTypeServer, transaction,hashTransaction);
             }else{
-                completion([error isNoInternetConnectionError] ? TransactionManagerErrorTypeNoInternetConnection :TransactionManagerErrorTypeServer,transaction,hashTransaction);
+                completion(TransactionManagerErrorTypeNone, transaction, hashTransaction);
             }
         }];
     } else {
