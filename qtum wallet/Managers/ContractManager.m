@@ -221,7 +221,7 @@ static NSString* kAddresses = @"kAddress";
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",contractAddress];
         NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
         
-        if (tokenInfo && filteredArray.count) {
+        if (tokenInfo && !filteredArray.count) {
             Contract* token = [Contract new];
             uint32_t vinIndex = 0;
             [hashData appendBytes:&vinIndex length:4];
