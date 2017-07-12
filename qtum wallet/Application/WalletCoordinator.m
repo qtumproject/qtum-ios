@@ -264,9 +264,9 @@
     });
 }
 
-- (void)didReloadTableViewData{
+- (void)didReloadTableViewData {
     if (self.isNewDataLoaded) {
-        [self didRefreshTableViewBalanceLocal:NO];
+        self.isBalanceLoaded = YES;
         [self reloadHistory];
     }
 }

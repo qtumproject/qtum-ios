@@ -11,7 +11,7 @@
 #import "NSUserDefaults+Settings.h"
 
 NSInteger const WORDS_COUNT = 12;
-NSInteger const USERS_KEYS_COUNT = 100;
+NSInteger const USERS_KEYS_COUNT = 10;
 
 @interface Wallet () <NSCoding>
 
