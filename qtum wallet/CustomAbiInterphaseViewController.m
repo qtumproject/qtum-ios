@@ -16,6 +16,8 @@
 @interface CustomAbiInterphaseViewController () <AbiTextFieldWithLineDelegate>
 
 @property (assign, nonatomic) NSInteger activeTextFieldTag;
+@property (assign, nonatomic) BOOL isTextFieldsFilled;
+@property (weak, nonatomic) UIButton* nextButton;
 
 @end
 
@@ -35,7 +37,7 @@
     [self.scrollView addSubview:image];
     
     UILabel *type = [[UILabel alloc] init];
-    type.text = NSLocalizedString(@"Token", nil);
+    type.text = self.contractTitle;
     type.textColor = customBlueColor();
     type.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
     [type sizeToFit];
@@ -52,7 +54,7 @@
     NSInteger yoffset = 0;
     NSInteger yoffsetFirstElement = 60;
     NSInteger heighOfPrevElement = 0;
-    NSInteger heighOfElement = 100;
+    NSInteger heighOfElement = 70;
     NSInteger scrollViewTopOffset = 88;
     NSInteger scrollViewBottomInset = 49;
 
@@ -65,7 +67,6 @@
     for (int i = 0; i < self.formModel.constructorItem.inputs.count; i++) {
         TextFieldParameterView *parameterView = (TextFieldParameterView *)[[[NSBundle mainBundle] loadNibNamed:@"FieldsViews" owner:self options:nil] lastObject];
         parameterView.frame = CGRectMake(0.0f, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement, CGRectGetWidth(self.view.frame), heighOfElement);
-        [parameterView.titleLabel setText:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Parameter", nil), i + 1]];
         [parameterView.textField setItem:self.formModel.constructorItem.inputs[i]];
         heighOfPrevElement = heighOfElement;
         parameterView.textField.inputAccessoryView = [self createToolBarInput];
@@ -84,6 +85,7 @@
     [nextButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
     [nextButton setBackgroundColor:customRedColor()];
     [nextButton addTarget:self action:@selector(didPressedNextAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.nextButton = nextButton;
     [self.scrollView addSubview:nextButton];
     
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
@@ -93,6 +95,7 @@
     self.originInsets = UIEdgeInsetsMake(0, 0, scrollViewBottomInset, 0);
     [self.view addSubview:self.scrollView];
     [self.view sendSubviewToBack:self.scrollView];
+    [self updateControls];
 }
 
 #pragma mark - Private Methods
@@ -132,10 +135,41 @@
     return toolbar;
 }
 
+-(void)updateControls {
+    
+    BOOL isFilled = [self isTextFieldsFilled];
+    
+    if (isFilled) {
+        
+        self.nextButton.enabled = YES;
+        self.nextButton.alpha = 1;
+    } else {
+        
+        self.nextButton.enabled = NO;
+        self.nextButton.alpha = 0.7;
+    }
+}
+
+-(BOOL)isTextFieldsFilled {
+    
+    BOOL isFilled = YES;
+    for (TextFieldParameterView* parameter in self.scrollView.subviews) {
+        if ([parameter isKindOfClass:[TextFieldParameterView class]] && parameter.textField.text.length == 0) {
+            isFilled = NO;
+        }
+    }
+    return isFilled;
+}
+
 #pragma mark - AbiTextFieldWithLineDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.activeTextFieldTag = textField.superview.tag;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    [self updateControls];
 }
 
 #pragma mark - Actions
@@ -150,10 +184,15 @@
         TextFieldParameterView *parameter = [self.scrollView viewWithTag:self.activeTextFieldTag + 1];
         UITextField* texField = parameter.textField;
         [texField becomeFirstResponder];
-    } else {
+    } else if ([self isTextFieldsFilled]){
+        
         [self didPressedNextAction:nil];
         [self didVoidTapAction:nil];
+    } else {
+        
+        [self didVoidTapAction:nil];
     }
+    
 }
 
 - (IBAction)didPressedNextAction:(id)sender {
