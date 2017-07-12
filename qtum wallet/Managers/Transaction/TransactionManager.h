@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
+    TransactionManagerErrorTypeNone,
+    TransactionManagerErrorTypeNoInternetConnection,
+    TransactionManagerErrorTypeServer,
+    TransactionManagerErrorTypeOups,
+    TransactionManagerErrorTypeNotEnoughMoney
+};
+
 @interface TransactionManager : NSObject
 
 + (instancetype)sharedInstance;
@@ -17,7 +25,7 @@
 
 - (void)sendTransactionWalletKeys:(NSArray<BTCKey*>*) walletKeys
                toAddressAndAmount:(NSArray*) amountsAndAddresses
-                       andHandler:(void(^)(NSError* error, id response)) completion;
+                       andHandler:(void(^)(TransactionManagerErrorType errorType, id response)) completion;
 
 
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*>*) walletKeys
@@ -34,6 +42,6 @@
 - (void)sendTransactionToToken:(Contract*) token
                      toAddress:(NSString*) toAddress
                         amount:(NSNumber*) amount
-                    andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion;
+                    andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion;
 
 @end

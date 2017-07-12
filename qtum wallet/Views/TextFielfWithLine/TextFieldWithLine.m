@@ -122,6 +122,8 @@ CGFloat const kCenterYChanges = 20.0f;
     
     if (![text isEqualToString:@""]) {
         [self moveLabelUp:NO];
+    } else {
+        [self moveLabelDown:NO];
     }
     
     [super setText:text];

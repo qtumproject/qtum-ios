@@ -69,15 +69,15 @@
     [self showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].currentWallet allKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].currentWallet allKeys] toAddressAndAmount:array andHandler:^(TransactionManagerErrorType errorType, id response) {
         [[PopUpsManager sharedInstance] dismissLoader];
-        if (!error) {
+        if (errorType == TransactionManagerErrorTypeNone) {
             [weakSelf showCompletedPopUp];
         }else{
-            if ([error isNoInternetConnectionError]) {
+            if (errorType == TransactionManagerErrorTypeNoInternetConnection) {
                 return;
             }
-            [weakSelf showErrorPopUp];
+            [weakSelf showErrorPopUp:(errorType == TransactionManagerErrorTypeNotEnoughMoney) ? NSLocalizedString(@"Sorry, you have insufficient funds available", nil) : nil];
         }
     }];
 }
@@ -86,18 +86,18 @@
     
     [self showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amount andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
+    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amount andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
         
         [weakSelf hideLoaderPopUp];
         [weakSelf.paymentOutput clearFields];
         
-        if (!error) {
+        if (errorType == TransactionManagerErrorTypeNone) {
             [weakSelf showCompletedPopUp];
         }else{
-            if ([error isNoInternetConnectionError]) {
+            if (errorType == TransactionManagerErrorTypeNoInternetConnection) {
                 return;
             }
-            [weakSelf showErrorPopUp];
+            [weakSelf showErrorPopUp:(errorType == TransactionManagerErrorTypeNotEnoughMoney) ? NSLocalizedString(@"Sorry, you have insufficient funds available", nil) : nil];
         }
     }];
 }
@@ -108,8 +108,8 @@
     [self.paymentOutput hideLoaderPopUp];
 }
 
--(void)showErrorPopUp {
-    [self.paymentOutput showErrorPopUp];
+-(void)showErrorPopUp:(NSString *)message {
+    [self.paymentOutput showErrorPopUp:message];
 }
 
 -(void)showCompletedPopUp {
