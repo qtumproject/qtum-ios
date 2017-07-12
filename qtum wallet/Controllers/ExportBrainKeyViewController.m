@@ -39,7 +39,7 @@
 
 #pragma mark - Configuration 
 
--(void)configurationBrainKeyLabel{
+-(void)configurationBrainKeyLabel {
     self.brainKeyView.text =
     self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] currentWallet].seedWords];
     [self.brainKeyView sizeToFit];
@@ -68,6 +68,10 @@
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
+
+- (IBAction)actionBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

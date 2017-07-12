@@ -29,11 +29,19 @@
 - (void)changeCellStyle:(BOOL)selected{
     if (selected) {
         self.selectedView.hidden = NO;
-        [self.titleLabel setTextColor:[UIColor colorWithRed:35/255.0f green:35/255.0f blue:40/255.0f alpha:1.0f]];
+        [self.titleLabel setTextColor:[self getSelectedColor]];
     }else{
         self.selectedView.hidden = YES;
-        [self.titleLabel setTextColor:[UIColor colorWithRed:46/255.0f green:154/255.0f blue:208/255.0f alpha:1.0f]];
+        [self.titleLabel setTextColor:[self getDeselectedColor]];
     }
+}
+
+- (UIColor *)getSelectedColor {
+    return [UIColor whiteColor];
+}
+
+- (UIColor *)getDeselectedColor {
+    return [UIColor whiteColor];
 }
 
 @end

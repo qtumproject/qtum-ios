@@ -23,7 +23,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    LanguageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LanguageTableViewCell"];
+    LanguageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
     
     BOOL selected = [LanguageManager currentLanguageIndex] == indexPath.row;
     [cell setData:[LanguageManager languageStrings][indexPath.row] selected:selected];

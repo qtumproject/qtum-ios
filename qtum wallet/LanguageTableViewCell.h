@@ -13,4 +13,7 @@
 - (void)setData:(NSString *)titleText selected:(BOOL)selected;
 - (void)changeCellStyle:(BOOL)selected;
 
+- (UIColor *)getSelectedColor;
+- (UIColor *)getDeselectedColor;
+
 @end

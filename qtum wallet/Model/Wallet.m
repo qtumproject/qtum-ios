@@ -33,6 +33,10 @@ NSInteger const USERS_KEYS_COUNT = 100;
         _countOfUsedKeys = USERS_KEYS_COUNT;
         _seedWords = [self generateWordsArray];
         [_manager spendableDidChange:self];
+        _keyChain = [self createKeychain];
+        if (!_keyChain) {
+            return nil;
+        }
     }
     return self;
 }
@@ -46,7 +50,10 @@ NSInteger const USERS_KEYS_COUNT = 100;
         _countOfUsedKeys = USERS_KEYS_COUNT;
         _seedWords = seedWords;
         [_manager spendableDidChange:self];
-
+        _keyChain = [self createKeychain];
+        if (!_keyChain) {
+            return nil;
+        }
     }
     return self;
 }

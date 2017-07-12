@@ -36,7 +36,7 @@
     }
     
     if (difference < currenDayTimeInterval + day) {
-        return NSLocalizedString(@"Yestarday", @"day at history cell");
+        return NSLocalizedString(@"Yesterday", @"day at history cell");
     }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

@@ -21,12 +21,14 @@
 #pragma mark - Actions
 
 - (IBAction)didPresseEnableAction:(id)sender {
+    
     if ([self.delegate respondsToSelector:@selector(didEnableFingerprint:)] ) {
         [self.delegate didEnableFingerprint:YES];
     }
 }
 
 - (IBAction)didPresseCancelAction:(id)sender {
+    
     if ([self.delegate respondsToSelector:@selector(didCancelEnableFingerprint)]) {
         [self.delegate didCancelEnableFingerprint];
     }

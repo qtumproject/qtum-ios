@@ -17,6 +17,8 @@
 
 @implementation WalletNameViewController
 
+@synthesize delegate;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -27,7 +29,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    [self configTextField];
+
     [self.nameTextField becomeFirstResponder];
 }
 
@@ -39,22 +41,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - Configuration
-
--(void)configTextField{
-    UIColor *color = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1];
-    self.nameTextField.attributedPlaceholder =
-    [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Enter Name", "")
-                                    attributes:@{
-                                                 NSForegroundColorAttributeName: color,
-                                                 NSFontAttributeName : [UIFont fontWithName:@"simplonmono-regular" size:16.0]
-                                                 }
-     ];
-}
-
 #pragma mark - Notification
 
--(void)keyboardWillShow:(NSNotification *)sender{
+-(void)keyboardWillShow:(NSNotification *)sender {
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.buttonsBottomConstraint.constant = end.size.height;
     [self.view layoutIfNeeded];
@@ -68,16 +57,18 @@
 #pragma mark - Actions
 
 - (IBAction)actionConfirm:(id)sender {
+    
     [self.nameTextField resignFirstResponder];
-    if ([self.delegate respondsToSelector:@selector(didCreatedWalletName:)]) {
-        [self.delegate didCreatedWalletName:self.nameTextField.text];
+    if ([self.delegate respondsToSelector:@selector(didCreatedWalletPressedWithName:)]) {
+        [self.delegate didCreatedWalletPressedWithName:self.nameTextField.text];
     }
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
+    
     [self.nameTextField resignFirstResponder];
-    if ([self.delegate respondsToSelector:@selector(cancelCreateWallet)]) {
-        [self.delegate cancelCreateWallet];
+    if ([self.delegate respondsToSelector:@selector(didCancelPressedOnWalletName)]) {
+        [self.delegate didCancelPressedOnWalletName];
     }
 }
 

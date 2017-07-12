@@ -40,7 +40,7 @@
 #pragma mark - Coordinatorable
 
 -(void)start {
-    ((AppDelegate*)[UIApplication sharedApplication].delegate).window.rootViewController = [self.tabbarOutput toPresente];
+    ((AppDelegate*)[UIApplication sharedApplication].delegate).window.rootViewController = [self.tabbarOutput toPresent];
 }
 
 #pragma mark - TabBarCoordinatorDelegate

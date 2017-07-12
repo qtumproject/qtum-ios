@@ -7,11 +7,13 @@
 //
 
 #import "LanguageViewController.h"
-#import "LanguageCoordinator.h"
+#import "LanguageTableSource.h"
 
-@interface LanguageViewController ()
+@interface LanguageViewController () <LanguageTableSourceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic) LanguageTableSource *source;
 
 @end
 
@@ -20,14 +22,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.dataSource = self.tableSource;
-    self.tableView.delegate = self.tableSource;
+    
+    self.tableView.dataSource = self.source;
+    self.tableView.delegate = self.source;
+}
+
+- (LanguageTableSource *)source {
+    
+    if (!_source) {
+        _source = [LanguageTableSource new];
+        _source.delegate = self;
+        _source.cellIdentifier = [self getCellIdentifier];
+    }
+    return _source;
+}
+
+- (NSString *)getCellIdentifier {
+    return @"LanguageTableViewCell";
+}
+
+#pragma mark - LanguageTableSourceDelegate
+
+- (void)languageDidChanged {
+    [self.delegate didLanguageChanged];
 }
 
 #pragma mark - Actions
 
 - (IBAction)actionBack:(id)sender {
-    [self.delegate didBackButtonPressed];
+    [self.delegate didBackPressed];
 }
 
 @end

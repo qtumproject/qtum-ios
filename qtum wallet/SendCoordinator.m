@@ -142,7 +142,7 @@
     tokenController.delegateDataSource.delegate = self;
     [tokenController updateWithTokens:[ContractManager sharedInstance].allActiveTokens];
     self.tokenPaymentOutput = tokenController;
-    [self.navigationController pushViewController:[tokenController toPresente] animated:YES];
+    [self.navigationController pushViewController:[tokenController toPresent] animated:YES];
 }
 
 - (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount {

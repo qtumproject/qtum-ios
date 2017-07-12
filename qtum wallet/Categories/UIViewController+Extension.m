@@ -26,9 +26,18 @@
         [identifire isEqualToString:@"TokenListViewController"] ||
         [identifire isEqualToString:@"ProfileViewController"] ||
         [identifire isEqualToString:@"ChoseTokenPaymentViewController"] ||
-        [identifire isEqualToString:@"QRCodeViewController"]) {
+        [identifire isEqualToString:@"QRCodeViewController"] ||
+        [identifire isEqualToString:@"LoginViewController"] ||
+        [identifire isEqualToString:@"FirstAuthViewController"] ||
+        [identifire isEqualToString:@"RepeateViewController"] ||
+        [identifire isEqualToString:@"CreatePinViewController"] ||
+        [identifire isEqualToString:@"WalletNameViewController"] ||
+        [identifire isEqualToString:@"EnableFingerprintViewController"] || 
+        [identifire isEqualToString:@"LanguageViewController"] ||
+        [identifire isEqualToString:@"ExportBrainKeyViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
+            
             [mutString appendString:@"Dark"];
         } else {
             [mutString appendString:@"Light"];

@@ -8,17 +8,20 @@
 
 #import "ProfileCoordinator.h"
 #import "ProfileOutput.h"
-#import "LanguageCoordinator.h"
+#import "LanguageOutput.h"
+#import "ExportBrainKeyOutput.h"
+
 #import "SubscribeTokenCoordinator.h"
 #import "ContractCoordinator.h"
 
-@interface ProfileCoordinator() <ProfileOutputDelegate>
+@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrainKeyOutputDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
 @property (nonatomic, weak) NSObject<ProfileOutput> *profileViewController;
+@property (nonatomic, weak) NSObject<LanguageOutput> *languageController;
+@property (nonatomic, weak) NSObject<ExportBrainKeyOutput> *exportBrainKeyController;
 
-@property (nonatomic, strong) LanguageCoordinator* languageCoordinator;
 @property (strong, nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
 @property (strong, nonatomic) ContractCoordinator* ContractCoordinator;
 
@@ -40,10 +43,17 @@
     self.profileViewController.delegate = self;
 }
 
-- (void)showLanguage {
+- (void)startFromLanguage {
     
-    self.languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:self.navigationController];
-    [self.languageCoordinator startWithoutAnimation];
+    [self start];
+    [self showLanguage:NO];
+}
+
+- (void)showLanguage:(BOOL)animated {
+    
+    self.languageController = [[ControllersFactory sharedInstance] createLanguageViewController];
+    self.languageController.delegate = self;
+    [self.navigationController pushViewController:[self.languageController toPresent] animated:animated];
 }
 
 #pragma mark - ProfileOutputDelegate
@@ -55,8 +65,7 @@
 
 - (void)didPressedLanguage {
     
-    self.languageCoordinator = [[LanguageCoordinator alloc] initWithNavigationController:self.navigationController];
-    [self.languageCoordinator start];
+    [self showLanguage:YES];
 }
 
 - (void)didPressedChangePin {
@@ -65,6 +74,9 @@
 
 - (void)didPressedWalletBackup {
     
+    self.exportBrainKeyController = [[ControllersFactory sharedInstance] createExportBrainKeyViewController];
+    self.exportBrainKeyController.delegate = self;
+    [self.navigationController pushViewController:[self.exportBrainKeyController toPresent] animated:YES];
 }
 
 - (void)didPressedAbout {
@@ -90,6 +102,18 @@
 - (void)didPressedLogout {
     
     [[ApplicationCoordinator sharedInstance] logout];
+}
+
+#pragma mark - LanguageOutputDelegate
+
+- (void)didLanguageChanged {
+    [[ApplicationCoordinator sharedInstance] startChangedLanguageFlow];
+}
+
+#pragma mark - Back
+
+- (void)didBackPressed {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -33,7 +33,7 @@
     return objc_getAssociatedObject(self, @selector(associatedObject));
 }
 
-- (UIViewController*)toPresente {
+- (UIViewController*)toPresent {
     
     if ([self conformsToProtocol:@protocol(Presentable)] && [self isKindOfClass:[UIViewController class]]) {
         return (UIViewController*)self;

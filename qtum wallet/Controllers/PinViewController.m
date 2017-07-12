@@ -108,5 +108,8 @@ const float bottomOffset = 25;
     
 }
 
+- (IBAction)actionBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

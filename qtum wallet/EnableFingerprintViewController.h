@@ -7,16 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnableFingerprintOutput.h"
+#import "EnableFingerprintOutputDelegate.h"
 
-@protocol EnableFingerprintViewControllerDelegate <NSObject>
+@interface EnableFingerprintViewController : UIViewController <EnableFingerprintOutput>
 
--(void)didEnableFingerprint:(BOOL) enabled;
--(void)didCancelEnableFingerprint;
-
-@end
-
-@interface EnableFingerprintViewController : UIViewController
-
-@property (weak,nonatomic) id <EnableFingerprintViewControllerDelegate> delegate;
+@property (weak,nonatomic) id <EnableFingerprintOutputDelegate> delegate;
 
 @end

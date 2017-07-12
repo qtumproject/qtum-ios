@@ -37,9 +37,9 @@ UIColor *lightDarkGrayColor();
 
 // colors setters depend on theme
 
-UIColor *textFieldUnderlineColorSelected();
-UIColor *textFieldUnderlineColorDeselected();
-UIColor *textFieldWithLinePlaceholderColor();
+UIColor *lightTextFieldPlaceholderColor();
+UIColor *lightTextFieldLineDeselected();
+UIColor *lightBorderLabelBackroundColor();
 
 typedef NS_ENUM(NSInteger,PinType){
     EnterType,

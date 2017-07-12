@@ -57,7 +57,7 @@
 
 -(void)validateAndSendPin { }
 
--(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed{
+-(void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed {
     if (reversed) {
         if ([textField isEqual:self.fourthSymbolTextField]) {
             [self.thirdSymbolTextField becomeFirstResponder];

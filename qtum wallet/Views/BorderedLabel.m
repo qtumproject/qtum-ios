@@ -28,16 +28,28 @@
 -(void)configBorder{
     self.borderView = [UIView new];
     self.borderView.backgroundColor = [UIColor clearColor];
-    self.borderView.layer.borderColor = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1].CGColor;
+    self.borderView.layer.borderColor = [self getBorderColor].CGColor;
     self.borderView.layer.borderWidth = 1;
-    [self addSubview:self.borderView];
+    self.borderView.layer.cornerRadius = 2;
+    self.borderView.layer.masksToBounds = YES;
+    [self.layer insertSublayer:self.borderView.layer atIndex:0];
 }
 
 - (void)drawTextInRect:(CGRect)rect{
     [super drawTextInRect:rect];
+//    self.borderView.frame = CGRectMake(-7.0f, -7.0f, self.frame.size.width + 14.0f, self.frame.size.height + 16.0f);
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
     self.borderView.frame = CGRectMake(-7.0f, -7.0f, self.frame.size.width + 14.0f, self.frame.size.height + 16.0f);
 }
 
+#pragma mark - Public
 
+- (UIColor *)getBorderColor {
+    return customBlueColor();
+}
 
 @end

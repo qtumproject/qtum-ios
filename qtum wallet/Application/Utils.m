@@ -99,19 +99,17 @@ UIColor *lightDarkGrayColor()
     return [UIColor colorWithRed:83/255.0f green:97/255.0f blue:115/255.0f alpha:1.0f];
 }
 
-// colors setters depend on theme
-
-UIColor *textFieldUnderlineColorSelected()
+UIColor *lightTextFieldLineDeselected()
 {
-    return [NSUserDefaults isDarkSchemeSetting] ? customBlueColor() : lightGreenColor();
+    return [UIColor colorWithRed:220/255.0f green:223/255.0f blue:226/255.0f alpha:1.0f];
 }
 
-UIColor *textFieldUnderlineColorDeselected()
+UIColor *lightTextFieldPlaceholderColor()
 {
-    return [NSUserDefaults isDarkSchemeSetting] ? customBlueColor() : [UIColor colorWithRed:220/255.0f green:223/255.0f blue:226/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:166/255.0f green:174/255.0f blue:183/255.0f alpha:0.5f];
 }
 
-UIColor *textFieldWithLinePlaceholderColor()
+UIColor *lightBorderLabelBackroundColor()
 {
-    return [NSUserDefaults isDarkSchemeSetting] ? customBlueColor() : [UIColor colorWithRed:166/255.0f green:174/255.0f blue:183/255.0f alpha:0.5f];
+    return [UIColor colorWithRed:247/255.0f green:247/255.0f blue:247/255.0f alpha:1.0f];
 }

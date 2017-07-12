@@ -152,6 +152,8 @@
         if (indexPath.row == 0) {
             [self actionAbout];
         } else if (indexPath.row == 1) {
+            [self actionThemes];
+        } else if (indexPath.row == 2) {
             [self actionLogout];
         }
     }
@@ -201,7 +203,6 @@
 
 - (void)actionWalletBackup {
     [self.delegate didPressedWalletBackup];
-    [self performSegueWithIdentifier:@"exportBrainKey" sender:nil];
 }
 
 - (void)actionAbout {
