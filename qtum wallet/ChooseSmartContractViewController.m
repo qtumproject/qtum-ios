@@ -24,7 +24,7 @@
     
     self.contractTypes = @[NSLocalizedString(@"My New Contracts", @""),
                            NSLocalizedString(@"My Published Contracts", @""),
-                           NSLocalizedString(@"Contacts Store", @""),
+//                           NSLocalizedString(@"Contacts Store", @""),
                            NSLocalizedString(@"Watch Contract", @""),
                            NSLocalizedString(@"Watch Token", @""),
                            NSLocalizedString(@"Backup Contracts", @""),
@@ -51,19 +51,19 @@
         case 1:
             [self.delegate didSelectPublishedContracts];
             break;
-        case 2:
+        case 10:
             [self.delegate didSelectContractStore];
             break;
-        case 3:
+        case 2:
             [self.delegate didSelectWatchContracts];
             break;
-        case 4:
+        case 3:
             [self.delegate didSelectWatchTokens];
             break;
-        case 5:
+        case 4:
             [self.delegate didSelectBackupContract];
             break;
-        case 6:
+        case 5:
             [self.delegate didSelectRestoreContract];
             break;
         default:
@@ -108,19 +108,19 @@
         case 1:
             imageForCell = [UIImage imageNamed:@"ic-publichedContracts"];
             break;
-        case 2:
+        case 10:
             imageForCell = [UIImage imageNamed:@"ic-contractStore"];
             break;
-        case 3:
+        case 2:
             imageForCell = [UIImage imageNamed:@"ic-contract_watch"];
             break;
-        case 4:
+        case 3:
             imageForCell =  [UIImage imageNamed:@"ic_token_watch"];
             break;
-        case 5:
+        case 4:
             imageForCell = [UIImage imageNamed:@"ic_contr_backup"];
             break;
-        case 6:
+        case 5:
             imageForCell = [UIImage imageNamed:@"ic-contract_restore"];
             break;
         default:
