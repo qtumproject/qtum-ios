@@ -80,7 +80,8 @@ static NSInteger sendButtomBottomOffset = 27;
 
 #pragma mark - NewPaymentOutput
 
--(void)updateControlsWithTokenExist:(BOOL) isExist
+-(void)updateControlsWithTokensExist:(BOOL) isExist
+                  choosenTokenExist:(BOOL) choosenExist
                       walletBalance:(CGFloat) walletBalance
              andUnconfimrmedBalance:(CGFloat) walletUnconfirmedBalance {
     
@@ -94,6 +95,10 @@ static NSInteger sendButtomBottomOffset = 27;
     self.tokenDisclousureImage.hidden = !isTokensExists;
     self.withoutTokensConstraint.constant = isTokensExists ? withTokenOffset : withoutTokenOffset;
     self.tokenDisclousureImage.tintColor = customBlueColor();
+    
+    if (!choosenExist) {
+        self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+    }
     
     [self.view setNeedsLayout];
     [self.view layoutIfNeeded];

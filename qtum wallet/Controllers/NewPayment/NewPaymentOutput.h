@@ -15,7 +15,8 @@
 @property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
 
 - (void)setAdress:(NSString*)adress andValue:(NSString*)amount;
-- (void)updateControlsWithTokenExist:(BOOL) isExist
+- (void)updateControlsWithTokensExist:(BOOL) isExist
+                    choosenTokenExist:(BOOL) choosenExist
                       walletBalance:(CGFloat) walletBalance
              andUnconfimrmedBalance:(CGFloat) walletUnconfirmedBalance;
 - (void)updateContentWithContract:(Contract*) contract;

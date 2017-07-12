@@ -53,20 +53,33 @@
 
 -(void)tokensDidChange {
     
+    [self updateOutputs];
+}
+
+#pragma mark - Private Methods
+
+-(void)updateOutputs {
+    
     __weak __typeof(self)weakSelf = self;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
+        NSArray <Contract*>* tokens = [ContractManager sharedInstance].allActiveTokens;
+        BOOL tokenExists = NO;
+        
         if (weakSelf.tokenPaymentOutput) {
-            [weakSelf.tokenPaymentOutput updateWithTokens:[ContractManager sharedInstance].allActiveTokens];
+            [weakSelf.tokenPaymentOutput updateWithTokens:tokens];
         }
         
-        [weakSelf.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+        if (self.token && [tokens containsObject:self.token]) {
+            tokenExists = YES;
+        } else {
+            self.token = nil;
+        }
+        
+        [weakSelf.paymentOutput updateControlsWithTokensExist:tokens.count choosenTokenExist:tokenExists walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
     });
-
 }
-
-#pragma mark - Private Methods
 
 -(void)payWithWalletWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
     
@@ -147,7 +160,8 @@
 #pragma mark - NewPaymentViewControllerDelegate
 
 -(void)didViewLoad {
-    [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+    
+    [self updateOutputs];
 }
 
 - (void)didPresseQRCodeScaner {
@@ -193,7 +207,7 @@
 - (void)didQRCodeScannedWithDict:(NSDictionary*)dict {
     
     [self.paymentOutput updateContentFromQRCode:dict];
-    [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+    [self updateOutputs];
 }
 
 - (void)didBackPressed {
