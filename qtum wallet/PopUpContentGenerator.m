@@ -27,7 +27,7 @@
 }
 
 + (PopUpContent *)contentForCreateContract{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"Conrtact created successfully" message:nil okTitle:@"OK" cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"Contract created successfully" message:nil okTitle:@"OK" cancelTitle:nil];
     return content;
 }
 

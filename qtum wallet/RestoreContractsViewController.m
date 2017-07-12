@@ -46,7 +46,7 @@
     NSString *imageName = self.haveFile ? @"delete" : @"ic-attach";
     self.iconImageView.image = [UIImage imageNamed:imageName];
     self.sizeLabel.hidden = !self.haveFile;
-    self.fileNameLabel.text = self.haveFile ? [self.fileUrl lastPathComponent] : NSLocalizedString(@"Select back-up file", @"");
+    self.fileNameLabel.text = self.haveFile ? [self.fileUrl lastPathComponent] : NSLocalizedString(@"Select backup file", @"");
 }
 
 - (void)createCheckButtons {

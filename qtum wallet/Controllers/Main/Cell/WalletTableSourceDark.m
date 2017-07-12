@@ -47,6 +47,7 @@
         
         HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
         cell.historyElement = element;
+        [cell changeHighlight:NO];
         
         return cell;
     }
