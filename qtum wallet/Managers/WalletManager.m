@@ -23,6 +23,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 @property (nonatomic, strong) NSString* PIN;
 @property (nonatomic, strong) dispatch_group_t registerGroup;
 @property (strong ,nonatomic) WalletManagerRequestAdapter* requestAdapter;
+@property (assign, nonatomic) BOOL observingForSpendableFailed;
 @property (assign, nonatomic) BOOL observingForSpendableStopped;
 
 @end
@@ -157,16 +158,16 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 -(void)didContinieObservingForSpendable {
     
-    if (self.observingForSpendableStopped) {
+    if (self.observingForSpendableFailed && !self.observingForSpendableStopped) {
         [self startObservingForAllSpendable];
         [self updateHistoryOfSpendableObject:self.currentWallet withHandler:nil andPage:0];
     }
-    self.observingForSpendableStopped = NO;
+    self.observingForSpendableFailed = NO;
 }
 
 -(void)didForceStopObservingForSpendable {
     
-    self.observingForSpendableStopped = YES;
+    self.observingForSpendableFailed = YES;
 }
 
 
@@ -264,10 +265,14 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 }
 
 -(void)startObservingForAllSpendable {
+    
+    self.observingForSpendableStopped = NO;
     [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self currentWallet] allKeysAdreeses]];
 }
 
 -(void)stopObservingForAllSpendable {
+    
+    self.observingForSpendableStopped = YES;
     [[ApplicationCoordinator sharedInstance].requestManager stopObservingAdresses:nil];
 }
 

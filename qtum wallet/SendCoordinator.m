@@ -206,6 +206,7 @@
 
 - (void)didQRCodeScannedWithDict:(NSDictionary*)dict {
     
+    [self.navigationController popViewControllerAnimated:YES];
     [self.paymentOutput updateContentFromQRCode:dict];
     [self updateOutputs];
 }
