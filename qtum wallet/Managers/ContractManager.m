@@ -15,6 +15,7 @@
 #import "NSData+Extension.h"
 #import "TemplateManager.h"
 #import "NotificationManager.h"
+#import "SocketManager.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -28,6 +29,7 @@ static NSString* kAddresses = @"kAddress";
 
 @property (strong, nonatomic) NSMutableDictionary* smartContractPretendents;
 @property (nonatomic, strong) NSMutableArray<Contract*> *contracts;
+@property (assign, nonatomic) BOOL observingForSpendableStopped;
 
 @end
 
@@ -48,8 +50,34 @@ static NSString* kAddresses = @"kAddress";
     self = [super init];
     if (self != nil) {
         [self load];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didContinieObservingForSpendable)
+                                                     name:kSocketDidConnect object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didForceStopObservingForSpendable)
+                                                     name:kSocketDidDisconnect object:nil];
     }
     return self;
+}
+
+-(void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Observing
+
+-(void)didContinieObservingForSpendable {
+    
+    if (self.observingForSpendableStopped) {
+        [self startObservingForAllSpendable];
+    }
+    self.observingForSpendableStopped = NO;
+}
+
+-(void)didForceStopObservingForSpendable {
+    
+    self.observingForSpendableStopped = YES;
 }
 
 #pragma mark - Lazy Getters

@@ -130,8 +130,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
     return [self.keyChain keyAtIndex:(uint)index hardened:YES];
 }
 
-- (NSArray *)allKeys
-{
+- (NSArray *)allKeys {
+    
     NSMutableArray *allKeys = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         [allKeys addObject:[self.keyChain keyAtIndex:(uint)i hardened:YES]];
@@ -145,6 +145,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 }
 
 - (NSArray <NSString*>*)allKeysAdreeses {
+    
     NSMutableArray *allKeysString = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];

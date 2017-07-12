@@ -7,12 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Contract.h"
+
+@class Contract;
+
+extern NSString *const kSocketDidConnect;
+extern NSString *const kSocketDidDisconnect;
 
 typedef NS_ENUM(NSInteger, ConnectionStatus) {
     NotConnected,
     Connected,
     Connecting,
+    Reconnecting,
     Disconnected
 };
 
@@ -22,11 +27,11 @@ typedef NS_ENUM(NSInteger, ConnectionStatus) {
 @property (nonatomic, weak) id <Requestable> delegate;
 
 
--(void)startAndSubscribeWithAddresses:(NSArray*) addresses andHandler:(void(^)()) handler;
--(void)stoptWithHandler:(void(^)()) handler;
+- (void)subscripeToUpdateWalletAdresses:(NSArray*)addresses;
+- (void)stoptWithHandler:(void(^)())handler;
 
--(void)startObservingToken:(Contract*) token withHandler:(void(^)()) handler;
--(void)stopObservingToken:(Contract*) token withHandler:(void(^)()) handler;
+- (void)startObservingToken:(Contract*)token withHandler:(void(^)())handler;
+- (void)stopObservingToken:(Contract*)token withHandler:(void(^)())handler;
 
 
 @end

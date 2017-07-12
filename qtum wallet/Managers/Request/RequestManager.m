@@ -58,8 +58,8 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 #pragma mark - Setup and Privat Methods
 
 
-- (AFHTTPRequestOperationManager *)requestManager
-{
+- (AFHTTPRequestOperationManager *)requestManager {
+    
     if (!_requestManager) {
         AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -73,8 +73,8 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     return _requestManager;
 }
 
-- (void)networkMonitoring
-{
+- (void)networkMonitoring {
+    
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status == AFNetworkReachabilityStatusReachableViaWiFi ||
@@ -82,6 +82,15 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
         }
     }];
     [manager startMonitoring];
+}
+
+-(SocketManager *)socketManager {
+    
+    if (!_socketManager) {
+        _socketManager = [SocketManager new];
+        _socketManager.delegate = self;
+    }
+    return _socketManager;
 }
 
 -(void)requestWithType:(RequestType) type path:(NSString*) path andParams:(NSDictionary*) param withSuccessHandler:(void(^)(id  _Nonnull responseObject)) success andFailureHandler:(void(^)(NSError * _Nonnull error, NSString* message)) failure
@@ -309,19 +318,17 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 #pragma mark - Observing Socket
 
 
-- (void)startObservingAdresses:(NSArray*) addresses{
-    self.socketManager = [SocketManager new];
-    self.socketManager.delegate = self;
-    [self.socketManager startAndSubscribeWithAddresses:[[WalletManager sharedInstance] currentWallet].allKeysAdreeses andHandler:^{
-    }];
+- (void)startObservingAdresses:(NSArray*) addresses {
+    
+    [self.socketManager subscripeToUpdateWalletAdresses:[[WalletManager sharedInstance] currentWallet].allKeysAdreeses];
 }
 
-- (void)stopObservingAdresses:(NSArray*) addresses{
-    [_socketManager stoptWithHandler:nil];
-    _socketManager = nil;
+- (void)stopObservingAdresses:(NSArray*) addresses {
+    
+    [self.socketManager stoptWithHandler:nil];
 }
 
-- (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion{
+- (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion {
     [self.socketManager startObservingToken:token withHandler:completesion];
 }
 

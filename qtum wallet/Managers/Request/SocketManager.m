@@ -8,59 +8,85 @@
 
 #import "SocketManager.h"
 #import "ApplicationCoordinator.h"
+#import "Contract.h"
 #import "NotificationManager.h"
 
 @import SocketIO;
 
 static NSString *BASE_URL = @"http://163.172.68.103:5931/";
 
+NSString *const kSocketDidConnect = @"kSocketDidConnect";
+NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
+
 @interface SocketManager ()
 
 @property (strong, nonatomic) SocketIOClient* currentSocket;
 @property (assign,nonatomic) ConnectionStatus status;
 @property (nonatomic, copy) void (^onConnected)();
-@property (assign, nonatomic) BOOL isAlreadyInit;
 @property (nonatomic, strong) NSOperationQueue* requestQueue;
-
 
 @end
 
 @implementation SocketManager
 
-- (instancetype)init
-{
+- (instancetype)init {
+    
     self = [super init];
     if (self) {
         _requestQueue = [[NSOperationQueue alloc] init];
         _requestQueue.maxConcurrentOperationCount = 1;
+        [self startAndSubscribeWithHandler:nil];
     }
     return self;
 }
 
--(void)startAndSubscribeWithAddresses:(NSArray*) addresses andHandler:(void(^)()) handler {
+#pragma mark - Setter/Getter
+
+- (void)setStatus:(ConnectionStatus)status {
+    
+    _status = status;
+    
+    switch (_status) {
+        case Connected:
+            [[NSNotificationCenter defaultCenter] postNotificationName:kSocketDidConnect object:nil];
+            break;
+        case Disconnected:
+            [[NSNotificationCenter defaultCenter] postNotificationName:kSocketDidDisconnect object:nil];
+            break;
+        case Reconnecting:
+            [[NSNotificationCenter defaultCenter] postNotificationName:kSocketDidDisconnect object:nil];
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)startAndSubscribeWithHandler:(void(^)()) handler {
     
     __weak __typeof(self)weakSelf = self;
     
     dispatch_block_t block = ^{
+        
         NSURL* url = [[NSURL alloc] initWithString:BASE_URL];
         weakSelf.currentSocket = [[SocketIOClient alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
         weakSelf.onConnected = handler;
         
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         
-        [self.currentSocket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        [weakSelf.currentSocket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+            
             weakSelf.status = Connected;
-            if (!weakSelf.isAlreadyInit) {
+
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
                 [weakSelf subscribeToEvents];
-                weakSelf.isAlreadyInit = YES;
-            }
+            });
+            
             dispatch_semaphore_signal(semaphore);
-            weakSelf.onConnected();
-            [weakSelf subscripeToUpdateAdresses:addresses withCompletession:nil];
-        }];
-        
-        [self.currentSocket on:@"disconnect" callback:^(NSArray* data, SocketAckEmitter* ack) {
-            weakSelf.status = Disconnected;
+            
+            if (weakSelf.onConnected) {
+                weakSelf.onConnected();
+            }
         }];
         
         [weakSelf.currentSocket connect];
@@ -71,17 +97,25 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     [_requestQueue addOperationWithBlock:block];
 }
 
--(void)subscripeToUpdateAdresses:(NSArray*)addresses withCompletession:(void(^)(NSArray* data)) handler {
+-(void)subscripeToUpdateWalletAdresses:(NSArray*)addresses {
     
-    NSString* token  = [[ApplicationCoordinator sharedInstance].notificationManager token];
-    NSString* prevToken  = [[ApplicationCoordinator sharedInstance].notificationManager prevToken];
-
-    [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses, @{@"notificationToken" : token ?: [NSNull null],
-                                                                                   @"prevToken" : prevToken ?: [NSNull null],
-                                                                                   @"language" : [LanguageManager currentLanguageCode]}]];
+    dispatch_block_t block = ^{
+        
+        NSString* token  = [[ApplicationCoordinator sharedInstance].notificationManager token];
+        NSString* prevToken  = [[ApplicationCoordinator sharedInstance].notificationManager prevToken];
+        
+        [self.currentSocket emit:@"subscribe" with:@[@"balance_subscribe",addresses, @{@"notificationToken" : token ?: [NSNull null],
+                                                                                       @"prevToken" : prevToken ?: [NSNull null],
+                                                                                       @"language" : [LanguageManager currentLanguageCode]}]];
+    };
+    
+    [_requestQueue addOperationWithBlock:block];
 }
 
 -(void)subscribeToEvents {
+    
+    __weak __typeof(self)weakSelf = self;
+
     [self.currentSocket on:@"balance_changed" callback:^(NSArray* data, SocketAckEmitter* ack) {
         
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
@@ -99,9 +133,18 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
         
         [[ContractManager sharedInstance] updateTokenWithContractAddress:data[0][@"contract_address"] withAddressBalanceDictionary:data[0]];
     }];
+    
+    [self.currentSocket on:@"disconnect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        weakSelf.status = Disconnected;
+    }];
+    
+    [self.currentSocket on:@"reconnect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        weakSelf.status = Reconnecting;
+    }];
 }
 
 -(void)stoptWithHandler:(void(^)()) handler {
+    
     NSString* token  = [[ApplicationCoordinator sharedInstance].notificationManager token];
     [self.currentSocket emit:@"unsubscribe" with:@[@"balance_subscribe",[NSNull null], @{@"notificationToken" : token ?: [NSNull null]}]];
     [self.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",[NSNull null], @{@"notificationToken" : token ?: [NSNull null]}]];
@@ -109,7 +152,8 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     [self.currentSocket disconnect];
 }
 
--(void)startObservingToken:(Contract*) token withHandler:(void(^)()) handler{
+-(void)startObservingToken:(Contract*) token withHandler:(void(^)()) handler {
+    
     __weak __typeof(self)weakSelf = self;
     __weak __typeof(Contract*)weakToken = token;
     NSString* deviceToken  = [[ApplicationCoordinator sharedInstance].notificationManager token];
@@ -131,7 +175,7 @@ static NSString *BASE_URL = @"http://163.172.68.103:5931/";
     NSString* deviceToken  = [[ApplicationCoordinator sharedInstance].notificationManager token];
     dispatch_block_t block = ^{
         if (weakToken) {
-            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[WalletManager sharedInstance] hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: @""}]];
+            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[WalletManager sharedInstance] hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null]}]];
         }
     };
     [_requestQueue addOperationWithBlock:block];

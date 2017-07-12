@@ -11,6 +11,7 @@
 #import "RPCRequestManager.h"
 #import "WalletManagerRequestAdapter.h"
 #import "HistoryDataStorage.h"
+#import "SocketManager.h"
 
 NSString const *kWalletKey = @"qtum_wallet_wallets_keys";
 NSString const *kUserPin = @"PIN";
@@ -22,6 +23,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 @property (nonatomic, strong) NSString* PIN;
 @property (nonatomic, strong) dispatch_group_t registerGroup;
 @property (strong ,nonatomic) WalletManagerRequestAdapter* requestAdapter;
+@property (assign, nonatomic) BOOL observingForSpendableStopped;
 
 @end
 
@@ -42,6 +44,12 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     if (self != nil) {
         [self load];
         _requestAdapter = [WalletManagerRequestAdapter new];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didContinieObservingForSpendable)
+                                                     name:kSocketDidConnect object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didForceStopObservingForSpendable)
+                                                     name:kSocketDidDisconnect object:nil];
     }
     return self;
 }
@@ -144,6 +152,23 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     [self removeAllWallets];
     [self save];
 }
+
+#pragma mark - Observing
+
+-(void)didContinieObservingForSpendable {
+    
+    if (self.observingForSpendableStopped) {
+        [self updateHistoryOfSpendableObject:self.currentWallet withHandler:nil andPage:0];
+    }
+    self.observingForSpendableStopped = NO;
+}
+
+-(void)didForceStopObservingForSpendable {
+    
+    self.observingForSpendableStopped = YES;
+}
+
+
 
 #pragma mark - Private methods
 
@@ -274,10 +299,14 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
             [object.historyStorage setHistory:history];
         }
         object.historyStorage.pageIndex = page;
-        complete(YES);
+        if (complete) {
+            complete(YES);
+        }
     } andFailureHandler:^(NSError *error, NSString *message) {
         
-        complete(NO);
+        if (complete) {
+            complete(NO);
+        }
     }];
 }
 
