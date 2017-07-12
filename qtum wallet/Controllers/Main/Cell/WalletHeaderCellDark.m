@@ -31,7 +31,7 @@ CGFloat const WalletHeaderCellDarkHeaderHeight = 50.0f;
     [super setData:wallet];
     
     self.valueLabel.text = [NSString stringWithFormat:@"%@ QTUM", self.valueLabel.text];
-    self.unconfirmedValue.text = [NSString stringWithFormat:@"%@ QTUM", self.valueLabel.text];
+    self.unconfirmedValue.text = [NSString stringWithFormat:@"%@ QTUM", self.unconfirmedValue.text];
 }
 
 #pragma mark - Animation
