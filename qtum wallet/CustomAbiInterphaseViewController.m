@@ -52,9 +52,9 @@
 -(void)configTextFields {
     
     NSInteger yoffset = 0;
-    NSInteger yoffsetFirstElement = 60;
+    NSInteger yoffsetFirstElement = 30;
     NSInteger heighOfPrevElement = 0;
-    NSInteger heighOfElement = 70;
+    NSInteger heighOfElement = 60;
     NSInteger scrollViewTopOffset = 88;
     NSInteger scrollViewBottomInset = 49;
 
@@ -79,7 +79,7 @@
     }
     
     UIButton *nextButton = [[UIButton alloc] init];
-    nextButton.frame = CGRectMake((self.view.frame.size.width - 150.0f) / 2.0f, yoffset * self.formModel.constructorItem.inputs.count - 1 + heighOfPrevElement * self.formModel.constructorItem.inputs.count - 1 + yoffsetFirstElement + 30.0f, 150, 32.0f);
+    nextButton.frame = CGRectMake((self.view.frame.size.width - 150.0f) / 2.0f, yoffset * self.formModel.constructorItem.inputs.count - 1 + heighOfPrevElement * self.formModel.constructorItem.inputs.count - 1 + yoffsetFirstElement + 50.0f, 150, 32.0f);
     [nextButton setTitle:NSLocalizedString(@"NEXT", nil) forState:UIControlStateNormal];
     nextButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
     [nextButton setTitleColor:customBlackColor() forState:UIControlStateNormal];

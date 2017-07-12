@@ -57,7 +57,7 @@ CGFloat const kCenterYChanges = 20.0f;
 
 - (void)layoutSubviews {
     
-    self.lineView.frame = CGRectMake(0, self.frame.size.height + 13.0f, self.frame.size.width, self.currentHeight);
+    self.lineView.frame = CGRectMake(0, self.frame.size.height + 9.0f, self.frame.size.width, self.currentHeight);
     
     [super layoutSubviews];
 }
