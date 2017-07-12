@@ -1799,6 +1799,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="0jc-DK-FWD" secondAttribute="trailing" id="5OB-WE-hsg"/>
                                     <constraint firstAttribute="trailing" secondItem="Y5U-uF-tAB" secondAttribute="trailing" constant="40" id="6H8-0I-ywr"/>
@@ -1814,6 +1815,9 @@
                                     <constraint firstItem="IVC-xm-dSx" firstAttribute="leading" secondItem="cRI-VT-fKQ" secondAttribute="leading" constant="40" id="x3o-jU-UYa"/>
                                     <constraint firstItem="0jc-DK-FWD" firstAttribute="leading" secondItem="cRI-VT-fKQ" secondAttribute="leading" id="zwN-sP-xWb"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="LZD-8m-u7V" appends="YES" id="SNZ-cz-FNc"/>
+                                </connections>
                             </view>
                             <view alpha="0.14000000059604645" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bx7-BZ-9Lt">
                                 <rect key="frame" x="0.0" y="667" width="359" height="300"/>
@@ -1857,6 +1861,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <exit id="uXQ-Tt-hiQ" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="LZD-8m-u7V">
+                    <connections>
+                        <action selector="didVoidTapAction:" destination="7DE-DO-nbb" id="EzW-f7-gX8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2200.8000000000002" y="981.85907046476768"/>
         </scene>
@@ -2080,6 +2089,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="LtY-dY-DPc" firstAttribute="leading" secondItem="nJJ-XF-0hv" secondAttribute="leading" id="0AY-Ke-7xd"/>
                                     <constraint firstAttribute="trailing" secondItem="LtY-dY-DPc" secondAttribute="trailing" id="1h1-Vk-qLO"/>
@@ -2097,6 +2107,9 @@
                                     <constraint firstAttribute="trailing" secondItem="uFd-UP-UUH" secondAttribute="trailing" id="xzf-b9-Vzl"/>
                                     <constraint firstAttribute="trailing" secondItem="H1b-oh-8cZ" secondAttribute="trailing" id="yuc-nN-arD"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="2tj-I4-VMq" appends="YES" id="vOP-3k-569"/>
+                                </connections>
                             </view>
                             <view alpha="0.14000000059604645" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y79-vi-jql">
                                 <rect key="frame" x="0.0" y="667" width="359" height="300"/>
@@ -2140,6 +2153,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <exit id="jZ2-ef-ECU" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="2tj-I4-VMq">
+                    <connections>
+                        <action selector="didVoidTapAction:" destination="87E-o5-3ez" id="Kp4-nu-bc1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-23" y="2374"/>
         </scene>
