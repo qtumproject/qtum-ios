@@ -24,6 +24,15 @@ float const OneTickAnimationTime = 2.0f;
 
 @implementation AnimatedLogoImageVIew
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.image = [self.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self setTintColor:self.tintColor];
+    }
+    return self;
+}
+
 - (void)layoutSubviews
 {
     if (self.secondImageView == nil) {
