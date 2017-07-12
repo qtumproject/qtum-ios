@@ -64,6 +64,10 @@
 
 -(void)payWithWalletWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
     
+    if (![self isValidAmount:amount]) {
+        return;
+    }
+    
     NSArray *array = @[@{@"amount" : amount, @"address" : address}];
     
     [self showLoaderPopUp];
@@ -84,6 +88,10 @@
 
 -(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
     
+    if (![self isValidAmount:amount]) {
+        return;
+    }
+    
     [self showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
     [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amount andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
@@ -100,6 +108,16 @@
             [weakSelf showErrorPopUp:(errorType == TransactionManagerErrorTypeNotEnoughMoney) ? NSLocalizedString(@"Sorry, you have insufficient funds available", nil) : nil];
         }
     }];
+}
+
+- (BOOL)isValidAmount:(NSNumber *)amount {
+    
+    if ([amount floatValue] == 0.0f) {
+        [self showErrorPopUp:NSLocalizedString(@"Transaction amount can't be zero. Please edit your transaction and try again", nil)];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - Popup
