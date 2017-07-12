@@ -49,7 +49,7 @@
             return 2;
             break;
         case 3:
-            return 3;
+            return 2;
             break;
         default:
             return 0;
@@ -108,8 +108,10 @@
             text = NSLocalizedString(@"About", "");
         } else if (indexPath.row == 1) {
             
-            image = [UIImage imageNamed:@"ic-themes"];
-            text = NSLocalizedString(@"Themes", "");
+            image = [UIImage imageNamed:@"ic-logout"];
+            text = NSLocalizedString(@"Logout", "");
+//            image = [UIImage imageNamed:@"ic-themes"];
+//            text = NSLocalizedString(@"Themes", "");
         }else if (indexPath.row == 2) {
             
             image = [UIImage imageNamed:@"ic-logout"];
@@ -152,7 +154,8 @@
         if (indexPath.row == 0) {
             [self actionAbout];
         } else if (indexPath.row == 1) {
-            [self actionThemes];
+            [self actionLogout];
+//            [self actionThemes];
         } else if (indexPath.row == 2) {
             [self actionLogout];
         }

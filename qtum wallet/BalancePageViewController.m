@@ -15,6 +15,7 @@
 @property (nonatomic) NSInteger currentIndex;
 @property (assign, nonatomic) BOOL needSwipeBack;
 @property (assign, nonatomic) BOOL viewWasShowed;
+@property (assign, nonatomic) BOOL enabledScroll;
 
 @property (nonatomic) UIView *container;
 @property (nonatomic) UIScrollView *scrollView;
@@ -22,6 +23,14 @@
 @end
 
 @implementation BalancePageViewController
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _enabledScroll = YES;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,6 +71,7 @@
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.pagingEnabled = YES;
         _scrollView.delegate = self;
+        _scrollView.scrollEnabled = _enabledScroll;
         
         [self.view addSubview:_scrollView];
         
@@ -177,6 +187,8 @@
 }
 
 - (void)setScrollEnable:(BOOL)enable {
+    
+    self.enabledScroll = enable;
     self.scrollView.scrollEnabled = enable;
 }
 
