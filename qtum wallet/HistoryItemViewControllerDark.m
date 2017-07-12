@@ -15,6 +15,7 @@ CGFloat notConfirmedConstant = 180.0f;
 
 @property (weak, nonatomic) IBOutlet UIView *notConfirmedDesk;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBoardHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *timeTextLabel;
 
 @end
 
@@ -30,6 +31,7 @@ CGFloat notConfirmedConstant = 180.0f;
     
     self.notConfirmedDesk.hidden = self.item.confirmed;
     self.topBoardHeightConstraint.constant = self.item.confirmed ? confirmedConstant : notConfirmedConstant;
+    self.timeTextLabel.text = self.item.send ? NSLocalizedString(@"Sent Time", nil) : NSLocalizedString(@"Received Time", nil);
 }
 
 @end
