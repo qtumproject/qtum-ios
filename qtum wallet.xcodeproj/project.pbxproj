@@ -101,6 +101,9 @@
 		B365059B1F14B51000521603 /* RepeateViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B365059A1F14B51000521603 /* RepeateViewControllerLight.m */; };
 		B365059E1F14B63600521603 /* EnableFingerprintViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B365059D1F14B63600521603 /* EnableFingerprintViewControllerDark.m */; };
 		B36505A11F14B64400521603 /* EnableFingerprintViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36505A01F14B64400521603 /* EnableFingerprintViewControllerLight.m */; };
+		B36505A41F15F6C700521603 /* ExportBrandKeyCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B36505A31F15F6C700521603 /* ExportBrandKeyCoordinator.m */; };
+		B36505A71F16015A00521603 /* ExportBrainKeyViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36505A61F16015A00521603 /* ExportBrainKeyViewControllerDark.m */; };
+		B36505AA1F16017300521603 /* ExportBrainKeyViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36505A91F16017300521603 /* ExportBrainKeyViewControllerLight.m */; };
 		B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA591EA4D8E30040A163 /* BTCTransactionInput+Extension.m */; };
 		B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA5F1EA4DBC10040A163 /* BTCTransactionOutput+Address.m */; };
 		B365CA631EA4ED540040A163 /* Contract.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA621EA4ED540040A163 /* Contract.m */; };
@@ -638,6 +641,12 @@
 		B365059D1F14B63600521603 /* EnableFingerprintViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnableFingerprintViewControllerDark.m; sourceTree = "<group>"; };
 		B365059F1F14B64400521603 /* EnableFingerprintViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnableFingerprintViewControllerLight.h; sourceTree = "<group>"; };
 		B36505A01F14B64400521603 /* EnableFingerprintViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnableFingerprintViewControllerLight.m; sourceTree = "<group>"; };
+		B36505A21F15F6C700521603 /* ExportBrandKeyCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportBrandKeyCoordinator.h; sourceTree = "<group>"; };
+		B36505A31F15F6C700521603 /* ExportBrandKeyCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportBrandKeyCoordinator.m; sourceTree = "<group>"; };
+		B36505A51F16015A00521603 /* ExportBrainKeyViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportBrainKeyViewControllerDark.h; sourceTree = "<group>"; };
+		B36505A61F16015A00521603 /* ExportBrainKeyViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportBrainKeyViewControllerDark.m; sourceTree = "<group>"; };
+		B36505A81F16017300521603 /* ExportBrainKeyViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportBrainKeyViewControllerLight.h; sourceTree = "<group>"; };
+		B36505A91F16017300521603 /* ExportBrainKeyViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportBrainKeyViewControllerLight.m; sourceTree = "<group>"; };
 		B365CA581EA4D8E30040A163 /* BTCTransactionInput+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCTransactionInput+Extension.h"; sourceTree = "<group>"; };
 		B365CA591EA4D8E30040A163 /* BTCTransactionInput+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCTransactionInput+Extension.m"; sourceTree = "<group>"; };
 		B365CA5E1EA4DBC10040A163 /* BTCTransactionOutput+Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCTransactionOutput+Address.h"; sourceTree = "<group>"; };
@@ -1649,7 +1658,7 @@
 				E7C101BC1F14ED4900848526 /* ChangePinOutput */,
 				E760F4AC1F0FA5170056D042 /* ProfileOutput */,
 				E7EA2CB51ED42D9B00AFD5D0 /* LanguageOutput */,
-				E748579D1F13C43D00DCF9A6 /* ExportBrainKeyOutput */,
+				E748579D1F13C43D00DCF9A6 /* Export Wallet Flow */,
 				B3F06D0B1E69B55D006341F7 /* Contract */,
 				B3F06D071E699371006341F7 /* Subscribe */,
 				B386F5B21E139C9E004D231B /* Cell */,
@@ -2299,15 +2308,21 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		E748579D1F13C43D00DCF9A6 /* ExportBrainKeyOutput */ = {
+		E748579D1F13C43D00DCF9A6 /* Export Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
 				E748579E1F13C4B700DCF9A6 /* ExportBrainKeyOutput.h */,
 				E748579F1F13C4C100DCF9A6 /* ExportBrainKeyOutputDelegate.h */,
 				B321E87C1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.h */,
 				B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */,
+				B36505A21F15F6C700521603 /* ExportBrandKeyCoordinator.h */,
+				B36505A31F15F6C700521603 /* ExportBrandKeyCoordinator.m */,
+				B36505A51F16015A00521603 /* ExportBrainKeyViewControllerDark.h */,
+				B36505A61F16015A00521603 /* ExportBrainKeyViewControllerDark.m */,
+				B36505A81F16017300521603 /* ExportBrainKeyViewControllerLight.h */,
+				B36505A91F16017300521603 /* ExportBrainKeyViewControllerLight.m */,
 			);
-			name = ExportBrainKeyOutput;
+			name = "Export Wallet Flow";
 			sourceTree = "<group>";
 		};
 		E760F48E1F0F6CAA0056D042 /* BalancePageOutput */ = {
@@ -3342,6 +3357,7 @@
 				B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */,
 				E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */,
 				E7C101B51F13CBBE00848526 /* BorderedLabelDark.m in Sources */,
+				B36505A71F16015A00521603 /* ExportBrainKeyViewControllerDark.m in Sources */,
 				E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */,
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
@@ -3489,6 +3505,7 @@
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
+				B36505AA1F16017300521603 /* ExportBrainKeyViewControllerLight.m in Sources */,
 				B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */,
 				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
@@ -3509,6 +3526,7 @@
 				E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */,
 				E73D37011ECF1684009173BD /* ActivityTokenTableViewCell.m in Sources */,
 				E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */,
+				B36505A41F15F6C700521603 /* ExportBrandKeyCoordinator.m in Sources */,
 				B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */,
 				B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */,
 				B3C08B151ED3382300713B15 /* keccak.c in Sources */,

@@ -10,7 +10,7 @@
 #import "PinViewController.h"
 #import "LanguageViewController.h"
 
-@interface ProfileNavigationCoordinator () <PinCoordinator>
+@interface ProfileNavigationCoordinator () <PinCoordinator, UIGestureRecognizerDelegate>
 
 @property (strong,nonatomic) NSString* pinNew;
 @property (strong,nonatomic) NSString* pinOld;
@@ -23,13 +23,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.interactivePopGestureRecognizer.delegate = self;
+    self.interactivePopGestureRecognizer.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
--(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+-(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
     if ([viewController isKindOfClass:[PinViewController class]]) {
         PinViewController* controller = (PinViewController*)viewController;
         controller.type = ConfirmType;

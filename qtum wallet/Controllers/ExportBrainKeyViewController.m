@@ -18,6 +18,8 @@
 
 @implementation ExportBrainKeyViewController
 
+@synthesize delegate;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configurationBrainKeyLabel];
@@ -30,6 +32,7 @@
 #pragma mark - Private Methods 
 
 -(NSString*)stringForLabelWithArrayWords:(NSArray*) array {
+    
     NSString* resultSting;
     for (id item in array) {
         resultSting = resultSting ? [NSString stringWithFormat:@"%@ %@",resultSting,item] : [NSString stringWithFormat:@"%@",item];
@@ -40,6 +43,7 @@
 #pragma mark - Configuration 
 
 -(void)configurationBrainKeyLabel {
+    
     self.brainKeyView.text =
     self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] currentWallet].seedWords];
     [self.brainKeyView sizeToFit];
@@ -71,7 +75,8 @@
 }
 
 - (IBAction)actionBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self.delegate didBackPressed];
 }
 
 @end

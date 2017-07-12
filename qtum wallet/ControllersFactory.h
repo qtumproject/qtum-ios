@@ -57,6 +57,7 @@
 @protocol ExportBrainKeyOutput;
 @protocol HistoryItemOutput;
 @protocol RecieveOutput;
+@protocol LoginViewOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -74,7 +75,7 @@
 -(UIViewController*)createPinFlowController;
 -(UIViewController*)createWalletFlowController;
 -(WalletNameViewController*)createWalletNameCreateController;
--(LoginViewController*)createLoginController;
+-(NSObject<LoginViewOutput>*)createLoginController;
 -(NSObject<FirstAuthOutput>*)createFirstAuthController;
 -(RestoreWalletViewController*)createRestoreWalletController;
 -(CreatePinViewController*)createCreatePinController;

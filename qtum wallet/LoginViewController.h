@@ -12,6 +12,4 @@
 
 @interface LoginViewController : PinController <LoginViewOutput>
 
-@property (weak,nonatomic) id <LoginViewOutputDelegate> delegate;
-
 @end
