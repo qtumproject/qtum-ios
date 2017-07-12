@@ -18,8 +18,8 @@
 -(void)setupWithObject:(Contract *)token {
     
     self.tokenName.text = token.localName;
-    self.mainSymbol.text = NSLocalizedString(@"QTUM", @"");
-    self.symbol.text = NSLocalizedString(@"QTUM", @"");
+    self.mainSymbol.text = token.symbol;
+    self.symbol.text = token.symbol;
     self.mainValue.text = [NSString stringWithFormat:@"%f",token.balance];
 }
 
