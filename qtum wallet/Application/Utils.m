@@ -118,10 +118,10 @@ UIColor *lightBorderLabelBackroundColor()
 
 UIColor *getQRCodeBackroundColor()
 {
-    return [NSUserDefaults isDarkSchemeSetting] ? customBlackColor() : [UIColor clearColor];
+    return [NSUserDefaults isDarkSchemeSetting] ? customBlueColor() : [UIColor clearColor];
 }
 
 UIColor *getQRCodeMainColor()
 {
-    return [NSUserDefaults isDarkSchemeSetting] ? customBlueColor() : [UIColor colorWithRed:60/255.0f green:135/255.0f blue:185/255.0f alpha:1.0f];
+    return [NSUserDefaults isDarkSchemeSetting] ? customBlackColor() : [UIColor colorWithRed:60/255.0f green:135/255.0f blue:185/255.0f alpha:1.0f];
 }

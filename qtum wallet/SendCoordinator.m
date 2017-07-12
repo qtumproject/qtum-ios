@@ -116,7 +116,6 @@
     [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amount andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
         
         [weakSelf hideLoaderPopUp];
-        [weakSelf.paymentOutput clearFields];
         
         if (errorType == TransactionManagerErrorTypeNone) {
             [weakSelf showCompletedPopUp];
