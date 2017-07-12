@@ -109,13 +109,13 @@
         } else if (indexPath.row == 1) {
             
             image = [UIImage imageNamed:@"ic-logout"];
-            text = NSLocalizedString(@"Logout", "");
+            text = NSLocalizedString(@"Log Out", "");
 //            image = [UIImage imageNamed:@"ic-themes"];
 //            text = NSLocalizedString(@"Themes", "");
         }else if (indexPath.row == 2) {
             
             image = [UIImage imageNamed:@"ic-logout"];
-            text = NSLocalizedString(@"Logout", "");
+            text = NSLocalizedString(@"Log Out", "");
         }
     }
     

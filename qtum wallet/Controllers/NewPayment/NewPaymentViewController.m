@@ -104,12 +104,18 @@ static NSInteger sendButtomBottomOffset = 27;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
 }
 
-- (void)showCompletedPopUp{
+- (void)showCompletedPopUp {
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
-- (void)showErrorPopUp{
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
+- (void)showErrorPopUp:(NSString *)message {
+    PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+    if (message) {
+        content.messageString = message;
+        content.titleString = NSLocalizedString(@"Failed", nil);
+    }
+    
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (void)hideLoaderPopUp {
@@ -216,7 +222,6 @@ static NSInteger sendButtomBottomOffset = 27;
     NSNumber *amount = @([[self correctAmountString] doubleValue]);
     NSString *address = self.addressTextField.text;
     [self.delegate didPresseSendActionWithAddress:address andAmount:amount];
-
 }
 
 - (IBAction)actionVoidTap:(id)sender{

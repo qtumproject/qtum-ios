@@ -21,7 +21,7 @@
 - (void)updateContentWithContract:(Contract*) contract;
 - (void)updateContentFromQRCode:(NSDictionary*) qrCodeDict;
 - (void)clearFields;
-- (void)showErrorPopUp;
+- (void)showErrorPopUp:(NSString *)message;
 - (void)showCompletedPopUp;
 - (void)showLoaderPopUp;
 - (void)hideLoaderPopUp;

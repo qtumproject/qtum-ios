@@ -86,6 +86,10 @@
         [view removeFromSuperview];
     }
     
+    if (self.controllers.count == 0) {
+        return;
+    }
+    
     NSMutableString *horisontalString = [NSMutableString new];
     NSMutableDictionary *views = [NSMutableDictionary new];
     NSMutableArray *centerY = [NSMutableArray new];

@@ -20,8 +20,6 @@
 
 @end
 
-NSString* const textViewPlaceholder = @"Your Brain-CODE";
-
 
 @implementation RestoreWalletViewController
 
@@ -35,7 +33,7 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    self.brandKeyTextView.text = NSLocalizedString(textViewPlaceholder, "");
+    self.brandKeyTextView.text = NSLocalizedString(@"Your Passphrase", "");
     [self.brandKeyTextView becomeFirstResponder];
 }
 
@@ -72,7 +70,7 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 }
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    if ([textView.text isEqualToString:textViewPlaceholder]) {
+    if ([textView.text isEqualToString:NSLocalizedString(@"Your Passphrase", "")]) {
         textView.selectedRange = NSMakeRange(0,0);
     }
     return YES;
@@ -80,7 +78,7 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
     if (textView.text.length == 0) {
-        textView.text = NSLocalizedString(textViewPlaceholder, "");
+        textView.text = NSLocalizedString(@"Your Passphrase", "");
         self.brainKeyString = @"";
     } else {
         self.brainKeyString = textView.text;
@@ -88,7 +86,7 @@ NSString* const textViewPlaceholder = @"Your Brain-CODE";
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([textView.text isEqualToString:NSLocalizedString(textViewPlaceholder, "")]) {
+    if ([textView.text isEqualToString:NSLocalizedString(@"Your Passphrase", "")]) {
         textView.text = @"";
     }
     return YES;
