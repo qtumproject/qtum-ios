@@ -19,6 +19,7 @@
     
     TokenCellLight *cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifireLight];
     [cell setupWithObject:self.tokens[indexPath.row]];
+    [cell changeHighlight:NO];
     return cell;
 }
 

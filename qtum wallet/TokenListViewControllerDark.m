@@ -29,6 +29,7 @@
     
     TokenCellDark *cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifireDark];
     [cell setupWithObject:self.tokens[indexPath.row]];
+    [cell changeHighlight:NO];
     return cell;
 }
 
