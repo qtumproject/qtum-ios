@@ -9,11 +9,12 @@
 #import "LoginViewController.h"
 #import "LoginCoordinator.h"
 #import "LoginViewOutputDelegate.h"
+#import "Presentable.h"
 
-@interface LoginViewController ()<CAAnimationDelegate>
+@interface LoginViewController () <CAAnimationDelegate, Presentable>
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForCancelButton;
 @property (assign, nonatomic) BOOL shoudKeboardDismiss;
+@property (assign, nonatomic) BOOL editingStarted;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
@@ -22,10 +23,16 @@ static NSInteger textfieldsWithButtonHeight = 250;
 
 @implementation LoginViewController
 
+@synthesize delegate;
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     self.bottomConstraintForCancelButton.constant = self.view.frame.size.height / 2. - textfieldsWithButtonHeight / 2.;
+    
+    if (self.editingStarted) {
+        [self startEditing];
+    }
 }
 
 -(void)didMoveToParentViewController:(UIViewController *)parent {
@@ -67,11 +74,13 @@ static NSInteger textfieldsWithButtonHeight = 250;
 
 -(void)startEditing {
     
+    self.editingStarted = YES;
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)stopEditing {
     
+    self.editingStarted = NO;
     [self.view endEditing:YES];
 }
 
@@ -101,17 +110,20 @@ static NSInteger textfieldsWithButtonHeight = 250;
     }
 }
 
--(void)actionEnter:(id)sender{
+-(void)actionEnter:(id)sender {
+    
     [self actionEnterPin:nil];
 }
 
 -(void)showLoginFields {
+    
     self.pinContainer.hidden = NO;
     self.cancelButton.hidden = NO;
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
--(void)applyFailedPasswordAction{
+-(void)applyFailedPasswordAction {
+    
     [self accessPinDenied];
     [self clearPinTextFields];
     [self.firstSymbolTextField becomeFirstResponder];

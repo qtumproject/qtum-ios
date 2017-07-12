@@ -65,6 +65,7 @@
 #import "ExportBrainKeyOutput.h"
 #import "HistoryItemOutput.h"
 #import "RecieveOutput.h"
+#import "LoginViewOutput.h"
 
 @implementation ControllersFactory
 
@@ -137,8 +138,8 @@
     return controller;
 }
 
--(LoginViewController*)createLoginController{
-    LoginViewController* controller = (LoginViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"LoginViewController"];
+-(NSObject<LoginViewOutput>*)createLoginController{
+    NSObject<LoginViewOutput>* controller = (NSObject<LoginViewOutput>*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"LoginViewController"];
     return controller;
 }
 

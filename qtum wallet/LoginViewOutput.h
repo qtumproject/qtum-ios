@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LoginViewOutputDelegate.h"
 
 @protocol LoginViewOutput <NSObject>
+
+@property (weak, nonatomic) id <LoginViewOutputDelegate> delegate;
 
 -(void)applyFailedPasswordAction;
 -(void)startEditing;
