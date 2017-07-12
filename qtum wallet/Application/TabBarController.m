@@ -66,6 +66,8 @@
 
 -(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount {
     
+    [self.outputDelegate didSelecteSendTabWithController:[self.viewControllers lastObject]];
+    [self storeSendReference:[self.viewControllers lastObject]];
     self.selectedIndex = 3;
     [self.paymentOutput setAdress:adress andValue:amount];
 }
