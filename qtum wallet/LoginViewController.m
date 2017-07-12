@@ -13,7 +13,6 @@
 
 @interface LoginViewController () <CAAnimationDelegate, Presentable>
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForCancelButton;
 @property (assign, nonatomic) BOOL shoudKeboardDismiss;
 @property (assign, nonatomic) BOOL editingStarted;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;

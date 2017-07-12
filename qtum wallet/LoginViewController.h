@@ -12,4 +12,6 @@
 
 @interface LoginViewController : PinController <LoginViewOutput>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForCancelButton;
+
 @end
