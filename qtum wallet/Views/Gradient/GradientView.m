@@ -35,7 +35,7 @@
     
     switch (self.colorType) {
         case Pink:
-            gradient.colors = @[(id)[[UIColor colorWithRed:230/255.0f green:168/255.0f blue:178/255.0f alpha:1.0f] CGColor],
+            gradient.colors = @[(id)[[UIColor colorWithRed:255/255.0f green:121/255.0f blue:103/255.0f alpha:1.0f] CGColor],
                                 (id)[[UIColor colorWithRed:56/255.0f green:176/255.0f blue:197/255.0f alpha:1.0f] CGColor]];
             break;
         case Blue:
@@ -43,14 +43,17 @@
                                 (id)[[UIColor colorWithRed:56/255.0f green:176/255.0f blue:197/255.0f alpha:1.0f] CGColor]];
             break;
         case Green:
-            gradient.colors = @[(id)[[UIColor colorWithRed:83/255.0f green:205/255.0f blue:127/255.0f alpha:1.0f] CGColor],
+            gradient.colors = @[(id)[[UIColor colorWithRed:83/255.0f green:205/255.0f blue:163/255.0f alpha:1.0f] CGColor],
                                 (id)[[UIColor colorWithRed:56/255.0f green:176/255.0f blue:197/255.0f alpha:1.0f] CGColor]];
+            break;
         case ForWallet:
             gradient.colors = @[(id)[[UIColor colorWithRed:62/255.0f green:67/255.0f blue:196/255.0f alpha:1.0f] CGColor],
                                 (id)[[UIColor colorWithRed:56/255.0f green:176/255.0f blue:197/255.0f alpha:1.0f] CGColor]];
+            break;
         case White:
             gradient.colors = @[(id)[[UIColor colorWithWhite:1 alpha:0] CGColor],
                                 (id)[[UIColor whiteColor] CGColor]];
+            break;
         default:
             break;
     }

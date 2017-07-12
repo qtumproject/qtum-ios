@@ -59,8 +59,6 @@
 		B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32EEC8B1EB354C000512FED /* SubscribeToken.storyboard */; };
 		B32EEC9B1EB356DA00512FED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B32EEC9D1EB356DA00512FED /* Localizable.strings */; };
 		B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */; };
-		B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B336017F1E963B6100243A21 /* HistoryItemHeaderView.xib */; };
-		B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601821E963BD200243A21 /* HistoryItemHeaderView.m */; };
 		B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601851E963EC800243A21 /* HistoryItemViewController.m */; };
 		B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */; };
 		B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */; };
@@ -103,6 +101,9 @@
 		B365059B1F14B51000521603 /* RepeateViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B365059A1F14B51000521603 /* RepeateViewControllerLight.m */; };
 		B365059E1F14B63600521603 /* EnableFingerprintViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B365059D1F14B63600521603 /* EnableFingerprintViewControllerDark.m */; };
 		B36505A11F14B64400521603 /* EnableFingerprintViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36505A01F14B64400521603 /* EnableFingerprintViewControllerLight.m */; };
+		B36505A41F15F6C700521603 /* ExportBrandKeyCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B36505A31F15F6C700521603 /* ExportBrandKeyCoordinator.m */; };
+		B36505A71F16015A00521603 /* ExportBrainKeyViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36505A61F16015A00521603 /* ExportBrainKeyViewControllerDark.m */; };
+		B36505AA1F16017300521603 /* ExportBrainKeyViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36505A91F16017300521603 /* ExportBrainKeyViewControllerLight.m */; };
 		B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA591EA4D8E30040A163 /* BTCTransactionInput+Extension.m */; };
 		B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA5F1EA4DBC10040A163 /* BTCTransactionOutput+Address.m */; };
 		B365CA631EA4ED540040A163 /* Contract.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA621EA4ED540040A163 /* Contract.m */; };
@@ -343,6 +344,10 @@
 		E7C101B51F13CBBE00848526 /* BorderedLabelDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101B41F13CBBE00848526 /* BorderedLabelDark.m */; };
 		E7C101B81F13CBC700848526 /* BorderedLabelLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101B71F13CBC700848526 /* BorderedLabelLight.m */; };
 		E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101BA1F14B5DB00848526 /* InnerShadowView.m */; };
+		E7C101C11F15073800848526 /* HistoryItemViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101C01F15073800848526 /* HistoryItemViewControllerDark.m */; };
+		E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101C31F15074A00848526 /* HistoryItemViewControllerLight.m */; };
+		E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101CB1F1529EC00848526 /* RecieveViewControllerDark.m */; };
+		E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */; };
 		E7CE63621F027EC200C147B9 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63611F027EC200C147B9 /* CustomSearchBar.m */; };
 		E7CE63651F028C0600C147B9 /* SelectSearchTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */; };
 		E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */; };
@@ -455,8 +460,8 @@
 		B3210D131E00052900365FB6 /* GradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLayer.m; sourceTree = "<group>"; };
 		B3210D181E00142100365FB6 /* ViewWithGradientPoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewWithGradientPoints.h; sourceTree = "<group>"; };
 		B3210D191E00142100365FB6 /* ViewWithGradientPoints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithGradientPoints.m; sourceTree = "<group>"; };
-		B3210D1E1E001EC200365FB6 /* PinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinViewController.h; sourceTree = "<group>"; };
-		B3210D1F1E001EC200365FB6 /* PinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinViewController.m; sourceTree = "<group>"; };
+		B3210D1E1E001EC200365FB6 /* PinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinViewController.h; path = Controllers/PinViewController.h; sourceTree = "<group>"; };
+		B3210D1F1E001EC200365FB6 /* PinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PinViewController.m; path = Controllers/PinViewController.m; sourceTree = "<group>"; };
 		B3210D211E002E2900365FB6 /* ApplicationCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationCoordinator.h; path = "qtum wallet/ApplicationCoordinator.h"; sourceTree = SOURCE_ROOT; };
 		B3210D221E002E2900365FB6 /* ApplicationCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationCoordinator.m; path = "qtum wallet/ApplicationCoordinator.m"; sourceTree = SOURCE_ROOT; };
 		B3210D241E0030DB00365FB6 /* Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearance.h; sourceTree = "<group>"; };
@@ -537,9 +542,6 @@
 		B32EEC9E1EB356E100512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B336017B1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemAddressCellTableViewCell.h; sourceTree = "<group>"; };
 		B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemAddressCellTableViewCell.m; sourceTree = "<group>"; };
-		B336017F1E963B6100243A21 /* HistoryItemHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryItemHeaderView.xib; sourceTree = "<group>"; };
-		B33601811E963BD200243A21 /* HistoryItemHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemHeaderView.h; sourceTree = "<group>"; };
-		B33601821E963BD200243A21 /* HistoryItemHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemHeaderView.m; sourceTree = "<group>"; };
 		B33601841E963EC800243A21 /* HistoryItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemViewController.h; sourceTree = "<group>"; };
 		B33601851E963EC800243A21 /* HistoryItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewController.m; sourceTree = "<group>"; };
 		B33601871E96546C00243A21 /* HistoryItemDelegateDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemDelegateDataSource.h; sourceTree = "<group>"; };
@@ -639,6 +641,12 @@
 		B365059D1F14B63600521603 /* EnableFingerprintViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnableFingerprintViewControllerDark.m; sourceTree = "<group>"; };
 		B365059F1F14B64400521603 /* EnableFingerprintViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnableFingerprintViewControllerLight.h; sourceTree = "<group>"; };
 		B36505A01F14B64400521603 /* EnableFingerprintViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnableFingerprintViewControllerLight.m; sourceTree = "<group>"; };
+		B36505A21F15F6C700521603 /* ExportBrandKeyCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportBrandKeyCoordinator.h; sourceTree = "<group>"; };
+		B36505A31F15F6C700521603 /* ExportBrandKeyCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportBrandKeyCoordinator.m; sourceTree = "<group>"; };
+		B36505A51F16015A00521603 /* ExportBrainKeyViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportBrainKeyViewControllerDark.h; sourceTree = "<group>"; };
+		B36505A61F16015A00521603 /* ExportBrainKeyViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportBrainKeyViewControllerDark.m; sourceTree = "<group>"; };
+		B36505A81F16017300521603 /* ExportBrainKeyViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportBrainKeyViewControllerLight.h; sourceTree = "<group>"; };
+		B36505A91F16017300521603 /* ExportBrainKeyViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportBrainKeyViewControllerLight.m; sourceTree = "<group>"; };
 		B365CA581EA4D8E30040A163 /* BTCTransactionInput+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCTransactionInput+Extension.h"; sourceTree = "<group>"; };
 		B365CA591EA4D8E30040A163 /* BTCTransactionInput+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCTransactionInput+Extension.m"; sourceTree = "<group>"; };
 		B365CA5E1EA4DBC10040A163 /* BTCTransactionOutput+Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCTransactionOutput+Address.h"; sourceTree = "<group>"; };
@@ -835,8 +843,8 @@
 		E703531A1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConfirmPurchasePopUp.storyboard; sourceTree = "<group>"; };
 		E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPurchasePopUpViewController.h; sourceTree = "<group>"; };
 		E703531D1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPurchasePopUpViewController.m; sourceTree = "<group>"; };
-		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewController.h; sourceTree = "<group>"; };
-		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RecieveViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecieveViewController.h; path = Controllers/RecieveViewController.h; sourceTree = "<group>"; };
+		E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RecieveViewController.m; path = Controllers/RecieveViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E71271901EE9925600A130A0 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		E71271911EE9925600A130A0 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoaderPopUp.storyboard; sourceTree = "<group>"; };
@@ -1080,6 +1088,20 @@
 		E7C101B71F13CBC700848526 /* BorderedLabelLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedLabelLight.m; sourceTree = "<group>"; };
 		E7C101B91F14B5DB00848526 /* InnerShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerShadowView.h; sourceTree = "<group>"; };
 		E7C101BA1F14B5DB00848526 /* InnerShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerShadowView.m; sourceTree = "<group>"; };
+		E7C101BD1F14ED7300848526 /* ChangePinOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePinOutput.h; sourceTree = "<group>"; };
+		E7C101BE1F14ED7C00848526 /* ChangePinOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePinOutputDelegate.h; sourceTree = "<group>"; };
+		E7C101BF1F15073800848526 /* HistoryItemViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemViewControllerDark.h; sourceTree = "<group>"; };
+		E7C101C01F15073800848526 /* HistoryItemViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewControllerDark.m; sourceTree = "<group>"; };
+		E7C101C21F15074A00848526 /* HistoryItemViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemViewControllerLight.h; sourceTree = "<group>"; };
+		E7C101C31F15074A00848526 /* HistoryItemViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewControllerLight.m; sourceTree = "<group>"; };
+		E7C101C51F15086100848526 /* HistoryItemOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryItemOutput.h; sourceTree = "<group>"; };
+		E7C101C61F15086A00848526 /* HistoryItemOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryItemOutputDelegate.h; sourceTree = "<group>"; };
+		E7C101C81F1529CE00848526 /* RecieveOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecieveOutput.h; sourceTree = "<group>"; };
+		E7C101C91F1529DA00848526 /* RecieveOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecieveOutputDelegate.h; sourceTree = "<group>"; };
+		E7C101CA1F1529EC00848526 /* RecieveViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewControllerDark.h; sourceTree = "<group>"; };
+		E7C101CB1F1529EC00848526 /* RecieveViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewControllerDark.m; sourceTree = "<group>"; };
+		E7C101CD1F1529F700848526 /* RecieveViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewControllerLight.h; sourceTree = "<group>"; };
+		E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewControllerLight.m; sourceTree = "<group>"; };
 		E7CE63601F027EC200C147B9 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
 		E7CE63611F027EC200C147B9 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSearchTypeView.xib; sourceTree = "<group>"; };
@@ -1235,11 +1257,12 @@
 		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
+				E7C101C71F15298400848526 /* RecieveOutput */,
 				E760F48E1F0F6CAA0056D042 /* BalancePageOutput */,
 				E7881B781F0BDC3400BD6AB2 /* WalletOutput */,
 				E73D36EE1ECF14AA009173BD /* TokenDetails */,
 				B3827DDA1ECF28F300E500DE /* TokenListOutput */,
-				B33601791E963A0500243A21 /* History Item  */,
+				B33601791E963A0500243A21 /* HistoryItemOutput */,
 				B3DD275E1E681AA500BB0635 /* WalletCoordinator.h */,
 				B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */,
 				B32C3CFA1E112A300094C82C /* WalletNavigationController.h */,
@@ -1282,8 +1305,6 @@
 		B3210D1D1E001E8900365FB6 /* PIN */ = {
 			isa = PBXGroup;
 			children = (
-				B3210D1E1E001EC200365FB6 /* PinViewController.h */,
-				B3210D1F1E001EC200365FB6 /* PinViewController.m */,
 				B32EBFEF1E1E4711003AA578 /* CreatePinRootController.h */,
 				B32EBFF01E1E4711003AA578 /* CreatePinRootController.m */,
 				B381CBE81F029CB200142252 /* SecurityPinView.h */,
@@ -1344,36 +1365,31 @@
 			name = Factories;
 			sourceTree = "<group>";
 		};
-		B33601791E963A0500243A21 /* History Item  */ = {
+		B33601791E963A0500243A21 /* HistoryItemOutput */ = {
 			isa = PBXGroup;
 			children = (
-				B336017E1E963B4200243A21 /* Header */,
-				B336017A1E963A2200243A21 /* Cell */,
+				B336017A1E963A2200243A21 /* Table */,
+				E7C101C51F15086100848526 /* HistoryItemOutput.h */,
+				E7C101C61F15086A00848526 /* HistoryItemOutputDelegate.h */,
 				B33601841E963EC800243A21 /* HistoryItemViewController.h */,
 				B33601851E963EC800243A21 /* HistoryItemViewController.m */,
-				B33601871E96546C00243A21 /* HistoryItemDelegateDataSource.h */,
-				B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */,
+				E7C101BF1F15073800848526 /* HistoryItemViewControllerDark.h */,
+				E7C101C01F15073800848526 /* HistoryItemViewControllerDark.m */,
+				E7C101C21F15074A00848526 /* HistoryItemViewControllerLight.h */,
+				E7C101C31F15074A00848526 /* HistoryItemViewControllerLight.m */,
 			);
-			name = "History Item ";
+			name = HistoryItemOutput;
 			sourceTree = "<group>";
 		};
-		B336017A1E963A2200243A21 /* Cell */ = {
+		B336017A1E963A2200243A21 /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				B33601871E96546C00243A21 /* HistoryItemDelegateDataSource.h */,
+				B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */,
 				B336017B1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.h */,
 				B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */,
 			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		B336017E1E963B4200243A21 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				B336017F1E963B6100243A21 /* HistoryItemHeaderView.xib */,
-				B33601811E963BD200243A21 /* HistoryItemHeaderView.h */,
-				B33601821E963BD200243A21 /* HistoryItemHeaderView.m */,
-			);
-			name = Header;
+			name = Table;
 			sourceTree = "<group>";
 		};
 		B33EAF001E5B3920006125F3 /* Storyboards */ = {
@@ -1639,9 +1655,10 @@
 		B386F5AE1E1392B1004D231B /* Profile Flow */ = {
 			isa = PBXGroup;
 			children = (
+				E7C101BC1F14ED4900848526 /* ChangePinOutput */,
 				E760F4AC1F0FA5170056D042 /* ProfileOutput */,
 				E7EA2CB51ED42D9B00AFD5D0 /* LanguageOutput */,
-				E748579D1F13C43D00DCF9A6 /* ExportBrainKeyOutput */,
+				E748579D1F13C43D00DCF9A6 /* Export Wallet Flow */,
 				B3F06D0B1E69B55D006341F7 /* Contract */,
 				B3F06D071E699371006341F7 /* Subscribe */,
 				B386F5B21E139C9E004D231B /* Cell */,
@@ -2005,15 +2022,6 @@
 			name = ContractScreen;
 			sourceTree = "<group>";
 		};
-		E70550CA1DF96E2000B48DC1 /* Recieve */ = {
-			isa = PBXGroup;
-			children = (
-				E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */,
-				E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */,
-			);
-			name = Recieve;
-			sourceTree = "<group>";
-		};
 		E713A4781EEE964800A2FA40 /* RestoreContracts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2300,15 +2308,21 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		E748579D1F13C43D00DCF9A6 /* ExportBrainKeyOutput */ = {
+		E748579D1F13C43D00DCF9A6 /* Export Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
 				E748579E1F13C4B700DCF9A6 /* ExportBrainKeyOutput.h */,
 				E748579F1F13C4C100DCF9A6 /* ExportBrainKeyOutputDelegate.h */,
 				B321E87C1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.h */,
 				B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */,
+				B36505A21F15F6C700521603 /* ExportBrandKeyCoordinator.h */,
+				B36505A31F15F6C700521603 /* ExportBrandKeyCoordinator.m */,
+				B36505A51F16015A00521603 /* ExportBrainKeyViewControllerDark.h */,
+				B36505A61F16015A00521603 /* ExportBrainKeyViewControllerDark.m */,
+				B36505A81F16017300521603 /* ExportBrainKeyViewControllerLight.h */,
+				B36505A91F16017300521603 /* ExportBrainKeyViewControllerLight.m */,
 			);
-			name = ExportBrainKeyOutput;
+			name = "Export Wallet Flow";
 			sourceTree = "<group>";
 		};
 		E760F48E1F0F6CAA0056D042 /* BalancePageOutput */ = {
@@ -2525,6 +2539,32 @@
 			name = BorderedLabel;
 			sourceTree = "<group>";
 		};
+		E7C101BC1F14ED4900848526 /* ChangePinOutput */ = {
+			isa = PBXGroup;
+			children = (
+				E7C101BD1F14ED7300848526 /* ChangePinOutput.h */,
+				E7C101BE1F14ED7C00848526 /* ChangePinOutputDelegate.h */,
+				B3210D1E1E001EC200365FB6 /* PinViewController.h */,
+				B3210D1F1E001EC200365FB6 /* PinViewController.m */,
+			);
+			name = ChangePinOutput;
+			sourceTree = "<group>";
+		};
+		E7C101C71F15298400848526 /* RecieveOutput */ = {
+			isa = PBXGroup;
+			children = (
+				E7C101C81F1529CE00848526 /* RecieveOutput.h */,
+				E7C101C91F1529DA00848526 /* RecieveOutputDelegate.h */,
+				E70550CB1DF96E4100B48DC1 /* RecieveViewController.h */,
+				E70550CC1DF96E4100B48DC1 /* RecieveViewController.m */,
+				E7C101CA1F1529EC00848526 /* RecieveViewControllerDark.h */,
+				E7C101CB1F1529EC00848526 /* RecieveViewControllerDark.m */,
+				E7C101CD1F1529F700848526 /* RecieveViewControllerLight.h */,
+				E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */,
+			);
+			name = RecieveOutput;
+			sourceTree = "<group>";
+		};
 		E7D241D61DE6D697003E507B /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -2710,16 +2750,16 @@
 				E7FD365F1DC73B6300748177 /* Spendable Controll Flow */,
 				E7FD36521DC72B4400748177 /* Model */,
 				E7FD363B1DC4D07E00748177 /* Supporting Files */,
-				E7FD36471DC4D07E00748177 /* Assets.xcassets */,
-				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
-				E7FD363C1DC4D07E00748177 /* main.m */,
-				B3C08B221ED45BCD00713B15 /* Tokens Templates */,
-				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
-				E7FD364C1DC4D07E00748177 /* Info.plist */,
-				B34BF46E1EFBEC8F00EED85A /* GoogleService-Info.plist */,
 				E7FD365E1DC73B2400748177 /* Shared Views */,
 				B33EAF081E5C5E52006125F3 /* Protocols */,
 				B33EAF001E5B3920006125F3 /* Storyboards */,
+				B3C08B221ED45BCD00713B15 /* Tokens Templates */,
+				E7FD36471DC4D07E00748177 /* Assets.xcassets */,
+				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
+				E7FD363C1DC4D07E00748177 /* main.m */,
+				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
+				E7FD364C1DC4D07E00748177 /* Info.plist */,
+				B34BF46E1EFBEC8F00EED85A /* GoogleService-Info.plist */,
 			);
 			path = "qtum wallet";
 			sourceTree = "<group>";
@@ -2763,7 +2803,6 @@
 		E7FD36531DC72B4F00748177 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E70550CA1DF96E2000B48DC1 /* Recieve */,
 				E7396AED1DDEF7F10002CD47 /* AddressList */,
 				E739105C1DE5E11F008145A8 /* Key */,
 				E73910501DE30B91008145A8 /* QRCode */,
@@ -3132,7 +3171,6 @@
 				B3E1591B1ED5A87D00D70A87 /* OnlyDesign.storyboard in Resources */,
 				E7881B241F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
 				E784F8C71F0259AF00A513BF /* SourceCodePopUp.storyboard in Resources */,
-				B33601801E963B6100243A21 /* HistoryItemHeaderView.xib in Resources */,
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				E7881B0D1F0BB63400BD6AB2 /* SplashLight.storyboard in Resources */,
 				E784F8B41F01556800A513BF /* QStore.storyboard in Resources */,
@@ -3309,6 +3347,7 @@
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
+				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */,
 				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
@@ -3318,6 +3357,7 @@
 				B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */,
 				E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */,
 				E7C101B51F13CBBE00848526 /* BorderedLabelDark.m in Sources */,
+				B36505A71F16015A00521603 /* ExportBrainKeyViewControllerDark.m in Sources */,
 				E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */,
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
@@ -3350,9 +3390,11 @@
 				B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */,
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
+				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
 				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
+				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
 				B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				E74857931F13BA4100DCF9A6 /* LanguageViewControllerDark.m in Sources */,
@@ -3428,6 +3470,7 @@
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
 				B385B5A51E6D829C003BB96C /* WalletTableSource.m in Sources */,
+				E7C101C11F15073800848526 /* HistoryItemViewControllerDark.m in Sources */,
 				B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */,
 				E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */,
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,
@@ -3442,7 +3485,6 @@
 				E73D36F51ECF15D1009173BD /* BalanceTokenTableViewCell.m in Sources */,
 				B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
-				B33601831E963BD200243A21 /* HistoryItemHeaderView.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
 				B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */,
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
@@ -3463,6 +3505,7 @@
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
+				B36505AA1F16017300521603 /* ExportBrainKeyViewControllerLight.m in Sources */,
 				B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */,
 				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
@@ -3483,6 +3526,7 @@
 				E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */,
 				E73D37011ECF1684009173BD /* ActivityTokenTableViewCell.m in Sources */,
 				E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */,
+				B36505A41F15F6C700521603 /* ExportBrandKeyCoordinator.m in Sources */,
 				B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */,
 				B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */,
 				B3C08B151ED3382300713B15 /* keccak.c in Sources */,

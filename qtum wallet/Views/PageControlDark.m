@@ -12,7 +12,9 @@
 @implementation PageControlDark
 
 - (UIView<PageControlItem> *)createViewItem {
-    return [PageControlItemDark new];
+    PageControlItemDark *item = [PageControlItemDark new];
+    item.tintColor = self.tintColor;
+    return item;
 }
 
 - (CGFloat)spaceBetweenItems {

@@ -205,9 +205,9 @@
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     
-    if (scrollView.contentOffset.x < 0) {
+    if (scrollView.contentOffset.x <= 0) {
         scrollView.contentOffset = CGPointMake(0, 0);
-    } else if (scrollView.contentOffset.x > scrollView.bounds.size.width * (self.controllers.count - 1)) {
+    } else if (scrollView.contentOffset.x >= scrollView.bounds.size.width * (self.controllers.count - 1)) {
         scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width * (self.controllers.count - 1), 0);
     }
 }

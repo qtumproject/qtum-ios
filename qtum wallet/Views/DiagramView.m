@@ -19,7 +19,7 @@
 
 @implementation DiagramView
 
--(void)drawRect:(CGRect)rect{
+-(void)drawRect:(CGRect)rect {
     self.animationLayer.path = self.arrayOfPaths[0].CGPath;
     [self startAmimate];
 }

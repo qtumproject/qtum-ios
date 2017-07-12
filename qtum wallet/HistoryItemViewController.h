@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HistoryElement;
+#import "HistoryItemOutput.h"
+#import "Presentable.h"
 
-@interface HistoryItemViewController : BaseViewController
+@interface HistoryItemViewController : BaseViewController <HistoryItemOutput, Presentable>
 
-@property (strong, nonatomic)HistoryElement* item;
+@property (strong, nonatomic) HistoryElement *item;
+@property (weak, nonatomic) id<HistoryItemOutputDelegate> delegate;
+
+- (void)configWithItem;
 
 @end

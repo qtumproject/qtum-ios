@@ -8,7 +8,6 @@
 
 #import "HistoryItemDelegateDataSource.h"
 #import "HistoryElement.h"
-#import "HistoryItemHeaderView.h"
 #import "HistoryItemAddressCellTableViewCell.h"
 
 
@@ -32,12 +31,18 @@ static NSString* toAddressesHeaderTitle = @"To";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HistoryItemAddressCellTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:HistoryItemAddressCellTableViewCellIdentifier forIndexPath:indexPath];
+    
+    NSDictionary *element;
     if (self.mode == From) {
-        cell.addressLabel.text = self.item.fromAddreses[indexPath.row][@"address"];
-        cell.valueLabel.text = [NSString stringWithFormat:@"%@ QTUM",self.item.fromAddreses[indexPath.row][@"value"]];
+        element = self.item.fromAddreses[indexPath.row];
     } else {
-        cell.addressLabel.text = self.item.toAddresses[indexPath.row][@"address"];
-        cell.valueLabel.text = [NSString stringWithFormat:@"%@ QTUM",self.item.toAddresses[indexPath.row][@"value"]];
+        element = self.item.toAddresses[indexPath.row];
+    }
+    
+    cell.addressLabel.text = [element objectForKey:@"address"];
+    cell.valueLabel.text = [NSString stringWithFormat:@"%@", [element objectForKey:@"value"]];
+    if (!cell.currencyLabel) {
+        cell.valueLabel.text = [NSString stringWithFormat:@"%@ QTUM", cell.valueLabel.text];
     }
 
     return cell;

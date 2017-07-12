@@ -13,14 +13,14 @@
 
 #import "SubscribeTokenCoordinator.h"
 #import "ContractCoordinator.h"
+#import "ExportBrandKeyCoordinator.h"
 
-@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrainKeyOutputDelegate>
+@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
 @property (nonatomic, weak) NSObject<ProfileOutput> *profileViewController;
 @property (nonatomic, weak) NSObject<LanguageOutput> *languageController;
-@property (nonatomic, weak) NSObject<ExportBrainKeyOutput> *exportBrainKeyController;
 
 @property (strong, nonatomic) SubscribeTokenCoordinator* subscribeCoordinator;
 @property (strong, nonatomic) ContractCoordinator* ContractCoordinator;
@@ -56,6 +56,13 @@
     [self.navigationController pushViewController:[self.languageController toPresent] animated:animated];
 }
 
+#pragma mark - ExportBrandKeyCoordinatorDelegate
+
+- (void)coordinatorDidEnd:(ExportBrandKeyCoordinator*)coordinator {
+    
+    [self removeDependency:coordinator];
+}
+
 #pragma mark - ProfileOutputDelegate
 
 - (void)didChangeFingerprintSettings:(BOOL)value {
@@ -70,13 +77,15 @@
 
 - (void)didPressedChangePin {
     
+    
 }
 
 - (void)didPressedWalletBackup {
     
-    self.exportBrainKeyController = [[ControllersFactory sharedInstance] createExportBrainKeyViewController];
-    self.exportBrainKeyController.delegate = self;
-    [self.navigationController pushViewController:[self.exportBrainKeyController toPresent] animated:YES];
+    ExportBrandKeyCoordinator* coordinator = [[ExportBrandKeyCoordinator alloc] initWithNavigationController:self.navigationController];
+    coordinator.delegate = self;
+    [coordinator start];
+    [self addDependency:coordinator];
 }
 
 - (void)didPressedAbout {
@@ -107,12 +116,14 @@
 #pragma mark - LanguageOutputDelegate
 
 - (void)didLanguageChanged {
+    
     [[ApplicationCoordinator sharedInstance] startChangedLanguageFlow];
 }
 
 #pragma mark - Back
 
 - (void)didBackPressed {
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

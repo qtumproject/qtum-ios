@@ -10,12 +10,11 @@
 #import "PinViewController.h"
 #import "LanguageViewController.h"
 
-@interface ProfileNavigationCoordinator () <PinCoordinator>
+@interface ProfileNavigationCoordinator () <PinCoordinator, UIGestureRecognizerDelegate>
 
 @property (strong,nonatomic) NSString* pinNew;
 @property (strong,nonatomic) NSString* pinOld;
 @property (weak,nonatomic) PinViewController* pinController;
-@property (weak,nonatomic) LanguageViewController* languageController;
 
 @end
 
@@ -24,13 +23,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.interactivePopGestureRecognizer.delegate = self;
+    self.interactivePopGestureRecognizer.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
--(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+-(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
     if ([viewController isKindOfClass:[PinViewController class]]) {
         PinViewController* controller = (PinViewController*)viewController;
         controller.type = ConfirmType;
@@ -42,7 +45,7 @@
 
 #pragma mark - PinCoordinator
 
--(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
+- (void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success))completision {
     if (!self.pinOld) {
         if ([[WalletManager sharedInstance].PIN isEqualToString:pin]) {
             //old pin confirmed

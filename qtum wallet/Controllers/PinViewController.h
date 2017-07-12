@@ -8,11 +8,10 @@
 
 #import "PinController.h"
 #import "CreatePinRootController.h"
+#import "ChangePinOutput.h"
 
 
-@interface PinViewController : PinController
-
--(void)setCustomTitle:(NSString*) title;
+@interface PinViewController : PinController <ChangePinOutput>
 
 @end
 

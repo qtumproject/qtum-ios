@@ -34,7 +34,9 @@
         [identifire isEqualToString:@"WalletNameViewController"] ||
         [identifire isEqualToString:@"EnableFingerprintViewController"] || 
         [identifire isEqualToString:@"LanguageViewController"] ||
-        [identifire isEqualToString:@"ExportBrainKeyViewController"]) {
+        [identifire isEqualToString:@"ExportBrainKeyViewController"] ||
+        [identifire isEqualToString:@"HistoryItemViewController"] ||
+        [identifire isEqualToString:@"RecieveViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

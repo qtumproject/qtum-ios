@@ -11,12 +11,12 @@
 #import "WalletOutput.h"
 #import "BalancePageOutput.h"
 #import "TokenListOutput.h"
+#import "HistoryItemOutput.h"
+#import "RecieveOutput.h"
 
 #import "WalletTableSource.h"
 #import "TabBarCoordinator.h"
 #import "HistoryDataStorage.h"
-#import "RecieveViewController.h"
-#import "HistoryItemViewController.h"
 #import "Spendable.h"
 #import "TokenDetailsViewController.h"
 #import "TokenDetailsTableSource.h"
@@ -32,7 +32,7 @@
 #import "NSString+Extension.h"
 #import "TransactionManager.h"
 
-@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
@@ -108,9 +108,10 @@
 
 -(void)showAddressInfoWithSpendable:(id <Spendable>) spendable {
     
-    RecieveViewController *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
+    NSObject<RecieveOutput> *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
     vc.wallet = spendable;
-    [self.navigationController pushViewController:vc animated:YES];
+    vc.delegate = self;
+    [self.navigationController pushViewController:[vc toPresent] animated:YES];
 }
 
 -(void)showTokenDetails {
@@ -132,9 +133,10 @@
 
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item {
     
-    HistoryItemViewController* controller = (HistoryItemViewController*)[[ControllersFactory sharedInstance] createHistoryItem];
+    NSObject<HistoryItemOutput> *controller = [[ControllersFactory sharedInstance] createHistoryItem];
     controller.item = item;
-    [self.navigationController pushViewController:controller animated:YES];
+    controller.delegate = self;
+    [self.navigationController pushViewController:[controller toPresent] animated:YES];
 }
 
 #pragma mark - TokenListOutputDelegate
@@ -234,7 +236,6 @@
 }
 
 - (void)didBackPressed{
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

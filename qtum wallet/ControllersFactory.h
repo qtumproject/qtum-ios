@@ -17,8 +17,6 @@
 @class AuthNavigationController;
 @class ExportWalletBrandKeyViewController;
 @class SubscribeTokenViewController;
-@class RecieveViewController;
-@class HistoryItemViewController;
 @class CustomAbiInterphaseViewController;
 @class CreateTokenFinishViewController;
 @class TokenFunctionViewController;
@@ -57,6 +55,9 @@
 @protocol FirstAuthOutput;
 @protocol LanguageOutput;
 @protocol ExportBrainKeyOutput;
+@protocol HistoryItemOutput;
+@protocol RecieveOutput;
+@protocol LoginViewOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -74,7 +75,7 @@
 -(UIViewController*)createPinFlowController;
 -(UIViewController*)createWalletFlowController;
 -(WalletNameViewController*)createWalletNameCreateController;
--(LoginViewController*)createLoginController;
+-(NSObject<LoginViewOutput>*)createLoginController;
 -(NSObject<FirstAuthOutput>*)createFirstAuthController;
 -(RestoreWalletViewController*)createRestoreWalletController;
 -(CreatePinViewController*)createCreatePinController;
@@ -82,8 +83,6 @@
 -(AuthNavigationController*)createAuthNavigationController;
 -(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
 -(SubscribeTokenViewController*)createSubscribeTokenViewController;
--(RecieveViewController*)createRecieveViewController;
--(HistoryItemViewController*)createHistoryItem;
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
 -(TokenDetailsViewController*)createTokenDetailsViewController;
@@ -105,6 +104,8 @@
 -(NSObject<TokenListOutput> *)createTokenListViewController;
 -(NSObject<LanguageOutput> *)createLanguageViewController;
 -(NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController;
+-(NSObject<HistoryItemOutput> *)createHistoryItem;
+-(NSObject<RecieveOutput> *)createRecieveViewController;
 
 -(QRCodeViewController*)createQRCodeViewControllerForWallet;
 -(QRCodeViewController*)createQRCodeViewControllerForSend;

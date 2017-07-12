@@ -12,6 +12,4 @@
 
 @interface ExportBrainKeyViewController : BaseViewController <ExportBrainKeyOutput, Presentable>
 
-@property (nonatomic, weak) id<ExportBrainKeyOutputDelegate> delegate;
-
 @end

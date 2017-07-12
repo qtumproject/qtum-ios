@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RecieveOutput.h"
+#import "Presentable.h"
 
-@interface RecieveViewController : BaseViewController
+@interface RecieveViewController : BaseViewController <RecieveOutput, Presentable>
 
-@property (nonatomic, weak) id <Spendable> wallet;
+@property (nonatomic, weak) id<RecieveOutputDelegate> delegate;
+@property (nonatomic, weak) id<Spendable> wallet;
 
 @end

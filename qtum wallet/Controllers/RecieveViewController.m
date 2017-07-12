@@ -129,7 +129,7 @@
 
 - (IBAction)backButtonWasPressed:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate didBackPressed];
 }
 
 - (IBAction)shareButtonWasPressed:(id)sender
