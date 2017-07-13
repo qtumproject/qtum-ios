@@ -127,7 +127,7 @@
         [result appendFormat:@"%@",output];
     }
     
-    self.result.text = result.length > 0 ? result : @"There is no output";
+    self.result.text = result.length > 0 ? result : NSLocalizedString(@"There is no output", nil);
     self.result.hidden = NO;
     self.scrollView.hidden = YES;
     self.callButton.hidden = YES;

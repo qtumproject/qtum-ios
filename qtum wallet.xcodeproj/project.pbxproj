@@ -209,6 +209,7 @@
 		E713A4811EEE9FF800A2FA40 /* RestoreContractsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E713A4801EEE9FF800A2FA40 /* RestoreContractsViewController.m */; };
 		E713A4831EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E713A4821EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard */; };
 		E713A4861EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */; };
+		E718FA281F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E718FA271F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m */; };
 		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
 		E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71AF24C1E0178C50068595B /* libCoreBitcoin.a */; };
 		E71AF24E1E0178EB0068595B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
@@ -867,6 +868,8 @@
 		E713A4821EEEB56600A2FA40 /* RestoreContractsPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RestoreContractsPopUp.storyboard; sourceTree = "<group>"; };
 		E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsPopUpViewController.h; sourceTree = "<group>"; };
 		E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsPopUpViewController.m; sourceTree = "<group>"; };
+		E718FA261F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTokenPaymentDelegateDataSource.h; sourceTree = "<group>"; };
+		E718FA271F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTokenPaymentDelegateDataSource.m; sourceTree = "<group>"; };
 		E71AF2421E0177910068595B /* qtum walletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "qtum walletTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71AF2441E0177910068595B /* qtum_walletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qtum_walletTests.m; sourceTree = "<group>"; };
 		E71AF2461E0177910068595B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1245,16 +1248,18 @@
 		B3054E341F0BC011001B1F63 /* ChoseTokenPaymentOutput */ = {
 			isa = PBXGroup;
 			children = (
-				B3E159231ED6E2C200D70A87 /* ChoseTokenPaymentViewController.h */,
-				B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */,
-				B3054E351F0BC037001B1F63 /* ChoseTokenPaymentOutput.h */,
-				B3054E361F0BC045001B1F63 /* ChoseTokenPaymentOutputDelegate.h */,
+				B3EE8F351F13548C00131823 /* ChooseTokenPaymentDelegateDataSourceProtocol.h */,
+				B3EE8F361F13556100131823 /* ChooseTokekPaymentDelegateDataSourceDelegate.h */,
+				E718FA261F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.h */,
+				E718FA271F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m */,
 				B3EE8F2F1F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.h */,
 				B3EE8F301F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m */,
 				B3EE8F321F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.h */,
 				B3EE8F331F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m */,
-				B3EE8F351F13548C00131823 /* ChooseTokenPaymentDelegateDataSourceProtocol.h */,
-				B3EE8F361F13556100131823 /* ChooseTokekPaymentDelegateDataSourceDelegate.h */,
+				B3054E351F0BC037001B1F63 /* ChoseTokenPaymentOutput.h */,
+				B3054E361F0BC045001B1F63 /* ChoseTokenPaymentOutputDelegate.h */,
+				B3E159231ED6E2C200D70A87 /* ChoseTokenPaymentViewController.h */,
+				B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */,
 				B3EE8F3A1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.h */,
 				B3EE8F3B1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m */,
 				B3EE8F461F13708500131823 /* ChoseTokenPaymentViewControllerDark.h */,
@@ -3533,6 +3538,7 @@
 				E73D37041ECF1771009173BD /* QTUMAddressTokenTableViewCell.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
 				B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */,
+				E718FA281F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
 				B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */,

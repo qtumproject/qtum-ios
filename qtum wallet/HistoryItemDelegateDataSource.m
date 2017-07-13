@@ -11,10 +11,6 @@
 #import "HistoryItemAddressCellTableViewCell.h"
 
 
-static NSString* fromAddressesHeaderTitle = @"From";
-static NSString* toAddressesHeaderTitle = @"To";
-
-
 @implementation HistoryItemDelegateDataSource
 
 
@@ -42,7 +38,7 @@ static NSString* toAddressesHeaderTitle = @"To";
     cell.addressLabel.text = [element objectForKey:@"address"];
     cell.valueLabel.text = [NSString stringWithFormat:@"%@", [element objectForKey:@"value"]];
     if (!cell.currencyLabel) {
-        cell.valueLabel.text = [NSString stringWithFormat:@"%@ QTUM", cell.valueLabel.text];
+        cell.valueLabel.text = [NSString stringWithFormat:@"%@ %@", cell.valueLabel.text, NSLocalizedString(@"QTUM", nil)];
     }
 
     return cell;

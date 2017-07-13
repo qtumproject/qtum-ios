@@ -10,8 +10,6 @@
 #import "TokenCell.h"
 #import "QRCodeManager.h"
 
-NSString *const ShareContractTokensText = @"It's my tokens";
-
 @interface TokenListViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -77,7 +75,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
 - (void)createAndShareQRCode{
     
     if (self.tokens.count == 0) {
-        [SVProgressHUD showErrorWithStatus:@"You haven't tokens for share"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"You haven't tokens for share", nil)];
         return;
     }
     
@@ -93,7 +91,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
     [QRCodeManager createQRCodeFromContractsTokensArray:[array copy] forSize:CGSizeMake(500, 500) withCompletionBlock:^(UIImage *image) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!image) {
-            [SVProgressHUD showErrorWithStatus:@"Error in QRCodeCreation"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error in QRCodeCreation", nil)];
         }else{
             [weakSelf shareQRCode:image];
         }
@@ -101,7 +99,7 @@ NSString *const ShareContractTokensText = @"It's my tokens";
 }
 
 - (void)shareQRCode:(UIImage *)image{
-    NSString *text = ShareContractTokensText;
+    NSString *text = NSLocalizedString(@"It's my tokens", nil);
     UIImage *qrCode = image;
     
     NSArray *sharedItems = @[qrCode, text];

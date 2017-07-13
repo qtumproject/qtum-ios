@@ -13,7 +13,8 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
     TransactionManagerErrorTypeNoInternetConnection,
     TransactionManagerErrorTypeServer,
     TransactionManagerErrorTypeOups,
-    TransactionManagerErrorTypeNotEnoughMoney
+    TransactionManagerErrorTypeNotEnoughMoney,
+    TransactionManagerErrorTypeInvalidAddress
 };
 
 @interface TransactionManager : NSObject

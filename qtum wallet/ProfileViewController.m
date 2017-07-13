@@ -84,10 +84,10 @@
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             image = [UIImage imageNamed:@"pin_icon"];
-            text = NSLocalizedString(@"Change Pin", "");
+            text = NSLocalizedString(@"Change PIN", "");
         } else if (indexPath.row == 1) {
             image = [UIImage imageNamed:@"backup_wallet_icon"];
-            text = NSLocalizedString(@"Wallet Back Up", "");
+            text = NSLocalizedString(@"Wallet Backup", "");
         } else if (indexPath.row == 2) {
             image = [UIImage imageNamed:@"ic-touchID"];
             text = NSLocalizedString(@"Touch ID", "");

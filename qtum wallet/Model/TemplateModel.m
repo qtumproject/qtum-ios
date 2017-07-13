@@ -43,7 +43,7 @@
             return @"";
             
         case CrowdsaleType:
-            return @"Crowdsale";
+            return NSLocalizedString(@"Crowdsale", @"");
     }
 }
 

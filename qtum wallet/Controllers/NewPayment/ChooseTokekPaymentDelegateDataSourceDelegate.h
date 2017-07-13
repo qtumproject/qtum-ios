@@ -14,7 +14,4 @@
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
 - (void)didResetToDefaults;
 
-@optional
-- (void)didDeselectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
-
 @end

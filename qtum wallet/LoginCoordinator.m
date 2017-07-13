@@ -58,7 +58,7 @@
     
     LAContext *myContext = [[LAContext alloc] init];
     NSError *authError = nil;
-    NSString *reason = @"Login";
+    NSString *reason = NSLocalizedString(@"Login", nil);
     
     __weak __typeof(self) weakSelf = self;
     
