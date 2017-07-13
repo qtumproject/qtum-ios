@@ -87,6 +87,12 @@ static NSInteger sendButtomBottomOffset = 27;
     [self updateScrollsConstraints];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.view endEditing:NO];
+}
+
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
