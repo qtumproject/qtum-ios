@@ -144,94 +144,106 @@
                                     <constraint firstItem="eX9-Q5-aZt" firstAttribute="centerY" secondItem="9hv-qd-ZAA" secondAttribute="centerY" id="vRf-uE-jUK"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Receiver’s Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Acj-rW-ybZ" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="155" width="335" height="20"/>
-                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                <connections>
-                                    <outlet property="delegate" destination="WZ6-tG-7Ii" id="fww-OY-QB1"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ss7-mt-eh8">
-                                <rect key="frame" x="113" y="608" width="150" height="32"/>
-                                <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXI-Up-p9y">
+                                <rect key="frame" x="0.0" y="115" width="375" height="552"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Receiver’s Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Acj-rW-ybZ" customClass="TextFieldWithLine">
+                                        <rect key="frame" x="20" y="40" width="335" height="20"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="WZ6-tG-7Ii" id="fww-OY-QB1"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chose Token" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="55o-z3-dxc" customClass="TextFieldWithLine">
+                                        <rect key="frame" x="20" y="100" width="335" height="20"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="WZ6-tG-7Ii" id="Eud-Mp-UUn"/>
+                                        </connections>
+                                    </textField>
+                                    <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deisclosure_dark" translatesAutoresizingMaskIntoConstraints="NO" id="u50-Ga-hFT">
+                                        <rect key="frame" x="348" y="104.5" width="7" height="11"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="7" id="9ju-Nj-H24"/>
+                                            <constraint firstAttribute="height" constant="11" id="nfW-Sa-pjZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9k-FY-gPy">
+                                        <rect key="frame" x="20" y="95" width="335" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="FKF-uf-m3l"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="didPressedChoseTokensAction:" destination="WZ6-tG-7Ii" eventType="touchUpInside" id="v82-P8-LWV"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Md-s8-YSL" customClass="TextFieldWithLine">
+                                        <rect key="frame" x="20" y="160" width="335" height="20"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="WZ6-tG-7Ii" id="1FF-Ms-TNH"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ss7-mt-eh8">
+                                        <rect key="frame" x="112" y="260" width="150" height="32"/>
+                                        <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="IDg-Lt-WNW"/>
+                                            <constraint firstAttribute="height" constant="32" id="nXY-XJ-KxX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="SEND">
+                                            <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="makePaymentButtonWasPressed:" destination="WZ6-tG-7Ii" eventType="touchUpInside" id="ZDF-co-sI1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="IDg-Lt-WNW"/>
-                                    <constraint firstAttribute="height" constant="32" id="nXY-XJ-KxX"/>
+                                    <constraint firstItem="7Md-s8-YSL" firstAttribute="leading" secondItem="mXI-Up-p9y" secondAttribute="leading" constant="20" id="0sG-lY-UQH"/>
+                                    <constraint firstItem="Acj-rW-ybZ" firstAttribute="top" secondItem="mXI-Up-p9y" secondAttribute="top" constant="40" id="9fR-KS-1k7"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Md-s8-YSL" secondAttribute="trailing" constant="20" id="AEN-X8-rLv"/>
+                                    <constraint firstItem="7Md-s8-YSL" firstAttribute="top" secondItem="Acj-rW-ybZ" secondAttribute="bottom" constant="100" id="CJS-3x-tg6"/>
+                                    <constraint firstItem="Acj-rW-ybZ" firstAttribute="centerX" secondItem="mXI-Up-p9y" secondAttribute="centerX" id="KdT-xy-JAJ"/>
+                                    <constraint firstItem="F9k-FY-gPy" firstAttribute="leading" secondItem="mXI-Up-p9y" secondAttribute="leading" constant="20" id="MS0-5W-BhE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Acj-rW-ybZ" secondAttribute="trailing" constant="20" id="ToJ-9m-HIW"/>
+                                    <constraint firstItem="55o-z3-dxc" firstAttribute="top" secondItem="Acj-rW-ybZ" secondAttribute="bottom" constant="40" id="W6a-y3-RLa"/>
+                                    <constraint firstItem="F9k-FY-gPy" firstAttribute="centerY" secondItem="55o-z3-dxc" secondAttribute="centerY" id="Xol-GS-Dmz"/>
+                                    <constraint firstAttribute="trailing" secondItem="55o-z3-dxc" secondAttribute="trailing" constant="20" id="cBn-4q-uwf"/>
+                                    <constraint firstItem="u50-Ga-hFT" firstAttribute="centerY" secondItem="55o-z3-dxc" secondAttribute="centerY" id="d16-aS-DsK"/>
+                                    <constraint firstItem="Ss7-mt-eh8" firstAttribute="centerX" secondItem="mXI-Up-p9y" secondAttribute="centerX" id="d9Z-SS-Mks"/>
+                                    <constraint firstItem="Ss7-mt-eh8" firstAttribute="top" secondItem="7Md-s8-YSL" secondAttribute="bottom" constant="80" id="hmv-DX-ylI"/>
+                                    <constraint firstAttribute="trailing" secondItem="u50-Ga-hFT" secondAttribute="trailing" constant="20" id="iOd-F4-yzq"/>
+                                    <constraint firstItem="Acj-rW-ybZ" firstAttribute="leading" secondItem="mXI-Up-p9y" secondAttribute="leading" constant="20" id="jjd-cW-RFL"/>
+                                    <constraint firstItem="55o-z3-dxc" firstAttribute="leading" secondItem="mXI-Up-p9y" secondAttribute="leading" constant="20" id="mqX-7r-cTU"/>
+                                    <constraint firstAttribute="trailing" secondItem="F9k-FY-gPy" secondAttribute="trailing" constant="20" id="oxu-zi-K0l"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ss7-mt-eh8" secondAttribute="bottom" constant="27" id="v4o-O3-i6q"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="SEND">
-                                    <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="makePaymentButtonWasPressed:" destination="WZ6-tG-7Ii" eventType="touchUpInside" id="ZDF-co-sI1"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Md-s8-YSL" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="275" width="335" height="20"/>
-                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                                <connections>
-                                    <outlet property="delegate" destination="WZ6-tG-7Ii" id="1FF-Ms-TNH"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chose Token" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="55o-z3-dxc" customClass="TextFieldWithLine">
-                                <rect key="frame" x="20" y="215" width="335" height="20"/>
-                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                <connections>
-                                    <outlet property="delegate" destination="WZ6-tG-7Ii" id="Eud-Mp-UUn"/>
-                                </connections>
-                            </textField>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deisclosure_dark" translatesAutoresizingMaskIntoConstraints="NO" id="u50-Ga-hFT">
-                                <rect key="frame" x="348" y="220" width="7" height="11"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="7" id="9ju-Nj-H24"/>
-                                    <constraint firstAttribute="height" constant="11" id="nfW-Sa-pjZ"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9k-FY-gPy">
-                                <rect key="frame" x="20" y="210" width="335" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="FKF-uf-m3l"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="didPressedChoseTokensAction:" destination="WZ6-tG-7Ii" eventType="touchUpInside" id="v82-P8-LWV"/>
-                                </connections>
-                            </button>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Acj-rW-ybZ" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="69q-Js-Ukk"/>
                             <constraint firstItem="lhA-My-fKS" firstAttribute="top" secondItem="AtG-Xz-5W5" secondAttribute="top" id="8UK-ES-2CV"/>
-                            <constraint firstItem="7Md-s8-YSL" firstAttribute="top" secondItem="Acj-rW-ybZ" secondAttribute="bottom" constant="100" id="B1x-bS-kKs"/>
-                            <constraint firstAttribute="trailing" secondItem="u50-Ga-hFT" secondAttribute="trailing" constant="20" id="EmF-tW-33v"/>
-                            <constraint firstItem="u50-Ga-hFT" firstAttribute="bottom" secondItem="F9k-FY-gPy" secondAttribute="bottom" constant="-9" id="Hyt-LN-Jwr"/>
-                            <constraint firstItem="Ss7-mt-eh8" firstAttribute="centerX" secondItem="AtG-Xz-5W5" secondAttribute="centerX" id="KlG-ZO-teo"/>
+                            <constraint firstItem="vpr-qJ-h5C" firstAttribute="top" secondItem="mXI-Up-p9y" secondAttribute="bottom" id="GT0-vn-5cj"/>
                             <constraint firstAttribute="trailing" secondItem="lhA-My-fKS" secondAttribute="trailing" id="MFV-79-NJn"/>
-                            <constraint firstAttribute="trailing" secondItem="Acj-rW-ybZ" secondAttribute="trailing" constant="20" id="Md7-Nf-PgY"/>
-                            <constraint firstItem="Acj-rW-ybZ" firstAttribute="top" secondItem="lhA-My-fKS" secondAttribute="bottom" constant="40" id="PDM-8d-Ewe"/>
-                            <constraint firstItem="F9k-FY-gPy" firstAttribute="centerX" secondItem="55o-z3-dxc" secondAttribute="centerX" id="UFQ-sn-wjD"/>
-                            <constraint firstAttribute="trailing" secondItem="55o-z3-dxc" secondAttribute="trailing" constant="20" id="VYq-Ud-OX5"/>
-                            <constraint firstAttribute="trailing" secondItem="7Md-s8-YSL" secondAttribute="trailing" constant="20" id="ZBv-6Y-UZq"/>
-                            <constraint firstItem="55o-z3-dxc" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="ZK1-Xn-wYp"/>
-                            <constraint firstItem="7Md-s8-YSL" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="ZyF-oX-u7n"/>
-                            <constraint firstItem="55o-z3-dxc" firstAttribute="top" secondItem="Acj-rW-ybZ" secondAttribute="bottom" constant="40" id="ajI-G0-f55"/>
-                            <constraint firstItem="F9k-FY-gPy" firstAttribute="centerY" secondItem="55o-z3-dxc" secondAttribute="centerY" id="bG7-Kc-VSN"/>
                             <constraint firstItem="lhA-My-fKS" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" id="bfR-op-AGm"/>
-                            <constraint firstItem="F9k-FY-gPy" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" constant="20" id="jLk-1E-Z9r"/>
-                            <constraint firstItem="vpr-qJ-h5C" firstAttribute="top" secondItem="Ss7-mt-eh8" secondAttribute="bottom" constant="27" id="kIE-87-Tej"/>
-                            <constraint firstItem="F9k-FY-gPy" firstAttribute="centerX" secondItem="AtG-Xz-5W5" secondAttribute="centerX" id="nPd-yN-Zm4"/>
+                            <constraint firstItem="mXI-Up-p9y" firstAttribute="leading" secondItem="AtG-Xz-5W5" secondAttribute="leading" id="uTf-rB-9VQ"/>
+                            <constraint firstAttribute="trailing" secondItem="mXI-Up-p9y" secondAttribute="trailing" id="udd-NP-PN7"/>
+                            <constraint firstItem="mXI-Up-p9y" firstAttribute="top" secondItem="lhA-My-fKS" secondAttribute="bottom" id="xWs-9F-Q1r"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="b4t-7K-JFA" appends="YES" id="oIC-yS-Xs8"/>
@@ -241,13 +253,17 @@
                         <outlet property="addressTextField" destination="Acj-rW-ybZ" id="S73-VN-6Bw"/>
                         <outlet property="amountTextField" destination="7Md-s8-YSL" id="qJw-IF-VdC"/>
                         <outlet property="residueValueLabel" destination="eX9-Q5-aZt" id="msL-0M-l2u"/>
-                        <outlet property="sendButtonBottomOffset" destination="kIE-87-Tej" id="NlA-nD-PHs"/>
+                        <outlet property="scrollView" destination="mXI-Up-p9y" id="2ps-Sx-egA"/>
+                        <outlet property="sendButton" destination="Ss7-mt-eh8" id="A19-WC-2zo"/>
+                        <outlet property="sendButtonBottomConstraint" destination="v4o-O3-i6q" id="Yd5-9u-07H"/>
+                        <outlet property="sendButtonHeightConstraint" destination="nXY-XJ-KxX" id="cfb-qu-ahA"/>
+                        <outlet property="sendButtonTopConstraint" destination="hmv-DX-ylI" id="uGk-9f-pdj"/>
                         <outlet property="tokenButton" destination="F9k-FY-gPy" id="5VO-9F-Zak"/>
                         <outlet property="tokenDisclousureImage" destination="u50-Ga-hFT" id="LcD-nZ-AzD"/>
                         <outlet property="tokenTextField" destination="55o-z3-dxc" id="cUC-OV-nuo"/>
                         <outlet property="topView" destination="lhA-My-fKS" id="Ynw-Fh-uBK"/>
                         <outlet property="unconfirmedBalance" destination="Ggl-34-cns" id="e66-T0-MxX"/>
-                        <outlet property="withoutTokensConstraint" destination="B1x-bS-kKs" id="jLH-u4-Czj"/>
+                        <outlet property="withoutTokensConstraint" destination="CJS-3x-tg6" id="Amj-vw-VrO"/>
                         <segue destination="SPy-Uw-ObY" kind="unwind" identifier="FromMainToNewPayment" unwindAction="unwingToPayment:" id="ZRN-7z-WgM"/>
                     </connections>
                 </viewController>

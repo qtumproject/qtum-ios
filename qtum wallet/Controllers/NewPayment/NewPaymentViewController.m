@@ -23,16 +23,22 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenTextField;
 @property (weak, nonatomic) IBOutlet UIButton *tokenButton;
 @property (weak, nonatomic) IBOutlet UIImageView *tokenDisclousureImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalance;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withoutTokensConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonBottomOffset;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonHeightConstraint;
+
 
 @property (strong,nonatomic) NSString* adress;
 @property (strong,nonatomic) NSString* amount;
+@property (nonatomic) CGFloat standartTopOffsetForSendButton;
 
 @property (nonatomic) BOOL needUpdateTexfFields;
 
@@ -50,16 +56,18 @@ static NSInteger sendButtomBottomOffset = 27;
     
     [super viewDidLoad];
     
-    if (!([UIScreen mainScreen].bounds.size.height == 568)) { // TODO add scroll
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardWillShow:)
-                                                     name:UIKeyboardWillShowNotification
-                                                   object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardWillHide:)
-                                                     name:UIKeyboardWillHideNotification
-                                                   object:nil];
-    }
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
 
     
     self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
@@ -75,10 +83,24 @@ static NSInteger sendButtomBottomOffset = 27;
     }
     
     [self.delegate didViewLoad];
+    
+    [self updateScrollsConstraints];
 }
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)updateScrollsConstraints {
+ 
+    CGFloat allHeight = self.scrollView.frame.size.height;
+    CGFloat maxTextField = self.amountTextField.frame.size.height + self.amountTextField.frame.origin.y;
+    CGFloat buttonHeight = sendButtomBottomOffset + self.sendButtonHeightConstraint.constant;
+    
+    self.sendButtonTopConstraint.constant = allHeight - maxTextField - buttonHeight;
+    self.standartTopOffsetForSendButton = self.sendButtonTopConstraint.constant;
+    
+    [self.view layoutIfNeeded];
 }
 
 #pragma mark - NewPaymentOutput
@@ -105,6 +127,8 @@ static NSInteger sendButtomBottomOffset = 27;
     
     [self.view setNeedsLayout];
     [self.view layoutIfNeeded];
+    
+    [self updateScrollsConstraints];
 }
 
 
@@ -251,14 +275,37 @@ static NSInteger sendButtomBottomOffset = 27;
 
 -(void)keyboardWillShow:(NSNotification *)sender {
     
-    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.sendButtonBottomOffset.constant = end.size.height + sendButtomBottomOffset - self.tabBarController.tabBar.frame.size.height;
+    NSDictionary *info = [sender userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    self.sendButtonTopConstraint.constant = 40.0f;
+    self.sendButtonBottomConstraint.constant = kbSize.height - 30.0f;
     [self.view layoutIfNeeded];
 }
 
--(void)keyboardWillHide:(NSNotification *)sender{
+-(void)keyboardDidShow:(NSNotification *)sender {
+    
+    if ([self.amountTextField isFirstResponder]) {
+        NSDictionary *info = [sender userInfo];
+        CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+        CGFloat kbHeight = kbSize.height - 50.0f;
+        CGFloat topOfKeyboard = self.scrollView.frame.size.height - kbHeight;
+        
+        CGFloat bottomSend = self.sendButton.frame.size.height + self.sendButton.frame.origin.y;
+        
+        CGFloat forTopOffset = bottomSend - topOfKeyboard;
+        if (forTopOffset > 0) {
+            
+            CGPoint bottomOffset = CGPointMake(0, forTopOffset + 20);
+            [self.scrollView setContentOffset:bottomOffset animated:YES];
+        }
+    }
+}
 
-    self.sendButtonBottomOffset.constant = sendButtomBottomOffset;
+-(void)keyboardWillHide:(NSNotification *)sender{
+    
+    self.sendButtonTopConstraint.constant = self.standartTopOffsetForSendButton;
+    self.sendButtonBottomConstraint.constant = sendButtomBottomOffset;
     [self.view layoutIfNeeded];
 }
 
