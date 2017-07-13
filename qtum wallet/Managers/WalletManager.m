@@ -11,6 +11,7 @@
 #import "RPCRequestManager.h"
 #import "WalletManagerRequestAdapter.h"
 #import "HistoryDataStorage.h"
+#import "SocketManager.h"
 
 NSString const *kWalletKey = @"qtum_wallet_wallets_keys";
 NSString const *kUserPin = @"PIN";
@@ -22,6 +23,8 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 @property (nonatomic, strong) NSString* PIN;
 @property (nonatomic, strong) dispatch_group_t registerGroup;
 @property (strong ,nonatomic) WalletManagerRequestAdapter* requestAdapter;
+@property (assign, nonatomic) BOOL observingForSpendableFailed;
+@property (assign, nonatomic) BOOL observingForSpendableStopped;
 
 @end
 
@@ -42,6 +45,12 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     if (self != nil) {
         [self load];
         _requestAdapter = [WalletManagerRequestAdapter new];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didContinieObservingForSpendable)
+                                                     name:kSocketDidConnect object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didForceStopObservingForSpendable)
+                                                     name:kSocketDidDisconnect object:nil];
     }
     return self;
 }
@@ -145,6 +154,24 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     [self save];
 }
 
+#pragma mark - Observing
+
+-(void)didContinieObservingForSpendable {
+    
+    if (self.observingForSpendableFailed && !self.observingForSpendableStopped) {
+        [self startObservingForAllSpendable];
+        [self updateHistoryOfSpendableObject:self.currentWallet withHandler:nil andPage:0];
+    }
+    self.observingForSpendableFailed = NO;
+}
+
+-(void)didForceStopObservingForSpendable {
+    
+    self.observingForSpendableFailed = YES;
+}
+
+
+
 #pragma mark - Private methods
 
 - (void)registerWalletInNode:(Wallet *)wallet withSuccessHandler:(void(^)())success andFailureHandler:(void(^)())failure
@@ -238,10 +265,14 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 }
 
 -(void)startObservingForAllSpendable {
+    
+    self.observingForSpendableStopped = NO;
     [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self currentWallet] allKeysAdreeses]];
 }
 
 -(void)stopObservingForAllSpendable {
+    
+    self.observingForSpendableStopped = YES;
     [[ApplicationCoordinator sharedInstance].requestManager stopObservingAdresses:nil];
 }
 
@@ -265,7 +296,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 -(void)updateHistoryOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page{
     //__weak __typeof(self)weakSelf = self;
-    static NSInteger batch = 10;
+    static NSInteger batch = 25;
     [self.requestAdapter getHistoryForAddresses:[object allKeysAdreeses] andParam:@{@"limit" : @(batch), @"offset" : @(page * batch)} withSuccessHandler:^(NSArray <HistoryElement*> *history) {
         
         if (page > object.historyStorage.pageIndex) {
@@ -274,10 +305,14 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
             [object.historyStorage setHistory:history];
         }
         object.historyStorage.pageIndex = page;
-        complete(YES);
+        if (complete) {
+            complete(YES);
+        }
     } andFailureHandler:^(NSError *error, NSString *message) {
         
-        complete(NO);
+        if (complete) {
+            complete(NO);
+        }
     }];
 }
 

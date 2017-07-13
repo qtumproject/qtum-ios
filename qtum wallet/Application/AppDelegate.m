@@ -24,18 +24,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    for (NSString *familyName in [UIFont familyNames]) {
-        for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
-            NSLog(@"%@", fontName);
-        }
-    }
-    
     [iOSSessionManager sharedInstance];
     [ContractFileManager sharedInstance];
     [[AppSettings sharedInstance] setup];
     [Appearance setUp];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         if (!self.aplicationCoordinatorStarted) {
             [[ApplicationCoordinator sharedInstance] start];
@@ -55,6 +49,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    
     [[PopUpsManager sharedInstance] dismissLoader];
     [[ApplicationCoordinator sharedInstance] startConfirmPinFlowWithHandler:nil];
 }

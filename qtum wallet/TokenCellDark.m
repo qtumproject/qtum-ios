@@ -20,11 +20,14 @@
 
 - (void)changeHighlight:(BOOL)value {
     
-    for (UIView *view in self.contentView.subviews) {
-        if ([view isKindOfClass:[UILabel class]]) {
-            ((UILabel *)view).textColor = value ? customBlackColor() : customBlueColor();
-        }
-    }
+    self.tokenName.textColor =
+    self.mainSymbol.textColor =
+    self.symbol.textColor =
+    self.mainValue.textColor =
+    self.value.textColor = value ? customBlackColor() : customBlueColor();
+    
+    self.symbol.alpha =
+    self.value.alpha = value ? 1.0f : 0.4f;
 }
 
 @end

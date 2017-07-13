@@ -143,6 +143,11 @@
     return controller;
 }
 
+-(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController{
+    NSObject<LoginViewOutput>* controller = (NSObject<LoginViewOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ConfirmPinForExportViewController"];
+    return controller;
+}
+
 -(NSObject<FirstAuthOutput>*)createFirstAuthController{
     NSObject<FirstAuthOutput>* controller = (FirstAuthViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"FirstAuthViewController"];
     return controller;

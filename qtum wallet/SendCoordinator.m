@@ -53,53 +53,89 @@
 
 -(void)tokensDidChange {
     
-    if (self.tokenPaymentOutput) {
-        [self.tokenPaymentOutput updateWithTokens:[ContractManager sharedInstance].allActiveTokens];
-    }
-    
-    [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+    [self updateOutputs];
 }
 
 #pragma mark - Private Methods
 
+-(void)updateOutputs {
+    
+    __weak __typeof(self)weakSelf = self;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSArray <Contract*>* tokens = [ContractManager sharedInstance].allActiveTokens;
+        BOOL tokenExists = NO;
+        
+        if (weakSelf.tokenPaymentOutput) {
+            [weakSelf.tokenPaymentOutput updateWithTokens:tokens];
+        }
+        
+        if (self.token && [tokens containsObject:self.token]) {
+            tokenExists = YES;
+        } else {
+            self.token = nil;
+        }
+        
+        [weakSelf.paymentOutput updateControlsWithTokensExist:tokens.count choosenTokenExist:tokenExists walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+    });
+}
+
 -(void)payWithWalletWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
+    
+    if (![self isValidAmount:amount]) {
+        return;
+    }
     
     NSArray *array = @[@{@"amount" : amount, @"address" : address}];
     
     [self showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].currentWallet allKeys] toAddressAndAmount:array andHandler:^(NSError *error, id response) {
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].currentWallet allKeys] toAddressAndAmount:array andHandler:^(TransactionManagerErrorType errorType, id response) {
         [[PopUpsManager sharedInstance] dismissLoader];
-        if (!error) {
+        if (errorType == TransactionManagerErrorTypeNone) {
             [weakSelf showCompletedPopUp];
         }else{
-            if ([error isNoInternetConnectionError]) {
+            if (errorType == TransactionManagerErrorTypeNoInternetConnection) {
                 return;
             }
-            [weakSelf showErrorPopUp];
+            [weakSelf showErrorPopUp:(errorType == TransactionManagerErrorTypeNotEnoughMoney) ? NSLocalizedString(@"Sorry, you have insufficient funds available", nil) : nil];
         }
     }];
 }
 
 -(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
     
+    if (![self isValidAmount:amount]) {
+        return;
+    }
+    
     [self showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amount andHandler:^(NSError* error, BTCTransaction * transaction, NSString* hashTransaction) {
+    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amount andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
         
         [weakSelf hideLoaderPopUp];
-        [weakSelf.paymentOutput clearFields];
         
-        if (!error) {
+        if (errorType == TransactionManagerErrorTypeNone) {
             [weakSelf showCompletedPopUp];
         }else{
-            if ([error isNoInternetConnectionError]) {
+            if (errorType == TransactionManagerErrorTypeNoInternetConnection) {
                 return;
             }
-            [weakSelf showErrorPopUp];
+            [weakSelf showErrorPopUp:(errorType == TransactionManagerErrorTypeNotEnoughMoney) ? NSLocalizedString(@"Sorry, you have insufficient funds available", nil) : nil];
         }
     }];
+}
+
+- (BOOL)isValidAmount:(NSNumber *)amount {
+    
+    if ([amount floatValue] == 0.0f) {
+        [self showErrorPopUp:NSLocalizedString(@"Transaction amount can't be zero. Please edit your transaction and try again", nil)];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - Popup
@@ -108,8 +144,8 @@
     [self.paymentOutput hideLoaderPopUp];
 }
 
--(void)showErrorPopUp {
-    [self.paymentOutput showErrorPopUp];
+-(void)showErrorPopUp:(NSString *)message {
+    [self.paymentOutput showErrorPopUp:message];
 }
 
 -(void)showCompletedPopUp {
@@ -123,7 +159,8 @@
 #pragma mark - NewPaymentViewControllerDelegate
 
 -(void)didViewLoad {
-    [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+    
+    [self updateOutputs];
 }
 
 - (void)didPresseQRCodeScaner {
@@ -168,8 +205,9 @@
 
 - (void)didQRCodeScannedWithDict:(NSDictionary*)dict {
     
+    [self.navigationController popViewControllerAnimated:YES];
     [self.paymentOutput updateContentFromQRCode:dict];
-    [self.paymentOutput updateControlsWithTokenExist:[ContractManager sharedInstance].allActiveTokens.count walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+    [self updateOutputs];
 }
 
 - (void)didBackPressed {

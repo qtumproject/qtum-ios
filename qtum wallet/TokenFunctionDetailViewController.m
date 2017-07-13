@@ -34,7 +34,7 @@
     NSInteger yoffset = 0;
     NSInteger yoffsetFirstElement = 0;
     NSInteger heighOfPrevElement = 0;
-    NSInteger heighOfElement = 100;
+    NSInteger heighOfElement = 60;
     NSInteger scrollViewTopOffset = 64;
     NSInteger scrollViewBottomOffset = 49;
 
@@ -57,7 +57,7 @@
     
     if (!self.fromQStore) {
         UIButton *callButton = [[UIButton alloc] init];
-        callButton.frame = CGRectMake((self.view.frame.size.width - 150.0f) / 2.0f, yoffset * self.function.inputs.count - 1 + heighOfPrevElement * self.function.inputs.count - 1 + yoffsetFirstElement + 30.0f, 150, 32.0f);
+        callButton.frame = CGRectMake((self.view.frame.size.width - 150.0f) / 2.0f, yoffset * self.function.inputs.count - 1 + heighOfPrevElement * self.function.inputs.count - 1 + yoffsetFirstElement + 50.0f, 150, 32.0f);
         [callButton setTitle:NSLocalizedString(@"CALL", nil) forState:UIControlStateNormal];
         callButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
         [callButton setTitleColor:customBlackColor() forState:UIControlStateNormal];

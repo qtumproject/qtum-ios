@@ -71,4 +71,11 @@
     }
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if ([self.customDelegate respondsToSelector:@selector(textFieldDidEndEditing:)]) {
+        [self.customDelegate textFieldDidEndEditing:textField];
+    }
+}
+
 @end

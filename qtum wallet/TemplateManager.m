@@ -57,6 +57,7 @@ static NSString* standartTokenPath = @"StandardPath";
     NSMutableArray *savedTemplates = [[[FXKeychain defaultKeychain] objectForKey:kAvailableTemplates] mutableCopy];
     
     if (!savedTemplates.count) {
+        
         self.templates = [[self standartPackOfTemplates] mutableCopy];
         [self save];
     } else {
@@ -71,6 +72,7 @@ static NSString* standartTokenPath = @"StandardPath";
 }
 
 -(TemplateModel*)standartTokenTemplate {
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateName == %@ && path == %@",@"Standart",@"Standart"];
     NSArray* tepmlates = [self.templates filteredArrayUsingPredicate:predicate];
     return tepmlates.firstObject;

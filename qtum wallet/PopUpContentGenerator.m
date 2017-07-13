@@ -27,7 +27,7 @@
 }
 
 + (PopUpContent *)contentForCreateContract{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"Conrtact created successfully" message:nil okTitle:@"OK" cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"Contract created successfully" message:nil okTitle:@"OK" cancelTitle:nil];
     return content;
 }
 
@@ -42,7 +42,7 @@
 }
 
 + (PopUpContent *)contentForBrainCodeCopied{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Brain-CODE copied", "") message:nil okTitle:NSLocalizedString(@"OK", "") cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Passphrase copied", "") message:nil okTitle:NSLocalizedString(@"OK", "") cancelTitle:nil];
     return content;
 }
 

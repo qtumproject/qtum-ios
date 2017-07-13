@@ -141,9 +141,8 @@
     
     CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[[ControllersFactory sharedInstance] createCustomAbiInterphaseViewController];
     controller.delegate = self;
-    
+    controller.contractTitle = self.templateModel.type == TokenType ? NSLocalizedString(@"Token", nil) : NSLocalizedString(@"Crowdsale", nil);
     controller.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:self.templateModel.path];
-
     [self.navigationController pushViewController:controller animated:YES];
 }
 

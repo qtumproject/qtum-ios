@@ -125,7 +125,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)refreshTableViewData{
+- (void)refreshTableViewData {
     if (self.isNewDataLoaded) {
         [self refreshHistory];
     }
@@ -232,7 +232,13 @@
     
     [self configWallet];
     [self setWalletToDelegates];
-    [self updateSpendables];
+    
+    __weak __typeof(self)weakSelf = self;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [weakSelf updateSpendables];
+    });
 }
 
 - (void)didBackPressed{
@@ -264,9 +270,9 @@
     });
 }
 
-- (void)didReloadTableViewData{
+- (void)didReloadTableViewData {
     if (self.isNewDataLoaded) {
-        [self didRefreshTableViewBalanceLocal:NO];
+        self.isBalanceLoaded = YES;
         [self reloadHistory];
     }
 }

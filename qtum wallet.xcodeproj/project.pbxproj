@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552C1F163C4D00E64E46 /* ConfirmPinForExportViewController.m */; };
+		B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */; };
+		B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */; };
 		B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */; };
 		B30BAE2E1E9E3AA600CA795F /* ContractManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BAE2D1E9E3AA600CA795F /* ContractManager.m */; };
 		B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31CF71D1E124A25000BCF41 /* HistoryViewController.m */; };
@@ -446,6 +449,12 @@
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		B303552B1F163C4D00E64E46 /* ConfirmPinForExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinForExportViewController.h; sourceTree = "<group>"; };
+		B303552C1F163C4D00E64E46 /* ConfirmPinForExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinForExportViewController.m; sourceTree = "<group>"; };
+		B303552E1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinForExportViewControllerDark.h; sourceTree = "<group>"; };
+		B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinForExportViewControllerDark.m; sourceTree = "<group>"; };
+		B30355311F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinForExportViewControllerLight.h; sourceTree = "<group>"; };
+		B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinForExportViewControllerLight.m; sourceTree = "<group>"; };
 		B3054E2E1F0B9EE4001B1F63 /* SendCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCoordinator.h; sourceTree = "<group>"; };
 		B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCoordinator.m; sourceTree = "<group>"; };
 		B3054E321F0BBAFE001B1F63 /* NewPaymentOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutput.h; sourceTree = "<group>"; };
@@ -1257,11 +1266,11 @@
 		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
+				E7881B781F0BDC3400BD6AB2 /* WalletOutput */,
+				B3827DDA1ECF28F300E500DE /* TokenListOutput */,
 				E7C101C71F15298400848526 /* RecieveOutput */,
 				E760F48E1F0F6CAA0056D042 /* BalancePageOutput */,
-				E7881B781F0BDC3400BD6AB2 /* WalletOutput */,
 				E73D36EE1ECF14AA009173BD /* TokenDetails */,
-				B3827DDA1ECF28F300E500DE /* TokenListOutput */,
 				B33601791E963A0500243A21 /* HistoryItemOutput */,
 				B3DD275E1E681AA500BB0635 /* WalletCoordinator.h */,
 				B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */,
@@ -2321,6 +2330,12 @@
 				B36505A61F16015A00521603 /* ExportBrainKeyViewControllerDark.m */,
 				B36505A81F16017300521603 /* ExportBrainKeyViewControllerLight.h */,
 				B36505A91F16017300521603 /* ExportBrainKeyViewControllerLight.m */,
+				B303552B1F163C4D00E64E46 /* ConfirmPinForExportViewController.h */,
+				B303552C1F163C4D00E64E46 /* ConfirmPinForExportViewController.m */,
+				B303552E1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.h */,
+				B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */,
+				B30355311F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.h */,
+				B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */,
 			);
 			name = "Export Wallet Flow";
 			sourceTree = "<group>";
@@ -3372,6 +3387,7 @@
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				E74857961F13BA5300DCF9A6 /* LanguageViewControllerLight.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
+				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
 				E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */,
 				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
@@ -3459,6 +3475,7 @@
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
 				E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
+				B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */,
 				E73CF6D11EE2D6FC0044DF78 /* PopUpContent.m in Sources */,
 				E760F4941F0F6DA80056D042 /* BalancePageViewControllerLight.m in Sources */,
 				E760F4911F0F6D8B0056D042 /* BalancePageViewControllerDark.m in Sources */,
@@ -3507,6 +3524,7 @@
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
 				B36505AA1F16017300521603 /* ExportBrainKeyViewControllerLight.m in Sources */,
 				B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */,
+				B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */,
 				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */,

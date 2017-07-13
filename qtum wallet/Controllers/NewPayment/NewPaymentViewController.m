@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalance;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withoutTokensConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonBottomOffset;
 
 @property (strong,nonatomic) NSString* adress;
 @property (strong,nonatomic) NSString* amount;
@@ -39,14 +40,27 @@
 
 @end
 
-static NSInteger withTokenOffset = 80;
-static NSInteger withoutTokenOffset = 30;
+static NSInteger withTokenOffset = 100;
+static NSInteger withoutTokenOffset = 40;
+static NSInteger sendButtomBottomOffset = 27;
 
 @implementation NewPaymentViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    if (!([UIScreen mainScreen].bounds.size.height == 568)) { // TODO add scroll
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillHide:)
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
+    }
+
     
     self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
 }
@@ -69,7 +83,8 @@ static NSInteger withoutTokenOffset = 30;
 
 #pragma mark - NewPaymentOutput
 
--(void)updateControlsWithTokenExist:(BOOL) isExist
+-(void)updateControlsWithTokensExist:(BOOL) isExist
+                  choosenTokenExist:(BOOL) choosenExist
                       walletBalance:(CGFloat) walletBalance
              andUnconfimrmedBalance:(CGFloat) walletUnconfirmedBalance {
     
@@ -84,6 +99,10 @@ static NSInteger withoutTokenOffset = 30;
     self.withoutTokensConstraint.constant = isTokensExists ? withTokenOffset : withoutTokenOffset;
     self.tokenDisclousureImage.tintColor = customBlueColor();
     
+    if (!choosenExist) {
+        self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+    }
+    
     [self.view setNeedsLayout];
     [self.view layoutIfNeeded];
 }
@@ -93,12 +112,18 @@ static NSInteger withoutTokenOffset = 30;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
 }
 
-- (void)showCompletedPopUp{
+- (void)showCompletedPopUp {
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
-- (void)showErrorPopUp{
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
+- (void)showErrorPopUp:(NSString *)message {
+    PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+    if (message) {
+        content.messageString = message;
+        content.titleString = NSLocalizedString(@"Failed", nil);
+    }
+    
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (void)hideLoaderPopUp {
@@ -205,7 +230,6 @@ static NSInteger withoutTokenOffset = 30;
     NSNumber *amount = @([[self correctAmountString] doubleValue]);
     NSString *address = self.addressTextField.text;
     [self.delegate didPresseSendActionWithAddress:address andAmount:amount];
-
 }
 
 - (IBAction)actionVoidTap:(id)sender{
@@ -221,6 +245,21 @@ static NSInteger withoutTokenOffset = 30;
 - (IBAction)didPressedScanQRCode:(id)sender {
     
     [self.delegate didPresseQRCodeScaner];
+}
+
+#pragma mark - Keyboard
+
+-(void)keyboardWillShow:(NSNotification *)sender {
+    
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.sendButtonBottomOffset.constant = end.size.height + sendButtomBottomOffset - self.tabBarController.tabBar.frame.size.height;
+    [self.view layoutIfNeeded];
+}
+
+-(void)keyboardWillHide:(NSNotification *)sender{
+
+    self.sendButtonBottomOffset.constant = sendButtomBottomOffset;
+    [self.view layoutIfNeeded];
 }
 
 

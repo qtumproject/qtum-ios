@@ -17,6 +17,6 @@
 @property (strong,nonatomic) InterfaceInputFormModel* formModel;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (assign,nonatomic) UIEdgeInsets originInsets;
-
+@property (copy, nonatomic) NSString* contractTitle;
 
 @end

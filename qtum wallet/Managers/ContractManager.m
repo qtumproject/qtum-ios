@@ -15,6 +15,7 @@
 #import "NSData+Extension.h"
 #import "TemplateManager.h"
 #import "NotificationManager.h"
+#import "SocketManager.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -28,6 +29,9 @@ static NSString* kAddresses = @"kAddress";
 
 @property (strong, nonatomic) NSMutableDictionary* smartContractPretendents;
 @property (nonatomic, strong) NSMutableArray<Contract*> *contracts;
+@property (assign, nonatomic) BOOL observingForSpendableFailed;
+@property (assign, nonatomic) BOOL observingForSpendableStopped;
+@property (assign, nonatomic) BOOL haveAuthUser;
 
 @end
 
@@ -48,8 +52,34 @@ static NSString* kAddresses = @"kAddress";
     self = [super init];
     if (self != nil) {
         [self load];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didContinieObservingForSpendable)
+                                                     name:kSocketDidConnect object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didForceStopObservingForSpendable)
+                                                     name:kSocketDidDisconnect object:nil];
     }
     return self;
+}
+
+-(void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Observing
+
+-(void)didContinieObservingForSpendable {
+    
+    if (self.observingForSpendableFailed && !self.observingForSpendableStopped) {
+        [self startObservingForAllSpendable];
+    }
+    self.observingForSpendableFailed = NO;
+}
+
+-(void)didForceStopObservingForSpendable {
+    
+    self.observingForSpendableFailed = YES;
 }
 
 #pragma mark - Lazy Getters
@@ -185,17 +215,21 @@ static NSString* kAddresses = @"kAddress";
         NSDictionary* tokenInfo = self.smartContractPretendents[key];
         NSArray* addresses = tokenInfo[kAddresses];
         TemplateModel* templateModel = (TemplateModel*)tokenInfo[kTemplateModel];
+        NSMutableData* hashData = [[NSData reverseData:[NSString dataFromHexString:key]] mutableCopy];
+        NSString* contractAddress = [NSString hexadecimalString:hashData];
+
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",contractAddress];
+        NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
         
-        if (tokenInfo) {
+        if (tokenInfo && !filteredArray.count) {
             Contract* token = [Contract new];
-            NSMutableData* hashData = [[NSData reverseData:[NSString dataFromHexString:key]] mutableCopy];
             uint32_t vinIndex = 0;
             [hashData appendBytes:&vinIndex length:4];
             hashData = [[hashData BTCHash160] mutableCopy];
             token.contractCreationAddressAddress = addresses.firstObject;
             token.adresses =  [[[WalletManager sharedInstance] hashTableOfKeys] allKeys];
             token.contractAddress = [NSString hexadecimalString:hashData];
-            token.localName = [token.contractAddress substringToIndex:6];
+            token.localName = [token.contractAddress substringToIndex:15];
             token.templateModel = templateModel;
             token.creationDate = [NSDate date];
             token.isActive = YES;
@@ -219,7 +253,7 @@ static NSString* kAddresses = @"kAddress";
         Contract* token = [Contract new];
         token.contractAddress = contractAddress;
         token.creationDate = [NSDate date];
-        token.localName = [token.contractAddress substringToIndex:6];
+        token.localName = [token.contractAddress substringToIndex:15];
         token.adresses = [[[WalletManager sharedInstance] hashTableOfKeys] allKeys];
         //[token setupWithContractAddresse:contractAddress];
         token.manager = self;
@@ -376,10 +410,14 @@ static NSString* kAddresses = @"kAddress";
 }
 
 -(void)startObservingForSpendable:(id <Spendable>) spendable {
+    
+    self.observingForSpendableStopped = NO;
     [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:spendable withHandler:nil];
 }
 
 -(void)stopObservingForSpendable:(id <Spendable>) spendable {
+    
+    self.observingForSpendableStopped = YES;
     [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:spendable];
 }
 

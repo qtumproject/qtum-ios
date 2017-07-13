@@ -321,10 +321,10 @@
     UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
     UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
     [controller setControllerForNews:news forSend:send forWallet:wallet forProfile:profile];
-    controller.outputDelegate = self.tabCoordinator;
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
     self.tabCoordinator = coordinator;
     [self addDependency:coordinator];
+    controller.outputDelegate = self.tabCoordinator;
     [coordinator start];
 }
 

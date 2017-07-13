@@ -49,7 +49,7 @@
 
 -(void)showSecurityLoginOutput {
     
-    NSObject<LoginViewOutput>* controller = [[ControllersFactory sharedInstance] createLoginController];
+    NSObject<LoginViewOutput>* controller = [[ControllersFactory sharedInstance] createConfirmPinForExportViewController];
     controller.delegate = self;
     [controller startEditing];
     self.loginOutput = controller;

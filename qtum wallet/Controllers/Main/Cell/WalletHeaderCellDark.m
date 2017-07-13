@@ -26,6 +26,14 @@ CGFloat const WalletHeaderCellDarkHeaderHeight = 50.0f;
 
 @implementation WalletHeaderCellDark
 
+- (void)setData:(id<Spendable>)wallet {
+    
+    [super setData:wallet];
+    
+    self.valueLabel.text = [NSString stringWithFormat:@"%@ QTUM", self.valueLabel.text];
+    self.unconfirmedValue.text = [NSString stringWithFormat:@"%@ QTUM", self.unconfirmedValue.text];
+}
+
 #pragma mark - Animation
 
 - (void)cellYPositionChanged:(CGFloat)yPosition{

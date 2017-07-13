@@ -57,9 +57,9 @@ static NSString* op_exec = @"c1";
     return addresesForSending;
 }
 
-- (void)sendTransactionWalletKeys:(NSArray<BTCKey*>*) walletKeys
-               toAddressAndAmount:(NSArray*) amountsAndAddresses
-                       andHandler:(void(^)(NSError* error, id response)) completion {
+- (void)sendTransactionWalletKeys:(NSArray<BTCKey*> *)walletKeys
+               toAddressAndAmount:(NSArray *)amountsAndAddresses
+                       andHandler:(void(^)(TransactionManagerErrorType errorType, id response))completion {
     
     NSAssert(amountsAndAddresses && walletKeys.count > 0, @"Amount and address must be not nil, from addresses must be grater then one");
     
@@ -71,25 +71,27 @@ static NSString* op_exec = @"c1";
     
     [[WalletManager sharedInstance].requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
         
-        BTCTransaction *tx = [weakSelf regularTransactionWithUnspentOutputs:responseObject amount:amount amountAndAddresses:preparedAmountAndAddreses walletKeys:walletKeys];
-        
-        [weakSelf sendTransaction:tx withSuccess:^(id response){
-            completion(nil,response);
-        } andFailure:^(NSString *message) {
-            completion([NSError new],message);
+        [weakSelf regularTransactionWithUnspentOutputs:responseObject amount:amount amountAndAddresses:preparedAmountAndAddreses walletKeys:walletKeys andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction) {
+            if (errorType == TransactionManagerErrorTypeNone) {
+                [weakSelf sendTransaction:transaction withSuccess:^(id response){
+                    completion(TransactionManagerErrorTypeNone, response);
+                } andFailure:^(NSString *message) {
+                    completion(TransactionManagerErrorTypeServer, message);
+                }];
+            } else {
+                completion(errorType, nil);
+            }
         }];
     } andFailureHandler:^(NSError *error, NSString *message) {
-        completion(error,nil);
+        completion([error isNoInternetConnectionError] ? TransactionManagerErrorTypeNoInternetConnection :TransactionManagerErrorTypeServer, nil);
     }];
 }
 
-- (void)sendTransactionToToken:(Contract*) token
-                     toAddress:(NSString*) toAddress
-                        amount:(NSNumber*) amount
-                    andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion {
+- (void)sendTransactionToToken:(Contract *)token
+                     toAddress:(NSString *)toAddress
+                        amount:(NSNumber *)amount
+                    andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
-    
-
     AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] tokenStandartTransferMethodInterface];
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
     NSString* __block addressWithAmountValue;
@@ -102,16 +104,20 @@ static NSString* op_exec = @"c1";
     
     if (addressWithAmountValue) {
         [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[WalletManager sharedInstance].currentWallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
-            completion(error,transaction,hashTransaction);
+            if (error) {
+                completion([error isNoInternetConnectionError] ? TransactionManagerErrorTypeNoInternetConnection : TransactionManagerErrorTypeServer, transaction,hashTransaction);
+            }else{
+                completion(TransactionManagerErrorTypeNone, transaction, hashTransaction);
+            }
         }];
     } else {
-        completion([NSError new],nil,nil);
+        completion(TransactionManagerErrorTypeNotEnoughMoney, nil, nil);
     }
 }
 
-- (void)createSmartContractWithKeys:(NSArray<BTCKey*>*) walletKeys
-                         andBitcode:(NSData*) bitcode
-                         andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion {
+- (void)createSmartContractWithKeys:(NSArray<BTCKey*> *)walletKeys
+                         andBitcode:(NSData *)bitcode
+                         andHandler:(void(^)(NSError *error, BTCTransaction *transaction, NSString *hashTransaction)) completion {
     
     //NSAssert(walletKeys.count > 0, @"Keys must be grater then zero");
     if (!walletKeys.count) {
@@ -189,10 +195,11 @@ static NSString* op_exec = @"c1";
     }
 }
 
-- (BTCTransaction *)regularTransactionWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
+- (void)regularTransactionWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
                                                   amount:(CGFloat) amount
                                       amountAndAddresses:(NSArray*) amountAndAddresses
-                                              walletKeys:(NSArray<BTCKey*>*) walletKeys {
+                                              walletKeys:(NSArray<BTCKey*>*) walletKeys
+                                              andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion {
     
     NSArray *utxos = unspentOutputs;
     if (utxos.count > 0) {
@@ -223,7 +230,8 @@ static NSString* op_exec = @"c1";
         }
         
         if (total < totalAmount) {
-            return nil;
+            completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+            return;
         }
         
         // Create a new transaction
@@ -273,7 +281,8 @@ static NSString* op_exec = @"c1";
             NSAssert([d1 isEqual:d2], @"Transaction must not change within signatureHashForScript!");
             
             if (!hash) {
-                return nil;
+                completion(TransactionManagerErrorTypeOups, nil);
+                return;
             }
             
             BTCKey *key;
@@ -285,7 +294,8 @@ static NSString* op_exec = @"c1";
                 }
             }
             if (!key) {
-                return nil;
+                completion(TransactionManagerErrorTypeOups, nil);
+                return;
             }
             
             NSData* signature = [key signatureForHash:hash];
@@ -308,10 +318,12 @@ static NSString* op_exec = @"c1";
         NSAssert(r, @"should verify first output");
         
         DLog(@"Hash tx: %@", tx.transactionID);
-        return tx;
+        
+        completion(TransactionManagerErrorTypeNone, tx);
+        return;
     }
     
-    return nil;
+    completion(TransactionManagerErrorTypeOups, nil);
 }
 
 - (BTCTransaction *)sendToTokenWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
