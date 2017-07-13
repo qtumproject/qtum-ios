@@ -139,7 +139,7 @@
     
     double amount = [[self correctAmountString] doubleValue];
     if (amount > 0) {
-        text = [NSString stringWithFormat:@"My address: %@ and amount: %.3f", text, amount];
+        text = [NSString stringWithFormat:NSLocalizedString(@"My address: %@ and amount: %.3f", nil), text, amount];
     }
     
     NSArray *sharedItems = @[qrCode, text];

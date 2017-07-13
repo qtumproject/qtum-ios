@@ -120,8 +120,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")) {
         
         UNMutableNotificationContent* content = [UNMutableNotificationContent new];
-        content.title = @"Local Notification";
-        content.subtitle = @"QTUM";
+        content.title = NSLocalizedString(@"Local Notification", nil);
+        content.subtitle = NSLocalizedString(@"QTUM", nil);
         content.body = text;
         
         UNTimeIntervalNotificationTrigger* triger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
@@ -130,7 +130,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     } else {
         UILocalNotification* notification = [UILocalNotification new];
         notification.alertBody = text;
-        notification.alertTitle = @"Local Notification";
+        notification.alertTitle = NSLocalizedString(@"Local Notification", nil);
         notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     }

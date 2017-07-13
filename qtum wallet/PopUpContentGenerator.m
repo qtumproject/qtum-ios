@@ -12,47 +12,47 @@
 @implementation PopUpContentGenerator
 
 + (PopUpContent *)contentForOupsPopUp{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"Oops" message:@"Something went wrong" okTitle:@"OK" cancelTitle:@"TRY AGAIN"];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Oops", nil) message:NSLocalizedString(@"Something went wrong", nil) okTitle:NSLocalizedString(@"OK", nil) cancelTitle:NSLocalizedString(@"TRY AGAIN", nil)];
     return content;
 }
 
 + (PopUpContent *)contentForPhotoLibrary{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"QTUM App would like to access your photos" message:nil okTitle:@"OK" cancelTitle:@"DON'T ALLOW"];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"QTUM App would like to access your photos", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:NSLocalizedString(@"TRY AGAIN", nil)];
     return content;
 }
 
 + (PopUpContent *)contentForUpdateBalance{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"Your balance was updated" message:nil okTitle:@"OK" cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Your balance was updated", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
     return content;
 }
 
 + (PopUpContent *)contentForCreateContract{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"Contract created successfully" message:nil okTitle:@"OK" cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Contract created successfully", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
     return content;
 }
 
 + (PopUpContent *)contentForSend{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"Payment completed successfully" message:nil okTitle:@"OK" cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Payment completed successfully", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
     return content;
 }
 
 + (PopUpContent *)contentForCompletedBackupFile{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:@"File saved successfully" message:nil okTitle:@"OK" cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"File saved successfully", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
     return content;
 }
 
 + (PopUpContent *)contentForBrainCodeCopied{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Passphrase copied", "") message:nil okTitle:NSLocalizedString(@"OK", "") cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Passphrase copied", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
     return content;
 }
 
 + (PopUpContent *)contentForAddressCopied{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Address copied", "") message:nil okTitle:NSLocalizedString(@"OK", "") cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Address copied", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
     return content;
 }
 
 + (PopUpContent *)contentForSourceCode{
-    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Source Code", "") message:nil okTitle:NSLocalizedString(@"Copy", "") cancelTitle:nil];
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Source Code", nil) message:nil okTitle:NSLocalizedString(@"Copy", nil) cancelTitle:nil];
     return content;
 }
 
