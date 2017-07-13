@@ -19,8 +19,8 @@
 
 static NSString* kAvailableTemplates = @"kAvailableTemplates";
 static NSString* kNameKey = @"name";
-static NSString* kUiidKey = @"uiid";
-static NSString* kCreationDateKey = @"creationDate";
+static NSString* kUiidKey = @"uuid";
+static NSString* kCreationDateKey = @"date_create";
 static NSString* kTypeKey = @"type";
 static NSString* kSourceKey = @"source";
 static NSString* kAbiKey = @"abi";
@@ -228,7 +228,7 @@ static NSString* standartTokenPath = @"StandardPath";
     for (NSDictionary* template in backup) {
         
         TemplateModel* templateModel = [self createNewTemplateWithAbi:template[kAbiKey] bitecode:template[kBitecode] source:template[kSourceKey] type:[TemplateModel templateTypeFromForBackupString:template[kTypeKey]]  andName:template[kNameKey]];
-        templateModel.uiidFromRestore = [template[kUiidKey] integerValue];
+        templateModel.uuidFromRestore = [template[kUiidKey] integerValue];
         if (templateModel) {
             [newTemplates addObject:templateModel];
         }

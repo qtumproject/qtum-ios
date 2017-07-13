@@ -432,11 +432,11 @@ static NSString* kAddresses = @"kAddress";
 
 #pragma mark - Backup
 
-static NSString* kPublishDate = @"publishDate";
+static NSString* kPublishDate = @"publish_date";
 static NSString* kNameKey = @"name";
-static NSString* kContractAddressKey = @"contractAddress";
-static NSString* kContractCreationAddressKey = @"contractCreationAddres";
-static NSString* kIsActiveKey = @"isActive";
+static NSString* kContractAddressKey = @"contract_address";
+static NSString* kContractCreationAddressKey = @"contract_creation_address";
+static NSString* kIsActiveKey = @"is_active";
 static NSString* kTypeKey = @"type";
 static NSString* kTemplateKey = @"template";
 
@@ -471,7 +471,7 @@ static NSString* kTemplateKey = @"template";
         contract.creationDate = [NSDate date];
         contract.isActive = [contractDict[kIsActiveKey] boolValue];
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uiidFromRestore == %i",[contractDict[kTemplateKey] integerValue]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuidFromRestore == %i",[contractDict[kTemplateKey] integerValue]];
         NSArray* filteredTemplates = [templates filteredArrayUsingPredicate:predicate];
         if (filteredTemplates.count > 0) {
             contract.templateModel = filteredTemplates[0];

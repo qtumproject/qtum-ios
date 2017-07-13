@@ -15,12 +15,12 @@ static NSString* kContractsKey = @"contracts";
 static NSString* kTemplatesKey = @"templates";
 static NSString* kDateCreateKey = @"date_create";
 static NSString* kPlatformKey = @"platform";
-static NSString* kFileVersionKey = @"fileVersion";
-static NSString* kPlatformVersionKey = @"platformVersion";
+static NSString* kFileVersionKey = @"backup_version";
+static NSString* kPlatformVersionKey = @"platform_version";
 static NSString* kBackupFileNameKey = @"backup.json";
 static NSString* kCurrentPlatformValueKey = @"ios";
 static NSString* kCurrentFileVersionValueKey = @"1.0";
-static NSString* kTemplateUiidKey = @"template";
+static NSString* kTemplateUuidKey = @"template";
 
 @implementation BackupFileManager
 
@@ -113,12 +113,12 @@ static NSString* kTemplateUiidKey = @"template";
         
         for (NSDictionary* contract in filteredArray) {
             
-            if ([contract[kTemplateUiidKey] isKindOfClass:[NSString class]]) {
-                if ([contract[kTemplateUiidKey] integerValue]) {
-                    [usefullTemplatesIndexes addObject:@([contract[kTemplateUiidKey] integerValue])];
+            if ([contract[kTemplateUuidKey] isKindOfClass:[NSString class]]) {
+                if ([contract[kTemplateUuidKey] integerValue]) {
+                    [usefullTemplatesIndexes addObject:@([contract[kTemplateUuidKey] integerValue])];
                 }
-            } else if ([contract[kTemplateUiidKey] isKindOfClass:[NSNumber class]]) {
-                [usefullTemplatesIndexes addObject:@([contract[kTemplateUiidKey] integerValue])];
+            } else if ([contract[kTemplateUuidKey] isKindOfClass:[NSNumber class]]) {
+                [usefullTemplatesIndexes addObject:@([contract[kTemplateUuidKey] integerValue])];
             }
         }
         
