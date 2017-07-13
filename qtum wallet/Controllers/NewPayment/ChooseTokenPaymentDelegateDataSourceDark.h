@@ -7,14 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChooseTokenPaymentDelegateDataSourceProtocol.h"
+#import "ChooseTokenPaymentDelegateDataSource.h"
 
-@protocol ChooseTokekPaymentDelegateDataSourceDelegate;
-
-@interface ChooseTokenPaymentDelegateDataSourceDark : NSObject <ChooseTokenPaymentDelegateDataSourceProtocol>
-
-@property (weak, nonatomic) Contract* activeToken;
-@property (weak, nonatomic) id <ChooseTokekPaymentDelegateDataSourceDelegate> delegate;
-@property (copy, nonatomic) NSArray <Contract*>* tokens;
+@interface ChooseTokenPaymentDelegateDataSourceDark : ChooseTokenPaymentDelegateDataSource
 
 @end

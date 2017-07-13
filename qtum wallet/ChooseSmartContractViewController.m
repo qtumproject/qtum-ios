@@ -22,7 +22,7 @@
     
     [super viewDidLoad];
     
-    self.contractTypes = @[NSLocalizedString(@"My New Contracts", @""),
+    self.contractTypes = @[NSLocalizedString(@"My Contract Templates", @""),
                            NSLocalizedString(@"My Published Contracts", @""),
 //                           NSLocalizedString(@"Contracts Store", @""),
                            NSLocalizedString(@"Watch Contract", @""),

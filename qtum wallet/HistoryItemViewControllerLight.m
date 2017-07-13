@@ -31,7 +31,7 @@
     [super configWithItem];
     
     self.topGradient.colorType = self.item.confirmed ? Green : Pink;
-    self.confirmedLabel.text = self.item.confirmed ? NSLocalizedString(@"Confirmed", nil) : NSLocalizedString(@"Not Confirmed Yet...", nil);
+    self.confirmedLabel.text = self.item.confirmed ? NSLocalizedString(@"Confirmed", nil) : NSLocalizedString(@"Unconfirmed Yet...", nil);
     NSString *imageName = self.item.confirmed ? @"ic-confirmed" : @"ic-confirmation_loader";
     self.confirmedImageView.image = [UIImage imageNamed:imageName];
 }

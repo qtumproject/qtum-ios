@@ -66,6 +66,12 @@ static NSString* op_exec = @"c1";
     __weak typeof(self) weakSelf = self;
     NSArray* walletAddreses = [self getAddressesFromKeys:walletKeys];
     NSDictionary* allPreparedValues = [self createAmountsAndAddresses:amountsAndAddresses];
+    
+    if (!allPreparedValues) {
+        completion(TransactionManagerErrorTypeInvalidAddress, nil);
+        return;
+    }
+    
     BTCAmount amount = [allPreparedValues[@"totalAmount"] doubleValue];
     NSArray* preparedAmountAndAddreses = allPreparedValues[@"amountsAndAddresses"];
     
@@ -91,6 +97,12 @@ static NSString* op_exec = @"c1";
                      toAddress:(NSString *)toAddress
                         amount:(NSNumber *)amount
                     andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
+    
+    // Checking address
+    BTCPublicKeyAddress *address = [BTCPublicKeyAddress addressWithString:toAddress];
+    if (!address) {
+        completion(TransactionManagerErrorTypeInvalidAddress, nil, nil);
+    }
     
     AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] tokenStandartTransferMethodInterface];
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,amount]];

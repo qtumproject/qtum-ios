@@ -19,8 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
-
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *tokenButton;
 @property (weak, nonatomic) IBOutlet UIImageView *tokenDisclousureImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -71,6 +71,9 @@ static NSInteger sendButtomBottomOffset = 27;
 
     
     self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+    
+    [self.amountTextField addTarget:self action:@selector(updateSendButton) forControlEvents:UIControlEventEditingChanged];
+    [self.addressTextField addTarget:self action:@selector(updateSendButton) forControlEvents:UIControlEventEditingChanged];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -83,8 +86,14 @@ static NSInteger sendButtomBottomOffset = 27;
     }
     
     [self.delegate didViewLoad];
-    
     [self updateScrollsConstraints];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    [self updateSendButton];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -95,6 +104,25 @@ static NSInteger sendButtomBottomOffset = 27;
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)updateSendButton {
+    
+    BOOL isFilled = [self isTextFieldsFilled];
+    
+    self.sendButton.enabled = isFilled;
+    self.sendButton.alpha = isFilled ? 1 : 0.7f;
+}
+
+-(BOOL)isTextFieldsFilled {
+    
+    BOOL isFilled = YES;
+    for (TextFieldWithLine *textField in self.scrollView.subviews) {
+        if ([textField isKindOfClass:[TextFieldWithLine class]] && textField.text.length == 0) {
+            isFilled = NO;
+        }
+    }
+    return isFilled;
 }
 
 - (void)updateScrollsConstraints {
@@ -128,7 +156,7 @@ static NSInteger sendButtomBottomOffset = 27;
     self.tokenDisclousureImage.tintColor = customBlueColor();
     
     if (!choosenExist) {
-        self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+        self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", nil);
     }
     
     [self.view setNeedsLayout];
