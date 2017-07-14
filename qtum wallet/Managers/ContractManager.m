@@ -491,7 +491,7 @@ static NSString* kTemplateKey = @"template";
         backupItem[kContractCreationAddressKey] = contract.contractCreationAddressAddress ?: @"";
         backupItem[kIsActiveKey] = @(contract.isActive);
         backupItem[kTypeKey] = contract.templateModel.templateTypeStringForBackup;
-        backupItem[kTemplateKey] = @(contract.templateModel.uiid);
+        backupItem[kTemplateKey] = contract.templateModel.uuid;
         [backupArray addObject:backupItem];
     }
     
@@ -509,7 +509,7 @@ static NSString* kTemplateKey = @"template";
         contract.creationDate = [NSDate date];
         contract.isActive = [contractDict[kIsActiveKey] boolValue];
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuidFromRestore == %i",[contractDict[kTemplateKey] integerValue]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@",contractDict[kTemplateKey]];
         NSArray* filteredTemplates = [templates filteredArrayUsingPredicate:predicate];
         if (filteredTemplates.count > 0) {
             contract.templateModel = filteredTemplates[0];

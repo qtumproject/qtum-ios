@@ -92,7 +92,7 @@
     //color for placeholder in searchfield
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:customBlueColor()];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setClearButtonMode:UITextFieldViewModeNever];
-    [[UITextField appearance] setKeyboardAppearance:UIKeyboardAppearanceDark];
+    [[UITextField appearance] setKeyboardAppearance:UIKeyboardAppearanceLight];
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : customBlueColor(),
                                                             NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:16.0f]}
                                                 forState:UIControlStateNormal];

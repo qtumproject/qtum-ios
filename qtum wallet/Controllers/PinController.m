@@ -121,14 +121,15 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
     if ([textField isEqual:self.firstSymbolTextField]) {
-        self.firstInputViewHeight.constant = 4;
+        self.firstInputViewHeight.constant *= 2;
     } else if ([textField isEqual:self.secondSymbolTextField]) {
-        self.secondInputViewHeight.constant = 4;
+        self.secondInputViewHeight.constant *= 2;
     } else if ([textField isEqual:self.thirdSymbolTextField]) {
-        self.thridInputViewHeight.constant = 4;
+        self.thridInputViewHeight.constant *= 2;
     } else if ([textField isEqual:self.fourthSymbolTextField]) {
-        self.fourthInputViewHeight.constant = 4;
+        self.fourthInputViewHeight.constant *= 2;
     }
     [self.view setNeedsLayout];
 }
@@ -139,13 +140,13 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if ([textField isEqual:self.firstSymbolTextField]) {
-        self.firstInputViewHeight.constant = 2;
+        self.firstInputViewHeight.constant /= 2;
     } else if ([textField isEqual:self.secondSymbolTextField]) {
-        self.secondInputViewHeight.constant = 2;
+        self.secondInputViewHeight.constant /= 2;
     } else if ([textField isEqual:self.thirdSymbolTextField]) {
-        self.thridInputViewHeight.constant = 2;
+        self.thridInputViewHeight.constant /= 2;
     } else if ([textField isEqual:self.fourthSymbolTextField]) {
-        self.fourthInputViewHeight.constant = 2;
+        self.fourthInputViewHeight.constant /= 2;
     }
     [self.view setNeedsLayout];
 }

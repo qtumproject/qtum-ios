@@ -326,13 +326,15 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     [self save];
 }
 
--(void)updateSpendablesBalansesWithObject:(NSDictionary*) balances{
+-(void)updateSpendablesBalansesWithObject:(NSDictionary*) balances {
+    
     [self currentWallet].balance = [balances[@"balance"] floatValue];
     [self currentWallet].unconfirmedBalance = [balances[@"unconfirmedBalance"] floatValue];
     [self spendableDidChange:[self currentWallet]];
 }
 
--(void)updateSpendablesHistoriesWithObject:(NSDictionary*) dict{
+-(void)updateSpendablesHistoriesWithObject:(NSDictionary*) dict {
+    
     HistoryElement* item = [self.requestAdapter createHistoryElement:dict];
     [[self currentWallet].historyStorage setHistoryItem:item];
 }

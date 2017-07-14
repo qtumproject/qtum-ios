@@ -109,26 +109,25 @@ static NSString* kTemplateUuidKey = @"template";
             filteredArray = [array filteredArrayUsingPredicate:predicate];
         }
         
-        NSMutableSet* usefullTemplatesIndexes = [NSMutableSet new];
+        NSMutableSet* usefullTemplatesUUIDs = [NSMutableSet new];
         
         for (NSDictionary* contract in filteredArray) {
             
             if ([contract[kTemplateUuidKey] isKindOfClass:[NSString class]]) {
-                if ([contract[kTemplateUuidKey] integerValue]) {
-                    [usefullTemplatesIndexes addObject:@([contract[kTemplateUuidKey] integerValue])];
-                }
+                [usefullTemplatesUUIDs addObject:contract[kTemplateUuidKey]];
             } else if ([contract[kTemplateUuidKey] isKindOfClass:[NSNumber class]]) {
-                [usefullTemplatesIndexes addObject:@([contract[kTemplateUuidKey] integerValue])];
+                [usefullTemplatesUUIDs addObject:@""];
             }
         }
         
         NSArray* templatesCondidats = [backup[kTemplatesKey] isKindOfClass:[NSArray class]] ? backup[kTemplatesKey] : @[];
         NSMutableArray* usefullTemplatesCondidats = @[].mutableCopy;
         
-        for (NSNumber* templteIndex in usefullTemplatesIndexes) {
-            NSInteger index = [templteIndex integerValue];
-            if (templatesCondidats.count > index) {
-                [usefullTemplatesCondidats addObject:templatesCondidats[index]];
+        for (NSString* templteUUID in usefullTemplatesUUIDs) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@",templteUUID];
+            NSArray* filteredTemplateArray = [templatesCondidats filteredArrayUsingPredicate:predicate];
+            if (filteredTemplateArray.count > 0) {
+                [usefullTemplatesCondidats addObject:filteredTemplateArray.firstObject];
             }
         }
         

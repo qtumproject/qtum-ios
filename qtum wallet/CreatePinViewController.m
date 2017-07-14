@@ -10,7 +10,6 @@
 #import "CustomTextField.h"
 
 @interface CreatePinViewController () <CAAnimationDelegate>
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
 
 @end
 
