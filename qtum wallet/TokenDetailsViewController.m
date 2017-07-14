@@ -10,6 +10,7 @@
 #import "WalletCoordinator.h"
 #import "TokenDetailsTableSource.h"
 #import "ViewWithAnimatedLine.h"
+#import "ShareTokenPopUpViewController.h"
 
 CGFloat const HeightForHeaderView = 50.0f;
 
@@ -33,7 +34,6 @@ CGFloat const HeightForHeaderView = 50.0f;
     [super viewDidLoad];
     
     self.source.delegate = self;
-    self.source.token = self.token;
     self.tableView.dataSource = self.source;
     self.tableView.delegate = self.source;
     
@@ -48,6 +48,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 #pragma mark - Actions
 
 - (IBAction)actionShare:(id)sender {
+    [self.delegate didShareTokenButtonPressed];
 }
 
 - (IBAction)actionBack:(id)sender {
@@ -87,7 +88,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 #pragma mark - Methods
 
 - (void)updateHeader:(Contract *)token{
-    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%f",self.token.balance];
+    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%f", self.token.balance];
 }
 
 @end

@@ -17,6 +17,7 @@
 #import "SecurityPopupViewController.h"
 #import "SourceCodePopUpViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
+#import "ShareTokenPopUpViewController.h"
 
 @interface PopUpsManager() <PopUpViewControllerDelegate>
 
@@ -102,6 +103,11 @@
 
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUp{
     ConfirmPurchasePopUpViewController *controller = [[ControllersFactory sharedInstance] createConfirmPurchasePopUpViewController];
+    return controller;
+}
+
+- (ShareTokenPopUpViewController *)createShareTokenPopUp{
+    ShareTokenPopUpViewController *controller = [[ControllersFactory sharedInstance] createShareTokenPopUpViewController];
     return controller;
 }
 
@@ -239,6 +245,20 @@
     }
     
     ConfirmPurchasePopUpViewController *controller = [self createConfirmPurchasePopUp];
+    controller.delegate = delegate;
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+    return controller;
+}
+
+- (ShareTokenPopUpViewController *)showShareTokenPopUp:(id<ShareTokenPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion {
+    
+    BOOL needShow = [self checkAndHideCurrentPopUp:[ShareTokenPopUpViewController class] withContent:nil];
+    if (!needShow) {
+        return nil;
+    }
+    
+    ShareTokenPopUpViewController *controller = [self createShareTokenPopUp];
     controller.delegate = delegate;
     self.currentPopUp = controller;
     [controller showFromViewController:presenter animated:YES completion:completion];

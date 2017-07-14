@@ -23,8 +23,6 @@
 #import "SubscribeTokenViewController.h"
 #import "HistoryViewController.h"
 #import "WalletNavigationController.h"
-#import "NoInternetConnectionPopUpViewController.h"
-#import "PhotoLibraryPopUpViewController.h"
 #import "CustomAbiInterphaseViewController.h"
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
@@ -36,24 +34,28 @@
 #import "ChoseTokenPaymentViewController.h"
 #import "ChooseSmartContractViewController.h"
 #import "SmartContractsListViewController.h"
-#import "InformationPopUpViewController.h"
-#import "ConfirmPopUpViewController.h"
-#import "ErrorPopUpViewController.h"
-#import "LoaderPopUpViewController.h"
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
-#import "RestoreContractsPopUpViewController.h"
 #import "BackupContractsViewController.h"
 #import "EnableFingerprintViewController.h"
-#import "SecurityPopupViewController.h"
 #import "QStoreViewController.h"
-#import "SourceCodePopUpViewController.h"
 #import "QStoreListViewController.h"
 #import "QStoreContractViewController.h"
-#import "ConfirmPurchasePopUpViewController.h"
 #import "TabBarControllerLight.h"
 #import "NSUserDefaults+Settings.h"
+
+#import "SecurityPopupViewController.h"
+#import "RestoreContractsPopUpViewController.h"
+#import "LoaderPopUpViewController.h"
+#import "ErrorPopUpViewController.h"
+#import "ConfirmPopUpViewController.h"
+#import "NoInternetConnectionPopUpViewController.h"
+#import "PhotoLibraryPopUpViewController.h"
+#import "SourceCodePopUpViewController.h"
+#import "ConfirmPurchasePopUpViewController.h"
+#import "ShareTokenPopUpViewController.h"
+#import "InformationPopUpViewController.h"
 
 #import "NewPaymentOutput.h"
 #import "WalletOutput.h"
@@ -380,6 +382,11 @@
 
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController{
     ConfirmPurchasePopUpViewController* controller = (ConfirmPurchasePopUpViewController *)[UIViewController controllerInStoryboard:@"ConfirmPurchasePopUp" withIdentifire:@"ConfirmPurchasePopUp"];
+    return controller;
+}
+
+- (ShareTokenPopUpViewController *)createShareTokenPopUpViewController{
+    ShareTokenPopUpViewController* controller = (ShareTokenPopUpViewController *)[UIViewController controllerInStoryboard:@"ShareTokenPopUp" withIdentifire:@"ShareTokenPopUpViewController"];
     return controller;
 }
 

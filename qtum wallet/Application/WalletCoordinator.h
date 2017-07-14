@@ -27,6 +27,7 @@
 - (void)didQRCodeScannedWithDict:(NSDictionary*)dict;
 - (void)didBackPressed;
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*)item;
+- (void)didShareTokenButtonPressed;
 
 @end
 

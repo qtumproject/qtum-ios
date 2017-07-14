@@ -232,6 +232,7 @@
 		E730AB781EE6A5D200132711 /* QTUM Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E730AB541EE6A5D100132711 /* QTUM Watch.app */; };
 		E730AB851EE6A64700132711 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB841EE6A64700132711 /* SessionManager.m */; };
 		E730AB881EE6ACCA00132711 /* iOSSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB871EE6ACCA00132711 /* iOSSessionManager.m */; };
+		E7360EC11F18EBED003ED21D /* ShareTokenPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7360EC01F18EBED003ED21D /* ShareTokenPopUpViewController.m */; };
 		E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E739104E1DE2E165008145A8 /* HistoryElement.m */; };
 		E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910521DE30BA8008145A8 /* QRCodeViewController.m */; };
 		E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */; };
@@ -286,6 +287,7 @@
 		E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4B01F0FAB930056D042 /* ProfileViewControllerDark.m */; };
 		E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */; };
 		E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */; };
+		E78096F41F18E33200CBDCAF /* ShareTokenPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78096F31F18E33200CBDCAF /* ShareTokenPopUp.storyboard */; };
 		E784F8B41F01556800A513BF /* QStore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E784F8B31F01556800A513BF /* QStore.storyboard */; };
 		E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8B71F015B7100A513BF /* QStoreViewController.m */; };
 		E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8BA1F015C4C00A513BF /* QStoreCollectionViewSource.m */; };
@@ -909,6 +911,8 @@
 		E730AB841EE6A64700132711 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
 		E730AB861EE6ACCA00132711 /* iOSSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSSessionManager.h; sourceTree = "<group>"; };
 		E730AB871EE6ACCA00132711 /* iOSSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = iOSSessionManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		E7360EBF1F18EBED003ED21D /* ShareTokenPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTokenPopUpViewController.h; sourceTree = "<group>"; };
+		E7360EC01F18EBED003ED21D /* ShareTokenPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTokenPopUpViewController.m; sourceTree = "<group>"; };
 		E739104D1DE2E165008145A8 /* HistoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryElement.h; sourceTree = "<group>"; };
 		E739104E1DE2E165008145A8 /* HistoryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryElement.m; sourceTree = "<group>"; };
 		E73910511DE30BA8008145A8 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
@@ -1020,6 +1024,7 @@
 		E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerLight.m; sourceTree = "<group>"; };
 		E777786A1EF3E54E00948682 /* BTCAddress+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCAddress+Extension.h"; sourceTree = "<group>"; };
 		E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Extension.m"; sourceTree = "<group>"; };
+		E78096F31F18E33200CBDCAF /* ShareTokenPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShareTokenPopUp.storyboard; sourceTree = "<group>"; };
 		E784F8B31F01556800A513BF /* QStore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QStore.storyboard; sourceTree = "<group>"; };
 		E784F8B61F015B7100A513BF /* QStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreViewController.h; sourceTree = "<group>"; };
 		E784F8B71F015B7100A513BF /* QStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreViewController.m; sourceTree = "<group>"; };
@@ -2299,6 +2304,7 @@
 				B381CBE61F02933400142252 /* SecurityPopup.storyboard */,
 				E784F8C61F0259AF00A513BF /* SourceCodePopUp.storyboard */,
 				E703531A1F03F840004ECCC9 /* ConfirmPurchasePopUp.storyboard */,
+				E78096F31F18E33200CBDCAF /* ShareTokenPopUp.storyboard */,
 			);
 			name = PopUp;
 			sourceTree = "<group>";
@@ -2709,6 +2715,8 @@
 				E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */,
 				E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */,
 				E703531D1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m */,
+				E7360EBF1F18EBED003ED21D /* ShareTokenPopUpViewController.h */,
+				E7360EC01F18EBED003ED21D /* ShareTokenPopUpViewController.m */,
 			);
 			name = "Pop Ups";
 			sourceTree = "<group>";
@@ -3189,6 +3197,7 @@
 				E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */,
 				E7FA0CBB1ECD9E2300702C4E /* PhotoLibraryPopUp.storyboard in Resources */,
 				B3E1591B1ED5A87D00D70A87 /* OnlyDesign.storyboard in Resources */,
+				E78096F41F18E33200CBDCAF /* ShareTokenPopUp.storyboard in Resources */,
 				E7881B241F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
 				E784F8C71F0259AF00A513BF /* SourceCodePopUp.storyboard in Resources */,
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
@@ -3437,6 +3446,7 @@
 				B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */,
 				E798462A1F0D1E40002A516A /* HistoryTableViewCellDark.m in Sources */,
 				B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */,
+				E7360EC11F18EBED003ED21D /* ShareTokenPopUpViewController.m in Sources */,
 				B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */,
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
 				B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */,
