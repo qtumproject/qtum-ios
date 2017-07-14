@@ -36,3 +36,11 @@
 - (void)confirmButtonPressed:(PopUpViewController *)sender withPin:(NSString*) pin;
 
 @end
+
+@protocol ShareTokenPopupViewControllerDelegate <NSObject>
+
+- (void)okButtonPressed:(PopUpViewController *)sender;
+- (void)copyAddressButtonPressed:(PopUpViewController *)sender;
+- (void)copyAbiButtonPressed:(PopUpViewController *)sender;
+
+@end

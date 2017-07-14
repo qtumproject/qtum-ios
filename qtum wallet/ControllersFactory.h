@@ -126,6 +126,7 @@
 - (QStoreContractViewController*)createQStoreContractViewController;
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController;
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
+- (ShareTokenPopUpViewController *)createShareTokenPopUpViewController;
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UITabBarController <TabbarOutput>*)createTabFlow;
