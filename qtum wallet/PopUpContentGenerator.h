@@ -21,5 +21,6 @@
 + (PopUpContent *)contentForBrainCodeCopied;
 + (PopUpContent *)contentForAddressCopied;
 + (PopUpContent *)contentForSourceCode;
++ (PopUpContent *)contentForAbiCopied;
 
 @end

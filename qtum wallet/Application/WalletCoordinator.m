@@ -21,6 +21,7 @@
 #import "TokenDetailsViewController.h"
 #import "TokenDetailsTableSource.h"
 #import "QRCodeViewController.h"
+#import "ShareTokenPopUpViewController.h"
 
 #import "WalletNavigationController.h"
 #import "TokenListViewController.h"
@@ -31,8 +32,9 @@
 #import "ContractArgumentsInterpretator.h"
 #import "NSString+Extension.h"
 #import "TransactionManager.h"
+#import "ContractFileManager.h"
 
-@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
@@ -114,17 +116,6 @@
     [self.navigationController pushViewController:[vc toPresent] animated:YES];
 }
 
--(void)showTokenDetails {
-    
-    TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
-    self.tokenDetailsViewController = vc;
-    self.tokenDetailsTableSource = [TokenDetailsTableSource new];
-    vc.delegate = self;
-    [vc setTableSource:self.tokenDetailsTableSource];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 - (void)refreshTableViewData {
     if (self.isNewDataLoaded) {
         [self refreshHistory];
@@ -146,8 +137,9 @@
     TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
     self.tokenDetailsViewController = vc;
     self.tokenDetailsTableSource = [TokenDetailsTableSource new];
-    vc.delegate = self;
+    self.tokenDetailsTableSource.token = item;
     vc.token = item;
+    vc.delegate = self;
     [vc setTableSource:self.tokenDetailsTableSource];
     
     [self.navigationController pushViewController:vc animated:YES];
@@ -243,6 +235,44 @@
 
 - (void)didBackPressed{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didShareTokenButtonPressed {
+    
+    ShareTokenPopUpViewController *vc = [[PopUpsManager sharedInstance] showShareTokenPopUp:self presenter:nil completion:nil];
+    vc.addressString = self.tokenDetailsViewController.token.contractAddress;
+    NSDictionary *dic = [[ContractFileManager sharedInstance] abiWithTemplate:self.tokenDetailsViewController.token.templateModel.path];
+    NSData * jsonData = [NSJSONSerialization  dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
+    NSString * abiString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    vc.abiString = abiString;
+}
+
+#pragma mark - ShareTokenPopupViewControllerDelegate and PopUpViewControllerDelegate
+
+- (void)copyAddressButtonPressed:(PopUpViewController *)sender {
+    
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [self copyTextAndShowPopUp:self.tokenDetailsViewController.token.contractAddress isAbi:NO];
+}
+
+- (void)copyAbiButtonPressed:(PopUpViewController *)sender {
+    
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [self copyTextAndShowPopUp:[[ContractFileManager sharedInstance] escapeAbiWithTemplate:self.tokenDetailsViewController.token.templateModel.path] isAbi:YES];
+}
+
+- (void)copyTextAndShowPopUp:(NSString *)text isAbi:(BOOL)isAbi {
+    
+    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    NSString* keyString = [[ContractFileManager sharedInstance] escapeAbiWithTemplate:self.tokenDetailsViewController.token.templateModel.path];
+    [pb setString:keyString];
+    
+    PopUpContent *content = isAbi ? [PopUpContentGenerator contentForAbiCopied] : [PopUpContentGenerator contentForAddressCopied];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:content presenter:nil completion:nil];
+}
+
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - WalletOutputDelegate

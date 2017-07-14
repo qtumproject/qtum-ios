@@ -13,6 +13,7 @@
 @class ConfirmPurchasePopUpViewController;
 @class SecurityPopupViewController;
 @class RestoreContractsPopUpViewController;
+@class ShareTokenPopUpViewController;
 
 @interface PopUpsManager : NSObject
 
@@ -32,6 +33,7 @@
 - (SecurityPopupViewController *)showSecurityPopup:(id<SecurityPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 - (void)showSourceCodePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 - (ConfirmPurchasePopUpViewController *)showConfirmPurchasePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
+- (ShareTokenPopUpViewController *)showShareTokenPopUp:(id<ShareTokenPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 
 // dismiss methods
 - (void)dismissLoader;

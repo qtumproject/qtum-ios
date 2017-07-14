@@ -136,7 +136,7 @@
 
 - (BOOL)isValidAmount:(NSNumber *)amount {
     
-    if ([amount floatValue] == 0.0f) {
+    if ([amount floatValue] <= 0.0f) {
         [self showErrorPopUp:NSLocalizedString(@"Transaction amount can't be zero. Please edit your transaction and try again", nil)];
         return NO;
     }

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="simplonmono-medium.ttf">
+            <string>simplonmono-medium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Share Token Pop Up View Controller-->
+        <scene sceneID="OsB-b4-cHS">
+            <objects>
+                <viewController storyboardIdentifier="ShareTokenPopUpViewController" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UMY-Gn-A0i" customClass="ShareTokenPopUpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2m5-YC-mDA"/>
+                        <viewControllerLayoutGuide type="bottom" id="e1a-cw-obx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b3t-H1-BSo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOn-NT-D04">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivH-mA-YeQ">
+                                <rect key="frame" x="30" y="135" width="315" height="398"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy to Share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDi-Hi-I0f">
+                                        <rect key="frame" x="20" y="37" width="275" height="18"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="15"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contract Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvI-vS-WRT">
+                                        <rect key="frame" x="20" y="70" width="275" height="14"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Contract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZ5-x7-u4H">
+                                        <rect key="frame" x="20" y="87" width="275" height="17"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4r-J1-iXv">
+                                        <rect key="frame" x="83" y="119" width="150" height="32"/>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="5up-Bd-R2R"/>
+                                            <constraint firstAttribute="width" constant="150" id="uO0-t7-jia"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="COPY ADDRESS">
+                                            <color key="titleColor" red="0.1803921568627451" green="0.60392156862745094" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionCopyAddress:" destination="UMY-Gn-A0i" eventType="touchUpInside" id="4Xf-H9-nfe"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABI Interface" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wX5-Aa-ucb">
+                                        <rect key="frame" x="20" y="175" width="275" height="14"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXI-C7-XmK">
+                                        <rect key="frame" x="20" y="194" width="275" height="75"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="tF7-K2-GmE"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFu-rf-Fht">
+                                        <rect key="frame" x="82.5" y="289" width="150" height="32"/>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="FtW-o2-ok4"/>
+                                            <constraint firstAttribute="width" constant="150" id="awk-6o-nrN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="COPY ABI">
+                                            <color key="titleColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionCopyAbi:" destination="UMY-Gn-A0i" eventType="touchUpInside" id="Am3-lN-zDC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2n-zY-v74">
+                                        <rect key="frame" x="82.5" y="346" width="150" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="9dX-Jo-vjX"/>
+                                            <constraint firstAttribute="width" constant="150" id="XmJ-vt-3wo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionOk:" destination="UMY-Gn-A0i" eventType="touchUpInside" id="A1W-TE-fbn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="rFu-rf-Fht" firstAttribute="centerX" secondItem="ivH-mA-YeQ" secondAttribute="centerX" id="1zr-px-4YJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="NDi-Hi-I0f" secondAttribute="trailing" constant="20" id="7Ut-U8-44z"/>
+                                    <constraint firstAttribute="trailing" secondItem="dvI-vS-WRT" secondAttribute="trailing" constant="20" id="7qx-6p-55V"/>
+                                    <constraint firstItem="wX5-Aa-ucb" firstAttribute="leading" secondItem="ivH-mA-YeQ" secondAttribute="leading" constant="20" id="8Re-Qy-mNY"/>
+                                    <constraint firstAttribute="trailing" secondItem="fZ5-x7-u4H" secondAttribute="trailing" constant="20" id="Cuo-dr-QNH"/>
+                                    <constraint firstAttribute="trailing" secondItem="wX5-Aa-ucb" secondAttribute="trailing" constant="20" id="GtK-SR-IUl"/>
+                                    <constraint firstItem="NDi-Hi-I0f" firstAttribute="leading" secondItem="ivH-mA-YeQ" secondAttribute="leading" constant="20" id="KRQ-5J-7Xt"/>
+                                    <constraint firstItem="e2n-zY-v74" firstAttribute="centerX" secondItem="ivH-mA-YeQ" secondAttribute="centerX" id="Mc6-Ub-tPW"/>
+                                    <constraint firstItem="J4r-J1-iXv" firstAttribute="centerX" secondItem="ivH-mA-YeQ" secondAttribute="centerX" id="Mnd-5o-nbD"/>
+                                    <constraint firstAttribute="bottom" secondItem="e2n-zY-v74" secondAttribute="bottom" constant="20" id="OVT-th-xUc"/>
+                                    <constraint firstAttribute="trailing" secondItem="xXI-C7-XmK" secondAttribute="trailing" constant="20" id="P6x-uj-Xad"/>
+                                    <constraint firstItem="xXI-C7-XmK" firstAttribute="top" secondItem="wX5-Aa-ucb" secondAttribute="bottom" constant="5" id="QXX-lM-sFw"/>
+                                    <constraint firstItem="e2n-zY-v74" firstAttribute="top" secondItem="rFu-rf-Fht" secondAttribute="bottom" constant="25" id="Rfw-U1-T7P"/>
+                                    <constraint firstItem="dvI-vS-WRT" firstAttribute="top" secondItem="NDi-Hi-I0f" secondAttribute="bottom" constant="15" id="VPC-VY-tzT"/>
+                                    <constraint firstItem="J4r-J1-iXv" firstAttribute="top" secondItem="fZ5-x7-u4H" secondAttribute="bottom" constant="15" id="X2u-bA-Y8F"/>
+                                    <constraint firstItem="fZ5-x7-u4H" firstAttribute="top" secondItem="dvI-vS-WRT" secondAttribute="bottom" constant="3" id="c6O-Hz-wIu"/>
+                                    <constraint firstItem="wX5-Aa-ucb" firstAttribute="top" secondItem="J4r-J1-iXv" secondAttribute="bottom" constant="24" id="cKw-Jh-p3z"/>
+                                    <constraint firstItem="fZ5-x7-u4H" firstAttribute="leading" secondItem="ivH-mA-YeQ" secondAttribute="leading" constant="20" id="iMF-Df-mQG"/>
+                                    <constraint firstItem="rFu-rf-Fht" firstAttribute="top" secondItem="xXI-C7-XmK" secondAttribute="bottom" constant="20" id="sKT-G3-a62"/>
+                                    <constraint firstItem="NDi-Hi-I0f" firstAttribute="top" secondItem="ivH-mA-YeQ" secondAttribute="top" constant="37" id="tVT-AD-ib5"/>
+                                    <constraint firstItem="xXI-C7-XmK" firstAttribute="leading" secondItem="ivH-mA-YeQ" secondAttribute="leading" constant="20" id="twS-If-49x"/>
+                                    <constraint firstItem="NDi-Hi-I0f" firstAttribute="centerX" secondItem="ivH-mA-YeQ" secondAttribute="centerX" id="vGi-nO-BZZ"/>
+                                    <constraint firstItem="dvI-vS-WRT" firstAttribute="leading" secondItem="ivH-mA-YeQ" secondAttribute="leading" constant="20" id="wYq-bn-rfW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ivH-mA-YeQ" firstAttribute="centerY" secondItem="b3t-H1-BSo" secondAttribute="centerY" id="IN7-9T-v05"/>
+                            <constraint firstAttribute="trailing" secondItem="FOn-NT-D04" secondAttribute="trailing" id="c9r-9G-XH1"/>
+                            <constraint firstItem="FOn-NT-D04" firstAttribute="leading" secondItem="b3t-H1-BSo" secondAttribute="leading" id="ed4-10-vxu"/>
+                            <constraint firstAttribute="trailing" secondItem="ivH-mA-YeQ" secondAttribute="trailing" constant="30" id="fSA-Y5-Oco"/>
+                            <constraint firstItem="ivH-mA-YeQ" firstAttribute="leading" secondItem="b3t-H1-BSo" secondAttribute="leading" constant="30" id="jUg-3X-obV"/>
+                            <constraint firstItem="e1a-cw-obx" firstAttribute="top" secondItem="FOn-NT-D04" secondAttribute="bottom" id="sfU-bo-0wn"/>
+                            <constraint firstItem="FOn-NT-D04" firstAttribute="top" secondItem="b3t-H1-BSo" secondAttribute="top" id="sky-BP-uJN"/>
+                            <constraint firstItem="ivH-mA-YeQ" firstAttribute="centerX" secondItem="b3t-H1-BSo" secondAttribute="centerX" id="u4y-66-Njd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="abiTextView" destination="xXI-C7-XmK" id="MlW-01-pnq"/>
+                        <outlet property="addressLabel" destination="fZ5-x7-u4H" id="a8e-Ja-eOF"/>
+                        <outlet property="titleLabel" destination="NDi-Hi-I0f" id="vtN-dB-XhU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oLW-yK-j96" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+</document>
