@@ -327,4 +327,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)didSelectChooseFromLibrary:(id)sender {
+    
+    
+}
+
 @end

@@ -51,4 +51,10 @@
 - (IBAction)didVoidTapAction:(id)sender {
     [self.view endEditing:YES];
 }
+
+- (IBAction)chooseFromLibraryButtonPressed:(id)sender {
+    
+    [self.delegate didSelectChooseFromLibrary:self];
+}
+
 @end

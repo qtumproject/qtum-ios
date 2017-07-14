@@ -40,6 +40,8 @@
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
                        andToken:(Contract*) token;
 
+- (void)didSelectChooseFromLibrary:(id)sender;
+
 @end
 
 @interface ContractCoordinator : BaseCoordinator <Coordinatorable,ContractCoordinatorDelegate>

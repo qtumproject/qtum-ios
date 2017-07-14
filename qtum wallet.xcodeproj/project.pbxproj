@@ -233,6 +233,7 @@
 		E730AB851EE6A64700132711 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB841EE6A64700132711 /* SessionManager.m */; };
 		E730AB881EE6ACCA00132711 /* iOSSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB871EE6ACCA00132711 /* iOSSessionManager.m */; };
 		E7360EC11F18EBED003ED21D /* ShareTokenPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7360EC01F18EBED003ED21D /* ShareTokenPopUpViewController.m */; };
+		E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7360EC41F1918E7003ED21D /* LibraryViewController.m */; };
 		E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E739104E1DE2E165008145A8 /* HistoryElement.m */; };
 		E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910521DE30BA8008145A8 /* QRCodeViewController.m */; };
 		E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E73910561DE424DD008145A8 /* BTCTransaction+Extensions.m */; };
@@ -913,6 +914,8 @@
 		E730AB871EE6ACCA00132711 /* iOSSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = iOSSessionManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7360EBF1F18EBED003ED21D /* ShareTokenPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTokenPopUpViewController.h; sourceTree = "<group>"; };
 		E7360EC01F18EBED003ED21D /* ShareTokenPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTokenPopUpViewController.m; sourceTree = "<group>"; };
+		E7360EC31F1918E7003ED21D /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
+		E7360EC41F1918E7003ED21D /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController.m; sourceTree = "<group>"; };
 		E739104D1DE2E165008145A8 /* HistoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryElement.h; sourceTree = "<group>"; };
 		E739104E1DE2E165008145A8 /* HistoryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryElement.m; sourceTree = "<group>"; };
 		E73910511DE30BA8008145A8 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
@@ -1929,6 +1932,7 @@
 		B3F06D0B1E69B55D006341F7 /* Contract */ = {
 			isa = PBXGroup;
 			children = (
+				E7360EC21F1918BB003ED21D /* LibraryOutput */,
 				E784F8B51F015B5500A513BF /* QStore */,
 				E7B758501EEFDB02004AF200 /* BackupContacts */,
 				E713A4781EEE964800A2FA40 /* RestoreContracts */,
@@ -2137,6 +2141,15 @@
 				E730AB841EE6A64700132711 /* SessionManager.m */,
 			);
 			name = Manages;
+			sourceTree = "<group>";
+		};
+		E7360EC21F1918BB003ED21D /* LibraryOutput */ = {
+			isa = PBXGroup;
+			children = (
+				E7360EC31F1918E7003ED21D /* LibraryViewController.h */,
+				E7360EC41F1918E7003ED21D /* LibraryViewController.m */,
+			);
+			name = LibraryOutput;
 			sourceTree = "<group>";
 		};
 		E73910501DE30B91008145A8 /* QRCode */ = {
@@ -3604,6 +3617,7 @@
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
+				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
 				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
 				B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */,
