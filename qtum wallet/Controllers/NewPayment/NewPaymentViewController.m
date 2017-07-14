@@ -71,6 +71,7 @@ static NSInteger sendButtomBottomOffset = 27;
 
     
     self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+    [self.amountTextField setEnablePast:NO];
     
     [self.amountTextField addTarget:self action:@selector(updateSendButton) forControlEvents:UIControlEventEditingChanged];
     [self.addressTextField addTarget:self action:@selector(updateSendButton) forControlEvents:UIControlEventEditingChanged];

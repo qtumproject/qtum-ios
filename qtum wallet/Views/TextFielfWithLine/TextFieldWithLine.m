@@ -14,6 +14,7 @@ CGFloat const kCenterYChanges = 20.0f;
 
 @property (nonatomic) UIView *lineView;
 @property (nonatomic) UILabel *placeholderLabel;
+@property (nonatomic) BOOL pastEnabled;
 
 @property (nonatomic) NSLayoutConstraint *centerYConstraintForLabel;
 @property (nonatomic) NSLayoutConstraint *centerXConstraintForLabel;
@@ -51,6 +52,7 @@ CGFloat const kCenterYChanges = 20.0f;
 - (void)setup {
     
     _currentHeight = 1;
+    _pastEnabled = YES;
     [self setTintColor:[self getPlaceholderColor]];
     [self createPlaceholderLabel];
 }
@@ -116,6 +118,11 @@ CGFloat const kCenterYChanges = 20.0f;
     return _lineView;
 }
 
+- (void)setEnablePast:(BOOL)value {
+    
+    self.pastEnabled = value;
+}
+
 #pragma mark - Standart Methods
 
 - (void)setText:(NSString *)text {
@@ -127,6 +134,15 @@ CGFloat const kCenterYChanges = 20.0f;
     }
     
     [super setText:text];
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    
+    if (action == @selector(paste:) && !self.pastEnabled) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder {

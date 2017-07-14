@@ -14,6 +14,8 @@
 
 @property (nonatomic, readonly) UILabel *placeholderLabel;
 
+- (void)setEnablePast:(BOOL)value;
+
 - (UIColor *)getUnderlineColorDeselected;
 - (UIColor *)getUnderlineColorSelected;
 - (UIColor *)getPlaceholderColor;
