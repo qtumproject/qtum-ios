@@ -234,6 +234,13 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
     return [self.templates filteredArrayUsingPredicate:predicate];
 }
 
+- (NSArray<TemplateModel*>*)availebaleTokenTemplates {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type == %i",TokenType];
+    NSArray *available = [self availebaleTemplates];
+    return [available filteredArrayUsingPredicate:predicate];
+}
+
 -(NSArray<NSDictionary*>*)decodeDataForBackup {
     
     NSMutableArray* backupArray = @[].mutableCopy;

@@ -138,6 +138,11 @@ CGFloat const kCenterYChanges = 20.0f;
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
     
+    BOOL standart = [super canPerformAction:action withSender:self];
+    if (!standart) {
+        return standart;
+    }
+    
     if (action == @selector(paste:) && !self.pastEnabled) {
         return NO;
     }

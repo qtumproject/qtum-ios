@@ -15,4 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (assign,nonatomic) UIEdgeInsets originInsets;
 
+- (void)changeStateForSelectedTemplate:(TemplateModel *)templateModel;
+
 @end

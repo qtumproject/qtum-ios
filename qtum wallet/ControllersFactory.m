@@ -68,6 +68,7 @@
 #import "HistoryItemOutput.h"
 #import "RecieveOutput.h"
 #import "LoginViewOutput.h"
+#import "LibraryOutput.h"
 
 @implementation ControllersFactory
 
@@ -313,6 +314,11 @@
 
 -(EnableFingerprintViewController*)createEnableFingerprintViewController{
     EnableFingerprintViewController* controller = (EnableFingerprintViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"EnableFingerprintViewController"];
+    return controller;
+}
+
+-(NSObject<LibraryOutput> *)createLibraryViewController{
+    NSObject<LibraryOutput> *controller = (NSObject<LibraryOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"LibraryViewController"];
     return controller;
 }
 
