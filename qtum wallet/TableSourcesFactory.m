@@ -13,6 +13,7 @@
 #import "ChooseTokenPaymentDelegateDataSourceDark.h"
 #import "ChooseTokenPaymentDelegateDataSourceLight.h"
 #import "LibraryTableSource.h"
+#import "FavouriteTemplatesCollectionSource.h"
 
 @implementation TableSourcesFactory
 
@@ -59,6 +60,15 @@
         return [LibraryTableSource new];
     }else{
         return [LibraryTableSource new];
+    }
+}
+
+- (NSObject<FavouriteTemplatesCollectionSourceOutput> *)createFavouriteTemplatesSource {
+    
+    if ([NSUserDefaults isDarkSchemeSetting]) {
+        return [FavouriteTemplatesCollectionSource new];
+    }else{
+        return [FavouriteTemplatesCollectionSource new];
     }
 }
 

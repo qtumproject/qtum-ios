@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractNameField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractAddressTextField;
 @property (weak, nonatomic) IBOutlet ImputTextView *abiTextView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -23,11 +24,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.collectionView.delegate = self.collectionSource;
+    self.collectionView.dataSource = self.collectionSource;
 }
 
 #pragma mark - Private Methods
 
 -(void)createSmartContract {
+    
     if ([[ContractManager sharedInstance] addNewTokenWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text]) {
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
         [self.delegate didPressedBack];

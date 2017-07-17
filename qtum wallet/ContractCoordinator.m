@@ -35,6 +35,8 @@
 #import "LibraryOutput.h"
 #import "LibraryTableSourceOutput.h"
 
+#import "FavouriteTemplatesCollectionSourceOutput.h"
+
 
 @interface ContractCoordinator () <LibraryOutputDelegate, LibraryTableSourceOutputDelegate>
 
@@ -46,8 +48,10 @@
 @property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 @property (weak, nonatomic) CreateTokenFinishViewController *createFinishViewController;
 @property (weak, nonatomic) ChooseSmartContractViewController *chooseSmartContractViewController;
-@property (weak, nonatomic) WatchTokensViewController *wathTokensViewController;
 @property (weak, nonatomic) WatchContractViewController *wathContractsViewController;
+
+@property (weak, nonatomic) WatchTokensViewController *wathTokensViewController;
+@property (nonatomic) NSObject<FavouriteTemplatesCollectionSourceOutput> *favouriteTokensCollectionSource;
 
 @property (weak, nonatomic) NSObject<LibraryOutput> *libraryViewController;
 @property (nonatomic) NSObject<LibraryTableSourceOutput> *libraryTableSource;
@@ -133,10 +137,12 @@
 -(void)showWatchTokens {
     
     self.activeTemplateForLibrary = nil;
-    WatchTokensViewController* controller = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
-    controller.delegate = self;
-    self.wathTokensViewController = controller;
-    [self.navigationController pushViewController:controller animated:YES];
+    self.wathTokensViewController = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
+    self.favouriteTokensCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
+    self.favouriteTokensCollectionSource.templateModels = [[TemplateManager sharedInstance] availebaleTokenTemplates];
+    self.wathTokensViewController.collectionSource = self.favouriteTokensCollectionSource;
+    self.wathTokensViewController.delegate = self;
+    [self.navigationController pushViewController:self.wathTokensViewController animated:YES];
 }
 
 -(void)showRestoreContract {
