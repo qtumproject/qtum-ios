@@ -212,6 +212,7 @@
         
     } else {
         [BackupFileManager setBackupFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(BOOL success) {
+            
             if (success) {
                 [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
             } else {

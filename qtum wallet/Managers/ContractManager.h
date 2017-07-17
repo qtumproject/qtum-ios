@@ -32,7 +32,7 @@ extern NSString *const kTokenDidChange;
                               andWithName:(NSString*) contractName;
 
 - (NSArray<NSDictionary*>*)decodeDataForBackup;
-- (void)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates;
+- (BOOL)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
