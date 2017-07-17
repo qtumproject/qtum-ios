@@ -587,7 +587,8 @@ static NSString* op_exec = @"c1";
 
 #pragma mark - Token Scripts
 
--(BTCScript*)createContractScriptWithBiteCode:(NSData*) bitcode{
+-(BTCScript*)createContractScriptWithBiteCode:(NSData*) bitcode {
+    
     BTCScript* script = [[BTCScript alloc] init];
     
     uint32_t ver = 1;
@@ -606,7 +607,8 @@ static NSString* op_exec = @"c1";
     return script;
 }
 
--(BTCScript*)sendContractScriptWithBiteCode:(NSData*) bitcode andContractAddress:(NSData*) address{
+-(BTCScript*)sendContractScriptWithBiteCode:(NSData*) bitcode andContractAddress:(NSData*) address {
+    
     BTCScript* script = [[BTCScript alloc] init];
     
     uint32_t ver = 1;

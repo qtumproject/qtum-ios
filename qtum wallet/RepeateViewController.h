@@ -13,4 +13,6 @@
 
 @interface RepeateViewController : PinController <RepeateOutput>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
+
 @end

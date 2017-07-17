@@ -14,7 +14,7 @@
 
 -(instancetype)initWithTemplateName:(NSString*) templateName
                             andType:(TemplateType) type
-                           withUiid:(NSInteger) uiid
+                           withuuid:(NSString*) uuid
                             path:(NSString*) path
                              isFull:(BOOL) isFullTemplate {
 
@@ -22,7 +22,7 @@
     if (self) {
         _templateName = templateName;
         _type = type;
-        _uiid = uiid;
+        _uuid = uuid;
         _path = path;
         _isFullTemplate = isFullTemplate;
     }
@@ -96,7 +96,7 @@
     
     [aCoder encodeObject:self.templateName forKey:@"templateName"];
     [aCoder encodeObject:@(self.type) forKey:@"type"];
-    [aCoder encodeObject:@(self.uiid) forKey:@"uiid"];
+    [aCoder encodeObject:self.uuid forKey:@"uuid"];
     [aCoder encodeObject:self.path forKey:@"path"];
     [aCoder encodeObject:@(self.isFullTemplate) forKey:@"isFullTemplate"];
 }
@@ -105,21 +105,55 @@
     
     NSString *templateName = [aDecoder decodeObjectForKey:@"templateName"];
     NSInteger type = [[aDecoder decodeObjectForKey:@"type"] integerValue];
-    NSInteger uiid = [[aDecoder decodeObjectForKey:@"uiid"] integerValue];
+    NSString *uuid = [[aDecoder decodeObjectForKey:@"uuid"] isKindOfClass:[NSNumber class]] ? [NSString stringWithFormat:@"%@",[aDecoder decodeObjectForKey:@"uuid"]] : [aDecoder decodeObjectForKey:@"uuid"];
     NSString *path = [aDecoder decodeObjectForKey:@"path"];
     BOOL isFullTemplate = [[aDecoder decodeObjectForKey:@"isFullTemplate"] boolValue];
-
 
     self = [super init];
     if (self) {
         _templateName = templateName;
         _type = type;
-        _uiid = uiid;
+        _uuid = uuid;
         _path = path;
         _isFullTemplate = isFullTemplate;
     }
     
     return self;
+}
+
+#pragma mark - Equality
+
+- (BOOL)isEqualToTemplateModel:(TemplateModel *)aModel {
+    
+    if (!aModel) {
+        return NO;
+    }
+
+    BOOL haveEqualTemplateNames = (!self.templateName && !aModel.templateName) || [self.templateName isEqualToString:aModel.templateName];
+    BOOL haveEqualPath = (!self.path && !aModel.path) || [self.path isEqualToString:aModel.path];
+    BOOL haveEqualUuid = (!self.uuid && !aModel.uuid) || [self.uuid isEqualToString:aModel.uuid];
+    BOOL haveEqualType = self.type == aModel.type;
+    BOOL haveEqualFull = self.isFullTemplate == aModel.isFullTemplate;
+
+    return haveEqualTemplateNames && haveEqualPath && haveEqualType && haveEqualUuid && haveEqualFull;
+}
+
+- (BOOL)isEqual:(id)anObject {
+    
+    if (self == anObject) {
+        return YES;
+    }
+    
+    if (![anObject isKindOfClass:[TemplateModel class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToTemplateModel:(TemplateModel *)anObject];
+}
+
+- (NSUInteger)hash {
+    
+    return [self.templateName hash] ^ self.type ^ [self.path hash] ^ [self.uuid hash] ^ self.isFullTemplate;
 }
 
 @end

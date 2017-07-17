@@ -10,9 +10,7 @@
 
 @interface RepeateViewController ()
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
 @property (assign, nonatomic) BOOL creatingWalletDidEnd;
-
 
 @end
 
