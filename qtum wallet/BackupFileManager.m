@@ -87,6 +87,7 @@ static NSString* kTemplateUuidKey = @"template";
 + (void)setBackupFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(BOOL success)) completionBlock {
     
     NSData *data = [NSData dataWithContentsOfURL:url];
+    BOOL processedWithoutErrors = YES;
     
     if (data) {
         
@@ -116,7 +117,7 @@ static NSString* kTemplateUuidKey = @"template";
             if ([contract[kTemplateUuidKey] isKindOfClass:[NSString class]]) {
                 [usefullTemplatesUUIDs addObject:contract[kTemplateUuidKey]];
             } else if ([contract[kTemplateUuidKey] isKindOfClass:[NSNumber class]]) {
-                [usefullTemplatesUUIDs addObject:@""];
+                [usefullTemplatesUUIDs addObject:[NSString stringWithFormat:@"%@", contract[kTemplateUuidKey]]];
             }
         }
         
@@ -133,16 +134,20 @@ static NSString* kTemplateUuidKey = @"template";
         
         NSArray<TemplateModel*>* newTemplates = [[TemplateManager sharedInstance] encodeDataForBacup:[usefullTemplatesCondidats copy]];
         
-        if (filteredArray.count > 0) {
+        if (filteredArray.count > 0 && newTemplates.count > 0 && [[ContractManager sharedInstance] encodeDataForBacup:filteredArray withTemplates:newTemplates]) {
             
-            [[ContractManager sharedInstance] encodeDataForBacup:filteredArray withTemplates:newTemplates];
+            processedWithoutErrors = YES;
+        } else {
+            processedWithoutErrors = NO;
         }
         
-        completionBlock(YES);
 
     } else {
-        completionBlock(NO);
+        processedWithoutErrors = NO;
     }
+    
+    completionBlock(processedWithoutErrors);
+
 }
 
 @end

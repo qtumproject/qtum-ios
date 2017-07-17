@@ -27,6 +27,9 @@ static NSString* kAbiKey = @"abi";
 static NSString* kBitecode = @"bytecode";
 static int templatePathStringLengh = 10;
 static NSString* standartTokenPath = @"StandardPath";
+static NSString* erc20TokenUuid = @"erc20-token-identifire";
+static NSString* humanTokenUuid = @"human-standard-token-identifire";
+static NSString* crowdsaleUuid = @"crowdsale-identifire";
 
 @implementation TemplateManager
 
@@ -47,7 +50,6 @@ static NSString* standartTokenPath = @"StandardPath";
     if (self != nil) {
 
         [self load];
-        
     }
     return self;
 }
@@ -84,14 +86,10 @@ static NSString* standartTokenPath = @"StandardPath";
 
 -(NSArray<TemplateModel*>*)standartPackOfTemplates {
     
-    NSString* erc20TokenUuid = @"erc20-token-identifire";
-    NSString* humanUuid = @"human-standard-token-identifire";
-    NSString* crowdsaleSupplyUuid = @"crowdsale-identifire";
-    
     TemplateModel* erc20 = [[TemplateModel alloc] initWithTemplateName:@"ERC20 Standard Token" andType:TokenType withuuid:erc20TokenUuid path:@"ERC20TokenStandard" isFull:YES];
-    TemplateModel* human = [[TemplateModel alloc] initWithTemplateName:@"Human Standard Token" andType:TokenType withuuid:humanUuid path:@"HumanStandardToken" isFull:YES];
+    TemplateModel* human = [[TemplateModel alloc] initWithTemplateName:@"Human Standard Token" andType:TokenType withuuid:humanTokenUuid path:@"HumanStandardToken" isFull:YES];
     
-    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType withuuid:crowdsaleSupplyUuid path:@"Crowdsale" isFull:YES];
+    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType withuuid:crowdsaleUuid path:@"Crowdsale" isFull:YES];
     
     return @[erc20,human,crowdsale];
 }
@@ -150,6 +148,31 @@ static NSString* standartTokenPath = @"StandardPath";
         [self.templates addObject:customToken];
         [self save];
         return customToken;
+    }
+    
+    return nil;
+}
+
+-(TemplateModel*)templateWithUUIDFromTemplateDict:(NSDictionary*) templateDict {
+    
+    NSArray<TemplateModel*>* standartTemplates = [self standartPackOfTemplates];
+    NSString* templateUUID = templateDict[kuuidKey];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@",templateDict[kuuidKey]];
+    NSArray* tepmlatesWithUUID = [standartTemplates filteredArrayUsingPredicate:predicate];
+    TemplateModel* template = tepmlatesWithUUID.count > 0 ? tepmlatesWithUUID.firstObject : nil;
+    
+    if (template) {
+        
+        return template;
+    } else if (templateUUID){
+        
+        template = [self createNewTemplateWithAbi:templateDict[kAbiKey]
+                                         bitecode:templateDict[kBitecode]
+                                           source:templateDict[kSourceKey]
+                                             type:[TemplateModel templateTypeFromForBackupString:templateDict[kTypeKey]]
+                                             uuid:templateDict[kuuidKey]
+                                          andName:templateDict[kNameKey]];
+        return template;
     }
     
     return nil;
@@ -237,11 +260,11 @@ static NSString* standartTokenPath = @"StandardPath";
 -(NSArray<TemplateModel*>*)encodeDataForBacup:(NSArray<NSDictionary*>*) backup {
     
     NSMutableArray* newTemplates = @[].mutableCopy;
-    for (NSDictionary* template in backup) {
+    for (NSDictionary* templateDict in backup) {
         
-        TemplateModel* templateModel = [self createNewTemplateWithAbi:template[kAbiKey] bitecode:template[kBitecode] source:template[kSourceKey] type:[TemplateModel templateTypeFromForBackupString:template[kTypeKey]] uuid:template[kuuidKey] andName:template[kNameKey]];
-        if (templateModel && template) {
-            [newTemplates addObject:templateModel];
+        TemplateModel* template = [self templateWithUUIDFromTemplateDict:templateDict];
+        if (template) {
+            [newTemplates addObject:template];
         }
     }
     
