@@ -17,6 +17,7 @@
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 - (NSArray<TemplateModel*>*)availebaleTemplates;
+- (NSArray<TemplateModel*>*)availebaleTokenTemplates;
 - (TemplateModel*)standartTokenTemplate;
 - (TemplateModel*)createNewContractTemplateWithAbi:(NSString*)abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
 - (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;

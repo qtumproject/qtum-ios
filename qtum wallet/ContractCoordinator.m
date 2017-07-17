@@ -32,8 +32,11 @@
 #import "QStoreListViewController.h"
 #import "QStoreContractViewController.h"
 
+#import "LibraryOutput.h"
+#import "LibraryTableSourceOutput.h"
 
-@interface ContractCoordinator ()
+
+@interface ContractCoordinator () <LibraryOutputDelegate, LibraryTableSourceOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
@@ -43,6 +46,13 @@
 @property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 @property (weak, nonatomic) CreateTokenFinishViewController *createFinishViewController;
 @property (weak, nonatomic) ChooseSmartContractViewController *chooseSmartContractViewController;
+@property (weak, nonatomic) WatchTokensViewController *wathTokensViewController;
+@property (weak, nonatomic) WatchContractViewController *wathContractsViewController;
+
+@property (weak, nonatomic) NSObject<LibraryOutput> *libraryViewController;
+@property (nonatomic) NSObject<LibraryTableSourceOutput> *libraryTableSource;
+@property (nonatomic) TemplateModel *activeTemplateForLibrary;
+@property (nonatomic) BOOL isLibraryViewControllerOnlyForTokens;
 
 @end
 
@@ -112,14 +122,20 @@
 }
 
 -(void)showWatchContract {
+    
+    self.activeTemplateForLibrary = nil;
     WatchContractViewController* controller = (WatchContractViewController*)[[ControllersFactory sharedInstance] createWatchContractViewController];
     controller.delegate = self;
+    self.wathContractsViewController = controller;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)showWatchTokens {
+    
+    self.activeTemplateForLibrary = nil;
     WatchTokensViewController* controller = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
     controller.delegate = self;
+    self.wathTokensViewController = controller;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -165,6 +181,24 @@
         controller.token = contract;
         [self.navigationController pushViewController:controller animated:true];
     }
+}
+
+-(void)showChooseFromLibrary:(BOOL)tokensOnly {
+    
+    self.isLibraryViewControllerOnlyForTokens = tokensOnly;
+    self.libraryViewController = [[ControllersFactory sharedInstance] createLibraryViewController];
+    self.libraryTableSource = [[TableSourcesFactory sharedInstance] createLibrarySource];
+    self.libraryTableSource.templetes = [self prepareTemplateList:tokensOnly];
+    self.libraryTableSource.activeTemplate = self.activeTemplateForLibrary;
+    self.libraryTableSource.delegate = self;
+    self.libraryViewController.tableSource = self.libraryTableSource;
+    self.libraryViewController.delegate = self;
+    [self.navigationController pushViewController:[self.libraryViewController toPresent] animated:YES];
+}
+
+- (NSArray<TemplateModel *> *)prepareTemplateList:(BOOL)tokensOnly {
+    
+    return tokensOnly ? [[TemplateManager sharedInstance] availebaleTokenTemplates] : [[TemplateManager sharedInstance] availebaleTemplates];
 }
 
 #pragma mark - Logic
@@ -329,7 +363,36 @@
 
 - (void)didSelectChooseFromLibrary:(id)sender {
     
+    [self showChooseFromLibrary:[sender isKindOfClass:[WatchTokensViewController class]]];
+}
+
+#pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate
+
+- (void)didBackPressed {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)didSelectTemplateIndexPath:(NSIndexPath *)indexPath withItem:(TemplateModel *)template {
     
+    self.activeTemplateForLibrary = template;
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.isLibraryViewControllerOnlyForTokens) {
+        [self.wathTokensViewController changeStateForSelectedTemplate:template];
+    } else {
+        [self.wathContractsViewController changeStateForSelectedTemplate:template];
+    }
+}
+
+- (void)didResetToDefaults {
+    
+    self.activeTemplateForLibrary = nil;
+
+    if (self.isLibraryViewControllerOnlyForTokens) {
+        [self.wathTokensViewController changeStateForSelectedTemplate:nil];
+    } else {
+        [self.wathContractsViewController changeStateForSelectedTemplate:nil];
+    }
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "WatchTokensViewController.h"
 #import "TextFieldWithLine.h"
 #import "ImputTextView.h"
+#import "ContractFileManager.h"
 
 @interface WatchTokensViewController ()
 
@@ -55,6 +56,12 @@
 - (IBAction)chooseFromLibraryButtonPressed:(id)sender {
     
     [self.delegate didSelectChooseFromLibrary:self];
+}
+
+- (void)changeStateForSelectedTemplate:(TemplateModel *)templateModel {
+    
+    self.abiTextView.text = templateModel ? [[ContractFileManager sharedInstance] escapeAbiWithTemplate:templateModel.path]: @"";
+    [self.abiTextView setContentOffset:CGPointZero];
 }
 
 @end

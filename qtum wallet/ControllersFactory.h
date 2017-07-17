@@ -58,6 +58,7 @@
 @protocol HistoryItemOutput;
 @protocol RecieveOutput;
 @protocol LoginViewOutput;
+@protocol LibraryOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -107,6 +108,7 @@
 -(NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController;
 -(NSObject<HistoryItemOutput> *)createHistoryItem;
 -(NSObject<RecieveOutput> *)createRecieveViewController;
+-(NSObject<LibraryOutput> *)createLibraryViewController;
 
 -(QRCodeViewController*)createQRCodeViewControllerForWallet;
 -(QRCodeViewController*)createQRCodeViewControllerForSend;

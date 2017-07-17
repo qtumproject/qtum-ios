@@ -217,6 +217,8 @@
 		E71AF2551E018F6A0068595B /* WalletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2541E018F6A0068595B /* WalletManager.m */; };
 		E71B72F01F0E9137004BECEA /* PageControlItemLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B72EF1F0E9137004BECEA /* PageControlItemLight.m */; };
 		E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B72F21F0E9263004BECEA /* PageControlLight.m */; };
+		E71F1C7A1F1C9B0200961B19 /* LibraryTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E71F1C791F1C9B0200961B19 /* LibraryTableSource.m */; };
+		E71F1C7F1F1CA1E400961B19 /* LibraryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E71F1C7E1F1CA1E400961B19 /* LibraryTableViewCell.m */; };
 		E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72631231EEAA806005AED8F /* FieldsViews.xib */; };
 		E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72631261EEAA9A7005AED8F /* SwitchParameterView.m */; };
 		E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72631291EEAAC5B005AED8F /* TextFieldParameterView.m */; };
@@ -885,6 +887,14 @@
 		E71B72EF1F0E9137004BECEA /* PageControlItemLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlItemLight.m; sourceTree = "<group>"; };
 		E71B72F11F0E9263004BECEA /* PageControlLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlLight.h; sourceTree = "<group>"; };
 		E71B72F21F0E9263004BECEA /* PageControlLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlLight.m; sourceTree = "<group>"; };
+		E71F1C721F1C993E00961B19 /* LibraryOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryOutput.h; sourceTree = "<group>"; };
+		E71F1C731F1C99A200961B19 /* LibraryOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryOutputDelegate.h; sourceTree = "<group>"; };
+		E71F1C781F1C9B0200961B19 /* LibraryTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableSource.h; sourceTree = "<group>"; };
+		E71F1C791F1C9B0200961B19 /* LibraryTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTableSource.m; sourceTree = "<group>"; };
+		E71F1C7B1F1C9B0B00961B19 /* LibraryTableSourceOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryTableSourceOutput.h; sourceTree = "<group>"; };
+		E71F1C7C1F1C9B1400961B19 /* LibraryTableSourceOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryTableSourceOutputDelegate.h; sourceTree = "<group>"; };
+		E71F1C7D1F1CA1E400961B19 /* LibraryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableViewCell.h; sourceTree = "<group>"; };
+		E71F1C7E1F1CA1E400961B19 /* LibraryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTableViewCell.m; sourceTree = "<group>"; };
 		E72631231EEAA806005AED8F /* FieldsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldsViews.xib; sourceTree = "<group>"; };
 		E72631251EEAA9A7005AED8F /* SwitchParameterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchParameterView.h; sourceTree = "<group>"; };
 		E72631261EEAA9A7005AED8F /* SwitchParameterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchParameterView.m; sourceTree = "<group>"; };
@@ -2074,6 +2084,19 @@
 			path = "qtum walletTests";
 			sourceTree = "<group>";
 		};
+		E71F1C741F1C9AA800961B19 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				E71F1C7B1F1C9B0B00961B19 /* LibraryTableSourceOutput.h */,
+				E71F1C7C1F1C9B1400961B19 /* LibraryTableSourceOutputDelegate.h */,
+				E71F1C781F1C9B0200961B19 /* LibraryTableSource.h */,
+				E71F1C791F1C9B0200961B19 /* LibraryTableSource.m */,
+				E71F1C7D1F1CA1E400961B19 /* LibraryTableViewCell.h */,
+				E71F1C7E1F1CA1E400961B19 /* LibraryTableViewCell.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
 		E72631221EEAA7EC005AED8F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -2146,6 +2169,9 @@
 		E7360EC21F1918BB003ED21D /* LibraryOutput */ = {
 			isa = PBXGroup;
 			children = (
+				E71F1C741F1C9AA800961B19 /* Table */,
+				E71F1C721F1C993E00961B19 /* LibraryOutput.h */,
+				E71F1C731F1C99A200961B19 /* LibraryOutputDelegate.h */,
 				E7360EC31F1918E7003ED21D /* LibraryViewController.h */,
 				E7360EC41F1918E7003ED21D /* LibraryViewController.m */,
 			);
@@ -3393,6 +3419,7 @@
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */,
 				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
+				E71F1C7A1F1C9B0200961B19 /* LibraryTableSource.m in Sources */,
 				B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */,
 				E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */,
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
@@ -3539,6 +3566,7 @@
 				B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */,
 				B3827DE71ECF673900E500DE /* TokenFunctionViewController.m in Sources */,
 				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,
+				E71F1C7F1F1CA1E400961B19 /* LibraryTableViewCell.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
 				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
 				B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */,

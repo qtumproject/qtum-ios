@@ -10,6 +10,7 @@
 
 @class WalletTableSource;
 @protocol ChooseTokenPaymentDelegateDataSourceProtocol;
+@protocol LibraryTableSourceOutput;
 
 @interface TableSourcesFactory : NSObject
 
@@ -20,5 +21,6 @@
 
 - (WalletTableSource *)createWalletSource;
 - (NSObject <ChooseTokenPaymentDelegateDataSourceProtocol> *)createSendTokenPaymentSource;
+- (NSObject<LibraryTableSourceOutput> *)createLibrarySource;
 
 @end

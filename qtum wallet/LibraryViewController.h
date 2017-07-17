@@ -7,7 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "LibraryOutput.h"
+#import "Presentable.h"
 
-@interface LibraryViewController : BaseViewController
+@interface LibraryViewController : BaseViewController <LibraryOutput, Presentable>
+
+@property (nonatomic, weak) id<LibraryOutputDelegate> delegate;
+@property (nonatomic, weak) id<LibraryTableSourceOutput> tableSource;
 
 @end

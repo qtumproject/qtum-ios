@@ -12,6 +12,7 @@
 #import "WalletTableSourceLight.h"
 #import "ChooseTokenPaymentDelegateDataSourceDark.h"
 #import "ChooseTokenPaymentDelegateDataSourceLight.h"
+#import "LibraryTableSource.h"
 
 @implementation TableSourcesFactory
 
@@ -52,6 +53,13 @@
     }
 }
 
-
+- (NSObject<LibraryTableSourceOutput> *)createLibrarySource {
+    
+    if ([NSUserDefaults isDarkSchemeSetting]) {
+        return [LibraryTableSource new];
+    }else{
+        return [LibraryTableSource new];
+    }
+}
 
 @end
