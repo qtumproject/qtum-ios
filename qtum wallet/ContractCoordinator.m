@@ -48,7 +48,9 @@
 @property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 @property (weak, nonatomic) CreateTokenFinishViewController *createFinishViewController;
 @property (weak, nonatomic) ChooseSmartContractViewController *chooseSmartContractViewController;
+
 @property (weak, nonatomic) WatchContractViewController *wathContractsViewController;
+@property (nonatomic) NSObject<FavouriteTemplatesCollectionSourceOutput> *favouriteContractsCollectionSource;
 
 @property (weak, nonatomic) WatchTokensViewController *wathTokensViewController;
 @property (nonatomic) NSObject<FavouriteTemplatesCollectionSourceOutput> *favouriteTokensCollectionSource;
@@ -128,10 +130,18 @@
 -(void)showWatchContract {
     
     self.activeTemplateForLibrary = nil;
-    WatchContractViewController* controller = (WatchContractViewController*)[[ControllersFactory sharedInstance] createWatchContractViewController];
-    controller.delegate = self;
-    self.wathContractsViewController = controller;
-    [self.navigationController pushViewController:controller animated:YES];
+    
+    self.wathContractsViewController = (WatchContractViewController*)[[ControllersFactory sharedInstance] createWatchContractViewController];
+    self.favouriteContractsCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
+    
+    self.favouriteContractsCollectionSource.templateModels = [[TemplateManager sharedInstance] standartPackOfTemplates];
+    self.favouriteContractsCollectionSource.delegate = self;
+    self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    
+    self.wathContractsViewController.collectionSource = self.favouriteContractsCollectionSource;
+    self.wathContractsViewController.delegate = self;
+    
+    [self.navigationController pushViewController:self.wathContractsViewController animated:YES];
 }
 
 -(void)showWatchTokens {
@@ -141,7 +151,7 @@
     self.wathTokensViewController = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
     self.favouriteTokensCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
     
-    self.favouriteTokensCollectionSource.templateModels = [[TemplateManager sharedInstance] availebaleTokenTemplates];
+    self.favouriteTokensCollectionSource.templateModels = [[TemplateManager sharedInstance] standartPackOfTokenTemplates];
     self.favouriteTokensCollectionSource.delegate = self;
     self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
     
@@ -379,6 +389,7 @@
     
     self.activeTemplateForLibrary = nil;
     self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
 }
 
 #pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate
@@ -400,9 +411,13 @@
         [self.navigationController popViewControllerAnimated:YES];
         
         self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+        self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
     }
     if ([sender isEqual:self.favouriteTokensCollectionSource]) {
         [self.wathTokensViewController changeStateForSelectedTemplate:template];
+    }
+    if ([sender isEqual:self.favouriteContractsCollectionSource]) {
+        [self.wathContractsViewController changeStateForSelectedTemplate:template];
     }
 }
 
@@ -418,9 +433,13 @@
         }
         
         self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+        self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
     }
     if ([sender isEqual:self.favouriteTokensCollectionSource]) {
         [self.wathTokensViewController changeStateForSelectedTemplate:nil];
+    }
+    if ([sender isEqual:self.favouriteContractsCollectionSource]) {
+        [self.wathContractsViewController changeStateForSelectedTemplate:nil];
     }
 }
 

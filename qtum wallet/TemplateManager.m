@@ -94,6 +94,13 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
     return @[erc20,human,crowdsale];
 }
 
+-(NSArray<TemplateModel*>*)standartPackOfTokenTemplates {
+    
+    NSArray *standartTemplates = [self standartPackOfTemplates];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type == %i",TokenType];
+    return [standartTemplates filteredArrayUsingPredicate:predicate];
+}
+
 - (TemplateModel*)createNewContractTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
     
     NSError *err = nil;

@@ -2171,7 +2171,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nuX-Jb-sqS" customClass="ImputTextView">
-                                        <rect key="frame" x="18" y="180" width="339" height="150"/>
+                                        <rect key="frame" x="15" y="180" width="345" height="150"/>
                                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -2182,7 +2182,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABI Interface" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwQ-FK-PmM">
-                                        <rect key="frame" x="22" y="154" width="126.5" height="19"/>
+                                        <rect key="frame" x="22" y="153.5" width="126.5" height="19.5"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2206,19 +2206,58 @@
                                             <action selector="chooseFromLibraryButtonPressed:" destination="bv1-xJ-VK3" eventType="touchUpInside" id="fMy-nS-seZ"/>
                                         </connections>
                                     </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o4d-Rf-JvA">
+                                        <rect key="frame" x="15" y="335" width="345" height="35"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="ZOT-Yp-SXW"/>
+                                        </constraints>
+                                        <collectionViewLayout key="collectionViewLayout" id="wzU-g8-FeO" customClass="UICollectionViewLeftAlignedLayout"/>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavouriteTemplateCollectionViewCell" id="9C2-yA-nhc" customClass="FavouriteTemplateCollectionViewCell">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST7-2q-kmf">
+                                                            <rect key="frame" x="3" y="2.5" width="44" height="11"/>
+                                                            <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="9"/>
+                                                            <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                                <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="ST7-2q-kmf" secondAttribute="trailing" constant="3" id="9kV-bt-5og"/>
+                                                    <constraint firstItem="ST7-2q-kmf" firstAttribute="centerY" secondItem="9C2-yA-nhc" secondAttribute="centerY" id="GTH-t8-BfI"/>
+                                                    <constraint firstItem="ST7-2q-kmf" firstAttribute="leading" secondItem="9C2-yA-nhc" secondAttribute="leading" constant="3" id="LPr-5g-37Z"/>
+                                                </constraints>
+                                                <size key="customSize" width="50" height="16"/>
+                                                <connections>
+                                                    <outlet property="nameLabel" destination="ST7-2q-kmf" id="K32-Ij-qKC"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="nuX-Jb-sqS" firstAttribute="top" secondItem="gwQ-FK-PmM" secondAttribute="bottom" constant="7" id="5Ax-4g-e6U"/>
+                                    <constraint firstItem="o4d-Rf-JvA" firstAttribute="top" secondItem="nuX-Jb-sqS" secondAttribute="bottom" constant="5" id="FuF-fN-omO"/>
+                                    <constraint firstAttribute="trailing" secondItem="o4d-Rf-JvA" secondAttribute="trailing" constant="15" id="GLp-uq-Lt0"/>
+                                    <constraint firstAttribute="bottom" secondItem="o4d-Rf-JvA" secondAttribute="bottom" constant="20" id="GSX-ZN-Bgn"/>
                                     <constraint firstItem="nuX-Jb-sqS" firstAttribute="top" secondItem="EUD-Hf-ygV" secondAttribute="bottom" constant="70" id="If5-B8-ZgF"/>
                                     <constraint firstItem="JjH-AD-0q9" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="18" id="KbP-OC-BS1"/>
-                                    <constraint firstAttribute="bottom" secondItem="nuX-Jb-sqS" secondAttribute="bottom" constant="20" id="QKb-mT-yGY"/>
                                     <constraint firstAttribute="trailing" secondItem="JjH-AD-0q9" secondAttribute="trailing" constant="18" id="Qr5-PW-lJk"/>
                                     <constraint firstItem="nuX-Jb-sqS" firstAttribute="top" secondItem="xgO-Y8-bfL" secondAttribute="bottom" constant="4" id="R7e-1w-ri2"/>
                                     <constraint firstItem="EUD-Hf-ygV" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="18" id="Rkh-1H-T58"/>
                                     <constraint firstItem="JjH-AD-0q9" firstAttribute="top" secondItem="Zwf-jb-d8z" secondAttribute="top" constant="30" id="SMS-ps-tgj"/>
-                                    <constraint firstItem="nuX-Jb-sqS" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="18" id="SwC-E7-J4t"/>
-                                    <constraint firstAttribute="trailing" secondItem="nuX-Jb-sqS" secondAttribute="trailing" constant="18" id="c4H-k5-i4J"/>
+                                    <constraint firstItem="nuX-Jb-sqS" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="15" id="SwC-E7-J4t"/>
+                                    <constraint firstAttribute="trailing" secondItem="nuX-Jb-sqS" secondAttribute="trailing" constant="15" id="c4H-k5-i4J"/>
                                     <constraint firstItem="gwQ-FK-PmM" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="22" id="gXY-qe-DGi"/>
+                                    <constraint firstItem="o4d-Rf-JvA" firstAttribute="leading" secondItem="Zwf-jb-d8z" secondAttribute="leading" constant="15" id="kAN-xf-dLi"/>
                                     <constraint firstItem="EUD-Hf-ygV" firstAttribute="top" secondItem="JjH-AD-0q9" secondAttribute="bottom" constant="40" id="mJL-Uh-5zW"/>
                                     <constraint firstAttribute="trailing" secondItem="EUD-Hf-ygV" secondAttribute="trailing" constant="18" id="oWL-8B-BMV"/>
                                     <constraint firstAttribute="trailing" secondItem="xgO-Y8-bfL" secondAttribute="trailing" constant="15" id="wX2-5R-Ps4"/>
@@ -2232,7 +2271,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Contract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6we-hg-tCI">
-                                                <rect key="frame" x="122" y="11" width="132" height="23"/>
+                                                <rect key="frame" x="121.5" y="11" width="132" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2328,23 +2367,17 @@
                             <constraint firstItem="uAK-Wz-BEZ" firstAttribute="top" secondItem="Zwf-jb-d8z" secondAttribute="bottom" id="ycE-AY-zDt"/>
                             <constraint firstAttribute="trailing" secondItem="Zwf-jb-d8z" secondAttribute="trailing" id="yvd-1H-qMM"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="fwg-ew-JFL" appends="YES" id="2h8-fF-LZk"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="abiTextView" destination="nuX-Jb-sqS" id="BAM-W9-Ioa"/>
+                        <outlet property="bottomConstraintForCollectionView" destination="GSX-ZN-Bgn" id="S5X-0G-vcM"/>
+                        <outlet property="collectionView" destination="o4d-Rf-JvA" id="Pl9-C9-23z"/>
                         <outlet property="contractAddressTextField" destination="EUD-Hf-ygV" id="ne2-NT-Wvg"/>
                         <outlet property="contractNameField" destination="JjH-AD-0q9" id="I15-RX-AGL"/>
                         <outlet property="scrollView" destination="Zwf-jb-d8z" id="X3f-SP-6vP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KSp-rQ-CNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="fwg-ew-JFL">
-                    <connections>
-                        <action selector="didVoidTapAction:" destination="bv1-xJ-VK3" id="8Bs-rG-4a3"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="287" y="2127"/>
         </scene>
@@ -2576,6 +2609,7 @@
                     </view>
                     <connections>
                         <outlet property="abiTextView" destination="FFu-w8-j4W" id="COl-ka-fRL"/>
+                        <outlet property="bottomConstraintForCollectionView" destination="lLU-Dy-rzn" id="1ya-T6-wAn"/>
                         <outlet property="collectionView" destination="dZz-oG-fTd" id="uBd-Sn-HlG"/>
                         <outlet property="contractAddressTextField" destination="ccK-LX-4Hw" id="BKc-YC-jjC"/>
                         <outlet property="contractNameField" destination="CkW-QW-LtO" id="byR-WJ-azZ"/>
@@ -2583,7 +2617,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X5k-xi-Rjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="OVc-Wm-i1M"/>
             </objects>
             <point key="canvasLocation" x="-409" y="2127"/>
         </scene>

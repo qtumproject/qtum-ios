@@ -55,7 +55,7 @@ const CGFloat MinSpases = 3.0f;
     
     NSInteger currentIndex = 0;
     for (NSInteger i = 0; i < self.templateModels.count; i++) {
-        if (self.activeTemplate == [self.templateModels objectAtIndex:i]) {
+        if ([self.activeTemplate isEqual:[self.templateModels objectAtIndex:i]]) {
             currentIndex = i;
         }
     }

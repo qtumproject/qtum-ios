@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractAddressTextField;
 @property (weak, nonatomic) IBOutlet ImputTextView *abiTextView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForCollectionView;
 
 @end
 
@@ -33,6 +34,11 @@
     self.abiTextView.delegate = self;
     
     [self addDoneButtonToTextInputs];
+    
+    if (IS_IPHONE_5) {
+        self.collectionView.hidden = YES;
+        self.bottomConstraintForCollectionView.constant = -10.0f;
+    }
 }
 
 #pragma mark - Private Methods
@@ -63,6 +69,12 @@
     }
 }
 
+- (void)done:(id)sender {
+    [self.view endEditing:YES];
+}
+
+#pragma mark - Actions and Piblic
+
 - (IBAction)didPressedBackAction:(id)sender {
     [self.delegate didPressedBack];
 }
@@ -76,15 +88,6 @@
     [self.delegate didPressedBack];
 }
 
-- (void)done:(id)sender {
-    [self.view endEditing:YES];
-}
-
-- (void)textViewDidChange:(UITextView *)textView {
-    
-    [self.delegate didChangeAbiText];
-}
-
 - (IBAction)chooseFromLibraryButtonPressed:(id)sender {
     
     [self.delegate didSelectChooseFromLibrary:self];
@@ -94,6 +97,18 @@
 
     self.abiTextView.text = templateModel ? [[ContractFileManager sharedInstance] escapeAbiWithTemplate:templateModel.path]: @"";
     [self.abiTextView setContentOffset:CGPointZero];
+}
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    
+    [self.delegate didChangeAbiText];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+    [self.scrollView scrollRectToVisible:CGRectMake(self.scrollView.contentSize.width - 1, self.scrollView.contentSize.height - 1, 1, 1) animated:YES];
 }
 
 @end
