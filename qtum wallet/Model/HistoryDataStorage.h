@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "HistoryElement.h"
+
+@protocol Spendable;
+
 extern NSString *const HistoryUpdateEvent;
 
 @interface HistoryDataStorage : NSObject

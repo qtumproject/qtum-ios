@@ -46,8 +46,9 @@
 #pragma mark - PinCoordinator
 
 - (void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success))completision {
+    
     if (!self.pinOld) {
-        if ([[WalletManager sharedInstance].PIN isEqualToString:pin]) {
+        if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
             //old pin confirmed
             self.pinOld = pin;
             [self.pinController setCustomTitle:NSLocalizedString(@"Enter New PIN", "")];
@@ -64,7 +65,7 @@
     } else {
         if (self.pinNew == pin) {
             //change pin for new one
-            [[WalletManager sharedInstance] storePin:self.pinNew];
+            [[ApplicationCoordinator sharedInstance].walletManager storePin:self.pinNew];
             [self popViewControllerAnimated:YES];
             self.pinOld = nil;
             self.pinNew = nil;

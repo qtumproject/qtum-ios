@@ -15,7 +15,7 @@
 @interface ExportBrandKeyCoordinator () <ExportBrainKeyOutputDelegate, LoginViewOutputDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
-@property (nonatomic, weak) NSObject<ExportBrainKeyOutput> *exportBrainKeyController;
+@property (nonatomic, weak) NSObject<ExportBrainKeyOutput> *exportBrainKeyOutput;
 @property (weak,nonatomic) id <LoginViewOutput> loginOutput;
 
 @end
@@ -38,10 +38,10 @@
 
 #pragma mark - Private Methods 
 
--(void)enterPin:(NSString*) password {
+-(void)enterPin:(NSString*) pin {
     
-    if ([password isEqualToString:[WalletManager sharedInstance].PIN]) {
-        [self showExportOutput];
+    if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
+        [self showExportOutputWithPin:pin];
     }else {
         [self.loginOutput applyFailedPasswordAction];
     }
@@ -56,11 +56,12 @@
     [self.navigationController pushViewController:[controller toPresent] animated:YES];
 }
 
--(void)showExportOutput {
+-(void)showExportOutputWithPin:(NSString*) pin {
     
-    self.exportBrainKeyController = [[ControllersFactory sharedInstance] createExportBrainKeyViewController];
-    self.exportBrainKeyController.delegate = self;
-    [self.navigationController pushViewController:[self.exportBrainKeyController toPresent] animated:YES];
+    self.exportBrainKeyOutput = [[ControllersFactory sharedInstance] createExportBrainKeyViewController];
+    self.exportBrainKeyOutput.brandKey = [[ApplicationCoordinator sharedInstance].walletManager brandKeyWithPin:pin];
+    self.exportBrainKeyOutput.delegate = self;
+    [self.navigationController pushViewController:[self.exportBrainKeyOutput toPresent] animated:YES];
 }
 
 #pragma mark - ExportBrainKeyOutputDelegate

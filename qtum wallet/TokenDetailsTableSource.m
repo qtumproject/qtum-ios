@@ -218,7 +218,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
         updatedView = (AddressesTokenView *)[self getViewFromXib:[AddressesTokenView class]];
     }
     updatedView.addressNameLabel.text = NSLocalizedString(@"Sender Address", @"");
-    updatedView.addressLabel.text = self.token.adresses.firstObject;
+    updatedView.addressLabel.text = self.token.contractCreationAddressAddress;
     return updatedView;
 }
 

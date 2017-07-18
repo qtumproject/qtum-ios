@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Clearable.h"
 
 @class HistoryElement;
 @class Contract;
 
 extern NSString *const kTokenDidChange;
 
-@interface ContractManager : NSObject <Managerable>
+@interface ContractManager : NSObject <Managerable, Clearable>
 
 - (NSArray <Contract*>*)allContracts;
 - (NSArray <Contract*>*)allTokens;

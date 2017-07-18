@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "ExportWalletBrandKeyOutputDelegate.h"
+#import "Presentable.h"
 
-@protocol ExportWalletBrandKeyOutput <NSObject>
+@protocol ExportWalletBrandKeyOutput <Presentable>
 
 @property (weak,nonatomic) id <ExportWalletBrandKeyOutputDelegate> delegate;
+@property (nonatomic, copy) NSString* brandKey;
+
 
 @end

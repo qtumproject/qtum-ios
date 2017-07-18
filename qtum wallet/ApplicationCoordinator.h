@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseCoordinator.h"
+#import "WalletManagering.h"
+#import "Requestable.h"
 
 @class NotificationManager;
 @class OpenURLManager;
@@ -21,6 +23,7 @@
 @property (strong,nonatomic,readonly) NotificationManager* notificationManager;
 @property (strong,nonatomic,readonly) OpenURLManager* openUrlManager;
 @property (strong,nonatomic) id <Requestable> requestManager;
+@property (strong,nonatomic) id <WalletManagering> walletManager;
 
 -(void)start;
 //flows

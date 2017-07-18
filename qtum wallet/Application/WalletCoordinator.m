@@ -33,6 +33,7 @@
 #import "NSString+Extension.h"
 #import "TransactionManager.h"
 #import "ContractFileManager.h"
+#import "WalletManager.h"
 
 @interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate>
 
@@ -117,6 +118,7 @@
 }
 
 - (void)refreshTableViewData {
+    
     if (self.isNewDataLoaded) {
         [self refreshHistory];
     }
@@ -147,8 +149,8 @@
 
 #pragma mark - Configuration
 
--(void)configWallet{
-    self.wallet = [WalletManager sharedInstance].currentWallet;
+-(void)configWallet {
+    self.wallet = [ApplicationCoordinator sharedInstance].walletManager.wallet;
 }
 
 -(void)setWalletToDelegates {

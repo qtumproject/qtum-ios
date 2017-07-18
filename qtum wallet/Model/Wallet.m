@@ -9,16 +9,18 @@
 #import "Wallet.h"
 #import "HistoryDataStorage.h"
 #import "NSUserDefaults+Settings.h"
+#import "NSString+AES256.h"
 
-NSInteger const WORDS_COUNT = 12;
+NSInteger const brandKeyWordsCount = 12;
 NSInteger const USERS_KEYS_COUNT = 10;
 
 @interface Wallet () <NSCoding>
 
-@property (nonatomic) NSInteger countOfUsedKeys;
-@property (nonatomic) NSArray *seedWords;
-@property (nonatomic) BTCKey *lastRandomKey;
-@property (nonatomic) BTCKeychain *keyChain;
+@property (assign, nonatomic) NSInteger countOfUsedKeys;
+@property (copy, nonatomic) NSString* encriptedBrandKey;
+@property (strong, nonatomic) BTCKey *lastRandomKey;
+@property (strong, nonatomic) BTCKeychain *keyChain;
+@property (copy, nonatomic) NSArray* seedWords;
 
 @end
 
@@ -29,14 +31,9 @@ NSInteger const USERS_KEYS_COUNT = 10;
     self = [super init];
     if (self) {
         _name = name;
-        _pin = pin;
         _countOfUsedKeys = USERS_KEYS_COUNT;
-        _seedWords = [self generateWordsArray];
+        _encriptedBrandKey = [NSString encryptString:[self stringFromWorldsArray:[self generateWordsArray]] withKey:pin];
         [_manager spendableDidChange:self];
-        _keyChain = [self createKeychain];
-        if (!_keyChain) {
-            return nil;
-        }
     }
     return self;
 }
@@ -46,16 +43,29 @@ NSInteger const USERS_KEYS_COUNT = 10;
     self = [super init];
     if (self) {
         _name = name;
-        _pin = pin;
         _countOfUsedKeys = USERS_KEYS_COUNT;
-        _seedWords = seedWords;
+        _encriptedBrandKey = [NSString encryptString:[self stringFromWorldsArray:seedWords] withKey:pin];
         [_manager spendableDidChange:self];
-        _keyChain = [self createKeychain];
-        if (!_keyChain) {
-            return nil;
-        }
     }
     return self;
+}
+
+- (NSString *)brandKeyWithPin:(NSString*) pin {
+    
+    return [NSString decryptString:self.encriptedBrandKey withKey:pin];
+}
+
+
+-(void)configAddressesWithPin:(NSString*) pin {
+    
+    NSString* stringBrandKey = [self brandKeyWithPin:pin];
+    
+    if (stringBrandKey) {
+        NSArray* seedWords = [stringBrandKey componentsSeparatedByString:@" "];
+        self.keyChain = [self createKeychainWithSeedWords:seedWords];
+    } else {
+        DLog(@"Cant Create seed words from Pin");
+    }
 }
 
 #pragma mamrk - Setters
@@ -66,27 +76,12 @@ NSInteger const USERS_KEYS_COUNT = 10;
     [self.manager spendableDidChange:self];
 }
 
-- (void)setPin:(NSString *)pin {
-    
-    _pin = pin;
-    [self.manager spendableDidChange:self];
-}
-
-#pragma mark - Getters
-
--(BTCKeychain*)keyChain {
-    
-    if (!_keyChain) {
-        _keyChain = [self createKeychain];
-    }
-    return _keyChain;
-}
 
 -(NSArray <HistoryElementProtocol>*)historyArray{
     return [self.historyStorage.historyPrivate copy];
 }
 
--(NSString *)mainAddress{
+-(NSString *)mainAddress {
     
     BTCKey* key = [self lastRandomKeyOrRandomKey];
     NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
@@ -101,7 +96,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 #pragma mark - Public Methods
 
-- (BTCKey *)randomKey{
+- (BTCKey *)randomKey {
     
     uint randomedIndex = arc4random() % self.countOfUsedKeys;
     BTCKey *newKey = [self.keyChain keyAtIndex:randomedIndex hardened:YES];
@@ -110,8 +105,10 @@ NSInteger const USERS_KEYS_COUNT = 10;
     return newKey;
 }
 
--(BTCKey*)lastRandomKeyOrRandomKey{
+-(BTCKey*)lastRandomKeyOrRandomKey {
+    
     if (!self.lastRandomKey) {
+        
         BTCKey* key = [self randomKey];
         [self storeLastAdreesKey:key];
         return key;
@@ -139,9 +136,9 @@ NSInteger const USERS_KEYS_COUNT = 10;
     return allKeys;
 }
 
-- (NSString *)worldsString
-{
-    return [self.seedWords componentsJoinedByString:@" "];
+- (NSString *)stringFromWorldsArray:(NSArray*) words {
+    
+    return [words componentsJoinedByString:@" "];
 }
 
 - (NSArray <NSString*>*)allKeysAdreeses {
@@ -157,10 +154,9 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 #pragma mark - Private Methods
 
-- (BTCKeychain *)createKeychain
-{
-    BTCMnemonic *mnemonic = [[BTCMnemonic alloc] initWithWords:self.seedWords password:nil wordListType:BTCMnemonicWordListTypeUnknown];
-//    BTCKeychain *keyChain = [[BTCKeychain alloc] initWithSeed:mnemonic.seed];
+- (BTCKeychain *)createKeychainWithSeedWords:(NSArray*) seedWords {
+    
+    BTCMnemonic *mnemonic = [[BTCMnemonic alloc] initWithWords:seedWords password:nil wordListType:BTCMnemonicWordListTypeUnknown];
     BTCKeychain *keyChain = [mnemonic.keychain derivedKeychainWithPath:@"m/0'/0'"];
 
     return keyChain;
@@ -172,7 +168,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
     
     NSInteger i = 0;
     
-    while (i < WORDS_COUNT) {
+    while (i < brandKeyWordsCount) {
         uint32_t rnd = arc4random_uniform((uint32_t)wordsArray().count);
         NSString *randomWord = wordsArray()[rnd];
         
@@ -196,7 +192,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
     [self.manager updateHistoryOfSpendableObject:self withHandler:complete andPage:page];
 }
 
--(void)loadToMemory{
+-(void)loadToMemory {
+    
     _historyStorage = [HistoryDataStorage new];
     _historyStorage.spendableOwner = self;
 }
@@ -211,25 +208,24 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 #pragma mark - NSCoding
 
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    
     [aCoder encodeObject:self.name forKey:@"Name"];
-    [aCoder encodeObject:self.pin forKey:@"Pin"];
-    [aCoder encodeObject:self.seedWords forKey:@"Seed"];
+    [aCoder encodeObject:self.encriptedBrandKey forKey:@"encriptedBrandKey"];
 }
 
-- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
     NSString *name = [aDecoder decodeObjectForKey:@"Name"];
-    NSString *pin = [aDecoder decodeObjectForKey:@"Pin"];
+    NSString *encriptedBrandKey = [aDecoder decodeObjectForKey:@"encriptedBrandKey"];
     NSArray *seedWords = [aDecoder decodeObjectForKey:@"Seed"];
     
     self = [super init];
     if (self) {
         _name = name;
-        _pin = pin;
-        _countOfUsedKeys = USERS_KEYS_COUNT;
         _seedWords = seedWords;
+        _countOfUsedKeys = USERS_KEYS_COUNT;
+        _encriptedBrandKey = encriptedBrandKey;
         [_manager spendableDidChange:nil];
     }
     

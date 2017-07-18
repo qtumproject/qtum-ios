@@ -9,6 +9,7 @@
 #import "RecieveViewController.h"
 #import "TextFieldWithLine.h"
 #import "QRCodeManager.h"
+#import "Wallet.h"
 
 @interface RecieveViewController () <UITextFieldDelegate, PopUpViewControllerDelegate>
 
@@ -46,7 +47,7 @@
 {
     [super viewDidAppear:animated];
 
-    self.publicAddressLabel.text = [WalletManager sharedInstance].currentWallet.mainAddress;
+    self.publicAddressLabel.text = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
     [self createQRCode];
 }
 
@@ -61,7 +62,7 @@
     self.shareButton.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
-    NSString *qtumAddress = [WalletManager sharedInstance].currentWallet.mainAddress;
+    NSString *qtumAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
     NSString *tokenAddress = [self.wallet isKindOfClass:[Contract class]] ? self.wallet.mainAddress : nil;
     NSString *amountString = [self correctAmountString];
     
@@ -150,7 +151,7 @@
 - (IBAction)copeButtonWasPressed:(id)sender
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    NSString* keyString = [WalletManager sharedInstance].currentWallet.mainAddress;
+    NSString* keyString = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
     [pb setString:keyString];
     
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForAddressCopied] presenter:nil completion:nil];

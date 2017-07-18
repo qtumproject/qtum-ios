@@ -115,6 +115,8 @@
 		B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA7B1EA77D590040A163 /* WalletsFactory.m */; };
 		B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA811EA8AA070040A163 /* WalletManagerRequestAdapter.m */; };
 		B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA871EAA3C820040A163 /* SmartTransactionManager.m */; };
+		B366CA221F1D0AC700EF3273 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = B366CA211F1D0AC700EF3273 /* NSData+AES256.m */; };
+		B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = B366CA241F1D0C1200EF3273 /* NSString+AES256.m */; };
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
 		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
 		B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */; };
@@ -685,6 +687,11 @@
 		B365CA811EA8AA070040A163 /* WalletManagerRequestAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletManagerRequestAdapter.m; sourceTree = "<group>"; };
 		B365CA861EAA3C820040A163 /* SmartTransactionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartTransactionManager.h; sourceTree = "<group>"; };
 		B365CA871EAA3C820040A163 /* SmartTransactionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartTransactionManager.m; sourceTree = "<group>"; };
+		B366CA201F1D0AC700EF3273 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
+		B366CA211F1D0AC700EF3273 /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
+		B366CA231F1D0C1200EF3273 /* NSString+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AES256.h"; sourceTree = "<group>"; };
+		B366CA241F1D0C1200EF3273 /* NSString+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AES256.m"; sourceTree = "<group>"; };
+		B366CA261F1DEE2E00EF3273 /* WalletManagering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletManagering.h; sourceTree = "<group>"; };
 		B371D87D1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TCAStyleProvider.h"; sourceTree = "<group>"; };
 		B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TCAStyleProvider.m"; sourceTree = "<group>"; };
 		B371D87F1E3A1D3B00A13EA3 /* NSNull+TCACatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+TCACatch.h"; sourceTree = "<group>"; };
@@ -1595,6 +1602,7 @@
 				E71AF2541E018F6A0068595B /* WalletManager.m */,
 				B365CA801EA8AA070040A163 /* WalletManagerRequestAdapter.h */,
 				B365CA811EA8AA070040A163 /* WalletManagerRequestAdapter.m */,
+				B366CA261F1DEE2E00EF3273 /* WalletManagering.h */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -2706,6 +2714,10 @@
 				B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */,
 				E73CF6D51EE2F0D90044DF78 /* NSError+NoInternet.h */,
 				E73CF6D61EE2F0D90044DF78 /* NSError+NoInternet.m */,
+				B366CA201F1D0AC700EF3273 /* NSData+AES256.h */,
+				B366CA211F1D0AC700EF3273 /* NSData+AES256.m */,
+				B366CA231F1D0C1200EF3273 /* NSString+AES256.h */,
+				B366CA241F1D0C1200EF3273 /* NSString+AES256.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -3498,6 +3510,7 @@
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
 				B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */,
+				B366CA221F1D0AC700EF3273 /* NSData+AES256.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
 				E74857931F13BA4100DCF9A6 /* LanguageViewControllerDark.m in Sources */,
 				B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */,
@@ -3572,6 +3585,7 @@
 				E73D36FE1ECF1636009173BD /* AddressesTokenTableViewCell.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */,
+				B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,

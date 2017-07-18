@@ -12,6 +12,8 @@
 @class HistoryDataStorage;
 @class Wallet;
 
+extern NSInteger const brandKeyWordsCount;
+
 @interface Wallet : NSObject <Spendable>
 
 - (instancetype)initWithName:(NSString *)name pin:(NSString *)pin;
@@ -23,17 +25,18 @@
 @property (copy, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;
+@property (copy, nonatomic, readonly)NSArray* seedWords; //deprecated
 @property (weak, nonatomic)id <Managerable> manager;
-@property (nonatomic,copy) NSString *pin;
-@property (nonatomic, readonly, copy) NSArray *seedWords;
 @property (nonatomic, readonly) NSInteger countOfUsedKeys;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
 
+- (void)configAddressesWithPin:(NSString*) pin;
 - (BTCKey *)lastRandomKeyOrRandomKey;
 - (BTCKey *)randomKey;
 - (BTCKey *)keyAtIndex:(NSUInteger)index;
 - (NSArray *)allKeys;
-- (NSString *)worldsString;
 - (NSArray <NSString*>*)allKeysAdreeses;
+- (NSString *)brandKeyWithPin:(NSString*) pin;
+
 
 @end

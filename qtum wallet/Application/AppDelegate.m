@@ -24,9 +24,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    NSString *a = @"adfasf";
-    NSArray *ar = [a componentsSeparatedByString:@":"];
-    
     [iOSSessionManager sharedInstance];
     [ContractFileManager sharedInstance];
     [[AppSettings sharedInstance] setup];
