@@ -8,6 +8,8 @@
 
 @protocol FavouriteTemplatesCollectionSourceOutputDelegate <NSObject>
 
-
+@required
+- (void)didSelectTemplate:(TemplateModel *)template sender:(id)sender;
+- (void)didResetToDefaults:(id)sender;
 
 @end

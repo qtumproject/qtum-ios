@@ -38,7 +38,7 @@
 #import "FavouriteTemplatesCollectionSourceOutput.h"
 
 
-@interface ContractCoordinator () <LibraryOutputDelegate, LibraryTableSourceOutputDelegate>
+@interface ContractCoordinator () <LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
@@ -137,11 +137,17 @@
 -(void)showWatchTokens {
     
     self.activeTemplateForLibrary = nil;
+    
     self.wathTokensViewController = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
     self.favouriteTokensCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
+    
     self.favouriteTokensCollectionSource.templateModels = [[TemplateManager sharedInstance] availebaleTokenTemplates];
+    self.favouriteTokensCollectionSource.delegate = self;
+    self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    
     self.wathTokensViewController.collectionSource = self.favouriteTokensCollectionSource;
     self.wathTokensViewController.delegate = self;
+    
     [self.navigationController pushViewController:self.wathTokensViewController animated:YES];
 }
 
@@ -358,46 +364,63 @@
 }
 
 -(void)didPressedQuit {
-    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)didPressedBack {
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didSelectChooseFromLibrary:(id)sender {
-    
     [self showChooseFromLibrary:[sender isKindOfClass:[WatchTokensViewController class]]];
 }
 
-#pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate
+- (void)didChangeAbiText {
+    
+    self.activeTemplateForLibrary = nil;
+    self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+}
+
+#pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate
 
 - (void)didBackPressed {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)didSelectTemplateIndexPath:(NSIndexPath *)indexPath withItem:(TemplateModel *)template {
+- (void)didSelectTemplate:(TemplateModel *)template sender:(id)sender {
     
     self.activeTemplateForLibrary = template;
-    [self.navigationController popViewControllerAnimated:YES];
     
-    if (self.isLibraryViewControllerOnlyForTokens) {
+    if ([sender isEqual:self.libraryTableSource]) {
+        if (self.isLibraryViewControllerOnlyForTokens) {
+            [self.wathTokensViewController changeStateForSelectedTemplate:template];
+        } else {
+            [self.wathContractsViewController changeStateForSelectedTemplate:template];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    }
+    if ([sender isEqual:self.favouriteTokensCollectionSource]) {
         [self.wathTokensViewController changeStateForSelectedTemplate:template];
-    } else {
-        [self.wathContractsViewController changeStateForSelectedTemplate:template];
     }
 }
 
-- (void)didResetToDefaults {
+- (void)didResetToDefaults:(id)sender {
     
     self.activeTemplateForLibrary = nil;
 
-    if (self.isLibraryViewControllerOnlyForTokens) {
+    if ([sender isEqual:self.libraryTableSource]) {
+        if (self.isLibraryViewControllerOnlyForTokens) {
+            [self.wathTokensViewController changeStateForSelectedTemplate:nil];
+        } else {
+            [self.wathContractsViewController changeStateForSelectedTemplate:nil];
+        }
+        
+        self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    }
+    if ([sender isEqual:self.favouriteTokensCollectionSource]) {
         [self.wathTokensViewController changeStateForSelectedTemplate:nil];
-    } else {
-        [self.wathContractsViewController changeStateForSelectedTemplate:nil];
     }
 }
 

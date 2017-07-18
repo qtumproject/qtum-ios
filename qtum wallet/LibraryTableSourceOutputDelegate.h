@@ -9,7 +9,7 @@
 @protocol LibraryTableSourceOutputDelegate <NSObject>
 
 @required
-- (void)didSelectTemplateIndexPath:(NSIndexPath *)indexPath withItem:(TemplateModel *)contract;
-- (void)didResetToDefaults;
+- (void)didSelectTemplate:(TemplateModel *)template sender:(id)sender;
+- (void)didResetToDefaults:(id)sender;
 
 @end

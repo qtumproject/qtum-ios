@@ -10,8 +10,9 @@
 #import "TextFieldWithLine.h"
 #import "ImputTextView.h"
 #import "ContractFileManager.h"
+#import "FavouriteTemplatesCollectionSource.h"
 
-@interface WatchTokensViewController ()
+@interface WatchTokensViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractNameField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractAddressTextField;
@@ -25,11 +26,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.collectionView.delegate = self.collectionSource;
     self.collectionView.dataSource = self.collectionSource;
+    self.collectionView.delegate = self.collectionSource;
+    self.collectionSource.collectionView = self.collectionView;
+    
+    self.abiTextView.delegate = self;
+    
+    [self addDoneButtonToTextInputs];
 }
 
 #pragma mark - Private Methods
+
+- (void)addDoneButtonToTextInputs {
+    
+    UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.translucent = NO;
+    toolbar.barTintColor = customBlackColor();
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
+    doneItem.tintColor = customBlueColor();
+    toolbar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneItem];
+    [toolbar sizeToFit];
+    
+    self.contractNameField.inputAccessoryView = toolbar;
+    self.contractAddressTextField.inputAccessoryView = toolbar;
+    self.abiTextView.inputAccessoryView = toolbar;
+}
 
 -(void)createSmartContract {
     
@@ -54,8 +76,13 @@
     [self.delegate didPressedBack];
 }
 
-- (IBAction)didVoidTapAction:(id)sender {
+- (void)done:(id)sender {
     [self.view endEditing:YES];
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    
+    [self.delegate didChangeAbiText];
 }
 
 - (IBAction)chooseFromLibraryButtonPressed:(id)sender {
@@ -64,7 +91,7 @@
 }
 
 - (void)changeStateForSelectedTemplate:(TemplateModel *)templateModel {
-    
+
     self.abiTextView.text = templateModel ? [[ContractFileManager sharedInstance] escapeAbiWithTemplate:templateModel.path]: @"";
     [self.abiTextView setContentOffset:CGPointZero];
 }

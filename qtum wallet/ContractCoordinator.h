@@ -41,6 +41,7 @@
                        andToken:(Contract*) token;
 
 - (void)didSelectChooseFromLibrary:(id)sender;
+- (void)didChangeAbiText;
 
 @end
 

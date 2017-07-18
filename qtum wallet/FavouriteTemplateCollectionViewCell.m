@@ -10,6 +10,24 @@
 
 @implementation FavouriteTemplateCollectionViewCell
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
+
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:self];
+    
+    self.backgroundColor = selected ? customRedColor() : customBlueColor();
+}
+
+//- (void)setHighlighted:(BOOL)highlighted {
+//    
+//    [super setHighlighted:highlighted];
+//    
+//    self.nameLabel.textColor = highlighted ? customBlackColor() : customBlueColor();
+//    self.backgroundColor = highlighted ? customRedColor() : customBlueColor();
+//}
+
 + (UIFont *)getLabelFont {
     return [UIFont fontWithName:@"simplonmono-regular" size:9.0f];
 }

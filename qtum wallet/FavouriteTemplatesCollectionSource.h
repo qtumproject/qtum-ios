@@ -11,7 +11,9 @@
 
 @interface FavouriteTemplatesCollectionSource : NSObject <FavouriteTemplatesCollectionSourceOutput>
 
+@property (nonatomic) TemplateModel *activeTemplate;
 @property (nonatomic) NSArray<TemplateModel *> *templateModels;
 @property (nonatomic, weak) id<FavouriteTemplatesCollectionSourceOutputDelegate> delegate;
+@property (nonatomic, weak) UICollectionView *collectionView;
 
 @end
