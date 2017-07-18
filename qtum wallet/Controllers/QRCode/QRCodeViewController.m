@@ -32,8 +32,8 @@
         
         AVMetadataMachineReadableCodeObject *code = codes.firstObject;
         
-        if ([weakSelf.delegate respondsToSelector:@selector(didQRCodeScannedWithDict:)]) {
-            [weakSelf.delegate didQRCodeScannedWithDict:[QRCodeManager getNewPaymentDictionaryFromString:code.stringValue]];
+        if ([weakSelf.delegate respondsToSelector:@selector(didQRCodeScannedWithQRCodeItem:)]) {
+            [weakSelf.delegate didQRCodeScannedWithQRCodeItem:[QRCodeManager getNewPaymentDictionaryFromString:code.stringValue]];
         }
     };
 }

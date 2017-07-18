@@ -16,7 +16,7 @@
 #import "ChooseTokenPaymentDelegateDataSourceProtocol.h"
 #import "ChooseTokekPaymentDelegateDataSourceDelegate.h"
 
-@interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate>
+@interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (weak, nonatomic) NSObject <NewPaymentOutput>* paymentOutput;
@@ -47,6 +47,45 @@
     self.paymentOutput = controller;
     [self.navigationController setViewControllers:@[controller]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokensDidChange) name:kTokenDidChange object:nil];
+}
+
+- (void)setForSendQRCodeItem:(QRCodeItem *)item {
+    
+    switch (item.type) {
+        case QRCodeItemTypeQtum:
+            self.token = nil;
+            break;
+        case QRCodeItemTypeInvalid:
+            [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForInvalidQRCodeFormatPopUp] presenter:nil completion:nil];
+            item = nil;
+            self.token = nil;
+            break;
+        case QRCodeItemTypeToken:
+        {
+            NSArray <Contract*>* tokens = [ContractManager sharedInstance].allActiveTokens;
+            
+            BOOL exist = NO;
+            for (Contract *token in tokens) {
+                if ([token.mainAddress isEqualToString:item.tokenAddress]) {
+                    self.token = token;
+                    exist = YES;
+                    break;
+                }
+            }
+            
+            if (!exist) {
+                [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForRequestTokenPopUp] presenter:nil completion:nil];
+                [self.paymentOutput setQRCodeItem:nil];
+                self.token = nil;
+                item = nil;
+            }
+            break;
+        }
+    }
+    
+    [self.paymentOutput updateContentWithContract:self.token];
+    [self.paymentOutput setQRCodeItem:item];
+    [self updateOutputs];
 }
 
 #pragma mark - Observing
@@ -209,11 +248,11 @@
 
 #pragma mark - QRCodeViewControllerDelegate
 
-- (void)didQRCodeScannedWithDict:(NSDictionary*)dict {
+- (void)didQRCodeScannedWithQRCodeItem:(QRCodeItem *)item {
     
     [self.navigationController popViewControllerAnimated:YES];
-    [self.paymentOutput updateContentFromQRCode:dict];
-    [self updateOutputs];
+    
+    [self setForSendQRCodeItem:item];
 }
 
 - (void)didBackPressed {
@@ -221,6 +260,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - PopUpWithTwoButtonsViewControllerDelegate
+
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender {
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [self didPresseQRCodeScaner];
+}
 
 #pragma mark - ChoseTokenPaymentViewControllerDelegate
 

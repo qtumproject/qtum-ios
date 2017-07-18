@@ -14,8 +14,6 @@
 
 @interface TabBarController () <UITabBarControllerDelegate, Presentable>
 
-@property (weak,nonatomic)id <NewPaymentOutput> paymentOutput;
-
 @end
 
 @implementation TabBarController
@@ -64,27 +62,10 @@
     }
 }
 
--(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount {
+-(void)selectSendController {
     
     [self.outputDelegate didSelecteSendTabWithController:[self.viewControllers lastObject]];
-    [self storeSendReference:[self.viewControllers lastObject]];
     self.selectedIndex = 3;
-    [self.paymentOutput setAdress:adress andValue:amount];
 }
-
--(void)storeSendReference:(UIViewController*)sendController {
-    
-    if ([sendController isKindOfClass:[UINavigationController class]]) {
-        
-        UINavigationController* nav = (UINavigationController*)sendController;
-        
-        if ([nav.viewControllers.firstObject conformsToProtocol:@protocol(NewPaymentOutput)]){
-            
-            self.paymentOutput = nav.viewControllers.firstObject;
-        }
-    }
-}
-
-
 
 @end

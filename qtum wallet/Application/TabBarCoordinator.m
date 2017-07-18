@@ -21,6 +21,8 @@
 @property (assign,nonatomic) BOOL profileAlreadyStarted;
 @property (assign,nonatomic) BOOL newsAlreadyStarted;
 
+@property (weak, nonatomic) SendCoordinator *sendCoordinator;
+
 @end
 
 @implementation TabBarCoordinator
@@ -63,6 +65,7 @@
         SendCoordinator* coordinator = [[SendCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
         coordinator.delegate = self;
         [coordinator start];
+        self.sendCoordinator = coordinator;
         [self addDependency:coordinator];
         [self checkTabsController:controller];
     }
@@ -96,8 +99,9 @@
     NSAssert([controller isKindOfClass:[UINavigationController class]], @"Tabs must be navigation");
 }
 
--(void)createPaymentFromWalletScanWithDict:(NSDictionary*) dict{
-    [self.tabbarOutput selectSendControllerWithAdress:dict[@"publicAddress"] andValue:dict[@"amount"]];
+-(void)createPaymentFromQRCodeItem:(QRCodeItem *)item {
+    [self.tabbarOutput selectSendController];
+    [self.sendCoordinator setForSendQRCodeItem:item];
 }
 
 -(void)showControllerByIndex:(NSInteger)index {
@@ -110,9 +114,10 @@
     return self.tabbarOutput.viewControllers[index];
 }
 
-- (void)startFromSendWithAddress:(NSString*)address andAmount:(NSString*) amount {
+- (void)startFromSendWithQRCodeItem:(QRCodeItem *)item {
     [self start];
-    [self.tabbarOutput selectSendControllerWithAdress:address andValue:amount];
+    [self.tabbarOutput selectSendController];
+    [self.sendCoordinator setForSendQRCodeItem:item];
 }
 
 

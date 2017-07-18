@@ -11,10 +11,10 @@
 
 NSString const *PUBLIC_ADDRESS_STRING_KEY = @"publicAddress";
 NSString const *EXPORT_CONTRACTS_TOKENS_KEY = @"export_contracts_tokens";
-NSString const *kIsToken = @"isToken";
+NSString const *IS_TOKEN_STRING_KEY = @"isToken";
 NSString const *PRIVATE_ADDRESS_STRING_KEY = @"privateAddress";
 NSString const *AMOUNT_STRING_KEY = @"amount";
-NSString *NO_INTERNET_CONNECTION_ERROR_KEY = @"no_internet_connection_erro_key";
+NSString *NO_INTERNET_CONNECTION_ERROR_KEY = @"no_internet_connection_error_key";
 
 
 UIColor *customBlueColor()

@@ -13,7 +13,7 @@ extern NSString const *PRIVATE_ADDRESS_STRING_KEY;
 extern NSString const *EXPORT_CONTRACTS_TOKENS_KEY;
 extern NSString const *AMOUNT_STRING_KEY;
 extern NSString *NO_INTERNET_CONNECTION_ERROR_KEY;
-extern NSString const *kIsToken;
+extern NSString const *IS_TOKEN_STRING_KEY;
 
 
 UIColor *customBlueColor();

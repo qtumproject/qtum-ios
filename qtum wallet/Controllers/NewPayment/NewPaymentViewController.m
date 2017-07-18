@@ -202,14 +202,6 @@ static NSInteger sendButtomBottomOffset = 27;
     self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
 }
 
--(void)updateContentFromQRCode:(NSDictionary*) qrCodeDict {
-    
-    self.addressTextField.text =
-    self.adress = qrCodeDict[PUBLIC_ADDRESS_STRING_KEY];
-    self.amountTextField.text =
-    self.amount = qrCodeDict[AMOUNT_STRING_KEY];
-}
-
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
@@ -228,10 +220,10 @@ static NSInteger sendButtomBottomOffset = 27;
 
 #pragma mark - iMessage
 
--(void)setAdress:(NSString*)adress andValue:(NSString*)amount {
+- (void)setQRCodeItem:(QRCodeItem *)item {
     
-    self.adress = adress;
-    self.amount = amount;
+    self.adress = item.qtumAddress;
+    self.amount = item.amountString;
     self.needUpdateTexfFields = YES;
 }
 

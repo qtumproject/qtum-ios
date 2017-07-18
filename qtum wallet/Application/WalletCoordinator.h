@@ -24,7 +24,6 @@
 - (void)showAddressInfoWithSpendable:(id <Spendable>) spendable;
 
 // Some actions
-- (void)didQRCodeScannedWithDict:(NSDictionary*)dict;
 - (void)didBackPressed;
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*)item;
 - (void)didShareTokenButtonPressed;
