@@ -26,9 +26,9 @@
         
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
         self.activeTemplate = nil;
-        [self.delegate didResetToDefaults];
+        [self.delegate didResetToDefaults:self];
     } else {
-        [self.delegate didSelectTemplateIndexPath:indexPath withItem:template];
+        [self.delegate didSelectTemplate:template sender:self];
     }
 }
 
