@@ -10,8 +10,8 @@
 
 @implementation QRCodeManager
 
-+ (void)createQRCodeFromString:(NSString *)string forSize:(CGSize)size withCompletionBlock:(void(^)(UIImage *image))completionBlock;
-{
++ (void)createQRCodeFromString:(NSString *)string forSize:(CGSize)size withCompletionBlock:(void(^)(UIImage *image))completionBlock {
+    
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *stringData = [string dataUsingEncoding: NSUTF8StringEncoding];
         
@@ -40,21 +40,23 @@
     });
 }
 
-+ (void)createQRCodeFromPublicAddress:(NSString *)publicAddressString isToken:(BOOL) isToken andAmount:(NSString *)amountString forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock
-{
-    NSDictionary *dictionary = @{PUBLIC_ADDRESS_STRING_KEY : publicAddressString,
-                                 AMOUNT_STRING_KEY : amountString,
-                                 kIsToken : @(isToken)};
++ (void)createQRCodeFromPublicAddress:(NSString *)publicAddressString tokenAddress:(NSString *)tokenAddress andAmount:(NSString *)amountString forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock {
     
-    NSString *string = [self createStringFromDictionary:dictionary];
+    QRCodeItem *item = [[QRCodeItem alloc] initWithQtumAddress:publicAddressString tokenAddress:tokenAddress amountString:amountString];
+    
+    NSString *string = [item stringByItem];
+    if (!string) {
+        completionBlock(nil);
+        return;
+    }
     
     [self createQRCodeFromString:string forSize:size withCompletionBlock:^(UIImage *image) {
         completionBlock(image);
     }];
 }
 
-+ (void)createQRCodeFromContractsTokensArray:(NSArray *)array forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *))completionBlock
-{
++ (void)createQRCodeFromContractsTokensArray:(NSArray *)array forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *))completionBlock {
+    
     NSDictionary *dictionary = @{EXPORT_CONTRACTS_TOKENS_KEY : array};
     
     NSString *string = [self createStringFromDictionary:dictionary];
@@ -64,21 +66,10 @@
     }];
 }
 
-+ (NSDictionary *)getNewPaymentDictionaryFromString:(NSString *)string
-{
-    if (!string) return nil;
++ (QRCodeItem *)getNewPaymentDictionaryFromString:(NSString *)string {
     
-    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    if (dictionary) {
-        return dictionary;
-    }else{
-        NSDictionary *dictionary = @{PUBLIC_ADDRESS_STRING_KEY : string,
-                                     AMOUNT_STRING_KEY : @"",
-                                     PRIVATE_ADDRESS_STRING_KEY : @""};
-        return dictionary;
-    }
+    QRCodeItem *item = [[QRCodeItem alloc] initWithString:string];
+    return item;
 }
 
 #pragma mark - private methods

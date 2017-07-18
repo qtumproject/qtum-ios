@@ -16,4 +16,6 @@
 
 @property (weak, nonatomic) id <SendCoordinatorDelegate> delegate;
 
+- (void)setForSendQRCodeItem:(QRCodeItem *)item;
+
 @end

@@ -44,8 +44,6 @@
     [walletController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [newsController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [sendController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
-    
-    [self storeSendReference:profileController];
 }
 
 #pragma mark TabbarOutput

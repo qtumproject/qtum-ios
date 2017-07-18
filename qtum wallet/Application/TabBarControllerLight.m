@@ -50,8 +50,6 @@
     [wallet.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [news.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [send.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
-    
-    [self storeSendReference:send];
 }
 
 #pragma mark TabbarOutput

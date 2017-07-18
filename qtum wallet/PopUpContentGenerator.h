@@ -22,5 +22,7 @@
 + (PopUpContent *)contentForAddressCopied;
 + (PopUpContent *)contentForSourceCode;
 + (PopUpContent *)contentForAbiCopied;
++ (PopUpContent *)contentForRequestTokenPopUp;
++ (PopUpContent *)contentForInvalidQRCodeFormatPopUp;
 
 @end

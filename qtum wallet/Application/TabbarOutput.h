@@ -15,7 +15,7 @@
 @property (weak,nonatomic) id <TabbarOutputDelegate> outputDelegate;
 @property (assign,nonatomic) BOOL isReload;
 
--(void)selectSendControllerWithAdress:(NSString*)adress andValue:(NSString*)amount;
+-(void)selectSendController;
 -(void)setControllerForNews:(UIViewController*)newsController
                     forSend:(UIViewController*)sendController
                   forWallet:(UIViewController*)walletController

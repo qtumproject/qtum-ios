@@ -302,7 +302,8 @@
     [self addDependency:coordinator];
     
     if (self.adress) {
-        [coordinator startFromSendWithAddress:self.adress andAmount:self.amount];
+        QRCodeItem *item = [[QRCodeItem alloc] initWithQtumAddress:self.adress tokenAddress:nil amountString:self.amount];
+        [coordinator startFromSendWithQRCodeItem:item];
     } else {
         [coordinator start];
 

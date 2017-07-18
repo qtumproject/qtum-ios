@@ -14,8 +14,7 @@
 @protocol TabBarCoordinatorDelegate <NSObject>
 
 @required
-
--(void)createPaymentFromWalletScanWithDict:(NSDictionary*) dict;
+-(void)createPaymentFromQRCodeItem:(QRCodeItem *)item;
 
 @end
 
@@ -27,7 +26,7 @@
 
 - (instancetype)initWithTabBarController:(UITabBarController<TabbarOutput>*)tabBarController;
 
-- (void)startFromSendWithAddress:(NSString*)address andAmount:(NSString*) amount;
+- (void)startFromSendWithQRCodeItem:(QRCodeItem *)item;
 - (void)showControllerByIndex:(NSInteger)index;
 - (UIViewController *)getViewControllerByIndex:(NSInteger)index;
 

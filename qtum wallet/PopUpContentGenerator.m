@@ -61,4 +61,14 @@
     return content;
 }
 
++ (PopUpContent *)contentForRequestTokenPopUp{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Requested Token not found", nil) okTitle:NSLocalizedString(@"OK", nil) cancelTitle:NSLocalizedString(@"TRY AGAIN", nil)];
+    return content;
+}
+
++ (PopUpContent *)contentForInvalidQRCodeFormatPopUp{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Invalid QR Code format", nil) okTitle:NSLocalizedString(@"OK", nil) cancelTitle:NSLocalizedString(@"TRY AGAIN", nil)];
+    return content;
+}
+
 @end

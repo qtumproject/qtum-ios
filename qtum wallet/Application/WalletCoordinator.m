@@ -75,9 +75,9 @@
 
 #pragma mark - QRCodeViewControllerDelegate
 
-- (void)didQRCodeScannedWithDict:(NSDictionary *)dict {
+- (void)didQRCodeScannedWithQRCodeItem:(QRCodeItem *)item {
     [self.navigationController popViewControllerAnimated:NO];
-    [self.delegate createPaymentFromWalletScanWithDict:dict];
+    [self.delegate createPaymentFromQRCodeItem:item];
 }
 
 #pragma mark - Coordinatorable

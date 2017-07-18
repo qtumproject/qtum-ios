@@ -9,6 +9,7 @@
 #import "RecieveViewController.h"
 #import "TextFieldWithLine.h"
 #import "QRCodeManager.h"
+#import "Wallet.h"
 
 @interface RecieveViewController () <UITextFieldDelegate, PopUpViewControllerDelegate>
 
@@ -33,7 +34,6 @@
 
     [self addDoneButtonToAmountTextField];
     self.shareButton.enabled = NO;
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -47,7 +47,7 @@
 {
     [super viewDidAppear:animated];
 
-    self.publicAddressLabel.text = self.wallet.mainAddress;
+    self.publicAddressLabel.text = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
     [self createQRCode];
 }
 
@@ -62,10 +62,11 @@
     self.shareButton.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
-    NSString* keyString = self.wallet.mainAddress;
-    BOOL isToken = [self.wallet isKindOfClass:[Contract class]];
-
-    [QRCodeManager createQRCodeFromPublicAddress:keyString isToken:isToken andAmount:[self correctAmountString] forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
+    NSString *qtumAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+    NSString *tokenAddress = [self.wallet isKindOfClass:[Contract class]] ? self.wallet.mainAddress : nil;
+    NSString *amountString = [self correctAmountString];
+    
+    [QRCodeManager createQRCodeFromPublicAddress:qtumAddress tokenAddress:tokenAddress andAmount:amountString forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
         weakSelf.shareButton.enabled = YES;
         weakSelf.walletAdressCopyButton.enabled = YES;
@@ -150,7 +151,7 @@
 - (IBAction)copeButtonWasPressed:(id)sender
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    NSString* keyString = self.wallet.mainAddress;
+    NSString* keyString = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
     [pb setString:keyString];
     
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForAddressCopied] presenter:nil completion:nil];
