@@ -100,7 +100,7 @@
         } else if (indexPath.row == 1) {
             
             image = [UIImage imageNamed:@"ic-token-subscribe"];
-            text = NSLocalizedString(@"Subscribe Token", "");
+            text = NSLocalizedString(@"Token Subscriptions", "");
         }
     } else{
         if (indexPath.row == 0) {

@@ -15,6 +15,8 @@
 #import "ChoseTokenPaymentOutput.h"
 #import "ChooseTokenPaymentDelegateDataSourceProtocol.h"
 #import "ChooseTokekPaymentDelegateDataSourceDelegate.h"
+#import "WalletManagerRequestAdapter.h"
+#import "Wallet.h"
 
 @interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate>
 
@@ -77,7 +79,7 @@
             self.token = nil;
         }
         
-        [weakSelf.paymentOutput updateControlsWithTokensExist:tokens.count choosenTokenExist:tokenExists walletBalance:[WalletManager sharedInstance].currentWallet.balance andUnconfimrmedBalance:[WalletManager sharedInstance].currentWallet.unconfirmedBalance];
+        [weakSelf.paymentOutput updateControlsWithTokensExist:tokens.count choosenTokenExist:tokenExists walletBalance:[ApplicationCoordinator sharedInstance].walletManager.wallet.balance andUnconfimrmedBalance:[ApplicationCoordinator sharedInstance].walletManager.wallet.unconfirmedBalance];
     });
 }
 
@@ -92,7 +94,7 @@
     [self showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[WalletManager sharedInstance].currentWallet allKeys] toAddressAndAmount:array andHandler:^(TransactionManagerErrorType errorType, id response) {
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys] toAddressAndAmount:array andHandler:^(TransactionManagerErrorType errorType, id response) {
         
         [weakSelf hideLoaderPopUp];
         [weakSelf showStatusOfPayment:errorType];

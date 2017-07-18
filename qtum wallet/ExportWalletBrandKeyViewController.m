@@ -11,7 +11,6 @@
 
 @interface ExportWalletBrandKeyViewController () <PopUpViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet NSString *brainKey;
 @property (weak, nonatomic) IBOutlet BorderedLabel *brainKeyLabel;
 
 @end
@@ -19,9 +18,10 @@
 
 @implementation ExportWalletBrandKeyViewController
 
-@synthesize delegate;
+@synthesize delegate, brandKey;
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self configurationBrainKeyLabel];
 }
@@ -33,6 +33,7 @@
 #pragma mark - Private Methods
 
 -(NSString*)stringForLabelWithArrayWords:(NSArray*) array {
+    
     NSString* resultSting;
     for (id item in array) {
         resultSting = resultSting ? [NSString stringWithFormat:@"%@ %@",resultSting,item] : [NSString stringWithFormat:@"%@",item];
@@ -42,9 +43,9 @@
 
 #pragma mark - Configuration
 
--(void)configurationBrainKeyLabel{
-    self.brainKeyLabel.text =
-    self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] currentWallet].seedWords];
+-(void)configurationBrainKeyLabel {
+    
+    self.brainKeyLabel.text = self.brandKey;
 }
 
 #pragma mark - Actions
@@ -52,7 +53,7 @@
 
 - (IBAction)actionCopy:(id)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = self.brainKey;
+    pasteboard.string = self.brandKey;
     
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForBrainCodeCopied] presenter:nil completion:nil];
 }
@@ -64,10 +65,10 @@
     }
 }
 
-- (IBAction)shareButtonWasPressed:(id)sender
-{
-    NSString *brainKey = self.brainKey;
-    NSArray *sharedItems = @[brainKey];
+- (IBAction)shareButtonWasPressed:(id)sender {
+    
+    NSString *brandKeyString = self.brandKey;
+    NSArray *sharedItems = @[brandKeyString];
     UIActivityViewController *sharingVC = [[UIActivityViewController alloc] initWithActivityItems:sharedItems applicationActivities:nil];
     [self presentViewController:sharingVC animated:YES completion:nil];
 }

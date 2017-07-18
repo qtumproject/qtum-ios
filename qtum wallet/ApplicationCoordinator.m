@@ -25,6 +25,8 @@
 #import "ConfirmPinCoordinator.h"
 #import "OpenURLManager.h"
 #import "ProfileCoordinator.h"
+#import "WalletManager.h"
+#import "Wallet.h"
 
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
@@ -75,6 +77,7 @@
         _notificationManager = [NotificationManager new];
         _openUrlManager = [OpenURLManager new];
         _requestManager = [AppSettings sharedInstance].isRPC ? [RPCRequestManager sharedInstance] : [RequestManager sharedInstance];
+        _walletManager = [WalletManager new];
     }
     return self;
 }
@@ -95,7 +98,7 @@
         [self.notificationManager registerForRemoutNotifications];
     });
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[WalletManager sharedInstance] startObservingForAllSpendable];
+        [self.walletManager startObservingForAllSpendable];
         [[ContractManager sharedInstance] startObservingForAllSpendable];
     });
 }
@@ -106,7 +109,7 @@
 
 -(void)start{
 
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
+    if (self.walletManager.isSignedIn) {
         [self startLoginFlow];
     } else {
         [self startAuthFlow];
@@ -125,7 +128,7 @@
     
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
-    [[WalletManager sharedInstance] stopObservingForAllSpendable];
+    [self.walletManager stopObservingForAllSpendable];
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self startAuthFlow];
 }
@@ -144,7 +147,7 @@
     
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
-    [[WalletManager sharedInstance] stopObservingForAllSpendable];
+    [self.walletManager stopObservingForAllSpendable];
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self startAuthFlow];
 }
@@ -200,11 +203,11 @@
     
     [self startAuthFlow];
     [self removeDependency:self.tabCoordinator];
-    [[WalletManager sharedInstance] stopObservingForAllSpendable];
+    [self.walletManager stopObservingForAllSpendable];
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self.notificationManager clear];
     [self.openUrlManager clear];
-    [[WalletManager sharedInstance] clear];
+    [self.walletManager clear];
     [[ContractManager sharedInstance] clear];
     [[TemplateManager sharedInstance] clear];
 
@@ -218,7 +221,7 @@
         [[PopUpsManager sharedInstance] hideCurrentPopUp:NO completion:nil];
     }
     
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN && !self.authFlowRunning && !self.loginFlowRunning && !self.securityFlowRunning) {
+    if (self.walletManager.isSignedIn && !self.authFlowRunning && !self.loginFlowRunning && !self.securityFlowRunning) {
         ConfirmPinCoordinator* coordinator = [[ConfirmPinCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
         coordinator.delegate = self;
         [coordinator start];
@@ -305,7 +308,7 @@
 
     }
 
-    [self.openUrlManager storeAuthToYesWithAdddress:[WalletManager sharedInstance].currentWallet.mainAddress];
+    [self.openUrlManager storeAuthToYesWithAdddress:self.walletManager.wallet.mainAddress];
 }
 
 -(void)restartMainFlow {

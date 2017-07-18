@@ -9,6 +9,7 @@
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionCell.h"
 #import "TokenPropertyCell.h"
+#import "WalletManager.h"
 
 @interface TokenFunctionViewController ()
 

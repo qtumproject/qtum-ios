@@ -9,6 +9,7 @@
 #import "RPCRequestManager.h"
 #import <AFJSONRPCClient/AFJSONRPCClient.h>
 #import "RPCAdapter.h"
+#import "Wallet.h"
 
 NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
 //NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
@@ -197,7 +198,7 @@ NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
     NSNumber *count = @(10000000);;
     NSNumber *someValue = @(0);
     NSNumber *flag = @YES;
-    NSArray *params = @[[[WalletManager sharedInstance] currentWallet].worldsString, count, someValue, flag];
+    NSArray *params = nil;//@[[ApplicationCoordinator sharedInstance].walletManager.wallet.worldsString, count, someValue, flag]; // deprecated
     __weak __typeof(self)weakSelf = self;
     
     [self invokeMethod:method andParams:params withSuccessHandler:^(id responseObject) {

@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Spendable.h"
-#import "Clearable.h"
 
 @protocol Spendable;
 
-@protocol Managerable <Clearable>
+@protocol Managerable
 
 -(void)spendableDidChange:(id <Spendable>) object;
 -(void)updateSpendableObject:(id <Spendable>) object;

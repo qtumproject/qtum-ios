@@ -106,7 +106,7 @@
         }
     }
     NSString* functionSignature = [NSString stringWithFormat:@"%@(%@)",fuctionItem.name,param];
-    return [[functionSignature sha3:256] substringToIndex:8];
+    return [[functionSignature sha3:SHA3256] substringToIndex:8];
 }
 
 - (NSData*)hashOfFunction:(AbiinterfaceItem*) fuctionItem {

@@ -20,6 +20,7 @@
 #import "CreatePinOutputDelegate.h"
 #import "RepeateOutputDelegate.h"
 #import "ExportWalletBrandKeyOutputDelegate.h"
+#import "Wallet.h"
 
 @interface AuthCoordinator () <FirstAuthOutputDelegate, WalletNameOutputDelegate, CreatePinOutputDelegate, RepeateOutputDelegate, ExportWalletBrandKeyOutputDelegate>
 
@@ -29,7 +30,7 @@
 @property (nonatomic, weak) RestoreWalletViewController *restoreWalletController;
 @property (nonatomic, weak) CreatePinViewController *createPinController;
 @property (nonatomic, weak) RepeateViewController *repeatePinController;
-@property (nonatomic, weak) ExportWalletBrandKeyViewController *exportWalletController;
+@property (nonatomic, weak) NSObject<ExportWalletBrandKeyOutput> *exportWalletOutput;
 @property (copy, nonatomic) NSString* firstPin;
 @property (copy, nonatomic) NSString* walletName;
 @property (copy, nonatomic) NSString* walletPin;
@@ -96,11 +97,13 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
--(void)gotoExportWallet{
-    ExportWalletBrandKeyViewController* controller = (ExportWalletBrandKeyViewController*)[[ControllersFactory sharedInstance] createExportWalletBrandKeyViewController];
-    controller.delegate = self;
-    [self.navigationController pushViewController:controller animated:YES];
-    self.exportWalletController = controller;
+-(void)gotoExportWallet {
+    
+    NSObject<ExportWalletBrandKeyOutput>* output = (ExportWalletBrandKeyViewController*)[[ControllersFactory sharedInstance] createExportWalletBrandKeyViewController];
+    output.delegate = self;
+    output.brandKey = [self.walletBrainKey componentsJoinedByString:@" "];
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
+    self.exportWalletOutput = output;
 }
 
 -(void)gotoCreatePinAgain{
@@ -168,16 +171,25 @@
     
     __weak __typeof(self)weakSelf = self;
     if ([self.walletPin isEqualToString:pin] && !self.isWalletExported) {
-        [weakSelf.repeatePinController startCreateWallet];
-        [[WalletManager sharedInstance] createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
-            [[WalletManager sharedInstance] storePin:weakSelf.walletPin];
+        
+        [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
+            
+            [[ApplicationCoordinator sharedInstance].walletManager storePin:weakSelf.walletPin];
+            [[ApplicationCoordinator sharedInstance].walletManager startWithPin:weakSelf.walletPin];
             [weakSelf.repeatePinController endCreateWalletWithError:nil];
         } andFailureHandler:^{
             [weakSelf.repeatePinController endCreateWalletWithError:[NSError new]];
         }];
-    } else if ([self.walletPin isEqualToString:pin]){
-        [[WalletManager sharedInstance] storePin:weakSelf.walletPin];
-        [weakSelf.repeatePinController endCreateWalletWithError:nil];
+    } else if ([self.walletPin isEqualToString:pin]) {
+        
+        [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin seedWords:self.walletBrainKey withSuccessHandler:^(Wallet *newWallet) {
+            [[ApplicationCoordinator sharedInstance].walletManager storePin:weakSelf.walletPin];
+            [[ApplicationCoordinator sharedInstance].walletManager startWithPin:weakSelf.walletPin];
+            [weakSelf.repeatePinController endCreateWalletWithError:nil];
+        } andFailureHandler:^{
+            [weakSelf.repeatePinController endCreateWalletWithError:[NSError new]];
+        }];
+
     }else {
         self.walletPin = nil;
         [self gotoCreatePinAgain];
@@ -196,13 +208,14 @@
 
 #pragma mark - AuthCoordinatorDelegate
 
--(void)didRestorePressedWithWords:(NSArray*)words{
-    __weak __typeof(self)weakSelf = self;
-    [[WalletManager sharedInstance] importWalletWithName:@"" pin:@"" seedWords:words withSuccessHandler:^(Wallet *newWallet) {
-        [weakSelf.restoreWalletController restoreSucces];
-    } andFailureHandler:^{
-        [weakSelf.restoreWalletController restoreFailed];
-    }];
+-(void)didRestorePressedWithWords:(NSArray*) words{
+    
+    if (words.count != brandKeyWordsCount) {
+        [self.restoreWalletController restoreFailed];
+    } else {
+        self.walletBrainKey = words;
+        [self.restoreWalletController restoreSucces];
+    }
 }
 
 -(void)restoreWalletCancelDidPressed{

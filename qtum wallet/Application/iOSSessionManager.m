@@ -9,6 +9,7 @@
 #import "iOSSessionManager.h"
 #import <WatchConnectivity/WatchConnectivity.h>
 #import "QRCodeManager.h"
+#import "Wallet.h"
 
 NSString *MainMessageKey = @"message_key";
 NSString *GetQRCodeMessageKey = @"get_qr_code";
@@ -110,7 +111,7 @@ NSString *kErrorKey = @"error";
     NSString *key = message[MainMessageKey];
     if ([key isEqualToString:GetQRCodeMessageKey]) {
         CGFloat width = [message[@"width"] floatValue];
-        NSString *address = [WalletManager sharedInstance].currentWallet.mainAddress;
+        NSString *address = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
         
         [QRCodeManager createQRCodeFromString:address forSize:CGSizeMake(width, width) withCompletionBlock:^(UIImage *image) {
             NSDictionary *dictionary = @{@"data" : UIImagePNGRepresentation(image),
@@ -121,17 +122,17 @@ NSString *kErrorKey = @"error";
     } else if ([key isEqualToString:GetWalletInformation]) {
         CGFloat width = [message[@"width"] floatValue];
         
-        if (![WalletManager sharedInstance].currentWallet) {
+        if (![ApplicationCoordinator sharedInstance].walletManager.wallet) {
             NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
             replyHandler(dictionary);
             return;
         }
         
-        [[WalletManager sharedInstance].currentWallet updateBalanceWithHandler:^(BOOL success) {
+        [[ApplicationCoordinator sharedInstance].walletManager.wallet updateBalanceWithHandler:^(BOOL success) {
             if (success) {
-                [[WalletManager sharedInstance].currentWallet updateHistoryWithHandler:^(BOOL success) {
+                [[ApplicationCoordinator sharedInstance].walletManager.wallet updateHistoryWithHandler:^(BOOL success) {
                     if (success) {
-                        Wallet *wallet = [WalletManager sharedInstance].currentWallet;
+                        Wallet *wallet = [ApplicationCoordinator sharedInstance].walletManager.wallet;
                         NSString *address = wallet.mainAddress;
                         NSNumber *availableBalance = @(wallet.balance);
                         NSNumber *unconfirmedBalance = @(wallet.unconfirmedBalance);
