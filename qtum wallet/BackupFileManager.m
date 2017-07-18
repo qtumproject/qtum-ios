@@ -15,12 +15,12 @@ static NSString* kContractsKey = @"contracts";
 static NSString* kTemplatesKey = @"templates";
 static NSString* kDateCreateKey = @"date_create";
 static NSString* kPlatformKey = @"platform";
-static NSString* kFileVersionKey = @"fileVersion";
-static NSString* kPlatformVersionKey = @"platformVersion";
+static NSString* kFileVersionKey = @"backup_version";
+static NSString* kPlatformVersionKey = @"platform_version";
 static NSString* kBackupFileNameKey = @"backup.json";
 static NSString* kCurrentPlatformValueKey = @"ios";
 static NSString* kCurrentFileVersionValueKey = @"1.0";
-static NSString* kTemplateUiidKey = @"template";
+static NSString* kTemplateUuidKey = @"template";
 
 @implementation BackupFileManager
 
@@ -87,6 +87,7 @@ static NSString* kTemplateUiidKey = @"template";
 + (void)setBackupFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(BOOL success)) completionBlock {
     
     NSData *data = [NSData dataWithContentsOfURL:url];
+    BOOL processedWithoutErrors = YES;
     
     if (data) {
         
@@ -109,41 +110,44 @@ static NSString* kTemplateUiidKey = @"template";
             filteredArray = [array filteredArrayUsingPredicate:predicate];
         }
         
-        NSMutableSet* usefullTemplatesIndexes = [NSMutableSet new];
+        NSMutableSet* usefullTemplatesUUIDs = [NSMutableSet new];
         
         for (NSDictionary* contract in filteredArray) {
             
-            if ([contract[kTemplateUiidKey] isKindOfClass:[NSString class]]) {
-                if ([contract[kTemplateUiidKey] integerValue]) {
-                    [usefullTemplatesIndexes addObject:@([contract[kTemplateUiidKey] integerValue])];
-                }
-            } else if ([contract[kTemplateUiidKey] isKindOfClass:[NSNumber class]]) {
-                [usefullTemplatesIndexes addObject:@([contract[kTemplateUiidKey] integerValue])];
+            if ([contract[kTemplateUuidKey] isKindOfClass:[NSString class]]) {
+                [usefullTemplatesUUIDs addObject:contract[kTemplateUuidKey]];
+            } else if ([contract[kTemplateUuidKey] isKindOfClass:[NSNumber class]]) {
+                [usefullTemplatesUUIDs addObject:[NSString stringWithFormat:@"%@", contract[kTemplateUuidKey]]];
             }
         }
         
         NSArray* templatesCondidats = [backup[kTemplatesKey] isKindOfClass:[NSArray class]] ? backup[kTemplatesKey] : @[];
         NSMutableArray* usefullTemplatesCondidats = @[].mutableCopy;
         
-        for (NSNumber* templteIndex in usefullTemplatesIndexes) {
-            NSInteger index = [templteIndex integerValue];
-            if (templatesCondidats.count > index) {
-                [usefullTemplatesCondidats addObject:templatesCondidats[index]];
+        for (NSString* templteUUID in usefullTemplatesUUIDs) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@",templteUUID];
+            NSArray* filteredTemplateArray = [templatesCondidats filteredArrayUsingPredicate:predicate];
+            if (filteredTemplateArray.count > 0) {
+                [usefullTemplatesCondidats addObject:filteredTemplateArray.firstObject];
             }
         }
         
         NSArray<TemplateModel*>* newTemplates = [[TemplateManager sharedInstance] encodeDataForBacup:[usefullTemplatesCondidats copy]];
         
-        if (filteredArray.count > 0) {
+        if (filteredArray.count > 0 && newTemplates.count > 0 && [[ContractManager sharedInstance] encodeDataForBacup:filteredArray withTemplates:newTemplates]) {
             
-            [[ContractManager sharedInstance] encodeDataForBacup:filteredArray withTemplates:newTemplates];
+            processedWithoutErrors = YES;
+        } else {
+            processedWithoutErrors = NO;
         }
         
-        completionBlock(YES);
 
     } else {
-        completionBlock(NO);
+        processedWithoutErrors = NO;
     }
+    
+    completionBlock(processedWithoutErrors);
+
 }
 
 @end

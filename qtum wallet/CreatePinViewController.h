@@ -13,4 +13,6 @@
 
 @interface CreatePinViewController : PinController <CreatePinOutput>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
+
 @end

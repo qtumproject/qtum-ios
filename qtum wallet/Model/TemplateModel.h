@@ -27,12 +27,12 @@ typedef NS_ENUM(NSInteger, TemplateType) {
 @property (copy, nonatomic, readonly) NSString* creationDateString;
 @property (copy, nonatomic, readonly) NSString* creationFormattedDateString;
 @property (assign, nonatomic) TemplateType type;
-@property (assign, nonatomic) NSInteger uiid;
-@property (assign, nonatomic) NSInteger uiidFromRestore;
+@property (copy, nonatomic) NSString* uuid;
+@property (assign, nonatomic) NSInteger uuidFromRestore;
 
 -(instancetype)initWithTemplateName:(NSString*) templateName
                             andType:(TemplateType) type
-                           withUiid:(NSInteger) uiid
+                           withuuid:(NSString*) uuid
                                path:(NSString*) path
                              isFull:(BOOL) isFullTemplate;
 

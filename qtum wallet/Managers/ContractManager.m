@@ -146,7 +146,7 @@ static NSString* kAddresses = @"kAddress";
     return self.contracts;
 }
 
-- (void)addNewToken:(Contract*) token{
+- (void)addNewToken:(Contract*) token {
     
     token.delegate = self;
     [self.contracts addObject:token];
@@ -470,11 +470,11 @@ static NSString* kAddresses = @"kAddress";
 
 #pragma mark - Backup
 
-static NSString* kPublishDate = @"publishDate";
+static NSString* kPublishDate = @"publish_date";
 static NSString* kNameKey = @"name";
-static NSString* kContractAddressKey = @"contractAddress";
-static NSString* kContractCreationAddressKey = @"contractCreationAddres";
-static NSString* kIsActiveKey = @"isActive";
+static NSString* kContractAddressKey = @"contract_address";
+static NSString* kContractCreationAddressKey = @"contract_creation_address";
+static NSString* kIsActiveKey = @"is_active";
 static NSString* kTypeKey = @"type";
 static NSString* kTemplateKey = @"template";
 
@@ -491,14 +491,16 @@ static NSString* kTemplateKey = @"template";
         backupItem[kContractCreationAddressKey] = contract.contractCreationAddressAddress ?: @"";
         backupItem[kIsActiveKey] = @(contract.isActive);
         backupItem[kTypeKey] = contract.templateModel.templateTypeStringForBackup;
-        backupItem[kTemplateKey] = @(contract.templateModel.uiid);
+        backupItem[kTemplateKey] = contract.templateModel.uuid;
         [backupArray addObject:backupItem];
     }
     
     return backupArray.copy;
 }
 
--(void)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates {
+-(BOOL)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates {
+    
+    BOOL processedWithoutError = YES;
     
     for (NSDictionary* contractDict in backup) {
 
@@ -509,17 +511,24 @@ static NSString* kTemplateKey = @"template";
         contract.creationDate = [NSDate date];
         contract.isActive = [contractDict[kIsActiveKey] boolValue];
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uiidFromRestore == %i",[contractDict[kTemplateKey] integerValue]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@",contractDict[kTemplateKey]];
         NSArray* filteredTemplates = [templates filteredArrayUsingPredicate:predicate];
-        if (filteredTemplates.count > 0) {
+        NSPredicate *predicateForAddress = [NSPredicate predicateWithFormat:@"contractAddress == %@",contract.contractAddress];
+        NSArray *filteredContractAddressArray = [self.contracts filteredArrayUsingPredicate:predicateForAddress];
+        
+        if (filteredTemplates.count > 0 && !filteredContractAddressArray.count) {
             contract.templateModel = filteredTemplates[0];
             [self addNewToken:contract];
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
             [self updateSpendableObject:contract];
             [self save];
             [self tokenDidChange:nil];
+        } else {
+            processedWithoutError = NO;
         }
     }
+    
+    return processedWithoutError;
 }
 
 @end

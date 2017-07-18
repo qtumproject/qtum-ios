@@ -264,7 +264,7 @@
 - (void)copyTextAndShowPopUp:(NSString *)text isAbi:(BOOL)isAbi {
     
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    NSString* keyString = [[ContractFileManager sharedInstance] escapeAbiWithTemplate:self.tokenDetailsViewController.token.templateModel.path];
+    NSString* keyString = text;
     [pb setString:keyString];
     
     PopUpContent *content = isAbi ? [PopUpContentGenerator contentForAbiCopied] : [PopUpContentGenerator contentForAddressCopied];

@@ -19,14 +19,17 @@
 
 static NSString* kAvailableTemplates = @"kAvailableTemplates";
 static NSString* kNameKey = @"name";
-static NSString* kUiidKey = @"uiid";
-static NSString* kCreationDateKey = @"creationDate";
+static NSString* kuuidKey = @"uuid";
+static NSString* kCreationDateKey = @"date_create";
 static NSString* kTypeKey = @"type";
 static NSString* kSourceKey = @"source";
 static NSString* kAbiKey = @"abi";
 static NSString* kBitecode = @"bytecode";
 static int templatePathStringLengh = 10;
 static NSString* standartTokenPath = @"StandardPath";
+static NSString* erc20TokenUuid = @"erc20-token-identifire";
+static NSString* humanTokenUuid = @"human-standard-token-identifire";
+static NSString* crowdsaleUuid = @"crowdsale-identifire";
 
 @implementation TemplateManager
 
@@ -47,7 +50,6 @@ static NSString* standartTokenPath = @"StandardPath";
     if (self != nil) {
 
         [self load];
-        
     }
     return self;
 }
@@ -55,14 +57,18 @@ static NSString* standartTokenPath = @"StandardPath";
 - (void)load {
     
     NSMutableArray *savedTemplates = [[[FXKeychain defaultKeychain] objectForKey:kAvailableTemplates] mutableCopy];
-    
+    NSArray *standartTemplates = [self standartPackOfTemplates];
+
     if (!savedTemplates.count) {
         
-        self.templates = [[self standartPackOfTemplates] mutableCopy];
-        [self save];
+        self.templates = [standartTemplates mutableCopy];
     } else {
-        self.templates = savedTemplates;
+        
+        NSArray* uniqueTemplates = [[NSSet setWithArray:[savedTemplates arrayByAddingObjectsFromArray:standartTemplates]] allObjects];
+        self.templates = [uniqueTemplates mutableCopy];
     }
+    
+    [self save];
 }
 
 - (BOOL)save {
@@ -73,19 +79,19 @@ static NSString* standartTokenPath = @"StandardPath";
 
 -(TemplateModel*)standartTokenTemplate {
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateName == %@ && path == %@",@"Standart",@"Standart"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateName == %@ && path == %@",@"ERC20 Standard Token",@"ERC20TokenStandard"];
     NSArray* tepmlates = [self.templates filteredArrayUsingPredicate:predicate];
     return tepmlates.firstObject;
 }
 
 -(NSArray<TemplateModel*>*)standartPackOfTemplates {
     
-    TemplateModel* standartToken = [[TemplateModel alloc] initWithTemplateName:@"Standart" andType:TokenType withUiid:0 path:@"Standart" isFull:YES];
-    TemplateModel* v1Token = [[TemplateModel alloc] initWithTemplateName:@"Version1" andType:TokenType withUiid:1 path:@"Version1" isFull:YES];
-    TemplateModel* v2Token = [[TemplateModel alloc] initWithTemplateName:@"Version2" andType:TokenType withUiid:2 path:@"Version2" isFull:YES];
-    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType withUiid:3 path:@"Crowdsale" isFull:YES];
+    TemplateModel* erc20 = [[TemplateModel alloc] initWithTemplateName:@"ERC20 Standard Token" andType:TokenType withuuid:erc20TokenUuid path:@"ERC20TokenStandard" isFull:YES];
+    TemplateModel* human = [[TemplateModel alloc] initWithTemplateName:@"Human Standard Token" andType:TokenType withuuid:humanTokenUuid path:@"HumanStandardToken" isFull:YES];
     
-    return @[standartToken,v1Token,v2Token,crowdsale];
+    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType withuuid:crowdsaleUuid path:@"Crowdsale" isFull:YES];
+    
+    return @[erc20,human,crowdsale];
 }
 
 - (TemplateModel*)createNewContractTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
@@ -96,7 +102,7 @@ static NSString* standartTokenPath = @"StandardPath";
                                                          error:&err];
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
     if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath]) {
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:UndefinedContractType withUiid:self.templates.count  path:filePath isFull:NO];
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:UndefinedContractType withuuid:[NSUUID UUID].UUIDString  path:filePath isFull:NO];
         [self.templates addObject:customToken];
         [self save];
         return customToken;
@@ -113,7 +119,7 @@ static NSString* standartTokenPath = @"StandardPath";
     
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
     if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath]) {
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withUiid:self.templates.count  path:filePath isFull:NO];
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withuuid:[NSUUID UUID].UUIDString path:filePath isFull:NO];
         [self.templates addObject:customToken];
         [self save];
         return customToken;
@@ -138,10 +144,35 @@ static NSString* standartTokenPath = @"StandardPath";
         [[ContractFileManager sharedInstance] writeNewBitecode:bitecode withPathName:filePath] &&
         [[ContractFileManager sharedInstance] writeNewSource:source withPathName:filePath]) {
         
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withUiid:self.templates.count  path:filePath isFull:YES];
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withuuid:[NSUUID UUID].UUIDString path:filePath isFull:YES];
         [self.templates addObject:customToken];
         [self save];
         return customToken;
+    }
+    
+    return nil;
+}
+
+-(TemplateModel*)templateWithUUIDFromTemplateDict:(NSDictionary*) templateDict {
+    
+    NSArray<TemplateModel*>* standartTemplates = [self standartPackOfTemplates];
+    NSString* templateUUID = templateDict[kuuidKey];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@",templateDict[kuuidKey]];
+    NSArray* tepmlatesWithUUID = [standartTemplates filteredArrayUsingPredicate:predicate];
+    TemplateModel* template = tepmlatesWithUUID.count > 0 ? tepmlatesWithUUID.firstObject : nil;
+    
+    if (template) {
+        
+        return template;
+    } else if (templateUUID){
+        
+        template = [self createNewTemplateWithAbi:templateDict[kAbiKey]
+                                         bitecode:templateDict[kBitecode]
+                                           source:templateDict[kSourceKey]
+                                             type:[TemplateModel templateTypeFromForBackupString:templateDict[kTypeKey]]
+                                             uuid:templateDict[kuuidKey]
+                                          andName:templateDict[kNameKey]];
+        return template;
     }
     
     return nil;
@@ -151,10 +182,11 @@ static NSString* standartTokenPath = @"StandardPath";
                                    bitecode:(NSString*) bitecode
                                      source:(NSString*) source
                                        type:(TemplateType) type
+                                       uuid:(NSString*) uuid
                                     andName:(NSString*) templateName {
     NSArray *jsonAbi;
     NSError *err;
-    BOOL proccesWithoutErrors = YES;
+    BOOL proccesWithoutErrors = uuid ? YES : NO;
     BOOL abiSuccess = YES;
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
 
@@ -181,13 +213,13 @@ static NSString* standartTokenPath = @"StandardPath";
     
     if (proccesWithoutErrors) {
         
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:templateName andType:type withUiid:self.templates.count  path:filePath isFull:YES];
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:templateName andType:type withuuid:uuid  path:filePath isFull:YES];
         [self.templates addObject:customToken];
         [self save];
         return customToken;
     } else if(abiSuccess){
         
-        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:templateName andType:type withUiid:self.templates.count  path:filePath isFull:NO];
+        TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:templateName andType:type withuuid:uuid  path:filePath isFull:NO];
         [self.templates addObject:customToken];
         [self save];
         return customToken;
@@ -214,10 +246,11 @@ static NSString* standartTokenPath = @"StandardPath";
     NSMutableArray* backupArray = @[].mutableCopy;
     
     for (int i = 0; i < self.templates.count; i++) {
+        
         NSMutableDictionary* backupItem = @{}.mutableCopy;
         TemplateModel* template = self.templates[i];
         ContractFileManager* fileManager = [ContractFileManager sharedInstance];
-        backupItem[kUiidKey] = @(i);
+        backupItem[kuuidKey] = template.uuid;
         backupItem[kNameKey] = template.templateName ?: @"";
         backupItem[kTypeKey] = template.templateTypeStringForBackup;
         backupItem[kCreationDateKey] = template.creationFormattedDateString;
@@ -234,12 +267,11 @@ static NSString* standartTokenPath = @"StandardPath";
 -(NSArray<TemplateModel*>*)encodeDataForBacup:(NSArray<NSDictionary*>*) backup {
     
     NSMutableArray* newTemplates = @[].mutableCopy;
-    for (NSDictionary* template in backup) {
+    for (NSDictionary* templateDict in backup) {
         
-        TemplateModel* templateModel = [self createNewTemplateWithAbi:template[kAbiKey] bitecode:template[kBitecode] source:template[kSourceKey] type:[TemplateModel templateTypeFromForBackupString:template[kTypeKey]]  andName:template[kNameKey]];
-        templateModel.uiidFromRestore = [template[kUiidKey] integerValue];
-        if (templateModel) {
-            [newTemplates addObject:templateModel];
+        TemplateModel* template = [self templateWithUUIDFromTemplateDict:templateDict];
+        if (template) {
+            [newTemplates addObject:template];
         }
     }
     

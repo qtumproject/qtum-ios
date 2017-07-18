@@ -65,7 +65,10 @@
         txout.blockHeight = [item[@"confirmations"] integerValue];
         txout.runTimeAddress = item[@"address"];
         
-        [outputs addObject:txout];
+        //filter only valid outputs
+        if (([item[@"confirmations"] unsignedIntegerValue] > 500 && [item[@"is_stake"] unsignedIntegerValue] > 0) || [item[@"is_stake"] unsignedIntegerValue] == 0) {
+            [outputs addObject:txout];
+        }
     }
     
     return outputs;
