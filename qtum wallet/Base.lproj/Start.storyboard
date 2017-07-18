@@ -283,6 +283,7 @@
                     <connections>
                         <outlet property="bottomForButtonsConstraint" destination="ggG-II-NOw" id="Z80-ls-MqS"/>
                         <outlet property="brandKeyTextView" destination="RXe-A3-Ilq" id="IMD-UC-gXv"/>
+                        <outlet property="importButton" destination="rDv-SM-SkJ" id="S4a-I8-Obi"/>
                         <segue destination="x3j-yi-Vzm" kind="show" identifier="createPin" id="c9Q-KI-ZIv"/>
                     </connections>
                 </viewController>
@@ -1141,7 +1142,7 @@
                                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Veq-XE-LK4">
-                                                        <rect key="frame" x="138" y="11" width="100" height="23"/>
+                                                        <rect key="frame" x="137.5" y="11" width="100" height="23"/>
                                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1411,7 +1412,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-aK-iup">
-                                <rect key="frame" x="119.5" y="257" width="136.5" height="38.5"/>
+                                <rect key="frame" x="120" y="257" width="136.5" height="38.5"/>
                                 <string key="text">Login to QTUM
 using Touch ID</string>
                                 <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
@@ -2574,7 +2575,7 @@ using Touch ID</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4I-3I-l4S">
-                                <rect key="frame" x="119.5" y="257" width="136.5" height="38.5"/>
+                                <rect key="frame" x="120" y="257" width="136.5" height="38.5"/>
                                 <string key="text">Login to QTUM
 using Touch ID</string>
                                 <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
@@ -2639,6 +2640,6 @@ using Touch ID</string>
         <image name="share" width="20" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hKQ-pH-Gbi"/>
+        <segue reference="c9Q-KI-ZIv"/>
     </inferredMetricsTieBreakers>
 </document>

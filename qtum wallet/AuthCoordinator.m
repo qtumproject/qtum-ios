@@ -22,7 +22,7 @@
 #import "ExportWalletBrandKeyOutputDelegate.h"
 #import "Wallet.h"
 
-@interface AuthCoordinator () <FirstAuthOutputDelegate, WalletNameOutputDelegate, CreatePinOutputDelegate, RepeateOutputDelegate, ExportWalletBrandKeyOutputDelegate>
+@interface AuthCoordinator () <FirstAuthOutputDelegate, WalletNameOutputDelegate, CreatePinOutputDelegate, RepeateOutputDelegate, ExportWalletBrandKeyOutputDelegate, RestoreWalletViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject<FirstAuthOutput> *firstController;
@@ -206,16 +206,35 @@
 }
 
 
-#pragma mark - AuthCoordinatorDelegate
+#pragma mark - AuthCoordinatorDelegate and RestoreWalletViewControllerDelegate
 
--(void)didRestorePressedWithWords:(NSArray*) words{
+- (BOOL)checkWordsString:(NSString *)string {
     
+    NSString *myRegex = @"[A-Za-z ]*";
+    NSPredicate *myTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", myRegex];
+    if (![myTest evaluateWithObject:string]) {
+        return NO;
+    }
+    
+    NSArray *words = [self arrayOfWordsFromString:string];
+    return words.count == brandKeyWordsCount;
+}
+
+-(void)didRestorePressedWithWords:(NSString *)string {
+    
+    NSArray *words = [self arrayOfWordsFromString:string];
     if (words.count != brandKeyWordsCount) {
         [self.restoreWalletController restoreFailed];
     } else {
         self.walletBrainKey = words;
         [self.restoreWalletController restoreSucces];
     }
+}
+
+-(NSArray*)arrayOfWordsFromString:(NSString*)aString{
+    NSArray *array = [aString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    array = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];
+    return array;
 }
 
 -(void)restoreWalletCancelDidPressed{

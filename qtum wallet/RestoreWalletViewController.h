@@ -11,7 +11,8 @@
 
 @protocol RestoreWalletViewControllerDelegate <NSObject>
 
--(void)didRestorePressedWithWords:(NSArray*)words;
+-(BOOL)checkWordsString:(NSString *)string;
+-(void)didRestorePressedWithWords:(NSString *)string;
 -(void)didRestoreWallet;
 -(void)restoreWalletCancelDidPressed;
 
