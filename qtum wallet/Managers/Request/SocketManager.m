@@ -119,13 +119,13 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     [self.currentSocket on:@"balance_changed" callback:^(NSArray* data, SocketAckEmitter* ack) {
         
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
-        [[WalletManager sharedInstance] updateSpendablesBalansesWithObject:[self.delegate.adapter adaptiveDataForBalance:data[0]]];
+        [[ApplicationCoordinator sharedInstance].walletManager updateSpendablesBalansesWithObject:[self.delegate.adapter adaptiveDataForBalance:data[0]]];
     }];
     
     [self.currentSocket on:@"new_transaction" callback:^(NSArray* data, SocketAckEmitter* ack) {
         
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
-        [[WalletManager sharedInstance] updateSpendablesHistoriesWithObject:(NSDictionary*)data[0]];
+        [[ApplicationCoordinator sharedInstance].walletManager updateSpendablesHistoriesWithObject:(NSDictionary*)data[0]];
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:@"New Transaction" andIdentifire:@"new_transaction"];
     }];
     
@@ -160,7 +160,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     NSString* prevToken  = [[ApplicationCoordinator sharedInstance].notificationManager prevToken];
     dispatch_block_t block = ^{
         if (weakToken) {
-            [weakSelf.currentSocket emit:@"subscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[WalletManager sharedInstance] hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null],
+            [weakSelf.currentSocket emit:@"subscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null],
                                                                                                                                                                                                                          @"prevToken" : prevToken ?: [NSNull null],
                                                                                                                                                                                                                          @"language" : [LanguageManager currentLanguageCode]}]];
         }
@@ -175,7 +175,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     NSString* deviceToken  = [[ApplicationCoordinator sharedInstance].notificationManager token];
     dispatch_block_t block = ^{
         if (weakToken) {
-            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[WalletManager sharedInstance] hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null]}]];
+            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null]}]];
         }
     };
     [_requestQueue addOperationWithBlock:block];

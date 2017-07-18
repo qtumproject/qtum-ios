@@ -31,7 +31,7 @@
 -(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
     if (self.firstPin && [self.firstPin isEqualToString:pin]) {
         if (self.createPinCompletesion) {
-            [[WalletManager sharedInstance] storePin:pin];
+            [[ApplicationCoordinator sharedInstance].walletManager storePin:pin];
             self.createPinCompletesion();
         }
     } else if(self.firstPin) {

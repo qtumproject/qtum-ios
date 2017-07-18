@@ -15,6 +15,8 @@
 #import "ContractInterfaceManager.h"
 #import "NS+BTCBase58.h"
 #import "ContractArgumentsInterpretator.h"
+#import "WalletManagerRequestAdapter.h"
+#import "Wallet.h"
 
 static double FEE = 10000000;
 static NSString* op_exec = @"c1";
@@ -75,7 +77,7 @@ static NSString* op_exec = @"c1";
     BTCAmount amount = [allPreparedValues[@"totalAmount"] doubleValue];
     NSArray* preparedAmountAndAddreses = allPreparedValues[@"amountsAndAddresses"];
     
-    [[WalletManager sharedInstance].requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
+    [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
         
         [weakSelf regularTransactionWithUnspentOutputs:responseObject amount:amount amountAndAddresses:preparedAmountAndAddreses walletKeys:walletKeys andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction) {
             if (errorType == TransactionManagerErrorTypeNone) {
@@ -115,7 +117,7 @@ static NSString* op_exec = @"c1";
     }];
     
     if (addressWithAmountValue) {
-        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[WalletManager sharedInstance].currentWallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
             if (error) {
                 completion([error isNoInternetConnectionError] ? TransactionManagerErrorTypeNoInternetConnection : TransactionManagerErrorTypeServer, transaction,hashTransaction);
             }else{
@@ -139,7 +141,7 @@ static NSString* op_exec = @"c1";
     __weak typeof(self) weakSelf = self;
     NSArray* walletAddreses = [self getAddressesFromKeys:walletKeys];
     
-    [[WalletManager sharedInstance].requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
+    [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
         
         BTCTransaction *tx = [weakSelf createSmartContractUnspentOutputs:responseObject amount:0 bitcode:bitcode walletKeys:walletKeys];
         
@@ -179,7 +181,7 @@ static NSString* op_exec = @"c1";
     
     __weak typeof(self) weakSelf = self;
     
-    [[WalletManager sharedInstance].requestAdapter getunspentOutputs:fromAddresses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
+    [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:fromAddresses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
         
         BTCTransaction *tx = [weakSelf sendToTokenWithUnspentOutputs:responseObject amount:0 contractAddress:contractAddress toAddress:toAddress fromAddresses:fromAddresses bitcode:bitcode walletKeys:walletKeys];
         

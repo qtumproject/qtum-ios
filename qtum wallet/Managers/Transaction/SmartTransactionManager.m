@@ -12,6 +12,7 @@
 #import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
 #import "BTCTransactionOutput+Address.h"
+#import "WalletManagerRequestAdapter.h"
 
 static double FEE = 10000000;
 static NSString* op_exec = @"c1";
@@ -62,7 +63,7 @@ static NSString* op_exec = @"c1";
     BTCAmount amount = [allPreparedValues[@"totalAmount"] doubleValue];
     NSArray* preparedAmountAndAddreses = allPreparedValues[@"amountsAndAddresses"];
     
-    [[WalletManager sharedInstance].requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray *responseObject) {
+    [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray *responseObject) {
         
         BTCTransaction *tx = [weakSelf regularTransactionWithUnspentOutputs:responseObject amount:amount amountAndAddresses:preparedAmountAndAddreses walletKeys:walletKeys];
         
@@ -85,7 +86,7 @@ static NSString* op_exec = @"c1";
     __weak typeof(self) weakSelf = self;
     NSArray* walletAddreses = [self getAddressesFromKeys:walletKeys];
     
-    [[WalletManager sharedInstance].requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray *responseObject) {
+    [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray *responseObject) {
         
         BTCTransaction *tx = [weakSelf createSmartContractUnspentOutputs:responseObject amount:0 bitcode:bitcode walletKeys:walletKeys];
         

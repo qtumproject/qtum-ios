@@ -11,6 +11,7 @@
 #import <CommonCrypto/CommonHMAC.h>
 #import "ServerAdapter.h"
 #import "SocketManager.h"
+#import "Wallet.h"
 
 typedef NS_ENUM(NSInteger, RequestType){
     POST,
@@ -320,7 +321,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 
 - (void)startObservingAdresses:(NSArray*) addresses {
     
-    [self.socketManager subscripeToUpdateWalletAdresses:[[WalletManager sharedInstance] currentWallet].allKeysAdreeses];
+    [self.socketManager subscripeToUpdateWalletAdresses:[[ApplicationCoordinator sharedInstance].walletManager wallet].allKeysAdreeses];
 }
 
 - (void)stopObservingAdresses:(NSArray*) addresses {

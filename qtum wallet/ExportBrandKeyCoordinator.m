@@ -40,7 +40,7 @@
 
 -(void)enterPin:(NSString*) pin {
     
-    if ([[WalletManager sharedInstance] verifyPin:pin]) {
+    if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
         [self showExportOutputWithPin:pin];
     }else {
         [self.loginOutput applyFailedPasswordAction];
@@ -59,6 +59,7 @@
 -(void)showExportOutputWithPin:(NSString*) pin {
     
     self.exportBrainKeyOutput = [[ControllersFactory sharedInstance] createExportBrainKeyViewController];
+    self.exportBrainKeyOutput.brandKey = [[ApplicationCoordinator sharedInstance].walletManager brandKeyWithPin:pin];
     self.exportBrainKeyOutput.delegate = self;
     [self.navigationController pushViewController:[self.exportBrainKeyOutput toPresent] animated:YES];
 }

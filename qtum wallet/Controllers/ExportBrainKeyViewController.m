@@ -12,13 +12,12 @@
 @interface ExportBrainKeyViewController () <PopUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *brainKeyView;
-@property (weak, nonatomic) IBOutlet NSString *brainKey;
 
 @end
 
 @implementation ExportBrainKeyViewController
 
-@synthesize delegate;
+@synthesize delegate, brandKey;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,9 +42,8 @@
 #pragma mark - Configuration 
 
 -(void)configurationBrainKeyLabel {
-    
-    self.brainKeyView.text =
-    self.brainKey = [self stringForLabelWithArrayWords:[[WalletManager sharedInstance] currentWallet].seedWords];
+
+    self.brainKeyView.text = self.brandKey;
     [self.brainKeyView sizeToFit];
 }
 
@@ -53,15 +51,16 @@
 
 
 - (IBAction)actionCopy:(id)sender {
+    
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = self.brainKey;
+    pasteboard.string = self.brandKey;
     
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForBrainCodeCopied] presenter:nil completion:nil];
 }
 
-- (IBAction)shareButtonWasPressed:(id)sender
-{
-    NSString *brainKey = self.brainKey;
+- (IBAction)shareButtonWasPressed:(id)sender {
+    
+    NSString *brainKey = self.brandKey;
     
     NSArray *sharedItems = @[brainKey];
     UIActivityViewController *sharingVC = [[UIActivityViewController alloc] initWithActivityItems:sharedItems applicationActivities:nil];
@@ -71,6 +70,7 @@
 #pragma mark - PopUpViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
+    
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 

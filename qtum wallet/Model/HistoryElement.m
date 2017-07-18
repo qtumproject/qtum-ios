@@ -122,7 +122,7 @@
 }
 
 - (NSDictionary *)hashTableOfKeys{
-    return [[WalletManager sharedInstance] hashTableOfKeys];
+    return [[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys];
 }
 
 #pragma mark - Setup

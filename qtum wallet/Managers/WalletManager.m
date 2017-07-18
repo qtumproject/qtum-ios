@@ -12,15 +12,22 @@
 #import "WalletManagerRequestAdapter.h"
 #import "HistoryDataStorage.h"
 #import "SocketManager.h"
+#import "NSString+SHA3.h"
+#import "Wallet.h"
+#import "Requestable.h"
+#import "Contract.h"
+#import "Managerable.h"
+#import "WalletManagerRequestAdapter.h"
 
-NSString const *kWalletKey = @"qtum_wallet_wallets_keys";
-NSString const *kUserPin = @"PIN";
+NSString const *kWallets = @"qtum_wallet_wallets_keys";
+NSString const *kSingleWallet = @"qtum_wallet_wallet_keys";
 NSString *const kWalletDidChange = @"kWalletDidChange";
+NSString const *kUserPin = @"PIN";
+NSString const *kUserPinHash = @"HashPIN";
 
 @interface WalletManager ()
 
-@property (nonatomic, strong) NSMutableArray *wallets;
-@property (nonatomic, strong) NSString* PIN;
+@property (nonatomic, strong) NSString* hashOfPin;
 @property (nonatomic, strong) dispatch_group_t registerGroup;
 @property (strong ,nonatomic) WalletManagerRequestAdapter* requestAdapter;
 @property (assign, nonatomic) BOOL observingForSpendableFailed;
@@ -30,21 +37,17 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 @implementation WalletManager
 
-+ (instancetype)sharedInstance
-{
-    static WalletManager *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
+@synthesize wallet;
 
-- (instancetype)initUniqueInstance {
+- (instancetype)init {
+    
     self = [super init];
-    if (self != nil) {
+    if (self) {
+        
         [self load];
+        
         _requestAdapter = [WalletManagerRequestAdapter new];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(didContinieObservingForSpendable)
                                                      name:kSocketDidConnect object:nil];
@@ -52,72 +55,52 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
                                                  selector:@selector(didForceStopObservingForSpendable)
                                                      name:kSocketDidDisconnect object:nil];
     }
+    
     return self;
 }
 
-#pragma mark - Lazy Getters
-
--(NSMutableArray*)wallets {
-    
-    if (!_wallets) {
-        _wallets = @[].mutableCopy;
-    }
-    return _wallets;
-}
-
-
-
-#pragma mark - Public Methods
+#pragma mark - WalletManagering
 
 - (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure {
         
     Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin];
     newWallet.manager = self;
     [newWallet loadToMemory];
+    self.wallet = newWallet;
+    [self save];
     
-    __weak typeof(self) weakSelf = self;
-    [self registerWalletInNode:newWallet withSuccessHandler:^{
-        [weakSelf.wallets addObject:newWallet];
-        [weakSelf save];
+    if (newWallet) {
         success(newWallet);
-    } andFailureHandler:^{
+    } else {
         failure();
-    }];
+    }
 }
 
-- (void)importWalletWithName:(NSString *)name
-                         pin:(NSString *)pin
-                   seedWords:(NSArray *)seedWords
-          withSuccessHandler:(void(^)(Wallet *newWallet))success
-           andFailureHandler:(void(^)())failure {
+- (void)createNewWalletWithName:(NSString *)name
+                            pin:(NSString *)pin
+                      seedWords:(NSArray *)seedWords
+             withSuccessHandler:(void(^)(Wallet *newWallet))success
+              andFailureHandler:(void(^)())failure {
     
     Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin seedWords:seedWords];
     
-    if (!newWallet){
-        failure();
-        return;
-    }
     newWallet.manager = self;
     [newWallet loadToMemory];
     
-    __weak typeof(self) weakSelf = self;
-    [self registerWalletInNode:newWallet withSuccessHandler:^{
-        [weakSelf.wallets addObject:newWallet];
-        [weakSelf save];
-        success(newWallet);
-    } andFailureHandler:^{
-        failure();
-    }];
-}
-
-- (Wallet *)currentWallet {
+    self.wallet = newWallet;
+    [self save];
     
-    return [self.wallets lastObject];
+    if (newWallet) {
+        success(newWallet);
+    } else {
+        failure();
+    }
 }
 
-- (NSDictionary *)hashTableOfKeys{
+- (NSDictionary *)hashTableOfKeys {
+    
     NSMutableDictionary *hashTable = [NSMutableDictionary new];
-    for (BTCKey *key in [[self currentWallet] allKeys]) {
+    for (BTCKey *key in [[self wallet] allKeys]) {
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
         if (keyString) {
             hashTable[keyString] = [NSNull null];
@@ -126,31 +109,10 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     return [hashTable copy];
 }
 
-- (void)removeWallet:(Wallet *)wallet {
-    
-    [self.wallets removeObject:wallet];
-    [self save];
-}
-
-- (NSArray *)allWallets {
-    
-    return [NSArray arrayWithArray:self.wallets];
-}
-
-- (BOOL)haveWallets {
-    
-    return self.wallets.count != 0;
-}
-
-- (void)removeAllWallets {
-    
-    [self.wallets removeAllObjects];
-}
-
--(void)clear{
+-(void)clear {
     
     [self removePin];
-    [self removeAllWallets];
+    self.wallet = nil;
     [self save];
 }
 
@@ -160,7 +122,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
     
     if (self.observingForSpendableFailed && !self.observingForSpendableStopped) {
         [self startObservingForAllSpendable];
-        [self updateHistoryOfSpendableObject:self.currentWallet withHandler:nil andPage:0];
+        [self updateHistoryOfSpendableObject:self.wallet withHandler:nil andPage:0];
     }
     self.observingForSpendableFailed = NO;
 }
@@ -171,51 +133,10 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 }
 
 
-
-#pragma mark - Private methods
-
-- (void)registerWalletInNode:(Wallet *)wallet withSuccessHandler:(void(^)())success andFailureHandler:(void(^)())failure
-{
-    self.registerGroup = dispatch_group_create();
-    
-    __block BOOL isAllCompleted = YES;
-
-
-    __weak typeof(self) weakSelf = self;
-    for (NSInteger i = 0; i < wallet.countOfUsedKeys; i++) {
-        BTCKey *key = [wallet keyAtIndex:i];
-        
-        dispatch_group_enter(self.registerGroup);
-        
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
-        DLog(@"Enter -- > %@",keyString);
-
-        [[ApplicationCoordinator sharedInstance].requestManager registerKey:keyString identifier:wallet.worldsString new:YES withSuccessHandler:^(id responseObject) {
-            dispatch_group_leave(weakSelf.registerGroup);
-            DLog(@"Success");
-        } andFailureHandler:^(NSError *error, NSString *message) {
-            isAllCompleted = NO;
-            dispatch_group_leave(weakSelf.registerGroup);
-            DLog(@"Fail");
-        }];
-    }
-    
-    dispatch_group_notify(self.registerGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            DLog(@"All comleted");
-            if (isAllCompleted) {
-                success();
-            }else {
-                failure();
-            }
-        });
-    });
-}
-
-
 #pragma mark - WalletDelegate
 
-- (void)walletDidChange:(id)wallet{
+- (void)walletDidChange:(id)wallet {
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kWalletDidChange object:nil userInfo:nil];
     [self save];
 }
@@ -224,37 +145,87 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 - (BOOL)save {
     
-    BOOL isSavedWallets = [[FXKeychain defaultKeychain] setObject:self.wallets forKey:kWalletKey];
-    return isSavedWallets;
+    BOOL isSavedWallet = [[FXKeychain defaultKeychain] setObject:self.wallet forKey:kSingleWallet];
+    return isSavedWallet;
 }
 
 - (void)load {
-    
-    NSMutableArray *savedWallets = [[[FXKeychain defaultKeychain] objectForKey:kWalletKey] mutableCopy];
 
-    for (Wallet *wallet in savedWallets) {
-        wallet.manager = self;
-        [wallet loadToMemory];
+    [self migrateData];
+    
+    Wallet *storedWallet = [[FXKeychain defaultKeychain] objectForKey:kSingleWallet];
+    
+    if (storedWallet && [storedWallet isKindOfClass:[Wallet class]]) {
+        storedWallet.manager = self;
+        [storedWallet loadToMemory];
     }
 
-    self.wallets = savedWallets;
-    self.PIN = [[FXKeychain defaultKeychain] objectForKey:kUserPin];
+    wallet = storedWallet;
+    _hashOfPin = [[FXKeychain defaultKeychain] objectForKey:kUserPinHash];
+}
+
+-(void)migrateData {
+    
+    NSArray* storedWallets = [[FXKeychain defaultKeychain] objectForKey:kWallets];
+    NSString* userPin = [[FXKeychain defaultKeychain] objectForKey:kUserPin];
+    
+    if (storedWallets.count > 0 && [storedWallets.firstObject isKindOfClass:[Wallet class]] && userPin) {
+        
+        Wallet* storedWallet = storedWallets.firstObject;
+        Wallet* rebuildWallet = nil;
+
+        if (storedWallet.seedWords) {
+            rebuildWallet = [[Wallet alloc] initWithName:storedWallet.name pin:userPin seedWords:storedWallet.seedWords];
+        }
+        [[FXKeychain defaultKeychain] setObject:rebuildWallet forKey:kSingleWallet];
+        [[FXKeychain defaultKeychain] removeObjectForKey:kWallets];
+    }
+    
+    if (userPin) {
+        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
+        [[FXKeychain defaultKeychain] setObject:[userPin sha3:SHA3256] forKey:kUserPinHash];
+    }
 }
 
 -(void)storePin:(NSString*) pin {
     
-    if ([[FXKeychain defaultKeychain] objectForKey:kUserPin]) {
-        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
+    if ([[FXKeychain defaultKeychain] objectForKey:kUserPinHash]) {
+        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPinHash];
     }
-    [[FXKeychain defaultKeychain] setObject:pin forKey:kUserPin];
-    self.PIN = pin;
+    
+    NSString* hashOfPin = [pin sha3:SHA3256];
+    
+    [[FXKeychain defaultKeychain] setObject:hashOfPin forKey:kUserPinHash];
+    self.hashOfPin = hashOfPin;
 }
 
 - (void)removePin {
     
-    [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
-    self.PIN = nil;
+    [[FXKeychain defaultKeychain] removeObjectForKey:kUserPinHash];
+    self.hashOfPin = nil;
 }
+
+- (BOOL)verifyPin:(NSString*) pin {
+    
+    return [[pin sha3:SHA3256] isEqualToString:self.hashOfPin];
+}
+
+- (BOOL)isSignedIn {
+    
+    return self.wallet && self.hashOfPin;
+}
+
+- (BOOL)startWithPin:(NSString*) pin {
+    
+    [self.wallet configAddressesWithPin:pin];
+    return YES; //TODO
+}
+
+- (NSString*)brandKeyWithPin:(NSString*) pin {
+    
+    return [self.wallet brandKeyWithPin:pin];
+}
+
 
 #pragma mark - Managerable
 
@@ -267,7 +238,7 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 -(void)startObservingForAllSpendable {
     
     self.observingForSpendableStopped = NO;
-    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[[self currentWallet] allKeysAdreeses]];
+    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[self.wallet allKeysAdreeses]];
 }
 
 -(void)stopObservingForAllSpendable {
@@ -328,18 +299,19 @@ NSString *const kWalletDidChange = @"kWalletDidChange";
 
 -(void)updateSpendablesBalansesWithObject:(NSDictionary*) balances {
     
-    [self currentWallet].balance = [balances[@"balance"] floatValue];
-    [self currentWallet].unconfirmedBalance = [balances[@"unconfirmedBalance"] floatValue];
-    [self spendableDidChange:[self currentWallet]];
+    self.wallet.balance = [balances[@"balance"] floatValue];
+    self.wallet.unconfirmedBalance = [balances[@"unconfirmedBalance"] floatValue];
+    [self spendableDidChange:self.wallet];
 }
 
 -(void)updateSpendablesHistoriesWithObject:(NSDictionary*) dict {
     
     HistoryElement* item = [self.requestAdapter createHistoryElement:dict];
-    [[self currentWallet].historyStorage setHistoryItem:item];
+    [self.wallet.historyStorage setHistoryItem:item];
 }
 
--(void)spendableDidChange:(id <Spendable>) object{
+-(void)spendableDidChange:(id <Spendable>) object {
+    
     [self walletDidChange:object];
 }
 
