@@ -24,7 +24,7 @@
 
 -(void)configurateButtons {
     
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
+    if ([WalletManager sharedInstance].isSignedIn) {
         
         self.invitationTextLabel.text = NSLocalizedString(@"Login to QTUM \nDon't have a wallet yet?", @"");
     } else {

@@ -33,8 +33,8 @@
 
 @implementation NSString (SHA3)
 
--(NSString*) sha3:(NSUInteger)bitsLength
-{
+-(NSString*) sha3:(NSUInteger)bitsLength {
+    
     int bytes = (int)(bitsLength/8);
     const char * string = [self cStringUsingEncoding:NSUTF8StringEncoding];
     int size=(int)strlen(string);

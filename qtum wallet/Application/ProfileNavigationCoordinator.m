@@ -46,8 +46,9 @@
 #pragma mark - PinCoordinator
 
 - (void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success))completision {
+    
     if (!self.pinOld) {
-        if ([[WalletManager sharedInstance].PIN isEqualToString:pin]) {
+        if ([[WalletManager sharedInstance] verifyPin:pin]) {
             //old pin confirmed
             self.pinOld = pin;
             [self.pinController setCustomTitle:NSLocalizedString(@"Enter New PIN", "")];

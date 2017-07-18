@@ -24,8 +24,6 @@
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;
 @property (weak, nonatomic)id <Managerable> manager;
-@property (nonatomic,copy) NSString *pin;
-@property (nonatomic, readonly, copy) NSArray *seedWords;
 @property (nonatomic, readonly) NSInteger countOfUsedKeys;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
 

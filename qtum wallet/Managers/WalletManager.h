@@ -18,9 +18,7 @@ extern NSString *const kWalletDidChange;
 @interface WalletManager : NSObject <Managerable>
 
 @property (nonatomic, readonly) NSMutableArray *wallets;
-@property (nonatomic, strong, readonly) NSString* PIN;
 @property (strong ,nonatomic,readonly) WalletManagerRequestAdapter* requestAdapter;
-
 
 - (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure;
 - (void)importWalletWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure;
@@ -28,6 +26,8 @@ extern NSString *const kWalletDidChange;
 - (void)removeAllWallets;
 - (void)storePin:(NSString*) pin;
 - (void)removePin;
+- (BOOL)verifyPin:(NSString*) pin;
+- (BOOL)isSignedIn;
 - (BOOL)haveWallets;
 - (Wallet *)currentWallet;
 - (NSArray *)allWallets;

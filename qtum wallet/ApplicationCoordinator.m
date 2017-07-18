@@ -106,7 +106,7 @@
 
 -(void)start{
 
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
+    if ([WalletManager sharedInstance].isSignedIn) {
         [self startLoginFlow];
     } else {
         [self startAuthFlow];
@@ -218,7 +218,7 @@
         [[PopUpsManager sharedInstance] hideCurrentPopUp:NO completion:nil];
     }
     
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN && !self.authFlowRunning && !self.loginFlowRunning && !self.securityFlowRunning) {
+    if ([WalletManager sharedInstance].isSignedIn && !self.authFlowRunning && !self.loginFlowRunning && !self.securityFlowRunning) {
         ConfirmPinCoordinator* coordinator = [[ConfirmPinCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
         coordinator.delegate = self;
         [coordinator start];

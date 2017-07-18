@@ -126,9 +126,9 @@
     [self hideContentController:(UIViewController*)self.loginOutput];
 }
 
--(void)enterPin:(NSString*) password {
+-(void)enterPin:(NSString*) pin {
     
-    if ([password isEqualToString:[WalletManager sharedInstance].PIN]) {
+    if ([[WalletManager sharedInstance] verifyPin:pin]) {
         [self loginUser];
     }else {
         [self.loginOutput applyFailedPasswordAction];

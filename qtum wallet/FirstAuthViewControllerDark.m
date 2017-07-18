@@ -23,7 +23,7 @@
 
 -(void)configurateButtons {
     
-    if ([[WalletManager sharedInstance] haveWallets] && [WalletManager sharedInstance].PIN) {
+    if ([WalletManager sharedInstance].isSignedIn) {
         self.createButton.backgroundColor = [UIColor clearColor];
         [self.createButton setTitleColor:customBlueColor() forState:UIControlStateNormal];
         self.loginButton.hidden = NO;
