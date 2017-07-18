@@ -36,8 +36,10 @@
 #import "LibraryOutput.h"
 #import "LibraryTableSourceOutput.h"
 
+#import "FavouriteTemplatesCollectionSourceOutput.h"
 
-@interface ContractCoordinator () <LibraryOutputDelegate, LibraryTableSourceOutputDelegate>
+
+@interface ContractCoordinator () <LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
@@ -47,8 +49,12 @@
 @property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 @property (weak, nonatomic) CreateTokenFinishViewController *createFinishViewController;
 @property (weak, nonatomic) ChooseSmartContractViewController *chooseSmartContractViewController;
-@property (weak, nonatomic) WatchTokensViewController *wathTokensViewController;
+
 @property (weak, nonatomic) WatchContractViewController *wathContractsViewController;
+@property (nonatomic) NSObject<FavouriteTemplatesCollectionSourceOutput> *favouriteContractsCollectionSource;
+
+@property (weak, nonatomic) WatchTokensViewController *wathTokensViewController;
+@property (nonatomic) NSObject<FavouriteTemplatesCollectionSourceOutput> *favouriteTokensCollectionSource;
 
 @property (weak, nonatomic) NSObject<LibraryOutput> *libraryViewController;
 @property (nonatomic) NSObject<LibraryTableSourceOutput> *libraryTableSource;
@@ -125,19 +131,35 @@
 -(void)showWatchContract {
     
     self.activeTemplateForLibrary = nil;
-    WatchContractViewController* controller = (WatchContractViewController*)[[ControllersFactory sharedInstance] createWatchContractViewController];
-    controller.delegate = self;
-    self.wathContractsViewController = controller;
-    [self.navigationController pushViewController:controller animated:YES];
+    
+    self.wathContractsViewController = (WatchContractViewController*)[[ControllersFactory sharedInstance] createWatchContractViewController];
+    self.favouriteContractsCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
+    
+    self.favouriteContractsCollectionSource.templateModels = [[TemplateManager sharedInstance] standartPackOfTemplates];
+    self.favouriteContractsCollectionSource.delegate = self;
+    self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    
+    self.wathContractsViewController.collectionSource = self.favouriteContractsCollectionSource;
+    self.wathContractsViewController.delegate = self;
+    
+    [self.navigationController pushViewController:self.wathContractsViewController animated:YES];
 }
 
 -(void)showWatchTokens {
     
     self.activeTemplateForLibrary = nil;
-    WatchTokensViewController* controller = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
-    controller.delegate = self;
-    self.wathTokensViewController = controller;
-    [self.navigationController pushViewController:controller animated:YES];
+    
+    self.wathTokensViewController = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
+    self.favouriteTokensCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
+    
+    self.favouriteTokensCollectionSource.templateModels = [[TemplateManager sharedInstance] standartPackOfTokenTemplates];
+    self.favouriteTokensCollectionSource.delegate = self;
+    self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    
+    self.wathTokensViewController.collectionSource = self.favouriteTokensCollectionSource;
+    self.wathTokensViewController.delegate = self;
+    
+    [self.navigationController pushViewController:self.wathTokensViewController animated:YES];
 }
 
 -(void)showRestoreContract {
@@ -353,45 +375,71 @@
 }
 
 -(void)didPressedQuit {
-    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)didPressedBack {
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didSelectChooseFromLibrary:(id)sender {
-    
     [self showChooseFromLibrary:[sender isKindOfClass:[WatchTokensViewController class]]];
 }
 
-#pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate
+- (void)didChangeAbiText {
+    
+    self.activeTemplateForLibrary = nil;
+    self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+}
+
+#pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate
 
 - (void)didBackPressed {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)didSelectTemplateIndexPath:(NSIndexPath *)indexPath withItem:(TemplateModel *)template {
+- (void)didSelectTemplate:(TemplateModel *)template sender:(id)sender {
     
     self.activeTemplateForLibrary = template;
-    [self.navigationController popViewControllerAnimated:YES];
     
-    if (self.isLibraryViewControllerOnlyForTokens) {
+    if ([sender isEqual:self.libraryTableSource]) {
+        if (self.isLibraryViewControllerOnlyForTokens) {
+            [self.wathTokensViewController changeStateForSelectedTemplate:template];
+        } else {
+            [self.wathContractsViewController changeStateForSelectedTemplate:template];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+        self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    }
+    if ([sender isEqual:self.favouriteTokensCollectionSource]) {
         [self.wathTokensViewController changeStateForSelectedTemplate:template];
-    } else {
+    }
+    if ([sender isEqual:self.favouriteContractsCollectionSource]) {
         [self.wathContractsViewController changeStateForSelectedTemplate:template];
     }
 }
 
-- (void)didResetToDefaults {
+- (void)didResetToDefaults:(id)sender {
     
     self.activeTemplateForLibrary = nil;
 
-    if (self.isLibraryViewControllerOnlyForTokens) {
+    if ([sender isEqual:self.libraryTableSource]) {
+        if (self.isLibraryViewControllerOnlyForTokens) {
+            [self.wathTokensViewController changeStateForSelectedTemplate:nil];
+        } else {
+            [self.wathContractsViewController changeStateForSelectedTemplate:nil];
+        }
+        
+        self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+        self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    }
+    if ([sender isEqual:self.favouriteTokensCollectionSource]) {
         [self.wathTokensViewController changeStateForSelectedTemplate:nil];
-    } else {
+    }
+    if ([sender isEqual:self.favouriteContractsCollectionSource]) {
         [self.wathContractsViewController changeStateForSelectedTemplate:nil];
     }
 }

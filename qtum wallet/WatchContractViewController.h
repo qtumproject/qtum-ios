@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ContractCoordinator.h"
 
+@protocol FavouriteTemplatesCollectionSourceOutput;
+
 @interface WatchContractViewController : BaseViewController <ScrollableContentViewController>
 
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
+@property (weak, nonatomic) id<FavouriteTemplatesCollectionSourceOutput> collectionSource;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (assign,nonatomic) UIEdgeInsets originInsets;
 
