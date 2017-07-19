@@ -12,6 +12,7 @@
 #import "LoginViewOutputDelegate.h"
 #import "LoginViewOutput.h"
 #import "SecurityPopupViewController.h"
+#import "FXKeychain.h"
 
 @interface LoginCoordinator () <LoginViewOutputDelegate, SecurityPopupViewControllerDelegate>
 
@@ -56,29 +57,18 @@
 
 -(void)showFingerprint {
     
-    LAContext *myContext = [[LAContext alloc] init];
-    NSError *authError = nil;
-    NSString *reason = NSLocalizedString(@"Login", nil);
-    
     __weak __typeof(self) weakSelf = self;
     
-    CGFloat touchIdDelayAnimation = 0.25;
-
-    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
-        [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                  localizedReason:reason
-                            reply:^(BOOL success, NSError *error) {
-                                
-                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(touchIdDelayAnimation * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                    
-                                    if (success) {
-                                        [weakSelf loginUser];
-                                    } else {
-                                        [weakSelf.loginOutput startEditing];
-                                    }
-                                });
-                            }];
-    }
+    [[FXKeychain defaultKeychain] touchIDString:^(NSString * _Nullable string, NSError * _Nullable error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (string) {
+                [weakSelf enterPin:string];
+            } else {
+                [weakSelf.loginOutput startEditing];
+            }
+        });
+    }];
 }
 
 #pragma mark - Actions
@@ -128,7 +118,9 @@
     
     if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin] && [[ApplicationCoordinator sharedInstance].walletManager startWithPin:pin]) {
         
-        [self loginUser];
+        [[FXKeychain defaultKeychain] addTouchIdString:pin];
+
+        [self loginUser];        
     }else {
         [self.loginOutput applyFailedPasswordAction];
     }

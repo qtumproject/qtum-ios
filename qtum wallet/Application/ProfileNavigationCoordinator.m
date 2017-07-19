@@ -65,7 +65,7 @@
     } else {
         if (self.pinNew == pin) {
             //change pin for new one
-            [[ApplicationCoordinator sharedInstance].walletManager storePin:self.pinNew];
+            [[ApplicationCoordinator sharedInstance].walletManager changePinFrom:self.pinOld toPin:self.pinNew];
             [self popViewControllerAnimated:YES];
             self.pinOld = nil;
             self.pinNew = nil;
