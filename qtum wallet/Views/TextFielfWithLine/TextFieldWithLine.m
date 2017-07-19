@@ -53,7 +53,7 @@ CGFloat const kCenterYChanges = 20.0f;
     
     _currentHeight = 1;
     _pastEnabled = YES;
-    [self setTintColor:[self getPlaceholderColor]];
+//    [self setTintColor:[self getPlaceholderColor]];
     [self createPlaceholderLabel];
 }
 

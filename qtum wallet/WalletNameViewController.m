@@ -10,7 +10,6 @@
 
 @interface WalletNameViewController ()
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonsBottomConstraint;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
 @end
@@ -44,10 +43,10 @@
 #pragma mark - Notification
 
 -(void)keyboardWillShow:(NSNotification *)sender {
+    
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.buttonsBottomConstraint.constant = end.size.height;
     [self.view layoutIfNeeded];
-    
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
