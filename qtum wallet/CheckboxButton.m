@@ -37,6 +37,9 @@
     self.checkView.layer.borderWidth = 2.0f;
     [self changeViewByCheckState];
     
+    self.checkImageView.image = [self.checkImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.checkImageView.tintColor = customBlackColor();
+    
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTap)];
     [self addGestureRecognizer:recognizer];
 }
