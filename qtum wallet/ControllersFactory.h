@@ -59,6 +59,7 @@
 @protocol RecieveOutput;
 @protocol LoginViewOutput;
 @protocol LibraryOutput;
+@protocol RestoreWalletOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -79,7 +80,7 @@
 -(NSObject<LoginViewOutput>*)createLoginController;
 -(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController;
 -(NSObject<FirstAuthOutput>*)createFirstAuthController;
--(RestoreWalletViewController*)createRestoreWalletController;
+-(NSObject<RestoreWalletOutput>*)createRestoreWalletController;
 -(CreatePinViewController*)createCreatePinController;
 -(RepeateViewController*)createRepeatePinController;
 -(AuthNavigationController*)createAuthNavigationController;

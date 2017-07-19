@@ -156,8 +156,9 @@
     return controller;
 }
 
--(RestoreWalletViewController*)createRestoreWalletController{
-    RestoreWalletViewController* controller = (RestoreWalletViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RestoreWalletViewController"];
+-(NSObject<RestoreWalletOutput>*)createRestoreWalletController {
+    
+    NSObject<RestoreWalletOutput>* controller = (NSObject<RestoreWalletOutput>*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RestoreWalletViewController"];
     return controller;
 }
 

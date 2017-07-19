@@ -37,7 +37,9 @@
         [identifire isEqualToString:@"ExportBrainKeyViewController"] ||
         [identifire isEqualToString:@"HistoryItemViewController"] ||
         [identifire isEqualToString:@"RecieveViewController"] ||
-        [identifire isEqualToString:@"ConfirmPinForExportViewController"]) {
+        [identifire isEqualToString:@"ConfirmPinForExportViewController"] ||
+        [identifire isEqualToString:@"RestoreWalletViewController"] ||
+        [identifire isEqualToString:@"ExportWalletBrandKeyViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

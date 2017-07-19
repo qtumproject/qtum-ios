@@ -8,21 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AuthCoordinator.h"
+#import "RestoreWalletOutput.h"
+#import "Presentable.h"
 
-@protocol RestoreWalletViewControllerDelegate <NSObject>
+@interface RestoreWalletViewController : BaseViewController <RestoreWalletOutput, Presentable>
 
--(BOOL)checkWordsString:(NSString *)string;
--(void)didRestorePressedWithWords:(NSString *)string;
--(void)didRestoreWallet;
--(void)restoreWalletCancelDidPressed;
-
-@end
-
-@interface RestoreWalletViewController : BaseViewController
-
-@property (weak,nonatomic) id <RestoreWalletViewControllerDelegate> delegate;
-
--(void)restoreSucces;
--(void)restoreFailed;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomForButtonsConstraint;
 
 @end

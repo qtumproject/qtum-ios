@@ -22,12 +22,12 @@
 #import "ExportWalletBrandKeyOutputDelegate.h"
 #import "Wallet.h"
 
-@interface AuthCoordinator () <FirstAuthOutputDelegate, WalletNameOutputDelegate, CreatePinOutputDelegate, RepeateOutputDelegate, ExportWalletBrandKeyOutputDelegate, RestoreWalletViewControllerDelegate>
+@interface AuthCoordinator () <FirstAuthOutputDelegate, WalletNameOutputDelegate, CreatePinOutputDelegate, RepeateOutputDelegate, ExportWalletBrandKeyOutputDelegate, RestoreWalletOutputDelegate, EnableFingerprintOutputDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject<FirstAuthOutput> *firstController;
 @property (nonatomic, weak) WalletNameViewController *createWalletController;
-@property (nonatomic, weak) RestoreWalletViewController *restoreWalletController;
+@property (nonatomic, weak) NSObject<RestoreWalletOutput> *restoreWalletOutput;
 @property (nonatomic, weak) CreatePinViewController *createPinController;
 @property (nonatomic, weak) RepeateViewController *repeatePinController;
 @property (nonatomic, weak) NSObject<ExportWalletBrandKeyOutput> *exportWalletOutput;
@@ -68,15 +68,15 @@
     self.createWalletController = controller;
 }
 
--(void)gotoRestoreWallet{
-    RestoreWalletViewController* controller = (RestoreWalletViewController*)[[ControllersFactory sharedInstance] createRestoreWalletController];
-    controller.delegate = self;
-    [self.navigationController pushViewController:controller animated:YES];
-    self.restoreWalletController = controller;
+-(void)gotoRestoreWallet {
+    
+    NSObject<RestoreWalletOutput>* output = [[ControllersFactory sharedInstance] createRestoreWalletController];
+    output.delegate = self;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
+    self.restoreWalletOutput = output;
 }
 
--(void)gotoCreatePin{
-    //[self resetToRootAnimated:NO];
+-(void)gotoCreatePin {
     
     CreatePinViewController* controller = (CreatePinViewController*)[[ControllersFactory sharedInstance] createCreatePinController];
     controller.delegate = self;
@@ -84,7 +84,8 @@
     self.createPinController = controller;
 }
 
--(void)gotoRepeatePin{
+-(void)gotoRepeatePin {
+    
     RepeateViewController* controller = (RepeateViewController*)[[ControllersFactory sharedInstance] createRepeatePinController];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
@@ -101,7 +102,7 @@
     
     NSObject<ExportWalletBrandKeyOutput>* output = (ExportWalletBrandKeyViewController*)[[ControllersFactory sharedInstance] createExportWalletBrandKeyViewController];
     output.delegate = self;
-    output.brandKey = [self.walletBrainKey componentsJoinedByString:@" "];
+    output.brandKey = self.walletBrainKey ? [self.walletBrainKey componentsJoinedByString:@" "] : [[ApplicationCoordinator sharedInstance].walletManager brandKeyWithPin:self.walletPin];
     [self.navigationController pushViewController:[output toPresent] animated:YES];
     self.exportWalletOutput = output;
 }
@@ -145,6 +146,7 @@
 #pragma mark - CreatePinOutputDelegate
 
 -(void)didCancelPressedOnCreateWallet {
+    
     [self resetToRootAnimated:YES];
     self.walletExported = NO;
 }
@@ -205,8 +207,24 @@
     }
 }
 
+#pragma mark - RestoreWalletOutputDelegate
 
-#pragma mark - AuthCoordinatorDelegate and RestoreWalletViewControllerDelegate
+-(void)didRestorePressedWithWords:(NSString *)string {
+    
+    NSArray *words = [self arrayOfWordsFromString:string];
+    if (words.count != brandKeyWordsCount) {
+        [self.restoreWalletOutput restoreFailed];
+    } else {
+        self.walletBrainKey = words;
+        [self.restoreWalletOutput restoreSucces];
+    }
+}
+
+-(void)didRestoreWallet {
+    
+    self.walletExported = YES;
+    [self gotoCreateWallet];
+}
 
 - (BOOL)checkWordsString:(NSString *)string {
     
@@ -220,25 +238,32 @@
     return words.count == brandKeyWordsCount;
 }
 
--(void)didRestorePressedWithWords:(NSString *)string {
+-(void)restoreWalletCancelDidPressed {
     
-    NSArray *words = [self arrayOfWordsFromString:string];
-    if (words.count != brandKeyWordsCount) {
-        [self.restoreWalletController restoreFailed];
-    } else {
-        self.walletBrainKey = words;
-        [self.restoreWalletController restoreSucces];
-    }
+    [self resetToRootAnimated:YES];
 }
 
--(NSArray*)arrayOfWordsFromString:(NSString*)aString{
+#pragma mark - EnableFingerprintOutputDelegate
+
+-(void)didEnableFingerprint:(BOOL) enabled {
+    
+    [NSUserDefaults saveIsFingerpringEnabled:enabled];
+    [self gotoExportWallet];
+}
+
+-(void)didCancelEnableFingerprint {
+    
+    [NSUserDefaults saveIsFingerpringEnabled:NO];
+    [self gotoExportWallet];
+}
+
+#pragma mark - AuthCoordinatorDelegate
+
+-(NSArray*)arrayOfWordsFromString:(NSString*)aString {
+    
     NSArray *array = [aString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     array = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];
     return array;
-}
-
--(void)restoreWalletCancelDidPressed{
-    [self resetToRootAnimated:YES];
 }
 
 -(void)didCreateWallet {
@@ -248,11 +273,6 @@
     } else {
         [self gotoExportWallet];
     }
-}
-
--(void)didRestoreWallet{
-    self.walletExported = YES;
-    [self gotoCreateWallet];
 }
 
 -(void)cancelCreateWallet{
@@ -265,16 +285,6 @@
     if ([self.delegate respondsToSelector:@selector(coordinatorDidAuth:)]) {
         [self.delegate coordinatorDidAuth:self];
     }
-}
-
--(void)didEnableFingerprint:(BOOL) enabled {
-    [NSUserDefaults saveIsFingerpringEnabled:enabled];
-    [self gotoExportWallet];
-}
-
--(void)didCancelEnableFingerprint {
-    [NSUserDefaults saveIsFingerpringEnabled:NO];
-    [self gotoExportWallet];
 }
 
 

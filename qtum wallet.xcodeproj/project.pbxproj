@@ -22,7 +22,7 @@
 		B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */; };
 		B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B321428C1E0153F000489BB1 /* CustomTextField.m */; };
 		B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */; };
-		B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8801E0C2C0F00DC7DE5 /* ImputTextView.m */; };
+		B321E8811E0C2C0F00DC7DE5 /* InputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8801E0C2C0F00DC7DE5 /* InputTextView.m */; };
 		B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */; };
 		B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B321E8861E0D07A000DC7DE5 /* BorderedLabel.m */; };
 		B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2D91EBB643100C813D0 /* euclidflexmedium.ttf */; };
@@ -95,6 +95,12 @@
 		B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DF71E811D4500EBF094 /* RPCAdapter.m */; };
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
 		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
+		B35DF6191F1F4A6000316953 /* RestoreWalletViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6181F1F4A6000316953 /* RestoreWalletViewControllerDark.m */; };
+		B35DF61C1F1F4A7400316953 /* RestoreWalletViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF61B1F1F4A7400316953 /* RestoreWalletViewControllerLight.m */; };
+		B35DF6201F1F569800316953 /* InputTextViewDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF61F1F1F569800316953 /* InputTextViewDark.m */; };
+		B35DF6231F1F56A700316953 /* InputTextViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6221F1F56A700316953 /* InputTextViewLight.m */; };
+		B35DF6261F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6251F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m */; };
+		B35DF6291F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6281F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m */; };
 		B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35EE88C1E4C6963008F4403 /* FirstNewTableCell.m */; };
 		B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B365058B1F14B12E00521603 /* WalletNameViewControllerLight.m */; };
 		B365058F1F14B17300521603 /* WalletNameViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B365058E1F14B17300521603 /* WalletNameViewControllerDark.m */; };
@@ -492,8 +498,8 @@
 		B321428C1E0153F000489BB1 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		B321E87C1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportBrainKeyViewController.h; path = Controllers/ExportBrainKeyViewController.h; sourceTree = "<group>"; };
 		B321E87D1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportBrainKeyViewController.m; path = Controllers/ExportBrainKeyViewController.m; sourceTree = "<group>"; };
-		B321E87F1E0C2C0F00DC7DE5 /* ImputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImputTextView.h; sourceTree = "<group>"; };
-		B321E8801E0C2C0F00DC7DE5 /* ImputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImputTextView.m; sourceTree = "<group>"; };
+		B321E87F1E0C2C0F00DC7DE5 /* InputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextView.h; sourceTree = "<group>"; };
+		B321E8801E0C2C0F00DC7DE5 /* InputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextView.m; sourceTree = "<group>"; };
 		B321E8821E0C3B1300DC7DE5 /* BottomShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomShadowView.h; sourceTree = "<group>"; };
 		B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomShadowView.m; sourceTree = "<group>"; };
 		B321E8851E0D07A000DC7DE5 /* BorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderedLabel.h; sourceTree = "<group>"; };
@@ -642,6 +648,18 @@
 		B3597DFA1E811D6500EBF094 /* ServerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerAdapter.m; sourceTree = "<group>"; };
 		B3597DFC1E81517200EBF094 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationManager.h; path = Application/NotificationManager.h; sourceTree = "<group>"; };
 		B3597DFD1E81517200EBF094 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationManager.m; path = Application/NotificationManager.m; sourceTree = "<group>"; };
+		B35DF6171F1F4A6000316953 /* RestoreWalletViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreWalletViewControllerDark.h; sourceTree = "<group>"; };
+		B35DF6181F1F4A6000316953 /* RestoreWalletViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreWalletViewControllerDark.m; sourceTree = "<group>"; };
+		B35DF61A1F1F4A7400316953 /* RestoreWalletViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreWalletViewControllerLight.h; sourceTree = "<group>"; };
+		B35DF61B1F1F4A7400316953 /* RestoreWalletViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreWalletViewControllerLight.m; sourceTree = "<group>"; };
+		B35DF61E1F1F569800316953 /* InputTextViewDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextViewDark.h; sourceTree = "<group>"; };
+		B35DF61F1F1F569800316953 /* InputTextViewDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextViewDark.m; sourceTree = "<group>"; };
+		B35DF6211F1F56A700316953 /* InputTextViewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextViewLight.h; sourceTree = "<group>"; };
+		B35DF6221F1F56A700316953 /* InputTextViewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextViewLight.m; sourceTree = "<group>"; };
+		B35DF6241F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportWalletBrandKeyViewControllerDark.h; sourceTree = "<group>"; };
+		B35DF6251F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportWalletBrandKeyViewControllerDark.m; sourceTree = "<group>"; };
+		B35DF6271F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportWalletBrandKeyViewControllerLight.h; sourceTree = "<group>"; };
+		B35DF6281F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportWalletBrandKeyViewControllerLight.m; sourceTree = "<group>"; };
 		B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88B1E4C6963008F4403 /* FirstNewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstNewTableCell.h; sourceTree = "<group>"; };
@@ -1593,6 +1611,19 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		B35DF61D1F1F559500316953 /* Text View */ = {
+			isa = PBXGroup;
+			children = (
+				B321E87F1E0C2C0F00DC7DE5 /* InputTextView.h */,
+				B321E8801E0C2C0F00DC7DE5 /* InputTextView.m */,
+				B35DF61E1F1F569800316953 /* InputTextViewDark.h */,
+				B35DF61F1F1F569800316953 /* InputTextViewDark.m */,
+				B35DF6211F1F56A700316953 /* InputTextViewLight.h */,
+				B35DF6221F1F56A700316953 /* InputTextViewLight.m */,
+			);
+			name = "Text View";
+			sourceTree = "<group>";
+		};
 		B365CA831EAA38990040A163 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1892,6 +1923,10 @@
 				B3EE8F621F13C12600131823 /* RestoreWalletOutputDelegate.h */,
 				B33EAF181E5C84DF006125F3 /* RestoreWalletViewController.h */,
 				B33EAF191E5C84DF006125F3 /* RestoreWalletViewController.m */,
+				B35DF6171F1F4A6000316953 /* RestoreWalletViewControllerDark.h */,
+				B35DF6181F1F4A6000316953 /* RestoreWalletViewControllerDark.m */,
+				B35DF61A1F1F4A7400316953 /* RestoreWalletViewControllerLight.h */,
+				B35DF61B1F1F4A7400316953 /* RestoreWalletViewControllerLight.m */,
 			);
 			name = RestoreWalletOutput;
 			sourceTree = "<group>";
@@ -1933,6 +1968,10 @@
 				B3EE8F671F13C1BD00131823 /* ExportWalletBrandKeyOutputDelegate.h */,
 				B33EAF211E5D6955006125F3 /* ExportWalletBrandKeyViewController.h */,
 				B33EAF221E5D6955006125F3 /* ExportWalletBrandKeyViewController.m */,
+				B35DF6241F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.h */,
+				B35DF6251F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m */,
+				B35DF6271F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.h */,
+				B35DF6281F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m */,
 			);
 			name = ExportWalletBrandKeyOutput;
 			sourceTree = "<group>";
@@ -2952,8 +2991,7 @@
 				E7396ADE1DDDEA0E0002CD47 /* Gradient */,
 				B321428E1E0154F700489BB1 /* Text Field */,
 				E7396B001DDF3FFA0002CD47 /* TextFielfWithLine */,
-				B321E87F1E0C2C0F00DC7DE5 /* ImputTextView.h */,
-				B321E8801E0C2C0F00DC7DE5 /* ImputTextView.m */,
+				B35DF61D1F1F559500316953 /* Text View */,
 				B321E8821E0C3B1300DC7DE5 /* BottomShadowView.h */,
 				B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */,
 				E789036A1EDDA980004243F0 /* ViewWithAnimatedLine.h */,
@@ -3457,6 +3495,7 @@
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
+				B35DF6291F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
@@ -3472,6 +3511,7 @@
 				E7C101B51F13CBBE00848526 /* BorderedLabelDark.m in Sources */,
 				B36505A71F16015A00521603 /* ExportBrainKeyViewControllerDark.m in Sources */,
 				E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */,
+				B35DF6231F1F56A700316953 /* InputTextViewLight.m in Sources */,
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
 				E748579C1F13C02600DCF9A6 /* LanguageTableViewCellLight.m in Sources */,
@@ -3568,6 +3608,7 @@
 				E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */,
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
+				B35DF6201F1F569800316953 /* InputTextViewDark.m in Sources */,
 				E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */,
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
 				E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */,
@@ -3577,6 +3618,7 @@
 				E7D7C09E1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
 				B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */,
+				B35DF6261F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m in Sources */,
 				E73CF6D11EE2D6FC0044DF78 /* PopUpContent.m in Sources */,
 				E760F4941F0F6DA80056D042 /* BalancePageViewControllerLight.m in Sources */,
 				E760F4911F0F6D8B0056D042 /* BalancePageViewControllerDark.m in Sources */,
@@ -3622,7 +3664,7 @@
 				E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */,
 				E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */,
 				E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */,
-				B321E8811E0C2C0F00DC7DE5 /* ImputTextView.m in Sources */,
+				B321E8811E0C2C0F00DC7DE5 /* InputTextView.m in Sources */,
 				E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
@@ -3631,6 +3673,7 @@
 				B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */,
 				B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */,
 				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
+				B35DF61C1F1F4A7400316953 /* RestoreWalletViewControllerLight.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */,
 				E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */,
@@ -3708,6 +3751,7 @@
 				B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */,
 				E78903661EDC6F06004243F0 /* MainTokenTableViewCell.m in Sources */,
 				E78903601EDC6769004243F0 /* NubersTokenView.m in Sources */,
+				B35DF6191F1F4A6000316953 /* RestoreWalletViewControllerDark.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
 				E73CF6CB1EE2CFA40044DF78 /* InformationPopUpViewController.m in Sources */,
 				B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */,
