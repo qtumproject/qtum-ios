@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *brandKeyTextView;
 @property (strong,nonatomic) NSString *brainKeyString;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomForButtonsConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *importButton;
 
 - (IBAction)importButtonWasPressed:(id)sender;
 
@@ -35,20 +36,12 @@
                                                object:nil];
     self.brandKeyTextView.text = NSLocalizedString(@"Your Passphrase", "");
     [self.brandKeyTextView becomeFirstResponder];
+    [self setupImportButton];
 }
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-#pragma mark - Private Methods
-
--(NSArray*)arrayOfWordsFromString:(NSString*)aString{
-    NSArray *array = [aString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    array = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];
-    return array;
-}
-
 
 #pragma mark - Notification
 
@@ -63,7 +56,7 @@
     [self.view layoutIfNeeded];
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - UITextViewDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     return YES;
@@ -92,16 +85,27 @@
     return YES;
 }
 
+- (void)textViewDidChange:(UITextView *)textView {
+    
+    [self setupImportButton];
+}
 
-#pragma mark - QRCodeViewControllerDelegate
+#pragma mark - Private
+
+- (void)setupImportButton {
+    
+    if ([self.delegate respondsToSelector:@selector(checkWordsString:)]) {
+        self.importButton.alpha = [self.delegate checkWordsString:self.brandKeyTextView.text] ? 1.0f : 0.7f;
+        self.importButton.enabled = [self.delegate checkWordsString:self.brandKeyTextView.text];
+    }
+}
 
 #pragma mark - Actions
 
 - (IBAction)importButtonWasPressed:(id)sender {
-    //[[PopUpsManager sharedInstance] showLoaderPopUp];
-    NSArray *wordsArray = [self arrayOfWordsFromString:self.brandKeyTextView.text];
+    
     if ([self.delegate respondsToSelector:@selector(didRestorePressedWithWords:)]) {
-        [self.delegate didRestorePressedWithWords:wordsArray];
+        [self.delegate didRestorePressedWithWords:self.brandKeyTextView.text];
     }
 }
 
