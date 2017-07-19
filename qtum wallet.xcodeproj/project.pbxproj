@@ -211,6 +211,9 @@
 		E70CFD341F1F647300230C81 /* SourceCodePopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70CFD361F1F647300230C81 /* SourceCodePopUp.storyboard */; };
 		E70CFD3B1F1F647A00230C81 /* ConfirmPurchasePopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70CFD3D1F1F647A00230C81 /* ConfirmPurchasePopUp.storyboard */; };
 		E70CFD421F1F648400230C81 /* ShareTokenPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70CFD441F1F648400230C81 /* ShareTokenPopUp.storyboard */; };
+		E70CFD491F1F669D00230C81 /* QStoreSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70CFD4B1F1F669D00230C81 /* QStoreSearchTableViewCell.xib */; };
+		E70CFD501F1F66B200230C81 /* TokenDetailsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70CFD521F1F66B200230C81 /* TokenDetailsViews.xib */; };
+		E70CFD571F1F66BF00230C81 /* SelectSearchTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E70CFD591F1F66BF00230C81 /* SelectSearchTypeView.xib */; };
 		E71271921EE9925600A130A0 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E71271911EE9925600A130A0 /* SpinnerView.m */; };
 		E71271941EE9AC5B00A130A0 /* LoaderPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */; };
 		E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */; };
@@ -328,7 +331,6 @@
 		E7881B4B1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
 		E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */; };
 		E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */; };
-		E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */; };
 		E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903591EDC66D0004243F0 /* BalanceTokenView.m */; };
 		E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035C1EDC674C004243F0 /* QTUMAddressTokenView.m */; };
 		E78903601EDC6769004243F0 /* NubersTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E789035F1EDC6769004243F0 /* NubersTokenView.m */; };
@@ -364,10 +366,8 @@
 		E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101CB1F1529EC00848526 /* RecieveViewControllerDark.m */; };
 		E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */; };
 		E7CE63621F027EC200C147B9 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63611F027EC200C147B9 /* CustomSearchBar.m */; };
-		E7CE63651F028C0600C147B9 /* SelectSearchTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */; };
 		E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */; };
 		E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE636A1F029EEF00C147B9 /* QStoreSearchTableViewCell.m */; };
-		E7CE636D1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7CE636B1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib */; };
 		E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D241D81DE6D6B1003E507B /* QRCodeManager.m */; };
 		E7D7C09E1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D7C09C1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m */; };
 		E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00E91DC9BF9D00FD5335 /* TransactionManager.m */; };
@@ -902,6 +902,15 @@
 		E70CFD431F1F648400230C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ShareTokenPopUp.storyboard; sourceTree = "<group>"; };
 		E70CFD461F1F648600230C81 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ShareTokenPopUp.strings"; sourceTree = "<group>"; };
 		E70CFD481F1F648800230C81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareTokenPopUp.strings; sourceTree = "<group>"; };
+		E70CFD4A1F1F669D00230C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/QStoreSearchTableViewCell.xib; sourceTree = "<group>"; };
+		E70CFD4D1F1F669F00230C81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/QStoreSearchTableViewCell.strings; sourceTree = "<group>"; };
+		E70CFD4F1F1F66A000230C81 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/QStoreSearchTableViewCell.strings"; sourceTree = "<group>"; };
+		E70CFD511F1F66B200230C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TokenDetailsViews.xib; sourceTree = "<group>"; };
+		E70CFD541F1F66B400230C81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TokenDetailsViews.strings; sourceTree = "<group>"; };
+		E70CFD561F1F66B500230C81 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TokenDetailsViews.strings"; sourceTree = "<group>"; };
+		E70CFD581F1F66BF00230C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SelectSearchTypeView.xib; sourceTree = "<group>"; };
+		E70CFD5B1F1F66C100230C81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SelectSearchTypeView.strings; sourceTree = "<group>"; };
+		E70CFD5D1F1F66C400230C81 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SelectSearchTypeView.strings"; sourceTree = "<group>"; };
 		E71271901EE9925600A130A0 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		E71271911EE9925600A130A0 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoaderPopUp.storyboard; sourceTree = "<group>"; };
@@ -1104,7 +1113,6 @@
 		E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentLightViewController.m; sourceTree = "<group>"; };
 		E7881B751F0BC6E200BD6AB2 /* NewPaymentDarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentDarkViewController.h; sourceTree = "<group>"; };
 		E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPaymentDarkViewController.m; sourceTree = "<group>"; };
-		E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TokenDetailsViews.xib; sourceTree = "<group>"; };
 		E78903581EDC66D0004243F0 /* BalanceTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTokenView.h; sourceTree = "<group>"; };
 		E78903591EDC66D0004243F0 /* BalanceTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceTokenView.m; sourceTree = "<group>"; };
 		E789035B1EDC674C004243F0 /* QTUMAddressTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTUMAddressTokenView.h; sourceTree = "<group>"; };
@@ -1177,12 +1185,10 @@
 		E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewControllerLight.m; sourceTree = "<group>"; };
 		E7CE63601F027EC200C147B9 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
 		E7CE63611F027EC200C147B9 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
-		E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSearchTypeView.xib; sourceTree = "<group>"; };
 		E7CE63661F028E8F00C147B9 /* SelectSearchTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSearchTypeView.h; sourceTree = "<group>"; };
 		E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSearchTypeView.m; sourceTree = "<group>"; };
 		E7CE63691F029EEF00C147B9 /* QStoreSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreSearchTableViewCell.h; sourceTree = "<group>"; };
 		E7CE636A1F029EEF00C147B9 /* QStoreSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreSearchTableViewCell.m; sourceTree = "<group>"; };
-		E7CE636B1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QStoreSearchTableViewCell.xib; sourceTree = "<group>"; };
 		E7D241D71DE6D6B1003E507B /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
 		E7D241D81DE6D6B1003E507B /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
 		E7D7C09C1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewLeftAlignedLayout.m; sourceTree = "<group>"; };
@@ -2054,14 +2060,14 @@
 		E70353071F039262004ECCC9 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				E7CE63641F028C0600C147B9 /* SelectSearchTypeView.xib */,
+				E70CFD591F1F66BF00230C81 /* SelectSearchTypeView.xib */,
 				E7CE63661F028E8F00C147B9 /* SelectSearchTypeView.h */,
 				E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */,
 				E70353081F039297004ECCC9 /* QStoreSearchTableSource.h */,
 				E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */,
 				E7CE63691F029EEF00C147B9 /* QStoreSearchTableViewCell.h */,
 				E7CE636A1F029EEF00C147B9 /* QStoreSearchTableViewCell.m */,
-				E7CE636B1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib */,
+				E70CFD4B1F1F669D00230C81 /* QStoreSearchTableViewCell.xib */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -2546,7 +2552,7 @@
 		E78903571EDC66B4004243F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E78903551EDC60F0004243F0 /* TokenDetailsViews.xib */,
+				E70CFD521F1F66B200230C81 /* TokenDetailsViews.xib */,
 				E78903581EDC66D0004243F0 /* BalanceTokenView.h */,
 				E78903591EDC66D0004243F0 /* BalanceTokenView.m */,
 				E789035B1EDC674C004243F0 /* QTUMAddressTokenView.h */,
@@ -3295,7 +3301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3EE8F571F13BAE000131823 /* simplonmono-regular.ttf in Resources */,
-				E7CE63651F028C0600C147B9 /* SelectSearchTypeView.xib in Resources */,
+				E70CFD571F1F66BF00230C81 /* SelectSearchTypeView.xib in Resources */,
 				E70CFD111F1F63F400230C81 /* InformationPopUp.storyboard in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
@@ -3320,7 +3326,7 @@
 				B32EEC661EB3545700512FED /* Send.storyboard in Resources */,
 				B32EEC7A1EB3549300512FED /* Pin.storyboard in Resources */,
 				E70CFD181F1F63FB00230C81 /* ConfirmPopUp.storyboard in Resources */,
-				E7CE636D1F029EEF00C147B9 /* QStoreSearchTableViewCell.xib in Resources */,
+				E70CFD491F1F669D00230C81 /* QStoreSearchTableViewCell.xib in Resources */,
 				E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */,
 				E70CFD261F1F640E00230C81 /* SecurityPopup.storyboard in Resources */,
 				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
@@ -3330,7 +3336,7 @@
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
 				B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */,
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
-				E78903561EDC60F0004243F0 /* TokenDetailsViews.xib in Resources */,
+				E70CFD501F1F66B200230C81 /* TokenDetailsViews.xib in Resources */,
 				B32EEC751EB3548600512FED /* Wallet.storyboard in Resources */,
 				E7881B421F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
 				B34BF46F1EFBEC8F00EED85A /* GoogleService-Info.plist in Resources */,
@@ -3984,6 +3990,36 @@
 				E70CFD481F1F648800230C81 /* en */,
 			);
 			name = ShareTokenPopUp.storyboard;
+			sourceTree = "<group>";
+		};
+		E70CFD4B1F1F669D00230C81 /* QStoreSearchTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E70CFD4A1F1F669D00230C81 /* Base */,
+				E70CFD4D1F1F669F00230C81 /* en */,
+				E70CFD4F1F1F66A000230C81 /* zh-Hant */,
+			);
+			name = QStoreSearchTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		E70CFD521F1F66B200230C81 /* TokenDetailsViews.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E70CFD511F1F66B200230C81 /* Base */,
+				E70CFD541F1F66B400230C81 /* en */,
+				E70CFD561F1F66B500230C81 /* zh-Hant */,
+			);
+			name = TokenDetailsViews.xib;
+			sourceTree = "<group>";
+		};
+		E70CFD591F1F66BF00230C81 /* SelectSearchTypeView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E70CFD581F1F66BF00230C81 /* Base */,
+				E70CFD5B1F1F66C100230C81 /* en */,
+				E70CFD5D1F1F66C400230C81 /* zh-Hant */,
+			);
+			name = SelectSearchTypeView.xib;
 			sourceTree = "<group>";
 		};
 		E730AB561EE6A5D100132711 /* Interface.storyboard */ = {
