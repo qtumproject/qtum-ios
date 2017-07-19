@@ -182,8 +182,8 @@ NSString const *kUserPinHash = @"HashPIN";
     }
     
     if (userPin) {
-        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
         [[FXKeychain defaultKeychain] setObject:[userPin sha3:SHA3256] forKey:kUserPinHash];
+        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
     }
 }
 
@@ -217,8 +217,7 @@ NSString const *kUserPinHash = @"HashPIN";
 
 - (BOOL)startWithPin:(NSString*) pin {
     
-    [self.wallet configAddressesWithPin:pin];
-    return YES; //TODO
+    return [self.wallet configAddressesWithPin:pin];
 }
 
 - (NSString*)brandKeyWithPin:(NSString*) pin {

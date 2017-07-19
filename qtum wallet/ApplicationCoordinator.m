@@ -128,8 +128,8 @@
     
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
-    [self.walletManager stopObservingForAllSpendable];
-    [[ContractManager sharedInstance] stopObservingForAllSpendable];
+    //[self.walletManager stopObservingForAllSpendable];
+   //[[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self startAuthFlow];
 }
 
@@ -147,8 +147,8 @@
     
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
-    [self.walletManager stopObservingForAllSpendable];
-    [[ContractManager sharedInstance] stopObservingForAllSpendable];
+//    [self.walletManager stopObservingForAllSpendable];
+//    [[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self startAuthFlow];
 }
 

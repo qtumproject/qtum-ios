@@ -56,7 +56,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 }
 
 
--(void)configAddressesWithPin:(NSString*) pin {
+-(BOOL)configAddressesWithPin:(NSString*) pin {
     
     NSString* stringBrandKey = [self brandKeyWithPin:pin];
     
@@ -66,6 +66,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
     } else {
         DLog(@"Cant Create seed words from Pin");
     }
+    
+    return self.keyChain;
 }
 
 #pragma mamrk - Setters

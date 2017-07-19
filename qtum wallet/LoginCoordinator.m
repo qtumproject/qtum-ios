@@ -126,8 +126,8 @@
 
 -(void)enterPin:(NSString*) pin {
     
-    if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
-        [[ApplicationCoordinator sharedInstance].walletManager startWithPin:pin];
+    if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin] && [[ApplicationCoordinator sharedInstance].walletManager startWithPin:pin]) {
+        
         [self loginUser];
     }else {
         [self.loginOutput applyFailedPasswordAction];
