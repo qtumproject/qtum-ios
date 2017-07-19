@@ -29,6 +29,7 @@
               andFailureHandler:(void(^)())failure;
 
 - (void)storePin:(NSString*) pin;
+- (BOOL)changePinFrom:(NSString*) pin toPin:(NSString*) newPin;
 - (BOOL)verifyPin:(NSString*) pin;
 - (BOOL)isSignedIn;
 - (NSDictionary *)hashTableOfKeys;

@@ -101,7 +101,7 @@
     
     NSObject<ExportWalletBrandKeyOutput>* output = (ExportWalletBrandKeyViewController*)[[ControllersFactory sharedInstance] createExportWalletBrandKeyViewController];
     output.delegate = self;
-    output.brandKey = [self.walletBrainKey componentsJoinedByString:@" "];
+    output.brandKey = [[ApplicationCoordinator sharedInstance].walletManager brandKeyWithPin:self.walletPin];
     [self.navigationController pushViewController:[output toPresent] animated:YES];
     self.exportWalletOutput = output;
 }

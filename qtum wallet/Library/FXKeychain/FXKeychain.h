@@ -62,6 +62,7 @@ typedef NS_ENUM(NSInteger, FXKeychainAccess)
 
 @interface FXKeychain : NSObject
 
+
 + (nonnull instancetype)defaultKeychain;
 
 @property (nonatomic, readonly, nullable) NSString *service;
@@ -80,6 +81,8 @@ typedef NS_ENUM(NSInteger, FXKeychainAccess)
 - (BOOL)removeObjectForKey:(nonnull id)key;
 - (nullable id)objectForKey:(nonnull id)key;
 - (nullable id)objectForKeyedSubscript:(nonnull id)key;
+- (void)addTouchIdString:(NSString* _Nonnull) touchIDString;
+- (void)touchIDString:(void(^_Nullable)(NSString * _Nullable string, NSError * _Nullable error)) handler;
 
 @end
 
