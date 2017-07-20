@@ -21,7 +21,7 @@
     [self layoutIfNeeded];
 
     self.trailingConstraintForLine.constant = 0.0f;
-    [UIView animateWithDuration:0.2f animations:^{
+    [UIView animateWithDuration:0.15f animations:^{
         [self layoutIfNeeded];
     }];
 }

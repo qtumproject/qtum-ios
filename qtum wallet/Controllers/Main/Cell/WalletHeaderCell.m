@@ -69,4 +69,6 @@
 
 - (CGFloat)getHeaderHeight{ return 0; }
 
+- (CGFloat)calculateOffsetAfterScroll:(CGFloat)position { return 0.0f; }
+
 @end

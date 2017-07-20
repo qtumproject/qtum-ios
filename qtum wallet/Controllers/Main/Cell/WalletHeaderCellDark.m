@@ -85,4 +85,15 @@ CGFloat const WalletHeaderCellDarkHeaderHeight = 50.0f;
     return WalletHeaderCellDarkHeaderHeight;
 }
 
+- (CGFloat)calculateOffsetAfterScroll:(CGFloat)position {
+    
+    CGFloat maxYPosition = self.frame.size.height - WalletHeaderCellDarkHeaderHeight;
+    CGFloat percentOfPosition = position / maxYPosition;
+    if (percentOfPosition == 0.0f || percentOfPosition >= 1.0f) {
+        return 0.0f;
+    }
+    NSLog(@"%f %f %f", position, percentOfPosition, (percentOfPosition > 0.5f) ? - (maxYPosition - position) : position);
+    return (percentOfPosition > 0.5f) ? - (maxYPosition - position) : position;
+}
+
 @end

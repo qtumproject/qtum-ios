@@ -43,5 +43,6 @@ typedef enum {
 
 - (CGFloat)percentForShowHideHeader:(CGFloat)yPosition;
 - (CGFloat)getHeaderHeight;
+- (CGFloat)calculateOffsetAfterScroll:(CGFloat)position;
 
 @end

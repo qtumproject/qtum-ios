@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mEt-XV-9HF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mEt-XV-9HF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1667,17 +1667,17 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ANi-Bh-c2y">
-                                <rect key="frame" x="0.0" y="114" width="375" height="32"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="34"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siP-Lq-uGA">
-                                        <rect key="frame" x="0.0" y="30" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="32" width="375" height="1"/>
                                         <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="sDI-om-Nws"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5g-7X-Agv">
-                                        <rect key="frame" x="10" y="9" width="43" height="15.5"/>
+                                        <rect key="frame" x="10" y="10" width="43" height="15.5"/>
                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1689,7 +1689,7 @@
                                     <constraint firstAttribute="bottom" secondItem="siP-Lq-uGA" secondAttribute="bottom" constant="1" id="ZCK-ed-nPM"/>
                                     <constraint firstItem="siP-Lq-uGA" firstAttribute="leading" secondItem="ANi-Bh-c2y" secondAttribute="leading" id="b4s-Tk-d1N"/>
                                     <constraint firstItem="s5g-7X-Agv" firstAttribute="leading" secondItem="ANi-Bh-c2y" secondAttribute="leading" constant="10" id="gHC-UJ-hki"/>
-                                    <constraint firstAttribute="height" constant="32" id="qJA-Xo-JFg"/>
+                                    <constraint firstAttribute="height" constant="34" id="qJA-Xo-JFg"/>
                                     <constraint firstAttribute="trailing" secondItem="siP-Lq-uGA" secondAttribute="trailing" id="weZ-B6-jxc"/>
                                 </constraints>
                             </view>
