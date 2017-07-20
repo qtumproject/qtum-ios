@@ -18,9 +18,16 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractNameField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractAddressTextField;
 @property (weak, nonatomic) IBOutlet ImputTextView *abiTextView;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectioViewTopConstraint;
 
 @end
 
@@ -37,15 +44,24 @@
     
     [self addDoneButtonToTextInputs];
     
-    if (IS_IPHONE_5) {
-        self.collectionView.hidden = YES;
-        self.bottomConstraintForCollectionView.constant = -10.0f;
-    }
-    
     [self.contractNameField addTarget:self action:@selector(updateOkButton) forControlEvents:UIControlEventEditingChanged];
     [self.contractAddressTextField addTarget:self action:@selector(updateOkButton) forControlEvents:UIControlEventEditingChanged];
     
     [self updateOkButton];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    NSLog(@"4%f", self.scrollView.frame.size.height);
+    
+    CGFloat yButtonWithOffset = self.buttonBottomConstraint.constant + self.buttonHeightConstraint.constant + 10.0f + self.collectioViewTopConstraint.constant + self.collectionViewHeightConstraint.constant;
+    CGFloat scrollHeight = self.scrollView.frame.size.height;
+    CGFloat yTextView = self.textViewTopConstraint.constant;
+    CGFloat freeSpace = scrollHeight - yButtonWithOffset - yTextView;
+    self.textViewHeightConstraint.constant = freeSpace;
+    
+    [self.view layoutIfNeeded];
 }
 
 #pragma mark - Private Methods
