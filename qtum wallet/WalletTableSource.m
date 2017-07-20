@@ -81,7 +81,13 @@ static NSInteger countOfSections = 2;
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{ }
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    DLog(@"scrollViewDidEndDecelerating");
+    
+    if (!self.mainCell) return;
+    CGFloat diff = [self.mainCell calculateOffsetAfterScroll:scrollView.contentOffset.y];
+    [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y - diff) animated:YES];
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
@@ -102,6 +108,14 @@ static NSInteger countOfSections = 2;
     if(y > h + reload_distance && offset.y > 0) {
         [self.delegate refreshTableViewData];
     }
+    
+    if (decelerate) {
+        return;
+    }
+    
+    if (!self.mainCell) return;
+    CGFloat diff = [self.mainCell calculateOffsetAfterScroll:aScrollView.contentOffset.y];
+    [aScrollView setContentOffset:CGPointMake(aScrollView.contentOffset.x, aScrollView.contentOffset.y - diff) animated:YES];
 }
 
 #pragma mark - UITableViewDelegate

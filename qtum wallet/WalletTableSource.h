@@ -32,6 +32,7 @@
 @property (weak, nonatomic) id <ControllerDelegate> controllerDelegate;
 
 @property (nonatomic) BOOL haveTokens;
+@property (nonatomic, weak) WalletHeaderCell *mainCell;
 
 @property (nonatomic, weak, readonly) HistoryHeaderVIew *sectionHeaderView;
 @property (nonatomic, readonly) CGFloat lastContentOffset;

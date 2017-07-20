@@ -41,6 +41,8 @@
         [cell setData:self.wallet];
         [self didScrollForheaderCell:tableView];
         
+        self.mainCell = cell;
+        
         return cell;
     } else {
         HistoryTableViewCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellDark"];
