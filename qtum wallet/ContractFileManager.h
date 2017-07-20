@@ -11,7 +11,7 @@
 
 @interface ContractFileManager : NSObject
 
-- (NSDictionary*)abiWithTemplate:(NSString*) templatePath;
+- (NSArray*)abiWithTemplate:(NSString*) templatePath;
 
 - (NSString*)escapeAbiWithTemplate:(NSString*) templatePath;
 
@@ -19,7 +19,7 @@
 
 - (NSData*)bitcodeWithTemplate:(NSString*) templatePath;
 
-- (NSDictionary*)standartAbi;
+- (NSArray*)standartAbi;
 
 - (NSDate*)dateOfCreationTemplate:(NSString*) templatePath;
 

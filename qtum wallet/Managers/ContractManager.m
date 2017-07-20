@@ -16,6 +16,7 @@
 #import "TemplateManager.h"
 #import "NotificationManager.h"
 #import "SocketManager.h"
+#import "ContractFileManager.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -315,14 +316,16 @@ static NSString* kAddresses = @"kAddress";
         
         TemplateModel* template = [[TemplateManager sharedInstance] createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
         
-        if (template) {
-            
+        if (template && [[ContractInterfaceManager sharedInstance] isERCTokenStandartInterface:[[ContractFileManager sharedInstance] abiWithTemplate:template.path]]) {
+//        if (template) {
+            [[TemplateManager sharedInstance] saveTemplate:template];
             contract.templateModel = template;
             [self addNewToken:contract];
             [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
             [self updateSpendableObject:contract];
             [self save];
             [self tokenDidChange:nil];
+            
             return YES;
         }
     }

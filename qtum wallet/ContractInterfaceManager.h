@@ -28,6 +28,10 @@
 - (AbiinterfaceItem*)tokenStandartSymbolPropertyInterface;
 - (AbiinterfaceItem*)tokenStandartDecimalPropertyInterface;
 
+- (BOOL)isERCTokenStandartInterface:(NSArray*) interface;
+- (BOOL)isERCTokenStandartAbiString:(NSString*) abiString;
+- (BOOL)isInterfaceArray:(NSArray*)intefaceArray equalERC20InterfaceArray:(NSArray*)erc20;
+
 + (instancetype)sharedInstance;
 
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

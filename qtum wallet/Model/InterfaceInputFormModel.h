@@ -16,6 +16,6 @@
 @property (strong, nonatomic, readonly) NSMutableArray<AbiinterfaceItem*>* propertyItems;
 @property (strong, nonatomic, readonly) AbiinterfaceItem* constructorItem;
 
--(instancetype)initWithAbi:(NSDictionary*) abi;
+-(instancetype)initWithAbi:(NSArray*) abi;
 
 @end

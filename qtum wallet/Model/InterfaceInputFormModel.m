@@ -19,7 +19,7 @@
 
 @implementation InterfaceInputFormModel
 
--(instancetype)initWithAbi:(NSDictionary*) abi{
+-(instancetype)initWithAbi:(NSArray*) abi{
     
     self = [super init];
     if (self) {
@@ -28,7 +28,7 @@
     return self;
 }
 
--(void)setUpWithObject:(NSDictionary*) abi {
+-(void)setUpWithObject:(NSArray*) abi {
     
     for (NSDictionary* item in abi) {
         AbiinterfaceItem* abiItem = [[AbiinterfaceItem alloc] initWithObject:item];
@@ -58,6 +58,43 @@
         _propertyItems = @[].mutableCopy;
     }
     return _propertyItems;
+}
+
+-(BOOL)contains:(InterfaceInputFormModel*) inerface {
+    
+    for (AbiinterfaceItem* function in inerface.functionItems) {
+        if (![self containsFunction:function]) {
+            return NO;
+        }
+    }
+    
+    for (AbiinterfaceItem* parameter in inerface.propertyItems) {
+        if (![self containsParameter:parameter]) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
+-(BOOL)containsItem:(AbiinterfaceItem*) inerfaceItem {
+    
+    if ([self containsFunction:inerfaceItem]) {
+        return YES;
+    } else if([self containsParameter:inerfaceItem]){
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)containsParameter:(AbiinterfaceItem*) param {
+    
+    return [self.propertyItems containsObject:param];
+}
+
+-(BOOL)containsFunction:(AbiinterfaceItem*) func {
+    
+    return [self.functionItems containsObject:func];
 }
 
 @end

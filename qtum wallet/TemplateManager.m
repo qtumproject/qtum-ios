@@ -127,8 +127,6 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
     if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath]) {
         TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withuuid:[NSUUID UUID].UUIDString path:filePath isFull:NO];
-        [self.templates addObject:customToken];
-        [self save];
         return customToken;
     }
     return nil;
@@ -283,6 +281,12 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
     }
     
     return [newTemplates copy];
+}
+
+-(void)saveTemplate:(TemplateModel*) template {
+    
+    [self.templates addObject:template];
+    [self save];
 }
 
 -(void)clear {
