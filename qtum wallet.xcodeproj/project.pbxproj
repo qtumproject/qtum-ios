@@ -95,6 +95,7 @@
 		B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DF71E811D4500EBF094 /* RPCAdapter.m */; };
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
 		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
+		B35DF62C1F2084CA00316953 /* TouchIDService.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF62B1F2084CA00316953 /* TouchIDService.m */; };
 		B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35EE88C1E4C6963008F4403 /* FirstNewTableCell.m */; };
 		B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B365058B1F14B12E00521603 /* WalletNameViewControllerLight.m */; };
 		B365058F1F14B17300521603 /* WalletNameViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B365058E1F14B17300521603 /* WalletNameViewControllerDark.m */; };
@@ -634,6 +635,8 @@
 		B3597DFA1E811D6500EBF094 /* ServerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerAdapter.m; sourceTree = "<group>"; };
 		B3597DFC1E81517200EBF094 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationManager.h; path = Application/NotificationManager.h; sourceTree = "<group>"; };
 		B3597DFD1E81517200EBF094 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationManager.m; path = Application/NotificationManager.m; sourceTree = "<group>"; };
+		B35DF62A1F2084CA00316953 /* TouchIDService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchIDService.h; sourceTree = "<group>"; };
+		B35DF62B1F2084CA00316953 /* TouchIDService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchIDService.m; sourceTree = "<group>"; };
 		B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88B1E4C6963008F4403 /* FirstNewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstNewTableCell.h; sourceTree = "<group>"; };
@@ -2054,6 +2057,8 @@
 				B3597DFD1E81517200EBF094 /* NotificationManager.m */,
 				B3F579791F0D251C00A13571 /* OpenURLManager.h */,
 				B3F5797A1F0D251C00A13571 /* OpenURLManager.m */,
+				B35DF62A1F2084CA00316953 /* TouchIDService.h */,
+				B35DF62B1F2084CA00316953 /* TouchIDService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -3642,6 +3647,7 @@
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */,
+				B35DF62C1F2084CA00316953 /* TouchIDService.m in Sources */,
 				B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */,
 				B3827DE71ECF673900E500DE /* TokenFunctionViewController.m in Sources */,
 				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "LoginViewOutputDelegate.h"
 #import "LoginViewController.h"
 #import <LocalAuthentication/LocalAuthentication.h>
+#import "TouchIDService.h"
 
 @interface ConfirmPinCoordinator () <LoginViewOutputDelegate>
 
@@ -58,29 +59,24 @@
 }
 
 -(void)showFingerprint {
-    
-    LAContext *myContext = [[LAContext alloc] init];
-    NSError *authError;
-    NSString *reason = @"Login";
-    
+
     __weak __typeof(self) weakSelf = self;
     
-    CGFloat touchIdDelayAnimation = 0.25;
-    
-    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
-        [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                  localizedReason:reason
-                            reply:^(BOOL success, NSError *error) {
-                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(touchIdDelayAnimation * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                    
-                                    if (success) {
-                                        [weakSelf loginUser];
-                                    } else {
-                                        [weakSelf.loginOutput startEditing];
-                                    }
-                                });
-                            }];
-    }
+    [[TouchIDService sharedInstance] checkTouchId:^(TouchIDCompletionType type) {
+        switch (type) {
+                
+            case TouchIDSuccessed:
+                
+                [weakSelf loginUser];
+                break;
+                
+            case TouchIDDenied:
+            case TouchIDCanceled:
+                
+                [weakSelf.loginOutput startEditing];
+                break;
+        }
+    }];
 }
 
 #pragma mark - Actions

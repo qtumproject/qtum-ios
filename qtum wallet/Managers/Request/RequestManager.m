@@ -33,8 +33,8 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
 
 @implementation RequestManager
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
+    
     static RequestManager *manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
