@@ -62,8 +62,14 @@
 
 -(NSArray <Contract*>*)filteringContractsName:(NSArray <Contract*>*) contracts containsText:(NSString*) containtsText {
     if (containtsText.length > 0) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"localName CONTAINS[cd] %@",containtsText];
-        return [contracts filteredArrayUsingPredicate:predicate];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"localName CONTAINS[c] %@", containtsText];
+        NSArray *filteredArray = [contracts filteredArrayUsingPredicate:predicate];
+        return [filteredArray sortedArrayUsingComparator:^NSComparisonResult(Contract *obj1, Contract *obj2) {
+            NSInteger i1 = [obj1.localName rangeOfString:containtsText options:NSCaseInsensitiveSearch].location;
+            NSInteger i2 = [obj2.localName rangeOfString:containtsText options:NSCaseInsensitiveSearch].location;
+            
+            return i1 < i2 ? NSOrderedAscending : i1 == i2 ? NSOrderedSame : NSOrderedDescending;
+        }];
     } else {
         return contracts;
     }
