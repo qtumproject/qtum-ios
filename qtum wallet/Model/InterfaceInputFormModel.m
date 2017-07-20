@@ -89,12 +89,26 @@
 
 -(BOOL)containsParameter:(AbiinterfaceItem*) param {
     
-    return [self.propertyItems containsObject:param];
+    BOOL contains = NO;
+    for (AbiinterfaceItem* item in self.propertyItems) {
+        if ([item isEqual:param]) {
+            contains = YES;
+            break;
+        }
+    }
+    return contains;
 }
 
 -(BOOL)containsFunction:(AbiinterfaceItem*) func {
-    
-    return [self.functionItems containsObject:func];
+
+    BOOL contains = NO;
+    for (AbiinterfaceItem* item in self.functionItems) {
+        if ([item isEqual:func]) {
+            contains = YES;
+            break;
+        }
+    }
+    return contains;
 }
 
 @end

@@ -77,4 +77,41 @@
     return entries;
 }
 
+#pragma mark - Equality
+
+- (BOOL)isEqualToInterfaceItem:(AbiinterfaceItem *)aInterfaceItem {
+    
+    if (!aInterfaceItem) {
+        return NO;
+    }
+
+    BOOL haveEqualInterfaceNames = (!self.name && !aInterfaceItem.name) || [self.name isEqualToString:aInterfaceItem.name];
+    BOOL haveEqualConstant = self.constant == aInterfaceItem.constant;
+    BOOL haveEqualType = self.type == aInterfaceItem.type;
+    BOOL haveEqualPayable = self.payable == aInterfaceItem.payable;
+
+    BOOL haveEqualInputs = (!self.inputs && !aInterfaceItem.inputs) || [self.inputs isEqualToArray:aInterfaceItem.inputs];
+    BOOL haveEqualOutputs = (!self.outputs && !aInterfaceItem.outputs) || [self.outputs isEqualToArray:aInterfaceItem.outputs];
+    
+    return haveEqualInterfaceNames && haveEqualConstant && haveEqualType && haveEqualPayable && haveEqualInputs && haveEqualOutputs;
+}
+
+- (BOOL)isEqual:(id)anObject {
+    
+    if (self == anObject) {
+        return YES;
+    }
+    
+    if (![anObject isKindOfClass:[AbiinterfaceItem class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToInterfaceItem:(AbiinterfaceItem *)anObject];
+}
+
+- (NSUInteger)hash {
+    
+    return [self.name hash] ^ self.constant ^ self.payable ^ self.type ^ [self.inputs hash] ^ [self.outputs hash];
+}
+
 @end

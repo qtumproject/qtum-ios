@@ -38,12 +38,12 @@
     NSString* erc20 = @"[{\"constant\":false,\"inputs\":[{\"name\":\"_spender\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint\"}],\"name\":\"approve\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"totalSupply\",\"type\":\"uint\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_from\",\"type\":\"address\"},{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint\"}],\"name\":\"transferFrom\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"},{\"name\":\"_spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"name\":\"remaining\",\"type\":\"uint\"}],\"payable\":false,\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_value\",\"type\":\"uint\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_owner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"_spender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_value\",\"type\":\"uint\"}],\"name\":\"Approval\",\"type\":\"event\"}]";
     
     NSError* error;
-    NSArray *jsonAbi = [self getArrayFromAbiString:erc20];
+    NSArray *jsonAbi = [self arrayFromAbiString:erc20];
     NSAssert(!error, @"Serialization of standart erc 20 token failed");
     return jsonAbi;
 }
 
--(NSArray*)getArrayFromAbiString:(NSString*) abiString {
+-(NSArray*)arrayFromAbiString:(NSString*) abiString {
     
     NSError* error;
     NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abiString dataUsingEncoding:NSUTF8StringEncoding]
@@ -96,6 +96,12 @@
 - (InterfaceInputFormModel*)tokenInterfaceWithTemplate:(NSString*)templatePath {
     
     InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance]abiWithTemplate:templatePath]];
+    return interphase;
+}
+
+- (InterfaceInputFormModel*)tokenERC20Interface{
+    
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[self getERC20TokenStandartAbiInterface]];
     return interphase;
 }
 
@@ -164,7 +170,7 @@
 - (BOOL)isERCTokenStandartAbiString:(NSString*) abiString {
     
     //replascing string brcause in standart uint256 and uint is equal
-    NSArray* interface = [self getArrayFromAbiString:[abiString stringByReplacingOccurrencesOfString:@"uint256" withString:@"uint"]];
+    NSArray* interface = [self arrayFromAbiString:[abiString stringByReplacingOccurrencesOfString:@"uint256" withString:@"uint"]];
     NSArray* erc20interface = [self getERC20TokenStandartAbiInterface];
     return [self isInterfaceArray:interface equalERC20InterfaceArray:erc20interface];
 }

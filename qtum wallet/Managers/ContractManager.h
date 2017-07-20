@@ -27,10 +27,12 @@ extern NSString *const kTokenDidChange;
 - (void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(TemplateModel*)templateModel;
 - (BOOL)addNewContractWithContractAddress:(NSString*) contractAddress
                                   withAbi:(NSString*) abiStr
-                              andWithName:(NSString*) contractName;
+                              andWithName:(NSString*) contractName
+                              errorString:(NSString **)errorString;
 - (BOOL)addNewTokenWithContractAddress:(NSString*) contractAddress
-                                  withAbi:(NSString*) abiStr
-                              andWithName:(NSString*) contractName;
+                               withAbi:(NSString*) abiStr
+                           andWithName:(NSString*) contractName
+                           errorString:(NSString **)errorString;
 
 - (NSArray<NSDictionary*>*)decodeDataForBackup;
 - (BOOL)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates;

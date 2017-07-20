@@ -24,5 +24,7 @@
 + (PopUpContent *)contentForAbiCopied;
 + (PopUpContent *)contentForRequestTokenPopUp;
 + (PopUpContent *)contentForInvalidQRCodeFormatPopUp;
++ (PopUpContent *)contentForTokenAdded;
++ (PopUpContent *)contentForContractAdded;
 
 @end
