@@ -19,7 +19,7 @@
 
 @implementation InterfaceInputFormModel
 
--(instancetype)initWithAbi:(NSDictionary*) abi{
+-(instancetype)initWithAbi:(NSArray*) abi{
     
     self = [super init];
     if (self) {
@@ -28,7 +28,7 @@
     return self;
 }
 
--(void)setUpWithObject:(NSDictionary*) abi {
+-(void)setUpWithObject:(NSArray*) abi {
     
     for (NSDictionary* item in abi) {
         AbiinterfaceItem* abiItem = [[AbiinterfaceItem alloc] initWithObject:item];
@@ -58,6 +58,57 @@
         _propertyItems = @[].mutableCopy;
     }
     return _propertyItems;
+}
+
+-(BOOL)contains:(InterfaceInputFormModel*) inerface {
+    
+    for (AbiinterfaceItem* function in inerface.functionItems) {
+        if (![self containsFunction:function]) {
+            return NO;
+        }
+    }
+    
+    for (AbiinterfaceItem* parameter in inerface.propertyItems) {
+        if (![self containsParameter:parameter]) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
+-(BOOL)containsItem:(AbiinterfaceItem*) inerfaceItem {
+    
+    if ([self containsFunction:inerfaceItem]) {
+        return YES;
+    } else if([self containsParameter:inerfaceItem]){
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)containsParameter:(AbiinterfaceItem*) param {
+    
+    BOOL contains = NO;
+    for (AbiinterfaceItem* item in self.propertyItems) {
+        if ([item isEqual:param]) {
+            contains = YES;
+            break;
+        }
+    }
+    return contains;
+}
+
+-(BOOL)containsFunction:(AbiinterfaceItem*) func {
+
+    BOOL contains = NO;
+    for (AbiinterfaceItem* item in self.functionItems) {
+        if ([item isEqual:func]) {
+            contains = YES;
+            break;
+        }
+    }
+    return contains;
 }
 
 @end

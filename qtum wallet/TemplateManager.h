@@ -27,5 +27,6 @@
 - (NSArray<TemplateModel*>*)standartPackOfTokenTemplates;
 
 - (void)clear;
+- (void)saveTemplate:(TemplateModel*) templateModel;
 
 @end

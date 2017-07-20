@@ -16,6 +16,8 @@
 #import "TemplateManager.h"
 #import "NotificationManager.h"
 #import "SocketManager.h"
+#import "ContractFileManager.h"
+#import "InterfaceInputFormModel.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -126,6 +128,13 @@ static NSString* kAddresses = @"kAddress";
 
 
 #pragma mark - Private Methods
+
+- (BOOL)validateContractAddress:(NSString *)contractAddress {
+    
+    NSString *addresRegex = @"[0-9a-f]{40,}";
+    NSPredicate *addressPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", addresRegex];
+    return [addressPredicate evaluateWithObject:contractAddress];
+}
 
 #pragma mark - Public Methods
 
@@ -265,68 +274,105 @@ static NSString* kAddresses = @"kAddress";
     }
 }
 
--(BOOL)addNewContractWithContractAddress:(NSString*) contractAddress withAbi:(NSString*) abiStr andWithName:(NSString*) contractName {
+-(BOOL)addNewContractWithContractAddress:(NSString*) contractAddress
+                                 withAbi:(NSString*) abiStr
+                             andWithName:(NSString*) contractName
+                             errorString:(NSString **)errorString {
+    
+    if (!contractName || contractName.length == 0) {
+        *errorString = NSLocalizedString(@"Invalid Contract Name", nil);
+        return NO;
+    }
+    
+    if (![self validateContractAddress:contractAddress]) {
+        *errorString = NSLocalizedString(@"Invalid Contract Address", nil);
+        return NO;
+    }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",contractAddress];
     NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
+    if (filteredArray.count > 0) {
+        *errorString = NSLocalizedString(@"Contract with same address already exists", nil);
+        return NO;
+    }
+
+    Contract* contract = [Contract new];
+    contract.contractAddress = contractAddress;
+    contract.creationDate = [NSDate date];
+    contract.localName = contractName;
+    contract.adresses = [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys];
+    contract.manager = self;
     
-    if (!filteredArray.count && contractAddress) {
+    TemplateModel* template = [[TemplateManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+    
+    if (template) {
         
-        Contract* contract = [Contract new];
-        contract.contractAddress = contractAddress;
-        contract.creationDate = [NSDate date];
-        contract.localName = contractName;
-        contract.adresses = [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys];
-        contract.manager = self;
-        
-        TemplateModel* template = [[TemplateManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
-        
-        if (template) {
-            
-            contract.templateModel = template;
-            [self addNewToken:contract];
-            [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
-            [self updateSpendableObject:contract];
-            [self save];
-            [self tokenDidChange:nil];
-            return YES;
-        }
+        contract.templateModel = template;
+        [self addNewToken:contract];
+        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
+        [self updateSpendableObject:contract];
+        [self save];
+        [self tokenDidChange:nil];
+        return YES;
     }
     
+    *errorString = NSLocalizedString(@"Something went wrong", nil);
     return NO;
 }
 
 - (BOOL)addNewTokenWithContractAddress:(NSString*) contractAddress
                                withAbi:(NSString*) abiStr
-                           andWithName:(NSString*) contractName {
+                           andWithName:(NSString*) contractName
+                           errorString:(NSString **)errorString {
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",contractAddress];
-    NSArray *filteredArray = [self.allTokens filteredArrayUsingPredicate:predicate];
-    
-    if (!filteredArray.count && contractAddress) {
-        
-        Contract* contract = [Contract new];
-        contract.contractAddress = contractAddress;
-        contract.creationDate = [NSDate date];
-        contract.localName = contractName;
-        contract.adresses = [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys];
-        contract.manager = self;
-        contract.isActive = YES;
-        
-        TemplateModel* template = [[TemplateManager sharedInstance] createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
-        
-        if (template) {
-            
-            contract.templateModel = template;
-            [self addNewToken:contract];
-            [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
-            [self updateSpendableObject:contract];
-            [self save];
-            [self tokenDidChange:nil];
-            return YES;
-        }
+    if (!contractName || contractName.length == 0) {
+        *errorString = NSLocalizedString(@"Invalid Token Name", nil);
+        return NO;
     }
     
+    if (![self validateContractAddress:contractAddress]) {
+        *errorString = NSLocalizedString(@"Invalid Token Address", nil);
+        return NO;
+    }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@", contractAddress];
+    NSArray *filteredArray = [self.allTokens filteredArrayUsingPredicate:predicate];
+    if (filteredArray.count > 0) {
+        *errorString = NSLocalizedString(@"Token with same address already exists", nil);
+        return NO;
+    }
+    
+    InterfaceInputFormModel* interfaceInput = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractInterfaceManager sharedInstance] arrayFromAbiString:abiStr]];
+    InterfaceInputFormModel* erc20interfaceInput = [[ContractInterfaceManager sharedInstance] tokenERC20Interface];
+    
+    if (![interfaceInput contains:erc20interfaceInput]) {
+        *errorString = NSLocalizedString(@"ABI doesn't match ERC20 standard", nil);
+        return NO;
+    }
+    
+    Contract* contract = [Contract new];
+    contract.contractAddress = contractAddress;
+    contract.creationDate = [NSDate date];
+    contract.localName = contractName;
+    contract.adresses = [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys];
+    contract.manager = self;
+    contract.isActive = YES;
+    
+    TemplateModel* template = [[TemplateManager sharedInstance] createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+    
+    if (template) {
+        [[TemplateManager sharedInstance] saveTemplate:template];
+        contract.templateModel = template;
+        [self addNewToken:contract];
+        [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Token Created", nil) andIdentifire:@"contract_created"];
+        [self updateSpendableObject:contract];
+        [self save];
+        [self tokenDidChange:nil];
+        
+        return YES;
+    }
+    
+    *errorString = NSLocalizedString(@"Something went wrong", nil);
     return NO;
 }
 

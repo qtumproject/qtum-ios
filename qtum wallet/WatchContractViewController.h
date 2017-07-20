@@ -15,8 +15,9 @@
 
 @property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
 @property (weak, nonatomic) id<FavouriteTemplatesCollectionSourceOutput> collectionSource;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (assign,nonatomic) UIEdgeInsets originInsets;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (void)changeStateForSelectedTemplate:(TemplateModel *)templateModel;
 

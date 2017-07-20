@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -78,6 +78,16 @@
                                             <constraint firstAttribute="height" constant="5" id="jsI-JR-IBV"/>
                                         </constraints>
                                     </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJE-PX-i8O">
+                                        <rect key="frame" x="0.0" y="121" width="315" height="32"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="CANCEL">
+                                            <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionOk:" destination="LQZ-jf-i0C" eventType="touchUpInside" id="0sc-kU-aHB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -86,14 +96,18 @@
                                     <constraint firstAttribute="trailing" secondItem="3HK-YE-IeN" secondAttribute="trailing" id="7v8-Y2-wUO"/>
                                     <constraint firstItem="THk-hZ-XMo" firstAttribute="leading" secondItem="MYF-uv-dMs" secondAttribute="leading" constant="20" id="A5s-hQ-ifa"/>
                                     <constraint firstItem="3HK-YE-IeN" firstAttribute="leading" secondItem="MYF-uv-dMs" secondAttribute="leading" id="Aph-93-Vhv"/>
+                                    <constraint firstItem="BJE-PX-i8O" firstAttribute="leading" secondItem="wkj-nE-6OT" secondAttribute="leading" id="FgJ-e9-2tF"/>
                                     <constraint firstItem="wkj-nE-6OT" firstAttribute="centerY" secondItem="yY3-8c-aKI" secondAttribute="centerY" id="Guw-TH-1Gl"/>
                                     <constraint firstItem="yY3-8c-aKI" firstAttribute="top" secondItem="THk-hZ-XMo" secondAttribute="bottom" constant="25" id="HKV-YE-6mg"/>
                                     <constraint firstItem="wkj-nE-6OT" firstAttribute="leading" secondItem="MYF-uv-dMs" secondAttribute="leading" id="PcK-Jx-s29"/>
                                     <constraint firstItem="hsf-Ei-fzp" firstAttribute="top" secondItem="f1U-5S-Ihy" secondAttribute="bottom" constant="15" id="QqS-Z5-aRH"/>
                                     <constraint firstItem="3HK-YE-IeN" firstAttribute="top" secondItem="yY3-8c-aKI" secondAttribute="bottom" constant="15" id="Wh0-Ac-ARk"/>
-                                    <constraint firstItem="wkj-nE-6OT" firstAttribute="width" secondItem="yY3-8c-aKI" secondAttribute="width" id="fBm-Bl-Xtp"/>
+                                    <constraint firstItem="wkj-nE-6OT" firstAttribute="width" secondItem="yY3-8c-aKI" secondAttribute="width" id="WzQ-3d-Xnj"/>
                                     <constraint firstItem="THk-hZ-XMo" firstAttribute="top" secondItem="hsf-Ei-fzp" secondAttribute="bottom" constant="10" id="ixe-bd-aAt"/>
+                                    <constraint firstItem="BJE-PX-i8O" firstAttribute="bottom" secondItem="wkj-nE-6OT" secondAttribute="bottom" id="lKZ-7Q-VOl"/>
                                     <constraint firstItem="yY3-8c-aKI" firstAttribute="leading" secondItem="wkj-nE-6OT" secondAttribute="trailing" id="lR6-so-jXT"/>
+                                    <constraint firstItem="BJE-PX-i8O" firstAttribute="trailing" secondItem="yY3-8c-aKI" secondAttribute="trailing" id="noV-3p-fdg"/>
+                                    <constraint firstItem="BJE-PX-i8O" firstAttribute="top" secondItem="wkj-nE-6OT" secondAttribute="top" id="q6a-Tr-tDQ"/>
                                     <constraint firstItem="f1U-5S-Ihy" firstAttribute="top" secondItem="MYF-uv-dMs" secondAttribute="top" constant="17" id="qQI-1Q-wif"/>
                                     <constraint firstAttribute="trailing" secondItem="THk-hZ-XMo" secondAttribute="trailing" constant="20" id="rQO-dc-VeX"/>
                                     <constraint firstAttribute="bottom" secondItem="3HK-YE-IeN" secondAttribute="bottom" id="ryz-Oj-Y1K"/>
@@ -118,6 +132,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="yY3-8c-aKI" id="fUK-Db-kJ8"/>
+                        <outlet property="centerOkButton" destination="BJE-PX-i8O" id="bbc-Rl-7EB"/>
                         <outlet property="messageLabel" destination="THk-hZ-XMo" id="fdP-Rg-4OK"/>
                         <outlet property="okButton" destination="wkj-nE-6OT" id="fOh-bu-vap"/>
                         <outlet property="titleLabel" destination="hsf-Ei-fzp" id="UyH-Qe-lvx"/>

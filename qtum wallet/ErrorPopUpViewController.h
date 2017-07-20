@@ -12,4 +12,6 @@
 
 @property (nonatomic, weak) id<PopUpWithTwoButtonsViewControllerDelegate> delegate;
 
+- (void)setOnlyCancelButton;
+
 @end
