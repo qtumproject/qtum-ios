@@ -18,8 +18,11 @@
 @property (assign, nonatomic) NSInteger activeTextFieldTag;
 @property (assign, nonatomic) BOOL isTextFieldsFilled;
 @property (weak, nonatomic) UIButton* nextButton;
+@property (weak, nonatomic) UITextField* localContractNameTextField;
 
 @end
+
+static NSInteger contractNameTraling = 50;
 
 @implementation CustomAbiInterphaseViewController
 
@@ -36,17 +39,18 @@
     image.frame = CGRectMake(10.0f, 22.0f, image.frame.size.width, image.frame.size.height);
     [self.scrollView addSubview:image];
     
-    UILabel *type = [[UILabel alloc] init];
-    type.text = self.contractTitle;
-    type.textColor = customBlueColor();
-    type.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
-    [type sizeToFit];
-    type.frame = CGRectMake(image.frame.origin.x + image.frame.size.width + 5.0f,
-                            image.frame.origin.y + image.frame.size.height / 2.0f - type.frame.size.height / 2.0f,
-                            type.frame.size.width,
-                            type.frame.size.height);
-    
-    [self.scrollView addSubview:type];
+    UITextField *localContractNameTextField = [[UITextField alloc] init];
+    localContractNameTextField.tintColor = customBlueColor();
+    localContractNameTextField.text = self.contractTitle;
+    localContractNameTextField.textColor = customBlueColor();
+    localContractNameTextField.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
+    [localContractNameTextField sizeToFit];
+    localContractNameTextField.frame = CGRectMake(image.frame.origin.x + image.frame.size.width + 5.0f,
+                            image.frame.origin.y + image.frame.size.height / 2.0f - localContractNameTextField.frame.size.height / 2.0f,
+                            self.view.frame.size.width - image.frame.origin.x + image.frame.size.width + 5.0f - contractNameTraling,
+                            localContractNameTextField.frame.size.height);
+    self.localContractNameTextField = localContractNameTextField;
+    [self.scrollView addSubview:localContractNameTextField];
 }
 
 -(void)configTextFields {
@@ -196,7 +200,8 @@
 }
 
 - (IBAction)didPressedNextAction:(id)sender {
-    [self.delegate createStepOneNextDidPressedWithInputs:[self prepareInputsData]];
+    
+    [self.delegate createStepOneNextDidPressedWithInputs:[self prepareInputsData] andContractName:self.localContractNameTextField.text];
 }
 
 - (IBAction)didVoidTapAction:(id)sender {
