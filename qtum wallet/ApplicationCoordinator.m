@@ -28,7 +28,6 @@
 #import "WalletManager.h"
 #import "Wallet.h"
 
-
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
 @property (strong,nonatomic) AppDelegate* appDelegate;
@@ -78,6 +77,7 @@
         _openUrlManager = [OpenURLManager new];
         _requestManager = [AppSettings sharedInstance].isRPC ? [RPCRequestManager sharedInstance] : [RequestManager sharedInstance];
         _walletManager = [WalletManager new];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contractCreationDidFailed) name:kContractCreationFailed object:nil];
     }
     return self;
 }
@@ -330,6 +330,13 @@
     [self addDependency:coordinator];
     controller.outputDelegate = self.tabCoordinator;
     [coordinator start];
+}
+
+#pragma mark - Global Observing
+
+-(void)contractCreationDidFailed {
+    
+    [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Failed to create contract", @"") andIdentifire:@"contract_creation_failed"];
 }
 
 @end

@@ -30,7 +30,21 @@
     __weak typeof(self) weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager getHistoryWithParam:param andAddresses:keyAddreses successHandler:^(id responseObject) {
         NSArray <HistoryElement *>* history = [weakSelf createHistoryElements:responseObject];
+        
         success(history);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)updateHistoryElementWithTxHash:(NSString *)txHash withSuccessHandler:(void(^)(HistoryElement *historyItem))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [[ApplicationCoordinator sharedInstance].requestManager infoAboutTransaction:txHash successHandler:^(id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            success([weakSelf createHistoryElement:responseObject]);
+        }
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
@@ -89,6 +103,8 @@
         [array addObject:element];
     }
     
+    [[ContractManager sharedInstance] checkSmartContractPretendents];
+
     return  array;
 }
 
