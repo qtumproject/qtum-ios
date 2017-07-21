@@ -14,6 +14,8 @@
 #import "ChooseTokenPaymentDelegateDataSourceLight.h"
 #import "LibraryTableSource.h"
 #import "FavouriteTemplatesCollectionSource.h"
+#import "NewsTableSourceDark.h"
+#import "NewsTableSourceLight.h"
 
 @implementation TableSourcesFactory
 
@@ -69,6 +71,15 @@
         return [FavouriteTemplatesCollectionSource new];
     }else{
         return [FavouriteTemplatesCollectionSource new];
+    }
+}
+
+- (NSObject<NewsTableSourceOutput> *)createNewsSource {
+    
+    if ([NSUserDefaults isDarkSchemeSetting]) {
+        return [NewsTableSourceDark new];
+    }else{
+        return [NewsTableSourceLight new];
     }
 }
 

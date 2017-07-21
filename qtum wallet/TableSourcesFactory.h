@@ -12,6 +12,7 @@
 @protocol ChooseTokenPaymentDelegateDataSourceProtocol;
 @protocol LibraryTableSourceOutput;
 @protocol FavouriteTemplatesCollectionSourceOutput;
+@protocol NewsTableSourceOutput;
 
 @interface TableSourcesFactory : NSObject
 
@@ -24,5 +25,6 @@
 - (NSObject <ChooseTokenPaymentDelegateDataSourceProtocol> *)createSendTokenPaymentSource;
 - (NSObject<LibraryTableSourceOutput> *)createLibrarySource;
 - (NSObject<FavouriteTemplatesCollectionSourceOutput> *)createFavouriteTemplatesSource;
+- (NSObject<NewsTableSourceOutput> *)createNewsSource;
 
 @end

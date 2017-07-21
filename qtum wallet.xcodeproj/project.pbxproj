@@ -65,7 +65,7 @@
 		B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601851E963EC800243A21 /* HistoryItemViewController.m */; };
 		B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */; };
 		B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */; };
-		B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */; };
+		B33EAF041E5B399C006125F3 /* NewsTableSourceDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF031E5B399C006125F3 /* NewsTableSourceDark.m */; };
 		B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */; };
 		B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF0C1E5C6CD2006125F3 /* LoginCoordinator.m */; };
 		B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF121E5C70EF006125F3 /* LoginViewController.m */; };
@@ -282,6 +282,11 @@
 		E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */; };
 		E73ECB611EF15EB40088C89D /* iMessageTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */; };
 		E74003C21F1E2AC7002CC587 /* QRCodeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E74003C11F1E2AC7002CC587 /* QRCodeItem.m */; };
+		E745BA1D1F21E78E00B2E216 /* NewsTableCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA1C1F21E78E00B2E216 /* NewsTableCellDark.m */; };
+		E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA1F1F21E79B00B2E216 /* NewsTableCellLight.m */; };
+		E745BA241F21FC3600B2E216 /* NewsViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA231F21FC3600B2E216 /* NewsViewControllerLight.m */; };
+		E745BA271F21FC4800B2E216 /* NewsViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA261F21FC4800B2E216 /* NewsViewControllerDark.m */; };
+		E745BA2E1F22019800B2E216 /* NewsTableSourceLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA2D1F22019800B2E216 /* NewsTableSourceLight.m */; };
 		E74636861DCB300800A13318 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E74636851DCB300800A13318 /* Utils.m */; };
 		E748578A1F13B25D00DCF9A6 /* TextFieldWithLineDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E74857891F13B25D00DCF9A6 /* TextFieldWithLineDark.m */; };
 		E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E748578D1F13B26E00DCF9A6 /* TextFieldWithLineLight.m */; };
@@ -569,8 +574,8 @@
 		B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemDelegateDataSource.m; sourceTree = "<group>"; };
 		B33BD5551EBCA6890076B0C1 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		B33BD5561EBCA6890076B0C1 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
-		B33EAF021E5B399C006125F3 /* NewsDataSourceAndDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDataSourceAndDelegate.h; sourceTree = "<group>"; };
-		B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDataSourceAndDelegate.m; sourceTree = "<group>"; };
+		B33EAF021E5B399C006125F3 /* NewsTableSourceDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableSourceDark.h; sourceTree = "<group>"; };
+		B33EAF031E5B399C006125F3 /* NewsTableSourceDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableSourceDark.m; sourceTree = "<group>"; };
 		B33EAF051E5C5D9A006125F3 /* AuthCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthCoordinator.h; sourceTree = "<group>"; };
 		B33EAF061E5C5D9A006125F3 /* AuthCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthCoordinator.m; sourceTree = "<group>"; };
 		B33EAF091E5C5E79006125F3 /* Coordinatorable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coordinatorable.h; sourceTree = "<group>"; };
@@ -1055,6 +1060,20 @@
 		E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMessageTextFieldWithLine.m; sourceTree = "<group>"; };
 		E74003C01F1E2AC7002CC587 /* QRCodeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeItem.h; sourceTree = "<group>"; };
 		E74003C11F1E2AC7002CC587 /* QRCodeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeItem.m; sourceTree = "<group>"; };
+		E745BA1B1F21E78E00B2E216 /* NewsTableCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableCellDark.h; sourceTree = "<group>"; };
+		E745BA1C1F21E78E00B2E216 /* NewsTableCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableCellDark.m; sourceTree = "<group>"; };
+		E745BA1E1F21E79B00B2E216 /* NewsTableCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableCellLight.h; sourceTree = "<group>"; };
+		E745BA1F1F21E79B00B2E216 /* NewsTableCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableCellLight.m; sourceTree = "<group>"; };
+		E745BA221F21FC3600B2E216 /* NewsViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewControllerLight.h; sourceTree = "<group>"; };
+		E745BA231F21FC3600B2E216 /* NewsViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewControllerLight.m; sourceTree = "<group>"; };
+		E745BA251F21FC4800B2E216 /* NewsViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewControllerDark.h; sourceTree = "<group>"; };
+		E745BA261F21FC4800B2E216 /* NewsViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewControllerDark.m; sourceTree = "<group>"; };
+		E745BA281F21FC5B00B2E216 /* NewsOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsOutput.h; sourceTree = "<group>"; };
+		E745BA291F21FC7400B2E216 /* NewsOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsOutputDelegate.h; sourceTree = "<group>"; };
+		E745BA2A1F21FDE200B2E216 /* NewsTableSourceOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsTableSourceOutput.h; sourceTree = "<group>"; };
+		E745BA2B1F21FDF100B2E216 /* NewsTableSourceOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsTableSourceOutputDelegate.h; sourceTree = "<group>"; };
+		E745BA2C1F22019800B2E216 /* NewsTableSourceLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableSourceLight.h; sourceTree = "<group>"; };
+		E745BA2D1F22019800B2E216 /* NewsTableSourceLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableSourceLight.m; sourceTree = "<group>"; };
 		E74636841DCB300800A13318 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		E74636851DCB300800A13318 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		E74857881F13B25D00DCF9A6 /* TextFieldWithLineDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLineDark.h; sourceTree = "<group>"; };
@@ -1599,15 +1618,11 @@
 		B351305E1E49BF720048A28C /* NewsFlow */ = {
 			isa = PBXGroup;
 			children = (
-				B35130621E49DC480048A28C /* Cell */,
+				E745BA211F21FA4800B2E216 /* NewsOutput */,
 				B3DD27581E681A7A00BB0635 /* NewsCoordinator.h */,
 				B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */,
 				B32C3CFD1E112A470094C82C /* NewsNavigationController.h */,
 				B32C3CFE1E112A470094C82C /* NewsNavigationController.m */,
-				B351305B1E49BF6D0048A28C /* NewsController.h */,
-				B351305C1E49BF6D0048A28C /* NewsController.m */,
-				B33EAF021E5B399C006125F3 /* NewsDataSourceAndDelegate.h */,
-				B33EAF031E5B399C006125F3 /* NewsDataSourceAndDelegate.m */,
 			);
 			name = NewsFlow;
 			sourceTree = "<group>";
@@ -1615,10 +1630,14 @@
 		B35130621E49DC480048A28C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B35130631E49DCBC0048A28C /* NewsTableCell.h */,
-				B35130641E49DCBC0048A28C /* NewsTableCell.m */,
 				B35EE88B1E4C6963008F4403 /* FirstNewTableCell.h */,
 				B35EE88C1E4C6963008F4403 /* FirstNewTableCell.m */,
+				B35130631E49DCBC0048A28C /* NewsTableCell.h */,
+				B35130641E49DCBC0048A28C /* NewsTableCell.m */,
+				E745BA1B1F21E78E00B2E216 /* NewsTableCellDark.h */,
+				E745BA1C1F21E78E00B2E216 /* NewsTableCellDark.m */,
+				E745BA1E1F21E79B00B2E216 /* NewsTableCellLight.h */,
+				E745BA1F1F21E79B00B2E216 /* NewsTableCellLight.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1746,6 +1765,10 @@
 				B3F06D0B1E69B55D006341F7 /* Contract */,
 				B3F06D071E699371006341F7 /* Subscribe */,
 				B386F5B21E139C9E004D231B /* Cell */,
+				E760F4A81F0FA23D0056D042 /* ProfileCoordinator.h */,
+				E760F4A91F0FA23D0056D042 /* ProfileCoordinator.m */,
+				B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */,
+				B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */,
 			);
 			name = "Profile Flow";
 			sourceTree = "<group>";
@@ -2435,6 +2458,28 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		E745BA211F21FA4800B2E216 /* NewsOutput */ = {
+			isa = PBXGroup;
+			children = (
+				E745BA2A1F21FDE200B2E216 /* NewsTableSourceOutput.h */,
+				E745BA2B1F21FDF100B2E216 /* NewsTableSourceOutputDelegate.h */,
+				B33EAF021E5B399C006125F3 /* NewsTableSourceDark.h */,
+				B33EAF031E5B399C006125F3 /* NewsTableSourceDark.m */,
+				E745BA2C1F22019800B2E216 /* NewsTableSourceLight.h */,
+				E745BA2D1F22019800B2E216 /* NewsTableSourceLight.m */,
+				B35130621E49DC480048A28C /* Cell */,
+				E745BA281F21FC5B00B2E216 /* NewsOutput.h */,
+				E745BA291F21FC7400B2E216 /* NewsOutputDelegate.h */,
+				B351305B1E49BF6D0048A28C /* NewsController.h */,
+				B351305C1E49BF6D0048A28C /* NewsController.m */,
+				E745BA251F21FC4800B2E216 /* NewsViewControllerDark.h */,
+				E745BA261F21FC4800B2E216 /* NewsViewControllerDark.m */,
+				E745BA221F21FC3600B2E216 /* NewsViewControllerLight.h */,
+				E745BA231F21FC3600B2E216 /* NewsViewControllerLight.m */,
+			);
+			name = NewsOutput;
+			sourceTree = "<group>";
+		};
 		E748579D1F13C43D00DCF9A6 /* Export Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -2861,20 +2906,16 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B33EAF241E5DB039006125F3 /* qtum wallet.entitlements */,
 				B3F5797E1F0D297900A13571 /* Services */,
 				B3EE936F1F04E0D700550C60 /* Security Flow */,
 				E7FA0CB01ECD808200702C4E /* Pop Ups */,
 				E73D9C8A1ECB196400A09CFE /* Splash Screen */,
 				B384F3D91EB9BF250075F1E8 /* Localization */,
-				B33EAF241E5DB039006125F3 /* qtum wallet.entitlements */,
 				B31CF7271E126E05000BCF41 /* Auth and Login */,
 				B33EAF011E5B394D006125F3 /* Shared Cells */,
 				B351305E1E49BF720048A28C /* NewsFlow */,
 				B386F5AE1E1392B1004D231B /* Profile Flow */,
-				E760F4A81F0FA23D0056D042 /* ProfileCoordinator.h */,
-				E760F4A91F0FA23D0056D042 /* ProfileCoordinator.m */,
-				B32C3CF71E112A1A0094C82C /* ProfileNavigationCoordinator.h */,
-				B32C3CF81E112A1A0094C82C /* ProfileNavigationCoordinator.m */,
 				B386F5AD1E1297FF004D231B /* Send Flow */,
 				B31CF7211E125C65000BCF41 /* Pin Flow */,
 				B31CF71B1E1249F9000BCF41 /* Wallet Flow */,
@@ -3501,6 +3542,7 @@
 				E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */,
 				E7C101B51F13CBBE00848526 /* BorderedLabelDark.m in Sources */,
 				B36505A71F16015A00521603 /* ExportBrainKeyViewControllerDark.m in Sources */,
+				E745BA271F21FC4800B2E216 /* NewsViewControllerDark.m in Sources */,
 				E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */,
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
@@ -3515,6 +3557,7 @@
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				E74857961F13BA5300DCF9A6 /* LanguageViewControllerLight.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
+				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
 				E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */,
@@ -3558,7 +3601,7 @@
 				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,
 				B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */,
 				B3EE8F2B1F0E10AB00131823 /* TabBarControllerDark.m in Sources */,
-				B33EAF041E5B399C006125F3 /* NewsDataSourceAndDelegate.m in Sources */,
+				B33EAF041E5B399C006125F3 /* NewsTableSourceDark.m in Sources */,
 				E798462A1F0D1E40002A516A /* HistoryTableViewCellDark.m in Sources */,
 				B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */,
 				E7360EC11F18EBED003ED21D /* ShareTokenPopUpViewController.m in Sources */,
@@ -3605,6 +3648,7 @@
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
 				E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */,
 				E7D7C09E1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m in Sources */,
+				E745BA241F21FC3600B2E216 /* NewsViewControllerLight.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
 				B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */,
 				E73CF6D11EE2D6FC0044DF78 /* PopUpContent.m in Sources */,
@@ -3612,6 +3656,7 @@
 				E760F4911F0F6D8B0056D042 /* BalancePageViewControllerDark.m in Sources */,
 				E71F1C841F1CD68A00961B19 /* FavouriteTemplatesCollectionSource.m in Sources */,
 				E73CF6C81EE2CF970044DF78 /* ErrorPopUpViewController.m in Sources */,
+				E745BA2E1F22019800B2E216 /* NewsTableSourceLight.m in Sources */,
 				E73D36FE1ECF1636009173BD /* AddressesTokenTableViewCell.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */,
@@ -3677,6 +3722,7 @@
 				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
+				E745BA1D1F21E78E00B2E216 /* NewsTableCellDark.m in Sources */,
 				E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */,
 				E73D37011ECF1684009173BD /* ActivityTokenTableViewCell.m in Sources */,
 				E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */,
