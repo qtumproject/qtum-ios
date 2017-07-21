@@ -37,7 +37,8 @@
         [identifire isEqualToString:@"ExportBrainKeyViewController"] ||
         [identifire isEqualToString:@"HistoryItemViewController"] ||
         [identifire isEqualToString:@"RecieveViewController"] ||
-        [identifire isEqualToString:@"ConfirmPinForExportViewController"]) {
+        [identifire isEqualToString:@"ConfirmPinForExportViewController"] ||
+        [identifire isEqualToString:@"NewsViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

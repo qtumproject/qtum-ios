@@ -1,24 +1,17 @@
 //
-//  NewsDataSourceAndDelegate.m
+//  NewsTableSourceDark.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 20.02.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "NewsDataSourceAndDelegate.h"
+#import "NewsTableSourceDark.h"
 #import "NewsCellModel.h"
-#import "NewsTableCell.h"
+#import "NewsTableCellDark.h"
 #import "FirstNewTableCell.h"
 
-@interface NewsDataSourceAndDelegate ()
-
-@end
-
-static NSString* reuseIdentifire = @"NewsTableCell";
-static NSString* firstReuseIdentifire = @"FirstNewsTableCell";
-
-@implementation NewsDataSourceAndDelegate
+@implementation NewsTableSourceDark
 
 #pragma mark - UITableViewDataSource
 
@@ -27,10 +20,12 @@ static NSString* firstReuseIdentifire = @"FirstNewsTableCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-        NewsTableCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifire];
-        NewsCellModel* object = self.dataArray[indexPath.row];
-        [cell setContentWithDict:object];
-        return cell;
+    
+    NewsTableCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsTableCellDark"];
+    NewsCellModel* object = self.dataArray[indexPath.row];
+    [cell setContentWithDict:object];
+    
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate
