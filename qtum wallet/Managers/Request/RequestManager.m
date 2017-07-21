@@ -237,7 +237,7 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
                andAddresses:(NSArray*) addresses
              successHandler:(void(^)(id responseObject))success
           andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
-//    /history/{address}/{limit}/{offset}
+
     NSMutableDictionary* adressesForParam;
     NSString* pathString;
     __weak __typeof(self)weakSelf = self;
@@ -262,6 +262,27 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
         DLog(@"Failure");
     }];
 }
+
+- (void)infoAboutTransaction:(NSString*) txhash
+              successHandler:(void(^)(id responseObject))success
+           andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    NSString* pathString = [NSString stringWithFormat:@"%@/%@",@"transactions",txhash];
+    __weak __typeof(self)weakSelf = self;
+
+    [self requestWithType:GET path:pathString andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        __block id response = responseObject;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            success(response);
+            DLog(@"Succes");
+        });
+        
+    } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
+        failure(error,message);
+        DLog(@"Failure");
+    }];
+}
+
 
 #pragma mark - Info
 

@@ -13,6 +13,7 @@
 @class Contract;
 
 extern NSString *const kTokenDidChange;
+extern NSString *const kContractCreationFailed;
 
 @interface ContractManager : NSObject <Managerable, Clearable>
 
@@ -23,6 +24,7 @@ extern NSString *const kTokenDidChange;
 - (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance;
 - (void)updateTokenWithContractAddress:(NSString*) address withAddressBalanceDictionary:(NSDictionary*) addressBalance;
 - (void)checkSmartContract:(HistoryElement*) item;
+- (void)checkSmartContractPretendents;
 - (void)addNewTokenWithContractAddress:(NSString*) contractAddress;
 - (void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(TemplateModel*)templateModel;
 - (BOOL)addNewContractWithContractAddress:(NSString*) contractAddress

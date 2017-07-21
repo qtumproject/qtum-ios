@@ -11,7 +11,8 @@
 @implementation HistoryElement
 
 
-- (void)calcAmountAndAdresses:(NSDictionary *)dictionary{
+- (void)calcAmountAndAdresses:(NSDictionary *)dictionary {
+    
     NSDictionary* hashTableAdresses = [self hashTableOfKeys];
     CGFloat outMoney = 0;
     CGFloat inMoney = 0;

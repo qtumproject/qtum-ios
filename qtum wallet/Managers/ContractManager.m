@@ -18,14 +18,15 @@
 #import "SocketManager.h"
 #import "ContractFileManager.h"
 #import "InterfaceInputFormModel.h"
+#import "WalletManagerRequestAdapter.h"
 
 NSString const *kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
+NSString *const kContractCreationFailed = @"kContractCreationFailed";
 
 static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
 static NSString* kTemplateModel = @"kTemplateModel";
 static NSString* kAddresses = @"kAddress";
-
 
 @interface ContractManager () <TokenDelegate>
 
@@ -217,9 +218,27 @@ static NSString* kAddresses = @"kAddress";
     //TODO update Token Transaction
 }
 
+- (void)checkSmartContractPretendents {
+    
+    for (NSString* txHash in self.smartContractPretendents) {
+        
+        [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter updateHistoryElementWithTxHash:txHash withSuccessHandler:^(HistoryElement *historyItem) {
+            
+            if (historyItem) {
+                [self checkSmartContract:historyItem];
+            }
+            
+        } andFailureHandler:^(NSError *error, NSString *message) {
+            
+            DLog(@"Invalid hisory response");
+        }];
+    }
+}
+
 -(void)checkSmartContract:(HistoryElement*) item {
     
-    if (item.confirmed && item.isSmartContractCreater) {
+    if (item.confirmed && item.isSmartContractCreater && [self.smartContractPretendents objectForKey:item.txHash]) {
+        
         NSString* key = item.txHash;
         NSDictionary* tokenInfo = self.smartContractPretendents[key];
         NSArray* addresses = tokenInfo[kAddresses];
@@ -250,6 +269,9 @@ static NSString* kAddresses = @"kAddress";
             [self deleteSmartContractPretendentWithKey:key];
             [self save];
         }
+    } else if (item.confirmed && [self.smartContractPretendents objectForKey:item.txHash]) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kContractCreationFailed object:nil];
     }
 }
 
@@ -259,6 +281,7 @@ static NSString* kAddresses = @"kAddress";
     NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
     
     if (!filteredArray.count && contractAddress) {
+        
         Contract* token = [Contract new];
         token.contractAddress = contractAddress;
         token.creationDate = [NSDate date];
@@ -326,6 +349,7 @@ static NSString* kAddresses = @"kAddress";
                            errorString:(NSString **)errorString {
     
     if (!contractName || contractName.length == 0) {
+        
         *errorString = NSLocalizedString(@"Invalid Token Name", nil);
         return NO;
     }
