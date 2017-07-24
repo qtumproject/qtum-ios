@@ -354,6 +354,8 @@
         
         NSString *errorString = [self keychainErrorToString:status];
         NSString *message = [NSString stringWithFormat:@"SecItemDelete status: %@", errorString];
+        
+        DLog(@"%@",message);
     });
 }
 
