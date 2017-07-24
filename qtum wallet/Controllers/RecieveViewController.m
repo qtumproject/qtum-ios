@@ -41,13 +41,15 @@
     
     self.balanceLabel.text = [NSString stringWithFormat:@"%.3f", self.wallet.balance];
     self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f", self.wallet.unconfirmedBalance];
+    
+    self.publicAddressLabel.text = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+    self.publicAddressLabel.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
-    self.publicAddressLabel.text = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
     [self createQRCode];
 }
 
@@ -68,6 +70,7 @@
     
     [QRCodeManager createQRCodeFromPublicAddress:qtumAddress tokenAddress:tokenAddress andAmount:amountString forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
         weakSelf.qrCodeImageView.image = image;
+        weakSelf.publicAddressLabel.hidden = NO;
         weakSelf.shareButton.enabled = YES;
         weakSelf.walletAdressCopyButton.enabled = YES;
         weakSelf.shareLabelButton.enabled = YES;

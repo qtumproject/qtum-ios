@@ -7,16 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewsOutput.h"
 
-@protocol NewsCoordinatorDelegate;
-@class NewsDataSourceAndDelegate;
+@interface NewsController : BaseViewController <NewsOutput>
 
-@interface NewsController : BaseViewController
-
-@property (strong,nonatomic) NewsDataSourceAndDelegate* delegateDataSource;
-@property (weak,nonatomic) id <NewsCoordinatorDelegate> delegate;
-
--(void)reloadTableView;
--(void)failedToGetData;
+@property (weak, nonatomic) id<NewsOutputDelegate> delegate;
+@property (weak, nonatomic) NSObject<NewsTableSourceOutput> *tableSource;
 
 @end

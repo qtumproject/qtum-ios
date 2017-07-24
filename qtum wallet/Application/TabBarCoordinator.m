@@ -13,7 +13,7 @@
 #import "ProfileCoordinator.h"
 #import "AppDelegate.h"
 
-@interface TabBarCoordinator () <NewsCoordinatorDelegate, SendCoordinatorDelegate>
+@interface TabBarCoordinator () <SendCoordinatorDelegate>
 
 @property (strong,nonatomic) UITabBarController <TabbarOutput>* tabbarOutput;
 @property (assign,nonatomic) BOOL walletsAlreadyStarted;

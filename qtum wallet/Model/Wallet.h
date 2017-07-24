@@ -30,7 +30,8 @@ extern NSInteger const brandKeyWordsCount;
 @property (nonatomic, readonly) NSInteger countOfUsedKeys;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
 
-- (void)configAddressesWithPin:(NSString*) pin;
+- (BOOL)configAddressesWithPin:(NSString*) pin;
+- (BOOL)changeBrandKeyPinWithOldPin:(NSString*) pin toNewPin:(NSString*) newPin;
 - (BTCKey *)lastRandomKeyOrRandomKey;
 - (BTCKey *)randomKey;
 - (BTCKey *)keyAtIndex:(NSUInteger)index;

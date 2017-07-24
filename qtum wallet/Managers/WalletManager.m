@@ -182,21 +182,38 @@ NSString const *kUserPinHash = @"HashPIN";
     }
     
     if (userPin) {
-        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
         [[FXKeychain defaultKeychain] setObject:[userPin sha3:SHA3256] forKey:kUserPinHash];
+        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
     }
 }
 
 -(void)storePin:(NSString*) pin {
     
-    if ([[FXKeychain defaultKeychain] objectForKey:kUserPinHash]) {
-        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPinHash];
-    }
-    
     NSString* hashOfPin = [pin sha3:SHA3256];
     
-    [[FXKeychain defaultKeychain] setObject:hashOfPin forKey:kUserPinHash];
-    self.hashOfPin = hashOfPin;
+    if (hashOfPin) {
+        
+        [[FXKeychain defaultKeychain] setObject:hashOfPin forKey:kUserPinHash];
+        [[FXKeychain defaultKeychain] addTouchIdString:pin];
+        self.hashOfPin = hashOfPin;
+        [self save];
+    }
+}
+
+-(BOOL)changePinFrom:(NSString*) pin toPin:(NSString*) newPin{
+    
+    NSString* hashOfPin = [newPin sha3:SHA3256];
+    
+    if ([self.wallet changeBrandKeyPinWithOldPin:pin toNewPin:newPin] && hashOfPin) {
+        
+        [[FXKeychain defaultKeychain] setObject:hashOfPin forKey:kUserPinHash];
+        [[FXKeychain defaultKeychain] addTouchIdString:newPin];
+        self.hashOfPin = hashOfPin;
+        [self save];
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)removePin {
@@ -217,8 +234,7 @@ NSString const *kUserPinHash = @"HashPIN";
 
 - (BOOL)startWithPin:(NSString*) pin {
     
-    [self.wallet configAddressesWithPin:pin];
-    return YES; //TODO
+    return [self.wallet configAddressesWithPin:pin];
 }
 
 - (NSString*)brandKeyWithPin:(NSString*) pin {

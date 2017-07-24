@@ -69,6 +69,7 @@
 #import "RecieveOutput.h"
 #import "LoginViewOutput.h"
 #import "LibraryOutput.h"
+#import "NewsOutput.h"
 
 @implementation ControllersFactory
 
@@ -102,8 +103,8 @@
 
 -(UIViewController*)newsFlowTab {
     
-    UIViewController* controller = [UIViewController controllerInStoryboard:@"News" withIdentifire:nil];
-    NewsNavigationController* nav = [[NewsNavigationController alloc] initWithRootViewController:controller];
+    NSObject<NewsOutput> *controller = (NSObject<NewsOutput>*)[UIViewController controllerInStoryboard:@"News" withIdentifire:@"NewsViewController"];
+    NewsNavigationController* nav = [[NewsNavigationController alloc] initWithRootViewController:[controller toPresent]];
     return nav;
 }
 

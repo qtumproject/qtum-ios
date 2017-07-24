@@ -16,7 +16,7 @@
 
 @required
 -(void)createStepOneCancelDidPressed;
--(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs;
+-(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName;
 -(void)finishStepFinishDidPressed;
 -(void)finishStepBackDidPressed;
 -(void)didSelectContractStore;

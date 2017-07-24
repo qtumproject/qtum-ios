@@ -8,18 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol NewsCoordinatorDelegate <NSObject>
-
-@required
--(void)refreshTableViewData;
-
-@end
-
-@protocol TabBarCoordinatorDelegate;
-
-@interface NewsCoordinator : BaseCoordinator <Coordinatorable,NewsCoordinatorDelegate>
-
-@property (weak,nonatomic) id <NewsCoordinatorDelegate> delegate;
+@interface NewsCoordinator : BaseCoordinator <Coordinatorable>
 
 -(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 

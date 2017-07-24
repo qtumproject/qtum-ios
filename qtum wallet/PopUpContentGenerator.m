@@ -56,6 +56,16 @@
     return content;
 }
 
++ (PopUpContent *)contentForTokenAdded{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Token was added to your wallet", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
+    return content;
+}
+
++ (PopUpContent *)contentForContractAdded{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Contract was added to your wallet", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
+    return content;
+}
+
 + (PopUpContent *)contentForSourceCode{
     PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Source Code", nil) message:nil okTitle:NSLocalizedString(@"Copy", nil) cancelTitle:nil];
     return content;

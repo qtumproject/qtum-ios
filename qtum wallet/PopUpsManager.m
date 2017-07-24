@@ -157,11 +157,11 @@
     [controller showFromViewController:presenter animated:YES completion:completion];
 }
 
-- (void)showErrorPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
+- (ErrorPopUpViewController *)showErrorPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
     
     BOOL needShow = [self checkAndHideCurrentPopUp:[ErrorPopUpViewController class] withContent:content];
     if (!needShow) {
-        return;
+        return nil;
     }
     
     ErrorPopUpViewController *controller = [self createErrorPopUp];
@@ -169,6 +169,7 @@
     [controller setContent:content];
     self.currentPopUp = controller;
     [controller showFromViewController:presenter animated:YES completion:completion];
+    return controller;
 }
 
 - (void)showInformationPopUp:(id<PopUpViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion{

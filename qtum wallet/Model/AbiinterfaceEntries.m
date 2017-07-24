@@ -32,7 +32,7 @@
 
 -(AbiInputType)determineTipe:(NSString*) typeString {
     
-    if ([typeString isEqualToString:@"uint256"]) {
+    if ([typeString isEqualToString:@"uint256"] || [typeString isEqualToString:@"uint"]) {
         return UInt256Type;
     } else if ([typeString isEqualToString:@"uint8"]){
         return UInt8Type;
@@ -40,9 +40,40 @@
         return StringType;
     } else if ([typeString isEqualToString:@"address"]) {
         return AddressType;
-    }
+    } 
     
     return BoolType;
+}
+
+#pragma mark - Equality
+
+- (BOOL)isEqualToInput:(AbiinterfaceEntries *)aInput {
+
+    if (!aInput) {
+        return NO;
+    }
+    
+    BOOL haveEqualType = self.type == aInput.type;
+
+    return haveEqualType;
+}
+
+- (BOOL)isEqual:(id)anObject {
+
+    if (self == anObject) {
+        return YES;
+    }
+
+    if (![anObject isKindOfClass:[AbiinterfaceEntries class]]) {
+        return NO;
+    }
+
+    return [self isEqualToInput:(AbiinterfaceEntries *)anObject];
+}
+
+- (NSUInteger)hash {
+    
+    return [self.name hash] ^ self.type;
 }
 
 

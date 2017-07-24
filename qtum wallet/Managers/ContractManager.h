@@ -13,6 +13,7 @@
 @class Contract;
 
 extern NSString *const kTokenDidChange;
+extern NSString *const kContractCreationFailed;
 
 @interface ContractManager : NSObject <Managerable, Clearable>
 
@@ -23,14 +24,22 @@ extern NSString *const kTokenDidChange;
 - (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance;
 - (void)updateTokenWithContractAddress:(NSString*) address withAddressBalanceDictionary:(NSDictionary*) addressBalance;
 - (void)checkSmartContract:(HistoryElement*) item;
+- (void)checkSmartContractPretendents;
 - (void)addNewTokenWithContractAddress:(NSString*) contractAddress;
-- (void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(TemplateModel*)templateModel;
+- (void)addSmartContractPretendent:(NSArray*) addresses
+                           forKey:(NSString*) key
+                     withTemplate:(TemplateModel*)templateModel
+              andLocalContractName:(NSString*) localName;
+
 - (BOOL)addNewContractWithContractAddress:(NSString*) contractAddress
                                   withAbi:(NSString*) abiStr
-                              andWithName:(NSString*) contractName;
+                              andWithName:(NSString*) contractName
+                              errorString:(NSString **)errorString;
+
 - (BOOL)addNewTokenWithContractAddress:(NSString*) contractAddress
-                                  withAbi:(NSString*) abiStr
-                              andWithName:(NSString*) contractName;
+                               withAbi:(NSString*) abiStr
+                           andWithName:(NSString*) contractName
+                           errorString:(NSString **)errorString;
 
 - (NSArray<NSDictionary*>*)decodeDataForBackup;
 - (BOOL)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates;

@@ -7,15 +7,15 @@
 //
 
 #import "NewsCoordinator.h"
-#import "NewsDataSourceAndDelegate.h"
-#import "NewsController.h"
 #import "NewsCellModel.h"
+#import "NewsOutput.h"
+#import "NewsTableSourceOutput.h"
 
-@interface NewsCoordinator ()
+@interface NewsCoordinator () <NewsOutputDelegate>
 
-@property (strong, nonatomic) UINavigationController* navigationController;
-@property (strong, nonatomic) NewsDataSourceAndDelegate* delegateDataSource;
-@property (weak, nonatomic) NewsController* newsController;
+@property (strong, nonatomic) UINavigationController *navigationController;
+@property (strong, nonatomic) NSObject<NewsTableSourceOutput> *newsTableSource;
+@property (weak, nonatomic) NSObject<NewsOutput> *newsController;
 
 
 @end
@@ -33,15 +33,16 @@
 #pragma mark - Coordinatorable
 
 -(void)start {
-    NewsController* controller = (NewsController*)self.navigationController.viewControllers[0];
-    controller.delegate = self;
-    self.delegateDataSource = [NewsDataSourceAndDelegate new];
-    self.delegateDataSource.dataArray = @[];
-    controller.delegateDataSource = self.delegateDataSource;
-    self.newsController = controller;
+    
+    self.newsController = (NSObject<NewsOutput> *)self.navigationController.viewControllers[0];
+    self.newsTableSource = [[TableSourcesFactory sharedInstance] createNewsSource];
+    
+    self.newsTableSource.dataArray = @[];
+    self.newsController.tableSource = self.newsTableSource;
+    self.newsController.delegate = self;
 }
 
-#pragma mark - NewsCoordinatorDelegate
+#pragma mark - NewsOutputDelegate
 
 -(void)refreshTableViewData{
     __weak __typeof(self) weakSelf = self;
@@ -62,7 +63,7 @@
         NewsCellModel* object = [[NewsCellModel alloc] initWithDict:item];
         [dataArray addObject:object];
     }
-    self.delegateDataSource.dataArray = dataArray;
+    self.newsTableSource.dataArray = dataArray;
 }
 
 

@@ -56,7 +56,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 }
 
 
--(void)configAddressesWithPin:(NSString*) pin {
+-(BOOL)configAddressesWithPin:(NSString*) pin {
     
     NSString* stringBrandKey = [self brandKeyWithPin:pin];
     
@@ -66,7 +66,23 @@ NSInteger const USERS_KEYS_COUNT = 10;
     } else {
         DLog(@"Cant Create seed words from Pin");
     }
+    
+    return self.keyChain;
 }
+
+- (BOOL)changeBrandKeyPinWithOldPin:(NSString*) pin toNewPin:(NSString*) newPin {
+    
+    NSString* stringBrandKey = [self brandKeyWithPin:pin];
+    if (stringBrandKey) {
+        NSString* newEncriptedBrandKey = [NSString encryptString:stringBrandKey withKey:newPin];
+        if (newEncriptedBrandKey) {
+            self.encriptedBrandKey = [NSString encryptString:stringBrandKey withKey:newPin];
+        }
+        return newEncriptedBrandKey;
+    }
+    return NO;
+}
+
 
 #pragma mamrk - Setters
 

@@ -39,7 +39,8 @@
         [identifire isEqualToString:@"RecieveViewController"] ||
         [identifire isEqualToString:@"ConfirmPinForExportViewController"] ||
         [identifire isEqualToString:@"RestoreWalletViewController"] ||
-        [identifire isEqualToString:@"ExportWalletBrandKeyViewController"]) {
+        [identifire isEqualToString:@"ExportWalletBrandKeyViewController"] ||
+        [identifire isEqualToString:@"NewsViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

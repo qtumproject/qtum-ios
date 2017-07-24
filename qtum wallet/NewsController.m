@@ -8,22 +8,21 @@
 
 #import "NewsController.h"
 #import "NewsCellModel.h"
-#import "NewsDataSourceAndDelegate.h"
 #import "NewsCoordinator.h"
-
 
 @interface NewsController ()
 
-@property (strong,nonatomic)UIRefreshControl* refresh;
+@property (strong, nonatomic)UIRefreshControl* refresh;
+@property (strong, nonatomic) NSMutableArray <NewsCellModel*> * dataArray;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong,nonatomic) NSMutableArray <NewsCellModel*> * dataArray;
 
 @end
-
 
 @implementation NewsController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     [self configTableView];
@@ -62,8 +61,8 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120.0f;
     
-    self.tableView.delegate = self.delegateDataSource;
-    self.tableView.dataSource = self.delegateDataSource;
+    self.tableView.delegate = self.tableSource;
+    self.tableView.dataSource = self.tableSource;
 }
 
 #pragma mark - Private Methods

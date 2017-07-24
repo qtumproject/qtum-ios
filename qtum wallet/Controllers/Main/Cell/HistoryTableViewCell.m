@@ -24,7 +24,7 @@
     
     self.addressLabel.text = historyElement.address;
     self.amountLabel.text = historyElement.amountString;
-    self.dateLabel.text = historyElement.shortDateString;
+    self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0) ? historyElement.shortDateString : NSLocalizedString(@"Unconfirmed", nil);
     
     if (historyElement.send) {
         self.typeLabel.text = NSLocalizedString(@"Sent", "");

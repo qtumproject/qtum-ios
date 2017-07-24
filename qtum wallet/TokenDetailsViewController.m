@@ -39,6 +39,8 @@ CGFloat const HeightForHeaderView = 50.0f;
     
     [self.headerVIew setRightConstraint:self.trailingForLineConstraint];
     [self updateHeader:self.token];
+    
+    self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
 }
 
 - (void)setTableSource:(TokenDetailsTableSource *)source{

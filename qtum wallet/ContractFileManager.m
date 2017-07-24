@@ -55,16 +55,16 @@
     [self copyAllFilesFormPath:fromPath toPath:toPath];
 }
 
--(NSDictionary*)standartAbi {
+-(NSArray*)standartAbi {
     
     return [self abiWithTemplate:[[TemplateManager sharedInstance] standartTokenTemplate].path];
 }
 
--(NSDictionary*)abiWithTemplate:(NSString*) templatePath {
+-(NSArray*)abiWithTemplate:(NSString*) templatePath {
     
     NSString* path = [NSString stringWithFormat:@"%@/%@/abi-contract",[self contractDirectory],templatePath];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    NSDictionary* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSArray* jsonAbi = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     return jsonAbi;
 }
 
