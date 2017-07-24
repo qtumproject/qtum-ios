@@ -60,6 +60,8 @@
 @property (nonatomic) NSObject<LibraryTableSourceOutput> *libraryTableSource;
 @property (nonatomic) TemplateModel *activeTemplateForLibrary;
 @property (nonatomic) BOOL isLibraryViewControllerOnlyForTokens;
+@property (copy, nonatomic) NSString* localContractName;
+
 
 @end
 
@@ -180,7 +182,7 @@
     
     CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[[ControllersFactory sharedInstance] createCustomAbiInterphaseViewController];
     controller.delegate = self;
-    controller.contractTitle = self.templateModel.type == TokenType ? NSLocalizedString(@"Token", nil) : NSLocalizedString(@"Crowdsale", nil);
+    controller.contractTitle = self.templateModel.templateName;
     controller.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:self.templateModel.path];
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -242,8 +244,9 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
--(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs {
-
+-(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName {
+    
+    self.localContractName = contractName;
     [self showFinishStepWithInputs:inputs];
 }
 
@@ -264,7 +267,7 @@
         if (!error) {
             BTCTransactionInput* input = transaction.inputs[0];
             DLog(@"%@",input.runTimeAddress);
-            [[ContractManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel];
+            [[ContractManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel andLocalContractName:self.localContractName];
             
             [weakSelf.createFinishViewController showCompletedPopUp];
         } else {

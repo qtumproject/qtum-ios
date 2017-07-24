@@ -27,6 +27,8 @@ NSString *const kContractCreationFailed = @"kContractCreationFailed";
 static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
 static NSString* kTemplateModel = @"kTemplateModel";
 static NSString* kAddresses = @"kAddress";
+static NSString* kLocalContractName = @"kLocalContractName";
+
 
 @interface ContractManager () <TokenDelegate>
 
@@ -202,10 +204,22 @@ static NSString* kAddresses = @"kAddress";
     [self.smartContractPretendents removeAllObjects];
 }
 
--(void)addSmartContractPretendent:(NSArray*) addresses forKey:(NSString*) key withTemplate:(TemplateModel*)templateModel{
+-(void)addSmartContractPretendent:(NSArray*) addresses
+                           forKey:(NSString*) key
+                     withTemplate:(TemplateModel*)templateModel
+             andLocalContractName:(NSString*) localName{
     
-    self.smartContractPretendents[key] = @{kAddresses : addresses,
-                                           kTemplateModel : templateModel};
+
+    if (localName) {
+        
+        self.smartContractPretendents[key] = @{kAddresses : addresses,
+                                               kTemplateModel : templateModel,
+                                               kLocalContractName : localName};
+    } else {
+        self.smartContractPretendents[key] = @{kAddresses : addresses,
+                                               kTemplateModel : templateModel};
+    }
+    
     [self save];
 }
 
@@ -242,6 +256,8 @@ static NSString* kAddresses = @"kAddress";
         NSString* key = item.txHash;
         NSDictionary* tokenInfo = self.smartContractPretendents[key];
         NSArray* addresses = tokenInfo[kAddresses];
+        NSString* localContractName = tokenInfo[kLocalContractName];
+
         TemplateModel* templateModel = (TemplateModel*)tokenInfo[kTemplateModel];
         NSMutableData* hashData = [[NSData reverseData:[NSString dataFromHexString:key]] mutableCopy];
         NSString* contractAddress = [NSString hexadecimalString:hashData];
@@ -257,7 +273,7 @@ static NSString* kAddresses = @"kAddress";
             token.contractCreationAddressAddress = addresses.firstObject;
             token.adresses =  [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys];
             token.contractAddress = [NSString hexadecimalString:hashData];
-            token.localName = [token.contractAddress substringToIndex:15];
+            token.localName = localContractName ?: [token.contractAddress substringToIndex:15];
             token.templateModel = templateModel;
             token.creationDate = [NSDate date];
             token.isActive = YES;
