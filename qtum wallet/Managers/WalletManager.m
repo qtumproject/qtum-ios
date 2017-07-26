@@ -182,8 +182,7 @@ NSString const *kUserPinHash = @"HashPIN";
     }
     
     if (userPin) {
-        [[FXKeychain defaultKeychain] setObject:[userPin sha3:SHA3256] forKey:kUserPinHash];
-        [[FXKeychain defaultKeychain] removeObjectForKey:kUserPin];
+        [self storePin:userPin];
     }
 }
 

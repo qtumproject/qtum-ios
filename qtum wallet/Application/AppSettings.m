@@ -12,6 +12,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "LanguageManager.h"
 #import <LocalAuthentication/LocalAuthentication.h>
+#import "TouchIDService.h"
 
 @interface AppSettings ()
 
@@ -47,7 +48,7 @@
 
 -(void)setup {
     
-    [NSUserDefaults saveIsDarkSchemeSetting:NO];
+    [NSUserDefaults saveIsDarkSchemeSetting:YES];
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:YES];
     [PopUpsManager sharedInstance];
@@ -60,8 +61,9 @@
 }
 
 -(void)setupFingerpring {
-
-    if( SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"9.0") && [[[LAContext alloc] init] canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
+    
+    
+    if( [[TouchIDService sharedInstance] hasTouchId]) {
         [NSUserDefaults saveIsFingerpringAllowed:YES];
     } else {
         [NSUserDefaults saveIsFingerpringAllowed:NO];

@@ -29,6 +29,7 @@
 #pragma mark - PinCoordinator
 
 -(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
+    
     if (self.firstPin && [self.firstPin isEqualToString:pin]) {
         if (self.createPinCompletesion) {
             [[ApplicationCoordinator sharedInstance].walletManager storePin:pin];
