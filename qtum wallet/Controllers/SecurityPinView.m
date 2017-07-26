@@ -134,7 +134,8 @@
 
 #pragma mark -
 
--(void)actionIncorrectPin{
+-(void)actionIncorrectPin {
+    
     [self.incorrectPinView setAlpha:0.0f];
     
     [UIView animateWithDuration:2.0f animations:^{

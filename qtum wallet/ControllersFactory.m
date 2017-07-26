@@ -44,6 +44,7 @@
 #import "QStoreContractViewController.h"
 #import "TabBarControllerLight.h"
 #import "NSUserDefaults+Settings.h"
+#import "PinViewController.h"
 
 #import "SecurityPopupViewController.h"
 #import "RestoreContractsPopUpViewController.h"
@@ -70,6 +71,7 @@
 #import "LoginViewOutput.h"
 #import "LibraryOutput.h"
 #import "NewsOutput.h"
+#import "TokenDetailOutput.h"
 
 @implementation ControllersFactory
 
@@ -157,8 +159,9 @@
     return controller;
 }
 
--(RestoreWalletViewController*)createRestoreWalletController{
-    RestoreWalletViewController* controller = (RestoreWalletViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RestoreWalletViewController"];
+-(NSObject<RestoreWalletOutput>*)createRestoreWalletController {
+    
+    NSObject<RestoreWalletOutput>* controller = (NSObject<RestoreWalletOutput>*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RestoreWalletViewController"];
     return controller;
 }
 
@@ -166,6 +169,13 @@
     CreatePinViewController* controller = (CreatePinViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"CreatePinViewController"];
     return controller;
 }
+
+- (NSObject <ChangePinOutput>*)createChangePinController{
+    NSObject <ChangePinOutput>* output = (NSObject <ChangePinOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"PinViewController"];
+    return output;
+}
+
+
 
 -(RepeateViewController*)createRepeatePinController{
     RepeateViewController* controller = (RepeateViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RepeateViewController"];
@@ -222,8 +232,8 @@
     return controller;
 }
 
--(TokenDetailsViewController *)createTokenDetailsViewController{
-    TokenDetailsViewController* controller = (TokenDetailsViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
+-(NSObject <TokenDetailOutput> *)createTokenDetailsViewController {
+    NSObject <TokenDetailOutput> * controller = (NSObject <TokenDetailOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
     return controller;
 }
 

@@ -13,6 +13,8 @@
 
 @interface PinViewController : PinController <ChangePinOutput>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomForButtonsConstraint;
+
 @end
 
 

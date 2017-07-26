@@ -138,7 +138,8 @@
     return YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
     if ([textField isEqual:self.firstSymbolTextField]) {
         self.firstInputViewHeight.constant /= 2;
     } else if ([textField isEqual:self.secondSymbolTextField]) {

@@ -29,6 +29,7 @@
 #pragma mark - PinCoordinator
 
 -(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
+    
     if (self.firstPin && [self.firstPin isEqualToString:pin]) {
         if (self.createPinCompletesion) {
             [[ApplicationCoordinator sharedInstance].walletManager storePin:pin];
@@ -59,7 +60,7 @@
     [self showNewPinControllerWithType:EnterType];
 }
 
--(void)showNewPinControllerWithType:(PinType) type{
+-(void)showNewPinControllerWithType:(PinType) type {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
     viewController.delegatePin = self;

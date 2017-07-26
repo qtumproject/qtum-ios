@@ -1,20 +1,20 @@
 //
-//  ImputTextView.m
+//  InputTextView.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 22.12.16.
 //  Copyright © 2016 PixelPlex. All rights reserved.
 //
 
-#import "ImputTextView.h"
+#import "InputTextView.h"
 
-@interface ImputTextView ()
+@interface InputTextView ()
 
 @property (nonatomic) UIView *borderView;
 
 @end
 
-@implementation ImputTextView
+@implementation InputTextView
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -28,7 +28,7 @@
     [super layoutSubviews];
 }
 
-#pragma makr - Config
+#pragma mark - Config
 
 -(void)config {
     self.layer.borderColor = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1].CGColor;
@@ -36,6 +36,5 @@
     self.textContainerInset = UIEdgeInsetsMake(6, 4, 6, 4);
 }
 
-#pragma mark - Drawing
 
 @end

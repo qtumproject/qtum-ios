@@ -201,7 +201,6 @@
 
 - (void)actionChangePin {
     [self.delegate didPressedChangePin];
-    [self performSegueWithIdentifier:@"changePin" sender:nil];
 }
 
 - (void)actionWalletBackup {

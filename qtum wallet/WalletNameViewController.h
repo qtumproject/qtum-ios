@@ -13,4 +13,6 @@
 
 @interface WalletNameViewController : BaseViewController <WalletNameOutput>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonsBottomConstraint;
+
 @end

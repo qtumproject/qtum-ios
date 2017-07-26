@@ -40,6 +40,7 @@
 #error This class requires automatic reference counting
 #endif
 
+static NSString* touchIDIdentifire = @"TouchID";
 
 @implementation NSObject (FXKeychainPropertyListCoding)
 
@@ -354,6 +355,8 @@
         
         NSString *errorString = [self keychainErrorToString:status];
         NSString *message = [NSString stringWithFormat:@"SecItemDelete status: %@", errorString];
+        
+        DLog(@"%@",message);
     });
 }
 
@@ -364,7 +367,7 @@
     
     NSDictionary *query = @{
                             (id)kSecClass: (id)kSecClassGenericPassword,
-                            (id)kSecAttrService: [self.service stringByAppendingString:@"1"]
+                            (id)kSecAttrService: [self.service stringByAppendingString:touchIDIdentifire]
                             };
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -396,7 +399,7 @@
     NSData *secretPasswordTextData = [touchIDString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *attributes = @{
                                  (id)kSecClass: (id)kSecClassGenericPassword,
-                                 (id)kSecAttrService: [self.service stringByAppendingString:@"1"],
+                                 (id)kSecAttrService: [self.service stringByAppendingString:touchIDIdentifire],
                                  (id)kSecValueData: secretPasswordTextData,
                                  (id)kSecUseAuthenticationUI: (id)kSecUseAuthenticationUIAllow,
                                  (id)kSecAttrAccessControl: (__bridge_transfer id)sacObject
@@ -415,7 +418,7 @@
     
     NSDictionary *query = @{
                             (id)kSecClass: (id)kSecClassGenericPassword,
-                            (id)kSecAttrService: [self.service stringByAppendingString:@"1"],
+                            (id)kSecAttrService: [self.service stringByAppendingString:touchIDIdentifire],
                             (id)kSecReturnData: @YES,
                             (id)kSecUseOperationPrompt: @"Authenticate to access service password",
                             };

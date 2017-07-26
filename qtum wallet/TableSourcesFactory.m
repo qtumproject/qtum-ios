@@ -16,6 +16,9 @@
 #import "FavouriteTemplatesCollectionSource.h"
 #import "NewsTableSourceDark.h"
 #import "NewsTableSourceLight.h"
+#import "TokenDetailDataDisplayManager.h"
+#import "TokenDetailsTableSource.h"
+#import "TokenDetailLightDisplayDataManager.h"
 
 @implementation TableSourcesFactory
 
@@ -82,5 +85,16 @@
         return [NewsTableSourceLight new];
     }
 }
+
+- (NSObject<TokenDetailDataDisplayManager> *)createTokenDetailSoutce {
+    
+    if ([NSUserDefaults isDarkSchemeSetting]) {
+        return [TokenDetailsTableSource new];
+    }else{
+        return [TokenDetailLightDisplayDataManager new];
+    }
+}
+
+
 
 @end

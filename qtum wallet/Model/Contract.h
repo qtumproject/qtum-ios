@@ -38,8 +38,8 @@
 @property (copy, nonatomic)NSString* contractAddress;
 @property (copy, nonatomic)NSString* contractCreationAddressAddress;
 @property (copy, nonatomic)NSArray* adresses;
-@property (copy, nonatomic)NSString* decimals;
-@property (copy, nonatomic)NSString* totalSupply;
+@property (strong, nonatomic)NSNumber* decimals;
+@property (strong, nonatomic)NSNumber* totalSupply;
 @property (strong, nonatomic) TemplateModel* templateModel;
 @property (strong, nonatomic) NSDate* creationDate;
 @property (copy, nonatomic, readonly) NSString* creationDateString;

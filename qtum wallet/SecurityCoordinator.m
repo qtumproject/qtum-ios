@@ -11,6 +11,7 @@
 #import "SecurityPopupViewController.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "LoginViewOutputDelegate.h"
+#import "TouchIDService.h"
 
 @interface SecurityCoordinator () <SecurityPopupViewControllerDelegate>
 
@@ -39,7 +40,6 @@
         
         [self showSecurityPopup];
     }
-
 }
 
 -(void)showSecurityPopup {
@@ -50,51 +50,22 @@
 }
 
 -(void)showFingerprint {
-    
-    LAContext *myContext = [[LAContext alloc] init];
-    NSError *authError = nil;
-    NSString *reason = @"Login";
-    
+
     __weak __typeof(self) weakSelf = self;
-    
-    CGFloat touchIdDelayAnimation = 0.25;
 
-    
-    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
-        [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                  localizedReason:reason
-                            reply:^(BOOL success, NSError *error) {
-                                if (success) {
-                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                        [weakSelf loginUser];
-                                    });
-                                } else {
-                                    
-                                    switch (error.code) {
-                                        case kLAErrorSystemCancel:
-                                        case kLAErrorAuthenticationFailed:
-                                        case kLAErrorUserCancel: {
-                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                [weakSelf cancelPin];
-                                            });
-                                            break;
-                                        }
-                                        case kLAErrorUserFallback: {
-                                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(touchIdDelayAnimation * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                                [weakSelf showSecurityPopup];
-
-                                            });
-                                        }
-                                        default: {
-                                            break;
-                                        }
-                                    }
-                                    
-                                }
-                            }];
-    } else {
-        [self showSecurityPopup];
-    }
+    [[TouchIDService sharedInstance] checkTouchId:^(TouchIDCompletionType type) {
+        switch (type) {
+            case TouchIDDenied:
+                [weakSelf showSecurityPopup];
+                break;
+            case TouchIDSuccessed:
+                [weakSelf loginUser];
+                break;
+            case TouchIDCanceled:
+                [weakSelf cancelPin];
+                break;
+        }
+    }];
 }
 
 #pragma mark - Private Methods

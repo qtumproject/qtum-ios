@@ -8,7 +8,7 @@
 
 #import "WatchTokensViewController.h"
 #import "TextFieldWithLine.h"
-#import "ImputTextView.h"
+#import "InputTextView.h"
 #import "ContractFileManager.h"
 #import "FavouriteTemplatesCollectionSource.h"
 #import "ErrorPopUpViewController.h"
@@ -17,8 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractNameField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractAddressTextField;
-@property (weak, nonatomic) IBOutlet ImputTextView *abiTextView;
-
+@property (weak, nonatomic) IBOutlet InputTextView *abiTextView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
 

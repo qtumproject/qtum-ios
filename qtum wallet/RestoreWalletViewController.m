@@ -14,15 +14,15 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextView *brandKeyTextView;
 @property (strong,nonatomic) NSString *brainKeyString;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomForButtonsConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *importButton;
 
 - (IBAction)importButtonWasPressed:(id)sender;
 
 @end
 
-
 @implementation RestoreWalletViewController
+
+@synthesize delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

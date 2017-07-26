@@ -59,6 +59,9 @@
 @protocol RecieveOutput;
 @protocol LoginViewOutput;
 @protocol LibraryOutput;
+@protocol RestoreWalletOutput;
+@protocol TokenDetailOutput;
+@protocol ChangePinOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -79,7 +82,8 @@
 -(NSObject<LoginViewOutput>*)createLoginController;
 -(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController;
 -(NSObject<FirstAuthOutput>*)createFirstAuthController;
--(RestoreWalletViewController*)createRestoreWalletController;
+-(NSObject<RestoreWalletOutput>*)createRestoreWalletController;
+-(NSObject <ChangePinOutput>*)createChangePinController;
 -(CreatePinViewController*)createCreatePinController;
 -(RepeateViewController*)createRepeatePinController;
 -(AuthNavigationController*)createAuthNavigationController;
@@ -87,7 +91,7 @@
 -(SubscribeTokenViewController*)createSubscribeTokenViewController;
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
--(TokenDetailsViewController*)createTokenDetailsViewController;
+-(NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
 -(AddNewTokensViewController*)createAddNewTokensViewController;
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 -(ChooseSmartContractViewController*)createChooseSmartContractViewController;
@@ -109,6 +113,7 @@
 -(NSObject<HistoryItemOutput> *)createHistoryItem;
 -(NSObject<RecieveOutput> *)createRecieveViewController;
 -(NSObject<LibraryOutput> *)createLibraryViewController;
+
 
 -(QRCodeViewController*)createQRCodeViewControllerForWallet;
 -(QRCodeViewController*)createQRCodeViewControllerForSend;

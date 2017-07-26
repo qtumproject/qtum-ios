@@ -7,15 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TokenDetailOutput.h"
 
-@class TokenDetailsTableSource;
-@protocol WalletCoordinatorDelegate;
+@interface TokenDetailsViewController : BaseViewController <TokenDetailOutput>
 
-@interface TokenDetailsViewController : BaseViewController
-
-@property (nonatomic, weak) id<WalletCoordinatorDelegate> delegate;
-@property (nonatomic, strong) Contract* token;
-
-- (void)setTableSource:(TokenDetailsTableSource *)source;
 
 @end

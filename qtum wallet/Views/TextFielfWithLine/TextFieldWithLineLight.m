@@ -11,11 +11,11 @@
 @implementation TextFieldWithLineLight
 
 - (UIColor *)getUnderlineColorDeselected {
-    return lightTextFieldLineDeselected();
+    return [UIColor whiteColor];
 }
 
 - (UIColor *)getUnderlineColorSelected {
-    return lightGreenColor();
+    return [UIColor whiteColor];
 }
 
 - (UIColor *)getPlaceholderColor {

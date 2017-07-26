@@ -8,20 +8,21 @@
 
 #import "PinViewController.h"
 #import "CustomTextField.h"
+#import "Presentable.h"
 
 const float bottomOffsetKeyboard = 300;
 const float bottomOffset = 25;
 
-@interface PinViewController () <UITextFieldDelegate, CAAnimationDelegate>
+@interface PinViewController () <UITextFieldDelegate, CAAnimationDelegate, Presentable>
 
 @property (weak, nonatomic) IBOutlet UILabel *controllerTitle;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelButtonBottomOffset;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomForButtonsConstraint;
-
 
 @end
 
 @implementation PinViewController
+
+@synthesize delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +40,8 @@ const float bottomOffset = 25;
 
 #pragma mark - Keyboard
 
--(void)keyboardWillShow:(NSNotification *)sender{
+-(void)keyboardWillShow:(NSNotification *)sender {
+    
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -63,11 +65,11 @@ const float bottomOffset = 25;
 
 #pragma mark - Privat Methods
 
--(void)validateAndSendPin{
+-(void)validateAndSendPin {
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
     __weak typeof(self) weakSelf = self;
     if (pin.length == 4) {
-        [self.delegatePin confirmPin:pin andCompletision:^(BOOL success) {
+        [self.delegate confirmPin:pin andCompletision:^(BOOL success) {
             if (success) {
                 [weakSelf.view endEditing:YES];
             }else {
@@ -95,7 +97,8 @@ const float bottomOffset = 25;
 }
 
 - (IBAction)actionCancel:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self.delegate didPressedCancel];
 }
 
 #pragma mark - 
@@ -109,7 +112,8 @@ const float bottomOffset = 25;
 }
 
 - (IBAction)actionBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self.delegate didPressedBack];
 }
 
 @end

@@ -50,8 +50,8 @@
 
 #pragma mark - Actions
 
-
 - (IBAction)actionCopy:(id)sender {
+    
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.brandKey;
     
