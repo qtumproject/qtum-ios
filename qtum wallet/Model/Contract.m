@@ -96,8 +96,8 @@
     NSString *contractAddress = [aDecoder decodeObjectForKey:@"contractAddress"];
     NSArray *adresses = [aDecoder decodeObjectForKey:@"adresses"];
     NSString *symbol = [aDecoder decodeObjectForKey:@"symbol"];
-    NSString *decimals = [aDecoder decodeObjectForKey:@"decimals"];
-    NSString *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
+    NSNumber *decimals = [aDecoder decodeObjectForKey:@"decimals"];
+    NSNumber *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
     CGFloat balance = [[aDecoder decodeObjectForKey:@"balance"] floatValue];
     CGFloat unconfirmedBalance = [[aDecoder decodeObjectForKey:@"unconfirmedBalance"] floatValue];
     BOOL isActive = [[aDecoder decodeObjectForKey:@"isActive"] boolValue];

@@ -173,6 +173,7 @@
 }
 
 -(void)setWalletToDelegates {
+    
     self.delegateDataSource.wallet = self.wallet;
     [self.walletViewController setWallet:self.wallet];
 }

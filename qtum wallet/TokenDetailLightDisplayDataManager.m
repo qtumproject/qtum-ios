@@ -30,15 +30,20 @@ static NSInteger standartHistoryCellHeight = 50;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell;
     if (indexPath.section == 0) {
-        
-        cell = [tableView dequeueReusableCellWithIdentifier:tokenDetailInfoLightCellIdentifire];
+        TokenDetailInfoLightCell * cell = [tableView dequeueReusableCellWithIdentifier:tokenDetailInfoLightCellIdentifire];
         self.infoHeaderCell = (TokenDetailInfoLightCell*)cell;
+        cell.decimalUnits.text = [NSString stringWithFormat:@"%@",token.decimals];
+        cell.initialSupply.text = [NSString stringWithFormat:@"%@",token.totalSupply];
+        cell.tokenAddress.text = token.contractAddress;
+        cell.availableBalance.text = [NSString stringWithFormat:@"%f",token.balance];
+        cell.senderAddress.text = token.contractCreationAddressAddress;
+        cell.symbol.text = token.symbol;
+        return cell;
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
+        return cell;
     }
-    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -46,7 +51,7 @@ static NSInteger standartHistoryCellHeight = 50;
     if (section == 0) {
         return 1;
     }else{
-        return 15;
+        return token.historyArray.count;
     }
 }
 

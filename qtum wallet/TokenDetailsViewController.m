@@ -56,8 +56,8 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 #pragma mark - TokenDetailDisplayDataManagerDelegate
 
-- (void)didPressedInfoActionWithToken:(Contract*)token {
-    [self.delegate showAddressInfoWithSpendable:token];
+- (void)didPressedInfoActionWithToken:(Contract*) aToken {
+    [self.delegate showAddressInfoWithSpendable:aToken];
 }
 
 - (void)needShowHeader {

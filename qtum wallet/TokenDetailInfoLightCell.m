@@ -36,16 +36,16 @@
     //MOVE ONLY WIDGET
     if (offset > 0 && offset < widgetHeight){
         
-        self.topConstraint.constant = ceilf(offset - navBarHeight);
+        self.topConstraint.constant = offset - navBarHeight;
     }
     
     //CEIL OFFET AND CONSTRAINS VALUE
     else if (offset <= 0) {
         
-        self.topConstraint.constant = ceilf(- navBarHeight);
+        self.topConstraint.constant = - navBarHeight;
     } else if (offset >= widgetHeight - navBarHeight) {
         
-        self.topConstraint.constant = ceilf(widgetHeight - navBarHeight);
+        self.topConstraint.constant = widgetHeight - navBarHeight;
     }
 
     [self cellYPositionChanged: offset];
