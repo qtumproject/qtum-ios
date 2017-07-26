@@ -363,6 +363,10 @@ static NSString* touchIDIdentifire = @"TouchID";
 
 - (void)addTouchIdString:(NSString* _Nonnull) touchIDString {
     
+    if (!SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"9.0")) {
+        return;
+    }
+    
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     NSDictionary *query = @{

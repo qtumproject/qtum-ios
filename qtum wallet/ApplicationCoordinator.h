@@ -10,6 +10,7 @@
 #import "BaseCoordinator.h"
 #import "WalletManagering.h"
 #import "Requestable.h"
+#import "SecurityCoordinator.h"
 
 @class NotificationManager;
 @class OpenURLManager;
@@ -29,7 +30,7 @@
 //flows
 
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler;
-- (void)startSecurityFlowWithHandler:(void(^)(BOOL)) handler;
+- (void)startSecurityFlowWithType:(SecurityCheckingType) type WithHandler:(void(^)(BOOL)) handler;
 - (void)startChangedLanguageFlow;
 - (void)startFromOpenURLWithAddress:(NSString*) address andAmount:(NSString*) amount;
 

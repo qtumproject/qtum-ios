@@ -230,7 +230,7 @@
     }
 }
 
-- (void)startSecurityFlowWithHandler:(void(^)(BOOL)) handler {
+- (void)startSecurityFlowWithType:(SecurityCheckingType) type WithHandler:(void(^)(BOOL)) handler {
     
     SecurityCoordinator* coordinator = [[SecurityCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
     coordinator.delegate = self;

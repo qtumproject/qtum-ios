@@ -232,7 +232,7 @@
 - (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
     
     __weak __typeof (self) weakSelf = self;
-    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithHandler:^(BOOL success) {
+    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
         if (success) {
             [weakSelf payActionWithAddress:address andAmount:amount];
         }
