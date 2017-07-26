@@ -13,6 +13,7 @@
 @protocol LibraryTableSourceOutput;
 @protocol FavouriteTemplatesCollectionSourceOutput;
 @protocol NewsTableSourceOutput;
+@protocol TokenDetailDataDisplayManager;
 
 @interface TableSourcesFactory : NSObject
 
@@ -26,5 +27,6 @@
 - (NSObject<LibraryTableSourceOutput> *)createLibrarySource;
 - (NSObject<FavouriteTemplatesCollectionSourceOutput> *)createFavouriteTemplatesSource;
 - (NSObject<NewsTableSourceOutput> *)createNewsSource;
+- (NSObject<TokenDetailDataDisplayManager> *)createTokenDetailSoutce;
 
 @end

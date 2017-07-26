@@ -10,4 +10,9 @@
 
 @protocol RestoreWalletOutputDelegate <NSObject>
 
+-(BOOL)checkWordsString:(NSString *)string;
+-(void)didRestorePressedWithWords:(NSString *)string;
+-(void)didRestoreWallet;
+-(void)restoreWalletCancelDidPressed;
+
 @end

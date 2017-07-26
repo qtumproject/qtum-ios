@@ -20,7 +20,7 @@
 
 @protocol ApplicationCoordinatorDelegate;
 
-@interface AuthCoordinator : BaseCoordinator <Coordinatorable,AuthCoordinatorDelegate>
+@interface AuthCoordinator : BaseCoordinator <Coordinatorable>
 
 @property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
 

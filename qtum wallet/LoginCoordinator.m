@@ -118,9 +118,8 @@
     
     if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin] && [[ApplicationCoordinator sharedInstance].walletManager startWithPin:pin]) {
         
-        [[FXKeychain defaultKeychain] addTouchIdString:pin];
-
         [self loginUser];        
+
     }else {
         [self.loginOutput applyFailedPasswordAction];
     }

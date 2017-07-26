@@ -8,20 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Contract.h"
+#import "TokenDetailDataDisplayManager.h"
 
-@protocol TokenDetailsTableSourceDelegate <NSObject>
-
-- (void)needShowHeader;
-- (void)needHideHeader;
-- (void)needShowHeaderForSecondSeciton;
-- (void)needHideHeaderForSecondSeciton;
-- (void)didPressedInfoActionWithToken:(Contract*)token;
-
-@end
-
-@interface TokenDetailsTableSource : NSObject <UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, weak) id<TokenDetailsTableSourceDelegate> delegate;
-@property (nonatomic, strong) Contract* token;
+@interface TokenDetailsTableSource : NSObject <TokenDetailDataDisplayManager>
 
 @end

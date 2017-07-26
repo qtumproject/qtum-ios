@@ -47,6 +47,8 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 
 @implementation TokenDetailsTableSource
 
+@synthesize token, delegate;
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return NumberOfSections;
 }

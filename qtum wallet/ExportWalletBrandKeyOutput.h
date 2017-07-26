@@ -15,5 +15,4 @@
 @property (weak,nonatomic) id <ExportWalletBrandKeyOutputDelegate> delegate;
 @property (nonatomic, copy) NSString* brandKey;
 
-
 @end

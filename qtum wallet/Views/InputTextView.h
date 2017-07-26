@@ -1,5 +1,5 @@
 //
-//  ImputTextView.h
+//  InputTextView.h
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 22.12.16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImputTextView : UITextView
+@interface InputTextView : UITextView
 
 @end

@@ -11,10 +11,11 @@
 #import "TokenDetailsTableSource.h"
 #import "ViewWithAnimatedLine.h"
 #import "ShareTokenPopUpViewController.h"
+#import "TokenDetailDisplayDataManagerDelegate.h"
 
 CGFloat const HeightForHeaderView = 50.0f;
 
-@interface TokenDetailsViewController () <TokenDetailsTableSourceDelegate>
+@interface TokenDetailsViewController () <TokenDetailDisplayDataManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,11 +25,11 @@ CGFloat const HeightForHeaderView = 50.0f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
 @property (weak, nonatomic) IBOutlet UIView *activityView;
 
-@property (nonatomic, weak) TokenDetailsTableSource *source;
-
 @end
 
 @implementation TokenDetailsViewController
+
+@synthesize token, delegate, source;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,10 +44,6 @@ CGFloat const HeightForHeaderView = 50.0f;
     self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
 }
 
-- (void)setTableSource:(TokenDetailsTableSource *)source{
-    self.source = source;
-}
-
 #pragma mark - Actions
 
 - (IBAction)actionShare:(id)sender {
@@ -57,13 +54,13 @@ CGFloat const HeightForHeaderView = 50.0f;
     [self.delegate didBackPressed];
 }
 
-#pragma mark - TokenDetailsTableSourceDelegate
+#pragma mark - TokenDetailDisplayDataManagerDelegate
 
 - (void)didPressedInfoActionWithToken:(Contract*)token {
     [self.delegate showAddressInfoWithSpendable:token];
 }
 
-- (void)needShowHeader{
+- (void)needShowHeader {
     if (self.heightConsctaintForHeaderView.constant == HeightForHeaderView) {
         return;
     }

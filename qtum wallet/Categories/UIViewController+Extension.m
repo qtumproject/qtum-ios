@@ -38,7 +38,10 @@
         [identifire isEqualToString:@"HistoryItemViewController"] ||
         [identifire isEqualToString:@"RecieveViewController"] ||
         [identifire isEqualToString:@"ConfirmPinForExportViewController"] ||
-        [identifire isEqualToString:@"NewsViewController"]) {
+        [identifire isEqualToString:@"RestoreWalletViewController"] ||
+        [identifire isEqualToString:@"ExportWalletBrandKeyViewController"] ||
+        [identifire isEqualToString:@"NewsViewController"] ||
+        [identifire isEqualToString:@"TokenDetailsViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

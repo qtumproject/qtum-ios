@@ -59,6 +59,8 @@
 @protocol RecieveOutput;
 @protocol LoginViewOutput;
 @protocol LibraryOutput;
+@protocol RestoreWalletOutput;
+@protocol TokenDetailOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -79,7 +81,7 @@
 -(NSObject<LoginViewOutput>*)createLoginController;
 -(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController;
 -(NSObject<FirstAuthOutput>*)createFirstAuthController;
--(RestoreWalletViewController*)createRestoreWalletController;
+-(NSObject<RestoreWalletOutput>*)createRestoreWalletController;
 -(CreatePinViewController*)createCreatePinController;
 -(RepeateViewController*)createRepeatePinController;
 -(AuthNavigationController*)createAuthNavigationController;
@@ -87,7 +89,7 @@
 -(SubscribeTokenViewController*)createSubscribeTokenViewController;
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
--(TokenDetailsViewController*)createTokenDetailsViewController;
+-(NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
 -(AddNewTokensViewController*)createAddNewTokensViewController;
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 -(ChooseSmartContractViewController*)createChooseSmartContractViewController;
