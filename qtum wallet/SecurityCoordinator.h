@@ -17,9 +17,16 @@
 
 @end
 
+typedef NS_ENUM(NSInteger, SecurityCheckingType) {
+    
+    SendVerification,
+    EnableTouchIdVerification
+};
+
 @interface SecurityCoordinator : BaseCoordinator <Coordinatorable>
 
 @property (weak, nonatomic) id <SecurityCoordinatorDelegate> delegate;
+@property (assign, nonatomic) SecurityCheckingType type;
 
 - (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;
 - (void)cancelPin;

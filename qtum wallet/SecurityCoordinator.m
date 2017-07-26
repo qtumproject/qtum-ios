@@ -33,7 +33,7 @@
 
 -(void)start {
     
-    if ([AppSettings sharedInstance].isFingerprintEnabled) {
+    if ([AppSettings sharedInstance].isFingerprintEnabled && self.type == SendVerification) {
         
         [self showFingerprint];
     } else {
@@ -59,7 +59,7 @@
                 [weakSelf showSecurityPopup];
                 break;
             case TouchIDSuccessed:
-                [weakSelf loginUser];
+                [weakSelf enterUser];
                 break;
             case TouchIDCanceled:
                 [weakSelf cancelPin];
@@ -80,7 +80,7 @@
 }
 
 
--(void)loginUser {
+-(void)enterUser {
     
     if ([self.delegate respondsToSelector:@selector(coordinatorDidPassSecurity:)]) {
         [self.delegate coordinatorDidPassSecurity:self];
@@ -92,7 +92,12 @@
 -(void)enterPin:(NSString*) pin {
     
     if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
-        [self loginUser];
+        
+        if (self.type == EnableTouchIdVerification) {
+            [[ApplicationCoordinator sharedInstance].walletManager storePin:pin];
+        }
+        
+        [self enterUser];
     }else {
         [self.loginOutput applyFailedPasswordAction];
     }
