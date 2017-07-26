@@ -61,7 +61,7 @@
 
 -(void)setupFingerpring {
 
-    if( SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"8.0") && [[[LAContext alloc] init] canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
+    if( SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"9.0") && [[[LAContext alloc] init] canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
         [NSUserDefaults saveIsFingerpringAllowed:YES];
     } else {
         [NSUserDefaults saveIsFingerpringAllowed:NO];
