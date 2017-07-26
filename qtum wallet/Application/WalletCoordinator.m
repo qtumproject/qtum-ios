@@ -35,14 +35,14 @@
 #import "ContractFileManager.h"
 #import "WalletManager.h"
 
-@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
 @property (strong, nonatomic) NSObject<BalancePageOutput>* pageViewController;
 @property (weak, nonatomic) NSObject<WalletOutput> *walletViewController;
 @property (weak, nonatomic) NSObject<TokenListOutput> *tokenController;
-@property (weak, nonatomic) TokenDetailsViewController *tokenDetailsViewController;
+@property (weak, nonatomic) NSObject <TokenDetailOutput> *tokenDetailsViewController;
 
 @property (assign, nonatomic) BOOL isNewDataLoaded;
 @property (assign, nonatomic) BOOL isBalanceLoaded;
@@ -52,7 +52,7 @@
 @property (strong, nonatomic) dispatch_queue_t requestQueue;
 
 @property (strong, nonatomic) WalletTableSource* delegateDataSource;
-@property (strong, nonatomic) TokenDetailsTableSource *tokenDetailsTableSource;
+@property (strong, nonatomic) id <TokenDetailDataDisplayManager> tokenDetailsTableSource;
 
 @end
 
@@ -109,14 +109,6 @@
 
 #pragma mark - WalletCoordinatorDelegate
 
--(void)showAddressInfoWithSpendable:(id <Spendable>) spendable {
-    
-    NSObject<RecieveOutput> *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
-    vc.wallet = spendable;
-    vc.delegate = self;
-    [self.navigationController pushViewController:[vc toPresent] animated:YES];
-}
-
 - (void)refreshTableViewData {
     
     if (self.isNewDataLoaded) {
@@ -136,21 +128,48 @@
 
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
 
-    TokenDetailsViewController *vc = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
-    self.tokenDetailsViewController = vc;
-    self.tokenDetailsTableSource = [TokenDetailsTableSource new];
+    NSObject <TokenDetailOutput> *output = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
+    self.tokenDetailsViewController = output;
+    self.tokenDetailsTableSource = [[TableSourcesFactory sharedInstance] createTokenDetailSoutce];
     self.tokenDetailsTableSource.token = item;
-    vc.token = item;
-    vc.delegate = self;
-    [vc setTableSource:self.tokenDetailsTableSource];
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    output.token = item;
+    output.delegate = self;
+    output.source = self.tokenDetailsTableSource;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
+
+#pragma mark - TokenDetailOutputDelegate 
+
+
+-(void)showAddressInfoWithSpendable:(id <Spendable>) spendable {
+    
+    NSObject<RecieveOutput> *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
+    vc.wallet = spendable;
+    vc.delegate = self;
+    [self.navigationController pushViewController:[vc toPresent] animated:YES];
+}
+
+- (void)didBackPressed{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didShareTokenButtonPressed {
+    
+    ShareTokenPopUpViewController *vc = [[PopUpsManager sharedInstance] showShareTokenPopUp:self presenter:nil completion:nil];
+    vc.addressString = self.tokenDetailsViewController.token.contractAddress;
+    NSArray *arr = [[ContractFileManager sharedInstance] abiWithTemplate:self.tokenDetailsViewController.token.templateModel.path];
+    NSData * jsonData = [NSJSONSerialization  dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
+    NSString * abiString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    vc.abiString = abiString;
+}
+
+
 
 #pragma mark - Configuration
 
 -(void)configWallet {
-    self.wallet = [ApplicationCoordinator sharedInstance].walletManager.wallet;
+    
+    self.wallet = (id <Spendable>)[ApplicationCoordinator sharedInstance].walletManager.wallet;
 }
 
 -(void)setWalletToDelegates {
@@ -233,20 +252,6 @@
         
         [weakSelf updateSpendables];
     });
-}
-
-- (void)didBackPressed{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)didShareTokenButtonPressed {
-    
-    ShareTokenPopUpViewController *vc = [[PopUpsManager sharedInstance] showShareTokenPopUp:self presenter:nil completion:nil];
-    vc.addressString = self.tokenDetailsViewController.token.contractAddress;
-    NSDictionary *dic = [[ContractFileManager sharedInstance] abiWithTemplate:self.tokenDetailsViewController.token.templateModel.path];
-    NSData * jsonData = [NSJSONSerialization  dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
-    NSString * abiString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    vc.abiString = abiString;
 }
 
 #pragma mark - ShareTokenPopupViewControllerDelegate and PopUpViewControllerDelegate

@@ -101,6 +101,12 @@
 		B35DF6231F1F56A700316953 /* InputTextViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6221F1F56A700316953 /* InputTextViewLight.m */; };
 		B35DF6261F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6251F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m */; };
 		B35DF6291F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6281F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m */; };
+		B35DF6391F262B7200316953 /* TokenDetailsViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6381F262B7200316953 /* TokenDetailsViewControllerDark.m */; };
+		B35DF63C1F262B8900316953 /* TokenDetailsViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF63B1F262B8900316953 /* TokenDetailsViewControllerLight.m */; };
+		B35DF63F1F262EB100316953 /* TokenDetailLightDisplayDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF63E1F262EB100316953 /* TokenDetailLightDisplayDataManager.m */; };
+		B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6421F26378D00316953 /* TokenDetailInfoLightCell.m */; };
+		B35DF6461F263CD500316953 /* LightBlueGrayBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6451F263CD500316953 /* LightBlueGrayBorderView.m */; };
+		B35DF6491F27329E00316953 /* TokenDetailTableViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6481F27329E00316953 /* TokenDetailTableViewLight.m */; };
 		B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35EE88C1E4C6963008F4403 /* FirstNewTableCell.m */; };
 		B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B365058B1F14B12E00521603 /* WalletNameViewControllerLight.m */; };
 		B365058F1F14B17300521603 /* WalletNameViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B365058E1F14B17300521603 /* WalletNameViewControllerDark.m */; };
@@ -657,6 +663,22 @@
 		B35DF6251F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportWalletBrandKeyViewControllerDark.m; sourceTree = "<group>"; };
 		B35DF6271F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportWalletBrandKeyViewControllerLight.h; sourceTree = "<group>"; };
 		B35DF6281F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportWalletBrandKeyViewControllerLight.m; sourceTree = "<group>"; };
+		B35DF6331F26225800316953 /* TokenDetailOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailOutput.h; sourceTree = "<group>"; };
+		B35DF6341F26227E00316953 /* TokenDetailOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailOutputDelegate.h; sourceTree = "<group>"; };
+		B35DF6351F2622E500316953 /* TokenDetailDataDisplayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailDataDisplayManager.h; sourceTree = "<group>"; };
+		B35DF6361F26233000316953 /* TokenDetailDisplayDataManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailDisplayDataManagerDelegate.h; sourceTree = "<group>"; };
+		B35DF6371F262B7200316953 /* TokenDetailsViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsViewControllerDark.h; sourceTree = "<group>"; };
+		B35DF6381F262B7200316953 /* TokenDetailsViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsViewControllerDark.m; sourceTree = "<group>"; };
+		B35DF63A1F262B8900316953 /* TokenDetailsViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsViewControllerLight.h; sourceTree = "<group>"; };
+		B35DF63B1F262B8900316953 /* TokenDetailsViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsViewControllerLight.m; sourceTree = "<group>"; };
+		B35DF63D1F262EB100316953 /* TokenDetailLightDisplayDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailLightDisplayDataManager.h; sourceTree = "<group>"; };
+		B35DF63E1F262EB100316953 /* TokenDetailLightDisplayDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailLightDisplayDataManager.m; sourceTree = "<group>"; };
+		B35DF6411F26378D00316953 /* TokenDetailInfoLightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailInfoLightCell.h; sourceTree = "<group>"; };
+		B35DF6421F26378D00316953 /* TokenDetailInfoLightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailInfoLightCell.m; sourceTree = "<group>"; };
+		B35DF6441F263CD500316953 /* LightBlueGrayBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightBlueGrayBorderView.h; sourceTree = "<group>"; };
+		B35DF6451F263CD500316953 /* LightBlueGrayBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightBlueGrayBorderView.m; sourceTree = "<group>"; };
+		B35DF6471F27329E00316953 /* TokenDetailTableViewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailTableViewLight.h; sourceTree = "<group>"; };
+		B35DF6481F27329E00316953 /* TokenDetailTableViewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailTableViewLight.m; sourceTree = "<group>"; };
 		B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		B35EE88B1E4C6963008F4403 /* FirstNewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstNewTableCell.h; sourceTree = "<group>"; };
@@ -1673,6 +1695,44 @@
 			name = "Text View";
 			sourceTree = "<group>";
 		};
+		B35DF6311F260F3500316953 /* Dark */ = {
+			isa = PBXGroup;
+			children = (
+				E78903571EDC66B4004243F0 /* Views */,
+				E73D36F21ECF15AE009173BD /* Cells */,
+				E73D36EF1ECF14CE009173BD /* TokenDetailsViewController.h */,
+				E73D36F01ECF14CE009173BD /* TokenDetailsViewController.m */,
+				E73D37051ECF19CC009173BD /* TokenDetailsTableSource.h */,
+				E73D37061ECF19CC009173BD /* TokenDetailsTableSource.m */,
+				E78D0C971ED2DF2E00CB91FF /* TokenDetailsTableView.h */,
+				E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */,
+				B35DF6371F262B7200316953 /* TokenDetailsViewControllerDark.h */,
+				B35DF6381F262B7200316953 /* TokenDetailsViewControllerDark.m */,
+			);
+			name = Dark;
+			sourceTree = "<group>";
+		};
+		B35DF6321F260F3C00316953 /* Light */ = {
+			isa = PBXGroup;
+			children = (
+				B35DF6401F26308100316953 /* Cell */,
+				B35DF63A1F262B8900316953 /* TokenDetailsViewControllerLight.h */,
+				B35DF63B1F262B8900316953 /* TokenDetailsViewControllerLight.m */,
+				B35DF63D1F262EB100316953 /* TokenDetailLightDisplayDataManager.h */,
+				B35DF63E1F262EB100316953 /* TokenDetailLightDisplayDataManager.m */,
+			);
+			name = Light;
+			sourceTree = "<group>";
+		};
+		B35DF6401F26308100316953 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B35DF6411F26378D00316953 /* TokenDetailInfoLightCell.h */,
+				B35DF6421F26378D00316953 /* TokenDetailInfoLightCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		B365CA831EAA38990040A163 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -2429,14 +2489,14 @@
 		E73D36EE1ECF14AA009173BD /* TokenDetails */ = {
 			isa = PBXGroup;
 			children = (
-				E78903571EDC66B4004243F0 /* Views */,
-				E73D36F21ECF15AE009173BD /* Cells */,
-				E73D36EF1ECF14CE009173BD /* TokenDetailsViewController.h */,
-				E73D36F01ECF14CE009173BD /* TokenDetailsViewController.m */,
-				E73D37051ECF19CC009173BD /* TokenDetailsTableSource.h */,
-				E73D37061ECF19CC009173BD /* TokenDetailsTableSource.m */,
-				E78D0C971ED2DF2E00CB91FF /* TokenDetailsTableView.h */,
-				E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */,
+				B35DF6471F27329E00316953 /* TokenDetailTableViewLight.h */,
+				B35DF6481F27329E00316953 /* TokenDetailTableViewLight.m */,
+				B35DF6321F260F3C00316953 /* Light */,
+				B35DF6311F260F3500316953 /* Dark */,
+				B35DF6331F26225800316953 /* TokenDetailOutput.h */,
+				B35DF6341F26227E00316953 /* TokenDetailOutputDelegate.h */,
+				B35DF6351F2622E500316953 /* TokenDetailDataDisplayManager.h */,
+				B35DF6361F26233000316953 /* TokenDetailDisplayDataManagerDelegate.h */,
 			);
 			name = TokenDetails;
 			sourceTree = "<group>";
@@ -3071,6 +3131,8 @@
 				E71271911EE9925600A130A0 /* SpinnerView.m */,
 				E7CE63601F027EC200C147B9 /* CustomSearchBar.h */,
 				E7CE63611F027EC200C147B9 /* CustomSearchBar.m */,
+				B35DF6441F263CD500316953 /* LightBlueGrayBorderView.h */,
+				B35DF6451F263CD500316953 /* LightBlueGrayBorderView.m */,
 			);
 			name = "Shared Views";
 			path = Views;
@@ -3663,6 +3725,7 @@
 				B365059B1F14B51000521603 /* RepeateViewControllerLight.m in Sources */,
 				B32B32E21ECCC2D50081260A /* CreateTokenFinishViewController.m in Sources */,
 				B365CA631EA4ED540040A163 /* Contract.m in Sources */,
+				B35DF63F1F262EB100316953 /* TokenDetailLightDisplayDataManager.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
@@ -3706,6 +3769,7 @@
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
+				B35DF6391F262B7200316953 /* TokenDetailsViewControllerDark.m in Sources */,
 				B385B5A51E6D829C003BB96C /* WalletTableSource.m in Sources */,
 				E7C101C11F15073800848526 /* HistoryItemViewControllerDark.m in Sources */,
 				B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */,
@@ -3744,6 +3808,7 @@
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
+				B35DF6491F27329E00316953 /* TokenDetailTableViewLight.m in Sources */,
 				B36505AA1F16017300521603 /* ExportBrainKeyViewControllerLight.m in Sources */,
 				B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */,
 				B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */,
@@ -3783,6 +3848,7 @@
 				B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */,
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,
 				E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */,
+				B35DF6461F263CD500316953 /* LightBlueGrayBorderView.m in Sources */,
 				E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */,
 				E798463A1F0D2899002A516A /* WalletTableSourceDark.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
@@ -3812,10 +3878,12 @@
 				E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */,
 				E79846321F0D2373002A516A /* WalletHeaderCellLight.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
+				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
+				B35DF63C1F262B8900316953 /* TokenDetailsViewControllerLight.m in Sources */,
 				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
 				B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */,
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,

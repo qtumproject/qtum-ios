@@ -60,6 +60,7 @@
 @protocol LoginViewOutput;
 @protocol LibraryOutput;
 @protocol RestoreWalletOutput;
+@protocol TokenDetailOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -88,7 +89,7 @@
 -(SubscribeTokenViewController*)createSubscribeTokenViewController;
 -(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 -(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
--(TokenDetailsViewController*)createTokenDetailsViewController;
+-(NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
 -(AddNewTokensViewController*)createAddNewTokensViewController;
 -(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 -(ChooseSmartContractViewController*)createChooseSmartContractViewController;

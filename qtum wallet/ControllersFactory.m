@@ -70,6 +70,7 @@
 #import "LoginViewOutput.h"
 #import "LibraryOutput.h"
 #import "NewsOutput.h"
+#import "TokenDetailOutput.h"
 
 @implementation ControllersFactory
 
@@ -223,8 +224,8 @@
     return controller;
 }
 
--(TokenDetailsViewController *)createTokenDetailsViewController{
-    TokenDetailsViewController* controller = (TokenDetailsViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
+-(NSObject <TokenDetailOutput> *)createTokenDetailsViewController {
+    NSObject <TokenDetailOutput> * controller = (NSObject <TokenDetailOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
     return controller;
 }
 

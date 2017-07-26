@@ -27,9 +27,9 @@
     return self;
 }
 
-- (void)layoutSubviews{
-    [super layoutSubviews];
+- (void)layoutSubviews {
     
+    [super layoutSubviews];
     self.topView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.contentOffset.y);
 }
 

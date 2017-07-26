@@ -148,7 +148,8 @@ static NSInteger countOfSections = 2;
 
 #pragma mark - Public Methods
 
-- (void)didScrollForheaderCell:(UIScrollView *)scrollView{
+- (void)didScrollForheaderCell:(UIScrollView *)scrollView {
+    
     NSIndexPath *headerIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     WalletHeaderCell *headerCell = [self.tableView cellForRowAtIndexPath:headerIndexPath];
     
@@ -175,6 +176,7 @@ static NSInteger countOfSections = 2;
     
     if ([headerCell needShowHeader:position]) {
         if ([self.controllerDelegate respondsToSelector:@selector(needShowHeader:)]) {
+            
             [self.controllerDelegate needShowHeader:[headerCell percentForShowHideHeader:position]];
         }
     }else{

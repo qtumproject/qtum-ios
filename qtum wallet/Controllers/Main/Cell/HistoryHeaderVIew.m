@@ -16,7 +16,7 @@
 
 @implementation HistoryHeaderVIew
 
-- (void)fadeInActivity{
+- (void)fadeInActivity {
     if (_isActivityFadeout) {
         self.isActivityFadeout = NO;
         [UIView animateWithDuration:0.2 animations:^{
@@ -25,7 +25,7 @@
     }
 }
 
-- (void)fadeOutActivity{
+- (void)fadeOutActivity {
     if (!_isActivityFadeout) {
         self.isActivityFadeout = YES;
         [UIView animateWithDuration:0.2 animations:^{
