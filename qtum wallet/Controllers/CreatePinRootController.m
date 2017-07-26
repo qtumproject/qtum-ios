@@ -60,7 +60,7 @@
     [self showNewPinControllerWithType:EnterType];
 }
 
--(void)showNewPinControllerWithType:(PinType) type{
+-(void)showNewPinControllerWithType:(PinType) type {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
     viewController.delegatePin = self;

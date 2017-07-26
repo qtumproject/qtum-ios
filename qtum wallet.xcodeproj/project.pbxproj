@@ -42,6 +42,10 @@
 		B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E51ECCC2FF0081260A /* AbiTextFieldWithLine.m */; };
 		B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E81ECCC4A20081260A /* FinishInputCell.m */; };
 		B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */; };
+		B32BC4A81F28B49C00C2417C /* ChangePinCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4A71F28B49C00C2417C /* ChangePinCoordinator.m */; };
+		B32BC4AB1F28C6F600C2417C /* PinViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4AA1F28C6F600C2417C /* PinViewControllerDark.m */; };
+		B32BC4AE1F28C70600C2417C /* PinViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4AD1F28C70600C2417C /* PinViewControllerLight.m */; };
+		B32BC4B11F28D5BC00C2417C /* TextFieldWithLineLightSend.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4B01F28D5BC00C2417C /* TextFieldWithLineLightSend.m */; };
 		B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */; };
 		B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEF1E11220E0094C82C /* UIViewController+Extension.m */; };
 		B32C3CF31E1126200094C82C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CF21E1126200094C82C /* TabBarController.m */; };
@@ -548,6 +552,14 @@
 		B32B32E81ECCC4A20081260A /* FinishInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishInputCell.m; sourceTree = "<group>"; };
 		B32B32EA1ECD7B240081260A /* ContractArgumentsInterpretator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractArgumentsInterpretator.h; sourceTree = "<group>"; };
 		B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractArgumentsInterpretator.m; sourceTree = "<group>"; };
+		B32BC4A61F28B49C00C2417C /* ChangePinCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePinCoordinator.h; sourceTree = "<group>"; };
+		B32BC4A71F28B49C00C2417C /* ChangePinCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePinCoordinator.m; sourceTree = "<group>"; };
+		B32BC4A91F28C6F600C2417C /* PinViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinViewControllerDark.h; sourceTree = "<group>"; };
+		B32BC4AA1F28C6F600C2417C /* PinViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinViewControllerDark.m; sourceTree = "<group>"; };
+		B32BC4AC1F28C70600C2417C /* PinViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinViewControllerLight.h; sourceTree = "<group>"; };
+		B32BC4AD1F28C70600C2417C /* PinViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinViewControllerLight.m; sourceTree = "<group>"; };
+		B32BC4AF1F28D5BC00C2417C /* TextFieldWithLineLightSend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLineLightSend.h; sourceTree = "<group>"; };
+		B32BC4B01F28D5BC00C2417C /* TextFieldWithLineLightSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldWithLineLightSend.m; sourceTree = "<group>"; };
 		B32C3CEB1E1120C50094C82C /* NSObject+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+Extension.h"; path = "Categories/NSObject+Extension.h"; sourceTree = "<group>"; };
 		B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Extension.m"; path = "Categories/NSObject+Extension.m"; sourceTree = "<group>"; };
 		B32C3CEE1E11220E0094C82C /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Extension.h"; path = "Categories/UIViewController+Extension.h"; sourceTree = "<group>"; };
@@ -1495,6 +1507,15 @@
 			name = "Diagram animation";
 			sourceTree = "<group>";
 		};
+		B32BC4A51F28B39F00C2417C /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				B35DF6471F27329E00316953 /* TokenDetailTableViewLight.h */,
+				B35DF6481F27329E00316953 /* TokenDetailTableViewLight.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
 		B32C3CE61E111FD10094C82C /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1718,6 +1739,7 @@
 		B35DF6321F260F3C00316953 /* Light */ = {
 			isa = PBXGroup;
 			children = (
+				B32BC4A51F28B39F00C2417C /* Table */,
 				B35DF6401F26308100316953 /* Cell */,
 				B35DF63A1F262B8900316953 /* TokenDetailsViewControllerLight.h */,
 				B35DF63B1F262B8900316953 /* TokenDetailsViewControllerLight.m */,
@@ -2487,6 +2509,8 @@
 				E748578D1F13B26E00DCF9A6 /* TextFieldWithLineLight.m */,
 				B32B32E41ECCC2FF0081260A /* AbiTextFieldWithLine.h */,
 				B32B32E51ECCC2FF0081260A /* AbiTextFieldWithLine.m */,
+				B32BC4AF1F28D5BC00C2417C /* TextFieldWithLineLightSend.h */,
+				B32BC4B01F28D5BC00C2417C /* TextFieldWithLineLightSend.m */,
 			);
 			path = TextFielfWithLine;
 			sourceTree = "<group>";
@@ -2494,8 +2518,6 @@
 		E73D36EE1ECF14AA009173BD /* TokenDetails */ = {
 			isa = PBXGroup;
 			children = (
-				B35DF6471F27329E00316953 /* TokenDetailTableViewLight.h */,
-				B35DF6481F27329E00316953 /* TokenDetailTableViewLight.m */,
 				B35DF6321F260F3C00316953 /* Light */,
 				B35DF6311F260F3500316953 /* Dark */,
 				B35DF6331F26225800316953 /* TokenDetailOutput.h */,
@@ -2828,6 +2850,12 @@
 				E7C101BE1F14ED7C00848526 /* ChangePinOutputDelegate.h */,
 				B3210D1E1E001EC200365FB6 /* PinViewController.h */,
 				B3210D1F1E001EC200365FB6 /* PinViewController.m */,
+				B32BC4A61F28B49C00C2417C /* ChangePinCoordinator.h */,
+				B32BC4A71F28B49C00C2417C /* ChangePinCoordinator.m */,
+				B32BC4A91F28C6F600C2417C /* PinViewControllerDark.h */,
+				B32BC4AA1F28C6F600C2417C /* PinViewControllerDark.m */,
+				B32BC4AC1F28C70600C2417C /* PinViewControllerLight.h */,
+				B32BC4AD1F28C70600C2417C /* PinViewControllerLight.m */,
 			);
 			name = ChangePinOutput;
 			sourceTree = "<group>";
@@ -3634,6 +3662,7 @@
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B35DF6291F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m in Sources */,
+				B32BC4A81F28B49C00C2417C /* ChangePinCoordinator.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
@@ -3769,6 +3798,7 @@
 				E745BA2E1F22019800B2E216 /* NewsTableSourceLight.m in Sources */,
 				E73D36FE1ECF1636009173BD /* AddressesTokenTableViewCell.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
+				B32BC4B11F28D5BC00C2417C /* TextFieldWithLineLightSend.m in Sources */,
 				E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */,
 				B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
@@ -3787,6 +3817,7 @@
 				B381CBEA1F029CB200142252 /* SecurityPinView.m in Sources */,
 				B365CA7C1EA77D590040A163 /* WalletsFactory.m in Sources */,
 				B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */,
+				B32BC4AB1F28C6F600C2417C /* PinViewControllerDark.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				E73D36F51ECF15D1009173BD /* BalanceTokenTableViewCell.m in Sources */,
 				B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */,
@@ -3831,6 +3862,7 @@
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
 				B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */,
+				B32BC4AE1F28C70600C2417C /* PinViewControllerLight.m in Sources */,
 				B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,

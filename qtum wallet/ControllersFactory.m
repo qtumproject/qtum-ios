@@ -44,6 +44,7 @@
 #import "QStoreContractViewController.h"
 #import "TabBarControllerLight.h"
 #import "NSUserDefaults+Settings.h"
+#import "PinViewController.h"
 
 #import "SecurityPopupViewController.h"
 #import "RestoreContractsPopUpViewController.h"
@@ -168,6 +169,13 @@
     CreatePinViewController* controller = (CreatePinViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"CreatePinViewController"];
     return controller;
 }
+
+- (NSObject <ChangePinOutput>*)createChangePinController{
+    NSObject <ChangePinOutput>* output = (NSObject <ChangePinOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"PinViewController"];
+    return output;
+}
+
+
 
 -(RepeateViewController*)createRepeatePinController{
     RepeateViewController* controller = (RepeateViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RepeateViewController"];

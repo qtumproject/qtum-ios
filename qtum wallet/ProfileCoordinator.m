@@ -14,8 +14,9 @@
 #import "SubscribeTokenCoordinator.h"
 #import "ContractCoordinator.h"
 #import "ExportBrandKeyCoordinator.h"
+#import "ChangePinCoordinator.h"
 
-@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate>
+@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
@@ -63,6 +64,14 @@
     [self removeDependency:coordinator];
 }
 
+#pragma mark - ChangePinCoordinatorDelegate
+
+- (void)coordinatorDidFinish:(ChangePinCoordinator*)coordinator {
+    
+    [self removeDependency:coordinator];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 #pragma mark - ProfileOutputDelegate
 
 - (void)didChangeFingerprintSettings:(BOOL)value {
@@ -77,7 +86,10 @@
 
 - (void)didPressedChangePin {
     
-    
+    ChangePinCoordinator* coordinator = [[ChangePinCoordinator alloc] initWithNavigationController:self.navigationController];
+    coordinator.delegate = self;
+    [coordinator start];
+    [self addDependency:coordinator];
 }
 
 - (void)didPressedWalletBackup {

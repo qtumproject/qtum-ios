@@ -10,8 +10,14 @@
 
 @protocol ChangePinOutput <NSObject>
 
-//@property (nonatomic, weak) id<ChangePinOutputDelegate> delegate;
+@property (assign,nonatomic) PinType type;
 
+@property (nonatomic, weak) id<ChangePinOutputDelegate> delegate;
+
+- (void)actionIncorrectPin;
+- (void)accessPinDenied;
+- (void)clearPinTextFields;
+- (void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed;
 - (void)setCustomTitle:(NSString *)title;
 
 @end

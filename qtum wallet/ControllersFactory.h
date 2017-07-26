@@ -61,6 +61,7 @@
 @protocol LibraryOutput;
 @protocol RestoreWalletOutput;
 @protocol TokenDetailOutput;
+@protocol ChangePinOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -82,6 +83,7 @@
 -(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController;
 -(NSObject<FirstAuthOutput>*)createFirstAuthController;
 -(NSObject<RestoreWalletOutput>*)createRestoreWalletController;
+-(NSObject <ChangePinOutput>*)createChangePinController;
 -(CreatePinViewController*)createCreatePinController;
 -(RepeateViewController*)createRepeatePinController;
 -(AuthNavigationController*)createAuthNavigationController;
@@ -111,6 +113,7 @@
 -(NSObject<HistoryItemOutput> *)createHistoryItem;
 -(NSObject<RecieveOutput> *)createRecieveViewController;
 -(NSObject<LibraryOutput> *)createLibraryViewController;
+
 
 -(QRCodeViewController*)createQRCodeViewControllerForWallet;
 -(QRCodeViewController*)createQRCodeViewControllerForSend;

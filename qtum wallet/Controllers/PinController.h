@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondInputViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridInputViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourthInputViewHeight;
+@property (weak, nonatomic) IBOutlet UIView *firstInputUnderlineView;
+@property (weak, nonatomic) IBOutlet UIView *secondInputUnderlineView;
+@property (weak, nonatomic) IBOutlet UIView *thridInputUnderlineView;
+@property (weak, nonatomic) IBOutlet UIView *fourthInputUnderlineView;
 
 @property (weak,nonatomic) id <PinCoordinator> delegatePin;
 @property (assign,nonatomic) PinType type;
