@@ -86,16 +86,18 @@
                                                          NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Regular" size:11.0f]}
                                              forState:UIControlStateSelected];
     //color for text in searchfield
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:customBlueColor(),
-                                                                                                 NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:15.0f]}];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],
+                                                                                                 NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Regular" size:16.0f]}];
     
     //color for placeholder in searchfield
-    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:customBlueColor()];
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setClearButtonMode:UITextFieldViewModeNever];
+    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setClearButtonMode:UITextFieldViewModeWhileEditing];
     [[UITextField appearance] setKeyboardAppearance:UIKeyboardAppearanceLight];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : customBlueColor(),
-                                                            NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:16.0f]}
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor],
+                                                            NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Light" size:14.0f]}
                                                 forState:UIControlStateNormal];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:0.16]];
+
     
     [self configTabbarToplineLight];
 }

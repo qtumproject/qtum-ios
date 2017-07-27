@@ -192,9 +192,10 @@
     return controller;
 }
 
--(SubscribeTokenViewController*)createSubscribeTokenViewController{
-    SubscribeTokenViewController* controller = (SubscribeTokenViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
-    return controller;
+-(NSObject <SubscribeTokenOutput>*)createSubscribeTokenViewController {
+    
+    NSObject <SubscribeTokenOutput>* output = (NSObject <SubscribeTokenOutput>*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
+    return output;
 }
 
 -(NSObject<LanguageOutput> *)createLanguageViewController{

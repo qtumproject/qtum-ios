@@ -8,15 +8,15 @@
 
 #import "SubscribeTokenCoordinator.h"
 #import "SubscribeTokenViewController.h"
-#import "SubscribeTokenDataSourceDelegate.h"
+#import "SubscribeTokenDataDisplayManagerDark.h"
 #import "AddNewTokensViewController.h"
 #import "QRCodeViewController.h"
 #import "ContractInterfaceManager.h"
 
-@interface SubscribeTokenCoordinator () <QRCodeViewControllerDelegate>
+@interface SubscribeTokenCoordinator () <SubscribeTokenOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
-@property (weak, nonatomic) SubscribeTokenViewController* subscribeViewController;
+@property (weak, nonatomic) id <SubscribeTokenOutput> subscribeTokenOutput;
 
 @end
 
@@ -46,35 +46,19 @@
 
 -(void)start {
     
-    SubscribeTokenViewController* controller = (SubscribeTokenViewController*)[[ControllersFactory sharedInstance] createSubscribeTokenViewController];
-    [self.navigationController pushViewController:controller animated:YES];
-    controller.delegate = self;
-    controller.delegateDataSource = [SubscribeTokenDataSourceDelegate new];
-    controller.tokensArray = [self sortingContractsByDate:[[ContractManager sharedInstance] allTokens]];
-    controller.delegateDataSource.delegate = controller;
-    self.subscribeViewController = controller;
+    NSObject <SubscribeTokenOutput>* output = (SubscribeTokenViewController*)[[ControllersFactory sharedInstance] createSubscribeTokenViewController];
+    output.delegate = self;
+    output.delegateDataSource = [SubscribeTokenDataDisplayManagerDark new];
+    output.tokensArray = [self sortingContractsByDate:[[ContractManager sharedInstance] allTokens]];
+    output.delegateDataSource.delegate = output;
+    self.subscribeTokenOutput = output;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
-#pragma mark - SubscribeTokenCoordinatorDelegate
+#pragma mark - SubscribeTokenOutputDelegate
 
 -(void)didBackButtonPressed{
     [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
--(void)didAddNewPressed {
-    AddNewTokensViewController* controller = (AddNewTokensViewController*)[[ControllersFactory sharedInstance] createAddNewTokensViewController];
-    controller.delegate = self;
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
--(void)didBackButtonPressedFromAddNewToken{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
--(void)didScanButtonPressed {
-    QRCodeViewController* controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewControllerForSubscribe];
-    controller.delegate = self;
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)didSelectContract:(Contract*) contract {
@@ -88,29 +72,5 @@
     [[ContractManager sharedInstance] spendableDidChange:contract];
 }
 
-#pragma mark - QRCodeViewControllerDelegate
 
-- (void)showNextVC {
-    
-}
-
-- (void)backButtonPressed{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)qrCodeScanned:(NSDictionary *)dictionary {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    if ([dictionary[EXPORT_CONTRACTS_TOKENS_KEY] isKindOfClass:[NSArray class]]) {
-        for (NSString* contractAddress in dictionary[EXPORT_CONTRACTS_TOKENS_KEY]) {
-            [[ContractManager sharedInstance] addNewTokenWithContractAddress:contractAddress];
-        }
-    }
-}
-
--(void)didAddNewTokenWithAddress:(NSString*) address{
-    if (address) {
-        [[ContractManager sharedInstance] addNewTokenWithContractAddress:address];
-    }
-}
 @end

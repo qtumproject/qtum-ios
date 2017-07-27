@@ -61,24 +61,24 @@ const CGFloat TextFieldAlpha = 0.3f;
 
 #pragma mark - Actions
 
-- (IBAction)acitonBack:(id)sender
-{
-    [self.delegate didBackButtonPressedFromAddNewToken];
-}
-
-- (IBAction)actionAddTokens:(id)sender {
-    [self.delegate didAddNewTokenWithAddress:self.tokenAddressTextField.text];
-}
-
-- (IBAction)actionTap:(id)sender
-{
-    [self.view endEditing:YES];
-}
-
-- (IBAction)actionScan:(id)sender
-{
-    [self.delegate didScanButtonPressed];
-}
+//- (IBAction)acitonBack:(id)sender
+//{
+//    [self.delegate didBackButtonPressedFromAddNewToken];
+//}
+//
+//- (IBAction)actionAddTokens:(id)sender {
+//    [self.delegate didAddNewTokenWithAddress:self.tokenAddressTextField.text];
+//}
+//
+//- (IBAction)actionTap:(id)sender
+//{
+//    [self.view endEditing:YES];
+//}
+//
+//- (IBAction)actionScan:(id)sender
+//{
+//    [self.delegate didScanButtonPressed];
+//}
 
 #pragma UITextFieldDelegate
 

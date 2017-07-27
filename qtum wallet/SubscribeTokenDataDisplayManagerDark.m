@@ -1,15 +1,17 @@
 //
-//  SubscribeTokenDataSourceDelegate.m
+//  SubscribeTokenDataDisplayManagerDark.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 03.03.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "SubscribeTokenDataSourceDelegate.h"
-#import "TockenCell.h"
+#import "SubscribeTokenDataDisplayManagerDark.h"
+#import "TockenCellSubscribe.h"
 
-@implementation SubscribeTokenDataSourceDelegate
+@implementation SubscribeTokenDataDisplayManagerDark
+
+@synthesize delegate, tokensArray;
 
 #pragma mark - UITableViewDataSource
 
@@ -19,9 +21,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    TockenCell* cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
+    TockenCellSubscribe* cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
     if (!cell){
-        cell = [[TockenCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tokenCellIdentifire];
+        cell = [[TockenCellSubscribe alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tokenCellIdentifire];
     }
 
     Contract* token = self.tokensArray[indexPath.row];
@@ -43,7 +45,7 @@
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    TockenCell* cell = (TockenCell*)[tableView cellForRowAtIndexPath:indexPath];
+    TockenCellSubscribe* cell = (TockenCellSubscribe*)[tableView cellForRowAtIndexPath:indexPath];
     cell.topSeparator.backgroundColor = customBlackColor();
     cell.label.textColor = customBlackColor();
     cell.indicator.tintColor = customBlackColor();
@@ -51,7 +53,7 @@
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TockenCell* cell = (TockenCell*)[tableView cellForRowAtIndexPath:indexPath];
+    TockenCellSubscribe* cell = (TockenCellSubscribe*)[tableView cellForRowAtIndexPath:indexPath];
     cell.topSeparator.backgroundColor = customBlueColor();
     cell.label.textColor = customBlueColor();
     cell.indicator.tintColor = customBlueColor();
@@ -59,12 +61,11 @@
 
 #pragma mark - Lazy Getter
 
--(UIView*)highlightedView{
+-(UIView*)highlightedView {
+    
     UIView * selectedBackgroundView = [[UIView alloc] init];
     [selectedBackgroundView setBackgroundColor:customRedColor()];
     return selectedBackgroundView;
 }
-
-
 
 @end

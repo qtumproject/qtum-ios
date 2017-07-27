@@ -42,7 +42,8 @@
         [identifire isEqualToString:@"ExportWalletBrandKeyViewController"] ||
         [identifire isEqualToString:@"NewsViewController"] ||
         [identifire isEqualToString:@"TokenDetailsViewController"] ||
-        [identifire isEqualToString:@"PinViewController"]) {
+        [identifire isEqualToString:@"PinViewController"] ||
+        [identifire isEqualToString:@"SubscribeTokenViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             
