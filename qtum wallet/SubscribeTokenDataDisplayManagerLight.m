@@ -16,17 +16,12 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    TockenCellSubscribe* cell = (TockenCellSubscribe*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.topSeparator.backgroundColor = lightBlueColor();
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
 
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    TockenCellSubscribe* cell = (TockenCellSubscribe*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.topSeparator.backgroundColor = [UIColor whiteColor];
+
 }
 
 #pragma mark - Lazy Getter
