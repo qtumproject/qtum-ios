@@ -177,6 +177,7 @@
 		B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */; };
 		B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */; };
 		B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */; };
+		B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
@@ -842,6 +843,8 @@
 		B3CB56AC1ECEE8B300B23AE9 /* BalancePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancePageViewController.h; sourceTree = "<group>"; };
 		B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancePageViewController.m; sourceTree = "<group>"; };
 		B3CB56AF1ECF06D200B23AE9 /* Paginationable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginationable.h; sourceTree = "<group>"; };
+		B3CBDF051F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManager.h; sourceTree = "<group>"; };
+		B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataDisplayManager.m; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
@@ -1580,6 +1583,8 @@
 				B3F06D091E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m */,
 				B32BC4B71F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.h */,
 				B32BC4B81F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.m */,
+				B3CBDF051F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.h */,
+				B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */,
 			);
 			name = DelegateDataSource;
 			sourceTree = "<group>";
@@ -3850,6 +3855,7 @@
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
+				B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */,
 				B3EE8F341F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m in Sources */,
 				E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,

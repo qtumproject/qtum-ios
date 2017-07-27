@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString* tokenCellIdentifire = @"TockenCellSubscribe";
+static NSString* tokenCellIdentifire = @"TokenCellSubscribeIdentifire";
 
 @interface TockenCellSubscribe : UITableViewCell
 
