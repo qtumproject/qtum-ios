@@ -7,23 +7,23 @@
 //
 
 #import "SubscribeTokenViewController.h"
-#import "SubscribeTokenDataSourceDelegate.h"
+#import "SubscribeTokenDataDisplayManagerDark.h"
 #import "SubscribeTokenCoordinator.h"
 #import "UIImage+Extension.h"
-#import "TockenCell.h"
+#import "TockenCellSubscribe.h"
 
 @interface SubscribeTokenViewController ()
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray <Contract*>* filteredTokensArray;
-
 
 @end
 
 @implementation SubscribeTokenViewController
 
+@synthesize delegate, tokensArray, delegateDataSource;
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self configTableView];
     [self configSearchBar];
@@ -32,18 +32,21 @@
 }
 
 -(void)dealloc {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Configuration
 
--(void)configTableView{
+-(void)configTableView {
+    
     self.tableView.dataSource = self.delegateDataSource;
     self.tableView.delegate = self.delegateDataSource;
     self.delegateDataSource.tokensArray = self.tokensArray;
 }
 
--(void)configSearchBar{
+-(void)configSearchBar {
+    
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(8,0, self.view.frame.size.width - 16, 28)];
     view.backgroundColor = customBlackColor();
     UIImage *img = [UIImage changeViewToImage:view];
@@ -53,7 +56,8 @@
 
 #pragma mark - Private Methods
 
--(void)updateTable{
+-(void)updateTable {
+    
     __weak __typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf.tableView reloadData];
@@ -61,6 +65,7 @@
 }
 
 -(NSArray <Contract*>*)filteringContractsName:(NSArray <Contract*>*) contracts containsText:(NSString*) containtsText {
+    
     if (containtsText.length > 0) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"localName CONTAINS[c] %@", containtsText];
         NSArray *filteredArray = [contracts filteredArrayUsingPredicate:predicate];

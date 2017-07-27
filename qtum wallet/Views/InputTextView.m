@@ -17,6 +17,7 @@
 @implementation InputTextView
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self config];
@@ -31,7 +32,8 @@
 #pragma mark - Config
 
 -(void)config {
-    self.layer.borderColor = [UIColor colorWithRed:46/255. green:154/255. blue:208/255. alpha:1].CGColor;
+    
+    self.layer.borderColor = customBlueColor().CGColor;
     self.layer.borderWidth = 1;
     self.textContainerInset = UIEdgeInsetsMake(6, 4, 6, 4);
 }

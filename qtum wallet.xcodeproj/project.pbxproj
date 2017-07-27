@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D5F1F2A1B8D007EAE7A /* WatchContractViewControllerDark.m */; };
+		B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D621F2A1B9E007EAE7A /* WatchContractViewControllerLight.m */; };
+		B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D651F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m */; };
+		B3014D691F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D681F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m */; };
 		B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552C1F163C4D00E64E46 /* ConfirmPinForExportViewController.m */; };
 		B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */; };
 		B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */; };
@@ -46,6 +50,11 @@
 		B32BC4AB1F28C6F600C2417C /* PinViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4AA1F28C6F600C2417C /* PinViewControllerDark.m */; };
 		B32BC4AE1F28C70600C2417C /* PinViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4AD1F28C70600C2417C /* PinViewControllerLight.m */; };
 		B32BC4B11F28D5BC00C2417C /* TextFieldWithLineLightSend.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4B01F28D5BC00C2417C /* TextFieldWithLineLightSend.m */; };
+		B32BC4B91F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4B81F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.m */; };
+		B32BC4BE1F29C99000C2417C /* SubscribeTokenViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4BD1F29C99000C2417C /* SubscribeTokenViewControllerDark.m */; };
+		B32BC4C11F29C9B600C2417C /* SubscribeTokenViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4C01F29C9B600C2417C /* SubscribeTokenViewControllerLight.m */; };
+		B32BC4C91F29EF6400C2417C /* TokenCellSubscribeLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4C81F29EF6400C2417C /* TokenCellSubscribeLight.m */; };
+		B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B32BC4CB1F29EF7200C2417C /* TokenCellSubscribeDark.m */; };
 		B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */; };
 		B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CEF1E11220E0094C82C /* UIViewController+Extension.m */; };
 		B32C3CF31E1126200094C82C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32C3CF21E1126200094C82C /* TabBarController.m */; };
@@ -200,9 +209,9 @@
 		B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* ContractCoordinator.m */; };
 		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
 		B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */; };
-		B3F06D031E699244006341F7 /* TockenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D021E699244006341F7 /* TockenCell.m */; };
+		B3F06D031E699244006341F7 /* TockenCellSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D021E699244006341F7 /* TockenCellSubscribe.m */; };
 		B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */; };
-		B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */; };
+		B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D091E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m */; };
 		B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */; };
 		B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F5797A1F0D251C00A13571 /* OpenURLManager.m */; };
 		B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */; };
@@ -483,6 +492,16 @@
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		B3014D5C1F29FD63007EAE7A /* WatchContractOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutput.h; sourceTree = "<group>"; };
+		B3014D5D1F29FD7C007EAE7A /* WatchContractOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutputDelegate.h; sourceTree = "<group>"; };
+		B3014D5E1F2A1B8D007EAE7A /* WatchContractViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewControllerDark.h; sourceTree = "<group>"; };
+		B3014D5F1F2A1B8D007EAE7A /* WatchContractViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchContractViewControllerDark.m; sourceTree = "<group>"; };
+		B3014D611F2A1B9E007EAE7A /* WatchContractViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewControllerLight.h; sourceTree = "<group>"; };
+		B3014D621F2A1B9E007EAE7A /* WatchContractViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchContractViewControllerLight.m; sourceTree = "<group>"; };
+		B3014D641F2A1BBB007EAE7A /* WatchTokensViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchTokensViewControllerLight.h; sourceTree = "<group>"; };
+		B3014D651F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchTokensViewControllerLight.m; sourceTree = "<group>"; };
+		B3014D671F2A1BCC007EAE7A /* WatchTokensViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchTokensViewControllerDark.h; sourceTree = "<group>"; };
+		B3014D681F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchTokensViewControllerDark.m; sourceTree = "<group>"; };
 		B303552B1F163C4D00E64E46 /* ConfirmPinForExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinForExportViewController.h; sourceTree = "<group>"; };
 		B303552C1F163C4D00E64E46 /* ConfirmPinForExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinForExportViewController.m; sourceTree = "<group>"; };
 		B303552E1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinForExportViewControllerDark.h; sourceTree = "<group>"; };
@@ -560,6 +579,20 @@
 		B32BC4AD1F28C70600C2417C /* PinViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinViewControllerLight.m; sourceTree = "<group>"; };
 		B32BC4AF1F28D5BC00C2417C /* TextFieldWithLineLightSend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLineLightSend.h; sourceTree = "<group>"; };
 		B32BC4B01F28D5BC00C2417C /* TextFieldWithLineLightSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldWithLineLightSend.m; sourceTree = "<group>"; };
+		B32BC4B51F29C12200C2417C /* SubscribeTokenOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenOutput.h; sourceTree = "<group>"; };
+		B32BC4B61F29C13600C2417C /* SubscribeTokenOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenOutputDelegate.h; sourceTree = "<group>"; };
+		B32BC4B71F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManagerLight.h; sourceTree = "<group>"; };
+		B32BC4B81F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataDisplayManagerLight.m; sourceTree = "<group>"; };
+		B32BC4BA1F29C38E00C2417C /* SubscribeTokenDataDisplayManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManagerDelegate.h; sourceTree = "<group>"; };
+		B32BC4BB1F29C3F700C2417C /* SubscribeTokenDataDisplayManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManagerProtocol.h; sourceTree = "<group>"; };
+		B32BC4BC1F29C99000C2417C /* SubscribeTokenViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenViewControllerDark.h; sourceTree = "<group>"; };
+		B32BC4BD1F29C99000C2417C /* SubscribeTokenViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenViewControllerDark.m; sourceTree = "<group>"; };
+		B32BC4BF1F29C9B600C2417C /* SubscribeTokenViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenViewControllerLight.h; sourceTree = "<group>"; };
+		B32BC4C01F29C9B600C2417C /* SubscribeTokenViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenViewControllerLight.m; sourceTree = "<group>"; };
+		B32BC4C71F29EF6400C2417C /* TokenCellSubscribeLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenCellSubscribeLight.h; sourceTree = "<group>"; };
+		B32BC4C81F29EF6400C2417C /* TokenCellSubscribeLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenCellSubscribeLight.m; sourceTree = "<group>"; };
+		B32BC4CA1F29EF7200C2417C /* TokenCellSubscribeDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenCellSubscribeDark.h; sourceTree = "<group>"; };
+		B32BC4CB1F29EF7200C2417C /* TokenCellSubscribeDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenCellSubscribeDark.m; sourceTree = "<group>"; };
 		B32C3CEB1E1120C50094C82C /* NSObject+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+Extension.h"; path = "Categories/NSObject+Extension.h"; sourceTree = "<group>"; };
 		B32C3CEC1E1120C50094C82C /* NSObject+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Extension.m"; path = "Categories/NSObject+Extension.m"; sourceTree = "<group>"; };
 		B32C3CEE1E11220E0094C82C /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Extension.h"; path = "Categories/UIViewController+Extension.h"; sourceTree = "<group>"; };
@@ -885,12 +918,12 @@
 		B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenCoordinator.h; sourceTree = "<group>"; };
 		B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenCoordinator.m; sourceTree = "<group>"; };
 		B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = SOURCE_ROOT; };
-		B3F06D011E699244006341F7 /* TockenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TockenCell.h; sourceTree = "<group>"; };
-		B3F06D021E699244006341F7 /* TockenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TockenCell.m; sourceTree = "<group>"; };
+		B3F06D011E699244006341F7 /* TockenCellSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TockenCellSubscribe.h; sourceTree = "<group>"; };
+		B3F06D021E699244006341F7 /* TockenCellSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TockenCellSubscribe.m; sourceTree = "<group>"; };
 		B3F06D041E699303006341F7 /* SubscribeTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenViewController.h; sourceTree = "<group>"; };
 		B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenViewController.m; sourceTree = "<group>"; };
-		B3F06D081E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataSourceDelegate.h; sourceTree = "<group>"; };
-		B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataSourceDelegate.m; sourceTree = "<group>"; };
+		B3F06D081E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManagerDark.h; sourceTree = "<group>"; };
+		B3F06D091E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataDisplayManagerDark.m; sourceTree = "<group>"; };
 		B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = "<group>"; };
 		B3F579791F0D251C00A13571 /* OpenURLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenURLManager.h; path = Application/OpenURLManager.h; sourceTree = "<group>"; };
 		B3F5797A1F0D251C00A13571 /* OpenURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenURLManager.m; path = Application/OpenURLManager.m; sourceTree = "<group>"; };
@@ -1516,6 +1549,41 @@
 			name = Table;
 			sourceTree = "<group>";
 		};
+		B32BC4C41F29C9DE00C2417C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B3F06D041E699303006341F7 /* SubscribeTokenViewController.h */,
+				B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */,
+				B32BC4BC1F29C99000C2417C /* SubscribeTokenViewControllerDark.h */,
+				B32BC4BD1F29C99000C2417C /* SubscribeTokenViewControllerDark.m */,
+				B32BC4BF1F29C9B600C2417C /* SubscribeTokenViewControllerLight.h */,
+				B32BC4C01F29C9B600C2417C /* SubscribeTokenViewControllerLight.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B32BC4C51F29C9F200C2417C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B32BC4B51F29C12200C2417C /* SubscribeTokenOutput.h */,
+				B32BC4B61F29C13600C2417C /* SubscribeTokenOutputDelegate.h */,
+				B32BC4BA1F29C38E00C2417C /* SubscribeTokenDataDisplayManagerDelegate.h */,
+				B32BC4BB1F29C3F700C2417C /* SubscribeTokenDataDisplayManagerProtocol.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		B32BC4C61F29CA2300C2417C /* DelegateDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				B3F06D081E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.h */,
+				B3F06D091E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m */,
+				B32BC4B71F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.h */,
+				B32BC4B81F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.m */,
+			);
+			name = DelegateDataSource;
+			sourceTree = "<group>";
+		};
 		B32C3CE61E111FD10094C82C /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1892,8 +1960,12 @@
 		B386F5B21E139C9E004D231B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B3F06D011E699244006341F7 /* TockenCell.h */,
-				B3F06D021E699244006341F7 /* TockenCell.m */,
+				B32BC4C71F29EF6400C2417C /* TokenCellSubscribeLight.h */,
+				B32BC4C81F29EF6400C2417C /* TokenCellSubscribeLight.m */,
+				B32BC4CA1F29EF7200C2417C /* TokenCellSubscribeDark.h */,
+				B32BC4CB1F29EF7200C2417C /* TokenCellSubscribeDark.m */,
+				B3F06D011E699244006341F7 /* TockenCellSubscribe.h */,
+				B3F06D021E699244006341F7 /* TockenCellSubscribe.m */,
 				B32B32E71ECCC4A20081260A /* FinishInputCell.h */,
 				B32B32E81ECCC4A20081260A /* FinishInputCell.m */,
 				B3C08B191ED44E4200713B15 /* TokenTemplateCell.h */,
@@ -1911,6 +1983,10 @@
 			children = (
 				B387AB381EEAD8C5001D2FF1 /* WatchContractViewController.h */,
 				B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */,
+				B3014D5E1F2A1B8D007EAE7A /* WatchContractViewControllerDark.h */,
+				B3014D5F1F2A1B8D007EAE7A /* WatchContractViewControllerDark.m */,
+				B3014D611F2A1B9E007EAE7A /* WatchContractViewControllerLight.h */,
+				B3014D621F2A1B9E007EAE7A /* WatchContractViewControllerLight.m */,
 			);
 			name = "Watch Contract";
 			sourceTree = "<group>";
@@ -1920,6 +1996,10 @@
 			children = (
 				B387AB3C1EEE85D2001D2FF1 /* WatchTokensViewController.h */,
 				B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */,
+				B3014D641F2A1BBB007EAE7A /* WatchTokensViewControllerLight.h */,
+				B3014D651F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m */,
+				B3014D671F2A1BCC007EAE7A /* WatchTokensViewControllerDark.h */,
+				B3014D681F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m */,
 			);
 			name = "Watch Tokens";
 			sourceTree = "<group>";
@@ -2126,12 +2206,11 @@
 		B3F06D071E699371006341F7 /* Subscribe */ = {
 			isa = PBXGroup;
 			children = (
+				B32BC4C61F29CA2300C2417C /* DelegateDataSource */,
+				B32BC4C51F29C9F200C2417C /* Protocols */,
+				B32BC4C41F29C9DE00C2417C /* Controllers */,
 				B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */,
 				B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */,
-				B3F06D041E699303006341F7 /* SubscribeTokenViewController.h */,
-				B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */,
-				B3F06D081E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.h */,
-				B3F06D091E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m */,
 				B3E159201ED6B1A200D70A87 /* AddNewTokensViewController.h */,
 				B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */,
 			);
@@ -2300,6 +2379,8 @@
 		E71F1C871F1CE98200961B19 /* Watch */ = {
 			isa = PBXGroup;
 			children = (
+				B3014D5C1F29FD63007EAE7A /* WatchContractOutput.h */,
+				B3014D5D1F29FD7C007EAE7A /* WatchContractOutputDelegate.h */,
 				B387AB371EEAD8A6001D2FF1 /* Watch Contract */,
 				B387AB3B1EEE8584001D2FF1 /* Watch Tokens */,
 				E71F1C851F1CD6AD00961B19 /* FavouriteTemplatesCollectionSourceOutput.h */,
@@ -3672,6 +3753,7 @@
 				E71F1C7A1F1C9B0200961B19 /* LibraryTableSource.m in Sources */,
 				B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */,
 				E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */,
+				B32BC4B91F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.m in Sources */,
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
 				B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */,
 				E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */,
@@ -3687,12 +3769,13 @@
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
 				E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */,
-				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataSourceDelegate.m in Sources */,
+				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */,
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				E74857961F13BA5300DCF9A6 /* LanguageViewControllerLight.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
+				B3014D691F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m in Sources */,
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
@@ -3714,7 +3797,7 @@
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
-				B3F06D031E699244006341F7 /* TockenCell.m in Sources */,
+				B3F06D031E699244006341F7 /* TockenCellSubscribe.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
@@ -3759,6 +3842,7 @@
 				B365059B1F14B51000521603 /* RepeateViewControllerLight.m in Sources */,
 				B32B32E21ECCC2D50081260A /* CreateTokenFinishViewController.m in Sources */,
 				B365CA631EA4ED540040A163 /* Contract.m in Sources */,
+				B32BC4C11F29C9B600C2417C /* SubscribeTokenViewControllerLight.m in Sources */,
 				B35DF63F1F262EB100316953 /* TokenDetailLightDisplayDataManager.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
@@ -3771,6 +3855,8 @@
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
+				B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */,
+				B32BC4BE1F29C99000C2417C /* SubscribeTokenViewControllerDark.m in Sources */,
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				E73D36FB1ECF161E009173BD /* NubersTokenTableViewCell.m in Sources */,
@@ -3782,6 +3868,7 @@
 				E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */,
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
 				E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */,
+				B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */,
 				E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */,
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
 				E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */,
@@ -3919,9 +4006,12 @@
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
+				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
+				B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */,
 				B35DF63C1F262B8900316953 /* TokenDetailsViewControllerLight.m in Sources */,
+				B32BC4C91F29EF6400C2417C /* TokenCellSubscribeLight.m in Sources */,
 				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
 				B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */,
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,

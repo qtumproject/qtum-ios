@@ -32,7 +32,10 @@
 
 @implementation WatchContractViewController
 
+@synthesize delegate, collectionSource;
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     self.collectionView.dataSource = self.collectionSource;

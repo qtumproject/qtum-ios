@@ -9,19 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "BaseCoordinator.h"
 
+@class SubscribeTokenCoordinator;
 
 @protocol SubscribeTokenCoordinatorDelegate <NSObject>
 
--(void)didBackButtonPressed;
--(void)didAddNewPressed;
--(void)didBackButtonPressedFromAddNewToken;
--(void)didScanButtonPressed;
--(void)didAddNewTokenWithAddress:(NSString*) address;
--(void)didSelectContract:(Contract*) contract;
+-(void)didFinishCoordinator:(SubscribeTokenCoordinator*) coordinator;
 
 @end
 
-@interface SubscribeTokenCoordinator : BaseCoordinator <Coordinatorable,SubscribeTokenCoordinatorDelegate>
+@interface SubscribeTokenCoordinator : BaseCoordinator <Coordinatorable>
 
 -(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 

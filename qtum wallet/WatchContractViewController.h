@@ -8,17 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "ContractCoordinator.h"
+#import "WatchContractOutputDelegate.h"
+#import "WatchContractOutput.h"
+#import "Presentable.h"
 
 @protocol FavouriteTemplatesCollectionSourceOutput;
 
-@interface WatchContractViewController : BaseViewController <ScrollableContentViewController>
+@interface WatchContractViewController : BaseViewController <ScrollableContentViewController, PopUpWithTwoButtonsViewControllerDelegate, WatchContractOutput, Presentable>
 
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
-@property (weak, nonatomic) id<FavouriteTemplatesCollectionSourceOutput> collectionSource;
 @property (assign,nonatomic) UIEdgeInsets originInsets;
-
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-- (void)changeStateForSelectedTemplate:(TemplateModel *)templateModel;
+- (void)okButtonPressed:(PopUpViewController *)sender;
+- (void)cancelButtonPressed:(PopUpViewController *)sender;
 
 @end

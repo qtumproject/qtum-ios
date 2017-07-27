@@ -7,17 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ContractCoordinator.h"
+#import "WatchContractViewController.h"
 
-@protocol FavouriteTemplatesCollectionSourceOutput;
-
-@interface WatchTokensViewController : BaseViewController <ScrollableContentViewController>
-
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
-@property (weak, nonatomic) id<FavouriteTemplatesCollectionSourceOutput> collectionSource;
-@property (assign,nonatomic) UIEdgeInsets originInsets;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-
-- (void)changeStateForSelectedTemplate:(TemplateModel *)templateModel;
+@interface WatchTokensViewController : WatchContractViewController
 
 @end

@@ -45,8 +45,8 @@ CGFloat const WalletHeaderHeightShowedDark = 50.0f;
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
     
-    CGRect frame = self.tableView.bounds;
-    frame.origin.y = -frame.size.height;
+    CGRect frame = self.view.bounds;
+    frame.origin.y = - frame.size.height;
     UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
     refreshBackgroundView.backgroundColor = customBlueColor();
     [self.tableView insertSubview:refreshBackgroundView atIndex:0];

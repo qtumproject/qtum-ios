@@ -50,10 +50,10 @@
 @property (weak, nonatomic) CreateTokenFinishViewController *createFinishViewController;
 @property (weak, nonatomic) ChooseSmartContractViewController *chooseSmartContractViewController;
 
-@property (weak, nonatomic) WatchContractViewController *wathContractsViewController;
+@property (weak, nonatomic) NSObject <WatchContractOutput> *wathContractsViewController;
 @property (nonatomic) NSObject<FavouriteTemplatesCollectionSourceOutput> *favouriteContractsCollectionSource;
 
-@property (weak, nonatomic) WatchTokensViewController *wathTokensViewController;
+@property (weak, nonatomic) NSObject <WatchContractOutput> *wathTokensViewController;
 @property (nonatomic) NSObject<FavouriteTemplatesCollectionSourceOutput> *favouriteTokensCollectionSource;
 
 @property (weak, nonatomic) NSObject<LibraryOutput> *libraryViewController;
@@ -144,14 +144,14 @@
     self.wathContractsViewController.collectionSource = self.favouriteContractsCollectionSource;
     self.wathContractsViewController.delegate = self;
     
-    [self.navigationController pushViewController:self.wathContractsViewController animated:YES];
+    [self.navigationController pushViewController:[self.wathContractsViewController toPresent] animated:YES];
 }
 
 -(void)showWatchTokens {
     
     self.activeTemplateForLibrary = nil;
     
-    self.wathTokensViewController = (WatchTokensViewController*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
+    self.wathTokensViewController = (NSObject <WatchContractOutput>*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
     self.favouriteTokensCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
     
     self.favouriteTokensCollectionSource.templateModels = [[TemplateManager sharedInstance] standartPackOfTokenTemplates];
@@ -161,7 +161,7 @@
     self.wathTokensViewController.collectionSource = self.favouriteTokensCollectionSource;
     self.wathTokensViewController.delegate = self;
     
-    [self.navigationController pushViewController:self.wathTokensViewController animated:YES];
+    [self.navigationController pushViewController:[self.wathTokensViewController toPresent] animated:YES];
 }
 
 -(void)showRestoreContract {

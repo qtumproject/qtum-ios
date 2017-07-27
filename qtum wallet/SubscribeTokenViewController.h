@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SubscribeTokenDataSourceDelegate.h"
+#import "SubscribeTokenDataDisplayManagerDark.h"
+#import "SubscribeTokenOutputDelegate.h"
+#import "SubscribeTokenOutput.h"
 
-@protocol SubscribeTokenCoordinatorDelegate;
+@interface SubscribeTokenViewController : BaseViewController <SubscribeTokenDataDisplayManagerDelegate, SubscribeTokenOutput>
 
-@interface SubscribeTokenViewController : BaseViewController <SubscribeTokenDataSourceDelegateDelegate>
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSArray <Contract*>* filteredTokensArray;
 
-@property (weak,nonatomic) id <SubscribeTokenCoordinatorDelegate> delegate;
-@property (strong, nonatomic) SubscribeTokenDataSourceDelegate* delegateDataSource;
-@property (copy, nonatomic) NSArray <Contract*>* tokensArray;
+-(void)updateTable;
+
 
 @end

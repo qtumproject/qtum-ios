@@ -192,9 +192,10 @@
     return controller;
 }
 
--(SubscribeTokenViewController*)createSubscribeTokenViewController{
-    SubscribeTokenViewController* controller = (SubscribeTokenViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
-    return controller;
+-(NSObject <SubscribeTokenOutput>*)createSubscribeTokenViewController {
+    
+    NSObject <SubscribeTokenOutput>* output = (NSObject <SubscribeTokenOutput>*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
+    return output;
 }
 
 -(NSObject<LanguageOutput> *)createLanguageViewController{
@@ -302,14 +303,14 @@
     return controller;
 }
 
--(WatchContractViewController*)createWatchContractViewController{
-    WatchContractViewController* controller = (WatchContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
+-(NSObject <WatchContractOutput>*)createWatchContractViewController {
+    NSObject <WatchContractOutput>* controller = (NSObject <WatchContractOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
     return controller;
 }
 
 
--(WatchTokensViewController*)createWatchTokensViewController{
-    WatchTokensViewController* controller = (WatchTokensViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
+-(NSObject <WatchContractOutput>*)createWatchTokensViewController {
+    NSObject <WatchContractOutput>* controller = (NSObject <WatchContractOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
     return controller;
 }
 
