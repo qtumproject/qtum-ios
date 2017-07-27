@@ -303,14 +303,14 @@
     return controller;
 }
 
--(WatchContractViewController*)createWatchContractViewController{
-    WatchContractViewController* controller = (WatchContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
+-(NSObject <WatchContractOutput>*)createWatchContractViewController {
+    NSObject <WatchContractOutput>* controller = (NSObject <WatchContractOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
     return controller;
 }
 
 
--(WatchTokensViewController*)createWatchTokensViewController{
-    WatchTokensViewController* controller = (WatchTokensViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
+-(NSObject <WatchContractOutput>*)createWatchTokensViewController {
+    NSObject <WatchContractOutput>* controller = (NSObject <WatchContractOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
     return controller;
 }
 

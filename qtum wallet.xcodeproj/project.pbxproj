@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D5F1F2A1B8D007EAE7A /* WatchContractViewControllerDark.m */; };
+		B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D621F2A1B9E007EAE7A /* WatchContractViewControllerLight.m */; };
+		B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D651F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m */; };
+		B3014D691F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D681F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m */; };
 		B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552C1F163C4D00E64E46 /* ConfirmPinForExportViewController.m */; };
 		B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */; };
 		B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */; };
@@ -488,6 +492,16 @@
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		B3014D5C1F29FD63007EAE7A /* WatchContractOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutput.h; sourceTree = "<group>"; };
+		B3014D5D1F29FD7C007EAE7A /* WatchContractOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutputDelegate.h; sourceTree = "<group>"; };
+		B3014D5E1F2A1B8D007EAE7A /* WatchContractViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewControllerDark.h; sourceTree = "<group>"; };
+		B3014D5F1F2A1B8D007EAE7A /* WatchContractViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchContractViewControllerDark.m; sourceTree = "<group>"; };
+		B3014D611F2A1B9E007EAE7A /* WatchContractViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewControllerLight.h; sourceTree = "<group>"; };
+		B3014D621F2A1B9E007EAE7A /* WatchContractViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchContractViewControllerLight.m; sourceTree = "<group>"; };
+		B3014D641F2A1BBB007EAE7A /* WatchTokensViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchTokensViewControllerLight.h; sourceTree = "<group>"; };
+		B3014D651F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchTokensViewControllerLight.m; sourceTree = "<group>"; };
+		B3014D671F2A1BCC007EAE7A /* WatchTokensViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchTokensViewControllerDark.h; sourceTree = "<group>"; };
+		B3014D681F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchTokensViewControllerDark.m; sourceTree = "<group>"; };
 		B303552B1F163C4D00E64E46 /* ConfirmPinForExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinForExportViewController.h; sourceTree = "<group>"; };
 		B303552C1F163C4D00E64E46 /* ConfirmPinForExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinForExportViewController.m; sourceTree = "<group>"; };
 		B303552E1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinForExportViewControllerDark.h; sourceTree = "<group>"; };
@@ -1969,6 +1983,10 @@
 			children = (
 				B387AB381EEAD8C5001D2FF1 /* WatchContractViewController.h */,
 				B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */,
+				B3014D5E1F2A1B8D007EAE7A /* WatchContractViewControllerDark.h */,
+				B3014D5F1F2A1B8D007EAE7A /* WatchContractViewControllerDark.m */,
+				B3014D611F2A1B9E007EAE7A /* WatchContractViewControllerLight.h */,
+				B3014D621F2A1B9E007EAE7A /* WatchContractViewControllerLight.m */,
 			);
 			name = "Watch Contract";
 			sourceTree = "<group>";
@@ -1978,6 +1996,10 @@
 			children = (
 				B387AB3C1EEE85D2001D2FF1 /* WatchTokensViewController.h */,
 				B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */,
+				B3014D641F2A1BBB007EAE7A /* WatchTokensViewControllerLight.h */,
+				B3014D651F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m */,
+				B3014D671F2A1BCC007EAE7A /* WatchTokensViewControllerDark.h */,
+				B3014D681F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m */,
 			);
 			name = "Watch Tokens";
 			sourceTree = "<group>";
@@ -2357,6 +2379,8 @@
 		E71F1C871F1CE98200961B19 /* Watch */ = {
 			isa = PBXGroup;
 			children = (
+				B3014D5C1F29FD63007EAE7A /* WatchContractOutput.h */,
+				B3014D5D1F29FD7C007EAE7A /* WatchContractOutputDelegate.h */,
 				B387AB371EEAD8A6001D2FF1 /* Watch Contract */,
 				B387AB3B1EEE8584001D2FF1 /* Watch Tokens */,
 				E71F1C851F1CD6AD00961B19 /* FavouriteTemplatesCollectionSourceOutput.h */,
@@ -3751,6 +3775,7 @@
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				E74857961F13BA5300DCF9A6 /* LanguageViewControllerLight.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
+				B3014D691F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m in Sources */,
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
@@ -3830,6 +3855,7 @@
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
+				B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */,
 				B32BC4BE1F29C99000C2417C /* SubscribeTokenViewControllerDark.m in Sources */,
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
@@ -3842,6 +3868,7 @@
 				E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */,
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
 				E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */,
+				B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */,
 				E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */,
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
 				E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */,
@@ -3979,6 +4006,7 @@
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
+				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
 				B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */,

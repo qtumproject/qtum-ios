@@ -36,5 +36,4 @@
     [self updateTable];
 }
 
-
 @end

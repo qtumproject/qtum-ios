@@ -62,6 +62,7 @@
 @protocol RestoreWalletOutput;
 @protocol TokenDetailOutput;
 @protocol ChangePinOutput;
+@protocol WatchContractOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -99,12 +100,12 @@
 -(TokenFunctionViewController*)createTokenFunctionViewController;
 -(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
 -(TemplateTokenViewController*)createTemplateTokenViewController;
--(WatchContractViewController*)createWatchContractViewController;
--(WatchTokensViewController*)createWatchTokensViewController;
 -(RestoreContractsViewController*)createRestoreContractViewController;
 -(BackupContractsViewController*)createBackupContractViewController;
 -(EnableFingerprintViewController*)createEnableFingerprintViewController;
 
+-(NSObject <WatchContractOutput>*)createWatchContractViewController;
+-(NSObject <WatchContractOutput>*)createWatchTokensViewController;
 -(NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
 -(NSObject<WalletOutput> *)createWalletViewController;
 -(NSObject<TokenListOutput> *)createTokenListViewController;
@@ -137,5 +138,6 @@
 
 -(UIViewController*)createFlowNavigationCoordinator;
 -(UITabBarController <TabbarOutput>*)createTabFlow;
+
 
 @end

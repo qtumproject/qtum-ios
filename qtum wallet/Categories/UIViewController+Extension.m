@@ -43,7 +43,9 @@
         [identifire isEqualToString:@"NewsViewController"] ||
         [identifire isEqualToString:@"TokenDetailsViewController"] ||
         [identifire isEqualToString:@"PinViewController"] ||
-        [identifire isEqualToString:@"SubscribeTokenViewController"]) {
+        [identifire isEqualToString:@"SubscribeTokenViewController"] ||
+        [identifire isEqualToString:@"WatchContractViewController"] ||
+        [identifire isEqualToString:@"WatchTokensViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             
