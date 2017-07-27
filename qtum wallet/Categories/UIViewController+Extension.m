@@ -45,7 +45,8 @@
         [identifire isEqualToString:@"PinViewController"] ||
         [identifire isEqualToString:@"SubscribeTokenViewController"] ||
         [identifire isEqualToString:@"WatchContractViewController"] ||
-        [identifire isEqualToString:@"WatchTokensViewController"]) {
+        [identifire isEqualToString:@"WatchTokensViewController"] ||
+        [identifire isEqualToString:@"LibraryViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

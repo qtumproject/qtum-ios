@@ -178,6 +178,10 @@
 		B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */; };
 		B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */; };
 		B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */; };
+		B3CBDF0A1F2A461D00C80D4E /* LibraryViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */; };
+		B3CBDF0D1F2A463700C80D4E /* LibraryViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF0C1F2A463700C80D4E /* LibraryViewControllerLight.m */; };
+		B3CBDF101F2A47E000C80D4E /* LibraryTableViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF0F1F2A47E000C80D4E /* LibraryTableViewCellLight.m */; };
+		B3CBDF131F2A47F900C80D4E /* LibraryTableViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF121F2A47F900C80D4E /* LibraryTableViewCellDark.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
@@ -845,6 +849,14 @@
 		B3CB56AF1ECF06D200B23AE9 /* Paginationable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginationable.h; sourceTree = "<group>"; };
 		B3CBDF051F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManager.h; sourceTree = "<group>"; };
 		B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataDisplayManager.m; sourceTree = "<group>"; };
+		B3CBDF081F2A461D00C80D4E /* LibraryViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewControllerDark.h; sourceTree = "<group>"; };
+		B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewControllerDark.m; sourceTree = "<group>"; };
+		B3CBDF0B1F2A463700C80D4E /* LibraryViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewControllerLight.h; sourceTree = "<group>"; };
+		B3CBDF0C1F2A463700C80D4E /* LibraryViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewControllerLight.m; sourceTree = "<group>"; };
+		B3CBDF0E1F2A47E000C80D4E /* LibraryTableViewCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableViewCellLight.h; sourceTree = "<group>"; };
+		B3CBDF0F1F2A47E000C80D4E /* LibraryTableViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTableViewCellLight.m; sourceTree = "<group>"; };
+		B3CBDF111F2A47F900C80D4E /* LibraryTableViewCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableViewCellDark.h; sourceTree = "<group>"; };
+		B3CBDF121F2A47F900C80D4E /* LibraryTableViewCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTableViewCellDark.m; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
@@ -2377,6 +2389,10 @@
 				E71F1C791F1C9B0200961B19 /* LibraryTableSource.m */,
 				E71F1C7D1F1CA1E400961B19 /* LibraryTableViewCell.h */,
 				E71F1C7E1F1CA1E400961B19 /* LibraryTableViewCell.m */,
+				B3CBDF111F2A47F900C80D4E /* LibraryTableViewCellDark.h */,
+				B3CBDF121F2A47F900C80D4E /* LibraryTableViewCellDark.m */,
+				B3CBDF0E1F2A47E000C80D4E /* LibraryTableViewCellLight.h */,
+				B3CBDF0F1F2A47E000C80D4E /* LibraryTableViewCellLight.m */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -2477,6 +2493,10 @@
 				E71F1C731F1C99A200961B19 /* LibraryOutputDelegate.h */,
 				E7360EC31F1918E7003ED21D /* LibraryViewController.h */,
 				E7360EC41F1918E7003ED21D /* LibraryViewController.m */,
+				B3CBDF081F2A461D00C80D4E /* LibraryViewControllerDark.h */,
+				B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */,
+				B3CBDF0B1F2A463700C80D4E /* LibraryViewControllerLight.h */,
+				B3CBDF0C1F2A463700C80D4E /* LibraryViewControllerLight.m */,
 			);
 			name = LibraryOutput;
 			sourceTree = "<group>";
@@ -3912,6 +3932,7 @@
 				B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */,
 				B32BC4AB1F28C6F600C2417C /* PinViewControllerDark.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
+				B3CBDF131F2A47F900C80D4E /* LibraryTableViewCellDark.m in Sources */,
 				E73D36F51ECF15D1009173BD /* BalanceTokenTableViewCell.m in Sources */,
 				B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
@@ -3928,6 +3949,7 @@
 				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,
 				E71F1C7F1F1CA1E400961B19 /* LibraryTableViewCell.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
+				B3CBDF101F2A47E000C80D4E /* LibraryTableViewCellLight.m in Sources */,
 				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
 				B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */,
 				E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */,
@@ -3960,6 +3982,7 @@
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
+				B3CBDF0A1F2A461D00C80D4E /* LibraryViewControllerDark.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E745BA1D1F21E78E00B2E216 /* NewsTableCellDark.m in Sources */,
 				E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */,
@@ -4015,6 +4038,7 @@
 				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
+				B3CBDF0D1F2A463700C80D4E /* LibraryViewControllerLight.m in Sources */,
 				B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */,
 				B35DF63C1F262B8900316953 /* TokenDetailsViewControllerLight.m in Sources */,
 				B32BC4C91F29EF6400C2417C /* TokenCellSubscribeLight.m in Sources */,
