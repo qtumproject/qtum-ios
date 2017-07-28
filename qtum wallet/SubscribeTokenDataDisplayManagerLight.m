@@ -7,7 +7,7 @@
 //
 
 #import "SubscribeTokenDataDisplayManagerLight.h"
-#import "TockenCellSubscribe.h"
+#import "TokenCellSubscribe.h"
 
 
 @implementation SubscribeTokenDataDisplayManagerLight

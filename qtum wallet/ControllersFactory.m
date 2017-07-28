@@ -32,7 +32,7 @@
 #import "AddNewTokensViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
-#import "ChooseSmartContractViewController.h"
+#import "SmartContractMenuViewController.h"
 #import "SmartContractsListViewController.h"
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
@@ -72,6 +72,7 @@
 #import "LibraryOutput.h"
 #import "NewsOutput.h"
 #import "TokenDetailOutput.h"
+#import "SmartContractMenuOutput.h"
 
 @implementation ControllersFactory
 
@@ -278,8 +279,9 @@
     return controller;
 }
 
--(ChooseSmartContractViewController*)createChooseSmartContractViewController{
-    ChooseSmartContractViewController* controller = (ChooseSmartContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ChooseSmartContractViewController"];
+-(NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController {
+    
+    NSObject <SmartContractMenuOutput>* controller = (NSObject <SmartContractMenuOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractMenuViewController"];
     return controller;
 }
 

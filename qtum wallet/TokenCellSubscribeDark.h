@@ -6,8 +6,8 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "TockenCellSubscribe.h"
+#import "TokenCellSubscribe.h"
 
-@interface TokenCellSubscribeDark : TockenCellSubscribe
+@interface TokenCellSubscribeDark : TokenCellSubscribe
 
 @end

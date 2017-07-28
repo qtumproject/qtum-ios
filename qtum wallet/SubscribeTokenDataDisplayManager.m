@@ -7,7 +7,7 @@
 //
 
 #import "SubscribeTokenDataDisplayManager.h"
-#import "TockenCellSubscribe.h"
+#import "TokenCellSubscribe.h"
 
 @implementation SubscribeTokenDataDisplayManager
 
@@ -21,9 +21,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    TockenCellSubscribe* cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
+    TokenCellSubscribe* cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
     if (!cell){
-        cell = [[TockenCellSubscribe alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tokenCellIdentifire];
+        cell = [[TokenCellSubscribe alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tokenCellIdentifire];
     }
     
     Contract* token = self.tokensArray[indexPath.row];
@@ -46,7 +46,7 @@
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    TockenCellSubscribe* cell = (TockenCellSubscribe*)[tableView cellForRowAtIndexPath:indexPath];
+    TokenCellSubscribe* cell = (TokenCellSubscribe*)[tableView cellForRowAtIndexPath:indexPath];
     cell.topSeparator.backgroundColor = customBlackColor();
     cell.label.textColor = customBlackColor();
     cell.indicator.tintColor = customBlackColor();
@@ -54,7 +54,7 @@
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TockenCellSubscribe* cell = (TockenCellSubscribe*)[tableView cellForRowAtIndexPath:indexPath];
+    TokenCellSubscribe* cell = (TokenCellSubscribe*)[tableView cellForRowAtIndexPath:indexPath];
     cell.topSeparator.backgroundColor = customBlueColor();
     cell.label.textColor = customBlueColor();
     cell.indicator.tintColor = customBlueColor();

@@ -19,14 +19,6 @@
 -(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName;
 -(void)finishStepFinishDidPressed;
 -(void)finishStepBackDidPressed;
--(void)didSelectContractStore;
--(void)didSelectWatchContracts;
--(void)didSelectWatchTokens;
--(void)didSelectPublishedContracts;
--(void)didSelectNewContracts;
--(void)didSelectRestoreContract;
--(void)didSelectBackupContract;
--(void)didPressedQuit;
 -(void)didPressedBack;
 -(void)didSelectQStoreCategories;
 -(void)didSelectQStoreCategory;
@@ -42,6 +34,8 @@
 
 - (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;
+- (void)didPressedQuit;
+
 
 @end
 

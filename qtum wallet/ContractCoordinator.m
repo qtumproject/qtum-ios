@@ -17,7 +17,7 @@
 #import "CreateTokenFinishViewController.h"
 #import "TemplateTokenViewController.h"
 #import "ContractFileManager.h"
-#import "ChooseSmartContractViewController.h"
+#import "SmartContractMenuViewController.h"
 #import "SmartContractsListViewController.h"
 #import "TokenDetailsViewController.h"
 #import "TokenDetailsTableSource.h"
@@ -35,11 +35,13 @@
 
 #import "LibraryOutput.h"
 #import "LibraryTableSourceOutput.h"
+#import "SmartContractMenuOutput.h"
+#import "SmartContractMenuOutputDelegate.h"
 
 #import "FavouriteTemplatesCollectionSourceOutput.h"
 
 
-@interface ContractCoordinator () <LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate>
+@interface ContractCoordinator () <LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate, WatchContractOutputDelegate, SmartContractMenuOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
@@ -48,7 +50,7 @@
 
 @property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
 @property (weak, nonatomic) CreateTokenFinishViewController *createFinishViewController;
-@property (weak, nonatomic) ChooseSmartContractViewController *chooseSmartContractViewController;
+@property (weak, nonatomic) NSObject <SmartContractMenuOutput>* smartContractMenuOutput;
 
 @property (weak, nonatomic) NSObject <WatchContractOutput> *wathContractsViewController;
 @property (nonatomic) NSObject<FavouriteTemplatesCollectionSourceOutput> *favouriteContractsCollectionSource;
@@ -79,10 +81,10 @@
 
 -(void)start {
     
-    ChooseSmartContractViewController* controller = (ChooseSmartContractViewController*)[[ControllersFactory sharedInstance] createChooseSmartContractViewController];
-    controller.delegate = self;
-    self.chooseSmartContractViewController = controller;
-    [self.navigationController pushViewController:controller animated:YES];
+    NSObject <SmartContractMenuOutput>* output = (NSObject <SmartContractMenuOutput>*)[[ControllersFactory sharedInstance] createSmartContractMenuViewController];
+    output.delegate = self;
+    self.smartContractMenuOutput = output;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
 #pragma mark - Private Methods 
@@ -134,7 +136,7 @@
     
     self.activeTemplateForLibrary = nil;
     
-    self.wathContractsViewController = (WatchContractViewController*)[[ControllersFactory sharedInstance] createWatchContractViewController];
+    self.wathContractsViewController = (NSObject <WatchContractOutput>*)[[ControllersFactory sharedInstance] createWatchContractViewController];
     self.favouriteContractsCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
     
     self.favouriteContractsCollectionSource.templateModels = [[TemplateManager sharedInstance] standartPackOfTemplates];
@@ -165,6 +167,7 @@
 }
 
 -(void)showRestoreContract {
+    
     RestoreContractsViewController* controller = (RestoreContractsViewController*)[[ControllersFactory sharedInstance] createRestoreContractViewController];
     controller.delegate = self;
 
@@ -252,7 +255,7 @@
 
 -(void)finishStepBackDidPressed {
     
-    [self.navigationController popToViewController:self.chooseSmartContractViewController animated:YES];
+    [self.navigationController popToViewController:[self.smartContractMenuOutput toPresent] animated:YES];
 }
 
 -(void)finishStepFinishDidPressed{
