@@ -37,11 +37,18 @@
 #import "LibraryTableSourceOutput.h"
 #import "SmartContractMenuOutput.h"
 #import "SmartContractMenuOutputDelegate.h"
-
+#import "TemplatesListOutput.h"
+#import "TemplatesListOutputDelegate.h"
 #import "FavouriteTemplatesCollectionSourceOutput.h"
 
 
-@interface ContractCoordinator () <LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate, WatchContractOutputDelegate, SmartContractMenuOutputDelegate>
+@interface ContractCoordinator () <LibraryOutputDelegate,
+LibraryTableSourceOutputDelegate,
+FavouriteTemplatesCollectionSourceOutputDelegate,
+WatchContractOutputDelegate,
+SmartContractMenuOutputDelegate,
+PublishedContractListOutputDelegate,
+TemplatesListOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
@@ -63,7 +70,6 @@
 @property (nonatomic) TemplateModel *activeTemplateForLibrary;
 @property (nonatomic) BOOL isLibraryViewControllerOnlyForTokens;
 @property (copy, nonatomic) NSString* localContractName;
-
 
 @end
 
@@ -91,25 +97,26 @@
 
 -(void)showCreateNewToken {
     
-    TemplateTokenViewController* controller = (TemplateTokenViewController*)[[ControllersFactory sharedInstance] createTemplateTokenViewController];
-    controller.delegate = self;
-    controller.templateModels = [[TemplateManager sharedInstance] availebaleTemplates];
-    [self.navigationController pushViewController:controller animated:YES];
+    NSObject <TemplatesListOutput>* output  = [[ControllersFactory sharedInstance] createTemplateTokenViewController];
+    output.delegate = self;
+    output.templateModels = [[TemplateManager sharedInstance] availebaleTemplates];
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
 -(void)showMyPyblishedContract {
     
-    SmartContractsListViewController* controller = (SmartContractsListViewController*)[[ControllersFactory sharedInstance] createSmartContractsListViewController];
-    controller.delegate = self;
+    NSObject <PublishedContractListOutput>* output = [[ControllersFactory sharedInstance] createSmartContractsListViewController];
+    output.delegate = self;
     
     NSArray *sortedContracts = [[[ContractManager sharedInstance] allContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
         return [t1.creationDate compare:t2.creationDate];
     }];
-    controller.contracts = sortedContracts;
-    [self.navigationController pushViewController:controller animated:YES];
+    output.contracts = sortedContracts;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
 -(void)showContractStore {
+    
     QStoreViewController* controller = (QStoreViewController*)[[ControllersFactory sharedInstance] createQStoreViewController];
     controller.delegate = self;
     
@@ -117,6 +124,7 @@
 }
 
 -(void)showQStoreList:(QStoreListType)type categoryTitle:(NSString *)categoryTitle {
+    
     QStoreListViewController* controller = (QStoreListViewController*)[[ControllersFactory sharedInstance] createQStoreListViewController];
     controller.delegate = self;
     controller.type = type;
@@ -126,6 +134,7 @@
 }
 
 -(void)showQStoreContract {
+    
     QStoreContractViewController* controller = (QStoreContractViewController*)[[ControllersFactory sharedInstance] createQStoreContractViewController];
     controller.delegate = self;
     
@@ -282,16 +291,6 @@
     }];
 }
 
--(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel {
-    
-    self.templateModel = templateModel;
-    [self showStepWithFieldsAndTemplate:templateModel.path];
-}
-
--(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Contract*) contract {
-    [self showContractsFunction:contract];
-}
-
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token {
     
     [self didSelectFunctionIndexPath:indexPath withItem:item andToken:token fromQStore:NO];
@@ -336,6 +335,61 @@
     }];
 }
 
+- (void)didSelectQStoreCategories {
+    [self showQStoreList:QStoreCategories categoryTitle:nil];
+}
+
+- (void)didSelectQStoreCategory {
+    [self showQStoreList:QStoreContracts categoryTitle:@"Some category"];
+}
+
+- (void)didSelectQStoreContract {
+    [self showQStoreContract];
+}
+
+- (void)didSelectQStoreContractDetails {
+    [self didSelectFunctionIndexPath:nil withItem:nil andToken:nil fromQStore:YES];
+}
+
+-(void)didPressedQuit {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+#pragma mark - PublishedContractListOutputDelegate, LibraryOutputDelegate
+
+-(void)didPressedBack {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Contract*) contract {
+    [self showContractsFunction:contract];
+}
+
+#pragma mark - TemplatesListOutputDelegate
+
+
+-(void)didSelectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel {
+    
+    self.templateModel = templateModel;
+    [self showStepWithFieldsAndTemplate:templateModel.path];
+}
+
+
+#pragma mark - WatchContractOutputDelegate
+
+- (void)didSelectChooseFromLibrary:(id)sender {
+    [self showChooseFromLibrary:[sender isKindOfClass:[WatchTokensViewController class]]];
+}
+
+- (void)didChangeAbiText {
+    
+    self.activeTemplateForLibrary = nil;
+    self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+    self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
+}
+
+#pragma mark - SmartContractMenuOutputDelegate
+
 -(void)didSelectContractStore {
     [self showContractStore];
 }
@@ -362,41 +416,6 @@
 
 - (void)didSelectBackupContract {
     [self showBackupContract];
-}
-
-- (void)didSelectQStoreCategories {
-    [self showQStoreList:QStoreCategories categoryTitle:nil];
-}
-
-- (void)didSelectQStoreCategory {
-    [self showQStoreList:QStoreContracts categoryTitle:@"Some category"];
-}
-
-- (void)didSelectQStoreContract {
-    [self showQStoreContract];
-}
-
-- (void)didSelectQStoreContractDetails {
-    [self didSelectFunctionIndexPath:nil withItem:nil andToken:nil fromQStore:YES];
-}
-
--(void)didPressedQuit {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
--(void)didPressedBack {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)didSelectChooseFromLibrary:(id)sender {
-    [self showChooseFromLibrary:[sender isKindOfClass:[WatchTokensViewController class]]];
-}
-
-- (void)didChangeAbiText {
-    
-    self.activeTemplateForLibrary = nil;
-    self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
-    self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
 }
 
 #pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate

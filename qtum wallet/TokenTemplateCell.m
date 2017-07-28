@@ -15,15 +15,4 @@
 
 @implementation TokenTemplateCell
 
-- (void)awakeFromNib {
-    
-    [super awakeFromNib];
-    
-    self.disclousureImage.tintColor = customBlueColor();
-    
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = customRedColor();
-    [self setSelectedBackgroundView:bgColorView];
-}
-
 @end

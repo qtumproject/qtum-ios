@@ -17,6 +17,8 @@
 
 @implementation SmartContractsListViewController
 
+@synthesize delegate, contracts;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -29,25 +31,6 @@
     [self.delegate didSelectContractWithIndexPath:indexPath withContract:self.contracts[indexPath.row]];
 }
 
-- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    SmartContractListItemCell* cell = (SmartContractListItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.typeIdentifire.backgroundColor =
-    cell.creationDate.textColor =
-    cell.contractName.textColor = customBlackColor();
-    
-    cell.typeIdentifire.textColor = customRedColor();
-}
-
-- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    SmartContractListItemCell* cell = (SmartContractListItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.typeIdentifire.backgroundColor =
-    cell.creationDate.textColor =
-    cell.contractName.textColor = customBlueColor();
-    
-    cell.typeIdentifire.textColor = customBlackColor();
-}
 
 #pragma mark - UITableViewDataSource
 

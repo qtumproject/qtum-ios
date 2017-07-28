@@ -47,7 +47,9 @@
         [identifire isEqualToString:@"WatchContractViewController"] ||
         [identifire isEqualToString:@"WatchTokensViewController"] ||
         [identifire isEqualToString:@"LibraryViewController"] ||
-        [identifire isEqualToString:@"SmartContractMenuViewController"]) {
+        [identifire isEqualToString:@"SmartContractMenuViewController"] ||
+        [identifire isEqualToString:@"SmartContractsListViewController"] ||
+        [identifire isEqualToString:@"TemplateTokenViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

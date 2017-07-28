@@ -64,6 +64,8 @@
 @protocol ChangePinOutput;
 @protocol WatchContractOutput;
 @protocol SmartContractMenuOutput;
+@protocol PublishedContractListOutput;
+@protocol TemplatesListOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -97,14 +99,14 @@
 - (AddNewTokensViewController*)createAddNewTokensViewController;
 - (ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 - (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
-- (SmartContractsListViewController*)createSmartContractsListViewController;
 - (TokenFunctionViewController*)createTokenFunctionViewController;
 - (TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
-- (TemplateTokenViewController*)createTemplateTokenViewController;
 - (RestoreContractsViewController*)createRestoreContractViewController;
 - (BackupContractsViewController*)createBackupContractViewController;
 - (EnableFingerprintViewController*)createEnableFingerprintViewController;
 
+- (NSObject<TemplatesListOutput> *)createTemplateTokenViewController;
+- (NSObject <PublishedContractListOutput>*)createSmartContractsListViewController;
 - (NSObject <WatchContractOutput>*)createWatchContractViewController;
 - (NSObject <WatchContractOutput>*)createWatchTokensViewController;
 - (NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;

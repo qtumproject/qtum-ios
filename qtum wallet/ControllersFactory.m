@@ -73,6 +73,8 @@
 #import "NewsOutput.h"
 #import "TokenDetailOutput.h"
 #import "SmartContractMenuOutput.h"
+#import "PublishedContractListOutput.h"
+#import "TemplatesListOutput.h"
 
 @implementation ControllersFactory
 
@@ -254,9 +256,10 @@
     return controller;
 }
 
--(TemplateTokenViewController*)createTemplateTokenViewController{
-    TemplateTokenViewController* controller = (TemplateTokenViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
-    return controller;
+-(NSObject<TemplatesListOutput> *)createTemplateTokenViewController {
+    
+    NSObject<TemplatesListOutput> *output = (NSObject<TemplatesListOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
+    return output;
 }
 
 -(AddNewTokensViewController*)createAddNewTokensViewController{
@@ -285,8 +288,9 @@
     return controller;
 }
 
--(SmartContractsListViewController*)createSmartContractsListViewController{
-    SmartContractsListViewController* controller = (SmartContractsListViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
+-(NSObject <PublishedContractListOutput>*)createSmartContractsListViewController {
+    
+    NSObject <PublishedContractListOutput>* controller = (NSObject <PublishedContractListOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
     return controller;
 }
 

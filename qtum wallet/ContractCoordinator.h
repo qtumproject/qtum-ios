@@ -24,8 +24,6 @@
 -(void)didSelectQStoreCategory;
 -(void)didSelectQStoreContract;
 -(void)didSelectQStoreContractDetails;
--(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel;
--(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Contract*) contract;
 -(void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token;
 -(void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
 -(void)didCallFunctionWithItem:(AbiinterfaceItem*) item
