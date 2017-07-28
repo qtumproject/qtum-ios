@@ -24,7 +24,7 @@
                                        @"value":inObject[@"value"]}];
         NSString* address = hashTableAdresses[inObject[@"address"]];
         if (address) {
-            inMoney += [inObject[@"value"] floatValue];
+            inMoney += [inObject[@"value"] doubleValue];
         }
     }
     
@@ -35,7 +35,7 @@
         
         NSString* address = hashTableAdresses[outObject[@"address"]];
         if (address) {
-            outMoney += [outObject[@"value"] floatValue];
+            outMoney += [outObject[@"value"] doubleValue];
         }
     }
     
@@ -78,7 +78,8 @@
     self.amountString  = [NSString stringWithFormat:@"%0.3f %@", [self.amount floatValue], NSLocalizedString(@"QTUM", nil)];
 }
 
-- (void)createDateString{
+- (void)createDateString {
+    
     CGFloat dateNumber = [self.dateNumber doubleValue];
     if (!dateNumber) {
         return;
@@ -154,7 +155,8 @@
 
 #pragma mark - Equal
 
--(BOOL)isEqualElementWithoutConfimation:(HistoryElement*)object{
+-(BOOL)isEqualElementWithoutConfimation:(HistoryElement*)object {
+    
     if (self.address && object.address && ![self.address isEqualToString:object.address]) {
         return NO;
     }
