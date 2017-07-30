@@ -631,8 +631,12 @@ static NSString* op_exec = @"c1";
     return script;
 }
 
-- (BTCAmount)convertValueToAmount:(double)value {
-    return value * BTCCoin;
+- (BTCAmount)convertValueToAmount:(NSDecimalNumber*) value {
+    
+    if ([value isKindOfClass:[NSDecimalNumber class]]) {
+        return [[value decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithDouble:BTCCoin]] integerValue];
+    }
+    return value.doubleValue * BTCCoin;
 }
 
 #pragma mark - Prepare values for sending
@@ -644,7 +648,8 @@ static NSString* op_exec = @"c1";
     for (NSDictionary *dictionary in array) {
         
         BTCPublicKeyAddress *toPublicKeyAddress = [BTCPublicKeyAddress addressWithString:dictionary[@"address"]];
-        BTCAmount amount = [self convertValueToAmount:[dictionary[@"amount"] doubleValue]];
+        
+        BTCAmount amount = [self convertValueToAmount:dictionary[@"amount"]];
         
         totalAmount += amount;
         

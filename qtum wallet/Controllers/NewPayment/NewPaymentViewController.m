@@ -278,7 +278,7 @@ static NSInteger sendButtomBottomOffset = 27;
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
     
-    NSNumber *amount = @([[self correctAmountString] doubleValue]);
+    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:[self correctAmountString]];
     NSString *address = self.addressTextField.text;
     [self.delegate didPresseSendActionWithAddress:address andAmount:amount];
 }
