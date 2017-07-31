@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="proximanova-semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
         <array key="simplonmono-medium.ttf">
             <string>simplonmono-medium</string>
         </array>
@@ -17,10 +24,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Information Pop Up View Controller-->
+        <!--Information Pop Up View Controller Dark-->
         <scene sceneID="7HC-sd-g6E">
             <objects>
-                <viewController storyboardIdentifier="InformationPopUp" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nbw-Tv-oTA" customClass="InformationPopUpViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InformationPopUpViewControllerDark" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nbw-Tv-oTA" customClass="InformationPopUpViewControllerDark" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wac-nj-iFh"/>
                         <viewControllerLayoutGuide type="bottom" id="w81-Zw-gcP"/>
@@ -34,7 +41,7 @@
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkd-Oz-HuN">
-                                <rect key="frame" x="30" y="248" width="315" height="171"/>
+                                <rect key="frame" x="30" y="148" width="315" height="171"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIx-mx-xNr">
                                         <rect key="frame" x="20" y="53" width="275" height="36"/>
@@ -74,7 +81,7 @@ updated</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Dkd-Oz-HuN" firstAttribute="centerY" secondItem="Z5P-IS-y6k" secondAttribute="centerY" id="A4e-Sl-Bin"/>
+                            <constraint firstItem="Dkd-Oz-HuN" firstAttribute="centerY" secondItem="Z5P-IS-y6k" secondAttribute="centerY" multiplier="0.7" id="A4e-Sl-Bin"/>
                             <constraint firstItem="Dkd-Oz-HuN" firstAttribute="leading" secondItem="Z5P-IS-y6k" secondAttribute="leading" constant="30" id="R72-iQ-QuK"/>
                             <constraint firstItem="mE1-fk-fgx" firstAttribute="leading" secondItem="Z5P-IS-y6k" secondAttribute="leading" id="bQI-QL-JXY"/>
                             <constraint firstAttribute="trailing" secondItem="Dkd-Oz-HuN" secondAttribute="trailing" constant="30" id="cGX-AH-8vc"/>
@@ -91,10 +98,102 @@ updated</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pvp-RK-5G9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
+            <point key="canvasLocation" x="-286" y="143"/>
+        </scene>
+        <!--Information Pop Up View Controller Light-->
+        <scene sceneID="fQB-wF-DUN">
+            <objects>
+                <viewController storyboardIdentifier="InformationPopUpViewControllerLight" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tD9-5s-XyZ" customClass="InformationPopUpViewControllerLight" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xUL-zU-1TH"/>
+                        <viewControllerLayoutGuide type="bottom" id="YaJ-oD-w1S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V4Y-eE-wov">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbe-G8-EoL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNg-Fd-4sY">
+                                <rect key="frame" x="57" y="148.5" width="262" height="170"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxx-RQ-wP2">
+                                        <rect key="frame" x="55.5" y="103" width="150" height="42"/>
+                                        <color key="backgroundColor" red="0.21176470589999999" green="0.72549019609999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Swq-k7-Jfe"/>
+                                            <constraint firstAttribute="height" constant="42" id="uX1-l0-omZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionOk:" destination="tD9-5s-XyZ" eventType="touchUpInside" id="IPX-Iz-uhH"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="qhx-Mh-bfB">
+                                        <rect key="frame" x="40" y="44.5" width="13" height="13"/>
+                                        <color key="tintColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imb-Hs-18b">
+                                        <rect key="frame" x="60" y="40" width="143" height="36"/>
+                                        <string key="text">Your balance was 
+updated</string>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="kxx-RQ-wP2" firstAttribute="centerX" secondItem="hNg-Fd-4sY" secondAttribute="centerX" id="171-Eo-bYd"/>
+                                    <constraint firstItem="kxx-RQ-wP2" firstAttribute="top" secondItem="imb-Hs-18b" secondAttribute="bottom" constant="27" id="6sk-2c-ONq"/>
+                                    <constraint firstAttribute="width" constant="262" id="JPZ-Os-CSp"/>
+                                    <constraint firstItem="imb-Hs-18b" firstAttribute="leading" secondItem="qhx-Mh-bfB" secondAttribute="trailing" constant="7" id="Lkf-Tu-hZk"/>
+                                    <constraint firstAttribute="bottom" secondItem="kxx-RQ-wP2" secondAttribute="bottom" constant="25" id="Vlz-rk-h4y"/>
+                                    <constraint firstAttribute="height" constant="170" id="W0W-u0-tk0"/>
+                                    <constraint firstItem="qhx-Mh-bfB" firstAttribute="centerY" secondItem="imb-Hs-18b" secondAttribute="centerY" constant="-7" id="cPo-gm-Ynv"/>
+                                    <constraint firstItem="imb-Hs-18b" firstAttribute="centerX" secondItem="hNg-Fd-4sY" secondAttribute="centerX" id="vYv-sf-ZIV"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YaJ-oD-w1S" firstAttribute="top" secondItem="zbe-G8-EoL" secondAttribute="bottom" id="E96-hC-dIN"/>
+                            <constraint firstItem="zbe-G8-EoL" firstAttribute="top" secondItem="V4Y-eE-wov" secondAttribute="top" id="cYY-pR-SMD"/>
+                            <constraint firstItem="zbe-G8-EoL" firstAttribute="leading" secondItem="V4Y-eE-wov" secondAttribute="leading" id="cco-zk-njk"/>
+                            <constraint firstItem="hNg-Fd-4sY" firstAttribute="centerX" secondItem="V4Y-eE-wov" secondAttribute="centerX" id="fdJ-XA-5dW"/>
+                            <constraint firstAttribute="trailing" secondItem="zbe-G8-EoL" secondAttribute="trailing" id="hFn-xd-LSa"/>
+                            <constraint firstItem="hNg-Fd-4sY" firstAttribute="centerY" secondItem="V4Y-eE-wov" secondAttribute="centerY" multiplier="0.7" id="wDg-Yy-kHd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="okButton" destination="kxx-RQ-wP2" id="6OC-AM-vfo"/>
+                        <outlet property="titleLabel" destination="imb-Hs-18b" id="GFK-UI-56y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XI2-qs-Y4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="425" y="143"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic-confirm" width="21" height="21"/>
+        <image name="ic-confirmed" width="13" height="13"/>
     </resources>
 </document>

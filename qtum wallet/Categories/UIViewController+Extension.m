@@ -49,7 +49,12 @@
         [identifire isEqualToString:@"LibraryViewController"] ||
         [identifire isEqualToString:@"SmartContractMenuViewController"] ||
         [identifire isEqualToString:@"SmartContractsListViewController"] ||
-        [identifire isEqualToString:@"TemplateTokenViewController"]) {
+        [identifire isEqualToString:@"TemplateTokenViewController"] ||
+        [identifire isEqualToString:@"PhotoLibraryPopUpViewController"] ||
+        [identifire isEqualToString:@"SecurityPopupViewController"] ||
+        [identifire isEqualToString:@"NoInternetConnectionPopUpViewController"] ||
+        [identifire isEqualToString:@"ErrorPopUpViewController"] ||
+        [identifire isEqualToString:@"InformationPopUpViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

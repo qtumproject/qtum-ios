@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="proximanova-semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
         <array key="simplonmono-medium.ttf">
             <string>simplonmono-medium</string>
         </array>
@@ -17,10 +24,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Photo Library Pop Up View Controller-->
+        <!--Photo Library Pop Up View Controller Dark-->
         <scene sceneID="tOM-J6-Cr3">
             <objects>
-                <viewController storyboardIdentifier="PhotoLibraryPopUp" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pE1-0R-5pb" customClass="PhotoLibraryPopUpViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoLibraryPopUpViewControllerDark" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pE1-0R-5pb" customClass="PhotoLibraryPopUpViewControllerDark" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j6k-8v-6Z3"/>
                         <viewControllerLayoutGuide type="bottom" id="Qak-3L-Gvq"/>
@@ -103,6 +110,122 @@ and share photos you choose.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lH7-a2-JYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
+        </scene>
+        <!--Photo Library Pop Up View Controller Light-->
+        <scene sceneID="aaW-jC-B1D">
+            <objects>
+                <viewController storyboardIdentifier="PhotoLibraryPopUpViewControllerLight" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gq2-Zu-2C7" customClass="PhotoLibraryPopUpViewControllerLight" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fuE-vT-C3N"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qsx-Zz-ofI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wNg-jp-Jqm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiP-49-nhP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bsd-9J-FLU">
+                                <rect key="frame" x="50.5" y="147.5" width="274" height="172"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FuS-MI-64U">
+                                        <rect key="frame" x="28" y="22" width="218" height="36"/>
+                                        <string key="text">QTUM App Would Like
+to Access Your Photos </string>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4Q-Vm-Nqu">
+                                        <rect key="frame" x="57.5" y="66" width="159" height="24"/>
+                                        <string key="text">QTUM App will only upload
+and share photos you choose.</string>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGX-Dz-76A">
+                                        <rect key="frame" x="142" y="110" width="117" height="42"/>
+                                        <color key="backgroundColor" red="0.21176470589999999" green="0.72549019609999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="70Z-b6-hj9"/>
+                                            <constraint firstAttribute="width" constant="117" id="ALm-Pb-xUb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="okButtonWasPressed:" destination="Gq2-Zu-2C7" eventType="touchUpInside" id="m12-Ew-3Lu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9E-XJ-Ud1">
+                                        <rect key="frame" x="15" y="110" width="117" height="42"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="117" id="Ih4-mZ-ggx"/>
+                                            <constraint firstAttribute="height" constant="42" id="OpH-WD-xoo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="DON'T ALLOW">
+                                            <color key="titleColor" red="0.52549019610000003" green="0.56862745100000001" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="dontAllowButtonWasPressed:" destination="Gq2-Zu-2C7" eventType="touchUpInside" id="SUh-ze-wsF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="DGX-Dz-76A" secondAttribute="bottom" constant="20" id="2AR-QK-u4x"/>
+                                    <constraint firstItem="FuS-MI-64U" firstAttribute="top" secondItem="Bsd-9J-FLU" secondAttribute="top" constant="22" id="4kX-qi-R2U"/>
+                                    <constraint firstAttribute="trailing" secondItem="FuS-MI-64U" secondAttribute="trailing" constant="28" id="7zj-qv-Z2b"/>
+                                    <constraint firstItem="b4Q-Vm-Nqu" firstAttribute="centerX" secondItem="Bsd-9J-FLU" secondAttribute="centerX" id="9gF-e0-30y"/>
+                                    <constraint firstItem="b4Q-Vm-Nqu" firstAttribute="top" secondItem="FuS-MI-64U" secondAttribute="bottom" constant="8" id="J7p-2w-6Bt"/>
+                                    <constraint firstItem="DGX-Dz-76A" firstAttribute="leading" secondItem="b9E-XJ-Ud1" secondAttribute="trailing" constant="10" id="Lec-d9-7jl"/>
+                                    <constraint firstItem="DGX-Dz-76A" firstAttribute="top" secondItem="b4Q-Vm-Nqu" secondAttribute="bottom" constant="20" id="ORv-bB-kmK"/>
+                                    <constraint firstItem="FuS-MI-64U" firstAttribute="leading" secondItem="Bsd-9J-FLU" secondAttribute="leading" constant="28" id="SJL-WC-708"/>
+                                    <constraint firstAttribute="trailing" secondItem="DGX-Dz-76A" secondAttribute="trailing" constant="15" id="WTU-fQ-Bfx"/>
+                                    <constraint firstItem="b9E-XJ-Ud1" firstAttribute="centerY" secondItem="DGX-Dz-76A" secondAttribute="centerY" id="gVo-an-Jjb"/>
+                                    <constraint firstItem="FuS-MI-64U" firstAttribute="centerX" secondItem="Bsd-9J-FLU" secondAttribute="centerX" id="ksF-mj-6oc"/>
+                                    <constraint firstItem="b9E-XJ-Ud1" firstAttribute="leading" secondItem="Bsd-9J-FLU" secondAttribute="leading" constant="15" id="mZa-HJ-I4w"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wiP-49-nhP" firstAttribute="top" secondItem="wNg-jp-Jqm" secondAttribute="top" id="7dL-ya-Kao"/>
+                            <constraint firstItem="wiP-49-nhP" firstAttribute="leading" secondItem="wNg-jp-Jqm" secondAttribute="leading" id="FUZ-Pl-apj"/>
+                            <constraint firstAttribute="trailing" secondItem="wiP-49-nhP" secondAttribute="trailing" id="IVV-3a-kNs"/>
+                            <constraint firstItem="Bsd-9J-FLU" firstAttribute="centerX" secondItem="wNg-jp-Jqm" secondAttribute="centerX" id="b5E-yD-Yci"/>
+                            <constraint firstItem="Qsx-Zz-ofI" firstAttribute="top" secondItem="wiP-49-nhP" secondAttribute="bottom" id="rWO-Ha-MKT"/>
+                            <constraint firstItem="Bsd-9J-FLU" firstAttribute="centerY" secondItem="wNg-jp-Jqm" secondAttribute="centerY" multiplier="0.7" id="shG-sl-UTJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2gJ-GL-mFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946" y="152"/>
         </scene>
     </scenes>
 </document>

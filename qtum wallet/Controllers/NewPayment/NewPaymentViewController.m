@@ -48,7 +48,6 @@
 
 static NSInteger withTokenOffset = 100;
 static NSInteger withoutTokenOffset = 40;
-static NSInteger sendButtomBottomOffset = 27;
 
 @implementation NewPaymentViewController
 
@@ -69,7 +68,7 @@ static NSInteger sendButtomBottomOffset = 27;
                                                  name:UIKeyboardDidShowNotification
                                                object:nil];
 
-    
+    self.sendButtomBottomOffset = 27;
     self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
     [self.amountTextField setEnablePast:NO];
     
@@ -130,7 +129,7 @@ static NSInteger sendButtomBottomOffset = 27;
  
     CGFloat allHeight = self.scrollView.frame.size.height;
     CGFloat maxTextField = self.amountTextField.frame.size.height + self.amountTextField.frame.origin.y;
-    CGFloat buttonHeight = sendButtomBottomOffset + self.sendButtonHeightConstraint.constant;
+    CGFloat buttonHeight = self.sendButtomBottomOffset + self.sendButtonHeightConstraint.constant;
     
     self.sendButtonTopConstraint.constant = allHeight - maxTextField - buttonHeight;
     self.standartTopOffsetForSendButton = self.sendButtonTopConstraint.constant;
@@ -332,7 +331,7 @@ static NSInteger sendButtomBottomOffset = 27;
 -(void)keyboardWillHide:(NSNotification *)sender{
     
     self.sendButtonTopConstraint.constant = self.standartTopOffsetForSendButton;
-    self.sendButtonBottomConstraint.constant = sendButtomBottomOffset;
+    self.sendButtonBottomConstraint.constant = self.sendButtomBottomOffset;
     [self.view layoutIfNeeded];
 }
 

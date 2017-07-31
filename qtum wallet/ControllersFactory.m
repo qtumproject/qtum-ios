@@ -359,22 +359,22 @@
 #pragma mark - Pop ups
 
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController{
-    NoInternetConnectionPopUpViewController* controller = (NoInternetConnectionPopUpViewController*)[UIViewController controllerInStoryboard:@"NoInternetConnectionPopUp" withIdentifire:@"NoInternetConnectionPopUp"];
+    NoInternetConnectionPopUpViewController* controller = (NoInternetConnectionPopUpViewController*)[UIViewController controllerInStoryboard:@"NoInternetConnectionPopUp" withIdentifire:@"NoInternetConnectionPopUpViewController"];
     return controller;
 }
 
 -(PhotoLibraryPopUpViewController*)createPhotoLibraryPopUpViewController{
-    PhotoLibraryPopUpViewController* controller = (PhotoLibraryPopUpViewController*)[UIViewController controllerInStoryboard:@"PhotoLibraryPopUp" withIdentifire:@"PhotoLibraryPopUp"];
+    PhotoLibraryPopUpViewController* controller = (PhotoLibraryPopUpViewController*)[UIViewController controllerInStoryboard:@"PhotoLibraryPopUp" withIdentifire:@"PhotoLibraryPopUpViewController"];
     return controller;
 }
 
 - (ErrorPopUpViewController *)createErrorPopUpViewController{
-    ErrorPopUpViewController* controller = (ErrorPopUpViewController*)[UIViewController controllerInStoryboard:@"ErrorPopUp" withIdentifire:@"ErrorPopUp"];
+    ErrorPopUpViewController* controller = (ErrorPopUpViewController*)[UIViewController controllerInStoryboard:@"ErrorPopUp" withIdentifire:@"ErrorPopUpViewController"];
     return controller;
 }
 
 -(InformationPopUpViewController *)createInformationPopUpViewController{
-    InformationPopUpViewController* controller = (InformationPopUpViewController*)[UIViewController controllerInStoryboard:@"InformationPopUp" withIdentifire:@"InformationPopUp"];
+    InformationPopUpViewController* controller = (InformationPopUpViewController*)[UIViewController controllerInStoryboard:@"InformationPopUp" withIdentifire:@"InformationPopUpViewController"];
     return controller;
 }
 

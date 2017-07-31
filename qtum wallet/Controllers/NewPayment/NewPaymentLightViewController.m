@@ -14,4 +14,11 @@
 
 @implementation NewPaymentLightViewController
 
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+
+    self.sendButtomBottomOffset = 27;
+}
+
 @end

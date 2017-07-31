@@ -143,6 +143,16 @@
 		B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA871EAA3C820040A163 /* SmartTransactionManager.m */; };
 		B366CA221F1D0AC700EF3273 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = B366CA211F1D0AC700EF3273 /* NSData+AES256.m */; };
 		B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = B366CA241F1D0C1200EF3273 /* NSString+AES256.m */; };
+		B36EBC2D1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */; };
+		B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC2F1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m */; };
+		B36EBC341F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC331F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m */; };
+		B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC361F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m */; };
+		B36EBC3B1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC3A1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m */; };
+		B36EBC3E1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC3D1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m */; };
+		B36EBC421F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC411F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m */; };
+		B36EBC451F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC441F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m */; };
+		B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC481F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m */; };
+		B36EBC4C1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC4B1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m */; };
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
 		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
 		B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */; };
@@ -794,6 +804,26 @@
 		B366CA231F1D0C1200EF3273 /* NSString+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AES256.h"; sourceTree = "<group>"; };
 		B366CA241F1D0C1200EF3273 /* NSString+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AES256.m"; sourceTree = "<group>"; };
 		B366CA261F1DEE2E00EF3273 /* WalletManagering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletManagering.h; sourceTree = "<group>"; };
+		B36EBC2B1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetConnectionPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC2E1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC2F1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetConnectionPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B36EBC321F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC331F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC351F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC361F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B36EBC391F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC3A1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B36EBC3C1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC3D1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC401F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityPopupViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC411F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityPopupViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC431F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityPopupViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC441F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityPopupViewControllerLight.m; sourceTree = "<group>"; };
+		B36EBC471F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC481F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC4A1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC4B1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationPopUpViewControllerLight.m; sourceTree = "<group>"; };
 		B371D87D1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TCAStyleProvider.h"; sourceTree = "<group>"; };
 		B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TCAStyleProvider.m"; sourceTree = "<group>"; };
 		B371D87F1E3A1D3B00A13EA3 /* NSNull+TCACatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+TCACatch.h"; sourceTree = "<group>"; };
@@ -1918,6 +1948,71 @@
 				B365CA7E1EA785160040A163 /* HistoryElementProtocol.h */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		B36EBC2A1F2F12B200F4E2F2 /* No Internet  */ = {
+			isa = PBXGroup;
+			children = (
+				E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */,
+				E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */,
+				B36EBC2B1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.h */,
+				B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */,
+				B36EBC2E1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.h */,
+				B36EBC2F1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m */,
+			);
+			name = "No Internet ";
+			sourceTree = "<group>";
+		};
+		B36EBC311F2F159C00F4E2F2 /* Photo Libruary */ = {
+			isa = PBXGroup;
+			children = (
+				E7FA0CBC1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.h */,
+				E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */,
+				B36EBC321F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.h */,
+				B36EBC331F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m */,
+				B36EBC351F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.h */,
+				B36EBC361F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m */,
+			);
+			name = "Photo Libruary";
+			sourceTree = "<group>";
+		};
+		B36EBC381F2F1B3A00F4E2F2 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				B36EBC391F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.h */,
+				B36EBC3A1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m */,
+				E73CF6C61EE2CF970044DF78 /* ErrorPopUpViewController.h */,
+				E73CF6C71EE2CF970044DF78 /* ErrorPopUpViewController.m */,
+				B36EBC3C1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.h */,
+				B36EBC3D1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
+		B36EBC3F1F2F1DF100F4E2F2 /* Security Popup */ = {
+			isa = PBXGroup;
+			children = (
+				B381CBE31F0291CB00142252 /* SecurityPopupViewController.h */,
+				B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */,
+				B36EBC401F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.h */,
+				B36EBC411F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m */,
+				B36EBC431F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.h */,
+				B36EBC441F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m */,
+			);
+			name = "Security Popup";
+			sourceTree = "<group>";
+		};
+		B36EBC461F2F4F6900F4E2F2 /* Information Popup */ = {
+			isa = PBXGroup;
+			children = (
+				E73CF6C91EE2CFA40044DF78 /* InformationPopUpViewController.h */,
+				E73CF6CA1EE2CFA40044DF78 /* InformationPopUpViewController.m */,
+				B36EBC471F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.h */,
+				B36EBC481F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m */,
+				B36EBC4A1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.h */,
+				B36EBC4B1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m */,
+			);
+			name = "Information Popup";
 			sourceTree = "<group>";
 		};
 		B3827DDA1ECF28F300E500DE /* TokenListOutput */ = {
@@ -3217,22 +3312,17 @@
 				E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */,
 				E7FA0CB11ECD80AF00702C4E /* PopUpViewController.h */,
 				E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */,
-				E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */,
-				E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */,
-				E7FA0CBC1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.h */,
-				E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */,
-				E73CF6C61EE2CF970044DF78 /* ErrorPopUpViewController.h */,
-				E73CF6C71EE2CF970044DF78 /* ErrorPopUpViewController.m */,
-				E73CF6C91EE2CFA40044DF78 /* InformationPopUpViewController.h */,
-				E73CF6CA1EE2CFA40044DF78 /* InformationPopUpViewController.m */,
+				B36EBC2A1F2F12B200F4E2F2 /* No Internet  */,
+				B36EBC311F2F159C00F4E2F2 /* Photo Libruary */,
+				B36EBC381F2F1B3A00F4E2F2 /* Errors */,
+				B36EBC461F2F4F6900F4E2F2 /* Information Popup */,
 				E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */,
 				E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */,
 				E71271951EE9ADAB00A130A0 /* LoaderPopUpViewController.h */,
 				E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */,
 				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
 				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
-				B381CBE31F0291CB00142252 /* SecurityPopupViewController.h */,
-				B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */,
+				B36EBC3F1F2F1DF100F4E2F2 /* Security Popup */,
 				E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */,
 				E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */,
 				E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */,
@@ -3903,6 +3993,7 @@
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
+				B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */,
 				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
@@ -3953,6 +4044,7 @@
 				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
 				B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */,
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
+				B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
@@ -3971,6 +4063,7 @@
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B36505921F14B3A900521603 /* CreatePinViewControllerDark.m in Sources */,
+				B36EBC2D1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m in Sources */,
 				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
 				B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */,
 				E7DE59901F0E8562006E0E1B /* PageControlItemDark.m in Sources */,
@@ -4003,6 +4096,7 @@
 				B365CA631EA4ED540040A163 /* Contract.m in Sources */,
 				B32BC4C11F29C9B600C2417C /* SubscribeTokenViewControllerLight.m in Sources */,
 				B35DF63F1F262EB100316953 /* TokenDetailLightDisplayDataManager.m in Sources */,
+				B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
@@ -4022,6 +4116,7 @@
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				E73D36FB1ECF161E009173BD /* NubersTokenTableViewCell.m in Sources */,
+				B36EBC421F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m in Sources */,
 				E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */,
 				E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */,
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
@@ -4120,6 +4215,7 @@
 				B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,
+				B36EBC341F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
 				B3CBDF0A1F2A461D00C80D4E /* LibraryViewControllerDark.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
@@ -4155,7 +4251,9 @@
 				E798462D1F0D1E50002A516A /* HistoryTableViewCellLight.m in Sources */,
 				E79846361F0D23CB002A516A /* WalletHeaderCellDark.m in Sources */,
 				B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */,
+				B36EBC3B1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m in Sources */,
 				E798463D1F0D28A3002A516A /* WalletTableSourceLight.m in Sources */,
+				B36EBC451F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m in Sources */,
 				B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */,
 				B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */,
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
@@ -4172,6 +4270,7 @@
 				B3CBDF331F2B470D00C80D4E /* TemplateTokenViewControllerDark.m in Sources */,
 				E79846321F0D2373002A516A /* WalletHeaderCellLight.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
+				B36EBC4C1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m in Sources */,
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
@@ -4211,6 +4310,7 @@
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,
 				B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */,
 				E748578A1F13B25D00DCF9A6 /* TextFieldWithLineDark.m in Sources */,
+				B36EBC3E1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
