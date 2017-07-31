@@ -206,6 +206,9 @@
 		B3CBDF441F2B497A00C80D4E /* TokenTemplateCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF431F2B497A00C80D4E /* TokenTemplateCellLight.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
+		B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */; };
+		B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */; };
+		B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -933,6 +936,12 @@
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
 		B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractListItemCell.m; sourceTree = "<group>"; };
+		B3DB3E361F2F513E00AA408F /* SpinnerViewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerViewLight.h; sourceTree = "<group>"; };
+		B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerViewLight.m; sourceTree = "<group>"; };
+		B3DB3E3A1F2F55A500AA408F /* LoaderPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B3DB3E3D1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderPopUpViewControllerDark.m; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -2265,6 +2274,30 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		B3DB3E351F2F50FE00AA408F /* Loader View */ = {
+			isa = PBXGroup;
+			children = (
+				E71271901EE9925600A130A0 /* SpinnerView.h */,
+				E71271911EE9925600A130A0 /* SpinnerView.m */,
+				B3DB3E361F2F513E00AA408F /* SpinnerViewLight.h */,
+				B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */,
+			);
+			name = "Loader View";
+			sourceTree = "<group>";
+		};
+		B3DB3E391F2F555800AA408F /* Loader Popup */ = {
+			isa = PBXGroup;
+			children = (
+				E71271951EE9ADAB00A130A0 /* LoaderPopUpViewController.h */,
+				E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */,
+				B3DB3E3A1F2F55A500AA408F /* LoaderPopUpViewControllerLight.h */,
+				B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */,
+				B3DB3E3D1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.h */,
+				B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */,
+			);
+			name = "Loader Popup";
+			sourceTree = "<group>";
+		};
 		B3E159261ED6E39F00D70A87 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3318,8 +3351,7 @@
 				B36EBC461F2F4F6900F4E2F2 /* Information Popup */,
 				E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */,
 				E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */,
-				E71271951EE9ADAB00A130A0 /* LoaderPopUpViewController.h */,
-				E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */,
+				B3DB3E391F2F555800AA408F /* Loader Popup */,
 				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
 				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
 				B36EBC3F1F2F1DF100F4E2F2 /* Security Popup */,
@@ -3484,8 +3516,7 @@
 				B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */,
 				E789036A1EDDA980004243F0 /* ViewWithAnimatedLine.h */,
 				E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */,
-				E71271901EE9925600A130A0 /* SpinnerView.h */,
-				E71271911EE9925600A130A0 /* SpinnerView.m */,
+				B3DB3E351F2F50FE00AA408F /* Loader View */,
 				E7CE63601F027EC200C147B9 /* CustomSearchBar.h */,
 				E7CE63611F027EC200C147B9 /* CustomSearchBar.m */,
 				B35DF6441F263CD500316953 /* LightBlueGrayBorderView.h */,
@@ -3985,6 +4016,7 @@
 				E78D0C991ED2DF2E00CB91FF /* TokenDetailsTableView.m in Sources */,
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
 				B3CBDF1C1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m in Sources */,
+				B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */,
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B35DF6291F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m in Sources */,
@@ -4103,6 +4135,7 @@
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				B3CBDF201F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m in Sources */,
 				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
+				B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */,
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
 				B3CBDF2A1F2B41D900C80D4E /* SmartContractsListViewControllerDark.m in Sources */,
 				B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */,
@@ -4271,6 +4304,7 @@
 				E79846321F0D2373002A516A /* WalletHeaderCellLight.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
 				B36EBC4C1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m in Sources */,
+				B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */,
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,

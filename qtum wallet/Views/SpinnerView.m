@@ -41,6 +41,7 @@ NSString *RotationAnimationKey = @"rotationAnimation";
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
+    
     self = [super initWithFrame:frame];
     if (self) {
         [self setup];

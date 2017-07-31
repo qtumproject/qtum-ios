@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Loader Pop Up View Controller-->
+        <!--Loader Pop Up View Controller Dark-->
         <scene sceneID="ebL-Sl-eO6">
             <objects>
-                <viewController storyboardIdentifier="LoaderPopUp" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eJD-uD-EYD" customClass="LoaderPopUpViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoaderPopUpViewControllerDark" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eJD-uD-EYD" customClass="LoaderPopUpViewControllerDark" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ou7-VH-cHY"/>
                         <viewControllerLayoutGuide type="bottom" id="cLI-v3-zvJ"/>
@@ -48,7 +48,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2m5-Eh-Gg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
+            <point key="canvasLocation" x="-113" y="143"/>
+        </scene>
+        <!--Loader Pop Up View Controller Light-->
+        <scene sceneID="rth-YT-0hp">
+            <objects>
+                <viewController storyboardIdentifier="LoaderPopUpViewControllerLight" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hu2-3q-Ljr" customClass="LoaderPopUpViewControllerLight" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="csi-4f-PAY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hqs-Pd-nvB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VrJ-Ut-V87">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qL7-Bg-dwL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dO-rL-Xxm" customClass="SpinnerViewLight">
+                                <rect key="frame" x="174.5" y="320.5" width="25" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="9z3-4d-GP3"/>
+                                    <constraint firstAttribute="height" constant="25" id="IR5-b3-Ylm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qL7-Bg-dwL" secondAttribute="trailing" id="0Xi-Oa-2yU"/>
+                            <constraint firstItem="qL7-Bg-dwL" firstAttribute="leading" secondItem="VrJ-Ut-V87" secondAttribute="leading" id="7Yo-07-hh8"/>
+                            <constraint firstItem="6dO-rL-Xxm" firstAttribute="centerX" secondItem="VrJ-Ut-V87" secondAttribute="centerX" id="9py-Ju-9v2"/>
+                            <constraint firstItem="qL7-Bg-dwL" firstAttribute="top" secondItem="VrJ-Ut-V87" secondAttribute="top" id="Mw0-lO-RcN"/>
+                            <constraint firstItem="6dO-rL-Xxm" firstAttribute="centerY" secondItem="VrJ-Ut-V87" secondAttribute="centerY" id="Ud5-kn-66i"/>
+                            <constraint firstItem="Hqs-Pd-nvB" firstAttribute="top" secondItem="qL7-Bg-dwL" secondAttribute="bottom" id="qcq-gs-Qr6"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ABs-A1-kbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="745" y="143"/>
         </scene>
     </scenes>
 </document>

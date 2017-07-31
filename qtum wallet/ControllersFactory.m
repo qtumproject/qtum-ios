@@ -384,7 +384,7 @@
 }
 
 - (LoaderPopUpViewController *)createLoaderViewController{
-    LoaderPopUpViewController* controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUp"];
+    LoaderPopUpViewController* controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUpViewController"];
     return controller;
 }
 
