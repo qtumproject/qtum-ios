@@ -17,7 +17,10 @@
 
 @implementation TemplateTokenViewController
 
+@synthesize delegate, templateModels;
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self.tableView reloadData];
 }
@@ -31,29 +34,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate didDeselectTemplateIndexPath:indexPath withName:self.templateModels[indexPath.row]];
-}
-
-- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    TokenTemplateCell* cell = (TokenTemplateCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.disclousureImage.tintColor =
-    cell.tokenIdentifire.backgroundColor =
-    cell.creationDate.textColor =
-    cell.templateName.textColor = customBlackColor();
-    
-    cell.tokenIdentifire.textColor = customRedColor();
-}
-
-- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    TokenTemplateCell* cell = (TokenTemplateCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.disclousureImage.tintColor =
-    cell.tokenIdentifire.backgroundColor =
-    cell.creationDate.textColor =
-    cell.templateName.textColor = customBlueColor();
-    
-    cell.tokenIdentifire.textColor = customBlackColor();
+    [self.delegate didSelectTemplateIndexPath:indexPath withName:self.templateModels[indexPath.row]];
 }
 
 

@@ -130,7 +130,7 @@
 
     NSObject <TokenDetailOutput> *output = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
     self.tokenDetailsViewController = output;
-    self.tokenDetailsTableSource = [[TableSourcesFactory sharedInstance] createTokenDetailSoutce];
+    self.tokenDetailsTableSource = [[TableSourcesFactory sharedInstance] createTokenDetailSource];
     self.tokenDetailsTableSource.token = item;
     output.token = item;
     output.delegate = self;

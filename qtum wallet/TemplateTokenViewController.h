@@ -8,11 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ContractCoordinator.h"
-#import "TemplateModel.h"
+#import "TemplatesListOutput.h"
 
-@interface TemplateTokenViewController : BaseViewController
-
-@property (copy, nonatomic) NSArray <TemplateModel*>* templateModels;
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
+@interface TemplateTokenViewController : BaseViewController <TemplatesListOutput>
 
 @end

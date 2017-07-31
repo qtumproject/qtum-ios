@@ -14,16 +14,5 @@
 
 @implementation ChoiseSmartContractCell
 
-- (void)awakeFromNib {
-    
-    [super awakeFromNib];
-    
-    self.disclosure.tintColor = customBlueColor();
-    
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = customRedColor();
-    [self setSelectedBackgroundView:bgColorView];
-}
-
 
 @end

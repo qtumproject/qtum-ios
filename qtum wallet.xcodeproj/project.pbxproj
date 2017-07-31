@@ -177,6 +177,23 @@
 		B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */; };
 		B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */; };
 		B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */; };
+		B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */; };
+		B3CBDF0A1F2A461D00C80D4E /* LibraryViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */; };
+		B3CBDF0D1F2A463700C80D4E /* LibraryViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF0C1F2A463700C80D4E /* LibraryViewControllerLight.m */; };
+		B3CBDF101F2A47E000C80D4E /* LibraryTableViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF0F1F2A47E000C80D4E /* LibraryTableViewCellLight.m */; };
+		B3CBDF131F2A47F900C80D4E /* LibraryTableViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF121F2A47F900C80D4E /* LibraryTableViewCellDark.m */; };
+		B3CBDF191F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF181F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m */; };
+		B3CBDF1C1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF1B1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m */; };
+		B3CBDF201F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF1F1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m */; };
+		B3CBDF231F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF221F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m */; };
+		B3CBDF2A1F2B41D900C80D4E /* SmartContractsListViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF291F2B41D900C80D4E /* SmartContractsListViewControllerDark.m */; };
+		B3CBDF2D1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF2C1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m */; };
+		B3CBDF331F2B470D00C80D4E /* TemplateTokenViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF321F2B470D00C80D4E /* TemplateTokenViewControllerDark.m */; };
+		B3CBDF361F2B471A00C80D4E /* TemplateTokenViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF351F2B471A00C80D4E /* TemplateTokenViewControllerLight.m */; };
+		B3CBDF3A1F2B48B000C80D4E /* SmartContractListItemCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF391F2B48B000C80D4E /* SmartContractListItemCellDark.m */; };
+		B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF3C1F2B48C300C80D4E /* SmartContractListItemCellLight.m */; };
+		B3CBDF411F2B496A00C80D4E /* TokenTemplateCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF401F2B496A00C80D4E /* TokenTemplateCellDark.m */; };
+		B3CBDF441F2B497A00C80D4E /* TokenTemplateCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF431F2B497A00C80D4E /* TokenTemplateCellLight.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
@@ -209,12 +226,12 @@
 		B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* ContractCoordinator.m */; };
 		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
 		B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */; };
-		B3F06D031E699244006341F7 /* TockenCellSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D021E699244006341F7 /* TockenCellSubscribe.m */; };
+		B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D021E699244006341F7 /* TokenCellSubscribe.m */; };
 		B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */; };
 		B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D091E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m */; };
 		B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */; };
 		B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F5797A1F0D251C00A13571 /* OpenURLManager.m */; };
-		B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */; };
+		B3F76A701EDD667D00108DE9 /* SmartContractMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A6F1EDD667D00108DE9 /* SmartContractMenuViewController.m */; };
 		B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */; };
 		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
 		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
@@ -842,6 +859,46 @@
 		B3CB56AC1ECEE8B300B23AE9 /* BalancePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancePageViewController.h; sourceTree = "<group>"; };
 		B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancePageViewController.m; sourceTree = "<group>"; };
 		B3CB56AF1ECF06D200B23AE9 /* Paginationable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginationable.h; sourceTree = "<group>"; };
+		B3CBDF051F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManager.h; sourceTree = "<group>"; };
+		B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataDisplayManager.m; sourceTree = "<group>"; };
+		B3CBDF081F2A461D00C80D4E /* LibraryViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewControllerDark.h; sourceTree = "<group>"; };
+		B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewControllerDark.m; sourceTree = "<group>"; };
+		B3CBDF0B1F2A463700C80D4E /* LibraryViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewControllerLight.h; sourceTree = "<group>"; };
+		B3CBDF0C1F2A463700C80D4E /* LibraryViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewControllerLight.m; sourceTree = "<group>"; };
+		B3CBDF0E1F2A47E000C80D4E /* LibraryTableViewCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableViewCellLight.h; sourceTree = "<group>"; };
+		B3CBDF0F1F2A47E000C80D4E /* LibraryTableViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTableViewCellLight.m; sourceTree = "<group>"; };
+		B3CBDF111F2A47F900C80D4E /* LibraryTableViewCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableViewCellDark.h; sourceTree = "<group>"; };
+		B3CBDF121F2A47F900C80D4E /* LibraryTableViewCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTableViewCellDark.m; sourceTree = "<group>"; };
+		B3CBDF151F2B11E100C80D4E /* SmartContractMenuOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuOutput.h; sourceTree = "<group>"; };
+		B3CBDF161F2B11ED00C80D4E /* SmartContractMenuOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuOutputDelegate.h; sourceTree = "<group>"; };
+		B3CBDF171F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuViewControllerLight.h; sourceTree = "<group>"; };
+		B3CBDF181F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractMenuViewControllerLight.m; sourceTree = "<group>"; };
+		B3CBDF1A1F2B170800C80D4E /* SmartContractMenuViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuViewControllerDark.h; sourceTree = "<group>"; };
+		B3CBDF1B1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractMenuViewControllerDark.m; sourceTree = "<group>"; };
+		B3CBDF1E1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiseSmartContractCellLight.h; sourceTree = "<group>"; };
+		B3CBDF1F1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiseSmartContractCellLight.m; sourceTree = "<group>"; };
+		B3CBDF211F2B2C0500C80D4E /* ChoiseSmartContractCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiseSmartContractCellDark.h; sourceTree = "<group>"; };
+		B3CBDF221F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiseSmartContractCellDark.m; sourceTree = "<group>"; };
+		B3CBDF261F2B3E1E00C80D4E /* PublishedContractListOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishedContractListOutput.h; sourceTree = "<group>"; };
+		B3CBDF271F2B3E2E00C80D4E /* PublishedContractListOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishedContractListOutputDelegate.h; sourceTree = "<group>"; };
+		B3CBDF281F2B41D900C80D4E /* SmartContractsListViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewControllerDark.h; sourceTree = "<group>"; };
+		B3CBDF291F2B41D900C80D4E /* SmartContractsListViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewControllerDark.m; sourceTree = "<group>"; };
+		B3CBDF2B1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewControllerLight.h; sourceTree = "<group>"; };
+		B3CBDF2C1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewControllerLight.m; sourceTree = "<group>"; };
+		B3CBDF2F1F2B431200C80D4E /* TemplatesListOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesListOutput.h; sourceTree = "<group>"; };
+		B3CBDF301F2B432000C80D4E /* TemplatesListOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesListOutputDelegate.h; sourceTree = "<group>"; };
+		B3CBDF311F2B470D00C80D4E /* TemplateTokenViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTokenViewControllerDark.h; sourceTree = "<group>"; };
+		B3CBDF321F2B470D00C80D4E /* TemplateTokenViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTokenViewControllerDark.m; sourceTree = "<group>"; };
+		B3CBDF341F2B471A00C80D4E /* TemplateTokenViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTokenViewControllerLight.h; sourceTree = "<group>"; };
+		B3CBDF351F2B471A00C80D4E /* TemplateTokenViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTokenViewControllerLight.m; sourceTree = "<group>"; };
+		B3CBDF381F2B48B000C80D4E /* SmartContractListItemCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCellDark.h; sourceTree = "<group>"; };
+		B3CBDF391F2B48B000C80D4E /* SmartContractListItemCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractListItemCellDark.m; sourceTree = "<group>"; };
+		B3CBDF3B1F2B48C300C80D4E /* SmartContractListItemCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCellLight.h; sourceTree = "<group>"; };
+		B3CBDF3C1F2B48C300C80D4E /* SmartContractListItemCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractListItemCellLight.m; sourceTree = "<group>"; };
+		B3CBDF3F1F2B496A00C80D4E /* TokenTemplateCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenTemplateCellDark.h; sourceTree = "<group>"; };
+		B3CBDF401F2B496A00C80D4E /* TokenTemplateCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenTemplateCellDark.m; sourceTree = "<group>"; };
+		B3CBDF421F2B497A00C80D4E /* TokenTemplateCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenTemplateCellLight.h; sourceTree = "<group>"; };
+		B3CBDF431F2B497A00C80D4E /* TokenTemplateCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenTemplateCellLight.m; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
@@ -918,8 +975,8 @@
 		B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenCoordinator.h; sourceTree = "<group>"; };
 		B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenCoordinator.m; sourceTree = "<group>"; };
 		B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = SOURCE_ROOT; };
-		B3F06D011E699244006341F7 /* TockenCellSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TockenCellSubscribe.h; sourceTree = "<group>"; };
-		B3F06D021E699244006341F7 /* TockenCellSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TockenCellSubscribe.m; sourceTree = "<group>"; };
+		B3F06D011E699244006341F7 /* TokenCellSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenCellSubscribe.h; sourceTree = "<group>"; };
+		B3F06D021E699244006341F7 /* TokenCellSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenCellSubscribe.m; sourceTree = "<group>"; };
 		B3F06D041E699303006341F7 /* SubscribeTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenViewController.h; sourceTree = "<group>"; };
 		B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenViewController.m; sourceTree = "<group>"; };
 		B3F06D081E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManagerDark.h; sourceTree = "<group>"; };
@@ -929,8 +986,8 @@
 		B3F5797A1F0D251C00A13571 /* OpenURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenURLManager.m; path = Application/OpenURLManager.m; sourceTree = "<group>"; };
 		B3F5797F1F0D2A1F00A13571 /* TabbarOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarOutput.h; sourceTree = "<group>"; };
 		B3F579801F0D2A3200A13571 /* TabbarOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarOutputDelegate.h; sourceTree = "<group>"; };
-		B3F76A6E1EDD667D00108DE9 /* ChooseSmartContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSmartContractViewController.h; sourceTree = "<group>"; };
-		B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ChooseSmartContractViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B3F76A6E1EDD667D00108DE9 /* SmartContractMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuViewController.h; sourceTree = "<group>"; };
+		B3F76A6F1EDD667D00108DE9 /* SmartContractMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SmartContractMenuViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiseSmartContractCell.h; sourceTree = "<group>"; };
 		B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiseSmartContractCell.m; sourceTree = "<group>"; };
 		B3F76A741EDD6F6400108DE9 /* TemplateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateModel.h; sourceTree = "<group>"; };
@@ -1580,6 +1637,8 @@
 				B3F06D091E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m */,
 				B32BC4B71F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.h */,
 				B32BC4B81F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.m */,
+				B3CBDF051F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.h */,
+				B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */,
 			);
 			name = DelegateDataSource;
 			sourceTree = "<group>";
@@ -1960,20 +2019,8 @@
 		B386F5B21E139C9E004D231B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B32BC4C71F29EF6400C2417C /* TokenCellSubscribeLight.h */,
-				B32BC4C81F29EF6400C2417C /* TokenCellSubscribeLight.m */,
-				B32BC4CA1F29EF7200C2417C /* TokenCellSubscribeDark.h */,
-				B32BC4CB1F29EF7200C2417C /* TokenCellSubscribeDark.m */,
-				B3F06D011E699244006341F7 /* TockenCellSubscribe.h */,
-				B3F06D021E699244006341F7 /* TockenCellSubscribe.m */,
 				B32B32E71ECCC4A20081260A /* FinishInputCell.h */,
 				B32B32E81ECCC4A20081260A /* FinishInputCell.m */,
-				B3C08B191ED44E4200713B15 /* TokenTemplateCell.h */,
-				B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */,
-				B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */,
-				B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */,
-				B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */,
-				B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -2010,6 +2057,106 @@
 				B3F76A931EDDB81600108DE9 /* Contracts */,
 			);
 			name = "Tokens Templates";
+			sourceTree = "<group>";
+		};
+		B3CBDF141F2B11B700C80D4E /* Smart Contract Menu */ = {
+			isa = PBXGroup;
+			children = (
+				B3CBDF1D1F2B2BBA00C80D4E /* Cells */,
+				B3CBDF151F2B11E100C80D4E /* SmartContractMenuOutput.h */,
+				B3CBDF161F2B11ED00C80D4E /* SmartContractMenuOutputDelegate.h */,
+				B3F76A6E1EDD667D00108DE9 /* SmartContractMenuViewController.h */,
+				B3F76A6F1EDD667D00108DE9 /* SmartContractMenuViewController.m */,
+				B3CBDF171F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.h */,
+				B3CBDF181F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m */,
+				B3CBDF1A1F2B170800C80D4E /* SmartContractMenuViewControllerDark.h */,
+				B3CBDF1B1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m */,
+			);
+			name = "Smart Contract Menu";
+			sourceTree = "<group>";
+		};
+		B3CBDF1D1F2B2BBA00C80D4E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */,
+				B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */,
+				B3CBDF1E1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.h */,
+				B3CBDF1F1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m */,
+				B3CBDF211F2B2C0500C80D4E /* ChoiseSmartContractCellDark.h */,
+				B3CBDF221F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B3CBDF241F2B30DF00C80D4E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B32BC4C71F29EF6400C2417C /* TokenCellSubscribeLight.h */,
+				B32BC4C81F29EF6400C2417C /* TokenCellSubscribeLight.m */,
+				B32BC4CA1F29EF7200C2417C /* TokenCellSubscribeDark.h */,
+				B32BC4CB1F29EF7200C2417C /* TokenCellSubscribeDark.m */,
+				B3F06D011E699244006341F7 /* TokenCellSubscribe.h */,
+				B3F06D021E699244006341F7 /* TokenCellSubscribe.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		B3CBDF251F2B3DE800C80D4E /* Published Contracts */ = {
+			isa = PBXGroup;
+			children = (
+				B3CBDF371F2B489200C80D4E /* Cells */,
+				B3CBDF261F2B3E1E00C80D4E /* PublishedContractListOutput.h */,
+				B3CBDF271F2B3E2E00C80D4E /* PublishedContractListOutputDelegate.h */,
+				B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */,
+				B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */,
+				B3CBDF281F2B41D900C80D4E /* SmartContractsListViewControllerDark.h */,
+				B3CBDF291F2B41D900C80D4E /* SmartContractsListViewControllerDark.m */,
+				B3CBDF2B1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.h */,
+				B3CBDF2C1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m */,
+			);
+			name = "Published Contracts";
+			sourceTree = "<group>";
+		};
+		B3CBDF2E1F2B42D600C80D4E /* Templates List  */ = {
+			isa = PBXGroup;
+			children = (
+				B3CBDF3E1F2B495000C80D4E /* Cells */,
+				B3CBDF2F1F2B431200C80D4E /* TemplatesListOutput.h */,
+				B3CBDF301F2B432000C80D4E /* TemplatesListOutputDelegate.h */,
+				B3C08B161ED44DD900713B15 /* TemplateTokenViewController.h */,
+				B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */,
+				B3CBDF311F2B470D00C80D4E /* TemplateTokenViewControllerDark.h */,
+				B3CBDF321F2B470D00C80D4E /* TemplateTokenViewControllerDark.m */,
+				B3CBDF341F2B471A00C80D4E /* TemplateTokenViewControllerLight.h */,
+				B3CBDF351F2B471A00C80D4E /* TemplateTokenViewControllerLight.m */,
+			);
+			name = "Templates List ";
+			sourceTree = "<group>";
+		};
+		B3CBDF371F2B489200C80D4E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */,
+				B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */,
+				B3CBDF381F2B48B000C80D4E /* SmartContractListItemCellDark.h */,
+				B3CBDF391F2B48B000C80D4E /* SmartContractListItemCellDark.m */,
+				B3CBDF3B1F2B48C300C80D4E /* SmartContractListItemCellLight.h */,
+				B3CBDF3C1F2B48C300C80D4E /* SmartContractListItemCellLight.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B3CBDF3E1F2B495000C80D4E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B3C08B191ED44E4200713B15 /* TokenTemplateCell.h */,
+				B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */,
+				B3CBDF3F1F2B496A00C80D4E /* TokenTemplateCellDark.h */,
+				B3CBDF401F2B496A00C80D4E /* TokenTemplateCellDark.m */,
+				B3CBDF421F2B497A00C80D4E /* TokenTemplateCellLight.h */,
+				B3CBDF431F2B497A00C80D4E /* TokenTemplateCellLight.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		B3D555EC1EDF4DA400CBDFCF /* Cells */ = {
@@ -2206,6 +2353,7 @@
 		B3F06D071E699371006341F7 /* Subscribe */ = {
 			isa = PBXGroup;
 			children = (
+				B3CBDF241F2B30DF00C80D4E /* Cell */,
 				B32BC4C61F29CA2300C2417C /* DelegateDataSource */,
 				B32BC4C51F29C9F200C2417C /* Protocols */,
 				B32BC4C41F29C9DE00C2417C /* Controllers */,
@@ -2235,12 +2383,9 @@
 				B32B32DF1ECCC2D50081260A /* CreateTokenFinishViewController.m */,
 				B32B32E01ECCC2D50081260A /* CustomAbiInterphaseViewController.h */,
 				B32B32E11ECCC2D50081260A /* CustomAbiInterphaseViewController.m */,
-				B3C08B161ED44DD900713B15 /* TemplateTokenViewController.h */,
-				B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */,
-				B3F76A6E1EDD667D00108DE9 /* ChooseSmartContractViewController.h */,
-				B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */,
-				B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */,
-				B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */,
+				B3CBDF2E1F2B42D600C80D4E /* Templates List  */,
+				B3CBDF141F2B11B700C80D4E /* Smart Contract Menu */,
+				B3CBDF251F2B3DE800C80D4E /* Published Contracts */,
 				B3827DE51ECF673900E500DE /* TokenFunctionViewController.h */,
 				B3827DE61ECF673900E500DE /* TokenFunctionViewController.m */,
 				B3827DE81ED2C74900E500DE /* TokenFunctionDetailViewController.h */,
@@ -2372,6 +2517,10 @@
 				E71F1C791F1C9B0200961B19 /* LibraryTableSource.m */,
 				E71F1C7D1F1CA1E400961B19 /* LibraryTableViewCell.h */,
 				E71F1C7E1F1CA1E400961B19 /* LibraryTableViewCell.m */,
+				B3CBDF111F2A47F900C80D4E /* LibraryTableViewCellDark.h */,
+				B3CBDF121F2A47F900C80D4E /* LibraryTableViewCellDark.m */,
+				B3CBDF0E1F2A47E000C80D4E /* LibraryTableViewCellLight.h */,
+				B3CBDF0F1F2A47E000C80D4E /* LibraryTableViewCellLight.m */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -2472,6 +2621,10 @@
 				E71F1C731F1C99A200961B19 /* LibraryOutputDelegate.h */,
 				E7360EC31F1918E7003ED21D /* LibraryViewController.h */,
 				E7360EC41F1918E7003ED21D /* LibraryViewController.m */,
+				B3CBDF081F2A461D00C80D4E /* LibraryViewControllerDark.h */,
+				B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */,
+				B3CBDF0B1F2A463700C80D4E /* LibraryViewControllerLight.h */,
+				B3CBDF0C1F2A463700C80D4E /* LibraryViewControllerLight.m */,
 			);
 			name = LibraryOutput;
 			sourceTree = "<group>";
@@ -3731,6 +3884,7 @@
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
+				B3CBDF191F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
 				B3EE8F421F136FAA00131823 /* ChooseTokenPaymentCellLight.m in Sources */,
@@ -3740,10 +3894,12 @@
 				B365CA791EA77D490040A163 /* TokensFactory.m in Sources */,
 				E78D0C991ED2DF2E00CB91FF /* TokenDetailsTableView.m in Sources */,
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
+				B3CBDF1C1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m in Sources */,
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B35DF6291F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m in Sources */,
 				B32BC4A81F28B49C00C2417C /* ChangePinCoordinator.m in Sources */,
+				B3CBDF411F2B496A00C80D4E /* TokenTemplateCellDark.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
@@ -3769,6 +3925,7 @@
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
 				E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */,
+				B3CBDF3A1F2B48B000C80D4E /* SmartContractListItemCellDark.m in Sources */,
 				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */,
@@ -3777,6 +3934,7 @@
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				B3014D691F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m in Sources */,
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
+				B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
 				E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */,
@@ -3797,10 +3955,11 @@
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
-				B3F06D031E699244006341F7 /* TockenCellSubscribe.m in Sources */,
+				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
+				B3CBDF2D1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m in Sources */,
 				B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */,
 				B366CA221F1D0AC700EF3273 /* NSData+AES256.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
@@ -3827,7 +3986,7 @@
 				B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */,
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
 				B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */,
-				B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */,
+				B3F76A701EDD667D00108DE9 /* SmartContractMenuViewController.m in Sources */,
 				E713A4861EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m in Sources */,
 				E70353191F03C30E004ECCC9 /* QStoreContractViewController.m in Sources */,
 				E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */,
@@ -3848,8 +4007,11 @@
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
+				B3CBDF201F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m in Sources */,
 				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
+				B3CBDF2A1F2B41D900C80D4E /* SmartContractsListViewControllerDark.m in Sources */,
+				B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */,
 				B3EE8F341F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m in Sources */,
 				E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
@@ -3896,6 +4058,7 @@
 				E7C101C11F15073800848526 /* HistoryItemViewControllerDark.m in Sources */,
 				B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */,
 				E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */,
+				B3CBDF361F2B471A00C80D4E /* TemplateTokenViewControllerLight.m in Sources */,
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,
 				B36505951F14B3BA00521603 /* CreatePinViewControllerLight.m in Sources */,
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
@@ -3906,6 +4069,7 @@
 				B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */,
 				B32BC4AB1F28C6F600C2417C /* PinViewControllerDark.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
+				B3CBDF131F2A47F900C80D4E /* LibraryTableViewCellDark.m in Sources */,
 				E73D36F51ECF15D1009173BD /* BalanceTokenTableViewCell.m in Sources */,
 				B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
@@ -3922,6 +4086,7 @@
 				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,
 				E71F1C7F1F1CA1E400961B19 /* LibraryTableViewCell.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
+				B3CBDF101F2A47E000C80D4E /* LibraryTableViewCellLight.m in Sources */,
 				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
 				B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */,
 				E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */,
@@ -3929,6 +4094,7 @@
 				E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* InputTextView.m in Sources */,
 				E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */,
+				B3CBDF231F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
@@ -3943,6 +4109,7 @@
 				E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */,
 				E79846401F0D2F57002A516A /* TableSourcesFactory.m in Sources */,
 				E73D37041ECF1771009173BD /* QTUMAddressTokenTableViewCell.m in Sources */,
+				B3CBDF441F2B497A00C80D4E /* TokenTemplateCellLight.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
 				B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */,
 				E718FA281F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m in Sources */,
@@ -3954,6 +4121,7 @@
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
+				B3CBDF0A1F2A461D00C80D4E /* LibraryViewControllerDark.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E745BA1D1F21E78E00B2E216 /* NewsTableCellDark.m in Sources */,
 				E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */,
@@ -4001,6 +4169,7 @@
 				B35130611E49C9930048A28C /* NewsCellModel.m in Sources */,
 				B3EE8F4B1F13766C00131823 /* QRCodeViewControllerDark.m in Sources */,
 				E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */,
+				B3CBDF331F2B470D00C80D4E /* TemplateTokenViewControllerDark.m in Sources */,
 				E79846321F0D2373002A516A /* WalletHeaderCellLight.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
@@ -4009,6 +4178,7 @@
 				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
+				B3CBDF0D1F2A463700C80D4E /* LibraryViewControllerLight.m in Sources */,
 				B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */,
 				B35DF63C1F262B8900316953 /* TokenDetailsViewControllerLight.m in Sources */,
 				B32BC4C91F29EF6400C2417C /* TokenCellSubscribeLight.m in Sources */,

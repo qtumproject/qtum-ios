@@ -234,6 +234,7 @@ static NSString* op_exec = @"c1";
         NSInteger total = 0;
         
         for (BTCTransactionOutput* txout in utxos) {
+            
             if ([txout.script isPayToPublicKeyHashScript]) {
                 [txouts addObject:txout];
                 total += txout.value;

@@ -28,7 +28,7 @@
 @class TokenDetailsViewController;
 @class AddNewTokensViewController;
 @class QRCodeViewController;
-@class ChooseSmartContractViewController;
+@class SmartContractMenuViewController;
 @class SmartContractsListViewController;
 @class ChoseTokenPaymentViewController;
 @class ErrorPopUpViewController;
@@ -63,6 +63,9 @@
 @protocol TokenDetailOutput;
 @protocol ChangePinOutput;
 @protocol WatchContractOutput;
+@protocol SmartContractMenuOutput;
+@protocol PublishedContractListOutput;
+@protocol TemplatesListOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -72,53 +75,52 @@
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 //Controllers
--(UIViewController*)profileFlowTab;
--(UIViewController*)newsFlowTab;
--(UIViewController*)sendFlowTab;
--(UINavigationController*)walletFlowTab;
--(UIViewController*)changePinFlowController;
--(UIViewController*)createPinFlowController;
--(UIViewController*)createWalletFlowController;
--(WalletNameViewController*)createWalletNameCreateController;
--(NSObject<LoginViewOutput>*)createLoginController;
--(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController;
--(NSObject<FirstAuthOutput>*)createFirstAuthController;
--(NSObject<RestoreWalletOutput>*)createRestoreWalletController;
--(NSObject <ChangePinOutput>*)createChangePinController;
--(CreatePinViewController*)createCreatePinController;
--(RepeateViewController*)createRepeatePinController;
--(AuthNavigationController*)createAuthNavigationController;
--(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
--(SubscribeTokenViewController*)createSubscribeTokenViewController;
--(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
--(CreateTokenFinishViewController*)createCreateTokenFinishViewController;
--(NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
--(AddNewTokensViewController*)createAddNewTokensViewController;
--(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
--(ChooseSmartContractViewController*)createChooseSmartContractViewController;
--(SmartContractsListViewController*)createSmartContractsListViewController;
--(TokenFunctionViewController*)createTokenFunctionViewController;
--(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
--(TemplateTokenViewController*)createTemplateTokenViewController;
--(RestoreContractsViewController*)createRestoreContractViewController;
--(BackupContractsViewController*)createBackupContractViewController;
--(EnableFingerprintViewController*)createEnableFingerprintViewController;
+- (UIViewController*)profileFlowTab;
+- (UIViewController*)newsFlowTab;
+- (UIViewController*)sendFlowTab;
+- (UINavigationController*)walletFlowTab;
+- (UIViewController*)changePinFlowController;
+- (UIViewController*)createPinFlowController;
+- (UIViewController*)createWalletFlowController;
+- (WalletNameViewController*)createWalletNameCreateController;
+- (NSObject<LoginViewOutput>*)createLoginController;
+- (NSObject<LoginViewOutput>*)createConfirmPinForExportViewController;
+- (NSObject<FirstAuthOutput>*)createFirstAuthController;
+- (NSObject<RestoreWalletOutput>*)createRestoreWalletController;
+- (NSObject <ChangePinOutput>*)createChangePinController;
+- (CreatePinViewController*)createCreatePinController;
+- (RepeateViewController*)createRepeatePinController;
+- (AuthNavigationController*)createAuthNavigationController;
+- (ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
+- (SubscribeTokenViewController*)createSubscribeTokenViewController;
+- (CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
+- (CreateTokenFinishViewController*)createCreateTokenFinishViewController;
+- (NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
+- (AddNewTokensViewController*)createAddNewTokensViewController;
+- (ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
+- (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
+- (TokenFunctionViewController*)createTokenFunctionViewController;
+- (TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
+- (RestoreContractsViewController*)createRestoreContractViewController;
+- (BackupContractsViewController*)createBackupContractViewController;
+- (EnableFingerprintViewController*)createEnableFingerprintViewController;
 
--(NSObject <WatchContractOutput>*)createWatchContractViewController;
--(NSObject <WatchContractOutput>*)createWatchTokensViewController;
--(NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
--(NSObject<WalletOutput> *)createWalletViewController;
--(NSObject<TokenListOutput> *)createTokenListViewController;
--(NSObject<LanguageOutput> *)createLanguageViewController;
--(NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController;
--(NSObject<HistoryItemOutput> *)createHistoryItem;
--(NSObject<RecieveOutput> *)createRecieveViewController;
--(NSObject<LibraryOutput> *)createLibraryViewController;
+- (NSObject<TemplatesListOutput> *)createTemplateTokenViewController;
+- (NSObject <PublishedContractListOutput>*)createSmartContractsListViewController;
+- (NSObject <WatchContractOutput>*)createWatchContractViewController;
+- (NSObject <WatchContractOutput>*)createWatchTokensViewController;
+- (NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
+- (NSObject<WalletOutput> *)createWalletViewController;
+- (NSObject<TokenListOutput> *)createTokenListViewController;
+- (NSObject<LanguageOutput> *)createLanguageViewController;
+- (NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController;
+- (NSObject<HistoryItemOutput> *)createHistoryItem;
+- (NSObject<RecieveOutput> *)createRecieveViewController;
+- (NSObject<LibraryOutput> *)createLibraryViewController;
 
-
--(QRCodeViewController*)createQRCodeViewControllerForWallet;
--(QRCodeViewController*)createQRCodeViewControllerForSend;
--(QRCodeViewController*)createQRCodeViewControllerForSubscribe;
+- (QRCodeViewController*)createQRCodeViewControllerForWallet;
+- (QRCodeViewController*)createQRCodeViewControllerForSend;
+- (QRCodeViewController*)createQRCodeViewControllerForSubscribe;
 
 // Pop ups
 - (NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
@@ -136,8 +138,8 @@
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
 - (ShareTokenPopUpViewController *)createShareTokenPopUpViewController;
 
--(UIViewController*)createFlowNavigationCoordinator;
--(UITabBarController <TabbarOutput>*)createTabFlow;
+- (UIViewController*)createFlowNavigationCoordinator;
+- (UITabBarController <TabbarOutput>*)createTabFlow;
 
 
 @end

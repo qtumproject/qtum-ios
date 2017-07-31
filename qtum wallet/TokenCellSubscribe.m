@@ -1,18 +1,18 @@
 //
-//  TockenCellSubscribe.m
+//  TokenCellSubscribe.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 03.03.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "TockenCellSubscribe.h"
+#import "TokenCellSubscribe.h"
 
-@interface TockenCellSubscribe ()
+@interface TokenCellSubscribe ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSeparatorHeight;
 @end
 
-@implementation TockenCellSubscribe
+@implementation TokenCellSubscribe
 
 - (void)awakeFromNib {
     [super awakeFromNib];

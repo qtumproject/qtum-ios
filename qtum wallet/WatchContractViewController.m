@@ -162,7 +162,12 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     
+    [self.abiTextView setEditingMode:YES];
     [self.scrollView scrollRectToVisible:CGRectMake(self.scrollView.contentSize.width - 1, self.scrollView.contentSize.height - 1, 1, 1) animated:YES];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [self.abiTextView setEditingMode:NO];
 }
 
 @end

@@ -19,21 +19,11 @@
 -(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName;
 -(void)finishStepFinishDidPressed;
 -(void)finishStepBackDidPressed;
--(void)didSelectContractStore;
--(void)didSelectWatchContracts;
--(void)didSelectWatchTokens;
--(void)didSelectPublishedContracts;
--(void)didSelectNewContracts;
--(void)didSelectRestoreContract;
--(void)didSelectBackupContract;
--(void)didPressedQuit;
 -(void)didPressedBack;
 -(void)didSelectQStoreCategories;
 -(void)didSelectQStoreCategory;
 -(void)didSelectQStoreContract;
 -(void)didSelectQStoreContractDetails;
--(void)didDeselectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel;
--(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Contract*) contract;
 -(void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token;
 -(void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
 -(void)didCallFunctionWithItem:(AbiinterfaceItem*) item
@@ -42,6 +32,8 @@
 
 - (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;
+- (void)didPressedQuit;
+
 
 @end
 

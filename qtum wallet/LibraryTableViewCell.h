@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString *libraryCellIdentifire = @"LibraryTableViewCell";
+static NSString *libraryCellIdentifire = @"libraryCellIdentifire";
 
 @interface LibraryTableViewCell : UITableViewCell
 

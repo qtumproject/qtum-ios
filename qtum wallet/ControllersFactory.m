@@ -32,7 +32,7 @@
 #import "AddNewTokensViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
-#import "ChooseSmartContractViewController.h"
+#import "SmartContractMenuViewController.h"
 #import "SmartContractsListViewController.h"
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
@@ -72,6 +72,9 @@
 #import "LibraryOutput.h"
 #import "NewsOutput.h"
 #import "TokenDetailOutput.h"
+#import "SmartContractMenuOutput.h"
+#import "PublishedContractListOutput.h"
+#import "TemplatesListOutput.h"
 
 @implementation ControllersFactory
 
@@ -253,9 +256,10 @@
     return controller;
 }
 
--(TemplateTokenViewController*)createTemplateTokenViewController{
-    TemplateTokenViewController* controller = (TemplateTokenViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
-    return controller;
+-(NSObject<TemplatesListOutput> *)createTemplateTokenViewController {
+    
+    NSObject<TemplatesListOutput> *output = (NSObject<TemplatesListOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
+    return output;
 }
 
 -(AddNewTokensViewController*)createAddNewTokensViewController{
@@ -278,13 +282,15 @@
     return controller;
 }
 
--(ChooseSmartContractViewController*)createChooseSmartContractViewController{
-    ChooseSmartContractViewController* controller = (ChooseSmartContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ChooseSmartContractViewController"];
+-(NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController {
+    
+    NSObject <SmartContractMenuOutput>* controller = (NSObject <SmartContractMenuOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractMenuViewController"];
     return controller;
 }
 
--(SmartContractsListViewController*)createSmartContractsListViewController{
-    SmartContractsListViewController* controller = (SmartContractsListViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
+-(NSObject <PublishedContractListOutput>*)createSmartContractsListViewController {
+    
+    NSObject <PublishedContractListOutput>* controller = (NSObject <PublishedContractListOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
     return controller;
 }
 

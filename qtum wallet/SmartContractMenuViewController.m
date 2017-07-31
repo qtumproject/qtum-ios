@@ -1,22 +1,24 @@
 //
-//  ChooseSmartContractViewController.m
+//  SmartContractMenuViewController.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 30.05.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "ChooseSmartContractViewController.h"
+#import "SmartContractMenuViewController.h"
 #import "ChoiseSmartContractCell.h"
+#import "Presentable.h"
 
-@interface ChooseSmartContractViewController ()
+@interface SmartContractMenuViewController () <Presentable>
 
-@property (strong,nonatomic) NSArray<NSString*>* contractTypes;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation ChooseSmartContractViewController
+@implementation SmartContractMenuViewController
+
+@synthesize delegate;
 
 - (void)viewDidLoad {
     
@@ -37,7 +39,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 46;
+    return 40;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -72,21 +74,8 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    ChoiseSmartContractCell* cell = (ChoiseSmartContractCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.image.tintColor =
-    cell.disclosure.tintColor =
-    cell.smartContractType.textColor = customBlackColor();
-}
-
-- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    ChoiseSmartContractCell* cell = (ChoiseSmartContractCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.image.tintColor =
-    cell.disclosure.tintColor =
-    cell.smartContractType.textColor = customBlueColor();
-}
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{ }
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath { }
 
 #pragma mark - UITableViewDataSource
 
