@@ -55,7 +55,8 @@
         [identifire isEqualToString:@"NoInternetConnectionPopUpViewController"] ||
         [identifire isEqualToString:@"ErrorPopUpViewController"] ||
         [identifire isEqualToString:@"InformationPopUpViewController"] ||
-        [identifire isEqualToString:@"LoaderPopUpViewController"]) {
+        [identifire isEqualToString:@"LoaderPopUpViewController"] ||
+        [identifire isEqualToString:@"RestoreContractsPopUpViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

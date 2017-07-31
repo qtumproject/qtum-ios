@@ -388,8 +388,9 @@
     return controller;
 }
 
-- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController{
-    RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUp"];
+- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController {
+    
+    RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUpViewController"];
     return controller;
 }
 

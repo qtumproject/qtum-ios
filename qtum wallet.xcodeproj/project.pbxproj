@@ -209,6 +209,8 @@
 		B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */; };
 		B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */; };
 		B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */; };
+		B3DB3E431F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E421F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m */; };
+		B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E451F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -942,6 +944,10 @@
 		B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderPopUpViewControllerLight.m; sourceTree = "<group>"; };
 		B3DB3E3D1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewControllerDark.h; sourceTree = "<group>"; };
 		B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B3DB3E411F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B3DB3E421F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B3DB3E441F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B3DB3E451F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsPopUpViewControllerLight.m; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -2298,6 +2304,19 @@
 			name = "Loader Popup";
 			sourceTree = "<group>";
 		};
+		B3DB3E401F2F6D4900AA408F /* Restore Popup */ = {
+			isa = PBXGroup;
+			children = (
+				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
+				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
+				B3DB3E411F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.h */,
+				B3DB3E421F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m */,
+				B3DB3E441F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.h */,
+				B3DB3E451F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m */,
+			);
+			name = "Restore Popup";
+			sourceTree = "<group>";
+		};
 		B3E159261ED6E39F00D70A87 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3352,8 +3371,7 @@
 				E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */,
 				E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */,
 				B3DB3E391F2F555800AA408F /* Loader Popup */,
-				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
-				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
+				B3DB3E401F2F6D4900AA408F /* Restore Popup */,
 				B36EBC3F1F2F1DF100F4E2F2 /* Security Popup */,
 				E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */,
 				E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */,
@@ -4024,6 +4042,7 @@
 				B3CBDF411F2B496A00C80D4E /* TokenTemplateCellDark.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
+				B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
 				B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
@@ -4043,6 +4062,7 @@
 				B35DF6231F1F56A700316953 /* InputTextViewLight.m in Sources */,
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
+				B3DB3E431F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m in Sources */,
 				E748579C1F13C02600DCF9A6 /* LanguageTableViewCellLight.m in Sources */,
 				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,

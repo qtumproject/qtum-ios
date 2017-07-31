@@ -6,9 +6,16 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="proximanova-semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
         <array key="simplonmono-medium.ttf">
             <string>simplonmono-medium</string>
         </array>
@@ -17,10 +24,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Restore Contracts Pop Up View Controller-->
+        <!--Restore Contracts Pop Up View Controller Dark-->
         <scene sceneID="mEP-kh-3Jf">
             <objects>
-                <viewController storyboardIdentifier="RestoreContractsPopUp" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mxN-Gh-FGc" customClass="RestoreContractsPopUpViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RestoreContractsPopUpViewControllerDark" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mxN-Gh-FGc" customClass="RestoreContractsPopUpViewControllerDark" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cjV-kH-hGX"/>
                         <viewControllerLayoutGuide type="bottom" id="2mO-ZR-iiQ"/>
@@ -192,6 +199,192 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6U-hY-aA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
+        </scene>
+        <!--Restore Contracts Pop Up View Controller Light-->
+        <scene sceneID="dan-7o-VNE">
+            <objects>
+                <viewController storyboardIdentifier="RestoreContractsPopUpViewControllerLight" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ynx-d0-78h" customClass="RestoreContractsPopUpViewControllerLight" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xlE-pL-JmK"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xf5-9c-YiO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DBV-9R-QyR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jke-eP-OJt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7w-ME-zlB" customClass="Rest">
+                                <rect key="frame" x="58" y="132" width="260" height="270"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore Contracts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qj9-tk-n6c">
+                                        <rect key="frame" x="58.5" y="15" width="144" height="18"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePc-r4-OSL">
+                                        <rect key="frame" x="138" y="211" width="107" height="42"/>
+                                        <color key="backgroundColor" red="0.21176470589999999" green="0.72549019609999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="107" id="0Ge-Gj-AYI"/>
+                                            <constraint firstAttribute="height" constant="42" id="4iz-0e-IXl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="RESTORE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="restoreAction:" destination="Ynx-d0-78h" eventType="touchUpInside" id="Swu-HP-DqP"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07-Jun-2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX4-kC-UYL">
+                                        <rect key="frame" x="91.5" y="41" width="77" height="14"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.68000000000000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZB-P6-Q8g">
+                                        <rect key="frame" x="55.5" y="84" width="20" height="16"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup App Version" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZe-lx-snl">
+                                        <rect key="frame" x="33.5" y="103" width="64.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contracts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGN-lN-f8F">
+                                        <rect key="frame" x="170" y="103" width="50.5" height="12"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tokens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8p-sL-Oht">
+                                        <rect key="frame" x="46.5" y="159" width="37.5" height="12"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Templates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT6-MU-3uU">
+                                        <rect key="frame" x="168" y="159" width="54" height="12"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2h7-DU-wDt">
+                                        <rect key="frame" x="191" y="84" width="9" height="16"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqC-It-WE5">
+                                        <rect key="frame" x="187.5" y="140" width="16" height="16"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Duh-Rz-6ii">
+                                        <rect key="frame" x="60.5" y="140" width="9" height="16"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRd-Mj-quZ">
+                                        <rect key="frame" x="96.5" y="57" width="68" height="12"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymw-Jr-jQS">
+                                        <rect key="frame" x="15" y="211" width="107" height="42"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="fky-ZB-bFw"/>
+                                            <constraint firstAttribute="width" constant="107" id="xpb-8S-1gO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="BACK">
+                                            <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="backAction:" destination="Ynx-d0-78h" eventType="touchUpInside" id="wDG-Lb-Ige"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2h7-DU-wDt" firstAttribute="centerX" secondItem="b7w-ME-zlB" secondAttribute="centerX" multiplier="1.5" id="2jN-hB-49N"/>
+                                    <constraint firstItem="DZe-lx-snl" firstAttribute="centerX" secondItem="LZB-P6-Q8g" secondAttribute="centerX" id="45Y-L1-5zv"/>
+                                    <constraint firstItem="vX4-kC-UYL" firstAttribute="centerX" secondItem="b7w-ME-zlB" secondAttribute="centerX" id="6rE-Ng-OoW"/>
+                                    <constraint firstItem="Qj9-tk-n6c" firstAttribute="centerX" secondItem="b7w-ME-zlB" secondAttribute="centerX" id="7Ak-RK-EtJ"/>
+                                    <constraint firstItem="Duh-Rz-6ii" firstAttribute="top" secondItem="LZB-P6-Q8g" secondAttribute="bottom" constant="40" id="8iq-Oq-dGK"/>
+                                    <constraint firstItem="Ymw-Jr-jQS" firstAttribute="leading" secondItem="b7w-ME-zlB" secondAttribute="leading" constant="15" id="9gf-td-MtD"/>
+                                    <constraint firstAttribute="height" constant="270" id="Bpo-mT-SGU"/>
+                                    <constraint firstItem="LZB-P6-Q8g" firstAttribute="centerX" secondItem="b7w-ME-zlB" secondAttribute="centerX" multiplier="0.5" id="CSj-Ov-48M"/>
+                                    <constraint firstItem="Qj9-tk-n6c" firstAttribute="top" secondItem="b7w-ME-zlB" secondAttribute="top" constant="15" id="Col-ND-ier"/>
+                                    <constraint firstAttribute="width" constant="260" id="GTX-zY-WKt"/>
+                                    <constraint firstItem="LZB-P6-Q8g" firstAttribute="top" secondItem="CRd-Mj-quZ" secondAttribute="bottom" constant="15" id="JM4-En-p0P"/>
+                                    <constraint firstItem="D8p-sL-Oht" firstAttribute="centerX" secondItem="Duh-Rz-6ii" secondAttribute="centerX" id="MUD-0J-Kx9"/>
+                                    <constraint firstItem="DqC-It-WE5" firstAttribute="top" secondItem="2h7-DU-wDt" secondAttribute="bottom" constant="40" id="Nkr-iQ-3ly"/>
+                                    <constraint firstItem="Duh-Rz-6ii" firstAttribute="centerX" secondItem="LZB-P6-Q8g" secondAttribute="centerX" id="Pi1-py-M5I"/>
+                                    <constraint firstAttribute="bottom" secondItem="ePc-r4-OSL" secondAttribute="bottom" constant="17" id="Rp0-FW-PDT"/>
+                                    <constraint firstAttribute="trailing" secondItem="ePc-r4-OSL" secondAttribute="trailing" constant="15" id="Uoy-OF-vjX"/>
+                                    <constraint firstItem="CRd-Mj-quZ" firstAttribute="top" secondItem="vX4-kC-UYL" secondAttribute="bottom" constant="2" id="ZVw-9W-6Qh"/>
+                                    <constraint firstItem="IT6-MU-3uU" firstAttribute="top" secondItem="DqC-It-WE5" secondAttribute="bottom" constant="3" id="aOc-y8-Jwh"/>
+                                    <constraint firstItem="IT6-MU-3uU" firstAttribute="centerX" secondItem="DqC-It-WE5" secondAttribute="centerX" id="dZf-Nt-lwW"/>
+                                    <constraint firstItem="DqC-It-WE5" firstAttribute="centerX" secondItem="2h7-DU-wDt" secondAttribute="centerX" id="g7d-Fd-5gh"/>
+                                    <constraint firstItem="D8p-sL-Oht" firstAttribute="top" secondItem="Duh-Rz-6ii" secondAttribute="bottom" constant="3" id="kzx-yr-zZn"/>
+                                    <constraint firstItem="vX4-kC-UYL" firstAttribute="top" secondItem="Qj9-tk-n6c" secondAttribute="bottom" constant="8" id="lw7-eN-UO6"/>
+                                    <constraint firstItem="bGN-lN-f8F" firstAttribute="top" secondItem="2h7-DU-wDt" secondAttribute="bottom" constant="3" id="p80-vU-wul"/>
+                                    <constraint firstItem="bGN-lN-f8F" firstAttribute="centerX" secondItem="2h7-DU-wDt" secondAttribute="centerX" id="qYz-Am-Cse"/>
+                                    <constraint firstItem="2h7-DU-wDt" firstAttribute="bottom" secondItem="LZB-P6-Q8g" secondAttribute="bottom" id="qkI-eA-Ne2"/>
+                                    <constraint firstItem="CRd-Mj-quZ" firstAttribute="centerX" secondItem="b7w-ME-zlB" secondAttribute="centerX" id="rdQ-Am-Qmg"/>
+                                    <constraint firstItem="ePc-r4-OSL" firstAttribute="centerY" secondItem="Ymw-Jr-jQS" secondAttribute="centerY" id="v72-wd-nbq"/>
+                                    <constraint firstItem="DZe-lx-snl" firstAttribute="top" secondItem="LZB-P6-Q8g" secondAttribute="bottom" constant="3" id="wfu-gB-8k9"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b7w-ME-zlB" firstAttribute="centerX" secondItem="DBV-9R-QyR" secondAttribute="centerX" id="8nl-rw-2k4"/>
+                            <constraint firstItem="b7w-ME-zlB" firstAttribute="centerY" secondItem="DBV-9R-QyR" secondAttribute="centerY" multiplier="0.8" id="zCj-Tv-fKY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contractsCountLabel" destination="2h7-DU-wDt" id="gKY-DD-aKz"/>
+                        <outlet property="dateLabel" destination="vX4-kC-UYL" id="kY3-fb-esn"/>
+                        <outlet property="templateCounLabel" destination="DqC-It-WE5" id="a4q-Kn-Ny2"/>
+                        <outlet property="tokensCountLabel" destination="Duh-Rz-6ii" id="GBB-6e-bgB"/>
+                        <outlet property="versionLabel" destination="LZB-P6-Q8g" id="dGG-Nc-maZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6tj-C4-Na4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="772" y="143"/>
         </scene>
     </scenes>
 </document>
