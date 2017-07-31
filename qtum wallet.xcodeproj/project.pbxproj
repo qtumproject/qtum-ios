@@ -215,6 +215,8 @@
 		B3DB3E4E1F2F706800AA408F /* RestoreContractsViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E4D1F2F706800AA408F /* RestoreContractsViewControllerLight.m */; };
 		B3DB3E511F2F7A5200AA408F /* CheckboxButtonLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E501F2F7A5200AA408F /* CheckboxButtonLight.m */; };
 		B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DB3E521F2F7F0D00AA408F /* CheckButtonLight.xib */; };
+		B3DB3E571F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E561F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m */; };
+		B3DB3E5A1F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E591F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -961,6 +963,10 @@
 		B3DB3E4F1F2F7A5200AA408F /* CheckboxButtonLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckboxButtonLight.h; sourceTree = "<group>"; };
 		B3DB3E501F2F7A5200AA408F /* CheckboxButtonLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckboxButtonLight.m; sourceTree = "<group>"; };
 		B3DB3E521F2F7F0D00AA408F /* CheckButtonLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckButtonLight.xib; sourceTree = "<group>"; };
+		B3DB3E551F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteTemplateCollectionViewCellDark.h; sourceTree = "<group>"; };
+		B3DB3E561F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteTemplateCollectionViewCellDark.m; sourceTree = "<group>"; };
+		B3DB3E581F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteTemplateCollectionViewCellLight.h; sourceTree = "<group>"; };
+		B3DB3E591F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteTemplateCollectionViewCellLight.m; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -2330,6 +2336,19 @@
 			name = "Restore Popup";
 			sourceTree = "<group>";
 		};
+		B3DB3E541F2F9A3700AA408F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E71F1C881F1CEBA400961B19 /* FavouriteTemplateCollectionViewCell.h */,
+				E71F1C891F1CEBA400961B19 /* FavouriteTemplateCollectionViewCell.m */,
+				B3DB3E551F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.h */,
+				B3DB3E561F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m */,
+				B3DB3E581F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.h */,
+				B3DB3E591F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		B3E159261ED6E39F00D70A87 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2705,8 +2724,7 @@
 				E71F1C861F1CD6C500961B19 /* FavouriteTemplatesCollectionSourceOutputDelegate.h */,
 				E71F1C821F1CD68A00961B19 /* FavouriteTemplatesCollectionSource.h */,
 				E71F1C831F1CD68A00961B19 /* FavouriteTemplatesCollectionSource.m */,
-				E71F1C881F1CEBA400961B19 /* FavouriteTemplateCollectionViewCell.h */,
-				E71F1C891F1CEBA400961B19 /* FavouriteTemplateCollectionViewCell.m */,
+				B3DB3E541F2F9A3700AA408F /* Cells */,
 				E7D7C09D1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.h */,
 				E7D7C09C1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m */,
 			);
@@ -4070,6 +4088,7 @@
 				B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */,
+				B3DB3E571F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m in Sources */,
 				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
 				E71F1C7A1F1C9B0200961B19 /* LibraryTableSource.m in Sources */,
 				B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */,
@@ -4222,6 +4241,7 @@
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32BC4B11F28D5BC00C2417C /* TextFieldWithLineLightSend.m in Sources */,
 				E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */,
+				B3DB3E5A1F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m in Sources */,
 				B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,

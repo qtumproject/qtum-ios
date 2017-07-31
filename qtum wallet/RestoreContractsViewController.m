@@ -41,12 +41,18 @@
     [self.fileView addGestureRecognizer:recognizer];
 }
 
+-(NSString *)getImageNameForStateWithFile:(BOOL) haveFile {
+    return haveFile ? @"delete" : @"ic-attach";
+}
+
 - (void)setupViewForFile {
-    NSString *imageName = self.haveFile ? @"delete" : @"ic-attach";
+    
+    NSString *imageName = [self getImageNameForStateWithFile:self.haveFile];
     self.iconImageView.image = [UIImage imageNamed:imageName];
     self.sizeLabel.hidden = !self.haveFile;
     self.fileNameLabel.text = self.haveFile ? [self.fileUrl lastPathComponent] : NSLocalizedString(@"Select backup file", @"");
 }
+
 
 - (void)createCheckButtons {
     

@@ -102,7 +102,7 @@
     
     BOOL available = (self.abiTextView.text.length > 0) && (self.contractNameField.text.length > 0) && (self.contractAddressTextField.text.length > 0);
     self.okButton.enabled = available;
-    self.okButton.alpha = available ? 1.0f : 0.7f;
+    self.okButton.alpha = available ? 1.0f : 0.5f;
 }
 
 - (void)done:(id)sender {

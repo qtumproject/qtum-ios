@@ -62,4 +62,10 @@
     }
 }
 
+-(NSString *)getImageNameForStateWithFile:(BOOL) haveFile {
+    return haveFile ? @"ic-bag-light" : @"ic-attach";
+}
+
+
+
 @end
