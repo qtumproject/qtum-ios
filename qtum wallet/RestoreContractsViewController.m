@@ -14,16 +14,13 @@
 #import "ErrorPopUpViewController.h"
 
 
-@interface RestoreContractsViewController () <CheckboxButtonDelegate, PopUpWithTwoButtonsViewControllerDelegate, UIDocumentMenuDelegate, UIDocumentPickerDelegate>
+@interface RestoreContractsViewController () <PopUpWithTwoButtonsViewControllerDelegate, UIDocumentMenuDelegate, UIDocumentPickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *restoreButton;
 @property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fileNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
-@property (weak, nonatomic) IBOutlet UIView *containerForButtons;
 @property (weak, nonatomic) IBOutlet UIView *fileView;
-
-@property (strong, nonatomic) NSMutableArray <CheckboxButton*> *buttons;
 
 @property (assign, nonatomic) BOOL haveFile;
 @property (strong, nonatomic) NSURL *fileUrl;
@@ -31,6 +28,8 @@
 @end
 
 @implementation RestoreContractsViewController
+
+@synthesize delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,6 +49,7 @@
 }
 
 - (void)createCheckButtons {
+    
     NSArray *titles = @[NSLocalizedString(@"Restore Templates", @""), NSLocalizedString(@"Restore Contracts", @""), NSLocalizedString(@"Restore Tokens", @""), NSLocalizedString(@"Restore All", @"")];
     
     NSMutableArray *buttons = [NSMutableArray new];

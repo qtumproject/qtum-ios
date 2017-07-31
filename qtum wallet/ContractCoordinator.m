@@ -40,6 +40,7 @@
 #import "TemplatesListOutput.h"
 #import "TemplatesListOutputDelegate.h"
 #import "FavouriteTemplatesCollectionSourceOutput.h"
+#import "RestoreContractsOutput.h"
 
 
 @interface ContractCoordinator () <LibraryOutputDelegate,
@@ -48,7 +49,8 @@ FavouriteTemplatesCollectionSourceOutputDelegate,
 WatchContractOutputDelegate,
 SmartContractMenuOutputDelegate,
 PublishedContractListOutputDelegate,
-TemplatesListOutputDelegate>
+TemplatesListOutputDelegate,
+RestoreContractsOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
@@ -177,10 +179,10 @@ TemplatesListOutputDelegate>
 
 -(void)showRestoreContract {
     
-    RestoreContractsViewController* controller = (RestoreContractsViewController*)[[ControllersFactory sharedInstance] createRestoreContractViewController];
-    controller.delegate = self;
+    NSObject <RestoreContractsOutput>* output = [[ControllersFactory sharedInstance] createRestoreContractViewController];
+    output.delegate = self;
 
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
 -(void)showBackupContract {

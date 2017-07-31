@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="0ue-Tg-Uca" customClass="CheckboxButtonLight">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="97"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore Contracts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpT-wN-8bS">
+                    <rect key="frame" x="40" y="39" width="130.5" height="19"/>
+                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                    <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fss-XQ-9CX">
+                    <rect key="frame" x="9" y="38" width="21" height="21"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-check-white" translatesAutoresizingMaskIntoConstraints="NO" id="D0X-9v-Hnm">
+                            <rect key="frame" x="4.5" y="6.5" width="13" height="8"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="21" id="3tU-yE-v7C"/>
+                        <constraint firstItem="D0X-9v-Hnm" firstAttribute="centerY" secondItem="Fss-XQ-9CX" secondAttribute="centerY" id="BYV-NV-2ZF"/>
+                        <constraint firstItem="D0X-9v-Hnm" firstAttribute="centerX" secondItem="Fss-XQ-9CX" secondAttribute="centerX" id="Oho-6k-Wfx"/>
+                        <constraint firstAttribute="height" constant="21" id="SJa-17-fhN"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swB-wy-tSe">
+                    <rect key="frame" x="15" y="96" width="370" height="1"/>
+                    <color key="backgroundColor" red="0.92941176469999998" green="0.96470588239999999" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="9AM-m5-pV1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="swB-wy-tSe" firstAttribute="leading" secondItem="0ue-Tg-Uca" secondAttribute="leading" constant="15" id="DMh-I9-IzZ"/>
+                <constraint firstAttribute="bottom" secondItem="swB-wy-tSe" secondAttribute="bottom" id="Gyo-pB-myI"/>
+                <constraint firstItem="Fss-XQ-9CX" firstAttribute="centerX" secondItem="0ue-Tg-Uca" secondAttribute="centerX" multiplier="0.1" id="M7f-3y-jiQ"/>
+                <constraint firstItem="NpT-wN-8bS" firstAttribute="leading" secondItem="Fss-XQ-9CX" secondAttribute="trailing" constant="10" id="NYs-20-A5m"/>
+                <constraint firstItem="NpT-wN-8bS" firstAttribute="centerY" secondItem="0ue-Tg-Uca" secondAttribute="centerY" id="XsC-Nh-XgX"/>
+                <constraint firstItem="Fss-XQ-9CX" firstAttribute="centerY" secondItem="0ue-Tg-Uca" secondAttribute="centerY" id="c85-1I-HZR"/>
+                <constraint firstAttribute="trailing" secondItem="swB-wy-tSe" secondAttribute="trailing" id="vEY-0Z-2VT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="checkImageView" destination="D0X-9v-Hnm" id="VDG-4m-gdH"/>
+                <outlet property="checkView" destination="Fss-XQ-9CX" id="Owz-xc-1so"/>
+                <outlet property="titleLabel" destination="NpT-wN-8bS" id="HzH-EW-1To"/>
+            </connections>
+            <point key="canvasLocation" x="97.5" y="-482.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic-check-white" width="13" height="8"/>
+    </resources>
+</document>

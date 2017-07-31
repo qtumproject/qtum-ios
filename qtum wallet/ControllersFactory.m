@@ -75,6 +75,7 @@
 #import "SmartContractMenuOutput.h"
 #import "PublishedContractListOutput.h"
 #import "TemplatesListOutput.h"
+#import "RestoreContractsOutput.h"
 
 @implementation ControllersFactory
 
@@ -320,8 +321,9 @@
     return controller;
 }
 
--(RestoreContractsViewController*)createRestoreContractViewController{
-    RestoreContractsViewController* controller = (RestoreContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContracts"];
+-(NSObject <RestoreContractsOutput>*)createRestoreContractViewController{
+    
+    NSObject <RestoreContractsOutput>* controller = (NSObject <RestoreContractsOutput>*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContractsViewController"];
     return controller;
 }
 

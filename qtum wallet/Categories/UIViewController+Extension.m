@@ -56,7 +56,8 @@
         [identifire isEqualToString:@"ErrorPopUpViewController"] ||
         [identifire isEqualToString:@"InformationPopUpViewController"] ||
         [identifire isEqualToString:@"LoaderPopUpViewController"] ||
-        [identifire isEqualToString:@"RestoreContractsPopUpViewController"]) {
+        [identifire isEqualToString:@"RestoreContractsPopUpViewController"] ||
+        [identifire isEqualToString:@"RestoreContractsViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             
@@ -69,7 +70,7 @@
     return [self instantiateControllerInStoryboard:[UIStoryboard storyboardWithName:storyboard bundle:nil] withIdentifire:mutString];
 }
 
-- (UIViewController*) controllerInStoryboard:(NSString*) storyboard{
+- (UIViewController*) controllerInStoryboard:(NSString*) storyboard {
     return [UIViewController instantiateControllerInStoryboard:[UIStoryboard storyboardWithName:storyboard bundle:nil]  withIdentifire:self.nameOfClass];
 }
 

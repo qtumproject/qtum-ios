@@ -38,7 +38,7 @@
     [self changeViewByCheckState];
     
     self.checkImageView.image = [self.checkImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.checkImageView.tintColor = customBlackColor();
+    self.checkImageView.tintColor = [self indicatorTintColor];
     
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTap)];
     [self addGestureRecognizer:recognizer];
@@ -89,9 +89,31 @@
 #pragma mark - Private
 
 - (void)changeViewByCheckState {
+    
     self.checkImageView.hidden = !self.checked;
-    self.checkView.layer.borderColor = self.checked ? customRedColor().CGColor : customBlueColor().CGColor;
-    self.checkView.backgroundColor = self.checked ? customRedColor() : self.squareBackroundColor;
+    self.checkView.layer.borderColor = self.checked ? [[self borderColorForSelectedState] CGColor] : [self borderColorForDeselectedState].CGColor;
+    self.checkView.backgroundColor = self.checked ? [self fillColorForSelectedState] : [self fillColorForDeselectedState];
 }
+
+-(UIColor*)fillColorForSelectedState {
+    return customRedColor();
+}
+
+-(UIColor*)fillColorForDeselectedState {
+    return self.squareBackroundColor;
+}
+
+-(UIColor*)borderColorForDeselectedState {
+    return customBlueColor();
+}
+
+-(UIColor*)borderColorForSelectedState {
+    return customRedColor();
+}
+
+-(UIColor*)indicatorTintColor {
+    return customBlackColor();
+}
+
 
 @end

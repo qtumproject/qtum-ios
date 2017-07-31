@@ -66,6 +66,7 @@
 @protocol SmartContractMenuOutput;
 @protocol PublishedContractListOutput;
 @protocol TemplatesListOutput;
+@protocol RestoreContractsOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -101,7 +102,6 @@
 - (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
 - (TokenFunctionViewController*)createTokenFunctionViewController;
 - (TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
-- (RestoreContractsViewController*)createRestoreContractViewController;
 - (BackupContractsViewController*)createBackupContractViewController;
 - (EnableFingerprintViewController*)createEnableFingerprintViewController;
 
@@ -117,6 +117,7 @@
 - (NSObject<HistoryItemOutput> *)createHistoryItem;
 - (NSObject<RecieveOutput> *)createRecieveViewController;
 - (NSObject<LibraryOutput> *)createLibraryViewController;
+- (NSObject <RestoreContractsOutput>*)createRestoreContractViewController;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;

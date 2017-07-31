@@ -211,6 +211,10 @@
 		B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */; };
 		B3DB3E431F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E421F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m */; };
 		B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E451F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m */; };
+		B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E4A1F2F705700AA408F /* RestoreContractsViewControllerDark.m */; };
+		B3DB3E4E1F2F706800AA408F /* RestoreContractsViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E4D1F2F706800AA408F /* RestoreContractsViewControllerLight.m */; };
+		B3DB3E511F2F7A5200AA408F /* CheckboxButtonLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E501F2F7A5200AA408F /* CheckboxButtonLight.m */; };
+		B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DB3E521F2F7F0D00AA408F /* CheckButtonLight.xib */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -948,6 +952,15 @@
 		B3DB3E421F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsPopUpViewControllerDark.m; sourceTree = "<group>"; };
 		B3DB3E441F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsPopUpViewControllerLight.h; sourceTree = "<group>"; };
 		B3DB3E451F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B3DB3E471F2F6F7700AA408F /* RestoreContractsOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsOutput.h; sourceTree = "<group>"; };
+		B3DB3E481F2F6F8600AA408F /* RestoreContractsOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsOutputDelegate.h; sourceTree = "<group>"; };
+		B3DB3E491F2F705700AA408F /* RestoreContractsViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsViewControllerDark.h; sourceTree = "<group>"; };
+		B3DB3E4A1F2F705700AA408F /* RestoreContractsViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsViewControllerDark.m; sourceTree = "<group>"; };
+		B3DB3E4C1F2F706800AA408F /* RestoreContractsViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsViewControllerLight.h; sourceTree = "<group>"; };
+		B3DB3E4D1F2F706800AA408F /* RestoreContractsViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsViewControllerLight.m; sourceTree = "<group>"; };
+		B3DB3E4F1F2F7A5200AA408F /* CheckboxButtonLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckboxButtonLight.h; sourceTree = "<group>"; };
+		B3DB3E501F2F7A5200AA408F /* CheckboxButtonLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckboxButtonLight.m; sourceTree = "<group>"; };
+		B3DB3E521F2F7F0D00AA408F /* CheckButtonLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckButtonLight.xib; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -2632,6 +2645,12 @@
 				E713A4791EEE965000A2FA40 /* Views */,
 				E713A47F1EEE9FF800A2FA40 /* RestoreContractsViewController.h */,
 				E713A4801EEE9FF800A2FA40 /* RestoreContractsViewController.m */,
+				B3DB3E471F2F6F7700AA408F /* RestoreContractsOutput.h */,
+				B3DB3E481F2F6F8600AA408F /* RestoreContractsOutputDelegate.h */,
+				B3DB3E491F2F705700AA408F /* RestoreContractsViewControllerDark.h */,
+				B3DB3E4A1F2F705700AA408F /* RestoreContractsViewControllerDark.m */,
+				B3DB3E4C1F2F706800AA408F /* RestoreContractsViewControllerLight.h */,
+				B3DB3E4D1F2F706800AA408F /* RestoreContractsViewControllerLight.m */,
 			);
 			name = RestoreContracts;
 			sourceTree = "<group>";
@@ -2640,8 +2659,11 @@
 			isa = PBXGroup;
 			children = (
 				E713A47A1EEE966100A2FA40 /* CheckButton.xib */,
+				B3DB3E521F2F7F0D00AA408F /* CheckButtonLight.xib */,
 				E713A47C1EEE98E900A2FA40 /* CheckboxButton.h */,
 				E713A47D1EEE98E900A2FA40 /* CheckboxButton.m */,
+				B3DB3E4F1F2F7A5200AA408F /* CheckboxButtonLight.h */,
+				B3DB3E501F2F7A5200AA408F /* CheckboxButtonLight.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -3868,6 +3890,7 @@
 				E70CFD341F1F647300230C81 /* SourceCodePopUp.storyboard in Resources */,
 				E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
+				B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */,
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				E760F4A11F0F8E8F0056D042 /* proximanova-regitalic.otf in Resources */,
 				E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
@@ -4087,6 +4110,7 @@
 				E70353151F03AC6D004ECCC9 /* QStoreListTableViewCell.m in Sources */,
 				B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */,
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
+				B3DB3E4E1F2F706800AA408F /* RestoreContractsViewControllerLight.m in Sources */,
 				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
 				E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */,
@@ -4101,6 +4125,7 @@
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
+				B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
 				B3CBDF2D1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m in Sources */,
@@ -4305,6 +4330,7 @@
 				E79846361F0D23CB002A516A /* WalletHeaderCellDark.m in Sources */,
 				B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */,
 				B36EBC3B1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m in Sources */,
+				B3DB3E511F2F7A5200AA408F /* CheckboxButtonLight.m in Sources */,
 				E798463D1F0D28A3002A516A /* WalletTableSourceLight.m in Sources */,
 				B36EBC451F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m in Sources */,
 				B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */,
