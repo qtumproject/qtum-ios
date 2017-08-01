@@ -20,6 +20,8 @@
 
 @implementation TokenFunctionViewController
 
+@synthesize token, delegate, formModel;
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];

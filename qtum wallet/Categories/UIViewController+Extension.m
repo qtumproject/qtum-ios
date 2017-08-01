@@ -61,7 +61,9 @@
         [identifire isEqualToString:@"BackupContractsViewController"] ||
         [identifire isEqualToString:@"ConstructorFromAbiViewController"] ||
         [identifire isEqualToString:@"CreateTokenFinishViewController"] ||
-        [identifire isEqualToString:@"TokenFunctionDetailViewController"]) {
+        [identifire isEqualToString:@"TokenFunctionDetailViewController"] ||
+        [identifire isEqualToString:@"TokenFunctionViewController"] ||
+        [identifire isEqualToString:@"ShareTokenPopUpViewControllerLight"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

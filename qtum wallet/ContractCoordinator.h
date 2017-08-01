@@ -21,8 +21,7 @@
 -(void)didSelectQStoreCategory;
 -(void)didSelectQStoreContract;
 -(void)didSelectQStoreContractDetails;
--(void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token;
--(void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
+
 
 - (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;

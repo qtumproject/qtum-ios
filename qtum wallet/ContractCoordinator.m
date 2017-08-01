@@ -53,7 +53,8 @@ TemplatesListOutputDelegate,
 RestoreContractsOutputDelegate,
 BackupContractOutputDelegate,
 ConstructorAbiOutputDelegate,
-ContractFunctionDetailOutputDelegate>
+ContractFunctionDetailOutputDelegate,
+ContractFunctionsOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
@@ -218,11 +219,11 @@ ContractFunctionDetailOutputDelegate>
 -(void)showContractsFunction:(Contract*) contract {
     
     if (contract.templateModel) {
-        TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-        controller.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:contract.templateModel.path];
-        controller.delegate = self;
-        controller.token = contract;
-        [self.navigationController pushViewController:controller animated:true];
+        NSObject <ContractFunctionsOutput>* output = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
+        output.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:contract.templateModel.path];
+        output.delegate = self;
+        output.token = contract;
+        [self.navigationController pushViewController:[output toPresent] animated:true];
     }
 }
 
@@ -291,11 +292,6 @@ ContractFunctionDetailOutputDelegate>
     }];
 }
 
-- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token {
-    
-    [self didSelectFunctionIndexPath:indexPath withItem:item andToken:token fromQStore:NO];
-}
-
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token fromQStore:(BOOL)fromQStore {
     
     NSObject <ContractFunctionDetailOutput>* output = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
@@ -305,10 +301,6 @@ ContractFunctionDetailOutputDelegate>
     output.fromQStore = fromQStore;
     self.functionDetailController = output;
     [self.navigationController pushViewController:[output toPresent] animated:true];
-}
-
-- (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
-    
 }
 
 - (void)didSelectQStoreCategories {
@@ -331,6 +323,16 @@ ContractFunctionDetailOutputDelegate>
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+#pragma mark - ContractFunctionsOutputDelegate
+
+- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token {
+    
+    [self didSelectFunctionIndexPath:indexPath withItem:item andToken:token fromQStore:NO];
+}
+
+- (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
+    
+}
 
 
 #pragma mark - ContractFunctionDetailOutputDelegate

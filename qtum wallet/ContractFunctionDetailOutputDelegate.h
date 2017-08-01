@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AbiinterfaceItem.h"
+#import "ResultTokenInputsModel.h"
 
 @protocol ContractFunctionDetailOutputDelegate <NSObject>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -141,11 +141,14 @@ updated</string>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="qhx-Mh-bfB">
-                                        <rect key="frame" x="40" y="44.5" width="13" height="13"/>
+                                        <rect key="frame" x="25.5" y="34.5" width="13" height="13"/>
                                         <color key="tintColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imb-Hs-18b">
-                                        <rect key="frame" x="60" y="40" width="143" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imb-Hs-18b">
+                                        <rect key="frame" x="46" y="30" width="170" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="170" id="KRh-kw-5fo"/>
+                                        </constraints>
                                         <string key="text">Your balance was 
 updated</string>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -156,12 +159,12 @@ updated</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="kxx-RQ-wP2" firstAttribute="centerX" secondItem="hNg-Fd-4sY" secondAttribute="centerX" id="171-Eo-bYd"/>
-                                    <constraint firstItem="kxx-RQ-wP2" firstAttribute="top" secondItem="imb-Hs-18b" secondAttribute="bottom" constant="27" id="6sk-2c-ONq"/>
                                     <constraint firstAttribute="width" constant="262" id="JPZ-Os-CSp"/>
                                     <constraint firstItem="imb-Hs-18b" firstAttribute="leading" secondItem="qhx-Mh-bfB" secondAttribute="trailing" constant="7" id="Lkf-Tu-hZk"/>
                                     <constraint firstAttribute="bottom" secondItem="kxx-RQ-wP2" secondAttribute="bottom" constant="25" id="Vlz-rk-h4y"/>
                                     <constraint firstAttribute="height" constant="170" id="W0W-u0-tk0"/>
                                     <constraint firstItem="qhx-Mh-bfB" firstAttribute="centerY" secondItem="imb-Hs-18b" secondAttribute="centerY" constant="-7" id="cPo-gm-Ynv"/>
+                                    <constraint firstItem="imb-Hs-18b" firstAttribute="top" secondItem="hNg-Fd-4sY" secondAttribute="top" constant="30" id="qEO-4v-7pP"/>
                                     <constraint firstItem="imb-Hs-18b" firstAttribute="centerX" secondItem="hNg-Fd-4sY" secondAttribute="centerX" id="vYv-sf-ZIV"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -189,7 +192,7 @@ updated</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XI2-qs-Y4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="143"/>
+            <point key="canvasLocation" x="424.80000000000001" y="142.57871064467767"/>
         </scene>
     </scenes>
     <resources>
