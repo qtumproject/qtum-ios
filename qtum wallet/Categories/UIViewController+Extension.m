@@ -57,7 +57,8 @@
         [identifire isEqualToString:@"InformationPopUpViewController"] ||
         [identifire isEqualToString:@"LoaderPopUpViewController"] ||
         [identifire isEqualToString:@"RestoreContractsPopUpViewController"] ||
-        [identifire isEqualToString:@"RestoreContractsViewController"]) {
+        [identifire isEqualToString:@"RestoreContractsViewController"] ||
+        [identifire isEqualToString:@"BackupContractsViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

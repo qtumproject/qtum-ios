@@ -15,6 +15,6 @@
 @property (nonatomic, copy) NSString *currentBalance;
 @property (nonatomic, copy) NSDictionary *dictionary;
 @property (assign, nonatomic) NSInteger sendButtomBottomOffset;
-@property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
+
 
 @end

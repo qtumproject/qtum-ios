@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ContractCoordinator.h"
+#import "BackupContractOutput.h"
 
-@interface BackupContractsViewController : UIViewController
-
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
+@interface BackupContractsViewController : UIViewController <BackupContractOutput>
 
 @end

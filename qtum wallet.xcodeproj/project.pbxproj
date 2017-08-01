@@ -217,6 +217,8 @@
 		B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DB3E521F2F7F0D00AA408F /* CheckButtonLight.xib */; };
 		B3DB3E571F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E561F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m */; };
 		B3DB3E5A1F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E591F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m */; };
+		B3DB3E5F1F306CEA00AA408F /* BackupContractsViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E5E1F306CEA00AA408F /* BackupContractsViewControllerDark.m */; };
+		B3DB3E621F306CFB00AA408F /* BackupContractsViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E611F306CFB00AA408F /* BackupContractsViewControllerLight.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -967,6 +969,12 @@
 		B3DB3E561F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteTemplateCollectionViewCellDark.m; sourceTree = "<group>"; };
 		B3DB3E581F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteTemplateCollectionViewCellLight.h; sourceTree = "<group>"; };
 		B3DB3E591F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteTemplateCollectionViewCellLight.m; sourceTree = "<group>"; };
+		B3DB3E5B1F306BD000AA408F /* BackupContractOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupContractOutput.h; sourceTree = "<group>"; };
+		B3DB3E5C1F306BED00AA408F /* BackupContractOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupContractOutputDelegate.h; sourceTree = "<group>"; };
+		B3DB3E5D1F306CEA00AA408F /* BackupContractsViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupContractsViewControllerDark.h; sourceTree = "<group>"; };
+		B3DB3E5E1F306CEA00AA408F /* BackupContractsViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupContractsViewControllerDark.m; sourceTree = "<group>"; };
+		B3DB3E601F306CFB00AA408F /* BackupContractsViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupContractsViewControllerLight.h; sourceTree = "<group>"; };
+		B3DB3E611F306CFB00AA408F /* BackupContractsViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupContractsViewControllerLight.m; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -3202,8 +3210,14 @@
 		E7B758501EEFDB02004AF200 /* BackupContacts */ = {
 			isa = PBXGroup;
 			children = (
+				B3DB3E5B1F306BD000AA408F /* BackupContractOutput.h */,
+				B3DB3E5C1F306BED00AA408F /* BackupContractOutputDelegate.h */,
 				E7B758511EEFDB32004AF200 /* BackupContractsViewController.h */,
 				E7B758521EEFDB32004AF200 /* BackupContractsViewController.m */,
+				B3DB3E5D1F306CEA00AA408F /* BackupContractsViewControllerDark.h */,
+				B3DB3E5E1F306CEA00AA408F /* BackupContractsViewControllerDark.m */,
+				B3DB3E601F306CFB00AA408F /* BackupContractsViewControllerLight.h */,
+				B3DB3E611F306CFB00AA408F /* BackupContractsViewControllerLight.m */,
 			);
 			name = BackupContacts;
 			sourceTree = "<group>";
@@ -4214,6 +4228,7 @@
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				E73D36FB1ECF161E009173BD /* NubersTokenTableViewCell.m in Sources */,
 				B36EBC421F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m in Sources */,
+				B3DB3E621F306CFB00AA408F /* BackupContractsViewControllerLight.m in Sources */,
 				E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */,
 				E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */,
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
@@ -4230,6 +4245,7 @@
 				E745BA241F21FC3600B2E216 /* NewsViewControllerLight.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
 				B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */,
+				B3DB3E5F1F306CEA00AA408F /* BackupContractsViewControllerDark.m in Sources */,
 				B35DF6261F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m in Sources */,
 				E73CF6D11EE2D6FC0044DF78 /* PopUpContent.m in Sources */,
 				E760F4941F0F6DA80056D042 /* BalancePageViewControllerLight.m in Sources */,

@@ -309,7 +309,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-3f-mRF">
-                                                <rect key="frame" x="148.5" y="11" width="79" height="23"/>
+                                                <rect key="frame" x="149" y="11" width="79" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -457,7 +457,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zji-17-BjN" id="YBx-6c-J1I">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAX-nO-LVb">
@@ -776,7 +776,8 @@
                         <outlet property="residueValueLabel" destination="7dj-XR-IBh" id="M6d-q2-bh8"/>
                         <outlet property="scrollView" destination="SqX-5v-WoU" id="udp-jy-1aZ"/>
                         <outlet property="sendButton" destination="6EO-ut-k6R" id="nz9-qg-Ihq"/>
-                        <outlet property="sendButtonHeightConstraint" destination="kax-vZ-6bb" id="3BY-cd-x3C"/>
+                        <outlet property="sendButtonBottomConstraint" destination="kax-vZ-6bb" id="YC1-3X-hkn"/>
+                        <outlet property="sendButtonHeightConstraint" destination="MYi-bz-do2" id="jxx-od-opS"/>
                         <outlet property="sendButtonTopConstraint" destination="L40-FU-PvP" id="PE9-xQ-taV"/>
                         <outlet property="tokenButton" destination="tEl-OR-Wme" id="bKb-Nl-IHt"/>
                         <outlet property="tokenDisclousureImage" destination="qOP-I7-7YX" id="yD8-1u-HdN"/>
@@ -882,7 +883,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcm-xc-4RN">
-                                                    <rect key="frame" x="20" y="20.5" width="152.5" height="14"/>
+                                                    <rect key="frame" x="20" y="21" width="152.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

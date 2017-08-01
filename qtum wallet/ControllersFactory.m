@@ -37,7 +37,6 @@
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
-#import "BackupContractsViewController.h"
 #import "EnableFingerprintViewController.h"
 #import "QStoreViewController.h"
 #import "QStoreListViewController.h"
@@ -76,6 +75,7 @@
 #import "PublishedContractListOutput.h"
 #import "TemplatesListOutput.h"
 #import "RestoreContractsOutput.h"
+#import "BackupContractOutput.h"
 
 @implementation ControllersFactory
 
@@ -122,7 +122,6 @@
         return [TabBarControllerLight new];
     }
 }
-
 
 -(UINavigationController*)walletFlowTab {
     
@@ -178,8 +177,6 @@
     NSObject <ChangePinOutput>* output = (NSObject <ChangePinOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"PinViewController"];
     return output;
 }
-
-
 
 -(RepeateViewController*)createRepeatePinController{
     RepeateViewController* controller = (RepeateViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RepeateViewController"];
@@ -327,9 +324,10 @@
     return controller;
 }
 
--(BackupContractsViewController*)createBackupContractViewController{
-    BackupContractsViewController* controller = (BackupContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContracts"];
-    return controller;
+-(NSObject <BackupContractOutput>*)createBackupContractViewController {
+    
+    NSObject <BackupContractOutput>* outbut = (NSObject <BackupContractOutput>*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContractsViewController"];
+    return outbut;
 }
 
 -(EnableFingerprintViewController*)createEnableFingerprintViewController{
