@@ -227,6 +227,8 @@
 		B3DB3E5A1F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E591F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m */; };
 		B3DB3E5F1F306CEA00AA408F /* BackupContractsViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E5E1F306CEA00AA408F /* BackupContractsViewControllerDark.m */; };
 		B3DB3E621F306CFB00AA408F /* BackupContractsViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E611F306CFB00AA408F /* BackupContractsViewControllerLight.m */; };
+		B3DC9CE21F30C7EE006B2E07 /* TokenFunctionDetailViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9CE11F30C7EE006B2E07 /* TokenFunctionDetailViewControllerDark.m */; };
+		B3DC9CE51F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9CE41F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -1002,6 +1004,12 @@
 		B3DB3E5E1F306CEA00AA408F /* BackupContractsViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupContractsViewControllerDark.m; sourceTree = "<group>"; };
 		B3DB3E601F306CFB00AA408F /* BackupContractsViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupContractsViewControllerLight.h; sourceTree = "<group>"; };
 		B3DB3E611F306CFB00AA408F /* BackupContractsViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupContractsViewControllerLight.m; sourceTree = "<group>"; };
+		B3DC9CDE1F30C7B5006B2E07 /* ContractFunctionDetailOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractFunctionDetailOutput.h; sourceTree = "<group>"; };
+		B3DC9CDF1F30C7C3006B2E07 /* ContractFunctionDetailOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractFunctionDetailOutputDelegate.h; sourceTree = "<group>"; };
+		B3DC9CE01F30C7EE006B2E07 /* TokenFunctionDetailViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenFunctionDetailViewControllerDark.h; sourceTree = "<group>"; };
+		B3DC9CE11F30C7EE006B2E07 /* TokenFunctionDetailViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenFunctionDetailViewControllerDark.m; sourceTree = "<group>"; };
+		B3DC9CE31F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenFunctionDetailViewControllerLight.h; sourceTree = "<group>"; };
+		B3DC9CE41F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenFunctionDetailViewControllerLight.m; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -2424,6 +2432,21 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		B3DC9CDD1F30C777006B2E07 /* Contract Function Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B3DC9CDF1F30C7C3006B2E07 /* ContractFunctionDetailOutputDelegate.h */,
+				B3DC9CDE1F30C7B5006B2E07 /* ContractFunctionDetailOutput.h */,
+				B3827DE81ED2C74900E500DE /* TokenFunctionDetailViewController.h */,
+				B3827DE91ED2C74900E500DE /* TokenFunctionDetailViewController.m */,
+				B3DC9CE01F30C7EE006B2E07 /* TokenFunctionDetailViewControllerDark.h */,
+				B3DC9CE11F30C7EE006B2E07 /* TokenFunctionDetailViewControllerDark.m */,
+				B3DC9CE31F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.h */,
+				B3DC9CE41F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.m */,
+			);
+			name = "Contract Function Detail";
+			sourceTree = "<group>";
+		};
 		B3E159261ED6E39F00D70A87 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2640,8 +2663,7 @@
 				B3CBDF251F2B3DE800C80D4E /* Published Contracts */,
 				B3827DE51ECF673900E500DE /* TokenFunctionViewController.h */,
 				B3827DE61ECF673900E500DE /* TokenFunctionViewController.m */,
-				B3827DE81ED2C74900E500DE /* TokenFunctionDetailViewController.h */,
-				B3827DE91ED2C74900E500DE /* TokenFunctionDetailViewController.m */,
+				B3DC9CDD1F30C777006B2E07 /* Contract Function Detail */,
 			);
 			name = Contract;
 			sourceTree = "<group>";
@@ -4269,6 +4291,7 @@
 				E70353191F03C30E004ECCC9 /* QStoreContractViewController.m in Sources */,
 				E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
+				B3DC9CE21F30C7EE006B2E07 /* TokenFunctionDetailViewControllerDark.m in Sources */,
 				E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */,
 				B32B32DD1ECCC2C70081260A /* ContractFileManager.m in Sources */,
 				B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */,
@@ -4313,6 +4336,7 @@
 				E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */,
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
 				E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */,
+				B3DC9CE51F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.m in Sources */,
 				B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */,
 				E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */,
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,

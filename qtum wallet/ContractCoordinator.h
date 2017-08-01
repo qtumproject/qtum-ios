@@ -23,9 +23,6 @@
 -(void)didSelectQStoreContractDetails;
 -(void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token;
 -(void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
--(void)didCallFunctionWithItem:(AbiinterfaceItem*) item
-                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Contract*) token;
 
 - (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;

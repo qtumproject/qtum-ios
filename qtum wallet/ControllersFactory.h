@@ -70,6 +70,7 @@
 @protocol BackupContractOutput;
 @protocol ConstructorAbiOutput;
 @protocol ContractCreationEndOutput;
+@protocol ContractFunctionDetailOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -102,7 +103,6 @@
 - (ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 - (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
 - (TokenFunctionViewController*)createTokenFunctionViewController;
-- (TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
 - (EnableFingerprintViewController*)createEnableFingerprintViewController;
 
 - (NSObject <ContractCreationEndOutput> *)createTokenDetailsViewController;
@@ -121,6 +121,7 @@
 - (NSObject <RestoreContractsOutput>*)createRestoreContractViewController;
 - (NSObject <BackupContractOutput>*)createBackupContractViewController;
 - (NSObject <ConstructorAbiOutput> *)createConstructorFromAbiViewController;
+- (NSObject <ContractFunctionDetailOutput>*)createTokenFunctionDetailViewController;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;

@@ -52,14 +52,15 @@ PublishedContractListOutputDelegate,
 TemplatesListOutputDelegate,
 RestoreContractsOutputDelegate,
 BackupContractOutputDelegate,
-ConstructorAbiOutputDelegate>
+ConstructorAbiOutputDelegate,
+ContractFunctionDetailOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
 @property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
 @property (strong,nonatomic) TemplateModel* templateModel;
 
-@property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
+@property (weak, nonatomic) NSObject <ContractFunctionDetailOutput>* functionDetailController;
 @property (weak, nonatomic) CreateTokenFinishViewController *createFinishViewController;
 @property (weak, nonatomic) NSObject <SmartContractMenuOutput>* smartContractMenuOutput;
 
@@ -297,18 +298,42 @@ ConstructorAbiOutputDelegate>
 
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token fromQStore:(BOOL)fromQStore {
     
-    TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
-    controller.function = item;
-    controller.delegate = self;
-    controller.token = token;
-    controller.fromQStore = fromQStore;
-    self.functionDetailController = controller;
-    [self.navigationController pushViewController:controller animated:true];
+    NSObject <ContractFunctionDetailOutput>* output = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
+    output.function = item;
+    output.delegate = self;
+    output.token = token;
+    output.fromQStore = fromQStore;
+    self.functionDetailController = output;
+    [self.navigationController pushViewController:[output toPresent] animated:true];
 }
 
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
     
 }
+
+- (void)didSelectQStoreCategories {
+    [self showQStoreList:QStoreCategories categoryTitle:nil];
+}
+
+- (void)didSelectQStoreCategory {
+    [self showQStoreList:QStoreContracts categoryTitle:@"Some category"];
+}
+
+- (void)didSelectQStoreContract {
+    [self showQStoreContract];
+}
+
+- (void)didSelectQStoreContractDetails {
+    [self didSelectFunctionIndexPath:nil withItem:nil andToken:nil fromQStore:YES];
+}
+
+-(void)didPressedQuit {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+
+
+#pragma mark - ContractFunctionDetailOutputDelegate
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
@@ -334,25 +359,6 @@ ConstructorAbiOutputDelegate>
     }];
 }
 
-- (void)didSelectQStoreCategories {
-    [self showQStoreList:QStoreCategories categoryTitle:nil];
-}
-
-- (void)didSelectQStoreCategory {
-    [self showQStoreList:QStoreContracts categoryTitle:@"Some category"];
-}
-
-- (void)didSelectQStoreContract {
-    [self showQStoreContract];
-}
-
-- (void)didSelectQStoreContractDetails {
-    [self didSelectFunctionIndexPath:nil withItem:nil andToken:nil fromQStore:YES];
-}
-
--(void)didPressedQuit {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
 
 #pragma mark - PublishedContractListOutputDelegate, LibraryOutputDelegate
 

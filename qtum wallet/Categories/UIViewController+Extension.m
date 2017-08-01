@@ -60,7 +60,8 @@
         [identifire isEqualToString:@"RestoreContractsViewController"] ||
         [identifire isEqualToString:@"BackupContractsViewController"] ||
         [identifire isEqualToString:@"ConstructorFromAbiViewController"] ||
-        [identifire isEqualToString:@"CreateTokenFinishViewController"]) {
+        [identifire isEqualToString:@"CreateTokenFinishViewController"] ||
+        [identifire isEqualToString:@"TokenFunctionDetailViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

@@ -22,6 +22,8 @@
 
 @implementation TokenFunctionDetailViewController
 
+@synthesize originInsets, scrollView, delegate, function, fromQStore, token;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configTextFields];

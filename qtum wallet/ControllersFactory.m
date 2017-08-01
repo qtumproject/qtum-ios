@@ -253,8 +253,8 @@
     return controller;
 }
 
--(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController{
-    TokenFunctionDetailViewController* controller = (TokenFunctionDetailViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionDetailViewController"];
+-(NSObject <ContractFunctionDetailOutput>*)createTokenFunctionDetailViewController{
+    NSObject <ContractFunctionDetailOutput>* controller = (NSObject <ContractFunctionDetailOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionDetailViewController"];
     return controller;
 }
 
