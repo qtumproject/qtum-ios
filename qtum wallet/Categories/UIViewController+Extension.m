@@ -58,7 +58,9 @@
         [identifire isEqualToString:@"LoaderPopUpViewController"] ||
         [identifire isEqualToString:@"RestoreContractsPopUpViewController"] ||
         [identifire isEqualToString:@"RestoreContractsViewController"] ||
-        [identifire isEqualToString:@"BackupContractsViewController"]) {
+        [identifire isEqualToString:@"BackupContractsViewController"] ||
+        [identifire isEqualToString:@"ConstructorFromAbiViewController"] ||
+        [identifire isEqualToString:@"CreateTokenFinishViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

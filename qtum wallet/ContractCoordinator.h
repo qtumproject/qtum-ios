@@ -16,9 +16,6 @@
 
 @required
 -(void)createStepOneCancelDidPressed;
--(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName;
--(void)finishStepFinishDidPressed;
--(void)finishStepBackDidPressed;
 -(void)didPressedBack;
 -(void)didSelectQStoreCategories;
 -(void)didSelectQStoreCategory;
@@ -32,7 +29,6 @@
 
 - (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;
-- (void)didPressedQuit;
 
 
 @end

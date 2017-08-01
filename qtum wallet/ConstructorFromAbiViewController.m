@@ -1,30 +1,27 @@
 //
-//  CustomAbiInterphaseViewController.m
+//  ConstructorFromAbiViewController.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 17.05.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "CustomAbiInterphaseViewController.h"
+#import "ConstructorFromAbiViewController.h"
 #import "TextFieldParameterView.h"
 #import "AbiinterfaceItem.h"
 #import "ContractCoordinator.h"
 #import "ResultTokenInputsModel.h"
-#import "AbiTextFieldWithLine.h"
 
-@interface CustomAbiInterphaseViewController () <AbiTextFieldWithLineDelegate>
+@interface ConstructorFromAbiViewController () 
 
 @property (assign, nonatomic) NSInteger activeTextFieldTag;
 @property (assign, nonatomic) BOOL isTextFieldsFilled;
-@property (weak, nonatomic) UIButton* nextButton;
-@property (weak, nonatomic) UITextField* localContractNameTextField;
 
 @end
 
-static NSInteger contractNameTraling = 50;
+@implementation ConstructorFromAbiViewController
 
-@implementation CustomAbiInterphaseViewController
+@synthesize originInsets, scrollView, delegate, formModel, contractTitle;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +31,8 @@ static NSInteger contractNameTraling = 50;
 #pragma mark - Configuration
 
 - (void)confixHeaderFields {
+    
+    NSInteger contractNameTraling = 50;
     
     UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic-token_not_empty"]];
     image.frame = CGRectMake(10.0f, 22.0f, image.frame.size.width, image.frame.size.height);
@@ -179,7 +178,7 @@ static NSInteger contractNameTraling = 50;
 #pragma mark - Actions
 
 - (IBAction)didPressedCancelAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate didPressedBack];
 }
 
 - (IBAction)didPressedNextOnTextField:(id)sender {
@@ -196,7 +195,6 @@ static NSInteger contractNameTraling = 50;
         
         [self didVoidTapAction:nil];
     }
-    
 }
 
 - (IBAction)didPressedNextAction:(id)sender {

@@ -1,18 +1,18 @@
 //
-//  AbiTextFieldWithLine.m
+//  AbiTextFieldWithLineLight.m
 //  qtum wallet
 //
-//  Created by Vladimir Lebedevich on 17.05.17.
+//  Created by Никита Федоренко on 01.08.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "AbiTextFieldWithLine.h"
+#import "AbiTextFieldWithLineLight.h"
 
-@interface AbiTextFieldWithLine () <UITextFieldDelegate>
+@interface AbiTextFieldWithLineLight () <UITextFieldDelegate>
 
 @end
 
-@implementation AbiTextFieldWithLine
+@implementation AbiTextFieldWithLineLight
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     
@@ -34,9 +34,6 @@
 
 - (void)setupWithItem:(AbiinterfaceInput*) item {
     
-    [self setTintColor:customBlueColor()];
-    self.textColor = customBlueColor();
-    self.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
     self.currentHeight = 1;
     self.delegate = self;
     if (item) {
@@ -47,7 +44,7 @@
 - (void)setItem:(AbiinterfaceInput *)item {
     
     self.keyboardType = (item.type == UInt256Type || item.type == UInt8Type) ? UIKeyboardTypeDecimalPad : UIKeyboardTypeDefault;
-    self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:item.name attributes:@{NSForegroundColorAttributeName: customBlueColor()}];
+    self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:item.name];
     _item = item;
 }
 
@@ -58,7 +55,7 @@
         NSRange range = [string rangeOfCharacterFromSet:cset];
         
         if (range.location != NSNotFound || (self.item.type == UInt8Type && [[textField.text stringByAppendingString:string] integerValue] > 255)) {
-                return NO;
+            return NO;
         }
     }
     return YES;

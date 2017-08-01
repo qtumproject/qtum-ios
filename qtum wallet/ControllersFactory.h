@@ -17,7 +17,7 @@
 @class AuthNavigationController;
 @class ExportWalletBrandKeyViewController;
 @class SubscribeTokenViewController;
-@class CustomAbiInterphaseViewController;
+@class ConstructorFromAbiViewController;
 @class CreateTokenFinishViewController;
 @class TokenFunctionViewController;
 @class TokenFunctionDetailViewController;
@@ -68,6 +68,8 @@
 @protocol TemplatesListOutput;
 @protocol RestoreContractsOutput;
 @protocol BackupContractOutput;
+@protocol ConstructorAbiOutput;
+@protocol ContractCreationEndOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -95,9 +97,7 @@
 - (AuthNavigationController*)createAuthNavigationController;
 - (ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
 - (SubscribeTokenViewController*)createSubscribeTokenViewController;
-- (CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 - (CreateTokenFinishViewController*)createCreateTokenFinishViewController;
-- (NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
 - (AddNewTokensViewController*)createAddNewTokensViewController;
 - (ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 - (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
@@ -105,6 +105,7 @@
 - (TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
 - (EnableFingerprintViewController*)createEnableFingerprintViewController;
 
+- (NSObject <ContractCreationEndOutput> *)createTokenDetailsViewController;
 - (NSObject <TemplatesListOutput> *)createTemplateTokenViewController;
 - (NSObject <PublishedContractListOutput>*)createSmartContractsListViewController;
 - (NSObject <WatchContractOutput>*)createWatchContractViewController;
@@ -119,6 +120,7 @@
 - (NSObject <LibraryOutput> *)createLibraryViewController;
 - (NSObject <RestoreContractsOutput>*)createRestoreContractViewController;
 - (NSObject <BackupContractOutput>*)createBackupContractViewController;
+- (NSObject <ConstructorAbiOutput> *)createConstructorFromAbiViewController;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;

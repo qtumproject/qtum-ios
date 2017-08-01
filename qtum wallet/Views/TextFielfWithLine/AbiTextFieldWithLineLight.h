@@ -1,16 +1,16 @@
 //
-//  AbiTextFieldWithLine.h
+//  AbiTextFieldWithLineLight.h
 //  qtum wallet
 //
-//  Created by Vladimir Lebedevich on 17.05.17.
+//  Created by Никита Федоренко on 01.08.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "TextFieldWithLine.h"
+#import "TextFieldWithLineLightSend.h"
 #import "AbiinterfaceInput.h"
 #import "AbiTextFieldWithLineDelegate.h"
 
-@interface AbiTextFieldWithLine : TextFieldWithLine
+@interface AbiTextFieldWithLineLight : TextFieldWithLineLightSend
 
 -(instancetype)initWithFrame:(CGRect)frame andInterfaceItem:(AbiinterfaceInput*) item;
 

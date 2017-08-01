@@ -23,7 +23,7 @@
 #import "SubscribeTokenViewController.h"
 #import "HistoryViewController.h"
 #import "WalletNavigationController.h"
-#import "CustomAbiInterphaseViewController.h"
+#import "ConstructorFromAbiViewController.h"
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
 #import "TokenFunctionViewController.h"
@@ -76,6 +76,7 @@
 #import "TemplatesListOutput.h"
 #import "RestoreContractsOutput.h"
 #import "BackupContractOutput.h"
+#import "ConstructorAbiOutput.h"
 
 @implementation ControllersFactory
 
@@ -224,17 +225,20 @@
     return controller;
 }
 
--(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController{
-    CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CustomAbiInterphaseViewController"];
-    return controller;
+-(NSObject<ConstructorAbiOutput> *)createConstructorFromAbiViewController {
+    
+    NSObject<ConstructorAbiOutput> *output = (NSObject<ConstructorAbiOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ConstructorFromAbiViewController"];
+    return output;
 }
 
--(CreateTokenFinishViewController*)createCreateTokenFinishViewController{
-    CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
-    return controller;
+-(NSObject <ContractCreationEndOutput> *)createCreateTokenFinishViewController {
+    
+    NSObject <ContractCreationEndOutput> *output = (NSObject <ContractCreationEndOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
+    return output;
 }
 
 -(NSObject <TokenDetailOutput> *)createTokenDetailsViewController {
+    
     NSObject <TokenDetailOutput> * controller = (NSObject <TokenDetailOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
     return controller;
 }

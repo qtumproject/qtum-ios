@@ -12,7 +12,7 @@
 #import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
 #import "ContractManager.h"
-#import "CustomAbiInterphaseViewController.h"
+#import "ConstructorFromAbiViewController.h"
 #import "ContractInterfaceManager.h"
 #import "CreateTokenFinishViewController.h"
 #import "TemplateTokenViewController.h"
@@ -50,7 +50,9 @@ WatchContractOutputDelegate,
 SmartContractMenuOutputDelegate,
 PublishedContractListOutputDelegate,
 TemplatesListOutputDelegate,
-RestoreContractsOutputDelegate>
+RestoreContractsOutputDelegate,
+BackupContractOutputDelegate,
+ConstructorAbiOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
@@ -186,6 +188,7 @@ RestoreContractsOutputDelegate>
 }
 
 -(void)showBackupContract {
+    
     BackupContractsViewController* controller = (BackupContractsViewController*)[[ControllersFactory sharedInstance] createBackupContractViewController];
     controller.delegate = self;
     
@@ -194,11 +197,11 @@ RestoreContractsOutputDelegate>
 
 -(void)showStepWithFieldsAndTemplate:(NSString*)template{
     
-    CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[[ControllersFactory sharedInstance] createCustomAbiInterphaseViewController];
-    controller.delegate = self;
-    controller.contractTitle = self.templateModel.templateName;
-    controller.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:self.templateModel.path];
-    [self.navigationController pushViewController:controller animated:YES];
+    NSObject <ConstructorAbiOutput>* output = [[ControllersFactory sharedInstance] createConstructorFromAbiViewController];
+    output.delegate = self;
+    output.contractTitle = self.templateModel.templateName;
+    output.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:self.templateModel.path];
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
 -(void)showFinishStepWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs {
@@ -256,12 +259,6 @@ RestoreContractsOutputDelegate>
 
 -(void)createStepOneCancelDidPressed{
     [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
--(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName {
-    
-    self.localContractName = contractName;
-    [self showFinishStepWithInputs:inputs];
 }
 
 -(void)finishStepBackDidPressed {
@@ -376,6 +373,13 @@ RestoreContractsOutputDelegate>
     [self showStepWithFieldsAndTemplate:templateModel.path];
 }
 
+#pragma mark - ConstructorAbiOutputDelegate
+
+-(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName {
+    
+    self.localContractName = contractName;
+    [self showFinishStepWithInputs:inputs];
+}
 
 #pragma mark - WatchContractOutputDelegate
 
@@ -420,7 +424,8 @@ RestoreContractsOutputDelegate>
     [self showBackupContract];
 }
 
-#pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate
+
+#pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate, BackupContractOutputDelegate
 
 - (void)didBackPressed {
     [self.navigationController popViewControllerAnimated:YES];

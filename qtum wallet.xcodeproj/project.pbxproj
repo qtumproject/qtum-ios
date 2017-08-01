@@ -16,7 +16,15 @@
 		B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */; };
 		B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */; };
 		B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */; };
+		B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F2E1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m */; };
+		B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */; };
+		B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */; };
 		B30BAE2E1E9E3AA600CA795F /* ContractManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BAE2D1E9E3AA600CA795F /* ContractManager.m */; };
+		B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E551F3090A60095E3DF /* AbiTextFieldWithLineLight.m */; };
+		B3141E5A1F3099110095E3DF /* ContractNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E591F3099110095E3DF /* ContractNameTextField.m */; };
+		B3141E5D1F3099DA0095E3DF /* ContractNameTextFieldLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3141E5C1F3099DA0095E3DF /* ContractNameTextFieldLight.xib */; };
+		B3141E631F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E621F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m */; };
+		B3141E661F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E651F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m */; };
 		B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31CF71D1E124A25000BCF41 /* HistoryViewController.m */; };
 		B3210D141E00052900365FB6 /* GradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D131E00052900365FB6 /* GradientLayer.m */; };
 		B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = B3210D191E00142100365FB6 /* ViewWithGradientPoints.m */; };
@@ -42,7 +50,7 @@
 		B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32D61ECCC2AC0081260A /* AbiInterfaceOutput.m */; };
 		B32B32DD1ECCC2C70081260A /* ContractFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32DC1ECCC2C70081260A /* ContractFileManager.m */; };
 		B32B32E21ECCC2D50081260A /* CreateTokenFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32DF1ECCC2D50081260A /* CreateTokenFinishViewController.m */; };
-		B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E11ECCC2D50081260A /* CustomAbiInterphaseViewController.m */; };
+		B32B32E31ECCC2D50081260A /* ConstructorFromAbiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E11ECCC2D50081260A /* ConstructorFromAbiViewController.m */; };
 		B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E51ECCC2FF0081260A /* AbiTextFieldWithLine.m */; };
 		B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32E81ECCC4A20081260A /* FinishInputCell.m */; };
 		B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32EB1ECD7B240081260A /* ContractArgumentsInterpretator.m */; };
@@ -554,8 +562,27 @@
 		B3054E331F0BBB29001B1F63 /* NewPaymentOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutputDelegate.h; sourceTree = "<group>"; };
 		B3054E351F0BC037001B1F63 /* ChoseTokenPaymentOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentOutput.h; sourceTree = "<group>"; };
 		B3054E361F0BC045001B1F63 /* ChoseTokenPaymentOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentOutputDelegate.h; sourceTree = "<group>"; };
+		B3076F2B1F307D4900FB7D5A /* ConstructorAbiOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutput.h; sourceTree = "<group>"; };
+		B3076F2C1F307D7200FB7D5A /* ConstructorAbiOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutputDelegate.h; sourceTree = "<group>"; };
+		B3076F2D1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorFromAbiViewControllerDark.h; sourceTree = "<group>"; };
+		B3076F2E1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConstructorFromAbiViewControllerDark.m; sourceTree = "<group>"; };
+		B3076F301F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorFromAbiViewControllerLight.h; sourceTree = "<group>"; };
+		B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConstructorFromAbiViewControllerLight.m; sourceTree = "<group>"; };
+		B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldViewsLight.xib; sourceTree = "<group>"; };
 		B30BAE2C1E9E3AA600CA795F /* ContractManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractManager.h; sourceTree = "<group>"; };
 		B30BAE2D1E9E3AA600CA795F /* ContractManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContractManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B3141E541F3090A60095E3DF /* AbiTextFieldWithLineLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLineLight.h; sourceTree = "<group>"; };
+		B3141E551F3090A60095E3DF /* AbiTextFieldWithLineLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiTextFieldWithLineLight.m; sourceTree = "<group>"; };
+		B3141E571F3090CB0095E3DF /* AbiTextFieldWithLineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLineDelegate.h; sourceTree = "<group>"; };
+		B3141E581F3099110095E3DF /* ContractNameTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractNameTextField.h; sourceTree = "<group>"; };
+		B3141E591F3099110095E3DF /* ContractNameTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractNameTextField.m; sourceTree = "<group>"; };
+		B3141E5C1F3099DA0095E3DF /* ContractNameTextFieldLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContractNameTextFieldLight.xib; sourceTree = "<group>"; };
+		B3141E5F1F30AC790095E3DF /* ContractCreationEndOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractCreationEndOutput.h; sourceTree = "<group>"; };
+		B3141E601F30AC850095E3DF /* ContractCreationEndOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractCreationEndOutputDelegate.h; sourceTree = "<group>"; };
+		B3141E611F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenFinishViewControllerDark.h; sourceTree = "<group>"; };
+		B3141E621F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenFinishViewControllerDark.m; sourceTree = "<group>"; };
+		B3141E641F30AD740095E3DF /* CreateTokenFinishViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenFinishViewControllerLight.h; sourceTree = "<group>"; };
+		B3141E651F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenFinishViewControllerLight.m; sourceTree = "<group>"; };
 		B31CF71C1E124A25000BCF41 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		B31CF71D1E124A25000BCF41 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		B3210D121E00052900365FB6 /* GradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientLayer.h; sourceTree = "<group>"; };
@@ -603,8 +630,8 @@
 		B32B32DC1ECCC2C70081260A /* ContractFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractFileManager.m; sourceTree = "<group>"; };
 		B32B32DE1ECCC2D50081260A /* CreateTokenFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenFinishViewController.h; sourceTree = "<group>"; };
 		B32B32DF1ECCC2D50081260A /* CreateTokenFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenFinishViewController.m; sourceTree = "<group>"; };
-		B32B32E01ECCC2D50081260A /* CustomAbiInterphaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAbiInterphaseViewController.h; sourceTree = "<group>"; };
-		B32B32E11ECCC2D50081260A /* CustomAbiInterphaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAbiInterphaseViewController.m; sourceTree = "<group>"; };
+		B32B32E01ECCC2D50081260A /* ConstructorFromAbiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorFromAbiViewController.h; sourceTree = "<group>"; };
+		B32B32E11ECCC2D50081260A /* ConstructorFromAbiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConstructorFromAbiViewController.m; sourceTree = "<group>"; };
 		B32B32E41ECCC2FF0081260A /* AbiTextFieldWithLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLine.h; sourceTree = "<group>"; };
 		B32B32E51ECCC2FF0081260A /* AbiTextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiTextFieldWithLine.m; sourceTree = "<group>"; };
 		B32B32E71ECCC4A20081260A /* FinishInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishInputCell.h; sourceTree = "<group>"; };
@@ -1571,6 +1598,46 @@
 				B3EE8F471F13708500131823 /* ChoseTokenPaymentViewControllerDark.m */,
 			);
 			name = ChoseTokenPaymentOutput;
+			sourceTree = "<group>";
+		};
+		B3076F2A1F307D2500FB7D5A /* Constructor */ = {
+			isa = PBXGroup;
+			children = (
+				B3076F2B1F307D4900FB7D5A /* ConstructorAbiOutput.h */,
+				B3076F2C1F307D7200FB7D5A /* ConstructorAbiOutputDelegate.h */,
+				B32B32E01ECCC2D50081260A /* ConstructorFromAbiViewController.h */,
+				B32B32E11ECCC2D50081260A /* ConstructorFromAbiViewController.m */,
+				B3076F2D1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.h */,
+				B3076F2E1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m */,
+				B3076F301F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.h */,
+				B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */,
+			);
+			name = Constructor;
+			sourceTree = "<group>";
+		};
+		B3141E5B1F3099180095E3DF /* ContractNameTextFiedl */ = {
+			isa = PBXGroup;
+			children = (
+				B3141E581F3099110095E3DF /* ContractNameTextField.h */,
+				B3141E591F3099110095E3DF /* ContractNameTextField.m */,
+				B3141E5C1F3099DA0095E3DF /* ContractNameTextFieldLight.xib */,
+			);
+			name = ContractNameTextFiedl;
+			sourceTree = "<group>";
+		};
+		B3141E5E1F30AC4B0095E3DF /* Contract Creation End */ = {
+			isa = PBXGroup;
+			children = (
+				B32B32DE1ECCC2D50081260A /* CreateTokenFinishViewController.h */,
+				B32B32DF1ECCC2D50081260A /* CreateTokenFinishViewController.m */,
+				B3141E5F1F30AC790095E3DF /* ContractCreationEndOutput.h */,
+				B3141E601F30AC850095E3DF /* ContractCreationEndOutputDelegate.h */,
+				B3141E611F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.h */,
+				B3141E621F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m */,
+				B3141E641F30AD740095E3DF /* CreateTokenFinishViewControllerLight.h */,
+				B3141E651F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m */,
+			);
+			name = "Contract Creation End";
 			sourceTree = "<group>";
 		};
 		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
@@ -2566,10 +2633,8 @@
 				B3F06CF61E69879D006341F7 /* ContractCoordinator.m */,
 				B385B5A01E6D640E003BB96C /* CreateTokenNavigationController.h */,
 				B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */,
-				B32B32DE1ECCC2D50081260A /* CreateTokenFinishViewController.h */,
-				B32B32DF1ECCC2D50081260A /* CreateTokenFinishViewController.m */,
-				B32B32E01ECCC2D50081260A /* CustomAbiInterphaseViewController.h */,
-				B32B32E11ECCC2D50081260A /* CustomAbiInterphaseViewController.m */,
+				B3141E5E1F30AC4B0095E3DF /* Contract Creation End */,
+				B3076F2A1F307D2500FB7D5A /* Constructor */,
 				B3CBDF2E1F2B42D600C80D4E /* Templates List  */,
 				B3CBDF141F2B11B700C80D4E /* Smart Contract Menu */,
 				B3CBDF251F2B3DE800C80D4E /* Published Contracts */,
@@ -2747,6 +2812,7 @@
 				E72631231EEAA806005AED8F /* FieldsViews.xib */,
 				E72631281EEAAC5B005AED8F /* TextFieldParameterView.h */,
 				E72631291EEAAC5B005AED8F /* TextFieldParameterView.m */,
+				B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2940,6 +3006,9 @@
 				B32B32E51ECCC2FF0081260A /* AbiTextFieldWithLine.m */,
 				B32BC4AF1F28D5BC00C2417C /* TextFieldWithLineLightSend.h */,
 				B32BC4B01F28D5BC00C2417C /* TextFieldWithLineLightSend.m */,
+				B3141E541F3090A60095E3DF /* AbiTextFieldWithLineLight.h */,
+				B3141E551F3090A60095E3DF /* AbiTextFieldWithLineLight.m */,
+				B3141E571F3090CB0095E3DF /* AbiTextFieldWithLineDelegate.h */,
 			);
 			path = TextFielfWithLine;
 			sourceTree = "<group>";
@@ -3593,6 +3662,7 @@
 				E7CE63611F027EC200C147B9 /* CustomSearchBar.m */,
 				B35DF6441F263CD500316953 /* LightBlueGrayBorderView.h */,
 				B35DF6451F263CD500316953 /* LightBlueGrayBorderView.m */,
+				B3141E5B1F3099180095E3DF /* ContractNameTextFiedl */,
 			);
 			name = "Shared Views";
 			path = Views;
@@ -3935,9 +4005,11 @@
 				E73D9C851ECB0D0D00A09CFE /* NoInternetConnectionPopUp.storyboard in Resources */,
 				B3F76A941EDDB81600108DE9 /* Contracts in Resources */,
 				E71271941EE9AC5B00A130A0 /* LoaderPopUp.storyboard in Resources */,
+				B3141E5D1F3099DA0095E3DF /* ContractNameTextFieldLight.xib in Resources */,
 				E75220461F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib in Resources */,
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
 				B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */,
+				B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */,
 				B3210D291E00328A00365FB6 /* SFUIDisplay-Regular.otf in Resources */,
 				E70CFD501F1F66B200230C81 /* TokenDetailsViews.xib in Resources */,
 				B32EEC751EB3548600512FED /* Wallet.storyboard in Resources */,
@@ -4026,7 +4098,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4119,6 +4191,7 @@
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
 				B3DB3E431F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m in Sources */,
+				B3141E631F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m in Sources */,
 				E748579C1F13C02600DCF9A6 /* LanguageTableViewCellLight.m in Sources */,
 				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
@@ -4159,6 +4232,7 @@
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
 				B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */,
+				B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
 				B3CBDF2D1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m in Sources */,
@@ -4174,10 +4248,11 @@
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B36505921F14B3A900521603 /* CreatePinViewControllerDark.m in Sources */,
 				B36EBC2D1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m in Sources */,
-				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
+				B32B32E31ECCC2D50081260A /* ConstructorFromAbiViewController.m in Sources */,
 				B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */,
 				E7DE59901F0E8562006E0E1B /* PageControlItemDark.m in Sources */,
 				E70353121F03AC59004ECCC9 /* QStoreListTableSource.m in Sources */,
+				B3141E5A1F3099110095E3DF /* ContractNameTextField.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
 				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,
 				B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */,
@@ -4209,6 +4284,7 @@
 				B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
+				B3141E661F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				B3CBDF201F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m in Sources */,
@@ -4286,6 +4362,7 @@
 				E74003C21F1E2AC7002CC587 /* QRCodeItem.m in Sources */,
 				B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */,
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
+				B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */,
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */,
@@ -4352,6 +4429,7 @@
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,
 				E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */,
 				B35DF6461F263CD500316953 /* LightBlueGrayBorderView.m in Sources */,
+				B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */,
 				E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */,
 				E798463A1F0D2899002A516A /* WalletTableSourceDark.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,

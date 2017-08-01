@@ -74,21 +74,6 @@
     self.originInsets = UIEdgeInsetsMake(0, 0, scrollViewBottomOffset, 0);
 }
 
-#pragma mark - Private Methods
-
--(NSArray<ResultTokenInputsModel*>*)prepareInputsData {
-    
-    NSMutableArray* inputsData = @[].mutableCopy;
-    for (TextFieldParameterView* parameter in self.scrollView.subviews) {
-        if ([parameter isKindOfClass:[TextFieldParameterView class]]) {
-            ResultTokenInputsModel* input = [ResultTokenInputsModel new];
-            input.name = parameter.textField.item.name;
-            input.value = parameter.textField.item.type == StringType ? parameter.textField.text : @([parameter.textField.text integerValue]);
-            [inputsData addObject:input];
-        }
-    }
-    return [inputsData copy];
-}
 
 - (UIToolbar*)createToolBarInput {
     
@@ -109,6 +94,23 @@
     [toolbar sizeToFit];
     return toolbar;
 }
+
+#pragma mark - Private Methods
+
+-(NSArray<ResultTokenInputsModel*>*)prepareInputsData {
+    
+    NSMutableArray* inputsData = @[].mutableCopy;
+    for (TextFieldParameterView* parameter in self.scrollView.subviews) {
+        if ([parameter isKindOfClass:[TextFieldParameterView class]]) {
+            ResultTokenInputsModel* input = [ResultTokenInputsModel new];
+            input.name = parameter.textField.item.name;
+            input.value = parameter.textField.item.type == StringType ? parameter.textField.text : @([parameter.textField.text integerValue]);
+            [inputsData addObject:input];
+        }
+    }
+    return [inputsData copy];
+}
+
 
 #pragma mark - AbiTextFieldWithLineDelegate
 

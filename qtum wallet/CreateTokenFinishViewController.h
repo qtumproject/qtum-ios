@@ -7,16 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContractCreationEndOutput.h"
 @class ResultTokenInputsModel;
 
 @protocol ContractCoordinatorDelegate;
 
-@interface CreateTokenFinishViewController : BaseViewController
-
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
-@property (copy,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
-
-- (void)showErrorPopUp;
-- (void)showCompletedPopUp;
+@interface CreateTokenFinishViewController : BaseViewController <ContractCreationEndOutput>
 
 @end

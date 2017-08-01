@@ -19,6 +19,8 @@
 
 @implementation CreateTokenFinishViewController
 
+@synthesize delegate, inputs;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 85, 0);
