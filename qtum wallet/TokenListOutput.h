@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "TokenListOutputDelegate.h"
+#import "Presentable.h"
 
-@protocol TokenListOutput <NSObject>
+@protocol TokenListOutput <Presentable>
 
 @property (copy, nonatomic) NSArray<Contract*>* tokens;
 @property (weak,nonatomic) id <TokenListOutputDelegate> delegate;

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Spendable.h"
-#import "SubscribeTokenDataDisplayManagerProtocol.h"
+#import "SubscribeTokenDataDisplayManager.h"
 
-@interface SubscribeTokenDataDisplayManagerDark : NSObject <SubscribeTokenDataDisplayManagerProtocol>
+@interface SubscribeTokenDataDisplayManagerDark : SubscribeTokenDataDisplayManager
 
 @end

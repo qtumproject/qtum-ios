@@ -17,7 +17,15 @@
 - (void)setSelected:(BOOL)selected {
     [super setSelected:self];
     
-    self.backgroundColor = selected ? customRedColor() : customBlueColor();
+    self.backgroundColor = selected ? [self selectedBacgroundColor] : [self deselectedBacgroundColor];
+}
+
+- (UIColor*)selectedBacgroundColor {
+    return customRedColor();
+}
+
+- (UIColor*)deselectedBacgroundColor {
+    return customBlueColor();
 }
 
 + (UIFont *)getLabelFont {

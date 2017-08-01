@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ContractCoordinator.h"
+#import "PublishedContractListOutputDelegate.h"
+#import "PublishedContractListOutput.h"
 
-@interface SmartContractsListViewController : BaseViewController
-
-@property (copy, nonatomic) NSArray <Contract*>* contracts;
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
+@interface SmartContractsListViewController : BaseViewController <PublishedContractListOutput>
 
 @end

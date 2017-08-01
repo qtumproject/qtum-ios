@@ -25,8 +25,7 @@
 
 #pragma mark - init
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
     static AppSettings *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -35,12 +34,8 @@
     return instance;
 }
 
-- (instancetype)initUniqueInstance
-{
+- (instancetype)initUniqueInstance {
     self = [super init];
-    
-    if (self != nil) {
-    }
     return self;
 }
 
@@ -48,7 +43,7 @@
 
 -(void)setup {
     
-    [NSUserDefaults saveIsDarkSchemeSetting:YES];
+    [NSUserDefaults saveIsDarkSchemeSetting:NO];
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:YES];
     [PopUpsManager sharedInstance];

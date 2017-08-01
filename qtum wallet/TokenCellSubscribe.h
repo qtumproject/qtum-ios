@@ -1,5 +1,5 @@
 //
-//  TockenCellSubscribe.h
+//  TokenCellSubscribe.h
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 03.03.17.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString* tokenCellIdentifire = @"TockenCellSubscribe";
+static NSString* tokenCellIdentifire = @"TokenCellSubscribeIdentifire";
 
-@interface TockenCellSubscribe : UITableViewCell
+@interface TokenCellSubscribe : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *topSeparator;
 @property (weak, nonatomic) IBOutlet UIImageView *indicator;

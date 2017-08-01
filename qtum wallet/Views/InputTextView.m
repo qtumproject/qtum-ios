@@ -38,5 +38,7 @@
     self.textContainerInset = UIEdgeInsetsMake(6, 4, 6, 4);
 }
 
+-(void)setEditingMode:(BOOL) editing { }
+
 
 @end

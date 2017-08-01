@@ -45,7 +45,19 @@
         [identifire isEqualToString:@"PinViewController"] ||
         [identifire isEqualToString:@"SubscribeTokenViewController"] ||
         [identifire isEqualToString:@"WatchContractViewController"] ||
-        [identifire isEqualToString:@"WatchTokensViewController"]) {
+        [identifire isEqualToString:@"WatchTokensViewController"] ||
+        [identifire isEqualToString:@"LibraryViewController"] ||
+        [identifire isEqualToString:@"SmartContractMenuViewController"] ||
+        [identifire isEqualToString:@"SmartContractsListViewController"] ||
+        [identifire isEqualToString:@"TemplateTokenViewController"] ||
+        [identifire isEqualToString:@"PhotoLibraryPopUpViewController"] ||
+        [identifire isEqualToString:@"SecurityPopupViewController"] ||
+        [identifire isEqualToString:@"NoInternetConnectionPopUpViewController"] ||
+        [identifire isEqualToString:@"ErrorPopUpViewController"] ||
+        [identifire isEqualToString:@"InformationPopUpViewController"] ||
+        [identifire isEqualToString:@"LoaderPopUpViewController"] ||
+        [identifire isEqualToString:@"RestoreContractsPopUpViewController"] ||
+        [identifire isEqualToString:@"RestoreContractsViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             
@@ -58,7 +70,7 @@
     return [self instantiateControllerInStoryboard:[UIStoryboard storyboardWithName:storyboard bundle:nil] withIdentifire:mutString];
 }
 
-- (UIViewController*) controllerInStoryboard:(NSString*) storyboard{
+- (UIViewController*) controllerInStoryboard:(NSString*) storyboard {
     return [UIViewController instantiateControllerInStoryboard:[UIStoryboard storyboardWithName:storyboard bundle:nil]  withIdentifire:self.nameOfClass];
 }
 

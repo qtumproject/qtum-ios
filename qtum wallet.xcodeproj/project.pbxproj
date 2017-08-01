@@ -143,6 +143,16 @@
 		B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA871EAA3C820040A163 /* SmartTransactionManager.m */; };
 		B366CA221F1D0AC700EF3273 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = B366CA211F1D0AC700EF3273 /* NSData+AES256.m */; };
 		B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = B366CA241F1D0C1200EF3273 /* NSString+AES256.m */; };
+		B36EBC2D1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */; };
+		B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC2F1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m */; };
+		B36EBC341F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC331F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m */; };
+		B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC361F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m */; };
+		B36EBC3B1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC3A1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m */; };
+		B36EBC3E1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC3D1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m */; };
+		B36EBC421F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC411F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m */; };
+		B36EBC451F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC441F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m */; };
+		B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC481F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m */; };
+		B36EBC4C1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC4B1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m */; };
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
 		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
 		B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */; };
@@ -177,8 +187,36 @@
 		B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */; };
 		B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */; };
 		B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */; };
+		B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */; };
+		B3CBDF0A1F2A461D00C80D4E /* LibraryViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */; };
+		B3CBDF0D1F2A463700C80D4E /* LibraryViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF0C1F2A463700C80D4E /* LibraryViewControllerLight.m */; };
+		B3CBDF101F2A47E000C80D4E /* LibraryTableViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF0F1F2A47E000C80D4E /* LibraryTableViewCellLight.m */; };
+		B3CBDF131F2A47F900C80D4E /* LibraryTableViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF121F2A47F900C80D4E /* LibraryTableViewCellDark.m */; };
+		B3CBDF191F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF181F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m */; };
+		B3CBDF1C1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF1B1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m */; };
+		B3CBDF201F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF1F1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m */; };
+		B3CBDF231F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF221F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m */; };
+		B3CBDF2A1F2B41D900C80D4E /* SmartContractsListViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF291F2B41D900C80D4E /* SmartContractsListViewControllerDark.m */; };
+		B3CBDF2D1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF2C1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m */; };
+		B3CBDF331F2B470D00C80D4E /* TemplateTokenViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF321F2B470D00C80D4E /* TemplateTokenViewControllerDark.m */; };
+		B3CBDF361F2B471A00C80D4E /* TemplateTokenViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF351F2B471A00C80D4E /* TemplateTokenViewControllerLight.m */; };
+		B3CBDF3A1F2B48B000C80D4E /* SmartContractListItemCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF391F2B48B000C80D4E /* SmartContractListItemCellDark.m */; };
+		B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF3C1F2B48C300C80D4E /* SmartContractListItemCellLight.m */; };
+		B3CBDF411F2B496A00C80D4E /* TokenTemplateCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF401F2B496A00C80D4E /* TokenTemplateCellDark.m */; };
+		B3CBDF441F2B497A00C80D4E /* TokenTemplateCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF431F2B497A00C80D4E /* TokenTemplateCellLight.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
+		B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */; };
+		B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */; };
+		B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */; };
+		B3DB3E431F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E421F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m */; };
+		B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E451F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m */; };
+		B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E4A1F2F705700AA408F /* RestoreContractsViewControllerDark.m */; };
+		B3DB3E4E1F2F706800AA408F /* RestoreContractsViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E4D1F2F706800AA408F /* RestoreContractsViewControllerLight.m */; };
+		B3DB3E511F2F7A5200AA408F /* CheckboxButtonLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E501F2F7A5200AA408F /* CheckboxButtonLight.m */; };
+		B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DB3E521F2F7F0D00AA408F /* CheckButtonLight.xib */; };
+		B3DB3E571F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E561F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m */; };
+		B3DB3E5A1F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E591F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -209,12 +247,12 @@
 		B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* ContractCoordinator.m */; };
 		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
 		B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */; };
-		B3F06D031E699244006341F7 /* TockenCellSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D021E699244006341F7 /* TockenCellSubscribe.m */; };
+		B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D021E699244006341F7 /* TokenCellSubscribe.m */; };
 		B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */; };
 		B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06D091E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m */; };
 		B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */; };
 		B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F5797A1F0D251C00A13571 /* OpenURLManager.m */; };
-		B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */; };
+		B3F76A701EDD667D00108DE9 /* SmartContractMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A6F1EDD667D00108DE9 /* SmartContractMenuViewController.m */; };
 		B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */; };
 		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
 		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
@@ -777,6 +815,26 @@
 		B366CA231F1D0C1200EF3273 /* NSString+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AES256.h"; sourceTree = "<group>"; };
 		B366CA241F1D0C1200EF3273 /* NSString+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AES256.m"; sourceTree = "<group>"; };
 		B366CA261F1DEE2E00EF3273 /* WalletManagering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletManagering.h; sourceTree = "<group>"; };
+		B36EBC2B1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetConnectionPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC2E1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC2F1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetConnectionPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B36EBC321F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC331F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC351F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC361F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B36EBC391F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC3A1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B36EBC3C1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC3D1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC401F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityPopupViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC411F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityPopupViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC431F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityPopupViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC441F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityPopupViewControllerLight.m; sourceTree = "<group>"; };
+		B36EBC471F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B36EBC481F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B36EBC4A1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B36EBC4B1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationPopUpViewControllerLight.m; sourceTree = "<group>"; };
 		B371D87D1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TCAStyleProvider.h"; sourceTree = "<group>"; };
 		B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TCAStyleProvider.m"; sourceTree = "<group>"; };
 		B371D87F1E3A1D3B00A13EA3 /* NSNull+TCACatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+TCACatch.h"; sourceTree = "<group>"; };
@@ -842,10 +900,73 @@
 		B3CB56AC1ECEE8B300B23AE9 /* BalancePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancePageViewController.h; sourceTree = "<group>"; };
 		B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancePageViewController.m; sourceTree = "<group>"; };
 		B3CB56AF1ECF06D200B23AE9 /* Paginationable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginationable.h; sourceTree = "<group>"; };
+		B3CBDF051F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManager.h; sourceTree = "<group>"; };
+		B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenDataDisplayManager.m; sourceTree = "<group>"; };
+		B3CBDF081F2A461D00C80D4E /* LibraryViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewControllerDark.h; sourceTree = "<group>"; };
+		B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewControllerDark.m; sourceTree = "<group>"; };
+		B3CBDF0B1F2A463700C80D4E /* LibraryViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewControllerLight.h; sourceTree = "<group>"; };
+		B3CBDF0C1F2A463700C80D4E /* LibraryViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewControllerLight.m; sourceTree = "<group>"; };
+		B3CBDF0E1F2A47E000C80D4E /* LibraryTableViewCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableViewCellLight.h; sourceTree = "<group>"; };
+		B3CBDF0F1F2A47E000C80D4E /* LibraryTableViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTableViewCellLight.m; sourceTree = "<group>"; };
+		B3CBDF111F2A47F900C80D4E /* LibraryTableViewCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableViewCellDark.h; sourceTree = "<group>"; };
+		B3CBDF121F2A47F900C80D4E /* LibraryTableViewCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTableViewCellDark.m; sourceTree = "<group>"; };
+		B3CBDF151F2B11E100C80D4E /* SmartContractMenuOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuOutput.h; sourceTree = "<group>"; };
+		B3CBDF161F2B11ED00C80D4E /* SmartContractMenuOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuOutputDelegate.h; sourceTree = "<group>"; };
+		B3CBDF171F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuViewControllerLight.h; sourceTree = "<group>"; };
+		B3CBDF181F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractMenuViewControllerLight.m; sourceTree = "<group>"; };
+		B3CBDF1A1F2B170800C80D4E /* SmartContractMenuViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuViewControllerDark.h; sourceTree = "<group>"; };
+		B3CBDF1B1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractMenuViewControllerDark.m; sourceTree = "<group>"; };
+		B3CBDF1E1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiseSmartContractCellLight.h; sourceTree = "<group>"; };
+		B3CBDF1F1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiseSmartContractCellLight.m; sourceTree = "<group>"; };
+		B3CBDF211F2B2C0500C80D4E /* ChoiseSmartContractCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiseSmartContractCellDark.h; sourceTree = "<group>"; };
+		B3CBDF221F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiseSmartContractCellDark.m; sourceTree = "<group>"; };
+		B3CBDF261F2B3E1E00C80D4E /* PublishedContractListOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishedContractListOutput.h; sourceTree = "<group>"; };
+		B3CBDF271F2B3E2E00C80D4E /* PublishedContractListOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishedContractListOutputDelegate.h; sourceTree = "<group>"; };
+		B3CBDF281F2B41D900C80D4E /* SmartContractsListViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewControllerDark.h; sourceTree = "<group>"; };
+		B3CBDF291F2B41D900C80D4E /* SmartContractsListViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewControllerDark.m; sourceTree = "<group>"; };
+		B3CBDF2B1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewControllerLight.h; sourceTree = "<group>"; };
+		B3CBDF2C1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewControllerLight.m; sourceTree = "<group>"; };
+		B3CBDF2F1F2B431200C80D4E /* TemplatesListOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesListOutput.h; sourceTree = "<group>"; };
+		B3CBDF301F2B432000C80D4E /* TemplatesListOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesListOutputDelegate.h; sourceTree = "<group>"; };
+		B3CBDF311F2B470D00C80D4E /* TemplateTokenViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTokenViewControllerDark.h; sourceTree = "<group>"; };
+		B3CBDF321F2B470D00C80D4E /* TemplateTokenViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTokenViewControllerDark.m; sourceTree = "<group>"; };
+		B3CBDF341F2B471A00C80D4E /* TemplateTokenViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTokenViewControllerLight.h; sourceTree = "<group>"; };
+		B3CBDF351F2B471A00C80D4E /* TemplateTokenViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTokenViewControllerLight.m; sourceTree = "<group>"; };
+		B3CBDF381F2B48B000C80D4E /* SmartContractListItemCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCellDark.h; sourceTree = "<group>"; };
+		B3CBDF391F2B48B000C80D4E /* SmartContractListItemCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractListItemCellDark.m; sourceTree = "<group>"; };
+		B3CBDF3B1F2B48C300C80D4E /* SmartContractListItemCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCellLight.h; sourceTree = "<group>"; };
+		B3CBDF3C1F2B48C300C80D4E /* SmartContractListItemCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractListItemCellLight.m; sourceTree = "<group>"; };
+		B3CBDF3F1F2B496A00C80D4E /* TokenTemplateCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenTemplateCellDark.h; sourceTree = "<group>"; };
+		B3CBDF401F2B496A00C80D4E /* TokenTemplateCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenTemplateCellDark.m; sourceTree = "<group>"; };
+		B3CBDF421F2B497A00C80D4E /* TokenTemplateCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenTemplateCellLight.h; sourceTree = "<group>"; };
+		B3CBDF431F2B497A00C80D4E /* TokenTemplateCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenTemplateCellLight.m; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
 		B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractListItemCell.m; sourceTree = "<group>"; };
+		B3DB3E361F2F513E00AA408F /* SpinnerViewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerViewLight.h; sourceTree = "<group>"; };
+		B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerViewLight.m; sourceTree = "<group>"; };
+		B3DB3E3A1F2F55A500AA408F /* LoaderPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B3DB3E3D1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B3DB3E411F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B3DB3E421F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsPopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B3DB3E441F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B3DB3E451F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B3DB3E471F2F6F7700AA408F /* RestoreContractsOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsOutput.h; sourceTree = "<group>"; };
+		B3DB3E481F2F6F8600AA408F /* RestoreContractsOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsOutputDelegate.h; sourceTree = "<group>"; };
+		B3DB3E491F2F705700AA408F /* RestoreContractsViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsViewControllerDark.h; sourceTree = "<group>"; };
+		B3DB3E4A1F2F705700AA408F /* RestoreContractsViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsViewControllerDark.m; sourceTree = "<group>"; };
+		B3DB3E4C1F2F706800AA408F /* RestoreContractsViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreContractsViewControllerLight.h; sourceTree = "<group>"; };
+		B3DB3E4D1F2F706800AA408F /* RestoreContractsViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsViewControllerLight.m; sourceTree = "<group>"; };
+		B3DB3E4F1F2F7A5200AA408F /* CheckboxButtonLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckboxButtonLight.h; sourceTree = "<group>"; };
+		B3DB3E501F2F7A5200AA408F /* CheckboxButtonLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckboxButtonLight.m; sourceTree = "<group>"; };
+		B3DB3E521F2F7F0D00AA408F /* CheckButtonLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckButtonLight.xib; sourceTree = "<group>"; };
+		B3DB3E551F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteTemplateCollectionViewCellDark.h; sourceTree = "<group>"; };
+		B3DB3E561F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteTemplateCollectionViewCellDark.m; sourceTree = "<group>"; };
+		B3DB3E581F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteTemplateCollectionViewCellLight.h; sourceTree = "<group>"; };
+		B3DB3E591F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteTemplateCollectionViewCellLight.m; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -918,8 +1039,8 @@
 		B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenCoordinator.h; sourceTree = "<group>"; };
 		B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenCoordinator.m; sourceTree = "<group>"; };
 		B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-REGULAR.OTF"; sourceTree = SOURCE_ROOT; };
-		B3F06D011E699244006341F7 /* TockenCellSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TockenCellSubscribe.h; sourceTree = "<group>"; };
-		B3F06D021E699244006341F7 /* TockenCellSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TockenCellSubscribe.m; sourceTree = "<group>"; };
+		B3F06D011E699244006341F7 /* TokenCellSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenCellSubscribe.h; sourceTree = "<group>"; };
+		B3F06D021E699244006341F7 /* TokenCellSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenCellSubscribe.m; sourceTree = "<group>"; };
 		B3F06D041E699303006341F7 /* SubscribeTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenViewController.h; sourceTree = "<group>"; };
 		B3F06D051E699303006341F7 /* SubscribeTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenViewController.m; sourceTree = "<group>"; };
 		B3F06D081E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenDataDisplayManagerDark.h; sourceTree = "<group>"; };
@@ -929,8 +1050,8 @@
 		B3F5797A1F0D251C00A13571 /* OpenURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenURLManager.m; path = Application/OpenURLManager.m; sourceTree = "<group>"; };
 		B3F5797F1F0D2A1F00A13571 /* TabbarOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarOutput.h; sourceTree = "<group>"; };
 		B3F579801F0D2A3200A13571 /* TabbarOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarOutputDelegate.h; sourceTree = "<group>"; };
-		B3F76A6E1EDD667D00108DE9 /* ChooseSmartContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSmartContractViewController.h; sourceTree = "<group>"; };
-		B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ChooseSmartContractViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B3F76A6E1EDD667D00108DE9 /* SmartContractMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractMenuViewController.h; sourceTree = "<group>"; };
+		B3F76A6F1EDD667D00108DE9 /* SmartContractMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SmartContractMenuViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoiseSmartContractCell.h; sourceTree = "<group>"; };
 		B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoiseSmartContractCell.m; sourceTree = "<group>"; };
 		B3F76A741EDD6F6400108DE9 /* TemplateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateModel.h; sourceTree = "<group>"; };
@@ -1580,6 +1701,8 @@
 				B3F06D091E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m */,
 				B32BC4B71F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.h */,
 				B32BC4B81F29C2C200C2417C /* SubscribeTokenDataDisplayManagerLight.m */,
+				B3CBDF051F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.h */,
+				B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */,
 			);
 			name = DelegateDataSource;
 			sourceTree = "<group>";
@@ -1861,6 +1984,71 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		B36EBC2A1F2F12B200F4E2F2 /* No Internet  */ = {
+			isa = PBXGroup;
+			children = (
+				E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */,
+				E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */,
+				B36EBC2B1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.h */,
+				B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */,
+				B36EBC2E1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.h */,
+				B36EBC2F1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m */,
+			);
+			name = "No Internet ";
+			sourceTree = "<group>";
+		};
+		B36EBC311F2F159C00F4E2F2 /* Photo Libruary */ = {
+			isa = PBXGroup;
+			children = (
+				E7FA0CBC1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.h */,
+				E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */,
+				B36EBC321F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.h */,
+				B36EBC331F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m */,
+				B36EBC351F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.h */,
+				B36EBC361F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m */,
+			);
+			name = "Photo Libruary";
+			sourceTree = "<group>";
+		};
+		B36EBC381F2F1B3A00F4E2F2 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				B36EBC391F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.h */,
+				B36EBC3A1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m */,
+				E73CF6C61EE2CF970044DF78 /* ErrorPopUpViewController.h */,
+				E73CF6C71EE2CF970044DF78 /* ErrorPopUpViewController.m */,
+				B36EBC3C1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.h */,
+				B36EBC3D1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
+		B36EBC3F1F2F1DF100F4E2F2 /* Security Popup */ = {
+			isa = PBXGroup;
+			children = (
+				B381CBE31F0291CB00142252 /* SecurityPopupViewController.h */,
+				B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */,
+				B36EBC401F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.h */,
+				B36EBC411F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m */,
+				B36EBC431F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.h */,
+				B36EBC441F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m */,
+			);
+			name = "Security Popup";
+			sourceTree = "<group>";
+		};
+		B36EBC461F2F4F6900F4E2F2 /* Information Popup */ = {
+			isa = PBXGroup;
+			children = (
+				E73CF6C91EE2CFA40044DF78 /* InformationPopUpViewController.h */,
+				E73CF6CA1EE2CFA40044DF78 /* InformationPopUpViewController.m */,
+				B36EBC471F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.h */,
+				B36EBC481F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m */,
+				B36EBC4A1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.h */,
+				B36EBC4B1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m */,
+			);
+			name = "Information Popup";
+			sourceTree = "<group>";
+		};
 		B3827DDA1ECF28F300E500DE /* TokenListOutput */ = {
 			isa = PBXGroup;
 			children = (
@@ -1960,20 +2148,8 @@
 		B386F5B21E139C9E004D231B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B32BC4C71F29EF6400C2417C /* TokenCellSubscribeLight.h */,
-				B32BC4C81F29EF6400C2417C /* TokenCellSubscribeLight.m */,
-				B32BC4CA1F29EF7200C2417C /* TokenCellSubscribeDark.h */,
-				B32BC4CB1F29EF7200C2417C /* TokenCellSubscribeDark.m */,
-				B3F06D011E699244006341F7 /* TockenCellSubscribe.h */,
-				B3F06D021E699244006341F7 /* TockenCellSubscribe.m */,
 				B32B32E71ECCC4A20081260A /* FinishInputCell.h */,
 				B32B32E81ECCC4A20081260A /* FinishInputCell.m */,
-				B3C08B191ED44E4200713B15 /* TokenTemplateCell.h */,
-				B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */,
-				B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */,
-				B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */,
-				B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */,
-				B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -2012,6 +2188,106 @@
 			name = "Tokens Templates";
 			sourceTree = "<group>";
 		};
+		B3CBDF141F2B11B700C80D4E /* Smart Contract Menu */ = {
+			isa = PBXGroup;
+			children = (
+				B3CBDF1D1F2B2BBA00C80D4E /* Cells */,
+				B3CBDF151F2B11E100C80D4E /* SmartContractMenuOutput.h */,
+				B3CBDF161F2B11ED00C80D4E /* SmartContractMenuOutputDelegate.h */,
+				B3F76A6E1EDD667D00108DE9 /* SmartContractMenuViewController.h */,
+				B3F76A6F1EDD667D00108DE9 /* SmartContractMenuViewController.m */,
+				B3CBDF171F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.h */,
+				B3CBDF181F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m */,
+				B3CBDF1A1F2B170800C80D4E /* SmartContractMenuViewControllerDark.h */,
+				B3CBDF1B1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m */,
+			);
+			name = "Smart Contract Menu";
+			sourceTree = "<group>";
+		};
+		B3CBDF1D1F2B2BBA00C80D4E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B3F76A711EDD671D00108DE9 /* ChoiseSmartContractCell.h */,
+				B3F76A721EDD671D00108DE9 /* ChoiseSmartContractCell.m */,
+				B3CBDF1E1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.h */,
+				B3CBDF1F1F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m */,
+				B3CBDF211F2B2C0500C80D4E /* ChoiseSmartContractCellDark.h */,
+				B3CBDF221F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B3CBDF241F2B30DF00C80D4E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B32BC4C71F29EF6400C2417C /* TokenCellSubscribeLight.h */,
+				B32BC4C81F29EF6400C2417C /* TokenCellSubscribeLight.m */,
+				B32BC4CA1F29EF7200C2417C /* TokenCellSubscribeDark.h */,
+				B32BC4CB1F29EF7200C2417C /* TokenCellSubscribeDark.m */,
+				B3F06D011E699244006341F7 /* TokenCellSubscribe.h */,
+				B3F06D021E699244006341F7 /* TokenCellSubscribe.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		B3CBDF251F2B3DE800C80D4E /* Published Contracts */ = {
+			isa = PBXGroup;
+			children = (
+				B3CBDF371F2B489200C80D4E /* Cells */,
+				B3CBDF261F2B3E1E00C80D4E /* PublishedContractListOutput.h */,
+				B3CBDF271F2B3E2E00C80D4E /* PublishedContractListOutputDelegate.h */,
+				B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */,
+				B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */,
+				B3CBDF281F2B41D900C80D4E /* SmartContractsListViewControllerDark.h */,
+				B3CBDF291F2B41D900C80D4E /* SmartContractsListViewControllerDark.m */,
+				B3CBDF2B1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.h */,
+				B3CBDF2C1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m */,
+			);
+			name = "Published Contracts";
+			sourceTree = "<group>";
+		};
+		B3CBDF2E1F2B42D600C80D4E /* Templates List  */ = {
+			isa = PBXGroup;
+			children = (
+				B3CBDF3E1F2B495000C80D4E /* Cells */,
+				B3CBDF2F1F2B431200C80D4E /* TemplatesListOutput.h */,
+				B3CBDF301F2B432000C80D4E /* TemplatesListOutputDelegate.h */,
+				B3C08B161ED44DD900713B15 /* TemplateTokenViewController.h */,
+				B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */,
+				B3CBDF311F2B470D00C80D4E /* TemplateTokenViewControllerDark.h */,
+				B3CBDF321F2B470D00C80D4E /* TemplateTokenViewControllerDark.m */,
+				B3CBDF341F2B471A00C80D4E /* TemplateTokenViewControllerLight.h */,
+				B3CBDF351F2B471A00C80D4E /* TemplateTokenViewControllerLight.m */,
+			);
+			name = "Templates List ";
+			sourceTree = "<group>";
+		};
+		B3CBDF371F2B489200C80D4E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */,
+				B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */,
+				B3CBDF381F2B48B000C80D4E /* SmartContractListItemCellDark.h */,
+				B3CBDF391F2B48B000C80D4E /* SmartContractListItemCellDark.m */,
+				B3CBDF3B1F2B48C300C80D4E /* SmartContractListItemCellLight.h */,
+				B3CBDF3C1F2B48C300C80D4E /* SmartContractListItemCellLight.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B3CBDF3E1F2B495000C80D4E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B3C08B191ED44E4200713B15 /* TokenTemplateCell.h */,
+				B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */,
+				B3CBDF3F1F2B496A00C80D4E /* TokenTemplateCellDark.h */,
+				B3CBDF401F2B496A00C80D4E /* TokenTemplateCellDark.m */,
+				B3CBDF421F2B497A00C80D4E /* TokenTemplateCellLight.h */,
+				B3CBDF431F2B497A00C80D4E /* TokenTemplateCellLight.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		B3D555EC1EDF4DA400CBDFCF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -2019,6 +2295,56 @@
 				B3827DE31ECF5E8D00E500DE /* TokenFunctionCell.m */,
 				B3C08B231ED467DA00713B15 /* TokenPropertyCell.h */,
 				B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B3DB3E351F2F50FE00AA408F /* Loader View */ = {
+			isa = PBXGroup;
+			children = (
+				E71271901EE9925600A130A0 /* SpinnerView.h */,
+				E71271911EE9925600A130A0 /* SpinnerView.m */,
+				B3DB3E361F2F513E00AA408F /* SpinnerViewLight.h */,
+				B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */,
+			);
+			name = "Loader View";
+			sourceTree = "<group>";
+		};
+		B3DB3E391F2F555800AA408F /* Loader Popup */ = {
+			isa = PBXGroup;
+			children = (
+				E71271951EE9ADAB00A130A0 /* LoaderPopUpViewController.h */,
+				E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */,
+				B3DB3E3A1F2F55A500AA408F /* LoaderPopUpViewControllerLight.h */,
+				B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */,
+				B3DB3E3D1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.h */,
+				B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */,
+			);
+			name = "Loader Popup";
+			sourceTree = "<group>";
+		};
+		B3DB3E401F2F6D4900AA408F /* Restore Popup */ = {
+			isa = PBXGroup;
+			children = (
+				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
+				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
+				B3DB3E411F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.h */,
+				B3DB3E421F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m */,
+				B3DB3E441F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.h */,
+				B3DB3E451F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m */,
+			);
+			name = "Restore Popup";
+			sourceTree = "<group>";
+		};
+		B3DB3E541F2F9A3700AA408F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E71F1C881F1CEBA400961B19 /* FavouriteTemplateCollectionViewCell.h */,
+				E71F1C891F1CEBA400961B19 /* FavouriteTemplateCollectionViewCell.m */,
+				B3DB3E551F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.h */,
+				B3DB3E561F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m */,
+				B3DB3E581F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.h */,
+				B3DB3E591F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2206,6 +2532,7 @@
 		B3F06D071E699371006341F7 /* Subscribe */ = {
 			isa = PBXGroup;
 			children = (
+				B3CBDF241F2B30DF00C80D4E /* Cell */,
 				B32BC4C61F29CA2300C2417C /* DelegateDataSource */,
 				B32BC4C51F29C9F200C2417C /* Protocols */,
 				B32BC4C41F29C9DE00C2417C /* Controllers */,
@@ -2235,12 +2562,9 @@
 				B32B32DF1ECCC2D50081260A /* CreateTokenFinishViewController.m */,
 				B32B32E01ECCC2D50081260A /* CustomAbiInterphaseViewController.h */,
 				B32B32E11ECCC2D50081260A /* CustomAbiInterphaseViewController.m */,
-				B3C08B161ED44DD900713B15 /* TemplateTokenViewController.h */,
-				B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */,
-				B3F76A6E1EDD667D00108DE9 /* ChooseSmartContractViewController.h */,
-				B3F76A6F1EDD667D00108DE9 /* ChooseSmartContractViewController.m */,
-				B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */,
-				B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */,
+				B3CBDF2E1F2B42D600C80D4E /* Templates List  */,
+				B3CBDF141F2B11B700C80D4E /* Smart Contract Menu */,
+				B3CBDF251F2B3DE800C80D4E /* Published Contracts */,
 				B3827DE51ECF673900E500DE /* TokenFunctionViewController.h */,
 				B3827DE61ECF673900E500DE /* TokenFunctionViewController.m */,
 				B3827DE81ED2C74900E500DE /* TokenFunctionDetailViewController.h */,
@@ -2340,6 +2664,12 @@
 				E713A4791EEE965000A2FA40 /* Views */,
 				E713A47F1EEE9FF800A2FA40 /* RestoreContractsViewController.h */,
 				E713A4801EEE9FF800A2FA40 /* RestoreContractsViewController.m */,
+				B3DB3E471F2F6F7700AA408F /* RestoreContractsOutput.h */,
+				B3DB3E481F2F6F8600AA408F /* RestoreContractsOutputDelegate.h */,
+				B3DB3E491F2F705700AA408F /* RestoreContractsViewControllerDark.h */,
+				B3DB3E4A1F2F705700AA408F /* RestoreContractsViewControllerDark.m */,
+				B3DB3E4C1F2F706800AA408F /* RestoreContractsViewControllerLight.h */,
+				B3DB3E4D1F2F706800AA408F /* RestoreContractsViewControllerLight.m */,
 			);
 			name = RestoreContracts;
 			sourceTree = "<group>";
@@ -2348,8 +2678,11 @@
 			isa = PBXGroup;
 			children = (
 				E713A47A1EEE966100A2FA40 /* CheckButton.xib */,
+				B3DB3E521F2F7F0D00AA408F /* CheckButtonLight.xib */,
 				E713A47C1EEE98E900A2FA40 /* CheckboxButton.h */,
 				E713A47D1EEE98E900A2FA40 /* CheckboxButton.m */,
+				B3DB3E4F1F2F7A5200AA408F /* CheckboxButtonLight.h */,
+				B3DB3E501F2F7A5200AA408F /* CheckboxButtonLight.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2372,6 +2705,10 @@
 				E71F1C791F1C9B0200961B19 /* LibraryTableSource.m */,
 				E71F1C7D1F1CA1E400961B19 /* LibraryTableViewCell.h */,
 				E71F1C7E1F1CA1E400961B19 /* LibraryTableViewCell.m */,
+				B3CBDF111F2A47F900C80D4E /* LibraryTableViewCellDark.h */,
+				B3CBDF121F2A47F900C80D4E /* LibraryTableViewCellDark.m */,
+				B3CBDF0E1F2A47E000C80D4E /* LibraryTableViewCellLight.h */,
+				B3CBDF0F1F2A47E000C80D4E /* LibraryTableViewCellLight.m */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -2387,8 +2724,7 @@
 				E71F1C861F1CD6C500961B19 /* FavouriteTemplatesCollectionSourceOutputDelegate.h */,
 				E71F1C821F1CD68A00961B19 /* FavouriteTemplatesCollectionSource.h */,
 				E71F1C831F1CD68A00961B19 /* FavouriteTemplatesCollectionSource.m */,
-				E71F1C881F1CEBA400961B19 /* FavouriteTemplateCollectionViewCell.h */,
-				E71F1C891F1CEBA400961B19 /* FavouriteTemplateCollectionViewCell.m */,
+				B3DB3E541F2F9A3700AA408F /* Cells */,
 				E7D7C09D1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.h */,
 				E7D7C09C1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m */,
 			);
@@ -2472,6 +2808,10 @@
 				E71F1C731F1C99A200961B19 /* LibraryOutputDelegate.h */,
 				E7360EC31F1918E7003ED21D /* LibraryViewController.h */,
 				E7360EC41F1918E7003ED21D /* LibraryViewController.m */,
+				B3CBDF081F2A461D00C80D4E /* LibraryViewControllerDark.h */,
+				B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */,
+				B3CBDF0B1F2A463700C80D4E /* LibraryViewControllerLight.h */,
+				B3CBDF0C1F2A463700C80D4E /* LibraryViewControllerLight.m */,
 			);
 			name = LibraryOutput;
 			sourceTree = "<group>";
@@ -3064,22 +3404,15 @@
 				E73CF6D31EE2E1230044DF78 /* PopUpContentGenerator.m */,
 				E7FA0CB11ECD80AF00702C4E /* PopUpViewController.h */,
 				E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */,
-				E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */,
-				E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */,
-				E7FA0CBC1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.h */,
-				E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */,
-				E73CF6C61EE2CF970044DF78 /* ErrorPopUpViewController.h */,
-				E73CF6C71EE2CF970044DF78 /* ErrorPopUpViewController.m */,
-				E73CF6C91EE2CFA40044DF78 /* InformationPopUpViewController.h */,
-				E73CF6CA1EE2CFA40044DF78 /* InformationPopUpViewController.m */,
+				B36EBC2A1F2F12B200F4E2F2 /* No Internet  */,
+				B36EBC311F2F159C00F4E2F2 /* Photo Libruary */,
+				B36EBC381F2F1B3A00F4E2F2 /* Errors */,
+				B36EBC461F2F4F6900F4E2F2 /* Information Popup */,
 				E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */,
 				E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */,
-				E71271951EE9ADAB00A130A0 /* LoaderPopUpViewController.h */,
-				E71271961EE9ADAB00A130A0 /* LoaderPopUpViewController.m */,
-				E713A4841EEEB70100A2FA40 /* RestoreContractsPopUpViewController.h */,
-				E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */,
-				B381CBE31F0291CB00142252 /* SecurityPopupViewController.h */,
-				B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */,
+				B3DB3E391F2F555800AA408F /* Loader Popup */,
+				B3DB3E401F2F6D4900AA408F /* Restore Popup */,
+				B36EBC3F1F2F1DF100F4E2F2 /* Security Popup */,
 				E784F8C81F025DDB00A513BF /* SourceCodePopUpViewController.h */,
 				E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */,
 				E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */,
@@ -3241,8 +3574,7 @@
 				B321E8831E0C3B1300DC7DE5 /* BottomShadowView.m */,
 				E789036A1EDDA980004243F0 /* ViewWithAnimatedLine.h */,
 				E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */,
-				E71271901EE9925600A130A0 /* SpinnerView.h */,
-				E71271911EE9925600A130A0 /* SpinnerView.m */,
+				B3DB3E351F2F50FE00AA408F /* Loader View */,
 				E7CE63601F027EC200C147B9 /* CustomSearchBar.h */,
 				E7CE63611F027EC200C147B9 /* CustomSearchBar.m */,
 				B35DF6441F263CD500316953 /* LightBlueGrayBorderView.h */,
@@ -3576,6 +3908,7 @@
 				E70CFD341F1F647300230C81 /* SourceCodePopUp.storyboard in Resources */,
 				E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
+				B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */,
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				E760F4A11F0F8E8F0056D042 /* proximanova-regitalic.otf in Resources */,
 				E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
@@ -3679,7 +4012,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3731,6 +4064,7 @@
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
+				B3CBDF191F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
 				B3EE8F421F136FAA00131823 /* ChooseTokenPaymentCellLight.m in Sources */,
@@ -3740,15 +4074,21 @@
 				B365CA791EA77D490040A163 /* TokensFactory.m in Sources */,
 				E78D0C991ED2DF2E00CB91FF /* TokenDetailsTableView.m in Sources */,
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
+				B3CBDF1C1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m in Sources */,
+				B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */,
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B35DF6291F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m in Sources */,
 				B32BC4A81F28B49C00C2417C /* ChangePinCoordinator.m in Sources */,
+				B3CBDF411F2B496A00C80D4E /* TokenTemplateCellDark.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
+				B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
+				B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */,
+				B3DB3E571F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m in Sources */,
 				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
 				E71F1C7A1F1C9B0200961B19 /* LibraryTableSource.m in Sources */,
 				B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */,
@@ -3764,11 +4104,13 @@
 				B35DF6231F1F56A700316953 /* InputTextViewLight.m in Sources */,
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
+				B3DB3E431F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m in Sources */,
 				E748579C1F13C02600DCF9A6 /* LanguageTableViewCellLight.m in Sources */,
 				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
 				E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */,
+				B3CBDF3A1F2B48B000C80D4E /* SmartContractListItemCellDark.m in Sources */,
 				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */,
@@ -3777,6 +4119,7 @@
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				B3014D691F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m in Sources */,
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
+				B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
 				E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */,
@@ -3786,6 +4129,7 @@
 				E70353151F03AC6D004ECCC9 /* QStoreListTableViewCell.m in Sources */,
 				B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */,
 				B351305D1E49BF6D0048A28C /* NewsController.m in Sources */,
+				B3DB3E4E1F2F706800AA408F /* RestoreContractsViewControllerLight.m in Sources */,
 				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
 				E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */,
@@ -3795,12 +4139,15 @@
 				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
 				B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */,
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
+				B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
-				B3F06D031E699244006341F7 /* TockenCellSubscribe.m in Sources */,
+				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
+				B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
+				B3CBDF2D1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m in Sources */,
 				B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */,
 				B366CA221F1D0AC700EF3273 /* NSData+AES256.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,
@@ -3812,6 +4159,7 @@
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B36505921F14B3A900521603 /* CreatePinViewControllerDark.m in Sources */,
+				B36EBC2D1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m in Sources */,
 				B32B32E31ECCC2D50081260A /* CustomAbiInterphaseViewController.m in Sources */,
 				B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */,
 				E7DE59901F0E8562006E0E1B /* PageControlItemDark.m in Sources */,
@@ -3827,7 +4175,7 @@
 				B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */,
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
 				B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */,
-				B3F76A701EDD667D00108DE9 /* ChooseSmartContractViewController.m in Sources */,
+				B3F76A701EDD667D00108DE9 /* SmartContractMenuViewController.m in Sources */,
 				E713A4861EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m in Sources */,
 				E70353191F03C30E004ECCC9 /* QStoreContractViewController.m in Sources */,
 				E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */,
@@ -3844,12 +4192,17 @@
 				B365CA631EA4ED540040A163 /* Contract.m in Sources */,
 				B32BC4C11F29C9B600C2417C /* SubscribeTokenViewControllerLight.m in Sources */,
 				B35DF63F1F262EB100316953 /* TokenDetailLightDisplayDataManager.m in Sources */,
+				B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
+				B3CBDF201F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m in Sources */,
 				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
+				B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */,
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
+				B3CBDF2A1F2B41D900C80D4E /* SmartContractsListViewControllerDark.m in Sources */,
+				B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */,
 				B3EE8F341F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m in Sources */,
 				E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
@@ -3860,6 +4213,7 @@
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
 				E73D36FB1ECF161E009173BD /* NubersTokenTableViewCell.m in Sources */,
+				B36EBC421F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m in Sources */,
 				E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */,
 				E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */,
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
@@ -3887,6 +4241,7 @@
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32BC4B11F28D5BC00C2417C /* TextFieldWithLineLightSend.m in Sources */,
 				E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */,
+				B3DB3E5A1F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m in Sources */,
 				B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,
@@ -3896,6 +4251,7 @@
 				E7C101C11F15073800848526 /* HistoryItemViewControllerDark.m in Sources */,
 				B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */,
 				E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */,
+				B3CBDF361F2B471A00C80D4E /* TemplateTokenViewControllerLight.m in Sources */,
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,
 				B36505951F14B3BA00521603 /* CreatePinViewControllerLight.m in Sources */,
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
@@ -3906,6 +4262,7 @@
 				B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */,
 				B32BC4AB1F28C6F600C2417C /* PinViewControllerDark.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
+				B3CBDF131F2A47F900C80D4E /* LibraryTableViewCellDark.m in Sources */,
 				E73D36F51ECF15D1009173BD /* BalanceTokenTableViewCell.m in Sources */,
 				B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
@@ -3922,6 +4279,7 @@
 				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,
 				E71F1C7F1F1CA1E400961B19 /* LibraryTableViewCell.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
+				B3CBDF101F2A47E000C80D4E /* LibraryTableViewCellLight.m in Sources */,
 				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
 				B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */,
 				E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */,
@@ -3929,6 +4287,7 @@
 				E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* InputTextView.m in Sources */,
 				E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */,
+				B3CBDF231F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
@@ -3943,6 +4302,7 @@
 				E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */,
 				E79846401F0D2F57002A516A /* TableSourcesFactory.m in Sources */,
 				E73D37041ECF1771009173BD /* QTUMAddressTokenTableViewCell.m in Sources */,
+				B3CBDF441F2B497A00C80D4E /* TokenTemplateCellLight.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
 				B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */,
 				E718FA281F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m in Sources */,
@@ -3953,7 +4313,9 @@
 				B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,
+				B36EBC341F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
+				B3CBDF0A1F2A461D00C80D4E /* LibraryViewControllerDark.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E745BA1D1F21E78E00B2E216 /* NewsTableCellDark.m in Sources */,
 				E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */,
@@ -3987,7 +4349,10 @@
 				E798462D1F0D1E50002A516A /* HistoryTableViewCellLight.m in Sources */,
 				E79846361F0D23CB002A516A /* WalletHeaderCellDark.m in Sources */,
 				B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */,
+				B36EBC3B1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m in Sources */,
+				B3DB3E511F2F7A5200AA408F /* CheckboxButtonLight.m in Sources */,
 				E798463D1F0D28A3002A516A /* WalletTableSourceLight.m in Sources */,
+				B36EBC451F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m in Sources */,
 				B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */,
 				B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */,
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
@@ -4001,14 +4366,18 @@
 				B35130611E49C9930048A28C /* NewsCellModel.m in Sources */,
 				B3EE8F4B1F13766C00131823 /* QRCodeViewControllerDark.m in Sources */,
 				E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */,
+				B3CBDF331F2B470D00C80D4E /* TemplateTokenViewControllerDark.m in Sources */,
 				E79846321F0D2373002A516A /* WalletHeaderCellLight.m in Sources */,
 				E73910531DE30BA8008145A8 /* QRCodeViewController.m in Sources */,
+				B36EBC4C1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m in Sources */,
+				B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */,
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
+				B3CBDF0D1F2A463700C80D4E /* LibraryViewControllerLight.m in Sources */,
 				B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */,
 				B35DF63C1F262B8900316953 /* TokenDetailsViewControllerLight.m in Sources */,
 				B32BC4C91F29EF6400C2417C /* TokenCellSubscribeLight.m in Sources */,
@@ -4041,6 +4410,7 @@
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,
 				B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */,
 				E748578A1F13B25D00DCF9A6 /* TextFieldWithLineDark.m in Sources */,
+				B36EBC3E1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

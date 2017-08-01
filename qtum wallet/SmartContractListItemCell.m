@@ -10,13 +10,6 @@
 
 @implementation SmartContractListItemCell
 
-- (void)awakeFromNib {
-    
-    [super awakeFromNib];
-    
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = customRedColor();
-    [self setSelectedBackgroundView:bgColorView];
-}
+
 
 @end

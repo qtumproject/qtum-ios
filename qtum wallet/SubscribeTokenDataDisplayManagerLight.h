@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SubscribeTokenDataDisplayManagerDelegate.h"
-#import "SubscribeTokenDataDisplayManagerProtocol.h"
+#import "SubscribeTokenDataDisplayManager.h"
 
-@interface SubscribeTokenDataDisplayManagerLight : NSObject <SubscribeTokenDataDisplayManagerProtocol>
+@interface SubscribeTokenDataDisplayManagerLight : SubscribeTokenDataDisplayManager
 
 @end

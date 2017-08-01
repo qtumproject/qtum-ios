@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="proximanova-semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
         <array key="simplonmono-medium.ttf">
             <string>simplonmono-medium</string>
         </array>
@@ -17,10 +24,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Error Pop Up View Controller-->
+        <!--Error Pop Up View Controller Dark-->
         <scene sceneID="D3J-hr-6vh">
             <objects>
-                <viewController storyboardIdentifier="ErrorPopUp" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LQZ-jf-i0C" customClass="ErrorPopUpViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ErrorPopUpViewControllerDark" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LQZ-jf-i0C" customClass="ErrorPopUpViewControllerDark" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7tt-Cb-b6I"/>
                         <viewControllerLayoutGuide type="bottom" id="ofT-58-27H"/>
@@ -142,8 +149,151 @@
             </objects>
             <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
         </scene>
+        <!--Error Pop Up View Controller Light-->
+        <scene sceneID="1f8-Bb-gyI">
+            <objects>
+                <viewController storyboardIdentifier="ErrorPopUpViewControllerLight" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wzy-ge-Ybx" customClass="ErrorPopUpViewControllerLight" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mBj-2N-ola"/>
+                        <viewControllerLayoutGuide type="bottom" id="TPm-8V-4B1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PqG-eE-mfj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Aj-B7-1HY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmE-Iw-0ao">
+                                <rect key="frame" x="56.5" y="148.5" width="262" height="170"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ieg-mF-6fQ">
+                                        <rect key="frame" x="140" y="113" width="107" height="42"/>
+                                        <color key="backgroundColor" red="0.21176470589999999" green="0.72549019609999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="ETb-0g-67m"/>
+                                            <constraint firstAttribute="width" constant="107" id="UBr-nS-EtE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="TRY AGAIN">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionCancel:" destination="wzy-ge-Ybx" eventType="touchUpInside" id="7DW-Pa-UFC"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyJ-Yr-ahm">
+                                        <rect key="frame" x="109.5" y="33" width="44" height="18"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
+                                        <color key="textColor" red="0.99215686274509807" green="0.47450980392156861" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-error-popup" translatesAutoresizingMaskIntoConstraints="NO" id="4zl-qd-Ca8">
+                                        <rect key="frame" x="84.5" y="31" width="18" height="18"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KOi-zg-3Ig">
+                                        <rect key="frame" x="15" y="113" width="107" height="42"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="2Gq-eJ-Lmq"/>
+                                            <constraint firstAttribute="width" constant="107" id="d5n-BF-aCb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="CANCEL">
+                                            <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionOk:" destination="wzy-ge-Ybx" eventType="touchUpInside" id="YwV-9C-zyu"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDm-ac-lR1">
+                                        <rect key="frame" x="55.5" y="113" width="150" height="42"/>
+                                        <color key="backgroundColor" red="0.21176470589999999" green="0.72549019609999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="4kO-F1-1Y2"/>
+                                            <constraint firstAttribute="height" constant="42" id="nv5-HY-cvS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="CANCEL">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionOk:" destination="wzy-ge-Ybx" eventType="touchUpInside" id="jfT-Cv-UA0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="OyJ-Yr-ahm" firstAttribute="leading" secondItem="4zl-qd-Ca8" secondAttribute="trailing" constant="7" id="7Vx-Om-BKh"/>
+                                    <constraint firstItem="OyJ-Yr-ahm" firstAttribute="top" secondItem="mmE-Iw-0ao" secondAttribute="top" constant="33" id="D5O-fl-NLw"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ieg-mF-6fQ" secondAttribute="bottom" constant="15" id="Dlo-fE-wwl"/>
+                                    <constraint firstAttribute="width" constant="262" id="G9g-81-fsG"/>
+                                    <constraint firstItem="ZDm-ac-lR1" firstAttribute="centerX" secondItem="mmE-Iw-0ao" secondAttribute="centerX" id="HRF-Uo-7IC"/>
+                                    <constraint firstItem="Ieg-mF-6fQ" firstAttribute="centerY" secondItem="KOi-zg-3Ig" secondAttribute="centerY" id="Oef-iC-MNB"/>
+                                    <constraint firstAttribute="height" constant="170" id="VqZ-Ae-3Py"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ieg-mF-6fQ" secondAttribute="trailing" constant="15" id="jsd-x2-RrS"/>
+                                    <constraint firstItem="OyJ-Yr-ahm" firstAttribute="centerX" secondItem="mmE-Iw-0ao" secondAttribute="centerX" id="qOm-3z-Ouc"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZDm-ac-lR1" secondAttribute="bottom" constant="15" id="rGb-ZQ-BZc"/>
+                                    <constraint firstItem="4zl-qd-Ca8" firstAttribute="centerY" secondItem="OyJ-Yr-ahm" secondAttribute="centerY" constant="-2" id="rjc-3b-r5P"/>
+                                    <constraint firstItem="KOi-zg-3Ig" firstAttribute="leading" secondItem="mmE-Iw-0ao" secondAttribute="leading" constant="15" id="rlQ-tg-6uN"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1A-4V-RIp">
+                                <rect key="frame" x="127" y="211.5" width="122" height="12"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mmE-Iw-0ao" firstAttribute="centerX" secondItem="PqG-eE-mfj" secondAttribute="centerX" id="F5a-l6-wS7"/>
+                            <constraint firstItem="y1A-4V-RIp" firstAttribute="top" secondItem="OyJ-Yr-ahm" secondAttribute="bottom" constant="12" id="h4d-9u-sTA"/>
+                            <constraint firstItem="y1A-4V-RIp" firstAttribute="centerX" secondItem="PqG-eE-mfj" secondAttribute="centerX" id="hdc-Ad-HOx"/>
+                            <constraint firstItem="mmE-Iw-0ao" firstAttribute="centerY" secondItem="PqG-eE-mfj" secondAttribute="centerY" multiplier="0.7" id="yfH-GC-tbF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Ieg-mF-6fQ" id="R62-ey-4w4"/>
+                        <outlet property="centerOkButton" destination="ZDm-ac-lR1" id="UpI-BZ-nzm"/>
+                        <outlet property="messageLabel" destination="y1A-4V-RIp" id="Owp-Up-XwT"/>
+                        <outlet property="okButton" destination="KOi-zg-3Ig" id="Seu-xp-Sya"/>
+                        <outlet property="titleLabel" destination="OyJ-Yr-ahm" id="OMH-lm-XWy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mnw-dJ-wSU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946.39999999999998" y="142.57871064467767"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic-error" width="26" height="22"/>
+        <image name="ic-error-popup" width="18" height="18"/>
     </resources>
 </document>

@@ -10,7 +10,7 @@
 #import "SubscribeTokenDataDisplayManagerDark.h"
 #import "SubscribeTokenCoordinator.h"
 #import "UIImage+Extension.h"
-#import "TockenCellSubscribe.h"
+#import "TokenCellSubscribe.h"
 
 @interface SubscribeTokenViewController ()
 

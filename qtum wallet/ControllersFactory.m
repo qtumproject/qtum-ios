@@ -32,7 +32,7 @@
 #import "AddNewTokensViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
-#import "ChooseSmartContractViewController.h"
+#import "SmartContractMenuViewController.h"
 #import "SmartContractsListViewController.h"
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
@@ -72,6 +72,10 @@
 #import "LibraryOutput.h"
 #import "NewsOutput.h"
 #import "TokenDetailOutput.h"
+#import "SmartContractMenuOutput.h"
+#import "PublishedContractListOutput.h"
+#import "TemplatesListOutput.h"
+#import "RestoreContractsOutput.h"
 
 @implementation ControllersFactory
 
@@ -253,9 +257,10 @@
     return controller;
 }
 
--(TemplateTokenViewController*)createTemplateTokenViewController{
-    TemplateTokenViewController* controller = (TemplateTokenViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
-    return controller;
+-(NSObject<TemplatesListOutput> *)createTemplateTokenViewController {
+    
+    NSObject<TemplatesListOutput> *output = (NSObject<TemplatesListOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
+    return output;
 }
 
 -(AddNewTokensViewController*)createAddNewTokensViewController{
@@ -278,13 +283,15 @@
     return controller;
 }
 
--(ChooseSmartContractViewController*)createChooseSmartContractViewController{
-    ChooseSmartContractViewController* controller = (ChooseSmartContractViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ChooseSmartContractViewController"];
+-(NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController {
+    
+    NSObject <SmartContractMenuOutput>* controller = (NSObject <SmartContractMenuOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractMenuViewController"];
     return controller;
 }
 
--(SmartContractsListViewController*)createSmartContractsListViewController{
-    SmartContractsListViewController* controller = (SmartContractsListViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
+-(NSObject <PublishedContractListOutput>*)createSmartContractsListViewController {
+    
+    NSObject <PublishedContractListOutput>* controller = (NSObject <PublishedContractListOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
     return controller;
 }
 
@@ -314,8 +321,9 @@
     return controller;
 }
 
--(RestoreContractsViewController*)createRestoreContractViewController{
-    RestoreContractsViewController* controller = (RestoreContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContracts"];
+-(NSObject <RestoreContractsOutput>*)createRestoreContractViewController{
+    
+    NSObject <RestoreContractsOutput>* controller = (NSObject <RestoreContractsOutput>*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContractsViewController"];
     return controller;
 }
 
@@ -353,22 +361,22 @@
 #pragma mark - Pop ups
 
 -(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController{
-    NoInternetConnectionPopUpViewController* controller = (NoInternetConnectionPopUpViewController*)[UIViewController controllerInStoryboard:@"NoInternetConnectionPopUp" withIdentifire:@"NoInternetConnectionPopUp"];
+    NoInternetConnectionPopUpViewController* controller = (NoInternetConnectionPopUpViewController*)[UIViewController controllerInStoryboard:@"NoInternetConnectionPopUp" withIdentifire:@"NoInternetConnectionPopUpViewController"];
     return controller;
 }
 
 -(PhotoLibraryPopUpViewController*)createPhotoLibraryPopUpViewController{
-    PhotoLibraryPopUpViewController* controller = (PhotoLibraryPopUpViewController*)[UIViewController controllerInStoryboard:@"PhotoLibraryPopUp" withIdentifire:@"PhotoLibraryPopUp"];
+    PhotoLibraryPopUpViewController* controller = (PhotoLibraryPopUpViewController*)[UIViewController controllerInStoryboard:@"PhotoLibraryPopUp" withIdentifire:@"PhotoLibraryPopUpViewController"];
     return controller;
 }
 
 - (ErrorPopUpViewController *)createErrorPopUpViewController{
-    ErrorPopUpViewController* controller = (ErrorPopUpViewController*)[UIViewController controllerInStoryboard:@"ErrorPopUp" withIdentifire:@"ErrorPopUp"];
+    ErrorPopUpViewController* controller = (ErrorPopUpViewController*)[UIViewController controllerInStoryboard:@"ErrorPopUp" withIdentifire:@"ErrorPopUpViewController"];
     return controller;
 }
 
 -(InformationPopUpViewController *)createInformationPopUpViewController{
-    InformationPopUpViewController* controller = (InformationPopUpViewController*)[UIViewController controllerInStoryboard:@"InformationPopUp" withIdentifire:@"InformationPopUp"];
+    InformationPopUpViewController* controller = (InformationPopUpViewController*)[UIViewController controllerInStoryboard:@"InformationPopUp" withIdentifire:@"InformationPopUpViewController"];
     return controller;
 }
 
@@ -378,12 +386,13 @@
 }
 
 - (LoaderPopUpViewController *)createLoaderViewController{
-    LoaderPopUpViewController* controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUp"];
+    LoaderPopUpViewController* controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUpViewController"];
     return controller;
 }
 
-- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController{
-    RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUp"];
+- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController {
+    
+    RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUpViewController"];
     return controller;
 }
 

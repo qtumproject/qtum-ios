@@ -19,6 +19,10 @@
 #import "TokenDetailDataDisplayManager.h"
 #import "TokenDetailsTableSource.h"
 #import "TokenDetailLightDisplayDataManager.h"
+#import "SubscribeTokenDataDisplayManagerProtocol.h"
+#import "SubscribeTokenDataDisplayManagerDark.h"
+#import "SubscribeTokenDataDisplayManagerLight.h"
+
 
 @implementation TableSourcesFactory
 
@@ -86,7 +90,7 @@
     }
 }
 
-- (NSObject<TokenDetailDataDisplayManager> *)createTokenDetailSoutce {
+- (NSObject<TokenDetailDataDisplayManager> *)createTokenDetailSource {
     
     if ([NSUserDefaults isDarkSchemeSetting]) {
         return [TokenDetailsTableSource new];
@@ -95,6 +99,14 @@
     }
 }
 
+- (NSObject<SubscribeTokenDataDisplayManagerProtocol> *)createSubscribeTokenDataDisplayManager {
+    
+    if ([NSUserDefaults isDarkSchemeSetting]) {
+        return [SubscribeTokenDataDisplayManagerDark new];
+    }else{
+        return [SubscribeTokenDataDisplayManagerLight new];
+    }
+}
 
 
 @end

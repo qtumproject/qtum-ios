@@ -102,7 +102,7 @@
     
     BOOL available = (self.abiTextView.text.length > 0) && (self.contractNameField.text.length > 0) && (self.contractAddressTextField.text.length > 0);
     self.okButton.enabled = available;
-    self.okButton.alpha = available ? 1.0f : 0.7f;
+    self.okButton.alpha = available ? 1.0f : 0.5f;
 }
 
 - (void)done:(id)sender {
@@ -162,7 +162,12 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     
+    [self.abiTextView setEditingMode:YES];
     [self.scrollView scrollRectToVisible:CGRectMake(self.scrollView.contentSize.width - 1, self.scrollView.contentSize.height - 1, 1, 1) animated:YES];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [self.abiTextView setEditingMode:NO];
 }
 
 @end

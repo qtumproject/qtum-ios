@@ -24,8 +24,14 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondInputViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridInputViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourthInputViewHeight;
+@property (weak, nonatomic) IBOutlet UIView *firstInputUnderlineView;
+@property (weak, nonatomic) IBOutlet UIView *secondInputUnderlineView;
+@property (weak, nonatomic) IBOutlet UIView *thridInputUnderlineView;
+@property (weak, nonatomic) IBOutlet UIView *fourthInputUnderlineView;
+
 
 - (void)applyFailedPasswordAction;
 - (void)clearPinTextFields;
+- (void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed;
 
 @end

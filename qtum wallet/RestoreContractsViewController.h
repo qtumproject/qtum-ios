@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ContractCoordinator.h"
+#import "RestoreContractsOutput.h"
+#import "CheckboxButton.h"
 
-@interface RestoreContractsViewController : UIViewController
+@interface RestoreContractsViewController : UIViewController <RestoreContractsOutput, CheckboxButtonDelegate>
 
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
+@property (strong, nonatomic) NSMutableArray <CheckboxButton*> *buttons;
+@property (weak, nonatomic) IBOutlet UIView *containerForButtons;
 
 @end
