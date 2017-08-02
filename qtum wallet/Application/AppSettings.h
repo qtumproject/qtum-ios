@@ -14,9 +14,11 @@
 @property (assign, nonatomic, readonly) BOOL isRPC;
 @property (assign, nonatomic, readonly) BOOL isFingerprintEnabled;
 @property (assign, nonatomic, readonly) BOOL isFingerprintAllowed;
+@property (assign, nonatomic, readonly) BOOL isDarkTheme;
 
 -(void)setup;
 -(void)setFingerprintEnabled:(BOOL)enabled;
+-(void)changeThemeToDark:(BOOL) needDarkTheme;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

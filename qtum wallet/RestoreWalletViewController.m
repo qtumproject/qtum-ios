@@ -119,6 +119,7 @@
     [[PopUpsManager sharedInstance] dismissLoader];
     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
     if ([self.delegate respondsToSelector:@selector(didRestoreWallet)]) {
+        [self.view endEditing:YES];
         [self.delegate didRestoreWallet];
     }
 }

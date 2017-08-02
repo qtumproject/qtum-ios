@@ -23,12 +23,12 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *tokenButton;
 @property (weak, nonatomic) IBOutlet UIImageView *tokenDisclousureImage;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalance;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withoutTokensConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonTopConstraint;
@@ -50,6 +50,8 @@ static NSInteger withTokenOffset = 100;
 static NSInteger withoutTokenOffset = 40;
 
 @implementation NewPaymentViewController
+
+@synthesize delegate;
 
 - (void)viewDidLoad {
     
@@ -111,7 +113,7 @@ static NSInteger withoutTokenOffset = 40;
     BOOL isFilled = [self isTextFieldsFilled];
     
     self.sendButton.enabled = isFilled;
-    self.sendButton.alpha = isFilled ? 1 : 0.7f;
+    self.sendButton.alpha = isFilled ? 1 : 0.5f;
 }
 
 -(BOOL)isTextFieldsFilled {

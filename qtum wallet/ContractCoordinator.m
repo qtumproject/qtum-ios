@@ -12,7 +12,7 @@
 #import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
 #import "ContractManager.h"
-#import "CustomAbiInterphaseViewController.h"
+#import "ConstructorFromAbiViewController.h"
 #import "ContractInterfaceManager.h"
 #import "CreateTokenFinishViewController.h"
 #import "TemplateTokenViewController.h"
@@ -50,14 +50,18 @@ WatchContractOutputDelegate,
 SmartContractMenuOutputDelegate,
 PublishedContractListOutputDelegate,
 TemplatesListOutputDelegate,
-RestoreContractsOutputDelegate>
+RestoreContractsOutputDelegate,
+BackupContractOutputDelegate,
+ConstructorAbiOutputDelegate,
+ContractFunctionDetailOutputDelegate,
+ContractFunctionsOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) UINavigationController* modalNavigationController;
 @property (strong,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
 @property (strong,nonatomic) TemplateModel* templateModel;
 
-@property (weak, nonatomic) TokenFunctionDetailViewController* functionDetailController;
+@property (weak, nonatomic) NSObject <ContractFunctionDetailOutput>* functionDetailController;
 @property (weak, nonatomic) CreateTokenFinishViewController *createFinishViewController;
 @property (weak, nonatomic) NSObject <SmartContractMenuOutput>* smartContractMenuOutput;
 
@@ -186,6 +190,7 @@ RestoreContractsOutputDelegate>
 }
 
 -(void)showBackupContract {
+    
     BackupContractsViewController* controller = (BackupContractsViewController*)[[ControllersFactory sharedInstance] createBackupContractViewController];
     controller.delegate = self;
     
@@ -194,11 +199,11 @@ RestoreContractsOutputDelegate>
 
 -(void)showStepWithFieldsAndTemplate:(NSString*)template{
     
-    CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[[ControllersFactory sharedInstance] createCustomAbiInterphaseViewController];
-    controller.delegate = self;
-    controller.contractTitle = self.templateModel.templateName;
-    controller.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:self.templateModel.path];
-    [self.navigationController pushViewController:controller animated:YES];
+    NSObject <ConstructorAbiOutput>* output = [[ControllersFactory sharedInstance] createConstructorFromAbiViewController];
+    output.delegate = self;
+    output.contractTitle = self.templateModel.templateName;
+    output.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:self.templateModel.path];
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
 -(void)showFinishStepWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs {
@@ -214,11 +219,11 @@ RestoreContractsOutputDelegate>
 -(void)showContractsFunction:(Contract*) contract {
     
     if (contract.templateModel) {
-        TokenFunctionViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-        controller.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:contract.templateModel.path];
-        controller.delegate = self;
-        controller.token = contract;
-        [self.navigationController pushViewController:controller animated:true];
+        NSObject <ContractFunctionsOutput>* output = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
+        output.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:contract.templateModel.path];
+        output.delegate = self;
+        output.token = contract;
+        [self.navigationController pushViewController:[output toPresent] animated:true];
     }
 }
 
@@ -258,12 +263,6 @@ RestoreContractsOutputDelegate>
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
--(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName {
-    
-    self.localContractName = contractName;
-    [self showFinishStepWithInputs:inputs];
-}
-
 -(void)finishStepBackDidPressed {
     
     [self.navigationController popToViewController:[self.smartContractMenuOutput toPresent] animated:YES];
@@ -293,25 +292,50 @@ RestoreContractsOutputDelegate>
     }];
 }
 
+- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token fromQStore:(BOOL)fromQStore {
+    
+    NSObject <ContractFunctionDetailOutput>* output = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
+    output.function = item;
+    output.delegate = self;
+    output.token = token;
+    output.fromQStore = fromQStore;
+    self.functionDetailController = output;
+    [self.navigationController pushViewController:[output toPresent] animated:true];
+}
+
+- (void)didSelectQStoreCategories {
+    [self showQStoreList:QStoreCategories categoryTitle:nil];
+}
+
+- (void)didSelectQStoreCategory {
+    [self showQStoreList:QStoreContracts categoryTitle:@"Some category"];
+}
+
+- (void)didSelectQStoreContract {
+    [self showQStoreContract];
+}
+
+- (void)didSelectQStoreContractDetails {
+    [self didSelectFunctionIndexPath:nil withItem:nil andToken:nil fromQStore:YES];
+}
+
+-(void)didPressedQuit {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+#pragma mark - ContractFunctionsOutputDelegate
+
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token {
     
     [self didSelectFunctionIndexPath:indexPath withItem:item andToken:token fromQStore:NO];
 }
 
-- (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token fromQStore:(BOOL)fromQStore {
-    
-    TokenFunctionDetailViewController* controller = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
-    controller.function = item;
-    controller.delegate = self;
-    controller.token = token;
-    controller.fromQStore = fromQStore;
-    self.functionDetailController = controller;
-    [self.navigationController pushViewController:controller animated:true];
-}
-
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
     
 }
+
+
+#pragma mark - ContractFunctionDetailOutputDelegate
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
@@ -337,25 +361,6 @@ RestoreContractsOutputDelegate>
     }];
 }
 
-- (void)didSelectQStoreCategories {
-    [self showQStoreList:QStoreCategories categoryTitle:nil];
-}
-
-- (void)didSelectQStoreCategory {
-    [self showQStoreList:QStoreContracts categoryTitle:@"Some category"];
-}
-
-- (void)didSelectQStoreContract {
-    [self showQStoreContract];
-}
-
-- (void)didSelectQStoreContractDetails {
-    [self didSelectFunctionIndexPath:nil withItem:nil andToken:nil fromQStore:YES];
-}
-
--(void)didPressedQuit {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
 
 #pragma mark - PublishedContractListOutputDelegate, LibraryOutputDelegate
 
@@ -376,6 +381,13 @@ RestoreContractsOutputDelegate>
     [self showStepWithFieldsAndTemplate:templateModel.path];
 }
 
+#pragma mark - ConstructorAbiOutputDelegate
+
+-(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName {
+    
+    self.localContractName = contractName;
+    [self showFinishStepWithInputs:inputs];
+}
 
 #pragma mark - WatchContractOutputDelegate
 
@@ -420,7 +432,8 @@ RestoreContractsOutputDelegate>
     [self showBackupContract];
 }
 
-#pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate
+
+#pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate, BackupContractOutputDelegate
 
 - (void)didBackPressed {
     [self.navigationController popViewControllerAnimated:YES];

@@ -7,20 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AbiinterfaceItem.h"
-#import "ContractCoordinator.h"
+#import "ContractFunctionDetailOutput.h"
+
 @class Contract;
 
-@interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController>
+@interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput>
 
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
-@property (strong,nonatomic) AbiinterfaceItem* function;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak,nonatomic) Contract* token;
-@property (assign,nonatomic) UIEdgeInsets originInsets;
-@property (nonatomic) BOOL fromQStore;
-
--(void)showResultViewWithOutputs:(NSArray*) outputs;
-
+- (IBAction)didPressedNextOnTextField:(id)sender;
+- (IBAction)didPressedCancelAction:(id)sender;
+- (IBAction)didPressedCallAction:(id)sender;
 
 @end

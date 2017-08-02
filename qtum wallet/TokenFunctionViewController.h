@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "InterfaceInputFormModel.h"
 #import "ContractCoordinator.h"
+#import "ContractFunctionsOutput.h"
+
 @class Token;
 
-@interface TokenFunctionViewController : BaseViewController
-
-@property (strong,nonatomic) InterfaceInputFormModel* formModel;
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
-@property (weak,nonatomic) Contract* token;
+@interface TokenFunctionViewController : BaseViewController <ContractFunctionsOutput>
 
 @end

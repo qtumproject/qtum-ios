@@ -16,23 +16,15 @@
 
 @required
 -(void)createStepOneCancelDidPressed;
--(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName;
--(void)finishStepFinishDidPressed;
--(void)finishStepBackDidPressed;
 -(void)didPressedBack;
 -(void)didSelectQStoreCategories;
 -(void)didSelectQStoreCategory;
 -(void)didSelectQStoreContract;
 -(void)didSelectQStoreContractDetails;
--(void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token;
--(void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
--(void)didCallFunctionWithItem:(AbiinterfaceItem*) item
-                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Contract*) token;
+
 
 - (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;
-- (void)didPressedQuit;
 
 
 @end

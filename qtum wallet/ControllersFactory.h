@@ -17,7 +17,7 @@
 @class AuthNavigationController;
 @class ExportWalletBrandKeyViewController;
 @class SubscribeTokenViewController;
-@class CustomAbiInterphaseViewController;
+@class ConstructorFromAbiViewController;
 @class CreateTokenFinishViewController;
 @class TokenFunctionViewController;
 @class TokenFunctionDetailViewController;
@@ -67,6 +67,11 @@
 @protocol PublishedContractListOutput;
 @protocol TemplatesListOutput;
 @protocol RestoreContractsOutput;
+@protocol BackupContractOutput;
+@protocol ConstructorAbiOutput;
+@protocol ContractCreationEndOutput;
+@protocol ContractFunctionDetailOutput;
+@protocol ContractFunctionsOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -94,30 +99,30 @@
 - (AuthNavigationController*)createAuthNavigationController;
 - (ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
 - (SubscribeTokenViewController*)createSubscribeTokenViewController;
-- (CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController;
 - (CreateTokenFinishViewController*)createCreateTokenFinishViewController;
-- (NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
 - (AddNewTokensViewController*)createAddNewTokensViewController;
 - (ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 - (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
-- (TokenFunctionViewController*)createTokenFunctionViewController;
-- (TokenFunctionDetailViewController*)createTokenFunctionDetailViewController;
-- (BackupContractsViewController*)createBackupContractViewController;
 - (EnableFingerprintViewController*)createEnableFingerprintViewController;
 
-- (NSObject<TemplatesListOutput> *)createTemplateTokenViewController;
+- (NSObject <ContractCreationEndOutput> *)createTokenDetailsViewController;
+- (NSObject <TemplatesListOutput> *)createTemplateTokenViewController;
 - (NSObject <PublishedContractListOutput>*)createSmartContractsListViewController;
 - (NSObject <WatchContractOutput>*)createWatchContractViewController;
 - (NSObject <WatchContractOutput>*)createWatchTokensViewController;
 - (NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
-- (NSObject<WalletOutput> *)createWalletViewController;
-- (NSObject<TokenListOutput> *)createTokenListViewController;
-- (NSObject<LanguageOutput> *)createLanguageViewController;
-- (NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController;
-- (NSObject<HistoryItemOutput> *)createHistoryItem;
-- (NSObject<RecieveOutput> *)createRecieveViewController;
-- (NSObject<LibraryOutput> *)createLibraryViewController;
+- (NSObject <WalletOutput> *)createWalletViewController;
+- (NSObject <TokenListOutput> *)createTokenListViewController;
+- (NSObject <LanguageOutput> *)createLanguageViewController;
+- (NSObject <ExportBrainKeyOutput> *)createExportBrainKeyViewController;
+- (NSObject <HistoryItemOutput> *)createHistoryItem;
+- (NSObject <RecieveOutput> *)createRecieveViewController;
+- (NSObject <LibraryOutput> *)createLibraryViewController;
 - (NSObject <RestoreContractsOutput>*)createRestoreContractViewController;
+- (NSObject <BackupContractOutput>*)createBackupContractViewController;
+- (NSObject <ConstructorAbiOutput> *)createConstructorFromAbiViewController;
+- (NSObject <ContractFunctionDetailOutput>*)createTokenFunctionDetailViewController;
+- (NSObject <ContractFunctionsOutput> *)createTokenFunctionViewController;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;

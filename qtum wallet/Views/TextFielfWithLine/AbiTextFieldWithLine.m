@@ -10,12 +10,12 @@
 
 @interface AbiTextFieldWithLine () <UITextFieldDelegate>
 
-
 @end
 
 @implementation AbiTextFieldWithLine
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self setupWithItem:nil];

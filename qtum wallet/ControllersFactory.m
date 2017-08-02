@@ -23,7 +23,7 @@
 #import "SubscribeTokenViewController.h"
 #import "HistoryViewController.h"
 #import "WalletNavigationController.h"
-#import "CustomAbiInterphaseViewController.h"
+#import "ConstructorFromAbiViewController.h"
 #import "CreateTokenFinishViewController.h"
 #import "TokenDetailsViewController.h"
 #import "TokenFunctionViewController.h"
@@ -37,7 +37,6 @@
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
-#import "BackupContractsViewController.h"
 #import "EnableFingerprintViewController.h"
 #import "QStoreViewController.h"
 #import "QStoreListViewController.h"
@@ -76,6 +75,8 @@
 #import "PublishedContractListOutput.h"
 #import "TemplatesListOutput.h"
 #import "RestoreContractsOutput.h"
+#import "BackupContractOutput.h"
+#import "ConstructorAbiOutput.h"
 
 @implementation ControllersFactory
 
@@ -122,7 +123,6 @@
         return [TabBarControllerLight new];
     }
 }
-
 
 -(UINavigationController*)walletFlowTab {
     
@@ -179,8 +179,6 @@
     return output;
 }
 
-
-
 -(RepeateViewController*)createRepeatePinController{
     RepeateViewController* controller = (RepeateViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RepeateViewController"];
     return controller;
@@ -227,17 +225,20 @@
     return controller;
 }
 
--(CustomAbiInterphaseViewController*)createCustomAbiInterphaseViewController{
-    CustomAbiInterphaseViewController* controller = (CustomAbiInterphaseViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CustomAbiInterphaseViewController"];
-    return controller;
+-(NSObject<ConstructorAbiOutput> *)createConstructorFromAbiViewController {
+    
+    NSObject<ConstructorAbiOutput> *output = (NSObject<ConstructorAbiOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ConstructorFromAbiViewController"];
+    return output;
 }
 
--(CreateTokenFinishViewController*)createCreateTokenFinishViewController{
-    CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
-    return controller;
+-(NSObject <ContractCreationEndOutput> *)createCreateTokenFinishViewController {
+    
+    NSObject <ContractCreationEndOutput> *output = (NSObject <ContractCreationEndOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
+    return output;
 }
 
 -(NSObject <TokenDetailOutput> *)createTokenDetailsViewController {
+    
     NSObject <TokenDetailOutput> * controller = (NSObject <TokenDetailOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
     return controller;
 }
@@ -247,13 +248,14 @@
     return controller;
 }
 
--(TokenFunctionViewController*)createTokenFunctionViewController{
-    TokenFunctionViewController* controller = (TokenFunctionViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionViewController"];
-    return controller;
+-(NSObject<ContractFunctionsOutput> *)createTokenFunctionViewController {
+    
+    NSObject<ContractFunctionsOutput> * output = (NSObject<ContractFunctionsOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionViewController"];
+    return output;
 }
 
--(TokenFunctionDetailViewController*)createTokenFunctionDetailViewController{
-    TokenFunctionDetailViewController* controller = (TokenFunctionDetailViewController*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionDetailViewController"];
+-(NSObject <ContractFunctionDetailOutput>*)createTokenFunctionDetailViewController{
+    NSObject <ContractFunctionDetailOutput>* controller = (NSObject <ContractFunctionDetailOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionDetailViewController"];
     return controller;
 }
 
@@ -327,9 +329,10 @@
     return controller;
 }
 
--(BackupContractsViewController*)createBackupContractViewController{
-    BackupContractsViewController* controller = (BackupContractsViewController*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContracts"];
-    return controller;
+-(NSObject <BackupContractOutput>*)createBackupContractViewController {
+    
+    NSObject <BackupContractOutput>* outbut = (NSObject <BackupContractOutput>*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContractsViewController"];
+    return outbut;
 }
 
 -(EnableFingerprintViewController*)createEnableFingerprintViewController{
