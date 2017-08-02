@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
         <array key="proximanova-semibold.otf">
             <string>ProximaNova-Semibold</string>
         </array>
@@ -169,8 +172,8 @@
                                 <rect key="frame" x="57" y="87.5" width="261" height="292"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer Balance" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJS-Rf-ydk">
-                                        <rect key="frame" x="20" y="33" width="221" height="18"/>
-                                        <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="15"/>
+                                        <rect key="frame" x="20" y="20" width="221" height="18"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -216,58 +219,48 @@
                                             <action selector="didPressTransferAction:" destination="BQD-Mh-6Ja" eventType="touchUpInside" id="LEk-uz-3bF"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d82-63-oty" customClass="TextFieldWithLineDarkPopup">
-                                        <rect key="frame" x="15" y="81" width="231" height="20"/>
-                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d82-63-oty" customClass="TextFieldWithLineLightSend">
+                                        <rect key="frame" x="15" y="65" width="231" height="18"/>
+                                        <color key="tintColor" red="0.0" green="1" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jY5-b9-2uN" customClass="TextFieldWithLineDarkPopup">
-                                        <rect key="frame" x="15" y="141" width="231" height="20"/>
-                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jY5-b9-2uN" customClass="TextFieldWithLineLightSend">
+                                        <rect key="frame" x="15" y="113" width="231" height="18"/>
+                                        <color key="tintColor" red="0.0" green="1" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMF-YO-Upd" customClass="TextFieldWithLineDarkPopup">
-                                        <rect key="frame" x="15" y="201" width="231" height="20"/>
-                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMF-YO-Upd" customClass="TextFieldWithLineLightSend">
+                                        <rect key="frame" x="15" y="161" width="231" height="18"/>
+                                        <color key="tintColor" red="0.0" green="1" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-arrow-dark" translatesAutoresizingMaskIntoConstraints="NO" id="nTE-oF-GOH">
-                                        <rect key="frame" x="234" y="206" width="12" height="10"/>
-                                        <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="tH7-eO-9WJ"/>
-                                            <constraint firstAttribute="height" constant="10" id="wfL-rv-IKY"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="d82-63-oty" firstAttribute="leading" secondItem="iBE-LR-p8E" secondAttribute="leading" constant="15" id="4Sp-JV-AYl"/>
                                     <constraint firstAttribute="width" constant="261" id="4pJ-wv-das"/>
                                     <constraint firstItem="dMF-YO-Upd" firstAttribute="leading" secondItem="iBE-LR-p8E" secondAttribute="leading" constant="15" id="7MJ-Th-Lrb"/>
-                                    <constraint firstItem="qJS-Rf-ydk" firstAttribute="top" secondItem="iBE-LR-p8E" secondAttribute="top" constant="33" id="8Z1-Tm-pVd"/>
+                                    <constraint firstItem="qJS-Rf-ydk" firstAttribute="top" secondItem="iBE-LR-p8E" secondAttribute="top" constant="20" id="8Z1-Tm-pVd"/>
                                     <constraint firstItem="chH-b9-qpp" firstAttribute="leading" secondItem="iBE-LR-p8E" secondAttribute="leading" constant="15" id="9OZ-l7-IMu"/>
-                                    <constraint firstItem="nTE-oF-GOH" firstAttribute="centerY" secondItem="dMF-YO-Upd" secondAttribute="centerY" id="ABd-sc-Uie"/>
                                     <constraint firstItem="qJS-Rf-ydk" firstAttribute="leading" secondItem="iBE-LR-p8E" secondAttribute="leading" constant="20" id="JaC-6C-6Oh"/>
                                     <constraint firstAttribute="trailing" secondItem="bCm-oX-BwO" secondAttribute="trailing" constant="15" id="Lrg-Pn-w5n"/>
                                     <constraint firstAttribute="height" constant="292" id="OHN-Di-74p"/>
                                     <constraint firstAttribute="trailing" secondItem="jY5-b9-2uN" secondAttribute="trailing" constant="15" id="Ppz-NK-4Q3"/>
-                                    <constraint firstItem="nTE-oF-GOH" firstAttribute="trailing" secondItem="dMF-YO-Upd" secondAttribute="trailing" id="V6p-Zw-7To"/>
                                     <constraint firstAttribute="trailing" secondItem="qJS-Rf-ydk" secondAttribute="trailing" constant="20" id="Yhc-34-42Q"/>
-                                    <constraint firstItem="dMF-YO-Upd" firstAttribute="top" secondItem="jY5-b9-2uN" secondAttribute="bottom" constant="40" id="cHF-IX-qMD"/>
+                                    <constraint firstItem="dMF-YO-Upd" firstAttribute="top" secondItem="jY5-b9-2uN" secondAttribute="bottom" constant="30" id="cHF-IX-qMD"/>
                                     <constraint firstItem="jY5-b9-2uN" firstAttribute="leading" secondItem="iBE-LR-p8E" secondAttribute="leading" constant="15" id="dYT-Dn-1GL"/>
                                     <constraint firstAttribute="bottom" secondItem="bCm-oX-BwO" secondAttribute="bottom" constant="17" id="h5V-cN-5jT"/>
-                                    <constraint firstItem="d82-63-oty" firstAttribute="top" secondItem="qJS-Rf-ydk" secondAttribute="bottom" constant="30" id="pfa-sq-Zl2"/>
+                                    <constraint firstItem="d82-63-oty" firstAttribute="top" secondItem="qJS-Rf-ydk" secondAttribute="bottom" constant="27" id="pfa-sq-Zl2"/>
                                     <constraint firstItem="qJS-Rf-ydk" firstAttribute="centerX" secondItem="iBE-LR-p8E" secondAttribute="centerX" id="r52-wF-ajX"/>
                                     <constraint firstItem="bCm-oX-BwO" firstAttribute="centerY" secondItem="chH-b9-qpp" secondAttribute="centerY" id="tic-bK-tmt"/>
                                     <constraint firstAttribute="trailing" secondItem="d82-63-oty" secondAttribute="trailing" constant="15" id="uIk-iQ-R6R"/>
-                                    <constraint firstItem="jY5-b9-2uN" firstAttribute="top" secondItem="d82-63-oty" secondAttribute="bottom" constant="40" id="yPd-xx-8hD"/>
+                                    <constraint firstItem="jY5-b9-2uN" firstAttribute="top" secondItem="d82-63-oty" secondAttribute="bottom" constant="30" id="yPd-xx-8hD"/>
                                     <constraint firstAttribute="trailing" secondItem="dMF-YO-Upd" secondAttribute="trailing" constant="15" id="ypQ-St-Lmg"/>
                                 </constraints>
                             </view>
@@ -290,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JvV-db-l78" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="-65"/>
+            <point key="canvasLocation" x="1039" y="-65"/>
         </scene>
     </scenes>
     <resources>
