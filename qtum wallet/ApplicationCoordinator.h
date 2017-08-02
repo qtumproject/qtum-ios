@@ -33,6 +33,7 @@
 - (void)startSecurityFlowWithType:(SecurityCheckingType) type WithHandler:(void(^)(BOOL)) handler;
 - (void)startChangedLanguageFlow;
 - (void)startFromOpenURLWithAddress:(NSString*) address andAmount:(NSString*) amount;
+- (void)startChanginTheme;
 
 - (void)logout;
 

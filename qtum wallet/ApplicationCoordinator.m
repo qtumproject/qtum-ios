@@ -27,6 +27,7 @@
 #import "ProfileCoordinator.h"
 #import "WalletManager.h"
 #import "Wallet.h"
+#import "Appearance.h"
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
@@ -274,7 +275,21 @@
     ProfileCoordinator *coordinator = [[ProfileCoordinator alloc] initWithNavigationController:vc];
     [self.tabCoordinator addDependency:coordinator];
     [coordinator startFromLanguage];
+}
+
+-(void)startChanginTheme {
     
+    BOOL isDark = [[AppSettings sharedInstance] isDarkTheme];
+    [[AppSettings sharedInstance] changeThemeToDark:!isDark];
+    [Appearance setUp];
+    [self restartMainFlow];
+    NSInteger profileIndex = 1;
+    [self.tabCoordinator showControllerByIndex:profileIndex];
+    UINavigationController *vc = (UINavigationController *)[self.tabCoordinator getViewControllerByIndex:profileIndex];
+    
+    ProfileCoordinator *coordinator = [[ProfileCoordinator alloc] initWithNavigationController:vc];
+    [self.tabCoordinator addDependency:coordinator];
+    [coordinator start];
 }
 
 - (void)startFromOpenURLWithAddress:(NSString*) address andAmount:(NSString*) amount {
