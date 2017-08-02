@@ -23,6 +23,12 @@
     [super viewDidLoad];
 }
 
+#pragma mark - Actions
+
+- (IBAction)actionBack:(id)sender {
+    [self.delegate didBackPress];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

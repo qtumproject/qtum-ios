@@ -14,5 +14,7 @@
 - (void)didReloadTableViewData;
 - (void)didRefreshTableViewBalanceLocal:(BOOL)isLocal;
 - (void)didShowQRCodeScan;
+- (void)didShowAddressControll;
+
 
 @end

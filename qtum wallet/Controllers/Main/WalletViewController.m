@@ -139,6 +139,9 @@
 - (IBAction)actionQRCode:(id)sender {
     [self.delegate didShowQRCodeScan];
 }
+- (IBAction)actionShowAddress:(id)sender {
+    [self.delegate didShowAddressControll];
+}
 
 #pragma mark - TableSourceDelegate
 

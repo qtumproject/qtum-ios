@@ -13,6 +13,8 @@
 @interface AddressLibruaryCoordinator () <AddressControlOutputDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
+@property (nonatomic, weak) NSObject <AddressControlOutput> *addressOutput;
+
 
 @end
 
@@ -31,8 +33,23 @@
     
     NSObject <AddressControlOutput> *output = [[ControllersFactory sharedInstance] createAddressControllOutput];
     output.delegate = self;
-    output.addresses = [[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys];
+    //output.addresses = [[ApplicationCoordinator sharedInstance].walletManager.wallet allKeysAdreeses];
+    self.addressOutput = output;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
+    [self prepareData];
+}
+
+-(void)prepareData {
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    
+    [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeysAdreeses] isAdaptive:YES successHandler:^(id responseObject) {
+        
+        [[PopUpsManager sharedInstance] dismissLoader];
+
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        
+        [[PopUpsManager sharedInstance] dismissLoader];
+    }];
 }
 
 #pragma mark - AddressControlOutputDelegate
@@ -40,6 +57,7 @@
 -(void)didBackPress {
     
     [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate coordinatorLibraryDidEnd:self];
 }
 
 

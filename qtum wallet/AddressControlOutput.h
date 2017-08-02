@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "AddressControlOutputDelegate.h"
 #import "Presentable.h"
+#import "BTCKey.h"
 
 @protocol AddressControlOutput <Presentable>
 
 @property (weak, nonatomic) id <AddressControlOutputDelegate> delegate;
-@property (copy, nonatomic) NSArray* addresses;
+@property (copy, nonatomic) NSArray <BTCKey*>* addresses;
 
 @end
