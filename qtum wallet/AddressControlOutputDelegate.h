@@ -11,5 +11,6 @@
 @protocol AddressControlOutputDelegate <NSObject>
 
 -(void)didBackPress;
+-(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath;
 
 @end

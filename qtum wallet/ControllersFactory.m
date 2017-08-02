@@ -56,6 +56,7 @@
 #import "ConfirmPurchasePopUpViewController.h"
 #import "ShareTokenPopUpViewController.h"
 #import "InformationPopUpViewController.h"
+#import "AddressTransferPopupViewController.h"
 
 #import "NewPaymentOutput.h"
 #import "WalletOutput.h"
@@ -413,6 +414,12 @@
 
 - (SecurityPopupViewController *)createSecurityPopupViewController{
     SecurityPopupViewController* controller = (SecurityPopupViewController *)[UIViewController controllerInStoryboard:@"SecurityPopup" withIdentifire:@"SecurityPopupViewController"];
+    return controller;
+}
+
+- (AddressTransferPopupViewController *)createAddressTransferPopupViewController {
+    
+    AddressTransferPopupViewController* controller = (AddressTransferPopupViewController *)[UIViewController controllerInStoryboard:@"AddressTransferPopup" withIdentifire:@"AddressTransferPopupViewController"];
     return controller;
 }
 

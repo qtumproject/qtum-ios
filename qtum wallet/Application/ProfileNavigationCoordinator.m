@@ -24,8 +24,9 @@
     self.interactivePopGestureRecognizer.enabled = NO;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    
+    return [AppSettings sharedInstance].isDarkTheme ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
 }
 
 @end

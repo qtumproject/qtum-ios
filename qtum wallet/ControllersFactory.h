@@ -47,6 +47,7 @@
 @class QStoreListViewController;
 @class QStoreContractViewController;
 @class ConfirmPurchasePopUpViewController;
+@class AddressTransferPopupViewController;
 
 @protocol NewPaymentOutput;
 @protocol WalletOutput;
@@ -145,6 +146,7 @@
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController;
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
 - (ShareTokenPopUpViewController *)createShareTokenPopUpViewController;
+- (AddressTransferPopupViewController *)createAddressTransferPopupViewController;
 
 - (UIViewController*)createFlowNavigationCoordinator;
 - (UITabBarController <TabbarOutput>*)createTabFlow;

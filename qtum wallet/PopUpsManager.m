@@ -18,6 +18,7 @@
 #import "SourceCodePopUpViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
 #import "ShareTokenPopUpViewController.h"
+#import "AddressTransferPopupViewController.h"
 
 @interface PopUpsManager() <PopUpViewControllerDelegate>
 
@@ -83,6 +84,11 @@
 
 - (SecurityPopupViewController *)createSecurityPopUp{
     SecurityPopupViewController *controller = [[ControllersFactory sharedInstance] createSecurityPopupViewController];
+    return controller;
+}
+
+- (AddressTransferPopupViewController *)createAddressTransferPopUp{
+    AddressTransferPopupViewController *controller = [[ControllersFactory sharedInstance] createAddressTransferPopupViewController];
     return controller;
 }
 
@@ -231,6 +237,17 @@
 - (SecurityPopupViewController*)showSecurityPopup:(id<SecurityPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion{
 
     SecurityPopupViewController *controller = [self createSecurityPopUp];
+    controller.delegate = delegate;
+    self.currentPopUp = controller;
+    [controller showFromViewController:presenter animated:YES completion:completion];
+    return controller;
+}
+
+- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter toAddress:(NSString*) address withFromAddressVariants:(NSArray<NSString*>*) variants completion:(void (^)(void))completion{
+    
+    AddressTransferPopupViewController *controller = [self createAddressTransferPopUp];
+    controller.toAddress = address;
+    controller.fromAddressesVariants = variants;
     controller.delegate = delegate;
     self.currentPopUp = controller;
     [controller showFromViewController:presenter animated:YES completion:completion];

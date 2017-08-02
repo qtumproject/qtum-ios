@@ -19,9 +19,9 @@
     self.navigationBar.hidden = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    
+    return [AppSettings sharedInstance].isDarkTheme ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
 }
 
 @end

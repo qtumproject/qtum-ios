@@ -168,6 +168,17 @@ NSInteger const USERS_KEYS_COUNT = 10;
     return allKeysString;
 }
 
+- (NSDictionary <NSString*,BTCKey*>*)addressKeyHashTable {
+    
+    NSMutableDictionary *addressKeyHashTable = @{}.mutableCopy;
+    for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
+        BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
+        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        [addressKeyHashTable setObject:key forKey:keyString];
+    }
+    return [addressKeyHashTable copy];
+}
+
 #pragma mark - Private Methods
 
 - (BTCKeychain *)createKeychainWithSeedWords:(NSArray*) seedWords {

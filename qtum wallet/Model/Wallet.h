@@ -35,8 +35,9 @@ extern NSInteger const brandKeyWordsCount;
 - (BTCKey *)lastRandomKeyOrRandomKey;
 - (BTCKey *)randomKey;
 - (BTCKey *)keyAtIndex:(NSUInteger)index;
-- (NSArray *)allKeys;
+- (NSArray <BTCKey*> *)allKeys;
 - (NSArray <NSString*>*)allKeysAdreeses;
+- (NSDictionary <NSString*,BTCKey*>*)addressKeyHashTable;
 - (NSString *)brandKeyWithPin:(NSString*) pin;
 
 

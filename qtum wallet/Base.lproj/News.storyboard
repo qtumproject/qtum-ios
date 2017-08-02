@@ -229,6 +229,7 @@
                             <constraint firstItem="rDR-sD-pMn" firstAttribute="top" secondItem="IwK-4I-IaG" secondAttribute="top" id="xof-tl-0gi"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="j6Y-Sa-EtJ" id="Avf-kb-l6m"/>
                     </connections>
@@ -286,7 +287,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableCellLight" rowHeight="104" id="QTq-KU-GAK" customClass="NewsTableCellLight">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="104"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTq-KU-GAK" id="0hs-v4-S3u">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
@@ -331,7 +332,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="12" id="2rp-zj-tWc">
-                                        <rect key="frame" x="0.0" y="159.5" width="375" height="12"/>
+                                        <rect key="frame" x="0.0" y="160" width="375" height="12"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2rp-zj-tWc" id="rkY-zI-a8w">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="12"/>
@@ -353,6 +354,7 @@
                             <constraint firstItem="lZS-BQ-tJf" firstAttribute="leading" secondItem="seT-cs-4mr" secondAttribute="leading" id="zes-tO-x97"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="tableView" destination="lZS-BQ-tJf" id="fwO-HT-qiJ"/>
                     </connections>
