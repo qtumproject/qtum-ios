@@ -43,7 +43,7 @@
 
 -(void)setup {
     
-    [NSUserDefaults saveIsDarkSchemeSetting:NO];
+    [NSUserDefaults saveIsDarkSchemeSetting:YES];
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:YES];
     [PopUpsManager sharedInstance];
