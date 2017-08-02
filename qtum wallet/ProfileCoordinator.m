@@ -105,7 +105,7 @@
 }
 
 - (void)didPressedThemes {
-    
+    [[ApplicationCoordinator sharedInstance] startChanginTheme];
 }
 
 - (void)didPressedCreateToken {

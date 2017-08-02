@@ -18,6 +18,7 @@
 
 @property (assign, nonatomic) BOOL isMainNet;
 @property (assign, nonatomic) BOOL isRPC;
+@property (assign, nonatomic) BOOL isDarkTheme;
 
 @end
 
@@ -39,11 +40,10 @@
     return self;
 }
 
-#pragma mark - Private Methods
+#pragma mark - Public Methods
 
 -(void)setup {
     
-    [NSUserDefaults saveIsDarkSchemeSetting:YES];
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:YES];
     [PopUpsManager sharedInstance];
@@ -65,6 +65,11 @@
     }
 }
 
+-(void)changeThemeToDark:(BOOL) needDarkTheme {
+    [NSUserDefaults saveIsDarkSchemeSetting:needDarkTheme];
+}
+
+
 #pragma mark - Accessory methods
 
 -(BOOL)isMainNet{
@@ -73,6 +78,10 @@
 
 -(BOOL)isRPC{
     return [NSUserDefaults isRPCOnSetting];
+}
+
+-(BOOL)isDarkTheme{
+    return [NSUserDefaults isDarkSchemeSetting];
 }
 
 -(BOOL)isFingerprintEnabled{
