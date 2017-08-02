@@ -16,9 +16,4 @@
 @property (weak, nonatomic) id <AddressControlOutputDelegate> delegate;
 @property (copy, nonatomic) NSArray <NSString*>* addresses;
 
-- (void)showErrorPopUp:(NSString *)message;
-- (void)showCompletedPopUp;
-- (void)showLoaderPopUp;
-- (void)hideLoaderPopUp;
-
 @end

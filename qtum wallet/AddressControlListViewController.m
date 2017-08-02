@@ -38,6 +38,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.delegate didPressCellAtIndexPath:indexPath];
 }
 
@@ -51,6 +52,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     AddressControllCell *cell = [tableView dequeueReusableCellWithIdentifier:addressControllCellIdentifire];
+    cell.addressLabel.text = self.addresses[indexPath.row];
     return cell;
 }
 

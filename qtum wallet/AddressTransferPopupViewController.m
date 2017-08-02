@@ -9,26 +9,28 @@
 #import "AddressTransferPopupViewController.h"
 #import "TextFieldWithLine.h"
 
-@interface AddressTransferPopupViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface AddressTransferPopupViewController () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextFieldView;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *toTextFieldVIew;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *fromTextFieldView;
+@property (weak, nonatomic) IBOutlet UIButton *transferButton;
 
 @end
 
 @implementation AddressTransferPopupViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self configToAddressView];
     [self configFromAddressesView];
     [self configAmountView];
+    [self updateControls];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 }
 
 #pragma mark - Configuration
@@ -37,17 +39,20 @@
     
     self.toTextFieldVIew.text = self.toAddress;
     self.toTextFieldVIew.enabled = NO;
+    self.toTextFieldVIew.delegate = self;
 }
 
 -(void)configFromAddressesView {
     
     self.fromTextFieldView.inputView = [self createPickerView];
     self.fromTextFieldView.inputAccessoryView = [self createToolbar];
+    self.fromTextFieldView.delegate = self;
 }
 
 -(void)configAmountView {
     
     self.amountTextFieldView.inputAccessoryView = [self createToolbar];
+    self.amountTextFieldView.delegate = self;
 }
 
 -(UIPickerView*)createPickerView {
@@ -74,6 +79,33 @@
     [toolbar sizeToFit];
     
     return toolbar;
+}
+
+#pragma mark -
+
+-(BOOL)isFilled {
+    return (self.amountTextFieldView.text.length > 0) && (self.fromTextFieldView.text.length > 0);
+}
+
+-(void)updateControls {
+    
+    BOOL isFilled = [self isFilled];
+    
+    self.transferButton.alpha = isFilled ? 1 : 0.5;
+    self.transferButton.enabled = isFilled;
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if ([textField isEqual:self.amountTextFieldView]) {
+        self.amount = textField.text;
+    } else if([textField isEqual:self.fromTextFieldView]) {
+        self.fromAddress = textField.text;
+    }
+    
+    [self updateControls];
 }
 
 #pragma mark - UIPickerViewDelegate, UIPickerViewDataSource
@@ -103,6 +135,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
     self.fromTextFieldView.text = self.fromAddressesVariants[row];
+    [self updateControls];
 }
 
 -(UIView *)pickerView:(UIPickerView *)pickerView

@@ -140,7 +140,12 @@
 
 - (void)okButtonPressed:(AddressTransferPopupViewController *)sender {
     
-    [self makeTransferFromAddress:sender.fromAddress toAddress:sender.toAddress withAmount:[sender.amount stringByReplacingOccurrencesOfString:@"," withString:@"."]];
+    if ([sender isKindOfClass:[AddressTransferPopupViewController class]]) {
+            [self makeTransferFromAddress:sender.fromAddress toAddress:sender.toAddress withAmount:[sender.amount stringByReplacingOccurrencesOfString:@"," withString:@"."]];
+    } else {
+        [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    }
+    
 }
 
 @end
