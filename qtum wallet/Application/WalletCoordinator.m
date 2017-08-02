@@ -34,6 +34,7 @@
 #import "TransactionManager.h"
 #import "ContractFileManager.h"
 #import "WalletManager.h"
+#import "AddressLibruaryCoordinator.h"
 
 @interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate>
 
@@ -253,6 +254,12 @@
         
         [weakSelf updateSpendables];
     });
+}
+
+-(void)showAddressControllFlow {
+    
+    AddressLibruaryCoordinator* coordinator = [AddressLibruaryCoordinator new];
+    [coordinator start];
 }
 
 #pragma mark - ShareTokenPopupViewControllerDelegate and PopUpViewControllerDelegate
