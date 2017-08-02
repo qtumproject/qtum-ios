@@ -8,12 +8,14 @@
 
 #import "PopUpViewController.h"
 
-@interface AddressTransferPopupViewController : PopUpViewController
+@interface AddressTransferPopupViewController : PopUpViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, weak) id<PopUpWithTwoButtonsViewControllerDelegate> delegate;
 @property (nonatomic, copy) NSString* toAddress;
 @property (nonatomic, copy) NSArray<NSString*>* fromAddressesVariants;
 @property (nonatomic, copy) NSString* fromAddress;
 @property (nonatomic, copy) NSString* amount;
+
+- (void)endEditing;
 
 @end

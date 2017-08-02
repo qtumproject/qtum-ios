@@ -9,7 +9,7 @@
 #import "AddressTransferPopupViewController.h"
 #import "TextFieldWithLine.h"
 
-@interface AddressTransferPopupViewController () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
+@interface AddressTransferPopupViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextFieldView;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *toTextFieldVIew;
