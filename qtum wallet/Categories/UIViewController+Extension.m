@@ -63,7 +63,7 @@
         [identifire isEqualToString:@"CreateTokenFinishViewController"] ||
         [identifire isEqualToString:@"TokenFunctionDetailViewController"] ||
         [identifire isEqualToString:@"TokenFunctionViewController"] ||
-        [identifire isEqualToString:@"ShareTokenPopUpViewControllerLight"]) {
+        [identifire isEqualToString:@"ShareTokenPopUpViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

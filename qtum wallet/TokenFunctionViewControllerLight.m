@@ -7,11 +7,18 @@
 //
 
 #import "TokenFunctionViewControllerLight.h"
+#import "TokenFunctionCell.h"
 
 @interface TokenFunctionViewControllerLight ()
 
 @end
 
 @implementation TokenFunctionViewControllerLight
+
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+}
 
 @end

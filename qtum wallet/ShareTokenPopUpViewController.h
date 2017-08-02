@@ -11,6 +11,7 @@
 @interface ShareTokenPopUpViewController : PopUpViewController
 
 @property (nonatomic) NSString *addressString;
+@property (weak, nonatomic) IBOutlet UITextView *abiTextView;
 @property (nonatomic) NSString *abiString;
 
 @property (nonatomic, weak) id<ShareTokenPopupViewControllerDelegate> delegate;

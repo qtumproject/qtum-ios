@@ -13,4 +13,8 @@
 
 @interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput>
 
+- (IBAction)didPressedNextOnTextField:(id)sender;
+- (IBAction)didPressedCancelAction:(id)sender;
+- (IBAction)didPressedCallAction:(id)sender;
+
 @end

@@ -233,6 +233,8 @@
 		B3DC9CEE1F30CB7E006B2E07 /* TokenFunctionViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9CED1F30CB7E006B2E07 /* TokenFunctionViewControllerLight.m */; };
 		B3DC9CF21F30D428006B2E07 /* ShareTokenPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9CF11F30D428006B2E07 /* ShareTokenPopUpViewControllerDark.m */; };
 		B3DC9CF51F30D43B006B2E07 /* ShareTokenPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9CF41F30D43B006B2E07 /* ShareTokenPopUpViewControllerLight.m */; };
+		B3DC9CF81F31AE1B006B2E07 /* TokenFunctionCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9CF71F31AE1B006B2E07 /* TokenFunctionCellLight.m */; };
+		B3DC9CFD1F31AE54006B2E07 /* TokenFunctionCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9CFC1F31AE54006B2E07 /* TokenFunctionCellDark.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -1024,6 +1026,10 @@
 		B3DC9CF11F30D428006B2E07 /* ShareTokenPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTokenPopUpViewControllerDark.m; sourceTree = "<group>"; };
 		B3DC9CF31F30D43B006B2E07 /* ShareTokenPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTokenPopUpViewControllerLight.h; sourceTree = "<group>"; };
 		B3DC9CF41F30D43B006B2E07 /* ShareTokenPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTokenPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B3DC9CF61F31AE1B006B2E07 /* TokenFunctionCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenFunctionCellLight.h; sourceTree = "<group>"; };
+		B3DC9CF71F31AE1B006B2E07 /* TokenFunctionCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenFunctionCellLight.m; sourceTree = "<group>"; };
+		B3DC9CFB1F31AE54006B2E07 /* TokenFunctionCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenFunctionCellDark.h; sourceTree = "<group>"; };
+		B3DC9CFC1F31AE54006B2E07 /* TokenFunctionCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenFunctionCellDark.m; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -2388,10 +2394,8 @@
 		B3D555EC1EDF4DA400CBDFCF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B3827DE21ECF5E8D00E500DE /* TokenFunctionCell.h */,
-				B3827DE31ECF5E8D00E500DE /* TokenFunctionCell.m */,
-				B3C08B231ED467DA00713B15 /* TokenPropertyCell.h */,
-				B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */,
+				B3DC9CF91F31AE27006B2E07 /* Token Function */,
+				B3DC9CFA1F31AE31006B2E07 /* Token Property */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2487,6 +2491,28 @@
 				B3DC9CF41F30D43B006B2E07 /* ShareTokenPopUpViewControllerLight.m */,
 			);
 			name = "Share Token";
+			sourceTree = "<group>";
+		};
+		B3DC9CF91F31AE27006B2E07 /* Token Function */ = {
+			isa = PBXGroup;
+			children = (
+				B3827DE21ECF5E8D00E500DE /* TokenFunctionCell.h */,
+				B3827DE31ECF5E8D00E500DE /* TokenFunctionCell.m */,
+				B3DC9CF61F31AE1B006B2E07 /* TokenFunctionCellLight.h */,
+				B3DC9CF71F31AE1B006B2E07 /* TokenFunctionCellLight.m */,
+				B3DC9CFB1F31AE54006B2E07 /* TokenFunctionCellDark.h */,
+				B3DC9CFC1F31AE54006B2E07 /* TokenFunctionCellDark.m */,
+			);
+			name = "Token Function";
+			sourceTree = "<group>";
+		};
+		B3DC9CFA1F31AE31006B2E07 /* Token Property */ = {
+			isa = PBXGroup;
+			children = (
+				B3C08B231ED467DA00713B15 /* TokenPropertyCell.h */,
+				B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */,
+			);
+			name = "Token Property";
 			sourceTree = "<group>";
 		};
 		B3E159261ED6E39F00D70A87 /* Cell */ = {
@@ -4400,6 +4426,7 @@
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32BC4B11F28D5BC00C2417C /* TextFieldWithLineLightSend.m in Sources */,
 				E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */,
+				B3DC9CF81F31AE1B006B2E07 /* TokenFunctionCellLight.m in Sources */,
 				B3DB3E5A1F2F9AA300AA408F /* FavouriteTemplateCollectionViewCellLight.m in Sources */,
 				B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
@@ -4439,6 +4466,7 @@
 				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,
 				E71F1C7F1F1CA1E400961B19 /* LibraryTableViewCell.m in Sources */,
 				B3210D1C1E00172200365FB6 /* ViewWithGradientPoints.m in Sources */,
+				B3DC9CFD1F31AE54006B2E07 /* TokenFunctionCellDark.m in Sources */,
 				B3CBDF101F2A47E000C80D4E /* LibraryTableViewCellLight.m in Sources */,
 				B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */,
 				B3DC9CF51F30D43B006B2E07 /* ShareTokenPopUpViewControllerLight.m in Sources */,
