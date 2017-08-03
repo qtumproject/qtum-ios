@@ -56,5 +56,9 @@
     [self configTabsWithNews:newsController send:sendController wallet:walletController profile:profileController];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
+
 
 @end

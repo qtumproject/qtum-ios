@@ -100,6 +100,18 @@
 
     
     [self configTabbarToplineLight];
+    [self configTabbarUndelineLight];
+}
+
++ (void)configTabbarUndelineLight {
+    
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake([UITabBar appearance].frame.origin.x,[UITabBar appearance].frame.origin.y, 50, 56)];
+    UIImageView *border = [[UIImageView alloc]initWithFrame:CGRectMake(view.frame.origin.x,view.frame.size.height-6, 50, 6)];
+    border.backgroundColor = [UIColor clearColor];
+    [view addSubview:border];
+    UIImage *img = [UIImage changeViewToImage:view];
+    [[UITabBar appearance] setSelectionIndicatorImage:img];
+    [[UITabBar appearance] setTintColor: customBlueColor()];
 }
 
 + (void)configTabbarToplineLight {

@@ -1,0 +1,189 @@
+//
+//  AddressLibruaryCoordinator.m
+//  qtum wallet
+//
+//  Created by Vladimir Lebedevich on 02.08.17.
+//  Copyright © 2017 PixelPlex. All rights reserved.
+//
+
+#import "AddressLibruaryCoordinator.h"
+#import "AddressControlOutput.h"
+#import "Wallet.h"
+#import "AddressTransferPopupViewController.h"
+#import "TransactionManager.h"
+
+@interface AddressLibruaryCoordinator () <AddressControlOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
+
+@property (nonatomic, strong) UINavigationController *navigationController;
+@property (nonatomic, weak) NSObject <AddressControlOutput> *addressOutput;
+@property (nonatomic, copy) NSDictionary <NSString*, BTCKey*> *addressKeyHashTable;
+
+@end
+
+@implementation AddressLibruaryCoordinator
+
+-(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController {
+    
+    self = [super init];
+    if (self) {
+        _navigationController = navigationController;
+    }
+    return self;
+}
+
+-(void)start {
+    
+    NSObject <AddressControlOutput> *output = [[ControllersFactory sharedInstance] createAddressControllOutput];
+    self.addressKeyHashTable = [[ApplicationCoordinator sharedInstance].walletManager.wallet addressKeyHashTable];
+    output.delegate = self;
+    self.addressOutput = output;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
+    [self getAddresesData];
+}
+
+-(void)getAddresesData {
+    
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    
+    __weak __typeof(self)weakSelf = self;
+    [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeysAdreeses] isAdaptive:YES successHandler:^(id responseObject) {
+        [weakSelf updateAddresesListWithResponse:responseObject];
+        [[PopUpsManager sharedInstance] dismissLoader];
+
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        
+        [[PopUpsManager sharedInstance] dismissLoader];
+    }];
+}
+
+-(NSDictionary*)prepareAddresesDataWithResponse:(NSArray*) response {
+    
+    NSMutableDictionary* addressAmountHashTable = @{}.mutableCopy;
+    
+    for (NSString* address in self.addressKeyHashTable.allKeys) {
+        [addressAmountHashTable setObject:[[NSDecimalNumber alloc] initWithDouble:0.] forKey:address];
+    }
+    
+    for (NSDictionary* item in response) {
+        
+        NSString* address = item[@"address"];
+        NSNumber* amountNumber = item[@"amount"];
+        double amountDouble = [amountNumber doubleValue];
+        
+        if (address && amountDouble > 0) {
+            
+            NSDecimalNumber* addressAmountDecimalConteiner = addressAmountHashTable[address];
+            NSDecimalNumber* summ = [addressAmountDecimalConteiner decimalNumberByAdding:[NSDecimalNumber decimalNumberWithDecimal:[amountNumber decimalValue]]];
+            [addressAmountHashTable setObject:summ forKey:address];
+        }
+    }
+    
+    return [addressAmountHashTable copy];
+}
+
+-(void)updateAddresesListWithResponse:(NSArray*) response  {
+    
+    if ([response isKindOfClass:[NSArray class]]) {
+        
+        __weak __typeof(self)weakSelf = self;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            weakSelf.addressOutput.addressesValueHashTable = [weakSelf prepareAddresesDataWithResponse:response];
+            [weakSelf.addressOutput reloadData];
+        });
+    }
+}
+
+-(void)makeTransferFromAddress:(NSString*)from toAddress:(NSString*) to withAmount:(NSString* )amount {
+    
+    NSDecimalNumber *amountDecimalContainer = [NSDecimalNumber decimalNumberWithString:amount];
+    
+    NSArray *array = @[@{@"amount" : amountDecimalContainer, @"address" : to}];
+    
+    [self showLoaderPopUp];
+    
+    __weak typeof(self) weakSelf = self;
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:@[self.addressKeyHashTable[from]] toAddressAndAmount:array andHandler:^(TransactionManagerErrorType errorType, id response) {
+        
+        [weakSelf hideLoaderPopUp];
+        [weakSelf showStatusOfPayment:errorType];
+    }];
+}
+
+#pragma mark - Popup
+
+- (void)showLoaderPopUp {
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
+}
+
+- (void)showCompletedPopUp {
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
+}
+
+- (void)showErrorPopUp:(NSString *)message {
+    PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+    if (message) {
+        content.messageString = message;
+        content.titleString = NSLocalizedString(@"Failed", nil);
+    }
+    
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+}
+
+- (void)hideLoaderPopUp {
+    [[PopUpsManager sharedInstance] dismissLoader];
+}
+
+- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType {
+    
+    switch (errorType) {
+        case TransactionManagerErrorTypeNone:
+            [self showCompletedPopUp];
+            break;
+        case TransactionManagerErrorTypeNoInternetConnection:
+            break;
+        case TransactionManagerErrorTypeNotEnoughMoney:
+            [self showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction", nil)];
+            break;
+        case TransactionManagerErrorTypeInvalidAddress:
+            [self showErrorPopUp:NSLocalizedString(@"Invalid QTUM Address", nil)];
+            break;
+        default:
+            [self showErrorPopUp:nil];
+            break;
+    }
+}
+
+
+#pragma mark - AddressControlOutputDelegate
+
+-(void)didBackPress {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate coordinatorLibraryDidEnd:self];
+}
+
+-(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath withAddress:(NSString *)address{
+    
+    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressKeyHashTable.allKeys completion:^{
+        
+    }];
+}
+
+#pragma mark - PopUpWithTwoButtonsViewControllerDelegate
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender {
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
+
+- (void)okButtonPressed:(AddressTransferPopupViewController *)sender {
+    
+    if ([sender isKindOfClass:[AddressTransferPopupViewController class]]) {
+            [self makeTransferFromAddress:sender.fromAddress toAddress:sender.toAddress withAmount:[sender.amount stringByReplacingOccurrencesOfString:@"," withString:@"."]];
+    } else {
+        [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    }
+    
+}
+
+@end

@@ -56,6 +56,7 @@
 #import "ConfirmPurchasePopUpViewController.h"
 #import "ShareTokenPopUpViewController.h"
 #import "InformationPopUpViewController.h"
+#import "AddressTransferPopupViewController.h"
 
 #import "NewPaymentOutput.h"
 #import "WalletOutput.h"
@@ -77,6 +78,7 @@
 #import "RestoreContractsOutput.h"
 #import "BackupContractOutput.h"
 #import "ConstructorAbiOutput.h"
+#import "AddressControlOutput.h"
 
 @implementation ControllersFactory
 
@@ -331,8 +333,14 @@
 
 -(NSObject <BackupContractOutput>*)createBackupContractViewController {
     
-    NSObject <BackupContractOutput>* outbut = (NSObject <BackupContractOutput>*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContractsViewController"];
-    return outbut;
+    NSObject <BackupContractOutput>* output = (NSObject <BackupContractOutput>*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContractsViewController"];
+    return output;
+}
+
+-(NSObject <AddressControlOutput>*)createAddressControllOutput {
+    
+    NSObject <AddressControlOutput>* output = (NSObject <AddressControlOutput>*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"AddressControlListViewController"];
+    return output;
 }
 
 -(EnableFingerprintViewController*)createEnableFingerprintViewController{
@@ -406,6 +414,12 @@
 
 - (SecurityPopupViewController *)createSecurityPopupViewController{
     SecurityPopupViewController* controller = (SecurityPopupViewController *)[UIViewController controllerInStoryboard:@"SecurityPopup" withIdentifire:@"SecurityPopupViewController"];
+    return controller;
+}
+
+- (AddressTransferPopupViewController *)createAddressTransferPopupViewController {
+    
+    AddressTransferPopupViewController* controller = (AddressTransferPopupViewController *)[UIViewController controllerInStoryboard:@"AddressTransferPopup" withIdentifire:@"AddressTransferPopupViewController"];
     return controller;
 }
 

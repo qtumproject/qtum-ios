@@ -47,6 +47,7 @@
 @class QStoreListViewController;
 @class QStoreContractViewController;
 @class ConfirmPurchasePopUpViewController;
+@class AddressTransferPopupViewController;
 
 @protocol NewPaymentOutput;
 @protocol WalletOutput;
@@ -72,6 +73,7 @@
 @protocol ContractCreationEndOutput;
 @protocol ContractFunctionDetailOutput;
 @protocol ContractFunctionsOutput;
+@protocol AddressControlOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -105,7 +107,7 @@
 - (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
 - (EnableFingerprintViewController*)createEnableFingerprintViewController;
 
-- (NSObject <ContractCreationEndOutput> *)createTokenDetailsViewController;
+- (NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
 - (NSObject <TemplatesListOutput> *)createTemplateTokenViewController;
 - (NSObject <PublishedContractListOutput>*)createSmartContractsListViewController;
 - (NSObject <WatchContractOutput>*)createWatchContractViewController;
@@ -123,6 +125,7 @@
 - (NSObject <ConstructorAbiOutput> *)createConstructorFromAbiViewController;
 - (NSObject <ContractFunctionDetailOutput>*)createTokenFunctionDetailViewController;
 - (NSObject <ContractFunctionsOutput> *)createTokenFunctionViewController;
+- (NSObject <AddressControlOutput>*)createAddressControllOutput;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;
@@ -143,6 +146,7 @@
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController;
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
 - (ShareTokenPopUpViewController *)createShareTokenPopUpViewController;
+- (AddressTransferPopupViewController *)createAddressTransferPopupViewController;
 
 - (UIViewController*)createFlowNavigationCoordinator;
 - (UITabBarController <TabbarOutput>*)createTabFlow;

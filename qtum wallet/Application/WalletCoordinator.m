@@ -34,8 +34,9 @@
 #import "TransactionManager.h"
 #import "ContractFileManager.h"
 #import "WalletManager.h"
+#import "AddressLibruaryCoordinator.h"
 
-@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinator>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
@@ -255,6 +256,20 @@
     });
 }
 
+-(void)showAddressControllFlow {
+    
+    AddressLibruaryCoordinator* coordinator = [[AddressLibruaryCoordinator alloc] initWithNavigationViewController:self.navigationController];
+    [coordinator start];
+    coordinator.delegate = self;
+    [self addDependency:coordinator];
+}
+
+#pragma mark - AddressLibruaryCoordinator
+
+- (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator*)coordinator {
+    [self removeDependency:coordinator];
+}
+
 #pragma mark - ShareTokenPopupViewControllerDelegate and PopUpViewControllerDelegate
 
 - (void)copyAddressButtonPressed:(PopUpViewController *)sender {
@@ -314,5 +329,11 @@
         [self reloadHistory];
     }
 }
+
+- (void)didShowAddressControll {
+
+    [self showAddressControllFlow];
+}
+
 
 @end
