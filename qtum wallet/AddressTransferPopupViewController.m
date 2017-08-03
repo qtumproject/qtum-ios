@@ -125,16 +125,16 @@
     return 40;
 }
 
-- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    
-    NSString* fromAddress = self.fromAddressesVariants[row];
-    self.fromAddress = fromAddress;
-    return fromAddress;
-}
+//- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+//    
+//    NSString* fromAddress = self.fromAddressesVariants[row];
+//    self.fromAddress = fromAddress;
+//    return fromAddress;
+//}
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    self.fromTextFieldView.text = self.fromAddressesVariants[row];
+    self.fromTextFieldView.text = self.fromAddressesVariants.allKeys[row];
     [self updateControls];
 }
 
@@ -143,19 +143,39 @@
          forComponent:(NSInteger)component
           reusingView:(UIView *)view {
     
-    NSString *text = self.fromAddressesVariants[row];
-
-    UILabel *label = (UILabel*)view;
+    NSString* address = self.fromAddressesVariants.allKeys[row];
+    NSString* amount = [NSString stringWithFormat:@"%@", self.fromAddressesVariants[address]];
+    
+    UIView* container;
+    UILabel* amountLabel;
+    UILabel* addressLabel;
+    
     if(view == nil) {
-        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 50, 30)];
-        label.backgroundColor = [UIColor clearColor];
-        label.text = text;
-        label.font = [UIFont fontWithName:@"simplonmono-regular" size:15.0f];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.textColor = customBlueColor();
+        container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, pickerView.frame.size.width, 30)];
+        
+        addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, pickerView.frame.size.width * 0.65, 30)];
+        amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(addressLabel.frame.size.width + 10 + 20,
+                                                                0,
+                                                                pickerView.frame.size.width - addressLabel.frame.size.width - 10 - 20,
+                                                                30)];
+        
+        addressLabel.backgroundColor = [UIColor clearColor];
+        addressLabel.text = address;
+        addressLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:14.0f];
+        addressLabel.textAlignment = NSTextAlignmentCenter;
+        addressLabel.textColor = customBlueColor();
+        
+        amountLabel.backgroundColor = [UIColor clearColor];
+        amountLabel.text = amount;
+        amountLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:15.0f];
+        amountLabel.textAlignment = NSTextAlignmentCenter;
+        amountLabel.textColor = customBlueColor();
+        
+        [container addSubview:amountLabel];
+        [container addSubview:addressLabel];
     }
     
-    return label;
+    return container;
 }
 
 #pragma mark - Actions
