@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "TokenAddressLibraryOutputDelegate.h"
+#import "Presentable.h"
 
-@protocol TokenAddressLibraryOutput <NSObject>
+@protocol TokenAddressLibraryOutput <Presentable>
 
 @property (weak, nonatomic) id <TokenAddressLibraryOutputDelegate> delegate;
 @property (copy, nonatomic) NSDictionary <NSString*, NSNumber*>* addressesValueHashTable;

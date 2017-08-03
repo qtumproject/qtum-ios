@@ -60,8 +60,8 @@ CGFloat const HeightForHeaderView = 50.0f;
     [self.delegate showAddressInfoWithSpendable:aToken];
 }
 
-- (IBAction)didPressTokenAddressControl:(id)sender {
-    [self.delegate didShowTokenAddressControl];
+- (void)didPressTokenAddressControlWithToken:(Contract*) aToken {
+    [self.delegate didShowTokenAddressControlWith:aToken];
 }
 
 - (void)needShowHeader {

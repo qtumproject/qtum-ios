@@ -14,4 +14,8 @@
     [self.delegate actionPlus:sender];
 }
 
+- (IBAction)actionTokenAddressControl:(id)sender {
+    [self.delegate actionTokenAddressControl];
+}
+
 @end

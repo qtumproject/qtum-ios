@@ -183,7 +183,6 @@
     } else {
         [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
     }
-    
 }
 
 @end

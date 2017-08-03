@@ -224,7 +224,8 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
     return updatedView;
 }
 
-- (UIView *)getViewFromXib:(Class)class{
+- (UIView *)getViewFromXib:(Class)class {
+    
     NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"TokenDetailsViews" owner:self options:nil];
     
     for (UIView *view in views) {
@@ -248,5 +249,9 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
     [self.delegate didPressedInfoActionWithToken:self.token];
 }
 
+- (void)actionTokenAddressControl{
+    
+    [self.delegate didPressTokenAddressControlWithToken:self.token];
+}
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "TokenAddressControlViewController.h"
-#import "AddressControlCell.h"
+#import "TokenAddressContolCell.h"
 
 @interface TokenAddressControlViewController ()
 
@@ -58,7 +58,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    AddressControlCell *cell = [tableView dequeueReusableCellWithIdentifier:AddressControlCellIdentifire];
+    TokenAddressContolCell *cell = [tableView dequeueReusableCellWithIdentifier:tokenAddressControlCellIdentifire];
     NSString* key = self.addressesValueHashTable.allKeys[indexPath.row];
     cell.addressLabel.text = key;
     cell.valueLabel.text = [NSString stringWithFormat:@"%@",self.addressesValueHashTable[key]];

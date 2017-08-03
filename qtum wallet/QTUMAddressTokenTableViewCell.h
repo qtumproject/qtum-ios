@@ -12,6 +12,7 @@
 
 @required
 - (void)actionPlus:(id)sender;
+- (void)actionTokenAddressControl;
 
 @end
 

@@ -17,5 +17,6 @@
 - (void)needShowHeaderForSecondSeciton;
 - (void)needHideHeaderForSecondSeciton;
 - (void)didPressedInfoActionWithToken:(Contract*)token;
+- (void)didPressTokenAddressControlWithToken:(Contract*)token;
 
 @end

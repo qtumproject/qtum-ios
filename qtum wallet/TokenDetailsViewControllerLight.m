@@ -74,7 +74,7 @@
 }
 
 - (IBAction)didPressTokenAddressControl:(id)sender {
-    [self.delegate didShowTokenAddressControl];
+    [self.delegate didShowTokenAddressControlWith:self.token];
 }
 
 #pragma mark - TokenDetailDisplayDataManagerDelegate

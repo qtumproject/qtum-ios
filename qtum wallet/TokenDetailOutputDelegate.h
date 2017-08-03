@@ -14,6 +14,6 @@
 - (void)showAddressInfoWithSpendable:(id <Spendable>) spendable;
 - (void)didBackPressed;
 - (void)didShareTokenButtonPressed;
-- (void)didShowTokenAddressControl;
+- (void)didShowTokenAddressControlWith:(Contract*) contract;
 
 @end

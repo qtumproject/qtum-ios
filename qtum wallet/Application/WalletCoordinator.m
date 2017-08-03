@@ -165,10 +165,11 @@
     vc.abiString = abiString;
 }
 
-- (void)didShowTokenAddressControl {
+- (void)didShowTokenAddressControlWith:(Contract *)contract {
     
-    [self showTokenAddressControlFlow];
+    [self showTokenAddressControlFlowWith:contract];
 }
+
 
 #pragma mark - Configuration
 
@@ -268,11 +269,12 @@
     [self addDependency:coordinator];
 }
 
--(void)showTokenAddressControlFlow {
+-(void)showTokenAddressControlFlowWith:(Contract *)contract {
     
     TokenAddressLibraryCoordinator* coordinator = [[TokenAddressLibraryCoordinator alloc] initWithNavigationViewController:self.navigationController];
-    [coordinator start];
+    coordinator.token = contract;
     coordinator.delegate = self;
+    [coordinator start];
     [self addDependency:coordinator];
 }
 
@@ -344,10 +346,9 @@
 }
 
 - (void)didShowAddressControl {
-
+    
     [self showAddressControlFlow];
 }
-
 
 
 @end
