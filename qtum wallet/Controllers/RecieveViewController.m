@@ -115,8 +115,15 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
+    NSCharacterSet *cset = [NSCharacterSet decimalDigitCharacterSet].invertedSet;
+    NSRange rangeOfChar = [string rangeOfCharacterFromSet:cset];
+    
     if ([string isEqualToString:@","]) {
         return ![textField.text containsString:string] && !(textField.text.length == 0);
+    }
+    
+    if (rangeOfChar.location != NSNotFound) {
+        return NO;
     }
     
     return YES;
