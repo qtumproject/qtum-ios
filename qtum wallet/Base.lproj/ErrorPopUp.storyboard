@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -161,9 +161,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.40000000596046448" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Aj-B7-1HY">
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Aj-B7-1HY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmE-Iw-0ao">
@@ -265,7 +264,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1A-4V-RIp">
-                                <rect key="frame" x="127" y="211.5" width="122" height="12"/>
+                                <rect key="frame" x="126.5" y="211.5" width="122" height="12"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -274,8 +273,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mmE-Iw-0ao" firstAttribute="centerX" secondItem="PqG-eE-mfj" secondAttribute="centerX" id="F5a-l6-wS7"/>
+                            <constraint firstAttribute="trailing" secondItem="2Aj-B7-1HY" secondAttribute="trailing" id="HXx-Y4-TNt"/>
+                            <constraint firstItem="2Aj-B7-1HY" firstAttribute="leading" secondItem="PqG-eE-mfj" secondAttribute="leading" id="IbK-Mw-XfH"/>
+                            <constraint firstItem="TPm-8V-4B1" firstAttribute="top" secondItem="2Aj-B7-1HY" secondAttribute="bottom" id="fEk-NJ-KCR"/>
                             <constraint firstItem="y1A-4V-RIp" firstAttribute="top" secondItem="OyJ-Yr-ahm" secondAttribute="bottom" constant="12" id="h4d-9u-sTA"/>
                             <constraint firstItem="y1A-4V-RIp" firstAttribute="centerX" secondItem="PqG-eE-mfj" secondAttribute="centerX" id="hdc-Ad-HOx"/>
+                            <constraint firstItem="2Aj-B7-1HY" firstAttribute="top" secondItem="PqG-eE-mfj" secondAttribute="top" id="nX9-lu-7YQ"/>
                             <constraint firstItem="mmE-Iw-0ao" firstAttribute="centerY" secondItem="PqG-eE-mfj" secondAttribute="centerY" multiplier="0.7" id="yfH-GC-tbF"/>
                         </constraints>
                     </view>

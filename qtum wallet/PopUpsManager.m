@@ -30,8 +30,8 @@
 
 #pragma mark - Instance
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
+    
     static PopUpsManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

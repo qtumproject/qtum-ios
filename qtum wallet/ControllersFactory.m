@@ -440,7 +440,8 @@
     return controller;
 }
 
-- (ShareTokenPopUpViewController *)createShareTokenPopUpViewController{
+- (ShareTokenPopUpViewController *)createShareTokenPopUpViewController {
+    
     ShareTokenPopUpViewController* controller = (ShareTokenPopUpViewController *)[UIViewController controllerInStoryboard:@"ShareTokenPopUp" withIdentifire:@"ShareTokenPopUpViewController"];
     return controller;
 }
