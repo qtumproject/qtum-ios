@@ -239,14 +239,21 @@
 		B3DC9D041F31B6A3006B2E07 /* AddressControlListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D031F31B6A3006B2E07 /* AddressControlListViewController.m */; };
 		B3DC9D071F31B6B7006B2E07 /* AddressControlListViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D061F31B6B7006B2E07 /* AddressControlListViewControllerLight.m */; };
 		B3DC9D0A1F31B6CF006B2E07 /* AddressControlListViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D091F31B6CF006B2E07 /* AddressControlListViewControllerDark.m */; };
-		B3DC9D111F31BEE8006B2E07 /* AddressControllCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D101F31BEE8006B2E07 /* AddressControllCell.m */; };
-		B3DC9D151F31BF1D006B2E07 /* AddressControllCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D141F31BF1D006B2E07 /* AddressControllCellLight.m */; };
-		B3DC9D181F31BF2B006B2E07 /* AddressControllCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D171F31BF2B006B2E07 /* AddressControllCellDark.m */; };
+		B3DC9D111F31BEE8006B2E07 /* AddressControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D101F31BEE8006B2E07 /* AddressControlCell.m */; };
+		B3DC9D151F31BF1D006B2E07 /* AddressControlCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D141F31BF1D006B2E07 /* AddressControlCellLight.m */; };
+		B3DC9D181F31BF2B006B2E07 /* AddressControlCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D171F31BF2B006B2E07 /* AddressControlCellDark.m */; };
 		B3DC9D1A1F31E23F006B2E07 /* AddressTransferPopup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DC9D191F31E23F006B2E07 /* AddressTransferPopup.storyboard */; };
 		B3DC9D1D1F31E712006B2E07 /* TextFieldWithLineDarkPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D1C1F31E712006B2E07 /* TextFieldWithLineDarkPopup.m */; };
 		B3DC9D211F31E8CD006B2E07 /* AddressTransferPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D201F31E8CD006B2E07 /* AddressTransferPopupViewController.m */; };
 		B3DC9D241F31E9A8006B2E07 /* AddressTransferPopupViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D231F31E9A8006B2E07 /* AddressTransferPopupViewControllerDark.m */; };
 		B3DC9D271F31E9BB006B2E07 /* AddressTransferPopupViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D261F31E9BB006B2E07 /* AddressTransferPopupViewControllerLight.m */; };
+		B3DC9D2B1F331D37006B2E07 /* TokenAddressLibraryCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D2A1F331D37006B2E07 /* TokenAddressLibraryCoordinator.m */; };
+		B3DC9D311F331EC5006B2E07 /* TokenAddressContolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D301F331EC5006B2E07 /* TokenAddressContolCell.m */; };
+		B3DC9D341F331F13006B2E07 /* TokenAddressContolCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D331F331F13006B2E07 /* TokenAddressContolCellLight.m */; };
+		B3DC9D371F331F8D006B2E07 /* TokenAddressContolCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D361F331F8D006B2E07 /* TokenAddressContolCellDark.m */; };
+		B3DC9D3A1F331FD6006B2E07 /* TokenAddressControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D391F331FD6006B2E07 /* TokenAddressControlViewController.m */; };
+		B3DC9D3E1F332399006B2E07 /* TokenAddressControlViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D3D1F332399006B2E07 /* TokenAddressControlViewControllerDark.m */; };
+		B3DC9D411F3323BC006B2E07 /* TokenAddressControlViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DC9D401F3323BC006B2E07 /* TokenAddressControlViewControllerLight.m */; };
 		B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27531E68025200BB0635 /* TabBarCoordinator.m */; };
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
@@ -1052,12 +1059,12 @@
 		B3DC9D091F31B6CF006B2E07 /* AddressControlListViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressControlListViewControllerDark.m; sourceTree = "<group>"; };
 		B3DC9D0B1F31B6ED006B2E07 /* AddressControlOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressControlOutput.h; sourceTree = "<group>"; };
 		B3DC9D0C1F31B700006B2E07 /* AddressControlOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressControlOutputDelegate.h; sourceTree = "<group>"; };
-		B3DC9D0F1F31BEE8006B2E07 /* AddressControllCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressControllCell.h; sourceTree = "<group>"; };
-		B3DC9D101F31BEE8006B2E07 /* AddressControllCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressControllCell.m; sourceTree = "<group>"; };
-		B3DC9D131F31BF1D006B2E07 /* AddressControllCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressControllCellLight.h; sourceTree = "<group>"; };
-		B3DC9D141F31BF1D006B2E07 /* AddressControllCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressControllCellLight.m; sourceTree = "<group>"; };
-		B3DC9D161F31BF2B006B2E07 /* AddressControllCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressControllCellDark.h; sourceTree = "<group>"; };
-		B3DC9D171F31BF2B006B2E07 /* AddressControllCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressControllCellDark.m; sourceTree = "<group>"; };
+		B3DC9D0F1F31BEE8006B2E07 /* AddressControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressControlCell.h; sourceTree = "<group>"; };
+		B3DC9D101F31BEE8006B2E07 /* AddressControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressControlCell.m; sourceTree = "<group>"; };
+		B3DC9D131F31BF1D006B2E07 /* AddressControlCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressControlCellLight.h; sourceTree = "<group>"; };
+		B3DC9D141F31BF1D006B2E07 /* AddressControlCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressControlCellLight.m; sourceTree = "<group>"; };
+		B3DC9D161F31BF2B006B2E07 /* AddressControlCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressControlCellDark.h; sourceTree = "<group>"; };
+		B3DC9D171F31BF2B006B2E07 /* AddressControlCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressControlCellDark.m; sourceTree = "<group>"; };
 		B3DC9D191F31E23F006B2E07 /* AddressTransferPopup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddressTransferPopup.storyboard; sourceTree = "<group>"; };
 		B3DC9D1B1F31E712006B2E07 /* TextFieldWithLineDarkPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldWithLineDarkPopup.h; sourceTree = "<group>"; };
 		B3DC9D1C1F31E712006B2E07 /* TextFieldWithLineDarkPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldWithLineDarkPopup.m; sourceTree = "<group>"; };
@@ -1067,6 +1074,22 @@
 		B3DC9D231F31E9A8006B2E07 /* AddressTransferPopupViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTransferPopupViewControllerDark.m; sourceTree = "<group>"; };
 		B3DC9D251F31E9BB006B2E07 /* AddressTransferPopupViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressTransferPopupViewControllerLight.h; sourceTree = "<group>"; };
 		B3DC9D261F31E9BB006B2E07 /* AddressTransferPopupViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressTransferPopupViewControllerLight.m; sourceTree = "<group>"; };
+		B3DC9D291F331D37006B2E07 /* TokenAddressLibraryCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenAddressLibraryCoordinator.h; sourceTree = "<group>"; };
+		B3DC9D2A1F331D37006B2E07 /* TokenAddressLibraryCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenAddressLibraryCoordinator.m; sourceTree = "<group>"; };
+		B3DC9D2C1F331DE6006B2E07 /* TokenAddressLibraryOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenAddressLibraryOutput.h; sourceTree = "<group>"; };
+		B3DC9D2D1F331DF4006B2E07 /* TokenAddressLibraryOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenAddressLibraryOutputDelegate.h; sourceTree = "<group>"; };
+		B3DC9D2F1F331EC5006B2E07 /* TokenAddressContolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenAddressContolCell.h; sourceTree = "<group>"; };
+		B3DC9D301F331EC5006B2E07 /* TokenAddressContolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenAddressContolCell.m; sourceTree = "<group>"; };
+		B3DC9D321F331F13006B2E07 /* TokenAddressContolCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenAddressContolCellLight.h; sourceTree = "<group>"; };
+		B3DC9D331F331F13006B2E07 /* TokenAddressContolCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenAddressContolCellLight.m; sourceTree = "<group>"; };
+		B3DC9D351F331F8D006B2E07 /* TokenAddressContolCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenAddressContolCellDark.h; sourceTree = "<group>"; };
+		B3DC9D361F331F8D006B2E07 /* TokenAddressContolCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenAddressContolCellDark.m; sourceTree = "<group>"; };
+		B3DC9D381F331FD6006B2E07 /* TokenAddressControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenAddressControlViewController.h; sourceTree = "<group>"; };
+		B3DC9D391F331FD6006B2E07 /* TokenAddressControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenAddressControlViewController.m; sourceTree = "<group>"; };
+		B3DC9D3C1F332399006B2E07 /* TokenAddressControlViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenAddressControlViewControllerDark.h; sourceTree = "<group>"; };
+		B3DC9D3D1F332399006B2E07 /* TokenAddressControlViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenAddressControlViewControllerDark.m; sourceTree = "<group>"; };
+		B3DC9D3F1F3323BC006B2E07 /* TokenAddressControlViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenAddressControlViewControllerLight.h; sourceTree = "<group>"; };
+		B3DC9D401F3323BC006B2E07 /* TokenAddressControlViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenAddressControlViewControllerLight.m; sourceTree = "<group>"; };
 		B3DD27521E68025200BB0635 /* TabBarCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCoordinator.h; sourceTree = "<group>"; };
 		B3DD27531E68025200BB0635 /* TabBarCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCoordinator.m; sourceTree = "<group>"; };
 		B3DD27551E6805EC00BB0635 /* BaseCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCoordinator.h; sourceTree = "<group>"; };
@@ -1708,6 +1731,7 @@
 		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
+				B3DC9D281F331CFC006B2E07 /* Token Address Library Flow */,
 				B3DC9CFE1F31B414006B2E07 /* Address Library Flow */,
 				E7881B781F0BDC3400BD6AB2 /* WalletOutput */,
 				B3827DDA1ECF28F300E500DE /* TokenListOutput */,
@@ -2590,12 +2614,12 @@
 		B3DC9D121F31BEF2006B2E07 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B3DC9D0F1F31BEE8006B2E07 /* AddressControllCell.h */,
-				B3DC9D101F31BEE8006B2E07 /* AddressControllCell.m */,
-				B3DC9D131F31BF1D006B2E07 /* AddressControllCellLight.h */,
-				B3DC9D141F31BF1D006B2E07 /* AddressControllCellLight.m */,
-				B3DC9D161F31BF2B006B2E07 /* AddressControllCellDark.h */,
-				B3DC9D171F31BF2B006B2E07 /* AddressControllCellDark.m */,
+				B3DC9D0F1F31BEE8006B2E07 /* AddressControlCell.h */,
+				B3DC9D101F31BEE8006B2E07 /* AddressControlCell.m */,
+				B3DC9D131F31BF1D006B2E07 /* AddressControlCellLight.h */,
+				B3DC9D141F31BF1D006B2E07 /* AddressControlCellLight.m */,
+				B3DC9D161F31BF2B006B2E07 /* AddressControlCellDark.h */,
+				B3DC9D171F31BF2B006B2E07 /* AddressControlCellDark.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2611,6 +2635,45 @@
 				B3DC9D231F31E9A8006B2E07 /* AddressTransferPopupViewControllerDark.m */,
 			);
 			name = "Address Transfer";
+			sourceTree = "<group>";
+		};
+		B3DC9D281F331CFC006B2E07 /* Token Address Library Flow */ = {
+			isa = PBXGroup;
+			children = (
+				B3DC9D2E1F331E9E006B2E07 /* Cell */,
+				B3DC9D3B1F331FE6006B2E07 /* Controllers */,
+				B3DC9D2C1F331DE6006B2E07 /* TokenAddressLibraryOutput.h */,
+				B3DC9D2D1F331DF4006B2E07 /* TokenAddressLibraryOutputDelegate.h */,
+				B3DC9D291F331D37006B2E07 /* TokenAddressLibraryCoordinator.h */,
+				B3DC9D2A1F331D37006B2E07 /* TokenAddressLibraryCoordinator.m */,
+			);
+			name = "Token Address Library Flow";
+			sourceTree = "<group>";
+		};
+		B3DC9D2E1F331E9E006B2E07 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B3DC9D2F1F331EC5006B2E07 /* TokenAddressContolCell.h */,
+				B3DC9D301F331EC5006B2E07 /* TokenAddressContolCell.m */,
+				B3DC9D321F331F13006B2E07 /* TokenAddressContolCellLight.h */,
+				B3DC9D331F331F13006B2E07 /* TokenAddressContolCellLight.m */,
+				B3DC9D351F331F8D006B2E07 /* TokenAddressContolCellDark.h */,
+				B3DC9D361F331F8D006B2E07 /* TokenAddressContolCellDark.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		B3DC9D3B1F331FE6006B2E07 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B3DC9D381F331FD6006B2E07 /* TokenAddressControlViewController.h */,
+				B3DC9D391F331FD6006B2E07 /* TokenAddressControlViewController.m */,
+				B3DC9D3C1F332399006B2E07 /* TokenAddressControlViewControllerDark.h */,
+				B3DC9D3D1F332399006B2E07 /* TokenAddressControlViewControllerDark.m */,
+				B3DC9D3F1F3323BC006B2E07 /* TokenAddressControlViewControllerLight.h */,
+				B3DC9D401F3323BC006B2E07 /* TokenAddressControlViewControllerLight.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		B3E159261ED6E39F00D70A87 /* Cell */ = {
@@ -4349,6 +4412,7 @@
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
+				B3DC9D2B1F331D37006B2E07 /* TokenAddressLibraryCoordinator.m in Sources */,
 				B3DC9D1D1F31E712006B2E07 /* TextFieldWithLineDarkPopup.m in Sources */,
 				B365CA791EA77D490040A163 /* TokensFactory.m in Sources */,
 				E78D0C991ED2DF2E00CB91FF /* TokenDetailsTableView.m in Sources */,
@@ -4401,7 +4465,7 @@
 				E74857961F13BA5300DCF9A6 /* LanguageViewControllerLight.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				B3014D691F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m in Sources */,
-				B3DC9D111F31BEE8006B2E07 /* AddressControllCell.m in Sources */,
+				B3DC9D111F31BEE8006B2E07 /* AddressControlCell.m in Sources */,
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
 				B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
@@ -4417,12 +4481,14 @@
 				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
 				E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */,
+				B3DC9D3A1F331FD6006B2E07 /* TokenAddressControlViewController.m in Sources */,
 				B32B32E91ECCC4A20081260A /* FinishInputCell.m in Sources */,
 				E7396AEC1DDEF7E30002CD47 /* WalletViewController.m in Sources */,
 				B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */,
 				B32B32EC1ECD7B240081260A /* ContractArgumentsInterpretator.m in Sources */,
 				B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */,
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
+				B3DC9D411F3323BC006B2E07 /* TokenAddressControlViewControllerLight.m in Sources */,
 				B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
@@ -4444,6 +4510,7 @@
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B36505921F14B3A900521603 /* CreatePinViewControllerDark.m in Sources */,
+				B3DC9D341F331F13006B2E07 /* TokenAddressContolCellLight.m in Sources */,
 				B36EBC2D1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m in Sources */,
 				B32B32E31ECCC2D50081260A /* ConstructorFromAbiViewController.m in Sources */,
 				B3F5797B1F0D251C00A13571 /* OpenURLManager.m in Sources */,
@@ -4479,7 +4546,7 @@
 				B32B32E21ECCC2D50081260A /* CreateTokenFinishViewController.m in Sources */,
 				B365CA631EA4ED540040A163 /* Contract.m in Sources */,
 				B32BC4C11F29C9B600C2417C /* SubscribeTokenViewControllerLight.m in Sources */,
-				B3DC9D151F31BF1D006B2E07 /* AddressControllCellLight.m in Sources */,
+				B3DC9D151F31BF1D006B2E07 /* AddressControlCellLight.m in Sources */,
 				B35DF63F1F262EB100316953 /* TokenDetailLightDisplayDataManager.m in Sources */,
 				B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
@@ -4549,6 +4616,7 @@
 				E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */,
 				B3CBDF361F2B471A00C80D4E /* TemplateTokenViewControllerLight.m in Sources */,
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,
+				B3DC9D311F331EC5006B2E07 /* TokenAddressContolCell.m in Sources */,
 				B36505951F14B3BA00521603 /* CreatePinViewControllerLight.m in Sources */,
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
@@ -4571,6 +4639,7 @@
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */,
+				B3DC9D371F331F8D006B2E07 /* TokenAddressContolCellDark.m in Sources */,
 				B35DF62C1F2084CA00316953 /* TouchIDService.m in Sources */,
 				B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */,
 				B3827DE71ECF673900E500DE /* TokenFunctionViewController.m in Sources */,
@@ -4652,7 +4721,7 @@
 				E798462D1F0D1E50002A516A /* HistoryTableViewCellLight.m in Sources */,
 				E79846361F0D23CB002A516A /* WalletHeaderCellDark.m in Sources */,
 				B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */,
-				B3DC9D181F31BF2B006B2E07 /* AddressControllCellDark.m in Sources */,
+				B3DC9D181F31BF2B006B2E07 /* AddressControlCellDark.m in Sources */,
 				B36EBC3B1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m in Sources */,
 				B3DB3E511F2F7A5200AA408F /* CheckboxButtonLight.m in Sources */,
 				E798463D1F0D28A3002A516A /* WalletTableSourceLight.m in Sources */,
@@ -4711,6 +4780,7 @@
 				E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */,
 				E74857991F13C01800DCF9A6 /* LanguageTableViewCellDark.m in Sources */,
 				E784F8C21F023C1800A513BF /* QStoreTableViewCell.m in Sources */,
+				B3DC9D3E1F332399006B2E07 /* TokenAddressControlViewControllerDark.m in Sources */,
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,
 				B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */,
 				E748578A1F13B25D00DCF9A6 /* TextFieldWithLineDark.m in Sources */,

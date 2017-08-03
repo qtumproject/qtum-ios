@@ -1,5 +1,5 @@
 //
-//  AddressControllCell.h
+//  AddressControlCell.h
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 02.08.17.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString* addressControllCellIdentifire = @"addressControllCellIdentifire";
+static NSString* AddressControlCellIdentifire = @"AddressControlCellIdentifire";
 
-@interface AddressControllCell : UITableViewCell
+@interface AddressControlCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;

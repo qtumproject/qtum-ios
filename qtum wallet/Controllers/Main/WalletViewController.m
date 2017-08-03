@@ -140,7 +140,7 @@
     [self.delegate didShowQRCodeScan];
 }
 - (IBAction)actionShowAddress:(id)sender {
-    [self.delegate didShowAddressControll];
+    [self.delegate didShowAddressControl];
 }
 
 #pragma mark - TableSourceDelegate

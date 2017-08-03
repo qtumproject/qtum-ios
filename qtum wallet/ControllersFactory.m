@@ -79,6 +79,7 @@
 #import "BackupContractOutput.h"
 #import "ConstructorAbiOutput.h"
 #import "AddressControlOutput.h"
+#import "TokenAddressLibraryOutput.h"
 
 @implementation ControllersFactory
 
@@ -145,22 +146,26 @@
     return controller;
 }
 
--(WalletNameViewController*)createWalletNameCreateController{
+-(WalletNameViewController*)createWalletNameCreateController {
+    
     WalletNameViewController* controller = (WalletNameViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"WalletNameViewController"];
     return controller;
 }
 
--(NSObject<LoginViewOutput>*)createLoginController{
+-(NSObject<LoginViewOutput>*)createLoginController {
+    
     NSObject<LoginViewOutput>* controller = (NSObject<LoginViewOutput>*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"LoginViewController"];
     return controller;
 }
 
--(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController{
+-(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController {
+    
     NSObject<LoginViewOutput>* controller = (NSObject<LoginViewOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ConfirmPinForExportViewController"];
     return controller;
 }
 
--(NSObject<FirstAuthOutput>*)createFirstAuthController{
+-(NSObject<FirstAuthOutput>*)createFirstAuthController {
+    
     NSObject<FirstAuthOutput>* controller = (FirstAuthViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"FirstAuthViewController"];
     return controller;
 }
@@ -340,6 +345,12 @@
 -(NSObject <AddressControlOutput>*)createAddressControllOutput {
     
     NSObject <AddressControlOutput>* output = (NSObject <AddressControlOutput>*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"AddressControlListViewController"];
+    return output;
+}
+
+-(NSObject <TokenAddressLibraryOutput>*)createTokenAddressControllOutput {
+    
+    NSObject <TokenAddressLibraryOutput>* output = (NSObject <TokenAddressLibraryOutput>*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenAddressControlViewController"];
     return output;
 }
 

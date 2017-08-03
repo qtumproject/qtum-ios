@@ -73,6 +73,10 @@
     [self.delegate showAddressInfoWithSpendable:self.token];
 }
 
+- (IBAction)didPressTokenAddressControl:(id)sender {
+    [self.delegate didShowTokenAddressControl];
+}
+
 #pragma mark - TokenDetailDisplayDataManagerDelegate
 
 - (void)updateWithYOffset:(CGFloat) offset {

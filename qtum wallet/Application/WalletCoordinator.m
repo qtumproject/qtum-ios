@@ -35,8 +35,9 @@
 #import "ContractFileManager.h"
 #import "WalletManager.h"
 #import "AddressLibruaryCoordinator.h"
+#import "TokenAddressLibraryCoordinator.h"
 
-@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinator>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
@@ -164,7 +165,10 @@
     vc.abiString = abiString;
 }
 
-
+- (void)didShowTokenAddressControl {
+    
+    [self showTokenAddressControlFlow];
+}
 
 #pragma mark - Configuration
 
@@ -256,7 +260,7 @@
     });
 }
 
--(void)showAddressControllFlow {
+-(void)showAddressControlFlow {
     
     AddressLibruaryCoordinator* coordinator = [[AddressLibruaryCoordinator alloc] initWithNavigationViewController:self.navigationController];
     [coordinator start];
@@ -264,9 +268,18 @@
     [self addDependency:coordinator];
 }
 
-#pragma mark - AddressLibruaryCoordinator
+-(void)showTokenAddressControlFlow {
+    
+    TokenAddressLibraryCoordinator* coordinator = [[TokenAddressLibraryCoordinator alloc] initWithNavigationViewController:self.navigationController];
+    [coordinator start];
+    coordinator.delegate = self;
+    [self addDependency:coordinator];
+}
 
-- (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator*)coordinator {
+
+#pragma mark - AddressLibruaryCoordinator, TokenAddressLibraryCoordinatorDelegate
+
+- (void)coordinatorLibraryDidEnd:(BaseCoordinator*)coordinator {
     [self removeDependency:coordinator];
 }
 
@@ -330,10 +343,11 @@
     }
 }
 
-- (void)didShowAddressControll {
+- (void)didShowAddressControl {
 
-    [self showAddressControllFlow];
+    [self showAddressControlFlow];
 }
+
 
 
 @end

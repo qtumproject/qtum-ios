@@ -10,7 +10,7 @@
 
 @class AddressLibruaryCoordinator;
 
-@protocol AddressLibruaryCoordinator <NSObject>
+@protocol AddressLibruaryCoordinatorDelegate <NSObject>
 
 - (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator*)coordinator;
 
@@ -18,7 +18,7 @@
 
 @interface AddressLibruaryCoordinator : BaseCoordinator <Coordinatorable>
 
-@property (weak,nonatomic) id <AddressLibruaryCoordinator> delegate;
+@property (weak,nonatomic) id <AddressLibruaryCoordinatorDelegate> delegate;
 
 -(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
 
