@@ -36,24 +36,62 @@
     NSObject <AddressControlOutput> *output = [[ControllersFactory sharedInstance] createAddressControllOutput];
     self.addressKeyHashTable = [[ApplicationCoordinator sharedInstance].walletManager.wallet addressKeyHashTable];
     output.delegate = self;
-    output.addresses = self.addressKeyHashTable.allKeys;
     self.addressOutput = output;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
-    [self prepareData];
+    [self getAddresesData];
 }
 
--(void)prepareData {
+-(void)getAddresesData {
     
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
+    __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeysAdreeses] isAdaptive:YES successHandler:^(id responseObject) {
-        
+        [weakSelf updateAddresesListWithResponse:responseObject];
         [[PopUpsManager sharedInstance] dismissLoader];
 
     } andFailureHandler:^(NSError *error, NSString *message) {
         
         [[PopUpsManager sharedInstance] dismissLoader];
     }];
+}
+
+-(NSDictionary*)prepareAddresesDataWithResponse:(NSArray*) response {
+    
+    NSMutableDictionary* addressAmountHashTable = @{}.mutableCopy;
+    
+    for (NSString* address in self.addressKeyHashTable.allKeys) {
+        [addressAmountHashTable setObject:[[NSDecimalNumber alloc] initWithDouble:0.] forKey:address];
+    }
+    
+    for (NSDictionary* item in response) {
+        
+        NSString* address = item[@"address"];
+        NSNumber* amountNumber = item[@"amount"];
+        double amountDouble = [amountNumber doubleValue];
+        
+        if (address && amountDouble > 0) {
+            
+            NSDecimalNumber* addressAmountDecimalConteiner = addressAmountHashTable[address];
+            NSDecimalNumber* summ = [addressAmountDecimalConteiner decimalNumberByAdding:[NSDecimalNumber decimalNumberWithDecimal:[amountNumber decimalValue]]];
+            [addressAmountHashTable setObject:summ forKey:address];
+        }
+    }
+    
+    return [addressAmountHashTable copy];
+}
+
+-(void)updateAddresesListWithResponse:(NSArray*) response  {
+    
+    if ([response isKindOfClass:[NSArray class]]) {
+        
+        __weak __typeof(self)weakSelf = self;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            weakSelf.addressOutput.addressesValueHashTable = [weakSelf prepareAddresesDataWithResponse:response];
+            [weakSelf.addressOutput reloadData];
+        });
+    }
 }
 
 -(void)makeTransferFromAddress:(NSString*)from toAddress:(NSString*) to withAmount:(NSString* )amount {
@@ -125,9 +163,9 @@
     [self.delegate coordinatorLibraryDidEnd:self];
 }
 
--(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath {
+-(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath withAddress:(NSString *)address{
     
-    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:self.addressKeyHashTable.allKeys[indexPath.row] withFromAddressVariants:self.addressKeyHashTable.allKeys completion:^{
+    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressKeyHashTable.allKeys completion:^{
         
     }];
 }

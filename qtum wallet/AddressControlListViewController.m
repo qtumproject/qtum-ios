@@ -17,10 +17,17 @@
 
 @implementation AddressControlListViewController
 
-@synthesize delegate, addresses;
+@synthesize delegate, addressesValueHashTable;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+-(void)reloadData {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableVew reloadData];
+    });
 }
 
 #pragma mark - Actions
@@ -39,20 +46,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate didPressCellAtIndexPath:indexPath];
+    [self.delegate didPressCellAtIndexPath:indexPath withAddress:self.addressesValueHashTable.allKeys[indexPath.row]];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.addresses.count;
+    return self.addressesValueHashTable.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     AddressControllCell *cell = [tableView dequeueReusableCellWithIdentifier:addressControllCellIdentifire];
-    cell.addressLabel.text = self.addresses[indexPath.row];
+    NSString* key = self.addressesValueHashTable.allKeys[indexPath.row];
+    cell.addressLabel.text = key;
+    cell.valueLabel.text = [NSString stringWithFormat:@"%@",self.addressesValueHashTable[key]];
     return cell;
 }
 

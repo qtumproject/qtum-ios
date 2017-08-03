@@ -71,7 +71,7 @@
     for (NSDictionary* item in responseObject) {
         BTCTransactionOutput* txout = [[BTCTransactionOutput alloc] init];
         
-        txout.value = [self convertValueToAmount:[item[@"amount"] doubleValue]];
+        txout.value = [self convertValueToAmount:item[@"amount"]];
         txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"txout_scriptPubKey"])];
         txout.index = [item[@"vout"] intValue];
         txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
@@ -88,8 +88,18 @@
     return outputs;
 }
 
-- (BTCAmount)convertValueToAmount:(double)value {
-    return value * BTCCoin;
+- (BTCAmount)convertValueToAmount:(NSString*) stringValue {
+    
+    if ([stringValue isKindOfClass:[NSString class]] && stringValue.length > 0) {
+        
+        NSDecimalNumber* amount = [NSDecimalNumber decimalNumberWithString:stringValue];
+        
+        if (amount) {
+            return [[amount decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithDouble:BTCCoin]] integerValue];
+        }
+    }
+    
+    return [stringValue doubleValue] * BTCCoin;
 }
 
 

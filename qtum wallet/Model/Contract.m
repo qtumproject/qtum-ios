@@ -103,7 +103,9 @@
     BOOL isActive = [[aDecoder decodeObjectForKey:@"isActive"] boolValue];
     
     self = [super init];
+    
     if (self) {
+        
         _name = name;
         _addressBalanceDictionary = addressBalanceDictionary;
         _contractCreationAddressAddress = contractCreationAddressAddress;
