@@ -1,21 +1,21 @@
 //
-//  AddressControlListViewController.m
+//  TokenAddressControlViewController.m
 //  qtum wallet
 //
-//  Created by Vladimir Lebedevich on 02.08.17.
+//  Created by Vladimir Lebedevich on 03.08.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "AddressControlListViewController.h"
-#import "AddressControlCell.h"
+#import "TokenAddressControlViewController.h"
+#import "TokenAddressContolCell.h"
 
-@interface AddressControlListViewController ()
+@interface TokenAddressControlViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableVew;
 
 @end
 
-@implementation AddressControlListViewController
+@implementation TokenAddressControlViewController
 
 @synthesize delegate, addressesValueHashTable;
 
@@ -58,7 +58,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    AddressControlCell *cell = [tableView dequeueReusableCellWithIdentifier:addressControlCellIdentifire];
+    TokenAddressContolCell *cell = [tableView dequeueReusableCellWithIdentifier:tokenAddressControlCellIdentifire];
     NSString* key = self.addressesValueHashTable.allKeys[indexPath.row];
     cell.addressLabel.text = key;
     cell.valueLabel.text = [NSString stringWithFormat:@"%@",self.addressesValueHashTable[key]];

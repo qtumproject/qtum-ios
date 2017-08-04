@@ -129,6 +129,37 @@ static NSString* op_exec = @"c1";
     }
 }
 
+- (void)sendToken:(Contract*) token
+      fromAddress:(NSString*) frommAddress
+        toAddress:(NSString*) toAddress
+           amount:(NSNumber*) amount
+       andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
+    
+    
+    // Checking address
+    BTCPublicKeyAddress *address = [BTCPublicKeyAddress addressWithString:toAddress];
+    if (!address) {
+        completion(TransactionManagerErrorTypeInvalidAddress, nil, nil);
+    }
+    
+    AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] tokenStandartTransferMethodInterface];
+    NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
+    NSString* __block addressWithAmountValue = frommAddress;
+
+    
+    if (addressWithAmountValue) {
+        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+            if (error) {
+                completion([error isNoInternetConnectionError] ? TransactionManagerErrorTypeNoInternetConnection : TransactionManagerErrorTypeServer, transaction,hashTransaction);
+            }else{
+                completion(TransactionManagerErrorTypeNone, transaction, hashTransaction);
+            }
+        }];
+    } else {
+        completion(TransactionManagerErrorTypeNotEnoughMoney, nil, nil);
+    }
+}
+
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*> *)walletKeys
                          andBitcode:(NSData *)bitcode
                          andHandler:(void(^)(NSError *error, BTCTransaction *transaction, NSString *hashTransaction)) completion {

@@ -98,13 +98,13 @@
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     toolbar.barStyle = UIBarStyleDefault;
     toolbar.translucent = NO;
-    toolbar.barTintColor = customBlackColor();
+    toolbar.barTintColor = [UIColor whiteColor];
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", "") style:UIBarButtonItemStyleDone target:self action:@selector(didPressedCancelAction:)];
     doneButton.tintColor = customBlueColor();
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", "") style:UIBarButtonItemStyleDone target:self action:@selector(didPressedNextOnTextField:)];
-    cancelButton.tintColor = customBlueColor();
+    cancelButton.tintColor = lightGreenColor();
     
     toolbar.items = @[doneButton,
                       [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],

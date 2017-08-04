@@ -74,6 +74,7 @@
 @protocol ContractFunctionDetailOutput;
 @protocol ContractFunctionsOutput;
 @protocol AddressControlOutput;
+@protocol TokenAddressLibraryOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -126,6 +127,7 @@
 - (NSObject <ContractFunctionDetailOutput>*)createTokenFunctionDetailViewController;
 - (NSObject <ContractFunctionsOutput> *)createTokenFunctionViewController;
 - (NSObject <AddressControlOutput>*)createAddressControllOutput;
+- (NSObject <TokenAddressLibraryOutput>*)createTokenAddressControllOutput;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;
