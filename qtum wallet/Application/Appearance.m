@@ -90,7 +90,7 @@
     [[SVProgressHUD appearance] setBackgroundColor:[UIColor whiteColor]];
     [[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [[SVProgressHUD appearance] setMinimumDismissTimeInterval:1];
-    [[SVProgressHUD appearance] setCornerRadius:0];
+    [[SVProgressHUD appearance] setCornerRadius:5];
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : lightGrayColor(),
                                                          NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Regular" size:11.0f]}
