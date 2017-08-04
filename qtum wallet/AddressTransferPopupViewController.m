@@ -8,6 +8,7 @@
 
 #import "AddressTransferPopupViewController.h"
 #import "TextFieldWithLine.h"
+#import "NSString+Extension.h"
 
 @interface AddressTransferPopupViewController () <UITextFieldDelegate>
 
@@ -108,6 +109,19 @@
     [self updateControls];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if ([textField isEqual:self.amountTextFieldView]) {
+
+        NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        BOOL isDecimal = newString.isDecimalString;
+        
+        return isDecimal;
+    }
+
+    return YES;
+}
+
 #pragma mark - UIPickerViewDelegate, UIPickerViewDataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -134,6 +148,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
+    self.fromAddress =
     self.fromTextFieldView.text = self.fromAddressesVariants.allKeys[row];
     [self updateControls];
 }

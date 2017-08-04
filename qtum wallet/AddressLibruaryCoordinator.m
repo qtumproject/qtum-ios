@@ -98,7 +98,7 @@
 }
 
 -(void)makeTransferFromAddress:(NSString*)from toAddress:(NSString*) to withAmount:(NSString* )amount {
-    
+
     NSDecimalNumber *amountDecimalContainer = [NSDecimalNumber decimalNumberWithString:amount];
     
     NSArray *array = @[@{@"amount" : amountDecimalContainer, @"address" : to}];

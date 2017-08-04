@@ -115,18 +115,10 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
-    NSCharacterSet *cset = [NSCharacterSet decimalDigitCharacterSet].invertedSet;
-    NSRange rangeOfChar = [string rangeOfCharacterFromSet:cset];
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    BOOL isDecimal = newString.isDecimalString;
     
-    if ([string isEqualToString:@","]) {
-        return ![textField.text containsString:string] && !(textField.text.length == 0);
-    }
-    
-    if (rangeOfChar.location != NSNotFound) {
-        return NO;
-    }
-    
-    return YES;
+    return isDecimal;
 }
 
 - (NSString *)correctAmountString {

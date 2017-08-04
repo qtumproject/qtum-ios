@@ -108,4 +108,13 @@
     return [fullDateFormater dateFromString:self];
 }
 
+- (BOOL)isDecimalString {
+    
+    NSString *expression = @"^[0-9]*((\\.|,)[0-9]{0,})?$";
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:expression options:NSRegularExpressionCaseInsensitive error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:self options:0 range:NSMakeRange(0, [self length])];
+    return numberOfMatches != 0;
+}
+
 @end

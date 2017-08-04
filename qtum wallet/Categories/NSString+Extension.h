@@ -17,5 +17,6 @@
 + (NSString *)stringFromCamelCase:(NSString*) camelString;
 + (NSString *)randomStringWithLength: (int) len;
 - (NSDate*)date;
+- (BOOL)isDecimalString;
 
 @end
