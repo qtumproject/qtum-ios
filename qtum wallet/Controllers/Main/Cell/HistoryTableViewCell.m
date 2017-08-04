@@ -18,12 +18,12 @@
     [super awakeFromNib];
 }
 
-- (void)setHistoryElement:(HistoryElement *)historyElement
-{
+- (void)setHistoryElement:(HistoryElement *)historyElement {
+    
     _historyElement = historyElement;
     
     self.addressLabel.text = historyElement.address;
-    self.amountLabel.text = historyElement.amountString;
+    self.amountLabel.text = self.symbolLabel ? [NSString stringWithFormat:@"%0.3f", [self.historyElement.amount floatValue]] : historyElement.amountString;
     self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0) ? historyElement.shortDateString : NSLocalizedString(@"Unconfirmed", nil);
     
     if (historyElement.send) {
