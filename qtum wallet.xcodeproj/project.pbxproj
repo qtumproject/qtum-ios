@@ -82,6 +82,7 @@
 		B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32EEC861EB354B100512FED /* CreateToken.storyboard */; };
 		B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32EEC8B1EB354C000512FED /* SubscribeToken.storyboard */; };
 		B32EEC9B1EB356DA00512FED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B32EEC9D1EB356DA00512FED /* Localizable.strings */; };
+		B335794D1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B335794C1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m */; };
 		B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */; };
 		B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601851E963EC800243A21 /* HistoryItemViewController.m */; };
 		B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */; };
@@ -718,6 +719,8 @@
 		B32EEC8C1EB354C200512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SubscribeToken.storyboard; sourceTree = "<group>"; };
 		B32EEC9C1EB356DA00512FED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B32EEC9E1EB356E100512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B335794B1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLogoImageVIewLight.h; sourceTree = "<group>"; };
+		B335794C1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLogoImageVIewLight.m; sourceTree = "<group>"; };
 		B336017B1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemAddressCellTableViewCell.h; sourceTree = "<group>"; };
 		B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemAddressCellTableViewCell.m; sourceTree = "<group>"; };
 		B33601841E963EC800243A21 /* HistoryItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemViewController.h; sourceTree = "<group>"; };
@@ -3331,6 +3334,8 @@
 			children = (
 				E73D9C8E1ECB1A0600A09CFE /* AnimatedLogoImageVIew.h */,
 				E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */,
+				B335794B1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.h */,
+				B335794C1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -4567,6 +4572,7 @@
 				B3DC9D211F31E8CD006B2E07 /* AddressTransferPopupViewController.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
+				B335794D1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m in Sources */,
 				B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */,
 				B32BC4BE1F29C99000C2417C /* SubscribeTokenViewControllerDark.m in Sources */,
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
