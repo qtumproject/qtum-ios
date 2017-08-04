@@ -17,5 +17,7 @@
 - (void)scrollToRootIfNeededAnimated:(BOOL)animated;
 - (void)setScrollingToTokensAvailableIfNeeded;
 - (void)setScrollEnable:(BOOL)enable;
+- (void)setPageControllHidden:(BOOL) hidden;
+
 
 @end

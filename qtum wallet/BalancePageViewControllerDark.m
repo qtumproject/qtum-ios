@@ -20,4 +20,7 @@
     self.view.backgroundColor = customBlackColor();
 }
 
+- (void)setPageControllHidden:(BOOL) hidden {
+}
+
 @end
