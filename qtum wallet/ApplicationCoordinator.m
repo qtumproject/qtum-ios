@@ -28,6 +28,7 @@
 #import "WalletManager.h"
 #import "Wallet.h"
 #import "Appearance.h"
+#import "SplashScreenOutput.h"
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
@@ -345,6 +346,12 @@
     [self addDependency:coordinator];
     controller.outputDelegate = self.tabCoordinator;
     [coordinator start];
+}
+
+- (void)startSplashScreen {
+    
+    NSObject <SplashScreenOutput> *splash = [[ControllersFactory sharedInstance] createSplashScreenOutput];
+    self.appDelegate.window.rootViewController = [splash toPresent];
 }
 
 #pragma mark - Global Observing

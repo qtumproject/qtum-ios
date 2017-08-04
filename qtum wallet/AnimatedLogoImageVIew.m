@@ -26,6 +26,7 @@ float const OneTickAnimationTime = 2.0f;
     if (self) {
         self.image = [self.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         _needRepeate = YES;
+        _animationTime = OneTickAnimationTime;
         [self setTintColor:self.tintColor];
     }
     return self;
@@ -128,7 +129,7 @@ float const OneTickAnimationTime = 2.0f;
     }
     
     self.topConstraintForSecondImageView.constant = 0.0f;
-    [UIView animateWithDuration:OneTickAnimationTime delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView animateWithDuration:self.animationTime delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (self.isAnimating && finished && self.needRepeate) {

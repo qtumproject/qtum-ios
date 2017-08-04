@@ -15,6 +15,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.needRepeate = NO;
+        self.animationTime = 1;
     }
     return self;
 }

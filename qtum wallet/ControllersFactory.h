@@ -75,6 +75,7 @@
 @protocol ContractFunctionsOutput;
 @protocol AddressControlOutput;
 @protocol TokenAddressLibraryOutput;
+@protocol SplashScreenOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -128,6 +129,7 @@
 - (NSObject <ContractFunctionsOutput> *)createTokenFunctionViewController;
 - (NSObject <AddressControlOutput>*)createAddressControllOutput;
 - (NSObject <TokenAddressLibraryOutput>*)createTokenAddressControllOutput;
+- (NSObject <SplashScreenOutput> *)createSplashScreenOutput;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;

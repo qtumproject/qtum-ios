@@ -82,7 +82,9 @@
 		B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32EEC861EB354B100512FED /* CreateToken.storyboard */; };
 		B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32EEC8B1EB354C000512FED /* SubscribeToken.storyboard */; };
 		B32EEC9B1EB356DA00512FED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B32EEC9D1EB356DA00512FED /* Localizable.strings */; };
-		B335794D1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B335794C1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m */; };
+		B33579471F348F7E001A0275 /* SplashViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B33579461F348F7E001A0275 /* SplashViewControllerDark.m */; };
+		B335794A1F348F8F001A0275 /* SplashViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B33579491F348F8F001A0275 /* SplashViewControllerLight.m */; };
+		B33579501F34B5E5001A0275 /* AnimatedLogoImageVIewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B335794F1F34B5E5001A0275 /* AnimatedLogoImageVIewLight.m */; };
 		B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */; };
 		B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601851E963EC800243A21 /* HistoryItemViewController.m */; };
 		B33601891E96546C00243A21 /* HistoryItemDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */; };
@@ -719,8 +721,14 @@
 		B32EEC8C1EB354C200512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SubscribeToken.storyboard; sourceTree = "<group>"; };
 		B32EEC9C1EB356DA00512FED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B32EEC9E1EB356E100512FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B335794B1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLogoImageVIewLight.h; sourceTree = "<group>"; };
-		B335794C1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLogoImageVIewLight.m; sourceTree = "<group>"; };
+		B33579431F348EDF001A0275 /* SplashScreenOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenOutput.h; sourceTree = "<group>"; };
+		B33579441F348EEE001A0275 /* SplashScreenOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenOutputDelegate.h; sourceTree = "<group>"; };
+		B33579451F348F7E001A0275 /* SplashViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewControllerDark.h; sourceTree = "<group>"; };
+		B33579461F348F7E001A0275 /* SplashViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewControllerDark.m; sourceTree = "<group>"; };
+		B33579481F348F8F001A0275 /* SplashViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewControllerLight.h; sourceTree = "<group>"; };
+		B33579491F348F8F001A0275 /* SplashViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewControllerLight.m; sourceTree = "<group>"; };
+		B335794E1F34B5E5001A0275 /* AnimatedLogoImageVIewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLogoImageVIewLight.h; sourceTree = "<group>"; };
+		B335794F1F34B5E5001A0275 /* AnimatedLogoImageVIewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLogoImageVIewLight.m; sourceTree = "<group>"; };
 		B336017B1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemAddressCellTableViewCell.h; sourceTree = "<group>"; };
 		B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemAddressCellTableViewCell.m; sourceTree = "<group>"; };
 		B33601841E963EC800243A21 /* HistoryItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemViewController.h; sourceTree = "<group>"; };
@@ -3325,6 +3333,12 @@
 				E73D9C911ECB1A0900A09CFE /* Views */,
 				E73D9C8B1ECB19D000A09CFE /* SplashViewController.h */,
 				E73D9C8C1ECB19D000A09CFE /* SplashViewController.m */,
+				B33579431F348EDF001A0275 /* SplashScreenOutput.h */,
+				B33579441F348EEE001A0275 /* SplashScreenOutputDelegate.h */,
+				B33579451F348F7E001A0275 /* SplashViewControllerDark.h */,
+				B33579461F348F7E001A0275 /* SplashViewControllerDark.m */,
+				B33579481F348F8F001A0275 /* SplashViewControllerLight.h */,
+				B33579491F348F8F001A0275 /* SplashViewControllerLight.m */,
 			);
 			name = "Splash Screen";
 			sourceTree = "<group>";
@@ -3332,10 +3346,10 @@
 		E73D9C911ECB1A0900A09CFE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B335794E1F34B5E5001A0275 /* AnimatedLogoImageVIewLight.h */,
+				B335794F1F34B5E5001A0275 /* AnimatedLogoImageVIewLight.m */,
 				E73D9C8E1ECB1A0600A09CFE /* AnimatedLogoImageVIew.h */,
 				E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */,
-				B335794B1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.h */,
-				B335794C1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -4406,6 +4420,7 @@
 				E73D9C8D1ECB19D000A09CFE /* SplashViewController.m in Sources */,
 				E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */,
 				B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */,
+				B335794A1F348F8F001A0275 /* SplashViewControllerLight.m in Sources */,
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
@@ -4572,7 +4587,6 @@
 				B3DC9D211F31E8CD006B2E07 /* AddressTransferPopupViewController.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
-				B335794D1F34B2BF001A0275 /* AnimatedLogoImageVIewLight.m in Sources */,
 				B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */,
 				B32BC4BE1F29C99000C2417C /* SubscribeTokenViewControllerDark.m in Sources */,
 				B365CA881EAA3C820040A163 /* SmartTransactionManager.m in Sources */,
@@ -4678,6 +4692,7 @@
 				E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */,
 				E79846401F0D2F57002A516A /* TableSourcesFactory.m in Sources */,
 				E73D37041ECF1771009173BD /* QTUMAddressTokenTableViewCell.m in Sources */,
+				B33579501F34B5E5001A0275 /* AnimatedLogoImageVIewLight.m in Sources */,
 				B3CBDF441F2B497A00C80D4E /* TokenTemplateCellLight.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
 				B3DC9D011F31B449006B2E07 /* AddressLibruaryCoordinator.m in Sources */,
@@ -4697,6 +4712,7 @@
 				E745BA1D1F21E78E00B2E216 /* NewsTableCellDark.m in Sources */,
 				E79846271F0D0068002A516A /* WalletViewControllerLight.m in Sources */,
 				E73D37011ECF1684009173BD /* ActivityTokenTableViewCell.m in Sources */,
+				B33579471F348F7E001A0275 /* SplashViewControllerDark.m in Sources */,
 				E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */,
 				B36505A41F15F6C700521603 /* ExportBrandKeyCoordinator.m in Sources */,
 				B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */,

@@ -80,6 +80,7 @@
 #import "ConstructorAbiOutput.h"
 #import "AddressControlOutput.h"
 #import "TokenAddressLibraryOutput.h"
+#import "SplashScreenOutput.h"
 
 @implementation ControllersFactory
 
@@ -361,6 +362,11 @@
 
 -(NSObject<LibraryOutput> *)createLibraryViewController{
     NSObject<LibraryOutput> *controller = (NSObject<LibraryOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"LibraryViewController"];
+    return controller;
+}
+
+-(NSObject<SplashScreenOutput> *)createSplashScreenOutput{
+    NSObject<SplashScreenOutput> *controller = (NSObject<SplashScreenOutput> *)[UIViewController controllerInStoryboard:@"Splash" withIdentifire:@"SplashViewController"];
     return controller;
 }
 
