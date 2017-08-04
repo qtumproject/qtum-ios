@@ -253,6 +253,12 @@
                                     <constraint firstItem="jY5-b9-2uN" firstAttribute="top" secondItem="d82-63-oty" secondAttribute="bottom" constant="37" id="yPd-xx-8hD"/>
                                     <constraint firstAttribute="trailing" secondItem="dMF-YO-Upd" secondAttribute="trailing" constant="15" id="ypQ-St-Lmg"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
