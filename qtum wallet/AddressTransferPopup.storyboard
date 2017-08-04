@@ -93,14 +93,6 @@
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-arrow-dark" translatesAutoresizingMaskIntoConstraints="NO" id="Erx-ky-bCC">
-                                        <rect key="frame" x="231" y="203.5" width="15" height="15"/>
-                                        <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="0UH-6d-5fi"/>
-                                            <constraint firstAttribute="width" constant="15" id="UWS-ld-LjQ"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -117,14 +109,12 @@
                                     <constraint firstItem="Epx-0c-l6J" firstAttribute="top" secondItem="n48-Nh-AYQ" secondAttribute="bottom" constant="40" id="JrZ-sU-Bgi"/>
                                     <constraint firstItem="n48-Nh-AYQ" firstAttribute="top" secondItem="lxe-Nf-tid" secondAttribute="bottom" constant="40" id="Opj-bZ-Psh"/>
                                     <constraint firstAttribute="width" constant="261" id="P9L-5v-GAC"/>
-                                    <constraint firstItem="Erx-ky-bCC" firstAttribute="centerY" secondItem="Epx-0c-l6J" secondAttribute="centerY" id="VrY-9x-3uU"/>
                                     <constraint firstItem="la1-RH-3qO" firstAttribute="leading" secondItem="a0M-kM-GWt" secondAttribute="leading" constant="25" id="W6d-Pu-nuN"/>
                                     <constraint firstItem="lxe-Nf-tid" firstAttribute="top" secondItem="5Hg-ck-iPE" secondAttribute="bottom" constant="30" id="YHj-ln-4Ia"/>
                                     <constraint firstItem="n48-Nh-AYQ" firstAttribute="leading" secondItem="a0M-kM-GWt" secondAttribute="leading" constant="15" id="bCT-wV-oUc"/>
                                     <constraint firstAttribute="trailing" secondItem="lxe-Nf-tid" secondAttribute="trailing" constant="15" id="mJ5-md-CZW"/>
                                     <constraint firstAttribute="trailing" secondItem="n48-Nh-AYQ" secondAttribute="trailing" constant="15" id="n0n-eP-Jgc"/>
                                     <constraint firstAttribute="bottom" secondItem="la1-RH-3qO" secondAttribute="bottom" constant="20" id="oea-Sy-6L5"/>
-                                    <constraint firstItem="Erx-ky-bCC" firstAttribute="trailing" secondItem="Epx-0c-l6J" secondAttribute="trailing" id="pE1-yX-DyY"/>
                                     <constraint firstItem="5Hg-ck-iPE" firstAttribute="top" secondItem="a0M-kM-GWt" secondAttribute="top" constant="33" id="qA6-98-MFD"/>
                                     <constraint firstAttribute="trailing" secondItem="Epx-0c-l6J" secondAttribute="trailing" constant="15" id="tUB-hb-Zim"/>
                                     <constraint firstItem="q6U-Ee-xof" firstAttribute="height" secondItem="la1-RH-3qO" secondAttribute="height" id="yeL-mk-bzD"/>
@@ -287,7 +277,4 @@
             <point key="canvasLocation" x="1039" y="-65"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ic-arrow-dark" width="9" height="6"/>
-    </resources>
 </document>
