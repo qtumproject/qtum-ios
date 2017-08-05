@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject <TokenAddressLibraryOutput> *addressOutput;
-@property (nonatomic, copy) NSDictionary <NSString*, BTCKey*> *addressKeyHashTable;
+@property (nonatomic, copy) NSDictionary <NSString*, NSNumber*> *addressBalanceHashTable;
 
 @end
 
@@ -36,7 +36,7 @@
     NSObject <TokenAddressLibraryOutput> *output = [[ControllersFactory sharedInstance] createTokenAddressControllOutput];
     output.delegate = self;
     output.addressesValueHashTable = self.token.addressBalanceDictionary;
-    self.addressKeyHashTable = self.token.addressBalanceDictionary;
+    self.addressBalanceHashTable = self.token.addressBalanceDictionary;
     self.addressOutput = output;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
@@ -111,7 +111,7 @@
 
 -(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath withAddress:(NSString*)address {
     
-    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressKeyHashTable.allKeys completion:^{
+    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressBalanceHashTable completion:^{
         
     }];
 }

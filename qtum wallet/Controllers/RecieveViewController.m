@@ -84,7 +84,6 @@
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     toolbar.barStyle = UIBarStyleDefault;
     toolbar.translucent = NO;
-    toolbar.barTintColor = customBlackColor();
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
     doneButton.tintColor = customBlueColor();
     toolbar.items = @[
@@ -115,11 +114,10 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
-    if ([string isEqualToString:@","]) {
-        return ![textField.text containsString:string] && !(textField.text.length == 0);
-    }
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    BOOL isDecimal = newString.isDecimalString;
     
-    return YES;
+    return isDecimal;
 }
 
 - (NSString *)correctAmountString {

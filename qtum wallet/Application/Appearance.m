@@ -51,6 +51,12 @@
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : customBlueColor(),
                                                             NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:16.0f]}
                                                 forState:UIControlStateNormal];
+    
+    //colors for toolbar
+    [[UIToolbar appearance] setBarTintColor:customBlackColor()];
+    [[UIToolbar appearance] setTintColor:customBlueColor()];
+    
+    
     [self configTabbarUndeline];
     [self configTabbarToplineDark];
 }
@@ -79,6 +85,13 @@
 
 + (void)configLightAppearance {
     
+    [[SVProgressHUD appearance] setDefaultStyle:SVProgressHUDStyleCustom];
+    [[SVProgressHUD appearance] setForegroundColor:lightGreenColor()];
+    [[SVProgressHUD appearance] setBackgroundColor:[UIColor whiteColor]];
+    [[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [[SVProgressHUD appearance] setMinimumDismissTimeInterval:1];
+    [[SVProgressHUD appearance] setCornerRadius:5];
+    
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : lightGrayColor(),
                                                          NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Regular" size:11.0f]}
                                              forState:UIControlStateNormal];
@@ -93,9 +106,14 @@
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setClearButtonMode:UITextFieldViewModeWhileEditing];
     [[UITextField appearance] setKeyboardAppearance:UIKeyboardAppearanceLight];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor],
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : lightGreenColor(),
                                                             NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Light" size:14.0f]}
                                                 forState:UIControlStateNormal];
+    
+    //colors for toolbar
+    [[UIToolbar appearance] setBarTintColor:[UIColor whiteColor]];
+    [[UIToolbar appearance] setTintColor:lightGreenColor()];
+
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setBackgroundColor:[UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:0.16]];
 
     

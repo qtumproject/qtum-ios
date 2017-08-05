@@ -196,6 +196,10 @@
     self.scrollView.scrollEnabled = enable;
 }
 
+- (void)setPageControllHidden:(BOOL) hidden {
+    DLog("This method must to be overridden");
+}
+
 #pragma mark - Private Methods
 
 - (void)changeCurrentIndex:(NSInteger)index {

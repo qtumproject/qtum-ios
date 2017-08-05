@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -141,14 +141,11 @@ updated</string>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="qhx-Mh-bfB">
-                                        <rect key="frame" x="25.5" y="34.5" width="13" height="13"/>
+                                        <rect key="frame" x="43.5" y="31" width="13" height="13"/>
                                         <color key="tintColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imb-Hs-18b">
-                                        <rect key="frame" x="46" y="30" width="170" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="170" id="KRh-kw-5fo"/>
-                                        </constraints>
+                                        <rect key="frame" x="59.5" y="30" width="143" height="36"/>
                                         <string key="text">Your balance was 
 updated</string>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -160,10 +157,11 @@ updated</string>
                                 <constraints>
                                     <constraint firstItem="kxx-RQ-wP2" firstAttribute="centerX" secondItem="hNg-Fd-4sY" secondAttribute="centerX" id="171-Eo-bYd"/>
                                     <constraint firstAttribute="width" constant="262" id="JPZ-Os-CSp"/>
-                                    <constraint firstItem="imb-Hs-18b" firstAttribute="leading" secondItem="qhx-Mh-bfB" secondAttribute="trailing" constant="7" id="Lkf-Tu-hZk"/>
+                                    <constraint firstItem="imb-Hs-18b" firstAttribute="leading" secondItem="qhx-Mh-bfB" secondAttribute="trailing" constant="3" id="Lkf-Tu-hZk"/>
                                     <constraint firstAttribute="bottom" secondItem="kxx-RQ-wP2" secondAttribute="bottom" constant="25" id="Vlz-rk-h4y"/>
                                     <constraint firstAttribute="height" constant="170" id="W0W-u0-tk0"/>
-                                    <constraint firstItem="qhx-Mh-bfB" firstAttribute="centerY" secondItem="imb-Hs-18b" secondAttribute="centerY" constant="-7" id="cPo-gm-Ynv"/>
+                                    <constraint firstItem="qhx-Mh-bfB" firstAttribute="top" secondItem="imb-Hs-18b" secondAttribute="top" constant="1" id="cPo-gm-Ynv"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="imb-Hs-18b" secondAttribute="trailing" constant="40" id="laK-YB-1gV"/>
                                     <constraint firstItem="imb-Hs-18b" firstAttribute="top" secondItem="hNg-Fd-4sY" secondAttribute="top" constant="30" id="qEO-4v-7pP"/>
                                     <constraint firstItem="imb-Hs-18b" firstAttribute="centerX" secondItem="hNg-Fd-4sY" secondAttribute="centerX" id="vYv-sf-ZIV"/>
                                 </constraints>

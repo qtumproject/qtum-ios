@@ -16,11 +16,12 @@
     
     if (indexPath.section == 0) {
         switch ([self headerCellType]) {
-            case HeaderCellTypeWithoutPageControl:
             case HeaderCellTypeWithoutNotCorfirmedBalance:
             case HeaderCellTypeWithoutAll:
                 return 164;
+            case HeaderCellTypeWithoutPageControl:
             case HeaderCellTypeAllVisible:
+                return 214;
             default:
                 return 214;
         }

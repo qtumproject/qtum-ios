@@ -251,9 +251,7 @@ static NSInteger withoutTokenOffset = 40;
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     toolbar.barStyle = UIBarStyleDefault;
     toolbar.translucent = NO;
-    toolbar.barTintColor = customBlackColor();
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
-    doneItem.tintColor = customBlueColor();
     toolbar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                       doneItem];
     [toolbar sizeToFit];

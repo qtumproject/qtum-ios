@@ -10,4 +10,11 @@
 
 @interface AnimatedLogoImageVIew : UIImageView
 
+@property (nonatomic) UIImageView *secondImageView;
+@property (nonatomic) NSLayoutConstraint *topConstraintForSecondImageView;
+@property (nonatomic) BOOL isAnimating;
+@property (nonatomic) BOOL needRepeate;
+@property (nonatomic) CGFloat animationTime;
+
+
 @end

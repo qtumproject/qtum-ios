@@ -73,4 +73,8 @@
     [self.pageControl setSelectedPage:index];
 }
 
+-(void)setPageControllHidden:(BOOL) hidden {
+    self.pageControl.hidden = hidden;
+}
+
 @end

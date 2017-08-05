@@ -80,6 +80,7 @@
 #import "ConstructorAbiOutput.h"
 #import "AddressControlOutput.h"
 #import "TokenAddressLibraryOutput.h"
+#import "SplashScreenOutput.h"
 
 @implementation ControllersFactory
 
@@ -364,6 +365,11 @@
     return controller;
 }
 
+-(NSObject<SplashScreenOutput> *)createSplashScreenOutput{
+    NSObject<SplashScreenOutput> *controller = (NSObject<SplashScreenOutput> *)[UIViewController controllerInStoryboard:@"Splash" withIdentifire:@"SplashViewController"];
+    return controller;
+}
+
 -(UIViewController*)createFlowNavigationCoordinator{
     return nil;
 }
@@ -440,7 +446,8 @@
     return controller;
 }
 
-- (ShareTokenPopUpViewController *)createShareTokenPopUpViewController{
+- (ShareTokenPopUpViewController *)createShareTokenPopUpViewController {
+    
     ShareTokenPopUpViewController* controller = (ShareTokenPopUpViewController *)[UIViewController controllerInStoryboard:@"ShareTokenPopUp" withIdentifire:@"ShareTokenPopUpViewController"];
     return controller;
 }

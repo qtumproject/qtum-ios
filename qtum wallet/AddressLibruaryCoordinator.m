@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject <AddressControlOutput> *addressOutput;
 @property (nonatomic, copy) NSDictionary <NSString*, BTCKey*> *addressKeyHashTable;
+@property (nonatomic, copy) NSDictionary <NSString*, NSNumber*> *addressBalanceHashTable;
 
 @end
 
@@ -88,14 +89,16 @@
         __weak __typeof(self)weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            weakSelf.addressOutput.addressesValueHashTable = [weakSelf prepareAddresesDataWithResponse:response];
+            NSDictionary <NSString*, NSNumber*> *data = [weakSelf prepareAddresesDataWithResponse:response];
+            weakSelf.addressOutput.addressesValueHashTable = data;
+            weakSelf.addressBalanceHashTable = data;
             [weakSelf.addressOutput reloadData];
         });
     }
 }
 
 -(void)makeTransferFromAddress:(NSString*)from toAddress:(NSString*) to withAmount:(NSString* )amount {
-    
+
     NSDecimalNumber *amountDecimalContainer = [NSDecimalNumber decimalNumberWithString:amount];
     
     NSArray *array = @[@{@"amount" : amountDecimalContainer, @"address" : to}];
@@ -165,8 +168,7 @@
 
 -(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath withAddress:(NSString *)address{
     
-    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressKeyHashTable.allKeys completion:^{
-        
+    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressBalanceHashTable completion:^{
     }];
 }
 

@@ -30,8 +30,8 @@
 
 #pragma mark - Instance
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
+    
     static PopUpsManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -243,7 +243,7 @@
     return controller;
 }
 
-- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter toAddress:(NSString*) address withFromAddressVariants:(NSArray<NSString*>*) variants completion:(void (^)(void))completion{
+- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter toAddress:(NSString*) address withFromAddressVariants:(NSDictionary<NSString*, NSNumber*>*) variants completion:(void (^)(void))completion{
     
     AddressTransferPopupViewController *controller = [self createAddressTransferPopUp];
     controller.toAddress = address;

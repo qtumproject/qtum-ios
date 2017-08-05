@@ -46,7 +46,7 @@
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
     
     //REFRESH CONTROLL BACKGROUND
-    CGRect frame = self.tableView.bounds;
+    CGRect frame = self.view.bounds;
     frame.origin.y = - frame.size.height;
     UIView *refreshBackgroundView = [[UIView alloc] initWithFrame:frame];
     refreshBackgroundView.backgroundColor = lightDarkBlueColorForGradient();

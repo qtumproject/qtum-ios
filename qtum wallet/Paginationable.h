@@ -14,4 +14,5 @@
 -(void)setCurrentPage:(NSInteger) page;
 -(void)setNumberPages:(NSInteger) number;
 
+
 @end

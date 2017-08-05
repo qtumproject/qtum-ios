@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AuthCoordinator.h"
+#import "SplashScreenOutput.h"
 
-@interface SplashViewController : BaseViewController
+@interface SplashViewController : BaseViewController <SplashScreenOutput>
 
 @end

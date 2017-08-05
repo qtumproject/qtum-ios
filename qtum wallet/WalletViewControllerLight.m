@@ -44,7 +44,7 @@
     [refreshView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
     
-    CGRect frame = self.tableView.bounds;
+    CGRect frame = self.view.bounds;
     frame.origin.y = -frame.size.height;
     UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
     refreshBackgroundView.backgroundColor = lightDarkBlueColorForGradient();

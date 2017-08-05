@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ftx-vp-kcK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ftx-vp-kcK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Splash View Controller-->
+        <!--Splash View Controller Dark-->
         <scene sceneID="IMD-hM-aHs">
             <objects>
-                <viewController storyboardIdentifier="SplashViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ftx-vp-kcK" customClass="SplashViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashViewControllerDark" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ftx-vp-kcK" customClass="SplashViewControllerDark" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="N5A-r1-5a0"/>
                         <viewControllerLayoutGuide type="bottom" id="7SS-Vs-Vdg"/>
@@ -71,6 +71,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugQ-TZ-6JC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+        <!--Splash View Controller Light-->
+        <scene sceneID="Awu-Nt-os7">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewControllerLight" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6yL-2f-XRK" customClass="SplashViewControllerLight" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qcl-2U-KjH"/>
+                        <viewControllerLayoutGuide type="bottom" id="9t6-uu-ngo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4tZ-zC-v6P" customClass="GradientView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nac-6j-JOQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="hrV-ar-tSr" customClass="AnimatedLogoImageVIewLight">
+                                <rect key="frame" x="130" y="208" width="115" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="5rk-e4-RMY"/>
+                                    <constraint firstAttribute="width" constant="115" id="5so-l4-y7a"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgh-98-MY2">
+                                <rect key="frame" x="147.5" y="343" width="80.5" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="LJg-S7-q8C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDd-SA-4ip">
+                                <rect key="frame" x="147" y="343" width="80.5" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80.5" id="TsJ-84-JrC"/>
+                                    <constraint firstAttribute="height" constant="36" id="u3Y-v6-pVT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="28"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVB-QE-fgb">
+                                <rect key="frame" x="147.5" y="603" width="80.5" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="keE-4V-Grg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hil-Ff-02b">
+                                <rect key="frame" x="147" y="603" width="80.5" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80.5" id="Fk3-8M-j4d"/>
+                                    <constraint firstAttribute="height" constant="14" id="vBb-o1-e4E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nac-6j-JOQ" secondAttribute="trailing" id="CTV-AK-L8V"/>
+                            <constraint firstItem="Jgh-98-MY2" firstAttribute="top" secondItem="hrV-ar-tSr" secondAttribute="bottom" constant="35" id="F74-Kb-Chq"/>
+                            <constraint firstItem="XDd-SA-4ip" firstAttribute="top" secondItem="Jgh-98-MY2" secondAttribute="top" id="Fa3-yF-KNI"/>
+                            <constraint firstItem="Hil-Ff-02b" firstAttribute="top" secondItem="CVB-QE-fgb" secondAttribute="top" id="IpE-ip-1lQ"/>
+                            <constraint firstItem="hrV-ar-tSr" firstAttribute="centerX" secondItem="4tZ-zC-v6P" secondAttribute="centerX" id="KTp-td-Cj6"/>
+                            <constraint firstItem="nac-6j-JOQ" firstAttribute="leading" secondItem="4tZ-zC-v6P" secondAttribute="leading" id="KqW-b6-A11"/>
+                            <constraint firstItem="nac-6j-JOQ" firstAttribute="top" secondItem="4tZ-zC-v6P" secondAttribute="top" id="LmM-Sa-Okj"/>
+                            <constraint firstItem="Jgh-98-MY2" firstAttribute="centerX" secondItem="4tZ-zC-v6P" secondAttribute="centerX" id="SKF-PO-Ed3"/>
+                            <constraint firstItem="CVB-QE-fgb" firstAttribute="centerX" secondItem="4tZ-zC-v6P" secondAttribute="centerX" id="Zlg-GT-9UQ"/>
+                            <constraint firstAttribute="bottom" secondItem="nac-6j-JOQ" secondAttribute="bottom" id="hOr-e3-IdY"/>
+                            <constraint firstItem="XDd-SA-4ip" firstAttribute="centerX" secondItem="Jgh-98-MY2" secondAttribute="centerX" id="piE-6X-dUS"/>
+                            <constraint firstItem="9t6-uu-ngo" firstAttribute="top" secondItem="CVB-QE-fgb" secondAttribute="bottom" constant="50" id="q4H-4c-ZhK"/>
+                            <constraint firstItem="hrV-ar-tSr" firstAttribute="centerY" secondItem="4tZ-zC-v6P" secondAttribute="centerY" constant="-75" id="rkP-JR-fnz"/>
+                            <constraint firstItem="Hil-Ff-02b" firstAttribute="centerX" secondItem="CVB-QE-fgb" secondAttribute="centerX" id="vqA-r1-5GH"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="animatedBacgroundView" destination="nac-6j-JOQ" id="nwW-BS-deh"/>
+                        <outlet property="animatedBacgroungViewHeightConstraint" destination="LmM-Sa-Okj" id="xx3-Zz-5hN"/>
+                        <outlet property="animatedLogoView" destination="hrV-ar-tSr" id="WWn-ow-X3I"/>
+                        <outlet property="animatedQTUMLabel" destination="XDd-SA-4ip" id="dve-fD-Xn0"/>
+                        <outlet property="animatedQTUMLabelHeightConstraint" destination="u3Y-v6-pVT" id="eZ4-6s-bQA"/>
+                        <outlet property="animatedWaitLabelHeightConstraint" destination="vBb-o1-e4E" id="Gw2-nc-B0V"/>
+                        <outlet property="animatedWaitingLabel" destination="Hil-Ff-02b" id="x52-71-426"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kQn-uX-rLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757.60000000000002" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>

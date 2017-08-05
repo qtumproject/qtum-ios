@@ -252,13 +252,19 @@
     
     [self configWallet];
     [self setWalletToDelegates];
-    
+    [self updateControls];
     __weak __typeof(self)weakSelf = self;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
         [weakSelf updateSpendables];
     });
+}
+
+-(void)updateControls {
+    
+    NSArray *tokensArray = [[ContractManager sharedInstance] allActiveTokens];
+    [self.pageViewController setPageControllHidden:!tokensArray.count];
 }
 
 -(void)showAddressControlFlow {
@@ -339,6 +345,9 @@
 }
 
 - (void)didReloadTableViewData {
+    
+    [self updateControls];
+    
     if (self.isNewDataLoaded) {
         self.isBalanceLoaded = YES;
         [self reloadHistory];
