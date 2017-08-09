@@ -29,6 +29,8 @@
     self.collectionView.delegate = source;
     self.collectionView.dataSource = source;
     
+    [self.collectionView reloadData];
+    
     [self.collectionView setDecelerationRate:0.8];
 }
 

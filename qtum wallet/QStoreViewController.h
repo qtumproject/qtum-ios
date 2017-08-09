@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ContractCoordinator.h"
+#import "QStoreMainOutput.h"
+#import "Presentable.h"
 
-@interface QStoreViewController : UIViewController
-
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
+@interface QStoreViewController : UIViewController <QStoreMainOutput, Presentable>
 
 @end

@@ -398,6 +398,7 @@
 		E74857961F13BA5300DCF9A6 /* LanguageViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E74857951F13BA5300DCF9A6 /* LanguageViewControllerLight.m */; };
 		E74857991F13C01800DCF9A6 /* LanguageTableViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E74857981F13C01800DCF9A6 /* LanguageTableViewCellDark.m */; };
 		E748579C1F13C02600DCF9A6 /* LanguageTableViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E748579B1F13C02600DCF9A6 /* LanguageTableViewCellLight.m */; };
+		E74C16571F3B09C3003D2D9C /* QStoreCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = E74C16561F3B09C3003D2D9C /* QStoreCoordinator.m */; };
 		E75220461F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75220451F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib */; };
 		E752204B1F0E70E60028D152 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E752204A1F0E70E60028D152 /* PageControl.m */; };
 		E760F4911F0F6D8B0056D042 /* BalancePageViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4901F0F6D8B0056D042 /* BalancePageViewControllerDark.m */; };
@@ -411,6 +412,10 @@
 		E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4B01F0FAB930056D042 /* ProfileViewControllerDark.m */; };
 		E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */; };
 		E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */; };
+		E7847F751F3B16A7004A2333 /* QStoreRequestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F741F3B16A7004A2333 /* QStoreRequestAdapter.m */; };
+		E7847F791F3B1ACD004A2333 /* QStoreCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F781F3B1ACD004A2333 /* QStoreCategory.m */; };
+		E7847F7C1F3B1B25004A2333 /* QStoreCategoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F7B1F3B1B25004A2333 /* QStoreCategoryElement.m */; };
+		E7847F801F3B315C004A2333 /* QStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F7F1F3B315C004A2333 /* QStoreManager.m */; };
 		E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8B71F015B7100A513BF /* QStoreViewController.m */; };
 		E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8BA1F015C4C00A513BF /* QStoreCollectionViewSource.m */; };
 		E784F8BE1F015CE400A513BF /* QStoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8BD1F015CE400A513BF /* QStoreCollectionViewCell.m */; };
@@ -1435,6 +1440,10 @@
 		E748579B1F13C02600DCF9A6 /* LanguageTableViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTableViewCellLight.m; sourceTree = "<group>"; };
 		E748579E1F13C4B700DCF9A6 /* ExportBrainKeyOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportBrainKeyOutput.h; sourceTree = "<group>"; };
 		E748579F1F13C4C100DCF9A6 /* ExportBrainKeyOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportBrainKeyOutputDelegate.h; sourceTree = "<group>"; };
+		E74C16551F3B09C3003D2D9C /* QStoreCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreCoordinator.h; sourceTree = "<group>"; };
+		E74C16561F3B09C3003D2D9C /* QStoreCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreCoordinator.m; sourceTree = "<group>"; };
+		E74C16581F3B0A76003D2D9C /* QStoreMainOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreMainOutput.h; sourceTree = "<group>"; };
+		E74C16591F3B0A8D003D2D9C /* QStoreMainOutputDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreMainOutputDelegate.h; sourceTree = "<group>"; };
 		E75220451F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableHeaderViewLight.xib; sourceTree = "<group>"; };
 		E75220491F0E70E60028D152 /* PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControl.h; sourceTree = "<group>"; };
 		E752204A1F0E70E60028D152 /* PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl.m; sourceTree = "<group>"; };
@@ -1465,6 +1474,14 @@
 		E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerLight.m; sourceTree = "<group>"; };
 		E777786A1EF3E54E00948682 /* BTCAddress+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCAddress+Extension.h"; sourceTree = "<group>"; };
 		E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Extension.m"; sourceTree = "<group>"; };
+		E7847F731F3B16A7004A2333 /* QStoreRequestAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QStoreRequestAdapter.h; path = Managers/Request/QStoreRequestAdapter.h; sourceTree = "<group>"; };
+		E7847F741F3B16A7004A2333 /* QStoreRequestAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QStoreRequestAdapter.m; path = Managers/Request/QStoreRequestAdapter.m; sourceTree = "<group>"; };
+		E7847F771F3B1ACD004A2333 /* QStoreCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreCategory.h; sourceTree = "<group>"; };
+		E7847F781F3B1ACD004A2333 /* QStoreCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreCategory.m; sourceTree = "<group>"; };
+		E7847F7A1F3B1B25004A2333 /* QStoreCategoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreCategoryElement.h; sourceTree = "<group>"; };
+		E7847F7B1F3B1B25004A2333 /* QStoreCategoryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreCategoryElement.m; sourceTree = "<group>"; };
+		E7847F7E1F3B315C004A2333 /* QStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreManager.h; sourceTree = "<group>"; };
+		E7847F7F1F3B315C004A2333 /* QStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreManager.m; sourceTree = "<group>"; };
 		E784F8B61F015B7100A513BF /* QStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreViewController.h; sourceTree = "<group>"; };
 		E784F8B71F015B7100A513BF /* QStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreViewController.m; sourceTree = "<group>"; };
 		E784F8B91F015C4C00A513BF /* QStoreCollectionViewSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreCollectionViewSource.h; sourceTree = "<group>"; };
@@ -2885,6 +2902,10 @@
 		B3F06D0B1E69B55D006341F7 /* Contract */ = {
 			isa = PBXGroup;
 			children = (
+				B3F06CF51E69879D006341F7 /* ContractCoordinator.h */,
+				B3F06CF61E69879D006341F7 /* ContractCoordinator.m */,
+				B385B5A01E6D640E003BB96C /* CreateTokenNavigationController.h */,
+				B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */,
 				E71F1C871F1CE98200961B19 /* Watch */,
 				E7360EC21F1918BB003ED21D /* LibraryOutput */,
 				E784F8B51F015B5500A513BF /* QStore */,
@@ -2892,10 +2913,6 @@
 				E713A4781EEE964800A2FA40 /* RestoreContracts */,
 				E72631221EEAA7EC005AED8F /* Views */,
 				B3D555EC1EDF4DA400CBDFCF /* Cells */,
-				B3F06CF51E69879D006341F7 /* ContractCoordinator.h */,
-				B3F06CF61E69879D006341F7 /* ContractCoordinator.m */,
-				B385B5A01E6D640E003BB96C /* CreateTokenNavigationController.h */,
-				B385B5A11E6D640E003BB96C /* CreateTokenNavigationController.m */,
 				B3141E5E1F30AC4B0095E3DF /* Contract Creation End */,
 				B3076F2A1F307D2500FB7D5A /* Constructor */,
 				B3CBDF2E1F2B42D600C80D4E /* Templates List  */,
@@ -2977,6 +2994,8 @@
 			children = (
 				E70353071F039262004ECCC9 /* Search */,
 				E784F8BF1F015CE700A513BF /* CollectionVIew */,
+				E74C16581F3B0A76003D2D9C /* QStoreMainOutput.h */,
+				E74C16591F3B0A8D003D2D9C /* QStoreMainOutputDelegate.h */,
 				E784F8B61F015B7100A513BF /* QStoreViewController.h */,
 				E784F8B71F015B7100A513BF /* QStoreViewController.m */,
 			);
@@ -3438,9 +3457,35 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		E7847F761F3B1ABA004A2333 /* QStoreModel */ = {
+			isa = PBXGroup;
+			children = (
+				E7847F771F3B1ACD004A2333 /* QStoreCategory.h */,
+				E7847F781F3B1ACD004A2333 /* QStoreCategory.m */,
+				E7847F7A1F3B1B25004A2333 /* QStoreCategoryElement.h */,
+				E7847F7B1F3B1B25004A2333 /* QStoreCategoryElement.m */,
+			);
+			name = QStoreModel;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E7847F7D1F3B311C004A2333 /* QStore classes */ = {
+			isa = PBXGroup;
+			children = (
+				E7847F761F3B1ABA004A2333 /* QStoreModel */,
+				E7847F731F3B16A7004A2333 /* QStoreRequestAdapter.h */,
+				E7847F741F3B16A7004A2333 /* QStoreRequestAdapter.m */,
+				E7847F7E1F3B315C004A2333 /* QStoreManager.h */,
+				E7847F7F1F3B315C004A2333 /* QStoreManager.m */,
+			);
+			name = "QStore classes";
+			sourceTree = "<group>";
+		};
 		E784F8B51F015B5500A513BF /* QStore */ = {
 			isa = PBXGroup;
 			children = (
+				E74C16551F3B09C3003D2D9C /* QStoreCoordinator.h */,
+				E74C16561F3B09C3003D2D9C /* QStoreCoordinator.m */,
 				E70353161F03C2F4004ECCC9 /* ContractScreen */,
 				E703530C1F03ABBF004ECCC9 /* MainScreen */,
 				E703530B1F03ABBC004ECCC9 /* ListScreen */,
@@ -3826,6 +3871,7 @@
 				E7FD36531DC72B4F00748177 /* Controllers */,
 				E7FD365D1DC73ACB00748177 /* Library */,
 				E7D241D61DE6D697003E507B /* QRCode */,
+				E7847F7D1F3B311C004A2333 /* QStore classes */,
 				E7FD366C1DC773FF00748177 /* Request */,
 				E7DD00EB1DC9BFA300FD5335 /* Transaction Controll Flow */,
 				E7FD365F1DC73B6300748177 /* Spendable Controll Flow */,
@@ -4429,6 +4475,7 @@
 				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
 				B3DC9D271F31E9BB006B2E07 /* AddressTransferPopupViewControllerLight.m in Sources */,
 				B3EE8F421F136FAA00131823 /* ChooseTokenPaymentCellLight.m in Sources */,
+				E7847F7C1F3B1B25004A2333 /* QStoreCategoryElement.m in Sources */,
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
@@ -4575,6 +4622,7 @@
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				B3CBDF201F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m in Sources */,
+				E7847F801F3B315C004A2333 /* QStoreManager.m in Sources */,
 				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
 				B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */,
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
@@ -4586,6 +4634,7 @@
 				B3DC9CEE1F30CB7E006B2E07 /* TokenFunctionViewControllerLight.m in Sources */,
 				B3DC9D211F31E8CD006B2E07 /* AddressTransferPopupViewController.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
+				E7847F751F3B16A7004A2333 /* QStoreRequestAdapter.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
 				B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */,
 				B32BC4BE1F29C99000C2417C /* SubscribeTokenViewControllerDark.m in Sources */,
@@ -4726,6 +4775,7 @@
 				E7CE63621F027EC200C147B9 /* CustomSearchBar.m in Sources */,
 				E727F1781E02749D0080E79D /* Wallet.m in Sources */,
 				B3F76A731EDD671D00108DE9 /* ChoiseSmartContractCell.m in Sources */,
+				E74C16571F3B09C3003D2D9C /* QStoreCoordinator.m in Sources */,
 				B33EAF0D1E5C6CD2006125F3 /* LoginCoordinator.m in Sources */,
 				E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */,
 				B35DF6461F263CD500316953 /* LightBlueGrayBorderView.m in Sources */,
@@ -4768,6 +4818,7 @@
 				B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */,
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
+				E7847F791F3B1ACD004A2333 /* QStoreCategory.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,

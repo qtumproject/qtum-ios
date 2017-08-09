@@ -19,8 +19,10 @@
 
 @property (nonatomic) QStoreTableSource *source;
 @property (nonatomic) QStoreSearchTableSource *searchSource;
+
 @property (nonatomic) UIView *containerForSearchElements;
 @property (nonatomic) NSLayoutConstraint *bottomConstraintForContainer;
+
 @property (nonatomic) SelectSearchTypeView *selectSearchType;
 @property (nonatomic) UITableView *searchTableView;
 
@@ -28,11 +30,15 @@
 
 @implementation QStoreViewController
 
+@synthesize delegate;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.source = [QStoreTableSource new];
     self.source.delegate = self;
+    self.source.tableView = self.tableView;
+    
     self.tableView.delegate = self.source;
     self.tableView.dataSource = self.source;
     [self.tableView setDecelerationRate:0.8f];
@@ -42,6 +48,8 @@
     [self createContainer];
     [self createSelectSearchView];
     [self createSearchTableView];
+    
+    [self loadTrendingNow];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -219,6 +227,28 @@
 
 - (void)didSelectSearchCell {
     [self.delegate didSelectQStoreContract];
+}
+
+#pragma mark - Methods
+
+- (void)loadTrendingNow {
+    [self.delegate didLoadTrendingNow];
+}
+
+- (void)startLoading {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[PopUpsManager sharedInstance] showLoaderPopUp];
+    });
+}
+
+- (void)stopLoading {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[PopUpsManager sharedInstance] dismissLoader];
+    });
+}
+
+- (void)setCategories:(NSArray<QStoreCategory *> *)categories {
+    [self.source setCategoriesArray:categories];
 }
 
 @end

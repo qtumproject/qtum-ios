@@ -305,8 +305,8 @@
     return controller;
 }
 
--(QStoreViewController*)createQStoreViewController{
-    QStoreViewController* controller = (QStoreViewController*)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreViewController"];
+- (NSObject <QStoreMainOutput> *)createQStoreMainViewController {
+    NSObject <QStoreMainOutput> *controller = (NSObject <QStoreMainOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreViewController"];
     return controller;
 }
 

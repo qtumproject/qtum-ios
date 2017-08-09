@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "QStoreCategoryElement.h"
 
 @protocol QStoreCollectionViewSourceDelegate <NSObject>
 
@@ -17,5 +18,6 @@
 @interface QStoreCollectionViewSource : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, weak) id<QStoreCollectionViewSourceDelegate> delegate;
+@property (nonatomic) NSArray<QStoreCategoryElement *> *elements;
 
 @end

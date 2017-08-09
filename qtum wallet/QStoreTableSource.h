@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class QStoreCategory;
+
 @protocol QStoreTableSourceDelegate <NSObject>
 
 - (void)didSelectCollectionCell;
@@ -17,5 +19,8 @@
 @interface QStoreTableSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) id<QStoreTableSourceDelegate> delegate;
+@property (nonatomic, weak) UITableView *tableView;
+
+- (void)setCategoriesArray:(NSArray<QStoreCategory *> *)categories;
 
 @end

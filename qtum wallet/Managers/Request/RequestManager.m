@@ -358,6 +358,16 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     [self.socketManager stopObservingToken:token withHandler:nil];
 }
 
+#pragma mark - QStore
 
+- (void)getContractsByCategoryPath:(NSString *)path withSuccessHandler:(void(^)(id responseObject))success
+        andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
 
 @end

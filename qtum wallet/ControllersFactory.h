@@ -77,6 +77,8 @@
 @protocol TokenAddressLibraryOutput;
 @protocol SplashScreenOutput;
 
+@protocol QStoreMainOutput;
+
 @interface ControllersFactory : NSObject
 
 + (instancetype)sharedInstance;
@@ -131,6 +133,9 @@
 - (NSObject <TokenAddressLibraryOutput>*)createTokenAddressControllOutput;
 - (NSObject <SplashScreenOutput> *)createSplashScreenOutput;
 
+// QStore
+- (NSObject <QStoreMainOutput> *)createQStoreMainViewController;
+
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;
 - (QRCodeViewController*)createQRCodeViewControllerForSubscribe;
@@ -144,7 +149,7 @@
 - (LoaderPopUpViewController *)createLoaderViewController;
 - (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
 - (SecurityPopupViewController *)createSecurityPopupViewController;
-- (QStoreViewController*)createQStoreViewController;
+
 - (QStoreListViewController*)createQStoreListViewController;
 - (QStoreContractViewController*)createQStoreContractViewController;
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController;

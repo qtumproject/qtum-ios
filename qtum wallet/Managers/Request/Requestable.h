@@ -92,5 +92,10 @@
 
 - (void)callFunctionToContractAddress:(NSString*) address withHashes:(NSArray*) hashes withHandler:(void(^)(id responseObject))completesion;
 
+// QStore
+
+- (void)getContractsByCategoryPath:(NSString *)path
+                withSuccessHandler:(void(^)(id responseObject))success
+                 andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 @end

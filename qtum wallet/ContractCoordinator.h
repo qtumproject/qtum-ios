@@ -29,7 +29,7 @@
 
 @end
 
-@interface ContractCoordinator : BaseCoordinator <Coordinatorable,ContractCoordinatorDelegate>
+@interface ContractCoordinator : BaseCoordinator <Coordinatorable, ContractCoordinatorDelegate>
 
 -(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 

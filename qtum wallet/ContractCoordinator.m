@@ -28,9 +28,11 @@
 #import "RestoreContractsViewController.h"
 #import "BackupContractsViewController.h"
 #import "TemplateManager.h"
-#import "QStoreViewController.h"
+
+#import "QStoreCoordinator.h"
 #import "QStoreListViewController.h"
 #import "QStoreContractViewController.h"
+
 #import "Wallet.h"
 
 #import "LibraryOutput.h"
@@ -77,6 +79,8 @@ ContractFunctionsOutputDelegate>
 @property (nonatomic) BOOL isLibraryViewControllerOnlyForTokens;
 @property (copy, nonatomic) NSString* localContractName;
 
+@property (strong, nonatomic) QStoreCoordinator *qStoreCoordinator;
+
 @end
 
 @implementation ContractCoordinator
@@ -122,11 +126,8 @@ ContractFunctionsOutputDelegate>
 }
 
 -(void)showContractStore {
-    
-    QStoreViewController* controller = (QStoreViewController*)[[ControllersFactory sharedInstance] createQStoreViewController];
-    controller.delegate = self;
-    
-    [self.navigationController pushViewController:controller animated:YES];
+    self.qStoreCoordinator = [[QStoreCoordinator alloc] initWithNavigationController:self.navigationController];
+    [self.qStoreCoordinator start];
 }
 
 -(void)showQStoreList:(QStoreListType)type categoryTitle:(NSString *)categoryTitle {
