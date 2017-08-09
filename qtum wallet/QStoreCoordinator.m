@@ -11,15 +11,16 @@
 #import "ContractFunctionDetailOutput.h"
 
 #import "QStoreListViewController.h"
-#import "QStoreContractViewController.h"
 
 #import "QStoreManager.h"
+#import "QStoreContractOutput.h"
 
-@interface QStoreCoordinator() <QStoreMainOutputDelegate, ContractFunctionDetailOutputDelegate>
+@interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
 @property (strong, nonatomic) NSObject<QStoreMainOutput> *mainScreen;
+@property (strong, nonatomic) NSObject<QStoreContractOutput> *contractScreen;
 @property (strong, nonatomic) NSObject<ContractFunctionDetailOutput> *functionDetailController;
 
 @end
@@ -59,8 +60,14 @@
     [self showQStoreList:QStoreContracts categoryTitle:@"Some category"];
 }
 
-- (void)didSelectQStoreContract {
-    [self showQStoreContract];
+- (void)didSelectQStoreShortContractElement:(QStoreShortContractElement *)element {
+    NSObject<QStoreContractOutput> *controller = (NSObject<QStoreContractOutput> *)[[ControllersFactory sharedInstance] createQStoreContractViewController];
+    self.contractScreen = controller;
+    
+    [controller setShortContract:element];
+    controller.delegate = self;
+    
+    [self.navigationController pushViewController:[controller toPresent] animated:YES];
 }
 
 - (void)didSelectQStoreContractDetails {
@@ -71,29 +78,18 @@
     [self.mainScreen startLoading];
     __weak typeof(self) weakSelt = self;
     [[QStoreManager sharedInstance] loadContractsForCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
-        NSLog(@"%@", categories);
         [weakSelt.mainScreen stopLoading];
         [weakSelt.mainScreen setCategories:categories];
     } andFailureHandler:^(NSString *message) {
-        NSLog(@"%@", message);
         [weakSelt.mainScreen stopLoading];
     }];
 }
 
 -(void)showQStoreList:(QStoreListType)type categoryTitle:(NSString *)categoryTitle {
-    
     QStoreListViewController* controller = (QStoreListViewController*)[[ControllersFactory sharedInstance] createQStoreListViewController];
     controller.delegate = self;
     controller.type = type;
     controller.categoryTitle = categoryTitle;
-    
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
--(void)showQStoreContract {
-    
-    QStoreContractViewController* controller = (QStoreContractViewController*)[[ControllersFactory sharedInstance] createQStoreContractViewController];
-    controller.delegate = self;
     
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -107,6 +103,28 @@
     output.fromQStore = fromQStore;
     self.functionDetailController = output;
     [self.navigationController pushViewController:[output toPresent] animated:true];
+}
+
+#pragma mark - QStoreContractOutputDelegate
+
+- (void)didLoadFullContract:(QStoreShortContractElement *)element {
+    [self.contractScreen startLoading];
+    __weak typeof(self) weakSelf = self;
+    [[QStoreManager sharedInstance] loadFullContractByShort:element withSuccessHandler:^(QStoreFullContractElement *fullElement) {
+        [weakSelf.contractScreen stopLoading];
+        [weakSelf.contractScreen setFullContract:fullElement];
+    } andFailureHandler:^(NSString *message) {
+        [weakSelf.contractScreen stopLoading];
+    }];
+}
+
+- (void)didSelectQStoreContractDetails:(QStoreFullContractElement *)element {
+    
+}
+
+- (void)didSelectTag:(NSString *)tag {
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.mainScreen setTag:tag];
 }
 
 #pragma mark - ContractFunctionDetailOutputDelegate

@@ -1,5 +1,5 @@
 //
-//  QStoreCategoryElement.h
+//  QStoreShortContractElement.h
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 09.08.17.
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, CategoryElementType) {
     CategoryElementTypeUnknown
 };
 
-@interface QStoreCategoryElement : NSObject
+@interface QStoreShortContractElement : NSObject
 
 @property (nonatomic, readonly) NSString *idString;
 @property (nonatomic, readonly) NSString *name;
@@ -35,6 +35,6 @@ typedef NS_ENUM(NSInteger, CategoryElementType) {
 
 - (NSString *)getImageNameByType;
 
-+ (QStoreCategoryElement *)createFromDictionary:(NSDictionary *)dictionary;
++ (QStoreShortContractElement *)createFromDictionary:(NSDictionary *)dictionary;
 
 @end

@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class QStoreCategoryElement;
+@class QStoreShortContractElement;
 
 @interface QStoreCategory : NSObject
 
 @property (nonatomic, readonly) NSInteger identifier;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *urlPath;
-@property (nonatomic, readonly) NSArray<QStoreCategoryElement *> *elements;
+@property (nonatomic, readonly) NSArray<QStoreShortContractElement *> *elements;
 
 - (instancetype)initWithIdentifier:(NSInteger)identifier
                              title:(NSString *)title

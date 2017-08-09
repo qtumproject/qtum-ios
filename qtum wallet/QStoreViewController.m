@@ -26,6 +26,8 @@
 @property (nonatomic) SelectSearchTypeView *selectSearchType;
 @property (nonatomic) UITableView *searchTableView;
 
+@property (nonatomic) BOOL wasSettedTag;
+
 @end
 
 @implementation QStoreViewController
@@ -64,6 +66,15 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.wasSettedTag) {
+        [self.searchBar becomeFirstResponder];
+        self.wasSettedTag = NO;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -219,14 +230,14 @@
 
 #pragma mark - QStoreTableSourceDelegate
 
-- (void)didSelectCollectionCell {
-    [self.delegate didSelectQStoreContract];
+- (void)didSelectCollectionCellWithElement:(QStoreShortContractElement *)element {
+    [self.delegate didSelectQStoreShortContractElement:element];
 }
 
 #pragma mark - QStoreSearchTableSourceDelegate
 
 - (void)didSelectSearchCell {
-    [self.delegate didSelectQStoreContract];
+    [self.delegate didSelectQStoreShortContractElement:nil];
 }
 
 #pragma mark - Methods
@@ -249,6 +260,13 @@
 
 - (void)setCategories:(NSArray<QStoreCategory *> *)categories {
     [self.source setCategoriesArray:categories];
+}
+
+- (void)setTag:(NSString *)tag {
+    self.searchBar.text = tag;
+    self.wasSettedTag = YES;
+    
+    [self.selectSearchType setSelectedIndex:1];
 }
 
 @end

@@ -1,14 +1,14 @@
 //
-//  QStoreCategoryElement.m
+//  QStoreShortContractElement.m
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 09.08.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "QStoreCategoryElement.h"
+#import "QStoreShortContractElement.h"
 
-@interface QStoreCategoryElement()
+@interface QStoreShortContractElement()
 
 @property (nonatomic) NSString *idString;
 @property (nonatomic) NSString *name;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation QStoreCategoryElement
+@implementation QStoreShortContractElement
 
 - (instancetype)initWithIdString:(NSString *)idString
                             name:(NSString *)name
@@ -68,7 +68,7 @@
     }
 }
 
-+ (QStoreCategoryElement *)createFromDictionary:(NSDictionary *)dictionary {
++ (QStoreShortContractElement *)createFromDictionary:(NSDictionary *)dictionary {
     
     if (!dictionary || ![dictionary isKindOfClass:[NSDictionary class]]) {
         return nil;
@@ -85,9 +85,9 @@
     //TODO: Check
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"];
-    NSDate *createdAt = [formatter dateFromString:createdAtString];;
+    NSDate *createdAt = [formatter dateFromString:createdAtString];
     
-    return [[QStoreCategoryElement alloc] initWithIdString:idString
+    return [[QStoreShortContractElement alloc] initWithIdString:idString
                                                       name:name
                                                priceString:priceString
                                                   countBuy:countBuy

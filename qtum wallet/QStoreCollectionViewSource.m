@@ -18,7 +18,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     QStoreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QStoreCollectionViewCell" forIndexPath:indexPath];
     
-    QStoreCategoryElement *element = [self.elements objectAtIndex:indexPath.row];
+    QStoreShortContractElement *element = [self.elements objectAtIndex:indexPath.row];
     
     cell.nameLabel.text = element.name;
     cell.typeLabel.text = [element.typeString capitalizedString];
@@ -30,8 +30,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.delegate respondsToSelector:@selector(didSelectCollectionCell)]) {
-        [self.delegate didSelectCollectionCell];
+    if ([self.delegate respondsToSelector:@selector(didSelectCollectionCellWithElement:)]) {
+        [self.delegate didSelectCollectionCellWithElement:[self.elements objectAtIndex:indexPath.row]];
     }
 }
 

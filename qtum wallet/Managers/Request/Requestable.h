@@ -98,4 +98,7 @@
                 withSuccessHandler:(void(^)(id responseObject))success
                  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
+- (void)getFullContractById:(NSString *)contractId withSuccessHandler:(void(^)(id responseObject))success
+          andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
 @end

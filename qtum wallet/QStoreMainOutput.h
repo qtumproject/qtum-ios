@@ -17,5 +17,6 @@
 - (void)startLoading;
 - (void)stopLoading;
 - (void)setCategories:(NSArray<QStoreCategory *> *)categories;
+- (void)setTag:(NSString *)tag;
 
 @end

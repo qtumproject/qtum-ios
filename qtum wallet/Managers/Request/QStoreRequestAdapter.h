@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class QStoreCategory;
+@class QStoreFullContractElement;
 
 @interface QStoreRequestAdapter : NSObject
 
@@ -16,4 +17,7 @@
              withSuccessHandler:(void(^)(QStoreCategory *updatedCategory))success
               andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
+- (void)getFullContractById:(NSString *)contractId
+         withSuccessHandler:(void(^)(QStoreFullContractElement *contract))success
+          andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 @end

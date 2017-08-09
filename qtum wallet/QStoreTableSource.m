@@ -44,9 +44,9 @@
 
 #pragma mark - QStoreCollectionViewSourceDelegate
 
-- (void)didSelectCollectionCell {
-    if ([self.delegate respondsToSelector:@selector(didSelectCollectionCell)]) {
-        [self.delegate didSelectCollectionCell];
+- (void)didSelectCollectionCellWithElement:(QStoreShortContractElement *)element {
+    if ([self.delegate respondsToSelector:@selector(didSelectCollectionCellWithElement:)]) {
+        [self.delegate didSelectCollectionCellWithElement:element];
     }
 }
 

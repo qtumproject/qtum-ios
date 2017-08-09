@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @class QStoreCategory;
+@class QStoreShortContractElement;
+@class QStoreFullContractElement;
 
 @interface QStoreManager : NSObject
 
@@ -20,5 +22,9 @@
 
 - (void)loadContractsForCategoriesWithSuccessHandler:(void(^)(NSArray<QStoreCategory *> *categories))success
                                    andFailureHandler:(void(^)(NSString* message))failure;
+
+- (void)loadFullContractByShort:(QStoreShortContractElement *)element
+             withSuccessHandler:(void (^)(QStoreFullContractElement *))success
+              andFailureHandler:(void (^)(NSString *))failure;
 
 @end

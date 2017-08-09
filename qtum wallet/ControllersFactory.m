@@ -38,9 +38,7 @@
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
 #import "EnableFingerprintViewController.h"
-#import "QStoreViewController.h"
 #import "QStoreListViewController.h"
-#import "QStoreContractViewController.h"
 #import "TabBarControllerLight.h"
 #import "NSUserDefaults+Settings.h"
 #import "PinViewController.h"
@@ -81,6 +79,7 @@
 #import "AddressControlOutput.h"
 #import "TokenAddressLibraryOutput.h"
 #import "SplashScreenOutput.h"
+#import "QStoreContractOutput.h"
 
 @implementation ControllersFactory
 
@@ -315,8 +314,8 @@
     return controller;
 }
 
--(QStoreContractViewController*)createQStoreContractViewController{
-    QStoreContractViewController* controller = (QStoreContractViewController*)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreContractViewController"];
+-(NSObject<QStoreContractOutput> *)createQStoreContractViewController{
+    NSObject<QStoreContractOutput> *controller = (NSObject<QStoreContractOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreContractViewController"];
     return controller;
 }
 

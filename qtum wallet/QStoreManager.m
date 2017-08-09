@@ -9,6 +9,7 @@
 #import "QStoreManager.h"
 #import "QStoreCategory.h"
 #import "QStoreRequestAdapter.h"
+#import "QStoreShortContractElement.h"
 
 NSString *const QStoreCategoryTrendingPath = @"/contracts/trending-now";
 NSString *const QStoreCategoryLastAddedPath = @"/contracts/last-added";
@@ -75,6 +76,17 @@ NSString *const QStoreCategoryLastAddedPath = @"/contracts/last-added";
             failure(message);
         }];
     }
+}
+
+- (void)loadFullContractByShort:(QStoreShortContractElement *)element
+             withSuccessHandler:(void (^)(QStoreFullContractElement *))success
+              andFailureHandler:(void (^)(NSString *))failure {
+    
+    [self.requestAdapter getFullContractById:element.idString withSuccessHandler:^(QStoreFullContractElement *contract) {
+        success(contract);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(message);
+    }];
 }
 
 @end

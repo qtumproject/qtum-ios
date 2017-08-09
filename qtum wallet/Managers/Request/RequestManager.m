@@ -370,4 +370,16 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     }];
 }
 
+- (void)getFullContractById:(NSString *)contractId withSuccessHandler:(void(^)(id responseObject))success
+                 andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    NSString *path = [NSString stringWithFormat:@"/contracts/%@", contractId];
+    
+    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
 @end

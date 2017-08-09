@@ -64,4 +64,9 @@
     [self.rightButton setCheck:index];
 }
 
+- (void)setSelectedIndex:(NSInteger)index {
+    self.curretSelectedIndex = index;
+    [self changeButtonStatesByIndex:self.curretSelectedIndex];
+}
+
 @end
