@@ -9,6 +9,7 @@
 #import "QStoreRequestAdapter.h"
 #import "QStoreCategory.h"
 #import "QStoreFullContractElement.h"
+#import "QStoreSearchContractElement.h"
 
 @implementation QStoreRequestAdapter
 
@@ -29,6 +30,40 @@
     [[ApplicationCoordinator sharedInstance].requestManager getFullContractById:contractId withSuccessHandler:^(id responseObject) {
         QStoreFullContractElement *element = [QStoreFullContractElement createFullFromDictionary:responseObject];
         success(element);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)searchContractsByCount:(NSInteger)count
+                        offset:(NSInteger)offset
+                          type:(QStoreRequestAdapterSearchType)type
+                          tags:(NSArray *)tags
+            withSuccessHandler:(void (^)(NSArray<QStoreSearchContractElement *> *, NSArray<NSString *> *))success
+             andFailureHandler:(void (^)(NSError *, NSString *))failure {
+    
+    NSString *stringType;
+    switch (type) {
+        case QStoreRequestAdapterSearchTypeToken:
+            stringType = @"token";
+            break;
+        case QStoreRequestAdapterSearchTypeCrowdsale:
+            stringType = @"crowdsale";
+            break;
+        case QStoreRequestAdapterSearchTypeOther:
+            stringType = @"other";
+            break;
+        default:
+            break;
+    }
+    
+    [[ApplicationCoordinator sharedInstance].requestManager searchContractsByCount:count offset:offset type:stringType tags:tags withSuccessHandler:^(id responseObject) {
+        NSMutableArray<QStoreSearchContractElement *> *array = [NSMutableArray new];
+        for (NSDictionary *dictionary in responseObject) {
+            QStoreSearchContractElement *element = [QStoreSearchContractElement createSearchFromDictionary:dictionary];
+            [array addObject:element];
+        }
+        success(array, tags);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];

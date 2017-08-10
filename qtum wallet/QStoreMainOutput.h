@@ -9,6 +9,7 @@
 #import "QStoreMainOutputDelegate.h"
 
 @class QStoreCategory;
+@class QStoreSearchContractElement;
 
 @protocol QStoreMainOutput <NSObject>
 
@@ -18,5 +19,7 @@
 - (void)stopLoading;
 - (void)setCategories:(NSArray<QStoreCategory *> *)categories;
 - (void)setTag:(NSString *)tag;
+- (void)setSearchElements:(NSArray<QStoreSearchContractElement *> *)elements;
+- (void)setSearchMoreElements:(NSArray<QStoreSearchContractElement *> *)elements;
 
 @end

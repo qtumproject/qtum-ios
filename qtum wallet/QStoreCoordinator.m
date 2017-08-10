@@ -15,7 +15,7 @@
 #import "QStoreManager.h"
 #import "QStoreContractOutput.h"
 
-@interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate>
+@interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate, QStoreManagerSearchDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
@@ -31,6 +31,7 @@
     self = [super init];
     if (self) {
         _navigationController = navigationController;
+        [QStoreManager sharedInstance].delegate = self;
     }
     return self;
 }
@@ -103,6 +104,38 @@
     output.fromQStore = fromQStore;
     self.functionDetailController = output;
     [self.navigationController pushViewController:[output toPresent] animated:true];
+}
+
+- (void)didChangedSearchText:(NSString *)text orSelectedSearchIndex:(NSInteger)index {
+    [[QStoreManager sharedInstance] searchByString:text searchType:[self getSearchTypeByIndex:index]];
+}
+
+- (void)didLoadMoreElementsForText:(NSString *)text orSelectedSearchIndex:(NSInteger)index {
+    [[QStoreManager sharedInstance] searchMoreItemsByString:text searchType:[self getSearchTypeByIndex:index]];
+}
+
+- (QStoreManagerSearchType)getSearchTypeByIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            return QStoreManagerSearchTypeName;
+            break;
+        case 1:
+            return QStoreManagerSearchTypeTag;
+            break;
+        default:
+            return QStoreManagerSearchTypeNone;
+            break;
+    }
+}
+
+#pragma mark - QStoreManagerSearchDelegate
+
+- (void)didFindElements:(NSArray<QStoreSearchContractElement *> *)elements {
+    [self.mainScreen setSearchElements:elements];
+}
+
+- (void)didFindMoreElements:(NSArray<QStoreSearchContractElement *> *)elements {
+    [self.mainScreen setSearchMoreElements:elements];
 }
 
 #pragma mark - QStoreContractOutputDelegate

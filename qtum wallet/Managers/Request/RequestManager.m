@@ -382,4 +382,27 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     }];
 }
 
+- (void)searchContractsByCount:(NSInteger)count
+                        offset:(NSInteger)offset
+                          type:(NSString *)type
+                          tags:(NSArray *)tags
+            withSuccessHandler:(void(^)(id responseObject))success
+             andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    NSString *path = [NSString stringWithFormat:@"/contracts/%@/%@", @(count), @(offset)];
+    NSDictionary *dictionary;
+    if (type) {
+        dictionary = @{@"type" : type,
+          @"tags" : tags};
+    } else {
+        dictionary = @{@"tags" : tags};
+    }
+    
+    [self requestWithType:GET path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
 @end

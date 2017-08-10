@@ -10,4 +10,6 @@
 
 @interface CustomSearchBar : UISearchBar
 
+@property (nonatomic) BOOL cancelButtonShowed;
+
 @end

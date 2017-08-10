@@ -10,6 +10,14 @@
 
 @class QStoreCategory;
 @class QStoreFullContractElement;
+@class QStoreSearchContractElement;
+
+typedef NS_ENUM(NSInteger, QStoreRequestAdapterSearchType) {
+    QStoreRequestAdapterSearchTypeToken,
+    QStoreRequestAdapterSearchTypeCrowdsale,
+    QStoreRequestAdapterSearchTypeOther,
+    QStoreRequestAdapterSearchTypeAll
+};
 
 @interface QStoreRequestAdapter : NSObject
 
@@ -20,4 +28,12 @@
 - (void)getFullContractById:(NSString *)contractId
          withSuccessHandler:(void(^)(QStoreFullContractElement *contract))success
           andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)searchContractsByCount:(NSInteger)count
+                        offset:(NSInteger)offset
+                          type:(QStoreRequestAdapterSearchType)type
+                          tags:(NSArray *)tags
+            withSuccessHandler:(void(^)(NSArray<QStoreSearchContractElement *> *elements, NSArray<NSString *> *tags))success
+             andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
 @end

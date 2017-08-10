@@ -13,6 +13,8 @@
 #import "OpenURLManager.h"
 #import "iOSSessionManager.h"
 
+#import "QStoreRequestAdapter.h"
+
 @interface AppDelegate ()
 
 @property (assign, nonatomic) BOOL aplicationCoordinatorStarted;
@@ -37,7 +39,7 @@
             self.aplicationCoordinatorStarted  = YES;
         }
     });
-
+    
     return YES;
 }
 

@@ -53,18 +53,7 @@
         return nil;
     }
     
-    NSString *idString = [dictionary objectForKey:@"_id"];
-    NSString *name = [dictionary objectForKey:@"name"];
-    NSString *priceString = [dictionary objectForKey:@"price"];
-    NSNumber *countBuy = [dictionary objectForKey:@"count_buy"];
-    NSNumber *countDownloads = [dictionary objectForKey:@"count_downloads"];
-    NSString *createdAtString = [dictionary objectForKey:@"created_at"];
-    NSString *typeString = [dictionary objectForKey:@"type"];
-    
-    //TODO: Check
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"];
-    NSDate *createdAt = [formatter dateFromString:createdAtString];
+    QStoreShortContractElement *shortElement = [QStoreShortContractElement createFromDictionary:dictionary];
     
     NSString *contractDescription = [dictionary objectForKey:@"description"];
     NSString *publisherAddress = [dictionary objectForKey:@"publisher_address"];
@@ -73,13 +62,13 @@
     NSArray<NSString *> *tags = [dictionary objectForKey:@"tags"];
     BOOL withSourseCode = [[dictionary objectForKey:@"with_source_code"] boolValue];
     
-    return [[QStoreFullContractElement alloc] initWithIdString:idString
-                                                          name:name
-                                                   priceString:priceString
-                                                      countBuy:countBuy
-                                                countDownloads:countDownloads
-                                                     createdAt:createdAt
-                                                    typeString:typeString
+    return [[QStoreFullContractElement alloc] initWithIdString:shortElement.idString
+                                                          name:shortElement.name
+                                                   priceString:shortElement.priceString
+                                                      countBuy:shortElement.countBuy
+                                                countDownloads:shortElement.countDownloads
+                                                     createdAt:shortElement.createdAt
+                                                    typeString:shortElement.typeString
                                            contractDescription:contractDescription
                                               publisherAddress:publisherAddress
                                                           size:size

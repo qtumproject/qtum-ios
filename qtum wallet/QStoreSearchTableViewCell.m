@@ -10,10 +10,6 @@
 
 @interface QStoreSearchTableViewCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *currencyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-
 @end
 
 @implementation QStoreSearchTableViewCell

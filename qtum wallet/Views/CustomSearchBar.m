@@ -11,8 +11,6 @@
 
 @interface CustomSearchBar()
 
-@property (nonatomic) BOOL buttonsCustomized;
-
 @end
 
 @implementation CustomSearchBar
@@ -23,6 +21,12 @@
         [self setup];
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [self changeFontAndColorButtons];
 }
 
 - (void)setup {
@@ -36,22 +40,16 @@
 
 - (void)setShowsCancelButton:(BOOL)showsCancelButton animated:(BOOL)animated {
     [super setShowsCancelButton:showsCancelButton animated:animated];
-    
-    if (!self.buttonsCustomized) {
-        self.buttonsCustomized = YES;
-        [self changeFontAndColorButtons];
-    }
+    self.cancelButtonShowed = showsCancelButton;
 }
 
 - (void)changeFontAndColorButtons {
     for (UIView *view in self.subviews) {
         for (id subview in view.subviews) {
-            if ( [subview isKindOfClass:[UIButton class]] ) {
+            if ([subview isKindOfClass:[UIButton class]]) {
                 UIButton *cancelButton = (UIButton *)subview;
                 [cancelButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
                 cancelButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16.0f];
-                
-                break;
             }
         }
     }

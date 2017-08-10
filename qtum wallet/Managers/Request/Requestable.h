@@ -101,4 +101,10 @@
 - (void)getFullContractById:(NSString *)contractId withSuccessHandler:(void(^)(id responseObject))success
           andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
+- (void)searchContractsByCount:(NSInteger)count
+                        offset:(NSInteger)offset
+                          type:(NSString *)type
+                          tags:(NSArray *)tags
+            withSuccessHandler:(void(^)(id responseObject))success
+             andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 @end

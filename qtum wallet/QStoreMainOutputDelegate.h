@@ -16,5 +16,7 @@
 - (void)didSelectQStoreContractDetails;
 - (void)didPressedBack;
 - (void)didLoadTrendingNow;
+- (void)didChangedSearchText:(NSString *)text orSelectedSearchIndex:(NSInteger)index;
+- (void)didLoadMoreElementsForText:(NSString *)text orSelectedSearchIndex:(NSInteger)index;
 
 @end

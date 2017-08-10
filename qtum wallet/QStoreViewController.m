@@ -27,6 +27,7 @@
 @property (nonatomic) UITableView *searchTableView;
 
 @property (nonatomic) BOOL wasSettedTag;
+@property (nonatomic) NSString *tagString;
 
 @end
 
@@ -66,6 +67,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -128,6 +130,7 @@
     self.searchSource.delegate = self;
     
     self.searchTableView = [UITableView new];
+    self.searchTableView.tableFooterView = [UIView new];
     self.searchTableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.searchTableView.dataSource = self.searchSource;
     self.searchTableView.delegate = self.searchSource;
@@ -195,17 +198,23 @@
 #pragma mark - SelectSearchTypeViewDelegate
 
 - (void)selectIndexChanged:(NSInteger)index {
-    DLog(@"Current index : %ld", (long)index);
+    [self.delegate didChangedSearchText:self.searchBar.text orSelectedSearchIndex:index];
 }
 
 #pragma mark - UISearchBarDelegate
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self.delegate didChangedSearchText:searchText orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    
+    [self.delegate didChangedSearchText:self.searchBar.text orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    [self.searchBar setShowsCancelButton:YES animated:YES];
+    if (!self.searchBar.cancelButtonShowed) {
+        [self.searchBar setShowsCancelButton:YES animated:YES];
+    }
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
@@ -216,6 +225,8 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [self.searchBar setText:@""];
     [self.searchBar resignFirstResponder];
+    
+    [self.delegate didChangedSearchText:self.searchBar.text orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
@@ -238,6 +249,10 @@
 
 - (void)didSelectSearchCell {
     [self.delegate didSelectQStoreShortContractElement:nil];
+}
+
+- (void)loadMoreElements {
+    [self.delegate didLoadMoreElementsForText:self.searchBar.text orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
 }
 
 #pragma mark - Methods
@@ -263,10 +278,24 @@
 }
 
 - (void)setTag:(NSString *)tag {
-    self.searchBar.text = tag;
-    self.wasSettedTag = YES;
-    
+    [self.searchBar setText:tag];
+    [self.searchBar setShowsCancelButton:YES animated:NO];
     [self.selectSearchType setSelectedIndex:1];
+    
+    [self.delegate didChangedSearchText:self.searchBar.text orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
+    
+    self.wasSettedTag = YES;
+}
+
+- (void)setSearchElements:(NSArray<QStoreSearchContractElement *> *)elements {
+    [self.searchSource setSearchElements:elements];
+    [self.searchTableView reloadData];
+    [self.searchTableView setContentOffset:CGPointZero animated:NO];
+}
+
+- (void)setSearchMoreElements:(NSArray<QStoreSearchContractElement *> *)elements {
+    [self.searchSource setSearchElements:elements];
+    [self.searchTableView reloadData];
 }
 
 @end

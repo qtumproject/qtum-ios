@@ -11,8 +11,24 @@
 @class QStoreCategory;
 @class QStoreShortContractElement;
 @class QStoreFullContractElement;
+@class QStoreSearchContractElement;
+
+typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
+    QStoreManagerSearchTypeNone,
+    QStoreManagerSearchTypeTag,
+    QStoreManagerSearchTypeName
+};
+
+@protocol QStoreManagerSearchDelegate <NSObject>
+
+- (void)didFindElements:(NSArray<QStoreSearchContractElement *> *)elements;
+- (void)didFindMoreElements:(NSArray<QStoreSearchContractElement *> *)elements;
+
+@end
 
 @interface QStoreManager : NSObject
+
+@property (weak, nonatomic) id<QStoreManagerSearchDelegate> delegate;
 
 + (instancetype)sharedInstance;
 
@@ -26,5 +42,8 @@
 - (void)loadFullContractByShort:(QStoreShortContractElement *)element
              withSuccessHandler:(void (^)(QStoreFullContractElement *))success
               andFailureHandler:(void (^)(NSString *))failure;
+
+- (void)searchByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
+- (void)searchMoreItemsByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
 
 @end

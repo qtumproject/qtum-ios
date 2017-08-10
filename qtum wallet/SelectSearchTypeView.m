@@ -69,4 +69,8 @@
     [self changeButtonStatesByIndex:self.curretSelectedIndex];
 }
 
+- (NSInteger)selectedIndex {
+    return self.curretSelectedIndex;
+}
+
 @end
