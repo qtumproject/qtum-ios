@@ -7,7 +7,7 @@
 //
 
 #import "QStoreContractViewController.h"
-#import "ContractFileManager.h"
+#import "ConfirmPurchasePopUpViewController.h"
 
 #import "QStoreFullContractElement.h"
 #import "QStoreShortContractElement.h"
@@ -83,7 +83,12 @@
 }
 
 - (IBAction)actionPurchase:(id)sender {
-    [[PopUpsManager sharedInstance] showConfirmPurchasePopUp:self presenter:nil completion:nil];
+    ConfirmPurchasePopUpViewController *vc = [[PopUpsManager sharedInstance] showConfirmPurchasePopUp:self presenter:nil completion:nil];
+    vc.contractNameLabel.text = self.fullElement.name;
+    vc.contractTypeLabel.text = [self.fullElement.typeString capitalizedString];
+    vc.amountLabel.text = [NSString stringWithFormat:@"%@ %@", self.fullElement.priceString, NSLocalizedString(@"QTUM", nil)];
+    vc.minterAddressLabel.text = self.fullElement.publisherAddress;
+    vc.feeLabel.text = [NSString stringWithFormat:@"%@ %@", @"0.1", NSLocalizedString(@"QTUM", nil)];
 }
 
 - (IBAction)actionBack:(id)sender {
