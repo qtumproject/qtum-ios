@@ -69,4 +69,18 @@
     }];
 }
 
+- (void)getContractABI:(QStoreFullContractElement *)element
+    withSuccessHandler:(void(^)(QStoreFullContractElement *element))success
+     andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+ 
+    [[ApplicationCoordinator sharedInstance].requestManager getContractABI:element.idString withSuccessHandler:^(id responseObject) {
+        NSData *jsonData = [NSJSONSerialization  dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        element.abiString = myString;
+        success(element);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
 @end

@@ -36,4 +36,8 @@ typedef NS_ENUM(NSInteger, QStoreRequestAdapterSearchType) {
             withSuccessHandler:(void(^)(NSArray<QStoreSearchContractElement *> *elements, NSArray<NSString *> *tags))success
              andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
+- (void)getContractABI:(QStoreFullContractElement *)element
+    withSuccessHandler:(void(^)(QStoreFullContractElement *element))success
+     andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
 @end

@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSString *completedOn;
 @property (nonatomic, readonly) NSArray<NSString *> *tags;
 @property (nonatomic, readonly) BOOL withSourseCode;
+@property (nonatomic) NSString *abiString;
 
 - (instancetype)initWithIdString:(NSString *)idString
                             name:(NSString *)name

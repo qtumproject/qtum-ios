@@ -46,4 +46,7 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
 - (void)searchByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
 - (void)searchMoreItemsByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
 
+- (void)getContractABI:(QStoreFullContractElement *)element
+             withSuccessHandler:(void (^)(QStoreFullContractElement *updatedElement))success
+              andFailureHandler:(void (^)(NSString *message))failure;
 @end

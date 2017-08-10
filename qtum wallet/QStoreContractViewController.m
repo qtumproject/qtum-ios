@@ -68,9 +68,16 @@
 }
 
 - (IBAction)actionSourceCode:(id)sender {
+    if (!self.fullElement.abiString || [self.fullElement.abiString isEqualToString:@""]) {
+        [self.delegate didLoadAbi:self.fullElement];
+    } else {
+        [self showSourceCodePopUpWithString:self.fullElement.abiString];
+    }
+}
+
+- (void)showSourceCodePopUpWithString:(NSString *)string {
     PopUpContent *content = [PopUpContentGenerator contentForSourceCode];
-    NSString *code = [[ContractFileManager sharedInstance] contractWithTemplate:@"Standart"];
-    content.messageString = code;
+    content.messageString = string;
     
     [[PopUpsManager sharedInstance] showSourceCodePopUp:self withContent:content presenter:nil completion:nil];
 }
@@ -158,6 +165,10 @@
 
 - (void)setShortContract:(QStoreShortContractElement *)element {
     self.shortElement = element;
+}
+
+- (void)showAbi {
+    [self showSourceCodePopUpWithString:self.fullElement.abiString];
 }
 
 #pragma mark - UITextViewDelegate

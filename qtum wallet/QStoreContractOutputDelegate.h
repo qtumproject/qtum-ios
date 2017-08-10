@@ -15,5 +15,6 @@
 - (void)didSelectQStoreContractDetails:(QStoreFullContractElement *)element;
 - (void)didPressedBack;
 - (void)didSelectTag:(NSString *)tag;
+- (void)didLoadAbi:(QStoreFullContractElement *)element;
 
 @end

@@ -98,6 +98,19 @@ NSInteger const QStoreSearchCount = 20;
     }];
 }
 
+#pragma mark - Abi
+
+- (void)getContractABI:(QStoreFullContractElement *)element
+    withSuccessHandler:(void (^)(QStoreFullContractElement *updatedElement))success
+     andFailureHandler:(void (^)(NSString *message))failure{
+    
+    [self.requestAdapter getContractABI:element withSuccessHandler:^(QStoreFullContractElement *element) {
+        success(element);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(message);
+    }];
+}
+
 #pragma mark - Search
 
 - (void)searchByString:(NSString *)string searchType:(QStoreManagerSearchType)type {

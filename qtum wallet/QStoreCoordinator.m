@@ -151,6 +151,18 @@
     }];
 }
 
+- (void)didLoadAbi:(QStoreFullContractElement *)element {
+    [self.contractScreen startLoading];
+    
+    __weak typeof(self) weakSelf = self;
+    [[QStoreManager sharedInstance] getContractABI:element withSuccessHandler:^(QStoreFullContractElement *updatedElement) {
+        [weakSelf.contractScreen stopLoading];
+        [weakSelf.contractScreen showAbi];
+    } andFailureHandler:^(NSString *message) {
+        [weakSelf.contractScreen stopLoading];
+    }];
+}
+
 - (void)didSelectQStoreContractDetails:(QStoreFullContractElement *)element {
     
 }

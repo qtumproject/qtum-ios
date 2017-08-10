@@ -18,5 +18,6 @@
 - (void)stopLoading;
 - (void)setShortContract:(QStoreShortContractElement *)element;
 - (void)setFullContract:(QStoreFullContractElement *)element;
+- (void)showAbi;
 
 @end

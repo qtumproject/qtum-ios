@@ -107,4 +107,8 @@
                           tags:(NSArray *)tags
             withSuccessHandler:(void(^)(id responseObject))success
              andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getContractABI:(NSString *)contractId
+            withSuccessHandler:(void(^)(id responseObject))success
+             andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 @end
