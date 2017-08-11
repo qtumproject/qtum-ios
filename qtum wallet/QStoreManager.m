@@ -10,9 +10,12 @@
 #import "QStoreCategory.h"
 #import "QStoreRequestAdapter.h"
 #import "QStoreContractElement.h"
+#import "QStoreBuyRequest.h"
 
 NSString *const QStoreCategoryTrendingPath = @"/contracts/trending-now";
 NSString *const QStoreCategoryLastAddedPath = @"/contracts/last-added";
+
+NSString *const QStoreBuyRequestsKey = @"QStoreBuyRequests";
 
 NSInteger const QStoreSearchCount = 20;
 
@@ -22,6 +25,8 @@ NSInteger const QStoreSearchCount = 20;
 
 @property NSMutableArray<QStoreCategory *> *categories;
 @property NSMutableArray<QStoreCategory *> *categoriesInUpdate;
+
+@property (nonatomic) NSMutableArray<QStoreBuyRequest *> *buyRequests;
 
 @property (nonatomic) NSString *searchString;
 @property (nonatomic) QStoreManagerSearchType currnentSearchType;
@@ -50,7 +55,9 @@ NSInteger const QStoreSearchCount = 20;
         _requestAdapter = [QStoreRequestAdapter new];
         _searchQueue = [NSMutableArray new];
         _searchResult = [NSMutableArray new];
+        _buyRequests = [NSMutableArray new];
         
+        [self loadBuyRequests];
         [self createStandartCategories];
     }
     
@@ -91,8 +98,13 @@ NSInteger const QStoreSearchCount = 20;
       withSuccessHandler:(void (^)())success
        andFailureHandler:(void (^)(NSString *))failure {
     
+    __weak typeof(self) weakSelf = self;
     [self.requestAdapter getFullContractById:element.idString withSuccessHandler:^(NSDictionary *fullDictionary) {
         [element updateWithFullDictionary:fullDictionary];
+        QStoreBuyRequest *request = [weakSelf findRequestByElement:element];
+        if (request) {
+            element.purchaseState = request.state == QStoreBuyRequestStateInPayment ? QStoreElementPurchaseStateInPurchase : QStoreElementPurchaseStatePurchased;
+        }
         success();
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(message);
@@ -107,6 +119,43 @@ NSInteger const QStoreSearchCount = 20;
     
     [self.requestAdapter getContractABI:element withSuccessHandler:^(NSString *abiString) {
         element.abiString = abiString;
+        success();
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(message);
+    }];
+}
+
+#pragma mark - Buy Requests
+
+- (void)loadBuyRequests {
+    NSMutableArray *array = [[[NSUserDefaults standardUserDefaults] objectForKey:QStoreBuyRequestsKey] mutableCopy];
+    self.buyRequests = array;
+}
+
+- (void)saveBuyRequests {
+    [[NSUserDefaults standardUserDefaults] setObject:self.buyRequests forKey:QStoreBuyRequestsKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (QStoreBuyRequest *)findRequestByElement:(QStoreContractElement *)element {
+    for (QStoreBuyRequest *request in self.buyRequests) {
+        if ([request.contractId isEqualToString:element.idString]) {
+            return request;
+        }
+    }
+    return nil;
+}
+
+- (void)purchaseContract:(QStoreContractElement *)element
+      withSuccessHandler:(void (^)())success
+       andFailureHandler:(void (^)(NSString *message))failure {
+    
+    __weak typeof(self) weakSelf = self;
+    [self.requestAdapter buyContract:element.idString withSuccessHandler:^(NSDictionary *buyRequestDictionary) {
+        QStoreBuyRequest *request = [QStoreBuyRequest createFromDictionary:buyRequestDictionary andContractId:element.idString];
+        [weakSelf.buyRequests addObject:request];
+        [weakSelf saveBuyRequests];
+        element.purchaseState = QStoreElementPurchaseStateInPurchase;
         success();
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(message);

@@ -28,7 +28,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 @interface QStoreContractElement()
 
 // Short
-@property (nonatomic) CategoryElementState elementState;
+@property (nonatomic) QStoreElementState elementState;
 @property (nonatomic) NSString *idString;
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *priceString;
@@ -36,7 +36,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 @property (nonatomic) NSNumber *countDownloads;
 @property (nonatomic) NSDate *createdAt;
 @property (nonatomic) NSString *typeString;
-@property (nonatomic) CategoryElementType type;
+@property (nonatomic) QStoreElementType type;
 
 // Full
 @property (nonatomic) NSString *contractDescription;
@@ -68,7 +68,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
         _createdAt = createdAt;
         _typeString = typeString;
         _type = [self getTypeByString:typeString];
-        _elementState = CategoryElementStateCategory;
+        _elementState = QStoreElementStateCategory;
     }
     return self;
 }
@@ -95,7 +95,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
         _completedOn = completedOn;
         _tags = tags;
         _withSourseCode = withSourseCode;
-        _elementState = CategoryElementStateFull;
+        _elementState = QStoreElementStateFull;
     }
     return self;
 }
@@ -117,28 +117,28 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
                         typeString:typeString];
     if (self) {
         _tags = tags;
-        _elementState = CategoryElementStateSearch;
+        _elementState = QStoreElementStateSearch;
     }
     return self;
 }
 
-- (CategoryElementType)getTypeByString:(NSString *)stringType {
+- (QStoreElementType)getTypeByString:(NSString *)stringType {
     if ([stringType isEqualToString:@"crowdsale"]) {
-        return CategoryElementTypeCrowdsale;
+        return QStoreElementTypeCrowdsale;
     }
     
     if ([stringType isEqualToString:@"token"]) {
-        return CategoryElementTypeToken;
+        return QStoreElementTypeToken;
     }
     
-    return CategoryElementTypeUnknown;
+    return QStoreElementTypeUnknown;
 }
 
 - (NSString *)getImageNameByType {
     switch (self.type) {
-        case CategoryElementTypeToken:
+        case QStoreElementTypeToken:
             return @"ic-supertoken";
-        case CategoryElementTypeCrowdsale:
+        case QStoreElementTypeCrowdsale:
             return @"ic-crowdsale";
         default:
             return @"ic-smart_contract";
@@ -153,12 +153,12 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
     self.tags = [dictionary objectForKey:QStoreContractElementTagsKey];
     self.withSourseCode = [[dictionary objectForKey:QStoreContractElementWithSourseCodeKey] boolValue];
     
-    self.elementState = CategoryElementStateFull;
+    self.elementState = QStoreElementStateFull;
 }
 
 - (void)updateWithSearchDictionary:(NSDictionary *)dictionary {
     self.tags = [dictionary objectForKey:QStoreContractElementTagsKey];
-    self.elementState = CategoryElementStateFull;
+    self.elementState = QStoreElementStateFull;
 }
 
 #pragma mark - Create
@@ -177,7 +177,6 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
     NSString *createdAtString = [dictionary objectForKey:QStoreContractElementCreatedAtKey];
     NSString *typeString = [dictionary objectForKey:QStoreContractElementTypeStringKey];
     
-    //TODO: Check
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"];
     NSDate *createdAt = [formatter dateFromString:createdAtString];
@@ -194,7 +193,6 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 }
 
 + (QStoreContractElement *)createFromFullDictionary:(NSDictionary *)dictionary {
-    
     if (!dictionary || ![dictionary isKindOfClass:[NSDictionary class]]) {
         return nil;
     }

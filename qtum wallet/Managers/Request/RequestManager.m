@@ -418,4 +418,67 @@ NSString *const BASE_URL = @"http://163.172.68.103:5931";
     }];
 }
 
+- (void)buyContract:(NSString *)contractId withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    NSString *path = [NSString stringWithFormat:@"/contracts/%@/buy-request", contractId];
+    
+    [self requestWithType:POST path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)checkRequestPaid:(NSString *)contractId
+               requestId:(NSString *)requestId
+      withSuccessHandler:(void(^)(id responseObject))success
+       andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    NSString *path = [NSString stringWithFormat:@"/contracts/%@/is-paid/by-request-id", contractId];
+    NSDictionary *dictionary = @{@"request_id" : requestId};
+    
+    [self requestWithType:GET path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)getSourceCode:(NSString *)contractId
+            requestId:(NSString *)requestId
+            accessToken:(NSString *)accessToken
+   withSuccessHandler:(void(^)(id responseObject))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    NSString *path = [NSString stringWithFormat:@"/contracts/%@/source-code", contractId];
+    NSDictionary *dictionary = @{@"request_id" : requestId,
+                                 @"access_token" : accessToken};
+    
+    [self requestWithType:POST path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)getByteCode:(NSString *)contractId
+     buyerAddresses:(NSString *)buyerAddresses
+              nonce:(NSNumber *)nonce
+              signs:(NSArray *)signs
+ withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    NSString *path = [NSString stringWithFormat:@"/contracts/%@/bytecode", contractId];
+    NSDictionary *dictionary = @{@"buyer_addresses" : buyerAddresses,
+                                 @"nonce" : nonce,
+                                 @"signs" : signs};
+    
+    [self requestWithType:POST path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
 @end

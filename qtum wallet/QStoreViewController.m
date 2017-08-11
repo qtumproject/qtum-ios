@@ -276,7 +276,7 @@ CGFloat const KeyboardDuration = 0.25f;
 #pragma mark - Methods
 
 - (void)loadTrendingNow {
-    [self.delegate didLoadTrendingNow];
+    [self.delegate didLoadCategories];
 }
 
 - (void)startLoading {

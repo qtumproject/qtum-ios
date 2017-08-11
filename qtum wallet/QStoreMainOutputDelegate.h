@@ -12,9 +12,12 @@
 
 - (void)didSelectQStoreCategories;
 - (void)didSelectQStoreContractElement:(QStoreContractElement *)element;
-- (void)didPressedBack;
-- (void)didLoadTrendingNow;
+
+- (void)didLoadCategories;
+
 - (void)didChangedSearchText:(NSString *)text orSelectedSearchIndex:(NSInteger)index;
 - (void)didLoadMoreElementsForText:(NSString *)text orSelectedSearchIndex:(NSInteger)index;
+
+- (void)didPressedBack;
 
 @end

@@ -84,4 +84,72 @@
     }];
 }
 
+- (void)buyContract:(NSString *)contractId
+ withSuccessHandler:(void(^)(NSDictionary *buyRequestDictionary))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    [[ApplicationCoordinator sharedInstance].requestManager buyContract:contractId withSuccessHandler:^(id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            success(responseObject);
+        } else {
+            failure([NSError new], @"Not a dictionary");
+        }
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)checkRequestPaid:(NSString *)contractId
+               requestId:(NSString *)requestId
+      withSuccessHandler:(void(^)(NSDictionary *paidObject))success
+       andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    [[ApplicationCoordinator sharedInstance].requestManager checkRequestPaid:contractId requestId:requestId withSuccessHandler:^(id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            success(responseObject);
+        } else {
+            failure([NSError new], @"Not a dictionary");
+        }
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)getSourceCode:(NSString *)contractId
+            requestId:(NSString *)requestId
+          accessToken:(NSString *)accessToken
+   withSuccessHandler:(void(^)(NSString *sourceCode))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    [[ApplicationCoordinator sharedInstance].requestManager getSourceCode:contractId requestId:requestId accessToken:accessToken withSuccessHandler:^(id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSString *sourceCode = [responseObject objectForKey:@"source_code"];
+            success(sourceCode);
+        } else {
+            failure([NSError new], @"Not a dictionary");
+        }
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)getByteCode:(NSString *)contractId
+     buyerAddresses:(NSString *)buyerAddresses
+              nonce:(NSNumber *)nonce
+              signs:(NSArray *)signs
+ withSuccessHandler:(void(^)(NSString *byteCode))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    [[ApplicationCoordinator sharedInstance].requestManager getByteCode:contractId buyerAddresses:buyerAddresses nonce:nonce signs:signs withSuccessHandler:^(id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSString *byteCode = [responseObject objectForKey:@"bytecode"];
+            success(byteCode);
+        } else {
+            failure([NSError new], @"Not a dictionary");
+        }
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
 @end

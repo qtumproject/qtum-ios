@@ -81,4 +81,9 @@
     return content;
 }
 
++ (PopUpContent *)contentForContractBought{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Contract bought", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
+    return content;
+}
+
 @end

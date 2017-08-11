@@ -39,4 +39,26 @@ typedef NS_ENUM(NSInteger, QStoreRequestAdapterSearchType) {
     withSuccessHandler:(void(^)(NSString *abiString))success
      andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
+- (void)buyContract:(NSString *)contractId
+ withSuccessHandler:(void(^)(NSDictionary *buyRequestDictionary))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)checkRequestPaid:(NSString *)contractId
+               requestId:(NSString *)requestId
+      withSuccessHandler:(void(^)(NSDictionary *paidObject))success
+       andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getSourceCode:(NSString *)contractId
+            requestId:(NSString *)requestId
+          accessToken:(NSString *)accessToken
+   withSuccessHandler:(void(^)(NSString *sourceCode))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getByteCode:(NSString *)contractId
+     buyerAddresses:(NSString *)buyerAddresses
+              nonce:(NSNumber *)nonce
+              signs:(NSArray *)signs
+ withSuccessHandler:(void(^)(NSString *byteCode))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
 @end

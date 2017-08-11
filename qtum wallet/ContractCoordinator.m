@@ -298,7 +298,6 @@ ContractFunctionsOutputDelegate>
     
 }
 
-
 #pragma mark - ContractFunctionDetailOutputDelegate
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem*) item

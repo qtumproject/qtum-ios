@@ -8,6 +8,7 @@
 
 #import "QStoreContractViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
+#import "ErrorPopUpViewController.h"
 
 #import "QStoreContractElement.h"
 
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *publishedByLabel;
 @property (weak, nonatomic) IBOutlet UILabel *downloadsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *compiledOnLabel;
+@property (weak, nonatomic) IBOutlet UIButton *purchaseButton;
 
 @property (nonatomic) QStoreContractElement *element;
 
@@ -97,10 +99,18 @@
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    
+    if ([sender isKindOfClass:[ConfirmPurchasePopUpViewController class]]) {
+        [self.delegate didSelectPurchaseContract:self.element];
+    }
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    
+    if ([sender isKindOfClass:[ErrorPopUpViewController class]]) {
+        [self actionPurchase:self];;
+    }
 }
 
 #pragma mark - Methods
@@ -129,6 +139,9 @@
     self.publishedByLabel.text = self.element.publisherAddress;
     self.downloadsLabel.text = [self.element.countDownloads stringValue];
     
+    self.purchaseButton.enabled = self.element.purchaseState != QStoreElementPurchaseStateInPurchase;
+    self.purchaseButton.alpha = self.element.purchaseState != QStoreElementPurchaseStateInPurchase ? 1 : 0.5f;
+    
     [self setupTagsTextView:self.element.tags];
     
     [UIView animateWithDuration:0.3f animations:^{
@@ -139,8 +152,7 @@
 }
 
 - (void)setupTagsTextView:(NSArray *)tags {
-    
-    self.tagsTextView.linkTextAttributes = @{NSForegroundColorAttributeName:self.tagsTextView.textColor,
+    self.tagsTextView.linkTextAttributes = @{NSForegroundColorAttributeName:customBlueColor(),
                                              NSFontAttributeName:self.tagsTextView.font};
     
     NSMutableString *mutString = [NSMutableString new];
@@ -170,6 +182,18 @@
 
 - (void)showAbi {
     [self showSourceCodePopUpWithString:self.element.abiString];
+}
+
+- (void)showErrorPopUpWithMessage:(NSString *)message {
+    PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+    content.messageString = message;
+    
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+}
+
+- (void)showContractBoughtPop {
+    PopUpContent *content = [PopUpContentGenerator contentForContractBought];
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 #pragma mark - UITextViewDelegate

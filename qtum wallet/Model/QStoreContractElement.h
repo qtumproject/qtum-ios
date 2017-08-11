@@ -8,22 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, CategoryElementType) {
-    CategoryElementTypeCrowdsale,
-    CategoryElementTypeToken,
-    CategoryElementTypeUnknown
+typedef NS_ENUM(NSInteger, QStoreElementType) {
+    QStoreElementTypeCrowdsale,
+    QStoreElementTypeToken,
+    QStoreElementTypeUnknown
 };
 
-typedef NS_ENUM(NSInteger, CategoryElementState) {
-    CategoryElementStateCategory,
-    CategoryElementStateSearch,
-    CategoryElementStateFull
+typedef NS_ENUM(NSInteger, QStoreElementState) {
+    QStoreElementStateCategory,
+    QStoreElementStateSearch,
+    QStoreElementStateFull
+};
+
+typedef NS_ENUM(NSInteger, QStoreElementPurchaseState) {
+    QStoreElementPurchaseStateNotPurchased,
+    QStoreElementPurchaseStateInPurchase,
+    QStoreElementPurchaseStatePurchased
 };
 
 @interface QStoreContractElement : NSObject
 
 // Short
-@property (nonatomic, readonly) CategoryElementState elementState;
+@property (nonatomic, readonly) QStoreElementState elementState;
+@property (nonatomic) QStoreElementPurchaseState purchaseState;
 @property (nonatomic, readonly) NSString *idString;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSString *priceString;
@@ -31,7 +38,7 @@ typedef NS_ENUM(NSInteger, CategoryElementState) {
 @property (nonatomic, readonly) NSNumber *countDownloads;
 @property (nonatomic, readonly) NSDate *createdAt;
 @property (nonatomic, readonly) NSString *typeString;
-@property (nonatomic, readonly) CategoryElementType type;
+@property (nonatomic, readonly) QStoreElementType type;
 
 // Full
 @property (nonatomic, readonly) NSString *contractDescription;

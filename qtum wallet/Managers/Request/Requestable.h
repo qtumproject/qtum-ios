@@ -109,6 +109,28 @@
              andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 - (void)getContractABI:(NSString *)contractId
-            withSuccessHandler:(void(^)(id responseObject))success
-             andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+                withSuccessHandler:(void(^)(id responseObject))success
+                andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)buyContract:(NSString *)contractId
+ withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)checkRequestPaid:(NSString *)contractId
+                requestId:(NSString *)requestId
+                withSuccessHandler:(void(^)(id responseObject))success
+                andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getSourceCode:(NSString *)contractId
+            requestId:(NSString *)requestId
+          accessToken:(NSString *)accessToken
+   withSuccessHandler:(void(^)(id responseObject))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getByteCode:(NSString *)contractId
+     buyerAddresses:(NSString *)buyerAddresses
+              nonce:(NSNumber *)nonce
+              signs:(NSArray *)signs
+ withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 @end

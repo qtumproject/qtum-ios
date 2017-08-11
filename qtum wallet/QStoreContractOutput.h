@@ -20,4 +20,7 @@
 - (void)updateWithFull;
 - (void)showAbi;
 
+- (void)showContractBoughtPop;
+- (void)showErrorPopUpWithMessage:(NSString *)message;
+
 @end

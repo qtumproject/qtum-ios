@@ -77,7 +77,7 @@
     [self didSelectFunctionIndexPath:nil withItem:nil andToken:nil fromQStore:YES];
 }
 
-- (void)didLoadTrendingNow {
+- (void)didLoadCategories {
     [self.mainScreen startLoading];
     __weak typeof(self) weakSelt = self;
     [[QStoreManager sharedInstance] loadContractsForCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
@@ -161,8 +161,22 @@
 }
 
 - (void)didSelectTag:(NSString *)tag {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToViewController:[self.mainScreen toPresent] animated:YES];
     [self.mainScreen setTag:tag];
+}
+
+- (void)didSelectPurchaseContract:(QStoreContractElement *)element {
+    [self.contractScreen startLoading];
+    
+    __weak typeof(self) weakSelf = self;
+    [[QStoreManager sharedInstance] purchaseContract:element withSuccessHandler:^{
+        [weakSelf.contractScreen stopLoading];
+        [weakSelf.contractScreen updateWithFull];
+        [weakSelf.contractScreen showContractBoughtPop];
+    } andFailureHandler:^(NSString *message) {
+        [weakSelf.contractScreen stopLoading];
+        [weakSelf.contractScreen showErrorPopUpWithMessage:message];
+    }];
 }
 
 #pragma mark - QStoreListOutputDelegate
