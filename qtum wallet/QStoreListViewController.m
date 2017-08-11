@@ -10,6 +10,9 @@
 #import "QStoreListTableSource.h"
 #import "CustomSearchBar.h"
 
+@class QStoreCategory;
+@class QStoreContractElement;
+
 @interface QStoreListViewController () <UISearchBarDelegate, QStoreListTableSourceDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -18,9 +21,15 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForTable;
 
 @property (nonatomic) QStoreListTableSource *source;
+
+@property (nonatomic) NSArray<QStoreCategory *> *categories;
+@property (nonatomic) NSArray<QStoreContractElement *> *elements;
+
 @end
 
 @implementation QStoreListViewController
+
+@synthesize delegate, categoryTitle, type;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,12 +38,18 @@
     self.source.delegate = self;
     self.table.dataSource = self.source;
     self.table.delegate = self.source;
+    self.table.tableFooterView = [UIView new];
     
     self.searchBar.delegate = self;
     
-    if (self.categoryTitle) {
+    if (self.type == QStoreContracts) {
         self.titleLabel.text = self.categoryTitle;
+        self.source.array = self.elements;
+    } else {
+        self.source.array = self.categories;
     }
+    
+    [self.table reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -117,11 +132,11 @@
 
 #pragma mark - QStoreListTableSourceDelegate
 
-- (void)didSelectCell {
+- (void)didSelectCell:(NSIndexPath *)indexPath {
     if (self.type == QStoreCategories) {
-        [self.delegate didSelectQStoreCategory];
+        [self.delegate didSelectQStoreCategory:[self.categories objectAtIndex:indexPath.row]];
     } else {
-        [self.delegate didSelectQStoreContract];
+        [self.delegate didSelectQStoreContract:[self.elements objectAtIndex:indexPath.row]];
     }
 }
 
@@ -131,5 +146,12 @@
     [self.delegate didPressedBack];
 }
 
+- (void)setCategories:(NSArray<QStoreCategory *> *)categories {
+    _categories = categories;
+}
+
+- (void)setElements:(NSArray<QStoreContractElement *> *)elements {
+    _elements = elements;
+}
 
 @end

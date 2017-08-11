@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class QStoreSearchContractElement;
+@class QStoreContractElement;
 
 @protocol QStoreSearchTableSourceDelegate <NSObject>
 
-- (void)didSelectSearchCell;
+- (void)didSelectSearchCellWithElement:(QStoreContractElement *)element;
 - (void)loadMoreElements;
 
 @end
@@ -21,6 +21,6 @@
 
 @property (nonatomic, weak) id<QStoreSearchTableSourceDelegate> delegate;
 
-- (void)setSearchElements:(NSArray<QStoreSearchContractElement *> *)elements;
+- (void)setSearchElements:(NSArray<QStoreContractElement *> *)elements;
 
 @end

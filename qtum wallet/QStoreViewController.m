@@ -11,6 +11,9 @@
 #import "CustomSearchBar.h"
 #import "SelectSearchTypeView.h"
 #import "QStoreSearchTableSource.h"
+#import "QStoreContractElement.h"
+
+CGFloat const KeyboardDuration = 0.25f;
 
 @interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate, SelectSearchTypeViewDelegate, QStoreTableSourceDelegate, QStoreSearchTableSourceDelegate>
 
@@ -131,6 +134,7 @@
     
     self.searchTableView = [UITableView new];
     self.searchTableView.tableFooterView = [UIView new];
+    self.searchTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.searchTableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.searchTableView.dataSource = self.searchSource;
     self.searchTableView.delegate = self.searchSource;
@@ -166,7 +170,7 @@
     
     self.bottomConstraintForContainer.constant = - (kbSize.height - tapBarHeight);
     
-    [UIView animateWithDuration:duration animations:^{
+    [UIView animateWithDuration:duration - 0.05f animations:^{
         self.containerForSearchElements.alpha = 1.0f;
         [self.view layoutIfNeeded];
     }];
@@ -176,8 +180,10 @@
     NSDictionary *info = [notification userInfo];
     CGFloat duration = [info[UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
+    self.bottomConstraintForContainer.constant = 0;
+    
     [UIView animateWithDuration:duration animations:^{
-        self.containerForSearchElements.alpha = 0.0f;
+        [self.view layoutIfNeeded];
     }];
 }
 
@@ -218,13 +224,18 @@
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-    [self.searchBar setShowsCancelButton:NO animated:YES];
+//    [self.searchBar setShowsCancelButton:NO animated:YES];
     return YES;
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [self.searchBar setText:@""];
+    [self.searchBar setShowsCancelButton:NO animated:YES];
     [self.searchBar resignFirstResponder];
+    
+    [UIView animateWithDuration:KeyboardDuration animations:^{
+        self.containerForSearchElements.alpha = 0.0f;
+    }];
     
     [self.delegate didChangedSearchText:self.searchBar.text orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
 }
@@ -241,14 +252,21 @@
 
 #pragma mark - QStoreTableSourceDelegate
 
-- (void)didSelectCollectionCellWithElement:(QStoreShortContractElement *)element {
-    [self.delegate didSelectQStoreShortContractElement:element];
+- (void)didSelectCollectionCellWithElement:(QStoreContractElement *)element {
+    [self.delegate didSelectQStoreContractElement:element];
 }
 
 #pragma mark - QStoreSearchTableSourceDelegate
 
-- (void)didSelectSearchCell {
-    [self.delegate didSelectQStoreShortContractElement:nil];
+- (void)didSelectSearchCellWithElement:(QStoreContractElement *)element {
+    QStoreContractElement *el = [[QStoreContractElement alloc] initWithIdString:element.idString
+                                                                                     name:element.name
+                                                                              priceString:element.priceString
+                                                                                 countBuy:element.countBuy
+                                                                           countDownloads:element.countDownloads
+                                                                                createdAt:element.createdAt
+                                                                               typeString:element.typeString];
+    [self.delegate didSelectQStoreContractElement:el];
 }
 
 - (void)loadMoreElements {
@@ -287,13 +305,13 @@
     self.wasSettedTag = YES;
 }
 
-- (void)setSearchElements:(NSArray<QStoreSearchContractElement *> *)elements {
+- (void)setSearchElements:(NSArray<QStoreContractElement *> *)elements {
     [self.searchSource setSearchElements:elements];
     [self.searchTableView reloadData];
     [self.searchTableView setContentOffset:CGPointZero animated:NO];
 }
 
-- (void)setSearchMoreElements:(NSArray<QStoreSearchContractElement *> *)elements {
+- (void)setSearchMoreElements:(NSArray<QStoreContractElement *> *)elements {
     [self.searchSource setSearchElements:elements];
     [self.searchTableView reloadData];
 }

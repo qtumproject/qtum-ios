@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class QStoreCategory;
-@class QStoreShortContractElement;
+@class QStoreContractElement;
 
 @protocol QStoreTableSourceDelegate <NSObject>
 
-- (void)didSelectCollectionCellWithElement:(QStoreShortContractElement *)element;
+- (void)didSelectCollectionCellWithElement:(QStoreContractElement *)element;
 
 @end
 

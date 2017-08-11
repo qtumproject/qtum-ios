@@ -6,14 +6,12 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-@class QStoreShortContractElement;
+@class QStoreContractElement;
 
 @protocol QStoreMainOutputDelegate <NSObject>
 
 - (void)didSelectQStoreCategories;
-- (void)didSelectQStoreCategory;
-- (void)didSelectQStoreShortContractElement:(QStoreShortContractElement *)element;
-- (void)didSelectQStoreContractDetails;
+- (void)didSelectQStoreContractElement:(QStoreContractElement *)element;
 - (void)didPressedBack;
 - (void)didLoadTrendingNow;
 - (void)didChangedSearchText:(NSString *)text orSelectedSearchIndex:(NSInteger)index;

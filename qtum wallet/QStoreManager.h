@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class QStoreCategory;
-@class QStoreShortContractElement;
-@class QStoreFullContractElement;
-@class QStoreSearchContractElement;
+@class QStoreContractElement;
 
 typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
     QStoreManagerSearchTypeNone,
@@ -21,13 +19,14 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
 
 @protocol QStoreManagerSearchDelegate <NSObject>
 
-- (void)didFindElements:(NSArray<QStoreSearchContractElement *> *)elements;
-- (void)didFindMoreElements:(NSArray<QStoreSearchContractElement *> *)elements;
+- (void)didFindElements:(NSArray<QStoreContractElement *> *)elements;
+- (void)didFindMoreElements:(NSArray<QStoreContractElement *> *)elements;
 
 @end
 
 @interface QStoreManager : NSObject
 
+@property (readonly) NSMutableArray<QStoreCategory *> *categories;
 @property (weak, nonatomic) id<QStoreManagerSearchDelegate> delegate;
 
 + (instancetype)sharedInstance;
@@ -39,14 +38,15 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
 - (void)loadContractsForCategoriesWithSuccessHandler:(void(^)(NSArray<QStoreCategory *> *categories))success
                                    andFailureHandler:(void(^)(NSString* message))failure;
 
-- (void)loadFullContractByShort:(QStoreShortContractElement *)element
-             withSuccessHandler:(void (^)(QStoreFullContractElement *))success
-              andFailureHandler:(void (^)(NSString *))failure;
+- (void)loadFullContract:(QStoreContractElement *)element
+      withSuccessHandler:(void (^)())success
+       andFailureHandler:(void (^)(NSString *message))failure;
 
 - (void)searchByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
 - (void)searchMoreItemsByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
 
-- (void)getContractABI:(QStoreFullContractElement *)element
-             withSuccessHandler:(void (^)(QStoreFullContractElement *updatedElement))success
-              andFailureHandler:(void (^)(NSString *message))failure;
+- (void)getContractABI:(QStoreContractElement *)element
+    withSuccessHandler:(void (^)())success
+     andFailureHandler:(void (^)(NSString *message))failure;
+
 @end

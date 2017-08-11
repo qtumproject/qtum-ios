@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "QStoreShortContractElement.h"
+#import "QStoreContractElement.h"
 
 @protocol QStoreCollectionViewSourceDelegate <NSObject>
 
-- (void)didSelectCollectionCellWithElement:(QStoreShortContractElement *)element;
+- (void)didSelectCollectionCellWithElement:(QStoreContractElement *)element;
 
 @end
 
 @interface QStoreCollectionViewSource : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, weak) id<QStoreCollectionViewSourceDelegate> delegate;
-@property (nonatomic) NSArray<QStoreShortContractElement *> *elements;
+@property (nonatomic) NSArray<QStoreContractElement *> *elements;
 
 @end

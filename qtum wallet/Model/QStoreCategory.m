@@ -7,14 +7,14 @@
 //
 
 #import "QStoreCategory.h"
-#import "QStoreShortContractElement.h"
+#import "QStoreContractElement.h"
 
 @interface QStoreCategory()
 
 @property (nonatomic) NSInteger identifier;
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *urlPath;
-@property (nonatomic) NSArray<QStoreShortContractElement *> *elements;
+@property (nonatomic) NSArray<QStoreContractElement *> *elements;
 
 @end
 
@@ -29,7 +29,7 @@
         _identifier = identifier;
         _title = title;
         _urlPath = urlPath;
-        _elements = [NSArray<QStoreShortContractElement *> new];
+        _elements = [NSArray<QStoreContractElement *> new];
     }
     return self;
 }
@@ -37,7 +37,7 @@
 - (void)parseElementsFromJSONArray:(NSArray *)array {
     NSMutableArray *mutArray = [NSMutableArray new];
     for (NSDictionary *dictionary in array) {
-        QStoreShortContractElement *element = [QStoreShortContractElement createFromDictionary:dictionary];
+        QStoreContractElement *element = [QStoreContractElement createFromCategoryDictionary:dictionary];
         if (element) {
             [mutArray addObject:element];
         }

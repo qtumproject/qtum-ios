@@ -79,6 +79,7 @@
 
 @protocol QStoreMainOutput;
 @protocol QStoreContractOutput;
+@protocol QStoreListOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -137,6 +138,7 @@
 // QStore
 - (NSObject <QStoreMainOutput> *)createQStoreMainViewController;
 - (NSObject <QStoreContractOutput> *)createQStoreContractViewController;
+- (NSObject<QStoreListOutput> *)createQStoreListViewController;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;
@@ -152,7 +154,6 @@
 - (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
 - (SecurityPopupViewController *)createSecurityPopupViewController;
 
-- (QStoreListViewController*)createQStoreListViewController;
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController;
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
 - (ShareTokenPopUpViewController *)createShareTokenPopUpViewController;

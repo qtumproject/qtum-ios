@@ -8,11 +8,11 @@
 
 #import "QStoreSearchTableSource.h"
 #import "QStoreSearchTableViewCell.h"
-#import "QStoreSearchContractElement.h"
+#import "QStoreContractElement.h"
 
 @interface QStoreSearchTableSource()
 
-@property (nonatomic) NSArray<QStoreSearchContractElement *> *elements;
+@property (nonatomic) NSArray<QStoreContractElement *> *elements;
 
 @end
 
@@ -25,7 +25,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QStoreSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QStoreSearchTableViewCell"];
     
-    QStoreSearchContractElement *element = [self.elements objectAtIndex:indexPath.row];
+    QStoreContractElement *element = [self.elements objectAtIndex:indexPath.row];
     
     cell.nameLabel.text = element.name;
     cell.amountLabel.text = element.priceString;
@@ -43,8 +43,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if ([self.delegate respondsToSelector:@selector(didSelectSearchCell)]) {
-        [self.delegate didSelectSearchCell];
+    if ([self.delegate respondsToSelector:@selector(didSelectSearchCellWithElement:)]) {
+        [self.delegate didSelectSearchCellWithElement:[self.elements objectAtIndex:indexPath.row]];
     }
 }
 
@@ -58,7 +58,7 @@
     [cell changeHighlight:NO];
 }
 
-- (void)setSearchElements:(NSArray<QStoreSearchContractElement *> *)elements {
+- (void)setSearchElements:(NSArray<QStoreContractElement *> *)elements {
     self.elements = elements;
 }
 

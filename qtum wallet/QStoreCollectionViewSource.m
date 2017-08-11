@@ -18,7 +18,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     QStoreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QStoreCollectionViewCell" forIndexPath:indexPath];
     
-    QStoreShortContractElement *element = [self.elements objectAtIndex:indexPath.row];
+    QStoreContractElement *element = [self.elements objectAtIndex:indexPath.row];
     
     cell.nameLabel.text = element.name;
     cell.typeLabel.text = [element.typeString capitalizedString];

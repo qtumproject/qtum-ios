@@ -6,15 +6,14 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-@class QStoreShortContractElement;
-@class QStoreFullContractElement;
+@class QStoreContractElement;
 
 @protocol QStoreContractOutputDelegate <NSObject>
 
-- (void)didLoadFullContract:(QStoreShortContractElement *)element;
-- (void)didSelectQStoreContractDetails:(QStoreFullContractElement *)element;
+- (void)didLoadFullContract:(QStoreContractElement *)element;
+- (void)didSelectQStoreContractDetails:(QStoreContractElement *)element;
 - (void)didPressedBack;
 - (void)didSelectTag:(NSString *)tag;
-- (void)didLoadAbi:(QStoreFullContractElement *)element;
+- (void)didLoadAbi:(QStoreContractElement *)element;
 
 @end

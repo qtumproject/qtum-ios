@@ -10,9 +10,6 @@
 
 @interface QStoreListTableViewCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
-@property (weak, nonatomic) IBOutlet UILabel *amount;
 @end
 
 @implementation QStoreListTableViewCell

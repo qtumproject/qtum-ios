@@ -9,8 +9,7 @@
 #import "QStoreContractViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
 
-#import "QStoreFullContractElement.h"
-#import "QStoreShortContractElement.h"
+#import "QStoreContractElement.h"
 
 @interface QStoreContractViewController () <PopUpWithTwoButtonsViewControllerDelegate, UITextViewDelegate>
 
@@ -30,8 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *downloadsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *compiledOnLabel;
 
-@property (nonatomic) QStoreFullContractElement *fullElement;
-@property (nonatomic) QStoreShortContractElement *shortElement;
+@property (nonatomic) QStoreContractElement *element;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraintForTextView;
 @end
@@ -43,8 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.amountLabel.text = self.shortElement.priceString;
-    self.titleLabel.text = self.shortElement.name;
+    self.amountLabel.text = self.element.priceString;
+    self.titleLabel.text = self.element.name;
     
     self.detailsButton.alpha =
     self.sourceCodeButton.alpha =
@@ -54,7 +52,7 @@
     self.tagsTextView.textContainerInset = UIEdgeInsetsZero;
     self.tagsTextView.textContainer.lineFragmentPadding = 0;
     
-    [self.delegate didLoadFullContract:self.shortElement];
+    [self.delegate didLoadFullContract:self.element];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,14 +62,14 @@
 #pragma mark - Actions
 
 - (IBAction)actionDetails:(id)sender {
-    [self.delegate didSelectQStoreContractDetails:self.fullElement];
+    [self.delegate didSelectQStoreContractDetails:self.element];
 }
 
 - (IBAction)actionSourceCode:(id)sender {
-    if (!self.fullElement.abiString || [self.fullElement.abiString isEqualToString:@""]) {
-        [self.delegate didLoadAbi:self.fullElement];
+    if (!self.element.abiString || [self.element.abiString isEqualToString:@""]) {
+        [self.delegate didLoadAbi:self.element];
     } else {
-        [self showSourceCodePopUpWithString:self.fullElement.abiString];
+        [self showSourceCodePopUpWithString:self.element.abiString];
     }
 }
 
@@ -84,10 +82,10 @@
 
 - (IBAction)actionPurchase:(id)sender {
     ConfirmPurchasePopUpViewController *vc = [[PopUpsManager sharedInstance] showConfirmPurchasePopUp:self presenter:nil completion:nil];
-    vc.contractNameLabel.text = self.fullElement.name;
-    vc.contractTypeLabel.text = [self.fullElement.typeString capitalizedString];
-    vc.amountLabel.text = [NSString stringWithFormat:@"%@ %@", self.fullElement.priceString, NSLocalizedString(@"QTUM", nil)];
-    vc.minterAddressLabel.text = self.fullElement.publisherAddress;
+    vc.contractNameLabel.text = self.element.name;
+    vc.contractTypeLabel.text = [self.element.typeString capitalizedString];
+    vc.amountLabel.text = [NSString stringWithFormat:@"%@ %@", self.element.priceString, NSLocalizedString(@"QTUM", nil)];
+    vc.minterAddressLabel.text = self.element.publisherAddress;
     vc.feeLabel.text = [NSString stringWithFormat:@"%@ %@", @"0.1", NSLocalizedString(@"QTUM", nil)];
 }
 
@@ -119,26 +117,24 @@
     });
 }
 
-- (void)setFullContract:(QStoreFullContractElement *)element {
-    self.fullElement = element;
-    
+- (void)updateWithFull {
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"dd-MMM-YYYY"];
     
-    self.descriptionLabel.text = element.contractDescription;
-    self.publishedDateLabel.text = [formatter stringFromDate:element.createdAt];
-    self.sizeLabel.text = [NSString stringWithFormat:@"%@b", element.size];
-    self.compiledOnLabel.text = element.completedOn;
-    self.sourceCodeLabel.text = element.withSourseCode ? NSLocalizedString(@"YES", nil) : NSLocalizedString(@"NO", nil);
-    self.publishedByLabel.text = element.publisherAddress;
-    self.downloadsLabel.text = [element.countDownloads stringValue];
+    self.descriptionLabel.text = self.element.contractDescription;
+    self.publishedDateLabel.text = [formatter stringFromDate:self.element.createdAt];
+    self.sizeLabel.text = [NSString stringWithFormat:@"%@b", self.element.size];
+    self.compiledOnLabel.text = self.element.completedOn;
+    self.sourceCodeLabel.text = self.element.withSourseCode ? NSLocalizedString(@"YES", nil) : NSLocalizedString(@"NO", nil);
+    self.publishedByLabel.text = self.element.publisherAddress;
+    self.downloadsLabel.text = [self.element.countDownloads stringValue];
     
-    [self setupTagsTextView:element.tags];
+    [self setupTagsTextView:self.element.tags];
     
     [UIView animateWithDuration:0.3f animations:^{
         self.detailsButton.alpha =
         self.scrollView.alpha = 1.0f;
-        self.sourceCodeButton.alpha = element.withSourseCode ? 1.0f : 0.0f;
+        self.sourceCodeButton.alpha = self.element.withSourseCode ? 1.0f : 0.0f;
     }];
 }
 
@@ -168,12 +164,12 @@
     self.heightConstraintForTextView.constant = newSize.height;
 }
 
-- (void)setShortContract:(QStoreShortContractElement *)element {
-    self.shortElement = element;
+- (void)setContract:(QStoreContractElement *)element {
+    self.element = element;
 }
 
 - (void)showAbi {
-    [self showSourceCodePopUpWithString:self.fullElement.abiString];
+    [self showSourceCodePopUpWithString:self.element.abiString];
 }
 
 #pragma mark - UITextViewDelegate

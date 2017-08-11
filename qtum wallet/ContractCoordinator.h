@@ -17,11 +17,6 @@
 @required
 -(void)createStepOneCancelDidPressed;
 -(void)didPressedBack;
--(void)didSelectQStoreCategories;
--(void)didSelectQStoreCategory;
--(void)didSelectQStoreContract;
--(void)didSelectQStoreContractDetails;
-
 
 - (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;

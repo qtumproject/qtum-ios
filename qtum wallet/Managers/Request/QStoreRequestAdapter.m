@@ -8,8 +8,7 @@
 
 #import "QStoreRequestAdapter.h"
 #import "QStoreCategory.h"
-#import "QStoreFullContractElement.h"
-#import "QStoreSearchContractElement.h"
+#import "QStoreContractElement.h"
 
 @implementation QStoreRequestAdapter
 
@@ -25,11 +24,14 @@
     }];
 }
 
-- (void)getFullContractById:(NSString *)contractId withSuccessHandler:(void (^)(QStoreFullContractElement *))success andFailureHandler:(void (^)(NSError *, NSString *))failure {
+- (void)getFullContractById:(NSString *)contractId withSuccessHandler:(void (^)(NSDictionary *fullDictionary))success andFailureHandler:(void (^)(NSError *, NSString *))failure {
     
     [[ApplicationCoordinator sharedInstance].requestManager getFullContractById:contractId withSuccessHandler:^(id responseObject) {
-        QStoreFullContractElement *element = [QStoreFullContractElement createFullFromDictionary:responseObject];
-        success(element);
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            success(responseObject);
+        } else {
+            failure([NSError new], @"Not a dictionary");
+        }
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
@@ -39,7 +41,7 @@
                         offset:(NSInteger)offset
                           type:(QStoreRequestAdapterSearchType)type
                           tags:(NSArray *)tags
-            withSuccessHandler:(void (^)(NSArray<QStoreSearchContractElement *> *, NSArray<NSString *> *))success
+            withSuccessHandler:(void (^)(NSArray<QStoreContractElement *> *, NSArray<NSString *> *))success
              andFailureHandler:(void (^)(NSError *, NSString *))failure {
     
     NSString *stringType;
@@ -58,9 +60,9 @@
     }
     
     [[ApplicationCoordinator sharedInstance].requestManager searchContractsByCount:count offset:offset type:stringType tags:tags withSuccessHandler:^(id responseObject) {
-        NSMutableArray<QStoreSearchContractElement *> *array = [NSMutableArray new];
+        NSMutableArray<QStoreContractElement *> *array = [NSMutableArray new];
         for (NSDictionary *dictionary in responseObject) {
-            QStoreSearchContractElement *element = [QStoreSearchContractElement createSearchFromDictionary:dictionary];
+            QStoreContractElement *element = [QStoreContractElement createFromSearchDictionary:dictionary];
             [array addObject:element];
         }
         success(array, tags);
@@ -69,15 +71,14 @@
     }];
 }
 
-- (void)getContractABI:(QStoreFullContractElement *)element
-    withSuccessHandler:(void(^)(QStoreFullContractElement *element))success
+- (void)getContractABI:(QStoreContractElement *)element
+    withSuccessHandler:(void(^)(NSString *abiString))success
      andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
  
     [[ApplicationCoordinator sharedInstance].requestManager getContractABI:element.idString withSuccessHandler:^(id responseObject) {
         NSData *jsonData = [NSJSONSerialization  dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
-        NSString *myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        element.abiString = myString;
-        success(element);
+        NSString *abiString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        success(abiString);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];

@@ -8,7 +8,7 @@
 
 #import "QStoreContractOutputDelegate.h"
 
-@class QStoreFullContractElement;
+@class QStoreContractElement;
 
 @protocol QStoreContractOutput <NSObject>
 
@@ -16,8 +16,8 @@
 
 - (void)startLoading;
 - (void)stopLoading;
-- (void)setShortContract:(QStoreShortContractElement *)element;
-- (void)setFullContract:(QStoreFullContractElement *)element;
+- (void)setContract:(QStoreContractElement *)element;
+- (void)updateWithFull;
 - (void)showAbi;
 
 @end

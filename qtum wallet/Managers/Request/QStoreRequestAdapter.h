@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class QStoreCategory;
-@class QStoreFullContractElement;
-@class QStoreSearchContractElement;
+@class QStoreContractElement;
 
 typedef NS_ENUM(NSInteger, QStoreRequestAdapterSearchType) {
     QStoreRequestAdapterSearchTypeToken,
@@ -26,18 +25,18 @@ typedef NS_ENUM(NSInteger, QStoreRequestAdapterSearchType) {
               andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 - (void)getFullContractById:(NSString *)contractId
-         withSuccessHandler:(void(^)(QStoreFullContractElement *contract))success
+         withSuccessHandler:(void(^)(NSDictionary *fullDictionary))success
           andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 - (void)searchContractsByCount:(NSInteger)count
                         offset:(NSInteger)offset
                           type:(QStoreRequestAdapterSearchType)type
                           tags:(NSArray *)tags
-            withSuccessHandler:(void(^)(NSArray<QStoreSearchContractElement *> *elements, NSArray<NSString *> *tags))success
+            withSuccessHandler:(void(^)(NSArray<QStoreContractElement *> *elements, NSArray<NSString *> *tags))success
              andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
-- (void)getContractABI:(QStoreFullContractElement *)element
-    withSuccessHandler:(void(^)(QStoreFullContractElement *element))success
+- (void)getContractABI:(QStoreContractElement *)element
+    withSuccessHandler:(void(^)(NSString *abiString))success
      andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 @end
