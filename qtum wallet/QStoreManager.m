@@ -11,6 +11,9 @@
 #import "QStoreRequestAdapter.h"
 #import "QStoreContractElement.h"
 #import "QStoreBuyRequest.h"
+#import "TransactionManager.h"
+#import "ApplicationCoordinator.h"
+#import "Wallet.h"
 
 NSString *const QStoreCategoryTrendingPath = @"/contracts/trending-now";
 NSString *const QStoreCategoryLastAddedPath = @"/contracts/last-added";
@@ -153,12 +156,33 @@ NSInteger const QStoreSearchCount = 20;
     __weak typeof(self) weakSelf = self;
     [self.requestAdapter buyContract:element.idString withSuccessHandler:^(NSDictionary *buyRequestDictionary) {
         QStoreBuyRequest *request = [QStoreBuyRequest createFromDictionary:buyRequestDictionary andContractId:element.idString];
-        [weakSelf.buyRequests addObject:request];
-        [weakSelf saveBuyRequests];
-        element.purchaseState = QStoreElementPurchaseStateInPurchase;
-        success();
+        [weakSelf createBuyTrancaction:request withSuccessHandler:^{
+            [weakSelf.buyRequests addObject:request];
+            [weakSelf saveBuyRequests];
+            element.purchaseState = QStoreElementPurchaseStateInPurchase;
+            success();
+        } andFailureHandler:^(NSString *message) {
+            failure(message);
+        }];
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(message);
+    }];
+}
+
+- (void)createBuyTrancaction:(QStoreBuyRequest *)buyRequest
+          withSuccessHandler:(void (^)())success
+           andFailureHandler:(void (^)(NSString *message))failure {
+    
+    
+    NSArray *array = @[@{@"amount" : [buyRequest getAmountNumber], @"address" : buyRequest.addressString}];
+    
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys] toAddressAndAmount:array andHandler:^(TransactionManagerErrorType errorType, id response) {
+        if (errorType == TransactionManagerErrorTypeNone) {
+            success();
+        } else {
+            // TODO add more error messages
+            failure(NSLocalizedString(@"Cannot create transaction", nil));
+        }
     }];
 }
 

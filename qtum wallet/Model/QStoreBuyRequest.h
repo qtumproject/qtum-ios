@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, QStoreBuyRequestState) {
 @property (nonatomic, readonly) NSString *accessToken;
 @property (nonatomic, readonly) NSString *amountString;
 
+- (NSNumber *)getAmountNumber;
+
 + (QStoreBuyRequest *)createFromDictionary:(NSDictionary *)dictionary andContractId:(NSString *)contractId;
 
 @end

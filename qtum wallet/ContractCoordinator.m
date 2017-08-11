@@ -209,7 +209,6 @@ ContractFunctionsOutputDelegate>
 }
 
 -(void)showChooseFromLibrary:(BOOL)tokensOnly {
-    
     self.isLibraryViewControllerOnlyForTokens = tokensOnly;
     self.libraryViewController = [[ControllersFactory sharedInstance] createLibraryViewController];
     self.libraryTableSource = [[TableSourcesFactory sharedInstance] createLibrarySource];
@@ -250,7 +249,6 @@ ContractFunctionsOutputDelegate>
 }
 
 -(void)finishStepFinishDidPressed{
-
     __weak __typeof(self)weakSelf = self;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     

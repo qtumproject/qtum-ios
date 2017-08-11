@@ -74,4 +74,10 @@ NSString *const QStoreBuyRequestAmountStringKey = @"amount";
     return request;
 }
 
+- (NSNumber *)getAmountNumber {
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    return [f numberFromString:self.amountString];
+}
+
 @end
