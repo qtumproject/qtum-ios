@@ -13,7 +13,7 @@
 
 @import SocketIO;
 
-static NSString *BASE_URL = @"http://163.172.68.103:5931/";
+static NSString *BASE_URL = @"http://163.172.251.4:5931/";
 
 NSString *const kSocketDidConnect = @"kSocketDidConnect";
 NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
