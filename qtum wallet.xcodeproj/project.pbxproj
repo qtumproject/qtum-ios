@@ -267,6 +267,16 @@
 		B3E3A1651E850572002A488F /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1641E850572002A488F /* AppSettings.m */; };
 		B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */; };
 		B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A18A1E852F27002A488F /* SocketManager.m */; };
+		B3EA52F41F45E087002FD201 /* QStoreContractViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA52F31F45E087002FD201 /* QStoreContractViewControllerDark.m */; };
+		B3EA52F71F45E0A0002FD201 /* QStoreContractViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA52F61F45E0A0002FD201 /* QStoreContractViewControllerLight.m */; };
+		B3EA52FA1F45E1A1002FD201 /* QStoreViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA52F91F45E1A1002FD201 /* QStoreViewControllerDark.m */; };
+		B3EA52FD1F45E1C8002FD201 /* QStoreViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA52FC1F45E1C8002FD201 /* QStoreViewControllerLight.m */; };
+		B3EA53001F45E1F1002FD201 /* QStoreListViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA52FF1F45E1F1002FD201 /* QStoreListViewControllerDark.m */; };
+		B3EA53031F45E200002FD201 /* QStoreListViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA53021F45E200002FD201 /* QStoreListViewControllerLight.m */; };
+		B3EA53071F46D9CD002FD201 /* QStoreTableViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA53061F46D9CD002FD201 /* QStoreTableViewCellDark.m */; };
+		B3EA530A1F46D9DA002FD201 /* QStoreTableViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA53091F46D9DA002FD201 /* QStoreTableViewCellLight.m */; };
+		B3EA530E1F46DDF0002FD201 /* CustomSearchBarDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA530D1F46DDF0002FD201 /* CustomSearchBarDark.m */; };
+		B3EA53111F46DE00002FD201 /* CustomSearchBarLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA53101F46DE00002FD201 /* CustomSearchBarLight.m */; };
 		B3EE8F281F0E109300131823 /* TabBarControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F271F0E109300131823 /* TabBarControllerLight.m */; };
 		B3EE8F2B1F0E10AB00131823 /* TabBarControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F2A1F0E10AB00131823 /* TabBarControllerDark.m */; };
 		B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F301F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m */; };
@@ -1127,6 +1137,26 @@
 		B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Settings.m"; sourceTree = "<group>"; };
 		B3E3A1891E852F27002A488F /* SocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketManager.h; sourceTree = "<group>"; };
 		B3E3A18A1E852F27002A488F /* SocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketManager.m; sourceTree = "<group>"; };
+		B3EA52F21F45E087002FD201 /* QStoreContractViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractViewControllerDark.h; sourceTree = "<group>"; };
+		B3EA52F31F45E087002FD201 /* QStoreContractViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreContractViewControllerDark.m; sourceTree = "<group>"; };
+		B3EA52F51F45E0A0002FD201 /* QStoreContractViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractViewControllerLight.h; sourceTree = "<group>"; };
+		B3EA52F61F45E0A0002FD201 /* QStoreContractViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreContractViewControllerLight.m; sourceTree = "<group>"; };
+		B3EA52F81F45E1A1002FD201 /* QStoreViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreViewControllerDark.h; sourceTree = "<group>"; };
+		B3EA52F91F45E1A1002FD201 /* QStoreViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreViewControllerDark.m; sourceTree = "<group>"; };
+		B3EA52FB1F45E1C8002FD201 /* QStoreViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreViewControllerLight.h; sourceTree = "<group>"; };
+		B3EA52FC1F45E1C8002FD201 /* QStoreViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreViewControllerLight.m; sourceTree = "<group>"; };
+		B3EA52FE1F45E1F1002FD201 /* QStoreListViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreListViewControllerDark.h; sourceTree = "<group>"; };
+		B3EA52FF1F45E1F1002FD201 /* QStoreListViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreListViewControllerDark.m; sourceTree = "<group>"; };
+		B3EA53011F45E200002FD201 /* QStoreListViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreListViewControllerLight.h; sourceTree = "<group>"; };
+		B3EA53021F45E200002FD201 /* QStoreListViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreListViewControllerLight.m; sourceTree = "<group>"; };
+		B3EA53051F46D9CD002FD201 /* QStoreTableViewCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreTableViewCellDark.h; sourceTree = "<group>"; };
+		B3EA53061F46D9CD002FD201 /* QStoreTableViewCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreTableViewCellDark.m; sourceTree = "<group>"; };
+		B3EA53081F46D9DA002FD201 /* QStoreTableViewCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreTableViewCellLight.h; sourceTree = "<group>"; };
+		B3EA53091F46D9DA002FD201 /* QStoreTableViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreTableViewCellLight.m; sourceTree = "<group>"; };
+		B3EA530C1F46DDF0002FD201 /* CustomSearchBarDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBarDark.h; sourceTree = "<group>"; };
+		B3EA530D1F46DDF0002FD201 /* CustomSearchBarDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBarDark.m; sourceTree = "<group>"; };
+		B3EA530F1F46DE00002FD201 /* CustomSearchBarLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBarLight.h; sourceTree = "<group>"; };
+		B3EA53101F46DE00002FD201 /* CustomSearchBarLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBarLight.m; sourceTree = "<group>"; };
 		B3EE8F261F0E109300131823 /* TabBarControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarControllerLight.h; sourceTree = "<group>"; };
 		B3EE8F271F0E109300131823 /* TabBarControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarControllerLight.m; sourceTree = "<group>"; };
 		B3EE8F291F0E10AB00131823 /* TabBarControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarControllerDark.h; sourceTree = "<group>"; };
@@ -2724,6 +2754,32 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		B3EA53041F46D9A1002FD201 /* QStoreTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E784F8C01F023C1800A513BF /* QStoreTableViewCell.h */,
+				E784F8C11F023C1800A513BF /* QStoreTableViewCell.m */,
+				B3EA53051F46D9CD002FD201 /* QStoreTableViewCellDark.h */,
+				B3EA53061F46D9CD002FD201 /* QStoreTableViewCellDark.m */,
+				B3EA53081F46D9DA002FD201 /* QStoreTableViewCellLight.h */,
+				B3EA53091F46D9DA002FD201 /* QStoreTableViewCellLight.m */,
+			);
+			name = QStoreTableViewCell;
+			sourceTree = "<group>";
+		};
+		B3EA530B1F46DDD0002FD201 /* Search Bar */ = {
+			isa = PBXGroup;
+			children = (
+				E7CE63601F027EC200C147B9 /* CustomSearchBar.h */,
+				E7CE63611F027EC200C147B9 /* CustomSearchBar.m */,
+				B3EA530C1F46DDF0002FD201 /* CustomSearchBarDark.h */,
+				B3EA530D1F46DDF0002FD201 /* CustomSearchBarDark.m */,
+				B3EA530F1F46DE00002FD201 /* CustomSearchBarLight.h */,
+				B3EA53101F46DE00002FD201 /* CustomSearchBarLight.m */,
+			);
+			name = "Search Bar";
+			sourceTree = "<group>";
+		};
 		B3EE8F2C1F0E11EC00131823 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2994,6 +3050,10 @@
 				E70353111F03AC59004ECCC9 /* QStoreListTableSource.m */,
 				E70353131F03AC6D004ECCC9 /* QStoreListTableViewCell.h */,
 				E70353141F03AC6D004ECCC9 /* QStoreListTableViewCell.m */,
+				B3EA52FE1F45E1F1002FD201 /* QStoreListViewControllerDark.h */,
+				B3EA52FF1F45E1F1002FD201 /* QStoreListViewControllerDark.m */,
+				B3EA53011F45E200002FD201 /* QStoreListViewControllerLight.h */,
+				B3EA53021F45E200002FD201 /* QStoreListViewControllerLight.m */,
 			);
 			name = ListScreen;
 			sourceTree = "<group>";
@@ -3007,6 +3067,10 @@
 				E74C16591F3B0A8D003D2D9C /* QStoreMainOutputDelegate.h */,
 				E784F8B61F015B7100A513BF /* QStoreViewController.h */,
 				E784F8B71F015B7100A513BF /* QStoreViewController.m */,
+				B3EA52F81F45E1A1002FD201 /* QStoreViewControllerDark.h */,
+				B3EA52F91F45E1A1002FD201 /* QStoreViewControllerDark.m */,
+				B3EA52FB1F45E1C8002FD201 /* QStoreViewControllerLight.h */,
+				B3EA52FC1F45E1C8002FD201 /* QStoreViewControllerLight.m */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -3018,6 +3082,10 @@
 				E7847F851F3B5DE5004A2333 /* QStoreContractOutputDelegate.h */,
 				E70353171F03C30E004ECCC9 /* QStoreContractViewController.h */,
 				E70353181F03C30E004ECCC9 /* QStoreContractViewController.m */,
+				B3EA52F21F45E087002FD201 /* QStoreContractViewControllerDark.h */,
+				B3EA52F31F45E087002FD201 /* QStoreContractViewControllerDark.m */,
+				B3EA52F51F45E0A0002FD201 /* QStoreContractViewControllerLight.h */,
+				B3EA52F61F45E0A0002FD201 /* QStoreContractViewControllerLight.m */,
 			);
 			name = ContractScreen;
 			sourceTree = "<group>";
@@ -3515,8 +3583,7 @@
 				E784F8BA1F015C4C00A513BF /* QStoreCollectionViewSource.m */,
 				E784F8BC1F015CE400A513BF /* QStoreCollectionViewCell.h */,
 				E784F8BD1F015CE400A513BF /* QStoreCollectionViewCell.m */,
-				E784F8C01F023C1800A513BF /* QStoreTableViewCell.h */,
-				E784F8C11F023C1800A513BF /* QStoreTableViewCell.m */,
+				B3EA53041F46D9A1002FD201 /* QStoreTableViewCell */,
 			);
 			name = CollectionVIew;
 			sourceTree = "<group>";
@@ -3989,8 +4056,7 @@
 				E789036A1EDDA980004243F0 /* ViewWithAnimatedLine.h */,
 				E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */,
 				B3DB3E351F2F50FE00AA408F /* Loader View */,
-				E7CE63601F027EC200C147B9 /* CustomSearchBar.h */,
-				E7CE63611F027EC200C147B9 /* CustomSearchBar.m */,
+				B3EA530B1F46DDD0002FD201 /* Search Bar */,
 				B35DF6441F263CD500316953 /* LightBlueGrayBorderView.h */,
 				B35DF6451F263CD500316953 /* LightBlueGrayBorderView.m */,
 				B3141E5B1F3099180095E3DF /* ContractNameTextFiedl */,
@@ -4498,6 +4564,7 @@
 				E7396AF81DDF0C970002CD47 /* HistoryTableViewCell.m in Sources */,
 				B3CBDF1C1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m in Sources */,
 				B3DC9D0A1F31B6CF006B2E07 /* AddressControlListViewControllerDark.m in Sources */,
+				B3EA530A1F46D9DA002FD201 /* QStoreTableViewCellLight.m in Sources */,
 				B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */,
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
@@ -4507,8 +4574,10 @@
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
 				B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */,
+				B3EA52FA1F45E1A1002FD201 /* QStoreViewControllerDark.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
 				B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */,
+				B3EA53001F45E1F1002FD201 /* QStoreListViewControllerDark.m in Sources */,
 				E71271921EE9925600A130A0 /* SpinnerView.m in Sources */,
 				B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */,
 				B3DB3E571F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m in Sources */,
@@ -4568,6 +4637,7 @@
 				B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */,
 				E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */,
 				B3DC9D411F3323BC006B2E07 /* TokenAddressControlViewControllerLight.m in Sources */,
+				B3EA530E1F46DDF0002FD201 /* CustomSearchBarDark.m in Sources */,
 				B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
@@ -4614,6 +4684,7 @@
 				E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				B3DC9CE21F30C7EE006B2E07 /* TokenFunctionDetailViewControllerDark.m in Sources */,
+				B3EA52FD1F45E1C8002FD201 /* QStoreViewControllerLight.m in Sources */,
 				E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */,
 				B32B32DD1ECCC2C70081260A /* ContractFileManager.m in Sources */,
 				B3DC9CEB1F30CB56006B2E07 /* TokenFunctionViewControllerDark.m in Sources */,
@@ -4630,6 +4701,7 @@
 				B35DF63F1F262EB100316953 /* TokenDetailLightDisplayDataManager.m in Sources */,
 				B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
+				B3EA53111F46DE00002FD201 /* CustomSearchBarLight.m in Sources */,
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				B3141E661F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
@@ -4641,6 +4713,7 @@
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
 				B3CBDF2A1F2B41D900C80D4E /* SmartContractsListViewControllerDark.m in Sources */,
 				B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */,
+				B3EA52F41F45E087002FD201 /* QStoreContractViewControllerDark.m in Sources */,
 				B3EE8F341F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m in Sources */,
 				E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */,
 				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
@@ -4665,6 +4738,7 @@
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
 				E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */,
 				B3DC9CE51F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.m in Sources */,
+				B3EA53031F45E200002FD201 /* QStoreListViewControllerLight.m in Sources */,
 				B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */,
 				E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */,
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
@@ -4836,6 +4910,7 @@
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
+				B3EA52F71F45E0A0002FD201 /* QStoreContractViewControllerLight.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
 				B3CBDF0D1F2A463700C80D4E /* LibraryViewControllerLight.m in Sources */,
 				B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */,
@@ -4866,6 +4941,7 @@
 				B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */,
 				E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */,
 				E74857991F13C01800DCF9A6 /* LanguageTableViewCellDark.m in Sources */,
+				B3EA53071F46D9CD002FD201 /* QStoreTableViewCellDark.m in Sources */,
 				E784F8C21F023C1800A513BF /* QStoreTableViewCell.m in Sources */,
 				B3DC9D3E1F332399006B2E07 /* TokenAddressControlViewControllerDark.m in Sources */,
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,

@@ -35,10 +35,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return self.categories.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    QStoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[QStoreTableViewCell getIdentifier]];
+    
+    if ([cell isKindOfClass:[QStoreTableViewCell class]]) {
+        return [[cell class] getHeightCellForRowCount:1];
+    }
+    
     return [QStoreTableViewCell getHeightCellForRowCount:1];
 }
 

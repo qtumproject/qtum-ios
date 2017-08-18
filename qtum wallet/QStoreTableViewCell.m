@@ -35,6 +35,7 @@
 }
 
 + (CGFloat)getHeightCellForRowCount:(NSInteger)count {
+    
     CGFloat heightCell = 130.0f;
     CGFloat spaceBetweenRows = 2.0f;
     CGFloat headerHeight = 33.0f;
