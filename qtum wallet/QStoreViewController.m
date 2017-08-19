@@ -8,26 +8,18 @@
 
 #import "QStoreViewController.h"
 #import "QStoreTableSource.h"
-#import "CustomSearchBar.h"
 #import "SelectSearchTypeView.h"
 #import "QStoreSearchTableSource.h"
 #import "QStoreContractElement.h"
 
 CGFloat const KeyboardDuration = 0.25f;
 
-@interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate, SelectSearchTypeViewDelegate, QStoreTableSourceDelegate, QStoreSearchTableSourceDelegate>
+@interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet CustomSearchBar *searchBar;
 
-@property (nonatomic) QStoreTableSource *source;
-@property (nonatomic) QStoreSearchTableSource *searchSource;
 
-@property (nonatomic) UIView *containerForSearchElements;
-@property (nonatomic) NSLayoutConstraint *bottomConstraintForContainer;
 
-@property (nonatomic) SelectSearchTypeView *selectSearchType;
-@property (nonatomic) UITableView *searchTableView;
 
 @property (nonatomic) BOOL wasSettedTag;
 @property (nonatomic) NSString *tagString;
@@ -113,6 +105,7 @@ CGFloat const KeyboardDuration = 0.25f;
 }
 
 - (void)createSelectSearchView {
+    
     self.selectSearchType = [[[NSBundle mainBundle] loadNibNamed:@"SelectSearchTypeView" owner:self options:nil] firstObject];
     self.selectSearchType.alpha = 1.0f;
     self.selectSearchType.translatesAutoresizingMaskIntoConstraints = NO;

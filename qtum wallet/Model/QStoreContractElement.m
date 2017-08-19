@@ -7,6 +7,7 @@
 //
 
 #import "QStoreContractElement.h"
+#import "NSUserDefaults+Settings.h"
 
 // Short
 NSString *const QStoreContractElementIdKey = @"_id";
@@ -135,13 +136,25 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 }
 
 - (NSString *)getImageNameByType {
-    switch (self.type) {
-        case QStoreElementTypeToken:
-            return @"ic-supertoken";
-        case QStoreElementTypeCrowdsale:
-            return @"ic-crowdsale";
-        default:
-            return @"ic-smart_contract";
+    
+    if ([NSUserDefaults isDarkSchemeSetting]) {
+        switch (self.type) {
+            case QStoreElementTypeToken:
+                return @"ic-supertoken";
+            case QStoreElementTypeCrowdsale:
+                return @"ic-crowdsale";
+            default:
+                return @"ic-smart_contract";
+        };
+    } else {
+        switch (self.type) {
+            case QStoreElementTypeToken:
+                return @"ic-supertoken-light";
+            case QStoreElementTypeCrowdsale:
+                return @"ic-supercreowdsale";
+            default:
+                return @"ic-smartcontract-light";
+        };
     }
 }
 

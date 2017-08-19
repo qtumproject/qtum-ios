@@ -11,12 +11,7 @@
 @implementation QStoreTableViewCellLight
 
 + (CGFloat)getHeightCellForRowCount:(NSInteger)count {
-    
-    CGFloat heightCell = 130.0f;
-    CGFloat spaceBetweenRows = 15.0f;
-    CGFloat headerHeight = 33.0f;
-    
-   // return heightCell * count + spaceBetweenRows * (count - 1) + headerHeight;
+
     return 200;
 }
 
