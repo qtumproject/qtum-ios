@@ -424,7 +424,7 @@
 }
 
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController{
-    SourceCodePopUpViewController* controller = (SourceCodePopUpViewController *)[UIViewController controllerInStoryboard:@"SourceCodePopUp" withIdentifire:@"SourceCodePop"];
+    SourceCodePopUpViewController* controller = (SourceCodePopUpViewController *)[UIViewController controllerInStoryboard:@"SourceCodePopUp" withIdentifire:@"SourceCodePopUpViewController"];
     return controller;
 }
 

@@ -70,7 +70,8 @@
         [identifire isEqualToString:@"SplashViewController"] ||
         [identifire isEqualToString:@"QStoreContractViewController"] ||
         [identifire isEqualToString:@"QStoreViewController"] ||
-        [identifire isEqualToString:@"QStoreListViewController"]) {
+        [identifire isEqualToString:@"QStoreListViewController"] ||
+        [identifire isEqualToString:@"SourceCodePopUpViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             
