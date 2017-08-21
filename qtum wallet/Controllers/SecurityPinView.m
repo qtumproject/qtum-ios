@@ -56,6 +56,11 @@
 }
 
 -(void)clearPinTextFields{
+    
+    self.firstSymbolTextField.realText =
+    self.secondSymbolTextField.realText =
+    self.thirdSymbolTextField.realText =
+    self.fourthSymbolTextField.realText =
     self.firstSymbolTextField.text =
     self.secondSymbolTextField.text =
     self.thirdSymbolTextField.text =
