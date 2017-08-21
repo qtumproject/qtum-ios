@@ -82,11 +82,7 @@ static NSInteger withoutTokenOffset = 40;
     
     [super viewWillAppear:animated];
     
-    if (self.needUpdateTexfFields) {
-        self.addressTextField.text = self.adress;
-        self.amountTextField.text = self.amount;
-    }
-    
+    [self updateTextFields];
     [self.delegate didViewLoad];
     [self updateScrollsConstraints];
 }
@@ -106,6 +102,14 @@ static NSInteger withoutTokenOffset = 40;
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)updateTextFields {
+    if (self.needUpdateTexfFields && self.addressTextField && self.amountTextField) {
+        self.addressTextField.text = self.adress;
+        self.amountTextField.text = self.amount;
+        self.needUpdateTexfFields = NO;
+    }
 }
 
 -(void)updateSendButton {
@@ -222,10 +226,11 @@ static NSInteger withoutTokenOffset = 40;
 #pragma mark - iMessage
 
 - (void)setQRCodeItem:(QRCodeItem *)item {
-    
     self.adress = item.qtumAddress;
     self.amount = item.amountString;
     self.needUpdateTexfFields = YES;
+    
+    [self updateTextFields];
 }
 
 #pragma mark - UITextFieldDelegate

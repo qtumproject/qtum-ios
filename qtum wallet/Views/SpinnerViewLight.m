@@ -8,7 +8,7 @@
 
 #import "SpinnerViewLight.h"
 
-@interface SpinnerViewLight ()
+@interface SpinnerViewLight () <CAAnimationDelegate>
 
 @property (strong, nonatomic) UIImageView* loaderImage;
 @property (nonatomic, assign) BOOL isAnimating;
@@ -85,8 +85,13 @@
     rotationAnimation.duration = duration;
     rotationAnimation.cumulative = YES;
     rotationAnimation.repeatCount = repeat ? HUGE_VALF : 0;
+    rotationAnimation.delegate = self;
     
     [view.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    self.isAnimating = NO;
 }
 
 
