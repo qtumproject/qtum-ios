@@ -54,7 +54,7 @@
     self.tagsTextView.textContainerInset = UIEdgeInsetsZero;
     self.tagsTextView.textContainer.lineFragmentPadding = 0;
     
-    [self.delegate didLoadFullContract:self.element];
+    [self.delegate didLoadViewWithFullContract:self.element];
 }
 
 #pragma mark - Protected Getters 

@@ -165,10 +165,24 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
                                                                                                                                                                                                                          @"language" : [LanguageManager currentLanguageCode]}]];
         }
     };
+    
     [_requestQueue addOperationWithBlock:block];
 }
 
 -(void)stopObservingToken:(Contract*) token withHandler:(void(^)()) handler {
+    
+    __weak __typeof(self)weakSelf = self;
+    __weak __typeof(Contract*)weakToken = token;
+    NSString* deviceToken  = [[ApplicationCoordinator sharedInstance].notificationManager token];
+    dispatch_block_t block = ^{
+        if (weakToken) {
+            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null]}]];
+        }
+    };
+    [_requestQueue addOperationWithBlock:block];
+}
+
+-(void)stopObservingContractPurchase:(NSString*) purcahseId withHandler:(void(^)()) handler {
     
     __weak __typeof(self)weakSelf = self;
     __weak __typeof(Contract*)weakToken = token;

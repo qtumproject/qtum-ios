@@ -58,4 +58,6 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
       withSuccessHandler:(void(^)(NSDictionary *paidObject))success
        andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
+- (QStoreBuyRequest*)requestWithContractId:(NSString*) contractId;
+
 @end

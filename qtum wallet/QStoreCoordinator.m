@@ -40,11 +40,13 @@
 #pragma mark - Coordinatorable
 
 - (void)start {
+    
     NSObject<QStoreMainOutput> *mainScreen = (NSObject<QStoreMainOutput> *)[[ControllersFactory sharedInstance] createQStoreMainViewController];
     mainScreen.delegate = self;
     self.mainScreen = mainScreen;
     [self.navigationController pushViewController:[mainScreen toPresent] animated:YES];
 }
+
 
 #pragma mark - For all delegates
 
@@ -133,10 +135,13 @@
 
 #pragma mark - QStoreContractOutputDelegate
 
-- (void)didLoadFullContract:(QStoreContractElement *)element {
+- (void)didLoadViewWithFullContract:(QStoreContractElement *)element {
     
     [self.contractScreen startLoading];
     __weak typeof(self) weakSelf = self;
+    
+    
+    
     [[QStoreManager sharedInstance] loadFullContract:element withSuccessHandler:^{
         [weakSelf.contractScreen stopLoading];
         [weakSelf.contractScreen updateWithFull];
@@ -146,6 +151,7 @@
 }
 
 - (void)didLoadAbi:(QStoreContractElement *)element {
+    
     [self.contractScreen startLoading];
     
     __weak typeof(self) weakSelf = self;

@@ -306,4 +306,15 @@ NSInteger const QStoreSearchCount = 20;
     }];
 }
 
+- (QStoreBuyRequest*)requestWithContractId:(NSString*) contractId {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractId == @",contractId];
+    NSArray <QStoreBuyRequest*> *requests  = [self.buyRequests filteredArrayUsingPredicate:predicate];
+    
+    if (requests.count > 0) {
+        return requests[0];
+    }
+    return nil;
+}
+
 @end

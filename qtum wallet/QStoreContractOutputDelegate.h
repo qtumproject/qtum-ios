@@ -10,7 +10,7 @@
 
 @protocol QStoreContractOutputDelegate <NSObject>
 
-- (void)didLoadFullContract:(QStoreContractElement *)element;
+- (void)didLoadViewWithFullContract:(QStoreContractElement *)element;
 - (void)didLoadAbi:(QStoreContractElement *)element;
 
 - (void)didSelectPurchaseContract:(QStoreContractElement *)element;
