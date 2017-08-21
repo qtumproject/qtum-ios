@@ -58,7 +58,8 @@
         [self.pinOutput setCustomTitle:NSLocalizedString(@"Repeat New PIN", "")];
         
     } else {
-        if (self.pinNew == pin) {
+        
+        if ([self.pinNew isEqualToString:pin]) {
             //change pin for new one
             [[ApplicationCoordinator sharedInstance].walletManager changePinFrom:self.pinOld toPin:self.pinNew];
             
