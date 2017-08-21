@@ -57,8 +57,11 @@
     [self.delegate didLoadFullContract:self.element];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+#pragma mark - Protected Getters 
+
+- (UIColor*)colorForTag {
+    
+    return customBlueColor();
 }
 
 #pragma mark - Actions
@@ -152,7 +155,7 @@
 }
 
 - (void)setupTagsTextView:(NSArray *)tags {
-    self.tagsTextView.linkTextAttributes = @{NSForegroundColorAttributeName:customBlueColor(),
+    self.tagsTextView.linkTextAttributes = @{NSForegroundColorAttributeName:[self colorForTag],
                                              NSFontAttributeName:self.tagsTextView.font};
     
     NSMutableString *mutString = [NSMutableString new];

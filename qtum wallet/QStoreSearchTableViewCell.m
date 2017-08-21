@@ -14,5 +14,8 @@
 
 @implementation QStoreSearchTableViewCell
 
+- (void)changeHighlight:(BOOL)value {
+    
+}
 
 @end

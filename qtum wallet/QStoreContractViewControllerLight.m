@@ -14,8 +14,9 @@
 
 @implementation QStoreContractViewControllerLight
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (UIColor*)colorForTag {
+    
+    return lightGreenColor();
 }
 
 @end

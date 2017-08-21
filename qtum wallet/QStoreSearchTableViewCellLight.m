@@ -18,8 +18,5 @@
     [self setSelectedBackgroundView:bgColorView];
 }
 
-- (void)changeHighlight:(BOOL)value {
-
-}
 
 @end
