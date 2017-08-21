@@ -140,8 +140,6 @@
     [self.contractScreen startLoading];
     __weak typeof(self) weakSelf = self;
     
-    
-    
     [[QStoreManager sharedInstance] loadFullContract:element withSuccessHandler:^{
         [weakSelf.contractScreen stopLoading];
         [weakSelf.contractScreen updateWithFull];
@@ -189,6 +187,7 @@
 #pragma mark - QStoreListOutputDelegate
 
 - (void)didSelectQStoreCategory:(QStoreCategory *)category {
+    
     NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[[ControllersFactory sharedInstance] createQStoreListViewController];
     controller.delegate = self;
     controller.type = QStoreContracts;

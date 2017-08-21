@@ -105,6 +105,7 @@
        andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
     [[ApplicationCoordinator sharedInstance].requestManager checkRequestPaid:contractId requestId:requestId withSuccessHandler:^(id responseObject) {
+        
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             success(responseObject);
         } else {

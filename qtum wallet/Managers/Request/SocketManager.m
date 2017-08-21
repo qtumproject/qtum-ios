@@ -141,6 +141,11 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     [self.currentSocket on:@"reconnect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         weakSelf.status = Reconnecting;
     }];
+    
+    [self.currentSocket on:@"contract_purchase" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        
+        DLog(@"%@", data);
+    }];
 }
 
 -(void)stoptWithHandler:(void(^)()) handler {
@@ -176,21 +181,26 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     NSString* deviceToken  = [[ApplicationCoordinator sharedInstance].notificationManager token];
     dispatch_block_t block = ^{
         if (weakToken) {
-            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null]}]];
+            [weakSelf.currentSocket emit:@"subscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null]}]];
         }
     };
     [_requestQueue addOperationWithBlock:block];
 }
 
--(void)stopObservingContractPurchase:(NSString*) purcahseId withHandler:(void(^)()) handler {
+-(void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
     
     __weak __typeof(self)weakSelf = self;
-    __weak __typeof(Contract*)weakToken = token;
-    NSString* deviceToken  = [[ApplicationCoordinator sharedInstance].notificationManager token];
     dispatch_block_t block = ^{
-        if (weakToken) {
-            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null]}]];
-        }
+       [weakSelf.currentSocket emit:@"subscribe" with:@[@"contract_purchase",requestId]];
+    };
+    [_requestQueue addOperationWithBlock:block];
+}
+
+-(void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
+    
+    __weak __typeof(self)weakSelf = self;
+    dispatch_block_t block = ^{
+        [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"contract_purchase",requestId]];
     };
     [_requestQueue addOperationWithBlock:block];
 }

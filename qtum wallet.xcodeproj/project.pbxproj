@@ -269,6 +269,8 @@
 		B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A18A1E852F27002A488F /* SocketManager.m */; };
 		B3E8B7881F4AC5D300DD7904 /* SourceCodePopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E8B7871F4AC5D300DD7904 /* SourceCodePopUpViewControllerLight.m */; };
 		B3E8B78B1F4AC5E300DD7904 /* SourceCodePopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E8B78A1F4AC5E300DD7904 /* SourceCodePopUpViewControllerDark.m */; };
+		B3E8B78F1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E8B78E1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.m */; };
+		B3E8B7921F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E8B7911F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.m */; };
 		B3EA52F41F45E087002FD201 /* QStoreContractViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA52F31F45E087002FD201 /* QStoreContractViewControllerDark.m */; };
 		B3EA52F71F45E0A0002FD201 /* QStoreContractViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA52F61F45E0A0002FD201 /* QStoreContractViewControllerLight.m */; };
 		B3EA52FA1F45E1A1002FD201 /* QStoreViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA52F91F45E1A1002FD201 /* QStoreViewControllerDark.m */; };
@@ -1150,6 +1152,10 @@
 		B3E8B7871F4AC5D300DD7904 /* SourceCodePopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceCodePopUpViewControllerLight.m; sourceTree = "<group>"; };
 		B3E8B7891F4AC5E300DD7904 /* SourceCodePopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceCodePopUpViewControllerDark.h; sourceTree = "<group>"; };
 		B3E8B78A1F4AC5E300DD7904 /* SourceCodePopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceCodePopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B3E8B78D1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPurchasePopUpViewControllerLight.h; sourceTree = "<group>"; };
+		B3E8B78E1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPurchasePopUpViewControllerLight.m; sourceTree = "<group>"; };
+		B3E8B7901F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPurchasePopUpViewControllerDark.h; sourceTree = "<group>"; };
+		B3E8B7911F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPurchasePopUpViewControllerDark.m; sourceTree = "<group>"; };
 		B3EA52F21F45E087002FD201 /* QStoreContractViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractViewControllerDark.h; sourceTree = "<group>"; };
 		B3EA52F31F45E087002FD201 /* QStoreContractViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreContractViewControllerDark.m; sourceTree = "<group>"; };
 		B3EA52F51F45E0A0002FD201 /* QStoreContractViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractViewControllerLight.h; sourceTree = "<group>"; };
@@ -2792,6 +2798,19 @@
 			name = "Source Code ";
 			sourceTree = "<group>";
 		};
+		B3E8B78C1F4B2A9500DD7904 /* Confirm Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */,
+				E703531D1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m */,
+				B3E8B78D1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.h */,
+				B3E8B78E1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.m */,
+				B3E8B7901F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.h */,
+				B3E8B7911F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.m */,
+			);
+			name = "Confirm Purchase";
+			sourceTree = "<group>";
+		};
 		B3EA53041F46D9A1002FD201 /* QStoreTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3969,8 +3988,7 @@
 				B36EBC3F1F2F1DF100F4E2F2 /* Security Popup */,
 				B3DC9D1E1F31E86D006B2E07 /* Address Transfer */,
 				B3E8B7851F4AC59200DD7904 /* Source Code  */,
-				E703531C1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.h */,
-				E703531D1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m */,
+				B3E8B78C1F4B2A9500DD7904 /* Confirm Purchase */,
 				B3DC9CEF1F30D3F4006B2E07 /* Share Token */,
 			);
 			name = "Pop Ups";
@@ -4751,6 +4769,7 @@
 				E798462A1F0D1E40002A516A /* HistoryTableViewCellDark.m in Sources */,
 				B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */,
 				E7360EC11F18EBED003ED21D /* ShareTokenPopUpViewController.m in Sources */,
+				B3E8B7921F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.m in Sources */,
 				B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */,
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
 				B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */,
@@ -4969,6 +4988,7 @@
 				B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */,
 				B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */,
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
+				B3E8B78F1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.m in Sources */,
 				B32C3CF31E1126200094C82C /* TabBarController.m in Sources */,
 				B387AB441EF04911001D2FF1 /* TemplateManager.m in Sources */,
 				B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */,

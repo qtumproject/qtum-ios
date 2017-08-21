@@ -46,6 +46,7 @@ NSString *const QStoreBuyRequestAmountStringKey = @"amount";
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    
     [aCoder encodeInteger:self.state forKey:QStoreBuyRequestStateKey];
     [aCoder encodeObject:self.contractId forKey:QStoreBuyRequestContractIdKey];
     [aCoder encodeObject:self.addressString forKey:QStoreBuyRequestAddressKey];
@@ -55,6 +56,7 @@ NSString *const QStoreBuyRequestAmountStringKey = @"amount";
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
     QStoreBuyRequestState state = [aDecoder decodeIntegerForKey:QStoreBuyRequestStateKey];
     NSString *contractId = [aDecoder decodeObjectForKey:QStoreBuyRequestContractIdKey];
     NSString *address = [aDecoder decodeObjectForKey:QStoreBuyRequestAddressKey];
@@ -62,16 +64,19 @@ NSString *const QStoreBuyRequestAmountStringKey = @"amount";
     NSString *accessToken = [aDecoder decodeObjectForKey:QStoreBuyRequestAccessTokenKey];
     NSString *amountString = [aDecoder decodeObjectForKey:QStoreBuyRequestAmountStringKey];
     
-    QStoreBuyRequest *request = [QStoreBuyRequest new];
-    request.addressString = address;
-    request.requestId = requestId;
-    request.accessToken = accessToken;
-    request.amountString = amountString;
-    request.contractId = contractId;
+    self = [super init];
+
+    if (self) {
+
+        _addressString = address;
+        _requestId = requestId;
+        _accessToken = accessToken;
+        _amountString = amountString;
+        _contractId = contractId;
+        _state = state;
+    }
     
-    request.state = state;
-    
-    return request;
+    return self;
 }
 
 - (NSNumber *)getAmountNumber {

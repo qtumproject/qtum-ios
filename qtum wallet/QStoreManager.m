@@ -14,6 +14,8 @@
 #import "TransactionManager.h"
 #import "ApplicationCoordinator.h"
 #import "Wallet.h"
+#import "SocketManager.h"
+#import "FXKeychain.h"
 
 NSString *const QStoreCategoryTrendingPath = @"/contracts/trending-now";
 NSString *const QStoreCategoryLastAddedPath = @"/contracts/last-added";
@@ -35,6 +37,9 @@ NSInteger const QStoreSearchCount = 20;
 @property (nonatomic) QStoreManagerSearchType currnentSearchType;
 @property (nonatomic) NSMutableArray<NSString *> *searchQueue;
 @property (nonatomic) NSMutableArray<QStoreContractElement *> *searchResult;
+
+@property (assign, nonatomic) BOOL observingForSpendableFailed;
+@property (assign, nonatomic) BOOL observingForSpendableStopped;
 
 @end
 
@@ -58,13 +63,49 @@ NSInteger const QStoreSearchCount = 20;
         _requestAdapter = [QStoreRequestAdapter new];
         _searchQueue = [NSMutableArray new];
         _searchResult = [NSMutableArray new];
-        _buyRequests = [NSMutableArray new];
         
-        [self loadBuyRequests];
+        [self load];
         [self createStandartCategories];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didContinieObservingForSpendable)
+                                                     name:kSocketDidConnect object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didForceStopObservingForSpendable)
+                                                     name:kSocketDidDisconnect object:nil];
     }
     
     return self;
+}
+
+- (BOOL)save {
+    
+    BOOL isSaved = [[FXKeychain defaultKeychain] setObject:self.buyRequests forKey:QStoreBuyRequestsKey];
+
+    return isSaved;
+}
+
+- (void)load {
+    
+    NSMutableArray *savedRequests = [[[FXKeychain defaultKeychain] objectForKey:QStoreBuyRequestsKey] mutableCopy];
+
+    self.buyRequests = savedRequests ?: @[].mutableCopy;
+}
+
+
+#pragma mark - Observing
+
+-(void)didContinieObservingForSpendable {
+    
+    if (self.observingForSpendableFailed && !self.observingForSpendableStopped) {
+        [self startObservingForAllRequests];
+    }
+    self.observingForSpendableFailed = NO;
+}
+
+-(void)didForceStopObservingForSpendable {
+    
+    self.observingForSpendableFailed = YES;
 }
 
 #pragma mark - Private
@@ -75,6 +116,17 @@ NSInteger const QStoreSearchCount = 20;
     
     [self.categories addObject:trending];
     [self.categories addObject:lastAdded];
+}
+
+- (void)subscribeToRequestUpdate:(NSString*) requestString {
+    
+    [[ApplicationCoordinator sharedInstance].requestManager startObservingContractPurchase:requestString withHandler:nil];
+}
+
+- (NSArray <QStoreBuyRequest *> *)unfinishedRequests {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"state != %i", QStoreBuyRequestStateIsPaid];
+    return [self.buyRequests filteredArrayUsingPredicate:predicate];
 }
 
 #pragma mark - Public
@@ -130,16 +182,6 @@ NSInteger const QStoreSearchCount = 20;
 
 #pragma mark - Buy Requests
 
-- (void)loadBuyRequests {
-    NSMutableArray *array = [[[NSUserDefaults standardUserDefaults] objectForKey:QStoreBuyRequestsKey] mutableCopy];
-    self.buyRequests = array;
-}
-
-- (void)saveBuyRequests {
-    [[NSUserDefaults standardUserDefaults] setObject:self.buyRequests forKey:QStoreBuyRequestsKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 - (QStoreBuyRequest *)findRequestByElement:(QStoreContractElement *)element {
     for (QStoreBuyRequest *request in self.buyRequests) {
         if ([request.contractId isEqualToString:element.idString]) {
@@ -158,7 +200,8 @@ NSInteger const QStoreSearchCount = 20;
         QStoreBuyRequest *request = [QStoreBuyRequest createFromDictionary:buyRequestDictionary andContractId:element.idString];
         [weakSelf createBuyTrancaction:request withSuccessHandler:^{
             [weakSelf.buyRequests addObject:request];
-            [weakSelf saveBuyRequests];
+            [weakSelf save];
+            [weakSelf subscribeToRequestUpdate:request.requestId];
             element.purchaseState = QStoreElementPurchaseStateInPurchase;
             success();
         } andFailureHandler:^(NSString *message) {
@@ -315,6 +358,42 @@ NSInteger const QStoreSearchCount = 20;
         return requests[0];
     }
     return nil;
+}
+
+#pragma mark - Observing
+
+- (void)startObservingForAllRequests {
+
+    self.observingForSpendableStopped = NO;
+    
+    NSArray <QStoreBuyRequest*> *requests = [self unfinishedRequests];
+    
+    for (QStoreBuyRequest* request in requests) {
+        [self subscribeToRequestUpdate:request.requestId];
+    }
+    
+    [self chechAllRequests];
+}
+
+- (void)stopObservingForAllRequests {
+    
+    self.observingForSpendableStopped = YES;
+}
+
+#pragma mark - 
+
+- (void)chechAllRequests {
+    
+    NSArray <QStoreBuyRequest*> *requests = [self unfinishedRequests];
+    
+    for (QStoreBuyRequest* request in requests) {
+        
+       [self checkRequestPaid:request.contractId requestId:request.requestId withSuccessHandler:^(NSDictionary *paidObject) {
+           
+       } andFailureHandler:^(NSError *error, NSString *message) {
+           
+       }];
+    }
 }
 
 @end

@@ -351,11 +351,23 @@ NSString *const BASE_URL = @"http://163.172.251.4:5931/";
 }
 
 - (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion {
+    
     [self.socketManager startObservingToken:token withHandler:completesion];
 }
 
 - (void)stopObservingForToken:(Contract*) token {
+    
     [self.socketManager stopObservingToken:token withHandler:nil];
+}
+
+- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
+    
+    [self.socketManager startObservingContractPurchase:requestId withHandler:handler];
+}
+
+- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
+    
+    [self.socketManager stopObservingContractPurchase:requestId withHandler:handler];
 }
 
 #pragma mark - QStore

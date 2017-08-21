@@ -10,6 +10,7 @@
 
 @class QStoreCategory;
 @class QStoreContractElement;
+@class QStoreBuyRequest;
 
 typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
     QStoreManagerSearchTypeNone,
@@ -59,5 +60,9 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
        andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 - (QStoreBuyRequest*)requestWithContractId:(NSString*) contractId;
+
+- (void)startObservingForAllRequests;
+- (void)stopObservingForAllRequests;
+- (void)chechAllRequests;
 
 @end

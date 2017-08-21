@@ -88,6 +88,9 @@
 - (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion;
 - (void)stopObservingForToken:(Contract*) token;
 
+- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
+- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
+
 // Observing for events
 
 - (void)callFunctionToContractAddress:(NSString*) address withHashes:(NSArray*) hashes withHandler:(void(^)(id responseObject))completesion;
