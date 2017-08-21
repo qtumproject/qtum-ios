@@ -50,37 +50,44 @@
     
     if (!self.scanner) {
         
-        self.scanner = [[MTBBarcodeScanner alloc] initWithMetadataObjectTypes:@[AVMetadataObjectTypeUPCECode,
-                                                                                AVMetadataObjectTypeCode39Code,
-                                                                                AVMetadataObjectTypeCode39Mod43Code,
-                                                                                AVMetadataObjectTypeEAN13Code,
-                                                                                AVMetadataObjectTypeEAN8Code,
-                                                                                AVMetadataObjectTypeCode93Code,
-                                                                                AVMetadataObjectTypeCode128Code,
-                                                                                AVMetadataObjectTypePDF417Code,
-                                                                                AVMetadataObjectTypeQRCode,
-                                                                                AVMetadataObjectTypeAztecCode]
-                                                                  previewView:self.cameraView];
-        
-        __weak typeof(self) weakSelf = self;
-        self.scanner.didStartScanningBlock = ^{
-            weakSelf.cameraView.alpha = 1.0f;
-        };
-        
-        [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
-            if (success)
-            {
-                weakSelf.scanner.resultBlock = weakSelf.scanningCompletion;
-                [weakSelf.scanner startScanning];
-                
-            } else
-            {
-                [weakSelf showCameraPermissionAlertWithTitle:@"Error" mesage:NSLocalizedString(@"Camera premission not found", "") andActions:nil];
-            }
-        }];
-    } else {
-        [self.scanner startScanning];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"9.0") ? 0 : 3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.scanner = [[MTBBarcodeScanner alloc] initWithMetadataObjectTypes:@[AVMetadataObjectTypeUPCECode,
+                                                                                    AVMetadataObjectTypeCode39Code,
+                                                                                    AVMetadataObjectTypeCode39Mod43Code,
+                                                                                    AVMetadataObjectTypeEAN13Code,
+                                                                                    AVMetadataObjectTypeEAN8Code,
+                                                                                    AVMetadataObjectTypeCode93Code,
+                                                                                    AVMetadataObjectTypeCode128Code,
+                                                                                    AVMetadataObjectTypePDF417Code,
+                                                                                    AVMetadataObjectTypeQRCode,
+                                                                                    AVMetadataObjectTypeAztecCode]
+                                                                      previewView:self.cameraView];
+            
+            __weak typeof(self) weakSelf = self;
+            self.scanner.didStartScanningBlock = ^{
+                weakSelf.cameraView.alpha = 1.0f;
+            };
+            
+            [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
+                if (success)
+                {
+                    weakSelf.scanner.resultBlock = weakSelf.scanningCompletion;
+                    [weakSelf.scanner startScanning];
+                    
+                } else
+                {
+                    [weakSelf showCameraPermissionAlertWithTitle:@"Error" mesage:NSLocalizedString(@"Camera premission not found", "") andActions:nil];
+                }
+            }];
+        });
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.scanner stopScanning];
+    self.scanner = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
