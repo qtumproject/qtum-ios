@@ -134,6 +134,7 @@
 #pragma mark - QStoreContractOutputDelegate
 
 - (void)didLoadFullContract:(QStoreContractElement *)element {
+    
     [self.contractScreen startLoading];
     __weak typeof(self) weakSelf = self;
     [[QStoreManager sharedInstance] loadFullContract:element withSuccessHandler:^{

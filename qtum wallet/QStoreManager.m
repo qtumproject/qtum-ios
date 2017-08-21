@@ -295,4 +295,15 @@ NSInteger const QStoreSearchCount = 20;
     }
 }
 
+- (void)checkRequestPaid:(NSString *)contractId
+               requestId:(NSString *)requestId
+      withSuccessHandler:(void(^)(NSDictionary *paidObject))success
+       andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    [self.requestAdapter checkRequestPaid:contractId requestId:requestId withSuccessHandler:^(NSDictionary *paidObject) {
+        success(paidObject);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
 @end

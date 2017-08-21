@@ -53,4 +53,9 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
       withSuccessHandler:(void (^)())success
        andFailureHandler:(void (^)(NSString *message))failure;
 
+- (void)checkRequestPaid:(NSString *)contractId
+               requestId:(NSString *)requestId
+      withSuccessHandler:(void(^)(NSDictionary *paidObject))success
+       andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
 @end
