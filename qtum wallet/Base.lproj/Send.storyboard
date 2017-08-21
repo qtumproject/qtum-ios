@@ -309,7 +309,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-3f-mRF">
-                                                <rect key="frame" x="148.5" y="11" width="79" height="23"/>
+                                                <rect key="frame" x="148" y="11" width="79" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -334,6 +334,15 @@
                                     <constraint firstItem="z1j-aI-OeO" firstAttribute="leading" secondItem="72w-hX-XWd" secondAttribute="leading" id="jGb-Kg-kxF"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPt-nk-7lC" customClass="SpinnerView">
+                                <rect key="frame" x="162" y="340.5" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="dbH-Dm-eCT"/>
+                                    <constraint firstAttribute="width" constant="50" id="qaR-Hy-QGh"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOh-TX-UCk" userLabel="Camera View">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
@@ -354,11 +363,13 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KOh-TX-UCk" firstAttribute="top" secondItem="72w-hX-XWd" secondAttribute="bottom" id="1hO-E7-s2y"/>
                             <constraint firstItem="JV0-jx-YNA" firstAttribute="top" secondItem="KOh-TX-UCk" secondAttribute="bottom" id="3bg-vH-SlN"/>
                             <constraint firstItem="72w-hX-XWd" firstAttribute="top" secondItem="7IO-mf-bpM" secondAttribute="top" id="4NO-z0-Csi"/>
+                            <constraint firstItem="uPt-nk-7lC" firstAttribute="centerY" secondItem="KOh-TX-UCk" secondAttribute="centerY" id="IoM-Vm-iaC"/>
+                            <constraint firstItem="uPt-nk-7lC" firstAttribute="centerX" secondItem="KOh-TX-UCk" secondAttribute="centerX" id="KL8-Xu-s71"/>
                             <constraint firstItem="72w-hX-XWd" firstAttribute="leading" secondItem="7IO-mf-bpM" secondAttribute="leading" id="LQt-Q0-4a9"/>
                             <constraint firstAttribute="trailing" secondItem="KOh-TX-UCk" secondAttribute="trailing" id="Wwd-If-kl1"/>
                             <constraint firstAttribute="trailing" secondItem="72w-hX-XWd" secondAttribute="trailing" id="Yod-PV-mYh"/>
@@ -367,6 +378,7 @@
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="KOh-TX-UCk" id="Sr3-tR-qvN"/>
+                        <outlet property="spinnerView" destination="uPt-nk-7lC" id="Frp-sU-ddB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jSS-2q-FST" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -883,7 +895,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcm-xc-4RN">
-                                                    <rect key="frame" x="20" y="20.5" width="152.5" height="14"/>
+                                                    <rect key="frame" x="20" y="20" width="152.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1045,6 +1057,15 @@
                                     <constraint firstAttribute="height" constant="64" id="bJ5-H6-V5S"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3G-at-7xj" customClass="SpinnerViewLight">
+                                <rect key="frame" x="174.5" y="353" width="25" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.21176470589999999" green="0.33333333329999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="pU6-uG-C3L"/>
+                                    <constraint firstAttribute="height" constant="25" id="pkI-8T-dNM"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PsO-LZ-Jve" userLabel="Camera View">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
@@ -1070,14 +1091,17 @@
                             <constraint firstAttribute="trailing" secondItem="TtF-D2-O32" secondAttribute="trailing" id="14t-Tn-iqx"/>
                             <constraint firstItem="kOk-51-iF4" firstAttribute="top" secondItem="PsO-LZ-Jve" secondAttribute="bottom" id="Orc-Pd-8DI"/>
                             <constraint firstItem="PsO-LZ-Jve" firstAttribute="leading" secondItem="mwC-nB-4TO" secondAttribute="leading" id="Rlj-qf-UXH"/>
+                            <constraint firstItem="B3G-at-7xj" firstAttribute="centerY" secondItem="PsO-LZ-Jve" secondAttribute="centerY" id="XM2-6X-HDN"/>
                             <constraint firstItem="TtF-D2-O32" firstAttribute="top" secondItem="mwC-nB-4TO" secondAttribute="top" id="bUn-kU-h4U"/>
                             <constraint firstItem="PsO-LZ-Jve" firstAttribute="top" secondItem="TtF-D2-O32" secondAttribute="bottom" id="eK9-BJ-bk4"/>
+                            <constraint firstItem="B3G-at-7xj" firstAttribute="centerX" secondItem="PsO-LZ-Jve" secondAttribute="centerX" id="pbZ-c9-7ff"/>
                             <constraint firstItem="TtF-D2-O32" firstAttribute="leading" secondItem="mwC-nB-4TO" secondAttribute="leading" id="vej-J1-fpZ"/>
                             <constraint firstAttribute="trailing" secondItem="PsO-LZ-Jve" secondAttribute="trailing" id="ymM-U4-dfb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="PsO-LZ-Jve" id="1NO-ZZ-Tnn"/>
+                        <outlet property="spinnerView" destination="B3G-at-7xj" id="Qal-jT-5Ku"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZf-Ue-Zt6" userLabel="First Responder" sceneMemberID="firstResponder"/>

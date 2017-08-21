@@ -7,6 +7,7 @@
 //
 
 #import "QRCodeViewController.h"
+#import "SpinnerView.h"
 #import <MTBBarcodeScanner.h>
 
 @interface QRCodeViewController ()
@@ -15,6 +16,7 @@
 @property (nonatomic, copy) void (^scanningCompletion)(NSArray *codes);
 
 @property (weak, nonatomic) IBOutlet UIView *cameraView;
+@property (weak, nonatomic) IBOutlet SpinnerView *spinnerView;
 
 - (IBAction)backButtonWasPressed:(id)sender;
 @end
@@ -59,7 +61,12 @@
                                                                                 AVMetadataObjectTypeQRCode,
                                                                                 AVMetadataObjectTypeAztecCode]
                                                                   previewView:self.cameraView];
+        
         __weak typeof(self) weakSelf = self;
+        self.scanner.didStartScanningBlock = ^{
+            weakSelf.cameraView.alpha = 1.0f;
+        };
+        
         [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
             if (success)
             {
@@ -71,7 +78,16 @@
                 [weakSelf showCameraPermissionAlertWithTitle:@"Error" mesage:NSLocalizedString(@"Camera premission not found", "") andActions:nil];
             }
         }];
+    } else {
+        [self.scanner startScanning];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.cameraView.alpha = 0.0f;
+    [self.spinnerView startAnimating];
 }
 
 - (IBAction)backButtonWasPressed:(id)sender

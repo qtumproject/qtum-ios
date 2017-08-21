@@ -145,6 +145,8 @@ NSString *RotationAnimationKey = @"rotationAnimation";
     } completion:^(BOOL finished) {
         if (finished && self.isAnimating) {
             [self startSpinAnimationOnView];
+        } else {
+            self.isAnimating = NO;
         }
     }];
 }
@@ -154,6 +156,8 @@ NSString *RotationAnimationKey = @"rotationAnimation";
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if (flag && self.isAnimating) {
         [self startContentAnimation];
+    } else {
+        self.isAnimating = NO;
     }
 }
 
