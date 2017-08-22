@@ -303,6 +303,8 @@
 		B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F701F13C4B400131823 /* FirstAuthViewControllerDark.m */; };
 		B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F731F13C4C400131823 /* FirstAuthViewControllerLight.m */; };
 		B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE93711F04E19100550C60 /* SecurityCoordinator.m */; };
+		B3EFEAD21F4C0CBD003BA930 /* QStoreRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEAD11F4C0CBD003BA930 /* QStoreRequestManager.m */; };
+		B3EFEAD51F4C0CD4003BA930 /* QStoreContractUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEAD41F4C0CD4003BA930 /* QStoreContractUploadManager.m */; };
 		B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* ContractCoordinator.m */; };
 		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
 		B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */; };
@@ -1231,6 +1233,10 @@
 		B3EE8F731F13C4C400131823 /* FirstAuthViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstAuthViewControllerLight.m; sourceTree = "<group>"; };
 		B3EE93701F04E19100550C60 /* SecurityCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityCoordinator.h; sourceTree = "<group>"; };
 		B3EE93711F04E19100550C60 /* SecurityCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityCoordinator.m; sourceTree = "<group>"; };
+		B3EFEAD01F4C0CBD003BA930 /* QStoreRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreRequestManager.h; sourceTree = "<group>"; };
+		B3EFEAD11F4C0CBD003BA930 /* QStoreRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreRequestManager.m; sourceTree = "<group>"; };
+		B3EFEAD31F4C0CD4003BA930 /* QStoreContractUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractUploadManager.h; sourceTree = "<group>"; };
+		B3EFEAD41F4C0CD4003BA930 /* QStoreContractUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreContractUploadManager.m; sourceTree = "<group>"; };
 		B3F06CF51E69879D006341F7 /* ContractCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractCoordinator.h; sourceTree = "<group>"; };
 		B3F06CF61E69879D006341F7 /* ContractCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContractCoordinator.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenCoordinator.h; sourceTree = "<group>"; };
@@ -3651,6 +3657,10 @@
 				E7847F741F3B16A7004A2333 /* QStoreRequestAdapter.m */,
 				E7847F7E1F3B315C004A2333 /* QStoreManager.h */,
 				E7847F7F1F3B315C004A2333 /* QStoreManager.m */,
+				B3EFEAD01F4C0CBD003BA930 /* QStoreRequestManager.h */,
+				B3EFEAD11F4C0CBD003BA930 /* QStoreRequestManager.m */,
+				B3EFEAD31F4C0CD4003BA930 /* QStoreContractUploadManager.h */,
+				B3EFEAD41F4C0CD4003BA930 /* QStoreContractUploadManager.m */,
 			);
 			name = "QStore classes";
 			sourceTree = "<group>";
@@ -4910,6 +4920,7 @@
 				E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */,
 				E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* InputTextView.m in Sources */,
+				B3EFEAD21F4C0CBD003BA930 /* QStoreRequestManager.m in Sources */,
 				E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */,
 				B3CBDF231F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
@@ -4968,6 +4979,7 @@
 				B35DF6461F263CD500316953 /* LightBlueGrayBorderView.m in Sources */,
 				B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */,
 				E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */,
+				B3EFEAD51F4C0CD4003BA930 /* QStoreContractUploadManager.m in Sources */,
 				E798463A1F0D2899002A516A /* WalletTableSourceDark.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				B3EE8F3F1F136F6200131823 /* ChoseTokenPaymentCellDark.m in Sources */,
