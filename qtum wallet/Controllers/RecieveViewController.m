@@ -21,13 +21,21 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *walletAdressCopyButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareLabelButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *walletCopyButtonBottomOffsetConstraint;
 
 - (IBAction)backButtonWasPressed:(id)sender;
 - (IBAction)shareButtonWasPressed:(id)sender;
 - (IBAction)copeButtonWasPressed:(id)sender;
+
 @end
 
 @implementation RecieveViewController
+
+@synthesize delegate = _delegate,
+type = _type,
+balanceText = _balanceText,
+unconfirmedBalanceText = _unconfirmedBalanceText,
+publicAddress = _publicAddress;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,17 +47,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.balanceLabel.text = [NSString stringWithFormat:@"%.3f", self.wallet.balance];
-    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f", self.wallet.unconfirmedBalance];
-    
-    self.publicAddressLabel.text = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+    self.balanceLabel.text = self.balanceText;
+    self.unconfirmedBalance.text = self.unconfirmedBalanceText;    
+    self.publicAddressLabel.text = self.publicAddress;
     self.publicAddressLabel.hidden = YES;
+    
+    self.walletCopyButtonBottomOffsetConstraint.constant = self.type == ReciveWalletOutput ? 90 : 20;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
+    
     [super viewDidAppear:animated];
-
     [self createQRCode];
 }
 
@@ -59,13 +67,13 @@
 
 #pragma mark - Methods
 
-- (void)createQRCode
-{
+- (void)createQRCode {
+    
     self.shareButton.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
-    NSString *qtumAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
-    NSString *tokenAddress = [self.wallet isKindOfClass:[Contract class]] ? self.wallet.mainAddress : nil;
+    NSString *qtumAddress = self.type == ReciveWalletOutput ? self.publicAddress : nil;
+    NSString *tokenAddress = self.type == ReciveTokenOutput ? self.publicAddress : nil;
     NSString *amountString = [self correctAmountString];
     
     [QRCodeManager createQRCodeFromPublicAddress:qtumAddress tokenAddress:tokenAddress andAmount:amountString forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
@@ -75,6 +83,15 @@
         weakSelf.walletAdressCopyButton.enabled = YES;
         weakSelf.shareLabelButton.enabled = YES;
     }];
+}
+
+#pragma mark - Output
+
+- (void)updateControls {
+    
+    self.balanceLabel.text = self.balanceText;
+    self.unconfirmedBalance.text = self.unconfirmedBalanceText;
+    self.publicAddressLabel.text = self.publicAddress;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -121,6 +138,7 @@
 }
 
 - (NSString *)correctAmountString {
+    
     NSMutableString *amountString = [self.amountTextField.text mutableCopy];
     if ([amountString containsString:@","]) {
         [amountString replaceCharactersInRange:[amountString rangeOfString:@","] withString:@"."];
@@ -133,6 +151,10 @@
 - (IBAction)backButtonWasPressed:(id)sender
 {
     [self.delegate didBackPressed];
+}
+- (IBAction)chooseAnotherAddressPress:(id)sender {
+    
+    [self.delegate didPressedChooseAddress];
 }
 
 - (IBAction)shareButtonWasPressed:(id)sender
@@ -150,8 +172,8 @@
     [self presentViewController:sharingVC animated:YES completion:nil];
 }
 
-- (IBAction)copeButtonWasPressed:(id)sender
-{
+- (IBAction)copeButtonWasPressed:(id)sender {
+    
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
     NSString* keyString = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
     [pb setString:keyString];

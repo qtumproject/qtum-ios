@@ -8,9 +8,19 @@
 
 #import "RecieveOutputDelegate.h"
 
+typedef NS_ENUM(NSUInteger, ReciveOutputType) {
+    ReciveTokenOutput,
+    ReciveWalletOutput
+};
 @protocol RecieveOutput <NSObject>
 
+@required
 @property (nonatomic, weak) id<RecieveOutputDelegate> delegate;
-@property (nonatomic, weak) id<Spendable> wallet;
+@property (copy, nonatomic) NSString* publicAddress;
+@property (nonatomic, assign) ReciveOutputType type;
+@property (copy, nonatomic) NSString* balanceText;
+@property (copy, nonatomic) NSString* unconfirmedBalanceText;
+
+- (void)updateControls;
 
 @end

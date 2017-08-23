@@ -67,7 +67,8 @@
         [identifire isEqualToString:@"AddressControlListViewController"] ||
         [identifire isEqualToString:@"AddressTransferPopupViewController"] ||
         [identifire isEqualToString:@"TokenAddressControlViewController"] ||
-        [identifire isEqualToString:@"SplashViewController"]) {
+        [identifire isEqualToString:@"SplashViewController"] ||
+        [identifire isEqualToString:@"ChooseReciveAddressViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

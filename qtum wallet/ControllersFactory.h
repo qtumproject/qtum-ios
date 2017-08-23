@@ -75,6 +75,7 @@
 @protocol ContractFunctionsOutput;
 @protocol AddressControlOutput;
 @protocol TokenAddressLibraryOutput;
+@protocol ChooseReciveAddressOutput;
 @protocol SplashScreenOutput;
 
 @interface ControllersFactory : NSObject
@@ -108,6 +109,7 @@
 - (ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 - (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
 - (EnableFingerprintViewController*)createEnableFingerprintViewController;
+- (NSObject<ChooseReciveAddressOutput> *)createChooseReciveAddressOutput;
 
 - (NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
 - (NSObject <TemplatesListOutput> *)createTemplateTokenViewController;

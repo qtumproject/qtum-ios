@@ -81,6 +81,7 @@
 #import "AddressControlOutput.h"
 #import "TokenAddressLibraryOutput.h"
 #import "SplashScreenOutput.h"
+#import "ChooseReciveAddressOutput.h"
 
 @implementation ControllersFactory
 
@@ -221,6 +222,12 @@
 -(NSObject<RecieveOutput> *)createRecieveViewController{
     NSObject<RecieveOutput> *controller = (NSObject<RecieveOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"RecieveViewController"];
     return controller;
+}
+
+-(NSObject<ChooseReciveAddressOutput> *)createChooseReciveAddressOutput {
+    
+    NSObject<ChooseReciveAddressOutput> *output = (NSObject<ChooseReciveAddressOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"ChooseReciveAddressViewController"];
+    return output;
 }
 
 -(NSObject<HistoryItemOutput> *)createHistoryItem{
