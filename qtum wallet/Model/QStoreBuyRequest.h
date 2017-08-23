@@ -13,6 +13,17 @@ typedef NS_ENUM(NSInteger, QStoreBuyRequestState) {
     QStoreBuyRequestStateIsPaid
 };
 
+extern NSString *const QStoreBuyRequestStateKey;
+extern NSString *const QStoreBuyRequestContractIdKey;
+extern NSString *const QStoreBuyRequestAddressKey;
+extern NSString *const QStoreBuyRequestRequestIdKey;
+extern NSString *const QStoreBuyRequestAccessTokenKey;
+extern NSString *const QStoreBuyRequestAmountStringKey;
+extern NSString *const QStoreBuyRequestCreateDateStringKey;
+extern NSString *const QStoreBuyRequestPayDateStringKey;
+extern NSString *const QStoreBuyRequestProductNameKey;
+extern NSString *const QStoreBuyRequestProductTypeKey;
+
 @interface QStoreBuyRequest : NSObject
 
 @property (nonatomic) QStoreBuyRequestState state;
@@ -21,9 +32,18 @@ typedef NS_ENUM(NSInteger, QStoreBuyRequestState) {
 @property (nonatomic, readonly) NSString *requestId;
 @property (nonatomic, readonly) NSString *accessToken;
 @property (nonatomic, readonly) NSString *amountString;
+@property (nonatomic, readonly) NSString *createDateString;
+@property (nonatomic, readonly) NSString *payDateString;
+@property (nonatomic, readonly) NSString *templateName;
+@property (nonatomic, readonly) TemplateType templateType;
 
 - (NSNumber *)getAmountNumber;
 
-+ (QStoreBuyRequest *)createFromDictionary:(NSDictionary *)dictionary andContractId:(NSString *)contractId;
++ (QStoreBuyRequest *)createFromDictionary:(NSDictionary *)dictionary
+                             andContractId:(NSString *)contractId
+                           withProductName:(NSString*)productName
+                           withProductType:(TemplateType)productType;
+
+- (QStoreBuyRequest *)upateFromDictionary:(NSDictionary *)dictionary;
 
 @end

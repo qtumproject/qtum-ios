@@ -9,10 +9,13 @@
 #import "QStoreContractOutputDelegate.h"
 
 @class QStoreContractElement;
+@class QStoreBuyRequest;
 
 @protocol QStoreContractOutput <NSObject>
 
 @property (weak, nonatomic) id<QStoreContractOutputDelegate> delegate;
+
+@property (strong, nonatomic) QStoreBuyRequest* buyRequest;
 
 - (void)startLoading;
 - (void)stopLoading;

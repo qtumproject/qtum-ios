@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, QStoreElementType) {
-    QStoreElementTypeCrowdsale,
-    QStoreElementTypeToken,
-    QStoreElementTypeUnknown
-};
-
 typedef NS_ENUM(NSInteger, QStoreElementState) {
     QStoreElementStateCategory,
     QStoreElementStateSearch,
@@ -38,7 +32,7 @@ typedef NS_ENUM(NSInteger, QStoreElementPurchaseState) {
 @property (nonatomic, readonly) NSNumber *countDownloads;
 @property (nonatomic, readonly) NSDate *createdAt;
 @property (nonatomic, readonly) NSString *typeString;
-@property (nonatomic, readonly) QStoreElementType type;
+@property (nonatomic, readonly) TemplateType type;
 
 // Full
 @property (nonatomic, readonly) NSString *contractDescription;

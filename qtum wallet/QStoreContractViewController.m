@@ -9,7 +9,7 @@
 #import "QStoreContractViewController.h"
 #import "ConfirmPurchasePopUpViewController.h"
 #import "ErrorPopUpViewController.h"
-
+#import "QStoreBuyRequest.h"
 #import "QStoreContractElement.h"
 
 @interface QStoreContractViewController () <PopUpWithTwoButtonsViewControllerDelegate, UITextViewDelegate>
@@ -38,7 +38,7 @@
 
 @implementation QStoreContractViewController
 
-@synthesize delegate;
+@synthesize delegate, buyRequest;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,10 +67,12 @@
 #pragma mark - Actions
 
 - (IBAction)actionDetails:(id)sender {
+    
     [self.delegate didSelectQStoreContractDetails:self.element];
 }
 
 - (IBAction)actionSourceCode:(id)sender {
+    
     if (!self.element.abiString || [self.element.abiString isEqualToString:@""]) {
         [self.delegate didLoadAbi:self.element];
     } else {
@@ -79,6 +81,7 @@
 }
 
 - (void)showSourceCodePopUpWithString:(NSString *)string {
+    
     PopUpContent *content = [PopUpContentGenerator contentForSourceCode];
     content.messageString = string;
     
@@ -86,6 +89,7 @@
 }
 
 - (IBAction)actionPurchase:(id)sender {
+    
     ConfirmPurchasePopUpViewController *vc = [[PopUpsManager sharedInstance] showConfirmPurchasePopUp:self presenter:nil completion:nil];
     vc.contractNameLabel.text = self.element.name;
     vc.contractTypeLabel.text = [self.element.typeString capitalizedString];
@@ -109,6 +113,7 @@
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
+    
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
     
     if ([sender isKindOfClass:[ErrorPopUpViewController class]]) {
@@ -131,6 +136,7 @@
 }
 
 - (void)updateWithFull {
+    
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"dd-MMM-YYYY"];
     
@@ -142,15 +148,15 @@
     self.publishedByLabel.text = self.element.publisherAddress;
     self.downloadsLabel.text = [self.element.countDownloads stringValue];
     
-    self.purchaseButton.enabled = self.element.purchaseState != QStoreElementPurchaseStateInPurchase;
-    self.purchaseButton.alpha = self.element.purchaseState != QStoreElementPurchaseStateInPurchase ? 1 : 0.5f;
+    self.purchaseButton.enabled = (self.buyRequest == nil);
+    self.purchaseButton.alpha = (self.buyRequest == nil) ? 1 : 0.5f;
     
     [self setupTagsTextView:self.element.tags];
     
     [UIView animateWithDuration:0.3f animations:^{
         self.detailsButton.alpha =
         self.scrollView.alpha = 1.0f;
-        self.sourceCodeButton.alpha = self.element.withSourseCode ? 1.0f : 0.0f;
+        self.sourceCodeButton.alpha = (self.buyRequest && self.buyRequest.state == QStoreBuyRequestStateIsPaid) ? 1.0f : 0.0f;
     }];
 }
 
@@ -184,6 +190,7 @@
 }
 
 - (void)showAbi {
+    
     [self showSourceCodePopUpWithString:self.element.abiString];
 }
 

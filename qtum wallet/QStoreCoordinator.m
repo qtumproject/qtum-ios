@@ -12,7 +12,7 @@
 #import "QStoreContractOutput.h"
 #import "QStoreListOutput.h"
 #import "ContractFunctionDetailOutput.h"
-
+#import "QStoreContractElement.h"
 #import "QStoreManager.h"
 #import "QStoreCategory.h"
 
@@ -66,9 +66,10 @@
 }
 
 - (void)didSelectQStoreContractElement:(QStoreContractElement *)element {
+    
     NSObject<QStoreContractOutput> *controller = (NSObject<QStoreContractOutput> *)[[ControllersFactory sharedInstance] createQStoreContractViewController];
     self.contractScreen = controller;
-    
+    [controller setBuyRequest:[[QStoreManager sharedInstance] requestWithContractId:element.idString]];
     [controller setContract:element];
     controller.delegate = self;
     
@@ -153,7 +154,7 @@
     [self.contractScreen startLoading];
     
     __weak typeof(self) weakSelf = self;
-    [[QStoreManager sharedInstance] getContractABI:element withSuccessHandler:^{
+    [[QStoreManager sharedInstance] getContractABIWithElement:element withSuccessHandler:^{
         [weakSelf.contractScreen stopLoading];
         [weakSelf.contractScreen showAbi];
     } andFailureHandler:^(NSString *message) {
@@ -171,11 +172,13 @@
 }
 
 - (void)didSelectPurchaseContract:(QStoreContractElement *)element {
+    
     [self.contractScreen startLoading];
     
     __weak typeof(self) weakSelf = self;
     [[QStoreManager sharedInstance] purchaseContract:element withSuccessHandler:^{
         [weakSelf.contractScreen stopLoading];
+        [weakSelf.contractScreen setBuyRequest:[[QStoreManager sharedInstance] requestWithContractId:element.idString]];
         [weakSelf.contractScreen updateWithFull];
         [weakSelf.contractScreen showContractBoughtPop];
     } andFailureHandler:^(NSString *message) {

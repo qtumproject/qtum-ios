@@ -13,7 +13,7 @@
 #import "OpenURLManager.h"
 #import "iOSSessionManager.h"
 
-#import "QStoreRequestAdapter.h"
+#import "QStoreDataProvider.h"
 
 @interface AppDelegate ()
 

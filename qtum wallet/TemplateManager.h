@@ -21,6 +21,12 @@
 - (TemplateModel*)standartTokenTemplate;
 - (TemplateModel*)createNewContractTemplateWithAbi:(NSString*)abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
 - (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName;
+- (TemplateModel*)createNewTemplateWithAbi:(NSString*) abi
+                                  bitecode:(NSString*) bitecode
+                                    source:(NSString*) source
+                                      type:(TemplateType) type
+                                      uuid:(NSString*) uuid
+                                   andName:(NSString*) templateName;
 - (NSArray<NSDictionary*>*)decodeDataForBackup;
 - (NSArray<TemplateModel*>*)encodeDataForBacup:(NSArray<NSDictionary*>*) backup;
 - (NSArray<TemplateModel*>*)standartPackOfTemplates;

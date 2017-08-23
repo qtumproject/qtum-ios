@@ -1,16 +1,16 @@
 //
-//  QStoreRequestAdapter.m
+//  QStoreDataProvider.m
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 09.08.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "QStoreRequestAdapter.h"
+#import "QStoreDataProvider.h"
 #import "QStoreCategory.h"
 #import "QStoreContractElement.h"
 
-@implementation QStoreRequestAdapter
+@implementation QStoreDataProvider
 
 - (void)getContractsForCategory:(QStoreCategory *)category
              withSuccessHandler:(void(^)(QStoreCategory *updatedCategory))success
@@ -39,20 +39,20 @@
 
 - (void)searchContractsByCount:(NSInteger)count
                         offset:(NSInteger)offset
-                          type:(QStoreRequestAdapterSearchType)type
+                          type:(QStoreDataProviderSearchType)type
                           tags:(NSArray *)tags
             withSuccessHandler:(void (^)(NSArray<QStoreContractElement *> *, NSArray<NSString *> *))success
              andFailureHandler:(void (^)(NSError *, NSString *))failure {
     
     NSString *stringType;
     switch (type) {
-        case QStoreRequestAdapterSearchTypeToken:
+        case QStoreDataProviderSearchTypeToken:
             stringType = @"token";
             break;
-        case QStoreRequestAdapterSearchTypeCrowdsale:
+        case QStoreDataProviderSearchTypeCrowdsale:
             stringType = @"crowdsale";
             break;
-        case QStoreRequestAdapterSearchTypeOther:
+        case QStoreDataProviderSearchTypeOther:
             stringType = @"other";
             break;
         default:
@@ -71,11 +71,24 @@
     }];
 }
 
-- (void)getContractABI:(QStoreContractElement *)element
-    withSuccessHandler:(void(^)(NSString *abiString))success
-     andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+- (void)getContractABIWithElement:(QStoreContractElement *)element
+               withSuccessHandler:(void(^)(NSString *abiString))success
+                andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
  
     [[ApplicationCoordinator sharedInstance].requestManager getContractABI:element.idString withSuccessHandler:^(id responseObject) {
+        NSData *jsonData = [NSJSONSerialization  dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *abiString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        success(abiString);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)getContractABI:(NSString *)contractId
+    withSuccessHandler:(void(^)(NSString *abiString))success
+     andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    [[ApplicationCoordinator sharedInstance].requestManager getContractABI:contractId withSuccessHandler:^(id responseObject) {
         NSData *jsonData = [NSJSONSerialization  dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
         NSString *abiString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         success(abiString);
@@ -150,6 +163,25 @@
         }
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
+    }];
+}
+
+- (void)getByteCode:(NSString *)contractId
+          requestId:(NSString *)requestId
+        accessToken:(NSString *)accessToken
+ withSuccessHandler:(void(^)(NSString *sourceCode))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    [[ApplicationCoordinator sharedInstance].requestManager getByteCode:contractId requestId:requestId accessToken:accessToken withSuccessHandler:^(id responseObject) {
+        
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSString *byteCode = [responseObject objectForKey:@"bytecode"];
+            success(byteCode);
+        } else {
+            failure([NSError new], @"Not a dictionary");
+        }
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        
     }];
 }
 

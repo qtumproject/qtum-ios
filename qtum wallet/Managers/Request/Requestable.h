@@ -136,4 +136,12 @@
               signs:(NSArray *)signs
  withSuccessHandler:(void(^)(id responseObject))success
   andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getByteCode:(NSString *)contractId
+          requestId:(NSString *)requestId
+        accessToken:(NSString *)accessToken
+ withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+
 @end

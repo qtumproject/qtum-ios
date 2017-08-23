@@ -214,6 +214,7 @@
     [self.walletManager clear];
     [[ContractManager sharedInstance] clear];
     [[TemplateManager sharedInstance] clear];
+    [[QStoreManager sharedInstance] clear];
 
 }
 

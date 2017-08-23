@@ -10,6 +10,7 @@
 #import "ApplicationCoordinator.h"
 #import "Contract.h"
 #import "NotificationManager.h"
+#import "QStoreManager.h"
 
 @import SocketIO;
 
@@ -144,7 +145,9 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     
     [self.currentSocket on:@"contract_purchase" callback:^(NSArray* data, SocketAckEmitter* ack) {
         
-        DLog(@"%@", data);
+        NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
+        [[QStoreManager sharedInstance] updateContractRequestsWithDict:data[0]];
+        DLog(@"%@", data[0]);
     }];
 }
 
@@ -153,7 +156,6 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     NSString* token  = [[ApplicationCoordinator sharedInstance].notificationManager token];
     [self.currentSocket emit:@"unsubscribe" with:@[@"balance_subscribe",[NSNull null], @{@"notificationToken" : token ?: [NSNull null]}]];
     [self.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",[NSNull null], @{@"notificationToken" : token ?: [NSNull null]}]];
-
    // [self.currentSocket disconnect];
 }
 

@@ -8,6 +8,7 @@
 
 #import "QStoreContractElement.h"
 #import "NSUserDefaults+Settings.h"
+#import "TemplateModel.h"
 
 // Short
 NSString *const QStoreContractElementIdKey = @"_id";
@@ -37,7 +38,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 @property (nonatomic) NSNumber *countDownloads;
 @property (nonatomic) NSDate *createdAt;
 @property (nonatomic) NSString *typeString;
-@property (nonatomic) QStoreElementType type;
+@property (nonatomic) TemplateType type;
 
 // Full
 @property (nonatomic) NSString *contractDescription;
@@ -123,34 +124,35 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
     return self;
 }
 
-- (QStoreElementType)getTypeByString:(NSString *)stringType {
+- (TemplateType)getTypeByString:(NSString *)stringType {
+    
     if ([stringType isEqualToString:@"crowdsale"]) {
-        return QStoreElementTypeCrowdsale;
+        return CrowdsaleType;
     }
     
     if ([stringType isEqualToString:@"token"]) {
-        return QStoreElementTypeToken;
+        return TokenType;
     }
     
-    return QStoreElementTypeUnknown;
+    return UndefinedContractType;
 }
 
 - (NSString *)getImageNameByType {
     
     if ([NSUserDefaults isDarkSchemeSetting]) {
         switch (self.type) {
-            case QStoreElementTypeToken:
+            case TokenType:
                 return @"ic-supertoken";
-            case QStoreElementTypeCrowdsale:
+            case CrowdsaleType:
                 return @"ic-crowdsale";
             default:
                 return @"ic-smart_contract";
         };
     } else {
         switch (self.type) {
-            case QStoreElementTypeToken:
+            case TokenType:
                 return @"ic-supertoken-light";
-            case QStoreElementTypeCrowdsale:
+            case CrowdsaleType:
                 return @"ic-supercreowdsale";
             default:
                 return @"ic-smartcontract-light";
@@ -159,6 +161,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 }
 
 - (void)updateWithFullDictionary:(NSDictionary *)dictionary {
+    
     self.contractDescription = [dictionary objectForKey:QStoreContractElementContractDescriptionKey];
     self.publisherAddress = [dictionary objectForKey:QStoreContractElementPublisherAddressKey];
     self.size = [dictionary objectForKey:QStoreContractElementSizeKey];
@@ -206,6 +209,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 }
 
 + (QStoreContractElement *)createFromFullDictionary:(NSDictionary *)dictionary {
+    
     if (!dictionary || ![dictionary isKindOfClass:[NSDictionary class]]) {
         return nil;
     }

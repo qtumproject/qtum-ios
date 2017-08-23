@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
 
 @end
 
-@interface QStoreManager : NSObject
+@interface QStoreManager : NSObject <Clearable>
 
 @property (readonly) NSMutableArray<QStoreCategory *> *categories;
 @property (weak, nonatomic) id<QStoreManagerSearchDelegate> delegate;
@@ -46,9 +46,9 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
 - (void)searchByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
 - (void)searchMoreItemsByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
 
-- (void)getContractABI:(QStoreContractElement *)element
-    withSuccessHandler:(void (^)())success
-     andFailureHandler:(void (^)(NSString *message))failure;
+- (void)getContractABIWithElement:(QStoreContractElement *)element
+               withSuccessHandler:(void (^)())success
+                andFailureHandler:(void (^)(NSString *message))failure;
 
 - (void)purchaseContract:(QStoreContractElement *)element
       withSuccessHandler:(void (^)())success
@@ -64,5 +64,6 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
 - (void)startObservingForAllRequests;
 - (void)stopObservingForAllRequests;
 - (void)chechAllRequests;
+- (void)updateContractRequestsWithDict:(NSDictionary*) dict;
 
 @end

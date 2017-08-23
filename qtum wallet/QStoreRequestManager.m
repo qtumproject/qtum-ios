@@ -2,7 +2,7 @@
 //  QStoreRequestManager.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 22.08.17.
+//  Created by Vladimir Lebedevich on 22.08.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
@@ -65,39 +65,80 @@ NSString *const kQStoreFinishedBuyRequests = @"kQStoreFinishedBuyRequests";
 
 #pragma mark - Requests Managing
 
--(void)addBuyRequest:(QStoreBuyRequest*) buyRequests {
+-(void)addBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)()) completion {
     
+    void(^completionCopy)() = [completion copy];
+
     dispatch_async(self.writingQueue, ^{
         
         [self.buyRequests addObject:buyRequests];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionCopy();
+        });
     });
 }
 
--(void)confirmBuyRequest:(QStoreBuyRequest*) buyRequests {
+-(void)confirmBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)()) completion {
     
+    void(^completionCopy)() = [completion copy];
+
     dispatch_async(self.writingQueue, ^{
         
         [self.confirmedBuyRequests addObject:buyRequests];
         [self.buyRequests removeObject:buyRequests];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionCopy();
+        });
     });
 }
 
--(void)finishBuyRequest:(QStoreBuyRequest*) buyRequests {
+-(void)finishBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)()) completion {
+    
+    void(^completionCopy)() = [completion copy];
     
     dispatch_async(self.writingQueue, ^{
         
         [self.finishedBuyRequests addObject:buyRequests];
         [self.confirmedBuyRequests removeObject:buyRequests];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionCopy();
+        });
     });
 }
 
 - (QStoreBuyRequest*)requestWithContractId:(NSString*) contractId {
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractId == @",contractId];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractId == %@",contractId];
     NSArray <QStoreBuyRequest*> *requests  = [self.buyRequests filteredArrayUsingPredicate:predicate];
     
     if (requests.count > 0) {
         return requests[0];
+    }
+    
+    requests  = [self.confirmedBuyRequests filteredArrayUsingPredicate:predicate];
+
+    if (requests.count > 0) {
+        return requests[0];
+    }
+    
+    requests  = [self.finishedBuyRequests filteredArrayUsingPredicate:predicate];
+    
+    if (requests.count > 0) {
+        return requests[0];
+    }
+    
+    return nil;
+}
+
+- (QStoreBuyRequest *)requestByElement:(QStoreContractElement *)element {
+    
+    for (QStoreBuyRequest *request in self.buyRequests) {
+        if ([request.contractId isEqualToString:element.idString]) {
+            return request;
+        }
     }
     return nil;
 }

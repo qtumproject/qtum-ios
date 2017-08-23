@@ -1,5 +1,5 @@
 //
-//  QStoreRequestAdapter.h
+//  QStoreDataProvider.h
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 09.08.17.
@@ -11,14 +11,14 @@
 @class QStoreCategory;
 @class QStoreContractElement;
 
-typedef NS_ENUM(NSInteger, QStoreRequestAdapterSearchType) {
-    QStoreRequestAdapterSearchTypeToken,
-    QStoreRequestAdapterSearchTypeCrowdsale,
-    QStoreRequestAdapterSearchTypeOther,
-    QStoreRequestAdapterSearchTypeAll
+typedef NS_ENUM(NSInteger, QStoreDataProviderSearchType) {
+    QStoreDataProviderSearchTypeToken,
+    QStoreDataProviderSearchTypeCrowdsale,
+    QStoreDataProviderSearchTypeOther,
+    QStoreDataProviderSearchTypeAll
 };
 
-@interface QStoreRequestAdapter : NSObject
+@interface QStoreDataProvider : NSObject
 
 - (void)getContractsForCategory:(QStoreCategory *)category
              withSuccessHandler:(void(^)(QStoreCategory *updatedCategory))success
@@ -30,12 +30,16 @@ typedef NS_ENUM(NSInteger, QStoreRequestAdapterSearchType) {
 
 - (void)searchContractsByCount:(NSInteger)count
                         offset:(NSInteger)offset
-                          type:(QStoreRequestAdapterSearchType)type
+                          type:(QStoreDataProviderSearchType)type
                           tags:(NSArray *)tags
             withSuccessHandler:(void(^)(NSArray<QStoreContractElement *> *elements, NSArray<NSString *> *tags))success
              andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
-- (void)getContractABI:(QStoreContractElement *)element
+- (void)getContractABIWithElement:(QStoreContractElement *)element
+               withSuccessHandler:(void(^)(NSString *abiString))success
+                andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getContractABI:(NSString *)contractId
     withSuccessHandler:(void(^)(NSString *abiString))success
      andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
@@ -59,6 +63,12 @@ typedef NS_ENUM(NSInteger, QStoreRequestAdapterSearchType) {
               nonce:(NSNumber *)nonce
               signs:(NSArray *)signs
  withSuccessHandler:(void(^)(NSString *byteCode))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getByteCode:(NSString *)contractId
+          requestId:(NSString *)requestId
+        accessToken:(NSString *)accessToken
+ withSuccessHandler:(void(^)(NSString *sourceCode))success
   andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 @end

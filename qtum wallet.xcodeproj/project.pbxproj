@@ -304,7 +304,7 @@
 		B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F731F13C4C400131823 /* FirstAuthViewControllerLight.m */; };
 		B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE93711F04E19100550C60 /* SecurityCoordinator.m */; };
 		B3EFEAD21F4C0CBD003BA930 /* QStoreRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEAD11F4C0CBD003BA930 /* QStoreRequestManager.m */; };
-		B3EFEAD51F4C0CD4003BA930 /* QStoreContractUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEAD41F4C0CD4003BA930 /* QStoreContractUploadManager.m */; };
+		B3EFEAD51F4C0CD4003BA930 /* QStoreContractDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEAD41F4C0CD4003BA930 /* QStoreContractDownloadManager.m */; };
 		B3F06CF71E69879D006341F7 /* ContractCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CF61E69879D006341F7 /* ContractCoordinator.m */; };
 		B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F06CFD1E69883D006341F7 /* SubscribeTokenCoordinator.m */; };
 		B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */; };
@@ -437,7 +437,7 @@
 		E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4B01F0FAB930056D042 /* ProfileViewControllerDark.m */; };
 		E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */; };
 		E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */; };
-		E7847F751F3B16A7004A2333 /* QStoreRequestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F741F3B16A7004A2333 /* QStoreRequestAdapter.m */; };
+		E7847F751F3B16A7004A2333 /* QStoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F741F3B16A7004A2333 /* QStoreDataProvider.m */; };
 		E7847F791F3B1ACD004A2333 /* QStoreCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F781F3B1ACD004A2333 /* QStoreCategory.m */; };
 		E7847F801F3B315C004A2333 /* QStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F7F1F3B315C004A2333 /* QStoreManager.m */; };
 		E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8B71F015B7100A513BF /* QStoreViewController.m */; };
@@ -1235,8 +1235,8 @@
 		B3EE93711F04E19100550C60 /* SecurityCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityCoordinator.m; sourceTree = "<group>"; };
 		B3EFEAD01F4C0CBD003BA930 /* QStoreRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreRequestManager.h; sourceTree = "<group>"; };
 		B3EFEAD11F4C0CBD003BA930 /* QStoreRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreRequestManager.m; sourceTree = "<group>"; };
-		B3EFEAD31F4C0CD4003BA930 /* QStoreContractUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractUploadManager.h; sourceTree = "<group>"; };
-		B3EFEAD41F4C0CD4003BA930 /* QStoreContractUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreContractUploadManager.m; sourceTree = "<group>"; };
+		B3EFEAD31F4C0CD4003BA930 /* QStoreContractDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractDownloadManager.h; sourceTree = "<group>"; };
+		B3EFEAD41F4C0CD4003BA930 /* QStoreContractDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreContractDownloadManager.m; sourceTree = "<group>"; };
 		B3F06CF51E69879D006341F7 /* ContractCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractCoordinator.h; sourceTree = "<group>"; };
 		B3F06CF61E69879D006341F7 /* ContractCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContractCoordinator.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B3F06CFC1E69883D006341F7 /* SubscribeTokenCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenCoordinator.h; sourceTree = "<group>"; };
@@ -1546,8 +1546,8 @@
 		E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewControllerLight.m; sourceTree = "<group>"; };
 		E777786A1EF3E54E00948682 /* BTCAddress+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BTCAddress+Extension.h"; sourceTree = "<group>"; };
 		E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Extension.m"; sourceTree = "<group>"; };
-		E7847F731F3B16A7004A2333 /* QStoreRequestAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QStoreRequestAdapter.h; path = Managers/Request/QStoreRequestAdapter.h; sourceTree = "<group>"; };
-		E7847F741F3B16A7004A2333 /* QStoreRequestAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QStoreRequestAdapter.m; path = Managers/Request/QStoreRequestAdapter.m; sourceTree = "<group>"; };
+		E7847F731F3B16A7004A2333 /* QStoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QStoreDataProvider.h; path = Managers/Request/QStoreDataProvider.h; sourceTree = "<group>"; };
+		E7847F741F3B16A7004A2333 /* QStoreDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QStoreDataProvider.m; path = Managers/Request/QStoreDataProvider.m; sourceTree = "<group>"; };
 		E7847F771F3B1ACD004A2333 /* QStoreCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreCategory.h; sourceTree = "<group>"; };
 		E7847F781F3B1ACD004A2333 /* QStoreCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreCategory.m; sourceTree = "<group>"; };
 		E7847F7E1F3B315C004A2333 /* QStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreManager.h; sourceTree = "<group>"; };
@@ -3653,14 +3653,14 @@
 			isa = PBXGroup;
 			children = (
 				E7847F761F3B1ABA004A2333 /* QStoreModel */,
-				E7847F731F3B16A7004A2333 /* QStoreRequestAdapter.h */,
-				E7847F741F3B16A7004A2333 /* QStoreRequestAdapter.m */,
+				E7847F731F3B16A7004A2333 /* QStoreDataProvider.h */,
+				E7847F741F3B16A7004A2333 /* QStoreDataProvider.m */,
 				E7847F7E1F3B315C004A2333 /* QStoreManager.h */,
 				E7847F7F1F3B315C004A2333 /* QStoreManager.m */,
 				B3EFEAD01F4C0CBD003BA930 /* QStoreRequestManager.h */,
 				B3EFEAD11F4C0CBD003BA930 /* QStoreRequestManager.m */,
-				B3EFEAD31F4C0CD4003BA930 /* QStoreContractUploadManager.h */,
-				B3EFEAD41F4C0CD4003BA930 /* QStoreContractUploadManager.m */,
+				B3EFEAD31F4C0CD4003BA930 /* QStoreContractDownloadManager.h */,
+				B3EFEAD41F4C0CD4003BA930 /* QStoreContractDownloadManager.m */,
 			);
 			name = "QStore classes";
 			sourceTree = "<group>";
@@ -4827,7 +4827,7 @@
 				B3E8B7881F4AC5D300DD7904 /* SourceCodePopUpViewControllerLight.m in Sources */,
 				B3DC9D211F31E8CD006B2E07 /* AddressTransferPopupViewController.m in Sources */,
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
-				E7847F751F3B16A7004A2333 /* QStoreRequestAdapter.m in Sources */,
+				E7847F751F3B16A7004A2333 /* QStoreDataProvider.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
 				B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */,
 				B32BC4BE1F29C99000C2417C /* SubscribeTokenViewControllerDark.m in Sources */,
@@ -4979,7 +4979,7 @@
 				B35DF6461F263CD500316953 /* LightBlueGrayBorderView.m in Sources */,
 				B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */,
 				E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */,
-				B3EFEAD51F4C0CD4003BA930 /* QStoreContractUploadManager.m in Sources */,
+				B3EFEAD51F4C0CD4003BA930 /* QStoreContractDownloadManager.m in Sources */,
 				E798463A1F0D2899002A516A /* WalletTableSourceDark.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				B3EE8F3F1F136F6200131823 /* ChoseTokenPaymentCellDark.m in Sources */,

@@ -493,4 +493,21 @@ NSString *const BASE_URL = @"http://163.172.251.4:5931/";
     }];
 }
 
+- (void)getByteCode:(NSString *)contractId
+          requestId:(NSString *)requestId
+        accessToken:(NSString *)accessToken
+ withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    NSString *path = [NSString stringWithFormat:@"/contracts/%@/bytecode", contractId];
+    NSDictionary *dictionary = @{@"request_id" : requestId,
+                                 @"access_token" : accessToken};
+    
+    [self requestWithType:POST path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
 @end
