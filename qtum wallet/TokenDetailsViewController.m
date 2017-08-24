@@ -73,9 +73,14 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 -(void)refreshFromRefreshControl {
     
-    [self.token updateWithHandler:^(BOOL success) {
+    [self.delegate didPullToUpdateToken:self.token];
+}
 
-    }];
+#pragma mark - Output
+
+-(void)updateControls {
+
+    [self refreshTable];
 }
 
 #pragma mark - TokenDetailDisplayDataManagerDelegate
@@ -116,6 +121,13 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 - (void)updateHeader:(Contract *)token{
     self.availableBalanceLabel.text = [NSString stringWithFormat:@"%f", self.token.balance];
+}
+
+-(void)refreshTable {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
+    });
 }
 
 @end

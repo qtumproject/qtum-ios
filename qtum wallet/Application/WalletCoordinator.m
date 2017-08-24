@@ -188,6 +188,11 @@
     [self showTokenAddressControlFlowWith:contract];
 }
 
+- (void)didPullToUpdateToken:(Contract*) token {
+    
+    [token updateWithHandler:nil];
+}
+
 
 #pragma mark - Configuration
 
@@ -266,11 +271,12 @@
     }
 }
 
--(void)updateTokens{
+-(void)updateTokens {
     
     [self configWallet];
     [self setWalletToDelegates];
     [self updateControls];
+    [self updateTokenDetail];
     __weak __typeof(self)weakSelf = self;
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -283,6 +289,11 @@
     
     NSArray *tokensArray = [[ContractManager sharedInstance] allActiveTokens];
     [self.pageViewController setPageControllHidden:!tokensArray.count];
+}
+
+-(void)updateTokenDetail {
+    
+    [self.tokenDetailsViewController updateControls];
 }
 
 -(void)showAddressControlFlow {

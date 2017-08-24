@@ -74,17 +74,23 @@
 
 -(void)refreshFromRefreshControl {
     
-    [self.token updateWithHandler:^(BOOL success) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.refreshControl endRefreshing];
-        });
-    }];
+    [self.delegate didPullToUpdateToken:self.token];
+}
+
+-(void)refreshTable {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
+    });
 }
 
 #pragma mark - Update
 
 -(void)updateControls {
+    
     self.availibleBalanceShortInfoLabel.text = [NSString stringWithFormat:@"%f",token.balance];
+    [self refreshTable];
 }
 
 #pragma mark - Actions
@@ -140,7 +146,5 @@
     
     self.navigationBarView.alpha = (fullAlphaLastPoin - startFadingPoint) / (emptyAlphaFirstPoiny - fullAlphaLastPoin);
 }
-
-
 
 @end
