@@ -16,8 +16,11 @@
 #import "QStoreManager.h"
 #import "QStoreCategory.h"
 #import "QStoreBuyRequest.h"
+#import "QStoreTemplateDetailOutput.h"
+#import "InterfaceInputFormModel.h"
+#import "ContractInterfaceManager.h"
 
-@interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate, QStoreManagerSearchDelegate, QStoreListOutputDelegate>
+@interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate, QStoreManagerSearchDelegate, QStoreListOutputDelegate, QStoreTemplateDetailOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
@@ -58,6 +61,7 @@
 #pragma mark - QStoreMainOutputDelegate
 
 - (void)didSelectQStoreCategories {
+    
     NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[[ControllersFactory sharedInstance] createQStoreListViewController];
     controller.delegate = self;
     controller.type = QStoreCategories;
@@ -150,14 +154,14 @@
     }];
 }
 
-- (void)didLoadAbi:(QStoreContractElement *)element {
+- (void)loadAbiWithElement:(QStoreContractElement *)element {
     
     [self.contractScreen startLoading];
     
     __weak typeof(self) weakSelf = self;
     [[QStoreManager sharedInstance] getContractABIWithElement:element withSuccessHandler:^{
         [weakSelf.contractScreen stopLoading];
-        [weakSelf.contractScreen showAbi];
+        [weakSelf.contractScreen didLoadAbi];
     } andFailureHandler:^(NSString *message) {
         [weakSelf.contractScreen stopLoading];
     }];
@@ -203,6 +207,15 @@
     
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = text;
+}
+
+- (void)didPressedTemplateDetailWithAbi:(NSString*) abi {
+    
+    NSObject<QStoreTemplateDetailOutput> *output = [[ControllersFactory sharedInstance] createQStoreTemplateDetailOutput];
+    output.delegate = self;
+    InterfaceInputFormModel* interfaceInput = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractInterfaceManager sharedInstance] arrayFromAbiString:abi]];
+    output.formModel = interfaceInput;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
 #pragma mark - QStoreListOutputDelegate

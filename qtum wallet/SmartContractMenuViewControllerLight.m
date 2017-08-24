@@ -71,19 +71,19 @@
         case 1:
             imageForCell = [UIImage imageNamed:@"ic-publichedContracts-light"];
             break;
-        case 10:
-            imageForCell = [UIImage imageNamed:@"ic-contractStore"];
-            break;
         case 2:
-            imageForCell = [UIImage imageNamed:@"ic-contract_watch-light"];
+            imageForCell = [UIImage imageNamed:@"ic-contractStore-light"];
             break;
         case 3:
-            imageForCell =  [UIImage imageNamed:@"ic-contract_watch1-light"];
+            imageForCell = [UIImage imageNamed:@"ic-contract_watch-light"];
             break;
         case 4:
-            imageForCell = [UIImage imageNamed:@"ic_contr_backup-light"];
+            imageForCell =  [UIImage imageNamed:@"ic-contract_watch1-light"];
             break;
         case 5:
+            imageForCell = [UIImage imageNamed:@"ic_contr_backup-light"];
+            break;
+        case 6:
             imageForCell = [UIImage imageNamed:@"ic-contract_restore-light"];
             break;
         default:

@@ -7,11 +7,22 @@
 //
 
 #import "QStoreListViewControllerLight.h"
+#import "QStoreListTableSourceLight.h"
 
 @interface QStoreListViewControllerLight ()
 
 @end
 
 @implementation QStoreListViewControllerLight
+
+@synthesize source = _source;
+
+-(QStoreListTableSource*)source {
+    
+    if (!_source) {
+        _source = [QStoreListTableSourceLight new];
+    }
+    return _source;
+}
 
 @end

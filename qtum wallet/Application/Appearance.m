@@ -106,7 +106,8 @@
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setClearButtonMode:UITextFieldViewModeWhileEditing];
     [[UITextField appearance] setKeyboardAppearance:UIKeyboardAppearanceLight];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor],
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : lightGreenColor(),
                                                             NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Light" size:14.0f]}
                                                 forState:UIControlStateNormal];
     

@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "QStoreListOutput.h"
 #import "Presentable.h"
+#import "QStoreListTableSource.h"
 
 @interface QStoreListViewController : UIViewController <QStoreListOutput, Presentable>
 
-
+@property (nonatomic) QStoreListTableSource *source;
 
 @end

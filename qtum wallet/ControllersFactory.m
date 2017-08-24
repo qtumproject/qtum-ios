@@ -80,6 +80,7 @@
 #import "SplashScreenOutput.h"
 #import "QStoreContractOutput.h"
 #import "QStoreListOutput.h"
+#import "QStoreTemplateDetailOutput.h"
 
 @implementation ControllersFactory
 
@@ -235,6 +236,12 @@
 -(NSObject<ConstructorAbiOutput> *)createConstructorFromAbiViewController {
     
     NSObject<ConstructorAbiOutput> *output = (NSObject<ConstructorAbiOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ConstructorFromAbiViewController"];
+    return output;
+}
+
+-(NSObject<QStoreTemplateDetailOutput> *)createQStoreTemplateDetailOutput {
+    
+    NSObject<QStoreTemplateDetailOutput> *output = (NSObject<QStoreTemplateDetailOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreTemplateDetailViewController"];
     return output;
 }
 

@@ -12,7 +12,7 @@
 @protocol QStoreContractOutputDelegate <NSObject>
 
 - (void)didLoadViewWithFullContract:(QStoreContractElement *)element;
-- (void)didLoadAbi:(QStoreContractElement *)element;
+- (void)loadAbiWithElement:(QStoreContractElement *)element;
 
 - (void)didSelectPurchaseContract:(QStoreContractElement *)element;
 - (void)didSelectQStoreContractDetails:(QStoreBuyRequest *)request;
@@ -21,5 +21,6 @@
 - (void)didCopySourceOrAbi:(NSString *) text;
 
 - (void)didPressedBack;
+- (void)didPressedTemplateDetailWithAbi:(NSString*) abi;
 
 @end

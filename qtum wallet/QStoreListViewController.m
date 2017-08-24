@@ -7,7 +7,6 @@
 //
 
 #import "QStoreListViewController.h"
-#import "QStoreListTableSource.h"
 #import "CustomSearchBar.h"
 
 @class QStoreCategory;
@@ -19,8 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet CustomSearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForTable;
-
-@property (nonatomic) QStoreListTableSource *source;
 
 @property (nonatomic) NSArray<QStoreCategory *> *categories;
 @property (nonatomic) NSArray<QStoreContractElement *> *elements;
@@ -34,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.source = [QStoreListTableSource new];
     self.source.delegate = self;
     self.table.dataSource = self.source;
     self.table.delegate = self.source;
@@ -76,6 +72,16 @@
     [super viewDidDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark Protected Methods
+
+-(QStoreListTableSource*)source {
+    
+    if (!_source) {
+        _source = [QStoreListTableSource new];
+    }
+    return _source;
 }
 
 #pragma mark - Notifications
@@ -133,6 +139,7 @@
 #pragma mark - QStoreListTableSourceDelegate
 
 - (void)didSelectCell:(NSIndexPath *)indexPath {
+    
     if (self.type == QStoreCategories) {
         [self.delegate didSelectQStoreCategory:[self.categories objectAtIndex:indexPath.row]];
     } else {

@@ -22,7 +22,7 @@
         QStoreCategory *cat = (QStoreCategory *)element;
         cell.nameLabel.text = cat.title;
         cell.amount.text = [NSString stringWithFormat:@"%lu", (unsigned long)cat.elements.count];
-        cell.imageIcon.image = [UIImage imageNamed:@"ic-qstore_cat"];
+        cell.imageIcon.image = [UIImage imageNamed:@"ic-publichedContracts-light"];
     } else {
         QStoreContractElement *el = (QStoreContractElement *)element;
         cell.nameLabel.text = el.name;

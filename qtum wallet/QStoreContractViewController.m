@@ -15,10 +15,10 @@
 
 @interface QStoreContractViewController () <PopUpWithTwoButtonsViewControllerDelegate, UITextViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *viewAbiButton;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *sourceCodeButton;
 @property (weak, nonatomic) IBOutlet UIButton *detailsButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -31,8 +31,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *downloadsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *compiledOnLabel;
 @property (weak, nonatomic) IBOutlet UIButton *purchaseButton;
+@property (weak, nonatomic) IBOutlet UIButton *sourceCodeButton;
 
 @property (nonatomic) QStoreContractElement *element;
+@property (assign, nonatomic) BOOL isPopupWithAbiRequired;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraintForTextView;
 @end
@@ -70,7 +73,17 @@
 - (IBAction)actionDetails:(id)sender {
     
     if (!self.element.abiString || [self.element.abiString isEqualToString:@""]) {
-        [self.delegate didLoadAbi:self.element];
+        [self.delegate loadAbiWithElement:self.element];
+    } else {
+        [self.delegate didPressedTemplateDetailWithAbi:self.element.abiString];
+    }
+}
+
+- (IBAction)actionAbi:(id)sender {
+    
+    if (!self.element.abiString || [self.element.abiString isEqualToString:@""]) {
+        self.isPopupWithAbiRequired = YES;
+        [self.delegate loadAbiWithElement:self.element];
     } else {
         [self showAbiPopUpWithString:self.element.abiString];
     }
@@ -161,8 +174,16 @@
     self.publishedByLabel.text = self.element.publisherAddress;
     self.downloadsLabel.text = [self.element.countDownloads stringValue];
     
-    self.purchaseButton.enabled = (self.buyRequest == nil);
-    self.purchaseButton.alpha = (self.buyRequest == nil) ? 1 : 0.5f;
+
+    
+    if (self.buyRequest.state == QStoreBuyRequestStateIsPaid) {
+        self.purchaseButton.hidden = YES;
+        self.sourceCodeButton.hidden = NO;
+    } else {
+        self.purchaseButton.enabled = (self.buyRequest == nil);
+        self.purchaseButton.alpha = (self.buyRequest == nil) ? 1 : 0.5f;
+        self.sourceCodeButton.hidden = YES;
+    }
     
     [self setupTagsTextView:self.element.tags];
     
@@ -202,9 +223,14 @@
     self.element = element;
 }
 
-- (void)showAbi {
+- (void)didLoadAbi {
     
-    [self showAbiPopUpWithString:self.element.abiString];
+    if (self.isPopupWithAbiRequired ) {
+        self.isPopupWithAbiRequired = NO;
+        [self showAbiPopUpWithString:self.element.abiString];
+    } else {
+        [self.delegate didPressedTemplateDetailWithAbi:self.element.abiString];
+    }
 }
 
 - (void)showSourceCode:(NSString*) source {

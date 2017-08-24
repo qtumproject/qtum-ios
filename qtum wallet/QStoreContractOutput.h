@@ -21,7 +21,7 @@
 - (void)stopLoading;
 - (void)setContract:(QStoreContractElement *)element;
 - (void)updateWithFull;
-- (void)showAbi;
+- (void)didLoadAbi;
 - (void)showSourceCode:(NSString*) source;
 
 
