@@ -24,6 +24,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 @property (weak, nonatomic) IBOutlet ViewWithAnimatedLine *headerVIew;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
 @property (weak, nonatomic) IBOutlet UIView *activityView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -42,6 +43,22 @@ CGFloat const HeightForHeaderView = 50.0f;
     [self updateHeader:self.token];
     
     self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
+    
+    [self configRefreshControl];
+}
+
+-(void)configRefreshControl {
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    self.refreshControl.tintColor = customBlackColor();
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
+    
+    CGRect frame = self.view.bounds;
+    frame.origin.y = - frame.size.height;
+    UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
+    refreshBackgroundView.backgroundColor = customBlueColor();
+    [self.tableView insertSubview:refreshBackgroundView atIndex:0];
 }
 
 #pragma mark - Actions
@@ -52,6 +69,13 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 - (IBAction)actionBack:(id)sender {
     [self.delegate didBackPressed];
+}
+
+-(void)refreshFromRefreshControl {
+    
+    [self.token updateWithHandler:^(BOOL success) {
+
+    }];
 }
 
 #pragma mark - TokenDetailDisplayDataManagerDelegate

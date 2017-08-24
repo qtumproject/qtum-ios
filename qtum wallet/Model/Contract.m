@@ -61,7 +61,7 @@
 -(void)historyDidChange{
     [self.manager spendableDidChange:self];
 }
--(void)updateHandler:(void(^)(BOOL success)) complete{
+-(void)updateWithHandler:(void(^)(BOOL success)) complete{
     [self.manager updateSpendableObject:self];
 }
 

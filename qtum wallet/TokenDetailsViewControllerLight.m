@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *shortInfoHeader;
 @property (weak, nonatomic) IBOutlet UILabel *availibleBalanceShortInfoLabel;
 @property (weak, nonatomic) IBOutlet UIView *navigationBarView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -28,6 +29,7 @@
     [super viewDidLoad];
     
     [self configTableView];
+    [self configRefreshControl];
     
     self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
     
@@ -51,6 +53,32 @@
     UIView *refreshBackgroundView = [[UIView alloc] initWithFrame:frame];
     refreshBackgroundView.backgroundColor = lightDarkBlueColorForGradient();
     [self.tableView insertSubview:refreshBackgroundView atIndex:0];
+}
+
+- (void)configRefreshControl {
+    
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.tableView addSubview:refreshView];
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [refreshView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
+    
+    CGRect frame = self.view.bounds;
+    frame.origin.y = -frame.size.height;
+    UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
+    refreshBackgroundView.backgroundColor = lightDarkBlueColorForGradient();
+    [self.tableView insertSubview:refreshBackgroundView atIndex:0];
+}
+
+-(void)refreshFromRefreshControl {
+    
+    [self.token updateWithHandler:^(BOOL success) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.refreshControl endRefreshing];
+        });
+    }];
 }
 
 #pragma mark - Update

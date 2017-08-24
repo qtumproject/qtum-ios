@@ -225,7 +225,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
     _historyStorage.spendableOwner = self;
 }
 
--(void)updateHandler:(void(^)(BOOL success)) complete {
+-(void)updateWithHandler:(void(^)(BOOL success)) complete {
     complete(NO);
 }
 
