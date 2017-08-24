@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *walletAdressCopyButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareLabelButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *walletCopyButtonBottomOffsetConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *chooseAddressButton;
 
 - (IBAction)backButtonWasPressed:(id)sender;
 - (IBAction)shareButtonWasPressed:(id)sender;
@@ -35,7 +36,8 @@
 type = _type,
 balanceText = _balanceText,
 unconfirmedBalanceText = _unconfirmedBalanceText,
-publicAddress = _publicAddress;
+walletAddress = _walletAddress,
+tokenAddress = _tokenAddress;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,10 +51,11 @@ publicAddress = _publicAddress;
     
     self.balanceLabel.text = self.balanceText;
     self.unconfirmedBalance.text = self.unconfirmedBalanceText;    
-    self.publicAddressLabel.text = self.publicAddress;
+    self.publicAddressLabel.text = self.walletAddress;
     self.publicAddressLabel.hidden = YES;
     
     self.walletCopyButtonBottomOffsetConstraint.constant = self.type == ReciveWalletOutput ? 90 : 20;
+    self.chooseAddressButton.hidden = self.type == ReciveTokenOutput;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -72,8 +75,8 @@ publicAddress = _publicAddress;
     self.shareButton.enabled = NO;
     
     __weak typeof(self) weakSelf = self;
-    NSString *qtumAddress = self.type == ReciveWalletOutput ? self.publicAddress : nil;
-    NSString *tokenAddress = self.type == ReciveTokenOutput ? self.publicAddress : nil;
+    NSString *qtumAddress = self.walletAddress;
+    NSString *tokenAddress = self.tokenAddress;
     NSString *amountString = [self correctAmountString];
     
     [QRCodeManager createQRCodeFromPublicAddress:qtumAddress tokenAddress:tokenAddress andAmount:amountString forSize:self.qrCodeImageView.frame.size withCompletionBlock:^(UIImage *image) {
@@ -91,7 +94,7 @@ publicAddress = _publicAddress;
     
     self.balanceLabel.text = self.balanceText;
     self.unconfirmedBalance.text = self.unconfirmedBalanceText;
-    self.publicAddressLabel.text = self.publicAddress;
+    self.publicAddressLabel.text = self.walletAddress;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -157,14 +160,18 @@ publicAddress = _publicAddress;
     [self.delegate didPressedChooseAddress];
 }
 
-- (IBAction)shareButtonWasPressed:(id)sender
-{
+- (IBAction)shareButtonWasPressed:(id)sender {
+    
     NSString *text = self.publicAddressLabel.text;
     UIImage *qrCode = self.qrCodeImageView.image;
     
     double amount = [[self correctAmountString] doubleValue];
     if (amount > 0) {
         text = [NSString stringWithFormat:NSLocalizedString(@"My address: %@ and amount: %.3f", nil), text, amount];
+    }
+    
+    if (!text || !qrCode) {
+        return;
     }
     
     NSArray *sharedItems = @[qrCode, text];

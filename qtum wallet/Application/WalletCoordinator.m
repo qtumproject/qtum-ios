@@ -149,10 +149,21 @@
 -(void)showAddressInfoWithSpendable:(id <Spendable>) spendable {
     
     NSObject<RecieveOutput> *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
-    vc.publicAddress = spendable.mainAddress;
+    
+    if ([spendable isKindOfClass:[Contract class]]) {
+        
+        vc.walletAddress = spendable.mainAddress;
+        vc.type = ReciveTokenOutput;
+        vc.tokenAddress =  nil;
+    } else {
+        
+        vc.walletAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+        vc.type = ReciveWalletOutput;
+        vc.tokenAddress = spendable.mainAddress;
+    }
+    
     vc.balanceText = [NSString stringWithFormat:@"%.3f", spendable.balance];
     vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%.3f", spendable.unconfirmedBalance];
-    vc.type = [spendable isKindOfClass:[Contract class]] ? ReciveTokenOutput : ReciveWalletOutput;
     vc.delegate = self;
     self.reciveOutput = vc;
     [self.navigationController pushViewController:[vc toPresent] animated:YES];
@@ -339,7 +350,7 @@
 -(void)didChooseAddress:(NSString*) address {
     
     [self.navigationController popViewControllerAnimated:YES];
-    self.reciveOutput.publicAddress = address;
+    self.reciveOutput.walletAddress = address;
     [self.reciveOutput updateControls];
 }
 
