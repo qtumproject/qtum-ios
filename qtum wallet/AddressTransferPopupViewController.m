@@ -96,6 +96,14 @@
 
 #pragma mark - UITextFieldDelegate
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    if (!textField.text.length && [self.fromTextFieldView isEqual:textField]) {
+        
+        self.fromTextFieldView.text = self.fromAddressesVariants.allKeys[0];
+    }
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
     if ([textField isEqual:self.amountTextFieldView]) {

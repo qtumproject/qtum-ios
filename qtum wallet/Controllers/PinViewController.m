@@ -66,6 +66,7 @@ const float bottomOffset = 25;
 #pragma mark - Privat Methods
 
 -(void)validateAndSendPin {
+    
     NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
     __weak typeof(self) weakSelf = self;
     if (pin.length == 4) {
@@ -84,7 +85,8 @@ const float bottomOffset = 25;
 
 }
 
--(void)changeConstraintsAnimatedWithTime:(NSTimeInterval)time{
+-(void)changeConstraintsAnimatedWithTime:(NSTimeInterval)time {
+    
     [UIView animateWithDuration:time animations:^{
         [self.view layoutIfNeeded];
     }];

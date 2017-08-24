@@ -21,7 +21,9 @@
 
 -(void)drawRect:(CGRect)rect {
     self.animationLayer.path = self.arrayOfPaths[0].CGPath;
-    [self startAmimate];
+    if (!self.animating) {
+        [self startAmimate];
+    }
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -253,13 +253,13 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan QR Code" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mp0-5z-Nmd">
-                                        <rect key="frame" x="129.5" y="43" width="117" height="19"/>
+                                        <rect key="frame" x="129" y="43" width="117" height="19"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Enter Token Address:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G7-cO-lIJ">
-                                        <rect key="frame" x="76.5" y="260" width="224" height="19"/>
+                                        <rect key="frame" x="76" y="260" width="224" height="19"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -372,7 +372,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUh-Wu-CHF">
-                                                <rect key="frame" x="149" y="11" width="79" height="23"/>
+                                                <rect key="frame" x="148.5" y="11" width="79" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -397,6 +397,15 @@
                                     <constraint firstAttribute="bottom" secondItem="FY2-fv-bxw" secondAttribute="bottom" id="s2T-yc-19K"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyz-rk-gY2" customClass="SpinnerView">
+                                <rect key="frame" x="162.5" y="340.5" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Z3g-qW-pjk"/>
+                                    <constraint firstAttribute="width" constant="50" id="nJ0-S4-SIM"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8A-cH-eUG" userLabel="Camera View">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
@@ -417,19 +426,22 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jDI-9N-rSk" firstAttribute="top" secondItem="Y8A-cH-eUG" secondAttribute="bottom" id="67N-Bn-bqB"/>
                             <constraint firstItem="aDA-xZ-bS3" firstAttribute="top" secondItem="Ugb-bp-j3q" secondAttribute="top" id="9M5-Ax-IQv"/>
                             <constraint firstAttribute="trailing" secondItem="Y8A-cH-eUG" secondAttribute="trailing" id="Fhf-YS-LTN"/>
+                            <constraint firstItem="Pyz-rk-gY2" firstAttribute="centerX" secondItem="Y8A-cH-eUG" secondAttribute="centerX" id="N41-wa-Mtz"/>
                             <constraint firstItem="Y8A-cH-eUG" firstAttribute="leading" secondItem="Ugb-bp-j3q" secondAttribute="leading" id="XsF-be-dLD"/>
                             <constraint firstAttribute="trailing" secondItem="aDA-xZ-bS3" secondAttribute="trailing" id="dcW-7u-Qg2"/>
+                            <constraint firstItem="Pyz-rk-gY2" firstAttribute="centerY" secondItem="Y8A-cH-eUG" secondAttribute="centerY" id="iKt-05-35d"/>
                             <constraint firstItem="aDA-xZ-bS3" firstAttribute="leading" secondItem="Ugb-bp-j3q" secondAttribute="leading" id="pPE-az-8eF"/>
                             <constraint firstItem="Y8A-cH-eUG" firstAttribute="top" secondItem="aDA-xZ-bS3" secondAttribute="bottom" id="zcf-Ke-nmS"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="Y8A-cH-eUG" id="KkR-KA-5b7"/>
+                        <outlet property="spinnerView" destination="Pyz-rk-gY2" id="fFO-29-wld"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9c-1w-8OE" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -383,10 +383,10 @@ static NSString* kLocalContractName = @"kLocalContractName";
     }
     
     InterfaceInputFormModel* interfaceInput = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractInterfaceManager sharedInstance] arrayFromAbiString:abiStr]];
-    InterfaceInputFormModel* erc20interfaceInput = [[ContractInterfaceManager sharedInstance] tokenERC20Interface];
+    InterfaceInputFormModel* qrc20interfaceInput = [[ContractInterfaceManager sharedInstance] tokenQRC20Interface];
     
-    if (![interfaceInput contains:erc20interfaceInput]) {
-        *errorString = NSLocalizedString(@"ABI doesn't match ERC20 standard", nil);
+    if (![interfaceInput contains:qrc20interfaceInput]) {
+        *errorString = NSLocalizedString(@"ABI doesn't match QRC20 standard", nil);
         return NO;
     }
     
