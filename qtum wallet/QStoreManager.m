@@ -162,6 +162,15 @@ NSInteger const QStoreSearchCount = 20;
     }];
 }
 
+- (void)getSourceCode:(NSString *)contractId
+            requestId:(NSString *)requestId
+          accessToken:(NSString *)accessToken
+   withSuccessHandler:(void(^)(NSString *sourceCode))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    [self.requestAdapter getSourceCode:contractId requestId:requestId accessToken:accessToken withSuccessHandler:success andFailureHandler:failure];
+}
+
 #pragma mark - Abi
 
 - (void)getContractABIWithElement:(QStoreContractElement *)element
@@ -177,7 +186,6 @@ NSInteger const QStoreSearchCount = 20;
 }
 
 #pragma mark - Buy Requests
-
 
 
 - (void)purchaseContract:(QStoreContractElement *)element

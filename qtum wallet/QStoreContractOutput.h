@@ -22,6 +22,8 @@
 - (void)setContract:(QStoreContractElement *)element;
 - (void)updateWithFull;
 - (void)showAbi;
+- (void)showSourceCode:(NSString*) source;
+
 
 - (void)showContractBoughtPop;
 - (void)showErrorPopUpWithMessage:(NSString *)message;

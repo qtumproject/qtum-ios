@@ -66,6 +66,11 @@
     return content;
 }
 
++ (PopUpContent *)contentForQStoreAbi{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Abi", nil) message:nil okTitle:NSLocalizedString(@"Copy", nil) cancelTitle:nil];
+    return content;
+}
+
 + (PopUpContent *)contentForSourceCode{
     PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Source Code", nil) message:nil okTitle:NSLocalizedString(@"Copy", nil) cancelTitle:nil];
     return content;

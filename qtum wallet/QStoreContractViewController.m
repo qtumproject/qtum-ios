@@ -11,6 +11,7 @@
 #import "ErrorPopUpViewController.h"
 #import "QStoreBuyRequest.h"
 #import "QStoreContractElement.h"
+#import "SourceCodePopUpViewController.h"
 
 @interface QStoreContractViewController () <PopUpWithTwoButtonsViewControllerDelegate, UITextViewDelegate>
 
@@ -68,23 +69,29 @@
 
 - (IBAction)actionDetails:(id)sender {
     
-    [self.delegate didSelectQStoreContractDetails:self.element];
+    if (!self.element.abiString || [self.element.abiString isEqualToString:@""]) {
+        [self.delegate didLoadAbi:self.element];
+    } else {
+        [self showAbiPopUpWithString:self.element.abiString];
+    }
 }
 
 - (IBAction)actionSourceCode:(id)sender {
     
-    if (!self.element.abiString || [self.element.abiString isEqualToString:@""]) {
-        [self.delegate didLoadAbi:self.element];
-    } else {
-        [self showSourceCodePopUpWithString:self.element.abiString];
-    }
+    [self.delegate didSelectQStoreContractDetails:self.buyRequest];
 }
 
 - (void)showSourceCodePopUpWithString:(NSString *)string {
     
     PopUpContent *content = [PopUpContentGenerator contentForSourceCode];
     content.messageString = string;
+    [[PopUpsManager sharedInstance] showSourceCodePopUp:self withContent:content presenter:nil completion:nil];
+}
+
+- (void)showAbiPopUpWithString:(NSString *)string {
     
+    PopUpContent *content = [PopUpContentGenerator contentForQStoreAbi];
+    content.messageString = string;
     [[PopUpsManager sharedInstance] showSourceCodePopUp:self withContent:content presenter:nil completion:nil];
 }
 
@@ -105,10 +112,16 @@
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
+    
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
     
     if ([sender isKindOfClass:[ConfirmPurchasePopUpViewController class]]) {
         [self.delegate didSelectPurchaseContract:self.element];
+    }
+    
+    if ([sender isKindOfClass:[SourceCodePopUpViewController class]]) {
+        SourceCodePopUpViewController* popup = (SourceCodePopUpViewController*)sender;
+        [self.delegate didCopySourceOrAbi:popup.textView.text];
     }
 }
 
@@ -191,8 +204,14 @@
 
 - (void)showAbi {
     
-    [self showSourceCodePopUpWithString:self.element.abiString];
+    [self showAbiPopUpWithString:self.element.abiString];
 }
+
+- (void)showSourceCode:(NSString*) source {
+    
+    [self showSourceCodePopUpWithString:source];
+}
+
 
 - (void)showErrorPopUpWithMessage:(NSString *)message {
     PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];

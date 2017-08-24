@@ -15,6 +15,7 @@
 #import "QStoreContractElement.h"
 #import "QStoreManager.h"
 #import "QStoreCategory.h"
+#import "QStoreBuyRequest.h"
 
 @interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate, QStoreManagerSearchDelegate, QStoreListOutputDelegate>
 
@@ -162,8 +163,18 @@
     }];
 }
 
-- (void)didSelectQStoreContractDetails:(QStoreContractElement *)element {
+- (void)didSelectQStoreContractDetails:(QStoreBuyRequest *)request {
     
+    __weak typeof(self) weakSelf = self;
+    
+    [self.contractScreen startLoading];
+
+    [[QStoreManager sharedInstance] getSourceCode:request.contractId requestId:request.requestId accessToken:request.accessToken withSuccessHandler:^(NSString *sourceCode) {
+        [weakSelf.contractScreen stopLoading];
+        [weakSelf.contractScreen showSourceCode:sourceCode];
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        [weakSelf.contractScreen stopLoading];
+    }];
 }
 
 - (void)didSelectTag:(NSString *)tag {
@@ -176,6 +187,7 @@
     [self.contractScreen startLoading];
     
     __weak typeof(self) weakSelf = self;
+    
     [[QStoreManager sharedInstance] purchaseContract:element withSuccessHandler:^{
         [weakSelf.contractScreen stopLoading];
         [weakSelf.contractScreen setBuyRequest:[[QStoreManager sharedInstance] requestWithContractId:element.idString]];
@@ -185,6 +197,12 @@
         [weakSelf.contractScreen stopLoading];
         [weakSelf.contractScreen showErrorPopUpWithMessage:message];
     }];
+}
+
+- (void)didCopySourceOrAbi:(NSString *) text {
+    
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = text;
 }
 
 #pragma mark - QStoreListOutputDelegate

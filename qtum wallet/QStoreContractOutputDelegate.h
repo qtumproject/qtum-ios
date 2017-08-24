@@ -7,6 +7,7 @@
 //
 
 @class QStoreContractElement;
+@class QStoreBuyRequest;
 
 @protocol QStoreContractOutputDelegate <NSObject>
 
@@ -14,8 +15,10 @@
 - (void)didLoadAbi:(QStoreContractElement *)element;
 
 - (void)didSelectPurchaseContract:(QStoreContractElement *)element;
-- (void)didSelectQStoreContractDetails:(QStoreContractElement *)element;
+- (void)didSelectQStoreContractDetails:(QStoreBuyRequest *)request;
 - (void)didSelectTag:(NSString *)tag;
+
+- (void)didCopySourceOrAbi:(NSString *) text;
 
 - (void)didPressedBack;
 
