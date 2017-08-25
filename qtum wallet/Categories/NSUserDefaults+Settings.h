@@ -40,4 +40,10 @@
 + (void)saveIsDarkSchemeSetting:(BOOL)value;
 + (BOOL)isDarkSchemeSetting;
 
++ (void)saveIsNotFirstTimeLaunch:(BOOL)value;
++ (BOOL)isNotFirstTimeLaunch;
+
++ (void)saveCurrentVersion:(NSString*) value;
++ (NSString*)currentVersion;
+
 @end

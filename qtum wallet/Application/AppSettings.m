@@ -27,6 +27,7 @@
 #pragma mark - init
 
 + (instancetype)sharedInstance {
+    
     static AppSettings *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -44,8 +45,16 @@
 
 -(void)setup {
     
+    if (![NSUserDefaults isNotFirstTimeLaunch]) {
+
+        [NSUserDefaults saveIsDarkSchemeSetting:YES];
+        [NSUserDefaults saveIsNotFirstTimeLaunch:YES];
+    }
+    
+    [NSUserDefaults saveCurrentVersion:[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:YES];
+
     [PopUpsManager sharedInstance];
     [self setupFabric];
     [self setupFingerpring];

@@ -18,6 +18,10 @@ NSString * const kPrevDeviceTokenKey         = @"kPrevDeviceTokenKey";
 NSString * const kWalletAddressKey           = @"kWalletAddressKey";
 NSString * const kIsHaveWallet               = @"kIsHaveWallet";
 NSString * const kIsDarkScheme               = @"kIsDarkScheme";
+NSString * const kIsNotFirstTimeLaunch          = @"kIsNotFirstTimeLaunch";
+NSString * const kCurrentVersion             = @"kCurrentVersion";
+
+
 
 NSString * const kGroupIdentifire            = @"group.com.pixelplex.qtum-wallet";
 
@@ -107,6 +111,26 @@ NSString * const kGroupIdentifire            = @"group.com.pixelplex.qtum-wallet
 
 + (BOOL)isDarkSchemeSetting{
     return [[NSUserDefaults standardUserDefaults] boolForKey:kIsDarkScheme];
+}
+
++ (void)saveIsNotFirstTimeLaunch:(BOOL)value {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:kIsNotFirstTimeLaunch];
+}
+
++ (BOOL)isNotFirstTimeLaunch {
+    
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kIsNotFirstTimeLaunch];
+}
+
++ (void)saveCurrentVersion:(NSString*) value {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:kCurrentVersion];
+}
+
+
++ (NSString*)currentVersion {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentVersion];
 }
 
 @end

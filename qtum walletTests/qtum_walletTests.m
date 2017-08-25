@@ -2,7 +2,7 @@
 //  qtum_walletTests.m
 //  qtum walletTests
 //
-//  Created by Никита Федоренко on 25.08.17.
+//  Created by Vladimir Lebedevich  on 25.08.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
