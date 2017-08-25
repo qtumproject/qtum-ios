@@ -20,8 +20,8 @@ typedef NS_ENUM(NSInteger, RequestType){
     PUT
 };
 
-//NSString *const BASE_URL = @"http://163.172.251.4:5931/";
-NSString *const BASE_URL = @"http://163.172.68.103:5931";
+NSString *const BASE_URL = @"http://163.172.251.4:5931/";
+//NSString *const BASE_URL = @"http://163.172.68.103:5931";
 
 @interface RequestManager()
 
