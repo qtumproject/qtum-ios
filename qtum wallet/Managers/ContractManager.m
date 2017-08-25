@@ -187,7 +187,15 @@ static NSString* kLocalContractName = @"kLocalContractName";
         for (NSDictionary* dict in addressBalance[@"balances"]) {
             
             NSString* addressKey = dict[@"address"];
-            newAddressBalance[addressKey] = @([dict[@"balance"] floatValue]);
+            NSString* balance = dict[@"balance"];
+
+            if (balance) {
+                if ([balance isKindOfClass:[NSNumber class]]) {
+                    newAddressBalance[addressKey] = [NSDecimalNumber decimalNumberWithString:[(NSNumber*)balance stringValue]];
+                } else if ([balance isKindOfClass:[NSString class]]) {
+                    newAddressBalance[addressKey] = [NSDecimalNumber decimalNumberWithString:balance];
+                }
+            }
         }
         token.addressBalanceDictionary = [newAddressBalance copy];
         [self tokenDidChange:token];

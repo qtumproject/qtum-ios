@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
 - (void)sendToken:(Contract*) token
         fromAddress:(NSString*) frommAddress
          toAddress:(NSString*) toAddress
-            amount:(NSNumber*) amount
+            amount:(NSDecimalNumber*) amount
         andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion;
 
 @end

@@ -41,6 +41,7 @@
 #import "TemplatesListOutputDelegate.h"
 #import "FavouriteTemplatesCollectionSourceOutput.h"
 #import "RestoreContractsOutput.h"
+#import "NSNumber+Comparison.h"
 
 
 @interface ContractCoordinator () <LibraryOutputDelegate,
@@ -348,7 +349,7 @@ ContractFunctionsOutputDelegate>
     
     NSMutableArray<NSString*>* __block addressWithTokensValue = @[].mutableCopy;
     [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
-        if (balance.floatValue > 0) {
+        if ([balance isGreaterThanInt:0]) {
             [addressWithTokensValue addObject:address];
         }
     }];

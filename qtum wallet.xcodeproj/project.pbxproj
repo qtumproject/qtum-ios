@@ -191,6 +191,11 @@
 		B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB401EF04474001D2FF1 /* BackupFileManager.m */; };
 		B387AB441EF04911001D2FF1 /* TemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB431EF04911001D2FF1 /* TemplateManager.m */; };
 		B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB461EF12FDA001D2FF1 /* DataOperation.m */; };
+		B3A4EA4F1F502C2D008115D1 /* NSNumber+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA4E1F502C2D008115D1 /* NSNumber+Comparison.m */; };
+		B3A4EA521F502C40008115D1 /* NSDecimalNumber+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */; };
+		B3A4EA5C1F502E65008115D1 /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA5B1F502E65008115D1 /* qtum_walletTests.m */; };
+		B3A4EA641F502E84008115D1 /* NSDecimalNumberComparisonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA631F502E84008115D1 /* NSDecimalNumberComparisonTests.m */; };
+		B3A4EA661F503052008115D1 /* NSNumberComparisonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA651F503052008115D1 /* NSNumberComparisonTests.m */; };
 		B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */; };
 		B3C08B151ED3382300713B15 /* keccak.c in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B141ED3382300713B15 /* keccak.c */; };
 		B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */; };
@@ -331,9 +336,6 @@
 		E713A4811EEE9FF800A2FA40 /* RestoreContractsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E713A4801EEE9FF800A2FA40 /* RestoreContractsViewController.m */; };
 		E713A4861EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */; };
 		E718FA281F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E718FA271F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m */; };
-		E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2441E0177910068595B /* qtum_walletTests.m */; };
-		E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E71AF24C1E0178C50068595B /* libCoreBitcoin.a */; };
-		E71AF24E1E0178EB0068595B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
 		E71AF2511E017D250068595B /* WordsArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2501E017D250068595B /* WordsArray.m */; };
 		E71AF2551E018F6A0068595B /* WalletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E71AF2541E018F6A0068595B /* WalletManager.m */; };
 		E71B72F01F0E9137004BECEA /* PageControlItemLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B72EF1F0E9137004BECEA /* PageControlItemLight.m */; };
@@ -424,22 +426,18 @@
 		E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */; };
 		E7881B0D1F0BB63400BD6AB2 /* SplashLight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0C1F0BB63400BD6AB2 /* SplashLight.storyboard */; };
 		E7881B241F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
-		E7881B251F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B261F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B271F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B281F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
-		E7881B341F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B351F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B361F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B371F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B421F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
-		E7881B431F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B441F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B451F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B461F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
-		E7881B481F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
 		E7881B491F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
 		E7881B4A1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
 		E7881B4B1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
@@ -514,7 +512,7 @@
 			remoteGlobalIDString = B33EAF871E5EC262006125F3;
 			remoteInfo = iMessageExtension;
 		};
-		E71AF2471E0177910068595B /* PBXContainerItemProxy */ = {
+		B3A4EA5E1F502E66008115D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7FD36301DC4D07E00748177 /* Project object */;
 			proxyType = 1;
@@ -959,6 +957,16 @@
 		B387AB431EF04911001D2FF1 /* TemplateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateManager.m; sourceTree = "<group>"; };
 		B387AB451EF12FDA001D2FF1 /* DataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOperation.h; sourceTree = "<group>"; };
 		B387AB461EF12FDA001D2FF1 /* DataOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataOperation.m; sourceTree = "<group>"; };
+		B3A4EA4D1F502C2D008115D1 /* NSNumber+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Comparison.h"; sourceTree = "<group>"; };
+		B3A4EA4E1F502C2D008115D1 /* NSNumber+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Comparison.m"; sourceTree = "<group>"; };
+		B3A4EA501F502C40008115D1 /* NSDecimalNumber+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+Comparison.h"; sourceTree = "<group>"; };
+		B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+Comparison.m"; sourceTree = "<group>"; };
+		B3A4EA531F502CD1008115D1 /* NSDecimalNumberComparisonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDecimalNumberComparisonTests.m; sourceTree = "<group>"; };
+		B3A4EA591F502E65008115D1 /* qtum walletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "qtum walletTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3A4EA5B1F502E65008115D1 /* qtum_walletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qtum_walletTests.m; sourceTree = "<group>"; };
+		B3A4EA5D1F502E66008115D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3A4EA631F502E84008115D1 /* NSDecimalNumberComparisonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDecimalNumberComparisonTests.m; sourceTree = "<group>"; };
+		B3A4EA651F503052008115D1 /* NSNumberComparisonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberComparisonTests.m; sourceTree = "<group>"; };
 		B3C08B091ED2FE3000713B15 /* keccak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keccak.h; sourceTree = "<group>"; };
 		B3C08B0A1ED2FE3000713B15 /* NSString+SHA3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SHA3.h"; sourceTree = "<group>"; };
 		B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHA3.m"; sourceTree = "<group>"; };
@@ -1261,7 +1269,6 @@
 		E713A4851EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreContractsPopUpViewController.m; sourceTree = "<group>"; };
 		E718FA261F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTokenPaymentDelegateDataSource.h; sourceTree = "<group>"; };
 		E718FA271F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTokenPaymentDelegateDataSource.m; sourceTree = "<group>"; };
-		E71AF2421E0177910068595B /* qtum walletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "qtum walletTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71AF2441E0177910068595B /* qtum_walletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qtum_walletTests.m; sourceTree = "<group>"; };
 		E71AF2461E0177910068595B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E71AF24C1E0178C50068595B /* libCoreBitcoin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCoreBitcoin.a; path = "../../../Library/Developer/Xcode/DerivedData/qtum_wallet-arbewxanfsytvybnfcusgblmtdes/Build/Products/Debug-iphonesimulator/CoreBitcoin/libCoreBitcoin.a"; sourceTree = "<group>"; };
@@ -1646,12 +1653,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E71AF23F1E0177910068595B /* Frameworks */ = {
+		B3A4EA561F502E65008115D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E71AF24E1E0178EB0068595B /* Security.framework in Frameworks */,
-				E71AF24D1E0178C50068595B /* libCoreBitcoin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2379,6 +2384,17 @@
 			name = "Watch Tokens";
 			sourceTree = "<group>";
 		};
+		B3A4EA5A1F502E65008115D1 /* qtum walletTests */ = {
+			isa = PBXGroup;
+			children = (
+				B3A4EA5B1F502E65008115D1 /* qtum_walletTests.m */,
+				B3A4EA631F502E84008115D1 /* NSDecimalNumberComparisonTests.m */,
+				B3A4EA5D1F502E66008115D1 /* Info.plist */,
+				B3A4EA651F503052008115D1 /* NSNumberComparisonTests.m */,
+			);
+			path = "qtum walletTests";
+			sourceTree = "<group>";
+		};
 		B3C08B221ED45BCD00713B15 /* Tokens Templates */ = {
 			isa = PBXGroup;
 			children = (
@@ -3078,6 +3094,7 @@
 			children = (
 				E71AF2441E0177910068595B /* qtum_walletTests.m */,
 				E71AF2461E0177910068595B /* Info.plist */,
+				B3A4EA531F502CD1008115D1 /* NSDecimalNumberComparisonTests.m */,
 			);
 			path = "qtum walletTests";
 			sourceTree = "<group>";
@@ -3753,6 +3770,10 @@
 				B366CA211F1D0AC700EF3273 /* NSData+AES256.m */,
 				B366CA231F1D0C1200EF3273 /* NSString+AES256.h */,
 				B366CA241F1D0C1200EF3273 /* NSString+AES256.m */,
+				B3A4EA4D1F502C2D008115D1 /* NSNumber+Comparison.h */,
+				B3A4EA4E1F502C2D008115D1 /* NSNumber+Comparison.m */,
+				B3A4EA501F502C40008115D1 /* NSDecimalNumber+Comparison.h */,
+				B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -3833,13 +3854,14 @@
 		E7FD362F1DC4D07E00748177 = {
 			isa = PBXGroup;
 			children = (
-				E71AF2431E0177910068595B /* qtum walletTests */,
 				B33EAF8B1E5EC262006125F3 /* iMessageExtension */,
 				E730AB551EE6A5D100132711 /* QTUM Watch */,
 				E730AB641EE6A5D100132711 /* QTUM Watch Extension */,
+				B3A4EA5A1F502E65008115D1 /* qtum walletTests */,
 				F94C279886F936AB7B4DA6F8 /* Frameworks */,
 				94DECCBC55E0AE7D7EF532E6 /* Pods */,
 				E7FD36391DC4D07E00748177 /* Products */,
+				E71AF2431E0177910068595B /* qtum walletTests */,
 				E7FD363A1DC4D07E00748177 /* qtum wallet */,
 			);
 			sourceTree = "<group>";
@@ -3848,10 +3870,10 @@
 			isa = PBXGroup;
 			children = (
 				E7FD36381DC4D07E00748177 /* qtum wallet.app */,
-				E71AF2421E0177910068595B /* qtum walletTests.xctest */,
 				B33EAF881E5EC262006125F3 /* iMessageExtension.appex */,
 				E730AB541EE6A5D100132711 /* QTUM Watch.app */,
 				E730AB601EE6A5D100132711 /* QTUM Watch Extension.appex */,
+				B3A4EA591F502E65008115D1 /* qtum walletTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4079,22 +4101,22 @@
 			productReference = B33EAF881E5EC262006125F3 /* iMessageExtension.appex */;
 			productType = "com.apple.product-type.app-extension.messages";
 		};
-		E71AF2411E0177910068595B /* qtum walletTests */ = {
+		B3A4EA581F502E65008115D1 /* qtum walletTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E71AF24B1E0177910068595B /* Build configuration list for PBXNativeTarget "qtum walletTests" */;
+			buildConfigurationList = B3A4EA601F502E66008115D1 /* Build configuration list for PBXNativeTarget "qtum walletTests" */;
 			buildPhases = (
-				E71AF23E1E0177910068595B /* Sources */,
-				E71AF23F1E0177910068595B /* Frameworks */,
-				E71AF2401E0177910068595B /* Resources */,
+				B3A4EA551F502E65008115D1 /* Sources */,
+				B3A4EA561F502E65008115D1 /* Frameworks */,
+				B3A4EA571F502E65008115D1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E71AF2481E0177910068595B /* PBXTargetDependency */,
+				B3A4EA5F1F502E66008115D1 /* PBXTargetDependency */,
 			);
 			name = "qtum walletTests";
 			productName = "qtum walletTests";
-			productReference = E71AF2421E0177910068595B /* qtum walletTests.xctest */;
+			productReference = B3A4EA591F502E65008115D1 /* qtum walletTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E730AB531EE6A5D100132711 /* QTUM Watch */ = {
@@ -4180,9 +4202,8 @@
 							};
 						};
 					};
-					E71AF2411E0177910068595B = {
-						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q7Q43CUMWT;
+					B3A4EA581F502E65008115D1 = {
+						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E7FD36371DC4D07E00748177;
 					};
@@ -4229,10 +4250,10 @@
 			projectRoot = "";
 			targets = (
 				E7FD36371DC4D07E00748177 /* qtum wallet */,
-				E71AF2411E0177910068595B /* qtum walletTests */,
 				B33EAF871E5EC262006125F3 /* iMessageExtension */,
 				E730AB531EE6A5D100132711 /* QTUM Watch */,
 				E730AB5F1EE6A5D100132711 /* QTUM Watch Extension */,
+				B3A4EA581F502E65008115D1 /* qtum walletTests */,
 			);
 		};
 /* End PBXProject section */
@@ -4253,14 +4274,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E71AF2401E0177910068595B /* Resources */ = {
+		B3A4EA571F502E65008115D1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7881B431F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7881B341F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
-				E7881B481F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
-				E7881B251F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4439,11 +4456,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E71AF23E1E0177910068595B /* Sources */ = {
+		B3A4EA551F502E65008115D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E71AF2451E0177910068595B /* qtum_walletTests.m in Sources */,
+				B3A4EA661F503052008115D1 /* NSNumberComparisonTests.m in Sources */,
+				B3A4EA641F502E84008115D1 /* NSDecimalNumberComparisonTests.m in Sources */,
+				B3A4EA5C1F502E65008115D1 /* qtum_walletTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4665,6 +4684,7 @@
 				E7D7C09E1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				E745BA241F21FC3600B2E216 /* NewsViewControllerLight.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
+				B3A4EA4F1F502C2D008115D1 /* NSNumber+Comparison.m in Sources */,
 				B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */,
 				B3DB3E5F1F306CEA00AA408F /* BackupContractsViewControllerDark.m in Sources */,
 				B35DF6261F1F637D00316953 /* ExportWalletBrandKeyViewControllerDark.m in Sources */,
@@ -4804,6 +4824,7 @@
 				B3DB3E511F2F7A5200AA408F /* CheckboxButtonLight.m in Sources */,
 				E798463D1F0D28A3002A516A /* WalletTableSourceLight.m in Sources */,
 				B36EBC451F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m in Sources */,
+				B3A4EA521F502C40008115D1 /* NSDecimalNumber+Comparison.m in Sources */,
 				B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */,
 				B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */,
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
@@ -4876,10 +4897,10 @@
 			target = B33EAF871E5EC262006125F3 /* iMessageExtension */;
 			targetProxy = B33EAF951E5EC263006125F3 /* PBXContainerItemProxy */;
 		};
-		E71AF2481E0177910068595B /* PBXTargetDependency */ = {
+		B3A4EA5F1F502E66008115D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E7FD36371DC4D07E00748177 /* qtum wallet */;
-			targetProxy = E71AF2471E0177910068595B /* PBXContainerItemProxy */;
+			targetProxy = B3A4EA5E1F502E66008115D1 /* PBXContainerItemProxy */;
 		};
 		E730AB631EE6A5D100132711 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5216,27 +5237,29 @@
 			};
 			name = Release;
 		};
-		E71AF2491E0177910068595B /* Debug */ = {
+		B3A4EA611F502E66008115D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "qtum walletTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum-walletTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-walletTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qtum wallet.app/qtum wallet";
 			};
 			name = Debug;
 		};
-		E71AF24A1E0177910068595B /* Release */ = {
+		B3A4EA621F502E66008115D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "qtum walletTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum-walletTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-walletTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qtum wallet.app/qtum wallet";
 			};
@@ -5486,14 +5509,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E71AF24B1E0177910068595B /* Build configuration list for PBXNativeTarget "qtum walletTests" */ = {
+		B3A4EA601F502E66008115D1 /* Build configuration list for PBXNativeTarget "qtum walletTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E71AF2491E0177910068595B /* Debug */,
-				E71AF24A1E0177910068595B /* Release */,
+				B3A4EA611F502E66008115D1 /* Debug */,
+				B3A4EA621F502E66008115D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		E730AB7D1EE6A5D200132711 /* Build configuration list for PBXNativeTarget "QTUM Watch Extension" */ = {
 			isa = XCConfigurationList;

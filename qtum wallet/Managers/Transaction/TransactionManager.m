@@ -17,6 +17,8 @@
 #import "ContractArgumentsInterpretator.h"
 #import "WalletManagerRequestAdapter.h"
 #import "Wallet.h"
+#import "NSNumber+Comparison.h"
+#import "NSNumber+Comparison.h"
 
 static double FEE = 10000000;
 static NSString* op_exec = @"c1";
@@ -110,7 +112,7 @@ static NSString* op_exec = @"c1";
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
     NSString* __block addressWithAmountValue;
     [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
-        if (balance.floatValue > amount.floatValue) {
+        if ([balance isGreaterThan:amount]) {
             addressWithAmountValue = address;
             *stop = YES;
         }
@@ -132,7 +134,7 @@ static NSString* op_exec = @"c1";
 - (void)sendToken:(Contract*) token
       fromAddress:(NSString*) frommAddress
         toAddress:(NSString*) toAddress
-           amount:(NSNumber*) amount
+           amount:(NSDecimalNumber*) amount
        andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
     
@@ -144,10 +146,21 @@ static NSString* op_exec = @"c1";
     
     AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] tokenStandartTransferMethodInterface];
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,amount]];
-    NSString* __block addressWithAmountValue = frommAddress;
-
     
-    if (addressWithAmountValue) {
+    NSString* __block addressWithAmountValue = frommAddress;
+    
+    NSNumber* addressBalance = token.addressBalanceDictionary[addressWithAmountValue];
+    if (addressBalance) {
+        if ([addressBalance isLessThan:amount]) {
+            completion(TransactionManagerErrorTypeNotEnoughMoney, nil, nil);
+            return;
+        }
+    } else {
+        completion(TransactionManagerErrorTypeNotEnoughMoney, nil, nil);
+        return;
+    }
+
+    if (addressWithAmountValue && amount) {
         [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
             if (error) {
                 completion([error isNoInternetConnectionError] ? TransactionManagerErrorTypeNoInternetConnection : TransactionManagerErrorTypeServer, transaction,hashTransaction);

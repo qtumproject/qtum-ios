@@ -2,8 +2,8 @@
 //  qtum_walletTests.m
 //  qtum walletTests
 //
-//  Created by Sharaev Vladimir on 14.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Created by Никита Федоренко on 25.08.17.
+//  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
