@@ -7,6 +7,7 @@
 //
 
 #import "WalletViewControllerLight.h"
+#import "NSNumber+Comparison.h"
 
 @interface WalletViewControllerLight ()
 
@@ -55,7 +56,7 @@
     
     [super reloadHeader:wallet];
 
-    self.availableTextTopConstraint.constant = wallet.unconfirmedBalance != 0.0f ? 28.0f : 36.0f;
+    self.availableTextTopConstraint.constant = ![wallet.unconfirmedBalance isEqualToInt:0] ? 28.0f : 36.0f;
 }
 
 - (void)needShowHeader:(CGFloat)percent {

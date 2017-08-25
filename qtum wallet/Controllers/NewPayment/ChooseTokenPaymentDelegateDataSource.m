@@ -9,6 +9,7 @@
 #import "ChooseTokenPaymentDelegateDataSource.h"
 #import "ChoseTokenPaymentCell.h"
 #import "ChooseTokekPaymentDelegateDataSourceDelegate.h"
+#import "NSNumber+Comparison.h"
 
 @interface ChooseTokenPaymentDelegateDataSource()
 
@@ -76,7 +77,7 @@
         }
     } else {
         cell.tokenName.text = self.tokens[indexPath.row - 1].localName;
-        cell.mainBalance.text = [NSString stringWithFormat:@"%.3f",self.tokens[indexPath.row - 1].balance];
+        cell.mainBalance.text = [NSString stringWithFormat:@"%@",[self.tokens[indexPath.row - 1].balance.decimalNumber roundedNumberWithScate:3]];
         cell.balance.text = [NSString stringWithFormat:@"%.3f", 0.0];
         cell.balanceSymbol.text =
         cell.mainBalanceSymbol.text = self.tokens[indexPath.row - 1].symbol;

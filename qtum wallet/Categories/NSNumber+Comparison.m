@@ -78,7 +78,22 @@
 
 - (NSDecimalNumber*)decimalNumber {
     
-    return [NSDecimalNumber decimalNumberWithString:self.stringValue];
+    if ([self isKindOfClass:[NSDecimalNumber class]]) {
+        return (NSDecimalNumber*)self;
+    } else {
+        return [NSDecimalNumber decimalNumberWithString:self.stringValue];
+    }
+}
+
+- (NSNumber*)roundedNumberWithScate:(NSInteger) scale {
+    
+    NSDecimalNumberHandler *behavior = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain
+                                                                                              scale:scale
+                                                                                   raiseOnExactness:NO
+                                                                                    raiseOnOverflow:NO
+                                                                                   raiseOnUnderflow:NO
+                                                                                raiseOnDivideByZero:NO];
+    return [self.decimalNumber decimalNumberByRoundingAccordingToBehavior:behavior];
 }
 
 @end

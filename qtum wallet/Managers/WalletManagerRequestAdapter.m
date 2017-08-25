@@ -11,11 +11,12 @@
 #import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
 #import "BTCTransactionOutput+Address.h"
+#import "NSNumber+Comparison.h"
 
 @implementation WalletManagerRequestAdapter
 
 - (void)getBalanceForAddreses:(NSArray *)keyAddreses
-           withSuccessHandler:(void(^)(double responseObject))success
+           withSuccessHandler:(void(^)(NSDecimalNumber* balance))success
             andFailureHandler:(void(^)(NSError *error, NSString* message))failure {
     
     __weak __typeof(self)weakSelf = self;
@@ -126,13 +127,16 @@
     return  element;
 }
 
-- (double)calculateBalance:(NSArray *)responseObject {
+- (NSDecimalNumber*)calculateBalance:(NSArray *) responseObject {
     
-    double balance = 0;
+    NSDecimalNumber* balance = [[NSDecimalNumber alloc] initWithDouble:0];
     
     for (NSDictionary *dictionary in responseObject) {
-        double amount = [dictionary[@"amount"] doubleValue];
-        balance += amount;
+        
+        NSNumber* amount = dictionary[@"amount"];
+        if ([amount isKindOfClass:[NSNumber class]]) {
+            balance = [balance decimalNumberByAdding:amount.decimalNumber];
+        }
     }
     
     return balance;

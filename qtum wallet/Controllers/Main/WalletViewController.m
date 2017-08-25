@@ -18,6 +18,7 @@
 #import "WalletTableSource.h"
 #import "WalletCoordinator.h"
 #import "HistoryHeaderVIew.h"
+#import "NSNumber+Comparison.h"
 
 @interface WalletViewController ()
 
@@ -96,15 +97,16 @@
 
 - (void)reloadHeader:(id<Spendable>)wallet {
     
-    BOOL haveUncorfirmed = wallet.unconfirmedBalance != 0.0f;
+    BOOL haveUncorfirmed = ![wallet.unconfirmedBalance isEqualToInt:0];
+
     self.availableTextTopConstraint.constant = haveUncorfirmed ? 10.0f : 17.0f;
     self.availableValueTopConstraint.constant = haveUncorfirmed ? 8.0f : 15.0f;
     
     self.unconfirmedTextLabel.hidden =
     self.uncorfirmedLabel.hidden = !haveUncorfirmed;
     
-    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%.3f %@", wallet.unconfirmedBalance, NSLocalizedString(@"QTUM", nil)];
-    self.availabelLabel.text = [NSString stringWithFormat:@"%.3f %@", wallet.balance, NSLocalizedString(@"QTUM", nil)];
+    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%@ %@", [wallet.unconfirmedBalance roundedNumberWithScate:3], NSLocalizedString(@"QTUM", nil)];
+    self.availabelLabel.text = [NSString stringWithFormat:@"%@ %@", [wallet.balance roundedNumberWithScate:3], NSLocalizedString(@"QTUM", nil)];
 }
 
 -(void)startLoading {

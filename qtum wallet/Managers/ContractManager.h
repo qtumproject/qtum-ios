@@ -21,7 +21,6 @@ extern NSString *const kContractCreationFailed;
 - (NSArray <Contract*>*)allTokens;
 - (NSArray <Contract*>*)allActiveTokens;
 - (void)addNewToken:(Contract*) token;
-- (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance;
 - (void)updateTokenWithContractAddress:(NSString*) address withAddressBalanceDictionary:(NSDictionary*) addressBalance;
 - (void)checkSmartContract:(HistoryElement*) item;
 - (void)checkSmartContractPretendents;

@@ -17,6 +17,7 @@
 #import "Requestable.h"
 #import "Contract.h"
 #import "Managerable.h"
+#import "NSNumber+Comparison.h"
 #import "WalletManagerRequestAdapter.h"
 
 NSString const *kWallets = @"qtum_wallet_wallets_keys";
@@ -271,7 +272,7 @@ NSString const *kUserPinHash = @"HashPIN";
 -(void)updateBalanceOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete{
     
     // __weak __typeof(self)weakSelf = self;
-    [self.requestAdapter getBalanceForAddreses:[object allKeysAdreeses] withSuccessHandler:^(double balance) {
+    [self.requestAdapter getBalanceForAddreses:[object allKeysAdreeses] withSuccessHandler:^(NSDecimalNumber* balance) {
         
         object.balance = balance;
         complete(YES);
@@ -314,8 +315,17 @@ NSString const *kUserPinHash = @"HashPIN";
 
 -(void)updateSpendablesBalansesWithObject:(NSDictionary*) balances {
     
-    self.wallet.balance = [balances[@"balance"] floatValue];
-    self.wallet.unconfirmedBalance = [balances[@"unconfirmedBalance"] floatValue];
+    NSNumber* balance = balances[@"balance"];
+    NSNumber* unconfirmedBalance = balances[@"unconfirmedBalance"];
+    
+    if ([balance isKindOfClass:[NSNumber class]]) {
+        self.wallet.balance = [balance decimalNumber];
+    }
+    
+    if ([unconfirmedBalance isKindOfClass:[NSNumber class]]) {
+        self.wallet.unconfirmedBalance = [unconfirmedBalance decimalNumber];
+    }
+
     [self spendableDidChange:self.wallet];
 }
 

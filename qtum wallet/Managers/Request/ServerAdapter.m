@@ -7,10 +7,12 @@
 //
 
 #import "ServerAdapter.h"
+#import "NSNumber+Comparison.h"
 
 @implementation ServerAdapter
 
-- (id)adaptiveDataForHistory:(id) data{
+- (id)adaptiveDataForHistory:(id) data {
+    
     if ([data isKindOfClass:[NSArray class]]) {
         return data;
     } else if ([data[@"items"] isKindOfClass:[NSArray class]]){
@@ -28,24 +30,16 @@
 - (id)adaptiveDataForBalance:(id) balances {
     
     if ([balances isKindOfClass:[NSDictionary class]]) {
-        return @{@"balance" : @([balances[@"balance"] floatValue] /100000000),
-                 @"unconfirmedBalance" : @([balances[@"unconfirmedBalance"] floatValue] /100000000)};
+        
+        NSNumber* balance = balances[@"balance"];
+        NSNumber* unconfirmedBalance = balances[@"unconfirmedBalance"];
+        NSDecimalNumber* dev = [[NSDecimalNumber alloc] initWithInt:100000000];
+        
+        return @{@"balance" : [balance.decimalNumber decimalNumberByDividingBy:dev],
+                 @"unconfirmedBalance" : [unconfirmedBalance.decimalNumber decimalNumberByDividingBy:dev]};
     }
     return nil;
 }
 
-- (NSDictionary*)adaptiveDataForContractBalances:(id) data {
-    
-    if ([data[0] isKindOfClass:[NSDictionary class]]) {
-        NSDictionary* dataDict = data[0];
-        CGFloat balance = 0;
-        for (NSDictionary* dict in dataDict[@"balances"]) {
-            balance += [dict[@"balance"] floatValue];
-        }
-        return @{@"balance" : @(balance),
-                 @"contract_address" : dataDict[@"contract_address"]};
-    }
-    return nil;
-}
 
 @end

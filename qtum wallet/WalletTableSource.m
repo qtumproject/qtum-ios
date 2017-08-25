@@ -9,6 +9,7 @@
 #import "WalletTableSource.h"
 #import "HistoryElement.h"
 #import "HistoryTableViewCell.h"
+#import "NSNumber+Comparison.h"
 
 @interface WalletTableSource ()
 
@@ -131,11 +132,11 @@ static NSInteger countOfSections = 2;
 
 - (HeaderCellType)headerCellType{
     
-    if (self.wallet.unconfirmedBalance == 0.0f && !self.haveTokens) {
+    if ([self.wallet.unconfirmedBalance isEqualToInt:0] && !self.haveTokens) {
         return HeaderCellTypeWithoutAll;
     }
     
-    if (self.wallet.unconfirmedBalance == 0.0f) {
+    if ([self.wallet.unconfirmedBalance isEqualToInt:0]) {
         return HeaderCellTypeWithoutNotCorfirmedBalance;
     }
     

@@ -24,5 +24,6 @@
 - (BOOL)isLessThanOrEqualToInt:(int)i;
 
 - (NSDecimalNumber*)decimalNumber;
+- (NSNumber*)roundedNumberWithScate:(NSInteger) scale;
 
 @end

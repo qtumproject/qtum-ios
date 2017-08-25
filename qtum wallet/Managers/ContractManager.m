@@ -166,17 +166,6 @@ static NSString* kLocalContractName = @"kLocalContractName";
     [self tokenDidChange:token];
 }
 
-- (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance{
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
-    NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
-    Contract* token = filteredArray.count ? filteredArray[0] : nil;
-    if (token) {
-        token.balance = [balance floatValue];
-        [self tokenDidChange:token];
-    }
-}
-
 - (void)updateTokenWithContractAddress:(NSString*) address withAddressBalanceDictionary:(NSDictionary*) addressBalance {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
