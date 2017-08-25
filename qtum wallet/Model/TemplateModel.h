@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, TemplateType) {
-    
     TokenType,
     NotmalContract,
     CrowdsaleType,

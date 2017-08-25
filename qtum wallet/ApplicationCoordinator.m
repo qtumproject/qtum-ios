@@ -29,6 +29,7 @@
 #import "Wallet.h"
 #import "Appearance.h"
 #import "SplashScreenOutput.h"
+#import "QStoreManager.h"
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
@@ -102,6 +103,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self.walletManager startObservingForAllSpendable];
         [[ContractManager sharedInstance] startObservingForAllSpendable];
+        [[QStoreManager sharedInstance] startObservingForAllRequests];
     });
 }
 
@@ -212,6 +214,7 @@
     [self.walletManager clear];
     [[ContractManager sharedInstance] clear];
     [[TemplateManager sharedInstance] clear];
+    [[QStoreManager sharedInstance] clear];
 
 }
 

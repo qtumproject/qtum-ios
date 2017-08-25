@@ -75,7 +75,12 @@
 @protocol ContractFunctionsOutput;
 @protocol AddressControlOutput;
 @protocol TokenAddressLibraryOutput;
+@protocol ChooseReciveAddressOutput;
 @protocol SplashScreenOutput;
+@protocol QStoreTemplateDetailOutput;
+@protocol QStoreMainOutput;
+@protocol QStoreContractOutput;
+@protocol QStoreListOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -108,6 +113,7 @@
 - (ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
 - (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
 - (EnableFingerprintViewController*)createEnableFingerprintViewController;
+- (NSObject<ChooseReciveAddressOutput> *)createChooseReciveAddressOutput;
 
 - (NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
 - (NSObject <TemplatesListOutput> *)createTemplateTokenViewController;
@@ -130,6 +136,12 @@
 - (NSObject <AddressControlOutput>*)createAddressControllOutput;
 - (NSObject <TokenAddressLibraryOutput>*)createTokenAddressControllOutput;
 - (NSObject <SplashScreenOutput> *)createSplashScreenOutput;
+- (NSObject <QStoreTemplateDetailOutput> *)createQStoreTemplateDetailOutput;
+
+// QStore
+- (NSObject <QStoreMainOutput> *)createQStoreMainViewController;
+- (NSObject <QStoreContractOutput> *)createQStoreContractViewController;
+- (NSObject<QStoreListOutput> *)createQStoreListViewController;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;
@@ -144,9 +156,7 @@
 - (LoaderPopUpViewController *)createLoaderViewController;
 - (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
 - (SecurityPopupViewController *)createSecurityPopupViewController;
-- (QStoreViewController*)createQStoreViewController;
-- (QStoreListViewController*)createQStoreListViewController;
-- (QStoreContractViewController*)createQStoreContractViewController;
+
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController;
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
 - (ShareTokenPopUpViewController *)createShareTokenPopUpViewController;

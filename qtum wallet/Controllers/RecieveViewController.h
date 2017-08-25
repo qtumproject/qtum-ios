@@ -12,7 +12,4 @@
 
 @interface RecieveViewController : BaseViewController <RecieveOutput, Presentable>
 
-@property (nonatomic, weak) id<RecieveOutputDelegate> delegate;
-@property (nonatomic, weak) id<Spendable> wallet;
-
 @end

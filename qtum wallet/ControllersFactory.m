@@ -38,9 +38,6 @@
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
 #import "EnableFingerprintViewController.h"
-#import "QStoreViewController.h"
-#import "QStoreListViewController.h"
-#import "QStoreContractViewController.h"
 #import "TabBarControllerLight.h"
 #import "NSUserDefaults+Settings.h"
 #import "PinViewController.h"
@@ -81,6 +78,9 @@
 #import "AddressControlOutput.h"
 #import "TokenAddressLibraryOutput.h"
 #import "SplashScreenOutput.h"
+#import "QStoreContractOutput.h"
+#import "QStoreListOutput.h"
+#import "QStoreTemplateDetailOutput.h"
 
 @implementation ControllersFactory
 
@@ -239,6 +239,12 @@
     return output;
 }
 
+-(NSObject<QStoreTemplateDetailOutput> *)createQStoreTemplateDetailOutput {
+    
+    NSObject<QStoreTemplateDetailOutput> *output = (NSObject<QStoreTemplateDetailOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreTemplateDetailViewController"];
+    return output;
+}
+
 -(NSObject <ContractCreationEndOutput> *)createCreateTokenFinishViewController {
     
     NSObject <ContractCreationEndOutput> *output = (NSObject <ContractCreationEndOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
@@ -305,18 +311,18 @@
     return controller;
 }
 
--(QStoreViewController*)createQStoreViewController{
-    QStoreViewController* controller = (QStoreViewController*)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreViewController"];
+- (NSObject <QStoreMainOutput> *)createQStoreMainViewController {
+    NSObject <QStoreMainOutput> *controller = (NSObject <QStoreMainOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreViewController"];
     return controller;
 }
 
--(QStoreListViewController*)createQStoreListViewController{
-    QStoreListViewController* controller = (QStoreListViewController*)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreListViewController"];
+-(NSObject<QStoreListOutput> *)createQStoreListViewController{
+    NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreListViewController"];
     return controller;
 }
 
--(QStoreContractViewController*)createQStoreContractViewController{
-    QStoreContractViewController* controller = (QStoreContractViewController*)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreContractViewController"];
+-(NSObject<QStoreContractOutput> *)createQStoreContractViewController{
+    NSObject<QStoreContractOutput> *controller = (NSObject<QStoreContractOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreContractViewController"];
     return controller;
 }
 
@@ -425,7 +431,7 @@
 }
 
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController{
-    SourceCodePopUpViewController* controller = (SourceCodePopUpViewController *)[UIViewController controllerInStoryboard:@"SourceCodePopUp" withIdentifire:@"SourceCodePop"];
+    SourceCodePopUpViewController* controller = (SourceCodePopUpViewController *)[UIViewController controllerInStoryboard:@"SourceCodePopUp" withIdentifire:@"SourceCodePopUpViewController"];
     return controller;
 }
 
@@ -442,7 +448,7 @@
 
 
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController{
-    ConfirmPurchasePopUpViewController* controller = (ConfirmPurchasePopUpViewController *)[UIViewController controllerInStoryboard:@"ConfirmPurchasePopUp" withIdentifire:@"ConfirmPurchasePopUp"];
+    ConfirmPurchasePopUpViewController* controller = (ConfirmPurchasePopUpViewController *)[UIViewController controllerInStoryboard:@"ConfirmPurchasePopUp" withIdentifire:@"ConfirmPurchasePopUpViewController"];
     return controller;
 }
 

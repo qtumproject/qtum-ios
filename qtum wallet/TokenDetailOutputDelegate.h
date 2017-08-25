@@ -15,5 +15,6 @@
 - (void)didBackPressed;
 - (void)didShareTokenButtonPressed;
 - (void)didShowTokenAddressControlWith:(Contract*) contract;
+- (void)didPullToUpdateToken:(Contract*) token;
 
 @end

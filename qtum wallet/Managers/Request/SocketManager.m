@@ -10,10 +10,12 @@
 #import "ApplicationCoordinator.h"
 #import "Contract.h"
 #import "NotificationManager.h"
+#import "QStoreManager.h"
 
 @import SocketIO;
 
 static NSString *BASE_URL = @"http://163.172.251.4:5931/";
+//static NSString *BASE_URL = @"http://163.172.68.103:5931";
 
 NSString *const kSocketDidConnect = @"kSocketDidConnect";
 NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
@@ -141,6 +143,13 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     [self.currentSocket on:@"reconnect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         weakSelf.status = Reconnecting;
     }];
+    
+    [self.currentSocket on:@"contract_purchase" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        
+        NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
+        [[QStoreManager sharedInstance] updateContractRequestsWithDict:data[0]];
+        DLog(@"%@", data[0]);
+    }];
 }
 
 -(void)stoptWithHandler:(void(^)()) handler {
@@ -148,7 +157,6 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     NSString* token  = [[ApplicationCoordinator sharedInstance].notificationManager token];
     [self.currentSocket emit:@"unsubscribe" with:@[@"balance_subscribe",[NSNull null], @{@"notificationToken" : token ?: [NSNull null]}]];
     [self.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",[NSNull null], @{@"notificationToken" : token ?: [NSNull null]}]];
-
    // [self.currentSocket disconnect];
 }
 
@@ -165,6 +173,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
                                                                                                                                                                                                                          @"language" : [LanguageManager currentLanguageCode]}]];
         }
     };
+    
     [_requestQueue addOperationWithBlock:block];
 }
 
@@ -175,8 +184,26 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     NSString* deviceToken  = [[ApplicationCoordinator sharedInstance].notificationManager token];
     dispatch_block_t block = ^{
         if (weakToken) {
-            [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null]}]];
+            [weakSelf.currentSocket emit:@"subscribe" with:@[@"token_balance_change",@{@"contract_address" : weakToken.contractAddress, @"addresses" : [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys]}, @{@"notificationToken" : deviceToken ?: [NSNull null]}]];
         }
+    };
+    [_requestQueue addOperationWithBlock:block];
+}
+
+-(void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
+    
+    __weak __typeof(self)weakSelf = self;
+    dispatch_block_t block = ^{
+       [weakSelf.currentSocket emit:@"subscribe" with:@[@"contract_purchase",requestId]];
+    };
+    [_requestQueue addOperationWithBlock:block];
+}
+
+-(void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
+    
+    __weak __typeof(self)weakSelf = self;
+    dispatch_block_t block = ^{
+        [weakSelf.currentSocket emit:@"unsubscribe" with:@[@"contract_purchase",requestId]];
     };
     [_requestQueue addOperationWithBlock:block];
 }

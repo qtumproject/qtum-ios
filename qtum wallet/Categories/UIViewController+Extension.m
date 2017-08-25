@@ -67,7 +67,14 @@
         [identifire isEqualToString:@"AddressControlListViewController"] ||
         [identifire isEqualToString:@"AddressTransferPopupViewController"] ||
         [identifire isEqualToString:@"TokenAddressControlViewController"] ||
-        [identifire isEqualToString:@"SplashViewController"]) {
+        [identifire isEqualToString:@"SplashViewController"] ||
+        [identifire isEqualToString:@"ChooseReciveAddressViewController"] ||
+        [identifire isEqualToString:@"QStoreContractViewController"] ||
+        [identifire isEqualToString:@"QStoreViewController"] ||
+        [identifire isEqualToString:@"QStoreListViewController"] ||
+        [identifire isEqualToString:@"SourceCodePopUpViewController"] ||
+        [identifire isEqualToString:@"ConfirmPurchasePopUpViewController"] ||
+        [identifire isEqualToString:@"QStoreTemplateDetailViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

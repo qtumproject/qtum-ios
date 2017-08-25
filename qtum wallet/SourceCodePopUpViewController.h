@@ -12,5 +12,6 @@
 @interface SourceCodePopUpViewController : PopUpViewController
 
 @property (nonatomic, weak) id<PopUpWithTwoButtonsViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end

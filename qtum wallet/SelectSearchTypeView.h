@@ -18,4 +18,7 @@
 
 @property (nonatomic, weak) id<SelectSearchTypeViewDelegate> delegate;
 
+- (void)setSelectedIndex:(NSInteger)index;
+- (NSInteger)selectedIndex;
+
 @end

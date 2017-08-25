@@ -17,11 +17,6 @@
 @required
 -(void)createStepOneCancelDidPressed;
 -(void)didPressedBack;
--(void)didSelectQStoreCategories;
--(void)didSelectQStoreCategory;
--(void)didSelectQStoreContract;
--(void)didSelectQStoreContractDetails;
-
 
 - (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;
@@ -29,7 +24,7 @@
 
 @end
 
-@interface ContractCoordinator : BaseCoordinator <Coordinatorable,ContractCoordinatorDelegate>
+@interface ContractCoordinator : BaseCoordinator <Coordinatorable, ContractCoordinatorDelegate>
 
 -(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 

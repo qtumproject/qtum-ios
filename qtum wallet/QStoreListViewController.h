@@ -7,18 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ContractCoordinator.h"
+#import "QStoreListOutput.h"
+#import "Presentable.h"
+#import "QStoreListTableSource.h"
 
-typedef NS_ENUM(NSInteger, QStoreListType) {
-    QStoreCategories,
-    QStoreContracts
-};
+@interface QStoreListViewController : UIViewController <QStoreListOutput, Presentable>
 
-@interface QStoreListViewController : UIViewController
-
-@property (weak,nonatomic) id <ContractCoordinatorDelegate> delegate;
-
-@property (assign, nonatomic) QStoreListType type;
-@property (copy, nonatomic) NSString *categoryTitle;
+@property (nonatomic) QStoreListTableSource *source;
 
 @end

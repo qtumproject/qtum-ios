@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @protocol QStoreListTableSourceDelegate <NSObject>
 
-- (void)didSelectCell;
+- (void)didSelectCell:(NSIndexPath *)indexPath;
 
 @end
 
 @interface QStoreListTableSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) id<QStoreListTableSourceDelegate> delegate;
+@property (nonatomic) NSArray *array;
+
 
 @end

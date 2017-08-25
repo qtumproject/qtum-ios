@@ -12,6 +12,7 @@
 @interface QStoreTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 - (void)setCollectionViewSource:(QStoreCollectionViewSource *)source;
 

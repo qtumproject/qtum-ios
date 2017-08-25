@@ -26,5 +26,7 @@
 + (PopUpContent *)contentForInvalidQRCodeFormatPopUp;
 + (PopUpContent *)contentForTokenAdded;
 + (PopUpContent *)contentForContractAdded;
++ (PopUpContent *)contentForContractBought;
++ (PopUpContent *)contentForQStoreAbi;
 
 @end

@@ -18,4 +18,6 @@
 @property (nonatomic, strong) Contract* token;
 @property (nonatomic, weak) id <TokenDetailDataDisplayManager> source;
 
+-(void)updateControls;
+
 @end

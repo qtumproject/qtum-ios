@@ -95,7 +95,7 @@
 
 - (InterfaceInputFormModel*)tokenInterfaceWithTemplate:(NSString*)templatePath {
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance]abiWithTemplate:templatePath]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] abiWithTemplate:templatePath]];
     return interphase;
 }
 

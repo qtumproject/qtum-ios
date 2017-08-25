@@ -33,11 +33,18 @@
 -(CGFloat)balance {
     
     NSArray* values = self.addressBalanceDictionary.allValues;
-    CGFloat balance = 0;
+    NSDecimalNumber* balanceDecimal = [[NSDecimalNumber alloc] initWithFloat:0];
+    CGFloat floaBalance = 0;
+
     for (NSNumber* balanceValue in values) {
-        balance += balanceValue.floatValue;
+        
+        if ([balanceValue isKindOfClass:[NSDecimalNumber class]]) {
+            balanceDecimal = [balanceDecimal decimalNumberByAdding:(NSDecimalNumber*)balanceValue];
+        } else {
+            floaBalance += balanceValue.floatValue;
+        }
     }
-    return balance;
+    return balanceDecimal.floatValue + floaBalance;
 }
 
 #pragma mark - Spendable
@@ -61,7 +68,7 @@
 -(void)historyDidChange{
     [self.manager spendableDidChange:self];
 }
--(void)updateHandler:(void(^)(BOOL success)) complete{
+-(void)updateWithHandler:(void(^)(BOOL success)) complete{
     [self.manager updateSpendableObject:self];
 }
 

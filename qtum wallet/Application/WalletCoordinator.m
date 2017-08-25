@@ -13,6 +13,7 @@
 #import "TokenListOutput.h"
 #import "HistoryItemOutput.h"
 #import "RecieveOutput.h"
+#import "Wallet.h"
 
 #import "WalletTableSource.h"
 #import "TabBarCoordinator.h"
@@ -36,8 +37,9 @@
 #import "WalletManager.h"
 #import "AddressLibruaryCoordinator.h"
 #import "TokenAddressLibraryCoordinator.h"
+#import "ChooseReciveAddressOutput.h"
 
-@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate, ChooseReciveAddressOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
@@ -45,6 +47,7 @@
 @property (weak, nonatomic) NSObject<WalletOutput> *walletViewController;
 @property (weak, nonatomic) NSObject<TokenListOutput> *tokenController;
 @property (weak, nonatomic) NSObject <TokenDetailOutput> *tokenDetailsViewController;
+@property (weak, nonatomic) NSObject <RecieveOutput> *reciveOutput;
 
 @property (assign, nonatomic) BOOL isNewDataLoaded;
 @property (assign, nonatomic) BOOL isBalanceLoaded;
@@ -146,8 +149,23 @@
 -(void)showAddressInfoWithSpendable:(id <Spendable>) spendable {
     
     NSObject<RecieveOutput> *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
-    vc.wallet = spendable;
+    
+    if ([spendable isKindOfClass:[Contract class]]) {
+        
+        vc.walletAddress = spendable.mainAddress;
+        vc.type = ReciveTokenOutput;
+        vc.tokenAddress =  nil;
+    } else {
+        
+        vc.walletAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+        vc.type = ReciveWalletOutput;
+        vc.tokenAddress = spendable.mainAddress;
+    }
+    
+    vc.balanceText = [NSString stringWithFormat:@"%.3f", spendable.balance];
+    vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%.3f", spendable.unconfirmedBalance];
     vc.delegate = self;
+    self.reciveOutput = vc;
     [self.navigationController pushViewController:[vc toPresent] animated:YES];
 }
 
@@ -168,6 +186,11 @@
 - (void)didShowTokenAddressControlWith:(Contract *)contract {
     
     [self showTokenAddressControlFlowWith:contract];
+}
+
+- (void)didPullToUpdateToken:(Contract*) token {
+    
+    [token updateWithHandler:nil];
 }
 
 
@@ -248,11 +271,12 @@
     }
 }
 
--(void)updateTokens{
+-(void)updateTokens {
     
     [self configWallet];
     [self setWalletToDelegates];
     [self updateControls];
+    [self updateTokenDetail];
     __weak __typeof(self)weakSelf = self;
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -265,6 +289,11 @@
     
     NSArray *tokensArray = [[ContractManager sharedInstance] allActiveTokens];
     [self.pageViewController setPageControllHidden:!tokensArray.count];
+}
+
+-(void)updateTokenDetail {
+    
+    [self.tokenDetailsViewController updateControls];
 }
 
 -(void)showAddressControlFlow {
@@ -319,9 +348,28 @@
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 
+#pragma mark - RecieveOutputDelegate
+
+-(void)didPressedChooseAddress {
+    
+    NSObject<ChooseReciveAddressOutput> *output = [[ControllersFactory sharedInstance] createChooseReciveAddressOutput];
+    output.delegate = self;
+    output.addresses = [ApplicationCoordinator sharedInstance].walletManager.wallet.allKeysAdreeses;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
+}
+
+-(void)didChooseAddress:(NSString*) address {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    self.reciveOutput.walletAddress = address;
+    [self.reciveOutput updateControls];
+}
+
+
 #pragma mark - WalletOutputDelegate
 
 - (void)didShowQRCodeScan {
+    
     QRCodeViewController *vc = [[ControllersFactory sharedInstance] createQRCodeViewControllerForWallet];
     vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
@@ -356,6 +404,7 @@
 
 - (void)didShowAddressControl {
     
+
     [self showAddressControlFlow];
 }
 

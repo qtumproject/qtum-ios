@@ -29,10 +29,13 @@
     self.collectionView.delegate = source;
     self.collectionView.dataSource = source;
     
+    [self.collectionView reloadData];
+    
     [self.collectionView setDecelerationRate:0.8];
 }
 
 + (CGFloat)getHeightCellForRowCount:(NSInteger)count {
+    
     CGFloat heightCell = 130.0f;
     CGFloat spaceBetweenRows = 2.0f;
     CGFloat headerHeight = 33.0f;
