@@ -10,5 +10,8 @@
 
 @implementation TokenFunctionCell
 
+-(void)setupWithObject:(id)object {
+    
+}
 
 @end

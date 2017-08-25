@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="e6g-Z4-akG" customClass="SelectSearchTypeView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wp8-aC-lfi" customClass="CheckboxButtonLight">
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="28"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search by Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dv-LS-QzM">
+                            <rect key="frame" x="37" y="7.5" width="101.5" height="14"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                            <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieX-mm-LD8">
+                            <rect key="frame" x="10" y="5" width="18" height="18"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-checkbox" translatesAutoresizingMaskIntoConstraints="NO" id="ySb-lY-rPT">
+                                    <rect key="frame" x="2" y="4.5" width="13" height="9"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="18" id="06d-0D-8tv"/>
+                                <constraint firstItem="ySb-lY-rPT" firstAttribute="centerY" secondItem="ieX-mm-LD8" secondAttribute="centerY" id="YFV-8H-Afb"/>
+                                <constraint firstAttribute="height" constant="18" id="fd7-BR-NM8"/>
+                                <constraint firstItem="ySb-lY-rPT" firstAttribute="centerX" secondItem="ieX-mm-LD8" secondAttribute="centerX" id="qo4-nb-0ic"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ieX-mm-LD8" firstAttribute="leading" secondItem="Wp8-aC-lfi" secondAttribute="leading" constant="10" id="Gmu-7D-ZfI"/>
+                        <constraint firstItem="9dv-LS-QzM" firstAttribute="centerY" secondItem="Wp8-aC-lfi" secondAttribute="centerY" id="aaT-lc-6zn"/>
+                        <constraint firstItem="9dv-LS-QzM" firstAttribute="leading" secondItem="ieX-mm-LD8" secondAttribute="trailing" constant="9" id="aqb-bz-aBQ"/>
+                        <constraint firstItem="ieX-mm-LD8" firstAttribute="centerY" secondItem="Wp8-aC-lfi" secondAttribute="centerY" id="ceb-83-fqV"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="checkImageView" destination="ySb-lY-rPT" id="27b-Lk-dDN"/>
+                        <outlet property="checkView" destination="ieX-mm-LD8" id="66Z-s1-jc3"/>
+                        <outlet property="titleLabel" destination="9dv-LS-QzM" id="Nuf-hB-K3i"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKV-RF-qhk" customClass="CheckboxButtonLight">
+                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="28"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search by Hashtag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMp-0s-pva">
+                            <rect key="frame" x="32" y="7.5" width="116.5" height="14"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                            <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8K-VF-uM2">
+                            <rect key="frame" x="5" y="5" width="18" height="18"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-checkbox" translatesAutoresizingMaskIntoConstraints="NO" id="mbP-tu-UwV">
+                                    <rect key="frame" x="2" y="4.5" width="13" height="9"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="18" id="2cG-Mw-De6"/>
+                                <constraint firstItem="mbP-tu-UwV" firstAttribute="centerY" secondItem="R8K-VF-uM2" secondAttribute="centerY" id="bZT-ih-aDN"/>
+                                <constraint firstAttribute="height" constant="18" id="fXB-Bg-kcu"/>
+                                <constraint firstItem="mbP-tu-UwV" firstAttribute="centerX" secondItem="R8K-VF-uM2" secondAttribute="centerX" id="rX0-Bp-Lb0"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="QMp-0s-pva" firstAttribute="centerY" secondItem="YKV-RF-qhk" secondAttribute="centerY" id="KuY-B9-Jk7"/>
+                        <constraint firstItem="QMp-0s-pva" firstAttribute="leading" secondItem="R8K-VF-uM2" secondAttribute="trailing" constant="9" id="QUy-uT-buc"/>
+                        <constraint firstItem="R8K-VF-uM2" firstAttribute="centerY" secondItem="YKV-RF-qhk" secondAttribute="centerY" id="Qew-Aq-Cmw"/>
+                        <constraint firstItem="R8K-VF-uM2" firstAttribute="leading" secondItem="YKV-RF-qhk" secondAttribute="leading" constant="5" id="iQc-TM-nPH"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="checkImageView" destination="mbP-tu-UwV" id="1BT-UA-LYo"/>
+                        <outlet property="checkView" destination="R8K-VF-uM2" id="cgq-gO-WMF"/>
+                        <outlet property="titleLabel" destination="QMp-0s-pva" id="t2Q-pS-mWE"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.92941176469999998" green="0.96470588239999999" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Wp8-aC-lfi" firstAttribute="width" secondItem="YKV-RF-qhk" secondAttribute="width" id="1Vk-dm-Cyu"/>
+                <constraint firstAttribute="trailing" secondItem="YKV-RF-qhk" secondAttribute="trailing" id="5ay-rJ-9KK"/>
+                <constraint firstItem="Wp8-aC-lfi" firstAttribute="leading" secondItem="e6g-Z4-akG" secondAttribute="leading" id="Cr9-ib-I1b"/>
+                <constraint firstAttribute="bottom" secondItem="Wp8-aC-lfi" secondAttribute="bottom" id="QRQ-jk-xjJ"/>
+                <constraint firstItem="Wp8-aC-lfi" firstAttribute="top" secondItem="e6g-Z4-akG" secondAttribute="top" id="VT8-E8-gPt"/>
+                <constraint firstItem="YKV-RF-qhk" firstAttribute="leading" secondItem="Wp8-aC-lfi" secondAttribute="trailing" id="Yzk-vX-3ZV"/>
+                <constraint firstItem="YKV-RF-qhk" firstAttribute="top" secondItem="e6g-Z4-akG" secondAttribute="top" id="i4P-h0-TNr"/>
+                <constraint firstAttribute="bottom" secondItem="YKV-RF-qhk" secondAttribute="bottom" id="neq-ya-WSf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="leftButton" destination="Wp8-aC-lfi" id="ipK-KH-ftP"/>
+                <outlet property="rightButton" destination="YKV-RF-qhk" id="PLh-pJ-FOQ"/>
+            </connections>
+            <point key="canvasLocation" x="-111.5" y="-213"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic-checkbox" width="13" height="9"/>
+    </resources>
+</document>

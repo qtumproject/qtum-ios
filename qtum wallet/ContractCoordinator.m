@@ -28,9 +28,9 @@
 #import "RestoreContractsViewController.h"
 #import "BackupContractsViewController.h"
 #import "TemplateManager.h"
-#import "QStoreViewController.h"
-#import "QStoreListViewController.h"
-#import "QStoreContractViewController.h"
+
+#import "QStoreCoordinator.h"
+
 #import "Wallet.h"
 
 #import "LibraryOutput.h"
@@ -78,6 +78,8 @@ ContractFunctionsOutputDelegate>
 @property (nonatomic) BOOL isLibraryViewControllerOnlyForTokens;
 @property (copy, nonatomic) NSString* localContractName;
 
+@property (strong, nonatomic) QStoreCoordinator *qStoreCoordinator;
+
 @end
 
 @implementation ContractCoordinator
@@ -123,29 +125,8 @@ ContractFunctionsOutputDelegate>
 }
 
 -(void)showContractStore {
-    
-    QStoreViewController* controller = (QStoreViewController*)[[ControllersFactory sharedInstance] createQStoreViewController];
-    controller.delegate = self;
-    
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
--(void)showQStoreList:(QStoreListType)type categoryTitle:(NSString *)categoryTitle {
-    
-    QStoreListViewController* controller = (QStoreListViewController*)[[ControllersFactory sharedInstance] createQStoreListViewController];
-    controller.delegate = self;
-    controller.type = type;
-    controller.categoryTitle = categoryTitle;
-    
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
--(void)showQStoreContract {
-    
-    QStoreContractViewController* controller = (QStoreContractViewController*)[[ControllersFactory sharedInstance] createQStoreContractViewController];
-    controller.delegate = self;
-    
-    [self.navigationController pushViewController:controller animated:YES];
+    self.qStoreCoordinator = [[QStoreCoordinator alloc] initWithNavigationController:self.navigationController];
+    [self.qStoreCoordinator start];
 }
 
 -(void)showWatchContract {
@@ -229,7 +210,6 @@ ContractFunctionsOutputDelegate>
 }
 
 -(void)showChooseFromLibrary:(BOOL)tokensOnly {
-    
     self.isLibraryViewControllerOnlyForTokens = tokensOnly;
     self.libraryViewController = [[ControllersFactory sharedInstance] createLibraryViewController];
     self.libraryTableSource = [[TableSourcesFactory sharedInstance] createLibrarySource];
@@ -270,7 +250,6 @@ ContractFunctionsOutputDelegate>
 }
 
 -(void)finishStepFinishDidPressed{
-
     __weak __typeof(self)weakSelf = self;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
@@ -304,22 +283,6 @@ ContractFunctionsOutputDelegate>
     [self.navigationController pushViewController:[output toPresent] animated:true];
 }
 
-- (void)didSelectQStoreCategories {
-    [self showQStoreList:QStoreCategories categoryTitle:nil];
-}
-
-- (void)didSelectQStoreCategory {
-    [self showQStoreList:QStoreContracts categoryTitle:@"Some category"];
-}
-
-- (void)didSelectQStoreContract {
-    [self showQStoreContract];
-}
-
-- (void)didSelectQStoreContractDetails {
-    [self didSelectFunctionIndexPath:nil withItem:nil andToken:nil fromQStore:YES];
-}
-
 -(void)didPressedQuit {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -327,14 +290,12 @@ ContractFunctionsOutputDelegate>
 #pragma mark - ContractFunctionsOutputDelegate
 
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token {
-    
     [self didSelectFunctionIndexPath:indexPath withItem:item andToken:token fromQStore:NO];
 }
 
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item{
     
 }
-
 
 #pragma mark - ContractFunctionDetailOutputDelegate
 
@@ -397,7 +358,6 @@ ContractFunctionsOutputDelegate>
 }
 
 - (void)didChangeAbiText {
-    
     self.activeTemplateForLibrary = nil;
     self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
     self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;

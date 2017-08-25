@@ -77,6 +77,10 @@
 @protocol TokenAddressLibraryOutput;
 @protocol ChooseReciveAddressOutput;
 @protocol SplashScreenOutput;
+@protocol QStoreTemplateDetailOutput;
+@protocol QStoreMainOutput;
+@protocol QStoreContractOutput;
+@protocol QStoreListOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -132,6 +136,12 @@
 - (NSObject <AddressControlOutput>*)createAddressControllOutput;
 - (NSObject <TokenAddressLibraryOutput>*)createTokenAddressControllOutput;
 - (NSObject <SplashScreenOutput> *)createSplashScreenOutput;
+- (NSObject <QStoreTemplateDetailOutput> *)createQStoreTemplateDetailOutput;
+
+// QStore
+- (NSObject <QStoreMainOutput> *)createQStoreMainViewController;
+- (NSObject <QStoreContractOutput> *)createQStoreContractViewController;
+- (NSObject<QStoreListOutput> *)createQStoreListViewController;
 
 - (QRCodeViewController*)createQRCodeViewControllerForWallet;
 - (QRCodeViewController*)createQRCodeViewControllerForSend;
@@ -146,9 +156,7 @@
 - (LoaderPopUpViewController *)createLoaderViewController;
 - (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
 - (SecurityPopupViewController *)createSecurityPopupViewController;
-- (QStoreViewController*)createQStoreViewController;
-- (QStoreListViewController*)createQStoreListViewController;
-- (QStoreContractViewController*)createQStoreContractViewController;
+
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController;
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
 - (ShareTokenPopUpViewController *)createShareTokenPopUpViewController;

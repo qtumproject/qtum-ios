@@ -10,7 +10,6 @@
 
 @interface SourceCodePopUpViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
@@ -26,8 +25,6 @@
 }
 
 - (void)setupTextView {
-    self.textView.layer.borderWidth = 1.0f;
-    self.textView.layer.borderColor = customBlackColor().CGColor;
 }
 
 - (IBAction)actionCancel:(id)sender {

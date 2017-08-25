@@ -33,5 +33,8 @@ typedef NS_ENUM(NSInteger, ConnectionStatus) {
 - (void)startObservingToken:(Contract*)token withHandler:(void(^)())handler;
 - (void)stopObservingToken:(Contract*)token withHandler:(void(^)())handler;
 
+- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
+- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
+
 
 @end

@@ -88,9 +88,60 @@
 - (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion;
 - (void)stopObservingForToken:(Contract*) token;
 
+- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
+- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
+
 // Observing for events
 
 - (void)callFunctionToContractAddress:(NSString*) address withHashes:(NSArray*) hashes withHandler:(void(^)(id responseObject))completesion;
+
+// QStore
+
+- (void)getContractsByCategoryPath:(NSString *)path
+                withSuccessHandler:(void(^)(id responseObject))success
+                 andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getFullContractById:(NSString *)contractId withSuccessHandler:(void(^)(id responseObject))success
+          andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)searchContractsByCount:(NSInteger)count
+                        offset:(NSInteger)offset
+                          type:(NSString *)type
+                          tags:(NSArray *)tags
+            withSuccessHandler:(void(^)(id responseObject))success
+             andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getContractABI:(NSString *)contractId
+                withSuccessHandler:(void(^)(id responseObject))success
+                andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)buyContract:(NSString *)contractId
+ withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)checkRequestPaid:(NSString *)contractId
+                requestId:(NSString *)requestId
+                withSuccessHandler:(void(^)(id responseObject))success
+                andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getSourceCode:(NSString *)contractId
+            requestId:(NSString *)requestId
+          accessToken:(NSString *)accessToken
+   withSuccessHandler:(void(^)(id responseObject))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getByteCode:(NSString *)contractId
+     buyerAddresses:(NSString *)buyerAddresses
+              nonce:(NSNumber *)nonce
+              signs:(NSArray *)signs
+ withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getByteCode:(NSString *)contractId
+          requestId:(NSString *)requestId
+        accessToken:(NSString *)accessToken
+ withSuccessHandler:(void(^)(id responseObject))success
+  andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 
 @end

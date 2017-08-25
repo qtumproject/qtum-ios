@@ -66,6 +66,11 @@
     return content;
 }
 
++ (PopUpContent *)contentForQStoreAbi{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Abi", nil) message:nil okTitle:NSLocalizedString(@"Copy", nil) cancelTitle:nil];
+    return content;
+}
+
 + (PopUpContent *)contentForSourceCode{
     PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Source Code", nil) message:nil okTitle:NSLocalizedString(@"Copy", nil) cancelTitle:nil];
     return content;
@@ -78,6 +83,11 @@
 
 + (PopUpContent *)contentForInvalidQRCodeFormatPopUp{
     PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Invalid QR Code format", nil) okTitle:NSLocalizedString(@"OK", nil) cancelTitle:NSLocalizedString(@"TRY AGAIN", nil)];
+    return content;
+}
+
++ (PopUpContent *)contentForContractBought{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Contract bought", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
     return content;
 }
 

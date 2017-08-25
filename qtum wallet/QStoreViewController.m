@@ -8,31 +8,35 @@
 
 #import "QStoreViewController.h"
 #import "QStoreTableSource.h"
-#import "CustomSearchBar.h"
 #import "SelectSearchTypeView.h"
 #import "QStoreSearchTableSource.h"
+#import "QStoreContractElement.h"
 
-@interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate, SelectSearchTypeViewDelegate, QStoreTableSourceDelegate, QStoreSearchTableSourceDelegate>
+CGFloat const KeyboardDuration = 0.25f;
+
+@interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet CustomSearchBar *searchBar;
 
-@property (nonatomic) QStoreTableSource *source;
-@property (nonatomic) QStoreSearchTableSource *searchSource;
-@property (nonatomic) UIView *containerForSearchElements;
-@property (nonatomic) NSLayoutConstraint *bottomConstraintForContainer;
-@property (nonatomic) SelectSearchTypeView *selectSearchType;
-@property (nonatomic) UITableView *searchTableView;
+
+
+
+@property (nonatomic) BOOL wasSettedTag;
+@property (nonatomic) NSString *tagString;
 
 @end
 
 @implementation QStoreViewController
+
+@synthesize delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.source = [QStoreTableSource new];
     self.source.delegate = self;
+    self.source.tableView = self.tableView;
+    
     self.tableView.delegate = self.source;
     self.tableView.dataSource = self.source;
     [self.tableView setDecelerationRate:0.8f];
@@ -42,6 +46,8 @@
     [self createContainer];
     [self createSelectSearchView];
     [self createSearchTableView];
+    
+    [self loadTrendingNow];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,6 +62,16 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.wasSettedTag) {
+        [self.searchBar becomeFirstResponder];
+        self.wasSettedTag = NO;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -89,6 +105,7 @@
 }
 
 - (void)createSelectSearchView {
+    
     self.selectSearchType = [[[NSBundle mainBundle] loadNibNamed:@"SelectSearchTypeView" owner:self options:nil] firstObject];
     self.selectSearchType.alpha = 1.0f;
     self.selectSearchType.translatesAutoresizingMaskIntoConstraints = NO;
@@ -109,6 +126,8 @@
     self.searchSource.delegate = self;
     
     self.searchTableView = [UITableView new];
+    self.searchTableView.tableFooterView = [UIView new];
+    self.searchTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.searchTableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.searchTableView.dataSource = self.searchSource;
     self.searchTableView.delegate = self.searchSource;
@@ -144,7 +163,7 @@
     
     self.bottomConstraintForContainer.constant = - (kbSize.height - tapBarHeight);
     
-    [UIView animateWithDuration:duration animations:^{
+    [UIView animateWithDuration:duration - 0.05f animations:^{
         self.containerForSearchElements.alpha = 1.0f;
         [self.view layoutIfNeeded];
     }];
@@ -154,8 +173,10 @@
     NSDictionary *info = [notification userInfo];
     CGFloat duration = [info[UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
+    self.bottomConstraintForContainer.constant = 0;
+    
     [UIView animateWithDuration:duration animations:^{
-        self.containerForSearchElements.alpha = 0.0f;
+        [self.view layoutIfNeeded];
     }];
 }
 
@@ -176,27 +197,40 @@
 #pragma mark - SelectSearchTypeViewDelegate
 
 - (void)selectIndexChanged:(NSInteger)index {
-    DLog(@"Current index : %ld", (long)index);
+    [self.delegate didChangedSearchText:self.searchBar.text orSelectedSearchIndex:index];
 }
 
 #pragma mark - UISearchBarDelegate
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self.delegate didChangedSearchText:searchText orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    
+    [self.delegate didChangedSearchText:self.searchBar.text orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    [self.searchBar setShowsCancelButton:YES animated:YES];
+    if (!self.searchBar.cancelButtonShowed) {
+        [self.searchBar setShowsCancelButton:YES animated:YES];
+    }
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-    [self.searchBar setShowsCancelButton:NO animated:YES];
+//    [self.searchBar setShowsCancelButton:NO animated:YES];
     return YES;
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [self.searchBar setText:@""];
+    [self.searchBar setShowsCancelButton:NO animated:YES];
     [self.searchBar resignFirstResponder];
+    
+    [UIView animateWithDuration:KeyboardDuration animations:^{
+        self.containerForSearchElements.alpha = 0.0f;
+    }];
+    
+    [self.delegate didChangedSearchText:self.searchBar.text orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
@@ -211,14 +245,68 @@
 
 #pragma mark - QStoreTableSourceDelegate
 
-- (void)didSelectCollectionCell {
-    [self.delegate didSelectQStoreContract];
+- (void)didSelectCollectionCellWithElement:(QStoreContractElement *)element {
+    [self.delegate didSelectQStoreContractElement:element];
 }
 
 #pragma mark - QStoreSearchTableSourceDelegate
 
-- (void)didSelectSearchCell {
-    [self.delegate didSelectQStoreContract];
+- (void)didSelectSearchCellWithElement:(QStoreContractElement *)element {
+    QStoreContractElement *el = [[QStoreContractElement alloc] initWithIdString:element.idString
+                                                                                     name:element.name
+                                                                              priceString:element.priceString
+                                                                                 countBuy:element.countBuy
+                                                                           countDownloads:element.countDownloads
+                                                                                createdAt:element.createdAt
+                                                                               typeString:element.typeString];
+    [self.delegate didSelectQStoreContractElement:el];
+}
+
+- (void)loadMoreElements {
+    [self.delegate didLoadMoreElementsForText:self.searchBar.text orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
+}
+
+#pragma mark - Methods
+
+- (void)loadTrendingNow {
+    [self.delegate didLoadCategories];
+}
+
+- (void)startLoading {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[PopUpsManager sharedInstance] showLoaderPopUp];
+    });
+}
+
+- (void)stopLoading {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[PopUpsManager sharedInstance] dismissLoader];
+    });
+}
+
+- (void)setCategories:(NSArray<QStoreCategory *> *)categories {
+    [self.source setCategoriesArray:categories];
+}
+
+- (void)setTag:(NSString *)tag {
+    [self.searchBar setText:tag];
+    [self.searchBar setShowsCancelButton:YES animated:NO];
+    [self.selectSearchType setSelectedIndex:1];
+    
+    [self.delegate didChangedSearchText:self.searchBar.text orSelectedSearchIndex:[self.selectSearchType selectedIndex]];
+    
+    self.wasSettedTag = YES;
+}
+
+- (void)setSearchElements:(NSArray<QStoreContractElement *> *)elements {
+    [self.searchSource setSearchElements:elements];
+    [self.searchTableView reloadData];
+    [self.searchTableView setContentOffset:CGPointZero animated:NO];
+}
+
+- (void)setSearchMoreElements:(NSArray<QStoreContractElement *> *)elements {
+    [self.searchSource setSearchElements:elements];
+    [self.searchTableView reloadData];
 }
 
 @end
