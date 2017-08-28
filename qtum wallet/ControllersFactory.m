@@ -82,11 +82,12 @@
 #import "QStoreListOutput.h"
 #import "QStoreTemplateDetailOutput.h"
 #import "AboutOutput.h"
+#import "ChooseReciveAddressOutput.h"
 
 @implementation ControllersFactory
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
+    
     static ControllersFactory *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -364,6 +365,12 @@
 
 -(EnableFingerprintViewController*)createEnableFingerprintViewController{
     EnableFingerprintViewController* controller = (EnableFingerprintViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"EnableFingerprintViewController"];
+    return controller;
+}
+
+-(NSObject<ChooseReciveAddressOutput> *)createChooseReciveAddressOutput {
+    
+    NSObject<ChooseReciveAddressOutput> *controller = (NSObject<ChooseReciveAddressOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"ChooseReciveAddressViewController"];
     return controller;
 }
 
