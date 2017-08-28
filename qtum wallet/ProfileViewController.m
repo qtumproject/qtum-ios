@@ -74,6 +74,7 @@
 }
 
 - (void)configurateCell:(ProfileTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
     UIImage* image;
     NSString* text;
     if (indexPath.section == 0) {
