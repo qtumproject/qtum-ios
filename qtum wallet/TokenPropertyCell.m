@@ -34,7 +34,8 @@
         
         if (![responseObject isKindOfClass:[NSError class]]) {
             NSString* data = responseObject[@"items"][0][@"output"];
-            NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:object];
+            
+            NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:object];
             
             NSMutableString* result = [NSMutableString new];
             for (id output in array) {

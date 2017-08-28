@@ -108,7 +108,10 @@
 - (NSData*)tokenBitecodeWithTemplate:(NSString*)templatePath andParam:(NSDictionary*) args{
     
     NSMutableData* contractSource = [[[ContractFileManager sharedInstance] bitcodeWithTemplate:templatePath] mutableCopy];
-    [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromDictionary:args]];
+    [self tokenInterfaceWithTemplate:templatePath];
+    
+    NSArray* types = [self arrayOfTypesFromInputs:[self tokenInterfaceWithTemplate:templatePath].constructorItem.inputs];
+    [contractSource appendData:[[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:[args allValues] andArrayOfTypes:types]];
     return [contractSource copy];
 }
 
@@ -116,7 +119,8 @@
     
     NSMutableData* contractSource = [[[ContractFileManager sharedInstance] bitcodeWithTemplate:templatePath] mutableCopy];
     
-    [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromArray:args]];
+    NSArray* types = [self arrayOfTypesFromInputs:[self tokenInterfaceWithTemplate:templatePath].constructorItem.inputs];
+    [contractSource appendData:[[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:args andArrayOfTypes:types]];
     return [contractSource copy];
 }
 
@@ -158,10 +162,21 @@
         }
     }
     
-    NSData* args = [ContractArgumentsInterpretator contactArgumentsFromArray:[mutableParam copy]];
+    NSArray* types = [self arrayOfTypesFromInputs:fuctionItem.inputs];
+
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:[mutableParam copy] andArrayOfTypes:types];
     [hashFunction appendData:args];
     
     return [hashFunction copy];
+}
+
+-(NSArray*)arrayOfTypesFromInputs:(NSArray<AbiinterfaceInput*>*) inputs {
+    
+    NSMutableArray* types = @[].mutableCopy;
+    for (AbiinterfaceInput* input in inputs) {
+        [types addObject:@(input.type)];
+    }
+    return [types copy];
 }
 
 - (BOOL)isERCTokenStandartInterface:(NSArray*) interface {

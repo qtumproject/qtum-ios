@@ -16,6 +16,8 @@
 
 @implementation ContractArgumentsInterpretator
 
+NSInteger standardParameterBatch = 32;
+
 + (instancetype)sharedInstance {
     
     static ContractArgumentsInterpretator *instance;
@@ -40,7 +42,7 @@
     return nil;
 }
 
-- (NSData*)contactArgumentsFromArray:(NSArray*) array {
+- (NSData*)contactArgumentsFromArrayOfValues:(NSArray*) array andArrayOfTypes:(NSArray*) types {
     
     //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
     
@@ -88,25 +90,129 @@
     return args;
 }
 
+- (NSData*)contactArgumentFromArrayOfValues:(NSArray*) values andArrayOfTypes:(NSArray*) types {
+    
+    //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
+//    UInt8Type,
+//    UInt256Type,
+//    StringType,
+//    AddressType,
+//    BoolType
+    
+    NSMutableData* args = [NSMutableData new];
+    NSMutableArray* staticDataArray = @[].mutableCopy;
+    NSMutableArray* dynamicDataArray = @[].mutableCopy;
+    NSNumber* offset = @(32 * values.count);
+    
+    for (int i = 0; i < values.count; i++) {
+        
+        AbiInputType type = [types[i] integerValue];
+        
+        if (type == UInt8Type || [types[i] integerValue] == UInt256Type) {
+            
+            [self convertElementaryTypesWith:staticDataArray withType:type andOffset:&offset withData:values[i]];
+            
+        } else if (type == StringType){
+            
+            [self convertStringsWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
+        }
+    }
+    
+    
+    for (int i = 0; i < staticDataArray.count; i++) {
+        [args appendData:staticDataArray[i]];
+    }
+    
+    for (int i = 0; i < dynamicDataArray.count; i++) {
+        [args appendData:dynamicDataArray[i]];
+    }
+    
+    return args;
+}
+
+- (void)convertElementaryTypesWith:(NSMutableArray*)staticDataArray
+                          withType:(AbiInputType)type
+                         andOffset:(NSNumber**)offset
+                          withData:(NSNumber*)data {
+    
+    if (![data isKindOfClass:[NSNumber class]]) {
+        return;//bail if wrong data
+    }
+    
+    if (type == UInt8Type || type == UInt256Type ) {
+        
+        NSInteger param = [data integerValue];
+        [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:param]]];
+    }
+}
+
+- (void)convertStringsWithStaticStack:(NSMutableArray*)staticDataArray
+                      andDynamicStack:(NSMutableArray*)dynamicDataStack
+                             withType:(AbiInputType)type
+                            andOffset:(NSNumber**)offset
+                             withData:(NSString*)string {
+    
+    if (![string isKindOfClass:[NSString class]]) {
+        return;//bail if wrong data
+    }
+    
+    if (type == StringType) {
+        
+        //adding offset
+        [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:[*offset integerValue]]]];
+
+        //adding dynamic data in dynamic stack
+        NSInteger length = [string dataUsingEncoding:NSUTF8StringEncoding].length;
+        [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
+        
+        NSData* stringData = [self dataMultiple32bitFromString:string];
+        [dynamicDataStack addObject:stringData];
+        
+        //inc offset
+        *offset = @([*offset integerValue] + stringData.length + standardParameterBatch);
+    }
+}
+
+- (NSData*)dataOffsetFromIntOffset:(NSInteger) offset {
+    
+    return [NSData reverseData:[self uint256DataFromInt:offset]];
+}
+
 - (BTC256)btc256FromInt:(NSInteger) aInt {
+    
     NSMutableData* data = [NSMutableData dataWithBytes:&aInt length:sizeof(NSInteger)];
     [data increaseLengthBy:32 - data.length];
     return BTC256FromNSData(data);
 }
 
 - (NSData*)uint256DataFromInt:(NSInteger) aInt {
+    
     NSMutableData* data = [NSMutableData dataWithBytes:&aInt length:sizeof(NSInteger)];
-    [data increaseLengthBy:32 - data.length];
+    
+    if (data.length < 32) {
+        
+        [data increaseLengthBy:32 - data.length];
+    }
     return [data copy];
 }
 
 - (NSDictionary*)uint256DataFromString:(NSString*) aString {
+    
     NSMutableData* data = [[aString dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
     NSInteger shift = (data.length % 32) > 0 ? (data.length / 32 + 1) : data.length / 32;
     shift = shift > 0 ? shift : 1;
     [data increaseLengthBy:32 * shift - data.length];
     return @{@"data":data,
              @"shift" : @(shift > 0 ? shift - 1: shift)};
+}
+
+- (NSData*)dataMultiple32bitFromString:(NSString*) aString {
+    
+    NSMutableData* data = [[aString dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+    NSInteger expectedLenght = data.length % standardParameterBatch ? (data.length / standardParameterBatch + 1) : data.length / standardParameterBatch;
+    expectedLenght = expectedLenght == 0 ? 1 : expectedLenght;
+    [data increaseLengthBy:standardParameterBatch * expectedLenght - data.length];
+    return [data copy];
 }
 
 - (NSData*)uint256DataFromData:(NSData*) aData {

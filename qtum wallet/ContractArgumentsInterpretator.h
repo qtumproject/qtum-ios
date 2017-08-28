@@ -17,7 +17,8 @@
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 - (NSData*)contactArgumentsFromDictionary:(NSDictionary*) dict;
-- (NSData*)contactArgumentsFromArray:(NSArray*) array;
+- (NSData*)contactArgumentsFromArrayOfValues:(NSArray*) values andArrayOfTypes:(NSArray*) types;
 - (NSArray*)аrrayFromContractArguments:(NSData*) data andInterface:(AbiinterfaceItem*) interface;
+- (NSData*)contactArgumentFromArrayOfValues:(NSArray*) values andArrayOfTypes:(NSArray*) types;
 
 @end
