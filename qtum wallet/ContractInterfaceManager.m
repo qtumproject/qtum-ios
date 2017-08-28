@@ -115,6 +115,7 @@
 - (NSData*)tokenBitecodeWithTemplate:(NSString*)templatePath andArray:(NSArray*) args{
     
     NSMutableData* contractSource = [[[ContractFileManager sharedInstance] bitcodeWithTemplate:templatePath] mutableCopy];
+    
     [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromArray:args]];
     return [contractSource copy];
 }
@@ -143,6 +144,8 @@
     NSAssert(fuctionItem.inputs.count == param.count, @"Function interface param count and param count must be equal");
     NSMutableData* hashFunction = [[self hashOfFunction:fuctionItem] mutableCopy];
     NSMutableArray* mutableParam = [param mutableCopy];
+    
+    //creating hex data from string paremeter
     for (int i = 0; i < param.count; i++) {
         if (fuctionItem.inputs[i].type == AddressType && [param[i] isKindOfClass:[NSString class]]) {
             NSData* hexDataFromBase58 = [param[i] dataFromBase58];

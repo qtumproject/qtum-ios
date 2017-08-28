@@ -10,13 +10,37 @@
 #import "NSData+Extension.h"
 #import "AbiinterfaceItem.h"
 
+@interface ContractArgumentsInterpretator ()
+
+@end
+
 @implementation ContractArgumentsInterpretator
 
-+(NSData*)contactArgumentsFromDictionary:(NSDictionary*) dict{
++ (instancetype)sharedInstance {
+    
+    static ContractArgumentsInterpretator *instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[super alloc] initUniqueInstance];
+    });
+    return instance;
+}
+
+- (instancetype)initUniqueInstance {
+    
+    self = [super init];
+    
+    if (self != nil) {
+        
+    }
+    return self;
+}
+
+- (NSData*)contactArgumentsFromDictionary:(NSDictionary*) dict{
     return nil;
 }
 
-+(NSData*)contactArgumentsFromArray:(NSArray*) array {
+- (NSData*)contactArgumentsFromArray:(NSArray*) array {
     
     //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
     
@@ -64,19 +88,19 @@
     return args;
 }
 
-+(BTC256)btc256FromInt:(NSInteger) aInt {
+- (BTC256)btc256FromInt:(NSInteger) aInt {
     NSMutableData* data = [NSMutableData dataWithBytes:&aInt length:sizeof(NSInteger)];
     [data increaseLengthBy:32 - data.length];
     return BTC256FromNSData(data);
 }
 
-+(NSData*)uint256DataFromInt:(NSInteger) aInt {
+- (NSData*)uint256DataFromInt:(NSInteger) aInt {
     NSMutableData* data = [NSMutableData dataWithBytes:&aInt length:sizeof(NSInteger)];
     [data increaseLengthBy:32 - data.length];
     return [data copy];
 }
 
-+(NSDictionary*)uint256DataFromString:(NSString*) aString {
+- (NSDictionary*)uint256DataFromString:(NSString*) aString {
     NSMutableData* data = [[aString dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
     NSInteger shift = (data.length % 32) > 0 ? (data.length / 32 + 1) : data.length / 32;
     shift = shift > 0 ? shift : 1;
@@ -85,14 +109,15 @@
              @"shift" : @(shift > 0 ? shift - 1: shift)};
 }
 
-+(NSData*)uint256DataFromData:(NSData*) aData {
+- (NSData*)uint256DataFromData:(NSData*) aData {
     NSMutableData* emptyData = [NSMutableData new];
     [emptyData increaseLengthBy:32 - aData.length];
     [emptyData appendData:aData];
     return emptyData;
 }
 
-+(NSArray*)аrrayFromContractArguments:(NSData*) data andInterface:(AbiinterfaceItem*) interface {
+- (NSArray*)аrrayFromContractArguments:(NSData*) data andInterface:(AbiinterfaceItem*) interface {
+    
     if (data.length > 0){
         NSData* argumentsData = [data mutableCopy];
         NSMutableArray* argumentsArray = @[].mutableCopy;
@@ -123,12 +148,12 @@
     }
 }
 
-+(NSString*)stringFromData:(NSData*) data {
+- (NSString*)stringFromData:(NSData*) data {
     
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-+(NSUInteger)numberFromData:(NSData*) data {
+- (NSUInteger)numberFromData:(NSData*) data {
 
     NSInteger availableSize = 4;
     unsigned long long dataAsInt = 0;

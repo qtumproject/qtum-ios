@@ -210,6 +210,7 @@ ContractFunctionsOutputDelegate>
 }
 
 -(void)showChooseFromLibrary:(BOOL)tokensOnly {
+    
     self.isLibraryViewControllerOnlyForTokens = tokensOnly;
     self.libraryViewController = [[ControllersFactory sharedInstance] createLibraryViewController];
     self.libraryTableSource = [[TableSourcesFactory sharedInstance] createLibrarySource];
@@ -237,6 +238,15 @@ ContractFunctionsOutputDelegate>
     return [args copy];
 }
 
+-(NSArray<NSNumber*>*)typesFromInputs{
+    
+    NSMutableArray* args = @[].mutableCopy;
+    for (ResultTokenInputsModel* input in self.inputs) {
+        [args addObject:input.value];
+    }
+    return [args copy];
+}
+
 
 #pragma mark - ContractCoordinatorDelegate
 
@@ -249,7 +259,8 @@ ContractFunctionsOutputDelegate>
     [self.navigationController popToViewController:[self.smartContractMenuOutput toPresent] animated:YES];
 }
 
--(void)finishStepFinishDidPressed{
+-(void)finishStepFinishDidPressed {
+    
     __weak __typeof(self)weakSelf = self;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
