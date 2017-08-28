@@ -81,6 +81,7 @@
 #import "QStoreContractOutput.h"
 #import "QStoreListOutput.h"
 #import "QStoreTemplateDetailOutput.h"
+#import "AboutOutput.h"
 
 @implementation ControllersFactory
 
@@ -374,6 +375,12 @@
 -(NSObject<SplashScreenOutput> *)createSplashScreenOutput{
     NSObject<SplashScreenOutput> *controller = (NSObject<SplashScreenOutput> *)[UIViewController controllerInStoryboard:@"Splash" withIdentifire:@"SplashViewController"];
     return controller;
+}
+
+-(NSObject<AboutOutput> *)createAboutOutput {
+    
+    NSObject<AboutOutput> *output = (NSObject<AboutOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"AboutOutputViewController"];
+    return output;
 }
 
 -(UIViewController*)createFlowNavigationCoordinator{
