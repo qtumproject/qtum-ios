@@ -81,11 +81,13 @@
 #import "QStoreContractOutput.h"
 #import "QStoreListOutput.h"
 #import "QStoreTemplateDetailOutput.h"
+#import "AboutOutput.h"
+#import "ChooseReciveAddressOutput.h"
 
 @implementation ControllersFactory
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
+    
     static ControllersFactory *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -366,6 +368,12 @@
     return controller;
 }
 
+-(NSObject<ChooseReciveAddressOutput> *)createChooseReciveAddressOutput {
+    
+    NSObject<ChooseReciveAddressOutput> *controller = (NSObject<ChooseReciveAddressOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"ChooseReciveAddressViewController"];
+    return controller;
+}
+
 -(NSObject<LibraryOutput> *)createLibraryViewController{
     NSObject<LibraryOutput> *controller = (NSObject<LibraryOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"LibraryViewController"];
     return controller;
@@ -374,6 +382,12 @@
 -(NSObject<SplashScreenOutput> *)createSplashScreenOutput{
     NSObject<SplashScreenOutput> *controller = (NSObject<SplashScreenOutput> *)[UIViewController controllerInStoryboard:@"Splash" withIdentifire:@"SplashViewController"];
     return controller;
+}
+
+-(NSObject<AboutOutput> *)createAboutOutput {
+    
+    NSObject<AboutOutput> *output = (NSObject<AboutOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"AboutOutputViewController"];
+    return output;
 }
 
 -(UIViewController*)createFlowNavigationCoordinator{

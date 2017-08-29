@@ -111,6 +111,9 @@
 		B33EAFA21E5F20F9006125F3 /* iMessageGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAFA11E5F20F9006125F3 /* iMessageGradientView.m */; };
 		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
 		B3427FD21F543D7D00182E95 /* ContractParametersInterpreterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FD11F543D7D00182E95 /* ContractParametersInterpreterTest.m */; };
+		B3427FCA1F54093B00182E95 /* AboutOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FC91F54093B00182E95 /* AboutOutputViewController.m */; };
+		B3427FCD1F54095400182E95 /* AboutOutputViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FCC1F54095400182E95 /* AboutOutputViewControllerDark.m */; };
+		B3427FD01F54096100182E95 /* AboutOutputViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FCF1F54096100182E95 /* AboutOutputViewControllerLight.m */; };
 		B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */; };
 		B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */; };
 		B3487A2A1E92383500BC66F1 /* HistoryTableHeaderViewDark.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3487A291E92383500BC66F1 /* HistoryTableHeaderViewDark.xib */; };
@@ -820,6 +823,14 @@
 		B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinViewController.h; sourceTree = "<group>"; };
 		B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinViewController.m; sourceTree = "<group>"; };
 		B3427FD11F543D7D00182E95 /* ContractParametersInterpreterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractParametersInterpreterTest.m; sourceTree = "<group>"; };
+		B3427FC61F5408CD00182E95 /* AboutOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutOutput.h; sourceTree = "<group>"; };
+		B3427FC71F5408DE00182E95 /* AboutOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutOutputDelegate.h; sourceTree = "<group>"; };
+		B3427FC81F54093B00182E95 /* AboutOutputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutOutputViewController.h; sourceTree = "<group>"; };
+		B3427FC91F54093B00182E95 /* AboutOutputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutOutputViewController.m; sourceTree = "<group>"; };
+		B3427FCB1F54095400182E95 /* AboutOutputViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutOutputViewControllerDark.h; sourceTree = "<group>"; };
+		B3427FCC1F54095400182E95 /* AboutOutputViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutOutputViewControllerDark.m; sourceTree = "<group>"; };
+		B3427FCE1F54096100182E95 /* AboutOutputViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutOutputViewControllerLight.h; sourceTree = "<group>"; };
+		B3427FCF1F54096100182E95 /* AboutOutputViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutOutputViewControllerLight.m; sourceTree = "<group>"; };
 		B346AE1C1EFD57BC00241C61 /* ConfirmPinCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinCoordinator.h; sourceTree = "<group>"; };
 		B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinCoordinator.m; sourceTree = "<group>"; };
 		B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutput.h; sourceTree = "<group>"; };
@@ -2170,6 +2181,21 @@
 			path = iMessageExtension;
 			sourceTree = "<group>";
 		};
+		B3427FC21F54089400182E95 /* AboutOutput */ = {
+			isa = PBXGroup;
+			children = (
+				B3427FC61F5408CD00182E95 /* AboutOutput.h */,
+				B3427FC71F5408DE00182E95 /* AboutOutputDelegate.h */,
+				B3427FC81F54093B00182E95 /* AboutOutputViewController.h */,
+				B3427FC91F54093B00182E95 /* AboutOutputViewController.m */,
+				B3427FCB1F54095400182E95 /* AboutOutputViewControllerDark.h */,
+				B3427FCC1F54095400182E95 /* AboutOutputViewControllerDark.m */,
+				B3427FCE1F54096100182E95 /* AboutOutputViewControllerLight.h */,
+				B3427FCF1F54096100182E95 /* AboutOutputViewControllerLight.m */,
+			);
+			name = AboutOutput;
+			sourceTree = "<group>";
+		};
 		B346AE1B1EFD579600241C61 /* Confirm Pin */ = {
 			isa = PBXGroup;
 			children = (
@@ -2466,6 +2492,7 @@
 		B386F5AE1E1392B1004D231B /* Profile Flow */ = {
 			isa = PBXGroup;
 			children = (
+				B3427FC21F54089400182E95 /* AboutOutput */,
 				E7C101BC1F14ED4900848526 /* ChangePinOutput */,
 				E760F4AC1F0FA5170056D042 /* ProfileOutput */,
 				E7EA2CB51ED42D9B00AFD5D0 /* LanguageOutput */,
@@ -4823,6 +4850,7 @@
 				B3141E631F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m in Sources */,
 				E748579C1F13C02600DCF9A6 /* LanguageTableViewCellLight.m in Sources */,
 				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
+				B3427FCA1F54093B00182E95 /* AboutOutputViewController.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
 				E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */,
@@ -4957,6 +4985,7 @@
 				B3DB3E621F306CFB00AA408F /* BackupContractsViewControllerLight.m in Sources */,
 				E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */,
 				E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */,
+				B3427FCD1F54095400182E95 /* AboutOutputViewControllerDark.m in Sources */,
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
 				B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */,
 				B35DF6201F1F569800316953 /* InputTextViewDark.m in Sources */,
@@ -5170,6 +5199,7 @@
 				B35DF6191F1F4A6000316953 /* RestoreWalletViewControllerDark.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
 				E73CF6CB1EE2CFA40044DF78 /* InformationPopUpViewController.m in Sources */,
+				B3427FD01F54096100182E95 /* AboutOutputViewControllerLight.m in Sources */,
 				B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */,
 				B3EA531A1F47319D002FD201 /* QStoreListTableViewCellLight.m in Sources */,
 				B35130681E49DF910048A28C /* ImageLoader.m in Sources */,
