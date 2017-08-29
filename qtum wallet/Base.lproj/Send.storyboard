@@ -309,7 +309,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-3f-mRF">
-                                                <rect key="frame" x="148.5" y="11" width="79" height="23"/>
+                                                <rect key="frame" x="149" y="11" width="79" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -410,14 +410,6 @@
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKF-Mb-P2x">
-                                                <rect key="frame" x="331" y="0.0" width="44" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="Euw-TC-oKT"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="share"/>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PX3-LH-xG0">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
                                                 <constraints>
@@ -435,14 +427,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="GKF-Mb-P2x" firstAttribute="top" secondItem="7ym-OV-GLX" secondAttribute="top" id="63G-Dn-keH"/>
                                             <constraint firstAttribute="bottom" secondItem="PX3-LH-xG0" secondAttribute="bottom" id="6WF-kc-tJn"/>
-                                            <constraint firstAttribute="bottom" secondItem="GKF-Mb-P2x" secondAttribute="bottom" id="GLP-oh-pZG"/>
                                             <constraint firstItem="ULH-2Q-hym" firstAttribute="centerY" secondItem="7ym-OV-GLX" secondAttribute="centerY" id="QeR-bp-HzU"/>
                                             <constraint firstItem="ULH-2Q-hym" firstAttribute="centerX" secondItem="7ym-OV-GLX" secondAttribute="centerX" id="SYe-xj-VsC"/>
                                             <constraint firstItem="PX3-LH-xG0" firstAttribute="leading" secondItem="7ym-OV-GLX" secondAttribute="leading" id="Xwv-ts-5mO"/>
                                             <constraint firstAttribute="height" constant="44" id="azZ-Mi-5Lc"/>
-                                            <constraint firstAttribute="trailing" secondItem="GKF-Mb-P2x" secondAttribute="trailing" id="enP-q4-MTg"/>
                                             <constraint firstItem="PX3-LH-xG0" firstAttribute="top" secondItem="7ym-OV-GLX" secondAttribute="top" id="etQ-iP-rXK"/>
                                         </constraints>
                                     </view>
@@ -832,14 +821,6 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMd-Td-oQx">
-                                                <rect key="frame" x="331" y="0.0" width="44" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="00l-cx-MSz"/>
-                                                </constraints>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="share"/>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcu-B1-tZN">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
                                                 <constraints>
@@ -858,11 +839,8 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="AiR-wE-JeP" firstAttribute="centerY" secondItem="oRR-m6-32g" secondAttribute="centerY" id="2Le-js-pVf"/>
-                                            <constraint firstAttribute="bottom" secondItem="qMd-Td-oQx" secondAttribute="bottom" id="4gz-ag-L3R"/>
-                                            <constraint firstItem="qMd-Td-oQx" firstAttribute="top" secondItem="oRR-m6-32g" secondAttribute="top" id="g5W-Jt-TM5"/>
                                             <constraint firstItem="hcu-B1-tZN" firstAttribute="top" secondItem="oRR-m6-32g" secondAttribute="top" id="jzb-8w-3To"/>
                                             <constraint firstAttribute="height" constant="44" id="kqt-rf-daT"/>
-                                            <constraint firstAttribute="trailing" secondItem="qMd-Td-oQx" secondAttribute="trailing" id="mOt-OZ-eF2"/>
                                             <constraint firstItem="hcu-B1-tZN" firstAttribute="leading" secondItem="oRR-m6-32g" secondAttribute="leading" id="mrR-NR-u2X"/>
                                             <constraint firstItem="AiR-wE-JeP" firstAttribute="centerX" secondItem="oRR-m6-32g" secondAttribute="centerX" id="pOs-9j-Dwj"/>
                                             <constraint firstAttribute="bottom" secondItem="hcu-B1-tZN" secondAttribute="bottom" id="r46-i9-4xr"/>
@@ -895,7 +873,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcm-xc-4RN">
-                                                    <rect key="frame" x="20" y="20.5" width="152.5" height="14"/>
+                                                    <rect key="frame" x="20" y="21" width="152.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1114,7 +1092,6 @@
         <image name="deisclosure_dark" width="5" height="9"/>
         <image name="ic-qr_code_light" width="21" height="21"/>
         <image name="qrcode" width="20" height="20"/>
-        <image name="share" width="20" height="21"/>
     </resources>
     <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

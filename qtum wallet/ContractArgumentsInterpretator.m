@@ -43,54 +43,6 @@ NSInteger standardParameterBatch = 32;
     return nil;
 }
 
-//- (NSData*)contactArgumentsFromArrayOfValues:(NSArray*) array andArrayOfTypes:(NSArray*) types {
-//    
-//    //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
-//    
-//    NSMutableData* args = [NSMutableData new];
-//    NSInteger constantOffset = 32;
-//    NSInteger nextStingOffset = constantOffset * array.count;
-//    NSMutableArray* stringsArray = @[].mutableCopy;
-//    
-//    for (int i = 0; i < array.count; i++) {
-//        
-//        if ([array[i] isKindOfClass:[NSNumber class]]) {
-//            
-//            NSInteger param = [array[i] integerValue];
-//            [args appendData:[NSData reverseData:[self uint256DataFromInt:param]]];
-//            
-//        } else if ([array[i] isKindOfClass:[NSString class]]){
-//            
-//            NSMutableDictionary* stringDict = @{}.mutableCopy;
-//            NSString* param = array[i];
-//            
-//            //because not all symbols decoding as 2 bite
-//            NSInteger length = [param dataUsingEncoding:NSUTF8StringEncoding].length * 2;
-//            //[args appendData:[NSData reverseData:[self uint256DataFromInt:length]]];
-//            stringDict[@"length"] = [NSData reverseData:[self uint256DataFromInt:length]];
-//            
-//            [args appendData:[NSData reverseData:[self uint256DataFromInt:nextStingOffset]]];
-//            
-//            NSDictionary* dict = [self uint256DataFromString:param];
-//            //[args appendData:dict[@"data"]];
-//            nextStingOffset += (constantOffset * ([dict[@"shift"] integerValue] + 1) + constantOffset);
-//            stringDict[@"value"] = dict[@"data"];
-//            [stringsArray addObject:[stringDict copy]];
-//            
-//        } else if ([array[i] isKindOfClass:[NSData class]]) {
-//            NSData* param = array[i];
-//            [args appendData:[self uint256DataFromData:param]];
-//        }
-//    }
-//    
-//    for (int i = 0; i < stringsArray.count; i++) {
-//        [args appendData:stringsArray[i][@"length"]];
-//        [args appendData:stringsArray[i][@"value"]];
-//    }
-//    
-//    return args;
-//}
-
 - (NSData*)contactArgumentsFromArrayOfValues:(NSArray<NSString*>*) values andArrayOfTypes:(NSArray*) types {
     
     //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
