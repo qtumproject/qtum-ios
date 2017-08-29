@@ -301,7 +301,9 @@ NSInteger standardParameterBatch = 32;
         
         for (int i = 0; i < interface.outputs.count; i++) {
             
-            if(interface.outputs[i].type == UInt8Type || interface.outputs[i].type == UInt256Type) {
+            if(interface.outputs[i].type == UInt8Type ||
+               interface.outputs[i].type == UInt256Type ||
+               interface.outputs[i].type == BoolType) {
                 
                 NSNumber* arg = @([self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]]);
                 if (arg){
@@ -316,6 +318,21 @@ NSInteger standardParameterBatch = 32;
                 if (stringArg){
                     [argumentsArray addObject:stringArg];
                     argumentsData = [argumentsData subdataWithRange:NSMakeRange(offset + length, argumentsData.length - offset - length)];
+                }
+            } else if(interface.outputs[i].type == AddressType) {
+                
+                NSString* arg = [self stringFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]];
+                if (arg){
+                    [argumentsArray addObject:arg];
+                    argumentsData = [argumentsData subdataWithRange:NSMakeRange(32, argumentsData.length - 32)];
+                }
+            } else if(interface.outputs[i].type == BytesStaticType32) {
+                
+                
+                NSString* arg = [[NSString alloc] initWithData:[argumentsData subdataWithRange:NSMakeRange(0, 32)] encoding:NSUTF8StringEncoding];
+                if (arg){
+                    [argumentsArray addObject:arg];
+                    argumentsData = [argumentsData subdataWithRange:NSMakeRange(32, argumentsData.length - 32)];
                 }
             }
         }
