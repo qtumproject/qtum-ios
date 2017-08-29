@@ -54,8 +54,8 @@ tokenAddress = _tokenAddress;
     self.publicAddressLabel.text = self.walletAddress;
     self.publicAddressLabel.hidden = YES;
     
-    self.walletCopyButtonBottomOffsetConstraint.constant = self.type == ReciveWalletOutput ? 90 : 20;
-    self.chooseAddressButton.hidden = self.type == ReciveTokenOutput;
+    self.walletCopyButtonBottomOffsetConstraint.constant = 90;
+    self.chooseAddressButton.hidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
