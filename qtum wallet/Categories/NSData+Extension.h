@@ -10,6 +10,7 @@
 
 @interface NSData (Extension)
 
-+ (NSData *)reverseData:(NSData *)data;
++ (NSData *) reverseData:(NSData *)data;
++ (NSData *) dataWithValue:(NSValue*)value;
 
 @end

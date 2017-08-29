@@ -9,6 +9,7 @@
 #import "ContractArgumentsInterpretator.h"
 #import "NSData+Extension.h"
 #import "AbiinterfaceItem.h"
+#import "NSString+Extension.h"
 
 @interface ContractArgumentsInterpretator ()
 
@@ -90,7 +91,7 @@ NSInteger standardParameterBatch = 32;
     return args;
 }
 
-- (NSData*)contactArgumentFromArrayOfValues:(NSArray*) values andArrayOfTypes:(NSArray*) types {
+- (NSData*)contactArgumentFromArrayOfValues:(NSArray<NSString*>*) values andArrayOfTypes:(NSArray*) types {
     
     //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
 //    UInt8Type,
@@ -108,7 +109,11 @@ NSInteger standardParameterBatch = 32;
         
         AbiInputType type = [types[i] integerValue];
         
-        if (type == UInt8Type || [types[i] integerValue] == UInt256Type) {
+        if (type == UInt8Type ||
+            type == UInt256Type ||
+            type == AddressType ||
+            type == BoolType ||
+            type == BytesStaticType32) {
             
             [self convertElementaryTypesWith:staticDataArray withType:type andOffset:&offset withData:values[i]];
             
@@ -117,7 +122,6 @@ NSInteger standardParameterBatch = 32;
             [self convertStringsWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
         }
     }
-    
     
     for (int i = 0; i < staticDataArray.count; i++) {
         [args appendData:staticDataArray[i]];
@@ -133,9 +137,9 @@ NSInteger standardParameterBatch = 32;
 - (void)convertElementaryTypesWith:(NSMutableArray*)staticDataArray
                           withType:(AbiInputType)type
                          andOffset:(NSNumber**)offset
-                          withData:(NSNumber*)data {
+                          withData:(NSString*)data {
     
-    if (![data isKindOfClass:[NSNumber class]]) {
+    if (![data isKindOfClass:[NSString class]]) {
         return;//bail if wrong data
     }
     
@@ -143,6 +147,32 @@ NSInteger standardParameterBatch = 32;
         
         NSInteger param = [data integerValue];
         [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:param]]];
+    } else if (type == BoolType) {
+        
+        NSInteger param = [data integerValue];
+        [staticDataArray addObject:[NSData reverseData:[self data32BitsFromInt:param withSize:1]]];
+    } else if (type == AddressType) {
+        
+        
+        NSMutableData* address = [[NSString dataFromHexString:data] mutableCopy];
+        if (address.length > 20) {
+            address = [[address subdataWithRange:NSMakeRange(0, 20)] mutableCopy];
+        }
+        [address increaseLengthBy:32 - address.length];
+        
+        [staticDataArray addObject:[NSData reverseData:[address copy]]];
+        
+    } else if (type == BytesStaticType32) {
+        
+        NSMutableData* dataBytes = [[data dataUsingEncoding:NSASCIIStringEncoding] mutableCopy];
+        
+        if (dataBytes.length > 32) {
+            dataBytes = [[dataBytes subdataWithRange:NSMakeRange(0, 32)] mutableCopy];
+        } else {
+            [dataBytes increaseLengthBy:32 - dataBytes.length];
+        }
+        
+        [staticDataArray addObject:[dataBytes copy]];
     }
 }
 
@@ -173,6 +203,33 @@ NSInteger standardParameterBatch = 32;
     }
 }
 
+- (void)convertAddressWithStaticStack:(NSMutableArray*)staticDataArray
+                   andDynamicStack:(NSMutableArray*)dynamicDataStack
+                          withType:(AbiInputType)type
+                         andOffset:(NSNumber**)offset
+                          withData:(NSString*)string {
+    
+    if (![string isKindOfClass:[NSString class]]) {
+        return;//bail if wrong data
+    }
+    
+    if (type == AddressType) {
+        
+        //adding offset
+        [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:[*offset integerValue]]]];
+        
+        //adding dynamic data in dynamic stack
+        NSInteger length = [string dataUsingEncoding:NSUTF8StringEncoding].length;
+        [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
+        
+        NSData* stringData = [self dataMultiple32bitFromString:string];
+        [dynamicDataStack addObject:stringData];
+        
+        //inc offset
+        *offset = @([*offset integerValue] + stringData.length + standardParameterBatch);
+    }
+}
+
 - (NSData*)dataOffsetFromIntOffset:(NSInteger) offset {
     
     return [NSData reverseData:[self uint256DataFromInt:offset]];
@@ -187,7 +244,12 @@ NSInteger standardParameterBatch = 32;
 
 - (NSData*)uint256DataFromInt:(NSInteger) aInt {
     
-    NSMutableData* data = [NSMutableData dataWithBytes:&aInt length:sizeof(NSInteger)];
+    return [self data32BitsFromInt:aInt withSize:sizeof(NSInteger)];
+}
+
+-(NSData*)data32BitsFromInt:(NSInteger) aInt withSize:(NSInteger) aSize {
+    
+    NSMutableData* data = [NSMutableData dataWithBytes:&aInt length:aSize];
     
     if (data.length < 32) {
         
@@ -207,6 +269,15 @@ NSInteger standardParameterBatch = 32;
 }
 
 - (NSData*)dataMultiple32bitFromString:(NSString*) aString {
+    
+    NSMutableData* data = [[aString dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+    NSInteger expectedLenght = data.length % standardParameterBatch ? (data.length / standardParameterBatch + 1) : data.length / standardParameterBatch;
+    expectedLenght = expectedLenght == 0 ? 1 : expectedLenght;
+    [data increaseLengthBy:standardParameterBatch * expectedLenght - data.length];
+    return [data copy];
+}
+
+- (NSData*)data32bitFromString:(NSString*) aString {
     
     NSMutableData* data = [[aString dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
     NSInteger expectedLenght = data.length % standardParameterBatch ? (data.length / standardParameterBatch + 1) : data.length / standardParameterBatch;

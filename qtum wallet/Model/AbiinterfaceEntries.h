@@ -12,7 +12,9 @@ typedef NS_ENUM(NSInteger, AbiInputType) {
     UInt8Type,
     UInt256Type,
     StringType,
+    BytesType,
     AddressType,
+    BytesStaticType32,
     BoolType
 };
 
