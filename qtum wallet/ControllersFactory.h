@@ -81,6 +81,7 @@
 @protocol QStoreMainOutput;
 @protocol QStoreContractOutput;
 @protocol QStoreListOutput;
+@protocol AboutOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -137,6 +138,7 @@
 - (NSObject <TokenAddressLibraryOutput>*)createTokenAddressControllOutput;
 - (NSObject <SplashScreenOutput> *)createSplashScreenOutput;
 - (NSObject <QStoreTemplateDetailOutput> *)createQStoreTemplateDetailOutput;
+- (NSObject <AboutOutput> *)createAboutOutput;
 
 // QStore
 - (NSObject <QStoreMainOutput> *)createQStoreMainViewController;

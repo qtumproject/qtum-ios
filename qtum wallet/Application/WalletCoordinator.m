@@ -152,14 +152,15 @@
     
     if ([spendable isKindOfClass:[Contract class]]) {
         
-        vc.walletAddress = spendable.mainAddress;
+        vc.walletAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
         vc.type = ReciveTokenOutput;
-        vc.tokenAddress =  nil;
+        vc.tokenAddress = spendable.mainAddress;
+
     } else {
         
-        vc.walletAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+        vc.walletAddress = spendable.mainAddress;
         vc.type = ReciveWalletOutput;
-        vc.tokenAddress = spendable.mainAddress;
+        vc.tokenAddress =  nil;
     }
     
     vc.balanceText = [NSString stringWithFormat:@"%.3f", spendable.balance];

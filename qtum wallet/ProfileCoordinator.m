@@ -15,8 +15,9 @@
 #import "ContractCoordinator.h"
 #import "ExportBrandKeyCoordinator.h"
 #import "ChangePinCoordinator.h"
+#import "AboutOutput.h"
 
-@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate>
+@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate, AboutOutputDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
@@ -101,7 +102,9 @@
 }
 
 - (void)didPressedAbout {
-    
+    NSObject<AboutOutput>* output = [[ControllersFactory sharedInstance] createAboutOutput];
+    output.delegate = self;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
 - (void)didPressedThemes {
