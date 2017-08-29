@@ -26,7 +26,7 @@
 
 - (IBAction)backButtonWasPressed:(id)sender;
 - (IBAction)shareButtonWasPressed:(id)sender;
-- (IBAction)copeButtonWasPressed:(id)sender;
+- (IBAction)copyButtonWasPressed:(id)sender;
 
 @end
 
@@ -179,10 +179,10 @@ tokenAddress = _tokenAddress;
     [self presentViewController:sharingVC animated:YES completion:nil];
 }
 
-- (IBAction)copeButtonWasPressed:(id)sender {
+- (IBAction)copyButtonWasPressed:(id)sender {
     
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    NSString* keyString = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+    NSString* keyString = self.walletAddress;
     [pb setString:keyString];
     
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForAddressCopied] presenter:nil completion:nil];

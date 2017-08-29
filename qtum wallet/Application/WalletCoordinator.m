@@ -363,6 +363,7 @@
 -(void)didChooseAddress:(NSString*) address {
     
     [self.navigationController popViewControllerAnimated:YES];
+    
     self.reciveOutput.walletAddress = address;
     [self.reciveOutput updateControls];
 }
