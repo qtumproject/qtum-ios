@@ -43,55 +43,55 @@ NSInteger standardParameterBatch = 32;
     return nil;
 }
 
-- (NSData*)contactArgumentsFromArrayOfValues:(NSArray*) array andArrayOfTypes:(NSArray*) types {
-    
-    //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
-    
-    NSMutableData* args = [NSMutableData new];
-    NSInteger constantOffset = 32;
-    NSInteger nextStingOffset = constantOffset * array.count;
-    NSMutableArray* stringsArray = @[].mutableCopy;
-    
-    for (int i = 0; i < array.count; i++) {
-        
-        if ([array[i] isKindOfClass:[NSNumber class]]) {
-            
-            NSInteger param = [array[i] integerValue];
-            [args appendData:[NSData reverseData:[self uint256DataFromInt:param]]];
-            
-        } else if ([array[i] isKindOfClass:[NSString class]]){
-            
-            NSMutableDictionary* stringDict = @{}.mutableCopy;
-            NSString* param = array[i];
-            
-            //because not all symbols decoding as 2 bite
-            NSInteger length = [param dataUsingEncoding:NSUTF8StringEncoding].length * 2;
-            //[args appendData:[NSData reverseData:[self uint256DataFromInt:length]]];
-            stringDict[@"length"] = [NSData reverseData:[self uint256DataFromInt:length]];
-            
-            [args appendData:[NSData reverseData:[self uint256DataFromInt:nextStingOffset]]];
-            
-            NSDictionary* dict = [self uint256DataFromString:param];
-            //[args appendData:dict[@"data"]];
-            nextStingOffset += (constantOffset * ([dict[@"shift"] integerValue] + 1) + constantOffset);
-            stringDict[@"value"] = dict[@"data"];
-            [stringsArray addObject:[stringDict copy]];
-            
-        } else if ([array[i] isKindOfClass:[NSData class]]) {
-            NSData* param = array[i];
-            [args appendData:[self uint256DataFromData:param]];
-        }
-    }
-    
-    for (int i = 0; i < stringsArray.count; i++) {
-        [args appendData:stringsArray[i][@"length"]];
-        [args appendData:stringsArray[i][@"value"]];
-    }
-    
-    return args;
-}
+//- (NSData*)contactArgumentsFromArrayOfValues:(NSArray*) array andArrayOfTypes:(NSArray*) types {
+//    
+//    //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
+//    
+//    NSMutableData* args = [NSMutableData new];
+//    NSInteger constantOffset = 32;
+//    NSInteger nextStingOffset = constantOffset * array.count;
+//    NSMutableArray* stringsArray = @[].mutableCopy;
+//    
+//    for (int i = 0; i < array.count; i++) {
+//        
+//        if ([array[i] isKindOfClass:[NSNumber class]]) {
+//            
+//            NSInteger param = [array[i] integerValue];
+//            [args appendData:[NSData reverseData:[self uint256DataFromInt:param]]];
+//            
+//        } else if ([array[i] isKindOfClass:[NSString class]]){
+//            
+//            NSMutableDictionary* stringDict = @{}.mutableCopy;
+//            NSString* param = array[i];
+//            
+//            //because not all symbols decoding as 2 bite
+//            NSInteger length = [param dataUsingEncoding:NSUTF8StringEncoding].length * 2;
+//            //[args appendData:[NSData reverseData:[self uint256DataFromInt:length]]];
+//            stringDict[@"length"] = [NSData reverseData:[self uint256DataFromInt:length]];
+//            
+//            [args appendData:[NSData reverseData:[self uint256DataFromInt:nextStingOffset]]];
+//            
+//            NSDictionary* dict = [self uint256DataFromString:param];
+//            //[args appendData:dict[@"data"]];
+//            nextStingOffset += (constantOffset * ([dict[@"shift"] integerValue] + 1) + constantOffset);
+//            stringDict[@"value"] = dict[@"data"];
+//            [stringsArray addObject:[stringDict copy]];
+//            
+//        } else if ([array[i] isKindOfClass:[NSData class]]) {
+//            NSData* param = array[i];
+//            [args appendData:[self uint256DataFromData:param]];
+//        }
+//    }
+//    
+//    for (int i = 0; i < stringsArray.count; i++) {
+//        [args appendData:stringsArray[i][@"length"]];
+//        [args appendData:stringsArray[i][@"value"]];
+//    }
+//    
+//    return args;
+//}
 
-- (NSData*)contactArgumentFromArrayOfValues:(NSArray<NSString*>*) values andArrayOfTypes:(NSArray*) types {
+- (NSData*)contactArgumentsFromArrayOfValues:(NSArray<NSString*>*) values andArrayOfTypes:(NSArray*) types {
     
     //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
 //    UInt8Type,
@@ -146,11 +146,11 @@ NSInteger standardParameterBatch = 32;
     if (type == UInt8Type || type == UInt256Type ) {
         
         NSInteger param = [data integerValue];
-        [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:param]]];
+        [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
     } else if (type == BoolType) {
         
         NSInteger param = [data integerValue];
-        [staticDataArray addObject:[NSData reverseData:[self data32BitsFromInt:param withSize:1]]];
+        [staticDataArray addObject:[NSData reverseData:[self data32BitsFromInt:param withSize:1]] ?: [self emptyData32bit]];
     } else if (type == AddressType) {
         
         
@@ -160,7 +160,7 @@ NSInteger standardParameterBatch = 32;
         }
         [address increaseLengthBy:32 - address.length];
         
-        [staticDataArray addObject:[NSData reverseData:[address copy]]];
+        [staticDataArray addObject:[NSData reverseData:[address copy]] ?: [self emptyData32bit]];
         
     } else if (type == BytesStaticType32) {
         
@@ -172,7 +172,7 @@ NSInteger standardParameterBatch = 32;
             [dataBytes increaseLengthBy:32 - dataBytes.length];
         }
         
-        [staticDataArray addObject:[dataBytes copy]];
+        [staticDataArray addObject:[dataBytes copy]?: [self emptyData32bit]];
     }
 }
 
@@ -196,7 +196,7 @@ NSInteger standardParameterBatch = 32;
         [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
         
         NSData* stringData = [self dataMultiple32bitFromString:string];
-        [dynamicDataStack addObject:stringData];
+        [dynamicDataStack addObject:stringData ?: [self emptyData32bit]];
         
         //inc offset
         *offset = @([*offset integerValue] + stringData.length + standardParameterBatch);
@@ -223,7 +223,7 @@ NSInteger standardParameterBatch = 32;
         [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
         
         NSData* stringData = [self dataMultiple32bitFromString:string];
-        [dynamicDataStack addObject:stringData];
+        [dynamicDataStack addObject:stringData ?: [self emptyData32bit]];
         
         //inc offset
         *offset = @([*offset integerValue] + stringData.length + standardParameterBatch);
@@ -287,6 +287,7 @@ NSInteger standardParameterBatch = 32;
 }
 
 - (NSData*)uint256DataFromData:(NSData*) aData {
+    
     NSMutableData* emptyData = [NSMutableData new];
     [emptyData increaseLengthBy:32 - aData.length];
     [emptyData appendData:aData];
@@ -362,6 +363,13 @@ NSInteger standardParameterBatch = 32;
     }
 
     return dataAsInt;
+}
+
+-(NSData*)emptyData32bit {
+    
+    NSMutableData* empty = [NSMutableData new];
+    [empty increaseLengthBy:32];
+    return [empty copy];
 }
 
 @end
