@@ -2,7 +2,7 @@
 //  ContractParametersInterpreterTest.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 28.08.17.
+//  Created by Vladimir Lebedevich on 28.08.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
