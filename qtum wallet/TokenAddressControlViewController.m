@@ -17,7 +17,7 @@
 
 @implementation TokenAddressControlViewController
 
-@synthesize delegate, addressesValueHashTable;
+@synthesize delegate, addressesValueHashTable, symbol;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,6 +62,7 @@
     NSString* key = self.addressesValueHashTable.allKeys[indexPath.row];
     cell.addressLabel.text = key;
     cell.valueLabel.text = [NSString stringWithFormat:@"%@",self.addressesValueHashTable[key]];
+    cell.symbolLabel.text = self.symbol;
     return cell;
 }
 

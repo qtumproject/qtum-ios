@@ -36,6 +36,7 @@
     NSObject <TokenAddressLibraryOutput> *output = [[ControllersFactory sharedInstance] createTokenAddressControllOutput];
     output.delegate = self;
     output.addressesValueHashTable = self.token.addressBalanceDictionary;
+    output.symbol = self.token.symbol;
     self.addressBalanceHashTable = self.token.addressBalanceDictionary;
     self.addressOutput = output;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
