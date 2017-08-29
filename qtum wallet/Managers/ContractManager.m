@@ -166,17 +166,6 @@ static NSString* kLocalContractName = @"kLocalContractName";
     [self tokenDidChange:token];
 }
 
-- (void)updateTokenWithAddress:(NSString*) address withNewBalance:(NSString*) balance{
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
-    NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
-    Contract* token = filteredArray.count ? filteredArray[0] : nil;
-    if (token) {
-        token.balance = [balance floatValue];
-        [self tokenDidChange:token];
-    }
-}
-
 - (void)updateTokenWithContractAddress:(NSString*) address withAddressBalanceDictionary:(NSDictionary*) addressBalance {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@",address];
@@ -459,26 +448,26 @@ static NSString* kLocalContractName = @"kLocalContractName";
                     NSString* output = item[@"output"];
                     
                     if ([hash isEqualToString:hashFuctionName.uppercaseString]) {
-                        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:nameProperty];
+                        NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:nameProperty];
                         if (array.count > 0) {
                             token.name = array[0];
                         }
                     } else if ([hash isEqualToString:hashFuctionTotalSupply.uppercaseString]) {
                         
-                        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:totalSupplyProperty];
+                        NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:totalSupplyProperty];
                         if (array.count > 0) {
                             token.totalSupply = array[0];
                         }
                         
                     } else if ([hash isEqualToString:hashFuctionSymbol.uppercaseString]) {
                         
-                        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:symbolProperty];
+                        NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:symbolProperty];
                         if (array.count > 0) {
                             token.symbol = array[0];
                         }
                     } else if ([hash isEqualToString:hashFuctionDecimal.uppercaseString]) {
                         
-                        NSArray* array = [ContractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:decimalProperty];
+                        NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:decimalProperty];
                         if (array.count > 0) {
                             token.decimals = array[0];
                         }

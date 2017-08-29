@@ -17,8 +17,8 @@
 - (void)setQRCodeItem:(QRCodeItem *)item;
 - (void)updateControlsWithTokensExist:(BOOL) isExist
                     choosenTokenExist:(BOOL) choosenExist
-                      walletBalance:(CGFloat) walletBalance
-             andUnconfimrmedBalance:(CGFloat) walletUnconfirmedBalance;
+                      walletBalance:(NSNumber*) walletBalance
+             andUnconfimrmedBalance:(NSNumber*) walletUnconfirmedBalance;
 - (void)updateContentWithContract:(Contract*) contract;
 - (void)clearFields;
 - (void)showErrorPopUp:(NSString *)message;

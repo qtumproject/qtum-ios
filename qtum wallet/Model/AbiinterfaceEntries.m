@@ -40,7 +40,11 @@
         return StringType;
     } else if ([typeString isEqualToString:@"address"]) {
         return AddressType;
-    } 
+    } else if ([typeString isEqualToString:@"bool"]) {
+        return BoolType;
+    } else if ([typeString isEqualToString:@"bytes32"]) {
+        return BytesStaticType32;
+    }
     
     return BoolType;
 }

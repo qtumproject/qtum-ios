@@ -61,8 +61,5 @@
     return balance;
 }
 
-- (id)adaptiveDataForContractBalances:(id) data{
-    return data;
-}
 
 @end

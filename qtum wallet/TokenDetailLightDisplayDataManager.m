@@ -36,7 +36,7 @@ static NSInteger standartHistoryCellHeight = 50;
         cell.decimalUnits.text = [NSString stringWithFormat:@"%@",token.decimals];
         cell.initialSupply.text = [NSString stringWithFormat:@"%@",token.totalSupply];
         cell.tokenAddress.text = token.contractAddress;
-        cell.availableBalance.text = [NSString stringWithFormat:@"%f",token.balance];
+        cell.availableBalance.text = [NSString stringWithFormat:@"%@",token.balance];
         cell.senderAddress.text = token.contractCreationAddressAddress;
         cell.symbol.text = token.symbol;
         return cell;

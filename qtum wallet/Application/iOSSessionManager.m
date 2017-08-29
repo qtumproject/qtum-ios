@@ -134,8 +134,8 @@ NSString *kErrorKey = @"error";
                     if (success) {
                         Wallet *wallet = [ApplicationCoordinator sharedInstance].walletManager.wallet;
                         NSString *address = wallet.mainAddress;
-                        NSNumber *availableBalance = @(wallet.balance);
-                        NSNumber *unconfirmedBalance = @(wallet.unconfirmedBalance);
+                        NSNumber *availableBalance = wallet.balance;
+                        NSNumber *unconfirmedBalance = wallet.unconfirmedBalance;
                         NSArray *history = wallet.historyStorage.historyPrivate;
                         NSMutableArray *historyDictionary = [NSMutableArray new];
                         for (HistoryElement *element in history) {

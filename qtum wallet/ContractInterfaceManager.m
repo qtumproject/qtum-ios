@@ -108,14 +108,19 @@
 - (NSData*)tokenBitecodeWithTemplate:(NSString*)templatePath andParam:(NSDictionary*) args{
     
     NSMutableData* contractSource = [[[ContractFileManager sharedInstance] bitcodeWithTemplate:templatePath] mutableCopy];
-    [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromDictionary:args]];
+    [self tokenInterfaceWithTemplate:templatePath];
+    
+    NSArray* types = [self arrayOfTypesFromInputs:[self tokenInterfaceWithTemplate:templatePath].constructorItem.inputs];
+    [contractSource appendData:[[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:[args allValues] andArrayOfTypes:types]];
     return [contractSource copy];
 }
 
 - (NSData*)tokenBitecodeWithTemplate:(NSString*)templatePath andArray:(NSArray*) args{
     
     NSMutableData* contractSource = [[[ContractFileManager sharedInstance] bitcodeWithTemplate:templatePath] mutableCopy];
-    [contractSource appendData:[ContractArgumentsInterpretator contactArgumentsFromArray:args]];
+    
+    NSArray* types = [self arrayOfTypesFromInputs:[self tokenInterfaceWithTemplate:templatePath].constructorItem.inputs];
+    [contractSource appendData:[[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:args andArrayOfTypes:types]];
     return [contractSource copy];
 }
 
@@ -143,6 +148,8 @@
     NSAssert(fuctionItem.inputs.count == param.count, @"Function interface param count and param count must be equal");
     NSMutableData* hashFunction = [[self hashOfFunction:fuctionItem] mutableCopy];
     NSMutableArray* mutableParam = [param mutableCopy];
+    
+    //creating hex data from string paremeter
     for (int i = 0; i < param.count; i++) {
         if (fuctionItem.inputs[i].type == AddressType && [param[i] isKindOfClass:[NSString class]]) {
             NSData* hexDataFromBase58 = [param[i] dataFromBase58];
@@ -155,10 +162,21 @@
         }
     }
     
-    NSData* args = [ContractArgumentsInterpretator contactArgumentsFromArray:[mutableParam copy]];
+    NSArray* types = [self arrayOfTypesFromInputs:fuctionItem.inputs];
+
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:[mutableParam copy] andArrayOfTypes:types];
     [hashFunction appendData:args];
     
     return [hashFunction copy];
+}
+
+-(NSArray*)arrayOfTypesFromInputs:(NSArray<AbiinterfaceInput*>*) inputs {
+    
+    NSMutableArray* types = @[].mutableCopy;
+    for (AbiinterfaceInput* input in inputs) {
+        [types addObject:@(input.type)];
+    }
+    return [types copy];
 }
 
 - (BOOL)isERCTokenStandartInterface:(NSArray*) interface {

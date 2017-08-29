@@ -20,7 +20,7 @@
     self.tokenName.text = token.localName;
     self.mainSymbol.text = token.symbol;
     self.symbol.text = token.symbol;
-    self.mainValue.text = [NSString stringWithFormat:@"%f",token.balance];
+    self.mainValue.text = [NSString stringWithFormat:@"%@",token.balance];
 }
 
 - (void)changeHighlight:(BOOL)value { }

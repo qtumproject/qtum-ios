@@ -22,4 +22,18 @@
     return reversedData;
 }
 
++(NSData*) dataWithValue:(NSValue*)value {
+    
+    NSUInteger size;
+    const char* encoding = [value objCType];
+    NSGetSizeAndAlignment(encoding, &size, NULL);
+    
+    void* ptr = malloc(size);
+    [value getValue:ptr];
+    NSData* data = [NSData dataWithBytes:ptr length:size];
+    free(ptr);
+    
+    return data;
+}
+
 @end

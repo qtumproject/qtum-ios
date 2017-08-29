@@ -28,4 +28,8 @@
     //[NSException raise:NSInvalidArgumentException format:@"NULL EXEPTION"];
 }
 
+- (NSNumber*)roundedNumberWithScate:(NSInteger) scale {
+    return [NSNumber new];
+}
+
 @end

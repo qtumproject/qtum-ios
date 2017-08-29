@@ -113,6 +113,7 @@
 		B3427FCA1F54093B00182E95 /* AboutOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FC91F54093B00182E95 /* AboutOutputViewController.m */; };
 		B3427FCD1F54095400182E95 /* AboutOutputViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FCC1F54095400182E95 /* AboutOutputViewControllerDark.m */; };
 		B3427FD01F54096100182E95 /* AboutOutputViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FCF1F54096100182E95 /* AboutOutputViewControllerLight.m */; };
+		B3427FD21F543D7D00182E95 /* ContractParametersInterpreterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FD11F543D7D00182E95 /* ContractParametersInterpreterTest.m */; };
 		B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */; };
 		B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */; };
 		B3487A2A1E92383500BC66F1 /* HistoryTableHeaderViewDark.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3487A291E92383500BC66F1 /* HistoryTableHeaderViewDark.xib */; };
@@ -829,6 +830,7 @@
 		B3427FCC1F54095400182E95 /* AboutOutputViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutOutputViewControllerDark.m; sourceTree = "<group>"; };
 		B3427FCE1F54096100182E95 /* AboutOutputViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutOutputViewControllerLight.h; sourceTree = "<group>"; };
 		B3427FCF1F54096100182E95 /* AboutOutputViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutOutputViewControllerLight.m; sourceTree = "<group>"; };
+		B3427FD11F543D7D00182E95 /* ContractParametersInterpreterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractParametersInterpreterTest.m; sourceTree = "<group>"; };
 		B346AE1C1EFD57BC00241C61 /* ConfirmPinCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinCoordinator.h; sourceTree = "<group>"; };
 		B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinCoordinator.m; sourceTree = "<group>"; };
 		B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutput.h; sourceTree = "<group>"; };
@@ -3358,6 +3360,7 @@
 				E71AF2441E0177910068595B /* qtum_walletTests.m */,
 				E71AF2461E0177910068595B /* Info.plist */,
 				B3A4EA531F502CD1008115D1 /* NSDecimalNumberComparisonTests.m */,
+				B3427FD11F543D7D00182E95 /* ContractParametersInterpreterTest.m */,
 			);
 			path = "qtum walletTests";
 			sourceTree = "<group>";
@@ -4755,6 +4758,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3427FD21F543D7D00182E95 /* ContractParametersInterpreterTest.m in Sources */,
 				B3A4EA661F503052008115D1 /* NSNumberComparisonTests.m in Sources */,
 				B3A4EA641F502E84008115D1 /* NSDecimalNumberComparisonTests.m in Sources */,
 				B3A4EA5C1F502E65008115D1 /* qtum_walletTests.m in Sources */,

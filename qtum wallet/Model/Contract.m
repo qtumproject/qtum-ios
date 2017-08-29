@@ -10,8 +10,18 @@
 #import "NSString+Extension.h"
 #import "NSData+Extension.h"
 #import "NSDate+Extension.h"
+#import "NSNumber+Comparison.h"
 
 @implementation Contract
+
+- (instancetype)init {
+    
+    self = [super init];
+    if (self) {
+        _unconfirmedBalance = [[NSDecimalNumber alloc] initWithDouble:0];
+    }
+    return self;
+}
 
 -(NSString*)creationDateString {
     
@@ -30,21 +40,20 @@
     return self.contractAddress;
 }
 
--(CGFloat)balance {
+-(NSDecimalNumber*)balance {
     
     NSArray* values = self.addressBalanceDictionary.allValues;
     NSDecimalNumber* balanceDecimal = [[NSDecimalNumber alloc] initWithFloat:0];
-    CGFloat floaBalance = 0;
-
+    
     for (NSNumber* balanceValue in values) {
         
         if ([balanceValue isKindOfClass:[NSDecimalNumber class]]) {
             balanceDecimal = [balanceDecimal decimalNumberByAdding:(NSDecimalNumber*)balanceValue];
         } else {
-            floaBalance += balanceValue.floatValue;
+            balanceDecimal = [balanceDecimal decimalNumberByAdding:balanceValue.decimalNumber];
         }
     }
-    return balanceDecimal.floatValue + floaBalance;
+    return balanceDecimal;
 }
 
 #pragma mark - Spendable
@@ -87,8 +96,8 @@
     [aCoder encodeObject:self.symbol forKey:@"symbol"];
     [aCoder encodeObject:self.decimals forKey:@"decimals"];
     [aCoder encodeObject:self.totalSupply forKey:@"totalSupply"];
-    [aCoder encodeObject:@(self.balance) forKey:@"balance"];
-    [aCoder encodeObject:@(self.unconfirmedBalance) forKey:@"unconfirmedBalance"];
+    [aCoder encodeObject:self.balance forKey:@"balance"];
+    [aCoder encodeObject:self.unconfirmedBalance forKey:@"unconfirmedBalance"];
     [aCoder encodeObject:@(self.isActive) forKey:@"isActive"];
 }
 
@@ -105,8 +114,8 @@
     NSString *symbol = [aDecoder decodeObjectForKey:@"symbol"];
     NSNumber *decimals = [aDecoder decodeObjectForKey:@"decimals"];
     NSNumber *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
-    CGFloat balance = [[aDecoder decodeObjectForKey:@"balance"] floatValue];
-    CGFloat unconfirmedBalance = [[aDecoder decodeObjectForKey:@"unconfirmedBalance"] floatValue];
+    NSNumber *balance = [aDecoder decodeObjectForKey:@"balance"];
+    NSNumber *unconfirmedBalance = [aDecoder decodeObjectForKey:@"unconfirmedBalance"];
     BOOL isActive = [[aDecoder decodeObjectForKey:@"isActive"] boolValue];
     
     self = [super init];
@@ -124,8 +133,8 @@
         _symbol = symbol;
         _decimals = decimals;
         _totalSupply = totalSupply;
-        _balance = balance;
-        _unconfirmedBalance = unconfirmedBalance;
+        _balance = [balance isKindOfClass:[NSDecimalNumber class]] ? (NSDecimalNumber*)balance : balance.decimalNumber;
+        _unconfirmedBalance = [unconfirmedBalance isKindOfClass:[NSDecimalNumber class]] ? (NSDecimalNumber*)unconfirmedBalance : unconfirmedBalance.decimalNumber;
         _isActive = isActive;
     }
     

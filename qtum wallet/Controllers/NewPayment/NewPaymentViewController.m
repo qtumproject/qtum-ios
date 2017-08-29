@@ -14,6 +14,7 @@
 #import "ChoseTokenPaymentViewController.h"
 #import "InformationPopUpViewController.h"
 #import "SecurityPopupViewController.h"
+#import "NSNumber+Comparison.h"
 
 @interface NewPaymentViewController () <UITextFieldDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -147,12 +148,12 @@ static NSInteger withoutTokenOffset = 40;
 
 -(void)updateControlsWithTokensExist:(BOOL) isExist
                   choosenTokenExist:(BOOL) choosenExist
-                      walletBalance:(CGFloat) walletBalance
-             andUnconfimrmedBalance:(CGFloat) walletUnconfirmedBalance {
+                      walletBalance:(NSNumber*) walletBalance
+             andUnconfimrmedBalance:(NSNumber*) walletUnconfirmedBalance {
     
     //updating constraints and activity info
-    self.residueValueLabel.text = [NSString stringWithFormat:@"%.3f", walletBalance];
-    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%.3f", walletUnconfirmedBalance];
+    self.residueValueLabel.text = [NSString stringWithFormat:@"%@", [walletBalance.decimalNumber roundedNumberWithScate:3]];
+    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%@", [walletUnconfirmedBalance.decimalNumber roundedNumberWithScate:3]];
 
     BOOL isTokensExists = isExist;
     self.tokenTextField.hidden =

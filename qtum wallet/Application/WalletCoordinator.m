@@ -38,6 +38,7 @@
 #import "AddressLibruaryCoordinator.h"
 #import "TokenAddressLibraryCoordinator.h"
 #import "ChooseReciveAddressOutput.h"
+#import "NSNumber+Comparison.h"
 
 @interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate, ChooseReciveAddressOutputDelegate>
 
@@ -163,8 +164,8 @@
         vc.tokenAddress =  nil;
     }
     
-    vc.balanceText = [NSString stringWithFormat:@"%.3f", spendable.balance];
-    vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%.3f", spendable.unconfirmedBalance];
+    vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance.decimalNumber roundedNumberWithScate:3]];
+    vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance.decimalNumber roundedNumberWithScate:3]];
     vc.delegate = self;
     self.reciveOutput = vc;
     [self.navigationController pushViewController:[vc toPresent] animated:YES];
