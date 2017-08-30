@@ -20,8 +20,23 @@
 - (BOOL)isStringFromAbi;
 - (BOOL)isBoolFromAbi;
 
+- (BOOL)isFixedArrayOfStringFromAbi;
+- (BOOL)isDynamicArrayOfStringFromAbi;
+- (BOOL)isFixedArrayOfUintFromAbi;
+- (BOOL)isDynamicArrayOfUintFromAbi;
+- (BOOL)isFixedArrayOfIntFromAbi;
+- (BOOL)isDynamicArrayOfIntFromAbi;
+- (BOOL)isFixedArrayOfBoolFromAbi;
+- (BOOL)isDynamicArrayOfBoolFromAbi;
+- (BOOL)isFixedArrayOfBytesFromAbi;
+- (BOOL)isDynamicArrayOfBytesFromAbi;
+- (BOOL)isFixedArrayOfFixedBytesFromAbi;
+- (BOOL)isDynamicArrayOfFixedBytesFromAbi;
+
 - (NSInteger)fixedBytesSize;
 - (NSInteger)uintSize;
 - (NSInteger)intSize;
+
+
 
 @end

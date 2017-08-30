@@ -61,6 +61,76 @@
     return [self isEqualToString:@"string"];
 }
 
+-(BOOL)isFixedArrayOfStringFromAbi {
+    
+    return [self isEqualToString:@"string[]"];
+}
+
+-(BOOL)isDynamicArrayOfStringFromAbi {
+
+    NSString *pattern = @"(string\\[[0-9]{0,0}\\]$)";
+    return [self isMatchStringPattern:pattern];
+}
+
+-(BOOL)isFixedArrayOfUintFromAbi {
+    
+    NSString *pattern = @"(uint[0-9]{0,3}\\[[0-9]{1,}\\]$)";
+    return [self isMatchStringPattern:pattern];
+}
+
+-(BOOL)isDynamicArrayOfUintFromAbi {
+    
+    NSString *pattern = @"(uint[0-9]{0,3}\\[[0-9]{0,0}\\]$)";
+    return [self isMatchStringPattern:pattern];
+}
+
+-(BOOL)isFixedArrayOfIntFromAbi {
+    
+    NSString *pattern = @"(int[0-9]{0,3}\\[[0-9]{1,}\\]$)";
+    return [self isMatchStringPattern:pattern];
+}
+
+-(BOOL)isDynamicArrayOfIntFromAbi {
+    
+    NSString *pattern = @"(int[0-9]{0,3}\\[[0-9]{0,0}\\]$)";
+    return [self isMatchStringPattern:pattern];
+}
+
+-(BOOL)isFixedArrayOfBoolFromAbi {
+    
+    NSString *pattern = @"(bool\\[[0-9]{1,}\\]$)";
+    return [self isMatchStringPattern:pattern];
+}
+
+-(BOOL)isDynamicArrayOfBoolFromAbi {
+    
+    NSString *pattern = @"(bool\\[[0-9]{0,0}\\]$)";
+    return [self isMatchStringPattern:pattern];
+}
+
+-(BOOL)isFixedArrayOfBytesFromAbi {
+    
+    return [self isEqualToString:@"bytes[]"];
+}
+
+-(BOOL)isDynamicArrayOfBytesFromAbi {
+    
+    NSString *pattern = @"(bytes\\[[0-9]{0,0}\\]$)";
+    return [self isMatchStringPattern:pattern];
+}
+
+-(BOOL)isFixedArrayOfFixedBytesFromAbi {
+    
+    NSString *pattern = @"(bytes[0-9]{1,3}\\[[0-9]{1,}])$";
+    return [self isMatchStringPattern:pattern];
+}
+
+-(BOOL)isDynamicArrayOfFixedBytesFromAbi {
+    
+    NSString *pattern = @"(bytes[0-9]{1,3}\\[[0-9]{0,0}])$";
+    return [self isMatchStringPattern:pattern];
+}
+
 -(NSInteger)fixedBytesSize {
     
     NSString* pattern = @"([0-9]{1,})";
@@ -72,14 +142,16 @@
     
     NSString* pattern = @"([0-9]{1,})";
     NSString* match = [self matchedStringWithPattern:pattern];
-    return [match integerValue];
+    
+    return [match integerValue] ?: 256;
 }
 
 -(NSInteger)intSize {
     
     NSString* pattern = @"([0-9]{1,})";
     NSString* match = [self matchedStringWithPattern:pattern];
-    return [match integerValue];
+    
+    return [match integerValue] ?:256;
 }
 
 - (BOOL)isMatchStringPattern:(NSString*) pattern {

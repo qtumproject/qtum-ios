@@ -45,18 +45,13 @@ NSInteger standardParameterBatch = 32;
 
 - (NSData*)contactArgumentsFromArrayOfValues:(NSArray<NSString*>*) values andArrayOfTypes:(NSArray*) types {
     
-    //array = @[@123,@456,@"thequickbrownfoxjumpsoverthelazydog",@"shesellsseashellsontheseashore"];
-//    UInt8Type,
-//    UInt256Type,
-//    StringType,
-//    AddressType,
-//    BoolType
-    
     NSMutableData* args = [NSMutableData new];
     NSMutableArray* staticDataArray = @[].mutableCopy;
     NSMutableArray* dynamicDataArray = @[].mutableCopy;
     NSNumber* offset = @(32 * values.count);
     
+    
+    //decode data
     for (int i = 0; i < values.count; i++) {
         
         id <AbiParameterProtocol> type = types[i];
@@ -72,9 +67,14 @@ NSInteger standardParameterBatch = 32;
         } else if ([type isKindOfClass:[AbiParameterTypeString class]]){
             
             [self convertStringsWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
+        } else if ([type isKindOfClass:[AbiParameterTypeBytes class]]){
+            
+            [self convertBytesWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
         }
     }
     
+    
+    //combination of data
     for (int i = 0; i < staticDataArray.count; i++) {
         [args appendData:staticDataArray[i]];
     }
@@ -139,21 +139,42 @@ NSInteger standardParameterBatch = 32;
         return;//bail if wrong data
     }
     
-    if ([type isKindOfClass:[AbiParameterTypeString class]]) {
-        
-        //adding offset
-        [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:[*offset integerValue]]]];
+    //adding offset
+    [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:[*offset integerValue]]]];
+    
+    //adding dynamic data in dynamic stack
+    NSInteger length = [string dataUsingEncoding:NSUTF8StringEncoding].length;
+    [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
+    
+    NSData* stringData = [self dataMultiple32bitFromString:string];
+    [dynamicDataStack addObject:stringData ?: [self emptyData32bit]];
+    
+    //inc offset
+    *offset = @([*offset integerValue] + stringData.length + standardParameterBatch);
+}
 
-        //adding dynamic data in dynamic stack
-        NSInteger length = [string dataUsingEncoding:NSUTF8StringEncoding].length;
-        [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
-        
-        NSData* stringData = [self dataMultiple32bitFromString:string];
-        [dynamicDataStack addObject:stringData ?: [self emptyData32bit]];
-        
-        //inc offset
-        *offset = @([*offset integerValue] + stringData.length + standardParameterBatch);
+- (void)convertBytesWithStaticStack:(NSMutableArray*)staticDataArray
+                      andDynamicStack:(NSMutableArray*)dynamicDataStack
+                             withType:(id <AbiParameterProtocol>)type
+                            andOffset:(NSNumber**)offset
+                             withData:(NSString*)string {
+    
+    if (![string isKindOfClass:[NSString class]]) {
+        return;//bail if wrong data
     }
+    
+    //adding offset
+    [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:[*offset integerValue]]]];
+    
+    //adding dynamic data in dynamic stack
+    NSInteger length = [string dataUsingEncoding:NSASCIIStringEncoding].length;
+    [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
+    
+    NSData* stringData = [self dataMultiple32bitFromString:string];
+    [dynamicDataStack addObject:stringData ?: [self emptyData32bit]];
+    
+    //inc offset
+    *offset = @([*offset integerValue] + stringData.length + standardParameterBatch);
 }
 
 - (NSData*)dataOffsetFromIntOffset:(NSInteger) offset {

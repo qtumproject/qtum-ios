@@ -118,6 +118,111 @@
     XCTAssertTrue([abiField isArrayFromAbi]);
 }
 
+- (void)test_Uint_Array_Detection {
+    
+    NSString* abiField = @"uint[]";
+    XCTAssertTrue([abiField isDynamicArrayOfUintFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfUintFromAbi]);
+
+    abiField = @"uinta[]";
+    XCTAssertFalse([abiField isDynamicArrayOfUintFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfUintFromAbi]);
+    
+    abiField = @"uint256[]";
+    XCTAssertTrue([abiField isDynamicArrayOfUintFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfUintFromAbi]);
+    
+    abiField = @"uint256[]sd";
+    XCTAssertFalse([abiField isDynamicArrayOfUintFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfUintFromAbi]);
+    
+    abiField = @"uint[5]";
+    XCTAssertFalse([abiField isDynamicArrayOfUintFromAbi]);
+    XCTAssertTrue([abiField isFixedArrayOfUintFromAbi]);
+    
+    abiField = @"uinta[]";
+    XCTAssertFalse([abiField isDynamicArrayOfUintFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfUintFromAbi]);
+    
+    abiField = @"uint256[5]";
+    XCTAssertFalse([abiField isDynamicArrayOfUintFromAbi]);
+    XCTAssertTrue([abiField isFixedArrayOfUintFromAbi]);
+    
+    abiField = @"uint256[5]sd";
+    XCTAssertFalse([abiField isDynamicArrayOfUintFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfUintFromAbi]);
+}
+
+- (void)test_Int_Array_Detection {
+    
+    NSString* abiField = @"int[]";
+    XCTAssertTrue([abiField isDynamicArrayOfIntFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfIntFromAbi]);
+    
+    abiField = @"inta[]";
+    XCTAssertFalse([abiField isDynamicArrayOfIntFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfIntFromAbi]);
+    
+    abiField = @"int256[]";
+    XCTAssertTrue([abiField isDynamicArrayOfIntFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfIntFromAbi]);
+    
+    abiField = @"int256[]sd";
+    XCTAssertFalse([abiField isDynamicArrayOfIntFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfIntFromAbi]);
+    
+    abiField = @"int[5]";
+    XCTAssertFalse([abiField isDynamicArrayOfIntFromAbi]);
+    XCTAssertTrue([abiField isFixedArrayOfIntFromAbi]);
+    
+    abiField = @"inta[]";
+    XCTAssertFalse([abiField isDynamicArrayOfIntFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfIntFromAbi]);
+    
+    abiField = @"int256[5]";
+    XCTAssertFalse([abiField isDynamicArrayOfIntFromAbi]);
+    XCTAssertTrue([abiField isFixedArrayOfIntFromAbi]);
+    
+    abiField = @"int256[5]sd";
+    XCTAssertFalse([abiField isDynamicArrayOfIntFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfIntFromAbi]);
+}
+
+- (void)test_Int_Bool_Detection {
+    
+    NSString* abiField = @"bool[]";
+    XCTAssertTrue([abiField isDynamicArrayOfBoolFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfBoolFromAbi]);
+    
+    abiField = @"boola[]";
+    XCTAssertFalse([abiField isDynamicArrayOfBoolFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfBoolFromAbi]);
+    
+    abiField = @"bool256[]";
+    XCTAssertFalse([abiField isDynamicArrayOfBoolFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfBoolFromAbi]);
+    
+    abiField = @"bool256[]sd";
+    XCTAssertFalse([abiField isDynamicArrayOfBoolFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfBoolFromAbi]);
+    
+    abiField = @"bool[5]";
+    XCTAssertFalse([abiField isDynamicArrayOfBoolFromAbi]);
+    XCTAssertTrue([abiField isFixedArrayOfBoolFromAbi]);
+    
+    abiField = @"boola[]";
+    XCTAssertFalse([abiField isDynamicArrayOfBoolFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfBoolFromAbi]);
+    
+    abiField = @"bool256[5]";
+    XCTAssertFalse([abiField isDynamicArrayOfBoolFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfBoolFromAbi]);
+    
+    abiField = @"bool256[5]sd";
+    XCTAssertFalse([abiField isDynamicArrayOfBoolFromAbi]);
+    XCTAssertFalse([abiField isFixedArrayOfBoolFromAbi]);
+}
+
 - (void)test_Fixed_Bytes_Size_Detection {
     
     NSString* abiField = @"bytes9";

@@ -247,6 +247,19 @@
 		B3D5FE5B1F56AF3D006A2BF2 /* AbiParameterTypeBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE5A1F56AF3D006A2BF2 /* AbiParameterTypeBytes.m */; };
 		B3D5FE5E1F56B7B2006A2BF2 /* AbiParameterTypeBool.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE5D1F56B7B2006A2BF2 /* AbiParameterTypeBool.m */; };
 		B3D5FE611F56CC53006A2BF2 /* AbiParameterPrimitiveType.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE601F56CC53006A2BF2 /* AbiParameterPrimitiveType.m */; };
+		B3D5FE641F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE631F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.m */; };
+		B3D5FE671F56F2A0006A2BF2 /* AbiParameterTypeFixedArrayUInt.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE661F56F2A0006A2BF2 /* AbiParameterTypeFixedArrayUInt.m */; };
+		B3D5FE6A1F56F2B2006A2BF2 /* AbiParameterTypeDynamicArrayInt.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE691F56F2B2006A2BF2 /* AbiParameterTypeDynamicArrayInt.m */; };
+		B3D5FE6D1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE6C1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m */; };
+		B3D5FE711F56F365006A2BF2 /* AbiParameterTypeFixedArrayString.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE701F56F365006A2BF2 /* AbiParameterTypeFixedArrayString.m */; };
+		B3D5FE741F56F37B006A2BF2 /* AbiParameterTypeDynamicArrayString.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE731F56F37B006A2BF2 /* AbiParameterTypeDynamicArrayString.m */; };
+		B3D5FE771F56F399006A2BF2 /* AbiParameterTypeFixedArrayBool.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE761F56F399006A2BF2 /* AbiParameterTypeFixedArrayBool.m */; };
+		B3D5FE7A1F56F3B6006A2BF2 /* AbiParameterTypeDynamicArrayBool.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE791F56F3B6006A2BF2 /* AbiParameterTypeDynamicArrayBool.m */; };
+		B3D5FE7D1F56F3F0006A2BF2 /* AbiParameterTypeFixedArrayFixedBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE7C1F56F3F0006A2BF2 /* AbiParameterTypeFixedArrayFixedBytes.m */; };
+		B3D5FE801F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE7F1F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.m */; };
+		B3D5FE831F56F4BC006A2BF2 /* AbiTypesProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE821F56F4BC006A2BF2 /* AbiTypesProcessor.m */; };
+		B3D5FE861F57013A006A2BF2 /* AbiParameterTypeFixedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE851F57013A006A2BF2 /* AbiParameterTypeFixedArray.m */; };
+		B3D5FE891F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE881F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m */; };
 		B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */; };
 		B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */; };
 		B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */; };
@@ -1128,6 +1141,32 @@
 		B3D5FE5D1F56B7B2006A2BF2 /* AbiParameterTypeBool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeBool.m; sourceTree = "<group>"; };
 		B3D5FE5F1F56CC53006A2BF2 /* AbiParameterPrimitiveType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterPrimitiveType.h; sourceTree = "<group>"; };
 		B3D5FE601F56CC53006A2BF2 /* AbiParameterPrimitiveType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterPrimitiveType.m; sourceTree = "<group>"; };
+		B3D5FE621F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArrayUInt.h; sourceTree = "<group>"; };
+		B3D5FE631F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArrayUInt.m; sourceTree = "<group>"; };
+		B3D5FE651F56F2A0006A2BF2 /* AbiParameterTypeFixedArrayUInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedArrayUInt.h; sourceTree = "<group>"; };
+		B3D5FE661F56F2A0006A2BF2 /* AbiParameterTypeFixedArrayUInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArrayUInt.m; sourceTree = "<group>"; };
+		B3D5FE681F56F2B2006A2BF2 /* AbiParameterTypeDynamicArrayInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArrayInt.h; sourceTree = "<group>"; };
+		B3D5FE691F56F2B2006A2BF2 /* AbiParameterTypeDynamicArrayInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArrayInt.m; sourceTree = "<group>"; };
+		B3D5FE6B1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedArrayInt.h; sourceTree = "<group>"; };
+		B3D5FE6C1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArrayInt.m; sourceTree = "<group>"; };
+		B3D5FE6F1F56F365006A2BF2 /* AbiParameterTypeFixedArrayString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedArrayString.h; sourceTree = "<group>"; };
+		B3D5FE701F56F365006A2BF2 /* AbiParameterTypeFixedArrayString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArrayString.m; sourceTree = "<group>"; };
+		B3D5FE721F56F37B006A2BF2 /* AbiParameterTypeDynamicArrayString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArrayString.h; sourceTree = "<group>"; };
+		B3D5FE731F56F37B006A2BF2 /* AbiParameterTypeDynamicArrayString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArrayString.m; sourceTree = "<group>"; };
+		B3D5FE751F56F399006A2BF2 /* AbiParameterTypeFixedArrayBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedArrayBool.h; sourceTree = "<group>"; };
+		B3D5FE761F56F399006A2BF2 /* AbiParameterTypeFixedArrayBool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArrayBool.m; sourceTree = "<group>"; };
+		B3D5FE781F56F3B6006A2BF2 /* AbiParameterTypeDynamicArrayBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArrayBool.h; sourceTree = "<group>"; };
+		B3D5FE791F56F3B6006A2BF2 /* AbiParameterTypeDynamicArrayBool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArrayBool.m; sourceTree = "<group>"; };
+		B3D5FE7B1F56F3F0006A2BF2 /* AbiParameterTypeFixedArrayFixedBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedArrayFixedBytes.h; sourceTree = "<group>"; };
+		B3D5FE7C1F56F3F0006A2BF2 /* AbiParameterTypeFixedArrayFixedBytes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArrayFixedBytes.m; sourceTree = "<group>"; };
+		B3D5FE7E1F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArrayFixedBytes.h; sourceTree = "<group>"; };
+		B3D5FE7F1F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArrayFixedBytes.m; sourceTree = "<group>"; };
+		B3D5FE811F56F4BC006A2BF2 /* AbiTypesProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTypesProcessor.h; sourceTree = "<group>"; };
+		B3D5FE821F56F4BC006A2BF2 /* AbiTypesProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiTypesProcessor.m; sourceTree = "<group>"; };
+		B3D5FE841F57013A006A2BF2 /* AbiParameterTypeFixedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedArray.h; sourceTree = "<group>"; };
+		B3D5FE851F57013A006A2BF2 /* AbiParameterTypeFixedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArray.m; sourceTree = "<group>"; };
+		B3D5FE871F57014B006A2BF2 /* AbiParameterTypeDynamicArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArray.h; sourceTree = "<group>"; };
+		B3D5FE881F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArray.m; sourceTree = "<group>"; };
 		B3DB3E361F2F513E00AA408F /* SpinnerViewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerViewLight.h; sourceTree = "<group>"; };
 		B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerViewLight.m; sourceTree = "<group>"; };
 		B3DB3E3A1F2F55A500AA408F /* LoaderPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewControllerLight.h; sourceTree = "<group>"; };
@@ -2737,8 +2776,6 @@
 			isa = PBXGroup;
 			children = (
 				B3D5FE491F56AEBE006A2BF2 /* AbiParameterProtocol.h */,
-				B3D5FE461F56AE83006A2BF2 /* AbiParameterTypeArray.h */,
-				B3D5FE471F56AE83006A2BF2 /* AbiParameterTypeArray.m */,
 				B3D5FE4A1F56AEEB006A2BF2 /* AbiParameterTypeString.h */,
 				B3D5FE4B1F56AEEB006A2BF2 /* AbiParameterTypeString.m */,
 				B3D5FE4D1F56AEF7006A2BF2 /* AbiParameterTypeAddress.h */,
@@ -2755,8 +2792,42 @@
 				B3D5FE5D1F56B7B2006A2BF2 /* AbiParameterTypeBool.m */,
 				B3D5FE5F1F56CC53006A2BF2 /* AbiParameterPrimitiveType.h */,
 				B3D5FE601F56CC53006A2BF2 /* AbiParameterPrimitiveType.m */,
+				B3D5FE6E1F56F33E006A2BF2 /* Arrays */,
 			);
 			name = AbiTypes;
+			sourceTree = "<group>";
+		};
+		B3D5FE6E1F56F33E006A2BF2 /* Arrays */ = {
+			isa = PBXGroup;
+			children = (
+				B3D5FE461F56AE83006A2BF2 /* AbiParameterTypeArray.h */,
+				B3D5FE471F56AE83006A2BF2 /* AbiParameterTypeArray.m */,
+				B3D5FE621F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.h */,
+				B3D5FE631F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.m */,
+				B3D5FE651F56F2A0006A2BF2 /* AbiParameterTypeFixedArrayUInt.h */,
+				B3D5FE661F56F2A0006A2BF2 /* AbiParameterTypeFixedArrayUInt.m */,
+				B3D5FE681F56F2B2006A2BF2 /* AbiParameterTypeDynamicArrayInt.h */,
+				B3D5FE691F56F2B2006A2BF2 /* AbiParameterTypeDynamicArrayInt.m */,
+				B3D5FE6B1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.h */,
+				B3D5FE6C1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m */,
+				B3D5FE6F1F56F365006A2BF2 /* AbiParameterTypeFixedArrayString.h */,
+				B3D5FE701F56F365006A2BF2 /* AbiParameterTypeFixedArrayString.m */,
+				B3D5FE721F56F37B006A2BF2 /* AbiParameterTypeDynamicArrayString.h */,
+				B3D5FE731F56F37B006A2BF2 /* AbiParameterTypeDynamicArrayString.m */,
+				B3D5FE751F56F399006A2BF2 /* AbiParameterTypeFixedArrayBool.h */,
+				B3D5FE761F56F399006A2BF2 /* AbiParameterTypeFixedArrayBool.m */,
+				B3D5FE781F56F3B6006A2BF2 /* AbiParameterTypeDynamicArrayBool.h */,
+				B3D5FE791F56F3B6006A2BF2 /* AbiParameterTypeDynamicArrayBool.m */,
+				B3D5FE7B1F56F3F0006A2BF2 /* AbiParameterTypeFixedArrayFixedBytes.h */,
+				B3D5FE7C1F56F3F0006A2BF2 /* AbiParameterTypeFixedArrayFixedBytes.m */,
+				B3D5FE7E1F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.h */,
+				B3D5FE7F1F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.m */,
+				B3D5FE841F57013A006A2BF2 /* AbiParameterTypeFixedArray.h */,
+				B3D5FE851F57013A006A2BF2 /* AbiParameterTypeFixedArray.m */,
+				B3D5FE871F57014B006A2BF2 /* AbiParameterTypeDynamicArray.h */,
+				B3D5FE881F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m */,
+			);
+			name = Arrays;
 			sourceTree = "<group>";
 		};
 		B3DB3E351F2F50FE00AA408F /* Loader View */ = {
@@ -3317,6 +3388,8 @@
 				B3F5797A1F0D251C00A13571 /* OpenURLManager.m */,
 				B35DF62A1F2084CA00316953 /* TouchIDService.h */,
 				B35DF62B1F2084CA00316953 /* TouchIDService.m */,
+				B3D5FE811F56F4BC006A2BF2 /* AbiTypesProcessor.h */,
+				B3D5FE821F56F4BC006A2BF2 /* AbiTypesProcessor.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -4863,6 +4936,7 @@
 				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
 				B3DC9D271F31E9BB006B2E07 /* AddressTransferPopupViewControllerLight.m in Sources */,
 				B3EE8F421F136FAA00131823 /* ChooseTokenPaymentCellLight.m in Sources */,
+				B3D5FE7A1F56F3B6006A2BF2 /* AbiParameterTypeDynamicArrayBool.m in Sources */,
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
 				B3D5FE4C1F56AEEB006A2BF2 /* AbiParameterTypeString.m in Sources */,
@@ -4876,6 +4950,7 @@
 				B3CBDF1C1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m in Sources */,
 				B3DC9D0A1F31B6CF006B2E07 /* AddressControlListViewControllerDark.m in Sources */,
 				B3EA530A1F46D9DA002FD201 /* QStoreTableViewCellLight.m in Sources */,
+				B3D5FE741F56F37B006A2BF2 /* AbiParameterTypeDynamicArrayString.m in Sources */,
 				B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */,
 				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
 				B3CD78DA1F4DC1F400D79363 /* ChooseReciveAddressViewControllerDark.m in Sources */,
@@ -4930,6 +5005,7 @@
 				E74857961F13BA5300DCF9A6 /* LanguageViewControllerLight.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				B3014D691F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m in Sources */,
+				B3D5FE6A1F56F2B2006A2BF2 /* AbiParameterTypeDynamicArrayInt.m in Sources */,
 				B3DC9D111F31BEE8006B2E07 /* AddressControlCell.m in Sources */,
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
 				B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */,
@@ -4959,6 +5035,7 @@
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
+				B3D5FE6D1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
 				B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */,
 				B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */,
@@ -4986,6 +5063,7 @@
 				E70353121F03AC59004ECCC9 /* QStoreListTableSource.m in Sources */,
 				B3141E5A1F3099110095E3DF /* ContractNameTextField.m in Sources */,
 				E70550CD1DF96E4100B48DC1 /* RecieveViewController.m in Sources */,
+				B3D5FE7D1F56F3F0006A2BF2 /* AbiParameterTypeFixedArrayFixedBytes.m in Sources */,
 				B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */,
 				B3F06D061E699303006341F7 /* SubscribeTokenViewController.m in Sources */,
 				B3EE8F2B1F0E10AB00131823 /* TabBarControllerDark.m in Sources */,
@@ -5023,6 +5101,7 @@
 				B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
 				B3EA53111F46DE00002FD201 /* CustomSearchBarLight.m in Sources */,
+				B3D5FE801F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.m in Sources */,
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				B3141E661F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
@@ -5032,6 +5111,7 @@
 				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
 				B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */,
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
+				B3D5FE891F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m in Sources */,
 				B3CBDF2A1F2B41D900C80D4E /* SmartContractsListViewControllerDark.m in Sources */,
 				B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */,
 				B3EA52F41F45E087002FD201 /* QStoreContractViewControllerDark.m in Sources */,
@@ -5093,10 +5173,13 @@
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,
 				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
+				B3D5FE641F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.m in Sources */,
+				B3D5FE861F57013A006A2BF2 /* AbiParameterTypeFixedArray.m in Sources */,
 				B35DF6391F262B7200316953 /* TokenDetailsViewControllerDark.m in Sources */,
 				B385B5A51E6D829C003BB96C /* WalletTableSource.m in Sources */,
 				B3E8B78B1F4AC5E300DD7904 /* SourceCodePopUpViewControllerDark.m in Sources */,
 				E7C101C11F15073800848526 /* HistoryItemViewControllerDark.m in Sources */,
+				B3D5FE771F56F399006A2BF2 /* AbiParameterTypeFixedArrayBool.m in Sources */,
 				B33BD5571EBCA6890076B0C1 /* UIImage+Extension.m in Sources */,
 				E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */,
 				B3CBDF361F2B471A00C80D4E /* TemplateTokenViewControllerLight.m in Sources */,
@@ -5139,6 +5222,7 @@
 				E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */,
 				E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */,
 				E760F4B11F0FAB930056D042 /* ProfileViewControllerDark.m in Sources */,
+				B3D5FE711F56F365006A2BF2 /* AbiParameterTypeFixedArrayString.m in Sources */,
 				B31E60081F4EF101003B4FA5 /* QStoreTemplateFunctionCell.m in Sources */,
 				B321E8811E0C2C0F00DC7DE5 /* InputTextView.m in Sources */,
 				B3EFEAD21F4C0CBD003BA930 /* QStoreRequestManager.m in Sources */,
@@ -5160,6 +5244,7 @@
 				E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */,
 				E79846401F0D2F57002A516A /* TableSourcesFactory.m in Sources */,
 				E73D37041ECF1771009173BD /* QTUMAddressTokenTableViewCell.m in Sources */,
+				B3D5FE671F56F2A0006A2BF2 /* AbiParameterTypeFixedArrayUInt.m in Sources */,
 				B33579501F34B5E5001A0275 /* AnimatedLogoImageVIewLight.m in Sources */,
 				B3CBDF441F2B497A00C80D4E /* TokenTemplateCellLight.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
@@ -5280,6 +5365,7 @@
 				B36505A11F14B64400521603 /* EnableFingerprintViewControllerLight.m in Sources */,
 				E760F49D1F0F89730056D042 /* TokenListViewControllerLight.m in Sources */,
 				B3827DEA1ED2C74900E500DE /* TokenFunctionDetailViewController.m in Sources */,
+				B3D5FE831F56F4BC006A2BF2 /* AbiTypesProcessor.m in Sources */,
 				E713A4811EEE9FF800A2FA40 /* RestoreContractsViewController.m in Sources */,
 				B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */,
 				B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */,

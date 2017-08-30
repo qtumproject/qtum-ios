@@ -34,34 +34,7 @@
 
 -(id <AbiParameterProtocol>)determineTipe:(NSString*) typeString {
     
-    
-    if ([typeString isUintFromAbi]) {
-        
-        AbiParameterTypeUInt* type = [[AbiParameterTypeUInt alloc] initWithSize:[typeString uintSize]];
-        return type;
-    } else if ([typeString isStringFromAbi]) {
-        
-        AbiParameterTypeString* type = [AbiParameterTypeString new];
-        return type;
-    } else if ([typeString isAddressFromAbi]) {
-        
-        AbiParameterTypeAddress* type = [AbiParameterTypeAddress new];
-        return type;
-    } else if ([typeString isBytesFromAbi]) {
-        
-        AbiParameterTypeBytes* type = [AbiParameterTypeBytes new];
-        return type;
-    } else if ([typeString isBytesFixedFromAbi]) {
-        
-        AbiParameterTypeFixedBytes* type = [[AbiParameterTypeFixedBytes alloc] initWithSize:[typeString fixedBytesSize]];
-        return type;
-    } else if ([typeString isBoolFromAbi]) {
-        
-        AbiParameterTypeBool* type = [[AbiParameterTypeBool alloc] initWithSize:0];
-        return type;
-    }
-    
-    return [AbiParameterTypeAddress new];
+    return [AbiTypesProcessor typeFromAbiString:typeString];
 }
 
 #pragma mark - Equality
