@@ -28,9 +28,12 @@
 - (void)testEncode_Uint256_String {
     
     NSArray* values = @[@"123",@"Hello, World!"];
-    NSArray* types = @[@(UInt256Type), @(StringType)];
+    AbiParameterTypeUInt* uint = [[AbiParameterTypeUInt alloc] initWithSize:256];
+    AbiParameterTypeString* string = [AbiParameterTypeString new];
+
+    NSArray* types = @[uint, string];
     
-    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentFromArrayOfValues:values andArrayOfTypes:types];
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
     NSString* decodedParams = @"000000000000000000000000000000000000000000000000000000000000007b0000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000d48656c6c6f2c20576f726c642100000000000000000000000000000000000000";
     
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
@@ -39,9 +42,11 @@
 - (void)testEncode_Uint256_Uint256_String {
     
     NSArray* values = @[@"123",@"456",@"thequickbrownfoxjumpsoverthelazydog"];
-    NSArray* types = @[@(UInt256Type), @(UInt256Type), @(StringType)];
+    AbiParameterTypeUInt* uint = [[AbiParameterTypeUInt alloc] initWithSize:256];
+    AbiParameterTypeString* string = [AbiParameterTypeString new];
+    NSArray* types = @[uint, uint, string];
     
-    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentFromArrayOfValues:values andArrayOfTypes:types];
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
     NSString* decodedParams = @"000000000000000000000000000000000000000000000000000000000000007b00000000000000000000000000000000000000000000000000000000000001c800000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000023746865717569636b62726f776e666f786a756d70736f7665727468656c617a79646f670000000000000000000000000000000000000000000000000000000000";
     
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
@@ -50,9 +55,11 @@
 - (void)testEncode_Uint256_Uint256_String_string {
     
     NSArray* values = @[@"123",@"456",@"thequickbrownfoxjumpsoverthelazydog", @"shesellsseashellsontheseashore"];
-    NSArray* types = @[@(UInt256Type), @(UInt256Type), @(StringType), @(StringType)];
+    AbiParameterTypeUInt* uint = [[AbiParameterTypeUInt alloc] initWithSize:256];
+    AbiParameterTypeString* string = [AbiParameterTypeString new];
+    NSArray* types = @[uint, uint, string, string];
     
-    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentFromArrayOfValues:values andArrayOfTypes:types];
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
     NSString* decodedParams = @"000000000000000000000000000000000000000000000000000000000000007b00000000000000000000000000000000000000000000000000000000000001c8000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000e00000000000000000000000000000000000000000000000000000000000000023746865717569636b62726f776e666f786a756d70736f7665727468656c617a79646f670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001e73686573656c6c737365617368656c6c736f6e74686573656173686f72650000";
     
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
@@ -61,9 +68,11 @@
 - (void)testEncode_address {
     
     NSArray* values = @[@"1111111111111111111111111111111111111111"];
-    NSArray* types = @[@(AddressType)];
     
-    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentFromArrayOfValues:values andArrayOfTypes:types];
+    AbiParameterTypeAddress* address = [AbiParameterTypeAddress new];
+    NSArray* types = @[address];
+    
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
     NSString* decodedParams = @"0000000000000000000000001111111111111111111111111111111111111111";
     
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
@@ -72,9 +81,14 @@
 - (void)testEncode_Address_Uint256_Uint256_String_String {
     
     NSArray* values = @[@"1111111111111111111111111111111111111111",@"123",@"456",@"thequickbrownfoxjumpsoverthelazydog", @"shesellsseashellsontheseashore"];
-    NSArray* types = @[@(AddressType),@(UInt256Type), @(UInt256Type), @(StringType), @(StringType)];
     
-    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentFromArrayOfValues:values andArrayOfTypes:types];
+    AbiParameterTypeAddress* address = [AbiParameterTypeAddress new];
+    AbiParameterTypeUInt* uint = [[AbiParameterTypeUInt alloc] initWithSize:256];
+    AbiParameterTypeString* string = [AbiParameterTypeString new];
+
+    NSArray* types = @[address,uint, uint, string, string];
+    
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
     NSString* decodedParams = @"0000000000000000000000001111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000007b00000000000000000000000000000000000000000000000000000000000001c800000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000023746865717569636b62726f776e666f786a756d70736f7665727468656c617a79646f670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001e73686573656c6c737365617368656c6c736f6e74686573656173686f72650000";
     
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
@@ -83,9 +97,13 @@
 - (void)testEncode_Bool_String_String_Uint8_Bool {
     
     NSArray* values = @[@"1",@"sd",@"asd",@"255",@"0"];
-    NSArray* types = @[@(BoolType),@(StringType), @(StringType), @(UInt8Type), @(BoolType)];
+    AbiParameterTypeUInt* uint = [[AbiParameterTypeUInt alloc] initWithSize:8];
+    AbiParameterTypeString* string = [AbiParameterTypeString new];
+    AbiParameterTypeBool* boolType = [[AbiParameterTypeBool alloc] initWithSize:0];
+
+    NSArray* types = @[boolType,string, string, uint, boolType];
     
-    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentFromArrayOfValues:values andArrayOfTypes:types];
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
     NSString* decodedParams = @"000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000e000000000000000000000000000000000000000000000000000000000000000ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002736400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000036173640000000000000000000000000000000000000000000000000000000000";
     
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);

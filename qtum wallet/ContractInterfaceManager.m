@@ -151,7 +151,8 @@
     
     //creating hex data from string paremeter
     for (int i = 0; i < param.count; i++) {
-        if (fuctionItem.inputs[i].type == AddressType && [param[i] isKindOfClass:[NSString class]]) {
+        
+        if ([fuctionItem.inputs[i].type isKindOfClass:[AbiParameterTypeAddress class]] && [param[i] isKindOfClass:[NSString class]]) {
             NSData* hexDataFromBase58 = [param[i] dataFromBase58];
             if (hexDataFromBase58.length == 25) {
                 NSData* addressData = [hexDataFromBase58 subdataWithRange:NSMakeRange(1, 20)];
@@ -174,7 +175,7 @@
     
     NSMutableArray* types = @[].mutableCopy;
     for (AbiinterfaceInput* input in inputs) {
-        [types addObject:@(input.type)];
+        [types addObject:input.type];
     }
     return [types copy];
 }

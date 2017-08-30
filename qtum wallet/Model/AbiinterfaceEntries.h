@@ -7,22 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSInteger, AbiInputType) {
-    UInt8Type,
-    UInt256Type,
-    StringType,
-    BytesType,
-    AddressType,
-    BytesStaticType32,
-    BoolType
-};
+#import "AbiParameterProtocol.h"
+#import "AbiParameterTypeInt.h"
+#import "AbiParameterTypeUInt.h"
+#import "AbiParameterTypeArray.h"
+#import "AbiParameterTypeBytes.h"
+#import "AbiParameterTypeString.h"
+#import "AbiParameterTypeFixedBytes.h"
+#import "AbiParameterTypeAddress.h"
+#import "AbiParameterTypeBool.h"
 
 @interface AbiinterfaceEntries : NSObject
 
 @property (copy, nonatomic, readonly) NSString* name;
-@property (assign, nonatomic, readonly) AbiInputType type;
-@property (assign, nonatomic, readonly) NSString* typeAsString;
+@property (strong, nonatomic, readonly) id <AbiParameterProtocol> type;
+@property (copy, nonatomic, readonly) NSString* typeAsString;
 
 
 -(instancetype)initWithObject:(id) object;

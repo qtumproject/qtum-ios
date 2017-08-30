@@ -8,6 +8,8 @@
 
 #import "AbiinterfaceEntries.h"
 #import "NSString+Extension.h"
+#import "NSString+AbiRegex.h"
+
 
 @implementation AbiinterfaceEntries
 
@@ -30,23 +32,36 @@
     }
 }
 
--(AbiInputType)determineTipe:(NSString*) typeString {
+-(id <AbiParameterProtocol>)determineTipe:(NSString*) typeString {
     
-    if ([typeString isEqualToString:@"uint256"] || [typeString isEqualToString:@"uint"]) {
-        return UInt256Type;
-    } else if ([typeString isEqualToString:@"uint8"]){
-        return UInt8Type;
-    } else if ([typeString isEqualToString:@"string"]) {
-        return StringType;
-    } else if ([typeString isEqualToString:@"address"]) {
-        return AddressType;
-    } else if ([typeString isEqualToString:@"bool"]) {
-        return BoolType;
-    } else if ([typeString isEqualToString:@"bytes32"]) {
-        return BytesStaticType32;
+    
+    if ([typeString isUintFromAbi]) {
+        
+        AbiParameterTypeUInt* type = [[AbiParameterTypeUInt alloc] initWithSize:[typeString uintSize]];
+        return type;
+    } else if ([typeString isStringFromAbi]) {
+        
+        AbiParameterTypeString* type = [AbiParameterTypeString new];
+        return type;
+    } else if ([typeString isAddressFromAbi]) {
+        
+        AbiParameterTypeAddress* type = [AbiParameterTypeAddress new];
+        return type;
+    } else if ([typeString isBytesFromAbi]) {
+        
+        AbiParameterTypeBytes* type = [AbiParameterTypeBytes new];
+        return type;
+    } else if ([typeString isBytesFixedFromAbi]) {
+        
+        AbiParameterTypeFixedBytes* type = [[AbiParameterTypeFixedBytes alloc] initWithSize:[typeString fixedBytesSize]];
+        return type;
+    } else if ([typeString isBoolFromAbi]) {
+        
+        AbiParameterTypeBool* type = [[AbiParameterTypeBool alloc] initWithSize:0];
+        return type;
     }
     
-    return BoolType;
+    return [AbiParameterTypeAddress new];
 }
 
 #pragma mark - Equality
@@ -77,7 +92,7 @@
 
 - (NSUInteger)hash {
     
-    return [self.name hash] ^ self.type;
+    return [self.name hash] ^ [self.type hash];
 }
 
 

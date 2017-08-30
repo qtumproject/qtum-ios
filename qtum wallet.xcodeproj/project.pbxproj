@@ -236,6 +236,17 @@
 		B3CD78E81F4DD46300D79363 /* ChooseAddressReciveCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD78E71F4DD46300D79363 /* ChooseAddressReciveCellLight.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
+		B3D5FE3F1F569FEB006A2BF2 /* NSString+AbiRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */; };
+		B3D5FE411F56A4DC006A2BF2 /* AbiRegexTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE401F56A4DC006A2BF2 /* AbiRegexTest.m */; };
+		B3D5FE481F56AE83006A2BF2 /* AbiParameterTypeArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE471F56AE83006A2BF2 /* AbiParameterTypeArray.m */; };
+		B3D5FE4C1F56AEEB006A2BF2 /* AbiParameterTypeString.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE4B1F56AEEB006A2BF2 /* AbiParameterTypeString.m */; };
+		B3D5FE4F1F56AEF7006A2BF2 /* AbiParameterTypeAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE4E1F56AEF7006A2BF2 /* AbiParameterTypeAddress.m */; };
+		B3D5FE521F56AF0B006A2BF2 /* AbiParameterTypeUInt.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE511F56AF0B006A2BF2 /* AbiParameterTypeUInt.m */; };
+		B3D5FE551F56AF1E006A2BF2 /* AbiParameterTypeInt.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE541F56AF1E006A2BF2 /* AbiParameterTypeInt.m */; };
+		B3D5FE581F56AF31006A2BF2 /* AbiParameterTypeFixedBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE571F56AF31006A2BF2 /* AbiParameterTypeFixedBytes.m */; };
+		B3D5FE5B1F56AF3D006A2BF2 /* AbiParameterTypeBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE5A1F56AF3D006A2BF2 /* AbiParameterTypeBytes.m */; };
+		B3D5FE5E1F56B7B2006A2BF2 /* AbiParameterTypeBool.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE5D1F56B7B2006A2BF2 /* AbiParameterTypeBool.m */; };
+		B3D5FE611F56CC53006A2BF2 /* AbiParameterPrimitiveType.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE601F56CC53006A2BF2 /* AbiParameterPrimitiveType.m */; };
 		B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */; };
 		B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */; };
 		B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */; };
@@ -1095,6 +1106,28 @@
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
 		B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractListItemCell.m; sourceTree = "<group>"; };
+		B3D5FE3D1F569FEB006A2BF2 /* NSString+AbiRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AbiRegex.h"; sourceTree = "<group>"; };
+		B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AbiRegex.m"; sourceTree = "<group>"; };
+		B3D5FE401F56A4DC006A2BF2 /* AbiRegexTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiRegexTest.m; sourceTree = "<group>"; };
+		B3D5FE461F56AE83006A2BF2 /* AbiParameterTypeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeArray.h; sourceTree = "<group>"; };
+		B3D5FE471F56AE83006A2BF2 /* AbiParameterTypeArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeArray.m; sourceTree = "<group>"; };
+		B3D5FE491F56AEBE006A2BF2 /* AbiParameterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterProtocol.h; sourceTree = "<group>"; };
+		B3D5FE4A1F56AEEB006A2BF2 /* AbiParameterTypeString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeString.h; sourceTree = "<group>"; };
+		B3D5FE4B1F56AEEB006A2BF2 /* AbiParameterTypeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeString.m; sourceTree = "<group>"; };
+		B3D5FE4D1F56AEF7006A2BF2 /* AbiParameterTypeAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeAddress.h; sourceTree = "<group>"; };
+		B3D5FE4E1F56AEF7006A2BF2 /* AbiParameterTypeAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeAddress.m; sourceTree = "<group>"; };
+		B3D5FE501F56AF0B006A2BF2 /* AbiParameterTypeUInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeUInt.h; sourceTree = "<group>"; };
+		B3D5FE511F56AF0B006A2BF2 /* AbiParameterTypeUInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeUInt.m; sourceTree = "<group>"; };
+		B3D5FE531F56AF1E006A2BF2 /* AbiParameterTypeInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeInt.h; sourceTree = "<group>"; };
+		B3D5FE541F56AF1E006A2BF2 /* AbiParameterTypeInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeInt.m; sourceTree = "<group>"; };
+		B3D5FE561F56AF31006A2BF2 /* AbiParameterTypeFixedBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedBytes.h; sourceTree = "<group>"; };
+		B3D5FE571F56AF31006A2BF2 /* AbiParameterTypeFixedBytes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedBytes.m; sourceTree = "<group>"; };
+		B3D5FE591F56AF3D006A2BF2 /* AbiParameterTypeBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeBytes.h; sourceTree = "<group>"; };
+		B3D5FE5A1F56AF3D006A2BF2 /* AbiParameterTypeBytes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeBytes.m; sourceTree = "<group>"; };
+		B3D5FE5C1F56B7B2006A2BF2 /* AbiParameterTypeBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeBool.h; sourceTree = "<group>"; };
+		B3D5FE5D1F56B7B2006A2BF2 /* AbiParameterTypeBool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeBool.m; sourceTree = "<group>"; };
+		B3D5FE5F1F56CC53006A2BF2 /* AbiParameterPrimitiveType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterPrimitiveType.h; sourceTree = "<group>"; };
+		B3D5FE601F56CC53006A2BF2 /* AbiParameterPrimitiveType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterPrimitiveType.m; sourceTree = "<group>"; };
 		B3DB3E361F2F513E00AA408F /* SpinnerViewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerViewLight.h; sourceTree = "<group>"; };
 		B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerViewLight.m; sourceTree = "<group>"; };
 		B3DB3E3A1F2F55A500AA408F /* LoaderPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewControllerLight.h; sourceTree = "<group>"; };
@@ -2700,6 +2733,32 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		B3D5FE421F56AE2A006A2BF2 /* AbiTypes */ = {
+			isa = PBXGroup;
+			children = (
+				B3D5FE491F56AEBE006A2BF2 /* AbiParameterProtocol.h */,
+				B3D5FE461F56AE83006A2BF2 /* AbiParameterTypeArray.h */,
+				B3D5FE471F56AE83006A2BF2 /* AbiParameterTypeArray.m */,
+				B3D5FE4A1F56AEEB006A2BF2 /* AbiParameterTypeString.h */,
+				B3D5FE4B1F56AEEB006A2BF2 /* AbiParameterTypeString.m */,
+				B3D5FE4D1F56AEF7006A2BF2 /* AbiParameterTypeAddress.h */,
+				B3D5FE4E1F56AEF7006A2BF2 /* AbiParameterTypeAddress.m */,
+				B3D5FE501F56AF0B006A2BF2 /* AbiParameterTypeUInt.h */,
+				B3D5FE511F56AF0B006A2BF2 /* AbiParameterTypeUInt.m */,
+				B3D5FE531F56AF1E006A2BF2 /* AbiParameterTypeInt.h */,
+				B3D5FE541F56AF1E006A2BF2 /* AbiParameterTypeInt.m */,
+				B3D5FE561F56AF31006A2BF2 /* AbiParameterTypeFixedBytes.h */,
+				B3D5FE571F56AF31006A2BF2 /* AbiParameterTypeFixedBytes.m */,
+				B3D5FE591F56AF3D006A2BF2 /* AbiParameterTypeBytes.h */,
+				B3D5FE5A1F56AF3D006A2BF2 /* AbiParameterTypeBytes.m */,
+				B3D5FE5C1F56B7B2006A2BF2 /* AbiParameterTypeBool.h */,
+				B3D5FE5D1F56B7B2006A2BF2 /* AbiParameterTypeBool.m */,
+				B3D5FE5F1F56CC53006A2BF2 /* AbiParameterPrimitiveType.h */,
+				B3D5FE601F56CC53006A2BF2 /* AbiParameterPrimitiveType.m */,
+			);
+			name = AbiTypes;
+			sourceTree = "<group>";
+		};
 		B3DB3E351F2F50FE00AA408F /* Loader View */ = {
 			isa = PBXGroup;
 			children = (
@@ -3361,6 +3420,7 @@
 				E71AF2461E0177910068595B /* Info.plist */,
 				B3A4EA531F502CD1008115D1 /* NSDecimalNumberComparisonTests.m */,
 				B3427FD11F543D7D00182E95 /* ContractParametersInterpreterTest.m */,
+				B3D5FE401F56A4DC006A2BF2 /* AbiRegexTest.m */,
 			);
 			path = "qtum walletTests";
 			sourceTree = "<group>";
@@ -4072,6 +4132,8 @@
 				B3A4EA4E1F502C2D008115D1 /* NSNumber+Comparison.m */,
 				B3A4EA501F502C40008115D1 /* NSDecimalNumber+Comparison.h */,
 				B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */,
+				B3D5FE3D1F569FEB006A2BF2 /* NSString+AbiRegex.h */,
+				B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -4228,6 +4290,7 @@
 		E7FD36521DC72B4400748177 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B3D5FE421F56AE2A006A2BF2 /* AbiTypes */,
 				B32B32CF1ECCC2AC0081260A /* AbiinterfaceEntries.h */,
 				B32B32D01ECCC2AC0081260A /* AbiinterfaceEntries.m */,
 				B32B32D11ECCC2AC0081260A /* AbiinterfaceInput.h */,
@@ -4762,6 +4825,7 @@
 				B3A4EA661F503052008115D1 /* NSNumberComparisonTests.m in Sources */,
 				B3A4EA641F502E84008115D1 /* NSDecimalNumberComparisonTests.m in Sources */,
 				B3A4EA5C1F502E65008115D1 /* qtum_walletTests.m in Sources */,
+				B3D5FE411F56A4DC006A2BF2 /* AbiRegexTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4801,6 +4865,7 @@
 				B3EE8F421F136FAA00131823 /* ChooseTokenPaymentCellLight.m in Sources */,
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
+				B3D5FE4C1F56AEEB006A2BF2 /* AbiParameterTypeString.m in Sources */,
 				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
 				B3DC9D2B1F331D37006B2E07 /* TokenAddressLibraryCoordinator.m in Sources */,
 				B3DC9D1D1F31E712006B2E07 /* TextFieldWithLineDarkPopup.m in Sources */,
@@ -4823,6 +4888,7 @@
 				B3EA531E1F473843002FD201 /* QStoreListTableSourceLight.m in Sources */,
 				B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */,
 				B3EA52FA1F45E1A1002FD201 /* QStoreViewControllerDark.m in Sources */,
+				B3D5FE581F56AF31006A2BF2 /* AbiParameterTypeFixedBytes.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
 				B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */,
 				B3EA53001F45E1F1002FD201 /* QStoreListViewControllerDark.m in Sources */,
@@ -4844,6 +4910,7 @@
 				E745BA271F21FC4800B2E216 /* NewsViewControllerDark.m in Sources */,
 				E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */,
 				B35DF6231F1F56A700316953 /* InputTextViewLight.m in Sources */,
+				B3D5FE481F56AE83006A2BF2 /* AbiParameterTypeArray.m in Sources */,
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
 				B33EAF201E5C9FC0006125F3 /* AuthNavigationController.m in Sources */,
 				B3DB3E431F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m in Sources */,
@@ -4928,6 +4995,7 @@
 				E7360EC11F18EBED003ED21D /* ShareTokenPopUpViewController.m in Sources */,
 				B3E8B7921F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.m in Sources */,
 				B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */,
+				B3D5FE5B1F56AF3D006A2BF2 /* AbiParameterTypeBytes.m in Sources */,
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
 				B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */,
 				B3F76A701EDD667D00108DE9 /* SmartContractMenuViewController.m in Sources */,
@@ -4945,6 +5013,7 @@
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
 				B3EE8F481F13708500131823 /* ChoseTokenPaymentViewControllerDark.m in Sources */,
 				B365058F1F14B17300521603 /* WalletNameViewControllerDark.m in Sources */,
+				B3D5FE521F56AF0B006A2BF2 /* AbiParameterTypeUInt.m in Sources */,
 				B365059B1F14B51000521603 /* RepeateViewControllerLight.m in Sources */,
 				B32B32E21ECCC2D50081260A /* CreateTokenFinishViewController.m in Sources */,
 				B365CA631EA4ED540040A163 /* Contract.m in Sources */,
@@ -5010,9 +5079,11 @@
 				E760F4941F0F6DA80056D042 /* BalancePageViewControllerLight.m in Sources */,
 				E760F4911F0F6D8B0056D042 /* BalancePageViewControllerDark.m in Sources */,
 				E71F1C841F1CD68A00961B19 /* FavouriteTemplatesCollectionSource.m in Sources */,
+				B3D5FE4F1F56AEF7006A2BF2 /* AbiParameterTypeAddress.m in Sources */,
 				E73CF6C81EE2CF970044DF78 /* ErrorPopUpViewController.m in Sources */,
 				E745BA2E1F22019800B2E216 /* NewsTableSourceLight.m in Sources */,
 				E73D36FE1ECF1636009173BD /* AddressesTokenTableViewCell.m in Sources */,
+				B3D5FE3F1F569FEB006A2BF2 /* NSString+AbiRegex.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32BC4B11F28D5BC00C2417C /* TextFieldWithLineLightSend.m in Sources */,
 				E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */,
@@ -5082,6 +5153,7 @@
 				B3DC9D071F31B6B7006B2E07 /* AddressControlListViewControllerLight.m in Sources */,
 				B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */,
 				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
+				B3D5FE551F56AF1E006A2BF2 /* AbiParameterTypeInt.m in Sources */,
 				B35DF61C1F1F4A7400316953 /* RestoreWalletViewControllerLight.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
 				B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */,
@@ -5183,6 +5255,7 @@
 				B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */,
 				B35DF63C1F262B8900316953 /* TokenDetailsViewControllerLight.m in Sources */,
 				B32BC4C91F29EF6400C2417C /* TokenCellSubscribeLight.m in Sources */,
+				B3D5FE611F56CC53006A2BF2 /* AbiParameterPrimitiveType.m in Sources */,
 				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
 				B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */,
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,
@@ -5210,6 +5283,7 @@
 				E713A4811EEE9FF800A2FA40 /* RestoreContractsViewController.m in Sources */,
 				B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */,
 				B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */,
+				B3D5FE5E1F56B7B2006A2BF2 /* AbiParameterTypeBool.m in Sources */,
 				E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */,
 				E74857991F13C01800DCF9A6 /* LanguageTableViewCellDark.m in Sources */,
 				B3EA53071F46D9CD002FD201 /* QStoreTableViewCellDark.m in Sources */,
