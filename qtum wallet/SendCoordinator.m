@@ -22,6 +22,7 @@
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 @property (weak, nonatomic) NSObject <NewPaymentOutput>* paymentOutput;
+@property (weak, nonatomic) QRCodeViewController* qrCodeOutput;
 @property (weak, nonatomic) NSObject <ChoseTokenPaymentOutput>* tokenPaymentOutput;
 @property (strong,nonatomic) Contract* token;
 
@@ -87,6 +88,11 @@
     
     [self.paymentOutput updateContentWithContract:self.token];
     [self.paymentOutput setQRCodeItem:item];
+    
+    //bail if we have open 2 qrcode scaners
+    if (self.qrCodeOutput) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     [self updateOutputs];
 }
 
@@ -214,6 +220,7 @@
     
     QRCodeViewController* controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewControllerForSend];
     controller.delegate = self;
+    self.qrCodeOutput = controller;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
