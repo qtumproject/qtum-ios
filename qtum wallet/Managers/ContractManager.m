@@ -473,9 +473,8 @@ static NSString* kLocalContractName = @"kLocalContractName";
                         }
                     }
                 }
-                [weakSelf tokenDidChange:token];
-                
             }
+            [weakSelf tokenDidChange:token];
         }];
     }
 }
