@@ -174,6 +174,7 @@
     __weak __typeof(self)weakSelf = self;
     if ([self.walletPin isEqualToString:pin] && !self.isWalletExported) {
         
+        [[ApplicationCoordinator sharedInstance] clear];
         [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
             
             [[ApplicationCoordinator sharedInstance].walletManager storePin:weakSelf.walletPin];
@@ -184,6 +185,7 @@
         }];
     } else if ([self.walletPin isEqualToString:pin]) {
         
+        [[ApplicationCoordinator sharedInstance] clear];
         [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin seedWords:self.walletBrainKey withSuccessHandler:^(Wallet *newWallet) {
             [[ApplicationCoordinator sharedInstance].walletManager storePin:weakSelf.walletPin];
             [[ApplicationCoordinator sharedInstance].walletManager startWithPin:weakSelf.walletPin];

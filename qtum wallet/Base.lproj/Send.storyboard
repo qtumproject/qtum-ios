@@ -158,7 +158,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose Token" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="55o-z3-dxc" customClass="TextFieldWithLine">
-                                        <rect key="frame" x="20" y="100" width="335" height="20"/>
+                                        <rect key="frame" x="20" y="100" width="315" height="20"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
@@ -222,7 +222,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Acj-rW-ybZ" secondAttribute="trailing" constant="20" id="ToJ-9m-HIW"/>
                                     <constraint firstItem="55o-z3-dxc" firstAttribute="top" secondItem="Acj-rW-ybZ" secondAttribute="bottom" constant="40" id="W6a-y3-RLa"/>
                                     <constraint firstItem="F9k-FY-gPy" firstAttribute="centerY" secondItem="55o-z3-dxc" secondAttribute="centerY" id="Xol-GS-Dmz"/>
-                                    <constraint firstAttribute="trailing" secondItem="55o-z3-dxc" secondAttribute="trailing" constant="20" id="cBn-4q-uwf"/>
+                                    <constraint firstAttribute="trailing" secondItem="55o-z3-dxc" secondAttribute="trailing" constant="40" id="cBn-4q-uwf"/>
                                     <constraint firstItem="u50-Ga-hFT" firstAttribute="centerY" secondItem="55o-z3-dxc" secondAttribute="centerY" id="d16-aS-DsK"/>
                                     <constraint firstItem="Ss7-mt-eh8" firstAttribute="centerX" secondItem="mXI-Up-p9y" secondAttribute="centerX" id="d9Z-SS-Mks"/>
                                     <constraint firstItem="Ss7-mt-eh8" firstAttribute="top" secondItem="7Md-s8-YSL" secondAttribute="bottom" constant="80" id="hmv-DX-ylI"/>
@@ -309,7 +309,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-3f-mRF">
-                                                <rect key="frame" x="149" y="11" width="79" height="23"/>
+                                                <rect key="frame" x="148.5" y="11" width="79" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -695,7 +695,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Currency" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YN8-C9-qed" customClass="TextFieldWithLineLightSend">
-                                        <rect key="frame" x="20" y="98" width="335" height="18"/>
+                                        <rect key="frame" x="20" y="98" width="315" height="18"/>
                                         <color key="tintColor" red="0.0" green="1" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
@@ -742,14 +742,14 @@
                                     <constraint firstItem="hwF-p1-9r8" firstAttribute="leading" secondItem="SqX-5v-WoU" secondAttribute="leading" constant="20" id="EOc-KF-qsT"/>
                                     <constraint firstItem="OZa-xy-yXs" firstAttribute="leading" secondItem="SqX-5v-WoU" secondAttribute="leading" constant="20" id="Fuk-Zz-nhJ"/>
                                     <constraint firstItem="6EO-ut-k6R" firstAttribute="top" secondItem="hwF-p1-9r8" secondAttribute="bottom" constant="80" id="L40-FU-PvP"/>
-                                    <constraint firstAttribute="trailing" secondItem="YN8-C9-qed" secondAttribute="trailing" constant="20" id="Lgb-nv-54A"/>
+                                    <constraint firstAttribute="trailing" secondItem="YN8-C9-qed" secondAttribute="trailing" constant="40" id="Lgb-nv-54A"/>
                                     <constraint firstAttribute="trailing" secondItem="hwF-p1-9r8" secondAttribute="trailing" constant="20" id="Q6Z-Cp-dkk"/>
                                     <constraint firstItem="tEl-OR-Wme" firstAttribute="centerY" secondItem="YN8-C9-qed" secondAttribute="centerY" id="RUU-XN-yVR"/>
                                     <constraint firstItem="tEl-OR-Wme" firstAttribute="leading" secondItem="SqX-5v-WoU" secondAttribute="leading" constant="20" id="SVD-ES-vfO"/>
                                     <constraint firstItem="hwF-p1-9r8" firstAttribute="top" secondItem="OZa-xy-yXs" secondAttribute="bottom" constant="100" id="WYk-OU-DY7"/>
                                     <constraint firstItem="YN8-C9-qed" firstAttribute="top" secondItem="OZa-xy-yXs" secondAttribute="bottom" constant="40" id="aMe-50-cSC"/>
                                     <constraint firstAttribute="trailing" secondItem="qOP-I7-7YX" secondAttribute="trailing" constant="20" id="b2b-Q4-2Fi"/>
-                                    <constraint firstItem="tEl-OR-Wme" firstAttribute="centerX" secondItem="YN8-C9-qed" secondAttribute="centerX" id="jxi-iN-ZrI"/>
+                                    <constraint firstItem="OZa-xy-yXs" firstAttribute="centerX" secondItem="SqX-5v-WoU" secondAttribute="centerX" id="ea2-py-Izi"/>
                                     <constraint firstAttribute="bottom" secondItem="6EO-ut-k6R" secondAttribute="bottom" constant="27" id="kax-vZ-6bb"/>
                                     <constraint firstItem="6EO-ut-k6R" firstAttribute="centerX" secondItem="SqX-5v-WoU" secondAttribute="centerX" id="paR-KJ-Jmk"/>
                                     <constraint firstAttribute="trailing" secondItem="OZa-xy-yXs" secondAttribute="trailing" constant="20" id="zOi-12-uKt"/>
@@ -873,7 +873,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcm-xc-4RN">
-                                                    <rect key="frame" x="20" y="21" width="152.5" height="14"/>
+                                                    <rect key="frame" x="20" y="20.5" width="152.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
