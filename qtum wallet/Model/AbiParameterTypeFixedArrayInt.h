@@ -8,6 +8,6 @@
 
 #import "AbiParameterTypeFixedArray.h"
 
-@interface AbiParameterTypeFixedArrayInt : NSObject
+@interface AbiParameterTypeFixedArrayInt : AbiParameterTypeFixedArray
 
 @end

@@ -8,6 +8,6 @@
 
 #import "AbiParameterTypeDynamicArray.h"
 
-@interface AbiParameterTypeDynamicArrayFixedBytes : NSObject
+@interface AbiParameterTypeDynamicArrayFixedBytes : AbiParameterTypeDynamicArray
 
 @end

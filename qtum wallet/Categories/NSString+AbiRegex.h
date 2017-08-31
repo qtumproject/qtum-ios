@@ -14,11 +14,12 @@
 - (BOOL)isIntFromAbi;
 - (BOOL)isBytesFixedFromAbi;
 - (BOOL)isBytesFromAbi;
-- (BOOL)isArrayFromAbi;
-- (BOOL)isArrayOfArraysFromAbi;
 - (BOOL)isAddressFromAbi;
 - (BOOL)isStringFromAbi;
 - (BOOL)isBoolFromAbi;
+
+- (BOOL)isArrayFromAbi;
+- (BOOL)isArrayOfArraysFromAbi;
 
 - (BOOL)isFixedArrayOfStringFromAbi;
 - (BOOL)isDynamicArrayOfStringFromAbi;
@@ -33,6 +34,7 @@
 - (BOOL)isFixedArrayOfFixedBytesFromAbi;
 - (BOOL)isDynamicArrayOfFixedBytesFromAbi;
 
+- (NSInteger)arraySize;
 - (NSInteger)fixedBytesSize;
 - (NSInteger)uintSize;
 - (NSInteger)intSize;

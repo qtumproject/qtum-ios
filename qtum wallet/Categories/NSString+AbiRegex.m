@@ -131,6 +131,21 @@
     return [self isMatchStringPattern:pattern];
 }
 
+- (NSInteger)arraySize {
+    
+    NSString* pattern = @"([[0-9]{1,}])";
+    NSString* match = [self matchedStringWithPattern:pattern];
+    return [match integerValue];
+}
+
+- (NSArray<NSNumber*>*)arrayOfArraySizes {
+    
+    NSString* pattern = @"([[0-9]{1,}])";
+    NSString* match = [self matchedStringWithPattern:pattern];
+//    return [match integerValue];
+    return nil;
+}
+
 -(NSInteger)fixedBytesSize {
     
     NSString* pattern = @"([0-9]{1,})";

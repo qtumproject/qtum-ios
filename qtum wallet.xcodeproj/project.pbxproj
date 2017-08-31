@@ -260,6 +260,8 @@
 		B3D5FE831F56F4BC006A2BF2 /* AbiTypesProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE821F56F4BC006A2BF2 /* AbiTypesProcessor.m */; };
 		B3D5FE861F57013A006A2BF2 /* AbiParameterTypeFixedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE851F57013A006A2BF2 /* AbiParameterTypeFixedArray.m */; };
 		B3D5FE891F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE881F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m */; };
+		B3D5FE8C1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE8B1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m */; };
+		B3D5FE8F1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE8E1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m */; };
 		B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */; };
 		B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */; };
 		B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */; };
@@ -1167,6 +1169,10 @@
 		B3D5FE851F57013A006A2BF2 /* AbiParameterTypeFixedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArray.m; sourceTree = "<group>"; };
 		B3D5FE871F57014B006A2BF2 /* AbiParameterTypeDynamicArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArray.h; sourceTree = "<group>"; };
 		B3D5FE881F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArray.m; sourceTree = "<group>"; };
+		B3D5FE8A1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedArrayBytes.h; sourceTree = "<group>"; };
+		B3D5FE8B1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArrayBytes.m; sourceTree = "<group>"; };
+		B3D5FE8D1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArrayBytes.h; sourceTree = "<group>"; };
+		B3D5FE8E1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArrayBytes.m; sourceTree = "<group>"; };
 		B3DB3E361F2F513E00AA408F /* SpinnerViewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerViewLight.h; sourceTree = "<group>"; };
 		B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerViewLight.m; sourceTree = "<group>"; };
 		B3DB3E3A1F2F55A500AA408F /* LoaderPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewControllerLight.h; sourceTree = "<group>"; };
@@ -2826,6 +2832,10 @@
 				B3D5FE851F57013A006A2BF2 /* AbiParameterTypeFixedArray.m */,
 				B3D5FE871F57014B006A2BF2 /* AbiParameterTypeDynamicArray.h */,
 				B3D5FE881F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m */,
+				B3D5FE8A1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.h */,
+				B3D5FE8B1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m */,
+				B3D5FE8D1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.h */,
+				B3D5FE8E1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m */,
 			);
 			name = Arrays;
 			sourceTree = "<group>";
@@ -5234,6 +5244,7 @@
 				B35DF6491F27329E00316953 /* TokenDetailTableViewLight.m in Sources */,
 				B36505AA1F16017300521603 /* ExportBrainKeyViewControllerLight.m in Sources */,
 				B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */,
+				B3D5FE8F1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m in Sources */,
 				B3DC9D071F31B6B7006B2E07 /* AddressControlListViewControllerLight.m in Sources */,
 				B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */,
 				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
@@ -5255,6 +5266,7 @@
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
 				B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */,
 				B32BC4AE1F28C70600C2417C /* PinViewControllerLight.m in Sources */,
+				B3D5FE8C1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m in Sources */,
 				B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,

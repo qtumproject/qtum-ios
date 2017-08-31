@@ -109,16 +109,20 @@
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
 }
 
-//- (void)testEncode_Bytes32_String_Uint256_String_Bytes32 {
-//    
-//    NSArray* values = @[@"123123", @"123123",@"2222",@"asdasasdasdasdasdasdasdasdasdasdasdasdasdasd",@"4545"];
-//    NSArray* types = @[@(BytesStaticType32),@(StringType), @(UInt256Type), @(StringType), @(BytesStaticType32)];
-//    
-//    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentFromArrayOfValues:values andArrayOfTypes:types];
-//    NSString* decodedParams = @"01e0f3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000008ae00000000000000000000000000000000000000000000000000000000000000e011c100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000063132333132330000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002c61736461736173646173646173646173646173646173646173646173646173646173646173646173646173640000000000000000000000000000000000000000";
-//    
-//    XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
-//}
+- (void)test_Ether_Example_Decode_Uint32_Bool {
+    
+    NSArray* values = @[@"69",@"1"];
+    AbiParameterTypeUInt* uint32 = [[AbiParameterTypeUInt alloc] initWithSize:32];
+    AbiParameterTypeBool* boolType = [[AbiParameterTypeBool alloc] initWithSize:0];
+    
+    NSArray* types = @[uint32,boolType];
+    
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
+    NSString* decodedParams = @"00000000000000000000000000000000000000000000000000000000000000450000000000000000000000000000000000000000000000000000000000000001";
+    
+    XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
+}
+
 
 
 @end
