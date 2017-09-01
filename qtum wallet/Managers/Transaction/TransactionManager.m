@@ -119,12 +119,14 @@ static NSString* op_exec = @"c1";
     }];
     
     if (addressWithAmountValue) {
-        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
-            if (error) {
-                completion([error isNoInternetConnectionError] ? TransactionManagerErrorTypeNoInternetConnection : TransactionManagerErrorTypeServer, transaction,hashTransaction);
-            }else{
-                completion(TransactionManagerErrorTypeNone, transaction, hashTransaction);
-            }
+        
+        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress]
+                                                 andBitcode:hashFuction
+                                              fromAddresses:@[addressWithAmountValue]
+                                                  toAddress:nil walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                 andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
+            
+            completion(errorType, transaction,hashTransaction);
         }];
     } else {
         completion(TransactionManagerErrorTypeNotEnoughMoney, nil, nil);
@@ -161,12 +163,14 @@ static NSString* op_exec = @"c1";
     }
 
     if (addressWithAmountValue && amount) {
-        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
-            if (error) {
-                completion([error isNoInternetConnectionError] ? TransactionManagerErrorTypeNoInternetConnection : TransactionManagerErrorTypeServer, transaction,hashTransaction);
-            }else{
-                completion(TransactionManagerErrorTypeNone, transaction, hashTransaction);
-            }
+        
+        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress]
+                                                 andBitcode:hashFuction fromAddresses:@[addressWithAmountValue]
+                                                  toAddress:nil
+                                                 walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                 andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
+                                                     
+            completion(errorType, transaction, hashTransaction);
         }];
     } else {
         completion(TransactionManagerErrorTypeNotEnoughMoney, nil, nil);
@@ -204,10 +208,15 @@ static NSString* op_exec = @"c1";
                  fromAddresses:(NSArray<NSString*>*) fromAddresses
                    toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
-                  andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion {
+                  andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
-    [self sendToTokenWithAddress:contractAddress andBitcode:bitcode fromAddresses:fromAddresses toAddress:toAddress walletKeys:walletKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
-        completion(error,transaction,hashTransaction);
+    [self sendToTokenWithAddress:contractAddress
+                      andBitcode:bitcode
+                   fromAddresses:fromAddresses
+                       toAddress:toAddress
+                      walletKeys:walletKeys
+                      andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
+        completion(errorType,transaction,hashTransaction);
     }];
 }
 
@@ -216,11 +225,11 @@ static NSString* op_exec = @"c1";
                  fromAddresses:(NSArray<NSString*>*) fromAddresses
                    toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
-                  andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion {
+                  andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
     //NSAssert(walletKeys.count > 0, @"Keys must be grater then zero");
     if (!fromAddresses.count) {
-        completion([NSError new],nil,nil);
+        completion(TransactionManagerErrorTypeInvalidAddress,nil,nil);
     }
     
     __weak typeof(self) weakSelf = self;
@@ -229,13 +238,18 @@ static NSString* op_exec = @"c1";
         
         BTCTransaction *tx = [weakSelf sendToTokenWithUnspentOutputs:responseObject amount:0 contractAddress:contractAddress toAddress:toAddress fromAddresses:fromAddresses bitcode:bitcode walletKeys:walletKeys];
         
-        [weakSelf sendTransaction:tx withSuccess:^(id response){
-            completion(nil,tx,response[@"txid"]);
-        } andFailure:^(NSString *message) {
-            completion([NSError new],nil,nil);
-        }];
+        if (!tx) {
+            completion(TransactionManagerErrorTypeNotEnoughMoney,nil,nil);
+        } else {
+            [weakSelf sendTransaction:tx withSuccess:^(id response){
+                completion(TransactionManagerErrorTypeNone,tx,response[@"txid"]);
+            } andFailure:^(NSString *message) {
+                completion(TransactionManagerErrorTypeServer,nil,nil);
+            }];
+        }
+
     } andFailureHandler:^(NSError *error, NSString *message) {
-        completion(error,nil, nil);
+        completion(TransactionManagerErrorTypeServer,nil, nil);
     }];
 }
 

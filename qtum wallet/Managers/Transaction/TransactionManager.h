@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
                fromAddresses:(NSArray<NSString*>*) fromAddresses
                  toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
-                andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion;
+                andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion;
 
 - (void)sendTransactionToToken:(Contract*) token
                      toAddress:(NSString*) toAddress
