@@ -78,7 +78,7 @@ static NSString* kTemplateUuidKey = @"template";
             }
         }
         
-        date = [[backup[kDateCreateKey] date] formatedDateString];
+        date = [NSDate formatedDateStringFromString:backup[kDateCreateKey]];
         version = backup[kFileVersionKey];
         completionBlock(date,version,contractCount,templateCount,tokenCount);
     }
