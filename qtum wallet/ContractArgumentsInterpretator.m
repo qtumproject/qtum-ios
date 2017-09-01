@@ -50,24 +50,33 @@ NSInteger standardParameterBatch = 32;
     NSMutableArray* dynamicDataArray = @[].mutableCopy;
     NSNumber* offset = @(32 * values.count);
     
-    
     //decode data
     for (int i = 0; i < values.count; i++) {
         
         id <AbiParameterProtocol> type = types[i];
         
-        if ([type isKindOfClass:[AbiParameterTypeUInt class]] ||
-            [type isKindOfClass:[AbiParameterTypeInt class]] ||
-            [type isKindOfClass:[AbiParameterTypeAddress class]] ||
-            [type isKindOfClass:[AbiParameterTypeBool class]] ||
-            [type isKindOfClass:[AbiParameterTypeFixedBytes class]]) {
+        //decode arrays
+        if ([type isKindOfClass:[AbiParameterTypeArray class]] ) {
+            
+            
+        }
+        
+        //decode primitive types
+        else if ([type isKindOfClass:[AbiParameterPrimitiveType class]] ||
+                   [type isKindOfClass:[AbiParameterTypeAddress class]]) {
             
             [self convertElementaryTypesWith:staticDataArray withType:type andOffset:&offset withData:values[i]];
             
-        } else if ([type isKindOfClass:[AbiParameterTypeString class]]){
+        }
+        
+        //decode strings
+        else if ([type isKindOfClass:[AbiParameterTypeString class]]){
             
             [self convertStringsWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
-        } else if ([type isKindOfClass:[AbiParameterTypeBytes class]]){
+        }
+        
+        //decode bytes
+        else if ([type isKindOfClass:[AbiParameterTypeBytes class]]){
             
             [self convertBytesWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
         }
