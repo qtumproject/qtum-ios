@@ -62,11 +62,15 @@ NSInteger standardParameterBatch = 32;
         }
         
         //decode primitive types
-        else if ([type isKindOfClass:[AbiParameterPrimitiveType class]] ||
-                   [type isKindOfClass:[AbiParameterTypeAddress class]]) {
+        else if ([type isKindOfClass:[AbiParameterPrimitiveType class]]) {
             
             [self convertElementaryTypesWith:staticDataArray withType:type andOffset:&offset withData:values[i]];
+        }
+        
+        //decode addresses
+        else if ([type isKindOfClass:[AbiParameterTypeAddress class]]) {
             
+            [self convertAddressesWith:staticDataArray withType:type andOffset:&offset withData:values[i]];
         }
         
         //decode strings
@@ -138,6 +142,26 @@ NSInteger standardParameterBatch = 32;
         
         [staticDataArray addObject:[dataBytes copy]?: [self emptyData32bit]];
     }
+}
+
+- (void)convertAddressesWith:(NSMutableArray*)staticDataArray
+                    withType:(id <AbiParameterProtocol>)type
+                   andOffset:(NSNumber**)offset
+                    withData:(NSString*)data {
+    
+    if (![data isKindOfClass:[NSString class]]) {
+        return;//bail if wrong data
+    }
+    
+    NSData* hexDataFromBase58 = [data dataFromBase58];
+    
+    if (hexDataFromBase58.length == 25) {
+        hexDataFromBase58 = [[hexDataFromBase58 subdataWithRange:NSMakeRange(1, 20)] mutableCopy];
+    }
+    
+    hexDataFromBase58 = [self appendDataToEnd32bytesData:hexDataFromBase58];
+    
+    [staticDataArray addObject:hexDataFromBase58 ?: [self emptyData32bit]];
 }
 
 - (void)convertStringsWithStaticStack:(NSMutableArray*)staticDataArray
