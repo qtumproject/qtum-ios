@@ -50,24 +50,37 @@ NSInteger standardParameterBatch = 32;
     NSMutableArray* dynamicDataArray = @[].mutableCopy;
     NSNumber* offset = @(32 * values.count);
     
-    
     //decode data
     for (int i = 0; i < values.count; i++) {
         
         id <AbiParameterProtocol> type = types[i];
         
-        if ([type isKindOfClass:[AbiParameterTypeUInt class]] ||
-            [type isKindOfClass:[AbiParameterTypeInt class]] ||
-            [type isKindOfClass:[AbiParameterTypeAddress class]] ||
-            [type isKindOfClass:[AbiParameterTypeBool class]] ||
-            [type isKindOfClass:[AbiParameterTypeFixedBytes class]]) {
+        //decode arrays
+        if ([type isKindOfClass:[AbiParameterTypeArray class]] ) {
+            
+            
+        }
+        
+        //decode primitive types
+        else if ([type isKindOfClass:[AbiParameterPrimitiveType class]]) {
             
             [self convertElementaryTypesWith:staticDataArray withType:type andOffset:&offset withData:values[i]];
+        }
+        
+        //decode addresses
+        else if ([type isKindOfClass:[AbiParameterTypeAddress class]]) {
             
-        } else if ([type isKindOfClass:[AbiParameterTypeString class]]){
+            [self convertAddressesWith:staticDataArray withType:type andOffset:&offset withData:values[i]];
+        }
+        
+        //decode strings
+        else if ([type isKindOfClass:[AbiParameterTypeString class]]){
             
             [self convertStringsWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
-        } else if ([type isKindOfClass:[AbiParameterTypeBytes class]]){
+        }
+        
+        //decode bytes
+        else if ([type isKindOfClass:[AbiParameterTypeBytes class]]){
             
             [self convertBytesWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
         }
@@ -106,13 +119,15 @@ NSInteger standardParameterBatch = 32;
     } else if ([type isKindOfClass:[AbiParameterTypeAddress class]]) {
         
         
-        NSMutableData* address = [[NSString dataFromHexString:data] mutableCopy];
-        if (address.length > 20) {
-            address = [[address subdataWithRange:NSMakeRange(0, 20)] mutableCopy];
+        NSData* hexDataFromBase58 = [data dataFromBase58];
+
+        if (hexDataFromBase58.length == 25) {
+            hexDataFromBase58 = [[hexDataFromBase58 subdataWithRange:NSMakeRange(1, 20)] mutableCopy];
         }
-        [address increaseLengthBy:32 - address.length];
         
-        [staticDataArray addObject:[NSData reverseData:[address copy]] ?: [self emptyData32bit]];
+        hexDataFromBase58 = [self appendDataToEnd32bytesData:hexDataFromBase58];
+        
+        [staticDataArray addObject:hexDataFromBase58 ?: [self emptyData32bit]];        
         
     } else if ([type isKindOfClass:[AbiParameterTypeFixedBytes class]]) {
         
@@ -127,6 +142,26 @@ NSInteger standardParameterBatch = 32;
         
         [staticDataArray addObject:[dataBytes copy]?: [self emptyData32bit]];
     }
+}
+
+- (void)convertAddressesWith:(NSMutableArray*)staticDataArray
+                    withType:(id <AbiParameterProtocol>)type
+                   andOffset:(NSNumber**)offset
+                    withData:(NSString*)data {
+    
+    if (![data isKindOfClass:[NSString class]]) {
+        return;//bail if wrong data
+    }
+    
+    NSData* hexDataFromBase58 = [data dataFromBase58];
+    
+    if (hexDataFromBase58.length == 25) {
+        hexDataFromBase58 = [[hexDataFromBase58 subdataWithRange:NSMakeRange(1, 20)] mutableCopy];
+    }
+    
+    hexDataFromBase58 = [self appendDataToEnd32bytesData:hexDataFromBase58];
+    
+    [staticDataArray addObject:hexDataFromBase58 ?: [self emptyData32bit]];
 }
 
 - (void)convertStringsWithStaticStack:(NSMutableArray*)staticDataArray
@@ -233,12 +268,12 @@ NSInteger standardParameterBatch = 32;
     return [data copy];
 }
 
-- (NSData*)uint256DataFromData:(NSData*) aData {
+- (NSData*)appendDataToEnd32bytesData:(NSData*) aData {
     
-    NSMutableData* emptyData = [NSMutableData new];
-    [emptyData increaseLengthBy:32 - aData.length];
-    [emptyData appendData:aData];
-    return emptyData;
+    NSMutableData* data = [NSMutableData new];
+    [data increaseLengthBy:32 - aData.length];
+    [data appendData:aData];
+    return [data copy];
 }
 
 - (NSArray*)аrrayFromContractArguments:(NSData*) data andInterface:(AbiinterfaceItem*) interface {

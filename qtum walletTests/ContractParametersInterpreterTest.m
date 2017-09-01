@@ -67,20 +67,20 @@
 
 - (void)testEncode_address {
     
-    NSArray* values = @[@"1111111111111111111111111111111111111111"];
+    NSArray* values = @[@"QQ2aC88XdLragnPUBPyex3qDvhNYyHXG5Y"];
     
     AbiParameterTypeAddress* address = [AbiParameterTypeAddress new];
     NSArray* types = @[address];
     
     NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
-    NSString* decodedParams = @"0000000000000000000000001111111111111111111111111111111111111111";
+    NSString* decodedParams = @"000000000000000000000000258ecfc80aadffb3f00e9183b3fda62f63280b54";
     
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
 }
 
 - (void)testEncode_Address_Uint256_Uint256_String_String {
     
-    NSArray* values = @[@"1111111111111111111111111111111111111111",@"123",@"456",@"thequickbrownfoxjumpsoverthelazydog", @"shesellsseashellsontheseashore"];
+    NSArray* values = @[@"QQ2aC88XdLragnPUBPyex3qDvhNYyHXG5Y",@"123",@"456",@"thequickbrownfoxjumpsoverthelazydog", @"shesellsseashellsontheseashore"];
     
     AbiParameterTypeAddress* address = [AbiParameterTypeAddress new];
     AbiParameterTypeUInt* uint = [[AbiParameterTypeUInt alloc] initWithSize:256];
@@ -89,7 +89,7 @@
     NSArray* types = @[address,uint, uint, string, string];
     
     NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
-    NSString* decodedParams = @"0000000000000000000000001111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000007b00000000000000000000000000000000000000000000000000000000000001c800000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000023746865717569636b62726f776e666f786a756d70736f7665727468656c617a79646f670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001e73686573656c6c737365617368656c6c736f6e74686573656173686f72650000";
+    NSString* decodedParams = @"000000000000000000000000258ecfc80aadffb3f00e9183b3fda62f63280b54000000000000000000000000000000000000000000000000000000000000007b00000000000000000000000000000000000000000000000000000000000001c800000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000023746865717569636b62726f776e666f786a756d70736f7665727468656c617a79646f670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001e73686573656c6c737365617368656c6c736f6e74686573656173686f72650000";
     
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
 }
@@ -119,6 +119,20 @@
     
     NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
     NSString* decodedParams = @"00000000000000000000000000000000000000000000000000000000000000450000000000000000000000000000000000000000000000000000000000000001";
+    
+    XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
+}
+
+- (void)test_Transfer_Params_Decode_Address_Uint256 {
+    
+    NSArray* values = @[@"QQ2aC88XdLragnPUBPyex3qDvhNYyHXG5Y",@"100"];
+    AbiParameterTypeUInt* uint256 = [[AbiParameterTypeUInt alloc] initWithSize:256];
+    AbiParameterTypeAddress* address = [AbiParameterTypeAddress new];
+    
+    NSArray* types = @[address,uint256];
+    
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
+    NSString* decodedParams = @"000000000000000000000000258ecfc80aadffb3f00e9183b3fda62f63280b540000000000000000000000000000000000000000000000000000000000000064";
     
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
 }
