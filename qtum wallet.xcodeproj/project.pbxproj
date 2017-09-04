@@ -201,9 +201,6 @@
 		B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB461EF12FDA001D2FF1 /* DataOperation.m */; };
 		B3A4EA4F1F502C2D008115D1 /* NSNumber+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA4E1F502C2D008115D1 /* NSNumber+Comparison.m */; };
 		B3A4EA521F502C40008115D1 /* NSDecimalNumber+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */; };
-		B3A4EA5C1F502E65008115D1 /* qtum_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA5B1F502E65008115D1 /* qtum_walletTests.m */; };
-		B3A4EA641F502E84008115D1 /* NSDecimalNumberComparisonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA631F502E84008115D1 /* NSDecimalNumberComparisonTests.m */; };
-		B3A4EA661F503052008115D1 /* NSNumberComparisonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA651F503052008115D1 /* NSNumberComparisonTests.m */; };
 		B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */; };
 		B3C08B151ED3382300713B15 /* keccak.c in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B141ED3382300713B15 /* keccak.c */; };
 		B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */; };
@@ -1045,10 +1042,6 @@
 		B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+Comparison.m"; sourceTree = "<group>"; };
 		B3A4EA531F502CD1008115D1 /* NSDecimalNumberComparisonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDecimalNumberComparisonTests.m; sourceTree = "<group>"; };
 		B3A4EA591F502E65008115D1 /* qtum walletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "qtum walletTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3A4EA5B1F502E65008115D1 /* qtum_walletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qtum_walletTests.m; sourceTree = "<group>"; };
-		B3A4EA5D1F502E66008115D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3A4EA631F502E84008115D1 /* NSDecimalNumberComparisonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDecimalNumberComparisonTests.m; sourceTree = "<group>"; };
-		B3A4EA651F503052008115D1 /* NSNumberComparisonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberComparisonTests.m; sourceTree = "<group>"; };
 		B3C08B091ED2FE3000713B15 /* keccak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keccak.h; sourceTree = "<group>"; };
 		B3C08B0A1ED2FE3000713B15 /* NSString+SHA3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SHA3.h"; sourceTree = "<group>"; };
 		B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHA3.m"; sourceTree = "<group>"; };
@@ -2619,17 +2612,6 @@
 				B3014D681F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m */,
 			);
 			name = "Watch Tokens";
-			sourceTree = "<group>";
-		};
-		B3A4EA5A1F502E65008115D1 /* qtum walletTests */ = {
-			isa = PBXGroup;
-			children = (
-				B3A4EA5B1F502E65008115D1 /* qtum_walletTests.m */,
-				B3A4EA631F502E84008115D1 /* NSDecimalNumberComparisonTests.m */,
-				B3A4EA5D1F502E66008115D1 /* Info.plist */,
-				B3A4EA651F503052008115D1 /* NSNumberComparisonTests.m */,
-			);
-			path = "qtum walletTests";
 			sourceTree = "<group>";
 		};
 		B3C08B221ED45BCD00713B15 /* Tokens Templates */ = {
@@ -4298,7 +4280,6 @@
 				B33EAF8B1E5EC262006125F3 /* iMessageExtension */,
 				E730AB551EE6A5D100132711 /* QTUM Watch */,
 				E730AB641EE6A5D100132711 /* QTUM Watch Extension */,
-				B3A4EA5A1F502E65008115D1 /* qtum walletTests */,
 				F94C279886F936AB7B4DA6F8 /* Frameworks */,
 				94DECCBC55E0AE7D7EF532E6 /* Pods */,
 				E7FD36391DC4D07E00748177 /* Products */,
@@ -4905,9 +4886,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3427FD21F543D7D00182E95 /* ContractParametersInterpreterTest.m in Sources */,
-				B3A4EA661F503052008115D1 /* NSNumberComparisonTests.m in Sources */,
-				B3A4EA641F502E84008115D1 /* NSDecimalNumberComparisonTests.m in Sources */,
-				B3A4EA5C1F502E65008115D1 /* qtum_walletTests.m in Sources */,
 				B3D5FE411F56A4DC006A2BF2 /* AbiRegexTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
