@@ -194,15 +194,16 @@
 
 - (NSString*)stringFromBracer:(NSString*) stringWithBracer {
     
-    NSString* pattern = @"([0-9]{1,})";
-    return [self matchedStringWithPattern:pattern];
+    return [[stringWithBracer
+             stringByReplacingOccurrencesOfString:@"[" withString:@""]
+                stringByReplacingOccurrencesOfString:@"]" withString:@""];
 }
 
 #pragma mark - 
 
-- (NSArray<NSString*>*)dynamicArrayElementsFromParameter:(NSString*) parameter {
+- (NSArray<NSString*>*)dynamicArrayElementsFromParameter {
     
-    NSString* paramterWithoutBracer = [self stringFromBracer:parameter];
+    NSString* paramterWithoutBracer = [self stringFromBracer:self];
     return [paramterWithoutBracer componentsSeparatedByString:@","];
 }
 

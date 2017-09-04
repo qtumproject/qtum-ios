@@ -39,6 +39,6 @@
 - (NSInteger)uintSize;
 - (NSInteger)intSize;
 
-- (NSArray<NSString*>*)dynamicArrayElementsFromParameter:(NSString*) parameter;
+- (NSArray<NSString*>*)dynamicArrayElementsFromParameter;
 
 @end

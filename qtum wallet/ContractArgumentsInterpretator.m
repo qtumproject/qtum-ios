@@ -10,6 +10,7 @@
 #import "NSData+Extension.h"
 #import "AbiinterfaceItem.h"
 #import "NSString+Extension.h"
+#import "NSString+AbiRegex.h"
 
 @interface ContractArgumentsInterpretator ()
 
@@ -58,7 +59,10 @@ NSInteger standardParameterBatch = 32;
         //decode arrays
         if ([type isKindOfClass:[AbiParameterTypeArray class]] ) {
             
-            
+            if ([type isKindOfClass:[AbiParameterTypeDynamicArrayUInt class]]) {
+                
+                [self convertUintArrayWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
+            }
         }
         
         //decode primitive types
@@ -186,6 +190,36 @@ NSInteger standardParameterBatch = 32;
     
     //inc offset
     *offset = @([*offset integerValue] + stringData.length + standardParameterBatch);
+}
+
+- (void)convertUintArrayWithStaticStack:(NSMutableArray*)staticDataArray
+                        andDynamicStack:(NSMutableArray*)dynamicDataStack
+                               withType:(id <AbiParameterProtocol>)type
+                              andOffset:(NSNumber**)offset
+                               withData:(NSString*)string {
+    
+    if (![string isKindOfClass:[NSString class]]) {
+        return;//bail if wrong data
+    }
+    
+    //adding offset
+    [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:[*offset integerValue]]]];
+    
+    //adding dynamic data in dynamic stack
+    NSArray* arrayElements = [string dynamicArrayElementsFromParameter];
+    NSInteger length = arrayElements.count;
+    
+    [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
+    
+    
+    for (int i = 0; i < arrayElements.count; i++) {
+        
+        NSInteger param = [arrayElements[i] integerValue];
+        [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+    }
+    
+    //inc offset
+    *offset = @([*offset integerValue] + length + standardParameterBatch);
 }
 
 - (void)convertBytesWithStaticStack:(NSMutableArray*)staticDataArray

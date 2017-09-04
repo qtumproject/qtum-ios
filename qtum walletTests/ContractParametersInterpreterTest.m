@@ -123,6 +123,22 @@
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
 }
 
+- (void)test_Ether_Example_Decode_Bytes_Bool_UintDynamicArray {
+    
+    NSArray* values = @[@"dave",@"1", @"[1,2,3]"];
+    
+    AbiParameterTypeDynamicArrayUInt* uintDynamicArray = [AbiParameterTypeDynamicArrayUInt new];
+    AbiParameterTypeBytes* bytes = [AbiParameterTypeBytes new];
+    AbiParameterTypeBool* boolType = [[AbiParameterTypeBool alloc] initWithSize:0];
+    
+    NSArray* types = @[bytes,boolType,uintDynamicArray];
+    
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
+    NSString* decodedParams = @"0000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000464617665000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000003";
+    
+    XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
+}
+
 - (void)test_Transfer_Params_Decode_Address_Uint256 {
     
     NSArray* values = @[@"QQ2aC88XdLragnPUBPyex3qDvhNYyHXG5Y",@"100"];
