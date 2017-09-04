@@ -143,7 +143,7 @@
 
 -(void)didCreateNewButtonPressed {
     
-    [self gotoCreateWallet];
+    [self gotoCreatePin];
 }
 
 #pragma mark - WalletNameOutputDelegate
@@ -242,7 +242,7 @@
 -(void)didRestoreWallet {
     
     self.walletRestored = YES;
-    [self gotoCreateWallet];
+    [self gotoCreatePin];
 }
 
 - (BOOL)checkWordsString:(NSString *)string {
