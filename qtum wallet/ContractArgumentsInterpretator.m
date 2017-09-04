@@ -118,7 +118,15 @@ NSInteger standardParameterBatch = 32;
         [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
     } else if ([type isKindOfClass:[AbiParameterTypeBool class]]) {
         
-        NSInteger param = [data integerValue];
+        NSInteger param;
+        if ([data isEqualToString:@"false"]) {
+            param = 0;
+        } else if ([data isEqualToString:@"true"]) {
+            param = 1;
+        } else {
+            param = [data integerValue];
+        }
+        
         [staticDataArray addObject:[NSData reverseData:[self data32BitsFromInt:param withSize:1]] ?: [self emptyData32bit]];
     } else if ([type isKindOfClass:[AbiParameterTypeAddress class]]) {
         
@@ -140,9 +148,9 @@ NSInteger standardParameterBatch = 32;
         
         if (dataBytes.length > bytesType.size) {
             dataBytes = [[dataBytes subdataWithRange:NSMakeRange(0, bytesType.size)] mutableCopy];
-        } else {
-            [dataBytes increaseLengthBy:bytesType.size - dataBytes.length];
         }
+        
+        [dataBytes increaseLengthBy:standardParameterBatch - dataBytes.length];
         
         [staticDataArray addObject:[dataBytes copy]?: [self emptyData32bit]];
     }
@@ -219,7 +227,7 @@ NSInteger standardParameterBatch = 32;
     }
     
     //inc offset
-    *offset = @([*offset integerValue] + length + standardParameterBatch);
+    *offset = @([*offset integerValue] + (length * standardParameterBatch) + standardParameterBatch);
 }
 
 - (void)convertBytesWithStaticStack:(NSMutableArray*)staticDataArray
