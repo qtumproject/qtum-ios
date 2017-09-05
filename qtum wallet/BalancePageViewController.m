@@ -72,11 +72,14 @@
         _scrollView.pagingEnabled = YES;
         _scrollView.delegate = self;
         _scrollView.scrollEnabled = _enabledScroll;
+        _scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+        _scrollView.bounces = NO;
         
         [self.view addSubview:_scrollView];
         
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scroll]-0-|" options:0 metrics:nil views:@{@"scroll" : _scrollView}]];
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[scroll]-0-|" options:0 metrics:nil views:@{@"scroll" : _scrollView}]];
+        
     }
 }
 
@@ -210,25 +213,10 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
-    if (scrollView.contentOffset.x <= 0) {
-        scrollView.contentOffset = CGPointMake(0, 0);
-    } else if (scrollView.contentOffset.x >= scrollView.bounds.size.width * (self.controllers.count - 1)) {
-        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width * (self.controllers.count - 1), 0);
-    }
-    
     if ((NSInteger)scrollView.contentOffset.x % (NSInteger)scrollView.bounds.size.width == 0) {
         
         NSInteger index = scrollView.contentOffset.x / scrollView.bounds.size.width;
         [self changeCurrentIndex:index];
-    }
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    
-    if (scrollView.contentOffset.x <= 0) {
-        scrollView.contentOffset = CGPointMake(0, 0);
-    } else if (scrollView.contentOffset.x >= scrollView.bounds.size.width * (self.controllers.count - 1)) {
-        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width * (self.controllers.count - 1), 0);
     }
 }
 
