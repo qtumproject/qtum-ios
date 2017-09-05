@@ -157,7 +157,7 @@ tokenAddress = _tokenAddress;
 }
 - (IBAction)chooseAnotherAddressPress:(id)sender {
     
-    [self.delegate didPressedChooseAddress];
+    [self.delegate didPressedChooseAddressWithPreviusAddress:self.walletAddress];
 }
 
 - (IBAction)shareButtonWasPressed:(id)sender {

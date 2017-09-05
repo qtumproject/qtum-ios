@@ -352,10 +352,11 @@
 
 #pragma mark - RecieveOutputDelegate
 
--(void)didPressedChooseAddress {
-    
+-(void)didPressedChooseAddressWithPreviusAddress:(NSString*) prevAddress {
+
     NSObject<ChooseReciveAddressOutput> *output = [[ControllersFactory sharedInstance] createChooseReciveAddressOutput];
     output.delegate = self;
+    output.prevAddress = prevAddress;
     output.addresses = [ApplicationCoordinator sharedInstance].walletManager.wallet.allKeysAdreeses;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
