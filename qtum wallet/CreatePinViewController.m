@@ -11,6 +11,8 @@
 
 @interface CreatePinViewController () <CAAnimationDelegate>
 
+@property (assign, nonatomic, getter = isProcessing) BOOL processing;
+
 @end
 
 @implementation CreatePinViewController
@@ -67,11 +69,11 @@
     }
 }
 
--(void)actionEnter:(id)sender{
+-(void)actionEnter:(id)sender {
     
-    [self confirmButtomPressed:nil];
+    if (!self.isProcessing) {
+        [self confirmButtomPressed:nil];
+    }
 }
-
-
 
 @end

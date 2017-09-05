@@ -15,5 +15,7 @@
 
 -(void)startCreateWallet;
 -(void)endCreateWalletWithError:(NSError*)error;
+-(void)showFailedStatus;
+
 
 @end

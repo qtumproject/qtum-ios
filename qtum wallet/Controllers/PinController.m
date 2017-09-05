@@ -11,8 +11,6 @@
 
 @interface PinController () <CAAnimationDelegate>
 
-@property (assign,nonatomic,getter=isStopEditingFields) BOOL stopEditingFields;
-
 @end
 
 @implementation PinController
@@ -30,7 +28,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
                                                  name:UIKeyboardDidShowNotification
-                                               object:nil];    
+                                               object:nil];
+    self.editingEnabled = NO;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    self.editingEnabled = YES;
 }
 
 -(void)dealloc{
@@ -97,7 +101,7 @@
     [self clearPinTextFields];
 }
 
--(void)clearPinTextFields{
+-(void)clearPinTextFields {
     
     self.firstSymbolTextField.realText =
     self.secondSymbolTextField.realText =
@@ -159,6 +163,10 @@
 
 
 - (BOOL)textField:(CustomTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if (!self.isEditingEnabled) {
+        return NO;
+    }
     if (string.length && [string rangeOfString:@" "].location == NSNotFound) {
         textField.realText = [string substringToIndex:1];
         textField.text = @"■";

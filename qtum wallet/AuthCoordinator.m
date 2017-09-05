@@ -125,6 +125,7 @@
 
 -(void)gotoCreatePinAgain {
     
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
     [self gotoCreatePin];
 }
@@ -150,6 +151,7 @@
 
 -(void)didCancelPressedOnWalletName {
     
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
     self.walletRestored = NO;
 }
@@ -164,11 +166,13 @@
 
 -(void)didCancelPressedOnCreateWallet {
     
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
     self.walletRestored = NO;
 }
 
 -(void)didEntererFirstPin:(NSString*)pin {
+    
     self.walletPin = pin;
     [self gotoRepeatePin];
 }
@@ -182,6 +186,7 @@
 
 -(void)didCancelPressedOnRepeatePin {
     
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
     self.walletRestored = NO;
 }
@@ -212,8 +217,8 @@
         }];
 
     }else {
-        self.walletPin = nil;
-        [self gotoCreatePinAgain];
+
+        [self.repeatePinController showFailedStatus];
     }
 }
 
@@ -294,7 +299,9 @@
     }
 }
 
--(void)cancelCreateWallet{
+-(void)cancelCreateWallet {
+    
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
     self.walletRestored = NO;
 }

@@ -44,7 +44,7 @@
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ox-Y3-1Ck">
-                                <rect key="frame" x="30" y="80" width="315" height="373.5"/>
+                                <rect key="frame" x="30" y="80.5" width="315" height="373.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEV-Uu-5k2">
                                         <rect key="frame" x="20" y="35" width="275" height="18"/>
@@ -167,7 +167,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztp-Zv-0B8">
-                                <rect key="frame" x="60" y="247" width="255" height="15.5"/>
+                                <rect key="frame" x="60" y="247.5" width="255" height="15.5"/>
                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -218,9 +218,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.40000000596046448" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e9B-JI-vcC">
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9B-JI-vcC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eL-3F-x2g">
@@ -296,7 +295,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciT-RF-Gd0">
-                                        <rect key="frame" x="180" y="208" width="30" height="12"/>
+                                        <rect key="frame" x="180.5" y="208" width="29.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -384,8 +383,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="e9B-JI-vcC" firstAttribute="leading" secondItem="ek9-dw-hdW" secondAttribute="leading" id="CoI-6B-2rv"/>
+                            <constraint firstItem="e9B-JI-vcC" firstAttribute="top" secondItem="ek9-dw-hdW" secondAttribute="top" id="Oz8-hc-82B"/>
+                            <constraint firstAttribute="trailing" secondItem="e9B-JI-vcC" secondAttribute="trailing" id="Z7e-Zx-Xov"/>
                             <constraint firstItem="4eL-3F-x2g" firstAttribute="centerX" secondItem="ek9-dw-hdW" secondAttribute="centerX" id="gwI-iw-F6L"/>
                             <constraint firstItem="4eL-3F-x2g" firstAttribute="centerY" secondItem="ek9-dw-hdW" secondAttribute="centerY" multiplier="0.8" id="had-V7-VLl"/>
+                            <constraint firstItem="LRg-7G-pih" firstAttribute="top" secondItem="e9B-JI-vcC" secondAttribute="bottom" id="ofN-zg-fsT"/>
                         </constraints>
                     </view>
                     <connections>
