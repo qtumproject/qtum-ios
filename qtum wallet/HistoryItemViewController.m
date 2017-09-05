@@ -72,7 +72,7 @@
 - (void)configWithItem {
     
     self.balanceLabel.text = [NSString stringWithFormat:@"%0.6f", self.item.amount.doubleValue];
-    self.receivedTimeLabel.text = self.item.fullDateString ?: NSLocalizedString(@"Unconfirmed", nil);;
+    self.receivedTimeLabel.text = self.item.fullDateString ?: NSLocalizedString(@"Unconfirmed", nil);
 }
 
 - (void)changeCurrentIndex:(NSInteger)index {

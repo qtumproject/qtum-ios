@@ -14,12 +14,17 @@
 
 extern NSString *const kTokenDidChange;
 extern NSString *const kContractCreationFailed;
+extern NSString *const kSmartContractPretendentsKey;
+extern NSString *const kTemplateModel;
+extern NSString *const kAddresses;
+extern NSString *const kLocalContractName;
 
 @interface ContractManager : NSObject <Managerable, Clearable>
 
 - (NSArray <Contract*>*)allContracts;
 - (NSArray <Contract*>*)allTokens;
 - (NSArray <Contract*>*)allActiveTokens;
+- (NSDictionary*)smartContractPretendentsCopy;
 - (void)addNewToken:(Contract*) token;
 - (void)updateTokenWithContractAddress:(NSString*) address withAddressBalanceDictionary:(NSDictionary*) addressBalance;
 - (void)checkSmartContract:(HistoryElement*) item;
