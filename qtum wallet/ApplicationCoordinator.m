@@ -243,6 +243,7 @@
     
     SecurityCoordinator* coordinator = [[SecurityCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
     coordinator.delegate = self;
+    coordinator.type = type;
     [coordinator start];
     self.securityFlowRunning = YES;
     [self addDependency:coordinator];

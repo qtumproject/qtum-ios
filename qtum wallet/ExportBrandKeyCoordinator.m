@@ -11,6 +11,7 @@
 #import "ExportBrainKeyOutputDelegate.h"
 #import "LoginViewOutput.h"
 #import "LoginViewOutputDelegate.h"
+#import "FXKeychain.h"
 
 @interface ExportBrandKeyCoordinator () <ExportBrainKeyOutputDelegate, LoginViewOutputDelegate>
 
@@ -34,6 +35,14 @@
 - (void)start {
     
     [self showSecurityLoginOutput];
+    
+    if ([AppSettings sharedInstance].isFingerprintEnabled) {
+        
+        [self showFingerprint];
+    } else {
+        
+        [self.loginOutput startEditing];
+    }
 }
 
 #pragma mark - Private Methods 
@@ -51,9 +60,24 @@
     
     NSObject<LoginViewOutput>* controller = [[ControllersFactory sharedInstance] createConfirmPinForExportViewController];
     controller.delegate = self;
-    [controller startEditing];
     self.loginOutput = controller;
     [self.navigationController pushViewController:[controller toPresent] animated:YES];
+}
+
+-(void)showFingerprint {
+    
+    __weak __typeof(self) weakSelf = self;
+    
+    [[FXKeychain defaultKeychain] touchIDString:^(NSString * _Nullable string, NSError * _Nullable error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (string) {
+                [weakSelf enterPin:string];
+            } else {
+                [weakSelf.loginOutput startEditing];
+            }
+        });
+    }];
 }
 
 -(void)showExportOutputWithPin:(NSString*) pin {

@@ -192,18 +192,15 @@
 - (void)didSwitchFingerprintSettingsAction:(UISwitch *)sender {
     
     __weak __typeof (self) weakSelf = self;
-    if (sender.isOn) {
-        [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
-            if (success) {
-                [weakSelf.delegate didChangeFingerprintSettings:sender.isOn];
-            } else {
-
-                [sender setOn:NO animated:YES];
-            }
-        }];
-    } else {
-        [self.delegate didChangeFingerprintSettings:sender.isOn];
-    }
+    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:EnableTouchIdVerification WithHandler:^(BOOL success) {
+        if (success) {
+            
+            [weakSelf.delegate didChangeFingerprintSettings:sender.isOn];
+        } else {
+            
+            [sender setOn:NO animated:YES];
+        }
+    }];
 }
 
 - (void)actionLanguage {
