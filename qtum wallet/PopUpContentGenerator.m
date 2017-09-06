@@ -91,4 +91,9 @@
     return content;
 }
 
++ (PopUpContent *)contentForRestoredContracts{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Restored successfully", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
+    return content;
+}
+
 @end

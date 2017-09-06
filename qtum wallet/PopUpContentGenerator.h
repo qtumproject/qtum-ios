@@ -28,5 +28,6 @@
 + (PopUpContent *)contentForContractAdded;
 + (PopUpContent *)contentForContractBought;
 + (PopUpContent *)contentForQStoreAbi;
++ (PopUpContent *)contentForRestoredContracts;
 
 @end

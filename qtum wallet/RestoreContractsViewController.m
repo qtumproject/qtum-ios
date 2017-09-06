@@ -12,7 +12,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "BackupFileManager.h"
 #import "ErrorPopUpViewController.h"
-
+#import "InformationPopUpViewController.h"
 
 @interface RestoreContractsViewController () <PopUpWithTwoButtonsViewControllerDelegate, UIDocumentMenuDelegate, UIDocumentPickerDelegate>
 
@@ -212,7 +212,7 @@
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
 
-    if ([sender isKindOfClass:[ErrorPopUpViewController class]]) {
+    if ([sender isKindOfClass:[ErrorPopUpViewController class]] || [sender isKindOfClass:[InformationPopUpViewController class]]) {
         
         [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
         
@@ -220,7 +220,8 @@
         [BackupFileManager setBackupFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(BOOL success) {
             
             if (success) {
-                [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+                PopUpContent *content = [PopUpContentGenerator contentForRestoredContracts];
+                [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:content presenter:nil completion:nil];
             } else {
                 [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
             }
