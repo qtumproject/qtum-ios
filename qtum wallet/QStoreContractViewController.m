@@ -173,9 +173,7 @@
     self.sourceCodeLabel.text = self.element.withSourseCode ? NSLocalizedString(@"YES", nil) : NSLocalizedString(@"NO", nil);
     self.publishedByLabel.text = self.element.publisherAddress;
     self.downloadsLabel.text = [self.element.countDownloads stringValue];
-    
-
-    
+        
     if (self.buyRequest.state == QStoreBuyRequestStateIsPaid) {
         self.purchaseButton.hidden = YES;
         self.sourceCodeButton.hidden = NO;
