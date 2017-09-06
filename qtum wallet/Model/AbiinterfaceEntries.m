@@ -27,8 +27,8 @@
     
     if ([object isKindOfClass:[NSDictionary class]]) {
         _name = [object[@"name"] isKindOfClass:[NSNull class]] ? nil : [[NSString stringFromCamelCase:object[@"name"]] stringByReplacingOccurrencesOfString:@"_" withString:@""];
-        _typeAsString = object[@"type"];
         _type = [self determineTipe:object[@"type"]];
+        _typeAsString = object[@"type"];
     }
 }
 
@@ -45,7 +45,7 @@
         return NO;
     }
     
-    BOOL haveEqualType = self.type == aInput.type;
+    BOOL haveEqualType = [self.type isKindOfClass:[aInput.type class]];
 
     return haveEqualType;
 }
@@ -65,7 +65,7 @@
 
 - (NSUInteger)hash {
     
-    return [self.name hash] ^ [self.type hash];
+    return [self.name hash];
 }
 
 
