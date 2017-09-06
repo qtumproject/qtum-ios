@@ -1072,29 +1072,17 @@
                                 <rect key="frame" x="0.0" y="84" width="375" height="583"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="MWO-40-j0r">
-                                    <rect key="frame" x="0.0" y="88" width="375" height="200"/>
+                                    <rect key="frame" x="0.0" y="88" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miner Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXV-ri-6V1">
-                                            <rect key="frame" x="20" y="60" width="95" height="14"/>
-                                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
-                                            <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3sdf567b122c24f5d5x3243vxfve5478dcg" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28q-mv-rv9">
-                                            <rect key="frame" x="20" y="82" width="298" height="17"/>
-                                            <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="14"/>
-                                            <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Waz-AM-gRb">
-                                            <rect key="frame" x="20" y="117" width="22" height="14"/>
+                                            <rect key="frame" x="20" y="30" width="22" height="14"/>
                                             <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                             <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.100 QTUM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6q-ki-dep">
-                                            <rect key="frame" x="19.5" y="139" width="85.5" height="17"/>
+                                            <rect key="frame" x="19.5" y="52" width="85.5" height="17"/>
                                             <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="14"/>
                                             <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1102,14 +1090,10 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="28q-mv-rv9" firstAttribute="leading" secondItem="MWO-40-j0r" secondAttribute="leading" constant="20" id="02a-oh-GLB"/>
                                         <constraint firstItem="k6q-ki-dep" firstAttribute="top" secondItem="Waz-AM-gRb" secondAttribute="bottom" constant="8" id="3xL-P3-cTp"/>
-                                        <constraint firstItem="OXV-ri-6V1" firstAttribute="top" secondItem="MWO-40-j0r" secondAttribute="top" constant="60" id="IjU-S3-tnZ"/>
                                         <constraint firstItem="k6q-ki-dep" firstAttribute="leading" secondItem="MWO-40-j0r" secondAttribute="leading" constant="20" id="ImL-fr-9Ek"/>
                                         <constraint firstItem="Waz-AM-gRb" firstAttribute="leading" secondItem="MWO-40-j0r" secondAttribute="leading" constant="20" id="Oo9-L0-L9f"/>
-                                        <constraint firstItem="Waz-AM-gRb" firstAttribute="top" secondItem="28q-mv-rv9" secondAttribute="bottom" constant="18" id="eKy-MD-ehl"/>
-                                        <constraint firstItem="28q-mv-rv9" firstAttribute="top" secondItem="OXV-ri-6V1" secondAttribute="bottom" constant="8" id="hTx-Fg-2wf"/>
-                                        <constraint firstItem="OXV-ri-6V1" firstAttribute="leading" secondItem="MWO-40-j0r" secondAttribute="leading" constant="20" id="q1L-Sd-gKG"/>
+                                        <constraint firstItem="Waz-AM-gRb" firstAttribute="top" secondItem="MWO-40-j0r" secondAttribute="top" constant="30" id="XFR-M5-JBd"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -1217,7 +1201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0M-vK-l1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="1433"/>
+            <point key="canvasLocation" x="2780" y="1432.5337331334333"/>
         </scene>
         <!--Template Token View Controller Dark-->
         <scene sceneID="9Z6-qM-efD">
@@ -4150,29 +4134,17 @@
                                 <rect key="frame" x="0.0" y="84" width="375" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="g0W-jt-475">
-                                    <rect key="frame" x="0.0" y="88" width="375" height="151"/>
+                                    <rect key="frame" x="0.0" y="88" width="375" height="97"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miner Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sr2-PN-sXp">
-                                            <rect key="frame" x="20" y="30" width="89.5" height="14"/>
-                                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
-                                            <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3sdf567b122c24f5d5x3243vxfve5478dcg" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PG1-aH-bFR">
-                                            <rect key="frame" x="20" y="52" width="300" height="16"/>
-                                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
-                                            <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjn-0s-Laj">
-                                            <rect key="frame" x="20" y="86" width="24" height="14"/>
+                                            <rect key="frame" x="20" y="30" width="24" height="14"/>
                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                             <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.100 QTUM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpb-rB-oq0">
-                                            <rect key="frame" x="19.5" y="108" width="88" height="16"/>
+                                            <rect key="frame" x="19.5" y="52" width="88" height="16"/>
                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
                                             <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -4187,17 +4159,13 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="xjn-0s-Laj" firstAttribute="top" secondItem="PG1-aH-bFR" secondAttribute="bottom" constant="18" id="0LG-Df-rtq"/>
                                         <constraint firstItem="ilD-uA-dsF" firstAttribute="top" secondItem="g0W-jt-475" secondAttribute="top" id="2a5-88-r8i"/>
                                         <constraint firstItem="tpb-rB-oq0" firstAttribute="leading" secondItem="g0W-jt-475" secondAttribute="leading" constant="20" id="EMW-gL-DHK"/>
-                                        <constraint firstItem="Sr2-PN-sXp" firstAttribute="top" secondItem="g0W-jt-475" secondAttribute="top" constant="30" id="NoS-e3-dYM"/>
-                                        <constraint firstItem="Sr2-PN-sXp" firstAttribute="leading" secondItem="g0W-jt-475" secondAttribute="leading" constant="20" id="T4U-25-qzk"/>
                                         <constraint firstItem="tpb-rB-oq0" firstAttribute="top" secondItem="xjn-0s-Laj" secondAttribute="bottom" constant="8" id="WtC-ea-P7j"/>
                                         <constraint firstItem="xjn-0s-Laj" firstAttribute="leading" secondItem="g0W-jt-475" secondAttribute="leading" constant="20" id="aMS-qt-Hbq"/>
                                         <constraint firstItem="ilD-uA-dsF" firstAttribute="leading" secondItem="g0W-jt-475" secondAttribute="leading" id="cf0-2n-w2e"/>
-                                        <constraint firstItem="PG1-aH-bFR" firstAttribute="leading" secondItem="g0W-jt-475" secondAttribute="leading" constant="20" id="lIN-py-Pq3"/>
                                         <constraint firstAttribute="trailing" secondItem="ilD-uA-dsF" secondAttribute="trailing" id="nMb-Tg-6hC"/>
-                                        <constraint firstItem="PG1-aH-bFR" firstAttribute="top" secondItem="Sr2-PN-sXp" secondAttribute="bottom" constant="8" id="vVk-PO-ZDV"/>
+                                        <constraint firstItem="xjn-0s-Laj" firstAttribute="top" secondItem="g0W-jt-475" secondAttribute="top" constant="30" id="zv1-Tq-WPh"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
