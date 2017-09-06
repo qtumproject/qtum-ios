@@ -159,7 +159,7 @@
     
     if (self.fileUrl) {
         
-        [BackupFileManager getQuickInfoFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(NSString *date, NSString *version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount) {
+        BOOL fileReaded = [BackupFileManager getQuickInfoFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(NSString *date, NSString *version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount) {
             RestoreContractsPopUpViewController *poUp = [[PopUpsManager sharedInstance] showRestoreContractsPopUp:self presenter:nil completion:nil];
             poUp.dateLabel.text = date;
             poUp.versionLabel.text = version;
@@ -168,6 +168,16 @@
             poUp.templateCounLabel.text = [NSString stringWithFormat:@"%li",(long)templateCount];
         }];
         
+        if (!fileReaded) {
+            PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+            content.messageString = NSLocalizedString(@"Сonnection to selected file was timed out. Please select backup file again", nil);
+            ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+            [popUp setOnlyCancelButton];
+        }
+    } else {
+        PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+        ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+        [popUp setOnlyCancelButton];
     }
 }
 

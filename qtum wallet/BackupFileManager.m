@@ -38,7 +38,7 @@ static NSString* kTemplateUuidKey = @"template";
     completionBlock(backup.copy,filePath,fileSize);
 }
 
-+ (void)getQuickInfoFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(NSString* date, NSString* version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount)) completionBlock {
++ (BOOL)getQuickInfoFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(NSString* date, NSString* version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount)) completionBlock {
     
     NSData *data = [NSData dataWithContentsOfURL:url];
     if (data) {
@@ -81,7 +81,11 @@ static NSString* kTemplateUuidKey = @"template";
         date = [NSDate formatedDateStringFromString:backup[kDateCreateKey]];
         version = backup[kFileVersionKey];
         completionBlock(date,version,contractCount,templateCount,tokenCount);
+        
+        return YES;
     }
+    
+    return NO;
 }
 
 + (void)setBackupFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(BOOL success)) completionBlock {
