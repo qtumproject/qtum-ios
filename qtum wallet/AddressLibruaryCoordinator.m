@@ -11,6 +11,7 @@
 #import "Wallet.h"
 #import "AddressTransferPopupViewController.h"
 #import "TransactionManager.h"
+#import "ErrorPopUpViewController.h"
 
 @interface AddressLibruaryCoordinator () <AddressControlOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -130,7 +131,8 @@
         content.titleString = NSLocalizedString(@"Failed", nil);
     }
     
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [popUp setOnlyCancelButton];
 }
 
 - (void)hideLoaderPopUp {

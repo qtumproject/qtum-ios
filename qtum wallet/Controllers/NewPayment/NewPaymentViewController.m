@@ -13,6 +13,7 @@
 #import "TokenListViewController.h"
 #import "ChoseTokenPaymentViewController.h"
 #import "InformationPopUpViewController.h"
+#import "ErrorPopUpViewController.h"
 #import "SecurityPopupViewController.h"
 #import "NSNumber+Comparison.h"
 
@@ -188,7 +189,8 @@ static NSInteger withoutTokenOffset = 40;
         content.titleString = NSLocalizedString(@"Failed", nil);
     }
     
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [popUp setOnlyCancelButton];
 }
 
 - (void)hideLoaderPopUp {
