@@ -23,8 +23,10 @@
     
     if (historyElement.send) {
         self.typeImage.image = [UIImage imageNamed:@"history_send"];
+        self.typeLabel.text = NSLocalizedString(@"Sent", nil);
     }else{
         self.typeImage.image = [UIImage imageNamed:@"history_receive"];
+        self.typeLabel.text = NSLocalizedString(@"Received", nil);
     }
     self.typeImage.tintColor = customBlueColor();
 }

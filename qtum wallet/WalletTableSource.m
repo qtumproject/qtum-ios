@@ -16,6 +16,8 @@
 @property (nonatomic, assign) CGFloat lastContentOffset;
 @property (nonatomic, weak) HistoryHeaderVIew *sectionHeaderView;
 
+@property (nonatomic) BOOL isScrollingAnimation;
+
 @end
 
 static NSInteger countOfSections = 2;
@@ -85,7 +87,10 @@ static NSInteger countOfSections = 2;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     DLog(@"scrollViewDidEndDecelerating");
     
-    if (!self.mainCell) return;
+    BOOL isTopAutoScroll = scrollView.contentOffset.y < 0;
+    BOOL isBottomAutoScroll = scrollView.contentOffset.y + scrollView.bounds.size.height - scrollView.contentInset.bottom > scrollView.contentSize.height;
+    if (!self.mainCell || isTopAutoScroll || isBottomAutoScroll) return;
+    self.isScrollingAnimation = YES;
     CGFloat diff = [self.mainCell calculateOffsetAfterScroll:scrollView.contentOffset.y];
     [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y - diff) animated:YES];
 }
@@ -114,9 +119,16 @@ static NSInteger countOfSections = 2;
         return;
     }
     
-    if (!self.mainCell) return;
+    BOOL isTopAutoScroll = aScrollView.contentOffset.y < 0;
+    BOOL isBottomAutoScroll = aScrollView.contentOffset.y + aScrollView.bounds.size.height - aScrollView.contentInset.bottom > aScrollView.contentSize.height;
+    if (!self.mainCell || isTopAutoScroll || isBottomAutoScroll) return;
+    self.isScrollingAnimation = YES;
     CGFloat diff = [self.mainCell calculateOffsetAfterScroll:aScrollView.contentOffset.y];
     [aScrollView setContentOffset:CGPointMake(aScrollView.contentOffset.x, aScrollView.contentOffset.y - diff) animated:YES];
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    self.isScrollingAnimation = NO;
 }
 
 #pragma mark - UITableViewDelegate
