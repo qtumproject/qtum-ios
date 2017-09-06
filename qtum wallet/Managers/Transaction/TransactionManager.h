@@ -7,15 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
-    TransactionManagerErrorTypeNone,
-    TransactionManagerErrorTypeNoInternetConnection,
-    TransactionManagerErrorTypeServer,
-    TransactionManagerErrorTypeOups,
-    TransactionManagerErrorTypeNotEnoughMoney,
-    TransactionManagerErrorTypeInvalidAddress
-};
+#import "TransactionBuilder.h"
 
 @interface TransactionManager : NSObject
 
