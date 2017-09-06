@@ -378,7 +378,7 @@ static NSString* op_exec = @"c1";
         return;
     }
     
-    completion(TransactionManagerErrorTypeOups, nil);
+    completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
 }
 
 - (BTCTransaction *)sendToTokenWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
