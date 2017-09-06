@@ -156,6 +156,7 @@
         vc.walletAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
         vc.type = ReciveTokenOutput;
         vc.tokenAddress = spendable.mainAddress;
+        vc.currency = spendable.symbol;
 
     } else {
         
