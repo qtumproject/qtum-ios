@@ -49,7 +49,7 @@
 - (NSString*)string {
     
     NSDateFormatter *fullDateFormater = [[NSDateFormatter alloc] init];
-    fullDateFormater.dateFormat = @"Y-M-d HH:mm:ss";
+    fullDateFormater.dateFormat = @"Y-MM-dd HH:mm:ss";
     fullDateFormater.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
     return [NSString stringWithFormat:@"%@", [fullDateFormater stringFromDate:self]];
 }
@@ -57,7 +57,7 @@
 + (NSString*)formatedDateStringFromString:(NSString*)dateString {
     
     NSDateFormatter *fullDateFormater = [[NSDateFormatter alloc] init];
-    fullDateFormater.dateFormat = @"Y-M-d HH:mm:ss";
+    fullDateFormater.dateFormat = @"Y-MM-dd HH:mm:ss";
     fullDateFormater.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
     
     return [[fullDateFormater dateFromString:dateString] formatedDateString];
