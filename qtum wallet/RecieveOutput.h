@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger, ReciveOutputType) {
 @property (nonatomic, assign) ReciveOutputType type;
 @property (copy, nonatomic) NSString* balanceText;
 @property (copy, nonatomic) NSString* unconfirmedBalanceText;
+@property (copy, nonatomic) NSString* currency;
 
 - (void)updateControls;
 

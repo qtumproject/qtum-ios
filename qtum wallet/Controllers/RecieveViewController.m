@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareLabelButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *walletCopyButtonBottomOffsetConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *chooseAddressButton;
+@property (weak, nonatomic) IBOutlet UILabel *balanceCurrency;
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalanceCurrency;
 
 - (IBAction)backButtonWasPressed:(id)sender;
 - (IBAction)shareButtonWasPressed:(id)sender;
@@ -37,7 +39,8 @@ type = _type,
 balanceText = _balanceText,
 unconfirmedBalanceText = _unconfirmedBalanceText,
 walletAddress = _walletAddress,
-tokenAddress = _tokenAddress;
+tokenAddress = _tokenAddress,
+currency = _currency;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,6 +56,10 @@ tokenAddress = _tokenAddress;
     self.unconfirmedBalance.text = self.unconfirmedBalanceText;    
     self.publicAddressLabel.text = self.walletAddress;
     self.publicAddressLabel.hidden = YES;
+    if (self.currency) {
+        self.balanceCurrency.text =
+        self.unconfirmedBalanceCurrency.text = self.currency;
+    }
     
     self.walletCopyButtonBottomOffsetConstraint.constant = 90;
     self.chooseAddressButton.hidden = NO;
