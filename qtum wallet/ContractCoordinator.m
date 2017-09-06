@@ -120,6 +120,7 @@ ContractFunctionsOutputDelegate>
     NSArray *sortedContracts = [[[ContractManager sharedInstance] allContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
         return [t1.creationDate compare:t2.creationDate];
     }];
+    
     output.contracts = sortedContracts;
     output.smartContractPretendents = [[ContractManager sharedInstance] smartContractPretendentsCopy];
     [self.navigationController pushViewController:[output toPresent] animated:YES];

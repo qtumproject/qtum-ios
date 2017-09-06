@@ -15,6 +15,7 @@
 @implementation LoginViewControllerLight
 
 - (BOOL)textField:(CustomTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
     
     if (string.length && [string rangeOfString:@" "].location == NSNotFound) {
         textField.realText = [string substringToIndex:1];
