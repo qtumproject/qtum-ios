@@ -7,6 +7,8 @@
 //
 
 #import "PopUpViewController.h"
+#import "NSNumber+Comparison.h"
+#import "NSNumber+Format.h"
 
 @interface AddressTransferPopupViewController : PopUpViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 

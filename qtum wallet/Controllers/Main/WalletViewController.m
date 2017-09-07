@@ -105,8 +105,8 @@
     self.unconfirmedTextLabel.hidden =
     self.uncorfirmedLabel.hidden = !haveUncorfirmed;
     
-    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%@ %@", [wallet.unconfirmedBalance roundedNumberWithScate:3], NSLocalizedString(@"QTUM", nil)];
-    self.availabelLabel.text = [NSString stringWithFormat:@"%@ %@", [wallet.balance roundedNumberWithScate:3], NSLocalizedString(@"QTUM", nil)];
+    self.uncorfirmedLabel.text = [NSString stringWithFormat:@"%@ %@", [wallet.unconfirmedBalance roundedNumberWithScale:3], NSLocalizedString(@"QTUM", nil)];
+    self.availabelLabel.text = [NSString stringWithFormat:@"%@ %@", [wallet.balance roundedNumberWithScale:3], NSLocalizedString(@"QTUM", nil)];
 }
 
 -(void)startLoading {

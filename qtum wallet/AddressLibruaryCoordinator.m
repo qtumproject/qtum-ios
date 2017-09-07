@@ -12,6 +12,7 @@
 #import "AddressTransferPopupViewController.h"
 #import "TransactionManager.h"
 #import "ErrorPopUpViewController.h"
+#import "NSNumber+Comparison.h"
 
 @interface AddressLibruaryCoordinator () <AddressControlOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -75,8 +76,8 @@
         if (address && amountDouble > 0) {
             
             NSDecimalNumber* addressAmountDecimalConteiner = addressAmountHashTable[address];
-            NSDecimalNumber* summ = [addressAmountDecimalConteiner decimalNumberByAdding:[NSDecimalNumber decimalNumberWithDecimal:[amountNumber decimalValue]]];
-            [addressAmountHashTable setObject:summ forKey:address];
+            NSDecimalNumber* newBalance = [addressAmountDecimalConteiner decimalNumberByAdding:[amountNumber decimalNumber]];
+            [addressAmountHashTable setObject:newBalance forKey:address];
         }
     }
     

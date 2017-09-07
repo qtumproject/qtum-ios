@@ -34,7 +34,6 @@
 @property (weak, nonatomic) ContractManager* manager;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
 
-
 @property (copy, nonatomic)NSString* contractAddress;
 @property (copy, nonatomic)NSString* contractCreationAddressAddress;
 @property (copy, nonatomic)NSArray* adresses;
@@ -44,8 +43,11 @@
 @property (strong, nonatomic) NSDate* creationDate;
 @property (copy, nonatomic, readonly) NSString* creationDateString;
 @property (copy, nonatomic, readonly) NSString* creationFormattedDateString;
+@property (copy, nonatomic, readonly) NSDictionary <NSString*,NSDecimalNumber*>* addressBalanceDivByDecimalDictionary;
 @property (copy, nonatomic) NSDictionary <NSString*,NSDecimalNumber*>* addressBalanceDictionary;
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
+- (NSString*)balanceString;
+- (NSString*)shortBalanceString;
 
 @end

@@ -27,6 +27,16 @@
     [super setSelected:selected animated:animated];
 }
 
+-(void)layoutSubviews {
+    
+    [super layoutSubviews];
+    
+    CGSize size = [self.availableBalance.text sizeWithAttributes:@{NSFontAttributeName : self.availableBalance.font}];
+    if (size.width > self.availableBalance.bounds.size.width) {
+        self.availableBalance.text = self.shortBalance;
+    }
+}
+
 -(void)updateWithScrollView:(UIScrollView*) scrollView {
     
     CGFloat offset = scrollView.contentOffset.y;

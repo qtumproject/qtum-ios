@@ -17,6 +17,8 @@
 #import "ChooseTokekPaymentDelegateDataSourceDelegate.h"
 #import "WalletManagerRequestAdapter.h"
 #import "Wallet.h"
+#import "NSNumber+Comparison.h"
+#import "NSNumber+Format.h"
 
 @interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -148,13 +150,15 @@
 
 -(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
     
-    if (![self isValidAmount:amount]) {
+    NSDecimalNumber* amounDivByDecimals = [[amount decimalNumber] numberWithPowerOf10:self.token.decimals];
+
+    if (![self isValidAmount:amounDivByDecimals]) {
         return;
     }
     
     [self showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amount andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
+    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amounDivByDecimals andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
         
         [weakSelf hideLoaderPopUp];
         [weakSelf showStatusOfPayment:errorType];
@@ -183,7 +187,7 @@
 
 - (BOOL)isValidAmount:(NSNumber *)amount {
     
-    if ([amount floatValue] <= 0.0f) {
+    if (![[amount decimalNumber] isGreaterThanInt:0]) {
         [self showErrorPopUp:NSLocalizedString(@"Transaction amount can't be zero. Please edit your transaction and try again", nil)];
         return NO;
     }

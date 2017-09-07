@@ -19,4 +19,5 @@
 - (NSDate*)date;
 - (BOOL)isDecimalString;
 
+
 @end

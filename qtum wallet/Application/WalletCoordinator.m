@@ -165,8 +165,8 @@
         vc.tokenAddress =  nil;
     }
     
-    vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance.decimalNumber roundedNumberWithScate:3]];
-    vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance.decimalNumber roundedNumberWithScate:3]];
+    vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance.decimalNumber roundedNumberWithScale:3]];
+    vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
     vc.delegate = self;
     self.reciveOutput = vc;
     [self.navigationController pushViewController:[vc toPresent] animated:YES];

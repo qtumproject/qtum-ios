@@ -116,6 +116,7 @@
 		B3427FD21F543D7D00182E95 /* ContractParametersInterpreterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FD11F543D7D00182E95 /* ContractParametersInterpreterTest.m */; };
 		B342DB621F60440B0052A367 /* TransactionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B342DB611F60440B0052A367 /* TransactionBuilder.m */; };
 		B342DB651F60443B0052A367 /* TransactionScriptBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B342DB641F60443B0052A367 /* TransactionScriptBuilder.m */; };
+		B342DB781F61808E0052A367 /* NSNumber+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = B342DB771F61808E0052A367 /* NSNumber+Format.m */; };
 		B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */; };
 		B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */; };
 		B3487A2A1E92383500BC66F1 /* HistoryTableHeaderViewDark.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3487A291E92383500BC66F1 /* HistoryTableHeaderViewDark.xib */; };
@@ -859,6 +860,8 @@
 		B342DB611F60440B0052A367 /* TransactionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionBuilder.m; sourceTree = "<group>"; };
 		B342DB631F60443B0052A367 /* TransactionScriptBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionScriptBuilder.h; sourceTree = "<group>"; };
 		B342DB641F60443B0052A367 /* TransactionScriptBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionScriptBuilder.m; sourceTree = "<group>"; };
+		B342DB761F61808E0052A367 /* NSNumber+Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Format.h"; sourceTree = "<group>"; };
+		B342DB771F61808E0052A367 /* NSNumber+Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Format.m"; sourceTree = "<group>"; };
 		B346AE1C1EFD57BC00241C61 /* ConfirmPinCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinCoordinator.h; sourceTree = "<group>"; };
 		B346AE1D1EFD57BC00241C61 /* ConfirmPinCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinCoordinator.m; sourceTree = "<group>"; };
 		B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutput.h; sourceTree = "<group>"; };
@@ -4204,6 +4207,8 @@
 				B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */,
 				B3D5FE3D1F569FEB006A2BF2 /* NSString+AbiRegex.h */,
 				B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */,
+				B342DB761F61808E0052A367 /* NSNumber+Format.h */,
+				B342DB771F61808E0052A367 /* NSNumber+Format.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -5036,6 +5041,7 @@
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
 				B3CBDF2D1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m in Sources */,
+				B342DB781F61808E0052A367 /* NSNumber+Format.m in Sources */,
 				B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */,
 				B366CA221F1D0AC700EF3273 /* NSData+AES256.m in Sources */,
 				B32C3D021E112A7F0094C82C /* SendNavigationCoordinator.m in Sources */,

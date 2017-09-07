@@ -10,12 +10,14 @@
 
 @implementation BalanceTokenView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(void)layoutSubviews {
+    
+    [super layoutSubviews];
+    
+    CGSize size = [self.balanceValueLabel.text sizeWithAttributes:@{NSFontAttributeName : self.balanceValueLabel.font}];
+    if (size.width > self.balanceValueLabel.bounds.size.width) {
+        self.balanceValueLabel.text = self.shortBalance;
+    }
 }
-*/
 
 @end
