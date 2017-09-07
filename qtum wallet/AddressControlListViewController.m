@@ -8,6 +8,7 @@
 
 #import "AddressControlListViewController.h"
 #import "AddressControlCell.h"
+#include "NSNumber+Comparison.h"
 
 @interface AddressControlListViewController ()
 
@@ -61,7 +62,7 @@
     AddressControlCell *cell = [tableView dequeueReusableCellWithIdentifier:addressControlCellIdentifire];
     NSString* key = self.addressesValueHashTable.allKeys[indexPath.row];
     cell.addressLabel.text = key;
-    cell.valueLabel.text = [NSString stringWithFormat:@"%@",self.addressesValueHashTable[key]];
+    cell.valueLabel.text = [NSString stringWithFormat:@"%@",[self.addressesValueHashTable[key] roundedNumberWithScale:5]];
     return cell;
 }
 

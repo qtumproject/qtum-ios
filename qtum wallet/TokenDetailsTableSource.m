@@ -187,7 +187,8 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
     if (!updatedView) {
         updatedView = (BalanceTokenView *)[self getViewFromXib:[BalanceTokenView class]];
     }
-    updatedView.balanceValueLabel.text = [NSString stringWithFormat:@"%@",self.token.balance];
+    updatedView.balanceValueLabel.text = self.token.balanceString;
+    updatedView.shortBalance = self.token.shortBalanceString;
     return updatedView;
 }
 

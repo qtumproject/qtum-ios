@@ -35,7 +35,7 @@
 @property (copy, nonatomic) NSString* walletName;
 @property (copy, nonatomic) NSString* walletPin;
 @property (copy, nonatomic) NSArray* walletBrainKey;
-@property (assign, nonatomic, getter=isWalletExported) BOOL walletExported;
+@property (assign, nonatomic, getter=isWalletRestored) BOOL walletRestored;
 
 @end
 
@@ -51,6 +51,13 @@
     
 -(void)start{
     [self resetToRootAnimated:NO];
+}
+
+-(void)finishFlow {
+    
+    if ([self.delegate respondsToSelector:@selector(coordinatorDidAuth:)]) {
+        [self.delegate coordinatorDidAuth:self];
+    }
 }
 
 -(void)resetToRootAnimated:(BOOL)animated {
@@ -107,7 +114,18 @@
     self.exportWalletOutput = output;
 }
 
--(void)gotoCreatePinAgain{
+-(void)goToFinishWalletCreation {
+    
+    if (self.isWalletRestored) {
+        [self finishFlow];
+    } else {
+        [self gotoExportWallet];
+    }
+}
+
+-(void)gotoCreatePinAgain {
+    
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
     [self gotoCreatePin];
 }
@@ -126,15 +144,16 @@
 
 -(void)didCreateNewButtonPressed {
     
-    [self gotoCreateWallet];
+    [self gotoCreatePin];
 }
 
 #pragma mark - WalletNameOutputDelegate
 
 -(void)didCancelPressedOnWalletName {
     
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
-    self.walletExported = NO;
+    self.walletRestored = NO;
 }
 
 -(void)didCreatedWalletPressedWithName:(NSString*)name {
@@ -147,11 +166,13 @@
 
 -(void)didCancelPressedOnCreateWallet {
     
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
-    self.walletExported = NO;
+    self.walletRestored = NO;
 }
 
 -(void)didEntererFirstPin:(NSString*)pin {
+    
     self.walletPin = pin;
     [self gotoRepeatePin];
 }
@@ -165,15 +186,17 @@
 
 -(void)didCancelPressedOnRepeatePin {
     
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
-    self.walletExported = NO;
+    self.walletRestored = NO;
 }
 
 -(void)didEnteredSecondPin:(NSString*)pin {
     
     __weak __typeof(self)weakSelf = self;
-    if ([self.walletPin isEqualToString:pin] && !self.isWalletExported) {
+    if ([self.walletPin isEqualToString:pin] && !self.walletRestored) {
         
+        [[ApplicationCoordinator sharedInstance] clear];
         [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
             
             [[ApplicationCoordinator sharedInstance].walletManager storePin:weakSelf.walletPin];
@@ -184,6 +207,7 @@
         }];
     } else if ([self.walletPin isEqualToString:pin]) {
         
+        [[ApplicationCoordinator sharedInstance] clear];
         [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin seedWords:self.walletBrainKey withSuccessHandler:^(Wallet *newWallet) {
             [[ApplicationCoordinator sharedInstance].walletManager storePin:weakSelf.walletPin];
             [[ApplicationCoordinator sharedInstance].walletManager startWithPin:weakSelf.walletPin];
@@ -193,8 +217,8 @@
         }];
 
     }else {
-        self.walletPin = nil;
-        [self gotoCreatePinAgain];
+
+        [self.repeatePinController showFailedStatus];
     }
 }
 
@@ -222,8 +246,8 @@
 
 -(void)didRestoreWallet {
     
-    self.walletExported = YES;
-    [self gotoCreateWallet];
+    self.walletRestored = YES;
+    [self gotoCreatePin];
 }
 
 - (BOOL)checkWordsString:(NSString *)string {
@@ -248,13 +272,13 @@
 -(void)didEnableFingerprint:(BOOL) enabled {
     
     [NSUserDefaults saveIsFingerpringEnabled:enabled];
-    [self gotoExportWallet];
+    [self goToFinishWalletCreation];
 }
 
 -(void)didCancelEnableFingerprint {
     
     [NSUserDefaults saveIsFingerpringEnabled:NO];
-    [self gotoExportWallet];
+    [self goToFinishWalletCreation];
 }
 
 #pragma mark - AuthCoordinatorDelegate
@@ -271,21 +295,19 @@
     if ([NSUserDefaults isFingerprintAllowed]) {
         [self gotoFingerpringOption];
     } else {
-        [self gotoExportWallet];
+        [self goToFinishWalletCreation];
     }
 }
 
--(void)cancelCreateWallet{
+-(void)cancelCreateWallet {
+    
+    self.walletPin = nil;
     [self resetToRootAnimated:YES];
-    self.walletExported = NO;
+    self.walletRestored = NO;
 }
 
 -(void)didExportWallet {
-    
-    if ([self.delegate respondsToSelector:@selector(coordinatorDidAuth:)]) {
-        [self.delegate coordinatorDidAuth:self];
-    }
+    [self finishFlow];
 }
-
 
 @end

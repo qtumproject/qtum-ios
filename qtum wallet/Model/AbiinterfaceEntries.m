@@ -8,6 +8,8 @@
 
 #import "AbiinterfaceEntries.h"
 #import "NSString+Extension.h"
+#import "NSString+AbiRegex.h"
+
 
 @implementation AbiinterfaceEntries
 
@@ -25,28 +27,14 @@
     
     if ([object isKindOfClass:[NSDictionary class]]) {
         _name = [object[@"name"] isKindOfClass:[NSNull class]] ? nil : [[NSString stringFromCamelCase:object[@"name"]] stringByReplacingOccurrencesOfString:@"_" withString:@""];
-        _typeAsString = object[@"type"];
         _type = [self determineTipe:object[@"type"]];
+        _typeAsString = object[@"type"];
     }
 }
 
--(AbiInputType)determineTipe:(NSString*) typeString {
+-(id <AbiParameterProtocol>)determineTipe:(NSString*) typeString {
     
-    if ([typeString isEqualToString:@"uint256"] || [typeString isEqualToString:@"uint"]) {
-        return UInt256Type;
-    } else if ([typeString isEqualToString:@"uint8"]){
-        return UInt8Type;
-    } else if ([typeString isEqualToString:@"string"]) {
-        return StringType;
-    } else if ([typeString isEqualToString:@"address"]) {
-        return AddressType;
-    } else if ([typeString isEqualToString:@"bool"]) {
-        return BoolType;
-    } else if ([typeString isEqualToString:@"bytes32"]) {
-        return BytesStaticType32;
-    }
-    
-    return BoolType;
+    return [AbiTypesProcessor typeFromAbiString:typeString];
 }
 
 #pragma mark - Equality
@@ -57,7 +45,7 @@
         return NO;
     }
     
-    BOOL haveEqualType = self.type == aInput.type;
+    BOOL haveEqualType = [self.type isKindOfClass:[aInput.type class]];
 
     return haveEqualType;
 }
@@ -77,7 +65,7 @@
 
 - (NSUInteger)hash {
     
-    return [self.name hash] ^ self.type;
+    return [self.name hash];
 }
 
 

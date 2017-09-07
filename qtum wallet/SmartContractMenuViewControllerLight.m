@@ -25,10 +25,11 @@
         case 2:
         case 4:
         case 5:
-            cell = [tableView dequeueReusableCellWithIdentifier:choiseSmartContractLightCellIdentifire];
-            break;
         case 0:
         case 3:
+            cell = [tableView dequeueReusableCellWithIdentifier:choiseSmartContractLightCellIdentifire];
+            break;
+
         case 6:
             cell = [tableView dequeueReusableCellWithIdentifier:choiseSmartContractLightHightCellIdentifire];
             break;
@@ -50,10 +51,10 @@
         case 2:
         case 4:
         case 5:
-            return 40;
-            break;
         case 0:
         case 3:
+            return 40;
+            break;
         case 6:
             return 52;
         default:

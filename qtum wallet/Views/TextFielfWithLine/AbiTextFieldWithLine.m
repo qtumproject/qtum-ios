@@ -46,19 +46,24 @@
 
 - (void)setItem:(AbiinterfaceInput *)item {
     
-    self.keyboardType = (item.type == UInt256Type || item.type == UInt8Type) ? UIKeyboardTypeDecimalPad : UIKeyboardTypeDefault;
+    self.keyboardType = ([item.type isKindOfClass:[AbiParameterTypeUInt class]] ||
+                         [item.type isKindOfClass:[AbiParameterTypeInt class]] ||
+                         [item.type isKindOfClass:[AbiParameterTypeBool class]]) ? UIKeyboardTypeDecimalPad : UIKeyboardTypeDefault;
     self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:item.name attributes:@{NSForegroundColorAttributeName: customBlueColor()}];
     _item = item;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
-    if (self.item.type == UInt8Type || self.item.type == UInt256Type) {
+    if ([self.item.type isKindOfClass:[AbiParameterTypeUInt class]] ||
+        [self.item.type isKindOfClass:[AbiParameterTypeInt class]] ||
+        [self.item.type isKindOfClass:[AbiParameterTypeBool class]]) {
         NSCharacterSet *cset = [NSCharacterSet decimalDigitCharacterSet].invertedSet;
         NSRange range = [string rangeOfCharacterFromSet:cset];
         
-        if (range.location != NSNotFound || (self.item.type == UInt8Type && [[textField.text stringByAppendingString:string] integerValue] > 255)) {
-                return NO;
+        AbiParameterPrimitiveType* type = self.item.type;
+        if (range.location != NSNotFound || [[textField.text stringByAppendingString:string] integerValue] > type.maxValue) {
+            return NO;
         }
     }
     return YES;

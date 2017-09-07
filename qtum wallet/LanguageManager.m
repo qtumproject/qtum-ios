@@ -65,7 +65,7 @@ static NSString * const LanguageSaveKey = @"currentLanguageKey";
     NSInteger index = 0;
     NSString *currentCode = [NSUserDefaults getLanguage];
     for (NSInteger i = 0; i < ELanguageCount; ++i) {
-        if ([currentCode isEqualToString:LanguageCodes[i]]) {
+        if ([currentCode containsString:LanguageCodes[i]]) {
             index = i;
             break;
         }

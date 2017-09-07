@@ -10,6 +10,7 @@
 #import "TextFieldWithLine.h"
 #import "NSString+Extension.h"
 
+
 @interface AddressTransferPopupViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextFieldView;
@@ -187,10 +188,15 @@
         addressLabel.textColor = customBlueColor();
         
         amountLabel.backgroundColor = [UIColor clearColor];
-        amountLabel.text = amount;
         amountLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:15.0f];
+        amountLabel.text = amount;
         amountLabel.textAlignment = NSTextAlignmentCenter;
         amountLabel.textColor = customBlueColor();
+        
+        CGSize size = [amountLabel.text sizeWithAttributes:@{NSFontAttributeName : amountLabel.font}];
+        if (size.width > amountLabel.bounds.size.width) {
+            amountLabel.text = [NSString stringWithFormat:@"%@", [[self.fromAddressesVariants[address] decimalNumber] shortFormatOfNumber]];
+        }
         
         [container addSubview:amountLabel];
         [container addSubview:addressLabel];

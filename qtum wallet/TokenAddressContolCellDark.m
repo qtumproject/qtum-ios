@@ -11,6 +11,7 @@
 @implementation TokenAddressContolCellDark
 
 - (void)awakeFromNib {
+    
     [super awakeFromNib];
     UIView *bgColorView = [[UIView alloc] init];
     bgColorView.backgroundColor = customRedColor();

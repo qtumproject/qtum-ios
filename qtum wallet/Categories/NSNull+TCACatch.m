@@ -28,7 +28,7 @@
     //[NSException raise:NSInvalidArgumentException format:@"NULL EXEPTION"];
 }
 
-- (NSNumber*)roundedNumberWithScate:(NSInteger) scale {
+- (NSNumber*)roundedNumberWithScale:(NSInteger) scale {
     return [NSNumber new];
 }
 

@@ -36,9 +36,10 @@ static NSInteger standartHistoryCellHeight = 50;
         cell.decimalUnits.text = [NSString stringWithFormat:@"%@",token.decimals];
         cell.initialSupply.text = [NSString stringWithFormat:@"%@",token.totalSupply];
         cell.tokenAddress.text = token.contractAddress;
-        cell.availableBalance.text = [NSString stringWithFormat:@"%@",token.balance];
+        cell.availableBalance.text = token.balanceString;
         cell.senderAddress.text = token.contractCreationAddressAddress;
         cell.symbol.text = token.symbol;
+        cell.shortBalance = token.shortBalanceString;
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];

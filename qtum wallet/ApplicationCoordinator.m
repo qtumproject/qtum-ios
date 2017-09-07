@@ -207,6 +207,11 @@
     
     [self startAuthFlow];
     [self removeDependency:self.tabCoordinator];
+    [self clear];
+}
+
+-(void)clear {
+    
     [self.walletManager stopObservingForAllSpendable];
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self.notificationManager clear];
@@ -215,7 +220,6 @@
     [[ContractManager sharedInstance] clear];
     [[TemplateManager sharedInstance] clear];
     [[QStoreManager sharedInstance] clear];
-
 }
 
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler {
@@ -239,6 +243,7 @@
     
     SecurityCoordinator* coordinator = [[SecurityCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
     coordinator.delegate = self;
+    coordinator.type = type;
     [coordinator start];
     self.securityFlowRunning = YES;
     [self addDependency:coordinator];

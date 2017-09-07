@@ -17,7 +17,7 @@
 
 @implementation SmartContractsListViewController
 
-@synthesize delegate, contracts;
+@synthesize delegate, contracts, smartContractPretendents;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,8 +27,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate didSelectContractWithIndexPath:indexPath withContract:self.contracts[indexPath.row]];
+    
+    if (indexPath.section != 0) {
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self.delegate didSelectContractWithIndexPath:indexPath withContract:self.contracts[indexPath.row]];
+    }
 }
 
 
@@ -36,10 +40,52 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.contracts.count;
+    if (section == 0) {
+        return self.smartContractPretendents.count;
+    } else {
+        return self.contracts.count;
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        
+        return [self configContractPretendentCellWithTableView:tableView ForRowAtIndexPath:indexPath];
+    } else {
+        
+        return [self configContractCellWithTableView:tableView ForRowAtIndexPath:indexPath];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        return 31;
+    }
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 45;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        UITableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"ContractsHeaderView"];
+        return  headerCell;
+    }
+    return nil;
+}
+
+#pragma mark - Configuration 
+
+-(SmartContractListItemCell*)configContractCellWithTableView:(UITableView *)tableView ForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Contract* contract = self.contracts[indexPath.row];
     SmartContractListItemCell* cell = [tableView dequeueReusableCellWithIdentifier:smartContractListItemCellIdentifire];
@@ -49,18 +95,20 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 31;
+-(SmartContractListItemCell*)configContractPretendentCellWithTableView:(UITableView *)tableView ForRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+    NSDictionary* pretendentDict = self.smartContractPretendents.allValues[indexPath.row];
+    TemplateModel* template = pretendentDict[kTemplateModel];
+    NSString* localName = pretendentDict[kLocalContractName];
+    SmartContractListItemCell* cell = [tableView dequeueReusableCellWithIdentifier:smartContractListItemCellIdentifire];
+    cell.contractName.text = localName;
+    cell.typeIdentifire.text = [template.templateTypeString uppercaseString];
+    cell.creationDate.text = NSLocalizedString(@"Unconfirmed", nil);
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 45;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UITableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"ContractsHeaderView"];
-    return  headerCell;
-}
+#pragma mark - Actions
 
 - (IBAction)didPressedBackAction:(id)sender {
     [self.delegate didPressedBack];

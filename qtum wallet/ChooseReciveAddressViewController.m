@@ -16,7 +16,7 @@
 
 @implementation ChooseReciveAddressViewController
 
-@synthesize addresses, delegate;
+@synthesize addresses, delegate, prevAddress;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +45,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.delegate didChooseAddress:self.addresses[indexPath.row]];
 }
 
@@ -61,6 +60,11 @@
     ChooseAddressReciveCell *cell = [tableView dequeueReusableCellWithIdentifier:chooseAddressReciveCellIdentifire];
 
     cell.addressLabel.text = self.addresses[indexPath.row];
+    
+    if ([self.addresses[indexPath.row] isEqualToString:self.prevAddress]) {
+        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
+    
     return cell;
 }
 

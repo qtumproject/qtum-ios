@@ -10,8 +10,6 @@
 
 @interface RepeateViewController ()
 
-@property (assign, nonatomic) BOOL creatingWalletDidEnd;
-
 @end
 
 @implementation RepeateViewController
@@ -23,20 +21,23 @@
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
 #pragma mark - Keyboard
 
 -(void)keyboardWillShow:(NSNotification *)sender{
+    
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.gradientViewBottomOffset.constant = end.size.height;
     [self.view layoutIfNeeded];
 }
 
--(void)keyboardWillHide:(NSNotification *)sender{
+-(void)keyboardWillHide:(NSNotification *)sender {
+    
     self.gradientViewBottomOffset.constant = 0;
     [self.view layoutIfNeeded];
 }
@@ -54,7 +55,6 @@
     if (pin.length == 4) {
         if ([self.delegate respondsToSelector:@selector(didEnteredSecondPin:)]) {
             [self.delegate didEnteredSecondPin:pin];
-            self.creatingWalletDidEnd = YES;
         }
     } else {
         [self accessPinDenied];
@@ -70,9 +70,7 @@
 
 -(void)actionEnter:(id)sender {
     
-    if (!self.creatingWalletDidEnd) {
-        [self actionEnterPin:nil];
-    }
+    [self actionEnterPin:nil];
 }
 
 #pragma mark - Public Methods
@@ -83,7 +81,6 @@
 
 -(void)endCreateWalletWithError:(NSError*)error {
     
-    self.creatingWalletDidEnd = YES;
     if (error) {
         if ([self.delegate respondsToSelector:@selector(didCancelPressedOnRepeatePin)]) {
             [self.delegate didCancelPressedOnRepeatePin];
@@ -93,6 +90,11 @@
             [self.delegate didCreateWalletPressed];
         }
     }
+}
+
+-(void)showFailedStatus {
+    
+    [self accessPinDenied];
 }
 
 

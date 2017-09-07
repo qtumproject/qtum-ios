@@ -13,6 +13,7 @@
 @property (strong, nonatomic, readonly) NSString* string;
 
 - (NSString*)formatedDateString;
++ (NSString*)formatedDateStringFromString:(NSString*)dateString;
 
 
 @end

@@ -20,14 +20,14 @@
 #import "InterfaceInputFormModel.h"
 #import "WalletManagerRequestAdapter.h"
 
-NSString const *kTokenKeys = @"qtum_token_tokens_keys";
+NSString *const kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
 NSString *const kContractCreationFailed = @"kContractCreationFailed";
 
-static NSString* kSmartContractPretendentsKey = @"smartContractPretendentsKey";
-static NSString* kTemplateModel = @"kTemplateModel";
-static NSString* kAddresses = @"kAddress";
-static NSString* kLocalContractName = @"kLocalContractName";
+NSString *const kSmartContractPretendentsKey = @"smartContractPretendentsKey";
+NSString *const kTemplateModel = @"kTemplateModel";
+NSString *const kAddresses = @"kAddress";
+NSString *const kLocalContractName = @"kLocalContractName";
 
 
 @interface ContractManager () <TokenDelegate>
@@ -156,6 +156,10 @@ static NSString* kLocalContractName = @"kLocalContractName";
 - (NSArray <Contract*>*)allContracts {
     
     return self.contracts;
+}
+
+- (NSDictionary*)smartContractPretendentsCopy {
+    return [self.smartContractPretendents copy];
 }
 
 - (void)addNewToken:(Contract*) token {
@@ -473,9 +477,8 @@ static NSString* kLocalContractName = @"kLocalContractName";
                         }
                     }
                 }
-                [weakSelf tokenDidChange:token];
-                
             }
+            [weakSelf tokenDidChange:token];
         }];
     }
 }

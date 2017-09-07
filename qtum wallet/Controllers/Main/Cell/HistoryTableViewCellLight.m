@@ -21,7 +21,9 @@
 - (void)setHistoryElement:(HistoryElement *)historyElement {
     [super setHistoryElement:historyElement];
     
-    if (historyElement.send) {
+    if (!historyElement.confirmed) {
+        self.typeImage.image = [UIImage imageNamed:@"ic-confirmation_loader"];
+    } else if (historyElement.send) {
         self.typeImage.image = [UIImage imageNamed:@"ic-sent_light"];
     }else{
         self.typeImage.image = [UIImage imageNamed:@"ic-receive_light"];

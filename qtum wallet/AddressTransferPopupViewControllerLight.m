@@ -71,6 +71,11 @@
         amountLabel.textAlignment = NSTextAlignmentCenter;
         amountLabel.textColor = lightBlackColor();
         
+        CGSize size = [amountLabel.text sizeWithAttributes:@{NSFontAttributeName : amountLabel.font}];
+        if (size.width > amountLabel.bounds.size.width) {
+            amountLabel.text = [NSString stringWithFormat:@"%@", [[self.fromAddressesVariants[address] decimalNumber] shortFormatOfNumber]];
+        }
+        
         [container addSubview:amountLabel];
         [container addSubview:addressLabel];
     }

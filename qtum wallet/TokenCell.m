@@ -11,6 +11,8 @@
 
 @interface TokenCell ()
 
+@property (weak, nonatomic) Contract* token;
+
 @end
 
 @implementation TokenCell
@@ -20,9 +22,24 @@
     self.tokenName.text = token.localName;
     self.mainSymbol.text = token.symbol;
     self.symbol.text = token.symbol;
-    self.mainValue.text = [NSString stringWithFormat:@"%@",token.balance];
+    self.mainValue.text = [token balanceString];//[NSString stringWithFormat:@"%@",token.balance];
+    self.token = token;
 }
 
 - (void)changeHighlight:(BOOL)value { }
+
+-(void)layoutSubviews {
+    
+    [super layoutSubviews];
+    
+    CGSize size = [self.mainValue.text sizeWithAttributes:@{NSFontAttributeName : self.mainValue.font}];
+    if (size.width > self.mainValue.bounds.size.width) {
+        self.mainValue.text = [self.token shortBalanceString];
+    }
+}
+
+-(void)prepareForReuse {
+    self.token = nil;
+}
 
 @end

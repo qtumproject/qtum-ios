@@ -120,7 +120,9 @@ ContractFunctionsOutputDelegate>
     NSArray *sortedContracts = [[[ContractManager sharedInstance] allContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
         return [t1.creationDate compare:t2.creationDate];
     }];
+    
     output.contracts = sortedContracts;
+    output.smartContractPretendents = [[ContractManager sharedInstance] smartContractPretendentsCopy];
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
@@ -328,7 +330,10 @@ ContractFunctionsOutputDelegate>
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:item appendingParam:param];
     
     __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:addressWithTokensValue toAddress:nil walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andHandler:^(NSError *error, BTCTransaction *transaction, NSString *hashTransaction) {
+    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction
+                                                fromAddresses:addressWithTokensValue
+                                                    toAddress:nil
+                                                   walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
         
         [weakSelf.functionDetailController showResultViewWithOutputs:nil];
     }];

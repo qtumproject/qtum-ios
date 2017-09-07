@@ -15,5 +15,6 @@ static NSString* tokenAddressControlCellIdentifire = @"tokenAddressControlCellId
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *symbolLabel;
+@property (weak, nonatomic) NSString *shortBalance;
 
 @end

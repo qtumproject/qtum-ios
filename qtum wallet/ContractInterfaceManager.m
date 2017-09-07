@@ -149,19 +149,6 @@
     NSMutableData* hashFunction = [[self hashOfFunction:fuctionItem] mutableCopy];
     NSMutableArray* mutableParam = [param mutableCopy];
     
-    //creating hex data from string paremeter
-    for (int i = 0; i < param.count; i++) {
-        if (fuctionItem.inputs[i].type == AddressType && [param[i] isKindOfClass:[NSString class]]) {
-            NSData* hexDataFromBase58 = [param[i] dataFromBase58];
-            if (hexDataFromBase58.length == 25) {
-                NSData* addressData = [hexDataFromBase58 subdataWithRange:NSMakeRange(1, 20)];
-                mutableParam[i] = addressData;
-            } else {
-                return nil;
-            }
-        }
-    }
-    
     NSArray* types = [self arrayOfTypesFromInputs:fuctionItem.inputs];
 
     NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:[mutableParam copy] andArrayOfTypes:types];
@@ -174,7 +161,7 @@
     
     NSMutableArray* types = @[].mutableCopy;
     for (AbiinterfaceInput* input in inputs) {
-        [types addObject:@(input.type)];
+        [types addObject:input.type];
     }
     return [types copy];
 }

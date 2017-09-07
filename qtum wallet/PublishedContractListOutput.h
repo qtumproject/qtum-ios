@@ -13,6 +13,7 @@
 @protocol PublishedContractListOutput <Presentable>
 
 @property (copy, nonatomic) NSArray <Contract*>* contracts;
-@property (weak,nonatomic) id <PublishedContractListOutputDelegate> delegate;
+@property (strong, nonatomic) NSDictionary *smartContractPretendents;
+@property (weak, nonatomic) id <PublishedContractListOutputDelegate> delegate;
 
 @end

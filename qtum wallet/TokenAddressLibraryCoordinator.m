@@ -10,6 +10,7 @@
 #import "TokenAddressLibraryOutput.h"
 #import "AddressTransferPopupViewController.h"
 #import "TransactionManager.h"
+#import "ErrorPopUpViewController.h"
 
 @interface TokenAddressLibraryCoordinator () <TokenAddressLibraryOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -35,8 +36,9 @@
     
     NSObject <TokenAddressLibraryOutput> *output = [[ControllersFactory sharedInstance] createTokenAddressControllOutput];
     output.delegate = self;
-    output.addressesValueHashTable = self.token.addressBalanceDictionary;
-    self.addressBalanceHashTable = self.token.addressBalanceDictionary;
+    output.addressesValueHashTable = self.token.addressBalanceDivByDecimalDictionary;
+    output.symbol = self.token.symbol;
+    self.addressBalanceHashTable = self.token.addressBalanceDivByDecimalDictionary;
     self.addressOutput = output;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
@@ -44,6 +46,9 @@
 -(void)makeTransferFromAddress:(NSString*)from toAddress:(NSString*) to withAmount:(NSString* )amount {
     
     NSDecimalNumber *amountDecimalContainer = [NSDecimalNumber decimalNumberWithString:amount];
+    
+    //multiply amount by decimal 
+    amountDecimalContainer = [amountDecimalContainer numberWithPowerOf10:self.token.decimals];
     
     __weak __typeof(self)weakSelf = self;
     
@@ -67,13 +72,15 @@
 }
 
 - (void)showErrorPopUp:(NSString *)message {
+    
     PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
     if (message) {
         content.messageString = message;
         content.titleString = NSLocalizedString(@"Failed", nil);
     }
     
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [popUp setOnlyCancelButton];
 }
 
 - (void)hideLoaderPopUp {
@@ -111,9 +118,7 @@
 
 -(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath withAddress:(NSString*)address {
     
-    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressBalanceHashTable completion:^{
-        
-    }];
+    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressBalanceHashTable completion:nil];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate

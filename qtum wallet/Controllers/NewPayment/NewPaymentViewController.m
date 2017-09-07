@@ -13,6 +13,7 @@
 #import "TokenListViewController.h"
 #import "ChoseTokenPaymentViewController.h"
 #import "InformationPopUpViewController.h"
+#import "ErrorPopUpViewController.h"
 #import "SecurityPopupViewController.h"
 #import "NSNumber+Comparison.h"
 
@@ -152,8 +153,8 @@ static NSInteger withoutTokenOffset = 40;
              andUnconfimrmedBalance:(NSNumber*) walletUnconfirmedBalance {
     
     //updating constraints and activity info
-    self.residueValueLabel.text = [NSString stringWithFormat:@"%@", [walletBalance.decimalNumber roundedNumberWithScate:3]];
-    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%@", [walletUnconfirmedBalance.decimalNumber roundedNumberWithScate:3]];
+    self.residueValueLabel.text = [NSString stringWithFormat:@"%@", [walletBalance.decimalNumber roundedNumberWithScale:3]];
+    self.unconfirmedBalance.text = [NSString stringWithFormat:@"%@", [walletUnconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
 
     BOOL isTokensExists = isExist;
     self.tokenTextField.hidden =
@@ -188,7 +189,8 @@ static NSInteger withoutTokenOffset = 40;
         content.titleString = NSLocalizedString(@"Failed", nil);
     }
     
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [popUp setOnlyCancelButton];
 }
 
 - (void)hideLoaderPopUp {
@@ -284,6 +286,7 @@ static NSInteger withoutTokenOffset = 40;
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
     
     NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:[self correctAmountString]];
+    
     NSString *address = self.addressTextField.text;
     [self.delegate didPresseSendActionWithAddress:address andAmount:amount];
 }

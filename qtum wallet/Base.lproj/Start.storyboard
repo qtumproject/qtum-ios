@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -88,7 +88,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a wallet or restore a previous wallet key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApH-nQ-YF3">
-                                <rect key="frame" x="87.5" y="258.5" width="200" height="33"/>
+                                <rect key="frame" x="87.5" y="260.5" width="200" height="50.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="CCK-vf-XP6"/>
                                 </constraints>
@@ -97,7 +97,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have a wallet yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbP-bR-TcN">
-                                <rect key="frame" x="20" y="216" width="335" height="17.5"/>
+                                <rect key="frame" x="20" y="216" width="335" height="19.5"/>
                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="15"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -430,7 +430,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCY-5r-0Og">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkF-s2-wT7">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkF-s2-wT7">
                                         <rect key="frame" x="40" y="597" width="295" height="50"/>
                                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -684,7 +684,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vja-ns-lkd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YF2-4e-rIb">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YF2-4e-rIb">
                                         <rect key="frame" x="40" y="597" width="295" height="50"/>
                                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -957,7 +957,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy Passphrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXK-VV-DPE">
-                                                <rect key="frame" x="117" y="12" width="142.5" height="21"/>
+                                                <rect key="frame" x="118" y="11" width="140.5" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1018,7 +1018,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can skip this step and export your passphrase at any time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqM-zM-reg">
-                                <rect key="frame" x="37.5" y="240.5" width="300" height="35"/>
+                                <rect key="frame" x="37.5" y="241.5" width="300" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="qhd-Cf-Psw"/>
                                 </constraints>
@@ -1047,7 +1047,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" asdasd asdasd asdasd asfd asdf gsdf hgja aqt rejdf цуквапы" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuU-1O-s5h" customClass="BorderedLabel">
-                                <rect key="frame" x="30" y="143" width="315" height="37.5"/>
+                                <rect key="frame" x="30" y="143" width="315" height="38.5"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2069,16 +2069,22 @@ using Touch ID</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gbm-lP-cby">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGd-gE-95m">
-                                        <rect key="frame" x="40" y="597" width="295" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGd-gE-95m">
+                                        <rect key="frame" x="67.5" y="597" width="240" height="50"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="D3e-7l-qsz"/>
                                             <constraint firstAttribute="height" constant="50" id="kxZ-DA-PvB"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                                         <state key="normal" title="CANCEL">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="actionCancel:" destination="WFf-U8-SMa" eventType="touchUpInside" id="vby-K3-cDh"/>
                                         </connections>
@@ -2269,14 +2275,13 @@ using Touch ID</string>
                                     <constraint firstItem="TVh-8s-3yD" firstAttribute="leading" secondItem="Gbm-lP-cby" secondAttribute="leading" constant="40" id="Dge-cB-62C"/>
                                     <constraint firstItem="24M-fd-ZKo" firstAttribute="leading" secondItem="Gbm-lP-cby" secondAttribute="leading" id="Q26-6m-tBg"/>
                                     <constraint firstItem="24M-fd-ZKo" firstAttribute="top" secondItem="Gbm-lP-cby" secondAttribute="top" id="YYK-FM-Ld1"/>
-                                    <constraint firstAttribute="trailing" secondItem="YGd-gE-95m" secondAttribute="trailing" constant="40" id="ZFd-ad-Ofv"/>
                                     <constraint firstItem="TVh-8s-3yD" firstAttribute="top" secondItem="BNH-Wl-wgk" secondAttribute="bottom" constant="78" id="ZPC-tx-CLw"/>
                                     <constraint firstItem="YGd-gE-95m" firstAttribute="top" secondItem="TVh-8s-3yD" secondAttribute="bottom" constant="11" id="fYB-GL-aXE"/>
                                     <constraint firstAttribute="trailing" secondItem="TVh-8s-3yD" secondAttribute="trailing" constant="40" id="ii0-Fl-kj8"/>
-                                    <constraint firstItem="YGd-gE-95m" firstAttribute="leading" secondItem="Gbm-lP-cby" secondAttribute="leading" constant="40" id="k4c-ww-Rdi"/>
                                     <constraint firstItem="LKQ-b4-V8E" firstAttribute="centerX" secondItem="Gbm-lP-cby" secondAttribute="centerX" id="sOm-hJ-dIL"/>
                                     <constraint firstItem="LKQ-b4-V8E" firstAttribute="top" secondItem="BNH-Wl-wgk" secondAttribute="bottom" constant="21" id="tKK-5s-Sot"/>
                                     <constraint firstAttribute="trailing" secondItem="24M-fd-ZKo" secondAttribute="trailing" id="tcN-U4-9vh"/>
+                                    <constraint firstItem="YGd-gE-95m" firstAttribute="centerX" secondItem="Gbm-lP-cby" secondAttribute="centerX" id="y4N-lE-Pqr"/>
                                     <constraint firstAttribute="bottom" secondItem="YGd-gE-95m" secondAttribute="bottom" constant="20" id="znA-nL-o9O"/>
                                 </constraints>
                             </view>
@@ -2346,19 +2351,20 @@ using Touch ID</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKn-cg-mVj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYF-ca-p4Y">
-                                        <rect key="frame" x="40" y="597" width="295" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYF-ca-p4Y">
+                                        <rect key="frame" x="67.5" y="597" width="240" height="50"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="137-Uz-Ojv"/>
+                                            <constraint firstAttribute="width" constant="240" id="feU-s7-oWv"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                                         <state key="normal" title="CANCEL">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="25"/>
+                                                <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -2558,13 +2564,12 @@ using Touch ID</string>
                                     <constraint firstItem="BYF-ca-p4Y" firstAttribute="top" secondItem="ag5-ot-VOL" secondAttribute="bottom" constant="11" id="Mw0-5H-Hw4"/>
                                     <constraint firstItem="0BA-Ng-HJw" firstAttribute="leading" secondItem="vKn-cg-mVj" secondAttribute="leading" id="UeF-zi-ef9"/>
                                     <constraint firstItem="yaK-3r-aOA" firstAttribute="centerX" secondItem="vKn-cg-mVj" secondAttribute="centerX" id="Xz5-OT-cKg"/>
-                                    <constraint firstAttribute="trailing" secondItem="BYF-ca-p4Y" secondAttribute="trailing" constant="40" id="c3O-tj-N29"/>
                                     <constraint firstAttribute="trailing" secondItem="ag5-ot-VOL" secondAttribute="trailing" constant="40" id="j1V-2e-X6U"/>
                                     <constraint firstItem="ag5-ot-VOL" firstAttribute="leading" secondItem="vKn-cg-mVj" secondAttribute="leading" constant="40" id="jud-92-MDy"/>
                                     <constraint firstItem="yaK-3r-aOA" firstAttribute="top" secondItem="GZQ-nq-l4w" secondAttribute="bottom" constant="21" id="nIl-72-FFW"/>
                                     <constraint firstItem="0BA-Ng-HJw" firstAttribute="top" secondItem="vKn-cg-mVj" secondAttribute="top" id="r3T-hR-3Ad"/>
+                                    <constraint firstItem="BYF-ca-p4Y" firstAttribute="centerX" secondItem="vKn-cg-mVj" secondAttribute="centerX" id="tnL-M1-cek"/>
                                     <constraint firstAttribute="bottom" secondItem="BYF-ca-p4Y" secondAttribute="bottom" constant="20" id="yzc-E1-rVe"/>
-                                    <constraint firstItem="BYF-ca-p4Y" firstAttribute="leading" secondItem="vKn-cg-mVj" secondAttribute="leading" constant="40" id="zOK-Kd-aT5"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2883,7 +2888,7 @@ using Touch ID</string>
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy Passphrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmO-lo-gnX">
-                                                <rect key="frame" x="120.5" y="12.5" width="134.5" height="20"/>
+                                                <rect key="frame" x="122" y="14" width="131.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2945,7 +2950,7 @@ using Touch ID</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can skip this step and export your passphrase at any time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCL-oc-su9">
-                                <rect key="frame" x="37.5" y="261" width="300" height="35"/>
+                                <rect key="frame" x="37.5" y="255" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Hez-nW-Hk9"/>
                                 </constraints>
@@ -2975,7 +2980,7 @@ using Touch ID</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" asdasd asdasd asdasd asfd asdf gsdf hgja aqt rejdf цуквапы" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCr-YL-owg" customClass="BorderedLabelLight">
-                                <rect key="frame" x="45" y="109" width="285" height="42"/>
+                                <rect key="frame" x="45" y="109" width="285" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                 <color key="textColor" red="0.52549019610000003" green="0.56862745100000001" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

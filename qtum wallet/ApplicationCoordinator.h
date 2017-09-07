@@ -19,7 +19,7 @@
 
 @end
 
-@interface ApplicationCoordinator : BaseCoordinator
+@interface ApplicationCoordinator : BaseCoordinator <Clearable>
 
 @property (strong,nonatomic,readonly) NotificationManager* notificationManager;
 @property (strong,nonatomic,readonly) OpenURLManager* openUrlManager;

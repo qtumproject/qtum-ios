@@ -188,7 +188,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 - (BTCKeychain *)createKeychainWithSeedWords:(NSArray*) seedWords {
     
     BTCMnemonic *mnemonic = [[BTCMnemonic alloc] initWithWords:seedWords password:nil wordListType:BTCMnemonicWordListTypeUnknown];
-    BTCKeychain *keyChain = [mnemonic.keychain derivedKeychainWithPath:@"m/0'/0'"];
+    BTCKeychain *keyChain = [mnemonic.keychain derivedKeychainWithPath:@"m/88'/0'"];
 
     return keyChain;
 }

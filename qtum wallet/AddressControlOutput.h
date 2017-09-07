@@ -14,7 +14,7 @@
 @protocol AddressControlOutput <Presentable>
 
 @property (weak, nonatomic) id <AddressControlOutputDelegate> delegate;
-@property (copy, nonatomic) NSDictionary <NSString*, NSNumber*>* addressesValueHashTable;
+@property (copy, nonatomic) NSDictionary <NSString*, NSDecimalNumber*>* addressesValueHashTable;
 
 -(void)reloadData;
 

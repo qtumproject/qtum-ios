@@ -19,6 +19,6 @@
 - (NSData*)contactArgumentsFromDictionary:(NSDictionary*) dict;
 - (NSData*)contactArgumentsFromArrayOfValues:(NSArray*) values andArrayOfTypes:(NSArray*) types;
 - (NSArray*)аrrayFromContractArguments:(NSData*) data andInterface:(AbiinterfaceItem*) interface;
-- (NSData*)contactArgumentFromArrayOfValues:(NSArray*) values andArrayOfTypes:(NSArray<AbiinterfaceInput*>*) inputs;
+//- (NSData*)contactArgumentFromArrayOfValues:(NSArray*) values andArrayOfTypes:(NSArray<AbiinterfaceInput*>*) inputs;
 
 @end

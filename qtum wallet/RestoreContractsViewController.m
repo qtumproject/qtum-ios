@@ -12,7 +12,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "BackupFileManager.h"
 #import "ErrorPopUpViewController.h"
-
+#import "InformationPopUpViewController.h"
 
 @interface RestoreContractsViewController () <PopUpWithTwoButtonsViewControllerDelegate, UIDocumentMenuDelegate, UIDocumentPickerDelegate>
 
@@ -159,7 +159,7 @@
     
     if (self.fileUrl) {
         
-        [BackupFileManager getQuickInfoFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(NSString *date, NSString *version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount) {
+        BOOL fileReaded = [BackupFileManager getQuickInfoFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(NSString *date, NSString *version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount) {
             RestoreContractsPopUpViewController *poUp = [[PopUpsManager sharedInstance] showRestoreContractsPopUp:self presenter:nil completion:nil];
             poUp.dateLabel.text = date;
             poUp.versionLabel.text = version;
@@ -168,6 +168,16 @@
             poUp.templateCounLabel.text = [NSString stringWithFormat:@"%li",(long)templateCount];
         }];
         
+        if (!fileReaded) {
+            PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+            content.messageString = NSLocalizedString(@"Сonnection to selected file was timed out. Please select backup file again", nil);
+            ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+            [popUp setOnlyCancelButton];
+        }
+    } else {
+        PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+        ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+        [popUp setOnlyCancelButton];
     }
 }
 
@@ -212,7 +222,7 @@
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
 
-    if ([sender isKindOfClass:[ErrorPopUpViewController class]]) {
+    if ([sender isKindOfClass:[ErrorPopUpViewController class]] || [sender isKindOfClass:[InformationPopUpViewController class]]) {
         
         [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
         
@@ -220,7 +230,8 @@
         [BackupFileManager setBackupFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(BOOL success) {
             
             if (success) {
-                [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+                PopUpContent *content = [PopUpContentGenerator contentForRestoredContracts];
+                [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:content presenter:nil completion:nil];
             } else {
                 [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
             }

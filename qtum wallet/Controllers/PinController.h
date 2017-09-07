@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *secondInputUnderlineView;
 @property (weak, nonatomic) IBOutlet UIView *thridInputUnderlineView;
 @property (weak, nonatomic) IBOutlet UIView *fourthInputUnderlineView;
+@property (assign,nonatomic,getter = isEditingEnabled) BOOL editingEnabled;
 
 @property (weak,nonatomic) id <PinCoordinator> delegatePin;
 @property (assign,nonatomic) PinType type;

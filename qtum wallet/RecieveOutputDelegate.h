@@ -10,6 +10,6 @@
 
 - (void)didBackPressed;
 @optional
--(void)didPressedChooseAddress;
+-(void)didPressedChooseAddressWithPreviusAddress:(NSString*) prevAddress;
 
 @end

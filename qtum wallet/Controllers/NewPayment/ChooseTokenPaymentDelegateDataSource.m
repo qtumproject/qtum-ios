@@ -76,11 +76,13 @@
             [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
     } else {
+        
         cell.tokenName.text = self.tokens[indexPath.row - 1].localName;
-        cell.mainBalance.text = [NSString stringWithFormat:@"%@",[self.tokens[indexPath.row - 1].balance.decimalNumber roundedNumberWithScate:3]];
+        cell.mainBalance.text = self.tokens[indexPath.row - 1].balanceString;
         cell.balance.text = [NSString stringWithFormat:@"%.3f", 0.0];
         cell.balanceSymbol.text =
         cell.mainBalanceSymbol.text = self.tokens[indexPath.row - 1].symbol;
+        cell.shortBalance = self.tokens[indexPath.row - 1].shortBalanceString;
         
         if ([self.activeToken isEqual:self.tokens[indexPath.row - 1]]) {
             [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];

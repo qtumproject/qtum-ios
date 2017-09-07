@@ -23,10 +23,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareLabelButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *walletCopyButtonBottomOffsetConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *chooseAddressButton;
+@property (weak, nonatomic) IBOutlet UILabel *balanceCurrency;
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalanceCurrency;
 
 - (IBAction)backButtonWasPressed:(id)sender;
 - (IBAction)shareButtonWasPressed:(id)sender;
-- (IBAction)copeButtonWasPressed:(id)sender;
+- (IBAction)copyButtonWasPressed:(id)sender;
 
 @end
 
@@ -37,7 +39,8 @@ type = _type,
 balanceText = _balanceText,
 unconfirmedBalanceText = _unconfirmedBalanceText,
 walletAddress = _walletAddress,
-tokenAddress = _tokenAddress;
+tokenAddress = _tokenAddress,
+currency = _currency;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,9 +56,13 @@ tokenAddress = _tokenAddress;
     self.unconfirmedBalance.text = self.unconfirmedBalanceText;    
     self.publicAddressLabel.text = self.walletAddress;
     self.publicAddressLabel.hidden = YES;
+    if (self.currency) {
+        self.balanceCurrency.text =
+        self.unconfirmedBalanceCurrency.text = self.currency;
+    }
     
-    self.walletCopyButtonBottomOffsetConstraint.constant = self.type == ReciveWalletOutput ? 90 : 20;
-    self.chooseAddressButton.hidden = self.type == ReciveTokenOutput;
+    self.walletCopyButtonBottomOffsetConstraint.constant = 90;
+    self.chooseAddressButton.hidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -157,7 +164,7 @@ tokenAddress = _tokenAddress;
 }
 - (IBAction)chooseAnotherAddressPress:(id)sender {
     
-    [self.delegate didPressedChooseAddress];
+    [self.delegate didPressedChooseAddressWithPreviusAddress:self.walletAddress];
 }
 
 - (IBAction)shareButtonWasPressed:(id)sender {
@@ -179,10 +186,10 @@ tokenAddress = _tokenAddress;
     [self presentViewController:sharingVC animated:YES completion:nil];
 }
 
-- (IBAction)copeButtonWasPressed:(id)sender {
+- (IBAction)copyButtonWasPressed:(id)sender {
     
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    NSString* keyString = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+    NSString* keyString = self.walletAddress;
     [pb setString:keyString];
     
     [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForAddressCopied] presenter:nil completion:nil];

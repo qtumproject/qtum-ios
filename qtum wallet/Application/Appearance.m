@@ -107,9 +107,14 @@
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setClearButtonMode:UITextFieldViewModeWhileEditing];
     [[UITextField appearance] setKeyboardAppearance:UIKeyboardAppearanceLight];
     
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : lightGreenColor(),
-                                                            NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Light" size:14.0f]}
-                                                forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor],
+                                                                                                    NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Light" size:14.0f]}
+                                                                                        forState:UIControlStateNormal];
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil] setTitleTextAttributes:@{ NSForegroundColorAttributeName : lightGreenColor(),
+                                                                                                    NSFontAttributeName:[UIFont fontWithName:@"ProximaNova-Light" size:14.0f]}
+                                                                                        forState:UIControlStateNormal];
+
     
     //colors for toolbar
     [[UIToolbar appearance] setBarTintColor:[UIColor whiteColor]];

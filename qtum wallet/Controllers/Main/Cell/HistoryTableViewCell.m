@@ -26,13 +26,14 @@
     self.amountLabel.text = self.symbolLabel ? [NSString stringWithFormat:@"%0.3f", [self.historyElement.amount floatValue]] : historyElement.amountString;
     self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0) ? historyElement.shortDateString : NSLocalizedString(@"Unconfirmed", nil);
     
-    if (historyElement.send) {
-        self.typeLabel.text = NSLocalizedString(@"Sent", "");
-        self.addressLabel.text = [historyElement.toAddresses firstObject][@"address"];
-    }else{
-        self.typeLabel.text = NSLocalizedString(@"Received", "");
-        self.addressLabel.text = [historyElement.fromAddreses firstObject][@"address"];
-    }
+//    if (historyElement.send) {
+//        self.typeLabel.text = NSLocalizedString(@"Sent", "");
+//        self.addressLabel.text = [historyElement.toAddresses firstObject][@"address"];
+//    }else{
+//        self.typeLabel.text = NSLocalizedString(@"Received", "");
+//        self.addressLabel.text = [historyElement.fromAddreses firstObject][@"address"];
+//    }
+    self.addressLabel.text = historyElement.txHash;
 }
 
 - (void)changeHighlight:(BOOL)value { }

@@ -11,6 +11,7 @@
 #import "NSData+Extension.h"
 #import "NSDate+Extension.h"
 #import "NSNumber+Comparison.h"
+#import "NSNumber+Format.h"
 
 @implementation Contract
 
@@ -56,6 +57,29 @@
     return balanceDecimal;
 }
 
+-(NSDictionary <NSString*,NSDecimalNumber*>*)addressBalanceDivByDecimalDictionary {
+    
+    NSDictionary <NSString*,NSDecimalNumber*>* addressBalanceDivByDecimalDictionary = @{}.mutableCopy;
+    
+    for (NSString* address in self.addressBalanceDictionary.allKeys) {
+        
+        [addressBalanceDivByDecimalDictionary setValue:[self.addressBalanceDictionary[address] numberWithPowerOfMinus10:[self.decimals decimalNumber]] forKey:address];
+    }
+    return addressBalanceDivByDecimalDictionary;
+}
+
+- (NSString*)balanceString {
+    
+    NSDecimalNumber* decimal = [self.decimals decimalNumber];
+    return [self.balance stringNumberWithPowerOfMinus10:decimal];
+}
+
+- (NSString*)shortBalanceString {
+    
+    NSDecimalNumber* decimal = [self.decimals decimalNumber];
+    return [self.balance shortFormatOfNumberWithPowerOfMinus10:decimal];
+}
+
 #pragma mark - Spendable
 
 -(void)updateBalanceWithHandler:(void (^)(BOOL))complete {
@@ -77,6 +101,7 @@
 -(void)historyDidChange{
     [self.manager spendableDidChange:self];
 }
+
 -(void)updateWithHandler:(void(^)(BOOL success)) complete{
     [self.manager updateSpendableObject:self];
 }

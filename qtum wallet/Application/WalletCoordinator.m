@@ -156,6 +156,7 @@
         vc.walletAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
         vc.type = ReciveTokenOutput;
         vc.tokenAddress = spendable.mainAddress;
+        vc.currency = spendable.symbol;
 
     } else {
         
@@ -164,8 +165,8 @@
         vc.tokenAddress =  nil;
     }
     
-    vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance.decimalNumber roundedNumberWithScate:3]];
-    vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance.decimalNumber roundedNumberWithScate:3]];
+    vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance.decimalNumber roundedNumberWithScale:3]];
+    vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
     vc.delegate = self;
     self.reciveOutput = vc;
     [self.navigationController pushViewController:[vc toPresent] animated:YES];
@@ -352,10 +353,11 @@
 
 #pragma mark - RecieveOutputDelegate
 
--(void)didPressedChooseAddress {
-    
+-(void)didPressedChooseAddressWithPreviusAddress:(NSString*) prevAddress {
+
     NSObject<ChooseReciveAddressOutput> *output = [[ControllersFactory sharedInstance] createChooseReciveAddressOutput];
     output.delegate = self;
+    output.prevAddress = prevAddress;
     output.addresses = [ApplicationCoordinator sharedInstance].walletManager.wallet.allKeysAdreeses;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
@@ -363,6 +365,7 @@
 -(void)didChooseAddress:(NSString*) address {
     
     [self.navigationController popViewControllerAnimated:YES];
+    
     self.reciveOutput.walletAddress = address;
     [self.reciveOutput updateControls];
 }
