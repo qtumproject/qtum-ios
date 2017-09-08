@@ -52,6 +52,14 @@
                                                             NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:16.0f]}
                                                 forState:UIControlStateNormal];
     
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor],
+                                                                                                    NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:16.0f]}
+                                                                                        forState:UIControlStateNormal];
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil] setTitleTextAttributes:@{ NSForegroundColorAttributeName : customBlueColor(),
+                                                                                                  NSFontAttributeName:[UIFont fontWithName:@"simplonmono-regular" size:16.0f]}
+                                                                                      forState:UIControlStateNormal];
+    
     //colors for toolbar
     [[UIToolbar appearance] setBarTintColor:customBlackColor()];
     [[UIToolbar appearance] setTintColor:customBlueColor()];
