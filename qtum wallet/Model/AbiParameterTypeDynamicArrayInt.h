@@ -6,8 +6,8 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "AbiParameterTypeDynamicArray.h"
+#import "AbiParameterTypeDynamicElementaryArray.h"
 
-@interface AbiParameterTypeDynamicArrayInt : AbiParameterTypeDynamicArray
+@interface AbiParameterTypeDynamicArrayInt : AbiParameterTypeDynamicElementaryArray
 
 @end

@@ -156,6 +156,72 @@
     XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
 }
 
+- (void)test_Decode_Uint_AddressDynamicArray_bytes10_bytes {
+    
+    NSArray* values = @[@"1",@"[QQ2aC88XdLragnPUBPyex3qDvhNYyHXG5Y,QQ2aC88XdLragnPUBPyex3qDvhNYyHXG5Y]",@"1234567890", @"Hello, world!"];
+    
+    AbiParameterTypeUInt* uint = [[AbiParameterTypeUInt alloc] initWithSize:256];
+    AbiParameterTypeDynamicArrayAddress* addressDynamicArray = [AbiParameterTypeDynamicArrayAddress new];
+    AbiParameterTypeBytes* bytes = [AbiParameterTypeBytes new];
+    AbiParameterTypeFixedBytes* fixedBytes = [[AbiParameterTypeFixedBytes alloc] initWithSize:10];
+    
+    NSArray* types = @[uint,addressDynamicArray,fixedBytes,bytes];
+    
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
+    NSString* decodedParams = @"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000080313233343536373839300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e00000000000000000000000000000000000000000000000000000000000000002000000000000000000000000258ecfc80aadffb3f00e9183b3fda62f63280b54000000000000000000000000258ecfc80aadffb3f00e9183b3fda62f63280b54000000000000000000000000000000000000000000000000000000000000000d48656c6c6f2c20776f726c642100000000000000000000000000000000000000";
+    
+    XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
+}
+
+- (void)test_Decode_Uint_Bytes32DynamicArray_bytes10_bytes {
+    
+    NSArray* values = @[@"1",@"[1234567890,1234567890]",@"1234567890", @"Hello, world!"];
+    
+    AbiParameterTypeUInt* uint = [[AbiParameterTypeUInt alloc] initWithSize:256];
+    AbiParameterTypeDynamicArrayFixedBytes* fixedBitesArrayDynamicArray = [[AbiParameterTypeDynamicArrayFixedBytes alloc] initWithSizeOfElements:32];
+    AbiParameterTypeBytes* bytes = [AbiParameterTypeBytes new];
+    AbiParameterTypeFixedBytes* fixedBytes = [[AbiParameterTypeFixedBytes alloc] initWithSize:10];
+    
+    NSArray* types = @[uint,fixedBitesArrayDynamicArray,fixedBytes,bytes];
+    
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
+    NSString* decodedParams = @"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000080313233343536373839300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000231323334353637383930000000000000000000000000000000000000000000003132333435363738393000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d48656c6c6f2c20776f726c642100000000000000000000000000000000000000";
+    
+    XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
+}
+
+- (void)test_Decode_Uint_Bytes32FixedArray_bytes10_bytes {
+    
+    NSArray* values = @[@"1",@"[1234567890,1234567890,1234567890,1234567890]",@"12345678901234567890", @"Hello, world!"];
+    
+    AbiParameterTypeUInt* uint = [[AbiParameterTypeUInt alloc] initWithSize:256];
+    AbiParameterTypeFixedArrayFixedBytes* fixedBitesArrayDynamicArray = [[AbiParameterTypeFixedArrayFixedBytes alloc] initWithSizeOfElements:32];
+    fixedBitesArrayDynamicArray.size = 2;
+    AbiParameterTypeBytes* bytes = [AbiParameterTypeBytes new];
+    AbiParameterTypeFixedBytes* fixedBytes = [[AbiParameterTypeFixedBytes alloc] initWithSize:10];
+    
+    NSArray* types = @[uint,fixedBitesArrayDynamicArray,fixedBytes,bytes];
+    
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
+    NSString* decodedParams = @"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000080313233343536373839300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000231323334353637383930000000000000000000000000000000000000000000003132333435363738393000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d48656c6c6f2c20776f726c642100000000000000000000000000000000000000";
+    
+    XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
+}
+
+- (void)test_Encode_Dynamic_array_string {
+    
+    NSArray* values = @[@"[\"Hello, world!\",\"Hello, world!\",\"Hello, world!\"]"];
+    
+    AbiParameterTypeDynamicArrayString* stringArray = [[AbiParameterTypeDynamicArrayString alloc] init];
+    
+    NSArray* types = @[stringArray];
+    
+    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:values andArrayOfTypes:types];
+    NSString* decodedParams = @"00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000d48656c6c6f2c20776f726c642100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d48656c6c6f2c20776f726c642100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d48656c6c6f2c20776f726c642100000000000000000000000000000000000000";
+    
+    XCTAssertTrue([[NSString hexadecimalString:args] isEqualToString:decodedParams]);
+}
+
 - (void)test_Transfer_Params_Decode_Address_Uint256 {
     
     NSArray* values = @[@"QQ2aC88XdLragnPUBPyex3qDvhNYyHXG5Y",@"100"];

@@ -6,8 +6,12 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "AbiParameterTypeDynamicArray.h"
+#import "AbiParameterTypeDynamicElementaryArray.h"
 
-@interface AbiParameterTypeDynamicArrayFixedBytes : AbiParameterTypeDynamicArray
+@interface AbiParameterTypeDynamicArrayFixedBytes : AbiParameterTypeDynamicElementaryArray
+
+@property (assign, nonatomic) NSInteger elementSize;
+
+- (instancetype)initWithSizeOfElements:(NSUInteger) elementSize;
 
 @end

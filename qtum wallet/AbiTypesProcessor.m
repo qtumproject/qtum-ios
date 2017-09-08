@@ -63,6 +63,14 @@
             
             AbiParameterTypeDynamicArrayFixedBytes* type = [AbiParameterTypeDynamicArrayFixedBytes new];
             return type;
+        } else if ([typeString isFixedArrayOfAddressesFromAbi]){
+            
+            AbiParameterTypeFixedArrayAddress* type = [[AbiParameterTypeFixedArrayAddress alloc] initWithSize:[typeString arraySize]];
+            return type;
+        } else if ([typeString isDynamicArrayOfAddressesFromAbi]){
+            
+            AbiParameterTypeDynamicArrayAddress* type = [AbiParameterTypeDynamicArrayAddress new];
+            return type;
         }
     } else {
         

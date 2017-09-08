@@ -6,8 +6,8 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "AbiParameterTypeFixedArray.h"
+#import "AbiParameterTypeFixedElementaryArray.h"
 
-@interface AbiParameterTypeFixedArrayInt : AbiParameterTypeFixedArray
+@interface AbiParameterTypeFixedArrayInt : AbiParameterTypeFixedElementaryArray
 
 @end

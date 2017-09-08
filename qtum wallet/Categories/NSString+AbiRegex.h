@@ -33,6 +33,8 @@
 - (BOOL)isDynamicArrayOfBytesFromAbi;
 - (BOOL)isFixedArrayOfFixedBytesFromAbi;
 - (BOOL)isDynamicArrayOfFixedBytesFromAbi;
+- (BOOL)isFixedArrayOfAddressesFromAbi;
+- (BOOL)isDynamicArrayOfAddressesFromAbi;
 
 - (NSInteger)arraySize;
 - (NSInteger)fixedBytesSize;
@@ -40,5 +42,6 @@
 - (NSInteger)intSize;
 
 - (NSArray<NSString*>*)dynamicArrayElementsFromParameter;
+- (NSArray<NSString*>*)dynamicArrayStringsFromParameter;
 
 @end

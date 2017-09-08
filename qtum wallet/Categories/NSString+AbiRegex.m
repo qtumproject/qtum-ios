@@ -119,6 +119,17 @@
     return [self isMatchStringPattern:pattern];
 }
 
+- (BOOL)isFixedArrayOfAddressesFromAbi {
+    
+    return [self isEqualToString:@"address[]"];
+}
+
+- (BOOL)isDynamicArrayOfAddressesFromAbi {
+    
+    NSString *pattern = @"(address\\[[0-9]{0,0}\\]$)";
+    return [self isMatchStringPattern:pattern];
+}
+
 -(BOOL)isFixedArrayOfFixedBytesFromAbi {
     
     NSString *pattern = @"(bytes[0-9]{1,3}\\[[0-9]{1,}])$";
@@ -198,14 +209,32 @@
              stringByReplacingOccurrencesOfString:@"[" withString:@""]
                 stringByReplacingOccurrencesOfString:@"]" withString:@""];
 }
-
-#pragma mark - 
+#pragma mark -
 
 - (NSArray<NSString*>*)dynamicArrayElementsFromParameter {
     
     NSString* paramterWithoutBracer = [self stringFromBracer:self];
     return [paramterWithoutBracer componentsSeparatedByString:@","];
 }
+  
+- (NSArray<NSString*>*)dynamicArrayStringsFromParameter {
+  
+    NSString* paramterWithoutBracer = [self stringFromBracer:self];
+    NSMutableArray <NSString*> *machesArray = @[].mutableCopy;
+    NSString *expression = @"\"(\\.|[^\"])*\"";
+
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:expression options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    NSArray<NSTextCheckingResult *> *resultsRanges = [regex matchesInString:paramterWithoutBracer options:0 range:NSMakeRange(0, [paramterWithoutBracer length])];
+    
+    for (NSTextCheckingResult* result in resultsRanges) {
+        [machesArray addObject:[paramterWithoutBracer substringWithRange:NSMakeRange(result.range.location + 1, result.range.length - 2)]];
+    }
+    
+    return [machesArray copy];
+}
+
 
 
 @end

@@ -6,8 +6,12 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "AbiParameterTypeFixedArray.h"
+#import "AbiParameterTypeFixedElementaryArray.h"
 
-@interface AbiParameterTypeFixedArrayFixedBytes : AbiParameterTypeFixedArray
+@interface AbiParameterTypeFixedArrayFixedBytes : AbiParameterTypeFixedElementaryArray
+
+@property (assign, nonatomic) NSInteger elementSize;
+
+- (instancetype)initWithSizeOfElements:(NSUInteger) elementSize;
 
 @end

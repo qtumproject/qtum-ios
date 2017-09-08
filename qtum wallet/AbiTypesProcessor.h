@@ -22,6 +22,7 @@
 #import "AbiParameterTypeFixedArrayBool.h"
 #import "AbiParameterTypeFixedArrayString.h"
 #import "AbiParameterTypeFixedArrayFixedBytes.h"
+#import "AbiParameterTypeFixedArrayAddress.h"
 #import "AbiParameterTypeFixedArrayBytes.h"
 #import "AbiParameterTypeDynamicArrayInt.h"
 #import "AbiParameterTypeDynamicArrayUInt.h"
@@ -29,6 +30,7 @@
 #import "AbiParameterTypeDynamicArrayString.h"
 #import "AbiParameterTypeDynamicArrayFixedBytes.h"
 #import "AbiParameterTypeDynamicArrayBytes.h"
+#import "AbiParameterTypeDynamicArrayAddress.h"
 
 @interface AbiTypesProcessor : NSObject
 
