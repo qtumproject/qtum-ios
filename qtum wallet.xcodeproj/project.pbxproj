@@ -164,6 +164,11 @@
 		B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B365CA811EA8AA070040A163 /* WalletManagerRequestAdapter.m */; };
 		B366CA221F1D0AC700EF3273 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = B366CA211F1D0AC700EF3273 /* NSData+AES256.m */; };
 		B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = B366CA241F1D0C1200EF3273 /* NSString+AES256.m */; };
+		B369DF2C1F5D5EF6008B81CB /* AbiParameterTypeDynamicArrayAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = B369DF2B1F5D5EF6008B81CB /* AbiParameterTypeDynamicArrayAddress.m */; };
+		B369DF2F1F5D5F0E008B81CB /* AbiParameterTypeFixedArrayAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = B369DF2E1F5D5F0E008B81CB /* AbiParameterTypeFixedArrayAddress.m */; };
+		B369DF321F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B369DF311F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m */; };
+		B369DF351F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B369DF341F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m */; };
+		B369DF381F5D672E008B81CB /* AbiParameterTypeElementaryArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B369DF371F5D672E008B81CB /* AbiParameterTypeElementaryArray.m */; };
 		B36EBC2D1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */; };
 		B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC2F1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m */; };
 		B36EBC341F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC331F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m */; };
@@ -971,6 +976,16 @@
 		B366CA231F1D0C1200EF3273 /* NSString+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AES256.h"; sourceTree = "<group>"; };
 		B366CA241F1D0C1200EF3273 /* NSString+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AES256.m"; sourceTree = "<group>"; };
 		B366CA261F1DEE2E00EF3273 /* WalletManagering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletManagering.h; sourceTree = "<group>"; };
+		B369DF2A1F5D5EF6008B81CB /* AbiParameterTypeDynamicArrayAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArrayAddress.h; sourceTree = "<group>"; };
+		B369DF2B1F5D5EF6008B81CB /* AbiParameterTypeDynamicArrayAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArrayAddress.m; sourceTree = "<group>"; };
+		B369DF2D1F5D5F0E008B81CB /* AbiParameterTypeFixedArrayAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedArrayAddress.h; sourceTree = "<group>"; };
+		B369DF2E1F5D5F0E008B81CB /* AbiParameterTypeFixedArrayAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArrayAddress.m; sourceTree = "<group>"; };
+		B369DF301F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeFixedElementaryArray.h; sourceTree = "<group>"; };
+		B369DF311F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedElementaryArray.m; sourceTree = "<group>"; };
+		B369DF331F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicElementaryArray.h; sourceTree = "<group>"; };
+		B369DF341F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicElementaryArray.m; sourceTree = "<group>"; };
+		B369DF361F5D672E008B81CB /* AbiParameterTypeElementaryArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeElementaryArray.h; sourceTree = "<group>"; };
+		B369DF371F5D672E008B81CB /* AbiParameterTypeElementaryArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeElementaryArray.m; sourceTree = "<group>"; };
 		B36EBC2B1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewControllerDark.h; sourceTree = "<group>"; };
 		B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetConnectionPopUpViewControllerDark.m; sourceTree = "<group>"; };
 		B36EBC2E1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewControllerLight.h; sourceTree = "<group>"; };
@@ -2796,6 +2811,14 @@
 			children = (
 				B3D5FE461F56AE83006A2BF2 /* AbiParameterTypeArray.h */,
 				B3D5FE471F56AE83006A2BF2 /* AbiParameterTypeArray.m */,
+				B3D5FE841F57013A006A2BF2 /* AbiParameterTypeFixedArray.h */,
+				B3D5FE851F57013A006A2BF2 /* AbiParameterTypeFixedArray.m */,
+				B369DF361F5D672E008B81CB /* AbiParameterTypeElementaryArray.h */,
+				B369DF371F5D672E008B81CB /* AbiParameterTypeElementaryArray.m */,
+				B369DF301F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.h */,
+				B369DF311F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m */,
+				B369DF331F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.h */,
+				B369DF341F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m */,
 				B3D5FE621F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.h */,
 				B3D5FE631F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.m */,
 				B3D5FE651F56F2A0006A2BF2 /* AbiParameterTypeFixedArrayUInt.h */,
@@ -2816,14 +2839,16 @@
 				B3D5FE7C1F56F3F0006A2BF2 /* AbiParameterTypeFixedArrayFixedBytes.m */,
 				B3D5FE7E1F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.h */,
 				B3D5FE7F1F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.m */,
-				B3D5FE841F57013A006A2BF2 /* AbiParameterTypeFixedArray.h */,
-				B3D5FE851F57013A006A2BF2 /* AbiParameterTypeFixedArray.m */,
 				B3D5FE871F57014B006A2BF2 /* AbiParameterTypeDynamicArray.h */,
 				B3D5FE881F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m */,
 				B3D5FE8A1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.h */,
 				B3D5FE8B1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m */,
 				B3D5FE8D1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.h */,
 				B3D5FE8E1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m */,
+				B369DF2A1F5D5EF6008B81CB /* AbiParameterTypeDynamicArrayAddress.h */,
+				B369DF2B1F5D5EF6008B81CB /* AbiParameterTypeDynamicArrayAddress.m */,
+				B369DF2D1F5D5F0E008B81CB /* AbiParameterTypeFixedArrayAddress.h */,
+				B369DF2E1F5D5F0E008B81CB /* AbiParameterTypeFixedArrayAddress.m */,
 			);
 			name = Arrays;
 			sourceTree = "<group>";
@@ -5007,6 +5032,7 @@
 				B3D5FE6A1F56F2B2006A2BF2 /* AbiParameterTypeDynamicArrayInt.m in Sources */,
 				B3DC9D111F31BEE8006B2E07 /* AddressControlCell.m in Sources */,
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
+				B369DF351F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m in Sources */,
 				B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
@@ -5145,6 +5171,7 @@
 				B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */,
 				E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */,
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
+				B369DF2F1F5D5F0E008B81CB /* AbiParameterTypeFixedArrayAddress.m in Sources */,
 				E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */,
 				E7D7C09E1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				B3EA53171F47318C002FD201 /* QStoreListTableViewCellDark.m in Sources */,
@@ -5203,6 +5230,8 @@
 				B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */,
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
 				B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */,
+				B369DF381F5D672E008B81CB /* AbiParameterTypeElementaryArray.m in Sources */,
+				B369DF321F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m in Sources */,
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */,
@@ -5355,6 +5384,7 @@
 				B35EE88D1E4C6963008F4403 /* FirstNewTableCell.m in Sources */,
 				E78903661EDC6F06004243F0 /* MainTokenTableViewCell.m in Sources */,
 				E78903601EDC6769004243F0 /* NubersTokenView.m in Sources */,
+				B369DF2C1F5D5EF6008B81CB /* AbiParameterTypeDynamicArrayAddress.m in Sources */,
 				B3F1492C1F489BB80032FC63 /* QStoreSearchTableViewCellDark.m in Sources */,
 				B35DF6191F1F4A6000316953 /* RestoreWalletViewControllerDark.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,

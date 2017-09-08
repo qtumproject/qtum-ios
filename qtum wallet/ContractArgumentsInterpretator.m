@@ -59,9 +59,33 @@ NSInteger standardParameterBatch = 32;
         //decode arrays
         if ([type isKindOfClass:[AbiParameterTypeArray class]] ) {
             
-            if ([type isKindOfClass:[AbiParameterTypeDynamicArrayUInt class]]) {
+            //dynamic elementary array
+            if ([type isKindOfClass:[AbiParameterTypeDynamicElementaryArray class]]) {
                 
-                [self convertUintArrayWithStaticStack:staticDataArray andDynamicStack:dynamicDataArray withType:type andOffset:&offset withData:values[i]];
+                [self convertElementaryDynamicArrayWithStaticStack:staticDataArray
+                                                   andDynamicStack:dynamicDataArray
+                                                          withType:type
+                                                         andOffset:&offset
+                                                          withData:values[i]];
+            }
+            
+            //fixed elementary array
+            else if ([type isKindOfClass:[AbiParameterTypeFixedElementaryArray class]]){
+                
+                [self convertElementaryStaticArrayWithStaticStack:staticDataArray
+                                                  andDynamicStack:dynamicDataArray
+                                                         withType:type
+                                                        andOffset:&offset
+                                                         withData:values[i]];
+            }
+            
+            else if ([type isKindOfClass:[AbiParameterTypeDynamicArrayString class]]){
+                
+                [self convertDynamicStringArrayWithStaticStack:staticDataArray
+                                               andDynamicStack:dynamicDataArray
+                                                      withType:type
+                                                     andOffset:&offset
+                                                      withData:values[i]];
             }
         }
         
@@ -200,13 +224,13 @@ NSInteger standardParameterBatch = 32;
     *offset = @([*offset integerValue] + stringData.length + standardParameterBatch);
 }
 
-- (void)convertUintArrayWithStaticStack:(NSMutableArray*)staticDataArray
-                        andDynamicStack:(NSMutableArray*)dynamicDataStack
-                               withType:(id <AbiParameterProtocol>)type
-                              andOffset:(NSNumber**)offset
-                               withData:(NSString*)string {
+- (void)convertElementaryDynamicArrayWithStaticStack:(NSMutableArray*)staticDataArray
+                                     andDynamicStack:(NSMutableArray*)dynamicDataStack
+                                            withType:(id <AbiParameterProtocol>)type
+                                           andOffset:(NSNumber**)offset
+                                            withData:(NSString*)data {
     
-    if (![string isKindOfClass:[NSString class]]) {
+    if (![data isKindOfClass:[NSString class]]) {
         return;//bail if wrong data
     }
     
@@ -214,16 +238,219 @@ NSInteger standardParameterBatch = 32;
     [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:[*offset integerValue]]]];
     
     //adding dynamic data in dynamic stack
-    NSArray* arrayElements = [string dynamicArrayElementsFromParameter];
+    NSArray* arrayElements = [data dynamicArrayElementsFromParameter];
     NSInteger length = arrayElements.count;
     
     [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
     
     
+    if ([type isKindOfClass:[AbiParameterTypeDynamicArrayUInt class]]) {
+        
+        for (int i = 0; i < arrayElements.count; i++) {
+            
+            NSString* element = arrayElements[i];
+            NSInteger param = [element integerValue];
+            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+        }
+        
+    } else if ([type isKindOfClass:[AbiParameterTypeDynamicArrayInt class]]) {
+        
+        for (int i = 0; i < arrayElements.count; i++) {
+            
+            NSString* element = arrayElements[i];
+            NSInteger param = [element integerValue];
+            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+        }
+        
+    } else if ([type isKindOfClass:[AbiParameterTypeDynamicArrayBool class]]) {
+        
+        for (int i = 0; i < arrayElements.count; i++) {
+            
+            NSInteger param;
+            NSString* element = arrayElements[i];
+            if ([element isEqualToString:@"false"]) {
+                param = 0;
+            } else if ([element isEqualToString:@"true"]) {
+                param = 1;
+            } else {
+                param = [element integerValue];
+            }
+            
+            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+        }
+
+    } else if ([type isKindOfClass:[AbiParameterTypeDynamicArrayAddress class]]) {
+        
+        for (int i = 0; i < arrayElements.count; i++) {
+            
+            NSString* element = arrayElements[i];
+            NSData* hexDataFromBase58 = [element dataFromBase58];
+            
+            if (hexDataFromBase58.length == 25) {
+                hexDataFromBase58 = [[hexDataFromBase58 subdataWithRange:NSMakeRange(1, 20)] mutableCopy];
+            }
+            
+            hexDataFromBase58 = [self appendDataToEnd32bytesData:hexDataFromBase58];
+            
+            [dynamicDataStack addObject:hexDataFromBase58 ?: [self emptyData32bit]];
+        }
+        
+    } else if ([type isKindOfClass:[AbiParameterTypeDynamicArrayFixedBytes class]]) {
+        
+        
+        for (int i = 0; i < arrayElements.count; i++) {
+            
+            AbiParameterTypeDynamicArrayFixedBytes* bytesType = (AbiParameterTypeDynamicArrayFixedBytes*)type;
+            NSString* element = arrayElements[i];
+            NSMutableData* dataBytes = [[element dataUsingEncoding:NSASCIIStringEncoding] mutableCopy];
+            
+            if (dataBytes.length > bytesType.elementSize) {
+                dataBytes = [[dataBytes subdataWithRange:NSMakeRange(0, bytesType.elementSize)] mutableCopy];
+            }
+            
+            [dataBytes increaseLengthBy:standardParameterBatch - dataBytes.length];
+            
+            [dynamicDataStack addObject:[dataBytes copy]?: [self emptyData32bit]];
+        }
+
+    }
+    
+    //inc offset
+    *offset = @([*offset integerValue] + (length * standardParameterBatch) + standardParameterBatch);
+}
+
+- (void)convertElementaryStaticArrayWithStaticStack:(NSMutableArray*)staticDataArray
+                                    andDynamicStack:(NSMutableArray*)dynamicDataStack
+                                           withType:(AbiParameterTypeFixedElementaryArray*)aType
+                                          andOffset:(NSNumber**)offset
+                                           withData:(NSString*)data {
+    
+    if (![data isKindOfClass:[NSString class]]) {
+        return;//bail if wrong data
+    }
+    
+    //adding offset
+    [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:[*offset integerValue]]]];
+    
+    //adding dynamic data in dynamic stack
+    NSArray* arrayElements = [data dynamicArrayElementsFromParameter];
+    NSInteger length = aType.size;
+    
+    [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
+    
+    
+    if ([aType isKindOfClass:[AbiParameterTypeFixedArrayUInt class]]) {
+        
+        AbiParameterTypeFixedArrayUInt* type = (AbiParameterTypeFixedArrayUInt*)aType;
+        
+        for (int i = 0; i < type.size; i++) {
+            
+            NSString* element = arrayElements[i];
+            NSInteger param = [element integerValue];
+            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+        }
+        
+    } else if ([aType isKindOfClass:[AbiParameterTypeFixedArrayInt class]]) {
+        
+        AbiParameterTypeFixedArrayInt* type = (AbiParameterTypeFixedArrayInt*)aType;
+        
+        for (int i = 0; i < type.size; i++) {
+            
+            NSString* element = arrayElements[i];
+            NSInteger param = [element integerValue];
+            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+        }
+        
+    } else if ([aType isKindOfClass:[AbiParameterTypeFixedArrayBool class]]) {
+        
+        AbiParameterTypeFixedArrayBool* type = (AbiParameterTypeFixedArrayBool*)aType;
+        
+        for (int i = 0; i < type.size; i++) {
+            
+            NSInteger param;
+            NSString* element = arrayElements[i];
+            if ([element isEqualToString:@"false"]) {
+                param = 0;
+            } else if ([element isEqualToString:@"true"]) {
+                param = 1;
+            } else {
+                param = [element integerValue];
+            }
+            
+            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+        }
+        
+    } else if ([aType isKindOfClass:[AbiParameterTypeFixedArrayAddress class]]) {
+        
+        AbiParameterTypeFixedArrayAddress* type = (AbiParameterTypeFixedArrayAddress*)aType;
+        
+        for (int i = 0; i < type.size; i++) {
+            
+            NSString* element = arrayElements[i];
+            NSData* hexDataFromBase58 = [element dataFromBase58];
+            
+            if (hexDataFromBase58.length == 25) {
+                hexDataFromBase58 = [[hexDataFromBase58 subdataWithRange:NSMakeRange(1, 20)] mutableCopy];
+            }
+            
+            hexDataFromBase58 = [self appendDataToEnd32bytesData:hexDataFromBase58];
+            
+            [dynamicDataStack addObject:hexDataFromBase58 ?: [self emptyData32bit]];
+        }
+        
+    } else if ([aType isKindOfClass:[AbiParameterTypeFixedArrayFixedBytes class]]) {
+        
+        AbiParameterTypeFixedArrayFixedBytes* type = (AbiParameterTypeFixedArrayFixedBytes*)aType;
+
+        for (int i = 0; i < type.size; i++) {
+            
+            NSString* element = arrayElements[i];
+            NSMutableData* dataBytes = [[element dataUsingEncoding:NSASCIIStringEncoding] mutableCopy];
+            
+            if (dataBytes.length > type.elementSize) {
+                dataBytes = [[dataBytes subdataWithRange:NSMakeRange(0, type.elementSize)] mutableCopy];
+            }
+            
+            [dataBytes increaseLengthBy:standardParameterBatch - dataBytes.length];
+            
+            [dynamicDataStack addObject:[dataBytes copy]?: [self emptyData32bit]];
+        }
+        
+    }
+    
+    //inc offset
+    *offset = @([*offset integerValue] + (length * standardParameterBatch) + standardParameterBatch);
+}
+
+- (void)convertDynamicStringArrayWithStaticStack:(NSMutableArray*)staticDataArray
+                                 andDynamicStack:(NSMutableArray*)dynamicDataStack
+                                        withType:(AbiParameterTypeDynamicArrayString*)aType
+                                       andOffset:(NSNumber**)offset
+                                        withData:(NSString*)data {
+    
+    if (![data isKindOfClass:[NSString class]]) {
+        return;//bail if wrong data
+    }
+    
+    //adding offset
+    [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:[*offset integerValue]]]];
+    
+    //adding dynamic data in dynamic stack
+    NSArray* arrayElements = [data dynamicArrayStringsFromParameter];
+    NSInteger length = arrayElements.count;
+    
+    [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
+    
     for (int i = 0; i < arrayElements.count; i++) {
         
-        NSInteger param = [arrayElements[i] integerValue];
-        [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+        NSString* element = arrayElements[i];
+        NSInteger elementLength = [element dataUsingEncoding:NSUTF8StringEncoding].length;
+
+        [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:elementLength]]];
+        
+        NSData* stringData = [self dataMultiple32bitFromString:element];
+        [dynamicDataStack addObject:stringData ?: [self emptyData32bit]];
+
     }
     
     //inc offset
