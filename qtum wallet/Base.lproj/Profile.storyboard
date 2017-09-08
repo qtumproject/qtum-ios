@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -417,7 +418,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Old PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxO-lN-Wwu">
-                                                <rect key="frame" x="132" y="10" width="112" height="23"/>
+                                                <rect key="frame" x="131.5" y="10" width="112" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.1803921568627451" green="0.60392156860000001" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -693,7 +694,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieW-th-9BL">
-                                                <rect key="frame" x="145.5" y="11" width="84.5" height="23"/>
+                                                <rect key="frame" x="146" y="11" width="84.5" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1641,7 +1642,7 @@
                                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRG-np-zOX">
-                                                        <rect key="frame" x="138" y="11" width="100" height="23"/>
+                                                        <rect key="frame" x="137.5" y="11" width="100" height="23"/>
                                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2223,25 +2224,40 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgd-JG-wMS">
-                                <rect key="frame" x="30" y="537" width="315" height="30"/>
+                                <rect key="frame" x="30" y="526" width="315" height="41"/>
                                 <string key="text">© 2017 Qtum
 Skynet Testnet Version</string>
-                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new-logo" translatesAutoresizingMaskIntoConstraints="NO" id="GBu-Su-6fF">
+                                <rect key="frame" x="112" y="465" width="150" height="41"/>
+                                <color key="tintColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="ZLg-R1-zB1"/>
+                                    <constraint firstAttribute="width" secondItem="GBu-Su-6fF" secondAttribute="height" multiplier="125:34" id="cxF-Ir-oWY"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MB0-Ex-5zJ" firstAttribute="top" secondItem="fgd-JG-wMS" secondAttribute="bottom" constant="100" id="Ale-69-VH8"/>
+                            <constraint firstItem="GBu-Su-6fF" firstAttribute="width" secondItem="GBu-Su-6fF" secondAttribute="height" multiplier="125:34" id="Czg-KS-aFg"/>
+                            <constraint firstItem="fgd-JG-wMS" firstAttribute="top" secondItem="GBu-Su-6fF" secondAttribute="bottom" constant="20" id="EPU-9x-qPf"/>
                             <constraint firstAttribute="trailing" secondItem="fgd-JG-wMS" secondAttribute="trailing" constant="30" id="H6m-fR-pnw"/>
                             <constraint firstAttribute="trailing" secondItem="vDi-dt-5Cz" secondAttribute="trailing" id="IgN-tY-dcn"/>
                             <constraint firstItem="vDi-dt-5Cz" firstAttribute="top" secondItem="yMq-FE-3hR" secondAttribute="top" id="Ks8-dk-rc9"/>
+                            <constraint firstItem="GBu-Su-6fF" firstAttribute="centerX" secondItem="yMq-FE-3hR" secondAttribute="centerX" id="SqN-JJ-EaV"/>
                             <constraint firstItem="fgd-JG-wMS" firstAttribute="centerX" secondItem="yMq-FE-3hR" secondAttribute="centerX" id="hpR-NE-WHR"/>
                             <constraint firstItem="vDi-dt-5Cz" firstAttribute="leading" secondItem="yMq-FE-3hR" secondAttribute="leading" id="mX9-V3-cbs"/>
                             <constraint firstItem="fgd-JG-wMS" firstAttribute="leading" secondItem="yMq-FE-3hR" secondAttribute="leading" constant="30" id="no6-dx-D2r"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="companyAndVersionText" destination="fgd-JG-wMS" id="Xa2-v6-lPe"/>
+                        <outlet property="logoImage" destination="GBu-Su-6fF" id="Ep4-Oe-8g9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slx-X4-1t1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="bFl-6L-a6Z" userLabel="Exit" sceneMemberID="exit"/>
@@ -2307,25 +2323,37 @@ Skynet Testnet Version</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qt-v8-uN3">
-                                <rect key="frame" x="30" y="531" width="315" height="36"/>
+                                <rect key="frame" x="30" y="526" width="315" height="41"/>
                                 <string key="text">© 2017 Qtum
 Skynet Testnet Version</string>
-                                <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new-logo" translatesAutoresizingMaskIntoConstraints="NO" id="87O-Cp-J1J">
+                                <rect key="frame" x="112" y="465" width="150" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="87O-Cp-J1J" secondAttribute="height" multiplier="125:34" id="UCY-DU-fz3"/>
+                                    <constraint firstAttribute="width" constant="150" id="h8B-Mz-dlm"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2qt-v8-uN3" firstAttribute="centerX" secondItem="vUp-xR-llc" secondAttribute="centerX" id="2yu-if-sem"/>
                             <constraint firstItem="2qt-v8-uN3" firstAttribute="leading" secondItem="vUp-xR-llc" secondAttribute="leading" constant="30" id="3eU-lh-fHV"/>
+                            <constraint firstItem="87O-Cp-J1J" firstAttribute="centerX" secondItem="vUp-xR-llc" secondAttribute="centerX" id="7yf-eb-tYb"/>
                             <constraint firstAttribute="trailing" secondItem="5hB-8X-tPx" secondAttribute="trailing" id="AMG-RK-vJ7"/>
                             <constraint firstItem="Zlb-PF-WSH" firstAttribute="top" secondItem="2qt-v8-uN3" secondAttribute="bottom" constant="100" id="K81-R2-4AO"/>
                             <constraint firstItem="5hB-8X-tPx" firstAttribute="leading" secondItem="vUp-xR-llc" secondAttribute="leading" id="M3s-HP-Xqa"/>
                             <constraint firstItem="5hB-8X-tPx" firstAttribute="top" secondItem="vUp-xR-llc" secondAttribute="top" id="Oh5-qn-k0l"/>
                             <constraint firstAttribute="trailing" secondItem="2qt-v8-uN3" secondAttribute="trailing" constant="30" id="V1f-fL-T55"/>
+                            <constraint firstItem="2qt-v8-uN3" firstAttribute="top" secondItem="87O-Cp-J1J" secondAttribute="bottom" constant="20" id="uNy-bz-Cpk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="companyAndVersionText" destination="2qt-v8-uN3" id="ayZ-co-Nnf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGF-Dj-ib4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2337,6 +2365,7 @@ Skynet Testnet Version</string>
         <image name="deisclosure_dark" width="5" height="9"/>
         <image name="ic-arrow_light" width="6" height="11"/>
         <image name="ic-check" width="18" height="12"/>
+        <image name="new-logo" width="250" height="68"/>
         <image name="share" width="20" height="21"/>
     </resources>
 </document>
