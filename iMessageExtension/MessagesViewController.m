@@ -218,7 +218,8 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     return image;
 }
 
--(void)updateControlsWithSyle:(MSMessagesAppPresentationStyle) style{
+-(void)updateControlsWithSyle:(MSMessagesAppPresentationStyle) style {
+    
     BOOL isExpand = (self.presentationStyle == MSMessagesAppPresentationStyleExpanded);
     BOOL isMineMessage = ([self.activeConversation.localParticipantIdentifier isEqual:self.activeConversation.selectedMessage.senderParticipantIdentifier] || !self.activeConversation.selectedMessage);
     BOOL isFinalized = [self getFinalizedFromMessage:self.activeConversation.selectedMessage];

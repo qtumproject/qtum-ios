@@ -26,9 +26,12 @@
 -(void)setUpWithObject:(id) object {
     
     if ([object isKindOfClass:[NSDictionary class]]) {
-        _name = [object[@"name"] isKindOfClass:[NSNull class]] ? nil : [[NSString stringFromCamelCase:object[@"name"]] stringByReplacingOccurrencesOfString:@"_" withString:@""];
         _type = [self determineTipe:object[@"type"]];
         _typeAsString = object[@"type"];
+        _name = [object[@"name"] isKindOfClass:[NSNull class]] ? nil : [[NSString stringFromCamelCase:object[@"name"]] stringByReplacingOccurrencesOfString:@"_" withString:@""];
+        if (!_name || [_name isEqualToString:@""]) {
+            _name = _typeAsString;
+        }
     }
 }
 
