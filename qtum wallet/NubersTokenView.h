@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *initialSupplyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *decimalUnitsLabel;
+@property (copy, nonatomic) NSString* shortTotalSupply;
+
 
 @end

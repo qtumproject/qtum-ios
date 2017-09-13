@@ -35,6 +35,11 @@
     if (size.width > self.availableBalance.bounds.size.width) {
         self.availableBalance.text = self.shortBalance;
     }
+    
+    size = [self.initialSupply.text sizeWithAttributes:@{NSFontAttributeName : self.initialSupply.font}];
+    if (size.width > self.initialSupply.bounds.size.width) {
+        self.initialSupply.text = self.shortTotalSupply;
+    }
 }
 
 -(void)updateWithScrollView:(UIScrollView*) scrollView {

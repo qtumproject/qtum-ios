@@ -49,5 +49,7 @@
 
 - (NSString*)balanceString;
 - (NSString*)shortBalanceString;
+- (NSString*)totalSupplyString;
+- (NSString*)shortTotalSupplyString;
 
 @end

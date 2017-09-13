@@ -209,8 +209,9 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
     if (!updatedView) {
         updatedView = (NubersTokenView *)[self getViewFromXib:[NubersTokenView class]];
     }
-    updatedView.initialSupplyLabel.text = [NSString stringWithFormat:@"%@", self.token.totalSupply];
+    updatedView.initialSupplyLabel.text = self.token.totalSupplyString;
     updatedView.decimalUnitsLabel.text = [NSString stringWithFormat:@"%@", self.token.decimals];
+    updatedView.shortTotalSupply = self.token.shortTotalSupplyString;
     return updatedView;
 }
 
