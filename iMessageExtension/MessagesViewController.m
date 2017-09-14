@@ -8,13 +8,14 @@
 
 #import "MessagesViewController.h"
 #import "iMessageGradientView.h"
+#import "iMessageDataOperation.h"
 
 @interface MessagesViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *goToHostButton;
-@property (weak, nonatomic) IBOutlet UIButton *sendMessageWithAdress;
+@property (weak, nonatomic) IBOutlet UIButton *sendMessageWithaddress;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
-@property (strong, nonatomic) NSString *adress;
+@property (strong, nonatomic) NSString *address;
 @property (strong, nonatomic) NSString *amount;
 @property (strong, nonatomic) MSMessage* storedPaymendMessage;
 @property (assign, nonatomic) BOOL isHasWallet;
@@ -25,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UIView *textFieldUnderline;
 @property (weak, nonatomic) IBOutlet UILabel *amountValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *adressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *compactPresentationView;
 @property (weak, nonatomic) IBOutlet UIView *expandedPresentationView;
@@ -46,13 +47,13 @@
 
 @end
 
-static NSString* isHasWalletKey = @"isHasWallet";
+static NSString* isHasWalletKey = @"isHaveWallet";
 static NSString* WalletAddressKey = @"walletAddress";
-static NSString* adressKey = @"adress";
+static NSString* addressKey = @"address";
 static NSString* registerText = @"You have no wallets yet. Tap to create one.";
-static NSString* sendAdressText = @"Send your adress";
+static NSString* sendaddressText = @"Send your address";
 static NSString* createWalletButtonText = @"Create wallet";
-static NSString* sendAdressButtonText = @"Send adress";
+static NSString* sendaddressButtonText = @"Send address";
 static NSString* finalizedAgreeText = @"Yes, i will see what i can do";
 static NSString* finalizedDisagreeText = @"Sorry, but not now";
 
@@ -60,15 +61,15 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSUserDefaults *myDefaults = [[NSUserDefaults alloc]
-                                  initWithSuiteName:@"group.com.pixelplex.qtum-wallet"];
-    NSString* boolAsString = [myDefaults valueForKey:isHasWalletKey];
-    [self.sendAddressLabel setText:[myDefaults valueForKey:WalletAddressKey]];
-    self.isHasWallet = [boolAsString isEqualToString:@"YES"] ? YES : NO;
-    self.adress = [myDefaults valueForKey:adressKey];
-    self.sendMessageWithAdress.hidden = !self.isHasWallet;
+
+    NSDictionary* groupInfo = [iMessageDataOperation getDictFormGroupFileWithName:@"group"];
+    
+    [self.sendAddressLabel setText:groupInfo[WalletAddressKey]];
+    self.isHasWallet = [groupInfo[isHasWalletKey] isEqualToString:@"YES"] ? YES : NO;
+    self.address = groupInfo[addressKey];
+    self.sendMessageWithaddress.hidden = !self.isHasWallet;
     self.goToHostButton.hidden = self.isHasWallet;
-    self.textLabel.text = self.isHasWallet ? sendAdressText : registerText;
+    self.textLabel.text = self.isHasWallet ? sendaddressText : registerText;
     
     self.amountTextField.delegate = self;
 }
@@ -130,20 +131,20 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 }
 
 -(void)gotoHostFromMessage:(MSMessage*)message {
-    NSString* adress = [self getAdressFromMessage:message];
+    NSString* address = [self getaddressFromMessage:message];
     NSString* amount = [self getAmountFromMessage:message];
-    [self openHostWithAdress:adress andAmount:amount];
+    [self openHostWithaddress:address andAmount:amount];
 }
 
 -(NSURL*)createUrlForMessageWithFinalized:(BOOL) finalized andSucces:(BOOL) success{
     NSURLComponents* components = [NSURLComponents new];
-    NSURLQueryItem* adress = [[NSURLQueryItem alloc] initWithName:@"adress" value:finalized ? [self getAdressFromMessage:self.storedPaymendMessage] : self.adress];
+    NSURLQueryItem* address = [[NSURLQueryItem alloc] initWithName:@"address" value:finalized ? [self getaddressFromMessage:self.storedPaymendMessage] : self.address];
     NSURLQueryItem* amount = [[NSURLQueryItem alloc] initWithName:@"amount" value:finalized ? [self getAmountFromMessage:self.storedPaymendMessage] : self.amountTextField.text];
     if (finalized) {
         NSURLQueryItem* final = [[NSURLQueryItem alloc] initWithName:@"finalized" value:success ? @"YES" : @"NO"];
-        components.queryItems = @[adress,amount,final];
+        components.queryItems = @[address,amount,final];
     }else {
-        components.queryItems = @[adress,amount];
+        components.queryItems = @[address,amount];
     }
     return components.URL;
 }
@@ -173,8 +174,8 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     }
 }
 
--(void)openHostWithAdress:(NSString*)adress andAmount:(NSString*)amount{
-    NSString* stringUrl = [NSString stringWithFormat:@"%@adressAndAmount/?adress=%@&amount=%@",@"host://",adress,amount];
+-(void)openHostWithaddress:(NSString*)address andAmount:(NSString*)amount{
+    NSString* stringUrl = [NSString stringWithFormat:@"%@addressAndAmount/?address=%@&amount=%@",@"host://",address,amount];
     [self.extensionContext openURL:[NSURL URLWithString:stringUrl] completionHandler:^(BOOL success) {
         NSLog(@"Opened HostApp - %@", success ? @"Yes" : @"NO");
     }];
@@ -226,7 +227,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     if (isExpand) {
         if (self.isCreatinNewInProcces) {
             if (self.isHasWallet) {
-                [self prepareSendingAdressWithControll];
+                [self prepareSendingaddressWithControll];
             } else {
                 [self prepareCreateWallet];
             }
@@ -234,7 +235,7 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
             [self prepareFinalized];
         } else if (isMineMessage) {
             if (self.isHasWallet) {
-                [self prepareSendingAdressWithControll];
+                [self prepareSendingaddressWithControll];
             } else {
                 [self prepareCreateWallet];
             }
@@ -252,12 +253,12 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
     }
 }
 
--(void)prepareSendingAdressWithControll{
+-(void)prepareSendingaddressWithControll{
     self.sendMessageExpandView.hidden = NO;
     self.createWalletExpandView.hidden = YES;
     self.compactPresentationView.hidden = YES;
     self.expandedPresentationView.hidden = NO;
-    self.adressLabel.text = [self getAdressFromMessage:self.activeConversation.selectedMessage];
+    self.addressLabel.text = [self getaddressFromMessage:self.activeConversation.selectedMessage];
     self.amountValueLabel.text = [self getAmountFromMessage:self.activeConversation.selectedMessage];
     self.paymentArimentExpandView.hidden = YES;
     self.finalizedExpandView.hidden = YES;
@@ -292,18 +293,18 @@ static NSString* finalizedDisagreeText = @"Sorry, but not now";
 }
 
 
--(NSString*)getAdressFromMessage:(MSMessage*)message{
+-(NSString*)getaddressFromMessage:(MSMessage*)message{
     if (!message) {
-        return self.adress;
+        return self.address;
     }
     NSURLComponents* components = [[NSURLComponents alloc] initWithURL:message.URL resolvingAgainstBaseURL:NO];
-    NSString* adress;
+    NSString* address;
     for (NSURLQueryItem* item in components.queryItems) {
-        if ([item.name isEqualToString:@"adress"]) {
-            adress = item.value;
+        if ([item.name isEqualToString:@"address"]) {
+            address = item.value;
         }
     }
-    return adress;
+    return address;
 }
 
 -(NSString*)getAmountFromMessage:(MSMessage*)message{

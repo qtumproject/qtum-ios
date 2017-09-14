@@ -33,7 +33,8 @@ static NSString* kTemplateUuidKey = @"template";
     backup[kPlatformKey] = kCurrentPlatformValueKey;
     backup[kFileVersionKey] = kCurrentFileVersionValueKey;
     backup[kPlatformVersionKey] = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
-    NSString* filePath = [DataOperation SaveFileWithName:kBackupFileNameKey DataSource:backup.copy];
+    NSString* filePath = [DataOperation saveFileWithName:kBackupFileNameKey dataSource:backup.copy];
+
     NSInteger fileSize = (NSInteger)[[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil] fileSize];
     completionBlock(backup.copy,filePath,fileSize);
 }
