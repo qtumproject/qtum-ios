@@ -27,6 +27,7 @@
 @property (assign, nonatomic) BOOL balanceLoaded;
 @property (assign, nonatomic) BOOL historyLoaded;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
+@property (weak, nonatomic) IBOutlet UIView *emptyPlaceholderView;
 
 @property (nonatomic) id<Spendable> wallet;
 
@@ -75,6 +76,7 @@
     self.tableView.tableFooterView = [UIView new];
     self.tableView.dataSource = self.tableSource;
     self.tableView.delegate = self.tableSource;
+    self.tableSource.emptyPlacehodlerView = self.emptyPlaceholderView;
     self.tableSource.tableView = self.tableView;
     self.tableSource.controllerDelegate = self;
 }
