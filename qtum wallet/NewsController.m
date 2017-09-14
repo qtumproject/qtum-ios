@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSMutableArray <NewsCellModel*> * dataArray;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoView;
 
 @end
 
@@ -27,6 +28,8 @@
     
     [self configTableView];
     [self configPullRefresh];
+    [self configLogo];
+
     
     [self getData];
     
@@ -34,8 +37,16 @@
     self.tableView.hidden = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+-(void)configLogo {
+    
+    UIImage *originalImage = [UIImage imageNamed:@"new-logo.png"];
+    UIImage *tintedImage = [originalImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.logoView.tintColor = [self logoColor];
+    self.logoView.image = tintedImage;
+}
+
+-(UIColor*)logoColor {
+    return lightDarkGrayColor();
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -107,5 +118,8 @@
     [self getData];
 }
 
+- (IBAction)actionGoToLink:(id)sender {
+    [self.delegate openNewsLink];
+}
 
 @end

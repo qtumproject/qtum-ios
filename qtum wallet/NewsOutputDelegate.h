@@ -10,5 +10,7 @@
 
 @required
 -(void)refreshTableViewData;
+-(void)openNewsLink;
+
 
 @end
