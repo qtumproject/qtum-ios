@@ -32,7 +32,7 @@
     
     for (NSDictionary* item in abi) {
         AbiinterfaceItem* abiItem = [[AbiinterfaceItem alloc] initWithObject:item];
-        if (abiItem.type == Function && abiItem.constant) {
+        if (abiItem.type == Function && abiItem.constant && abiItem.inputs.count == 0) {
             [self.propertyItems addObject:abiItem];
         } else if(abiItem.type == Function) {
             [self.functionItems addObject:abiItem];

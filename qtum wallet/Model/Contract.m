@@ -30,6 +30,7 @@
 }
 
 -(NSString*)creationFormattedDateString {
+    
     return  self.creationDate ? [self.creationDate string] : nil;
 }
 
@@ -39,6 +40,23 @@
 -(NSString *)mainAddress {
     
     return self.contractAddress;
+}
+
+-(NSNumber *)totalSupply {
+    
+    return _totalSupply;
+}
+
+- (NSString*)totalSupplyString {
+    
+    NSDecimalNumber* decimal = [self.decimals decimalNumber];
+    return [self.totalSupply stringNumberWithPowerOfMinus10:decimal];
+}
+
+- (NSString*)shortTotalSupplyString {
+    
+    NSDecimalNumber* decimal = [self.decimals decimalNumber];
+    return [self.totalSupply shortFormatOfNumberWithPowerOfMinus10:decimal];
 }
 
 -(NSDecimalNumber*)balance {

@@ -10,12 +10,15 @@
 
 @implementation NubersTokenView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(void)layoutSubviews {
+    
+    [super layoutSubviews];
+    
+    CGSize size = [self.initialSupplyLabel.text sizeWithAttributes:@{NSFontAttributeName : self.initialSupplyLabel.font}];
+    if (size.width > self.initialSupplyLabel.bounds.size.width) {
+        self.initialSupplyLabel.text = self.shortTotalSupply;
+    }
 }
-*/
+
 
 @end

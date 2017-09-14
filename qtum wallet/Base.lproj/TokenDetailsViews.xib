@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8m-lB-9TL">
-                    <rect key="frame" x="88.5" y="45" width="124.5" height="14"/>
+                    <rect key="frame" x="89" y="45" width="124.5" height="14"/>
                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                     <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -138,7 +138,7 @@
             <rect key="frame" x="0.0" y="0.0" width="299" height="53"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Supply:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-LX-tgN">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Initial Supply:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-LX-tgN">
                     <rect key="frame" x="10" y="8" width="100.5" height="13"/>
                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="11"/>
                     <nil key="textColor"/>
@@ -150,8 +150,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 000 000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzb-zO-KRa">
-                    <rect key="frame" x="212" y="5" width="77" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000000000000000000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzb-zO-KRa">
+                    <rect key="frame" x="135.5" y="5" width="153.5" height="17"/>
                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -181,6 +181,7 @@
                 <constraint firstItem="lev-Gt-RUi" firstAttribute="centerY" secondItem="khj-ob-7gd" secondAttribute="centerY" constant="-1" id="Rgb-qR-xer"/>
                 <constraint firstAttribute="bottom" secondItem="lb9-bR-Jzt" secondAttribute="bottom" id="bBz-VG-SWr"/>
                 <constraint firstItem="kzb-zO-KRa" firstAttribute="centerY" secondItem="0b6-LX-tgN" secondAttribute="centerY" constant="-1" id="hQQ-y5-V4h"/>
+                <constraint firstItem="kzb-zO-KRa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0b6-LX-tgN" secondAttribute="trailing" constant="20" id="iGT-qE-6ll"/>
                 <constraint firstItem="khj-ob-7gd" firstAttribute="leading" secondItem="Qt8-sT-hFa" secondAttribute="leading" constant="10" id="r04-Te-h4I"/>
                 <constraint firstAttribute="bottom" secondItem="khj-ob-7gd" secondAttribute="bottom" constant="8" id="t1e-zm-OJ0"/>
             </constraints>

@@ -34,12 +34,13 @@ static NSInteger standartHistoryCellHeight = 50;
         TokenDetailInfoLightCell * cell = [tableView dequeueReusableCellWithIdentifier:tokenDetailInfoLightCellIdentifire];
         self.infoHeaderCell = (TokenDetailInfoLightCell*)cell;
         cell.decimalUnits.text = [NSString stringWithFormat:@"%@",token.decimals];
-        cell.initialSupply.text = [NSString stringWithFormat:@"%@",token.totalSupply];
+        cell.initialSupply.text = token.totalSupplyString;
         cell.tokenAddress.text = token.contractAddress;
         cell.availableBalance.text = token.balanceString;
         cell.senderAddress.text = token.contractCreationAddressAddress;
         cell.symbol.text = token.symbol;
         cell.shortBalance = token.shortBalanceString;
+        cell.shortTotalSupply = token.shortTotalSupplyString;
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
