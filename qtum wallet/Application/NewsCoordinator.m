@@ -17,7 +17,6 @@
 @property (strong, nonatomic) NSObject<NewsTableSourceOutput> *newsTableSource;
 @property (weak, nonatomic) NSObject<NewsOutput> *newsController;
 
-
 @end
 
 @implementation NewsCoordinator
@@ -52,6 +51,10 @@
     } andFailureHandler:^(NSError *error, NSString *message) {
         [weakSelf.newsController failedToGetData];
     }];
+}
+
+-(void)openNewsLink {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://medium.com/@Qtum/"]];
 }
 
 #pragma mark - Private Methods

@@ -8,63 +8,40 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const kWSSLogFileName;
 
-#define DATAHELPER_User         @"User.plist"
-
-#define DATAHELPER_Token        @"Token.plist"
-
-#define DATAHELPER_Home         @"Home.plist"
-#define DATAHELPER_HomeBanner   @"HomeBanner.plist"
-
-#define DATAHELPER_DynamicCount @"DynamicCount.plist"
-#define DATAHELPER_Comment      @"Comment.plist"
-
-#define DATAHELPER_SingleChat   @"SingleChat.plist"
-#define DATAHELPER_GroupChat    @"GroupChat.plist"
-
-#define DATAHELPER_GroupMeeting @"GroupMeeting.plist"
-
-#define DATAHELPER_ChatClear    @"ChatClear.plist"
-
-typedef void(^DeleteSuccessBlock)();
-typedef void(^DeleteFailedBlock)();
+typedef void(^deleteSuccessBlock)();
+typedef void(^deleteFailedBlock)();
 
 @interface DataOperation : NSObject
 
 #pragma mark - BaseMethods
 
-+(NSMutableArray *)GetFileWithName:(NSString *)FileName;
-
-+(NSString*)SaveFileWithName:(NSString *)FileName DataSource:(NSDictionary *)dataSource;
-
-+(void)CreateFile:(NSString*)path fileName:(NSString*)filename;
-
-+(BOOL)DeleteDefaultFile:(NSString*)fileName;
-
-+(BOOL)DeleteFile:(NSString*)path success:(DeleteSuccessBlock)success failed:(DeleteFailedBlock)failed;
-
-+(NSArray*)GetFilesName:(NSString*)path;
++ (NSMutableArray *)getArrayFormFileWithName:(NSString *)fileName;
++ (NSString *)getStringFormFileWithName:(NSString *)fileName;
++ (NSDictionary *)getDictFormGroupFileWithName:(NSString *)fileName;
++ (NSString*)saveFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
++ (NSString*)saveGroupFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
++ (NSString*)addGropFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
++ (void)createFile:(NSString*)path fileName:(NSString*)filename;
++ (BOOL)deleteDefaultFile:(NSString*)fileName;
++ (BOOL)deleteFile:(NSString*)path success:(deleteSuccessBlock)success failed:(deleteFailedBlock)failed;
++ (NSArray*)getFilesName:(NSString*)path;
 
 #pragma mark - DataMethods
 
-+(BOOL)DataSaveDictWith:(NSMutableDictionary *)dictSave fileName:(NSString *)fileName;
-
-+(BOOL)DataDeleteDictWithKey:(NSString *)key  KeyValue:(NSString *)keyValue fileName:(NSString *)fileName;
-
-+(NSMutableDictionary *)DataGetDictWithKey:(NSString *)key KeyValue:(NSString *)keyValue fileName:(NSString *)fileName;
++ (BOOL)dataSaveDictWith:(NSDictionary *)dictSave fileName:(NSString *)fileName;
++ (BOOL)dataDeleteDictWithKey:(NSString *)key  keyValue:(NSString *)keyValue fileName:(NSString *)fileName;
++ (NSDictionary *)dataGetDictWithKey:(NSString *)key keyValue:(NSString *)keyValue fileName:(NSString *)fileName;
++ (void)dataAppendString:(NSString*) string toFileWithName:(NSString*) fileName;
 
 #pragma mark - SandBoxMethods
 
 + (NSString *)appPath;
-
 + (NSString *)docPath;
-
 + (NSString *)libPrefPath;
-
 + (NSString *)libCachePath;
-
 + (NSString *)tmpPath;
-
-+ (BOOL)hasLive:(NSString *)path;
++ (BOOL)hasLiveDirectory:(NSString *)path;
 
 @end

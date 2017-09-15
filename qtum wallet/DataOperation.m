@@ -8,70 +8,99 @@
 
 #import "DataOperation.h"
 
+NSString *const kWSSLogFileName = @"Logs.csv";
+
 @implementation DataOperation
 
 #pragma mark - BaseMethods
-
-+(NSMutableArray *)GetFileWithName:(NSString *)FileName {
-
-    NSArray *arrayPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    if ([arrayPath count] <= 0) {
-        return nil;
-    }
-    NSString *stringPath = arrayPath[0];
-    NSString *stringFile=[stringPath stringByAppendingPathComponent:FileName];
++(NSMutableArray *)getArrayFormFileWithName:(NSString *)fileName {
     
-
+    NSString *stringPath = [[self class] docPath];
+    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
+    
     NSMutableArray *arraySource = [[NSMutableArray alloc] initWithContentsOfFile:stringFile];
     return arraySource;
 }
 
-
-+ (NSString*)SaveFileWithName:(NSString *)FileName DataSource:(NSDictionary *)dataSource {
-
-    NSArray *arrayPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    if ([arrayPath count] <= 0) {
-        return nil;
-    }
++(NSDictionary *)getDictFormGroupFileWithName:(NSString *)fileName {
     
-    NSString *stringPath = arrayPath[0];
-    NSString *stringFile = [stringPath stringByAppendingPathComponent:FileName];
+    NSString *stringPath = [[self class] groupPath];
+    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
+    
+    NSData *data = [NSData dataWithContentsOfFile:stringFile];
+    if (data) {
+        return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    }
+    return nil;
+}
+
++(NSString *)getStringFormFileWithName:(NSString *)fileName {
+    
+    NSString *stringPath = [[self class] docPath];
+    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
+    
+    NSString *stringSource = [[NSString alloc] initWithContentsOfFile:stringFile encoding:NSUTF8StringEncoding error:NULL];
+    return stringSource;
+}
+
++(NSString*)saveGroupFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
+    
+    NSString *stringPath = [[self class] groupPath];
+    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
+    
+    NSError * err;
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dataSource options:0 error:&err];    
+    [jsonData writeToFile:stringFile atomically:YES];
+    
+    return stringFile;
+}
+
++(NSString*)saveFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
+    
+    NSString *stringPath = [[self class] docPath];
+    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
     
     NSError * err;
     NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dataSource options:0 error:&err];
     NSString * json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-
+    
     [json writeToFile:stringFile atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+    
     return stringFile;
 }
 
++(NSString*)addGropFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
+    
+    NSDictionary* groupInfo = [self getDictFormGroupFileWithName:fileName];
+    NSMutableDictionary* summ;
 
-+(void)CreateFile:(NSString*)path fileName:(NSString*)filename
-{
+    if (groupInfo) {
+        summ = [groupInfo mutableCopy];
+        [summ addEntriesFromDictionary:dataSource];
+    } else {
+        summ = [dataSource mutableCopy];
+    }
+    return [self saveGroupFileWithName:fileName dataSource:[summ copy]];
+}
 
++(void)createFile:(NSString*)path fileName:(NSString*)filename {
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
-
     [fileManager changeCurrentDirectoryPath:[path stringByExpandingTildeInPath]];
-
     [fileManager createFileAtPath:filename contents:nil attributes:nil];
 }
 
-
-+(BOOL)DeleteDefaultFile:(NSString*)fileName{
++(BOOL)deleteDefaultFile:(NSString*)fileName {
+    
     @try {
-
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSArray *arrayPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-        if ([arrayPath count] <= 0) {
-            return NO;
-        }
         
-        NSString *stringPath = arrayPath[0];
-        NSString *stringFile=[stringPath stringByAppendingPathComponent:fileName];
-
+        NSString *stringPath = [[self class] docPath];
+        NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
+        
         [fileManager changeCurrentDirectoryPath:[stringPath stringByExpandingTildeInPath]];
-
         [fileManager removeItemAtPath:stringFile error:nil];
+        
         return YES;
     }
     @catch (NSException *exception) {
@@ -82,15 +111,12 @@
     }
 }
 
-
-+(BOOL)DeleteFile:(NSString*)path success:(DeleteSuccessBlock)success failed:(DeleteFailedBlock)failed
-{
++(BOOL)deleteFile:(NSString*)path success:(deleteSuccessBlock)success failed:(deleteFailedBlock)failed {
+    
     @try {
-
         NSFileManager *fileManager = [NSFileManager defaultManager];
-
+        
         [fileManager changeCurrentDirectoryPath:[path stringByExpandingTildeInPath]];
-
         [fileManager removeItemAtPath:path error:nil];
         if (success) {
             success();
@@ -108,10 +134,8 @@
     }
 }
 
-
-+(NSArray*)GetFilesName:(NSString*)path
-{
-
++(NSArray*)getFilesName:(NSString*)path {
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *files = [fileManager subpathsAtPath: path ];
     return  files;
@@ -119,95 +143,120 @@
 
 #pragma mark - DataMethods
 
-+(BOOL)DataSaveDictWith:(NSMutableDictionary *)dictSave fileName:(NSString *)fileName {
-    NSMutableArray *arraySource = [self GetFileWithName:fileName];
++(BOOL)dataSaveDictWith:(NSDictionary *)dictSave fileName:(NSString *)fileName {
+    
+    NSMutableArray *arraySource = [[self class] getArrayFormFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
     
-    if (![arraySource containsObject:dictSave]) {
-        [arraySource addObject:dictSave];
-    }else {
-        return NO;
-    }
-    [self SaveFileWithName:fileName DataSource:arraySource];
+    [[self class] saveFileWithName:fileName dataSource:arraySource];
     return YES;
 }
 
-
-+(BOOL)DataDeleteDictWithKey:(NSString *)key  KeyValue:(NSString *)keyValue fileName:(NSString *)fileName {
-    NSMutableArray *arraySource = [self GetFileWithName:fileName];
++(BOOL)dataDeleteDictWithKey:(NSString *)key  keyValue:(NSString *)keyValue fileName:(NSString *)fileName {
+    
+    NSMutableArray *arraySource = [[self class] getArrayFormFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
     
     for (NSMutableDictionary *dictSub in arraySource) {
-        if ([dictSub[key] isEqualToString:keyValue]) {
+        if ([[dictSub objectForKey:key] isEqualToString:keyValue]) {
             [arraySource removeObject:dictSub];
             break;
         }
     }
-    [self SaveFileWithName:fileName DataSource:arraySource];
+    [[self class] saveFileWithName:fileName dataSource:arraySource];
     return YES;
 }
 
-
-+(NSMutableDictionary *)DataGetDictWithKey:(NSString *)key KeyValue:(NSString *)keyValue fileName:(NSString *)fileName {
-    NSMutableArray *arraySource = [self GetFileWithName:fileName];
++(NSDictionary *)dataGetDictWithKey:(NSString *)key keyValue:(NSString *)keyValue fileName:(NSString *)fileName {
+    
+    NSMutableArray *arraySource = [[self class] getArrayFormFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
     for (NSMutableDictionary *dictSub in arraySource) {
-        if ([dictSub[key] isEqualToString:keyValue]) {
+        if ([[dictSub objectForKey:key] isEqualToString:keyValue]) {
             return dictSub;
         }
     }
     return nil;
 }
 
++(void)dataAppendString:(NSString*) string toFileWithName:(NSString*) fileName {
+    
+    NSString *stringPath = [[self class] docPath];
+    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
+    
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:stringFile];
+    
+    if (fileHandle) {
+        
+        [fileHandle seekToEndOfFile];
+        [fileHandle writeData:[string dataUsingEncoding:NSUTF8StringEncoding]];
+        [fileHandle closeFile];
+    } else {
+        
+        [string writeToFile:stringFile
+                 atomically:NO
+                   encoding:NSStringEncodingConversionAllowLossy
+                      error:nil];
+    }
+}
+
 #pragma mark - SandBoxMethods
 
-+ (NSString *)appPath
-{
++ (NSString *)appPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSUserDomainMask, YES);
-	return paths[0];
+    return [paths objectAtIndex:0];
 }
 
-+ (NSString *)docPath
-{
++ (NSString *)docPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	return paths[0];
+    return [paths objectAtIndex:0];
 }
 
-+ (NSString *)libPrefPath
-{
++ (NSString *)libPrefPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-	return [paths[0] stringByAppendingFormat:@"/Preference"];
+    return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Preference"];
 }
 
-+ (NSString *)libCachePath
-{
++ (NSString *)libCachePath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-	return [paths[0] stringByAppendingFormat:@"/Caches"];
+    return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Caches"];
 }
 
-+ (NSString *)tmpPath
-{
++ (NSString *)tmpPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-	return [paths[0] stringByAppendingFormat:@"/tmp"];
+    return [[paths objectAtIndex:0] stringByAppendingFormat:@"/tmp"];
 }
 
-+ (BOOL)hasLive:(NSString *)path
-{
-	if ( NO == [[NSFileManager defaultManager] fileExistsAtPath:path] )
-	{
-		return [[NSFileManager defaultManager] createDirectoryAtPath:path
-										 withIntermediateDirectories:YES
-														  attributes:nil
-															   error:NULL];
-	}
-	
-	return NO;
++ (NSString *)groupPath {
+    NSString *appGroupDirectoryPath = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.pixelplex.qtum-wallet"].path;
+    return appGroupDirectoryPath;
+}
+
++ (BOOL)hasLiveDirectory:(NSString *)path {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path] ) {
+        
+        return [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                         withIntermediateDirectories:YES
+                                                          attributes:nil
+                                                               error:NULL];
+    }
+    
+    return NO;
+}
+
++ (void)hasLiveFileWithPath:(NSString *)path {
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:path] ) {
+        [fileManager changeCurrentDirectoryPath:[path stringByExpandingTildeInPath]];
+        [fileManager createFileAtPath:path contents:nil attributes:nil];
+    }
 }
 
 @end

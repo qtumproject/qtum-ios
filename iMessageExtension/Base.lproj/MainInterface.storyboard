@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -33,14 +33,127 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTE-Oo-lJl">
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="k1B-c3-Fi2">
+                                        <rect key="frame" x="313" y="74" width="110" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="A9f-hT-3l1"/>
+                                            <constraint firstAttribute="width" constant="110" id="LIj-rQ-7q1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to send or ressive money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeP-uH-536">
+                                        <rect key="frame" x="50" y="215" width="636" height="16"/>
+                                        <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTN-yE-ZM2">
+                                        <rect key="frame" x="324" y="174" width="89" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFT-MS-xVL">
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                        <connections>
+                                            <action selector="actionReauestExpand:" destination="ObA-dk-sSI" eventType="touchUpInside" id="W57-SY-je3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kTN-yE-ZM2" firstAttribute="top" secondItem="k1B-c3-Fi2" secondAttribute="bottom" id="0dD-kr-jyw"/>
+                                    <constraint firstItem="k1B-c3-Fi2" firstAttribute="centerX" secondItem="HTE-Oo-lJl" secondAttribute="centerX" id="7PK-3B-nHU"/>
+                                    <constraint firstItem="oeP-uH-536" firstAttribute="centerX" secondItem="HTE-Oo-lJl" secondAttribute="centerX" id="8RS-Xv-f5g"/>
+                                    <constraint firstAttribute="bottom" secondItem="TFT-MS-xVL" secondAttribute="bottom" id="CjM-EQ-6jT"/>
+                                    <constraint firstItem="kTN-yE-ZM2" firstAttribute="centerX" secondItem="HTE-Oo-lJl" secondAttribute="centerX" id="ETW-sj-YNe"/>
+                                    <constraint firstAttribute="trailing" secondItem="TFT-MS-xVL" secondAttribute="trailing" id="Klw-wf-quL"/>
+                                    <constraint firstItem="TFT-MS-xVL" firstAttribute="top" secondItem="HTE-Oo-lJl" secondAttribute="top" id="NWE-pT-Hd1"/>
+                                    <constraint firstItem="k1B-c3-Fi2" firstAttribute="centerY" secondItem="HTE-Oo-lJl" secondAttribute="centerY" multiplier="0.6" id="Vhx-H8-lRk"/>
+                                    <constraint firstItem="oeP-uH-536" firstAttribute="top" secondItem="kTN-yE-ZM2" secondAttribute="bottom" constant="5" id="l8o-wJ-bBe"/>
+                                    <constraint firstItem="TFT-MS-xVL" firstAttribute="leading" secondItem="HTE-Oo-lJl" secondAttribute="leading" id="qJ4-C0-TKZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="oeP-uH-536" secondAttribute="trailing" constant="50" id="qpy-Lf-tUA"/>
+                                </constraints>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLY-WW-w3z">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                 <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XN7-9A-NoP">
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-qN-VLx">
+                                                <rect key="frame" x="31" y="265" width="150" height="32"/>
+                                                <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="16"/>
+                                                <state key="normal" title="CANCEL">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="actionCancelSendMoney:" destination="ObA-dk-sSI" eventType="touchUpInside" id="IaV-k7-BxB"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send me pls qtum" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ber-uP-fl9">
+                                                <rect key="frame" x="38" y="100" width="660" height="20"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88R-4f-3wr">
+                                                <rect key="frame" x="557" y="265" width="150" height="32"/>
+                                                <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" priority="750" constant="150" id="OfE-C4-xU3"/>
+                                                    <constraint firstAttribute="height" constant="32" id="ygB-Nf-cPC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="16"/>
+                                                <state key="normal" title="SEND">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="actiomSendMoney:" destination="ObA-dk-sSI" eventType="touchUpInside" id="x4l-vV-lR5"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="bcR-qN-VLx" firstAttribute="leading" secondItem="XN7-9A-NoP" secondAttribute="leading" constant="31" id="AVf-MQ-bYE"/>
+                                            <constraint firstItem="88R-4f-3wr" firstAttribute="centerY" secondItem="bcR-qN-VLx" secondAttribute="centerY" id="AgS-Z5-8k3"/>
+                                            <constraint firstItem="88R-4f-3wr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bcR-qN-VLx" secondAttribute="trailing" constant="25" id="H2S-Kg-CgE"/>
+                                            <constraint firstItem="Ber-uP-fl9" firstAttribute="top" secondItem="XN7-9A-NoP" secondAttribute="top" constant="100" id="JW6-jj-brb"/>
+                                            <constraint firstItem="88R-4f-3wr" firstAttribute="height" secondItem="bcR-qN-VLx" secondAttribute="height" id="XxS-GD-8HU"/>
+                                            <constraint firstItem="88R-4f-3wr" firstAttribute="width" secondItem="bcR-qN-VLx" secondAttribute="width" id="ffJ-Nb-PUl"/>
+                                            <constraint firstItem="Ber-uP-fl9" firstAttribute="centerX" secondItem="XN7-9A-NoP" secondAttribute="centerX" id="jNL-d0-ZnS"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ber-uP-fl9" secondAttribute="trailing" constant="38" id="m8a-nh-aZ6"/>
+                                            <constraint firstAttribute="trailing" secondItem="88R-4f-3wr" secondAttribute="trailing" constant="29" id="op1-PN-I0K"/>
+                                            <constraint firstItem="bcR-qN-VLx" firstAttribute="top" secondItem="Ber-uP-fl9" secondAttribute="bottom" constant="144.5" id="rZY-R5-CkW"/>
+                                        </constraints>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqi-95-3bs">
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment declined" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-rg-tDz">
+                                                <rect key="frame" x="50" y="197.66666666666666" width="636" height="20"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="3hF-rg-tDz" firstAttribute="centerX" secondItem="Dqi-95-3bs" secondAttribute="centerX" id="6b4-fJ-Wgu"/>
+                                            <constraint firstAttribute="trailing" secondItem="3hF-rg-tDz" secondAttribute="trailing" constant="50" id="CI3-zr-myy"/>
+                                            <constraint firstItem="3hF-rg-tDz" firstAttribute="centerY" secondItem="Dqi-95-3bs" secondAttribute="centerY" id="cxV-6q-ywi"/>
+                                        </constraints>
+                                    </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okf-Ci-nZa">
                                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no wallets yet. You can create one." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzG-HY-uYj">
-                                                <rect key="frame" x="10" y="100" width="716" height="21"/>
+                                                <rect key="frame" x="10" y="100" width="716" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,7 +175,7 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="L0B-Ad-6n1">
-                                                <rect key="frame" x="313" y="151" width="110" height="100"/>
+                                                <rect key="frame" x="313" y="150" width="110" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="110" id="8tZ-nR-9O4"/>
                                                     <constraint firstAttribute="height" constant="100" id="9Ow-Ca-61C"/>
@@ -84,7 +197,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Asking Money Just Enter Amount Value and Send" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAB-Qu-jSa">
-                                                <rect key="frame" x="30" y="70" width="676" height="20"/>
+                                                <rect key="frame" x="30" y="70" width="676" height="18.666666666666671"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="16"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -106,10 +219,11 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uX-EZ-lzk">
-                                                <rect key="frame" x="0.0" y="150" width="736" height="114"/>
+                                                <rect key="frame" x="0.0" y="150.33333333333331" width="736" height="113.99999999999994"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dE8-Pw-SvG">
-                                                        <rect key="frame" x="296" y="0.0" width="73" height="63"/>
+                                                        <rect key="frame" x="296.33333333333331" y="0.0" width="73" height="63"/>
+                                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="73" id="MPO-jo-O9n">
                                                                 <variation key="heightClass=compact-widthClass=compact" constant="40"/>
@@ -145,7 +259,7 @@
                                                         </variation>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ert-t0-b2e">
-                                                        <rect key="frame" x="377" y="23" width="31" height="16"/>
+                                                        <rect key="frame" x="377.33333333333326" y="23" width="30.666666666666686" height="16"/>
                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                         <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -238,75 +352,6 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XN7-9A-NoP">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-qN-VLx">
-                                                <rect key="frame" x="31" y="266" width="150" height="32"/>
-                                                <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="16"/>
-                                                <state key="normal" title="CANCEL">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="actionCancelSendMoney:" destination="ObA-dk-sSI" eventType="touchUpInside" id="IaV-k7-BxB"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send me pls qtum" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ber-uP-fl9">
-                                                <rect key="frame" x="38" y="100" width="660" height="21"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88R-4f-3wr">
-                                                <rect key="frame" x="557" y="266" width="150" height="32"/>
-                                                <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" priority="750" constant="150" id="OfE-C4-xU3"/>
-                                                    <constraint firstAttribute="height" constant="32" id="ygB-Nf-cPC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="16"/>
-                                                <state key="normal" title="SEND">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="actiomSendMoney:" destination="ObA-dk-sSI" eventType="touchUpInside" id="x4l-vV-lR5"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="bcR-qN-VLx" firstAttribute="leading" secondItem="XN7-9A-NoP" secondAttribute="leading" constant="31" id="AVf-MQ-bYE"/>
-                                            <constraint firstItem="88R-4f-3wr" firstAttribute="centerY" secondItem="bcR-qN-VLx" secondAttribute="centerY" id="AgS-Z5-8k3"/>
-                                            <constraint firstItem="88R-4f-3wr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bcR-qN-VLx" secondAttribute="trailing" constant="25" id="H2S-Kg-CgE"/>
-                                            <constraint firstItem="Ber-uP-fl9" firstAttribute="top" secondItem="XN7-9A-NoP" secondAttribute="top" constant="100" id="JW6-jj-brb"/>
-                                            <constraint firstItem="88R-4f-3wr" firstAttribute="height" secondItem="bcR-qN-VLx" secondAttribute="height" id="XxS-GD-8HU"/>
-                                            <constraint firstItem="88R-4f-3wr" firstAttribute="width" secondItem="bcR-qN-VLx" secondAttribute="width" id="ffJ-Nb-PUl"/>
-                                            <constraint firstItem="Ber-uP-fl9" firstAttribute="centerX" secondItem="XN7-9A-NoP" secondAttribute="centerX" id="jNL-d0-ZnS"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ber-uP-fl9" secondAttribute="trailing" constant="38" id="m8a-nh-aZ6"/>
-                                            <constraint firstAttribute="trailing" secondItem="88R-4f-3wr" secondAttribute="trailing" constant="29" id="op1-PN-I0K"/>
-                                            <constraint firstItem="bcR-qN-VLx" firstAttribute="top" secondItem="Ber-uP-fl9" secondAttribute="bottom" constant="144.5" id="rZY-R5-CkW"/>
-                                        </constraints>
-                                    </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqi-95-3bs">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
-                                        <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment declined" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-rg-tDz">
-                                                <rect key="frame" x="50" y="197" width="636" height="21"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="3hF-rg-tDz" firstAttribute="centerX" secondItem="Dqi-95-3bs" secondAttribute="centerX" id="6b4-fJ-Wgu"/>
-                                            <constraint firstAttribute="trailing" secondItem="3hF-rg-tDz" secondAttribute="trailing" constant="50" id="CI3-zr-myy"/>
-                                            <constraint firstItem="3hF-rg-tDz" firstAttribute="centerY" secondItem="Dqi-95-3bs" secondAttribute="centerY" id="cxV-6q-ywi"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -326,50 +371,6 @@
                                     <constraint firstItem="okf-Ci-nZa" firstAttribute="leading" secondItem="aLY-WW-w3z" secondAttribute="leading" id="oXv-8q-bzV"/>
                                     <constraint firstItem="Dqi-95-3bs" firstAttribute="top" secondItem="aLY-WW-w3z" secondAttribute="top" id="tIq-cP-nWe"/>
                                     <constraint firstItem="Dqi-95-3bs" firstAttribute="leading" secondItem="aLY-WW-w3z" secondAttribute="leading" id="tYC-HX-p6I"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTE-Oo-lJl">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="k1B-c3-Fi2">
-                                        <rect key="frame" x="313" y="74" width="110" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="A9f-hT-3l1"/>
-                                            <constraint firstAttribute="width" constant="110" id="LIj-rQ-7q1"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to send or ressive money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeP-uH-536">
-                                        <rect key="frame" x="50" y="215" width="636" height="16"/>
-                                        <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTN-yE-ZM2">
-                                        <rect key="frame" x="324" y="174" width="89" height="36"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                        <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFT-MS-xVL">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
-                                        <connections>
-                                            <action selector="actionReauestExpand:" destination="ObA-dk-sSI" eventType="touchUpInside" id="W57-SY-je3"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="kTN-yE-ZM2" firstAttribute="top" secondItem="k1B-c3-Fi2" secondAttribute="bottom" id="0dD-kr-jyw"/>
-                                    <constraint firstItem="k1B-c3-Fi2" firstAttribute="centerX" secondItem="HTE-Oo-lJl" secondAttribute="centerX" id="7PK-3B-nHU"/>
-                                    <constraint firstItem="oeP-uH-536" firstAttribute="centerX" secondItem="HTE-Oo-lJl" secondAttribute="centerX" id="8RS-Xv-f5g"/>
-                                    <constraint firstAttribute="bottom" secondItem="TFT-MS-xVL" secondAttribute="bottom" id="CjM-EQ-6jT"/>
-                                    <constraint firstItem="kTN-yE-ZM2" firstAttribute="centerX" secondItem="HTE-Oo-lJl" secondAttribute="centerX" id="ETW-sj-YNe"/>
-                                    <constraint firstAttribute="trailing" secondItem="TFT-MS-xVL" secondAttribute="trailing" id="Klw-wf-quL"/>
-                                    <constraint firstItem="TFT-MS-xVL" firstAttribute="top" secondItem="HTE-Oo-lJl" secondAttribute="top" id="NWE-pT-Hd1"/>
-                                    <constraint firstItem="k1B-c3-Fi2" firstAttribute="centerY" secondItem="HTE-Oo-lJl" secondAttribute="centerY" multiplier="0.6" id="Vhx-H8-lRk"/>
-                                    <constraint firstItem="oeP-uH-536" firstAttribute="top" secondItem="kTN-yE-ZM2" secondAttribute="bottom" constant="5" id="l8o-wJ-bBe"/>
-                                    <constraint firstItem="TFT-MS-xVL" firstAttribute="leading" secondItem="HTE-Oo-lJl" secondAttribute="leading" id="qJ4-C0-TKZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="oeP-uH-536" secondAttribute="trailing" constant="50" id="qpy-Lf-tUA"/>
                                 </constraints>
                             </view>
                         </subviews>

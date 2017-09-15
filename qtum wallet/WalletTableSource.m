@@ -34,7 +34,7 @@ static NSInteger countOfSections = 2;
     return countOfSections;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 1;
     } else {
@@ -198,5 +198,11 @@ static NSInteger countOfSections = 2;
         }
     }
 }
+
+- (void)updateEmptyPlaceholderView {
+    
+    self.emptyPlacehodlerView.hidden = self.wallet.historyStorage.historyPrivate.count;
+}
+
 
 @end

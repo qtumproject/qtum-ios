@@ -209,6 +209,7 @@
 		B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB461EF12FDA001D2FF1 /* DataOperation.m */; };
 		B3A4EA4F1F502C2D008115D1 /* NSNumber+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA4E1F502C2D008115D1 /* NSNumber+Comparison.m */; };
 		B3A4EA521F502C40008115D1 /* NSDecimalNumber+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */; };
+		B3BA14761F6A7E03004078A5 /* iMessageDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BA14751F6A7E03004078A5 /* iMessageDataOperation.m */; };
 		B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */; };
 		B3C08B151ED3382300713B15 /* keccak.c in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B141ED3382300713B15 /* keccak.c */; };
 		B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */; };
@@ -1065,6 +1066,8 @@
 		B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+Comparison.m"; sourceTree = "<group>"; };
 		B3A4EA531F502CD1008115D1 /* NSDecimalNumberComparisonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDecimalNumberComparisonTests.m; sourceTree = "<group>"; };
 		B3A4EA591F502E65008115D1 /* qtum walletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "qtum walletTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3BA14741F6A7E03004078A5 /* iMessageDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iMessageDataOperation.h; sourceTree = "<group>"; };
+		B3BA14751F6A7E03004078A5 /* iMessageDataOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMessageDataOperation.m; sourceTree = "<group>"; };
 		B3C08B091ED2FE3000713B15 /* keccak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keccak.h; sourceTree = "<group>"; };
 		B3C08B0A1ED2FE3000713B15 /* NSString+SHA3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SHA3.h"; sourceTree = "<group>"; };
 		B3C08B0B1ED2FE3000713B15 /* NSString+SHA3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHA3.m"; sourceTree = "<group>"; };
@@ -2272,6 +2275,8 @@
 				B33EAF921E5EC263006125F3 /* Assets.xcassets */,
 				B33EAF941E5EC263006125F3 /* Info.plist */,
 				B3F20A4E1E72871E0052C6F7 /* MYRIADPRO-REGULAR.OTF */,
+				B3BA14741F6A7E03004078A5 /* iMessageDataOperation.h */,
+				B3BA14751F6A7E03004078A5 /* iMessageDataOperation.m */,
 			);
 			path = iMessageExtension;
 			sourceTree = "<group>";
@@ -4915,6 +4920,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B33EAFA21E5F20F9006125F3 /* iMessageGradientView.m in Sources */,
+				B3BA14761F6A7E03004078A5 /* iMessageDataOperation.m in Sources */,
 				E73ECB611EF15EB40088C89D /* iMessageTextFieldWithLine.m in Sources */,
 				B33EAF8E1E5EC262006125F3 /* MessagesViewController.m in Sources */,
 			);

@@ -36,8 +36,11 @@
 
 @property (nonatomic, weak, readonly) HistoryHeaderVIew *sectionHeaderView;
 @property (nonatomic, readonly) CGFloat lastContentOffset;
+@property (weak, nonatomic) UIView* emptyPlacehodlerView;
+
 
 - (HeaderCellType)headerCellType;
 - (void)didScrollForheaderCell:(UIScrollView *)scrollView;
+- (void)updateEmptyPlaceholderView;
 
 @end

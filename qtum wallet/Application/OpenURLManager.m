@@ -9,6 +9,7 @@
 #import "OpenURLManager.h"
 #import "NSUserDefaults+Settings.h"
 #import "NSString+Extension.h"
+#import "DataOperation.h"
 
 @implementation OpenURLManager
 
@@ -18,7 +19,7 @@
                                                 resolvingAgainstBaseURL:NO];
     NSArray *queryItems = urlComponents.queryItems;
     
-    NSString *address = [NSString valueForKey:@"adress" fromQueryItems:queryItems];
+    NSString *address = [NSString valueForKey:@"address" fromQueryItems:queryItems];
     NSString *amount = [NSString valueForKey:@"amount" fromQueryItems:queryItems];
     
     [[ApplicationCoordinator sharedInstance] startFromOpenURLWithAddress:address andAmount:amount];
@@ -26,14 +27,14 @@
 
 -(void)storeAuthToYesWithAdddress:(NSString *)address {
     
-    [NSUserDefaults saveWalletAddressKey:address];
-    [NSUserDefaults saveIsHaveWalletKey:@"YES" ];
+    [DataOperation addGropFileWithName:@"group" dataSource:@{@"isHaveWallet" : @"YES",
+                                                               @"address" : address}];
 }
 
 -(void)clear {
     
-    [NSUserDefaults saveWalletAddressKey:nil];
-    [NSUserDefaults saveIsHaveWalletKey:@"NO"];
+    [DataOperation addGropFileWithName:@"group" dataSource:@{@"isHaveWallet" : @"NO",
+                                                               @"address" : [NSNull null]}];
 }
 
 @end
