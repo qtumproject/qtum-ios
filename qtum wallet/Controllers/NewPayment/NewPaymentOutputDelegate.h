@@ -12,7 +12,9 @@
 
 - (void)didPresseQRCodeScaner;
 - (void)didPresseChooseToken;
-- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount;
+- (void)didPresseSendActionWithAddress:(NSString*) address
+                             andAmount:(NSNumber*) amount
+                                andFee:(NSNumber*) fee;
 - (void)didViewLoad;
 
 @end

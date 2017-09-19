@@ -130,7 +130,7 @@
     });
 }
 
--(void)payWithWalletWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
+-(void)payWithWalletWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee{
     
     if (![self isValidAmount:amount]) {
         return;
@@ -141,14 +141,17 @@
     [self showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys] toAddressAndAmount:array andHandler:^(TransactionManagerErrorType errorType, id response) {
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys]
+                                                toAddressAndAmount:array
+                                                               fee:[fee decimalNumber]
+                                                        andHandler:^(TransactionManagerErrorType errorType, id response) {
         
         [weakSelf hideLoaderPopUp];
         [weakSelf showStatusOfPayment:errorType];
     }];
 }
 
--(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
+-(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee{
     
     NSDecimalNumber* amounDivByDecimals = [[amount decimalNumber] numberWithPowerOf10:self.token.decimals];
 
@@ -158,7 +161,11 @@
     
     [self showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionToToken:self.token toAddress:address amount:amounDivByDecimals andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
+    [[TransactionManager sharedInstance] sendTransactionToToken:self.token
+                                                      toAddress:address
+                                                         amount:amounDivByDecimals
+                                                            fee:[fee decimalNumber]
+                                                     andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
         
         [weakSelf hideLoaderPopUp];
         [weakSelf showStatusOfPayment:errorType];
@@ -240,22 +247,22 @@
     [self.navigationController pushViewController:[tokenController toPresent] animated:YES];
 }
 
-- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
+- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee {
     
     __weak __typeof (self) weakSelf = self;
     [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
         if (success) {
-            [weakSelf payActionWithAddress:address andAmount:amount];
+            [weakSelf payActionWithAddress:address andAmount:amount andFee:[fee decimalNumber]];
         }
     }];
 }
 
-- (void)payActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount {
+- (void)payActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSDecimalNumber *)fee{
     
     if (self.token) {
-        [self payWithTokenWithAddress:address andAmount:amount];
+        [self payWithTokenWithAddress:address andAmount:amount andFee:fee];
     } else {
-        [self payWithWalletWithAddress:address andAmount:amount];
+        [self payWithWalletWithAddress:address andAmount:amount andFee:fee];
     }
 }
 

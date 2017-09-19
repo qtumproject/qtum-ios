@@ -268,7 +268,10 @@ ContractFunctionsOutputDelegate>
     
     NSData* contractWithArgs = [[ContractInterfaceManager sharedInstance] tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
     
-    [[TransactionManager sharedInstance] createSmartContractWithKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andBitcode:contractWithArgs andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
+    [[TransactionManager sharedInstance] createSmartContractWithKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                          andBitcode:contractWithArgs
+                                                                 fee:nil
+                                                          andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             BTCTransactionInput* input = transaction.inputs[0];
@@ -333,7 +336,9 @@ ContractFunctionsOutputDelegate>
     [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction
                                                 fromAddresses:addressWithTokensValue
                                                     toAddress:nil
-                                                   walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
+                                                   walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                          fee:nil
+                                                   andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
         
         [weakSelf.functionDetailController showResultViewWithOutputs:nil];
     }];

@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
 - (BTCTransaction *)createSmartContractUnspentOutputs:(NSArray *)unspentOutputs
                                                amount:(CGFloat) amount
                                               bitcode:(NSData*) bitcode
+                                              withFee:(NSInteger) fee
                                            walletKeys:(NSArray<BTCKey*>*) walletKeys;
 
 - (BTCTransaction *)sendToTokenWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
@@ -33,11 +34,13 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
                                         toAddress:(NSString*) toAddress
                                     fromAddresses:(NSArray<NSString*>*) fromAddresses
                                           bitcode:(NSData*) bitcode
+                                          withFee:(NSInteger) fee
                                        walletKeys:(NSArray<BTCKey*>*) walletKeys;
 
 - (void)regularTransactionWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
                                       amount:(CGFloat) amount
                           amountAndAddresses:(NSArray*) amountAndAddresses
+                                     withFee:(NSInteger) fee
                                   walletKeys:(NSArray<BTCKey*>*) walletKeys
                                   andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion;
 

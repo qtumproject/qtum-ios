@@ -24,8 +24,11 @@ static NSString* op_exec = @"c1";
 @interface TransactionManager ()
 
 @property (strong, nonatomic) TransactionBuilder* transactionBuilder;
+@property (assign, nonatomic) NSInteger fee;
 
 @end
+
+static NSInteger constantFee = 10000000;
 
 @implementation TransactionManager
 
@@ -48,6 +51,15 @@ static NSString* op_exec = @"c1";
     return self;
 }
 
+-(NSInteger)feeFromNumber:(NSDecimalNumber*) feeNumber {
+    
+    if (feeNumber) {
+        return [feeNumber decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]].unsignedLongLongValue;
+    } else {
+        return constantFee;
+    }
+}
+
 
 -(NSArray*)getAddressesFromKeys:(NSArray<BTCKey*>*) keys{
     
@@ -66,9 +78,12 @@ static NSString* op_exec = @"c1";
 
 - (void)sendTransactionWalletKeys:(NSArray<BTCKey*> *)walletKeys
                toAddressAndAmount:(NSArray *)amountsAndAddresses
+                              fee:(NSDecimalNumber*) fee
                        andHandler:(void(^)(TransactionManagerErrorType errorType, id response))completion {
     
     NSAssert(amountsAndAddresses && walletKeys.count > 0, @"Amount and address must be not nil, from addresses must be grater then one");
+    
+    self.fee = [self feeFromNumber:fee];
     
     __weak typeof(self) weakSelf = self;
     NSArray* walletAddreses = [self getAddressesFromKeys:walletKeys];
@@ -84,7 +99,7 @@ static NSString* op_exec = @"c1";
     
     [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
         
-        [weakSelf.transactionBuilder regularTransactionWithUnspentOutputs:responseObject amount:amount amountAndAddresses:preparedAmountAndAddreses walletKeys:walletKeys andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction) {
+        [weakSelf.transactionBuilder regularTransactionWithUnspentOutputs:responseObject amount:amount amountAndAddresses:preparedAmountAndAddreses withFee:self.fee walletKeys:walletKeys andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction) {
             if (errorType == TransactionManagerErrorTypeNone) {
                 [weakSelf sendTransaction:transaction withSuccess:^(id response){
                     completion(TransactionManagerErrorTypeNone, response);
@@ -103,9 +118,9 @@ static NSString* op_exec = @"c1";
 - (void)sendTransactionToToken:(Contract *)token
                      toAddress:(NSString *)toAddress
                         amount:(NSNumber *)amount
+                           fee:(NSDecimalNumber*) fee
                     andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
-
     NSString* __block addressWithAmountValue;
     [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
         if ([balance isGreaterThan:amount]) {
@@ -114,15 +129,15 @@ static NSString* op_exec = @"c1";
         }
     }];
     
-    [self sendToken:token fromAddress:addressWithAmountValue toAddress:toAddress amount:amount andHandler:completion];
+    [self sendToken:token fromAddress:addressWithAmountValue toAddress:toAddress amount:[amount decimalNumber] fee:fee andHandler:completion];
 }
 
 - (void)sendToken:(Contract*) token
       fromAddress:(NSString*) frommAddress
         toAddress:(NSString*) toAddress
            amount:(NSDecimalNumber*) amount
+              fee:(NSDecimalNumber*) fee
        andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
-    
     
     // Checking address
     BTCPublicKeyAddress *address = [BTCPublicKeyAddress addressWithString:toAddress];
@@ -153,6 +168,7 @@ static NSString* op_exec = @"c1";
                                                  andBitcode:hashFuction fromAddresses:@[addressWithAmountValue]
                                                   toAddress:nil
                                                  walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                        fee:fee
                                                  andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
                                                      
             completion(errorType, transaction, hashTransaction);
@@ -164,6 +180,7 @@ static NSString* op_exec = @"c1";
 
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*> *)walletKeys
                          andBitcode:(NSData *)bitcode
+                                fee:(NSDecimalNumber*) fee
                          andHandler:(void(^)(NSError *error, BTCTransaction *transaction, NSString *hashTransaction)) completion {
     
     //NSAssert(walletKeys.count > 0, @"Keys must be grater then zero");
@@ -171,12 +188,14 @@ static NSString* op_exec = @"c1";
         completion([NSError new],nil,nil);
     }
     
+    self.fee = constantFee;
+    
     __weak typeof(self) weakSelf = self;
     NSArray* walletAddreses = [self getAddressesFromKeys:walletKeys];
     
     [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
         
-        BTCTransaction *tx = [weakSelf.transactionBuilder createSmartContractUnspentOutputs:responseObject amount:0 bitcode:bitcode walletKeys:walletKeys];
+        BTCTransaction *tx = [weakSelf.transactionBuilder createSmartContractUnspentOutputs:responseObject amount:0 bitcode:bitcode withFee:self.fee walletKeys:walletKeys];
         
         [weakSelf sendTransaction:tx withSuccess:^(id response){
             completion(nil,tx,response[@"txid"]);
@@ -193,6 +212,7 @@ static NSString* op_exec = @"c1";
                  fromAddresses:(NSArray<NSString*>*) fromAddresses
                    toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
+                         fee:(NSDecimalNumber*) fee
                   andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
     [self sendToTokenWithAddress:contractAddress
@@ -200,6 +220,7 @@ static NSString* op_exec = @"c1";
                    fromAddresses:fromAddresses
                        toAddress:toAddress
                       walletKeys:walletKeys
+                            fee:fee
                       andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
         completion(errorType,transaction,hashTransaction);
     }];
@@ -210,6 +231,7 @@ static NSString* op_exec = @"c1";
                  fromAddresses:(NSArray<NSString*>*) fromAddresses
                    toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
+                           fee:(NSDecimalNumber*) fee
                   andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction)) completion {
     
     //NSAssert(walletKeys.count > 0, @"Keys must be grater then zero");
@@ -217,11 +239,20 @@ static NSString* op_exec = @"c1";
         completion(TransactionManagerErrorTypeInvalidAddress,nil,nil);
     }
     
+    self.fee = [self feeFromNumber:fee];
+    
     __weak typeof(self) weakSelf = self;
     
     [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:fromAddresses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
         
-        BTCTransaction *tx = [weakSelf.transactionBuilder sendToTokenWithUnspentOutputs:responseObject amount:0 contractAddress:contractAddress toAddress:toAddress fromAddresses:fromAddresses bitcode:bitcode walletKeys:walletKeys];
+        BTCTransaction *tx = [weakSelf.transactionBuilder sendToTokenWithUnspentOutputs:responseObject
+                                                                                 amount:0
+                                                                        contractAddress:contractAddress
+                                                                              toAddress:toAddress
+                                                                          fromAddresses:fromAddresses
+                                                                                bitcode:bitcode
+                                                                                withFee:self.fee
+                                                                             walletKeys:walletKeys];
         
         if (!tx) {
             completion(TransactionManagerErrorTypeNotEnoughMoney,nil,nil);
@@ -259,7 +290,7 @@ static NSString* op_exec = @"c1";
 - (BTCAmount)convertValueToAmount:(NSDecimalNumber*) value {
     
     if ([value isKindOfClass:[NSDecimalNumber class]]) {
-        return [[value decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithDouble:BTCCoin]] integerValue];
+        return [[value decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:BTCCoin]] unsignedLongLongValue];
     }
     return value.doubleValue * BTCCoin;
 }

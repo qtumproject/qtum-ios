@@ -22,10 +22,12 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenTextField;
+@property (weak, nonatomic) IBOutlet TextFieldWithLine *feeTextField;
 
 @property (weak, nonatomic) IBOutlet UIButton *tokenButton;
 @property (weak, nonatomic) IBOutlet UIImageView *tokenDisclousureImage;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UISlider *feeSlider;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
@@ -40,6 +42,8 @@
 
 @property (strong,nonatomic) NSString* adress;
 @property (strong,nonatomic) NSString* amount;
+@property (strong,nonatomic) NSDecimalNumber* FEE;
+
 @property (nonatomic) CGFloat standartTopOffsetForSendButton;
 
 @property (nonatomic) BOOL needUpdateTexfFields;
@@ -74,6 +78,9 @@ static NSInteger withoutTokenOffset = 40;
 
     self.sendButtomBottomOffset = 27;
     self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+    
+    [self configFee];
+    
     [self.amountTextField setEnablePast:NO];
     
     [self.amountTextField addTarget:self action:@selector(updateSendButton) forControlEvents:UIControlEventEditingChanged];
@@ -92,21 +99,30 @@ static NSInteger withoutTokenOffset = 40;
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-    
     [self updateSendButton];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
     
+    [super viewWillDisappear:animated];
     [self.view endEditing:NO];
 }
 
 - (void)dealloc{
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)configFee {
+    
+    [self.feeTextField setEnablePast:NO];
+    self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.1"];
+    self.feeTextField.text = @"0,1";
+
+}
+
 - (void)updateTextFields {
+    
     if (self.needUpdateTexfFields && self.addressTextField && self.amountTextField) {
         self.addressTextField.text = self.adress;
         self.amountTextField.text = self.amount;
@@ -120,6 +136,26 @@ static NSInteger withoutTokenOffset = 40;
     
     self.sendButton.enabled = isFilled;
     self.sendButton.alpha = isFilled ? 1 : 0.5f;
+}
+
+-(void)normalizeFee {
+    
+    NSString* feeValueString = [self.feeTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+    
+    if ([feeValue isGreaterThan:[NSDecimalNumber decimalNumberWithString:@"0.2"]] ) {
+        
+        self.feeTextField.text = @"0,2";
+        self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.2"];
+        
+    } else if ([feeValue isLessThan:[NSDecimalNumber decimalNumberWithString:@"0.001"]]) {
+        
+        self.feeTextField.text = @"0,001";
+        self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.001"];
+    } else {
+        
+        self.FEE = feeValue;
+    }
 }
 
 -(BOOL)isTextFieldsFilled {
@@ -229,6 +265,7 @@ static NSInteger withoutTokenOffset = 40;
 #pragma mark - iMessage
 
 - (void)setQRCodeItem:(QRCodeItem *)item {
+    
     self.adress = item.qtumAddress;
     self.amount = item.amountString;
     self.needUpdateTexfFields = YES;
@@ -241,15 +278,37 @@ static NSInteger withoutTokenOffset = 40;
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
 
     if (textField == self.amountTextField) {
-        if ([string isEqualToString:@","]) {
+        if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
             return ![textField.text containsString:string] && !(textField.text.length == 0);
+        }
+    } else if (textField == self.feeTextField) {
+        
+        if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
+            
+            return ![textField.text containsString:string] && !(textField.text.length == 0);
+            
+        } else {
+            
+            NSString* feeValueString = [[textField.text stringByAppendingString:string] stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+            
+           [self.feeSlider setValue:[feeValue decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"1000"]].floatValue animated:YES];
         }
     }
     
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if (textField == self.feeTextField) {
+        
+        [self normalizeFee];
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
     [textField resignFirstResponder];
     return YES;
 }
@@ -288,7 +347,17 @@ static NSInteger withoutTokenOffset = 40;
     NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:[self correctAmountString]];
     
     NSString *address = self.addressTextField.text;
-    [self.delegate didPresseSendActionWithAddress:address andAmount:amount];
+    
+    [self normalizeFee];
+
+    [self.delegate didPresseSendActionWithAddress:address andAmount:amount andFee:self.FEE];
+}
+
+- (IBAction)didChangeFeeSlider:(UISlider*) slider {
+    
+    NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithFloat:slider.value];
+    self.FEE = [sliderValue decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"1000"]];
+    self.feeTextField.text = [[NSString stringWithFormat:@"%@", self.FEE] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
 
 - (IBAction)actionVoidTap:(id)sender{

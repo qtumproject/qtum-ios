@@ -54,7 +54,12 @@
     
     [self showLoaderPopUp];
     
-    [[TransactionManager sharedInstance] sendToken:self.token fromAddress:from toAddress:to amount:amountDecimalContainer andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
+    [[TransactionManager sharedInstance] sendToken:self.token
+                                       fromAddress:from
+                                         toAddress:to
+                                            amount:amountDecimalContainer
+                                               fee:nil
+                                        andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
         
         [weakSelf hideLoaderPopUp];
         [weakSelf showStatusOfPayment:errorType];

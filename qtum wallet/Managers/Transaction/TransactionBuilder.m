@@ -18,8 +18,6 @@
 
 @implementation TransactionBuilder
 
-static double FEE = 10000000;
-
 -(instancetype)initWithScriptBuilder:(TransactionScriptBuilder*) scriptBuilder {
     
     self = [super init];
@@ -33,6 +31,7 @@ static double FEE = 10000000;
 - (void)regularTransactionWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
                                       amount:(CGFloat) amount
                           amountAndAddresses:(NSArray*) amountAndAddresses
+                                     withFee:(NSInteger) fee
                                   walletKeys:(NSArray<BTCKey*>*) walletKeys
                                   andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion {
     
@@ -40,7 +39,7 @@ static double FEE = 10000000;
     if (utxos.count > 0) {
         
         // Find enough outputs to spend the total amount and FEE.
-        BTCAmount totalAmount = amount + FEE;
+        BTCAmount totalAmount = amount + fee;
         
         // Sort utxo in order of
         utxos = [utxos sortedArrayUsingComparator:^(BTCTransactionOutput* obj1, BTCTransactionOutput* obj2) {
@@ -72,7 +71,7 @@ static double FEE = 10000000;
         
         // Create a new transaction
         BTCTransaction* tx = [[BTCTransaction alloc] init];
-        tx.fee = FEE;
+        tx.fee = fee;
         BTCAmount spentCoins = 0;
         
         // Add all outputs as inputs
@@ -168,13 +167,14 @@ static double FEE = 10000000;
                                         toAddress:(NSString*) toAddress
                                     fromAddresses:(NSArray<NSString*>*) fromAddresses
                                           bitcode:(NSData*) bitcode
+                                          withFee:(NSInteger) fee
                                        walletKeys:(NSArray<BTCKey*>*) walletKeys {
     
     NSArray *utxos = unspentOutputs;
     if (utxos.count > 0) {
         
         // Find enough outputs to spend the total amount and FEE.
-        BTCAmount totalAmount = amount + FEE;
+        BTCAmount totalAmount = amount + fee;
         
         // Sort utxo in order of
         utxos = [utxos sortedArrayUsingComparator:^(BTCTransactionOutput* obj1, BTCTransactionOutput* obj2) {
@@ -204,7 +204,7 @@ static double FEE = 10000000;
         
         // Create a new transaction
         BTCTransaction* tx = [[BTCTransaction alloc] init];
-        tx.fee = FEE;
+        tx.fee = fee;
         BTCAmount spentCoins = 0;
         
         // Add all outputs as inputs
@@ -290,13 +290,14 @@ static double FEE = 10000000;
 - (BTCTransaction *)createSmartContractUnspentOutputs:(NSArray *)unspentOutputs
                                                amount:(CGFloat) amount
                                               bitcode:(NSData*) bitcode
+                                              withFee:(NSInteger) fee
                                            walletKeys:(NSArray<BTCKey*>*) walletKeys {
     
     NSArray *utxos = unspentOutputs;
     if (utxos.count > 0) {
         
         // Find enough outputs to spend the total amount and FEE.
-        BTCAmount totalAmount = amount + FEE;
+        BTCAmount totalAmount = amount + fee;
         
         // Sort utxo in order of
         utxos = [utxos sortedArrayUsingComparator:^(BTCTransactionOutput* obj1, BTCTransactionOutput* obj2) {
@@ -326,7 +327,7 @@ static double FEE = 10000000;
         
         // Create a new transaction
         BTCTransaction* tx = [[BTCTransaction alloc] init];
-        tx.fee = FEE;
+        tx.fee = fee;
         BTCAmount spentCoins = 0;
         
         // Add all outputs as inputs

@@ -108,7 +108,10 @@
     [self showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:@[self.addressKeyHashTable[from]] toAddressAndAmount:array andHandler:^(TransactionManagerErrorType errorType, id response) {
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:@[self.addressKeyHashTable[from]]
+                                                toAddressAndAmount:array
+                                                               fee:nil
+                                                        andHandler:^(TransactionManagerErrorType errorType, id response) {
         
         [weakSelf hideLoaderPopUp];
         [weakSelf showStatusOfPayment:errorType];
