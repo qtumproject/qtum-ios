@@ -337,8 +337,9 @@ ContractFunctionsOutputDelegate>
                                                 fromAddresses:addressWithTokensValue
                                                     toAddress:nil
                                                    walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
-                                                          fee:nil
-                                                   andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
+                                                          fee:[NSDecimalNumber decimalNumberWithString:@"0.1"]
+                                                 withGasLimit:nil
+                                                   andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber* estimatedFee) {
         
         [weakSelf.functionDetailController showResultViewWithOutputs:nil];
     }];

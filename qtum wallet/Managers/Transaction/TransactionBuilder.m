@@ -161,15 +161,17 @@
     completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
 }
 
-- (BTCTransaction *)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
+- (void)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
                                               amount:(CGFloat) amount
                                      contractAddress:(NSData*) contractAddress
                                            toAddress:(NSString*) toAddress
                                        fromAddresses:(NSArray<NSString*>*) fromAddresses
                                              bitcode:(NSData*) bitcode
                                              withFee:(NSInteger) fee
-                                          walletKeys:(NSArray<BTCKey*>*) walletKeys {
-    
+                                        withGasLimit:(NSDecimalNumber*) gasLimit
+                                          walletKeys:(NSArray<BTCKey*>*) walletKeys
+                              andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion {
+
     NSArray *utxos = unspentOutputs;
     if (utxos.count > 0) {
         
@@ -199,7 +201,8 @@
         }
         
         if (total < totalAmount) {
-            return nil;
+            completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+            return;
         }
         
         // Create a new transaction
@@ -220,7 +223,7 @@
         // Add required outputs - payment and change
         BTCAmount amount = 0;
         BTCTransactionOutput* paymentOutput;
-        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder sendContractScriptWithBiteCode:bitcode andContractAddress:contractAddress]];
+        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder sendContractScriptWithBiteCode:bitcode andContractAddress:contractAddress andGasLimit:gasLimit]];
         [tx addOutput:paymentOutput];
         
         BTCAddress* changeAddress = [BTCAddress addressWithString:fromAddresses.firstObject];
@@ -246,7 +249,8 @@
             NSAssert([d1 isEqual:d2], @"Transaction must not change within signatureHashForScript!");
             
             if (!hash) {
-                return nil;
+                completion(TransactionManagerErrorTypeOups, nil);
+                return;
             }
             
             BTCKey *key;
@@ -258,7 +262,8 @@
                 }
             }
             if (!key) {
-                return nil;
+                completion(TransactionManagerErrorTypeOups, nil);
+                return;
             }
             
             NSData* signature = [key signatureForHash:hash];
@@ -281,10 +286,11 @@
         NSAssert(r, @"should verify first output");
         
         DLog(@"Hash tx: %@", tx.transactionID);
-        return tx;
+        completion(TransactionManagerErrorTypeNone, tx);
+        return;
     }
     
-    return nil;
+    completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
 }
 
 - (BTCTransaction *)smartContractCreationTxWithUnspentOutputs:(NSArray *)unspentOutputs

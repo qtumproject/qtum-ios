@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
     TransactionManagerErrorTypeServer,
     TransactionManagerErrorTypeOups,
     TransactionManagerErrorTypeNotEnoughMoney,
+    TransactionManagerErrorTypeNotEnoughFee,
     TransactionManagerErrorTypeInvalidAddress
 };
 
@@ -28,14 +29,16 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
                                                       withFee:(NSInteger) fee
                                                withWalletKeys:(NSArray<BTCKey*>*) walletKeys;
 
-- (BTCTransaction *)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
+- (void)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
                                               amount:(CGFloat) amount
                                      contractAddress:(NSData*) contractAddress
                                            toAddress:(NSString*) toAddress
                                        fromAddresses:(NSArray<NSString*>*) fromAddresses
                                              bitcode:(NSData*) bitcode
                                              withFee:(NSInteger) fee
-                                          walletKeys:(NSArray<BTCKey*>*) walletKeys;
+                                        withGasLimit:(NSDecimalNumber*) gasLimit
+                                          walletKeys:(NSArray<BTCKey*>*) walletKeys
+                                          andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion;
 
 - (void)regularTransactionWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
                                       amount:(CGFloat) amount

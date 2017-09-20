@@ -25,5 +25,7 @@
 - (void)showCompletedPopUp;
 - (void)showLoaderPopUp;
 - (void)hideLoaderPopUp;
+- (void)setMinFee:(NSNumber*) minFee andMaxFee:(NSNumber*) maxFee;
+
 
 @end

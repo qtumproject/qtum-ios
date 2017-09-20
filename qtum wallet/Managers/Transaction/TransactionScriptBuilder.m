@@ -10,6 +10,9 @@
 
 @implementation TransactionScriptBuilder
 
+-(NSUInteger)gasPrice {
+    return 1;
+}
 
 -(BTCScript*)createContractScriptWithBiteCode:(NSData*) bitcode {
     
@@ -21,7 +24,7 @@
     NSUInteger gasLimit = 2000000;
     [script appendData:[NSData dataWithBytes:&gasLimit length:8]];
     
-    NSUInteger gasPrice = 1;
+    NSUInteger gasPrice = [self gasPrice];
     [script appendData:[NSData dataWithBytes:&gasPrice length:8]];
     
     [script appendData:bitcode];
@@ -31,17 +34,19 @@
     return script;
 }
 
--(BTCScript*)sendContractScriptWithBiteCode:(NSData*) bitcode andContractAddress:(NSData*) address {
+-(BTCScript*)sendContractScriptWithBiteCode:(NSData*) bitcode
+                         andContractAddress:(NSData*) address
+                                andGasLimit:(NSDecimalNumber*) aGasLimit {
     
     BTCScript* script = [[BTCScript alloc] init];
     
     uint32_t ver = 4;
     [script appendData:[NSData dataWithBytes:&ver length:4]];
     
-    NSUInteger gasLimit = 2000000;
+    NSUInteger gasLimit = aGasLimit ? [aGasLimit unsignedIntegerValue] : 2000000;
     [script appendData:[NSData dataWithBytes:&gasLimit length:8]];
     
-    NSUInteger gasPrice = 1;
+    NSUInteger gasPrice = [self gasPrice];
     [script appendData:[NSData dataWithBytes:&gasPrice length:8]];
     
     [script appendData:bitcode];

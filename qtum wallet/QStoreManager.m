@@ -224,7 +224,9 @@ NSInteger const QStoreSearchCount = 20;
                                                                     allKeys]
                                                 toAddressAndAmount:array
                                                                fee:nil
-                                                        andHandler:^(TransactionManagerErrorType errorType, id response) {
+                                                        andHandler:^(TransactionManagerErrorType errorType,
+                                                                     id response,
+                                                                     NSDecimalNumber* estimateFee) {
         if (errorType == TransactionManagerErrorTypeNone) {
             success();
         } else {

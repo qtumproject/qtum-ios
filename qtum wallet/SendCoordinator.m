@@ -51,6 +51,20 @@
     controller.delegate = self;
     self.paymentOutput = controller;
     [self.navigationController setViewControllers:@[controller]];
+    
+    [self.paymentOutput showLoaderPopUp];
+    
+    __weak __typeof(self)weakSelf = self;
+    
+    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(NSNumber *feePerKb) {
+        
+        NSDecimalNumber* minFee = [feePerKb decimalNumber];
+        NSDecimalNumber* maxFee = [NSDecimalNumber decimalNumberWithString:@"1"];
+        
+        [weakSelf.paymentOutput setMinFee:minFee andMaxFee: maxFee];
+        [weakSelf.paymentOutput hideLoaderPopUp];
+    }];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokensDidChange) name:kTokenDidChange object:nil];
 }
 
@@ -144,10 +158,15 @@
     [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys]
                                                 toAddressAndAmount:array
                                                                fee:[fee decimalNumber]
-                                                        andHandler:^(TransactionManagerErrorType errorType, id response) {
-        
+                                                        andHandler:^(TransactionManagerErrorType errorType,
+                                                                     id response,
+                                                                     NSDecimalNumber* estimateFee) {
         [weakSelf hideLoaderPopUp];
-        [weakSelf showStatusOfPayment:errorType];
+        if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+            [self showNotEnoughFeeAlertWithEstimatedFee:estimateFee];
+        } else {
+            [weakSelf showStatusOfPayment:errorType];
+        }
     }];
 }
 
@@ -164,11 +183,18 @@
     [[TransactionManager sharedInstance] sendTransactionToToken:self.token
                                                       toAddress:address
                                                          amount:amounDivByDecimals
-                                                            fee:nil
-                                                     andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
+                                                            fee:[fee decimalNumber]
+                                                   withGasLimit:nil
+                                                     andHandler:^(TransactionManagerErrorType errorType,
+                                                                  BTCTransaction * transaction, NSString* hashTransaction,
+                                                                  NSDecimalNumber* estimateFee) {
         
         [weakSelf hideLoaderPopUp];
-        [weakSelf showStatusOfPayment:errorType];
+        if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+            [self showNotEnoughFeeAlertWithEstimatedFee:estimateFee];
+        } else {
+            [weakSelf showStatusOfPayment:errorType];
+        }
     }];
 }
 
@@ -190,6 +216,12 @@
             [self showErrorPopUp:nil];
             break;
     }
+}
+
+- (void)showNotEnoughFeeAlertWithEstimatedFee:(NSDecimalNumber*) estimatedFee {
+    
+    NSString* errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee];
+    [self showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
 - (BOOL)isValidAmount:(NSNumber *)amount {

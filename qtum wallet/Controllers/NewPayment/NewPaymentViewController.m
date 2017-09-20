@@ -46,6 +46,9 @@
 @property (strong,nonatomic) NSString* adress;
 @property (strong,nonatomic) NSString* amount;
 @property (strong,nonatomic) NSDecimalNumber* FEE;
+@property (strong,nonatomic) NSDecimalNumber* minFee;
+@property (strong,nonatomic) NSDecimalNumber* maxFee;
+
 
 @property (nonatomic) CGFloat standartTopOffsetForSendButton;
 
@@ -99,7 +102,7 @@ static NSInteger withoutTokenOffset = 40;
     [self updateTextFields];
     [self.delegate didViewLoad];
     [self updateScrollsConstraints];
-    [self updateFeeInputs];
+    //[self updateFeeInputs];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -122,9 +125,11 @@ static NSInteger withoutTokenOffset = 40;
 -(void)configFee {
     
     [self.feeTextField setEnablePast:NO];
+    self.feeSlider.minimumValue = 0.001f;
+    self.feeSlider.maximumValue = 0.2f;
+    self.feeSlider.value = 0.1;
     self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.1"];
     self.feeTextField.text = @"0,1";
-
 }
 
 -(void)updateFeeInputs {
@@ -158,15 +163,15 @@ static NSInteger withoutTokenOffset = 40;
     NSString* feeValueString = [self.feeTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
     NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
     
-    if ([feeValue isGreaterThan:[NSDecimalNumber decimalNumberWithString:@"0.2"]] ) {
+    if ([feeValue isGreaterThan:self.maxFee] ) {
         
-        self.feeTextField.text = @"0,2";
-        self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.2"];
+        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.maxFee];;
+        self.FEE = self.maxFee;
         
-    } else if ([feeValue isLessThan:[NSDecimalNumber decimalNumberWithString:@"0.001"]]) {
+    } else if ([feeValue isLessThan:self.minFee]) {
         
-        self.feeTextField.text = @"0,001";
-        self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.001"];
+        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.minFee];
+        self.FEE = self.minFee;
     } else {
         
         self.FEE = feeValue;
@@ -263,6 +268,19 @@ static NSInteger withoutTokenOffset = 40;
     self.isTokenChoosen = contract;
 }
 
+- (void)setMinFee:(NSNumber*) minFee andMaxFee:(NSNumber*) maxFee {
+    
+    self.feeSlider.maximumValue = maxFee.floatValue;
+    self.feeSlider.minimumValue = minFee.floatValue;
+    self.feeSlider.value = 0.1f;
+    
+    self.minFeeLabel.text = [NSString stringWithFormat:@"%@", minFee];
+    self.maxFeeLabel.text = [NSString stringWithFormat:@"%@", maxFee];
+    
+    self.maxFee = [maxFee decimalNumber];
+    self.minFee = [minFee decimalNumber];
+}
+
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
@@ -309,7 +327,7 @@ static NSInteger withoutTokenOffset = 40;
             NSString* feeValueString = [[textField.text stringByAppendingString:string] stringByReplacingOccurrencesOfString:@"," withString:@"."];
             NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
             
-           [self.feeSlider setValue:[feeValue decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"1000"]].floatValue animated:YES];
+           [self.feeSlider setValue:feeValue.floatValue animated:YES];
         }
     }
     
@@ -373,7 +391,7 @@ static NSInteger withoutTokenOffset = 40;
 - (IBAction)didChangeFeeSlider:(UISlider*) slider {
     
     NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithFloat:slider.value];
-    self.FEE = [sliderValue decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"1000"]];
+    self.FEE = sliderValue;
     self.feeTextField.text = [[NSString stringWithFormat:@"%@", self.FEE] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
 

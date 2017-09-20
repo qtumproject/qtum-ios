@@ -58,8 +58,12 @@
                                        fromAddress:from
                                          toAddress:to
                                             amount:amountDecimalContainer
-                                               fee:nil
-                                        andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
+                                               fee:[NSDecimalNumber decimalNumberWithString:@"0.01"]
+                                      withGasLimit:nil
+                                        andHandler:^(TransactionManagerErrorType errorType,
+                                                     BTCTransaction *transaction,
+                                                     NSString *hashTransaction,
+                                                     NSDecimalNumber* estimateFee) {
         
         [weakSelf hideLoaderPopUp];
         [weakSelf showStatusOfPayment:errorType];

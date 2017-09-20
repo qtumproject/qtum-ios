@@ -110,8 +110,10 @@
     __weak typeof(self) weakSelf = self;
     [[TransactionManager sharedInstance] sendTransactionWalletKeys:@[self.addressKeyHashTable[from]]
                                                 toAddressAndAmount:array
-                                                               fee:nil
-                                                        andHandler:^(TransactionManagerErrorType errorType, id response) {
+                                                               fee:[NSDecimalNumber decimalNumberWithString:@"0.01"]
+                                                        andHandler:^(TransactionManagerErrorType errorType,
+                                                                     id response,
+                                                                     NSDecimalNumber* estimateFee) {
         
         [weakSelf hideLoaderPopUp];
         [weakSelf showStatusOfPayment:errorType];
