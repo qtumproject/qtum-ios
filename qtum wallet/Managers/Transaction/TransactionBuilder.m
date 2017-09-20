@@ -161,14 +161,14 @@
     completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
 }
 
-- (BTCTransaction *)sendToTokenWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
-                                           amount:(CGFloat) amount
-                                  contractAddress:(NSData*) contractAddress
-                                        toAddress:(NSString*) toAddress
-                                    fromAddresses:(NSArray<NSString*>*) fromAddresses
-                                          bitcode:(NSData*) bitcode
-                                          withFee:(NSInteger) fee
-                                       walletKeys:(NSArray<BTCKey*>*) walletKeys {
+- (BTCTransaction *)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
+                                              amount:(CGFloat) amount
+                                     contractAddress:(NSData*) contractAddress
+                                           toAddress:(NSString*) toAddress
+                                       fromAddresses:(NSArray<NSString*>*) fromAddresses
+                                             bitcode:(NSData*) bitcode
+                                             withFee:(NSInteger) fee
+                                          walletKeys:(NSArray<BTCKey*>*) walletKeys {
     
     NSArray *utxos = unspentOutputs;
     if (utxos.count > 0) {
@@ -287,11 +287,11 @@
     return nil;
 }
 
-- (BTCTransaction *)createSmartContractUnspentOutputs:(NSArray *)unspentOutputs
-                                               amount:(CGFloat) amount
-                                              bitcode:(NSData*) bitcode
-                                              withFee:(NSInteger) fee
-                                           walletKeys:(NSArray<BTCKey*>*) walletKeys {
+- (BTCTransaction *)smartContractCreationTxWithUnspentOutputs:(NSArray *)unspentOutputs
+                                                   withAmount:(CGFloat) amount
+                                                  withBitcode:(NSData*) bitcode
+                                                      withFee:(NSInteger) fee
+                                               withWalletKeys:(NSArray<BTCKey*>*) walletKeys {
     
     NSArray *utxos = unspentOutputs;
     if (utxos.count > 0) {
