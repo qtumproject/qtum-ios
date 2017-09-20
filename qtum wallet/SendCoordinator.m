@@ -164,7 +164,7 @@
     [[TransactionManager sharedInstance] sendTransactionToToken:self.token
                                                       toAddress:address
                                                          amount:amounDivByDecimals
-                                                            fee:[fee decimalNumber]
+                                                            fee:nil
                                                      andHandler:^(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction) {
         
         [weakSelf hideLoaderPopUp];

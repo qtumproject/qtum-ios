@@ -38,6 +38,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *minFeeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *maxFeeLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *fromAmountToSendButtonOffset;
 
 
 @property (strong,nonatomic) NSString* adress;
@@ -47,6 +50,8 @@
 @property (nonatomic) CGFloat standartTopOffsetForSendButton;
 
 @property (nonatomic) BOOL needUpdateTexfFields;
+@property (nonatomic) BOOL isTokenChoosen;
+
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
 
@@ -94,6 +99,7 @@ static NSInteger withoutTokenOffset = 40;
     [self updateTextFields];
     [self.delegate didViewLoad];
     [self updateScrollsConstraints];
+    [self updateFeeInputs];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -119,6 +125,15 @@ static NSInteger withoutTokenOffset = 40;
     self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.1"];
     self.feeTextField.text = @"0,1";
 
+}
+
+-(void)updateFeeInputs {
+    
+    self.feeSlider.hidden = self.isTokenChoosen;
+    self.feeTextField.hidden = self.isTokenChoosen;
+    self.maxFeeLabel.hidden = self.isTokenChoosen;
+    self.minFeeLabel.hidden = self.isTokenChoosen;
+    self.fromAmountToSendButtonOffset.constant = self.isTokenChoosen ? 40 : 210;
 }
 
 - (void)updateTextFields {
@@ -201,6 +216,7 @@ static NSInteger withoutTokenOffset = 40;
     
     if (!choosenExist) {
         self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", nil);
+        self.isTokenChoosen = NO;
     }
     
     [self.view setNeedsLayout];
@@ -244,6 +260,7 @@ static NSInteger withoutTokenOffset = 40;
 -(void)updateContentWithContract:(Contract*) contract {
     
     self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+    self.isTokenChoosen = contract;
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
@@ -389,20 +406,30 @@ static NSInteger withoutTokenOffset = 40;
 
 -(void)keyboardDidShow:(NSNotification *)sender {
     
+    UITextField* highlightedTextField;
+    
     if ([self.amountTextField isFirstResponder]) {
-        NSDictionary *info = [sender userInfo];
-        CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-        CGFloat kbHeight = kbSize.height - 50.0f;
-        CGFloat topOfKeyboard = self.scrollView.frame.size.height - kbHeight;
         
-        CGFloat bottomSend = self.sendButton.frame.size.height + self.sendButton.frame.origin.y;
+        highlightedTextField = self.amountTextField;
+    } else if ([self.feeTextField isFirstResponder]){
         
-        CGFloat forTopOffset = bottomSend - topOfKeyboard;
-        if (forTopOffset > 0) {
-            
-            CGPoint bottomOffset = CGPointMake(0, forTopOffset + 20);
-            [self.scrollView setContentOffset:bottomOffset animated:YES];
-        }
+        highlightedTextField = self.feeTextField;
+    } else {
+        
+        return;
+    }
+    
+    NSDictionary *info = [sender userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGFloat kbHeight = kbSize.height - 50.0f;
+    CGFloat topOfKeyboard = self.scrollView.frame.size.height - kbHeight;
+    
+    CGFloat offset = highlightedTextField.frame.origin.y - topOfKeyboard;
+    
+    if (offset > 0) {
+        
+        CGPoint bottomOffset = CGPointMake(0, offset + 20);
+        [self.scrollView setContentOffset:bottomOffset animated:YES];
     }
 }
 
