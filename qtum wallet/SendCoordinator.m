@@ -247,7 +247,7 @@
             [self showErrorPopUp:NSLocalizedString(@"Invalid QTUM Address", nil)];
             break;
         case TransactionManagerErrorTypeNotEnoughMoneyOnAddress:
-            [self showErrorPopUp:NSLocalizedString(@"Invalid QTUM Address", nil)];
+            [self showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction at this address", nil)];
             break;
         default:
             [self showErrorPopUp:nil];

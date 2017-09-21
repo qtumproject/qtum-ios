@@ -380,6 +380,10 @@ ContractFunctionsOutputDelegate>
         case TransactionManagerErrorTypeInvalidAddress:
             [self.functionDetailController showErrorPopUp:NSLocalizedString(@"Invalid QTUM Address", nil)];
             break;
+        case TransactionManagerErrorTypeNotEnoughMoneyOnAddress:
+            [self.functionDetailController showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction at this address", nil)];
+            break;
+
         default:
             [self.functionDetailController showErrorPopUp:nil];
             break;
