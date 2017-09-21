@@ -27,6 +27,7 @@
 @property (weak, nonatomic) QRCodeViewController* qrCodeOutput;
 @property (weak, nonatomic) NSObject <ChoseTokenPaymentOutput>* tokenPaymentOutput;
 @property (strong,nonatomic) Contract* token;
+@property (strong,nonatomic) BTCKey* fromAddressKey;
 
 @end
 
@@ -68,24 +69,24 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokensDidChange) name:kTokenDidChange object:nil];
 }
 
-- (void)setForSendQRCodeItem:(QRCodeItem *)item {
+- (void)setForSendSendInfoItem:(SendInfoItem *)item {
     
     switch (item.type) {
-        case QRCodeItemTypeQtum:
+        case SendInfoItemTypeQtum:
             self.token = nil;
             break;
-        case QRCodeItemTypeInvalid:
+        case SendInfoItemTypeInvalid:
             [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForInvalidQRCodeFormatPopUp] presenter:nil completion:nil];
             item = nil;
             self.token = nil;
             break;
-        case QRCodeItemTypeToken:
+        case SendInfoItemTypeToken:
         {
             NSArray <Contract*>* tokens = [ContractManager sharedInstance].allActiveTokens;
             
             BOOL exist = NO;
             for (Contract *token in tokens) {
-                if ([token.mainAddress isEqualToString:item.tokenAddress]) {
+                if ([token.contractAddress isEqualToString:item.tokenAddress]) {
                     self.token = token;
                     exist = YES;
                     break;
@@ -94,7 +95,7 @@
             
             if (!exist) {
                 [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForRequestTokenPopUp] presenter:nil completion:nil];
-                [self.paymentOutput setQRCodeItem:nil];
+                [self.paymentOutput setSendInfoItem:nil];
                 self.token = nil;
                 item = nil;
             }
@@ -103,13 +104,25 @@
     }
     
     [self.paymentOutput updateContentWithContract:self.token];
-    [self.paymentOutput setQRCodeItem:item];
+    [self.paymentOutput setSendInfoItem:item];
     
+    self.fromAddressKey = item.fromQtumAddressKey;
     //bail if we have open 2 qrcode scaners
     if (self.qrCodeOutput) {
         [self.navigationController popViewControllerAnimated:YES];
     }
     [self updateOutputs];
+}
+
+-(void)setForToken:(Contract*) aToken withAddress:(NSString*) address andAmount:(NSString*) amount {
+    
+    SendInfoItem *item = [[SendInfoItem alloc] initWithQtumAddress:address tokenAddress:aToken.contractAddress amountString:amount];
+    [self setForSendSendInfoItem:item];
+}
+
+-(void)didSelectedFromTabbar {
+    
+    self.fromAddressKey = nil;
 }
 
 #pragma mark - Observing
@@ -155,19 +168,20 @@
     [self showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys]
+    NSArray<BTCKey*>* addresses = self.fromAddressKey ? @[self.fromAddressKey] : [[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys];
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:addresses
                                                 toAddressAndAmount:array
                                                                fee:[fee decimalNumber]
                                                         andHandler:^(TransactionManagerErrorType errorType,
                                                                      id response,
                                                                      NSDecimalNumber* estimateFee) {
-        [weakSelf hideLoaderPopUp];
-        if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
-            [self showNotEnoughFeeAlertWithEstimatedFee:estimateFee];
-        } else {
-            [weakSelf showStatusOfPayment:errorType];
-        }
-    }];
+                                                            [weakSelf hideLoaderPopUp];
+                                                            if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+                                                                [self showNotEnoughFeeAlertWithEstimatedFee:estimateFee];
+                                                            } else {
+                                                                [weakSelf showStatusOfPayment:errorType];
+                                                            }
+                                                        }];
 }
 
 -(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee{
@@ -180,22 +194,42 @@
     
     [self showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionToToken:self.token
-                                                      toAddress:address
-                                                         amount:amounDivByDecimals
-                                                            fee:[fee decimalNumber]
-                                                   withGasLimit:nil
-                                                     andHandler:^(TransactionManagerErrorType errorType,
-                                                                  BTCTransaction * transaction, NSString* hashTransaction,
-                                                                  NSDecimalNumber* estimateFee) {
-        
-        [weakSelf hideLoaderPopUp];
-        if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
-            [self showNotEnoughFeeAlertWithEstimatedFee:estimateFee];
-        } else {
-            [weakSelf showStatusOfPayment:errorType];
-        }
-    }];
+    
+    if (self.fromAddressKey) {
+        [[TransactionManager sharedInstance] sendToken:self.token
+                                           fromAddress:self.fromAddressKey.address.string
+                                             toAddress:address amount:amounDivByDecimals
+                                                   fee:[fee decimalNumber] withGasLimit:nil
+                                            andHandler:^(TransactionManagerErrorType errorType,
+                                                         BTCTransaction *transaction,
+                                                         NSString *hashTransaction,
+                                                         NSDecimalNumber *estimatedFee) {
+                                                
+                                                [weakSelf hideLoaderPopUp];
+                                                if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+                                                    [weakSelf showNotEnoughFeeAlertWithEstimatedFee:estimatedFee];
+                                                } else {
+                                                    [weakSelf showStatusOfPayment:errorType];
+                                                }
+                                            }];
+    } else {
+        [[TransactionManager sharedInstance] sendTransactionToToken:self.token
+                                                          toAddress:address
+                                                             amount:amounDivByDecimals
+                                                                fee:[fee decimalNumber]
+                                                       withGasLimit:nil
+                                                         andHandler:^(TransactionManagerErrorType errorType,
+                                                                      BTCTransaction * transaction, NSString* hashTransaction,
+                                                                      NSDecimalNumber* estimateFee) {
+                                                             
+                                                             [weakSelf hideLoaderPopUp];
+                                                             if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+                                                                 [weakSelf showNotEnoughFeeAlertWithEstimatedFee:estimateFee];
+                                                             } else {
+                                                                 [weakSelf showStatusOfPayment:errorType];
+                                                             }
+                                                         }];
+    }
 }
 
 - (void)showStatusOfPayment:(TransactionManagerErrorType)errorType {
@@ -300,11 +334,11 @@
 
 #pragma mark - QRCodeViewControllerDelegate
 
-- (void)didQRCodeScannedWithQRCodeItem:(QRCodeItem *)item {
+- (void)didQRCodeScannedWithSendInfoItem:(SendInfoItem *)item {
     
     [self.navigationController popViewControllerAnimated:YES];
     
-    [self setForSendQRCodeItem:item];
+    [self setForSendSendInfoItem:item];
 }
 
 - (void)didBackPressed {
@@ -344,7 +378,5 @@
     [self.paymentOutput updateContentWithContract:nil];
     self.token = nil;
 }
-
-
  
 @end

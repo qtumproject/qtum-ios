@@ -103,21 +103,12 @@
 
     NSDecimalNumber *amountDecimalContainer = [NSDecimalNumber decimalNumberWithString:amount];
     
-    NSArray *array = @[@{@"amount" : amountDecimalContainer, @"address" : to}];
+//    NSArray *array = @[@{@"amount" : amountDecimalContainer, @"address" : to}];
     
-    [self showLoaderPopUp];
-    
-    __weak typeof(self) weakSelf = self;
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:@[self.addressKeyHashTable[from]]
-                                                toAddressAndAmount:array
-                                                               fee:[NSDecimalNumber decimalNumberWithString:@"0.01"]
-                                                        andHandler:^(TransactionManagerErrorType errorType,
-                                                                     id response,
-                                                                     NSDecimalNumber* estimateFee) {
-        
-        [weakSelf hideLoaderPopUp];
-        [weakSelf showStatusOfPayment:errorType];
-    }];
+    SendInfoItem *item = [[SendInfoItem alloc] initWithQtumAddressKey:self.addressKeyHashTable[to] tokenAddress:nil amountString:amount fromQtumAddressKey:self.addressKeyHashTable[from]];
+
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate coordinatorLibraryDidEnd:self withQrCodeItem:item];
 }
 
 #pragma mark - Popup
@@ -189,7 +180,8 @@
 - (void)okButtonPressed:(AddressTransferPopupViewController *)sender {
     
     if ([sender isKindOfClass:[AddressTransferPopupViewController class]]) {
-            [self makeTransferFromAddress:sender.fromAddress toAddress:sender.toAddress withAmount:[sender.amount stringByReplacingOccurrencesOfString:@"," withString:@"."]];
+        [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+        [self makeTransferFromAddress:sender.fromAddress toAddress:sender.toAddress withAmount:[sender.amount stringByReplacingOccurrencesOfString:@"," withString:@"."]];
     } else {
         [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
     }

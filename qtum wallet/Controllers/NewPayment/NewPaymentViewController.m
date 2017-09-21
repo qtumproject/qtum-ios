@@ -299,9 +299,13 @@ static NSInteger withoutTokenOffset = 40;
 
 #pragma mark - iMessage
 
-- (void)setQRCodeItem:(QRCodeItem *)item {
+- (void)setSendInfoItem:(SendInfoItem *)item {
     
-    self.adress = item.qtumAddress;
+    if (item.qtumAddressKey) {
+        self.adress = item.qtumAddressKey.address.string;
+    } else {
+        self.adress = item.qtumAddress;
+    }
     self.amount = item.amountString;
     self.needUpdateTexfFields = YES;
     

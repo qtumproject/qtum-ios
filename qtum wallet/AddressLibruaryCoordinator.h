@@ -13,6 +13,7 @@
 @protocol AddressLibruaryCoordinatorDelegate <NSObject>
 
 - (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator*)coordinator;
+- (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator*)coordinator withQrCodeItem:(SendInfoItem*) item;
 
 @end
 

@@ -96,8 +96,8 @@ static NSInteger constantFee = 10000000;
 
     dispatch_block_t block = ^{
         
-        NSArray* walletAddreses = [self getAddressesFromKeys:walletKeys];
-        NSDictionary* allPreparedValues = [self createAmountsAndAddresses:amountsAndAddresses];
+        NSArray* walletAddreses = [weakSelf getAddressesFromKeys:walletKeys];
+        NSDictionary* allPreparedValues = [weakSelf createAmountsAndAddresses:amountsAndAddresses];
         
         if (!allPreparedValues) {
             
@@ -132,7 +132,7 @@ static NSInteger constantFee = 10000000;
         
         NSDecimalNumber* __block feePerKb;
         
-        [self getFeePerKbWithHandler:^(NSDecimalNumber *aFeePerKb) {
+        [weakSelf getFeePerKbWithHandler:^(NSDecimalNumber *aFeePerKb) {
             
             if (aFeePerKb) {
                 
@@ -370,7 +370,7 @@ static NSInteger constantFee = 10000000;
         
         NSDecimalNumber* __block gasLimit;
 
-        [self getFeeWithContractAddress:[NSString hexadecimalString:contractAddress] withHashes:@[[NSString hexadecimalString:bitcode]] withHandler:^(NSDecimalNumber* gas) {
+        [weakSelf getFeeWithContractAddress:[NSString hexadecimalString:contractAddress] withHashes:@[[NSString hexadecimalString:bitcode]] withHandler:^(NSDecimalNumber* gas) {
             
             if (gas) {
                 gasLimit = gas;
@@ -401,7 +401,7 @@ static NSInteger constantFee = 10000000;
         
         NSDecimalNumber* __block feePerKb;
         
-        [self getFeePerKbWithHandler:^(NSDecimalNumber *aFeePerKb) {
+        [weakSelf getFeePerKbWithHandler:^(NSDecimalNumber *aFeePerKb) {
             
             if (aFeePerKb) {
                 
@@ -427,26 +427,27 @@ static NSInteger constantFee = 10000000;
         do {
             
            [weakSelf.transactionBuilder callContractTxWithUnspentOutputs:unspentOutputs
-                                                                                        amount:0
-                                                                               contractAddress:contractAddress
-                                                                                     toAddress:toAddress
-                                                                                 fromAddresses:fromAddresses
-                                                                                       bitcode:bitcode
-                                                                                       withFee:[self feeFromNumber:estimatedFee]
-                                                                                  withGasLimit:gasLimit
-                                                                                    walletKeys:walletKeys
-                                                                                    andHandler:^(TransactionManagerErrorType aErrorType, BTCTransaction *aTransaction) {
-                                                                                        transaction = aTransaction;
-                                                                                        errorType = aErrorType;
-                                                                                        
-                                                                                        if (transaction) {
-                                                                                            passedFee = estimatedFee;
-                                                                                            estimatedFee = [estimatedFee decimalNumberByAdding:feePerKb];
-                                                                                        }
-                                                                                    }];
+                                                                amount:0
+                                                       contractAddress:contractAddress
+                                                             toAddress:toAddress
+                                                         fromAddresses:fromAddresses
+                                                               bitcode:bitcode
+                                                               withFee:[self feeFromNumber:estimatedFee]
+                                                          withGasLimit:gasLimit
+                                                            walletKeys:walletKeys
+                                                            andHandler:^(TransactionManagerErrorType aErrorType, BTCTransaction *aTransaction) {
+                                                                
+                                                                transaction = aTransaction;
+                                                                errorType = aErrorType;
+                                                                
+                                                                if (transaction) {
+                                                                    passedFee = estimatedFee;
+                                                                    estimatedFee = [estimatedFee decimalNumberByAdding:feePerKb];
+                                                                }
+                                                            }];
             
         } while (transaction &&
-                 [self convertValueToAmount:passedFee] < ([transaction estimatedFeeWithRate:[self convertValueToAmount:feePerKb]] + [self convertValueToAmount:gas]));
+                 [weakSelf convertValueToAmount:passedFee] < ([transaction estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]] + [weakSelf convertValueToAmount:gas]));
         
         
         BOOL isUsersFee = [passedFee isEqualToDecimalNumber:fee];

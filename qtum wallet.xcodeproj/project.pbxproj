@@ -457,7 +457,7 @@
 		E73D9C8D1ECB19D000A09CFE /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8C1ECB19D000A09CFE /* SplashViewController.m */; };
 		E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */; };
 		E73ECB611EF15EB40088C89D /* iMessageTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */; };
-		E74003C21F1E2AC7002CC587 /* QRCodeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E74003C11F1E2AC7002CC587 /* QRCodeItem.m */; };
+		E74003C21F1E2AC7002CC587 /* SendInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E74003C11F1E2AC7002CC587 /* SendInfoItem.m */; };
 		E745BA1D1F21E78E00B2E216 /* NewsTableCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA1C1F21E78E00B2E216 /* NewsTableCellDark.m */; };
 		E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA1F1F21E79B00B2E216 /* NewsTableCellLight.m */; };
 		E745BA241F21FC3600B2E216 /* NewsViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA231F21FC3600B2E216 /* NewsViewControllerLight.m */; };
@@ -1586,8 +1586,8 @@
 		E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLogoImageVIew.m; sourceTree = "<group>"; };
 		E73ECB5F1EF15EB40088C89D /* iMessageTextFieldWithLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iMessageTextFieldWithLine.h; sourceTree = "<group>"; };
 		E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMessageTextFieldWithLine.m; sourceTree = "<group>"; };
-		E74003C01F1E2AC7002CC587 /* QRCodeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeItem.h; sourceTree = "<group>"; };
-		E74003C11F1E2AC7002CC587 /* QRCodeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeItem.m; sourceTree = "<group>"; };
+		E74003C01F1E2AC7002CC587 /* SendInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendInfoItem.h; sourceTree = "<group>"; };
+		E74003C11F1E2AC7002CC587 /* SendInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendInfoItem.m; sourceTree = "<group>"; };
 		E745BA1B1F21E78E00B2E216 /* NewsTableCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableCellDark.h; sourceTree = "<group>"; };
 		E745BA1C1F21E78E00B2E216 /* NewsTableCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableCellDark.m; sourceTree = "<group>"; };
 		E745BA1E1F21E79B00B2E216 /* NewsTableCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableCellLight.h; sourceTree = "<group>"; };
@@ -4418,8 +4418,8 @@
 				B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */,
 				B3F76A741EDD6F6400108DE9 /* TemplateModel.h */,
 				B3F76A751EDD6F6400108DE9 /* TemplateModel.m */,
-				E74003C01F1E2AC7002CC587 /* QRCodeItem.h */,
-				E74003C11F1E2AC7002CC587 /* QRCodeItem.m */,
+				E74003C01F1E2AC7002CC587 /* SendInfoItem.h */,
+				E74003C11F1E2AC7002CC587 /* SendInfoItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4652,7 +4652,7 @@
 		E7FD36301DC4D07E00748177 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = PixelPlex;
 				TargetAttributes = {
 					B33EAF871E5EC262006125F3 = {
@@ -5236,7 +5236,7 @@
 				B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
-				E74003C21F1E2AC7002CC587 /* QRCodeItem.m in Sources */,
+				E74003C21F1E2AC7002CC587 /* SendInfoItem.m in Sources */,
 				B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */,
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
 				B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */,
@@ -5890,7 +5890,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -5898,7 +5900,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -5942,7 +5948,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -5950,7 +5958,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;

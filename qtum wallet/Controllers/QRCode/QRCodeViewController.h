@@ -11,7 +11,7 @@
 
 @protocol QRCodeViewControllerDelegate <NSObject>
 
-- (void)didQRCodeScannedWithQRCodeItem:(QRCodeItem *)item;
+- (void)didQRCodeScannedWithSendInfoItem:(SendInfoItem *)item;
 - (void)didBackPressed;
 
 @end

@@ -14,7 +14,7 @@
 @protocol TabBarCoordinatorDelegate <NSObject>
 
 @required
--(void)createPaymentFromQRCodeItem:(QRCodeItem *)item;
+-(void)createPaymentFromSendInfoItem:(SendInfoItem *)item;
 
 @end
 
@@ -26,7 +26,7 @@
 
 - (instancetype)initWithTabBarController:(UITabBarController<TabbarOutput>*)tabBarController;
 
-- (void)startFromSendWithQRCodeItem:(QRCodeItem *)item;
+- (void)startFromSendWithSendInfoItem:(SendInfoItem *)item;
 - (void)showControllerByIndex:(NSInteger)index;
 - (UIViewController *)getViewControllerByIndex:(NSInteger)index;
 

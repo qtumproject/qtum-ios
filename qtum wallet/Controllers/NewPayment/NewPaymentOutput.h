@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
 
-- (void)setQRCodeItem:(QRCodeItem *)item;
+- (void)setSendInfoItem:(SendInfoItem *)item;
 - (void)updateControlsWithTokensExist:(BOOL) isExist
                     choosenTokenExist:(BOOL) choosenExist
                       walletBalance:(NSNumber*) walletBalance
