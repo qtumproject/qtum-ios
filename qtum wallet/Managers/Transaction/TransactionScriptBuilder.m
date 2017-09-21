@@ -43,7 +43,7 @@
     uint32_t ver = 4;
     [script appendData:[NSData dataWithBytes:&ver length:4]];
     
-    NSUInteger gasLimit = aGasLimit ? [aGasLimit unsignedIntegerValue] : 2000000;
+    NSUInteger gasLimit =  2000000;
     [script appendData:[NSData dataWithBytes:&gasLimit length:8]];
     
     NSUInteger gasPrice = [self gasPrice];

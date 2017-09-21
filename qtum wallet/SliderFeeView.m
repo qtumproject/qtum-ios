@@ -2,7 +2,7 @@
 //  SliderFeeView.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 21.09.17.
+//  Created by Vladimir Lebedevich on 21.09.17.
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
