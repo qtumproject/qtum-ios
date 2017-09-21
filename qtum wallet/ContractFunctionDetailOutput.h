@@ -20,4 +20,11 @@
 
 -(void)showResultViewWithOutputs:(NSArray*) outputs;
 
+- (void)showLoader;
+- (void)hideLoader;
+- (void)showCompletedPopUp;
+- (void)showErrorPopUp:(NSString *)message;
+- (void)setMinFee:(NSNumber*) minFee andMaxFee:(NSNumber*) maxFee;
+- (void)showNotEnoughFeeAlertWithEstimatedFee:(NSDecimalNumber*) estimatedFee;
+
 @end

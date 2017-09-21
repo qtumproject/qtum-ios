@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *availibleBalanceShortInfoLabel;
 @property (weak, nonatomic) IBOutlet UIView *navigationBarView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) UIView *refreshBackView;
+
 
 @end
 
@@ -30,7 +32,7 @@
     
     [self configTableView];
     [self configRefreshControl];
-    
+
     self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
     
     [self updateControls];
@@ -46,13 +48,6 @@
     [self.tableView reloadData];
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderViewLight" bundle:nil];
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
-    
-    //REFRESH CONTROLL BACKGROUND
-    CGRect frame = self.view.bounds;
-    frame.origin.y = - frame.size.height;
-    UIView *refreshBackgroundView = [[UIView alloc] initWithFrame:frame];
-    refreshBackgroundView.backgroundColor = lightDarkBlueColorForGradient();
-    [self.tableView insertSubview:refreshBackgroundView atIndex:0];
 }
 
 - (void)configRefreshControl {
@@ -64,12 +59,7 @@
     self.refreshControl.tintColor = [UIColor whiteColor];
     [refreshView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
-    
-    CGRect frame = self.view.bounds;
-    frame.origin.y = -frame.size.height;
-    UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
-    refreshBackgroundView.backgroundColor = lightDarkBlueColorForGradient();
-    [self.tableView insertSubview:refreshBackgroundView atIndex:0];
+
 }
 
 -(void)refreshFromRefreshControl {

@@ -14,6 +14,7 @@
 
 -(void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                      andToken:(Contract*) token;
+                      andToken:(Contract*) token
+                        andFee:(NSDecimalNumber*) fee;
 
 @end

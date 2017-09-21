@@ -110,6 +110,9 @@
 		B33EAF971E5EC263006125F3 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B33EAF881E5EC262006125F3 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF9E1E5EE1EE006125F3 /* NSString+Extension.m */; };
 		B33EAFA21E5F20F9006125F3 /* iMessageGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAFA11E5F20F9006125F3 /* iMessageGradientView.m */; };
+		B34228861F73CEAE00C4C381 /* SliderFeeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34228851F73CEAE00C4C381 /* SliderFeeView.xib */; };
+		B34228881F73CF2700C4C381 /* SliderViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34228871F73CF2700C4C381 /* SliderViewLight.xib */; };
+		B342288B1F73CF6400C4C381 /* SliderFeeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B342288A1F73CF6400C4C381 /* SliderFeeView.m */; };
 		B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */; };
 		B3427FCA1F54093B00182E95 /* AboutOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FC91F54093B00182E95 /* AboutOutputViewController.m */; };
 		B3427FCD1F54095400182E95 /* AboutOutputViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3427FCC1F54095400182E95 /* AboutOutputViewControllerDark.m */; };
@@ -853,6 +856,10 @@
 		B33EAF9E1E5EE1EE006125F3 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		B33EAFA01E5F20F9006125F3 /* iMessageGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iMessageGradientView.h; sourceTree = "<group>"; };
 		B33EAFA11E5F20F9006125F3 /* iMessageGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMessageGradientView.m; sourceTree = "<group>"; };
+		B34228851F73CEAE00C4C381 /* SliderFeeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderFeeView.xib; sourceTree = "<group>"; };
+		B34228871F73CF2700C4C381 /* SliderViewLight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderViewLight.xib; sourceTree = "<group>"; };
+		B34228891F73CF6400C4C381 /* SliderFeeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SliderFeeView.h; sourceTree = "<group>"; };
+		B342288A1F73CF6400C4C381 /* SliderFeeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SliderFeeView.m; sourceTree = "<group>"; };
 		B34253FD1E164B4C00288CF6 /* CreatePinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePinViewController.h; sourceTree = "<group>"; };
 		B34253FE1E164B4C00288CF6 /* CreatePinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePinViewController.m; sourceTree = "<group>"; };
 		B3427FC61F5408CD00182E95 /* AboutOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutOutput.h; sourceTree = "<group>"; };
@@ -2281,6 +2288,17 @@
 			path = iMessageExtension;
 			sourceTree = "<group>";
 		};
+		B34228841F73CB2400C4C381 /* Slider View With Fee */ = {
+			isa = PBXGroup;
+			children = (
+				B34228851F73CEAE00C4C381 /* SliderFeeView.xib */,
+				B34228871F73CF2700C4C381 /* SliderViewLight.xib */,
+				B34228891F73CF6400C4C381 /* SliderFeeView.h */,
+				B342288A1F73CF6400C4C381 /* SliderFeeView.m */,
+			);
+			name = "Slider View With Fee";
+			sourceTree = "<group>";
+		};
 		B3427FC21F54089400182E95 /* AboutOutput */ = {
 			isa = PBXGroup;
 			children = (
@@ -2914,6 +2932,7 @@
 		B3DC9CDD1F30C777006B2E07 /* Contract Function Detail */ = {
 			isa = PBXGroup;
 			children = (
+				B34228841F73CB2400C4C381 /* Slider View With Fee */,
 				B3DC9CDF1F30C7C3006B2E07 /* ContractFunctionDetailOutputDelegate.h */,
 				B3DC9CDE1F30C7B5006B2E07 /* ContractFunctionDetailOutput.h */,
 				B3827DE81ED2C74900E500DE /* TokenFunctionDetailViewController.h */,
@@ -4787,6 +4806,7 @@
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B3EA53131F471DBF002FD201 /* SelectSearchTypeViewLight.xib in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
+				B34228861F73CEAE00C4C381 /* SliderFeeView.xib in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderViewDark.xib in Resources */,
 				E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */,
 				E70CFD031F1F63E500230C81 /* PhotoLibraryPopUp.storyboard in Resources */,
@@ -4804,6 +4824,7 @@
 				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
 				B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */,
 				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
+				B34228881F73CF2700C4C381 /* SliderViewLight.xib in Resources */,
 				E760F4A11F0F8E8F0056D042 /* proximanova-regitalic.otf in Resources */,
 				E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 				B32EEC661EB3545700512FED /* Send.storyboard in Resources */,
@@ -5141,6 +5162,7 @@
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				B3141E661F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
+				B342288B1F73CF6400C4C381 /* SliderFeeView.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
 				B3CBDF201F2B2BD700C80D4E /* ChoiseSmartContractCellLight.m in Sources */,
 				E7847F801F3B315C004A2333 /* QStoreManager.m in Sources */,

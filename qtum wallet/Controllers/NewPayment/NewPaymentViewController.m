@@ -273,6 +273,7 @@ static NSInteger withoutTokenOffset = 40;
     self.feeSlider.maximumValue = maxFee.floatValue;
     self.feeSlider.minimumValue = minFee.floatValue;
     self.feeSlider.value = 0.1f;
+    self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.1"];
     
     self.minFeeLabel.text = [NSString stringWithFormat:@"%@", minFee];
     self.maxFeeLabel.text = [NSString stringWithFormat:@"%@", maxFee];

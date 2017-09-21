@@ -65,7 +65,11 @@
         }
         
         if (total < totalAmount) {
-            completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+            if (unspentOutputs.count > 1) {
+                completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+            } else {
+                completion(TransactionManagerErrorTypeNotEnoughMoneyOnAddress, nil);
+            }
             return;
         }
         
@@ -158,7 +162,12 @@
         return;
     }
     
-    completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+    if (unspentOutputs.count > 1) {
+        completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+    } else {
+        completion(TransactionManagerErrorTypeNotEnoughMoneyOnAddress, nil);
+    }
+    
 }
 
 - (void)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
@@ -201,7 +210,12 @@
         }
         
         if (total < totalAmount) {
-            completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+            
+            if (unspentOutputs.count > 1) {
+                completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+            } else {
+                completion(TransactionManagerErrorTypeNotEnoughMoneyOnAddress, nil);
+            }
             return;
         }
         
@@ -290,7 +304,11 @@
         return;
     }
     
-    completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+    if (unspentOutputs.count > 1) {
+        completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+    } else {
+        completion(TransactionManagerErrorTypeNotEnoughMoneyOnAddress, nil);
+    }
 }
 
 - (BTCTransaction *)smartContractCreationTxWithUnspentOutputs:(NSArray *)unspentOutputs

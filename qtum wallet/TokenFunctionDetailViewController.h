@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ContractFunctionDetailOutput.h"
+#import "SliderFeeView.h"
 
 @class Contract;
 
-@interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput>
+@interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput, SliderFeeViewDelegate>
+
+@property (strong, nonatomic) SliderFeeView* feeView;
 
 - (IBAction)didPressedNextOnTextField:(id)sender;
 - (IBAction)didPressedCancelAction:(id)sender;
 - (IBAction)didPressedCallAction:(id)sender;
+
 
 @end

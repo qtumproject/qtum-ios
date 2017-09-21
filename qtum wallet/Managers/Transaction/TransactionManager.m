@@ -500,7 +500,7 @@ static NSInteger constantFee = 10000000;
 - (BTCAmount)convertValueToAmount:(NSDecimalNumber*) value {
     
     if ([value isKindOfClass:[NSDecimalNumber class]]) {
-        return [[value decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:BTCCoin]] unsignedLongLongValue];
+        return [[value decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:BTCCoin]] intValue];
     }
     return value.doubleValue * BTCCoin;
 }

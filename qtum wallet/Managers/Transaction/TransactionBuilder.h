@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
     TransactionManagerErrorTypeServer,
     TransactionManagerErrorTypeOups,
     TransactionManagerErrorTypeNotEnoughMoney,
+    TransactionManagerErrorTypeNotEnoughMoneyOnAddress,
     TransactionManagerErrorTypeNotEnoughFee,
     TransactionManagerErrorTypeInvalidAddress
 };
