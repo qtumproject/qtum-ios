@@ -18,8 +18,6 @@
 
 @implementation TransactionBuilder
 
-static double FEE = 10000000;
-
 -(instancetype)initWithScriptBuilder:(TransactionScriptBuilder*) scriptBuilder {
     
     self = [super init];
@@ -33,6 +31,7 @@ static double FEE = 10000000;
 - (void)regularTransactionWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
                                       amount:(CGFloat) amount
                           amountAndAddresses:(NSArray*) amountAndAddresses
+                                     withFee:(NSInteger) fee
                                   walletKeys:(NSArray<BTCKey*>*) walletKeys
                                   andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion {
     
@@ -40,7 +39,7 @@ static double FEE = 10000000;
     if (utxos.count > 0) {
         
         // Find enough outputs to spend the total amount and FEE.
-        BTCAmount totalAmount = amount + FEE;
+        BTCAmount totalAmount = amount + fee;
         
         // Sort utxo in order of
         utxos = [utxos sortedArrayUsingComparator:^(BTCTransactionOutput* obj1, BTCTransactionOutput* obj2) {
@@ -66,13 +65,17 @@ static double FEE = 10000000;
         }
         
         if (total < totalAmount) {
-            completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+            if (unspentOutputs.count > 1) {
+                completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+            } else {
+                completion(TransactionManagerErrorTypeNotEnoughMoneyOnAddress, nil);
+            }
             return;
         }
         
         // Create a new transaction
         BTCTransaction* tx = [[BTCTransaction alloc] init];
-        tx.fee = FEE;
+        tx.fee = fee;
         BTCAmount spentCoins = 0;
         
         // Add all outputs as inputs
@@ -159,22 +162,30 @@ static double FEE = 10000000;
         return;
     }
     
-    completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+    if (unspentOutputs.count > 1) {
+        completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+    } else {
+        completion(TransactionManagerErrorTypeNotEnoughMoneyOnAddress, nil);
+    }
+    
 }
 
-- (BTCTransaction *)sendToTokenWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
-                                           amount:(CGFloat) amount
-                                  contractAddress:(NSData*) contractAddress
-                                        toAddress:(NSString*) toAddress
-                                    fromAddresses:(NSArray<NSString*>*) fromAddresses
-                                          bitcode:(NSData*) bitcode
-                                       walletKeys:(NSArray<BTCKey*>*) walletKeys {
-    
+- (void)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
+                                              amount:(CGFloat) amount
+                                     contractAddress:(NSData*) contractAddress
+                                           toAddress:(NSString*) toAddress
+                                       fromAddresses:(NSArray<NSString*>*) fromAddresses
+                                             bitcode:(NSData*) bitcode
+                                             withFee:(NSInteger) fee
+                                        withGasLimit:(NSDecimalNumber*) gasLimit
+                                          walletKeys:(NSArray<BTCKey*>*) walletKeys
+                              andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion {
+
     NSArray *utxos = unspentOutputs;
     if (utxos.count > 0) {
         
         // Find enough outputs to spend the total amount and FEE.
-        BTCAmount totalAmount = amount + FEE;
+        BTCAmount totalAmount = amount + fee;
         
         // Sort utxo in order of
         utxos = [utxos sortedArrayUsingComparator:^(BTCTransactionOutput* obj1, BTCTransactionOutput* obj2) {
@@ -199,12 +210,18 @@ static double FEE = 10000000;
         }
         
         if (total < totalAmount) {
-            return nil;
+            
+            if (unspentOutputs.count > 1) {
+                completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+            } else {
+                completion(TransactionManagerErrorTypeNotEnoughMoneyOnAddress, nil);
+            }
+            return;
         }
         
         // Create a new transaction
         BTCTransaction* tx = [[BTCTransaction alloc] init];
-        tx.fee = FEE;
+        tx.fee = fee;
         BTCAmount spentCoins = 0;
         
         // Add all outputs as inputs
@@ -220,7 +237,7 @@ static double FEE = 10000000;
         // Add required outputs - payment and change
         BTCAmount amount = 0;
         BTCTransactionOutput* paymentOutput;
-        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder sendContractScriptWithBiteCode:bitcode andContractAddress:contractAddress]];
+        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder sendContractScriptWithBiteCode:bitcode andContractAddress:contractAddress andGasLimit:gasLimit]];
         [tx addOutput:paymentOutput];
         
         BTCAddress* changeAddress = [BTCAddress addressWithString:fromAddresses.firstObject];
@@ -246,7 +263,8 @@ static double FEE = 10000000;
             NSAssert([d1 isEqual:d2], @"Transaction must not change within signatureHashForScript!");
             
             if (!hash) {
-                return nil;
+                completion(TransactionManagerErrorTypeOups, nil);
+                return;
             }
             
             BTCKey *key;
@@ -258,7 +276,8 @@ static double FEE = 10000000;
                 }
             }
             if (!key) {
-                return nil;
+                completion(TransactionManagerErrorTypeOups, nil);
+                return;
             }
             
             NSData* signature = [key signatureForHash:hash];
@@ -281,22 +300,28 @@ static double FEE = 10000000;
         NSAssert(r, @"should verify first output");
         
         DLog(@"Hash tx: %@", tx.transactionID);
-        return tx;
+        completion(TransactionManagerErrorTypeNone, tx);
+        return;
     }
     
-    return nil;
+    if (unspentOutputs.count > 1) {
+        completion(TransactionManagerErrorTypeNotEnoughMoney, nil);
+    } else {
+        completion(TransactionManagerErrorTypeNotEnoughMoneyOnAddress, nil);
+    }
 }
 
-- (BTCTransaction *)createSmartContractUnspentOutputs:(NSArray *)unspentOutputs
-                                               amount:(CGFloat) amount
-                                              bitcode:(NSData*) bitcode
-                                           walletKeys:(NSArray<BTCKey*>*) walletKeys {
+- (BTCTransaction *)smartContractCreationTxWithUnspentOutputs:(NSArray *)unspentOutputs
+                                                   withAmount:(CGFloat) amount
+                                                  withBitcode:(NSData*) bitcode
+                                                      withFee:(NSInteger) fee
+                                               withWalletKeys:(NSArray<BTCKey*>*) walletKeys {
     
     NSArray *utxos = unspentOutputs;
     if (utxos.count > 0) {
         
         // Find enough outputs to spend the total amount and FEE.
-        BTCAmount totalAmount = amount + FEE;
+        BTCAmount totalAmount = amount + fee;
         
         // Sort utxo in order of
         utxos = [utxos sortedArrayUsingComparator:^(BTCTransactionOutput* obj1, BTCTransactionOutput* obj2) {
@@ -326,7 +351,7 @@ static double FEE = 10000000;
         
         // Create a new transaction
         BTCTransaction* tx = [[BTCTransaction alloc] init];
-        tx.fee = FEE;
+        tx.fee = fee;
         BTCAmount spentCoins = 0;
         
         // Add all outputs as inputs

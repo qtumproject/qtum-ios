@@ -14,6 +14,6 @@
 + (void)createQRCodeFromPublicAddress:(NSString *)publicAddressString tokenAddress:(NSString *)tokenAddress andAmount:(NSString *)amountString forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock;
 + (void)createQRCodeFromContractsTokensArray:(NSArray *)array forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock;
 
-+ (QRCodeItem *)getNewPaymentDictionaryFromString:(NSString *)string;
++ (SendInfoItem *)getNewPaymentDictionaryFromString:(NSString *)string;
 
 @end

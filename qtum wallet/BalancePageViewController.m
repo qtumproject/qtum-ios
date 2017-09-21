@@ -196,7 +196,9 @@
 - (void)setScrollEnable:(BOOL)enable {
     
     self.enabledScroll = enable;
-    self.scrollView.scrollEnabled = enable;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.scrollView.scrollEnabled = enable;
+    });
 }
 
 - (void)setPageControllHidden:(BOOL) hidden {

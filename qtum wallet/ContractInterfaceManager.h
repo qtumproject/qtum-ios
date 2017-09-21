@@ -19,6 +19,7 @@
 - (NSData*)tokenBitecodeWithTemplate:(NSString*)templateName andParam:(NSDictionary*) args;
 - (NSData*)tokenBitecodeWithTemplate:(NSString*)templateName andArray:(NSArray*) args;
 - (NSString*)stringHashOfFunction:(AbiinterfaceItem*) fuctionItem;
+- (NSString*)stringHashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param;
 - (NSData*)hashOfFunction:(AbiinterfaceItem*) fuctionItem;
 - (NSData*)hashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param;
 - (NSArray*)arrayFromAbiString:(NSString*) abiString;

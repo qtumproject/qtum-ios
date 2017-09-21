@@ -220,7 +220,13 @@ NSInteger const QStoreSearchCount = 20;
     
     NSArray *array = @[@{@"amount" : [buyRequest getAmountNumber], @"address" : buyRequest.addressString}];
     
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys] toAddressAndAmount:array andHandler:^(TransactionManagerErrorType errorType, id response) {
+    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet
+                                                                    allKeys]
+                                                toAddressAndAmount:array
+                                                               fee:nil
+                                                        andHandler:^(TransactionManagerErrorType errorType,
+                                                                     id response,
+                                                                     NSDecimalNumber* estimateFee) {
         if (errorType == TransactionManagerErrorTypeNone) {
             success();
         } else {

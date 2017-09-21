@@ -27,6 +27,15 @@
     return data;
 }
 
+- (NSNumber*)adaptiveDataForFeePerKb:(id) data {
+    
+    NSNumber* fee = data[@"fee_per_kb"];
+    if ([fee isKindOfClass:[NSNumber class]]) {
+        return fee;
+    }
+    return nil;
+}
+
 - (id)adaptiveDataForBalance:(id) balances {
     
     if ([balances isKindOfClass:[NSDictionary class]]) {

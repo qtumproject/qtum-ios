@@ -16,6 +16,9 @@
 
 @property (weak, nonatomic) id <SendCoordinatorDelegate> delegate;
 
-- (void)setForSendQRCodeItem:(QRCodeItem *)item;
+- (void)setForSendSendInfoItem:(SendInfoItem *)item;
+- (void)setForToken:(Contract*) aToken withAddress:(NSString*) address andAmount:(NSString*) amount;
+- (void)didSelectedFromTabbar;
+
 
 @end

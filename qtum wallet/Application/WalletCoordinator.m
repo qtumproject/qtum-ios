@@ -81,9 +81,10 @@
 
 #pragma mark - QRCodeViewControllerDelegate
 
-- (void)didQRCodeScannedWithQRCodeItem:(QRCodeItem *)item {
+- (void)didQRCodeScannedWithSendInfoItem:(SendInfoItem *)item {
+    
     [self.navigationController popViewControllerAnimated:NO];
-    [self.delegate createPaymentFromQRCodeItem:item];
+    [self.delegate createPaymentFromSendInfoItem:item];
 }
 
 #pragma mark - Coordinatorable
@@ -320,6 +321,12 @@
 #pragma mark - AddressLibruaryCoordinator, TokenAddressLibraryCoordinatorDelegate
 
 - (void)coordinatorLibraryDidEnd:(BaseCoordinator*)coordinator {
+    [self removeDependency:coordinator];
+}
+
+- (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator*)coordinator withQrCodeItem:(SendInfoItem*) item {
+    
+    [self.delegate createPaymentFromSendInfoItem:item];
     [self removeDependency:coordinator];
 }
 

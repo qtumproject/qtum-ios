@@ -45,20 +45,16 @@
 
 -(void)makeTransferFromAddress:(NSString*)from toAddress:(NSString*) to withAmount:(NSString* )amount {
     
-    NSDecimalNumber *amountDecimalContainer = [NSDecimalNumber decimalNumberWithString:amount];
+//    NSDecimalNumber *amountDecimalContainer = [NSDecimalNumber decimalNumberWithString:amount];
     
     //multiply amount by decimal 
-    amountDecimalContainer = [amountDecimalContainer numberWithPowerOf10:self.token.decimals];
+//    amountDecimalContainer = [amountDecimalContainer numberWithPowerOf10:self.token.decimals];
     
-    __weak __typeof(self)weakSelf = self;
-    
-    [self showLoaderPopUp];
-    
-    [[TransactionManager sharedInstance] sendToken:self.token fromAddress:from toAddress:to amount:amountDecimalContainer andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
+//    __weak __typeof(self)weakSelf = self;
         
-        [weakSelf hideLoaderPopUp];
-        [weakSelf showStatusOfPayment:errorType];
-    }];
+    SendInfoItem *item = [[SendInfoItem alloc] initWithQtumAddress:to tokenAddress:self.token.contractAddress amountString:amount fromQtumAddress:from];
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate coordinatorLibraryDidEnd:self withQrCodeItem:item];
 }
 
 #pragma mark - Popup
@@ -130,6 +126,7 @@
 - (void)okButtonPressed:(AddressTransferPopupViewController *)sender {
     
     if ([sender isKindOfClass:[AddressTransferPopupViewController class]]) {
+        [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
         [self makeTransferFromAddress:sender.fromAddress toAddress:sender.toAddress withAmount:[sender.amount stringByReplacingOccurrencesOfString:@"," withString:@"."]];
     } else {
         [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];

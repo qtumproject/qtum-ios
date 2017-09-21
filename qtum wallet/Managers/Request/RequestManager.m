@@ -510,4 +510,21 @@ NSString *const BASE_URL = @"http://163.172.251.4:5931/";
     }];
 }
 
+
+- (void)getFeePerKbWithSuccessHandler:(void(^)(NSNumber* feePerKb))success
+                    andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    NSString *path = @"/estimate-fee-per-kb?nBlocks=2";
+    
+    __weak __typeof(self)weakSelf = self;
+    
+    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+
+        success([weakSelf.adapter adaptiveDataForFeePerKb:responseObject]);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        
+        failure(error, message);
+    }];
+}
+
 @end

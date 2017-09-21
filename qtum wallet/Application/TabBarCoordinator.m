@@ -61,6 +61,7 @@
 -(void)didSelecteSendTabWithController:(UIViewController*)controller{
     
     if (!self.sendAlreadyStarted) {
+        
         self.sendAlreadyStarted = YES;
         SendCoordinator* coordinator = [[SendCoordinator alloc] initWithNavigationController:(UINavigationController*)controller];
         coordinator.delegate = self;
@@ -68,6 +69,9 @@
         self.sendCoordinator = coordinator;
         [self addDependency:coordinator];
         [self checkTabsController:controller];
+    } else {
+        
+        [self.sendCoordinator didSelectedFromTabbar];
     }
 }
 
@@ -99,9 +103,9 @@
     NSAssert([controller isKindOfClass:[UINavigationController class]], @"Tabs must be navigation");
 }
 
--(void)createPaymentFromQRCodeItem:(QRCodeItem *)item {
+-(void)createPaymentFromSendInfoItem:(SendInfoItem *)item {
     [self.tabbarOutput selectSendController];
-    [self.sendCoordinator setForSendQRCodeItem:item];
+    [self.sendCoordinator setForSendSendInfoItem:item];
 }
 
 -(void)showControllerByIndex:(NSInteger)index {
@@ -114,10 +118,10 @@
     return self.tabbarOutput.viewControllers[index];
 }
 
-- (void)startFromSendWithQRCodeItem:(QRCodeItem *)item {
+- (void)startFromSendWithSendInfoItem:(SendInfoItem *)item {
     [self start];
     [self.tabbarOutput selectSendController];
-    [self.sendCoordinator setForSendQRCodeItem:item];
+    [self.sendCoordinator setForSendSendInfoItem:item];
 }
 
 

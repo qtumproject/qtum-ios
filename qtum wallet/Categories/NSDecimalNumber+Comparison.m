@@ -27,6 +27,7 @@
 }
 
 - (BOOL)isEqualToDecimalNumber:(NSDecimalNumber *)decimalNumber {
+    
     return [self compare:decimalNumber] == NSOrderedSame;
 }
 

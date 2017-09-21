@@ -22,10 +22,12 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenTextField;
+@property (weak, nonatomic) IBOutlet TextFieldWithLine *feeTextField;
 
 @property (weak, nonatomic) IBOutlet UIButton *tokenButton;
 @property (weak, nonatomic) IBOutlet UIImageView *tokenDisclousureImage;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UISlider *feeSlider;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
@@ -36,13 +38,23 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendButtonHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *minFeeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *maxFeeLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *fromAmountToSendButtonOffset;
 
 
 @property (strong,nonatomic) NSString* adress;
 @property (strong,nonatomic) NSString* amount;
+@property (strong,nonatomic) NSDecimalNumber* FEE;
+@property (strong,nonatomic) NSDecimalNumber* minFee;
+@property (strong,nonatomic) NSDecimalNumber* maxFee;
+
+
 @property (nonatomic) CGFloat standartTopOffsetForSendButton;
 
 @property (nonatomic) BOOL needUpdateTexfFields;
+@property (nonatomic) BOOL isTokenChoosen;
+
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
 
@@ -74,6 +86,9 @@ static NSInteger withoutTokenOffset = 40;
 
     self.sendButtomBottomOffset = 27;
     self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+    
+    [self configFee];
+    
     [self.amountTextField setEnablePast:NO];
     
     [self.amountTextField addTarget:self action:@selector(updateSendButton) forControlEvents:UIControlEventEditingChanged];
@@ -87,26 +102,47 @@ static NSInteger withoutTokenOffset = 40;
     [self updateTextFields];
     [self.delegate didViewLoad];
     [self updateScrollsConstraints];
+    //[self updateFeeInputs];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-    
     [self updateSendButton];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
     
+    [super viewWillDisappear:animated];
     [self.view endEditing:NO];
 }
 
 - (void)dealloc{
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)configFee {
+    
+    [self.feeTextField setEnablePast:NO];
+    self.feeSlider.minimumValue = 0.001f;
+    self.feeSlider.maximumValue = 0.2f;
+    self.feeSlider.value = 0.1;
+    self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.1"];
+    self.feeTextField.text = @"0,1";
+}
+
+-(void)updateFeeInputs {
+    
+    self.feeSlider.hidden = self.isTokenChoosen;
+    self.feeTextField.hidden = self.isTokenChoosen;
+    self.maxFeeLabel.hidden = self.isTokenChoosen;
+    self.minFeeLabel.hidden = self.isTokenChoosen;
+    self.fromAmountToSendButtonOffset.constant = self.isTokenChoosen ? 40 : 210;
+}
+
 - (void)updateTextFields {
+    
     if (self.needUpdateTexfFields && self.addressTextField && self.amountTextField) {
         self.addressTextField.text = self.adress;
         self.amountTextField.text = self.amount;
@@ -120,6 +156,26 @@ static NSInteger withoutTokenOffset = 40;
     
     self.sendButton.enabled = isFilled;
     self.sendButton.alpha = isFilled ? 1 : 0.5f;
+}
+
+-(void)normalizeFee {
+    
+    NSString* feeValueString = [self.feeTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+    
+    if ([feeValue isGreaterThan:self.maxFee] ) {
+        
+        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.maxFee];;
+        self.FEE = self.maxFee;
+        
+    } else if ([feeValue isLessThan:self.minFee]) {
+        
+        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.minFee];
+        self.FEE = self.minFee;
+    } else {
+        
+        self.FEE = feeValue;
+    }
 }
 
 -(BOOL)isTextFieldsFilled {
@@ -165,6 +221,7 @@ static NSInteger withoutTokenOffset = 40;
     
     if (!choosenExist) {
         self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", nil);
+        self.isTokenChoosen = NO;
     }
     
     [self.view setNeedsLayout];
@@ -208,6 +265,21 @@ static NSInteger withoutTokenOffset = 40;
 -(void)updateContentWithContract:(Contract*) contract {
     
     self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+    self.isTokenChoosen = contract;
+}
+
+- (void)setMinFee:(NSNumber*) minFee andMaxFee:(NSNumber*) maxFee {
+    
+    self.feeSlider.maximumValue = maxFee.floatValue;
+    self.feeSlider.minimumValue = minFee.floatValue;
+    self.feeSlider.value = 0.1f;
+    self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.1"];
+    
+    self.minFeeLabel.text = [NSString stringWithFormat:@"%@", minFee];
+    self.maxFeeLabel.text = [NSString stringWithFormat:@"%@", maxFee];
+    
+    self.maxFee = [maxFee decimalNumber];
+    self.minFee = [minFee decimalNumber];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
@@ -228,8 +300,13 @@ static NSInteger withoutTokenOffset = 40;
 
 #pragma mark - iMessage
 
-- (void)setQRCodeItem:(QRCodeItem *)item {
-    self.adress = item.qtumAddress;
+- (void)setSendInfoItem:(SendInfoItem *)item {
+    
+    if (item.qtumAddressKey) {
+        self.adress = item.qtumAddressKey.address.string;
+    } else {
+        self.adress = item.qtumAddress;
+    }
     self.amount = item.amountString;
     self.needUpdateTexfFields = YES;
     
@@ -241,15 +318,37 @@ static NSInteger withoutTokenOffset = 40;
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
 
     if (textField == self.amountTextField) {
-        if ([string isEqualToString:@","]) {
+        if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
             return ![textField.text containsString:string] && !(textField.text.length == 0);
+        }
+    } else if (textField == self.feeTextField) {
+        
+        if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
+            
+            return ![textField.text containsString:string] && !(textField.text.length == 0);
+            
+        } else {
+            
+            NSString* feeValueString = [[textField.text stringByAppendingString:string] stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+            
+           [self.feeSlider setValue:feeValue.floatValue animated:YES];
         }
     }
     
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if (textField == self.feeTextField) {
+        
+        [self normalizeFee];
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
     [textField resignFirstResponder];
     return YES;
 }
@@ -288,7 +387,17 @@ static NSInteger withoutTokenOffset = 40;
     NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:[self correctAmountString]];
     
     NSString *address = self.addressTextField.text;
-    [self.delegate didPresseSendActionWithAddress:address andAmount:amount];
+    
+    [self normalizeFee];
+
+    [self.delegate didPresseSendActionWithAddress:address andAmount:amount andFee:self.FEE];
+}
+
+- (IBAction)didChangeFeeSlider:(UISlider*) slider {
+    
+    NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithFloat:slider.value];
+    self.FEE = sliderValue;
+    self.feeTextField.text = [[NSString stringWithFormat:@"%@", self.FEE] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
 
 - (IBAction)actionVoidTap:(id)sender{
@@ -320,20 +429,30 @@ static NSInteger withoutTokenOffset = 40;
 
 -(void)keyboardDidShow:(NSNotification *)sender {
     
+    UITextField* highlightedTextField;
+    
     if ([self.amountTextField isFirstResponder]) {
-        NSDictionary *info = [sender userInfo];
-        CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-        CGFloat kbHeight = kbSize.height - 50.0f;
-        CGFloat topOfKeyboard = self.scrollView.frame.size.height - kbHeight;
         
-        CGFloat bottomSend = self.sendButton.frame.size.height + self.sendButton.frame.origin.y;
+        highlightedTextField = self.amountTextField;
+    } else if ([self.feeTextField isFirstResponder]){
         
-        CGFloat forTopOffset = bottomSend - topOfKeyboard;
-        if (forTopOffset > 0) {
-            
-            CGPoint bottomOffset = CGPointMake(0, forTopOffset + 20);
-            [self.scrollView setContentOffset:bottomOffset animated:YES];
-        }
+        highlightedTextField = self.feeTextField;
+    } else {
+        
+        return;
+    }
+    
+    NSDictionary *info = [sender userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGFloat kbHeight = kbSize.height - 50.0f;
+    CGFloat topOfKeyboard = self.scrollView.frame.size.height - kbHeight;
+    
+    CGFloat offset = highlightedTextField.frame.origin.y - topOfKeyboard;
+    
+    if (offset > 0) {
+        
+        CGPoint bottomOffset = CGPointMake(0, offset + 20);
+        [self.scrollView setContentOffset:bottomOffset animated:YES];
     }
 }
 

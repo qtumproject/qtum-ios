@@ -144,4 +144,8 @@
   andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 
+- (void)getFeePerKbWithSuccessHandler:(void(^)(NSNumber* feePerKb))success
+                    andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+
 @end

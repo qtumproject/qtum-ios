@@ -268,7 +268,10 @@ ContractFunctionsOutputDelegate>
     
     NSData* contractWithArgs = [[ContractInterfaceManager sharedInstance] tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
     
-    [[TransactionManager sharedInstance] createSmartContractWithKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andBitcode:contractWithArgs andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
+    [[TransactionManager sharedInstance] createSmartContractWithKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                          andBitcode:contractWithArgs
+                                                                 fee:nil
+                                                          andHandler:^(NSError *error, BTCTransaction *transaction, NSString* hashTransaction) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (!error) {
             BTCTransactionInput* input = transaction.inputs[0];
@@ -292,8 +295,20 @@ ContractFunctionsOutputDelegate>
     output.delegate = self;
     output.token = token;
     output.fromQStore = fromQStore;
+    
+    __weak __typeof(self)weakSelf = self;
     self.functionDetailController = output;
     [self.navigationController pushViewController:[output toPresent] animated:true];
+    
+    [weakSelf.functionDetailController showLoader];
+    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(NSNumber *feePerKb) {
+        
+        NSDecimalNumber* minFee = [feePerKb decimalNumber];
+        NSDecimalNumber* maxFee = [NSDecimalNumber decimalNumberWithString:@"1"];
+        
+        [weakSelf.functionDetailController setMinFee:minFee andMaxFee: maxFee];
+        [weakSelf.functionDetailController hideLoader];
+    }];
 }
 
 -(void)didPressedQuit {
@@ -314,7 +329,8 @@ ContractFunctionsOutputDelegate>
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Contract*) token {
+                       andToken:(Contract*) token
+                        andFee:(NSDecimalNumber *)fee {
     
     NSMutableArray* param = @[].mutableCopy;
     for (int i = 0; i < inputs.count; i++) {
@@ -329,14 +345,55 @@ ContractFunctionsOutputDelegate>
     }];
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:item appendingParam:param];
     
+    [self.functionDetailController showLoader];
+
     __weak __typeof(self)weakSelf = self;
     [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction
                                                 fromAddresses:addressWithTokensValue
                                                     toAddress:nil
-                                                   walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction) {
+                                                   walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                          fee:fee
+                                                 withGasLimit:nil
+                                                   andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber* estimatedFee) {
         
+        [weakSelf.functionDetailController hideLoader];
+       if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+           [weakSelf showStatusOfPayment:errorType withEstimateFee:estimatedFee];
+       } else {
+           [weakSelf showStatusOfPayment:errorType];
+       }
         [weakSelf.functionDetailController showResultViewWithOutputs:nil];
     }];
+}
+
+- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType {
+    
+    switch (errorType) {
+        case TransactionManagerErrorTypeNone:
+            [self.functionDetailController showCompletedPopUp];
+            break;
+        case TransactionManagerErrorTypeNoInternetConnection:
+            break;
+        case TransactionManagerErrorTypeNotEnoughMoney:
+            [self.functionDetailController showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction", nil)];
+            break;
+        case TransactionManagerErrorTypeInvalidAddress:
+            [self.functionDetailController showErrorPopUp:NSLocalizedString(@"Invalid QTUM Address", nil)];
+            break;
+        case TransactionManagerErrorTypeNotEnoughMoneyOnAddress:
+            [self.functionDetailController showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction at this address", nil)];
+            break;
+
+        default:
+            [self.functionDetailController showErrorPopUp:nil];
+            break;
+    }
+}
+
+- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType withEstimateFee:(NSDecimalNumber*) estimatedFee{
+    
+    NSString* errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee];
+    [self.functionDetailController showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
 

@@ -13,6 +13,7 @@
 @protocol TokenAddressLibraryCoordinatorDelegate <NSObject>
 
 - (void)coordinatorLibraryDidEnd:(TokenAddressLibraryCoordinator*)coordinator;
+- (void)coordinatorLibraryDidEnd:(TokenAddressLibraryCoordinator*)coordinator withQrCodeItem:(SendInfoItem*) item;
 
 @end
 

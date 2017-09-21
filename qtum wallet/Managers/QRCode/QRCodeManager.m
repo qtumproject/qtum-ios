@@ -42,7 +42,7 @@
 
 + (void)createQRCodeFromPublicAddress:(NSString *)publicAddressString tokenAddress:(NSString *)tokenAddress andAmount:(NSString *)amountString forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock {
     
-    QRCodeItem *item = [[QRCodeItem alloc] initWithQtumAddress:publicAddressString tokenAddress:tokenAddress amountString:amountString];
+    SendInfoItem *item = [[SendInfoItem alloc] initWithQtumAddress:publicAddressString tokenAddress:tokenAddress amountString:amountString];
     
     NSString *string = [item stringByItem];
     if (!string) {
@@ -66,9 +66,9 @@
     }];
 }
 
-+ (QRCodeItem *)getNewPaymentDictionaryFromString:(NSString *)string {
++ (SendInfoItem *)getNewPaymentDictionaryFromString:(NSString *)string {
     
-    QRCodeItem *item = [[QRCodeItem alloc] initWithString:string];
+    SendInfoItem *item = [[SendInfoItem alloc] initWithString:string];
     return item;
 }
 

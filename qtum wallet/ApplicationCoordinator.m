@@ -96,12 +96,16 @@
 
 -(void)prepareDataObserving {
     
+    __weak __typeof(self)weakSelf = self;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self.notificationManager registerForRemoutNotifications];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.notificationManager registerForRemoutNotifications];
+        });
     });
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.walletManager startObservingForAllSpendable];
+        [weakSelf.walletManager startObservingForAllSpendable];
         [[ContractManager sharedInstance] startObservingForAllSpendable];
         [[QStoreManager sharedInstance] startObservingForAllRequests];
     });
@@ -326,8 +330,8 @@
     [self addDependency:coordinator];
     
     if (self.adress) {
-        QRCodeItem *item = [[QRCodeItem alloc] initWithQtumAddress:self.adress tokenAddress:nil amountString:self.amount];
-        [coordinator startFromSendWithQRCodeItem:item];
+        SendInfoItem *item = [[SendInfoItem alloc] initWithQtumAddress:self.adress tokenAddress:nil amountString:self.amount];
+        [coordinator startFromSendWithSendInfoItem:item];
     } else {
         [coordinator start];
 

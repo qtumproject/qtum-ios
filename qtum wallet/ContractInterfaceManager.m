@@ -138,6 +138,12 @@
     return [[functionSignature sha3:SHA3256] substringToIndex:8];
 }
 
+- (NSString*)stringHashOfFunction:(AbiinterfaceItem*) fuctionItem appendingParam:(NSArray*) param{
+    
+    NSData* hashOfFunc = [self hashOfFunction:fuctionItem appendingParam:param];
+    return [NSString hexadecimalString:hashOfFunc];
+}
+
 - (NSData*)hashOfFunction:(AbiinterfaceItem*) fuctionItem {
     
     return [NSString dataFromHexString:[self stringHashOfFunction:fuctionItem]];
