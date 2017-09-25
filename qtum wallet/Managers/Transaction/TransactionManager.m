@@ -419,7 +419,8 @@ static NSInteger constantFee = 10000000;
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
         BTCTransaction* __block transaction;
-        NSDecimalNumber* __block gas = [[gasLimit decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]] decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithUnsignedInteger:[weakSelf.scriptBuilder gasPrice]]];
+        NSDecimalNumber *gasLimitFromConstant = [NSDecimalNumber decimalNumberWithString:@"2000000"];
+        NSDecimalNumber* __block gas = [[gasLimitFromConstant decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]] decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithUnsignedInteger:[weakSelf.scriptBuilder gasPrice]]];
         NSDecimalNumber* __block estimatedFee = fee;
         NSDecimalNumber* __block passedFee;
         TransactionManagerErrorType __block errorType;
@@ -433,7 +434,7 @@ static NSInteger constantFee = 10000000;
                                                          fromAddresses:fromAddresses
                                                                bitcode:bitcode
                                                                withFee:[self feeFromNumber:estimatedFee]
-                                                          withGasLimit:gasLimit
+                                                          withGasLimit:gasLimitFromConstant
                                                             walletKeys:walletKeys
                                                             andHandler:^(TransactionManagerErrorType aErrorType, BTCTransaction *aTransaction) {
                                                                 
