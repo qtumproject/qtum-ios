@@ -3,7 +3,7 @@
 //  iMessageExtension
 //
 //  Created by Vladimir Lebedevich on 23.02.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "MessagesViewController.h"

@@ -3,7 +3,7 @@
 //  TCA2016
 //
 //  Created by Nikita on 09.08.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Copyright © 2016 QTUM. All rights reserved.
 //
 
 #import "NSBundle+TCAStyleProvider.h"
