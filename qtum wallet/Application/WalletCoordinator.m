@@ -69,7 +69,7 @@
     if (self) {
         _navigationController = navigationController;
         _isNewDataLoaded = YES;
-        _requestQueue = dispatch_queue_create("com.pixelplex.requestQueue", DISPATCH_QUEUE_SERIAL);
+        _requestQueue = dispatch_queue_create("com.qtum.requestQueue", DISPATCH_QUEUE_SERIAL);
         [self subcribeEvents];
     }
     return self;

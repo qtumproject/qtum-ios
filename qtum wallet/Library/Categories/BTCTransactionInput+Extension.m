@@ -9,7 +9,7 @@
 #import "BTCTransactionInput+Extension.h"
 #import <objc/runtime.h>
 
-NSString const *keyIn = @"com.pixelplex.input.extension";
+NSString const *keyIn = @"com.qtum.input.extension";
 
 @implementation BTCTransactionInput (Extension)
 
