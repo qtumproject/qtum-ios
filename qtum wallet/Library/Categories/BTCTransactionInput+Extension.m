@@ -3,13 +3,13 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 17.04.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "BTCTransactionInput+Extension.h"
 #import <objc/runtime.h>
 
-NSString const *keyIn = @"com.pixelplex.input.extension";
+NSString const *keyIn = @"com.qtum.input.extension";
 
 @implementation BTCTransactionInput (Extension)
 

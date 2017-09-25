@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 22.08.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "QStoreRequestManager.h"
@@ -32,7 +32,7 @@ NSString *const kQStoreFinishedBuyRequests = @"kQStoreFinishedBuyRequests";
         _buyRequests = @[].mutableCopy;
         _confirmedBuyRequests = @[].mutableCopy;
         _finishedBuyRequests = @[].mutableCopy;
-        _writingQueue = dispatch_queue_create("com.example.pixelplex.qstore.requests", NULL);
+        _writingQueue = dispatch_queue_create("com.example.qtum.qstore.requests", NULL);
     }
     return self;
 }
@@ -50,7 +50,7 @@ NSString *const kQStoreFinishedBuyRequests = @"kQStoreFinishedBuyRequests";
         _buyRequests = buyRequests ?: @[].mutableCopy;
         _confirmedBuyRequests = confirmedBuyRequests ?: @[].mutableCopy;
         _finishedBuyRequests = finishedBuyRequests ?: @[].mutableCopy;
-        _writingQueue = dispatch_queue_create("com.example.pixelplex.qstore.requests", NULL);
+        _writingQueue = dispatch_queue_create("com.example.qtum.qstore.requests", NULL);
     }
     
     return self;

@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 02.11.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Copyright © 2016 QTUM. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -52,7 +52,7 @@
                                         NSDecimalNumber* estimatedFee)) completion;
 
 - (void)sendToken:(Contract*) token
-        fromAddress:(NSString*) frommAddress
+        fromAddress:(NSString*) fromAddress
          toAddress:(NSString*) toAddress
             amount:(NSDecimalNumber*) amount
               fee:(NSDecimalNumber*) fee

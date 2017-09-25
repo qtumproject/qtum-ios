@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="proximanova-semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
         <array key="simplonmono-medium.ttf">
             <string>simplonmono-medium</string>
         </array>
@@ -17,10 +24,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Confirm Pop Up View Controller-->
+        <!--Confirm Pop Up View Controller Dark-->
         <scene sceneID="aqB-E1-uRc">
             <objects>
-                <viewController storyboardIdentifier="ConfirmPopUp" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iIw-7Q-0BX" customClass="ConfirmPopUpViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmPopUpViewControllerDark" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iIw-7Q-0BX" customClass="ConfirmPopUpViewControllerDark" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O2a-Oj-ysC"/>
                         <viewControllerLayoutGuide type="bottom" id="5iT-32-UQM"/>
@@ -36,7 +43,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMn-C4-S2G">
                                 <rect key="frame" x="30" y="249.5" width="315" height="168"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoz-gH-8qx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoz-gH-8qx">
                                         <rect key="frame" x="20" y="50" width="275" height="36"/>
                                         <string key="text">QTUM App would like to
 access your photos</string>
@@ -103,5 +110,124 @@ access your photos</string>
             </objects>
             <point key="canvasLocation" x="2.3999999999999999" y="142.57871064467767"/>
         </scene>
+        <!--Confirm Pop Up View Controller Light-->
+        <scene sceneID="uDo-et-XYD">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmPopUpViewControllerLight" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hiK-Pe-RSx" customClass="ConfirmPopUpViewControllerLight" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b7j-y7-ILw"/>
+                        <viewControllerLayoutGuide type="bottom" id="OyT-8k-i4s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jxP-9h-467">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGe-0M-QCg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axM-kt-mmb">
+                                <rect key="frame" x="57" y="135" width="262" height="197"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="6fC-ay-udq">
+                                        <rect key="frame" x="36" y="31" width="13" height="13"/>
+                                        <color key="tintColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAO-6G-bP6">
+                                        <rect key="frame" x="52" y="30" width="158.5" height="63"/>
+                                        <string key="text">QTUM App would like to
+access your photos</string>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlG-51-anU">
+                                        <rect key="frame" x="16" y="141" width="110" height="40"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="n9Z-pW-4D8"/>
+                                            <constraint firstAttribute="width" constant="110" id="rGq-Vo-7Mn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="DON’T ALLOW">
+                                            <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionCancel:" destination="hiK-Pe-RSx" eventType="touchUpInside" id="PR1-oG-zhm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amq-JT-NED">
+                                        <rect key="frame" x="136" y="141" width="110" height="40"/>
+                                        <color key="backgroundColor" red="0.21176470589999999" green="0.72549019609999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="naA-f6-nA2"/>
+                                            <constraint firstAttribute="height" constant="40" id="rYX-q4-LRb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="TRY AGAIN">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="actionOk:" destination="hiK-Pe-RSx" eventType="touchUpInside" id="29a-uq-jzC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="UlG-51-anU" firstAttribute="centerY" secondItem="amq-JT-NED" secondAttribute="centerY" id="1yf-N7-LlL"/>
+                                    <constraint firstItem="6fC-ay-udq" firstAttribute="top" secondItem="wAO-6G-bP6" secondAttribute="top" constant="1" id="2NN-V3-QaX"/>
+                                    <constraint firstItem="amq-JT-NED" firstAttribute="top" secondItem="wAO-6G-bP6" secondAttribute="bottom" constant="48" id="Hxl-zW-PsZ"/>
+                                    <constraint firstItem="wAO-6G-bP6" firstAttribute="centerX" secondItem="axM-kt-mmb" secondAttribute="centerX" id="PN8-0M-EX6"/>
+                                    <constraint firstAttribute="width" constant="262" id="iIw-Od-PBi"/>
+                                    <constraint firstItem="wAO-6G-bP6" firstAttribute="top" secondItem="axM-kt-mmb" secondAttribute="top" constant="30" id="koj-RP-cHC"/>
+                                    <constraint firstItem="UlG-51-anU" firstAttribute="centerX" secondItem="axM-kt-mmb" secondAttribute="centerX" constant="-60" id="opw-yJ-AUE"/>
+                                    <constraint firstItem="amq-JT-NED" firstAttribute="leading" secondItem="UlG-51-anU" secondAttribute="trailing" constant="10" id="sJY-uC-ite"/>
+                                    <constraint firstAttribute="bottom" secondItem="amq-JT-NED" secondAttribute="bottom" constant="16" id="vXk-nH-wdg"/>
+                                    <constraint firstItem="wAO-6G-bP6" firstAttribute="leading" secondItem="6fC-ay-udq" secondAttribute="trailing" constant="3" id="xgW-gB-enl"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wAO-6G-bP6" secondAttribute="trailing" constant="40" id="ye5-Ee-Cse"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kGe-0M-QCg" firstAttribute="top" secondItem="jxP-9h-467" secondAttribute="top" id="Etu-fF-Oo7"/>
+                            <constraint firstItem="axM-kt-mmb" firstAttribute="centerX" secondItem="jxP-9h-467" secondAttribute="centerX" id="LXn-z5-H4a"/>
+                            <constraint firstItem="axM-kt-mmb" firstAttribute="centerY" secondItem="jxP-9h-467" secondAttribute="centerY" multiplier="0.7" id="OLw-7p-1oV"/>
+                            <constraint firstAttribute="trailing" secondItem="kGe-0M-QCg" secondAttribute="trailing" id="PD8-Nl-DN1"/>
+                            <constraint firstItem="OyT-8k-i4s" firstAttribute="top" secondItem="kGe-0M-QCg" secondAttribute="bottom" id="joe-Eu-xqM"/>
+                            <constraint firstItem="kGe-0M-QCg" firstAttribute="leading" secondItem="jxP-9h-467" secondAttribute="leading" id="yXd-F6-zQa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="UlG-51-anU" id="vI8-Ud-gZ2"/>
+                        <outlet property="okButton" destination="amq-JT-NED" id="f9p-pK-DAm"/>
+                        <outlet property="titleLabel" destination="wAO-6G-bP6" id="o0V-aC-7NI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yxT-DT-PR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="719" y="143"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="ic-confirmed" width="13" height="13"/>
+    </resources>
 </document>

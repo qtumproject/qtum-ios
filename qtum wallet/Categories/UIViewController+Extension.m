@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 26.12.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Copyright © 2016 QTUM. All rights reserved.
 //
 
 #import "UIViewController+Extension.h"
@@ -75,7 +75,8 @@
         [identifire isEqualToString:@"SourceCodePopUpViewController"] ||
         [identifire isEqualToString:@"ConfirmPurchasePopUpViewController"] ||
         [identifire isEqualToString:@"QStoreTemplateDetailViewController"] ||
-        [identifire isEqualToString:@"AboutOutputViewController"]) {
+        [identifire isEqualToString:@"AboutOutputViewController"] ||
+        [identifire isEqualToString:@"ConfirmPopUpViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

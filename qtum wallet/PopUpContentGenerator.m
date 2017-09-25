@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 03.06.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "PopUpContentGenerator.h"
@@ -93,6 +93,11 @@
 
 + (PopUpContent *)contentForRestoredContracts{
     PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Restored successfully", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
+    return content;
+}
+
++ (PopUpContent *)contentForConfirmChangesInSend{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"By changing address or currency, transaction will be processed as a regular transfer ", nil) message:nil okTitle:NSLocalizedString(@"Continue", nil) cancelTitle:NSLocalizedString(@"Cancel", nil)];
     return content;
 }
 

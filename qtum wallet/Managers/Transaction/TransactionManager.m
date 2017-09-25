@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 02.11.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Copyright © 2016 QTUM. All rights reserved.
 //
 
 #import "TransactionManager.h"
@@ -226,7 +226,7 @@ static NSInteger constantFee = 10000000;
 }
 
 - (void)sendToken:(Contract*) token
-      fromAddress:(NSString*) frommAddress
+      fromAddress:(NSString*) fromAddress
         toAddress:(NSString*) toAddress
            amount:(NSDecimalNumber*) amount
               fee:(NSDecimalNumber*) fee
@@ -245,7 +245,7 @@ static NSInteger constantFee = 10000000;
     AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] tokenStandartTransferMethodInterface];
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,[amount stringValue]]];
     
-    NSString* __block addressWithAmountValue = frommAddress;
+    NSString* __block addressWithAmountValue = fromAddress;
     
     NSNumber* addressBalance = token.addressBalanceDictionary[addressWithAmountValue];
     
@@ -419,7 +419,8 @@ static NSInteger constantFee = 10000000;
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
         BTCTransaction* __block transaction;
-        NSDecimalNumber* __block gas = [[gasLimit decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]] decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithUnsignedInteger:[weakSelf.scriptBuilder gasPrice]]];
+        NSDecimalNumber *gasLimitFromConstant = [NSDecimalNumber decimalNumberWithString:@"2000000"];
+        NSDecimalNumber* __block gas = [[gasLimitFromConstant decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]] decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithUnsignedInteger:[weakSelf.scriptBuilder gasPrice]]];
         NSDecimalNumber* __block estimatedFee = fee;
         NSDecimalNumber* __block passedFee;
         TransactionManagerErrorType __block errorType;
@@ -433,7 +434,7 @@ static NSInteger constantFee = 10000000;
                                                          fromAddresses:fromAddresses
                                                                bitcode:bitcode
                                                                withFee:[self feeFromNumber:estimatedFee]
-                                                          withGasLimit:gasLimit
+                                                          withGasLimit:gasLimitFromConstant
                                                             walletKeys:walletKeys
                                                             andHandler:^(TransactionManagerErrorType aErrorType, BTCTransaction *aTransaction) {
                                                                 

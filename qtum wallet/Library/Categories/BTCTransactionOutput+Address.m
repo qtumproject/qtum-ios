@@ -3,13 +3,13 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 17.04.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "BTCTransactionOutput+Address.h"
 #import <objc/runtime.h>
 
-NSString const *keyOut = @"com.pixelplex.output.extension";
+NSString const *keyOut = @"com.qtum.output.extension";
 
 @implementation BTCTransactionOutput (Address)
 

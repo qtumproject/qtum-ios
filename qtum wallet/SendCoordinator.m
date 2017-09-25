@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 04.07.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "SendCoordinator.h"
@@ -27,6 +27,8 @@
 @property (weak, nonatomic) QRCodeViewController* qrCodeOutput;
 @property (weak, nonatomic) NSObject <ChoseTokenPaymentOutput>* tokenPaymentOutput;
 @property (strong,nonatomic) Contract* token;
+
+@property (strong,nonatomic) NSString* fromAddressString;
 @property (strong,nonatomic) BTCKey* fromAddressKey;
 
 @end
@@ -107,6 +109,8 @@
     [self.paymentOutput setSendInfoItem:item];
     
     self.fromAddressKey = item.fromQtumAddressKey;
+    self.fromAddressString = item.fromQtumAddress;
+    
     //bail if we have open 2 qrcode scaners
     if (self.qrCodeOutput) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -120,9 +124,8 @@
     [self setForSendSendInfoItem:item];
 }
 
--(void)didSelectedFromTabbar {
+- (void)didSelectedFromTabbar {
     
-    self.fromAddressKey = nil;
 }
 
 #pragma mark - Observing
@@ -184,7 +187,7 @@
                                                         }];
 }
 
--(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee{
+-(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee {
     
     NSDecimalNumber* amounDivByDecimals = [[amount decimalNumber] numberWithPowerOf10:self.token.decimals];
 
@@ -195,9 +198,9 @@
     [self showLoaderPopUp];
     __weak typeof(self) weakSelf = self;
     
-    if (self.fromAddressKey) {
+    if (self.fromAddressString) {
         [[TransactionManager sharedInstance] sendToken:self.token
-                                           fromAddress:self.fromAddressKey.address.string
+                                           fromAddress:self.fromAddressString
                                              toAddress:address amount:amounDivByDecimals
                                                    fee:[fee decimalNumber] withGasLimit:nil
                                             andHandler:^(TransactionManagerErrorType errorType,
@@ -333,6 +336,15 @@
     } else {
         [self payWithWalletWithAddress:address andAmount:amount andFee:fee];
     }
+}
+
+- (BOOL)needCheckForChanges {
+    return self.fromAddressKey != nil || self.fromAddressString != nil;
+}
+
+- (void)changeToStandartOperation {
+    self.fromAddressKey = nil;
+    self.fromAddressString = nil;
 }
 
 #pragma mark - QRCodeViewControllerDelegate

@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 13.06.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "DataOperation.h"
@@ -234,7 +234,7 @@ NSString *const kWSSLogFileName = @"Logs.csv";
 }
 
 + (NSString *)groupPath {
-    NSString *appGroupDirectoryPath = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.pixelplex.qtum-wallet"].path;
+    NSString *appGroupDirectoryPath = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.qtum.qtum-wallet"].path;
     return appGroupDirectoryPath;
 }
 

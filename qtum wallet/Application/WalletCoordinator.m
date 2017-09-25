@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 02.03.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "WalletCoordinator.h"
@@ -69,7 +69,7 @@
     if (self) {
         _navigationController = navigationController;
         _isNewDataLoaded = YES;
-        _requestQueue = dispatch_queue_create("com.pixelplex.requestQueue", DISPATCH_QUEUE_SERIAL);
+        _requestQueue = dispatch_queue_create("com.qtum.requestQueue", DISPATCH_QUEUE_SERIAL);
         [self subcribeEvents];
     }
     return self;

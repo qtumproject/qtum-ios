@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 03.08.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "TokenAddressLibraryCoordinator.h"
@@ -44,15 +44,9 @@
 }
 
 -(void)makeTransferFromAddress:(NSString*)from toAddress:(NSString*) to withAmount:(NSString* )amount {
-    
-//    NSDecimalNumber *amountDecimalContainer = [NSDecimalNumber decimalNumberWithString:amount];
-    
-    //multiply amount by decimal 
-//    amountDecimalContainer = [amountDecimalContainer numberWithPowerOf10:self.token.decimals];
-    
-//    __weak __typeof(self)weakSelf = self;
         
     SendInfoItem *item = [[SendInfoItem alloc] initWithQtumAddress:to tokenAddress:self.token.contractAddress amountString:amount fromQtumAddress:from];
+    
     [self.navigationController popViewControllerAnimated:YES];
     [self.delegate coordinatorLibraryDidEnd:self withQrCodeItem:item];
 }

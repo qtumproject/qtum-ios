@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 11.08.17.
-//  Copyright © 2017 PixelPlex. All rights reserved.
+//  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "QStoreContractElement.h"

@@ -3,7 +3,7 @@
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 16.11.16.
-//  Copyright © 2016 PixelPlex. All rights reserved.
+//  Copyright © 2016 QTUM. All rights reserved.
 //
 
 #import "RPCRequestManager.h"
@@ -12,7 +12,6 @@
 #import "Wallet.h"
 
 NSString *const BASE_URL_RPC = @"http://user:pw@139.162.49.60:22822/";
-//NSString *const BASE_URL_RPC = @"http://user:pw@s.pixelplex.by:22822/";
 
 @interface RPCRequestManager ()
 
