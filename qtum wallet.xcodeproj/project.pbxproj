@@ -550,6 +550,8 @@
 		E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101C31F15074A00848526 /* HistoryItemViewControllerLight.m */; };
 		E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101CB1F1529EC00848526 /* RecieveViewControllerDark.m */; };
 		E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */; };
+		E7C9FAE01F7908E0005D08AD /* ConfirmPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C9FADF1F7908E0005D08AD /* ConfirmPopUpViewControllerLight.m */; };
+		E7C9FAE31F7908ED005D08AD /* ConfirmPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C9FAE21F7908ED005D08AD /* ConfirmPopUpViewControllerDark.m */; };
 		E7CE63621F027EC200C147B9 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63611F027EC200C147B9 /* CustomSearchBar.m */; };
 		E7CE63681F028E8F00C147B9 /* SelectSearchTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE63671F028E8F00C147B9 /* SelectSearchTypeView.m */; };
 		E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE636A1F029EEF00C147B9 /* QStoreSearchTableViewCell.m */; };
@@ -1807,6 +1809,10 @@
 		E7C101CB1F1529EC00848526 /* RecieveViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewControllerDark.m; sourceTree = "<group>"; };
 		E7C101CD1F1529F700848526 /* RecieveViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecieveViewControllerLight.h; sourceTree = "<group>"; };
 		E7C101CE1F1529F700848526 /* RecieveViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecieveViewControllerLight.m; sourceTree = "<group>"; };
+		E7C9FADE1F7908E0005D08AD /* ConfirmPopUpViewControllerLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmPopUpViewControllerLight.h; sourceTree = "<group>"; };
+		E7C9FADF1F7908E0005D08AD /* ConfirmPopUpViewControllerLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmPopUpViewControllerLight.m; sourceTree = "<group>"; };
+		E7C9FAE11F7908ED005D08AD /* ConfirmPopUpViewControllerDark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmPopUpViewControllerDark.h; sourceTree = "<group>"; };
+		E7C9FAE21F7908ED005D08AD /* ConfirmPopUpViewControllerDark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmPopUpViewControllerDark.m; sourceTree = "<group>"; };
 		E7CE63601F027EC200C147B9 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
 		E7CE63611F027EC200C147B9 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		E7CE63661F028E8F00C147B9 /* SelectSearchTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSearchTypeView.h; sourceTree = "<group>"; };
@@ -4201,6 +4207,19 @@
 			name = RecieveOutput;
 			sourceTree = "<group>";
 		};
+		E7C9FADD1F7908BC005D08AD /* ConfirmPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */,
+				E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */,
+				E7C9FADE1F7908E0005D08AD /* ConfirmPopUpViewControllerLight.h */,
+				E7C9FADF1F7908E0005D08AD /* ConfirmPopUpViewControllerLight.m */,
+				E7C9FAE11F7908ED005D08AD /* ConfirmPopUpViewControllerDark.h */,
+				E7C9FAE21F7908ED005D08AD /* ConfirmPopUpViewControllerDark.m */,
+			);
+			name = ConfirmPopUp;
+			sourceTree = "<group>";
+		};
 		E7D241D61DE6D697003E507B /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -4323,8 +4342,7 @@
 				B36EBC311F2F159C00F4E2F2 /* Photo Libruary */,
 				B36EBC381F2F1B3A00F4E2F2 /* Errors */,
 				B36EBC461F2F4F6900F4E2F2 /* Information Popup */,
-				E73CF6CC1EE2CFB00044DF78 /* ConfirmPopUpViewController.h */,
-				E73CF6CD1EE2CFB00044DF78 /* ConfirmPopUpViewController.m */,
+				E7C9FADD1F7908BC005D08AD /* ConfirmPopUp */,
 				B3DB3E391F2F555800AA408F /* Loader Popup */,
 				B3DB3E401F2F6D4900AA408F /* Restore Popup */,
 				B36EBC3F1F2F1DF100F4E2F2 /* Security Popup */,
@@ -5267,6 +5285,7 @@
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */,
+				E7C9FAE01F7908E0005D08AD /* ConfirmPopUpViewControllerLight.m in Sources */,
 				B3DC9D371F331F8D006B2E07 /* TokenAddressContolCellDark.m in Sources */,
 				B35DF62C1F2084CA00316953 /* TouchIDService.m in Sources */,
 				B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */,
@@ -5357,6 +5376,7 @@
 				E71F1C8A1F1CEBA400961B19 /* FavouriteTemplateCollectionViewCell.m in Sources */,
 				E71AF2551E018F6A0068595B /* WalletManager.m in Sources */,
 				B3CD78D71F4DC1E100D79363 /* ChooseReciveAddressViewController.m in Sources */,
+				E7C9FAE31F7908ED005D08AD /* ConfirmPopUpViewControllerDark.m in Sources */,
 				B384F3DF1EB9BF4A0075F1E8 /* NSBundle+Language.m in Sources */,
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
 				B31E5FFC1F4EE7F6003B4FA5 /* QStoreTemplateDetailViewController.m in Sources */,
@@ -6041,8 +6061,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pixelplex.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "88065c34-ae5a-4276-880f-a89d3c5a833c";
-				PROVISIONING_PROFILE_SPECIFIER = QTUMDEV;
+				PROVISIONING_PROFILE = "ebf87941-e6ba-4b3a-96e6-bc4e7eca82f3";
+				PROVISIONING_PROFILE_SPECIFIER = QTUM_DEV;
 			};
 			name = Debug;
 		};

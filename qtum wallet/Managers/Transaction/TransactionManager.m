@@ -226,7 +226,7 @@ static NSInteger constantFee = 10000000;
 }
 
 - (void)sendToken:(Contract*) token
-      fromAddress:(NSString*) frommAddress
+      fromAddress:(NSString*) fromAddress
         toAddress:(NSString*) toAddress
            amount:(NSDecimalNumber*) amount
               fee:(NSDecimalNumber*) fee
@@ -245,7 +245,7 @@ static NSInteger constantFee = 10000000;
     AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] tokenStandartTransferMethodInterface];
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,[amount stringValue]]];
     
-    NSString* __block addressWithAmountValue = frommAddress;
+    NSString* __block addressWithAmountValue = fromAddress;
     
     NSNumber* addressBalance = token.addressBalanceDictionary[addressWithAmountValue];
     

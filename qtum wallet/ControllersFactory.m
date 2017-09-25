@@ -429,7 +429,7 @@
 }
 
 - (ConfirmPopUpViewController *)createConfirmPopUpViewController{
-    ConfirmPopUpViewController* controller = (ConfirmPopUpViewController*)[UIViewController controllerInStoryboard:@"ConfirmPopUp" withIdentifire:@"ConfirmPopUp"];
+    ConfirmPopUpViewController* controller = (ConfirmPopUpViewController*)[UIViewController controllerInStoryboard:@"ConfirmPopUp" withIdentifire:@"ConfirmPopUpViewController"];
     return controller;
 }
 

@@ -52,7 +52,7 @@
                                         NSDecimalNumber* estimatedFee)) completion;
 
 - (void)sendToken:(Contract*) token
-        fromAddress:(NSString*) frommAddress
+        fromAddress:(NSString*) fromAddress
          toAddress:(NSString*) toAddress
             amount:(NSDecimalNumber*) amount
               fee:(NSDecimalNumber*) fee

@@ -100,10 +100,6 @@
 }
 
 -(void)makeTransferFromAddress:(NSString*)from toAddress:(NSString*) to withAmount:(NSString* )amount {
-
-    NSDecimalNumber *amountDecimalContainer = [NSDecimalNumber decimalNumberWithString:amount];
-    
-//    NSArray *array = @[@{@"amount" : amountDecimalContainer, @"address" : to}];
     
     SendInfoItem *item = [[SendInfoItem alloc] initWithQtumAddressKey:self.addressKeyHashTable[to] tokenAddress:nil amountString:amount fromQtumAddressKey:self.addressKeyHashTable[from]];
 

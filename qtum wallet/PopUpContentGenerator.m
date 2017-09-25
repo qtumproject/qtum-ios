@@ -96,4 +96,9 @@
     return content;
 }
 
++ (PopUpContent *)contentForConfirmChangesInSend{
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"By changing address or currency, transaction will be processed as a regular transfer ", nil) message:nil okTitle:NSLocalizedString(@"Continue", nil) cancelTitle:NSLocalizedString(@"Cancel", nil)];
+    return content;
+}
+
 @end

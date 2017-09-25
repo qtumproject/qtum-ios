@@ -16,6 +16,7 @@
 #import "ErrorPopUpViewController.h"
 #import "SecurityPopupViewController.h"
 #import "NSNumber+Comparison.h"
+#import "ConfirmPopUpViewController.h"
 
 @interface NewPaymentViewController () <UITextFieldDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -42,19 +43,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *maxFeeLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fromAmountToSendButtonOffset;
 
-
-@property (strong,nonatomic) NSString* adress;
-@property (strong,nonatomic) NSString* amount;
-@property (strong,nonatomic) NSDecimalNumber* FEE;
-@property (strong,nonatomic) NSDecimalNumber* minFee;
-@property (strong,nonatomic) NSDecimalNumber* maxFee;
-
+@property (strong, nonatomic) NSString* adress;
+@property (strong, nonatomic) NSString* amount;
+@property (strong, nonatomic) NSDecimalNumber* FEE;
+@property (strong, nonatomic) NSDecimalNumber* minFee;
+@property (strong, nonatomic) NSDecimalNumber* maxFee;
 
 @property (nonatomic) CGFloat standartTopOffsetForSendButton;
 
 @property (nonatomic) BOOL needUpdateTexfFields;
 @property (nonatomic) BOOL isTokenChoosen;
+@property (nonatomic) NSString* tokenNameString;
+@property (nonatomic) BOOL needUpdateTokenTexfFields;
 
+@property (nonatomic, copy) void (^afterCheckingBlock)(void);
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender;
 
@@ -148,6 +150,12 @@ static NSInteger withoutTokenOffset = 40;
         self.amountTextField.text = self.amount;
         self.needUpdateTexfFields = NO;
     }
+    
+    if (self.needUpdateTokenTexfFields && self.isTokenChoosen && self.tokenTextField) {
+        self.tokenTextField.text = self.tokenNameString;
+        self.tokenNameString = nil;
+        self.needUpdateTokenTexfFields = NO;
+    }
 }
 
 -(void)updateSendButton {
@@ -222,6 +230,8 @@ static NSInteger withoutTokenOffset = 40;
     if (!choosenExist) {
         self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", nil);
         self.isTokenChoosen = NO;
+        self.needUpdateTokenTexfFields = NO;
+        self.tokenNameString = nil;
     }
     
     [self.view setNeedsLayout];
@@ -229,7 +239,6 @@ static NSInteger withoutTokenOffset = 40;
     
     [self updateScrollsConstraints];
 }
-
 
 - (void)showLoaderPopUp {
     [[PopUpsManager sharedInstance] showLoaderPopUp];
@@ -254,6 +263,11 @@ static NSInteger withoutTokenOffset = 40;
     [[PopUpsManager sharedInstance] dismissLoader];
 }
 
+- (void)showConfirmChangesPopUp {
+    PopUpContent *content = [PopUpContentGenerator contentForConfirmChangesInSend];
+    [[PopUpsManager sharedInstance] showConfirmPopUp:self withContent:content presenter:nil completion:nil];
+}
+
 - (void)clearFields {
     
     self.addressTextField.text = @"";
@@ -262,9 +276,17 @@ static NSInteger withoutTokenOffset = 40;
     self.adress = nil;
 }
 
--(void)updateContentWithContract:(Contract*) contract {
+- (void)updateContentWithContract:(Contract*) contract {
     
-    self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+    if (self.tokenTextField) {
+        self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+        self.needUpdateTokenTexfFields = NO;
+        self.tokenNameString = nil;
+    } else {
+        self.needUpdateTokenTexfFields = YES;
+        self.tokenNameString = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+    }
+    
     self.isTokenChoosen = contract;
 }
 
@@ -290,6 +312,16 @@ static NSInteger withoutTokenOffset = 40;
     if ([sender isKindOfClass:[InformationPopUpViewController class]]) {
         [self clearFields];
     }
+    
+    if ([sender isKindOfClass:[ConfirmPopUpViewController class]]) {
+        [self.delegate changeToStandartOperation];
+        if (self.afterCheckingBlock) {
+            self.afterCheckingBlock();
+            self.afterCheckingBlock = nil;
+        }
+        return;
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -301,7 +333,6 @@ static NSInteger withoutTokenOffset = 40;
 #pragma mark - iMessage
 
 - (void)setSendInfoItem:(SendInfoItem *)item {
-    
     if (item.qtumAddressKey) {
         self.adress = item.qtumAddressKey.address.string;
     } else {
@@ -336,6 +367,18 @@ static NSInteger withoutTokenOffset = 40;
         }
     }
     
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == self.addressTextField && [self.delegate needCheckForChanges]) {
+        [self showConfirmChangesPopUp];
+        __weak typeof(self) weakSelf = self;
+        self.afterCheckingBlock = ^{
+            [weakSelf.addressTextField becomeFirstResponder];
+        };
+        return NO;
+    }
     return YES;
 }
 
@@ -406,6 +449,15 @@ static NSInteger withoutTokenOffset = 40;
 }
 
 - (IBAction)didPressedChoseTokensAction:(id)sender {
+    
+    if ([self.delegate needCheckForChanges]) {
+        [self showConfirmChangesPopUp];
+        __weak typeof(self) wealSelf = self;
+        self.afterCheckingBlock = ^{
+            [wealSelf.delegate didPresseChooseToken];
+        };
+        return;
+    }
     
     [self.delegate didPresseChooseToken];
 }

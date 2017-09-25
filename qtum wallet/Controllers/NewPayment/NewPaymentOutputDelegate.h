@@ -17,4 +17,7 @@
                                 andFee:(NSNumber*) fee;
 - (void)didViewLoad;
 
+- (BOOL)needCheckForChanges;
+- (void)changeToStandartOperation;
+
 @end
