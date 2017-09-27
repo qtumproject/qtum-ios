@@ -9,6 +9,8 @@
 #import "TokenDetailLightDisplayDataManager.h"
 #import "HistoryHeaderVIew.h"
 #import "TokenDetailInfoLightCell.h"
+#import "ApplicationCoordinator.h"
+#import "Wallet.h"
 
 @interface TokenDetailLightDisplayDataManager ()
 
@@ -35,9 +37,9 @@ static NSInteger standartHistoryCellHeight = 50;
         self.infoHeaderCell = (TokenDetailInfoLightCell*)cell;
         cell.decimalUnits.text = [NSString stringWithFormat:@"%@",token.decimals];
         cell.initialSupply.text = token.totalSupplyString;
-        cell.tokenAddress.text = token.contractAddress;
+        cell.tokenAddress.text = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
         cell.availableBalance.text = token.balanceString;
-        cell.senderAddress.text = token.contractCreationAddressAddress;
+        cell.senderAddress.text = token.contractAddress;
         cell.symbol.text = token.symbol;
         cell.shortBalance = token.shortBalanceString;
         cell.shortTotalSupply = token.shortTotalSupplyString;
