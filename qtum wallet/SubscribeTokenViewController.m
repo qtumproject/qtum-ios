@@ -15,6 +15,7 @@
 @interface SubscribeTokenViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
 
 @end
 
@@ -29,6 +30,8 @@
     [self configSearchBar];
     [self updateTable];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable) name:kTokenDidChange object:nil];
+    
+    self.emptyTableLabel.hidden = self.delegateDataSource.tokensArray.count != 0;
 }
 
 -(void)dealloc {
@@ -61,6 +64,7 @@
     __weak __typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf.tableView reloadData];
+        weakSelf.emptyTableLabel.hidden = weakSelf.delegateDataSource.tokensArray.count != 0;
     });
 }
 
