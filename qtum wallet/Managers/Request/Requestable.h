@@ -108,6 +108,7 @@
                         offset:(NSInteger)offset
                           type:(NSString *)type
                           tags:(NSArray *)tags
+                          name:(NSString *)name
             withSuccessHandler:(void(^)(id responseObject))success
              andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 

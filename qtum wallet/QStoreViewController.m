@@ -18,9 +18,6 @@ CGFloat const KeyboardDuration = 0.25f;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-
-
-
 @property (nonatomic) BOOL wasSettedTag;
 @property (nonatomic) NSString *tagString;
 

@@ -41,6 +41,7 @@
                         offset:(NSInteger)offset
                           type:(QStoreDataProviderSearchType)type
                           tags:(NSArray *)tags
+                          name:(NSString *)name
             withSuccessHandler:(void (^)(NSArray<QStoreContractElement *> *, NSArray<NSString *> *))success
              andFailureHandler:(void (^)(NSError *, NSString *))failure {
     
@@ -59,13 +60,15 @@
             break;
     }
     
-    [[ApplicationCoordinator sharedInstance].requestManager searchContractsByCount:count offset:offset type:stringType tags:tags withSuccessHandler:^(id responseObject) {
+    NSArray *searchArrayToReturnWithResult = tags ? tags : @[name];
+    
+    [[ApplicationCoordinator sharedInstance].requestManager searchContractsByCount:count offset:offset type:stringType tags:tags name:name withSuccessHandler:^(id responseObject) {
         NSMutableArray<QStoreContractElement *> *array = [NSMutableArray new];
         for (NSDictionary *dictionary in responseObject) {
             QStoreContractElement *element = [QStoreContractElement createFromSearchDictionary:dictionary];
             [array addObject:element];
         }
-        success(array, tags);
+        success(array, searchArrayToReturnWithResult);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];

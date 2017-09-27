@@ -174,8 +174,8 @@ NSInteger const QStoreSearchCount = 20;
 #pragma mark - Abi
 
 - (void)getContractABIWithElement:(QStoreContractElement *)element
-    withSuccessHandler:(void (^)())success
-     andFailureHandler:(void (^)(NSString *message))failure{
+               withSuccessHandler:(void (^)())success
+                andFailureHandler:(void (^)(NSString *message))failure{
     
     [self.requestAdapter getContractABIWithElement:element withSuccessHandler:^(NSString *abiString) {
         element.abiString = abiString;
@@ -281,19 +281,24 @@ NSInteger const QStoreSearchCount = 20;
 - (void)startSearch {
     switch (self.currnentSearchType) {
         case QStoreManagerSearchTypeTag:
-            [self startSearchByTagWithOffset:0 findMore:NO];
+            [self startSearchByTag:YES withOffset:0 findMore:NO];
             break;
         case QStoreManagerSearchTypeName:
-            
+            [self startSearchByTag:NO withOffset:0 findMore:NO];
             break;
         default:
             break;
     }
 }
 
-- (void)startSearchByTagWithOffset:(NSInteger)offset findMore:(BOOL)findMore {
+- (void)startSearchByTag:(BOOL)byTag withOffset:(NSInteger)offset findMore:(BOOL)findMore {
     __weak typeof(self) weakSelf = self;
-    [self.requestAdapter searchContractsByCount:QStoreSearchCount offset:offset type:QStoreDataProviderSearchTypeAll tags:@[self.searchString] withSuccessHandler:^(NSArray<QStoreContractElement *> *elements, NSArray<NSString *> *tags) {
+    [self.requestAdapter searchContractsByCount:QStoreSearchCount
+                                         offset:offset
+                                           type:QStoreDataProviderSearchTypeAll
+                                           tags:byTag ? @[self.searchString] : nil
+                                           name:byTag ? nil : self.searchString
+                             withSuccessHandler:^(NSArray<QStoreContractElement *> *elements, NSArray<NSString *> *tags) {
         
         NSString *tagString = [tags firstObject];
         if ([weakSelf.searchString isEqualToString:tagString]) {
@@ -335,10 +340,10 @@ NSInteger const QStoreSearchCount = 20;
 - (void)startSearchMore {
     switch (self.currnentSearchType) {
         case QStoreManagerSearchTypeTag:
-            [self startSearchByTagWithOffset:self.searchResult.count findMore:YES];
+            [self startSearchByTag:YES withOffset:self.searchResult.count findMore:YES];
             break;
         case QStoreManagerSearchTypeName:
-            
+            [self startSearchByTag:NO withOffset:self.searchResult.count findMore:YES];
             break;
         default:
             break;

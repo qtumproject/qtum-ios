@@ -32,8 +32,9 @@ typedef NS_ENUM(NSInteger, QStoreDataProviderSearchType) {
                         offset:(NSInteger)offset
                           type:(QStoreDataProviderSearchType)type
                           tags:(NSArray *)tags
-            withSuccessHandler:(void(^)(NSArray<QStoreContractElement *> *elements, NSArray<NSString *> *tags))success
-             andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+                          name:(NSString *)name
+            withSuccessHandler:(void (^)(NSArray<QStoreContractElement *> *, NSArray<NSString *> *))success
+             andFailureHandler:(void (^)(NSError *, NSString *))failure;
 
 - (void)getContractABIWithElement:(QStoreContractElement *)element
                withSuccessHandler:(void(^)(NSString *abiString))success
