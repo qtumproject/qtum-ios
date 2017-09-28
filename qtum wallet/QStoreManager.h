@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class QStoreCategory;
+@class QStoreMainScreenCategory;
 @class QStoreContractElement;
 @class QStoreBuyRequest;
+@class QStoreCategory;
 
 typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
     QStoreManagerSearchTypeNone,
     QStoreManagerSearchTypeTag,
-    QStoreManagerSearchTypeName
+    QStoreManagerSearchTypeName,
+    QStoreManagerSearchTypeAll
 };
 
 @protocol QStoreManagerSearchDelegate <NSObject>
@@ -27,7 +29,7 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
 
 @interface QStoreManager : NSObject <Clearable>
 
-@property (readonly) NSMutableArray<QStoreCategory *> *categories;
+@property (readonly) NSMutableArray<QStoreMainScreenCategory *> *mainScreenCategories;
 @property (weak, nonatomic) id<QStoreManagerSearchDelegate> delegate;
 
 + (instancetype)sharedInstance;
@@ -36,22 +38,25 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
 + (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
-- (void)loadContractsForCategoriesWithSuccessHandler:(void(^)(NSArray<QStoreCategory *> *categories))success
+- (void)loadContractsForCategoriesWithSuccessHandler:(void(^)(NSArray<QStoreMainScreenCategory *> *categories))success
                                    andFailureHandler:(void(^)(NSString* message))failure;
 
+- (void)loadCategoriesWithSuccessHandler:(void (^)(NSArray<QStoreCategory *> *categories))success
+                       andFailureHandler:(void (^)(NSString *message))failure;
+
 - (void)loadFullContract:(QStoreContractElement *)element
-      withSuccessHandler:(void (^)())success
+      withSuccessHandler:(void (^)(void))success
        andFailureHandler:(void (^)(NSString *message))failure;
 
-- (void)searchByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
-- (void)searchMoreItemsByString:(NSString *)string searchType:(QStoreManagerSearchType)type;
+- (void)searchByCategoryType:(NSString *)categoryType string:(NSString *)string searchType:(QStoreManagerSearchType)type;
+- (void)searchMoreItemsByCategoryType:(NSString *)categoryType string:(NSString *)string searchType:(QStoreManagerSearchType)type;
 
 - (void)getContractABIWithElement:(QStoreContractElement *)element
-               withSuccessHandler:(void (^)())success
+               withSuccessHandler:(void (^)(void))success
                 andFailureHandler:(void (^)(NSString *message))failure;
 
 - (void)purchaseContract:(QStoreContractElement *)element
-      withSuccessHandler:(void (^)())success
+      withSuccessHandler:(void (^)(void))success
        andFailureHandler:(void (^)(NSString *message))failure;
 
 - (void)checkRequestPaid:(NSString *)contractId
@@ -69,7 +74,6 @@ typedef NS_ENUM(NSInteger, QStoreManagerSearchType) {
 
 - (void)startObservingForAllRequests;
 - (void)stopObservingForAllRequests;
-- (void)chechAllRequests;
 - (void)updateContractRequestsWithDict:(NSDictionary*) dict;
 
 @end

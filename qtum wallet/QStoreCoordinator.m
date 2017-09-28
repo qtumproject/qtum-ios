@@ -14,11 +14,12 @@
 #import "ContractFunctionDetailOutput.h"
 #import "QStoreContractElement.h"
 #import "QStoreManager.h"
-#import "QStoreCategory.h"
+#import "QStoreMainScreenCategory.h"
 #import "QStoreBuyRequest.h"
 #import "QStoreTemplateDetailOutput.h"
 #import "InterfaceInputFormModel.h"
 #import "ContractInterfaceManager.h"
+#import "QStoreCategory.h"
 
 @interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate, QStoreManagerSearchDelegate, QStoreListOutputDelegate, QStoreTemplateDetailOutputDelegate>
 
@@ -27,6 +28,8 @@
 @property (strong, nonatomic) NSObject<QStoreMainOutput> *mainScreen;
 @property (strong, nonatomic) NSObject<QStoreContractOutput> *contractScreen;
 @property (strong, nonatomic) NSObject<ContractFunctionDetailOutput> *functionDetailController;
+
+@property (nonatomic, weak) NSObject<QStoreListOutput> *listOutput;
 
 @end
 
@@ -61,11 +64,9 @@
 #pragma mark - QStoreMainOutputDelegate
 
 - (void)didSelectQStoreCategories {
-    
     NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[[ControllersFactory sharedInstance] createQStoreListViewController];
     controller.delegate = self;
     controller.type = QStoreCategories;
-    [controller setCategories:[QStoreManager sharedInstance].categories];
     
     [self.navigationController pushViewController:[controller toPresent] animated:YES];
 }
@@ -88,7 +89,7 @@
 - (void)didLoadCategories {
     [self.mainScreen startLoading];
     __weak typeof(self) weakSelt = self;
-    [[QStoreManager sharedInstance] loadContractsForCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
+    [[QStoreManager sharedInstance] loadContractsForCategoriesWithSuccessHandler:^(NSArray<QStoreMainScreenCategory *> *categories) {
         [weakSelt.mainScreen stopLoading];
         [weakSelt.mainScreen setCategories:categories];
     } andFailureHandler:^(NSString *message) {
@@ -108,11 +109,11 @@
 }
 
 - (void)didChangedSearchText:(NSString *)text orSelectedSearchIndex:(NSInteger)index {
-    [[QStoreManager sharedInstance] searchByString:text searchType:[self getSearchTypeByIndex:index]];
+    [[QStoreManager sharedInstance] searchByCategoryType:nil string:text searchType:[self getSearchTypeByIndex:index]];
 }
 
 - (void)didLoadMoreElementsForText:(NSString *)text orSelectedSearchIndex:(NSInteger)index {
-    [[QStoreManager sharedInstance] searchMoreItemsByString:text searchType:[self getSearchTypeByIndex:index]];
+    [[QStoreManager sharedInstance] searchMoreItemsByCategoryType:nil string:text searchType:[self getSearchTypeByIndex:index]];
 }
 
 - (QStoreManagerSearchType)getSearchTypeByIndex:(NSInteger)index {
@@ -132,10 +133,19 @@
 #pragma mark - QStoreManagerSearchDelegate
 
 - (void)didFindElements:(NSArray<QStoreContractElement *> *)elements {
+    if (self.listOutput) {
+        [self.listOutput setElements:elements];
+        return;
+    }
+    
     [self.mainScreen setSearchElements:elements];
 }
 
 - (void)didFindMoreElements:(NSArray<QStoreContractElement *> *)elements {
+    if (self.listOutput) {
+        [self.listOutput setMoreElements:elements];
+        return;
+    }
     [self.mainScreen setSearchMoreElements:elements];
 }
 
@@ -225,14 +235,75 @@
     NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[[ControllersFactory sharedInstance] createQStoreListViewController];
     controller.delegate = self;
     controller.type = QStoreContracts;
-    controller.categoryTitle = category.title;
-    [controller setElements:category.elements];
+    controller.categoryTitle = category.name;
+    controller.categoryType = category.name;
+    
+    self.listOutput = controller;
     
     [self.navigationController pushViewController:[controller toPresent] animated:YES];
 }
 
 - (void)didSelectQStoreContract:(QStoreContractElement *)element {
     [self didSelectQStoreContractElement:element];
+}
+
+- (void)didLoadFullData:(NSObject<QStoreListOutput> *)output {
+    if (output.type == QStoreCategories) {
+        [output startLoading];
+        [[QStoreManager sharedInstance] loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
+            [output endLoading];
+            [output setCategories:categories];
+        } andFailureHandler:^(NSString *message) {
+            [output endLoading];
+            [output showErrorWithMessage:message];
+        }];
+    } else {
+        [[QStoreManager sharedInstance] searchByCategoryType:output.categoryType string:nil searchType:QStoreManagerSearchTypeAll];
+    }
+}
+
+- (void)didLoadMoreFullData:(NSObject<QStoreListOutput> *)output {
+    if (output.type != QStoreCategories) {
+        [[QStoreManager sharedInstance] searchMoreItemsByCategoryType:output.categoryType string:nil searchType:QStoreManagerSearchTypeAll];
+    }
+}
+
+- (void)didChangedSearchText:(NSString *)text orSelectedSearchIndex:(NSInteger)index output:(NSObject<QStoreListOutput> *)output {
+    if (output.type == QStoreCategories) {
+        if (text.length > 0) {
+            [[QStoreManager sharedInstance] loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[c] %@", text];
+                NSArray *filteredArray = [categories filteredArrayUsingPredicate:predicate];
+                filteredArray = [filteredArray sortedArrayUsingComparator:^NSComparisonResult(QStoreCategory *obj1, QStoreCategory *obj2) {
+                    NSInteger i1 = [obj1.name rangeOfString:text options:NSCaseInsensitiveSearch].location;
+                    NSInteger i2 = [obj2.name rangeOfString:text options:NSCaseInsensitiveSearch].location;
+                    
+                    return i1 < i2 ? NSOrderedAscending : i1 == i2 ? NSOrderedSame : NSOrderedDescending;
+                }];
+                [output setCategories:filteredArray];
+            } andFailureHandler:nil];
+        } else {
+            [[QStoreManager sharedInstance] loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
+                [output setCategories:categories];
+            } andFailureHandler:nil];
+        }
+    } else {
+        if ([text isEqualToString:@""]) {
+            [self didLoadFullData:output];
+        } else {
+            [[QStoreManager sharedInstance] searchByCategoryType:output.categoryType string:text searchType:[self getSearchTypeByIndex:index]];
+        }
+    }
+}
+
+- (void)didLoadMoreElementsForText:(NSString *)text orSelectedSearchIndex:(NSInteger)index output:(NSObject<QStoreListOutput> *)output {
+    if (output.type != QStoreCategories) {
+        if ([text isEqualToString:@""]) {
+            [self didLoadMoreFullData:output];
+        } else {
+            [[QStoreManager sharedInstance] searchMoreItemsByCategoryType:output.categoryType string:text searchType:[self getSearchTypeByIndex:index]];
+        }
+    }
 }
 
 #pragma mark - ContractFunctionDetailOutputDelegate

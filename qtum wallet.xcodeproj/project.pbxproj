@@ -374,6 +374,7 @@
 		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
 		B3F76A941EDDB81600108DE9 /* Contracts in Resources */ = {isa = PBXBuildFile; fileRef = B3F76A931EDDB81600108DE9 /* Contracts */; };
 		D09F83991F7BB2DB002F3098 /* CopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F83981F7BB2DB002F3098 /* CopyLabel.m */; };
+		D09F839C1F7BF308002F3098 /* QStoreCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F839B1F7BF308002F3098 /* QStoreCategory.m */; };
 		E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */; };
 		E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E703530E1F03AC41004ECCC9 /* QStoreListViewController.m */; };
 		E70353121F03AC59004ECCC9 /* QStoreListTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353111F03AC59004ECCC9 /* QStoreListTableSource.m */; };
@@ -489,7 +490,7 @@
 		E760F4B41F0FABA00056D042 /* ProfileViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E760F4B31F0FABA00056D042 /* ProfileViewControllerLight.m */; };
 		E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */; };
 		E7847F751F3B16A7004A2333 /* QStoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F741F3B16A7004A2333 /* QStoreDataProvider.m */; };
-		E7847F791F3B1ACD004A2333 /* QStoreCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F781F3B1ACD004A2333 /* QStoreCategory.m */; };
+		E7847F791F3B1ACD004A2333 /* QStoreMainScreenCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F781F3B1ACD004A2333 /* QStoreMainScreenCategory.m */; };
 		E7847F801F3B315C004A2333 /* QStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7847F7F1F3B315C004A2333 /* QStoreManager.m */; };
 		E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8B71F015B7100A513BF /* QStoreViewController.m */; };
 		E784F8BB1F015C4C00A513BF /* QStoreCollectionViewSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8BA1F015C4C00A513BF /* QStoreCollectionViewSource.m */; };
@@ -1430,6 +1431,8 @@
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		D09F83971F7BB2DB002F3098 /* CopyLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CopyLabel.h; sourceTree = "<group>"; };
 		D09F83981F7BB2DB002F3098 /* CopyLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CopyLabel.m; sourceTree = "<group>"; };
+		D09F839A1F7BF308002F3098 /* QStoreCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreCategory.h; sourceTree = "<group>"; };
+		D09F839B1F7BF308002F3098 /* QStoreCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QStoreCategory.m; sourceTree = "<group>"; };
 		E70353081F039297004ECCC9 /* QStoreSearchTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreSearchTableSource.h; sourceTree = "<group>"; };
 		E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreSearchTableSource.m; sourceTree = "<group>"; };
 		E703530D1F03AC41004ECCC9 /* QStoreListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreListViewController.h; sourceTree = "<group>"; };
@@ -1668,8 +1671,8 @@
 		E777786B1EF3E54E00948682 /* BTCAddress+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BTCAddress+Extension.m"; sourceTree = "<group>"; };
 		E7847F731F3B16A7004A2333 /* QStoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QStoreDataProvider.h; path = Managers/Request/QStoreDataProvider.h; sourceTree = "<group>"; };
 		E7847F741F3B16A7004A2333 /* QStoreDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QStoreDataProvider.m; path = Managers/Request/QStoreDataProvider.m; sourceTree = "<group>"; };
-		E7847F771F3B1ACD004A2333 /* QStoreCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreCategory.h; sourceTree = "<group>"; };
-		E7847F781F3B1ACD004A2333 /* QStoreCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreCategory.m; sourceTree = "<group>"; };
+		E7847F771F3B1ACD004A2333 /* QStoreMainScreenCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreMainScreenCategory.h; sourceTree = "<group>"; };
+		E7847F781F3B1ACD004A2333 /* QStoreMainScreenCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreMainScreenCategory.m; sourceTree = "<group>"; };
 		E7847F7E1F3B315C004A2333 /* QStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreManager.h; sourceTree = "<group>"; };
 		E7847F7F1F3B315C004A2333 /* QStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreManager.m; sourceTree = "<group>"; };
 		E7847F841F3B5DDB004A2333 /* QStoreContractOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreContractOutput.h; sourceTree = "<group>"; };
@@ -3968,12 +3971,14 @@
 		E7847F761F3B1ABA004A2333 /* QStoreModel */ = {
 			isa = PBXGroup;
 			children = (
-				E7847F771F3B1ACD004A2333 /* QStoreCategory.h */,
-				E7847F781F3B1ACD004A2333 /* QStoreCategory.m */,
-				E73357071F3D897700EE0D8B /* QStoreContractElement.h */,
-				E73357081F3D897700EE0D8B /* QStoreContractElement.m */,
 				E733570A1F3DA90900EE0D8B /* QStoreBuyRequest.h */,
 				E733570B1F3DA90900EE0D8B /* QStoreBuyRequest.m */,
+				D09F839A1F7BF308002F3098 /* QStoreCategory.h */,
+				D09F839B1F7BF308002F3098 /* QStoreCategory.m */,
+				E73357071F3D897700EE0D8B /* QStoreContractElement.h */,
+				E73357081F3D897700EE0D8B /* QStoreContractElement.m */,
+				E7847F771F3B1ACD004A2333 /* QStoreMainScreenCategory.h */,
+				E7847F781F3B1ACD004A2333 /* QStoreMainScreenCategory.m */,
 			);
 			name = QStoreModel;
 			path = Model;
@@ -3998,12 +4003,12 @@
 		E784F8B51F015B5500A513BF /* QStore */ = {
 			isa = PBXGroup;
 			children = (
-				B31E5FF91F4EE7B2003B4FA5 /* Template Detail */,
-				E74C16551F3B09C3003D2D9C /* QStoreCoordinator.h */,
-				E74C16561F3B09C3003D2D9C /* QStoreCoordinator.m */,
-				E70353161F03C2F4004ECCC9 /* ContractScreen */,
 				E703530C1F03ABBF004ECCC9 /* MainScreen */,
 				E703530B1F03ABBC004ECCC9 /* ListScreen */,
+				B31E5FF91F4EE7B2003B4FA5 /* Template Detail */,
+				E70353161F03C2F4004ECCC9 /* ContractScreen */,
+				E74C16551F3B09C3003D2D9C /* QStoreCoordinator.h */,
+				E74C16561F3B09C3003D2D9C /* QStoreCoordinator.m */,
 			);
 			name = QStore;
 			sourceTree = "<group>";
@@ -5166,6 +5171,7 @@
 				B3F76A701EDD667D00108DE9 /* SmartContractMenuViewController.m in Sources */,
 				E713A4861EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m in Sources */,
 				E70353191F03C30E004ECCC9 /* QStoreContractViewController.m in Sources */,
+				D09F839C1F7BF308002F3098 /* QStoreCategory.m in Sources */,
 				E73D36F11ECF14CE009173BD /* TokenDetailsViewController.m in Sources */,
 				E7396AF41DDEF8260002CD47 /* NewPaymentViewController.m in Sources */,
 				B3DC9CE21F30C7EE006B2E07 /* TokenFunctionDetailViewControllerDark.m in Sources */,
@@ -5424,7 +5430,7 @@
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				B3CD78E81F4DD46300D79363 /* ChooseAddressReciveCellLight.m in Sources */,
 				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
-				E7847F791F3B1ACD004A2333 /* QStoreCategory.m in Sources */,
+				E7847F791F3B1ACD004A2333 /* QStoreMainScreenCategory.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,

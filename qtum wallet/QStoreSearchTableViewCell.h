@@ -13,7 +13,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currencyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
 
 - (void)changeHighlight:(BOOL)value;
+
+- (BOOL)isLight;
 
 @end

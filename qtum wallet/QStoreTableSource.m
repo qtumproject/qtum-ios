@@ -9,11 +9,11 @@
 
 #import "QStoreTableSource.h"
 #import "QStoreTableViewCell.h"
-#import "QStoreCategory.h"
+#import "QStoreMainScreenCategory.h"
 
 @interface QStoreTableSource() <QStoreCollectionViewSourceDelegate>
 
-@property (nonatomic) NSArray<QStoreCategory *> *categories;
+@property (nonatomic) NSArray<QStoreMainScreenCategory *> *categories;
 
 @end
 
@@ -22,21 +22,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QStoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[QStoreTableViewCell getIdentifier]];
     
-    QStoreCategory *category = [self.categories objectAtIndex:indexPath.row];
+    QStoreMainScreenCategory *category;
+    for (NSInteger i = indexPath.row; i < self.categories.count; i++) {
+        category = [self.categories objectAtIndex:i];
+        if (category.elements.count > 0) {
+            break;
+        }
+    }
     
     QStoreCollectionViewSource *source = [QStoreCollectionViewSource new];
     source.elements = category.elements;
     [cell setCollectionViewSource:source];
     source.delegate = self;
     
-    cell.titleLabel.text = category.title;
+    cell.titleLabel.text = category.name;
     
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.categories.count;
+    NSInteger categoriesCount = self.categories.count;
+    for (QStoreMainScreenCategory *cat in self.categories) {
+        if (cat.elements.count == 0) {
+            categoriesCount--;
+        }
+    }
+    return categoriesCount;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,7 +71,7 @@
 
 #pragma mark - Methods
 
-- (void)setCategoriesArray:(NSArray<QStoreCategory *> *)categories {
+- (void)setCategoriesArray:(NSArray<QStoreMainScreenCategory *> *)categories {
     self.categories = categories;
     [self.tableView reloadData];
 }

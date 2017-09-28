@@ -8,7 +8,7 @@
 
 #import "QStoreMainOutputDelegate.h"
 
-@class QStoreCategory;
+@class QStoreMainScreenCategory;
 @class QStoreContractElement;
 
 @protocol QStoreMainOutput <NSObject>
@@ -17,7 +17,7 @@
 
 - (void)startLoading;
 - (void)stopLoading;
-- (void)setCategories:(NSArray<QStoreCategory *> *)categories;
+- (void)setCategories:(NSArray<QStoreMainScreenCategory *> *)categories;
 - (void)setTag:(NSString *)tag;
 - (void)setSearchElements:(NSArray<QStoreContractElement *> *)elements;
 - (void)setSearchMoreElements:(NSArray<QStoreContractElement *> *)elements;
