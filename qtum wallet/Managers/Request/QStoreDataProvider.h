@@ -8,21 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@class QStoreCategory;
+@class QStoreMainScreenCategory;
 @class QStoreContractElement;
-
-typedef NS_ENUM(NSInteger, QStoreDataProviderSearchType) {
-    QStoreDataProviderSearchTypeToken,
-    QStoreDataProviderSearchTypeCrowdsale,
-    QStoreDataProviderSearchTypeOther,
-    QStoreDataProviderSearchTypeAll
-};
+@class QStoreCategory;
 
 @interface QStoreDataProvider : NSObject
 
-- (void)getContractsForCategory:(QStoreCategory *)category
-             withSuccessHandler:(void(^)(QStoreCategory *updatedCategory))success
+- (void)getContractsForCategory:(QStoreMainScreenCategory *)category
+             withSuccessHandler:(void(^)(QStoreMainScreenCategory *updatedCategory))success
               andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getCategories:(void(^)(NSArray<QStoreCategory *> *categories))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 - (void)getFullContractById:(NSString *)contractId
          withSuccessHandler:(void(^)(NSDictionary *fullDictionary))success
@@ -30,10 +27,11 @@ typedef NS_ENUM(NSInteger, QStoreDataProviderSearchType) {
 
 - (void)searchContractsByCount:(NSInteger)count
                         offset:(NSInteger)offset
-                          type:(QStoreDataProviderSearchType)type
+                          type:(NSString *)type
                           tags:(NSArray *)tags
-            withSuccessHandler:(void(^)(NSArray<QStoreContractElement *> *elements, NSArray<NSString *> *tags))success
-             andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+                          name:(NSString *)name
+            withSuccessHandler:(void (^)(NSArray<QStoreContractElement *> *, NSArray<NSString *> *))success
+             andFailureHandler:(void (^)(NSError *, NSString *))failure;
 
 - (void)getContractABIWithElement:(QStoreContractElement *)element
                withSuccessHandler:(void(^)(NSString *abiString))success

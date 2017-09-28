@@ -2,7 +2,7 @@
 //  QStoreCategory.h
 //  qtum wallet
 //
-//  Created by Sharaev Vladimir on 09.08.17.
+//  Created by Vladimir Sharaev on 27.09.2017.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
@@ -12,14 +12,14 @@
 
 @interface QStoreCategory : NSObject
 
-@property (nonatomic, readonly) NSInteger identifier;
-@property (nonatomic, readonly) NSString *title;
-@property (nonatomic, readonly) NSString *urlPath;
+@property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSNumber *fullCountactCount;
 @property (nonatomic, readonly) NSArray<QStoreContractElement *> *elements;
 
-- (instancetype)initWithIdentifier:(NSInteger)identifier
-                             title:(NSString *)title
-                           urlPath:(NSString *)urlPath;
+- (instancetype)initWithIdentifier:(NSString *)identifier
+                              name:(NSString *)name
+                             count:(NSNumber *)count;
 
 - (void)parseElementsFromJSONArray:(NSArray *)array;
 

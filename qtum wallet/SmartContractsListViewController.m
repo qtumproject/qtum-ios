@@ -12,6 +12,7 @@
 @interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
 
 @end
 
@@ -24,6 +25,11 @@
     // Do any additional setup after loading the view.
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    if (self.smartContractPretendents.count == 0 && self.contracts.count == 0) {
+        self.emptyTableLabel.hidden = NO;
+    } else {
+        self.emptyTableLabel.hidden = YES;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

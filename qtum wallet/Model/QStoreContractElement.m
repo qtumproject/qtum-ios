@@ -126,11 +126,11 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 
 - (TemplateType)getTypeByString:(NSString *)stringType {
     
-    if ([stringType isEqualToString:@"crowdsale"]) {
+    if ([stringType isEqualToString:@"Crowdsale"]) {
         return CrowdsaleType;
     }
     
-    if ([stringType isEqualToString:@"token"]) {
+    if ([stringType isEqualToString:@"QRC20 Token"]) {
         return TokenType;
     }
     
@@ -142,20 +142,20 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
     if ([NSUserDefaults isDarkSchemeSetting]) {
         switch (self.type) {
             case TokenType:
-                return @"ic-supertoken";
+                return @"QRC20 Token";
             case CrowdsaleType:
-                return @"ic-crowdsale";
+                return @"Crowdsale";
             default:
-                return @"ic-smart_contract";
+                return @"Smart Contract";
         };
     } else {
         switch (self.type) {
             case TokenType:
-                return @"ic-supertoken-light";
+                return @"QRC20 Token-light";
             case CrowdsaleType:
-                return @"ic-supercreowdsale";
+                return @"Crowdsale-light";
             default:
-                return @"ic-smartcontract-light";
+                return @"Smart Contract-light";
         };
     }
 }

@@ -30,6 +30,7 @@
     cell.nameLabel.text = element.name;
     cell.amountLabel.text = element.priceString;
     cell.currencyLabel.text = NSLocalizedString(@"QTUM", nil);
+    cell.categoryImageView.image = [self getImgeByCategoryType:element.typeString isLight:[cell isLight]];
     
     if (indexPath.row == self.elements.count - 1) {
         if ([self.delegate respondsToSelector:@selector(loadMoreElements)]) {
@@ -60,6 +61,11 @@
 
 - (void)setSearchElements:(NSArray<QStoreContractElement *> *)elements {
     self.elements = elements;
+}
+
+- (UIImage *)getImgeByCategoryType:(NSString *)type isLight:(BOOL)isLight {
+    NSString *imageName = [NSString stringWithFormat:@"%@%@", type, isLight ? @"-light" : @""];
+    return [UIImage imageNamed:imageName];
 }
 
 @end

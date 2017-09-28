@@ -18,9 +18,6 @@ CGFloat const KeyboardDuration = 0.25f;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-
-
-
 @property (nonatomic) BOOL wasSettedTag;
 @property (nonatomic) NSString *tagString;
 
@@ -284,7 +281,7 @@ CGFloat const KeyboardDuration = 0.25f;
     });
 }
 
-- (void)setCategories:(NSArray<QStoreCategory *> *)categories {
+- (void)setCategories:(NSArray<QStoreMainScreenCategory *> *)categories {
     [self.source setCategoriesArray:categories];
 }
 

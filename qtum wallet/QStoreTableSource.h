@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class QStoreCategory;
+@class QStoreMainScreenCategory;
 @class QStoreContractElement;
 
 @protocol QStoreTableSourceDelegate <NSObject>
@@ -22,6 +22,6 @@
 @property (nonatomic, weak) id<QStoreTableSourceDelegate> delegate;
 @property (nonatomic, weak) UITableView *tableView;
 
-- (void)setCategoriesArray:(NSArray<QStoreCategory *> *)categories;
+- (void)setCategoriesArray:(NSArray<QStoreMainScreenCategory *> *)categories;
 
 @end

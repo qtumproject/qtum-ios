@@ -88,8 +88,8 @@
 - (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion;
 - (void)stopObservingForToken:(Contract*) token;
 
-- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
-- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
+- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)(void)) handler;
+- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)(void)) handler;
 
 // Observing for events
 
@@ -108,6 +108,7 @@
                         offset:(NSInteger)offset
                           type:(NSString *)type
                           tags:(NSArray *)tags
+                          name:(NSString *)name
             withSuccessHandler:(void(^)(id responseObject))success
              andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
@@ -146,6 +147,9 @@
 
 - (void)getFeePerKbWithSuccessHandler:(void(^)(NSNumber* feePerKb))success
                     andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getCategories:(void(^)(id responseObject))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 
 @end

@@ -18,5 +18,8 @@
     [self setSelectedBackgroundView:bgColorView];
 }
 
+- (BOOL)isLight {
+    return YES;
+}
 
 @end

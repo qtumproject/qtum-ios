@@ -18,4 +18,8 @@
     
 }
 
+- (BOOL)isLight {
+    return NO;
+}
+
 @end

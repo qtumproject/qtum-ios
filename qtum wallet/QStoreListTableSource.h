@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-
-
 @protocol QStoreListTableSourceDelegate <NSObject>
 
 - (void)didSelectCell:(NSIndexPath *)indexPath;
+- (void)loadMoreElements;
 
 @end
 
@@ -21,5 +20,6 @@
 @property (nonatomic, weak) id<QStoreListTableSourceDelegate> delegate;
 @property (nonatomic) NSArray *array;
 
+- (UIImage *)getImgeByCategoryType:(NSString *)type isLight:(BOOL)isLight;
 
 @end

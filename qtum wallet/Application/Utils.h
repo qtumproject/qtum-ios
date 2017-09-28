@@ -16,7 +16,7 @@ extern NSString *NO_INTERNET_CONNECTION_ERROR_KEY;
 extern NSString const *IS_TOKEN_STRING_KEY;
 
 
-UIColor *customBlueColor();
+UIColor *customBlueColor(void);
 UIColor *textFieldLineColorSelected();
 UIColor *textFieldLineColorDeselected();
 UIColor *customRedColor();

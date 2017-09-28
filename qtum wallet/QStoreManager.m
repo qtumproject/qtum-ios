@@ -7,7 +7,7 @@
 //
 
 #import "QStoreManager.h"
-#import "QStoreCategory.h"
+#import "QStoreMainScreenCategory.h"
 #import "QStoreDataProvider.h"
 #import "QStoreContractElement.h"
 #import "TransactionManager.h"
@@ -17,9 +17,10 @@
 #import "FXKeychain.h"
 #import "QStoreRequestManager.h"
 #import "QStoreContractDownloadManager.h"
+#import "QStoreCategory.h"
 
-NSString *const QStoreCategoryTrendingPath = @"/contracts/trending-now";
-NSString *const QStoreCategoryLastAddedPath = @"/contracts/last-added";
+NSString *const QStoreCategoryTrendingPath = @"contracts/trending-now";
+NSString *const QStoreCategoryLastAddedPath = @"contracts/last-added";
 
 NSString *const kQStoreBuyRequestsManager = @"kQStoreBuyRequestsManager";
 
@@ -29,11 +30,15 @@ NSInteger const QStoreSearchCount = 20;
 
 @property (nonatomic) QStoreDataProvider *requestAdapter;
 
-@property NSMutableArray<QStoreCategory *> *categories;
-@property NSMutableArray<QStoreCategory *> *categoriesInUpdate;
+@property NSMutableArray<QStoreMainScreenCategory *> *mainScreenCategories;
+@property NSMutableArray<QStoreMainScreenCategory *> *mainScreenCategoriesInUpdate;
+
+@property (nonatomic) NSArray<QStoreCategory *> *categories;
 
 @property (nonatomic) NSString *searchString;
 @property (nonatomic) QStoreManagerSearchType currnentSearchType;
+@property (nonatomic) NSString *categoryTypeString;
+
 @property (nonatomic) NSMutableArray<NSString *> *searchQueue;
 @property (nonatomic) NSMutableArray<QStoreContractElement *> *searchResult;
 @property (strong, nonatomic) QStoreRequestManager* requestsManger;
@@ -59,8 +64,8 @@ NSInteger const QStoreSearchCount = 20;
     self = [super init];
     
     if (self != nil) {
-        _categories = [NSMutableArray new];
-        _categoriesInUpdate = [NSMutableArray new];
+        _mainScreenCategories = [NSMutableArray new];
+        _mainScreenCategoriesInUpdate = [NSMutableArray new];
         _requestAdapter = [QStoreDataProvider new];
         _searchQueue = [NSMutableArray new];
         _searchResult = [NSMutableArray new];
@@ -112,11 +117,11 @@ NSInteger const QStoreSearchCount = 20;
 #pragma mark - Private
 
 - (void)createStandartCategories {
-    QStoreCategory *trending = [[QStoreCategory alloc] initWithIdentifier:0 title:NSLocalizedString(@"Trending Now", nil) urlPath:QStoreCategoryTrendingPath];
-    QStoreCategory *lastAdded = [[QStoreCategory alloc] initWithIdentifier:1 title:NSLocalizedString(@"Last Added", nil) urlPath:QStoreCategoryLastAddedPath];
+    QStoreMainScreenCategory *trending = [[QStoreMainScreenCategory alloc] initWithIdentifier:@"0" name:NSLocalizedString(@"Trending Now", nil) urlPath:QStoreCategoryTrendingPath];
+    QStoreMainScreenCategory *lastAdded = [[QStoreMainScreenCategory alloc] initWithIdentifier:@"1" name:NSLocalizedString(@"Last Added", nil) urlPath:QStoreCategoryLastAddedPath];
     
-    [self.categories addObject:trending];
-    [self.categories addObject:lastAdded];
+    [self.mainScreenCategories addObject:trending];
+    [self.mainScreenCategories addObject:lastAdded];
 }
 
 - (void)subscribeToRequestUpdate:(NSString*) requestString {
@@ -127,17 +132,35 @@ NSInteger const QStoreSearchCount = 20;
 
 #pragma mark - Public
 
-- (void)loadContractsForCategoriesWithSuccessHandler:(void (^)(NSArray<QStoreCategory *> *))success
+- (void)loadCategoriesWithSuccessHandler:(void (^)(NSArray<QStoreCategory *> *categories))success
+                       andFailureHandler:(void (^)(NSString *message))failure {
+    
+    if (self.categories && self.categories.count > 0) {
+        success(self.categories);
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    [self.requestAdapter getCategories:^(NSArray<QStoreCategory *> *categories) {
+        weakSelf.categories = categories;
+        success(categories);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        if (failure) {
+            failure(message);
+        }
+    }];
+}
+
+- (void)loadContractsForCategoriesWithSuccessHandler:(void (^)(NSArray<QStoreMainScreenCategory *> *))success
                                    andFailureHandler:(void (^)(NSString *))failure {
     
-    for (QStoreCategory *category in self.categories) {
-        [self.categoriesInUpdate addObject:category];
+    for (QStoreMainScreenCategory *category in self.mainScreenCategories) {
+        [self.mainScreenCategoriesInUpdate addObject:category];
         
         __weak typeof(self) weakSelf = self;
-        [self.requestAdapter getContractsForCategory:category withSuccessHandler:^(QStoreCategory *updatedCategory) {
-            [weakSelf.categoriesInUpdate removeObject:category];
-            if (weakSelf.categoriesInUpdate.count == 0) {
-                success(weakSelf.categories);
+        [self.requestAdapter getContractsForCategory:category withSuccessHandler:^(QStoreMainScreenCategory *updatedCategory) {
+            [weakSelf.mainScreenCategoriesInUpdate removeObject:category];
+            if (weakSelf.mainScreenCategoriesInUpdate.count == 0) {
+                success(weakSelf.mainScreenCategories);
             }
         } andFailureHandler:^(NSError *error, NSString *message) {
             failure(message);
@@ -146,7 +169,7 @@ NSInteger const QStoreSearchCount = 20;
 }
 
 - (void)loadFullContract:(QStoreContractElement *)element
-      withSuccessHandler:(void (^)())success
+      withSuccessHandler:(void (^)(void))success
        andFailureHandler:(void (^)(NSString *))failure {
     
     __weak typeof(self) weakSelf = self;
@@ -174,8 +197,8 @@ NSInteger const QStoreSearchCount = 20;
 #pragma mark - Abi
 
 - (void)getContractABIWithElement:(QStoreContractElement *)element
-    withSuccessHandler:(void (^)())success
-     andFailureHandler:(void (^)(NSString *message))failure{
+               withSuccessHandler:(void (^)(void))success
+                andFailureHandler:(void (^)(NSString *message))failure{
     
     [self.requestAdapter getContractABIWithElement:element withSuccessHandler:^(NSString *abiString) {
         element.abiString = abiString;
@@ -189,7 +212,7 @@ NSInteger const QStoreSearchCount = 20;
 
 
 - (void)purchaseContract:(QStoreContractElement *)element
-      withSuccessHandler:(void (^)())success
+      withSuccessHandler:(void (^)(void))success
        andFailureHandler:(void (^)(NSString *message))failure {
     
     __weak typeof(self) weakSelf = self;
@@ -214,7 +237,7 @@ NSInteger const QStoreSearchCount = 20;
 }
 
 - (void)createBuyTrancaction:(QStoreBuyRequest *)buyRequest
-          withSuccessHandler:(void (^)())success
+          withSuccessHandler:(void (^)(void))success
            andFailureHandler:(void (^)(NSString *message))failure {
     
     
@@ -238,7 +261,7 @@ NSInteger const QStoreSearchCount = 20;
 
 #pragma mark - Search
 
-- (void)searchByString:(NSString *)string searchType:(QStoreManagerSearchType)type {
+- (void)searchByCategoryType:(NSString *)categoryType string:(NSString *)string searchType:(QStoreManagerSearchType)type {
     
     if ([string isEqualToString:@""]) {
         [self clearSearch];
@@ -262,6 +285,7 @@ NSInteger const QStoreSearchCount = 20;
     if (self.currnentSearchType == QStoreManagerSearchTypeNone) {
         self.searchString = string;
         self.currnentSearchType = type;
+        self.categoryTypeString = categoryType;
         [self.searchResult removeAllObjects];
         [self startSearch];
         return;
@@ -276,27 +300,38 @@ NSInteger const QStoreSearchCount = 20;
     [self.searchQueue removeAllObjects];
     [self.searchResult removeAllObjects];
     self.currnentSearchType = QStoreManagerSearchTypeNone;
+    self.categoryTypeString = nil;
 }
 
 - (void)startSearch {
+    [self startSearchWithOffset:0 findMore:NO];
+}
+
+- (void)startSearchWithOffset:(NSInteger)offset findMore:(BOOL)findMore {
+    
+    NSArray *tagsArray;
+    NSString *nameString;
     switch (self.currnentSearchType) {
         case QStoreManagerSearchTypeTag:
-            [self startSearchByTagWithOffset:0 findMore:NO];
+            tagsArray = @[self.searchString];
             break;
         case QStoreManagerSearchTypeName:
-            
+            nameString = self.searchString;
             break;
         default:
             break;
     }
-}
-
-- (void)startSearchByTagWithOffset:(NSInteger)offset findMore:(BOOL)findMore {
+    
     __weak typeof(self) weakSelf = self;
-    [self.requestAdapter searchContractsByCount:QStoreSearchCount offset:offset type:QStoreDataProviderSearchTypeAll tags:@[self.searchString] withSuccessHandler:^(NSArray<QStoreContractElement *> *elements, NSArray<NSString *> *tags) {
+    [self.requestAdapter searchContractsByCount:QStoreSearchCount
+                                         offset:offset
+                                           type:self.categoryTypeString
+                                           tags:tagsArray
+                                           name:nameString
+                             withSuccessHandler:^(NSArray<QStoreContractElement *> *elements, NSArray<NSString *> *tags) {
         
         NSString *tagString = [tags firstObject];
-        if ([weakSelf.searchString isEqualToString:tagString]) {
+        if ([weakSelf.searchString isEqualToString:tagString] || weakSelf.currnentSearchType == QStoreManagerSearchTypeAll) {
             [weakSelf.searchResult addObjectsFromArray:elements];
             if (findMore) {
                 if ([weakSelf.delegate respondsToSelector:@selector(didFindMoreElements:)]) {
@@ -322,7 +357,7 @@ NSInteger const QStoreSearchCount = 20;
     }];
 }
 
-- (void)searchMoreItemsByString:(NSString *)string searchType:(QStoreManagerSearchType)type {
+- (void)searchMoreItemsByCategoryType:(NSString *)categoryType string:(NSString *)string searchType:(QStoreManagerSearchType)type {
     if (![string isEqualToString:self.searchString] || self.currnentSearchType != QStoreManagerSearchTypeNone) {
         return;
     }
@@ -333,16 +368,7 @@ NSInteger const QStoreSearchCount = 20;
 }
 
 - (void)startSearchMore {
-    switch (self.currnentSearchType) {
-        case QStoreManagerSearchTypeTag:
-            [self startSearchByTagWithOffset:self.searchResult.count findMore:YES];
-            break;
-        case QStoreManagerSearchTypeName:
-            
-            break;
-        default:
-            break;
-    }
+    [self startSearchWithOffset:self.searchResult.count findMore:YES];
 }
 
 - (QStoreBuyRequest*)requestWithContractId:(NSString*) contractId {

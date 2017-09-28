@@ -7,13 +7,14 @@
 //
 
 #import "QStoreDataProvider.h"
-#import "QStoreCategory.h"
+#import "QStoreMainScreenCategory.h"
 #import "QStoreContractElement.h"
+#import "QStoreCategory.h"
 
 @implementation QStoreDataProvider
 
-- (void)getContractsForCategory:(QStoreCategory *)category
-             withSuccessHandler:(void(^)(QStoreCategory *updatedCategory))success
+- (void)getContractsForCategory:(QStoreMainScreenCategory *)category
+             withSuccessHandler:(void(^)(QStoreMainScreenCategory *updatedCategory))success
               andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
     [[ApplicationCoordinator sharedInstance].requestManager getContractsByCategoryPath:category.urlPath withSuccessHandler:^(id responseObject) {
@@ -39,33 +40,22 @@
 
 - (void)searchContractsByCount:(NSInteger)count
                         offset:(NSInteger)offset
-                          type:(QStoreDataProviderSearchType)type
+                          type:(NSString *)type
                           tags:(NSArray *)tags
+                          name:(NSString *)name
             withSuccessHandler:(void (^)(NSArray<QStoreContractElement *> *, NSArray<NSString *> *))success
              andFailureHandler:(void (^)(NSError *, NSString *))failure {
     
-    NSString *stringType;
-    switch (type) {
-        case QStoreDataProviderSearchTypeToken:
-            stringType = @"token";
-            break;
-        case QStoreDataProviderSearchTypeCrowdsale:
-            stringType = @"crowdsale";
-            break;
-        case QStoreDataProviderSearchTypeOther:
-            stringType = @"other";
-            break;
-        default:
-            break;
-    }
     
-    [[ApplicationCoordinator sharedInstance].requestManager searchContractsByCount:count offset:offset type:stringType tags:tags withSuccessHandler:^(id responseObject) {
+    NSArray *searchArrayToReturnWithResult = tags ? tags : name ? @[name] : nil;
+    
+    [[ApplicationCoordinator sharedInstance].requestManager searchContractsByCount:count offset:offset type:type tags:tags name:name withSuccessHandler:^(id responseObject) {
         NSMutableArray<QStoreContractElement *> *array = [NSMutableArray new];
         for (NSDictionary *dictionary in responseObject) {
             QStoreContractElement *element = [QStoreContractElement createFromSearchDictionary:dictionary];
             [array addObject:element];
         }
-        success(array, tags);
+        success(array, searchArrayToReturnWithResult);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
     }];
@@ -182,6 +172,27 @@
         }
     } andFailureHandler:^(NSError *error, NSString *message) {
         
+    }];
+}
+
+- (void)getCategories:(void(^)(NSArray<QStoreCategory *> *categories))success
+    andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    
+    [[ApplicationCoordinator sharedInstance].requestManager getCategories:^(id responseObject) {
+        NSMutableArray *array = [NSMutableArray new];
+        for (NSDictionary *dictionary in responseObject) {
+            NSString *identifier = [dictionary objectForKey:@"_id"];
+            NSString *name = [dictionary objectForKey:@"type"];
+            NSNumber *count = [dictionary objectForKey:@"count"];
+            
+            if (identifier && name) {
+                QStoreCategory *category = [[QStoreCategory alloc] initWithIdentifier:identifier name:name count:count];
+                [array addObject:category];
+            }
+        }
+        success(array);
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        failure(error, message);
     }];
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -27,7 +27,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Contract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82d-VN-XSa">
-                        <rect key="frame" x="22" y="12.5" width="136.5" height="19"/>
+                        <rect key="frame" x="34" y="13" width="136.5" height="19"/>
                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -44,23 +44,33 @@
                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-supertoken_blue" translatesAutoresizingMaskIntoConstraints="NO" id="l5t-VG-aMz">
+                        <rect key="frame" x="10" y="14.5" width="16" height="16"/>
+                        <color key="tintColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="82d-VN-XSa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="KEO-5b-Vl4"/>
+                    <constraint firstItem="l5t-VG-aMz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="1jG-nF-5LF"/>
+                    <constraint firstItem="82d-VN-XSa" firstAttribute="leading" secondItem="l5t-VG-aMz" secondAttribute="trailing" constant="8" id="GRT-0c-zww"/>
                     <constraint firstItem="XTI-Tk-3Nq" firstAttribute="bottom" secondItem="TO9-qq-IVV" secondAttribute="bottom" constant="2" id="To0-Sl-pjD"/>
                     <constraint firstAttribute="trailing" secondItem="TO9-qq-IVV" secondAttribute="trailing" constant="15" id="UPP-N2-eoN"/>
                     <constraint firstItem="TO9-qq-IVV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Yag-n6-8o7"/>
                     <constraint firstItem="82d-VN-XSa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bql-fI-eFu"/>
+                    <constraint firstItem="l5t-VG-aMz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vbj-uG-HZh"/>
                     <constraint firstItem="TO9-qq-IVV" firstAttribute="leading" secondItem="XTI-Tk-3Nq" secondAttribute="trailing" constant="4" id="xu6-OC-5yY"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="amountLabel" destination="XTI-Tk-3Nq" id="TTf-dD-9Oe"/>
+                <outlet property="categoryImageView" destination="l5t-VG-aMz" id="p6I-4F-lyp"/>
                 <outlet property="currencyLabel" destination="TO9-qq-IVV" id="czg-Wo-kgt"/>
                 <outlet property="nameLabel" destination="82d-VN-XSa" id="2ws-qV-vd1"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic-supertoken_blue" width="16" height="16"/>
+    </resources>
 </document>

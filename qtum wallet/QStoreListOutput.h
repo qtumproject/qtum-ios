@@ -21,9 +21,15 @@ typedef NS_ENUM(NSInteger, QStoreListType) {
 @property (weak, nonatomic) id<QStoreListOutputDelegate> delegate;
 
 @property (nonatomic) NSString *categoryTitle;
+@property (nonatomic) NSString *categoryType;
 @property (nonatomic) QStoreListType type;
 
 - (void)setCategories:(NSArray<QStoreCategory *> *)categories;
 - (void)setElements:(NSArray<QStoreContractElement *> *)elements;
+- (void)setMoreElements:(NSArray<QStoreContractElement *> *)elements;
+
+- (void)startLoading;
+- (void)endLoading;
+- (void)showErrorWithMessage:(NSString *)message;
 
 @end

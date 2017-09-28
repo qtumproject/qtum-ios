@@ -10,9 +10,14 @@
 #import "QStoreListOutput.h"
 #import "Presentable.h"
 #import "QStoreListTableSource.h"
+#import "SelectSearchTypeView.h"
 
-@interface QStoreListViewController : UIViewController <QStoreListOutput, Presentable>
+@interface QStoreListViewController : UIViewController <QStoreListOutput, Presentable, SelectSearchTypeViewDelegate>
 
 @property (nonatomic) QStoreListTableSource *source;
+@property (nonatomic) SelectSearchTypeView *selectSearchType;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForSearhTypeContainer;
+@property (weak, nonatomic) IBOutlet UIView *searhTypeContainer;
 
 @end

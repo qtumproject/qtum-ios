@@ -12,6 +12,7 @@
 #import "AddressesTokenTableViewCell.h"
 #import "ActivityTokenTableViewCell.h"
 #import "QTUMAddressTokenTableViewCell.h"
+#import "Wallet.h"
 
 #import "BalanceTokenView.h"
 #import "QTUMAddressTokenView.h"
@@ -199,7 +200,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
         updatedView = (QTUMAddressTokenView *)[self getViewFromXib:[QTUMAddressTokenView class]];
     }
     updatedView.delegate = self;
-    updatedView.addressLabel.text = self.token.mainAddress;
+    updatedView.addressLabel.text = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
     return updatedView;
 }
 
@@ -221,8 +222,8 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
     if (!updatedView) {
         updatedView = (AddressesTokenView *)[self getViewFromXib:[AddressesTokenView class]];
     }
-    updatedView.addressNameLabel.text = NSLocalizedString(@"Sender Address", @"");
-    updatedView.addressLabel.text = self.token.contractCreationAddressAddress;
+    updatedView.addressNameLabel.text = NSLocalizedString(@"Contract Address", @"");
+    updatedView.addressLabel.text = self.token.contractAddress;
     return updatedView;
 }
 
