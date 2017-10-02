@@ -46,4 +46,7 @@
 + (void)saveCurrentVersion:(NSString*) value;
 + (NSString*)currentVersion;
 
++ (void)savePublicAddresses:(NSArray*)addresses;
++ (NSArray*)getPublicAddresses;
+
 @end
