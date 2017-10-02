@@ -24,7 +24,7 @@ NSString * const kPublicAddresses            = @"kPublicAddresses";
 
 
 
-NSString * const kGroupIdentifire            = @"group.com.pixelplex.qtum-wallet";
+NSString * const kGroupIdentifire            = @"group.com.qtum.qtum-wallet";
 
 
 
