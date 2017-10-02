@@ -40,5 +40,8 @@ extern NSInteger const brandKeyWordsCount;
 - (NSDictionary <NSString*,BTCKey*>*)addressKeyHashTable;
 - (NSString *)brandKeyWithPin:(NSString*) pin;
 
+- (NSString *)getStoredLastAddressKey;
+- (void)clearPublicAddresses;
+
 
 @end

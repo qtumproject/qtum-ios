@@ -68,11 +68,30 @@ NSInteger const USERS_KEYS_COUNT = 10;
     if (stringBrandKey) {
         NSArray* seedWords = [stringBrandKey componentsSeparatedByString:@" "];
         self.keyChain = [self createKeychainWithSeedWords:seedWords];
+        if (self.keyChain) {
+            [self savePublicAddresses];
+        }
     } else {
         DLog(@"Cant Create seed words from Pin");
     }
     
     return self.keyChain;
+}
+
+- (void)savePublicAddresses {
+    NSMutableArray *addresses = [NSMutableArray new];
+    for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
+        BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
+        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        if (keyString) {
+            [addresses addObject:keyString];
+        }
+    }
+    [NSUserDefaults savePublicAddresses:addresses];
+}
+
+- (void)clearPublicAddresses {
+    [NSUserDefaults savePublicAddresses:nil];
 }
 
 - (BOOL)changeBrandKeyPinWithOldPin:(NSString*) pin toNewPin:(NSString*) newPin {
@@ -144,16 +163,21 @@ NSInteger const USERS_KEYS_COUNT = 10;
     [DataOperation addGropFileWithName:@"group" dataSource:@{@"kWalletAddressKey": keyString}];
 }
 
+- (NSString *)getStoredLastAddressKey {
+    return [[DataOperation getDictFormGroupFileWithName:@"group"] objectForKey:@"kWalletAddressKey"];
+}
+
 - (BTCKey *)keyAtIndex:(NSUInteger)index;
 {
     return [self.keyChain keyAtIndex:(uint)index hardened:YES];
 }
 
 - (NSArray *)allKeys {
-    
     NSMutableArray *allKeys = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
-        [allKeys addObject:[self.keyChain keyAtIndex:(uint)i hardened:YES]];
+        if ([self.keyChain keyAtIndex:(uint)i hardened:YES]) {
+            [allKeys addObject:[self.keyChain keyAtIndex:(uint)i hardened:YES]];
+        }
     }
     return allKeys;
 }
@@ -165,13 +189,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 - (NSArray <NSString*>*)allKeysAdreeses {
     
-    NSMutableArray *allKeysString = [NSMutableArray new];
-    for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
-        BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
-        [allKeysString addObject:keyString];
-    }
-    return allKeysString;
+    return [NSUserDefaults getPublicAddresses];
 }
 
 - (NSDictionary <NSString*,BTCKey*>*)addressKeyHashTable {

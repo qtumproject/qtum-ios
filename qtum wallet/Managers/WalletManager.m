@@ -113,6 +113,7 @@ NSString const *kUserPinHash = @"HashPIN";
 -(void)clear {
     
     [self removePin];
+    [self.wallet clearPublicAddresses];
     self.wallet = nil;
     [self save];
 }

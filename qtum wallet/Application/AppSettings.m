@@ -53,7 +53,7 @@
     
     [NSUserDefaults saveCurrentVersion:[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
     [NSUserDefaults saveIsRPCOnSetting:NO];
-    [NSUserDefaults saveIsMainnetSetting:YES];
+    [NSUserDefaults saveIsMainnetSetting:NO];
 
     [PopUpsManager sharedInstance];
     [self setupFabric];
@@ -65,7 +65,6 @@
 }
 
 -(void)setupFingerpring {
-    
     
     if( [[TouchIDService sharedInstance] hasTouchId]) {
         [NSUserDefaults saveIsFingerpringAllowed:YES];

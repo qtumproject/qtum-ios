@@ -20,10 +20,11 @@ NSString * const kIsHaveWallet               = @"kIsHaveWallet";
 NSString * const kIsDarkScheme               = @"kIsDarkScheme";
 NSString * const kIsNotFirstTimeLaunch          = @"kIsNotFirstTimeLaunch";
 NSString * const kCurrentVersion             = @"kCurrentVersion";
+NSString * const kPublicAddresses            = @"kPublicAddresses";
 
 
 
-NSString * const kGroupIdentifire            = @"group.com.qtum.qtum-wallet";
+NSString * const kGroupIdentifire            = @"group.com.pixelplex.qtum-wallet";
 
 
 
@@ -128,9 +129,19 @@ NSString * const kGroupIdentifire            = @"group.com.qtum.qtum-wallet";
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:kCurrentVersion];
 }
 
-
 + (NSString*)currentVersion {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentVersion];
+}
+
+// Public addresses
+
++ (void)savePublicAddresses:(NSArray*)addresses {
+    [[NSUserDefaults standardUserDefaults] setObject:addresses forKey:kPublicAddresses];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSArray*)getPublicAddresses {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kPublicAddresses];
 }
 
 @end

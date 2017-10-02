@@ -252,7 +252,11 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 -(void)checkSmartContract:(HistoryElement*) item {
     
-    if (item.confirmed && item.isSmartContractCreater && [self.smartContractPretendents objectForKey:item.txHash]) {
+    if ([[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys].count == 0) {
+        return;
+    }
+    
+    if (item.confirmed && item.isSmartContractCreater && [self.smartContractPretendents objectForKey:item.txHash] ) {
         
         NSString* key = item.txHash;
         NSDictionary* tokenInfo = self.smartContractPretendents[key];
