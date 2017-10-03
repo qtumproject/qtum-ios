@@ -1,14 +1,14 @@
 //
-//  NSBundle+TCAStyleProvider.m
-//  TCA2016
+//  NSObject+StyleProvider.h
+//  qtum wallet
 //
-//  Created by Nikita on 09.08.16.
+//  Created by Vladimir Lebedevich on 21.05.17.
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "NSBundle+TCAStyleProvider.h"
+#import "NSBundle+StyleProvider.h"
 
-@implementation NSBundle (TCAStyleProvider)
+@implementation NSBundle (StyleProvider)
 
 - (NSString *)tca_localizedStringForKey:(NSString *)key class:(Class)tableClass {
     

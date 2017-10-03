@@ -183,9 +183,9 @@
 		B36EBC451F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC441F2F1E2D00F4E2F2 /* SecurityPopupViewControllerLight.m */; };
 		B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC481F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m */; };
 		B36EBC4C1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC4B1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m */; };
-		B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */; };
-		B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */; };
-		B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */; };
+		B371D8851E3A1D3B00A13EA3 /* NSBundle+StyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+StyleProvider.m */; };
+		B371D8861E3A1D3B00A13EA3 /* NSNull+Catch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+Catch.m */; };
+		B371D8871E3A1D3B00A13EA3 /* NSObject+Associating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+Associating.m */; };
 		B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE11F02872000142252 /* EnableFingerprintViewController.m */; };
 		B381CBE51F0291CB00142252 /* SecurityPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */; };
 		B381CBEA1F029CB200142252 /* SecurityPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE91F029CB200142252 /* SecurityPinView.m */; };
@@ -373,6 +373,10 @@
 		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
 		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
 		B3F76A941EDDB81600108DE9 /* Contracts in Resources */ = {isa = PBXBuildFile; fileRef = B3F76A931EDDB81600108DE9 /* Contracts */; };
+		D08043581F838D6100B22606 /* WalletManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D08043571F838D6100B22606 /* WalletManagerTests.m */; };
+		D080435A1F839E0D00B22606 /* ContractManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D08043591F839E0D00B22606 /* ContractManagerTests.m */; };
+		D080435C1F83AAB700B22606 /* TemplateManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D080435B1F83AAB700B22606 /* TemplateManagerTests.m */; };
+		D080435E1F83C28F00B22606 /* WalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D080435D1F83C28F00B22606 /* WalletTests.m */; };
 		D09F83991F7BB2DB002F3098 /* CopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F83981F7BB2DB002F3098 /* CopyLabel.m */; };
 		D09F839C1F7BF308002F3098 /* QStoreCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F839B1F7BF308002F3098 /* QStoreCategory.m */; };
 		E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */; };
@@ -1020,12 +1024,12 @@
 		B36EBC481F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationPopUpViewControllerDark.m; sourceTree = "<group>"; };
 		B36EBC4A1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationPopUpViewControllerLight.h; sourceTree = "<group>"; };
 		B36EBC4B1F2F4F9F00F4E2F2 /* InformationPopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationPopUpViewControllerLight.m; sourceTree = "<group>"; };
-		B371D87D1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TCAStyleProvider.h"; sourceTree = "<group>"; };
-		B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TCAStyleProvider.m"; sourceTree = "<group>"; };
-		B371D87F1E3A1D3B00A13EA3 /* NSNull+TCACatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+TCACatch.h"; sourceTree = "<group>"; };
-		B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+TCACatch.m"; sourceTree = "<group>"; };
-		B371D8811E3A1D3B00A13EA3 /* NSObject+TCAAssociating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TCAAssociating.h"; sourceTree = "<group>"; };
-		B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TCAAssociating.m"; sourceTree = "<group>"; };
+		B371D87D1E3A1D3B00A13EA3 /* NSBundle+StyleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+StyleProvider.h"; sourceTree = "<group>"; };
+		B371D87E1E3A1D3B00A13EA3 /* NSBundle+StyleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+StyleProvider.m"; sourceTree = "<group>"; };
+		B371D87F1E3A1D3B00A13EA3 /* NSNull+Catch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+Catch.h"; sourceTree = "<group>"; };
+		B371D8801E3A1D3B00A13EA3 /* NSNull+Catch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+Catch.m"; sourceTree = "<group>"; };
+		B371D8811E3A1D3B00A13EA3 /* NSObject+Associating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Associating.h"; sourceTree = "<group>"; };
+		B371D8821E3A1D3B00A13EA3 /* NSObject+Associating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Associating.m"; sourceTree = "<group>"; };
 		B381CBE01F02872000142252 /* EnableFingerprintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnableFingerprintViewController.h; sourceTree = "<group>"; };
 		B381CBE11F02872000142252 /* EnableFingerprintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnableFingerprintViewController.m; sourceTree = "<group>"; };
 		B381CBE31F0291CB00142252 /* SecurityPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityPopupViewController.h; sourceTree = "<group>"; };
@@ -1429,6 +1433,10 @@
 		B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		B3F76A931EDDB81600108DE9 /* Contracts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Contracts; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
+		D08043571F838D6100B22606 /* WalletManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletManagerTests.m; sourceTree = "<group>"; };
+		D08043591F839E0D00B22606 /* ContractManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractManagerTests.m; sourceTree = "<group>"; };
+		D080435B1F83AAB700B22606 /* TemplateManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TemplateManagerTests.m; sourceTree = "<group>"; };
+		D080435D1F83C28F00B22606 /* WalletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletTests.m; sourceTree = "<group>"; };
 		D09F83971F7BB2DB002F3098 /* CopyLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CopyLabel.h; sourceTree = "<group>"; };
 		D09F83981F7BB2DB002F3098 /* CopyLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CopyLabel.m; sourceTree = "<group>"; };
 		D09F839A1F7BF308002F3098 /* QStoreCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreCategory.h; sourceTree = "<group>"; };
@@ -3551,6 +3559,10 @@
 		E71AF2431E0177910068595B /* qtum walletTests */ = {
 			isa = PBXGroup;
 			children = (
+				D080435D1F83C28F00B22606 /* WalletTests.m */,
+				D080435B1F83AAB700B22606 /* TemplateManagerTests.m */,
+				D08043591F839E0D00B22606 /* ContractManagerTests.m */,
+				D08043571F838D6100B22606 /* WalletManagerTests.m */,
 				E71AF2441E0177910068595B /* qtum_walletTests.m */,
 				E71AF2461E0177910068595B /* Info.plist */,
 				B3A4EA531F502CD1008115D1 /* NSDecimalNumberComparisonTests.m */,
@@ -4256,12 +4268,12 @@
 			isa = PBXGroup;
 			children = (
 				B3827DF11ED2F5B000E500DE /* SHA3 */,
-				B371D87D1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.h */,
-				B371D87E1E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m */,
-				B371D87F1E3A1D3B00A13EA3 /* NSNull+TCACatch.h */,
-				B371D8801E3A1D3B00A13EA3 /* NSNull+TCACatch.m */,
-				B371D8811E3A1D3B00A13EA3 /* NSObject+TCAAssociating.h */,
-				B371D8821E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m */,
+				B371D87D1E3A1D3B00A13EA3 /* NSBundle+StyleProvider.h */,
+				B371D87E1E3A1D3B00A13EA3 /* NSBundle+StyleProvider.m */,
+				B371D87F1E3A1D3B00A13EA3 /* NSNull+Catch.h */,
+				B371D8801E3A1D3B00A13EA3 /* NSNull+Catch.m */,
+				B371D8811E3A1D3B00A13EA3 /* NSObject+Associating.h */,
+				B371D8821E3A1D3B00A13EA3 /* NSObject+Associating.m */,
 				E7DD00F01DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.h */,
 				E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */,
 				B33EAF9D1E5EE1EE006125F3 /* NSString+Extension.h */,
@@ -4985,7 +4997,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D08043581F838D6100B22606 /* WalletManagerTests.m in Sources */,
+				D080435A1F839E0D00B22606 /* ContractManagerTests.m in Sources */,
+				D080435E1F83C28F00B22606 /* WalletTests.m in Sources */,
 				B3427FD21F543D7D00182E95 /* ContractParametersInterpreterTest.m in Sources */,
+				D080435C1F83AAB700B22606 /* TemplateManagerTests.m in Sources */,
 				B3D5FE411F56A4DC006A2BF2 /* AbiRegexTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5040,7 +5056,7 @@
 				B3EA530A1F46D9DA002FD201 /* QStoreTableViewCellLight.m in Sources */,
 				B3D5FE741F56F37B006A2BF2 /* AbiParameterTypeDynamicArrayString.m in Sources */,
 				B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */,
-				B371D8871E3A1D3B00A13EA3 /* NSObject+TCAAssociating.m in Sources */,
+				B371D8871E3A1D3B00A13EA3 /* NSObject+Associating.m in Sources */,
 				B3CD78DA1F4DC1F400D79363 /* ChooseReciveAddressViewControllerDark.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
 				B35DF6291F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m in Sources */,
@@ -5211,7 +5227,7 @@
 				B3EA52F41F45E087002FD201 /* QStoreContractViewControllerDark.m in Sources */,
 				B3EE8F341F1352AA00131823 /* ChooseTokenPaymentDelegateDataSourceLight.m in Sources */,
 				E71B72F31F0E9263004BECEA /* PageControlLight.m in Sources */,
-				B371D8861E3A1D3B00A13EA3 /* NSNull+TCACatch.m in Sources */,
+				B371D8861E3A1D3B00A13EA3 /* NSNull+Catch.m in Sources */,
 				B3F1492F1F489BC60032FC63 /* QStoreSearchTableViewCellLight.m in Sources */,
 				B3DC9CEE1F30CB7E006B2E07 /* TokenFunctionViewControllerLight.m in Sources */,
 				B3E8B7881F4AC5D300DD7904 /* SourceCodePopUpViewControllerLight.m in Sources */,
@@ -5442,7 +5458,7 @@
 				B32BC4C91F29EF6400C2417C /* TokenCellSubscribeLight.m in Sources */,
 				B3D5FE611F56CC53006A2BF2 /* AbiParameterPrimitiveType.m in Sources */,
 				B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */,
-				B371D8851E3A1D3B00A13EA3 /* NSBundle+TCAStyleProvider.m in Sources */,
+				B371D8851E3A1D3B00A13EA3 /* NSBundle+StyleProvider.m in Sources */,
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,
 				B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */,
 				B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */,

@@ -290,7 +290,6 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
 }
 
 -(void)clear {
-    
     self.templates = [[self standartPackOfTemplates] mutableCopy];
     [self save];
 }
