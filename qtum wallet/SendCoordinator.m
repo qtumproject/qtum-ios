@@ -7,6 +7,7 @@
 //
 
 #import "SendCoordinator.h"
+#import "PaymentValuesManager.h"
 #import "NewPaymentDarkViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
@@ -49,7 +50,6 @@
 }
 
 -(void)start {
-    
     id <NewPaymentOutput> controller = [[ControllersFactory sharedInstance] createNewPaymentDarkViewController];
     controller.delegate = self;
     self.paymentOutput = controller;
@@ -58,13 +58,14 @@
     [self.paymentOutput showLoaderPopUp];
     
     __weak __typeof(self)weakSelf = self;
-    
     [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(NSNumber *feePerKb) {
         
         NSDecimalNumber* minFee = [feePerKb decimalNumber];
-        NSDecimalNumber* maxFee = [NSDecimalNumber decimalNumberWithString:@"1"];
+        NSDecimalNumber* maxFee = [[PaymentValuesManager sharedInstance].maxFee decimalNumber];
         
         [weakSelf.paymentOutput setMinFee:minFee andMaxFee: maxFee];
+        [weakSelf.paymentOutput setMinGasPrice:[PaymentValuesManager sharedInstance].minGasPrice andMax:[PaymentValuesManager sharedInstance].maxGasPrice step:GasPriceStep];
+        [weakSelf.paymentOutput setMinGasLimit:[PaymentValuesManager sharedInstance].minGasLimit andMax:[PaymentValuesManager sharedInstance].maxGasLimit standart:[PaymentValuesManager sharedInstance].standartGasLimit step:GasLimitStep];
         [weakSelf.paymentOutput hideLoaderPopUp];
     }];
     
@@ -181,13 +182,15 @@
                                                             [weakSelf hideLoaderPopUp];
                                                             if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
                                                                 [self showNotEnoughFeeAlertWithEstimatedFee:estimateFee];
+                                                            } else if(errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
+                                                                [weakSelf showStatusOfPayment:errorType withEstimateGasLimit:estimateFee];
                                                             } else {
                                                                 [weakSelf showStatusOfPayment:errorType];
                                                             }
                                                         }];
 }
 
--(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee {
+-(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount fee:(NSNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
     
     NSDecimalNumber* amounDivByDecimals = [[amount decimalNumber] numberWithPowerOf10:self.token.decimals];
 
@@ -202,7 +205,9 @@
         [[TransactionManager sharedInstance] sendToken:self.token
                                            fromAddress:self.fromAddressString
                                              toAddress:address amount:amounDivByDecimals
-                                                   fee:[fee decimalNumber] withGasLimit:nil
+                                                   fee:[fee decimalNumber]
+                                              gasPrice:[gasPrice decimalNumber]
+                                              gasLimit:[gasLimit decimalNumber]
                                             andHandler:^(TransactionManagerErrorType errorType,
                                                          BTCTransaction *transaction,
                                                          NSString *hashTransaction,
@@ -220,7 +225,8 @@
                                                           toAddress:address
                                                              amount:amounDivByDecimals
                                                                 fee:[fee decimalNumber]
-                                                       withGasLimit:nil
+                                                           gasPrice:[gasPrice decimalNumber]
+                                                           gasLimit:[gasLimit decimalNumber]
                                                          andHandler:^(TransactionManagerErrorType errorType,
                                                                       BTCTransaction * transaction, NSString* hashTransaction,
                                                                       NSDecimalNumber* estimateFee) {
@@ -261,6 +267,12 @@
 - (void)showNotEnoughFeeAlertWithEstimatedFee:(NSDecimalNumber*) estimatedFee {
     
     NSString* errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee];
+    [self showErrorPopUp:NSLocalizedString(errorString, nil)];
+}
+
+- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType withEstimateGasLimit:(NSDecimalNumber*) gasLimit {
+    
+    NSString* errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", gasLimit];
     [self showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
@@ -319,20 +331,20 @@
     [self.navigationController pushViewController:[tokenController toPresent] animated:YES];
 }
 
-- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee {
+- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount fee:(NSNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
     
     __weak __typeof (self) weakSelf = self;
     [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
         if (success) {
-            [weakSelf payActionWithAddress:address andAmount:amount andFee:[fee decimalNumber]];
+            [weakSelf payActionWithAddress:address andAmount:amount fee:[fee decimalNumber] gasPrice:gasPrice gasLimit:gasLimit];
         }
     }];
 }
 
-- (void)payActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSDecimalNumber *)fee{
+- (void)payActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount fee:(NSDecimalNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
     
     if (self.token) {
-        [self payWithTokenWithAddress:address andAmount:amount andFee:fee];
+        [self payWithTokenWithAddress:address andAmount:amount fee:fee gasPrice:gasPrice gasLimit:gasLimit];
     } else {
         [self payWithWalletWithAddress:address andAmount:amount andFee:fee];
     }

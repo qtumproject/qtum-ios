@@ -15,6 +15,8 @@
 -(void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                       andParam:(NSArray<ResultTokenInputsModel*>*)inputs
                       andToken:(Contract*) token
-                        andFee:(NSDecimalNumber*) fee;
+                        andFee:(NSDecimalNumber*) fee
+                        andGasPrice:(NSDecimalNumber*) gasPrice
+                        andGasLimit:(NSDecimalNumber*) gasLimit;
 
 @end

@@ -19,9 +19,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *callButton;
 @property (weak, nonatomic) IBOutlet UILabel *result;
-@property (strong,nonatomic) NSDecimalNumber* FEE;
-@property (strong,nonatomic) NSDecimalNumber* minFee;
-@property (strong,nonatomic) NSDecimalNumber* maxFee;
+
+@property (strong, nonatomic) NSDecimalNumber* FEE;
+@property (strong, nonatomic) NSDecimalNumber* gasPrice;
+@property (strong, nonatomic) NSDecimalNumber* gasLimit;
+@property (strong, nonatomic) NSDecimalNumber* minFee;
+@property (strong, nonatomic) NSDecimalNumber* maxFee;
 
 @property (assign, nonatomic) NSInteger activeTextFieldTag;
 
@@ -47,33 +50,78 @@
     NSInteger scrollViewTopOffset = 64;
     NSInteger scrollViewBottomOffset = 49;
 
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, scrollViewTopOffset, CGRectGetWidth(self.view.frame), self.view.frame.size.height - scrollViewTopOffset)];
+    self.scrollView = [UIScrollView new];
+    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     self.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    [self.view addSubview:self.scrollView];
     
+    NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:scrollViewTopOffset];
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+    
+    [self.view addConstraints:@[left, right, top, bottom]];
+    
+    NSMutableArray *params = [NSMutableArray new];
     for (int i = 0; i < self.function.inputs.count; i++) {
         TextFieldParameterView *parameter = (TextFieldParameterView *)[[[NSBundle mainBundle] loadNibNamed:@"FieldsViews" owner:self options:nil] lastObject];
-        parameter.frame = CGRectMake(10.f, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement, CGRectGetWidth(self.view.frame) - 20.f, heighOfElement);
+        [params addObject:parameter];
+        parameter.translatesAutoresizingMaskIntoConstraints = NO;
         [parameter.textField setItem:self.function.inputs[i]];
         [parameter.titleLabel setText:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Parameter", nil), i + 1]];
-        heighOfPrevElement = heighOfElement;
         parameter.textField.inputAccessoryView = [self createToolBarInput];
         parameter.textField.customDelegate = self;
         parameter.tag = i;
         
         [self.scrollView addSubview:parameter];
-        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, yoffset * i + heighOfPrevElement * i + yoffsetFirstElement + heighOfElement);
+        
+        UIView *topItem;
+        UIView *bottomItem;
+        if (i == 0) {
+            topItem = self.scrollView;
+        } else {
+            topItem = [params objectAtIndex:i - 1];
+            if (i == self.function.inputs.count - 1 && self.fromQStore) {
+                bottomItem = self.scrollView;
+            }
+        }
+        
+        if (i == 0) {
+            NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
+            [self.scrollView addConstraint:center];
+        }
+        
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:10.0f];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:10.0f];
+        
+        [self.scrollView addConstraint:left];
+        [self.scrollView addConstraint:right];
+        
+        if (bottomItem) {
+            NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:bottomItem attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+            [self.scrollView addConstraint:bottom];
+        }
+        
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:topItem attribute:(i == 0) ? NSLayoutAttributeTop : NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+        [self.scrollView addConstraint:top];
     }
     
     if (!self.fromQStore) {
-        
         SliderFeeView *feeView = (SliderFeeView *)[[[NSBundle mainBundle] loadNibNamed:@"SliderFeeView" owner:self options:nil] lastObject];
-        feeView.frame = CGRectMake(0, yoffset * self.function.inputs.count - 1 + heighOfPrevElement * self.function.inputs.count - 1 + yoffsetFirstElement + 50.0f, self.view.frame.size.width, 180);
+        feeView.translatesAutoresizingMaskIntoConstraints = NO;
         feeView.delegate = self;
+        feeView.feeTextField.delegate = self;
         self.feeView = feeView;
         [self.scrollView addSubview:feeView];
-
+        
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:20.0f];
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:[params lastObject] attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
+        
+        [self.scrollView addConstraints:@[left, right, top]];
+        
         UIButton *callButton = [[UIButton alloc] init];
-        callButton.frame = CGRectMake((self.view.frame.size.width - 150.0f) / 2.0f, yoffset * self.function.inputs.count - 1 + heighOfPrevElement * self.function.inputs.count - 1 + yoffsetFirstElement + 50.0f + 180, 150, 32.0f);
+        callButton.translatesAutoresizingMaskIntoConstraints = NO;
         [callButton setTitle:NSLocalizedString(@"CALL", nil) forState:UIControlStateNormal];
         callButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16];
         [callButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
@@ -81,13 +129,17 @@
         [callButton addTarget:self action:@selector(didPressedCallAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.scrollView addSubview:callButton];
         
+        NSLayoutConstraint *topButton = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:feeView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
+        NSLayoutConstraint *bottomButton = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:20.0f];
+        NSLayoutConstraint *centerButton = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
+        NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:150.0f];
+        NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:32.0f];
         
-        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
-                                                 callButton.frame.origin.y + callButton.frame.size.height + 30.0f);
-        
+        [callButton addConstraint:width];
+        [callButton addConstraint:height];
+        [self.scrollView addConstraints:@[topButton, bottomButton, centerButton]];
     }
     
-    [self.view addSubview:self.scrollView];
     self.scrollView.contentInset =
     self.originInsets = UIEdgeInsetsMake(0, 0, scrollViewBottomOffset, 0);
 }
@@ -128,25 +180,6 @@
     return [inputsData copy];
 }
 
--(void)normalizeFee {
-    
-    NSString* feeValueString = [self.feeView.feeTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
-    
-    if ([feeValue isGreaterThan:self.maxFee] ) {
-        
-        self.feeView.feeTextField.text = [NSString stringWithFormat:@"%@", self.maxFee];;
-        self.FEE = self.maxFee;
-        
-    } else if ([feeValue isLessThan:self.minFee]) {
-        
-        self.feeView.feeTextField.text = [NSString stringWithFormat:@"%@", self.minFee];
-        self.FEE = self.minFee;
-    } else {
-        
-        self.FEE = feeValue;
-    }
-}
 
 
 #pragma mark - AbiTextFieldWithLineDelegate
@@ -213,6 +246,18 @@
     self.minFee = [minFee decimalNumber];
 }
 
+- (void)setMinGasPrice:(NSNumber *)min andMax:(NSNumber *)max step:(long)step {
+    [self.feeView setMinGasPrice:min andMax:max step:step];
+    
+    self.gasPrice = [[NSDecimalNumber alloc] initWithFloat:min.floatValue];
+}
+
+- (void)setMinGasLimit:(NSNumber *)min andMax:(NSNumber *)max standart:(NSNumber *)standart step:(long)step {
+    [self.feeView setMinGasLimit:min andMax:max standart:standart step:step];
+    
+    self.gasLimit = [[NSDecimalNumber alloc] initWithFloat:standart.floatValue];
+}
+
 - (void)showNotEnoughFeeAlertWithEstimatedFee:(NSDecimalNumber*) estimatedFee {
     
     NSString* errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee];
@@ -228,10 +273,59 @@
     self.feeView.feeTextField.text = [[NSString stringWithFormat:@"%@", self.FEE] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
 
+- (void)didChangeGasLimiteSlider:(NSDecimalNumber *)value {
+    self.gasLimit = value;
+}
+
+- (void)didChangeGasPriceSlider:(NSDecimalNumber *)value {
+    self.gasPrice = value;
+}
+
+#pragma mark - TextFeild delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField == self.feeView.feeTextField) {
+        if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
+            return ![textField.text containsString:string] && !(textField.text.length == 0);
+        } else {
+            NSString* feeValueString = [[textField.text stringByAppendingString:string] stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+            
+            [self.feeView.slider setValue:feeValue.floatValue animated:YES];
+        }
+    }
+    
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.feeView.feeTextField) {
+        [self normalizeFee];
+    }
+}
+
+-(void)normalizeFee {
+    NSString* feeValueString = [self.feeView.feeTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+    
+    if ([feeValue isGreaterThan:self.maxFee] ) {
+        
+        self.feeView.feeTextField.text = [NSString stringWithFormat:@"%@", self.maxFee];;
+        self.FEE = self.maxFee;
+        
+    } else if ([feeValue isLessThan:self.minFee]) {
+        
+        self.feeView.feeTextField.text = [NSString stringWithFormat:@"%@", self.minFee];
+        self.FEE = self.minFee;
+    } else {
+        
+        self.FEE = feeValue;
+    }
+}
+
 #pragma mark - Actions
 
 - (IBAction)didPressedNextOnTextField:(id)sender {
-    
     if (self.activeTextFieldTag < self.function.inputs.count - 1) {
         TextFieldParameterView *parameter = [self.scrollView viewWithTag:self.activeTextFieldTag + 1];
         UITextField* texField = parameter.textField;
@@ -250,7 +344,7 @@
     [self didVoidTapAction:nil];
     [self normalizeFee];
     [[PopUpsManager sharedInstance] showLoaderPopUp];
-    [self.delegate didCallFunctionWithItem:self.function andParam:[self prepareInputsData] andToken:self.token andFee:self.FEE];
+    [self.delegate didCallFunctionWithItem:self.function andParam:[self prepareInputsData] andToken:self.token andFee:self.FEE andGasPrice:self.gasPrice andGasLimit:self.gasLimit];
 }
 
 - (IBAction)didVoidTapAction:(id)sender {
@@ -260,7 +354,6 @@
 #pragma mark
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 

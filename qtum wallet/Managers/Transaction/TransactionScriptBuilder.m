@@ -11,20 +11,22 @@
 @implementation TransactionScriptBuilder
 
 -(NSUInteger)gasPrice {
-    return 1;
+    return 40;
 }
 
--(BTCScript*)createContractScriptWithBiteCode:(NSData*) bitcode {
+-(BTCScript*)createContractScriptWithBiteCode:(NSData*) bitcode
+                                  andGasLimit:(NSDecimalNumber*) aGasLimit
+                                  andGasPrice:(NSDecimalNumber*) aGasPrice {
     
     BTCScript* script = [[BTCScript alloc] init];
     
     uint32_t ver = 4;
     [script appendData:[NSData dataWithBytes:&ver length:4]];
     
-    NSUInteger gasLimit = 2000000;
+    NSUInteger gasLimit =  aGasLimit ? [aGasLimit unsignedIntegerValue] : 2000000;
     [script appendData:[NSData dataWithBytes:&gasLimit length:8]];
     
-    NSUInteger gasPrice = [self gasPrice];
+    NSUInteger gasPrice = aGasPrice ? [aGasPrice unsignedIntegerValue] : [self gasPrice];
     [script appendData:[NSData dataWithBytes:&gasPrice length:8]];
     
     [script appendData:bitcode];
@@ -36,17 +38,18 @@
 
 -(BTCScript*)sendContractScriptWithBiteCode:(NSData*) bitcode
                          andContractAddress:(NSData*) address
-                                andGasLimit:(NSDecimalNumber*) aGasLimit {
+                                andGasLimit:(NSDecimalNumber*) aGasLimit
+                                andGasPrice:(NSDecimalNumber*) aGasPrice {
     
     BTCScript* script = [[BTCScript alloc] init];
     
     uint32_t ver = 4;
     [script appendData:[NSData dataWithBytes:&ver length:4]];
     
-    NSUInteger gasLimit =  2000000;
+    NSUInteger gasLimit =  aGasLimit ? [aGasLimit unsignedIntegerValue] : 2000000;
     [script appendData:[NSData dataWithBytes:&gasLimit length:8]];
     
-    NSUInteger gasPrice = [self gasPrice];
+    NSUInteger gasPrice = aGasPrice ? [aGasPrice unsignedIntegerValue] : [self gasPrice];
     [script appendData:[NSData dataWithBytes:&gasPrice length:8]];
     
     [script appendData:bitcode];

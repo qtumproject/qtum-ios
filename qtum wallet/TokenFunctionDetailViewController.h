@@ -12,7 +12,7 @@
 
 @class Contract;
 
-@interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput, SliderFeeViewDelegate>
+@interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput, SliderFeeViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) SliderFeeView* feeView;
 

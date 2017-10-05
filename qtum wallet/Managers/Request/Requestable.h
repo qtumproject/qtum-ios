@@ -63,9 +63,8 @@
 - (void)getNews:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 // Info
-//
-//- (void)getBlockchainInfo:(void(^)(id responseObject))success
-//        andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
+
+- (void)getDGPinfo:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 // Generate Token Bitcoin
 

@@ -373,6 +373,7 @@
 		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
 		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
 		B3F76A941EDDB81600108DE9 /* Contracts in Resources */ = {isa = PBXBuildFile; fileRef = B3F76A931EDDB81600108DE9 /* Contracts */; };
+		D059BE7B1F84E4A70045ABA0 /* PaymentValuesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */; };
 		D08043581F838D6100B22606 /* WalletManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D08043571F838D6100B22606 /* WalletManagerTests.m */; };
 		D080435A1F839E0D00B22606 /* ContractManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D08043591F839E0D00B22606 /* ContractManagerTests.m */; };
 		D080435C1F83AAB700B22606 /* TemplateManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D080435B1F83AAB700B22606 /* TemplateManagerTests.m */; };
@@ -1433,6 +1434,8 @@
 		B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		B3F76A931EDDB81600108DE9 /* Contracts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Contracts; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
+		D059BE791F84E4A70045ABA0 /* PaymentValuesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentValuesManager.h; sourceTree = "<group>"; };
+		D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentValuesManager.m; sourceTree = "<group>"; };
 		D08043571F838D6100B22606 /* WalletManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletManagerTests.m; sourceTree = "<group>"; };
 		D08043591F839E0D00B22606 /* ContractManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractManagerTests.m; sourceTree = "<group>"; };
 		D080435B1F83AAB700B22606 /* TemplateManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TemplateManagerTests.m; sourceTree = "<group>"; };
@@ -3460,6 +3463,8 @@
 				B35DF62B1F2084CA00316953 /* TouchIDService.m */,
 				B3D5FE811F56F4BC006A2BF2 /* AbiTypesProcessor.h */,
 				B3D5FE821F56F4BC006A2BF2 /* AbiTypesProcessor.m */,
+				D059BE791F84E4A70045ABA0 /* PaymentValuesManager.h */,
+				D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -5144,6 +5149,7 @@
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				B3D5FE6D1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
+				D059BE7B1F84E4A70045ABA0 /* PaymentValuesManager.m in Sources */,
 				B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */,
 				B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,

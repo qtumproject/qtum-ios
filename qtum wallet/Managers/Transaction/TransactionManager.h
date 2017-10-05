@@ -27,25 +27,29 @@
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*>*) walletKeys
                          andBitcode:(NSData*) bitcode
                                 fee:(NSDecimalNumber*) fee
-                         andHandler:(void(^)(NSError* error, BTCTransaction * transaction, NSString* hashTransaction)) completion;
+                           gasPrice:(NSDecimalNumber*) gasPrice
+                           gasLimit:(NSDecimalNumber*) gasLimit
+                         andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction, NSDecimalNumber *estimatedValue)) completion;
 
 - (void)callTokenWithAddress:(NSData*) contractAddress
-                andBitcode:(NSData*) bitcode
+                  andBitcode:(NSData*) bitcode
                fromAddresses:(NSArray<NSString*>*) fromAddresses
-                 toAddress:(NSString*) toAddress
+                   toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
                          fee:(NSDecimalNumber*) fee
-                withGasLimit:(NSDecimalNumber*) gasLimit
-                andHandler:(void(^)(TransactionManagerErrorType errorType,
-                                    BTCTransaction * transaction,
-                                    NSString* hashTransaction,
-                                    NSDecimalNumber* estimatedFee)) completion;
+                    gasPrice:(NSDecimalNumber*) gasPrice
+                    gasLimit:(NSDecimalNumber*) gasLimit
+                  andHandler:(void(^)(TransactionManagerErrorType errorType,
+                                      BTCTransaction * transaction,
+                                      NSString* hashTransaction,
+                                      NSDecimalNumber* estimatedFee)) completion;
 
 - (void)sendTransactionToToken:(Contract*) token
                      toAddress:(NSString*) toAddress
                         amount:(NSNumber*) amount
                            fee:(NSDecimalNumber*) fee
-                  withGasLimit:(NSDecimalNumber*) gasLimit
+                      gasPrice:(NSDecimalNumber*) gasPrice
+                      gasLimit:(NSDecimalNumber*) gasLimit
                     andHandler:(void(^)(TransactionManagerErrorType errorType,
                                         BTCTransaction * transaction,
                                         NSString* hashTransaction,
@@ -56,7 +60,8 @@
          toAddress:(NSString*) toAddress
             amount:(NSDecimalNumber*) amount
               fee:(NSDecimalNumber*) fee
-     withGasLimit:(NSDecimalNumber*) gasLimit
+              gasPrice:(NSDecimalNumber*) gasPrice
+              gasLimit:(NSDecimalNumber*) gasLimit
         andHandler:(void(^)(TransactionManagerErrorType errorType,
                             BTCTransaction * transaction,
                             NSString* hashTransaction,

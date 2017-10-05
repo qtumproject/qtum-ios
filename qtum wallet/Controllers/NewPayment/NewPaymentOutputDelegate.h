@@ -14,7 +14,9 @@
 - (void)didPresseChooseToken;
 - (void)didPresseSendActionWithAddress:(NSString*) address
                              andAmount:(NSNumber*) amount
-                                andFee:(NSNumber*) fee;
+                                   fee:(NSNumber*) fee
+                              gasPrice:(NSNumber*) gasPrice
+                              gasLimit:(NSNumber*) gasLimit;
 - (void)didViewLoad;
 
 - (BOOL)needCheckForChanges;

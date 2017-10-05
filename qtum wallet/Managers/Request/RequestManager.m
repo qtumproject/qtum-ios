@@ -537,4 +537,14 @@ NSString *const BASE_URL = @"http://163.172.251.4:5931/";
     }];
 }
 
+- (void)getDGPinfo:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    NSString *path = @"blockchain/dgpinfo";
+    
+    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
 @end

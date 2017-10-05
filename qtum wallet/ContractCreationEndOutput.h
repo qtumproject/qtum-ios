@@ -16,7 +16,11 @@
 @property (weak,nonatomic) id <ContractCreationEndOutputDelegate> delegate;
 @property (copy,nonatomic) NSArray<ResultTokenInputsModel*>* inputs;
 
-- (void)showErrorPopUp;
+- (void)showErrorPopUp:(NSString *)string;
 - (void)showCompletedPopUp;
+
+- (void)setMinFee:(NSNumber*) minFee andMaxFee:(NSNumber*) maxFee;
+- (void)setMinGasPrice:(NSNumber *)min andMax:(NSNumber *)max step:(long)step;
+- (void)setMinGasLimit:(NSNumber *)min andMax:(NSNumber *)max standart:(NSNumber *)standart step:(long)step;
 
 @end
