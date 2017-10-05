@@ -35,12 +35,12 @@
 
 -(void)start {
     
-    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     
     [self showSecurityLoginController];
 
     if ([AppSettings sharedInstance].isFingerprintEnabled) {
         
+        [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
         [self showFingerprint];
     } else {
         
