@@ -1,8 +1,8 @@
 //
-//  TCARequestManager.h
-//  TCA2016
+//  RequestManager.h
+//  qtum wallet
 //
-//  Created by Nikita on 09.08.16.
+//  Created by Vladimir Lebedevich on 20.05.17.
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 

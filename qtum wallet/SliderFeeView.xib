@@ -17,11 +17,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SliderFeeView">
-            <rect key="frame" x="0.0" y="0.0" width="549" height="130"/>
+            <rect key="frame" x="0.0" y="0.0" width="549" height="316"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="1" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="ShP-63-CH0">
-                    <rect key="frame" x="82" y="20" width="404" height="31"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hs-wB-Xhc">
+                    <rect key="frame" x="20" y="3" width="49" height="19"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTG-s7-Jcg">
+                    <rect key="frame" x="499.5" y="3" width="29.5" height="19"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="FEE" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AdN-GP-4YU" customClass="TextFieldWithLine">
+                    <rect key="frame" x="20" y="100" width="509" height="20"/>
+                    <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
+                </textField>
+                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="1" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="ShP-63-CH0">
+                    <rect key="frame" x="18" y="30" width="513" height="31"/>
                     <color key="tintColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="minimumTrackTintColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="maximumTrackTintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -30,47 +49,173 @@
                         <action selector="didSliderAction:" destination="iN0-l3-epB" eventType="valueChanged" id="GMm-gt-Oyj"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hs-wB-Xhc">
-                    <rect key="frame" x="20" y="26" width="49" height="19"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eax-aS-CI3">
+                    <rect key="frame" x="165" y="250" width="219" height="14"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uie-2J-smt">
+                            <rect key="frame" x="0.0" y="0.0" width="73" height="14"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                            <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOx-Fq-gu2">
+                            <rect key="frame" x="75" y="0.5" width="15" height="14"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                            <color key="textColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas Limit:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wE-xB-7Gx">
+                            <rect key="frame" x="100" y="0.0" width="73" height="14"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                            <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cp-pV-5ro">
+                            <rect key="frame" x="175" y="0.5" width="44" height="14"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                            <color key="textColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Uie-2J-smt" firstAttribute="top" secondItem="eax-aS-CI3" secondAttribute="top" id="1Lu-4p-6dS"/>
+                        <constraint firstItem="8wE-xB-7Gx" firstAttribute="centerY" secondItem="eax-aS-CI3" secondAttribute="centerY" id="6gL-GI-x7v"/>
+                        <constraint firstItem="JOx-Fq-gu2" firstAttribute="leading" secondItem="Uie-2J-smt" secondAttribute="trailing" constant="2" id="B1W-Cf-4jZ"/>
+                        <constraint firstItem="7cp-pV-5ro" firstAttribute="centerY" secondItem="eax-aS-CI3" secondAttribute="centerY" id="BNQ-2d-OrB"/>
+                        <constraint firstItem="8wE-xB-7Gx" firstAttribute="leading" secondItem="JOx-Fq-gu2" secondAttribute="trailing" constant="10" id="CYs-tO-BgF"/>
+                        <constraint firstAttribute="trailing" secondItem="7cp-pV-5ro" secondAttribute="trailing" id="FbA-2c-lcl"/>
+                        <constraint firstAttribute="bottom" secondItem="Uie-2J-smt" secondAttribute="bottom" id="MfH-eS-WdZ"/>
+                        <constraint firstItem="JOx-Fq-gu2" firstAttribute="centerY" secondItem="eax-aS-CI3" secondAttribute="centerY" id="XrX-Nn-FOx"/>
+                        <constraint firstItem="Uie-2J-smt" firstAttribute="leading" secondItem="eax-aS-CI3" secondAttribute="leading" id="adY-RN-bJS"/>
+                        <constraint firstItem="7cp-pV-5ro" firstAttribute="leading" secondItem="8wE-xB-7Gx" secondAttribute="trailing" constant="2" id="lgO-pR-ltT"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HO8-wo-olS">
+                    <rect key="frame" x="199" y="284" width="150" height="32"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="4dB-oY-OxV"/>
+                        <constraint firstAttribute="width" constant="150" id="Y19-6H-hcZ"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTG-s7-Jcg">
-                    <rect key="frame" x="499.5" y="26" width="29.5" height="19"/>
-                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="FEE" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AdN-GP-4YU" customClass="TextFieldWithLine">
-                    <rect key="frame" x="20" y="90" width="509" height="20"/>
-                    <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
-                </textField>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="EDIT">
+                        <color key="titleColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="actionEdit:" destination="iN0-l3-epB" eventType="touchUpInside" id="Hmb-9e-GWH"/>
+                    </connections>
+                </button>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUj-p5-ifi">
+                    <rect key="frame" x="0.0" y="284" width="549" height="0.0"/>
+                    <subviews>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="1" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="fHQ-i9-TEn">
+                            <rect key="frame" x="18" y="30" width="513" height="31"/>
+                            <color key="tintColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="minimumTrackTintColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="maximumTrackTintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="thumbTintColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didGasPriceChangedAction:" destination="iN0-l3-epB" eventType="valueChanged" id="6fx-rt-GS4"/>
+                            </connections>
+                        </slider>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="1" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="1ca-mD-0ec">
+                            <rect key="frame" x="18" y="115" width="513" height="31"/>
+                            <color key="tintColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="minimumTrackTintColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="maximumTrackTintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="thumbTintColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didGasLimitChangedAction:" destination="iN0-l3-epB" eventType="valueChanged" id="0fT-zu-OtW"/>
+                            </connections>
+                        </slider>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JT9-HR-kCD">
+                            <rect key="frame" x="20" y="88" width="49" height="19"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                            <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVQ-YY-Sid">
+                            <rect key="frame" x="499.5" y="88" width="29.5" height="19"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                            <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sd9-z0-Sae">
+                            <rect key="frame" x="20" y="3" width="49" height="19"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                            <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXI-cU-ikP">
+                            <rect key="frame" x="499.5" y="3" width="29.5" height="19"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                            <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="1ca-mD-0ec" firstAttribute="top" secondItem="fHQ-i9-TEn" secondAttribute="bottom" constant="55" id="9SM-Cr-IpC"/>
+                        <constraint firstItem="fHQ-i9-TEn" firstAttribute="top" secondItem="nXI-cU-ikP" secondAttribute="bottom" constant="8" id="Bpf-nZ-ihI"/>
+                        <constraint firstAttribute="trailing" secondItem="fHQ-i9-TEn" secondAttribute="trailing" constant="20" id="CCx-m9-KaR"/>
+                        <constraint firstItem="fHQ-i9-TEn" firstAttribute="leading" secondItem="bUj-p5-ifi" secondAttribute="leading" constant="20" id="DON-xb-izb"/>
+                        <constraint firstItem="JT9-HR-kCD" firstAttribute="leading" secondItem="bUj-p5-ifi" secondAttribute="leading" constant="20" id="IBK-7X-rxm"/>
+                        <constraint firstAttribute="trailing" secondItem="qVQ-YY-Sid" secondAttribute="trailing" constant="20" id="M80-zq-1au"/>
+                        <constraint firstItem="1ca-mD-0ec" firstAttribute="top" secondItem="JT9-HR-kCD" secondAttribute="bottom" constant="8" id="X4D-BP-et3"/>
+                        <constraint firstAttribute="height" id="ZaJ-qh-oXa"/>
+                        <constraint firstAttribute="trailing" secondItem="1ca-mD-0ec" secondAttribute="trailing" constant="20" id="eT9-0T-AqX"/>
+                        <constraint firstItem="1ca-mD-0ec" firstAttribute="top" secondItem="qVQ-YY-Sid" secondAttribute="bottom" constant="8" id="kDL-Eb-rMq"/>
+                        <constraint firstAttribute="trailing" secondItem="nXI-cU-ikP" secondAttribute="trailing" constant="20" id="m5F-1Y-eYz"/>
+                        <constraint firstItem="fHQ-i9-TEn" firstAttribute="top" secondItem="sd9-z0-Sae" secondAttribute="bottom" constant="8" id="rda-1W-bws"/>
+                        <constraint firstItem="fHQ-i9-TEn" firstAttribute="top" secondItem="bUj-p5-ifi" secondAttribute="top" constant="30" id="s7s-O2-PcZ"/>
+                        <constraint firstItem="1ca-mD-0ec" firstAttribute="leading" secondItem="bUj-p5-ifi" secondAttribute="leading" constant="20" id="ujF-ap-51g"/>
+                        <constraint firstItem="sd9-z0-Sae" firstAttribute="leading" secondItem="bUj-p5-ifi" secondAttribute="leading" constant="20" id="vmj-Eu-Ftz"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="nTG-s7-Jcg" firstAttribute="centerY" secondItem="ShP-63-CH0" secondAttribute="centerY" id="39W-Xp-DW8"/>
-                <constraint firstItem="ShP-63-CH0" firstAttribute="leading" secondItem="9Hs-wB-Xhc" secondAttribute="trailing" constant="15" id="BDi-uW-9MA"/>
+                <constraint firstItem="ShP-63-CH0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="3f3-N1-cPf"/>
                 <constraint firstItem="AdN-GP-4YU" firstAttribute="top" secondItem="ShP-63-CH0" secondAttribute="bottom" constant="40" id="JKd-b4-BIn"/>
-                <constraint firstItem="ShP-63-CH0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="K2q-4s-LQF"/>
-                <constraint firstItem="9Hs-wB-Xhc" firstAttribute="centerY" secondItem="ShP-63-CH0" secondAttribute="centerY" id="Ka1-8z-3s2"/>
+                <constraint firstItem="ShP-63-CH0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="K2q-4s-LQF"/>
+                <constraint firstItem="bUj-p5-ifi" firstAttribute="top" secondItem="eax-aS-CI3" secondAttribute="bottom" constant="20" id="PhW-3t-co8"/>
+                <constraint firstItem="ShP-63-CH0" firstAttribute="top" secondItem="9Hs-wB-Xhc" secondAttribute="bottom" constant="8" id="PiU-Rh-ycs"/>
                 <constraint firstAttribute="trailing" secondItem="AdN-GP-4YU" secondAttribute="trailing" constant="20" id="QlE-MN-0a8"/>
+                <constraint firstItem="bUj-p5-ifi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Wnf-7Z-Vjv"/>
+                <constraint firstAttribute="trailing" secondItem="bUj-p5-ifi" secondAttribute="trailing" id="X3H-SG-QHT"/>
+                <constraint firstItem="HO8-wo-olS" firstAttribute="top" secondItem="bUj-p5-ifi" secondAttribute="bottom" id="YJZ-tr-ocC"/>
+                <constraint firstAttribute="trailing" secondItem="ShP-63-CH0" secondAttribute="trailing" constant="20" id="bx6-I3-nWo"/>
+                <constraint firstItem="HO8-wo-olS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fbw-ZA-0bX"/>
+                <constraint firstAttribute="bottom" secondItem="HO8-wo-olS" secondAttribute="bottom" id="fpW-Me-kRT"/>
+                <constraint firstItem="eax-aS-CI3" firstAttribute="top" secondItem="AdN-GP-4YU" secondAttribute="bottom" constant="30" id="hBG-Z4-ZFr"/>
+                <constraint firstItem="ShP-63-CH0" firstAttribute="top" secondItem="nTG-s7-Jcg" secondAttribute="bottom" constant="8" id="nQh-2T-h7M"/>
                 <constraint firstItem="AdN-GP-4YU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="pus-M9-8Yo"/>
                 <constraint firstItem="9Hs-wB-Xhc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="qJE-H1-SXg"/>
+                <constraint firstItem="eax-aS-CI3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="t2l-VR-MVN"/>
                 <constraint firstAttribute="trailing" secondItem="nTG-s7-Jcg" secondAttribute="trailing" constant="20" id="vjk-4O-ini"/>
-                <constraint firstItem="nTG-s7-Jcg" firstAttribute="leading" secondItem="ShP-63-CH0" secondAttribute="trailing" constant="15" id="yUj-pe-3UF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="feeTextField" destination="AdN-GP-4YU" id="1YX-E7-FfD"/>
+                <outlet property="gasLimitMaxValueLabel" destination="qVQ-YY-Sid" id="eeS-fh-MZQ"/>
+                <outlet property="gasLimitMinValueLabel" destination="JT9-HR-kCD" id="Re1-M6-aj9"/>
+                <outlet property="gasLimitSlider" destination="1ca-mD-0ec" id="wbT-u3-kaY"/>
+                <outlet property="gasLimitValueLabel" destination="7cp-pV-5ro" id="lPD-eT-e6h"/>
+                <outlet property="gasPriceMaxValueLabel" destination="nXI-cU-ikP" id="5Cj-Ct-pnF"/>
+                <outlet property="gasPriceMinValueLabel" destination="sd9-z0-Sae" id="VBo-Bp-B5t"/>
+                <outlet property="gasPriceSlider" destination="fHQ-i9-TEn" id="zyr-FT-coV"/>
+                <outlet property="gasPriceValueLabel" destination="JOx-Fq-gu2" id="uzS-jw-m12"/>
+                <outlet property="gasSlidersContainer" destination="bUj-p5-ifi" id="8Pm-8a-rhT"/>
+                <outlet property="gasValuesContainer" destination="eax-aS-CI3" id="P47-CA-ymW"/>
+                <outlet property="heightForGasSlidersContainer" destination="ZaJ-qh-oXa" id="7gt-BE-vRX"/>
                 <outlet property="maxFeeLabel" destination="nTG-s7-Jcg" id="6fH-NV-UJe"/>
                 <outlet property="minFeeLabel" destination="9Hs-wB-Xhc" id="ubA-IC-J3C"/>
                 <outlet property="slider" destination="ShP-63-CH0" id="8Yh-A4-oRj"/>
+                <outlet property="topConstratinForEdit" destination="YJZ-tr-ocC" id="QS0-jk-yGT"/>
             </connections>
-            <point key="canvasLocation" x="-60.5" y="-287"/>
+            <point key="canvasLocation" x="-60.5" y="-194"/>
         </view>
     </objects>
 </document>

@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
     TransactionManagerErrorTypeNotEnoughMoney,
     TransactionManagerErrorTypeNotEnoughMoneyOnAddress,
     TransactionManagerErrorTypeNotEnoughFee,
+    TransactionManagerErrorTypeNotEnoughGasLimit,
     TransactionManagerErrorTypeInvalidAddress
 };
 
@@ -28,18 +29,21 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
                                                    withAmount:(CGFloat) amount
                                                   withBitcode:(NSData*) bitcode
                                                       withFee:(NSInteger) fee
+                                                 withGasLimit:(NSDecimalNumber*) gasLimit
+                                                 withGasprice:(NSDecimalNumber*) gasPrice
                                                withWalletKeys:(NSArray<BTCKey*>*) walletKeys;
 
 - (void)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
-                                              amount:(CGFloat) amount
-                                     contractAddress:(NSData*) contractAddress
-                                           toAddress:(NSString*) toAddress
-                                       fromAddresses:(NSArray<NSString*>*) fromAddresses
-                                             bitcode:(NSData*) bitcode
-                                             withFee:(NSInteger) fee
-                                        withGasLimit:(NSDecimalNumber*) gasLimit
-                                          walletKeys:(NSArray<BTCKey*>*) walletKeys
-                                          andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion;
+                                  amount:(CGFloat) amount
+                         contractAddress:(NSData*) contractAddress
+                               toAddress:(NSString*) toAddress
+                           fromAddresses:(NSArray<NSString*>*) fromAddresses
+                                 bitcode:(NSData*) bitcode
+                                 withFee:(NSInteger) fee
+                            withGasLimit:(NSDecimalNumber*) gasLimit
+                            withGasprice:(NSDecimalNumber*) gasPrice
+                              walletKeys:(NSArray<BTCKey*>*) walletKeys
+                              andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion;
 
 - (void)regularTransactionWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
                                       amount:(CGFloat) amount

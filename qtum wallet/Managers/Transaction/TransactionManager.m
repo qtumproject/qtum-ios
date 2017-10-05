@@ -25,12 +25,11 @@ static NSString* op_exec = @"c1";
 @property (strong, nonatomic) TransactionBuilder* transactionBuilder;
 @property (strong, nonatomic) TransactionScriptBuilder* scriptBuilder;
 
-@property (assign, nonatomic) NSUInteger fee;
 @property (strong, nonatomic) NSDecimalNumber* feePerKb;
 
 @end
 
-static NSInteger constantFee = 10000000;
+static NSInteger constantFee = 400000000;
 
 @implementation TransactionManager
 
@@ -186,7 +185,7 @@ static NSInteger constantFee = 10000000;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (transaction) {
-                    
+//                    passedFee = [passedFee decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]];
                     completion(TransactionManagerErrorTypeNotEnoughFee, nil, passedFee);
                 } else {
                     
@@ -199,11 +198,12 @@ static NSInteger constantFee = 10000000;
     [requestQueue addOperationWithBlock:block];
 }
 
-- (void)sendTransactionToToken:(Contract *)token
-                     toAddress:(NSString *)toAddress
-                        amount:(NSNumber *)amount
+- (void)sendTransactionToToken:(Contract*) token
+                     toAddress:(NSString*) toAddress
+                        amount:(NSNumber*) amount
                            fee:(NSDecimalNumber*) fee
-                  withGasLimit:(NSDecimalNumber*) gasLimit
+                      gasPrice:(NSDecimalNumber*) gasPrice
+                      gasLimit:(NSDecimalNumber*) gasLimit
                     andHandler:(void(^)(TransactionManagerErrorType errorType,
                                         BTCTransaction * transaction,
                                         NSString* hashTransaction,
@@ -221,7 +221,8 @@ static NSInteger constantFee = 10000000;
         fromAddress:addressWithAmountValue
           toAddress:toAddress amount:[amount decimalNumber]
                 fee:fee
-       withGasLimit:gasLimit
+           gasPrice:gasPrice
+           gasLimit:gasLimit
          andHandler:completion];
 }
 
@@ -230,7 +231,8 @@ static NSInteger constantFee = 10000000;
         toAddress:(NSString*) toAddress
            amount:(NSDecimalNumber*) amount
               fee:(NSDecimalNumber*) fee
-     withGasLimit:(NSDecimalNumber*) gasLimit
+         gasPrice:(NSDecimalNumber*) gasPrice
+         gasLimit:(NSDecimalNumber*) gasLimit
        andHandler:(void(^)(TransactionManagerErrorType errorType,
                            BTCTransaction * transaction,
                            NSString* hashTransaction,
@@ -261,21 +263,13 @@ static NSInteger constantFee = 10000000;
 
     if (addressWithAmountValue && amount) {
         
-        NSDecimalNumber* gasLimit;
+//        NSDecimalNumber* gasLimit;
         
         
-        
-        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress]
-                                                 andBitcode:hashFuction
-                                              fromAddresses:@[addressWithAmountValue]
-                                                  toAddress:nil
-                                                 walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
-                                                        fee:fee
-                                               withGasLimit:gasLimit
-                                                 andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber* estimatedFee) {
-                                                     
+        [[[self class] sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction fromAddresses:@[addressWithAmountValue] toAddress:nil walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys fee:fee gasPrice:gasPrice gasLimit:gasLimit andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber *estimatedFee) {
             completion(errorType, transaction, hashTransaction, estimatedFee);
         }];
+
     } else {
         completion(TransactionManagerErrorTypeNotEnoughMoney, nil, nil, nil);
     }
@@ -284,36 +278,96 @@ static NSInteger constantFee = 10000000;
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*> *)walletKeys
                          andBitcode:(NSData *)bitcode
                                 fee:(NSDecimalNumber*) fee
-                         andHandler:(void(^)(NSError *error,
+                           gasPrice:(NSDecimalNumber *)gasPrice
+                           gasLimit:(NSDecimalNumber *)gasLimit
+                         andHandler:(void(^)(TransactionManagerErrorType errorType,
                                              BTCTransaction *transaction,
-                                             NSString *hashTransaction)) completion {
+                                             NSString *hashTransaction, NSDecimalNumber *estimatedValue)) completion {
     
     //NSAssert(walletKeys.count > 0, @"Keys must be grater then zero");
     if (!walletKeys.count) {
-        completion([NSError new],nil,nil);
+        completion(TransactionManagerErrorTypeInvalidAddress, nil, nil, nil);
     }
     
-    self.fee = constantFee;
-    
     __weak typeof(self) weakSelf = self;
-    NSArray* walletAddreses = [self getAddressesFromKeys:walletKeys];
+    NSArray* __block walletAddreses = [self getAddressesFromKeys:walletKeys];
     
-    [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
+    NSOperationQueue* requestQueue = [[NSOperationQueue alloc] init];
+    dispatch_block_t block = ^{
         
-        BTCTransaction *tx = [weakSelf.transactionBuilder smartContractCreationTxWithUnspentOutputs:responseObject
-                                                                                         withAmount:0
-                                                                                        withBitcode:bitcode
-                                                                                            withFee:self.fee
-                                                                                     withWalletKeys:walletKeys];
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+        NSArray <BTCTransactionOutput*>* __block unspentOutputs = @[];
         
-        [weakSelf sendTransaction:tx withSuccess:^(id response){
-            completion(nil,tx,response[@"txid"]);
-        } andFailure:^(NSString *message) {
-            completion([NSError new],nil,nil);
+        [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
+            unspentOutputs = responseObject;
+            dispatch_semaphore_signal(semaphore);
+        } andFailureHandler:^(NSError *error, NSString *message) {
+            completion(TransactionManagerErrorTypeServer, nil, nil, nil);
         }];
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        completion(error,nil, nil);
-    }];
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        NSDecimalNumber* __block feePerKb;
+        
+        [weakSelf getFeePerKbWithHandler:^(NSDecimalNumber *aFeePerKb) {
+            if (aFeePerKb) {
+                feePerKb = aFeePerKb;
+                dispatch_semaphore_signal(semaphore);
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(TransactionManagerErrorTypeServer, nil, nil, nil);
+                });
+                return;
+            }
+        }];
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        BTCTransaction* __block transactionForCheck;
+        NSDecimalNumber* __block gas = [[gasLimit decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]] decimalNumberByMultiplyingBy:gasPrice];
+        NSDecimalNumber* __block estimatedUserFee = [fee decimalNumberByAdding:gas];
+        NSDecimalNumber* __block estimatedFee = [fee decimalNumberByAdding:gas];
+        NSDecimalNumber* __block passedFee;
+        
+        do {
+            BTCTransaction *tx = [weakSelf.transactionBuilder smartContractCreationTxWithUnspentOutputs:unspentOutputs
+                                                                                             withAmount:0
+                                                                                            withBitcode:bitcode
+                                                                                                withFee:[self feeFromNumber:estimatedFee]
+                                                                                           withGasLimit:gasLimit
+                                                                                           withGasprice:gasPrice
+                                                                                         withWalletKeys:walletKeys];
+            
+            if (tx) {
+                transactionForCheck = tx;
+                passedFee = estimatedFee;
+                estimatedFee = [estimatedFee decimalNumberByAdding:feePerKb];
+            }
+        } while (transactionForCheck && [weakSelf convertValueToAmount:passedFee] < ([transactionForCheck estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]] + [weakSelf convertValueToAmount:gas]));
+        
+        BOOL isUsersFee = [passedFee isEqualToDecimalNumber:estimatedUserFee];
+        
+        if (transactionForCheck && isUsersFee) {
+            [weakSelf sendTransaction:transactionForCheck withSuccess:^(id response){
+                completion(TransactionManagerErrorTypeNone, transactionForCheck, response[@"txid"], nil);
+            } andFailure:^(NSString *message) {
+                completion(TransactionManagerErrorTypeServer, nil, nil, nil);
+            }];
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (transactionForCheck) {
+                    NSDecimalNumber *feeOnlyForTransaction = [[NSDecimalNumber alloc] initWithLongLong:[transactionForCheck estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]]];
+                    feeOnlyForTransaction = [feeOnlyForTransaction decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]];
+                    completion(TransactionManagerErrorTypeNotEnoughFee, nil, nil, feeOnlyForTransaction);
+                } else {
+                    completion(TransactionManagerErrorTypeOups, nil, nil, nil);
+                }
+            });
+        }
+    };
+    
+    [requestQueue addOperationWithBlock:block];
 }
 
 - (void)callTokenWithAddress:(NSData*) contractAddress
@@ -322,7 +376,8 @@ static NSInteger constantFee = 10000000;
                    toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
                          fee:(NSDecimalNumber*) fee
-                withGasLimit:(NSDecimalNumber*) gasLimit
+                    gasPrice:(NSDecimalNumber*) gasPrice
+                    gasLimit:(NSDecimalNumber*) gasLimit
                   andHandler:(void(^)(TransactionManagerErrorType errorType,
                                       BTCTransaction * transaction,
                                       NSString* hashTransaction,
@@ -334,6 +389,7 @@ static NSInteger constantFee = 10000000;
                        toAddress:toAddress
                       withWalletKeys:walletKeys
                             withFee:fee
+                       withGasPrice:gasPrice
                        withGasLimit:gasLimit
                       withHandler:^(TransactionManagerErrorType errorType,
                                     BTCTransaction *transaction,
@@ -349,6 +405,7 @@ static NSInteger constantFee = 10000000;
                         toAddress:(NSString*) toAddress
                    withWalletKeys:(NSArray<BTCKey*>*) walletKeys
                           withFee:(NSDecimalNumber*) fee
+                          withGasPrice:(NSDecimalNumber*) gasPrice
                       withGasLimit:(NSDecimalNumber*) aGasLimit
                       withHandler:(void(^)(TransactionManagerErrorType errorType,
                                            BTCTransaction * transaction,
@@ -366,14 +423,15 @@ static NSInteger constantFee = 10000000;
         
         if (!fromAddresses.count) {
             completion(TransactionManagerErrorTypeInvalidAddress,nil,nil, nil);
+            return;
         }
         
-        NSDecimalNumber* __block gasLimit;
+        NSDecimalNumber* __block gasLimitEstimate;
 
         [weakSelf getFeeWithContractAddress:[NSString hexadecimalString:contractAddress] withHashes:@[[NSString hexadecimalString:bitcode]] withHandler:^(NSDecimalNumber* gas) {
             
             if (gas) {
-                gasLimit = gas;
+                gasLimitEstimate = gas;
                 dispatch_semaphore_signal(semaphore);
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -384,31 +442,29 @@ static NSInteger constantFee = 10000000;
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 
+        if ([aGasLimit isLessThan:gasLimitEstimate]) {
+            completion(TransactionManagerErrorTypeNotEnoughGasLimit,nil,nil, nil);
+            return;
+        }
+        
         NSArray <BTCTransactionOutput*>* __block unspentOutputs = @[];
         
-        [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:fromAddresses
-                                                                             withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
-                                                                                 
-                                                                                 unspentOutputs = responseObject;
-                                                                                 dispatch_semaphore_signal(semaphore);
-                                                                             } andFailureHandler:^(NSError *error, NSString *message) {
-                                                                                 
-                                                                                 completion(TransactionManagerErrorTypeServer,nil, nil, nil);
-                                                                             }];
+        [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:fromAddresses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
+            unspentOutputs = responseObject;
+            dispatch_semaphore_signal(semaphore);
+        } andFailureHandler:^(NSError *error, NSString *message) {
+            completion(TransactionManagerErrorTypeServer,nil, nil, nil);
+         }];
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
         
         NSDecimalNumber* __block feePerKb;
         
         [weakSelf getFeePerKbWithHandler:^(NSDecimalNumber *aFeePerKb) {
-            
             if (aFeePerKb) {
-                
                 feePerKb = aFeePerKb;
                 dispatch_semaphore_signal(semaphore);
             } else {
-                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(TransactionManagerErrorTypeServer, nil, nil, nil);
                 });
@@ -418,59 +474,47 @@ static NSInteger constantFee = 10000000;
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
-        BTCTransaction* __block transaction;
-        NSDecimalNumber *gasLimitFromConstant = [NSDecimalNumber decimalNumberWithString:@"2000000"];
-        NSDecimalNumber* __block gas = [[gasLimitFromConstant decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]] decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithUnsignedInteger:[weakSelf.scriptBuilder gasPrice]]];
-        NSDecimalNumber* __block estimatedFee = fee;
+        BTCTransaction* __block transactionForCheck;
+        NSDecimalNumber* __block gas = [[aGasLimit decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]] decimalNumberByMultiplyingBy:gasPrice];
+        NSDecimalNumber* __block estimatedUserFee = [fee decimalNumberByAdding:gas];
+        NSDecimalNumber* __block estimatedFee = [fee decimalNumberByAdding:gas];
         NSDecimalNumber* __block passedFee;
         TransactionManagerErrorType __block errorType;
 
         do {
-            
-           [weakSelf.transactionBuilder callContractTxWithUnspentOutputs:unspentOutputs
-                                                                amount:0
-                                                       contractAddress:contractAddress
-                                                             toAddress:toAddress
-                                                         fromAddresses:fromAddresses
-                                                               bitcode:bitcode
-                                                               withFee:[self feeFromNumber:estimatedFee]
-                                                          withGasLimit:gasLimitFromConstant
-                                                            walletKeys:walletKeys
-                                                            andHandler:^(TransactionManagerErrorType aErrorType, BTCTransaction *aTransaction) {
-                                                                
-                                                                transaction = aTransaction;
-                                                                errorType = aErrorType;
-                                                                
-                                                                if (transaction) {
-                                                                    passedFee = estimatedFee;
-                                                                    estimatedFee = [estimatedFee decimalNumberByAdding:feePerKb];
-                                                                }
-                                                            }];
-            
-        } while (transaction &&
-                 [weakSelf convertValueToAmount:passedFee] < ([transaction estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]] + [weakSelf convertValueToAmount:gas]));
+            [weakSelf.transactionBuilder callContractTxWithUnspentOutputs:unspentOutputs
+                                                                   amount:0 contractAddress:contractAddress
+                                                                toAddress:toAddress
+                                                            fromAddresses:fromAddresses
+                                                                  bitcode:bitcode
+                                                                  withFee:[self feeFromNumber:estimatedFee]
+                                                             withGasLimit:aGasLimit
+                                                             withGasprice:gasPrice
+                                                               walletKeys:walletKeys
+                                                               andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction) {
+                if (transaction) {
+                    transactionForCheck = transaction;
+                    passedFee = estimatedFee;
+                    estimatedFee = [estimatedFee decimalNumberByAdding:feePerKb];
+                }
+            }];
+        } while (transactionForCheck && [weakSelf convertValueToAmount:passedFee] < ([transactionForCheck estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]] + [weakSelf convertValueToAmount:gas]));
         
+        BOOL isUsersFee = [passedFee isEqualToDecimalNumber:estimatedUserFee];
         
-        BOOL isUsersFee = [passedFee isEqualToDecimalNumber:fee];
-        
-        if (transaction && isUsersFee) {
-            
-            [weakSelf sendTransaction:transaction withSuccess:^(id response){
-                
-                completion(TransactionManagerErrorTypeNone,transaction,response[@"txid"], nil);
+        if (transactionForCheck && isUsersFee) {
+            [weakSelf sendTransaction:transactionForCheck withSuccess:^(id response) {
+                completion(TransactionManagerErrorTypeNone,transactionForCheck,response[@"txid"], nil);
             } andFailure:^(NSString *message) {
                 completion(TransactionManagerErrorTypeServer,nil,nil, nil);
             }];
-            
         } else {
-            
             dispatch_async(dispatch_get_main_queue(), ^{
-                
-                if (transaction) {
-                    
-                    completion(TransactionManagerErrorTypeNotEnoughFee, nil, nil, passedFee);
+                if (transactionForCheck) {
+                    NSDecimalNumber *feeOnlyForTransaction = [[NSDecimalNumber alloc] initWithLongLong:[transactionForCheck estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]]];
+                    feeOnlyForTransaction = [feeOnlyForTransaction decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]];
+                    completion(TransactionManagerErrorTypeNotEnoughFee, nil, nil, feeOnlyForTransaction);
                 } else {
-                    
                     completion(errorType,nil,nil, nil);
                 }
             });
@@ -531,7 +575,7 @@ static NSInteger constantFee = 10000000;
 -(NSUInteger)feeFromNumber:(NSDecimalNumber*) feeNumber {
     
     if (feeNumber) {
-        return [feeNumber decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]].unsignedLongValue;
+        return [feeNumber decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]].intValue;
     } else {
         return constantFee;
     }

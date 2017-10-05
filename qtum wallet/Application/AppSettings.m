@@ -13,6 +13,7 @@
 #import "LanguageManager.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "TouchIDService.h"
+#import "PaymentValuesManager.h"
 
 @interface AppSettings ()
 
@@ -44,9 +45,7 @@
 #pragma mark - Public Methods
 
 -(void)setup {
-    
     if (![NSUserDefaults isNotFirstTimeLaunch]) {
-
         [NSUserDefaults saveIsDarkSchemeSetting:YES];
         [NSUserDefaults saveIsNotFirstTimeLaunch:YES];
     }
@@ -56,6 +55,7 @@
     [NSUserDefaults saveIsMainnetSetting:NO];
 
     [PopUpsManager sharedInstance];
+    [PaymentValuesManager sharedInstance];
     [self setupFabric];
     [self setupFingerpring];
 }
@@ -98,6 +98,12 @@
 
 -(BOOL)isFingerprintAllowed{
     return [NSUserDefaults isFingerprintAllowed];
+}
+
+-(NSString*)baseURL {
+    
+    NSString* baseUrl = @"http://163.172.251.4:5931/";
+    return baseUrl;
 }
 
 #pragma mark - Private Methods 

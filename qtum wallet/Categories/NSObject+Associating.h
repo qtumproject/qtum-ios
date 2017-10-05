@@ -1,14 +1,14 @@
 //
-//  NSObject+TCAAssociating.h
-//  TCA2016
+//  NSObject+Associating.h
+//  qtum wallet
 //
-//  Created by Nikita on 20.08.16.
+//  Created by Vladimir Lebedevich on 21.05.17.
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (TCAAssociating)
+@interface NSObject (Associating)
 
 -(BOOL)isNull;
 

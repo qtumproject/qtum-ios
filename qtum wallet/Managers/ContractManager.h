@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Clearable.h"
+#import "Managerable.h"
+#import "TemplateModel.h"
 
 @class HistoryElement;
 @class Contract;

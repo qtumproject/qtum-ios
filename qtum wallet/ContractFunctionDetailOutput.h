@@ -25,6 +25,8 @@
 - (void)showCompletedPopUp;
 - (void)showErrorPopUp:(NSString *)message;
 - (void)setMinFee:(NSNumber*) minFee andMaxFee:(NSNumber*) maxFee;
+- (void)setMinGasPrice:(NSNumber *)min andMax:(NSNumber *)max step:(long)step;
+- (void)setMinGasLimit:(NSNumber *)min andMax:(NSNumber *)max standart:(NSNumber *)standart step:(long)step;
 - (void)showNotEnoughFeeAlertWithEstimatedFee:(NSDecimalNumber*) estimatedFee;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  TCARequestManager.m
-//  TCA2016
+//  RequestManager.m
+//  qtum wallet
 //
-//  Created by Nikita on 09.08.16.
+//  Created by Vladimir Lebedevich on 20.05.17.
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
@@ -19,9 +19,6 @@ typedef NS_ENUM(NSInteger, RequestType){
     DELETE,
     PUT
 };
-
-NSString *const BASE_URL = @"http://163.172.251.4:5931/";
-//NSString *const BASE_URL = @"http://163.172.68.103:5931";
 
 @interface RequestManager()
 
@@ -62,7 +59,7 @@ NSString *const BASE_URL = @"http://163.172.251.4:5931/";
 - (AFHTTPRequestOperationManager *)requestManager {
     
     if (!_requestManager) {
-        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
+        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:[self baseURL]]];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         manager.responseSerializer =  [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -92,6 +89,11 @@ NSString *const BASE_URL = @"http://163.172.251.4:5931/";
         _socketManager.delegate = self;
     }
     return _socketManager;
+}
+
+-(NSString*)baseURL {
+    
+    return [AppSettings sharedInstance].baseURL;
 }
 
 -(void)requestWithType:(RequestType) type path:(NSString*) path andParams:(NSDictionary*) param withSuccessHandler:(void(^)(id  _Nonnull responseObject)) success andFailureHandler:(void(^)(NSError * _Nonnull error, NSString* message)) failure
@@ -529,6 +531,16 @@ NSString *const BASE_URL = @"http://163.172.251.4:5931/";
     andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
     NSString *path = @"contracts/types";
+    
+    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
+        failure(error, message);
+    }];
+}
+
+- (void)getDGPinfo:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
+    NSString *path = @"blockchain/dgpinfo";
     
     [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);

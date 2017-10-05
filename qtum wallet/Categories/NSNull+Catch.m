@@ -1,14 +1,14 @@
 //
-//  NSNull+TCACatch.m
-//  TCA2016
+//  NSObject+Catch.m
+//  qtum wallet
 //
-//  Created by Nikita on 09.09.16.
+//  Created by Vladimir Lebedevich on 21.05.17.
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "NSNull+TCACatch.h"
+#import "NSNull+Catch.h"
 
-@implementation NSNull (TCACatch)
+@implementation NSNull (Catch)
 
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector

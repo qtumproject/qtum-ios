@@ -21,7 +21,6 @@ NSInteger const USERS_KEYS_COUNT = 10;
 @property (copy, nonatomic) NSString* encriptedBrandKey;
 @property (strong, nonatomic) BTCKey *lastRandomKey;
 @property (strong, nonatomic) BTCKeychain *keyChain;
-@property (copy, nonatomic) NSArray* seedWords;
 
 @end
 
@@ -269,12 +268,10 @@ NSInteger const USERS_KEYS_COUNT = 10;
     
     NSString *name = [aDecoder decodeObjectForKey:@"Name"];
     NSString *encriptedBrandKey = [aDecoder decodeObjectForKey:@"encriptedBrandKey"];
-    NSArray *seedWords = [aDecoder decodeObjectForKey:@"Seed"];
     
     self = [super init];
     if (self) {
         _name = name;
-        _seedWords = seedWords;
         _countOfUsedKeys = USERS_KEYS_COUNT;
         _balance = [[NSDecimalNumber alloc] initWithDouble:0];
         _unconfirmedBalance = [[NSDecimalNumber alloc] initWithDouble:0];

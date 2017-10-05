@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Clearable.h"
+#import "TemplateModel.h"
 
 @interface TemplateManager : NSObject <Clearable>
 

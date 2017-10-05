@@ -171,15 +171,16 @@
 }
 
 - (void)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
-                                              amount:(CGFloat) amount
-                                     contractAddress:(NSData*) contractAddress
-                                           toAddress:(NSString*) toAddress
-                                       fromAddresses:(NSArray<NSString*>*) fromAddresses
-                                             bitcode:(NSData*) bitcode
-                                             withFee:(NSInteger) fee
-                                        withGasLimit:(NSDecimalNumber*) gasLimit
-                                          walletKeys:(NSArray<BTCKey*>*) walletKeys
-                              andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion {
+                                  amount:(CGFloat) amount
+                         contractAddress:(NSData*) contractAddress
+                               toAddress:(NSString*) toAddress
+                           fromAddresses:(NSArray<NSString*>*) fromAddresses
+                                 bitcode:(NSData*) bitcode
+                                 withFee:(NSInteger) fee
+                            withGasLimit:(NSDecimalNumber*) gasLimit
+                            withGasprice:(NSDecimalNumber*) gasPrice
+                              walletKeys:(NSArray<BTCKey*>*) walletKeys
+                              andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion{
 
     NSArray *utxos = unspentOutputs;
     if (utxos.count > 0) {
@@ -237,7 +238,7 @@
         // Add required outputs - payment and change
         BTCAmount amount = 0;
         BTCTransactionOutput* paymentOutput;
-        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder sendContractScriptWithBiteCode:bitcode andContractAddress:contractAddress andGasLimit:gasLimit]];
+        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder sendContractScriptWithBiteCode:bitcode andContractAddress:contractAddress andGasLimit:gasLimit andGasPrice:gasPrice]];
         [tx addOutput:paymentOutput];
         
         BTCAddress* changeAddress = [BTCAddress addressWithString:fromAddresses.firstObject];
@@ -315,6 +316,8 @@
                                                    withAmount:(CGFloat) amount
                                                   withBitcode:(NSData*) bitcode
                                                       withFee:(NSInteger) fee
+                                                 withGasLimit:(NSDecimalNumber*) gasLimit
+                                                 withGasprice:(NSDecimalNumber*) gasPrice
                                                withWalletKeys:(NSArray<BTCKey*>*) walletKeys {
     
     NSArray *utxos = unspentOutputs;
@@ -367,7 +370,7 @@
         // Add required outputs - payment and change
         BTCAmount amount = 0;
         BTCTransactionOutput* paymentOutput;
-        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder createContractScriptWithBiteCode:bitcode]];
+        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder createContractScriptWithBiteCode:bitcode andGasLimit:gasLimit andGasPrice:gasPrice]];
         [tx addOutput:paymentOutput];
         
         BTCAddress* changeAddress = [AppSettings sharedInstance].isMainNet ? walletKeys.firstObject.address : walletKeys.firstObject.addressTestnet;

@@ -1,8 +1,8 @@
 //
-//  NSBundle+TCAStyleProvider.h
-//  TCA2016
+//  NSObject+StyleProvider.h
+//  qtum wallet
 //
-//  Created by Nikita on 09.08.16.
+//  Created by Vladimir Lebedevich on 21.05.17.
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 #define Localize(key) \
 [[NSBundle mainBundle] tca_localizedStringForKey:(key) class:[self class]]
 
-@interface NSBundle (TCAStyleProvider)
+@interface NSBundle (StyleProvider)
 
 - (NSString *)tca_localizedStringForKey:(NSString *)key class:(Class)tableClass;
 
