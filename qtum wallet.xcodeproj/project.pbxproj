@@ -4721,7 +4721,7 @@
 				TargetAttributes = {
 					B33EAF871E5EC262006125F3 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = Q7Q43CUMWT;
+						DevelopmentTeam = DEH7XV88GA;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -4739,17 +4739,17 @@
 					};
 					E730AB531EE6A5D100132711 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = Q7Q43CUMWT;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = DEH7XV88GA;
+						ProvisioningStyle = Manual;
 					};
 					E730AB5F1EE6A5D100132711 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = Q7Q43CUMWT;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = DEH7XV88GA;
+						ProvisioningStyle = Manual;
 					};
 					E7FD36371DC4D07E00748177 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q7Q43CUMWT;
+						DevelopmentTeam = DEH7XV88GA;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -5829,15 +5829,15 @@
 				CODE_SIGN_ENTITLEMENTS = iMessageExtension/iMessageExtension.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-wallet.iMessageExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.iMessageExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "93d6df0d-2e16-4ad9-9c97-af2353c82832";
-				PROVISIONING_PROFILE_SPECIFIER = QTUM_IMessage_dev;
+				PROVISIONING_PROFILE = "3b83a366-c24f-474d-bbc8-8b87a72af747";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-iMessage";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -5849,15 +5849,15 @@
 				CODE_SIGN_ENTITLEMENTS = iMessageExtension/iMessageExtension.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-wallet.iMessageExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.iMessageExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "93d6df0d-2e16-4ad9-9c97-af2353c82832";
-				PROVISIONING_PROFILE_SPECIFIER = QTUM_IMessage_dev;
+				PROVISIONING_PROFILE = "3b83a366-c24f-474d-bbc8-8b87a72af747";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-iMessage";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -5895,12 +5895,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = QTUM_Watch_Extension;
 				INFOPLIST_FILE = "QTUM Watch/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-wallet.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c27f9fa7-5413-4276-a0e5-791507e52ad2";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-Watch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -5913,12 +5916,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = QTUM_Watch_Extension;
 				INFOPLIST_FILE = "QTUM Watch/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-wallet.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c27f9fa7-5413-4276-a0e5-791507e52ad2";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-Watch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -5932,14 +5938,15 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "QTUM Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-wallet.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c1630f95-4bf5-41fb-9d12-b1868e9440ff";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-watchExt";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -5953,14 +5960,15 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "QTUM Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-wallet.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c1630f95-4bf5-41fb-9d12-b1868e9440ff";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-watchExt";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -6088,7 +6096,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6099,10 +6107,10 @@
 				INFOPLIST_FILE = "qtum wallet/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-wallet";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ebf87941-e6ba-4b3a-96e6-bc4e7eca82f3";
-				PROVISIONING_PROFILE_SPECIFIER = QTUM_DEV;
+				PROVISIONING_PROFILE = "6a0b7c94-59e0-4b30-a7f0-d31ccf1dad1e";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-dev";
 			};
 			name = Debug;
 		};
@@ -6116,7 +6124,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q7Q43CUMWT;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6127,10 +6135,10 @@
 				INFOPLIST_FILE = "qtum wallet/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-wallet";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8f2184f1-6c3d-48be-854f-d7a753168a75";
-				PROVISIONING_PROFILE_SPECIFIER = QTUMDEV;
+				PROVISIONING_PROFILE = "6a0b7c94-59e0-4b30-a7f0-d31ccf1dad1e";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-dev";
 			};
 			name = Release;
 		};

@@ -9,7 +9,7 @@
 #import "BTCTransactionOutput+Address.h"
 #import <objc/runtime.h>
 
-NSString const *keyOut = @"com.qtum.output.extension";
+NSString const *keyOut = @"org.qtum.output.extension";
 
 @implementation BTCTransactionOutput (Address)
 
