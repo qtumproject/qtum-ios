@@ -100,6 +100,12 @@
     return [NSUserDefaults isFingerprintAllowed];
 }
 
+-(NSString*)baseURL {
+    
+    NSString* baseUrl = @"http://163.172.251.4:5931/";
+    return baseUrl;
+}
+
 #pragma mark - Private Methods 
 
 -(void)setFingerprintEnabled:(BOOL)enabled {

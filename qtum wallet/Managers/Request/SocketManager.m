@@ -14,9 +14,6 @@
 
 @import SocketIO;
 
-static NSString *BASE_URL = @"http://163.172.251.4:5931/";
-//static NSString *BASE_URL = @"http://163.172.68.103:5931";
-
 NSString *const kSocketDidConnect = @"kSocketDidConnect";
 NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
 
@@ -63,13 +60,18 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     }
 }
 
+-(NSString*)baseURL {
+    
+    return [AppSettings sharedInstance].baseURL;
+}
+
 -(void)startAndSubscribeWithHandler:(void(^)()) handler {
     
     __weak __typeof(self)weakSelf = self;
     
     dispatch_block_t block = ^{
         
-        NSURL* url = [[NSURL alloc] initWithString:BASE_URL];
+        NSURL* url = [[NSURL alloc] initWithString:[self baseURL]];
         weakSelf.currentSocket = [[SocketIOClient alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
         weakSelf.onConnected = handler;
         

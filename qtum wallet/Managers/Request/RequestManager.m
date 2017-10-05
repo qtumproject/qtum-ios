@@ -20,9 +20,6 @@ typedef NS_ENUM(NSInteger, RequestType){
     PUT
 };
 
-NSString *const BASE_URL = @"http://163.172.251.4:5931/";
-//NSString *const BASE_URL = @"http://163.172.68.103:5931";
-
 @interface RequestManager()
 
 @property (strong,nonatomic)AFHTTPRequestOperationManager* requestManager;
@@ -62,7 +59,7 @@ NSString *const BASE_URL = @"http://163.172.251.4:5931/";
 - (AFHTTPRequestOperationManager *)requestManager {
     
     if (!_requestManager) {
-        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
+        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:[self baseURL]]];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         manager.responseSerializer =  [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -92,6 +89,11 @@ NSString *const BASE_URL = @"http://163.172.251.4:5931/";
         _socketManager.delegate = self;
     }
     return _socketManager;
+}
+
+-(NSString*)baseURL {
+    
+    return [AppSettings sharedInstance].baseURL;
 }
 
 -(void)requestWithType:(RequestType) type path:(NSString*) path andParams:(NSDictionary*) param withSuccessHandler:(void(^)(id  _Nonnull responseObject)) success andFailureHandler:(void(^)(NSError * _Nonnull error, NSString* message)) failure
