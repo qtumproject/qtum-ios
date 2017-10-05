@@ -72,8 +72,13 @@ static NSInteger constantFee = 400000000;
     
     [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:address withHashes:hashes withHandler:^(id responseObject) {
         
-        NSNumber* gas = responseObject[@"items"][0][@"gas_used"];
-        if ([gas isKindOfClass:[NSNumber class]]) {
+        NSNumber* gas;
+        NSArray *items = responseObject[@"items"];
+        if ([items isKindOfClass:[NSArray class]] && items.count > 0) {
+            gas = [items firstObject][@"gas_used"];
+        }
+        
+        if ([gas isKindOfClass:[NSNumber class]] && gas) {
             completesion([gas decimalNumber]);
         } else {
             completesion(nil);
@@ -435,7 +440,7 @@ static NSInteger constantFee = 400000000;
                 dispatch_semaphore_signal(semaphore);
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(TransactionManagerErrorTypeOups,nil,nil, nil);
+                    completion(TransactionManagerErrorTypeOups, nil, nil, nil);
                 });
             }
         }];
