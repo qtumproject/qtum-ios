@@ -36,7 +36,7 @@
 
 + (NSString *)groupPath {
     
-    NSString *appGroupDirectoryPath = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.qtum.qtum-wallet"].path;
+    NSString *appGroupDirectoryPath = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.org.qtum.qtum-wallet"].path;
     return appGroupDirectoryPath;
 }
 
