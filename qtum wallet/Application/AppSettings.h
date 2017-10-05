@@ -15,6 +15,8 @@
 @property (assign, nonatomic, readonly) BOOL isFingerprintEnabled;
 @property (assign, nonatomic, readonly) BOOL isFingerprintAllowed;
 @property (assign, nonatomic, readonly) BOOL isDarkTheme;
+@property (copy, nonatomic, readonly) NSString* baseURL;
+
 
 -(void)setup;
 -(void)setFingerprintEnabled:(BOOL)enabled;
