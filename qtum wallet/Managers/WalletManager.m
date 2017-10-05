@@ -99,10 +99,19 @@ NSString const *kUserPinHash = @"HashPIN";
 }
 
 - (NSDictionary *)hashTableOfKeys {
-    
     NSMutableDictionary *hashTable = [NSMutableDictionary new];
     for (BTCKey *key in [[self wallet] allKeys]) {
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        if (keyString) {
+            hashTable[keyString] = [NSNull null];
+        }
+    }
+    return [hashTable copy];
+}
+
+- (NSDictionary *)hashTableOfKeysForHistoryElement {
+    NSMutableDictionary *hashTable = [NSMutableDictionary new];
+    for (NSString *keyString in [[self wallet] allKeysAdreeses]) {
         if (keyString) {
             hashTable[keyString] = [NSNull null];
         }

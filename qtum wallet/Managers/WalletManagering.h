@@ -33,6 +33,7 @@
 - (BOOL)verifyPin:(NSString*) pin;
 - (BOOL)isSignedIn;
 - (NSDictionary *)hashTableOfKeys;
+- (NSDictionary *)hashTableOfKeysForHistoryElement;
 - (BOOL)startWithPin:(NSString*) pin;
 - (NSString*)brandKeyWithPin:(NSString*) pin;
 

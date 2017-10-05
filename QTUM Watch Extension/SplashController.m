@@ -59,10 +59,12 @@
             [weakSelf showWaller];
         } else {
             [weakSelf.walletButton setTitle:@"No Wallet"];
+            [weakSelf.walletButton setEnabled:NO];
         }
         
     } errorHandler:^(NSError * _Nonnull error) {
         [weakSelf.walletButton setTitle:@"Error, reload app"];
+        [weakSelf.walletButton setEnabled:NO];
     }];
 }
 
