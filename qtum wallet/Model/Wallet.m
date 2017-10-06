@@ -65,19 +65,23 @@ NSInteger const USERS_KEYS_COUNT = 10;
     NSString* stringBrandKey = [self brandKeyWithPin:pin];
     
     if (stringBrandKey) {
+        
         NSArray* seedWords = [stringBrandKey componentsSeparatedByString:@" "];
         self.keyChain = [self createKeychainWithSeedWords:seedWords];
+        
         if (self.keyChain) {
             [self savePublicAddresses];
         }
     } else {
-        DLog(@"Cant Create seed words from Pin");
+        self.keyChain = nil;
+        [self savePublicAddresses];
     }
     
     return self.keyChain;
 }
 
 - (void)savePublicAddresses {
+    
     NSMutableArray *addresses = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];

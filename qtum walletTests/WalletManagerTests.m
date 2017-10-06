@@ -179,6 +179,7 @@
 }
 
 - (void)test_BrainKey {
+    
     NSArray *worlds = @[@"contributor", @"lately", @"classroom", @"super", @"sphere", @"turn", @"confuse", @"leading", @"ease", @"brother", @"march", @"heavy"];
     NSString *stringWords = @"contributor lately classroom super sphere turn confuse leading ease brother march heavy";
     NSString *pin = @"1111";
