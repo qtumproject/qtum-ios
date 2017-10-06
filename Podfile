@@ -13,5 +13,10 @@ target 'qtum wallet' do
 	pod 'Crashlytics'
 	pod 'Firebase/Core'
 	pod 'Firebase/Messaging'
+
+	target 'qtum walletTests' do
+        	inherit! :search_paths
+		pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
+	end
 end
 
