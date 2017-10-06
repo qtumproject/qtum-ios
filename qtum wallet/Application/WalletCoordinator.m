@@ -268,10 +268,16 @@
     self.tokenController.tokens = tokensArray;
     [self.tokenController reloadTable];
     
+    __weak __typeof(self)weakSelf = self;
+
     if (tokensArray.count == 0) {
-        [self.pageViewController scrollToRootIfNeededAnimated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.pageViewController scrollToRootIfNeededAnimated:YES];
+        });
     } else {
-        [self.pageViewController setScrollingToTokensAvailableIfNeeded];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.pageViewController setScrollingToTokensAvailableIfNeeded];
+        });
     }
 }
 
