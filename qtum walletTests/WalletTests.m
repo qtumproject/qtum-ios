@@ -63,23 +63,22 @@
     XCTAssertTrue(wallet);
 }
 
-- (void)test_Creation_Seed_NilWords {
-    Wallet *wallet = [[Wallet alloc] initWithName:self.nameSring pin:self.pin seedWords:self.nilWords];
-    XCTAssertNil(wallet);
-}
-
 - (void)test_Creation_Seed_Words_BadWords {
+    
     NSMutableArray *mutWords = [self.words mutableCopy];
     [mutWords removeLastObject];
     [mutWords removeLastObject];
     [mutWords removeLastObject];
     [mutWords removeLastObject];
     Wallet *wallet = [[Wallet alloc] initWithName:self.nameSring pin:self.pin seedWords:mutWords];
-    XCTAssertNil(wallet);
+    XCTAssertNotNil(wallet);
 }
 
 - (void)test_Addresses {
-    Wallet *wallet = [[Wallet alloc] initWithName:self.nameSring pin:self.pin seedWords:self.words];
+    
+    Wallet *wallet = [Wallet new];
+    [wallet clearPublicAddresses];
+    wallet = [[Wallet alloc] initWithName:self.nameSring pin:self.pin seedWords:self.words];
     NSArray *allAddresses = [wallet allKeysAdreeses];
     NSArray *allKeys = [wallet allKeys];
     XCTAssertNil(allAddresses);
@@ -100,9 +99,12 @@
     
     [wallet configAddressesWithPin:self.changedPin];
     allAddresses = [wallet allKeysAdreeses];
-    XCTAssertNil(allAddresses);
+    XCTAssertTrue(allAddresses.count == 0);
     
     [wallet clearPublicAddresses];
+    allAddresses = [wallet allKeysAdreeses];
+    XCTAssertNil(allAddresses);
+
 }
 
 - (void)test_Change {
@@ -114,6 +116,7 @@
 }
 
 - (void)test_Get_Brain_Key_String {
+    
     Wallet *wallet = [[Wallet alloc] initWithName:self.nameSring pin:self.pin seedWords:self.words];
     NSString *string = [wallet brandKeyWithPin:self.pin];
     XCTAssertTrue([string isEqualToString:self.worldsString]);
@@ -122,17 +125,16 @@
     string = [wallet brandKeyWithPin:self.changedPin];
     XCTAssertTrue([string isEqualToString:self.worldsString]);
     
-    [wallet changeBrandKeyPinWithOldPin:self.pin toNewPin:self.nilPin];
+    [wallet changeBrandKeyPinWithOldPin:self.changedPin toNewPin:self.nilPin];
     string = [wallet brandKeyWithPin:self.nilPin];
     XCTAssertTrue([string isEqualToString:self.worldsString]);
 }
 
 - (void)test_Keys {
     Wallet *wallet = [[Wallet alloc] initWithName:self.nameSring pin:self.pin seedWords:self.words];
-#warning Crash
-//    XCTAssertNil([wallet lastRandomKeyOrRandomKey]);
-//    XCTAssertNil([wallet randomKey]);
-//    XCTAssertNil([wallet keyAtIndex:0]);
+    XCTAssertNil([wallet lastRandomKeyOrRandomKey]);
+    XCTAssertNil([wallet randomKey]);
+    XCTAssertNil([wallet keyAtIndex:0]);
     
     [wallet configAddressesWithPin:self.pin];
     XCTAssertTrue([wallet lastRandomKeyOrRandomKey]);
@@ -140,17 +142,17 @@
     XCTAssertTrue([wallet keyAtIndex:0]);
     XCTAssertTrue([wallet keyAtIndex:10]);
     XCTAssertTrue([wallet keyAtIndex:20]);
-    XCTAssertTrue([wallet keyAtIndex:-1]);
 }
 
 - (void)test_Hash_Table {
+    
     Wallet *wallet = [[Wallet alloc] initWithName:self.nameSring pin:self.pin seedWords:self.words];
     NSDictionary *hashTabel = [wallet addressKeyHashTable];
     XCTAssertTrue(hashTabel.allKeys.count == 0);
     [wallet configAddressesWithPin:self.pin];
     hashTabel = [wallet addressKeyHashTable];
     XCTAssertTrue(hashTabel.allKeys.count > 0);
-    XCTAssertTrue(hashTabel.allKeys.count > [wallet allKeys].count);
+    XCTAssertTrue(hashTabel.allKeys.count == [wallet allKeys].count);
     
 }
 

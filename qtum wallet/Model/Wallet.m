@@ -162,6 +162,9 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 -(void)storeLastAdreesKey:(BTCKey*) btcKey {
     
+    if (!btcKey) {
+        return;
+    }
     NSString* keyString = [AppSettings sharedInstance].isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
     [DataOperation addGropFileWithName:@"group" dataSource:@{@"kWalletAddressKey": keyString}];
 }
@@ -170,8 +173,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
     return [[DataOperation getDictFormGroupFileWithName:@"group"] objectForKey:@"kWalletAddressKey"];
 }
 
-- (BTCKey *)keyAtIndex:(NSUInteger)index;
-{
+- (BTCKey *)keyAtIndex:(NSUInteger)index {
+
     return [self.keyChain keyAtIndex:(uint)index hardened:YES];
 }
 
@@ -196,6 +199,10 @@ NSInteger const USERS_KEYS_COUNT = 10;
 }
 
 - (NSDictionary <NSString*,BTCKey*>*)addressKeyHashTable {
+    
+    if (!self.keyChain) {
+        return nil;
+    }
     
     NSMutableDictionary *addressKeyHashTable = @{}.mutableCopy;
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
