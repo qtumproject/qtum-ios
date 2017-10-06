@@ -4981,7 +4981,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -5900,10 +5900,10 @@
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = QTUM_Watch_Extension;
 				INFOPLIST_FILE = "QTUM Watch/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watch";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c27f9fa7-5413-4276-a0e5-791507e52ad2";
-				PROVISIONING_PROFILE_SPECIFIER = "QTUM-Watch";
+				PROVISIONING_PROFILE = "7023b709-5e06-4f5c-b1a1-c7fd02aa396d";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM Watch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -5921,10 +5921,10 @@
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = QTUM_Watch_Extension;
 				INFOPLIST_FILE = "QTUM Watch/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watch";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c27f9fa7-5413-4276-a0e5-791507e52ad2";
-				PROVISIONING_PROFILE_SPECIFIER = "QTUM-Watch";
+				PROVISIONING_PROFILE = "7023b709-5e06-4f5c-b1a1-c7fd02aa396d";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM Watch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
