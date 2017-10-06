@@ -380,6 +380,7 @@
 		D080435E1F83C28F00B22606 /* WalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D080435D1F83C28F00B22606 /* WalletTests.m */; };
 		D09F83991F7BB2DB002F3098 /* CopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F83981F7BB2DB002F3098 /* CopyLabel.m */; };
 		D09F839C1F7BF308002F3098 /* QStoreCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F839B1F7BF308002F3098 /* QStoreCategory.m */; };
+		D56B020D09B5747897E3EA15 /* libPods-qtum walletTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2601E5D944F526E1947C2A50 /* libPods-qtum walletTests.a */; };
 		E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */; };
 		E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E703530E1F03AC41004ECCC9 /* QStoreListViewController.m */; };
 		E70353121F03AC59004ECCC9 /* QStoreListTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353111F03AC59004ECCC9 /* QStoreListTableSource.m */; };
@@ -654,6 +655,8 @@
 
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2601E5D944F526E1947C2A50 /* libPods-qtum walletTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum walletTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C288131FA2EA3C838AF7336 /* Pods-qtum walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum walletTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
 		B3014D5C1F29FD63007EAE7A /* WatchContractOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutput.h; sourceTree = "<group>"; };
 		B3014D5D1F29FD7C007EAE7A /* WatchContractOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutputDelegate.h; sourceTree = "<group>"; };
@@ -1444,6 +1447,7 @@
 		D09F83981F7BB2DB002F3098 /* CopyLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CopyLabel.m; sourceTree = "<group>"; };
 		D09F839A1F7BF308002F3098 /* QStoreCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreCategory.h; sourceTree = "<group>"; };
 		D09F839B1F7BF308002F3098 /* QStoreCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QStoreCategory.m; sourceTree = "<group>"; };
+		D71F3943F2787CBE5AE12D46 /* Pods-qtum walletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum walletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E70353081F039297004ECCC9 /* QStoreSearchTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreSearchTableSource.h; sourceTree = "<group>"; };
 		E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreSearchTableSource.m; sourceTree = "<group>"; };
 		E703530D1F03AC41004ECCC9 /* QStoreListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreListViewController.h; sourceTree = "<group>"; };
@@ -1902,6 +1906,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56B020D09B5747897E3EA15 /* libPods-qtum walletTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1929,6 +1934,8 @@
 			children = (
 				413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */,
 				C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */,
+				D71F3943F2787CBE5AE12D46 /* Pods-qtum walletTests.debug.xcconfig */,
+				3C288131FA2EA3C838AF7336 /* Pods-qtum walletTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -4607,6 +4614,7 @@
 				E7FD365B1DC7360400748177 /* Security.framework */,
 				0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */,
 				B33EAF891E5EC262006125F3 /* Messages.framework */,
+				2601E5D944F526E1947C2A50 /* libPods-qtum walletTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -4635,9 +4643,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3A4EA601F502E66008115D1 /* Build configuration list for PBXNativeTarget "qtum walletTests" */;
 			buildPhases = (
+				321C587E9A4F2B82C7DDE849 /* [CP] Check Pods Manifest.lock */,
 				B3A4EA551F502E65008115D1 /* Sources */,
 				B3A4EA561F502E65008115D1 /* Frameworks */,
 				B3A4EA571F502E65008115D1 /* Resources */,
+				EFC4163D6348EB02957DC3DD /* [CP] Embed Pods Frameworks */,
+				45AB1922DB734C7BE18A4179 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4921,6 +4932,39 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		321C587E9A4F2B82C7DDE849 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-qtum walletTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45AB1922DB734C7BE18A4179 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B3C4553C1E8958D900420D7C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4966,6 +5010,21 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 41db5a1ea3ca62a26f56f41e07085664e42f9f95 1f0ea4bed2dacc368ad16cd4a824581fd7b8526917f01e88c15e720abc50f45d";
 		};
+		EFC4163D6348EB02957DC3DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F79955B856A388C1F1C8305A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4981,7 +5040,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -5864,6 +5923,7 @@
 		};
 		B3A4EA611F502E66008115D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D71F3943F2787CBE5AE12D46 /* Pods-qtum walletTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -5878,6 +5938,7 @@
 		};
 		B3A4EA621F502E66008115D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C288131FA2EA3C838AF7336 /* Pods-qtum walletTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
