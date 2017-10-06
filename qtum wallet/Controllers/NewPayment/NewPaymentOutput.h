@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Presentable.h"
 
 @protocol NewPaymentOutputDelegate;
 
-@protocol NewPaymentOutput <NSObject>
+@protocol NewPaymentOutput <Presentable>
 
 @property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
 
