@@ -164,6 +164,10 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 - (void)addNewToken:(Contract*) token {
     
+    if (!token) {
+        return;
+    }
+    
     token.delegate = self;
     [self.contracts addObject:token];
     [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
@@ -306,7 +310,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
         Contract* token = [Contract new];
         token.contractAddress = contractAddress;
         token.creationDate = [NSDate date];
-        token.localName = [token.contractAddress substringToIndex:15];
+        token.localName = [token.contractAddress substringToIndex:contractAddress.length > 15 ? 15 : contractAddress.length];
         token.adresses = [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys];
         //[token setupWithContractAddresse:contractAddress];
         token.manager = self;
