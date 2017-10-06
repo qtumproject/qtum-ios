@@ -108,10 +108,14 @@
 
 -(BOOL)writeNewAbi:(NSArray*) abi withPathName:(NSString*) templatePath {
     
+    if (![abi isKindOfClass:[NSArray class]]) {
+        return NO;
+    }
+    
     NSString* folderPath = [NSString stringWithFormat:@"%@/%@",[self contractDirectory], templatePath];
     NSString* filePath = [NSString stringWithFormat:@"%@/abi-contract",folderPath];
 
-
+    
     if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]) {
         [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:NO attributes:nil error:NULL];
     }

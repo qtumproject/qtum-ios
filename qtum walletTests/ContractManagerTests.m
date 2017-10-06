@@ -18,6 +18,7 @@
 @implementation ContractManagerTests
 
 - (void)test_Clear {
+    
     [[ContractManager sharedInstance] clear];
     NSInteger contractCount = [ContractManager sharedInstance].allContracts.count;
     NSInteger tokensCount = [ContractManager sharedInstance].allTokens.count;
@@ -29,6 +30,7 @@
 }
 
 - (void)test_Add_New_Token {
+    
     NSInteger tokensCount = [ContractManager sharedInstance].allContracts.count;
     [[ContractManager sharedInstance] addNewToken:[Contract new]];
     NSInteger newTokensCount = [ContractManager sharedInstance].allContracts.count;

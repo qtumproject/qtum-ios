@@ -9,4 +9,4 @@
 #import <Foundation/Foundation.h>
 
 
-NSArray *wordsArray();
+NSArray *wordsArray(void);

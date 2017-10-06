@@ -11,6 +11,7 @@
 
 @class HistoryDataStorage;
 @class Wallet;
+@class BTCKey;
 
 extern NSInteger const brandKeyWordsCount;
 

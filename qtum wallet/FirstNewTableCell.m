@@ -11,6 +11,8 @@
 @implementation FirstNewTableCell
 
 -(void)prepareForReuse {
+    
+    [super prepareForReuse];
     self.customImage.image = [UIImage imageNamed:@"no-image"];
     self.dateLabel.text = @"";
     self.shortDiscriptionLabel.text = @"";

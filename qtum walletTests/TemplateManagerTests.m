@@ -68,6 +68,7 @@
 }
 
 - (void)test_Encode {
+    
     NSMutableArray *data = [[[TemplateManager sharedInstance] decodeDataForBackup] mutableCopy];
     NSArray *array = [[TemplateManager sharedInstance] encodeDataForBacup:data];
     
@@ -86,6 +87,7 @@
 }
 
 - (void)test_Template_Token_Creation {
+    
     TemplateModel *model = [[TemplateManager sharedInstance] createNewTokenTemplateWithAbi:@"test" contractAddress:@"test" andName:@"test"];
     XCTAssertNil(model);
     
@@ -114,6 +116,7 @@
 }
 
 - (void)test_Template_Creation {
+    
     TemplateModel *model = [[TemplateManager sharedInstance] createNewTemplateWithAbi:@"test" bitecode:@"test" source:@"test" type:TokenType uuid:@"test" andName:@"test"];
     XCTAssertNil(model);
     

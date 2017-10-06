@@ -50,10 +50,11 @@
 }
 
 -(void)start {
-    id <NewPaymentOutput> controller = [[ControllersFactory sharedInstance] createNewPaymentDarkViewController];
+    
+    NSObject <NewPaymentOutput> *controller = [[ControllersFactory sharedInstance] createNewPaymentDarkViewController];
     controller.delegate = self;
     self.paymentOutput = controller;
-    [self.navigationController setViewControllers:@[controller]];
+    [self.navigationController setViewControllers:@[[controller toPresent]]];
     
     [self.paymentOutput showLoaderPopUp];
     
