@@ -72,6 +72,11 @@ static NSInteger constantFee = 400000000;
     
     [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:address withHashes:hashes withHandler:^(id responseObject) {
         
+        if (![responseObject isKindOfClass:[NSDictionary class]]) {
+            completesion(nil);
+            return;
+        }
+        
         NSNumber* gas;
         NSArray *items = responseObject[@"items"];
         if ([items isKindOfClass:[NSArray class]] && items.count > 0) {

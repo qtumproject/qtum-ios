@@ -221,16 +221,12 @@ static NSInteger hidedGasTopForSend = -40;
     NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
     
     if ([feeValue isGreaterThan:self.maxFee] ) {
-        
         self.feeTextField.text = [NSString stringWithFormat:@"%@", self.maxFee];;
         self.FEE = self.maxFee;
-        
     } else if ([feeValue isLessThan:self.minFee]) {
-        
         self.feeTextField.text = [NSString stringWithFormat:@"%@", self.minFee];
         self.FEE = self.minFee;
     } else {
-        
         self.FEE = feeValue;
     }
 }
@@ -247,13 +243,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)updateScrollsConstraints {
- 
-//    CGFloat allHeight = self.scrollView.frame.size.height;
-//    CGFloat maxTextField = self.amountTextField.frame.size.height + self.amountTextField.frame.origin.y;
-//    CGFloat buttonHeight = self.sendButtomBottomOffset + self.sendButtonHeightConstraint.constant;
-    
     self.standartTopOffsetForSendButton = self.sendButtonTopConstraint.constant;
-    
     [self.view layoutIfNeeded];
 }
 
@@ -267,6 +257,7 @@ static NSInteger hidedGasTopForSend = -40;
     self.heightForGasSlidersContainer.constant = heightGasSlidersContainerClose;
     self.topConstratinForEdit.constant = closeTopForEditButton;
     self.sendButtonTopConstraint.constant = hide ? hidedGasTopForSend : showedGasTopForSend;
+    [self.editButton setTitle:NSLocalizedString(@"EDIT", nil) forState:UIControlStateNormal];
 }
 
 #pragma mark - NewPaymentOutput
