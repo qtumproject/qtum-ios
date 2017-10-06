@@ -103,6 +103,10 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
 
 - (TemplateModel*)createNewContractTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
     
+    if (!abi) {
+        return nil;
+    }
+    
     NSError *err = nil;
     NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
                                                        options:NSJSONReadingMutableContainers
@@ -119,6 +123,10 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
 
 - (TemplateModel*)createNewTokenTemplateWithAbi:(NSString*) abi contractAddress:(NSString*) contractAddress andName:(NSString*) contractName {
     
+    if (!abi) {
+        return nil;
+    }
+    
     NSError *err = nil;
     NSArray *jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
                                                        options:NSJSONReadingMutableContainers
@@ -129,6 +137,7 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
         TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withuuid:[NSUUID UUID].UUIDString path:filePath isFull:NO];
         return customToken;
     }
+    
     return nil;
 }
 
@@ -202,6 +211,9 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
                                                     error:&err];
         proccesWithoutErrors = proccesWithoutErrors & [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath];
         abiSuccess = proccesWithoutErrors;
+    } else {
+        
+        return nil;
     }
     
     if (bitecode.length > 0) {
@@ -270,9 +282,13 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
 }
 
 -(NSArray<TemplateModel*>*)encodeDataForBacup:(NSArray<NSDictionary*>*) backup {
-    
+        
     NSMutableArray* newTemplates = @[].mutableCopy;
     for (NSDictionary* templateDict in backup) {
+        
+        if (![templateDict isKindOfClass:[NSDictionary class]]) {
+            continue;
+        }
         
         TemplateModel* template = [self templateWithUUIDFromTemplateDict:templateDict];
         if (template) {
@@ -284,6 +300,10 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
 }
 
 -(void)saveTemplate:(TemplateModel*) template {
+    
+    if (!template) {
+        return;
+    }
     
     [self.templates addObject:template];
     [self save];
