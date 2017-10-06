@@ -177,16 +177,17 @@
 }
 
 -(void)scrollToRootIfNeededAnimated:(BOOL)animated{
-    
-    if (self.isViewLoaded && self.view.window && self.currentIndex) {
-        [self scrollToIndex:0 animated:animated];
-        self.needSwipeBack = NO;
-        [self setScrollEnable:NO];
-    } else if (self.currentIndex){
-        self.needSwipeBack = true;
-    }else {
-        [self setScrollEnable:NO];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.isViewLoaded && self.view.window && self.currentIndex) {
+            [self scrollToIndex:0 animated:animated];
+            self.needSwipeBack = NO;
+            [self setScrollEnable:NO];
+        } else if (self.currentIndex){
+            self.needSwipeBack = true;
+        }else {
+            [self setScrollEnable:NO];
+        }
+    });
 }
 
 -(void)setScrollingToTokensAvailableIfNeeded {

@@ -14,6 +14,8 @@
 @import UserNotifications;
 @import FirebaseInstanceID;
 
+NSString *const FireBaseInfoFileName = @"GoogleService-Info";
+
 @interface NotificationManager () <UNUserNotificationCenterDelegate,UIApplicationDelegate>
 
 @end
@@ -31,7 +33,9 @@
         center.delegate = self;
         [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
             if(!error){
-                [[UIApplication sharedApplication] registerForRemoteNotifications];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[UIApplication sharedApplication] registerForRemoteNotifications];
+                });
             }
         }];
     } else {
@@ -39,7 +43,11 @@
         [[UIApplication sharedApplication] registerForRemoteNotifications];
     }
     
-    [FIRApp configure];
+    NSString *path = [[NSBundle mainBundle] pathForResource:FireBaseInfoFileName ofType:@"plist"];
+    NSDictionary *dictPri = [NSDictionary dictionaryWithContentsOfFile:path];
+    if (dictPri) {
+        [FIRApp configure];
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:) name:kFIRInstanceIDTokenRefreshNotification object:nil];
 }
 
