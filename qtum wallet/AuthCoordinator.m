@@ -130,6 +130,16 @@
     [self gotoCreatePin];
 }
 
+#pragma mark - Private
+
+-(void)goToWalletFlow {
+    
+    [[ApplicationCoordinator sharedInstance].walletManager storePin:self.walletPin];
+    BOOL startingSuccess = [[ApplicationCoordinator sharedInstance].walletManager startWithPin:self.walletPin];
+    NSError* error = startingSuccess ? nil : [NSError new];
+    [self.repeatePinController endCreateWalletWithError:error];
+}
+
 #pragma mark - FirstAuthOutputDelegate
 
 -(void)didLoginPressed {
@@ -199,20 +209,19 @@
         [[ApplicationCoordinator sharedInstance] clear];
         [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
             
-            [[ApplicationCoordinator sharedInstance].walletManager storePin:weakSelf.walletPin];
-            [[ApplicationCoordinator sharedInstance].walletManager startWithPin:weakSelf.walletPin];
-            [weakSelf.repeatePinController endCreateWalletWithError:nil];
+            [weakSelf goToWalletFlow];
         } andFailureHandler:^{
+            
             [weakSelf.repeatePinController endCreateWalletWithError:[NSError new]];
         }];
     } else if ([self.walletPin isEqualToString:pin]) {
         
         [[ApplicationCoordinator sharedInstance] clear];
         [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin seedWords:self.walletBrainKey withSuccessHandler:^(Wallet *newWallet) {
-            [[ApplicationCoordinator sharedInstance].walletManager storePin:weakSelf.walletPin];
-            [[ApplicationCoordinator sharedInstance].walletManager startWithPin:weakSelf.walletPin];
-            [weakSelf.repeatePinController endCreateWalletWithError:nil];
+            
+            [weakSelf goToWalletFlow];
         } andFailureHandler:^{
+            
             [weakSelf.repeatePinController endCreateWalletWithError:[NSError new]];
         }];
 

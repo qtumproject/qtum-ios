@@ -17,6 +17,16 @@
 
 @implementation ContractManagerTests
 
+- (void)setUp {
+    [super setUp];
+}
+
+- (void)tearDown {
+    
+    [super tearDown];
+    [[ContractManager sharedInstance] clear];
+}
+
 - (void)test_Clear {
     
     [[ContractManager sharedInstance] clear];
@@ -49,19 +59,18 @@
     
     XCTAssertTrue(tokensCount4 == newTokensCount4);
     
-//    NSInteger tokensCount3 = [ContractManager sharedInstance].allContracts.count;
-#warning Crash
-//    [[ContractManager sharedInstance] addNewTokenWithContractAddress:@"asdfasf"];
-//    NSInteger newTokensCount3 = [ContractManager sharedInstance].allContracts.count;
+    NSInteger tokensCount3 = [ContractManager sharedInstance].allContracts.count;
+    [[ContractManager sharedInstance] addNewTokenWithContractAddress:@"asdfasf"];
+    NSInteger newTokensCount3 = [ContractManager sharedInstance].allContracts.count;
     
-//    XCTAssertTrue(tokensCount3 + 1 == newTokensCount3);
+    XCTAssertTrue(tokensCount3 + 1 == newTokensCount3);
     
-//    NSInteger tokensCount2 = [ContractManager sharedInstance].allContracts.count;
-#warning Crash
-//    [[ContractManager sharedInstance] addNewToken:nil];
-//    NSInteger newTokensCount2 = [ContractManager sharedInstance].allContracts.count;
+    NSInteger tokensCount2 = [ContractManager sharedInstance].allContracts.count;
+    [[ContractManager sharedInstance] addNewToken:nil];
+    NSInteger newTokensCount2 = [ContractManager sharedInstance].allContracts.count;
     
-//    XCTAssertTrue(tokensCount2 == newTokensCount2);
+    XCTAssertTrue(tokensCount2 == newTokensCount2);
 }
 
 @end
+
