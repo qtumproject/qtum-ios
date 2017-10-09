@@ -154,20 +154,25 @@
     
     if ([spendable isKindOfClass:[Contract class]]) {
         
+        Contract* contract = (Contract*)spendable;
         vc.walletAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
         vc.type = ReciveTokenOutput;
         vc.tokenAddress = spendable.mainAddress;
         vc.currency = spendable.symbol;
+        
+        vc.balanceText = contract.balanceString;
+        vc.unconfirmedBalanceText = @"0";
 
     } else {
         
         vc.walletAddress = spendable.mainAddress;
         vc.type = ReciveWalletOutput;
         vc.tokenAddress =  nil;
+        
+        vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance.decimalNumber roundedNumberWithScale:3]];
+        vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
     }
-    
-    vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance.decimalNumber roundedNumberWithScale:3]];
-    vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
+
     vc.delegate = self;
     self.reciveOutput = vc;
     [self.navigationController pushViewController:[vc toPresent] animated:YES];
