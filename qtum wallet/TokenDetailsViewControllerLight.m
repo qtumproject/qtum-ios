@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *navigationBarView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) UIView *refreshBackView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForBlueView;
 
 
 @end
@@ -122,6 +123,8 @@
     emptyAlphaFirstPoiny = self.shortInfoHeader.frame.origin.y + self.shortInfoHeader.frame.size.height;
     
     self.shortInfoHeader.alpha = 1 - (fullAlphaLastPoin - startFadingPoint) / (emptyAlphaFirstPoiny - fullAlphaLastPoin);
+    
+    self.heightForBlueView.constant = 240.0f - offset;
 }
 
 - (void)updateWithOffsetNavBarView:(CGFloat) offset {

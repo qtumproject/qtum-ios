@@ -97,10 +97,16 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if ([AppSettings sharedInstance].isDarkTheme && textField == self.fromTextFieldView) {
+        textField.inputView.backgroundColor = customBlackColor();
+    }
     
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (!textField.text.length && [self.fromTextFieldView isEqual:textField]) {
-        
         self.fromTextFieldView.text = self.fromAddressesVariants.allKeys[0];
     }
 }
