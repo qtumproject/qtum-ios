@@ -369,7 +369,7 @@ ContractCreationEndOutputDelegate>
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                       andToken:(Contract*) token
+                       andToken:(Contract*) contract
                         andFee:(NSDecimalNumber *)fee
                     andGasPrice:(NSDecimalNumber *)gasPrice
                     andGasLimit:(NSDecimalNumber *)gasLimit {
@@ -379,25 +379,23 @@ ContractCreationEndOutputDelegate>
         [param addObject:inputs[i].value];
     }
     
-    NSMutableArray<NSString*>* __block addressWithTokensValue = @[].mutableCopy;
-    [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
-        if ([balance isGreaterThanInt:0]) {
-            [addressWithTokensValue addObject:address];
-        }
-    }];
+    NSArray<NSString*>* addressWithTokensValue = @[contract.contractCreationAddressAddress];
+    
     NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:item appendingParam:param];
     
     [self.functionDetailController showLoader];
 
     __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] callTokenWithAddress:[NSString dataFromHexString:token.contractAddress] andBitcode:hashFuction
-                                                fromAddresses:addressWithTokensValue
-                                                    toAddress:nil
-                                                   walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
-                                                          fee:fee
-                                                     gasPrice:gasPrice
-                                                     gasLimit:gasLimit
-                                                   andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber* estimatedFee) {
+    
+    [[TransactionManager sharedInstance] callContractWithAddress:[NSString dataFromHexString:contract.contractAddress]
+                                                      andBitcode:hashFuction
+                                                   fromAddresses:addressWithTokensValue
+                                                       toAddress:nil
+                                                      walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                             fee:fee
+                                                        gasPrice:gasPrice
+                                                        gasLimit:gasLimit
+                                                      andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber* estimatedFee) {
         
        [weakSelf.functionDetailController hideLoader];
        if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
