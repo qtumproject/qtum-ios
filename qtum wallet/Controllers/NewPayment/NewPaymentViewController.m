@@ -139,7 +139,7 @@ static NSInteger hidedGasTopForSend = -40;
     [self updateTextFields];
     [self.delegate didViewLoad];
     [self updateScrollsConstraints];
-    [self showOrHideGas];
+    [self showOrHideGas:YES];
     //[self updateFeeInputs];
 }
 
@@ -247,25 +247,27 @@ static NSInteger hidedGasTopForSend = -40;
     [self.view layoutIfNeeded];
 }
 
-- (void)showOrHideGas {
+- (void)showOrHideGas:(BOOL)willAppear {
     BOOL hide = !self.isTokenChoosen;
     
     self.gasValuesContainer.hidden =
     self.gasSlidersContainer.hidden =
     self.editButton.hidden = hide;
     
-    self.heightForGasSlidersContainer.constant = heightGasSlidersContainerClose;
-    self.topConstratinForEdit.constant = closeTopForEditButton;
-    self.sendButtonTopConstraint.constant = hide ? hidedGasTopForSend : showedGasTopForSend;
-    [self.editButton setTitle:NSLocalizedString(@"EDIT", nil) forState:UIControlStateNormal];
+    if (willAppear) {
+        self.heightForGasSlidersContainer.constant = heightGasSlidersContainerClose;
+        self.topConstratinForEdit.constant = closeTopForEditButton;
+        self.sendButtonTopConstraint.constant = hide ? hidedGasTopForSend : showedGasTopForSend;
+        [self.editButton setTitle:NSLocalizedString(@"EDIT", nil) forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - NewPaymentOutput
 
 -(void)updateControlsWithTokensExist:(BOOL) isExist
-                  choosenTokenExist:(BOOL) choosenExist
-                      walletBalance:(NSNumber*) walletBalance
-             andUnconfimrmedBalance:(NSNumber*) walletUnconfirmedBalance {
+                   choosenTokenExist:(BOOL) choosenExist
+                       walletBalance:(NSNumber*) walletBalance
+              andUnconfimrmedBalance:(NSNumber*) walletUnconfirmedBalance {
     
     //updating constraints and activity info
     self.residueValueLabel.text = [NSString stringWithFormat:@"%@", [walletBalance.decimalNumber roundedNumberWithScale:3]];
@@ -289,7 +291,7 @@ static NSInteger hidedGasTopForSend = -40;
     [self.view layoutIfNeeded];
     
     [self updateScrollsConstraints];
-    [self showOrHideGas];
+    [self showOrHideGas:NO];
 }
 
 - (void)showLoaderPopUp {
