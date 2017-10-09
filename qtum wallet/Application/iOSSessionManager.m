@@ -156,6 +156,16 @@ NSString *kErrorKey = @"error";
                             
                             replyHandler(dictionary);
                         }];
+                        
+                        [QRCodeManager createQRCodeFromPublicAddress:address tokenAddress:nil andAmount:nil forSize:CGSizeMake(width, width) withCompletionBlock:^(UIImage *image) {
+                            NSDictionary *dictionary = @{@"address" : address,
+                                                         @"availableBalance" : availableBalance,
+                                                         @"unconfirmedBalance" : unconfirmedBalance,
+                                                         @"history" : historyDictionary,
+                                                         @"image" : UIImagePNGRepresentation(image)};
+                            
+                            replyHandler(dictionary);
+                        }];
                     } else {
                         NSDictionary *dictionary = @{StatusKey : @(NO)};
                         replyHandler(dictionary);
