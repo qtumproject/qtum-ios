@@ -31,7 +31,7 @@
                            gasLimit:(NSDecimalNumber*) gasLimit
                          andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction, NSDecimalNumber *estimatedValue)) completion;
 
-- (void)callTokenWithAddress:(NSData*) contractAddress
+- (void)callContractWithAddress:(NSData*) contractAddress
                   andBitcode:(NSData*) bitcode
                fromAddresses:(NSArray<NSString*>*) fromAddresses
                    toAddress:(NSString*) toAddress
