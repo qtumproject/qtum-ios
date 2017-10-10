@@ -21,16 +21,24 @@
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     [[WatchCoordinator sharedInstance] startWithCompletion:^{
+        [[WatchCoordinator sharedInstance] startDeamonWithCompletion:nil];
         dispatch_semaphore_signal(semaphore);
     }];
-    dispatch_time_t timeUp= dispatch_time(DISPATCH_TIME_NOW, (uint64_t)(50 * NSEC_PER_SEC));
+    
+    dispatch_time_t timeUp = dispatch_time(DISPATCH_TIME_NOW, (uint64_t)(60 * NSEC_PER_SEC));
 
     dispatch_semaphore_wait(semaphore, timeUp);
 }
 
 - (void)applicationDidBecomeActive {
+    [[WatchCoordinator sharedInstance] countinieDeamon];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"applicationDidBecomeActive" object:nil];
 }
+
+- (void)applicationWillResignActive {
+    [[WatchCoordinator sharedInstance] pauseDeamon];
+}
+
 
 - (void)handleBackgroundTasks:(NSSet<WKRefreshBackgroundTask *> *)backgroundTasks {
     // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.

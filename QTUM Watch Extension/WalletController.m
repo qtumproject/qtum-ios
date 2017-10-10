@@ -16,6 +16,11 @@
 @interface WalletController() <BalanceCellDelegaete>
 
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceTable *table;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceGroup *balanceGroup;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *qtumLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceGroup *unconfirmedBalanceGroup;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *unconfirmedQtumLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *addressButton;
 
 @end
 
@@ -37,22 +42,41 @@
     for (NSInteger i = 0 ; i < wallet.history.count; i++) {
         [mutArray addObject:@"HistoryCell"];
     }
+    
     [self.table setRowTypes:mutArray];
     
-    BalanceCell *balance = [self.table rowControllerAtIndex:0];
-    balance.delegate = self;
-    [balance.address setTitle:wallet.address];
-    [balance.availableBalance setText:[wallet.availableBalance stringValue]];
-    [balance.notConfirmedBalance setText:[wallet.unconfirmedBalance stringValue]];
-    
-    for (NSInteger i = 0; i < wallet.history.count; i++) {
-        WatchHistoryElement *element = [wallet.history objectAtIndex:i];
+    if (wallet) {
+   
+        BalanceCell *balance = [self.table rowControllerAtIndex:0];
+        balance.delegate = self;
+        [balance.address setTitle:wallet.address];
+        [balance.availableBalance setText:[wallet.availableBalance stringValue]];
+        [balance.notConfirmedBalance setText:[wallet.unconfirmedBalance stringValue]];
+        [balance.address setHidden:NO];
+        [balance.balanceGroup setHidden:NO];
+        [balance.uncBalanceGroup setHidden:NO];
+        [balance.unconfirmedSymbol setHidden:NO];
+        [balance.confirmedSymbol setText:@"QTUM"];
         
-        HistoryCell *cell = [self.table rowControllerAtIndex:i + 1];
-        [cell.address setText:element.address];
-        [cell.amount setText:element.amount];
-        [cell.date setText:element.date];
-        [cell.leftBorder setBackgroundColor:element.send ? customRedColor() : customBlueColor()];
+        for (NSInteger i = 0; i < wallet.history.count; i++) {
+            WatchHistoryElement *element = [wallet.history objectAtIndex:i];
+            
+            HistoryCell *cell = [self.table rowControllerAtIndex:i + 1];
+            [cell.address setText:element.address];
+            [cell.amount setText:element.amount];
+            [cell.date setText:element.date];
+            [cell.leftBorder setBackgroundColor:element.send ? customRedColor() : customBlueColor()];
+        }
+
+    } else {
+        
+        BalanceCell *balance = [self.table rowControllerAtIndex:0];
+        balance.delegate = self;
+        [balance.address setHidden:YES];
+        [balance.balanceGroup setHidden:YES];
+        [balance.uncBalanceGroup setHidden:YES];
+        [balance.unconfirmedSymbol setHidden:YES];
+        [balance.confirmedSymbol setText:@"NO WALLET"];
     }
 }
 

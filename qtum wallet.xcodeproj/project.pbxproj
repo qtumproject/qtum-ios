@@ -132,6 +132,7 @@
 		B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130641E49DCBC0048A28C /* NewsTableCell.m */; };
 		B35130681E49DF910048A28C /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130671E49DF910048A28C /* ImageLoader.m */; };
 		B35497021F8BB9F500DEB004 /* WatchCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B35497011F8BB9F500DEB004 /* WatchCoordinator.m */; };
+		B354970A1F8CE68A00DEB004 /* WatchDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B35497091F8CE68A00DEB004 /* WatchDataOperation.m */; };
 		B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DF71E811D4500EBF094 /* RPCAdapter.m */; };
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
 		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
@@ -920,6 +921,8 @@
 		B35497011F8BB9F500DEB004 /* WatchCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchCoordinator.m; sourceTree = "<group>"; };
 		B35497031F8CDFFC00DEB004 /* QTUM Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "QTUM Watch Extension.entitlements"; sourceTree = "<group>"; };
 		B35497041F8CE00C00DEB004 /* QTUM Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "QTUM Watch.entitlements"; sourceTree = "<group>"; };
+		B35497081F8CE68900DEB004 /* WatchDataOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchDataOperation.h; sourceTree = "<group>"; };
+		B35497091F8CE68A00DEB004 /* WatchDataOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchDataOperation.m; sourceTree = "<group>"; };
 		B3597DF41E7FABF800EBF094 /* Requestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Requestable.h; sourceTree = "<group>"; };
 		B3597DF51E811D0500EBF094 /* RequestManagerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManagerAdapter.h; sourceTree = "<group>"; };
 		B3597DF61E811D4500EBF094 /* RPCAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCAdapter.h; sourceTree = "<group>"; };
@@ -3700,6 +3703,8 @@
 		E730AB821EE6A62100132711 /* Manages */ = {
 			isa = PBXGroup;
 			children = (
+				B35497081F8CE68900DEB004 /* WatchDataOperation.h */,
+				B35497091F8CE68A00DEB004 /* WatchDataOperation.m */,
 				E730AB831EE6A64700132711 /* SessionManager.h */,
 				E730AB841EE6A64700132711 /* SessionManager.m */,
 			);
@@ -5171,6 +5176,7 @@
 				E7B758711EF139F7004AF200 /* WatchWallet.m in Sources */,
 				E7B7585F1EF017C5004AF200 /* BalanceCell.m in Sources */,
 				E7B7585A1EF016FD004AF200 /* WalletController.m in Sources */,
+				B354970A1F8CE68A00DEB004 /* WatchDataOperation.m in Sources */,
 				E730AB6F1EE6A5D200132711 /* NotificationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6051,7 +6057,7 @@
 				INFOPLIST_FILE = "QTUM Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7023b709-5e06-4f5c-b1a1-c7fd02aa396d";
+				PROVISIONING_PROFILE = "9b12b951-8383-4186-a6a7-4de7b03a3d49";
 				PROVISIONING_PROFILE_SPECIFIER = "QTUM Watch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -6073,7 +6079,7 @@
 				INFOPLIST_FILE = "QTUM Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7023b709-5e06-4f5c-b1a1-c7fd02aa396d";
+				PROVISIONING_PROFILE = "9b12b951-8383-4186-a6a7-4de7b03a3d49";
 				PROVISIONING_PROFILE_SPECIFIER = "QTUM Watch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -6097,7 +6103,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "c1630f95-4bf5-41fb-9d12-b1868e9440ff";
+				PROVISIONING_PROFILE = "f1324b3f-e988-4901-b34b-d85fb1aa6a43";
 				PROVISIONING_PROFILE_SPECIFIER = "QTUM-watchExt";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -6121,7 +6127,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "c1630f95-4bf5-41fb-9d12-b1868e9440ff";
+				PROVISIONING_PROFILE = "f1324b3f-e988-4901-b34b-d85fb1aa6a43";
 				PROVISIONING_PROFILE_SPECIFIER = "QTUM-watchExt";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

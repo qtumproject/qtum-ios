@@ -19,6 +19,7 @@
 #import "Managerable.h"
 #import "NSNumber+Comparison.h"
 #import "WalletManagerRequestAdapter.h"
+#import "iOSSessionManager.h"
 
 NSString const *kWallets = @"qtum_wallet_wallets_keys";
 NSString const *kSingleWallet = @"qtum_wallet_wallet_keys";
@@ -149,6 +150,7 @@ NSString const *kUserPinHash = @"HashPIN";
 - (void)walletDidChange:(id)wallet {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kWalletDidChange object:nil userInfo:nil];
+    [[iOSSessionManager sharedInstance] updateWatch];
     [self save];
 }
 

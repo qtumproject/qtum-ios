@@ -8,6 +8,7 @@
 
 #import "SessionManager.h"
 #import "WatchWallet.h"
+#import "WatchDataOperation.h"
 
 const NSString *MainMessageKey = @"message_key";
 const NSString *GetQRCodeMessageKey = @"get_qr_code";
@@ -105,31 +106,11 @@ const NSString *GetWalletInformation = @"get_wallet_information";
     NSLog(@"sessionWatchStateDidChange : state = %ld", (long)session.activationState);
 }
 
-/** ------------------------- Interactive Messaging ------------------------- */
-
-/** Called when the reachable state of the counterpart app changes. The receiver should check the reachable property on receiving this delegate callback. */
-- (void)sessionReachabilityDidChange:(WCSession *)session{
-    NSLog(@"sessionReachabilityDidChange");
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the incoming message caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message{
-    NSLog(@"sessionReachabilityDidChange : message : %@", message);
-}
-
-/** Called on the delegate of the receiver when the sender sends a message that expects a reply. Will be called on startup if the incoming message caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message replyHandler:(void(^)(NSDictionary<NSString *, id> *replyMessage))replyHandler{
-    NSLog(@"didReceiveMessage with reply : message : %@", message);
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the incoming message data caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessageData:(NSData *)messageData{
-    NSLog(@"didReceiveMessage with reply : data : %@", messageData);
-}
-
-/** Called on the delegate of the receiver when the sender sends message data that expects a reply. Will be called on startup if the incoming message data caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessageData:(NSData *)messageData replyHandler:(void(^)(NSData *replyMessageData))replyHandler{
-    NSLog(@"didReceiveMessage with reply : data : %@", messageData);
+- (void)session:(WCSession *)session didReceiveUserInfo:(NSDictionary<NSString *, id> *)userInfo {
+    
+    if ([self.delegate respondsToSelector:@selector(didReceiveInfo:)]) {
+        [self.delegate didReceiveInfo:userInfo];
+    }
 }
 
 

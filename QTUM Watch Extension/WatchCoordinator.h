@@ -19,6 +19,11 @@
 @property (strong, nonatomic, readonly) WatchWallet* wallet;
 
 -(void)startWithCompletion:(void(^)(void)) completion;
+-(void)startDeamonWithCompletion:(void(^)(void)) completion;
+
+-(void)stopDeamon;
+-(void)pauseDeamon;
+-(void)countinieDeamon;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

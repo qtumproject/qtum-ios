@@ -13,6 +13,8 @@
 
 @protocol SessionManagerDelegate <NSObject>
 
+@optional
+- (void)didReceiveInfo:(NSDictionary*) userInfo;
 - (void)activationDidCompleteWithState:(WCSessionActivationState)activationState;
 
 @end

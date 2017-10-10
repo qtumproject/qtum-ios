@@ -54,6 +54,7 @@ NSString *kErrorKey = @"error";
 }
 
 - (void)sendMessage:(NSString *)message {
+    
     if (self.currentState == WCSessionActivationStateActivated) {
         WCSession *session = [WCSession defaultSession];
         [session sendMessage:@{@"hello" : message} replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
@@ -170,9 +171,45 @@ NSString *kErrorKey = @"error";
     }
 }
 
--(NSDictionary*)storeDataForWatch {
+- (void)updateWatch {
     
-    return nil;
+    NSDictionary* info = [self createInfoForWatch];
+    if (info) {
+        [self transferDataToWatch:info];
+    }
+}
+
+-(NSDictionary*)createInfoForWatch {
+    
+    Wallet *wallet = [ApplicationCoordinator sharedInstance].walletManager.wallet;
+    NSString *address = [wallet getStoredLastAddressKey];
+    if (!address) {
+        NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
+        return dictionary;
+    }
+    
+    NSNumber *availableBalance = wallet.balance;
+    NSNumber *unconfirmedBalance = wallet.unconfirmedBalance;
+    NSArray *history = wallet.historyStorage.historyPrivate;
+    NSMutableArray *historyDictionary = [NSMutableArray new];
+    
+    for (HistoryElement *element in history) {
+        [historyDictionary addObject:[element dictionaryFromElementForWatch]];
+    }
+    
+    NSDictionary *dictionary = @{@"address" : address,
+                                 @"availableBalance" : availableBalance,
+                                 @"unconfirmedBalance" : unconfirmedBalance,
+                                 @"history" : historyDictionary,
+                                 @"image" : [UIImage new]};
+    
+    return dictionary;
+}
+
+-(void)transferDataToWatch:(nonnull NSDictionary<NSString *,id> *) info {
+    
+    WCSession *session = [WCSession defaultSession];
+    [session transferUserInfo:info];
 }
 
 @end

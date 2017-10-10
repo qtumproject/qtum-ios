@@ -57,20 +57,20 @@
                         <table alignment="left" id="NVx-Ho-ojp">
                             <items>
                                 <tableRow identifier="BalanceCell" selectable="NO" id="VzF-68-Wm6" customClass="BalanceCell">
-                                    <group key="rootItem" width="1" height="108" alignment="left" backgroundImage="ellipse" contentMode="scaleAspectFit" layout="vertical" spacing="0.0" id="y4k-Gk-H3e">
+                                    <group key="rootItem" width="1" height="126" alignment="left" backgroundImage="ellipse" contentMode="scaleAspectFit" layout="vertical" spacing="0.0" id="y4k-Gk-H3e">
                                         <items>
-                                            <group width="133" alignment="left" spacing="5" id="Sxd-BZ-ebz">
+                                            <group width="133" alignment="center" spacing="5" id="Sxd-BZ-ebz">
                                                 <items>
                                                     <group width="4" height="4" alignment="center" verticalAlignment="center" radius="2" id="d72-q9-G4L">
                                                         <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </group>
                                                     <label height="18" alignment="center" text="23 700.000027" textAlignment="center" id="qUP-CE-s4n">
-                                                        <fontDescription key="font" type="boldSystem" pointSize="14"/>
+                                                        <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                                     </label>
                                                 </items>
                                             </group>
                                             <label width="1" alignment="left" text="QTUM" textAlignment="center" id="4j4-kW-nyq">
-                                                <fontDescription key="font" type="system" pointSize="13"/>
+                                                <fontDescription key="font" type="system" pointSize="15"/>
                                             </label>
                                             <group width="1" height="8" alignment="left" id="NOY-Jc-7KI"/>
                                             <group width="1" alignment="left" spacing="5" id="GzW-HU-NjY">
@@ -79,18 +79,19 @@
                                                         <color key="backgroundColor" red="0.90588235294117647" green="0.33725490196078434" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </group>
                                                     <label alignment="center" alpha="0.80000000000000004" text="3 700.00137" textAlignment="center" id="xib-xH-QMQ">
-                                                        <fontDescription key="font" type="system" pointSize="11"/>
+                                                        <fontDescription key="font" type="system" pointSize="15"/>
                                                     </label>
                                                 </items>
                                             </group>
                                             <label width="1" alignment="left" alpha="0.80000000000000004" text="QTUM" textAlignment="center" id="wQY-fJ-Hvm">
-                                                <fontDescription key="font" type="system" pointSize="10"/>
+                                                <fontDescription key="font" type="system" pointSize="12"/>
                                             </label>
+                                            <group width="1" height="8" alignment="left" id="XuU-qC-hSa"/>
                                             <group width="1" height="7" alignment="left" id="87Z-eT-9vL"/>
-                                            <button width="123" height="12" alignment="center" title="Button" id="ZdD-Er-CGY">
+                                            <button width="1" height="11" alignment="center" semanticContentAttribute="spatial" title="asdasdasdasdasdasdasdasdasd" id="ZdD-Er-CGY">
                                                 <color key="titleColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="font" type="system" pointSize="9"/>
+                                                <fontDescription key="font" type="system" pointSize="10"/>
                                                 <connections>
                                                     <action selector="showQRCode" destination="VzF-68-Wm6" id="Fi4-JW-7um"/>
                                                 </connections>
@@ -102,34 +103,39 @@
                                     <connections>
                                         <outlet property="address" destination="ZdD-Er-CGY" id="9KR-BU-ROb"/>
                                         <outlet property="availableBalance" destination="qUP-CE-s4n" id="iT6-So-1FZ"/>
+                                        <outlet property="balanceGroup" destination="Sxd-BZ-ebz" id="fgX-lO-BKt"/>
+                                        <outlet property="confirmedSymbol" destination="4j4-kW-nyq" id="sya-u2-oyM"/>
                                         <outlet property="notConfirmedBalance" destination="xib-xH-QMQ" id="L9h-tJ-hT2"/>
+                                        <outlet property="uncBalanceGroup" destination="GzW-HU-NjY" id="RyM-FQ-8sI"/>
+                                        <outlet property="unconfirmedSymbol" destination="wQY-fJ-Hvm" id="iIQ-g7-8Fm"/>
                                     </connections>
                                 </tableRow>
                                 <tableRow identifier="HistoryCell" selectable="NO" id="spS-vT-xFH" customClass="HistoryCell">
-                                    <group key="rootItem" width="1" height="30" alignment="left" id="6LP-Ic-dGw">
+                                    <group key="rootItem" width="1" height="45" alignment="left" id="6LP-Ic-dGw">
                                         <items>
                                             <group width="136" height="1" alignment="center" verticalAlignment="center" radius="5" id="M3E-mv-E8C">
                                                 <items>
-                                                    <group width="3" height="22" alignment="left" verticalAlignment="center" radius="2" id="on0-d5-9C1">
+                                                    <group width="3" height="36" alignment="left" verticalAlignment="center" radius="2" id="on0-d5-9C1">
                                                         <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </group>
                                                     <group width="1" height="1" alignment="left" layout="vertical" spacing="0.0" id="0nw-6I-Tcz">
                                                         <items>
-                                                            <label width="107" alignment="left" text="-7.450 QTUM" id="qAa-Cu-7fG">
-                                                                <fontDescription key="font" type="system" pointSize="8"/>
+                                                            <label width="108" alignment="left" text="-7.450 QTUM" id="qAa-Cu-7fG">
+                                                                <fontDescription key="font" type="system" pointSize="12"/>
                                                             </label>
+                                                            <group width="1" height="7" alignment="left" id="RBl-Cd-cvW"/>
                                                             <group width="1" alignment="left" id="fiY-Wm-A6X">
                                                                 <items>
                                                                     <label width="33" alignment="left" text="78d...fg8" textAlignment="left" id="dca-nw-bWE">
                                                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="font" type="system" pointSize="7"/>
+                                                                        <fontDescription key="font" type="system" pointSize="9"/>
                                                                     </label>
                                                                     <separator alignment="left" id="b7x-mL-I1j">
                                                                         <color key="color" red="0.070588235294117646" green="0.25490196078431371" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </separator>
                                                                     <label width="60" alignment="left" text="3 min ago" textAlignment="left" id="EpY-qZ-lgD">
                                                                         <color key="textColor" red="0.49019607843137253" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="font" type="system" pointSize="7"/>
+                                                                        <fontDescription key="font" type="system" pointSize="9"/>
                                                                     </label>
                                                                 </items>
                                                             </group>
@@ -153,21 +159,12 @@
                             </items>
                         </table>
                     </items>
-                    <menu key="menu" id="lrz-NS-Sr3">
-                        <items>
-                            <menuItem title="Refresh" icon="resume" id="pAr-Mi-4GV">
-                                <connections>
-                                    <action selector="refreshHistoryItem" destination="cSr-Fm-otP" id="Ys4-Xw-k4a"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
                     <connections>
                         <outlet property="table" destination="NVx-Ho-ojp" id="0av-3h-ze8"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="457" y="331"/>
+            <point key="canvasLocation" x="457" y="336"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -193,4 +190,5 @@
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
