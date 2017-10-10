@@ -9,23 +9,30 @@
 #import <Foundation/Foundation.h>
 #import <WatchConnectivity/WatchConnectivity.h>
 
+@class WatchWallet;
+
 @protocol SessionManagerDelegate <NSObject>
 
 - (void)activationDidCompleteWithState:(WCSessionActivationState)activationState;
 
 @end
 
-@interface SessionManager : NSObject
-
-+ (instancetype _Nonnull )sharedInstance;
-
-- (id _Nonnull )init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
-+ (instancetype _Nonnull )alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
-+ (instancetype _Nonnull ) new __attribute__((unavailable("new not available, call sharedInstance instead")));
+@protocol SessionManagerMessageSender <NSObject>
 
 - (void)sendGetQRCodeForSize:(NSInteger)width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler;
 - (void)getInformationForWalletScreenWithSize:(NSInteger)width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler;
 
-@property (nonatomic, weak) id <SessionManagerDelegate> delegate;
+@end
+
+@protocol SessionManagerProtocol <NSObject>
+
+@property (nonatomic, weak, nullable) id <SessionManagerDelegate> delegate;
+
+-(void)activate;
+
+@end
+
+@interface SessionManager : NSObject <SessionManagerMessageSender, SessionManagerProtocol>
+
 
 @end

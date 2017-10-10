@@ -4,6 +4,7 @@
 # use_frameworks!
 
 target 'qtum wallet' do
+    
 	pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
 	pod 'AFNetworking', '~> 2.0'
 	pod 'AFJSONRPCClient'
@@ -14,9 +15,14 @@ target 'qtum wallet' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Messaging'
 
-	target 'qtum walletTests' do
-        	inherit! :search_paths
-		pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
-	end
+    target 'qtum walletTests' do
+        inherit! :search_paths
+        pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
+    end
+    
+end
+
+target 'QTUM Watch Extension' do
+    pod 'NKWatchActivityIndicator'
 end
 

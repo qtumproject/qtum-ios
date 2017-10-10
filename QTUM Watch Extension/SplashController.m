@@ -25,7 +25,7 @@
     [super awakeWithContext:context];
     
     [self.walletButton setEnabled:NO];
-    [SessionManager sharedInstance].delegate = self;
+//    [SessionManager sharedInstance].delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:@"applicationDidBecomeActive" object:nil];
 }
@@ -34,38 +34,30 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)willActivate {
-    [super willActivate];
-}
-
-- (void)didDeactivate {
-    [super didDeactivate];
-}
-
 #pragma mark - Private Methods 
 
 -(void)getDataFromHostAppAndConfigSelf {
     __weak typeof(self) weakSelf = self;
     
     [self.walletButton setTitle:@"Loading..."];
-    [[SessionManager sharedInstance] getInformationForWalletScreenWithSize:[WKInterfaceDevice currentDevice].screenBounds.size.width replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
-        
-        if (!replyMessage[@"error"]) {
-            WatchWallet *wallet = [[WatchWallet alloc] initWithDictionary:replyMessage];
-            
-            [weakSelf.walletButton setTitle:@"QTUM"];
-            [weakSelf.walletButton setEnabled:YES];
-            weakSelf.wallet = wallet;
-            [weakSelf showWaller];
-        } else {
-            [weakSelf.walletButton setTitle:@"No Wallet"];
-            [weakSelf.walletButton setEnabled:NO];
-        }
-        
-    } errorHandler:^(NSError * _Nonnull error) {
-        [weakSelf.walletButton setTitle:@"Error, reload app"];
-        [weakSelf.walletButton setEnabled:NO];
-    }];
+//    [[SessionManager sharedInstance] getInformationForWalletScreenWithSize:[WKInterfaceDevice currentDevice].screenBounds.size.width replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
+//        
+//        if (!replyMessage[@"error"]) {
+//            WatchWallet *wallet = [[WatchWallet alloc] initWithDictionary:replyMessage];
+//            
+//            [weakSelf.walletButton setTitle:@"QTUM"];
+//            [weakSelf.walletButton setEnabled:YES];
+//            weakSelf.wallet = wallet;
+//            [weakSelf showWaller];
+//        } else {
+//            [weakSelf.walletButton setTitle:@"No Wallet"];
+//            [weakSelf.walletButton setEnabled:NO];
+//        }
+//        
+//    } errorHandler:^(NSError * _Nonnull error) {
+//        [weakSelf.walletButton setTitle:@"Error, reload app"];
+//        [weakSelf.walletButton setEnabled:NO];
+//    }];
 }
 
 #pragma mark - App Notifications
@@ -79,6 +71,7 @@
 #pragma mark - SessionManagerDelegate
 
 - (void)activationDidCompleteWithState:(WCSessionActivationState)activationState {
+    
     if (activationState == WCSessionActivationStateActivated) {
         [self getDataFromHostAppAndConfigSelf];
     }else{
@@ -87,7 +80,7 @@
 }
 
 - (IBAction)showWaller {
-    [self presentControllerWithName:@"WalletController" context:self.wallet];
+    [self pushControllerWithName:@"WalletController" context:self.wallet];
 }
 
 @end

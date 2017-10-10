@@ -8,7 +8,7 @@
 
 #import "DataOperation.h"
 
-NSString *const kWSSLogFileName = @"Logs.csv";
+NSString *const groupFileName = @"group";
 
 @implementation DataOperation
 

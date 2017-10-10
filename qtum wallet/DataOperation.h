@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const kWSSLogFileName;
+extern NSString *const groupFileName;
 
-typedef void(^deleteSuccessBlock)();
-typedef void(^deleteFailedBlock)();
+typedef void(^deleteSuccessBlock)(void);
+typedef void(^deleteFailedBlock)(void);
 
 @interface DataOperation : NSObject
 

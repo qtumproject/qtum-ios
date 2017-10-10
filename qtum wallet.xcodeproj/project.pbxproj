@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */; };
+		513CF19DCEA07C5902F4BBA3 /* libPods-QTUM Watch Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 536D13E8DC1F063838D72A8F /* libPods-QTUM Watch Extension.a */; };
 		B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D5F1F2A1B8D007EAE7A /* WatchContractViewControllerDark.m */; };
 		B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D621F2A1B9E007EAE7A /* WatchContractViewControllerLight.m */; };
 		B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3014D651F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m */; };
@@ -130,6 +131,7 @@
 		B35130611E49C9930048A28C /* NewsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130601E49C9930048A28C /* NewsCellModel.m */; };
 		B35130651E49DCBC0048A28C /* NewsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130641E49DCBC0048A28C /* NewsTableCell.m */; };
 		B35130681E49DF910048A28C /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130671E49DF910048A28C /* ImageLoader.m */; };
+		B35497021F8BB9F500DEB004 /* WatchCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B35497011F8BB9F500DEB004 /* WatchCoordinator.m */; };
 		B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DF71E811D4500EBF094 /* RPCAdapter.m */; };
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
 		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
@@ -658,6 +660,9 @@
 		2601E5D944F526E1947C2A50 /* libPods-qtum walletTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum walletTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C288131FA2EA3C838AF7336 /* Pods-qtum walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum walletTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		4B2FBBBBB5655C103D193E92 /* libPods-QTUM Watch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QTUM Watch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DCA96264341BA8A5D0C98FD /* Pods-QTUM Watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QTUM Watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-QTUM Watch Extension/Pods-QTUM Watch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		536D13E8DC1F063838D72A8F /* libPods-QTUM Watch Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QTUM Watch Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3014D5C1F29FD63007EAE7A /* WatchContractOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutput.h; sourceTree = "<group>"; };
 		B3014D5D1F29FD7C007EAE7A /* WatchContractOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutputDelegate.h; sourceTree = "<group>"; };
 		B3014D5E1F2A1B8D007EAE7A /* WatchContractViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewControllerDark.h; sourceTree = "<group>"; };
@@ -911,6 +916,10 @@
 		B35130641E49DCBC0048A28C /* NewsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableCell.m; sourceTree = "<group>"; };
 		B35130661E49DF910048A28C /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = Application/ImageLoader.h; sourceTree = "<group>"; };
 		B35130671E49DF910048A28C /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ImageLoader.m; path = Application/ImageLoader.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B35497001F8BB9F500DEB004 /* WatchCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchCoordinator.h; sourceTree = "<group>"; };
+		B35497011F8BB9F500DEB004 /* WatchCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchCoordinator.m; sourceTree = "<group>"; };
+		B35497031F8CDFFC00DEB004 /* QTUM Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "QTUM Watch Extension.entitlements"; sourceTree = "<group>"; };
+		B35497041F8CE00C00DEB004 /* QTUM Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "QTUM Watch.entitlements"; sourceTree = "<group>"; };
 		B3597DF41E7FABF800EBF094 /* Requestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Requestable.h; sourceTree = "<group>"; };
 		B3597DF51E811D0500EBF094 /* RequestManagerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManagerAdapter.h; sourceTree = "<group>"; };
 		B3597DF61E811D4500EBF094 /* RPCAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCAdapter.h; sourceTree = "<group>"; };
@@ -1327,6 +1336,7 @@
 		B3E8B78E1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPurchasePopUpViewControllerLight.m; sourceTree = "<group>"; };
 		B3E8B7901F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPurchasePopUpViewControllerDark.h; sourceTree = "<group>"; };
 		B3E8B7911F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPurchasePopUpViewControllerDark.m; sourceTree = "<group>"; };
+		B3E96B8E4986BB8AF3BD6A7F /* Pods-QTUM Watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QTUM Watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QTUM Watch Extension/Pods-QTUM Watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		B3EA52F21F45E087002FD201 /* QStoreContractViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractViewControllerDark.h; sourceTree = "<group>"; };
 		B3EA52F31F45E087002FD201 /* QStoreContractViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreContractViewControllerDark.m; sourceTree = "<group>"; };
 		B3EA52F51F45E0A0002FD201 /* QStoreContractViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreContractViewControllerLight.h; sourceTree = "<group>"; };
@@ -1914,6 +1924,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				513CF19DCEA07C5902F4BBA3 /* libPods-QTUM Watch Extension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1936,6 +1947,8 @@
 				C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */,
 				D71F3943F2787CBE5AE12D46 /* Pods-qtum walletTests.debug.xcconfig */,
 				3C288131FA2EA3C838AF7336 /* Pods-qtum walletTests.release.xcconfig */,
+				B3E96B8E4986BB8AF3BD6A7F /* Pods-QTUM Watch Extension.debug.xcconfig */,
+				4DCA96264341BA8A5D0C98FD /* Pods-QTUM Watch Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -3635,6 +3648,7 @@
 		E730AB551EE6A5D100132711 /* QTUM Watch */ = {
 			isa = PBXGroup;
 			children = (
+				B35497041F8CE00C00DEB004 /* QTUM Watch.entitlements */,
 				E730AB561EE6A5D100132711 /* Interface.storyboard */,
 				E730AB591EE6A5D100132711 /* Assets.xcassets */,
 				E730AB5B1EE6A5D100132711 /* Info.plist */,
@@ -3645,6 +3659,9 @@
 		E730AB641EE6A5D100132711 /* QTUM Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				B35497031F8CDFFC00DEB004 /* QTUM Watch Extension.entitlements */,
+				B35497001F8BB9F500DEB004 /* WatchCoordinator.h */,
+				B35497011F8BB9F500DEB004 /* WatchCoordinator.m */,
 				E7B7586E1EF139D4004AF200 /* Model */,
 				E730AB821EE6A62100132711 /* Manages */,
 				E730AB811EE6A61300132711 /* Controllers */,
@@ -4615,6 +4632,8 @@
 				0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */,
 				B33EAF891E5EC262006125F3 /* Messages.framework */,
 				2601E5D944F526E1947C2A50 /* libPods-qtum walletTests.a */,
+				4B2FBBBBB5655C103D193E92 /* libPods-QTUM Watch.a */,
+				536D13E8DC1F063838D72A8F /* libPods-QTUM Watch Extension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -4682,9 +4701,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E730AB7D1EE6A5D200132711 /* Build configuration list for PBXNativeTarget "QTUM Watch Extension" */;
 			buildPhases = (
+				89BC4DFE66310CB728A32FF3 /* [CP] Check Pods Manifest.lock */,
 				E730AB5C1EE6A5D100132711 /* Sources */,
 				E730AB5D1EE6A5D100132711 /* Frameworks */,
 				E730AB5E1EE6A5D100132711 /* Resources */,
+				C88B65B85B6E62E33BD6E667 /* [CP] Embed Pods Frameworks */,
+				15CEF20E879ACBFC8916FCE6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4738,6 +4760,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -4752,11 +4777,24 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = DEH7XV88GA;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					E730AB5F1EE6A5D100132711 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = DEH7XV88GA;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
+						};
 					};
 					E7FD36371DC4D07E00748177 = {
 						CreatedOnToolsVersion = 8.1;
@@ -4764,6 +4802,9 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.DataProtection = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -4932,6 +4973,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		15CEF20E879ACBFC8916FCE6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QTUM Watch Extension/Pods-QTUM Watch Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		321C587E9A4F2B82C7DDE849 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4963,6 +5019,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89BC4DFE66310CB728A32FF3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B3C4553C1E8958D900420D7C /* ShellScript */ = {
@@ -4997,6 +5068,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C88B65B85B6E62E33BD6E667 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QTUM Watch Extension/Pods-QTUM Watch Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E78D0C9A1ED2F02800CB91FF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5008,7 +5094,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" FABRIC_API_KEY BUILD_SECRET";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 41db5a1ea3ca62a26f56f41e07085664e42f9f95 1f0ea4bed2dacc368ad16cd4a824581fd7b8526917f01e88c15e720abc50f45d";
 		};
 		EFC4163D6348EB02957DC3DD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5078,6 +5164,7 @@
 				E730AB6C1EE6A5D100132711 /* ExtensionDelegate.m in Sources */,
 				E7B758681EF01C75004AF200 /* HistoryCell.m in Sources */,
 				E7B758741EF13A89004AF200 /* WatchHistoryElement.m in Sources */,
+				B35497021F8BB9F500DEB004 /* WatchCoordinator.m in Sources */,
 				E7B7586C1EF12D67004AF200 /* SplashController.m in Sources */,
 				E730AB721EE6A5D200132711 /* ComplicationController.m in Sources */,
 				E730AB691EE6A5D100132711 /* QRCodeController.m in Sources */,
@@ -5956,6 +6043,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "QTUM Watch/QTUM Watch.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = YES;
@@ -5977,6 +6065,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "QTUM Watch/QTUM Watch.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = YES;
@@ -5995,9 +6084,11 @@
 		};
 		E730AB7B1EE6A5D200132711 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3E96B8E4986BB8AF3BD6A7F /* Pods-QTUM Watch Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "QTUM Watch Extension/QTUM Watch Extension.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEH7XV88GA;
@@ -6017,9 +6108,11 @@
 		};
 		E730AB7C1EE6A5D200132711 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DCA96264341BA8A5D0C98FD /* Pods-QTUM Watch Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "QTUM Watch Extension/QTUM Watch Extension.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEH7XV88GA;
