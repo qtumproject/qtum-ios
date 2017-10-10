@@ -32,7 +32,7 @@
     [self.imageView setImage:image];
     [self.statusLabel setText:self.wallet.address];
 
-    [SessionManager sharedInstance];
+    //[SessionManager sharedInstance];
     // Configure interface objects here.
 }
 

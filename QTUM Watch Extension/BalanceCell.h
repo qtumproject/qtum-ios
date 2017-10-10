@@ -20,6 +20,10 @@
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *availableBalance;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *notConfirmedBalance;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *address;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceGroup *balanceGroup;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceGroup *uncBalanceGroup;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *unconfirmedSymbol;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *confirmedSymbol;
 
 @property (nonatomic, weak) id<BalanceCellDelegaete> delegate;
 

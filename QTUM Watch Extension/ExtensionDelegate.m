@@ -7,21 +7,38 @@
 //
 
 #import "ExtensionDelegate.h"
+#import "WatchCoordinator.h"
+
+@interface ExtensionDelegate ()
+
+
+@end
 
 @implementation ExtensionDelegate
 
 - (void)applicationDidFinishLaunching {
-    // Perform any final initialization of your application.
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    [[WatchCoordinator sharedInstance] startWithCompletion:^{
+        [[WatchCoordinator sharedInstance] startDeamonWithCompletion:nil];
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    dispatch_time_t timeUp = dispatch_time(DISPATCH_TIME_NOW, (uint64_t)(60 * NSEC_PER_SEC));
+
+    dispatch_semaphore_wait(semaphore, timeUp);
 }
 
 - (void)applicationDidBecomeActive {
+    [[WatchCoordinator sharedInstance] countinieDeamon];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"applicationDidBecomeActive" object:nil];
 }
 
 - (void)applicationWillResignActive {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, etc.
+    [[WatchCoordinator sharedInstance] pauseDeamon];
 }
+
 
 - (void)handleBackgroundTasks:(NSSet<WKRefreshBackgroundTask *> *)backgroundTasks {
     // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.

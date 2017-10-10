@@ -25,8 +25,8 @@ NSString *kErrorKey = @"error";
 
 @implementation iOSSessionManager
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
+    
     static iOSSessionManager *manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -53,7 +53,8 @@ NSString *kErrorKey = @"error";
     return self;
 }
 
-- (void)sendMessage:(NSString *)message{
+- (void)sendMessage:(NSString *)message {
+    
     if (self.currentState == WCSessionActivationStateActivated) {
         WCSession *session = [WCSession defaultSession];
         [session sendMessage:@{@"hello" : message} replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
@@ -147,15 +148,6 @@ NSString *kErrorKey = @"error";
                         for (HistoryElement *element in history) {
                             [historyDictionary addObject:[element dictionaryFromElementForWatch]];
                         }
-                        [QRCodeManager createQRCodeFromString:address forSize:CGSizeMake(width, width) withCompletionBlock:^(UIImage *image) {
-                            NSDictionary *dictionary = @{@"address" : address,
-                                                         @"availableBalance" : availableBalance,
-                                                         @"unconfirmedBalance" : unconfirmedBalance,
-                                                         @"history" : historyDictionary,
-                                                         @"image" : UIImagePNGRepresentation(image)};
-                            
-                            replyHandler(dictionary);
-                        }];
                         
                         [QRCodeManager createQRCodeFromPublicAddress:address tokenAddress:nil andAmount:nil forSize:CGSizeMake(width, width) withCompletionBlock:^(UIImage *image) {
                             NSDictionary *dictionary = @{@"address" : address,
@@ -177,6 +169,47 @@ NSString *kErrorKey = @"error";
             }
         }];
     }
+}
+
+- (void)updateWatch {
+    
+    NSDictionary* info = [self createInfoForWatch];
+    if (info) {
+        [self transferDataToWatch:info];
+    }
+}
+
+-(NSDictionary*)createInfoForWatch {
+    
+    Wallet *wallet = [ApplicationCoordinator sharedInstance].walletManager.wallet;
+    NSString *address = [wallet getStoredLastAddressKey];
+    if (!address) {
+        NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
+        return dictionary;
+    }
+    
+    NSNumber *availableBalance = wallet.balance;
+    NSNumber *unconfirmedBalance = wallet.unconfirmedBalance;
+    NSArray *history = wallet.historyStorage.historyPrivate;
+    NSMutableArray *historyDictionary = [NSMutableArray new];
+    
+    for (HistoryElement *element in history) {
+        [historyDictionary addObject:[element dictionaryFromElementForWatch]];
+    }
+    
+    NSDictionary *dictionary = @{@"address" : address,
+                                 @"availableBalance" : availableBalance,
+                                 @"unconfirmedBalance" : unconfirmedBalance,
+                                 @"history" : historyDictionary,
+                                 @"image" : [UIImage new]};
+    
+    return dictionary;
+}
+
+-(void)transferDataToWatch:(nonnull NSDictionary<NSString *,id> *) info {
+    
+    WCSession *session = [WCSession defaultSession];
+    [session transferUserInfo:info];
 }
 
 @end

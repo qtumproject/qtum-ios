@@ -27,13 +27,13 @@
 
 -(void)storeAuthToYesWithAdddress:(NSString *)address {
     
-    [DataOperation addGropFileWithName:@"group" dataSource:@{@"isHaveWallet" : @"YES",
-                                                               @"address" : address}];
+    [DataOperation addGropFileWithName:groupFileName dataSource:@{@"isHaveWallet" : @"YES",
+                                                                   @"address" : address}];
 }
 
 -(void)clear {
     
-    [DataOperation addGropFileWithName:@"group" dataSource:@{@"isHaveWallet" : @"NO",
+    [DataOperation addGropFileWithName:groupFileName dataSource:@{@"isHaveWallet" : @"NO",
                                                                @"address" : [NSNull null]}];
 }
 

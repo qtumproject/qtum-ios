@@ -7,6 +7,8 @@
 //
 
 #import "SessionManager.h"
+#import "WatchWallet.h"
+#import "WatchDataOperation.h"
 
 const NSString *MainMessageKey = @"message_key";
 const NSString *GetQRCodeMessageKey = @"get_qr_code";
@@ -20,36 +22,33 @@ const NSString *GetWalletInformation = @"get_wallet_information";
 
 @implementation SessionManager
 
-+ (instancetype)sharedInstance
-{
-    static SessionManager *manager;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        manager = [[super alloc] initUniqueInstance];
-    });
-    return manager;
-}
+@synthesize delegate;
 
-- (instancetype)initUniqueInstance
-{
+- (instancetype)init {
+    
     self = [super init];
-    
-    if (self != nil) {
-        if ([WCSession isSupported]) {
-            WCSession *session = [WCSession defaultSession];
-            session.delegate = self;
-            [session activateSession];
-            NSLog(@"WCSession is supported");
-        }else{
-            NSLog(@"WCSession is NOT supported");
-        }
-    }
-    
+
     return self;
 }
 
+-(void)activate {
+    
+    if ([WCSession isSupported]) {
+        
+        WCSession *session = [WCSession defaultSession];
+        session.delegate = self;
+        [session activateSession];
+        NSLog(@"WCSession is supported");
+    }else{
+        
+        NSLog(@"WCSession is NOT supported");
+    }
+}
+
+#pragma mark - SessionManagerMessageSender
+
 - (void)sendMessage:(NSDictionary *)dictionary replyHandler:(nullable void (^)(NSDictionary<NSString *, id> *replyMessage))replyHandler errorHandler:(nullable void (^)(NSError *error))errorHandler{
-    //&& [WCSession defaultSession].isReachable
+
     if (self.currentState == WCSessionActivationStateActivated ) {
         WCSession *session = [WCSession defaultSession];
         [session sendMessage:dictionary replyHandler:replyHandler errorHandler:errorHandler];
@@ -68,16 +67,17 @@ const NSString *GetWalletInformation = @"get_wallet_information";
 }
 
 - (void)getInformationForWalletScreenWithSize:(NSInteger)width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler {
+    
     NSDictionary *dictionary = @{MainMessageKey : GetWalletInformation,
                                  @"width" : @(width)};
-    
     [self sendMessage:dictionary replyHandler:replyHandler errorHandler:errorHandler];
 }
 
 #pragma mark - WCSessionDelegate
 
 /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
-- (void)session:(WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(nullable NSError *)error{
+- (void)session:(WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(nullable NSError *)error {
+    
     NSLog(@"WCSession activationDidCompleteWithState :  %ld", (long)activationState);
     self.currentState = activationState;
     
@@ -106,31 +106,11 @@ const NSString *GetWalletInformation = @"get_wallet_information";
     NSLog(@"sessionWatchStateDidChange : state = %ld", (long)session.activationState);
 }
 
-/** ------------------------- Interactive Messaging ------------------------- */
-
-/** Called when the reachable state of the counterpart app changes. The receiver should check the reachable property on receiving this delegate callback. */
-- (void)sessionReachabilityDidChange:(WCSession *)session{
-    NSLog(@"sessionReachabilityDidChange");
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the incoming message caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message{
-    NSLog(@"sessionReachabilityDidChange : message : %@", message);
-}
-
-/** Called on the delegate of the receiver when the sender sends a message that expects a reply. Will be called on startup if the incoming message caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message replyHandler:(void(^)(NSDictionary<NSString *, id> *replyMessage))replyHandler{
-    NSLog(@"didReceiveMessage with reply : message : %@", message);
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the incoming message data caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessageData:(NSData *)messageData{
-    NSLog(@"didReceiveMessage with reply : data : %@", messageData);
-}
-
-/** Called on the delegate of the receiver when the sender sends message data that expects a reply. Will be called on startup if the incoming message data caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessageData:(NSData *)messageData replyHandler:(void(^)(NSData *replyMessageData))replyHandler{
-    NSLog(@"didReceiveMessage with reply : data : %@", messageData);
+- (void)session:(WCSession *)session didReceiveUserInfo:(NSDictionary<NSString *, id> *)userInfo {
+    
+    if ([self.delegate respondsToSelector:@selector(didReceiveInfo:)]) {
+        [self.delegate didReceiveInfo:userInfo];
+    }
 }
 
 

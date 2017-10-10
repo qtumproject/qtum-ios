@@ -7,63 +7,100 @@
 //
 
 #import "WalletController.h"
-#import "SessionManager.h"
+#import "WatchCoordinator.h"
 #import "WatchWallet.h"
 #import "BalanceCell.h"
 #import "HistoryCell.h"
+#import "NKWActivityIndicatorAnimation.h"
 
 @interface WalletController() <BalanceCellDelegaete>
 
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceTable *table;
-@property (nonatomic) WatchWallet *wallet;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceGroup *balanceGroup;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *qtumLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceGroup *unconfirmedBalanceGroup;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *unconfirmedQtumLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *addressButton;
 
 @end
 
 @implementation WalletController
 
 - (void)awakeWithContext:(id)context {
-    [super awakeWithContext:context];
     
-    self.wallet = (WatchWallet *)context;
+    [super awakeWithContext:context];
+    [self updateControls];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateControls) name:@"kWalletDidUpdate" object:nil];
+}
+
+-(void)updateControls {
+    
+    WatchWallet *wallet = [WatchCoordinator sharedInstance].wallet;
     
     NSMutableArray *mutArray = [NSMutableArray new];
     [mutArray addObject:@"BalanceCell"];
-    for (NSInteger i = 0 ; i < self.wallet.history.count; i++) {
+    for (NSInteger i = 0 ; i < wallet.history.count; i++) {
         [mutArray addObject:@"HistoryCell"];
     }
+    
     [self.table setRowTypes:mutArray];
     
-    BalanceCell *balance = [self.table rowControllerAtIndex:0];
-    balance.delegate = self;
-    [balance.address setTitle:self.wallet.address];
-    [balance.availableBalance setText:[self.wallet.availableBalance stringValue]];
-    [balance.notConfirmedBalance setText:[self.wallet.unconfirmedBalance stringValue]];
-    
-    for (NSInteger i = 0; i < self.wallet.history.count; i++) {
-        WatchHistoryElement *element = [self.wallet.history objectAtIndex:i];
+    if (wallet) {
+   
+        BalanceCell *balance = [self.table rowControllerAtIndex:0];
+        balance.delegate = self;
+        [balance.address setTitle:wallet.address];
+        [balance.availableBalance setText:[wallet.availableBalance stringValue]];
+        [balance.notConfirmedBalance setText:[wallet.unconfirmedBalance stringValue]];
+        [balance.address setHidden:NO];
+        [balance.balanceGroup setHidden:NO];
+        [balance.uncBalanceGroup setHidden:NO];
+        [balance.unconfirmedSymbol setHidden:NO];
+        [balance.confirmedSymbol setText:@"QTUM"];
         
-        HistoryCell *cell = [self.table rowControllerAtIndex:i + 1];
-        [cell.address setText:element.address];
-        [cell.amount setText:element.amount];
-        [cell.date setText:element.date];
-        [cell.leftBorder setBackgroundColor:element.send ? customRedColor() : customBlueColor()];
+        for (NSInteger i = 0; i < wallet.history.count; i++) {
+            WatchHistoryElement *element = [wallet.history objectAtIndex:i];
+            
+            HistoryCell *cell = [self.table rowControllerAtIndex:i + 1];
+            [cell.address setText:element.address];
+            [cell.amount setText:element.amount];
+            [cell.date setText:element.date];
+            [cell.leftBorder setBackgroundColor:element.send ? customRedColor() : customBlueColor()];
+        }
+
+    } else {
+        
+        BalanceCell *balance = [self.table rowControllerAtIndex:0];
+        balance.delegate = self;
+        [balance.address setHidden:YES];
+        [balance.balanceGroup setHidden:YES];
+        [balance.uncBalanceGroup setHidden:YES];
+        [balance.unconfirmedSymbol setHidden:YES];
+        [balance.confirmedSymbol setText:@"NO WALLET"];
     }
 }
 
 - (void)willActivate {
-    // This method is called when watch view controller is about to be visible to user
+    [self updateControls];
     [super willActivate];
 }
 
-- (void)didDeactivate {
-    // This method is called when watch view controller is no longer visible
-    [super didDeactivate];
+#pragma mark - Actions
+
+- (IBAction)refreshHistoryItem {
+    
+    WKInterfaceImage* image = [WKInterfaceImage new];
+    
+    NKWActivityIndicatorAnimation *animation = [[NKWActivityIndicatorAnimation alloc] initWithType:NKWActivityIndicatorAnimationTypeBallScale controller:self images:@[image]];
+    
+    [animation startAnimating];
 }
 
 #pragma mark - BalanceCellDelegaete
 
 -(void)showQRCode {
-    [self presentControllerWithName:@"QRCode" context:self.wallet];
+    
+    [self pushControllerWithName:@"QRCode" context:[WatchCoordinator sharedInstance].wallet];
 }
 
 #pragma mark - Colors

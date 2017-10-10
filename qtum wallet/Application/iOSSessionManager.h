@@ -17,5 +17,7 @@
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 - (void)sendMessage:(NSString *)message;
+- (void)updateWatch;
+
 
 @end

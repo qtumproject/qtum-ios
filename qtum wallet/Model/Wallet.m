@@ -166,11 +166,11 @@ NSInteger const USERS_KEYS_COUNT = 10;
         return;
     }
     NSString* keyString = [AppSettings sharedInstance].isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
-    [DataOperation addGropFileWithName:@"group" dataSource:@{@"kWalletAddressKey": keyString}];
+    [DataOperation addGropFileWithName:groupFileName dataSource:@{@"kWalletAddressKey": keyString}];
 }
 
 - (NSString *)getStoredLastAddressKey {
-    return [[DataOperation getDictFormGroupFileWithName:@"group"] objectForKey:@"kWalletAddressKey"];
+    return [[DataOperation getDictFormGroupFileWithName:groupFileName] objectForKey:@"kWalletAddressKey"];
 }
 
 - (BTCKey *)keyAtIndex:(NSUInteger)index {
