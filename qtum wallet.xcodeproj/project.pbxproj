@@ -551,7 +551,6 @@
 		E7B758621EF01AF3004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
 		E7B758641EF01B01004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
 		E7B758681EF01C75004AF200 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758671EF01C75004AF200 /* HistoryCell.m */; };
-		E7B7586C1EF12D67004AF200 /* SplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7586B1EF12D67004AF200 /* SplashController.m */; };
 		E7B758711EF139F7004AF200 /* WatchWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758701EF139F7004AF200 /* WatchWallet.m */; };
 		E7B758741EF13A89004AF200 /* WatchHistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758731EF13A89004AF200 /* WatchHistoryElement.m */; };
 		E7C101B51F13CBBE00848526 /* BorderedLabelDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C101B41F13CBBE00848526 /* BorderedLabelDark.m */; };
@@ -1815,8 +1814,6 @@
 		E7B7585E1EF017C5004AF200 /* BalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceCell.m; sourceTree = "<group>"; };
 		E7B758661EF01C75004AF200 /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
 		E7B758671EF01C75004AF200 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
-		E7B7586A1EF12D67004AF200 /* SplashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashController.h; sourceTree = "<group>"; };
-		E7B7586B1EF12D67004AF200 /* SplashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashController.m; sourceTree = "<group>"; };
 		E7B7586F1EF139F7004AF200 /* WatchWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchWallet.h; sourceTree = "<group>"; };
 		E7B758701EF139F7004AF200 /* WatchWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchWallet.m; sourceTree = "<group>"; };
 		E7B758721EF13A89004AF200 /* WatchHistoryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchHistoryElement.h; sourceTree = "<group>"; };
@@ -3663,11 +3660,13 @@
 			isa = PBXGroup;
 			children = (
 				B35497031F8CDFFC00DEB004 /* QTUM Watch Extension.entitlements */,
-				B35497001F8BB9F500DEB004 /* WatchCoordinator.h */,
-				B35497011F8BB9F500DEB004 /* WatchCoordinator.m */,
 				E7B7586E1EF139D4004AF200 /* Model */,
 				E730AB821EE6A62100132711 /* Manages */,
 				E730AB811EE6A61300132711 /* Controllers */,
+				E730AB6A1EE6A5D100132711 /* ExtensionDelegate.h */,
+				E730AB6B1EE6A5D100132711 /* ExtensionDelegate.m */,
+				B35497001F8BB9F500DEB004 /* WatchCoordinator.h */,
+				B35497011F8BB9F500DEB004 /* WatchCoordinator.m */,
 				E730AB731EE6A5D200132711 /* Assets.xcassets */,
 				E730AB751EE6A5D200132711 /* Info.plist */,
 				E730AB651EE6A5D100132711 /* Supporting Files */,
@@ -3686,12 +3685,9 @@
 		E730AB811EE6A61300132711 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E7B758691EF12D47004AF200 /* Splash */,
 				E7B7585B1EF017A6004AF200 /* Wallet */,
 				E730AB671EE6A5D100132711 /* QRCodeController.h */,
 				E730AB681EE6A5D100132711 /* QRCodeController.m */,
-				E730AB6A1EE6A5D100132711 /* ExtensionDelegate.h */,
-				E730AB6B1EE6A5D100132711 /* ExtensionDelegate.m */,
 				E730AB6D1EE6A5D100132711 /* NotificationController.h */,
 				E730AB6E1EE6A5D200132711 /* NotificationController.m */,
 				E730AB701EE6A5D200132711 /* ComplicationController.h */,
@@ -4192,15 +4188,6 @@
 				E7B758671EF01C75004AF200 /* HistoryCell.m */,
 			);
 			name = Cells;
-			sourceTree = "<group>";
-		};
-		E7B758691EF12D47004AF200 /* Splash */ = {
-			isa = PBXGroup;
-			children = (
-				E7B7586A1EF12D67004AF200 /* SplashController.h */,
-				E7B7586B1EF12D67004AF200 /* SplashController.m */,
-			);
-			name = Splash;
 			sourceTree = "<group>";
 		};
 		E7B7586E1EF139D4004AF200 /* Model */ = {
@@ -5170,7 +5157,6 @@
 				E7B758681EF01C75004AF200 /* HistoryCell.m in Sources */,
 				E7B758741EF13A89004AF200 /* WatchHistoryElement.m in Sources */,
 				B35497021F8BB9F500DEB004 /* WatchCoordinator.m in Sources */,
-				E7B7586C1EF12D67004AF200 /* SplashController.m in Sources */,
 				E730AB721EE6A5D200132711 /* ComplicationController.m in Sources */,
 				E730AB691EE6A5D100132711 /* QRCodeController.m in Sources */,
 				E7B758711EF139F7004AF200 /* WatchWallet.m in Sources */,

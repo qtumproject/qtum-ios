@@ -19,8 +19,7 @@
 @property (strong, nonatomic) WatchWallet* wallet;
 @property (strong, nonatomic) NSOperationQueue* operationQueue;
 @property (strong, nonatomic) dispatch_queue_t deamonQueue;
-@property (assign, nonatomic) BOOL deamonRunning;
-@property (assign, nonatomic) BOOL deamonStarted;
+@property (strong, nonatomic) NSTimer* loopTimer;
 
 
 @property (copy, nonatomic) void(^startingCompletion)(void);
@@ -89,48 +88,58 @@
     }];
 }
 
--(void)startDeamonWithCompletion:(void(^)(void)) completion {
+-(void)startDeamon {
+
+    [self startTimerForAnotherLoop];
+}
+
+-(void)startDeamonWithImmediatelyUpdate {
+    
+    [self updateWalletInfo];
+}
+
+-(void)startTimerForAnotherLoop {
     
     __weak typeof(self) weakSelf = self;
-    self.deamonRunning = YES;
-    self.deamonStarted = YES;
 
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC));
-    
-    dispatch_after(time, _deamonQueue, ^{
+    dispatch_sync(_deamonQueue, ^{
         
-        [weakSelf getWalletWithCompletion:^{
-            
-            if (completion) {
-                completion();
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"kWalletDidUpdate" object:nil];
-            });
-            
-            [weakSelf startDeamonWithCompletion:nil];
-        }];
+        if (weakSelf.loopTimer) {
+            [weakSelf.loopTimer invalidate];
+            weakSelf.loopTimer = nil;
+        }
+        
+        NSTimer *timer = [NSTimer timerWithTimeInterval:15
+                                                 target:self
+                                               selector:@selector(updateWalletInfo)
+                                               userInfo:nil repeats:NO];
+        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        
+        weakSelf.loopTimer = timer;
     });
+}
+
+-(void)updateWalletInfo {
+    
+    __weak typeof(self) weakSelf = self;
+
+    [self getWalletWithCompletion:^{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"kWalletDidUpdate" object:nil];
+        });
+        
+        [weakSelf startTimerForAnotherLoop];
+    }];
 }
 
 -(void)stopDeamon {
     
-    _deamonQueue = nil;
-}
-
--(void)pauseDeamon {
+    [_operationQueue cancelAllOperations];
     
-    _deamonQueue = nil;
-    self.deamonRunning = NO;
-}
-
--(void)countinieDeamon {
-    
-    if (!self.deamonRunning && self.deamonStarted) {
-        _deamonQueue = dispatch_queue_create("org.qtum.deamonQueue", DISPATCH_QUEUE_SERIAL);
-        [self startDeamonWithCompletion:nil];
-        self.deamonRunning = YES;
+    if (self.loopTimer) {
+        [self.loopTimer invalidate];
+        self.loopTimer = nil;
     }
 }
 

@@ -16,11 +16,6 @@
 @interface WalletController() <BalanceCellDelegaete>
 
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceTable *table;
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceGroup *balanceGroup;
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *qtumLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceGroup *unconfirmedBalanceGroup;
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *unconfirmedQtumLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceButton *addressButton;
 
 @end
 
@@ -81,19 +76,22 @@
 }
 
 - (void)willActivate {
+    
     [self updateControls];
     [super willActivate];
 }
 
 #pragma mark - Actions
 
-- (IBAction)refreshHistoryItem {
+- (IBAction)doRefresh {
     
-    WKInterfaceImage* image = [WKInterfaceImage new];
+    [[WatchCoordinator sharedInstance] stopDeamon];
+    [[WatchCoordinator sharedInstance] startDeamonWithImmediatelyUpdate];
+}
+
+- (IBAction)doShowQrcode{
     
-    NKWActivityIndicatorAnimation *animation = [[NKWActivityIndicatorAnimation alloc] initWithType:NKWActivityIndicatorAnimationTypeBallScale controller:self images:@[image]];
-    
-    [animation startAnimating];
+    [self showQRCode];
 }
 
 #pragma mark - BalanceCellDelegaete
