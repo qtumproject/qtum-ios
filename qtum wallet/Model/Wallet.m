@@ -126,16 +126,18 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 -(NSString *)mainAddress {
     
-    BTCKey* key = [self lastRandomKeyOrRandomKey];
-    NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
-    return keyString;
+    if (!_mainAddress) {
+        BTCKey* key = [self lastRandomKeyOrRandomKey];
+        _mainAddress = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+    }
+    
+    return _mainAddress;
 }
 
 -(NSString *)symbol{
 
     return  NSLocalizedString(@"QTUM", @"QTUM sybmol");
 }
-
 
 #pragma mark - Public Methods
 
@@ -179,6 +181,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 }
 
 - (NSArray *)allKeys {
+    
     NSMutableArray *allKeys = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         if ([self.keyChain keyAtIndex:(uint)i hardened:YES]) {

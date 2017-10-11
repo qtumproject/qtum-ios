@@ -385,6 +385,7 @@
     [self.navigationController popViewControllerAnimated:YES];
     
     self.reciveOutput.walletAddress = address;
+    [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress = address;
     [self.reciveOutput updateControls];
 }
 
