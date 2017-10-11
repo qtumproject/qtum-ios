@@ -21,7 +21,7 @@
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     [[WatchCoordinator sharedInstance] startWithCompletion:^{
-        [[WatchCoordinator sharedInstance] startDeamonWithCompletion:nil];
+        [[WatchCoordinator sharedInstance] startDeamon];
         dispatch_semaphore_signal(semaphore);
     }];
     
@@ -31,12 +31,13 @@
 }
 
 - (void)applicationDidBecomeActive {
-    [[WatchCoordinator sharedInstance] countinieDeamon];
+    [[WatchCoordinator sharedInstance] startDeamon];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"applicationDidBecomeActive" object:nil];
 }
 
 - (void)applicationWillResignActive {
-    [[WatchCoordinator sharedInstance] pauseDeamon];
+    
+    [[WatchCoordinator sharedInstance] stopDeamon];
 }
 
 

@@ -159,12 +159,26 @@
                             </items>
                         </table>
                     </items>
+                    <menu key="menu" id="wPJ-J0-G2W">
+                        <items>
+                            <menuItem title="QR Code" icon="share" id="BnG-IO-Rg8">
+                                <connections>
+                                    <action selector="doShowQrcode" destination="cSr-Fm-otP" id="is3-Lz-WJz"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Refresh" icon="resume" id="wxG-5F-4t8">
+                                <connections>
+                                    <action selector="doRefresh" destination="cSr-Fm-otP" id="FSs-UL-aKl"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="table" destination="NVx-Ho-ojp" id="0av-3h-ze8"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="457" y="336"/>
+            <point key="canvasLocation" x="478" y="367"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
