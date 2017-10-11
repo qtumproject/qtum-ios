@@ -134,7 +134,7 @@ NSString *kErrorKey = @"error";
                 [[ApplicationCoordinator sharedInstance].walletManager.wallet updateHistoryWithHandler:^(BOOL success) {
                     if (success) {
                         Wallet *wallet = [ApplicationCoordinator sharedInstance].walletManager.wallet;
-                        NSString *address = [wallet getStoredLastAddressKey];
+                        NSString *address = wallet.mainAddress;
                         if (!address) {
                             NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
                             replyHandler(dictionary);

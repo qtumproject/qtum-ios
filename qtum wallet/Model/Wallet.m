@@ -125,13 +125,19 @@ NSInteger const USERS_KEYS_COUNT = 10;
 }
 
 -(NSString *)mainAddress {
-    
+
     if (!_mainAddress) {
         BTCKey* key = [self lastRandomKeyOrRandomKey];
         _mainAddress = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
     }
-    
+
     return _mainAddress;
+}
+
+-(void)changeMainAddress:(NSString*) mainAddress {
+    
+    self.mainAddress = mainAddress;
+    [DataOperation addGropFileWithName:groupFileName dataSource:@{@"kWalletAddressKey": mainAddress}];
 }
 
 -(NSString *)symbol{
