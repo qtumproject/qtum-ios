@@ -133,6 +133,8 @@
 		B35130681E49DF910048A28C /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130671E49DF910048A28C /* ImageLoader.m */; };
 		B35497021F8BB9F500DEB004 /* WatchCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B35497011F8BB9F500DEB004 /* WatchCoordinator.m */; };
 		B354970A1F8CE68A00DEB004 /* WatchDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B35497091F8CE68A00DEB004 /* WatchDataOperation.m */; };
+		B35572C71F90E886001AE34A /* NewsDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C61F90E886001AE34A /* NewsDataProvider.m */; };
+		B35572CA1F90EFDE001AE34A /* NetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C91F90EFDE001AE34A /* NetworkingService.m */; };
 		B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DF71E811D4500EBF094 /* RPCAdapter.m */; };
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
 		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
@@ -922,6 +924,10 @@
 		B35497041F8CE00C00DEB004 /* QTUM Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "QTUM Watch.entitlements"; sourceTree = "<group>"; };
 		B35497081F8CE68900DEB004 /* WatchDataOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchDataOperation.h; sourceTree = "<group>"; };
 		B35497091F8CE68A00DEB004 /* WatchDataOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchDataOperation.m; sourceTree = "<group>"; };
+		B35572C51F90E886001AE34A /* NewsDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsDataProvider.h; sourceTree = "<group>"; };
+		B35572C61F90E886001AE34A /* NewsDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsDataProvider.m; sourceTree = "<group>"; };
+		B35572C81F90EFDE001AE34A /* NetworkingService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingService.h; sourceTree = "<group>"; };
+		B35572C91F90EFDE001AE34A /* NetworkingService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkingService.m; sourceTree = "<group>"; };
 		B3597DF41E7FABF800EBF094 /* Requestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Requestable.h; sourceTree = "<group>"; };
 		B3597DF51E811D0500EBF094 /* RequestManagerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManagerAdapter.h; sourceTree = "<group>"; };
 		B3597DF61E811D4500EBF094 /* RPCAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCAdapter.h; sourceTree = "<group>"; };
@@ -3485,6 +3491,10 @@
 				B3D5FE821F56F4BC006A2BF2 /* AbiTypesProcessor.m */,
 				D059BE791F84E4A70045ABA0 /* PaymentValuesManager.h */,
 				D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */,
+				B35572C51F90E886001AE34A /* NewsDataProvider.h */,
+				B35572C61F90E886001AE34A /* NewsDataProvider.m */,
+				B35572C81F90EFDE001AE34A /* NetworkingService.h */,
+				B35572C91F90EFDE001AE34A /* NetworkingService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -5282,6 +5292,7 @@
 				B3DC9D411F3323BC006B2E07 /* TokenAddressControlViewControllerLight.m in Sources */,
 				B3EA530E1F46DDF0002FD201 /* CustomSearchBarDark.m in Sources */,
 				B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */,
+				B35572C71F90E886001AE34A /* NewsDataProvider.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
@@ -5513,6 +5524,7 @@
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
 				B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */,
 				B32BC4AE1F28C70600C2417C /* PinViewControllerLight.m in Sources */,
+				B35572CA1F90EFDE001AE34A /* NetworkingService.m in Sources */,
 				B3D5FE8C1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m in Sources */,
 				B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,

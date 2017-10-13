@@ -6,25 +6,18 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "AFNetworking.h"
 #import "RequestManager.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import "ServerAdapter.h"
 #import "SocketManager.h"
 #import "Wallet.h"
-
-typedef NS_ENUM(NSInteger, RequestType){
-    POST,
-    GET,
-    DELETE,
-    PUT
-};
+#import "NetworkingService.h"
 
 @interface RequestManager()
 
-@property (strong,nonatomic)AFHTTPRequestOperationManager* requestManager;
 @property (strong,nonatomic) id <RequestManagerAdapter> adapter;
 @property (strong,nonatomic) SocketManager *socketManager;
+@property (strong, nonatomic) NetworkingService* networkService;
 
 @end
 
@@ -45,8 +38,9 @@ typedef NS_ENUM(NSInteger, RequestType){
     self = [super init];
 
     if (self != nil) {
-        [self networkMonitoring];
+        
         _adapter = [ServerAdapter new];
+        _networkService = [[NetworkingService alloc] initWithBaseUrl:[self baseURL]];
     }
 
     return self;
@@ -54,33 +48,6 @@ typedef NS_ENUM(NSInteger, RequestType){
 
 
 #pragma mark - Setup and Privat Methods
-
-
-- (AFHTTPRequestOperationManager *)requestManager {
-    
-    if (!_requestManager) {
-        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:[self baseURL]]];
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        manager.responseSerializer =  [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-       
-        [manager.requestSerializer setTimeoutInterval:15];
-        _requestManager = manager;
-    }
-    return _requestManager;
-}
-
-- (void)networkMonitoring {
-    
-    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
-    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status == AFNetworkReachabilityStatusReachableViaWiFi ||
-            status == AFNetworkReachabilityStatusReachableViaWWAN) {
-        }
-    }];
-    [manager startMonitoring];
-}
 
 -(SocketManager *)socketManager {
     
@@ -96,61 +63,6 @@ typedef NS_ENUM(NSInteger, RequestType){
     return [AppSettings sharedInstance].baseURL;
 }
 
--(void)requestWithType:(RequestType) type path:(NSString*) path andParams:(NSDictionary*) param withSuccessHandler:(void(^)(id  _Nonnull responseObject)) success andFailureHandler:(void(^)(NSError * _Nonnull error, NSString* message)) failure
-{
-    if (type == POST) {
-        [self.requestManager POST:path parameters:param success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-            success(responseObject);
-        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-            if (operation.response.statusCode == 200) {
-                success(@"");
-            }else {
-                [self handingErrorsWithOperation:operation andEror:error withSuccessHandler:success andFailureHandler:failure];
-            }
-        }];
-    }
-    else if(type == GET){
-        [self.requestManager GET:path parameters:param success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-            success(responseObject);
-        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-            [self handingErrorsWithOperation:operation andEror:error withSuccessHandler:success andFailureHandler:failure];
-        }];
-    }
-    else if(type == DELETE){
-        [self.requestManager DELETE:path parameters:param success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-            success(responseObject);
-        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-            [self handingErrorsWithOperation:operation andEror:error withSuccessHandler:success andFailureHandler:failure];
-        }];
-    }
-    else if(type == PUT){
-        [self.requestManager PUT:path parameters:param success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-            success(responseObject);
-        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-            [self handingErrorsWithOperation:operation andEror:error withSuccessHandler:success andFailureHandler:failure];
-        }];
-    }
-}
-
--(void)handingErrorsWithOperation:(AFHTTPRequestOperation * _Nullable) operation andEror:(NSError * _Nonnull) error withSuccessHandler:(void(^)(id  _Nonnull responseObject)) success andFailureHandler:(void(^)(NSError * _Nonnull error, NSString* message)) failure{
-    
-    NSString* message = ([operation.responseObject isKindOfClass:[NSDictionary class]]) ? operation.responseObject[@"message"] : operation.responseObject[0][@"message"];
-    if (message) {
-        failure(error,message);
-    }else if (!operation.response){
-        if (!self.requestManager.reachabilityManager.isReachable) {
-            failure(error,NO_INTERNET_CONNECTION_ERROR_KEY);
-            [[NSNotificationCenter defaultCenter] postNotificationName:NO_INTERNET_CONNECTION_ERROR_KEY object:nil];
-        }
-        else {
-            failure(error,@"This action can not be performed");
-        }
-    }else {
-        failure(error,@"This action can not be performed");
-    }
-}
-
-
 #pragma mark - Methods
 
 
@@ -161,8 +73,6 @@ typedef NS_ENUM(NSInteger, RequestType){
     
     
     success(nil);
-    
-    
 }
 
 - (void)registerKey:(NSString *)keyString
@@ -183,7 +93,7 @@ typedef NS_ENUM(NSInteger, RequestType){
               withSuccessHandler:(void(^)(id responseObject))success
                andFailureHandler:(void(^)(NSString* message)) failure{
     
-    [self requestWithType:POST path:@"send-raw-transaction" andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:POST path:@"send-raw-transaction" andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(message);
@@ -208,7 +118,7 @@ typedef NS_ENUM(NSInteger, RequestType){
         param[@"addresses[]"] = addresses;
     }
     
-    [self requestWithType:GET path:pathString andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:pathString andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
         
         id adaptiveResponse = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
         success(adaptiveResponse);
@@ -223,7 +133,7 @@ typedef NS_ENUM(NSInteger, RequestType){
 
 - (void)getNews:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
     
-    [self requestWithType:GET path:@"news/en" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:@"news/en" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
         DLog(@"Succes");
         
@@ -251,7 +161,7 @@ typedef NS_ENUM(NSInteger, RequestType){
         pathString = [NSString stringWithFormat:@"%@/%@/%@/%@",@"history",param[@"address"],param[@"limit"],param[@"offset"]];
     }
 
-    [self requestWithType:GET path:pathString andParams:adressesForParam withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:pathString andParams:adressesForParam withSuccessHandler:^(id  _Nonnull responseObject) {
         __block id response = responseObject;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             response = [weakSelf.adapter adaptiveDataForHistory:response];
@@ -272,7 +182,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     NSString* pathString = [NSString stringWithFormat:@"%@/%@",@"transactions",txhash];
     __weak __typeof(self)weakSelf = self;
 
-    [self requestWithType:GET path:pathString andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:pathString andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         __block id response = responseObject;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             success(response);
@@ -289,7 +199,7 @@ typedef NS_ENUM(NSInteger, RequestType){
 #pragma mark - Info
 
 - (void)getBlockchainInfo:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
-    [self requestWithType:GET path:@"blockchain/info" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:@"blockchain/info" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
         DLog(@"Succes");
     } andFailureHandler:^(NSError * _Nonnull error, NSString* message) {
@@ -304,7 +214,7 @@ typedef NS_ENUM(NSInteger, RequestType){
                   withSuccessHandler:(void(^)(id responseObject))success
                    andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
     
-    [self requestWithType:POST path:@"contracts/generate-token-bytecode" andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:POST path:@"contracts/generate-token-bytecode" andParams:param withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -318,7 +228,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     NSString* pathString = [NSString stringWithFormat:@"/contracts/%@/call",address];
 
 
-    [self requestWithType:POST path:pathString andParams:@{@"hashes" : hashes} withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:POST path:pathString andParams:@{@"hashes" : hashes} withSuccessHandler:^(id  _Nonnull responseObject) {
         completesion(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         completesion(error);
@@ -332,7 +242,7 @@ typedef NS_ENUM(NSInteger, RequestType){
            andFailureHandler:(void(^)(NSError * error, NSString* message))failure{
     NSString* path = [NSString stringWithFormat:@"contracts/%@/params?keys=symbol,decimals,name,totalSupply",dict[@"addressContract"]];
     
-    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -362,12 +272,12 @@ typedef NS_ENUM(NSInteger, RequestType){
     [self.socketManager stopObservingToken:token withHandler:nil];
 }
 
-- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
+- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)(void)) handler {
     
     [self.socketManager startObservingContractPurchase:requestId withHandler:handler];
 }
 
-- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
+- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)(void)) handler {
     
     [self.socketManager stopObservingContractPurchase:requestId withHandler:handler];
 }
@@ -377,7 +287,7 @@ typedef NS_ENUM(NSInteger, RequestType){
 - (void)getContractsByCategoryPath:(NSString *)path withSuccessHandler:(void(^)(id responseObject))success
         andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
-    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -389,7 +299,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     
     NSString *path = [NSString stringWithFormat:@"/contracts/%@", contractId];
     
-    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -410,7 +320,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     if (tags) [dictionary setObject:tags forKey:@"tags"];
     if (name) [dictionary setObject:name forKey:@"name"];
     
-    [self requestWithType:GET path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -423,7 +333,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     
     NSString *path = [NSString stringWithFormat:@"/contracts/%@/abi", contractId];
     
-    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -435,7 +345,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     
     NSString *path = [NSString stringWithFormat:@"/contracts/%@/buy-request", contractId];
     
-    [self requestWithType:POST path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:POST path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -450,7 +360,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     NSString *path = [NSString stringWithFormat:@"/contracts/%@/is-paid/by-request-id", contractId];
     NSDictionary *dictionary = @{@"request_id" : requestId};
     
-    [self requestWithType:GET path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -467,7 +377,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     NSDictionary *dictionary = @{@"request_id" : requestId,
                                  @"access_token" : accessToken};
     
-    [self requestWithType:POST path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:POST path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -486,7 +396,7 @@ typedef NS_ENUM(NSInteger, RequestType){
                                  @"nonce" : nonce,
                                  @"signs" : signs};
     
-    [self requestWithType:POST path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:POST path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -503,7 +413,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     NSDictionary *dictionary = @{@"request_id" : requestId,
                                  @"access_token" : accessToken};
     
-    [self requestWithType:POST path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:POST path:path andParams:dictionary withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -518,7 +428,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     
     __weak __typeof(self)weakSelf = self;
     
-    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
 
         success([weakSelf.adapter adaptiveDataForFeePerKb:responseObject]);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
@@ -532,7 +442,7 @@ typedef NS_ENUM(NSInteger, RequestType){
     
     NSString *path = @"contracts/types";
     
-    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
@@ -542,7 +452,7 @@ typedef NS_ENUM(NSInteger, RequestType){
 - (void)getDGPinfo:(void(^)(id responseObject))success andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     NSString *path = @"blockchain/dgpinfo";
     
-    [self requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:GET path:path andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         success(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         failure(error, message);
