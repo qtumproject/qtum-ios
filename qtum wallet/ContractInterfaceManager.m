@@ -14,24 +14,9 @@
 #import "AbiinterfaceItem.h"
 #import "NSString+SHA3.h"
 #import "NSString+Extension.h"
+#import "ServiceLocator.h"
 
 @implementation ContractInterfaceManager
-
-+ (instancetype)sharedInstance {
-    
-    static ContractInterfaceManager *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
-    
-    self = [super init];
-    return self;
-}
 
 -(NSArray*)getQRC20TokenStandartAbiInterface {
     
@@ -54,7 +39,7 @@
 
 - (AbiinterfaceItem*)tokenStandartTransferMethodInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractFileManager standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"transfer"];
     NSArray *filteredArray = [interphase.functionItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
@@ -62,7 +47,7 @@
 
 - (AbiinterfaceItem*)tokenStandartNamePropertyInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractFileManager standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"name"];
     NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
@@ -70,7 +55,7 @@
 
 - (AbiinterfaceItem*)tokenStandartTotalSupplyPropertyInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractFileManager standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"totalSupply"];
     NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
@@ -78,7 +63,7 @@
 
 - (AbiinterfaceItem*)tokenStandartSymbolPropertyInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractFileManager standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"symbol"];
     NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
@@ -87,7 +72,7 @@
 
 - (AbiinterfaceItem*)tokenStandartDecimalPropertyInterface{
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] standartAbi]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractFileManager standartAbi]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",@"decimals"];
     NSArray *filteredArray = [interphase.propertyItems filteredArrayUsingPredicate:predicate];
     return filteredArray.firstObject;
@@ -95,7 +80,7 @@
 
 - (InterfaceInputFormModel*)tokenInterfaceWithTemplate:(NSString*)templatePath {
     
-    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractFileManager sharedInstance] abiWithTemplate:templatePath]];
+    InterfaceInputFormModel* interphase = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractFileManager abiWithTemplate:templatePath]];
     return interphase;
 }
 
@@ -107,20 +92,20 @@
 
 - (NSData*)tokenBitecodeWithTemplate:(NSString*)templatePath andParam:(NSDictionary*) args{
     
-    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] bitcodeWithTemplate:templatePath] mutableCopy];
+    NSMutableData* contractSource = [[SLocator.contractFileManager bitcodeWithTemplate:templatePath] mutableCopy];
     [self tokenInterfaceWithTemplate:templatePath];
     
     NSArray* types = [self arrayOfTypesFromInputs:[self tokenInterfaceWithTemplate:templatePath].constructorItem.inputs];
-    [contractSource appendData:[[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:[args allValues] andArrayOfTypes:types]];
+    [contractSource appendData:[SLocator.contractArgumentsInterpretator contactArgumentsFromArrayOfValues:[args allValues] andArrayOfTypes:types]];
     return [contractSource copy];
 }
 
 - (NSData*)tokenBitecodeWithTemplate:(NSString*)templatePath andArray:(NSArray*) args{
     
-    NSMutableData* contractSource = [[[ContractFileManager sharedInstance] bitcodeWithTemplate:templatePath] mutableCopy];
+    NSMutableData* contractSource = [[SLocator.contractFileManager bitcodeWithTemplate:templatePath] mutableCopy];
     
     NSArray* types = [self arrayOfTypesFromInputs:[self tokenInterfaceWithTemplate:templatePath].constructorItem.inputs];
-    [contractSource appendData:[[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:args andArrayOfTypes:types]];
+    [contractSource appendData:[SLocator.contractArgumentsInterpretator contactArgumentsFromArrayOfValues:args andArrayOfTypes:types]];
     return [contractSource copy];
 }
 
@@ -157,7 +142,7 @@
     
     NSArray* types = [self arrayOfTypesFromInputs:fuctionItem.inputs];
 
-    NSData* args = [[ContractArgumentsInterpretator sharedInstance] contactArgumentsFromArrayOfValues:[mutableParam copy] andArrayOfTypes:types];
+    NSData* args = [SLocator.contractArgumentsInterpretator contactArgumentsFromArrayOfValues:[mutableParam copy] andArrayOfTypes:types];
     [hashFunction appendData:args];
     
     return [hashFunction copy];

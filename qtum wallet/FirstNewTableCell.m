@@ -7,6 +7,7 @@
 //
 
 #import "FirstNewTableCell.h"
+#import "ServiceLocator.h"
 
 @implementation FirstNewTableCell
 
@@ -25,7 +26,7 @@
     __weak __typeof(self)weakSelf = self;
     NSString* url = object.imageUrl;
     self.customImage.associatedObject = url;
-    [[ImageLoader sharedInstance] getImageWithUrl:url withResultHandler:^(UIImage *image) {
+    [SLocator.imageLoader getImageWithUrl:url withResultHandler:^(UIImage *image) {
         if ([weakSelf.customImage.associatedObject isEqualToString:url] && image) {
             weakSelf.customImage.image = image;
         }

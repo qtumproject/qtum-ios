@@ -13,18 +13,18 @@ NSString *const groupFileName = @"group";
 @implementation DataOperation
 
 #pragma mark - BaseMethods
-+(NSMutableArray *)getArrayFormFileWithName:(NSString *)fileName {
+-(NSMutableArray *)getArrayFormFileWithName:(NSString *)fileName {
     
-    NSString *stringPath = [[self class] docPath];
+    NSString *stringPath = [self docPath];
     NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
     
     NSMutableArray *arraySource = [[NSMutableArray alloc] initWithContentsOfFile:stringFile];
     return arraySource;
 }
 
-+(NSDictionary *)getDictFormGroupFileWithName:(NSString *)fileName {
+-(NSDictionary *)getDictFormGroupFileWithName:(NSString *)fileName {
     
-    NSString *stringPath = [[self class] groupPath];
+    NSString *stringPath = [self groupPath];
     NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
     
     NSData *data = [NSData dataWithContentsOfFile:stringFile];
@@ -34,18 +34,18 @@ NSString *const groupFileName = @"group";
     return nil;
 }
 
-+(NSString *)getStringFormFileWithName:(NSString *)fileName {
+-(NSString *)getStringFormFileWithName:(NSString *)fileName {
     
-    NSString *stringPath = [[self class] docPath];
+    NSString *stringPath = [self docPath];
     NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
     
     NSString *stringSource = [[NSString alloc] initWithContentsOfFile:stringFile encoding:NSUTF8StringEncoding error:NULL];
     return stringSource;
 }
 
-+(NSString*)saveGroupFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
+-(NSString*)saveGroupFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
     
-    NSString *stringPath = [[self class] groupPath];
+    NSString *stringPath = [self groupPath];
     NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
     
     NSError * err;
@@ -55,9 +55,9 @@ NSString *const groupFileName = @"group";
     return stringFile;
 }
 
-+(NSString*)saveFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
+-(NSString*)saveFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
     
-    NSString *stringPath = [[self class] docPath];
+    NSString *stringPath = [self docPath];
     NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
     
     NSError * err;
@@ -69,7 +69,7 @@ NSString *const groupFileName = @"group";
     return stringFile;
 }
 
-+(NSString*)addGropFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
+-(NSString*)addGropFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
     
     NSDictionary* groupInfo = [self getDictFormGroupFileWithName:fileName];
     NSMutableDictionary* summ;
@@ -83,19 +83,19 @@ NSString *const groupFileName = @"group";
     return [self saveGroupFileWithName:fileName dataSource:[summ copy]];
 }
 
-+(void)createFile:(NSString*)path fileName:(NSString*)filename {
+-(void)createFile:(NSString*)path fileName:(NSString*)filename {
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager changeCurrentDirectoryPath:[path stringByExpandingTildeInPath]];
     [fileManager createFileAtPath:filename contents:nil attributes:nil];
 }
 
-+(BOOL)deleteDefaultFile:(NSString*)fileName {
+-(BOOL)deleteDefaultFile:(NSString*)fileName {
     
     @try {
         NSFileManager *fileManager = [NSFileManager defaultManager];
         
-        NSString *stringPath = [[self class] docPath];
+        NSString *stringPath = [self docPath];
         NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
         
         [fileManager changeCurrentDirectoryPath:[stringPath stringByExpandingTildeInPath]];
@@ -111,7 +111,7 @@ NSString *const groupFileName = @"group";
     }
 }
 
-+(BOOL)deleteFile:(NSString*)path success:(deleteSuccessBlock)success failed:(deleteFailedBlock)failed {
+-(BOOL)deleteFile:(NSString*)path success:(deleteSuccessBlock)success failed:(deleteFailedBlock)failed {
     
     @try {
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -134,7 +134,7 @@ NSString *const groupFileName = @"group";
     }
 }
 
-+(NSArray*)getFilesName:(NSString*)path {
+-(NSArray*)getFilesName:(NSString*)path {
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *files = [fileManager subpathsAtPath: path ];
@@ -143,20 +143,20 @@ NSString *const groupFileName = @"group";
 
 #pragma mark - DataMethods
 
-+(BOOL)dataSaveDictWith:(NSDictionary *)dictSave fileName:(NSString *)fileName {
+-(BOOL)dataSaveDictWith:(NSDictionary *)dictSave fileName:(NSString *)fileName {
     
-    NSMutableArray *arraySource = [[self class] getArrayFormFileWithName:fileName];
+    NSMutableArray *arraySource = [self getArrayFormFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
     
-    [[self class] saveFileWithName:fileName dataSource:arraySource];
+    [self saveFileWithName:fileName dataSource:arraySource];
     return YES;
 }
 
-+(BOOL)dataDeleteDictWithKey:(NSString *)key  keyValue:(NSString *)keyValue fileName:(NSString *)fileName {
+-(BOOL)dataDeleteDictWithKey:(NSString *)key  keyValue:(NSString *)keyValue fileName:(NSString *)fileName {
     
-    NSMutableArray *arraySource = [[self class] getArrayFormFileWithName:fileName];
+    NSMutableArray *arraySource = [self getArrayFormFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
@@ -167,13 +167,13 @@ NSString *const groupFileName = @"group";
             break;
         }
     }
-    [[self class] saveFileWithName:fileName dataSource:arraySource];
+    [self saveFileWithName:fileName dataSource:arraySource];
     return YES;
 }
 
-+(NSDictionary *)dataGetDictWithKey:(NSString *)key keyValue:(NSString *)keyValue fileName:(NSString *)fileName {
+-(NSDictionary *)dataGetDictWithKey:(NSString *)key keyValue:(NSString *)keyValue fileName:(NSString *)fileName {
     
-    NSMutableArray *arraySource = [[self class] getArrayFormFileWithName:fileName];
+    NSMutableArray *arraySource = [self getArrayFormFileWithName:fileName];
     if (arraySource == nil) {
         arraySource = [[NSMutableArray alloc] init];
     }
@@ -185,9 +185,9 @@ NSString *const groupFileName = @"group";
     return nil;
 }
 
-+(void)dataAppendString:(NSString*) string toFileWithName:(NSString*) fileName {
+-(void)dataAppendString:(NSString*) string toFileWithName:(NSString*) fileName {
     
-    NSString *stringPath = [[self class] docPath];
+    NSString *stringPath = [self docPath];
     NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
     
     NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:stringFile];
@@ -208,37 +208,37 @@ NSString *const groupFileName = @"group";
 
 #pragma mark - SandBoxMethods
 
-+ (NSString *)appPath {
+- (NSString *)appPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
 }
 
-+ (NSString *)docPath {
+- (NSString *)docPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
 }
 
-+ (NSString *)libPrefPath {
+- (NSString *)libPrefPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Preference"];
 }
 
-+ (NSString *)libCachePath {
+- (NSString *)libCachePath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     return [[paths objectAtIndex:0] stringByAppendingFormat:@"/Caches"];
 }
 
-+ (NSString *)tmpPath {
+- (NSString *)tmpPath {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     return [[paths objectAtIndex:0] stringByAppendingFormat:@"/tmp"];
 }
 
-+ (NSString *)groupPath {
+- (NSString *)groupPath {
     NSString *appGroupDirectoryPath = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.org.qtum.qtum-wallet"].path;
     return appGroupDirectoryPath;
 }
 
-+ (BOOL)hasLiveDirectory:(NSString *)path {
+- (BOOL)hasLiveDirectory:(NSString *)path {
     if (![[NSFileManager defaultManager] fileExistsAtPath:path] ) {
         
         return [[NSFileManager defaultManager] createDirectoryAtPath:path
@@ -250,7 +250,7 @@ NSString *const groupFileName = @"group";
     return NO;
 }
 
-+ (void)hasLiveFileWithPath:(NSString *)path {
+- (void)hasLiveFileWithPath:(NSString *)path {
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:path] ) {

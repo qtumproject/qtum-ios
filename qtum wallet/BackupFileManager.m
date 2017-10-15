@@ -7,8 +7,7 @@
 //
 
 #import "BackupFileManager.h"
-#import "TemplateManager.h"
-#import "DataOperation.h"
+#import "ServiceLocator.h"
 #import "NSDate+Extension.h"
 
 static NSString* kContractsKey = @"contracts";
@@ -24,22 +23,22 @@ static NSString* kTemplateUuidKey = @"template";
 
 @implementation BackupFileManager
 
-+(void)getBackupFile:(void (^)(NSDictionary *file, NSString* path, NSInteger size)) completionBlock {
+- (void)getBackupFile:(void (^)(NSDictionary *file, NSString* path, NSInteger size)) completionBlock {
     
     NSMutableDictionary* backup = @{}.mutableCopy;
     backup[kContractsKey] = [[ContractManager sharedInstance] decodeDataForBackup];
-    backup[kTemplatesKey] = [[TemplateManager sharedInstance] decodeDataForBackup];
+    backup[kTemplatesKey] = [SLocator.templateManager decodeDataForBackup];
     backup[kDateCreateKey] = [[NSDate date] string];
     backup[kPlatformKey] = kCurrentPlatformValueKey;
     backup[kFileVersionKey] = kCurrentFileVersionValueKey;
     backup[kPlatformVersionKey] = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
-    NSString* filePath = [DataOperation saveFileWithName:kBackupFileNameKey dataSource:backup.copy];
+    NSString* filePath = [SLocator.dataOperation saveFileWithName:kBackupFileNameKey dataSource:backup.copy];
 
     NSInteger fileSize = (NSInteger)[[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil] fileSize];
     completionBlock(backup.copy,filePath,fileSize);
 }
 
-+ (BOOL)getQuickInfoFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(NSString* date, NSString* version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount)) completionBlock {
+- (BOOL)getQuickInfoFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(NSString* date, NSString* version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount)) completionBlock {
     
     NSData *data = [NSData dataWithContentsOfURL:url];
     if (data) {
@@ -89,7 +88,7 @@ static NSString* kTemplateUuidKey = @"template";
     return NO;
 }
 
-+ (void)setBackupFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(BOOL success)) completionBlock {
+- (void)setBackupFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(BOOL success)) completionBlock {
     
     NSData *data = [NSData dataWithContentsOfURL:url];
     BOOL processedWithoutErrors = YES;
@@ -137,7 +136,7 @@ static NSString* kTemplateUuidKey = @"template";
             }
         }
         
-        NSArray<TemplateModel*>* newTemplates = [[TemplateManager sharedInstance] encodeDataForBacup:[usefullTemplatesCondidats copy]];
+        NSArray<TemplateModel*>* newTemplates = [SLocator.templateManager encodeDataForBacup:[usefullTemplatesCondidats copy]];
         
         if (filteredArray.count > 0 && newTemplates.count > 0 && [[ContractManager sharedInstance] encodeDataForBacup:filteredArray withTemplates:newTemplates]) {
             

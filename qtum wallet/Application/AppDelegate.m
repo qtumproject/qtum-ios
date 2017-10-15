@@ -14,6 +14,7 @@
 #import "iOSSessionManager.h"
 
 #import "QStoreDataProvider.h"
+#import "ServiceLocator.h"
 
 @interface AppDelegate ()
 
@@ -27,7 +28,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [iOSSessionManager sharedInstance];
-    [ContractFileManager sharedInstance];
+    [ServiceLocator sharedInstance];
     [[AppSettings sharedInstance] setup];
     [Appearance setUp];
     

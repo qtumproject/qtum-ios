@@ -43,6 +43,7 @@
 #import "FavouriteTemplatesCollectionSourceOutput.h"
 #import "RestoreContractsOutput.h"
 #import "NSNumber+Comparison.h"
+#import "ServiceLocator.h"
 
 
 @interface ContractCoordinator () <LibraryOutputDelegate,
@@ -110,7 +111,7 @@ ContractCreationEndOutputDelegate>
     
     NSObject <TemplatesListOutput>* output  = [[ControllersFactory sharedInstance] createTemplateTokenViewController];
     output.delegate = self;
-    output.templateModels = [[TemplateManager sharedInstance] availebaleTemplates];
+    output.templateModels = [SLocator.templateManager availebaleTemplates];
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
@@ -140,7 +141,7 @@ ContractCreationEndOutputDelegate>
     self.wathContractsViewController = (NSObject <WatchContractOutput>*)[[ControllersFactory sharedInstance] createWatchContractViewController];
     self.favouriteContractsCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
     
-    self.favouriteContractsCollectionSource.templateModels = [[TemplateManager sharedInstance] standartPackOfTemplates];
+    self.favouriteContractsCollectionSource.templateModels = [SLocator.templateManager standartPackOfTemplates];
     self.favouriteContractsCollectionSource.delegate = self;
     self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
     
@@ -157,7 +158,7 @@ ContractCreationEndOutputDelegate>
     self.wathTokensViewController = (NSObject <WatchContractOutput>*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
     self.favouriteTokensCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
     
-    self.favouriteTokensCollectionSource.templateModels = [[TemplateManager sharedInstance] standartPackOfTokenTemplates];
+    self.favouriteTokensCollectionSource.templateModels = [SLocator.templateManager standartPackOfTokenTemplates];
     self.favouriteTokensCollectionSource.delegate = self;
     self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
     
@@ -188,7 +189,7 @@ ContractCreationEndOutputDelegate>
     NSObject <ConstructorAbiOutput>* output = [[ControllersFactory sharedInstance] createConstructorFromAbiViewController];
     output.delegate = self;
     output.contractTitle = self.templateModel.templateName;
-    output.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:self.templateModel.path];
+    output.formModel = [SLocator.contractInterfaceManager tokenInterfaceWithTemplate:self.templateModel.path];
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
@@ -218,7 +219,7 @@ ContractCreationEndOutputDelegate>
     
     if (contract.templateModel) {
         NSObject <ContractFunctionsOutput>* output = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
-        output.formModel = [[ContractInterfaceManager sharedInstance] tokenInterfaceWithTemplate:contract.templateModel.path];
+        output.formModel = [SLocator.contractInterfaceManager tokenInterfaceWithTemplate:contract.templateModel.path];
         output.delegate = self;
         output.token = contract;
         [self.navigationController pushViewController:[output toPresent] animated:true];
@@ -240,7 +241,7 @@ ContractCreationEndOutputDelegate>
 
 - (NSArray<TemplateModel *> *)prepareTemplateList:(BOOL)tokensOnly {
     
-    return tokensOnly ? [[TemplateManager sharedInstance] availebaleTokenTemplates] : [[TemplateManager sharedInstance] availebaleTemplates];
+    return tokensOnly ? [SLocator.templateManager availebaleTokenTemplates] : [SLocator.templateManager availebaleTemplates];
 }
 
 #pragma mark - Logic
@@ -279,7 +280,7 @@ ContractCreationEndOutputDelegate>
     __weak __typeof(self)weakSelf = self;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
-    NSData* contractWithArgs = [[ContractInterfaceManager sharedInstance] tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
+    NSData* contractWithArgs = [SLocator.contractInterfaceManager tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
     
     [[TransactionManager sharedInstance] createSmartContractWithKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
                                                           andBitcode:contractWithArgs
@@ -381,7 +382,7 @@ ContractCreationEndOutputDelegate>
     
     NSArray<NSString*>* addressWithTokensValue = @[contract.contractCreationAddressAddress];
     
-    NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:item appendingParam:param];
+    NSData* hashFuction = [SLocator.contractInterfaceManager hashOfFunction:item appendingParam:param];
     
     [self.functionDetailController showLoader];
 

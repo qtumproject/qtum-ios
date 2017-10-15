@@ -190,6 +190,7 @@
 		B371D8851E3A1D3B00A13EA3 /* NSBundle+StyleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D87E1E3A1D3B00A13EA3 /* NSBundle+StyleProvider.m */; };
 		B371D8861E3A1D3B00A13EA3 /* NSNull+Catch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+Catch.m */; };
 		B371D8871E3A1D3B00A13EA3 /* NSObject+Associating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+Associating.m */; };
+		B37EC9C31F93BC9D00955379 /* ServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B37EC9C21F93BC9D00955379 /* ServiceLocator.m */; };
 		B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE11F02872000142252 /* EnableFingerprintViewController.m */; };
 		B381CBE51F0291CB00142252 /* SecurityPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */; };
 		B381CBEA1F029CB200142252 /* SecurityPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE91F029CB200142252 /* SecurityPinView.m */; };
@@ -1050,6 +1051,8 @@
 		B371D8801E3A1D3B00A13EA3 /* NSNull+Catch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+Catch.m"; sourceTree = "<group>"; };
 		B371D8811E3A1D3B00A13EA3 /* NSObject+Associating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Associating.h"; sourceTree = "<group>"; };
 		B371D8821E3A1D3B00A13EA3 /* NSObject+Associating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Associating.m"; sourceTree = "<group>"; };
+		B37EC9C11F93BC9D00955379 /* ServiceLocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceLocator.h; sourceTree = "<group>"; };
+		B37EC9C21F93BC9D00955379 /* ServiceLocator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceLocator.m; sourceTree = "<group>"; };
 		B381CBE01F02872000142252 /* EnableFingerprintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnableFingerprintViewController.h; sourceTree = "<group>"; };
 		B381CBE11F02872000142252 /* EnableFingerprintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnableFingerprintViewController.m; sourceTree = "<group>"; };
 		B381CBE31F0291CB00142252 /* SecurityPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityPopupViewController.h; sourceTree = "<group>"; };
@@ -3467,6 +3470,8 @@
 		B3F5797E1F0D297900A13571 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B37EC9C11F93BC9D00955379 /* ServiceLocator.h */,
+				B37EC9C21F93BC9D00955379 /* ServiceLocator.m */,
 				B387AB421EF04911001D2FF1 /* TemplateManager.h */,
 				B387AB431EF04911001D2FF1 /* TemplateManager.m */,
 				B387AB3F1EF04474001D2FF1 /* BackupFileManager.h */,
@@ -5645,6 +5650,7 @@
 				B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */,
 				B3D5FE5E1F56B7B2006A2BF2 /* AbiParameterTypeBool.m in Sources */,
 				E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */,
+				B37EC9C31F93BC9D00955379 /* ServiceLocator.m in Sources */,
 				E74857991F13C01800DCF9A6 /* LanguageTableViewCellDark.m in Sources */,
 				B3EA53071F46D9CD002FD201 /* QStoreTableViewCellDark.m in Sources */,
 				E784F8C21F023C1800A513BF /* QStoreTableViewCell.m in Sources */,

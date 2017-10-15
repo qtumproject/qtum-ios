@@ -7,6 +7,13 @@
 //
 
 #import "NewsDataProvider.h"
+#import "NetworkingService.h"
+
+@interface NewsDataProvider ()
+
+@property (strong, nonatomic) NetworkingService* networkService;
+
+@end
 
 @implementation NewsDataProvider
 
@@ -25,13 +32,20 @@
     self = [super init];
     
     if (self != nil) {
+        
         [self authorise];
+        _networkService = [[NetworkingService alloc] initWithBaseUrl:@""];
     }
     return self;
 }
 
 -(void)authorise {
     
+    [self.networkService requestWithType:GET path:@"" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+        
+    } andFailureHandler:^(NSError * _Nonnull error, NSString * _Nullable message) {
+        
+    }];
 }
 
 @end

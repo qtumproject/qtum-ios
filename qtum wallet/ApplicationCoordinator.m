@@ -30,6 +30,7 @@
 #import "Appearance.h"
 #import "SplashScreenOutput.h"
 #import "QStoreManager.h"
+#import "ServiceLocator.h"
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
@@ -220,7 +221,7 @@
     [self.openUrlManager clear];
     [self.walletManager clear];
     [[ContractManager sharedInstance] clear];
-    [[TemplateManager sharedInstance] clear];
+    [SLocator.templateManager clear];
     [[QStoreManager sharedInstance] clear];
 }
 

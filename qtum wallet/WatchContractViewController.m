@@ -12,6 +12,7 @@
 #import "ContractFileManager.h"
 #import "FavouriteTemplatesCollectionSource.h"
 #import "ErrorPopUpViewController.h"
+#import "ServiceLocator.h"
 
 @interface WatchContractViewController () <UITextViewDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -146,7 +147,7 @@
 
 - (void)changeStateForSelectedTemplate:(TemplateModel *)templateModel {
     
-    self.abiTextView.text = templateModel ? [[ContractFileManager sharedInstance] escapeAbiWithTemplate:templateModel.path]: @"";
+    self.abiTextView.text = templateModel ? [SLocator.contractFileManager escapeAbiWithTemplate:templateModel.path]: @"";
     [self.abiTextView setContentOffset:CGPointZero];
     [self updateOkButton];
 }

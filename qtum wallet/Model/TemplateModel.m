@@ -9,6 +9,7 @@
 #import "TemplateModel.h"
 #import "ContractFileManager.h"
 #import "NSDate+Extension.h"
+#import "ServiceLocator.h"
 
 @implementation TemplateModel
 
@@ -79,15 +80,15 @@
 }
 
 -(NSDate*)creationDate {
-    return [[ContractFileManager sharedInstance] dateOfCreationTemplate:self.path];
+    return [SLocator.contractFileManager dateOfCreationTemplate:self.path];
 }
 
 -(NSString*)creationDateString {
-    return [[[ContractFileManager sharedInstance] dateOfCreationTemplate:self.path] formatedDateString];
+    return [[SLocator.contractFileManager dateOfCreationTemplate:self.path] formatedDateString];
 }
 
 -(NSString*)creationFormattedDateString {
-    return [[[ContractFileManager sharedInstance] dateOfCreationTemplate:self.path] string];
+    return [[SLocator.contractFileManager dateOfCreationTemplate:self.path] string];
 }
 
 #pragma  mark - NSCoder

@@ -19,6 +19,9 @@
 
 @synthesize delegate;
 
+
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -31,7 +34,7 @@
     [self.firstSymbolTextField becomeFirstResponder];
 }
 
-#pragma mark - Keyboard
+#pragma mark - Private
 
 -(void)keyboardWillShow:(NSNotification *)sender {
     
@@ -43,11 +46,7 @@
 -(void)keyboardWillHide:(NSNotification *)sender{
 }
 
-#pragma mark - Configuration
-
-#pragma mark - Privat Methods
-
-#pragma mark - Actions
+#pragma mark - IBActions
 
 - (IBAction)confirmButtomPressed:(id)sender {
     
@@ -75,5 +74,6 @@
         [self confirmButtomPressed:nil];
     }
 }
+
 
 @end

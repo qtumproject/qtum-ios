@@ -16,8 +16,20 @@ typedef NS_OPTIONS(NSInteger, BackupOption) {
 
 @interface BackupFileManager : NSObject
 
-+(void)getBackupFile:(void (^)(NSDictionary *file, NSString* path, NSInteger size)) completionBlock;
-+(void)setBackupFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(BOOL success)) completionBlock;
-+(BOOL)getQuickInfoFileWithUrl:(NSURL*) url andOption:(BackupOption) option andCompletession:(void (^)(NSString* date, NSString* version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount)) completionBlock;
+- (void)getBackupFile:(void (^)(NSDictionary *file,
+                                NSString* path,
+                                NSInteger size)) completionBlock;
+
+- (void)setBackupFileWithUrl:(NSURL*) url
+                   andOption:(BackupOption) option
+            andCompletession:(void (^)(BOOL success)) completionBlock;
+
+- (BOOL)getQuickInfoFileWithUrl:(NSURL*) url
+                      andOption:(BackupOption) option
+               andCompletession:(void (^)(NSString* date,
+                                          NSString* version,
+                                          NSInteger contractCount,
+                                          NSInteger templateCount,
+                                          NSInteger tokenCount)) completionBlock;
 
 @end

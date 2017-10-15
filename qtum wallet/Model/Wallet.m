@@ -11,6 +11,7 @@
 #import "NSUserDefaults+Settings.h"
 #import "NSString+AES256.h"
 #import "DataOperation.h"
+#import "ServiceLocator.h"
 
 NSInteger const brandKeyWordsCount = 12;
 NSInteger const USERS_KEYS_COUNT = 10;
@@ -137,7 +138,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 -(void)changeMainAddress:(NSString*) mainAddress {
     
     self.mainAddress = mainAddress;
-    [DataOperation addGropFileWithName:groupFileName dataSource:@{@"kWalletAddressKey": mainAddress}];
+    [SLocator.dataOperation addGropFileWithName:groupFileName dataSource:@{@"kWalletAddressKey": mainAddress}];
 }
 
 -(NSString *)symbol{
@@ -174,11 +175,11 @@ NSInteger const USERS_KEYS_COUNT = 10;
         return;
     }
     NSString* keyString = [AppSettings sharedInstance].isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
-    [DataOperation addGropFileWithName:groupFileName dataSource:@{@"kWalletAddressKey": keyString}];
+    [SLocator.dataOperation addGropFileWithName:groupFileName dataSource:@{@"kWalletAddressKey": keyString}];
 }
 
 - (NSString *)getStoredLastAddressKey {
-    return [[DataOperation getDictFormGroupFileWithName:groupFileName] objectForKey:@"kWalletAddressKey"];
+    return [[SLocator.dataOperation getDictFormGroupFileWithName:groupFileName] objectForKey:@"kWalletAddressKey"];
 }
 
 - (BTCKey *)keyAtIndex:(NSUInteger)index {
