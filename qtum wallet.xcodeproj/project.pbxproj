@@ -177,6 +177,7 @@
 		B369DF321F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B369DF311F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m */; };
 		B369DF351F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B369DF341F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m */; };
 		B369DF381F5D672E008B81CB /* AbiParameterTypeElementaryArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B369DF371F5D672E008B81CB /* AbiParameterTypeElementaryArray.m */; };
+		B369F76D1F94BB19004599AF /* NetworkOAuth2Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B369F76C1F94BB19004599AF /* NetworkOAuth2Service.m */; };
 		B36EBC2D1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */; };
 		B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC2F1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m */; };
 		B36EBC341F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B36EBC331F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m */; };
@@ -1025,6 +1026,10 @@
 		B369DF341F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicElementaryArray.m; sourceTree = "<group>"; };
 		B369DF361F5D672E008B81CB /* AbiParameterTypeElementaryArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeElementaryArray.h; sourceTree = "<group>"; };
 		B369DF371F5D672E008B81CB /* AbiParameterTypeElementaryArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeElementaryArray.m; sourceTree = "<group>"; };
+		B369F76B1F94BB19004599AF /* NetworkOAuth2Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkOAuth2Service.h; sourceTree = "<group>"; };
+		B369F76C1F94BB19004599AF /* NetworkOAuth2Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkOAuth2Service.m; sourceTree = "<group>"; };
+		B369F76E1F94BB9C004599AF /* NetworkDefenitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkDefenitions.h; sourceTree = "<group>"; };
+		B369F7701F94BCEA004599AF /* NetworkingServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingServiceProtocol.h; sourceTree = "<group>"; };
 		B36EBC2B1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewControllerDark.h; sourceTree = "<group>"; };
 		B36EBC2C1F2F12DB00F4E2F2 /* NoInternetConnectionPopUpViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetConnectionPopUpViewControllerDark.m; sourceTree = "<group>"; };
 		B36EBC2E1F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewControllerLight.h; sourceTree = "<group>"; };
@@ -3500,6 +3505,10 @@
 				B35572C61F90E886001AE34A /* NewsDataProvider.m */,
 				B35572C81F90EFDE001AE34A /* NetworkingService.h */,
 				B35572C91F90EFDE001AE34A /* NetworkingService.m */,
+				B369F76B1F94BB19004599AF /* NetworkOAuth2Service.h */,
+				B369F76C1F94BB19004599AF /* NetworkOAuth2Service.m */,
+				B369F76E1F94BB9C004599AF /* NetworkDefenitions.h */,
+				B369F7701F94BCEA004599AF /* NetworkingServiceProtocol.h */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -5623,6 +5632,7 @@
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,
 				B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */,
 				B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */,
+				B369F76D1F94BB19004599AF /* NetworkOAuth2Service.m in Sources */,
 				B3CD78DD1F4DC24E00D79363 /* ChooseReciveAddressViewControllerLight.m in Sources */,
 				E79846241F0D0056002A516A /* WalletViewControllerDark.m in Sources */,
 				B3827DE41ECF5E8D00E500DE /* TokenFunctionCell.m in Sources */,
