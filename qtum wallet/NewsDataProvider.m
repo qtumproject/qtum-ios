@@ -8,10 +8,12 @@
 
 #import "NewsDataProvider.h"
 #import "NetworkingService.h"
+#import "MWFeedParser.h"
+#import "NSString+HTML.h"
 
-@interface NewsDataProvider ()
-
+@interface NewsDataProvider () <MWFeedParserDelegate>
 @property (strong, nonatomic) NetworkingService* networkService;
+@property (strong, nonatomic) MWFeedParser* feedParcer;
 
 @end
 
@@ -43,11 +45,19 @@
 
 -(void)authorise {
     
-    [self.networkService requestWithType:GET path:@"me" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
-        
-    } andFailureHandler:^(NSError * _Nonnull error, NSString * _Nullable message) {
-        
-    }];
+//    [self.networkService requestWithType:GET path:@"me" andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
+//
+//    } andFailureHandler:^(NSError * _Nonnull error, NSString * _Nullable message) {
+//
+//    }];
+    
+    NSURL *feedURL = [NSURL URLWithString:@"https://medium.com/feed/@vladimir_60349"];
+    MWFeedParser *feedParser = [[MWFeedParser alloc] initWithFeedURL:feedURL];
+    feedParser.delegate = self;
+    feedParser.feedParseType = ParseTypeFull;
+    feedParser.connectionType = ConnectionTypeSynchronously;
+    [feedParser parse];
+    self.feedParcer = feedParser;
 }
 
 -(void)getAllMyPosts {
@@ -57,6 +67,30 @@
     } andFailureHandler:^(NSError * _Nonnull error, NSString * _Nullable message) {
         
     }];
+}
+
+#pragma mark - MWFeedParserDelegate
+
+- (void)feedParserDidStart:(MWFeedParser *)parser {
+    
+}
+- (void)feedParser:(MWFeedParser *)parser didParseFeedInfo:(MWFeedInfo *)info {
+    
+}
+- (void)feedParser:(MWFeedParser *)parser didParseFeedItem:(MWFeedItem *)item {
+    
+    NSAttributedString* str = [[NSAttributedString alloc] initWithData:[item.summary dataUsingEncoding:NSUTF8StringEncoding]
+                                     options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                                               NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
+                          documentAttributes:nil error:nil];
+    DLog(@"%@", str);
+    
+}
+- (void)feedParserDidFinish:(MWFeedParser *)parser{
+    
+}
+    
+- (void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error{; // Parsing failed}
 }
 
 @end

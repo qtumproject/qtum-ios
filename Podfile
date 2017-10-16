@@ -14,6 +14,7 @@ target 'qtum wallet' do
 	pod 'Crashlytics'
 	pod 'Firebase/Core'
 	pod 'Firebase/Messaging'
+    pod 'MWFeedParser'
 
     target 'qtum walletTests' do
         inherit! :search_paths
