@@ -70,7 +70,7 @@
 -(void)startEditing {
     
     self.editingStarted = YES;
-    [self.firstSymbolTextField becomeFirstResponder];
+//    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)stopEditing {
@@ -87,15 +87,15 @@
 
 - (IBAction)actionEnterPin:(id)sender {
     
-    self.shoudKeboardDismiss = YES;
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
-    if (pin.length == 4) {
-        if ([self.delegate respondsToSelector:@selector(passwordDidEntered:)]) {
-            [self.delegate passwordDidEntered:pin];
-        }
-    } else {
-        [self applyFailedPasswordAction];
-    }
+//    self.shoudKeboardDismiss = YES;
+//    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
+//    if (pin.length == 4) {
+//        if ([self.delegate respondsToSelector:@selector(passwordDidEntered:)]) {
+//            [self.delegate passwordDidEntered:pin];
+//        }
+//    } else {
+//        [self applyFailedPasswordAction];
+//    }
 }
 
 - (IBAction)actionCancel:(id)sender {
@@ -112,27 +112,27 @@
 
 -(void)showLoginFields {
     
-    self.pinContainer.hidden = NO;
-    self.cancelButton.hidden = NO;
-    [self.firstSymbolTextField becomeFirstResponder];
+//    self.pinContainer.hidden = NO;
+//    self.cancelButton.hidden = NO;
+//    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 -(void)applyFailedPasswordAction {
     
-    [self accessPinDenied];
-    [self clearPinTextFields];
-    [self.firstSymbolTextField becomeFirstResponder];
+//    [self accessPinDenied];
+//    [self clearPinTextFields];
+//    [self.firstSymbolTextField becomeFirstResponder];
 }
 
 - (IBAction)didVoidTapAction:(id)sender {
     
-    if (!([self.firstSymbolTextField isFirstResponder] ||
-        [self.secondSymbolTextField isFirstResponder] ||
-        [self.thirdSymbolTextField isFirstResponder] ||
-        [self.fourthSymbolTextField isFirstResponder])) {
-        
-        [self.firstSymbolTextField becomeFirstResponder];
-    }
+//    if (!([self.firstSymbolTextField isFirstResponder] ||
+//        [self.secondSymbolTextField isFirstResponder] ||
+//        [self.thirdSymbolTextField isFirstResponder] ||
+//        [self.fourthSymbolTextField isFirstResponder])) {
+//
+//        [self.firstSymbolTextField becomeFirstResponder];
+//    }
 }
 
 

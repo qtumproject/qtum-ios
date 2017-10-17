@@ -8,7 +8,7 @@
 
 #import "RepeateViewController.h"
 
-@interface RepeateViewController ()
+@interface RepeateViewController () 
 
 @end
 
@@ -17,14 +17,21 @@
 @synthesize delegate;
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-    [self.firstSymbolTextField becomeFirstResponder];
+    [self configPasswordView];
 }
 
-
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
-    [self.firstSymbolTextField becomeFirstResponder];
+    [self.passwordView startEditing];
+}
+
+#pragma mark - Configuration
+
+-(void)configPasswordView {
+    self.passwordView.delegate = self;
 }
 
 #pragma mark - Keyboard
@@ -46,20 +53,17 @@
 
 #pragma mark - Privat Methods
 
-#pragma mark - Actions
+#pragma mark - PasswordViewDelegate
 
-
-- (IBAction)actionEnterPin:(id)sender {
+-(void)confirmPinWithDigits:(NSString*) digits {
     
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
-    if (pin.length == 4) {
-        if ([self.delegate respondsToSelector:@selector(didEnteredSecondPin:)]) {
-            [self.delegate didEnteredSecondPin:pin];
-        }
-    } else {
-        [self accessPinDenied];
+    if ([self.delegate respondsToSelector:@selector(didEnteredSecondPin:)]) {
+        [self.delegate didEnteredSecondPin:digits];
     }
 }
+
+#pragma mark - Actions
+
 
 - (IBAction)actionCancel:(id)sender {
     
@@ -68,16 +72,7 @@
     }
 }
 
--(void)actionEnter:(id)sender {
-    
-    [self actionEnterPin:nil];
-}
-
 #pragma mark - Public Methods
-
--(void)startCreateWallet{
-
-}
 
 -(void)endCreateWalletWithError:(NSError*)error {
     
@@ -94,7 +89,7 @@
 
 -(void)showFailedStatus {
     
-    [self accessPinDenied];
+    [self.passwordView accessPinDenied];
 }
 
 

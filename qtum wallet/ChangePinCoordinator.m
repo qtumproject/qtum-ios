@@ -33,7 +33,7 @@
     
     NSObject <ChangePinOutput>* output = [[ControllersFactory sharedInstance] createChangePinController];
     output.delegate = self;
-    output.type = ConfirmType;
+    //output.type = ConfirmType;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
     self.pinOutput = output;
 }
@@ -49,7 +49,7 @@
             [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter New PIN", "")];
         }else {
             completision(NO);
-            [self.pinOutput actionIncorrectPin];
+            [self.pinOutput.passwordView actionIncorrectPin];
             [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter Old PIN", "")];
         }
     } else if(!self.pinNew) {
@@ -72,7 +72,7 @@
             self.pinOld = nil;
             self.pinNew = nil;
             completision(NO);
-            [self.pinOutput actionIncorrectPin];
+            [self.pinOutput.passwordView actionIncorrectPin];
             [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter Old PIN", "")];
         }
     }

@@ -14,4 +14,10 @@
 
 @implementation LoginViewControllerDark
 
+-(void)configPasswordView {
+    
+    [self.passwordView setStyle:DarkStyle lenght:YES ? ShortType : LongType];
+    self.passwordView.delegate = self;
+}
+
 @end

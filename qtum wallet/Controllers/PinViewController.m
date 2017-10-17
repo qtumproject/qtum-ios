@@ -26,17 +26,26 @@ const float bottomOffset = 25;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNeedsStatusBarAppearanceUpdate];
+    [self configPasswordView];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated {
+    
     [super viewDidAppear:animated];
-    [self.firstSymbolTextField becomeFirstResponder];
+    [self.passwordView startEditing];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+#pragma mark - Configuration
+
+-(void)configPasswordView {
+    
+    self.passwordView.delegate = self;
+}
+
 
 #pragma mark - Keyboard
 
@@ -55,7 +64,8 @@ const float bottomOffset = 25;
     [self.view layoutIfNeeded];
 }
 
--(void)keyboardWillHide:(NSNotification *)sender{
+-(void)keyboardWillHide:(NSNotification *)sender {
+    
     CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.bottomForButtonsConstraint.constant = end.size.height;
     [self.view layoutIfNeeded];
@@ -65,24 +75,19 @@ const float bottomOffset = 25;
 
 #pragma mark - Privat Methods
 
--(void)validateAndSendPin {
+-(void)confirmPinWithDigits:(NSString*) digits {
     
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
     __weak typeof(self) weakSelf = self;
-    if (pin.length == 4) {
-        [self.delegate confirmPin:pin andCompletision:^(BOOL success) {
-            if (success) {
-                [weakSelf.view endEditing:YES];
-            }else {
-                [weakSelf accessPinDenied];
-            }
-        }];
-        [self clearPinTextFields];
-        [self.firstSymbolTextField becomeFirstResponder];
-    } else {
-        [self accessPinDenied];
-    }
-
+    
+    [self.delegate confirmPin:digits andCompletision:^(BOOL success) {
+        if (success) {
+            [weakSelf.view endEditing:YES];
+        }else {
+            [weakSelf.passwordView accessPinDenied];
+        }
+        [weakSelf.passwordView clearPinTextFields];
+        [weakSelf.passwordView startEditing];
+    }];
 }
 
 -(void)changeConstraintsAnimatedWithTime:(NSTimeInterval)time {
@@ -94,9 +99,6 @@ const float bottomOffset = 25;
 
 #pragma mark - Actions
 
-- (IBAction)actionEnterPin:(id)sender {
-    [self validateAndSendPin];
-}
 
 - (IBAction)actionCancel:(id)sender {
     
@@ -105,12 +107,9 @@ const float bottomOffset = 25;
 
 #pragma mark - 
 
--(void)setCustomTitle:(NSString*) title{
-    self.controllerTitle.text = title;
-}
-
--(void)needBackButton:(BOOL) flag{
+-(void)setCustomTitle:(NSString*) title {
     
+    self.controllerTitle.text = title;
 }
 
 - (IBAction)actionBack:(id)sender {
@@ -119,3 +118,6 @@ const float bottomOffset = 25;
 }
 
 @end
+
+
+

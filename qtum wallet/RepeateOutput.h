@@ -13,7 +13,6 @@
 
 @property (weak,nonatomic) id <RepeateOutputDelegate> delegate;
 
--(void)startCreateWallet;
 -(void)endCreateWalletWithError:(NSError*)error;
 -(void)showFailedStatus;
 

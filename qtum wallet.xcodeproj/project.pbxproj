@@ -47,6 +47,7 @@
 		B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
 		B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C471E1CD3FC00CD610B /* DiagramView.m */; };
 		B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */; };
+		B326327D1F9602B6001FF038 /* PasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = B326327C1F9602B6001FF038 /* PasswordView.m */; };
 		B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */; };
 		B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CA1ECCC2130081260A /* ResultTokenInputsModel.m */; };
 		B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CD1ECCC2330081260A /* ContractInterfaceManager.m */; };
@@ -748,6 +749,8 @@
 		B3255C471E1CD3FC00CD610B /* DiagramView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagramView.m; sourceTree = "<group>"; };
 		B3255C4A1E1CDD6500CD610B /* GradientViewWithAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientViewWithAnimation.h; sourceTree = "<group>"; };
 		B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GradientViewWithAnimation.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B326327B1F9602B6001FF038 /* PasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordView.h; sourceTree = "<group>"; };
+		B326327C1F9602B6001FF038 /* PasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordView.m; sourceTree = "<group>"; };
 		B32B32C61ECCC1F90081260A /* InterfaceInputFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceInputFormModel.h; sourceTree = "<group>"; };
 		B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceInputFormModel.m; sourceTree = "<group>"; };
 		B32B32C91ECCC2130081260A /* ResultTokenInputsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultTokenInputsModel.h; sourceTree = "<group>"; };
@@ -2160,6 +2163,15 @@
 				B3255C471E1CD3FC00CD610B /* DiagramView.m */,
 			);
 			name = "Diagram animation";
+			sourceTree = "<group>";
+		};
+		B326327A1F960270001FF038 /* PasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				B326327B1F9602B6001FF038 /* PasswordView.h */,
+				B326327C1F9602B6001FF038 /* PasswordView.m */,
+			);
+			name = PasswordView;
 			sourceTree = "<group>";
 		};
 		B32BC4A51F28B39F00C2417C /* Table */ = {
@@ -4547,6 +4559,7 @@
 		E7FD365E1DC73B2400748177 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				B326327A1F960270001FF038 /* PasswordView */,
 				E7C101B21F13CB9800848526 /* BorderedLabel */,
 				B34B69611EC5990C006BE3B0 /* Page Control */,
 				B3255C491E1CD40300CD610B /* Diagram animation */,
@@ -5618,6 +5631,7 @@
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,
 				B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */,
 				B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */,
+				B326327D1F9602B6001FF038 /* PasswordView.m in Sources */,
 				B3CD78DD1F4DC24E00D79363 /* ChooseReciveAddressViewControllerLight.m in Sources */,
 				E79846241F0D0056002A516A /* WalletViewControllerDark.m in Sources */,
 				B3827DE41ECF5E8D00E500DE /* TokenFunctionCell.m in Sources */,
