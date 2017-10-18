@@ -10,9 +10,11 @@
 #import "PinController.h"
 #import "CreatePinOutput.h"
 #import "CreatePinOutputDelegate.h"
+#import "PasswordView.h"
 
-@interface CreatePinViewController : PinController <CreatePinOutput>
+@interface CreatePinViewController : PinController <CreatePinOutput, PasswordViewDelegate>
 
+@property (weak, nonatomic) IBOutlet PasswordView *passwordView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
 
 @end

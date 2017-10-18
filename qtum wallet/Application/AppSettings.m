@@ -45,6 +45,7 @@
 #pragma mark - Public Methods
 
 -(void)setup {
+    
     if (![NSUserDefaults isNotFirstTimeLaunch]) {
         [NSUserDefaults saveIsDarkSchemeSetting:YES];
         [NSUserDefaults saveIsNotFirstTimeLaunch:YES];
@@ -100,6 +101,11 @@
     return [NSUserDefaults isFingerprintAllowed];
 }
 
+-(BOOL)isLongPin {
+    
+    return [ApplicationCoordinator sharedInstance].walletManager.isLongPin;
+}
+
 -(NSString*)baseURL {
     
     NSString* baseUrl = @"http://163.172.251.4:5931/";
@@ -111,5 +117,6 @@
 -(void)setFingerprintEnabled:(BOOL)enabled {
     [NSUserDefaults saveIsFingerpringEnabled:enabled];
 }
+
 
 @end

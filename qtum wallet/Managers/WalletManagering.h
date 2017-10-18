@@ -32,6 +32,7 @@
 - (BOOL)changePinFrom:(NSString*) pin toPin:(NSString*) newPin;
 - (BOOL)verifyPin:(NSString*) pin;
 - (BOOL)isSignedIn;
+- (BOOL)isLongPin;
 - (NSDictionary *)hashTableOfKeys;
 - (NSDictionary *)hashTableOfKeysForHistoryElement;
 - (BOOL)startWithPin:(NSString*) pin;

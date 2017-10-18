@@ -18,9 +18,10 @@ NSString * const kPrevDeviceTokenKey         = @"kPrevDeviceTokenKey";
 NSString * const kWalletAddressKey           = @"kWalletAddressKey";
 NSString * const kIsHaveWallet               = @"kIsHaveWallet";
 NSString * const kIsDarkScheme               = @"kIsDarkScheme";
-NSString * const kIsNotFirstTimeLaunch          = @"kIsNotFirstTimeLaunch";
+NSString * const kIsNotFirstTimeLaunch       = @"kIsNotFirstTimeLaunch";
 NSString * const kCurrentVersion             = @"kCurrentVersion";
 NSString * const kPublicAddresses            = @"kPublicAddresses";
+NSString * const kIsLongPinSet               = @"kIsLongPinSet";
 
 
 
@@ -117,6 +118,16 @@ NSString * const kGroupIdentifire            = @"group.org.qtum.qtum-wallet";
 + (void)saveIsNotFirstTimeLaunch:(BOOL)value {
     
     [[NSUserDefaults standardUserDefaults] setBool:value forKey:kIsNotFirstTimeLaunch];
+}
+
++ (void)saveIsLongPinSet:(BOOL)value {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:kIsLongPinSet];
+}
+
++ (BOOL)isLongPinSet {
+    
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kIsLongPinSet];
 }
 
 + (BOOL)isNotFirstTimeLaunch {

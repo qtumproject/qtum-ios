@@ -10,9 +10,11 @@
 #import "AuthCoordinator.h"
 #import "RepeateOutputDelegate.h"
 #import "RepeateOutput.h"
+#import "PasswordView.h"
 
-@interface RepeateViewController : PinController <RepeateOutput>
+@interface RepeateViewController : PinController <RepeateOutput, PasswordViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *gradientViewBottomOffset;
+@property (weak, nonatomic) IBOutlet PasswordView *passwordView;
 
 @end

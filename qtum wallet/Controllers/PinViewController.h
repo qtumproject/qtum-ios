@@ -9,11 +9,12 @@
 #import "PinController.h"
 #import "CreatePinRootController.h"
 #import "ChangePinOutput.h"
+#import "PasswordView.h"
 
-
-@interface PinViewController : PinController <ChangePinOutput>
+@interface PinViewController : PinController <ChangePinOutput, PasswordViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomForButtonsConstraint;
+@property (weak, nonatomic) IBOutlet PasswordView *passwordView;
 
 @end
 

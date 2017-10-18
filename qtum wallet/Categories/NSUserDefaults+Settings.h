@@ -43,6 +43,9 @@
 + (void)saveIsNotFirstTimeLaunch:(BOOL)value;
 + (BOOL)isNotFirstTimeLaunch;
 
++ (void)saveIsLongPinSet:(BOOL)value;
++ (BOOL)isLongPinSet;
+
 + (void)saveCurrentVersion:(NSString*) value;
 + (NSString*)currentVersion;
 

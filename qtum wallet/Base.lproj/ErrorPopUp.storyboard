@@ -240,21 +240,30 @@
                                             <action selector="actionOk:" destination="wzy-ge-Ybx" eventType="touchUpInside" id="jfT-Cv-UA0"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1A-4V-RIp">
+                                        <rect key="frame" x="10" y="69" width="242" height="14"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="OyJ-Yr-ahm" firstAttribute="leading" secondItem="4zl-qd-Ca8" secondAttribute="trailing" constant="7" id="7Vx-Om-BKh"/>
                                     <constraint firstItem="OyJ-Yr-ahm" firstAttribute="top" secondItem="mmE-Iw-0ao" secondAttribute="top" constant="33" id="D5O-fl-NLw"/>
                                     <constraint firstAttribute="bottom" secondItem="Ieg-mF-6fQ" secondAttribute="bottom" constant="15" id="Dlo-fE-wwl"/>
+                                    <constraint firstItem="y1A-4V-RIp" firstAttribute="centerX" secondItem="mmE-Iw-0ao" secondAttribute="centerX" id="F5h-gO-Reb"/>
                                     <constraint firstAttribute="width" constant="262" id="G9g-81-fsG"/>
                                     <constraint firstItem="ZDm-ac-lR1" firstAttribute="centerX" secondItem="mmE-Iw-0ao" secondAttribute="centerX" id="HRF-Uo-7IC"/>
                                     <constraint firstItem="Ieg-mF-6fQ" firstAttribute="centerY" secondItem="KOi-zg-3Ig" secondAttribute="centerY" id="Oef-iC-MNB"/>
                                     <constraint firstAttribute="height" constant="170" id="VqZ-Ae-3Py"/>
+                                    <constraint firstAttribute="trailing" secondItem="y1A-4V-RIp" secondAttribute="trailing" constant="10" id="WdF-v6-qsl"/>
                                     <constraint firstAttribute="trailing" secondItem="Ieg-mF-6fQ" secondAttribute="trailing" constant="15" id="jsd-x2-RrS"/>
                                     <constraint firstItem="OyJ-Yr-ahm" firstAttribute="centerX" secondItem="mmE-Iw-0ao" secondAttribute="centerX" id="qOm-3z-Ouc"/>
                                     <constraint firstAttribute="bottom" secondItem="ZDm-ac-lR1" secondAttribute="bottom" constant="15" id="rGb-ZQ-BZc"/>
                                     <constraint firstItem="4zl-qd-Ca8" firstAttribute="centerY" secondItem="OyJ-Yr-ahm" secondAttribute="centerY" constant="-2" id="rjc-3b-r5P"/>
                                     <constraint firstItem="KOi-zg-3Ig" firstAttribute="leading" secondItem="mmE-Iw-0ao" secondAttribute="leading" constant="15" id="rlQ-tg-6uN"/>
+                                    <constraint firstItem="y1A-4V-RIp" firstAttribute="top" secondItem="OyJ-Yr-ahm" secondAttribute="bottom" constant="15" id="x29-xU-Lht"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -263,12 +272,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1A-4V-RIp">
-                                <rect key="frame" x="125.5" y="214.5" width="124.5" height="14"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
-                                <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -276,8 +279,6 @@
                             <constraint firstAttribute="trailing" secondItem="2Aj-B7-1HY" secondAttribute="trailing" id="HXx-Y4-TNt"/>
                             <constraint firstItem="2Aj-B7-1HY" firstAttribute="leading" secondItem="PqG-eE-mfj" secondAttribute="leading" id="IbK-Mw-XfH"/>
                             <constraint firstItem="TPm-8V-4B1" firstAttribute="top" secondItem="2Aj-B7-1HY" secondAttribute="bottom" id="fEk-NJ-KCR"/>
-                            <constraint firstItem="y1A-4V-RIp" firstAttribute="top" secondItem="OyJ-Yr-ahm" secondAttribute="bottom" constant="12" id="h4d-9u-sTA"/>
-                            <constraint firstItem="y1A-4V-RIp" firstAttribute="centerX" secondItem="PqG-eE-mfj" secondAttribute="centerX" id="hdc-Ad-HOx"/>
                             <constraint firstItem="2Aj-B7-1HY" firstAttribute="top" secondItem="PqG-eE-mfj" secondAttribute="top" id="nX9-lu-7YQ"/>
                             <constraint firstItem="mmE-Iw-0ao" firstAttribute="centerY" secondItem="PqG-eE-mfj" secondAttribute="centerY" multiplier="0.7" id="yfH-GC-tbF"/>
                         </constraints>

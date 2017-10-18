@@ -14,4 +14,10 @@
 
 @implementation CreatePinViewControllerDark
 
+-(void)configPasswordView {
+    
+    [self.passwordView setStyle:DarkStyle lenght:LongType];
+    self.passwordView.delegate = self;
+}
+
 @end
