@@ -19,22 +19,36 @@
 
 @synthesize delegate;
 
-
-#pragma mark - Lifecycle
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self.firstSymbolTextField becomeFirstResponder];
+    [self configPasswordView];
+    [self.passwordView becameFirstResponder];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-    [self.firstSymbolTextField becomeFirstResponder];
+    [self.passwordView becameFirstResponder];
 }
 
-#pragma mark - Private
+#pragma mark - Configuration
+
+-(void)configPasswordView {
+    self.passwordView.delegate = self;
+}
+
+#pragma mark - PasswordViewDelegate
+
+-(void)confirmPinWithDigits:(NSString*) digits {
+    
+    [self.view endEditing:YES];
+
+    if ([self.delegate respondsToSelector:@selector(didEntererFirstPin:)]) {
+        [self.delegate didEntererFirstPin:digits];
+    }
+}
+#pragma mark - Keyboard
 
 -(void)keyboardWillShow:(NSNotification *)sender {
     
@@ -43,23 +57,11 @@
     [self.view layoutIfNeeded];
 }
 
--(void)keyboardWillHide:(NSNotification *)sender{
-}
+#pragma mark - Configuration
 
-#pragma mark - IBActions
+#pragma mark - Privat Methods
 
-- (IBAction)confirmButtomPressed:(id)sender {
-    
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
-    if (pin.length == 4) {
-        [self.view endEditing:YES];
-        if ([self.delegate respondsToSelector:@selector(didEntererFirstPin:)]) {
-            [self.delegate didEntererFirstPin:pin];
-        }
-    } else {
-        [self accessPinDenied];
-    }
-}
+#pragma mark - Actions
 
 - (IBAction)actionCancel:(id)sender {
     
@@ -67,13 +69,5 @@
         [self.delegate didCancelPressedOnCreateWallet];
     }
 }
-
--(void)actionEnter:(id)sender {
-    
-    if (!self.isProcessing) {
-        [self confirmButtomPressed:nil];
-    }
-}
-
 
 @end

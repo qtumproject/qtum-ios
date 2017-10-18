@@ -63,7 +63,7 @@
 -(void)showNewPinControllerWithType:(PinType) type {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
-    viewController.delegatePin = self;
+    //viewController.delegatePin = self;
     viewController.type = type;
     if (!self.animating) {
         self.animating = YES;

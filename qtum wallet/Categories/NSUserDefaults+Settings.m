@@ -18,9 +18,11 @@ NSString * const kPrevDeviceTokenKey         = @"kPrevDeviceTokenKey";
 NSString * const kWalletAddressKey           = @"kWalletAddressKey";
 NSString * const kIsHaveWallet               = @"kIsHaveWallet";
 NSString * const kIsDarkScheme               = @"kIsDarkScheme";
-NSString * const kIsNotFirstTimeLaunch          = @"kIsNotFirstTimeLaunch";
+NSString * const kIsNotFirstTimeLaunch       = @"kIsNotFirstTimeLaunch";
 NSString * const kCurrentVersion             = @"kCurrentVersion";
 NSString * const kPublicAddresses            = @"kPublicAddresses";
+NSString * const kFailedPinCount             = @"kFailedPinCount";
+NSString * const kLastFailedDate             = @"kLastFailedDate";
 
 
 
@@ -127,6 +129,30 @@ NSString * const kGroupIdentifire            = @"group.org.qtum.qtum-wallet";
 + (void)saveCurrentVersion:(NSString*) value {
     
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:kCurrentVersion];
+}
+
++ (void)saveFailedPinCount:(NSInteger) count {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@(count) forKey:kFailedPinCount];
+}
+
++ (NSInteger)getCountOfPinFailed {
+    
+    NSNumber* failedCount = [[NSUserDefaults standardUserDefaults] objectForKey:kFailedPinCount];
+    
+    if (failedCount) {
+        return failedCount.integerValue;
+    } else {
+        return 0;
+    }
+}
+
++ (void)saveLastFailedPinDate:(NSDate*) date {
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:kLastFailedDate];
+}
+
++ (NSDate*)getLastFailedPinDate {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kLastFailedDate];
 }
 
 + (NSString*)currentVersion {

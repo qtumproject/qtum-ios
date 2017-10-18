@@ -7,17 +7,15 @@
 //
 
 #import "ChangePinOutputDelegate.h"
+#import "PasswordView.h"
 
 @protocol ChangePinOutput <NSObject>
 
 @property (assign,nonatomic) PinType type;
 
 @property (nonatomic, weak) id<ChangePinOutputDelegate> delegate;
+@property (weak, nonatomic) IBOutlet PasswordView *passwordView;
 
-- (void)actionIncorrectPin;
-- (void)accessPinDenied;
-- (void)clearPinTextFields;
-- (void)redirectTextField:(UITextField*)textField isReversed:(BOOL) reversed;
 - (void)setCustomTitle:(NSString *)title;
 
 @end

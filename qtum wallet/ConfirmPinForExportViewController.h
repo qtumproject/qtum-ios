@@ -9,9 +9,11 @@
 #import "PinController.h"
 #import "LoginViewOutput.h"
 #import "LoginViewOutputDelegate.h"
+#import "PasswordView.h"
 
-@interface ConfirmPinForExportViewController : PinController <LoginViewOutput>
+@interface ConfirmPinForExportViewController : PinController <LoginViewOutput, PasswordViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintForCancelButton;
+@property (weak, nonatomic) IBOutlet PasswordView *passwordView;
 
 @end

@@ -2,7 +2,7 @@
 //  WatchCoordinator.h
 //  QTUM Watch Extension
 //
-//  Created by Никита Федоренко on 09.10.17.
+//  Created by Vladimir Lebedevich on 09.10.17.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 

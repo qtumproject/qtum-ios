@@ -20,6 +20,7 @@
 @property (assign, nonatomic) BOOL isMainNet;
 @property (assign, nonatomic) BOOL isRPC;
 @property (assign, nonatomic) BOOL isDarkTheme;
+@property (assign, nonatomic) NSInteger failedPinWaitingTime;
 
 @end
 
@@ -45,6 +46,7 @@
 #pragma mark - Public Methods
 
 -(void)setup {
+    
     if (![NSUserDefaults isNotFirstTimeLaunch]) {
         [NSUserDefaults saveIsDarkSchemeSetting:YES];
         [NSUserDefaults saveIsNotFirstTimeLaunch:YES];
@@ -100,10 +102,19 @@
     return [NSUserDefaults isFingerprintAllowed];
 }
 
+-(BOOL)isLongPin {
+    
+    return [ApplicationCoordinator sharedInstance].walletManager.isLongPin;
+}
+
 -(NSString*)baseURL {
     
     NSString* baseUrl = @"http://163.172.251.4:5931/";
     return baseUrl;
+}
+
+-(NSInteger)failedPinWaitingTime {
+    return 10;
 }
 
 #pragma mark - Private Methods 
@@ -111,5 +122,14 @@
 -(void)setFingerprintEnabled:(BOOL)enabled {
     [NSUserDefaults saveIsFingerpringEnabled:enabled];
 }
+
+#pragma mark - Clearable
+
+-(void)clear {
+    
+    [NSUserDefaults saveLastFailedPinDate:nil];
+    [NSUserDefaults saveFailedPinCount:0];
+}
+
 
 @end

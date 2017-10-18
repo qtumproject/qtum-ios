@@ -49,4 +49,10 @@
 + (void)savePublicAddresses:(NSArray*)addresses;
 + (NSArray*)getPublicAddresses;
 
++ (void)saveFailedPinCount:(NSInteger) count;
++ (NSInteger)getCountOfPinFailed;
+
++ (void)saveLastFailedPinDate:(NSDate*) date;
++ (NSDate*)getLastFailedPinDate;
+
 @end

@@ -28,7 +28,10 @@ static NSInteger textfieldsWithButtonHeight = 250;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
     self.bottomConstraintForCancelButton.constant = self.view.frame.size.height / 2. - textfieldsWithButtonHeight / 2.;
+    
+    [self configPasswordView];
     
     if (self.editingStarted) {
         [self startEditing];
@@ -40,22 +43,18 @@ static NSInteger textfieldsWithButtonHeight = 250;
     [super didMoveToParentViewController:parent];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
+-(void)viewWillDisappear:(BOOL)animated {
+    
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+#pragma mark - Configuration
+
+-(void)configPasswordView {
+    self.passwordView.delegate = self;
 }
+
 #pragma mark - Keyboard
 
 -(void)keyboardWillShow:(NSNotification *)sender {
@@ -68,14 +67,14 @@ static NSInteger textfieldsWithButtonHeight = 250;
 -(void)keyboardWillHide:(NSNotification *)sender{
     //when comes from imessage have problems with keyboard dissmisng
     if (!self.shoudKeboardDismiss) {
-        [self.firstSymbolTextField becomeFirstResponder];
+        [self.passwordView becameFirstResponder];
     }
 }
 
 -(void)startEditing {
     
     self.editingStarted = YES;
-    [self.firstSymbolTextField becomeFirstResponder];
+    [self.passwordView becameFirstResponder];
 }
 
 -(void)stopEditing {
@@ -84,49 +83,53 @@ static NSInteger textfieldsWithButtonHeight = 250;
     [self.view endEditing:YES];
 }
 
+-(void)setInputsDisable:(BOOL) disable {
+    [self.passwordView setEditingDisabled:disable];
+}
+
+-(void)clearTextFileds {
+    
+    [self.passwordView clearPinTextFields];
+    [self.passwordView becameFirstResponder];
+}
+
 #pragma mark - Configuration
 
 #pragma mark - Privat Methods
 
-#pragma mark - Actions
+#pragma mark - PasswordViewDelegate
 
-- (IBAction)actionEnterPin:(id)sender {
-    
+-(void)confirmPinWithDigits:(NSString*) digits {
+
     self.shoudKeboardDismiss = YES;
-    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
-    if (pin.length == 4) {
-        if ([self.delegate respondsToSelector:@selector(passwordDidEntered:)]) {
-            [self.delegate passwordDidEntered:pin];
-        }
-    } else {
-        [self applyFailedPasswordAction];
+    
+    if ([self.delegate respondsToSelector:@selector(passwordDidEntered:)]) {
+        [self.delegate passwordDidEntered:digits];
     }
 }
 
+#pragma mark - Actions
+
 - (IBAction)actionCancel:(id)sender {
+    
     self.shoudKeboardDismiss = YES;
     if ([self.delegate respondsToSelector:@selector(confirmPasswordDidCanceled)]) {
         [self.delegate confirmPasswordDidCanceled];
     }
 }
 
--(void)actionEnter:(id)sender {
-    
-    [self actionEnterPin:nil];
-}
-
 -(void)showLoginFields {
     
-    self.pinContainer.hidden = NO;
+    self.passwordView.hidden = NO;
     self.cancelButton.hidden = NO;
-    [self.firstSymbolTextField becomeFirstResponder];
+    [self.passwordView becameFirstResponder];
 }
 
 -(void)applyFailedPasswordAction {
     
-    [self accessPinDenied];
-    [self clearPinTextFields];
-    [self.firstSymbolTextField becomeFirstResponder];
+    [self.passwordView accessPinDenied];
+    [self.passwordView clearPinTextFields];
+    [self.passwordView becameFirstResponder];
 }
 
 @end
