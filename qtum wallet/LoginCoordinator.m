@@ -142,7 +142,7 @@
 
 -(void)showEnteringPinTimeFailedPopupWithMinuts:(NSInteger) minuts {
     
-    NSString* failedText = [NSString stringWithFormat:@"Sorry, Please try again in %li minutes",(long)minuts];
+    NSString* failedText = [NSString stringWithFormat:NSLocalizedString(@"Sorry, Please try again in %li minutes", nil),(long)minuts];
     [self showErrorPopUp:failedText];
 }
 
