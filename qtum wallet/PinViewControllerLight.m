@@ -17,14 +17,8 @@
 -(void)configPasswordView {
     
     
-    [self.passwordView setStyle:CustomStyle
-                         lenght:YES ? ShortType : LongType];
-    
-    [self.passwordView setTextFont:nil
-                         fontColor:lightDarkGrayColor()
-                    underlineColor:lightTextFieldPlaceholderColor()
-                         tintColor:lightBlueColor()
-                   errorFieldColor:lightBlueColor()];
+    [self.passwordView setStyle:LightPopupStyle
+                         lenght:[AppSettings sharedInstance].isLongPin ? LongType : ShortType];
     
     self.passwordView.delegate = self;
 }

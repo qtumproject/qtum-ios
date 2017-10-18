@@ -55,7 +55,9 @@
           tintColor:(UIColor*) tintColor
     errorFieldColor:(UIColor*)errorColor {
     
-    self.textFont = textFont;
+    if (textFont) {
+        self.textFont = textFont;
+    }
     self.fontColor = fontColor;
     self.underlineColor = color;
     self.tintColor = tintColor;
@@ -66,9 +68,14 @@
 - (void)setStyle:(PasswordViewStyle)style
           lenght:(PasswordLenghtType)lenghtType {
     
-    self.styleType = style;
-    self.lenghtType = lenghtType;
-    [self updateViews];
+    if (style != SameStyle || lenghtType != self.lenghtType) {
+        
+        if (style != SameStyle) {
+            self.styleType = style;
+        }
+        self.lenghtType = lenghtType;
+        [self updateViews];
+    } 
 }
 
 -(void)updateViews {
@@ -102,12 +109,27 @@
             _secretSymbol = @"■";
             _tintColor = customBlueColor();
             break;
+        case DarkPopupStyle:
+            _fontColor = customBlackColor();
+            _underlineColor = customBlackColor();
+            _textFont = [UIFont fontWithName:@"simplonmono-regular" size:18];
+            _secretSymbol = @"■";
+            _tintColor = customBlackColor();
+            break;
         case LightStyle:
             _fontColor = [UIColor whiteColor];
             _underlineColor = [UIColor whiteColor];
             _textFont = [UIFont fontWithName:@"ProximaNova-Semibold" size:30];
             _secretSymbol = @"•";
             _tintColor = lightBlueColor();
+            break;
+        case LightPopupStyle:
+            _fontColor = lightDarkGrayColor();
+            _underlineColor = lightTextFieldPlaceholderColor();
+            _textFont = [UIFont fontWithName:@"ProximaNova-Semibold" size:30];
+            _secretSymbol = @"•";
+            _tintColor = lightBlueColor();
+            _errorFieldColor = lightBlueColor();
             break;
         default:
             break;
@@ -158,6 +180,7 @@
     textField.delegate = self;
     textField.tintColor = _tintColor;
     textField.keyboardType = UIKeyboardTypeNumberPad;
+//    textField.userInteractionEnabled = NO;
     [self.textFieldsArray addObject:textField];
     [self addSubview:textField];
     
@@ -166,7 +189,7 @@
     underlineView.backgroundColor = _underlineColor;
     [self addSubview:underlineView];
     
-    NSDictionary *metrics = @{@"underlineSuperviewLeading" : @(0),
+    NSDictionary *metrics = @{@"underlineSuperviewLeading" : @(_underlineLeading / 2),
                               @"underlineLeading" : @(_underlineLeading),
                               @"underlineWidth" : @(_underlineWidth),
                               @"textFieldHeight" : @(30),
@@ -339,8 +362,10 @@
 - (void)textFieldDidBeginEditing:(CustomTextField *)textField{
     
     NSUInteger index = [self.textFieldsArray indexOfObject:textField];
-    self.underlineConstraintArray[index].constant = 4;
-    [self setNeedsLayout];
+    if (NSNotFound != index) {
+        self.underlineConstraintArray[index].constant = 4;
+        [self setNeedsLayout];
+    }
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -350,8 +375,10 @@
 - (void)textFieldDidEndEditing:(CustomTextField *)textField {
     
     NSUInteger index = [self.textFieldsArray indexOfObject:textField];
-    self.underlineConstraintArray[index].constant = 2;
-    [self setNeedsLayout];
+    if (NSNotFound != index) {
+        self.underlineConstraintArray[index].constant = 2;
+        [self setNeedsLayout];
+    }
 }
 
 - (BOOL)textField:(CustomTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
@@ -400,7 +427,9 @@
 
 -(void)startEditing {
     
-    [self.textFieldsArray[0] becomeFirstResponder];
+    if (self.textFieldsArray.count > 0) {
+        [self.textFieldsArray[0] becomeFirstResponder];
+    }
 }
 
 -(NSString*)getDigits {

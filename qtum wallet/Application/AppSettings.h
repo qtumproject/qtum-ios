@@ -14,6 +14,7 @@
 @property (assign, nonatomic, readonly) BOOL isRPC;
 @property (assign, nonatomic, readonly) BOOL isFingerprintEnabled;
 @property (assign, nonatomic, readonly) BOOL isFingerprintAllowed;
+@property (assign, nonatomic, readonly) BOOL isLongPin;
 @property (assign, nonatomic, readonly) BOOL isDarkTheme;
 @property (copy, nonatomic, readonly) NSString* baseURL;
 

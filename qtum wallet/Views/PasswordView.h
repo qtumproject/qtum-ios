@@ -11,7 +11,10 @@
 typedef NS_ENUM(NSUInteger, PasswordViewStyle) {
     CustomStyle,
     LightStyle,
-    DarkStyle
+    LightPopupStyle,
+    DarkPopupStyle,
+    DarkStyle,
+    SameStyle
 };
 
 typedef NS_ENUM(NSUInteger, PasswordLenghtType) {

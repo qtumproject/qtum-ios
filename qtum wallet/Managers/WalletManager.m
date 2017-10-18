@@ -26,6 +26,7 @@ NSString const *kSingleWallet = @"qtum_wallet_wallet_keys";
 NSString *const kWalletDidChange = @"kWalletDidChange";
 NSString const *kUserPin = @"PIN";
 NSString const *kUserPinHash = @"HashPIN";
+NSString const *kIsLongPin = @"kIsLongPin";
 
 @interface WalletManager ()
 
@@ -205,10 +206,7 @@ NSString const *kUserPinHash = @"HashPIN";
     
     if (hashOfPin) {
         
-        [[FXKeychain defaultKeychain] setObject:hashOfPin forKey:kUserPinHash];
-        [[FXKeychain defaultKeychain] addTouchIdString:pin];
-        self.hashOfPin = hashOfPin;
-        [self save];
+        [self saveHashOPin:hashOfPin andPin:pin];
     }
 }
 
@@ -218,19 +216,27 @@ NSString const *kUserPinHash = @"HashPIN";
     
     if ([self.wallet changeBrandKeyPinWithOldPin:pin toNewPin:newPin] && hashOfPin) {
         
-        [[FXKeychain defaultKeychain] setObject:hashOfPin forKey:kUserPinHash];
-        [[FXKeychain defaultKeychain] addTouchIdString:newPin];
-        self.hashOfPin = hashOfPin;
-        [self save];
+        [self saveHashOPin:hashOfPin andPin:newPin];
         return YES;
     }
     
     return NO;
 }
 
+-(void)saveHashOPin:(NSString*) hashOfPin andPin:(NSString*) pin{
+    
+    [[FXKeychain defaultKeychain] setObject:hashOfPin forKey:kUserPinHash];
+    [[FXKeychain defaultKeychain] addTouchIdString:pin];
+    [[FXKeychain defaultKeychain] setObject:@(YES) forKey:kIsLongPin];
+    self.hashOfPin = hashOfPin;
+    [self save];
+}
+
+
 - (void)removePin {
     
     [[FXKeychain defaultKeychain] removeObjectForKey:kUserPinHash];
+    [[FXKeychain defaultKeychain] removeObjectForKey:kIsLongPin];
     self.hashOfPin = nil;
 }
 
@@ -243,6 +249,12 @@ NSString const *kUserPinHash = @"HashPIN";
     
     return self.wallet && self.hashOfPin;
 }
+
+- (BOOL)isLongPin {
+    
+    return [[[FXKeychain defaultKeychain] objectForKey:kIsLongPin] boolValue];
+}
+
 
 - (BOOL)startWithPin:(NSString*) pin {
     

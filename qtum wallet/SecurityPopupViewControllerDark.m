@@ -14,4 +14,10 @@
 
 @implementation SecurityPopupViewControllerDark
 
+-(void)configPasswordView {
+    
+    [self.passwordView setStyle:DarkPopupStyle lenght:[AppSettings sharedInstance].isLongPin ? LongType : ShortType];
+    self.passwordView.delegate = self;
+}
+
 @end

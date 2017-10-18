@@ -51,6 +51,7 @@
         if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
             //old pin confirmed
             self.pinOld = pin;
+            [self.pinOutput.passwordView setStyle:SameStyle lenght:LongType];
             [self.pinOutput.passwordView clearPinTextFields];
             [self.pinOutput.passwordView startEditing];
             [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter New PIN", "")];
@@ -62,6 +63,7 @@
     } else if(!self.pinNew) {
         //entered new pin
         self.pinNew = pin;
+        [self.pinOutput.passwordView setStyle:SameStyle lenght:LongType];
         [self.pinOutput.passwordView clearPinTextFields];
         [self.pinOutput.passwordView startEditing];
         [self.pinOutput setCustomTitle:NSLocalizedString(@"Repeat New PIN", "")];
@@ -70,11 +72,15 @@
         
         if ([self.pinNew isEqualToString:pin]) {
             //change pin for new one
-            [[ApplicationCoordinator sharedInstance].walletManager changePinFrom:self.pinOld toPin:self.pinNew];
-            
-            self.pinOld = nil;
-            self.pinNew = nil;
-            [self.delegate coordinatorDidFinish:self];
+            if (![[ApplicationCoordinator sharedInstance].walletManager changePinFrom:self.pinOld toPin:self.pinNew]) {
+                
+                completision(NO);
+                [self enteringPinFailed];
+            } else {
+                self.pinOld = nil;
+                self.pinNew = nil;
+                [self.delegate coordinatorDidFinish:self];
+            }
 
         } else {
             //confirming pin failed
@@ -88,6 +94,7 @@
     
     self.pinOld = nil;
     self.pinNew = nil;
+    [self.pinOutput.passwordView setStyle:SameStyle lenght:[AppSettings sharedInstance].isLongPin ? LongType : ShortType];
     [self.pinOutput.passwordView actionIncorrectPin];
     [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter Old PIN", "")];
 }

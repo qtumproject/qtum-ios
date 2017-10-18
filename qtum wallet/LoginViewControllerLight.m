@@ -23,7 +23,7 @@
 
 -(void)configPasswordView {
     
-    [self.passwordView setStyle:LightStyle lenght:YES ? ShortType : LongType];
+    [self.passwordView setStyle:LightStyle lenght:[AppSettings sharedInstance].isLongPin ? LongType : ShortType];
     self.passwordView.delegate = self;
 }
 
