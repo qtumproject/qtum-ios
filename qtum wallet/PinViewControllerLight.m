@@ -16,7 +16,16 @@
 
 -(void)configPasswordView {
     
-    [self.passwordView setStyle:DarkStyle lenght:YES ? ShortType : LongType];
+    
+    [self.passwordView setStyle:CustomStyle
+                         lenght:YES ? ShortType : LongType];
+    
+    [self.passwordView setTextFont:nil
+                         fontColor:lightDarkGrayColor()
+                    underlineColor:lightTextFieldPlaceholderColor()
+                         tintColor:lightBlueColor()
+                   errorFieldColor:lightBlueColor()];
+    
     self.passwordView.delegate = self;
 }
 

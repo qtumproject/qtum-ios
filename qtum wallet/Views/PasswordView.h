@@ -34,7 +34,8 @@ typedef NS_ENUM(NSUInteger, PasswordLenghtType) {
 - (void)setTextFont:(UIFont*)textFont
           fontColor:(UIColor*)fontColor
      underlineColor:(UIColor*)color
-          tintColor:(UIColor*)tintColor;
+          tintColor:(UIColor*)tintColor
+    errorFieldColor:(UIColor*)errorColor;
 
 - (void)setStyle:(PasswordViewStyle)style
           lenght:(PasswordLenghtType)lenghtType;

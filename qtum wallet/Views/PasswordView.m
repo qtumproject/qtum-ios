@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UIColor* fontColor;
 @property (strong, nonatomic) UIColor* underlineColor;
 @property (strong, nonatomic) UIColor* tintColor;
+@property (strong, nonatomic) UIColor* errorFieldColor;
 @property (assign, nonatomic) PasswordViewStyle styleType;
 @property (assign, nonatomic) PasswordLenghtType lenghtType;
 
@@ -51,12 +52,14 @@
 - (void)setTextFont:(UIFont*)textFont
           fontColor:(UIColor*)fontColor
      underlineColor:(UIColor*)color
-          tintColor:(UIColor*) tintColor {
+          tintColor:(UIColor*) tintColor
+    errorFieldColor:(UIColor*)errorColor {
     
     self.textFont = textFont;
     self.fontColor = fontColor;
     self.underlineColor = color;
     self.tintColor = tintColor;
+    self.errorFieldColor = errorColor;
     [self updateViews];
 }
 
@@ -122,12 +125,16 @@
         _underlineColor = customBlueColor();
     }
     
+    if (!_errorFieldColor) {
+        _errorFieldColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+    }
+    
     if (!_textFont) {
         _textFont = [UIFont fontWithName:@"ProximaNova-Semibold" size:18];
     }
     
     if (!_secretSymbol) {
-        _secretSymbol = @"■";
+        _secretSymbol = @"•";
     }
 }
 
@@ -218,7 +225,7 @@
     
     UIView* conteinerView = [[UIView alloc] initWithFrame:CGRectZero];
     conteinerView.translatesAutoresizingMaskIntoConstraints = NO;
-    conteinerView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+    conteinerView.backgroundColor = _errorFieldColor;
     conteinerView.layer.masksToBounds = YES;
     conteinerView.layer.cornerRadius = 3;
     conteinerView.alpha = 0;
@@ -290,6 +297,7 @@
 }
 
 -(void)accessPinDenied {
+    
     [self shakeAndClearText];
     [self actionIncorrectPin];
     [self.textFieldsArray[0] becomeFirstResponder];
@@ -304,7 +312,7 @@
     [self clearPinTextFields];
 }
 
--(void)clearPinTextFields{
+-(void)clearPinTextFields {
     
     for (CustomTextField* textField in self.textFieldsArray) {
         textField.realText =

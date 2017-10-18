@@ -46,6 +46,8 @@
         if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
             //old pin confirmed
             self.pinOld = pin;
+            [self.pinOutput.passwordView clearPinTextFields];
+            [self.pinOutput.passwordView startEditing];
             [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter New PIN", "")];
         }else {
             completision(NO);
@@ -55,6 +57,8 @@
     } else if(!self.pinNew) {
         //entered new pin
         self.pinNew = pin;
+        [self.pinOutput.passwordView clearPinTextFields];
+        [self.pinOutput.passwordView startEditing];
         [self.pinOutput setCustomTitle:NSLocalizedString(@"Repeat New PIN", "")];
         
     } else {
