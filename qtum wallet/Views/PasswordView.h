@@ -32,7 +32,8 @@ typedef NS_ENUM(NSUInteger, PasswordLenghtType) {
 
 @property (weak, nonatomic) id <PasswordViewDelegate> delegate;
 
-- (void)startEditing;
+- (void)becameFirstResponder;
+- (void)setEditingDisabled:(BOOL) disabled;
 
 - (void)setTextFont:(UIFont*)textFont
           fontColor:(UIColor*)fontColor

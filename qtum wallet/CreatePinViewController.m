@@ -23,13 +23,13 @@
     
     [super viewDidLoad];
     [self configPasswordView];
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 #pragma mark - Configuration

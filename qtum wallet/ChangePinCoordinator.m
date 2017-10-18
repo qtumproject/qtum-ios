@@ -53,7 +53,7 @@
             self.pinOld = pin;
             [self.pinOutput.passwordView setStyle:SameStyle lenght:LongType];
             [self.pinOutput.passwordView clearPinTextFields];
-            [self.pinOutput.passwordView startEditing];
+            [self.pinOutput.passwordView becameFirstResponder];
             [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter New PIN", "")];
         }else {
             completision(NO);
@@ -65,7 +65,7 @@
         self.pinNew = pin;
         [self.pinOutput.passwordView setStyle:SameStyle lenght:LongType];
         [self.pinOutput.passwordView clearPinTextFields];
-        [self.pinOutput.passwordView startEditing];
+        [self.pinOutput.passwordView becameFirstResponder];
         [self.pinOutput setCustomTitle:NSLocalizedString(@"Repeat New PIN", "")];
         
     } else {

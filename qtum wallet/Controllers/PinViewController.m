@@ -32,7 +32,7 @@ const float bottomOffset = 25;
 -(void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,7 +86,7 @@ const float bottomOffset = 25;
             [weakSelf.passwordView accessPinDenied];
         }
         [weakSelf.passwordView clearPinTextFields];
-        [weakSelf.passwordView startEditing];
+        [weakSelf.passwordView becameFirstResponder];
     }];
 }
 

@@ -62,7 +62,7 @@
 -(void)startEditing {
     
     self.editingStarted = YES;
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 -(void)stopEditing {
@@ -99,14 +99,14 @@
     
     self.passwordView.hidden = NO;
     self.cancelButton.hidden = NO;
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 -(void)applyFailedPasswordAction {
     
     [self.passwordView accessPinDenied];
     [self.passwordView clearPinTextFields];
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 - (IBAction)didVoidTapAction:(id)sender {

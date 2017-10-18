@@ -67,14 +67,14 @@ static NSInteger textfieldsWithButtonHeight = 250;
 -(void)keyboardWillHide:(NSNotification *)sender{
     //when comes from imessage have problems with keyboard dissmisng
     if (!self.shoudKeboardDismiss) {
-        [self.passwordView startEditing];
+        [self.passwordView becameFirstResponder];
     }
 }
 
 -(void)startEditing {
     
     self.editingStarted = YES;
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 -(void)stopEditing {
@@ -112,14 +112,14 @@ static NSInteger textfieldsWithButtonHeight = 250;
     
     self.passwordView.hidden = NO;
     self.cancelButton.hidden = NO;
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 -(void)applyFailedPasswordAction {
     
     [self.passwordView accessPinDenied];
     [self.passwordView clearPinTextFields];
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 @end

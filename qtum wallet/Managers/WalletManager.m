@@ -227,7 +227,8 @@ NSString const *kIsLongPin = @"kIsLongPin";
     
     [[FXKeychain defaultKeychain] setObject:hashOfPin forKey:kUserPinHash];
     [[FXKeychain defaultKeychain] addTouchIdString:pin];
-    [[FXKeychain defaultKeychain] setObject:@(YES) forKey:kIsLongPin];
+    [[FXKeychain defaultKeychain] setObject:pin.length > 4 ? @(YES) : @(NO) forKey:kIsLongPin];
+
     self.hashOfPin = hashOfPin;
     [self save];
 }

@@ -27,6 +27,8 @@
 @property (assign, nonatomic) UIView* errorView;
 @property (assign, nonatomic) NSString* secretSymbol;
 
+@property (assign, nonatomic) BOOL isEditingDisabled;
+
 @end
 
 @implementation PasswordView
@@ -38,7 +40,7 @@
         
         _textFieldsArray = @[].mutableCopy;
         _underlineConstraintArray = @[].mutableCopy;
-        
+        self.userInteractionEnabled = NO;
         [self calculateSizes];
         [self defineSettings];
         [self createErrorField];
@@ -76,6 +78,10 @@
         self.lenghtType = lenghtType;
         [self updateViews];
     } 
+}
+
+- (void)setEditingDisabled:(BOOL) disabled {
+    _isEditingDisabled = disabled;
 }
 
 -(void)updateViews {
@@ -180,7 +186,6 @@
     textField.delegate = self;
     textField.tintColor = _tintColor;
     textField.keyboardType = UIKeyboardTypeNumberPad;
-//    textField.userInteractionEnabled = NO;
     [self.textFieldsArray addObject:textField];
     [self addSubview:textField];
     
@@ -383,6 +388,10 @@
 
 - (BOOL)textField:(CustomTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
+    if (self.isEditingDisabled) {
+        return NO;
+    }
+    
     if (string.length && [string rangeOfString:@" "].location == NSNotFound) {
         textField.realText = [string substringToIndex:1];
         textField.text = _secretSymbol;
@@ -425,7 +434,7 @@
     }];
 }
 
--(void)startEditing {
+-(void)becameFirstResponder {
     
     if (self.textFieldsArray.count > 0) {
         [self.textFieldsArray[0] becomeFirstResponder];

@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     [self configPasswordView];
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -61,7 +61,7 @@
 - (void)applyFailedPasswordAction {
     
     [self.passwordView accessPinDenied];
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
 }
 
 

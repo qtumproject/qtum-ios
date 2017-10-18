@@ -20,12 +20,19 @@
     
     [super viewDidLoad];
     [self configPasswordView];
+    [self.passwordView setEditingDisabled:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    [self.passwordView startEditing];
+    [self.passwordView becameFirstResponder];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    [self.passwordView setEditingDisabled:NO];
 }
 
 #pragma mark - Configuration
