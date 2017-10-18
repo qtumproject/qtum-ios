@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AppSettings : NSObject
+@interface AppSettings : NSObject <Clearable>
 
 @property (assign, nonatomic, readonly) BOOL isMainNet;
 @property (assign, nonatomic, readonly) BOOL isRPC;
@@ -16,6 +16,7 @@
 @property (assign, nonatomic, readonly) BOOL isFingerprintAllowed;
 @property (assign, nonatomic, readonly) BOOL isLongPin;
 @property (assign, nonatomic, readonly) BOOL isDarkTheme;
+@property (assign, nonatomic, readonly) NSInteger failedPinWaitingTime;
 @property (copy, nonatomic, readonly) NSString* baseURL;
 
 

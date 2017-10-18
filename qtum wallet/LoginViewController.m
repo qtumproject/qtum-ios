@@ -83,6 +83,16 @@ static NSInteger textfieldsWithButtonHeight = 250;
     [self.view endEditing:YES];
 }
 
+-(void)setInputsDisable:(BOOL) disable {
+    [self.passwordView setEditingDisabled:disable];
+}
+
+-(void)clearTextFileds {
+    
+    [self.passwordView clearPinTextFields];
+    [self.passwordView becameFirstResponder];
+}
+
 #pragma mark - Configuration
 
 #pragma mark - Privat Methods

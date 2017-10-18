@@ -63,4 +63,12 @@
     return [[fullDateFormater dateFromString:dateString] formatedDateString];
 }
 
++ (NSInteger)minutsSinceDate :(NSDate *)date {
+    
+    NSInteger secondInMinut = 60;
+    NSDate *currentTime = [NSDate date];
+    double secondsSinceDate = [currentTime timeIntervalSinceDate:date];
+    return (NSInteger) secondsSinceDate / secondInMinut;
+}
+
 @end
