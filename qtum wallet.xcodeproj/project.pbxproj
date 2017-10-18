@@ -136,6 +136,7 @@
 		B354970A1F8CE68A00DEB004 /* WatchDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B35497091F8CE68A00DEB004 /* WatchDataOperation.m */; };
 		B35572C71F90E886001AE34A /* NewsDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C61F90E886001AE34A /* NewsDataProvider.m */; };
 		B35572CA1F90EFDE001AE34A /* NetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C91F90EFDE001AE34A /* NetworkingService.m */; };
+		B35733271F97A69A00C64AAE /* ServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B35733261F97A69A00C64AAE /* ServiceLocator.m */; };
 		B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DF71E811D4500EBF094 /* RPCAdapter.m */; };
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
 		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
@@ -931,6 +932,8 @@
 		B35572C61F90E886001AE34A /* NewsDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsDataProvider.m; sourceTree = "<group>"; };
 		B35572C81F90EFDE001AE34A /* NetworkingService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingService.h; sourceTree = "<group>"; };
 		B35572C91F90EFDE001AE34A /* NetworkingService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkingService.m; sourceTree = "<group>"; };
+		B35733251F97A69A00C64AAE /* ServiceLocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceLocator.h; sourceTree = "<group>"; };
+		B35733261F97A69A00C64AAE /* ServiceLocator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceLocator.m; sourceTree = "<group>"; };
 		B3597DF41E7FABF800EBF094 /* Requestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Requestable.h; sourceTree = "<group>"; };
 		B3597DF51E811D0500EBF094 /* RequestManagerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManagerAdapter.h; sourceTree = "<group>"; };
 		B3597DF61E811D4500EBF094 /* RPCAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCAdapter.h; sourceTree = "<group>"; };
@@ -3479,6 +3482,8 @@
 		B3F5797E1F0D297900A13571 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B35733251F97A69A00C64AAE /* ServiceLocator.h */,
+				B35733261F97A69A00C64AAE /* ServiceLocator.m */,
 				B387AB421EF04911001D2FF1 /* TemplateManager.h */,
 				B387AB431EF04911001D2FF1 /* TemplateManager.m */,
 				B387AB3F1EF04474001D2FF1 /* BackupFileManager.h */,
@@ -5424,6 +5429,7 @@
 				E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */,
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
 				B369DF2F1F5D5F0E008B81CB /* AbiParameterTypeFixedArrayAddress.m in Sources */,
+				B35733271F97A69A00C64AAE /* ServiceLocator.m in Sources */,
 				E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */,
 				E7D7C09E1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				B3EA53171F47318C002FD201 /* QStoreListTableViewCellDark.m in Sources */,
