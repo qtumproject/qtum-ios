@@ -13,11 +13,15 @@
 #import "LoginViewOutput.h"
 #import "SecurityPopupViewController.h"
 #import "FXKeychain.h"
+#import "NSUserDefaults+Settings.h"
+#import "ErrorPopUpViewController.h"
+#import "NSDate+Extension.h"
 
-@interface LoginCoordinator () <LoginViewOutputDelegate, SecurityPopupViewControllerDelegate>
+@interface LoginCoordinator () <LoginViewOutputDelegate, SecurityPopupViewControllerDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (strong,nonatomic) UIViewController *containerViewController;
 @property (weak,nonatomic) id <LoginViewOutput> loginOutput;
+@property (assign,nonatomic) NSUInteger failedPinCount;
 
 @end
 
@@ -38,7 +42,10 @@
     
     [self showSecurityLoginController];
     
-    if ([AppSettings sharedInstance].isFingerprintEnabled) {
+    NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
+    BOOL shodFingerprintShow = failedCount < 3;
+    
+    if ([AppSettings sharedInstance].isFingerprintEnabled && shodFingerprintShow) {
         [self showFingerprint];
     } else {
         [self.loginOutput startEditing];
@@ -73,15 +80,7 @@
 
 #pragma mark - Actions
 
-- (void)cancelButtonPressed:(PopUpViewController *)sender {
-    
-    [self cancelPin];
-}
 
-- (void)confirmButtonPressed:(PopUpViewController *)sender withPin:(NSString*) pin {
-    
-    [self enterPin:pin];
-}
 
 -(void)passwordDidEntered:(NSString*)password {
     
@@ -116,13 +115,47 @@
 
 -(void)enterPin:(NSString*) pin {
     
-    if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin] && [[ApplicationCoordinator sharedInstance].walletManager startWithPin:pin]) {
-        
-        [self loginUser];        
+    NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
+    NSDate* lastFailedPinDate = [NSUserDefaults getLastFailedPinDate];
+    NSInteger minutsSinceLastFailed = [NSDate minutsSinceDate:lastFailedPinDate];
+    NSInteger waitingMinuts = [[AppSettings sharedInstance] failedPinWaitingTime];
+    BOOL isFailedStatePinEntering = failedCount >= 3 && lastFailedPinDate && minutsSinceLastFailed < waitingMinuts;
 
-    }else {
-        [self.loginOutput applyFailedPasswordAction];
+    if (isFailedStatePinEntering) {
+        
+        [self showEnteringPinTimeFailedPopupWithMinuts:waitingMinuts - minutsSinceLastFailed];
+        [self.loginOutput clearTextFileds];
+        [self.loginOutput setInputsDisable:YES];
+    } else {
+        if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin] && [[ApplicationCoordinator sharedInstance].walletManager startWithPin:pin]) {
+            
+            [NSUserDefaults saveFailedPinCount:0];
+            [self loginUser];
+        }else {
+            
+            [NSUserDefaults saveFailedPinCount:++failedCount];
+            [NSUserDefaults saveLastFailedPinDate:[NSDate new]];
+            [self.loginOutput applyFailedPasswordAction];
+        }
     }
+}
+
+-(void)showEnteringPinTimeFailedPopupWithMinuts:(NSInteger) minuts {
+    
+    NSString* failedText = [NSString stringWithFormat:@"Sorry, Please try again in %li minutes",(long)minuts];
+    [self showErrorPopUp:failedText];
+}
+
+- (void)showErrorPopUp:(NSString *)message {
+    
+    PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+    if (message) {
+        content.messageString = message;
+        content.titleString = NSLocalizedString(@"Failed", nil);
+    }
+    
+    ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [popUp setOnlyCancelButton];
 }
 
 #pragma mark - Add/Remove from parent
@@ -140,6 +173,26 @@
     [content willMoveToParentViewController:nil];
     [content.view removeFromSuperview];
     [content removeFromParentViewController];
+}
+
+#pragma mark -
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender {
+    
+    [self.loginOutput setInputsDisable:NO];
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
+
+- (void)confirmButtonPressed:(PopUpViewController *)sender withPin:(NSString*) pin {
+    
+    [self.loginOutput setInputsDisable:NO];
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
+
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    
+    [self.loginOutput setInputsDisable:NO];
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 
 @end

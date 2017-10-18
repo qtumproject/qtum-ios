@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LoginViewOutputDelegate.h"
+#import "PasswordView.h"
 
 @protocol LoginViewOutput <NSObject>
 
@@ -16,5 +17,7 @@
 -(void)applyFailedPasswordAction;
 -(void)startEditing;
 -(void)stopEditing;
+-(void)clearTextFileds;
+-(void)setInputsDisable:(BOOL) disable;
 
 @end

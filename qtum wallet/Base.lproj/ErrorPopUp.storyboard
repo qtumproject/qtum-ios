@@ -41,7 +41,7 @@
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYF-uv-dMs">
-                                <rect key="frame" x="30" y="247.5" width="315" height="172"/>
+                                <rect key="frame" x="30" y="147.5" width="315" height="172"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsf-Ei-fzp">
                                         <rect key="frame" x="20" y="54" width="275" height="18"/>
@@ -133,7 +133,7 @@
                             <constraint firstItem="xpZ-hQ-CG6" firstAttribute="leading" secondItem="5xO-cN-DbP" secondAttribute="leading" id="RQM-uj-Bx8"/>
                             <constraint firstItem="MYF-uv-dMs" firstAttribute="centerX" secondItem="5xO-cN-DbP" secondAttribute="centerX" id="bHM-xC-d4n"/>
                             <constraint firstAttribute="trailing" secondItem="MYF-uv-dMs" secondAttribute="trailing" constant="30" id="hJ0-5m-lF2"/>
-                            <constraint firstItem="MYF-uv-dMs" firstAttribute="centerY" secondItem="5xO-cN-DbP" secondAttribute="centerY" id="oyg-TA-Cj7"/>
+                            <constraint firstItem="MYF-uv-dMs" firstAttribute="centerY" secondItem="5xO-cN-DbP" secondAttribute="centerY" multiplier="0.7" id="oyg-TA-Cj7"/>
                             <constraint firstItem="MYF-uv-dMs" firstAttribute="leading" secondItem="5xO-cN-DbP" secondAttribute="leading" constant="30" id="w85-Kf-87d"/>
                         </constraints>
                     </view>

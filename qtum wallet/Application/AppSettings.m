@@ -20,6 +20,7 @@
 @property (assign, nonatomic) BOOL isMainNet;
 @property (assign, nonatomic) BOOL isRPC;
 @property (assign, nonatomic) BOOL isDarkTheme;
+@property (assign, nonatomic) NSInteger failedPinWaitingTime;
 
 @end
 
@@ -112,10 +113,22 @@
     return baseUrl;
 }
 
+-(NSInteger)failedPinWaitingTime {
+    return 10;
+}
+
 #pragma mark - Private Methods 
 
 -(void)setFingerprintEnabled:(BOOL)enabled {
     [NSUserDefaults saveIsFingerpringEnabled:enabled];
+}
+
+#pragma mark - Clearable
+
+-(void)clear {
+    
+    [NSUserDefaults saveLastFailedPinDate:nil];
+    [NSUserDefaults saveFailedPinCount:0];
 }
 
 

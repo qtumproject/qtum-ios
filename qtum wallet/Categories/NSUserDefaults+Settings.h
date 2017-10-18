@@ -43,13 +43,16 @@
 + (void)saveIsNotFirstTimeLaunch:(BOOL)value;
 + (BOOL)isNotFirstTimeLaunch;
 
-+ (void)saveIsLongPinSet:(BOOL)value;
-+ (BOOL)isLongPinSet;
-
 + (void)saveCurrentVersion:(NSString*) value;
 + (NSString*)currentVersion;
 
 + (void)savePublicAddresses:(NSArray*)addresses;
 + (NSArray*)getPublicAddresses;
+
++ (void)saveFailedPinCount:(NSInteger) count;
++ (NSInteger)getCountOfPinFailed;
+
++ (void)saveLastFailedPinDate:(NSDate*) date;
++ (NSDate*)getLastFailedPinDate;
 
 @end

@@ -222,6 +222,7 @@
     [[ContractManager sharedInstance] clear];
     [[TemplateManager sharedInstance] clear];
     [[QStoreManager sharedInstance] clear];
+    [[AppSettings sharedInstance] clear];
 }
 
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler {
