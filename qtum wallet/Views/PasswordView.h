@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, PasswordLenghtType) {
           lenght:(PasswordLenghtType)lenghtType;
 
 - (NSString*)getDigits;
+- (BOOL)isValidPasswordLenght;
 - (void)actionIncorrectPin;
 - (void)accessPinDenied;
 - (void)clearPinTextFields;

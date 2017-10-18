@@ -15,18 +15,11 @@
 @implementation ConfirmPinForExportViewControllerLight
 
 
-//- (BOOL)textField:(CustomTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-//    
-//    if (string.length && [string rangeOfString:@" "].location == NSNotFound) {
-//        textField.realText = [string substringToIndex:1];
-//        textField.text = @"•";
-//        [self redirectTextField:textField isReversed:NO];
-//    }else {
-//        textField.text = @"";
-//        [self redirectTextField:textField isReversed:YES];
-//    }
-//    return NO;
-//}
+-(void)configPasswordView {
+    
+    [self.passwordView setStyle:LightStyle lenght:YES ? ShortType : LongType];
+    self.passwordView.delegate = self;
+}
 
 -(void)keyboardWillShow:(NSNotification *)sender {
     

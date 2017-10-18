@@ -75,7 +75,7 @@ const float bottomOffset = 25;
 
 #pragma mark - Privat Methods
 
--(void)confirmPinWithDigits:(NSString*) digits {
+-(void)checkPinWithDigits:(NSString*) digits {
     
     __weak typeof(self) weakSelf = self;
     
@@ -88,6 +88,13 @@ const float bottomOffset = 25;
         [weakSelf.passwordView clearPinTextFields];
         [weakSelf.passwordView startEditing];
     }];
+}
+
+#pragma mark PasswordViewDelegate
+
+-(void)confirmPinWithDigits:(NSString*) digits {
+    
+    [self checkPinWithDigits:digits];
 }
 
 -(void)changeConstraintsAnimatedWithTime:(NSTimeInterval)time {
@@ -103,6 +110,13 @@ const float bottomOffset = 25;
 - (IBAction)actionCancel:(id)sender {
     
     [self.delegate didPressedCancel];
+}
+
+- (IBAction)actionEnterPin:(id)sender {
+    
+
+    [self checkPinWithDigits:[self.passwordView getDigits]];
+
 }
 
 #pragma mark - 

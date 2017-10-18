@@ -31,22 +31,11 @@
 
     self.bottomConstraintForCancelButton.constant = self.view.frame.size.height / 2. - textfieldsWithButtonHeight / 2.;
     
+    [self configPasswordView];
+    
     if (self.editingStarted) {
         [self startEditing];
     }
-}
-
--(void)didMoveToParentViewController:(UIViewController *)parent {
-    
-    [super didMoveToParentViewController:parent];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -55,8 +44,11 @@
      [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+#pragma mark - Configuration
+
+-(void)configPasswordView {
+    
+    self.passwordView.delegate = self;
 }
 #pragma mark - Keyboard
 
@@ -70,7 +62,7 @@
 -(void)startEditing {
     
     self.editingStarted = YES;
-//    [self.firstSymbolTextField becomeFirstResponder];
+    [self.passwordView startEditing];
 }
 
 -(void)stopEditing {
@@ -85,17 +77,15 @@
 
 #pragma mark - Actions
 
-- (IBAction)actionEnterPin:(id)sender {
-    
-//    self.shoudKeboardDismiss = YES;
-//    NSString* pin = [NSString stringWithFormat:@"%@%@%@%@",self.firstSymbolTextField.realText,self.secondSymbolTextField.realText,self.thirdSymbolTextField.realText,self.fourthSymbolTextField.realText];
-//    if (pin.length == 4) {
-//        if ([self.delegate respondsToSelector:@selector(passwordDidEntered:)]) {
-//            [self.delegate passwordDidEntered:pin];
-//        }
-//    } else {
-//        [self applyFailedPasswordAction];
-//    }
+#pragma mark PasswordViewDelegate
+
+-(void)confirmPinWithDigits:(NSString*) digits {
+        
+    self.shoudKeboardDismiss = YES;
+
+    if ([self.delegate respondsToSelector:@selector(passwordDidEntered:)]) {
+        [self.delegate passwordDidEntered:digits];
+    }
 }
 
 - (IBAction)actionCancel:(id)sender {
@@ -105,23 +95,18 @@
     }
 }
 
--(void)actionEnter:(id)sender {
-    
-    [self actionEnterPin:nil];
-}
-
 -(void)showLoginFields {
     
-//    self.pinContainer.hidden = NO;
-//    self.cancelButton.hidden = NO;
-//    [self.firstSymbolTextField becomeFirstResponder];
+    self.passwordView.hidden = NO;
+    self.cancelButton.hidden = NO;
+    [self.passwordView startEditing];
 }
 
 -(void)applyFailedPasswordAction {
     
-//    [self accessPinDenied];
-//    [self clearPinTextFields];
-//    [self.firstSymbolTextField becomeFirstResponder];
+    [self.passwordView accessPinDenied];
+    [self.passwordView clearPinTextFields];
+    [self.passwordView startEditing];
 }
 
 - (IBAction)didVoidTapAction:(id)sender {

@@ -42,7 +42,12 @@
 
 - (void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success))completision {
     
-    if (!self.pinOld) {
+    if (!self.pinOutput.passwordView.isValidPasswordLenght) {
+        
+        completision(NO);
+        [self enteringPinFailed];
+        
+    } else if (!self.pinOld) {
         if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
             //old pin confirmed
             self.pinOld = pin;
@@ -73,13 +78,18 @@
 
         } else {
             //confirming pin failed
-            self.pinOld = nil;
-            self.pinNew = nil;
             completision(NO);
-            [self.pinOutput.passwordView actionIncorrectPin];
-            [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter Old PIN", "")];
+            [self enteringPinFailed];
         }
     }
+}
+
+-(void)enteringPinFailed {
+    
+    self.pinOld = nil;
+    self.pinNew = nil;
+    [self.pinOutput.passwordView actionIncorrectPin];
+    [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter Old PIN", "")];
 }
 
 -(void)didPressedBack {

@@ -408,10 +408,15 @@
     NSString* digits = @"";
     for (CustomTextField* textField in self.textFieldsArray) {
         
-        digits = [digits stringByAppendingString:textField.realText];
+        digits = [digits stringByAppendingString:textField.realText ?: @""];
     }
     
     return digits;
+}
+
+- (BOOL)isValidPasswordLenght {
+    
+    return self.textFieldsArray.count == [self getDigits].length;
 }
 
 
