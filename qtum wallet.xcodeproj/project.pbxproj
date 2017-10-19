@@ -904,6 +904,7 @@
 		B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutput.h; sourceTree = "<group>"; };
 		B346AE201F00ECE300241C61 /* LoginViewOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutputDelegate.h; sourceTree = "<group>"; };
 		B346AE211F00EEDE00241C61 /* Presentable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presentable.h; sourceTree = "<group>"; };
+		B347D6FA1F8B5C5A005A2663 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3487A1F1E8D2B2B00BC66F1 /* HistoryDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDataStorage.h; sourceTree = "<group>"; };
 		B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDataStorage.m; sourceTree = "<group>"; };
 		B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHeaderCell.h; sourceTree = "<group>"; };
@@ -4479,6 +4480,7 @@
 				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
 				E7FD363C1DC4D07E00748177 /* main.m */,
 				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
+				B347D6FA1F8B5C5A005A2663 /* GoogleService-Info.plist */,
 				E7FD364C1DC4D07E00748177 /* Info.plist */,
 				D0BB7C121F87C2C900EC5C70 /* GoogleService-Info.plist */,
 			);
@@ -5109,7 +5111,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 41db5a1ea3ca62a26f56f41e07085664e42f9f95 1f0ea4bed2dacc368ad16cd4a824581fd7b8526917f01e88c15e720abc50f45d";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" FABRIC_API_KEY BUILD_SECRET";
 		};
 		EFC4163D6348EB02957DC3DD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
