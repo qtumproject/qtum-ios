@@ -137,6 +137,10 @@
 		B35572C71F90E886001AE34A /* NewsDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C61F90E886001AE34A /* NewsDataProvider.m */; };
 		B35572CA1F90EFDE001AE34A /* NetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C91F90EFDE001AE34A /* NetworkingService.m */; };
 		B35733271F97A69A00C64AAE /* ServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B35733261F97A69A00C64AAE /* ServiceLocator.m */; };
+		B35733301F97B2FE00C64AAE /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = B35733291F97ACCD00C64AAE /* TFHpple.m */; };
+		B35733311F97B32900C64AAE /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B357332C1F97ACCD00C64AAE /* TFHppleElement.m */; };
+		B35733321F97B32900C64AAE /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B357332E1F97ACCF00C64AAE /* XPathQuery.m */; };
+		B35733341F97B3A700C64AAE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B35733331F97B3A700C64AAE /* libxml2.tbd */; };
 		B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DF71E811D4500EBF094 /* RPCAdapter.m */; };
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
 		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
@@ -225,6 +229,12 @@
 		B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */; };
 		B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */; };
 		B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */; };
+		B3C8FAEA1F98922A000168AB /* QTUMFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8FAE91F98922A000168AB /* QTUMFeedItem.m */; };
+		B3C8FAEE1F98937A000168AB /* QTUMFeedParcer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8FAED1F98937A000168AB /* QTUMFeedParcer.m */; };
+		B3C8FAF11F989DF3000168AB /* QTUMHtmlParcer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8FAF01F989DF3000168AB /* QTUMHtmlParcer.m */; };
+		B3C8FAF41F989F9B000168AB /* QTUMHTMLTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8FAF31F989F9B000168AB /* QTUMHTMLTagItem.m */; };
+		B3C8FAF71F98A247000168AB /* QTUMNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8FAF61F98A247000168AB /* QTUMNewsItem.m */; };
+		B3C8FAFA1F98A6E1000168AB /* QTUMTagsAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8FAF91F98A6E1000168AB /* QTUMTagsAttribute.m */; };
 		B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */; };
 		B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF061F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m */; };
 		B3CBDF0A1F2A461D00C80D4E /* LibraryViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CBDF091F2A461D00C80D4E /* LibraryViewControllerDark.m */; };
@@ -934,6 +944,14 @@
 		B35572C91F90EFDE001AE34A /* NetworkingService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkingService.m; sourceTree = "<group>"; };
 		B35733251F97A69A00C64AAE /* ServiceLocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceLocator.h; sourceTree = "<group>"; };
 		B35733261F97A69A00C64AAE /* ServiceLocator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceLocator.m; sourceTree = "<group>"; };
+		B35733291F97ACCD00C64AAE /* TFHpple.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		B357332A1F97ACCD00C64AAE /* XPathQuery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		B357332B1F97ACCD00C64AAE /* TFHppleElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		B357332C1F97ACCD00C64AAE /* TFHppleElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		B357332D1F97ACCE00C64AAE /* TFHpple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		B357332E1F97ACCF00C64AAE /* XPathQuery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		B357332F1F97AF6600C64AAE /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libxml2.dylib; sourceTree = "<group>"; };
+		B35733331F97B3A700C64AAE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		B3597DF41E7FABF800EBF094 /* Requestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Requestable.h; sourceTree = "<group>"; };
 		B3597DF51E811D0500EBF094 /* RequestManagerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManagerAdapter.h; sourceTree = "<group>"; };
 		B3597DF61E811D4500EBF094 /* RPCAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCAdapter.h; sourceTree = "<group>"; };
@@ -1120,6 +1138,18 @@
 		B3C08B231ED467DA00713B15 /* TokenPropertyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenPropertyCell.h; sourceTree = "<group>"; };
 		B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenPropertyCell.m; sourceTree = "<group>"; };
 		B3C4553D1E89596A00420D7C /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = Carthage/Build/iOS/SocketIO.framework; sourceTree = "<group>"; };
+		B3C8FAE81F98922A000168AB /* QTUMFeedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMFeedItem.h; sourceTree = "<group>"; };
+		B3C8FAE91F98922A000168AB /* QTUMFeedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMFeedItem.m; sourceTree = "<group>"; };
+		B3C8FAEC1F98937A000168AB /* QTUMFeedParcer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMFeedParcer.h; sourceTree = "<group>"; };
+		B3C8FAED1F98937A000168AB /* QTUMFeedParcer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMFeedParcer.m; sourceTree = "<group>"; };
+		B3C8FAEF1F989DF3000168AB /* QTUMHtmlParcer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMHtmlParcer.h; sourceTree = "<group>"; };
+		B3C8FAF01F989DF3000168AB /* QTUMHtmlParcer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMHtmlParcer.m; sourceTree = "<group>"; };
+		B3C8FAF21F989F9B000168AB /* QTUMHTMLTagItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMHTMLTagItem.h; sourceTree = "<group>"; };
+		B3C8FAF31F989F9B000168AB /* QTUMHTMLTagItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMHTMLTagItem.m; sourceTree = "<group>"; };
+		B3C8FAF51F98A247000168AB /* QTUMNewsItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMNewsItem.h; sourceTree = "<group>"; };
+		B3C8FAF61F98A247000168AB /* QTUMNewsItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMNewsItem.m; sourceTree = "<group>"; };
+		B3C8FAF81F98A6E1000168AB /* QTUMTagsAttribute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMTagsAttribute.h; sourceTree = "<group>"; };
+		B3C8FAF91F98A6E1000168AB /* QTUMTagsAttribute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMTagsAttribute.m; sourceTree = "<group>"; };
 		B3CB56AC1ECEE8B300B23AE9 /* BalancePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancePageViewController.h; sourceTree = "<group>"; };
 		B3CB56AD1ECEE8B300B23AE9 /* BalancePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancePageViewController.m; sourceTree = "<group>"; };
 		B3CB56AF1ECF06D200B23AE9 /* Paginationable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginationable.h; sourceTree = "<group>"; };
@@ -1944,6 +1974,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B35733341F97B3A700C64AAE /* libxml2.tbd in Frameworks */,
 				E7FD365C1DC7360400748177 /* Security.framework in Frameworks */,
 				0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */,
 			);
@@ -2441,6 +2472,19 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		B35733281F97ACB900C64AAE /* HTTPParse */ = {
+			isa = PBXGroup;
+			children = (
+				B357332D1F97ACCE00C64AAE /* TFHpple.h */,
+				B35733291F97ACCD00C64AAE /* TFHpple.m */,
+				B357332B1F97ACCD00C64AAE /* TFHppleElement.h */,
+				B357332C1F97ACCD00C64AAE /* TFHppleElement.m */,
+				B357332A1F97ACCD00C64AAE /* XPathQuery.h */,
+				B357332E1F97ACCF00C64AAE /* XPathQuery.m */,
+			);
+			name = HTTPParse;
+			sourceTree = "<group>";
+		};
 		B35DF61D1F1F559500316953 /* Text View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2731,6 +2775,36 @@
 				B3F76A931EDDB81600108DE9 /* Contracts */,
 			);
 			name = "Tokens Templates";
+			sourceTree = "<group>";
+		};
+		B3C8FAE71F989206000168AB /* News */ = {
+			isa = PBXGroup;
+			children = (
+				B35733281F97ACB900C64AAE /* HTTPParse */,
+				B3C8FAEB1F989354000168AB /* Models */,
+				B35572C51F90E886001AE34A /* NewsDataProvider.h */,
+				B35572C61F90E886001AE34A /* NewsDataProvider.m */,
+				B3C8FAEC1F98937A000168AB /* QTUMFeedParcer.h */,
+				B3C8FAED1F98937A000168AB /* QTUMFeedParcer.m */,
+				B3C8FAEF1F989DF3000168AB /* QTUMHtmlParcer.h */,
+				B3C8FAF01F989DF3000168AB /* QTUMHtmlParcer.m */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		B3C8FAEB1F989354000168AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B3C8FAE81F98922A000168AB /* QTUMFeedItem.h */,
+				B3C8FAE91F98922A000168AB /* QTUMFeedItem.m */,
+				B3C8FAF21F989F9B000168AB /* QTUMHTMLTagItem.h */,
+				B3C8FAF31F989F9B000168AB /* QTUMHTMLTagItem.m */,
+				B3C8FAF51F98A247000168AB /* QTUMNewsItem.h */,
+				B3C8FAF61F98A247000168AB /* QTUMNewsItem.m */,
+				B3C8FAF81F98A6E1000168AB /* QTUMTagsAttribute.h */,
+				B3C8FAF91F98A6E1000168AB /* QTUMTagsAttribute.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		B3CBDF141F2B11B700C80D4E /* Smart Contract Menu */ = {
@@ -3482,6 +3556,7 @@
 		B3F5797E1F0D297900A13571 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B3C8FAE71F989206000168AB /* News */,
 				B35733251F97A69A00C64AAE /* ServiceLocator.h */,
 				B35733261F97A69A00C64AAE /* ServiceLocator.m */,
 				B387AB421EF04911001D2FF1 /* TemplateManager.h */,
@@ -3508,8 +3583,6 @@
 				B3D5FE821F56F4BC006A2BF2 /* AbiTypesProcessor.m */,
 				D059BE791F84E4A70045ABA0 /* PaymentValuesManager.h */,
 				D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */,
-				B35572C51F90E886001AE34A /* NewsDataProvider.h */,
-				B35572C61F90E886001AE34A /* NewsDataProvider.m */,
 				B35572C81F90EFDE001AE34A /* NetworkingService.h */,
 				B35572C91F90EFDE001AE34A /* NetworkingService.m */,
 			);
@@ -4425,6 +4498,7 @@
 		E7FD362F1DC4D07E00748177 = {
 			isa = PBXGroup;
 			children = (
+				B357332F1F97AF6600C64AAE /* libxml2.dylib */,
 				B33EAF8B1E5EC262006125F3 /* iMessageExtension */,
 				E730AB551EE6A5D100132711 /* QTUM Watch */,
 				E730AB641EE6A5D100132711 /* QTUM Watch Extension */,
@@ -4646,6 +4720,7 @@
 		F94C279886F936AB7B4DA6F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B35733331F97B3A700C64AAE /* libxml2.tbd */,
 				B3C4553D1E89596A00420D7C /* SocketIO.framework */,
 				E71AF24C1E0178C50068595B /* libCoreBitcoin.a */,
 				E7FD365B1DC7360400748177 /* Security.framework */,
@@ -5199,6 +5274,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B35733311F97B32900C64AAE /* TFHppleElement.m in Sources */,
+				B35733321F97B32900C64AAE /* XPathQuery.m in Sources */,
+				B35733301F97B2FE00C64AAE /* TFHpple.m in Sources */,
 				E73D9C8D1ECB19D000A09CFE /* SplashViewController.m in Sources */,
 				E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */,
 				B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */,
@@ -5322,6 +5400,7 @@
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
 				E7C101CF1F1529F700848526 /* RecieveViewControllerLight.m in Sources */,
 				B3CBDF2D1F2B41EB00C80D4E /* SmartContractsListViewControllerLight.m in Sources */,
+				B3C8FAEE1F98937A000168AB /* QTUMFeedParcer.m in Sources */,
 				B342DB781F61808E0052A367 /* NSNumber+Format.m in Sources */,
 				B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */,
 				B366CA221F1D0AC700EF3273 /* NSData+AES256.m in Sources */,
@@ -5415,6 +5494,7 @@
 				B36EBC421F2F1E1600F4E2F2 /* SecurityPopupViewControllerDark.m in Sources */,
 				B3DB3E621F306CFB00AA408F /* BackupContractsViewControllerLight.m in Sources */,
 				E784F8C51F023C4F00A513BF /* QStoreTableSource.m in Sources */,
+				B3C8FAF71F98A247000168AB /* QTUMNewsItem.m in Sources */,
 				E713A47E1EEE98E900A2FA40 /* CheckboxButton.m in Sources */,
 				B3427FCD1F54095400182E95 /* AboutOutputViewControllerDark.m in Sources */,
 				B32B32D91ECCC2AC0081260A /* AbiinterfaceItem.m in Sources */,
@@ -5517,6 +5597,7 @@
 				B3CBDF231F2B2C0500C80D4E /* ChoiseSmartContractCellDark.m in Sources */,
 				B321E8871E0D07A000DC7DE5 /* BorderedLabel.m in Sources */,
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
+				B3C8FAEA1F98922A000168AB /* QTUMFeedItem.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
 				B35DF6491F27329E00316953 /* TokenDetailTableViewLight.m in Sources */,
 				B36505AA1F16017300521603 /* ExportBrainKeyViewControllerLight.m in Sources */,
@@ -5544,12 +5625,14 @@
 				B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */,
 				B32BC4AE1F28C70600C2417C /* PinViewControllerLight.m in Sources */,
 				B35572CA1F90EFDE001AE34A /* NetworkingService.m in Sources */,
+				B3C8FAFA1F98A6E1000168AB /* QTUMTagsAttribute.m in Sources */,
 				B3D5FE8C1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m in Sources */,
 				B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,
 				B36EBC341F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m in Sources */,
 				B3846DD61DFEFA6500D6872C /* UIAlertController+Extensions.m in Sources */,
+				B3C8FAF11F989DF3000168AB /* QTUMHtmlParcer.m in Sources */,
 				B3CBDF0A1F2A461D00C80D4E /* LibraryViewControllerDark.m in Sources */,
 				B321428D1E0153F000489BB1 /* CustomTextField.m in Sources */,
 				E745BA1D1F21E78E00B2E216 /* NewsTableCellDark.m in Sources */,
@@ -5665,6 +5748,7 @@
 				B32C3CFC1E112A300094C82C /* WalletNavigationController.m in Sources */,
 				B3D5FE5E1F56B7B2006A2BF2 /* AbiParameterTypeBool.m in Sources */,
 				E73CF6CE1EE2CFB00044DF78 /* ConfirmPopUpViewController.m in Sources */,
+				B3C8FAF41F989F9B000168AB /* QTUMHTMLTagItem.m in Sources */,
 				E74857991F13C01800DCF9A6 /* LanguageTableViewCellDark.m in Sources */,
 				B3EA53071F46D9CD002FD201 /* QStoreTableViewCellDark.m in Sources */,
 				E784F8C21F023C1800A513BF /* QStoreTableViewCell.m in Sources */,
@@ -6282,6 +6366,31 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qtum wallet/Application/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFJSONRPCClient\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/CoreBitcoin\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseMessaging\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleToolboxForMac\"",
+					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatter\"",
+					"\"${PODS_ROOT}/Headers/Public/MTBBarcodeScanner\"",
+					"\"${PODS_ROOT}/Headers/Public/MWFeedParser\"",
+					"\"${PODS_ROOT}/Headers/Public/OpenSSL-Universal\"",
+					"\"${PODS_ROOT}/Headers/Public/Protobuf\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/nanopb\"",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "qtum wallet/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -6310,6 +6419,31 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/qtum wallet/Application/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFJSONRPCClient\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/CoreBitcoin\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseMessaging\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleToolboxForMac\"",
+					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatter\"",
+					"\"${PODS_ROOT}/Headers/Public/MTBBarcodeScanner\"",
+					"\"${PODS_ROOT}/Headers/Public/MWFeedParser\"",
+					"\"${PODS_ROOT}/Headers/Public/OpenSSL-Universal\"",
+					"\"${PODS_ROOT}/Headers/Public/Protobuf\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/nanopb\"",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "qtum wallet/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
