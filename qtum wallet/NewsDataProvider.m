@@ -40,34 +40,10 @@
     
     if (self != nil) {
         
-        [self authorise];
         _networkService = [[NetworkingService alloc] initWithBaseUrl:@"https://api.medium.com/v1"];
         _networkService.accesToken = @"2df96f4271bd76950229972d74a9bc6d456bfae100b1201c90a8947f647733343";
-        [self authorise];
     }
     return self;
-}
-
--(void)authorise {
-    
-    QTUMFeedParcer* parcer = [[QTUMFeedParcer alloc] init];
-    [parcer parceFeedFromUrl:@"https://medium.com/feed/@Qtum" withCompletion:^(NSArray<QTUMFeedItem *> *feeds) {
-        
-        QTUMHtmlParcer* htmlParcer = [[QTUMHtmlParcer alloc] init];
-        
-        for (QTUMFeedItem* feedItem in feeds) {
-            
-            [htmlParcer parceNewsFromHTMLString:feedItem.summary withCompletion:^(NSArray<QTUMHTMLTagItem *> *feeds) {
-                
-                NSLog(@"%@", feedItem.summary);
-            }];
-        }
-        
-        self.htmlParcer = htmlParcer;
-        
-    }];
-    self.parcer = parcer;
-
 }
 
 -(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion {
@@ -75,29 +51,43 @@
     self.completion = completion;
     
     __weak __typeof(self)weakSelf = self;
+    
+    NSMutableArray <QTUMNewsItem*>* news = @[].mutableCopy;
+    
+    dispatch_group_t downloadGoup = dispatch_group_create();
 
     QTUMFeedParcer* parcer = [[QTUMFeedParcer alloc] init];
+    
+    //1 parcing feed from medium
+
     [parcer parceFeedFromUrl:@"https://medium.com/feed/@Qtum" withCompletion:^(NSArray<QTUMFeedItem *> *feeds) {
         
         QTUMHtmlParcer* htmlParcer = [[QTUMHtmlParcer alloc] init];
         
-        NSMutableArray <QTUMNewsItem*>* news = @[].mutableCopy;
-        
+        //2 parcing html from each feed
+
         for (QTUMFeedItem* feedItem in feeds) {
             
+            dispatch_group_enter(downloadGoup);
+            
+            //3 creating news objects
+
             [htmlParcer parceNewsFromHTMLString:feedItem.summary withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
                 
                 dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     
                     QTUMNewsItem* newsItem = [[QTUMNewsItem alloc] initWithTags:tags andFeed:feedItem];
                     [news addObject:newsItem];
+                    dispatch_group_leave(downloadGoup);
                 });
          
             }];
         }
         
-        dispatch_async( dispatch_get_main_queue(), ^{
+        dispatch_group_notify(downloadGoup, dispatch_get_main_queue(),^{
             
+            //4 return created news
+
             if (weakSelf.completion) {
                 weakSelf.completion(news);
             }
@@ -106,6 +96,7 @@
         weakSelf.htmlParcer = htmlParcer;
         
     }];
+
     self.parcer = parcer;
 }
 

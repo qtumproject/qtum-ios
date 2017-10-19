@@ -21,7 +21,8 @@
 
 @implementation NewsCoordinator
 
--(instancetype)initWithNavigationController:(UINavigationController*)navigationController{
+-(instancetype)initWithNavigationController:(UINavigationController*)navigationController {
+    
     self = [super init];
     if (self) {
         _navigationController = navigationController;
@@ -43,8 +44,10 @@
 
 #pragma mark - NewsOutputDelegate
 
--(void)refreshTableViewData{
+-(void)refreshTableViewData {
+    
     __weak __typeof(self) weakSelf = self;
+    
     [[ApplicationCoordinator sharedInstance].requestManager getNews:^(id responseObject) {
         [weakSelf parceResponse:responseObject];
         [weakSelf.newsController reloadTableView];
