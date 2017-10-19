@@ -14,9 +14,11 @@
 #import "QTUMHtmlParcer.h"
 
 @interface NewsDataProvider ()
+
 @property (strong, nonatomic) NetworkingService* networkService;
 @property (strong, nonatomic) QTUMFeedParcer* parcer;
 @property (strong, nonatomic) QTUMHtmlParcer* htmlParcer;
+@property (nonatomic, copy) QTUMNewsItems completion;
 
 @end
 
@@ -65,10 +67,46 @@
         
     }];
     self.parcer = parcer;
-    
-    
 
+}
 
+-(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion {
+    
+    self.completion = completion;
+    
+    __weak __typeof(self)weakSelf = self;
+
+    QTUMFeedParcer* parcer = [[QTUMFeedParcer alloc] init];
+    [parcer parceFeedFromUrl:@"https://medium.com/feed/@Qtum" withCompletion:^(NSArray<QTUMFeedItem *> *feeds) {
+        
+        QTUMHtmlParcer* htmlParcer = [[QTUMHtmlParcer alloc] init];
+        
+        NSMutableArray <QTUMNewsItem*>* news = @[].mutableCopy;
+        
+        for (QTUMFeedItem* feedItem in feeds) {
+            
+            [htmlParcer parceNewsFromHTMLString:feedItem.summary withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
+                
+                dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    
+                    QTUMNewsItem* newsItem = [[QTUMNewsItem alloc] initWithTags:tags andFeed:feedItem];
+                    [news addObject:newsItem];
+                });
+         
+            }];
+        }
+        
+        dispatch_async( dispatch_get_main_queue(), ^{
+            
+            if (weakSelf.completion) {
+                weakSelf.completion(news);
+            }
+        });
+        
+        weakSelf.htmlParcer = htmlParcer;
+        
+    }];
+    self.parcer = parcer;
 }
 
 

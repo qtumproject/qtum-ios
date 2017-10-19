@@ -77,22 +77,28 @@
     
     for (TFHppleElement* happleElement in elements) {
         
+        if ([happleElement.tagName isEqualToString:@"text"]) {
+            continue;
+        }
+        
         QTUMHTMLTagItem* tag = [[QTUMHTMLTagItem alloc] init];
         tag.content = happleElement.content;
         tag.name = happleElement.tagName;
         tag.raw = happleElement.raw;
         
         NSMutableArray* attributes = @[].mutableCopy;
-//        for (TFHppleElement* attributesElement in happleElement.attributes) {
-//            
-//            QTUMTagsAttribute* attribute = [[QTUMTagsAttribute alloc] init];
-//            attribute.name = attributesElement.tagName;
-//            attribute.content = attributesElement.content;
-//            [attributes addObject:attribute];
-//        }
+        
+        for (NSString* attrName in happleElement.attributes) {
+            
+            QTUMTagsAttribute* attribute = [[QTUMTagsAttribute alloc] init];
+            attribute.name = attrName;
+            attribute.content = happleElement.attributes[attrName];
+            [attributes addObject:attribute];
+        }
 
         tag.attributes = attributes;
         
+
         [self.tagsItems addObject:tag];
         
         if (happleElement.children.count > 0) {
