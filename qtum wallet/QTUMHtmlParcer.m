@@ -55,12 +55,13 @@
         NSString *xpathQueryString = @"//div[@class='medium-parcing-container']";
         NSArray *nodes = [parser searchWithXPathQuery:xpathQueryString];
         
-        [weakSelf createThreeOfTagsWith:[nodes[0] children]];
+        NSArray *tagItems = [weakSelf createThreeOfTagsWith:[nodes[0] children]];
+        self.tagsItems = nil;
         
         if (weakSelf.completion) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.completion(self.tagsItems);
+                weakSelf.completion(tagItems);
             });
         }
     };
@@ -99,7 +100,7 @@
         }
     }
     
-    return nil;
+    return self.tagsItems;
 }
 
 @end
