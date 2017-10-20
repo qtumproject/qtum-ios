@@ -49,7 +49,8 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     ProfileTableViewCell *cell = (ProfileTableViewCell *)[super tableView:tableView cellForRowAtIndexPath:indexPath];
     
     cell.diclousereImageView.tintColor = customBlueColor();

@@ -65,7 +65,8 @@
         QTUMHtmlParcer* htmlParcer = [[QTUMHtmlParcer alloc] init];
         
         //2 parcing html from each feed
-
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        
         for (QTUMFeedItem* feedItem in feeds) {
             
             dispatch_group_enter(downloadGoup);
@@ -74,14 +75,20 @@
 
             [htmlParcer parceNewsFromHTMLString:feedItem.summary withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
                 
+                QTUMFeedItem* feedItemBlock = feedItem;
+                
                 dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     
-                    QTUMNewsItem* newsItem = [[QTUMNewsItem alloc] initWithTags:tags andFeed:feedItem];
+                    QTUMNewsItem* newsItem = [[QTUMNewsItem alloc] initWithTags:tags andFeed:feedItemBlock];
                     [news addObject:newsItem];
+                    
+                    dispatch_semaphore_signal(semaphore);
                     dispatch_group_leave(downloadGoup);
                 });
-         
+                
             }];
+            
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         }
         
         dispatch_group_notify(downloadGoup, dispatch_get_main_queue(),^{

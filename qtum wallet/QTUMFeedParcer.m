@@ -55,9 +55,7 @@
         [feedParser parse];
         weakSelf.feedParcer = feedParser;
     };
-    
 
-    
     self.completion = completion;
     [self.workingQueue addOperationWithBlock:block];
 }
@@ -100,9 +98,11 @@
         
         if (weakSelf.completion) {
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.completion(qtumFeeds);
-            });
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                weakSelf.completion(qtumFeeds);
+//            });
+            weakSelf.completion(qtumFeeds);
+
         }
     };
     

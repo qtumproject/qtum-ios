@@ -14,7 +14,8 @@
 @property (nonatomic, copy) NSString* raw;
 @property (nonatomic, copy) NSString* name;
 @property (nonatomic, copy) NSString* content;
-@property (nonatomic, copy) NSArray<QTUMTagsAttribute*>* attributes;
+@property (nonatomic, copy) NSDictionary* attributes;
+@property (nonatomic, copy) NSArray<QTUMHTMLTagItem*>* childrenTags;
 
 @end
 

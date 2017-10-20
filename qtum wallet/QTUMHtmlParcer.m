@@ -13,7 +13,6 @@
 @interface QTUMHtmlParcer ()
 
 @property (nonatomic, copy) QTUMTagsItems completion;
-@property (nonatomic, strong) NSMutableArray<QTUMHTMLTagItem*>* tagsItems;
 @property (nonatomic, strong) NSOperationQueue* workingQueue;
 @property (nonatomic, strong) TFHpple *parser;
 @end
@@ -32,14 +31,6 @@
     return _workingQueue;
 }
 
--(NSMutableArray*)tagsItems {
-    
-    if (!_tagsItems) {
-        _tagsItems = @[].mutableCopy;
-    }
-    return _tagsItems;
-}
-
 #pragma mark - Public
 
 -(void)parceNewsFromHTMLString:(NSString*) html withCompletion:(QTUMTagsItems) completion {
@@ -56,7 +47,6 @@
         NSArray *nodes = [parser searchWithXPathQuery:xpathQueryString];
         
         NSArray *tagItems = [weakSelf createThreeOfTagsWith:[nodes[0] children]];
-        self.tagsItems = nil;
         
         if (weakSelf.completion) {
             
@@ -75,9 +65,11 @@
 
 -(NSArray<QTUMHTMLTagItem*>*)createThreeOfTagsWith:(NSArray<TFHppleElement*>*) elements{
     
+    NSMutableArray<QTUMHTMLTagItem*>* tagsItems = @[].mutableCopy;
+    
     for (TFHppleElement* happleElement in elements) {
         
-        if ([happleElement.tagName isEqualToString:@"text"]) {
+        if ([happleElement.tagName isEqualToString:@"text"] || [happleElement.tagName isEqualToString:@"script"]) {
             continue;
         }
         
@@ -85,28 +77,17 @@
         tag.content = happleElement.content;
         tag.name = happleElement.tagName;
         tag.raw = happleElement.raw;
-        
-        NSMutableArray* attributes = @[].mutableCopy;
-        
-        for (NSString* attrName in happleElement.attributes) {
-            
-            QTUMTagsAttribute* attribute = [[QTUMTagsAttribute alloc] init];
-            attribute.name = attrName;
-            attribute.content = happleElement.attributes[attrName];
-            [attributes addObject:attribute];
-        }
-
-        tag.attributes = attributes;
-        
-
-        [self.tagsItems addObject:tag];
+        tag.attributes = happleElement.attributes;
         
         if (happleElement.children.count > 0) {
-            [self createThreeOfTagsWith:happleElement.children];
+            
+            tag.childrenTags = [self createThreeOfTagsWith:happleElement.children];
         }
+        
+        [tagsItems addObject:tag];
     }
     
-    return self.tagsItems;
+    return [tagsItems copy];
 }
 
 @end

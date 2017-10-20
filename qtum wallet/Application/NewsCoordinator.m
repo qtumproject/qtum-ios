@@ -9,12 +9,13 @@
 #import "NewsCoordinator.h"
 #import "NewsCellModel.h"
 #import "NewsOutput.h"
-#import "NewsTableSourceOutput.h"
+#import "NewsDetailOutput.h"
+#import "NewsDataProvider.h"
+#import "NewsDetailCellBuilder.h"
 
 @interface NewsCoordinator () <NewsOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController *navigationController;
-@property (strong, nonatomic) NSObject<NewsTableSourceOutput> *newsTableSource;
 @property (weak, nonatomic) NSObject<NewsOutput> *newsController;
 
 @end
@@ -34,12 +35,10 @@
 
 -(void)start {
     
-    self.newsController = (NSObject<NewsOutput> *)self.navigationController.viewControllers[0];
-    self.newsTableSource = [[TableSourcesFactory sharedInstance] createNewsSource];
-    
-    self.newsTableSource.dataArray = @[];
-    self.newsController.tableSource = self.newsTableSource;
-    self.newsController.delegate = self;
+    NSObject<NewsOutput> *newsOutput = [[ControllersFactory sharedInstance] createNewsOutput];
+    newsOutput.delegate = self;
+    [self.navigationController setViewControllers:@[[newsOutput toPresent]]];
+    self.newsController = newsOutput;
 }
 
 #pragma mark - NewsOutputDelegate
@@ -47,29 +46,27 @@
 -(void)refreshTableViewData {
     
     __weak __typeof(self) weakSelf = self;
-    
-    [[ApplicationCoordinator sharedInstance].requestManager getNews:^(id responseObject) {
-        [weakSelf parceResponse:responseObject];
+    [[NewsDataProvider sharedInstance] getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
+        weakSelf.newsController.news = news;
         [weakSelf.newsController reloadTableView];
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        [weakSelf.newsController failedToGetData];
     }];
 }
 
--(void)openNewsLink {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://medium.com/@Qtum/"]];
+-(void)didSelectCellWithNews:(QTUMNewsItem*) newsItem {
+    
+    [self showNewsWithNewsItem:newsItem];
 }
 
 #pragma mark - Private Methods
 
--(void)parceResponse:(id)response{
-    if (!response || ![response isKindOfClass:[NSArray class]]) { return; }
-    NSMutableArray* dataArray = @[].mutableCopy;
-    for (id item in response) {
-        NewsCellModel* object = [[NewsCellModel alloc] initWithDict:item];
-        [dataArray addObject:object];
-    }
-    self.newsTableSource.dataArray = dataArray;
+-(void)showNewsWithNewsItem:(QTUMNewsItem*) newsItem {
+    
+    NSObject<NewsDetailOutput> *newsOutput = [[ControllersFactory sharedInstance] createNewsDetailOutput];
+    newsOutput.newsItem = newsItem;
+    NewsDetailCellBuilder *cellBuilder = [NewsDetailCellBuilder new];
+    newsOutput.cellBuilder = cellBuilder;
+//    newsOutput.delegate = self;
+    [self.navigationController pushViewController:[newsOutput toPresent] animated:YES];
 }
 
 

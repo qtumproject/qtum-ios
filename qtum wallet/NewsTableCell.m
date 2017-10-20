@@ -11,6 +11,8 @@
 @implementation NewsTableCell
 
 -(void)prepareForReuse {
+    
+    [super prepareForReuse];
     self.titleLabel.text = @"";
     self.descriptionLabel.text = @"";
     self.dateLabel.text = @"";
@@ -18,13 +20,6 @@
 
 #pragma mark - Public Methods
 
--(void)setContentWithDict:(NewsCellModel*) object {
-    self.descriptionLabel.text = object.shortString;
-    self.titleLabel.text = object.title;
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"dd MMM"];
-    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[LanguageManager currentLanguageCode]]];
-    self.dateLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:object.date]];
-}
+
 
 @end
