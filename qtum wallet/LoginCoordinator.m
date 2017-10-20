@@ -114,36 +114,54 @@
 }
 
 -(void)enterPin:(NSString*) pin {
-    
-    NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
-    NSDate* lastFailedPinDate = [NSUserDefaults getLastFailedPinDate];
-    NSInteger minutsSinceLastFailed = [NSDate minutsSinceDate:lastFailedPinDate];
-    NSInteger waitingMinuts = [[AppSettings sharedInstance] failedPinWaitingTime];
-    BOOL isFailedStatePinEntering = failedCount >= 3 && lastFailedPinDate && minutsSinceLastFailed < waitingMinuts;
 
-    if (isFailedStatePinEntering) {
+    if (![self checkStatusAndShowTimeAlertIfNeeded]) {
         
-        [self showEnteringPinTimeFailedPopupWithMinuts:waitingMinuts - minutsSinceLastFailed];
-        [self.loginOutput clearTextFileds];
-        [self.loginOutput setInputsDisable:YES];
-    } else {
         if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin] && [[ApplicationCoordinator sharedInstance].walletManager startWithPin:pin]) {
             
             [NSUserDefaults saveFailedPinCount:0];
             [self loginUser];
         }else {
             
-            [NSUserDefaults saveFailedPinCount:++failedCount];
-            [NSUserDefaults saveLastFailedPinDate:[NSDate new]];
-            [self.loginOutput applyFailedPasswordAction];
+            [self updaLastFailedTimeToNow];
+            
+            if (![self checkStatusAndShowTimeAlertIfNeeded]) {
+                [self.loginOutput applyFailedPasswordAction];
+            }
         }
     }
 }
 
--(void)showEnteringPinTimeFailedPopupWithMinuts:(NSInteger) minuts {
+-(BOOL)checkStatusAndShowTimeAlertIfNeeded {
+    
+    NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
+    NSDate* lastFailedPinDate = [NSUserDefaults getLastFailedPinDate];
+    NSInteger minutsSinceLastFailed = [NSDate minutsSinceDate:lastFailedPinDate];
+    NSInteger waitingMinuts = [[AppSettings sharedInstance] failedPinWaitingTime];
+    BOOL isFailedStatePinEntering = failedCount >= 3 && lastFailedPinDate && minutsSinceLastFailed < waitingMinuts;
+    
+    if (isFailedStatePinEntering) {
+        
+        [self clearFieldsAndShowEnteringPinTimeFailedPopupWithMinuts:waitingMinuts - minutsSinceLastFailed];
+        return YES;
+    }
+    
+    return isFailedStatePinEntering;
+}
+
+-(void)clearFieldsAndShowEnteringPinTimeFailedPopupWithMinuts:(NSInteger) minuts {
     
     NSString* failedText = [NSString stringWithFormat:NSLocalizedString(@"Sorry, Please try again in %li minutes", nil),(long)minuts];
     [self showErrorPopUp:failedText];
+    [self.loginOutput clearTextFileds];
+    [self.loginOutput setInputsDisable:YES];
+}
+
+-(void)updaLastFailedTimeToNow {
+    
+    NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
+    [NSUserDefaults saveFailedPinCount:++failedCount];
+    [NSUserDefaults saveLastFailedPinDate:[NSDate new]];
 }
 
 - (void)showErrorPopUp:(NSString *)message {
