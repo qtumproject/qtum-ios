@@ -68,6 +68,7 @@
 
 
 -(void)getImageWithUrl:(NSString*)url withResultHandler:(void(^)(UIImage* image)) complete{
+    
     if ([url isKindOfClass:[NSNull class]]) {
         complete(nil);
         return;

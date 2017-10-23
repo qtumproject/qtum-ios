@@ -10,49 +10,65 @@
 #import "QTUMDefaultTagCell.h"
 #import "QTUMImageTagCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ServiceLocator.h"
 
 @implementation NewsDetailCellBuilder
 
--(UITableViewCell*)getCellWithTagItem:(QTUMHTMLTagItem*)tag fromTable:(UITableView*) tableView {
+-(UITableViewCell*)getCellWithTagItem:(QTUMHTMLTagItem*)tag fromTable:(UITableView*) tableView withIndexPath:(NSIndexPath*) indexPath {
     
+    UITableViewCell* cell;
     if ([tag.name isEqualToString:@"figure"]) {
-        
-        NSArray<QTUMHTMLTagItem*>*childrens = tag.childrenTags;
-        QTUMHTMLTagItem* imageTag;
-        
-        for (QTUMHTMLTagItem* childrenTag in childrens) {
-            if ([childrenTag.name isEqualToString:@"img"]) {
-                imageTag = childrenTag;
-                break;
-            }
-        }
-        
-        if (imageTag) {
-            
-            QTUMImageTagCell *cell = [tableView dequeueReusableCellWithIdentifier:QTUMImageTagCellReuseIdentifire];
-            
-            NSURL *url = [NSURL URLWithString:imageTag.attributes[@"src"]];
-            NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//            UIImage *placeholderImage = [UIImage imageNamed:@"your_placeholder"];
-            
-            __weak QTUMImageTagCell *weakCell = cell;
-            
-            [cell.tagImageView setImageWithURLRequest:request
-                                  placeholderImage:nil
-                                           success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                               
-                                               weakCell.tagImageView.image = image;
-                                               [weakCell setNeedsLayout];
-                                               
-                                           } failure:nil];
-            return cell;
-        } 
+        cell = [self createFigureWithTagItem:tag fromTable:tableView withIndexPath:indexPath];
     }
     
-    QTUMDefaultTagCell *cell = [tableView dequeueReusableCellWithIdentifier:QTUMDefaultTagCellReuseIdentifire];
+    if (!cell) {
+        QTUMDefaultTagCell *cell = [tableView dequeueReusableCellWithIdentifier:QTUMDefaultTagCellReuseIdentifire];
+        cell.contentLabel.text = tag.content;
+        return cell;
+    } else {
+        return cell;
+    }
+}
+
+-(UITableViewCell*)createFigureWithTagItem:(QTUMHTMLTagItem*)tag
+                                 fromTable:(UITableView*) tableView
+                             withIndexPath:(NSIndexPath*) indexPath {
     
-    cell.contentLabel.text = tag.content;
-    return cell;
+    NSArray<QTUMHTMLTagItem*>*childrens = tag.childrenTags;
+    QTUMHTMLTagItem* imageTag;
+    
+    for (QTUMHTMLTagItem* childrenTag in childrens) {
+        
+        if ([childrenTag.name isEqualToString:@"img"]) {
+            imageTag = childrenTag;
+            break;
+        }
+    }
+    
+    if (imageTag) {
+        
+        QTUMImageTagCell *cell = [tableView dequeueReusableCellWithIdentifier:QTUMImageTagCellReuseIdentifire];
+        
+        
+        NSString *urlString = imageTag.attributes[@"src"];
+        
+        __weak QTUMImageTagCell *weakCell = cell;
+        
+        cell.tagImageView.associatedObject = urlString;
+        
+        [SLocator.imageLoader getImageWithUrl:urlString withResultHandler:^(UIImage *image) {
+            
+            if ([weakCell.tagImageView.associatedObject isEqualToString:urlString] && image) {
+                
+                weakCell.tagImageView.contentMode = UIViewContentModeScaleAspectFit;
+                weakCell.tagImageView.image = image;
+            }
+        }];
+        
+        return cell;
+    }
+
+    return nil;
 }
 
 @end

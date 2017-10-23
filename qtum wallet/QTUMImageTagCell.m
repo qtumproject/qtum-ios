@@ -10,10 +10,18 @@
 
 NSString * const QTUMImageTagCellReuseIdentifire = @"QTUMImageTagCellReuseIdentifire";
 
+@interface QTUMImageTagCell ()
+
+
+@end
+
 @implementation QTUMImageTagCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+-(void)prepareForReuse {
+    
+    [super prepareForReuse];
+    self.tagImageView.contentMode = UIViewContentModeCenter;
+    self.tagImageView.image = [UIImage imageNamed:@"news-placehodler"];
 }
 
 

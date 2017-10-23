@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpinnerView.h"
 
 extern NSString * const QTUMImageTagCellReuseIdentifire;
 

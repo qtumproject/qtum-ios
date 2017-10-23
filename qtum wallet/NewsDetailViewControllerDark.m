@@ -25,7 +25,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     QTUMHTMLTagItem* tag = self.newsItem.tags[indexPath.row];
-    return [self.cellBuilder getCellWithTagItem:tag fromTable:tableView];
+    return [self.cellBuilder getCellWithTagItem:tag fromTable:tableView withIndexPath:indexPath];
 }
 
 @end

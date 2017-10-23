@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -209,7 +210,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableCellLight" rowHeight="104" id="QTq-KU-GAK" customClass="NewsTableCellLight">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="104"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTq-KU-GAK" id="0hs-v4-S3u">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
@@ -254,7 +255,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="12" id="2rp-zj-tWc">
-                                        <rect key="frame" x="0.0" y="160" width="375" height="12"/>
+                                        <rect key="frame" x="0.0" y="159.5" width="375" height="12"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2rp-zj-tWc" id="rkY-zI-a8w">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="12"/>
@@ -308,7 +309,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1W-PK-UCT">
-                                                <rect key="frame" x="142" y="13.5" width="91.5" height="17"/>
+                                                <rect key="frame" x="142.5" y="13.5" width="91" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -437,7 +438,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnS-yl-jV3">
-                                                <rect key="frame" x="139" y="10.5" width="98.5" height="23"/>
+                                                <rect key="frame" x="138.5" y="10.5" width="98.5" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -493,18 +494,22 @@
                                             <outlet property="contentLabel" destination="4GH-ZA-qQA" id="4fN-jz-XeQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QTUMImageTagCellReuseIdentifire" rowHeight="120" id="V7l-if-IFw" customClass="QTUMImageTagCell">
-                                        <rect key="frame" x="0.0" y="148" width="375" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QTUMImageTagCellReuseIdentifire" rowHeight="212" id="V7l-if-IFw" customClass="QTUMImageTagCell">
+                                        <rect key="frame" x="0.0" y="148" width="375" height="212"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V7l-if-IFw" id="EGi-tK-EXl">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dmW-eg-sPF">
-                                                    <rect key="frame" x="10" y="10" width="355" height="100"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news-placehodler" translatesAutoresizingMaskIntoConstraints="NO" id="dmW-eg-sPF">
+                                                    <rect key="frame" x="10" y="10" width="355" height="192"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="dmW-eg-sPF" secondAttribute="height" multiplier="355:192" id="Lgh-4K-U7Q"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="dmW-eg-sPF" secondAttribute="bottom" constant="10" id="BtJ-bJ-BZi"/>
                                                 <constraint firstItem="dmW-eg-sPF" firstAttribute="top" secondItem="EGi-tK-EXl" secondAttribute="top" constant="10" id="aXo-RM-eEK"/>
@@ -545,4 +550,7 @@
             <point key="canvasLocation" x="3140" y="634.632683658171"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="news-placehodler" width="250" height="68"/>
+    </resources>
 </document>
