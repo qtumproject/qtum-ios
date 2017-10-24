@@ -83,6 +83,7 @@
 #import "QStoreTemplateDetailOutput.h"
 #import "AboutOutput.h"
 #import "ChooseReciveAddressOutput.h"
+#import "NewsDetailOutput.h"
 
 @implementation ControllersFactory
 
@@ -116,10 +117,11 @@
 
 -(UIViewController*)newsFlowTab {
     
-    NSObject<NewsOutput> *controller = (NSObject<NewsOutput>*)[UIViewController controllerInStoryboard:@"News" withIdentifire:@"NewsViewController"];
-    NewsNavigationController* nav = [[NewsNavigationController alloc] initWithRootViewController:[controller toPresent]];
+    NewsNavigationController* nav = [[NewsNavigationController alloc] init];
     return nav;
 }
+
+
 
 -(UITabBarController <TabbarOutput>*)createTabFlow {
     
@@ -384,6 +386,18 @@
     return controller;
 }
 
+-(NSObject<NewsDetailOutput>*)createNewsDetailOutput {
+    
+    NSObject<NewsDetailOutput> *output = (NSObject<NewsDetailOutput>*)[UIViewController controllerInStoryboard:@"News" withIdentifire:@"NewsDetailViewController"];
+    return output;
+}
+
+-(NSObject<NewsOutput>*)createNewsOutput {
+    
+    NSObject<NewsOutput> *output = (NSObject<NewsOutput>*)[UIViewController controllerInStoryboard:@"News" withIdentifire:@"NewsViewController"];
+    return output;
+}
+
 -(NSObject<AboutOutput> *)createAboutOutput {
     
     NSObject<AboutOutput> *output = (NSObject<AboutOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"AboutOutputViewController"];
@@ -471,5 +485,7 @@
     ShareTokenPopUpViewController* controller = (ShareTokenPopUpViewController *)[UIViewController controllerInStoryboard:@"ShareTokenPopUp" withIdentifire:@"ShareTokenPopUpViewController"];
     return controller;
 }
+
+
 
 @end

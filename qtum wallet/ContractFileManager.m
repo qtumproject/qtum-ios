@@ -11,20 +11,11 @@
 #import "NSString+Extension.h"
 #import "TokenCell.h"
 #import "TemplateManager.h"
+#import "ServiceLocator.h"
 
 @implementation ContractFileManager
 
-+ (instancetype)sharedInstance {
-    
-    static ContractFileManager *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
+- (instancetype)init {
     
     self = [super init];
     
@@ -57,7 +48,7 @@
 
 -(NSArray*)standartAbi {
     
-    return [self abiWithTemplate:[[TemplateManager sharedInstance] standartTokenTemplate].path];
+    return [self abiWithTemplate:[SLocator.templateManager standartTokenTemplate].path];
 }
 
 -(NSArray*)abiWithTemplate:(NSString*) templatePath {

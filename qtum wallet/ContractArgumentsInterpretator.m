@@ -20,26 +20,6 @@
 
 NSInteger standardParameterBatch = 32;
 
-+ (instancetype)sharedInstance {
-    
-    static ContractArgumentsInterpretator *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
-    
-    self = [super init];
-    
-    if (self != nil) {
-        
-    }
-    return self;
-}
-
 - (NSData*)contactArgumentsFromDictionary:(NSDictionary*) dict{
     return nil;
 }

@@ -14,8 +14,6 @@
 #import "ChooseTokenPaymentDelegateDataSourceLight.h"
 #import "LibraryTableSource.h"
 #import "FavouriteTemplatesCollectionSource.h"
-#import "NewsTableSourceDark.h"
-#import "NewsTableSourceLight.h"
 #import "TokenDetailDataDisplayManager.h"
 #import "TokenDetailsTableSource.h"
 #import "TokenDetailLightDisplayDataManager.h"
@@ -81,14 +79,6 @@
     }
 }
 
-- (NSObject<NewsTableSourceOutput> *)createNewsSource {
-    
-    if ([NSUserDefaults isDarkSchemeSetting]) {
-        return [NewsTableSourceDark new];
-    }else{
-        return [NewsTableSourceLight new];
-    }
-}
 
 - (NSObject<TokenDetailDataDisplayManager> *)createTokenDetailSource {
     

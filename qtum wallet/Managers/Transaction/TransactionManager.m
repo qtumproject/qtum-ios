@@ -17,6 +17,7 @@
 #import "Wallet.h"
 #import "NSNumber+Comparison.h"
 #import "TransactionScriptBuilder.h"
+#import "ServiceLocator.h"
 
 static NSString* op_exec = @"c1";
 
@@ -267,8 +268,8 @@ static NSInteger constantFee = 400000000;
         });
     }
     
-    AbiinterfaceItem* transferMethod = [[ContractInterfaceManager sharedInstance] tokenStandartTransferMethodInterface];
-    NSData* hashFuction = [[ContractInterfaceManager sharedInstance] hashOfFunction:transferMethod appendingParam:@[toAddress,[amount stringValue]]];
+    AbiinterfaceItem* transferMethod = [SLocator.contractInterfaceManager tokenStandartTransferMethodInterface];
+    NSData* hashFuction = [SLocator.contractInterfaceManager hashOfFunction:transferMethod appendingParam:@[toAddress,[amount stringValue]]];
     
     NSString* __block addressWithAmountValue = fromAddress;
     

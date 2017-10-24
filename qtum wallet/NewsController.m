@@ -22,27 +22,18 @@
 
 @implementation NewsController
 
+@synthesize news;
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
     [self configTableView];
     [self configPullRefresh];
-    [self configLogo];
-
     
-    [self getData];
-    
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
-    self.tableView.hidden = YES;
-}
-
--(void)configLogo {
-    
-    UIImage *originalImage = [UIImage imageNamed:@"new-logo.png"];
-    UIImage *tintedImage = [originalImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.logoView.tintColor = [self logoColor];
-    self.logoView.image = tintedImage;
+    if (!self.news) {
+        [self getData];
+    }
 }
 
 -(UIColor*)logoColor {
@@ -50,6 +41,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    
     [super viewWillDisappear:animated];
     [self endEditing:nil];
 }
@@ -60,66 +52,72 @@
 
 #pragma mark - Configuration
 
--(void)configPullRefresh{
+-(void)configPullRefresh {
+    
     self.refresh = [[UIRefreshControl alloc] init];
     [self.refresh setTintColor:customBlueColor()];
     [self.refresh addTarget:self action:@selector(actionRefresh) forControlEvents:UIControlEventValueChanged];
-
     [self.tableView addSubview:self.refresh];
 }
 
--(void)configTableView{
+-(void)configTableView {
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120.0f;
-    
-    self.tableView.delegate = self.tableSource;
-    self.tableView.dataSource = self.tableSource;
 }
 
 #pragma mark - Private Methods
 
--(IBAction)endEditing:(id)sender{
+-(IBAction)endEditing:(id)sender {
+    
     [self.view endEditing:YES];
 }
 
--(void)getData{
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+-(void)getData {
+    
     [self.delegate refreshTableViewData];
 }
 
-
--(void)reloadTableView{
-    [self reloadTable];
-}
-
--(void)failedToGetData{
-    [[PopUpsManager sharedInstance] dismissLoader];
-}
-
--(void)requestFailed{
-    [self.refresh endRefreshing];
-    [[PopUpsManager sharedInstance] dismissLoader];
-}
-
--(void)reloadTable{
+-(void)reloadTable {
+    
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         weakSelf.tableView.hidden = NO;
-        [[PopUpsManager sharedInstance] dismissLoader];
         [weakSelf.tableView reloadData];
         [weakSelf.refresh endRefreshing];
     });
 }
 
+#pragma mark - NewsOutput
+
+-(void)reloadTableView {
+    [self reloadTable];
+}
+
+-(void)startLoading {
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
+}
+
+-(void)stopLoadingIfNeeded {
+    [[PopUpsManager sharedInstance] dismissLoader];
+}
 
 #pragma mark - Actions
 
--(void)actionRefresh{
+-(void)actionRefresh {
+    
     [self getData];
 }
 
-- (IBAction)actionGoToLink:(id)sender {
-    [self.delegate openNewsLink];
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(didSelectCellWithNews:)]) {
+        [self.delegate didSelectCellWithNews:self.news[indexPath.row]];
+    }
 }
 
 @end

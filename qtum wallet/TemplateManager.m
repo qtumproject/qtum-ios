@@ -8,7 +8,7 @@
 
 #import "TemplateManager.h"
 #import "FXKeychain.h"
-#import "ContractFileManager.h"
+#import "ServiceLocator.h"
 #import "NSString+Extension.h"
 
 @interface TemplateManager ()
@@ -33,17 +33,7 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
 
 @implementation TemplateManager
 
-+ (instancetype)sharedInstance {
-    
-    static TemplateManager *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
+- (instancetype)init {
     
     self = [super init];
     
@@ -112,7 +102,7 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
                                                        options:NSJSONReadingMutableContainers
                                                          error:&err];
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
-    if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath]) {
+    if (jsonAbi && [SLocator.contractFileManager writeNewAbi:jsonAbi withPathName:filePath]) {
         TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:UndefinedContractType withuuid:[NSUUID UUID].UUIDString  path:filePath isFull:NO];
         [self.templates addObject:customToken];
         [self save];
@@ -133,7 +123,7 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
                                                          error:&err];
     
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
-    if (jsonAbi && [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath]) {
+    if (jsonAbi && [SLocator.contractFileManager writeNewAbi:jsonAbi withPathName:filePath]) {
         TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withuuid:[NSUUID UUID].UUIDString path:filePath isFull:NO];
         return customToken;
     }
@@ -154,9 +144,9 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
     
     NSString* filePath = [NSString randomStringWithLength:templatePathStringLengh];
     if (jsonAbi &&
-        [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath] &&
-        [[ContractFileManager sharedInstance] writeNewBitecode:bitecode withPathName:filePath] &&
-        [[ContractFileManager sharedInstance] writeNewSource:source withPathName:filePath]) {
+        [SLocator.contractFileManager writeNewAbi:jsonAbi withPathName:filePath] &&
+        [SLocator.contractFileManager writeNewBitecode:bitecode withPathName:filePath] &&
+        [SLocator.contractFileManager writeNewSource:source withPathName:filePath]) {
         
         TemplateModel* customToken = [[TemplateModel alloc] initWithTemplateName:contractAddress andType:TokenType withuuid:[NSUUID UUID].UUIDString path:filePath isFull:YES];
         [self.templates addObject:customToken];
@@ -209,7 +199,7 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
         jsonAbi = [NSJSONSerialization JSONObjectWithData:[abi dataUsingEncoding:NSUTF8StringEncoding]
                                                   options:NSJSONReadingMutableContainers
                                                     error:&err];
-        proccesWithoutErrors = proccesWithoutErrors & [[ContractFileManager sharedInstance] writeNewAbi:jsonAbi withPathName:filePath];
+        proccesWithoutErrors = proccesWithoutErrors & [SLocator.contractFileManager writeNewAbi:jsonAbi withPathName:filePath];
         abiSuccess = proccesWithoutErrors;
     } else {
         
@@ -217,13 +207,13 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
     }
     
     if (bitecode.length > 0) {
-        proccesWithoutErrors = proccesWithoutErrors & [[ContractFileManager sharedInstance] writeNewBitecode:bitecode withPathName:filePath];
+        proccesWithoutErrors = proccesWithoutErrors & [SLocator.contractFileManager writeNewBitecode:bitecode withPathName:filePath];
     } else {
         proccesWithoutErrors = NO;
     }
 
     if (source.length > 0) {
-        proccesWithoutErrors = proccesWithoutErrors & [[ContractFileManager sharedInstance] writeNewSource:source withPathName:filePath];
+        proccesWithoutErrors = proccesWithoutErrors & [SLocator.contractFileManager writeNewSource:source withPathName:filePath];
     }  else {
         proccesWithoutErrors = NO;
     }
@@ -266,7 +256,7 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
         
         NSMutableDictionary* backupItem = @{}.mutableCopy;
         TemplateModel* template = self.templates[i];
-        ContractFileManager* fileManager = [ContractFileManager sharedInstance];
+        ContractFileManager* fileManager = SLocator.contractFileManager;
         backupItem[kuuidKey] = template.uuid;
         backupItem[kNameKey] = template.templateName ?: @"";
         backupItem[kTypeKey] = template.templateTypeStringForBackup;

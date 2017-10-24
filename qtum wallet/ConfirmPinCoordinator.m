@@ -122,6 +122,26 @@
 
 -(void)enterPin:(NSString*) pin {
     
+    if (![self checkStatusAndShowTimeAlertIfNeeded]) {
+        
+        if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
+            
+            [NSUserDefaults saveFailedPinCount:0];
+            [self loginUser];
+        }else {
+            
+            [self updaLastFailedTimeToNow];
+            
+            if (![self checkStatusAndShowTimeAlertIfNeeded]) {
+                [self.loginOutput applyFailedPasswordAction];
+            }
+        }
+    }
+}
+
+
+-(BOOL)checkStatusAndShowTimeAlertIfNeeded {
+    
     NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
     NSDate* lastFailedPinDate = [NSUserDefaults getLastFailedPinDate];
     NSInteger minutsSinceLastFailed = [NSDate minutsSinceDate:lastFailedPinDate];
@@ -130,31 +150,29 @@
     
     if (isFailedStatePinEntering) {
         
-        [self showEnteringPinTimeFailedPopupWithMinuts:waitingMinuts - minutsSinceLastFailed];
-        [self.loginOutput clearTextFileds];
-        [self.loginOutput setInputsDisable:YES];
-    } else {
-        if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
-            
-            [NSUserDefaults saveFailedPinCount:0];
-            [self loginUser];
-            
-        }else {
-            
-            [NSUserDefaults saveFailedPinCount:++failedCount];
-            [NSUserDefaults saveLastFailedPinDate:[NSDate new]];
-            [self.loginOutput applyFailedPasswordAction];
-        }
+        [self clearFieldsAndShowEnteringPinTimeFailedPopupWithMinuts:waitingMinuts - minutsSinceLastFailed];
+        return YES;
     }
+    
+    return isFailedStatePinEntering;
 }
 
-#pragma mark - Popups
-
--(void)showEnteringPinTimeFailedPopupWithMinuts:(NSInteger) minuts {
+-(void)clearFieldsAndShowEnteringPinTimeFailedPopupWithMinuts:(NSInteger) minuts {
     
     NSString* failedText = [NSString stringWithFormat:NSLocalizedString(@"Sorry, Please try again in %li minutes", nil),(long)minuts];
     [self showErrorPopUp:failedText];
+    [self.loginOutput clearTextFileds];
+    [self.loginOutput setInputsDisable:YES];
 }
+
+-(void)updaLastFailedTimeToNow {
+    
+    NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
+    [NSUserDefaults saveFailedPinCount:++failedCount];
+    [NSUserDefaults saveLastFailedPinDate:[NSDate new]];
+}
+
+#pragma mark - Popups
 
 - (void)showErrorPopUp:(NSString *)message {
     

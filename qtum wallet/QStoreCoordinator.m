@@ -20,6 +20,7 @@
 #import "InterfaceInputFormModel.h"
 #import "ContractInterfaceManager.h"
 #import "QStoreCategory.h"
+#import "ServiceLocator.h"
 
 @interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate, QStoreManagerSearchDelegate, QStoreListOutputDelegate, QStoreTemplateDetailOutputDelegate>
 
@@ -223,7 +224,7 @@
     
     NSObject<QStoreTemplateDetailOutput> *output = [[ControllersFactory sharedInstance] createQStoreTemplateDetailOutput];
     output.delegate = self;
-    InterfaceInputFormModel* interfaceInput = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractInterfaceManager sharedInstance] arrayFromAbiString:abi]];
+    InterfaceInputFormModel* interfaceInput = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractInterfaceManager arrayFromAbiString:abi]];
     output.formModel = interfaceInput;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }

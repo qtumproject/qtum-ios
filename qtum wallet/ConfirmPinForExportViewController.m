@@ -32,7 +32,15 @@
     self.bottomConstraintForCancelButton.constant = self.view.frame.size.height / 2. - textfieldsWithButtonHeight / 2.;
     
     [self configPasswordView];
+}
+
+-(void)willMoveToParentViewController:(UIViewController *)parent {
     
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
     if (self.editingStarted) {
         [self startEditing];
     }
@@ -59,9 +67,17 @@
     [self.view layoutIfNeeded];
 }
 
+-(void)keyboardWillHide:(NSNotification *)sender {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self startEditing];
+    });
+}
+
 -(void)startEditing {
     
     self.editingStarted = YES;
+    [self.passwordView clearPinTextFields];
     [self.passwordView becameFirstResponder];
 }
 

@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "QTUMNewsItem.h"
 
 @interface NewsDataProvider : NSObject
+
+typedef void(^QTUMNewsItems) (NSArray <QTUMNewsItem*>* feeds);
+
+-(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion;
+-(NSArray <QTUMNewsItem*>*)obtainNewsItems;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

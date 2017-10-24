@@ -29,6 +29,10 @@
                                              selector:@selector(keyboardDidShow:)
                                                  name:UIKeyboardDidShowNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
     self.editingEnabled = NO;
 }
 
@@ -48,6 +52,10 @@
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender{
+    [self.view layoutIfNeeded];
+}
+
+-(void)applicationWillEnterForeground {
     [self.view layoutIfNeeded];
 }
 

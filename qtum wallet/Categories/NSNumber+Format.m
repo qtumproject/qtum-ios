@@ -64,9 +64,10 @@
     NSDecimalNumber* powerDecimal = [power decimalNumber];
     NSDecimalNumber* numberDecimal = [self decimalNumber];
     
-    if (powerDecimal) {
+    if (powerDecimal && ![numberDecimal isEqual:[NSDecimalNumber notANumber]] && ![powerDecimal isEqual:[NSDecimalNumber notANumber]]) {
         return [numberDecimal decimalNumberByMultiplyingByPowerOf10: powerDecimal.shortValue];
     }
+    
     return numberDecimal;
 }
 

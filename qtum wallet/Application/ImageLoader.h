@@ -8,14 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageLoader : UITableViewCell
+@interface ImageLoader : NSObject
 
-+ (instancetype)sharedInstance;
-
-- (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
-+ (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
-+ (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
-
-- (void)getImageWithUrl:(NSString *)url withResultHandler:(void (^)(UIImage *image))complete;
+- (void)getImageWithUrl:(NSString *)url
+      withResultHandler:(void (^)(UIImage *image))complete;
 
 @end

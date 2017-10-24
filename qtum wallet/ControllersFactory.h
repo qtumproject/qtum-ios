@@ -82,6 +82,8 @@
 @protocol QStoreContractOutput;
 @protocol QStoreListOutput;
 @protocol AboutOutput;
+@protocol NewsOutput;
+@protocol NewsDetailOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -139,6 +141,8 @@
 - (NSObject <SplashScreenOutput> *)createSplashScreenOutput;
 - (NSObject <QStoreTemplateDetailOutput> *)createQStoreTemplateDetailOutput;
 - (NSObject <AboutOutput> *)createAboutOutput;
+- (NSObject <NewsOutput>*)createNewsOutput;
+- (NSObject <NewsDetailOutput>*)createNewsDetailOutput;
 
 // QStore
 - (NSObject <QStoreMainOutput> *)createQStoreMainViewController;

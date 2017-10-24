@@ -94,9 +94,21 @@
         
         NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
         NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:20.0f];
-        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:[params lastObject] attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
         
-        [self.scrollView addConstraints:@[left, right, top]];
+        if (params.count == 0) {
+            NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
+            
+            NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeTop multiplier:1.0f constant:30.0f];
+            
+            [self.scrollView addConstraint:center];
+            [self.scrollView addConstraint:top];
+        } else {
+            NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:[params lastObject] attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
+            
+            [self.scrollView addConstraint:top];
+        }
+        
+        [self.scrollView addConstraints:@[left, right]];
         
         UIButton *callButton = [[UIButton alloc] init];
         callButton.translatesAutoresizingMaskIntoConstraints = NO;

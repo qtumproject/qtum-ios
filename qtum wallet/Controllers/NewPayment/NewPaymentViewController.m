@@ -210,6 +210,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 -(void)updateSendButton {
+    
     BOOL isFilled = [self isTextFieldsFilled];
     
     self.sendButton.enabled = isFilled;
@@ -323,13 +324,17 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)clearFields {
+    
     self.addressTextField.text = @"";
     self.amountTextField.text = @"";
     self.amount = nil;
     self.adress = nil;
+    
+    [self updateSendButton];
 }
 
 - (void)updateContentWithContract:(Contract*) contract {
+    
     if (self.tokenTextField) {
         self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
         self.needUpdateTokenTexfFields = NO;
@@ -392,6 +397,7 @@ static NSInteger hidedGasTopForSend = -40;
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
+    
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
     if ([sender isKindOfClass:[InformationPopUpViewController class]]) {
         [self clearFields];
@@ -490,6 +496,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (NSString *)correctAmountString {
+    
     NSMutableString *amountString = [self.amountTextField.text mutableCopy];
     if ([amountString containsString:@","]) {
         [amountString replaceCharactersInRange:[amountString rangeOfString:@","] withString:@"."];
@@ -500,6 +507,7 @@ static NSInteger hidedGasTopForSend = -40;
 #pragma mark - Action
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
+    
     NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:[self correctAmountString]];
     
     NSString *address = self.addressTextField.text;

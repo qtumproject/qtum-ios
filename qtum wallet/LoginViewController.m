@@ -49,6 +49,16 @@ static NSInteger textfieldsWithButtonHeight = 250;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+}
+
+-(void)applicationWillEnterForeground {
+    
+    [self.passwordView setEditingDisabled:NO];
+}
+
 #pragma mark - Configuration
 
 -(void)configPasswordView {

@@ -39,6 +39,7 @@
 #import "TokenAddressLibraryCoordinator.h"
 #import "ChooseReciveAddressOutput.h"
 #import "NSNumber+Comparison.h"
+#import "ServiceLocator.h"
 
 @interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate, ChooseReciveAddressOutputDelegate>
 
@@ -186,7 +187,7 @@
     
     ShareTokenPopUpViewController *vc = [[PopUpsManager sharedInstance] showShareTokenPopUp:self presenter:nil completion:nil];
     vc.addressString = self.tokenDetailsViewController.token.contractAddress;
-    NSArray *arr = [[ContractFileManager sharedInstance] abiWithTemplate:self.tokenDetailsViewController.token.templateModel.path];
+    NSArray *arr = [SLocator.contractFileManager abiWithTemplate:self.tokenDetailsViewController.token.templateModel.path];
     NSData * jsonData = [NSJSONSerialization  dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
     NSString * abiString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     vc.abiString = abiString;
@@ -352,7 +353,7 @@
 - (void)copyAbiButtonPressed:(PopUpViewController *)sender {
     
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
-    [self copyTextAndShowPopUp:[[ContractFileManager sharedInstance] escapeAbiWithTemplate:self.tokenDetailsViewController.token.templateModel.path] isAbi:YES];
+    [self copyTextAndShowPopUp:[SLocator.contractFileManager escapeAbiWithTemplate:self.tokenDetailsViewController.token.templateModel.path] isAbi:YES];
 }
 
 - (void)copyTextAndShowPopUp:(NSString *)text isAbi:(BOOL)isAbi {

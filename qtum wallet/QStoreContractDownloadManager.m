@@ -7,7 +7,7 @@
 //
 
 #import "QStoreContractDownloadManager.h"
-#import "TemplateManager.h"
+#import "ServiceLocator.h"
 
 @interface QStoreContractDownloadManager ()
 
@@ -101,7 +101,7 @@
     
     if (abi && source && biteCode) {
         
-        return [[TemplateManager sharedInstance] createNewTemplateWithAbi:abi bitecode:biteCode source:source type:type uuid:uuid andName:name];
+        return [SLocator.templateManager createNewTemplateWithAbi:abi bitecode:biteCode source:source type:type uuid:uuid andName:name];
     }
     
     return NO;

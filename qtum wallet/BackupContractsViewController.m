@@ -8,6 +8,7 @@
 
 #import "BackupContractsViewController.h"
 #import "BackupFileManager.h"
+#import "ServiceLocator.h"
 
 @interface BackupContractsViewController () <UIDocumentMenuDelegate, UIDocumentPickerDelegate, PopUpViewControllerDelegate>
 
@@ -40,7 +41,7 @@
     
     __weak __typeof(self) weakSelf = self;
     if (!self.isBackupCreated) {
-        [BackupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
+        [SLocator.backupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
             DLog(@"%@",file);
             [weakSelf fileWasCreatedWithURL:path andSize:size];
             weakSelf.isBackupCreated = YES;
