@@ -518,7 +518,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (IBAction)didChangeFeeSlider:(UISlider *) slider {
-    NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithFloat:slider.value];
+    NSDecimalNumber* sliderValue = (NSDecimalNumber*)[[[NSDecimalNumber alloc] initWithFloat:slider.value] roundedNumberWithScale:5];
     self.FEE = sliderValue;
     self.feeTextField.text = [[NSString stringWithFormat:@"%@", self.FEE] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
