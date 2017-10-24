@@ -2,7 +2,7 @@
 //  NewsDetailViewControllerLight.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 20.10.17.
+//  Created by Vladimir Lebedevich on 20.10.17.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
