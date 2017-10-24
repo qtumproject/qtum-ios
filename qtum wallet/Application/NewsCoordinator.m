@@ -13,7 +13,7 @@
 #import "NewsDataProvider.h"
 #import "NewsDetailCellBuilder.h"
 
-@interface NewsCoordinator () <NewsOutputDelegate>
+@interface NewsCoordinator () <NewsOutputDelegate,NewsDetailOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (weak, nonatomic) NSObject<NewsOutput> *newsController;
@@ -73,6 +73,12 @@
     [self showNewsWithNewsItem:newsItem];
 }
 
+#pragma mark NewsDetailOutputDelegate
+
+-(void)didBackPressed {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - Private Methods
 
 -(void)showNewsWithNewsItem:(QTUMNewsItem*) newsItem {
@@ -81,7 +87,7 @@
     newsOutput.newsItem = newsItem;
     NewsDetailCellBuilder *cellBuilder = [NewsDetailCellBuilder new];
     newsOutput.cellBuilder = cellBuilder;
-//    newsOutput.delegate = self;
+    newsOutput.delegate = self;
     [self.navigationController pushViewController:[newsOutput toPresent] animated:YES];
 }
 

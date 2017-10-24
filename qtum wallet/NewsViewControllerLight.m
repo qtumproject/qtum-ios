@@ -22,7 +22,8 @@
     
     if (!_cellFormatter) {
         NSDateFormatter *formatter = [NSDateFormatter new];
-        [formatter setDateFormat:@"dd MMM"];
+        [formatter setDateFormat:@"MMM dd, YYYY hh:mm aa"];
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
         [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[LanguageManager currentLanguageCode]]];
         _cellFormatter = formatter;
     }
@@ -43,25 +44,5 @@
     
     return cell;
 }
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NewsTableCellLight* cell = (NewsTableCellLight*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.descriptionLabel.textColor = customBlackColor();
-    cell.titleLabel.textColor = customBlackColor();
-    cell.dateLabel.textColor = customBlackColor();
-}
-
-- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NewsTableCellLight* cell = (NewsTableCellLight*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.descriptionLabel.textColor = customBlueColor();
-    cell.titleLabel.textColor = customBlueColor();
-    cell.dateLabel.textColor = customBlueColor();
-}
-
-
 
 @end

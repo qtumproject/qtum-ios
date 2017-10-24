@@ -15,6 +15,9 @@ extern NSString * const QTUMParagrafTagCellReuseIdentifire;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
 
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *contentLabel;
+-(UIFont*)boldFont;
+-(UIFont*)regularFont;
+-(UIColor*)linkColor;
+-(UIColor*)textColor;
 
 @end

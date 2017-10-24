@@ -13,5 +13,21 @@ NSString * const QTUMParagrafTagCellReuseIdentifire = @"QTUMParagrafTagCellReuse
 
 @implementation QTUMParagrafTagCell
 
+-(UIFont*)boldFont {
+    
+    return [UIFont fontWithName:@"simplonmono-medium" size:18];
+}
+
+-(UIFont*)regularFont {
+    return [UIFont fontWithName:@"simplonmono-regular" size:16];
+}
+
+-(UIColor*)linkColor {
+    return customRedColor();
+}
+
+-(UIColor*)textColor {
+    return customBlueColor();
+}
 
 @end

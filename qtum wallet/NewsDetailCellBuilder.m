@@ -78,6 +78,12 @@
                                  fromTable:(UITableView*) tableView
                              withIndexPath:(NSIndexPath*) indexPath {
     
+    QTUMParagrafTagCell *cell = [tableView dequeueReusableCellWithIdentifier:QTUMParagrafTagCellReuseIdentifire];
+
+    UIFont* font = [cell regularFont];
+    UIFont* boldFont = [cell boldFont];
+    UIColor* textColor = [cell textColor];
+
     NSMutableAttributedString* attrib = tag.attributedContent.mutableCopy;
     [attrib beginEditing];
     [attrib enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, attrib.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
@@ -87,8 +93,7 @@
             [attrib removeAttribute:NSFontAttributeName range:range];
             //replace your font with new.
             /*----- Add new font attribute -----*/
-            UIFont* font = [UIFont fontWithName:@"simplonmono-regular" size:16];
-            UIFont* boldFont = [UIFont fontWithName:@"simplonmono-medium" size:18];
+
             
             if ([oldFont.fontName isEqualToString:@"TimesNewRomanPSMT"])
                 [attrib addAttribute:NSFontAttributeName value:font range:range];
@@ -107,17 +112,16 @@
         if (value) {
 
             [attrib removeAttribute:NSForegroundColorAttributeName range:range];
-            UIColor* color = customBlueColor();
+            UIColor* color = textColor;
             [attrib addAttribute:NSForegroundColorAttributeName value:color range:range];
         }
     }];
     
     [attrib endEditing];
 
-    QTUMParagrafTagCell *cell = [tableView dequeueReusableCellWithIdentifier:QTUMParagrafTagCellReuseIdentifire];
     
     cell.textView.attributedText = attrib;
-    cell.textView.linkTextAttributes = @{NSForegroundColorAttributeName : customRedColor(),
+    cell.textView.linkTextAttributes = @{NSForegroundColorAttributeName : [cell linkColor],
                                          NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone),
                                          NSUnderlineColorAttributeName : [UIColor clearColor]
                                          };

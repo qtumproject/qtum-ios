@@ -14,6 +14,8 @@
 
 @protocol NewsDetailOutputDelegate <NSObject>
 
+-(void)didBackPressed;
+
 @end
 
 @protocol NewsDetailOutput <Presentable>

@@ -7,10 +7,7 @@
 //
 
 #import "NewsDetailViewControllerDark.h"
-#import "QTUMDefaultTagCell.h"
-#import "QTUMHTMLTagItem.h"
-#import "QTUMNewsItem.h"
-#import "NewsDetailCellBuilder.h"
+
 
 @interface NewsDetailViewControllerDark ()
 
@@ -18,14 +15,5 @@
 
 @implementation NewsDetailViewControllerDark
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.newsItem.tags.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    QTUMHTMLTagItem* tag = self.newsItem.tags[indexPath.row];
-    return [self.cellBuilder getCellWithTagItem:tag fromTable:tableView withIndexPath:indexPath];
-}
 
 @end
