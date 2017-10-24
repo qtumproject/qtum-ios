@@ -582,18 +582,19 @@ NSInteger standardParameterBatch = 32;
 
 - (NSUInteger)numberFromData:(NSData*) data {
 
-    NSInteger availableSize = 4;
+    NSInteger availableSize = 8;
     unsigned long long dataAsInt = 0;
     if (data.length >= availableSize) {
         NSData* newData = [data subdataWithRange:NSMakeRange(data.length - availableSize, availableSize)];
-        
+
         NSString *stringData = [newData description];
-        stringData = [stringData substringWithRange:NSMakeRange(1, [stringData length]-2)];
+        stringData = [[stringData substringWithRange:NSMakeRange(1, [stringData length] - 2)] stringByReplacingOccurrencesOfString:@" " withString:@""];
         
         NSScanner *scanner = [NSScanner scannerWithString: stringData];
         [scanner scanHexLongLong:& dataAsInt];
     }
-
+    
+    NSNumber* num = [NSNumber numberWithUnsignedLongLong:dataAsInt];
     return dataAsInt;
 }
 
