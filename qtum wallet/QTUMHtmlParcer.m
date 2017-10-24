@@ -78,6 +78,7 @@
         tag.name = happleElement.tagName;
         tag.raw = happleElement.raw;
         tag.attributes = happleElement.attributes;
+        tag.attributedContent = [self attributedStringWithHTML:tag.raw];
         
         if (happleElement.children.count > 0) {
             
@@ -88,6 +89,14 @@
     }
     
     return [tagsItems copy];
+}
+
+- (NSAttributedString *)attributedStringWithHTML:(NSString *)HTML {
+    
+    NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                               NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)
+                               };
+    return [[NSAttributedString alloc] initWithData:[HTML dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:NULL error:NULL];
 }
 
 @end

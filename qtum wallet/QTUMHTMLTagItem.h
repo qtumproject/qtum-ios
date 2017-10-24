@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "QTUMTagsAttribute.h"
 
-@interface QTUMHTMLTagItem : NSObject
+@interface QTUMHTMLTagItem : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString* raw;
+@property (nonatomic, copy) NSAttributedString* attributedContent;
 @property (nonatomic, copy) NSString* name;
 @property (nonatomic, copy) NSString* content;
 @property (nonatomic, copy) NSDictionary* attributes;

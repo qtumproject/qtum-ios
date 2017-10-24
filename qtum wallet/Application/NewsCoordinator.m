@@ -37,8 +37,21 @@
     
     NSObject<NewsOutput> *newsOutput = [[ControllersFactory sharedInstance] createNewsOutput];
     newsOutput.delegate = self;
-    [self.navigationController setViewControllers:@[[newsOutput toPresent]]];
     self.newsController = newsOutput;
+    __weak __typeof(self) weakSelf = self;
+
+    NSArray <QTUMNewsItem*>* news = [[NewsDataProvider sharedInstance] obtainNewsItems];
+    if (news) {
+        newsOutput.news  = news;
+        [newsOutput reloadTableView];
+    }
+    
+    [[NewsDataProvider sharedInstance] getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
+        weakSelf.newsController.news = news;
+        [weakSelf.newsController reloadTableView];
+    }];
+    
+    [self.navigationController setViewControllers:@[[newsOutput toPresent]]];
 }
 
 #pragma mark - NewsOutputDelegate
@@ -46,9 +59,12 @@
 -(void)refreshTableViewData {
     
     __weak __typeof(self) weakSelf = self;
+
+    [self.newsController startLoading];
     [[NewsDataProvider sharedInstance] getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
         weakSelf.newsController.news = news;
         [weakSelf.newsController reloadTableView];
+        [weakSelf.newsController stopLoadingIfNeeded];
     }];
 }
 

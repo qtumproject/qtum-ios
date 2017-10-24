@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MWFeedItem.h"
 
-@interface QTUMFeedItem : NSObject
+@interface QTUMFeedItem : NSObject <NSCoding>
 
 @property (nonatomic, copy, readonly) NSString *identifier;
 @property (nonatomic, copy, readonly) NSString *title;

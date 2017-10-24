@@ -31,10 +31,9 @@
     [self configTableView];
     [self configPullRefresh];
     
-    [self getData];
-    
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
-    self.tableView.hidden = YES;
+    if (!self.news) {
+        [self getData];
+    }
 }
 
 -(UIColor*)logoColor {
@@ -76,22 +75,7 @@
 
 -(void)getData {
     
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
     [self.delegate refreshTableViewData];
-}
-
-
--(void)reloadTableView {
-    [self reloadTable];
-}
-
--(void)failedToGetData{
-    [[PopUpsManager sharedInstance] dismissLoader];
-}
-
--(void)requestFailed{
-    [self.refresh endRefreshing];
-    [[PopUpsManager sharedInstance] dismissLoader];
 }
 
 -(void)reloadTable {
@@ -99,10 +83,23 @@
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         weakSelf.tableView.hidden = NO;
-        [[PopUpsManager sharedInstance] dismissLoader];
         [weakSelf.tableView reloadData];
         [weakSelf.refresh endRefreshing];
     });
+}
+
+#pragma mark - NewsOutput
+
+-(void)reloadTableView {
+    [self reloadTable];
+}
+
+-(void)startLoading {
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
+}
+
+-(void)stopLoadingIfNeeded {
+    [[PopUpsManager sharedInstance] dismissLoader];
 }
 
 #pragma mark - Actions
