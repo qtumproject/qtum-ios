@@ -9,7 +9,7 @@
 #import "OpenURLManager.h"
 #import "NSUserDefaults+Settings.h"
 #import "NSString+Extension.h"
-#import "DataOperation.h"
+#import "ServiceLocator.h"
 
 @implementation OpenURLManager
 
@@ -27,13 +27,13 @@
 
 -(void)storeAuthToYesWithAdddress:(NSString *)address {
     
-    [DataOperation addGropFileWithName:groupFileName dataSource:@{@"isHaveWallet" : @"YES",
+    [SLocator.dataOperation addGropFileWithName:groupFileName dataSource:@{@"isHaveWallet" : @"YES",
                                                                    @"address" : address}];
 }
 
 -(void)clear {
     
-    [DataOperation addGropFileWithName:groupFileName dataSource:@{@"isHaveWallet" : @"NO",
+    [SLocator.dataOperation addGropFileWithName:groupFileName dataSource:@{@"isHaveWallet" : @"NO",
                                                                @"address" : [NSNull null]}];
 }
 

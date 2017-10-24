@@ -123,6 +123,7 @@ NSString *RotationAnimationKey = @"rotationAnimation";
 }
 
 - (void)startSpinAnimationOnView {
+    
     CABasicAnimation *rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.fromValue = @(self.angle);
@@ -136,6 +137,7 @@ NSString *RotationAnimationKey = @"rotationAnimation";
 }
 
 - (void)startContentAnimation {
+    
     CGFloat height = (self.smallView.frame.size.height == 0.0f) ? self.centerView.frame.size.height : 0.0f;
     CGFloat yPosition = (self.smallView.frame.size.height == 0.0f) ? self.centerView.frame.size.height : 0.0f;
     self.smallView.frame = CGRectMake(0, yPosition, self.smallView.frame.size.width, self.smallView.frame.size.height);

@@ -76,7 +76,8 @@
         [identifire isEqualToString:@"ConfirmPurchasePopUpViewController"] ||
         [identifire isEqualToString:@"QStoreTemplateDetailViewController"] ||
         [identifire isEqualToString:@"AboutOutputViewController"] ||
-        [identifire isEqualToString:@"ConfirmPopUpViewController"]) {
+        [identifire isEqualToString:@"ConfirmPopUpViewController"] ||
+        [identifire isEqualToString:@"NewsDetailViewController"]) {
         
         if ([NSUserDefaults isDarkSchemeSetting]) {
             

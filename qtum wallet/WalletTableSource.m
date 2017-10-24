@@ -35,6 +35,7 @@ static NSInteger countOfSections = 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     if (section == 0) {
         return 1;
     } else {
@@ -140,7 +141,7 @@ static NSInteger countOfSections = 2;
     }
 }
 
-#pragma mark - Private Methods
+#pragma mark - Private
 
 - (HeaderCellType)headerCellType{
     
@@ -159,7 +160,7 @@ static NSInteger countOfSections = 2;
     return HeaderCellTypeAllVisible;
 }
 
-#pragma mark - Public Methods
+#pragma mark - Public
 
 - (void)didScrollForheaderCell:(UIScrollView *)scrollView {
     
@@ -203,6 +204,5 @@ static NSInteger countOfSections = 2;
     
     self.emptyPlacehodlerView.hidden = self.wallet.historyStorage.historyPrivate.count;
 }
-
 
 @end

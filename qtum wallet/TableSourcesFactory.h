@@ -28,7 +28,6 @@
 - (NSObject <ChooseTokenPaymentDelegateDataSourceProtocol> *)createSendTokenPaymentSource;
 - (NSObject<LibraryTableSourceOutput> *)createLibrarySource;
 - (NSObject<FavouriteTemplatesCollectionSourceOutput> *)createFavouriteTemplatesSource;
-- (NSObject<NewsTableSourceOutput> *)createNewsSource;
 - (NSObject<TokenDetailDataDisplayManager> *)createTokenDetailSource;
 - (NSObject<SubscribeTokenDataDisplayManagerProtocol> *)createSubscribeTokenDataDisplayManager;
 

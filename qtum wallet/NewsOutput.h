@@ -7,15 +7,16 @@
 //
 
 #import "NewsOutputDelegate.h"
-#import "NewsTableSourceOutput.h"
 #import "Presentable.h"
+#import "QTUMNewsItem.h"
 
 @protocol NewsOutput <NSObject, Presentable>
 
 @property (weak, nonatomic) id<NewsOutputDelegate> delegate;
-@property (weak, nonatomic) NSObject<NewsTableSourceOutput> *tableSource;
+@property (strong, nonatomic) NSArray<QTUMNewsItem*>* news;
 
 -(void)reloadTableView;
--(void)failedToGetData;
+-(void)startLoading;
+-(void)stopLoadingIfNeeded;
 
 @end

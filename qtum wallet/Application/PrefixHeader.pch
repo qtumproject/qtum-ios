@@ -39,6 +39,7 @@
 #import "WalletsFactory.h"
 #import "TableSourcesFactory.h"
 
+#define SLocator ((ServiceLocator*)[ServiceLocator sharedInstance])
 
 //#import "BTCTransactionInput+Extension.h"
 //#import "BTCTransactionOutput+Extension.h"

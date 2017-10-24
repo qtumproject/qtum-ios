@@ -10,7 +10,7 @@
 #import "CheckboxButton.h"
 #import "RestoreContractsPopUpViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "BackupFileManager.h"
+#import "ServiceLocator.h"
 #import "ErrorPopUpViewController.h"
 #import "InformationPopUpViewController.h"
 
@@ -159,7 +159,7 @@
     
     if (self.fileUrl) {
         
-        BOOL fileReaded = [BackupFileManager getQuickInfoFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(NSString *date, NSString *version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount) {
+        BOOL fileReaded = [SLocator.backupFileManager getQuickInfoFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(NSString *date, NSString *version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount) {
             RestoreContractsPopUpViewController *poUp = [[PopUpsManager sharedInstance] showRestoreContractsPopUp:self presenter:nil completion:nil];
             poUp.dateLabel.text = date;
             poUp.versionLabel.text = version;
@@ -227,7 +227,7 @@
         [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
         
     } else {
-        [BackupFileManager setBackupFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(BOOL success) {
+        [SLocator.backupFileManager setBackupFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(BOOL success) {
             
             if (success) {
                 PopUpContent *content = [PopUpContentGenerator contentForRestoredContracts];

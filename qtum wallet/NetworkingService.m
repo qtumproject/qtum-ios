@@ -19,6 +19,8 @@
 
 @implementation NetworkingService
 
+@synthesize accesToken;
+
 - (instancetype)initWithBaseUrl:(NSString*)baseUrl {
     
     self = [super init];
@@ -38,6 +40,10 @@
         [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
         
+        if (accesToken) {
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", accesToken] forHTTPHeaderField:@"Authorization"];
+        }
+
         [manager.requestSerializer setTimeoutInterval:15];
         _requestManager = manager;
     }

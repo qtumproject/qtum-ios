@@ -19,6 +19,7 @@
 #import "ContractFileManager.h"
 #import "InterfaceInputFormModel.h"
 #import "WalletManagerRequestAdapter.h"
+#import "ServiceLocator.h"
 
 NSString *const kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -351,7 +352,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
     contract.adresses = [[[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeys] allKeys];
     contract.manager = self;
     
-    TemplateModel* template = [[TemplateManager sharedInstance] createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+    TemplateModel* template = [SLocator.templateManager createNewContractTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
     
     if (template) {
         
@@ -391,8 +392,8 @@ NSString *const kLocalContractName = @"kLocalContractName";
         return NO;
     }
     
-    InterfaceInputFormModel* interfaceInput = [[InterfaceInputFormModel alloc] initWithAbi:[[ContractInterfaceManager sharedInstance] arrayFromAbiString:abiStr]];
-    InterfaceInputFormModel* qrc20interfaceInput = [[ContractInterfaceManager sharedInstance] tokenQRC20Interface];
+    InterfaceInputFormModel* interfaceInput = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractInterfaceManager arrayFromAbiString:abiStr]];
+    InterfaceInputFormModel* qrc20interfaceInput = [SLocator.contractInterfaceManager tokenQRC20Interface];
     
     if (![interfaceInput contains:qrc20interfaceInput]) {
         *errorString = NSLocalizedString(@"ABI doesn't match QRC20 standard", nil);
@@ -407,10 +408,10 @@ NSString *const kLocalContractName = @"kLocalContractName";
     contract.manager = self;
     contract.isActive = YES;
     
-    TemplateModel* template = [[TemplateManager sharedInstance] createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+    TemplateModel* template = [SLocator.templateManager createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
     
     if (template) {
-        [[TemplateManager sharedInstance] saveTemplate:template];
+        [SLocator.templateManager saveTemplate:template];
         contract.templateModel = template;
         [self addNewToken:contract];
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Token Created", nil) andIdentifire:@"contract_created"];
@@ -441,15 +442,15 @@ NSString *const kLocalContractName = @"kLocalContractName";
     
     if (token.templateModel.type == TokenType) {
         
-        AbiinterfaceItem* nameProperty = [[ContractInterfaceManager sharedInstance] tokenStandartNamePropertyInterface];
-        AbiinterfaceItem* totalSupplyProperty = [[ContractInterfaceManager sharedInstance] tokenStandartTotalSupplyPropertyInterface];
-        AbiinterfaceItem* symbolProperty = [[ContractInterfaceManager sharedInstance] tokenStandartSymbolPropertyInterface];
-        AbiinterfaceItem* decimalProperty = [[ContractInterfaceManager sharedInstance] tokenStandartDecimalPropertyInterface];
+        AbiinterfaceItem* nameProperty = [SLocator.contractInterfaceManager tokenStandartNamePropertyInterface];
+        AbiinterfaceItem* totalSupplyProperty = [SLocator.contractInterfaceManager tokenStandartTotalSupplyPropertyInterface];
+        AbiinterfaceItem* symbolProperty = [SLocator.contractInterfaceManager tokenStandartSymbolPropertyInterface];
+        AbiinterfaceItem* decimalProperty = [SLocator.contractInterfaceManager tokenStandartDecimalPropertyInterface];
         
-        NSString* hashFuctionName = [[ContractInterfaceManager sharedInstance] stringHashOfFunction:nameProperty];
-        NSString* hashFuctionTotalSupply = [[ContractInterfaceManager sharedInstance] stringHashOfFunction:totalSupplyProperty];
-        NSString* hashFuctionSymbol = [[ContractInterfaceManager sharedInstance] stringHashOfFunction:symbolProperty];
-        NSString* hashFuctionDecimal = [[ContractInterfaceManager sharedInstance] stringHashOfFunction:decimalProperty];
+        NSString* hashFuctionName = [SLocator.contractInterfaceManager stringHashOfFunction:nameProperty];
+        NSString* hashFuctionTotalSupply = [SLocator.contractInterfaceManager stringHashOfFunction:totalSupplyProperty];
+        NSString* hashFuctionSymbol = [SLocator.contractInterfaceManager stringHashOfFunction:symbolProperty];
+        NSString* hashFuctionDecimal = [SLocator.contractInterfaceManager stringHashOfFunction:decimalProperty];
         
         [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuctionName, hashFuctionTotalSupply, hashFuctionSymbol, hashFuctionDecimal] withHandler:^(id responseObject) {
             
@@ -460,26 +461,26 @@ NSString *const kLocalContractName = @"kLocalContractName";
                     NSString* output = item[@"output"];
                     
                     if ([hash isEqualToString:hashFuctionName.uppercaseString]) {
-                        NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:nameProperty];
+                        NSArray* array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:nameProperty];
                         if (array.count > 0) {
                             token.name = array[0];
                         }
                     } else if ([hash isEqualToString:hashFuctionTotalSupply.uppercaseString]) {
                         
-                        NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:totalSupplyProperty];
+                        NSArray* array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:totalSupplyProperty];
                         if (array.count > 0) {
                             token.totalSupply = array[0];
                         }
                         
                     } else if ([hash isEqualToString:hashFuctionSymbol.uppercaseString]) {
                         
-                        NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:symbolProperty];
+                        NSArray* array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:symbolProperty];
                         if (array.count > 0) {
                             token.symbol = array[0];
                         }
                     } else if ([hash isEqualToString:hashFuctionDecimal.uppercaseString]) {
                         
-                        NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:decimalProperty];
+                        NSArray* array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:decimalProperty];
                         if (array.count > 0) {
                             token.decimals = array[0];
                         }

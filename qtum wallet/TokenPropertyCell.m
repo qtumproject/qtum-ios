@@ -9,6 +9,7 @@
 #import "TokenPropertyCell.h"
 #import "ContractInterfaceManager.h"
 #import "ContractArgumentsInterpretator.h"
+#import "ServiceLocator.h"
 
 @implementation TokenPropertyCell
 
@@ -28,14 +29,14 @@
     [self.activityIndicator startAnimating];
     self.propertyName.text = object.name;
     
-    NSString* hashFuction = [[ContractInterfaceManager sharedInstance] stringHashOfFunction:object];
+    NSString* hashFuction = [SLocator.contractInterfaceManager stringHashOfFunction:object];
     __weak __typeof(self)weakSelf = self;
     [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
         
         if (![responseObject isKindOfClass:[NSError class]]) {
             NSString* data = responseObject[@"items"][0][@"output"];
             
-            NSArray* array = [[ContractArgumentsInterpretator sharedInstance] аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:object];
+            NSArray* array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:data] andInterface:object];
             
             NSMutableString* result = [NSMutableString new];
             for (id output in array) {
