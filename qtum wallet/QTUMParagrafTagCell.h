@@ -2,7 +2,7 @@
 //  QTUMParagrafTagCell.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 23.10.17.
+//  Created by Vladimir Lebedevich on 23.10.17.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
