@@ -13,7 +13,9 @@ typedef NS_ENUM(NSInteger, ColorType){
     Pink,
     Green,
     ForWallet,
-    White
+    White,
+    WhiteLong,
+    DarkLong
 };
 
 @interface GradientView : UIView

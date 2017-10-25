@@ -11,6 +11,7 @@
 @implementation PageControlItemLight
 
 - (void)setSelectedState:(BOOL)selected {
+    
     self.backgroundColor = lightBlackColor();
     self.alpha = selected ? 0.6f : 0.3f;
     self.layer.cornerRadius = selected ? 4.0f : 3.0f;
