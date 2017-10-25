@@ -153,7 +153,7 @@
         
         [weakSelf.messageSender getInformationForWalletScreenWithSize:[WKInterfaceDevice currentDevice].screenBounds.size.width replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
             
-            if (!replyMessage[@"error"]) {
+            if (replyMessage[@"address"]) {
                 
                 WatchWallet *wallet = [[WatchWallet alloc] initWithDictionary:replyMessage];
                 [WatchDataOperation saveWalletInfo:replyMessage];

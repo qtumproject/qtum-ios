@@ -11,6 +11,7 @@
 @implementation WatchWallet
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    
     self = [super init];
     if (self) {
         [self setupFromDictionary:dictionary];
