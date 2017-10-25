@@ -272,6 +272,10 @@ ContractCreationEndOutputDelegate>
 }
 
 -(void)finishStepBackDidPressed {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)finishStepCancelDidPressed {
     [self.navigationController popToViewController:[self.smartContractMenuOutput toPresent] animated:YES];
 }
 
@@ -516,6 +520,7 @@ ContractCreationEndOutputDelegate>
 
 
 #pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate, BackupContractOutputDelegate
+
 
 - (void)didBackPressed {
     [self.navigationController popViewControllerAnimated:YES];

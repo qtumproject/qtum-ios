@@ -70,18 +70,19 @@ static NSInteger openTopForEditButton = 15;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, -50, 0);
-}
-
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    
-    
+    [self configBottomGradientView];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 30;
+}
+
+#pragma mark - Configuration
+
+-(void)configBottomGradientView {
+    self.bottomGradientView.colorType = DarkLong;
 }
 
 #pragma mark - UITableViewDataSource
@@ -106,6 +107,14 @@ static NSInteger openTopForEditButton = 15;
 
 - (IBAction)didFinishPressedAction:(id)sender {
     [self.delegate finishStepFinishDidPressed:self.FEE gasPrice:self.gasPrice gasLimit:self.gasLimit];
+}
+
+- (IBAction)didCancelPressed:(id)sender {
+    [self.delegate finishStepCancelDidPressed];
+}
+
+- (IBAction)didVoidTapAction:(id)sender {
+    [self.view endEditing:YES];
 }
 
 - (IBAction)actionEditPressed:(id)sender {

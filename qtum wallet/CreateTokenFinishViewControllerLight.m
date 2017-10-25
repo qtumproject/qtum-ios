@@ -16,9 +16,12 @@
 
 #pragma mark - UITableViewDelegate
 
+-(void)configBottomGradientView {
+    self.bottomGradientView.colorType = WhiteLong;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44;
 }
-
 
 @end
