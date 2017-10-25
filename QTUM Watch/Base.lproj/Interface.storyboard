@@ -126,7 +126,7 @@
                                                             <group width="1" height="7" alignment="left" id="RBl-Cd-cvW"/>
                                                             <group width="1" alignment="left" id="fiY-Wm-A6X">
                                                                 <items>
-                                                                    <label width="33" alignment="left" text="78d...fg8" textAlignment="left" id="dca-nw-bWE">
+                                                                    <label width="54" alignment="left" text="78d...fg8" textAlignment="left" id="dca-nw-bWE">
                                                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="font" type="system" pointSize="9"/>
                                                                     </label>
@@ -156,6 +156,24 @@
                                         <outlet property="leftBorder" destination="on0-d5-9C1" id="9Y0-0d-HhX"/>
                                     </connections>
                                 </tableRow>
+                                <tableRow identifier="NoWalletCell" selectable="NO" id="Ku8-za-muh">
+                                    <group key="rootItem" width="1" height="1" alignment="left" layout="vertical" spacing="0.0" id="6mB-eg-8aT">
+                                        <items>
+                                            <imageView alignment="center" image="HomeScreenIcon" animationDuration="100" id="6R7-WQ-9F7"/>
+                                            <label alignment="center" alpha="0.80000000000000004" text="NO WALLET" textAlignment="center" id="32o-nq-CP3">
+                                                <fontDescription key="font" type="system" pointSize="12"/>
+                                            </label>
+                                        </items>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                </tableRow>
+                                <tableRow identifier="LoaderCell" id="lX9-4c-8Qu">
+                                    <group key="rootItem" width="1" height="1" alignment="left" id="eVB-1R-BOf">
+                                        <items>
+                                            <imageView width="1" height="1" alignment="center" verticalAlignment="center" image="HomeScreenIcon" contentMode="scaleAspectFit" animationDuration="100" id="AEf-D6-k4u"/>
+                                        </items>
+                                    </group>
+                                </tableRow>
                             </items>
                         </table>
                     </items>
@@ -178,7 +196,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="478" y="367"/>
+            <point key="canvasLocation" x="686" y="402.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

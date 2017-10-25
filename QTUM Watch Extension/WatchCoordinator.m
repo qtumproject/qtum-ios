@@ -17,6 +17,7 @@
 @property (strong, nonatomic) id <SessionManagerProtocol> sessionManager;
 @property (strong, nonatomic) id <SessionManagerMessageSender> messageSender;
 @property (strong, nonatomic) WatchWallet* wallet;
+@property (assign, nonatomic) WalletState stateOfWallet;
 @property (strong, nonatomic) NSOperationQueue* operationQueue;
 @property (strong, nonatomic) dispatch_queue_t deamonQueue;
 @property (strong, nonatomic) NSTimer* loopTimer;
@@ -158,11 +159,13 @@
                 WatchWallet *wallet = [[WatchWallet alloc] initWithDictionary:replyMessage];
                 [WatchDataOperation saveWalletInfo:replyMessage];
                 weakSelf.wallet = wallet;
+                weakSelf.stateOfWallet = WalletExists;
 
             } else {
                 
                 weakSelf.wallet = nil;
                 [WatchDataOperation saveWalletInfo:nil];
+                weakSelf.stateOfWallet = NoWallet;
             }
             
             if (completion) {
@@ -171,6 +174,7 @@
             
         } errorHandler:^(NSError * _Nonnull error) {
             
+            weakSelf.stateOfWallet = Unknown;
             [weakSelf getWalletWithCompletion:[completion copy]];
         }];
     };

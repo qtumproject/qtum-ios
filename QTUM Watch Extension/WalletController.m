@@ -30,18 +30,19 @@
 
 -(void)updateControls {
     
-    WatchWallet *wallet = [WatchCoordinator sharedInstance].wallet;
-    
-    NSMutableArray *mutArray = [NSMutableArray new];
-    [mutArray addObject:@"BalanceCell"];
-    for (NSInteger i = 0 ; i < wallet.history.count; i++) {
-        [mutArray addObject:@"HistoryCell"];
-    }
-    
-    [self.table setRowTypes:mutArray];
-    
-    if (wallet) {
-   
+    WalletState state = [WatchCoordinator sharedInstance].stateOfWallet;
+    if (state == WalletExists) {
+        
+        WatchWallet *wallet = [WatchCoordinator sharedInstance].wallet;
+        
+        NSMutableArray *mutArray = [NSMutableArray new];
+        [mutArray addObject:@"BalanceCell"];
+        for (NSInteger i = 0 ; i < wallet.history.count; i++) {
+            [mutArray addObject:@"HistoryCell"];
+        }
+        
+        [self.table setRowTypes:mutArray];
+
         BalanceCell *balance = [self.table rowControllerAtIndex:0];
         balance.delegate = self;
         [balance.address setTitle:wallet.address];
@@ -62,16 +63,16 @@
             [cell.date setText:element.date];
             [cell.leftBorder setBackgroundColor:element.send ? customRedColor() : customBlueColor()];
         }
-
-    } else {
+    } else if (state == NoWallet) {
         
-        BalanceCell *balance = [self.table rowControllerAtIndex:0];
-        balance.delegate = self;
-        [balance.address setHidden:YES];
-        [balance.balanceGroup setHidden:YES];
-        [balance.uncBalanceGroup setHidden:YES];
-        [balance.unconfirmedSymbol setHidden:YES];
-        [balance.confirmedSymbol setText:@"NO WALLET"];
+        NSMutableArray *mutArray = [NSMutableArray new];
+        [mutArray addObject:@"NoWalletCell"];
+        [self.table setRowTypes:mutArray];
+    } else if(state == Unknown){
+        
+        NSMutableArray *mutArray = [NSMutableArray new];
+        [mutArray addObject:@"LoaderCell"];
+        [self.table setRowTypes:mutArray];
     }
 }
 
@@ -89,9 +90,12 @@
     [[WatchCoordinator sharedInstance] startDeamonWithImmediatelyUpdate];
 }
 
-- (IBAction)doShowQrcode{
+- (IBAction)doShowQrcode {
     
-    [self showQRCode];
+    WalletState state = [WatchCoordinator sharedInstance].stateOfWallet;
+    if (state == WalletExists) {
+        [self showQRCode];
+    }
 }
 
 #pragma mark - BalanceCellDelegaete

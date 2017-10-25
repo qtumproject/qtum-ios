@@ -20,6 +20,7 @@
 }
 
 - (void)setupFromDictionary:(NSDictionary *)dictionary {
+    
     self.address = dictionary[@"address"];
     self.availableBalance = dictionary[@"availableBalance"];
     self.unconfirmedBalance = dictionary[@"unconfirmedBalance"];
