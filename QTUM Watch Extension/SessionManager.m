@@ -53,7 +53,7 @@ const NSString *GetWalletInformation = @"get_wallet_information";
         WCSession *session = [WCSession defaultSession];
         [session sendMessage:dictionary replyHandler:replyHandler errorHandler:errorHandler];
     }else{
-        NSError *error = [[NSError alloc] init];
+        NSError *error = [NSError errorWithDomain:@"" code:0 userInfo:nil];
         errorHandler(error);
     }
 }
@@ -101,7 +101,7 @@ const NSString *GetWalletInformation = @"get_wallet_information";
 }
 
 /** Called when any of the Watch state properties change. */
-- (void)sessionWatchStateDidChange:(WCSession *)session{
+- (void)sessionWatchStateDidChange:(WCSession *)session {
     self.currentState = session.activationState;
     NSLog(@"sessionWatchStateDidChange : state = %ld", (long)session.activationState);
 }

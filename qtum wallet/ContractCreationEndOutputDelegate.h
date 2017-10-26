@@ -13,5 +13,7 @@
 - (void)didPressedQuit;
 - (void)finishStepFinishDidPressed:(NSDecimalNumber *)fee gasPrice:(NSDecimalNumber *)gasPrice gasLimit:(NSDecimalNumber *)gasLimit;
 - (void)finishStepBackDidPressed;
+- (void)finishStepCancelDidPressed;
+
 
 @end

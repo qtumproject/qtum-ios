@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ContractCreationEndOutput.h"
+#import "GradientView.h"
+
 @class ResultTokenInputsModel;
 
 @protocol ContractCoordinatorDelegate;
 
 @interface CreateTokenFinishViewController : BaseViewController <ContractCreationEndOutput>
+
+@property (weak, nonatomic) IBOutlet GradientView *bottomGradientView;
 
 @end

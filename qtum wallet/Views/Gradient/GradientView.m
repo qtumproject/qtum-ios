@@ -16,8 +16,7 @@
 
 @implementation GradientView
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     CAGradientLayer *gradient;
@@ -53,6 +52,16 @@
         case White:
             gradient.colors = @[(id)[[UIColor colorWithWhite:1 alpha:0] CGColor],
                                 (id)[[UIColor whiteColor] CGColor]];
+            break;
+        case WhiteLong:
+            gradient.colors = @[(id)[[UIColor colorWithWhite:1 alpha:0] CGColor],
+                                (id)[[UIColor whiteColor] CGColor],
+                                (id)[[UIColor whiteColor] CGColor]];
+            break;
+        case DarkLong:
+            gradient.colors = @[(id)[[UIColor colorWithRed:35/255.0f green:35/255.0f blue:40/255.0f alpha:0.0f] CGColor],
+                                (id)[customBlackColor() CGColor],
+                                (id)[customBlackColor() CGColor]];
             break;
         default:
             break;

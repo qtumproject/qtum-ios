@@ -11,6 +11,7 @@
 @implementation WatchWallet
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    
     self = [super init];
     if (self) {
         [self setupFromDictionary:dictionary];
@@ -19,6 +20,7 @@
 }
 
 - (void)setupFromDictionary:(NSDictionary *)dictionary {
+    
     self.address = dictionary[@"address"];
     self.availableBalance = dictionary[@"availableBalance"];
     self.unconfirmedBalance = dictionary[@"unconfirmedBalance"];

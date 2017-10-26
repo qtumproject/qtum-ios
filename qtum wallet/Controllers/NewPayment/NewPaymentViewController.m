@@ -75,6 +75,8 @@
 @property (strong, nonatomic) NSDecimalNumber* minFee;
 @property (strong, nonatomic) NSDecimalNumber* maxFee;
 
+@property (strong,nonatomic) NSNumberFormatter* localeFormatter;
+
 @property (nonatomic) CGFloat standartTopOffsetForSendButton;
 
 @property (nonatomic) BOOL needUpdateTexfFields;
@@ -101,6 +103,8 @@ static NSInteger hidedGasTopForSend = -40;
 @implementation NewPaymentViewController
 
 @synthesize delegate;
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
     
@@ -159,13 +163,16 @@ static NSInteger hidedGasTopForSend = -40;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - Configuration
+
 -(void)configFee {
+    
     [self.feeTextField setEnablePast:NO];
     self.feeSlider.minimumValue = 0.001f;
     self.feeSlider.maximumValue = 0.2f;
     self.feeSlider.value = 0.1;
     self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.1"];
-    self.feeTextField.text = @"0,1";
+    self.feeTextField.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:self.FEE]];
 }
 
 -(void)configGasPrice {
@@ -188,6 +195,23 @@ static NSInteger hidedGasTopForSend = -40;
     self.gasLimitMaxValueLabel.text = @"1000000000";
 }
 
+#pragma mark - Custom Accessors
+
+-(NSNumberFormatter *)localeFormatter {
+    
+    if (!_localeFormatter) {
+        _localeFormatter = [NSNumberFormatter new];
+        _localeFormatter.locale = [NSLocale currentLocale];
+        _localeFormatter.roundingMode = NSNumberFormatterRoundDown;
+        _localeFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        _localeFormatter.maximumFractionDigits = 5;
+    }
+    return _localeFormatter;
+}
+
+#pragma mark - Private
+
+
 -(void)updateFeeInputs {
     self.feeSlider.hidden = self.isTokenChoosen;
     self.feeTextField.hidden = self.isTokenChoosen;
@@ -196,6 +220,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)updateTextFields {
+    
     if (self.needUpdateTexfFields && self.addressTextField && self.amountTextField) {
         self.addressTextField.text = self.adress;
         self.amountTextField.text = self.amount;
@@ -210,6 +235,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 -(void)updateSendButton {
+    
     BOOL isFilled = [self isTextFieldsFilled];
     
     self.sendButton.enabled = isFilled;
@@ -217,14 +243,14 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 -(void)normalizeFee {
-    NSString* feeValueString = [self.feeTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+    
+    NSDecimalNumber *feeValue = [[self.localeFormatter numberFromString:self.feeTextField.text] decimalNumber];
     
     if ([feeValue isGreaterThan:self.maxFee] ) {
-        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.maxFee];;
+        self.feeTextField.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:self.maxFee]];
         self.FEE = self.maxFee;
     } else if ([feeValue isLessThan:self.minFee]) {
-        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.minFee];
+        self.feeTextField.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:self.minFee]];
         self.FEE = self.minFee;
     } else {
         self.FEE = feeValue;
@@ -257,9 +283,9 @@ static NSInteger hidedGasTopForSend = -40;
     if (willAppear) {
         self.heightForGasSlidersContainer.constant = heightGasSlidersContainerClose;
         self.topConstratinForEdit.constant = closeTopForEditButton;
-        self.sendButtonTopConstraint.constant = hide ? hidedGasTopForSend : showedGasTopForSend;
         [self.editButton setTitle:NSLocalizedString(@"EDIT", nil) forState:UIControlStateNormal];
     }
+    self.sendButtonTopConstraint.constant = hide ? hidedGasTopForSend : showedGasTopForSend;
 }
 
 #pragma mark - NewPaymentOutput
@@ -323,13 +349,17 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)clearFields {
+    
     self.addressTextField.text = @"";
     self.amountTextField.text = @"";
     self.amount = nil;
     self.adress = nil;
+    
+    [self updateSendButton];
 }
 
 - (void)updateContentWithContract:(Contract*) contract {
+    
     if (self.tokenTextField) {
         self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
         self.needUpdateTokenTexfFields = NO;
@@ -343,13 +373,14 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)setMinFee:(NSNumber*) minFee andMaxFee:(NSNumber*) maxFee {
+    
     self.feeSlider.maximumValue = maxFee.floatValue;
     self.feeSlider.minimumValue = minFee.floatValue;
     self.feeSlider.value = 0.1f;
     self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.1"];
     
-    self.minFeeLabel.text = [NSString stringWithFormat:@"%@", minFee];
-    self.maxFeeLabel.text = [NSString stringWithFormat:@"%@", maxFee];
+    self.minFeeLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:minFee]];
+    self.maxFeeLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:maxFee]];
     
     self.maxFee = [maxFee decimalNumber];
     self.minFee = [minFee decimalNumber];
@@ -366,12 +397,13 @@ static NSInteger hidedGasTopForSend = -40;
     
     self.gasPrice = [[NSDecimalNumber alloc] initWithFloat:min.floatValue];
 
-    self.gasPriceValueLabel.text = [min stringValue];
-    self.gasPriceMinValueLabel.text = [min stringValue];
-    self.gasPriceMaxValueLabel.text = [max stringValue];
+    self.gasPriceValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:min]];
+    self.gasPriceMinValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:min]];
+    self.gasPriceMaxValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:max]];
 }
 
 - (void)setMinGasLimit:(NSNumber *)min andMax:(NSNumber *)max standart:(NSNumber *)standart step:(long)step; {
+    
     long count = ([max longValue] - [min longValue]) / step;
     long standartLong = ([standart longValue] - [min longValue]) / step;
     
@@ -384,14 +416,15 @@ static NSInteger hidedGasTopForSend = -40;
     
     self.gasLimit = [[NSDecimalNumber alloc] initWithFloat:standart.floatValue];
     
-    self.gasLimitValueLabel.text = [standart stringValue];
-    self.gasLimitMinValueLabel.text = [min stringValue];
-    self.gasLimitMaxValueLabel.text = [max stringValue];
+    self.gasLimitValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:standart]];
+    self.gasLimitMinValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:min]];
+    self.gasLimitMaxValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:max]];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
+    
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
     if ([sender isKindOfClass:[InformationPopUpViewController class]]) {
         [self clearFields];
@@ -416,12 +449,14 @@ static NSInteger hidedGasTopForSend = -40;
 #pragma mark - iMessage
 
 - (void)setSendInfoItem:(SendInfoItem *)item {
+    
     if (item.qtumAddressKey) {
         self.adress = item.qtumAddressKey.address.string;
     } else {
         self.adress = item.qtumAddress;
     }
-    self.amount = item.amountString;
+    NSString* amountWithPint = [item.amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    self.amount =  [self.localeFormatter stringFromNumber:[NSDecimalNumber decimalNumberWithString:amountWithPint]];
     self.needUpdateTexfFields = YES;
     
     [self updateTextFields];
@@ -440,8 +475,9 @@ static NSInteger hidedGasTopForSend = -40;
             return ![textField.text containsString:string] && !(textField.text.length == 0);
             
         } else {
-            NSString* feeValueString = [[textField.text stringByAppendingString:string] stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+            
+            NSNumber* number = [self.localeFormatter numberFromString:textField.text];
+            NSDecimalNumber *feeValue = [number decimalNumber];
             
            [self.feeSlider setValue:feeValue.floatValue animated:YES];
         }
@@ -451,6 +487,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
     if (textField == self.addressTextField && [self.delegate needCheckForChanges]) {
         [self showConfirmChangesPopUp];
         __weak typeof(self) weakSelf = self;
@@ -474,6 +511,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)addDoneButtonToAmountTextField {
+    
     UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     toolbar.barStyle = UIBarStyleDefault;
     toolbar.translucent = NO;
@@ -489,18 +527,13 @@ static NSInteger hidedGasTopForSend = -40;
     [self.amountTextField resignFirstResponder];
 }
 
-- (NSString *)correctAmountString {
-    NSMutableString *amountString = [self.amountTextField.text mutableCopy];
-    if ([amountString containsString:@","]) {
-        [amountString replaceCharactersInRange:[amountString rangeOfString:@","] withString:@"."];
-    }
-    return [NSString stringWithString:amountString];
-}
-
 #pragma mark - Action
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
-    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:[self correctAmountString]];
+    
+    NSNumber *number = [self.localeFormatter numberFromString: self.amountTextField.text];
+    
+    NSDecimalNumber *amount = [number decimalNumber];
     
     NSString *address = self.addressTextField.text;
     
@@ -510,23 +543,27 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (IBAction)didChangeFeeSlider:(UISlider *) slider {
-    NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithFloat:slider.value];
+    
+    NSDecimalNumber* sliderValue = (NSDecimalNumber*)[[[NSDecimalNumber alloc] initWithFloat:slider.value] roundedNumberWithScale:5];
     self.FEE = sliderValue;
-    self.feeTextField.text = [[NSString stringWithFormat:@"%@", self.FEE] stringByReplacingOccurrencesOfString:@"." withString:@","];
+    
+    self.feeTextField.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:self.FEE]];
 }
 
 - (IBAction)didChangeGasPriceSlider:(UISlider *)slider {
+    
     unsigned long value = self.gasPriceMin + (NSInteger)slider.value * self.gasPriceStep;
     NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
     self.gasPrice = sliderValue;
-    self.gasPriceValueLabel.text = [[NSString stringWithFormat:@"%@", self.gasPrice] stringByReplacingOccurrencesOfString:@"." withString:@","];
+    self.gasPriceValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:self.gasPrice]];
 }
 
 - (IBAction)didChangeGasLimitSlider:(UISlider *)slider {
+    
     unsigned long value = self.gasLimitMin + (NSInteger)slider.value * self.gasLimitStep;
     NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
     self.gasLimit = sliderValue;
-    self.gasLimitValueLabel.text = [[NSString stringWithFormat:@"%@", self.gasLimit] stringByReplacingOccurrencesOfString:@"." withString:@","];
+    self.gasLimitValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:self.gasLimit]];
 }
 
 - (IBAction)actionVoidTap:(id)sender{

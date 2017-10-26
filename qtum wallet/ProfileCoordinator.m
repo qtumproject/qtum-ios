@@ -16,8 +16,9 @@
 #import "ExportBrandKeyCoordinator.h"
 #import "ChangePinCoordinator.h"
 #import "AboutOutput.h"
+#import "ErrorPopUpViewController.h"
 
-@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate, AboutOutputDelegate>
+@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate, AboutOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
@@ -125,7 +126,26 @@
 
 - (void)didPressedLogout {
     
+    PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+    content.messageString = NSLocalizedString(@"You are about to exit your account. All account data will be erased from the device. Please make sure you have saved back-ups of your Passphrase and required Contracts", nil);
+    content.titleString = NSLocalizedString(@"Warning", nil);
+    content.cancelButtonTitle = NSLocalizedString(@"Logout", nil);
+    content.okButtonTitle = NSLocalizedString(@"Cancel", nil);
+
+    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+}
+
+#pragma mark - PopupDelegate
+
+- (void)cancelButtonPressed:(PopUpViewController *)sender {
+    
     [[ApplicationCoordinator sharedInstance] logout];
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+}
+
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - LanguageOutputDelegate

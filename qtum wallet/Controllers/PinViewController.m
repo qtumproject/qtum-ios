@@ -65,10 +65,10 @@ const float bottomOffset = 25;
 }
 
 -(void)keyboardWillHide:(NSNotification *)sender {
-    
-    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.bottomForButtonsConstraint.constant = end.size.height;
-    [self.view layoutIfNeeded];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.passwordView becameFirstResponder];
+    });
 }
 
 #pragma mark - Configuration
