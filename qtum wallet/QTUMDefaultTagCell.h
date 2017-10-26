@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DynamicHeightCellProtocol.h"
 
 extern NSString * const QTUMDefaultTagCellReuseIdentifire;
 
-@interface QTUMDefaultTagCell : UITableViewCell
+@interface QTUMDefaultTagCell : UITableViewCell <DynamicHeightCellProtocol>
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 

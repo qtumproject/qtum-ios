@@ -30,4 +30,12 @@ NSString * const QTUMParagrafTagCellReuseIdentifire = @"QTUMParagrafTagCellReuse
     return customBlueColor();
 }
 
+-(CGFloat)calculateSelfHeight {
+    
+    UITextView *calculationView = [[UITextView alloc] init];
+    [calculationView setAttributedText:self.textView.attributedText];
+    CGSize size = [calculationView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
+    return ceilf(size.height);
+}
+
 @end

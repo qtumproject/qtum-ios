@@ -11,7 +11,6 @@
 
 @interface QTUMNewsItem ()
 
-@property (nonatomic, strong) NSArray<QTUMHTMLTagItem*>* tags;
 @property (nonatomic, strong) QTUMFeedItem* feed;
 @property (nonatomic, strong) NSString* identifire;
 

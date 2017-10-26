@@ -26,7 +26,10 @@
     
     [super viewDidLoad];
     [self configTableView];
-    [self.tableView reloadData];
+    
+    if (!self.newsItem.tags) {
+        [self getData];
+    }
 }
 
 #pragma mark - Configuration
@@ -34,7 +37,7 @@
 -(void)configTableView {
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 120.0f;
+    self.tableView.estimatedRowHeight = 250.0f;
 }
 
 
@@ -48,6 +51,11 @@
     return [self.cellBuilder getCellWithTagItem:tag fromTable:tableView withIndexPath:indexPath];
 }
 
+-(void)getData {
+    
+    [self.delegate refreshTagsWithNewsItem:self.newsItem];
+}
+
 #pragma mark - Actions
 
 - (IBAction)doBackAction:(id)sender {
@@ -56,11 +64,24 @@
     }
 }
 
+-(void)startLoading {
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
+}
+
+-(void)stopLoadingIfNeeded {
+    [[PopUpsManager sharedInstance] dismissLoader];
+}
+
+
 
 #pragma mark - NewsDetailOutputDelegate
 
 -(void)reloadTableView {
     
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.tableView reloadData];
+    });
 }
 
 -(void)failedToGetData {

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
+#import "DynamicHeightCellProtocol.h"
 
 extern NSString * const QTUMParagrafTagCellReuseIdentifire;
 
-@interface QTUMParagrafTagCell : UITableViewCell
+@interface QTUMParagrafTagCell : UITableViewCell <DynamicHeightCellProtocol>
+
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
 

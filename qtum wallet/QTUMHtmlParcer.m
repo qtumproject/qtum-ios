@@ -73,6 +73,10 @@
             continue;
         }
         
+        if ([happleElement.tagName isEqualToString:@"img"] && [happleElement.attributes[@"width"] isEqualToString:@"1"]) {
+            continue;
+        }
+        
         QTUMHTMLTagItem* tag = [[QTUMHTMLTagItem alloc] init];
         tag.content = happleElement.content;
         tag.name = happleElement.tagName;
@@ -96,7 +100,13 @@
     NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
                                NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)
                                };
-    return [[NSAttributedString alloc] initWithData:[HTML dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:NULL error:NULL];
+    NSMutableAttributedString* attrString = [[NSAttributedString alloc] initWithData:[HTML dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:NULL error:NULL].mutableCopy;
+    
+    while ([attrString.mutableString containsString:@"\n"]) {
+        NSRange range = [attrString.mutableString rangeOfString:@"\n"];
+        [attrString replaceCharactersInRange:range  withAttributedString:[[NSMutableAttributedString alloc] initWithString:@" "]];
+    }
+    return attrString;
 }
 
 @end

@@ -17,5 +17,8 @@ NSString * const QTUMDefaultTagCellReuseIdentifire = @"QTUMDefaultTagCellReuseId
     [super awakeFromNib];
 }
 
+-(CGFloat)calculateSelfHeight {
+    return 212;
+}
 
 @end

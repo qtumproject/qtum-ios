@@ -10,8 +10,7 @@
 #import "NetworkingService.h"
 #import "NSString+HTML.h"
 #import "TFHpple.h"
-#import "QTUMFeedParcer.h"
-#import "QTUMHtmlParcer.h"
+
 
 @interface NewsDataProvider ()
 
@@ -67,57 +66,70 @@
     
     NSMutableArray <QTUMNewsItem*>* news = @[].mutableCopy;
     
-    dispatch_group_t downloadGoup = dispatch_group_create();
-
     QTUMFeedParcer* parcer = [[QTUMFeedParcer alloc] init];
     
     //1 parcing feed from medium
 
     [parcer parceFeedFromUrl:@"https://medium.com/feed/@Qtum" withCompletion:^(NSArray<QTUMFeedItem *> *feeds) {
         
-        QTUMHtmlParcer* htmlParcer = [[QTUMHtmlParcer alloc] init];
-        
-        //2 parcing html from each feed
-        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-        
         for (QTUMFeedItem* feedItem in feeds) {
             
-            dispatch_group_enter(downloadGoup);
-            
-            //3 creating news objects
-
-            [htmlParcer parceNewsFromHTMLString:feedItem.summary withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
-                
-                QTUMFeedItem* feedItemBlock = feedItem;
-                
-                dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    
-                    QTUMNewsItem* newsItem = [[QTUMNewsItem alloc] initWithTags:tags andFeed:feedItemBlock];
-                    [news addObject:newsItem];
-                    
-                    dispatch_semaphore_signal(semaphore);
-                    dispatch_group_leave(downloadGoup);
-                });
-                
-            }];
-            
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            QTUMNewsItem* newsItem = [[QTUMNewsItem alloc] initWithTags:nil andFeed:feedItem];
+            [news addObject:newsItem];
         }
-        
-        dispatch_group_notify(downloadGoup, dispatch_get_main_queue(),^{
-            
-            //4 return created news
-            if (weakSelf.completion) {
-                weakSelf.completion(news);
-            }
 
-            [weakSelf storeNews:news];
-        });
+        [weakSelf storeNews:news];
         
-        weakSelf.htmlParcer = htmlParcer;
+        dispatch_block_t block = ^{
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (weakSelf.completion) {
+                    weakSelf.completion(self.news);
+                }
+            });
+        };
+        
+        [weakSelf.storingQueue addOperationWithBlock:block];
     }];
 
     self.parcer = parcer;
+}
+
+-(void)getTagsFromNews:(QTUMNewsItem*) newsItem withCompletion:(QTUMTagsItems) completion {
+    
+    QTUMFeedItem* feedItem = newsItem.feed;
+    QTUMHtmlParcer* htmlParcer = [[QTUMHtmlParcer alloc] init];
+    __weak __typeof(self)weakSelf = self;
+    [completion copy];
+    [htmlParcer parceNewsFromHTMLString:feedItem.summary withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
+        
+        newsItem.tags = tags;
+        
+        if (completion) {
+            completion(tags);
+        }
+        [weakSelf updateNewsWithNewsItemItem:newsItem];
+    }];
+    self.htmlParcer = htmlParcer;
+}
+
+-(void)updateNewsWithNewsItemItem:(QTUMNewsItem*) newsItem {
+    
+    __weak __typeof(self)weakSelf = self;
+
+    dispatch_block_t block = ^{
+        
+        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"kArchivedNewsDict"];
+        NSMutableDictionary *newsDict = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
+        if (newsDict) {
+            [newsDict setObject:newsItem forKey:newsItem.identifire];
+            data = [NSKeyedArchiver archivedDataWithRootObject:[newsDict copy]];
+            [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"kArchivedNewsDict"];
+        }
+        [weakSelf unarchiveNews];
+    };
+    
+    [self.storingQueue addOperationWithBlock:block];
 }
 
 -(NSArray <QTUMNewsItem*>*)obtainNewsItems {
@@ -137,11 +149,16 @@
         NSDictionary* oldNews = [weakSelf createDictWithNews:weakSelf.news];
         NSDictionary* newNews = [weakSelf createDictWithNews:news];
         NSMutableDictionary* uniqueNews = [oldNews mutableCopy];
-        [uniqueNews addEntriesFromDictionary:newNews];
+        
+        for (NSString* identifire in newNews.allKeys) {
+            if (![oldNews objectForKey:identifire]) {
+                [uniqueNews setObject:newNews[identifire] forKey:identifire];
+            }
+        }
         
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:uniqueNews];
         [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"kArchivedNewsDict"];
-        
+        [[NSUserDefaults standardUserDefaults] synchronize];
         weakSelf.news = [weakSelf sortNews:[uniqueNews allValues]];
     };
     

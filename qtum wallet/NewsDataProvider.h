@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "QTUMNewsItem.h"
+#import "QTUMFeedParcer.h"
+#import "QTUMHtmlParcer.h"
 
 @interface NewsDataProvider : NSObject
 
 typedef void(^QTUMNewsItems) (NSArray <QTUMNewsItem*>* feeds);
 
 -(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion;
+-(void)getTagsFromNews:(QTUMNewsItem*) newsItem withCompletion:(QTUMTagsItems) completion;
 -(NSArray <QTUMNewsItem*>*)obtainNewsItems;
 
 + (instancetype)sharedInstance;
