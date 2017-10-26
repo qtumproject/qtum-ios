@@ -19,13 +19,13 @@ function Crowdsale(
 address ifSuccessfulSendTo,
 uint fundingGoalInQtums,
 uint durationInMinutes,
-uint qtumCostOfEachToken,
+uint satoshiCostOfEachToken,
 token addressOfTokenUsedAsReward
 ) {
 beneficiary = ifSuccessfulSendTo;
-fundingGoal = fundingGoalInQtums * 1 ether;
+fundingGoal = fundingGoalInQtums * 10**8;
 deadline = now + durationInMinutes * 1 minutes;
-price = qtumCostOfEachToken * 1 ether;
+price = satoshiCostOfEachToken;
 tokenReward = token(addressOfTokenUsedAsReward);
 }
 
