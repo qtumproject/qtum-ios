@@ -14,6 +14,7 @@
 
 @protocol NewsDetailOutputDelegate <NSObject>
 
+-(void)refreshTagsWithNewsItem:(QTUMNewsItem*) newsItem;
 -(void)didBackPressed;
 
 @end
@@ -26,5 +27,7 @@
 
 -(void)reloadTableView;
 -(void)failedToGetData;
+-(void)startLoading;
+-(void)stopLoadingIfNeeded;
 
 @end

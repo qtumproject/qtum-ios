@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SpinnerView.h"
+#import "DynamicHeightCellProtocol.h"
 
 extern NSString * const QTUMImageTagCellReuseIdentifire;
 
-@interface QTUMImageTagCell : UITableViewCell
+@interface QTUMImageTagCell : UITableViewCell <DynamicHeightCellProtocol>
 
 @property (weak, nonatomic) IBOutlet UIImageView *tagImageView;
 

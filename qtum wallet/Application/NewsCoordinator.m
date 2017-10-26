@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (weak, nonatomic) NSObject<NewsOutput> *newsController;
+@property (weak, nonatomic) NSObject<NewsDetailOutput> *newsDetailController;
+
 
 @end
 
@@ -79,6 +81,21 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)refreshTagsWithNewsItem:(QTUMNewsItem*) newsItem {
+    
+    __weak __typeof(self) weakSelf = self;
+    
+    if (!newsItem.tags) {
+        [self.newsDetailController startLoading];
+        [[NewsDataProvider sharedInstance] getTagsFromNews:newsItem withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
+            
+            weakSelf.newsDetailController.newsItem = newsItem;
+            [weakSelf.newsDetailController stopLoadingIfNeeded];
+            [weakSelf.newsDetailController reloadTableView];
+        }];
+    }
+}
+
 #pragma mark - Private Methods
 
 -(void)showNewsWithNewsItem:(QTUMNewsItem*) newsItem {
@@ -88,6 +105,7 @@
     NewsDetailCellBuilder *cellBuilder = [NewsDetailCellBuilder new];
     newsOutput.cellBuilder = cellBuilder;
     newsOutput.delegate = self;
+    self.newsDetailController = newsOutput;
     [self.navigationController pushViewController:[newsOutput toPresent] animated:YES];
 }
 

@@ -46,8 +46,8 @@
 #pragma mark - Set Up
 
 
-- (void)setUp
-{
+- (void)setUp {
+    
     NSArray *pathList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *cachePath = pathList[0];
     NSString *cacheTemp = [cachePath stringByAppendingPathComponent:@"/temp"];
@@ -56,8 +56,8 @@
 }
 
 
-- (NSString *)localPathToFileWithUrl:(NSString *)url
-{
+- (NSString *)localPathToFileWithUrl:(NSString *)url {
+    
     NSString *lastComponent = [url lastPathComponent];
     NSString *localPath = [_cacheTempPath stringByAppendingPathComponent:lastComponent];
     if ([[NSFileManager defaultManager] fileExistsAtPath:localPath])
@@ -109,8 +109,8 @@
 //        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
 //}
 
-- (void)saveFileWithUrl:(NSString *)url andFile:(id)file
-{
+- (void)saveFileWithUrl:(NSString *)url andFile:(id)file {
+    
     NSString *lastComponent = [url lastPathComponent];
     NSString *localPath = [_cacheTempPath stringByAppendingPathComponent:lastComponent];
     if (![[NSFileManager defaultManager] fileExistsAtPath:localPath]) {

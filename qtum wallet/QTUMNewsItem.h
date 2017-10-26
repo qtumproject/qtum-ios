@@ -12,7 +12,7 @@
 
 @interface QTUMNewsItem : NSObject <NSCoding>
 
-@property (nonatomic, strong, readonly) NSArray<QTUMHTMLTagItem*>* tags;
+@property (nonatomic, strong) NSArray<QTUMHTMLTagItem*>* tags;
 @property (nonatomic, strong, readonly) QTUMFeedItem* feed;
 @property (nonatomic, strong, readonly) NSString* identifire;
 

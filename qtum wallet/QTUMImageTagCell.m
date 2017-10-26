@@ -24,5 +24,9 @@ NSString * const QTUMImageTagCellReuseIdentifire = @"QTUMImageTagCellReuseIdenti
     self.tagImageView.image = [UIImage imageNamed:@"news-placehodler"];
 }
 
+-(CGFloat)calculateSelfHeight {
+    return 212;
+}
+
 
 @end
