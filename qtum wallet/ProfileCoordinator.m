@@ -129,8 +129,8 @@
     PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
     content.messageString = NSLocalizedString(@"You are about to exit your account. All account data will be erased from the device. Please make sure you have saved back-ups of your Passphrase and required Contracts", nil);
     content.titleString = NSLocalizedString(@"Warning", nil);
-    content.okButtonTitle = NSLocalizedString(@"Logout", nil);
-    content.cancelButtonTitle = NSLocalizedString(@"Cancel", nil);
+    content.cancelButtonTitle = NSLocalizedString(@"Logout", nil);
+    content.okButtonTitle = NSLocalizedString(@"Cancel", nil);
 
     [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
 }
@@ -139,12 +139,12 @@
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
     
+    [[ApplicationCoordinator sharedInstance] logout];
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
     
-    [[ApplicationCoordinator sharedInstance] logout];
     [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
 }
 
