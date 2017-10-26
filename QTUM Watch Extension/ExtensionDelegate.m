@@ -17,20 +17,14 @@
 @implementation ExtensionDelegate
 
 - (void)applicationDidFinishLaunching {
-    
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    
+
     [[WatchCoordinator sharedInstance] startWithCompletion:^{
         [[WatchCoordinator sharedInstance] startDeamon];
-        dispatch_semaphore_signal(semaphore);
     }];
-    
-    dispatch_time_t timeUp = dispatch_time(DISPATCH_TIME_NOW, (uint64_t)(60 * NSEC_PER_SEC));
-
-    dispatch_semaphore_wait(semaphore, timeUp);
 }
 
 - (void)applicationDidBecomeActive {
+    
     [[WatchCoordinator sharedInstance] startDeamon];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"applicationDidBecomeActive" object:nil];
 }

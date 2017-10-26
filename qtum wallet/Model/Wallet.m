@@ -128,8 +128,13 @@ NSInteger const USERS_KEYS_COUNT = 10;
 -(NSString *)mainAddress {
 
     if (!_mainAddress) {
-        BTCKey* key = [self lastRandomKeyOrRandomKey];
-        _mainAddress = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        
+        NSString* mainAddress = [self getStoredLastAddressKey];
+        if (!mainAddress) {
+            BTCKey* key = [self lastRandomKeyOrRandomKey];
+            mainAddress = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        }
+        _mainAddress = mainAddress;
     }
 
     return _mainAddress;

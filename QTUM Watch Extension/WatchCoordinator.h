@@ -10,6 +10,12 @@
 
 @class WatchWallet;
 
+typedef NS_ENUM(NSUInteger, WalletState) {
+    NoWallet,
+    WalletExists,
+    Unknown
+};
+
 @protocol WatchDataProvider <NSObject>
 
 @end
@@ -17,6 +23,7 @@
 @interface WatchCoordinator : NSObject <WatchDataProvider>
 
 @property (strong, nonatomic, readonly) WatchWallet* wallet;
+@property (assign, nonatomic, readonly) WalletState stateOfWallet;
 
 - (void)startDeamon;
 - (void)startDeamonWithImmediatelyUpdate;
