@@ -184,8 +184,8 @@
     for (TextFieldParameterView* parameter in self.scrollView.subviews) {
         if ([parameter isKindOfClass:[TextFieldParameterView class]]) {
             ResultTokenInputsModel* input = [ResultTokenInputsModel new];
-            input.name = parameter.textField.item.name;
-            input.value = parameter.textField.text;
+            input.name = parameter.textField.item.name ?: @"";
+            input.value = parameter.textField.text ?: @"";
             [inputsData addObject:input];
         }
     }
@@ -353,6 +353,7 @@
 }
 
 - (IBAction)didPressedCallAction:(id)sender {
+    
     [self didVoidTapAction:nil];
     [self normalizeFee];
     [[PopUpsManager sharedInstance] showLoaderPopUp];
