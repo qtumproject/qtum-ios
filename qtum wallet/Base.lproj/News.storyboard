@@ -307,6 +307,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMM-Dv-YRq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdG-Lf-hQL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
@@ -463,17 +467,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FMM-Dv-YRq" firstAttribute="top" secondItem="jzX-Ox-3Dg" secondAttribute="top" id="1wb-mk-tfY"/>
                             <constraint firstItem="DEr-Ca-Osc" firstAttribute="leading" secondItem="jzX-Ox-3Dg" secondAttribute="leading" id="R7d-N1-5li"/>
                             <constraint firstItem="rdG-Lf-hQL" firstAttribute="top" secondItem="jzX-Ox-3Dg" secondAttribute="top" id="SS0-Fm-ICW"/>
                             <constraint firstItem="oXl-Lj-SiU" firstAttribute="top" secondItem="DEr-Ca-Osc" secondAttribute="bottom" id="Ybo-zP-qa9"/>
                             <constraint firstAttribute="trailing" secondItem="rdG-Lf-hQL" secondAttribute="trailing" id="eDT-kZ-mTt"/>
                             <constraint firstItem="DEr-Ca-Osc" firstAttribute="top" secondItem="rdG-Lf-hQL" secondAttribute="bottom" id="iV2-KK-Gjf"/>
+                            <constraint firstAttribute="trailing" secondItem="FMM-Dv-YRq" secondAttribute="trailing" id="mNw-6J-CzW"/>
                             <constraint firstItem="rdG-Lf-hQL" firstAttribute="leading" secondItem="jzX-Ox-3Dg" secondAttribute="leading" id="rWe-ga-nAI"/>
+                            <constraint firstItem="FMM-Dv-YRq" firstAttribute="leading" secondItem="jzX-Ox-3Dg" secondAttribute="leading" id="uIT-1N-omj"/>
+                            <constraint firstItem="oXl-Lj-SiU" firstAttribute="top" secondItem="FMM-Dv-YRq" secondAttribute="bottom" id="vjS-vA-WNm"/>
                             <constraint firstAttribute="trailing" secondItem="DEr-Ca-Osc" secondAttribute="trailing" id="zjR-Ci-XlS"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="loaderPlaceholderView" destination="FMM-Dv-YRq" id="PcF-rb-EUC"/>
                         <outlet property="tableView" destination="DEr-Ca-Osc" id="CUY-Kc-mNx"/>
                     </connections>
                 </viewController>
@@ -493,6 +502,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utI-a4-TXi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBx-wS-101">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
@@ -500,7 +513,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnS-yl-jV3">
-                                                <rect key="frame" x="140" y="11.5" width="96" height="21"/>
+                                                <rect key="frame" x="140.5" y="11.5" width="96" height="21"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -645,16 +658,22 @@
                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dVc-Sq-JRi" secondAttribute="trailing" id="3rN-Uq-cn3"/>
+                            <constraint firstItem="utI-a4-TXi" firstAttribute="leading" secondItem="QEx-7b-E64" secondAttribute="leading" id="5YS-Y0-sfg"/>
                             <constraint firstItem="dVc-Sq-JRi" firstAttribute="leading" secondItem="QEx-7b-E64" secondAttribute="leading" id="8SH-J6-H4x"/>
                             <constraint firstItem="pBx-wS-101" firstAttribute="top" secondItem="QEx-7b-E64" secondAttribute="top" id="ChT-8O-OA2"/>
                             <constraint firstAttribute="trailing" secondItem="pBx-wS-101" secondAttribute="trailing" id="D6A-5R-Mv7"/>
                             <constraint firstItem="dVc-Sq-JRi" firstAttribute="top" secondItem="A8o-0g-98G" secondAttribute="bottom" id="Dqe-EX-3Ni"/>
+                            <constraint firstAttribute="trailing" secondItem="utI-a4-TXi" secondAttribute="trailing" id="JEm-Ki-qEb"/>
                             <constraint firstItem="pBx-wS-101" firstAttribute="leading" secondItem="QEx-7b-E64" secondAttribute="leading" id="Nvc-OH-ELi"/>
+                            <constraint firstItem="utI-a4-TXi" firstAttribute="top" secondItem="QEx-7b-E64" secondAttribute="top" id="Pzk-lZ-Bf1"/>
                             <constraint firstAttribute="bottom" secondItem="dVc-Sq-JRi" secondAttribute="bottom" id="UiC-mD-AdU"/>
+                            <constraint firstAttribute="bottom" secondItem="utI-a4-TXi" secondAttribute="bottom" id="yBN-Pb-i2V"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="loaderPlaceholderView" destination="utI-a4-TXi" id="HXG-Ky-ghT"/>
                         <outlet property="tableView" destination="dVc-Sq-JRi" id="gMO-XL-wea"/>
                     </connections>
                 </viewController>

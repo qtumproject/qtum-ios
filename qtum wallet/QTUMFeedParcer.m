@@ -110,4 +110,10 @@
 - (void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error{; // Parsing failed}
 }
 
+#pragma mark - Cancelable
+
+-(void)cancel {
+    [self.workingQueue cancelAllOperations];
+}
+
 @end

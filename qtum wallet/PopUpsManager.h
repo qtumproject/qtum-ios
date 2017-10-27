@@ -16,6 +16,7 @@
 @class ShareTokenPopUpViewController;
 @class ErrorPopUpViewController;
 @class AddressTransferPopupViewController;
+@class LoaderPopUpViewController;
 
 @interface PopUpsManager : NSObject
 
@@ -25,6 +26,8 @@
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 // show methods
+- (void)dismissLoader:(LoaderPopUpViewController*) loader;
+- (LoaderPopUpViewController*)showLoaderPopUpInView:(UIView*)view;
 - (void)showNoIntenterConnetionsPopUp:(id<PopUpViewControllerDelegate>)delegate presenter:(UIViewController *)presenter  completion:(void (^)(void))completion;
 - (void)showPhotoLibraryPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter  completion:(void (^)(void))completion;
 - (ErrorPopUpViewController *)showErrorPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;

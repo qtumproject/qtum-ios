@@ -48,6 +48,24 @@ CGFloat AnimationDuration = 0.3f;
     }
 }
 
+- (void)showFromView:(UIView *)view animated:(BOOL)animated completion:(void (^)(void))completion {
+    
+    UIView* rootView = view;
+
+    if (animated) {
+        self.view.alpha = 0.0f;
+        [rootView addSubview:self.view];
+        [UIView animateWithDuration:AnimationDuration animations:^{
+            self.view.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            if (completion) completion();
+        }];
+    }else{
+        [rootView addSubview:self.view];
+        if (completion) completion();
+    }
+}
+
 - (void)hide:(BOOL)animated completion:(void (^)(void))completion {
     
     if (animated) {

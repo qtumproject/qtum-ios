@@ -8,7 +8,7 @@
 
 #import "NewsNavigationController.h"
 
-@interface NewsNavigationController ()
+@interface NewsNavigationController () <UIGestureRecognizerDelegate>
 
 @end
 
@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
+    self.interactivePopGestureRecognizer.delegate = self;
+    self.interactivePopGestureRecognizer.enabled = NO;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

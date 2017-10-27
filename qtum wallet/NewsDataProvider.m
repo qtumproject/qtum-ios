@@ -189,5 +189,12 @@
     return sortedArray;
 }
 
+#pragma mark - Cancelabe
+
+-(void)cancelAllOperations {
+    [self.parcer cancel];
+    [self.htmlParcer cancel];
+}
+
 
 @end

@@ -10,4 +10,6 @@
 
 @interface LoaderPopUpViewController : PopUpViewController
 
+-(void)reloadLoaderAnimation;
+
 @end
