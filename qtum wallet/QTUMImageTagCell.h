@@ -15,4 +15,6 @@ extern NSString * const QTUMImageTagCellReuseIdentifire;
 
 @property (weak, nonatomic) IBOutlet UIImageView *tagImageView;
 
+-(CGSize)prefferedSize;
+
 @end

@@ -14,7 +14,6 @@
 
 @interface NewsDataProvider ()
 
-@property (strong, nonatomic) NetworkingService* networkService;
 @property (strong, nonatomic) QTUMFeedParcer* parcer;
 @property (strong, nonatomic) QTUMHtmlParcer* htmlParcer;
 @property (nonatomic, copy) QTUMNewsItems completion;
@@ -39,11 +38,7 @@
     
     self = [super init];
     
-    if (self != nil) {
-        
-        _networkService = [[NetworkingService alloc] initWithBaseUrl:@"https://api.medium.com/v1"];
-        _networkService.accesToken = @"2df96f4271bd76950229972d74a9bc6d456bfae100b1201c90a8947f647733343";
-    }
+    if (self != nil) { }
     return self;
 }
 
@@ -84,7 +79,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (weakSelf.completion) {
-                    weakSelf.completion(self.news);
+                    weakSelf.completion(weakSelf.news);
                 }
             });
         };
@@ -108,12 +103,12 @@
         if (completion) {
             completion(tags);
         }
-        [weakSelf updateNewsWithNewsItemItem:newsItem];
+        [weakSelf updateNewsWithNewsItem:newsItem];
     }];
     self.htmlParcer = htmlParcer;
 }
 
--(void)updateNewsWithNewsItemItem:(QTUMNewsItem*) newsItem {
+-(void)updateNewsWithNewsItem:(QTUMNewsItem*) newsItem {
     
     __weak __typeof(self)weakSelf = self;
 

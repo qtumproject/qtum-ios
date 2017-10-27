@@ -24,8 +24,13 @@ NSString * const QTUMImageTagCellReuseIdentifire = @"QTUMImageTagCellReuseIdenti
     self.tagImageView.image = [UIImage imageNamed:@"news-placehodler"];
 }
 
--(CGFloat)calculateSelfHeight {
-    return 212;
+
+-(CGSize)prefferedSize {
+    
+    float cellWidth = [[UIScreen mainScreen] bounds].size.width - 10 - 10;
+    float ratio = cellWidth / 355.f;
+    float cellHeight = ratio * 192;
+    return CGSizeMake(cellWidth, cellHeight);
 }
 
 
