@@ -65,7 +65,7 @@
         
         cell.tagImageView.associatedObject = urlString;
         
-        [SLocator.imageLoader getImageWithUrl:urlString withResultHandler:^(UIImage *image) {
+        [SLocator.imageLoader getImageWithUrl:urlString andSize:cell.prefferedSize withResultHandler:^(UIImage *image) {
 
             if ([weakCell.tagImageView.associatedObject isEqualToString:urlString] && image) {
 
@@ -97,7 +97,7 @@
         
         cell.tagImageView.associatedObject = urlString;
         
-                [SLocator.imageLoader getImageWithUrl:urlString withResultHandler:^(UIImage *image) {
+                [SLocator.imageLoader getImageWithUrl:urlString andSize:cell.prefferedSize withResultHandler:^(UIImage *image) {
         
                     if ([weakCell.tagImageView.associatedObject isEqualToString:urlString] && image) {
         
@@ -173,7 +173,6 @@
     
     QTUMParagrafTagCell *cell = [tableView dequeueReusableCellWithIdentifier:QTUMParagrafTagCellReuseIdentifire];
     
-    UIFont* font = [cell regularFont];
     UIFont* boldFont = [cell boldFont];
     UIColor* textColor = [cell textColor];
     

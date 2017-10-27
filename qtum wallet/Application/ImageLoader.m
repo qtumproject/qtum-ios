@@ -45,7 +45,6 @@
 
 #pragma mark - Set Up
 
-
 - (void)setUp {
     
     NSArray *pathList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
@@ -67,12 +66,15 @@
 }
 
 
--(void)getImageWithUrl:(NSString*)url withResultHandler:(void(^)(UIImage* image)) complete{
+-(void)getImageWithUrl:(NSString*)url andSize:(CGSize) size withResultHandler:(void(^)(UIImage* image)) complete{
     
     if ([url isKindOfClass:[NSNull class]]) {
         complete(nil);
         return;
     }
+    
+    __weak __typeof(self)weakSelf = self;
+    
     NSString* localPath = [self localPathToFileWithUrl:url];
     if (localPath) {
         UIImage* img = [UIImage imageWithContentsOfFile:localPath];
@@ -80,8 +82,35 @@
     } else {
         [self.operationManager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
             if ([responseObject isKindOfClass:[UIImage class]]) {
-                [self saveFileWithUrl:url andFile:responseObject];
-                complete(responseObject);
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                    
+                    UIImage * img = responseObject;
+
+                    float scaleFactor;
+                    
+                    if (img.size.width > img.size.height) {
+                        
+                        scaleFactor = img.size.width / size.width;
+                    } else {
+                        
+                        scaleFactor = img.size.height / size.height;
+                    }
+                    
+                    float newHeight = img.size.height * scaleFactor;
+                    float newWidth = img.size.width * scaleFactor;
+                    
+                    UIGraphicsBeginImageContext(CGSizeMake(newHeight,newWidth));
+                    CGContextRef context = UIGraphicsGetCurrentContext();
+                    CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), [img CGImage]);
+                    UIGraphicsEndImageContext();
+                    
+                    [weakSelf saveFileWithUrl:url andFile:img];
+
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        complete(img);
+                    });
+                });
             } else {
                 complete(nil);
             }
@@ -125,5 +154,15 @@
     }
 }
 
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 
 @end
