@@ -958,13 +958,19 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBh-lD-S79">
-                                        <rect key="frame" x="10" y="74" width="87" height="13"/>
+                                        <rect key="frame" x="10" y="74" width="114" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="114" id="ZSW-6A-wEw"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrM-6g-nNF">
-                                        <rect key="frame" x="10" y="92" width="64" height="13"/>
+                                        <rect key="frame" x="10" y="92" width="67" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="67" id="yVV-e2-DPz"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -998,6 +1004,7 @@
                                 <constraints>
                                     <constraint firstItem="Zin-HI-OfU" firstAttribute="top" secondItem="izA-i2-15L" secondAttribute="top" constant="20" id="03k-dW-Snw"/>
                                     <constraint firstItem="Zin-HI-OfU" firstAttribute="leading" secondItem="izA-i2-15L" secondAttribute="leading" id="73X-Gd-T89"/>
+                                    <constraint firstItem="YGT-I7-UDj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GrM-6g-nNF" secondAttribute="trailing" constant="10" id="ByC-aN-l14"/>
                                     <constraint firstAttribute="trailing" secondItem="no0-v7-v6v" secondAttribute="trailing" constant="10" id="C3y-Qx-35c"/>
                                     <constraint firstItem="eBh-lD-S79" firstAttribute="top" secondItem="Zin-HI-OfU" secondAttribute="bottom" constant="10" id="CFj-UV-teD"/>
                                     <constraint firstAttribute="height" constant="115" id="EiT-IZ-FmL"/>
@@ -1006,6 +1013,7 @@
                                     <constraint firstItem="exQ-3S-Cmx" firstAttribute="centerY" secondItem="eBh-lD-S79" secondAttribute="centerY" id="JbH-s2-K4X"/>
                                     <constraint firstItem="YGT-I7-UDj" firstAttribute="centerY" secondItem="GrM-6g-nNF" secondAttribute="centerY" id="LMU-RC-dMN"/>
                                     <constraint firstAttribute="trailing" secondItem="viN-ya-iQ4" secondAttribute="trailing" constant="10" id="NdI-gg-lar"/>
+                                    <constraint firstItem="exQ-3S-Cmx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eBh-lD-S79" secondAttribute="trailing" constant="10" id="Njs-Ou-eLH"/>
                                     <constraint firstItem="no0-v7-v6v" firstAttribute="leading" secondItem="YGT-I7-UDj" secondAttribute="trailing" constant="4" id="UNF-8i-0ir"/>
                                     <constraint firstItem="exQ-3S-Cmx" firstAttribute="bottom" secondItem="viN-ya-iQ4" secondAttribute="bottom" constant="1" id="e8e-XW-sXb"/>
                                     <constraint firstAttribute="trailing" secondItem="Zin-HI-OfU" secondAttribute="trailing" id="ehA-gU-0Vi"/>
@@ -2886,13 +2894,19 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ks5-99-QYP">
-                                        <rect key="frame" x="10" y="74" width="95" height="14"/>
+                                        <rect key="frame" x="10" y="74" width="93.5" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="93.5" id="XTg-mL-pnc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yox-yp-YwO">
-                                        <rect key="frame" x="10" y="91" width="69.5" height="14"/>
+                                        <rect key="frame" x="10" y="91" width="68" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="68" id="EXa-GW-Obv"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -2933,6 +2947,7 @@
                                     <constraint firstAttribute="trailing" secondItem="bGh-bU-d7c" secondAttribute="trailing" id="CHy-sL-BJt"/>
                                     <constraint firstItem="Ks5-99-QYP" firstAttribute="leading" secondItem="QBW-JA-TXs" secondAttribute="leading" constant="10" id="NBx-mb-L4m"/>
                                     <constraint firstItem="gw1-cR-jKh" firstAttribute="bottom" secondItem="TAb-h5-tTN" secondAttribute="bottom" id="Od5-6k-zxX"/>
+                                    <constraint firstItem="PjR-4l-WGi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ks5-99-QYP" secondAttribute="trailing" constant="10" id="Qi3-hx-sc0"/>
                                     <constraint firstItem="PjR-4l-WGi" firstAttribute="bottom" secondItem="pDw-4S-J05" secondAttribute="bottom" id="QrS-9B-eq7"/>
                                     <constraint firstItem="PjR-4l-WGi" firstAttribute="centerY" secondItem="Ks5-99-QYP" secondAttribute="centerY" id="WAM-Lf-ST5"/>
                                     <constraint firstItem="bGh-bU-d7c" firstAttribute="top" secondItem="QBW-JA-TXs" secondAttribute="top" constant="20" id="Xe6-tM-XFy"/>
@@ -2940,6 +2955,7 @@
                                     <constraint firstAttribute="trailing" secondItem="pDw-4S-J05" secondAttribute="trailing" constant="10" id="Yzf-jl-ybd"/>
                                     <constraint firstItem="pDw-4S-J05" firstAttribute="leading" secondItem="PjR-4l-WGi" secondAttribute="trailing" constant="4" id="qex-fX-Ryq"/>
                                     <constraint firstAttribute="bottom" secondItem="Yox-yp-YwO" secondAttribute="bottom" constant="10" id="s9s-MB-PpG"/>
+                                    <constraint firstItem="TAb-h5-tTN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yox-yp-YwO" secondAttribute="trailing" constant="10" id="tiS-UX-iYm"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5u-zO-Rcp">

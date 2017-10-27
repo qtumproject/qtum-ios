@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, ReciveOutputType) {
 @property (copy, nonatomic) NSString* walletAddress;
 @property (nonatomic, assign) ReciveOutputType type;
 @property (copy, nonatomic) NSString* balanceText;
+@property (copy, nonatomic) NSString* shortBalanceText;
 @property (copy, nonatomic) NSString* unconfirmedBalanceText;
 @property (copy, nonatomic) NSString* currency;
 

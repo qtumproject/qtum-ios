@@ -40,7 +40,8 @@ balanceText = _balanceText,
 unconfirmedBalanceText = _unconfirmedBalanceText,
 walletAddress = _walletAddress,
 tokenAddress = _tokenAddress,
-currency = _currency;
+currency = _currency,
+shortBalanceText = _shortBalanceText;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,6 +74,16 @@ currency = _currency;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)viewDidLayoutSubviews {
+    
+    if (self.type == TokenType) {
+        CGSize size = [self.balanceLabel.text sizeWithAttributes:@{NSFontAttributeName : self.balanceLabel.font}];
+        if (size.width > self.balanceLabel.bounds.size.width) {
+            self.balanceLabel.text = self.shortBalanceText;
+        }
+    }
 }
 
 #pragma mark - Methods

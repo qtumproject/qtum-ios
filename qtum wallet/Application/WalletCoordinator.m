@@ -163,6 +163,7 @@
         
         vc.balanceText = contract.balanceString;
         vc.unconfirmedBalanceText = @"0";
+        vc.shortBalanceText = contract.shortBalanceString;
 
     } else {
         
