@@ -7,8 +7,10 @@
 //
 
 #import "LoaderPopUpViewController.h"
+#import "SpinnerView.h"
 
 @interface LoaderPopUpViewController ()
+@property (weak, nonatomic) IBOutlet SpinnerView *LoaderView;
 
 @end
 
@@ -18,4 +20,7 @@
     [super viewDidLoad];
 }
 
+-(void)reloadLoaderAnimation {
+    [self.LoaderView startAnimating];
+}
 @end

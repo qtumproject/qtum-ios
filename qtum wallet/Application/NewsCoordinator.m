@@ -78,6 +78,7 @@
 #pragma mark NewsDetailOutputDelegate
 
 -(void)didBackPressed {
+    [[NewsDataProvider sharedInstance] cancelAllOperations];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

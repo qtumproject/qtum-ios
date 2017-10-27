@@ -45,6 +45,9 @@
                             <constraint firstItem="cLI-v3-zvJ" firstAttribute="top" secondItem="scl-6Q-1mM" secondAttribute="bottom" id="fsP-7U-m4y"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="LoaderView" destination="OWp-JI-tzn" id="Xjc-rA-vuv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2m5-Eh-Gg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -86,6 +89,9 @@
                             <constraint firstItem="Hqs-Pd-nvB" firstAttribute="top" secondItem="qL7-Bg-dwL" secondAttribute="bottom" id="qcq-gs-Qr6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="LoaderView" destination="6dO-rL-Xxm" id="hlA-sP-80h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABs-A1-kbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

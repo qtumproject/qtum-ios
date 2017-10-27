@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "QTUMFeedItem.h"
+#import "Cancelable.h"
 
 typedef void(^QTUMFeeds) (NSArray <QTUMFeedItem*>* feeds);
 
-@interface QTUMFeedParcer : NSObject
+@interface QTUMFeedParcer : NSObject <Cancelable>
 
 -(void)parceFeedFromUrl:(NSString*) url withCompletion:(QTUMFeeds) completion;
 

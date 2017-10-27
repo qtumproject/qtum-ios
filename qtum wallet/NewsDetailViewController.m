@@ -11,10 +11,13 @@
 #import "QTUMHTMLTagItem.h"
 #import "QTUMNewsItem.h"
 #import "NewsDetailCellBuilder.h"
+#import "LoaderPopUpViewController.h"
 
 @interface NewsDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) LoaderPopUpViewController* loader;
+@property (weak, nonatomic) IBOutlet UIView *loaderPlaceholderView;
 
 @end
 
@@ -30,6 +33,16 @@
     if (!self.newsItem.tags) {
         [self getData];
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.loader reloadLoaderAnimation];
+    [self reloadTableView];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 
 #pragma mark - Configuration
@@ -65,11 +78,13 @@
 }
 
 -(void)startLoading {
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    LoaderPopUpViewController* loader = [[PopUpsManager sharedInstance] showLoaderPopUpInView:self.loaderPlaceholderView];
+    self.loader = loader;
 }
 
 -(void)stopLoadingIfNeeded {
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [[PopUpsManager sharedInstance] dismissLoader:self.loader];
+    self.loader = nil;
 }
 
 

@@ -131,10 +131,24 @@
     [controller showFromViewController:nil animated:YES completion:nil];
 }
 
+- (LoaderPopUpViewController*)showLoaderPopUpInView:(UIView*)view {
+    
+    LoaderPopUpViewController *controller = [self createLoaderPopUp];
+    self.currentPopUp = controller;
+    [controller showFromView:view animated:YES completion:nil];
+    return controller;
+}
+
 - (void)dismissLoader {
+    
     if ([self.currentPopUp isKindOfClass:[LoaderPopUpViewController class]]) {
         [self hideCurrentPopUp:NO completion:nil];
     }
+}
+
+- (void)dismissLoader:(LoaderPopUpViewController*) loader {
+    
+    [loader hide:YES completion:nil];
 }
 
 - (void)showNoIntenterConnetionsPopUp:(id<PopUpViewControllerDelegate>)delegate presenter:(UIViewController *)presenter  completion:(void (^)(void))completion

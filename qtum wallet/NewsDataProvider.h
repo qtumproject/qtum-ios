@@ -18,6 +18,7 @@ typedef void(^QTUMNewsItems) (NSArray <QTUMNewsItem*>* feeds);
 -(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion;
 -(void)getTagsFromNews:(QTUMNewsItem*) newsItem withCompletion:(QTUMTagsItems) completion;
 -(NSArray <QTUMNewsItem*>*)obtainNewsItems;
+-(void)cancelAllOperations;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
