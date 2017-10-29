@@ -16,6 +16,7 @@
 #import "QStoreDataProvider.h"
 #import "ServiceLocator.h"
 #import "NewsDataProvider.h"
+#import "BTCBigNumber.h"
 
 @interface AppDelegate ()
 
@@ -27,21 +28,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
     [iOSSessionManager sharedInstance];
     [ServiceLocator sharedInstance];
     [[AppSettings sharedInstance] setup];
     [Appearance setUp];
-    
+
     [[ApplicationCoordinator sharedInstance] startSplashScreen];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
+
         if (!self.aplicationCoordinatorStarted) {
             [[ApplicationCoordinator sharedInstance] start];
             self.aplicationCoordinatorStarted  = YES;
         }
     });
-
+    
     return YES;
 }
 
