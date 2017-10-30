@@ -18,6 +18,7 @@
 #import "NSNumber+Comparison.h"
 #import "TransactionScriptBuilder.h"
 #import "ServiceLocator.h"
+#import "JKBigDecimal+Comparison.h"
 
 static NSString* op_exec = @"c1";
 
@@ -228,8 +229,9 @@ static NSInteger constantFee = 400000000;
                                         NSDecimalNumber* estimatedFee)) completion {
     
     NSString* __block addressWithAmountValue;
-    [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, NSNumber* balance, BOOL * _Nonnull stop) {
-        if ([balance isGreaterThan:amount]) {
+    [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, JKBigDecimal* balance, BOOL * _Nonnull stop) {
+        
+        if ([balance isGreaterThan:[[JKBigDecimal alloc] initWithString:amount.stringValue]]) {
             addressWithAmountValue = address;
             *stop = YES;
         }
@@ -251,7 +253,7 @@ static NSInteger constantFee = 400000000;
 - (void)sendToken:(Contract*) token
       fromAddress:(NSString*) fromAddress
         toAddress:(NSString*) toAddress
-           amount:(NSDecimalNumber*) amount
+           amount:(JKBigDecimal*) amount
               fee:(NSDecimalNumber*) fee
          gasPrice:(NSDecimalNumber*) gasPrice
          gasLimit:(NSDecimalNumber*) gasLimit
@@ -273,10 +275,10 @@ static NSInteger constantFee = 400000000;
     
     NSString* __block addressWithAmountValue = fromAddress;
     
-    NSNumber* addressBalance = token.addressBalanceDictionary[addressWithAmountValue];
+    JKBigDecimal* addressBalance = token.addressBalanceDictionary[addressWithAmountValue];
     
     if (addressBalance) {
-        if ([addressBalance isLessThan:amount]) {
+        if ([addressBalance isLessThan:[[JKBigDecimal alloc] initWithString:amount.stringValue]]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(TransactionManagerErrorTypeNotEnoughMoney, nil, nil,nil);
             });
@@ -575,12 +577,20 @@ static NSInteger constantFee = 400000000;
 #pragma mark - Private
 
 
-- (BTCAmount)convertValueToAmount:(NSDecimalNumber*) value {
+- (BTCAmount)convertValueToAmount:(id) value {
     
-    if ([value isKindOfClass:[NSDecimalNumber class]]) {
-        return [[value decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:BTCCoin]] intValue];
+    NSDecimalNumber* decimalNumber;
+    if ([value isKindOfClass:[JKBigDecimal class]]) {
+        
+        decimalNumber = [[NSDecimalNumber alloc] initWithString:[(JKBigDecimal*)value stringValue]];
+        return [[decimalNumber decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:BTCCoin]] intValue];
+    } else if ([value isKindOfClass:[NSDecimalNumber class]]) {
+        
+        decimalNumber = (NSDecimalNumber* )value;
+        return [[decimalNumber decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:BTCCoin]] intValue];
     }
-    return value.doubleValue * BTCCoin;
+    
+    return 0;
 }
 
 

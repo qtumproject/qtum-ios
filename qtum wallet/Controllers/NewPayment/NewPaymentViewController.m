@@ -15,8 +15,10 @@
 #import "InformationPopUpViewController.h"
 #import "ErrorPopUpViewController.h"
 #import "SecurityPopupViewController.h"
-#import "NSNumber+Comparison.h"
+#import "JKBigDecimal+Comparison.h"
 #import "ConfirmPopUpViewController.h"
+#import "NSNumber+Comparison.h"
+
 
 @interface NewPaymentViewController () <UITextFieldDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -292,8 +294,8 @@ static NSInteger hidedGasTopForSend = -40;
 
 -(void)updateControlsWithTokensExist:(BOOL) isExist
                    choosenTokenExist:(BOOL) choosenExist
-                       walletBalance:(NSNumber*) walletBalance
-              andUnconfimrmedBalance:(NSNumber*) walletUnconfirmedBalance {
+                       walletBalance:(JKBigDecimal*) walletBalance
+              andUnconfimrmedBalance:(JKBigDecimal*) walletUnconfirmedBalance {
     
     //updating constraints and activity info
     self.residueValueLabel.text = [NSString stringWithFormat:@"%@", [walletBalance.decimalNumber roundedNumberWithScale:3]];
@@ -531,10 +533,9 @@ static NSInteger hidedGasTopForSend = -40;
 
 - (IBAction)makePaymentButtonWasPressed:(id)sender {
     
-    NSNumber *number = [self.localeFormatter numberFromString: self.amountTextField.text];
-    
-    NSDecimalNumber *amount = [number decimalNumber];
-    
+    NSString* amountString = [self.amountTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    JKBigDecimal* amount = [[JKBigDecimal alloc] initWithString:amountString];
+
     NSString *address = self.addressTextField.text;
     
     [self normalizeFee];

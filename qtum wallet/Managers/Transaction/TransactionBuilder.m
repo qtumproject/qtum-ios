@@ -312,6 +312,10 @@
     }
 }
 
+static BTCTransactionOutput * extracted() {
+    return [BTCTransactionOutput alloc];
+}
+
 - (BTCTransaction *)smartContractCreationTxWithUnspentOutputs:(NSArray *)unspentOutputs
                                                    withAmount:(CGFloat) amount
                                                   withBitcode:(NSData*) bitcode
@@ -370,7 +374,7 @@
         // Add required outputs - payment and change
         BTCAmount amount = 0;
         BTCTransactionOutput* paymentOutput;
-        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder createContractScriptWithBiteCode:bitcode andGasLimit:gasLimit andGasPrice:gasPrice]];
+        paymentOutput = [extracted() initWithValue:amount script:[self.scriptBuilder createContractScriptWithBiteCode:bitcode andGasLimit:gasLimit andGasPrice:gasPrice]];
         [tx addOutput:paymentOutput];
         
         BTCAddress* changeAddress = [AppSettings sharedInstance].isMainNet ? walletKeys.firstObject.address : walletKeys.firstObject.addressTestnet;

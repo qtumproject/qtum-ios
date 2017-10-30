@@ -11,12 +11,13 @@
 #import "AddressTransferPopupViewController.h"
 #import "TransactionManager.h"
 #import "ErrorPopUpViewController.h"
+#import "JKBigDecimal.h"
 
 @interface TokenAddressLibraryCoordinator () <TokenAddressLibraryOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject <TokenAddressLibraryOutput> *addressOutput;
-@property (nonatomic, copy) NSDictionary <NSString*, NSNumber*> *addressBalanceHashTable;
+@property (nonatomic, copy) NSDictionary <NSString*, JKBigDecimal*> *addressBalanceHashTable;
 
 @end
 

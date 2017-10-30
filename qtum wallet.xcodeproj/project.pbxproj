@@ -57,6 +57,8 @@
 		B32805571FA7474B00748E7E /* JKBigInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = B328054C1FA744E200748E7E /* JKBigInteger.m */; };
 		B32805581FA7474B00748E7E /* JKBigDecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = B328054D1FA744E200748E7E /* JKBigDecimal.m */; };
 		B32805591FA7477D00748E7E /* tommath.c in Sources */ = {isa = PBXBuildFile; fileRef = B328054F1FA744FE00748E7E /* tommath.c */; };
+		B328055C1FA74CDA00748E7E /* JKBigDecimal+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = B328055B1FA74CDA00748E7E /* JKBigDecimal+Format.m */; };
+		B328055F1FA7555000748E7E /* JKBigDecimal+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = B328055E1FA7555000748E7E /* JKBigDecimal+Comparison.m */; };
 		B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */; };
 		B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CA1ECCC2130081260A /* ResultTokenInputsModel.m */; };
 		B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CD1ECCC2330081260A /* ContractInterfaceManager.m */; };
@@ -792,6 +794,10 @@
 		B32805521FA744FF00748E7E /* tommath_superclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tommath_superclass.h; sourceTree = "<group>"; };
 		B32805531FA7472200748E7E /* JKBigInteger_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKBigInteger_iOSTests.m; sourceTree = "<group>"; };
 		B32805541FA7472200748E7E /* JKBigDecimal_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKBigDecimal_iOSTests.m; sourceTree = "<group>"; };
+		B328055A1FA74CDA00748E7E /* JKBigDecimal+Format.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JKBigDecimal+Format.h"; sourceTree = "<group>"; };
+		B328055B1FA74CDA00748E7E /* JKBigDecimal+Format.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JKBigDecimal+Format.m"; sourceTree = "<group>"; };
+		B328055D1FA7555000748E7E /* JKBigDecimal+Comparison.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JKBigDecimal+Comparison.h"; sourceTree = "<group>"; };
+		B328055E1FA7555000748E7E /* JKBigDecimal+Comparison.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JKBigDecimal+Comparison.m"; sourceTree = "<group>"; };
 		B32B32C61ECCC1F90081260A /* InterfaceInputFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceInputFormModel.h; sourceTree = "<group>"; };
 		B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceInputFormModel.m; sourceTree = "<group>"; };
 		B32B32C91ECCC2130081260A /* ResultTokenInputsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultTokenInputsModel.h; sourceTree = "<group>"; };
@@ -4532,6 +4538,10 @@
 				B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */,
 				B342DB761F61808E0052A367 /* NSNumber+Format.h */,
 				B342DB771F61808E0052A367 /* NSNumber+Format.m */,
+				B328055A1FA74CDA00748E7E /* JKBigDecimal+Format.h */,
+				B328055B1FA74CDA00748E7E /* JKBigDecimal+Format.m */,
+				B328055D1FA7555000748E7E /* JKBigDecimal+Comparison.h */,
+				B328055E1FA7555000748E7E /* JKBigDecimal+Comparison.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -5392,6 +5402,7 @@
 				B32805571FA7474B00748E7E /* JKBigInteger.m in Sources */,
 				B32805581FA7474B00748E7E /* JKBigDecimal.m in Sources */,
 				B35733311F97B32900C64AAE /* TFHppleElement.m in Sources */,
+				B328055F1FA7555000748E7E /* JKBigDecimal+Comparison.m in Sources */,
 				B35733321F97B32900C64AAE /* XPathQuery.m in Sources */,
 				B35733301F97B2FE00C64AAE /* TFHpple.m in Sources */,
 				E73D9C8D1ECB19D000A09CFE /* SplashViewController.m in Sources */,
@@ -5646,6 +5657,7 @@
 				E73CF6C81EE2CF970044DF78 /* ErrorPopUpViewController.m in Sources */,
 				E73D36FE1ECF1636009173BD /* AddressesTokenTableViewCell.m in Sources */,
 				B3D5FE3F1F569FEB006A2BF2 /* NSString+AbiRegex.m in Sources */,
+				B328055C1FA74CDA00748E7E /* JKBigDecimal+Format.m in Sources */,
 				E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */,
 				B32BC4B11F28D5BC00C2417C /* TextFieldWithLineLightSend.m in Sources */,
 				E72631271EEAA9A7005AED8F /* SwitchParameterView.m in Sources */,

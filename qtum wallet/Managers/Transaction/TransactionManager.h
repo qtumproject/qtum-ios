@@ -46,7 +46,7 @@
 
 - (void)sendTransactionToToken:(Contract*) token
                      toAddress:(NSString*) toAddress
-                        amount:(NSNumber*) amount
+                        amount:(JKBigDecimal*) amount
                            fee:(NSDecimalNumber*) fee
                       gasPrice:(NSDecimalNumber*) gasPrice
                       gasLimit:(NSDecimalNumber*) gasLimit
@@ -58,7 +58,7 @@
 - (void)sendToken:(Contract*) token
         fromAddress:(NSString*) fromAddress
          toAddress:(NSString*) toAddress
-            amount:(NSDecimalNumber*) amount
+            amount:(JKBigDecimal*) amount
               fee:(NSDecimalNumber*) fee
               gasPrice:(NSDecimalNumber*) gasPrice
               gasLimit:(NSDecimalNumber*) gasLimit

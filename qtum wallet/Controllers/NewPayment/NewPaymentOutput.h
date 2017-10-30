@@ -11,6 +11,8 @@
 
 @protocol NewPaymentOutputDelegate;
 
+@class JKBigDecimal;
+
 @protocol NewPaymentOutput <Presentable>
 
 @property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
@@ -18,8 +20,8 @@
 - (void)setSendInfoItem:(SendInfoItem *)item;
 - (void)updateControlsWithTokensExist:(BOOL) isExist
                     choosenTokenExist:(BOOL) choosenExist
-                      walletBalance:(NSNumber*) walletBalance
-             andUnconfimrmedBalance:(NSNumber*) walletUnconfirmedBalance;
+                      walletBalance:(JKBigDecimal*) walletBalance
+             andUnconfimrmedBalance:(JKBigDecimal*) walletUnconfirmedBalance;
 - (void)updateContentWithContract:(Contract*) contract;
 - (void)clearFields;
 - (void)showErrorPopUp:(NSString *)message;

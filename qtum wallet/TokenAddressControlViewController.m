@@ -8,7 +8,7 @@
 
 #import "TokenAddressControlViewController.h"
 #import "TokenAddressContolCell.h"
-#import "NSNumber+Format.h"
+#import "JKBigDecimal+Format.h"
 
 @interface TokenAddressControlViewController ()
 

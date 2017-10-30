@@ -11,6 +11,7 @@
 #import "Managerable.h"
 #import "TemplateModel.h"
 #import "ContractManager.h"
+#import "JKBigDecimal.h"
 
 @class Contract;
 
@@ -26,8 +27,8 @@
 @property (copy, nonatomic) NSString* name;
 @property (copy, nonatomic) NSString* localName;
 @property (assign, nonatomic) BOOL isActive;
-@property (strong, nonatomic) NSDecimalNumber *balance;
-@property (strong, nonatomic) NSDecimalNumber *unconfirmedBalance;
+@property (strong, nonatomic) JKBigDecimal *balance;
+@property (strong, nonatomic) JKBigDecimal *unconfirmedBalance;
 @property (copy, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;
@@ -37,14 +38,14 @@
 @property (copy, nonatomic)NSString* contractAddress;
 @property (copy, nonatomic)NSString* contractCreationAddressAddress;
 @property (copy, nonatomic)NSArray* adresses;
-@property (strong, nonatomic)NSNumber* decimals;
-@property (strong, nonatomic)NSNumber* totalSupply;
+@property (strong, nonatomic) JKBigDecimal* decimals;
+@property (strong, nonatomic) JKBigDecimal* totalSupply;
 @property (strong, nonatomic) TemplateModel* templateModel;
 @property (strong, nonatomic) NSDate* creationDate;
 @property (copy, nonatomic, readonly) NSString* creationDateString;
 @property (copy, nonatomic, readonly) NSString* creationFormattedDateString;
-@property (copy, nonatomic, readonly) NSDictionary <NSString*,NSDecimalNumber*>* addressBalanceDivByDecimalDictionary;
-@property (copy, nonatomic) NSDictionary <NSString*,NSDecimalNumber*>* addressBalanceDictionary;
+@property (copy, nonatomic, readonly) NSDictionary <NSString*,JKBigDecimal*>* addressBalanceDivByDecimalDictionary;
+@property (copy, nonatomic) NSDictionary <NSString*,JKBigDecimal*>* addressBalanceDictionary;
 @property (nonatomic, weak) id<TokenDelegate> delegate;
 
 - (NSString*)balanceString;

@@ -73,7 +73,7 @@
         
         CGSize size = [amountLabel.text sizeWithAttributes:@{NSFontAttributeName : amountLabel.font}];
         if (size.width > amountLabel.bounds.size.width) {
-            amountLabel.text = [NSString stringWithFormat:@"%@", [[self.fromAddressesVariants[address] decimalNumber] shortFormatOfNumber]];
+            amountLabel.text = [NSString stringWithFormat:@"%@", [self.fromAddressesVariants[address] shortFormatOfNumber]];
         }
         
         [container addSubview:amountLabel];

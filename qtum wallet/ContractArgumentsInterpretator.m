@@ -11,6 +11,8 @@
 #import "AbiinterfaceItem.h"
 #import "NSString+Extension.h"
 #import "NSString+AbiRegex.h"
+#import "JKBigDecimal.h"
+
 
 @interface ContractArgumentsInterpretator ()
 
@@ -319,7 +321,6 @@ NSInteger standardParameterBatch = 32;
     
     [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
     
-    
     if ([aType isKindOfClass:[AbiParameterTypeFixedArrayUInt class]]) {
         
         AbiParameterTypeFixedArrayUInt* type = (AbiParameterTypeFixedArrayUInt*)aType;
@@ -535,17 +536,18 @@ NSInteger standardParameterBatch = 32;
                 
                 BTCBigNumber* arg = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]];
                 if (arg){
-                    [argumentsArray addObject:arg];
+                    JKBigDecimal* argVal = [[JKBigDecimal alloc] initWithString:arg.decimalString];
+                    [argumentsArray addObject:argVal];
                     argumentsData = [argumentsData subdataWithRange:NSMakeRange(32, argumentsData.length - 32)];
                 }
             } else if([type isKindOfClass:[AbiParameterTypeString class]]) {
                 
                 BTCBigNumber* offset = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]];
                 BTCBigNumber* length = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(32, 32)]];
-                NSString* stringArg = [self stringFromData:[argumentsData subdataWithRange:NSMakeRange(64, length.uint64value)]];
+                NSString* stringArg = [self stringFromData:[argumentsData subdataWithRange:NSMakeRange(64, length.uint32value)]];
                 if (stringArg){
                     [argumentsArray addObject:stringArg];
-                    argumentsData = [argumentsData subdataWithRange:NSMakeRange(offset.uint64value + length.uint64value, argumentsData.length - offset.uint64value - length.uint64value)];
+                    argumentsData = [argumentsData subdataWithRange:NSMakeRange(offset.uint32value + length.uint32value, argumentsData.length - offset.uint32value - length.uint32value)];
                 }
             } else if([type isKindOfClass:[AbiParameterTypeAddress class]]) {
                 

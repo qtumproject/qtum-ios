@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+@class JKBigDecimal;
 
 @protocol NewPaymentOutputDelegate <NSObject>
 
 - (void)didPresseQRCodeScaner;
 - (void)didPresseChooseToken;
 - (void)didPresseSendActionWithAddress:(NSString*) address
-                             andAmount:(NSNumber*) amount
+                             andAmount:(JKBigDecimal*) amount
                                    fee:(NSNumber*) fee
                               gasPrice:(NSNumber*) gasPrice
                               gasLimit:(NSNumber*) gasLimit;

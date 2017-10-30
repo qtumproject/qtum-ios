@@ -19,6 +19,7 @@
 #import "WalletCoordinator.h"
 #import "HistoryHeaderVIew.h"
 #import "NSNumber+Comparison.h"
+#import "JKBigDecimal+Comparison.h"
 
 @interface WalletViewController ()
 

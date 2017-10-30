@@ -8,7 +8,7 @@
 
 #import "WalletHeaderCell.h"
 #import "Wallet.h"
-#import "NSNumber+Comparison.h"
+#import "JKBigDecimal+Comparison.h"
 
 @interface WalletHeaderCell ()
 
@@ -25,8 +25,8 @@
 - (void)setData:(Wallet *)wallet{
     self.adressLabel.text = ([wallet isKindOfClass:[Contract class]]) ? NSLocalizedString(@"Contract Address", "") : NSLocalizedString(@"QTUM Address", "");
     self.adressValueLabel.text = wallet.mainAddress;
-    self.valueLabel.text = [NSString stringWithFormat:@"%@",[wallet.balance.decimalNumber roundedNumberWithScale:3]];
-    self.unconfirmedValue.text = [NSString stringWithFormat:@"%@",[wallet.unconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
+    self.valueLabel.text = [NSString stringWithFormat:@"%@",[wallet.balance roundedNumberWithScale:3]];
+    self.unconfirmedValue.text = [NSString stringWithFormat:@"%@",[wallet.unconfirmedBalance roundedNumberWithScale:3]];
     self.spendable = wallet;
     
     [self.pageControl setPagesCount:2];

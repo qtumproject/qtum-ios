@@ -38,7 +38,7 @@
 #import "AddressLibruaryCoordinator.h"
 #import "TokenAddressLibraryCoordinator.h"
 #import "ChooseReciveAddressOutput.h"
-#import "NSNumber+Comparison.h"
+#import "JKBigDecimal+Comparison.h"
 #import "ServiceLocator.h"
 
 @interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate, ChooseReciveAddressOutputDelegate>
@@ -171,8 +171,8 @@
         vc.type = ReciveWalletOutput;
         vc.tokenAddress =  nil;
         
-        vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance.decimalNumber roundedNumberWithScale:3]];
-        vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
+        vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance roundedNumberWithScale:3]];
+        vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance roundedNumberWithScale:3]];
     }
 
     vc.delegate = self;

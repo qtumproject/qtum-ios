@@ -20,6 +20,10 @@
 #import "Wallet.h"
 #import "NSNumber+Comparison.h"
 #import "NSNumber+Format.h"
+#import "JKBigDecimal+Comparison.h"
+#import "JKBigDecimal+Format.h"
+
+
 
 @interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -162,7 +166,7 @@
     });
 }
 
--(void)payWithWalletWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee{
+-(void)payWithWalletWithAddress:(NSString*) address andAmount:(JKBigDecimal*) amount andFee:(NSNumber *)fee{
     
     if (![self isValidAmount:amount]) {
         return;
@@ -191,9 +195,9 @@
                                                         }];
 }
 
--(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount fee:(NSNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
+-(void)payWithTokenWithAddress:(NSString*) address andAmount:(JKBigDecimal*) amount fee:(NSNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
     
-    NSDecimalNumber* amounDivByDecimals = [[amount decimalNumber] numberWithPowerOf10:self.token.decimals];
+    JKBigDecimal* amounDivByDecimals = [amount numberWithPowerOf10:self.token.decimals];
 
     if (![self isValidAmount:amounDivByDecimals]) {
         return;
@@ -205,7 +209,8 @@
     if (self.fromAddressString) {
         [[TransactionManager sharedInstance] sendToken:self.token
                                            fromAddress:self.fromAddressString
-                                             toAddress:address amount:amounDivByDecimals
+                                             toAddress:address
+                                                amount:amounDivByDecimals
                                                    fee:[fee decimalNumber]
                                               gasPrice:[gasPrice decimalNumber]
                                               gasLimit:[gasLimit decimalNumber]
@@ -277,9 +282,9 @@
     [self showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
-- (BOOL)isValidAmount:(NSNumber *)amount {
+- (BOOL)isValidAmount:(JKBigDecimal *)amount {
     
-    if (![[amount decimalNumber] isGreaterThanInt:0]) {
+    if (![amount  isGreaterThanInt:0]) {
         [self showErrorPopUp:NSLocalizedString(@"Transaction amount can't be zero. Please edit your transaction and try again", nil)];
         return NO;
     }
@@ -332,7 +337,7 @@
     [self.navigationController pushViewController:[tokenController toPresent] animated:YES];
 }
 
-- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount fee:(NSNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
+- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(JKBigDecimal*) amount fee:(NSNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
     
     __weak __typeof (self) weakSelf = self;
     [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
@@ -342,7 +347,7 @@
     }];
 }
 
-- (void)payActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount fee:(NSDecimalNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
+- (void)payActionWithAddress:(NSString*) address andAmount:(JKBigDecimal*) amount fee:(NSDecimalNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
     
     if (self.token) {
         [self payWithTokenWithAddress:address andAmount:amount fee:fee gasPrice:gasPrice gasLimit:gasLimit];
