@@ -22,17 +22,13 @@
                                      actionWithTitle:@"Settings"
                                      style:UIAlertActionStyleCancel
                                      handler:^(UIAlertAction * _Nonnull action) {
-                                         
                                          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
                                      }];
-    
-    [settingsAction setValue:[UIColor colorWithRed:74/255.0 green:144/255.0 blue:226/255.0 alpha:1.0] forKey:@"titleTextColor"];
     
     UIAlertAction *approveAction = [UIAlertAction
                                     actionWithTitle:@"Cancel"
                                     style:UIAlertActionStyleDefault
                                     handler:completion];
-   // [approveAction setValue:[UIColor redColor] forKey:@"titleTextColor"];
     
     [controller addAction:settingsAction];
     [controller addAction:approveAction];
