@@ -118,8 +118,9 @@ NSInteger standardParameterBatch = 32;
     
     if ([type isKindOfClass:[AbiParameterTypeUInt class]]) {
         
-        NSInteger param = [data integerValue];
-        [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+        BTCBigNumber* bigNumber = [[BTCBigNumber alloc] initWithDecimalString:data];
+        [staticDataArray addObject:[bigNumber unsignedBigEndian] ?: [self emptyData32bit]];
+
     } else if ([type isKindOfClass:[AbiParameterTypeBool class]]) {
         
         NSInteger param;

@@ -106,6 +106,7 @@
     
     NSArray* types = [self arrayOfTypesFromInputs:[self tokenInterfaceWithTemplate:templatePath].constructorItem.inputs];
     [contractSource appendData:[SLocator.contractArgumentsInterpretator contactArgumentsFromArrayOfValues:args andArrayOfTypes:types]];
+    
     return [contractSource copy];
 }
 
