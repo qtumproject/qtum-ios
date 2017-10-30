@@ -45,6 +45,14 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    if (!CGRectEqualToRect(self.loader.view.frame, self.loaderPlaceholderView.bounds)) {
+        self.loader.view.frame = self.loaderPlaceholderView.bounds;
+    }
+}
+
 #pragma mark - Configuration
 
 -(void)configTableView {
