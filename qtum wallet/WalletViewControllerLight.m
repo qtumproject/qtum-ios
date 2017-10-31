@@ -7,7 +7,6 @@
 //
 
 #import "WalletViewControllerLight.h"
-#import "NSNumber+Comparison.h"
 
 @interface WalletViewControllerLight ()
 

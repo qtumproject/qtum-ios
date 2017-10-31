@@ -421,7 +421,7 @@
 }
 
 
-- (void)getFeePerKbWithSuccessHandler:(void(^)(NSNumber* feePerKb))success
+- (void)getFeePerKbWithSuccessHandler:(void(^)(QTUMBigNumber* feePerKb))success
                     andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
     NSString *path = @"/estimate-fee-per-kb?nBlocks=2";

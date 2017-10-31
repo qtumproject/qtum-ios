@@ -249,6 +249,7 @@
 }
 
 - (void)didLoadFullData:(NSObject<QStoreListOutput> *)output {
+    
     if (output.type == QStoreCategories) {
         [output startLoading];
         [[QStoreManager sharedInstance] loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {

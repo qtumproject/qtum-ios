@@ -46,7 +46,6 @@ const float bottomOffset = 25;
     self.passwordView.delegate = self;
 }
 
-
 #pragma mark - Keyboard
 
 -(void)keyboardWillShow:(NSNotification *)sender {

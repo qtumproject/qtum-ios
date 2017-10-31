@@ -12,6 +12,7 @@
 #import "NSString+Extension.h"
 #import "NSString+AbiRegex.h"
 
+
 @interface ContractArgumentsInterpretator ()
 
 @end
@@ -118,8 +119,9 @@ NSInteger standardParameterBatch = 32;
     
     if ([type isKindOfClass:[AbiParameterTypeUInt class]]) {
         
-        NSInteger param = [data integerValue];
-        [staticDataArray addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+        BTCBigNumber* bigNumber = [[BTCBigNumber alloc] initWithDecimalString:data];
+        [staticDataArray addObject:[bigNumber unsignedBigEndian] ?: [self emptyData32bit]];
+
     } else if ([type isKindOfClass:[AbiParameterTypeBool class]]) {
         
         NSInteger param;
@@ -229,8 +231,8 @@ NSInteger standardParameterBatch = 32;
         for (int i = 0; i < arrayElements.count; i++) {
             
             NSString* element = arrayElements[i];
-            NSInteger param = [element integerValue];
-            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+            BTCBigNumber* bigNumber = [[BTCBigNumber alloc] initWithDecimalString:element];
+            [dynamicDataStack addObject:[bigNumber unsignedBigEndian] ?: [self emptyData32bit]];
         }
         
     } else if ([type isKindOfClass:[AbiParameterTypeDynamicArrayInt class]]) {
@@ -238,8 +240,8 @@ NSInteger standardParameterBatch = 32;
         for (int i = 0; i < arrayElements.count; i++) {
             
             NSString* element = arrayElements[i];
-            NSInteger param = [element integerValue];
-            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+            BTCBigNumber* bigNumber = [[BTCBigNumber alloc] initWithDecimalString:element];
+            [dynamicDataStack addObject:[bigNumber unsignedBigEndian] ?: [self emptyData32bit]];
         }
         
     } else if ([type isKindOfClass:[AbiParameterTypeDynamicArrayBool class]]) {
@@ -318,7 +320,6 @@ NSInteger standardParameterBatch = 32;
     
     [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:length]]];
     
-    
     if ([aType isKindOfClass:[AbiParameterTypeFixedArrayUInt class]]) {
         
         AbiParameterTypeFixedArrayUInt* type = (AbiParameterTypeFixedArrayUInt*)aType;
@@ -326,8 +327,8 @@ NSInteger standardParameterBatch = 32;
         for (int i = 0; i < type.size; i++) {
             
             NSString* element = arrayElements[i];
-            NSInteger param = [element integerValue];
-            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+            BTCBigNumber* bigNumber = [[BTCBigNumber alloc] initWithDecimalString:element];
+            [dynamicDataStack addObject:[bigNumber unsignedBigEndian] ?: [self emptyData32bit]];
         }
         
     } else if ([aType isKindOfClass:[AbiParameterTypeFixedArrayInt class]]) {
@@ -337,8 +338,8 @@ NSInteger standardParameterBatch = 32;
         for (int i = 0; i < type.size; i++) {
             
             NSString* element = arrayElements[i];
-            NSInteger param = [element integerValue];
-            [dynamicDataStack addObject:[NSData reverseData:[self uint256DataFromInt:param]] ?: [self emptyData32bit]];
+            BTCBigNumber* bigNumber = [[BTCBigNumber alloc] initWithDecimalString:element];
+            [dynamicDataStack addObject:[bigNumber unsignedBigEndian] ?: [self emptyData32bit]];
         }
         
     } else if ([aType isKindOfClass:[AbiParameterTypeFixedArrayBool class]]) {
@@ -466,13 +467,6 @@ NSInteger standardParameterBatch = 32;
     return [NSData reverseData:[self uint256DataFromInt:offset]];
 }
 
-- (BTC256)btc256FromInt:(NSInteger) aInt {
-    
-    NSMutableData* data = [NSMutableData dataWithBytes:&aInt length:sizeof(NSInteger)];
-    [data increaseLengthBy:32 - data.length];
-    return BTC256FromNSData(data);
-}
-
 - (NSData*)uint256DataFromInt:(NSInteger) aInt {
     
     return [self data32BitsFromInt:aInt withSize:sizeof(NSInteger)];
@@ -539,19 +533,20 @@ NSInteger standardParameterBatch = 32;
                [type isKindOfClass:[AbiParameterTypeInt class]] ||
                [type isKindOfClass:[AbiParameterTypeBool class]]) {
                 
-                NSNumber* arg = @([self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]]);
+                BTCBigNumber* arg = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]];
                 if (arg){
-                    [argumentsArray addObject:arg];
+                    QTUMBigNumber* argVal = [[QTUMBigNumber alloc] initWithString:arg.decimalString];
+                    [argumentsArray addObject:argVal];
                     argumentsData = [argumentsData subdataWithRange:NSMakeRange(32, argumentsData.length - 32)];
                 }
             } else if([type isKindOfClass:[AbiParameterTypeString class]]) {
                 
-                NSUInteger offset = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]];
-                NSUInteger length = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(32, 32)]];
-                NSString* stringArg = [self stringFromData:[argumentsData subdataWithRange:NSMakeRange(64, length)]];
+                BTCBigNumber* offset = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]];
+                BTCBigNumber* length = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(32, 32)]];
+                NSString* stringArg = [self stringFromData:[argumentsData subdataWithRange:NSMakeRange(64, length.uint32value)]];
                 if (stringArg){
                     [argumentsArray addObject:stringArg];
-                    argumentsData = [argumentsData subdataWithRange:NSMakeRange(offset + length, argumentsData.length - offset - length)];
+                    argumentsData = [argumentsData subdataWithRange:NSMakeRange(offset.uint32value + length.uint32value, argumentsData.length - offset.uint32value - length.uint32value)];
                 }
             } else if([type isKindOfClass:[AbiParameterTypeAddress class]]) {
                 
@@ -580,22 +575,10 @@ NSInteger standardParameterBatch = 32;
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-- (NSUInteger)numberFromData:(NSData*) data {
+- (BTCBigNumber*)numberFromData:(NSData*) data {
 
-    NSInteger availableSize = 8;
-    unsigned long long dataAsInt = 0;
-    if (data.length >= availableSize) {
-        NSData* newData = [data subdataWithRange:NSMakeRange(data.length - availableSize, availableSize)];
-
-        NSString *stringData = [newData description];
-        stringData = [[stringData substringWithRange:NSMakeRange(1, [stringData length] - 2)] stringByReplacingOccurrencesOfString:@" " withString:@""];
-        
-        NSScanner *scanner = [NSScanner scannerWithString: stringData];
-        [scanner scanHexLongLong:& dataAsInt];
-    }
-    
-    NSNumber* num = [NSNumber numberWithUnsignedLongLong:dataAsInt];
-    return dataAsInt;
+    BTCBigNumber* bigNumber = [[BTCBigNumber alloc] initWithUnsignedBigEndian:data];
+    return bigNumber;
 }
 
 -(NSData*)emptyData32bit {

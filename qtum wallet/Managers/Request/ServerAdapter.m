@@ -27,11 +27,13 @@
     return data;
 }
 
-- (NSNumber*)adaptiveDataForFeePerKb:(id) data {
+- (QTUMBigNumber*)adaptiveDataForFeePerKb:(id) data {
     
     NSNumber* fee = data[@"fee_per_kb"];
     if ([fee isKindOfClass:[NSNumber class]]) {
-        return fee;
+        return [[QTUMBigNumber alloc] initWithString:[fee decimalNumber].stringValue];
+    } else if ([fee isKindOfClass:[NSString class]]) {
+        return [[QTUMBigNumber alloc] initWithString:(NSString*)fee];
     }
     return nil;
 }

@@ -20,6 +20,9 @@
 #import "Wallet.h"
 #import "NSNumber+Comparison.h"
 #import "NSNumber+Format.h"
+#import "QTUMBigNumber.h"
+
+
 
 @interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -59,10 +62,10 @@
     [self.paymentOutput showLoaderPopUp];
     
     __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(NSNumber *feePerKb) {
+    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
         
-        NSDecimalNumber* minFee = [feePerKb decimalNumber];
-        NSDecimalNumber* maxFee = [[PaymentValuesManager sharedInstance].maxFee decimalNumber];
+        QTUMBigNumber* minFee = feePerKb;
+        QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
         
         [weakSelf.paymentOutput setMinFee:minFee andMaxFee: maxFee];
         [weakSelf.paymentOutput setMinGasPrice:[PaymentValuesManager sharedInstance].minGasPrice andMax:[PaymentValuesManager sharedInstance].maxGasPrice step:GasPriceStep];
@@ -162,7 +165,7 @@
     });
 }
 
--(void)payWithWalletWithAddress:(NSString*) address andAmount:(NSNumber*) amount andFee:(NSNumber *)fee{
+-(void)payWithWalletWithAddress:(NSString*) address andAmount:(QTUMBigNumber*) amount andFee:(QTUMBigNumber *)fee{
     
     if (![self isValidAmount:amount]) {
         return;
@@ -176,10 +179,10 @@
     NSArray<BTCKey*>* addresses = self.fromAddressKey ? @[self.fromAddressKey] : [[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys];
     [[TransactionManager sharedInstance] sendTransactionWalletKeys:addresses
                                                 toAddressAndAmount:array
-                                                               fee:[fee decimalNumber]
+                                                               fee:fee
                                                         andHandler:^(TransactionManagerErrorType errorType,
                                                                      id response,
-                                                                     NSDecimalNumber* estimateFee) {
+                                                                     QTUMBigNumber* estimateFee) {
                                                             [weakSelf hideLoaderPopUp];
                                                             if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
                                                                 [self showNotEnoughFeeAlertWithEstimatedFee:estimateFee];
@@ -191,9 +194,9 @@
                                                         }];
 }
 
--(void)payWithTokenWithAddress:(NSString*) address andAmount:(NSNumber*) amount fee:(NSNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
+-(void)payWithTokenWithAddress:(NSString*) address andAmount:(QTUMBigNumber*) amount fee:(QTUMBigNumber *)fee gasPrice:(QTUMBigNumber *)gasPrice gasLimit:(QTUMBigNumber *)gasLimit {
     
-    NSDecimalNumber* amounDivByDecimals = [[amount decimalNumber] numberWithPowerOf10:self.token.decimals];
+    QTUMBigNumber* amounDivByDecimals = [amount numberWithPowerOf10:self.token.decimals];
 
     if (![self isValidAmount:amounDivByDecimals]) {
         return;
@@ -205,14 +208,15 @@
     if (self.fromAddressString) {
         [[TransactionManager sharedInstance] sendToken:self.token
                                            fromAddress:self.fromAddressString
-                                             toAddress:address amount:amounDivByDecimals
-                                                   fee:[fee decimalNumber]
-                                              gasPrice:[gasPrice decimalNumber]
-                                              gasLimit:[gasLimit decimalNumber]
+                                             toAddress:address
+                                                amount:amounDivByDecimals
+                                                   fee:fee
+                                              gasPrice:gasPrice
+                                              gasLimit:gasLimit
                                             andHandler:^(TransactionManagerErrorType errorType,
                                                          BTCTransaction *transaction,
                                                          NSString *hashTransaction,
-                                                         NSDecimalNumber *estimatedFee) {
+                                                         QTUMBigNumber *estimatedFee) {
                                                 
                                                 [weakSelf hideLoaderPopUp];
                                                 if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
@@ -225,12 +229,12 @@
         [[TransactionManager sharedInstance] sendTransactionToToken:self.token
                                                           toAddress:address
                                                              amount:amounDivByDecimals
-                                                                fee:[fee decimalNumber]
-                                                           gasPrice:[gasPrice decimalNumber]
-                                                           gasLimit:[gasLimit decimalNumber]
+                                                                fee:fee
+                                                           gasPrice:gasPrice
+                                                           gasLimit:gasLimit
                                                          andHandler:^(TransactionManagerErrorType errorType,
                                                                       BTCTransaction * transaction, NSString* hashTransaction,
-                                                                      NSDecimalNumber* estimateFee) {
+                                                                      QTUMBigNumber* estimateFee) {
                                                              
                                                              [weakSelf hideLoaderPopUp];
                                                              if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
@@ -265,21 +269,21 @@
     }
 }
 
-- (void)showNotEnoughFeeAlertWithEstimatedFee:(NSDecimalNumber*) estimatedFee {
+- (void)showNotEnoughFeeAlertWithEstimatedFee:(QTUMBigNumber*) estimatedFee {
     
-    NSString* errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee];
+    NSString* errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee.stringValue];
     [self showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
-- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType withEstimateGasLimit:(NSDecimalNumber*) gasLimit {
+- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType withEstimateGasLimit:(QTUMBigNumber*) gasLimit {
     
-    NSString* errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", gasLimit];
+    NSString* errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", gasLimit.stringValue];
     [self showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
-- (BOOL)isValidAmount:(NSNumber *)amount {
+- (BOOL)isValidAmount:(QTUMBigNumber *)amount {
     
-    if (![[amount decimalNumber] isGreaterThanInt:0]) {
+    if (![amount  isGreaterThanInt:0]) {
         [self showErrorPopUp:NSLocalizedString(@"Transaction amount can't be zero. Please edit your transaction and try again", nil)];
         return NO;
     }
@@ -332,17 +336,17 @@
     [self.navigationController pushViewController:[tokenController toPresent] animated:YES];
 }
 
-- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount fee:(NSNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
+- (void)didPresseSendActionWithAddress:(NSString*) address andAmount:(QTUMBigNumber*) amount fee:(QTUMBigNumber *)fee gasPrice:(QTUMBigNumber *)gasPrice gasLimit:(QTUMBigNumber *)gasLimit {
     
     __weak __typeof (self) weakSelf = self;
     [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
         if (success) {
-            [weakSelf payActionWithAddress:address andAmount:amount fee:[fee decimalNumber] gasPrice:gasPrice gasLimit:gasLimit];
+            [weakSelf payActionWithAddress:address andAmount:amount fee:fee gasPrice:gasPrice gasLimit:gasLimit];
         }
     }];
 }
 
-- (void)payActionWithAddress:(NSString*) address andAmount:(NSNumber*) amount fee:(NSDecimalNumber *)fee gasPrice:(NSNumber *)gasPrice gasLimit:(NSNumber *)gasLimit {
+- (void)payActionWithAddress:(NSString*) address andAmount:(QTUMBigNumber*) amount fee:(QTUMBigNumber *)fee gasPrice:(QTUMBigNumber *)gasPrice gasLimit:(QTUMBigNumber *)gasLimit {
     
     if (self.token) {
         [self payWithTokenWithAddress:address andAmount:amount fee:fee gasPrice:gasPrice gasLimit:gasLimit];

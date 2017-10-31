@@ -62,7 +62,7 @@
     AddressControlCell *cell = [tableView dequeueReusableCellWithIdentifier:addressControlCellIdentifire];
     NSString* key = self.addressesValueHashTable.allKeys[indexPath.row];
     cell.addressLabel.text = key;
-    cell.valueLabel.text = [NSString stringWithFormat:@"%@",[self.addressesValueHashTable[key] roundedNumberWithScale:5]];
+    cell.valueLabel.text =  [[[QTUMBigNumber decimalWithString:self.addressesValueHashTable[key][@"longString"]] roundedNumberWithScale:5] stringValue];
     return cell;
 }
 

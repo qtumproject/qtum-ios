@@ -11,7 +11,7 @@
 @protocol ContractCreationEndOutputDelegate <NSObject>
 
 - (void)didPressedQuit;
-- (void)finishStepFinishDidPressed:(NSDecimalNumber *)fee gasPrice:(NSDecimalNumber *)gasPrice gasLimit:(NSDecimalNumber *)gasLimit;
+- (void)finishStepFinishDidPressed:(QTUMBigNumber *)fee gasPrice:(QTUMBigNumber *)gasPrice gasLimit:(QTUMBigNumber *)gasLimit;
 - (void)finishStepBackDidPressed;
 - (void)finishStepCancelDidPressed;
 

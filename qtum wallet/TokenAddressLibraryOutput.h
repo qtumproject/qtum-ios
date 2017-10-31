@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) id <TokenAddressLibraryOutputDelegate> delegate;
 @property (copy, nonatomic) NSString* symbol;
-@property (copy, nonatomic) NSDictionary <NSString*, NSNumber*>* addressesValueHashTable;
+@property (copy, nonatomic) NSDictionary <NSString*, NSDictionary<NSString*,NSString*>*>* addressesValueHashTable;
 
 -(void)reloadData;
 

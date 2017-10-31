@@ -13,10 +13,10 @@
 - (void)didPresseQRCodeScaner;
 - (void)didPresseChooseToken;
 - (void)didPresseSendActionWithAddress:(NSString*) address
-                             andAmount:(NSNumber*) amount
-                                   fee:(NSNumber*) fee
-                              gasPrice:(NSNumber*) gasPrice
-                              gasLimit:(NSNumber*) gasLimit;
+                             andAmount:(QTUMBigNumber*) amount
+                                   fee:(QTUMBigNumber*) fee
+                              gasPrice:(QTUMBigNumber*) gasPrice
+                              gasLimit:(QTUMBigNumber*) gasLimit;
 - (void)didViewLoad;
 
 - (BOOL)needCheckForChanges;

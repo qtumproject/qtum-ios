@@ -16,9 +16,11 @@
     NSDecimalNumber* powerDecimal = [power decimalNumber];
     NSDecimalNumber* numberDecimal = [self decimalNumber];
     
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:10 raiseOnExactness:YES raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:YES];
+
     if (powerDecimal) {
-        
-        return [[numberDecimal decimalNumberByMultiplyingByPowerOf10: -powerDecimal.shortValue] shortFormatOfNumber];
+        NSString* str = [[numberDecimal decimalNumberByMultiplyingByPowerOf10: -powerDecimal.shortValue withBehavior:roundUp] shortFormatOfNumber];
+        return str;
     }
     
     return [self shortFormatOfNumber];

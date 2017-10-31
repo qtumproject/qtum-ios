@@ -39,7 +39,7 @@
 - (void)showSourceCodePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 - (ConfirmPurchasePopUpViewController *)showConfirmPurchasePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 - (ShareTokenPopUpViewController *)showShareTokenPopUp:(id<ShareTokenPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
-- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter toAddress:(NSString*) address withFromAddressVariants:(NSDictionary<NSString*, NSNumber*>*) variants completion:(void (^)(void))completion;
+- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter toAddress:(NSString*) address withFromAddressVariants:(NSDictionary <NSString*, NSDictionary<NSString*, NSString*>*>*) variants completion:(void (^)(void))completion;
 
 // dismiss methods
 - (void)dismissLoader;

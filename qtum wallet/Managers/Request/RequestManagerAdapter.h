@@ -14,7 +14,7 @@
 - (id)adaptiveDataForHistory:(id) data;
 - (id)adaptiveDataForOutputs:(id) data;
 - (id)adaptiveDataForBalance:(id) balance;
-- (NSNumber*)adaptiveDataForFeePerKb:(id) data;
+- (QTUMBigNumber*)adaptiveDataForFeePerKb:(id) data;
 
 
 @end

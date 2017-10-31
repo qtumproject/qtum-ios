@@ -11,13 +11,15 @@
 #import "HistoryElementProtocol.h"
 #import "HistoryDataStorage.h"
 
+@class QTUMBigNumber;
+
 @protocol Managerable;
 
 @protocol Spendable <NSObject>
 
 @property (copy, nonatomic) NSString* name;
-@property (strong, nonatomic) NSDecimalNumber *balance;
-@property (strong, nonatomic) NSDecimalNumber *unconfirmedBalance;
+@property (strong, nonatomic) QTUMBigNumber *balance;
+@property (strong, nonatomic) QTUMBigNumber *unconfirmedBalance;
 @property (strong, nonatomic) HistoryDataStorage* historyStorage;
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;

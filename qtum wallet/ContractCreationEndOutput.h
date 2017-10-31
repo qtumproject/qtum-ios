@@ -19,8 +19,8 @@
 - (void)showErrorPopUp:(NSString *)string;
 - (void)showCompletedPopUp;
 
-- (void)setMinFee:(NSNumber*) minFee andMaxFee:(NSNumber*) maxFee;
-- (void)setMinGasPrice:(NSNumber *)min andMax:(NSNumber *)max step:(long)step;
-- (void)setMinGasLimit:(NSNumber *)min andMax:(NSNumber *)max standart:(NSNumber *)standart step:(long)step;
+- (void)setMinFee:(QTUMBigNumber*) minFee andMaxFee:(QTUMBigNumber*) maxFee;
+- (void)setMinGasPrice:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max step:(long)step;
+- (void)setMinGasLimit:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max standart:(QTUMBigNumber *)standart step:(long)step;
 
 @end

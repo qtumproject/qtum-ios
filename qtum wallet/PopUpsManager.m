@@ -257,7 +257,7 @@
     return controller;
 }
 
-- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter toAddress:(NSString*) address withFromAddressVariants:(NSDictionary<NSString*, NSNumber*>*) variants completion:(void (^)(void))completion{
+- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter toAddress:(NSString*) address withFromAddressVariants:(NSDictionary <NSString*, NSDictionary<NSString*, NSString*>*>*) variants completion:(void (^)(void))completion{
     
     AddressTransferPopupViewController *controller = [self createAddressTransferPopUp];
     controller.toAddress = address;

@@ -92,7 +92,9 @@
 
 // Observing for events
 
-- (void)callFunctionToContractAddress:(NSString*) address withHashes:(NSArray*) hashes withHandler:(void(^)(id responseObject))completesion;
+- (void)callFunctionToContractAddress:(NSString*) address
+                           withHashes:(NSArray*) hashes
+                          withHandler:(void(^)(id responseObject))completesion;
 
 // QStore
 
@@ -144,7 +146,7 @@
   andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 
-- (void)getFeePerKbWithSuccessHandler:(void(^)(NSNumber* feePerKb))success
+- (void)getFeePerKbWithSuccessHandler:(void(^)(QTUMBigNumber* feePerKb))success
                     andFailureHandler:(void(^)(NSError * error, NSString* message))failure;
 
 - (void)getCategories:(void(^)(id responseObject))success

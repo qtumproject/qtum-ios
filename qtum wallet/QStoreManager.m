@@ -249,7 +249,7 @@ NSInteger const QStoreSearchCount = 20;
                                                                fee:nil
                                                         andHandler:^(TransactionManagerErrorType errorType,
                                                                      id response,
-                                                                     NSDecimalNumber* estimateFee) {
+                                                                     QTUMBigNumber* estimateFee) {
         if (errorType == TransactionManagerErrorTypeNone) {
             success();
         } else {

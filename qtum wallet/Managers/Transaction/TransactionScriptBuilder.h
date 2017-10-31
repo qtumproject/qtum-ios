@@ -11,12 +11,12 @@
 @interface TransactionScriptBuilder : NSObject
 
 -(BTCScript*)createContractScriptWithBiteCode:(NSData*) bitcode
-                                  andGasLimit:(NSDecimalNumber*) aGasLimit
-                                  andGasPrice:(NSDecimalNumber*) aGasPrice;
+                                  andGasLimit:(QTUMBigNumber*) aGasLimit
+                                  andGasPrice:(QTUMBigNumber*) aGasPrice;
 
 -(BTCScript*)sendContractScriptWithBiteCode:(NSData*) bitcode
                          andContractAddress:(NSData*) address
-                                andGasLimit:(NSDecimalNumber*) aGasLimit
-                                andGasPrice:(NSDecimalNumber*) aGasPrice;
+                                andGasLimit:(QTUMBigNumber*) aGasLimit
+                                andGasPrice:(QTUMBigNumber*) aGasPrice;
 
 @end

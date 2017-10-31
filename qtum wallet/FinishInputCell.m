@@ -10,16 +10,4 @@
 
 @implementation FinishInputCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
--(void)setContentWithDict:(id) object {
-    
-}
-
 @end

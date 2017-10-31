@@ -8,7 +8,6 @@
 
 #import "TokenAddressControlViewController.h"
 #import "TokenAddressContolCell.h"
-#import "NSNumber+Format.h"
 
 @interface TokenAddressControlViewController ()
 
@@ -69,9 +68,9 @@
     TokenAddressContolCell *cell = [tableView dequeueReusableCellWithIdentifier:tokenAddressControlCellIdentifire];
     NSString* key = self.addressesValueHashTable.allKeys[indexPath.row];
     cell.addressLabel.text = key;
-    cell.valueLabel.text = [NSString stringWithFormat:@"%@",self.addressesValueHashTable[key]];
+    cell.valueLabel.text = self.addressesValueHashTable[key][@"longString"];
     cell.symbolLabel.text = self.symbol;
-    cell.shortBalance = [self.addressesValueHashTable[key] shortFormatOfNumber];
+    cell.shortBalance = self.addressesValueHashTable[key][@"shortString"];
     [cell setNeedsLayout];
     return cell;
 }

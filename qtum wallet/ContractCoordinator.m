@@ -204,9 +204,9 @@ ContractCreationEndOutputDelegate>
     
     __weak typeof(self) weakSelf = self;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
-    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(NSNumber *feePerKb) {
-        NSDecimalNumber* minFee = [feePerKb decimalNumber];
-        NSDecimalNumber* maxFee = [[PaymentValuesManager sharedInstance].maxFee decimalNumber];
+    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
+        QTUMBigNumber* minFee = feePerKb;
+        QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
         
         [weakSelf.createFinishViewController setMinFee:minFee andMaxFee: maxFee];
         [weakSelf.createFinishViewController setMinGasPrice:[PaymentValuesManager sharedInstance].minGasPrice andMax:[PaymentValuesManager sharedInstance].maxGasPrice step:GasPriceStep];
@@ -279,7 +279,7 @@ ContractCreationEndOutputDelegate>
     [self.navigationController popToViewController:[self.smartContractMenuOutput toPresent] animated:YES];
 }
 
--(void)finishStepFinishDidPressed:(NSDecimalNumber *)fee gasPrice:(NSDecimalNumber *)gasPrice gasLimit:(NSDecimalNumber *)gasLimit {
+-(void)finishStepFinishDidPressed:(QTUMBigNumber *)fee gasPrice:(QTUMBigNumber *)gasPrice gasLimit:(QTUMBigNumber *)gasLimit {
     
     __weak __typeof(self)weakSelf = self;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
@@ -291,7 +291,7 @@ ContractCreationEndOutputDelegate>
                                                                  fee:fee
                                                             gasPrice:gasPrice
                                                             gasLimit:gasLimit
-                                                          andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber *estimatedValue) {
+                                                          andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedValue) {
         [[PopUpsManager sharedInstance] dismissLoader];
         if (errorType == TransactionManagerErrorTypeNone) {
             BTCTransactionInput* input = transaction.inputs[0];
@@ -344,10 +344,10 @@ ContractCreationEndOutputDelegate>
     [self.navigationController pushViewController:[output toPresent] animated:true];
     
     [weakSelf.functionDetailController showLoader];
-    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(NSNumber *feePerKb) {
+    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
         
-        NSDecimalNumber* minFee = [feePerKb decimalNumber];
-        NSDecimalNumber* maxFee = [[PaymentValuesManager sharedInstance].maxFee decimalNumber];
+        QTUMBigNumber* minFee = feePerKb;
+        QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
         
         [weakSelf.functionDetailController setMinFee:minFee andMaxFee: maxFee];
         [weakSelf.functionDetailController setMinGasPrice:[PaymentValuesManager sharedInstance].minGasPrice andMax:[PaymentValuesManager sharedInstance].maxGasPrice step:GasPriceStep];
@@ -375,9 +375,9 @@ ContractCreationEndOutputDelegate>
 - (void)didCallFunctionWithItem:(AbiinterfaceItem*) item
                        andParam:(NSArray<ResultTokenInputsModel*>*)inputs
                        andToken:(Contract*) contract
-                        andFee:(NSDecimalNumber *)fee
-                    andGasPrice:(NSDecimalNumber *)gasPrice
-                    andGasLimit:(NSDecimalNumber *)gasLimit {
+                        andFee:(QTUMBigNumber *)fee
+                    andGasPrice:(QTUMBigNumber *)gasPrice
+                    andGasLimit:(QTUMBigNumber *)gasLimit {
     
     NSMutableArray* param = @[].mutableCopy;
     for (int i = 0; i < inputs.count; i++) {
@@ -400,7 +400,7 @@ ContractCreationEndOutputDelegate>
                                                              fee:fee
                                                         gasPrice:gasPrice
                                                         gasLimit:gasLimit
-                                                      andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber* estimatedFee) {
+                                                      andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber* estimatedFee) {
         
        [weakSelf.functionDetailController hideLoader];
        if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
@@ -437,15 +437,15 @@ ContractCreationEndOutputDelegate>
     }
 }
 
-- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType withEstimateFee:(NSDecimalNumber*) estimatedFee{
+- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType withEstimateFee:(QTUMBigNumber*) estimatedFee{
     
-    NSString* errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee];
+    NSString* errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee.stringValue];
     [self.functionDetailController showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
-- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType withEstimateGasLimit:(NSDecimalNumber*) gasLimit {
+- (void)showStatusOfPayment:(TransactionManagerErrorType)errorType withEstimateGasLimit:(QTUMBigNumber*) gasLimit {
     
-    NSString* errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", gasLimit];
+    NSString* errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", gasLimit.stringValue];
     [self.functionDetailController showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 

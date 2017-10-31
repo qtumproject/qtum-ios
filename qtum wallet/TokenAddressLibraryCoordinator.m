@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject <TokenAddressLibraryOutput> *addressOutput;
-@property (nonatomic, copy) NSDictionary <NSString*, NSNumber*> *addressBalanceHashTable;
+@property (nonatomic, copy) NSDictionary <NSString*, NSDictionary<NSString*, NSString*>*> *addressBalanceHashTable;
 
 @end
 

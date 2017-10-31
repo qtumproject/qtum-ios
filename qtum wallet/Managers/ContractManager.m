@@ -189,9 +189,9 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
             if (balance) {
                 if ([balance isKindOfClass:[NSNumber class]]) {
-                    newAddressBalance[addressKey] = [NSDecimalNumber decimalNumberWithString:[(NSNumber*)balance stringValue]];
+                    newAddressBalance[addressKey] = [[QTUMBigNumber alloc] initWithString:[(NSNumber*)balance stringValue]];
                 } else if ([balance isKindOfClass:[NSString class]]) {
-                    newAddressBalance[addressKey] = [NSDecimalNumber decimalNumberWithString:balance];
+                    newAddressBalance[addressKey] = [[QTUMBigNumber alloc] initWithString:balance];
                 }
             }
         }
