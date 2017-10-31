@@ -17,31 +17,31 @@ extern NSString const *IS_TOKEN_STRING_KEY;
 
 
 UIColor *customBlueColor(void);
-UIColor *textFieldLineColorSelected();
-UIColor *textFieldLineColorDeselected();
-UIColor *customRedColor();
-UIColor *historyGreenColor();
-UIColor *historyGrayColor();
-UIColor *customBlackColor();
+UIColor *textFieldLineColorSelected(void);
+UIColor *textFieldLineColorDeselected(void);
+UIColor *customRedColor(void);
+UIColor *historyGreenColor(void);
+UIColor *historyGrayColor(void);
+UIColor *customBlackColor(void);
 
 // Light Colors
-UIColor *lightBlueColor();
-UIColor *lightDarkBlueColor();
-UIColor *lightDarkBlueColorForGradient();
-UIColor *lightBlackColor();
-UIColor *lightBlackColor78();
-UIColor *lightGreenColor();
-UIColor *lightTabBarTopLineColor();
-UIColor *lightGrayColor();
-UIColor *lightDarkGrayColor();
+UIColor *lightBlueColor(void);
+UIColor *lightDarkBlueColor(void);
+UIColor *lightDarkBlueColorForGradient(void);
+UIColor *lightBlackColor(void);
+UIColor *lightBlackColor78(void);
+UIColor *lightGreenColor(void);
+UIColor *lightTabBarTopLineColor(void);
+UIColor *lightGrayColor(void);
+UIColor *lightDarkGrayColor(void);
 
 // colors setters depend on theme
-UIColor *getQRCodeBackroundColor();
-UIColor *getQRCodeMainColor();
+UIColor *getQRCodeBackroundColor(void);
+UIColor *getQRCodeMainColor(void);
 
-UIColor *lightTextFieldPlaceholderColor();
-UIColor *lightTextFieldLineDeselected();
-UIColor *lightBorderLabelBackroundColor();
+UIColor *lightTextFieldPlaceholderColor(void);
+UIColor *lightTextFieldLineDeselected(void);
+UIColor *lightBorderLabelBackroundColor(void);
 
 typedef NS_ENUM(NSInteger,PinType){
     EnterType,

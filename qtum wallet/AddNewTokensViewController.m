@@ -17,10 +17,6 @@ const CGFloat TextFieldAlpha = 0.3f;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenAddressTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-- (IBAction)acitonBack:(id)sender;
-- (IBAction)actionAddTokens:(id)sender;
-- (IBAction)actionTap:(id)sender;
-- (IBAction)actionScan:(id)sender;
 
 @end
 
@@ -60,25 +56,6 @@ const CGFloat TextFieldAlpha = 0.3f;
 }
 
 #pragma mark - Actions
-
-//- (IBAction)acitonBack:(id)sender
-//{
-//    [self.delegate didBackButtonPressedFromAddNewToken];
-//}
-//
-//- (IBAction)actionAddTokens:(id)sender {
-//    [self.delegate didAddNewTokenWithAddress:self.tokenAddressTextField.text];
-//}
-//
-//- (IBAction)actionTap:(id)sender
-//{
-//    [self.view endEditing:YES];
-//}
-//
-//- (IBAction)actionScan:(id)sender
-//{
-//    [self.delegate didScanButtonPressed];
-//}
 
 #pragma UITextFieldDelegate
 

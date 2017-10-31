@@ -600,7 +600,6 @@
 		E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */; };
 		E7DE59901F0E8562006E0E1B /* PageControlItemDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DE598F1F0E8562006E0E1B /* PageControlItemDark.m */; };
 		E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DE59921F0E882A006E0E1B /* PageControlDark.m */; };
-		E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */; };
 		E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CB71ED42DB500AFD5D0 /* LanguageViewController.m */; };
 		E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CBA1ED42DCB00AFD5D0 /* LanguageTableViewCell.m */; };
 		E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CBD1ED42DE100AFD5D0 /* LanguageTableSource.m */; };
@@ -1951,8 +1950,6 @@
 		E7DE598F1F0E8562006E0E1B /* PageControlItemDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlItemDark.m; sourceTree = "<group>"; };
 		E7DE59911F0E882A006E0E1B /* PageControlDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlDark.h; sourceTree = "<group>"; };
 		E7DE59921F0E882A006E0E1B /* PageControlDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlDark.m; sourceTree = "<group>"; };
-		E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCRequestManager.h; sourceTree = "<group>"; };
-		E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCRequestManager.m; sourceTree = "<group>"; };
 		E7EA2CA71ED4189A00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		E7EA2CA81ED4189B00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E7EA2CB41ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -4827,8 +4824,6 @@
 		E7FD366C1DC773FF00748177 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */,
-				E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */,
 				E7FD36641DC76EBC00748177 /* RequestManager.h */,
 				E7FD36651DC76EBC00748177 /* RequestManager.m */,
 				B3597DF41E7FABF800EBF094 /* Requestable.h */,
@@ -5426,7 +5421,6 @@
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
 				B3D5FE4C1F56AEEB006A2BF2 /* AbiParameterTypeString.m in Sources */,
-				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
 				B3DC9D2B1F331D37006B2E07 /* TokenAddressLibraryCoordinator.m in Sources */,
 				B3DC9D1D1F31E712006B2E07 /* TextFieldWithLineDarkPopup.m in Sources */,
 				B365CA791EA77D490040A163 /* TokensFactory.m in Sources */,

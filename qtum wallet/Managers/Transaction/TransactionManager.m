@@ -8,7 +8,6 @@
 
 #import "TransactionManager.h"
 #import "RequestManager.h"
-#import "RPCRequestManager.h"
 #import "NSString+Extension.h"
 #import "ContractInterfaceManager.h"
 #import "NS+BTCBase58.h"

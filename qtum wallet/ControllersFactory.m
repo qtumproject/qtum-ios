@@ -40,7 +40,6 @@
 #import "EnableFingerprintViewController.h"
 #import "TabBarControllerLight.h"
 #import "NSUserDefaults+Settings.h"
-#import "PinViewController.h"
 
 #import "SecurityPopupViewController.h"
 #import "RestoreContractsPopUpViewController.h"
