@@ -48,13 +48,14 @@
 
 -(NSString*)stringNumberWithPowerOfMinus10:(JKBigDecimal*) power {
     
-    JKBigDecimal* res = [self divide:[self tenInPower:power]];
-    
-    if ([res isKindOfClass:[JKBigDecimal class]]) {
+    JKBigDecimal* tenInPower = [self tenInPower:power];
+    JKBigDecimal* res = [self divide:tenInPower];
+
+    if ([res isKindOfClass:[JKBigDecimal class]] && ![res.stringValue isEqualToString:@"0"]) {
         return res.stringValue;
+    } else {
+        return [[NSDecimalNumber decimalNumberWithString:self.stringValue] decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:tenInPower.stringValue]].stringValue;
     }
-    
-    return @"0";
 }
 
 -(NSString*)stringNumberWithPowerOf10:(JKBigDecimal*) power {

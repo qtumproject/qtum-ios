@@ -21,8 +21,8 @@ extern NSInteger const brandKeyWordsCount;
 - (instancetype)initWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray *)seedWords;
 
 @property (copy, nonatomic) NSString* name;
-@property (strong, nonatomic) JKBigDecimal* balance;
-@property (strong, nonatomic) JKBigDecimal* unconfirmedBalance;
+@property (strong, nonatomic) QTUMBigNumber* balance;
+@property (strong, nonatomic) QTUMBigNumber* unconfirmedBalance;
 @property (copy, nonatomic)NSArray <HistoryElementProtocol>*historyArray;
 @property (copy, nonatomic)NSString* mainAddress;
 @property (copy, nonatomic)NSString* symbol;

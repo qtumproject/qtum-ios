@@ -9,7 +9,6 @@
 #import "WalletTableSource.h"
 #import "HistoryElement.h"
 #import "HistoryTableViewCell.h"
-#import "JKBigDecimal+Comparison.h"
 
 @interface WalletTableSource ()
 

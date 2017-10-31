@@ -18,56 +18,56 @@
 
 - (void)sendTransactionWalletKeys:(NSArray<BTCKey*>*) walletKeys
                toAddressAndAmount:(NSArray*) amountsAndAddresses
-                              fee:(NSDecimalNumber*) fee
+                              fee:(QTUMBigNumber*) fee
                        andHandler:(void(^)(TransactionManagerErrorType errorType,
                                            id response,
-                                           NSDecimalNumber* estimatedFee)) completion;
+                                           QTUMBigNumber* estimatedFee)) completion;
 
 
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*>*) walletKeys
                          andBitcode:(NSData*) bitcode
-                                fee:(NSDecimalNumber*) fee
-                           gasPrice:(NSDecimalNumber*) gasPrice
-                           gasLimit:(NSDecimalNumber*) gasLimit
-                         andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction, NSDecimalNumber *estimatedValue)) completion;
+                                fee:(QTUMBigNumber*) fee
+                           gasPrice:(QTUMBigNumber*) gasPrice
+                           gasLimit:(QTUMBigNumber*) gasLimit
+                         andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction * transaction, NSString* hashTransaction, QTUMBigNumber *estimatedValue)) completion;
 
 - (void)callContractWithAddress:(NSData*) contractAddress
                   andBitcode:(NSData*) bitcode
                fromAddresses:(NSArray<NSString*>*) fromAddresses
                    toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
-                         fee:(NSDecimalNumber*) fee
-                    gasPrice:(NSDecimalNumber*) gasPrice
-                    gasLimit:(NSDecimalNumber*) gasLimit
+                         fee:(QTUMBigNumber*) fee
+                    gasPrice:(QTUMBigNumber*) gasPrice
+                    gasLimit:(QTUMBigNumber*) gasLimit
                   andHandler:(void(^)(TransactionManagerErrorType errorType,
                                       BTCTransaction * transaction,
                                       NSString* hashTransaction,
-                                      NSDecimalNumber* estimatedFee)) completion;
+                                      QTUMBigNumber* estimatedFee)) completion;
 
 - (void)sendTransactionToToken:(Contract*) token
                      toAddress:(NSString*) toAddress
-                        amount:(JKBigDecimal*) amount
-                           fee:(NSDecimalNumber*) fee
-                      gasPrice:(NSDecimalNumber*) gasPrice
-                      gasLimit:(NSDecimalNumber*) gasLimit
+                        amount:(QTUMBigNumber*) amount
+                           fee:(QTUMBigNumber*) fee
+                      gasPrice:(QTUMBigNumber*) gasPrice
+                      gasLimit:(QTUMBigNumber*) gasLimit
                     andHandler:(void(^)(TransactionManagerErrorType errorType,
                                         BTCTransaction * transaction,
                                         NSString* hashTransaction,
-                                        NSDecimalNumber* estimatedFee)) completion;
+                                        QTUMBigNumber* estimatedFee)) completion;
 
 - (void)sendToken:(Contract*) token
         fromAddress:(NSString*) fromAddress
          toAddress:(NSString*) toAddress
-            amount:(JKBigDecimal*) amount
-              fee:(NSDecimalNumber*) fee
-              gasPrice:(NSDecimalNumber*) gasPrice
-              gasLimit:(NSDecimalNumber*) gasLimit
+            amount:(QTUMBigNumber*) amount
+              fee:(QTUMBigNumber*) fee
+              gasPrice:(QTUMBigNumber*) gasPrice
+              gasLimit:(QTUMBigNumber*) gasLimit
         andHandler:(void(^)(TransactionManagerErrorType errorType,
                             BTCTransaction * transaction,
                             NSString* hashTransaction,
-                            NSDecimalNumber* estimatedFee)) completion;
+                            QTUMBigNumber* estimatedFee)) completion;
 
--(void)getFeePerKbWithHandler:(void(^)(NSDecimalNumber* feePerKb)) completion;
+-(void)getFeePerKbWithHandler:(void(^)(QTUMBigNumber* feePerKb)) completion;
 
 
 @end

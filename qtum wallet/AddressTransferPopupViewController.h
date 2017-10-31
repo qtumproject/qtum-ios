@@ -9,16 +9,12 @@
 #import "PopUpViewController.h"
 #import "NSNumber+Comparison.h"
 #import "NSNumber+Format.h"
-#import "JKBigDecimal+Comparison.h"
-#import "JKBigDecimal+Format.h"
-
-
 
 @interface AddressTransferPopupViewController : PopUpViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, weak) id<PopUpWithTwoButtonsViewControllerDelegate> delegate;
 @property (nonatomic, copy) NSString* toAddress;
-@property (nonatomic, copy) NSDictionary<NSString*, JKBigDecimal*>* fromAddressesVariants;
+@property (nonatomic, copy) NSDictionary<NSString*, NSDictionary<NSString*,NSString*>*>* fromAddressesVariants;
 @property (nonatomic, copy) NSString* fromAddress;
 @property (nonatomic, copy) NSString* amount;
 

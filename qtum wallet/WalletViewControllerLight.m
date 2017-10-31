@@ -7,7 +7,6 @@
 //
 
 #import "WalletViewControllerLight.h"
-#import "JKBigDecimal+Comparison.h"
 
 @interface WalletViewControllerLight ()
 

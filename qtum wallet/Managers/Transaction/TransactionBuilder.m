@@ -29,7 +29,7 @@
 }
 
 - (void)regularTransactionWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
-                                      amount:(CGFloat) amount
+                                      amount:(NSInteger) amount
                           amountAndAddresses:(NSArray*) amountAndAddresses
                                      withFee:(NSInteger) fee
                                   walletKeys:(NSArray<BTCKey*>*) walletKeys
@@ -167,18 +167,17 @@
     } else {
         completion(TransactionManagerErrorTypeNotEnoughMoneyOnAddress, nil);
     }
-    
 }
 
 - (void)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
-                                  amount:(CGFloat) amount
+                                  amount:(BTCAmount) amount
                          contractAddress:(NSData*) contractAddress
                                toAddress:(NSString*) toAddress
                            fromAddresses:(NSArray<NSString*>*) fromAddresses
                                  bitcode:(NSData*) bitcode
                                  withFee:(NSInteger) fee
-                            withGasLimit:(NSDecimalNumber*) gasLimit
-                            withGasprice:(NSDecimalNumber*) gasPrice
+                            withGasLimit:(QTUMBigNumber*) gasLimit
+                            withGasprice:(QTUMBigNumber*) gasPrice
                               walletKeys:(NSArray<BTCKey*>*) walletKeys
                               andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion{
 
@@ -312,16 +311,12 @@
     }
 }
 
-static BTCTransactionOutput * extracted() {
-    return [BTCTransactionOutput alloc];
-}
-
 - (BTCTransaction *)smartContractCreationTxWithUnspentOutputs:(NSArray *)unspentOutputs
-                                                   withAmount:(CGFloat) amount
+                                                   withAmount:(BTCAmount) amount
                                                   withBitcode:(NSData*) bitcode
                                                       withFee:(NSInteger) fee
-                                                 withGasLimit:(NSDecimalNumber*) gasLimit
-                                                 withGasprice:(NSDecimalNumber*) gasPrice
+                                                 withGasLimit:(QTUMBigNumber*) gasLimit
+                                                 withGasprice:(QTUMBigNumber*) gasPrice
                                                withWalletKeys:(NSArray<BTCKey*>*) walletKeys {
     
     NSArray *utxos = unspentOutputs;
@@ -374,7 +369,7 @@ static BTCTransactionOutput * extracted() {
         // Add required outputs - payment and change
         BTCAmount amount = 0;
         BTCTransactionOutput* paymentOutput;
-        paymentOutput = [extracted() initWithValue:amount script:[self.scriptBuilder createContractScriptWithBiteCode:bitcode andGasLimit:gasLimit andGasPrice:gasPrice]];
+        paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder createContractScriptWithBiteCode:bitcode andGasLimit:gasLimit andGasPrice:gasPrice]];
         [tx addOutput:paymentOutput];
         
         BTCAddress* changeAddress = [AppSettings sharedInstance].isMainNet ? walletKeys.firstObject.address : walletKeys.firstObject.addressTestnet;

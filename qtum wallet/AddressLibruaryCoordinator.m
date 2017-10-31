@@ -19,7 +19,7 @@
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject <AddressControlOutput> *addressOutput;
 @property (nonatomic, copy) NSDictionary <NSString*, BTCKey*> *addressKeyHashTable;
-@property (nonatomic, copy) NSDictionary <NSString*, NSNumber*> *addressBalanceHashTable;
+@property (nonatomic, copy) NSDictionary <NSString*, NSDictionary<NSString*, NSString*>*> *addressBalanceHashTable;
 
 @end
 
@@ -59,12 +59,14 @@
     }];
 }
 
--(NSDictionary*)prepareAddresesDataWithResponse:(NSArray*) response {
+-(NSDictionary <NSString*, NSDictionary<NSString*,NSString*>*>*)prepareAddresesDataWithResponse:(NSArray*) response {
     
-    NSMutableDictionary* addressAmountHashTable = @{}.mutableCopy;
+    NSMutableDictionary <NSString*, NSDictionary<NSString*,NSString*>*>* addressAmountHashTable = @{}.mutableCopy;
     
     for (NSString* address in self.addressKeyHashTable.allKeys) {
-        [addressAmountHashTable setObject:[[NSDecimalNumber alloc] initWithDouble:0.] forKey:address];
+        [addressAmountHashTable setObject:@{@"longString": [[QTUMBigNumber decimalWithInteger:0] stringValue],
+                                            @"shortString": [[QTUMBigNumber decimalWithInteger:0] shortFormatOfNumber]
+                                            } forKey:address];
     }
     
     for (NSDictionary* item in response) {
@@ -72,12 +74,15 @@
         NSString* address = item[@"address"];
         NSNumber* amountNumber = item[@"amount"];
         double amountDouble = [amountNumber doubleValue];
+        QTUMBigNumber* bigAmount = [QTUMBigNumber decimalWithString:amountNumber.stringValue];
         
         if (address && amountDouble > 0) {
             
-            NSDecimalNumber* addressAmountDecimalConteiner = addressAmountHashTable[address];
-            NSDecimalNumber* newBalance = [addressAmountDecimalConteiner decimalNumberByAdding:[amountNumber decimalNumber]];
-            [addressAmountHashTable setObject:newBalance forKey:address];
+            QTUMBigNumber* addressAmountDecimalConteiner = [QTUMBigNumber decimalWithString:addressAmountHashTable[address][@"longString"]];
+            QTUMBigNumber* newBalance = [addressAmountDecimalConteiner add:bigAmount];
+            [addressAmountHashTable setObject:@{@"longString": [newBalance stringValue],
+                                                @"shortString": [newBalance shortFormatOfNumber]
+                                                }  forKey:address];
         }
     }
     
@@ -91,7 +96,7 @@
         __weak __typeof(self)weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            NSDictionary <NSString*, NSNumber*> *data = [weakSelf prepareAddresesDataWithResponse:response];
+            NSDictionary <NSString*, NSDictionary<NSString*,NSString*>*> *data = [weakSelf prepareAddresesDataWithResponse:response];
             weakSelf.addressOutput.addressesValueHashTable = data;
             weakSelf.addressBalanceHashTable = data;
             [weakSelf.addressOutput reloadData];

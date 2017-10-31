@@ -10,9 +10,7 @@
 #import "NSString+Extension.h"
 #import "NSData+Extension.h"
 #import "NSDate+Extension.h"
-#import "NSNumber+Comparison.h"
-#import "NSNumber+Format.h"
-#import "JKBigDecimal+Format.h"
+#import "QTUMBigNumber.h"
 
 @interface Contract ()
 
@@ -30,7 +28,7 @@
     self = [super init];
     if (self) {
         
-        _unconfirmedBalance = [[JKBigDecimal alloc] initWithString:@"0"];
+        _unconfirmedBalance = [[QTUMBigNumber alloc] initWithString:@"0"];
     }
     return self;
 }
@@ -54,51 +52,51 @@
 
 - (NSString*)totalSupplyString {
     
-//    JKBigDecimal* decimal = [[JKBigDecimal alloc] initWithString:self.decimalsAsString];
+//    QTUMBigNumber* decimal = [[QTUMBigNumber alloc] initWithString:self.decimalsAsString];
     
     return [self.totalSupply stringNumberWithPowerOfMinus10:self.decimals];
 }
 
 - (NSString*)shortTotalSupplyString {
     
-//    JKBigDecimal* decimal = [[JKBigDecimal alloc] initWithString:self.decimalsAsString];
+//    QTUMBigNumber* decimal = [[QTUMBigNumber alloc] initWithString:self.decimalsAsString];
     return [self.totalSupply shortFormatOfNumberWithPowerOfMinus10:self.decimals];
 }
 
--(JKBigDecimal*)balance {
+-(QTUMBigNumber*)balance {
     
     NSArray* values = self.addressBalanceDictionary.allValues;
-    JKBigDecimal* balanceDecimal = [[JKBigDecimal alloc] initWithString:@"0"];
+    QTUMBigNumber* balanceDecimal = [[QTUMBigNumber alloc] initWithString:@"0"];
     
-    for (JKBigDecimal* balanceValue in values) {
+    for (QTUMBigNumber* balanceValue in values) {
         
         balanceDecimal = [balanceDecimal add:balanceValue];
     }
     return balanceDecimal;
 }
 
--(NSDictionary <NSString*,JKBigDecimal*>*)addressBalanceDivByDecimalDictionary {
+-(NSDictionary <NSString*,NSDictionary<NSString*,NSString*>*>*)addressBalanceDivByDecimalDictionary {
     
-    NSDictionary <NSString*,BTCBigNumber*>* addressBalanceDivByDecimalDictionary = @{}.mutableCopy;
+    NSDictionary <NSString*,NSDictionary<NSString*,NSString*>*>* addressBalanceDivByDecimalDictionary = @{}.mutableCopy;
     
     for (NSString* address in self.addressBalanceDictionary.allKeys) {
         
-//        JKBigDecimal* decimal = [[JKBigDecimal alloc] initWithString:self.decimalsAsString];
-
-        [addressBalanceDivByDecimalDictionary setValue:[self.addressBalanceDictionary[address] numberWithPowerOfMinus10:self.decimals] forKey:address];
+        [addressBalanceDivByDecimalDictionary setValue:@{@"longString" : [self.addressBalanceDictionary[address] stringNumberWithPowerOfMinus10:self.decimals],
+                                                         @"shortString" : [self.addressBalanceDictionary[address] shortFormatOfNumberWithPowerOfMinus10:self.decimals]
+                                                         } forKey:address];
     }
     return addressBalanceDivByDecimalDictionary;
 }
 
 - (NSString*)balanceString {
     
-//    JKBigDecimal* decimal = [[JKBigDecimal alloc] initWithString:self.decimalsAsString];
+//    QTUMBigNumber* decimal = [[QTUMBigNumber alloc] initWithString:self.decimalsAsString];
     return [self.balance stringNumberWithPowerOfMinus10:self.decimals];
 }
 
 - (NSString*)shortBalanceString {
     
-//    JKBigDecimal* decimal = [[JKBigDecimal alloc] initWithString:self.decimals];
+//    QTUMBigNumber* decimal = [[QTUMBigNumber alloc] initWithString:self.decimals];
     return [self.balance shortFormatOfNumberWithPowerOfMinus10:self.decimals];
 }
 
@@ -134,7 +132,7 @@
     
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.contractCreationAddressAddress forKey:@"contractCreationAddressAddress"];
-    [aCoder encodeObject:self.addressBalanceDictionary forKey:@"addressBalanceDictionary"];
+//    [aCoder encodeObject:self.addressBalanceDictionary forKey:@"addressBalanceDictionary"];
     [aCoder encodeObject:self.localName forKey:@"localName"];
     [aCoder encodeObject:self.creationDate forKey:@"creationDate"];
     [aCoder encodeObject:self.templateModel forKey:@"templateModel"];
@@ -159,10 +157,8 @@
     NSString *contractAddress = [aDecoder decodeObjectForKey:@"contractAddress"];
     NSArray *adresses = [aDecoder decodeObjectForKey:@"adresses"];
     NSString *symbol = [aDecoder decodeObjectForKey:@"symbol"];
-    JKBigDecimal *decimals = [aDecoder decodeObjectForKey:@"decimals"];
-    JKBigDecimal *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
-    NSString *balance = [aDecoder decodeObjectForKey:@"balance"];
-    NSString *unconfirmedBalance = [aDecoder decodeObjectForKey:@"unconfirmedBalance"];
+    QTUMBigNumber *decimals = [aDecoder decodeObjectForKey:@"decimals"];
+    QTUMBigNumber *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
     BOOL isActive = [[aDecoder decodeObjectForKey:@"isActive"] boolValue];
     
     self = [super init];
@@ -178,10 +174,8 @@
         _contractAddress = contractAddress;
         _adresses = adresses;
         _symbol = symbol;
-        _decimals = [decimals isKindOfClass:[NSNumber class]] ? [[JKBigDecimal alloc] initWithString:[(NSNumber*)_decimals stringValue]] : decimals;
-        _totalSupply = [totalSupply isKindOfClass:[NSNumber class]] ? [[JKBigDecimal alloc] initWithString:[(NSNumber*)_totalSupply stringValue]] : totalSupply;
-        _balanceAsString = [balance isKindOfClass:[NSNumber class]] ? [(NSNumber*)balance stringValue] : balance;
-        _unconfirmedBalanceAsString = [unconfirmedBalance isKindOfClass:[NSNumber class]] ? [(NSNumber*)unconfirmedBalance stringValue] : unconfirmedBalance;;
+        _decimals = [decimals isKindOfClass:[NSNumber class]] ? [[QTUMBigNumber alloc] initWithString:[(NSNumber*)_decimals stringValue]] : decimals;
+        _totalSupply = [totalSupply isKindOfClass:[NSNumber class]] ? [[QTUMBigNumber alloc] initWithString:[(NSNumber*)_totalSupply stringValue]] : totalSupply;
         _isActive = isActive;
     }
     

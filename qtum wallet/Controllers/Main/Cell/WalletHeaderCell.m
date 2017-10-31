@@ -8,7 +8,6 @@
 
 #import "WalletHeaderCell.h"
 #import "Wallet.h"
-#import "JKBigDecimal+Comparison.h"
 
 @interface WalletHeaderCell ()
 

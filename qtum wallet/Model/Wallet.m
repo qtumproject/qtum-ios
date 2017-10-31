@@ -32,8 +32,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
     self = [super init];
     if (self) {
         _name = name;
-        _balance = [[NSDecimalNumber alloc] initWithDouble:0];
-        _unconfirmedBalance = [[NSDecimalNumber alloc] initWithDouble:0];
+        _balance = [QTUMBigNumber decimalWithInteger:0];
+        _unconfirmedBalance = [QTUMBigNumber decimalWithInteger:0];
         _countOfUsedKeys = USERS_KEYS_COUNT;
         _encriptedBrandKey = [NSString encryptString:[self stringFromWorldsArray:[self generateWordsArray]] withKey:pin];
         [_manager spendableDidChange:self];
@@ -46,8 +46,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
     self = [super init];
     if (self) {
         _name = name;
-        _balance = [[NSDecimalNumber alloc] initWithDouble:0];
-        _unconfirmedBalance = [[NSDecimalNumber alloc] initWithDouble:0];
+        _balance = [QTUMBigNumber decimalWithInteger:0];
+        _unconfirmedBalance = [QTUMBigNumber decimalWithInteger:0];
         _countOfUsedKeys = USERS_KEYS_COUNT;
         _encriptedBrandKey = [NSString encryptString:[self stringFromWorldsArray:seedWords] withKey:pin];
         [_manager spendableDidChange:self];
@@ -299,8 +299,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
     if (self) {
         _name = name;
         _countOfUsedKeys = USERS_KEYS_COUNT;
-        _balance = [[NSDecimalNumber alloc] initWithDouble:0];
-        _unconfirmedBalance = [[NSDecimalNumber alloc] initWithDouble:0];
+        _balance = [QTUMBigNumber decimalWithInteger:0];
+        _unconfirmedBalance = [QTUMBigNumber decimalWithInteger:0];
         _encriptedBrandKey = encriptedBrandKey;
         [_manager spendableDidChange:nil];
     }

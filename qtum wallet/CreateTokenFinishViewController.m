@@ -41,8 +41,8 @@
 @property (nonatomic) long gasPriceMin;
 @property (nonatomic) long gasLimitMin;
 
-@property (strong, nonatomic) NSDecimalNumber* gasPrice;
-@property (strong, nonatomic) NSDecimalNumber* gasLimit;
+@property (strong, nonatomic) QTUMBigNumber* gasPrice;
+@property (strong, nonatomic) QTUMBigNumber* gasLimit;
 
 // Fee
 
@@ -52,9 +52,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *minFeeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *maxFeeLabel;
 
-@property (strong, nonatomic) NSDecimalNumber* minFee;
-@property (strong, nonatomic) NSDecimalNumber* maxFee;
-@property (strong, nonatomic) NSDecimalNumber* FEE;
+@property (strong, nonatomic) QTUMBigNumber* minFee;
+@property (strong, nonatomic) QTUMBigNumber* maxFee;
+@property (strong, nonatomic) QTUMBigNumber* FEE;
 
 @end
 
@@ -148,22 +148,23 @@ static NSInteger openTopForEditButton = 15;
 }
 
 - (IBAction)didChangeFeeSlider:(UISlider *) slider {
+    
     NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithFloat:slider.value];
-    self.FEE = sliderValue;
+    self.FEE = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
     self.feeTextField.text = [[NSString stringWithFormat:@"%@", self.FEE] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
 
 - (IBAction)didChangeGasPriceSlider:(UISlider *)slider {
     unsigned long value = self.gasPriceMin + (NSInteger)slider.value * self.gasPriceStep;
     NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
-    self.gasPrice = sliderValue;
+    self.gasPrice = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
     self.gasPriceValueLabel.text = [[NSString stringWithFormat:@"%@", self.gasPrice] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
 
 - (IBAction)didChangeGasLimitSlider:(UISlider *)slider {
     unsigned long value = self.gasLimitMin + (NSInteger)slider.value * self.gasLimitStep;
     NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
-    self.gasLimit = sliderValue;
+    self.gasLimit = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
     self.gasLimitValueLabel.text = [[NSString stringWithFormat:@"%@", self.gasLimit] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
 #pragma mark - methods
@@ -182,48 +183,51 @@ static NSInteger openTopForEditButton = 15;
     [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
 }
 
-- (void)setMinFee:(NSNumber*) minFee andMaxFee:(NSNumber*) maxFee {
-    self.feeSlider.maximumValue = maxFee.floatValue;
-    self.feeSlider.minimumValue = minFee.floatValue;
+- (void)setMinFee:(QTUMBigNumber*) minFee andMaxFee:(QTUMBigNumber*) maxFee {
+    
+    self.feeSlider.maximumValue = [maxFee decimalNumber].floatValue;
+    self.feeSlider.minimumValue = [minFee decimalNumber].floatValue;
     self.feeSlider.value = 0.1f;
-    self.FEE = [NSDecimalNumber decimalNumberWithString:@"0.1"];
+    self.FEE = [QTUMBigNumber decimalWithString:@"0.1"];
     
     self.feeTextField.text = [[NSString stringWithFormat:@"%@", self.FEE] stringByReplacingOccurrencesOfString:@"." withString:@","];
-    self.minFeeLabel.text = [NSString stringWithFormat:@"%@", minFee];
-    self.maxFeeLabel.text = [NSString stringWithFormat:@"%@", maxFee];
+    self.minFeeLabel.text = [NSString stringWithFormat:@"%@", minFee.stringValue];
+    self.maxFeeLabel.text = [NSString stringWithFormat:@"%@", maxFee.stringValue];
     
-    self.maxFee = [maxFee decimalNumber];
-    self.minFee = [minFee decimalNumber];
+    self.maxFee = maxFee;
+    self.minFee = minFee;
 }
 
-- (void)setMinGasPrice:(NSNumber *)min andMax:(NSNumber *)max step:(long)step {
-    long count = ([max longValue] - [min longValue]) / step;
+- (void)setMinGasPrice:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max step:(long)step {
+    
+    long count = ([max integerValue] - [min integerValue]) / step;
     self.gasPriceSlider.maximumValue = count;
     self.gasPriceSlider.minimumValue = 0;
     self.gasPriceSlider.value = 0;
     
-    self.gasPriceMin = [min longLongValue];
+    self.gasPriceMin = [min integerValue];
     self.gasPriceStep = step;
     
-    self.gasPrice = [[NSDecimalNumber alloc] initWithFloat:min.floatValue];
+    self.gasPrice = min;
     
     self.gasPriceValueLabel.text = [min stringValue];
     self.gasPriceMinValueLabel.text = [min stringValue];
     self.gasPriceMaxValueLabel.text = [max stringValue];
 }
 
-- (void)setMinGasLimit:(NSNumber *)min andMax:(NSNumber *)max standart:(NSNumber *)standart step:(long)step {
-    long count = ([max longValue] - [min longValue]) / step;
-    long standartLong = ([standart longValue] - [min longValue]) / step;
+- (void)setMinGasLimit:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max standart:(QTUMBigNumber *)standart step:(long)step {
+    
+    long count = ([max integerValue] - [min integerValue]) / step;
+    long standartLong = ([standart integerValue] - [min integerValue]) / step;
     
     self.gasLimitSlider.maximumValue = count;
     self.gasLimitSlider.minimumValue = 0;
     self.gasLimitSlider.value = standartLong;
     
-    self.gasLimitMin = [min longLongValue];
+    self.gasLimitMin = [min integerValue];
     self.gasLimitStep = step;
     
-    self.gasLimit = [[NSDecimalNumber alloc] initWithFloat:standart.floatValue];
+    self.gasLimit = [QTUMBigNumber decimalWithString:standart.stringValue];
     
     self.gasLimitValueLabel.text = [standart stringValue];
     self.gasLimitMinValueLabel.text = [min stringValue];
@@ -231,17 +235,17 @@ static NSInteger openTopForEditButton = 15;
 }
 
 -(void)normalizeFee {
-    NSString* feeValueString = [self.feeTextField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+    
+    QTUMBigNumber* feeValue = [QTUMBigNumber decimalWithString:self.feeTextField.text];
     
     if ([feeValue isGreaterThan:self.maxFee] ) {
         
-        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.maxFee];;
+        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.maxFee.stringValue];
         self.FEE = self.maxFee;
         
     } else if ([feeValue isLessThan:self.minFee]) {
         
-        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.minFee];
+        self.feeTextField.text = [NSString stringWithFormat:@"%@", self.minFee.stringValue];
         self.FEE = self.minFee;
     } else {
         
@@ -256,10 +260,9 @@ static NSInteger openTopForEditButton = 15;
         if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
             return ![textField.text containsString:string] && !(textField.text.length == 0);
         } else {
-            NSString* feeValueString = [[textField.text stringByAppendingString:string] stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
-            
-            [self.feeSlider setValue:feeValue.floatValue animated:YES];
+ 
+            QTUMBigNumber* feeValue = [QTUMBigNumber decimalWithString:textField.text];
+            [self.feeSlider setValue:[feeValue decimalNumber].floatValue animated:YES];
         }
     }
     

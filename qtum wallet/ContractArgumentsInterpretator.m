@@ -11,7 +11,6 @@
 #import "AbiinterfaceItem.h"
 #import "NSString+Extension.h"
 #import "NSString+AbiRegex.h"
-#import "JKBigDecimal.h"
 
 
 @interface ContractArgumentsInterpretator ()
@@ -536,7 +535,7 @@ NSInteger standardParameterBatch = 32;
                 
                 BTCBigNumber* arg = [self numberFromData:[argumentsData subdataWithRange:NSMakeRange(0, 32)]];
                 if (arg){
-                    JKBigDecimal* argVal = [[JKBigDecimal alloc] initWithString:arg.decimalString];
+                    QTUMBigNumber* argVal = [[QTUMBigNumber alloc] initWithString:arg.decimalString];
                     [argumentsArray addObject:argVal];
                     argumentsData = [argumentsData subdataWithRange:NSMakeRange(32, argumentsData.length - 32)];
                 }

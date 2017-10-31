@@ -17,7 +17,6 @@
 #import "ServiceLocator.h"
 #import "NewsDataProvider.h"
 #import "BTCBigNumber.h"
-#import "JKBigDecimal.h"
 
 @interface AppDelegate ()
 

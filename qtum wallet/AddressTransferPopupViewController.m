@@ -172,7 +172,7 @@
           reusingView:(UIView *)view {
     
     NSString* address = self.fromAddressesVariants.allKeys[row];
-    NSString* amount = [NSString stringWithFormat:@"%@", self.fromAddressesVariants[address]];
+    NSString* amount = self.fromAddressesVariants[address][@"longString"];
     
     UIView* container;
     UILabel* amountLabel;
@@ -201,7 +201,7 @@
         
         CGSize size = [amountLabel.text sizeWithAttributes:@{NSFontAttributeName : amountLabel.font}];
         if (size.width > amountLabel.bounds.size.width) {
-            amountLabel.text = [NSString stringWithFormat:@"%@", [[self.fromAddressesVariants[address] decimalNumber] shortFormatOfNumber]];
+            amountLabel.text = self.fromAddressesVariants[address][@"shortString"];;
         }
         
         [container addSubview:amountLabel];

@@ -12,8 +12,8 @@
 @protocol SliderFeeViewDelegate
 
 - (void)didChangeFeeSlider:(UISlider *)slider;
-- (void)didChangeGasPriceSlider:(NSDecimalNumber *)value;
-- (void)didChangeGasLimiteSlider:(NSDecimalNumber *)value;
+- (void)didChangeGasPriceSlider:(QTUMBigNumber *)value;
+- (void)didChangeGasLimiteSlider:(QTUMBigNumber *)value;
 
 @end
 
@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *feeTextField;
 @property (weak, nonatomic)  id <SliderFeeViewDelegate> delegate;
 
-- (void)setMinGasPrice:(NSNumber *)min andMax:(NSNumber *)max step:(long)step;
-- (void)setMinGasLimit:(NSNumber *)min andMax:(NSNumber *)max standart:(NSNumber *)standart step:(long)step;
+- (void)setMinGasPrice:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max step:(long)step;
+- (void)setMinGasLimit:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max standart:(QTUMBigNumber *)standart step:(long)step;
 
 @end

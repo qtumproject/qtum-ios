@@ -26,9 +26,9 @@ long const GasLimitStepsCount = 49;
 
 @interface PaymentValuesManager()
 
-@property (nonatomic) NSNumber *gasPrice;
-@property (nonatomic) NSNumber *gasLimit;
-@property (nonatomic) NSNumber *fee;
+@property (nonatomic) QTUMBigNumber *gasPrice;
+@property (nonatomic) QTUMBigNumber *gasLimit;
+@property (nonatomic) QTUMBigNumber *fee;
 
 @end
 
@@ -46,11 +46,11 @@ long const GasLimitStepsCount = 49;
 - (instancetype)initUniqueInstance {
     self = [super init];
     if (self != nil) {
-        _minGasLimit = @(MinGasLimit);
-        _minGasPrice = @(MinGasPrice);
-        _maxFee = @(MaxFee);
-        _standartGasLimit = @(StandartGasLimit);
-        _standartGasLimitForCreateContract = @(StandartGasLimitForCreateContract);
+        _minGasLimit = [QTUMBigNumber decimalWithInteger:MinGasLimit];
+        _minGasPrice = [QTUMBigNumber decimalWithInteger:MinGasPrice];
+        _maxFee = [QTUMBigNumber decimalWithInteger:MaxFee];
+        _standartGasLimit = [QTUMBigNumber decimalWithInteger:StandartGasLimit];
+        _standartGasLimitForCreateContract = [QTUMBigNumber decimalWithInteger:StandartGasLimitForCreateContract];
         [self calculateMaxValues];
         
         [self loadLastValues];
@@ -68,10 +68,11 @@ long const GasLimitStepsCount = 49;
 }
 
 - (void)loadLastValues {
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *fee = [userDefaults objectForKey:PaymentValuesManagerFeeKey];
-    NSNumber *gasPrice = [userDefaults objectForKey:PaymentValuesManagerGasPriceKey];
-    NSNumber *gasLimit = [userDefaults objectForKey:PaymentValuesManagerGaslimitKey];
+    QTUMBigNumber *fee = [userDefaults objectForKey:PaymentValuesManagerFeeKey];
+    QTUMBigNumber *gasPrice = [userDefaults objectForKey:PaymentValuesManagerGasPriceKey];
+    QTUMBigNumber *gasLimit = [userDefaults objectForKey:PaymentValuesManagerGaslimitKey];
     
     if (fee) _fee = fee;
     if (gasPrice) _gasPrice = gasPrice;
@@ -79,8 +80,9 @@ long const GasLimitStepsCount = 49;
 }
 
 - (void)calculateMaxValues {
-    _maxGasPrice = @([self.minGasPrice longValue] + GasPriceStep * GasPriceStepsCount);
-    _maxGasLimit = @([self.minGasLimit longValue] + GasLimitStep * GasLimitStepsCount);
+    
+    _maxGasPrice = [QTUMBigNumber decimalWithInteger:[self.minGasPrice integerValue] + GasPriceStep * GasPriceStepsCount];
+    _maxGasLimit = [QTUMBigNumber decimalWithInteger:[self.minGasLimit integerValue] + GasLimitStep * GasLimitStepsCount];
 }
 
 - (void)loadDGPInfo {
@@ -88,7 +90,8 @@ long const GasLimitStepsCount = 49;
     [[ApplicationCoordinator sharedInstance].requestManager getDGPinfo:^(id responseObject) {
         NSDictionary *dictionary = (NSDictionary *)responseObject;
     
-        weakSelf.minGasPrice = [dictionary objectForKey:@"mingasprice"];
+        NSNumber* mingasprice =  [dictionary objectForKey:@"mingasprice"];
+        weakSelf.minGasPrice = [QTUMBigNumber decimalWithString:mingasprice.stringValue];
 
         [weakSelf calculateMaxValues];
     } andFailureHandler:^(NSError *error, NSString *message) {

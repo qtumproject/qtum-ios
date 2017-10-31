@@ -15,10 +15,9 @@
 #import "ContractArgumentsInterpretator.h"
 #import "WalletManagerRequestAdapter.h"
 #import "Wallet.h"
-#import "NSNumber+Comparison.h"
+#import "QTUMBigNumber.h"
 #import "TransactionScriptBuilder.h"
 #import "ServiceLocator.h"
-#import "JKBigDecimal+Comparison.h"
 
 static NSString* op_exec = @"c1";
 
@@ -27,7 +26,7 @@ static NSString* op_exec = @"c1";
 @property (strong, nonatomic) TransactionBuilder* transactionBuilder;
 @property (strong, nonatomic) TransactionScriptBuilder* scriptBuilder;
 
-@property (strong, nonatomic) NSDecimalNumber* feePerKb;
+@property (strong, nonatomic) QTUMBigNumber* feePerKb;
 
 @end
 
@@ -55,14 +54,14 @@ static NSInteger constantFee = 400000000;
     return self;
 }
 
--(void)getFeePerKbWithHandler:(void(^)(NSDecimalNumber* feePerKb)) completion {
+-(void)getFeePerKbWithHandler:(void(^)(QTUMBigNumber* feePerKb)) completion {
     
     if (self.feePerKb) {
         return completion(self.feePerKb);
     }
     
-    [[ApplicationCoordinator sharedInstance].requestManager getFeePerKbWithSuccessHandler:^(NSNumber *feePerKb) {
-        completion([feePerKb decimalNumber]);
+    [[ApplicationCoordinator sharedInstance].requestManager getFeePerKbWithSuccessHandler:^(QTUMBigNumber *feePerKb) {
+        completion(feePerKb);
     } andFailureHandler:^(NSError *error, NSString *message) {
         completion(nil);
     }];
@@ -70,7 +69,7 @@ static NSInteger constantFee = 400000000;
 
 -(void)getFeeWithContractAddress:(NSString*) address
                       withHashes:(NSArray*) hashes
-                     withHandler:(void(^)(NSDecimalNumber* gas))completesion {
+                     withHandler:(void(^)(QTUMBigNumber* gas))completesion {
     
     [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:address withHashes:hashes withHandler:^(id responseObject) {
         
@@ -86,7 +85,7 @@ static NSInteger constantFee = 400000000;
         }
         
         if ([gas isKindOfClass:[NSNumber class]] && gas) {
-            completesion([gas decimalNumber]);
+            completesion([QTUMBigNumber decimalWithString:gas.stringValue]);
         } else {
             completesion(nil);
         }
@@ -96,10 +95,10 @@ static NSInteger constantFee = 400000000;
 
 - (void)sendTransactionWalletKeys:(NSArray<BTCKey*> *)walletKeys
                toAddressAndAmount:(NSArray *)amountsAndAddresses
-                              fee:(NSDecimalNumber*) fee
+                              fee:(QTUMBigNumber*) fee
                        andHandler:(void(^)(TransactionManagerErrorType errorType,
                                            id response,
-                                           NSDecimalNumber* estimatedFee))completion {
+                                           QTUMBigNumber* estimatedFee))completion {
     
     NSOperationQueue* requestQueue = [[NSOperationQueue alloc] init];
 
@@ -117,7 +116,7 @@ static NSInteger constantFee = 400000000;
             return;
         }
         
-        BTCAmount amount = [allPreparedValues[@"totalAmount"] doubleValue];
+        BTCAmount amount = [allPreparedValues[@"totalAmount"] integerValue];
         
         NSArray* preparedAmountAndAddreses = allPreparedValues[@"amountsAndAddresses"];
         
@@ -142,9 +141,9 @@ static NSInteger constantFee = 400000000;
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
-        NSDecimalNumber* __block feePerKb;
+        QTUMBigNumber* __block feePerKb;
         
-        [weakSelf getFeePerKbWithHandler:^(NSDecimalNumber *aFeePerKb) {
+        [weakSelf getFeePerKbWithHandler:^(QTUMBigNumber *aFeePerKb) {
             
             if (aFeePerKb) {
                 
@@ -163,8 +162,8 @@ static NSInteger constantFee = 400000000;
         
         BTCTransaction* __block transaction;
         TransactionManagerErrorType __block errorType;
-        NSDecimalNumber* __block estimatedFee = fee;
-        NSDecimalNumber* __block passedFee;
+        QTUMBigNumber* __block estimatedFee = fee;
+        QTUMBigNumber* __block passedFee;
         
         do {
             [weakSelf.transactionBuilder regularTransactionWithUnspentOutputs:unspentOutputs
@@ -179,12 +178,12 @@ static NSInteger constantFee = 400000000;
                                                                        
                                                                        if (transaction) {
                                                                            passedFee = estimatedFee;
-                                                                           estimatedFee = [estimatedFee decimalNumberByAdding:feePerKb];
+                                                                           estimatedFee = [estimatedFee add:feePerKb];
                                                                        }
                                                                    }];
             
         } while (transaction &&
-                 [self convertValueToAmount:passedFee] < [transaction estimatedFeeWithRate:[self convertValueToAmount:feePerKb]]);
+                 passedFee.satoshiAmountValue < [transaction estimatedFeeWithRate:feePerKb.satoshiAmountValue]);
         
         if (transaction && [passedFee isEqualToDecimalNumber:fee]) {
             [weakSelf sendTransaction:transaction withSuccess:^(id response){
@@ -201,7 +200,7 @@ static NSInteger constantFee = 400000000;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (transaction) {
-//                    passedFee = [passedFee decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]];
+//                    passedFee = [passedFee decimalNumberByMultiplyingBy:[[QTUMBigNumber alloc] initWithLong:BTCCoin]];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         completion(TransactionManagerErrorTypeNotEnoughFee, nil, passedFee);
                     });
@@ -219,19 +218,19 @@ static NSInteger constantFee = 400000000;
 
 - (void)sendTransactionToToken:(Contract*) token
                      toAddress:(NSString*) toAddress
-                        amount:(NSNumber*) amount
-                           fee:(NSDecimalNumber*) fee
-                      gasPrice:(NSDecimalNumber*) gasPrice
-                      gasLimit:(NSDecimalNumber*) gasLimit
+                        amount:(QTUMBigNumber*) amount
+                           fee:(QTUMBigNumber*) fee
+                      gasPrice:(QTUMBigNumber*) gasPrice
+                      gasLimit:(QTUMBigNumber*) gasLimit
                     andHandler:(void(^)(TransactionManagerErrorType errorType,
                                         BTCTransaction * transaction,
                                         NSString* hashTransaction,
-                                        NSDecimalNumber* estimatedFee)) completion {
+                                        QTUMBigNumber* estimatedFee)) completion {
     
     NSString* __block addressWithAmountValue;
-    [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, JKBigDecimal* balance, BOOL * _Nonnull stop) {
+    [token.addressBalanceDictionary enumerateKeysAndObjectsUsingBlock:^(NSString* address, QTUMBigNumber* balance, BOOL * _Nonnull stop) {
         
-        if ([balance isGreaterThan:[[JKBigDecimal alloc] initWithString:amount.stringValue]]) {
+        if ([balance isGreaterThan:[[QTUMBigNumber alloc] initWithString:amount.stringValue]]) {
             addressWithAmountValue = address;
             *stop = YES;
         }
@@ -239,11 +238,12 @@ static NSInteger constantFee = 400000000;
     
     [self sendToken:token
         fromAddress:addressWithAmountValue
-          toAddress:toAddress amount:[amount decimalNumber]
+          toAddress:toAddress
+             amount:amount
                 fee:fee
            gasPrice:gasPrice
            gasLimit:gasLimit
-         andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber *estimatedFee) {
+         andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedFee) {
              dispatch_async(dispatch_get_main_queue(), ^{
                  completion(errorType, transaction, hashTransaction, estimatedFee);
              });
@@ -253,14 +253,14 @@ static NSInteger constantFee = 400000000;
 - (void)sendToken:(Contract*) token
       fromAddress:(NSString*) fromAddress
         toAddress:(NSString*) toAddress
-           amount:(JKBigDecimal*) amount
-              fee:(NSDecimalNumber*) fee
-         gasPrice:(NSDecimalNumber*) gasPrice
-         gasLimit:(NSDecimalNumber*) gasLimit
+           amount:(QTUMBigNumber*) amount
+              fee:(QTUMBigNumber*) fee
+         gasPrice:(QTUMBigNumber*) gasPrice
+         gasLimit:(QTUMBigNumber*) gasLimit
        andHandler:(void(^)(TransactionManagerErrorType errorType,
                            BTCTransaction * transaction,
                            NSString* hashTransaction,
-                           NSDecimalNumber* estimatedFee)) completion {
+                           QTUMBigNumber* estimatedFee)) completion {
     
     // Checking address
     BTCPublicKeyAddress *address = [BTCPublicKeyAddress addressWithString:toAddress];
@@ -275,10 +275,10 @@ static NSInteger constantFee = 400000000;
     
     NSString* __block addressWithAmountValue = fromAddress;
     
-    JKBigDecimal* addressBalance = token.addressBalanceDictionary[addressWithAmountValue];
+    QTUMBigNumber* addressBalance = token.addressBalanceDictionary[addressWithAmountValue];
     
     if (addressBalance) {
-        if ([addressBalance isLessThan:[[JKBigDecimal alloc] initWithString:amount.stringValue]]) {
+        if ([addressBalance isLessThan:[[QTUMBigNumber alloc] initWithString:amount.stringValue]]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(TransactionManagerErrorTypeNotEnoughMoney, nil, nil,nil);
             });
@@ -299,7 +299,7 @@ static NSInteger constantFee = 400000000;
                                                      toAddress:nil
                                                     walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
                                                            fee:fee gasPrice:gasPrice gasLimit:gasLimit
-                                                    andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, NSDecimalNumber *estimatedFee) {
+                                                    andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedFee) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(errorType, transaction, hashTransaction, estimatedFee);
             });
@@ -314,12 +314,12 @@ static NSInteger constantFee = 400000000;
 
 - (void)createSmartContractWithKeys:(NSArray<BTCKey*> *)walletKeys
                          andBitcode:(NSData *)bitcode
-                                fee:(NSDecimalNumber*) fee
-                           gasPrice:(NSDecimalNumber *)gasPrice
-                           gasLimit:(NSDecimalNumber *)gasLimit
+                                fee:(QTUMBigNumber*) fee
+                           gasPrice:(QTUMBigNumber *)gasPrice
+                           gasLimit:(QTUMBigNumber *)gasLimit
                          andHandler:(void(^)(TransactionManagerErrorType errorType,
                                              BTCTransaction *transaction,
-                                             NSString *hashTransaction, NSDecimalNumber *estimatedValue)) completion {
+                                             NSString *hashTransaction, QTUMBigNumber *estimatedValue)) completion {
     
     //NSAssert(walletKeys.count > 0, @"Keys must be grater then zero");
     if (!walletKeys.count) {
@@ -349,9 +349,9 @@ static NSInteger constantFee = 400000000;
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
-        NSDecimalNumber* __block feePerKb;
+        QTUMBigNumber* __block feePerKb;
         
-        [weakSelf getFeePerKbWithHandler:^(NSDecimalNumber *aFeePerKb) {
+        [weakSelf getFeePerKbWithHandler:^(QTUMBigNumber *aFeePerKb) {
             if (aFeePerKb) {
                 feePerKb = aFeePerKb;
                 dispatch_semaphore_signal(semaphore);
@@ -366,10 +366,10 @@ static NSInteger constantFee = 400000000;
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
         BTCTransaction* __block transactionForCheck;
-        NSDecimalNumber* __block gas = [[gasLimit decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]] decimalNumberByMultiplyingBy:gasPrice];
-        NSDecimalNumber* __block estimatedUserFee = [fee decimalNumberByAdding:gas];
-        NSDecimalNumber* __block estimatedFee = [fee decimalNumberByAdding:gas];
-        NSDecimalNumber* __block passedFee;
+        QTUMBigNumber* __block gas = [[gasLimit divide:[[QTUMBigNumber alloc] initWithInteger:BTCCoin]] multiply:gasPrice];
+        QTUMBigNumber* __block estimatedUserFee = [fee add:gas];
+        QTUMBigNumber* __block estimatedFee = [fee add:gas];
+        QTUMBigNumber* __block passedFee;
         
         do {
             BTCTransaction *tx = [weakSelf.transactionBuilder smartContractCreationTxWithUnspentOutputs:unspentOutputs
@@ -383,9 +383,9 @@ static NSInteger constantFee = 400000000;
             if (tx) {
                 transactionForCheck = tx;
                 passedFee = estimatedFee;
-                estimatedFee = [estimatedFee decimalNumberByAdding:feePerKb];
+                estimatedFee = [estimatedFee add:feePerKb];
             }
-        } while (transactionForCheck && [weakSelf convertValueToAmount:passedFee] < ([transactionForCheck estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]] + [weakSelf convertValueToAmount:gas]));
+        } while (transactionForCheck && passedFee.satoshiAmountValue < ([transactionForCheck estimatedFeeWithRate:feePerKb.satoshiAmountValue] + gas.satoshiAmountValue));
         
         BOOL isUsersFee = [passedFee isEqualToDecimalNumber:estimatedUserFee];
         
@@ -402,8 +402,8 @@ static NSInteger constantFee = 400000000;
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (transactionForCheck) {
-                    NSDecimalNumber *feeOnlyForTransaction = [[NSDecimalNumber alloc] initWithLongLong:[transactionForCheck estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]]];
-                    feeOnlyForTransaction = [feeOnlyForTransaction decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]];
+                    QTUMBigNumber *feeOnlyForTransaction = [[QTUMBigNumber alloc] initWithInteger:(NSInteger)[transactionForCheck estimatedFeeWithRate:feePerKb.satoshiAmountValue]];
+                    feeOnlyForTransaction = [feeOnlyForTransaction divide:[[QTUMBigNumber alloc] initWithInteger:BTCCoin]];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         completion(TransactionManagerErrorTypeNotEnoughFee, nil, nil, feeOnlyForTransaction);
                     });
@@ -424,13 +424,13 @@ static NSInteger constantFee = 400000000;
                  fromAddresses:(NSArray<NSString*>*) fromAddresses
                    toAddress:(NSString*) toAddress
                   walletKeys:(NSArray<BTCKey*>*) walletKeys
-                         fee:(NSDecimalNumber*) fee
-                    gasPrice:(NSDecimalNumber*) gasPrice
-                    gasLimit:(NSDecimalNumber*) aGasLimit
+                         fee:(QTUMBigNumber*) fee
+                    gasPrice:(QTUMBigNumber*) gasPrice
+                    gasLimit:(QTUMBigNumber*) aGasLimit
                   andHandler:(void(^)(TransactionManagerErrorType errorType,
                                       BTCTransaction * transaction,
                                       NSString* hashTransaction,
-                                      NSDecimalNumber* estimatedFee)) completion {
+                                      QTUMBigNumber* estimatedFee)) completion {
     
     NSOperationQueue* requestQueue = [[NSOperationQueue alloc] init];
     
@@ -447,9 +447,9 @@ static NSInteger constantFee = 400000000;
             return;
         }
         
-        NSDecimalNumber* __block gasLimitEstimate;
+        QTUMBigNumber* __block gasLimitEstimate;
         
-        [weakSelf getFeeWithContractAddress:[NSString hexadecimalString:contractAddress] withHashes:@[[NSString hexadecimalString:bitcode]] withHandler:^(NSDecimalNumber* gas) {
+        [weakSelf getFeeWithContractAddress:[NSString hexadecimalString:contractAddress] withHashes:@[[NSString hexadecimalString:bitcode]] withHandler:^(QTUMBigNumber* gas) {
             
             if (gas) {
                 gasLimitEstimate = gas;
@@ -483,9 +483,9 @@ static NSInteger constantFee = 400000000;
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
-        NSDecimalNumber* __block feePerKb;
+        QTUMBigNumber* __block feePerKb;
         
-        [weakSelf getFeePerKbWithHandler:^(NSDecimalNumber *aFeePerKb) {
+        [weakSelf getFeePerKbWithHandler:^(QTUMBigNumber *aFeePerKb) {
             if (aFeePerKb) {
                 feePerKb = aFeePerKb;
                 dispatch_semaphore_signal(semaphore);
@@ -500,15 +500,16 @@ static NSInteger constantFee = 400000000;
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
         BTCTransaction* __block transactionForCheck;
-        NSDecimalNumber* __block gas = [[aGasLimit decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]] decimalNumberByMultiplyingBy:gasPrice];
-        NSDecimalNumber* __block estimatedUserFee = [fee decimalNumberByAdding:gas];
-        NSDecimalNumber* __block estimatedFee = [fee decimalNumberByAdding:gas];
-        NSDecimalNumber* __block passedFee;
+        QTUMBigNumber* __block gas = [[aGasLimit divide:[[QTUMBigNumber alloc] initWithInteger:BTCCoin]] multiply:gasPrice];
+        QTUMBigNumber* __block estimatedUserFee = [fee add:gas];
+        QTUMBigNumber* __block estimatedFee = [fee add:gas];
+        QTUMBigNumber* __block passedFee;
         TransactionManagerErrorType __block errorType;
         
         do {
             [weakSelf.transactionBuilder callContractTxWithUnspentOutputs:unspentOutputs
-                                                                   amount:0 contractAddress:contractAddress
+                                                                   amount:0
+                                                          contractAddress:contractAddress
                                                                 toAddress:toAddress
                                                             fromAddresses:fromAddresses
                                                                   bitcode:bitcode
@@ -520,11 +521,11 @@ static NSInteger constantFee = 400000000;
                                                                    if (transaction) {
                                                                        transactionForCheck = transaction;
                                                                        passedFee = estimatedFee;
-                                                                       estimatedFee = [estimatedFee decimalNumberByAdding:feePerKb];
+                                                                       estimatedFee = [estimatedFee add:feePerKb];
                                                                    }
                                                                    errorType = aErrorType;
                                                                }];
-        } while (transactionForCheck && [weakSelf convertValueToAmount:passedFee] < ([transactionForCheck estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]] + [weakSelf convertValueToAmount:gas]));
+        } while (transactionForCheck && passedFee.satoshiAmountValue < ([transactionForCheck estimatedFeeWithRate:feePerKb.satoshiAmountValue] + gas.satoshiAmountValue));
         
         BOOL isUsersFee = [passedFee isEqualToDecimalNumber:estimatedUserFee];
         
@@ -541,8 +542,8 @@ static NSInteger constantFee = 400000000;
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (transactionForCheck) {
-                    NSDecimalNumber *feeOnlyForTransaction = [[NSDecimalNumber alloc] initWithLongLong:[transactionForCheck estimatedFeeWithRate:[weakSelf convertValueToAmount:feePerKb]]];
-                    feeOnlyForTransaction = [feeOnlyForTransaction decimalNumberByDividingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]];
+                    QTUMBigNumber *feeOnlyForTransaction = [[QTUMBigNumber alloc] initWithInteger:(NSInteger)[transactionForCheck estimatedFeeWithRate:feePerKb.satoshiAmountValue]];
+                    feeOnlyForTransaction = [feeOnlyForTransaction divide:[[QTUMBigNumber alloc] initWithInteger:BTCCoin]];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         completion(TransactionManagerErrorTypeNotEnoughFee, nil, nil, feeOnlyForTransaction);
                     });
@@ -577,23 +578,6 @@ static NSInteger constantFee = 400000000;
 #pragma mark - Private
 
 
-- (BTCAmount)convertValueToAmount:(id) value {
-    
-    NSDecimalNumber* decimalNumber;
-    if ([value isKindOfClass:[JKBigDecimal class]]) {
-        
-        decimalNumber = [[NSDecimalNumber alloc] initWithString:[(JKBigDecimal*)value stringValue]];
-        return [[decimalNumber decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:BTCCoin]] intValue];
-    } else if ([value isKindOfClass:[NSDecimalNumber class]]) {
-        
-        decimalNumber = (NSDecimalNumber* )value;
-        return [[decimalNumber decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:BTCCoin]] intValue];
-    }
-    
-    return 0;
-}
-
-
 - (NSDictionary*)createAmountsAndAddresses:(NSArray *)array {
     
     NSMutableArray *mutArray = [NSMutableArray new];
@@ -602,7 +586,7 @@ static NSInteger constantFee = 400000000;
         
         BTCPublicKeyAddress *toPublicKeyAddress = [BTCPublicKeyAddress addressWithString:dictionary[@"address"]];
         
-        BTCAmount amount = [self convertValueToAmount:dictionary[@"amount"]];
+        BTCAmount amount = [(QTUMBigNumber*)dictionary[@"amount"] satoshiAmountValue];
         
         totalAmount += amount;
         
@@ -615,10 +599,10 @@ static NSInteger constantFee = 400000000;
     return @{@"totalAmount" : @(totalAmount), @"amountsAndAddresses" : [mutArray copy]};
 }
 
--(NSUInteger)feeFromNumber:(NSDecimalNumber*) feeNumber {
+-(NSUInteger)feeFromNumber:(QTUMBigNumber*) feeNumber {
     
     if (feeNumber) {
-        return [feeNumber decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithLong:BTCCoin]].intValue;
+        return feeNumber.satoshiAmountValue;
     } else {
         return constantFee;
     }

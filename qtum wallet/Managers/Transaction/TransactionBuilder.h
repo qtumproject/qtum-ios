@@ -26,27 +26,27 @@ typedef NS_ENUM(NSInteger, TransactionManagerErrorType) {
 -(instancetype)initWithScriptBuilder:(TransactionScriptBuilder*) scriptBuilder;
 
 - (BTCTransaction *)smartContractCreationTxWithUnspentOutputs:(NSArray *)unspentOutputs
-                                                   withAmount:(CGFloat) amount
+                                                   withAmount:(NSInteger) amount
                                                   withBitcode:(NSData*) bitcode
                                                       withFee:(NSInteger) fee
-                                                 withGasLimit:(NSDecimalNumber*) gasLimit
-                                                 withGasprice:(NSDecimalNumber*) gasPrice
+                                                 withGasLimit:(QTUMBigNumber*) gasLimit
+                                                 withGasprice:(QTUMBigNumber*) gasPrice
                                                withWalletKeys:(NSArray<BTCKey*>*) walletKeys;
 
 - (void)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
-                                  amount:(CGFloat) amount
+                                  amount:(NSInteger) amount
                          contractAddress:(NSData*) contractAddress
                                toAddress:(NSString*) toAddress
                            fromAddresses:(NSArray<NSString*>*) fromAddresses
                                  bitcode:(NSData*) bitcode
                                  withFee:(NSInteger) fee
-                            withGasLimit:(NSDecimalNumber*) gasLimit
-                            withGasprice:(NSDecimalNumber*) gasPrice
+                            withGasLimit:(QTUMBigNumber*) gasLimit
+                            withGasprice:(QTUMBigNumber*) gasPrice
                               walletKeys:(NSArray<BTCKey*>*) walletKeys
                               andHandler:(void(^)(TransactionManagerErrorType errorType, BTCTransaction *transaction)) completion;
 
 - (void)regularTransactionWithUnspentOutputs:(NSArray <BTCTransactionOutput*>*)unspentOutputs
-                                      amount:(CGFloat) amount
+                                      amount:(NSInteger) amount
                           amountAndAddresses:(NSArray*) amountAndAddresses
                                      withFee:(NSInteger) fee
                                   walletKeys:(NSArray<BTCKey*>*) walletKeys

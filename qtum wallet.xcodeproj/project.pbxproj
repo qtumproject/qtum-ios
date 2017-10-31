@@ -59,6 +59,7 @@
 		B32805591FA7477D00748E7E /* tommath.c in Sources */ = {isa = PBXBuildFile; fileRef = B328054F1FA744FE00748E7E /* tommath.c */; };
 		B328055C1FA74CDA00748E7E /* JKBigDecimal+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = B328055B1FA74CDA00748E7E /* JKBigDecimal+Format.m */; };
 		B328055F1FA7555000748E7E /* JKBigDecimal+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = B328055E1FA7555000748E7E /* JKBigDecimal+Comparison.m */; };
+		B32805621FA78A8B00748E7E /* QTUMBigNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = B32805611FA78A8B00748E7E /* QTUMBigNumber.m */; };
 		B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */; };
 		B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CA1ECCC2130081260A /* ResultTokenInputsModel.m */; };
 		B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CD1ECCC2330081260A /* ContractInterfaceManager.m */; };
@@ -798,6 +799,8 @@
 		B328055B1FA74CDA00748E7E /* JKBigDecimal+Format.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JKBigDecimal+Format.m"; sourceTree = "<group>"; };
 		B328055D1FA7555000748E7E /* JKBigDecimal+Comparison.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JKBigDecimal+Comparison.h"; sourceTree = "<group>"; };
 		B328055E1FA7555000748E7E /* JKBigDecimal+Comparison.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JKBigDecimal+Comparison.m"; sourceTree = "<group>"; };
+		B32805601FA78A8B00748E7E /* QTUMBigNumber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMBigNumber.h; sourceTree = "<group>"; };
+		B32805611FA78A8B00748E7E /* QTUMBigNumber.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMBigNumber.m; sourceTree = "<group>"; };
 		B32B32C61ECCC1F90081260A /* InterfaceInputFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceInputFormModel.h; sourceTree = "<group>"; };
 		B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceInputFormModel.m; sourceTree = "<group>"; };
 		B32B32C91ECCC2130081260A /* ResultTokenInputsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultTokenInputsModel.h; sourceTree = "<group>"; };
@@ -2260,6 +2263,8 @@
 				B328054C1FA744E200748E7E /* JKBigInteger.m */,
 				B328054A1FA744E100748E7E /* JKBigDecimal.h */,
 				B328054D1FA744E200748E7E /* JKBigDecimal.m */,
+				B32805601FA78A8B00748E7E /* QTUMBigNumber.h */,
+				B32805611FA78A8B00748E7E /* QTUMBigNumber.m */,
 			);
 			name = BigNumber;
 			sourceTree = "<group>";
@@ -5890,6 +5895,7 @@
 				E784F8C21F023C1800A513BF /* QStoreTableViewCell.m in Sources */,
 				B3DC9D3E1F332399006B2E07 /* TokenAddressControlViewControllerDark.m in Sources */,
 				B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */,
+				B32805621FA78A8B00748E7E /* QTUMBigNumber.m in Sources */,
 				B3597DF81E811D4500EBF094 /* RPCAdapter.m in Sources */,
 				E748578A1F13B25D00DCF9A6 /* TextFieldWithLineDark.m in Sources */,
 				B36EBC3E1F2F1B6F00F4E2F2 /* ErrorPopUpViewControllerDark.m in Sources */,

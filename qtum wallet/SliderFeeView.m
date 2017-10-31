@@ -47,16 +47,20 @@ static NSInteger openTopForEditButton = 15;
 }
 
 - (IBAction)didGasPriceChangedAction:(UISlider *)slider {
+    
     unsigned long value = self.gasPriceMin + (NSInteger)slider.value * self.gasPriceStep;
     NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
-    [self.delegate didChangeGasPriceSlider:sliderValue];
+    QTUMBigNumber* bigNum = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
+    [self.delegate didChangeGasPriceSlider:bigNum];
     self.gasPriceValueLabel.text = [[NSString stringWithFormat:@"%@", sliderValue] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
 
 - (IBAction)didGasLimitChangedAction:(UISlider *)slider {
+    
     unsigned long value = self.gasLimitMin + (NSInteger)slider.value * self.gasLimitStep;
     NSDecimalNumber* sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
-    [self.delegate didChangeGasLimiteSlider:sliderValue];
+    QTUMBigNumber* bigNum = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
+    [self.delegate didChangeGasLimiteSlider:bigNum];
     self.gasLimitValueLabel.text = [[NSString stringWithFormat:@"%@", sliderValue] stringByReplacingOccurrencesOfString:@"." withString:@","];
 }
 
@@ -78,13 +82,14 @@ static NSInteger openTopForEditButton = 15;
     }];
 }
 
-- (void)setMinGasPrice:(NSNumber *)min andMax:(NSNumber *)max step:(long)step {
-    long count = ([max longValue] - [min longValue]) / step;
+- (void)setMinGasPrice:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max step:(long)step {
+    
+    long count = ([max integerValue] - [min integerValue]) / step;
     self.gasPriceSlider.maximumValue = count;
     self.gasPriceSlider.minimumValue = 0;
     self.gasPriceSlider.value = 0;
     
-    self.gasPriceMin = [min longLongValue];
+    self.gasPriceMin = [min integerValue];
     self.gasPriceStep = step;
     
     self.gasPriceValueLabel.text = [min stringValue];
@@ -92,15 +97,15 @@ static NSInteger openTopForEditButton = 15;
     self.gasPriceMaxValueLabel.text = [max stringValue];
 }
 
-- (void)setMinGasLimit:(NSNumber *)min andMax:(NSNumber *)max standart:(NSNumber *)standart step:(long)step; {
-    long count = ([max longValue] - [min longValue]) / step;
-    long standartLong = ([standart longValue] - [min longValue]) / step;
+- (void)setMinGasLimit:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max standart:(QTUMBigNumber *)standart step:(long)step; {
+    long count = ([max integerValue] - [min integerValue]) / step;
+    long standartLong = ([standart integerValue] - [min integerValue]) / step;
     
     self.gasLimitSlider.maximumValue = count;
     self.gasLimitSlider.minimumValue = 0;
     self.gasLimitSlider.value = standartLong;
     
-    self.gasLimitMin = [min longLongValue];
+    self.gasLimitMin = [min integerValue];
     self.gasLimitStep = step;
     
     self.gasLimitValueLabel.text = [standart stringValue];

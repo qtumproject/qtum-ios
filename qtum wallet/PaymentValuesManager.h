@@ -13,13 +13,13 @@ extern long const GasLimitStep;
 
 @interface PaymentValuesManager : NSObject
 
-@property (nonatomic) NSNumber *maxFee;
-@property (nonatomic) NSNumber *standartGasLimit;
-@property (nonatomic) NSNumber *standartGasLimitForCreateContract;
-@property (nonatomic) NSNumber *minGasLimit;
-@property (nonatomic) NSNumber *minGasPrice;
-@property (nonatomic) NSNumber *maxGasLimit;
-@property (nonatomic) NSNumber *maxGasPrice;
+@property (nonatomic) QTUMBigNumber *maxFee;
+@property (nonatomic) QTUMBigNumber *standartGasLimit;
+@property (nonatomic) QTUMBigNumber *standartGasLimitForCreateContract;
+@property (nonatomic) QTUMBigNumber *minGasLimit;
+@property (nonatomic) QTUMBigNumber *minGasPrice;
+@property (nonatomic) QTUMBigNumber *maxGasLimit;
+@property (nonatomic) QTUMBigNumber *maxGasPrice;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
