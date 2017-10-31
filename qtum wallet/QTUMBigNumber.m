@@ -260,7 +260,36 @@
 
 -(NSString*)stringNumberWithPowerOfMinus10:(QTUMBigNumber*) power {
     
-    return [self.decimalContainer stringNumberWithPowerOfMinus10:power.decimalContainer];
+    NSString* value = self.stringValue;
+    NSInteger valueCount = self.decimalContainer.bigInteger.stringValue.length;
+    NSInteger reduceDigits = (power.integerValue - 1);
+    NSString* result;
+    NSInteger integerDigitsAfter = valueCount - reduceDigits;
+    
+    if (integerDigitsAfter > 0) {
+        
+        NSMutableString* temp = [value mutableCopy];
+        NSRange pointRange = [temp rangeOfString:@"."];
+        
+        if (pointRange.location == NSNotFound) {
+            pointRange = NSMakeRange(valueCount, 1);
+        }
+        
+        temp = [[temp stringByReplacingOccurrencesOfString:@"." withString:@""] mutableCopy];
+        [temp insertString:@"." atIndex:pointRange.location - power.integerValue];
+        
+        result = [temp copy];
+    } else {
+        NSString* zeroString = @"0.";
+        
+        for (int i = 0; i < integerDigitsAfter * -1 + 1; i++) {
+            zeroString = [zeroString stringByAppendingString:@"0"];
+        }
+        
+        result = [zeroString stringByAppendingString:[value stringByReplacingOccurrencesOfString:@"." withString:@""]];
+    }
+    
+    return result;
 }
 
 -(NSString*)stringNumberWithPowerOf10:(QTUMBigNumber*) power {

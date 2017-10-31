@@ -110,7 +110,7 @@
         if ([parameter isKindOfClass:[TextFieldParameterView class]]) {
             ResultTokenInputsModel* input = [ResultTokenInputsModel new];
             input.name = parameter.textField.item.name;
-            input.value = parameter.textField.text;
+            input.value = parameter.textField.text ?: @"";
             [inputsData addObject:input];
         }
     }

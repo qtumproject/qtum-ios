@@ -15,6 +15,8 @@ static NSString* FinishInputCellIdentifire = @"FinishInputCellIdentifire";
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *value;
 
+@property (copy, nonatomic) NSString *shortValueString;
+
 -(void)setContentWithDict:(id) object;
 
 @end

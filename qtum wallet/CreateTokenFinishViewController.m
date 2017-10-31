@@ -91,7 +91,8 @@ static NSInteger openTopForEditButton = 15;
     return self.inputs.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     FinishInputCell* cell = [tableView dequeueReusableCellWithIdentifier:FinishInputCellIdentifire];
     cell.name.text = self.inputs[indexPath.row].name;
     cell.value.text = [NSString stringWithFormat:@"%@",self.inputs[indexPath.row].value];
