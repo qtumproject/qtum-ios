@@ -237,7 +237,7 @@
 
 -(NSString*)shortFormatOfNumberWithPowerOfMinus10:(QTUMBigNumber*) power {
     
-    if (power.integerValue > 66) {
+    if (power.integerValue > 128) {
         return [self stringNumberWithPowerOfMinus10:power];
     }
     return [self.decimalContainer shortFormatOfNumberWithPowerOfMinus10:power.decimalContainer];
