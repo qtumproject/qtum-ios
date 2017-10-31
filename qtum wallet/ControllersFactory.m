@@ -21,7 +21,6 @@
 #import "AuthNavigationController.h"
 #import "ExportWalletBrandKeyViewController.h"
 #import "SubscribeTokenViewController.h"
-#import "HistoryViewController.h"
 #import "WalletNavigationController.h"
 #import "ConstructorFromAbiViewController.h"
 #import "CreateTokenFinishViewController.h"

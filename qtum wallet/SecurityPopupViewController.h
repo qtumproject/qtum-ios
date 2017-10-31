@@ -17,6 +17,5 @@
 @property (weak, nonatomic) IBOutlet PasswordView *passwordView;
 
 - (void)applyFailedPasswordAction;
-- (void)clearPinTextFields;
 
 @end

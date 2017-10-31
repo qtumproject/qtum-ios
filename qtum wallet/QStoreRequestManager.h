@@ -16,9 +16,9 @@
 @property (strong, nonatomic, readonly) NSMutableArray<QStoreBuyRequest *> *confirmedBuyRequests;
 @property (strong, nonatomic, readonly) NSMutableArray<QStoreBuyRequest *> *finishedBuyRequests;
 
-- (void)addBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)()) completion;
-- (void)confirmBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)()) completion;
-- (void)finishBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)()) completion;
+- (void)addBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)(void)) completion;
+- (void)confirmBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)(void)) completion;
+- (void)finishBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)(void)) completion;
 
 - (QStoreBuyRequest*)requestWithContractId:(NSString*) contractId;
 - (QStoreBuyRequest *)requestByElement:(QStoreContractElement *)element;

@@ -151,9 +151,6 @@
 
 - (NSArray<NSNumber*>*)arrayOfArraySizes {
     
-    NSString* pattern = @"([[0-9]{1,}])";
-    NSString* match = [self matchedStringWithPattern:pattern];
-//    return [match integerValue];
     return nil;
 }
 

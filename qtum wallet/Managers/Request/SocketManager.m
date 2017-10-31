@@ -21,7 +21,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
 
 @property (strong, nonatomic) SocketIOClient* currentSocket;
 @property (assign,nonatomic) ConnectionStatus status;
-@property (nonatomic, copy) void (^onConnected)();
+@property (nonatomic, copy) void (^onConnected)(void);
 @property (nonatomic, strong) NSOperationQueue* requestQueue;
 
 @end
@@ -65,7 +65,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     return [AppSettings sharedInstance].baseURL;
 }
 
--(void)startAndSubscribeWithHandler:(void(^)()) handler {
+-(void)startAndSubscribeWithHandler:(void(^)(void)) handler {
     
     __weak __typeof(self)weakSelf = self;
     
@@ -154,7 +154,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     }];
 }
 
--(void)stoptWithHandler:(void(^)()) handler {
+-(void)stoptWithHandler:(void(^)(void)) handler {
     
     NSString* token  = [[ApplicationCoordinator sharedInstance].notificationManager token];
     [self.currentSocket emit:@"unsubscribe" with:@[@"balance_subscribe",[NSNull null], @{@"notificationToken" : token ?: [NSNull null]}]];
@@ -162,7 +162,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
    // [self.currentSocket disconnect];
 }
 
--(void)startObservingToken:(Contract*) token withHandler:(void(^)()) handler {
+-(void)startObservingToken:(Contract*) token withHandler:(void(^)(void)) handler {
     
     __weak __typeof(self)weakSelf = self;
     __weak __typeof(Contract*)weakToken = token;
@@ -179,7 +179,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     [_requestQueue addOperationWithBlock:block];
 }
 
--(void)stopObservingToken:(Contract*) token withHandler:(void(^)()) handler {
+-(void)stopObservingToken:(Contract*) token withHandler:(void(^)(void)) handler {
     
     __weak __typeof(self)weakSelf = self;
     __weak __typeof(Contract*)weakToken = token;
@@ -192,7 +192,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     [_requestQueue addOperationWithBlock:block];
 }
 
--(void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
+-(void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)(void)) handler {
     
     __weak __typeof(self)weakSelf = self;
     dispatch_block_t block = ^{
@@ -201,7 +201,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     [_requestQueue addOperationWithBlock:block];
 }
 
--(void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler {
+-(void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)(void)) handler {
     
     __weak __typeof(self)weakSelf = self;
     dispatch_block_t block = ^{

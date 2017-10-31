@@ -45,7 +45,6 @@
     CGFloat duration = 3;
     CGFloat logoCoeff = 0.35;
     CGFloat qtumLabelCoeff = 0.45;
-    CGFloat waitLabaleCoeff = 0.75;
     
     __weak typeof(self)weakSelf = self;
     

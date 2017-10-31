@@ -19,9 +19,7 @@
 #pragma mark - Configuration
 
 -(void)configTextFields {
-    
-    NSInteger yoffset = 0;
-    NSInteger yoffsetFirstElement = 0;
+
     NSInteger heighOfPrevElement = 0;
     NSInteger heighOfElement = 60;
     NSInteger scrollViewTopOffset = 64;
