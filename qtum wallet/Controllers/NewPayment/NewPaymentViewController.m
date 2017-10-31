@@ -457,8 +457,12 @@ static NSInteger hidedGasTopForSend = -40;
     } else {
         self.adress = item.qtumAddress;
     }
-    QTUMBigNumber* amount = [QTUMBigNumber decimalWithString:item.amountString];
-    self.amount =  [self.localeFormatter stringFromNumber:[amount decimalNumber]];
+    
+    if (item.amountString && ![item.amountString isEqualToString:@""]) {
+        QTUMBigNumber* amount = [QTUMBigNumber decimalWithString:item.amountString];
+        self.amount =  [self.localeFormatter stringFromNumber:[amount decimalNumber]];
+    }
+    
     self.needUpdateTexfFields = YES;
     
     [self updateTextFields];
