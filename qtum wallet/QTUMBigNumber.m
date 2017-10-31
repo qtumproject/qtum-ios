@@ -2,7 +2,7 @@
 //  QTUMBigNumber.m
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 30.10.17.
+//  Created by Vladimir Lebedevich on 30.10.17.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
@@ -237,6 +237,9 @@
 
 -(NSString*)shortFormatOfNumberWithPowerOfMinus10:(QTUMBigNumber*) power {
     
+    if (power.integerValue > 66) {
+        return [self stringNumberWithPowerOfMinus10:power];
+    }
     return [self.decimalContainer shortFormatOfNumberWithPowerOfMinus10:power.decimalContainer];
 }
 
