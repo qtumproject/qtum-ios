@@ -52,14 +52,11 @@
 
 - (NSString*)totalSupplyString {
     
-//    QTUMBigNumber* decimal = [[QTUMBigNumber alloc] initWithString:self.decimalsAsString];
-    
     return [self.totalSupply stringNumberWithPowerOfMinus10:self.decimals];
 }
 
 - (NSString*)shortTotalSupplyString {
     
-//    QTUMBigNumber* decimal = [[QTUMBigNumber alloc] initWithString:self.decimalsAsString];
     return [self.totalSupply shortFormatOfNumberWithPowerOfMinus10:self.decimals];
 }
 
@@ -90,13 +87,11 @@
 
 - (NSString*)balanceString {
     
-//    QTUMBigNumber* decimal = [[QTUMBigNumber alloc] initWithString:self.decimalsAsString];
     return [self.balance stringNumberWithPowerOfMinus10:self.decimals];
 }
 
 - (NSString*)shortBalanceString {
     
-//    QTUMBigNumber* decimal = [[QTUMBigNumber alloc] initWithString:self.decimals];
     return [self.balance shortFormatOfNumberWithPowerOfMinus10:self.decimals];
 }
 
@@ -132,7 +127,6 @@
     
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.contractCreationAddressAddress forKey:@"contractCreationAddressAddress"];
-//    [aCoder encodeObject:self.addressBalanceDictionary forKey:@"addressBalanceDictionary"];
     [aCoder encodeObject:self.localName forKey:@"localName"];
     [aCoder encodeObject:self.creationDate forKey:@"creationDate"];
     [aCoder encodeObject:self.templateModel forKey:@"templateModel"];
@@ -150,7 +144,6 @@
     
     NSString *name = [aDecoder decodeObjectForKey:@"name"];
     NSString *contractCreationAddressAddress = [aDecoder decodeObjectForKey:@"contractCreationAddressAddress"];
-//    NSDictionary* addressBalanceDictionary = [aDecoder decodeObjectForKey:@"addressBalanceDictionary"];
     NSString *localName = [aDecoder decodeObjectForKey:@"localName"];
     NSDate *creationDate = [aDecoder decodeObjectForKey:@"creationDate"];
     TemplateModel *templateModel = [aDecoder decodeObjectForKey:@"templateModel"];
@@ -166,7 +159,6 @@
     if (self) {
         
         _name = name;
-//        _addressBalanceDictionary = addressBalanceDictionary;
         _contractCreationAddressAddress = contractCreationAddressAddress;
         _localName = localName;
         _creationDate = creationDate;
