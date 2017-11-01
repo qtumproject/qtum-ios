@@ -126,6 +126,7 @@ ContractCreationEndOutputDelegate>
     
     output.contracts = sortedContracts;
     output.smartContractPretendents = [[ContractManager sharedInstance] smartContractPretendentsCopy];
+    [output setNeedShowingTrainingScreen];
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 

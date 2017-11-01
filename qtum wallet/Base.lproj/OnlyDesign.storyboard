@@ -14,6 +14,9 @@
         <array key="euclidflexmedium.ttf">
             <string>euclidflexmedium</string>
         </array>
+        <array key="proximanova-light.otf">
+            <string>ProximaNova-Light</string>
+        </array>
         <array key="proximanova-regular.otf">
             <string>ProximaNova-Regular</string>
         </array>
@@ -947,6 +950,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4X-4I-GcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-500" y="495"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="P4y-4P-Yuf">
+            <objects>
+                <viewController id="eqi-f0-LZA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f9j-M5-10a"/>
+                        <viewControllerLayoutGuide type="bottom" id="gf8-vy-WnE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hhb-rZ-Ofl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-Jc-JRR">
+                                <rect key="frame" x="16" y="245" width="375" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UkY-QM-DXW">
+                                        <rect key="frame" x="-60" y="63" width="360" height="1"/>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.96470588239999999" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="3I1-4L-GUQ"/>
+                                            <constraint firstAttribute="height" constant="1" id="YrS-ty-iYk"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkM-7L-nuY">
+                                        <rect key="frame" x="21" y="18" width="46" height="14"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="Token 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKW-k0-3QL">
+                                        <rect key="frame" x="216" y="17" width="38.5" height="12"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="12"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="TOKEN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td1-LK-Prw">
+                                        <rect key="frame" x="75" y="8" width="39" height="12"/>
+                                        <color key="backgroundColor" red="0.21176470589999999" green="0.72549019609999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UkY-QM-DXW" secondAttribute="trailing" id="54V-jV-Hle"/>
+                                    <constraint firstItem="td1-LK-Prw" firstAttribute="leading" secondItem="nkM-7L-nuY" secondAttribute="trailing" constant="5" id="dII-Zg-ecv"/>
+                                    <constraint firstItem="UkY-QM-DXW" firstAttribute="leading" secondItem="xbo-Jc-JRR" secondAttribute="leading" constant="15" id="ezP-xd-lYb"/>
+                                    <constraint firstAttribute="trailing" secondItem="jKW-k0-3QL" secondAttribute="trailing" constant="10" id="gbc-SM-atZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="UkY-QM-DXW" secondAttribute="bottom" id="iVH-zh-8js"/>
+                                    <constraint firstItem="jKW-k0-3QL" firstAttribute="centerY" secondItem="xbo-Jc-JRR" secondAttribute="centerY" id="pFS-1k-Oyb"/>
+                                    <constraint firstItem="nkM-7L-nuY" firstAttribute="centerY" secondItem="xbo-Jc-JRR" secondAttribute="centerY" id="puP-Z6-z3t"/>
+                                    <constraint firstItem="td1-LK-Prw" firstAttribute="top" secondItem="xbo-Jc-JRR" secondAttribute="top" constant="8" id="wZT-kz-PTQ"/>
+                                    <constraint firstItem="nkM-7L-nuY" firstAttribute="leading" secondItem="xbo-Jc-JRR" secondAttribute="leading" constant="15" id="zld-HQ-rru"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rpu-cD-EaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="428" y="521"/>
         </scene>
         <!--Backup Contracts View Controller Light-->
         <scene sceneID="PmA-6H-cR1">

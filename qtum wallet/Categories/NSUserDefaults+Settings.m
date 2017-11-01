@@ -23,6 +23,7 @@ NSString * const kCurrentVersion             = @"kCurrentVersion";
 NSString * const kPublicAddresses            = @"kPublicAddresses";
 NSString * const kFailedPinCount             = @"kFailedPinCount";
 NSString * const kLastFailedDate             = @"kLastFailedDate";
+NSString * const kRemovingContractPassed     = @"kRemovingContractPassed";
 
 
 
@@ -157,6 +158,16 @@ NSString * const kGroupIdentifire            = @"group.org.qtum.qtum-wallet";
 
 + (NSString*)currentVersion {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentVersion];
+}
+
++ (void)saveIsRemovingContractTrainingPassed:(BOOL)value {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:kRemovingContractPassed];
+}
+
++ (BOOL)isRemovingContractTrainingPassed {
+    
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kRemovingContractPassed];
 }
 
 // Public addresses

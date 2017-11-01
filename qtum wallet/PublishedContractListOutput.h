@@ -16,4 +16,6 @@
 @property (strong, nonatomic) NSDictionary *smartContractPretendents;
 @property (weak, nonatomic) id <PublishedContractListOutputDelegate> delegate;
 
+-(void)setNeedShowingTrainingScreen;
+
 @end

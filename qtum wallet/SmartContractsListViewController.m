@@ -9,10 +9,17 @@
 #import "SmartContractsListViewController.h"
 #import "SmartContractListItemCell.h"
 
-@interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource,QTUMSwipableCellWithButtonsDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
+@property (weak, nonatomic) IBOutlet UIView *trainingView;
+
+@property (assign, nonatomic) BOOL needShowTrainingScreen;
+
+@property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
+@property (weak, nonatomic) UITableViewCell *movingCell;
+
 
 @end
 
@@ -22,23 +29,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self configTableView];
+    self.cellsCurrentlyEditing = [NSMutableSet new];
+}
+
+#pragma mark - Configuration
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    // do something here
+}
+
+-(void)configTableView {
     
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    if (self.smartContractPretendents.count == 0 && self.contracts.count == 0) {
-        self.emptyTableLabel.hidden = NO;
-    } else {
-        self.emptyTableLabel.hidden = YES;
-    }
+//    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+//    if (self.smartContractPretendents.count == 0 && self.contracts.count == 0) {
+//        self.emptyTableLabel.hidden = NO;
+//    } else {
+//        
+//        self.emptyTableLabel.hidden = YES;
+//        
+//        if (!self.needShowTrainingScreen) {
+//            [self.trainingView removeFromSuperview];
+//        }
+//    }
+    self.emptyTableLabel.hidden = YES;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section != 0) {
-        
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [self.delegate didSelectContractWithIndexPath:indexPath withContract:self.contracts[indexPath.row]];
-    }
+//    if (indexPath.section != 0) {
+//        
+//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//        [self.delegate didSelectContractWithIndexPath:indexPath withContract:self.contracts[indexPath.row]];
+//    }
 }
 
 
@@ -46,11 +74,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0) {
-        return self.smartContractPretendents.count;
-    } else {
-        return self.contracts.count;
-    }
+//    if (section == 0) {
+//        return self.smartContractPretendents.count;
+//    } else {
+//        return self.contracts.count;
+//    }
+    return 5;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -93,24 +122,32 @@
 
 -(SmartContractListItemCell*)configContractCellWithTableView:(UITableView *)tableView ForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Contract* contract = self.contracts[indexPath.row];
+//    Contract* contract = self.contracts[indexPath.row];
     SmartContractListItemCell* cell = [tableView dequeueReusableCellWithIdentifier:smartContractListItemCellIdentifire];
-    cell.contractName.text = contract.localName;
-    cell.typeIdentifire.text = [contract.templateModel.templateTypeString uppercaseString];
-    cell.creationDate.text = contract.creationDateString;
+//    cell.contractName.text = contract.localName;
+//    cell.typeIdentifire.text = [contract.templateModel.templateTypeString uppercaseString];
+//    cell.creationDate.text = contract.creationDateString;
+    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
+        [cell openCell];
+    }
+    cell.delegate = self;
     return cell;
 }
 
 -(SmartContractListItemCell*)configContractPretendentCellWithTableView:(UITableView *)tableView ForRowAtIndexPath:(NSIndexPath *)indexPath {
  
-    NSDictionary* pretendentDict = self.smartContractPretendents.allValues[indexPath.row];
-    TemplateModel* template = pretendentDict[kTemplateModel];
-    NSString* localName = pretendentDict[kLocalContractName];
+//    NSDictionary* pretendentDict = self.smartContractPretendents.allValues[indexPath.row];
+//    TemplateModel* template = pretendentDict[kTemplateModel];
+//    NSString* localName = pretendentDict[kLocalContractName];
     SmartContractListItemCell* cell = [tableView dequeueReusableCellWithIdentifier:smartContractListItemCellIdentifire];
-    cell.contractName.text = localName;
-    cell.typeIdentifire.text = [template.templateTypeString uppercaseString];
-    cell.creationDate.text = NSLocalizedString(@"Unconfirmed", nil);
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.contractName.text = localName;
+//    cell.typeIdentifire.text = [template.templateTypeString uppercaseString];
+//    cell.creationDate.text = NSLocalizedString(@"Unconfirmed", nil);
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
+        [cell openCell];
+    }
+    cell.delegate = self;
     return cell;
 }
 
@@ -119,5 +156,77 @@
 - (IBAction)didPressedBackAction:(id)sender {
     [self.delegate didPressedBack];
 }
+- (IBAction)didScipTrainingInfoAction:(id)sender {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.trainingView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.trainingView removeFromSuperview];
+        [[AppSettings sharedInstance] changeIsRemovingContractTrainingPassed:YES];
+    }];
+}
+
+#pragma mark - PublishedContractListOutput
+
+-(void)setNeedShowingTrainingScreen {
+    
+    self.needShowTrainingScreen = YES;
+}
+
+#pragma mark - QTUMSwipableCellWithButtonsDelegate
+
+- (void)buttonOneActionForIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)buttonTwoActionForIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)cellDidOpen:(UITableViewCell *)cell {
+    
+    for (QTUMSwipableCellWithButtons* openedCell in self.cellsCurrentlyEditing) {
+        if (![cell isEqual:openedCell]) {
+            [openedCell closeCell];
+        }
+    }
+    [self.cellsCurrentlyEditing addObject:cell];
+}
+
+- (void)cellDidClose:(UITableViewCell *)cell {
+    
+    [self.cellsCurrentlyEditing removeObject:cell];
+}
+
+- (void)cellDidStartMoving:(UITableViewCell *)cell {
+    
+    if (self.movingCell) {
+        [(QTUMSwipableCellWithButtons*)self.movingCell closeCell];
+    }
+    self.movingCell = cell;
+    self.tableView.scrollEnabled = NO;
+}
+
+- (void)cellEndMoving:(UITableViewCell *)cell {
+    
+    if (![cell isEqual:self.movingCell]) {
+        [(QTUMSwipableCellWithButtons*)cell closeCell];
+    } else {
+        self.movingCell = nil;
+        self.tableView.scrollEnabled = YES;
+    }
+}
+
+- (BOOL)shoudOpenCell:(UITableViewCell *)cell {
+    
+    if (self.movingCell && [cell isEqual:self.movingCell]) {
+        return YES;
+    } else if (self.movingCell){
+        return NO;
+    }else {
+        return YES;
+    }
+}
+
 
 @end
