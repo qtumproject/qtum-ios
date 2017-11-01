@@ -35,4 +35,8 @@
     cell.typeIdentifire.textColor = customBlackColor();
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 53;
+}
+
 @end
