@@ -29,44 +29,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configTableView];
     self.cellsCurrentlyEditing = [NSMutableSet new];
+    [self configTableView];
+    [self configTrainingView];
 }
 
 #pragma mark - Configuration
 
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    // do something here
-}
-
 -(void)configTableView {
     
-//    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-//    if (self.smartContractPretendents.count == 0 && self.contracts.count == 0) {
-//        self.emptyTableLabel.hidden = NO;
-//    } else {
-//        
-//        self.emptyTableLabel.hidden = YES;
-//        
-//        if (!self.needShowTrainingScreen) {
-//            [self.trainingView removeFromSuperview];
-//        }
-//    }
-    self.emptyTableLabel.hidden = YES;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    if (self.smartContractPretendents.count == 0 && self.contracts.count == 0) {
+        
+        self.emptyTableLabel.hidden = NO;
+        self.needShowTrainingScreen = NO;
+    } else {
+        
+        self.emptyTableLabel.hidden = YES;
+    }
+}
 
+-(void)configTrainingView {
+    
+    if (!self.needShowTrainingScreen) {
+        [self.trainingView removeFromSuperview];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    if (indexPath.section != 0) {
-//        
-//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//        [self.delegate didSelectContractWithIndexPath:indexPath withContract:self.contracts[indexPath.row]];
-//    }
+    if (indexPath.section != 0) {
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self.delegate didSelectContractWithIndexPath:indexPath withContract:self.contracts[indexPath.row]];
+    }
 }
 
 
@@ -74,12 +71,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-//    if (section == 0) {
-//        return self.smartContractPretendents.count;
-//    } else {
-//        return self.contracts.count;
-//    }
-    return 5;
+    if (section == 0) {
+        return self.smartContractPretendents.count;
+    } else {
+        return self.contracts.count;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -122,31 +118,25 @@
 
 -(SmartContractListItemCell*)configContractCellWithTableView:(UITableView *)tableView ForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    Contract* contract = self.contracts[indexPath.row];
+    Contract* contract = self.contracts[indexPath.row];
     SmartContractListItemCell* cell = [tableView dequeueReusableCellWithIdentifier:smartContractListItemCellIdentifire];
-//    cell.contractName.text = contract.localName;
-//    cell.typeIdentifire.text = [contract.templateModel.templateTypeString uppercaseString];
-//    cell.creationDate.text = contract.creationDateString;
-    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
-        [cell openCell];
-    }
+    cell.contractName.text = contract.localName;
+    cell.typeIdentifire.text = [contract.templateModel.templateTypeString uppercaseString];
+    cell.creationDate.text = contract.creationDateString;
     cell.delegate = self;
     return cell;
 }
 
 -(SmartContractListItemCell*)configContractPretendentCellWithTableView:(UITableView *)tableView ForRowAtIndexPath:(NSIndexPath *)indexPath {
  
-//    NSDictionary* pretendentDict = self.smartContractPretendents.allValues[indexPath.row];
-//    TemplateModel* template = pretendentDict[kTemplateModel];
-//    NSString* localName = pretendentDict[kLocalContractName];
+    NSDictionary* pretendentDict = self.smartContractPretendents.allValues[indexPath.row];
+    TemplateModel* template = pretendentDict[kTemplateModel];
+    NSString* localName = pretendentDict[kLocalContractName];
     SmartContractListItemCell* cell = [tableView dequeueReusableCellWithIdentifier:smartContractListItemCellIdentifire];
-//    cell.contractName.text = localName;
-//    cell.typeIdentifire.text = [template.templateTypeString uppercaseString];
-//    cell.creationDate.text = NSLocalizedString(@"Unconfirmed", nil);
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
-        [cell openCell];
-    }
+    cell.contractName.text = localName;
+    cell.typeIdentifire.text = [template.templateTypeString uppercaseString];
+    cell.creationDate.text = NSLocalizedString(@"Unconfirmed", nil);
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     return cell;
 }
@@ -156,13 +146,16 @@
 - (IBAction)didPressedBackAction:(id)sender {
     [self.delegate didPressedBack];
 }
+
 - (IBAction)didScipTrainingInfoAction:(id)sender {
     
+    __weak __typeof(self)weakSelf = self;
+    
     [UIView animateWithDuration:0.3 animations:^{
-        self.trainingView.alpha = 0;
+        weakSelf.trainingView.alpha = 0;
     } completion:^(BOOL finished) {
-        [self.trainingView removeFromSuperview];
-        [[AppSettings sharedInstance] changeIsRemovingContractTrainingPassed:YES];
+        [weakSelf.trainingView removeFromSuperview];
+        [weakSelf.delegate didTrainingPass];
     }];
 }
 
@@ -177,6 +170,15 @@
 
 - (void)buttonOneActionForIndexPath:(NSIndexPath *)indexPath {
     
+    if (indexPath.row == 0) {
+        
+        NSString* hexKey = self.smartContractPretendents.allKeys[indexPath.row];
+        [self.delegate didUnsubscribeFromContractPretendentWithTxHash:hexKey];
+    } else if(indexPath.row == 1) {
+        
+        Contract* contract = self.contracts[indexPath.row];
+        [self.delegate didUnsubscribeFromContract:contract];
+    }
 }
 
 - (void)buttonTwoActionForIndexPath:(NSIndexPath *)indexPath {

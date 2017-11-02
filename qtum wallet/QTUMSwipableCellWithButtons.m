@@ -47,9 +47,7 @@
         [self.delegate buttonOneActionForIndexPath:self.indexPath];
     } else if (sender == self.button2) {
         [self.delegate buttonTwoActionForIndexPath:self.indexPath];
-    } else {
-        NSLog(@"Clicked unknown button!");
-    }
+    } 
 }
 
 - (void)setIndexPath:(NSIndexPath *)indexPath {
@@ -58,7 +56,11 @@
 }
 
 - (CGFloat)buttonTotalWidth {
-    return CGRectGetWidth(self.frame) - CGRectGetMinX(self.button2.frame);
+    if (self.button2) {
+        return CGRectGetWidth(self.frame) - CGRectGetMinX(self.button2.frame);
+    } else {
+        return CGRectGetWidth(self.frame) - CGRectGetMinX(self.button1.frame);
+    }
 }
 
 
@@ -187,7 +189,6 @@
 - (void)updateConstraintsIfNeeded:(BOOL)animated completion:(void (^)(BOOL finished))completion {
     float duration = 0;
     if (animated) {
-        NSLog(@"Animated!");
         duration = 0.25;
     }
     

@@ -142,6 +142,23 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 #pragma mark - Public Methods
 
+- (void)removeContract:(Contract*)contract {
+    
+    if (!contract) {
+        return;
+    }
+    
+    [self.contracts removeObject:contract];
+    [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:contract];
+    [self tokenDidChange:nil];
+}
+
+- (void)removeContractPretendentWithTxHash:(NSString*)txHash {
+    
+    [self.smartContractPretendents removeObjectForKey:txHash];
+    [self save];
+}
+
 - (NSArray <Contract*>*)allTokens {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i",TokenType];
@@ -318,7 +335,6 @@ NSString *const kLocalContractName = @"kLocalContractName";
         [self addNewToken:token];
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
         [self updateSpendableObject:token];
-        [self save];
         [self tokenDidChange:nil];
     }
 }
@@ -360,7 +376,6 @@ NSString *const kLocalContractName = @"kLocalContractName";
         [self addNewToken:contract];
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
         [self updateSpendableObject:contract];
-        [self save];
         [self tokenDidChange:nil];
         return YES;
     }
@@ -416,7 +431,6 @@ NSString *const kLocalContractName = @"kLocalContractName";
         [self addNewToken:contract];
         [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Token Created", nil) andIdentifire:@"contract_created"];
         [self updateSpendableObject:contract];
-        [self save];
         [self tokenDidChange:nil];
         
         return YES;

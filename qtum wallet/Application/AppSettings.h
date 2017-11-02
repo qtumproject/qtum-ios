@@ -17,6 +17,7 @@
 @property (assign, nonatomic, readonly) BOOL isLongPin;
 @property (assign, nonatomic, readonly) BOOL isDarkTheme;
 @property (assign, nonatomic, readonly) NSInteger failedPinWaitingTime;
+@property (assign, nonatomic,readonly) BOOL isRemovingContractTrainingPassed;
 @property (copy, nonatomic, readonly) NSString* baseURL;
 
 
