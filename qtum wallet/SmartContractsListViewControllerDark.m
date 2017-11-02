@@ -21,7 +21,7 @@
     cell.typeIdentifire.backgroundColor =
     cell.creationDate.textColor =
     cell.contractName.textColor = customBlackColor();
-    
+    cell.myContentView.backgroundColor = customRedColor();
     cell.typeIdentifire.textColor = customRedColor();
 }
 
@@ -31,11 +31,12 @@
     cell.typeIdentifire.backgroundColor =
     cell.creationDate.textColor =
     cell.contractName.textColor = customBlueColor();
-    
     cell.typeIdentifire.textColor = customBlackColor();
+    cell.myContentView.backgroundColor = customBlackColor();
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     return 53;
 }
 
