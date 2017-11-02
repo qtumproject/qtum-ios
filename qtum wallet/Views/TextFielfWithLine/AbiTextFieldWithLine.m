@@ -62,9 +62,18 @@
         NSRange range = [string rangeOfCharacterFromSet:cset];
         
         AbiParameterPrimitiveType* type = self.item.type;
-        if (range.location != NSNotFound || [[textField.text stringByAppendingString:string] integerValue] > type.maxValue) {
-            return NO;
+        
+        if (type.size > 64) {
+            if (range.location != NSNotFound || textField.text.length > type.maxValueLenght) {
+                return NO;
+            }
+        } else {
+            if (range.location != NSNotFound || [[textField.text stringByAppendingString:string] integerValue] > type.maxValue) {
+                return NO;
+            }
         }
+
+
     }
     return YES;
 }

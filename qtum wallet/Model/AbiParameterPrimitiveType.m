@@ -21,7 +21,12 @@
 
 -(NSInteger)maxValue {
     
-    return pow(2, self.size);
+    return powl(2, self.size);
+}
+
+-(NSInteger)maxValueLenght {
+    
+    return 78;
 }
 
 @end
