@@ -79,9 +79,9 @@ NSString *const kQStoreFinishedBuyRequests = @"kQStoreFinishedBuyRequests";
     });
 }
 
--(void)confirmBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)()) completion {
+-(void)confirmBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)(void)) completion {
     
-    void(^completionCopy)() = [completion copy];
+    void(^completionCopy)(void) = [completion copy];
 
     dispatch_async(self.writingQueue, ^{
         

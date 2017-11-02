@@ -28,4 +28,8 @@
     cell.typeIdentifire.backgroundColor = lightGreenColor();
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 53;
+}
+
 @end

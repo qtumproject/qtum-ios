@@ -28,13 +28,13 @@ typedef NS_ENUM(NSInteger, ConnectionStatus) {
 
 
 - (void)subscripeToUpdateWalletAdresses:(NSArray*)addresses;
-- (void)stoptWithHandler:(void(^)())handler;
+- (void)stoptWithHandler:(void(^)(void))handler;
 
-- (void)startObservingToken:(Contract*)token withHandler:(void(^)())handler;
-- (void)stopObservingToken:(Contract*)token withHandler:(void(^)())handler;
+- (void)startObservingToken:(Contract*)token withHandler:(void(^)(void))handler;
+- (void)stopObservingToken:(Contract*)token withHandler:(void(^)(void))handler;
 
-- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
-- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)()) handler;
+- (void)startObservingContractPurchase:(NSString*) requestId withHandler:(void(^)(void)) handler;
+- (void)stopObservingContractPurchase:(NSString*) requestId withHandler:(void(^)(void)) handler;
 
 
 @end

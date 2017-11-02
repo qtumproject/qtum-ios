@@ -21,7 +21,6 @@
 #import "AuthNavigationController.h"
 #import "ExportWalletBrandKeyViewController.h"
 #import "SubscribeTokenViewController.h"
-#import "HistoryViewController.h"
 #import "WalletNavigationController.h"
 #import "ConstructorFromAbiViewController.h"
 #import "CreateTokenFinishViewController.h"
@@ -40,7 +39,6 @@
 #import "EnableFingerprintViewController.h"
 #import "TabBarControllerLight.h"
 #import "NSUserDefaults+Settings.h"
-#import "PinViewController.h"
 
 #import "SecurityPopupViewController.h"
 #import "RestoreContractsPopUpViewController.h"

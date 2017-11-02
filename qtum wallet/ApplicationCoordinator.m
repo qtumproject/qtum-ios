@@ -14,7 +14,6 @@
 #import "ControllersFactory.h"
 #import "LoginCoordinator.h"
 #import "TabBarCoordinator.h"
-#import "RPCRequestManager.h"
 #import "TemplateManager.h"
 #import "NSUserDefaults+Settings.h"
 #import "NotificationManager.h"
@@ -79,7 +78,7 @@
         _controllersFactory = [ControllersFactory sharedInstance];
         _notificationManager = [NotificationManager new];
         _openUrlManager = [OpenURLManager new];
-        _requestManager = [AppSettings sharedInstance].isRPC ? [RPCRequestManager sharedInstance] : [RequestManager sharedInstance];
+        _requestManager = [RequestManager sharedInstance];
         _walletManager = [WalletManager new];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contractCreationDidFailed) name:kContractCreationFailed object:nil];
     }

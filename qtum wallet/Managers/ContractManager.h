@@ -47,6 +47,10 @@ extern NSString *const kLocalContractName;
                            andWithName:(NSString*) contractName
                            errorString:(NSString **)errorString;
 
+- (void)removeContract:(Contract*)contract;
+- (void)removeContractPretendentWithTxHash:(NSString*)txHash;
+
+
 - (NSArray<NSDictionary*>*)decodeDataForBackup;
 - (BOOL)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates;
 

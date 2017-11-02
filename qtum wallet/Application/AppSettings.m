@@ -20,6 +20,7 @@
 @property (assign, nonatomic) BOOL isMainNet;
 @property (assign, nonatomic) BOOL isRPC;
 @property (assign, nonatomic) BOOL isDarkTheme;
+@property (assign, nonatomic) BOOL isRemovingContractTrainingPassed;
 @property (assign, nonatomic) NSInteger failedPinWaitingTime;
 
 @end
@@ -79,6 +80,9 @@
     [NSUserDefaults saveIsDarkSchemeSetting:needDarkTheme];
 }
 
+-(void)changeIsRemovingContractTrainingPassed:(BOOL) passed {
+    [NSUserDefaults saveIsRemovingContractTrainingPassed:passed];
+}
 
 #pragma mark - Accessory methods
 
@@ -105,6 +109,11 @@
 -(BOOL)isLongPin {
     
     return [ApplicationCoordinator sharedInstance].walletManager.isLongPin;
+}
+
+-(BOOL)isRemovingContractTrainingPassed {
+    
+    return [NSUserDefaults isRemovingContractTrainingPassed];
 }
 
 -(NSString*)baseURL {

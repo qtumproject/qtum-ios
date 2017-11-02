@@ -12,7 +12,7 @@
 
 @interface CreatePinRootController : UINavigationController <PinCoordinator>
 
-@property (nonatomic, copy) void(^createPinCompletesion)();
+@property (nonatomic, copy) void(^createPinCompletesion)(void);
 @property (assign,nonatomic) BOOL animating;
 
 

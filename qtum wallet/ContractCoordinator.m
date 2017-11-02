@@ -126,6 +126,9 @@ ContractCreationEndOutputDelegate>
     
     output.contracts = sortedContracts;
     output.smartContractPretendents = [[ContractManager sharedInstance] smartContractPretendentsCopy];
+    if ([AppSettings sharedInstance].isRemovingContractTrainingPassed == NO) {
+        [output setNeedShowingTrainingScreen];
+    }
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
@@ -450,6 +453,21 @@ ContractCreationEndOutputDelegate>
 }
 
 #pragma mark - PublishedContractListOutputDelegate, LibraryOutputDelegate
+
+
+-(void)didUnsubscribeFromContract:(Contract*) contract {
+    
+    [[ContractManager sharedInstance] removeContract:contract];
+}
+
+-(void)didUnsubscribeFromContractPretendentWithTxHash:(NSString*) hexTransaction {
+    
+    [[ContractManager sharedInstance] removeContractPretendentWithTxHash:hexTransaction];
+}
+
+-(void)didTrainingPass {
+    [[AppSettings sharedInstance] changeIsRemovingContractTrainingPassed:YES];
+}
 
 -(void)didPressedBack {
     [self.navigationController popViewControllerAnimated:YES];

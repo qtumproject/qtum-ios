@@ -17,6 +17,4 @@ static NSString* FinishInputCellIdentifire = @"FinishInputCellIdentifire";
 
 @property (copy, nonatomic) NSString *shortValueString;
 
--(void)setContentWithDict:(id) object;
-
 @end

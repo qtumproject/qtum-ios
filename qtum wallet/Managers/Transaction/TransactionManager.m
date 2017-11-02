@@ -8,7 +8,6 @@
 
 #import "TransactionManager.h"
 #import "RequestManager.h"
-#import "RPCRequestManager.h"
 #import "NSString+Extension.h"
 #import "ContractInterfaceManager.h"
 #import "NS+BTCBase58.h"
@@ -593,6 +592,7 @@ static NSInteger constantFee = 400000000;
         if (!toPublicKeyAddress) {
             return nil;
         }
+        
         NSDictionary *newDictionary = @{@"address" : toPublicKeyAddress, @"amount" : @(amount)};
         [mutArray addObject:newDictionary];
     }

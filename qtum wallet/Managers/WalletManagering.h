@@ -21,12 +21,12 @@
 - (void)createNewWalletWithName:(NSString *)name
                             pin:(NSString *)pin
              withSuccessHandler:(void(^)(Wallet *newWallet))success
-              andFailureHandler:(void(^)())failure;
+              andFailureHandler:(void(^)(void))failure;
 
 - (void)createNewWalletWithName:(NSString *)name
                             pin:(NSString *)pin seedWords:(NSArray *)seedWords
              withSuccessHandler:(void(^)(Wallet *newWallet))success
-              andFailureHandler:(void(^)())failure;
+              andFailureHandler:(void(^)(void))failure;
 
 - (void)storePin:(NSString*) pin;
 - (BOOL)changePinFrom:(NSString*) pin toPin:(NSString*) newPin;

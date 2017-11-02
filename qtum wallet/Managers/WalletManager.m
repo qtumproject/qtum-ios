@@ -8,7 +8,6 @@
 
 #import "WalletManager.h"
 #import "FXKeychain.h"
-#import "RPCRequestManager.h"
 #import "WalletManagerRequestAdapter.h"
 #import "HistoryDataStorage.h"
 #import "SocketManager.h"

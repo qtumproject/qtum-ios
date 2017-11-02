@@ -31,7 +31,6 @@
 		B315D02F1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D02E1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m */; };
 		B315D0321F9F43B000C7F4E4 /* QTUMImageTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D0311F9F43B000C7F4E4 /* QTUMImageTagCellLight.m */; };
 		B315D0351F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D0341F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.m */; };
-		B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31CF71D1E124A25000BCF41 /* HistoryViewController.m */; };
 		B31E5FFC1F4EE7F6003B4FA5 /* QStoreTemplateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E5FFB1F4EE7F6003B4FA5 /* QStoreTemplateDetailViewController.m */; };
 		B31E5FFF1F4EE806003B4FA5 /* QStoreTemplateDetailViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E5FFE1F4EE806003B4FA5 /* QStoreTemplateDetailViewControllerDark.m */; };
 		B31E60021F4EE818003B4FA5 /* QStoreTemplateDetailViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E60011F4EE818003B4FA5 /* QStoreTemplateDetailViewControllerLight.m */; };
@@ -346,6 +345,8 @@
 		B3DD27571E6805EC00BB0635 /* BaseCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27561E6805EC00BB0635 /* BaseCoordinator.m */; };
 		B3DD275A1E681A7A00BB0635 /* NewsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */; };
 		B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */; };
+		B3E0901F1FA9E097003F3B54 /* QTUMSwipableCellWithButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E0901E1FA9E097003F3B54 /* QTUMSwipableCellWithButtons.m */; };
+		B3E090221FAB0C83003F3B54 /* ContractPretendent.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E090211FAB0C83003F3B54 /* ContractPretendent.m */; };
 		B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */; };
 		B3E159251ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159241ED6E2C200D70A87 /* ChoseTokenPaymentViewController.m */; };
 		B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159281ED6E3C500D70A87 /* ChoseTokenPaymentCell.m */; };
@@ -600,7 +601,6 @@
 		E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DD00F11DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m */; };
 		E7DE59901F0E8562006E0E1B /* PageControlItemDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DE598F1F0E8562006E0E1B /* PageControlItemDark.m */; };
 		E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DE59921F0E882A006E0E1B /* PageControlDark.m */; };
-		E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */; };
 		E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CB71ED42DB500AFD5D0 /* LanguageViewController.m */; };
 		E7EA2CBB1ED42DCB00AFD5D0 /* LanguageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CBA1ED42DCB00AFD5D0 /* LanguageTableViewCell.m */; };
 		E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CBD1ED42DE100AFD5D0 /* LanguageTableSource.m */; };
@@ -744,8 +744,6 @@
 		B315D0311F9F43B000C7F4E4 /* QTUMImageTagCellLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMImageTagCellLight.m; sourceTree = "<group>"; };
 		B315D0331F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMParagrafTagCellLight.h; sourceTree = "<group>"; };
 		B315D0341F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMParagrafTagCellLight.m; sourceTree = "<group>"; };
-		B31CF71C1E124A25000BCF41 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
-		B31CF71D1E124A25000BCF41 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		B31E5FFA1F4EE7F6003B4FA5 /* QStoreTemplateDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreTemplateDetailViewController.h; sourceTree = "<group>"; };
 		B31E5FFB1F4EE7F6003B4FA5 /* QStoreTemplateDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreTemplateDetailViewController.m; sourceTree = "<group>"; };
 		B31E5FFD1F4EE806003B4FA5 /* QStoreTemplateDetailViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreTemplateDetailViewControllerDark.h; sourceTree = "<group>"; };
@@ -1411,6 +1409,10 @@
 		B3DD27591E681A7A00BB0635 /* NewsCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsCoordinator.m; path = Application/NewsCoordinator.m; sourceTree = "<group>"; };
 		B3DD275E1E681AA500BB0635 /* WalletCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletCoordinator.h; path = Application/WalletCoordinator.h; sourceTree = "<group>"; };
 		B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletCoordinator.m; path = Application/WalletCoordinator.m; sourceTree = "<group>"; };
+		B3E0901D1FA9E097003F3B54 /* QTUMSwipableCellWithButtons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMSwipableCellWithButtons.h; sourceTree = "<group>"; };
+		B3E0901E1FA9E097003F3B54 /* QTUMSwipableCellWithButtons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMSwipableCellWithButtons.m; sourceTree = "<group>"; };
+		B3E090201FAB0C83003F3B54 /* ContractPretendent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractPretendent.h; sourceTree = "<group>"; };
+		B3E090211FAB0C83003F3B54 /* ContractPretendent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractPretendent.m; sourceTree = "<group>"; };
 		B3E159201ED6B1A200D70A87 /* AddNewTokensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTokensViewController.h; sourceTree = "<group>"; };
 		B3E159211ED6B1A200D70A87 /* AddNewTokensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTokensViewController.m; sourceTree = "<group>"; };
 		B3E159231ED6E2C200D70A87 /* ChoseTokenPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentViewController.h; sourceTree = "<group>"; };
@@ -1951,8 +1953,6 @@
 		E7DE598F1F0E8562006E0E1B /* PageControlItemDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlItemDark.m; sourceTree = "<group>"; };
 		E7DE59911F0E882A006E0E1B /* PageControlDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlDark.h; sourceTree = "<group>"; };
 		E7DE59921F0E882A006E0E1B /* PageControlDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlDark.m; sourceTree = "<group>"; };
-		E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPCRequestManager.h; sourceTree = "<group>"; };
-		E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPCRequestManager.m; sourceTree = "<group>"; };
 		E7EA2CA71ED4189A00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		E7EA2CA81ED4189B00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E7EA2CB41ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -2137,8 +2137,6 @@
 				B3DD275F1E681AA500BB0635 /* WalletCoordinator.m */,
 				B32C3CFA1E112A300094C82C /* WalletNavigationController.h */,
 				B32C3CFB1E112A300094C82C /* WalletNavigationController.m */,
-				B31CF71C1E124A25000BCF41 /* HistoryViewController.h */,
-				B31CF71D1E124A25000BCF41 /* HistoryViewController.m */,
 			);
 			name = "Wallet Flow";
 			sourceTree = "<group>";
@@ -3019,6 +3017,8 @@
 				B3CBDF391F2B48B000C80D4E /* SmartContractListItemCellDark.m */,
 				B3CBDF3B1F2B48C300C80D4E /* SmartContractListItemCellLight.h */,
 				B3CBDF3C1F2B48C300C80D4E /* SmartContractListItemCellLight.m */,
+				B3E0901D1FA9E097003F3B54 /* QTUMSwipableCellWithButtons.h */,
+				B3E0901E1FA9E097003F3B54 /* QTUMSwipableCellWithButtons.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -4726,6 +4726,8 @@
 				B3F76A751EDD6F6400108DE9 /* TemplateModel.m */,
 				E74003C01F1E2AC7002CC587 /* SendInfoItem.h */,
 				E74003C11F1E2AC7002CC587 /* SendInfoItem.m */,
+				B3E090201FAB0C83003F3B54 /* ContractPretendent.h */,
+				B3E090211FAB0C83003F3B54 /* ContractPretendent.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4827,8 +4829,6 @@
 		E7FD366C1DC773FF00748177 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				E7E3C52F1DDC8AD400C30AA9 /* RPCRequestManager.h */,
-				E7E3C5301DDC8AD400C30AA9 /* RPCRequestManager.m */,
 				E7FD36641DC76EBC00748177 /* RequestManager.h */,
 				E7FD36651DC76EBC00748177 /* RequestManager.m */,
 				B3597DF41E7FABF800EBF094 /* Requestable.h */,
@@ -5426,7 +5426,6 @@
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
 				B3D5FE4C1F56AEEB006A2BF2 /* AbiParameterTypeString.m in Sources */,
-				E7E3C5311DDC8AD400C30AA9 /* RPCRequestManager.m in Sources */,
 				B3DC9D2B1F331D37006B2E07 /* TokenAddressLibraryCoordinator.m in Sources */,
 				B3DC9D1D1F31E712006B2E07 /* TextFieldWithLineDarkPopup.m in Sources */,
 				B365CA791EA77D490040A163 /* TokensFactory.m in Sources */,
@@ -5671,7 +5670,6 @@
 				B366CA251F1D0C1200EF3273 /* NSString+AES256.m in Sources */,
 				B32C3CF91E112A1A0094C82C /* ProfileNavigationCoordinator.m in Sources */,
 				E71271971EE9ADAB00A130A0 /* LoaderPopUpViewController.m in Sources */,
-				B31CF71E1E124A25000BCF41 /* HistoryViewController.m in Sources */,
 				B3D5FE641F56F292006A2BF2 /* AbiParameterTypeDynamicArrayUInt.m in Sources */,
 				B3D5FE861F57013A006A2BF2 /* AbiParameterTypeFixedArray.m in Sources */,
 				B35DF6391F262B7200316953 /* TokenDetailsViewControllerDark.m in Sources */,
@@ -5699,6 +5697,8 @@
 				B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */,
 				B3210D141E00052900365FB6 /* GradientLayer.m in Sources */,
 				E7396AE81DDEDEEC0002CD47 /* CircleGradientView.m in Sources */,
+				B3E090221FAB0C83003F3B54 /* ContractPretendent.m in Sources */,
+				B3E0901F1FA9E097003F3B54 /* QTUMSwipableCellWithButtons.m in Sources */,
 				E74003C21F1E2AC7002CC587 /* SendInfoItem.m in Sources */,
 				B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */,
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,

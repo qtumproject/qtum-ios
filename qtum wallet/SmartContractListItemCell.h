@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QTUMSwipableCellWithButtons.h"
 
 static NSString* smartContractListItemCellIdentifire = @"SmartContractListItemCellIdentifire";
 
-@interface SmartContractListItemCell : UITableViewCell
+@interface SmartContractListItemCell : QTUMSwipableCellWithButtons
 
 @property (weak, nonatomic) IBOutlet UILabel *contractName;
 @property (weak, nonatomic) IBOutlet UILabel *typeIdentifire;

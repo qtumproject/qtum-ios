@@ -180,7 +180,6 @@
            andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
     NSString* pathString = [NSString stringWithFormat:@"%@/%@",@"transactions",txhash];
-    __weak __typeof(self)weakSelf = self;
 
     [self.networkService requestWithType:GET path:pathString andParams:nil withSuccessHandler:^(id  _Nonnull responseObject) {
         __block id response = responseObject;
@@ -262,7 +261,7 @@
     [self.socketManager stoptWithHandler:nil];
 }
 
-- (void)startObservingForToken:(Contract*) token withHandler:(void(^)(id responseObject))completesion {
+- (void)startObservingForToken:(Contract*) token withHandler:(void(^)(void))completesion {
     
     [self.socketManager startObservingToken:token withHandler:completesion];
 }

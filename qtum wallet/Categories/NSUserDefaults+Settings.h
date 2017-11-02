@@ -55,4 +55,7 @@
 + (void)saveLastFailedPinDate:(NSDate*) date;
 + (NSDate*)getLastFailedPinDate;
 
++ (void)saveIsRemovingContractTrainingPassed:(BOOL)value;
++ (BOOL)isRemovingContractTrainingPassed;
+
 @end

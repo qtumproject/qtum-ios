@@ -9,10 +9,16 @@
 #import "SmartContractsListViewController.h"
 #import "SmartContractListItemCell.h"
 
-@interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource,QTUMSwipableCellWithButtonsDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
+@property (weak, nonatomic) IBOutlet UIView *trainingView;
+
+@property (assign, nonatomic) BOOL needShowTrainingScreen;
+
+@property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
+@property (weak, nonatomic) UITableViewCell *movingCell;
 
 @end
 
@@ -22,13 +28,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.cellsCurrentlyEditing = [NSMutableSet new];
+    [self configTableView];
+    [self configTrainingView];
+}
+
+#pragma mark - Configuration
+
+-(void)configTableView {
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self updateControls];
+}
+
+-(void)configTrainingView {
+    
+    if (!self.needShowTrainingScreen) {
+        [self.trainingView removeFromSuperview];
+    }
+}
+
+-(void)updateControls {
+    
     if (self.smartContractPretendents.count == 0 && self.contracts.count == 0) {
+        
         self.emptyTableLabel.hidden = NO;
+        self.needShowTrainingScreen = NO;
+        self.tableView.hidden = YES;
     } else {
+        
         self.emptyTableLabel.hidden = YES;
+        self.tableView.hidden = NO;
     }
 }
 
@@ -98,6 +128,8 @@
     cell.contractName.text = contract.localName;
     cell.typeIdentifire.text = [contract.templateModel.templateTypeString uppercaseString];
     cell.creationDate.text = contract.creationDateString;
+    cell.delegate = self;
+    cell.indexPath = indexPath;
     return cell;
 }
 
@@ -111,6 +143,8 @@
     cell.typeIdentifire.text = [template.templateTypeString uppercaseString];
     cell.creationDate.text = NSLocalizedString(@"Unconfirmed", nil);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate = self;
+    cell.indexPath = indexPath;
     return cell;
 }
 
@@ -119,5 +153,105 @@
 - (IBAction)didPressedBackAction:(id)sender {
     [self.delegate didPressedBack];
 }
+
+- (IBAction)didScipTrainingInfoAction:(id)sender {
+    
+    __weak __typeof(self)weakSelf = self;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        weakSelf.trainingView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [weakSelf.trainingView removeFromSuperview];
+        [weakSelf.delegate didTrainingPass];
+    }];
+}
+
+#pragma mark - PublishedContractListOutput
+
+-(void)setNeedShowingTrainingScreen {
+    
+    self.needShowTrainingScreen = YES;
+}
+
+#pragma mark - QTUMSwipableCellWithButtonsDelegate
+
+- (void)buttonOneActionForIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        
+        NSString* hexKey = self.smartContractPretendents.allKeys[indexPath.row];
+        NSMutableDictionary* smartContractsPretendents = [self.smartContractPretendents mutableCopy];
+        [smartContractsPretendents removeObjectForKey:hexKey];
+        self.smartContractPretendents = [smartContractsPretendents copy];
+        [self.delegate didUnsubscribeFromContractPretendentWithTxHash:hexKey];
+        
+    } else if(indexPath.section == 1) {
+        
+        Contract* contract = self.contracts[indexPath.row];
+        [self.delegate didUnsubscribeFromContract:contract];
+        NSMutableArray* contracts = [self.contracts mutableCopy];
+        [contracts removeObject:contract];
+        self.contracts = contracts;
+    }
+    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf updateControls];
+    });
+}
+
+- (void)buttonTwoActionForIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)cellDidOpen:(UITableViewCell *)cell {
+    
+    for (QTUMSwipableCellWithButtons* openedCell in self.cellsCurrentlyEditing) {
+        if (![cell isEqual:openedCell]) {
+            [openedCell closeCell];
+        }
+    }
+    [self.cellsCurrentlyEditing addObject:cell];
+}
+
+- (void)cellDidClose:(UITableViewCell *)cell {
+    
+    [self.cellsCurrentlyEditing removeObject:cell];
+}
+
+- (void)cellDidStartMoving:(UITableViewCell *)cell {
+    
+    if (self.movingCell) {
+        [(QTUMSwipableCellWithButtons*)self.movingCell closeCell];
+    }
+    self.movingCell = cell;
+    self.tableView.scrollEnabled = NO;
+}
+
+- (void)cellEndMoving:(UITableViewCell *)cell {
+    
+    if (![cell isEqual:self.movingCell]) {
+        [(QTUMSwipableCellWithButtons*)cell closeCell];
+    } else {
+        self.movingCell = nil;
+        self.tableView.scrollEnabled = YES;
+    }
+}
+
+- (BOOL)shoudOpenCell:(UITableViewCell *)cell {
+    
+    if (self.movingCell && [cell isEqual:self.movingCell]) {
+        return YES;
+    } else if (self.movingCell){
+        return NO;
+    }else {
+        return YES;
+    }
+}
+
 
 @end
