@@ -10,5 +10,10 @@
 
 @implementation AbiParameterTypeBool
 
+-(NSInteger)maxValueLenght {
+    
+    return 1;
+}
+
 
 @end

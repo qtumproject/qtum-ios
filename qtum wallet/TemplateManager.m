@@ -79,7 +79,7 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
     TemplateModel* qrc20 = [[TemplateModel alloc] initWithTemplateName:@"QRC20 Standard Token" andType:TokenType withuuid:qrc20TokenUuid path:@"QRC20TokenStandard" isFull:YES];
     TemplateModel* human = [[TemplateModel alloc] initWithTemplateName:@"Human Standard Token" andType:TokenType withuuid:humanTokenUuid path:@"HumanStandardToken" isFull:YES];
     
-    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:CrowdsaleType withuuid:crowdsaleUuid path:@"Crowdsale" isFull:YES];
+    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:TokenType withuuid:crowdsaleUuid path:@"Crowdsale" isFull:YES];
     
     return @[qrc20,human,crowdsale];
 }

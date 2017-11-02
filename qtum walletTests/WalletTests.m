@@ -147,10 +147,10 @@
 - (void)test_Hash_Table {
     
     Wallet *wallet = [[Wallet alloc] initWithName:self.nameSring pin:self.pin seedWords:self.words];
-    NSDictionary *hashTabel = [wallet addressKeyHashTable];
+    NSDictionary *hashTabel = [wallet arrayOfAddresAndKey];
     XCTAssertTrue(hashTabel.allKeys.count == 0);
     [wallet configAddressesWithPin:self.pin];
-    hashTabel = [wallet addressKeyHashTable];
+    hashTabel = [wallet arrayOfAddresAndKey];
     XCTAssertTrue(hashTabel.allKeys.count > 0);
     XCTAssertTrue(hashTabel.allKeys.count == [wallet allKeys].count);
     

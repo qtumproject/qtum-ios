@@ -70,7 +70,7 @@
 
     __weak __typeof(self) weakSelf = self;
     
-    [[TouchIDService sharedInstance] checkTouchId:^(TouchIDCompletionType type) {
+    [[TouchIDService sharedInstance] checkTouchIdWithText:NSLocalizedString(@"Login", nil) andCopmletion:^(TouchIDCompletionType type) {
         switch (type) {
                 
             case TouchIDSuccessed:

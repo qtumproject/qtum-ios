@@ -53,7 +53,9 @@
 
     __weak __typeof(self) weakSelf = self;
 
-    [[TouchIDService sharedInstance] checkTouchId:^(TouchIDCompletionType type) {
+    NSString* touchIdText = NSLocalizedString(@"Confirm Transaction", nil);
+    
+    [[TouchIDService sharedInstance] checkTouchIdWithText:touchIdText andCopmletion:^(TouchIDCompletionType type) {
         switch (type) {
             case TouchIDDenied:
                 [weakSelf showSecurityPopup];

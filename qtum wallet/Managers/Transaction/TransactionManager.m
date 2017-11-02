@@ -25,7 +25,7 @@ static NSString* op_exec = @"c1";
 @property (strong, nonatomic) TransactionBuilder* transactionBuilder;
 @property (strong, nonatomic) TransactionScriptBuilder* scriptBuilder;
 
-@property (strong, nonatomic) QTUMBigNumber* feePerKb;
+@property (strong, nonatomic) QTUMBigNumber* defaultFeePerKb;
 
 @end
 
@@ -49,20 +49,17 @@ static NSInteger constantFee = 400000000;
     if (self) {
         _scriptBuilder = [TransactionScriptBuilder new];
         _transactionBuilder = [[TransactionBuilder alloc] initWithScriptBuilder:_scriptBuilder];
+        _defaultFeePerKb = [QTUMBigNumber decimalWithString:@"0.001"];
     }
     return self;
 }
 
 -(void)getFeePerKbWithHandler:(void(^)(QTUMBigNumber* feePerKb)) completion {
     
-    if (self.feePerKb) {
-        return completion(self.feePerKb);
-    }
-    
     [[ApplicationCoordinator sharedInstance].requestManager getFeePerKbWithSuccessHandler:^(QTUMBigNumber *feePerKb) {
         completion(feePerKb);
     } andFailureHandler:^(NSError *error, NSString *message) {
-        completion(nil);
+        completion(self.defaultFeePerKb);
     }];
 }
 
@@ -158,6 +155,11 @@ static NSInteger constantFee = 400000000;
         }];
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        if ([fee isLessThan:feePerKb]) {
+            completion(TransactionManagerErrorTypeNotEnoughFee, nil, feePerKb);
+            return;
+        }
         
         BTCTransaction* __block transaction;
         TransactionManagerErrorType __block errorType;
@@ -599,7 +601,7 @@ static NSInteger constantFee = 400000000;
     return @{@"totalAmount" : @(totalAmount), @"amountsAndAddresses" : [mutArray copy]};
 }
 
--(NSUInteger)feeFromNumber:(QTUMBigNumber*) feeNumber {
+-(NSInteger)feeFromNumber:(QTUMBigNumber*) feeNumber {
     
     if (feeNumber) {
         return feeNumber.satoshiAmountValue;

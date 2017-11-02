@@ -220,6 +220,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
     }
     
     NSMutableDictionary *addressKeyHashTable = @{}.mutableCopy;
+    
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
