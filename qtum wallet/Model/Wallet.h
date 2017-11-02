@@ -44,5 +44,4 @@ extern NSInteger const brandKeyWordsCount;
 - (NSString *)getStoredLastAddressKey;
 - (void)clearPublicAddresses;
 
-
 @end

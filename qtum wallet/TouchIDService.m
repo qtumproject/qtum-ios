@@ -39,7 +39,7 @@
     }
 }
 
-- (void)checkTouchId:(void (^)(TouchIDCompletionType type))completion {
+- (void)checkTouchIdWithText:(NSString*) text andCopmletion:(void (^)(TouchIDCompletionType type))completion {
     
     CGFloat touchIdDelayAnimation = 0.25;
 
@@ -47,7 +47,7 @@
         
         LAContext *la = [[LAContext alloc] init];
         if ([self hasTouchId]) {
-            [la evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:NSLocalizedString(@"Login", nil) reply:^(BOOL success, NSError *error) {
+            [la evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:NSLocalizedString(text, nil) reply:^(BOOL success, NSError *error) {
                 if (completion) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         if (success) {

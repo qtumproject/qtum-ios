@@ -205,7 +205,7 @@ static NSInteger hidedGasTopForSend = -40;
         _localeFormatter.locale = [NSLocale currentLocale];
         _localeFormatter.roundingMode = NSNumberFormatterRoundDown;
         _localeFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        _localeFormatter.maximumFractionDigits = 5;
+        _localeFormatter.maximumFractionDigits = 8;
     }
     return _localeFormatter;
 }
@@ -546,7 +546,7 @@ static NSInteger hidedGasTopForSend = -40;
 
 - (IBAction)didChangeFeeSlider:(UISlider *) slider {
     
-    NSDecimalNumber* sliderValue = (NSDecimalNumber*)[[[NSDecimalNumber alloc] initWithFloat:slider.value] roundedNumberWithScale:5];
+    NSDecimalNumber* sliderValue = (NSDecimalNumber*)[[[NSDecimalNumber alloc] initWithFloat:slider.value] roundedNumberWithScale:8];
     self.FEE = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
     
     self.feeTextField.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:[self.FEE decimalNumber]]];

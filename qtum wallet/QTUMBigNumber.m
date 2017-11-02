@@ -118,6 +118,7 @@
 - (instancetype)negate {
     return [self.decimalContainer negate];
 }
+
 - (instancetype)abs {
     return [self.decimalContainer abs];
 }
@@ -266,6 +267,11 @@
     NSString* value = self.stringValue;
     NSInteger valueCount = self.decimalContainer.bigInteger.stringValue.length;
     NSInteger reduceDigits = (power.integerValue - 1);
+    
+    if (reduceDigits > 256) {
+        return  @"0";
+    }
+    
     NSString* result;
     NSInteger integerDigitsAfter = valueCount - reduceDigits;
     

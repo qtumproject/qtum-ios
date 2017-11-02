@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, TouchIDCompletionType) {
 @interface TouchIDService : NSObject
 
 - (BOOL)hasTouchId;
-- (void)checkTouchId:(void (^)(TouchIDCompletionType type))completion;
+- (void)checkTouchIdWithText:(NSString*) text andCopmletion:(void (^)(TouchIDCompletionType type))completion;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
