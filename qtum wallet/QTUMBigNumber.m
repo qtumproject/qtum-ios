@@ -52,7 +52,7 @@
 
 - (NSInteger)integerValue {
     
-    return [self.decimalNumber intValue];
+    return [self.decimalNumber integerValue];
 }
 
 
@@ -237,7 +237,7 @@
 
 -(NSString*)shortFormatOfNumberWithPowerOfMinus10:(QTUMBigNumber*) power {
     
-    if (power.integerValue > 128) {
+    if ((power.integerValue - self.decimalContainer.bigInteger.stringValue.length) > 128) {
         return [self stringNumberWithPowerOfMinus10:power];
     }
     return [self.decimalContainer shortFormatOfNumberWithPowerOfMinus10:power.decimalContainer];
