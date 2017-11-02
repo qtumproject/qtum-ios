@@ -20,7 +20,6 @@
 @property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
 @property (weak, nonatomic) UITableViewCell *movingCell;
 
-
 @end
 
 @implementation SmartContractsListViewController
@@ -39,21 +38,27 @@
 -(void)configTableView {
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    if (self.smartContractPretendents.count == 0 && self.contracts.count == 0) {
-        
-        self.emptyTableLabel.hidden = NO;
-        self.needShowTrainingScreen = NO;
-    } else {
-        
-        self.emptyTableLabel.hidden = YES;
-    }
+    [self updateControls];
 }
 
 -(void)configTrainingView {
     
     if (!self.needShowTrainingScreen) {
         [self.trainingView removeFromSuperview];
+    }
+}
+
+-(void)updateControls {
+    
+    if (self.smartContractPretendents.count == 0 && self.contracts.count == 0) {
+        
+        self.emptyTableLabel.hidden = NO;
+        self.needShowTrainingScreen = NO;
+        self.tableView.hidden = YES;
+    } else {
+        
+        self.emptyTableLabel.hidden = YES;
+        self.tableView.hidden = NO;
     }
 }
 
@@ -124,6 +129,7 @@
     cell.typeIdentifire.text = [contract.templateModel.templateTypeString uppercaseString];
     cell.creationDate.text = contract.creationDateString;
     cell.delegate = self;
+    cell.indexPath = indexPath;
     return cell;
 }
 
@@ -138,6 +144,7 @@
     cell.creationDate.text = NSLocalizedString(@"Unconfirmed", nil);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
+    cell.indexPath = indexPath;
     return cell;
 }
 
@@ -170,15 +177,31 @@
 
 - (void)buttonOneActionForIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         
         NSString* hexKey = self.smartContractPretendents.allKeys[indexPath.row];
+        NSMutableDictionary* smartContractsPretendents = [self.smartContractPretendents mutableCopy];
+        [smartContractsPretendents removeObjectForKey:hexKey];
+        self.smartContractPretendents = [smartContractsPretendents copy];
         [self.delegate didUnsubscribeFromContractPretendentWithTxHash:hexKey];
-    } else if(indexPath.row == 1) {
+        
+    } else if(indexPath.section == 1) {
         
         Contract* contract = self.contracts[indexPath.row];
         [self.delegate didUnsubscribeFromContract:contract];
+        NSMutableArray* contracts = [self.contracts mutableCopy];
+        [contracts removeObject:contract];
+        self.contracts = contracts;
     }
+    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf updateControls];
+    });
 }
 
 - (void)buttonTwoActionForIndexPath:(NSIndexPath *)indexPath {

@@ -592,6 +592,7 @@ static NSInteger constantFee = 400000000;
         if (!toPublicKeyAddress) {
             return nil;
         }
+        
         NSDictionary *newDictionary = @{@"address" : toPublicKeyAddress, @"amount" : @(amount)};
         [mutArray addObject:newDictionary];
     }
