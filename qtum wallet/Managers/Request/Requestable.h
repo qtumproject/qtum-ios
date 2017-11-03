@@ -93,7 +93,7 @@
 // Observing for events
 
 - (void)callFunctionToContractAddress:(NSString*) address
-                           withHashes:(NSArray*) hashes
+                                                    frommAddress:(NSString*)fromAddress withHashes:(NSArray*) hashes
                           withHandler:(void(^)(id responseObject))completesion;
 
 // QStore
