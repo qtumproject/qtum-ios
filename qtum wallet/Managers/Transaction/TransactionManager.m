@@ -464,13 +464,6 @@ static NSInteger constantFee = 400000000;
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
-        if ([aGasLimit isLessThan:gasLimitEstimate]) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(TransactionManagerErrorTypeNotEnoughGasLimit,nil,nil, nil);
-            });
-            return;
-        }
-        
         NSArray <BTCTransactionOutput*>* __block unspentOutputs = @[];
         
         [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:fromAddresses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
