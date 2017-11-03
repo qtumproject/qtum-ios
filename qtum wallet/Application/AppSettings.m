@@ -118,7 +118,7 @@
 
 -(NSString*)baseURL {
     
-    NSString* baseUrl = @"http://163.172.251.4:5931/";
+    NSString* baseUrl = @"http://145.239.197.39:5931/";
     return baseUrl;
 }
 

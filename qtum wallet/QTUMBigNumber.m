@@ -52,7 +52,7 @@
 
 - (NSInteger)integerValue {
     
-    return [self.decimalNumber integerValue];
+    return (NSInteger)[self.decimalNumber doubleValue];
 }
 
 
