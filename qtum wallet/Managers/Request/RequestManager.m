@@ -221,13 +221,16 @@
 }
 
 - (void)callFunctionToContractAddress:(NSString*) address
+                         frommAddress:(NSString*)fromAddress
                            withHashes:(NSArray*) hashes
                           withHandler:(void(^)(id responseObject))completesion {
 
     NSString* pathString = [NSString stringWithFormat:@"/contracts/%@/call",address];
 
 
-    [self.networkService requestWithType:POST path:pathString andParams:@{@"hashes" : hashes} withSuccessHandler:^(id  _Nonnull responseObject) {
+    [self.networkService requestWithType:POST path:pathString andParams:@{@"hashes" : hashes,
+                                                                          @"from" : fromAddress ?: @""
+                                                                          } withSuccessHandler:^(id  _Nonnull responseObject) {
         completesion(responseObject);
     } andFailureHandler:^(NSError * _Nonnull error, NSString *message) {
         completesion(error);

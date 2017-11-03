@@ -64,10 +64,13 @@ static NSInteger constantFee = 400000000;
 }
 
 -(void)getFeeWithContractAddress:(NSString*) address
+                     fromAddress:(NSString*) fromAddress
                       withHashes:(NSArray*) hashes
                      withHandler:(void(^)(QTUMBigNumber* gas))completesion {
     
-    [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:address withHashes:hashes withHandler:^(id responseObject) {
+    [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:address
+                                                                             frommAddress:fromAddress
+                                                                               withHashes:hashes withHandler:^(id responseObject) {
         
         if (![responseObject isKindOfClass:[NSDictionary class]]) {
             completesion(nil);
@@ -450,7 +453,9 @@ static NSInteger constantFee = 400000000;
         
         QTUMBigNumber* __block gasLimitEstimate;
         
-        [weakSelf getFeeWithContractAddress:[NSString hexadecimalString:contractAddress] withHashes:@[[NSString hexadecimalString:bitcode]] withHandler:^(QTUMBigNumber* gas) {
+        [weakSelf getFeeWithContractAddress:[NSString hexadecimalString:contractAddress]
+                                fromAddress:[fromAddresses firstObject]
+                                 withHashes:@[[NSString hexadecimalString:bitcode]] withHandler:^(QTUMBigNumber* gas) {
             
             if (gas) {
                 gasLimitEstimate = gas;
@@ -463,14 +468,14 @@ static NSInteger constantFee = 400000000;
         }];
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        
+
         if ([aGasLimit isLessThan:gasLimitEstimate]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(TransactionManagerErrorTypeNotEnoughGasLimit,nil,nil, gasLimitEstimate);
             });
             return;
         }
-        
+
         NSArray <BTCTransactionOutput*>* __block unspentOutputs = @[];
         
         [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:fromAddresses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {

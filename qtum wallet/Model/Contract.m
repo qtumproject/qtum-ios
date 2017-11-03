@@ -38,6 +38,8 @@
 -(void)setAddressBalanceDictionary:(NSDictionary<NSString *,QTUMBigNumber *> *)addressBalanceDictionary {
     
     self.balance = nil;
+    self.balanceString = nil;
+    self.shortBalanceString = nil;
     _addressBalanceDictionary = addressBalanceDictionary;
 }
 

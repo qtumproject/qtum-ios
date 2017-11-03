@@ -268,6 +268,10 @@
     NSInteger valueCount = self.decimalContainer.bigInteger.stringValue.length;
     NSInteger reduceDigits = (power.integerValue - 1);
     
+    if ([self.stringValue isEqualToString:@"0"]) {
+        return  self.stringValue;
+    }
+    
     if (reduceDigits > 256) {
         return  @"0";
     }
