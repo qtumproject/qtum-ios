@@ -238,15 +238,13 @@
 
 -(NSString*)shortFormatOfNumberWithPowerOfMinus10:(QTUMBigNumber*) power {
     
-    if ((power.integerValue - self.decimalContainer.bigInteger.stringValue.length) > 128) {
-        return [self stringNumberWithPowerOfMinus10:power];
-    }
-    return [self.decimalContainer shortFormatOfNumberWithPowerOfMinus10:power.decimalContainer];
+    
+    return [self shortFormatOfNumberWithAddedPower:-power.integerValue];
 }
 
 -(NSString*)shortFormatOfNumberWithPowerOf10:(QTUMBigNumber*) power {
     
-    return [self.decimalContainer shortFormatOfNumberWithPowerOf10:power.decimalContainer];
+    return [self shortFormatOfNumberWithAddedPower:power.integerValue];
 }
 
 -(QTUMBigNumber*)numberWithPowerOfMinus10:(QTUMBigNumber*) power {
@@ -268,8 +266,8 @@
     NSInteger valueCount = self.decimalContainer.bigInteger.stringValue.length;
     NSInteger reduceDigits = (power.integerValue - 1);
     
-    if (reduceDigits > 256) {
-        return  @"0";
+    if ((reduceDigits - valueCount) > 255) {
+        return  @"0.00000000000000000000000000000000000000000E";
     }
     
     NSString* result;
@@ -303,13 +301,51 @@
 
 -(NSString*)stringNumberWithPowerOf10:(QTUMBigNumber*) power {
     
+    
     return [self.decimalContainer stringNumberWithPowerOf10:power.decimalContainer];
 }
 
 -(NSString*)shortFormatOfNumber {
     
-    NSDecimalNumber* decimal = [[NSDecimalNumber alloc] initWithString:self.stringValue];
-    return [decimal shortFormatOfNumber];
+    return [self shortFormatOfNumberWithAddedPower:0];
+}
+
+-(NSString*)shortFormatOfNumberWithAddedPower:(NSInteger) power {
+    
+    NSInteger lenght;
+    BOOL isDecimal = NO;
+    NSRange rangeOfPoint = [self.stringValue rangeOfString:@"."];
+    NSInteger pureLenght = rangeOfPoint.location + power;
+    BOOL isNegativeFormat = pureLenght > 0 ? YES : NO;
+    
+    if (rangeOfPoint.location == NSNotFound) {
+        //exept firstCharacter
+        lenght = rangeOfPoint.location - 1 + power;
+    } else {
+        //exept firstCharacter and first
+        lenght = self.stringValue.length - rangeOfPoint.location - 2;
+        isDecimal = YES;
+    }
+    NSString* powerString = [NSString stringWithFormat:@"%li",ABS(lenght)];
+    
+    NSString* firstCharacterOfEditedString;
+    
+    if (isDecimal) {
+        
+        NSString* stringWithoutZeros = [self.stringValue stringByReplacingOccurrencesOfString:@"0" withString:@""];
+        NSString* firstCharacter = [stringWithoutZeros substringWithRange:NSMakeRange(0, 1)];
+        
+        if ([firstCharacter isEqualToString:@"."]) {
+            firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(1, 1)];
+        } else {
+            firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(0, 1)];
+        }
+    } else {
+        firstCharacterOfEditedString = [self.stringValue substringToIndex:1];
+    }
+    
+    NSString* result = [NSString stringWithFormat:@"%@E%@%@",firstCharacterOfEditedString,isNegativeFormat ? @"-" : @"+",powerString];
+    return result;
 }
 
 -(QTUMBigNumber*)tenInPower:(QTUMBigNumber* )power {
