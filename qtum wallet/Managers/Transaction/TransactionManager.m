@@ -466,7 +466,7 @@ static NSInteger constantFee = 400000000;
         
         if ([aGasLimit isLessThan:gasLimitEstimate]) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                completion(TransactionManagerErrorTypeNotEnoughGasLimit,nil,nil, nil);
+                completion(TransactionManagerErrorTypeNotEnoughGasLimit,nil,nil, gasLimitEstimate);
             });
             return;
         }
