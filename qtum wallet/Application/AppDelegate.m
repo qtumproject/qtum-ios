@@ -42,6 +42,12 @@
         }
     });
     
+//    QTUMBigNumber* number = [QTUMBigNumber decimalWithString:@"0.5"];
+//    QTUMBigNumber* power = [QTUMBigNumber decimalWithString:@"922337203685470"];
+//
+//    NSString* shortString = [number shortFormatOfNumberWithPowerOf10:power];
+    
+    
     return YES;
 }
 

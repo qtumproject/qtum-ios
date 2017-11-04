@@ -238,16 +238,18 @@
 
 -(NSString*)shortFormatOfNumberWithPowerOfMinus10:(QTUMBigNumber*) power {
     
-    
-    return [self shortFormatOfNumberWithAddedPower:-power.integerValue];
+    BTCMutableBigNumber* btcNumber = [[[BTCMutableBigNumber alloc] initWithDecimalString:power.stringValue] multiply:[BTCBigNumber negativeOne]];
+    return [self shortFormatOfNumberWithAddedPower:btcNumber];
 }
 
 -(NSString*)shortFormatOfNumberWithPowerOf10:(QTUMBigNumber*) power {
     
-    return [self shortFormatOfNumberWithAddedPower:power.integerValue];
+    BTCBigNumber* btcNumber = [[BTCBigNumber alloc] initWithDecimalString:power.stringValue];
+    return [self shortFormatOfNumberWithAddedPower:[btcNumber copy]];
 }
 
 -(QTUMBigNumber*)numberWithPowerOfMinus10:(QTUMBigNumber*) power {
+    
     
     JKBigDecimal* bigDecimal = [self.decimalContainer numberWithPowerOfMinus10:power.decimalContainer];
     return [QTUMBigNumber decimalWithString:bigDecimal.stringValue];
@@ -311,10 +313,11 @@
 
 -(NSString*)shortFormatOfNumber {
     
-    return [self shortFormatOfNumberWithAddedPower:0];
+    BTCBigNumber* btcNumber = [[BTCBigNumber alloc] initWithDecimalString:@"0"];
+    return [self shortFormatOfNumberWithAddedPower:btcNumber];
 }
 
--(NSString*)shortFormatOfNumberWithAddedPower:(NSInteger) power {
+-(NSString*)shortFormatOfNumberWithAddedPower:(BTCBigNumber*) power {
     
     
     if (!self.stringValue || [self.stringValue isEqualToString:@""] || [self.stringValue isEqualToString:@"0"]) {
@@ -325,34 +328,40 @@
     
     while (inputString.length > 1 &&
            ([[inputString substringWithRange:NSMakeRange(inputString.length - 1, 1)] isEqualToString:@"0"] ||
-            [[inputString substringWithRange:NSMakeRange(inputString.length - 1, 1)] isEqualToString:@"."])) {
+            [[inputString substringWithRange:NSMakeRange(inputString.length - 1, 1)] isEqualToString:@"."]) &&
+           [inputString rangeOfString:@"."].location != NSNotFound) {
         inputString = [inputString substringToIndex:inputString.length - 1];
     }
     
-    NSInteger lenght = 0;
-    BOOL isDecimal = NO;
+    BTCMutableBigNumber* lenhgt = [[BTCMutableBigNumber alloc] initWithDecimalString:0];
     NSString* firstCharacterOfEditedString;
 
     NSString* stringWithoutZeros = [inputString stringByReplacingOccurrencesOfString:@"0" withString:@""];
     NSRange rangeOfPoint = [inputString rangeOfString:@"."];
 
-    if (rangeOfPoint.location == NSNotFound) {
-        //exept firstCharacter
-        lenght = rangeOfPoint.location - 1 + power;
-        firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(1, 1)];
+    if (![[stringWithoutZeros substringToIndex:1] isEqualToString:@"."]) {
+
+        if (rangeOfPoint.location == NSNotFound) {
+            lenhgt = [[[[BTCMutableBigNumber alloc] initWithInt64:inputString.length] subtract:[[BTCMutableBigNumber alloc] initWithInt64:1]] add:power];
+        } else {
+            lenhgt = [[[[BTCMutableBigNumber alloc] initWithInt64:rangeOfPoint.location] subtract:[[BTCMutableBigNumber alloc] initWithInt64:1]] add:power];
+        }
+        
+        firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(0, 1)];
 
     } else if (stringWithoutZeros.length > 1 && [[stringWithoutZeros substringToIndex:1] isEqualToString:@"."]){
-        //exept firstCharacter and first
+
         firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(1, 1)];
         NSRange rangeOfFirstCharacter = [inputString rangeOfString:firstCharacterOfEditedString];
-        lenght = rangeOfFirstCharacter.location - 1 + power;
+        lenhgt = [[[[[BTCMutableBigNumber alloc] initWithInt64:rangeOfFirstCharacter.location] subtract:[[BTCMutableBigNumber alloc] initWithInt64:1]] multiply:[[BTCMutableBigNumber alloc] initWithInt64:-1]] add:power];
     } else {
         return @"0";
     }
     
-    BOOL isNegativeFormat = lenght > 0 ? YES : NO;
+    BOOL isNegativeFormat = [lenhgt greater:[BTCBigNumber zero]] ? NO : YES;
     
-    NSString* powerString = [NSString stringWithFormat:@"%li",ABS(lenght)];
+    lenhgt = isNegativeFormat ? [lenhgt multiply:[BTCBigNumber negativeOne]] : lenhgt;
+    NSString* powerString = lenhgt.decimalString;
     
     NSString* result = [NSString stringWithFormat:@"%@E%@%@",firstCharacterOfEditedString,isNegativeFormat ? @"-" : @"+",powerString];
     return result;
