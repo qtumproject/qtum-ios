@@ -31,7 +31,9 @@
     
     NSString* hashFuction = [SLocator.contractInterfaceManager stringHashOfFunction:object];
     __weak __typeof(self)weakSelf = self;
-    [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuction] withHandler:^(id responseObject) {
+    [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress
+                                                                             frommAddress:nil
+                                                                               withHashes:@[hashFuction] withHandler:^(id responseObject) {
         
         if (![responseObject isKindOfClass:[NSError class]]) {
             NSString* data = responseObject[@"items"][0][@"output"];

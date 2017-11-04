@@ -17,15 +17,14 @@
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    SmartContractListItemCell* cell = (SmartContractListItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.typeIdentifire.backgroundColor = lightGreenColor();
-
+    QTUMSwipableCellWithButtons* cell = (QTUMSwipableCellWithButtons*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.myContentView.backgroundColor = lightBlueColor();
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SmartContractListItemCell* cell = (SmartContractListItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-    cell.typeIdentifire.backgroundColor = lightGreenColor();
+    QTUMSwipableCellWithButtons* cell = (QTUMSwipableCellWithButtons*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.myContentView.backgroundColor =[UIColor whiteColor];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -14,10 +14,10 @@
 
 @interface Contract ()
 
-@property (copy, nonatomic) NSString* balanceAsString;
-@property (copy, nonatomic) NSString* unconfirmedBalanceAsString;
-@property (copy, nonatomic) NSString* decimalsAsString;
-@property (copy, nonatomic) NSString* totalSupplyAsString;
+@property (strong, nonatomic) NSString* balanceString;
+@property (strong, nonatomic) NSString* shortBalanceString;
+@property (strong, nonatomic) NSString* totalSupplyString;
+@property (strong, nonatomic) NSString* shortTotalSupplyString;
 
 @end
 
@@ -34,6 +34,14 @@
 }
 
 #pragma mark - Custom Accessors
+
+-(void)setAddressBalanceDictionary:(NSDictionary<NSString *,QTUMBigNumber *> *)addressBalanceDictionary {
+    
+    self.balance = nil;
+    self.balanceString = nil;
+    self.shortBalanceString = nil;
+    _addressBalanceDictionary = addressBalanceDictionary;
+}
 
 -(NSString*)creationDateString {
     
@@ -52,24 +60,34 @@
 
 - (NSString*)totalSupplyString {
     
-    return [self.totalSupply stringNumberWithPowerOfMinus10:self.decimals];
+    if (!_totalSupplyString) {
+        _totalSupplyString = [self.totalSupply stringNumberWithPowerOfMinus10:self.decimals];
+    }
+    return _totalSupplyString;
 }
 
 - (NSString*)shortTotalSupplyString {
     
-    return [self.totalSupply shortFormatOfNumberWithPowerOfMinus10:self.decimals];
+    if (!_shortTotalSupplyString) {
+        _shortTotalSupplyString = [self.totalSupply shortFormatOfNumberWithPowerOfMinus10:self.decimals];
+    }
+    return _shortTotalSupplyString;
 }
 
 -(QTUMBigNumber*)balance {
     
-    NSArray* values = self.addressBalanceDictionary.allValues;
-    QTUMBigNumber* balanceDecimal = [[QTUMBigNumber alloc] initWithString:@"0"];
-    
-    for (QTUMBigNumber* balanceValue in values) {
+    if (!_balance) {
+        NSArray* values = self.addressBalanceDictionary.allValues;
+        QTUMBigNumber* balanceDecimal = [[QTUMBigNumber alloc] initWithString:@"0"];
         
-        balanceDecimal = [balanceDecimal add:balanceValue];
+        for (QTUMBigNumber* balanceValue in values) {
+            
+            balanceDecimal = [balanceDecimal add:balanceValue];
+        }
+        _balance = balanceDecimal;
     }
-    return balanceDecimal;
+
+    return _balance;
 }
 
 -(NSDictionary <NSString*,NSDictionary<NSString*,NSString*>*>*)addressBalanceDivByDecimalDictionary {
@@ -87,12 +105,18 @@
 
 - (NSString*)balanceString {
     
-    return [self.balance stringNumberWithPowerOfMinus10:self.decimals];
+    if (!_balanceString) {
+        _balanceString = [self.balance stringNumberWithPowerOfMinus10:self.decimals];
+    }
+    return _balanceString;
 }
 
 - (NSString*)shortBalanceString {
     
-    return [self.balance shortFormatOfNumberWithPowerOfMinus10:self.decimals];
+    if (!_shortBalanceString) {
+        _shortBalanceString = [self.balance shortFormatOfNumberWithPowerOfMinus10:self.decimals];
+    }
+    return _shortBalanceString;
 }
 
 #pragma mark - Spendable
@@ -113,7 +137,7 @@
     _historyStorage.spendableOwner = self;
 }
 
--(void)historyDidChange{
+-(void)historyDidChange {
     [self.manager spendableDidChange:self];
 }
 

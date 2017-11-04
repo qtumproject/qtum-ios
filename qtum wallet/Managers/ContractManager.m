@@ -466,7 +466,9 @@ NSString *const kLocalContractName = @"kLocalContractName";
         NSString* hashFuctionSymbol = [SLocator.contractInterfaceManager stringHashOfFunction:symbolProperty];
         NSString* hashFuctionDecimal = [SLocator.contractInterfaceManager stringHashOfFunction:decimalProperty];
         
-        [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress withHashes:@[hashFuctionName, hashFuctionTotalSupply, hashFuctionSymbol, hashFuctionDecimal] withHandler:^(id responseObject) {
+        [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress
+                                                                                 frommAddress:nil
+                                                                                   withHashes:@[hashFuctionName, hashFuctionTotalSupply, hashFuctionSymbol, hashFuctionDecimal] withHandler:^(id responseObject) {
             
             if (![responseObject isKindOfClass:[NSError class]] && [responseObject[@"items"] isKindOfClass:[NSArray class]]) {
                 

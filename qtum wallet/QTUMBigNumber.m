@@ -52,7 +52,7 @@
 
 - (NSInteger)integerValue {
     
-    return [self.decimalNumber integerValue];
+    return (NSInteger)[self.decimalNumber doubleValue];
 }
 
 
@@ -265,6 +265,10 @@
     NSString* value = self.stringValue;
     NSInteger valueCount = self.decimalContainer.bigInteger.stringValue.length;
     NSInteger reduceDigits = (power.integerValue - 1);
+    
+    if ([self.stringValue isEqualToString:@"0"]) {
+        return  self.stringValue;
+    }
     
     if ((reduceDigits - valueCount) > 255) {
         return  @"0.00000000000000000000000000000000000000000E";

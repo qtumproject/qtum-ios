@@ -118,7 +118,7 @@
 
 -(NSString*)baseURL {
     
-    NSString* baseUrl = @"http://145.239.197.39:5931/";
+    NSString* baseUrl = @"https://testnet-walletapi.qtum.org/";
     return baseUrl;
 }
 

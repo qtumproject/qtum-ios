@@ -98,13 +98,12 @@ NSString *const TokenAddressKey = @"tokenAddress";
     
     NSArray *array = [string componentsSeparatedByString:@"?"];
     
-    if (array.count != 2) {
+    if (![self parseFirstPart:[array firstObject]]) {
         _type = SendInfoItemTypeInvalid;
         return;
     }
     
-    if (![self parseFirstPart:[array firstObject]]) {
-        _type = SendInfoItemTypeInvalid;
+    if (array.count == 1) {
         return;
     }
     
