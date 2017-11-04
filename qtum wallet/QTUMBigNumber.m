@@ -312,37 +312,43 @@
 
 -(NSString*)shortFormatOfNumberWithAddedPower:(NSInteger) power {
     
-    NSInteger lenght;
-    BOOL isDecimal = NO;
-    NSRange rangeOfPoint = [self.stringValue rangeOfString:@"."];
-    NSInteger pureLenght = rangeOfPoint.location + power;
-    BOOL isNegativeFormat = pureLenght > 0 ? YES : NO;
     
+    if (!self.stringValue || [self.stringValue isEqualToString:@""] || [self.stringValue isEqualToString:@"0"]) {
+        return nil;
+    }
+    
+    NSString* inputString = self.stringValue;
+    
+    while (inputString.length > 1 &&
+           ([[inputString substringWithRange:NSMakeRange(inputString.length - 1, 1)] isEqualToString:@"0"] ||
+            [[inputString substringWithRange:NSMakeRange(inputString.length - 1, 1)] isEqualToString:@"."])) {
+        inputString = [inputString substringToIndex:inputString.length - 1];
+    }
+    
+    NSInteger lenght = 0;
+    BOOL isDecimal = NO;
+    NSString* firstCharacterOfEditedString;
+
+    NSString* stringWithoutZeros = [inputString stringByReplacingOccurrencesOfString:@"0" withString:@""];
+    NSRange rangeOfPoint = [inputString rangeOfString:@"."];
+
     if (rangeOfPoint.location == NSNotFound) {
         //exept firstCharacter
         lenght = rangeOfPoint.location - 1 + power;
-    } else {
+        firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(1, 1)];
+
+    } else if (stringWithoutZeros.length > 1 && [[stringWithoutZeros substringToIndex:1] isEqualToString:@"."]){
         //exept firstCharacter and first
-        lenght = self.stringValue.length - rangeOfPoint.location - 2;
-        isDecimal = YES;
-    }
-    NSString* powerString = [NSString stringWithFormat:@"%li",ABS(lenght)];
-    
-    NSString* firstCharacterOfEditedString;
-    
-    if (isDecimal) {
-        
-        NSString* stringWithoutZeros = [self.stringValue stringByReplacingOccurrencesOfString:@"0" withString:@""];
-        NSString* firstCharacter = [stringWithoutZeros substringWithRange:NSMakeRange(0, 1)];
-        
-        if ([firstCharacter isEqualToString:@"."]) {
-            firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(1, 1)];
-        } else {
-            firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(0, 1)];
-        }
+        firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(1, 1)];
+        NSRange rangeOfFirstCharacter = [inputString rangeOfString:firstCharacterOfEditedString];
+        lenght = rangeOfFirstCharacter.location - 1 + power;
     } else {
-        firstCharacterOfEditedString = [self.stringValue substringToIndex:1];
+        return @"0";
     }
+    
+    BOOL isNegativeFormat = lenght > 0 ? YES : NO;
+    
+    NSString* powerString = [NSString stringWithFormat:@"%li",ABS(lenght)];
     
     NSString* result = [NSString stringWithFormat:@"%@E%@%@",firstCharacterOfEditedString,isNegativeFormat ? @"-" : @"+",powerString];
     return result;
