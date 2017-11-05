@@ -319,51 +319,84 @@
 
 -(NSString*)shortFormatOfNumberWithAddedPower:(BTCBigNumber*) power {
     
-    
-    if (!self.stringValue || [self.stringValue isEqualToString:@""] || [self.stringValue isEqualToString:@"0"]) {
-        return nil;
-    }
-    
     NSString* inputString = self.stringValue;
-    
-    while (inputString.length > 1 &&
-           ([[inputString substringWithRange:NSMakeRange(inputString.length - 1, 1)] isEqualToString:@"0"] ||
-            [[inputString substringWithRange:NSMakeRange(inputString.length - 1, 1)] isEqualToString:@"."]) &&
-           [inputString rangeOfString:@"."].location != NSNotFound) {
-        inputString = [inputString substringToIndex:inputString.length - 1];
+
+    if ([inputString isEqualToString:@"0"]){
+        return inputString;
     }
     
-    BTCMutableBigNumber* lenhgt = [[BTCMutableBigNumber alloc] initWithDecimalString:0];
-    NSString* firstCharacterOfEditedString;
-
-    NSString* stringWithoutZeros = [inputString stringByReplacingOccurrencesOfString:@"0" withString:@""];
-    NSRange rangeOfPoint = [inputString rangeOfString:@"."];
-
-    if (![[stringWithoutZeros substringToIndex:1] isEqualToString:@"."]) {
-
-        if (rangeOfPoint.location == NSNotFound) {
-            lenhgt = [[[[BTCMutableBigNumber alloc] initWithInt64:inputString.length] subtract:[[BTCMutableBigNumber alloc] initWithInt64:1]] add:power];
-        } else {
-            lenhgt = [[[[BTCMutableBigNumber alloc] initWithInt64:rangeOfPoint.location] subtract:[[BTCMutableBigNumber alloc] initWithInt64:1]] add:power];
-        }
+    float value;
+    BOOL isNegativeFormat = NO;
+    BTCMutableBigNumber* lenght = [[BTCMutableBigNumber alloc] initWithUInt32:0];
         
-        firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(0, 1)];
+    //used regex
+    NSRegularExpression* twoPartOfDecimal = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+" options:0 error:NULL];
+    NSRegularExpression* firstDigitsFromStringWithPoinRegex = [NSRegularExpression regularExpressionWithPattern:@"[0-9.]{1,5}" options:0 error:NULL];
+    NSRegularExpression* firstFourDigitsFromStringPoinRegex = [NSRegularExpression regularExpressionWithPattern:@"[0-9]{1,4}" options:0 error:NULL];
+    NSRegularExpression* decimalValueToFirstNonZeroRegex = [NSRegularExpression regularExpressionWithPattern:@"[^1-9]*[0-9]" options:0 error:NULL];
+    NSRegularExpression* intValueFromDecimalPartRegex = [NSRegularExpression regularExpressionWithPattern:@"[0]{0,}([0-9]+)" options:0 error:NULL];
 
-    } else if (stringWithoutZeros.length > 1 && [[stringWithoutZeros substringToIndex:1] isEqualToString:@"."]){
-
-        firstCharacterOfEditedString = [stringWithoutZeros substringWithRange:NSMakeRange(1, 1)];
-        NSRange rangeOfFirstCharacter = [inputString rangeOfString:firstCharacterOfEditedString];
-        lenhgt = [[[[[BTCMutableBigNumber alloc] initWithInt64:rangeOfFirstCharacter.location] subtract:[[BTCMutableBigNumber alloc] initWithInt64:1]] multiply:[[BTCMutableBigNumber alloc] initWithInt64:-1]] add:power];
-    } else {
+    NSArray<NSTextCheckingResult *> *matches = [twoPartOfDecimal matchesInString:inputString options:0 range:NSMakeRange(0, inputString.length)];
+    
+    //bail if no matching
+    if (matches.count == 0) {
         return @"0";
     }
     
-    BOOL isNegativeFormat = [lenhgt greater:[BTCBigNumber zero]] ? NO : YES;
+    //geting first 3 digits of decimal maybe with point
+    NSString* integerValueString = [inputString substringWithRange:[matches[0] range]];
+    NSTextCheckingResult* threeDigitMatch = [firstDigitsFromStringWithPoinRegex firstMatchInString:inputString options:0 range:NSMakeRange(0, inputString.length)];
+    NSString* firstDigitsString = [inputString substringWithRange:[threeDigitMatch range]];
+    value = [firstDigitsString floatValue];
     
-    lenhgt = isNegativeFormat ? [lenhgt multiply:[BTCBigNumber negativeOne]] : lenhgt;
-    NSString* powerString = lenhgt.decimalString;
+    //checking if first digits of decimal greater then zero
+    if (value >= 1) {
+        
+        lenght = [[[[BTCMutableBigNumber alloc] initWithUInt64:integerValueString.length] subtract:[[BTCBigNumber alloc] initWithInt32:1]] add:power];
+        isNegativeFormat = NO;
+    }
     
-    NSString* result = [NSString stringWithFormat:@"%@E%@%@",firstCharacterOfEditedString,isNegativeFormat ? @"-" : @"+",powerString];
+    //decimal less then 1 and we need to parce decimal part
+    else {
+        
+        //getting string to first character (0000555000 => 00005) to determine lengh of exp
+        NSString* decimalValueString = [inputString substringWithRange:[matches[1] range]];
+        NSTextCheckingResult* decimalToNonZeroRes = [decimalValueToFirstNonZeroRegex firstMatchInString:decimalValueString options:0 range:NSMakeRange(0, decimalValueString.length)];
+        NSString* decimalToNonZeroString = [decimalValueString substringWithRange:[decimalToNonZeroRes range]];
+        
+        //lenght must be negative, coz value less then zero
+        lenght = [[[[BTCMutableBigNumber alloc] initWithUInt64:decimalToNonZeroString.length] multiply:[BTCBigNumber negativeOne]] add:power];
+        
+        //getting int value without zeros at the begining (0000555000 => 555000)
+        NSTextCheckingResult* intValueFromDecimalPartRes = [intValueFromDecimalPartRegex firstMatchInString:decimalValueString options:0 range:NSMakeRange(0, decimalValueString.length)];
+        NSRange intFomDecimal = [intValueFromDecimalPartRes rangeAtIndex:1];
+        
+        //getting first 4 digits from int part of decimal part, coz we can get a lot of digits (0000555012312312312300 => 5550)
+        NSString *matchString = [decimalValueString substringWithRange:intFomDecimal];
+        threeDigitMatch = [firstFourDigitsFromStringPoinRegex firstMatchInString:matchString options:0 range:NSMakeRange(0, matchString.length)];
+        firstDigitsString = [matchString substringWithRange:[threeDigitMatch range]];
+        
+        //getting float from 4 digits
+        value = [firstDigitsString floatValue];
+    }
+    
+    isNegativeFormat = [lenght less:[BTCBigNumber zero]];
+    
+    //getting abs of lenght, its for making right result string
+    if (isNegativeFormat) {
+        lenght = [lenght multiply:[BTCBigNumber negativeOne]];
+    }
+    
+    while (value >= 10.) {
+        value /= 10.;
+    }
+    
+    NSString* stringValue = value > (int16_t)value ?
+    [NSString stringWithFormat:@"%.2f", value] :
+    [NSString stringWithFormat:@"%i", (int16_t)value];
+    
+    NSString* result = [NSString stringWithFormat:@"%@E%@%@",stringValue,isNegativeFormat ? @"-" : @"+",lenght.decimalString];
+    
     return result;
 }
 
