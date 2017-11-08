@@ -190,8 +190,8 @@
         _contractAddress = contractAddress;
         _adresses = adresses;
         _symbol = symbol;
-        _decimals = [decimals isKindOfClass:[NSNumber class]] ? [[QTUMBigNumber alloc] initWithString:[(NSNumber*)_decimals stringValue]] : decimals;
-        _totalSupply = [totalSupply isKindOfClass:[NSNumber class]] ? [[QTUMBigNumber alloc] initWithString:[(NSNumber*)_totalSupply stringValue]] : totalSupply;
+        _decimals = [decimals isKindOfClass:[NSNumber class]] ? [[QTUMBigNumber alloc] initWithString:[(NSNumber*)decimals stringValue]] : decimals;
+        _totalSupply = [totalSupply isKindOfClass:[NSNumber class]] ? [[QTUMBigNumber alloc] initWithString:[(NSNumber*)decimals stringValue]] : totalSupply;
         _isActive = isActive;
     }
     
