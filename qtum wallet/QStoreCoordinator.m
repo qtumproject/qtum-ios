@@ -20,7 +20,7 @@
 #import "InterfaceInputFormModel.h"
 #import "ContractInterfaceManager.h"
 #import "QStoreCategory.h"
-#import "ServiceLocator.h"
+
 
 @interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate, QStoreManagerSearchDelegate, QStoreListOutputDelegate, QStoreTemplateDetailOutputDelegate>
 

@@ -11,7 +11,7 @@
 #import "NSString+Extension.h"
 #import "TokenCell.h"
 #import "TemplateManager.h"
-#import "ServiceLocator.h"
+
 
 @implementation ContractFileManager
 

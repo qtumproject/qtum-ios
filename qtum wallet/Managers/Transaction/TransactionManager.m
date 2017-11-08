@@ -16,7 +16,7 @@
 #import "Wallet.h"
 #import "QTUMBigNumber.h"
 #import "TransactionScriptBuilder.h"
-#import "ServiceLocator.h"
+
 
 static NSString* op_exec = @"c1";
 

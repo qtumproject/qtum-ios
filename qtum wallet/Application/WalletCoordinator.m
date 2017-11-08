@@ -38,7 +38,7 @@
 #import "AddressLibruaryCoordinator.h"
 #import "TokenAddressLibraryCoordinator.h"
 #import "ChooseReciveAddressOutput.h"
-#import "ServiceLocator.h"
+
 
 @interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate, ChooseReciveAddressOutputDelegate>
 

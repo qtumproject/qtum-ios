@@ -43,7 +43,7 @@
 #import "FavouriteTemplatesCollectionSourceOutput.h"
 #import "RestoreContractsOutput.h"
 #import "NSNumber+Comparison.h"
-#import "ServiceLocator.h"
+
 
 
 @interface ContractCoordinator () <LibraryOutputDelegate,

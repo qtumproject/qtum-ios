@@ -11,7 +11,6 @@
 #import "PinViewController.h"
 #import "TabBarController.h"
 #import "UIViewController+Extension.h"
-#import "ControllersFactory.h"
 #import "LoginCoordinator.h"
 #import "TabBarCoordinator.h"
 #import "TemplateManager.h"
@@ -29,7 +28,7 @@
 #import "Appearance.h"
 #import "SplashScreenOutput.h"
 #import "QStoreManager.h"
-#import "ServiceLocator.h"
+
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 

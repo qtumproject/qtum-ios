@@ -19,7 +19,7 @@
 #import "ContractFileManager.h"
 #import "InterfaceInputFormModel.h"
 #import "WalletManagerRequestAdapter.h"
-#import "ServiceLocator.h"
+
 
 NSString *const kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";

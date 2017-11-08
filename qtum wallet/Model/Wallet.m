@@ -11,7 +11,7 @@
 #import "NSUserDefaults+Settings.h"
 #import "NSString+AES256.h"
 #import "DataOperation.h"
-#import "ServiceLocator.h"
+
 
 NSInteger const brandKeyWordsCount = 12;
 NSInteger const USERS_KEYS_COUNT = 10;

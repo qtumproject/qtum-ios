@@ -9,7 +9,7 @@
 #import "OpenURLManager.h"
 #import "NSUserDefaults+Settings.h"
 #import "NSString+Extension.h"
-#import "ServiceLocator.h"
+
 
 @implementation OpenURLManager
 

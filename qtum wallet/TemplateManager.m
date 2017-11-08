@@ -8,7 +8,7 @@
 
 #import "TemplateManager.h"
 #import "FXKeychain.h"
-#import "ServiceLocator.h"
+
 #import "NSString+Extension.h"
 
 @interface TemplateManager ()

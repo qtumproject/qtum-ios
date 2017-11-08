@@ -14,7 +14,7 @@
 #import "iOSSessionManager.h"
 
 #import "QStoreDataProvider.h"
-#import "ServiceLocator.h"
+
 #import "NewsDataProvider.h"
 
 @interface AppDelegate ()

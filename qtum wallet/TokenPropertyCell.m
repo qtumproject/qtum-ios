@@ -9,7 +9,7 @@
 #import "TokenPropertyCell.h"
 #import "ContractInterfaceManager.h"
 #import "ContractArgumentsInterpretator.h"
-#import "ServiceLocator.h"
+
 #import "NSObject+Extension.h"
 
 @interface TokenPropertyCell()

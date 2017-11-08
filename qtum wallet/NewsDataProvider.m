@@ -10,7 +10,7 @@
 #import "NetworkingService.h"
 #import "NSString+HTML.h"
 #import "TFHpple.h"
-#import "ServiceLocator.h"
+
 
 @interface NewsDataProvider ()
 

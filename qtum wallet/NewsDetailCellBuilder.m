@@ -10,7 +10,7 @@
 #import "QTUMDefaultTagCell.h"
 #import "QTUMImageTagCell.h"
 #import "UIImageView+AFNetworking.h"
-#import "ServiceLocator.h"
+
 #import "QTUMParagrafTagCell.h"
 
 @implementation NewsDetailCellBuilder

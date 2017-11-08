@@ -14,7 +14,7 @@
 #import "AbiinterfaceItem.h"
 #import "NSString+SHA3.h"
 #import "NSString+Extension.h"
-#import "ServiceLocator.h"
+
 
 @implementation ContractInterfaceManager
 

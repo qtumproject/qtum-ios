@@ -12,7 +12,7 @@
 #import "ContractFileManager.h"
 #import "FavouriteTemplatesCollectionSource.h"
 #import "ErrorPopUpViewController.h"
-#import "ServiceLocator.h"
+
 
 @interface WatchContractViewController () <UITextViewDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
