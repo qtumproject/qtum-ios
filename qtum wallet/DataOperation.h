@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const groupFileName;
+extern NSString *const newsCacheFileName;
 
 typedef void(^deleteSuccessBlock)(void);
 typedef void(^deleteFailedBlock)(void);
@@ -17,10 +18,12 @@ typedef void(^deleteFailedBlock)(void);
 
 #pragma mark - BaseMethods
 
-- (NSMutableArray *)getArrayFormFileWithName:(NSString *)fileName;
+- (NSDictionary *)getDictFormFileWithName:(NSString *)fileName;
+- (NSData *)getDataFormFileWithName:(NSString *)fileName;
 - (NSString *)getStringFormFileWithName:(NSString *)fileName;
 - (NSDictionary *)getDictFormGroupFileWithName:(NSString *)fileName;
 - (NSString*)saveFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
+- (NSString*)saveFileWithName:(NSString *)fileName withData:(NSData *)data;
 - (NSString*)saveGroupFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
 - (NSString*)addGropFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
 - (void)createFile:(NSString*)path fileName:(NSString*)filename;

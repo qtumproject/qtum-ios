@@ -31,14 +31,14 @@
     NSInteger countTemplates = [[ServiceLocator sharedInstance].templateManager standartPackOfTemplates].count;
     NSInteger countTokenTemplates = [[ServiceLocator sharedInstance].templateManager standartPackOfTokenTemplates].count;
     XCTAssertTrue(countTemplates == 3);
-    XCTAssertTrue(countTokenTemplates == 2);
+    XCTAssertTrue(countTokenTemplates == 3);
 }
 
 - (void)test_Clear {
     NSInteger countTemplates = [[ServiceLocator sharedInstance].templateManager availebaleTemplates].count;
     NSInteger countTokenTemplates = [[ServiceLocator sharedInstance].templateManager availebaleTokenTemplates].count;
     XCTAssertTrue(countTemplates == 3);
-    XCTAssertTrue(countTokenTemplates == 2);
+    XCTAssertTrue(countTokenTemplates == 3);
 }
 
 - (void)test_Add {

@@ -238,15 +238,20 @@
 
 -(NSString*)shortFormatOfNumberWithPowerOfMinus10:(QTUMBigNumber*) power {
     
-    if ((power.integerValue - self.decimalContainer.bigInteger.stringValue.length) > 128) {
-        return [self stringNumberWithPowerOfMinus10:power];
+    if (power) {
+        BTCMutableBigNumber* btcNumber = [[[BTCMutableBigNumber alloc] initWithDecimalString:power.stringValue] multiply:[BTCBigNumber negativeOne]];
+        return [self shortFormatOfNumberWithAddedPower:btcNumber];
     }
-    return [self.decimalContainer shortFormatOfNumberWithPowerOfMinus10:power.decimalContainer];
+    return [self shortFormatOfNumber];
 }
 
 -(NSString*)shortFormatOfNumberWithPowerOf10:(QTUMBigNumber*) power {
     
-    return [self.decimalContainer shortFormatOfNumberWithPowerOf10:power.decimalContainer];
+    if (power) {
+        BTCBigNumber* btcNumber = [[BTCBigNumber alloc] initWithDecimalString:power.stringValue];
+        return [self shortFormatOfNumberWithAddedPower:[btcNumber copy]];
+    }
+    return [self shortFormatOfNumber];
 }
 
 -(QTUMBigNumber*)numberWithPowerOfMinus10:(QTUMBigNumber*) power {
@@ -272,8 +277,8 @@
         return  self.stringValue;
     }
     
-    if (reduceDigits > 256) {
-        return  @"0";
+    if ((reduceDigits - valueCount) > 255) {
+        return  [self shortFormatOfNumber];
     }
     
     NSString* result;
@@ -289,9 +294,12 @@
         }
         
         temp = [[temp stringByReplacingOccurrencesOfString:@"." withString:@""] mutableCopy];
-        [temp insertString:@"." atIndex:pointRange.location - power.integerValue];
         
-        result = [temp copy];
+        [temp insertString:@"." atIndex:pointRange.location - power.integerValue];
+
+        
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\.])?0{0,}$" options: 0 error:NULL];
+        result = [regex stringByReplacingMatchesInString:temp options:0 range:NSMakeRange(0, [temp length]) withTemplate:@""];
     } else {
         NSString* zeroString = @"0.";
         
@@ -305,15 +313,107 @@
     return result;
 }
 
+NSString * removeLastZerosInRealNumber(NSString  *inputString) {
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\.])?0+$" options: 0 error:NULL];
+    inputString = [regex stringByReplacingMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length]) withTemplate:@""];
+    
+    return  inputString;
+}
+
 -(NSString*)stringNumberWithPowerOf10:(QTUMBigNumber*) power {
+    
     
     return [self.decimalContainer stringNumberWithPowerOf10:power.decimalContainer];
 }
 
 -(NSString*)shortFormatOfNumber {
     
-    NSDecimalNumber* decimal = [[NSDecimalNumber alloc] initWithString:self.stringValue];
-    return [decimal shortFormatOfNumber];
+    BTCBigNumber* btcNumber = [[BTCBigNumber alloc] initWithDecimalString:@"0"];
+    return [self shortFormatOfNumberWithAddedPower:btcNumber];
+}
+
+-(NSString*)shortFormatOfNumberWithAddedPower:(BTCBigNumber*) power {
+    
+    NSString* inputString = self.stringValue;
+
+    if ([inputString isEqualToString:@"0"]){
+        return inputString;
+    }
+    
+    float value;
+    BOOL isNegativeFormat = NO;
+    BTCMutableBigNumber* lenght = [[BTCMutableBigNumber alloc] initWithUInt32:0];
+        
+    //used regex
+    NSRegularExpression* twoPartOfDecimal = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+" options:0 error:NULL];
+    NSRegularExpression* firstDigitsFromStringWithPoinRegex = [NSRegularExpression regularExpressionWithPattern:@"[0-9.]{1,5}" options:0 error:NULL];
+    NSRegularExpression* firstFourDigitsFromStringPoinRegex = [NSRegularExpression regularExpressionWithPattern:@"[0-9]{1,4}" options:0 error:NULL];
+    NSRegularExpression* decimalValueToFirstNonZeroRegex = [NSRegularExpression regularExpressionWithPattern:@"[^1-9]*[0-9]" options:0 error:NULL];
+    NSRegularExpression* intValueFromDecimalPartRegex = [NSRegularExpression regularExpressionWithPattern:@"[0]{0,}([0-9]+)" options:0 error:NULL];
+
+    NSArray<NSTextCheckingResult *> *matches = [twoPartOfDecimal matchesInString:inputString options:0 range:NSMakeRange(0, inputString.length)];
+    
+    //bail if no matching
+    if (matches.count == 0) {
+        return @"0";
+    }
+    
+    //geting first 3 digits of decimal maybe with point
+    NSString* integerValueString = [inputString substringWithRange:[matches[0] range]];
+    NSTextCheckingResult* threeDigitMatch = [firstDigitsFromStringWithPoinRegex firstMatchInString:inputString options:0 range:NSMakeRange(0, inputString.length)];
+    NSString* firstDigitsString = [inputString substringWithRange:[threeDigitMatch range]];
+    value = [firstDigitsString floatValue];
+    
+    //checking if first digits of decimal greater then zero
+    if (value >= 1) {
+        
+        lenght = [[[[BTCMutableBigNumber alloc] initWithUInt64:integerValueString.length] subtract:[[BTCBigNumber alloc] initWithInt32:1]] add:power];
+        isNegativeFormat = NO;
+    }
+    
+    //decimal less then 1 and we need to parce decimal part
+    else {
+        
+        //getting string to first character (0000555000 => 00005) to determine lengh of exp
+        NSString* decimalValueString = [inputString substringWithRange:[matches[1] range]];
+        NSTextCheckingResult* decimalToNonZeroRes = [decimalValueToFirstNonZeroRegex firstMatchInString:decimalValueString options:0 range:NSMakeRange(0, decimalValueString.length)];
+        NSString* decimalToNonZeroString = [decimalValueString substringWithRange:[decimalToNonZeroRes range]];
+        
+        //lenght must be negative, coz value less then zero
+        lenght = [[[[BTCMutableBigNumber alloc] initWithUInt64:decimalToNonZeroString.length] multiply:[BTCBigNumber negativeOne]] add:power];
+        
+        //getting int value without zeros at the begining (0000555000 => 555000)
+        NSTextCheckingResult* intValueFromDecimalPartRes = [intValueFromDecimalPartRegex firstMatchInString:decimalValueString options:0 range:NSMakeRange(0, decimalValueString.length)];
+        NSRange intFomDecimal = [intValueFromDecimalPartRes rangeAtIndex:1];
+        
+        //getting first 4 digits from int part of decimal part, coz we can get a lot of digits (0000555012312312312300 => 5550)
+        NSString *matchString = [decimalValueString substringWithRange:intFomDecimal];
+        threeDigitMatch = [firstFourDigitsFromStringPoinRegex firstMatchInString:matchString options:0 range:NSMakeRange(0, matchString.length)];
+        firstDigitsString = [matchString substringWithRange:[threeDigitMatch range]];
+        
+        //getting float from 4 digits
+        value = [firstDigitsString floatValue];
+    }
+    
+    isNegativeFormat = [lenght less:[BTCBigNumber zero]];
+    
+    //getting abs of lenght, its for making right result string
+    if (isNegativeFormat) {
+        lenght = [lenght multiply:[BTCBigNumber negativeOne]];
+    }
+    
+    while (value >= 10.) {
+        value /= 10.;
+    }
+    
+    NSString* stringValue = value > (int16_t)value ?
+    [NSString stringWithFormat:@"%.2f", value] :
+    [NSString stringWithFormat:@"%i", (int16_t)value];
+    
+    NSString* result = [NSString stringWithFormat:@"%@E%@%@",stringValue,isNegativeFormat ? @"-" : @"+",lenght.decimalString];
+    
+    return result;
 }
 
 -(QTUMBigNumber*)tenInPower:(QTUMBigNumber* )power {

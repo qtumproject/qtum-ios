@@ -36,7 +36,7 @@
 - (NSInteger)integerValue;
 - (NSString *)description;
 
-- (BTCAmount)satoshiAmountValue;
+- (int64_t)satoshiAmountValue;
 - (NSInteger)qtumAmountValue;
 
 @end

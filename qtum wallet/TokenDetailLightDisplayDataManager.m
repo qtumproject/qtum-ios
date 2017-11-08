@@ -35,7 +35,7 @@ static NSInteger standartHistoryCellHeight = 50;
     if (indexPath.section == 0) {
         TokenDetailInfoLightCell * cell = [tableView dequeueReusableCellWithIdentifier:tokenDetailInfoLightCellIdentifire];
         self.infoHeaderCell = (TokenDetailInfoLightCell*)cell;
-        cell.decimalUnits.text = [NSString stringWithFormat:@"%@",token.decimals];
+        cell.decimalUnits.text = [NSString stringWithFormat:@"%@",token.decimals ?: @""];
         cell.initialSupply.text = token.totalSupplyString;
         cell.tokenAddress.text = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
         cell.availableBalance.text = token.balanceString;

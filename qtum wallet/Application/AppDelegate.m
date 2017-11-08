@@ -16,7 +16,6 @@
 #import "QStoreDataProvider.h"
 #import "ServiceLocator.h"
 #import "NewsDataProvider.h"
-#import "BTCBigNumber.h"
 
 @interface AppDelegate ()
 
@@ -42,6 +41,10 @@
             self.aplicationCoordinatorStarted  = YES;
         }
     });
+    
+//    QTUMBigNumber* number = [QTUMBigNumber decimalWithString:@"0.000000522000"];
+//
+//    NSString* shortString = [number shortFormatOfNumber];
     
     return YES;
 }

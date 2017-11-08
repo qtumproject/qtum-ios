@@ -183,6 +183,7 @@
                                                         andHandler:^(TransactionManagerErrorType errorType,
                                                                      id response,
                                                                      QTUMBigNumber* estimateFee) {
+                                                            
                                                             [weakSelf hideLoaderPopUp];
                                                             if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
                                                                 [self showNotEnoughFeeAlertWithEstimatedFee:estimateFee];

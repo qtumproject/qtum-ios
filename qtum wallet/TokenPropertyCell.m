@@ -10,16 +10,24 @@
 #import "ContractInterfaceManager.h"
 #import "ContractArgumentsInterpretator.h"
 #import "ServiceLocator.h"
+#import "NSObject+Extension.h"
+
+@interface TokenPropertyCell()
+
+@property (strong, nonatomic) QTUMBigNumber* value;
+
+@end
 
 @implementation TokenPropertyCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+-(void)layoutSubviews {
     
-    [super setSelected:selected animated:animated];
+    [super layoutSubviews];
+    
+    CGSize size = [self.propertyValue.text sizeWithAttributes:@{NSFontAttributeName : self.propertyValue.font}];
+    if (size.width > self.propertyValue.bounds.size.width) {
+        self.propertyValue.text = [self.value shortFormatOfNumber];
+    }
 }
 
 -(void)setupWithObject:(AbiinterfaceItem*)object andToken:(Contract*) token {
@@ -31,10 +39,16 @@
     
     NSString* hashFuction = [SLocator.contractInterfaceManager stringHashOfFunction:object];
     __weak __typeof(self)weakSelf = self;
+    
+    self.associatedObject = object.name;
     [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress
                                                                              frommAddress:nil
                                                                                withHashes:@[hashFuction] withHandler:^(id responseObject) {
         
+        if (![weakSelf.associatedObject isEqualToString:object.name]) {
+           return;
+        }
+                                                                                   
         if (![responseObject isKindOfClass:[NSError class]]) {
             NSString* data = responseObject[@"items"][0][@"output"];
             
@@ -42,11 +56,16 @@
             
             NSMutableString* result = [NSMutableString new];
             for (id output in array) {
+                if ([output isKindOfClass:[QTUMBigNumber class]]) {
+                    self.value = output;
+                }
                 [result appendFormat:@"%@",output];
             }
             weakSelf.activityIndicator.hidden = YES;
             weakSelf.propertyValue.hidden = NO;
             weakSelf.propertyValue.text = result;
+            [weakSelf setNeedsLayout];
+            [weakSelf layoutIfNeeded];
         }
 
     }];
