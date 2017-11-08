@@ -10,19 +10,20 @@
 #import "NetworkingService.h"
 #import "NSString+HTML.h"
 #import "TFHpple.h"
-
+#import "ServiceLocator.h"
 
 @interface NewsDataProvider ()
 
 @property (strong, nonatomic) QTUMFeedParcer* parcer;
 @property (strong, nonatomic) QTUMHtmlParcer* htmlParcer;
 @property (nonatomic, copy) QTUMNewsItems completion;
-@property (strong, nonatomic) NSArray <QTUMNewsItem*>* news;
 @property (nonatomic, strong) NSOperationQueue* storingQueue;
 
 @end
 
 @implementation NewsDataProvider
+
+NSString *const kNewsCache = @"kArchivedNewsDict";
 
 + (instancetype)sharedInstance {
     
@@ -74,12 +75,12 @@
         }
 
         [weakSelf storeNews:news];
-        
+
         dispatch_block_t block = ^{
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (weakSelf.completion) {
-                    weakSelf.completion(weakSelf.news);
+                    weakSelf.completion([weakSelf unarchivedNews]);
                 }
             });
         };
@@ -114,14 +115,14 @@
 
     dispatch_block_t block = ^{
         
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"kArchivedNewsDict"];
+        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kNewsCache];
         NSMutableDictionary *newsDict = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
         if (newsDict) {
             [newsDict setObject:newsItem forKey:newsItem.identifire];
             data = [NSKeyedArchiver archivedDataWithRootObject:[newsDict copy]];
-            [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"kArchivedNewsDict"];
+            [SLocator.dataOperation saveFileWithName:newsCacheFileName withData:data];
         }
-        [weakSelf unarchiveNews];
+        [weakSelf unarchivedNews];
     };
     
     [self.storingQueue addOperationWithBlock:block];
@@ -129,10 +130,7 @@
 
 -(NSArray <QTUMNewsItem*>*)obtainNewsItems {
     
-    if (!self.news) {
-        [self unarchiveNews];
-    }
-    return self.news;
+    return [self unarchivedNews];
 }
 
 -(void)storeNews:(NSArray <QTUMNewsItem*>*) news {
@@ -141,7 +139,8 @@
     
     dispatch_block_t block = ^{
         
-        NSDictionary* oldNews = [weakSelf createDictWithNews:weakSelf.news];
+        NSArray <QTUMNewsItem*>* unarchivedNews = [weakSelf unarchivedNews];
+        NSDictionary* oldNews = [weakSelf createDictWithNews:unarchivedNews];
         NSDictionary* newNews = [weakSelf createDictWithNews:news];
         NSMutableDictionary* uniqueNews = [oldNews mutableCopy];
         
@@ -152,21 +151,20 @@
         }
         
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:uniqueNews];
-        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"kArchivedNewsDict"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        weakSelf.news = [weakSelf sortNews:[uniqueNews allValues]];
+        [SLocator.dataOperation saveFileWithName:newsCacheFileName withData:data];
     };
     
     [self.storingQueue addOperationWithBlock:block];
 }
 
--(void)unarchiveNews {
+-(NSArray <QTUMNewsItem*>*)unarchivedNews {
     
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"kArchivedNewsDict"];
+    NSData *data = [SLocator.dataOperation getDataFormFileWithName:newsCacheFileName];
     NSDictionary *newsDict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (newsDict) {
-        self.news = [self sortNews:[newsDict allValues]];
+        return [self sortNews:[newsDict allValues]];
     }
+    return nil;
 }
 
 -(NSDictionary<NSString*,NSArray <QTUMNewsItem*>*>*)createDictWithNews:(NSArray <QTUMNewsItem*>*) news {

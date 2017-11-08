@@ -9,17 +9,30 @@
 #import "DataOperation.h"
 
 NSString *const groupFileName = @"group";
+NSString *const newsCacheFileName = @"newsCashFile";
 
 @implementation DataOperation
 
 #pragma mark - BaseMethods
--(NSMutableArray *)getArrayFormFileWithName:(NSString *)fileName {
+-(NSMutableArray *)getDictFormFileWithName:(NSString *)fileName {
     
     NSString *stringPath = [self docPath];
     NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
     
-    NSMutableArray *arraySource = [[NSMutableArray alloc] initWithContentsOfFile:stringFile];
-    return arraySource;
+    NSData *data = [NSData dataWithContentsOfFile:stringFile];
+    if (data) {
+        return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    }
+    return nil;
+}
+
+-(NSData *)getDataFormFileWithName:(NSString *)fileName {
+    
+    NSString *stringPath = [self docPath];
+    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
+    
+    NSData *data = [NSData dataWithContentsOfFile:stringFile];
+    return data;
 }
 
 -(NSDictionary *)getDictFormGroupFileWithName:(NSString *)fileName {
@@ -65,6 +78,18 @@ NSString *const groupFileName = @"group";
     NSString * json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     [json writeToFile:stringFile atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+    
+    return stringFile;
+}
+
+-(NSString*)saveFileWithName:(NSString *)fileName withData:(NSData *)data {
+    
+    NSString *stringPath = [self docPath];
+    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
+    
+    NSData * jsonData = data;
+    
+    [jsonData writeToFile:stringFile atomically:YES];
     
     return stringFile;
 }
@@ -143,47 +168,6 @@ NSString *const groupFileName = @"group";
 
 #pragma mark - DataMethods
 
--(BOOL)dataSaveDictWith:(NSDictionary *)dictSave fileName:(NSString *)fileName {
-    
-    NSMutableArray *arraySource = [self getArrayFormFileWithName:fileName];
-    if (arraySource == nil) {
-        arraySource = [[NSMutableArray alloc] init];
-    }
-    
-    [self saveFileWithName:fileName dataSource:arraySource];
-    return YES;
-}
-
--(BOOL)dataDeleteDictWithKey:(NSString *)key  keyValue:(NSString *)keyValue fileName:(NSString *)fileName {
-    
-    NSMutableArray *arraySource = [self getArrayFormFileWithName:fileName];
-    if (arraySource == nil) {
-        arraySource = [[NSMutableArray alloc] init];
-    }
-    
-    for (NSMutableDictionary *dictSub in arraySource) {
-        if ([[dictSub objectForKey:key] isEqualToString:keyValue]) {
-            [arraySource removeObject:dictSub];
-            break;
-        }
-    }
-    [self saveFileWithName:fileName dataSource:arraySource];
-    return YES;
-}
-
--(NSDictionary *)dataGetDictWithKey:(NSString *)key keyValue:(NSString *)keyValue fileName:(NSString *)fileName {
-    
-    NSMutableArray *arraySource = [self getArrayFormFileWithName:fileName];
-    if (arraySource == nil) {
-        arraySource = [[NSMutableArray alloc] init];
-    }
-    for (NSMutableDictionary *dictSub in arraySource) {
-        if ([[dictSub objectForKey:key] isEqualToString:keyValue]) {
-            return dictSub;
-        }
-    }
-    return nil;
-}
 
 -(void)dataAppendString:(NSString*) string toFileWithName:(NSString*) fileName {
     
