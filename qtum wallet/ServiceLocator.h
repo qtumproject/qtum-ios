@@ -19,6 +19,7 @@
 #import "TransactionManager.h"
 #import "AppSettings.h"
 #import "NewsDataProvider.h"
+#import "Requestable.h"
 
 
 @interface ServiceLocator : NSObject
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) TransactionManager* transactionManager;
 @property (strong, nonatomic) AppSettings* appSettings;
 @property (strong, nonatomic) NewsDataProvider* newsDataProvider;
+@property (strong,nonatomic) id <Requestable> requestManager;
 
 
 + (instancetype)sharedInstance;

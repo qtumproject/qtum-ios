@@ -144,7 +144,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
     }
     
     [self.contracts removeObject:contract];
-    [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:contract];
+    [SLocator.requestManager stopObservingForToken:contract];
     [self tokenDidChange:nil];
 }
 
@@ -183,7 +183,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
     
     token.delegate = self;
     [self.contracts addObject:token];
-    [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
+    [SLocator.requestManager startObservingForToken:token withHandler:nil];
     [self tokenDidChange:token];
 }
 
@@ -461,7 +461,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
         NSString* hashFuctionSymbol = [SLocator.contractInterfaceManager stringHashOfFunction:symbolProperty];
         NSString* hashFuctionDecimal = [SLocator.contractInterfaceManager stringHashOfFunction:decimalProperty];
         
-        [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:token.contractAddress
+        [SLocator.requestManager callFunctionToContractAddress:token.contractAddress
                                                                                  frommAddress:nil
                                                                                    withHashes:@[hashFuctionName, hashFuctionTotalSupply, hashFuctionSymbol, hashFuctionDecimal] withHandler:^(id responseObject) {
             
@@ -519,27 +519,27 @@ NSString *const kLocalContractName = @"kLocalContractName";
 -(void)startObservingForSpendable:(id <Spendable>) spendable {
     
     self.observingForSpendableStopped = NO;
-    [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:spendable withHandler:nil];
+    [SLocator.requestManager startObservingForToken:spendable withHandler:nil];
 }
 
 -(void)stopObservingForSpendable:(id <Spendable>) spendable {
     
     self.observingForSpendableStopped = YES;
-    [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:spendable];
+    [SLocator.requestManager stopObservingForToken:spendable];
 }
 
 -(void)startObservingForAllSpendable {
     
     NSArray <Contract*>* activeContract = [self allActiveTokens];
     for (Contract* token in activeContract) {
-        [[ApplicationCoordinator sharedInstance].requestManager startObservingForToken:token withHandler:nil];
+        [SLocator.requestManager startObservingForToken:token withHandler:nil];
     }
 }
 
 -(void)stopObservingForAllSpendable {
     NSArray <Contract*>* activeContract = [self allActiveTokens];
     for (Contract* token in activeContract) {
-        [[ApplicationCoordinator sharedInstance].requestManager stopObservingForToken:token];
+        [SLocator.requestManager stopObservingForToken:token];
     }
 }
 

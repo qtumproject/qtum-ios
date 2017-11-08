@@ -15,8 +15,6 @@
 @required
 @property (strong,nonatomic,readonly) id <RequestManagerAdapter> adapter;
 
-+ (instancetype)sharedInstance;
-
 // Key
 
 - (void)registerKey:(NSString *)keyString

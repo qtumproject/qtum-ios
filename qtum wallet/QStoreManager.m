@@ -125,7 +125,7 @@ NSInteger const QStoreSearchCount = 20;
 
 - (void)subscribeToRequestUpdate:(NSString*) requestString {
     
-    [[ApplicationCoordinator sharedInstance].requestManager startObservingContractPurchase:requestString withHandler:nil];
+    [SLocator.requestManager startObservingContractPurchase:requestString withHandler:nil];
 }
 
 

@@ -44,7 +44,7 @@ static NSInteger constantFee = 400000000;
 
 -(void)getFeePerKbWithHandler:(void(^)(QTUMBigNumber* feePerKb)) completion {
     
-    [[ApplicationCoordinator sharedInstance].requestManager getFeePerKbWithSuccessHandler:^(QTUMBigNumber *feePerKb) {
+    [SLocator.requestManager getFeePerKbWithSuccessHandler:^(QTUMBigNumber *feePerKb) {
         completion(feePerKb);
     } andFailureHandler:^(NSError *error, NSString *message) {
         completion(self.defaultFeePerKb);
@@ -56,7 +56,7 @@ static NSInteger constantFee = 400000000;
                       withHashes:(NSArray*) hashes
                      withHandler:(void(^)(QTUMBigNumber* gas))completesion {
     
-    [[ApplicationCoordinator sharedInstance].requestManager callFunctionToContractAddress:address
+    [SLocator.requestManager callFunctionToContractAddress:address
                                                                              frommAddress:fromAddress
                                                                                withHashes:hashes withHandler:^(id responseObject) {
         
@@ -558,7 +558,7 @@ static NSInteger constantFee = 400000000;
     
     if (transaction) {
         
-        [[ApplicationCoordinator sharedInstance].requestManager sendTransactionWithParam:@{@"data":transaction.hexWithTime,@"allowHighFee":@1} withSuccessHandler:^(id responseObject) {
+        [SLocator.requestManager sendTransactionWithParam:@{@"data":transaction.hexWithTime,@"allowHighFee":@1} withSuccessHandler:^(id responseObject) {
             success(responseObject);
         } andFailureHandler:^(NSString *message) {
             failure(@"Can not send transaction");

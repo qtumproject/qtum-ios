@@ -20,7 +20,7 @@
             andFailureHandler:(void(^)(NSError *error, NSString* message))failure {
     
     __weak __typeof(self)weakSelf = self;
-    [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
+    [SLocator.requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
         success([weakSelf calculateBalance:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);
@@ -29,7 +29,7 @@
 
 - (void)getHistoryForAddresses:(NSArray *)keyAddreses andParam:(NSDictionary*) param withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure{
     __weak typeof(self) weakSelf = self;
-    [[ApplicationCoordinator sharedInstance].requestManager getHistoryWithParam:param andAddresses:keyAddreses successHandler:^(id responseObject) {
+    [SLocator.requestManager getHistoryWithParam:param andAddresses:keyAddreses successHandler:^(id responseObject) {
         NSArray <HistoryElement *>* history = [weakSelf createHistoryElements:responseObject];
         
         success(history);
@@ -42,7 +42,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [[ApplicationCoordinator sharedInstance].requestManager infoAboutTransaction:txHash successHandler:^(id responseObject) {
+    [SLocator.requestManager infoAboutTransaction:txHash successHandler:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             success([weakSelf createHistoryElement:responseObject]);
         }
@@ -55,7 +55,7 @@
 
 - (void)getunspentOutputs:(NSArray *)keyAddreses withSuccessHandler:(void(^)(NSArray *responseObject))success andFailureHandler:(void(^)(NSError *error, NSString* message))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
+    [SLocator.requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
         success([self createArray:responseObject]);
     } andFailureHandler:^(NSError *error, NSString *message) {
         failure(error, message);

@@ -48,7 +48,7 @@
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
     __weak __typeof(self)weakSelf = self;
-    [[ApplicationCoordinator sharedInstance].requestManager getUnspentOutputsForAdreses:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeysAdreeses] isAdaptive:YES successHandler:^(id responseObject) {
+    [SLocator.requestManager getUnspentOutputsForAdreses:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeysAdreeses] isAdaptive:YES successHandler:^(id responseObject) {
         [weakSelf updateAddresesListWithResponse:responseObject];
         [[PopUpsManager sharedInstance] dismissLoader];
 

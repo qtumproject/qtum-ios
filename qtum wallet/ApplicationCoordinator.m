@@ -74,7 +74,6 @@
         _controllersFactory = [ControllersFactory sharedInstance];
         _notificationManager = [NotificationManager new];
         _openUrlManager = [OpenURLManager new];
-        _requestManager = [RequestManager sharedInstance];
         _walletManager = [WalletManager new];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contractCreationDidFailed) name:kContractCreationFailed object:nil];
     }

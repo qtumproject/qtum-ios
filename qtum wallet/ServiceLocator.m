@@ -7,6 +7,7 @@
 //
 
 #import "ServiceLocator.h"
+#import "RequestManager.h"
 
 @implementation ServiceLocator
 
@@ -37,6 +38,8 @@
         _transactionManager = [TransactionManager new];
         _appSettings = [AppSettings new];
         _newsDataProvider = [NewsDataProvider new];
+        _requestManager = [RequestManager new];
+        
     }
     return self;
 }
