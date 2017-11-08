@@ -18,6 +18,7 @@
 #import "OpenURLManager.h"
 #import "TransactionManager.h"
 #import "AppSettings.h"
+#import "NewsDataProvider.h"
 
 
 @interface ServiceLocator : NSObject
@@ -33,6 +34,8 @@
 @property (strong, nonatomic) OpenURLManager* openURLManager;
 @property (strong, nonatomic) TransactionManager* transactionManager;
 @property (strong, nonatomic) AppSettings* appSettings;
+@property (strong, nonatomic) NewsDataProvider* newsDataProvider;
+
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

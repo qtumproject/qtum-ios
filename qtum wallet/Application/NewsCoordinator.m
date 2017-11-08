@@ -10,7 +10,6 @@
 #import "NewsCellModel.h"
 #import "NewsOutput.h"
 #import "NewsDetailOutput.h"
-#import "NewsDataProvider.h"
 #import "NewsDetailCellBuilder.h"
 
 @interface NewsCoordinator () <NewsOutputDelegate,NewsDetailOutputDelegate>
@@ -42,13 +41,13 @@
     self.newsController = newsOutput;
     __weak __typeof(self) weakSelf = self;
 
-    NSArray <QTUMNewsItem*>* news = [[NewsDataProvider sharedInstance] obtainNewsItems];
+    NSArray <QTUMNewsItem*>* news = [SLocator.newsDataProvider obtainNewsItems];
     if (news) {
         newsOutput.news  = news;
         [newsOutput reloadTableView];
     }
     
-    [[NewsDataProvider sharedInstance] getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
+    [SLocator.newsDataProvider getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
         weakSelf.newsController.news = news;
         [weakSelf.newsController reloadTableView];
     }];
@@ -63,7 +62,7 @@
     __weak __typeof(self) weakSelf = self;
 
     [self.newsController startLoading];
-    [[NewsDataProvider sharedInstance] getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
+    [SLocator.newsDataProvider getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
         weakSelf.newsController.news = news;
         [weakSelf.newsController reloadTableView];
         [weakSelf.newsController stopLoadingIfNeeded];
@@ -78,7 +77,7 @@
 #pragma mark NewsDetailOutputDelegate
 
 -(void)didBackPressed {
-    [[NewsDataProvider sharedInstance] cancelAllOperations];
+    [SLocator.newsDataProvider cancelAllOperations];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -88,7 +87,7 @@
     
     if (!newsItem.tags) {
         [self.newsDetailController startLoading];
-        [[NewsDataProvider sharedInstance] getTagsFromNews:newsItem withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
+        [SLocator.newsDataProvider getTagsFromNews:newsItem withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
             
             weakSelf.newsDetailController.newsItem = newsItem;
             [weakSelf.newsDetailController stopLoadingIfNeeded];

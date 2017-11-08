@@ -12,8 +12,6 @@
 
 #import "QStoreDataProvider.h"
 
-#import "NewsDataProvider.h"
-
 @interface AppDelegate ()
 
 @property (assign, nonatomic) BOOL aplicationCoordinatorStarted;
@@ -38,10 +36,6 @@
             self.aplicationCoordinatorStarted  = YES;
         }
     });
-    
-//    QTUMBigNumber* number = [QTUMBigNumber decimalWithString:@"0.000000522000"];
-//
-//    NSString* shortString = [number shortFormatOfNumber];
     
     return YES;
 }

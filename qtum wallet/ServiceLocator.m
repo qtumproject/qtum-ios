@@ -36,6 +36,7 @@
         _openURLManager = [OpenURLManager new];
         _transactionManager = [TransactionManager new];
         _appSettings = [AppSettings new];
+        _newsDataProvider = [NewsDataProvider new];
     }
     return self;
 }
