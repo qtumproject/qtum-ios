@@ -30,6 +30,8 @@ static NSString* standartTokenPath = @"StandardPath";
 static NSString* qrc20TokenUuid = @"qrc20-token-identifire";
 static NSString* humanTokenUuid = @"human-standard-token-identifire";
 static NSString* crowdsaleUuid = @"crowdsale-identifire";
+static NSString* crowdsaleTokenUuid = @"crowdsale-token-identifire";
+
 
 @implementation TemplateManager
 
@@ -79,7 +81,7 @@ static NSString* crowdsaleUuid = @"crowdsale-identifire";
     TemplateModel* qrc20 = [[TemplateModel alloc] initWithTemplateName:@"QRC20 Standard Token" andType:TokenType withuuid:qrc20TokenUuid path:@"QRC20TokenStandard" isFull:YES];
     TemplateModel* human = [[TemplateModel alloc] initWithTemplateName:@"Human Standard Token" andType:TokenType withuuid:humanTokenUuid path:@"HumanStandardToken" isFull:YES];
     
-    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:TokenType withuuid:crowdsaleUuid path:@"Crowdsale" isFull:YES];
+    TemplateModel* crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:TokenType withuuid:crowdsaleTokenUuid path:@"CrowdsaleAsToken" isFull:YES];
     
     return @[qrc20,human,crowdsale];
 }
