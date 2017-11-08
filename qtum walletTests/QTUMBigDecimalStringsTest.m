@@ -121,4 +121,13 @@
     XCTAssertTrue([result isEqualToString:@"9.99E+9223371231231231231231231231231231231231231231231231231231231231231232036854775808"]);
 }
 
+- (void)testShortStringDecimal12 {
+    
+    QTUMBigNumber *decimal = [QTUMBigNumber decimalWithString:@"12351354256346345"];
+    
+    NSString* result = [decimal shortFormatOfNumber];
+    
+    XCTAssertTrue([result isEqualToString:@"1.24E+16"]);
+}
+
 @end
