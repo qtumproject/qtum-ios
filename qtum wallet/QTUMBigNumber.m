@@ -238,18 +238,23 @@
 
 -(NSString*)shortFormatOfNumberWithPowerOfMinus10:(QTUMBigNumber*) power {
     
-    BTCMutableBigNumber* btcNumber = [[[BTCMutableBigNumber alloc] initWithDecimalString:power.stringValue] multiply:[BTCBigNumber negativeOne]];
-    return [self shortFormatOfNumberWithAddedPower:btcNumber];
+    if (power) {
+        BTCMutableBigNumber* btcNumber = [[[BTCMutableBigNumber alloc] initWithDecimalString:power.stringValue] multiply:[BTCBigNumber negativeOne]];
+        return [self shortFormatOfNumberWithAddedPower:btcNumber];
+    }
+    return [self shortFormatOfNumber];
 }
 
 -(NSString*)shortFormatOfNumberWithPowerOf10:(QTUMBigNumber*) power {
     
-    BTCBigNumber* btcNumber = [[BTCBigNumber alloc] initWithDecimalString:power.stringValue];
-    return [self shortFormatOfNumberWithAddedPower:[btcNumber copy]];
+    if (power) {
+        BTCBigNumber* btcNumber = [[BTCBigNumber alloc] initWithDecimalString:power.stringValue];
+        return [self shortFormatOfNumberWithAddedPower:[btcNumber copy]];
+    }
+    return [self shortFormatOfNumber];
 }
 
 -(QTUMBigNumber*)numberWithPowerOfMinus10:(QTUMBigNumber*) power {
-    
     
     JKBigDecimal* bigDecimal = [self.decimalContainer numberWithPowerOfMinus10:power.decimalContainer];
     return [QTUMBigNumber decimalWithString:bigDecimal.stringValue];
@@ -273,7 +278,7 @@
     }
     
     if ((reduceDigits - valueCount) > 255) {
-        return  @"0.00000000000000000000000000000000000000000E";
+        return  [self shortFormatOfNumber];
     }
     
     NSString* result;
@@ -289,9 +294,12 @@
         }
         
         temp = [[temp stringByReplacingOccurrencesOfString:@"." withString:@""] mutableCopy];
-        [temp insertString:@"." atIndex:pointRange.location - power.integerValue];
         
-        result = [temp copy];
+        [temp insertString:@"." atIndex:pointRange.location - power.integerValue];
+
+        
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\.])?0{0,}$" options: 0 error:NULL];
+        result = [regex stringByReplacingMatchesInString:temp options:0 range:NSMakeRange(0, [temp length]) withTemplate:@""];
     } else {
         NSString* zeroString = @"0.";
         
@@ -303,6 +311,14 @@
     }
     
     return result;
+}
+
+NSString * removeLastZerosInRealNumber(NSString  *inputString) {
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\.])?0+$" options: 0 error:NULL];
+    inputString = [regex stringByReplacingMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length]) withTemplate:@""];
+    
+    return  inputString;
 }
 
 -(NSString*)stringNumberWithPowerOf10:(QTUMBigNumber*) power {

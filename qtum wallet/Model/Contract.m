@@ -60,6 +60,10 @@
 
 - (NSString*)totalSupplyString {
     
+    if (!self.totalSupply || !self.decimals) {
+        return @"";
+    }
+    
     if (!_totalSupplyString) {
         _totalSupplyString = [self.totalSupply stringNumberWithPowerOfMinus10:self.decimals];
     }
@@ -67,6 +71,10 @@
 }
 
 - (NSString*)shortTotalSupplyString {
+    
+    if (!self.totalSupply || !self.decimals) {
+        return @"";
+    }
     
     if (!_shortTotalSupplyString) {
         _shortTotalSupplyString = [self.totalSupply shortFormatOfNumberWithPowerOfMinus10:self.decimals];
@@ -105,6 +113,10 @@
 
 - (NSString*)balanceString {
     
+    if (!self.balance || !self.decimals) {
+        return @"";
+    }
+    
     if (!_balanceString) {
         _balanceString = [self.balance stringNumberWithPowerOfMinus10:self.decimals];
     }
@@ -112,6 +124,10 @@
 }
 
 - (NSString*)shortBalanceString {
+    
+    if (!self.balance || !self.decimals) {
+        return @"";
+    }
     
     if (!_shortBalanceString) {
         _shortBalanceString = [self.balance shortFormatOfNumberWithPowerOfMinus10:self.decimals];
