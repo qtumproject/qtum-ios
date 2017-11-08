@@ -2,7 +2,7 @@
 //  QTUMBigDecimalStringsTest.m
 //  qtum walletTests
 //
-//  Created by Никита Федоренко on 04.11.17.
+//  Created by Vladimir Lebedevich on 04.11.17.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
