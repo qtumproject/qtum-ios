@@ -34,6 +34,7 @@
         _imageLoader = [ImageLoader new];
         _notificationManager = [NotificationManager new];
         _openURLManager = [OpenURLManager new];
+        _transactionManager = [TransactionManager new];
     }
     return self;
 }

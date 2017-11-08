@@ -62,7 +62,7 @@
     [self.paymentOutput showLoaderPopUp];
     
     __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
+    [SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
         
         QTUMBigNumber* minFee = feePerKb;
         QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
@@ -177,7 +177,7 @@
     
     __weak typeof(self) weakSelf = self;
     NSArray<BTCKey*>* addresses = self.fromAddressKey ? @[self.fromAddressKey] : [[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys];
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:addresses
+    [SLocator.transactionManager sendTransactionWalletKeys:addresses
                                                 toAddressAndAmount:array
                                                                fee:fee
                                                         andHandler:^(TransactionManagerErrorType errorType,
@@ -207,7 +207,7 @@
     __weak typeof(self) weakSelf = self;
     
     if (self.fromAddressString) {
-        [[TransactionManager sharedInstance] sendToken:self.token
+        [SLocator.transactionManager sendToken:self.token
                                            fromAddress:self.fromAddressString
                                              toAddress:address
                                                 amount:amounDivByDecimals
@@ -227,7 +227,7 @@
                                                 }
                                             }];
     } else {
-        [[TransactionManager sharedInstance] sendTransactionToToken:self.token
+        [SLocator.transactionManager sendTransactionToToken:self.token
                                                           toAddress:address
                                                              amount:amounDivByDecimals
                                                                 fee:fee

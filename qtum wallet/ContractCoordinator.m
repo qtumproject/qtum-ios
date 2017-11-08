@@ -207,7 +207,7 @@ ContractCreationEndOutputDelegate>
     
     __weak typeof(self) weakSelf = self;
     [[PopUpsManager sharedInstance] showLoaderPopUp];
-    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
+    [SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
         QTUMBigNumber* minFee = feePerKb;
         QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
         
@@ -289,7 +289,7 @@ ContractCreationEndOutputDelegate>
     
     NSData* contractWithArgs = [SLocator.contractInterfaceManager tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
     
-    [[TransactionManager sharedInstance] createSmartContractWithKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+    [SLocator.transactionManager createSmartContractWithKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
                                                           andBitcode:contractWithArgs
                                                                  fee:fee
                                                             gasPrice:gasPrice
@@ -347,7 +347,7 @@ ContractCreationEndOutputDelegate>
     [self.navigationController pushViewController:[output toPresent] animated:true];
     
     [weakSelf.functionDetailController showLoader];
-    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
+    [SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
         
         QTUMBigNumber* minFee = feePerKb;
         QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
@@ -395,7 +395,7 @@ ContractCreationEndOutputDelegate>
 
     __weak __typeof(self)weakSelf = self;
     
-    [[TransactionManager sharedInstance] callContractWithAddress:[NSString dataFromHexString:contract.contractAddress]
+    [SLocator.transactionManager callContractWithAddress:[NSString dataFromHexString:contract.contractAddress]
                                                       andBitcode:hashFuction
                                                    fromAddresses:addressWithTokensValue
                                                        toAddress:nil

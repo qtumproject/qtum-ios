@@ -33,17 +33,7 @@ static NSInteger constantFee = 400000000;
 
 @implementation TransactionManager
 
-+ (instancetype)sharedInstance {
-    
-    static TransactionManager *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
+- (instancetype)init {
     
     self = [super init];
     if (self) {
