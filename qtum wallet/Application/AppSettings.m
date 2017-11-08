@@ -55,7 +55,7 @@
     
     [NSUserDefaults saveCurrentVersion:[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
     [NSUserDefaults saveIsRPCOnSetting:NO];
-    [NSUserDefaults saveIsMainnetSetting:YES];
+    [NSUserDefaults saveIsMainnetSetting:NO];
 
     [PopUpsManager sharedInstance];
     [PaymentValuesManager sharedInstance];
