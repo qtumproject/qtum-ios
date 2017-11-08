@@ -108,6 +108,19 @@ NSString *const newsCacheFileName = @"newsCashFile";
     return [self saveGroupFileWithName:fileName dataSource:[summ copy]];
 }
 
+-(NSString*)deleteGroupFileWithName:(NSString *)fileName valueForKey:(NSString *)key {
+    
+    NSDictionary* groupInfo = [self getDictFormGroupFileWithName:fileName];
+    NSMutableDictionary* summ;
+    
+    if (groupInfo) {
+        summ = [groupInfo mutableCopy];
+        [summ removeObjectForKey:key];
+    }
+    
+    return [self saveGroupFileWithName:fileName dataSource:[summ copy]];
+}
+
 -(void)createFile:(NSString*)path fileName:(NSString*)filename {
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
