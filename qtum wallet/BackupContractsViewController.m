@@ -7,8 +7,6 @@
 //
 
 #import "BackupContractsViewController.h"
-#import "BackupFileManager.h"
-
 
 @interface BackupContractsViewController () <UIDocumentMenuDelegate, UIDocumentPickerDelegate, PopUpViewControllerDelegate>
 

@@ -8,8 +8,6 @@
 
 #import "ContractInterfaceManager.h"
 #import "InterfaceInputFormModel.h"
-#import "ContractFileManager.h"
-#import "ContractArgumentsInterpretator.h"
 #import "ResultTokenInputsModel.h"
 #import "AbiinterfaceItem.h"
 #import "NSString+SHA3.h"

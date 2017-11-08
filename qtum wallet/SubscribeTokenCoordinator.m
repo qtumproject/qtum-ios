@@ -11,7 +11,6 @@
 #import "SubscribeTokenDataDisplayManagerDark.h"
 #import "AddNewTokensViewController.h"
 #import "QRCodeViewController.h"
-#import "ContractInterfaceManager.h"
 
 @interface SubscribeTokenCoordinator () <SubscribeTokenOutputDelegate>
 

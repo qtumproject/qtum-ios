@@ -10,7 +10,6 @@
 #import "AddressControlOutput.h"
 #import "Wallet.h"
 #import "AddressTransferPopupViewController.h"
-#import "TransactionManager.h"
 #import "ErrorPopUpViewController.h"
 #import "NSNumber+Comparison.h"
 

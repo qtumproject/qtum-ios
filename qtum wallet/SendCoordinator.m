@@ -11,7 +11,6 @@
 #import "NewPaymentDarkViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
-#import "TransactionManager.h"
 #import "NewPaymentOutput.h"
 #import "ChoseTokenPaymentOutput.h"
 #import "ChooseTokenPaymentDelegateDataSourceProtocol.h"

@@ -9,7 +9,6 @@
 #import "TokenAddressLibraryCoordinator.h"
 #import "TokenAddressLibraryOutput.h"
 #import "AddressTransferPopupViewController.h"
-#import "TransactionManager.h"
 #import "ErrorPopUpViewController.h"
 
 @interface TokenAddressLibraryCoordinator () <TokenAddressLibraryOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>

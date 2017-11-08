@@ -9,7 +9,6 @@
 #import "SocketManager.h"
 #import "ApplicationCoordinator.h"
 #import "Contract.h"
-#import "NotificationManager.h"
 #import "QStoreManager.h"
 
 @import SocketIO;

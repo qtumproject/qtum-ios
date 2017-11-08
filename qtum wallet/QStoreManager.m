@@ -10,7 +10,6 @@
 #import "QStoreMainScreenCategory.h"
 #import "QStoreDataProvider.h"
 #import "QStoreContractElement.h"
-#import "TransactionManager.h"
 #import "ApplicationCoordinator.h"
 #import "Wallet.h"
 #import "SocketManager.h"

@@ -8,9 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Appearance.h"
-#import "ContractFileManager.h"
-#import "NotificationManager.h"
-#import "OpenURLManager.h"
 #import "iOSSessionManager.h"
 
 #import "QStoreDataProvider.h"

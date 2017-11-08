@@ -18,7 +18,6 @@
 #import "QStoreBuyRequest.h"
 #import "QStoreTemplateDetailOutput.h"
 #import "InterfaceInputFormModel.h"
-#import "ContractInterfaceManager.h"
 #import "QStoreCategory.h"
 
 

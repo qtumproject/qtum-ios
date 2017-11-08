@@ -10,13 +10,8 @@
 #import "HistoryElement.h"
 #import "FXKeychain.h"
 #import "Contract.h"
-#import "ContractInterfaceManager.h"
-#import "ContractArgumentsInterpretator.h"
 #import "NSData+Extension.h"
-#import "TemplateManager.h"
-#import "NotificationManager.h"
 #import "SocketManager.h"
-#import "ContractFileManager.h"
 #import "InterfaceInputFormModel.h"
 #import "WalletManagerRequestAdapter.h"
 

@@ -10,8 +10,6 @@
 #import "NSData+Extension.h"
 #import "NSString+Extension.h"
 #import "TokenCell.h"
-#import "TemplateManager.h"
-
 
 @implementation ContractFileManager
 

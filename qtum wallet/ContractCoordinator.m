@@ -8,15 +8,12 @@
 
 #import "ContractCoordinator.h"
 #import "CreateTokenNavigationController.h"
-#import "TransactionManager.h"
 #import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
 #import "ContractManager.h"
 #import "ConstructorFromAbiViewController.h"
-#import "ContractInterfaceManager.h"
 #import "CreateTokenFinishViewController.h"
 #import "TemplateTokenViewController.h"
-#import "ContractFileManager.h"
 #import "SmartContractMenuViewController.h"
 #import "SmartContractsListViewController.h"
 #import "TokenDetailsViewController.h"
@@ -27,7 +24,6 @@
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
 #import "BackupContractsViewController.h"
-#import "TemplateManager.h"
 #import "PaymentValuesManager.h"
 
 #import "QStoreCoordinator.h"
