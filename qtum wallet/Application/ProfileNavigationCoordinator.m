@@ -26,7 +26,7 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     
-    return [AppSettings sharedInstance].isDarkTheme ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+    return SLocator.appSettings.isDarkTheme ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
 }
 
 @end

@@ -61,7 +61,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
 
 -(NSString*)baseURL {
     
-    return [AppSettings sharedInstance].baseURL;
+    return SLocator.appSettings.baseURL;
 }
 
 -(void)startAndSubscribeWithHandler:(void(^)(void)) handler {

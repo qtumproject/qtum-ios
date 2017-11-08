@@ -33,7 +33,7 @@
 
 -(void)start {
     
-    if ([AppSettings sharedInstance].isFingerprintEnabled && self.type == SendVerification) {
+    if (SLocator.appSettings.isFingerprintEnabled && self.type == SendVerification) {
         
         [self showFingerprint];
     } else {

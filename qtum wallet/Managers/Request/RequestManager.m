@@ -60,7 +60,7 @@
 
 -(NSString*)baseURL {
     
-    return [AppSettings sharedInstance].baseURL;
+    return SLocator.appSettings.baseURL;
 }
 
 #pragma mark - Methods

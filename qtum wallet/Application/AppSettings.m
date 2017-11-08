@@ -29,17 +29,7 @@
 
 #pragma mark - init
 
-+ (instancetype)sharedInstance {
-    
-    static AppSettings *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
+- (instancetype)init {
     self = [super init];
     return self;
 }

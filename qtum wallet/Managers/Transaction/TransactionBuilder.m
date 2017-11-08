@@ -97,7 +97,7 @@
             [tx addOutput:paymentOutput];
         }
         
-        BTCAddress* changeAddress = [AppSettings sharedInstance].isMainNet ? walletKeys.firstObject.address : walletKeys.firstObject.addressTestnet;
+        BTCAddress* changeAddress = SLocator.appSettings.isMainNet ? walletKeys.firstObject.address : walletKeys.firstObject.addressTestnet;
         BTCTransactionOutput* changeOutput = [[BTCTransactionOutput alloc] initWithValue:(spentCoins - totalAmount) address: changeAddress];
         
         if (changeOutput.value > 0) {
@@ -126,7 +126,7 @@
             
             BTCKey *key;
             for (BTCKey *someKey in walletKeys) {
-                NSString* keyString = someKey.address.string;// [AppSettings sharedInstance].isMainNet ? someKey.address.string : someKey.addressTestnet.string;
+                NSString* keyString = someKey.address.string;// SLocator.appSettings.isMainNet ? someKey.address.string : someKey.addressTestnet.string;
                 if ([keyString isEqualToString:txout.script.standardAddress.string]) {
                     key = someKey;
                     break;
@@ -372,7 +372,7 @@
         paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder createContractScriptWithBiteCode:bitcode andGasLimit:gasLimit andGasPrice:gasPrice]];
         [tx addOutput:paymentOutput];
         
-        BTCAddress* changeAddress = [AppSettings sharedInstance].isMainNet ? walletKeys.firstObject.address : walletKeys.firstObject.addressTestnet;
+        BTCAddress* changeAddress = SLocator.appSettings.isMainNet ? walletKeys.firstObject.address : walletKeys.firstObject.addressTestnet;
         BTCTransactionOutput* changeOutput = [[BTCTransactionOutput alloc] initWithValue:(spentCoins - totalAmount) address: changeAddress];
         
         if (changeOutput.value > 0) {
@@ -400,7 +400,7 @@
             
             BTCKey *key;
             for (BTCKey *someKey in walletKeys) {
-                NSString* keyString = someKey.address.string;// [AppSettings sharedInstance].isMainNet ? someKey.address.string : someKey.addressTestnet.string;
+                NSString* keyString = someKey.address.string;// SLocator.appSettings.isMainNet ? someKey.address.string : someKey.addressTestnet.string;
                 if ([keyString isEqualToString:txout.script.standardAddress.string]) {
                     key = someKey;
                     break;

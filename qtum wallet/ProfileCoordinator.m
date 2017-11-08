@@ -78,7 +78,7 @@
 
 - (void)didChangeFingerprintSettings:(BOOL)value {
     
-    [[AppSettings sharedInstance] setFingerprintEnabled:value];
+    [SLocator.appSettings setFingerprintEnabled:value];
 }
 
 - (void)didPressedLanguage {

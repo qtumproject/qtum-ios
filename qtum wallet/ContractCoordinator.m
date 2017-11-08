@@ -122,7 +122,7 @@ ContractCreationEndOutputDelegate>
     
     output.contracts = sortedContracts;
     output.smartContractPretendents = [[ContractManager sharedInstance] smartContractPretendentsCopy];
-    if ([AppSettings sharedInstance].isRemovingContractTrainingPassed == NO) {
+    if (SLocator.appSettings.isRemovingContractTrainingPassed == NO) {
         [output setNeedShowingTrainingScreen];
     }
     [self.navigationController pushViewController:[output toPresent] animated:YES];
@@ -462,7 +462,7 @@ ContractCreationEndOutputDelegate>
 }
 
 -(void)didTrainingPass {
-    [[AppSettings sharedInstance] changeIsRemovingContractTrainingPassed:YES];
+    [SLocator.appSettings changeIsRemovingContractTrainingPassed:YES];
 }
 
 -(void)didPressedBack {

@@ -103,7 +103,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
     
     NSMutableDictionary *hashTable = [NSMutableDictionary new];
     for (BTCKey *key in [[self wallet] allKeys]) {
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        NSString* keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
         if (keyString) {
             hashTable[keyString] = [NSNull null];
         }

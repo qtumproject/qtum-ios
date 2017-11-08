@@ -35,6 +35,7 @@
         _notificationManager = [NotificationManager new];
         _openURLManager = [OpenURLManager new];
         _transactionManager = [TransactionManager new];
+        _appSettings = [AppSettings new];
     }
     return self;
 }

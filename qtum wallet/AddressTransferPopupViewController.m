@@ -98,7 +98,7 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if ([AppSettings sharedInstance].isDarkTheme && textField == self.fromTextFieldView) {
+    if (SLocator.appSettings.isDarkTheme && textField == self.fromTextFieldView) {
         textField.inputView.backgroundColor = customBlackColor();
     }
     

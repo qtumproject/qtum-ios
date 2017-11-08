@@ -45,7 +45,7 @@
     NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
     BOOL shodFingerprintShow = failedCount < 3;
     
-    if ([AppSettings sharedInstance].isFingerprintEnabled && shodFingerprintShow) {
+    if (SLocator.appSettings.isFingerprintEnabled && shodFingerprintShow) {
         [self showFingerprint];
     } else {
         [self.loginOutput startEditing];
@@ -137,7 +137,7 @@
     NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
     NSDate* lastFailedPinDate = [NSUserDefaults getLastFailedPinDate];
     NSInteger minutsSinceLastFailed = [NSDate minutsSinceDate:lastFailedPinDate];
-    NSInteger waitingMinuts = [[AppSettings sharedInstance] failedPinWaitingTime];
+    NSInteger waitingMinuts = [SLocator.appSettings failedPinWaitingTime];
     BOOL isFailedStatePinEntering = failedCount >= 3 && lastFailedPinDate && minutsSinceLastFailed < waitingMinuts;
     
     if (isFailedStatePinEntering) {

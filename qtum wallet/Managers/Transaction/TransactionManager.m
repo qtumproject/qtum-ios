@@ -610,7 +610,7 @@ static NSInteger constantFee = 400000000;
     
     for (BTCKey *key in keys) {
         
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        NSString* keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
         [addresesForSending addObject:keyString];
     }
     

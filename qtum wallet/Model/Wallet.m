@@ -84,7 +84,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
     NSMutableArray *addresses = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        NSString* keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
         if (keyString) {
             [addresses addObject:keyString];
         }
@@ -132,7 +132,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
         NSString* mainAddress = [self getStoredLastAddressKey];
         if (!mainAddress || ![self.addressKeyHashTable objectForKey:mainAddress]) {
             BTCKey* key = [self lastRandomKeyOrRandomKey];
-            mainAddress = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+            mainAddress = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
         }
         _mainAddress = mainAddress;
     }
@@ -179,7 +179,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
     if (!btcKey) {
         return;
     }
-    NSString* keyString = [AppSettings sharedInstance].isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
+    NSString* keyString = SLocator.appSettings.isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
     [SLocator.dataOperation addGropFileWithName:groupFileName dataSource:@{@"kWalletAddressKey": keyString}];
 }
 
@@ -223,7 +223,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
     
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        NSString* keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
         [addressKeyHashTable setObject:key forKey:keyString];
     }
     return [addressKeyHashTable copy];

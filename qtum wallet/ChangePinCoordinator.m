@@ -94,7 +94,7 @@
     
     self.pinOld = nil;
     self.pinNew = nil;
-    [self.pinOutput.passwordView setStyle:SameStyle lenght:[AppSettings sharedInstance].isLongPin ? LongType : ShortType];
+    [self.pinOutput.passwordView setStyle:SameStyle lenght:SLocator.appSettings.isLongPin ? LongType : ShortType];
     [self.pinOutput.passwordView actionIncorrectPin];
     [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter Old PIN", "")];
 }

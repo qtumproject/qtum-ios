@@ -27,7 +27,7 @@
 
     [iOSSessionManager sharedInstance];
     [ServiceLocator sharedInstance];
-    [[AppSettings sharedInstance] setup];
+    [SLocator.appSettings setup];
     [Appearance setUp];
 
     [[ApplicationCoordinator sharedInstance] startSplashScreen];

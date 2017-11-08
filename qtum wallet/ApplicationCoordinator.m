@@ -218,7 +218,7 @@
     [[ContractManager sharedInstance] clear];
     [SLocator.templateManager clear];
     [[QStoreManager sharedInstance] clear];
-    [[AppSettings sharedInstance] clear];
+    [SLocator.appSettings clear];
 }
 
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler {
@@ -287,8 +287,8 @@
 
 -(void)startChanginTheme {
     
-    BOOL isDark = [[AppSettings sharedInstance] isDarkTheme];
-    [[AppSettings sharedInstance] changeThemeToDark:!isDark];
+    BOOL isDark = [SLocator.appSettings isDarkTheme];
+    [SLocator.appSettings changeThemeToDark:!isDark];
     [Appearance setUp];
     [self restartMainFlow];
     NSInteger profileIndex = 1;

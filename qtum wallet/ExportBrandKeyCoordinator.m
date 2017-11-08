@@ -36,7 +36,7 @@
     
     [self showSecurityLoginOutput];
     
-    if ([AppSettings sharedInstance].isFingerprintEnabled) {
+    if (SLocator.appSettings.isFingerprintEnabled) {
         
         [self showFingerprint];
     } else {

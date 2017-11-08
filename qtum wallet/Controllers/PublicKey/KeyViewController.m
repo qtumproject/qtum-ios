@@ -37,7 +37,7 @@
     [super viewDidAppear:animated];
     
     if (self.key && !self.publicKeyImageView.image) {
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? self.key.address.string : self.key.addressTestnet.string;
+        NSString* keyString = SLocator.appSettings.isMainNet ? self.key.address.string : self.key.addressTestnet.string;
         self.keyString = self.isPrivate ? self.key.WIF : keyString;
         
         [self createQRCode];
