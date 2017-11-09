@@ -133,8 +133,10 @@ NSString *kErrorKey = @"error";
             if (success) {
                 [SLocator.walletManager.wallet updateHistoryWithHandler:^(BOOL success) {
                     if (success) {
+
                         Wallet *wallet = SLocator.walletManager.wallet;
-                        NSString *address = wallet.mainAddress;
+                        NSString *address = [wallet getStoredLastAddressKey];
+                        
                         if (!address) {
                             NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
                             replyHandler(dictionary);
