@@ -30,6 +30,8 @@
 		B31441091FB461E5004FE08C /* RemoveContractTrainingViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31441081FB461E5004FE08C /* RemoveContractTrainingViewLight.xib */; };
 		B314410B1FB461F0004FE08C /* RemoveContractTrainingViewDark.xib in Resources */ = {isa = PBXBuildFile; fileRef = B314410A1FB461F0004FE08C /* RemoveContractTrainingViewDark.xib */; };
 		B314410E1FB4624F004FE08C /* RemoveContractTrainigView.m in Sources */ = {isa = PBXBuildFile; fileRef = B314410D1FB4624F004FE08C /* RemoveContractTrainigView.m */; };
+		B314410F1FB4823D004FE08C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */; };
+		B31441101FB4823D004FE08C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */; };
 		B315D02C1F9E100100C7F4E4 /* QTUMParagrafTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D02B1F9E100100C7F4E4 /* QTUMParagrafTagCell.m */; };
 		B315D02F1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D02E1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m */; };
 		B315D0321F9F43B000C7F4E4 /* QTUMImageTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D0311F9F43B000C7F4E4 /* QTUMImageTagCellLight.m */; };
@@ -225,8 +227,6 @@
 		B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B01E1395E5004D231B /* ProfileViewController.m */; };
 		B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */; };
 		B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */; };
-		B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */; };
-		B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */; };
 		B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5ED1E16403B004D231B /* WalletNameViewController.m */; };
 		B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */; };
 		B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */; };
@@ -393,7 +393,6 @@
 		B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F4D1F13767900131823 /* QRCodeViewControllerLight.m */; };
 		B3EE8F511F13B4CE00131823 /* LoginViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F501F13B4CE00131823 /* LoginViewControllerDark.m */; };
 		B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F531F13B4DF00131823 /* LoginViewControllerLight.m */; };
-		B3EE8F561F13BA7000131823 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */; };
 		B3EE8F571F13BAE000131823 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */; };
 		B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F701F13C4B400131823 /* FirstAuthViewControllerDark.m */; };
 		B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F731F13C4C400131823 /* FirstAuthViewControllerLight.m */; };
@@ -548,21 +547,10 @@
 		E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */; };
 		E7881B0D1F0BB63400BD6AB2 /* SplashLight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0C1F0BB63400BD6AB2 /* SplashLight.storyboard */; };
 		E7881B241F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
-		E7881B261F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
-		E7881B271F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
-		E7881B281F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
-		E7881B351F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
-		E7881B361F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
-		E7881B371F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B421F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
-		E7881B441F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B451F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
-		E7881B461F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
-		E7881B491F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
-		E7881B4A1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
-		E7881B4B1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
 		E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */; };
 		E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */; };
 		E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903591EDC66D0004243F0 /* BalanceTokenView.m */; };
@@ -587,8 +575,6 @@
 		E7B7585A1EF016FD004AF200 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758591EF016FD004AF200 /* WalletController.m */; };
 		E7B7585F1EF017C5004AF200 /* BalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7585E1EF017C5004AF200 /* BalanceCell.m */; };
 		E7B758601EF01AF2004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
-		E7B758621EF01AF3004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
-		E7B758641EF01B01004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
 		E7B758681EF01C75004AF200 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758671EF01C75004AF200 /* HistoryCell.m */; };
 		E7B758711EF139F7004AF200 /* WatchWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758701EF139F7004AF200 /* WatchWallet.m */; };
 		E7B758741EF13A89004AF200 /* WatchHistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758731EF13A89004AF200 /* WatchHistoryElement.m */; };
@@ -1155,8 +1141,6 @@
 		B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
 		B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-THIN.OTF"; sourceTree = SOURCE_ROOT; };
-		B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-ULTRALIGHT.OTF"; sourceTree = SOURCE_ROOT; };
-		B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-BOLD.OTF"; sourceTree = SOURCE_ROOT; };
 		B386F5EC1E16403B004D231B /* WalletNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletNameViewController.h; sourceTree = "<group>"; };
 		B386F5ED1E16403B004D231B /* WalletNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletNameViewController.m; sourceTree = "<group>"; };
 		B387AB381EEAD8C5001D2FF1 /* WatchContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewController.h; sourceTree = "<group>"; };
@@ -2250,8 +2234,6 @@
 				B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */,
 				B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */,
 				B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */,
-				B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */,
-				B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */,
 				B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */,
 				B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */,
 				B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */,
@@ -5115,13 +5097,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
-				E7881B351F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				B33EAF931E5EC263006125F3 /* Assets.xcassets in Resources */,
-				E7881B491F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 				B33EAF911E5EC263006125F3 /* MainInterface.storyboard in Resources */,
-				E7881B441F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7B758641EF01B01004AF200 /* simplonmono-medium.ttf in Resources */,
-				E7881B261F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5138,11 +5115,8 @@
 			files = (
 				E730AB5A1EE6A5D100132711 /* Assets.xcassets in Resources */,
 				E7881B451F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7881B271F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
-				E7881B361F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				E730AB581EE6A5D100132711 /* Interface.storyboard in Resources */,
 				E7B758601EF01AF2004AF200 /* simplonmono-medium.ttf in Resources */,
-				E7881B4A1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5150,13 +5124,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3EE8F561F13BA7000131823 /* simplonmono-regular.ttf in Resources */,
-				E7881B281F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
-				E7881B461F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7881B4B1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 				E730AB741EE6A5D200132711 /* Assets.xcassets in Resources */,
-				E7881B371F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
-				E7B758621EF01AF3004AF200 /* simplonmono-medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5164,6 +5132,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B314410F1FB4823D004FE08C /* Roboto-Bold.ttf in Resources */,
+				B31441101FB4823D004FE08C /* Roboto-Regular.ttf in Resources */,
 				B30960BB1F62EAF000BEF9D2 /* Avenir.ttc in Resources */,
 				B3EE8F571F13BAE000131823 /* simplonmono-regular.ttf in Resources */,
 				E78DD7641F4C2B6A00B25FB3 /* AddressTransferPopup.storyboard in Resources */,
@@ -5189,9 +5159,7 @@
 				E70CFD341F1F647300230C81 /* SourceCodePopUp.storyboard in Resources */,
 				B31441091FB461E5004FE08C /* RemoveContractTrainingViewLight.xib in Resources */,
 				E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
-				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
 				B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */,
-				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				B34228881F73CF2700C4C381 /* SliderViewLight.xib in Resources */,
 				E760F4A11F0F8E8F0056D042 /* proximanova-regitalic.otf in Resources */,
 				E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
