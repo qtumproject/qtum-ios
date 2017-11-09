@@ -32,6 +32,8 @@
 		B314410E1FB4624F004FE08C /* RemoveContractTrainigView.m in Sources */ = {isa = PBXBuildFile; fileRef = B314410D1FB4624F004FE08C /* RemoveContractTrainigView.m */; };
 		B314410F1FB4823D004FE08C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */; };
 		B31441101FB4823D004FE08C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */; };
+		B31441131FB49A7A004FE08C /* QTUMTitleTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B31441121FB49A7A004FE08C /* QTUMTitleTagCell.m */; };
+		B31441161FB49A8C004FE08C /* QTUMTitleTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B31441151FB49A8C004FE08C /* QTUMTitleTagCellLight.m */; };
 		B315D02C1F9E100100C7F4E4 /* QTUMParagrafTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D02B1F9E100100C7F4E4 /* QTUMParagrafTagCell.m */; };
 		B315D02F1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D02E1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m */; };
 		B315D0321F9F43B000C7F4E4 /* QTUMImageTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D0311F9F43B000C7F4E4 /* QTUMImageTagCellLight.m */; };
@@ -735,6 +737,10 @@
 		B314410A1FB461F0004FE08C /* RemoveContractTrainingViewDark.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoveContractTrainingViewDark.xib; sourceTree = "<group>"; };
 		B314410C1FB4624F004FE08C /* RemoveContractTrainigView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemoveContractTrainigView.h; sourceTree = "<group>"; };
 		B314410D1FB4624F004FE08C /* RemoveContractTrainigView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoveContractTrainigView.m; sourceTree = "<group>"; };
+		B31441111FB49A7A004FE08C /* QTUMTitleTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMTitleTagCell.h; sourceTree = "<group>"; };
+		B31441121FB49A7A004FE08C /* QTUMTitleTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMTitleTagCell.m; sourceTree = "<group>"; };
+		B31441141FB49A8C004FE08C /* QTUMTitleTagCellLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMTitleTagCellLight.h; sourceTree = "<group>"; };
+		B31441151FB49A8C004FE08C /* QTUMTitleTagCellLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMTitleTagCellLight.m; sourceTree = "<group>"; };
 		B315D02A1F9E100100C7F4E4 /* QTUMParagrafTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMParagrafTagCell.h; sourceTree = "<group>"; };
 		B315D02B1F9E100100C7F4E4 /* QTUMParagrafTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMParagrafTagCell.m; sourceTree = "<group>"; };
 		B315D02D1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMDefaultTagCellLight.h; sourceTree = "<group>"; };
@@ -2908,6 +2914,10 @@
 				B315D02B1F9E100100C7F4E4 /* QTUMParagrafTagCell.m */,
 				B315D0331F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.h */,
 				B315D0341F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.m */,
+				B31441111FB49A7A004FE08C /* QTUMTitleTagCell.h */,
+				B31441121FB49A7A004FE08C /* QTUMTitleTagCell.m */,
+				B31441141FB49A8C004FE08C /* QTUMTitleTagCellLight.h */,
+				B31441151FB49A8C004FE08C /* QTUMTitleTagCellLight.m */,
 			);
 			name = "Tag Cells";
 			sourceTree = "<group>";
@@ -5464,6 +5474,7 @@
 				B32BC4A81F28B49C00C2417C /* ChangePinCoordinator.m in Sources */,
 				B3CBDF411F2B496A00C80D4E /* TokenTemplateCellDark.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
+				B31441161FB49A8C004FE08C /* QTUMTitleTagCellLight.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
 				B3EA531E1F473843002FD201 /* QStoreListTableSourceLight.m in Sources */,
 				B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */,
@@ -5840,6 +5851,7 @@
 				E798462D1F0D1E50002A516A /* HistoryTableViewCellLight.m in Sources */,
 				E79846361F0D23CB002A516A /* WalletHeaderCellDark.m in Sources */,
 				B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */,
+				B31441131FB49A7A004FE08C /* QTUMTitleTagCell.m in Sources */,
 				B3DC9D181F31BF2B006B2E07 /* AddressControlCellDark.m in Sources */,
 				B36EBC3B1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m in Sources */,
 				B3DB3E511F2F7A5200AA408F /* CheckboxButtonLight.m in Sources */,

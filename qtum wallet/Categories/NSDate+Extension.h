@@ -15,6 +15,7 @@
 - (NSString*)formatedDateString;
 + (NSString*)formatedDateStringFromString:(NSString*)dateString;
 + (NSInteger)minutsSinceDate :(NSDate *)date;
+- (NSDate*)dateInLocalTimezoneFromUTCDate;
 
 
 @end

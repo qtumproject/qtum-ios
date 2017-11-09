@@ -9,9 +9,16 @@
 #import "NewsDetailCellBuilder.h"
 #import "QTUMDefaultTagCell.h"
 #import "QTUMImageTagCell.h"
-#import "UIImageView+AFNetworking.h"
-
 #import "QTUMParagrafTagCell.h"
+#import "QTUMTitleTagCell.h"
+#import "NSDate+Extension.h"
+
+@interface NewsDetailCellBuilder ()
+
+@property (strong, nonatomic) NSDateFormatter *cellDateFormatter;
+@property (strong, nonatomic) NSDateFormatter *cellTimeFormatter;
+
+@end
 
 @implementation NewsDetailCellBuilder
 
@@ -37,6 +44,40 @@
     } else {
         return cell;
     }
+}
+
+-(NSDateFormatter *)cellDateFormatter {
+    
+    if (!_cellDateFormatter) {
+        NSDateFormatter *formatter = [NSDateFormatter new];
+        [formatter setDateFormat:@"EEEE, MMMM dd, YYYY"];
+        [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[LanguageManager currentLanguageCode]]];
+        _cellDateFormatter = formatter;
+    }
+    return _cellDateFormatter;
+}
+
+-(NSDateFormatter *)cellTimeFormatter {
+    
+    if (!_cellTimeFormatter) {
+        NSDateFormatter *formatter = [NSDateFormatter new];
+        [formatter setDateFormat:@"h:mm aa"];
+        [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[LanguageManager currentLanguageCode]]];
+        _cellTimeFormatter = formatter;
+    }
+    return _cellTimeFormatter;
+}
+
+-(UITableViewCell*)getCellTitleWithFeedItem:(QTUMFeedItem*)feedItem fromTable:(UITableView*) tableView withIndexPath:(NSIndexPath*) indexPath {
+    
+    QTUMTitleTagCell *cell = [tableView dequeueReusableCellWithIdentifier:QTUMTitleTagCellLightReuseIdentifire];
+    
+    NSString* firstLineDate = [NSString stringWithFormat:@"%@", [self.cellDateFormatter stringFromDate:[feedItem.date dateInLocalTimezoneFromUTCDate]]];
+    NSString* secondLineDate = [NSString stringWithFormat:@"%@", [self.cellTimeFormatter stringFromDate:[feedItem.date dateInLocalTimezoneFromUTCDate]]];
+
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@\n%@", firstLineDate,secondLineDate];
+    cell.titleLabel.text = feedItem.title;
+    return cell;
 }
 
 -(UITableViewCell*)createFigureWithTagItem:(QTUMHTMLTagItem*)tag

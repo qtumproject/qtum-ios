@@ -71,4 +71,12 @@
     return (NSInteger) secondsSinceDate / secondInMinut;
 }
 
+- (NSDate*)dateInLocalTimezoneFromUTCDate {
+    
+    NSDate *someDateInUTC = self;
+    NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
+    NSDate *dateInLocalTimezone = [someDateInUTC dateByAddingTimeInterval:timeZoneSeconds];
+    return dateInLocalTimezone;
+}
+
 @end

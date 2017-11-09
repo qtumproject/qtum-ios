@@ -112,11 +112,12 @@ NSString *const kNewsCache = @"kArchivedNewsDict";
 
     dispatch_block_t block = ^{
         
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kNewsCache];
-        NSMutableDictionary *newsDict = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
+        NSArray <QTUMNewsItem*>* unarchivedNews = [weakSelf unarchivedNews];
+        NSMutableDictionary* newsDict = [[weakSelf createDictWithNews:unarchivedNews] mutableCopy];
+        
         if (newsDict) {
             [newsDict setObject:newsItem forKey:newsItem.identifire];
-            data = [NSKeyedArchiver archivedDataWithRootObject:[newsDict copy]];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[newsDict copy]];
             [SLocator.dataOperation saveFileWithName:newsCacheFileName withData:data];
         }
         [weakSelf unarchivedNews];
