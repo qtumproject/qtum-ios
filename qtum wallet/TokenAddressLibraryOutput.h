@@ -10,11 +10,13 @@
 #import "TokenAddressLibraryOutputDelegate.h"
 #import "Presentable.h"
 
+@class ContracBalancesObject;
+
 @protocol TokenAddressLibraryOutput <Presentable>
 
 @property (weak, nonatomic) id <TokenAddressLibraryOutputDelegate> delegate;
 @property (copy, nonatomic) NSString* symbol;
-@property (copy, nonatomic) NSDictionary <NSString*, NSDictionary<NSString*,NSString*>*>* addressesValueHashTable;
+@property (copy, nonatomic) NSArray <ContracBalancesObject*>* arrayWithAddressesAndBalances;
 
 -(void)reloadData;
 

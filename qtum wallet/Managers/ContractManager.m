@@ -193,6 +193,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
     NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
     Contract* token = filteredArray.count ? filteredArray[0] : nil;
     if (token) {
+        
         NSMutableDictionary* newAddressBalance = token.addressBalanceDictionary ? [token.addressBalanceDictionary mutableCopy] : @{}.mutableCopy;
         for (NSDictionary* dict in addressBalance[@"balances"]) {
             
@@ -325,7 +326,6 @@ NSString *const kLocalContractName = @"kLocalContractName";
         token.creationDate = [NSDate date];
         token.localName = [token.contractAddress substringToIndex:contractAddress.length > 15 ? 15 : contractAddress.length];
         token.adresses = [[SLocator.walletManager hashTableOfKeys] allKeys];
-        //[token setupWithContractAddresse:contractAddress];
         token.manager = self;
         [self addNewToken:token];
         [SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];

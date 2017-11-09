@@ -275,6 +275,9 @@
 		B3CD78E21F4DD44400D79363 /* ChooseAddressReciveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD78E11F4DD44400D79363 /* ChooseAddressReciveCell.m */; };
 		B3CD78E51F4DD45700D79363 /* ChooseAddressReciveCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD78E41F4DD45700D79363 /* ChooseAddressReciveCellDark.m */; };
 		B3CD78E81F4DD46300D79363 /* ChooseAddressReciveCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD78E71F4DD46300D79363 /* ChooseAddressReciveCellLight.m */; };
+		B3D012D81FB445CB00A98770 /* ContractInfoFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012D71FB445CB00A98770 /* ContractInfoFacade.m */; };
+		B3D012DB1FB44CC400A98770 /* ContracBalancesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012DA1FB44CC400A98770 /* ContracBalancesObject.m */; };
+		B3D012DE1FB4542100A98770 /* WalletBalancesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
 		B3D5FE3F1F569FEB006A2BF2 /* NSString+AbiRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */; };
@@ -1260,6 +1263,12 @@
 		B3CD78E41F4DD45700D79363 /* ChooseAddressReciveCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressReciveCellDark.m; sourceTree = "<group>"; };
 		B3CD78E61F4DD46300D79363 /* ChooseAddressReciveCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAddressReciveCellLight.h; sourceTree = "<group>"; };
 		B3CD78E71F4DD46300D79363 /* ChooseAddressReciveCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressReciveCellLight.m; sourceTree = "<group>"; };
+		B3D012D61FB445CB00A98770 /* ContractInfoFacade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractInfoFacade.h; sourceTree = "<group>"; };
+		B3D012D71FB445CB00A98770 /* ContractInfoFacade.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractInfoFacade.m; sourceTree = "<group>"; };
+		B3D012D91FB44CC400A98770 /* ContracBalancesObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContracBalancesObject.h; sourceTree = "<group>"; };
+		B3D012DA1FB44CC400A98770 /* ContracBalancesObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContracBalancesObject.m; sourceTree = "<group>"; };
+		B3D012DC1FB4542100A98770 /* WalletBalancesObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletBalancesObject.h; sourceTree = "<group>"; };
+		B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletBalancesObject.m; sourceTree = "<group>"; };
 		B3D0C95E1FA1DDCA00BAAB4C /* DynamicHeightCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicHeightCellProtocol.h; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
@@ -3721,9 +3730,11 @@
 				B3D5FE821F56F4BC006A2BF2 /* AbiTypesProcessor.m */,
 				D059BE791F84E4A70045ABA0 /* PaymentValuesManager.h */,
 				D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */,
-				B35572C81F90EFDE001AE34A /* NetworkingService.h */,
 				B35572C91F90EFDE001AE34A /* NetworkingService.m */,
+				B35572C81F90EFDE001AE34A /* NetworkingService.h */,
 				B35170561FB3D4D200507C2A /* ServicesHeaders.h */,
+				B3D012D61FB445CB00A98770 /* ContractInfoFacade.h */,
+				B3D012D71FB445CB00A98770 /* ContractInfoFacade.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -4739,6 +4750,10 @@
 				E74003C11F1E2AC7002CC587 /* SendInfoItem.m */,
 				B3E090201FAB0C83003F3B54 /* ContractPretendent.h */,
 				B3E090211FAB0C83003F3B54 /* ContractPretendent.m */,
+				B3D012D91FB44CC400A98770 /* ContracBalancesObject.h */,
+				B3D012DA1FB44CC400A98770 /* ContracBalancesObject.m */,
+				B3D012DC1FB4542100A98770 /* WalletBalancesObject.h */,
+				B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5537,6 +5552,7 @@
 				B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */,
 				B35572C71F90E886001AE34A /* NewsDataProvider.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
+				B3D012D81FB445CB00A98770 /* ContractInfoFacade.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				B3D5FE6D1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m in Sources */,
@@ -5635,6 +5651,7 @@
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
 				E7847F751F3B16A7004A2333 /* QStoreDataProvider.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
+				B3D012DE1FB4542100A98770 /* WalletBalancesObject.m in Sources */,
 				B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */,
 				B32BC4BE1F29C99000C2417C /* SubscribeTokenViewControllerDark.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
@@ -5719,6 +5736,7 @@
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
 				B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */,
 				B369DF381F5D672E008B81CB /* AbiParameterTypeElementaryArray.m in Sources */,
+				B3D012DB1FB44CC400A98770 /* ContracBalancesObject.m in Sources */,
 				B315D0351F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.m in Sources */,
 				B369DF321F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m in Sources */,
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,

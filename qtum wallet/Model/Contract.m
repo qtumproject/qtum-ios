@@ -98,7 +98,9 @@
     return _balance;
 }
 
--(NSDictionary <NSString*,NSDictionary<NSString*,NSString*>*>*)addressBalanceDivByDecimalDictionary {
+-(NSArray <NSDictionary<NSString*,NSString*>*>*)addressBalanceDivByDecimalDictionary {
+    
+    NSArray* allAddressesArray = [SLocator.walletManager.wallet allKeys];
     
     NSDictionary <NSString*,NSDictionary<NSString*,NSString*>*>* addressBalanceDivByDecimalDictionary = @{}.mutableCopy;
     

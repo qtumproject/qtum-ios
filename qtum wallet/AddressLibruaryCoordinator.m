@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject <AddressControlOutput> *addressOutput;
 @property (nonatomic, copy) NSDictionary <NSString*, BTCKey*> *addressKeyHashTable;
-@property (nonatomic, copy) NSDictionary <NSString*, NSDictionary<NSString*, NSString*>*> *addressBalanceHashTable;
+@property (nonatomic, copy) NSArray <WalletBalancesObject*>* arrayWithAddressesAndBalances;
 
 @end
 
@@ -58,14 +58,19 @@
     }];
 }
 
--(NSDictionary <NSString*, NSDictionary<NSString*,NSString*>*>*)prepareAddresesDataWithResponse:(NSArray*) response {
+-(NSArray <WalletBalancesObject*>*)prepareAddresesDataWithResponse:(NSArray*) response {
     
-    NSMutableDictionary <NSString*, NSDictionary<NSString*,NSString*>*>* addressAmountHashTable = @{}.mutableCopy;
+    NSArray* allAddressesArray = [SLocator.walletManager.wallet addressesInRightOrder];
+    NSMutableArray <WalletBalancesObject*>* resultArray = @[].mutableCopy;
     
-    for (NSString* address in self.addressKeyHashTable.allKeys) {
-        [addressAmountHashTable setObject:@{@"longString": [[QTUMBigNumber decimalWithInteger:0] stringValue],
-                                            @"shortString": [[QTUMBigNumber decimalWithInteger:0] shortFormatOfNumber]
-                                            } forKey:address];
+    for (int i = 0; i < allAddressesArray.count; i++) {
+        
+        WalletBalancesObject* object = [WalletBalancesObject new];
+        NSString* address = allAddressesArray[i];
+        object.addressString = address;
+        object.longBalanceStringBalance = [[QTUMBigNumber decimalWithInteger:0] stringValue];
+        object.shortBalanceStringBalance = [[QTUMBigNumber decimalWithInteger:0] stringValue];
+        [resultArray addObject:object];
     }
     
     for (NSDictionary* item in response) {
@@ -77,15 +82,23 @@
         
         if (address && amountDouble > 0) {
             
-            QTUMBigNumber* addressAmountDecimalConteiner = [QTUMBigNumber decimalWithString:addressAmountHashTable[address][@"longString"]];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"addressString == %@",address];
+            NSArray *filteredObjects = [resultArray filteredArrayUsingPredicate:predicate];
+            
+            if (filteredObjects.count == 0) {
+                continue;
+            }
+            
+            WalletBalancesObject* object = filteredObjects[0];
+
+            QTUMBigNumber* addressAmountDecimalConteiner = [QTUMBigNumber decimalWithString:object.longBalanceStringBalance];
             QTUMBigNumber* newBalance = [addressAmountDecimalConteiner add:bigAmount];
-            [addressAmountHashTable setObject:@{@"longString": [newBalance stringValue],
-                                                @"shortString": [newBalance shortFormatOfNumber]
-                                                }  forKey:address];
+            object.longBalanceStringBalance = [newBalance stringValue];
+            object.shortBalanceStringBalance = [newBalance shortFormatOfNumber];
         }
     }
     
-    return [addressAmountHashTable copy];
+    return [resultArray copy];
 }
 
 -(void)updateAddresesListWithResponse:(NSArray*) response  {
@@ -95,9 +108,9 @@
         __weak __typeof(self)weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            NSDictionary <NSString*, NSDictionary<NSString*,NSString*>*> *data = [weakSelf prepareAddresesDataWithResponse:response];
-            weakSelf.addressOutput.addressesValueHashTable = data;
-            weakSelf.addressBalanceHashTable = data;
+            NSArray <WalletBalancesObject*>* data = [weakSelf prepareAddresesDataWithResponse:response];
+            weakSelf.addressOutput.arrayWithAddressesAndBalances = data;
+            weakSelf.arrayWithAddressesAndBalances = data;
             [weakSelf.addressOutput reloadData];
         });
     }
@@ -167,8 +180,7 @@
 
 -(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath withAddress:(NSString *)address{
     
-    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressBalanceHashTable completion:^{
-    }];
+    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.arrayWithAddressesAndBalances completion:nil];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate

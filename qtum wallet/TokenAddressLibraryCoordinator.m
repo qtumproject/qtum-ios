@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject <TokenAddressLibraryOutput> *addressOutput;
-@property (nonatomic, copy) NSDictionary <NSString*, NSDictionary<NSString*, NSString*>*> *addressBalanceHashTable;
+@property (nonatomic, copy) NSArray <ContracBalancesObject*>* arrayWithAddressesAndBalances;
 
 @end
 
@@ -35,10 +35,13 @@
     
     NSObject <TokenAddressLibraryOutput> *output = [SLocator.controllersFactory createTokenAddressControllOutput];
     output.delegate = self;
-    output.addressesValueHashTable = self.token.addressBalanceDivByDecimalDictionary;
     output.symbol = self.token.symbol;
-    self.addressBalanceHashTable = self.token.addressBalanceDivByDecimalDictionary;
     self.addressOutput = output;
+    
+    NSArray* arrayWithAddressesAndBalances = [SLocator.contractInfoFacade arrayOfStingValuesOfTokenBalanceWithToken:self.token];
+    output.arrayWithAddressesAndBalances = arrayWithAddressesAndBalances;
+    self.arrayWithAddressesAndBalances = arrayWithAddressesAndBalances;
+    
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
@@ -107,7 +110,7 @@
 
 -(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath withAddress:(NSString*)address {
     
-    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.addressBalanceHashTable completion:nil];
+    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.arrayWithAddressesAndBalances completion:nil];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate

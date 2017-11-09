@@ -24,5 +24,6 @@
 #import "Requestable.h"
 #import "ControllersFactory.h"
 #import "WalletManagering.h"
+#import "ContractInfoFacade.h"
 
 #endif /* ServicesHeaders_h */

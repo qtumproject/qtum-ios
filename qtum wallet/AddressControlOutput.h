@@ -14,7 +14,7 @@
 @protocol AddressControlOutput <Presentable>
 
 @property (weak, nonatomic) id <AddressControlOutputDelegate> delegate;
-@property (copy, nonatomic) NSDictionary <NSString*, NSDictionary<NSString*,NSString*>*>* addressesValueHashTable;
+@property (copy, nonatomic) NSArray <WalletBalancesObject*>* arrayWithAddressesAndBalances;
 
 -(void)reloadData;
 

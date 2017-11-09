@@ -42,6 +42,7 @@
         _controllersFactory = [ControllersFactory sharedInstance];
         _requestManager = [[RequestManager alloc] initWithBaseUrl:_appSettings.baseURL];
         _walletManager = [WalletManager new];
+        _contractInfoFacade = [ContractInfoFacade new];
     }
     return self;
 }

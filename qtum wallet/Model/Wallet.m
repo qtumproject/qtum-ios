@@ -121,7 +121,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
 }
 
 
--(NSArray <HistoryElementProtocol>*)historyArray{
+-(NSArray <HistoryElementProtocol>*)historyArray {
+    
     return [self.historyStorage.historyPrivate copy];
 }
 
@@ -200,7 +201,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
             [allKeys addObject:[self.keyChain keyAtIndex:(uint)i hardened:YES]];
         }
     }
-    return allKeys;
+    return [allKeys copy];
 }
 
 - (NSString *)stringFromWorldsArray:(NSArray*) words {
@@ -229,6 +230,22 @@ NSInteger const USERS_KEYS_COUNT = 10;
     return [addressKeyHashTable copy];
 }
 
+- (NSArray*)addressesInRightOrder {
+    
+    if (!self.keyChain) {
+        return nil;
+    }
+    
+    NSMutableArray *array = @[].mutableCopy;
+    
+    for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
+        BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
+        NSString* keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
+        [array addObject:keyString];
+    }
+    return [array copy];
+}
+
 #pragma mark - Private Methods
 
 - (BTCKeychain *)createKeychainWithSeedWords:(NSArray*) seedWords {
@@ -239,8 +256,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
     return keyChain;
 }
 
-- (NSArray *)generateWordsArray
-{
+- (NSArray *)generateWordsArray {
+    
     NSMutableArray *randomWords = [NSMutableArray new];
     
     NSInteger i = 0;
