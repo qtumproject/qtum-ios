@@ -54,6 +54,7 @@
                                                       withFromAddressVariants:(NSArray <WalletBalancesObject*>*)variants
                                                                    completion:(void (^)(void))completion;
 
+
 // dismiss methods
 - (void)dismissLoader;
 

@@ -9,11 +9,10 @@
 #import "SmartContractsListViewController.h"
 #import "SmartContractListItemCell.h"
 
-@interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource,QTUMSwipableCellWithButtonsDelegate, UIGestureRecognizerDelegate>
+@interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource,QTUMSwipableCellWithButtonsDelegate, UIGestureRecognizerDelegate,RemoveContractTrainigViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
-@property (weak, nonatomic) IBOutlet UIView *trainingView;
 
 @property (assign, nonatomic) BOOL needShowTrainingScreen;
 
@@ -26,11 +25,28 @@
 
 @synthesize delegate, contracts, smartContractPretendents;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.cellsCurrentlyEditing = [NSMutableSet new];
     [self configTableView];
-    [self configTrainingView];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [self configAndSetTrainingView];
+}
+
+#pragma mark - Custom Accessors
+
+
+-(RemoveContractTrainigView*)trainingViewWithStyle {
+    
+    RemoveContractTrainigView *trainingView = [[[NSBundle mainBundle] loadNibNamed:@"RemoveContractTrainingViewDark" owner:self options:nil] objectAtIndex:0];
+    
+    return trainingView;
 }
 
 #pragma mark - Configuration
@@ -41,11 +57,23 @@
     [self updateControls];
 }
 
--(void)configTrainingView {
+-(void)configAndSetTrainingView {
     
-    if (!self.needShowTrainingScreen) {
-        [self.trainingView removeFromSuperview];
-    }
+    if (self.needShowTrainingScreen) {
+
+        self.trainingView = [self trainingViewWithStyle];
+        self.trainingView.delegate = self;
+        UIView* window = [UIApplication sharedApplication].keyWindow;
+        self.trainingView.frame = window.bounds;
+        [window addSubview:self.trainingView];
+        [self.trainingView setNeedsLayout];
+        
+        __weak __typeof(self)weakSelf = self;
+        self.trainingView.alpha = 0;
+        [UIView animateWithDuration:0.3 animations:^{
+            weakSelf.trainingView.alpha = 1;
+        }];
+    }    
 }
 
 -(void)updateControls {
@@ -154,7 +182,9 @@
     [self.delegate didPressedBack];
 }
 
-- (IBAction)didScipTrainingInfoAction:(id)sender {
+#pragma mark - RemoveContractTrainigViewDelegate
+
+-(void)didTapOnView {
     
     __weak __typeof(self)weakSelf = self;
     
@@ -202,10 +232,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf updateControls];
     });
-}
-
-- (void)buttonTwoActionForIndexPath:(NSIndexPath *)indexPath {
-    
 }
 
 - (void)cellDidOpen:(UITableViewCell *)cell {
