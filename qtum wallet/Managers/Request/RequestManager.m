@@ -23,14 +23,14 @@
 
 @implementation RequestManager
 
-- (instancetype)init {
+- (instancetype)initWithBaseUrl:(NSString*) baseUrl {
     
     self = [super init];
 
     if (self != nil) {
         
         _adapter = [ServerAdapter new];
-        _networkService = [[NetworkingService alloc] initWithBaseUrl:[self baseURL]];
+        _networkService = [[NetworkingService alloc] initWithBaseUrl:baseUrl];
     }
 
     return self;
@@ -46,11 +46,6 @@
         _socketManager.delegate = self;
     }
     return _socketManager;
-}
-
--(NSString*)baseURL {
-    
-    return SLocator.appSettings.baseURL;
 }
 
 #pragma mark - Methods
