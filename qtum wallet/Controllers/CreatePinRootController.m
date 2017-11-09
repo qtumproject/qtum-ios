@@ -32,7 +32,7 @@
     
     if (self.firstPin && [self.firstPin isEqualToString:pin]) {
         if (self.createPinCompletesion) {
-            [[ApplicationCoordinator sharedInstance].walletManager storePin:pin];
+            [SLocator.walletManager storePin:pin];
             self.createPinCompletesion();
         }
     } else if(self.firstPin) {

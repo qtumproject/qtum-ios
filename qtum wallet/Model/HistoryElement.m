@@ -124,7 +124,7 @@
 }
 
 - (NSDictionary *)hashTableOfKeys{
-    return [[ApplicationCoordinator sharedInstance].walletManager hashTableOfKeysForHistoryElement];
+    return [SLocator.walletManager hashTableOfKeysForHistoryElement];
 }
 
 #pragma mark - Setup

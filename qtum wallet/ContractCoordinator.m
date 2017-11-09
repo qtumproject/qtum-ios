@@ -95,7 +95,7 @@ ContractCreationEndOutputDelegate>
 
 -(void)start {
     
-    NSObject <SmartContractMenuOutput>* output = (NSObject <SmartContractMenuOutput>*)[[ControllersFactory sharedInstance] createSmartContractMenuViewController];
+    NSObject <SmartContractMenuOutput>* output = (NSObject <SmartContractMenuOutput>*)[SLocator.controllersFactory createSmartContractMenuViewController];
     output.delegate = self;
     self.smartContractMenuOutput = output;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
@@ -105,7 +105,7 @@ ContractCreationEndOutputDelegate>
 
 -(void)showCreateNewToken {
     
-    NSObject <TemplatesListOutput>* output  = [[ControllersFactory sharedInstance] createTemplateTokenViewController];
+    NSObject <TemplatesListOutput>* output  = [SLocator.controllersFactory createTemplateTokenViewController];
     output.delegate = self;
     output.templateModels = [SLocator.templateManager availebaleTemplates];
     [self.navigationController pushViewController:[output toPresent] animated:YES];
@@ -113,7 +113,7 @@ ContractCreationEndOutputDelegate>
 
 -(void)showMyPyblishedContract {
     
-    NSObject <PublishedContractListOutput>* output = [[ControllersFactory sharedInstance] createSmartContractsListViewController];
+    NSObject <PublishedContractListOutput>* output = [SLocator.controllersFactory createSmartContractsListViewController];
     output.delegate = self;
     
     NSArray *sortedContracts = [[[ContractManager sharedInstance] allContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
@@ -137,7 +137,7 @@ ContractCreationEndOutputDelegate>
     
     self.activeTemplateForLibrary = nil;
     
-    self.wathContractsViewController = (NSObject <WatchContractOutput>*)[[ControllersFactory sharedInstance] createWatchContractViewController];
+    self.wathContractsViewController = (NSObject <WatchContractOutput>*)[SLocator.controllersFactory createWatchContractViewController];
     self.favouriteContractsCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
     
     self.favouriteContractsCollectionSource.templateModels = [SLocator.templateManager standartPackOfTemplates];
@@ -154,7 +154,7 @@ ContractCreationEndOutputDelegate>
     
     self.activeTemplateForLibrary = nil;
     
-    self.wathTokensViewController = (NSObject <WatchContractOutput>*)[[ControllersFactory sharedInstance] createWatchTokensViewController];
+    self.wathTokensViewController = (NSObject <WatchContractOutput>*)[SLocator.controllersFactory createWatchTokensViewController];
     self.favouriteTokensCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
     
     self.favouriteTokensCollectionSource.templateModels = [SLocator.templateManager standartPackOfTokenTemplates];
@@ -169,7 +169,7 @@ ContractCreationEndOutputDelegate>
 
 -(void)showRestoreContract {
     
-    NSObject <RestoreContractsOutput>* output = [[ControllersFactory sharedInstance] createRestoreContractViewController];
+    NSObject <RestoreContractsOutput>* output = [SLocator.controllersFactory createRestoreContractViewController];
     output.delegate = self;
 
     [self.navigationController pushViewController:[output toPresent] animated:YES];
@@ -177,7 +177,7 @@ ContractCreationEndOutputDelegate>
 
 -(void)showBackupContract {
     
-    BackupContractsViewController* controller = (BackupContractsViewController*)[[ControllersFactory sharedInstance] createBackupContractViewController];
+    BackupContractsViewController* controller = (BackupContractsViewController*)[SLocator.controllersFactory createBackupContractViewController];
     controller.delegate = self;
     
     [self.navigationController pushViewController:controller animated:YES];
@@ -185,7 +185,7 @@ ContractCreationEndOutputDelegate>
 
 -(void)showStepWithFieldsAndTemplate:(NSString*)template{
     
-    NSObject <ConstructorAbiOutput>* output = [[ControllersFactory sharedInstance] createConstructorFromAbiViewController];
+    NSObject <ConstructorAbiOutput>* output = [SLocator.controllersFactory createConstructorFromAbiViewController];
     output.delegate = self;
     output.contractTitle = self.templateModel.templateName;
     output.formModel = [SLocator.contractInterfaceManager tokenInterfaceWithTemplate:self.templateModel.path];
@@ -194,7 +194,7 @@ ContractCreationEndOutputDelegate>
 
 -(void)showFinishStepWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs {
     
-    CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[[ControllersFactory sharedInstance] createCreateTokenFinishViewController];
+    CreateTokenFinishViewController* controller = (CreateTokenFinishViewController*)[SLocator.controllersFactory createCreateTokenFinishViewController];
     controller.delegate = self;
     self.inputs = inputs;
     controller.inputs = inputs;
@@ -217,7 +217,7 @@ ContractCreationEndOutputDelegate>
 -(void)showContractsFunction:(Contract*) contract {
     
     if (contract.templateModel) {
-        NSObject <ContractFunctionsOutput>* output = [[ControllersFactory sharedInstance] createTokenFunctionViewController];
+        NSObject <ContractFunctionsOutput>* output = [SLocator.controllersFactory createTokenFunctionViewController];
         output.formModel = [SLocator.contractInterfaceManager tokenInterfaceWithTemplate:contract.templateModel.path];
         output.delegate = self;
         output.token = contract;
@@ -228,7 +228,7 @@ ContractCreationEndOutputDelegate>
 -(void)showChooseFromLibrary:(BOOL)tokensOnly {
     
     self.isLibraryViewControllerOnlyForTokens = tokensOnly;
-    self.libraryViewController = [[ControllersFactory sharedInstance] createLibraryViewController];
+    self.libraryViewController = [SLocator.controllersFactory createLibraryViewController];
     self.libraryTableSource = [[TableSourcesFactory sharedInstance] createLibrarySource];
     self.libraryTableSource.templetes = [self prepareTemplateList:tokensOnly];
     self.libraryTableSource.activeTemplate = self.activeTemplateForLibrary;
@@ -285,7 +285,7 @@ ContractCreationEndOutputDelegate>
     
     NSData* contractWithArgs = [SLocator.contractInterfaceManager tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
     
-    [SLocator.transactionManager createSmartContractWithKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+    [SLocator.transactionManager createSmartContractWithKeys:SLocator.walletManager.wallet.allKeys
                                                           andBitcode:contractWithArgs
                                                                  fee:fee
                                                             gasPrice:gasPrice
@@ -332,7 +332,7 @@ ContractCreationEndOutputDelegate>
 
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token fromQStore:(BOOL)fromQStore {
     
-    NSObject <ContractFunctionDetailOutput>* output = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
+    NSObject <ContractFunctionDetailOutput>* output = [SLocator.controllersFactory createTokenFunctionDetailViewController];
     output.function = item;
     output.delegate = self;
     output.token = token;
@@ -395,7 +395,7 @@ ContractCreationEndOutputDelegate>
                                                       andBitcode:hashFuction
                                                    fromAddresses:addressWithTokensValue
                                                        toAddress:nil
-                                                      walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                      walletKeys:SLocator.walletManager.wallet.allKeys
                                                              fee:fee
                                                         gasPrice:gasPrice
                                                         gasLimit:gasLimit

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class QTUMBigNumber;
+
 @protocol RequestManagerAdapter <NSObject>
 
 @required

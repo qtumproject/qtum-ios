@@ -53,7 +53,7 @@
 
 -(void)start {
     
-    NSObject <NewPaymentOutput> *controller = [[ControllersFactory sharedInstance] createNewPaymentDarkViewController];
+    NSObject <NewPaymentOutput> *controller = [SLocator.controllersFactory createNewPaymentDarkViewController];
     controller.delegate = self;
     self.paymentOutput = controller;
     [self.navigationController setViewControllers:@[[controller toPresent]]];
@@ -160,7 +160,7 @@
             self.token = nil;
         }
         
-        [weakSelf.paymentOutput updateControlsWithTokensExist:tokens.count choosenTokenExist:tokenExists walletBalance:[ApplicationCoordinator sharedInstance].walletManager.wallet.balance andUnconfimrmedBalance:[ApplicationCoordinator sharedInstance].walletManager.wallet.unconfirmedBalance];
+        [weakSelf.paymentOutput updateControlsWithTokensExist:tokens.count choosenTokenExist:tokenExists walletBalance:SLocator.walletManager.wallet.balance andUnconfimrmedBalance:SLocator.walletManager.wallet.unconfirmedBalance];
     });
 }
 
@@ -175,7 +175,7 @@
     [self showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    NSArray<BTCKey*>* addresses = self.fromAddressKey ? @[self.fromAddressKey] : [[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys];
+    NSArray<BTCKey*>* addresses = self.fromAddressKey ? @[self.fromAddressKey] : [SLocator.walletManager.wallet allKeys];
     [SLocator.transactionManager sendTransactionWalletKeys:addresses
                                                 toAddressAndAmount:array
                                                                fee:fee
@@ -318,7 +318,7 @@
 
 - (void)didPresseQRCodeScaner {
     
-    QRCodeViewController* controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewControllerForSend];
+    QRCodeViewController* controller = (QRCodeViewController*)[SLocator.controllersFactory createQRCodeViewControllerForSend];
     controller.delegate = self;
     self.qrCodeOutput = controller;
     [self.navigationController pushViewController:controller animated:YES];
@@ -326,7 +326,7 @@
 
 - (void)didPresseChooseToken {
     
-    NSObject <ChoseTokenPaymentOutput>* tokenController = (NSObject <ChoseTokenPaymentOutput>*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
+    NSObject <ChoseTokenPaymentOutput>* tokenController = (NSObject <ChoseTokenPaymentOutput>*)[SLocator.controllersFactory createChoseTokenPaymentViewController];
     tokenController.delegate = self;
     tokenController.delegateDataSource = [[TableSourcesFactory sharedInstance] createSendTokenPaymentSource];
     tokenController.delegateDataSource.activeToken = self.token;

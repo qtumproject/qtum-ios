@@ -48,7 +48,7 @@
 
 - (void)start {
     
-    NSObject<QStoreMainOutput> *mainScreen = (NSObject<QStoreMainOutput> *)[[ControllersFactory sharedInstance] createQStoreMainViewController];
+    NSObject<QStoreMainOutput> *mainScreen = (NSObject<QStoreMainOutput> *)[SLocator.controllersFactory createQStoreMainViewController];
     mainScreen.delegate = self;
     self.mainScreen = mainScreen;
     [self.navigationController pushViewController:[mainScreen toPresent] animated:YES];
@@ -64,7 +64,7 @@
 #pragma mark - QStoreMainOutputDelegate
 
 - (void)didSelectQStoreCategories {
-    NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[[ControllersFactory sharedInstance] createQStoreListViewController];
+    NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[SLocator.controllersFactory createQStoreListViewController];
     controller.delegate = self;
     controller.type = QStoreCategories;
     
@@ -73,7 +73,7 @@
 
 - (void)didSelectQStoreContractElement:(QStoreContractElement *)element {
     
-    NSObject<QStoreContractOutput> *controller = (NSObject<QStoreContractOutput> *)[[ControllersFactory sharedInstance] createQStoreContractViewController];
+    NSObject<QStoreContractOutput> *controller = (NSObject<QStoreContractOutput> *)[SLocator.controllersFactory createQStoreContractViewController];
     self.contractScreen = controller;
     [controller setBuyRequest:[[QStoreManager sharedInstance] requestWithContractId:element.idString]];
     [controller setContract:element];
@@ -99,7 +99,7 @@
 
 - (void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token fromQStore:(BOOL)fromQStore {
     
-    NSObject <ContractFunctionDetailOutput>* output = [[ControllersFactory sharedInstance] createTokenFunctionDetailViewController];
+    NSObject <ContractFunctionDetailOutput>* output = [SLocator.controllersFactory createTokenFunctionDetailViewController];
     output.function = item;
     output.delegate = self;
     output.token = token;
@@ -221,7 +221,7 @@
 
 - (void)didPressedTemplateDetailWithAbi:(NSString*) abi {
     
-    NSObject<QStoreTemplateDetailOutput> *output = [[ControllersFactory sharedInstance] createQStoreTemplateDetailOutput];
+    NSObject<QStoreTemplateDetailOutput> *output = [SLocator.controllersFactory createQStoreTemplateDetailOutput];
     output.delegate = self;
     InterfaceInputFormModel* interfaceInput = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractInterfaceManager arrayFromAbiString:abi]];
     output.formModel = interfaceInput;
@@ -232,7 +232,7 @@
 
 - (void)didSelectQStoreCategory:(QStoreCategory *)category {
     
-    NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[[ControllersFactory sharedInstance] createQStoreListViewController];
+    NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[SLocator.controllersFactory createQStoreListViewController];
     controller.delegate = self;
     controller.type = QStoreContracts;
     controller.categoryTitle = category.name;

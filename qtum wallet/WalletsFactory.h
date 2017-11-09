@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Wallet.h"
 
 @interface WalletsFactory : NSObject
 

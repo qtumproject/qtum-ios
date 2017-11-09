@@ -87,7 +87,7 @@
 
 -(void)start{
     
-    NSObject<WalletOutput> *controller = [[ControllersFactory sharedInstance] createWalletViewController];
+    NSObject<WalletOutput> *controller = [SLocator.controllersFactory createWalletViewController];
     controller.delegate = self;
     
     [self configWallet];
@@ -99,7 +99,7 @@
     controller.tableSource = self.delegateDataSource;
     self.walletViewController = controller;
     
-    NSObject<TokenListOutput>* tokenController = [[ControllersFactory sharedInstance] createTokenListViewController];
+    NSObject<TokenListOutput>* tokenController = [SLocator.controllersFactory createTokenListViewController];
     tokenController.tokens = [[ContractManager sharedInstance] allActiveTokens];
     tokenController.delegate = self;
     controller.delegate = self;
@@ -121,7 +121,7 @@
 
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*) item {
     
-    NSObject<HistoryItemOutput> *controller = [[ControllersFactory sharedInstance] createHistoryItem];
+    NSObject<HistoryItemOutput> *controller = [SLocator.controllersFactory createHistoryItem];
     controller.item = item;
     controller.delegate = self;
     [self.navigationController pushViewController:[controller toPresent] animated:YES];
@@ -131,7 +131,7 @@
 
 - (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item{
 
-    NSObject <TokenDetailOutput> *output = [[ControllersFactory sharedInstance] createTokenDetailsViewController];
+    NSObject <TokenDetailOutput> *output = [SLocator.controllersFactory createTokenDetailsViewController];
     self.tokenDetailsViewController = output;
     self.tokenDetailsTableSource = [[TableSourcesFactory sharedInstance] createTokenDetailSource];
     self.tokenDetailsTableSource.token = item;
@@ -146,12 +146,12 @@
 
 -(void)showAddressInfoWithSpendable:(id <Spendable>) spendable {
     
-    NSObject<RecieveOutput> *vc = [[ControllersFactory sharedInstance] createRecieveViewController];
+    NSObject<RecieveOutput> *vc = [SLocator.controllersFactory createRecieveViewController];
     
     if ([spendable isKindOfClass:[Contract class]]) {
         
         Contract* contract = (Contract*)spendable;
-        vc.walletAddress = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+        vc.walletAddress = SLocator.walletManager.wallet.mainAddress;
         vc.type = ReciveTokenOutput;
         vc.tokenAddress = spendable.mainAddress;
         vc.currency = spendable.symbol;
@@ -204,7 +204,7 @@
 
 -(void)configWallet {
     
-    self.wallet = (id <Spendable>)[ApplicationCoordinator sharedInstance].walletManager.wallet;
+    self.wallet = (id <Spendable>)SLocator.walletManager.wallet;
 }
 
 -(void)setWalletToDelegates {
@@ -370,10 +370,10 @@
 
 -(void)didPressedChooseAddressWithPreviusAddress:(NSString*) prevAddress {
 
-    NSObject<ChooseReciveAddressOutput> *output = [[ControllersFactory sharedInstance] createChooseReciveAddressOutput];
+    NSObject<ChooseReciveAddressOutput> *output = [SLocator.controllersFactory createChooseReciveAddressOutput];
     output.delegate = self;
     output.prevAddress = prevAddress;
-    output.addresses = [ApplicationCoordinator sharedInstance].walletManager.wallet.allKeysAdreeses;
+    output.addresses = SLocator.walletManager.wallet.allKeysAdreeses;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
@@ -382,7 +382,7 @@
     [self.navigationController popViewControllerAnimated:YES];
     
     self.reciveOutput.walletAddress = address;
-    [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress = address;
+    SLocator.walletManager.wallet.mainAddress = address;
     [self.reciveOutput updateControls];
 }
 
@@ -391,7 +391,7 @@
 
 - (void)didShowQRCodeScan {
     
-    QRCodeViewController *vc = [[ControllersFactory sharedInstance] createQRCodeViewControllerForWallet];
+    QRCodeViewController *vc = [SLocator.controllersFactory createQRCodeViewControllerForWallet];
     vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }

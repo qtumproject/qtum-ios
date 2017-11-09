@@ -33,7 +33,7 @@
 
 -(void)start {
     
-    NSObject <TokenAddressLibraryOutput> *output = [[ControllersFactory sharedInstance] createTokenAddressControllOutput];
+    NSObject <TokenAddressLibraryOutput> *output = [SLocator.controllersFactory createTokenAddressControllOutput];
     output.delegate = self;
     output.addressesValueHashTable = self.token.addressBalanceDivByDecimalDictionary;
     output.symbol = self.token.symbol;

@@ -35,8 +35,8 @@
 
 -(void)start {
     
-    NSObject <AddressControlOutput> *output = [[ControllersFactory sharedInstance] createAddressControllOutput];
-    self.addressKeyHashTable = [[ApplicationCoordinator sharedInstance].walletManager.wallet addressKeyHashTable];
+    NSObject <AddressControlOutput> *output = [SLocator.controllersFactory createAddressControllOutput];
+    self.addressKeyHashTable = [SLocator.walletManager.wallet addressKeyHashTable];
     output.delegate = self;
     self.addressOutput = output;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
@@ -48,7 +48,7 @@
     [[PopUpsManager sharedInstance] showLoaderPopUp];
     
     __weak __typeof(self)weakSelf = self;
-    [SLocator.requestManager getUnspentOutputsForAdreses:[[ApplicationCoordinator sharedInstance].walletManager.wallet allKeysAdreeses] isAdaptive:YES successHandler:^(id responseObject) {
+    [SLocator.requestManager getUnspentOutputsForAdreses:[SLocator.walletManager.wallet allKeysAdreeses] isAdaptive:YES successHandler:^(id responseObject) {
         [weakSelf updateAddresesListWithResponse:responseObject];
         [[PopUpsManager sharedInstance] dismissLoader];
 

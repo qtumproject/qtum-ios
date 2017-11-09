@@ -111,7 +111,7 @@ static NSInteger constantFee = 400000000;
         
         NSArray <BTCTransactionOutput*>* __block unspentOutputs = @[];
         
-        [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
+        [SLocator.walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
             
             unspentOutputs = responseObject;
             dispatch_semaphore_signal(semaphore);
@@ -289,7 +289,7 @@ static NSInteger constantFee = 400000000;
                                                     andBitcode:hashFuction
                                                  fromAddresses:@[addressWithAmountValue]
                                                      toAddress:nil
-                                                    walletKeys:[ApplicationCoordinator sharedInstance].walletManager.wallet.allKeys
+                                                    walletKeys:SLocator.walletManager.wallet.allKeys
                                                            fee:fee gasPrice:gasPrice gasLimit:gasLimit
                                                     andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedFee) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -330,7 +330,7 @@ static NSInteger constantFee = 400000000;
     
         NSArray <BTCTransactionOutput*>* __block unspentOutputs = @[];
         
-        [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
+        [SLocator.walletManager.requestAdapter getunspentOutputs:walletAddreses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
             unspentOutputs = responseObject;
             dispatch_semaphore_signal(semaphore);
         } andFailureHandler:^(NSError *error, NSString *message) {
@@ -466,7 +466,7 @@ static NSInteger constantFee = 400000000;
 
         NSArray <BTCTransactionOutput*>* __block unspentOutputs = @[];
         
-        [[ApplicationCoordinator sharedInstance].walletManager.requestAdapter getunspentOutputs:fromAddresses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
+        [SLocator.walletManager.requestAdapter getunspentOutputs:fromAddresses withSuccessHandler:^(NSArray <BTCTransactionOutput*>*responseObject) {
             unspentOutputs = responseObject;
             dispatch_semaphore_signal(semaphore);
         } andFailureHandler:^(NSError *error, NSString *message) {

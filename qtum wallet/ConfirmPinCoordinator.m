@@ -60,7 +60,7 @@
 
 -(void)showSecurityLoginController {
     
-    LoginViewController* controller = (LoginViewController*)[[ControllersFactory sharedInstance] createLoginController];
+    LoginViewController* controller = (LoginViewController*)[SLocator.controllersFactory createLoginController];
     controller.delegate = self;
     [self displayContentController:controller];
     self.loginOutput = controller;
@@ -124,7 +124,7 @@
     
     if (![self checkStatusAndShowTimeAlertIfNeeded]) {
         
-        if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
+        if ([SLocator.walletManager verifyPin:pin]) {
             
             [NSUserDefaults saveFailedPinCount:0];
             [self loginUser];

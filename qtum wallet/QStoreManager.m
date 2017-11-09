@@ -242,7 +242,7 @@ NSInteger const QStoreSearchCount = 20;
     
     NSArray *array = @[@{@"amount" : [buyRequest getAmountNumber], @"address" : buyRequest.addressString}];
     
-    [SLocator.transactionManager sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet
+    [SLocator.transactionManager sendTransactionWalletKeys:[SLocator.walletManager.wallet
                                                                     allKeys]
                                                 toAddressAndAmount:array
                                                                fee:nil

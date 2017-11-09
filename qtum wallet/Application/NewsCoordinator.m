@@ -36,7 +36,7 @@
 
 -(void)start {
     
-    NSObject<NewsOutput> *newsOutput = [[ControllersFactory sharedInstance] createNewsOutput];
+    NSObject<NewsOutput> *newsOutput = [SLocator.controllersFactory createNewsOutput];
     newsOutput.delegate = self;
     self.newsController = newsOutput;
     __weak __typeof(self) weakSelf = self;
@@ -100,7 +100,7 @@
 
 -(void)showNewsWithNewsItem:(QTUMNewsItem*) newsItem {
     
-    NSObject<NewsDetailOutput> *newsOutput = [[ControllersFactory sharedInstance] createNewsDetailOutput];
+    NSObject<NewsDetailOutput> *newsOutput = [SLocator.controllersFactory createNewsDetailOutput];
     newsOutput.newsItem = newsItem;
     NewsDetailCellBuilder *cellBuilder = [NewsDetailCellBuilder new];
     newsOutput.cellBuilder = cellBuilder;

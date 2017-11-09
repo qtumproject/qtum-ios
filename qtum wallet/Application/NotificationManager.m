@@ -159,7 +159,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf storeDeviceToken];
-                    [[ApplicationCoordinator sharedInstance].walletManager startObservingForAllSpendable];
+                    [SLocator.walletManager startObservingForAllSpendable];
                     [[ContractManager sharedInstance] startObservingForAllSpendable];
                 });
             });

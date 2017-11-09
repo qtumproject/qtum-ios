@@ -98,7 +98,7 @@
 
 -(BOOL)isLongPin {
     
-    return [ApplicationCoordinator sharedInstance].walletManager.isLongPin;
+    return SLocator.walletManager.isLongPin;
 }
 
 -(BOOL)isRemovingContractTrainingPassed {

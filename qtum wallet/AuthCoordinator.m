@@ -62,14 +62,14 @@
 
 -(void)resetToRootAnimated:(BOOL)animated {
 
-    NSObject<FirstAuthOutput>* controller = (FirstAuthViewController*)[[ControllersFactory sharedInstance] createFirstAuthController];
+    NSObject<FirstAuthOutput>* controller = (FirstAuthViewController*)[SLocator.controllersFactory createFirstAuthController];
     controller.delegate = self;
     animated ? [self.navigationController popToRootViewControllerAnimated:YES] : [self.navigationController setViewControllers:@[[controller toPresent]]];
     self.firstController = controller;
 }
 
 -(void)gotoCreateWallet {
-    WalletNameViewController* controller = (WalletNameViewController*)[[ControllersFactory sharedInstance] createWalletNameCreateController];
+    WalletNameViewController* controller = (WalletNameViewController*)[SLocator.controllersFactory createWalletNameCreateController];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
     self.createWalletController = controller;
@@ -77,7 +77,7 @@
 
 -(void)gotoRestoreWallet {
     
-    NSObject<RestoreWalletOutput>* output = [[ControllersFactory sharedInstance] createRestoreWalletController];
+    NSObject<RestoreWalletOutput>* output = [SLocator.controllersFactory createRestoreWalletController];
     output.delegate = self;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
     self.restoreWalletOutput = output;
@@ -85,7 +85,7 @@
 
 -(void)gotoCreatePin {
     
-    CreatePinViewController* controller = (CreatePinViewController*)[[ControllersFactory sharedInstance] createCreatePinController];
+    CreatePinViewController* controller = (CreatePinViewController*)[SLocator.controllersFactory createCreatePinController];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
     self.createPinController = controller;
@@ -93,23 +93,23 @@
 
 -(void)gotoRepeatePin {
     
-    RepeateViewController* controller = (RepeateViewController*)[[ControllersFactory sharedInstance] createRepeatePinController];
+    RepeateViewController* controller = (RepeateViewController*)[SLocator.controllersFactory createRepeatePinController];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
     self.repeatePinController = controller;
 }
 
 -(void)gotoFingerpringOption {
-    EnableFingerprintViewController* controller = (EnableFingerprintViewController*)[[ControllersFactory sharedInstance] createEnableFingerprintViewController];
+    EnableFingerprintViewController* controller = (EnableFingerprintViewController*)[SLocator.controllersFactory createEnableFingerprintViewController];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)gotoExportWallet {
     
-    NSObject<ExportWalletBrandKeyOutput>* output = (ExportWalletBrandKeyViewController*)[[ControllersFactory sharedInstance] createExportWalletBrandKeyViewController];
+    NSObject<ExportWalletBrandKeyOutput>* output = (ExportWalletBrandKeyViewController*)[SLocator.controllersFactory createExportWalletBrandKeyViewController];
     output.delegate = self;
-    output.brandKey = [[ApplicationCoordinator sharedInstance].walletManager brandKeyWithPin:self.walletPin];
+    output.brandKey = [SLocator.walletManager brandKeyWithPin:self.walletPin];
     [self.navigationController pushViewController:[output toPresent] animated:YES];
     self.exportWalletOutput = output;
 }
@@ -134,8 +134,8 @@
 
 -(void)goToWalletFlow {
     
-    [[ApplicationCoordinator sharedInstance].walletManager storePin:self.walletPin];
-    BOOL startingSuccess = [[ApplicationCoordinator sharedInstance].walletManager startWithPin:self.walletPin];
+    [SLocator.walletManager storePin:self.walletPin];
+    BOOL startingSuccess = [SLocator.walletManager startWithPin:self.walletPin];
     NSError* error = startingSuccess ? nil : [NSError new];
     [self.repeatePinController endCreateWalletWithError:error];
 }
@@ -207,7 +207,7 @@
     if ([self.walletPin isEqualToString:pin] && !self.walletRestored) {
         
         [[ApplicationCoordinator sharedInstance] clear];
-        [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
+        [SLocator.walletManager createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
             
             [weakSelf goToWalletFlow];
         } andFailureHandler:^{
@@ -217,7 +217,7 @@
     } else if ([self.walletPin isEqualToString:pin]) {
         
         [[ApplicationCoordinator sharedInstance] clear];
-        [[ApplicationCoordinator sharedInstance].walletManager createNewWalletWithName:self.walletName pin:self.walletPin seedWords:self.walletBrainKey withSuccessHandler:^(Wallet *newWallet) {
+        [SLocator.walletManager createNewWalletWithName:self.walletName pin:self.walletPin seedWords:self.walletBrainKey withSuccessHandler:^(Wallet *newWallet) {
             
             [weakSelf goToWalletFlow];
         } andFailureHandler:^{

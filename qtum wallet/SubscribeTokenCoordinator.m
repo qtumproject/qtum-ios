@@ -45,7 +45,7 @@
 
 -(void)start {
     
-    NSObject <SubscribeTokenOutput>* output = (NSObject <SubscribeTokenOutput>*)[[ControllersFactory sharedInstance] createSubscribeTokenViewController];
+    NSObject <SubscribeTokenOutput>* output = (NSObject <SubscribeTokenOutput>*)[SLocator.controllersFactory createSubscribeTokenViewController];
     output.delegate = self;
     output.delegateDataSource = [[TableSourcesFactory sharedInstance] createSubscribeTokenDataDisplayManager];
     output.tokensArray = [self sortingContractsByDate:[[ContractManager sharedInstance] allTokens]];

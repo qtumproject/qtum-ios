@@ -93,11 +93,11 @@
 
 -(void)enterPin:(NSString*) pin {
     
-    if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
+    if ([SLocator.walletManager verifyPin:pin]) {
         
         //in case if touchid was disabled
         if (self.type == EnableTouchIdVerification) {
-            [[ApplicationCoordinator sharedInstance].walletManager storePin:pin];
+            [SLocator.walletManager storePin:pin];
         }
         
         [self enterUser];

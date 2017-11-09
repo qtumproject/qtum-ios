@@ -246,7 +246,7 @@
 
 - (void)startObservingAdresses:(NSArray*) addresses {
     
-    [self.socketManager subscripeToUpdateWalletAdresses:[[ApplicationCoordinator sharedInstance].walletManager wallet].allKeysAdreeses];
+    [self.socketManager subscripeToUpdateWalletAdresses:[SLocator.walletManager wallet].allKeysAdreeses];
 }
 
 - (void)stopObservingAdresses:(NSArray*) addresses {

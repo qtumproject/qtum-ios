@@ -200,7 +200,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
         updatedView = (QTUMAddressTokenView *)[self getViewFromXib:[QTUMAddressTokenView class]];
     }
     updatedView.delegate = self;
-    updatedView.addressLabel.text = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+    updatedView.addressLabel.text = SLocator.walletManager.wallet.mainAddress;
     return updatedView;
 }
 
