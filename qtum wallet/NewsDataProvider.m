@@ -17,6 +17,7 @@
 @property (strong, nonatomic) QTUMFeedParcer* parcer;
 @property (strong, nonatomic) QTUMHtmlParcer* htmlParcer;
 @property (nonatomic, copy) QTUMNewsItems completion;
+@property (nonatomic, copy) gettingNewsFailedBlock failure;
 @property (nonatomic, strong) NSOperationQueue* storingQueue;
 
 @end
@@ -44,10 +45,10 @@ NSString *const kNewsCache = @"kArchivedNewsDict";
     return _storingQueue;
 }
 
--(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion {
+-(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion andFailure:(gettingNewsFailedBlock) failure{
     
     self.completion = completion;
-    
+    self.failure = failure;
     __weak __typeof(self)weakSelf = self;
     
     NSMutableArray <QTUMNewsItem*>* news = @[].mutableCopy;
@@ -76,6 +77,12 @@ NSString *const kNewsCache = @"kArchivedNewsDict";
         };
         
         [weakSelf.storingQueue addOperationWithBlock:block];
+    } andFailure:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakSelf.failure) {
+                weakSelf.failure();
+            }
+        });
     }];
 
     self.parcer = parcer;

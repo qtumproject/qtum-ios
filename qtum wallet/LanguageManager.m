@@ -16,15 +16,12 @@ static NSString * const LanguageSaveKey = @"currentLanguageKey";
 
 @implementation LanguageManager
 
-+ (void)setupCurrentLanguage
-{
++ (void)setupCurrentLanguage {
+    
     NSString *currentLanguage = [NSUserDefaults getLanguage];
     if (!currentLanguage) {
-        NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
-        if (languages.count > 0) {
-            currentLanguage = languages[0];
-            [NSUserDefaults saveLanguage:currentLanguage];
-        }
+        currentLanguage = LanguageCodes[0];
+        [NSUserDefaults saveLanguage:currentLanguage];
     }	
 
     [[NSUserDefaults standardUserDefaults] setObject:@[currentLanguage] forKey:@"AppleLanguages"];

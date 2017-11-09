@@ -50,7 +50,7 @@
     [SLocator.newsDataProvider getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
         weakSelf.newsController.news = news;
         [weakSelf.newsController reloadTableView];
-    }];
+    } andFailure:nil];
     
     [self.navigationController setViewControllers:@[[newsOutput toPresent]]];
 }
@@ -65,6 +65,8 @@
     [SLocator.newsDataProvider getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
         weakSelf.newsController.news = news;
         [weakSelf.newsController reloadTableView];
+        [weakSelf.newsController stopLoadingIfNeeded];
+    } andFailure:^{
         [weakSelf.newsController stopLoadingIfNeeded];
     }];
 }

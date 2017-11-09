@@ -14,8 +14,10 @@
 @interface NewsDataProvider : NSObject
 
 typedef void(^QTUMNewsItems) (NSArray <QTUMNewsItem*>* feeds);
+typedef void(^gettingNewsFailedBlock)(void);
 
--(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion;
+
+-(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion andFailure:(gettingNewsFailedBlock) failure;
 -(void)getTagsFromNews:(QTUMNewsItem*) newsItem withCompletion:(QTUMTagsItems) completion;
 -(NSArray <QTUMNewsItem*>*)obtainNewsItems;
 -(void)cancelAllOperations;

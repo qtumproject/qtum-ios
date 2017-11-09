@@ -12,6 +12,7 @@
 @interface QTUMFeedParcer () <MWFeedParserDelegate>
 
 @property (nonatomic, copy) QTUMFeeds completion;
+@property (nonatomic, copy) gettingFeedFailedBlock failure;
 @property (nonatomic, strong) MWFeedParser* feedParcer;
 @property (nonatomic, strong) NSMutableArray* feedItems;
 @property (nonatomic, strong) NSOperationQueue* workingQueue;
@@ -41,7 +42,7 @@
 }
 #pragma mark - Public
 
--(void)parceFeedFromUrl:(NSString*) url withCompletion:(QTUMFeeds) completion {
+-(void)parceFeedFromUrl:(NSString*) url withCompletion:(QTUMFeeds) completion andFailure:(gettingFeedFailedBlock) failure {
     
     __weak __typeof(self)weakSelf = self;
     
@@ -57,6 +58,7 @@
     };
 
     self.completion = completion;
+    self.failure = failure;
     [self.workingQueue addOperationWithBlock:block];
 }
 
@@ -80,7 +82,6 @@
     };
     
     [self.workingQueue addOperationWithBlock:block];
-
 }
 
 - (void)feedParserDidFinish:(MWFeedParser *)parser{
@@ -107,7 +108,11 @@
     [self.workingQueue addOperationWithBlock:block];
 }
 
-- (void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error{; // Parsing failed}
+- (void)feedParser:(MWFeedParser *)parser didFailWithError:(NSError *)error{
+    
+    if (self.failure) {
+        self.failure();
+    }
 }
 
 #pragma mark - Cancelable
