@@ -26,6 +26,7 @@ typedef void(^deleteFailedBlock)(void);
 - (NSString*)saveFileWithName:(NSString *)fileName withData:(NSData *)data;
 - (NSString*)saveGroupFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
 - (NSString*)addGropFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
+- (NSString*)deleteGroupFileWithName:(NSString *)fileName valueForKey:(NSString *)key;
 - (void)createFile:(NSString*)path fileName:(NSString*)filename;
 - (BOOL)deleteDefaultFile:(NSString*)fileName;
 - (BOOL)deleteFile:(NSString*)path success:(deleteSuccessBlock)success failed:(deleteFailedBlock)failed;

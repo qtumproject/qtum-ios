@@ -100,6 +100,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 }
 
 - (NSDictionary *)hashTableOfKeys {
+    
     NSMutableDictionary *hashTable = [NSMutableDictionary new];
     for (BTCKey *key in [[self wallet] allKeys]) {
         NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
@@ -111,6 +112,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 }
 
 - (NSDictionary *)hashTableOfKeysForHistoryElement {
+    
     NSMutableDictionary *hashTable = [NSMutableDictionary new];
     for (NSString *keyString in [[self wallet] allKeysAdreeses]) {
         if (keyString) {

@@ -95,7 +95,9 @@ NSInteger const USERS_KEYS_COUNT = 10;
 }
 
 - (void)clearPublicAddresses {
+    
     [NSUserDefaults savePublicAddresses:nil];
+    [SLocator.dataOperation deleteGroupFileWithName:groupFileName valueForKey:@"kWalletAddressKey"];
 }
 
 - (BOOL)changeBrandKeyPinWithOldPin:(NSString*) pin toNewPin:(NSString*) newPin {
@@ -130,7 +132,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
     if (!_mainAddress) {
         
         NSString* mainAddress = [self getStoredLastAddressKey];
-        if (!mainAddress) {
+        if (!mainAddress || ![self.addressKeyHashTable objectForKey:mainAddress]) {
             BTCKey* key = [self lastRandomKeyOrRandomKey];
             mainAddress = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
         }
