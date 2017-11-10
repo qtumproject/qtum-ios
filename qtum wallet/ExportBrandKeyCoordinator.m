@@ -36,7 +36,7 @@
     
     [self showSecurityLoginOutput];
     
-    if ([AppSettings sharedInstance].isFingerprintEnabled) {
+    if (SLocator.appSettings.isFingerprintEnabled) {
         
         [self showFingerprint];
     } else {
@@ -49,7 +49,7 @@
 
 -(void)enterPin:(NSString*) pin {
     
-    if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
+    if ([SLocator.walletManager verifyPin:pin]) {
         [self showExportOutputWithPin:pin];
     }else {
         [self.loginOutput applyFailedPasswordAction];
@@ -58,7 +58,7 @@
 
 -(void)showSecurityLoginOutput {
     
-    NSObject<LoginViewOutput>* controller = [[ControllersFactory sharedInstance] createConfirmPinForExportViewController];
+    NSObject<LoginViewOutput>* controller = [SLocator.controllersFactory createConfirmPinForExportViewController];
     controller.delegate = self;
     self.loginOutput = controller;
     [self.navigationController pushViewController:[controller toPresent] animated:YES];
@@ -82,8 +82,8 @@
 
 -(void)showExportOutputWithPin:(NSString*) pin {
     
-    self.exportBrainKeyOutput = [[ControllersFactory sharedInstance] createExportBrainKeyViewController];
-    self.exportBrainKeyOutput.brandKey = [[ApplicationCoordinator sharedInstance].walletManager brandKeyWithPin:pin];
+    self.exportBrainKeyOutput = [SLocator.controllersFactory createExportBrainKeyViewController];
+    self.exportBrainKeyOutput.brandKey = [SLocator.walletManager brandKeyWithPin:pin];
     self.exportBrainKeyOutput.delegate = self;
     [self.navigationController pushViewController:[self.exportBrainKeyOutput toPresent] animated:YES];
 }

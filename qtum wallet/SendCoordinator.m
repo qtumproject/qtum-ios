@@ -11,7 +11,6 @@
 #import "NewPaymentDarkViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
-#import "TransactionManager.h"
 #import "NewPaymentOutput.h"
 #import "ChoseTokenPaymentOutput.h"
 #import "ChooseTokenPaymentDelegateDataSourceProtocol.h"
@@ -54,7 +53,7 @@
 
 -(void)start {
     
-    NSObject <NewPaymentOutput> *controller = [[ControllersFactory sharedInstance] createNewPaymentDarkViewController];
+    NSObject <NewPaymentOutput> *controller = [SLocator.controllersFactory createNewPaymentDarkViewController];
     controller.delegate = self;
     self.paymentOutput = controller;
     [self.navigationController setViewControllers:@[[controller toPresent]]];
@@ -62,7 +61,7 @@
     [self.paymentOutput showLoaderPopUp];
     
     __weak __typeof(self)weakSelf = self;
-    [[TransactionManager sharedInstance] getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
+    [SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
         
         QTUMBigNumber* minFee = feePerKb;
         QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
@@ -161,7 +160,7 @@
             self.token = nil;
         }
         
-        [weakSelf.paymentOutput updateControlsWithTokensExist:tokens.count choosenTokenExist:tokenExists walletBalance:[ApplicationCoordinator sharedInstance].walletManager.wallet.balance andUnconfimrmedBalance:[ApplicationCoordinator sharedInstance].walletManager.wallet.unconfirmedBalance];
+        [weakSelf.paymentOutput updateControlsWithTokensExist:tokens.count choosenTokenExist:tokenExists walletBalance:SLocator.walletManager.wallet.balance andUnconfimrmedBalance:SLocator.walletManager.wallet.unconfirmedBalance];
     });
 }
 
@@ -176,8 +175,8 @@
     [self showLoaderPopUp];
     
     __weak typeof(self) weakSelf = self;
-    NSArray<BTCKey*>* addresses = self.fromAddressKey ? @[self.fromAddressKey] : [[ApplicationCoordinator sharedInstance].walletManager.wallet allKeys];
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:addresses
+    NSArray<BTCKey*>* addresses = self.fromAddressKey ? @[self.fromAddressKey] : [SLocator.walletManager.wallet allKeys];
+    [SLocator.transactionManager sendTransactionWalletKeys:addresses
                                                 toAddressAndAmount:array
                                                                fee:fee
                                                         andHandler:^(TransactionManagerErrorType errorType,
@@ -207,7 +206,7 @@
     __weak typeof(self) weakSelf = self;
     
     if (self.fromAddressString) {
-        [[TransactionManager sharedInstance] sendToken:self.token
+        [SLocator.transactionManager sendToken:self.token
                                            fromAddress:self.fromAddressString
                                              toAddress:address
                                                 amount:amounDivByDecimals
@@ -227,7 +226,7 @@
                                                 }
                                             }];
     } else {
-        [[TransactionManager sharedInstance] sendTransactionToToken:self.token
+        [SLocator.transactionManager sendTransactionToToken:self.token
                                                           toAddress:address
                                                              amount:amounDivByDecimals
                                                                 fee:fee
@@ -319,7 +318,7 @@
 
 - (void)didPresseQRCodeScaner {
     
-    QRCodeViewController* controller = (QRCodeViewController*)[[ControllersFactory sharedInstance] createQRCodeViewControllerForSend];
+    QRCodeViewController* controller = (QRCodeViewController*)[SLocator.controllersFactory createQRCodeViewControllerForSend];
     controller.delegate = self;
     self.qrCodeOutput = controller;
     [self.navigationController pushViewController:controller animated:YES];
@@ -327,7 +326,7 @@
 
 - (void)didPresseChooseToken {
     
-    NSObject <ChoseTokenPaymentOutput>* tokenController = (NSObject <ChoseTokenPaymentOutput>*)[[ControllersFactory sharedInstance] createChoseTokenPaymentViewController];
+    NSObject <ChoseTokenPaymentOutput>* tokenController = (NSObject <ChoseTokenPaymentOutput>*)[SLocator.controllersFactory createChoseTokenPaymentViewController];
     tokenController.delegate = self;
     tokenController.delegateDataSource = [[TableSourcesFactory sharedInstance] createSendTokenPaymentSource];
     tokenController.delegateDataSource.activeToken = self.token;

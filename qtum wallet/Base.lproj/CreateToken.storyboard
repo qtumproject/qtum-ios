@@ -1264,63 +1264,26 @@
                                 <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2LE-Tt-JSk">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZm-4c-Gd1">
-                                        <rect key="frame" x="105" y="285.5" width="166" height="33"/>
-                                        <string key="text">Swipe Left to Unsubscribe
-or Delete Contract</string>
-                                        <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="14"/>
-                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-swipe-contract" translatesAutoresizingMaskIntoConstraints="NO" id="gZx-vQ-9ky">
-                                        <rect key="frame" x="178.5" y="234.5" width="19" height="31"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.75465539383561642" colorSpace="custom" customColorSpace="sRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="lZm-4c-Gd1" firstAttribute="top" secondItem="gZx-vQ-9ky" secondAttribute="bottom" constant="20" id="J1b-Qw-4we"/>
-                                    <constraint firstItem="lZm-4c-Gd1" firstAttribute="centerX" secondItem="2LE-Tt-JSk" secondAttribute="centerX" id="QqF-yO-mET"/>
-                                    <constraint firstItem="lZm-4c-Gd1" firstAttribute="centerY" secondItem="2LE-Tt-JSk" secondAttribute="centerY" id="gF7-sb-JCm"/>
-                                    <constraint firstItem="gZx-vQ-9ky" firstAttribute="centerX" secondItem="2LE-Tt-JSk" secondAttribute="centerX" id="uMX-nJ-SyZ"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="9Oe-r7-Kom" appends="YES" id="s76-eW-wQf"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="2LE-Tt-JSk" secondAttribute="bottom" id="9e6-LQ-biz"/>
                             <constraint firstAttribute="right" secondItem="Qou-v0-667" secondAttribute="right" id="9fa-zD-400"/>
                             <constraint firstItem="LS9-GW-as5" firstAttribute="centerY" secondItem="Qou-v0-667" secondAttribute="centerY" id="DDw-R5-Mxa"/>
                             <constraint firstItem="fKc-3a-11w" firstAttribute="leading" secondItem="Zzb-n4-caS" secondAttribute="leading" id="Dei-OV-QJb"/>
-                            <constraint firstItem="2LE-Tt-JSk" firstAttribute="leading" secondItem="Zzb-n4-caS" secondAttribute="leading" id="Pe7-rA-nwV"/>
                             <constraint firstItem="Qou-v0-667" firstAttribute="top" secondItem="fKc-3a-11w" secondAttribute="bottom" id="W7n-aQ-n08"/>
-                            <constraint firstAttribute="trailing" secondItem="2LE-Tt-JSk" secondAttribute="trailing" id="cbW-AG-V8a"/>
                             <constraint firstAttribute="bottom" secondItem="Qou-v0-667" secondAttribute="bottom" id="iCb-RT-pSM"/>
                             <constraint firstItem="Qou-v0-667" firstAttribute="leading" secondItem="Zzb-n4-caS" secondAttribute="leading" id="lh9-A0-gR4"/>
                             <constraint firstItem="fKc-3a-11w" firstAttribute="top" secondItem="Zzb-n4-caS" secondAttribute="top" id="oYY-Rc-V5c"/>
                             <constraint firstAttribute="trailing" secondItem="fKc-3a-11w" secondAttribute="trailing" id="oo8-Su-85p"/>
                             <constraint firstItem="LS9-GW-as5" firstAttribute="centerX" secondItem="Qou-v0-667" secondAttribute="centerX" id="uVW-PY-Set"/>
-                            <constraint firstItem="2LE-Tt-JSk" firstAttribute="top" secondItem="fKc-3a-11w" secondAttribute="bottom" id="xUQ-sS-lMs"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emptyTableLabel" destination="LS9-GW-as5" id="NYL-p6-ycl"/>
                         <outlet property="tableView" destination="Qou-v0-667" id="wXK-PE-K5v"/>
-                        <outlet property="trainingView" destination="2LE-Tt-JSk" id="ymH-VS-EZv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGC-hE-HsB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="9Oe-r7-Kom">
-                    <connections>
-                        <action selector="didScipTrainingInfoAction:" destination="UFA-va-j9c" id="XJX-zs-U1j"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1192.8" y="2150.3748125937032"/>
         </scene>
@@ -3523,64 +3486,26 @@ or Delete Contract</string>
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Daa-ki-vh9">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEV-5H-hfp">
-                                        <rect key="frame" x="81" y="280.5" width="213.5" height="42"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <string key="text">Swipe Left to Unsubscribe
-or Delete Contract</string>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-swipe-contract-light" translatesAutoresizingMaskIntoConstraints="NO" id="Uup-Ag-drj">
-                                        <rect key="frame" x="170" y="210.5" width="36" height="50"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.8966984160958904" colorSpace="custom" customColorSpace="sRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="DEV-5H-hfp" firstAttribute="top" secondItem="Uup-Ag-drj" secondAttribute="bottom" constant="20" id="NOo-6T-myE"/>
-                                    <constraint firstItem="Uup-Ag-drj" firstAttribute="centerX" secondItem="Daa-ki-vh9" secondAttribute="centerX" id="fzm-b8-aIA"/>
-                                    <constraint firstItem="DEV-5H-hfp" firstAttribute="centerY" secondItem="Daa-ki-vh9" secondAttribute="centerY" id="hjd-B5-PLZ"/>
-                                    <constraint firstItem="DEV-5H-hfp" firstAttribute="centerX" secondItem="Daa-ki-vh9" secondAttribute="centerX" id="uhs-SH-vYR"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="F5m-0M-EWH" appends="YES" id="vge-Jb-aJH"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tFb-Wa-I6V" firstAttribute="leading" secondItem="unK-fV-YNI" secondAttribute="leading" id="2E4-9w-P2x"/>
-                            <constraint firstItem="Daa-ki-vh9" firstAttribute="leading" secondItem="unK-fV-YNI" secondAttribute="leading" id="4HG-xd-PcI"/>
                             <constraint firstItem="bVx-qb-CS1" firstAttribute="centerY" secondItem="tFb-Wa-I6V" secondAttribute="centerY" id="Edz-Wa-NVf"/>
-                            <constraint firstItem="Daa-ki-vh9" firstAttribute="top" secondItem="5ZJ-rl-P6H" secondAttribute="bottom" id="Lgb-Wh-BP6"/>
                             <constraint firstAttribute="right" secondItem="tFb-Wa-I6V" secondAttribute="right" id="aNs-kb-WJ6"/>
-                            <constraint firstItem="ETi-4s-V0H" firstAttribute="top" secondItem="Daa-ki-vh9" secondAttribute="bottom" id="dh8-gU-O1Y"/>
                             <constraint firstItem="tFb-Wa-I6V" firstAttribute="top" secondItem="5ZJ-rl-P6H" secondAttribute="bottom" id="gIx-is-ose"/>
                             <constraint firstItem="bVx-qb-CS1" firstAttribute="centerX" secondItem="tFb-Wa-I6V" secondAttribute="centerX" id="jN9-gx-n1C"/>
                             <constraint firstItem="5ZJ-rl-P6H" firstAttribute="leading" secondItem="unK-fV-YNI" secondAttribute="leading" id="mml-Rg-wbJ"/>
                             <constraint firstItem="5ZJ-rl-P6H" firstAttribute="top" secondItem="unK-fV-YNI" secondAttribute="top" id="n8C-w0-wAO"/>
                             <constraint firstAttribute="bottom" secondItem="tFb-Wa-I6V" secondAttribute="bottom" id="tOR-Mm-zLq"/>
-                            <constraint firstAttribute="trailing" secondItem="Daa-ki-vh9" secondAttribute="trailing" id="whH-xm-4JP"/>
                             <constraint firstAttribute="trailing" secondItem="5ZJ-rl-P6H" secondAttribute="trailing" id="wvp-kS-Ttr"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emptyTableLabel" destination="bVx-qb-CS1" id="lgh-pd-ikq"/>
                         <outlet property="tableView" destination="tFb-Wa-I6V" id="xkk-eu-Dxg"/>
-                        <outlet property="trainingView" destination="Daa-ki-vh9" id="m9V-sJ-hRq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TV9-Zx-ksO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="F5m-0M-EWH">
-                    <connections>
-                        <action selector="didScipTrainingInfoAction:" destination="eQj-Lz-wEI" id="L9O-54-KaN"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1252" y="4285.9070464767619"/>
         </scene>
@@ -4422,8 +4347,6 @@ or Delete Contract</string>
         <image name="ic-contractStore" width="19" height="23"/>
         <image name="ic-delete-contract-dark" width="15" height="17"/>
         <image name="ic-delete-contract-light" width="15" height="18"/>
-        <image name="ic-swipe-contract" width="19" height="31"/>
-        <image name="ic-swipe-contract-light" width="36" height="50"/>
         <image name="ic-unsubscribe-contract-dark" width="13" height="13"/>
         <image name="ic-unsubscribe-contract-light" width="17" height="17"/>
     </resources>

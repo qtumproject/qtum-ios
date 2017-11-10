@@ -9,6 +9,7 @@
 #import "AddressTransferPopupViewController.h"
 #import "TextFieldWithLine.h"
 #import "NSString+Extension.h"
+#import "ContracBalancesObject.h"
 
 
 @interface AddressTransferPopupViewController () <UITextFieldDelegate>
@@ -98,7 +99,8 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if ([AppSettings sharedInstance].isDarkTheme && textField == self.fromTextFieldView) {
+    
+    if (SLocator.appSettings.isDarkTheme && textField == self.fromTextFieldView) {
         textField.inputView.backgroundColor = customBlackColor();
     }
     
@@ -106,8 +108,9 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
     if (!textField.text.length && [self.fromTextFieldView isEqual:textField]) {
-        self.fromTextFieldView.text = self.fromAddressesVariants.allKeys[0];
+        self.fromTextFieldView.text = self.fromAddressesVariants[0].addressString;
     }
 }
 
@@ -152,17 +155,10 @@
     return 40;
 }
 
-//- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-//    
-//    NSString* fromAddress = self.fromAddressesVariants[row];
-//    self.fromAddress = fromAddress;
-//    return fromAddress;
-//}
-
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
     self.fromAddress =
-    self.fromTextFieldView.text = self.fromAddressesVariants.allKeys[row];
+    self.fromTextFieldView.text = self.fromAddressesVariants[row].addressString;
     [self updateControls];
 }
 
@@ -171,8 +167,8 @@
          forComponent:(NSInteger)component
           reusingView:(UIView *)view {
     
-    NSString* address = self.fromAddressesVariants.allKeys[row];
-    NSString* amount = self.fromAddressesVariants[address][@"longString"];
+    ContracBalancesObject* addressObject = self.fromAddressesVariants[row];
+    NSString* amount = addressObject.longBalanceStringBalance;
     
     UIView* container;
     UILabel* amountLabel;
@@ -188,7 +184,7 @@
                                                                 30)];
         
         addressLabel.backgroundColor = [UIColor clearColor];
-        addressLabel.text = address;
+        addressLabel.text = addressObject.addressString;
         addressLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:14.0f];
         addressLabel.textAlignment = NSTextAlignmentCenter;
         addressLabel.textColor = customBlueColor();
@@ -201,7 +197,7 @@
         
         CGSize size = [amountLabel.text sizeWithAttributes:@{NSFontAttributeName : amountLabel.font}];
         if (size.width > amountLabel.bounds.size.width) {
-            amountLabel.text = self.fromAddressesVariants[address][@"shortString"];;
+            amountLabel.text = addressObject.shortBalanceStringBalance;
         }
         
         [container addSubview:amountLabel];

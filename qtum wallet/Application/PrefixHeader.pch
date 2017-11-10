@@ -21,9 +21,7 @@
 #import "BaseViewController.h"
 #import "NSObject+Extension.h"
 #import "RequestManager.h"
-#import "ImageLoader.h"
 #import "NSString+Extension.h"
-#import "AppSettings.h"
 #import "Spendable.h"
 #import "Managerable.h"
 #import "ContractManager.h"
@@ -39,6 +37,7 @@
 #import "TokensFactory.h"
 #import "WalletsFactory.h"
 #import "TableSourcesFactory.h"
+#import "ServiceLocator.h"
 
 #define SLocator ((ServiceLocator*)[ServiceLocator sharedInstance])
 

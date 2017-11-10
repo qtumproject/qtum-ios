@@ -7,10 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ContractArgumentsInterpretator.h"
 #import "AbiinterfaceEntries.h"
 #import "NSString+Extension.h"
-#import "ServiceLocator.h"
+
 
 @interface ContractParametersInterpreterTest : XCTestCase
 

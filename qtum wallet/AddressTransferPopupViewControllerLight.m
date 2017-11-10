@@ -43,8 +43,8 @@
          forComponent:(NSInteger)component
           reusingView:(UIView *)view {
     
-    NSString* address = self.fromAddressesVariants.allKeys[row];
-    NSString* amount = self.fromAddressesVariants[address][@"longString"];
+    ContracBalancesObject* addressObject = self.fromAddressesVariants[row];
+    NSString* amount = addressObject.longBalanceStringBalance;
     
     UIView* container;
     UILabel* amountLabel;
@@ -60,7 +60,7 @@
                                                                 30)];
 
         addressLabel.backgroundColor = [UIColor clearColor];
-        addressLabel.text = address;
+        addressLabel.text = addressObject.addressString;
         addressLabel.font = [UIFont fontWithName:@"ProximaNova-Semibold" size:14];
         addressLabel.textAlignment = NSTextAlignmentCenter;
         addressLabel.textColor = lightBlackColor();
@@ -73,7 +73,7 @@
         
         CGSize size = [amountLabel.text sizeWithAttributes:@{NSFontAttributeName : amountLabel.font}];
         if (size.width > amountLabel.bounds.size.width) {
-            amountLabel.text = self.fromAddressesVariants[address][@"shortString"];
+            amountLabel.text = addressObject.shortBalanceStringBalance;
         }
         
         [container addSubview:amountLabel];

@@ -10,7 +10,7 @@
 #import "CheckboxButton.h"
 #import "RestoreContractsPopUpViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "ServiceLocator.h"
+
 #import "ErrorPopUpViewController.h"
 #import "InformationPopUpViewController.h"
 

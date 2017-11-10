@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "TemplateManager.h"
-#import "ServiceLocator.h"
+
 
 @interface TemplateManagerTests : XCTestCase
 

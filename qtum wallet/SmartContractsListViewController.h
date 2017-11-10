@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "PublishedContractListOutputDelegate.h"
 #import "PublishedContractListOutput.h"
+#import "RemoveContractTrainigView.h"
 
 @interface SmartContractsListViewController : BaseViewController <PublishedContractListOutput>
+
+@property (weak, nonatomic) RemoveContractTrainigView *trainingView;
 
 @end

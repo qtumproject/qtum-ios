@@ -10,8 +10,6 @@
 #import "HistoryDataStorage.h"
 #import "NSUserDefaults+Settings.h"
 #import "NSString+AES256.h"
-#import "DataOperation.h"
-#import "ServiceLocator.h"
 
 NSInteger const brandKeyWordsCount = 12;
 NSInteger const USERS_KEYS_COUNT = 10;
@@ -86,7 +84,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
     NSMutableArray *addresses = [NSMutableArray new];
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        NSString* keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
         if (keyString) {
             [addresses addObject:keyString];
         }
@@ -123,7 +121,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
 }
 
 
--(NSArray <HistoryElementProtocol>*)historyArray{
+-(NSArray <HistoryElementProtocol>*)historyArray {
+    
     return [self.historyStorage.historyPrivate copy];
 }
 
@@ -134,7 +133,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
         NSString* mainAddress = [self getStoredLastAddressKey];
         if (!mainAddress || ![self.addressKeyHashTable objectForKey:mainAddress]) {
             BTCKey* key = [self lastRandomKeyOrRandomKey];
-            mainAddress = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+            mainAddress = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
         }
         _mainAddress = mainAddress;
     }
@@ -181,7 +180,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
     if (!btcKey) {
         return;
     }
-    NSString* keyString = [AppSettings sharedInstance].isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
+    NSString* keyString = SLocator.appSettings.isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
     [SLocator.dataOperation addGropFileWithName:groupFileName dataSource:@{@"kWalletAddressKey": keyString}];
 }
 
@@ -202,7 +201,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
             [allKeys addObject:[self.keyChain keyAtIndex:(uint)i hardened:YES]];
         }
     }
-    return allKeys;
+    return [allKeys copy];
 }
 
 - (NSString *)stringFromWorldsArray:(NSArray*) words {
@@ -225,10 +224,26 @@ NSInteger const USERS_KEYS_COUNT = 10;
     
     for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
         BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        NSString* keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
         [addressKeyHashTable setObject:key forKey:keyString];
     }
     return [addressKeyHashTable copy];
+}
+
+- (NSArray*)addressesInRightOrder {
+    
+    if (!self.keyChain) {
+        return nil;
+    }
+    
+    NSMutableArray *array = @[].mutableCopy;
+    
+    for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
+        BTCKey* key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
+        NSString* keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
+        [array addObject:keyString];
+    }
+    return [array copy];
 }
 
 #pragma mark - Private Methods
@@ -241,8 +256,8 @@ NSInteger const USERS_KEYS_COUNT = 10;
     return keyChain;
 }
 
-- (NSArray *)generateWordsArray
-{
+- (NSArray *)generateWordsArray {
+    
     NSMutableArray *randomWords = [NSMutableArray new];
     
     NSInteger i = 0;

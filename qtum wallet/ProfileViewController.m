@@ -43,7 +43,7 @@
             return 1;
             break;
         case 1:
-            return [AppSettings sharedInstance].isFingerprintAllowed ? 3 : 2;
+            return SLocator.appSettings.isFingerprintAllowed ? 3 : 2;
             break;
         case 2:
             return 2;
@@ -92,7 +92,7 @@
         } else if (indexPath.row == 2) {
             image = [UIImage imageNamed:@"ic-touchID"];
             text = NSLocalizedString(@"Touch ID", "");
-            cell.switchControl.on = [AppSettings sharedInstance].isFingerprintEnabled;
+            cell.switchControl.on = SLocator.appSettings.isFingerprintEnabled;
         }
     } else if(indexPath.section == 2){
         if (indexPath.row == 0) {

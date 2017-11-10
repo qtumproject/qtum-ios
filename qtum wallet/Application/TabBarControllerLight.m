@@ -34,10 +34,10 @@
                    wallet:(UIViewController*)walletController
                   profile:(UIViewController*)profileController {
     
-    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];
-    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
-    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
-    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
+    UIViewController* news = [SLocator.controllersFactory newsFlowTab];
+    UIViewController* send = [SLocator.controllersFactory sendFlowTab];
+    UIViewController* profile = [SLocator.controllersFactory profileFlowTab];
+    UIViewController* wallet = [SLocator.controllersFactory walletFlowTab];
     
     [self setViewControllers:@[wallet,profile,news,send] animated:YES];
     

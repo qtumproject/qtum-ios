@@ -44,10 +44,14 @@
 - (IBAction)buttonClicked:(id)sender {
     
     if (sender == self.button1) {
-        [self.delegate buttonOneActionForIndexPath:self.indexPath];
+        if ([self.delegate respondsToSelector:@selector(buttonOneActionForIndexPath:)]) {
+            [self.delegate buttonOneActionForIndexPath:self.indexPath];
+        }
     } else if (sender == self.button2) {
-        [self.delegate buttonTwoActionForIndexPath:self.indexPath];
-    } 
+        if ([self.delegate respondsToSelector:@selector(buttonTwoActionForIndexPath:)]) {
+            [self.delegate buttonTwoActionForIndexPath:self.indexPath];
+        }
+    }
 }
 
 - (void)setIndexPath:(NSIndexPath *)indexPath {
@@ -90,7 +94,10 @@
         case UIGestureRecognizerStateBegan:
             self.panStartPoint = [recognizer translationInView:self.myContentView];
             self.startingRightLayoutConstraintConstant = self.contentViewRightConstraint.constant;
-            [self.delegate cellDidStartMoving:self];
+            
+            if ([self.delegate respondsToSelector:@selector(cellDidStartMoving:)]) {
+                [self.delegate cellDidStartMoving:self];
+            }
             break;
             
         case UIGestureRecognizerStateChanged: {
@@ -166,7 +173,10 @@
                 }
             }
             
-            [self.delegate cellEndMoving:self];
+            if ([self.delegate respondsToSelector:@selector(cellEndMoving:)]) {
+                [self.delegate cellEndMoving:self];
+            }
+            
             break;
             
         case UIGestureRecognizerStateCancelled:
@@ -178,7 +188,10 @@
                 [self setConstraintsToShowAllButtons:YES notifyDelegateDidOpen:YES];
             }
             
-            [self.delegate cellEndMoving:self];
+            if ([self.delegate respondsToSelector:@selector(cellEndMoving:)]) {
+                [self.delegate cellEndMoving:self];
+            }
+            
             break;
             
         default:
@@ -201,7 +214,9 @@
 - (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)notifyDelegate {
     
     if (notifyDelegate) {
-        [self.delegate cellDidClose:self];
+        if ([self.delegate respondsToSelector:@selector(cellDidClose:)]) {
+            [self.delegate cellDidClose:self];
+        }
     }
     
     if (self.startingRightLayoutConstraintConstant == 0 &&
@@ -224,7 +239,10 @@
 - (void)setConstraintsToShowAllButtons:(BOOL)animated notifyDelegateDidOpen:(BOOL)notifyDelegate {
     
     if (notifyDelegate) {
-        [self.delegate cellDidOpen:self];
+        
+        if ([self.delegate respondsToSelector:@selector(cellDidOpen:)]) {
+            [self.delegate cellDidOpen:self];
+        }
     }
     
     //1

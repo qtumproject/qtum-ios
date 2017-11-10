@@ -27,6 +27,13 @@
 		B3141E5D1F3099DA0095E3DF /* ContractNameTextFieldLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3141E5C1F3099DA0095E3DF /* ContractNameTextFieldLight.xib */; };
 		B3141E631F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E621F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m */; };
 		B3141E661F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E651F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m */; };
+		B31441091FB461E5004FE08C /* RemoveContractTrainingViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31441081FB461E5004FE08C /* RemoveContractTrainingViewLight.xib */; };
+		B314410B1FB461F0004FE08C /* RemoveContractTrainingViewDark.xib in Resources */ = {isa = PBXBuildFile; fileRef = B314410A1FB461F0004FE08C /* RemoveContractTrainingViewDark.xib */; };
+		B314410E1FB4624F004FE08C /* RemoveContractTrainigView.m in Sources */ = {isa = PBXBuildFile; fileRef = B314410D1FB4624F004FE08C /* RemoveContractTrainigView.m */; };
+		B314410F1FB4823D004FE08C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */; };
+		B31441101FB4823D004FE08C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */; };
+		B31441131FB49A7A004FE08C /* QTUMTitleTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B31441121FB49A7A004FE08C /* QTUMTitleTagCell.m */; };
+		B31441161FB49A8C004FE08C /* QTUMTitleTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B31441151FB49A8C004FE08C /* QTUMTitleTagCellLight.m */; };
 		B315D02C1F9E100100C7F4E4 /* QTUMParagrafTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D02B1F9E100100C7F4E4 /* QTUMParagrafTagCell.m */; };
 		B315D02F1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D02E1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m */; };
 		B315D0321F9F43B000C7F4E4 /* QTUMImageTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D0311F9F43B000C7F4E4 /* QTUMImageTagCellLight.m */; };
@@ -222,8 +229,6 @@
 		B386F5B11E1395E5004D231B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B01E1395E5004D231B /* ProfileViewController.m */; };
 		B386F5B51E139CC1004D231B /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */; };
 		B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */; };
-		B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */; };
-		B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */; };
 		B386F5EE1E16403B004D231B /* WalletNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B386F5ED1E16403B004D231B /* WalletNameViewController.m */; };
 		B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB391EEAD8C5001D2FF1 /* WatchContractViewController.m */; };
 		B387AB3E1EEE85D2001D2FF1 /* WatchTokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */; };
@@ -275,6 +280,9 @@
 		B3CD78E21F4DD44400D79363 /* ChooseAddressReciveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD78E11F4DD44400D79363 /* ChooseAddressReciveCell.m */; };
 		B3CD78E51F4DD45700D79363 /* ChooseAddressReciveCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD78E41F4DD45700D79363 /* ChooseAddressReciveCellDark.m */; };
 		B3CD78E81F4DD46300D79363 /* ChooseAddressReciveCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD78E71F4DD46300D79363 /* ChooseAddressReciveCellLight.m */; };
+		B3D012D81FB445CB00A98770 /* ContractInfoFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012D71FB445CB00A98770 /* ContractInfoFacade.m */; };
+		B3D012DB1FB44CC400A98770 /* ContracBalancesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012DA1FB44CC400A98770 /* ContracBalancesObject.m */; };
+		B3D012DE1FB4542100A98770 /* WalletBalancesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
 		B3D5FE3F1F569FEB006A2BF2 /* NSString+AbiRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */; };
@@ -387,7 +395,6 @@
 		B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F4D1F13767900131823 /* QRCodeViewControllerLight.m */; };
 		B3EE8F511F13B4CE00131823 /* LoginViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F501F13B4CE00131823 /* LoginViewControllerDark.m */; };
 		B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F531F13B4DF00131823 /* LoginViewControllerLight.m */; };
-		B3EE8F561F13BA7000131823 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */; };
 		B3EE8F571F13BAE000131823 /* simplonmono-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */; };
 		B3EE8F711F13C4B400131823 /* FirstAuthViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F701F13C4B400131823 /* FirstAuthViewControllerDark.m */; };
 		B3EE8F741F13C4C400131823 /* FirstAuthViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F731F13C4C400131823 /* FirstAuthViewControllerLight.m */; };
@@ -542,21 +549,10 @@
 		E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E784F8C91F025DDB00A513BF /* SourceCodePopUpViewController.m */; };
 		E7881B0D1F0BB63400BD6AB2 /* SplashLight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7881B0C1F0BB63400BD6AB2 /* SplashLight.storyboard */; };
 		E7881B241F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
-		E7881B261F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
-		E7881B271F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
-		E7881B281F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B101F0BB7C700BD6AB2 /* proximanova-bold.otf */; };
 		E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
-		E7881B351F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
-		E7881B361F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
-		E7881B371F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B131F0BB7C700BD6AB2 /* proximanova-light.otf */; };
 		E7881B421F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
-		E7881B441F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B451F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
-		E7881B461F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B161F0BB7C700BD6AB2 /* proximanova-regular.otf */; };
 		E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
-		E7881B491F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
-		E7881B4A1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
-		E7881B4B1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7881B171F0BB7C700BD6AB2 /* proximanova-semibold.otf */; };
 		E7881B741F0BC63C00BD6AB2 /* NewPaymentLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B731F0BC63C00BD6AB2 /* NewPaymentLightViewController.m */; };
 		E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7881B761F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m */; };
 		E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E78903591EDC66D0004243F0 /* BalanceTokenView.m */; };
@@ -581,8 +577,6 @@
 		E7B7585A1EF016FD004AF200 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758591EF016FD004AF200 /* WalletController.m */; };
 		E7B7585F1EF017C5004AF200 /* BalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7585E1EF017C5004AF200 /* BalanceCell.m */; };
 		E7B758601EF01AF2004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
-		E7B758621EF01AF3004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
-		E7B758641EF01B01004AF200 /* simplonmono-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B321F2DA1EBB643100C813D0 /* simplonmono-medium.ttf */; };
 		E7B758681EF01C75004AF200 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758671EF01C75004AF200 /* HistoryCell.m */; };
 		E7B758711EF139F7004AF200 /* WatchWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758701EF139F7004AF200 /* WatchWallet.m */; };
 		E7B758741EF13A89004AF200 /* WatchHistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B758731EF13A89004AF200 /* WatchHistoryElement.m */; };
@@ -739,6 +733,14 @@
 		B3141E621F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenFinishViewControllerDark.m; sourceTree = "<group>"; };
 		B3141E641F30AD740095E3DF /* CreateTokenFinishViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTokenFinishViewControllerLight.h; sourceTree = "<group>"; };
 		B3141E651F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTokenFinishViewControllerLight.m; sourceTree = "<group>"; };
+		B31441081FB461E5004FE08C /* RemoveContractTrainingViewLight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoveContractTrainingViewLight.xib; sourceTree = "<group>"; };
+		B314410A1FB461F0004FE08C /* RemoveContractTrainingViewDark.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoveContractTrainingViewDark.xib; sourceTree = "<group>"; };
+		B314410C1FB4624F004FE08C /* RemoveContractTrainigView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemoveContractTrainigView.h; sourceTree = "<group>"; };
+		B314410D1FB4624F004FE08C /* RemoveContractTrainigView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoveContractTrainigView.m; sourceTree = "<group>"; };
+		B31441111FB49A7A004FE08C /* QTUMTitleTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMTitleTagCell.h; sourceTree = "<group>"; };
+		B31441121FB49A7A004FE08C /* QTUMTitleTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMTitleTagCell.m; sourceTree = "<group>"; };
+		B31441141FB49A8C004FE08C /* QTUMTitleTagCellLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMTitleTagCellLight.h; sourceTree = "<group>"; };
+		B31441151FB49A8C004FE08C /* QTUMTitleTagCellLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMTitleTagCellLight.m; sourceTree = "<group>"; };
 		B315D02A1F9E100100C7F4E4 /* QTUMParagrafTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMParagrafTagCell.h; sourceTree = "<group>"; };
 		B315D02B1F9E100100C7F4E4 /* QTUMParagrafTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMParagrafTagCell.m; sourceTree = "<group>"; };
 		B315D02D1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMDefaultTagCellLight.h; sourceTree = "<group>"; };
@@ -971,6 +973,7 @@
 		B35130641E49DCBC0048A28C /* NewsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableCell.m; sourceTree = "<group>"; };
 		B35130661E49DF910048A28C /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = Application/ImageLoader.h; sourceTree = "<group>"; };
 		B35130671E49DF910048A28C /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ImageLoader.m; path = Application/ImageLoader.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B35170561FB3D4D200507C2A /* ServicesHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServicesHeaders.h; sourceTree = "<group>"; };
 		B35497001F8BB9F500DEB004 /* WatchCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchCoordinator.h; sourceTree = "<group>"; };
 		B35497011F8BB9F500DEB004 /* WatchCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchCoordinator.m; sourceTree = "<group>"; };
 		B35497031F8CDFFC00DEB004 /* QTUM Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "QTUM Watch Extension.entitlements"; sourceTree = "<group>"; };
@@ -1144,8 +1147,6 @@
 		B386F5B31E139CC1004D231B /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		B386F5B41E139CC1004D231B /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
 		B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-THIN.OTF"; sourceTree = SOURCE_ROOT; };
-		B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-ULTRALIGHT.OTF"; sourceTree = SOURCE_ROOT; };
-		B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-DISPLAY-BOLD.OTF"; sourceTree = SOURCE_ROOT; };
 		B386F5EC1E16403B004D231B /* WalletNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletNameViewController.h; sourceTree = "<group>"; };
 		B386F5ED1E16403B004D231B /* WalletNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletNameViewController.m; sourceTree = "<group>"; };
 		B387AB381EEAD8C5001D2FF1 /* WatchContractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewController.h; sourceTree = "<group>"; };
@@ -1259,6 +1260,12 @@
 		B3CD78E41F4DD45700D79363 /* ChooseAddressReciveCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressReciveCellDark.m; sourceTree = "<group>"; };
 		B3CD78E61F4DD46300D79363 /* ChooseAddressReciveCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAddressReciveCellLight.h; sourceTree = "<group>"; };
 		B3CD78E71F4DD46300D79363 /* ChooseAddressReciveCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressReciveCellLight.m; sourceTree = "<group>"; };
+		B3D012D61FB445CB00A98770 /* ContractInfoFacade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractInfoFacade.h; sourceTree = "<group>"; };
+		B3D012D71FB445CB00A98770 /* ContractInfoFacade.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractInfoFacade.m; sourceTree = "<group>"; };
+		B3D012D91FB44CC400A98770 /* ContracBalancesObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContracBalancesObject.h; sourceTree = "<group>"; };
+		B3D012DA1FB44CC400A98770 /* ContracBalancesObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContracBalancesObject.m; sourceTree = "<group>"; };
+		B3D012DC1FB4542100A98770 /* WalletBalancesObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletBalancesObject.h; sourceTree = "<group>"; };
+		B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletBalancesObject.m; sourceTree = "<group>"; };
 		B3D0C95E1FA1DDCA00BAAB4C /* DynamicHeightCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicHeightCellProtocol.h; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
@@ -2128,6 +2135,17 @@
 			name = "Contract Creation End";
 			sourceTree = "<group>";
 		};
+		B31441071FB4619C004FE08C /* RemovingContractTrainingView */ = {
+			isa = PBXGroup;
+			children = (
+				B314410C1FB4624F004FE08C /* RemoveContractTrainigView.h */,
+				B314410D1FB4624F004FE08C /* RemoveContractTrainigView.m */,
+				B31441081FB461E5004FE08C /* RemoveContractTrainingViewLight.xib */,
+				B314410A1FB461F0004FE08C /* RemoveContractTrainingViewDark.xib */,
+			);
+			name = RemovingContractTrainingView;
+			sourceTree = "<group>";
+		};
 		B31CF71B1E1249F9000BCF41 /* Wallet Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -2222,8 +2240,6 @@
 				B3F06CFF1E698F72006341F7 /* MYRIADPRO-REGULAR.OTF */,
 				B3EE8F551F13B97B00131823 /* simplonmono-regular.ttf */,
 				B386F5DE1E163F2B004D231B /* SF-UI-DISPLAY-THIN.OTF */,
-				B386F5DF1E163F2B004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF */,
-				B386F5E01E163F2B004D231B /* SF-UI-DISPLAY-BOLD.OTF */,
 				B3210D281E00327600365FB6 /* SFUIDisplay-Regular.otf */,
 				B35EE88A1E4C6710008F4403 /* Roboto-Bold.ttf */,
 				B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */,
@@ -2898,6 +2914,10 @@
 				B315D02B1F9E100100C7F4E4 /* QTUMParagrafTagCell.m */,
 				B315D0331F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.h */,
 				B315D0341F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.m */,
+				B31441111FB49A7A004FE08C /* QTUMTitleTagCell.h */,
+				B31441121FB49A7A004FE08C /* QTUMTitleTagCell.m */,
+				B31441141FB49A8C004FE08C /* QTUMTitleTagCellLight.h */,
+				B31441151FB49A8C004FE08C /* QTUMTitleTagCellLight.m */,
 			);
 			name = "Tag Cells";
 			sourceTree = "<group>";
@@ -3720,8 +3740,11 @@
 				B3D5FE821F56F4BC006A2BF2 /* AbiTypesProcessor.m */,
 				D059BE791F84E4A70045ABA0 /* PaymentValuesManager.h */,
 				D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */,
-				B35572C81F90EFDE001AE34A /* NetworkingService.h */,
 				B35572C91F90EFDE001AE34A /* NetworkingService.m */,
+				B35572C81F90EFDE001AE34A /* NetworkingService.h */,
+				B35170561FB3D4D200507C2A /* ServicesHeaders.h */,
+				B3D012D61FB445CB00A98770 /* ContractInfoFacade.h */,
+				B3D012D71FB445CB00A98770 /* ContractInfoFacade.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -4737,6 +4760,10 @@
 				E74003C11F1E2AC7002CC587 /* SendInfoItem.m */,
 				B3E090201FAB0C83003F3B54 /* ContractPretendent.h */,
 				B3E090211FAB0C83003F3B54 /* ContractPretendent.m */,
+				B3D012D91FB44CC400A98770 /* ContracBalancesObject.h */,
+				B3D012DA1FB44CC400A98770 /* ContracBalancesObject.m */,
+				B3D012DC1FB4542100A98770 /* WalletBalancesObject.h */,
+				B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4776,6 +4803,7 @@
 		E7FD365E1DC73B2400748177 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				B31441071FB4619C004FE08C /* RemovingContractTrainingView */,
 				B326327A1F960270001FF038 /* PasswordView */,
 				E7C101B21F13CB9800848526 /* BorderedLabel */,
 				B34B69611EC5990C006BE3B0 /* Page Control */,
@@ -5079,13 +5107,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F20A4F1E72872B0052C6F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
-				E7881B351F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				B33EAF931E5EC263006125F3 /* Assets.xcassets in Resources */,
-				E7881B491F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 				B33EAF911E5EC263006125F3 /* MainInterface.storyboard in Resources */,
-				E7881B441F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7B758641EF01B01004AF200 /* simplonmono-medium.ttf in Resources */,
-				E7881B261F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5102,11 +5125,8 @@
 			files = (
 				E730AB5A1EE6A5D100132711 /* Assets.xcassets in Resources */,
 				E7881B451F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7881B271F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
-				E7881B361F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				E730AB581EE6A5D100132711 /* Interface.storyboard in Resources */,
 				E7B758601EF01AF2004AF200 /* simplonmono-medium.ttf in Resources */,
-				E7881B4A1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5114,13 +5134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3EE8F561F13BA7000131823 /* simplonmono-regular.ttf in Resources */,
-				E7881B281F0BB7C700BD6AB2 /* proximanova-bold.otf in Resources */,
-				E7881B461F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
-				E7881B4B1F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
 				E730AB741EE6A5D200132711 /* Assets.xcassets in Resources */,
-				E7881B371F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
-				E7B758621EF01AF3004AF200 /* simplonmono-medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5128,6 +5142,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B314410F1FB4823D004FE08C /* Roboto-Bold.ttf in Resources */,
+				B31441101FB4823D004FE08C /* Roboto-Regular.ttf in Resources */,
 				B30960BB1F62EAF000BEF9D2 /* Avenir.ttc in Resources */,
 				B3EE8F571F13BAE000131823 /* simplonmono-regular.ttf in Resources */,
 				E78DD7641F4C2B6A00B25FB3 /* AddressTransferPopup.storyboard in Resources */,
@@ -5151,10 +5167,9 @@
 				B32EEC9B1EB356DA00512FED /* Localizable.strings in Resources */,
 				E70CFD0A1F1F63ED00230C81 /* ErrorPopUp.storyboard in Resources */,
 				E70CFD341F1F647300230C81 /* SourceCodePopUp.storyboard in Resources */,
+				B31441091FB461E5004FE08C /* RemoveContractTrainingViewLight.xib in Resources */,
 				E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
-				B386F5E71E163F41004D231B /* SF-UI-DISPLAY-ULTRALIGHT.OTF in Resources */,
 				B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */,
-				B386F5E81E163F41004D231B /* SF-UI-DISPLAY-BOLD.OTF in Resources */,
 				B34228881F73CF2700C4C381 /* SliderViewLight.xib in Resources */,
 				E760F4A11F0F8E8F0056D042 /* proximanova-regitalic.otf in Resources */,
 				E7881B471F0BB7C700BD6AB2 /* proximanova-semibold.otf in Resources */,
@@ -5183,6 +5198,7 @@
 				E70CFD3B1F1F647A00230C81 /* ConfirmPurchasePopUp.storyboard in Resources */,
 				B32EEC6B1EB3546800512FED /* News.storyboard in Resources */,
 				B32EEC7F1EB3549F00512FED /* Start.storyboard in Resources */,
+				B314410B1FB461F0004FE08C /* RemoveContractTrainingViewDark.xib in Resources */,
 				E70CFD1F1F1F640700230C81 /* RestoreContractsPopUp.storyboard in Resources */,
 				E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */,
 			);
@@ -5327,7 +5343,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" FABRIC_API_KEY BUILD_SECRET";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 41db5a1ea3ca62a26f56f41e07085664e42f9f95 1f0ea4bed2dacc368ad16cd4a824581fd7b8526917f01e88c15e720abc50f45d";
 		};
 		EFC4163D6348EB02957DC3DD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5435,6 +5451,7 @@
 				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
 				B3DC9D271F31E9BB006B2E07 /* AddressTransferPopupViewControllerLight.m in Sources */,
 				B3EE8F421F136FAA00131823 /* ChooseTokenPaymentCellLight.m in Sources */,
+				B314410E1FB4624F004FE08C /* RemoveContractTrainigView.m in Sources */,
 				B3D5FE7A1F56F3B6006A2BF2 /* AbiParameterTypeDynamicArrayBool.m in Sources */,
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
@@ -5457,6 +5474,7 @@
 				B32BC4A81F28B49C00C2417C /* ChangePinCoordinator.m in Sources */,
 				B3CBDF411F2B496A00C80D4E /* TokenTemplateCellDark.m in Sources */,
 				B34253FF1E164B4C00288CF6 /* CreatePinViewController.m in Sources */,
+				B31441161FB49A8C004FE08C /* QTUMTitleTagCellLight.m in Sources */,
 				B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */,
 				B3EA531E1F473843002FD201 /* QStoreListTableSourceLight.m in Sources */,
 				B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */,
@@ -5535,6 +5553,7 @@
 				B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */,
 				B35572C71F90E886001AE34A /* NewsDataProvider.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
+				B3D012D81FB445CB00A98770 /* ContractInfoFacade.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				B3D5FE6D1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m in Sources */,
@@ -5633,6 +5652,7 @@
 				E7B758531EEFDB32004AF200 /* BackupContractsViewController.m in Sources */,
 				E7847F751F3B16A7004A2333 /* QStoreDataProvider.m in Sources */,
 				B385B5A21E6D640E003BB96C /* CreateTokenNavigationController.m in Sources */,
+				B3D012DE1FB4542100A98770 /* WalletBalancesObject.m in Sources */,
 				B3014D631F2A1B9E007EAE7A /* WatchContractViewControllerLight.m in Sources */,
 				B32BC4BE1F29C99000C2417C /* SubscribeTokenViewControllerDark.m in Sources */,
 				B32EBFF11E1E4711003AA578 /* CreatePinRootController.m in Sources */,
@@ -5717,6 +5737,7 @@
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
 				B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */,
 				B369DF381F5D672E008B81CB /* AbiParameterTypeElementaryArray.m in Sources */,
+				B3D012DB1FB44CC400A98770 /* ContracBalancesObject.m in Sources */,
 				B315D0351F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.m in Sources */,
 				B369DF321F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m in Sources */,
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
@@ -5830,6 +5851,7 @@
 				E798462D1F0D1E50002A516A /* HistoryTableViewCellLight.m in Sources */,
 				E79846361F0D23CB002A516A /* WalletHeaderCellDark.m in Sources */,
 				B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */,
+				B31441131FB49A7A004FE08C /* QTUMTitleTagCell.m in Sources */,
 				B3DC9D181F31BF2B006B2E07 /* AddressControlCellDark.m in Sources */,
 				B36EBC3B1F2F1B5A00F4E2F2 /* ErrorPopUpViewControllerLight.m in Sources */,
 				B3DB3E511F2F7A5200AA408F /* CheckboxButtonLight.m in Sources */,

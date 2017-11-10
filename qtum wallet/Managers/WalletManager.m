@@ -13,7 +13,6 @@
 #import "SocketManager.h"
 #import "NSString+SHA3.h"
 #import "Wallet.h"
-#import "Requestable.h"
 #import "Contract.h"
 #import "Managerable.h"
 #import "NSNumber+Comparison.h"
@@ -103,7 +102,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
     
     NSMutableDictionary *hashTable = [NSMutableDictionary new];
     for (BTCKey *key in [[self wallet] allKeys]) {
-        NSString* keyString = [AppSettings sharedInstance].isMainNet ? key.address.string : key.addressTestnet.string;
+        NSString* keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
         if (keyString) {
             hashTable[keyString] = [NSNull null];
         }
@@ -280,13 +279,13 @@ NSString const *kIsLongPin = @"kIsLongPin";
 -(void)startObservingForAllSpendable {
     
     self.observingForSpendableStopped = NO;
-    [[ApplicationCoordinator sharedInstance].requestManager startObservingAdresses:[self.wallet allKeysAdreeses]];
+    [SLocator.requestManager startObservingAdresses:[self.wallet allKeysAdreeses]];
 }
 
 -(void)stopObservingForAllSpendable {
     
     self.observingForSpendableStopped = YES;
-    [[ApplicationCoordinator sharedInstance].requestManager stopObservingAdresses:nil];
+    [SLocator.requestManager stopObservingAdresses:nil];
 }
 
 #pragma mark - Addresses Observing

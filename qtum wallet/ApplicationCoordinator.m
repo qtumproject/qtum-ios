@@ -11,32 +11,25 @@
 #import "PinViewController.h"
 #import "TabBarController.h"
 #import "UIViewController+Extension.h"
-#import "ControllersFactory.h"
 #import "LoginCoordinator.h"
 #import "TabBarCoordinator.h"
-#import "TemplateManager.h"
 #import "NSUserDefaults+Settings.h"
-#import "NotificationManager.h"
 #import "AuthCoordinator.h"
 #import "LoginCoordinator.h"
 #import "SecurityCoordinator.h"
 #import "AppDelegate.h"
 #import "ConfirmPinCoordinator.h"
-#import "OpenURLManager.h"
 #import "ProfileCoordinator.h"
 #import "WalletManager.h"
 #import "Wallet.h"
 #import "Appearance.h"
 #import "SplashScreenOutput.h"
 #import "QStoreManager.h"
-#import "ServiceLocator.h"
+
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>
 
 @property (strong,nonatomic) AppDelegate* appDelegate;
-@property (strong,nonatomic) NotificationManager* notificationManager;
-@property (strong,nonatomic) ControllersFactory* controllersFactory;
-
 @property (weak,nonatomic) TabBarCoordinator* tabCoordinator;
 @property (weak,nonatomic) LoginCoordinator* loginCoordinator;
 @property (weak,nonatomic) SecurityCoordinator* securityCoordinator;
@@ -75,11 +68,6 @@
 {
     self = [super init];
     if (self != nil) {
-        _controllersFactory = [ControllersFactory sharedInstance];
-        _notificationManager = [NotificationManager new];
-        _openUrlManager = [OpenURLManager new];
-        _requestManager = [RequestManager sharedInstance];
-        _walletManager = [WalletManager new];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contractCreationDidFailed) name:kContractCreationFailed object:nil];
     }
     return self;
@@ -96,14 +84,13 @@
 
 -(void)prepareDataObserving {
     
-    __weak __typeof(self)weakSelf = self;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [weakSelf.notificationManager registerForRemoutNotifications];
+        [SLocator.notificationManager registerForRemoutNotifications];
     });
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [weakSelf.walletManager startObservingForAllSpendable];
+        [SLocator.walletManager startObservingForAllSpendable];
         [[ContractManager sharedInstance] startObservingForAllSpendable];
         [[QStoreManager sharedInstance] startObservingForAllRequests];
     });
@@ -115,7 +102,7 @@
 
 -(void)start{
 
-    if (self.walletManager.isSignedIn) {
+    if (SLocator.walletManager.isSignedIn) {
         [self startLoginFlow];
     } else {
         [self startAuthFlow];
@@ -134,7 +121,7 @@
     
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
-    //[self.walletManager stopObservingForAllSpendable];
+    //[SLocator.walletManager stopObservingForAllSpendable];
    //[[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self startAuthFlow];
 }
@@ -153,7 +140,7 @@
     
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
-//    [self.walletManager stopObservingForAllSpendable];
+//    [SLocator.walletManager stopObservingForAllSpendable];
 //    [[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self startAuthFlow];
 }
@@ -196,7 +183,7 @@
     self.loginFlowRunning = NO;
     self.confirmFlowRunning = NO;
 
-    UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
+    UINavigationController* navigationController = (UINavigationController*)[SLocator.controllersFactory createAuthNavigationController];
     self.appDelegate.window.rootViewController = navigationController;
     AuthCoordinator* coordinator = [[AuthCoordinator alloc] initWithNavigationViewController:navigationController];
     coordinator.delegate = self;
@@ -214,15 +201,15 @@
 
 -(void)clear {
     
-    [self.walletManager stopObservingForAllSpendable];
+    [SLocator.walletManager stopObservingForAllSpendable];
     [[ContractManager sharedInstance] stopObservingForAllSpendable];
-    [self.notificationManager clear];
-    [self.openUrlManager clear];
-    [self.walletManager clear];
+    [SLocator.notificationManager clear];
+    [SLocator.openURLManager clear];
+    [SLocator.walletManager clear];
     [[ContractManager sharedInstance] clear];
     [SLocator.templateManager clear];
     [[QStoreManager sharedInstance] clear];
-    [[AppSettings sharedInstance] clear];
+    [SLocator.appSettings clear];
 }
 
 - (void)startConfirmPinFlowWithHandler:(void(^)(BOOL)) handler {
@@ -233,7 +220,7 @@
         [[PopUpsManager sharedInstance] hideCurrentPopUp:NO completion:nil];
     }
     
-    if (self.walletManager.isSignedIn && !self.authFlowRunning && !self.loginFlowRunning && !self.securityFlowRunning) {
+    if (SLocator.walletManager.isSignedIn && !self.authFlowRunning && !self.loginFlowRunning && !self.securityFlowRunning) {
         ConfirmPinCoordinator* coordinator = [[ConfirmPinCoordinator alloc] initWithParentViewContainer:self.appDelegate.window.rootViewController];
         coordinator.delegate = self;
         [coordinator start];
@@ -262,7 +249,7 @@
     self.confirmFlowRunning = NO;
     self.securityFlowRunning = YES;
     
-    UINavigationController* navigationController = (UINavigationController*)[[ControllersFactory sharedInstance] createAuthNavigationController];
+    UINavigationController* navigationController = (UINavigationController*)[SLocator.controllersFactory createAuthNavigationController];
     self.appDelegate.window.rootViewController = navigationController;
     self.navigationController = navigationController;
     
@@ -291,8 +278,8 @@
 
 -(void)startChanginTheme {
     
-    BOOL isDark = [[AppSettings sharedInstance] isDarkTheme];
-    [[AppSettings sharedInstance] changeThemeToDark:!isDark];
+    BOOL isDark = [SLocator.appSettings isDarkTheme];
+    [SLocator.appSettings changeThemeToDark:!isDark];
     [Appearance setUp];
     [self restartMainFlow];
     NSInteger profileIndex = 1;
@@ -317,11 +304,11 @@
     self.authFlowRunning = NO;
     self.loginFlowRunning = NO;
 
-    UITabBarController <TabbarOutput>* controller = [self.controllersFactory createTabFlow];
-    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];
-    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
-    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
-    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
+    UITabBarController <TabbarOutput>* controller = [SLocator.controllersFactory createTabFlow];
+    UIViewController* news = [SLocator.controllersFactory newsFlowTab];
+    UIViewController* send = [SLocator.controllersFactory sendFlowTab];
+    UIViewController* profile = [SLocator.controllersFactory profileFlowTab];
+    UIViewController* wallet = [SLocator.controllersFactory walletFlowTab];
     [controller setControllerForNews:news forSend:send forWallet:wallet forProfile:profile];
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
     controller.outputDelegate = coordinator;
@@ -336,7 +323,7 @@
 
     }
 
-    [self.openUrlManager storeAuthToYesWithAdddress:self.walletManager.wallet.mainAddress];
+    [SLocator.openURLManager storeAuthToYesWithAdddress:SLocator.walletManager.wallet.mainAddress];
 }
 
 -(void)restartMainFlow {
@@ -345,12 +332,12 @@
         [self removeDependency:self.tabCoordinator];
     }
     
-    UITabBarController <TabbarOutput>* controller = [self.controllersFactory createTabFlow];
+    UITabBarController <TabbarOutput>* controller = [SLocator.controllersFactory createTabFlow];
     controller.isReload = YES;
-    UIViewController* news = [[ControllersFactory sharedInstance] newsFlowTab];
-    UIViewController* send = [[ControllersFactory sharedInstance] sendFlowTab];
-    UIViewController* profile = [[ControllersFactory sharedInstance] profileFlowTab];
-    UIViewController* wallet = [[ControllersFactory sharedInstance] walletFlowTab];
+    UIViewController* news = [SLocator.controllersFactory newsFlowTab];
+    UIViewController* send = [SLocator.controllersFactory sendFlowTab];
+    UIViewController* profile = [SLocator.controllersFactory profileFlowTab];
+    UIViewController* wallet = [SLocator.controllersFactory walletFlowTab];
     [controller setControllerForNews:news forSend:send forWallet:wallet forProfile:profile];
     TabBarCoordinator* coordinator = [[TabBarCoordinator alloc] initWithTabBarController:controller];
     self.tabCoordinator = coordinator;
@@ -361,7 +348,7 @@
 
 - (void)startSplashScreen {
     
-    NSObject <SplashScreenOutput> *splash = [[ControllersFactory sharedInstance] createSplashScreenOutput];
+    NSObject <SplashScreenOutput> *splash = [SLocator.controllersFactory createSplashScreenOutput];
     self.appDelegate.window.rootViewController = [splash toPresent];
 }
 
@@ -369,7 +356,7 @@
 
 -(void)contractCreationDidFailed {
     
-    [[ApplicationCoordinator sharedInstance].notificationManager createLocalNotificationWithString:NSLocalizedString(@"Failed to create contract", @"") andIdentifire:@"contract_creation_failed"];
+    [SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Failed to create contract", @"") andIdentifire:@"contract_creation_failed"];
 }
 
 @end

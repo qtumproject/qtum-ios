@@ -10,7 +10,6 @@
 #import "QStoreMainScreenCategory.h"
 #import "QStoreDataProvider.h"
 #import "QStoreContractElement.h"
-#import "TransactionManager.h"
 #import "ApplicationCoordinator.h"
 #import "Wallet.h"
 #import "SocketManager.h"
@@ -126,7 +125,7 @@ NSInteger const QStoreSearchCount = 20;
 
 - (void)subscribeToRequestUpdate:(NSString*) requestString {
     
-    [[ApplicationCoordinator sharedInstance].requestManager startObservingContractPurchase:requestString withHandler:nil];
+    [SLocator.requestManager startObservingContractPurchase:requestString withHandler:nil];
 }
 
 
@@ -243,7 +242,7 @@ NSInteger const QStoreSearchCount = 20;
     
     NSArray *array = @[@{@"amount" : [buyRequest getAmountNumber], @"address" : buyRequest.addressString}];
     
-    [[TransactionManager sharedInstance] sendTransactionWalletKeys:[[ApplicationCoordinator sharedInstance].walletManager.wallet
+    [SLocator.transactionManager sendTransactionWalletKeys:[SLocator.walletManager.wallet
                                                                     allKeys]
                                                 toAddressAndAmount:array
                                                                fee:nil

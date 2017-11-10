@@ -12,7 +12,6 @@
 #import "NSNumber+Comparison.h"
 #import "InformationPopUpViewController.h"
 #import "ErrorPopUpViewController.h"
-#import "TransactionManager.h"
 
 @interface TokenFunctionDetailViewController () <AbiTextFieldWithLineDelegate, PopUpViewControllerDelegate>
 

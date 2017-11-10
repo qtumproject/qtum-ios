@@ -7,16 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TemplateManager.h"
-#import "BackupFileManager.h"
-#import "ContractArgumentsInterpretator.h"
-#import "ContractFileManager.h"
-#import "ContractInterfaceManager.h"
-#import "DataOperation.h"
-#import "ImageLoader.h"
-#import "NotificationManager.h"
-#import "OpenURLManager.h"
-
+#import "ServicesHeaders.h"
 
 @interface ServiceLocator : NSObject
 
@@ -29,6 +20,14 @@
 @property (strong, nonatomic) ImageLoader* imageLoader;
 @property (strong, nonatomic) NotificationManager* notificationManager;
 @property (strong, nonatomic) OpenURLManager* openURLManager;
+@property (strong, nonatomic) TransactionManager* transactionManager;
+@property (strong, nonatomic) AppSettings* appSettings;
+@property (strong, nonatomic) NewsDataProvider* newsDataProvider;
+@property (strong, nonatomic) id <Requestable> requestManager;
+@property (strong, nonatomic) ControllersFactory* controllersFactory;
+@property (strong, nonatomic) id <WalletManagering> walletManager;
+@property (strong, nonatomic) ContractInfoFacade* contractInfoFacade;
+
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

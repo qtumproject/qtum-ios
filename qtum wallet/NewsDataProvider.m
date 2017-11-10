@@ -10,13 +10,14 @@
 #import "NetworkingService.h"
 #import "NSString+HTML.h"
 #import "TFHpple.h"
-#import "ServiceLocator.h"
+
 
 @interface NewsDataProvider ()
 
 @property (strong, nonatomic) QTUMFeedParcer* parcer;
 @property (strong, nonatomic) QTUMHtmlParcer* htmlParcer;
 @property (nonatomic, copy) QTUMNewsItems completion;
+@property (nonatomic, copy) gettingNewsFailedBlock failure;
 @property (nonatomic, strong) NSOperationQueue* storingQueue;
 
 @end
@@ -25,17 +26,7 @@
 
 NSString *const kNewsCache = @"kArchivedNewsDict";
 
-+ (instancetype)sharedInstance {
-    
-    static NewsDataProvider *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
+- (instancetype)init {
     
     self = [super init];
     
@@ -54,10 +45,10 @@ NSString *const kNewsCache = @"kArchivedNewsDict";
     return _storingQueue;
 }
 
--(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion {
+-(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion andFailure:(gettingNewsFailedBlock) failure{
     
     self.completion = completion;
-    
+    self.failure = failure;
     __weak __typeof(self)weakSelf = self;
     
     NSMutableArray <QTUMNewsItem*>* news = @[].mutableCopy;
@@ -86,6 +77,12 @@ NSString *const kNewsCache = @"kArchivedNewsDict";
         };
         
         [weakSelf.storingQueue addOperationWithBlock:block];
+    } andFailure:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakSelf.failure) {
+                weakSelf.failure();
+            }
+        });
     }];
 
     self.parcer = parcer;
@@ -115,11 +112,12 @@ NSString *const kNewsCache = @"kArchivedNewsDict";
 
     dispatch_block_t block = ^{
         
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kNewsCache];
-        NSMutableDictionary *newsDict = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
+        NSArray <QTUMNewsItem*>* unarchivedNews = [weakSelf unarchivedNews];
+        NSMutableDictionary* newsDict = [[weakSelf createDictWithNews:unarchivedNews] mutableCopy];
+        
         if (newsDict) {
             [newsDict setObject:newsItem forKey:newsItem.identifire];
-            data = [NSKeyedArchiver archivedDataWithRootObject:[newsDict copy]];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[newsDict copy]];
             [SLocator.dataOperation saveFileWithName:newsCacheFileName withData:data];
         }
         [weakSelf unarchivedNews];

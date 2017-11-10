@@ -7,7 +7,7 @@
 //
 
 #import "QStoreContractDownloadManager.h"
-#import "ServiceLocator.h"
+
 
 @interface QStoreContractDownloadManager ()
 

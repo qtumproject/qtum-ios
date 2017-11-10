@@ -112,7 +112,7 @@ NSString *kErrorKey = @"error";
     NSString *key = message[MainMessageKey];
     if ([key isEqualToString:GetQRCodeMessageKey]) {
         CGFloat width = [message[@"width"] floatValue];
-        NSString *address = [ApplicationCoordinator sharedInstance].walletManager.wallet.mainAddress;
+        NSString *address = SLocator.walletManager.wallet.mainAddress;
         
         [QRCodeManager createQRCodeFromString:address forSize:CGSizeMake(width, width) withCompletionBlock:^(UIImage *image) {
             NSDictionary *dictionary = @{@"data" : UIImagePNGRepresentation(image),
@@ -123,18 +123,20 @@ NSString *kErrorKey = @"error";
     } else if ([key isEqualToString:GetWalletInformation]) {
         CGFloat width = [message[@"width"] floatValue];
         
-        if (![ApplicationCoordinator sharedInstance].walletManager.wallet) {
+        if (!SLocator.walletManager.wallet) {
             NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
             replyHandler(dictionary);
             return;
         }
         
-        [[ApplicationCoordinator sharedInstance].walletManager.wallet updateBalanceWithHandler:^(BOOL success) {
+        [SLocator.walletManager.wallet updateBalanceWithHandler:^(BOOL success) {
             if (success) {
-                [[ApplicationCoordinator sharedInstance].walletManager.wallet updateHistoryWithHandler:^(BOOL success) {
+                [SLocator.walletManager.wallet updateHistoryWithHandler:^(BOOL success) {
                     if (success) {
-                        Wallet *wallet = [ApplicationCoordinator sharedInstance].walletManager.wallet;
-                        NSString *address = wallet.mainAddress;
+
+                        Wallet *wallet = SLocator.walletManager.wallet;
+                        NSString *address = [wallet getStoredLastAddressKey];
+                        
                         if (!address) {
                             NSDictionary *dictionary = @{kErrorKey : @"No wallet"};
                             replyHandler(dictionary);
@@ -181,7 +183,7 @@ NSString *kErrorKey = @"error";
 
 -(NSDictionary*)createInfoForWatch {
     
-    Wallet *wallet = [ApplicationCoordinator sharedInstance].walletManager.wallet;
+    Wallet *wallet = SLocator.walletManager.wallet;
     NSString *address = [wallet getStoredLastAddressKey];
     if (!address) {
         NSDictionary *dictionary = @{kErrorKey : @"No wallet"};

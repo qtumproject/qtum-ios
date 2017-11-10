@@ -7,7 +7,7 @@
 //
 
 #import "BackupFileManager.h"
-#import "ServiceLocator.h"
+
 #import "NSDate+Extension.h"
 
 static NSString* kContractsKey = @"contracts";

@@ -57,63 +57,63 @@
 
 - (NoInternetConnectionPopUpViewController *)createNoInternetConnetion
 {
-    NoInternetConnectionPopUpViewController *controller = [[ControllersFactory sharedInstance] createNoInternetConnectionPopUpViewController];
+    NoInternetConnectionPopUpViewController *controller = [SLocator.controllersFactory createNoInternetConnectionPopUpViewController];
     return controller;
 }
 
 - (PhotoLibraryPopUpViewController *)createPhotoLibrary
 {
-    PhotoLibraryPopUpViewController *controller = [[ControllersFactory sharedInstance] createPhotoLibraryPopUpViewController];
+    PhotoLibraryPopUpViewController *controller = [SLocator.controllersFactory createPhotoLibraryPopUpViewController];
     return controller;
 }
 
 - (ErrorPopUpViewController *)createErrorPopUp{
-    ErrorPopUpViewController *controller = [[ControllersFactory sharedInstance] createErrorPopUpViewController];
+    ErrorPopUpViewController *controller = [SLocator.controllersFactory createErrorPopUpViewController];
     return controller;
 }
 
 - (InformationPopUpViewController *)createInformationPopUp{
-    InformationPopUpViewController *controller = [[ControllersFactory sharedInstance] createInformationPopUpViewController];
+    InformationPopUpViewController *controller = [SLocator.controllersFactory createInformationPopUpViewController];
     return controller;
 }
 
 - (ConfirmPopUpViewController *)createConfirmPopUp{
-    ConfirmPopUpViewController *controller = [[ControllersFactory sharedInstance] createConfirmPopUpViewController];
+    ConfirmPopUpViewController *controller = [SLocator.controllersFactory createConfirmPopUpViewController];
     return controller;
 }
 
 - (SecurityPopupViewController *)createSecurityPopUp{
-    SecurityPopupViewController *controller = [[ControllersFactory sharedInstance] createSecurityPopupViewController];
+    SecurityPopupViewController *controller = [SLocator.controllersFactory createSecurityPopupViewController];
     return controller;
 }
 
 - (AddressTransferPopupViewController *)createAddressTransferPopUp{
-    AddressTransferPopupViewController *controller = [[ControllersFactory sharedInstance] createAddressTransferPopupViewController];
+    AddressTransferPopupViewController *controller = [SLocator.controllersFactory createAddressTransferPopupViewController];
     return controller;
 }
 
 - (LoaderPopUpViewController *)createLoaderPopUp{
-    LoaderPopUpViewController *controller = [[ControllersFactory sharedInstance] createLoaderViewController];
+    LoaderPopUpViewController *controller = [SLocator.controllersFactory createLoaderViewController];
     return controller;
 }
 
 - (RestoreContractsPopUpViewController *)createRestoreContractPopUp{
-    RestoreContractsPopUpViewController *controller = [[ControllersFactory sharedInstance] createRestoreContractsPopUpViewController];
+    RestoreContractsPopUpViewController *controller = [SLocator.controllersFactory createRestoreContractsPopUpViewController];
     return controller;
 }
 
 - (SourceCodePopUpViewController *)createSourceCodePopUp{
-    SourceCodePopUpViewController *controller = [[ControllersFactory sharedInstance] createSourceCodePopUpViewController];
+    SourceCodePopUpViewController *controller = [SLocator.controllersFactory createSourceCodePopUpViewController];
     return controller;
 }
 
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUp{
-    ConfirmPurchasePopUpViewController *controller = [[ControllersFactory sharedInstance] createConfirmPurchasePopUpViewController];
+    ConfirmPurchasePopUpViewController *controller = [SLocator.controllersFactory createConfirmPurchasePopUpViewController];
     return controller;
 }
 
 - (ShareTokenPopUpViewController *)createShareTokenPopUp{
-    ShareTokenPopUpViewController *controller = [[ControllersFactory sharedInstance] createShareTokenPopUpViewController];
+    ShareTokenPopUpViewController *controller = [SLocator.controllersFactory createShareTokenPopUpViewController];
     return controller;
 }
 
@@ -257,7 +257,7 @@
     return controller;
 }
 
-- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter toAddress:(NSString*) address withFromAddressVariants:(NSDictionary <NSString*, NSDictionary<NSString*, NSString*>*>*) variants completion:(void (^)(void))completion{
+- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter toAddress:(NSString*) address withFromAddressVariants:(NSArray <WalletBalancesObject*>*) variants completion:(void (^)(void))completion{
     
     AddressTransferPopupViewController *controller = [self createAddressTransferPopUp];
     controller.toAddress = address;

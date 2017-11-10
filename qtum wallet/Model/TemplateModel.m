@@ -7,9 +7,7 @@
 //
 
 #import "TemplateModel.h"
-#import "ContractFileManager.h"
 #import "NSDate+Extension.h"
-#import "ServiceLocator.h"
 
 @implementation TemplateModel
 

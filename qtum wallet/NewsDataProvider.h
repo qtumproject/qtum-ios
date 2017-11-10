@@ -14,15 +14,12 @@
 @interface NewsDataProvider : NSObject
 
 typedef void(^QTUMNewsItems) (NSArray <QTUMNewsItem*>* feeds);
+typedef void(^gettingNewsFailedBlock)(void);
 
--(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion;
+
+-(void)getNewsItemsWithCompletion:(QTUMNewsItems) completion andFailure:(gettingNewsFailedBlock) failure;
 -(void)getTagsFromNews:(QTUMNewsItem*) newsItem withCompletion:(QTUMTagsItems) completion;
 -(NSArray <QTUMNewsItem*>*)obtainNewsItems;
 -(void)cancelAllOperations;
-
-+ (instancetype)sharedInstance;
-- (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
-+ (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
-+ (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 @end

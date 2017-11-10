@@ -31,7 +31,7 @@
 
 -(void)start {
     
-    NSObject <ChangePinOutput>* output = [[ControllersFactory sharedInstance] createChangePinController];
+    NSObject <ChangePinOutput>* output = [SLocator.controllersFactory createChangePinController];
     output.delegate = self;
     //output.type = ConfirmType;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
@@ -48,7 +48,7 @@
         [self enteringPinFailed];
         
     } else if (!self.pinOld) {
-        if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
+        if ([SLocator.walletManager verifyPin:pin]) {
             //old pin confirmed
             self.pinOld = pin;
             [self.pinOutput.passwordView setStyle:SameStyle lenght:LongType];
@@ -72,7 +72,7 @@
         
         if ([self.pinNew isEqualToString:pin]) {
             //change pin for new one
-            if (![[ApplicationCoordinator sharedInstance].walletManager changePinFrom:self.pinOld toPin:self.pinNew]) {
+            if (![SLocator.walletManager changePinFrom:self.pinOld toPin:self.pinNew]) {
                 
                 completision(NO);
                 [self enteringPinFailed];
@@ -94,7 +94,7 @@
     
     self.pinOld = nil;
     self.pinNew = nil;
-    [self.pinOutput.passwordView setStyle:SameStyle lenght:[AppSettings sharedInstance].isLongPin ? LongType : ShortType];
+    [self.pinOutput.passwordView setStyle:SameStyle lenght:SLocator.appSettings.isLongPin ? LongType : ShortType];
     [self.pinOutput.passwordView actionIncorrectPin];
     [self.pinOutput setCustomTitle:NSLocalizedString(@"Enter Old PIN", "")];
 }

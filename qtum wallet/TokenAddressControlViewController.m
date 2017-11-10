@@ -17,7 +17,7 @@
 
 @implementation TokenAddressControlViewController
 
-@synthesize delegate, addressesValueHashTable, symbol;
+@synthesize delegate, arrayWithAddressesAndBalances, symbol;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,24 +53,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate didPressCellAtIndexPath:indexPath withAddress:self.addressesValueHashTable.allKeys[indexPath.row]];
+    [self.delegate didPressCellAtIndexPath:indexPath withAddress:self.arrayWithAddressesAndBalances[indexPath.row].addressString];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.addressesValueHashTable.count;
+    return self.arrayWithAddressesAndBalances.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TokenAddressContolCell *cell = [tableView dequeueReusableCellWithIdentifier:tokenAddressControlCellIdentifire];
-    NSString* key = self.addressesValueHashTable.allKeys[indexPath.row];
-    cell.addressLabel.text = key;
-    cell.valueLabel.text = self.addressesValueHashTable[key][@"longString"];
+    ContracBalancesObject* addressObject = self.arrayWithAddressesAndBalances[indexPath.row];
+    cell.addressLabel.text = addressObject.addressString;
+    cell.valueLabel.text = addressObject.longBalanceStringBalance;
     cell.symbolLabel.text = self.symbol;
-    cell.shortBalance = self.addressesValueHashTable[key][@"shortString"];
+    cell.shortBalance = addressObject.shortBalanceStringBalance;
     [cell setNeedsLayout];
     return cell;
 }

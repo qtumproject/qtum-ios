@@ -8,14 +8,9 @@
 
 #import "AppDelegate.h"
 #import "Appearance.h"
-#import "ContractFileManager.h"
-#import "NotificationManager.h"
-#import "OpenURLManager.h"
 #import "iOSSessionManager.h"
 
 #import "QStoreDataProvider.h"
-#import "ServiceLocator.h"
-#import "NewsDataProvider.h"
 
 @interface AppDelegate ()
 
@@ -30,7 +25,7 @@
 
     [iOSSessionManager sharedInstance];
     [ServiceLocator sharedInstance];
-    [[AppSettings sharedInstance] setup];
+    [SLocator.appSettings setup];
     [Appearance setUp];
 
     [[ApplicationCoordinator sharedInstance] startSplashScreen];
@@ -42,16 +37,12 @@
         }
     });
     
-//    QTUMBigNumber* number = [QTUMBigNumber decimalWithString:@"0.000000522000"];
-//
-//    NSString* shortString = [number shortFormatOfNumber];
-    
     return YES;
 }
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     
-    [[ApplicationCoordinator sharedInstance].openUrlManager launchFromUrl:url];
+    [SLocator.openURLManager launchFromUrl:url];
     self.aplicationCoordinatorStarted  = YES;
     return YES;
 }
@@ -65,19 +56,19 @@
 #pragma mark - Notifications
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    [[ApplicationCoordinator sharedInstance].notificationManager application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    [SLocator.notificationManager application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
-    [[ApplicationCoordinator sharedInstance].notificationManager application:application didFailToRegisterForRemoteNotificationsWithError:error];
+    [SLocator.notificationManager application:application didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [[ApplicationCoordinator sharedInstance].notificationManager application:application didReceiveRemoteNotification:userInfo];
+    [SLocator.notificationManager application:application didReceiveRemoteNotification:userInfo];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-    [[ApplicationCoordinator sharedInstance].notificationManager application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+    [SLocator.notificationManager application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 
 @end

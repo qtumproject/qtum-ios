@@ -18,7 +18,7 @@
     
     
     [self.passwordView setStyle:LightPopupStyle
-                         lenght:[AppSettings sharedInstance].isLongPin ? LongType : ShortType];
+                         lenght:SLocator.appSettings.isLongPin ? LongType : ShortType];
     
     self.passwordView.delegate = self;
 }

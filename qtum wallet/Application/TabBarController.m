@@ -7,7 +7,6 @@
 //
 
 #import "TabBarController.h"
-#import "ControllersFactory.h"
 #import "NewPaymentDarkViewController.h"
 #import "TabBarCoordinator.h"
 #import "Presentable.h"

@@ -31,4 +31,11 @@
     return 53;
 }
 
+-(RemoveContractTrainigView*)trainingViewWithStyle {
+    
+    RemoveContractTrainigView *trainingView = [[[NSBundle mainBundle] loadNibNamed:@"RemoveContractTrainingViewLight" owner:self options:nil] objectAtIndex:0];
+    
+    return trainingView;
+}
+
 @end

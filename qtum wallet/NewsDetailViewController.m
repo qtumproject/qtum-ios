@@ -32,6 +32,9 @@
     
     if (!self.newsItem.tags) {
         [self getData];
+        self.tableView.hidden = YES;
+    } else {
+        self.tableView.hidden = NO;
     }
 }
 
@@ -62,14 +65,25 @@
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.newsItem.tags.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (!self.newsItem.tags.count) {
+        return 0;
+    }
+    return self.newsItem.tags.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    QTUMHTMLTagItem* tag = self.newsItem.tags[indexPath.row];
-    return [self.cellBuilder getCellWithTagItem:tag fromTable:tableView withIndexPath:indexPath];
+    if (indexPath.row == 0 && indexPath.section == 0) {
+        
+        QTUMFeedItem* feed = self.newsItem.feed;
+        return [self.cellBuilder getCellTitleWithFeedItem:feed fromTable:tableView withIndexPath:indexPath];
+    } else {
+        
+        QTUMHTMLTagItem* tag = self.newsItem.tags[indexPath.row - 1];
+        return [self.cellBuilder getCellWithTagItem:tag fromTable:tableView withIndexPath:indexPath];
+    }
 }
 
 -(void)getData {
@@ -103,6 +117,7 @@
     
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
+        weakSelf.tableView.hidden = NO;
         [weakSelf.tableView reloadData];
     });
 }

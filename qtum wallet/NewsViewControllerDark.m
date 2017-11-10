@@ -9,6 +9,7 @@
 #import "NewsViewControllerDark.h"
 #import "NewsTableCellDark.h"
 #import "QTUMNewsItem.h"
+#import "NSDate+Extension.h"
 
 @interface NewsViewControllerDark ()
 
@@ -45,7 +46,7 @@
     QTUMNewsItem* newsItem = self.news[indexPath.row];
     cell.descriptionLabel.text = newsItem.feed.title;
     cell.titleLabel.text = newsItem.feed.author;
-    cell.dateLabel.text = [NSString stringWithFormat:@"%@", [self.cellFormatter stringFromDate:newsItem.feed.date]];
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@", [self.cellFormatter stringFromDate:[newsItem.feed.date dateInLocalTimezoneFromUTCDate]]];
     
     return cell;
 }

@@ -10,7 +10,6 @@
 #import "NewsCellModel.h"
 #import "NewsOutput.h"
 #import "NewsDetailOutput.h"
-#import "NewsDataProvider.h"
 #import "NewsDetailCellBuilder.h"
 
 @interface NewsCoordinator () <NewsOutputDelegate,NewsDetailOutputDelegate>
@@ -37,21 +36,21 @@
 
 -(void)start {
     
-    NSObject<NewsOutput> *newsOutput = [[ControllersFactory sharedInstance] createNewsOutput];
+    NSObject<NewsOutput> *newsOutput = [SLocator.controllersFactory createNewsOutput];
     newsOutput.delegate = self;
     self.newsController = newsOutput;
     __weak __typeof(self) weakSelf = self;
 
-    NSArray <QTUMNewsItem*>* news = [[NewsDataProvider sharedInstance] obtainNewsItems];
+    NSArray <QTUMNewsItem*>* news = [SLocator.newsDataProvider obtainNewsItems];
     if (news) {
         newsOutput.news  = news;
         [newsOutput reloadTableView];
     }
     
-    [[NewsDataProvider sharedInstance] getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
+    [SLocator.newsDataProvider getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
         weakSelf.newsController.news = news;
         [weakSelf.newsController reloadTableView];
-    }];
+    } andFailure:nil];
     
     [self.navigationController setViewControllers:@[[newsOutput toPresent]]];
 }
@@ -63,9 +62,11 @@
     __weak __typeof(self) weakSelf = self;
 
     [self.newsController startLoading];
-    [[NewsDataProvider sharedInstance] getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
+    [SLocator.newsDataProvider getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
         weakSelf.newsController.news = news;
         [weakSelf.newsController reloadTableView];
+        [weakSelf.newsController stopLoadingIfNeeded];
+    } andFailure:^{
         [weakSelf.newsController stopLoadingIfNeeded];
     }];
 }
@@ -78,7 +79,7 @@
 #pragma mark NewsDetailOutputDelegate
 
 -(void)didBackPressed {
-    [[NewsDataProvider sharedInstance] cancelAllOperations];
+    [SLocator.newsDataProvider cancelAllOperations];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -88,7 +89,7 @@
     
     if (!newsItem.tags) {
         [self.newsDetailController startLoading];
-        [[NewsDataProvider sharedInstance] getTagsFromNews:newsItem withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
+        [SLocator.newsDataProvider getTagsFromNews:newsItem withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
             
             weakSelf.newsDetailController.newsItem = newsItem;
             [weakSelf.newsDetailController stopLoadingIfNeeded];
@@ -101,7 +102,7 @@
 
 -(void)showNewsWithNewsItem:(QTUMNewsItem*) newsItem {
     
-    NSObject<NewsDetailOutput> *newsOutput = [[ControllersFactory sharedInstance] createNewsDetailOutput];
+    NSObject<NewsDetailOutput> *newsOutput = [SLocator.controllersFactory createNewsDetailOutput];
     newsOutput.newsItem = newsItem;
     NewsDetailCellBuilder *cellBuilder = [NewsDetailCellBuilder new];
     newsOutput.cellBuilder = cellBuilder;

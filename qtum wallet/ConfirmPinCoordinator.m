@@ -45,7 +45,7 @@
     NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
     BOOL shoodFingerprintShow = failedCount < 3;
 
-    if ([AppSettings sharedInstance].isFingerprintEnabled && shoodFingerprintShow) {
+    if (SLocator.appSettings.isFingerprintEnabled && shoodFingerprintShow) {
         
         [self showFingerprint];
     } else {
@@ -60,7 +60,7 @@
 
 -(void)showSecurityLoginController {
     
-    LoginViewController* controller = (LoginViewController*)[[ControllersFactory sharedInstance] createLoginController];
+    LoginViewController* controller = (LoginViewController*)[SLocator.controllersFactory createLoginController];
     controller.delegate = self;
     [self displayContentController:controller];
     self.loginOutput = controller;
@@ -124,7 +124,7 @@
     
     if (![self checkStatusAndShowTimeAlertIfNeeded]) {
         
-        if ([[ApplicationCoordinator sharedInstance].walletManager verifyPin:pin]) {
+        if ([SLocator.walletManager verifyPin:pin]) {
             
             [NSUserDefaults saveFailedPinCount:0];
             [self loginUser];
@@ -145,7 +145,7 @@
     NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
     NSDate* lastFailedPinDate = [NSUserDefaults getLastFailedPinDate];
     NSInteger minutsSinceLastFailed = [NSDate minutsSinceDate:lastFailedPinDate];
-    NSInteger waitingMinuts = [[AppSettings sharedInstance] failedPinWaitingTime];
+    NSInteger waitingMinuts = [SLocator.appSettings failedPinWaitingTime];
     BOOL isFailedStatePinEntering = failedCount >= 3 && lastFailedPinDate && minutsSinceLastFailed < waitingMinuts;
     
     if (isFailedStatePinEntering) {

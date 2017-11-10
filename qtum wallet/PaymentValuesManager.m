@@ -87,7 +87,7 @@ long const GasLimitStepsCount = 49;
 
 - (void)loadDGPInfo {
     __weak typeof(self) weakSelf = self;
-    [[ApplicationCoordinator sharedInstance].requestManager getDGPinfo:^(id responseObject) {
+    [SLocator.requestManager getDGPinfo:^(id responseObject) {
         NSDictionary *dictionary = (NSDictionary *)responseObject;
     
         NSNumber* mingasprice =  [dictionary objectForKey:@"mingasprice"];

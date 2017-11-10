@@ -7,7 +7,6 @@
 //
 
 #import "NewPaymentViewController.h"
-#import "TransactionManager.h"
 #import "QRCodeViewController.h"
 #import "TextFieldWithLine.h"
 #import "TokenListViewController.h"

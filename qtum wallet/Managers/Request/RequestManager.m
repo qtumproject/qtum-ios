@@ -23,24 +23,14 @@
 
 @implementation RequestManager
 
-+ (instancetype)sharedInstance {
+- (instancetype)initWithBaseUrl:(NSString*) baseUrl {
     
-    static RequestManager *manager;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        manager = [[super alloc] initUniqueInstance];
-    });
-    return manager;
-}
-
-- (instancetype)initUniqueInstance
-{
     self = [super init];
 
     if (self != nil) {
         
         _adapter = [ServerAdapter new];
-        _networkService = [[NetworkingService alloc] initWithBaseUrl:[self baseURL]];
+        _networkService = [[NetworkingService alloc] initWithBaseUrl:baseUrl];
     }
 
     return self;
@@ -56,11 +46,6 @@
         _socketManager.delegate = self;
     }
     return _socketManager;
-}
-
--(NSString*)baseURL {
-    
-    return [AppSettings sharedInstance].baseURL;
 }
 
 #pragma mark - Methods
@@ -256,7 +241,7 @@
 
 - (void)startObservingAdresses:(NSArray*) addresses {
     
-    [self.socketManager subscripeToUpdateWalletAdresses:[[ApplicationCoordinator sharedInstance].walletManager wallet].allKeysAdreeses];
+    [self.socketManager subscripeToUpdateWalletAdresses:[SLocator.walletManager wallet].allKeysAdreeses];
 }
 
 - (void)stopObservingAdresses:(NSArray*) addresses {

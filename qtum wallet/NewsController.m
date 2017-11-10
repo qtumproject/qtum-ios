@@ -82,9 +82,7 @@
     
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.tableView.hidden = NO;
         [weakSelf.tableView reloadData];
-        [weakSelf.refresh endRefreshing];
     });
 }
 
@@ -106,6 +104,7 @@
 
 -(void)actionRefresh {
     
+    [self.refresh endRefreshing];
     [self getData];
 }
 

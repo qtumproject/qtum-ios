@@ -8,23 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseCoordinator.h"
-#import "WalletManagering.h"
-#import "Requestable.h"
 #import "SecurityCoordinator.h"
-
-@class NotificationManager;
-@class OpenURLManager;
+#import "Clearable.h"
 
 @protocol ApplicationCoordinatorDelegate <NSObject>
 
 @end
 
 @interface ApplicationCoordinator : BaseCoordinator <Clearable>
-
-@property (strong,nonatomic,readonly) NotificationManager* notificationManager;
-@property (strong,nonatomic,readonly) OpenURLManager* openUrlManager;
-@property (strong,nonatomic) id <Requestable> requestManager;
-@property (strong,nonatomic) id <WalletManagering> walletManager;
 
 -(void)start;
 //flows

@@ -7,6 +7,8 @@
 //
 
 #import "ServiceLocator.h"
+#import "RequestManager.h"
+#import "WalletManager.h"
 
 @implementation ServiceLocator
 
@@ -34,6 +36,13 @@
         _imageLoader = [ImageLoader new];
         _notificationManager = [NotificationManager new];
         _openURLManager = [OpenURLManager new];
+        _transactionManager = [TransactionManager new];
+        _appSettings = [AppSettings new];
+        _newsDataProvider = [NewsDataProvider new];
+        _controllersFactory = [ControllersFactory sharedInstance];
+        _requestManager = [[RequestManager alloc] initWithBaseUrl:_appSettings.baseURL];
+        _walletManager = [WalletManager new];
+        _contractInfoFacade = [ContractInfoFacade new];
     }
     return self;
 }

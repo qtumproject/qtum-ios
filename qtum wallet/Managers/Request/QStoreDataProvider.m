@@ -17,7 +17,7 @@
              withSuccessHandler:(void(^)(QStoreMainScreenCategory *updatedCategory))success
               andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager getContractsByCategoryPath:category.urlPath withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager getContractsByCategoryPath:category.urlPath withSuccessHandler:^(id responseObject) {
         [category parseElementsFromJSONArray:responseObject];
         success(category);
     } andFailureHandler:^(NSError *error, NSString *message) {
@@ -27,7 +27,7 @@
 
 - (void)getFullContractById:(NSString *)contractId withSuccessHandler:(void (^)(NSDictionary *fullDictionary))success andFailureHandler:(void (^)(NSError *, NSString *))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager getFullContractById:contractId withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager getFullContractById:contractId withSuccessHandler:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             success(responseObject);
         } else {
@@ -49,7 +49,7 @@
     
     NSArray *searchArrayToReturnWithResult = tags ? tags : name ? @[name] : nil;
     
-    [[ApplicationCoordinator sharedInstance].requestManager searchContractsByCount:count offset:offset type:type tags:tags name:name withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager searchContractsByCount:count offset:offset type:type tags:tags name:name withSuccessHandler:^(id responseObject) {
         NSMutableArray<QStoreContractElement *> *array = [NSMutableArray new];
         for (NSDictionary *dictionary in responseObject) {
             QStoreContractElement *element = [QStoreContractElement createFromSearchDictionary:dictionary];
@@ -65,7 +65,7 @@
                withSuccessHandler:(void(^)(NSString *abiString))success
                 andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
  
-    [[ApplicationCoordinator sharedInstance].requestManager getContractABI:element.idString withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager getContractABI:element.idString withSuccessHandler:^(id responseObject) {
         NSData *jsonData = [NSJSONSerialization  dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
         NSString *abiString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         success(abiString);
@@ -78,7 +78,7 @@
     withSuccessHandler:(void(^)(NSString *abiString))success
      andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager getContractABI:contractId withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager getContractABI:contractId withSuccessHandler:^(id responseObject) {
         NSData *jsonData = [NSJSONSerialization  dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
         NSString *abiString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         success(abiString);
@@ -91,7 +91,7 @@
  withSuccessHandler:(void(^)(NSDictionary *buyRequestDictionary))success
   andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager buyContract:contractId withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager buyContract:contractId withSuccessHandler:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             success(responseObject);
         } else {
@@ -107,7 +107,7 @@
       withSuccessHandler:(void(^)(NSDictionary *paidObject))success
        andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager checkRequestPaid:contractId requestId:requestId withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager checkRequestPaid:contractId requestId:requestId withSuccessHandler:^(id responseObject) {
         
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             success(responseObject);
@@ -125,7 +125,7 @@
    withSuccessHandler:(void(^)(NSString *sourceCode))success
     andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager getSourceCode:contractId requestId:requestId accessToken:accessToken withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager getSourceCode:contractId requestId:requestId accessToken:accessToken withSuccessHandler:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSString *sourceCode = [responseObject objectForKey:@"source_code"];
             success(sourceCode);
@@ -144,7 +144,7 @@
  withSuccessHandler:(void(^)(NSString *byteCode))success
   andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager getByteCode:contractId buyerAddresses:buyerAddresses nonce:nonce signs:signs withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager getByteCode:contractId buyerAddresses:buyerAddresses nonce:nonce signs:signs withSuccessHandler:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSString *byteCode = [responseObject objectForKey:@"bytecode"];
             success(byteCode);
@@ -162,7 +162,7 @@
  withSuccessHandler:(void(^)(NSString *sourceCode))success
   andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager getByteCode:contractId requestId:requestId accessToken:accessToken withSuccessHandler:^(id responseObject) {
+    [SLocator.requestManager getByteCode:contractId requestId:requestId accessToken:accessToken withSuccessHandler:^(id responseObject) {
         
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSString *byteCode = [responseObject objectForKey:@"bytecode"];
@@ -178,7 +178,7 @@
 - (void)getCategories:(void(^)(NSArray<QStoreCategory *> *categories))success
     andFailureHandler:(void(^)(NSError * error, NSString* message))failure {
     
-    [[ApplicationCoordinator sharedInstance].requestManager getCategories:^(id responseObject) {
+    [SLocator.requestManager getCategories:^(id responseObject) {
         NSMutableArray *array = [NSMutableArray new];
         for (NSDictionary *dictionary in responseObject) {
             NSString *identifier = [dictionary objectForKey:@"_id"];

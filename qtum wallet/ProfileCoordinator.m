@@ -54,7 +54,7 @@
 
 - (void)showLanguage:(BOOL)animated {
     
-    self.languageController = [[ControllersFactory sharedInstance] createLanguageViewController];
+    self.languageController = [SLocator.controllersFactory createLanguageViewController];
     self.languageController.delegate = self;
     [self.navigationController pushViewController:[self.languageController toPresent] animated:animated];
 }
@@ -78,7 +78,7 @@
 
 - (void)didChangeFingerprintSettings:(BOOL)value {
     
-    [[AppSettings sharedInstance] setFingerprintEnabled:value];
+    [SLocator.appSettings setFingerprintEnabled:value];
 }
 
 - (void)didPressedLanguage {
@@ -103,7 +103,7 @@
 }
 
 - (void)didPressedAbout {
-    NSObject<AboutOutput>* output = [[ControllersFactory sharedInstance] createAboutOutput];
+    NSObject<AboutOutput>* output = [SLocator.controllersFactory createAboutOutput];
     output.delegate = self;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }

@@ -18,7 +18,7 @@
 
 @implementation AddressControlListViewController
 
-@synthesize delegate, addressesValueHashTable;
+@synthesize delegate, arrayWithAddressesAndBalances;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,22 +47,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate didPressCellAtIndexPath:indexPath withAddress:self.addressesValueHashTable.allKeys[indexPath.row]];
+    [self.delegate didPressCellAtIndexPath:indexPath withAddress:self.arrayWithAddressesAndBalances[indexPath.row].addressString];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.addressesValueHashTable.count;
+    return self.arrayWithAddressesAndBalances.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     AddressControlCell *cell = [tableView dequeueReusableCellWithIdentifier:addressControlCellIdentifire];
-    NSString* key = self.addressesValueHashTable.allKeys[indexPath.row];
-    cell.addressLabel.text = key;
-    cell.valueLabel.text =  [[[QTUMBigNumber decimalWithString:self.addressesValueHashTable[key][@"longString"]] roundedNumberWithScale:5] stringValue];
+    WalletBalancesObject* balanceObject = self.arrayWithAddressesAndBalances[indexPath.row];
+    cell.addressLabel.text = balanceObject.addressString;
+    cell.valueLabel.text =  [[[QTUMBigNumber decimalWithString:balanceObject.longBalanceStringBalance] roundedNumberWithScale:5] stringValue];
     return cell;
 }
 
