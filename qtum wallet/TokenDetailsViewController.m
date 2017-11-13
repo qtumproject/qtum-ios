@@ -121,7 +121,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 - (void)updateHeader:(Contract *)token {
     
-    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%@", self.token.balance];
+    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%@ %@",token.balanceString ?: @"", token.symbol ?: @""];
 }
 
 -(void)refreshTable {

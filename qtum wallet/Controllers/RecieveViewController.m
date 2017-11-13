@@ -79,9 +79,13 @@ shortBalanceText = _shortBalanceText;
 -(void)viewDidLayoutSubviews {
     
     if (self.type == TokenType) {
-        CGSize size = [self.balanceLabel.text sizeWithAttributes:@{NSFontAttributeName : self.balanceLabel.font}];
+        
+        CGSize size = [self.balanceText sizeWithAttributes:@{NSFontAttributeName : self.balanceLabel.font}];
+        
         if (size.width > self.balanceLabel.bounds.size.width) {
             self.balanceLabel.text = self.shortBalanceText;
+        } else {
+            self.balanceLabel.text = self.balanceText;
         }
     }
 }

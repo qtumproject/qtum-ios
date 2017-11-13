@@ -285,7 +285,7 @@ static NSInteger constantFee = 400000000;
 
     if (addressWithAmountValue && amount) {
         
-        [[[self class] sharedInstance] callContractWithAddress:[NSString dataFromHexString:token.contractAddress]
+        [self callContractWithAddress:[NSString dataFromHexString:token.contractAddress]
                                                     andBitcode:hashFuction
                                                  fromAddresses:@[addressWithAmountValue]
                                                      toAddress:nil

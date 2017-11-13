@@ -43,6 +43,7 @@
         _requestManager = [[RequestManager alloc] initWithBaseUrl:_appSettings.baseURL];
         _walletManager = [WalletManager new];
         _contractInfoFacade = [ContractInfoFacade new];
+        _sourceCodeFormatService = [SourceCodeFormatService new];
     }
     return self;
 }

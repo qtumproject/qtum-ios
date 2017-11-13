@@ -80,7 +80,7 @@
 
 -(void)updateControls {
     
-    self.availibleBalanceShortInfoLabel.text = [NSString stringWithFormat:@"%@",token.balance];
+    self.availibleBalanceShortInfoLabel.text = [NSString stringWithFormat:@"%@ %@",token.balanceString ?: @"", token.symbol ?: @""];
     [self refreshTable];
 }
 

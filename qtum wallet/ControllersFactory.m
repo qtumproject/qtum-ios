@@ -82,6 +82,7 @@
 #import "AboutOutput.h"
 #import "ChooseReciveAddressOutput.h"
 #import "NewsDetailOutput.h"
+#import "SourceCodeOutput.h"
 
 @implementation ControllersFactory
 
@@ -207,6 +208,12 @@
 -(NSObject <SubscribeTokenOutput>*)createSubscribeTokenViewController {
     
     NSObject <SubscribeTokenOutput>* output = (NSObject <SubscribeTokenOutput>*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
+    return output;
+}
+
+-(NSObject <SourceCodeOutput>*)createSourceCodeOutput {
+    
+    NSObject <SourceCodeOutput>* output = (NSObject <SourceCodeOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"SourceCodeViewController"];
     return output;
 }
 

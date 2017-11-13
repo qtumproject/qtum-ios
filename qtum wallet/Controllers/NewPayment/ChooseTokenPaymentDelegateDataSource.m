@@ -83,6 +83,7 @@
         cell.balanceSymbol.text =
         cell.mainBalanceSymbol.text = self.tokens[indexPath.row - 1].symbol;
         cell.shortBalance = self.tokens[indexPath.row - 1].shortBalanceString;
+        cell.longBalance = self.tokens[indexPath.row - 1].balanceString;
         
         if ([self.activeToken isEqual:self.tokens[indexPath.row - 1]]) {
             [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];

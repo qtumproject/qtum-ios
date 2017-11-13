@@ -43,6 +43,8 @@ static NSInteger standartHistoryCellHeight = 50;
         cell.symbol.text = token.symbol;
         cell.shortBalance = token.shortBalanceString;
         cell.shortTotalSupply = token.shortTotalSupplyString;
+        cell.longBalance = token.balanceString;
+        cell.longTotalSupply = token.totalSupplyString;
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
