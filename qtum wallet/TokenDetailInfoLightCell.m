@@ -34,11 +34,15 @@
     CGSize size = [self.availableBalance.text sizeWithAttributes:@{NSFontAttributeName : self.availableBalance.font}];
     if (size.width > self.availableBalance.bounds.size.width) {
         self.availableBalance.text = self.shortBalance;
+    } else {
+        self.availableBalance.text = self.longBalance;
     }
     
-    size = [self.initialSupply.text sizeWithAttributes:@{NSFontAttributeName : self.initialSupply.font}];
+    size = [self.longTotalSupply sizeWithAttributes:@{NSFontAttributeName : self.initialSupply.font}];
     if (size.width > self.initialSupply.bounds.size.width) {
         self.initialSupply.text = self.shortTotalSupply;
+    } else {
+        self.initialSupply.text = self.longTotalSupply;
     }
 }
 

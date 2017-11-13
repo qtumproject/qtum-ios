@@ -18,6 +18,7 @@ static NSString* choseTokenPaymentCellIdentifire = @"ChoseTokenPaymentCellIdenti
 @property (weak, nonatomic) IBOutlet UILabel *balance;
 @property (weak, nonatomic) IBOutlet UILabel *balanceSymbol;
 @property (strong, nonatomic) NSString *shortBalance;
+@property (strong, nonatomic) NSString *longBalance;
 
 
 @end

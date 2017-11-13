@@ -20,6 +20,9 @@ static NSString *tokenDetailInfoLightCellIdentifire = @"tokenDetailInfoLightCell
 @property (weak, nonatomic) IBOutlet UILabel *decimalUnits;
 @property (strong, nonatomic) NSString *shortBalance;
 @property (strong, nonatomic) NSString *shortTotalSupply;
+@property (strong, nonatomic) NSString *longBalance;
+@property (strong, nonatomic) NSString *longTotalSupply;
+
 
 
 -(void)updateWithScrollView:(UIScrollView*) scrollView;

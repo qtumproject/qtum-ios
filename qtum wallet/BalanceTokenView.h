@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *balanceValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *balanceTextLabel;
 @property (copy, nonatomic) NSString *shortBalance;
+@property (copy, nonatomic) NSString *longBalance;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraintBalanceText;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraintBalanceValue;

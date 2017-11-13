@@ -14,9 +14,12 @@
     
     [super layoutSubviews];
     
-    CGSize size = [self.balanceValueLabel.text sizeWithAttributes:@{NSFontAttributeName : self.balanceValueLabel.font}];
+    CGSize size = [self.longBalance sizeWithAttributes:@{NSFontAttributeName : self.balanceValueLabel.font}];
+    
     if (size.width > self.balanceValueLabel.bounds.size.width) {
         self.balanceValueLabel.text = self.shortBalance;
+    } else {
+        self.balanceValueLabel.text = self.longBalance;
     }
 }
 
