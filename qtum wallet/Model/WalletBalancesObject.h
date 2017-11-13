@@ -2,7 +2,7 @@
 //  WalletBalancesObject.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 09.11.17.
+//  Created by Vladimir Lebedevich on 09.11.17.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
