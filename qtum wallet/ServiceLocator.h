@@ -27,7 +27,7 @@
 @property (strong, nonatomic) ControllersFactory* controllersFactory;
 @property (strong, nonatomic) id <WalletManagering> walletManager;
 @property (strong, nonatomic) ContractInfoFacade* contractInfoFacade;
-
+@property (strong, nonatomic) SourceCodeFormatService* sourceCodeFormatService;
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

@@ -84,6 +84,7 @@
 @protocol AboutOutput;
 @protocol NewsOutput;
 @protocol NewsDetailOutput;
+@protocol SourceCodeOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -143,6 +144,7 @@
 - (NSObject <AboutOutput> *)createAboutOutput;
 - (NSObject <NewsOutput>*)createNewsOutput;
 - (NSObject <NewsDetailOutput>*)createNewsDetailOutput;
+- (NSObject <SourceCodeOutput>*)createSourceCodeOutput;
 
 // QStore
 - (NSObject <QStoreMainOutput> *)createQStoreMainViewController;

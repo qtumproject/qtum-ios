@@ -283,6 +283,8 @@
 		B3D012D81FB445CB00A98770 /* ContractInfoFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012D71FB445CB00A98770 /* ContractInfoFacade.m */; };
 		B3D012DB1FB44CC400A98770 /* ContracBalancesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012DA1FB44CC400A98770 /* ContracBalancesObject.m */; };
 		B3D012DE1FB4542100A98770 /* WalletBalancesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */; };
+		B3D12F541FB9884400DEE41E /* SourceCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */; };
+		B3D12F571FB989DB00DEE41E /* SourceCodeFormatService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
 		B3D5FE3F1F569FEB006A2BF2 /* NSString+AbiRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */; };
@@ -1267,6 +1269,11 @@
 		B3D012DC1FB4542100A98770 /* WalletBalancesObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletBalancesObject.h; sourceTree = "<group>"; };
 		B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletBalancesObject.m; sourceTree = "<group>"; };
 		B3D0C95E1FA1DDCA00BAAB4C /* DynamicHeightCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicHeightCellProtocol.h; sourceTree = "<group>"; };
+		B3D12F511FB987E000DEE41E /* SourceCodeOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceCodeOutput.h; sourceTree = "<group>"; };
+		B3D12F521FB9884400DEE41E /* SourceCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceCodeViewController.h; sourceTree = "<group>"; };
+		B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeViewController.m; sourceTree = "<group>"; };
+		B3D12F551FB989DB00DEE41E /* SourceCodeFormatService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceCodeFormatService.h; sourceTree = "<group>"; };
+		B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeFormatService.m; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
@@ -2813,6 +2820,7 @@
 		B386F5AE1E1392B1004D231B /* Profile Flow */ = {
 			isa = PBXGroup;
 			children = (
+				B3D12F4F1FB987A800DEE41E /* SourceCode */,
 				B3427FC21F54089400182E95 /* AboutOutput */,
 				E7C101BC1F14ED4900848526 /* ChangePinOutput */,
 				E760F4AC1F0FA5170056D042 /* ProfileOutput */,
@@ -3090,6 +3098,16 @@
 				B3CD78E71F4DD46300D79363 /* ChooseAddressReciveCellLight.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		B3D12F4F1FB987A800DEE41E /* SourceCode */ = {
+			isa = PBXGroup;
+			children = (
+				B3D12F511FB987E000DEE41E /* SourceCodeOutput.h */,
+				B3D12F521FB9884400DEE41E /* SourceCodeViewController.h */,
+				B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */,
+			);
+			name = SourceCode;
 			sourceTree = "<group>";
 		};
 		B3D555EC1EDF4DA400CBDFCF /* Cells */ = {
@@ -3745,6 +3763,8 @@
 				B35170561FB3D4D200507C2A /* ServicesHeaders.h */,
 				B3D012D61FB445CB00A98770 /* ContractInfoFacade.h */,
 				B3D012D71FB445CB00A98770 /* ContractInfoFacade.m */,
+				B3D12F551FB989DB00DEE41E /* SourceCodeFormatService.h */,
+				B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -5776,6 +5796,7 @@
 				B3D5FE8F1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m in Sources */,
 				B3DC9D071F31B6B7006B2E07 /* AddressControlListViewControllerLight.m in Sources */,
 				B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */,
+				B3D12F541FB9884400DEE41E /* SourceCodeViewController.m in Sources */,
 				B315D02C1F9E100100C7F4E4 /* QTUMParagrafTagCell.m in Sources */,
 				B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */,
 				B3D5FE551F56AF1E006A2BF2 /* AbiParameterTypeInt.m in Sources */,
@@ -5795,6 +5816,7 @@
 				B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */,
 				E718FA281F17A7CA00C8076A /* ChooseTokenPaymentDelegateDataSource.m in Sources */,
 				E74636861DCB300800A13318 /* Utils.m in Sources */,
+				B3D12F571FB989DB00DEE41E /* SourceCodeFormatService.m in Sources */,
 				B321E87E1E0BE39B00DC7DE5 /* ExportBrainKeyViewController.m in Sources */,
 				B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */,
 				B32BC4AE1F28C70600C2417C /* PinViewControllerLight.m in Sources */,

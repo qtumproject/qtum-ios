@@ -25,5 +25,6 @@
 #import "ControllersFactory.h"
 #import "WalletManagering.h"
 #import "ContractInfoFacade.h"
+#import "SourceCodeFormatService.h"
 
 #endif /* ServicesHeaders_h */

@@ -17,8 +17,9 @@
 #import "ChangePinCoordinator.h"
 #import "AboutOutput.h"
 #import "ErrorPopUpViewController.h"
+#import "SourceCodeOutput.h"
 
-@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate, AboutOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
+@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate, AboutOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate, SourceCodeOutputDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
@@ -103,8 +104,16 @@
 }
 
 - (void)didPressedAbout {
-    NSObject<AboutOutput>* output = [SLocator.controllersFactory createAboutOutput];
+    
+//    NSObject<AboutOutput>* output = [SLocator.controllersFactory createAboutOutput];
+//    output.delegate = self;
+//    [self.navigationController pushViewController:[output toPresent] animated:YES];
+    
+    NSObject<SourceCodeOutput>* output = [SLocator.controllersFactory createSourceCodeOutput];
     output.delegate = self;
+    NSString* sourceCode = [SLocator.contractFileManager contractWithTemplate:@"CrowdsaleAsToken"];
+    NSAttributedString* formattedSourceCode = [SLocator.sourceCodeFormatService formattingSourceCodeStringWithString:sourceCode];
+    output.sourceCode = formattedSourceCode;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
