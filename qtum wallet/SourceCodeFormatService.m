@@ -14,8 +14,8 @@
     
     //formating all font
     NSMutableAttributedString* formattedString = [[NSMutableAttributedString alloc] initWithString:sourceCode];
-    UIFont* fontOfCode = [UIFont systemFontOfSize:11];
-    UIColor* colorOfCode = [UIColor redColor];
+    UIFont* fontOfCode = [UIFont fontWithName:@"simplonmono-regular" size:11];
+    UIColor* colorOfCode = [UIColor colorWithRed:197/255. green:197/255. blue:197/255. alpha:1];
     [formattedString addAttribute:NSFontAttributeName value:fontOfCode range:NSMakeRange(0, sourceCode.length)];
     [formattedString addAttribute:NSForegroundColorAttributeName value:colorOfCode range:NSMakeRange(0, sourceCode.length)];
     
@@ -23,7 +23,7 @@
     NSRegularExpression* pragmaSoliditysRegex = [NSRegularExpression regularExpressionWithPattern:@"pragma[[:space:]]+solidity[[:space:]]+(\\^[0-9.]+)" options:0 error:NULL];
     NSArray<NSTextCheckingResult *> *matches = [pragmaSoliditysRegex matchesInString:sourceCode options:0 range:NSMakeRange(0, sourceCode.length)];
     
-    UIColor* pragmaSolidityColor = [UIColor blueColor];
+    UIColor* pragmaSolidityColor = [UIColor colorWithRed:0/255. green:150/255. blue:255/255. alpha:1];
     
     for (NSTextCheckingResult* match in matches) {
         
@@ -35,7 +35,7 @@
     NSRegularExpression* dicimalsRegex = [NSRegularExpression regularExpressionWithPattern:@"[-+]?\\b\\d+\\b" options:0 error:NULL];
     matches = [dicimalsRegex matchesInString:sourceCode options:0 range:NSMakeRange(0, sourceCode.length)];
     
-    UIColor* numberColor = [UIColor blueColor];
+    UIColor* numberColor = [UIColor colorWithRed:0/255. green:150/255. blue:255/255. alpha:1];
 
     for (NSTextCheckingResult* match in matches) {
         
@@ -43,10 +43,10 @@
     }
     
     //
-    NSRegularExpression* reservedWordsorKeywordsRegex = [NSRegularExpression regularExpressionWithPattern:@"\\b(uint[0-9]{0,3}|bool|int[0-9]{0,3}|address|string)\\b" options:0 error:NULL];
+    NSRegularExpression* reservedWordsorKeywordsRegex = [NSRegularExpression regularExpressionWithPattern:@"\\b(uint[0-9]{0,3}|bool|int[0-9]{0,3}|address|string|struct|public)\\b" options:0 error:NULL];
     matches = [reservedWordsorKeywordsRegex matchesInString:sourceCode options:0 range:NSMakeRange(0, sourceCode.length)];
     
-    UIColor* speciamWordsColor = [UIColor yellowColor];
+    UIColor* speciamWordsColor = [UIColor colorWithRed:229/255. green:247/255. blue:131/255. alpha:1];
     
     for (NSTextCheckingResult* match in matches) {
         
@@ -56,9 +56,9 @@
     NSRegularExpression* functionRegex = [NSRegularExpression regularExpressionWithPattern:@"(function)[[:space:]]+(\\w+)(\\(([^)]*)\\))" options:0 error:NULL];
     matches = [functionRegex matchesInString:sourceCode options:0 range:NSMakeRange(0, sourceCode.length)];
     
-    UIColor* funcWordColor = [UIColor brownColor];
-    UIColor* paramColor = [UIColor grayColor];
-    UIColor* funcNameColor = [UIColor lightGrayColor];
+    UIColor* funcWordColor =  [UIColor colorWithRed:0/255. green:150/255. blue:255/255. alpha:1];
+    UIColor* paramColor =  [UIColor colorWithRed:229/255. green:247/255. blue:131/255. alpha:1];
+    UIColor* funcNameColor =  [UIColor colorWithRed:0/255. green:150/255. blue:255/255. alpha:1];
 
     for (NSTextCheckingResult* match in matches) {
         
@@ -75,7 +75,7 @@
     
     matches = [commentsRegex matchesInString:sourceCode options:0 range:NSMakeRange(0, sourceCode.length)];
     
-    UIColor* commentsColor = [UIColor greenColor];
+    UIColor* commentsColor = [UIColor colorWithRed:138/255. green:202/255. blue:128/255. alpha:1];
     
     for (NSTextCheckingResult* match in matches) {
 

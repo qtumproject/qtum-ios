@@ -105,8 +105,15 @@
 
 - (void)didPressedAbout {
     
-    NSObject<AboutOutput>* output = [SLocator.controllersFactory createAboutOutput];
+    //    NSObject<AboutOutput>* output = [SLocator.controllersFactory createAboutOutput];
+    //    output.delegate = self;
+    //    [self.navigationController pushViewController:[output toPresent] animated:YES];
+    
+    NSObject<SourceCodeOutput>* output = [SLocator.controllersFactory createSourceCodeOutput];
     output.delegate = self;
+    NSString* sourceCode = [SLocator.contractFileManager contractWithTemplate:@"CrowdsaleAsToken"];
+    NSAttributedString* formattedSourceCode = [SLocator.sourceCodeFormatService formattingSourceCodeStringWithString:sourceCode];
+    output.sourceCode = formattedSourceCode;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
