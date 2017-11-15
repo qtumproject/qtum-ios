@@ -685,12 +685,14 @@
 
 /* Begin PBXFileReference section */
 		0903654DC429CD9C31C04908 /* libPods-qtum wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FDDF3BFFCA52A097791A4AD /* Pods-qtum wallet.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.development.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.development.xcconfig"; sourceTree = "<group>"; };
 		2601E5D944F526E1947C2A50 /* libPods-qtum walletTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qtum walletTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C288131FA2EA3C838AF7336 /* Pods-qtum walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum walletTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.debug.xcconfig"; sourceTree = "<group>"; };
 		4B2FBBBBB5655C103D193E92 /* libPods-QTUM Watch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QTUM Watch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA96264341BA8A5D0C98FD /* Pods-QTUM Watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QTUM Watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-QTUM Watch Extension/Pods-QTUM Watch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		536D13E8DC1F063838D72A8F /* libPods-QTUM Watch Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QTUM Watch Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B15D520E6F078301AD2B24B9 /* Pods-QTUM Watch Extension.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QTUM Watch Extension.development.xcconfig"; path = "Pods/Target Support Files/Pods-QTUM Watch Extension/Pods-QTUM Watch Extension.development.xcconfig"; sourceTree = "<group>"; };
 		B3014D5C1F29FD63007EAE7A /* WatchContractOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutput.h; sourceTree = "<group>"; };
 		B3014D5D1F29FD7C007EAE7A /* WatchContractOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractOutputDelegate.h; sourceTree = "<group>"; };
 		B3014D5E1F2A1B8D007EAE7A /* WatchContractViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchContractViewControllerDark.h; sourceTree = "<group>"; };
@@ -1274,6 +1276,9 @@
 		B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeViewController.m; sourceTree = "<group>"; };
 		B3D12F551FB989DB00DEE41E /* SourceCodeFormatService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceCodeFormatService.h; sourceTree = "<group>"; };
 		B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeFormatService.m; sourceTree = "<group>"; };
+		B3D12F621FBC683300DEE41E /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		B3D12F631FBC687500DEE41E /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		B3D12F641FBC688000DEE41E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
@@ -1575,6 +1580,7 @@
 		D09F839A1F7BF308002F3098 /* QStoreCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreCategory.h; sourceTree = "<group>"; };
 		D09F839B1F7BF308002F3098 /* QStoreCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QStoreCategory.m; sourceTree = "<group>"; };
 		D0BB7C121F87C2C900EC5C70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D4904E3228FD9FF694396606 /* Pods-qtum walletTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum walletTests.development.xcconfig"; path = "Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests.development.xcconfig"; sourceTree = "<group>"; };
 		D71F3943F2787CBE5AE12D46 /* Pods-qtum walletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum walletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E70353081F039297004ECCC9 /* QStoreSearchTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreSearchTableSource.h; sourceTree = "<group>"; };
 		E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreSearchTableSource.m; sourceTree = "<group>"; };
@@ -2060,6 +2066,9 @@
 				3C288131FA2EA3C838AF7336 /* Pods-qtum walletTests.release.xcconfig */,
 				B3E96B8E4986BB8AF3BD6A7F /* Pods-QTUM Watch Extension.debug.xcconfig */,
 				4DCA96264341BA8A5D0C98FD /* Pods-QTUM Watch Extension.release.xcconfig */,
+				B15D520E6F078301AD2B24B9 /* Pods-QTUM Watch Extension.development.xcconfig */,
+				0FDDF3BFFCA52A097791A4AD /* Pods-qtum wallet.development.xcconfig */,
+				D4904E3228FD9FF694396606 /* Pods-qtum walletTests.development.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -3108,6 +3117,16 @@
 				B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */,
 			);
 			name = SourceCode;
+			sourceTree = "<group>";
+		};
+		B3D12F611FBC681E00DEE41E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B3D12F621FBC683300DEE41E /* Development.xcconfig */,
+				B3D12F631FBC687500DEE41E /* Debug.xcconfig */,
+				B3D12F641FBC688000DEE41E /* Release.xcconfig */,
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 		B3D555EC1EDF4DA400CBDFCF /* Cells */ = {
@@ -4703,6 +4722,7 @@
 		E7FD363A1DC4D07E00748177 /* qtum wallet */ = {
 			isa = PBXGroup;
 			children = (
+				B3D12F611FBC681E00DEE41E /* Config */,
 				B33EAF241E5DB039006125F3 /* qtum wallet.entitlements */,
 				B3F5797E1F0D297900A13571 /* Services */,
 				B3EE936F1F04E0D700550C60 /* Security Flow */,
@@ -5272,7 +5292,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		45AB1922DB734C7BE18A4179 /* [CP] Copy Pods Resources */ = {
@@ -5296,13 +5316,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QTUM Watch Extension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B3C4553C1E8958D900420D7C /* ShellScript */ = {
@@ -5395,7 +5418,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -6346,6 +6369,199 @@
 			};
 			name = Release;
 		};
+		B3D12F651FBC68E700DEE41E /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3D12F621FBC683300DEE41E /* Development.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Development;
+		};
+		B3D12F661FBC68E700DEE41E /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FDDF3BFFCA52A097791A4AD /* Pods-qtum wallet.development.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DEH7XV88GA;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/qtum wallet/Application/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFJSONRPCClient\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/CoreBitcoin\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseMessaging\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleToolboxForMac\"",
+					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatter\"",
+					"\"${PODS_ROOT}/Headers/Public/MTBBarcodeScanner\"",
+					"\"${PODS_ROOT}/Headers/Public/MWFeedParser\"",
+					"\"${PODS_ROOT}/Headers/Public/OpenSSL-Universal\"",
+					"\"${PODS_ROOT}/Headers/Public/Protobuf\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/nanopb\"",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
+				INFOPLIST_FILE = "qtum wallet/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6a0b7c94-59e0-4b30-a7f0-d31ccf1dad1e";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-dev";
+			};
+			name = Development;
+		};
+		B3D12F671FBC68E700DEE41E /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = iMessageExtension/iMessageExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = iMessageExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.iMessageExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3b83a366-c24f-474d-bbc8-8b87a72af747";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-iMessage";
+				SKIP_INSTALL = YES;
+			};
+			name = Development;
+		};
+		B3D12F681FBC68E700DEE41E /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "QTUM Watch/QTUM Watch.entitlements";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
+				ENABLE_BITCODE = YES;
+				IBSC_MODULE = QTUM_Watch_Extension;
+				INFOPLIST_FILE = "QTUM Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9b12b951-8383-4186-a6a7-4de7b03a3d49";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM Watch";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Development;
+		};
+		B3D12F691FBC68E700DEE41E /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B15D520E6F078301AD2B24B9 /* Pods-QTUM Watch Extension.development.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "QTUM Watch Extension/QTUM Watch Extension.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DEH7XV88GA;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = "QTUM Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "f1324b3f-e988-4901-b34b-d85fb1aa6a43";
+				PROVISIONING_PROFILE_SPECIFIER = "QTUM-watchExt";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Development;
+		};
+		B3D12F6A1FBC68E700DEE41E /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4904E3228FD9FF694396606 /* Pods-qtum walletTests.development.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "qtum walletTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-walletTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qtum wallet.app/qtum wallet";
+			};
+			name = Development;
+		};
 		E730AB791EE6A5D200132711 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6440,6 +6656,7 @@
 		};
 		E7FD364D1DC4D07E00748177 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3D12F631FBC687500DEE41E /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -6498,6 +6715,7 @@
 		};
 		E7FD364E1DC4D07E00748177 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3D12F641FBC688000DEE41E /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -6661,6 +6879,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B33EAF981E5EC263006125F3 /* Debug */,
+				B3D12F671FBC68E700DEE41E /* Development */,
 				B33EAF991E5EC263006125F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6670,6 +6889,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3A4EA611F502E66008115D1 /* Debug */,
+				B3D12F6A1FBC68E700DEE41E /* Development */,
 				B3A4EA621F502E66008115D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6679,6 +6899,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E730AB7B1EE6A5D200132711 /* Debug */,
+				B3D12F691FBC68E700DEE41E /* Development */,
 				E730AB7C1EE6A5D200132711 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6688,6 +6909,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E730AB791EE6A5D200132711 /* Debug */,
+				B3D12F681FBC68E700DEE41E /* Development */,
 				E730AB7A1EE6A5D200132711 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6697,6 +6919,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7FD364D1DC4D07E00748177 /* Debug */,
+				B3D12F651FBC68E700DEE41E /* Development */,
 				E7FD364E1DC4D07E00748177 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6706,6 +6929,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7FD36501DC4D07E00748177 /* Debug */,
+				B3D12F661FBC68E700DEE41E /* Development */,
 				E7FD36511DC4D07E00748177 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
