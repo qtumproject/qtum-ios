@@ -45,7 +45,10 @@
     
     [NSUserDefaults saveCurrentVersion:[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
     [NSUserDefaults saveIsRPCOnSetting:NO];
-    [NSUserDefaults saveIsMainnetSetting:YES];
+    
+    BOOL isMainNetSettings = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Is_Mainnet_Settings"] boolValue];
+    
+    [NSUserDefaults saveIsMainnetSetting:isMainNetSettings];
 
     [PopUpsManager sharedInstance];
     [PaymentValuesManager sharedInstance];
@@ -108,7 +111,8 @@
 
 -(NSString*)baseURL {
     
-    NSString* baseUrl = @"https://walletapi.qtum.org/";
+    NSString* baseUrl = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Server URL"];
+
     return baseUrl;
 }
 
