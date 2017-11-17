@@ -16,6 +16,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTime) name:@"Time" object:nil];
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setHistoryElement:(HistoryElement *)historyElement {
@@ -24,16 +29,13 @@
     
     self.addressLabel.text = historyElement.address;
     self.amountLabel.text = self.symbolLabel ? [NSString stringWithFormat:@"%0.3f", [self.historyElement.amount floatValue]] : historyElement.amountString;
-    self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0) ? historyElement.shortDateString : NSLocalizedString(@"Unconfirmed", nil);
-    
-//    if (historyElement.send) {
-//        self.typeLabel.text = NSLocalizedString(@"Sent", "");
-//        self.addressLabel.text = [historyElement.toAddresses firstObject][@"address"];
-//    }else{
-//        self.typeLabel.text = NSLocalizedString(@"Received", "");
-//        self.addressLabel.text = [historyElement.fromAddreses firstObject][@"address"];
-//    }
+    self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0) ? [historyElement formattedDateStringSinceCome] : NSLocalizedString(@"Unconfirmed", nil);
+
     self.addressLabel.text = historyElement.txHash;
+}
+
+-(void)updateTime {
+    self.dateLabel.text = (self.historyElement.shortDateString && self.historyElement.shortDateString.length > 0) ? [self.historyElement formattedDateStringSinceCome] : NSLocalizedString(@"Unconfirmed", nil);
 }
 
 - (void)changeHighlight:(BOOL)value { }

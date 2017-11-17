@@ -148,7 +148,9 @@ static NSInteger constantFee = 400000000;
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
         if ([fee isLessThan:feePerKb]) {
-            completion(TransactionManagerErrorTypeNotEnoughFee, nil, feePerKb);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(TransactionManagerErrorTypeNotEnoughFee, nil, feePerKb);
+            });
             return;
         }
         

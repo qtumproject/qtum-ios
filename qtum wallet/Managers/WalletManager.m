@@ -22,6 +22,7 @@
 NSString const *kWallets = @"qtum_wallet_wallets_keys";
 NSString const *kSingleWallet = @"qtum_wallet_wallet_keys";
 NSString *const kWalletDidChange = @"kWalletDidChange";
+NSString *const kWalletHistoryDidChange = @"kWalletHistoryDidChange";
 NSString const *kUserPin = @"PIN";
 NSString const *kUserPinHash = @"HashPIN";
 NSString const *kIsLongPin = @"kIsLongPin";
@@ -152,6 +153,12 @@ NSString const *kIsLongPin = @"kIsLongPin";
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kWalletDidChange object:nil userInfo:nil];
     [[iOSSessionManager sharedInstance] updateWatch];
+    [self save];
+}
+
+- (void)walletHistoryDidChange:(id)wallet {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kWalletHistoryDidChange object:nil userInfo:nil];
     [self save];
 }
 
@@ -358,6 +365,11 @@ NSString const *kIsLongPin = @"kIsLongPin";
     
     HistoryElement* item = [self.requestAdapter createHistoryElement:dict];
     [self.wallet.historyStorage setHistoryItem:item];
+}
+
+-(void)historyOfSpendableDidChange:(id <Spendable>) object {
+    
+    [self walletHistoryDidChange:object];
 }
 
 -(void)spendableDidChange:(id <Spendable>) object {

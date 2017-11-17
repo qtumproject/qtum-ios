@@ -21,7 +21,7 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
 
 #pragma mark - Private Methods
 
--(void)notificateChangeHistory{
+-(void)notificateChangeHistory {
     [self.spendableOwner historyDidChange];
 }
 
@@ -36,7 +36,8 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
     return [_historyPrivate copy];
 }
 
-- (void)setHistoryItem:(HistoryElement*) item{
+- (void)setHistoryItem:(HistoryElement*) item {
+    
     NSUInteger  index = [self.historyPrivate indexOfObjectPassingTest:^BOOL(HistoryElement * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isEqualElementWithoutConfimation:item]) {
             return YES;
