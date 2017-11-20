@@ -126,7 +126,6 @@
 
 
     NSInteger closureBracersCount = 0;
-//    NSUInteger location = NSNotFound;
     
     for (NSUInteger i = 0; i < len; i++) {
         
@@ -158,25 +157,6 @@
     }
     
     return threeOfFunctionDict;
-}
-
--(void)buildThreeOfMethodsWithCode:(NSString*) sourceCode {
-    
-//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-//    paragraphStyle.headIndent = 20.0;
-//    paragraphStyle.firstLineHeadIndent = 20.0;
-//    paragraphStyle.tailIndent = -20.0;
-//
-//    NSDictionary *attrsDictionary = @{NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS" size:12.0], NSParagraphStyleAttributeName: paragraphStyle};
-//    textView.attributedText = [[NSAttributedString alloc] initWithString:myText attributes:attrsDictionary];
-//
-//    NSRegularExpression* functionRegex = [NSRegularExpression regularExpressionWithPattern:@"\\n*(.*)({([.]+|[\\r\\n])})" options:0 error:NULL];
-//    NSArray<NSTextCheckingResult *> *matches = [functionRegex matchesInString:sourceCode options:0 range:NSMakeRange(0, sourceCode.length)];
-//
-//    for (NSTextCheckingResult* match in matches) {
-//
-//        NSLog(@"%@", [sourceCode substringWithRange:match.range]);
-//    }
 }
 
 @end

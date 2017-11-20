@@ -45,7 +45,7 @@
     
     [NSUserDefaults saveCurrentVersion:[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
     [NSUserDefaults saveIsRPCOnSetting:NO];
-    [NSUserDefaults saveIsMainnetSetting:YES];
+    [NSUserDefaults saveIsMainnetSetting:NO];
 
     [PopUpsManager sharedInstance];
     [PaymentValuesManager sharedInstance];
@@ -108,7 +108,7 @@
 
 -(NSString*)baseURL {
     
-    NSString* baseUrl = @"https://walletapi.qtum.org/";
+    NSString* baseUrl = @"http://593-qtum-walletapi.pixelplex-test.by";
     return baseUrl;
 }
 

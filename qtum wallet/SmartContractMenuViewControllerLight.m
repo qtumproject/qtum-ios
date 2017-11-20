@@ -21,18 +21,21 @@
     ChoiseSmartContractCell* cell;
     
     switch (indexPath.row) {
+        case 0:
         case 1:
         case 2:
-        case 4:
-        case 0:
         case 3:
+        case 4:
+        case 5:
             cell = [tableView dequeueReusableCellWithIdentifier:choiseSmartContractLightCellIdentifire];
             break;
 
-        case 5:
+        case 6:
             cell = [tableView dequeueReusableCellWithIdentifier:choiseSmartContractLightHightCellIdentifire];
             break;
-            DLog(@"Incorrect index");
+            
+        default:
+            cell = [tableView dequeueReusableCellWithIdentifier:choiseSmartContractLightHightCellIdentifire];
         break;
     }
     
@@ -46,14 +49,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     switch (indexPath.row) {
+        case 0:
         case 1:
         case 2:
-        case 4:
-        case 0:
         case 3:
+        case 4:
+        case 5:
             return 40;
             break;
-        case 5:
+        case 6:
             return 52;
         default:
             return 40;
@@ -70,19 +74,19 @@
         case 1:
             imageForCell = [UIImage imageNamed:@"ic-publichedContracts-light"];
             break;
-        case 10:
+        case 2:
             imageForCell = [UIImage imageNamed:@"ic-contractStore-light"];
             break;
-        case 2:
+        case 3:
             imageForCell = [UIImage imageNamed:@"ic-contract_watch-light"];
             break;
-        case 3:
+        case 4:
             imageForCell =  [UIImage imageNamed:@"ic-contract_watch1-light"];
             break;
-        case 4:
+        case 5:
             imageForCell = [UIImage imageNamed:@"ic_contr_backup-light"];
             break;
-        case 5:
+        case 6:
             imageForCell = [UIImage imageNamed:@"ic-contract_restore-light"];
             break;
         default:
@@ -103,7 +107,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 
 }
 
