@@ -296,8 +296,9 @@ NSInteger const USERS_KEYS_COUNT = 10;
     complete(NO);
 }
 
--(void)historyDidChange{
-    [self.manager spendableDidChange:self];
+-(void)historyDidChange {
+    
+    [self.manager historyOfSpendableDidChange:self];
 }
 
 #pragma mark - NSCoding

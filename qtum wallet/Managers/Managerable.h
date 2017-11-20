@@ -14,6 +14,7 @@
 @protocol Managerable
 
 -(void)spendableDidChange:(id <Spendable>) object;
+-(void)historyOfSpendableDidChange:(id <Spendable>) object;
 -(void)updateSpendableObject:(id <Spendable>) object;
 -(void)updateSpendablesBalansesWithObject:(id) updateObject;
 -(void)updateSpendablesHistoriesWithObject:(id) updateObject;

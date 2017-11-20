@@ -56,6 +56,9 @@
 @property (strong, nonatomic) WalletTableSource* delegateDataSource;
 @property (strong, nonatomic) id <TokenDetailDataDisplayManager> tokenDetailsTableSource;
 
+@property (strong, nonatomic) NSTimer* historyElementsTimerUpdate;
+@property (assign, nonatomic) NSInteger firesTimerCount;
+
 @end
 
 @implementation WalletCoordinator
@@ -259,7 +262,54 @@
 -(void)subcribeEvents{
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSpendables) name:kWalletDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fireHistoryElementTimerUpdate) name:kWalletHistoryDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTokens) name:kTokenDidChange object:nil];
+}
+
+-(void)fireHistoryElementTimerUpdate {
+    
+    self.firesTimerCount = 0;
+    
+    if (self.historyElementsTimerUpdate) {
+        [self.historyElementsTimerUpdate invalidate];
+        self.historyElementsTimerUpdate = nil;
+    }
+
+    __weak __typeof(self)weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSTimer* timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatingTimerFire) userInfo:nil repeats:YES];
+        weakSelf.historyElementsTimerUpdate = timer;
+    });
+}
+
+-(void)updatingTimerFire {
+    
+    [self checkTimerStateAndReplaceTimerIfNeeded];
+    [self sendUpdatingHistoryTimeNotification];
+}
+
+-(void)checkTimerStateAndReplaceTimerIfNeeded {
+    
+    if (self.firesTimerCount > 60 && self.historyElementsTimerUpdate.timeInterval < 60) {
+        
+        [self.historyElementsTimerUpdate invalidate];
+        self.historyElementsTimerUpdate = nil;
+        
+        NSTimer* timer = [NSTimer  scheduledTimerWithTimeInterval:60 target:self selector:@selector(updatingTimerFire) userInfo:nil repeats:YES];
+        self.historyElementsTimerUpdate = timer;
+    }
+}
+
+-(void)sendUpdatingHistoryTimeNotification {
+    
+    self.firesTimerCount++;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Time" object:nil];
+}
+
+-(void)updateSpendableHistory {
+    [self updateSpendables];
+    [self fireHistoryElementTimerUpdate];
 }
 
 -(void)updateSpendables {

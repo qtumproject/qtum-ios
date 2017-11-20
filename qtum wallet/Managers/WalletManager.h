@@ -10,6 +10,7 @@
 #import "WalletManagering.h"
 
 extern NSString *const kWalletDidChange;
+extern NSString *const kWalletHistoryDidChange;
 
 @interface WalletManager : NSObject <WalletManagering>
 
