@@ -111,17 +111,8 @@
     XCTAssertTrue([result isEqualToString:@"5E+9223372036854775808"]);
 }
 
-- (void)testShortStringDecimal11 {
-    
-    QTUMBigNumber *decimal = [QTUMBigNumber decimalWithString:@"9.999999"];
-    QTUMBigNumber *power = [QTUMBigNumber decimalWithString:@"9223371231231231231231231231231231231231231231231231231231231231231232036854775808"];
-    
-    NSString* result = [decimal shortFormatOfNumberWithPowerOf10:power];
-    
-    XCTAssertTrue([result isEqualToString:@"9.99E+9223371231231231231231231231231231231231231231231231231231231231231232036854775808"]);
-}
 
-- (void)testShortStringDecimal12 {
+- (void)testShortStringDecimal11 {
     
     QTUMBigNumber *decimal = [QTUMBigNumber decimalWithString:@"12351354256346345"];
     

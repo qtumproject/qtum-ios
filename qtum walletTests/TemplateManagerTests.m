@@ -12,6 +12,8 @@
 
 @interface TemplateManagerTests : XCTestCase
 
+@property (strong, nonatomic) TemplateManager* templateManager;
+
 @end
 
 @implementation TemplateManagerTests
@@ -19,49 +21,50 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    [[ServiceLocator sharedInstance].templateManager clear];
+    self.templateManager = [TemplateManager new];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    [self.templateManager clear];
+
 }
 
 - (void)test_Standart_Pack {
-    NSInteger countTemplates = [[ServiceLocator sharedInstance].templateManager standartPackOfTemplates].count;
-    NSInteger countTokenTemplates = [[ServiceLocator sharedInstance].templateManager standartPackOfTokenTemplates].count;
+    NSInteger countTemplates = [self.templateManager standartPackOfTemplates].count;
+    NSInteger countTokenTemplates = [self.templateManager standartPackOfTokenTemplates].count;
     XCTAssertTrue(countTemplates == 3);
     XCTAssertTrue(countTokenTemplates == 3);
 }
 
 - (void)test_Clear {
-    NSInteger countTemplates = [[ServiceLocator sharedInstance].templateManager availebaleTemplates].count;
-    NSInteger countTokenTemplates = [[ServiceLocator sharedInstance].templateManager availebaleTokenTemplates].count;
+    NSInteger countTemplates = [self.templateManager availebaleTemplates].count;
+    NSInteger countTokenTemplates = [self.templateManager availebaleTokenTemplates].count;
     XCTAssertTrue(countTemplates == 3);
     XCTAssertTrue(countTokenTemplates == 3);
 }
 
 - (void)test_Add {
-    NSInteger countTemplates = [[ServiceLocator sharedInstance].templateManager availebaleTemplates].count;
-    TemplateModel *model = [[[ServiceLocator sharedInstance].templateManager standartPackOfTemplates] firstObject];
-    [[ServiceLocator sharedInstance].templateManager saveTemplate:model];
-    NSInteger newCountTemplates = [[ServiceLocator sharedInstance].templateManager availebaleTemplates].count;
+    NSInteger countTemplates = [self.templateManager availebaleTemplates].count;
+    TemplateModel *model = [[self.templateManager standartPackOfTemplates] firstObject];
+    [self.templateManager saveTemplate:model];
+    NSInteger newCountTemplates = [self.templateManager availebaleTemplates].count;
     
     XCTAssertTrue(countTemplates + 1 == newCountTemplates);
 }
 
 - (void)test_Add_Nil {
-    NSInteger countTemplates = [[ServiceLocator sharedInstance].templateManager availebaleTemplates].count;
-    [[ServiceLocator sharedInstance].templateManager saveTemplate:nil];
-    NSInteger newCountTemplates = [[ServiceLocator sharedInstance].templateManager availebaleTemplates].count;
+    NSInteger countTemplates = [self.templateManager availebaleTemplates].count;
+    [self.templateManager saveTemplate:nil];
+    NSInteger newCountTemplates = [self.templateManager availebaleTemplates].count;
     
     XCTAssertTrue(countTemplates == newCountTemplates);
 }
 
 - (void)test_Decode {
-    NSArray *data = [[ServiceLocator sharedInstance].templateManager decodeDataForBackup];
+    NSArray *data = [self.templateManager decodeDataForBackup];
     
-    XCTAssertTrue(data.count == [[ServiceLocator sharedInstance].templateManager availebaleTemplates].count);
+    XCTAssertTrue(data.count == [self.templateManager availebaleTemplates].count);
     
     for (NSObject *object in data) {
         XCTAssertTrue([object isKindOfClass:[NSDictionary class]]);
@@ -70,8 +73,8 @@
 
 - (void)test_Encode {
     
-    NSMutableArray *data = [[[ServiceLocator sharedInstance].templateManager decodeDataForBackup] mutableCopy];
-    NSArray *array = [[ServiceLocator sharedInstance].templateManager encodeDataForBacup:data];
+    NSMutableArray *data = [[self.templateManager decodeDataForBackup] mutableCopy];
+    NSArray *array = [self.templateManager encodeDataForBacup:data];
     
     XCTAssertTrue(data.count == array.count);
     
@@ -79,61 +82,61 @@
         XCTAssertTrue([object isKindOfClass:[TemplateModel class]]);
     }
     
-    NSArray *array3 = [[ServiceLocator sharedInstance].templateManager encodeDataForBacup:nil];
+    NSArray *array3 = [self.templateManager encodeDataForBacup:nil];
     XCTAssertTrue(array3.count == 0);
     
     [data addObject:[NSObject new]];
-    NSArray *array2 = [[ServiceLocator sharedInstance].templateManager encodeDataForBacup:data];
+    NSArray *array2 = [self.templateManager encodeDataForBacup:data];
     XCTAssertTrue(data.count - 1 == array2.count);
 }
 
 - (void)test_Template_Token_Creation {
     
-    TemplateModel *model = [[ServiceLocator sharedInstance].templateManager createNewTokenTemplateWithAbi:@"test" contractAddress:@"test" andName:@"test"];
+    TemplateModel *model = [self.templateManager createNewTokenTemplateWithAbi:@"test" contractAddress:@"test" andName:@"test"];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewTokenTemplateWithAbi:@"test" contractAddress:nil andName:@"test"];
+    model = [self.templateManager createNewTokenTemplateWithAbi:@"test" contractAddress:nil andName:@"test"];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewTokenTemplateWithAbi:@"test" contractAddress:@"test" andName:nil];
+    model = [self.templateManager createNewTokenTemplateWithAbi:@"test" contractAddress:@"test" andName:nil];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewTokenTemplateWithAbi:nil contractAddress:@"test" andName:@"test"];
+    model = [self.templateManager createNewTokenTemplateWithAbi:nil contractAddress:@"test" andName:@"test"];
     XCTAssertNil(model);
 }
 
 - (void)test_Template_Contract_Creation {
-    TemplateModel *model = [[ServiceLocator sharedInstance].templateManager createNewContractTemplateWithAbi:@"test" contractAddress:@"test" andName:@"test"];
+    TemplateModel *model = [self.templateManager createNewContractTemplateWithAbi:@"test" contractAddress:@"test" andName:@"test"];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewContractTemplateWithAbi:@"test" contractAddress:nil andName:@"test"];
+    model = [self.templateManager createNewContractTemplateWithAbi:@"test" contractAddress:nil andName:@"test"];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewContractTemplateWithAbi:@"test" contractAddress:@"test" andName:nil];
+    model = [self.templateManager createNewContractTemplateWithAbi:@"test" contractAddress:@"test" andName:nil];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewContractTemplateWithAbi:nil contractAddress:@"test" andName:@"test"];
+    model = [self.templateManager createNewContractTemplateWithAbi:nil contractAddress:@"test" andName:@"test"];
     XCTAssertNil(model);
 }
 
 - (void)test_Template_Creation {
     
-    TemplateModel *model = [[ServiceLocator sharedInstance].templateManager createNewTemplateWithAbi:@"test" bitecode:@"test" source:@"test" type:TokenType uuid:@"test" andName:@"test"];
+    TemplateModel *model = [self.templateManager createNewTemplateWithAbi:@"test" bitecode:@"test" source:@"test" type:TokenType uuid:@"test" andName:@"test"];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewTemplateWithAbi:@"test" bitecode:nil source:@"test" type:TokenType uuid:@"test" andName:@"test"];
+    model = [self.templateManager createNewTemplateWithAbi:@"test" bitecode:nil source:@"test" type:TokenType uuid:@"test" andName:@"test"];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewTemplateWithAbi:@"test" bitecode:@"test" source:nil type:TokenType uuid:@"test" andName:@"test"];
+    model = [self.templateManager createNewTemplateWithAbi:@"test" bitecode:@"test" source:nil type:TokenType uuid:@"test" andName:@"test"];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewTemplateWithAbi:@"test" bitecode:@"test" source:@"test" type:TokenType uuid:nil andName:@"test"];
+    model = [self.templateManager createNewTemplateWithAbi:@"test" bitecode:@"test" source:@"test" type:TokenType uuid:nil andName:@"test"];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewTemplateWithAbi:@"test" bitecode:@"test" source:@"test" type:TokenType uuid:@"test" andName:nil];
+    model = [self.templateManager createNewTemplateWithAbi:@"test" bitecode:@"test" source:@"test" type:TokenType uuid:@"test" andName:nil];
     XCTAssertNil(model);
     
-    model = [[ServiceLocator sharedInstance].templateManager createNewTemplateWithAbi:nil bitecode:@"test" source:@"test" type:TokenType uuid:@"test" andName:@"test"];
+    model = [self.templateManager createNewTemplateWithAbi:nil bitecode:@"test" source:@"test" type:TokenType uuid:@"test" andName:@"test"];
     XCTAssertNil(model);
 }
 
