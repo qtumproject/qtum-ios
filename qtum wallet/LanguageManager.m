@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Maxim Bilan. All rights reserved.
 //
 
-#import "LanguageManager.h"
 #import "NSBundle+Language.h"
 #import "NSUserDefaults+Settings.h"
 

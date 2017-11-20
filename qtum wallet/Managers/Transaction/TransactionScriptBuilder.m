@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "TransactionScriptBuilder.h"
-
 @implementation TransactionScriptBuilder
 
 -(NSUInteger)gasPrice {

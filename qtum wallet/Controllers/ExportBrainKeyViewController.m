@@ -7,7 +7,6 @@
 //
 
 #import "ExportBrainKeyViewController.h"
-#import "WalletManager.h"
 
 @interface ExportBrainKeyViewController () <PopUpViewControllerDelegate>
 

@@ -8,8 +8,6 @@
 
 #import "Appearance.h"
 #import "UIImage+Extension.h"
-#import "TextFieldWithLine.h"
-#import "CustomTextField.h"
 #import "NSUserDefaults+Settings.h"
 
 @implementation Appearance

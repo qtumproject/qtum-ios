@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "QTUMFeedItem.h"
-
 @interface QTUMFeedItem()
 
 @property (nonatomic, copy) NSString *identifier;

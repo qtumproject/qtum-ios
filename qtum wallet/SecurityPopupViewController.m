@@ -7,7 +7,6 @@
 //
 
 #import "SecurityPopupViewController.h"
-#import "SecurityPinView.h"
 
 @interface SecurityPopupViewController () <UITextFieldDelegate, CAAnimationDelegate>
 

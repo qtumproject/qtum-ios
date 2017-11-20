@@ -7,7 +7,6 @@
 //
 
 #import "ConfirmPinForExportViewController.h"
-#import "LoginViewOutputDelegate.h"
 #import "Presentable.h"
 
 @interface ConfirmPinForExportViewController () <CAAnimationDelegate, Presentable>

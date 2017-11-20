@@ -6,7 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "QTUMFeedParcer.h"
 #import "MWFeedParser.h"
 
 @interface QTUMFeedParcer () <MWFeedParserDelegate>

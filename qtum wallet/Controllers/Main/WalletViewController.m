@@ -6,19 +6,8 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "WalletViewController.h"
-#import "HistoryTableViewCell.h"
 #import "NewPaymentDarkViewController.h"
-#import "RecieveViewController.h"
-#import "HistoryElement.h"
-#import "QRCodeViewController.h"
-#import "ApplicationCoordinator.h"
-#import "GradientViewWithAnimation.h"
-#import "WalletTableSource.h"
-#import "WalletCoordinator.h"
-#import "HistoryHeaderVIew.h"
-#import "NSNumber+Comparison.h"
 
 @interface WalletViewController ()
 

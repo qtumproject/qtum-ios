@@ -6813,9 +6813,7 @@ int mp_read_radix (mp_int * a, const char *str, int radix)
 
 #ifdef BN_MP_CLEAR_MULTI_C
 
-#include <stdarg.h>
-
-void mp_clear_multi(mp_int *mp, ...) 
+void mp_clear_multi(mp_int *mp, ...)
 {
     mp_int* next_mp = mp;
     va_list args;

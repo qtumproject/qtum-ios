@@ -7,7 +7,6 @@
 //
 
 #import "BTCAddress+Extension.h"
-#import <objc/runtime.h>
 
 enum
 {

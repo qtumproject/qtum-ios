@@ -6,9 +6,6 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "BTCTransaction+Extensions.h"
-#import <objc/runtime.h>
-
 @implementation BTCTransaction (Extensions)
 
 - (NSString *)hexWithTime

@@ -7,7 +7,6 @@
 //
 
 #import "WalletTableSource.h"
-#import "HistoryElement.h"
 #import "HistoryTableViewCell.h"
 
 @interface WalletTableSource ()

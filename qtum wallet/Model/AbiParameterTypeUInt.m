@@ -6,9 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "AbiParameterTypeUInt.h"
-#include <math.h>
-
 @implementation AbiParameterTypeUInt
 
 -(NSInteger)maxValueLenght {

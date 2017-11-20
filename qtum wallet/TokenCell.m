@@ -7,7 +7,6 @@
 //
 
 #import "TokenCell.h"
-#import "Contract.h"
 
 @interface TokenCell ()
 

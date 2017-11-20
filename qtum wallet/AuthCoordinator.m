@@ -15,12 +15,6 @@
 #import "ExportWalletBrandKeyViewController.h"
 #import "EnableFingerprintViewController.h"
 #import "NSUserDefaults+Settings.h"
-#import "FirstAuthOutputDelegate.h"
-#import "WalletNameOutputDelegate.h"
-#import "CreatePinOutputDelegate.h"
-#import "RepeateOutputDelegate.h"
-#import "ExportWalletBrandKeyOutputDelegate.h"
-#import "Wallet.h"
 
 @interface AuthCoordinator () <FirstAuthOutputDelegate, WalletNameOutputDelegate, CreatePinOutputDelegate, RepeateOutputDelegate, ExportWalletBrandKeyOutputDelegate, RestoreWalletOutputDelegate, EnableFingerprintOutputDelegate>
 

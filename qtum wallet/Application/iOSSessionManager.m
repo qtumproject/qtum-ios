@@ -9,7 +9,6 @@
 #import "iOSSessionManager.h"
 #import <WatchConnectivity/WatchConnectivity.h>
 #import "QRCodeManager.h"
-#import "Wallet.h"
 
 NSString *MainMessageKey = @"message_key";
 NSString *GetQRCodeMessageKey = @"get_qr_code";

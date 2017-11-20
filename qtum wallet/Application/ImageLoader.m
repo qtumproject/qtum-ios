@@ -7,7 +7,6 @@
 //
 
 #import "AFNetworking.h"
-#import "ImageLoader.h"
 
 
 @interface ImageLoader ()

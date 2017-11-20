@@ -9,14 +9,9 @@
 #import "WalletManager.h"
 #import "FXKeychain.h"
 #import "WalletManagerRequestAdapter.h"
-#import "HistoryDataStorage.h"
 #import "SocketManager.h"
 #import "NSString+SHA3.h"
-#import "Wallet.h"
-#import "Contract.h"
-#import "Managerable.h"
 #import "NSNumber+Comparison.h"
-#import "WalletManagerRequestAdapter.h"
 #import "iOSSessionManager.h"
 
 NSString const *kWallets = @"qtum_wallet_wallets_keys";

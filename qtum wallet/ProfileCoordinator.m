@@ -9,14 +9,12 @@
 #import "ProfileCoordinator.h"
 #import "ProfileOutput.h"
 #import "LanguageOutput.h"
-#import "ExportBrainKeyOutput.h"
 
 #import "SubscribeTokenCoordinator.h"
 #import "ContractCoordinator.h"
 #import "ExportBrandKeyCoordinator.h"
 #import "ChangePinCoordinator.h"
 #import "AboutOutput.h"
-#import "ErrorPopUpViewController.h"
 
 @interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate, AboutOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 

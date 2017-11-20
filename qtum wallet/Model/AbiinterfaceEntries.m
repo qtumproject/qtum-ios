@@ -6,10 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "AbiinterfaceEntries.h"
-#import "NSString+Extension.h"
-#import "NSString+AbiRegex.h"
-
 
 @implementation AbiinterfaceEntries
 

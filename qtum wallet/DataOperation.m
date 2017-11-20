@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "DataOperation.h"
-
 NSString *const groupFileName = @"group";
 NSString *const newsCacheFileName = @"newsCashFile";
 

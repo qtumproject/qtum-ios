@@ -6,9 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "WalletsFactory.h"
-#import "Wallet.h"
-
 @interface WalletsFactory ()
 
 @end

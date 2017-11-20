@@ -6,11 +6,7 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "Contract.h"
-#import "NSString+Extension.h"
-#import "NSData+Extension.h"
 #import "NSDate+Extension.h"
-#import "QTUMBigNumber.h"
 
 @interface Contract ()
 

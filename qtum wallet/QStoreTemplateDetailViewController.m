@@ -9,7 +9,6 @@
 #import "QStoreTemplateDetailViewController.h"
 #import "InterfaceInputFormModel.h"
 #import "QStoreTemplateFunctionCell.h"
-#import "AbiinterfaceItem.h"
 
 @interface QStoreTemplateDetailViewController ()
 

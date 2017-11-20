@@ -7,7 +7,6 @@
 //
 
 #import "CreatePinRootController.h"
-#import "ApplicationCoordinator.h"
 
 @interface CreatePinRootController () 
 

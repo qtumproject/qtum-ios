@@ -6,11 +6,8 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "QTUMBigNumber.h"
 #import "JKBigDecimal+Comparison.h"
 #import "JKBigDecimal+Format.h"
-#import "NSDecimalNumber+Comparison.h"
-#import "NSNumber+Format.h"
 
 @interface QTUMBigNumber ()
 

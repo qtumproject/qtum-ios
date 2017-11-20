@@ -7,13 +7,9 @@
 //
 
 #import "NewPaymentViewController.h"
-#import "QRCodeViewController.h"
 #import "TextFieldWithLine.h"
-#import "TokenListViewController.h"
-#import "ChoseTokenPaymentViewController.h"
 #import "InformationPopUpViewController.h"
 #import "ErrorPopUpViewController.h"
-#import "SecurityPopupViewController.h"
 #import "ConfirmPopUpViewController.h"
 #import "NSNumber+Comparison.h"
 

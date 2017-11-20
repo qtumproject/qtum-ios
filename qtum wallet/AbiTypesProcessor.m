@@ -6,7 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "AbiTypesProcessor.h"
 #import "NSString+AbiRegex.h"
 
 @implementation AbiTypesProcessor

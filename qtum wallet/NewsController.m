@@ -8,7 +8,6 @@
 
 #import "NewsController.h"
 #import "NewsCellModel.h"
-#import "NewsCoordinator.h"
 
 @interface NewsController ()
 

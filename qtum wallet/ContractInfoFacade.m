@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "ContractInfoFacade.h"
-
 @implementation ContractInfoFacade
 
 -(NSArray <ContracBalancesObject*>*)arrayOfStingValuesOfTokenBalanceWithToken:(Contract*) token {

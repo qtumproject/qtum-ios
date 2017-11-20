@@ -6,11 +6,8 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "RequestManager.h"
-#import <CommonCrypto/CommonHMAC.h>
 #import "ServerAdapter.h"
 #import "SocketManager.h"
-#import "Wallet.h"
 #import "NetworkingService.h"
 
 @interface RequestManager()

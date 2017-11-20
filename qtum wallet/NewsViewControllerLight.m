@@ -8,7 +8,6 @@
 
 #import "NewsViewControllerLight.h"
 #import "NewsTableCellLight.h"
-#import "QTUMNewsItem.h"
 #import "NSDate+Extension.h"
 
 @interface NewsViewControllerLight ()

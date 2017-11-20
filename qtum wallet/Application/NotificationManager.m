@@ -6,13 +6,9 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "NotificationManager.h"
 #import <UserNotifications/UserNotifications.h>
 #import "NSUserDefaults+Settings.h"
 @import Firebase;
-@import FirebaseMessaging;
-@import UserNotifications;
-@import FirebaseInstanceID;
 
 NSString *const FireBaseInfoFileName = @"GoogleService-Info";
 

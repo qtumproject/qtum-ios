@@ -6,10 +6,7 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "ContractManager.h"
-#import "HistoryElement.h"
 #import "FXKeychain.h"
-#import "Contract.h"
 #import "NSData+Extension.h"
 #import "SocketManager.h"
 #import "InterfaceInputFormModel.h"

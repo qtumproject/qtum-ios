@@ -6,10 +6,7 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "TemplateManager.h"
 #import "FXKeychain.h"
-
-#import "NSString+Extension.h"
 
 @interface TemplateManager ()
 

@@ -6,12 +6,8 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "ContractInterfaceManager.h"
 #import "InterfaceInputFormModel.h"
-#import "ResultTokenInputsModel.h"
-#import "AbiinterfaceItem.h"
 #import "NSString+SHA3.h"
-#import "NSString+Extension.h"
 
 
 @implementation ContractInterfaceManager

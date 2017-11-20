@@ -8,8 +8,6 @@
 
 #import "ProfileViewController.h"
 #import "ProfileTableViewCell.h"
-#import "SubscribeTokenCoordinator.h"
-#import "ContractCoordinator.h"
 
 @interface ProfileViewController ()
 

@@ -7,12 +7,7 @@
 //
 
 #import "TokenDetailsTableSource.h"
-#import "BalanceTokenTableViewCell.h"
-#import "NubersTokenTableViewCell.h"
-#import "AddressesTokenTableViewCell.h"
-#import "ActivityTokenTableViewCell.h"
 #import "QTUMAddressTokenTableViewCell.h"
-#import "Wallet.h"
 
 #import "BalanceTokenView.h"
 #import "QTUMAddressTokenView.h"

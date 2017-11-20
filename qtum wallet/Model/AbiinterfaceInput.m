@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "AbiinterfaceInput.h"
-
 @implementation AbiinterfaceInput
 
 @end

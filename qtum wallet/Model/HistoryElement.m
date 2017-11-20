@@ -6,8 +6,6 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "HistoryElement.h"
-
 @implementation HistoryElement
 
 

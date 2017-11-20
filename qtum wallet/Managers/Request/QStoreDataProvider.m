@@ -9,7 +9,6 @@
 #import "QStoreDataProvider.h"
 #import "QStoreMainScreenCategory.h"
 #import "QStoreContractElement.h"
-#import "QStoreCategory.h"
 
 @implementation QStoreDataProvider
 

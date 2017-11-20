@@ -8,10 +8,6 @@
 
 #import "LoginCoordinator.h"
 #import "LoginViewController.h"
-#import <LocalAuthentication/LocalAuthentication.h>
-#import "LoginViewOutputDelegate.h"
-#import "LoginViewOutput.h"
-#import "SecurityPopupViewController.h"
 #import "FXKeychain.h"
 #import "NSUserDefaults+Settings.h"
 #import "ErrorPopUpViewController.h"

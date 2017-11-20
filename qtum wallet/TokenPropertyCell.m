@@ -7,7 +7,6 @@
 //
 
 #import "TokenPropertyCell.h"
-#import "NSObject+Extension.h"
 
 @interface TokenPropertyCell()
 

@@ -9,8 +9,6 @@
 #import "TokenDetailLightDisplayDataManager.h"
 #import "HistoryHeaderVIew.h"
 #import "TokenDetailInfoLightCell.h"
-#import "ApplicationCoordinator.h"
-#import "Wallet.h"
 
 @interface TokenDetailLightDisplayDataManager ()
 

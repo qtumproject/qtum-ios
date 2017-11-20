@@ -6,9 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "PopUpContentGenerator.h"
-#import "PopUpContent.h"
-
 @implementation PopUpContentGenerator
 
 + (PopUpContent *)contentForOupsPopUp{

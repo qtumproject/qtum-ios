@@ -11,16 +11,7 @@
 #import "NewPaymentDarkViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
-#import "NewPaymentOutput.h"
-#import "ChoseTokenPaymentOutput.h"
-#import "ChooseTokenPaymentDelegateDataSourceProtocol.h"
 #import "ChooseTokekPaymentDelegateDataSourceDelegate.h"
-#import "WalletManagerRequestAdapter.h"
-#import "Wallet.h"
-#import "NSNumber+Comparison.h"
-#import "NSNumber+Format.h"
-#import "QTUMBigNumber.h"
-
 
 
 @interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate, PopUpWithTwoButtonsViewControllerDelegate>

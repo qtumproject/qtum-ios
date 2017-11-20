@@ -9,7 +9,6 @@
 #import "WatchContractViewController.h"
 #import "TextFieldWithLine.h"
 #import "InputTextView.h"
-#import "FavouriteTemplatesCollectionSource.h"
 #import "ErrorPopUpViewController.h"
 
 

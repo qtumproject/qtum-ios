@@ -7,7 +7,6 @@
 //
 
 #import "TokenFunctionViewControllerLight.h"
-#import "TokenFunctionCell.h"
 
 @interface TokenFunctionViewControllerLight ()
 

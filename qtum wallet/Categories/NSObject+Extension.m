@@ -6,7 +6,6 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "NSObject+Extension.h"
 #import <objc/runtime.h>
 #import "Presentable.h"
 

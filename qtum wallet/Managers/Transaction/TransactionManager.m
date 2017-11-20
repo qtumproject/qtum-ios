@@ -6,14 +6,7 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "TransactionManager.h"
-#import "RequestManager.h"
-#import "NSString+Extension.h"
-#import "NS+BTCBase58.h"
 #import "WalletManagerRequestAdapter.h"
-#import "Wallet.h"
-#import "QTUMBigNumber.h"
-#import "TransactionScriptBuilder.h"
 
 
 static NSString* op_exec = @"c1";
