@@ -19,9 +19,10 @@
 #import "QStoreTemplateDetailOutput.h"
 #import "InterfaceInputFormModel.h"
 #import "QStoreCategory.h"
+#import "SourceCodeOutput.h"
 
 
-@interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate, QStoreManagerSearchDelegate, QStoreListOutputDelegate, QStoreTemplateDetailOutputDelegate>
+@interface QStoreCoordinator() <QStoreMainOutputDelegate, QStoreContractOutputDelegate, ContractFunctionDetailOutputDelegate, QStoreManagerSearchDelegate, QStoreListOutputDelegate, QStoreTemplateDetailOutputDelegate, SourceCodeOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController* navigationController;
 
@@ -54,6 +55,14 @@
     [self.navigationController pushViewController:[mainScreen toPresent] animated:YES];
 }
 
+-(void)showSourceScreenCodeWithSorceCode:(NSString*) sourceCode {
+    
+    NSObject<SourceCodeOutput>* output = [SLocator.controllersFactory createSourceCodeOutput];
+    output.delegate = self;
+    NSAttributedString* formattedSourceCode = [SLocator.sourceCodeFormatService formattingSourceCodeStringWithString:sourceCode];
+    output.sourceCode = formattedSourceCode;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
+}
 
 #pragma mark - For all delegates
 
@@ -185,7 +194,7 @@
 
     [[QStoreManager sharedInstance] getSourceCode:request.contractId requestId:request.requestId accessToken:request.accessToken withSuccessHandler:^(NSString *sourceCode) {
         [weakSelf.contractScreen stopLoading];
-        [weakSelf.contractScreen showSourceCode:sourceCode];
+        [weakSelf showSourceScreenCodeWithSorceCode:sourceCode];
     } andFailureHandler:^(NSError *error, NSString *message) {
         [weakSelf.contractScreen stopLoading];
     }];

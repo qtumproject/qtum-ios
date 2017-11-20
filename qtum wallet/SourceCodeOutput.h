@@ -11,7 +11,7 @@
 
 @protocol SourceCodeOutputDelegate <NSObject>
 
--(void)didBackPressed;
+-(void)didPressedBack;
 
 @end
 

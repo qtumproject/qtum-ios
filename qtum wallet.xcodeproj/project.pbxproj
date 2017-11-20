@@ -213,6 +213,7 @@
 		B371D8861E3A1D3B00A13EA3 /* NSNull+Catch.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8801E3A1D3B00A13EA3 /* NSNull+Catch.m */; };
 		B371D8871E3A1D3B00A13EA3 /* NSObject+Associating.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D8821E3A1D3B00A13EA3 /* NSObject+Associating.m */; };
 		B379B4C21FADB81500274875 /* QTUMBigDecimalStringsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B379B4C11FADB81500274875 /* QTUMBigDecimalStringsTest.m */; };
+		B37CA01D1FC3020900D33DD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B37CA01C1FC3020900D33DD8 /* GoogleService-Info.plist */; };
 		B381CBE21F02872000142252 /* EnableFingerprintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE11F02872000142252 /* EnableFingerprintViewController.m */; };
 		B381CBE51F0291CB00142252 /* SecurityPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE41F0291CB00142252 /* SecurityPopupViewController.m */; };
 		B381CBEA1F029CB200142252 /* SecurityPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = B381CBE91F029CB200142252 /* SecurityPinView.m */; };
@@ -285,6 +286,8 @@
 		B3D012DE1FB4542100A98770 /* WalletBalancesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */; };
 		B3D12F541FB9884400DEE41E /* SourceCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */; };
 		B3D12F571FB989DB00DEE41E /* SourceCodeFormatService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */; };
+		B3D12F5A1FBAD9FD00DEE41E /* NSTree.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F591FBAD9FD00DEE41E /* NSTree.m */; };
+		B3D12F5E1FBB31A100DEE41E /* SourceCodeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F5D1FBB31A100DEE41E /* SourceCodeTextView.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
 		B3D5FE3F1F569FEB006A2BF2 /* NSString+AbiRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */; };
@@ -425,7 +428,6 @@
 		D080435E1F83C28F00B22606 /* WalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D080435D1F83C28F00B22606 /* WalletTests.m */; };
 		D09F83991F7BB2DB002F3098 /* CopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F83981F7BB2DB002F3098 /* CopyLabel.m */; };
 		D09F839C1F7BF308002F3098 /* QStoreCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D09F839B1F7BF308002F3098 /* QStoreCategory.m */; };
-		D0BB7C131F87C2CD00EC5C70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BB7C121F87C2C900EC5C70 /* GoogleService-Info.plist */; };
 		D56B020D09B5747897E3EA15 /* libPods-qtum walletTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2601E5D944F526E1947C2A50 /* libPods-qtum walletTests.a */; };
 		E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */; };
 		E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E703530E1F03AC41004ECCC9 /* QStoreListViewController.m */; };
@@ -957,7 +959,6 @@
 		B346AE1F1F00EB4B00241C61 /* LoginViewOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutput.h; sourceTree = "<group>"; };
 		B346AE201F00ECE300241C61 /* LoginViewOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOutputDelegate.h; sourceTree = "<group>"; };
 		B346AE211F00EEDE00241C61 /* Presentable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presentable.h; sourceTree = "<group>"; };
-		B347D6FA1F8B5C5A005A2663 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3487A1F1E8D2B2B00BC66F1 /* HistoryDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDataStorage.h; sourceTree = "<group>"; };
 		B3487A201E8D2B2B00BC66F1 /* HistoryDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDataStorage.m; sourceTree = "<group>"; };
 		B3487A251E92234B00BC66F1 /* WalletHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletHeaderCell.h; sourceTree = "<group>"; };
@@ -1118,6 +1119,7 @@
 		B371D8821E3A1D3B00A13EA3 /* NSObject+Associating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Associating.m"; sourceTree = "<group>"; };
 		B379B4C11FADB81500274875 /* QTUMBigDecimalStringsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMBigDecimalStringsTest.m; sourceTree = "<group>"; };
 		B37B7B0E1FA3487F00D36CB8 /* Cancelable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cancelable.h; sourceTree = "<group>"; };
+		B37CA01C1FC3020900D33DD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B381CBE01F02872000142252 /* EnableFingerprintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnableFingerprintViewController.h; sourceTree = "<group>"; };
 		B381CBE11F02872000142252 /* EnableFingerprintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnableFingerprintViewController.m; sourceTree = "<group>"; };
 		B381CBE31F0291CB00142252 /* SecurityPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityPopupViewController.h; sourceTree = "<group>"; };
@@ -1274,6 +1276,10 @@
 		B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeViewController.m; sourceTree = "<group>"; };
 		B3D12F551FB989DB00DEE41E /* SourceCodeFormatService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceCodeFormatService.h; sourceTree = "<group>"; };
 		B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeFormatService.m; sourceTree = "<group>"; };
+		B3D12F581FBAD9FD00DEE41E /* NSTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTree.h; sourceTree = "<group>"; };
+		B3D12F591FBAD9FD00DEE41E /* NSTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTree.m; sourceTree = "<group>"; };
+		B3D12F5C1FBB31A100DEE41E /* SourceCodeTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceCodeTextView.h; sourceTree = "<group>"; };
+		B3D12F5D1FBB31A100DEE41E /* SourceCodeTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeTextView.m; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
@@ -1574,7 +1580,6 @@
 		D09F83981F7BB2DB002F3098 /* CopyLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CopyLabel.m; sourceTree = "<group>"; };
 		D09F839A1F7BF308002F3098 /* QStoreCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreCategory.h; sourceTree = "<group>"; };
 		D09F839B1F7BF308002F3098 /* QStoreCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QStoreCategory.m; sourceTree = "<group>"; };
-		D0BB7C121F87C2C900EC5C70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D71F3943F2787CBE5AE12D46 /* Pods-qtum walletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum walletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qtum walletTests/Pods-qtum walletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E70353081F039297004ECCC9 /* QStoreSearchTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreSearchTableSource.h; sourceTree = "<group>"; };
 		E70353091F039297004ECCC9 /* QStoreSearchTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreSearchTableSource.m; sourceTree = "<group>"; };
@@ -3110,6 +3115,15 @@
 			name = SourceCode;
 			sourceTree = "<group>";
 		};
+		B3D12F5B1FBADA0100DEE41E /* Three */ = {
+			isa = PBXGroup;
+			children = (
+				B3D12F581FBAD9FD00DEE41E /* NSTree.h */,
+				B3D12F591FBAD9FD00DEE41E /* NSTree.m */,
+			);
+			name = Three;
+			sourceTree = "<group>";
+		};
 		B3D555EC1EDF4DA400CBDFCF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -3730,6 +3744,7 @@
 		B3F5797E1F0D297900A13571 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B3D12F5B1FBADA0100DEE41E /* Three */,
 				B32805491FA744C100748E7E /* BigNumber */,
 				B3C8FAE71F989206000168AB /* News */,
 				B35733251F97A69A00C64AAE /* ServiceLocator.h */,
@@ -4735,10 +4750,9 @@
 				E7FD36471DC4D07E00748177 /* Assets.xcassets */,
 				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
 				E7FD363C1DC4D07E00748177 /* main.m */,
+				B37CA01C1FC3020900D33DD8 /* GoogleService-Info.plist */,
 				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
-				B347D6FA1F8B5C5A005A2663 /* GoogleService-Info.plist */,
 				E7FD364C1DC4D07E00748177 /* Info.plist */,
-				D0BB7C121F87C2C900EC5C70 /* GoogleService-Info.plist */,
 			);
 			path = "qtum wallet";
 			sourceTree = "<group>";
@@ -4845,6 +4859,8 @@
 				D09F83981F7BB2DB002F3098 /* CopyLabel.m */,
 				B3E090231FAB4DD1003F3B54 /* QTUMContractLableWithMargins.h */,
 				B3E090241FAB4DD1003F3B54 /* QTUMContractLableWithMargins.m */,
+				B3D12F5C1FBB31A100DEE41E /* SourceCodeTextView.h */,
+				B3D12F5D1FBB31A100DEE41E /* SourceCodeTextView.m */,
 			);
 			name = "Shared Views";
 			path = Views;
@@ -5175,7 +5191,6 @@
 				B34228861F73CEAE00C4C381 /* SliderFeeView.xib in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderViewDark.xib in Resources */,
 				E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */,
-				D0BB7C131F87C2CD00EC5C70 /* GoogleService-Info.plist in Resources */,
 				E70CFD031F1F63E500230C81 /* PhotoLibraryPopUp.storyboard in Resources */,
 				E70CFCF51F1F63C500230C81 /* OnlyDesign.storyboard in Resources */,
 				E70CFD421F1F648400230C81 /* ShareTokenPopUp.storyboard in Resources */,
@@ -5188,6 +5203,7 @@
 				E70CFD0A1F1F63ED00230C81 /* ErrorPopUp.storyboard in Resources */,
 				E70CFD341F1F647300230C81 /* SourceCodePopUp.storyboard in Resources */,
 				B31441091FB461E5004FE08C /* RemoveContractTrainingViewLight.xib in Resources */,
+				B37CA01D1FC3020900D33DD8 /* GoogleService-Info.plist in Resources */,
 				E7881B331F0BB7C700BD6AB2 /* proximanova-light.otf in Resources */,
 				B3DB3E531F2F7F0D00AA408F /* CheckButtonLight.xib in Resources */,
 				B34228881F73CF2700C4C381 /* SliderViewLight.xib in Resources */,
@@ -5272,7 +5288,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		45AB1922DB734C7BE18A4179 /* [CP] Copy Pods Resources */ = {
@@ -5296,13 +5312,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QTUM Watch Extension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B3C4553C1E8958D900420D7C /* ShellScript */ = {
@@ -5395,7 +5414,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -5500,6 +5519,7 @@
 				B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */,
 				B3EA52FA1F45E1A1002FD201 /* QStoreViewControllerDark.m in Sources */,
 				B3D5FE581F56AF31006A2BF2 /* AbiParameterTypeFixedBytes.m in Sources */,
+				B3D12F5A1FBAD9FD00DEE41E /* NSTree.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
 				B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */,
 				B3EA53001F45E1F1002FD201 /* QStoreListViewControllerDark.m in Sources */,
@@ -5634,6 +5654,7 @@
 				B3DC9CEB1F30CB56006B2E07 /* TokenFunctionViewControllerDark.m in Sources */,
 				B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */,
 				B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */,
+				B3D12F5E1FBB31A100DEE41E /* SourceCodeTextView.m in Sources */,
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
 				B3EE8F481F13708500131823 /* ChoseTokenPaymentViewControllerDark.m in Sources */,
 				B365058F1F14B17300521603 /* WalletNameViewControllerDark.m in Sources */,

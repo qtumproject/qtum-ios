@@ -128,9 +128,9 @@ NSString *const QStoreBuyRequestProductTypeKey = @"QStoreBuyRequestProductTypeKe
     return self;
 }
 
-- (NSNumber *)getAmountNumber {
+- (QTUMBigNumber *)getAmountNumber {
     
-    return [NSDecimalNumber decimalNumberWithString:self.amountString];
+    return [QTUMBigNumber decimalWithString:self.amountString];
 }
 
 @end

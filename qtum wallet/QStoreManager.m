@@ -116,6 +116,7 @@ NSInteger const QStoreSearchCount = 20;
 #pragma mark - Private
 
 - (void)createStandartCategories {
+    
     QStoreMainScreenCategory *trending = [[QStoreMainScreenCategory alloc] initWithIdentifier:@"0" name:NSLocalizedString(@"Trending Now", nil) urlPath:QStoreCategoryTrendingPath];
     QStoreMainScreenCategory *lastAdded = [[QStoreMainScreenCategory alloc] initWithIdentifier:@"1" name:NSLocalizedString(@"Last Added", nil) urlPath:QStoreCategoryLastAddedPath];
     
@@ -245,7 +246,7 @@ NSInteger const QStoreSearchCount = 20;
     [SLocator.transactionManager sendTransactionWalletKeys:[SLocator.walletManager.wallet
                                                                     allKeys]
                                                 toAddressAndAmount:array
-                                                               fee:nil
+                                                               fee:[QTUMBigNumber decimalWithString:@"0.1"]
                                                         andHandler:^(TransactionManagerErrorType errorType,
                                                                      id response,
                                                                      QTUMBigNumber* estimateFee) {

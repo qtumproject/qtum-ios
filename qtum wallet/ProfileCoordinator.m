@@ -17,9 +17,8 @@
 #import "ChangePinCoordinator.h"
 #import "AboutOutput.h"
 #import "ErrorPopUpViewController.h"
-#import "SourceCodeOutput.h"
 
-@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate, AboutOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate, SourceCodeOutputDelegate>
+@interface ProfileCoordinator() <ProfileOutputDelegate, LanguageOutputDelegate, ExportBrandKeyCoordinatorDelegate, ChangePinCoordinatorDelegate, AboutOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
