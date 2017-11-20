@@ -11,25 +11,25 @@
 @implementation FavouriteTemplateCollectionViewCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
+	[super awakeFromNib];
 }
 
-- (void)setSelected:(BOOL)selected {
-    [super setSelected:self];
-    
-    self.backgroundColor = selected ? [self selectedBacgroundColor] : [self deselectedBacgroundColor];
+- (void)setSelected:(BOOL) selected {
+	[super setSelected:self];
+
+	self.backgroundColor = selected ? [self selectedBacgroundColor] : [self deselectedBacgroundColor];
 }
 
-- (UIColor*)selectedBacgroundColor {
-    return customRedColor();
+- (UIColor *)selectedBacgroundColor {
+	return customRedColor ();
 }
 
-- (UIColor*)deselectedBacgroundColor {
-    return customBlueColor();
+- (UIColor *)deselectedBacgroundColor {
+	return customBlueColor ();
 }
 
 + (UIFont *)getLabelFont {
-    return [UIFont fontWithName:@"simplonmono-regular" size:9.0f];
+	return [UIFont fontWithName:@"simplonmono-regular" size:9.0f];
 }
 
 @end

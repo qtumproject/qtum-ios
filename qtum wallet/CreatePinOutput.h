@@ -11,6 +11,6 @@
 
 @protocol CreatePinOutput <NSObject>
 
-@property (weak,nonatomic) id <CreatePinOutputDelegate> delegate;
+@property (weak, nonatomic) id <CreatePinOutputDelegate> delegate;
 
 @end

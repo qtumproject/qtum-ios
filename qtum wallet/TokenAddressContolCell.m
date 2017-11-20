@@ -10,14 +10,14 @@
 
 @implementation TokenAddressContolCell
 
--(void)layoutSubviews {
-    
-    [super layoutSubviews];
-    
-    CGSize size = [self.valueLabel.text sizeWithAttributes:@{NSFontAttributeName : self.valueLabel.font}];
-    if (size.width > self.valueLabel.bounds.size.width) {
-        self.valueLabel.text = self.shortBalance;
-    }
+- (void)layoutSubviews {
+
+	[super layoutSubviews];
+
+	CGSize size = [self.valueLabel.text sizeWithAttributes:@{NSFontAttributeName: self.valueLabel.font}];
+	if (size.width > self.valueLabel.bounds.size.width) {
+		self.valueLabel.text = self.shortBalance;
+	}
 }
 
 @end

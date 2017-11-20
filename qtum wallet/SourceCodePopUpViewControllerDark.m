@@ -15,9 +15,9 @@
 @implementation SourceCodePopUpViewControllerDark
 
 - (void)setupTextView {
-    
-    self.textView.layer.borderWidth = 1.0f;
-    self.textView.layer.borderColor = customBlackColor().CGColor;
+
+	self.textView.layer.borderWidth = 1.0f;
+	self.textView.layer.borderColor = customBlackColor ().CGColor;
 }
 
 @end

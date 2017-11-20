@@ -12,9 +12,13 @@
 @protocol TokenDetailOutputDelegate <NSObject>
 
 - (void)showAddressInfoWithSpendable:(id <Spendable>) spendable;
+
 - (void)didBackPressed;
+
 - (void)didShareTokenButtonPressed;
-- (void)didShowTokenAddressControlWith:(Contract*) contract;
-- (void)didPullToUpdateToken:(Contract*) token;
+
+- (void)didShowTokenAddressControlWith:(Contract *) contract;
+
+- (void)didPullToUpdateToken:(Contract *) token;
 
 @end

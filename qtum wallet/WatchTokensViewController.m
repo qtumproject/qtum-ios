@@ -11,7 +11,7 @@
 #import "InputTextView.h"
 #import "ErrorPopUpViewController.h"
 
-@interface WatchTokensViewController () 
+@interface WatchTokensViewController ()
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractNameField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractAddressTextField;
@@ -31,27 +31,27 @@
 @implementation WatchTokensViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 }
 
 - (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
+	[super viewDidLayoutSubviews];
 }
 
 
--(void)createSmartContract {
-    
-    NSString *errorString;
-    
-    if ([[ContractManager sharedInstance] addNewTokenWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text errorString:&errorString]) {
-        [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForTokenAdded] presenter:nil completion:nil];
-    } else {
-        PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
-        content.titleString = NSLocalizedString(@"Error", nil);
-        content.messageString = errorString;
-        ErrorPopUpViewController *vc = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
-        [vc setOnlyCancelButton];
-    }
+- (void)createSmartContract {
+
+	NSString *errorString;
+
+	if ([[ContractManager sharedInstance] addNewTokenWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text errorString:&errorString]) {
+		[[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForTokenAdded] presenter:nil completion:nil];
+	} else {
+		PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+		content.titleString = NSLocalizedString(@"Error", nil);
+		content.messageString = errorString;
+		ErrorPopUpViewController *vc = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+		[vc setOnlyCancelButton];
+	}
 }
 
 @end

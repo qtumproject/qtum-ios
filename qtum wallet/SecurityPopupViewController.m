@@ -15,42 +15,42 @@
 @implementation SecurityPopupViewController
 
 - (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    
-    [self configPasswordView];
-    [self.passwordView becameFirstResponder];
+
+	[super viewDidLoad];
+
+	[self configPasswordView];
+	[self.passwordView becameFirstResponder];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
+- (void)viewWillAppear:(BOOL) animated {
+
+	[super viewWillAppear:animated];
 }
 
 #pragma mark - Configuration
 
--(void)configPasswordView {
-    
-    self.passwordView.delegate = self;
+- (void)configPasswordView {
+
+	self.passwordView.delegate = self;
 }
 
 
 #pragma mark PasswordViewDelegate
 
--(void)confirmPinWithDigits:(NSString*) digits {
-    
-    if ([self.delegate respondsToSelector:@selector(confirmButtonPressed:withPin:)]) {
-        [self.delegate confirmButtonPressed:self withPin:digits];
-    }
+- (void)confirmPinWithDigits:(NSString *) digits {
+
+	if ([self.delegate respondsToSelector:@selector (confirmButtonPressed:withPin:)]) {
+		[self.delegate confirmButtonPressed:self withPin:digits];
+	}
 }
 
 #pragma mark - Actions
 
-- (IBAction)didPresseCancelAction:(id)sender {
-    
-    if ([self.delegate respondsToSelector:@selector(cancelButtonPressed:)]) {
-        [self.delegate cancelButtonPressed:self];
-    }
+- (IBAction)didPresseCancelAction:(id) sender {
+
+	if ([self.delegate respondsToSelector:@selector (cancelButtonPressed:)]) {
+		[self.delegate cancelButtonPressed:self];
+	}
 }
 
 #pragma mark -
@@ -58,9 +58,9 @@
 #pragma mark - LoginViewOutput
 
 - (void)applyFailedPasswordAction {
-    
-    [self.passwordView accessPinDenied];
-    [self.passwordView becameFirstResponder];
+
+	[self.passwordView accessPinDenied];
+	[self.passwordView becameFirstResponder];
 }
 
 

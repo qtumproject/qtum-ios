@@ -11,7 +11,7 @@
 
 @protocol SecurityPinViewDelegate <NSObject>
 
--(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completisiom;
+- (void)confirmPin:(NSString *) pin andCompletision:(void (^)(BOOL success)) completisiom;
 
 @end
 
@@ -28,10 +28,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridInputViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourthInputViewHeight;
 
-@property (weak,nonatomic) id <SecurityPinViewDelegate> delegate;
+@property (weak, nonatomic) id <SecurityPinViewDelegate> delegate;
 
 - (void)actionIncorrectPin;
+
 - (void)accessPinDenied;
+
 - (void)clearPinTextFields;
 
 @end

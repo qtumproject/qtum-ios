@@ -10,12 +10,13 @@
 #import "QTUMFeedItem.h"
 #import "Cancelable.h"
 
-typedef void(^QTUMFeeds) (NSArray <QTUMFeedItem*>* feeds);
+typedef void(^QTUMFeeds)(NSArray <QTUMFeedItem *> *feeds);
+
 typedef void(^gettingFeedFailedBlock)(void);
 
 
 @interface QTUMFeedParcer : NSObject <Cancelable>
 
--(void)parceFeedFromUrl:(NSString*) url withCompletion:(QTUMFeeds) completion andFailure:(gettingFeedFailedBlock) failure;
+- (void)parceFeedFromUrl:(NSString *) url withCompletion:(QTUMFeeds) completion andFailure:(gettingFeedFailedBlock) failure;
 
 @end

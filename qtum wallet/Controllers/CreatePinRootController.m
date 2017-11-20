@@ -8,66 +8,66 @@
 
 #import "CreatePinRootController.h"
 
-@interface CreatePinRootController () 
+@interface CreatePinRootController ()
 
-@property (strong,nonatomic) NSString* firstPin;
+@property (strong, nonatomic) NSString *firstPin;
 
 @end
 
 @implementation CreatePinRootController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationBar.hidden = YES;
+	[super viewDidLoad];
+	self.navigationBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
 }
 
 #pragma mark - PinCoordinator
 
--(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completision{
-    
-    if (self.firstPin && [self.firstPin isEqualToString:pin]) {
-        if (self.createPinCompletesion) {
-            [SLocator.walletManager storePin:pin];
-            self.createPinCompletesion();
-        }
-    } else if(self.firstPin) {
-        completision(NO);
-    } else {
-        self.firstPin = pin;
-        [self showNewPinControllerWithType:ConfirmType];
-    }
+- (void)confirmPin:(NSString *) pin andCompletision:(void (^)(BOOL success)) completision {
+
+	if (self.firstPin && [self.firstPin isEqualToString:pin]) {
+		if (self.createPinCompletesion) {
+			[SLocator.walletManager storePin:pin];
+			self.createPinCompletesion ();
+		}
+	} else if (self.firstPin) {
+		completision (NO);
+	} else {
+		self.firstPin = pin;
+		[self showNewPinControllerWithType:ConfirmType];
+	}
 }
 
--(void)setAnimationState:(BOOL)isAnimating{
-    self.animating = isAnimating;
+- (void)setAnimationState:(BOOL) isAnimating {
+	self.animating = isAnimating;
 }
 
 #pragma mark - Private Methods
 
--(void)resignFirstResponderPin{
-    for (UIViewController* vc in self.viewControllers) {
-        [vc.view endEditing:YES];
-    }
+- (void)resignFirstResponderPin {
+	for (UIViewController *vc in self.viewControllers) {
+		[vc.view endEditing:YES];
+	}
 }
 
--(void)confilmPinFailed{
-    self.firstPin = nil;
-    [self showNewPinControllerWithType:EnterType];
+- (void)confilmPinFailed {
+	self.firstPin = nil;
+	[self showNewPinControllerWithType:EnterType];
 }
 
--(void)showNewPinControllerWithType:(PinType) type {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
-    //viewController.delegatePin = self;
-    viewController.type = type;
-    if (!self.animating) {
-        self.animating = YES;
-        [self setViewControllers:@[viewController] animated:NO];
-    }
+- (void)showNewPinControllerWithType:(PinType) type {
+	UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+	PinViewController *viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"PinViewController"];
+	//viewController.delegatePin = self;
+	viewController.type = type;
+	if (!self.animating) {
+		self.animating = YES;
+		[self setViewControllers:@[viewController] animated:NO];
+	}
 }
 
 @end

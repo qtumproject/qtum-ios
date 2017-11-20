@@ -10,21 +10,21 @@
 
 @implementation QTUMParagrafTagCellLight
 
--(UIFont*)boldFont {
-    
-    return [UIFont fontWithName:@"ProximaNova-Bold" size:16];
+- (UIFont *)boldFont {
+
+	return [UIFont fontWithName:@"ProximaNova-Bold" size:16];
 }
 
--(UIFont*)regularFont {
-    return [UIFont fontWithName:@"ProximaNova-Light" size:14];
+- (UIFont *)regularFont {
+	return [UIFont fontWithName:@"ProximaNova-Light" size:14];
 }
 
--(UIColor*)linkColor {
-    return lightGreenColor();
+- (UIColor *)linkColor {
+	return lightGreenColor ();
 }
 
--(UIColor*)textColor {
-    return lightDarkGrayColor();
+- (UIColor *)textColor {
+	return lightDarkGrayColor ();
 }
 
 @end

@@ -10,6 +10,6 @@
 
 @interface NoInternetConnectionPopUpViewController : PopUpViewController
 
-@property (nonatomic, weak) id<PopUpViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <PopUpViewControllerDelegate> delegate;
 
 @end

@@ -16,27 +16,27 @@
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 }
 
 #pragma mark - Actions
 
-- (IBAction)createNewButtonWasPressed:(id)sender{
-    if ([self.delegate respondsToSelector:@selector(didCreateNewButtonPressed)]) {
-        [self.delegate didCreateNewButtonPressed];
-    }
+- (IBAction)createNewButtonWasPressed:(id) sender {
+	if ([self.delegate respondsToSelector:@selector (didCreateNewButtonPressed)]) {
+		[self.delegate didCreateNewButtonPressed];
+	}
 }
 
-- (IBAction)restoreButtonWasPressed:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(didRestoreButtonPressed)]) {
-        [self.delegate didRestoreButtonPressed];
-    }
+- (IBAction)restoreButtonWasPressed:(id) sender {
+	if ([self.delegate respondsToSelector:@selector (didRestoreButtonPressed)]) {
+		[self.delegate didRestoreButtonPressed];
+	}
 }
 
-- (IBAction)loginButtonWasPressed:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(didLoginPressed)]) {
-        [self.delegate didLoginPressed];
-    }
+- (IBAction)loginButtonWasPressed:(id) sender {
+	if ([self.delegate respondsToSelector:@selector (didLoginPressed)]) {
+		[self.delegate didLoginPressed];
+	}
 }
 
 @end

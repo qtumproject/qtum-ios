@@ -10,28 +10,28 @@
 
 @interface HistoryHeaderVIew ()
 
-@property (assign,nonatomic)BOOL isActivityFadeout;
+@property (assign, nonatomic) BOOL isActivityFadeout;
 
 @end
 
 @implementation HistoryHeaderVIew
 
 - (void)fadeInActivity {
-    if (_isActivityFadeout) {
-        self.isActivityFadeout = NO;
-        [UIView animateWithDuration:0.2 animations:^{
-            self.alpha = 1;
-        }];
-    }
+	if (_isActivityFadeout) {
+		self.isActivityFadeout = NO;
+		[UIView animateWithDuration:0.2 animations:^{
+			self.alpha = 1;
+		}];
+	}
 }
 
 - (void)fadeOutActivity {
-    if (!_isActivityFadeout) {
-        self.isActivityFadeout = YES;
-        [UIView animateWithDuration:0.2 animations:^{
-            self.alpha = 0;
-        }];
-    }
+	if (!_isActivityFadeout) {
+		self.isActivityFadeout = YES;
+		[UIView animateWithDuration:0.2 animations:^{
+			self.alpha = 0;
+		}];
+	}
 }
 
 @end

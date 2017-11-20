@@ -11,22 +11,22 @@
 #import "AbiinterfaceInput.h"
 
 
-typedef NS_ENUM(NSInteger, AbiItemType){
-    Function,
-    Constructor,
-    Fallback,
-    Undefined
+typedef NS_ENUM(NSInteger, AbiItemType) {
+	Function,
+	Constructor,
+	Fallback,
+	Undefined
 };
 
 @interface AbiinterfaceItem : NSObject
 
-@property (copy, nonatomic, readonly) NSString* name;
+@property (copy, nonatomic, readonly) NSString *name;
 @property (assign, nonatomic, readonly) BOOL constant;
 @property (assign, nonatomic, readonly) BOOL payable;
 @property (assign, nonatomic, readonly) AbiItemType type;
-@property (strong, nonatomic, readonly) NSArray<AbiinterfaceInput*>* inputs;
-@property (strong, nonatomic, readonly) NSArray<AbiInterfaceOutput*>* outputs;
+@property (strong, nonatomic, readonly) NSArray<AbiinterfaceInput *> *inputs;
+@property (strong, nonatomic, readonly) NSArray<AbiInterfaceOutput *> *outputs;
 
--(instancetype)initWithObject:(id) object;
+- (instancetype)initWithObject:(id) object;
 
 @end

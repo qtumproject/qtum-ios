@@ -11,7 +11,7 @@
 
 @protocol LibraryOutput <NSObject>
 
-@property (nonatomic, weak) id<LibraryOutputDelegate> delegate;
-@property (nonatomic, weak) id<LibraryTableSourceOutput> tableSource;
+@property (nonatomic, weak) id <LibraryOutputDelegate> delegate;
+@property (nonatomic, weak) id <LibraryTableSourceOutput> tableSource;
 
 @end

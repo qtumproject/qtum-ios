@@ -17,46 +17,65 @@ extern NSString const *IS_TOKEN_STRING_KEY;
 
 
 UIColor *customBlueColor(void);
+
 UIColor *textFieldLineColorSelected(void);
+
 UIColor *textFieldLineColorDeselected(void);
+
 UIColor *customRedColor(void);
+
 UIColor *historyGreenColor(void);
+
 UIColor *historyGrayColor(void);
+
 UIColor *customBlackColor(void);
 
 // Light Colors
 UIColor *lightBlueColor(void);
+
 UIColor *lightDarkBlueColor(void);
+
 UIColor *lightDarkBlueColorForGradient(void);
+
 UIColor *lightBlackColor(void);
+
 UIColor *lightBlackColor78(void);
+
 UIColor *lightGreenColor(void);
+
 UIColor *lightTabBarTopLineColor(void);
+
 UIColor *lightGrayColor(void);
+
 UIColor *lightDarkGrayColor(void);
 
 // colors setters depend on theme
 UIColor *getQRCodeBackroundColor(void);
+
 UIColor *getQRCodeMainColor(void);
 
 UIColor *lightTextFieldPlaceholderColor(void);
+
 UIColor *lightTextFieldLineDeselected(void);
+
 UIColor *lightBorderLabelBackroundColor(void);
 
-typedef NS_ENUM(NSInteger,PinType){
-    EnterType,
-    CreateType,
-    ConfirmType,
-    NewType,
-    OldType
+typedef NS_ENUM(NSInteger, PinType) {
+	EnterType,
+	CreateType,
+	ConfirmType,
+	NewType,
+	OldType
 };
 
 @protocol PinCoordinator <NSObject>
 
 @required
--(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completisiom;
+- (void)confirmPin:(NSString *) pin andCompletision:(void (^)(BOOL success)) completisiom;
+
 @optional
--(void)confilmPinFailed;
--(void)setAnimationState:(BOOL)isAnimating;
+- (void)confilmPinFailed;
+
+- (void)setAnimationState:(BOOL) isAnimating;
 
 @end

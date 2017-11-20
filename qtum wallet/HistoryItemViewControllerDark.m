@@ -22,16 +22,16 @@ CGFloat notConfirmedConstant = 180.0f;
 @implementation HistoryItemViewControllerDark
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 }
 
 - (void)configWithItem {
-    
-    [super configWithItem];
-    
-    self.notConfirmedDesk.hidden = self.item.confirmed;
-    self.topBoardHeightConstraint.constant = self.item.confirmed ? confirmedConstant : notConfirmedConstant;
-    self.timeTextLabel.text = self.item.send ? NSLocalizedString(@"Sent Time", nil) : NSLocalizedString(@"Received Time", nil);
+
+	[super configWithItem];
+
+	self.notConfirmedDesk.hidden = self.item.confirmed;
+	self.topBoardHeightConstraint.constant = self.item.confirmed ? confirmedConstant : notConfirmedConstant;
+	self.timeTextLabel.text = self.item.send ? NSLocalizedString(@"Sent Time", nil) : NSLocalizedString(@"Received Time", nil);
 }
 
 @end

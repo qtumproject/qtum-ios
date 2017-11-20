@@ -15,10 +15,10 @@
 @implementation ConfirmPinForExportViewControllerLight
 
 
--(void)configPasswordView {
-    
-    [self.passwordView setStyle:LightStyle lenght:SLocator.appSettings.isLongPin ? LongType : ShortType];
-    self.passwordView.delegate = self;
+- (void)configPasswordView {
+
+	[self.passwordView setStyle:LightStyle lenght:SLocator.appSettings.isLongPin ? LongType : ShortType];
+	self.passwordView.delegate = self;
 }
 
 @end

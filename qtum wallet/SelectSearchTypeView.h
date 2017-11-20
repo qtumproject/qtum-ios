@@ -10,15 +10,16 @@
 
 @protocol SelectSearchTypeViewDelegate <NSObject>
 
-- (void)selectIndexChanged:(NSInteger)index;
+- (void)selectIndexChanged:(NSInteger) index;
 
 @end
 
 @interface SelectSearchTypeView : UIView
 
-@property (nonatomic, weak) id<SelectSearchTypeViewDelegate> delegate;
+@property (nonatomic, weak) id <SelectSearchTypeViewDelegate> delegate;
 
-- (void)setSelectedIndex:(NSInteger)index;
+- (void)setSelectedIndex:(NSInteger) index;
+
 - (NSInteger)selectedIndex;
 
 @end

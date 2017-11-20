@@ -11,8 +11,10 @@
 
 @interface BaseCoordinator : NSObject <Coordinatorable>
 
--(void)addDependency:(id<Coordinatorable>) coordinator;
--(void)removeDependency:(id<Coordinatorable>) coordinator;
--(void)removeAllDependencys;
+- (void)addDependency:(id <Coordinatorable>) coordinator;
+
+- (void)removeDependency:(id <Coordinatorable>) coordinator;
+
+- (void)removeAllDependencys;
 
 @end

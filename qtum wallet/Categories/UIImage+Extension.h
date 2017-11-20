@@ -10,6 +10,6 @@
 
 @interface UIImage (Extension)
 
-+(UIImage * )changeViewToImage : (UIView *) viewForImage;
++ (UIImage *)changeViewToImage:(UIView *) viewForImage;
 
 @end

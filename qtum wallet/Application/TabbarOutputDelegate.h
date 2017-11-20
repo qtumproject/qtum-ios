@@ -11,9 +11,12 @@
 @protocol TabbarOutputDelegate <NSObject>
 
 @required
--(void)didSelecteNewsTabWithController:(UIViewController*)controller;
--(void)didSelecteSendTabWithController:(UIViewController*)controller;
--(void)didSelecteProfileTabWithController:(UIViewController*)controller;
--(void)didSelecteWalletTabWithController:(UIViewController*)controller;
+- (void)didSelecteNewsTabWithController:(UIViewController *) controller;
+
+- (void)didSelecteSendTabWithController:(UIViewController *) controller;
+
+- (void)didSelecteProfileTabWithController:(UIViewController *) controller;
+
+- (void)didSelecteWalletTabWithController:(UIViewController *) controller;
 
 @end

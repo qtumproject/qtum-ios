@@ -8,60 +8,59 @@
 
 #import "BTCAddress+Extension.h"
 
-enum
-{
-    CustomBTCPublicKeyAddressVersion         = 58,
-    CustomBTCPrivateKeyAddressVersion        = 128,
-    CustomBTCScriptHashAddressVersion        = 50,
-    CustomBTCPublicKeyAddressVersionTestnet  = 120,
-    CustomBTCPrivateKeyAddressVersionTestnet = 239,
-    CustomBTCScriptHashAddressVersionTestnet = 110,
+enum {
+	CustomBTCPublicKeyAddressVersion = 58,
+	CustomBTCPrivateKeyAddressVersion = 128,
+	CustomBTCScriptHashAddressVersion = 50,
+	CustomBTCPublicKeyAddressVersionTestnet = 120,
+	CustomBTCPrivateKeyAddressVersionTestnet = 239,
+	CustomBTCScriptHashAddressVersionTestnet = 110,
 };
 
 @implementation BTCPublicKeyAddress (Extension)
 
-+ (uint8_t) BTCVersionPrefix {
-    return CustomBTCPublicKeyAddressVersion;
++ (uint8_t)BTCVersionPrefix {
+	return CustomBTCPublicKeyAddressVersion;
 }
 
 @end
 
 @implementation BTCPrivateKeyAddress (Extension)
 
-+ (uint8_t) BTCVersionPrefix {
-    return CustomBTCPrivateKeyAddressVersion;
++ (uint8_t)BTCVersionPrefix {
+	return CustomBTCPrivateKeyAddressVersion;
 }
 
 @end
 
 @implementation BTCScriptHashAddress (Extension)
 
-+ (uint8_t) BTCVersionPrefix {
-    return CustomBTCScriptHashAddressVersion;
++ (uint8_t)BTCVersionPrefix {
+	return CustomBTCScriptHashAddressVersion;
 }
 
 @end
 
 @implementation BTCPublicKeyAddressTestnet (Extension)
 
-+ (uint8_t) BTCVersionPrefix {
-    return CustomBTCPublicKeyAddressVersionTestnet;
++ (uint8_t)BTCVersionPrefix {
+	return CustomBTCPublicKeyAddressVersionTestnet;
 }
 
 @end
 
 @implementation BTCPrivateKeyAddressTestnet (Extension)
 
-+ (uint8_t) BTCVersionPrefix {
-    return CustomBTCPrivateKeyAddressVersionTestnet;
++ (uint8_t)BTCVersionPrefix {
+	return CustomBTCPrivateKeyAddressVersionTestnet;
 }
 
 @end
 
 @implementation BTCScriptHashAddressTestnet (Extension)
 
-+ (uint8_t) BTCVersionPrefix {
-    return CustomBTCScriptHashAddressVersionTestnet;
++ (uint8_t)BTCVersionPrefix {
+	return CustomBTCScriptHashAddressVersionTestnet;
 }
 
 @end

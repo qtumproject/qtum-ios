@@ -11,16 +11,20 @@
 
 @protocol QStoreContractOutputDelegate <NSObject>
 
-- (void)didLoadViewWithFullContract:(QStoreContractElement *)element;
-- (void)loadAbiWithElement:(QStoreContractElement *)element;
+- (void)didLoadViewWithFullContract:(QStoreContractElement *) element;
 
-- (void)didSelectPurchaseContract:(QStoreContractElement *)element;
-- (void)didSelectQStoreContractDetails:(QStoreBuyRequest *)request;
-- (void)didSelectTag:(NSString *)tag;
+- (void)loadAbiWithElement:(QStoreContractElement *) element;
+
+- (void)didSelectPurchaseContract:(QStoreContractElement *) element;
+
+- (void)didSelectQStoreContractDetails:(QStoreBuyRequest *) request;
+
+- (void)didSelectTag:(NSString *) tag;
 
 - (void)didCopySourceOrAbi:(NSString *) text;
 
 - (void)didPressedBack;
-- (void)didPressedTemplateDetailWithAbi:(NSString*) abi;
+
+- (void)didPressedTemplateDetailWithAbi:(NSString *) abi;
 
 @end

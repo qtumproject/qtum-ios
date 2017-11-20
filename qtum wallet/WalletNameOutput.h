@@ -11,6 +11,6 @@
 
 @protocol WalletNameOutput <NSObject>
 
-@property (weak,nonatomic) id <WalletNameOutputDelegate> delegate;
+@property (weak, nonatomic) id <WalletNameOutputDelegate> delegate;
 
 @end

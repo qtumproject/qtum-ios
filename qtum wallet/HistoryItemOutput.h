@@ -13,6 +13,6 @@
 @protocol HistoryItemOutput <NSObject>
 
 @property (strong, nonatomic) HistoryElement *item;
-@property (weak, nonatomic) id<HistoryItemOutputDelegate> delegate;
+@property (weak, nonatomic) id <HistoryItemOutputDelegate> delegate;
 
 @end

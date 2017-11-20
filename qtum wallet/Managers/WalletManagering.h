@@ -15,27 +15,35 @@
 
 @protocol WalletManagering <Clearable, Managerable>
 
-@property (strong ,nonatomic,readonly) WalletManagerRequestAdapter* requestAdapter;
-@property (strong ,nonatomic) Wallet* wallet;
+@property (strong, nonatomic, readonly) WalletManagerRequestAdapter *requestAdapter;
+@property (strong, nonatomic) Wallet *wallet;
 
-- (void)createNewWalletWithName:(NSString *)name
-                            pin:(NSString *)pin
-             withSuccessHandler:(void(^)(Wallet *newWallet))success
-              andFailureHandler:(void(^)(void))failure;
+- (void)createNewWalletWithName:(NSString *) name
+							pin:(NSString *) pin
+			 withSuccessHandler:(void (^)(Wallet *newWallet)) success
+			  andFailureHandler:(void (^)(void)) failure;
 
-- (void)createNewWalletWithName:(NSString *)name
-                            pin:(NSString *)pin seedWords:(NSArray *)seedWords
-             withSuccessHandler:(void(^)(Wallet *newWallet))success
-              andFailureHandler:(void(^)(void))failure;
+- (void)createNewWalletWithName:(NSString *) name
+							pin:(NSString *) pin seedWords:(NSArray *) seedWords
+			 withSuccessHandler:(void (^)(Wallet *newWallet)) success
+			  andFailureHandler:(void (^)(void)) failure;
 
-- (void)storePin:(NSString*) pin;
-- (BOOL)changePinFrom:(NSString*) pin toPin:(NSString*) newPin;
-- (BOOL)verifyPin:(NSString*) pin;
+- (void)storePin:(NSString *) pin;
+
+- (BOOL)changePinFrom:(NSString *) pin toPin:(NSString *) newPin;
+
+- (BOOL)verifyPin:(NSString *) pin;
+
 - (BOOL)isSignedIn;
+
 - (BOOL)isLongPin;
+
 - (NSDictionary *)hashTableOfKeys;
+
 - (NSDictionary *)hashTableOfKeysForHistoryElement;
-- (BOOL)startWithPin:(NSString*) pin;
-- (NSString*)brandKeyWithPin:(NSString*) pin;
+
+- (BOOL)startWithPin:(NSString *) pin;
+
+- (NSString *)brandKeyWithPin:(NSString *) pin;
 
 @end

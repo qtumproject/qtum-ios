@@ -13,12 +13,12 @@
 
 @protocol SubscribeTokenCoordinatorDelegate <NSObject>
 
--(void)didFinishCoordinator:(SubscribeTokenCoordinator*) coordinator;
+- (void)didFinishCoordinator:(SubscribeTokenCoordinator *) coordinator;
 
 @end
 
 @interface SubscribeTokenCoordinator : BaseCoordinator <Coordinatorable>
 
--(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
+- (instancetype)initWithNavigationController:(UINavigationController *) navigationController;
 
 @end

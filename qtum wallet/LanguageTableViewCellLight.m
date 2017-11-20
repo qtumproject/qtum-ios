@@ -11,11 +11,11 @@
 @implementation LanguageTableViewCellLight
 
 - (UIColor *)getDeselectedColor {
-    return lightBlackColor78();
+	return lightBlackColor78 ();
 }
 
 - (UIColor *)getSelectedColor {
-    return lightBlackColor78();
+	return lightBlackColor78 ();
 }
 
 @end

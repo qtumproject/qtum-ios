@@ -8,9 +8,9 @@
 
 @implementation AbiParameterTypeBool
 
--(NSInteger)maxValueLenght {
-    
-    return 1;
+- (NSInteger)maxValueLenght {
+
+	return 1;
 }
 
 

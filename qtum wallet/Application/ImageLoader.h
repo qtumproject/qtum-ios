@@ -10,9 +10,9 @@
 
 @interface ImageLoader : NSObject
 
--(void)getImageWithUrl:(NSString*)url
-               andSize:(CGSize) size
-     withResultHandler:(void(^)(UIImage* image)) complete;
+- (void)getImageWithUrl:(NSString *) url
+				andSize:(CGSize) size
+	  withResultHandler:(void (^)(UIImage *image)) complete;
 
 
 @end

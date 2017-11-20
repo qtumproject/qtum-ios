@@ -15,23 +15,23 @@
 @implementation EnableFingerprintViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 }
 
 #pragma mark - Actions
 
-- (IBAction)didPresseEnableAction:(id)sender {
-    
-    if ([self.delegate respondsToSelector:@selector(didEnableFingerprint:)] ) {
-        [self.delegate didEnableFingerprint:YES];
-    }
+- (IBAction)didPresseEnableAction:(id) sender {
+
+	if ([self.delegate respondsToSelector:@selector (didEnableFingerprint:)]) {
+		[self.delegate didEnableFingerprint:YES];
+	}
 }
 
-- (IBAction)didPresseCancelAction:(id)sender {
-    
-    if ([self.delegate respondsToSelector:@selector(didCancelEnableFingerprint)]) {
-        [self.delegate didCancelEnableFingerprint];
-    }
+- (IBAction)didPresseCancelAction:(id) sender {
+
+	if ([self.delegate respondsToSelector:@selector (didCancelEnableFingerprint)]) {
+		[self.delegate didCancelEnableFingerprint];
+	}
 }
 
 @end

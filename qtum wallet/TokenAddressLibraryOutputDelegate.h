@@ -10,7 +10,8 @@
 
 @protocol TokenAddressLibraryOutputDelegate <NSObject>
 
--(void)didBackPress;
--(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath withAddress:(NSString*)address;
+- (void)didBackPress;
+
+- (void)didPressCellAtIndexPath:(NSIndexPath *) indexPath withAddress:(NSString *) address;
 
 @end

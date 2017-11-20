@@ -11,6 +11,7 @@
 @interface RPCAdapter : NSObject <RequestManagerAdapter>
 
 - (id)adaptiveDataForHistory:(id) data;
+
 - (id)adaptiveDataForOutputs:(id) data;
 
 @end

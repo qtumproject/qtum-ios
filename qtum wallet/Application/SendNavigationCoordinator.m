@@ -15,13 +15,13 @@
 @implementation SendNavigationCoordinator
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationBar.hidden = YES;
+	[super viewDidLoad];
+	self.navigationBar.hidden = YES;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    
-    return SLocator.appSettings.isDarkTheme ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+
+	return SLocator.appSettings.isDarkTheme ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
 }
 
 @end

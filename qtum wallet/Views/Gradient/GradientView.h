@@ -8,18 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, ColorType){
-    Blue,
-    Pink,
-    Green,
-    ForWallet,
-    White,
-    WhiteLong,
-    DarkLong
+typedef NS_ENUM(NSInteger, ColorType) {
+	Blue,
+	Pink,
+	Green,
+	ForWallet,
+	White,
+	WhiteLong,
+	DarkLong
 };
 
 @interface GradientView : UIView
 
-@property (assign,nonatomic) ColorType colorType;
+@property (assign, nonatomic) ColorType colorType;
 
 @end

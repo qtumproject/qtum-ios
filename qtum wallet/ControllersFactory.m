@@ -77,410 +77,409 @@
 @implementation ControllersFactory
 
 + (instancetype)sharedInstance {
-    
-    static ControllersFactory *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
+
+	static ControllersFactory *instance;
+	static dispatch_once_t onceToken;
+	dispatch_once (&onceToken, ^{
+		instance = [[super alloc] initUniqueInstance];
+	});
+	return instance;
 }
 
-- (instancetype)initUniqueInstance
-{
-    self = [super init];
-    if (self != nil) { }
-    return self;
+- (instancetype)initUniqueInstance {
+	self = [super init];
+	if (self != nil) {
+	}
+	return self;
 }
 
--(UIViewController*)sendFlowTab{
-    SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] init];
-    return nav;
+- (UIViewController *)sendFlowTab {
+	SendNavigationCoordinator *nav = [[SendNavigationCoordinator alloc] init];
+	return nav;
 }
 
--(UIViewController*)profileFlowTab {
-    NSObject<ProfileOutput> *controller = (NSObject<ProfileOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ProfileViewController"];
-    ProfileNavigationCoordinator* nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:[controller toPresent]];
-    return nav;
+- (UIViewController *)profileFlowTab {
+	NSObject <ProfileOutput> *controller = (NSObject <ProfileOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ProfileViewController"];
+	ProfileNavigationCoordinator *nav = [[ProfileNavigationCoordinator alloc] initWithRootViewController:[controller toPresent]];
+	return nav;
 }
 
--(UIViewController*)newsFlowTab {
-    
-    NewsNavigationController* nav = [[NewsNavigationController alloc] init];
-    return nav;
+- (UIViewController *)newsFlowTab {
+
+	NewsNavigationController *nav = [[NewsNavigationController alloc] init];
+	return nav;
 }
 
 
 
--(UITabBarController <TabbarOutput>*)createTabFlow {
-    
-    if ([NSUserDefaults isDarkSchemeSetting]) {
-        return [TabBarControllerDark new];
-    } else {
-        return [TabBarControllerLight new];
-    }
+- (UITabBarController <TabbarOutput> *)createTabFlow {
+
+	if ([NSUserDefaults isDarkSchemeSetting]) {
+		return [TabBarControllerDark new];
+	} else {
+		return [TabBarControllerLight new];
+	}
 }
 
--(UINavigationController*)walletFlowTab {
-    
-    NSObject<BalancePageOutput> *controller = (NSObject<BalancePageOutput>*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"BalancePageViewController"];
-    WalletNavigationController* nav = [[WalletNavigationController alloc] initWithRootViewController:[controller toPresent]];
-    return nav;
+- (UINavigationController *)walletFlowTab {
+
+	NSObject <BalancePageOutput> *controller = (NSObject <BalancePageOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"BalancePageViewController"];
+	WalletNavigationController *nav = [[WalletNavigationController alloc] initWithRootViewController:[controller toPresent]];
+	return nav;
 }
 
--(NSObject<NewPaymentOutput>*)createNewPaymentDarkViewController {
-    
-    NSObject<NewPaymentOutput>* controller = (NSObject<NewPaymentOutput>*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"NewPayment"];
-    return controller;
+- (NSObject <NewPaymentOutput> *)createNewPaymentDarkViewController {
+
+	NSObject <NewPaymentOutput> *controller = (NSObject <NewPaymentOutput> *)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"NewPayment"];
+	return controller;
 }
 
-- (QRCodeViewController*)createQRCodeViewControllerForSend {
-    
-    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"QRCodeViewController"];
-    return controller;
+- (QRCodeViewController *)createQRCodeViewControllerForSend {
+
+	QRCodeViewController *controller = (QRCodeViewController *)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"QRCodeViewController"];
+	return controller;
 }
 
--(WalletNameViewController*)createWalletNameCreateController {
-    
-    WalletNameViewController* controller = (WalletNameViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"WalletNameViewController"];
-    return controller;
+- (WalletNameViewController *)createWalletNameCreateController {
+
+	WalletNameViewController *controller = (WalletNameViewController *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"WalletNameViewController"];
+	return controller;
 }
 
--(NSObject<LoginViewOutput>*)createLoginController {
-    
-    NSObject<LoginViewOutput>* controller = (NSObject<LoginViewOutput>*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"LoginViewController"];
-    return controller;
+- (NSObject <LoginViewOutput> *)createLoginController {
+
+	NSObject <LoginViewOutput> *controller = (NSObject <LoginViewOutput> *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"LoginViewController"];
+	return controller;
 }
 
--(NSObject<LoginViewOutput>*)createConfirmPinForExportViewController {
-    
-    NSObject<LoginViewOutput>* controller = (NSObject<LoginViewOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ConfirmPinForExportViewController"];
-    return controller;
+- (NSObject <LoginViewOutput> *)createConfirmPinForExportViewController {
+
+	NSObject <LoginViewOutput> *controller = (NSObject <LoginViewOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ConfirmPinForExportViewController"];
+	return controller;
 }
 
--(NSObject<FirstAuthOutput>*)createFirstAuthController {
-    
-    NSObject<FirstAuthOutput>* controller = (FirstAuthViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"FirstAuthViewController"];
-    return controller;
+- (NSObject <FirstAuthOutput> *)createFirstAuthController {
+
+	NSObject <FirstAuthOutput> *controller = (FirstAuthViewController *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"FirstAuthViewController"];
+	return controller;
 }
 
--(NSObject<RestoreWalletOutput>*)createRestoreWalletController {
-    
-    NSObject<RestoreWalletOutput>* controller = (NSObject<RestoreWalletOutput>*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RestoreWalletViewController"];
-    return controller;
+- (NSObject <RestoreWalletOutput> *)createRestoreWalletController {
+
+	NSObject <RestoreWalletOutput> *controller = (NSObject <RestoreWalletOutput> *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RestoreWalletViewController"];
+	return controller;
 }
 
--(CreatePinViewController*)createCreatePinController{
-    CreatePinViewController* controller = (CreatePinViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"CreatePinViewController"];
-    return controller;
+- (CreatePinViewController *)createCreatePinController {
+	CreatePinViewController *controller = (CreatePinViewController *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"CreatePinViewController"];
+	return controller;
 }
 
-- (NSObject <ChangePinOutput>*)createChangePinController{
-    NSObject <ChangePinOutput>* output = (NSObject <ChangePinOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"PinViewController"];
-    return output;
+- (NSObject <ChangePinOutput> *)createChangePinController {
+	NSObject <ChangePinOutput> *output = (NSObject <ChangePinOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"PinViewController"];
+	return output;
 }
 
--(RepeateViewController*)createRepeatePinController{
-    RepeateViewController* controller = (RepeateViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RepeateViewController"];
-    return controller;
+- (RepeateViewController *)createRepeatePinController {
+	RepeateViewController *controller = (RepeateViewController *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"RepeateViewController"];
+	return controller;
 }
 
--(AuthNavigationController*)createAuthNavigationController {
-    AuthNavigationController* controller = [[AuthNavigationController alloc]init];
-    return controller;
+- (AuthNavigationController *)createAuthNavigationController {
+	AuthNavigationController *controller = [[AuthNavigationController alloc] init];
+	return controller;
 }
 
--(ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController{
-    ExportWalletBrandKeyViewController* controller = (ExportWalletBrandKeyViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ExportWalletBrandKeyViewController"];
-    return controller;
+- (ExportWalletBrandKeyViewController *)createExportWalletBrandKeyViewController {
+	ExportWalletBrandKeyViewController *controller = (ExportWalletBrandKeyViewController *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ExportWalletBrandKeyViewController"];
+	return controller;
 }
 
--(NSObject <SubscribeTokenOutput>*)createSubscribeTokenViewController {
-    
-    NSObject <SubscribeTokenOutput>* output = (NSObject <SubscribeTokenOutput>*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
-    return output;
+- (NSObject <SubscribeTokenOutput> *)createSubscribeTokenViewController {
+
+	NSObject <SubscribeTokenOutput> *output = (NSObject <SubscribeTokenOutput> *)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"SubscribeTokenViewController"];
+	return output;
 }
 
--(NSObject <SourceCodeOutput>*)createSourceCodeOutput {
-    
-    NSObject <SourceCodeOutput>* output = (NSObject <SourceCodeOutput>*)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"SourceCodeViewController"];
-    return output;
+- (NSObject <SourceCodeOutput> *)createSourceCodeOutput {
+
+	NSObject <SourceCodeOutput> *output = (NSObject <SourceCodeOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"SourceCodeViewController"];
+	return output;
 }
 
--(NSObject<LanguageOutput> *)createLanguageViewController{
-    NSObject<LanguageOutput> *controller = (NSObject<LanguageOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"LanguageViewController"];
-    return controller;
+- (NSObject <LanguageOutput> *)createLanguageViewController {
+	NSObject <LanguageOutput> *controller = (NSObject <LanguageOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"LanguageViewController"];
+	return controller;
 }
 
--(NSObject<ExportBrainKeyOutput> *)createExportBrainKeyViewController{
-    NSObject<ExportBrainKeyOutput> *controller = (NSObject<ExportBrainKeyOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ExportBrainKeyViewController"];
-    return controller;
+- (NSObject <ExportBrainKeyOutput> *)createExportBrainKeyViewController {
+	NSObject <ExportBrainKeyOutput> *controller = (NSObject <ExportBrainKeyOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"ExportBrainKeyViewController"];
+	return controller;
 }
 
--(NSObject<RecieveOutput> *)createRecieveViewController{
-    NSObject<RecieveOutput> *controller = (NSObject<RecieveOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"RecieveViewController"];
-    return controller;
+- (NSObject <RecieveOutput> *)createRecieveViewController {
+	NSObject <RecieveOutput> *controller = (NSObject <RecieveOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"RecieveViewController"];
+	return controller;
 }
 
--(NSObject<HistoryItemOutput> *)createHistoryItem{
-    NSObject<HistoryItemOutput> *controller = (NSObject<HistoryItemOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"HistoryItemViewController"];
-    return controller;
+- (NSObject <HistoryItemOutput> *)createHistoryItem {
+	NSObject <HistoryItemOutput> *controller = (NSObject <HistoryItemOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"HistoryItemViewController"];
+	return controller;
 }
 
--(NSObject<WalletOutput> *)createWalletViewController{
-    NSObject<WalletOutput> *controller = (NSObject<WalletOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"WalletViewController"];
-    return controller;
+- (NSObject <WalletOutput> *)createWalletViewController {
+	NSObject <WalletOutput> *controller = (NSObject <WalletOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"WalletViewController"];
+	return controller;
 }
 
--(NSObject<ConstructorAbiOutput> *)createConstructorFromAbiViewController {
-    
-    NSObject<ConstructorAbiOutput> *output = (NSObject<ConstructorAbiOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ConstructorFromAbiViewController"];
-    return output;
+- (NSObject <ConstructorAbiOutput> *)createConstructorFromAbiViewController {
+
+	NSObject <ConstructorAbiOutput> *output = (NSObject <ConstructorAbiOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ConstructorFromAbiViewController"];
+	return output;
 }
 
--(NSObject<QStoreTemplateDetailOutput> *)createQStoreTemplateDetailOutput {
-    
-    NSObject<QStoreTemplateDetailOutput> *output = (NSObject<QStoreTemplateDetailOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreTemplateDetailViewController"];
-    return output;
+- (NSObject <QStoreTemplateDetailOutput> *)createQStoreTemplateDetailOutput {
+
+	NSObject <QStoreTemplateDetailOutput> *output = (NSObject <QStoreTemplateDetailOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreTemplateDetailViewController"];
+	return output;
 }
 
--(NSObject <ContractCreationEndOutput> *)createCreateTokenFinishViewController {
-    
-    NSObject <ContractCreationEndOutput> *output = (NSObject <ContractCreationEndOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
-    return output;
+- (NSObject <ContractCreationEndOutput> *)createCreateTokenFinishViewController {
+
+	NSObject <ContractCreationEndOutput> *output = (NSObject <ContractCreationEndOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"CreateTokenFinishViewController"];
+	return output;
 }
 
--(NSObject <TokenDetailOutput> *)createTokenDetailsViewController {
-    
-    NSObject <TokenDetailOutput> * controller = (NSObject <TokenDetailOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
-    return controller;
+- (NSObject <TokenDetailOutput> *)createTokenDetailsViewController {
+
+	NSObject <TokenDetailOutput> *controller = (NSObject <TokenDetailOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenDetailsViewController"];
+	return controller;
 }
 
--(NSObject<TokenListOutput> *)createTokenListViewController{
-    NSObject<TokenListOutput> *controller = (NSObject<TokenListOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenListViewController"];
-    return controller;
+- (NSObject <TokenListOutput> *)createTokenListViewController {
+	NSObject <TokenListOutput> *controller = (NSObject <TokenListOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenListViewController"];
+	return controller;
 }
 
--(NSObject<ContractFunctionsOutput> *)createTokenFunctionViewController {
-    
-    NSObject<ContractFunctionsOutput> * output = (NSObject<ContractFunctionsOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionViewController"];
-    return output;
+- (NSObject <ContractFunctionsOutput> *)createTokenFunctionViewController {
+
+	NSObject <ContractFunctionsOutput> *output = (NSObject <ContractFunctionsOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionViewController"];
+	return output;
 }
 
--(NSObject <ContractFunctionDetailOutput>*)createTokenFunctionDetailViewController{
-    NSObject <ContractFunctionDetailOutput>* controller = (NSObject <ContractFunctionDetailOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionDetailViewController"];
-    return controller;
+- (NSObject <ContractFunctionDetailOutput> *)createTokenFunctionDetailViewController {
+	NSObject <ContractFunctionDetailOutput> *controller = (NSObject <ContractFunctionDetailOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TokenFunctionDetailViewController"];
+	return controller;
 }
 
--(NSObject<TemplatesListOutput> *)createTemplateTokenViewController {
-    
-    NSObject<TemplatesListOutput> *output = (NSObject<TemplatesListOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
-    return output;
+- (NSObject <TemplatesListOutput> *)createTemplateTokenViewController {
+
+	NSObject <TemplatesListOutput> *output = (NSObject <TemplatesListOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
+	return output;
 }
 
--(AddNewTokensViewController*)createAddNewTokensViewController{
-    AddNewTokensViewController* controller = (AddNewTokensViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"AddNewTokensViewController"];
-    return controller;
+- (AddNewTokensViewController *)createAddNewTokensViewController {
+	AddNewTokensViewController *controller = (AddNewTokensViewController *)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"AddNewTokensViewController"];
+	return controller;
 }
 
--(QRCodeViewController*)createQRCodeViewControllerForSubscribe{
-    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"QRCodeViewController"];
-    return controller;
+- (QRCodeViewController *)createQRCodeViewControllerForSubscribe {
+	QRCodeViewController *controller = (QRCodeViewController *)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"QRCodeViewController"];
+	return controller;
 }
 
--(QRCodeViewController*)createQRCodeViewControllerForWallet{
-    QRCodeViewController* controller = (QRCodeViewController*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"QRCodeViewController"];
-    return controller;
+- (QRCodeViewController *)createQRCodeViewControllerForWallet {
+	QRCodeViewController *controller = (QRCodeViewController *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"QRCodeViewController"];
+	return controller;
 }
 
--(ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController {
-    ChoseTokenPaymentViewController* controller = (ChoseTokenPaymentViewController*)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"ChoseTokenPaymentViewController"];
-    return controller;
+- (ChoseTokenPaymentViewController *)createChoseTokenPaymentViewController {
+	ChoseTokenPaymentViewController *controller = (ChoseTokenPaymentViewController *)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"ChoseTokenPaymentViewController"];
+	return controller;
 }
 
--(NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController {
-    
-    NSObject <SmartContractMenuOutput>* controller = (NSObject <SmartContractMenuOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractMenuViewController"];
-    return controller;
+- (NSObject <SmartContractMenuOutput> *)createSmartContractMenuViewController {
+
+	NSObject <SmartContractMenuOutput> *controller = (NSObject <SmartContractMenuOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractMenuViewController"];
+	return controller;
 }
 
--(NSObject <PublishedContractListOutput>*)createSmartContractsListViewController {
-    
-    NSObject <PublishedContractListOutput>* controller = (NSObject <PublishedContractListOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
-    return controller;
+- (NSObject <PublishedContractListOutput> *)createSmartContractsListViewController {
+
+	NSObject <PublishedContractListOutput> *controller = (NSObject <PublishedContractListOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"SmartContractsListViewController"];
+	return controller;
 }
 
 - (NSObject <QStoreMainOutput> *)createQStoreMainViewController {
-    NSObject <QStoreMainOutput> *controller = (NSObject <QStoreMainOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreViewController"];
-    return controller;
+	NSObject <QStoreMainOutput> *controller = (NSObject <QStoreMainOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreViewController"];
+	return controller;
 }
 
--(NSObject<QStoreListOutput> *)createQStoreListViewController{
-    NSObject<QStoreListOutput> *controller = (NSObject<QStoreListOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreListViewController"];
-    return controller;
+- (NSObject <QStoreListOutput> *)createQStoreListViewController {
+	NSObject <QStoreListOutput> *controller = (NSObject <QStoreListOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreListViewController"];
+	return controller;
 }
 
--(NSObject<QStoreContractOutput> *)createQStoreContractViewController{
-    NSObject<QStoreContractOutput> *controller = (NSObject<QStoreContractOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreContractViewController"];
-    return controller;
+- (NSObject <QStoreContractOutput> *)createQStoreContractViewController {
+	NSObject <QStoreContractOutput> *controller = (NSObject <QStoreContractOutput> *)[UIViewController controllerInStoryboard:@"QStore" withIdentifire:@"QStoreContractViewController"];
+	return controller;
 }
 
--(NSObject <WatchContractOutput>*)createWatchContractViewController {
-    NSObject <WatchContractOutput>* controller = (NSObject <WatchContractOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
-    return controller;
+- (NSObject <WatchContractOutput> *)createWatchContractViewController {
+	NSObject <WatchContractOutput> *controller = (NSObject <WatchContractOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchContractViewController"];
+	return controller;
 }
 
 
--(NSObject <WatchContractOutput>*)createWatchTokensViewController {
-    NSObject <WatchContractOutput>* controller = (NSObject <WatchContractOutput>*)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
-    return controller;
+- (NSObject <WatchContractOutput> *)createWatchTokensViewController {
+	NSObject <WatchContractOutput> *controller = (NSObject <WatchContractOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
+	return controller;
 }
 
--(NSObject <RestoreContractsOutput>*)createRestoreContractViewController{
-    
-    NSObject <RestoreContractsOutput>* controller = (NSObject <RestoreContractsOutput>*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContractsViewController"];
-    return controller;
+- (NSObject <RestoreContractsOutput> *)createRestoreContractViewController {
+
+	NSObject <RestoreContractsOutput> *controller = (NSObject <RestoreContractsOutput> *)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContractsViewController"];
+	return controller;
 }
 
--(NSObject <BackupContractOutput>*)createBackupContractViewController {
-    
-    NSObject <BackupContractOutput>* output = (NSObject <BackupContractOutput>*)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContractsViewController"];
-    return output;
+- (NSObject <BackupContractOutput> *)createBackupContractViewController {
+
+	NSObject <BackupContractOutput> *output = (NSObject <BackupContractOutput> *)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContractsViewController"];
+	return output;
 }
 
--(NSObject <AddressControlOutput>*)createAddressControllOutput {
-    
-    NSObject <AddressControlOutput>* output = (NSObject <AddressControlOutput>*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"AddressControlListViewController"];
-    return output;
+- (NSObject <AddressControlOutput> *)createAddressControllOutput {
+
+	NSObject <AddressControlOutput> *output = (NSObject <AddressControlOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"AddressControlListViewController"];
+	return output;
 }
 
--(NSObject <TokenAddressLibraryOutput>*)createTokenAddressControllOutput {
-    
-    NSObject <TokenAddressLibraryOutput>* output = (NSObject <TokenAddressLibraryOutput>*)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenAddressControlViewController"];
-    return output;
+- (NSObject <TokenAddressLibraryOutput> *)createTokenAddressControllOutput {
+
+	NSObject <TokenAddressLibraryOutput> *output = (NSObject <TokenAddressLibraryOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"TokenAddressControlViewController"];
+	return output;
 }
 
--(EnableFingerprintViewController*)createEnableFingerprintViewController{
-    EnableFingerprintViewController* controller = (EnableFingerprintViewController*)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"EnableFingerprintViewController"];
-    return controller;
+- (EnableFingerprintViewController *)createEnableFingerprintViewController {
+	EnableFingerprintViewController *controller = (EnableFingerprintViewController *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"EnableFingerprintViewController"];
+	return controller;
 }
 
--(NSObject<ChooseReciveAddressOutput> *)createChooseReciveAddressOutput {
-    
-    NSObject<ChooseReciveAddressOutput> *controller = (NSObject<ChooseReciveAddressOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"ChooseReciveAddressViewController"];
-    return controller;
+- (NSObject <ChooseReciveAddressOutput> *)createChooseReciveAddressOutput {
+
+	NSObject <ChooseReciveAddressOutput> *controller = (NSObject <ChooseReciveAddressOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"ChooseReciveAddressViewController"];
+	return controller;
 }
 
--(NSObject<LibraryOutput> *)createLibraryViewController{
-    NSObject<LibraryOutput> *controller = (NSObject<LibraryOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"LibraryViewController"];
-    return controller;
+- (NSObject <LibraryOutput> *)createLibraryViewController {
+	NSObject <LibraryOutput> *controller = (NSObject <LibraryOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"LibraryViewController"];
+	return controller;
 }
 
--(NSObject<SplashScreenOutput> *)createSplashScreenOutput{
-    NSObject<SplashScreenOutput> *controller = (NSObject<SplashScreenOutput> *)[UIViewController controllerInStoryboard:@"Splash" withIdentifire:@"SplashViewController"];
-    return controller;
+- (NSObject <SplashScreenOutput> *)createSplashScreenOutput {
+	NSObject <SplashScreenOutput> *controller = (NSObject <SplashScreenOutput> *)[UIViewController controllerInStoryboard:@"Splash" withIdentifire:@"SplashViewController"];
+	return controller;
 }
 
--(NSObject<NewsDetailOutput>*)createNewsDetailOutput {
-    
-    NSObject<NewsDetailOutput> *output = (NSObject<NewsDetailOutput>*)[UIViewController controllerInStoryboard:@"News" withIdentifire:@"NewsDetailViewController"];
-    return output;
+- (NSObject <NewsDetailOutput> *)createNewsDetailOutput {
+
+	NSObject <NewsDetailOutput> *output = (NSObject <NewsDetailOutput> *)[UIViewController controllerInStoryboard:@"News" withIdentifire:@"NewsDetailViewController"];
+	return output;
 }
 
--(NSObject<NewsOutput>*)createNewsOutput {
-    
-    NSObject<NewsOutput> *output = (NSObject<NewsOutput>*)[UIViewController controllerInStoryboard:@"News" withIdentifire:@"NewsViewController"];
-    return output;
+- (NSObject <NewsOutput> *)createNewsOutput {
+
+	NSObject <NewsOutput> *output = (NSObject <NewsOutput> *)[UIViewController controllerInStoryboard:@"News" withIdentifire:@"NewsViewController"];
+	return output;
 }
 
--(NSObject<AboutOutput> *)createAboutOutput {
-    
-    NSObject<AboutOutput> *output = (NSObject<AboutOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"AboutOutputViewController"];
-    return output;
+- (NSObject <AboutOutput> *)createAboutOutput {
+
+	NSObject <AboutOutput> *output = (NSObject <AboutOutput> *)[UIViewController controllerInStoryboard:@"Profile" withIdentifire:@"AboutOutputViewController"];
+	return output;
 }
 
--(UIViewController*)createFlowNavigationCoordinator{
-    return nil;
+- (UIViewController *)createFlowNavigationCoordinator {
+	return nil;
 }
 
--(UIViewController*)createPinFlowController{
-    return nil;
+- (UIViewController *)createPinFlowController {
+	return nil;
 }
 
--(UIViewController*)createWalletFlowController{
-    return nil;
+- (UIViewController *)createWalletFlowController {
+	return nil;
 }
 
--(UIViewController*)changePinFlowController{
-    return nil;
+- (UIViewController *)changePinFlowController {
+	return nil;
 }
 
 #pragma mark - Pop ups
 
--(NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController{
-    NoInternetConnectionPopUpViewController* controller = (NoInternetConnectionPopUpViewController*)[UIViewController controllerInStoryboard:@"NoInternetConnectionPopUp" withIdentifire:@"NoInternetConnectionPopUpViewController"];
-    return controller;
+- (NoInternetConnectionPopUpViewController *)createNoInternetConnectionPopUpViewController {
+	NoInternetConnectionPopUpViewController *controller = (NoInternetConnectionPopUpViewController *)[UIViewController controllerInStoryboard:@"NoInternetConnectionPopUp" withIdentifire:@"NoInternetConnectionPopUpViewController"];
+	return controller;
 }
 
--(PhotoLibraryPopUpViewController*)createPhotoLibraryPopUpViewController{
-    PhotoLibraryPopUpViewController* controller = (PhotoLibraryPopUpViewController*)[UIViewController controllerInStoryboard:@"PhotoLibraryPopUp" withIdentifire:@"PhotoLibraryPopUpViewController"];
-    return controller;
+- (PhotoLibraryPopUpViewController *)createPhotoLibraryPopUpViewController {
+	PhotoLibraryPopUpViewController *controller = (PhotoLibraryPopUpViewController *)[UIViewController controllerInStoryboard:@"PhotoLibraryPopUp" withIdentifire:@"PhotoLibraryPopUpViewController"];
+	return controller;
 }
 
-- (ErrorPopUpViewController *)createErrorPopUpViewController{
-    ErrorPopUpViewController* controller = (ErrorPopUpViewController*)[UIViewController controllerInStoryboard:@"ErrorPopUp" withIdentifire:@"ErrorPopUpViewController"];
-    return controller;
+- (ErrorPopUpViewController *)createErrorPopUpViewController {
+	ErrorPopUpViewController *controller = (ErrorPopUpViewController *)[UIViewController controllerInStoryboard:@"ErrorPopUp" withIdentifire:@"ErrorPopUpViewController"];
+	return controller;
 }
 
--(InformationPopUpViewController *)createInformationPopUpViewController{
-    InformationPopUpViewController* controller = (InformationPopUpViewController*)[UIViewController controllerInStoryboard:@"InformationPopUp" withIdentifire:@"InformationPopUpViewController"];
-    return controller;
+- (InformationPopUpViewController *)createInformationPopUpViewController {
+	InformationPopUpViewController *controller = (InformationPopUpViewController *)[UIViewController controllerInStoryboard:@"InformationPopUp" withIdentifire:@"InformationPopUpViewController"];
+	return controller;
 }
 
-- (ConfirmPopUpViewController *)createConfirmPopUpViewController{
-    ConfirmPopUpViewController* controller = (ConfirmPopUpViewController*)[UIViewController controllerInStoryboard:@"ConfirmPopUp" withIdentifire:@"ConfirmPopUpViewController"];
-    return controller;
+- (ConfirmPopUpViewController *)createConfirmPopUpViewController {
+	ConfirmPopUpViewController *controller = (ConfirmPopUpViewController *)[UIViewController controllerInStoryboard:@"ConfirmPopUp" withIdentifire:@"ConfirmPopUpViewController"];
+	return controller;
 }
 
-- (LoaderPopUpViewController *)createLoaderViewController{
-    LoaderPopUpViewController* controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUpViewController"];
-    return controller;
+- (LoaderPopUpViewController *)createLoaderViewController {
+	LoaderPopUpViewController *controller = (LoaderPopUpViewController *)[UIViewController controllerInStoryboard:@"LoaderPopUp" withIdentifire:@"LoaderPopUpViewController"];
+	return controller;
 }
 
 - (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController {
-    
-    RestoreContractsPopUpViewController* controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUpViewController"];
-    return controller;
+
+	RestoreContractsPopUpViewController *controller = (RestoreContractsPopUpViewController *)[UIViewController controllerInStoryboard:@"RestoreContractsPopUp" withIdentifire:@"RestoreContractsPopUpViewController"];
+	return controller;
 }
 
-- (SourceCodePopUpViewController *)createSourceCodePopUpViewController{
-    SourceCodePopUpViewController* controller = (SourceCodePopUpViewController *)[UIViewController controllerInStoryboard:@"SourceCodePopUp" withIdentifire:@"SourceCodePopUpViewController"];
-    return controller;
+- (SourceCodePopUpViewController *)createSourceCodePopUpViewController {
+	SourceCodePopUpViewController *controller = (SourceCodePopUpViewController *)[UIViewController controllerInStoryboard:@"SourceCodePopUp" withIdentifire:@"SourceCodePopUpViewController"];
+	return controller;
 }
 
-- (SecurityPopupViewController *)createSecurityPopupViewController{
-    SecurityPopupViewController* controller = (SecurityPopupViewController *)[UIViewController controllerInStoryboard:@"SecurityPopup" withIdentifire:@"SecurityPopupViewController"];
-    return controller;
+- (SecurityPopupViewController *)createSecurityPopupViewController {
+	SecurityPopupViewController *controller = (SecurityPopupViewController *)[UIViewController controllerInStoryboard:@"SecurityPopup" withIdentifire:@"SecurityPopupViewController"];
+	return controller;
 }
 
 - (AddressTransferPopupViewController *)createAddressTransferPopupViewController {
-    
-    AddressTransferPopupViewController* controller = (AddressTransferPopupViewController *)[UIViewController controllerInStoryboard:@"AddressTransferPopup" withIdentifire:@"AddressTransferPopupViewController"];
-    return controller;
+
+	AddressTransferPopupViewController *controller = (AddressTransferPopupViewController *)[UIViewController controllerInStoryboard:@"AddressTransferPopup" withIdentifire:@"AddressTransferPopupViewController"];
+	return controller;
 }
 
 
-- (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController{
-    ConfirmPurchasePopUpViewController* controller = (ConfirmPurchasePopUpViewController *)[UIViewController controllerInStoryboard:@"ConfirmPurchasePopUp" withIdentifire:@"ConfirmPurchasePopUpViewController"];
-    return controller;
+- (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController {
+	ConfirmPurchasePopUpViewController *controller = (ConfirmPurchasePopUpViewController *)[UIViewController controllerInStoryboard:@"ConfirmPurchasePopUp" withIdentifire:@"ConfirmPurchasePopUpViewController"];
+	return controller;
 }
 
 - (ShareTokenPopUpViewController *)createShareTokenPopUpViewController {
-    
-    ShareTokenPopUpViewController* controller = (ShareTokenPopUpViewController *)[UIViewController controllerInStoryboard:@"ShareTokenPopUp" withIdentifire:@"ShareTokenPopUpViewController"];
-    return controller;
-}
 
+	ShareTokenPopUpViewController *controller = (ShareTokenPopUpViewController *)[UIViewController controllerInStoryboard:@"ShareTokenPopUp" withIdentifire:@"ShareTokenPopUpViewController"];
+	return controller;
+}
 
 
 @end

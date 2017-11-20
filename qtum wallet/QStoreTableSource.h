@@ -13,15 +13,15 @@
 
 @protocol QStoreTableSourceDelegate <NSObject>
 
-- (void)didSelectCollectionCellWithElement:(QStoreContractElement *)element;
+- (void)didSelectCollectionCellWithElement:(QStoreContractElement *) element;
 
 @end
 
 @interface QStoreTableSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, weak) id<QStoreTableSourceDelegate> delegate;
+@property (nonatomic, weak) id <QStoreTableSourceDelegate> delegate;
 @property (nonatomic, weak) UITableView *tableView;
 
-- (void)setCategoriesArray:(NSArray<QStoreMainScreenCategory *> *)categories;
+- (void)setCategoriesArray:(NSArray<QStoreMainScreenCategory *> *) categories;
 
 @end

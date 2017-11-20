@@ -11,28 +11,28 @@
 
 @implementation QStoreCollectionViewSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.elements.count;
+- (NSInteger)collectionView:(UICollectionView *) collectionView numberOfItemsInSection:(NSInteger) section {
+	return self.elements.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    QStoreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QStoreCollectionViewCell" forIndexPath:indexPath];
-    
-    QStoreContractElement *element = [self.elements objectAtIndex:indexPath.row];
-    
-    cell.nameLabel.text = element.name;
-    cell.typeLabel.text = [element.typeString capitalizedString];
-    cell.amountLabel.text = element.priceString;
-    cell.currencyLabel.text = NSLocalizedString(@"QTUM", nil);
-    cell.iconImageView.image = [UIImage imageNamed:[element getImageNameByType]];
-    
-    return cell;
+- (UICollectionViewCell *)collectionView:(UICollectionView *) collectionView cellForItemAtIndexPath:(NSIndexPath *) indexPath {
+	QStoreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QStoreCollectionViewCell" forIndexPath:indexPath];
+
+	QStoreContractElement *element = [self.elements objectAtIndex:indexPath.row];
+
+	cell.nameLabel.text = element.name;
+	cell.typeLabel.text = [element.typeString capitalizedString];
+	cell.amountLabel.text = element.priceString;
+	cell.currencyLabel.text = NSLocalizedString(@"QTUM", nil);
+	cell.iconImageView.image = [UIImage imageNamed:[element getImageNameByType]];
+
+	return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.delegate respondsToSelector:@selector(didSelectCollectionCellWithElement:)]) {
-        [self.delegate didSelectCollectionCellWithElement:[self.elements objectAtIndex:indexPath.row]];
-    }
+- (void)collectionView:(UICollectionView *) collectionView didSelectItemAtIndexPath:(NSIndexPath *) indexPath {
+	if ([self.delegate respondsToSelector:@selector (didSelectCollectionCellWithElement:)]) {
+		[self.delegate didSelectCollectionCellWithElement:[self.elements objectAtIndex:indexPath.row]];
+	}
 }
 
 @end

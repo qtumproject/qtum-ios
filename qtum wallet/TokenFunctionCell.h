@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "AbiinterfaceItem.h"
 
-static NSString* tokenFunctionCellIdentifire = @"tokenFunctionCellIdentifire";
+static NSString *tokenFunctionCellIdentifire = @"tokenFunctionCellIdentifire";
 
 @interface TokenFunctionCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *disclousere;
 @property (weak, nonatomic) IBOutlet UILabel *functionName;
 
--(void)setupWithObject:(id)object;
+- (void)setupWithObject:(id) object;
 
 @end

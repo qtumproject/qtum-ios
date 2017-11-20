@@ -10,7 +10,8 @@
 
 @protocol ChooseReciveAddressOutputDelegate <NSObject>
 
--(void)didChooseAddress:(NSString*) address;
--(void)didBackPressed;
+- (void)didChooseAddress:(NSString *) address;
+
+- (void)didBackPressed;
 
 @end

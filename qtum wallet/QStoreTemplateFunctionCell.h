@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString* qstoreTemplateFunctionCellFunctionIdentifire = @"QStoreTemplateFunctionCellFunctionIdentifire";
-static NSString* qstoreTemplateFunctionCellPropertyIdentifire = @"QStoreTemplateFunctionCellPropertyIdentifire";
+static NSString *qstoreTemplateFunctionCellFunctionIdentifire = @"QStoreTemplateFunctionCellFunctionIdentifire";
+static NSString *qstoreTemplateFunctionCellPropertyIdentifire = @"QStoreTemplateFunctionCellPropertyIdentifire";
 
 @interface QStoreTemplateFunctionCell : UITableViewCell
 

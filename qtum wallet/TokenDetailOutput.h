@@ -14,10 +14,10 @@
 
 @protocol TokenDetailOutput <NSObject, Presentable>
 
-@property (nonatomic, weak) id<TokenDetailOutputDelegate> delegate;
-@property (nonatomic, strong) Contract* token;
+@property (nonatomic, weak) id <TokenDetailOutputDelegate> delegate;
+@property (nonatomic, strong) Contract *token;
 @property (nonatomic, weak) id <TokenDetailDataDisplayManager> source;
 
--(void)updateControls;
+- (void)updateControls;
 
 @end

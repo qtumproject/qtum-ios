@@ -14,10 +14,12 @@
 
 @interface ProfileViewController : BaseViewController <ProfileOutput, UITableViewDelegate, UITableViewDataSource, Presentable>
 
-@property (nonatomic, weak) id<ProfileOutputDelegate> delegate;
+@property (nonatomic, weak) id <ProfileOutputDelegate> delegate;
 
--(UIView *)getFooterView;
--(UIView *)getHighlightedView;
--(void)configurateCell:(ProfileTableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath;
+- (UIView *)getFooterView;
+
+- (UIView *)getHighlightedView;
+
+- (void)configurateCell:(ProfileTableViewCell *) cell atIndexPath:(NSIndexPath *) indexPath;
 
 @end

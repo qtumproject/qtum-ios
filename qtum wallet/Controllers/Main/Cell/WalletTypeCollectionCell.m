@@ -17,23 +17,23 @@
 
 @implementation WalletTypeCollectionCell
 
--(void)prepareForReuse {
-    
-    //[self.animationLayer startAnimating];
+- (void)prepareForReuse {
+
+	//[self.animationLayer startAnimating];
 }
 
 #pragma mark - Public Methods
 
--(void)configWithObject:(id <Spendable>) object{
-    self.adressLabel.text = ([object isKindOfClass:[Token class]]) ? NSLocalizedString(@"Contract Address", "") : NSLocalizedString(@"QTUM Address", "");
-    self.adressValueLabel.text = object.mainAddress;
-    self.valueLabel.text = [NSString stringWithFormat:@"%f",object.balance];
-    self.typeWalletLabel.text = object.symbol;
-    self.unconfirmedValue.text = [NSString stringWithFormat:@"%f",object.unconfirmedBalance];
+- (void)configWithObject:(id <Spendable>) object {
+	self.adressLabel.text = ([object isKindOfClass:[Token class]]) ? NSLocalizedString(@"Contract Address", "") : NSLocalizedString(@"QTUM Address", "");
+	self.adressValueLabel.text = object.mainAddress;
+	self.valueLabel.text = [NSString stringWithFormat:@"%f", object.balance];
+	self.typeWalletLabel.text = object.symbol;
+	self.unconfirmedValue.text = [NSString stringWithFormat:@"%f", object.unconfirmedBalance];
 }
 
-- (IBAction)actionShowAddressInfo:(id)sender {
-    [self.delegate showAddressInfo];
+- (IBAction)actionShowAddressInfo:(id) sender {
+	[self.delegate showAddressInfo];
 }
 
 @end

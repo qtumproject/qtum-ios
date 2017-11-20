@@ -14,9 +14,9 @@
 
 @implementation AddressControlListViewControllerLight
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 55;
+- (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
+
+	return 55;
 }
 
 

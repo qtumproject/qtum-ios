@@ -12,14 +12,15 @@
 
 @protocol TabbarOutput <NSObject>
 
-@property (weak,nonatomic) id <TabbarOutputDelegate> outputDelegate;
-@property (assign,nonatomic) BOOL isReload;
+@property (weak, nonatomic) id <TabbarOutputDelegate> outputDelegate;
+@property (assign, nonatomic) BOOL isReload;
 
--(void)selectSendController;
--(void)setControllerForNews:(UIViewController*)newsController
-                    forSend:(UIViewController*)sendController
-                  forWallet:(UIViewController*)walletController
-                 forProfile:(UIViewController*)profileController;
+- (void)selectSendController;
+
+- (void)setControllerForNews:(UIViewController *) newsController
+					 forSend:(UIViewController *) sendController
+				   forWallet:(UIViewController *) walletController
+				  forProfile:(UIViewController *) profileController;
 
 
 @end

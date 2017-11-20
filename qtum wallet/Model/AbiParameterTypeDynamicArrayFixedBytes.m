@@ -9,13 +9,13 @@
 @implementation AbiParameterTypeDynamicArrayFixedBytes
 
 - (instancetype)initWithSizeOfElements:(NSUInteger) elementSize {
-    
-    self = [super init];
-    if (self) {
-        
-        _elementSize = elementSize;
-    }
-    return self;
+
+	self = [super init];
+	if (self) {
+
+		_elementSize = elementSize;
+	}
+	return self;
 }
 
 @end

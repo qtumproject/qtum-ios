@@ -13,8 +13,8 @@
 
 @protocol ContractFunctionsOutput <Presentable>
 
-@property (strong,nonatomic) InterfaceInputFormModel* formModel;
-@property (weak,nonatomic) id <ContractFunctionsOutputDelegate> delegate;
-@property (weak,nonatomic) Contract* token;
+@property (strong, nonatomic) InterfaceInputFormModel *formModel;
+@property (weak, nonatomic) id <ContractFunctionsOutputDelegate> delegate;
+@property (weak, nonatomic) Contract *token;
 
 @end

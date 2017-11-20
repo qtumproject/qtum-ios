@@ -8,8 +8,8 @@
 
 #import "ChoiseSmartContractCell.h"
 
-static NSString* choiseSmartContractLightCellIdentifire = @"SmartContractMenuItemIdentifire";
-static NSString* choiseSmartContractLightHightCellIdentifire = @"SmartContractMenuItemHightIdentifire";
+static NSString *choiseSmartContractLightCellIdentifire = @"SmartContractMenuItemIdentifire";
+static NSString *choiseSmartContractLightHightCellIdentifire = @"SmartContractMenuItemHightIdentifire";
 
 @interface ChoiseSmartContractCellLight : ChoiseSmartContractCell
 

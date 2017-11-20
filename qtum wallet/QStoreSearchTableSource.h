@@ -12,15 +12,16 @@
 
 @protocol QStoreSearchTableSourceDelegate <NSObject>
 
-- (void)didSelectSearchCellWithElement:(QStoreContractElement *)element;
+- (void)didSelectSearchCellWithElement:(QStoreContractElement *) element;
+
 - (void)loadMoreElements;
 
 @end
 
 @interface QStoreSearchTableSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, weak) id<QStoreSearchTableSourceDelegate> delegate;
+@property (nonatomic, weak) id <QStoreSearchTableSourceDelegate> delegate;
 
-- (void)setSearchElements:(NSArray<QStoreContractElement *> *)elements;
+- (void)setSearchElements:(NSArray<QStoreContractElement *> *) elements;
 
 @end

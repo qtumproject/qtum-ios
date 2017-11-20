@@ -11,18 +11,18 @@
 @implementation TokenFunctionCellLight
 
 - (void)awakeFromNib {
-    
-    [super awakeFromNib];
-    self.disclousere.tintColor = lightBlackColor();
-    
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = lightBlueColor();
-    [self setSelectedBackgroundView:bgColorView];
+
+	[super awakeFromNib];
+	self.disclousere.tintColor = lightBlackColor ();
+
+	UIView *bgColorView = [[UIView alloc] init];
+	bgColorView.backgroundColor = lightBlueColor ();
+	[self setSelectedBackgroundView:bgColorView];
 }
 
--(void)setupWithObject:(AbiinterfaceItem*)object {
-    
-    self.functionName.text = object.name;
+- (void)setupWithObject:(AbiinterfaceItem *) object {
+
+	self.functionName.text = object.name;
 }
 
 

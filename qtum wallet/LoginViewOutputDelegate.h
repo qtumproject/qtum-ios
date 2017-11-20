@@ -10,7 +10,8 @@
 
 @protocol LoginViewOutputDelegate <NSObject>
 
--(void)passwordDidEntered:(NSString*)password;
--(void)confirmPasswordDidCanceled;
+- (void)passwordDidEntered:(NSString *) password;
+
+- (void)confirmPasswordDidCanceled;
 
 @end

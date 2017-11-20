@@ -10,7 +10,7 @@
 #import "AbiinterfaceItem.h"
 
 
-static NSString* tokenPropertyCelldentifire = @"tokenPropertyCelldentifire";
+static NSString *tokenPropertyCelldentifire = @"tokenPropertyCelldentifire";
 
 @interface TokenPropertyCell : UITableViewCell
 
@@ -18,6 +18,6 @@ static NSString* tokenPropertyCelldentifire = @"tokenPropertyCelldentifire";
 @property (weak, nonatomic) IBOutlet UILabel *propertyValue;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
--(void)setupWithObject:(AbiinterfaceItem*)object andToken:(Contract*) token;
+- (void)setupWithObject:(AbiinterfaceItem *) object andToken:(Contract *) token;
 
 @end

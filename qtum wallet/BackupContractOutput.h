@@ -12,6 +12,6 @@
 
 @protocol BackupContractOutput <Presentable>
 
-@property (weak,nonatomic) id <BackupContractOutputDelegate> delegate;
+@property (weak, nonatomic) id <BackupContractOutputDelegate> delegate;
 
 @end

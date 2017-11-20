@@ -12,7 +12,8 @@
 
 @interface QStoreContractDownloadManager : NSObject
 
-- (instancetype)initWithDataProvider:(QStoreDataProvider*) dataProvider;
-- (void)downloadContractWithRequest:(QStoreBuyRequest*) request completion:(void(^)(BOOL success,QStoreBuyRequest *request)) completion;
+- (instancetype)initWithDataProvider:(QStoreDataProvider *) dataProvider;
+
+- (void)downloadContractWithRequest:(QStoreBuyRequest *) request completion:(void (^)(BOOL success, QStoreBuyRequest *request)) completion;
 
 @end

@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, SendInfoItemType) {
-    SendInfoItemTypeQtum,
-    SendInfoItemTypeToken,
-    SendInfoItemTypeInvalid
+	SendInfoItemTypeQtum,
+	SendInfoItemTypeToken,
+	SendInfoItemTypeInvalid
 };
 
 @interface SendInfoItem : NSObject
@@ -26,20 +26,21 @@ typedef NS_ENUM(NSInteger, SendInfoItemType) {
 @property (nonatomic, readonly) BTCKey *fromQtumAddressKey;
 @property (nonatomic, readonly) SendInfoItemType type;
 
-- (instancetype)initWithString:(NSString *)string;
-- (instancetype)initWithQtumAddress:(NSString *)qtumAddress
-                       tokenAddress:(NSString *)tokenAddress
-                       amountString:(NSString *)amountString;
+- (instancetype)initWithString:(NSString *) string;
 
-- (instancetype)initWithQtumAddress:(NSString *)qtumAddress
-                       tokenAddress:(NSString *)tokenAddress
-                       amountString:(NSString *)amountString
-                    fromQtumAddress:(NSString *)fromAddress;
+- (instancetype)initWithQtumAddress:(NSString *) qtumAddress
+					   tokenAddress:(NSString *) tokenAddress
+					   amountString:(NSString *) amountString;
 
-- (instancetype)initWithQtumAddressKey:(BTCKey *)qtumAddressKey
-                          tokenAddress:(NSString *)tokenAddress
-                          amountString:(NSString *)amountString
-                    fromQtumAddressKey:(BTCKey *)fromAddressKey;
+- (instancetype)initWithQtumAddress:(NSString *) qtumAddress
+					   tokenAddress:(NSString *) tokenAddress
+					   amountString:(NSString *) amountString
+					fromQtumAddress:(NSString *) fromAddress;
+
+- (instancetype)initWithQtumAddressKey:(BTCKey *) qtumAddressKey
+						  tokenAddress:(NSString *) tokenAddress
+						  amountString:(NSString *) amountString
+					fromQtumAddressKey:(BTCKey *) fromAddressKey;
 
 - (NSString *)stringByItem;
 

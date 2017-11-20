@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString* FinishInputCellIdentifire = @"FinishInputCellIdentifire";
+static NSString *FinishInputCellIdentifire = @"FinishInputCellIdentifire";
 
 @interface FinishInputCell : UITableViewCell
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString* choseTokenPaymentCellIdentifire = @"ChoseTokenPaymentCellIdentifire";
+static NSString *choseTokenPaymentCellIdentifire = @"ChoseTokenPaymentCellIdentifire";
 
 @interface ChoseTokenPaymentCell : UITableViewCell
 

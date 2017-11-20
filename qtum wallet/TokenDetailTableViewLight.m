@@ -10,9 +10,9 @@
 
 @implementation TokenDetailTableViewLight
 
--(void)layoutSubviews {
-    
-    [super layoutSubviews];
+- (void)layoutSubviews {
+
+	[super layoutSubviews];
 }
 
 @end

@@ -19,53 +19,53 @@
 @synthesize addresses, delegate, prevAddress;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 }
 
 #pragma mark - Actions
 
-- (IBAction)didPressBackAction:(id)sender {
-    
-    [self.delegate didBackPressed];
+- (IBAction)didPressBackAction:(id) sender {
+
+	[self.delegate didBackPressed];
 }
 
--(void)reloadData {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+- (void)reloadData {
+
+	dispatch_async (dispatch_get_main_queue (), ^{
+		[self.tableView reloadData];
+	});
 }
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 46;
+- (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
+
+	return 46;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self.delegate didChooseAddress:self.addresses[indexPath.row]];
+- (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
+
+	[self.delegate didChooseAddress:self.addresses[indexPath.row]];
 }
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.addresses.count;
+- (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
+
+	return self.addresses.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    ChooseAddressReciveCell *cell = [tableView dequeueReusableCellWithIdentifier:chooseAddressReciveCellIdentifire];
+- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
 
-    cell.addressLabel.text = self.addresses[indexPath.row];
-    
-    if ([self.addresses[indexPath.row] isEqualToString:self.prevAddress]) {
-        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-    }
-    
-    return cell;
+	ChooseAddressReciveCell *cell = [tableView dequeueReusableCellWithIdentifier:chooseAddressReciveCellIdentifire];
+
+	cell.addressLabel.text = self.addresses[indexPath.row];
+
+	if ([self.addresses[indexPath.row] isEqualToString:self.prevAddress]) {
+		[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+	}
+
+	return cell;
 }
 
 @end

@@ -12,6 +12,6 @@
 
 @protocol FirstAuthOutput <Presentable>
 
-@property (weak,nonatomic)id <FirstAuthOutputDelegate> delegate;
+@property (weak, nonatomic) id <FirstAuthOutputDelegate> delegate;
 
 @end

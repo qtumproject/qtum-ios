@@ -11,11 +11,11 @@
 @implementation LanguageTableViewCellDark
 
 - (UIColor *)getDeselectedColor {
-    return customBlueColor();
+	return customBlueColor ();
 }
 
 - (UIColor *)getSelectedColor {
-    return customBlackColor();
+	return customBlackColor ();
 }
 
 @end

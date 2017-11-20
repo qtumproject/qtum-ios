@@ -10,7 +10,7 @@
 
 @interface InputTextView : UITextView
 
--(void)setEditingMode:(BOOL) editing;
+- (void)setEditingMode:(BOOL) editing;
 
 
 @end

@@ -10,6 +10,6 @@
 
 @protocol Cancelable <NSObject>
 
--(void)cancel;
+- (void)cancel;
 
 @end

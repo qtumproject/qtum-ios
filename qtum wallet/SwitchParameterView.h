@@ -10,15 +10,15 @@
 
 @protocol SwitchParameterViewDelegate <NSObject>
 
-- (void)switchValueChanged:(BOOL)value;
+- (void)switchValueChanged:(BOOL) value;
 
 @end
 
 @interface SwitchParameterView : UIView
 
-@property (weak, nonatomic) id<SwitchParameterViewDelegate> delegate;
+@property (weak, nonatomic) id <SwitchParameterViewDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-- (void)changeSwitchValue:(BOOL)value;
+- (void)changeSwitchValue:(BOOL) value;
 
 @end

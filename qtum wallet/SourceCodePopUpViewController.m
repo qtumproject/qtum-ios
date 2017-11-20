@@ -18,32 +18,32 @@
 @implementation SourceCodePopUpViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self setupTextView];
-    [self setupForContent];
+	[super viewDidLoad];
+
+	[self setupTextView];
+	[self setupForContent];
 }
 
 - (void)setupTextView {
 }
 
-- (IBAction)actionCancel:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(cancelButtonPressed:)]) {
-        [self.delegate cancelButtonPressed:self];
-    }
+- (IBAction)actionCancel:(id) sender {
+	if ([self.delegate respondsToSelector:@selector (cancelButtonPressed:)]) {
+		[self.delegate cancelButtonPressed:self];
+	}
 }
 
-- (IBAction)actionCopy:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(okButtonPressed:)]) {
-        [self.delegate okButtonPressed:self];
-    }
+- (IBAction)actionCopy:(id) sender {
+	if ([self.delegate respondsToSelector:@selector (okButtonPressed:)]) {
+		[self.delegate okButtonPressed:self];
+	}
 }
 
 - (void)setupForContent {
-    PopUpContent *content = [self content];
-    [self.okButton setTitle:content.okButtonTitle forState:UIControlStateNormal];
-    [self.titleLabel setText:content.titleString];
-    [self.textView setText:content.messageString];
+	PopUpContent *content = [self content];
+	[self.okButton setTitle:content.okButtonTitle forState:UIControlStateNormal];
+	[self.titleLabel setText:content.titleString];
+	[self.textView setText:content.messageString];
 }
 
 @end

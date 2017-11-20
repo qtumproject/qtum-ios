@@ -16,10 +16,11 @@
 
 @interface WatchContractViewController : BaseViewController <ScrollableContentViewController, PopUpWithTwoButtonsViewControllerDelegate, WatchContractOutput, Presentable>
 
-@property (assign,nonatomic) UIEdgeInsets originInsets;
+@property (assign, nonatomic) UIEdgeInsets originInsets;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-- (void)okButtonPressed:(PopUpViewController *)sender;
-- (void)cancelButtonPressed:(PopUpViewController *)sender;
+- (void)okButtonPressed:(PopUpViewController *) sender;
+
+- (void)cancelButtonPressed:(PopUpViewController *) sender;
 
 @end

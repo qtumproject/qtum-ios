@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const QTUMTitleTagCellLightReuseIdentifire;
+extern NSString *const QTUMTitleTagCellLightReuseIdentifire;
 
 @interface QTUMTitleTagCell : UITableViewCell
 

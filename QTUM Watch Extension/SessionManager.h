@@ -14,15 +14,17 @@
 @protocol SessionManagerDelegate <NSObject>
 
 @optional
-- (void)didReceiveInfo:(nullable NSDictionary*) userInfo;
-- (void)activationDidCompleteWithState:(WCSessionActivationState)activationState;
+- (void)didReceiveInfo:(nullable NSDictionary *) userInfo;
+
+- (void)activationDidCompleteWithState:(WCSessionActivationState) activationState;
 
 @end
 
 @protocol SessionManagerMessageSender <NSObject>
 
-- (void)sendGetQRCodeForSize:(NSInteger)width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler;
-- (void)getInformationForWalletScreenWithSize:(NSInteger)width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> * _Nonnull replyMessage))replyHandler errorHandler:(nullable void (^)(NSError * _Nonnull error))errorHandler;
+- (void)sendGetQRCodeForSize:(NSInteger) width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> *_Nonnull replyMessage)) replyHandler errorHandler:(nullable void (^)(NSError *_Nonnull error)) errorHandler;
+
+- (void)getInformationForWalletScreenWithSize:(NSInteger) width replyHandler:(nullable void (^)(NSDictionary<NSString *, id> *_Nonnull replyMessage)) replyHandler errorHandler:(nullable void (^)(NSError *_Nonnull error)) errorHandler;
 
 @end
 
@@ -30,7 +32,7 @@
 
 @property (nonatomic, weak, nullable) id <SessionManagerDelegate> delegate;
 
--(void)activate;
+- (void)activate;
 
 @end
 

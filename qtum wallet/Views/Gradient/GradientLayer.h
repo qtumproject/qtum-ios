@@ -10,6 +10,6 @@
 
 @interface GradientLayer : CALayer
 
-- (instancetype)initWithCenter:(CGPoint) center andSize:(CGSize)size;
+- (instancetype)initWithCenter:(CGPoint) center andSize:(CGSize) size;
 
 @end

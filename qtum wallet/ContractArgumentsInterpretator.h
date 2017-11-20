@@ -11,8 +11,10 @@
 
 @interface ContractArgumentsInterpretator : NSObject
 
-- (NSData*)contactArgumentsFromDictionary:(NSDictionary*) dict;
-- (NSData*)contactArgumentsFromArrayOfValues:(NSArray*) values andArrayOfTypes:(NSArray*) types;
-- (NSArray*)аrrayFromContractArguments:(NSData*) data andInterface:(AbiinterfaceItem*) interface;
+- (NSData *)contactArgumentsFromDictionary:(NSDictionary *) dict;
+
+- (NSData *)contactArgumentsFromArrayOfValues:(NSArray *) values andArrayOfTypes:(NSArray *) types;
+
+- (NSArray *)аrrayFromContractArguments:(NSData *) data andInterface:(AbiinterfaceItem *) interface;
 
 @end

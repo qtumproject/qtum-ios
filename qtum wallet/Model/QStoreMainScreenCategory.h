@@ -15,8 +15,8 @@
 
 @property (nonatomic, readonly) NSString *urlPath;
 
-- (instancetype)initWithIdentifier:(NSString *)identifier
-                              name:(NSString *)name
-                           urlPath:(NSString *)urlPath;
+- (instancetype)initWithIdentifier:(NSString *) identifier
+							  name:(NSString *) name
+						   urlPath:(NSString *) urlPath;
 
 @end

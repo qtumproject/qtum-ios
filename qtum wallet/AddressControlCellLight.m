@@ -11,11 +11,11 @@
 @implementation AddressControlCellLight
 
 - (void)awakeFromNib {
-    
-    [super awakeFromNib];
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = lightBlueColor();
-    [self setSelectedBackgroundView:bgColorView];
+
+	[super awakeFromNib];
+	UIView *bgColorView = [[UIView alloc] init];
+	bgColorView.backgroundColor = lightBlueColor ();
+	[self setSelectedBackgroundView:bgColorView];
 }
 
 

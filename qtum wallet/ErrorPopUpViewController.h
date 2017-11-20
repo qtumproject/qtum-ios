@@ -10,7 +10,7 @@
 
 @interface ErrorPopUpViewController : PopUpViewController
 
-@property (nonatomic, weak) id<PopUpWithTwoButtonsViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <PopUpWithTwoButtonsViewControllerDelegate> delegate;
 
 - (void)setOnlyCancelButton;
 

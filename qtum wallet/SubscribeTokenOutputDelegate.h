@@ -10,7 +10,8 @@
 
 @protocol SubscribeTokenOutputDelegate <NSObject>
 
--(void)didBackButtonPressed;
--(void)didSelectContract:(Contract*) contract;
+- (void)didBackButtonPressed;
+
+- (void)didSelectContract:(Contract *) contract;
 
 @end

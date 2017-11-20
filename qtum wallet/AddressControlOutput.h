@@ -14,8 +14,8 @@
 @protocol AddressControlOutput <Presentable>
 
 @property (weak, nonatomic) id <AddressControlOutputDelegate> delegate;
-@property (copy, nonatomic) NSArray <WalletBalancesObject*>* arrayWithAddressesAndBalances;
+@property (copy, nonatomic) NSArray <WalletBalancesObject *> *arrayWithAddressesAndBalances;
 
--(void)reloadData;
+- (void)reloadData;
 
 @end

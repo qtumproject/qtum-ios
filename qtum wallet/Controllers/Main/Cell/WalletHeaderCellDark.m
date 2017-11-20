@@ -10,7 +10,7 @@
 
 CGFloat const WalletHeaderCellDarkHeaderHeight = 50.0f;
 
-@interface WalletHeaderCellDark()
+@interface WalletHeaderCellDark ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTextTopConstraint;
@@ -26,74 +26,74 @@ CGFloat const WalletHeaderCellDarkHeaderHeight = 50.0f;
 
 @implementation WalletHeaderCellDark
 
-- (void)setData:(id<Spendable>)wallet {
-    
-    [super setData:wallet];
-    
-    self.valueLabel.text = [NSString stringWithFormat:@"%@ %@", self.valueLabel.text, NSLocalizedString(@"QTUM", nil)];
-    self.unconfirmedValue.text = [NSString stringWithFormat:@"%@ %@", self.unconfirmedValue.text, NSLocalizedString(@"QTUM", nil)];
+- (void)setData:(id <Spendable>) wallet {
+
+	[super setData:wallet];
+
+	self.valueLabel.text = [NSString stringWithFormat:@"%@ %@", self.valueLabel.text, NSLocalizedString(@"QTUM", nil)];
+	self.unconfirmedValue.text = [NSString stringWithFormat:@"%@ %@", self.unconfirmedValue.text, NSLocalizedString(@"QTUM", nil)];
 }
 
 #pragma mark - Animation
 
-- (void)cellYPositionChanged:(CGFloat)yPosition{
-    CGFloat maxYPosition = self.separatorView.frame.origin.y - WalletHeaderCellDarkHeaderHeight;
-    
-    // formats
-    // minTop, maxTop, minFont, maxFont
-    // top, center
-    NSArray *value1;
-    NSArray *value2;
-    if (self.type == HeaderCellTypeAllVisible || self.type == HeaderCellTypeWithoutPageControl) {
-        value1 = @[@(20), @(maxYPosition + 8.0f), @(14), @(28), @(1.0f), @(1.0f)];
-        value2 = @[@(56), @(maxYPosition + 10), @(11), @(12), @(1.0f), @(1.0f)];
-    }else{
-        value1 = @[@(20), @(maxYPosition + 15.0f), @(14), @(28), @(1.0f), @(1.0f)];
-        value2 = @[@(56), @(maxYPosition + 17.0f), @(11), @(12), @(1.0f), @(1.0f)];
-    }
-    NSArray *constraints1 = @[self.availableTopConstraint, self.availableCenterConstraint];
-    NSArray *constraints2 = @[self.availableTextTopConstraint, self.availableTextCenterConstraint];
-    NSArray *value3 = @[@(86), @(maxYPosition + 25.0f), @(14), @(16), @(1.0f), @(0.6f)];
-    NSArray *constraints3 = @[self.uncorfirmedTopConstraint, self.unconfirmedCenterConsctraint];
-    NSArray *value4 = @[@(107), @(maxYPosition + 28.0f), @(11), @(12), @(1.0f), @(0.6f)];
-    NSArray *constraints4 = @[self.uncorfirmedTextTopConstraint, self.unconfirmedTextCenterConstraint];
-    
-    CGFloat percentOfPosition = yPosition / - maxYPosition;
-    [self changePositionForLabel:self.valueLabel andPercent:percentOfPosition values:value1 constraints:constraints1 isLeft:NO];
-    [self changePositionForLabel:self.availableTitleLabel andPercent:percentOfPosition values:value2 constraints:constraints2 isLeft:YES];
-    [self changePositionForLabel:self.unconfirmedValue andPercent:percentOfPosition values:value3 constraints:constraints3 isLeft:NO];
-    [self changePositionForLabel:self.notConfirmedTitleLabel andPercent:percentOfPosition values:value4 constraints:constraints4 isLeft:YES];
-    
-    [self changeAlphaByPercent:percentOfPosition];
+- (void)cellYPositionChanged:(CGFloat) yPosition {
+	CGFloat maxYPosition = self.separatorView.frame.origin.y - WalletHeaderCellDarkHeaderHeight;
+
+	// formats
+	// minTop, maxTop, minFont, maxFont
+	// top, center
+	NSArray *value1;
+	NSArray *value2;
+	if (self.type == HeaderCellTypeAllVisible || self.type == HeaderCellTypeWithoutPageControl) {
+		value1 = @[@(20), @(maxYPosition + 8.0f), @(14), @(28), @(1.0f), @(1.0f)];
+		value2 = @[@(56), @(maxYPosition + 10), @(11), @(12), @(1.0f), @(1.0f)];
+	} else {
+		value1 = @[@(20), @(maxYPosition + 15.0f), @(14), @(28), @(1.0f), @(1.0f)];
+		value2 = @[@(56), @(maxYPosition + 17.0f), @(11), @(12), @(1.0f), @(1.0f)];
+	}
+	NSArray *constraints1 = @[self.availableTopConstraint, self.availableCenterConstraint];
+	NSArray *constraints2 = @[self.availableTextTopConstraint, self.availableTextCenterConstraint];
+	NSArray *value3 = @[@(86), @(maxYPosition + 25.0f), @(14), @(16), @(1.0f), @(0.6f)];
+	NSArray *constraints3 = @[self.uncorfirmedTopConstraint, self.unconfirmedCenterConsctraint];
+	NSArray *value4 = @[@(107), @(maxYPosition + 28.0f), @(11), @(12), @(1.0f), @(0.6f)];
+	NSArray *constraints4 = @[self.uncorfirmedTextTopConstraint, self.unconfirmedTextCenterConstraint];
+
+	CGFloat percentOfPosition = yPosition / -maxYPosition;
+	[self changePositionForLabel:self.valueLabel andPercent:percentOfPosition values:value1 constraints:constraints1 isLeft:NO];
+	[self changePositionForLabel:self.availableTitleLabel andPercent:percentOfPosition values:value2 constraints:constraints2 isLeft:YES];
+	[self changePositionForLabel:self.unconfirmedValue andPercent:percentOfPosition values:value3 constraints:constraints3 isLeft:NO];
+	[self changePositionForLabel:self.notConfirmedTitleLabel andPercent:percentOfPosition values:value4 constraints:constraints4 isLeft:YES];
+
+	[self changeAlphaByPercent:percentOfPosition];
 }
 
-- (void)changeAlphaByPercent:(CGFloat)percent{
-    CGFloat minAlphaForPage = 0.0f;
-    CGFloat maxAlphaForPage = 1.0f;
-    
-    self.pageControl.alpha = maxAlphaForPage - (maxAlphaForPage - minAlphaForPage) * percent;
+- (void)changeAlphaByPercent:(CGFloat) percent {
+	CGFloat minAlphaForPage = 0.0f;
+	CGFloat maxAlphaForPage = 1.0f;
+
+	self.pageControl.alpha = maxAlphaForPage - (maxAlphaForPage - minAlphaForPage) * percent;
 }
 
-- (BOOL)needShowHeader:(CGFloat)yPosition{
-    CGFloat maxYPosition = self.separatorView.frame.origin.y - WalletHeaderCellDarkHeaderHeight;
-    CGFloat percentOfPosition = yPosition / - maxYPosition;
-    
-    return percentOfPosition >= 1;
+- (BOOL)needShowHeader:(CGFloat) yPosition {
+	CGFloat maxYPosition = self.separatorView.frame.origin.y - WalletHeaderCellDarkHeaderHeight;
+	CGFloat percentOfPosition = yPosition / -maxYPosition;
+
+	return percentOfPosition >= 1;
 }
 
-- (CGFloat)getHeaderHeight{
-    return WalletHeaderCellDarkHeaderHeight;
+- (CGFloat)getHeaderHeight {
+	return WalletHeaderCellDarkHeaderHeight;
 }
 
-- (CGFloat)calculateOffsetAfterScroll:(CGFloat)position {
-    
-    CGFloat maxYPosition = self.frame.size.height - WalletHeaderCellDarkHeaderHeight;
-    CGFloat percentOfPosition = position / maxYPosition;
-    if (percentOfPosition == 0.0f || percentOfPosition >= 1.0f) {
-        return 0.0f;
-    }
-    NSLog(@"%f %f %f", position, percentOfPosition, (percentOfPosition > 0.5f) ? - (maxYPosition - position) : position);
-    return (percentOfPosition > 0.5f) ? - (maxYPosition - position) : position;
+- (CGFloat)calculateOffsetAfterScroll:(CGFloat) position {
+
+	CGFloat maxYPosition = self.frame.size.height - WalletHeaderCellDarkHeaderHeight;
+	CGFloat percentOfPosition = position / maxYPosition;
+	if (percentOfPosition == 0.0f || percentOfPosition >= 1.0f) {
+		return 0.0f;
+	}
+	NSLog (@"%f %f %f", position, percentOfPosition, (percentOfPosition > 0.5f) ? -(maxYPosition - position) : position);
+	return (percentOfPosition > 0.5f) ? -(maxYPosition - position) : position;
 }
 
 @end

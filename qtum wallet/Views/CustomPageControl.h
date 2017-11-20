@@ -10,7 +10,7 @@
 
 @interface CustomPageControl : UIPageControl
 
-@property(nonatomic, strong) UIImage* activeImage;
-@property(nonatomic, strong) UIImage* inactiveImage;
+@property (nonatomic, strong) UIImage *activeImage;
+@property (nonatomic, strong) UIImage *inactiveImage;
 
 @end

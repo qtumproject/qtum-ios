@@ -13,14 +13,14 @@ NSString const *keyIn = @"org.qtum.input.extension";
 
 @implementation BTCTransactionInput (Extension)
 
-- (void)setRunTimeAddress:(NSString *)runTimeAddress {
-    
-    objc_setAssociatedObject(self, &keyIn, runTimeAddress, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setRunTimeAddress:(NSString *) runTimeAddress {
+
+	objc_setAssociatedObject (self, &keyIn, runTimeAddress, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSString *)runTimeAddress {
-    
-    return objc_getAssociatedObject(self, &keyIn);
+
+	return objc_getAssociatedObject (self, &keyIn);
 }
 
 @end

@@ -10,8 +10,10 @@
 
 @protocol FirstAuthOutputDelegate <NSObject>
 
--(void)didLoginPressed;
--(void)didRestoreButtonPressed;
--(void)didCreateNewButtonPressed;
+- (void)didLoginPressed;
+
+- (void)didRestoreButtonPressed;
+
+- (void)didCreateNewButtonPressed;
 
 @end

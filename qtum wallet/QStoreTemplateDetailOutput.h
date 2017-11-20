@@ -15,6 +15,6 @@
 @protocol QStoreTemplateDetailOutput <Presentable>
 
 @property (weak, nonatomic) id <QStoreTemplateDetailOutputDelegate> delegate;
-@property (strong,nonatomic) InterfaceInputFormModel* formModel;
+@property (strong, nonatomic) InterfaceInputFormModel *formModel;
 
 @end
