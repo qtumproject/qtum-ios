@@ -8,9 +8,6 @@
 
 #import "TokenFunctionDetailViewController.h"
 #import "TextFieldParameterView.h"
-#import "ResultTokenInputsModel.h"
-#import "NSNumber+Comparison.h"
-#import "InformationPopUpViewController.h"
 #import "ErrorPopUpViewController.h"
 
 @interface TokenFunctionDetailViewController () <AbiTextFieldWithLineDelegate, PopUpViewControllerDelegate>

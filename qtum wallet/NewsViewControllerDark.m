@@ -8,7 +8,6 @@
 
 #import "NewsViewControllerDark.h"
 #import "NewsTableCellDark.h"
-#import "QTUMNewsItem.h"
 #import "NSDate+Extension.h"
 
 @interface NewsViewControllerDark ()

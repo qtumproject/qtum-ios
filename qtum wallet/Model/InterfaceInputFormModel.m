@@ -7,7 +7,6 @@
 //
 
 #import "InterfaceInputFormModel.h"
-#import "AbiinterfaceItem.h"
 
 @interface InterfaceInputFormModel ()
 

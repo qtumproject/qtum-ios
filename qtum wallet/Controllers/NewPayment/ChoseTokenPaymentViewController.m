@@ -7,8 +7,6 @@
 //
 
 #import "ChoseTokenPaymentViewController.h"
-#import "ChoseTokenPaymentCell.h"
-#import "ChooseTokenPaymentDelegateDataSourceProtocol.h"
 
 @interface ChoseTokenPaymentViewController ()
 

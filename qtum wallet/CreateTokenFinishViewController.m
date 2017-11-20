@@ -7,11 +7,8 @@
 //
 
 #import "CreateTokenFinishViewController.h"
-#import "ContractCoordinator.h"
 #import "FinishInputCell.h"
-#import "ResultTokenInputsModel.h"
 #import "TextFieldWithLine.h"
-#import "NSNumber+Comparison.h"
 
 @interface CreateTokenFinishViewController () <PopUpWithTwoButtonsViewControllerDelegate>
 

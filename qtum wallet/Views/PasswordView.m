@@ -350,13 +350,7 @@
 
 #pragma mark - CAAnimationDelegate
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    if (flag) {
-        //        if ([self.delegate respondsToSelector:@selector(confilmPinFailed)]) {
-        //            [self.delegate confilmPinFailed];
-        //        }
-    }
-}
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{}
 
 #pragma mark - UITextFieldDelegate
 

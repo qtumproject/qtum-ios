@@ -7,7 +7,6 @@
 //
 
 #import "AddNewTokensViewController.h"
-#import "SubscribeTokenCoordinator.h"
 #import "TextFieldWithLine.h"
 
 const CGFloat TextFieldAlpha = 0.3f;

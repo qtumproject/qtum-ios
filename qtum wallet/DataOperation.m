@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "DataOperation.h"
-
 NSString *const groupFileName = @"group";
 NSString *const newsCacheFileName = @"newsCashFile";
 
@@ -45,15 +43,6 @@ NSString *const newsCacheFileName = @"newsCashFile";
         return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     }
     return nil;
-}
-
--(NSString *)getStringFormFileWithName:(NSString *)fileName {
-    
-    NSString *stringPath = [self docPath];
-    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
-    
-    NSString *stringSource = [[NSString alloc] initWithContentsOfFile:stringFile encoding:NSUTF8StringEncoding error:NULL];
-    return stringSource;
 }
 
 -(NSString*)saveGroupFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource {
@@ -121,87 +110,7 @@ NSString *const newsCacheFileName = @"newsCashFile";
     return [self saveGroupFileWithName:fileName dataSource:[summ copy]];
 }
 
--(void)createFile:(NSString*)path fileName:(NSString*)filename {
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager changeCurrentDirectoryPath:[path stringByExpandingTildeInPath]];
-    [fileManager createFileAtPath:filename contents:nil attributes:nil];
-}
-
--(BOOL)deleteDefaultFile:(NSString*)fileName {
-    
-    @try {
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        NSString *stringPath = [self docPath];
-        NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
-        
-        [fileManager changeCurrentDirectoryPath:[stringPath stringByExpandingTildeInPath]];
-        [fileManager removeItemAtPath:stringFile error:nil];
-        
-        return YES;
-    }
-    @catch (NSException *exception) {
-        return NO;
-    }
-    @finally {
-        
-    }
-}
-
--(BOOL)deleteFile:(NSString*)path success:(deleteSuccessBlock)success failed:(deleteFailedBlock)failed {
-    
-    @try {
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        [fileManager changeCurrentDirectoryPath:[path stringByExpandingTildeInPath]];
-        [fileManager removeItemAtPath:path error:nil];
-        if (success) {
-            success();
-        }
-        
-        return YES;
-    }
-    @catch (NSException *exception) {
-        return NO;
-    }
-    @finally {
-        if (failed) {
-            failed();
-        }
-    }
-}
-
--(NSArray*)getFilesName:(NSString*)path {
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *files = [fileManager subpathsAtPath: path ];
-    return  files;
-}
-
 #pragma mark - DataMethods
-
-
--(void)dataAppendString:(NSString*) string toFileWithName:(NSString*) fileName {
-    
-    NSString *stringPath = [self docPath];
-    NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
-    
-    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:stringFile];
-    
-    if (fileHandle) {
-        
-        [fileHandle seekToEndOfFile];
-        [fileHandle writeData:[string dataUsingEncoding:NSUTF8StringEncoding]];
-        [fileHandle closeFile];
-    } else {
-        
-        [string writeToFile:stringFile
-                 atomically:NO
-                   encoding:NSStringEncodingConversionAllowLossy
-                      error:nil];
-    }
-}
 
 #pragma mark - SandBoxMethods
 
@@ -235,25 +144,5 @@ NSString *const newsCacheFileName = @"newsCashFile";
     return appGroupDirectoryPath;
 }
 
-- (BOOL)hasLiveDirectory:(NSString *)path {
-    if (![[NSFileManager defaultManager] fileExistsAtPath:path] ) {
-        
-        return [[NSFileManager defaultManager] createDirectoryAtPath:path
-                                         withIntermediateDirectories:YES
-                                                          attributes:nil
-                                                               error:NULL];
-    }
-    
-    return NO;
-}
-
-- (void)hasLiveFileWithPath:(NSString *)path {
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:path] ) {
-        [fileManager changeCurrentDirectoryPath:[path stringByExpandingTildeInPath]];
-        [fileManager createFileAtPath:path contents:nil attributes:nil];
-    }
-}
 
 @end

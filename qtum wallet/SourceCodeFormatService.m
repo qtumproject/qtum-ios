@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "SourceCodeFormatService.h"
-
 @implementation SourceCodeFormatService
 
 -(NSAttributedString*)formattingSourceCodeStringWithString:(NSString*) sourceCode {

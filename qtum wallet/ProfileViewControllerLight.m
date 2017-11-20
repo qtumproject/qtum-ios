@@ -7,7 +7,6 @@
 //
 
 #import "ProfileViewControllerLight.h"
-#import "ProfileTableViewCell.h"
 
 @interface ProfileViewControllerLight ()
 

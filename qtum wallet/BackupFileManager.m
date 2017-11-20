@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "BackupFileManager.h"
-
 #import "NSDate+Extension.h"
 
 static NSString* kContractsKey = @"contracts";

@@ -6,7 +6,6 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "BaseViewController.h"
 #import "UIAlertController+Extensions.h"
 
 @interface BaseViewController ()

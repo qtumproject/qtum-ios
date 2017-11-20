@@ -8,9 +8,7 @@
 
 #import "ExportBrandKeyCoordinator.h"
 #import "ExportBrainKeyOutput.h"
-#import "ExportBrainKeyOutputDelegate.h"
 #import "LoginViewOutput.h"
-#import "LoginViewOutputDelegate.h"
 #import "FXKeychain.h"
 
 @interface ExportBrandKeyCoordinator () <ExportBrainKeyOutputDelegate, LoginViewOutputDelegate>

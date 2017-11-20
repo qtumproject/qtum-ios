@@ -6,7 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "TemplateModel.h"
 #import "NSDate+Extension.h"
 
 @implementation TemplateModel

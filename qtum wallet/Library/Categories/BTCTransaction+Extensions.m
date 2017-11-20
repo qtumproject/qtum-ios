@@ -6,9 +6,6 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "BTCTransaction+Extensions.h"
-#import <objc/runtime.h>
-
 @implementation BTCTransaction (Extensions)
 
 - (NSString *)hexWithTime
@@ -43,11 +40,6 @@
     // 4-byte lock_time
     uint32_t lt = self.lockTime;
     [payload appendBytes:&lt length:4];
-    
-    //Removed for new api
-//    // 4-byte time
-//    uint32_t time = [[NSDate new] timeIntervalSince1970];
-//    [payload appendBytes:&time length:4];
     
     return payload;
 }
@@ -88,10 +80,6 @@
     uint32_t lt = self.lockTime;
     [payload appendBytes:&lt length:4];
     
-    //Removed for new api
-//    // 4-byte time
-//    uint32_t time = [[NSDate new] timeIntervalSince1970];
-//    [payload appendBytes:&time length:4];
     
     return payload;
 }

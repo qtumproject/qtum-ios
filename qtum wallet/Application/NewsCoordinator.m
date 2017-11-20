@@ -7,7 +7,6 @@
 //
 
 #import "NewsCoordinator.h"
-#import "NewsCellModel.h"
 #import "NewsOutput.h"
 #import "NewsDetailOutput.h"
 #import "NewsDetailCellBuilder.h"

@@ -7,14 +7,12 @@
 //
 
 #import "SocketManager.h"
-#import "ApplicationCoordinator.h"
-#import "Contract.h"
 #import "QStoreManager.h"
-
-@import SocketIO;
 
 NSString *const kSocketDidConnect = @"kSocketDidConnect";
 NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
+
+@import SocketIO;
 
 @interface SocketManager ()
 

@@ -9,7 +9,6 @@
 #import "RecieveViewController.h"
 #import "TextFieldWithLine.h"
 #import "QRCodeManager.h"
-#import "Wallet.h"
 
 @interface RecieveViewController () <UITextFieldDelegate, PopUpViewControllerDelegate>
 

@@ -36,15 +36,6 @@
         XCTAssertTrue(YES);
     }];
     
-    // 10 words flow
-    
-//    NSArray *worlds3 = @[@"contributor", @"lately", @"classroom", @"super", @"sphere", @"turn", @"confuse", @"leading", @"ease", @"brother"];
-//    WalletManager *walletManager3 = [WalletManager new];
-//    [walletManager3 createNewWalletWithName:@"name" pin:@"1111" seedWords:worlds3 withSuccessHandler:^(Wallet *newWallet) {
-//        XCTAssertTrue(NO);
-//    } andFailureHandler:^{
-//        XCTAssertTrue(YES);
-//    }];
     
     // pass nil flow
     

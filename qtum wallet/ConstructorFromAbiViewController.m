@@ -8,9 +8,6 @@
 
 #import "ConstructorFromAbiViewController.h"
 #import "TextFieldParameterView.h"
-#import "AbiinterfaceItem.h"
-#import "ContractCoordinator.h"
-#import "ResultTokenInputsModel.h"
 
 @interface ConstructorFromAbiViewController () 
 

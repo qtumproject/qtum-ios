@@ -7,7 +7,6 @@
 //
 
 #import "QStoreMainScreenCategory.h"
-#import "QStoreContractElement.h"
 
 @interface QStoreMainScreenCategory()
 

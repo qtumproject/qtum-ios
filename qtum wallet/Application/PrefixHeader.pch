@@ -41,9 +41,6 @@
 
 #define SLocator ((ServiceLocator*)[ServiceLocator sharedInstance])
 
-//#import "BTCTransactionInput+Extension.h"
-//#import "BTCTransactionOutput+Extension.h"
-
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 #ifdef DEBUG

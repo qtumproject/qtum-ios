@@ -6,10 +6,7 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "ContractManager.h"
-#import "HistoryElement.h"
 #import "FXKeychain.h"
-#import "Contract.h"
 #import "NSData+Extension.h"
 #import "SocketManager.h"
 #import "InterfaceInputFormModel.h"
@@ -247,9 +244,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
     [self.smartContractPretendents removeObjectForKey:key];
 }
 
--(void)updateSmartContractPretendent:(BTCTransaction*) transaction{
-    //TODO update Token Transaction
-}
+-(void)updateSmartContractPretendent:(BTCTransaction*) transaction{}
 
 - (void)checkSmartContractPretendents {
     
@@ -300,7 +295,6 @@ NSString *const kLocalContractName = @"kLocalContractName";
             token.templateModel = templateModel;
             token.creationDate = [NSDate date];
             token.isActive = YES;
-            //[token setupWithHashTransaction:key andAddresses:addresses andTokenTemplate:templateModel];
             [self addNewToken:token];
             token.manager = self;
             [SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];

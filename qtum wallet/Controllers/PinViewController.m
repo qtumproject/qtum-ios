@@ -7,7 +7,6 @@
 //
 
 #import "PinViewController.h"
-#import "CustomTextField.h"
 #import "Presentable.h"
 
 const float bottomOffsetKeyboard = 300;

@@ -7,9 +7,7 @@
 //
 
 #import "ConstructorFromAbiViewControllerLight.h"
-#import "AbiinterfaceItem.h"
 #import "TextFieldParameterView.h"
-#import "ContractNameTextField.h"
 
 @interface ConstructorFromAbiViewControllerLight ()
 

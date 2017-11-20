@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "QTUMHtmlParcer.h"
-#import "NSString+HTML.h"
 #import "TFHpple.h"
 
 @interface QTUMHtmlParcer ()

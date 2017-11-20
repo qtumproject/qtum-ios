@@ -23,13 +23,6 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-//    [[KeysManager sharedInstance] removeAllKeys];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)backButtonPressed:(id)sender
@@ -39,28 +32,14 @@
 
 #pragma mark - Actions
 
-- (IBAction)createNewButtonWasPressed:(id)sender
-{
+- (IBAction)createNewButtonWasPressed:(id)sender {
     [[PopUpsManager sharedInstance] showLoaderPopUp];
-    
-//    __weak typeof(self) weakSelf = self;
-//    [[KeysManager sharedInstance] createNewKey];
-//    [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
-//        if (registered) {
-//            [SVProgressHUD showSuccessWithStatus:@"Done"];
-//            [weakSelf.tableView reloadData];
-//        }else{
-//            [SVProgressHUD showErrorWithStatus:@"Some Error"];
-//        }
-//        [KeysManager sharedInstance].keyRegistered = nil;
-//    };
+
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-//    return [KeysManager sharedInstance].keys.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 2;
 }
 
@@ -71,26 +50,16 @@
         cell = [[AddressTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"AddressTableViewCell"];
     }
     
-//    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
-    
-//    cell.puplicKeyLabel.text = key.addressTestnet.string;
-    
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-//    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
-    
-//    [self createAndPresentPublicKeyVCWithKey:key];
 }
 
 #pragma mark - ImportKeyViewControllerDelegate
 
-- (void)addressImported
-{
+- (void)addressImported {
     [self.tableView reloadData];
 }
 
@@ -107,8 +76,7 @@
 
 #pragma mark - 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 }
 
 @end

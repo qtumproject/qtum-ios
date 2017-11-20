@@ -7,7 +7,6 @@
 //
 
 #import "WalletHeaderCell.h"
-#import "Wallet.h"
 
 @interface WalletHeaderCell ()
 

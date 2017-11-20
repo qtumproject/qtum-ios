@@ -5,7 +5,6 @@
 //  Created by Jānis Kiršteins on 5/21/13.
 //  Copyright (c) 2013 Jānis Kiršteins. All rights reserved.
 //
-#import "JKBigInteger.h"
 
 @implementation JKBigInteger {
     

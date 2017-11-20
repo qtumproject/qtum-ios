@@ -6,11 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "NewsDataProvider.h"
-#import "NetworkingService.h"
-#import "NSString+HTML.h"
-#import "TFHpple.h"
-
 
 @interface NewsDataProvider ()
 

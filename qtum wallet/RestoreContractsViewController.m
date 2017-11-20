@@ -7,7 +7,6 @@
 //
 
 #import "RestoreContractsViewController.h"
-#import "CheckboxButton.h"
 #import "RestoreContractsPopUpViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 

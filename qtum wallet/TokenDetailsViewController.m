@@ -7,11 +7,7 @@
 //
 
 #import "TokenDetailsViewController.h"
-#import "WalletCoordinator.h"
-#import "TokenDetailsTableSource.h"
 #import "ViewWithAnimatedLine.h"
-#import "ShareTokenPopUpViewController.h"
-#import "TokenDetailDisplayDataManagerDelegate.h"
 
 CGFloat const HeightForHeaderView = 50.0f;
 

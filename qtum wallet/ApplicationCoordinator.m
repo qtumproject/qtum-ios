@@ -6,22 +6,13 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "ApplicationCoordinator.h"
-#import "CreatePinRootController.h"
-#import "PinViewController.h"
 #import "TabBarController.h"
-#import "UIViewController+Extension.h"
 #import "LoginCoordinator.h"
 #import "TabBarCoordinator.h"
-#import "NSUserDefaults+Settings.h"
 #import "AuthCoordinator.h"
-#import "LoginCoordinator.h"
-#import "SecurityCoordinator.h"
 #import "AppDelegate.h"
 #import "ConfirmPinCoordinator.h"
 #import "ProfileCoordinator.h"
-#import "WalletManager.h"
-#import "Wallet.h"
 #import "Appearance.h"
 #import "SplashScreenOutput.h"
 #import "QStoreManager.h"
@@ -121,8 +112,6 @@
     
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
-    //[SLocator.walletManager stopObservingForAllSpendable];
-   //[[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self startAuthFlow];
 }
 
@@ -140,8 +129,6 @@
     
     self.securityFlowRunning = NO;
     [self removeDependency:coordinator];
-//    [SLocator.walletManager stopObservingForAllSpendable];
-//    [[ContractManager sharedInstance] stopObservingForAllSpendable];
     [self startAuthFlow];
 }
 
@@ -355,8 +342,9 @@
 #pragma mark - Global Observing
 
 -(void)contractCreationDidFailed {
-    
-    [SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Failed to create contract", @"") andIdentifire:@"contract_creation_failed"];
+
+    NSString *identifire = @"contract_creation_failed";
+    [SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Failed to create contract", @"") andIdentifire:identifire];
 }
 
 @end

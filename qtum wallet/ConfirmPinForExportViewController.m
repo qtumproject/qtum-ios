@@ -7,7 +7,6 @@
 //
 
 #import "ConfirmPinForExportViewController.h"
-#import "LoginViewOutputDelegate.h"
 #import "Presentable.h"
 
 @interface ConfirmPinForExportViewController () <CAAnimationDelegate, Presentable>
@@ -125,16 +124,7 @@
     [self.passwordView becameFirstResponder];
 }
 
-- (IBAction)didVoidTapAction:(id)sender {
-    
-//    if (!([self.firstSymbolTextField isFirstResponder] ||
-//        [self.secondSymbolTextField isFirstResponder] ||
-//        [self.thirdSymbolTextField isFirstResponder] ||
-//        [self.fourthSymbolTextField isFirstResponder])) {
-//
-//        [self.firstSymbolTextField becomeFirstResponder];
-//    }
-}
+- (IBAction)didVoidTapAction:(id)sender {}
 
 
 @end

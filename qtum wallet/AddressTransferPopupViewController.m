@@ -8,8 +8,6 @@
 
 #import "AddressTransferPopupViewController.h"
 #import "TextFieldWithLine.h"
-#import "NSString+Extension.h"
-#import "ContracBalancesObject.h"
 
 
 @interface AddressTransferPopupViewController () <UITextFieldDelegate>

@@ -168,11 +168,7 @@
     [attrib enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, attrib.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
         if (value) {
             UIFont *oldFont = (UIFont *)value;
-            /*----- Remove old font attribute -----*/
             [attrib removeAttribute:NSFontAttributeName range:range];
-            //replace your font with new.
-            /*----- Add new font attribute -----*/
-
 
             if ([oldFont.fontName isEqualToString:@"TimesNewRomanPSMT"])
                 [attrib addAttribute:NSFontAttributeName value:font range:range];
@@ -218,7 +214,6 @@
     UIColor* textColor = [cell textColor];
     
     NSMutableAttributedString * attrib = [[NSMutableAttributedString alloc] initWithString:tag.content];
-//    [attrib addAttribute: NSLinkAttributeName value:tag.content range: NSMakeRange(0, attrib.length)];
     
     [attrib beginEditing];
     

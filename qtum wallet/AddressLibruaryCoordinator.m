@@ -8,10 +8,8 @@
 
 #import "AddressLibruaryCoordinator.h"
 #import "AddressControlOutput.h"
-#import "Wallet.h"
 #import "AddressTransferPopupViewController.h"
 #import "ErrorPopUpViewController.h"
-#import "NSNumber+Comparison.h"
 
 @interface AddressLibruaryCoordinator () <AddressControlOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 

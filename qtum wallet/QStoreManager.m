@@ -10,13 +10,10 @@
 #import "QStoreMainScreenCategory.h"
 #import "QStoreDataProvider.h"
 #import "QStoreContractElement.h"
-#import "ApplicationCoordinator.h"
-#import "Wallet.h"
 #import "SocketManager.h"
 #import "FXKeychain.h"
 #import "QStoreRequestManager.h"
 #import "QStoreContractDownloadManager.h"
-#import "QStoreCategory.h"
 
 NSString *const QStoreCategoryTrendingPath = @"contracts/trending-now";
 NSString *const QStoreCategoryLastAddedPath = @"contracts/last-added";
@@ -253,7 +250,7 @@ NSInteger const QStoreSearchCount = 20;
         if (errorType == TransactionManagerErrorTypeNone) {
             success();
         } else {
-            // TODO add more error messages
+
             failure(NSLocalizedString(@"Cannot create transaction", nil));
         }
     }];

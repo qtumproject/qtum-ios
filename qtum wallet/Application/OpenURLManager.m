@@ -6,10 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "OpenURLManager.h"
-#import "NSUserDefaults+Settings.h"
-#import "NSString+Extension.h"
-
 
 @implementation OpenURLManager
 

@@ -7,9 +7,6 @@
 //
 
 #import "NewsDetailViewController.h"
-#import "QTUMDefaultTagCell.h"
-#import "QTUMHTMLTagItem.h"
-#import "QTUMNewsItem.h"
 #import "NewsDetailCellBuilder.h"
 #import "LoaderPopUpViewController.h"
 

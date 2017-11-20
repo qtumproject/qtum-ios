@@ -7,8 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "LoginCoordinator.h"
-#import "LoginViewOutputDelegate.h"
 #import "Presentable.h"
 
 @interface LoginViewController () <CAAnimationDelegate, Presentable>

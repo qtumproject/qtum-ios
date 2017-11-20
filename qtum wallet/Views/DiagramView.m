@@ -83,11 +83,6 @@
     self.animating = NO;
 }
 
-//-(void)removeFromSuperview{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
-//    [super removeFromSuperview];
-//}
-
 #pragma mark - CAAnimationDelegate
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
@@ -111,11 +106,9 @@
     CAKeyframeAnimation *customFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"path"];
     NSArray *pathValues = @[(id)self.arrayOfPaths[0].CGPath,(id)self.arrayOfPaths[1].CGPath,(id)self.arrayOfPaths[2].CGPath,(id)self.arrayOfPaths[3].CGPath,(id)self.arrayOfPaths[4].CGPath];
     NSArray *times = @[@0.0,@0.25,@0.45,@0.68,@1];
-   // NSArray* timming = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
 
     [customFrameAnimation setValues:pathValues];
     [customFrameAnimation setKeyTimes:times];
-   // [customFrameAnimation setTimingFunctions:timming];
     customFrameAnimation.repeatCount = HUGE_VALF;
     customFrameAnimation.duration = 10;
     customFrameAnimation.delegate = self;

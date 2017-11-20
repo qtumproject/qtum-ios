@@ -6,11 +6,8 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "SecurityCoordinator.h"
 #import "LoginViewOutput.h"
 #import "SecurityPopupViewController.h"
-#import <LocalAuthentication/LocalAuthentication.h>
-#import "LoginViewOutputDelegate.h"
 #import "TouchIDService.h"
 
 @interface SecurityCoordinator () <SecurityPopupViewControllerDelegate>

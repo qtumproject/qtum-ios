@@ -6,11 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "ContractFileManager.h"
-#import "NSData+Extension.h"
-#import "NSString+Extension.h"
-#import "TokenCell.h"
-
 @implementation ContractFileManager
 
 - (instancetype)init {

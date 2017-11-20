@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "AbiinterfaceItem.h"
-
 @interface AbiinterfaceItem ()
 
 @property (copy, nonatomic) NSString* name;

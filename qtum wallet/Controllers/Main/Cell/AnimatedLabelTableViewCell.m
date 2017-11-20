@@ -10,17 +10,6 @@
 
 @implementation AnimatedLabelTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)changePositionForLabel:(UILabel *)label andPercent:(CGFloat)percent values:(NSArray *)values constraints:(NSArray*)constraints isLeft:(BOOL)isLeft{
     
     CGFloat minTop = [values[0] floatValue];

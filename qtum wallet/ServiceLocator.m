@@ -6,8 +6,6 @@
 //  Copyright © 2017 PixelPlex. All rights reserved.
 //
 
-#import "ServiceLocator.h"
-#import "RequestManager.h"
 #import "WalletManager.h"
 
 @implementation ServiceLocator

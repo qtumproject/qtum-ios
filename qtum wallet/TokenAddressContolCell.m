@@ -7,7 +7,6 @@
 //
 
 #import "TokenAddressContolCell.h"
-#import "NSNumber+Format.h"
 
 @implementation TokenAddressContolCell
 

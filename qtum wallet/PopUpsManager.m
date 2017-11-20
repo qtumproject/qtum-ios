@@ -6,7 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "PopUpsManager.h"
 #import "NoInternetConnectionPopUpViewController.h"
 #import "PhotoLibraryPopUpViewController.h"
 #import "InformationPopUpViewController.h"

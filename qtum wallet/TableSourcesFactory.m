@@ -6,7 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "TableSourcesFactory.h"
 #import "NSUserDefaults+Settings.h"
 #import "WalletTableSourceDark.h"
 #import "WalletTableSourceLight.h"

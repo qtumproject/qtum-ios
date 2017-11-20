@@ -237,17 +237,17 @@ CGFloat const kCenterYChanges = 20.0f;
 #pragma mark - Methods for childs
 
 - (UIColor *)getUnderlineColorDeselected {
-//    return [UIColor whiteColor];
+
     return customBlueColor();
 }
 
 - (UIColor *)getUnderlineColorSelected {
-//    return [UIColor whiteColor];
+
     return customBlueColor();
 }
 
 - (UIColor *)getPlaceholderColor {
-//    return [UIColor whiteColor];
+
     return customBlueColor();
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "SplashViewController.h"
-#import "AnimatedLogoImageVIew.h"
 
 @interface SplashViewController ()
 

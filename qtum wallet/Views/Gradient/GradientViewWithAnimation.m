@@ -9,15 +9,7 @@
 #import "GradientViewWithAnimation.h"
 #import "DiagramView.h"
 
-@implementation GradientViewWithAnimation
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+@implementation GradientViewWithAnimation 
 
 -(instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

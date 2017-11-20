@@ -6,8 +6,6 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "Wallet.h"
-#import "HistoryDataStorage.h"
 #import "NSUserDefaults+Settings.h"
 #import "NSString+AES256.h"
 

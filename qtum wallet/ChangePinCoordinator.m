@@ -33,7 +33,6 @@
     
     NSObject <ChangePinOutput>* output = [SLocator.controllersFactory createChangePinController];
     output.delegate = self;
-    //output.type = ConfirmType;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
     self.pinOutput = output;
 }

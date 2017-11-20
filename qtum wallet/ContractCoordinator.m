@@ -7,17 +7,13 @@
 //
 
 #import "ContractCoordinator.h"
-#import "CreateTokenNavigationController.h"
-#import "NSString+Extension.h"
 #import "BTCTransactionInput+Extension.h"
-#import "ContractManager.h"
 #import "ConstructorFromAbiViewController.h"
 #import "CreateTokenFinishViewController.h"
 #import "TemplateTokenViewController.h"
 #import "SmartContractMenuViewController.h"
 #import "SmartContractsListViewController.h"
 #import "TokenDetailsViewController.h"
-#import "TokenDetailsTableSource.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "WatchContractViewController.h"
@@ -28,18 +24,7 @@
 
 #import "QStoreCoordinator.h"
 
-#import "Wallet.h"
-
 #import "LibraryOutput.h"
-#import "LibraryTableSourceOutput.h"
-#import "SmartContractMenuOutput.h"
-#import "SmartContractMenuOutputDelegate.h"
-#import "TemplatesListOutput.h"
-#import "TemplatesListOutputDelegate.h"
-#import "FavouriteTemplatesCollectionSourceOutput.h"
-#import "RestoreContractsOutput.h"
-#import "NSNumber+Comparison.h"
-
 
 
 @interface ContractCoordinator () <LibraryOutputDelegate,

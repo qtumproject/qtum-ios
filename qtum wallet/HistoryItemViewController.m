@@ -7,8 +7,6 @@
 //
 
 #import "HistoryItemViewController.h"
-#import "GradientViewWithAnimation.h"
-#import "HistoryElement.h"
 #import "HistoryItemDelegateDataSource.h"
 #import "PageControl.h"
 

@@ -9,14 +9,9 @@
 #import "WalletManager.h"
 #import "FXKeychain.h"
 #import "WalletManagerRequestAdapter.h"
-#import "HistoryDataStorage.h"
 #import "SocketManager.h"
 #import "NSString+SHA3.h"
-#import "Wallet.h"
-#import "Contract.h"
-#import "Managerable.h"
 #import "NSNumber+Comparison.h"
-#import "WalletManagerRequestAdapter.h"
 #import "iOSSessionManager.h"
 
 NSString const *kWallets = @"qtum_wallet_wallets_keys";
@@ -303,7 +298,6 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 -(void)updateBalanceOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete{
     
-    // __weak __typeof(self)weakSelf = self;
     [self.requestAdapter getBalanceForAddreses:[object allKeysAdreeses] withSuccessHandler:^(NSDecimalNumber* balance) {
         
         object.balance = balance;
@@ -314,7 +308,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 }
 
 -(void)updateHistoryOfSpendableObject:(Wallet <Spendable>*) object withHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page{
-    //__weak __typeof(self)weakSelf = self;
+
     static NSInteger batch = 25;
     [self.requestAdapter getHistoryForAddresses:[object allKeysAdreeses] andParam:@{@"limit" : @(batch), @"offset" : @(page * batch)} withSuccessHandler:^(NSArray <HistoryElement*> *history) {
         

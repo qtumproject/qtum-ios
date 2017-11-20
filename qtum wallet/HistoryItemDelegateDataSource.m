@@ -7,7 +7,6 @@
 //
 
 #import "HistoryItemDelegateDataSource.h"
-#import "HistoryElement.h"
 #import "HistoryItemAddressCellTableViewCell.h"
 
 

@@ -6,7 +6,6 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 
-#import "Utils.h"
 #import "NSUserDefaults+Settings.h"
 
 NSString const *PUBLIC_ADDRESS_STRING_KEY = @"publicAddress";

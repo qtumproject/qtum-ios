@@ -6,12 +6,9 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "AppSettings.h"
 #import "NSUserDefaults+Settings.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import "LanguageManager.h"
-#import <LocalAuthentication/LocalAuthentication.h>
 #import "TouchIDService.h"
 #import "PaymentValuesManager.h"
 

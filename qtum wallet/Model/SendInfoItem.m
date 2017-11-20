@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "SendInfoItem.h"
-
 NSString *const QtumAddressKey = @"qtum";
 NSString *const AmountKey = @"amount";
 NSString *const LabelKey = @"label";

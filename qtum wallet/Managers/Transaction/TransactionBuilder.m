@@ -6,7 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "TransactionBuilder.h"
 #import "BTCTransactionInput+Extension.h"
 #import "BTCTransactionOutput+Address.h"
 

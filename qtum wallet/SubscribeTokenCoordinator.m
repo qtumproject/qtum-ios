@@ -8,9 +8,6 @@
 
 #import "SubscribeTokenCoordinator.h"
 #import "SubscribeTokenViewController.h"
-#import "SubscribeTokenDataDisplayManagerDark.h"
-#import "AddNewTokensViewController.h"
-#import "QRCodeViewController.h"
 
 @interface SubscribeTokenCoordinator () <SubscribeTokenOutputDelegate>
 

@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Midfar Sun. All rights reserved.
 //
 
-#import "JKBigDecimal.h"
-
 @implementation JKBigDecimal
 @synthesize bigInteger, figure;
 

@@ -6,11 +6,9 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "BaseCoordinator.h"
-
 @interface BaseCoordinator ()
 
-@property (strong, atomic) NSMutableArray <Coordinatorable>* childCoordinators;
+@property (strong, nonatomic) NSMutableArray <Coordinatorable>* childCoordinators;
 
 @end
 

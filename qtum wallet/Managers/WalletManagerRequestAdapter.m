@@ -7,9 +7,6 @@
 //
 
 #import "WalletManagerRequestAdapter.h"
-#import "HistoryElement.h"
-#import "NSString+Extension.h"
-#import "BTCTransactionInput+Extension.h"
 #import "BTCTransactionOutput+Address.h"
 #import "NSNumber+Comparison.h"
 

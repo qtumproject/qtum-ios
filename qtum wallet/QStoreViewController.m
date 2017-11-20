@@ -7,9 +7,6 @@
 //
 
 #import "QStoreViewController.h"
-#import "QStoreTableSource.h"
-#import "SelectSearchTypeView.h"
-#import "QStoreSearchTableSource.h"
 #import "QStoreContractElement.h"
 
 CGFloat const KeyboardDuration = 0.25f;

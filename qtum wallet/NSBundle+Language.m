@@ -7,8 +7,6 @@
 //
 
 #import "NSBundle+Language.h"
-#import "LanguageManager.h"
-#import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
 static const char kBundleKey = 0;

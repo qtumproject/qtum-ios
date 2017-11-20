@@ -8,7 +8,6 @@
 
 #import "QStoreContractElement.h"
 #import "NSUserDefaults+Settings.h"
-#import "TemplateModel.h"
 
 // Short
 NSString *const QStoreContractElementIdKey = @"_id";

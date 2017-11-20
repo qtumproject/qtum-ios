@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "PopUpViewController.h"
-
 CGFloat AnimationDuration = 0.3f;
 
 @interface PopUpViewController ()

@@ -7,7 +7,6 @@
 //
 
 #import "AFNetworking.h"
-#import "ImageLoader.h"
 
 
 @interface ImageLoader ()
@@ -121,22 +120,11 @@
 }
 
 
-- (void)createDirAtPath:(NSString *)path
-{
+- (void)createDirAtPath:(NSString *)path {
+    
     if (![[NSFileManager defaultManager] fileExistsAtPath:path])
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
 }
-
-//- (void)createDir
-//{
-//    NSError *error;
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-//    NSString *cacheDirectory = [paths objectAtIndex:0]; // Get documents folder
-//    NSString *dataPath = [cacheDirectory stringByAppendingPathComponent:@"/temp"];
-//
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
-//        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
-//}
 
 - (void)saveFileWithUrl:(NSString *)url andFile:(id)file {
     
@@ -155,9 +143,7 @@
 }
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
-    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
-    // Pass 1.0 to force exact pixel size.
+
     UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();

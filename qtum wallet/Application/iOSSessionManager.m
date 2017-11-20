@@ -9,7 +9,6 @@
 #import "iOSSessionManager.h"
 #import <WatchConnectivity/WatchConnectivity.h>
 #import "QRCodeManager.h"
-#import "Wallet.h"
 
 NSString *MainMessageKey = @"message_key";
 NSString *GetQRCodeMessageKey = @"get_qr_code";
@@ -190,15 +189,15 @@ NSString *kErrorKey = @"error";
         return dictionary;
     }
     
-    NSNumber *availableBalance = wallet.balance;
-    NSNumber *unconfirmedBalance = wallet.unconfirmedBalance;
+    QTUMBigNumber *availableBalance = wallet.balance;
+    QTUMBigNumber *unconfirmedBalance = wallet.unconfirmedBalance;
     NSArray *history = wallet.historyStorage.historyPrivate;
     NSMutableArray *historyDictionary = [NSMutableArray new];
     
     for (HistoryElement *element in history) {
         [historyDictionary addObject:[element dictionaryFromElementForWatch]];
     }
-    
+
     NSDictionary *dictionary = @{@"address" : address,
                                  @"availableBalance" : availableBalance,
                                  @"unconfirmedBalance" : unconfirmedBalance,

@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "AbiParameterTypeDynamicArrayInt.h"
-
 @implementation AbiParameterTypeDynamicArrayInt
 
 @end

@@ -8,7 +8,6 @@
 
 #import "TokenFunctionDetailViewControllerLight.h"
 #import "TextFieldParameterView.h"
-#import "ResultTokenInputsModel.h"
 
 @interface TokenFunctionDetailViewControllerLight () <AbiTextFieldWithLineDelegate>
 

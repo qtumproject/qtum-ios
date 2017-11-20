@@ -9,7 +9,6 @@
 #import "ChooseTokenPaymentDelegateDataSource.h"
 #import "ChoseTokenPaymentCell.h"
 #import "ChooseTokekPaymentDelegateDataSourceDelegate.h"
-#import "NSNumber+Comparison.h"
 
 @interface ChooseTokenPaymentDelegateDataSource()
 

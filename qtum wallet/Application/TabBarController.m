@@ -8,8 +8,6 @@
 
 #import "TabBarController.h"
 #import "NewPaymentDarkViewController.h"
-#import "TabBarCoordinator.h"
-#import "Presentable.h"
 
 @interface TabBarController () <UITabBarControllerDelegate, Presentable>
 

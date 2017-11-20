@@ -7,7 +7,6 @@
 //
 
 #import "BalancePageViewController.h"
-#import "CustomPageControl.h"
 
 @interface BalancePageViewController () <UIScrollViewDelegate>
 

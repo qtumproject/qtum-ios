@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "AbiParameterTypeFixedArrayBytes.h"
-
 @implementation AbiParameterTypeFixedArrayBytes
 
 @end

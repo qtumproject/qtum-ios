@@ -6,10 +6,7 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "ContractArgumentsInterpretator.h"
 #import "NSData+Extension.h"
-#import "AbiinterfaceItem.h"
-#import "NSString+Extension.h"
 #import "NSString+AbiRegex.h"
 
 

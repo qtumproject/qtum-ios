@@ -10,8 +10,6 @@
 #import "Appearance.h"
 #import "iOSSessionManager.h"
 
-#import "QStoreDataProvider.h"
-
 @interface AppDelegate ()
 
 @property (assign, nonatomic) BOOL aplicationCoordinatorStarted;

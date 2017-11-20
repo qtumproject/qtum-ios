@@ -7,7 +7,6 @@
 //
 
 #import "PinController.h"
-#import "CustomTextField.h"
 
 @interface PinController () <CAAnimationDelegate>
 
