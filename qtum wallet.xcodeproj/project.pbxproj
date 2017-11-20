@@ -285,6 +285,8 @@
 		B3D012DE1FB4542100A98770 /* WalletBalancesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */; };
 		B3D12F541FB9884400DEE41E /* SourceCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */; };
 		B3D12F571FB989DB00DEE41E /* SourceCodeFormatService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */; };
+		B3D12F5A1FBAD9FD00DEE41E /* NSTree.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F591FBAD9FD00DEE41E /* NSTree.m */; };
+		B3D12F5E1FBB31A100DEE41E /* SourceCodeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F5D1FBB31A100DEE41E /* SourceCodeTextView.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
 		B3D5FE3F1F569FEB006A2BF2 /* NSString+AbiRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */; };
@@ -1274,6 +1276,10 @@
 		B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeViewController.m; sourceTree = "<group>"; };
 		B3D12F551FB989DB00DEE41E /* SourceCodeFormatService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceCodeFormatService.h; sourceTree = "<group>"; };
 		B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeFormatService.m; sourceTree = "<group>"; };
+		B3D12F581FBAD9FD00DEE41E /* NSTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTree.h; sourceTree = "<group>"; };
+		B3D12F591FBAD9FD00DEE41E /* NSTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTree.m; sourceTree = "<group>"; };
+		B3D12F5C1FBB31A100DEE41E /* SourceCodeTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceCodeTextView.h; sourceTree = "<group>"; };
+		B3D12F5D1FBB31A100DEE41E /* SourceCodeTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeTextView.m; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
@@ -3110,6 +3116,15 @@
 			name = SourceCode;
 			sourceTree = "<group>";
 		};
+		B3D12F5B1FBADA0100DEE41E /* Three */ = {
+			isa = PBXGroup;
+			children = (
+				B3D12F581FBAD9FD00DEE41E /* NSTree.h */,
+				B3D12F591FBAD9FD00DEE41E /* NSTree.m */,
+			);
+			name = Three;
+			sourceTree = "<group>";
+		};
 		B3D555EC1EDF4DA400CBDFCF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -3730,6 +3745,7 @@
 		B3F5797E1F0D297900A13571 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B3D12F5B1FBADA0100DEE41E /* Three */,
 				B32805491FA744C100748E7E /* BigNumber */,
 				B3C8FAE71F989206000168AB /* News */,
 				B35733251F97A69A00C64AAE /* ServiceLocator.h */,
@@ -4845,6 +4861,8 @@
 				D09F83981F7BB2DB002F3098 /* CopyLabel.m */,
 				B3E090231FAB4DD1003F3B54 /* QTUMContractLableWithMargins.h */,
 				B3E090241FAB4DD1003F3B54 /* QTUMContractLableWithMargins.m */,
+				B3D12F5C1FBB31A100DEE41E /* SourceCodeTextView.h */,
+				B3D12F5D1FBB31A100DEE41E /* SourceCodeTextView.m */,
 			);
 			name = "Shared Views";
 			path = Views;
@@ -5500,6 +5518,7 @@
 				B3DB3E461F2F6D7600AA408F /* RestoreContractsPopUpViewControllerLight.m in Sources */,
 				B3EA52FA1F45E1A1002FD201 /* QStoreViewControllerDark.m in Sources */,
 				B3D5FE581F56AF31006A2BF2 /* AbiParameterTypeFixedBytes.m in Sources */,
+				B3D12F5A1FBAD9FD00DEE41E /* NSTree.m in Sources */,
 				E7C101CC1F1529EC00848526 /* RecieveViewControllerDark.m in Sources */,
 				B36EBC301F2F12FC00F4E2F2 /* NoInternetConnectionPopUpViewControllerLight.m in Sources */,
 				B3EA53001F45E1F1002FD201 /* QStoreListViewControllerDark.m in Sources */,
@@ -5634,6 +5653,7 @@
 				B3DC9CEB1F30CB56006B2E07 /* TokenFunctionViewControllerDark.m in Sources */,
 				B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */,
 				B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */,
+				B3D12F5E1FBB31A100DEE41E /* SourceCodeTextView.m in Sources */,
 				B321E8841E0C3B1300DC7DE5 /* BottomShadowView.m in Sources */,
 				B3EE8F481F13708500131823 /* ChoseTokenPaymentViewControllerDark.m in Sources */,
 				B365058F1F14B17300521603 /* WalletNameViewControllerDark.m in Sources */,
