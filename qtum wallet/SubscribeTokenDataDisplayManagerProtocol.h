@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SubscribeTokenDataDisplayManagerDelegate.h"
 
-@protocol SubscribeTokenDataDisplayManagerProtocol <UITableViewDelegate, UITableViewDataSource>
+@protocol SubscribeTokenDataDisplayManagerProtocol <UITableViewDelegate,UITableViewDataSource>
 
-@property (copy, nonatomic) NSArray <Contract *> *tokensArray;
+@property (copy, nonatomic) NSArray <Contract*>* tokensArray;
 @property (weak, nonatomic) id <SubscribeTokenDataDisplayManagerDelegate> delegate;
 
 @end

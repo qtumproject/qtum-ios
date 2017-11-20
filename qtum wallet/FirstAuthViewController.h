@@ -13,7 +13,7 @@
 
 @interface FirstAuthViewController : BaseViewController <FirstAuthOutput>
 
-@property (weak, nonatomic) id <FirstAuthOutputDelegate> delegate;
+@property (weak,nonatomic)id <FirstAuthOutputDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (weak, nonatomic) IBOutlet UIButton *restoreButton;

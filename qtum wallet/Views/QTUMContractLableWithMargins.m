@@ -16,27 +16,27 @@
 
 @implementation QTUMContractLableWithMargins
 
-- (instancetype)initWithCoder:(NSCoder *) aDecoder {
-
-	self = [super initWithCoder:aDecoder];
-
-	if (self) {
-		self.insets = UIEdgeInsetsMake (0, 4, 0, 4);
-	}
-	return self;
+-(instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        self.insets = UIEdgeInsetsMake(0, 4, 0, 4);
+    }
+    return self;
 }
 
-- (void)drawTextInRect:(CGRect) rect {
-
-	[super drawTextInRect:UIEdgeInsetsInsetRect (rect, self.insets)];
+- (void)drawTextInRect:(CGRect)rect {
+    
+    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.insets)];
 }
 
 - (CGSize)intrinsicContentSize {
-
-	CGSize size = [super intrinsicContentSize];
-	size.width += self.insets.left + self.insets.right;
-	size.height += self.insets.top + self.insets.bottom;
-	return size;
+    
+    CGSize size = [super intrinsicContentSize];
+    size.width  += self.insets.left + self.insets.right;
+    size.height += self.insets.top + self.insets.bottom;
+    return size;
 }
 
 @end

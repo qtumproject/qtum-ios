@@ -8,17 +8,17 @@
 
 #import "QTUMDefaultTagCell.h"
 
-NSString *const QTUMDefaultTagCellReuseIdentifire = @"QTUMDefaultTagCellReuseIdentifire";
+NSString * const QTUMDefaultTagCellReuseIdentifire = @"QTUMDefaultTagCellReuseIdentifire";
 
 @implementation QTUMDefaultTagCell
 
 - (void)awakeFromNib {
-
-	[super awakeFromNib];
+    
+    [super awakeFromNib];
 }
 
-- (CGFloat)calculateSelfHeight {
-	return 212;
+-(CGFloat)calculateSelfHeight {
+    return 212;
 }
 
 @end

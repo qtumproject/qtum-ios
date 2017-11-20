@@ -25,6 +25,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *unconfirmedSymbol;
 @property (unsafe_unretained, nonatomic) IBOutlet WKInterfaceLabel *confirmedSymbol;
 
-@property (nonatomic, weak) id <BalanceCellDelegaete> delegate;
+@property (nonatomic, weak) id<BalanceCellDelegaete> delegate;
 
 @end

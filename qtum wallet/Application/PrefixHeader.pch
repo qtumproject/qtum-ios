@@ -6,9 +6,7 @@
 //  Copyright © 2016 QTUM. All rights reserved.
 //
 #ifdef __OBJC__
-
 #import <Foundation/Foundation.h>
-
 #ifndef PrefixHeader_pch
 
 #define PrefixHeader_pch
@@ -42,9 +40,6 @@
 #import "ServiceLocator.h"
 
 #define SLocator ((ServiceLocator*)[ServiceLocator sharedInstance])
-
-//#import "BTCTransactionInput+Extension.h"
-//#import "BTCTransactionOutput+Extension.h"
 
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 

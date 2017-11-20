@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const normalCellReuseIdentifire;
-extern NSString *const separatorCellReuseIdentifire;
-extern NSString *const switchCellReuseIdentifire;
+extern NSString * const normalCellReuseIdentifire;
+extern NSString * const separatorCellReuseIdentifire;
+extern NSString * const switchCellReuseIdentifire;
 
 @interface ProfileTableViewCell : UITableViewCell
 

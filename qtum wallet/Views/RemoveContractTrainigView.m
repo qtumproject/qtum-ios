@@ -10,12 +10,12 @@
 
 @implementation RemoveContractTrainigView
 
-- (IBAction)didTapOnView:(id) sender {
-
-	if ([self.delegate respondsToSelector:@selector (didTapOnView)]) {
-
-		[self.delegate didTapOnView];
-	}
+- (IBAction)didTapOnView:(id)sender {
+    
+    if ([self.delegate respondsToSelector:@selector(didTapOnView)]) {
+        
+        [self.delegate didTapOnView];
+    }
 }
 
 @end

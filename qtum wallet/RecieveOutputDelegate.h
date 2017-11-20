@@ -9,8 +9,7 @@
 @protocol RecieveOutputDelegate <NSObject>
 
 - (void)didBackPressed;
-
 @optional
-- (void)didPressedChooseAddressWithPreviusAddress:(NSString *) prevAddress;
+-(void)didPressedChooseAddressWithPreviusAddress:(NSString*) prevAddress;
 
 @end

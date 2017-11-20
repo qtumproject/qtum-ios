@@ -13,8 +13,8 @@
 
 @interface ChooseTokenPaymentDelegateDataSource : NSObject <ChooseTokenPaymentDelegateDataSourceProtocol>
 
-@property (weak, nonatomic) Contract *activeToken;
+@property (weak, nonatomic) Contract* activeToken;
 @property (weak, nonatomic) id <ChooseTokekPaymentDelegateDataSourceDelegate> delegate;
-@property (copy, nonatomic) NSArray <Contract *> *tokens;
+@property (copy, nonatomic) NSArray <Contract*>* tokens;
 
 @end

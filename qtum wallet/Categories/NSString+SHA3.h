@@ -33,6 +33,6 @@ static NSInteger SHA3256 = 256;
 
 @interface NSString (SHA3)
 
-- (NSString *)sha3:(NSUInteger) bitsLength;
+-(NSString*) sha3:(NSUInteger)bitsLength;
 
 @end

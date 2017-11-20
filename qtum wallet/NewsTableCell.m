@@ -10,15 +10,16 @@
 
 @implementation NewsTableCell
 
-- (void)prepareForReuse {
-
-	[super prepareForReuse];
-	self.titleLabel.text = @"";
-	self.descriptionLabel.text = @"";
-	self.dateLabel.text = @"";
+-(void)prepareForReuse {
+    
+    [super prepareForReuse];
+    self.titleLabel.text = @"";
+    self.descriptionLabel.text = @"";
+    self.dateLabel.text = @"";
 }
 
 #pragma mark - Public Methods
+
 
 
 @end

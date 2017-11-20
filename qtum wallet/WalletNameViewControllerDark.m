@@ -15,7 +15,7 @@
 @implementation WalletNameViewControllerDark
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
+    [super viewDidLoad];
 }
 
 

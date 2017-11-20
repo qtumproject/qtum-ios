@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
 @property (weak, nonatomic) IBOutlet UILabel *amount;
 
-- (void)changeHighlight:(BOOL) value;
+- (void)changeHighlight:(BOOL)value;
 
 @end

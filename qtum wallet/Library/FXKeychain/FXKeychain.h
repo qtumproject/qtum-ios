@@ -40,7 +40,6 @@
 
 
 #import <TargetConditionals.h>
-
 #ifndef FXKEYCHAIN_USE_NSCODING
 #if TARGET_OS_IPHONE
 #define FXKEYCHAIN_USE_NSCODING 1
@@ -50,13 +49,14 @@
 #endif
 
 
-typedef NS_ENUM(NSInteger, FXKeychainAccess) {
-	FXKeychainAccessibleWhenUnlocked = 0,
-	FXKeychainAccessibleAfterFirstUnlock,
-	FXKeychainAccessibleAlways,
-	FXKeychainAccessibleWhenUnlockedThisDeviceOnly,
-	FXKeychainAccessibleAfterFirstUnlockThisDeviceOnly,
-	FXKeychainAccessibleAlwaysThisDeviceOnly
+typedef NS_ENUM(NSInteger, FXKeychainAccess)
+{
+    FXKeychainAccessibleWhenUnlocked = 0,
+    FXKeychainAccessibleAfterFirstUnlock,
+    FXKeychainAccessibleAlways,
+    FXKeychainAccessibleWhenUnlockedThisDeviceOnly,
+    FXKeychainAccessibleAfterFirstUnlockThisDeviceOnly,
+    FXKeychainAccessibleAlwaysThisDeviceOnly
 };
 
 
@@ -69,26 +69,20 @@ typedef NS_ENUM(NSInteger, FXKeychainAccess) {
 @property (nonatomic, readonly, nullable) NSString *accessGroup;
 @property (nonatomic, assign) FXKeychainAccess accessibility;
 
-- (nonnull id)initWithService:(nullable NSString *) service
-				  accessGroup:(nullable NSString *) accessGroup
-				accessibility:(FXKeychainAccess) accessibility;
+- (nonnull id)initWithService:(nullable NSString *)service
+                  accessGroup:(nullable NSString *)accessGroup
+                accessibility:(FXKeychainAccess)accessibility;
 
-- (nonnull id)initWithService:(nullable NSString *) service
-				  accessGroup:(nullable NSString *) accessGroup;
+- (nonnull id)initWithService:(nullable NSString *)service
+                  accessGroup:(nullable NSString *)accessGroup;
 
-- (BOOL)setObject:(nullable id) object forKey:(nonnull id) key;
-
-- (BOOL)setObject:(nullable id) object forKeyedSubscript:(nonnull id) key;
-
-- (BOOL)removeObjectForKey:(nonnull id) key;
-
-- (nullable id)objectForKey:(nonnull id) key;
-
-- (nullable id)objectForKeyedSubscript:(nonnull id) key;
-
-- (void)addTouchIdString:(NSString *_Nonnull) touchIDString;
-
-- (void)touchIDString:(void (^ _Nullable)(NSString *_Nullable string, NSError *_Nullable error)) handler;
+- (BOOL)setObject:(nullable id)object forKey:(nonnull id)key;
+- (BOOL)setObject:(nullable id)object forKeyedSubscript:(nonnull id)key;
+- (BOOL)removeObjectForKey:(nonnull id)key;
+- (nullable id)objectForKey:(nonnull id)key;
+- (nullable id)objectForKeyedSubscript:(nonnull id)key;
+- (void)addTouchIdString:(NSString* _Nonnull) touchIDString;
+- (void)touchIDString:(void(^_Nullable)(NSString * _Nullable string, NSError * _Nullable error)) handler;
 
 @end
 

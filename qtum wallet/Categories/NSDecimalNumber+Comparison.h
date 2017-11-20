@@ -10,14 +10,10 @@
 
 @interface NSDecimalNumber (Comparison)
 
-- (BOOL)isLessThan:(NSDecimalNumber *) decimalNumber;
-
-- (BOOL)isLessThanOrEqualTo:(NSDecimalNumber *) decimalNumber;
-
-- (BOOL)isGreaterThan:(NSDecimalNumber *) decimalNumber;
-
-- (BOOL)isGreaterThanOrEqualTo:(NSDecimalNumber *) decimalNumber;
-
-- (BOOL)isEqualToDecimalNumber:(NSDecimalNumber *) decimalNumber;
+- (BOOL)isLessThan:(NSDecimalNumber *)decimalNumber;
+- (BOOL)isLessThanOrEqualTo:(NSDecimalNumber *)decimalNumber;
+- (BOOL)isGreaterThan:(NSDecimalNumber *)decimalNumber;
+- (BOOL)isGreaterThanOrEqualTo:(NSDecimalNumber *)decimalNumber;
+- (BOOL)isEqualToDecimalNumber:(NSDecimalNumber *)decimalNumber;
 
 @end

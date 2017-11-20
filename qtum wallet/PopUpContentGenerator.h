@@ -13,39 +13,22 @@
 @interface PopUpContentGenerator : NSObject
 
 + (PopUpContent *)contentForOupsPopUp;
-
 + (PopUpContent *)contentForUpdateBalance;
-
 + (PopUpContent *)contentForPhotoLibrary;
-
 + (PopUpContent *)contentForCreateContract;
-
 + (PopUpContent *)contentForSend;
-
 + (PopUpContent *)contentForCompletedBackupFile;
-
 + (PopUpContent *)contentForBrainCodeCopied;
-
 + (PopUpContent *)contentForAddressCopied;
-
 + (PopUpContent *)contentForSourceCode;
-
 + (PopUpContent *)contentForAbiCopied;
-
 + (PopUpContent *)contentForRequestTokenPopUp;
-
 + (PopUpContent *)contentForInvalidQRCodeFormatPopUp;
-
 + (PopUpContent *)contentForTokenAdded;
-
 + (PopUpContent *)contentForContractAdded;
-
 + (PopUpContent *)contentForContractBought;
-
 + (PopUpContent *)contentForQStoreAbi;
-
 + (PopUpContent *)contentForRestoredContracts;
-
 + (PopUpContent *)contentForConfirmChangesInSend;
 
 @end

@@ -10,9 +10,9 @@
 
 @implementation QStoreTableViewCellLight
 
-+ (CGFloat)getHeightCellForRowCount:(NSInteger) count {
++ (CGFloat)getHeightCellForRowCount:(NSInteger)count {
 
-	return 200;
+    return 200;
 }
 
 @end

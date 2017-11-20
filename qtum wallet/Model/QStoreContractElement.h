@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, QStoreElementState) {
-	QStoreElementStateCategory,
-	QStoreElementStateSearch,
-	QStoreElementStateFull
+    QStoreElementStateCategory,
+    QStoreElementStateSearch,
+    QStoreElementStateFull
 };
 
 typedef NS_ENUM(NSInteger, QStoreElementPurchaseState) {
-	QStoreElementPurchaseStateNotPurchased,
-	QStoreElementPurchaseStateInPurchase,
-	QStoreElementPurchaseStatePurchased
+    QStoreElementPurchaseStateNotPurchased,
+    QStoreElementPurchaseStateInPurchase,
+    QStoreElementPurchaseStatePurchased
 };
 
 @interface QStoreContractElement : NSObject
@@ -43,48 +43,45 @@ typedef NS_ENUM(NSInteger, QStoreElementPurchaseState) {
 @property (nonatomic, readonly) BOOL withSourseCode;
 @property (nonatomic) NSString *abiString;
 
-- (instancetype)initWithIdString:(NSString *) idString
-							name:(NSString *) name
-					 priceString:(NSString *) priceString
-						countBuy:(NSNumber *) countBuy
-				  countDownloads:(NSNumber *) countDownloads
-					   createdAt:(NSDate *) createdAt
-					  typeString:(NSString *) typeString;
+- (instancetype)initWithIdString:(NSString *)idString
+                            name:(NSString *)name
+                     priceString:(NSString *)priceString
+                        countBuy:(NSNumber *)countBuy
+                  countDownloads:(NSNumber *)countDownloads
+                       createdAt:(NSDate *)createdAt
+                      typeString:(NSString *)typeString;
 
-- (instancetype)initWithIdString:(NSString *) idString
-							name:(NSString *) name
-					 priceString:(NSString *) priceString
-						countBuy:(NSNumber *) countBuy
-				  countDownloads:(NSNumber *) countDownloads
-					   createdAt:(NSDate *) createdAt
-					  typeString:(NSString *) typeString
-			 contractDescription:(NSString *) contractDescription
-				publisherAddress:(NSString *) publisherAddress
-							size:(NSString *) size
-					 completedOn:(NSString *) completedOn
-							tags:(NSArray<NSString *> *) tags
-				  withSourseCode:(BOOL) withSourseCode;
+- (instancetype)initWithIdString:(NSString *)idString
+                            name:(NSString *)name
+                     priceString:(NSString *)priceString
+                        countBuy:(NSNumber *)countBuy
+                  countDownloads:(NSNumber *)countDownloads
+                       createdAt:(NSDate *)createdAt
+                      typeString:(NSString *)typeString
+             contractDescription:(NSString *)contractDescription
+                publisherAddress:(NSString *)publisherAddress
+                            size:(NSString *)size
+                     completedOn:(NSString *)completedOn
+                            tags:(NSArray<NSString *> *)tags
+                  withSourseCode:(BOOL)withSourseCode;
 
-- (instancetype)initWithIdString:(NSString *) idString
-							name:(NSString *) name
-					 priceString:(NSString *) priceString
-						countBuy:(NSNumber *) countBuy
-				  countDownloads:(NSNumber *) countDownloads
-					   createdAt:(NSDate *) createdAt
-					  typeString:(NSString *) typeString
-							tags:(NSArray<NSString *> *) tags;
+- (instancetype)initWithIdString:(NSString *)idString
+                            name:(NSString *)name
+                     priceString:(NSString *)priceString
+                        countBuy:(NSNumber *)countBuy
+                  countDownloads:(NSNumber *)countDownloads
+                       createdAt:(NSDate *)createdAt
+                      typeString:(NSString *)typeString
+                            tags:(NSArray<NSString *> *)tags;
 
 
-+ (QStoreContractElement *)createFromCategoryDictionary:(NSDictionary *) dictionary;
-
-+ (QStoreContractElement *)createFromFullDictionary:(NSDictionary *) dictionary;
-
-+ (QStoreContractElement *)createFromSearchDictionary:(NSDictionary *) dictionary;
++ (QStoreContractElement *)createFromCategoryDictionary:(NSDictionary *)dictionary;
++ (QStoreContractElement *)createFromFullDictionary:(NSDictionary *)dictionary;
++ (QStoreContractElement *)createFromSearchDictionary:(NSDictionary *)dictionary;
 
 - (NSString *)getImageNameByType;
 
-- (void)updateWithFullDictionary:(NSDictionary *) dictionary;
-
-- (void)updateWithSearchDictionary:(NSDictionary *) dictionary;
+- (void)updateWithFullDictionary:(NSDictionary *)dictionary;
+- (void)updateWithSearchDictionary:(NSDictionary *)dictionary;
 
 @end

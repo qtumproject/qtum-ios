@@ -15,7 +15,7 @@
 @implementation LanguageViewControllerLight
 
 - (NSString *)getCellIdentifier {
-	return @"LanguageTableViewCellLight";
+    return @"LanguageTableViewCellLight";
 }
 
 @end

@@ -11,14 +11,11 @@
 
 @interface MainTokenTableViewCell : AnimatedLabelTableViewCell
 
-- (UIView *)addViewOrReturnContainViewForUpdate:(UIView *) view withHeight:(CGFloat) height;
+- (UIView *)addViewOrReturnContainViewForUpdate:(UIView *)view withHeight:(CGFloat)height;
+- (void)changeTopConstaintsByPosition:(CGFloat)position diff:(CGFloat)diff;
 
-- (void)changeTopConstaintsByPosition:(CGFloat) position diff:(CGFloat) diff;
-
-- (BOOL)needShowHeader:(CGFloat) yPosition diff:(CGFloat) diff;
-
+- (BOOL)needShowHeader:(CGFloat)yPosition diff:(CGFloat)diff;
 + (CGFloat)getHeaderHeight;
-
-- (CGFloat)lastRect:(CGFloat) position;
+- (CGFloat)lastRect:(CGFloat)position;
 
 @end

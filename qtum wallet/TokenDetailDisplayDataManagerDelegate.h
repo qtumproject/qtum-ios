@@ -12,17 +12,11 @@
 
 @optional
 - (void)updateWithYOffset:(CGFloat) offset;
-
 - (void)needShowHeader;
-
 - (void)needHideHeader;
-
 - (void)needShowHeaderForSecondSeciton;
-
 - (void)needHideHeaderForSecondSeciton;
-
-- (void)didPressedInfoActionWithToken:(Contract *) token;
-
-- (void)didPressTokenAddressControlWithToken:(Contract *) token;
+- (void)didPressedInfoActionWithToken:(Contract*)token;
+- (void)didPressTokenAddressControlWithToken:(Contract*)token;
 
 @end

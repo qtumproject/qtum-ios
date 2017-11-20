@@ -21,20 +21,20 @@
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad {
-
-	[super viewDidLoad];
-	self.codeTextView.attributedText = self.sourceCode;
-	self.codeTextView.editable = NO;
+    
+    [super viewDidLoad];
+    self.codeTextView.attributedText = self.sourceCode;
+    self.codeTextView.editable = NO;
 }
 
 #pragma mark - IBActions
 
-- (IBAction)doBackAction:(id) sender {
-
-	if ([self.delegate respondsToSelector:@selector (didPressedBack)]) {
-
-		[self.delegate didPressedBack];
-	}
+- (IBAction)doBackAction:(id)sender {
+    
+    if ([self.delegate respondsToSelector:@selector(didPressedBack)]) {
+        
+        [self.delegate didPressedBack];
+    }
 }
 
 @end

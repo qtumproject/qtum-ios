@@ -89,155 +89,89 @@
 @interface ControllersFactory : NSObject
 
 + (instancetype)sharedInstance;
-
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));
-
 + (instancetype)alloc __attribute__((unavailable("alloc not available, call sharedInstance instead")));
-
-+ (instancetype)new __attribute__((unavailable("new not available, call sharedInstance instead")));
++ (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
 //Controllers
-- (UIViewController *)profileFlowTab;
-
-- (UIViewController *)newsFlowTab;
-
-- (UIViewController *)sendFlowTab;
-
-- (UINavigationController *)walletFlowTab;
-
-- (UIViewController *)changePinFlowController;
-
-- (UIViewController *)createPinFlowController;
-
-- (UIViewController *)createWalletFlowController;
-
-- (WalletNameViewController *)createWalletNameCreateController;
-
-- (NSObject <LoginViewOutput> *)createLoginController;
-
-- (NSObject <LoginViewOutput> *)createConfirmPinForExportViewController;
-
-- (NSObject <FirstAuthOutput> *)createFirstAuthController;
-
-- (NSObject <RestoreWalletOutput> *)createRestoreWalletController;
-
-- (NSObject <ChangePinOutput> *)createChangePinController;
-
-- (CreatePinViewController *)createCreatePinController;
-
-- (RepeateViewController *)createRepeatePinController;
-
-- (AuthNavigationController *)createAuthNavigationController;
-
-- (ExportWalletBrandKeyViewController *)createExportWalletBrandKeyViewController;
-
-- (SubscribeTokenViewController *)createSubscribeTokenViewController;
-
-- (CreateTokenFinishViewController *)createCreateTokenFinishViewController;
-
-- (AddNewTokensViewController *)createAddNewTokensViewController;
-
-- (ChoseTokenPaymentViewController *)createChoseTokenPaymentViewController;
-
-- (NSObject <SmartContractMenuOutput> *)createSmartContractMenuViewController;
-
-- (EnableFingerprintViewController *)createEnableFingerprintViewController;
-
-- (NSObject <ChooseReciveAddressOutput> *)createChooseReciveAddressOutput;
+- (UIViewController*)profileFlowTab;
+- (UIViewController*)newsFlowTab;
+- (UIViewController*)sendFlowTab;
+- (UINavigationController*)walletFlowTab;
+- (UIViewController*)changePinFlowController;
+- (UIViewController*)createPinFlowController;
+- (UIViewController*)createWalletFlowController;
+- (WalletNameViewController*)createWalletNameCreateController;
+- (NSObject<LoginViewOutput>*)createLoginController;
+- (NSObject<LoginViewOutput>*)createConfirmPinForExportViewController;
+- (NSObject<FirstAuthOutput>*)createFirstAuthController;
+- (NSObject<RestoreWalletOutput>*)createRestoreWalletController;
+- (NSObject <ChangePinOutput>*)createChangePinController;
+- (CreatePinViewController*)createCreatePinController;
+- (RepeateViewController*)createRepeatePinController;
+- (AuthNavigationController*)createAuthNavigationController;
+- (ExportWalletBrandKeyViewController*)createExportWalletBrandKeyViewController;
+- (SubscribeTokenViewController*)createSubscribeTokenViewController;
+- (CreateTokenFinishViewController*)createCreateTokenFinishViewController;
+- (AddNewTokensViewController*)createAddNewTokensViewController;
+- (ChoseTokenPaymentViewController*)createChoseTokenPaymentViewController;
+- (NSObject <SmartContractMenuOutput>*)createSmartContractMenuViewController;
+- (EnableFingerprintViewController*)createEnableFingerprintViewController;
+- (NSObject<ChooseReciveAddressOutput> *)createChooseReciveAddressOutput;
 
 - (NSObject <TokenDetailOutput> *)createTokenDetailsViewController;
-
 - (NSObject <TemplatesListOutput> *)createTemplateTokenViewController;
-
-- (NSObject <PublishedContractListOutput> *)createSmartContractsListViewController;
-
-- (NSObject <WatchContractOutput> *)createWatchContractViewController;
-
-- (NSObject <WatchContractOutput> *)createWatchTokensViewController;
-
-- (NSObject <NewPaymentOutput> *)createNewPaymentDarkViewController;
-
+- (NSObject <PublishedContractListOutput>*)createSmartContractsListViewController;
+- (NSObject <WatchContractOutput>*)createWatchContractViewController;
+- (NSObject <WatchContractOutput>*)createWatchTokensViewController;
+- (NSObject <NewPaymentOutput>*)createNewPaymentDarkViewController;
 - (NSObject <WalletOutput> *)createWalletViewController;
-
 - (NSObject <TokenListOutput> *)createTokenListViewController;
-
 - (NSObject <LanguageOutput> *)createLanguageViewController;
-
 - (NSObject <ExportBrainKeyOutput> *)createExportBrainKeyViewController;
-
 - (NSObject <HistoryItemOutput> *)createHistoryItem;
-
 - (NSObject <RecieveOutput> *)createRecieveViewController;
-
 - (NSObject <LibraryOutput> *)createLibraryViewController;
-
-- (NSObject <RestoreContractsOutput> *)createRestoreContractViewController;
-
-- (NSObject <BackupContractOutput> *)createBackupContractViewController;
-
+- (NSObject <RestoreContractsOutput>*)createRestoreContractViewController;
+- (NSObject <BackupContractOutput>*)createBackupContractViewController;
 - (NSObject <ConstructorAbiOutput> *)createConstructorFromAbiViewController;
-
-- (NSObject <ContractFunctionDetailOutput> *)createTokenFunctionDetailViewController;
-
+- (NSObject <ContractFunctionDetailOutput>*)createTokenFunctionDetailViewController;
 - (NSObject <ContractFunctionsOutput> *)createTokenFunctionViewController;
-
-- (NSObject <AddressControlOutput> *)createAddressControllOutput;
-
-- (NSObject <TokenAddressLibraryOutput> *)createTokenAddressControllOutput;
-
+- (NSObject <AddressControlOutput>*)createAddressControllOutput;
+- (NSObject <TokenAddressLibraryOutput>*)createTokenAddressControllOutput;
 - (NSObject <SplashScreenOutput> *)createSplashScreenOutput;
-
 - (NSObject <QStoreTemplateDetailOutput> *)createQStoreTemplateDetailOutput;
-
 - (NSObject <AboutOutput> *)createAboutOutput;
-
-- (NSObject <NewsOutput> *)createNewsOutput;
-
-- (NSObject <NewsDetailOutput> *)createNewsDetailOutput;
-
-- (NSObject <SourceCodeOutput> *)createSourceCodeOutput;
+- (NSObject <NewsOutput>*)createNewsOutput;
+- (NSObject <NewsDetailOutput>*)createNewsDetailOutput;
+- (NSObject <SourceCodeOutput>*)createSourceCodeOutput;
 
 // QStore
 - (NSObject <QStoreMainOutput> *)createQStoreMainViewController;
-
 - (NSObject <QStoreContractOutput> *)createQStoreContractViewController;
+- (NSObject<QStoreListOutput> *)createQStoreListViewController;
 
-- (NSObject <QStoreListOutput> *)createQStoreListViewController;
-
-- (QRCodeViewController *)createQRCodeViewControllerForWallet;
-
-- (QRCodeViewController *)createQRCodeViewControllerForSend;
-
-- (QRCodeViewController *)createQRCodeViewControllerForSubscribe;
+- (QRCodeViewController*)createQRCodeViewControllerForWallet;
+- (QRCodeViewController*)createQRCodeViewControllerForSend;
+- (QRCodeViewController*)createQRCodeViewControllerForSubscribe;
 
 // Pop ups
-- (NoInternetConnectionPopUpViewController *)createNoInternetConnectionPopUpViewController;
-
-- (PhotoLibraryPopUpViewController *)createPhotoLibraryPopUpViewController;
-
-- (ErrorPopUpViewController *)createErrorPopUpViewController;
-
-- (InformationPopUpViewController *)createInformationPopUpViewController;
-
-- (ConfirmPopUpViewController *)createConfirmPopUpViewController;
-
+- (NoInternetConnectionPopUpViewController*)createNoInternetConnectionPopUpViewController;
+- (PhotoLibraryPopUpViewController*)createPhotoLibraryPopUpViewController;
+- (ErrorPopUpViewController*)createErrorPopUpViewController;
+- (InformationPopUpViewController*)createInformationPopUpViewController;
+- (ConfirmPopUpViewController*)createConfirmPopUpViewController;
 - (LoaderPopUpViewController *)createLoaderViewController;
-
 - (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
-
 - (SecurityPopupViewController *)createSecurityPopupViewController;
 
 - (SourceCodePopUpViewController *)createSourceCodePopUpViewController;
-
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
-
 - (ShareTokenPopUpViewController *)createShareTokenPopUpViewController;
-
 - (AddressTransferPopupViewController *)createAddressTransferPopupViewController;
 
-- (UIViewController *)createFlowNavigationCoordinator;
-
-- (UITabBarController <TabbarOutput> *)createTabFlow;
+- (UIViewController*)createFlowNavigationCoordinator;
+- (UITabBarController <TabbarOutput>*)createTabFlow;
 
 
 @end

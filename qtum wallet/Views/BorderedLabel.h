@@ -13,11 +13,8 @@
 @property (nonatomic, readonly) UIView *borderView;
 
 - (UIColor *)getBorderColor;
-
 - (UIColor *)getBackroundColor;
-
 - (UIView *)getBorderView;
-
 - (CGFloat)getInsets;
 
 @end

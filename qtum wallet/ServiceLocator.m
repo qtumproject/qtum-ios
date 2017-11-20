@@ -11,39 +11,39 @@
 @implementation ServiceLocator
 
 + (instancetype)sharedInstance {
-
-	static ServiceLocator *instance;
-	static dispatch_once_t onceToken;
-	dispatch_once (&onceToken, ^{
-		instance = [[super alloc] initUniqueInstance];
-	});
-	return instance;
+    
+    static ServiceLocator *instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[super alloc] initUniqueInstance];
+    });
+    return instance;
 }
 
 - (instancetype)initUniqueInstance {
-
-	self = [super init];
-
-	if (self != nil) {
-		_backupFileManager = [BackupFileManager new];
-		_templateManager = [TemplateManager new];
-		_contractArgumentsInterpretator = [ContractArgumentsInterpretator new];
-		_contractFileManager = [ContractFileManager new];
-		_contractInterfaceManager = [ContractInterfaceManager new];
-		_dataOperation = [DataOperation new];
-		_imageLoader = [ImageLoader new];
-		_notificationManager = [NotificationManager new];
-		_openURLManager = [OpenURLManager new];
-		_transactionManager = [TransactionManager new];
-		_appSettings = [AppSettings new];
-		_newsDataProvider = [NewsDataProvider new];
-		_controllersFactory = [ControllersFactory sharedInstance];
-		_requestManager = [[RequestManager alloc] initWithBaseUrl:_appSettings.baseURL];
-		_walletManager = [WalletManager new];
-		_contractInfoFacade = [ContractInfoFacade new];
-		_sourceCodeFormatService = [SourceCodeFormatService new];
-	}
-	return self;
+    
+    self = [super init];
+    
+    if (self != nil) {
+        _backupFileManager = [BackupFileManager new];
+        _templateManager = [TemplateManager new];
+        _contractArgumentsInterpretator = [ContractArgumentsInterpretator new];
+        _contractFileManager = [ContractFileManager new];
+        _contractInterfaceManager = [ContractInterfaceManager new];
+        _dataOperation = [DataOperation new];
+        _imageLoader = [ImageLoader new];
+        _notificationManager = [NotificationManager new];
+        _openURLManager = [OpenURLManager new];
+        _transactionManager = [TransactionManager new];
+        _appSettings = [AppSettings new];
+        _newsDataProvider = [NewsDataProvider new];
+        _controllersFactory = [ControllersFactory sharedInstance];
+        _requestManager = [[RequestManager alloc] initWithBaseUrl:_appSettings.baseURL];
+        _walletManager = [WalletManager new];
+        _contractInfoFacade = [ContractInfoFacade new];
+        _sourceCodeFormatService = [SourceCodeFormatService new];
+    }
+    return self;
 }
 
 @end

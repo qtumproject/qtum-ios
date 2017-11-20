@@ -11,7 +11,7 @@
 
 @interface TokenListViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource, TokenListOutput>
 
-@property (copy, nonatomic) NSArray<Contract *> *tokens;
+@property (copy, nonatomic) NSArray<Contract*> *tokens;
 @property (weak, nonatomic) id <TokenListOutputDelegate> delegate;
 
 @end

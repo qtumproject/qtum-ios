@@ -10,6 +10,6 @@
 
 @protocol Clearable <NSObject>
 
-- (void)clear;
+-(void)clear;
 
 @end

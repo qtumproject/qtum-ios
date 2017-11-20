@@ -23,12 +23,9 @@
 @property (strong, nonatomic) NSMutableArray *fromAddreses;
 @property (strong, nonatomic) NSMutableArray *toAddresses;
 
-- (BOOL)isEqualElementWithoutConfimation:(HistoryElement *) object;
-
-- (void)setupWithObject:(id) object;
-
+- (BOOL)isEqualElementWithoutConfimation:(HistoryElement*)object;
+- (void)setupWithObject:(id)object;
 - (NSDictionary *)dictionaryFromElementForWatch;
-
-- (NSString *)formattedDateStringSinceCome;
+- (NSString*)formattedDateStringSinceCome;
 
 @end

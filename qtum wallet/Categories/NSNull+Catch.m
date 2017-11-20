@@ -11,23 +11,25 @@
 @implementation NSNull (Catch)
 
 
-- (NSMethodSignature *)methodSignatureForSelector:(SEL) aSelector {
-	NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
+    NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
 
-	if (!signature) {
-		signature = [NSMethodSignature signatureWithObjCTypes:"@:"];
-	}
+    if (!signature) {
+        signature = [NSMethodSignature signatureWithObjCTypes:"@:"];
+    }
 
-	return signature;
+    return signature;
 }
 
-- (void)forwardInvocation:(NSInvocation *) anInvocation {
-	DLog(@"NULL EXEPTION");
-	//[NSException raise:NSInvalidArgumentException format:@"NULL EXEPTION"];
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{
+    DLog(@"NULL EXEPTION");
+    //[NSException raise:NSInvalidArgumentException format:@"NULL EXEPTION"];
 }
 
-- (NSNumber *)roundedNumberWithScale:(NSInteger) scale {
-	return [NSNumber new];
+- (NSNumber*)roundedNumberWithScale:(NSInteger) scale {
+    return [NSNumber new];
 }
 
 @end

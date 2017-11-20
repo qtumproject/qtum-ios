@@ -20,35 +20,35 @@
 @implementation SplashViewControllerDark
 
 - (void)viewDidLoad {
-
-	[super viewDidLoad];
-
-	self.titleLabel.alpha = 0.0f;
-	self.textLabel.alpha = 0.0f;
+    
+    [super viewDidLoad];
+    
+    self.titleLabel.alpha = 0.0f;
+    self.textLabel.alpha = 0.0f;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-
-	return UIStatusBarStyleLightContent;
+    
+    return UIStatusBarStyleLightContent;
 }
 
-- (void)viewDidAppear:(BOOL) animated {
-
-	[super viewDidAppear:animated];
-
-	[UIView animateWithDuration:1.0f animations:^{
-		self.titleLabel.alpha = 1.0f;
-		self.textLabel.alpha = 1.0f;
-	}                completion:^(BOOL finished) {
-		[self.logoImageView startAnimating];
-	}];
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:1.0f animations:^{
+        self.titleLabel.alpha = 1.0f;
+        self.textLabel.alpha = 1.0f;
+    } completion:^(BOOL finished) {
+        [self.logoImageView startAnimating];
+    }];
 }
 
-- (void)viewWillDisappear:(BOOL) animated {
-
-	[super viewWillDisappear:animated];
-
-	[self.logoImageView stopAnimating];
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    [self.logoImageView stopAnimating];
 }
 
 @end

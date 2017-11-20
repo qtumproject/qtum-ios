@@ -11,16 +11,13 @@
 @protocol Coordinatorable <NSObject>
 
 @required
-- (void)start;
+-(void)start;
 
 @optional
-- (instancetype)initWithViewController:(UIViewController *) viewController;
-
-- (instancetype)initWithPageViewController:(UIPageViewController *) pageViewController;
-
-- (instancetype)initWithParentViewContainer:(UIViewController *) containerViewController;
-
-- (instancetype)initWithNavigationController:(UINavigationController *) navigationController;
+- (instancetype)initWithViewController:(UIViewController*)viewController;
+- (instancetype)initWithPageViewController:(UIPageViewController*)pageViewController;
+- (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;
+- (instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 
 
 @end

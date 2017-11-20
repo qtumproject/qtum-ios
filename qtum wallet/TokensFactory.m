@@ -13,20 +13,19 @@
 @implementation TokensFactory
 
 + (instancetype)sharedInstance {
-
-	static TokensFactory *instance;
-	static dispatch_once_t onceToken;
-	dispatch_once (&onceToken, ^{
-		instance = [[super alloc] initUniqueInstance];
-	});
-	return instance;
+    
+    static TokensFactory *instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[super alloc] initUniqueInstance];
+    });
+    return instance;
 }
 
 - (instancetype)initUniqueInstance {
-	self = [super init];
-	if (self != nil) {
-	}
-	return self;
+    self = [super init];
+    if (self != nil) { }
+    return self;
 }
 
 @end

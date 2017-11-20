@@ -14,10 +14,10 @@
 
 @implementation RepeateViewControllerDark
 
-- (void)configPasswordView {
-
-	[self.passwordView setStyle:DarkStyle lenght:LongType];
-	self.passwordView.delegate = self;
+-(void)configPasswordView {
+    
+    [self.passwordView setStyle:DarkStyle lenght:LongType];
+    self.passwordView.delegate = self;
 }
 
 @end

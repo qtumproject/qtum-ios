@@ -12,6 +12,6 @@
 
 @interface AddNewTokensViewController : BaseViewController
 
-@property (weak, nonatomic) id <SubscribeTokenCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id<SubscribeTokenCoordinatorDelegate> delegate;
 
 @end

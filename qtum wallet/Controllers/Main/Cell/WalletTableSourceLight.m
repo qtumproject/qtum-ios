@@ -12,46 +12,46 @@
 
 @implementation WalletTableSourceLight
 
-- (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	if (indexPath.section == 0) {
-		switch ([self headerCellType]) {
-			case HeaderCellTypeWithoutNotCorfirmedBalance:
-			case HeaderCellTypeWithoutAll:
-				return 164;
-			case HeaderCellTypeWithoutPageControl:
-			case HeaderCellTypeAllVisible:
-				return 214;
-			default:
-				return 214;
-		}
-	} else {
-		return 55;
-	}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        switch ([self headerCellType]) {
+            case HeaderCellTypeWithoutNotCorfirmedBalance:
+            case HeaderCellTypeWithoutAll:
+                return 164;
+            case HeaderCellTypeWithoutPageControl:
+            case HeaderCellTypeAllVisible:
+                return 214;
+            default:
+                return 214;
+        }
+    } else {
+        return 55;
+    }
 }
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self updateEmptyPlaceholderView];
 
-	[self updateEmptyPlaceholderView];
-
-	if (indexPath.section == 0) {
-		WalletHeaderCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"WalletHeaderCellLight"];
-
-		cell.delegate = self.delegate;
-		[cell setCellType:[self headerCellType]];
-		[cell setData:self.wallet];
-		[self didScrollForheaderCell:tableView];
-
-		return cell;
-	} else {
-		HistoryTableViewCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
-
-		HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
-		cell.historyElement = element;
-		[cell changeHighlight:NO];
-
-		return cell;
-	}
+    if (indexPath.section == 0) {
+        WalletHeaderCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"WalletHeaderCellLight"];
+        
+        cell.delegate = self.delegate;
+        [cell setCellType:[self headerCellType]];
+        [cell setData:self.wallet];
+        [self didScrollForheaderCell:tableView];
+        
+        return cell;
+    } else {
+        HistoryTableViewCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
+        
+        HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
+        cell.historyElement = element;
+        [cell changeHighlight:NO];
+        
+        return cell;
+    }
 }
 
 @end

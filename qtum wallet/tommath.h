@@ -24,11 +24,11 @@
 #include "tommath_class.h"
 
 #ifndef MIN
-#define MIN(x,y) ((x)<(y)?(x):(y))
+   #define MIN(x,y) ((x)<(y)?(x):(y))
 #endif
 
 #ifndef MAX
-#define MAX(x,y) ((x)>(y)?(x):(y))
+   #define MAX(x,y) ((x)>(y)?(x):(y))
 #endif
 
 #ifdef __cplusplus
@@ -46,10 +46,10 @@ extern "C" {
 
 
 /* detect 64-bit mode if possible */
-#if defined(__x86_64__)
-#if !(defined(MP_64BIT) && defined(MP_16BIT) && defined(MP_8BIT))
-#define MP_64BIT
-#endif
+#if defined(__x86_64__) 
+   #if !(defined(MP_64BIT) && defined(MP_16BIT) && defined(MP_8BIT))
+      #define MP_64BIT
+   #endif
 #endif
 
 /* some default configurations.
@@ -61,70 +61,70 @@ extern "C" {
  * [any size beyond that is ok provided it doesn't overflow the data type]
  */
 #ifdef MP_8BIT
-typedef unsigned char      mp_digit;
-typedef unsigned short     mp_word;
+   typedef unsigned char      mp_digit;
+   typedef unsigned short     mp_word;
 #elif defined(MP_16BIT)
-typedef unsigned short     mp_digit;
-typedef unsigned long      mp_word;
+   typedef unsigned short     mp_digit;
+   typedef unsigned long      mp_word;
 #elif defined(MP_64BIT)
-/* for GCC only on supported platforms */
+   /* for GCC only on supported platforms */
 #ifndef CRYPT
-typedef unsigned long long ulong64;
-typedef signed long long   long64;
+   typedef unsigned long long ulong64;
+   typedef signed long long   long64;
 #endif
 
-typedef unsigned long      mp_digit;
-typedef unsigned long      mp_word __attribute__ ((mode(TI)));
+   typedef unsigned long      mp_digit;
+   typedef unsigned long      mp_word __attribute__ ((mode(TI)));
 
-#define DIGIT_BIT          60
+   #define DIGIT_BIT          60
 #else
-/* this is the default case, 28-bit digits */
-
-/* this is to make porting into LibTomCrypt easier :-) */
+   /* this is the default case, 28-bit digits */
+   
+   /* this is to make porting into LibTomCrypt easier :-) */
 #ifndef CRYPT
-#if defined(_MSC_VER) || defined(__BORLANDC__)
-typedef unsigned __int64   ulong64;
-typedef signed __int64     long64;
-#else
-typedef unsigned long long ulong64;
-typedef signed long long long64;
-#endif
+   #if defined(_MSC_VER) || defined(__BORLANDC__) 
+      typedef unsigned __int64   ulong64;
+      typedef signed __int64     long64;
+   #else
+      typedef unsigned long long ulong64;
+      typedef signed long long   long64;
+   #endif
 #endif
 
-typedef unsigned long mp_digit;
-typedef ulong64 mp_word;
+   typedef unsigned long      mp_digit;
+   typedef ulong64            mp_word;
 
-#ifdef MP_31BIT
-/* this is an extension that uses 31-bit digits */
-#define DIGIT_BIT          31
+#ifdef MP_31BIT   
+   /* this is an extension that uses 31-bit digits */
+   #define DIGIT_BIT          31
 #else
-/* default case is 28-bit digits, defines MP_28BIT as a handy macro to test */
-#define DIGIT_BIT          28
-#define MP_28BIT
-#endif
+   /* default case is 28-bit digits, defines MP_28BIT as a handy macro to test */
+   #define DIGIT_BIT          28
+   #define MP_28BIT
+#endif   
 #endif
 
 /* define heap macros */
 #ifndef CRYPT
-/* default to libc stuff */
-#ifndef XMALLOC
-#define XMALLOC  malloc
-#define XFREE    free
-#define XREALLOC realloc
-#define XCALLOC  calloc
-#else
-/* prototypes for our heap functions */
-extern void *XMALLOC(size_t n);
-extern void *XREALLOC(void *p, size_t n);
-extern void *XCALLOC(size_t n, size_t s);
-extern void XFREE(void *p);
-#endif
+   /* default to libc stuff */
+   #ifndef XMALLOC 
+       #define XMALLOC  malloc
+       #define XFREE    free
+       #define XREALLOC realloc
+       #define XCALLOC  calloc
+   #else
+      /* prototypes for our heap functions */
+      extern void *XMALLOC(size_t n);
+      extern void *XREALLOC(void *p, size_t n);
+      extern void *XCALLOC(size_t n, size_t s);
+      extern void XFREE(void *p);
+   #endif
 #endif
 
 
 /* otherwise the bits per digit is calculated automatically from the size of a mp_digit */
 #ifndef DIGIT_BIT
-#define DIGIT_BIT     ((int)((CHAR_BIT * sizeof(mp_digit) - 1)))  /* bits per digit */
+   #define DIGIT_BIT     ((int)((CHAR_BIT * sizeof(mp_digit) - 1)))  /* bits per digit */
 #endif
 
 #define MP_DIGIT_BIT     DIGIT_BIT
@@ -152,33 +152,33 @@ extern void XFREE(void *p);
 #define LTM_PRIME_SAFE     0x0002 /* Safe prime (p-1)/2 == prime */
 #define LTM_PRIME_2MSB_ON  0x0008 /* force 2nd MSB to 1 */
 
-typedef int mp_err;
+typedef int           mp_err;
 
 /* you'll have to tune these... */
 extern int KARATSUBA_MUL_CUTOFF,
-		KARATSUBA_SQR_CUTOFF,
-		TOOM_MUL_CUTOFF,
-		TOOM_SQR_CUTOFF;
+           KARATSUBA_SQR_CUTOFF,
+           TOOM_MUL_CUTOFF,
+           TOOM_SQR_CUTOFF;
 
 /* define this to use lower memory usage routines (exptmods mostly) */
 /* #define MP_LOW_MEM */
 
 /* default precision */
 #ifndef MP_PREC
-#ifndef MP_LOW_MEM
-#define MP_PREC                 32     /* default digits of precision */
-#else
-#define MP_PREC                 8      /* default digits of precision */
-#endif
+   #ifndef MP_LOW_MEM
+      #define MP_PREC                 32     /* default digits of precision */
+   #else
+      #define MP_PREC                 8      /* default digits of precision */
+   #endif   
 #endif
 
 /* size of comba arrays, should be at least 2 * 2**(BITS_PER_WORD - BITS_PER_DIGIT*2) */
 #define MP_WARRAY               (1 << (sizeof(mp_word) * CHAR_BIT - 2 * DIGIT_BIT + 1))
 
 /* the infamous mp_int structure */
-typedef struct {
-	int used, alloc, sign;
-	mp_digit *dp;
+typedef struct  {
+    int used, alloc, sign;
+    mp_digit *dp;
 } mp_int;
 
 /* callback for mp_prime_random, should fill dst with random bytes and return how many read [upto len] */
@@ -186,7 +186,7 @@ typedef int ltm_prime_callback(unsigned char *dst, int len, void *dat);
 
 
 #define USED(m)    ((m)->used)
-#define DIGIT(m, k) ((m)->dp[(k)])
+#define DIGIT(m,k) ((m)->dp[(k)])
 #define SIGN(m)    ((m)->sign)
 
 /* error code to char* string */
@@ -232,13 +232,13 @@ void mp_set(mp_int *a, mp_digit b);
 int mp_set_int(mp_int *a, unsigned long b);
 
 /* get a 32-bit value */
-unsigned long mp_get_int(mp_int *a);
+unsigned long mp_get_int(mp_int * a);
 
 /* initialize and set a digit */
-int mp_init_set(mp_int *a, mp_digit b);
+int mp_init_set (mp_int * a, mp_digit b);
 
 /* initialize and set 32-bit value */
-int mp_init_set_int(mp_int *a, unsigned long b);
+int mp_init_set_int (mp_int * a, unsigned long b);
 
 /* copy, b = a */
 int mp_copy(mp_int *a, mp_int *b);
@@ -447,9 +447,9 @@ int mp_exptmod(mp_int *a, mp_int *b, mp_int *c, mp_int *d);
 
 /* number of primes */
 #ifdef MP_8BIT
-#define PRIME_SIZE      31
+   #define PRIME_SIZE      31
 #else
-#define PRIME_SIZE      256
+   #define PRIME_SIZE      256
 #endif
 
 /* table of first PRIME_SIZE primes */
@@ -522,16 +522,16 @@ int mp_count_bits(mp_int *a);
 int mp_unsigned_bin_size(mp_int *a);
 int mp_read_unsigned_bin(mp_int *a, const unsigned char *b, int c);
 int mp_to_unsigned_bin(mp_int *a, unsigned char *b);
-int mp_to_unsigned_bin_n(mp_int *a, unsigned char *b, unsigned long *outlen);
+int mp_to_unsigned_bin_n (mp_int * a, unsigned char *b, unsigned long *outlen);
 
 int mp_signed_bin_size(mp_int *a);
 int mp_read_signed_bin(mp_int *a, const unsigned char *b, int c);
-int mp_to_signed_bin(mp_int *a, unsigned char *b);
-int mp_to_signed_bin_n(mp_int *a, unsigned char *b, unsigned long *outlen);
+int mp_to_signed_bin(mp_int *a,  unsigned char *b);
+int mp_to_signed_bin_n (mp_int * a, unsigned char *b, unsigned long *outlen);
 
 int mp_read_radix(mp_int *a, const char *str, int radix);
 int mp_toradix(mp_int *a, char *str, int radix);
-int mp_toradix_n(mp_int *a, char *str, int radix, int maxlen);
+int mp_toradix_n(mp_int * a, char *str, int radix, int maxlen);
 int mp_radix_size(mp_int *a, int radix, int *size);
 
 int mp_fread(mp_int *a, int radix, FILE *stream);
@@ -564,16 +564,16 @@ int mp_toom_mul(mp_int *a, mp_int *b, mp_int *c);
 int mp_karatsuba_sqr(mp_int *a, mp_int *b);
 int mp_toom_sqr(mp_int *a, mp_int *b);
 int fast_mp_invmod(mp_int *a, mp_int *b, mp_int *c);
-int mp_invmod_slow(mp_int *a, mp_int *b, mp_int *c);
+int mp_invmod_slow (mp_int * a, mp_int * b, mp_int * c);
 int fast_mp_montgomery_reduce(mp_int *a, mp_int *m, mp_digit mp);
 int mp_exptmod_fast(mp_int *G, mp_int *X, mp_int *P, mp_int *Y, int mode);
-int s_mp_exptmod(mp_int *G, mp_int *X, mp_int *P, mp_int *Y, int mode);
+int s_mp_exptmod (mp_int * G, mp_int * X, mp_int * P, mp_int * Y, int mode);
 void bn_reverse(unsigned char *s, int len);
 
 extern const char *mp_s_rmap;
 
 #ifdef __cplusplus
-}
+   }
 #endif
 
 #endif

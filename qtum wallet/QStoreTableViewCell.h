@@ -14,10 +14,9 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-- (void)setCollectionViewSource:(QStoreCollectionViewSource *) source;
+- (void)setCollectionViewSource:(QStoreCollectionViewSource *)source;
 
-+ (CGFloat)getHeightCellForRowCount:(NSInteger) count;
-
++ (CGFloat)getHeightCellForRowCount:(NSInteger)count;
 + (NSString *)getIdentifier;
 
 @end

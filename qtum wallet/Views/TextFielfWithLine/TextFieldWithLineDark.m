@@ -11,15 +11,15 @@
 @implementation TextFieldWithLineDark
 
 - (UIColor *)getUnderlineColorDeselected {
-	return customBlueColor ();
+    return customBlueColor();
 }
 
 - (UIColor *)getUnderlineColorSelected {
-	return customBlueColor ();
+    return customBlueColor();
 }
 
 - (UIColor *)getPlaceholderColor {
-	return customBlueColor ();
+    return customBlueColor();
 }
 
 @end

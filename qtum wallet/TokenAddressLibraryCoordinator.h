@@ -12,17 +12,16 @@
 
 @protocol TokenAddressLibraryCoordinatorDelegate <NSObject>
 
-- (void)coordinatorLibraryDidEnd:(TokenAddressLibraryCoordinator *) coordinator;
-
-- (void)coordinatorLibraryDidEnd:(TokenAddressLibraryCoordinator *) coordinator withQrCodeItem:(SendInfoItem *) item;
+- (void)coordinatorLibraryDidEnd:(TokenAddressLibraryCoordinator*)coordinator;
+- (void)coordinatorLibraryDidEnd:(TokenAddressLibraryCoordinator*)coordinator withQrCodeItem:(SendInfoItem*) item;
 
 @end
 
 @interface TokenAddressLibraryCoordinator : BaseCoordinator <Coordinatorable>
 
-@property (weak, nonatomic) id <TokenAddressLibraryCoordinatorDelegate> delegate;
-@property (strong, nonatomic) Contract *token;
+@property (weak,nonatomic) id <TokenAddressLibraryCoordinatorDelegate> delegate;
+@property (strong, nonatomic) Contract* token;
 
-- (instancetype)initWithNavigationViewController:(UINavigationController *) navigationController;
+-(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
 
 @end

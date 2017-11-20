@@ -8,13 +8,13 @@
 
 #import "QStoreListTableViewCell.h"
 
-@interface QStoreListTableViewCell ()
+@interface QStoreListTableViewCell()
 
 @end
 
 @implementation QStoreListTableViewCell
 
-- (void)changeHighlight:(BOOL) value {
+- (void)changeHighlight:(BOOL)value {
 
 }
 

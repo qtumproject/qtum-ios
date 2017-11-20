@@ -10,7 +10,7 @@
 
 @protocol RemoveContractTrainigViewDelegate <NSObject>
 
-- (void)didTapOnView;
+-(void)didTapOnView;
 
 @end
 

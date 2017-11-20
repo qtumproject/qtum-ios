@@ -10,12 +10,12 @@
 
 @implementation QTUMAddressTokenView
 
-- (IBAction)actionPlus:(id) sender {
-	[self.delegate actionPlus:sender];
+- (IBAction)actionPlus:(id)sender {
+    [self.delegate actionPlus:sender];
 }
 
-- (IBAction)actionTokenAddressControl:(id) sender {
-	[self.delegate actionTokenAddressControl];
+- (IBAction)actionTokenAddressControl:(id)sender {
+    [self.delegate actionTokenAddressControl];
 }
 
 @end

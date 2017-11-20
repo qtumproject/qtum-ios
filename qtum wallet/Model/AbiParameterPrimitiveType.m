@@ -9,22 +9,22 @@
 @implementation AbiParameterPrimitiveType
 
 - (instancetype)initWithSize:(NSUInteger) size {
-
-	self = [super init];
-	if (self) {
-		_size = size;
-	}
-	return self;
+    
+    self = [super init];
+    if (self) {
+        _size = size;
+    }
+    return self;
 }
 
-- (NSInteger)maxValue {
-
-	return powl (2, self.size);
+-(NSInteger)maxValue {
+    
+    return powl(2, self.size);
 }
 
-- (NSInteger)maxValueLenght {
-
-	return 78;
+-(NSInteger)maxValueLenght {
+    
+    return 78;
 }
 
 @end

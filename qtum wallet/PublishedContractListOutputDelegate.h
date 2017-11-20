@@ -10,14 +10,10 @@
 
 @protocol PublishedContractListOutputDelegate <NSObject>
 
-- (void)didSelectContractWithIndexPath:(NSIndexPath *) indexPath withContract:(Contract *) contract;
-
-- (void)didPressedBack;
-
-- (void)didTrainingPass;
-
-- (void)didUnsubscribeFromContract:(Contract *) contract;
-
-- (void)didUnsubscribeFromContractPretendentWithTxHash:(NSString *) hexTransaction;
+-(void)didSelectContractWithIndexPath:(NSIndexPath*) indexPath withContract:(Contract*) contract;
+-(void)didPressedBack;
+-(void)didTrainingPass;
+-(void)didUnsubscribeFromContract:(Contract*) contract;
+-(void)didUnsubscribeFromContractPretendentWithTxHash:(NSString*) hexTransaction;
 
 @end

@@ -13,25 +13,19 @@
 
 @protocol QStoreContractOutput <NSObject>
 
-@property (weak, nonatomic) id <QStoreContractOutputDelegate> delegate;
+@property (weak, nonatomic) id<QStoreContractOutputDelegate> delegate;
 
-@property (strong, nonatomic) QStoreBuyRequest *buyRequest;
+@property (strong, nonatomic) QStoreBuyRequest* buyRequest;
 
 - (void)startLoading;
-
 - (void)stopLoading;
-
-- (void)setContract:(QStoreContractElement *) element;
-
+- (void)setContract:(QStoreContractElement *)element;
 - (void)updateWithFull;
-
 - (void)didLoadAbi;
-
-- (void)showSourceCode:(NSString *) source;
+- (void)showSourceCode:(NSString*) source;
 
 
 - (void)showContractBoughtPop;
-
-- (void)showErrorPopUpWithMessage:(NSString *) message;
+- (void)showErrorPopUpWithMessage:(NSString *)message;
 
 @end

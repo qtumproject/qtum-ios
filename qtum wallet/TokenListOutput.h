@@ -12,9 +12,9 @@
 
 @protocol TokenListOutput <Presentable>
 
-@property (copy, nonatomic) NSArray<Contract *> *tokens;
-@property (weak, nonatomic) id <TokenListOutputDelegate> delegate;
+@property (copy, nonatomic) NSArray<Contract*>* tokens;
+@property (weak,nonatomic) id <TokenListOutputDelegate> delegate;
 
-- (void)reloadTable;
+-(void)reloadTable;
 
 @end

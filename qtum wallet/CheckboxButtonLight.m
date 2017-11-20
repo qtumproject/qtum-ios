@@ -10,24 +10,24 @@
 
 @implementation CheckboxButtonLight
 
-- (UIColor *)fillColorForSelectedState {
-	return lightGreenColor ();
+-(UIColor*)fillColorForSelectedState {
+    return lightGreenColor();
 }
 
-- (UIColor *)fillColorForDeselectedState {
-	return [UIColor whiteColor];
+-(UIColor*)fillColorForDeselectedState {
+    return [UIColor whiteColor];
 }
 
-- (UIColor *)borderColorForDeselectedState {
-	return lightGreenColor ();
+-(UIColor*)borderColorForDeselectedState {
+    return lightGreenColor();
 }
 
-- (UIColor *)borderColorForSelectedState {
-	return lightGreenColor ();
+-(UIColor*)borderColorForSelectedState {
+    return lightGreenColor();
 }
 
-- (UIColor *)indicatorTintColor {
-	return [UIColor whiteColor];
+-(UIColor*)indicatorTintColor {
+    return [UIColor whiteColor];
 }
 
 @end

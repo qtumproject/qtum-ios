@@ -29,103 +29,102 @@ CGFloat const HeightForHeaderView = 50.0f;
 @synthesize token, delegate, source;
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-
-	self.source.delegate = self;
-	self.tableView.dataSource = self.source;
-	self.tableView.delegate = self.source;
-
-	[self.headerVIew setRightConstraint:self.trailingForLineConstraint];
-	[self updateHeader:self.token];
-
-	self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
-
-	[self configRefreshControl];
+    [super viewDidLoad];
+    
+    self.source.delegate = self;
+    self.tableView.dataSource = self.source;
+    self.tableView.delegate = self.source;
+    
+    [self.headerVIew setRightConstraint:self.trailingForLineConstraint];
+    [self updateHeader:self.token];
+    
+    self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
+    
+    [self configRefreshControl];
 }
 
-- (void)configRefreshControl {
-
-	self.refreshControl = [[UIRefreshControl alloc] init];
-	self.refreshControl.tintColor = customBlackColor ();
-	[self.tableView addSubview:self.refreshControl];
-	[self.refreshControl addTarget:self action:@selector (refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
-
-	CGRect frame = self.view.bounds;
-	frame.origin.y = -frame.size.height;
-	UIView *refreshBackgroundView = [[UIView alloc] initWithFrame:frame];
-	refreshBackgroundView.backgroundColor = customBlueColor ();
-	[self.tableView insertSubview:refreshBackgroundView atIndex:0];
+-(void)configRefreshControl {
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    self.refreshControl.tintColor = customBlackColor();
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
+    
+    CGRect frame = self.view.bounds;
+    frame.origin.y = - frame.size.height;
+    UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
+    refreshBackgroundView.backgroundColor = customBlueColor();
+    [self.tableView insertSubview:refreshBackgroundView atIndex:0];
 }
 
 #pragma mark - Actions
 
-- (IBAction)actionShare:(id) sender {
-	[self.delegate didShareTokenButtonPressed];
+- (IBAction)actionShare:(id)sender {
+    [self.delegate didShareTokenButtonPressed];
 }
 
-- (IBAction)actionBack:(id) sender {
-	[self.delegate didBackPressed];
+- (IBAction)actionBack:(id)sender {
+    [self.delegate didBackPressed];
 }
 
-- (void)refreshFromRefreshControl {
-
-	[self.delegate didPullToUpdateToken:self.token];
+-(void)refreshFromRefreshControl {
+    
+    [self.delegate didPullToUpdateToken:self.token];
 }
 
 #pragma mark - Output
 
-- (void)updateControls {
+-(void)updateControls {
 
-	[self refreshTable];
+    [self refreshTable];
 }
 
 #pragma mark - TokenDetailDisplayDataManagerDelegate
 
-- (void)didPressedInfoActionWithToken:(Contract *) aToken {
-	[self.delegate showAddressInfoWithSpendable:aToken];
+- (void)didPressedInfoActionWithToken:(Contract*) aToken {
+    [self.delegate showAddressInfoWithSpendable:aToken];
 }
 
-- (void)didPressTokenAddressControlWithToken:(Contract *) aToken {
-	[self.delegate didShowTokenAddressControlWith:aToken];
+- (void)didPressTokenAddressControlWithToken:(Contract*) aToken {
+    [self.delegate didShowTokenAddressControlWith:aToken];
 }
 
 - (void)needShowHeader {
-	if (self.heightConsctaintForHeaderView.constant == HeightForHeaderView) {
-		return;
-	}
-
-	self.heightConsctaintForHeaderView.constant = HeightForHeaderView;
-	[self.headerVIew showAnimation];
+    if (self.heightConsctaintForHeaderView.constant == HeightForHeaderView) {
+        return;
+    }
+    
+    self.heightConsctaintForHeaderView.constant = HeightForHeaderView;
+    [self.headerVIew showAnimation];
 }
 
-- (void)needHideHeader {
-	if (self.heightConsctaintForHeaderView.constant == 0.0f) {
-		return;
-	}
-
-	self.heightConsctaintForHeaderView.constant = 0;
+- (void)needHideHeader{
+    if (self.heightConsctaintForHeaderView.constant == 0.0f) {
+        return;
+    }
+    
+    self.heightConsctaintForHeaderView.constant = 0;
 }
 
 - (void)needShowHeaderForSecondSeciton {
-	self.activityView.hidden = NO;
+    self.activityView.hidden = NO;
 }
-
 - (void)needHideHeaderForSecondSeciton {
-	self.activityView.hidden = YES;
+    self.activityView.hidden = YES;
 }
 
 #pragma mark - Methods
 
-- (void)updateHeader:(Contract *) token {
-
-	self.availableBalanceLabel.text = [NSString stringWithFormat:@"%@ %@", token.balanceString ? : @"", token.symbol ? : @""];
+- (void)updateHeader:(Contract *)token {
+    
+    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%@ %@",token.balanceString ?: @"", token.symbol ?: @""];
 }
 
-- (void)refreshTable {
-	dispatch_async (dispatch_get_main_queue (), ^{
-		[self.refreshControl endRefreshing];
-		[self.tableView reloadData];
-	});
+-(void)refreshTable {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
+    });
 }
 
 @end

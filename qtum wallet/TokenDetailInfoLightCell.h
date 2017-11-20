@@ -25,6 +25,6 @@ static NSString *tokenDetailInfoLightCellIdentifire = @"tokenDetailInfoLightCell
 
 
 
-- (void)updateWithScrollView:(UIScrollView *) scrollView;
+-(void)updateWithScrollView:(UIScrollView*) scrollView;
 
 @end

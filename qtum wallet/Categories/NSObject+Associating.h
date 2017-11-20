@@ -10,7 +10,7 @@
 
 @interface NSObject (Associating)
 
-- (BOOL)isNull;
+-(BOOL)isNull;
 
 @property (nonatomic, retain) id associatedObject;
 

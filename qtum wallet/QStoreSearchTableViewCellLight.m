@@ -11,15 +11,15 @@
 @implementation QStoreSearchTableViewCellLight
 
 - (void)awakeFromNib {
-	[super awakeFromNib];
-
-	UIView *bgColorView = [[UIView alloc] init];
-	bgColorView.backgroundColor = lightBlueColor ();
-	[self setSelectedBackgroundView:bgColorView];
+    [super awakeFromNib];
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = lightBlueColor();
+    [self setSelectedBackgroundView:bgColorView];
 }
 
 - (BOOL)isLight {
-	return YES;
+    return YES;
 }
 
 @end

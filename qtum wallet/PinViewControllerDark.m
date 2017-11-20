@@ -14,10 +14,10 @@
 
 @implementation PinViewControllerDark
 
-- (void)configPasswordView {
-
-	[self.passwordView setStyle:DarkStyle lenght:SLocator.appSettings.isLongPin ? LongType : ShortType];
-	self.passwordView.delegate = self;
+-(void)configPasswordView {
+    
+    [self.passwordView setStyle:DarkStyle lenght:SLocator.appSettings.isLongPin ? LongType : ShortType];
+    self.passwordView.delegate = self;
 }
 
 @end

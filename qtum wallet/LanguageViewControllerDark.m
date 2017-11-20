@@ -15,7 +15,7 @@
 @implementation LanguageViewControllerDark
 
 - (NSString *)getCellIdentifier {
-	return @"LanguageTableViewCellDark";
+    return @"LanguageTableViewCellDark";
 }
 
 @end

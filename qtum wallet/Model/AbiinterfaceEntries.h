@@ -12,10 +12,10 @@
 
 @interface AbiinterfaceEntries : NSObject
 
-@property (copy, nonatomic, readonly) NSString *name;
+@property (copy, nonatomic, readonly) NSString* name;
 @property (strong, nonatomic, readonly) id <AbiParameterProtocol> type;
-@property (copy, nonatomic, readonly) NSString *typeAsString;
+@property (copy, nonatomic, readonly) NSString* typeAsString;
 
-- (instancetype)initWithObject:(id) object;
+-(instancetype)initWithObject:(id) object;
 
 @end

@@ -11,16 +11,16 @@
 
 @implementation NSString (AES256)
 
-+ (NSString *)encryptString:(NSString *) plaintext withKey:(NSString *) key {
-
-	NSData *data = [[plaintext dataUsingEncoding:NSUTF8StringEncoding] AES256EncryptWithKey:key];
-	return [data base64EncodedStringWithOptions:kNilOptions];
++ (NSString *) encryptString:(NSString*)plaintext withKey:(NSString*)key {
+    
+    NSData *data = [[plaintext dataUsingEncoding:NSUTF8StringEncoding] AES256EncryptWithKey:key];
+    return [data base64EncodedStringWithOptions:kNilOptions];
 }
 
-+ (NSString *)decryptString:(NSString *) ciphertext withKey:(NSString *) key {
-
-	NSData *data = [[NSData alloc] initWithBase64EncodedString:ciphertext options:kNilOptions];
-	return [[NSString alloc] initWithData:[data AES256DecryptWithKey:key] encoding:NSUTF8StringEncoding];
++ (NSString *) decryptString:(NSString *)ciphertext withKey:(NSString*)key {
+    
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:ciphertext options:kNilOptions];
+    return [[NSString alloc] initWithData:[data AES256DecryptWithKey:key] encoding:NSUTF8StringEncoding];
 }
 
 @end

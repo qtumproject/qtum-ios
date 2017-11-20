@@ -9,22 +9,22 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, PasswordViewStyle) {
-	CustomStyle,
-	LightStyle,
-	LightPopupStyle,
-	DarkPopupStyle,
-	DarkStyle,
-	SameStyle
+    CustomStyle,
+    LightStyle,
+    LightPopupStyle,
+    DarkPopupStyle,
+    DarkStyle,
+    SameStyle
 };
 
 typedef NS_ENUM(NSUInteger, PasswordLenghtType) {
-	ShortType,
-	LongType
+    ShortType,
+    LongType
 };
 
 @protocol PasswordViewDelegate <NSObject>
 
-- (void)confirmPinWithDigits:(NSString *) digits;
+-(void)confirmPinWithDigits:(NSString*)digits;
 
 @end
 
@@ -33,26 +33,21 @@ typedef NS_ENUM(NSUInteger, PasswordLenghtType) {
 @property (weak, nonatomic) id <PasswordViewDelegate> delegate;
 
 - (void)becameFirstResponder;
-
 - (void)setEditingDisabled:(BOOL) disabled;
 
-- (void)setTextFont:(UIFont *) textFont
-		  fontColor:(UIColor *) fontColor
-	 underlineColor:(UIColor *) color
-		  tintColor:(UIColor *) tintColor
-	errorFieldColor:(UIColor *) errorColor;
+- (void)setTextFont:(UIFont*)textFont
+          fontColor:(UIColor*)fontColor
+     underlineColor:(UIColor*)color
+          tintColor:(UIColor*)tintColor
+    errorFieldColor:(UIColor*)errorColor;
 
-- (void)setStyle:(PasswordViewStyle) style
-		  lenght:(PasswordLenghtType) lenghtType;
+- (void)setStyle:(PasswordViewStyle)style
+          lenght:(PasswordLenghtType)lenghtType;
 
-- (NSString *)getDigits;
-
+- (NSString*)getDigits;
 - (BOOL)isValidPasswordLenght;
-
 - (void)actionIncorrectPin;
-
 - (void)accessPinDenied;
-
 - (void)clearPinTextFields;
 
 @end

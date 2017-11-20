@@ -10,6 +10,6 @@
 
 @interface AnimatedLabelTableViewCell : UITableViewCell
 
-- (void)changePositionForLabel:(UILabel *) label andPercent:(CGFloat) percent values:(NSArray *) values constraints:(NSArray *) constraints isLeft:(BOOL) isLeft;
+- (void)changePositionForLabel:(UILabel *)label andPercent:(CGFloat)percent values:(NSArray *)values constraints:(NSArray*)constraints isLeft:(BOOL)isLeft;
 
 @end

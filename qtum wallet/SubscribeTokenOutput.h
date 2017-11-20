@@ -13,8 +13,8 @@
 
 @protocol SubscribeTokenOutput <Presentable, SubscribeTokenDataDisplayManagerDelegate>
 
-@property (weak, nonatomic) id <SubscribeTokenOutputDelegate> delegate;
+@property (weak,nonatomic) id <SubscribeTokenOutputDelegate> delegate;
 @property (strong, nonatomic) id <SubscribeTokenDataDisplayManagerProtocol> delegateDataSource;
-@property (copy, nonatomic) NSArray <Contract *> *tokensArray;
+@property (copy, nonatomic) NSArray <Contract*>* tokensArray;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface PinController : BaseViewController
 
-@property (assign, nonatomic, getter = isEditingEnabled) BOOL editingEnabled;
+@property (assign,nonatomic,getter = isEditingEnabled) BOOL editingEnabled;
 
 @end

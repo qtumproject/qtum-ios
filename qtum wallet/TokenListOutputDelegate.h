@@ -11,6 +11,6 @@
 @protocol TokenListOutputDelegate <NSObject>
 
 @required
-- (void)didSelectTokenIndexPath:(NSIndexPath *) indexPath withItem:(Contract *) item;
+- (void)didSelectTokenIndexPath:(NSIndexPath *)indexPath withItem:(Contract*) item;
 
 @end

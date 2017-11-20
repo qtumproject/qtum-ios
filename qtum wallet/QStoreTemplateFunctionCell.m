@@ -11,8 +11,9 @@
 @implementation QStoreTemplateFunctionCell
 
 - (void)awakeFromNib {
-	[super awakeFromNib];
+    [super awakeFromNib];
 }
+
 
 
 @end

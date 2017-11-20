@@ -15,9 +15,9 @@
 @implementation BalancePageViewControllerDark
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-
-	self.view.backgroundColor = customBlackColor ();
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = customBlackColor();
 }
 
 - (void)setPageControllHidden:(BOOL) hidden {

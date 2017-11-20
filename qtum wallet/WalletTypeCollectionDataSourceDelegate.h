@@ -9,18 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "WalletCoordinator.h"
 #import "Spendable.h"
-
 @class WalletModel;
 
 @protocol WalletCollectionCellDelegate <NSObject>
 
 @required
-- (void)showAddressInfo;
+-(void)showAddressInfo;
 
 @end
 
 @interface WalletTypeCollectionDataSourceDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDataSource, WalletCollectionCellDelegate>
-@property (strong, nonatomic) NSArray <Spendable> *wallets;
-@property (weak, nonatomic) id <WalletCoordinatorDelegate> delegate;
+@property (strong, nonatomic) NSArray<Spendable>* wallets;
+@property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 
 @end

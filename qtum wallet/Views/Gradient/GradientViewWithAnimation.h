@@ -10,6 +10,6 @@
 
 @interface GradientViewWithAnimation : GradientView
 
-- (void)startAnimating;
+-(void)startAnimating;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString *choiseSmartContractCellIdentifire = @"ChoiseSmartContractCellIdentifire";
+static NSString* choiseSmartContractCellIdentifire = @"ChoiseSmartContractCellIdentifire";
 
 @interface ChoiseSmartContractCell : UITableViewCell
 

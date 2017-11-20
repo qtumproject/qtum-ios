@@ -16,30 +16,29 @@
 
 @implementation InputTextView
 
-- (instancetype)initWithCoder:(NSCoder *) aDecoder {
-
-	self = [super initWithCoder:aDecoder];
-	if (self) {
-		[self config];
-	}
-	return self;
+-(instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self config];
+    }
+    return self;
 }
 
-- (void)layoutSubviews {
-	[super layoutSubviews];
+-(void)layoutSubviews {
+    [super layoutSubviews];
 }
 
 #pragma mark - Config
 
-- (void)config {
-
-	self.layer.borderColor = customBlueColor ().CGColor;
-	self.layer.borderWidth = 1;
-	self.textContainerInset = UIEdgeInsetsMake (6, 4, 6, 4);
+-(void)config {
+    
+    self.layer.borderColor = customBlueColor().CGColor;
+    self.layer.borderWidth = 1;
+    self.textContainerInset = UIEdgeInsetsMake(6, 4, 6, 4);
 }
 
-- (void)setEditingMode:(BOOL) editing {
-}
+-(void)setEditingMode:(BOOL) editing { }
 
 
 @end

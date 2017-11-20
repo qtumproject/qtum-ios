@@ -14,22 +14,20 @@
 @protocol TabBarCoordinatorDelegate <NSObject>
 
 @required
-- (void)createPaymentFromSendInfoItem:(SendInfoItem *) item;
+-(void)createPaymentFromSendInfoItem:(SendInfoItem *)item;
 
 @end
 
 @protocol ApplicationCoordinatorDelegate;
 
-@interface TabBarCoordinator : BaseCoordinator <Coordinatorable, TabBarCoordinatorDelegate, TabbarOutputDelegate>
+@interface TabBarCoordinator : BaseCoordinator <Coordinatorable,TabBarCoordinatorDelegate, TabbarOutputDelegate>
 
-@property (weak, nonatomic) id <ApplicationCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <ApplicationCoordinatorDelegate> delegate;
 
-- (instancetype)initWithTabBarController:(UITabBarController <TabbarOutput> *) tabBarController;
+- (instancetype)initWithTabBarController:(UITabBarController<TabbarOutput>*)tabBarController;
 
-- (void)startFromSendWithSendInfoItem:(SendInfoItem *) item;
-
-- (void)showControllerByIndex:(NSInteger) index;
-
-- (UIViewController *)getViewControllerByIndex:(NSInteger) index;
+- (void)startFromSendWithSendInfoItem:(SendInfoItem *)item;
+- (void)showControllerByIndex:(NSInteger)index;
+- (UIViewController *)getViewControllerByIndex:(NSInteger)index;
 
 @end

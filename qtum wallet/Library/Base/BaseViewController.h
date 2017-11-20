@@ -11,16 +11,15 @@
 @protocol ScrollableContentViewController <NSObject>
 
 @required
-@property (strong, nonatomic) UIScrollView *scrollView;
-@property (assign, nonatomic) UIEdgeInsets originInsets;
+@property (strong,nonatomic) UIScrollView* scrollView;
+@property (assign,nonatomic) UIEdgeInsets originInsets;
 
 @end
 
 @interface BaseViewController : UIViewController
 
 // !actions || actions.count == 0 - "ok" as standart
-- (void)showAlertWithTitle:(NSString *) title mesage:(NSString *) message andActions:(NSArray *) actions;
-
-- (void)showCameraPermissionAlertWithTitle:(NSString *) title mesage:(NSString *) message andActions:(NSArray *) actions;
+- (void)showAlertWithTitle:(NSString *)title mesage:(NSString *)message andActions:(NSArray *)actions;
+- (void)showCameraPermissionAlertWithTitle:(NSString *)title mesage:(NSString *)message andActions:(NSArray *)actions;
 
 @end

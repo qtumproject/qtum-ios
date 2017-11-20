@@ -11,8 +11,8 @@
 @implementation TokenCellSubscribeLight
 
 - (void)awakeFromNib {
-	[super awakeFromNib];
-	self.indicator.tintColor = lightBlackColor78 ();
+    [super awakeFromNib];
+    self.indicator.tintColor = lightBlackColor78();
 }
 
 

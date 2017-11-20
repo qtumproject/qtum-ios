@@ -13,6 +13,6 @@
 
 @interface NSBundle (StyleProvider)
 
-- (NSString *)tca_localizedStringForKey:(NSString *) key class:(Class) tableClass;
+- (NSString *)tca_localizedStringForKey:(NSString *)key class:(Class)tableClass;
 
 @end

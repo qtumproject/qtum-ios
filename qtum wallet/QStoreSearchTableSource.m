@@ -10,7 +10,7 @@
 #import "QStoreSearchTableViewCell.h"
 #import "QStoreContractElement.h"
 
-@interface QStoreSearchTableSource ()
+@interface QStoreSearchTableSource()
 
 @property (nonatomic) NSArray<QStoreContractElement *> *elements;
 
@@ -18,54 +18,54 @@
 
 @implementation QStoreSearchTableSource
 
-- (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
-	return self.elements.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.elements.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-	QStoreSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QStoreSearchTableViewCell"];
-
-	QStoreContractElement *element = [self.elements objectAtIndex:indexPath.row];
-
-	cell.nameLabel.text = element.name;
-	cell.amountLabel.text = element.priceString;
-	cell.currencyLabel.text = NSLocalizedString(@"QTUM", nil);
-	cell.categoryImageView.image = [self getImgeByCategoryType:element.typeString isLight:[cell isLight]];
-
-	if (indexPath.row == self.elements.count - 1) {
-		if ([self.delegate respondsToSelector:@selector (loadMoreElements)]) {
-			[self.delegate loadMoreElements];
-		}
-	}
-
-	return cell;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    QStoreSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QStoreSearchTableViewCell"];
+    
+    QStoreContractElement *element = [self.elements objectAtIndex:indexPath.row];
+    
+    cell.nameLabel.text = element.name;
+    cell.amountLabel.text = element.priceString;
+    cell.currencyLabel.text = NSLocalizedString(@"QTUM", nil);
+    cell.categoryImageView.image = [self getImgeByCategoryType:element.typeString isLight:[cell isLight]];
+    
+    if (indexPath.row == self.elements.count - 1) {
+        if ([self.delegate respondsToSelector:@selector(loadMoreElements)]) {
+            [self.delegate loadMoreElements];
+        }
+    }
+    
+    return cell;
 }
 
-- (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-	if ([self.delegate respondsToSelector:@selector (didSelectSearchCellWithElement:)]) {
-		[self.delegate didSelectSearchCellWithElement:[self.elements objectAtIndex:indexPath.row]];
-	}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(didSelectSearchCellWithElement:)]) {
+        [self.delegate didSelectSearchCellWithElement:[self.elements objectAtIndex:indexPath.row]];
+    }
 }
 
-- (void)tableView:(UITableView *) tableView didHighlightRowAtIndexPath:(NSIndexPath *) indexPath {
-	QStoreSearchTableViewCell *cell = (QStoreSearchTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-	[cell changeHighlight:YES];
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    QStoreSearchTableViewCell* cell = (QStoreSearchTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:YES];
 }
 
-- (void)tableView:(UITableView *) tableView didUnhighlightRowAtIndexPath:(NSIndexPath *) indexPath {
-	QStoreSearchTableViewCell *cell = (QStoreSearchTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-	[cell changeHighlight:NO];
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    QStoreSearchTableViewCell* cell = (QStoreSearchTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:NO];
 }
 
-- (void)setSearchElements:(NSArray<QStoreContractElement *> *) elements {
-	self.elements = elements;
+- (void)setSearchElements:(NSArray<QStoreContractElement *> *)elements {
+    self.elements = elements;
 }
 
-- (UIImage *)getImgeByCategoryType:(NSString *) type isLight:(BOOL) isLight {
-	NSString *imageName = [NSString stringWithFormat:@"%@%@", type, isLight ? @"-light" : @""];
-	return [UIImage imageNamed:imageName];
+- (UIImage *)getImgeByCategoryType:(NSString *)type isLight:(BOOL)isLight {
+    NSString *imageName = [NSString stringWithFormat:@"%@%@", type, isLight ? @"-light" : @""];
+    return [UIImage imageNamed:imageName];
 }
 
 @end

@@ -12,7 +12,7 @@
 
 @protocol TokenDetailDataDisplayManager <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, weak) id <TokenDetailDisplayDataManagerDelegate> delegate;
-@property (nonatomic, strong) Contract *token;
+@property (nonatomic, weak) id<TokenDetailDisplayDataManagerDelegate> delegate;
+@property (nonatomic, strong) Contract* token;
 
 @end

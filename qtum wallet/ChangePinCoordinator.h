@@ -12,7 +12,7 @@
 
 @protocol ChangePinCoordinatorDelegate <NSObject>
 
-- (void)coordinatorDidFinish:(ChangePinCoordinator *) coordinator;
+- (void)coordinatorDidFinish:(ChangePinCoordinator*)coordinator;
 
 @end
 
@@ -20,6 +20,6 @@
 
 @property (weak, nonatomic) id <ChangePinCoordinatorDelegate> delegate;
 
-- (instancetype)initWithNavigationController:(UINavigationController *) navigationController;
+- (instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 
 @end

@@ -18,6 +18,6 @@
 @property (weak, nonatomic) id <ChoseTokenPaymentOutputDelegate> delegate;
 @property (strong, nonatomic) id <ChooseTokenPaymentDelegateDataSourceProtocol> delegateDataSource;
 
-- (void)updateWithTokens:(NSArray <Contract *> *) tokens;
+-(void)updateWithTokens:(NSArray <Contract*>*) tokens;
 
 @end

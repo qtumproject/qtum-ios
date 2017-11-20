@@ -10,68 +10,52 @@
 
 @interface NSUserDefaults (Settings)
 
-+ (void)saveIsMainnetSetting:(BOOL) value;
-
++ (void)saveIsMainnetSetting:(BOOL)value;
 + (BOOL)isMainnetSetting;
 
-+ (void)saveIsRPCOnSetting:(BOOL) value;
-
++ (void)saveIsRPCOnSetting:(BOOL)value;
 + (BOOL)isRPCOnSetting;
 
-+ (void)saveLanguage:(NSString *) lang;
++ (void)saveLanguage:(NSString*)lang;
++ (NSString*)getLanguage;
 
-+ (NSString *)getLanguage;
-
-+ (void)saveIsFingerpringAllowed:(BOOL) value;
-
++ (void)saveIsFingerpringAllowed:(BOOL)value;
 + (BOOL)isFingerprintAllowed;
 
-+ (void)saveIsFingerpringEnabled:(BOOL) value;
-
++ (void)saveIsFingerpringEnabled:(BOOL)value;
 + (BOOL)isFingerprintEnabled;
 
-+ (void)saveDeviceToken:(NSString *) token;
++ (void)saveDeviceToken:(NSString*) token;
++ (NSString*)getDeviceToken;
 
-+ (NSString *)getDeviceToken;
++ (void)savePrevDeviceToken:(NSString*) token;
++ (NSString*)getPrevDeviceToken;
 
-+ (void)savePrevDeviceToken:(NSString *) token;
++ (void)saveWalletAddressKey:(NSString*) key;
++ (NSString*)getWalletAddressKey;
 
-+ (NSString *)getPrevDeviceToken;
++ (void)saveIsHaveWalletKey:(NSString*) key;
++ (NSString*)isHaveWalletKey;
 
-+ (void)saveWalletAddressKey:(NSString *) key;
-
-+ (NSString *)getWalletAddressKey;
-
-+ (void)saveIsHaveWalletKey:(NSString *) key;
-
-+ (NSString *)isHaveWalletKey;
-
-+ (void)saveIsDarkSchemeSetting:(BOOL) value;
-
++ (void)saveIsDarkSchemeSetting:(BOOL)value;
 + (BOOL)isDarkSchemeSetting;
 
-+ (void)saveIsNotFirstTimeLaunch:(BOOL) value;
-
++ (void)saveIsNotFirstTimeLaunch:(BOOL)value;
 + (BOOL)isNotFirstTimeLaunch;
 
-+ (void)saveCurrentVersion:(NSString *) value;
++ (void)saveCurrentVersion:(NSString*) value;
++ (NSString*)currentVersion;
 
-+ (NSString *)currentVersion;
-
-+ (void)savePublicAddresses:(NSArray *) addresses;
-
-+ (NSArray *)getPublicAddresses;
++ (void)savePublicAddresses:(NSArray*)addresses;
++ (NSArray*)getPublicAddresses;
 
 + (void)saveFailedPinCount:(NSInteger) count;
-
 + (NSInteger)getCountOfPinFailed;
 
-+ (void)saveLastFailedPinDate:(NSDate *) date;
++ (void)saveLastFailedPinDate:(NSDate*) date;
++ (NSDate*)getLastFailedPinDate;
 
-+ (NSDate *)getLastFailedPinDate;
-
-+ (void)saveIsRemovingContractTrainingPassed:(BOOL) value;
-
++ (void)saveIsRemovingContractTrainingPassed:(BOOL)value;
 + (BOOL)isRemovingContractTrainingPassed;
 
 @end

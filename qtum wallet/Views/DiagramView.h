@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, WaweType) {
-	SmallWawe,
-	BigWawe
+    SmallWawe,
+    BigWawe
 };
 
 @interface DiagramView : UIView
 
-@property (assign, nonatomic) BOOL isSmall;
+@property (assign,nonatomic) BOOL isSmall;
 
 @end

@@ -15,16 +15,16 @@
 
 @implementation TemplateTokenViewControllerLight
 
-- (void)tableView:(UITableView *) tableView didHighlightRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	TokenTemplateCell *cell = (TokenTemplateCell *)[tableView cellForRowAtIndexPath:indexPath];
-	cell.tokenIdentifire.backgroundColor = lightGreenColor ();
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    TokenTemplateCell* cell = (TokenTemplateCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.tokenIdentifire.backgroundColor = lightGreenColor();
 }
 
-- (void)tableView:(UITableView *) tableView didUnhighlightRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	TokenTemplateCell *cell = (TokenTemplateCell *)[tableView cellForRowAtIndexPath:indexPath];
-	cell.tokenIdentifire.backgroundColor = lightGreenColor ();
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TokenTemplateCell* cell = (TokenTemplateCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.tokenIdentifire.backgroundColor = lightGreenColor();
 }
 
 @end

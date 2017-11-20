@@ -17,10 +17,10 @@
 @property (nonatomic, readonly) NSNumber *fullCountactCount;
 @property (nonatomic, readonly) NSArray<QStoreContractElement *> *elements;
 
-- (instancetype)initWithIdentifier:(NSString *) identifier
-							  name:(NSString *) name
-							 count:(NSNumber *) count;
+- (instancetype)initWithIdentifier:(NSString *)identifier
+                              name:(NSString *)name
+                             count:(NSNumber *)count;
 
-- (void)parseElementsFromJSONArray:(NSArray *) array;
+- (void)parseElementsFromJSONArray:(NSArray *)array;
 
 @end

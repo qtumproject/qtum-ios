@@ -10,8 +10,7 @@
 
 @protocol TemplatesListOutputDelegate <NSObject>
 
-- (void)didSelectTemplateIndexPath:(NSIndexPath *) indexPath withName:(TemplateModel *) templateModel;
-
-- (void)didPressedBack;
+-(void)didSelectTemplateIndexPath:(NSIndexPath*) indexPath withName:(TemplateModel*) templateModel;
+-(void)didPressedBack;
 
 @end

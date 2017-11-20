@@ -13,8 +13,7 @@
 
 @protocol AuthCoordinatorDelegate <NSObject>
 
-- (void)coordinatorDidAuth:(AuthCoordinator *) coordinator;
-
+- (void)coordinatorDidAuth:(AuthCoordinator*)coordinator;
 - (void)coordinatorRequestForLogin;
 
 @end
@@ -23,8 +22,8 @@
 
 @interface AuthCoordinator : BaseCoordinator <Coordinatorable>
 
-@property (weak, nonatomic) id <AuthCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <AuthCoordinatorDelegate> delegate;
 
-- (instancetype)initWithNavigationViewController:(UINavigationController *) navigationController;
+-(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
 
 @end

@@ -11,22 +11,14 @@
 @protocol ProfileOutputDelegate <NSObject>
 
 @required
-- (void)didChangeFingerprintSettings:(BOOL) value;
-
+- (void)didChangeFingerprintSettings:(BOOL)value;
 - (void)didPressedLanguage;
-
 - (void)didPressedChangePin;
-
 - (void)didPressedWalletBackup;
-
 - (void)didPressedAbout;
-
 - (void)didPressedCreateToken;
-
 - (void)didPressedSubscribeToken;
-
 - (void)didPressedLogout;
-
 - (void)didPressedThemes;
 
 @end

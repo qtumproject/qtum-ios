@@ -14,8 +14,8 @@
 
 @implementation AboutOutputViewControllerDark
 
-- (UIColor *)logoColor {
-	return customBlueColor ();
+-(UIColor*)logoColor {
+    return customBlueColor();
 }
 
 @end

@@ -14,13 +14,11 @@
 
 @interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput, SliderFeeViewDelegate, UITextFieldDelegate>
 
-@property (strong, nonatomic) SliderFeeView *feeView;
+@property (strong, nonatomic) SliderFeeView* feeView;
 
-- (IBAction)didPressedNextOnTextField:(id) sender;
-
-- (IBAction)didPressedCancelAction:(id) sender;
-
-- (IBAction)didPressedCallAction:(id) sender;
+- (IBAction)didPressedNextOnTextField:(id)sender;
+- (IBAction)didPressedCancelAction:(id)sender;
+- (IBAction)didPressedCallAction:(id)sender;
 
 
 @end

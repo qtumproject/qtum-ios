@@ -12,10 +12,10 @@
 
 @protocol PublishedContractListOutput <Presentable>
 
-@property (copy, nonatomic) NSArray <Contract *> *contracts;
+@property (copy, nonatomic) NSArray <Contract*>* contracts;
 @property (strong, nonatomic) NSDictionary *smartContractPretendents;
 @property (weak, nonatomic) id <PublishedContractListOutputDelegate> delegate;
 
-- (void)setNeedShowingTrainingScreen;
+-(void)setNeedShowingTrainingScreen;
 
 @end

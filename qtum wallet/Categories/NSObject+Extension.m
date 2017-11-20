@@ -12,31 +12,32 @@
 
 @implementation NSObject (Extension)
 
-- (NSString *)nameOfClass {
-	return NSStringFromClass ([self class]);
+-(NSString*)nameOfClass{
+    return NSStringFromClass([self class]);
+}
+-(BOOL)isNull{
+    return [self isKindOfClass:[NSNull class]];
 }
 
-- (BOOL)isNull {
-	return [self isKindOfClass:[NSNull class]];
+- (void)setAssociatedObject:(id)associatedObject
+{
+    objc_setAssociatedObject(self,
+                             @selector(associatedObject),
+                             associatedObject,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)setAssociatedObject:(id) associatedObject {
-	objc_setAssociatedObject (self,
-			@selector (associatedObject),
-			associatedObject,
-			OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (id)associatedObject
+{
+    return objc_getAssociatedObject(self, @selector(associatedObject));
 }
 
-- (id)associatedObject {
-	return objc_getAssociatedObject (self, @selector (associatedObject));
-}
-
-- (UIViewController *)toPresent {
-
-	if ([self conformsToProtocol:@protocol (Presentable)] && [self isKindOfClass:[UIViewController class]]) {
-		return (UIViewController *)self;
-	}
-	return nil;
+- (UIViewController*)toPresent {
+    
+    if ([self conformsToProtocol:@protocol(Presentable)] && [self isKindOfClass:[UIViewController class]]) {
+        return (UIViewController*)self;
+    }
+    return nil;
 }
 
 @end

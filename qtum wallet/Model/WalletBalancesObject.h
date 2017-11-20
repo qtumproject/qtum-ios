@@ -10,8 +10,8 @@
 
 @interface WalletBalancesObject : NSObject
 
-@property (copy, nonatomic) NSString *shortBalanceStringBalance;
-@property (copy, nonatomic) NSString *longBalanceStringBalance;
-@property (copy, nonatomic) NSString *addressString;
+@property (copy, nonatomic) NSString* shortBalanceStringBalance;
+@property (copy, nonatomic) NSString* longBalanceStringBalance;
+@property (copy, nonatomic) NSString* addressString;
 
 @end

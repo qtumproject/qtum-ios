@@ -9,11 +9,11 @@
 #ifndef NetworkDefenitions_h
 #define NetworkDefenitions_h
 
-typedef NS_ENUM(NSInteger, RequestType) {
-	POST,
-	GET,
-	DELETE,
-	PUT
+typedef NS_ENUM(NSInteger, RequestType){
+    POST,
+    GET,
+    DELETE,
+    PUT
 };
 
 #endif /* NetworkDefenitions_h */

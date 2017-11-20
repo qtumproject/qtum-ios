@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString *tokenAddressControlCellIdentifire = @"tokenAddressControlCellIdentifire";
+static NSString* tokenAddressControlCellIdentifire = @"tokenAddressControlCellIdentifire";
 
 @interface TokenAddressContolCell : UITableViewCell
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString *chooseAddressReciveCellIdentifire = @"chooseAddressReciveCellIdentifire";
+static NSString* chooseAddressReciveCellIdentifire = @"chooseAddressReciveCellIdentifire";
 
 @interface ChooseAddressReciveCell : UITableViewCell
 

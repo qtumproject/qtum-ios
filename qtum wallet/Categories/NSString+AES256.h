@@ -10,8 +10,7 @@
 
 @interface NSString (AES256)
 
-+ (NSString *)encryptString:(NSString *) plaintext withKey:(NSString *) key;
-
-+ (NSString *)decryptString:(NSString *) ciphertext withKey:(NSString *) key;
++ (NSString *) encryptString:(NSString*)plaintext withKey:(NSString*)key;
++ (NSString *) decryptString:(NSString *)ciphertext withKey:(NSString*)key;
 
 @end

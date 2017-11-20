@@ -15,9 +15,9 @@
 @protocol TokenAddressLibraryOutput <Presentable>
 
 @property (weak, nonatomic) id <TokenAddressLibraryOutputDelegate> delegate;
-@property (copy, nonatomic) NSString *symbol;
-@property (copy, nonatomic) NSArray <ContracBalancesObject *> *arrayWithAddressesAndBalances;
+@property (copy, nonatomic) NSString* symbol;
+@property (copy, nonatomic) NSArray <ContracBalancesObject*>* arrayWithAddressesAndBalances;
 
-- (void)reloadData;
+-(void)reloadData;
 
 @end

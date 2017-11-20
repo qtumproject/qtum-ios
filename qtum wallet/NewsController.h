@@ -11,6 +11,6 @@
 
 @interface NewsController : BaseViewController <NewsOutput>
 
-@property (weak, nonatomic) id <NewsOutputDelegate> delegate;
+@property (weak, nonatomic) id<NewsOutputDelegate> delegate;
 
 @end

@@ -11,4 +11,5 @@
 @implementation ResultTokenCreateInputModel
 
 
+
 @end

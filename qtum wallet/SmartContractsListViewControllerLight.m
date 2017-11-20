@@ -15,27 +15,27 @@
 
 @implementation SmartContractsListViewControllerLight
 
-- (void)tableView:(UITableView *) tableView didHighlightRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	QTUMSwipableCellWithButtons *cell = (QTUMSwipableCellWithButtons *)[tableView cellForRowAtIndexPath:indexPath];
-	cell.myContentView.backgroundColor = lightBlueColor ();
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    QTUMSwipableCellWithButtons* cell = (QTUMSwipableCellWithButtons*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.myContentView.backgroundColor = lightBlueColor();
 }
 
-- (void)tableView:(UITableView *) tableView didUnhighlightRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	QTUMSwipableCellWithButtons *cell = (QTUMSwipableCellWithButtons *)[tableView cellForRowAtIndexPath:indexPath];
-	cell.myContentView.backgroundColor = [UIColor whiteColor];
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    QTUMSwipableCellWithButtons* cell = (QTUMSwipableCellWithButtons*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.myContentView.backgroundColor =[UIColor whiteColor];
 }
 
-- (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
-	return 53;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 53;
 }
 
-- (RemoveContractTrainigView *)trainingViewWithStyle {
-
-	RemoveContractTrainigView *trainingView = [[[NSBundle mainBundle] loadNibNamed:@"RemoveContractTrainingViewLight" owner:self options:nil] objectAtIndex:0];
-
-	return trainingView;
+-(RemoveContractTrainigView*)trainingViewWithStyle {
+    
+    RemoveContractTrainigView *trainingView = [[[NSBundle mainBundle] loadNibNamed:@"RemoveContractTrainingViewLight" owner:self options:nil] objectAtIndex:0];
+    
+    return trainingView;
 }
 
 @end

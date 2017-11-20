@@ -10,6 +10,6 @@
 
 @protocol RestoreContractsOutputDelegate <NSObject>
 
-- (void)didPressedBack;
+-(void)didPressedBack;
 
 @end

@@ -11,88 +11,88 @@
 
 @implementation NSNumber (Format)
 
-- (NSString *)shortFormatOfNumberWithPowerOfMinus10:(NSNumber *) power {
+-(NSString*)shortFormatOfNumberWithPowerOfMinus10:(NSNumber*) power {
+    
+    NSDecimalNumber* powerDecimal = [power decimalNumber];
+    NSDecimalNumber* numberDecimal = [self decimalNumber];
+    
+    NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:10 raiseOnExactness:YES raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:YES];
 
-	NSDecimalNumber *powerDecimal = [power decimalNumber];
-	NSDecimalNumber *numberDecimal = [self decimalNumber];
-
-	NSDecimalNumberHandler *roundUp = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundDown scale:10 raiseOnExactness:YES raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:YES];
-
-	if (powerDecimal) {
-		NSString *str = [[numberDecimal decimalNumberByMultiplyingByPowerOf10:-powerDecimal.shortValue withBehavior:roundUp] shortFormatOfNumber];
-		return str;
-	}
-
-	return [self shortFormatOfNumber];
+    if (powerDecimal) {
+        NSString* str = [[numberDecimal decimalNumberByMultiplyingByPowerOf10: -powerDecimal.shortValue withBehavior:roundUp] shortFormatOfNumber];
+        return str;
+    }
+    
+    return [self shortFormatOfNumber];
 }
 
-- (NSString *)shortFormatOfNumberWithPowerOf10:(NSNumber *) power {
-
-	NSDecimalNumber *powerDecimal = [power decimalNumber];
-	NSDecimalNumber *numberDecimal = [self decimalNumber];
-
-	if (powerDecimal) {
-
-		return [[numberDecimal decimalNumberByMultiplyingByPowerOf10:powerDecimal.shortValue] shortFormatOfNumber];
-	}
-
-	return [self shortFormatOfNumber];
+-(NSString*)shortFormatOfNumberWithPowerOf10:(NSNumber*) power {
+    
+    NSDecimalNumber* powerDecimal = [power decimalNumber];
+    NSDecimalNumber* numberDecimal = [self decimalNumber];
+    
+    if (powerDecimal) {
+        
+        return [[numberDecimal decimalNumberByMultiplyingByPowerOf10: powerDecimal.shortValue] shortFormatOfNumber];
+    }
+    
+    return [self shortFormatOfNumber];
 }
 
-- (NSString *)shortFormatOfNumber {
-
-	NSDecimalNumber *numberDecimal = [self decimalNumber];
-
-	NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
-	[fmt setExponentSymbol:@"E"];
-	[fmt setPositiveFormat:@"0.##E+0"];
-
-	return [fmt stringFromNumber:numberDecimal];
+-(NSString*)shortFormatOfNumber {
+    
+    NSDecimalNumber* numberDecimal = [self decimalNumber];
+    
+    NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
+    [fmt setExponentSymbol:@"E"];
+    [fmt setPositiveFormat:@"0.##E+0"];
+    
+    return [fmt stringFromNumber:numberDecimal];
 }
 
-- (NSDecimalNumber *)numberWithPowerOfMinus10:(NSNumber *) power {
-
-	NSDecimalNumber *powerDecimal = [power decimalNumber];
-	NSDecimalNumber *numberDecimal = [self decimalNumber];
-
-	if (powerDecimal) {
-		return [numberDecimal decimalNumberByMultiplyingByPowerOf10:-powerDecimal.shortValue];
-	}
-	return numberDecimal;
+-(NSDecimalNumber*)numberWithPowerOfMinus10:(NSNumber*) power {
+    
+    NSDecimalNumber* powerDecimal = [power decimalNumber];
+    NSDecimalNumber* numberDecimal = [self decimalNumber];
+    
+    if (powerDecimal) {
+        return [numberDecimal decimalNumberByMultiplyingByPowerOf10: -powerDecimal.shortValue];
+    }
+    return numberDecimal;
 }
 
-- (NSDecimalNumber *)numberWithPowerOf10:(NSNumber *) power {
-
-	NSDecimalNumber *powerDecimal = [power decimalNumber];
-	NSDecimalNumber *numberDecimal = [self decimalNumber];
-
-	if (powerDecimal && ![numberDecimal isEqual:[NSDecimalNumber notANumber]] && ![powerDecimal isEqual:[NSDecimalNumber notANumber]]) {
-		return [numberDecimal decimalNumberByMultiplyingByPowerOf10:powerDecimal.shortValue];
-	}
-
-	return numberDecimal;
+-(NSDecimalNumber*)numberWithPowerOf10:(NSNumber*) power {
+    
+    NSDecimalNumber* powerDecimal = [power decimalNumber];
+    NSDecimalNumber* numberDecimal = [self decimalNumber];
+    
+    if (powerDecimal && ![numberDecimal isEqual:[NSDecimalNumber notANumber]] && ![powerDecimal isEqual:[NSDecimalNumber notANumber]]) {
+        return [numberDecimal decimalNumberByMultiplyingByPowerOf10: powerDecimal.shortValue];
+    }
+    
+    return numberDecimal;
 }
 
-- (NSString *)stringNumberWithPowerOf10:(NSNumber *) power {
-
-	NSDecimalNumber *powerDecimal = [power decimalNumber];
-	NSDecimalNumber *numberDecimal = [self decimalNumber];
-
-	if (powerDecimal) {
-		return [[numberDecimal decimalNumberByMultiplyingByPowerOf10:powerDecimal.shortValue] stringValue];
-	}
-	return numberDecimal.stringValue;
+-(NSString*)stringNumberWithPowerOf10:(NSNumber*) power {
+    
+    NSDecimalNumber* powerDecimal = [power decimalNumber];
+    NSDecimalNumber* numberDecimal = [self decimalNumber];
+    
+    if (powerDecimal) {
+        return [[numberDecimal decimalNumberByMultiplyingByPowerOf10: powerDecimal.shortValue] stringValue];
+    }
+    return numberDecimal.stringValue;
 }
 
-- (NSString *)stringNumberWithPowerOfMinus10:(NSNumber *) power {
-
-	NSDecimalNumber *powerDecimal = [power decimalNumber];
-	NSDecimalNumber *numberDecimal = [self decimalNumber];
-
-	if (powerDecimal) {
-		return [[numberDecimal decimalNumberByMultiplyingByPowerOf10:-powerDecimal.shortValue] stringValue];
-	}
-	return numberDecimal.stringValue;
+-(NSString*)stringNumberWithPowerOfMinus10:(NSNumber*) power {
+    
+    NSDecimalNumber* powerDecimal = [power decimalNumber];
+    NSDecimalNumber* numberDecimal = [self decimalNumber];
+    
+    if (powerDecimal) {
+        return [[numberDecimal decimalNumberByMultiplyingByPowerOf10: -powerDecimal.shortValue] stringValue];
+    }
+    return numberDecimal.stringValue;
 }
 
 @end

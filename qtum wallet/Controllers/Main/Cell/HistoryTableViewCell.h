@@ -13,7 +13,7 @@
 
 @property (nonatomic) HistoryElement *historyElement;
 
-- (void)changeHighlight:(BOOL) value;
+- (void)changeHighlight:(BOOL)value;
 
 @property (weak, nonatomic) IBOutlet UIImageView *typeImage;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;

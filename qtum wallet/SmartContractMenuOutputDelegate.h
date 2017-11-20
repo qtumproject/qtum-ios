@@ -10,20 +10,13 @@
 
 @protocol SmartContractMenuOutputDelegate <NSObject>
 
-- (void)didSelectContractStore;
-
-- (void)didSelectWatchContracts;
-
-- (void)didSelectWatchTokens;
-
-- (void)didSelectPublishedContracts;
-
-- (void)didSelectNewContracts;
-
-- (void)didSelectRestoreContract;
-
-- (void)didSelectBackupContract;
-
-- (void)didPressedQuit;
+-(void)didSelectContractStore;
+-(void)didSelectWatchContracts;
+-(void)didSelectWatchTokens;
+-(void)didSelectPublishedContracts;
+-(void)didSelectNewContracts;
+-(void)didSelectRestoreContract;
+-(void)didSelectBackupContract;
+-(void)didPressedQuit;
 
 @end

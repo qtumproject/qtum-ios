@@ -10,10 +10,8 @@
 
 @protocol PageControlItem <NSObject>
 
-- (void)setSelectedState:(BOOL) selected;
-
+- (void)setSelectedState:(BOOL)selected;
 - (CGFloat)getSelectedWidth;
-
 - (CGFloat)getNotSelectedWidth;
 
 @end

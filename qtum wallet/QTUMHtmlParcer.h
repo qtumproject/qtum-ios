@@ -10,10 +10,10 @@
 #import "QTUMHTMLTagItem.h"
 #import "Cancelable.h"
 
-typedef void(^QTUMTagsItems)(NSArray <QTUMHTMLTagItem *> *feeds);
+typedef void(^QTUMTagsItems) (NSArray <QTUMHTMLTagItem*>* feeds);
 
 @interface QTUMHtmlParcer : NSObject <Cancelable>
 
-- (void)parceNewsFromHTMLString:(NSString *) html withCompletion:(QTUMTagsItems) completion;
+-(void)parceNewsFromHTMLString:(NSString*) html withCompletion:(QTUMTagsItems) completion;
 
 @end

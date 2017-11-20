@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString *tokenTemplateCellIdentifire = @"TokenTemplateCellIdentifire";
+static NSString* tokenTemplateCellIdentifire = @"TokenTemplateCellIdentifire";
 
 @interface TokenTemplateCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *templateName;

@@ -11,11 +11,10 @@
 
 @protocol RepeateOutput <NSObject>
 
-@property (weak, nonatomic) id <RepeateOutputDelegate> delegate;
+@property (weak,nonatomic) id <RepeateOutputDelegate> delegate;
 
-- (void)endCreateWalletWithError:(NSError *) error;
-
-- (void)showFailedStatus;
+-(void)endCreateWalletWithError:(NSError*)error;
+-(void)showFailedStatus;
 
 
 @end

@@ -15,8 +15,7 @@
 @property (copy, nonatomic) NSString *okButtonTitle;
 @property (copy, nonatomic) NSString *cancelButtonTitle;
 
-- (instancetype)initWithTitle:(NSString *) title message:(NSString *) message okTitle:(NSString *) okTitle cancelTitle:(NSString *) cancelTitle;
-
-- (BOOL)isEqualContent:(PopUpContent *) object;
+- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message okTitle:(NSString *)okTitle cancelTitle:(NSString *)cancelTitle;
+- (BOOL)isEqualContent:(PopUpContent *)object;
 
 @end

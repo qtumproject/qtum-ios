@@ -10,6 +10,6 @@
 
 @interface SourceCodeFormatService : NSObject
 
-- (NSAttributedString *)formattingSourceCodeStringWithString:(NSString *) sourceCode;
+-(NSAttributedString*)formattingSourceCodeStringWithString:(NSString*) sourceCode;
 
 @end

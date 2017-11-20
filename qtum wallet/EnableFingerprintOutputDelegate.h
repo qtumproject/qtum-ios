@@ -10,8 +10,7 @@
 
 @protocol EnableFingerprintOutputDelegate <NSObject>
 
-- (void)didEnableFingerprint:(BOOL) enabled;
-
-- (void)didCancelEnableFingerprint;
+-(void)didEnableFingerprint:(BOOL) enabled;
+-(void)didCancelEnableFingerprint;
 
 @end

@@ -13,8 +13,8 @@
 
 @protocol ConstructorAbiOutput <Presentable>
 
-@property (weak, nonatomic) id <ConstructorAbiOutputDelegate> delegate;
-@property (strong, nonatomic) InterfaceInputFormModel *formModel;
-@property (copy, nonatomic) NSString *contractTitle;
+@property (weak,nonatomic) id <ConstructorAbiOutputDelegate> delegate;
+@property (strong,nonatomic) InterfaceInputFormModel* formModel;
+@property (copy, nonatomic) NSString* contractTitle;
 
 @end

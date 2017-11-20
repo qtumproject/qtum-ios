@@ -12,7 +12,7 @@
 
 @protocol ExportBrandKeyCoordinatorDelegate <NSObject>
 
-- (void)coordinatorDidEnd:(ExportBrandKeyCoordinator *) coordinator;
+- (void)coordinatorDidEnd:(ExportBrandKeyCoordinator*)coordinator;
 
 @end
 
@@ -20,6 +20,6 @@
 
 @property (weak, nonatomic) id <ExportBrandKeyCoordinatorDelegate> delegate;
 
-- (instancetype)initWithNavigationController:(UINavigationController *) navigationController;
+- (instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 
 @end

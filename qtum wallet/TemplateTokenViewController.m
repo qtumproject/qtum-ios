@@ -20,52 +20,52 @@
 @synthesize delegate, templateModels;
 
 - (void)viewDidLoad {
-
-	[super viewDidLoad];
-	[self.tableView reloadData];
+    
+    [super viewDidLoad];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	return 46;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 46;
 }
 
-- (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	[self.delegate didSelectTemplateIndexPath:indexPath withName:self.templateModels[indexPath.row]];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.delegate didSelectTemplateIndexPath:indexPath withName:self.templateModels[indexPath.row]];
 }
 
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
-
-	return self.templateModels.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.templateModels.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	TemplateModel *template = self.templateModels[indexPath.row];
-	TokenTemplateCell *cell = [tableView dequeueReusableCellWithIdentifier:tokenTemplateCellIdentifire];
-	cell.templateName.text = template.templateName;
-	cell.tokenIdentifire.text = [template.templateTypeString uppercaseString];
-	cell.creationDate.text = template.creationDateString;
-	return cell;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TemplateModel* template = self.templateModels[indexPath.row];
+    TokenTemplateCell* cell = [tableView dequeueReusableCellWithIdentifier:tokenTemplateCellIdentifire];
+    cell.templateName.text = template.templateName;
+    cell.tokenIdentifire.text = [template.templateTypeString uppercaseString];
+    cell.creationDate.text = template.creationDateString;
+    return cell;
 }
 
-- (CGFloat)tableView:(UITableView *) tableView heightForHeaderInSection:(NSInteger) section {
-	return 31;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 31;
 }
 
-- (UIView *)tableView:(UITableView *) tableView viewForHeaderInSection:(NSInteger) section {
-	UITableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"TemplatesHeaderView"];
-	return headerCell;
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewCell *headerCell = [tableView dequeueReusableCellWithIdentifier:@"TemplatesHeaderView"];
+    return  headerCell;
 }
 
-- (IBAction)didPressedBackAction:(id) sender {
-	[self.delegate didPressedBack];
+- (IBAction)didPressedBackAction:(id)sender {
+    [self.delegate didPressedBack];
 }
 
 

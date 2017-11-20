@@ -13,18 +13,13 @@
 
 @protocol QStoreMainOutput <NSObject>
 
-@property (weak, nonatomic) id <QStoreMainOutputDelegate> delegate;
+@property (weak, nonatomic) id<QStoreMainOutputDelegate> delegate;
 
 - (void)startLoading;
-
 - (void)stopLoading;
-
-- (void)setCategories:(NSArray<QStoreMainScreenCategory *> *) categories;
-
-- (void)setTag:(NSString *) tag;
-
-- (void)setSearchElements:(NSArray<QStoreContractElement *> *) elements;
-
-- (void)setSearchMoreElements:(NSArray<QStoreContractElement *> *) elements;
+- (void)setCategories:(NSArray<QStoreMainScreenCategory *> *)categories;
+- (void)setTag:(NSString *)tag;
+- (void)setSearchElements:(NSArray<QStoreContractElement *> *)elements;
+- (void)setSearchMoreElements:(NSArray<QStoreContractElement *> *)elements;
 
 @end

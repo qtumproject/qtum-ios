@@ -13,6 +13,6 @@ extern NSString *const TCAAuthFailed;
 
 @interface RequestManager : NSObject <Requestable>
 
-- (instancetype)initWithBaseUrl:(NSString *) baseUrl;
+- (instancetype)initWithBaseUrl:(NSString*) baseUrl;
 
 @end

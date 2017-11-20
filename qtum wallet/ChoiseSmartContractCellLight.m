@@ -11,10 +11,10 @@
 @implementation ChoiseSmartContractCellLight
 
 - (void)awakeFromNib {
-
-	[super awakeFromNib];
-
-	self.disclosure.tintColor = lightBlackColor78 ();
+    
+    [super awakeFromNib];
+    
+    self.disclosure.tintColor = lightBlackColor78();
 }
 
 

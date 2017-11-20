@@ -10,15 +10,12 @@
 
 @interface NSDate (Extension)
 
-@property (strong, nonatomic, readonly) NSString *string;
+@property (strong, nonatomic, readonly) NSString* string;
 
-- (NSString *)formatedDateString;
-
-+ (NSString *)formatedDateStringFromString:(NSString *) dateString;
-
-+ (NSInteger)minutsSinceDate:(NSDate *) date;
-
-- (NSDate *)dateInLocalTimezoneFromUTCDate;
+- (NSString*)formatedDateString;
++ (NSString*)formatedDateStringFromString:(NSString*)dateString;
++ (NSInteger)minutsSinceDate :(NSDate *)date;
+- (NSDate*)dateInLocalTimezoneFromUTCDate;
 
 
 @end

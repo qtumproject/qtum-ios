@@ -16,16 +16,16 @@
 
 #pragma mark - Setters/Getters
 
-- (UIView *)getFooterView {
-	UIView *footer = [[UIView alloc] initWithFrame:CGRectMake (0, 0, self.view.frame.size.width, 13)];
-	footer.backgroundColor = lightBlueColor ();
-	return footer;
+-(UIView *)getFooterView {
+    UIView* footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 13)];
+    footer.backgroundColor = lightBlueColor();
+    return footer;
 }
 
-- (UIView *)getHighlightedView {
-	UIView *selectedBackgroundView = [[UIView alloc] init];
-	[selectedBackgroundView setBackgroundColor:lightBlueColor ()];
-	return selectedBackgroundView;
+-(UIView *)getHighlightedView {
+    UIView * selectedBackgroundView = [[UIView alloc] init];
+    [selectedBackgroundView setBackgroundColor:lightBlueColor()];
+    return selectedBackgroundView;
 }
 
 @end

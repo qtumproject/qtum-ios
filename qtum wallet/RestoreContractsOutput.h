@@ -12,6 +12,6 @@
 
 @protocol RestoreContractsOutput <Presentable>
 
-@property (weak, nonatomic) id <RestoreContractsOutputDelegate> delegate;
+@property (weak,nonatomic) id <RestoreContractsOutputDelegate> delegate;
 
 @end

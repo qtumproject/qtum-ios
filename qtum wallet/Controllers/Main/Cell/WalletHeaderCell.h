@@ -12,10 +12,10 @@
 #import "AnimatedLabelTableViewCell.h"
 
 typedef enum {
-	HeaderCellTypeAllVisible,
-	HeaderCellTypeWithoutNotCorfirmedBalance,
-	HeaderCellTypeWithoutPageControl,
-	HeaderCellTypeWithoutAll
+    HeaderCellTypeAllVisible,
+    HeaderCellTypeWithoutNotCorfirmedBalance,
+    HeaderCellTypeWithoutPageControl,
+    HeaderCellTypeWithoutAll
 } HeaderCellType;
 
 @interface WalletHeaderCell : AnimatedLabelTableViewCell
@@ -30,23 +30,19 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIView *separatorView;
 @property (weak, nonatomic) IBOutlet UILabel *availableTitleLabel;
 
-@property (weak, nonatomic) id <WalletCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak, nonatomic) id <Spendable> spendable;
 
 @property (nonatomic, readonly) HeaderCellType type;
 
-- (void)setData:(id <Spendable>) wallet;
+- (void)setData:(id <Spendable>)wallet;
+- (void)setCellType:(HeaderCellType)type;
+- (void)cellYPositionChanged:(CGFloat)yPosition;
 
-- (void)setCellType:(HeaderCellType) type;
+- (BOOL)needShowHeader:(CGFloat)yPosition;
 
-- (void)cellYPositionChanged:(CGFloat) yPosition;
-
-- (BOOL)needShowHeader:(CGFloat) yPosition;
-
-- (CGFloat)percentForShowHideHeader:(CGFloat) yPosition;
-
+- (CGFloat)percentForShowHideHeader:(CGFloat)yPosition;
 - (CGFloat)getHeaderHeight;
-
-- (CGFloat)calculateOffsetAfterScroll:(CGFloat) position;
+- (CGFloat)calculateOffsetAfterScroll:(CGFloat)position;
 
 @end

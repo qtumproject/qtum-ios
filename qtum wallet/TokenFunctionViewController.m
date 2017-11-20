@@ -23,97 +23,96 @@
 @synthesize token, delegate, formModel;
 
 - (void)viewDidLoad {
-
-	[super viewDidLoad];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (reloadTable) name:kWalletDidChange object:nil];
-	self.contractAddressLabel.text = self.token.mainAddress;
+    
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable) name:kWalletDidChange object:nil];
+    self.contractAddressLabel.text = self.token.mainAddress;
 }
 
-- (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Private Methods
 
-- (void)reloadTable {
-	__weak __typeof (self) weakSelf = self;
-	dispatch_async (dispatch_get_main_queue (), ^{
-		[weakSelf.tableView reloadData];
-		weakSelf.contractAddressLabel.text = weakSelf.token.mainAddress;
-	});
+-(void)reloadTable{
+    __weak __typeof(self)weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.tableView reloadData];
+        weakSelf.contractAddressLabel.text = weakSelf.token.mainAddress;
+    });
 }
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	return 46;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 46;
 }
 
-- (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	if (indexPath.section) {
-		[self.delegate didSelectFunctionIndexPath:indexPath withItem:self.formModel.functionItems[indexPath.row] andToken:self.token];
-	}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section) {
+        [self.delegate didSelectFunctionIndexPath:indexPath withItem:self.formModel.functionItems[indexPath.row] andToken:self.token];
+    }
+}
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section) {
+        [self.delegate didDeselectFunctionIndexPath:indexPath withItem:self.formModel.functionItems[indexPath.row]];
+    }
 }
 
-- (void)tableView:(UITableView *) tableView didDeselectRowAtIndexPath:(NSIndexPath *) indexPath {
-	if (indexPath.section) {
-		[self.delegate didDeselectFunctionIndexPath:indexPath withItem:self.formModel.functionItems[indexPath.row]];
-	}
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        return;
+    }
+    
+    TokenFunctionCell* cell = (TokenFunctionCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.disclousere.tintColor =
+    cell.functionName.textColor = customBlackColor();
 }
 
-- (void)tableView:(UITableView *) tableView didHighlightRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	if (indexPath.section == 0) {
-		return;
-	}
-
-	TokenFunctionCell *cell = (TokenFunctionCell *)[tableView cellForRowAtIndexPath:indexPath];
-	cell.disclousere.tintColor =
-			cell.functionName.textColor = customBlackColor ();
-}
-
-- (void)tableView:(UITableView *) tableView didUnhighlightRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	if (indexPath.section == 0) {
-		return;
-	}
-
-	TokenFunctionCell *cell = (TokenFunctionCell *)[tableView cellForRowAtIndexPath:indexPath];
-	cell.disclousere.tintColor =
-			cell.functionName.textColor = customBlueColor ();
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        return;
+    }
+    
+    TokenFunctionCell* cell = (TokenFunctionCell*)[tableView cellForRowAtIndexPath:indexPath];
+    cell.disclousere.tintColor =
+    cell.functionName.textColor = customBlueColor();
 }
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
-	if (section == 0) {
-		return self.formModel.propertyItems.count;
-	} else {
-		return self.formModel.functionItems.count;
-	}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
+        return self.formModel.propertyItems.count;
+    } else {
+        return self.formModel.functionItems.count;
+    }
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *) tableView {
-	return 2;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
 }
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	if (indexPath.section == 0) {
-		TokenPropertyCell *cell = [tableView dequeueReusableCellWithIdentifier:tokenPropertyCelldentifire];
-		[cell setupWithObject:self.formModel.propertyItems[indexPath.row] andToken:self.token];
-		return cell;
-	} else {
-		TokenFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:tokenFunctionCellIdentifire];
-		[cell setupWithObject:self.formModel.functionItems[indexPath.row]];
-		return cell;
-	}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        TokenPropertyCell* cell = [tableView dequeueReusableCellWithIdentifier:tokenPropertyCelldentifire];
+        [cell setupWithObject:self.formModel.propertyItems[indexPath.row] andToken:self.token];
+        return cell;
+    } else {
+        TokenFunctionCell* cell = [tableView dequeueReusableCellWithIdentifier:tokenFunctionCellIdentifire];
+        [cell setupWithObject:self.formModel.functionItems[indexPath.row]];
+        return cell;
+    }
 }
 
-- (IBAction)didPressedBackAction:(id) sender {
-	[self.navigationController popViewControllerAnimated:YES];
+- (IBAction)didPressedBackAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

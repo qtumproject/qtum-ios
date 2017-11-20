@@ -8,7 +8,7 @@
 
 #import "ViewWithAnimatedLine.h"
 
-@interface ViewWithAnimatedLine ()
+@interface ViewWithAnimatedLine()
 
 @property (nonatomic, weak) NSLayoutConstraint *trailingConstraintForLine;
 
@@ -16,18 +16,18 @@
 
 @implementation ViewWithAnimatedLine
 
-- (void)showAnimation {
-	self.trailingConstraintForLine.constant = self.frame.size.width;
-	[self layoutIfNeeded];
+- (void)showAnimation{
+    self.trailingConstraintForLine.constant = self.frame.size.width;
+    [self layoutIfNeeded];
 
-	self.trailingConstraintForLine.constant = 0.0f;
-	[UIView animateWithDuration:0.15f animations:^{
-		[self layoutIfNeeded];
-	}];
+    self.trailingConstraintForLine.constant = 0.0f;
+    [UIView animateWithDuration:0.15f animations:^{
+        [self layoutIfNeeded];
+    }];
 }
 
-- (void)setRightConstraint:(NSLayoutConstraint *) constraint {
-	self.trailingConstraintForLine = constraint;
+-(void)setRightConstraint:(NSLayoutConstraint *)constraint{
+    self.trailingConstraintForLine = constraint;
 }
 
 @end

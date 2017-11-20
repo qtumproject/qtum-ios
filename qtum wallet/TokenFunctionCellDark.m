@@ -11,17 +11,17 @@
 @implementation TokenFunctionCellDark
 
 - (void)awakeFromNib {
-	[super awakeFromNib];
-	self.disclousere.tintColor = customBlueColor ();
-
-	UIView *bgColorView = [[UIView alloc] init];
-	bgColorView.backgroundColor = customRedColor ();
-	[self setSelectedBackgroundView:bgColorView];
+    [super awakeFromNib];
+    self.disclousere.tintColor = customBlueColor();
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = customRedColor();
+    [self setSelectedBackgroundView:bgColorView];
 }
 
-- (void)setupWithObject:(AbiinterfaceItem *) object {
-
-	self.functionName.text = object.name;
+-(void)setupWithObject:(AbiinterfaceItem*)object {
+    
+    self.functionName.text = object.name;
 }
 
 

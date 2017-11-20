@@ -12,16 +12,15 @@
 
 @protocol AddressLibruaryCoordinatorDelegate <NSObject>
 
-- (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator *) coordinator;
-
-- (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator *) coordinator withQrCodeItem:(SendInfoItem *) item;
+- (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator*)coordinator;
+- (void)coordinatorLibraryDidEnd:(AddressLibruaryCoordinator*)coordinator withQrCodeItem:(SendInfoItem*) item;
 
 @end
 
 @interface AddressLibruaryCoordinator : BaseCoordinator <Coordinatorable>
 
-@property (weak, nonatomic) id <AddressLibruaryCoordinatorDelegate> delegate;
+@property (weak,nonatomic) id <AddressLibruaryCoordinatorDelegate> delegate;
 
-- (instancetype)initWithNavigationViewController:(UINavigationController *) navigationController;
+-(instancetype)initWithNavigationViewController:(UINavigationController*)navigationController;
 
 @end

@@ -12,12 +12,11 @@
 
 @interface InterfaceInputFormModel : NSObject
 
-@property (strong, nonatomic, readonly) NSMutableArray<AbiinterfaceItem *> *functionItems;
-@property (strong, nonatomic, readonly) NSMutableArray<AbiinterfaceItem *> *propertyItems;
-@property (strong, nonatomic, readonly) AbiinterfaceItem *constructorItem;
+@property (strong, nonatomic, readonly) NSMutableArray<AbiinterfaceItem*>* functionItems;
+@property (strong, nonatomic, readonly) NSMutableArray<AbiinterfaceItem*>* propertyItems;
+@property (strong, nonatomic, readonly) AbiinterfaceItem* constructorItem;
 
-- (instancetype)initWithAbi:(NSArray *) abi;
-
-- (BOOL)contains:(InterfaceInputFormModel *) inerface;
+- (instancetype)initWithAbi:(NSArray*) abi;
+- (BOOL)contains:(InterfaceInputFormModel*) inerface;
 
 @end

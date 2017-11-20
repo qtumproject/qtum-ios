@@ -17,10 +17,10 @@
 @implementation LoaderPopUpViewController
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
+    [super viewDidLoad];
 }
 
-- (void)reloadLoaderAnimation {
-	[self.LoaderView startAnimating];
+-(void)reloadLoaderAnimation {
+    [self.LoaderView startAnimating];
 }
 @end

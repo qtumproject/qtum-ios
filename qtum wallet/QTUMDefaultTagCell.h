@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DynamicHeightCellProtocol.h"
 
-extern NSString *const QTUMDefaultTagCellReuseIdentifire;
+extern NSString * const QTUMDefaultTagCellReuseIdentifire;
 
 @interface QTUMDefaultTagCell : UITableViewCell <DynamicHeightCellProtocol>
 

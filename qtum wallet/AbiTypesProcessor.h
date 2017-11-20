@@ -34,6 +34,6 @@
 
 @interface AbiTypesProcessor : NSObject
 
-+ (id <AbiParameterProtocol>)typeFromAbiString:(NSString *) typeString;
++ (id <AbiParameterProtocol>)typeFromAbiString:(NSString*) typeString;
 
 @end

@@ -13,6 +13,6 @@
 
 @property (nonatomic) TemplateModel *activeTemplate;
 @property (nonatomic) NSArray<TemplateModel *> *templetes;
-@property (nonatomic, weak) id <LibraryTableSourceOutputDelegate> delegate;
+@property (nonatomic, weak) id<LibraryTableSourceOutputDelegate> delegate;
 
 @end

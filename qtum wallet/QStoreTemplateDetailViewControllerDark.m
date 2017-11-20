@@ -15,7 +15,7 @@
 @implementation QStoreTemplateDetailViewControllerDark
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
+    [super viewDidLoad];
 }
 
 @end

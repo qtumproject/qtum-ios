@@ -12,11 +12,8 @@
 
 @required
 - (void)didReloadTableViewData;
-
-- (void)didRefreshTableViewBalanceLocal:(BOOL) isLocal;
-
+- (void)didRefreshTableViewBalanceLocal:(BOOL)isLocal;
 - (void)didShowQRCodeScan;
-
 - (void)didShowAddressControl;
 
 

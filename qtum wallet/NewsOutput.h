@@ -12,13 +12,11 @@
 
 @protocol NewsOutput <NSObject, Presentable>
 
-@property (weak, nonatomic) id <NewsOutputDelegate> delegate;
-@property (strong, nonatomic) NSArray<QTUMNewsItem *> *news;
+@property (weak, nonatomic) id<NewsOutputDelegate> delegate;
+@property (strong, nonatomic) NSArray<QTUMNewsItem*>* news;
 
-- (void)reloadTableView;
-
-- (void)startLoading;
-
-- (void)stopLoadingIfNeeded;
+-(void)reloadTableView;
+-(void)startLoading;
+-(void)stopLoadingIfNeeded;
 
 @end

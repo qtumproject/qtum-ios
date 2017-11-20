@@ -15,7 +15,7 @@
 @implementation ShareTokenPopUpViewControllerLight
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
+    [super viewDidLoad];
 }
 
 @end

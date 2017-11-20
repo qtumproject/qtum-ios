@@ -10,8 +10,7 @@
 
 @protocol ContractFunctionsOutputDelegate <NSObject>
 
-- (void)didSelectFunctionIndexPath:(NSIndexPath *) indexPath withItem:(AbiinterfaceItem *) item andToken:(Contract *) token;
-
-- (void)didDeselectFunctionIndexPath:(NSIndexPath *) indexPath withItem:(AbiinterfaceItem *) item;
+-(void)didSelectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item andToken:(Contract*) token;
+-(void)didDeselectFunctionIndexPath:(NSIndexPath *)indexPath withItem:(AbiinterfaceItem*) item;
 
 @end

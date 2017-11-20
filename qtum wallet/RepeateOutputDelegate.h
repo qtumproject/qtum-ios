@@ -10,10 +10,8 @@
 
 @protocol RepeateOutputDelegate <NSObject>
 
-- (void)didCreateWalletPressed;
-
-- (void)didCancelPressedOnRepeatePin;
-
-- (void)didEnteredSecondPin:(NSString *) pin;
+-(void)didCreateWalletPressed;
+-(void)didCancelPressedOnRepeatePin;
+-(void)didEnteredSecondPin:(NSString*)pin;
 
 @end

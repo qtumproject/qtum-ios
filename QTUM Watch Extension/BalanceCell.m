@@ -11,9 +11,9 @@
 @implementation BalanceCell
 
 - (IBAction)showQRCode {
-	if ([self.delegate respondsToSelector:@selector (showQRCode)]) {
-		[self.delegate showQRCode];
-	}
+    if ([self.delegate respondsToSelector:@selector(showQRCode)]) {
+        [self.delegate showQRCode];
+    }
 }
 
 @end

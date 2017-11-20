@@ -15,7 +15,7 @@
 @implementation ChooseReciveAddressViewControllerLight
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
+    [super viewDidLoad];
 }
 
 @end

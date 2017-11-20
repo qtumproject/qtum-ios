@@ -15,14 +15,14 @@
 @implementation CreateTokenNavigationController
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-	self.navigationBar.hidden = YES;
-	self.interactivePopGestureRecognizer.delegate = self;
-	self.interactivePopGestureRecognizer.enabled = NO;
+    [super viewDidLoad];
+    self.navigationBar.hidden = YES;
+    self.interactivePopGestureRecognizer.delegate = self;
+    self.interactivePopGestureRecognizer.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];
 }
 
 @end

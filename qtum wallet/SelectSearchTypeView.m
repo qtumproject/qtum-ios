@@ -22,55 +22,55 @@
 @implementation SelectSearchTypeView
 
 - (void)layoutSubviews {
-	[super layoutSubviews];
-
-	if (!self.wasSetup) {
-		self.wasSetup = YES;
-
-		self.curretSelectedIndex = 0;
-		[self changeButtonStatesByIndex:self.curretSelectedIndex];
-
-		self.leftButton.delegate = self;
-		self.rightButton.delegate = self;
-
-		[self.leftButton setSquareBackroundColor:self.backgroundColor];
-		[self.rightButton setSquareBackroundColor:self.backgroundColor];
-	}
+    [super layoutSubviews];
+    
+    if (!self.wasSetup) {
+        self.wasSetup = YES;
+        
+        self.curretSelectedIndex = 0;
+        [self changeButtonStatesByIndex:self.curretSelectedIndex];
+        
+        self.leftButton.delegate = self;
+        self.rightButton.delegate = self;
+        
+        [self.leftButton setSquareBackroundColor:self.backgroundColor];
+        [self.rightButton setSquareBackroundColor:self.backgroundColor];
+    }
 }
 
 #pragma mark - CheckboxButtonDelegate
 
-- (void)didStateChanged:(CheckboxButton *) sender {
-	NSInteger index = 0;
-	if (sender == self.rightButton) {
-		index = 1;
-	}
-
-	[self changeButtonStatesByIndex:index];
-
-	if (self.curretSelectedIndex == index) {
-		return;
-	}
-
-	self.curretSelectedIndex = index;
-
-	if ([self.delegate respondsToSelector:@selector (selectIndexChanged:)]) {
-		[self.delegate selectIndexChanged:self.curretSelectedIndex];
-	}
+- (void)didStateChanged:(CheckboxButton *)sender {
+    NSInteger index = 0;
+    if (sender == self.rightButton) {
+        index = 1;
+    }
+    
+    [self changeButtonStatesByIndex:index];
+    
+    if (self.curretSelectedIndex == index) {
+        return;
+    }
+    
+    self.curretSelectedIndex = index;
+    
+    if ([self.delegate respondsToSelector:@selector(selectIndexChanged:)]) {
+        [self.delegate selectIndexChanged:self.curretSelectedIndex];
+    }
 }
 
-- (void)changeButtonStatesByIndex:(NSInteger) index {
-	[self.leftButton setCheck:!index];
-	[self.rightButton setCheck:index];
+- (void)changeButtonStatesByIndex:(NSInteger)index {
+    [self.leftButton setCheck:!index];
+    [self.rightButton setCheck:index];
 }
 
-- (void)setSelectedIndex:(NSInteger) index {
-	self.curretSelectedIndex = index;
-	[self changeButtonStatesByIndex:self.curretSelectedIndex];
+- (void)setSelectedIndex:(NSInteger)index {
+    self.curretSelectedIndex = index;
+    [self changeButtonStatesByIndex:self.curretSelectedIndex];
 }
 
 - (NSInteger)selectedIndex {
-	return self.curretSelectedIndex;
+    return self.curretSelectedIndex;
 }
 
 @end

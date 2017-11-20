@@ -15,7 +15,7 @@
 @implementation TokenAddressControlViewControllerDark
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
+    [super viewDidLoad];
 
 }
 

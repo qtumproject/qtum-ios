@@ -10,12 +10,10 @@
 
 @interface QRCodeManager : NSObject
 
-+ (void)createQRCodeFromString:(NSString *) string forSize:(CGSize) size withCompletionBlock:(void (^)(UIImage *image)) completionBlock;
++ (void)createQRCodeFromString:(NSString *)string forSize:(CGSize)size withCompletionBlock:(void(^)(UIImage *image))completionBlock;
++ (void)createQRCodeFromPublicAddress:(NSString *)publicAddressString tokenAddress:(NSString *)tokenAddress andAmount:(NSString *)amountString forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock;
++ (void)createQRCodeFromContractsTokensArray:(NSArray *)array forSize:(CGSize)size withCompletionBlock:(void (^)(UIImage *image))completionBlock;
 
-+ (void)createQRCodeFromPublicAddress:(NSString *) publicAddressString tokenAddress:(NSString *) tokenAddress andAmount:(NSString *) amountString forSize:(CGSize) size withCompletionBlock:(void (^)(UIImage *image)) completionBlock;
-
-+ (void)createQRCodeFromContractsTokensArray:(NSArray *) array forSize:(CGSize) size withCompletionBlock:(void (^)(UIImage *image)) completionBlock;
-
-+ (SendInfoItem *)getNewPaymentDictionaryFromString:(NSString *) string;
++ (SendInfoItem *)getNewPaymentDictionaryFromString:(NSString *)string;
 
 @end

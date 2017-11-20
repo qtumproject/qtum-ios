@@ -11,6 +11,6 @@
 
 @protocol EnableFingerprintOutput <NSObject>
 
-@property (weak, nonatomic) id <EnableFingerprintOutputDelegate> delegate;
+@property (weak,nonatomic) id <EnableFingerprintOutputDelegate> delegate;
 
 @end

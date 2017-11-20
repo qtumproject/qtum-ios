@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, QStoreBuyRequestState) {
-	QStoreBuyRequestStateInPayment,
-	QStoreBuyRequestStateIsPaid
+    QStoreBuyRequestStateInPayment,
+    QStoreBuyRequestStateIsPaid
 };
 
 extern NSString *const QStoreBuyRequestStateKey;
@@ -39,11 +39,11 @@ extern NSString *const QStoreBuyRequestProductTypeKey;
 
 - (NSNumber *)getAmountNumber;
 
-+ (QStoreBuyRequest *)createFromDictionary:(NSDictionary *) dictionary
-							 andContractId:(NSString *) contractId
-						   withProductName:(NSString *) productName
-						   withProductType:(TemplateType) productType;
++ (QStoreBuyRequest *)createFromDictionary:(NSDictionary *)dictionary
+                             andContractId:(NSString *)contractId
+                           withProductName:(NSString*)productName
+                           withProductType:(TemplateType)productType;
 
-- (QStoreBuyRequest *)upateFromDictionary:(NSDictionary *) dictionary;
+- (QStoreBuyRequest *)upateFromDictionary:(NSDictionary *)dictionary;
 
 @end

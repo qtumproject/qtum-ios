@@ -12,7 +12,7 @@
 
 @interface LanguageViewController : BaseViewController <LanguageOutput, Presentable>
 
-@property (nonatomic, weak) id <LanguageOutputDelegate> delegate;
+@property (nonatomic, weak) id<LanguageOutputDelegate> delegate;
 
 - (NSString *)getCellIdentifier;
 

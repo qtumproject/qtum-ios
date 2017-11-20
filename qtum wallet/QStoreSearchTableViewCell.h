@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
 
-- (void)changeHighlight:(BOOL) value;
+- (void)changeHighlight:(BOOL)value;
 
 - (BOOL)isLight;
 

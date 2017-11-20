@@ -9,7 +9,7 @@
 #import "QTUMTitleTagCell.h"
 
 
-NSString *const QTUMTitleTagCellLightReuseIdentifire = @"QTUMTitleTagCellLightReuseIdentifire";
+NSString * const QTUMTitleTagCellLightReuseIdentifire = @"QTUMTitleTagCellLightReuseIdentifire";
 
 @implementation QTUMTitleTagCell
 

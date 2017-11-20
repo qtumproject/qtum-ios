@@ -10,26 +10,19 @@
 
 @protocol QTUMSwipableCellWithButtonsDelegate <NSObject>
 
-- (BOOL)shoudOpenCell:(UITableViewCell *) cell;
-
-- (BOOL)shoudCloseCell:(UITableViewCell *) cell;
+- (BOOL)shoudOpenCell:(UITableViewCell *)cell;
+- (BOOL)shoudCloseCell:(UITableViewCell *)cell;
 
 @optional
-- (void)buttonOneActionForIndexPath:(NSIndexPath *) indexPath;
+- (void)buttonOneActionForIndexPath:(NSIndexPath *)indexPath;
+- (void)buttonTwoActionForIndexPath:(NSIndexPath *)indexPath;
+- (void)cellDidOpen:(UITableViewCell *)cell;
+- (void)cellDidClose:(UITableViewCell *)cell;
+- (void)cellWillOpen:(UITableViewCell *)cell;
+- (void)cellWillClose:(UITableViewCell *)cell;
 
-- (void)buttonTwoActionForIndexPath:(NSIndexPath *) indexPath;
-
-- (void)cellDidOpen:(UITableViewCell *) cell;
-
-- (void)cellDidClose:(UITableViewCell *) cell;
-
-- (void)cellWillOpen:(UITableViewCell *) cell;
-
-- (void)cellWillClose:(UITableViewCell *) cell;
-
-- (void)cellDidStartMoving:(UITableViewCell *) cell;
-
-- (void)cellEndMoving:(UITableViewCell *) cell;
+- (void)cellDidStartMoving:(UITableViewCell *)cell;
+- (void)cellEndMoving:(UITableViewCell *)cell;
 
 @end
 
@@ -37,9 +30,7 @@
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @property (nonatomic, weak) id <QTUMSwipableCellWithButtonsDelegate> delegate;
-
 - (void)openCell;
-
 - (void)closeCell;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;

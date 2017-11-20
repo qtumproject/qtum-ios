@@ -11,19 +11,19 @@
 @implementation BorderedLabelDark
 
 - (UIColor *)getBorderColor {
-	return customBlueColor ();
+    return customBlueColor();
 }
 
-- (UIColor *)getBackroundColor {
-	return [UIColor clearColor];
+- (UIColor *)getBackroundColor{
+    return [UIColor clearColor];
 }
 
 - (UIView *)getBorderView {
-	return [UIView new];
+    return [UIView new];
 }
 
 - (CGFloat)getInsets {
-	return 7.0f;
+    return 7.0f;
 }
 
 @end

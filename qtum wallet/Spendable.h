@@ -17,22 +17,18 @@
 
 @protocol Spendable <NSObject>
 
-@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString* name;
 @property (strong, nonatomic) QTUMBigNumber *balance;
 @property (strong, nonatomic) QTUMBigNumber *unconfirmedBalance;
-@property (strong, nonatomic) HistoryDataStorage *historyStorage;
-@property (copy, nonatomic) NSString *mainAddress;
-@property (copy, nonatomic) NSString *symbol;
-@property (weak, nonatomic) id <Managerable> manager;
+@property (strong, nonatomic) HistoryDataStorage* historyStorage;
+@property (copy, nonatomic)NSString* mainAddress;
+@property (copy, nonatomic)NSString* symbol;
+@property (weak, nonatomic)id <Managerable> manager;
 
-- (void)updateBalanceWithHandler:(void (^)(BOOL success)) complete;
-
-- (void)updateWithHandler:(void (^)(BOOL success)) complete;
-
-- (void)updateHistoryWithHandler:(void (^)(BOOL success)) complete andPage:(NSInteger) page;
-
-- (void)loadToMemory;
-
-- (void)historyDidChange;
+-(void)updateBalanceWithHandler:(void(^)(BOOL success)) complete;
+-(void)updateWithHandler:(void(^)(BOOL success)) complete;
+-(void)updateHistoryWithHandler:(void(^)(BOOL success)) complete andPage:(NSInteger) page;
+-(void)loadToMemory;
+-(void)historyDidChange;
 
 @end

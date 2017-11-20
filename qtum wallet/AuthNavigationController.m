@@ -12,21 +12,21 @@
 
 @end
 
-@implementation AuthNavigationController
+@implementation AuthNavigationController 
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-	self.navigationBar.hidden = YES;
-	self.interactivePopGestureRecognizer.delegate = self;
-	self.interactivePopGestureRecognizer.enabled = NO;
+    [super viewDidLoad];
+    self.navigationBar.hidden = YES;
+    self.interactivePopGestureRecognizer.delegate = self;
+    self.interactivePopGestureRecognizer.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-	return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleLightContent;
 }
 
 @end

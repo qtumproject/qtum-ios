@@ -10,14 +10,14 @@
 
 @implementation NubersTokenView
 
-- (void)layoutSubviews {
-
-	[super layoutSubviews];
-
-	CGSize size = [self.initialSupplyLabel.text sizeWithAttributes:@{NSFontAttributeName: self.initialSupplyLabel.font}];
-	if (size.width > self.initialSupplyLabel.bounds.size.width) {
-		self.initialSupplyLabel.text = self.shortTotalSupply;
-	}
+-(void)layoutSubviews {
+    
+    [super layoutSubviews];
+    
+    CGSize size = [self.initialSupplyLabel.text sizeWithAttributes:@{NSFontAttributeName : self.initialSupplyLabel.font}];
+    if (size.width > self.initialSupplyLabel.bounds.size.width) {
+        self.initialSupplyLabel.text = self.shortTotalSupply;
+    }
 }
 
 

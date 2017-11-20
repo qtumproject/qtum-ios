@@ -8,35 +8,35 @@
 
 #import "PageControlItemDark.h"
 
-@interface PageControlItemDark ()
+@interface PageControlItemDark()
 
-@property (nonatomic, strong) UIImage *activeImage;
-@property (nonatomic, strong) UIImage *inactiveImage;
+@property(nonatomic, strong) UIImage* activeImage;
+@property(nonatomic, strong) UIImage* inactiveImage;
 
 @end
 
 @implementation PageControlItemDark
 
 - (instancetype)init {
-	self = [super init];
-	if (self) {
-		_activeImage = [UIImage imageNamed:@"activePageControl"];
-		_inactiveImage = [UIImage imageNamed:@"deactivePageControl"];
-		self.tintColor = customBlackColor ();
-	}
-	return self;
+    self = [super init];
+    if (self) {
+        _activeImage= [UIImage imageNamed:@"activePageControl"];
+        _inactiveImage = [UIImage imageNamed:@"deactivePageControl"];
+        self.tintColor = customBlackColor();
+    }
+    return self;
 }
 
-- (void)setSelectedState:(BOOL) selected {
-	self.image = selected ? self.activeImage : self.inactiveImage;
+- (void)setSelectedState:(BOOL)selected {
+    self.image = selected ? self.activeImage : self.inactiveImage;
 }
 
 - (CGFloat)getNotSelectedWidth {
-	return 6;
+    return 6;
 }
 
 - (CGFloat)getSelectedWidth {
-	return 9;
+    return 9;
 }
 
 @end

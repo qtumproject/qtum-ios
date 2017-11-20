@@ -10,6 +10,6 @@
 
 @protocol BackupContractOutputDelegate <NSObject>
 
-- (void)didPressedBack;
+-(void)didPressedBack;
 
 @end

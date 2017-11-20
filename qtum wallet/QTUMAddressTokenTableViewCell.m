@@ -8,7 +8,7 @@
 
 #import "QTUMAddressTokenTableViewCell.h"
 
-@interface QTUMAddressTokenTableViewCell ()
+@interface QTUMAddressTokenTableViewCell()
 
 
 @end
@@ -16,16 +16,16 @@
 @implementation QTUMAddressTokenTableViewCell
 
 - (void)awakeFromNib {
-	[super awakeFromNib];
+    [super awakeFromNib];
 }
 
-- (void)setSelected:(BOOL) selected animated:(BOOL) animated {
-	[super setSelected:selected animated:animated];
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 
 }
 
-- (void)actionPlus:(id) sender {
-	[self.delegate actionPlus:sender];
+- (void)actionPlus:(id)sender {
+    [self.delegate actionPlus:sender];
 }
 
 @end

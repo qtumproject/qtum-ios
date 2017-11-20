@@ -10,6 +10,6 @@
 
 @protocol SubscribeTokenDataDisplayManagerDelegate <NSObject>
 
-- (void)tableView:(UITableView *) tableView didSelectContract:(Contract *) contract;
+- (void)tableView:(UITableView *)tableView didSelectContract:(Contract *) contract;
 
 @end

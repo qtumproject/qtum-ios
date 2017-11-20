@@ -13,7 +13,7 @@
 
 @protocol TemplatesListOutput <Presentable>
 
-@property (copy, nonatomic) NSArray <TemplateModel *> *templateModels;
-@property (weak, nonatomic) id <TemplatesListOutputDelegate> delegate;
+@property (copy, nonatomic) NSArray <TemplateModel*>* templateModels;
+@property (weak,nonatomic) id <TemplatesListOutputDelegate> delegate;
 
 @end

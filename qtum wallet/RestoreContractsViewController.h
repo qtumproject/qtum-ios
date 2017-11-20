@@ -12,7 +12,7 @@
 
 @interface RestoreContractsViewController : UIViewController <RestoreContractsOutput, CheckboxButtonDelegate>
 
-@property (strong, nonatomic) NSMutableArray <CheckboxButton *> *buttons;
+@property (strong, nonatomic) NSMutableArray <CheckboxButton*> *buttons;
 @property (weak, nonatomic) IBOutlet UIView *containerForButtons;
 
 @end

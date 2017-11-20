@@ -19,56 +19,56 @@
 @synthesize delegate;
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector (keyboardWillShow:)
-												 name:UIKeyboardWillShowNotification
-											   object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector (keyboardWillHide:)
-												 name:UIKeyboardWillHideNotification
-											   object:nil];
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 
-	[self.nameTextField becomeFirstResponder];
+    [self.nameTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Notification
 
-- (void)keyboardWillShow:(NSNotification *) sender {
-
-	CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
-	self.buttonsBottomConstraint.constant = end.size.height;
-	[self.view layoutIfNeeded];
+-(void)keyboardWillShow:(NSNotification *)sender {
+    
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.buttonsBottomConstraint.constant = end.size.height;
+    [self.view layoutIfNeeded];
 }
 
-- (void)keyboardWillHide:(NSNotification *) sender {
+-(void)keyboardWillHide:(NSNotification *)sender{
 
 }
 
 #pragma mark - Actions
 
-- (IBAction)actionConfirm:(id) sender {
-
-	[self.nameTextField resignFirstResponder];
-	if ([self.delegate respondsToSelector:@selector (didCreatedWalletPressedWithName:)]) {
-		[self.delegate didCreatedWalletPressedWithName:self.nameTextField.text];
-	}
+- (IBAction)actionConfirm:(id)sender {
+    
+    [self.nameTextField resignFirstResponder];
+    if ([self.delegate respondsToSelector:@selector(didCreatedWalletPressedWithName:)]) {
+        [self.delegate didCreatedWalletPressedWithName:self.nameTextField.text];
+    }
 }
 
-- (IBAction)cancelButtonPressed:(id) sender {
-
-	[self.nameTextField resignFirstResponder];
-	if ([self.delegate respondsToSelector:@selector (didCancelPressedOnWalletName)]) {
-		[self.delegate didCancelPressedOnWalletName];
-	}
+- (IBAction)cancelButtonPressed:(id)sender {
+    
+    [self.nameTextField resignFirstResponder];
+    if ([self.delegate respondsToSelector:@selector(didCancelPressedOnWalletName)]) {
+        [self.delegate didCancelPressedOnWalletName];
+    }
 }
 
 

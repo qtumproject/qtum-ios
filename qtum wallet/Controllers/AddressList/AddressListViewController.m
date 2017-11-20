@@ -13,95 +13,70 @@
 @interface AddressListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-- (IBAction)backButtonPressed:(id) sender;
-
-- (IBAction)createNewButtonWasPressed:(id) sender;
+- (IBAction)backButtonPressed:(id)sender;
+- (IBAction)createNewButtonWasPressed:(id)sender;
 @end
 
 @implementation AddressListViewController
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-
-	self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
-	//    [[KeysManager sharedInstance] removeAllKeys];
+    [super viewDidLoad];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
-}
-
-- (IBAction)backButtonPressed:(id) sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)backButtonPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Actions
 
-- (IBAction)createNewButtonWasPressed:(id) sender {
-	[[PopUpsManager sharedInstance] showLoaderPopUp];
+- (IBAction)createNewButtonWasPressed:(id)sender {
+    [[PopUpsManager sharedInstance] showLoaderPopUp];
 
-	//    __weak typeof(self) weakSelf = self;
-	//    [[KeysManager sharedInstance] createNewKey];
-	//    [KeysManager sharedInstance].keyRegistered = ^(BOOL registered){
-	//        if (registered) {
-	//            [SVProgressHUD showSuccessWithStatus:@"Done"];
-	//            [weakSelf.tableView reloadData];
-	//        }else{
-	//            [SVProgressHUD showErrorWithStatus:@"Some Error"];
-	//        }
-	//        [KeysManager sharedInstance].keyRegistered = nil;
-	//    };
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
-- (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
-	//    return [KeysManager sharedInstance].keys.count;
-	return 2;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
 }
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-	AddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddressTableViewCell"];
-	if (!cell) {
-		cell = [[AddressTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"AddressTableViewCell"];
-	}
-
-	//    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
-
-	//    cell.puplicKeyLabel.text = key.addressTestnet.string;
-
-	return cell;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddressTableViewCell"];
+    if (!cell) {
+        cell = [[AddressTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"AddressTableViewCell"];
+    }
+    
+    return cell;
 }
 
-- (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-	//    BTCKey *key = [KeysManager sharedInstance].keys[indexPath.row];
-
-	//    [self createAndPresentPublicKeyVCWithKey:key];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - ImportKeyViewControllerDelegate
 
 - (void)addressImported {
-	[self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Methods
 
-- (void)createAndPresentPublicKeyVCWithKey:(BTCKey *) key {
-	UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-	KeyViewController *vc = (KeyViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"KeyViewController"];
-	vc.key = key;
-
-	[self presentViewController:vc animated:YES completion:nil];
+- (void)createAndPresentPublicKeyVCWithKey:(BTCKey *)key
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    KeyViewController *vc = (KeyViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"KeyViewController"];
+    vc.key = key;
+    
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
-#pragma mark -
+#pragma mark - 
 
-- (void)prepareForSegue:(UIStoryboardSegue *) segue sender:(id) sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 }
 
 @end

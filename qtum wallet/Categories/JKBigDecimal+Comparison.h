@@ -10,28 +10,18 @@
 
 @interface JKBigDecimal (Comparison)
 
-- (BOOL)isLessThan:(JKBigDecimal *) decimalNumber;
+- (BOOL)isLessThan:(JKBigDecimal *)decimalNumber;
+- (BOOL)isLessThanOrEqualTo:(JKBigDecimal *)decimalNumber;
+- (BOOL)isGreaterThan:(JKBigDecimal *)decimalNumber;
+- (BOOL)isGreaterThanOrEqualTo:(JKBigDecimal *)decimalNumber;
+- (BOOL)isEqualToDecimalNumber:(JKBigDecimal *)decimalNumber;
+- (BOOL)isEqualToInt:(int)i;
+- (BOOL)isGreaterThanInt:(int)i;
+- (BOOL)isGreaterThanOrEqualToInt:(int)i;
+- (BOOL)isLessThanInt:(int)i;
+- (BOOL)isLessThanOrEqualToInt:(int)i;
 
-- (BOOL)isLessThanOrEqualTo:(JKBigDecimal *) decimalNumber;
-
-- (BOOL)isGreaterThan:(JKBigDecimal *) decimalNumber;
-
-- (BOOL)isGreaterThanOrEqualTo:(JKBigDecimal *) decimalNumber;
-
-- (BOOL)isEqualToDecimalNumber:(JKBigDecimal *) decimalNumber;
-
-- (BOOL)isEqualToInt:(int) i;
-
-- (BOOL)isGreaterThanInt:(int) i;
-
-- (BOOL)isGreaterThanOrEqualToInt:(int) i;
-
-- (BOOL)isLessThanInt:(int) i;
-
-- (BOOL)isLessThanOrEqualToInt:(int) i;
-
-- (NSDecimalNumber *)decimalNumber;
-
-- (NSNumber *)roundedNumberWithScale:(NSInteger) scale;
+- (NSDecimalNumber*)decimalNumber;
+- (NSNumber*)roundedNumberWithScale:(NSInteger) scale;
 
 @end

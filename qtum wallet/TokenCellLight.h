@@ -8,7 +8,7 @@
 
 #import "TokenCell.h"
 
-static NSString *tokenCellIdentifireLight = @"TokenCellLight";
+static NSString* tokenCellIdentifireLight = @"TokenCellLight";
 
 @interface TokenCellLight : TokenCell
 

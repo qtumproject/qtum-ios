@@ -26,67 +26,67 @@
 @synthesize delegate;
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-
-	self.centerView.alpha = 0.0f;
-
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector (actionUpload)];
-	[self.centerView addGestureRecognizer:tap];
+    [super viewDidLoad];
+    
+    self.centerView.alpha = 0.0f;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionUpload)];
+    [self.centerView addGestureRecognizer:tap];
 }
 
-- (void)viewWillAppear:(BOOL) animated {
-	[super viewWillAppear:animated];
-
-	__weak __typeof (self) weakSelf = self;
-	if (!self.isBackupCreated) {
-		[SLocator.backupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
-			DLog(@"%@", file);
-			[weakSelf fileWasCreatedWithURL:path andSize:size];
-			weakSelf.isBackupCreated = YES;
-		}];
-	}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    __weak __typeof(self) weakSelf = self;
+    if (!self.isBackupCreated) {
+        [SLocator.backupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
+            DLog(@"%@",file);
+            [weakSelf fileWasCreatedWithURL:path andSize:size];
+            weakSelf.isBackupCreated = YES;
+        }];
+    }
 }
 
-- (IBAction)actionBack:(id) sender {
-	[self.delegate didPressedBack];
+- (IBAction)actionBack:(id)sender {
+    [self.delegate didPressedBack];
 }
 
 - (void)actionUpload {
-	UIDocumentMenuViewController *vc = [[UIDocumentMenuViewController alloc] initWithURL:[NSURL fileURLWithPath:self.filePath] inMode:UIDocumentPickerModeExportToService];
-	vc.delegate = self;
-	[self presentViewController:vc animated:YES completion:nil];
+    UIDocumentMenuViewController *vc = [[UIDocumentMenuViewController alloc] initWithURL:[NSURL fileURLWithPath:self.filePath]  inMode:UIDocumentPickerModeExportToService];
+    vc.delegate = self;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)fileWasCreatedWithURL:(NSString *) path andSize:(NSUInteger) size {
-
-	self.filePath = path;
-	NSString *fileSizeString = [NSByteCountFormatter stringFromByteCount:size countStyle:NSByteCountFormatterCountStyleFile];
-	self.fileSizeLabel.text = fileSizeString;
-
-	[UIView animateWithDuration:0.3f animations:^{
-		self.centerView.alpha = 1.0f;
-		self.loaderView.alpha = 0.0f;
-	}];
+- (void)fileWasCreatedWithURL:(NSString *)path andSize:(NSUInteger)size {
+    
+    self.filePath = path;
+    NSString *fileSizeString = [NSByteCountFormatter stringFromByteCount:size countStyle:NSByteCountFormatterCountStyleFile];
+    self.fileSizeLabel.text = fileSizeString;
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.centerView.alpha = 1.0f;
+        self.loaderView.alpha = 0.0f;
+    }];
 }
 
 #pragma mark - UIDocumentMenuDelegate, UIDocumentPickerDelegate
 
-- (void)documentMenu:(UIDocumentMenuViewController *) documentMenu didPickDocumentPicker:(UIDocumentPickerViewController *) documentPicker {
-	documentPicker.delegate = self;
-	[self presentViewController:documentPicker animated:YES completion:nil];
+- (void)documentMenu:(UIDocumentMenuViewController *)documentMenu didPickDocumentPicker:(UIDocumentPickerViewController *)documentPicker {
+    documentPicker.delegate = self;
+    [self presentViewController:documentPicker animated:YES completion:nil];
 }
 
-- (void)documentPicker:(UIDocumentPickerViewController *) controller didPickDocumentAtURL:(NSURL *) url {
-
-	[[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForCompletedBackupFile] presenter:nil completion:nil];
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
+    
+    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForCompletedBackupFile] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpViewControllerDelegate
 
-- (void)okButtonPressed:(PopUpViewController *) sender {
-	[[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:^{
-		[self.delegate didPressedBack];
-	}];
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:^{
+        [self.delegate didPressedBack];
+    }];
 }
 
 @end

@@ -19,22 +19,22 @@
 @implementation TokenListViewControllerDark
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-
-	[self.pageControl setPagesCount:2];
-	[self.pageControl setSelectedPage:1];
+    [super viewDidLoad];
+    
+    [self.pageControl setPagesCount:2];
+    [self.pageControl setSelectedPage:1];
 }
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	TokenCellDark *cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifireDark];
-	[cell setupWithObject:self.tokens[indexPath.row]];
-	[cell changeHighlight:NO];
-	return cell;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TokenCellDark *cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifireDark];
+    [cell setupWithObject:self.tokens[indexPath.row]];
+    [cell changeHighlight:NO];
+    return cell;
 }
 
-- (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
-	return 46;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 46;
 }
 
 @end

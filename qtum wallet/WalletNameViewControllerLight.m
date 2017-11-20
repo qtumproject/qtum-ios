@@ -14,11 +14,11 @@
 
 @implementation WalletNameViewControllerLight
 
-- (void)keyboardWillShow:(NSNotification *) sender {
-
-	CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
-	self.buttonsBottomConstraint.constant = end.size.height + 20;
-	[self.view layoutIfNeeded];
+-(void)keyboardWillShow:(NSNotification *)sender {
+    
+    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.buttonsBottomConstraint.constant = end.size.height + 20;
+    [self.view layoutIfNeeded];
 }
 
 @end

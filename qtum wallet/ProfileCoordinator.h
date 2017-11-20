@@ -12,8 +12,7 @@
 
 @interface ProfileCoordinator : BaseCoordinator <Coordinatorable>
 
-- (instancetype)initWithNavigationController:(UINavigationController *) navigationController;
-
+- (instancetype)initWithNavigationController:(UINavigationController*)navigationController;
 - (void)startFromLanguage;
 
 @end

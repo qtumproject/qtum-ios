@@ -12,6 +12,6 @@
 
 @interface EnableFingerprintViewController : UIViewController <EnableFingerprintOutput>
 
-@property (weak, nonatomic) id <EnableFingerprintOutputDelegate> delegate;
+@property (weak,nonatomic) id <EnableFingerprintOutputDelegate> delegate;
 
 @end

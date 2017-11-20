@@ -15,51 +15,51 @@
 @implementation PinController
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector (keyboardWillShow:)
-												 name:UIKeyboardWillShowNotification
-											   object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector (keyboardWillHide:)
-												 name:UIKeyboardWillHideNotification
-											   object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector (keyboardDidShow:)
-												 name:UIKeyboardDidShowNotification
-											   object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector (applicationWillEnterForeground)
-												 name:UIApplicationWillEnterForegroundNotification
-											   object:nil];
-	self.editingEnabled = NO;
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    self.editingEnabled = NO;
 }
 
-- (void)viewDidAppear:(BOOL) animated {
-
-	self.editingEnabled = YES;
+-(void)viewDidAppear:(BOOL)animated {
+    
+    self.editingEnabled = YES;
 }
 
-- (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Keyboard
 
-- (void)keyboardWillShow:(NSNotification *) sender {
-	[self.view layoutIfNeeded];
+-(void)keyboardWillShow:(NSNotification *)sender{
+    [self.view layoutIfNeeded];
 }
 
-- (void)keyboardWillHide:(NSNotification *) sender {
-	[self.view layoutIfNeeded];
+-(void)keyboardWillHide:(NSNotification *)sender{
+    [self.view layoutIfNeeded];
 }
 
-- (void)applicationWillEnterForeground {
-	[self.view layoutIfNeeded];
+-(void)applicationWillEnterForeground {
+    [self.view layoutIfNeeded];
 }
 
-- (void)keyboardDidShow:(NSNotification *) sender {
-	//need to be overrided
+-(void)keyboardDidShow:(NSNotification *)sender {
+    //need to be overrided
 }
 
 @end

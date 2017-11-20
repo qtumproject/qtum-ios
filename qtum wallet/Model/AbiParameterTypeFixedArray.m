@@ -9,12 +9,12 @@
 @implementation AbiParameterTypeFixedArray
 
 - (instancetype)initWithSize:(NSUInteger) size {
-
-	self = [super init];
-	if (self) {
-		_size = size;
-	}
-	return self;
+    
+    self = [super init];
+    if (self) {
+        _size = size;
+    }
+    return self;
 }
 
 @end

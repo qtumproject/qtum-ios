@@ -11,8 +11,7 @@
 
 @interface NewsDetailCellBuilder : NSObject
 
-- (UITableViewCell *)getCellWithTagItem:(QTUMHTMLTagItem *) tag fromTable:(UITableView *) tableView withIndexPath:(NSIndexPath *) indexPath;
-
-- (UITableViewCell *)getCellTitleWithFeedItem:(QTUMFeedItem *) feedItem fromTable:(UITableView *) tableView withIndexPath:(NSIndexPath *) indexPath;
+-(UITableViewCell*)getCellWithTagItem:(QTUMHTMLTagItem*)tag fromTable:(UITableView*) tableView withIndexPath:(NSIndexPath*) indexPath;
+-(UITableViewCell*)getCellTitleWithFeedItem:(QTUMFeedItem*)feedItem fromTable:(UITableView*) tableView withIndexPath:(NSIndexPath*) indexPath;
 
 @end

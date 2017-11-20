@@ -11,19 +11,19 @@
 @implementation TextFieldWithLineLight
 
 - (UIColor *)getUnderlineColorDeselected {
-	return [UIColor whiteColor];
+    return [UIColor whiteColor];
 }
 
 - (UIColor *)getUnderlineColorSelected {
-	return [UIColor whiteColor];
+    return [UIColor whiteColor];
 }
 
 - (UIColor *)getPlaceholderColor {
-	return lightTextFieldPlaceholderColor ();
+    return lightTextFieldPlaceholderColor();
 }
 
 - (UIFont *)getPlaceholderFont {
-	return [UIFont fontWithName:@"ProximaNova-Regular" size:self.font.pointSize];
+    return [UIFont fontWithName:@"ProximaNova-Regular" size:self.font.pointSize];
 }
 
 @end

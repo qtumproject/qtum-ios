@@ -12,16 +12,14 @@
 
 @protocol ConfirmPinCoordinatorDelegate <NSObject>
 
-- (void)coordinatorDidConfirm:(ConfirmPinCoordinator *) coordinator;
-
-- (void)coordinatorDidCanceledConfirm:(ConfirmPinCoordinator *) coordinator;
+- (void)coordinatorDidConfirm:(ConfirmPinCoordinator*)coordinator;
+- (void)coordinatorDidCanceledConfirm:(ConfirmPinCoordinator*)coordinator;
 
 @end
 
 @interface ConfirmPinCoordinator : BaseCoordinator <Coordinatorable>
 
 @property (weak, nonatomic) id <ConfirmPinCoordinatorDelegate> delegate;
-
-- (instancetype)initWithParentViewContainer:(UIViewController *) containerViewController;
+- (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;
 
 @end

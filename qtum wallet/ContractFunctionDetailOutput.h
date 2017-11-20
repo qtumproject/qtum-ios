@@ -13,27 +13,20 @@
 
 @protocol ContractFunctionDetailOutput <Presentable>
 
-@property (weak, nonatomic) id <ContractFunctionDetailOutputDelegate> delegate;
-@property (strong, nonatomic) AbiinterfaceItem *function;
+@property (weak,nonatomic) id <ContractFunctionDetailOutputDelegate> delegate;
+@property (strong,nonatomic) AbiinterfaceItem* function;
 @property (nonatomic) BOOL fromQStore;
-@property (weak, nonatomic) Contract *token;
+@property (weak,nonatomic) Contract* token;
 
-- (void)showResultViewWithOutputs:(NSArray *) outputs;
+-(void)showResultViewWithOutputs:(NSArray*) outputs;
 
 - (void)showLoader;
-
 - (void)hideLoader;
-
 - (void)showCompletedPopUp;
-
-- (void)showErrorPopUp:(NSString *) message;
-
-- (void)setMinFee:(QTUMBigNumber *) minFee andMaxFee:(QTUMBigNumber *) maxFee;
-
-- (void)setMinGasPrice:(QTUMBigNumber *) min andMax:(QTUMBigNumber *) max step:(long) step;
-
-- (void)setMinGasLimit:(QTUMBigNumber *) min andMax:(QTUMBigNumber *) max standart:(QTUMBigNumber *) standart step:(long) step;
-
-- (void)showNotEnoughFeeAlertWithEstimatedFee:(QTUMBigNumber *) estimatedFee;
+- (void)showErrorPopUp:(NSString *)message;
+- (void)setMinFee:(QTUMBigNumber*) minFee andMaxFee:(QTUMBigNumber*) maxFee;
+- (void)setMinGasPrice:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max step:(long)step;
+- (void)setMinGasLimit:(QTUMBigNumber *)min andMax:(QTUMBigNumber *)max standart:(QTUMBigNumber *)standart step:(long)step;
+- (void)showNotEnoughFeeAlertWithEstimatedFee:(QTUMBigNumber*) estimatedFee;
 
 @end

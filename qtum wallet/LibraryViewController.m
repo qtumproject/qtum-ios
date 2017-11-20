@@ -17,14 +17,14 @@
 @implementation LibraryViewController
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-
-	self.tableView.dataSource = self.tableSource;
-	self.tableView.delegate = self.tableSource;
+    [super viewDidLoad];
+    
+    self.tableView.dataSource = self.tableSource;
+    self.tableView.delegate = self.tableSource;
 }
 
-- (IBAction)actionBack:(id) sender {
-	[self.delegate didBackPressed];
+- (IBAction)actionBack:(id)sender {
+    [self.delegate didBackPressed];
 }
 
 @end

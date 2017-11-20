@@ -33,18 +33,18 @@
 
 @implementation NSString (SHA3)
 
-- (NSString *)sha3:(NSUInteger) bitsLength {
-
-	int bytes = (int)(bitsLength / 8);
-	const char *string = [self cStringUsingEncoding:NSUTF8StringEncoding];
-	int size = (int)strlen (string);
-	uint8_t md[bytes];
-	keccak ((uint8_t *)string, size, md, bytes);
-	NSMutableString *sha3 = [[NSMutableString alloc] initWithCapacity:bitsLength / 4];
-
-	for (int32_t i = 0; i < bytes; i++)
-		[sha3 appendFormat:@"%02X", md[i]];
-	return sha3;
+-(NSString*) sha3:(NSUInteger)bitsLength {
+    
+    int bytes = (int)(bitsLength/8);
+    const char * string = [self cStringUsingEncoding:NSUTF8StringEncoding];
+    int size=(int)strlen(string);
+    uint8_t md[bytes];
+    keccak((uint8_t*)string, size, md, bytes);
+    NSMutableString *sha3 = [[NSMutableString alloc] initWithCapacity:bitsLength/4];
+    
+    for(int32_t i=0;i<bytes;i++)
+        [sha3 appendFormat:@"%02X", md[i]];
+    return sha3;
 }
 
 

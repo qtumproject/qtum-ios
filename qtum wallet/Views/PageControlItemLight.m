@@ -10,20 +10,20 @@
 
 @implementation PageControlItemLight
 
-- (void)setSelectedState:(BOOL) selected {
-
-	self.backgroundColor = lightBlackColor ();
-	self.alpha = selected ? 0.6f : 0.3f;
-	self.layer.cornerRadius = selected ? 4.0f : 3.0f;
-	self.layer.masksToBounds = YES;
+- (void)setSelectedState:(BOOL)selected {
+    
+    self.backgroundColor = lightBlackColor();
+    self.alpha = selected ? 0.6f : 0.3f;
+    self.layer.cornerRadius = selected ? 4.0f : 3.0f;
+    self.layer.masksToBounds = YES;
 }
 
 - (CGFloat)getNotSelectedWidth {
-	return 6;
+    return 6;
 }
 
 - (CGFloat)getSelectedWidth {
-	return 8;
+    return 8;
 }
 
 @end

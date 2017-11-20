@@ -12,6 +12,6 @@
 
 @interface SmartContractMenuViewController : BaseViewController <SmartContractMenuOutput>
 
-@property (strong, nonatomic) NSArray<NSString *> *contractTypes;
+@property (strong,nonatomic) NSArray<NSString*>* contractTypes;
 
 @end

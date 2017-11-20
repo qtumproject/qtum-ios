@@ -10,10 +10,8 @@
 
 @protocol WatchContractOutputDelegate <NSObject>
 
-- (void)didSelectChooseFromLibrary:(id) sender;
-
+- (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;
-
 - (void)didPressedBack;
 
 @end

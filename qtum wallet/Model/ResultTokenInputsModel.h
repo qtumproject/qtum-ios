@@ -10,7 +10,7 @@
 
 @interface ResultTokenInputsModel : NSObject
 
-@property (copy, nonatomic) NSString *name;
-@property (strong, nonatomic) id value;
+@property (copy, nonatomic)NSString* name;
+@property (strong, nonatomic)id value;
 
 @end

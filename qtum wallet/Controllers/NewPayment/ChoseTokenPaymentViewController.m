@@ -17,32 +17,32 @@
 @implementation ChoseTokenPaymentViewController
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
-	self.tableView.delegate = self.delegateDataSource;
-	self.tableView.dataSource = self.delegateDataSource;
+    [super viewDidLoad];
+    self.tableView.delegate = self.delegateDataSource;
+    self.tableView.dataSource = self.delegateDataSource;
 }
 
-- (void)viewWillAppear:(BOOL) animated {
-
-	[super viewWillAppear:animated];
-	[self.tableView reloadData];
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
-- (void)updateWithTokens:(NSArray <Contract *> *) tokens {
-
-	self.delegateDataSource.tokens = tokens;
-
-	__weak __typeof (self) weakSelf = self;
-
-	dispatch_async (dispatch_get_main_queue (), ^{
-
-		[weakSelf.tableView reloadData];
-	});
+-(void)updateWithTokens:(NSArray <Contract*>*) tokens {
+    
+    self.delegateDataSource.tokens = tokens;
+    
+    __weak __typeof(self)weakSelf = self;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [weakSelf.tableView reloadData];
+    });
 }
 
-- (IBAction)didPressedBackAction:(id) sender {
-
-	[self.delegate didPressedBackAction];
+- (IBAction)didPressedBackAction:(id)sender {
+    
+    [self.delegate didPressedBackAction];
 }
 
 @end

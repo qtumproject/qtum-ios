@@ -17,16 +17,13 @@
 @property (assign, nonatomic, readonly) BOOL isLongPin;
 @property (assign, nonatomic, readonly) BOOL isDarkTheme;
 @property (assign, nonatomic, readonly) NSInteger failedPinWaitingTime;
-@property (assign, nonatomic, readonly) BOOL isRemovingContractTrainingPassed;
-@property (copy, nonatomic, readonly) NSString *baseURL;
+@property (assign, nonatomic,readonly) BOOL isRemovingContractTrainingPassed;
+@property (copy, nonatomic, readonly) NSString* baseURL;
 
 
-- (void)setup;
-
-- (void)setFingerprintEnabled:(BOOL) enabled;
-
-- (void)changeThemeToDark:(BOOL) needDarkTheme;
-
-- (void)changeIsRemovingContractTrainingPassed:(BOOL) passed;
+-(void)setup;
+-(void)setFingerprintEnabled:(BOOL)enabled;
+-(void)changeThemeToDark:(BOOL) needDarkTheme;
+-(void)changeIsRemovingContractTrainingPassed:(BOOL) passed;
 
 @end

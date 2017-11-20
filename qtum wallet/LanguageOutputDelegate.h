@@ -11,7 +11,6 @@
 @protocol LanguageOutputDelegate <NSObject>
 
 - (void)didLanguageChanged;
-
 - (void)didBackPressed;
 
 @end

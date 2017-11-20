@@ -11,13 +11,13 @@
 
 @protocol SourceCodeOutputDelegate <NSObject>
 
-- (void)didPressedBack;
+-(void)didPressedBack;
 
 @end
 
 @protocol SourceCodeOutput <Presentable>
 
 @property (weak, nonatomic) id <SourceCodeOutputDelegate> delegate;
-@property (strong, nonatomic) NSAttributedString *sourceCode;
+@property (strong,nonatomic) NSAttributedString* sourceCode;
 
 @end

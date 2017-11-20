@@ -15,16 +15,16 @@
 @implementation TokenCellSubscribe
 
 - (void)awakeFromNib {
-	[super awakeFromNib];
+    [super awakeFromNib];
 }
 
-- (void)updateConstraints {
-	[super updateConstraints];
-	self.topSeparatorHeight.constant = 0.5f;
+-(void)updateConstraints {
+    [super updateConstraints];
+    self.topSeparatorHeight.constant = 0.5f;
 }
 
-- (void)setSelected:(BOOL) selected animated:(BOOL) animated {
-	[super setSelected:selected animated:animated];
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 }
 
 @end

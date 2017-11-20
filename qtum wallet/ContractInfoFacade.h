@@ -11,6 +11,6 @@
 
 @interface ContractInfoFacade : NSObject
 
-- (NSArray <ContracBalancesObject *> *)arrayOfStingValuesOfTokenBalanceWithToken:(Contract *) token;
+- (NSArray <ContracBalancesObject*>*)arrayOfStingValuesOfTokenBalanceWithToken:(Contract*) token;
 
 @end
