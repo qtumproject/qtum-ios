@@ -342,8 +342,9 @@
 #pragma mark - Global Observing
 
 -(void)contractCreationDidFailed {
-    
-    [SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Failed to create contract", @"") andIdentifire:@"contract_creation_failed"];
+
+    NSString *identifire = @"contract_creation_failed";
+    [SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Failed to create contract", @"") andIdentifire:identifire];
 }
 
 @end

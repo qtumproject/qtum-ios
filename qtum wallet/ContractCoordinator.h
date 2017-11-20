@@ -15,8 +15,8 @@
 @protocol ContractCoordinatorDelegate <NSObject>
 
 @required
--(void)createStepOneCancelDidPressed;
--(void)didPressedBack;
+- (void)createStepOneCancelDidPressed;
+- (void)didPressedBack;
 
 - (void)didSelectChooseFromLibrary:(id)sender;
 - (void)didChangeAbiText;
