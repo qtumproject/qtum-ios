@@ -12,7 +12,6 @@
 #import "SocketManager.h"
 #import "NSString+SHA3.h"
 #import "NSNumber+Comparison.h"
-#import "iOSSessionManager.h"
 
 NSString const *kWallets = @"qtum_wallet_wallets_keys";
 NSString const *kSingleWallet = @"qtum_wallet_wallet_keys";

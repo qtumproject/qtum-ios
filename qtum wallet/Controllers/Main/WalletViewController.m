@@ -7,7 +7,6 @@
 //
 
 #import "WalletViewController.h"
-#import "NewPaymentDarkViewController.h"
 
 @interface WalletViewController ()
 

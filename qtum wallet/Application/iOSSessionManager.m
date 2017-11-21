@@ -6,7 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "iOSSessionManager.h"
 #import <WatchConnectivity/WatchConnectivity.h>
 #import "QRCodeManager.h"
 

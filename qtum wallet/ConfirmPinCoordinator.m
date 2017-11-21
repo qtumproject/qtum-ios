@@ -9,7 +9,6 @@
 #import "ConfirmPinCoordinator.h"
 #import "LoginViewOutput.h"
 #import "LoginViewController.h"
-#import "TouchIDService.h"
 #import "NSDate+Extension.h"
 #import "ErrorPopUpViewController.h"
 #import "NSUserDefaults+Settings.h"

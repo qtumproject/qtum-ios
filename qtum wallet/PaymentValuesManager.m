@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "PaymentValuesManager.h"
-
 NSString *const PaymentValuesManagerFeeKey = @"PaymentValuesManagerFeeKey";
 NSString *const PaymentValuesManagerGasPriceKey = @"PaymentValuesManagerGasPriceKey";
 NSString *const PaymentValuesManagerGaslimitKey = @"PaymentValuesManagerGaslimitKey";

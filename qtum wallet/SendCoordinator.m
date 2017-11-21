@@ -7,7 +7,6 @@
 //
 
 #import "SendCoordinator.h"
-#import "PaymentValuesManager.h"
 #import "NewPaymentDarkViewController.h"
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"

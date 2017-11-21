@@ -8,7 +8,6 @@
 
 #import "LoginViewOutput.h"
 #import "SecurityPopupViewController.h"
-#import "TouchIDService.h"
 
 @interface SecurityCoordinator () <SecurityPopupViewControllerDelegate>
 

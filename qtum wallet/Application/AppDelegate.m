@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Appearance.h"
-#import "iOSSessionManager.h"
 
 @interface AppDelegate ()
 

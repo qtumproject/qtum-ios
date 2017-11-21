@@ -9,8 +9,6 @@
 #import "NSUserDefaults+Settings.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import "TouchIDService.h"
-#import "PaymentValuesManager.h"
 
 @interface AppSettings ()
 

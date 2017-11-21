@@ -15,7 +15,6 @@
 #import "ProfileCoordinator.h"
 #import "Appearance.h"
 #import "SplashScreenOutput.h"
-#import "QStoreManager.h"
 
 
 @interface ApplicationCoordinator () <ApplicationCoordinatorDelegate, SecurityCoordinatorDelegate, LoginCoordinatorDelegate, ConfirmPinCoordinatorDelegate, AuthCoordinatorDelegate>

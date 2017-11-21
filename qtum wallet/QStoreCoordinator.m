@@ -13,7 +13,6 @@
 #import "QStoreListOutput.h"
 #import "ContractFunctionDetailOutput.h"
 #import "QStoreContractElement.h"
-#import "QStoreManager.h"
 #import "QStoreMainScreenCategory.h"
 #import "QStoreBuyRequest.h"
 #import "QStoreTemplateDetailOutput.h"

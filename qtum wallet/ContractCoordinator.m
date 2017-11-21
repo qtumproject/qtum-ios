@@ -13,14 +13,12 @@
 #import "TemplateTokenViewController.h"
 #import "SmartContractMenuViewController.h"
 #import "SmartContractsListViewController.h"
-#import "TokenDetailsViewController.h"
 #import "TokenFunctionViewController.h"
 #import "TokenFunctionDetailViewController.h"
 #import "WatchContractViewController.h"
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
 #import "BackupContractsViewController.h"
-#import "PaymentValuesManager.h"
 
 #import "QStoreCoordinator.h"
 
