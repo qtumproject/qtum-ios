@@ -12,7 +12,7 @@
 
 NSString *const FireBaseInfoFileName = @"GoogleService-Info";
 
-@interface NotificationManager () <UNUserNotificationCenterDelegate, UIApplicationDelegate>
+@interface NotificationManager () <UNUserNotificationCenterDelegate, UIApplicationDelegate, FIRMessagingDelegate>
 
 @end
 
@@ -43,8 +43,9 @@ NSString *const FireBaseInfoFileName = @"GoogleService-Info";
 	NSDictionary *dictPri = [NSDictionary dictionaryWithContentsOfFile:path];
 	if (dictPri) {
 		[FIRApp configure];
+        [FIRMessaging messaging].shouldEstablishDirectChannel = YES;
+        [FIRMessaging messaging].delegate = self;
 	}
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (tokenRefreshNotification:) name:kFIRInstanceIDTokenRefreshNotification object:nil];
 }
 
 - (void)clear {
@@ -82,8 +83,7 @@ NSString *const FireBaseInfoFileName = @"GoogleService-Info";
 
 - (void)application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
 
-	[[FIRInstanceID instanceID] setAPNSToken:deviceToken type:FIRInstanceIDAPNSTokenTypeSandbox];
-	[self storeDeviceToken];
+    [[FIRMessaging messaging] setAPNSToken:deviceToken type:FIRMessagingAPNSTokenTypeSandbox];
 }
 
 - (void)registerForPushNotifications {
@@ -109,9 +109,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult)) completionHandler {
 
 #pragma mark - Private Methods
 
-- (void)storeDeviceToken {
+- (void)storeDeviceToken:(NSString*) token {
 
-	NSString *token = [[FIRInstanceID instanceID] token];
 	NSString *prevToken = [NSUserDefaults getDeviceToken];
 	[NSUserDefaults saveDeviceToken:token];
 	[NSUserDefaults savePrevDeviceToken:([prevToken isEqualToString:token]) ? @"" : prevToken];
@@ -137,30 +136,15 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult)) completionHandler {
 	}
 }
 
-- (void)tokenRefreshNotification:(NSNotification *) notification {
+- (void)messaging:(nonnull FIRMessaging *)messaging didReceiveRegistrationToken:(nonnull NSString *)fcmToken {
+    
+    __weak __typeof (self) weakSelf = self;
 
-	[self connectToFcm];
-}
-
-- (void)connectToFcm {
-
-	__weak __typeof (self) weakSelf = self;
-	[[FIRMessaging messaging] connectWithCompletion:^(NSError *_Nullable error) {
-		if (error) {
-			DLog(@"Unable to connect to FCM. %@", error);
-		} else {
-
-			//DLog(@"InstanceID_connectToFcm = %@", InstanceID);
-			dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-
-				dispatch_async (dispatch_get_main_queue (), ^{
-					[weakSelf storeDeviceToken];
-					[SLocator.walletManager startObservingForAllSpendable];
-					[SLocator.contractManager startObservingForAllSpendable];
-				});
-			});
-		}
-	}];
+    dispatch_async (dispatch_get_main_queue (), ^{
+        [weakSelf storeDeviceToken:fcmToken];
+        [SLocator.walletManager startObservingForAllSpendable];
+        [SLocator.contractManager startObservingForAllSpendable];
+    });
 }
 
 
