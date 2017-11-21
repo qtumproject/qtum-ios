@@ -592,7 +592,7 @@ static NSInteger constantFee = 400000000;
 - (NSInteger)feeFromNumber:(QTUMBigNumber *) feeNumber {
 
 	if (feeNumber) {
-		return feeNumber.satoshiAmountValue;
+		return (NSInteger)feeNumber.satoshiAmountValue;
 	} else {
 		return constantFee;
 	}

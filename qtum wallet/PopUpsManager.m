@@ -236,7 +236,7 @@
 - (SecurityPopupViewController *)showSecurityPopup:(id <SecurityPopupViewControllerDelegate>) delegate presenter:(UIViewController *) presenter completion:(void (^)(void)) completion {
 
 	SecurityPopupViewController *controller = [self createSecurityPopUp];
-	controller.delegate = delegate;
+	controller.popupDelegate = delegate;
 	self.currentPopUp = controller;
 	[controller showFromViewController:presenter animated:YES completion:completion];
 	return controller;

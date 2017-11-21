@@ -536,22 +536,18 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	[self save];
 }
 
-- (void)updateSpendableWithObject:(id) updateObject {
+- (void)updateSpendableWithObject:(id) updateObject { }
 
-}
+- (void)updateSpendablesBalansesWithObject:(id) updateObject { }
 
-
-- (void)updateSpendablesBalansesWithObject:(id) updateObject {
-
-}
-
-- (void)updateSpendablesHistoriesWithObject:(id) updateObject {
-
-}
+- (void)updateSpendablesHistoriesWithObject:(id) updateObject { }
 
 - (void)spendableDidChange:(id <Spendable>) object {
 	[self tokenDidChange:object];
 }
+
+- (void)historyOfSpendableDidChange:(id<Spendable>)object { }
+
 
 - (void)clear {
 

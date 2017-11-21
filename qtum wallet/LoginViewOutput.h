@@ -16,6 +16,7 @@
 
 - (void)applyFailedPasswordAction;
 
+@optional
 - (void)startEditing;
 
 - (void)stopEditing;

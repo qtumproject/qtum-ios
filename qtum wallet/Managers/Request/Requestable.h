@@ -102,7 +102,7 @@ failure;
 
 - (void)stopObservingAdresses:(NSArray *) addresses;
 
-- (void)startObservingForToken:(Contract *) token withHandler:(void (^)(id responseObject)) completesion;
+- (void)startObservingForToken:(Contract *) token withHandler:(void (^)(void)) completesion;
 
 - (void)stopObservingForToken:(Contract *) token;
 

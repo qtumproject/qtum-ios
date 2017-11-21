@@ -41,6 +41,8 @@
 }
 
 - (void)prepareForReuse {
+    
+    [super prepareForReuse];
 	self.token = nil;
 }
 

@@ -10,11 +10,11 @@
 
 @protocol QTUMSwipableCellWithButtonsDelegate <NSObject>
 
-- (BOOL)shoudOpenCell:(UITableViewCell *) cell;
-
 - (BOOL)shoudCloseCell:(UITableViewCell *) cell;
 
 @optional
+- (BOOL)shoudOpenCell:(UITableViewCell *) cell;
+
 - (void)buttonOneActionForIndexPath:(NSIndexPath *) indexPath;
 
 - (void)buttonTwoActionForIndexPath:(NSIndexPath *) indexPath;

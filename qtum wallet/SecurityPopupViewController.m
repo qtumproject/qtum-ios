@@ -39,8 +39,8 @@
 
 - (void)confirmPinWithDigits:(NSString *) digits {
 
-	if ([self.delegate respondsToSelector:@selector (confirmButtonPressed:withPin:)]) {
-		[self.delegate confirmButtonPressed:self withPin:digits];
+	if ([self.popupDelegate respondsToSelector:@selector (confirmButtonPressed:withPin:)]) {
+		[self.popupDelegate confirmButtonPressed:self withPin:digits];
 	}
 }
 
@@ -48,8 +48,8 @@
 
 - (IBAction)didPresseCancelAction:(id) sender {
 
-	if ([self.delegate respondsToSelector:@selector (cancelButtonPressed:)]) {
-		[self.delegate cancelButtonPressed:self];
+	if ([self.popupDelegate respondsToSelector:@selector (cancelButtonPressed:)]) {
+		[self.popupDelegate cancelButtonPressed:self];
 	}
 }
 
@@ -63,5 +63,6 @@
 	[self.passwordView becameFirstResponder];
 }
 
+@synthesize delegate;
 
 @end

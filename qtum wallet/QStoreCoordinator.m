@@ -316,8 +316,5 @@
 
 #pragma mark - ContractFunctionDetailOutputDelegate
 
-- (void)didCallFunctionWithItem:(AbiinterfaceItem *) item andParam:(NSArray<ResultTokenInputsModel *> *) inputs andToken:(Contract *) token {
-
-}
 
 @end

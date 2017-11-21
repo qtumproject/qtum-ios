@@ -131,8 +131,8 @@ NSString *kErrorKey = @"error";
 							return;
 						}
 
-						NSNumber *availableBalance = wallet.balance;
-						NSNumber *unconfirmedBalance = wallet.unconfirmedBalance;
+						QTUMBigNumber *availableBalance = wallet.balance;
+						QTUMBigNumber *unconfirmedBalance = wallet.unconfirmedBalance;
 						NSArray *history = wallet.historyStorage.historyPrivate;
 						NSMutableArray *historyDictionary = [NSMutableArray new];
 						for (HistoryElement *element in history) {

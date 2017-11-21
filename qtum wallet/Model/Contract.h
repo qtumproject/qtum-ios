@@ -44,7 +44,6 @@
 @property (strong, nonatomic) NSDate *creationDate;
 @property (copy, nonatomic, readonly) NSString *creationDateString;
 @property (copy, nonatomic, readonly) NSString *creationFormattedDateString;
-@property (copy, nonatomic, readonly) NSDictionary <NSString *, NSDictionary<NSString *, NSString *> *> *addressBalanceDivByDecimalDictionary;
 @property (copy, nonatomic) NSDictionary <NSString *, QTUMBigNumber *> *addressBalanceDictionary;
 @property (nonatomic, weak) id <TokenDelegate> delegate;
 

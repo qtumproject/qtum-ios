@@ -9,7 +9,7 @@
 #import "PasswordView.h"
 #import "CustomTextField.h"
 
-@interface PasswordView () <UITextFieldDelegate>
+@interface PasswordView () <UITextFieldDelegate, CAAnimationDelegate>
 
 @property (strong, nonatomic) UIFont *textFont;
 @property (strong, nonatomic) UIColor *fontColor;

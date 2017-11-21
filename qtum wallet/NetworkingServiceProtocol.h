@@ -2,7 +2,7 @@
 //  NetworkingServiceProtocol.h
 //  qtum wallet
 //
-//  Created by Никита Федоренко on 16.10.17.
+//  Created by Vladimir Lebedevich on 16.10.17.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
@@ -20,6 +20,6 @@
 	  andFailureHandler:(void (^ _Nullable)(NSError *_Nonnull error, NSString *_Nullable message)) failure;
 
 @optional
-@property (copy, nonatomic) NSString *accesToken;
+@property (copy, nonatomic) NSString * _Nullable accesToken;
 
 @end

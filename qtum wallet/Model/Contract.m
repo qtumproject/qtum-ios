@@ -94,21 +94,6 @@
 	return _balance;
 }
 
-- (NSArray <NSDictionary<NSString *, NSString *> *> *)addressBalanceDivByDecimalDictionary {
-
-	NSArray *allAddressesArray = [SLocator.walletManager.wallet allKeys];
-
-	NSDictionary <NSString *, NSDictionary<NSString *, NSString *> *> *addressBalanceDivByDecimalDictionary = @{}.mutableCopy;
-
-	for (NSString *address in self.addressBalanceDictionary.allKeys) {
-
-		[addressBalanceDivByDecimalDictionary setValue:@{@"longString": [self.addressBalanceDictionary[address] stringNumberWithPowerOfMinus10:self.decimals],
-				@"shortString": [self.addressBalanceDictionary[address] shortFormatOfNumberWithPowerOfMinus10:self.decimals]
-		}                                       forKey:address];
-	}
-	return addressBalanceDivByDecimalDictionary;
-}
-
 - (NSString *)balanceString {
 
 	if (!self.balance || !self.decimals) {

@@ -10,7 +10,7 @@
 
 @interface WalletManagerRequestAdapter : NSObject
 
-- (void)getBalanceForAddreses:(NSArray *) keyAddreses withSuccessHandler:(void (^)(NSDecimalNumber *balance)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
+- (void)getBalanceForAddreses:(NSArray *) keyAddreses withSuccessHandler:(void (^)(QTUMBigNumber *balance)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
 
 - (void)getHistoryForAddresses:(NSArray *) keyAddreses andParam:(NSDictionary *) param withSuccessHandler:(void (^)(NSArray *responseObject)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
 

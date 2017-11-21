@@ -297,11 +297,11 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (void)updateBalanceOfSpendableObject:(Wallet <Spendable> *) object withHandler:(void (^)(BOOL success)) complete {
 
-	[self.requestAdapter getBalanceForAddreses:[object allKeysAdreeses] withSuccessHandler:^(NSDecimalNumber *balance) {
+	[self.requestAdapter getBalanceForAddreses:[object allKeysAdreeses] withSuccessHandler:^(QTUMBigNumber *balance) {
 
 		object.balance = balance;
 		complete (YES);
-	}                        andFailureHandler:^(NSError *error, NSString *message) {
+	} andFailureHandler:^(NSError *error, NSString *message) {
 		complete (NO);
 	}];
 }
@@ -344,11 +344,11 @@ NSString const *kIsLongPin = @"kIsLongPin";
 	NSNumber *unconfirmedBalance = balances[@"unconfirmedBalance"];
 
 	if ([balance isKindOfClass:[NSNumber class]]) {
-		self.wallet.balance = [balance decimalNumber];
+		self.wallet.balance = [QTUMBigNumber decimalWithString:balance.stringValue];
 	}
 
 	if ([unconfirmedBalance isKindOfClass:[NSNumber class]]) {
-		self.wallet.unconfirmedBalance = [unconfirmedBalance decimalNumber];
+		self.wallet.unconfirmedBalance = [QTUMBigNumber decimalWithString:unconfirmedBalance.stringValue];
 	}
 
 	[self spendableDidChange:self.wallet];

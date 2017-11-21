@@ -129,6 +129,8 @@ const float bottomOffset = 25;
 	[self.delegate didPressedBack];
 }
 
+@synthesize type;
+
 @end
 
 

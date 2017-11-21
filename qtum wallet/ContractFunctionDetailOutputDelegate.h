@@ -12,6 +12,7 @@
 
 @protocol ContractFunctionDetailOutputDelegate <NSObject>
 
+@optional
 - (void)didCallFunctionWithItem:(AbiinterfaceItem *) item
 					   andParam:(NSArray<ResultTokenInputsModel *> *) inputs
 					   andToken:(Contract *) token

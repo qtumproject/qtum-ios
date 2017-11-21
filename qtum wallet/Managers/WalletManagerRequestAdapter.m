@@ -13,7 +13,7 @@
 @implementation WalletManagerRequestAdapter
 
 - (void)getBalanceForAddreses:(NSArray *) keyAddreses
-		   withSuccessHandler:(void (^)(NSDecimalNumber *balance)) success
+		   withSuccessHandler:(void (^)(QTUMBigNumber *balance)) success
 			andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
 
 	__weak __typeof (self) weakSelf = self;
@@ -124,15 +124,15 @@
 	return element;
 }
 
-- (NSDecimalNumber *)calculateBalance:(NSArray *) responseObject {
+- (QTUMBigNumber *)calculateBalance:(NSArray *) responseObject {
 
-	NSDecimalNumber *balance = [[NSDecimalNumber alloc] initWithDouble:0];
+	QTUMBigNumber *balance = [QTUMBigNumber decimalWithInteger:0];
 
 	for (NSDictionary *dictionary in responseObject) {
 
 		NSNumber *amount = dictionary[@"amount"];
 		if ([amount isKindOfClass:[NSNumber class]]) {
-			balance = [balance decimalNumberByAdding:amount.decimalNumber];
+			balance = [balance add:[QTUMBigNumber decimalWithString:amount.stringValue]];
 		}
 	}
 

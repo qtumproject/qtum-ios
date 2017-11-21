@@ -156,7 +156,6 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
 	NSString *token = [SLocator.notificationManager token];
 	[self.currentSocket emit:@"unsubscribe" with:@[@"balance_subscribe", [NSNull null], @{@"notificationToken": token ? : [NSNull null]}]];
 	[self.currentSocket emit:@"unsubscribe" with:@[@"token_balance_change", [NSNull null], @{@"notificationToken": token ? : [NSNull null]}]];
-	// [self.currentSocket disconnect];
 }
 
 - (void)startObservingToken:(Contract *) token withHandler:(void (^)(void)) handler {

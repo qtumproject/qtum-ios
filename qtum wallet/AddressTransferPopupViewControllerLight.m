@@ -43,7 +43,7 @@
 		  forComponent:(NSInteger) component
 		   reusingView:(UIView *) view {
 
-	ContracBalancesObject *addressObject = self.fromAddressesVariants[row];
+	ContracBalancesObject *addressObject = (ContracBalancesObject*)self.fromAddressesVariants[row];
 	NSString *amount = addressObject.longBalanceStringBalance;
 
 	UIView *container;

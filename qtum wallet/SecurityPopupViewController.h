@@ -13,7 +13,7 @@
 
 @interface SecurityPopupViewController : PopUpViewController <LoginViewOutput, PasswordViewDelegate>
 
-@property (nonatomic, weak) id <SecurityPopupViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <SecurityPopupViewControllerDelegate> popupDelegate;
 @property (weak, nonatomic) IBOutlet PasswordView *passwordView;
 
 - (void)applyFailedPasswordAction;
