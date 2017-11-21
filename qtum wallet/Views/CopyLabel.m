@@ -49,11 +49,11 @@
     NSString* keyString = self.text;
     [pb setString:keyString];
     
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForAddressCopied] presenter:nil completion:nil];
+    [SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForAddressCopied] presenter:nil completion:nil];
 }
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 @end

@@ -24,7 +24,7 @@ static NSString* kTemplateUuidKey = @"template";
 - (void)getBackupFile:(void (^)(NSDictionary *file, NSString* path, NSInteger size)) completionBlock {
     
     NSMutableDictionary* backup = @{}.mutableCopy;
-    backup[kContractsKey] = [[ContractManager sharedInstance] decodeDataForBackup];
+    backup[kContractsKey] = [SLocator.contractManager decodeDataForBackup];
     backup[kTemplatesKey] = [SLocator.templateManager decodeDataForBackup];
     backup[kDateCreateKey] = [[NSDate date] string];
     backup[kPlatformKey] = kCurrentPlatformValueKey;
@@ -136,7 +136,7 @@ static NSString* kTemplateUuidKey = @"template";
         
         NSArray<TemplateModel*>* newTemplates = [SLocator.templateManager encodeDataForBacup:[usefullTemplatesCondidats copy]];
         
-        if (filteredArray.count > 0 && newTemplates.count > 0 && [[ContractManager sharedInstance] encodeDataForBacup:filteredArray withTemplates:newTemplates]) {
+        if (filteredArray.count > 0 && newTemplates.count > 0 && [SLocator.contractManager encodeDataForBacup:filteredArray withTemplates:newTemplates]) {
             
             processedWithoutErrors = YES;
         } else {

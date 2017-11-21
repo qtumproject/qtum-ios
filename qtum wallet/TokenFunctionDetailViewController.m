@@ -196,7 +196,7 @@
 
 -(void)showResultViewWithOutputs:(NSArray*) outputs {
     
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [SLocator.popUpsManager dismissLoader];
     
     NSMutableString* result = [NSMutableString new];
     for (id output in outputs) {
@@ -211,15 +211,15 @@
 }
 
 -(void)showLoader {
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
 }
 
 -(void)hideLoader {
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [SLocator.popUpsManager dismissLoader];
 }
 
 - (void)showCompletedPopUp {
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
+    [SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp:(NSString *)message {
@@ -230,7 +230,7 @@
         content.titleString = NSLocalizedString(@"Failed", nil);
     }
     
-    ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    ErrorPopUpViewController *popUp = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
     [popUp setOnlyCancelButton];
 }
 
@@ -351,7 +351,7 @@
     
     [self didVoidTapAction:nil];
     [self normalizeFee];
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
     [self.delegate didCallFunctionWithItem:self.function andParam:[self prepareInputsData] andToken:self.token andFee:self.FEE andGasPrice:self.gasPrice andGasLimit:self.gasLimit];
 }
 
@@ -362,7 +362,7 @@
 #pragma mark
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 @end

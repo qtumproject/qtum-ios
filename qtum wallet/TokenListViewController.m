@@ -79,7 +79,7 @@
         return;
     }
     
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
     
     NSMutableArray *array = [NSMutableArray new];
     for (Contract *token in self.tokens) {
@@ -89,7 +89,7 @@
     
     __weak typeof(self) weakSelf = self;
     [QRCodeManager createQRCodeFromContractsTokensArray:[array copy] forSize:CGSizeMake(500, 500) withCompletionBlock:^(UIImage *image) {
-        [[PopUpsManager sharedInstance] dismissLoader];
+        [SLocator.popUpsManager dismissLoader];
         if (!image) {
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Error in QRCodeCreation", nil)];
         }else{

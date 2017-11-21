@@ -47,7 +47,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [SLocator.popUpsManager dismissLoader];
     [[ApplicationCoordinator sharedInstance] startConfirmPinFlowWithHandler:nil];
 }
 

@@ -84,14 +84,14 @@
 
 -(void)createSmartContract {
     NSString *errorString;
-    [[PopUpsManager sharedInstance] dismissLoader];
-    if ([[ContractManager sharedInstance] addNewContractWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text errorString:&errorString]) {
-        [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForContractAdded] presenter:nil completion:nil];
+    [SLocator.popUpsManager dismissLoader];
+    if ([SLocator.contractManager addNewContractWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text errorString:&errorString]) {
+        [SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForContractAdded] presenter:nil completion:nil];
     } else {
         PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
         content.titleString = NSLocalizedString(@"Error", nil);
         content.messageString = errorString;
-        ErrorPopUpViewController *vc = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+        ErrorPopUpViewController *vc = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
         [vc setOnlyCancelButton];
     }
 }
@@ -110,7 +110,7 @@
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
     
     if (![sender isKindOfClass:[ErrorPopUpViewController class]]) {
         self.contractNameField.text = @"";
@@ -122,7 +122,7 @@
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - Actions and Piblic

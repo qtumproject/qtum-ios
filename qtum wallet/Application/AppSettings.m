@@ -44,8 +44,8 @@
     [NSUserDefaults saveIsRPCOnSetting:NO];
     [NSUserDefaults saveIsMainnetSetting:NO];
 
-    [PopUpsManager sharedInstance];
-    [PaymentValuesManager sharedInstance];
+    SLocator.popUpsManager;
+    SLocator.paymentValuesManager;
     [self setupFabric];
     [self setupFingerpring];
 }
@@ -56,7 +56,7 @@
 
 -(void)setupFingerpring {
     
-    if( [[TouchIDService sharedInstance] hasTouchId]) {
+    if( [SLocator.touchIDService hasTouchId]) {
         [NSUserDefaults saveIsFingerpringAllowed:YES];
     } else {
         [NSUserDefaults saveIsFingerpringAllowed:NO];

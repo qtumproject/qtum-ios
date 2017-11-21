@@ -31,7 +31,7 @@
 
 -(void)downloadContractWithRequest:(QStoreBuyRequest*) request completion:(void(^)(BOOL success, QStoreBuyRequest *request)) completion {
     
-    void(^completionCopy)() = [completion copy];
+    void(^completionCopy)(BOOL success, QStoreBuyRequest *request) = [completion copy];
     __weak __typeof(self)weakSelf = self;
     
     dispatch_block_t block = ^{

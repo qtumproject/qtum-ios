@@ -26,5 +26,10 @@
 #import "WalletManagering.h"
 #import "ContractInfoFacade.h"
 #import "SourceCodeFormatService.h"
+#import "ContractManager.h"
+#import "TouchIDService.h"
+#import "PaymentValuesManager.h"
+#import "PopUpsManager.h"
+#import "TableSourcesFactory.h"
 
 #endif /* ServicesHeaders_h */

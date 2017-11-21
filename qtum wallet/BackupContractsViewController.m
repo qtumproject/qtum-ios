@@ -78,13 +78,13 @@
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForCompletedBackupFile] presenter:nil completion:nil];
+    [SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForCompletedBackupFile] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:^{
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:^{
         [self.delegate didPressedBack];
     }];
 }

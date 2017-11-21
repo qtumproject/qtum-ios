@@ -33,7 +33,7 @@
 #pragma mark - Actions
 
 - (IBAction)createNewButtonWasPressed:(id)sender {
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
 
 }
 

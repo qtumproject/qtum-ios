@@ -111,7 +111,7 @@
         [array addObject:element];
     }
     
-    [[ContractManager sharedInstance] checkSmartContractPretendents];
+    [SLocator.contractManager checkSmartContractPretendents];
 
     return  array;
 }
@@ -120,7 +120,7 @@
     
     HistoryElement *element = [HistoryElement new];
     [element setupWithObject:dictionary];
-    [[ContractManager sharedInstance] checkSmartContract:element];
+    [SLocator.contractManager checkSmartContract:element];
     return  element;
 }
 

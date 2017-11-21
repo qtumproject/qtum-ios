@@ -68,7 +68,7 @@
 
     __weak __typeof(self) weakSelf = self;
     
-    [[TouchIDService sharedInstance] checkTouchIdWithText:NSLocalizedString(@"Login", nil) andCopmletion:^(TouchIDCompletionType type) {
+    [SLocator.touchIDService checkTouchIdWithText:NSLocalizedString(@"Login", nil) andCopmletion:^(TouchIDCompletionType type) {
         switch (type) {
                 
             case TouchIDSuccessed:
@@ -180,7 +180,7 @@
         content.titleString = NSLocalizedString(@"Failed", nil);
     }
     
-    ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    ErrorPopUpViewController *popUp = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
     [popUp setOnlyCancelButton];
 }
 
@@ -206,19 +206,19 @@
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
     
     [self.loginOutput setInputsDisable:NO];
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)confirmButtonPressed:(PopUpViewController *)sender withPin:(NSString*) pin {
     
     [self.loginOutput setInputsDisable:NO];
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
     
     [self.loginOutput setInputsDisable:NO];
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 @end

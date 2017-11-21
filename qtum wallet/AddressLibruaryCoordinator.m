@@ -43,16 +43,16 @@
 
 -(void)getAddresesData {
     
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
     
     __weak __typeof(self)weakSelf = self;
     [SLocator.requestManager getUnspentOutputsForAdreses:[SLocator.walletManager.wallet allKeysAdreeses] isAdaptive:YES successHandler:^(id responseObject) {
         [weakSelf updateAddresesListWithResponse:responseObject];
-        [[PopUpsManager sharedInstance] dismissLoader];
+        [SLocator.popUpsManager dismissLoader];
 
     } andFailureHandler:^(NSError *error, NSString *message) {
         
-        [[PopUpsManager sharedInstance] dismissLoader];
+        [SLocator.popUpsManager dismissLoader];
     }];
 }
 
@@ -125,11 +125,11 @@
 #pragma mark - Popup
 
 - (void)showLoaderPopUp {
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
 }
 
 - (void)showCompletedPopUp {
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
+    [SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp:(NSString *)message {
@@ -139,12 +139,12 @@
         content.titleString = NSLocalizedString(@"Failed", nil);
     }
     
-    ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    ErrorPopUpViewController *popUp = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
     [popUp setOnlyCancelButton];
 }
 
 - (void)hideLoaderPopUp {
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [SLocator.popUpsManager dismissLoader];
 }
 
 - (void)showStatusOfPayment:(TransactionManagerErrorType)errorType {
@@ -178,22 +178,22 @@
 
 -(void)didPressCellAtIndexPath:(NSIndexPath*) indexPath withAddress:(NSString *)address{
     
-    [[PopUpsManager sharedInstance] showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.arrayWithAddressesAndBalances completion:nil];
+    [SLocator.popUpsManager showAddressTransferPopupViewController:self presenter:nil toAddress:address withFromAddressVariants:self.arrayWithAddressesAndBalances completion:nil];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)okButtonPressed:(AddressTransferPopupViewController *)sender {
     
     if ([sender isKindOfClass:[AddressTransferPopupViewController class]]) {
-        [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+        [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
         [self makeTransferFromAddress:sender.fromAddress toAddress:sender.toAddress withAmount:[sender.amount stringByReplacingOccurrencesOfString:@"," withString:@"."]];
     } else {
-        [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+        [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
     }
 }
 

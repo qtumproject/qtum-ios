@@ -168,7 +168,7 @@ static NSInteger openTopForEditButton = 15;
 #pragma mark - methods
 
 - (void)showCompletedPopUp{
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForCreateContract] presenter:nil completion:nil];
+    [SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForCreateContract] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp:(NSString *)string {
@@ -178,7 +178,7 @@ static NSInteger openTopForEditButton = 15;
         content.messageString = string;
     }
     
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (void)setMinFee:(QTUMBigNumber*) minFee andMaxFee:(QTUMBigNumber*) maxFee {
@@ -276,12 +276,12 @@ static NSInteger openTopForEditButton = 15;
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender{
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
     [self.delegate didPressedQuit];
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender{
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 @end

@@ -132,7 +132,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     
     [self.currentSocket on:@"token_balance_change" callback:^(NSArray* data, SocketAckEmitter* ack) {
         
-        [[ContractManager sharedInstance] updateTokenWithContractAddress:data[0][@"contract_address"] withAddressBalanceDictionary:data[0]];
+        [SLocator.contractManager updateTokenWithContractAddress:data[0][@"contract_address"] withAddressBalanceDictionary:data[0]];
     }];
     
     [self.currentSocket on:@"disconnect" callback:^(NSArray* data, SocketAckEmitter* ack) {

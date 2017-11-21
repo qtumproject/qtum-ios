@@ -92,11 +92,11 @@
 }
 
 -(void)startLoading {
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
 }
 
 -(void)stopLoadingIfNeeded {
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [SLocator.popUpsManager dismissLoader];
 }
 
 #pragma mark - Actions

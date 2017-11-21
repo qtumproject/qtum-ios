@@ -82,7 +82,7 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [SLocator.walletManager startObservingForAllSpendable];
-        [[ContractManager sharedInstance] startObservingForAllSpendable];
+        [SLocator.contractManager startObservingForAllSpendable];
         [[QStoreManager sharedInstance] startObservingForAllRequests];
     });
 }
@@ -189,11 +189,11 @@
 -(void)clear {
     
     [SLocator.walletManager stopObservingForAllSpendable];
-    [[ContractManager sharedInstance] stopObservingForAllSpendable];
+    [SLocator.contractManager stopObservingForAllSpendable];
     [SLocator.notificationManager clear];
     [SLocator.openURLManager clear];
     [SLocator.walletManager clear];
-    [[ContractManager sharedInstance] clear];
+    [SLocator.contractManager clear];
     [SLocator.templateManager clear];
     [[QStoreManager sharedInstance] clear];
     [SLocator.appSettings clear];
@@ -204,7 +204,7 @@
     if (self.securityCoordinator) {
         [self.securityCoordinator cancelPin];
     } else {
-        [[PopUpsManager sharedInstance] hideCurrentPopUp:NO completion:nil];
+        [SLocator.popUpsManager hideCurrentPopUp:NO completion:nil];
     }
     
     if (SLocator.walletManager.isSignedIn && !self.authFlowRunning && !self.loginFlowRunning && !self.securityFlowRunning) {

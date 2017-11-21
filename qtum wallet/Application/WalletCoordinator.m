@@ -85,22 +85,22 @@
     
     [self configWallet];
     [controller setWallet:self.wallet];
-    self.delegateDataSource = [[TableSourcesFactory sharedInstance] createWalletSource];
+    self.delegateDataSource = [SLocator.tableSourcesFactory createWalletSource];
     self.delegateDataSource.delegate = self;
     self.delegateDataSource.wallet = self.wallet;
-    self.delegateDataSource.haveTokens = [[ContractManager sharedInstance] allActiveTokens].count > 0;
+    self.delegateDataSource.haveTokens = [SLocator.contractManager allActiveTokens].count > 0;
     controller.tableSource = self.delegateDataSource;
     self.walletViewController = controller;
     
     NSObject<TokenListOutput>* tokenController = [SLocator.controllersFactory createTokenListViewController];
-    tokenController.tokens = [[ContractManager sharedInstance] allActiveTokens];
+    tokenController.tokens = [SLocator.contractManager allActiveTokens];
     tokenController.delegate = self;
     controller.delegate = self;
     self.tokenController = tokenController;
     
     self.pageViewController = (NSObject<BalancePageOutput> *)self.navigationController.viewControllers[0];
     self.pageViewController.controllers = @[controller, tokenController];
-    [self.pageViewController setScrollEnable:[[ContractManager sharedInstance] allTokens].count > 0];
+    [self.pageViewController setScrollEnable:[SLocator.contractManager allTokens].count > 0];
 }
 
 #pragma mark - WalletCoordinatorDelegate
@@ -126,7 +126,7 @@
 
     NSObject <TokenDetailOutput> *output = [SLocator.controllersFactory createTokenDetailsViewController];
     self.tokenDetailsViewController = output;
-    self.tokenDetailsTableSource = [[TableSourcesFactory sharedInstance] createTokenDetailSource];
+    self.tokenDetailsTableSource = [SLocator.tableSourcesFactory createTokenDetailSource];
     self.tokenDetailsTableSource.token = item;
     output.token = item;
     output.delegate = self;
@@ -174,7 +174,7 @@
 
 - (void)didShareTokenButtonPressed {
     
-    ShareTokenPopUpViewController *vc = [[PopUpsManager sharedInstance] showShareTokenPopUp:self presenter:nil completion:nil];
+    ShareTokenPopUpViewController *vc = [SLocator.popUpsManager showShareTokenPopUp:self presenter:nil completion:nil];
     vc.addressString = self.tokenDetailsViewController.token.contractAddress;
     NSArray *arr = [SLocator.contractFileManager abiWithTemplate:self.tokenDetailsViewController.token.templateModel.path];
     NSData * jsonData = [NSJSONSerialization  dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
@@ -304,7 +304,7 @@
 
 -(void)updateSpendables {
     
-    NSArray *tokensArray = [[ContractManager sharedInstance] allActiveTokens];
+    NSArray *tokensArray = [SLocator.contractManager allActiveTokens];
     self.delegateDataSource.haveTokens = tokensArray.count > 0;
     [self.walletViewController reloadTableView];
     self.tokenController.tokens = tokensArray;
@@ -339,7 +339,7 @@
 
 -(void)updateControls {
     
-    NSArray *tokensArray = [[ContractManager sharedInstance] allActiveTokens];
+    NSArray *tokensArray = [SLocator.contractManager allActiveTokens];
     [self.pageViewController setPageControllHidden:!tokensArray.count];
 }
 
@@ -382,13 +382,13 @@
 
 - (void)copyAddressButtonPressed:(PopUpViewController *)sender {
     
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
     [self copyTextAndShowPopUp:self.tokenDetailsViewController.token.contractAddress isAbi:NO];
 }
 
 - (void)copyAbiButtonPressed:(PopUpViewController *)sender {
     
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
     [self copyTextAndShowPopUp:[SLocator.contractFileManager escapeAbiWithTemplate:self.tokenDetailsViewController.token.templateModel.path] isAbi:YES];
 }
 
@@ -399,11 +399,11 @@
     [pb setString:keyString];
     
     PopUpContent *content = isAbi ? [PopUpContentGenerator contentForAbiCopied] : [PopUpContentGenerator contentForAddressCopied];
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:content presenter:nil completion:nil];
+    [SLocator.popUpsManager showInformationPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - RecieveOutputDelegate

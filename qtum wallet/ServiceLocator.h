@@ -28,6 +28,13 @@
 @property (strong, nonatomic) id <WalletManagering> walletManager;
 @property (strong, nonatomic) ContractInfoFacade* contractInfoFacade;
 @property (strong, nonatomic) SourceCodeFormatService* sourceCodeFormatService;
+@property (strong, nonatomic) ContractManager* contractManager;
+@property (strong, nonatomic) TouchIDService* touchIDService;
+@property (strong, nonatomic) PaymentValuesManager* paymentValuesManager;
+@property (strong, nonatomic) PopUpsManager* popUpsManager;
+@property (strong, nonatomic) TableSourcesFactory* tableSourcesFactory;
+
+
 
 + (instancetype)sharedInstance;
 - (id)init __attribute__((unavailable("cannot use init for this class, use sharedInstance instead")));

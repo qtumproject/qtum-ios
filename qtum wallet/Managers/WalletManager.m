@@ -58,7 +58,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 #pragma mark - WalletManagering
 
-- (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)())failure {
+- (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)(void))failure {
         
     Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin];
     newWallet.manager = self;
@@ -77,7 +77,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
                             pin:(NSString *)pin
                       seedWords:(NSArray *)seedWords
              withSuccessHandler:(void(^)(Wallet *newWallet))success
-              andFailureHandler:(void(^)())failure {
+              andFailureHandler:(void(^)(void))failure {
     
     Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin seedWords:seedWords];
     

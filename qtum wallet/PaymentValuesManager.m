@@ -34,16 +34,8 @@ long const GasLimitStepsCount = 49;
 
 @implementation PaymentValuesManager
 
-+ (instancetype)sharedInstance {
-    static PaymentValuesManager *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
+- (instancetype)init {
+    
     self = [super init];
     if (self != nil) {
         _minGasLimit = [QTUMBigNumber decimalWithInteger:MinGasLimit];

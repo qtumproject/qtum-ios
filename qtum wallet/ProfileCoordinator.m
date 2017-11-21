@@ -131,7 +131,7 @@
     content.cancelButtonTitle = NSLocalizedString(@"Logout", nil);
     content.okButtonTitle = NSLocalizedString(@"Cancel", nil);
 
-    [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 #pragma mark - PopupDelegate
@@ -139,12 +139,12 @@
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
     
     [[ApplicationCoordinator sharedInstance] logout];
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
     
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - LanguageOutputDelegate

@@ -65,9 +65,9 @@ NSString *const kQStoreFinishedBuyRequests = @"kQStoreFinishedBuyRequests";
 
 #pragma mark - Requests Managing
 
--(void)addBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)()) completion {
+-(void)addBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)(void)) completion {
     
-    void(^completionCopy)() = [completion copy];
+    void(^completionCopy)(void) = [completion copy];
 
     dispatch_async(self.writingQueue, ^{
         
@@ -94,9 +94,9 @@ NSString *const kQStoreFinishedBuyRequests = @"kQStoreFinishedBuyRequests";
     });
 }
 
--(void)finishBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)()) completion {
+-(void)finishBuyRequest:(QStoreBuyRequest*) buyRequests completion:(void(^)(void)) completion {
     
-    void(^completionCopy)() = [completion copy];
+    void(^completionCopy)(void) = [completion copy];
     
     dispatch_async(self.writingQueue, ^{
         

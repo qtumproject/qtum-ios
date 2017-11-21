@@ -116,7 +116,7 @@
 }
 
 -(void)restoreSucces{
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [SLocator.popUpsManager dismissLoader];
     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", "")];
     if ([self.delegate respondsToSelector:@selector(didRestoreWallet)]) {
         [self.view endEditing:YES];
@@ -125,7 +125,7 @@
 }
 
 -(void)restoreFailed{
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [SLocator.popUpsManager dismissLoader];
     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Some Error", "")];
 }
 

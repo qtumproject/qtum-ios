@@ -83,7 +83,7 @@
         scrollViewInsetDelta = scrollbaleSelf.originInsets.bottom;
     }
     
-    void(^animations)() = ^{
+    void(^animations)(void) = ^{
         
         scrollView.contentInset = UIEdgeInsetsMake(scrollView.contentInset.top,
                                                    scrollView.contentInset.left,

@@ -41,7 +41,7 @@
 
 -(void)showSecurityPopup {
     
-    SecurityPopupViewController* controller = [[PopUpsManager sharedInstance] showSecurityPopup:self presenter:nil completion:nil];
+    SecurityPopupViewController* controller = [SLocator.popUpsManager showSecurityPopup:self presenter:nil completion:nil];
     controller.delegate = self;
     self.loginOutput = controller;
 }
@@ -52,7 +52,7 @@
 
     NSString* touchIdText = NSLocalizedString(@"Confirm Transaction", nil);
     
-    [[TouchIDService sharedInstance] checkTouchIdWithText:touchIdText andCopmletion:^(TouchIDCompletionType type) {
+    [SLocator.touchIDService checkTouchIdWithText:touchIdText andCopmletion:^(TouchIDCompletionType type) {
         switch (type) {
             case TouchIDDenied:
                 [weakSelf showSecurityPopup];

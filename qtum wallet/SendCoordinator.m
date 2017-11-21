@@ -55,11 +55,11 @@
     [SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
         
         QTUMBigNumber* minFee = feePerKb;
-        QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
+        QTUMBigNumber* maxFee = SLocator.paymentValuesManager.maxFee;
         
         [weakSelf.paymentOutput setMinFee:minFee andMaxFee: maxFee];
-        [weakSelf.paymentOutput setMinGasPrice:[PaymentValuesManager sharedInstance].minGasPrice andMax:[PaymentValuesManager sharedInstance].maxGasPrice step:GasPriceStep];
-        [weakSelf.paymentOutput setMinGasLimit:[PaymentValuesManager sharedInstance].minGasLimit andMax:[PaymentValuesManager sharedInstance].maxGasLimit standart:[PaymentValuesManager sharedInstance].standartGasLimit step:GasLimitStep];
+        [weakSelf.paymentOutput setMinGasPrice:SLocator.paymentValuesManager.minGasPrice andMax:SLocator.paymentValuesManager.maxGasPrice step:GasPriceStep];
+        [weakSelf.paymentOutput setMinGasLimit:SLocator.paymentValuesManager.minGasLimit andMax:SLocator.paymentValuesManager.maxGasLimit standart:SLocator.paymentValuesManager.standartGasLimit step:GasLimitStep];
         [weakSelf.paymentOutput hideLoaderPopUp];
     }];
     
@@ -73,13 +73,13 @@
             self.token = nil;
             break;
         case SendInfoItemTypeInvalid:
-            [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForInvalidQRCodeFormatPopUp] presenter:nil completion:nil];
+            [SLocator.popUpsManager showErrorPopUp:self withContent:[PopUpContentGenerator contentForInvalidQRCodeFormatPopUp] presenter:nil completion:nil];
             item = nil;
             self.token = nil;
             break;
         case SendInfoItemTypeToken:
         {
-            NSArray <Contract*>* tokens = [ContractManager sharedInstance].allActiveTokens;
+            NSArray <Contract*>* tokens = SLocator.contractManager.allActiveTokens;
             
             BOOL exist = NO;
             for (Contract *token in tokens) {
@@ -91,7 +91,7 @@
             }
             
             if (!exist) {
-                [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:[PopUpContentGenerator contentForRequestTokenPopUp] presenter:nil completion:nil];
+                [SLocator.popUpsManager showErrorPopUp:self withContent:[PopUpContentGenerator contentForRequestTokenPopUp] presenter:nil completion:nil];
                 [self.paymentOutput setSendInfoItem:nil];
                 self.token = nil;
                 item = nil;
@@ -138,7 +138,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        NSArray <Contract*>* tokens = [ContractManager sharedInstance].allActiveTokens;
+        NSArray <Contract*>* tokens = SLocator.contractManager.allActiveTokens;
         BOOL tokenExists = NO;
         
         if (weakSelf.tokenPaymentOutput) {
@@ -319,10 +319,10 @@
     
     NSObject <ChoseTokenPaymentOutput>* tokenController = (NSObject <ChoseTokenPaymentOutput>*)[SLocator.controllersFactory createChoseTokenPaymentViewController];
     tokenController.delegate = self;
-    tokenController.delegateDataSource = [[TableSourcesFactory sharedInstance] createSendTokenPaymentSource];
+    tokenController.delegateDataSource = [SLocator.tableSourcesFactory createSendTokenPaymentSource];
     tokenController.delegateDataSource.activeToken = self.token;
     tokenController.delegateDataSource.delegate = self;
-    [tokenController updateWithTokens:[ContractManager sharedInstance].allActiveTokens];
+    [tokenController updateWithTokens:SLocator.contractManager.allActiveTokens];
     self.tokenPaymentOutput = tokenController;
     [self.navigationController pushViewController:[tokenController toPresent] animated:YES];
 }
@@ -372,11 +372,11 @@
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
     [self didPresseQRCodeScaner];
 }
 

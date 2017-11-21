@@ -317,11 +317,11 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)showLoaderPopUp {
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
 }
 
 - (void)showCompletedPopUp {
-    [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
+    [SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp:(NSString *)message {
@@ -331,17 +331,17 @@ static NSInteger hidedGasTopForSend = -40;
         content.titleString = NSLocalizedString(@"Failed", nil);
     }
     
-    ErrorPopUpViewController *popUp = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    ErrorPopUpViewController *popUp = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
     [popUp setOnlyCancelButton];
 }
 
 - (void)hideLoaderPopUp {
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [SLocator.popUpsManager dismissLoader];
 }
 
 - (void)showConfirmChangesPopUp {
     PopUpContent *content = [PopUpContentGenerator contentForConfirmChangesInSend];
-    [[PopUpsManager sharedInstance] showConfirmPopUp:self withContent:content presenter:nil completion:nil];
+    [SLocator.popUpsManager showConfirmPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (void)clearFields {
@@ -422,7 +422,7 @@ static NSInteger hidedGasTopForSend = -40;
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
     
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
     if ([sender isKindOfClass:[InformationPopUpViewController class]]) {
         [self clearFields];
     }
@@ -440,7 +440,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - iMessage

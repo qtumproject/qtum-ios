@@ -230,11 +230,11 @@ CGFloat const KeyboardDuration = 0.25f;
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - QStoreTableSourceDelegate
@@ -268,13 +268,13 @@ CGFloat const KeyboardDuration = 0.25f;
 
 - (void)startLoading {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[PopUpsManager sharedInstance] showLoaderPopUp];
+        [SLocator.popUpsManager showLoaderPopUp];
     });
 }
 
 - (void)stopLoading {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[PopUpsManager sharedInstance] dismissLoader];
+        [SLocator.popUpsManager dismissLoader];
     });
 }
 

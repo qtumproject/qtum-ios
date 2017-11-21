@@ -35,17 +35,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 @implementation ContractManager
 
-+ (instancetype)sharedInstance {
-    
-    static ContractManager *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
+- (instancetype)init {
     
     self = [super init];
     if (self != nil) {

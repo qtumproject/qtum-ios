@@ -216,27 +216,27 @@
 #pragma mark - Output
 
 - (void)startLoading {
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
 }
 
 - (void)endLoading {
-    [[PopUpsManager sharedInstance] dismissLoader];
+    [SLocator.popUpsManager dismissLoader];
 }
 
 - (void)showErrorWithMessage:(NSString *)message {
     PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
     content.titleString = NSLocalizedString(@"Error", nil);
     content.messageString = message;
-    ErrorPopUpViewController *error = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    ErrorPopUpViewController *error = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
     [error setOnlyCancelButton];
 }
 
 - (void)okButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *)sender {
-    [[PopUpsManager sharedInstance] hideCurrentPopUp:YES completion:nil];
+    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 @end

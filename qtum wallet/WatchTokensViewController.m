@@ -43,13 +43,13 @@
     
     NSString *errorString;
     
-    if ([[ContractManager sharedInstance] addNewTokenWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text errorString:&errorString]) {
-        [[PopUpsManager sharedInstance] showInformationPopUp:self withContent:[PopUpContentGenerator contentForTokenAdded] presenter:nil completion:nil];
+    if ([SLocator.contractManager addNewTokenWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text errorString:&errorString]) {
+        [SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForTokenAdded] presenter:nil completion:nil];
     } else {
         PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
         content.titleString = NSLocalizedString(@"Error", nil);
         content.messageString = errorString;
-        ErrorPopUpViewController *vc = [[PopUpsManager sharedInstance] showErrorPopUp:self withContent:content presenter:nil completion:nil];
+        ErrorPopUpViewController *vc = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
         [vc setOnlyCancelButton];
     }
 }

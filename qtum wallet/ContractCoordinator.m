@@ -101,12 +101,12 @@ ContractCreationEndOutputDelegate>
     NSObject <PublishedContractListOutput>* output = [SLocator.controllersFactory createSmartContractsListViewController];
     output.delegate = self;
     
-    NSArray *sortedContracts = [[[ContractManager sharedInstance] allContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
+    NSArray *sortedContracts = [[SLocator.contractManager allContracts] sortedArrayUsingComparator: ^(Contract *t1, Contract *t2) {
         return [t1.creationDate compare:t2.creationDate];
     }];
     
     output.contracts = sortedContracts;
-    output.smartContractPretendents = [[ContractManager sharedInstance] smartContractPretendentsCopy];
+    output.smartContractPretendents = [SLocator.contractManager smartContractPretendentsCopy];
     if (SLocator.appSettings.isRemovingContractTrainingPassed == NO) {
         [output setNeedShowingTrainingScreen];
     }
@@ -123,7 +123,7 @@ ContractCreationEndOutputDelegate>
     self.activeTemplateForLibrary = nil;
     
     self.wathContractsViewController = (NSObject <WatchContractOutput>*)[SLocator.controllersFactory createWatchContractViewController];
-    self.favouriteContractsCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
+    self.favouriteContractsCollectionSource = [SLocator.tableSourcesFactory createFavouriteTemplatesSource];
     
     self.favouriteContractsCollectionSource.templateModels = [SLocator.templateManager standartPackOfTemplates];
     self.favouriteContractsCollectionSource.delegate = self;
@@ -140,7 +140,7 @@ ContractCreationEndOutputDelegate>
     self.activeTemplateForLibrary = nil;
     
     self.wathTokensViewController = (NSObject <WatchContractOutput>*)[SLocator.controllersFactory createWatchTokensViewController];
-    self.favouriteTokensCollectionSource = [[TableSourcesFactory sharedInstance] createFavouriteTemplatesSource];
+    self.favouriteTokensCollectionSource = [SLocator.tableSourcesFactory createFavouriteTemplatesSource];
     
     self.favouriteTokensCollectionSource.templateModels = [SLocator.templateManager standartPackOfTokenTemplates];
     self.favouriteTokensCollectionSource.delegate = self;
@@ -187,15 +187,15 @@ ContractCreationEndOutputDelegate>
     [self.navigationController pushViewController:controller animated:YES];
     
     __weak typeof(self) weakSelf = self;
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
     [SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
         QTUMBigNumber* minFee = feePerKb;
-        QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
+        QTUMBigNumber* maxFee = SLocator.paymentValuesManager.maxFee;
         
         [weakSelf.createFinishViewController setMinFee:minFee andMaxFee: maxFee];
-        [weakSelf.createFinishViewController setMinGasPrice:[PaymentValuesManager sharedInstance].minGasPrice andMax:[PaymentValuesManager sharedInstance].maxGasPrice step:GasPriceStep];
-        [weakSelf.createFinishViewController setMinGasLimit:[PaymentValuesManager sharedInstance].minGasLimit andMax:[PaymentValuesManager sharedInstance].maxGasLimit standart:[PaymentValuesManager sharedInstance].standartGasLimitForCreateContract step:GasLimitStep];
-        [[PopUpsManager sharedInstance] dismissLoader];
+        [weakSelf.createFinishViewController setMinGasPrice:SLocator.paymentValuesManager.minGasPrice andMax:SLocator.paymentValuesManager.maxGasPrice step:GasPriceStep];
+        [weakSelf.createFinishViewController setMinGasLimit:SLocator.paymentValuesManager.minGasLimit andMax:SLocator.paymentValuesManager.maxGasLimit standart:SLocator.paymentValuesManager.standartGasLimitForCreateContract step:GasLimitStep];
+        [SLocator.popUpsManager dismissLoader];
     }];
 }
 
@@ -214,7 +214,7 @@ ContractCreationEndOutputDelegate>
     
     self.isLibraryViewControllerOnlyForTokens = tokensOnly;
     self.libraryViewController = [SLocator.controllersFactory createLibraryViewController];
-    self.libraryTableSource = [[TableSourcesFactory sharedInstance] createLibrarySource];
+    self.libraryTableSource = [SLocator.tableSourcesFactory createLibrarySource];
     self.libraryTableSource.templetes = [self prepareTemplateList:tokensOnly];
     self.libraryTableSource.activeTemplate = self.activeTemplateForLibrary;
     self.libraryTableSource.delegate = self;
@@ -266,7 +266,7 @@ ContractCreationEndOutputDelegate>
 -(void)finishStepFinishDidPressed:(QTUMBigNumber *)fee gasPrice:(QTUMBigNumber *)gasPrice gasLimit:(QTUMBigNumber *)gasLimit {
     
     __weak __typeof(self)weakSelf = self;
-    [[PopUpsManager sharedInstance] showLoaderPopUp];
+    [SLocator.popUpsManager showLoaderPopUp];
     
     NSData* contractWithArgs = [SLocator.contractInterfaceManager tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
     
@@ -276,11 +276,11 @@ ContractCreationEndOutputDelegate>
                                                             gasPrice:gasPrice
                                                             gasLimit:gasLimit
                                                           andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedValue) {
-        [[PopUpsManager sharedInstance] dismissLoader];
+        [SLocator.popUpsManager dismissLoader];
         if (errorType == TransactionManagerErrorTypeNone) {
             BTCTransactionInput* input = transaction.inputs[0];
             DLog(@"%@",input.runTimeAddress);
-            [[ContractManager sharedInstance] addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel andLocalContractName:self.localContractName];
+            [SLocator.contractManager addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel andLocalContractName:self.localContractName];
             
             [weakSelf.createFinishViewController showCompletedPopUp];
         } else {
@@ -331,11 +331,11 @@ ContractCreationEndOutputDelegate>
     [SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
         
         QTUMBigNumber* minFee = feePerKb;
-        QTUMBigNumber* maxFee = [PaymentValuesManager sharedInstance].maxFee;
+        QTUMBigNumber* maxFee = SLocator.paymentValuesManager.maxFee;
         
         [weakSelf.functionDetailController setMinFee:minFee andMaxFee: maxFee];
-        [weakSelf.functionDetailController setMinGasPrice:[PaymentValuesManager sharedInstance].minGasPrice andMax:[PaymentValuesManager sharedInstance].maxGasPrice step:GasPriceStep];
-        [weakSelf.functionDetailController setMinGasLimit:[PaymentValuesManager sharedInstance].minGasLimit andMax:[PaymentValuesManager sharedInstance].maxGasLimit standart:[PaymentValuesManager sharedInstance].standartGasLimit step:GasLimitStep];
+        [weakSelf.functionDetailController setMinGasPrice:SLocator.paymentValuesManager.minGasPrice andMax:SLocator.paymentValuesManager.maxGasPrice step:GasPriceStep];
+        [weakSelf.functionDetailController setMinGasLimit:SLocator.paymentValuesManager.minGasLimit andMax:SLocator.paymentValuesManager.maxGasLimit standart:SLocator.paymentValuesManager.standartGasLimit step:GasLimitStep];
         [weakSelf.functionDetailController hideLoader];
     }];
 }
@@ -438,12 +438,12 @@ ContractCreationEndOutputDelegate>
 
 -(void)didUnsubscribeFromContract:(Contract*) contract {
     
-    [[ContractManager sharedInstance] removeContract:contract];
+    [SLocator.contractManager removeContract:contract];
 }
 
 -(void)didUnsubscribeFromContractPretendentWithTxHash:(NSString*) hexTransaction {
     
-    [[ContractManager sharedInstance] removeContractPretendentWithTxHash:hexTransaction];
+    [SLocator.contractManager removeContractPretendentWithTxHash:hexTransaction];
 }
 
 -(void)didTrainingPass {

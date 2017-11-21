@@ -29,18 +29,8 @@
 
 #pragma mark - Instance
 
-+ (instancetype)sharedInstance {
+- (instancetype)init {
     
-    static PopUpsManager *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance
-{
     self = [super init];
     if (self != nil){
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noInternetConnetion) name:NO_INTERNET_CONNECTION_ERROR_KEY object:nil];

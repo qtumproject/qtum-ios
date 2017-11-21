@@ -46,4 +46,48 @@
     return self;
 }
 
+#pragma mark - Lazy
+
+-(ContractManager *)contractManager {
+    
+    if (!_contractManager) {
+        _contractManager = [ContractManager new];
+    }
+    return _contractManager;
+}
+
+-(TouchIDService *)touchIDService {
+    
+    if (!_touchIDService) {
+        _touchIDService = [TouchIDService new];
+    }
+    return _touchIDService;
+}
+
+-(PaymentValuesManager *)paymentValuesManager {
+    
+    if (!_paymentValuesManager) {
+        _paymentValuesManager = [PaymentValuesManager new];
+    }
+    return _paymentValuesManager;
+}
+
+-(PopUpsManager *)popUpsManager {
+    
+    if (!_popUpsManager) {
+        _popUpsManager = [PopUpsManager new];
+    }
+    return _popUpsManager;
+}
+
+-(TableSourcesFactory *)tableSourcesFactory {
+    
+    if (!_tableSourcesFactory) {
+        _tableSourcesFactory = [TableSourcesFactory new];
+    }
+    return _tableSourcesFactory;
+}
+
+
+
 @end

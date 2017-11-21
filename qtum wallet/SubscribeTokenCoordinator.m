@@ -44,8 +44,8 @@
     
     NSObject <SubscribeTokenOutput>* output = (NSObject <SubscribeTokenOutput>*)[SLocator.controllersFactory createSubscribeTokenViewController];
     output.delegate = self;
-    output.delegateDataSource = [[TableSourcesFactory sharedInstance] createSubscribeTokenDataDisplayManager];
-    output.tokensArray = [self sortingContractsByDate:[[ContractManager sharedInstance] allTokens]];
+    output.delegateDataSource = [SLocator.tableSourcesFactory createSubscribeTokenDataDisplayManager];
+    output.tokensArray = [self sortingContractsByDate:[SLocator.contractManager allTokens]];
     output.delegateDataSource.delegate = output;
     self.subscribeTokenOutput = output;
     [self.navigationController pushViewController:[output toPresent] animated:YES];
@@ -61,11 +61,11 @@
     
     contract.isActive = !contract.isActive;
     if (contract.isActive) {
-        [[ContractManager sharedInstance] startObservingForSpendable:contract];
+        [SLocator.contractManager startObservingForSpendable:contract];
     } else {
-        [[ContractManager sharedInstance] stopObservingForSpendable:contract];
+        [SLocator.contractManager stopObservingForSpendable:contract];
     }
-    [[ContractManager sharedInstance] spendableDidChange:contract];
+    [SLocator.contractManager spendableDidChange:contract];
 }
 
 
