@@ -34,6 +34,7 @@
 @property (strong, nonatomic) PopUpsManager* popUpsManager;
 @property (strong, nonatomic) TableSourcesFactory* tableSourcesFactory;
 @property (strong, nonatomic) QStoreManager* qStoreManager;
+@property (strong, nonatomic) WalletsFactory* walletsFactory;
 
 
 + (instancetype)sharedInstance;

@@ -60,7 +60,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (void)createNewWalletWithName:(NSString *)name pin:(NSString *)pin withSuccessHandler:(void(^)(Wallet *newWallet))success andFailureHandler:(void(^)(void))failure {
         
-    Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin];
+    Wallet *newWallet = [SLocator.walletsFactory createNewWalletWithName:name pin:pin];
     newWallet.manager = self;
     [newWallet loadToMemory];
     self.wallet = newWallet;
@@ -79,7 +79,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
              withSuccessHandler:(void(^)(Wallet *newWallet))success
               andFailureHandler:(void(^)(void))failure {
     
-    Wallet *newWallet = [[WalletsFactory sharedInstance] createNewWalletWithName:name pin:pin seedWords:seedWords];
+    Wallet *newWallet = [SLocator.walletsFactory createNewWalletWithName:name pin:pin seedWords:seedWords];
     
     newWallet.manager = self;
     [newWallet loadToMemory];

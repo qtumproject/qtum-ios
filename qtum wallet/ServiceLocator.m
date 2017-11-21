@@ -96,6 +96,14 @@
     return _qStoreManager;
 }
 
+-(WalletsFactory *)walletsFactory {
+    
+    if (!_walletsFactory) {
+        _walletsFactory = [WalletsFactory new];
+    }
+    return _walletsFactory;
+}
+
 
 
 @end

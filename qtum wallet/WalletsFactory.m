@@ -12,22 +12,6 @@
 
 @implementation WalletsFactory
 
-+ (instancetype)sharedInstance {
-    
-    static WalletsFactory *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance {
-    self = [super init];
-    if (self != nil) { }
-    return self;
-}
-
 - (Wallet*)createNewWalletWithName:(NSString *)name pin:(NSString *)pin {
     Wallet *wallet = [[Wallet alloc] initWithName:name pin:pin];
     return wallet;
