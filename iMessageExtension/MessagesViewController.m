@@ -220,7 +220,7 @@ static NSString *finalizedDisagreeText = @"Sorry, but not now";
 
 	BOOL isExpand = (self.presentationStyle == MSMessagesAppPresentationStyleExpanded);
 	BOOL isMineMessage = ([self.activeConversation.localParticipantIdentifier isEqual:self.activeConversation.selectedMessage.senderParticipantIdentifier] || !self.activeConversation.selectedMessage);
-	BOOL isFinalized = [self getFinalizedFromMessage:self.activeConversation.selectedMessage];
+    BOOL isFinalized = [self getFinalizedFromMessage:self.activeConversation.selectedMessage] ? YES : NO;
 	if (isExpand) {
 		if (self.isCreatinNewInProcces) {
 			if (self.isHasWallet) {

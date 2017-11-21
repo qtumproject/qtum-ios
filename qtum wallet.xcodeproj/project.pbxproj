@@ -246,6 +246,7 @@
 		B3C08B181ED44DD900713B15 /* TemplateTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B171ED44DD900713B15 /* TemplateTokenViewController.m */; };
 		B3C08B1B1ED44E4200713B15 /* TokenTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B1A1ED44E4200713B15 /* TokenTemplateCell.m */; };
 		B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C08B241ED467DA00713B15 /* TokenPropertyCell.m */; };
+		B3C435311FC43EEE00DC5644 /* TextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E7396AFE1DDF394C0002CD47 /* TextFieldWithLine.m */; };
 		B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3487A261E92234B00BC66F1 /* WalletHeaderCell.m */; };
 		B3C8FAEA1F98922A000168AB /* QTUMFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8FAE91F98922A000168AB /* QTUMFeedItem.m */; };
 		B3C8FAEE1F98937A000168AB /* QTUMFeedParcer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C8FAED1F98937A000168AB /* QTUMFeedParcer.m */; };
@@ -510,7 +511,6 @@
 		E73D9C891ECB18A200A09CFE /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73D9C871ECB18A200A09CFE /* Splash.storyboard */; };
 		E73D9C8D1ECB19D000A09CFE /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8C1ECB19D000A09CFE /* SplashViewController.m */; };
 		E73D9C901ECB1A0600A09CFE /* AnimatedLogoImageVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */; };
-		E73ECB611EF15EB40088C89D /* iMessageTextFieldWithLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */; };
 		E74003C21F1E2AC7002CC587 /* SendInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E74003C11F1E2AC7002CC587 /* SendInfoItem.m */; };
 		E745BA1D1F21E78E00B2E216 /* NewsTableCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA1C1F21E78E00B2E216 /* NewsTableCellDark.m */; };
 		E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = E745BA1F1F21E79B00B2E216 /* NewsTableCellLight.m */; };
@@ -1732,8 +1732,6 @@
 		E73D9C8C1ECB19D000A09CFE /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		E73D9C8E1ECB1A0600A09CFE /* AnimatedLogoImageVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLogoImageVIew.h; sourceTree = "<group>"; };
 		E73D9C8F1ECB1A0600A09CFE /* AnimatedLogoImageVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedLogoImageVIew.m; sourceTree = "<group>"; };
-		E73ECB5F1EF15EB40088C89D /* iMessageTextFieldWithLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iMessageTextFieldWithLine.h; sourceTree = "<group>"; };
-		E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMessageTextFieldWithLine.m; sourceTree = "<group>"; };
 		E74003C01F1E2AC7002CC587 /* SendInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendInfoItem.h; sourceTree = "<group>"; };
 		E74003C11F1E2AC7002CC587 /* SendInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendInfoItem.m; sourceTree = "<group>"; };
 		E745BA1B1F21E78E00B2E216 /* NewsTableCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableCellDark.h; sourceTree = "<group>"; };
@@ -2458,8 +2456,6 @@
 				B33EAF8D1E5EC262006125F3 /* MessagesViewController.m */,
 				B33EAFA01E5F20F9006125F3 /* iMessageGradientView.h */,
 				B33EAFA11E5F20F9006125F3 /* iMessageGradientView.m */,
-				E73ECB5F1EF15EB40088C89D /* iMessageTextFieldWithLine.h */,
-				E73ECB601EF15EB40088C89D /* iMessageTextFieldWithLine.m */,
 				B33EAF8F1E5EC263006125F3 /* MainInterface.storyboard */,
 				B33EAF921E5EC263006125F3 /* Assets.xcassets */,
 				B33EAF941E5EC263006125F3 /* Info.plist */,
@@ -5393,7 +5389,7 @@
 			files = (
 				B33EAFA21E5F20F9006125F3 /* iMessageGradientView.m in Sources */,
 				B3BA14761F6A7E03004078A5 /* iMessageDataOperation.m in Sources */,
-				E73ECB611EF15EB40088C89D /* iMessageTextFieldWithLine.m in Sources */,
+				B3C435311FC43EEE00DC5644 /* TextFieldWithLine.m in Sources */,
 				B33EAF8E1E5EC262006125F3 /* MessagesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6541,6 +6537,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "qtum wallet/qtum wallet.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DEH7XV88GA;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

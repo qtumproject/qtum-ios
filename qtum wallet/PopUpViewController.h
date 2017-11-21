@@ -29,6 +29,7 @@
 
 @protocol PopUpWithTwoButtonsViewControllerDelegate <PopUpViewControllerDelegate>
 
+@optional
 - (void)cancelButtonPressed:(PopUpViewController *) sender;
 
 @end
