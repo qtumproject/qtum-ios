@@ -14,10 +14,14 @@
 
 @property (weak, nonatomic) id <LoginViewOutputDelegate> delegate;
 
--(void)applyFailedPasswordAction;
--(void)startEditing;
--(void)stopEditing;
--(void)clearTextFileds;
--(void)setInputsDisable:(BOOL) disable;
+- (void)applyFailedPasswordAction;
+
+- (void)startEditing;
+
+- (void)stopEditing;
+
+- (void)clearTextFileds;
+
+- (void)setInputsDisable:(BOOL) disable;
 
 @end

@@ -13,7 +13,7 @@
 @protocol ChooseReciveAddressOutput <Presentable>
 
 @property (weak, nonatomic) id <ChooseReciveAddressOutputDelegate> delegate;
-@property (copy, nonatomic) NSArray <NSString*> *addresses;
+@property (copy, nonatomic) NSArray <NSString *> *addresses;
 @property (copy, nonatomic) NSString *prevAddress;
 
 @end

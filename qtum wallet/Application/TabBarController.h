@@ -12,9 +12,9 @@
 
 @interface TabBarController : UITabBarController <TabbarOutput>
 
-@property (weak,nonatomic) id <TabbarOutputDelegate> outputDelegate;
-@property (assign,nonatomic) BOOL isReload;
+@property (weak, nonatomic) id <TabbarOutputDelegate> outputDelegate;
+@property (assign, nonatomic) BOOL isReload;
 
--(void)storeSendReference:(UIViewController*)sendController;
+- (void)storeSendReference:(UIViewController *) sendController;
 
 @end

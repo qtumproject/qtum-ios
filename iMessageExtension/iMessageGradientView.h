@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, ColorType){
-    Blue,
-    Pink,
-    Green
+typedef NS_ENUM(NSInteger, ColorType) {
+	Blue,
+	Pink,
+	Green
 };
 
 @interface iMessageGradientView : UIView
 
-@property (assign,nonatomic) ColorType colorType;
+@property (assign, nonatomic) ColorType colorType;
 
 @end

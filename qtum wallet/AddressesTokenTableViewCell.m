@@ -8,7 +8,7 @@
 
 #import "AddressesTokenTableViewCell.h"
 
-@interface AddressesTokenTableViewCell()
+@interface AddressesTokenTableViewCell ()
 
 @end
 

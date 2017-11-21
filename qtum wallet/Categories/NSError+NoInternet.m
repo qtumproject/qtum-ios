@@ -8,9 +8,8 @@
 
 @implementation NSError (NoInternet)
 
-- (BOOL)isNoInternetConnectionError
-{
-    return ([self.domain isEqualToString:NSURLErrorDomain] && (self.code == NSURLErrorNotConnectedToInternet));
+- (BOOL)isNoInternetConnectionError {
+	return ([self.domain isEqualToString:NSURLErrorDomain] && (self.code == NSURLErrorNotConnectedToInternet));
 }
 
 @end

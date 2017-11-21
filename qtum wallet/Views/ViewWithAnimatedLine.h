@@ -11,6 +11,7 @@
 @interface ViewWithAnimatedLine : UIView
 
 - (void)showAnimation;
-- (void)setRightConstraint:(NSLayoutConstraint *)constraint;
+
+- (void)setRightConstraint:(NSLayoutConstraint *) constraint;
 
 @end

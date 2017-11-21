@@ -11,7 +11,8 @@
 
 @interface WalletsFactory : NSObject
 
-- (Wallet*)createNewWalletWithName:(NSString *)name pin:(NSString *)pin;
-- (Wallet*)createNewWalletWithName:(NSString *)name pin:(NSString *)pin seedWords:(NSArray*) seedWords;
+- (Wallet *)createNewWalletWithName:(NSString *) name pin:(NSString *) pin;
+
+- (Wallet *)createNewWalletWithName:(NSString *) name pin:(NSString *) pin seedWords:(NSArray *) seedWords;
 
 @end

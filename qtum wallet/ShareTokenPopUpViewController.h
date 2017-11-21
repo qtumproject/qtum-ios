@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *abiTextView;
 @property (nonatomic) NSString *abiString;
 
-@property (nonatomic, weak) id<ShareTokenPopupViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <ShareTokenPopupViewControllerDelegate> delegate;
 
 @end

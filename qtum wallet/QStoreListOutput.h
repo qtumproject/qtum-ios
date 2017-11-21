@@ -14,22 +14,26 @@
 @protocol QStoreListOutput <NSObject>
 
 typedef NS_ENUM(NSInteger, QStoreListType) {
-    QStoreCategories,
-    QStoreContracts
+	QStoreCategories,
+	QStoreContracts
 };
 
-@property (weak, nonatomic) id<QStoreListOutputDelegate> delegate;
+@property (weak, nonatomic) id <QStoreListOutputDelegate> delegate;
 
 @property (nonatomic) NSString *categoryTitle;
 @property (nonatomic) NSString *categoryType;
 @property (nonatomic) QStoreListType type;
 
-- (void)setCategories:(NSArray<QStoreCategory *> *)categories;
-- (void)setElements:(NSArray<QStoreContractElement *> *)elements;
-- (void)setMoreElements:(NSArray<QStoreContractElement *> *)elements;
+- (void)setCategories:(NSArray<QStoreCategory *> *) categories;
+
+- (void)setElements:(NSArray<QStoreContractElement *> *) elements;
+
+- (void)setMoreElements:(NSArray<QStoreContractElement *> *) elements;
 
 - (void)startLoading;
+
 - (void)endLoading;
-- (void)showErrorWithMessage:(NSString *)message;
+
+- (void)showErrorWithMessage:(NSString *) message;
 
 @end

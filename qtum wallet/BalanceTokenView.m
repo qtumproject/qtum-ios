@@ -10,17 +10,17 @@
 
 @implementation BalanceTokenView
 
--(void)layoutSubviews {
-    
-    [super layoutSubviews];
-    
-    CGSize size = [self.longBalance sizeWithAttributes:@{NSFontAttributeName : self.balanceValueLabel.font}];
-    
-    if (size.width > self.balanceValueLabel.bounds.size.width) {
-        self.balanceValueLabel.text = self.shortBalance;
-    } else {
-        self.balanceValueLabel.text = self.longBalance;
-    }
+- (void)layoutSubviews {
+
+	[super layoutSubviews];
+
+	CGSize size = [self.longBalance sizeWithAttributes:@{NSFontAttributeName: self.balanceValueLabel.font}];
+
+	if (size.width > self.balanceValueLabel.bounds.size.width) {
+		self.balanceValueLabel.text = self.shortBalance;
+	} else {
+		self.balanceValueLabel.text = self.longBalance;
+	}
 }
 
 @end

@@ -10,7 +10,7 @@
 
 @protocol ExportBrainKeyOutput <NSObject>
 
-@property (nonatomic, weak) id<ExportBrainKeyOutputDelegate> delegate;
-@property (nonatomic, copy) NSString* brandKey;
+@property (nonatomic, weak) id <ExportBrainKeyOutputDelegate> delegate;
+@property (nonatomic, copy) NSString *brandKey;
 
 @end

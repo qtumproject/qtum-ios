@@ -15,19 +15,19 @@
 @implementation ConfirmPurchasePopUpViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 }
 
-- (IBAction)actionCancel:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(cancelButtonPressed:)]) {
-        [self.delegate cancelButtonPressed:self];
-    }
+- (IBAction)actionCancel:(id) sender {
+	if ([self.delegate respondsToSelector:@selector (cancelButtonPressed:)]) {
+		[self.delegate cancelButtonPressed:self];
+	}
 }
 
-- (IBAction)actionConfirm:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(okButtonPressed:)]) {
-        [self.delegate okButtonPressed:self];
-    }
+- (IBAction)actionConfirm:(id) sender {
+	if ([self.delegate respondsToSelector:@selector (okButtonPressed:)]) {
+		[self.delegate okButtonPressed:self];
+	}
 }
 
 @end

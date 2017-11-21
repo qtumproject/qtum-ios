@@ -21,62 +21,62 @@
 @synthesize delegate, brandKey;
 
 - (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    [self configurationBrainKeyLabel];
+
+	[super viewDidLoad];
+	[self configurationBrainKeyLabel];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
 }
 
 #pragma mark - Private Methods
 
--(NSString*)stringForLabelWithArrayWords:(NSArray*) array {
-    
-    NSString* resultSting;
-    for (id item in array) {
-        resultSting = resultSting ? [NSString stringWithFormat:@"%@ %@",resultSting,item] : [NSString stringWithFormat:@"%@",item];
-    }
-    return resultSting;
+- (NSString *)stringForLabelWithArrayWords:(NSArray *) array {
+
+	NSString *resultSting;
+	for (id item in array) {
+		resultSting = resultSting ? [NSString stringWithFormat:@"%@ %@", resultSting, item] : [NSString stringWithFormat:@"%@", item];
+	}
+	return resultSting;
 }
 
 #pragma mark - Configuration
 
--(void)configurationBrainKeyLabel {
-    
-    self.brainKeyLabel.text = self.brandKey;
+- (void)configurationBrainKeyLabel {
+
+	self.brainKeyLabel.text = self.brandKey;
 }
 
 #pragma mark - Actions
 
-- (IBAction)actionCopy:(id)sender {
-    
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = self.brandKey;
-    
-    [SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForBrainCodeCopied] presenter:nil completion:nil];
+- (IBAction)actionCopy:(id) sender {
+
+	UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+	pasteboard.string = self.brandKey;
+
+	[SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForBrainCodeCopied] presenter:nil completion:nil];
 }
 
-- (IBAction)actionContinue:(id)sender {
-    
-    if ([self.delegate respondsToSelector:@selector(didExportWalletPressed)]) {
-        [self.delegate didExportWalletPressed];
-    }
+- (IBAction)actionContinue:(id) sender {
+
+	if ([self.delegate respondsToSelector:@selector (didExportWalletPressed)]) {
+		[self.delegate didExportWalletPressed];
+	}
 }
 
-- (IBAction)shareButtonWasPressed:(id)sender {
-    
-    NSString *brandKeyString = self.brandKey;
-    NSArray *sharedItems = @[brandKeyString];
-    UIActivityViewController *sharingVC = [[UIActivityViewController alloc] initWithActivityItems:sharedItems applicationActivities:nil];
-    [self presentViewController:sharingVC animated:YES completion:nil];
+- (IBAction)shareButtonWasPressed:(id) sender {
+
+	NSString *brandKeyString = self.brandKey;
+	NSArray *sharedItems = @[brandKeyString];
+	UIActivityViewController *sharingVC = [[UIActivityViewController alloc] initWithActivityItems:sharedItems applicationActivities:nil];
+	[self presentViewController:sharingVC animated:YES completion:nil];
 }
 
 #pragma mark - PopUpViewControllerDelegate
 
-- (void)okButtonPressed:(PopUpViewController *)sender {
-    [SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+- (void)okButtonPressed:(PopUpViewController *) sender {
+	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
 }
 
 @end

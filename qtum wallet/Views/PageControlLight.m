@@ -11,12 +11,12 @@
 
 @implementation PageControlLight
 
-- (UIView<PageControlItem> *)createViewItem {
-    return [PageControlItemLight new];
+- (UIView <PageControlItem> *)createViewItem {
+	return [PageControlItemLight new];
 }
 
 - (CGFloat)spaceBetweenItems {
-    return 5.0f;
+	return 5.0f;
 }
 
 @end

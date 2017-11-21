@@ -23,18 +23,18 @@
 
 @implementation QRCodeController
 
-- (void)awakeWithContext:(id)context {
-    [super awakeWithContext:context];
+- (void)awakeWithContext:(id) context {
+	[super awakeWithContext:context];
 
-    self.wallet = (WatchWallet *)context;
-    
-    UIImage *image = [UIImage imageWithData:self.wallet.imageData];
-    [self.imageView setImage:image];
-    [self.statusLabel setText:self.wallet.address];
+	self.wallet = (WatchWallet *)context;
+
+	UIImage *image = [UIImage imageWithData:self.wallet.imageData];
+	[self.imageView setImage:image];
+	[self.statusLabel setText:self.wallet.address];
 }
 
-- (void)getText:(NSString *)text{
-    [self.statusLabel setText:text];
+- (void)getText:(NSString *) text {
+	[self.statusLabel setText:text];
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "QStoreMainScreenCategory.h"
 
-@interface QStoreMainScreenCategory()
+@interface QStoreMainScreenCategory ()
 
 @property (nonatomic) NSString *urlPath;
 
@@ -16,15 +16,15 @@
 
 @implementation QStoreMainScreenCategory
 
-- (instancetype)initWithIdentifier:(NSString *)identifier
-                              name:(NSString *)name
-                           urlPath:(NSString *)urlPath {
-    
-    self = [super initWithIdentifier:identifier name:name count:@(0)];
-    if (self) {
-        _urlPath = urlPath;
-    }
-    return self;
+- (instancetype)initWithIdentifier:(NSString *) identifier
+							  name:(NSString *) name
+						   urlPath:(NSString *) urlPath {
+
+	self = [super initWithIdentifier:identifier name:name count:@(0)];
+	if (self) {
+		_urlPath = urlPath;
+	}
+	return self;
 }
 
 @end

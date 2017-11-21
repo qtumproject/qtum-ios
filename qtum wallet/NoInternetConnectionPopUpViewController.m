@@ -10,20 +10,19 @@
 
 @interface NoInternetConnectionPopUpViewController ()
 
-- (IBAction)retryButtonPressed:(UIButton *)sender;
+- (IBAction)retryButtonPressed:(UIButton *) sender;
 
 @end
 
 @implementation NoInternetConnectionPopUpViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 }
 
-- (IBAction)retryButtonPressed:(UIButton *)sender
-{
-    if ([self.delegate respondsToSelector:@selector(okButtonPressed:)]) {
-        [self.delegate okButtonPressed:self];
-    }
+- (IBAction)retryButtonPressed:(UIButton *) sender {
+	if ([self.delegate respondsToSelector:@selector (okButtonPressed:)]) {
+		[self.delegate okButtonPressed:self];
+	}
 }
 @end

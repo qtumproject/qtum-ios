@@ -11,6 +11,6 @@
 
 @protocol SmartContractMenuOutput <NSObject>
 
-@property (weak,nonatomic) id <SmartContractMenuOutputDelegate> delegate;
+@property (weak, nonatomic) id <SmartContractMenuOutputDelegate> delegate;
 
 @end

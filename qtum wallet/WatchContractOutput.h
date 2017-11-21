@@ -12,9 +12,9 @@
 
 @protocol WatchContractOutput <NSObject>
 
-@property (weak,nonatomic) id <WatchContractOutputDelegate> delegate;
+@property (weak, nonatomic) id <WatchContractOutputDelegate> delegate;
 @property (weak, nonatomic) id <FavouriteTemplatesCollectionSourceOutput> collectionSource;
 
-- (void)changeStateForSelectedTemplate:(TemplateModel *)templateModel;
+- (void)changeStateForSelectedTemplate:(TemplateModel *) templateModel;
 
 @end

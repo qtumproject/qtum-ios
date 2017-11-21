@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class HistoryElement;
 
 typedef NS_ENUM(NSInteger, HistoryMode) {
-    From,
-    To
+	From,
+	To
 };
 
 @interface HistoryItemDelegateDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic)HistoryElement* item;
-@property (assign, nonatomic)HistoryMode mode;
+@property (strong, nonatomic) HistoryElement *item;
+@property (assign, nonatomic) HistoryMode mode;
 
 @end

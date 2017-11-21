@@ -15,11 +15,11 @@
 @implementation qtum_walletTests
 
 - (void)setUp {
-    [super setUp];
+	[super setUp];
 }
 
 - (void)tearDown {
-    [super tearDown];
+	[super tearDown];
 }
 
 - (void)testExample {

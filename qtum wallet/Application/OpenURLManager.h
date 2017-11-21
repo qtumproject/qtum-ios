@@ -10,8 +10,10 @@
 
 @interface OpenURLManager : NSObject <Clearable>
 
-- (void)storeAuthToYesWithAdddress:(NSString *)address;
-- (void)launchFromUrl:(NSURL*)url;
+- (void)storeAuthToYesWithAdddress:(NSString *) address;
+
+- (void)launchFromUrl:(NSURL *) url;
+
 - (void)clear;
 
 @end

@@ -20,6 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 
-@property (nonatomic, weak) id<PopUpWithTwoButtonsViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <PopUpWithTwoButtonsViewControllerDelegate> delegate;
 
 @end

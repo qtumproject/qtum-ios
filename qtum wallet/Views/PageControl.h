@@ -15,7 +15,8 @@
 @property (nonatomic) NSInteger pagesCount;
 @property (nonatomic) NSInteger selectedPage;
 
-- (UIView<PageControlItem> *)createViewItem;
+- (UIView <PageControlItem> *)createViewItem;
+
 - (CGFloat)spaceBetweenItems;
 
 @end

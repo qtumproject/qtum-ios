@@ -10,7 +10,8 @@
 
 @interface iOSSessionManager : NSObject
 
-- (void)sendMessage:(NSString *)message;
+- (void)sendMessage:(NSString *) message;
+
 - (void)updateWatch;
 
 

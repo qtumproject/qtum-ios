@@ -21,54 +21,54 @@ CGFloat const WalletHeaderHeightShowedDark = 50.0f;
 @implementation WalletViewControllerDark
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [(ViewWithAnimatedLine *)self.headerView setRightConstraint:self.trailingForLineConstraint];
+	[super viewDidLoad];
+
+	[(ViewWithAnimatedLine *)self.headerView setRightConstraint:self.trailingForLineConstraint];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
 }
 
 - (void)configTableView {
-    
-    [super configTableView];
-    
-    UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderViewDark" bundle:nil];
-    [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
+
+	[super configTableView];
+
+	UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderViewDark" bundle:nil];
+	[self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
 }
 
--(void)configRefreshControl {
-    
-    self.refreshControl = [[UIRefreshControl alloc]init];
-    self.refreshControl.tintColor = customBlackColor();
-    [self.tableView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
-    
-    CGRect frame = self.view.bounds;
-    frame.origin.y = - frame.size.height;
-    UIView *refreshBackgroundView = [[UIView alloc]initWithFrame:frame];
-    refreshBackgroundView.backgroundColor = customBlueColor();
-    [self.tableView insertSubview:refreshBackgroundView atIndex:0];
+- (void)configRefreshControl {
+
+	self.refreshControl = [[UIRefreshControl alloc] init];
+	self.refreshControl.tintColor = customBlackColor ();
+	[self.tableView addSubview:self.refreshControl];
+	[self.refreshControl addTarget:self action:@selector (refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
+
+	CGRect frame = self.view.bounds;
+	frame.origin.y = -frame.size.height;
+	UIView *refreshBackgroundView = [[UIView alloc] initWithFrame:frame];
+	refreshBackgroundView.backgroundColor = customBlueColor ();
+	[self.tableView insertSubview:refreshBackgroundView atIndex:0];
 }
 
 #pragma mark - TableSourceDelegate
 
-- (void)needShowHeader:(CGFloat)percent {
-    if (self.headerHeightConstraint.constant == WalletHeaderHeightShowedDark) {
-        return;
-    }
-    
-    self.headerHeightConstraint.constant = WalletHeaderHeightShowedDark;
-    [(ViewWithAnimatedLine *)self.headerView showAnimation];
+- (void)needShowHeader:(CGFloat) percent {
+	if (self.headerHeightConstraint.constant == WalletHeaderHeightShowedDark) {
+		return;
+	}
+
+	self.headerHeightConstraint.constant = WalletHeaderHeightShowedDark;
+	[(ViewWithAnimatedLine *)self.headerView showAnimation];
 }
 
-- (void)needHideHeader:(CGFloat)percent {
-    if (self.headerHeightConstraint.constant == 0.0f) {
-        return;
-    }
-    
-    self.headerHeightConstraint.constant = 0;
+- (void)needHideHeader:(CGFloat) percent {
+	if (self.headerHeightConstraint.constant == 0.0f) {
+		return;
+	}
+
+	self.headerHeightConstraint.constant = 0;
 }
 
 @end

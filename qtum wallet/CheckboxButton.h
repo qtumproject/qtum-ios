@@ -12,17 +12,20 @@
 
 @interface CheckboxButton : UIView
 
-- (void)setTitle:(NSString *)value;
-- (void)setCheck:(BOOL)value;
-- (BOOL)isChecked;
-- (void)setSquareBackroundColor:(UIColor *)color;
+- (void)setTitle:(NSString *) value;
 
-@property (nonatomic, weak) id<CheckboxButtonDelegate> delegate;
+- (void)setCheck:(BOOL) value;
+
+- (BOOL)isChecked;
+
+- (void)setSquareBackroundColor:(UIColor *) color;
+
+@property (nonatomic, weak) id <CheckboxButtonDelegate> delegate;
 
 @end
 
 @protocol CheckboxButtonDelegate <NSObject>
 
-- (void)didStateChanged:(CheckboxButton *)sender;
+- (void)didStateChanged:(CheckboxButton *) sender;
 
 @end

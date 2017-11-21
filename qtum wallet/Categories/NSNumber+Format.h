@@ -10,15 +10,18 @@
 
 @interface NSNumber (Format)
 
--(NSString*)shortFormatOfNumberWithPowerOfMinus10:(NSNumber*) power;
--(NSString*)shortFormatOfNumberWithPowerOf10:(NSNumber*) power;
+- (NSString *)shortFormatOfNumberWithPowerOfMinus10:(NSNumber *) power;
 
--(NSDecimalNumber*)numberWithPowerOfMinus10:(NSNumber*) power;
--(NSDecimalNumber*)numberWithPowerOf10:(NSNumber*) power;
+- (NSString *)shortFormatOfNumberWithPowerOf10:(NSNumber *) power;
 
--(NSString*)stringNumberWithPowerOfMinus10:(NSNumber*) power;
--(NSString*)stringNumberWithPowerOf10:(NSNumber*) power;
+- (NSDecimalNumber *)numberWithPowerOfMinus10:(NSNumber *) power;
 
--(NSString*)shortFormatOfNumber;
+- (NSDecimalNumber *)numberWithPowerOf10:(NSNumber *) power;
+
+- (NSString *)stringNumberWithPowerOfMinus10:(NSNumber *) power;
+
+- (NSString *)stringNumberWithPowerOf10:(NSNumber *) power;
+
+- (NSString *)shortFormatOfNumber;
 
 @end

@@ -11,15 +11,15 @@
 @implementation TextFieldWithLineDarkPopup
 
 - (UIColor *)getUnderlineColorDeselected {
-    return customBlackColor();
+	return customBlackColor ();
 }
 
 - (UIColor *)getUnderlineColorSelected {
-    return customBlackColor();
+	return customBlackColor ();
 }
 
 - (UIColor *)getPlaceholderColor {
-    return customBlackColor();
+	return customBlackColor ();
 }
 
 @end

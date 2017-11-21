@@ -9,12 +9,15 @@
 @protocol ChangePinOutputDelegate
 
 @required
--(void)confirmPin:(NSString*)pin andCompletision:(void(^)(BOOL success)) completisiom;
--(void)didPressedBack;
--(void)didPressedCancel;
+- (void)confirmPin:(NSString *) pin andCompletision:(void (^)(BOOL success)) completisiom;
+
+- (void)didPressedBack;
+
+- (void)didPressedCancel;
 
 @optional
--(void)confilmPinFailed;
--(void)setAnimationState:(BOOL)isAnimating;
+- (void)confilmPinFailed;
+
+- (void)setAnimationState:(BOOL) isAnimating;
 
 @end

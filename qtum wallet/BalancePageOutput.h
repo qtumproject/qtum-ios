@@ -11,12 +11,16 @@
 
 @protocol BalancePageOutput <NSObject>
 
-@property (copy, nonatomic) NSArray <UIViewController <Paginationable>*>* controllers;
+@property (copy, nonatomic) NSArray <UIViewController <Paginationable> *> *controllers;
 
-- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;
-- (void)scrollToRootIfNeededAnimated:(BOOL)animated;
+- (void)scrollToIndex:(NSInteger) index animated:(BOOL) animated;
+
+- (void)scrollToRootIfNeededAnimated:(BOOL) animated;
+
 - (void)setScrollingToTokensAvailableIfNeeded;
-- (void)setScrollEnable:(BOOL)enable;
+
+- (void)setScrollEnable:(BOOL) enable;
+
 - (void)setPageControllHidden:(BOOL) hidden;
 
 

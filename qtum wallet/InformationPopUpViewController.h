@@ -10,6 +10,6 @@
 
 @interface InformationPopUpViewController : PopUpViewController
 
-@property (nonatomic, weak) id<PopUpViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <PopUpViewControllerDelegate> delegate;
 
 @end

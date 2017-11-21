@@ -10,7 +10,8 @@
 @protocol NewsOutputDelegate <NSObject>
 
 @required
--(void)refreshTableViewData;
--(void)didSelectCellWithNews:(QTUMNewsItem*) newsItem;
+- (void)refreshTableViewData;
+
+- (void)didSelectCellWithNews:(QTUMNewsItem *) newsItem;
 
 @end

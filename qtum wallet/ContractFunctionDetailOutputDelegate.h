@@ -12,11 +12,11 @@
 
 @protocol ContractFunctionDetailOutputDelegate <NSObject>
 
--(void)didCallFunctionWithItem:(AbiinterfaceItem*) item
-                      andParam:(NSArray<ResultTokenInputsModel*>*)inputs
-                      andToken:(Contract*) token
-                        andFee:(QTUMBigNumber*) fee
-                        andGasPrice:(QTUMBigNumber*) gasPrice
-                        andGasLimit:(QTUMBigNumber*) gasLimit;
+- (void)didCallFunctionWithItem:(AbiinterfaceItem *) item
+					   andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+					   andToken:(Contract *) token
+						 andFee:(QTUMBigNumber *) fee
+					andGasPrice:(QTUMBigNumber *) gasPrice
+					andGasLimit:(QTUMBigNumber *) gasLimit;
 
 @end

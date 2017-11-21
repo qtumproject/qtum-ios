@@ -10,7 +10,8 @@
 
 @interface iMessageDataOperation : NSObject
 
-+ (NSDictionary *)getDictFormGroupFileWithName:(NSString *)fileName;
-+ (NSString*)saveGroupFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
++ (NSDictionary *)getDictFormGroupFileWithName:(NSString *) fileName;
+
++ (NSString *)saveGroupFileWithName:(NSString *) fileName dataSource:(NSDictionary *) dataSource;
 
 @end

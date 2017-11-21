@@ -9,16 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "DynamicHeightCellProtocol.h"
 
-extern NSString * const QTUMParagrafTagCellReuseIdentifire;
+extern NSString *const QTUMParagrafTagCellReuseIdentifire;
 
 @interface QTUMParagrafTagCell : UITableViewCell <DynamicHeightCellProtocol>
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
 
--(UIFont*)boldFont;
--(UIFont*)regularFont;
--(UIColor*)linkColor;
--(UIColor*)textColor;
+- (UIFont *)boldFont;
+
+- (UIFont *)regularFont;
+
+- (UIColor *)linkColor;
+
+- (UIColor *)textColor;
 
 @end

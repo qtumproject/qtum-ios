@@ -10,6 +10,6 @@
 
 @protocol AboutOutputDelegate <NSObject>
 
--(void)didBackPressed;
+- (void)didBackPressed;
 
 @end

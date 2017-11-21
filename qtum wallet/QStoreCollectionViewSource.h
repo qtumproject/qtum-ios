@@ -11,13 +11,13 @@
 
 @protocol QStoreCollectionViewSourceDelegate <NSObject>
 
-- (void)didSelectCollectionCellWithElement:(QStoreContractElement *)element;
+- (void)didSelectCollectionCellWithElement:(QStoreContractElement *) element;
 
 @end
 
 @interface QStoreCollectionViewSource : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, weak) id<QStoreCollectionViewSourceDelegate> delegate;
+@property (nonatomic, weak) id <QStoreCollectionViewSourceDelegate> delegate;
 @property (nonatomic) NSArray<QStoreContractElement *> *elements;
 
 @end

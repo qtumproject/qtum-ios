@@ -10,6 +10,6 @@
 
 @protocol QStoreTemplateDetailOutputDelegate <NSObject>
 
--(void)didPressedBack;
+- (void)didPressedBack;
 
 @end

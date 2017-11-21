@@ -8,7 +8,7 @@
 
 #import "BalanceTokenTableViewCell.h"
 
-@interface BalanceTokenTableViewCell()
+@interface BalanceTokenTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *balanceTextLabel;
 

@@ -10,30 +10,29 @@
 
 @implementation UIAlertController (Extensions)
 
-+ (UIAlertController *)warningMessageWithSettingsButtonAndTitle:(NSString *)title message:(NSString *)text withActionHandler:(ActionHandler)completion
-{
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:title
-                                                                        message:text
-                                                                 preferredStyle:UIAlertControllerStyleAlert];
-    
-    
-    
-    UIAlertAction *settingsAction = [UIAlertAction
-                                     actionWithTitle:@"Settings"
-                                     style:UIAlertActionStyleCancel
-                                     handler:^(UIAlertAction * _Nonnull action) {
-                                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-                                     }];
-    
-    UIAlertAction *approveAction = [UIAlertAction
-                                    actionWithTitle:@"Cancel"
-                                    style:UIAlertActionStyleDefault
-                                    handler:completion];
-    
-    [controller addAction:settingsAction];
-    [controller addAction:approveAction];
-    
-    return controller;
++ (UIAlertController *)warningMessageWithSettingsButtonAndTitle:(NSString *) title message:(NSString *) text withActionHandler:(ActionHandler) completion {
+	UIAlertController *controller = [UIAlertController alertControllerWithTitle:title
+																		message:text
+																 preferredStyle:UIAlertControllerStyleAlert];
+
+
+
+	UIAlertAction *settingsAction = [UIAlertAction
+			actionWithTitle:@"Settings"
+					  style:UIAlertActionStyleCancel
+					handler:^(UIAlertAction *_Nonnull action) {
+						[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+					}];
+
+	UIAlertAction *approveAction = [UIAlertAction
+			actionWithTitle:@"Cancel"
+					  style:UIAlertActionStyleDefault
+					handler:completion];
+
+	[controller addAction:settingsAction];
+	[controller addAction:approveAction];
+
+	return controller;
 }
 
 @end

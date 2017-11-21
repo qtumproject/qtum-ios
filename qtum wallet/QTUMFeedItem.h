@@ -21,6 +21,6 @@
 @property (nonatomic, copy, readonly) NSString *author;
 @property (nonatomic, copy, readonly) NSArray *enclosures;
 
--(instancetype)initWithItem:(MWFeedItem*) feedItem;
+- (instancetype)initWithItem:(MWFeedItem *) feedItem;
 
 @end

@@ -9,7 +9,7 @@
 #import "BorderedLabelLight.h"
 #import "InnerShadowView.h"
 
-@interface BorderedLabelLight()
+@interface BorderedLabelLight ()
 
 @property (nonatomic) CALayer *shadowLayer;
 
@@ -18,19 +18,19 @@
 @implementation BorderedLabelLight
 
 - (UIColor *)getBorderColor {
-    return [lightBlackColor78() colorWithAlphaComponent:0.2f];
+	return [lightBlackColor78 () colorWithAlphaComponent:0.2f];
 }
 
 - (UIColor *)getBackroundColor {
-    return lightBorderLabelBackroundColor();
+	return lightBorderLabelBackroundColor ();
 }
 
 - (UIView *)getBorderView {
-    return [InnerShadowView new];
+	return [InnerShadowView new];
 }
 
 - (CGFloat)getInsets {
-    return 14.0f;
+	return 14.0f;
 }
 
 @end

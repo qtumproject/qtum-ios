@@ -13,14 +13,14 @@ NSString const *keyOut = @"org.qtum.output.extension";
 
 @implementation BTCTransactionOutput (Address)
 
-- (void)setRunTimeAddress:(NSString *)runTimeAddress {
-    
-    objc_setAssociatedObject(self, &keyOut, runTimeAddress, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setRunTimeAddress:(NSString *) runTimeAddress {
+
+	objc_setAssociatedObject (self, &keyOut, runTimeAddress, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSString *)runTimeAddress {
-    
-    return objc_getAssociatedObject(self, &keyOut);
+
+	return objc_getAssociatedObject (self, &keyOut);
 }
 
 @end

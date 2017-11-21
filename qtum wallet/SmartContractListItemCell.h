@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "QTUMSwipableCellWithButtons.h"
 
-static NSString* smartContractListItemCellIdentifire = @"SmartContractListItemCellIdentifire";
+static NSString *smartContractListItemCellIdentifire = @"SmartContractListItemCellIdentifire";
 
 @interface SmartContractListItemCell : QTUMSwipableCellWithButtons
 

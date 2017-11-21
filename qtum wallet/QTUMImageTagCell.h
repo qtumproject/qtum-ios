@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "DynamicHeightCellProtocol.h"
 
-extern NSString * const QTUMImageTagCellReuseIdentifire;
+extern NSString *const QTUMImageTagCellReuseIdentifire;
 
 @interface QTUMImageTagCell : UITableViewCell <DynamicHeightCellProtocol>
 
 @property (weak, nonatomic) IBOutlet UIImageView *tagImageView;
 
--(CGSize)prefferedSize;
+- (CGSize)prefferedSize;
 
 @end

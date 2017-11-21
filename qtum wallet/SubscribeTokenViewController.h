@@ -14,9 +14,9 @@
 @interface SubscribeTokenViewController : BaseViewController <SubscribeTokenDataDisplayManagerDelegate, SubscribeTokenOutput>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSArray <Contract*>* filteredTokensArray;
+@property (strong, nonatomic) NSArray <Contract *> *filteredTokensArray;
 
--(void)updateTable;
+- (void)updateTable;
 
 
 @end

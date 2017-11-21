@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseCoordinator.h"
 #import "ResultTokenInputsModel.h"
+
 @class TemplateModel;
 @class AbiinterfaceItem;
 
@@ -16,9 +17,11 @@
 
 @required
 - (void)createStepOneCancelDidPressed;
+
 - (void)didPressedBack;
 
-- (void)didSelectChooseFromLibrary:(id)sender;
+- (void)didSelectChooseFromLibrary:(id) sender;
+
 - (void)didChangeAbiText;
 
 
@@ -26,6 +29,6 @@
 
 @interface ContractCoordinator : BaseCoordinator <Coordinatorable, ContractCoordinatorDelegate>
 
--(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
+- (instancetype)initWithNavigationController:(UINavigationController *) navigationController;
 
 @end

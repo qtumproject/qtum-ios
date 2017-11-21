@@ -12,18 +12,28 @@
 
 @interface NSNumber (Comparison)
 
-- (BOOL)isLessThan:(NSNumber *)decimalNumber;
-- (BOOL)isLessThanOrEqualTo:(NSNumber *)decimalNumber;
-- (BOOL)isGreaterThan:(NSNumber *)decimalNumber;
-- (BOOL)isGreaterThanOrEqualTo:(NSNumber *)decimalNumber;
-- (BOOL)isEqualToDecimalNumber:(NSNumber *)decimalNumber;
-- (BOOL)isEqualToInt:(int)i;
-- (BOOL)isGreaterThanInt:(int)i;
-- (BOOL)isGreaterThanOrEqualToInt:(int)i;
-- (BOOL)isLessThanInt:(int)i;
-- (BOOL)isLessThanOrEqualToInt:(int)i;
+- (BOOL)isLessThan:(NSNumber *) decimalNumber;
 
-- (NSDecimalNumber*)decimalNumber;
-- (NSNumber*)roundedNumberWithScale:(NSInteger) scale;
+- (BOOL)isLessThanOrEqualTo:(NSNumber *) decimalNumber;
+
+- (BOOL)isGreaterThan:(NSNumber *) decimalNumber;
+
+- (BOOL)isGreaterThanOrEqualTo:(NSNumber *) decimalNumber;
+
+- (BOOL)isEqualToDecimalNumber:(NSNumber *) decimalNumber;
+
+- (BOOL)isEqualToInt:(int) i;
+
+- (BOOL)isGreaterThanInt:(int) i;
+
+- (BOOL)isGreaterThanOrEqualToInt:(int) i;
+
+- (BOOL)isLessThanInt:(int) i;
+
+- (BOOL)isLessThanOrEqualToInt:(int) i;
+
+- (NSDecimalNumber *)decimalNumber;
+
+- (NSNumber *)roundedNumberWithScale:(NSInteger) scale;
 
 @end

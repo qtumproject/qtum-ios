@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, TouchIDCompletionType) {
-    TouchIDCanceled,
-    TouchIDDenied,
-    TouchIDSuccessed
+	TouchIDCanceled,
+	TouchIDDenied,
+	TouchIDSuccessed
 };
 
 @interface TouchIDService : NSObject
 
 - (BOOL)hasTouchId;
-- (void)checkTouchIdWithText:(NSString*) text andCopmletion:(void (^)(TouchIDCompletionType type))completion;
+
+- (void)checkTouchIdWithText:(NSString *) text andCopmletion:(void (^)(TouchIDCompletionType type)) completion;
 
 @end

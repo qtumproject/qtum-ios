@@ -8,18 +8,18 @@
 
 #import "QStoreSearchTableViewCell.h"
 
-@interface QStoreSearchTableViewCell()
+@interface QStoreSearchTableViewCell ()
 
 @end
 
 @implementation QStoreSearchTableViewCell
 
-- (void)changeHighlight:(BOOL)value {
-    
+- (void)changeHighlight:(BOOL) value {
+
 }
 
 - (BOOL)isLight {
-    return NO;
+	return NO;
 }
 
 @end

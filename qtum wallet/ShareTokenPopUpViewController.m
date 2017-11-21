@@ -18,45 +18,45 @@
 @implementation ShareTokenPopUpViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+	[super viewDidLoad];
+	self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
+- (void)viewWillAppear:(BOOL) animated {
+
+	[super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear:animated];
-    
-    [self.addressLabel setText:self.addressString];
-    [self.abiTextView setText:self.abiString];
-    
-    [self.abiTextView setContentOffset:CGPointZero];
-    NSLog(@"%@", self.abiTextView);
+- (void)viewDidAppear:(BOOL) animated {
+
+	[super viewDidAppear:animated];
+
+	[self.addressLabel setText:self.addressString];
+	[self.abiTextView setText:self.abiString];
+
+	[self.abiTextView setContentOffset:CGPointZero];
+	NSLog (@"%@", self.abiTextView);
 }
 
-- (IBAction)actionCopyAddress:(id)sender {
-    
-    if ([self.delegate respondsToSelector:@selector(copyAddressButtonPressed:)]) {
-        [self.delegate copyAddressButtonPressed:self];
-    }
+- (IBAction)actionCopyAddress:(id) sender {
+
+	if ([self.delegate respondsToSelector:@selector (copyAddressButtonPressed:)]) {
+		[self.delegate copyAddressButtonPressed:self];
+	}
 }
 
-- (IBAction)actionCopyAbi:(id)sender {
-    
-    if ([self.delegate respondsToSelector:@selector(copyAbiButtonPressed:)]) {
-        [self.delegate copyAbiButtonPressed:self];
-    }
+- (IBAction)actionCopyAbi:(id) sender {
+
+	if ([self.delegate respondsToSelector:@selector (copyAbiButtonPressed:)]) {
+		[self.delegate copyAbiButtonPressed:self];
+	}
 }
 
-- (IBAction)actionOk:(id)sender {
-    
-    if ([self.delegate respondsToSelector:@selector(okButtonPressed:)]) {
-        [self.delegate okButtonPressed:self];
-    }
+- (IBAction)actionOk:(id) sender {
+
+	if ([self.delegate respondsToSelector:@selector (okButtonPressed:)]) {
+		[self.delegate okButtonPressed:self];
+	}
 }
 
 @end

@@ -8,14 +8,14 @@
 
 #import "ProfileTableViewCell.h"
 
-NSString * const normalCellReuseIdentifire               = @"profileCell";
-NSString * const separatorCellReuseIdentifire            = @"profileCellWithSeparator";
-NSString * const switchCellReuseIdentifire               = @"profileCellWithSeparatorAndSwitch";
+NSString *const normalCellReuseIdentifire = @"profileCell";
+NSString *const separatorCellReuseIdentifire = @"profileCellWithSeparator";
+NSString *const switchCellReuseIdentifire = @"profileCellWithSeparatorAndSwitch";
 
 @implementation ProfileTableViewCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
+	[super awakeFromNib];
 }
 
 

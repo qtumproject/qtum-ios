@@ -8,17 +8,17 @@
 
 #import "TextFieldParameterView.h"
 
-@interface TextFieldParameterView() 
+@interface TextFieldParameterView ()
 
 @end
 
 @implementation TextFieldParameterView
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-    }
-    return self;
+- (instancetype)initWithCoder:(NSCoder *) aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+	}
+	return self;
 }
 
 @end

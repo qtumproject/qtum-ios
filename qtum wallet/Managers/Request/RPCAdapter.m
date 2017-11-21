@@ -10,17 +10,17 @@
 
 @implementation RPCAdapter
 
-- (id)adaptiveDataForHistory:(id) data{
-    return data;
+- (id)adaptiveDataForHistory:(id) data {
+	return data;
 }
 
-- (id)adaptiveDataForOutputs:(id) data{
+- (id)adaptiveDataForOutputs:(id) data {
 
-    return data;
+	return data;
 }
 
-- (id)adaptiveDataForBalance:(id) balance{
-    return balance;
+- (id)adaptiveDataForBalance:(id) balance {
+	return balance;
 }
 
 

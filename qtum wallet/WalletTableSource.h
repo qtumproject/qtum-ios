@@ -16,9 +16,12 @@
 @protocol ControllerDelegate <NSObject>
 
 @optional
-- (void)needShowHeader:(CGFloat)percent;
-- (void)needHideHeader:(CGFloat)percent;
+- (void)needShowHeader:(CGFloat) percent;
+
+- (void)needHideHeader:(CGFloat) percent;
+
 - (void)needShowHeaderForSecondSeciton;
+
 - (void)needHideHeaderForSecondSeciton;
 
 @end
@@ -36,11 +39,13 @@
 
 @property (nonatomic, weak, readonly) HistoryHeaderVIew *sectionHeaderView;
 @property (nonatomic, readonly) CGFloat lastContentOffset;
-@property (weak, nonatomic) UIView* emptyPlacehodlerView;
+@property (weak, nonatomic) UIView *emptyPlacehodlerView;
 
 
 - (HeaderCellType)headerCellType;
-- (void)didScrollForheaderCell:(UIScrollView *)scrollView;
+
+- (void)didScrollForheaderCell:(UIScrollView *) scrollView;
+
 - (void)updateEmptyPlaceholderView;
 
 @end

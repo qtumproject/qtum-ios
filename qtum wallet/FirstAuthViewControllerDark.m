@@ -15,25 +15,25 @@
 @implementation FirstAuthViewControllerDark
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    [self configurateButtons];
+	[super viewDidLoad];
+	[self configurateButtons];
 }
 
 #pragma mark - Configuration
 
--(void)configurateButtons {
-    
-    if (SLocator.walletManager.isSignedIn) {
-        self.createButton.backgroundColor = [UIColor clearColor];
-        [self.createButton setTitleColor:customBlueColor() forState:UIControlStateNormal];
-        self.loginButton.hidden = NO;
-        self.invitationTextLabel.text = NSLocalizedString(@"Login to QTUM \nDon't have a wallet yet?", @"");
-    } else {
-        self.createButton.backgroundColor = customRedColor();
-        [self.createButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
-        self.loginButton.hidden = YES;
-        self.invitationTextLabel.text = NSLocalizedString(@"You don’t have a wallet yet.", @"");
-    }
+- (void)configurateButtons {
+
+	if (SLocator.walletManager.isSignedIn) {
+		self.createButton.backgroundColor = [UIColor clearColor];
+		[self.createButton setTitleColor:customBlueColor () forState:UIControlStateNormal];
+		self.loginButton.hidden = NO;
+		self.invitationTextLabel.text = NSLocalizedString(@"Login to QTUM \nDon't have a wallet yet?", @"");
+	} else {
+		self.createButton.backgroundColor = customRedColor ();
+		[self.createButton setTitleColor:customBlackColor () forState:UIControlStateNormal];
+		self.loginButton.hidden = YES;
+		self.invitationTextLabel.text = NSLocalizedString(@"You don’t have a wallet yet.", @"");
+	}
 }
 
 @end

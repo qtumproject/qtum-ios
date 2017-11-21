@@ -22,38 +22,47 @@
 @interface PopUpsManager : NSObject
 
 // show methods
-- (void)dismissLoader:(LoaderPopUpViewController*) loader;
-- (LoaderPopUpViewController*)showLoaderPopUpInView:(UIView*)view;
+- (void)dismissLoader:(LoaderPopUpViewController *) loader;
 
-- (void)showNoIntenterConnetionsPopUp:(id<PopUpViewControllerDelegate>)delegate
-                            presenter:(UIViewController *)presenter
-                           completion:(void (^)(void))completion;
+- (LoaderPopUpViewController *)showLoaderPopUpInView:(UIView *) view;
 
-- (void)showPhotoLibraryPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate
-                    presenter:(UIViewController *)presenter
-                   completion:(void (^)(void))completion;
+- (void)showNoIntenterConnetionsPopUp:(id <PopUpViewControllerDelegate>) delegate
+							presenter:(UIViewController *) presenter
+						   completion:(void (^)(void)) completion;
 
-- (ErrorPopUpViewController *)showErrorPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
-- (void)showInformationPopUp:(id<PopUpViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
-- (void)showConfirmPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
+- (void)showPhotoLibraryPopUp:(id <PopUpWithTwoButtonsViewControllerDelegate>) delegate
+					presenter:(UIViewController *) presenter
+				   completion:(void (^)(void)) completion;
+
+- (ErrorPopUpViewController *)showErrorPopUp:(id <PopUpWithTwoButtonsViewControllerDelegate>) delegate withContent:(PopUpContent *) content presenter:(UIViewController *) presenter completion:(void (^)(void)) completion;
+
+- (void)showInformationPopUp:(id <PopUpViewControllerDelegate>) delegate withContent:(PopUpContent *) content presenter:(UIViewController *) presenter completion:(void (^)(void)) completion;
+
+- (void)showConfirmPopUp:(id <PopUpWithTwoButtonsViewControllerDelegate>) delegate withContent:(PopUpContent *) content presenter:(UIViewController *) presenter completion:(void (^)(void)) completion;
+
 - (void)showLoaderPopUp;
-- (RestoreContractsPopUpViewController *)showRestoreContractsPopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
-- (SecurityPopupViewController *)showSecurityPopup:(id<SecurityPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
-- (void)showSourceCodePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate withContent:(PopUpContent *)content presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
-- (ConfirmPurchasePopUpViewController *)showConfirmPurchasePopUp:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
-- (ShareTokenPopUpViewController *)showShareTokenPopUp:(id<ShareTokenPopupViewControllerDelegate>)delegate presenter:(UIViewController *)presenter completion:(void (^)(void))completion;
 
-- (AddressTransferPopupViewController*)showAddressTransferPopupViewController:(id<PopUpWithTwoButtonsViewControllerDelegate>)delegate
-                                                                    presenter:(UIViewController *)presenter
-                                                                    toAddress:(NSString*) address
-                                                      withFromAddressVariants:(NSArray <WalletBalancesObject*>*)variants
-                                                                   completion:(void (^)(void))completion;
+- (RestoreContractsPopUpViewController *)showRestoreContractsPopUp:(id <PopUpWithTwoButtonsViewControllerDelegate>) delegate presenter:(UIViewController *) presenter completion:(void (^)(void)) completion;
+
+- (SecurityPopupViewController *)showSecurityPopup:(id <SecurityPopupViewControllerDelegate>) delegate presenter:(UIViewController *) presenter completion:(void (^)(void)) completion;
+
+- (void)showSourceCodePopUp:(id <PopUpWithTwoButtonsViewControllerDelegate>) delegate withContent:(PopUpContent *) content presenter:(UIViewController *) presenter completion:(void (^)(void)) completion;
+
+- (ConfirmPurchasePopUpViewController *)showConfirmPurchasePopUp:(id <PopUpWithTwoButtonsViewControllerDelegate>) delegate presenter:(UIViewController *) presenter completion:(void (^)(void)) completion;
+
+- (ShareTokenPopUpViewController *)showShareTokenPopUp:(id <ShareTokenPopupViewControllerDelegate>) delegate presenter:(UIViewController *) presenter completion:(void (^)(void)) completion;
+
+- (AddressTransferPopupViewController *)showAddressTransferPopupViewController:(id <PopUpWithTwoButtonsViewControllerDelegate>) delegate
+																	 presenter:(UIViewController *) presenter
+																	 toAddress:(NSString *) address
+													   withFromAddressVariants:(NSArray <WalletBalancesObject *> *) variants
+																	completion:(void (^)(void)) completion;
 
 
 // dismiss methods
 - (void)dismissLoader;
 
 // hide methods
-- (void)hideCurrentPopUp:(BOOL)animated completion:(void (^)(void))completion;
+- (void)hideCurrentPopUp:(BOOL) animated completion:(void (^)(void)) completion;
 
 @end

@@ -12,9 +12,9 @@
 
 @interface AbiTextFieldWithLine : TextFieldWithLine
 
--(instancetype)initWithFrame:(CGRect)frame andInterfaceItem:(AbiinterfaceInput*) item;
+- (instancetype)initWithFrame:(CGRect) frame andInterfaceItem:(AbiinterfaceInput *) item;
 
 @property (weak, nonatomic) id <AbiTextFieldWithLineDelegate> customDelegate;
-@property (strong, nonatomic) AbiinterfaceInput* item;
+@property (strong, nonatomic) AbiinterfaceInput *item;
 
 @end

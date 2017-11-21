@@ -15,5 +15,4 @@
 @implementation NewsDetailViewControllerLight
 
 
-
 @end

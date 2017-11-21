@@ -10,25 +10,25 @@
 
 @implementation NSDecimalNumber (Comparison)
 
-- (BOOL)isLessThan:(NSDecimalNumber *)decimalNumber {
-    return [self compare:decimalNumber] == NSOrderedAscending;
+- (BOOL)isLessThan:(NSDecimalNumber *) decimalNumber {
+	return [self compare:decimalNumber] == NSOrderedAscending;
 }
 
-- (BOOL)isLessThanOrEqualTo:(NSDecimalNumber *)decimalNumber {
-    return [self compare:decimalNumber] != NSOrderedDescending;
+- (BOOL)isLessThanOrEqualTo:(NSDecimalNumber *) decimalNumber {
+	return [self compare:decimalNumber] != NSOrderedDescending;
 }
 
-- (BOOL)isGreaterThan:(NSDecimalNumber *)decimalNumber {
-    return [self compare:decimalNumber] == NSOrderedDescending;
+- (BOOL)isGreaterThan:(NSDecimalNumber *) decimalNumber {
+	return [self compare:decimalNumber] == NSOrderedDescending;
 }
 
-- (BOOL)isGreaterThanOrEqualTo:(NSDecimalNumber *)decimalNumber {
-    return [self compare:decimalNumber] != NSOrderedAscending;
+- (BOOL)isGreaterThanOrEqualTo:(NSDecimalNumber *) decimalNumber {
+	return [self compare:decimalNumber] != NSOrderedAscending;
 }
 
-- (BOOL)isEqualToDecimalNumber:(NSDecimalNumber *)decimalNumber {
-    
-    return [self compare:decimalNumber] == NSOrderedSame;
+- (BOOL)isEqualToDecimalNumber:(NSDecimalNumber *) decimalNumber {
+
+	return [self compare:decimalNumber] == NSOrderedSame;
 }
 
 @end

@@ -25,7 +25,9 @@
 
 // Some actions
 - (void)didBackPressed;
-- (void)didSelectHistoryItemIndexPath:(NSIndexPath *)indexPath withItem:(HistoryElement*)item;
+
+- (void)didSelectHistoryItemIndexPath:(NSIndexPath *) indexPath withItem:(HistoryElement *) item;
+
 - (void)didShareTokenButtonPressed;
 
 @end
@@ -34,8 +36,8 @@
 
 @interface WalletCoordinator : BaseCoordinator <WalletCoordinatorDelegate, Coordinatorable>
 
-@property (weak,nonatomic) id <TabBarCoordinatorDelegate> delegate;
+@property (weak, nonatomic) id <TabBarCoordinatorDelegate> delegate;
 
--(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
+- (instancetype)initWithNavigationController:(UINavigationController *) navigationController;
 
 @end

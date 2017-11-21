@@ -11,12 +11,18 @@
 @protocol AbiTextFieldWithLineDelegate <NSObject>
 
 @optional
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
-- (void)textFieldDidBeginEditing:(UITextField *)textField;
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField;
-- (void)textFieldDidEndEditing:(UITextField *)textField;
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
-- (BOOL)textFieldShouldClear:(UITextField *)textField;
-- (BOOL)textFieldShouldReturn:(UITextField *)textField;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *) textField;
+
+- (void)textFieldDidBeginEditing:(UITextField *) textField;
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *) textField;
+
+- (void)textFieldDidEndEditing:(UITextField *) textField;
+
+- (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string;
+
+- (BOOL)textFieldShouldClear:(UITextField *) textField;
+
+- (BOOL)textFieldShouldReturn:(UITextField *) textField;
 
 @end

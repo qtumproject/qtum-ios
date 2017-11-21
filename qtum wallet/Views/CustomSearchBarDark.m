@@ -12,33 +12,33 @@
 @implementation CustomSearchBarDark
 
 - (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    [self changeFontAndColorButtons];
+	[super layoutSubviews];
+
+	[self changeFontAndColorButtons];
 }
 
 - (void)setup {
-    
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(8,0, [UIApplication sharedApplication].keyWindow.frame.size.width - 16, 28)];
-    view.backgroundColor = customBlackColor();
-    UIImage *img = [UIImage changeViewToImage:view];
-    [self setSearchFieldBackgroundImage:img forState:UIControlStateNormal];
-    [self setImage:[UIImage imageNamed: @"Icon-search"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
-    [self setSearchTextPositionAdjustment:UIOffsetMake(8.0f, 0.0f)];
+
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake (8, 0, [UIApplication sharedApplication].keyWindow.frame.size.width - 16, 28)];
+	view.backgroundColor = customBlackColor ();
+	UIImage *img = [UIImage changeViewToImage:view];
+	[self setSearchFieldBackgroundImage:img forState:UIControlStateNormal];
+	[self setImage:[UIImage imageNamed:@"Icon-search"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+	[self setSearchTextPositionAdjustment:UIOffsetMake (8.0f, 0.0f)];
 }
 
 
 - (void)changeFontAndColorButtons {
-    
-    for (UIView *view in self.subviews) {
-        for (id subview in view.subviews) {
-            if ([subview isKindOfClass:[UIButton class]]) {
-                UIButton *cancelButton = (UIButton *)subview;
-                [cancelButton setTitleColor:customBlackColor() forState:UIControlStateNormal];
-                cancelButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16.0f];
-            }
-        }
-    }
+
+	for (UIView *view in self.subviews) {
+		for (id subview in view.subviews) {
+			if ([subview isKindOfClass:[UIButton class]]) {
+				UIButton *cancelButton = (UIButton *)subview;
+				[cancelButton setTitleColor:customBlackColor () forState:UIControlStateNormal];
+				cancelButton.titleLabel.font = [UIFont fontWithName:@"simplonmono-regular" size:16.0f];
+			}
+		}
+	}
 }
 
 @end

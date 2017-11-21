@@ -8,7 +8,7 @@
 
 #import "NubersTokenTableViewCell.h"
 
-@interface NubersTokenTableViewCell()
+@interface NubersTokenTableViewCell ()
 
 @end
 

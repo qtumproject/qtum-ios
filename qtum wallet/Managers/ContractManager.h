@@ -23,35 +23,46 @@ extern NSString *const kLocalContractName;
 
 @interface ContractManager : NSObject <Managerable, Clearable>
 
-- (NSArray <Contract*>*)allContracts;
-- (NSArray <Contract*>*)allTokens;
-- (NSArray <Contract*>*)allActiveTokens;
-- (NSDictionary*)smartContractPretendentsCopy;
-- (void)addNewToken:(Contract*) token;
-- (void)updateTokenWithContractAddress:(NSString*) address withAddressBalanceDictionary:(NSDictionary*) addressBalance;
-- (void)checkSmartContract:(HistoryElement*) item;
+- (NSArray <Contract *> *)allContracts;
+
+- (NSArray <Contract *> *)allTokens;
+
+- (NSArray <Contract *> *)allActiveTokens;
+
+- (NSDictionary *)smartContractPretendentsCopy;
+
+- (void)addNewToken:(Contract *) token;
+
+- (void)updateTokenWithContractAddress:(NSString *) address withAddressBalanceDictionary:(NSDictionary *) addressBalance;
+
+- (void)checkSmartContract:(HistoryElement *) item;
+
 - (void)checkSmartContractPretendents;
-- (void)addNewTokenWithContractAddress:(NSString*) contractAddress;
-- (void)addSmartContractPretendent:(NSArray*) addresses
-                           forKey:(NSString*) key
-                     withTemplate:(TemplateModel*)templateModel
-              andLocalContractName:(NSString*) localName;
 
-- (BOOL)addNewContractWithContractAddress:(NSString*) contractAddress
-                                  withAbi:(NSString*) abiStr
-                              andWithName:(NSString*) contractName
-                              errorString:(NSString **)errorString;
+- (void)addNewTokenWithContractAddress:(NSString *) contractAddress;
 
-- (BOOL)addNewTokenWithContractAddress:(NSString*) contractAddress
-                               withAbi:(NSString*) abiStr
-                           andWithName:(NSString*) contractName
-                           errorString:(NSString **)errorString;
+- (void)addSmartContractPretendent:(NSArray *) addresses
+							forKey:(NSString *) key
+					  withTemplate:(TemplateModel *) templateModel
+			  andLocalContractName:(NSString *) localName;
 
-- (void)removeContract:(Contract*)contract;
-- (void)removeContractPretendentWithTxHash:(NSString*)txHash;
+- (BOOL)addNewContractWithContractAddress:(NSString *) contractAddress
+								  withAbi:(NSString *) abiStr
+							  andWithName:(NSString *) contractName
+							  errorString:(NSString **) errorString;
+
+- (BOOL)addNewTokenWithContractAddress:(NSString *) contractAddress
+							   withAbi:(NSString *) abiStr
+						   andWithName:(NSString *) contractName
+						   errorString:(NSString **) errorString;
+
+- (void)removeContract:(Contract *) contract;
+
+- (void)removeContractPretendentWithTxHash:(NSString *) txHash;
 
 
-- (NSArray<NSDictionary*>*)decodeDataForBackup;
-- (BOOL)encodeDataForBacup:(NSArray<NSDictionary*>*) backup withTemplates:(NSArray<TemplateModel*>*) templates;
+- (NSArray<NSDictionary *> *)decodeDataForBackup;
+
+- (BOOL)encodeDataForBacup:(NSArray<NSDictionary *> *) backup withTemplates:(NSArray<TemplateModel *> *) templates;
 
 @end

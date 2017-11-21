@@ -21,19 +21,19 @@
 @implementation HistoryItemViewControllerLight
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.bottomGradient.colorType = White;
+	[super viewDidLoad];
+
+	self.bottomGradient.colorType = White;
 }
 
 - (void)configWithItem {
-    
-    [super configWithItem];
-    
-    self.topGradient.colorType = self.item.send ? Pink : Green;
-    self.confirmedLabel.text = self.item.confirmed ? NSLocalizedString(@"Confirmed", nil) : NSLocalizedString(@"Unconfirmed Yet...", nil);
-    NSString *imageName = self.item.confirmed ? @"ic-confirmed" : @"ic-confirmation_loader";
-    self.confirmedImageView.image = [UIImage imageNamed:imageName];
+
+	[super configWithItem];
+
+	self.topGradient.colorType = self.item.send ? Pink : Green;
+	self.confirmedLabel.text = self.item.confirmed ? NSLocalizedString(@"Confirmed", nil) : NSLocalizedString(@"Unconfirmed Yet...", nil);
+	NSString *imageName = self.item.confirmed ? @"ic-confirmed" : @"ic-confirmation_loader";
+	self.confirmedImageView.image = [UIImage imageNamed:imageName];
 }
 
 @end

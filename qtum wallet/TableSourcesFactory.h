@@ -20,10 +20,15 @@
 @interface TableSourcesFactory : NSObject
 
 - (WalletTableSource *)createWalletSource;
+
 - (NSObject <ChooseTokenPaymentDelegateDataSourceProtocol> *)createSendTokenPaymentSource;
-- (NSObject<LibraryTableSourceOutput> *)createLibrarySource;
-- (NSObject<FavouriteTemplatesCollectionSourceOutput> *)createFavouriteTemplatesSource;
-- (NSObject<TokenDetailDataDisplayManager> *)createTokenDetailSource;
-- (NSObject<SubscribeTokenDataDisplayManagerProtocol> *)createSubscribeTokenDataDisplayManager;
+
+- (NSObject <LibraryTableSourceOutput> *)createLibrarySource;
+
+- (NSObject <FavouriteTemplatesCollectionSourceOutput> *)createFavouriteTemplatesSource;
+
+- (NSObject <TokenDetailDataDisplayManager> *)createTokenDetailSource;
+
+- (NSObject <SubscribeTokenDataDisplayManagerProtocol> *)createSubscribeTokenDataDisplayManager;
 
 @end

@@ -11,7 +11,8 @@
 @protocol QTUMAddressTokenViewDelegate <NSObject>
 
 @required
-- (void)actionPlus:(id)sender;
+- (void)actionPlus:(id) sender;
+
 - (void)actionTokenAddressControl;
 
 @end

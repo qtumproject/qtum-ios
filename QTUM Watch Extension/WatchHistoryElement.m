@@ -10,19 +10,19 @@
 
 @implementation WatchHistoryElement
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    self = [super init];
-    if (self) {
-        [self setupFromDictionary:dictionary];
-    }
-    return self;
+- (instancetype)initWithDictionary:(NSDictionary *) dictionary {
+	self = [super init];
+	if (self) {
+		[self setupFromDictionary:dictionary];
+	}
+	return self;
 }
 
-- (void)setupFromDictionary:(NSDictionary *)dictionary {
-    self.address = dictionary[@"address"];
-    self.date = dictionary[@"date"];
-    self.amount = dictionary[@"amount"];
-    self.send = [dictionary[@"send"] boolValue];
+- (void)setupFromDictionary:(NSDictionary *) dictionary {
+	self.address = dictionary[@"address"];
+	self.date = dictionary[@"date"];
+	self.amount = dictionary[@"amount"];
+	self.send = [dictionary[@"send"] boolValue];
 }
 
 @end

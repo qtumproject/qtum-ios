@@ -12,21 +12,19 @@
 
 @implementation NSObject (Associating)
 
-- (id)associatedObject
-{
-    return objc_getAssociatedObject(self, @selector(associatedObject));
+- (id)associatedObject {
+	return objc_getAssociatedObject (self, @selector (associatedObject));
 }
 
--(BOOL)isNull{
-    return [self isKindOfClass:[NSNull class]];
+- (BOOL)isNull {
+	return [self isKindOfClass:[NSNull class]];
 }
 
-- (void)setAssociatedObject:(id)associatedObject
-{
-    objc_setAssociatedObject(self,
-                             @selector(associatedObject),
-                             associatedObject,
-                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setAssociatedObject:(id) associatedObject {
+	objc_setAssociatedObject (self,
+			@selector (associatedObject),
+			associatedObject,
+			OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

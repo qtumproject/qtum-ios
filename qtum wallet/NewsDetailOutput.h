@@ -14,20 +14,24 @@
 
 @protocol NewsDetailOutputDelegate <NSObject>
 
--(void)refreshTagsWithNewsItem:(QTUMNewsItem*) newsItem;
--(void)didBackPressed;
+- (void)refreshTagsWithNewsItem:(QTUMNewsItem *) newsItem;
+
+- (void)didBackPressed;
 
 @end
 
 @protocol NewsDetailOutput <Presentable>
 
 @property (weak, nonatomic) id <NewsDetailOutputDelegate> delegate;
-@property (strong, nonatomic) QTUMNewsItem* newsItem;
-@property (strong, nonatomic) NewsDetailCellBuilder* cellBuilder;
+@property (strong, nonatomic) QTUMNewsItem *newsItem;
+@property (strong, nonatomic) NewsDetailCellBuilder *cellBuilder;
 
--(void)reloadTableView;
--(void)failedToGetData;
--(void)startLoading;
--(void)stopLoadingIfNeeded;
+- (void)reloadTableView;
+
+- (void)failedToGetData;
+
+- (void)startLoading;
+
+- (void)stopLoadingIfNeeded;
 
 @end

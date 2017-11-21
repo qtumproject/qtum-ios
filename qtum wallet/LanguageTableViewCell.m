@@ -8,7 +8,7 @@
 
 #import "LanguageTableViewCell.h"
 
-@interface LanguageTableViewCell()
+@interface LanguageTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIView *selectedView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -18,30 +18,30 @@
 @implementation LanguageTableViewCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
+	[super awakeFromNib];
 }
 
-- (void)setData:(NSString *)titleText selected:(BOOL)selected{
-    [self.titleLabel setText:titleText];
-    [self changeCellStyle:selected];
+- (void)setData:(NSString *) titleText selected:(BOOL) selected {
+	[self.titleLabel setText:titleText];
+	[self changeCellStyle:selected];
 }
 
-- (void)changeCellStyle:(BOOL)selected{
-    if (selected) {
-        self.selectedView.hidden = NO;
-        [self.titleLabel setTextColor:[self getSelectedColor]];
-    }else{
-        self.selectedView.hidden = YES;
-        [self.titleLabel setTextColor:[self getDeselectedColor]];
-    }
+- (void)changeCellStyle:(BOOL) selected {
+	if (selected) {
+		self.selectedView.hidden = NO;
+		[self.titleLabel setTextColor:[self getSelectedColor]];
+	} else {
+		self.selectedView.hidden = YES;
+		[self.titleLabel setTextColor:[self getDeselectedColor]];
+	}
 }
 
 - (UIColor *)getSelectedColor {
-    return [UIColor whiteColor];
+	return [UIColor whiteColor];
 }
 
 - (UIColor *)getDeselectedColor {
-    return [UIColor whiteColor];
+	return [UIColor whiteColor];
 }
 
 @end

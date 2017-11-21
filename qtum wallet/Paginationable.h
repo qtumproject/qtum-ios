@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class CustomPageControl;
 
 @protocol Paginationable <NSObject>
 
--(void)setCurrentPage:(NSInteger) page;
--(void)setNumberPages:(NSInteger) number;
+- (void)setCurrentPage:(NSInteger) page;
+
+- (void)setNumberPages:(NSInteger) number;
 
 
 @end

@@ -12,6 +12,6 @@ typedef void(^ActionHandler)(UIAlertAction *action);
 
 @interface UIAlertController (Extensions)
 
-+ (UIAlertController *)warningMessageWithSettingsButtonAndTitle:(NSString *)title message:(NSString *)text withActionHandler:(ActionHandler)completion;
++ (UIAlertController *)warningMessageWithSettingsButtonAndTitle:(NSString *) title message:(NSString *) text withActionHandler:(ActionHandler) completion;
 
 @end

@@ -14,7 +14,7 @@
 
 @interface WalletViewController : BaseViewController <ControllerDelegate, WalletOutput>
 
-@property (strong, nonatomic) WalletTableSource* tableSource;
+@property (strong, nonatomic) WalletTableSource *tableSource;
 @property (weak, nonatomic) id <WalletOutputDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,7 +29,9 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 - (void)configTableView;
+
 - (void)configRefreshControl;
+
 - (void)refreshFromRefreshControl;
 
 @end

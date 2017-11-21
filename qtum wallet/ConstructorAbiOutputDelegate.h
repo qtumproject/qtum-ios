@@ -11,7 +11,8 @@
 
 @protocol ConstructorAbiOutputDelegate <NSObject>
 
--(void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel*>*) inputs andContractName:(NSString*) contractName;
--(void)didPressedBack;
+- (void)createStepOneNextDidPressedWithInputs:(NSArray<ResultTokenInputsModel *> *) inputs andContractName:(NSString *) contractName;
+
+- (void)didPressedBack;
 
 @end

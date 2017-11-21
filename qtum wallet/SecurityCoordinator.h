@@ -12,15 +12,16 @@
 
 @protocol SecurityCoordinatorDelegate <NSObject>
 
-- (void)coordinatorDidPassSecurity:(SecurityCoordinator*)coordinator;
-- (void)coordinatorDidCancelePassSecurity:(SecurityCoordinator*)coordinator;
+- (void)coordinatorDidPassSecurity:(SecurityCoordinator *) coordinator;
+
+- (void)coordinatorDidCancelePassSecurity:(SecurityCoordinator *) coordinator;
 
 @end
 
 typedef NS_ENUM(NSInteger, SecurityCheckingType) {
-    
-    SendVerification,
-    EnableTouchIdVerification
+
+	SendVerification,
+	EnableTouchIdVerification
 };
 
 @interface SecurityCoordinator : BaseCoordinator <Coordinatorable>
@@ -28,7 +29,8 @@ typedef NS_ENUM(NSInteger, SecurityCheckingType) {
 @property (weak, nonatomic) id <SecurityCoordinatorDelegate> delegate;
 @property (assign, nonatomic) SecurityCheckingType type;
 
-- (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;
+- (instancetype)initWithParentViewContainer:(UIViewController *) containerViewController;
+
 - (void)cancelPin;
 
 @end

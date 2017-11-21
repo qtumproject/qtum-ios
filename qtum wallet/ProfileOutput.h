@@ -11,6 +11,6 @@
 
 @protocol ProfileOutput <NSObject>
 
-@property (nonatomic, weak) id<ProfileOutputDelegate> delegate;
+@property (nonatomic, weak) id <ProfileOutputDelegate> delegate;
 
 @end

@@ -12,8 +12,9 @@
 
 @protocol LoginCoordinatorDelegate <NSObject>
 
-- (void)coordinatorDidLogin:(LoginCoordinator*)coordinator;
-- (void)coordinatorDidCanceledLogin:(LoginCoordinator*)coordinator;
+- (void)coordinatorDidLogin:(LoginCoordinator *) coordinator;
+
+- (void)coordinatorDidCanceledLogin:(LoginCoordinator *) coordinator;
 
 @end
 
@@ -21,6 +22,6 @@
 
 @property (weak, nonatomic) id <LoginCoordinatorDelegate> delegate;
 
-- (instancetype)initWithParentViewContainer:(UIViewController*) containerViewController;
+- (instancetype)initWithParentViewContainer:(UIViewController *) containerViewController;
 
 @end

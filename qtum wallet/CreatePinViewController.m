@@ -19,41 +19,42 @@
 @synthesize delegate;
 
 - (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    [self configPasswordView];
-    [self.passwordView becameFirstResponder];
+
+	[super viewDidLoad];
+	[self configPasswordView];
+	[self.passwordView becameFirstResponder];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear:animated];
-    [self.passwordView becameFirstResponder];
+- (void)viewDidAppear:(BOOL) animated {
+
+	[super viewDidAppear:animated];
+	[self.passwordView becameFirstResponder];
 }
 
 #pragma mark - Configuration
 
--(void)configPasswordView {
-    self.passwordView.delegate = self;
+- (void)configPasswordView {
+	self.passwordView.delegate = self;
 }
 
 #pragma mark - PasswordViewDelegate
 
--(void)confirmPinWithDigits:(NSString*) digits {
-    
-    [self.view endEditing:YES];
+- (void)confirmPinWithDigits:(NSString *) digits {
 
-    if ([self.delegate respondsToSelector:@selector(didEntererFirstPin:)]) {
-        [self.delegate didEntererFirstPin:digits];
-    }
+	[self.view endEditing:YES];
+
+	if ([self.delegate respondsToSelector:@selector (didEntererFirstPin:)]) {
+		[self.delegate didEntererFirstPin:digits];
+	}
 }
+
 #pragma mark - Keyboard
 
--(void)keyboardWillShow:(NSNotification *)sender {
-    
-    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.gradientViewBottomOffset.constant = end.size.height;
-    [self.view layoutIfNeeded];
+- (void)keyboardWillShow:(NSNotification *) sender {
+
+	CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	self.gradientViewBottomOffset.constant = end.size.height;
+	[self.view layoutIfNeeded];
 }
 
 #pragma mark - Configuration
@@ -62,11 +63,11 @@
 
 #pragma mark - Actions
 
-- (IBAction)actionCancel:(id)sender {
-    
-    if ([self.delegate respondsToSelector:@selector(didCancelPressedOnCreateWallet)]) {
-        [self.delegate didCancelPressedOnCreateWallet];
-    }
+- (IBAction)actionCancel:(id) sender {
+
+	if ([self.delegate respondsToSelector:@selector (didCancelPressedOnCreateWallet)]) {
+		[self.delegate didCancelPressedOnCreateWallet];
+	}
 }
 
 @end

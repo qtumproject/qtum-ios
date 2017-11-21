@@ -10,6 +10,6 @@
 
 @interface NewsCoordinator : BaseCoordinator <Coordinatorable>
 
--(instancetype)initWithNavigationController:(UINavigationController*)navigationController;
+- (instancetype)initWithNavigationController:(UINavigationController *) navigationController;
 
 @end

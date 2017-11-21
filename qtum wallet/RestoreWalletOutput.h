@@ -11,9 +11,10 @@
 
 @protocol RestoreWalletOutput <NSObject>
 
-@property (weak,nonatomic) id <RestoreWalletOutputDelegate> delegate;
+@property (weak, nonatomic) id <RestoreWalletOutputDelegate> delegate;
 
--(void)restoreSucces;
--(void)restoreFailed;
+- (void)restoreSucces;
+
+- (void)restoreFailed;
 
 @end

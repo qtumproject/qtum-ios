@@ -11,6 +11,6 @@
 
 @protocol LanguageOutput <NSObject>
 
-@property (nonatomic, weak) id<LanguageOutputDelegate> delegate;
+@property (nonatomic, weak) id <LanguageOutputDelegate> delegate;
 
 @end

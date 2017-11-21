@@ -14,28 +14,28 @@
 
 @implementation PinViewControllerLight
 
--(void)configPasswordView {
-    
-    
-    [self.passwordView setStyle:LightPopupStyle
-                         lenght:SLocator.appSettings.isLongPin ? LongType : ShortType];
-    
-    self.passwordView.delegate = self;
+- (void)configPasswordView {
+
+
+	[self.passwordView setStyle:LightPopupStyle
+						 lenght:SLocator.appSettings.isLongPin ? LongType : ShortType];
+
+	self.passwordView.delegate = self;
 }
 
--(void)keyboardWillShow:(NSNotification *)sender {
-    
-    CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
-    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
-    CGFloat tapBarHeight = 0.0f;
-    if ([vc isKindOfClass:[UITabBarController class]]) {
-        UITabBarController *tapBarVC = (UITabBarController *)vc;
-        tapBarHeight = tapBarVC.tabBar.frame.size.height;
-    }
-    
-    self.bottomForButtonsConstraint.constant = end.size.height - tapBarHeight + 20;
-    [self.view layoutIfNeeded];
+- (void)keyboardWillShow:(NSNotification *) sender {
+
+	CGRect end = [[sender userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
+	UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+	CGFloat tapBarHeight = 0.0f;
+	if ([vc isKindOfClass:[UITabBarController class]]) {
+		UITabBarController *tapBarVC = (UITabBarController *)vc;
+		tapBarHeight = tapBarVC.tabBar.frame.size.height;
+	}
+
+	self.bottomForButtonsConstraint.constant = end.size.height - tapBarHeight + 20;
+	[self.view layoutIfNeeded];
 }
 
 @end

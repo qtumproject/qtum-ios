@@ -12,9 +12,12 @@
 
 extern NSString *const groupFileName;
 
-+ (NSDictionary *)getDictFormGroupFileWithName:(NSString *)fileName;
-+ (NSString*)saveGroupFileWithName:(NSString *)fileName dataSource:(NSDictionary *)dataSource;
-+ (void)saveWalletInfo:(NSDictionary*) walletInfo;
-+ (NSDictionary*)getWalletInfo;
++ (NSDictionary *)getDictFormGroupFileWithName:(NSString *) fileName;
+
++ (NSString *)saveGroupFileWithName:(NSString *) fileName dataSource:(NSDictionary *) dataSource;
+
++ (void)saveWalletInfo:(NSDictionary *) walletInfo;
+
++ (NSDictionary *)getWalletInfo;
 
 @end

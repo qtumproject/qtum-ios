@@ -8,27 +8,27 @@
 
 #import "CustomSearchBar.h"
 
-@interface CustomSearchBar()
+@interface CustomSearchBar ()
 
 @end
 
 @implementation CustomSearchBar
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setup];
-    }
-    return self;
+- (instancetype)initWithCoder:(NSCoder *) aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		[self setup];
+	}
+	return self;
 }
 
-- (void)setShowsCancelButton:(BOOL)showsCancelButton animated:(BOOL)animated {
-    [super setShowsCancelButton:showsCancelButton animated:animated];
-    self.cancelButtonShowed = showsCancelButton;
+- (void)setShowsCancelButton:(BOOL) showsCancelButton animated:(BOOL) animated {
+	[super setShowsCancelButton:showsCancelButton animated:animated];
+	self.cancelButtonShowed = showsCancelButton;
 }
 
--(void)setup {
-    
+- (void)setup {
+
 }
 
 @end

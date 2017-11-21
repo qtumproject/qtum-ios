@@ -11,13 +11,14 @@
 
 @protocol QRCodeViewControllerDelegate <NSObject>
 
-- (void)didQRCodeScannedWithSendInfoItem:(SendInfoItem *)item;
+- (void)didQRCodeScannedWithSendInfoItem:(SendInfoItem *) item;
+
 - (void)didBackPressed;
 
 @end
 
 @interface QRCodeViewController : BaseViewController
 
-@property (nonatomic, weak) id<QRCodeViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <QRCodeViewControllerDelegate> delegate;
 
 @end

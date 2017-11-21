@@ -10,13 +10,13 @@
 
 @implementation UIImage (Extension)
 
-+(UIImage * )changeViewToImage : (UIView *) viewForImage {
-    
-    UIGraphicsBeginImageContext(viewForImage.bounds.size);
-    [viewForImage.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return img;
++ (UIImage *)changeViewToImage:(UIView *) viewForImage {
+
+	UIGraphicsBeginImageContext (viewForImage.bounds.size);
+	[viewForImage.layer renderInContext:UIGraphicsGetCurrentContext ()];
+	UIImage *img = UIGraphicsGetImageFromCurrentImageContext ();
+	UIGraphicsEndImageContext ();
+	return img;
 }
 
 @end

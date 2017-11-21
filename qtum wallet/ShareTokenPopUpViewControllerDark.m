@@ -15,10 +15,10 @@
 @implementation ShareTokenPopUpViewControllerDark
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.abiTextView.layer.borderWidth = 1.0f;
-    self.abiTextView.layer.borderColor = customBlackColor().CGColor;
+	[super viewDidLoad];
+
+	self.abiTextView.layer.borderWidth = 1.0f;
+	self.abiTextView.layer.borderColor = customBlackColor ().CGColor;
 }
 
 @end

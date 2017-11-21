@@ -11,15 +11,19 @@
 @protocol NewPaymentOutputDelegate <NSObject>
 
 - (void)didPresseQRCodeScaner;
+
 - (void)didPresseChooseToken;
-- (void)didPresseSendActionWithAddress:(NSString*) address
-                             andAmount:(QTUMBigNumber*) amount
-                                   fee:(QTUMBigNumber*) fee
-                              gasPrice:(QTUMBigNumber*) gasPrice
-                              gasLimit:(QTUMBigNumber*) gasLimit;
+
+- (void)didPresseSendActionWithAddress:(NSString *) address
+							 andAmount:(QTUMBigNumber *) amount
+								   fee:(QTUMBigNumber *) fee
+							  gasPrice:(QTUMBigNumber *) gasPrice
+							  gasLimit:(QTUMBigNumber *) gasLimit;
+
 - (void)didViewLoad;
 
 - (BOOL)needCheckForChanges;
+
 - (void)changeToStandartOperation;
 
 @end

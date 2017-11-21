@@ -10,15 +10,18 @@
 
 @interface JKBigDecimal (Format)
 
--(NSString*)shortFormatOfNumberWithPowerOfMinus10:(JKBigDecimal*) power;
--(NSString*)shortFormatOfNumberWithPowerOf10:(NSNumber*) power;
+- (NSString *)shortFormatOfNumberWithPowerOfMinus10:(JKBigDecimal *) power;
 
--(JKBigDecimal*)numberWithPowerOfMinus10:(JKBigDecimal*) power;
--(JKBigDecimal*)numberWithPowerOf10:(JKBigDecimal*) power;
+- (NSString *)shortFormatOfNumberWithPowerOf10:(NSNumber *) power;
 
--(NSString*)stringNumberWithPowerOfMinus10:(JKBigDecimal*) power;
--(NSString*)stringNumberWithPowerOf10:(JKBigDecimal*) power;
+- (JKBigDecimal *)numberWithPowerOfMinus10:(JKBigDecimal *) power;
 
--(NSString*)shortFormatOfNumber;
+- (JKBigDecimal *)numberWithPowerOf10:(JKBigDecimal *) power;
+
+- (NSString *)stringNumberWithPowerOfMinus10:(JKBigDecimal *) power;
+
+- (NSString *)stringNumberWithPowerOf10:(JKBigDecimal *) power;
+
+- (NSString *)shortFormatOfNumber;
 
 @end

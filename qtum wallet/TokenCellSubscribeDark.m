@@ -11,8 +11,8 @@
 @implementation TokenCellSubscribeDark
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    self.indicator.tintColor = customBlueColor();
+	[super awakeFromNib];
+	self.indicator.tintColor = customBlueColor ();
 }
 
 @end

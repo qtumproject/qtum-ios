@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString* addressControlCellIdentifire = @"addressControlCellIdentifire";
+static NSString *addressControlCellIdentifire = @"addressControlCellIdentifire";
 
 @interface AddressControlCell : UITableViewCell
 
