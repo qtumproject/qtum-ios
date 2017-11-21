@@ -47,19 +47,12 @@ NSInteger const QStoreSearchCount = 20;
 
 @implementation QStoreManager
 
-+ (instancetype)sharedInstance {
-    static QStoreManager *manager;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        manager = [[super alloc] initUniqueInstance];
-    });
-    return manager;
-}
-
-- (instancetype)initUniqueInstance {
+- (instancetype)init {
+    
     self = [super init];
     
     if (self != nil) {
+        
         _mainScreenCategories = [NSMutableArray new];
         _mainScreenCategoriesInUpdate = [NSMutableArray new];
         _requestAdapter = [QStoreDataProvider new];

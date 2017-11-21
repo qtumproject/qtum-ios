@@ -88,6 +88,14 @@
     return _tableSourcesFactory;
 }
 
+-(QStoreManager *)qStoreManager {
+    
+    if (!_qStoreManager) {
+        _qStoreManager = [QStoreManager new];
+    }
+    return _qStoreManager;
+}
+
 
 
 @end

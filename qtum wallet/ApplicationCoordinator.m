@@ -83,7 +83,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [SLocator.walletManager startObservingForAllSpendable];
         [SLocator.contractManager startObservingForAllSpendable];
-        [[QStoreManager sharedInstance] startObservingForAllRequests];
+        [SLocator.qStoreManager startObservingForAllRequests];
     });
 }
 
@@ -195,7 +195,7 @@
     [SLocator.walletManager clear];
     [SLocator.contractManager clear];
     [SLocator.templateManager clear];
-    [[QStoreManager sharedInstance] clear];
+    [SLocator.qStoreManager clear];
     [SLocator.appSettings clear];
 }
 

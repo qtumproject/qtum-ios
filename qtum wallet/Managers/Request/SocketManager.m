@@ -146,7 +146,7 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
     [self.currentSocket on:@"contract_purchase" callback:^(NSArray* data, SocketAckEmitter* ack) {
         
         NSAssert([data isKindOfClass:[NSArray class]], @"result must be an array");
-        [[QStoreManager sharedInstance] updateContractRequestsWithDict:data[0]];
+        [SLocator.qStoreManager updateContractRequestsWithDict:data[0]];
         DLog(@"%@", data[0]);
     }];
 }

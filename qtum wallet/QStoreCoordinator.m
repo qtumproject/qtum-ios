@@ -39,7 +39,7 @@
     self = [super init];
     if (self) {
         _navigationController = navigationController;
-        [QStoreManager sharedInstance].delegate = self;
+        SLocator.qStoreManager.delegate = self;
     }
     return self;
 }
@@ -83,7 +83,7 @@
     
     NSObject<QStoreContractOutput> *controller = (NSObject<QStoreContractOutput> *)[SLocator.controllersFactory createQStoreContractViewController];
     self.contractScreen = controller;
-    [controller setBuyRequest:[[QStoreManager sharedInstance] requestWithContractId:element.idString]];
+    [controller setBuyRequest:[SLocator.qStoreManager requestWithContractId:element.idString]];
     [controller setContract:element];
     controller.delegate = self;
     
@@ -97,7 +97,7 @@
 - (void)didLoadCategories {
     [self.mainScreen startLoading];
     __weak typeof(self) weakSelt = self;
-    [[QStoreManager sharedInstance] loadContractsForCategoriesWithSuccessHandler:^(NSArray<QStoreMainScreenCategory *> *categories) {
+    [SLocator.qStoreManager loadContractsForCategoriesWithSuccessHandler:^(NSArray<QStoreMainScreenCategory *> *categories) {
         [weakSelt.mainScreen stopLoading];
         [weakSelt.mainScreen setCategories:categories];
     } andFailureHandler:^(NSString *message) {
@@ -117,11 +117,11 @@
 }
 
 - (void)didChangedSearchText:(NSString *)text orSelectedSearchIndex:(NSInteger)index {
-    [[QStoreManager sharedInstance] searchByCategoryType:nil string:text searchType:[self getSearchTypeByIndex:index]];
+    [SLocator.qStoreManager searchByCategoryType:nil string:text searchType:[self getSearchTypeByIndex:index]];
 }
 
 - (void)didLoadMoreElementsForText:(NSString *)text orSelectedSearchIndex:(NSInteger)index {
-    [[QStoreManager sharedInstance] searchMoreItemsByCategoryType:nil string:text searchType:[self getSearchTypeByIndex:index]];
+    [SLocator.qStoreManager searchMoreItemsByCategoryType:nil string:text searchType:[self getSearchTypeByIndex:index]];
 }
 
 - (QStoreManagerSearchType)getSearchTypeByIndex:(NSInteger)index {
@@ -164,7 +164,7 @@
     [self.contractScreen startLoading];
     __weak typeof(self) weakSelf = self;
     
-    [[QStoreManager sharedInstance] loadFullContract:element withSuccessHandler:^{
+    [SLocator.qStoreManager loadFullContract:element withSuccessHandler:^{
         [weakSelf.contractScreen stopLoading];
         [weakSelf.contractScreen updateWithFull];
     } andFailureHandler:^(NSString *message) {
@@ -177,7 +177,7 @@
     [self.contractScreen startLoading];
     
     __weak typeof(self) weakSelf = self;
-    [[QStoreManager sharedInstance] getContractABIWithElement:element withSuccessHandler:^{
+    [SLocator.qStoreManager getContractABIWithElement:element withSuccessHandler:^{
         [weakSelf.contractScreen stopLoading];
         [weakSelf.contractScreen didLoadAbi];
     } andFailureHandler:^(NSString *message) {
@@ -191,7 +191,7 @@
     
     [self.contractScreen startLoading];
 
-    [[QStoreManager sharedInstance] getSourceCode:request.contractId requestId:request.requestId accessToken:request.accessToken withSuccessHandler:^(NSString *sourceCode) {
+    [SLocator.qStoreManager getSourceCode:request.contractId requestId:request.requestId accessToken:request.accessToken withSuccessHandler:^(NSString *sourceCode) {
         [weakSelf.contractScreen stopLoading];
         [weakSelf showSourceScreenCodeWithSorceCode:sourceCode];
     } andFailureHandler:^(NSError *error, NSString *message) {
@@ -210,9 +210,9 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [[QStoreManager sharedInstance] purchaseContract:element withSuccessHandler:^{
+    [SLocator.qStoreManager purchaseContract:element withSuccessHandler:^{
         [weakSelf.contractScreen stopLoading];
-        [weakSelf.contractScreen setBuyRequest:[[QStoreManager sharedInstance] requestWithContractId:element.idString]];
+        [weakSelf.contractScreen setBuyRequest:[SLocator.qStoreManager requestWithContractId:element.idString]];
         [weakSelf.contractScreen updateWithFull];
         [weakSelf.contractScreen showContractBoughtPop];
     } andFailureHandler:^(NSString *message) {
@@ -259,7 +259,7 @@
     
     if (output.type == QStoreCategories) {
         [output startLoading];
-        [[QStoreManager sharedInstance] loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
+        [SLocator.qStoreManager loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
             [output endLoading];
             [output setCategories:categories];
         } andFailureHandler:^(NSString *message) {
@@ -267,20 +267,20 @@
             [output showErrorWithMessage:message];
         }];
     } else {
-        [[QStoreManager sharedInstance] searchByCategoryType:output.categoryType string:nil searchType:QStoreManagerSearchTypeAll];
+        [SLocator.qStoreManager searchByCategoryType:output.categoryType string:nil searchType:QStoreManagerSearchTypeAll];
     }
 }
 
 - (void)didLoadMoreFullData:(NSObject<QStoreListOutput> *)output {
     if (output.type != QStoreCategories) {
-        [[QStoreManager sharedInstance] searchMoreItemsByCategoryType:output.categoryType string:nil searchType:QStoreManagerSearchTypeAll];
+        [SLocator.qStoreManager searchMoreItemsByCategoryType:output.categoryType string:nil searchType:QStoreManagerSearchTypeAll];
     }
 }
 
 - (void)didChangedSearchText:(NSString *)text orSelectedSearchIndex:(NSInteger)index output:(NSObject<QStoreListOutput> *)output {
     if (output.type == QStoreCategories) {
         if (text.length > 0) {
-            [[QStoreManager sharedInstance] loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
+            [SLocator.qStoreManager loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[c] %@", text];
                 NSArray *filteredArray = [categories filteredArrayUsingPredicate:predicate];
                 filteredArray = [filteredArray sortedArrayUsingComparator:^NSComparisonResult(QStoreCategory *obj1, QStoreCategory *obj2) {
@@ -292,7 +292,7 @@
                 [output setCategories:filteredArray];
             } andFailureHandler:nil];
         } else {
-            [[QStoreManager sharedInstance] loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
+            [SLocator.qStoreManager loadCategoriesWithSuccessHandler:^(NSArray<QStoreCategory *> *categories) {
                 [output setCategories:categories];
             } andFailureHandler:nil];
         }
@@ -300,7 +300,7 @@
         if ([text isEqualToString:@""]) {
             [self didLoadFullData:output];
         } else {
-            [[QStoreManager sharedInstance] searchByCategoryType:output.categoryType string:text searchType:[self getSearchTypeByIndex:index]];
+            [SLocator.qStoreManager searchByCategoryType:output.categoryType string:text searchType:[self getSearchTypeByIndex:index]];
         }
     }
 }
@@ -310,7 +310,7 @@
         if ([text isEqualToString:@""]) {
             [self didLoadMoreFullData:output];
         } else {
-            [[QStoreManager sharedInstance] searchMoreItemsByCategoryType:output.categoryType string:text searchType:[self getSearchTypeByIndex:index]];
+            [SLocator.qStoreManager searchMoreItemsByCategoryType:output.categoryType string:text searchType:[self getSearchTypeByIndex:index]];
         }
     }
 }

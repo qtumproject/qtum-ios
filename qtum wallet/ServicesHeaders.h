@@ -31,5 +31,6 @@
 #import "PaymentValuesManager.h"
 #import "PopUpsManager.h"
 #import "TableSourcesFactory.h"
+#import "QStoreManager.h"
 
 #endif /* ServicesHeaders_h */
