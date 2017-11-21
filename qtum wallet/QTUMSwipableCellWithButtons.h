@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @protocol QTUMSwipableCellWithButtonsDelegate <NSObject>
-
+@optional
 - (BOOL)shoudCloseCell:(UITableViewCell *) cell;
 
-@optional
 - (BOOL)shoudOpenCell:(UITableViewCell *) cell;
 
 - (void)buttonOneActionForIndexPath:(NSIndexPath *) indexPath;
