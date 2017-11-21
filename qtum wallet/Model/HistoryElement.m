@@ -169,7 +169,7 @@
 		NSString *minutsString = NSLocalizedString(@"minuts ago", @"time ago");
 		NSString *minutString = NSLocalizedString(@"minut ago", @"time ago");
 
-		return [NSString stringWithFormat:@"%li %@", (NSInteger)components.minute, components.minute > 1 ? minutsString : minutString];
+		return [NSString stringWithFormat:@"%li %@", (long)components.minute, components.minute > 1 ? minutsString : minutString];
 
 	} else if (components.second > 0 && components.second < 60) {
 

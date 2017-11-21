@@ -33,7 +33,7 @@
 
 - (instancetype)initWithInteger:(NSInteger) integer {
 
-	NSString *intString = [NSString stringWithFormat:@"%li", integer];
+	NSString *intString = [NSString stringWithFormat:@"%li", (long)integer];
 	return [self initWithString:intString];
 }
 
@@ -63,7 +63,7 @@
 
 + (instancetype)decimalWithInteger:(NSInteger) integer {
 
-	NSString *intString = [NSString stringWithFormat:@"%li", integer];
+    NSString *intString = [NSString stringWithFormat:@"%li", (long)integer];
 	QTUMBigNumber *decimal = [[QTUMBigNumber alloc] initWithString:intString];
 	return decimal;
 }

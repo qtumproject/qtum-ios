@@ -169,7 +169,7 @@
 }
 
 - (void)callContractTxWithUnspentOutputs:(NSArray <BTCTransactionOutput *> *) unspentOutputs
-								  amount:(BTCAmount) amount
+								  amount:(NSInteger) amount
 						 contractAddress:(NSData *) contractAddress
 							   toAddress:(NSString *) toAddress
 						   fromAddresses:(NSArray<NSString *> *) fromAddresses
@@ -311,7 +311,7 @@
 }
 
 - (BTCTransaction *)smartContractCreationTxWithUnspentOutputs:(NSArray *) unspentOutputs
-												   withAmount:(BTCAmount) amount
+												   withAmount:(NSInteger) amount
 												  withBitcode:(NSData *) bitcode
 													  withFee:(NSInteger) fee
 												 withGasLimit:(QTUMBigNumber *) gasLimit

@@ -67,7 +67,7 @@
 	}
 }
 
-- (NSNumber *)roundedNumberWithScale:(NSInteger) scale {
+- (NSDecimalNumber *)roundedNumberWithScale:(NSInteger) scale {
 
 	NSDecimalNumberHandler *behavior = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain
 																							  scale:scale

@@ -33,5 +33,4 @@ NSString *const QTUMImageTagCellReuseIdentifire = @"QTUMImageTagCellReuseIdentif
 	return CGSizeMake (cellWidth, cellHeight);
 }
 
-
 @end

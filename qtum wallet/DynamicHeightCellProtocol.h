@@ -10,6 +10,7 @@
 
 @protocol DynamicHeightCellProtocol <NSObject>
 
+@optional
 - (CGFloat)calculateSelfHeight;
 
 @end
