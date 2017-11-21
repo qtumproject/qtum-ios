@@ -37,7 +37,7 @@
         _transactionManager = [TransactionManager new];
         _appSettings = [AppSettings new];
         _newsDataProvider = [NewsDataProvider new];
-        _controllersFactory = [ControllersFactory sharedInstance];
+        _controllersFactory = [ControllersFactory new];
         _requestManager = [[RequestManager alloc] initWithBaseUrl:_appSettings.baseURL];
         _walletManager = [WalletManager new];
         _contractInfoFacade = [ContractInfoFacade new];

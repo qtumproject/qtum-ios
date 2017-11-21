@@ -76,23 +76,6 @@
 
 @implementation ControllersFactory
 
-+ (instancetype)sharedInstance {
-    
-    static ControllersFactory *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[super alloc] initUniqueInstance];
-    });
-    return instance;
-}
-
-- (instancetype)initUniqueInstance
-{
-    self = [super init];
-    if (self != nil) { }
-    return self;
-}
-
 -(UIViewController*)sendFlowTab{
     SendNavigationCoordinator* nav = [[SendNavigationCoordinator alloc] init];
     return nav;
