@@ -96,7 +96,7 @@ static NSInteger constantFee = 400000000;
 			return;
 		}
 
-		BTCAmount amount = [allPreparedValues[@"totalAmount"] integerValue];
+		NSInteger amount = [allPreparedValues[@"totalAmount"] integerValue];
 
 		NSArray *preparedAmountAndAddreses = allPreparedValues[@"amountsAndAddresses"];
 
@@ -154,7 +154,7 @@ static NSInteger constantFee = 400000000;
 
 		do {
 			[weakSelf.transactionBuilder regularTransactionWithUnspentOutputs:unspentOutputs
-																	   amount:amount
+																	   amount:(NSInteger)amount
 														   amountAndAddresses:preparedAmountAndAddreses
 																	  withFee:[self feeFromNumber:estimatedFee]
 																   walletKeys:walletKeys

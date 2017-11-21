@@ -74,7 +74,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 		[self savePublicAddresses];
 	}
 
-	return self.keyChain;
+    return self.keyChain ? YES : NO;
 }
 
 - (void)savePublicAddresses {
@@ -104,7 +104,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 		if (newEncriptedBrandKey) {
 			self.encriptedBrandKey = [NSString encryptString:stringBrandKey withKey:newPin];
 		}
-		return newEncriptedBrandKey;
+        return newEncriptedBrandKey ? YES : NO;
 	}
 	return NO;
 }

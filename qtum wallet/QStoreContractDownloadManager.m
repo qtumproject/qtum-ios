@@ -101,7 +101,7 @@
 
 	if (abi && source && biteCode) {
 
-		return [SLocator.templateManager createNewTemplateWithAbi:abi bitecode:biteCode source:source type:type uuid:uuid andName:name];
+        return [SLocator.templateManager createNewTemplateWithAbi:abi bitecode:biteCode source:source type:type uuid:uuid andName:name] ? YES : NO;
 	}
 
 	return NO;

@@ -321,13 +321,13 @@
 
 - (NSObject <RestoreContractsOutput> *)createRestoreContractViewController {
 
-	NSObject <RestoreContractsOutput> *controller = (NSObject <RestoreContractsOutput> *)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"RestoreContractsViewController"];
+	NSObject <RestoreContractsOutput> *controller = (NSObject <RestoreContractsOutput> *)[UIViewController controllerInStoryboard:@"BackupRestore" withIdentifire:@"RestoreContractsViewController"];
 	return controller;
 }
 
 - (NSObject <BackupContractOutput> *)createBackupContractViewController {
 
-	NSObject <BackupContractOutput> *output = (NSObject <BackupContractOutput> *)[UIViewController controllerInStoryboard:@"OnlyDesign" withIdentifire:@"BackupContractsViewController"];
+	NSObject <BackupContractOutput> *output = (NSObject <BackupContractOutput> *)[UIViewController controllerInStoryboard:@"BackupRestore" withIdentifire:@"BackupContractsViewController"];
 	return output;
 }
 

@@ -15,7 +15,7 @@
 }
 
 - (void)setSelected:(BOOL) selected {
-	[super setSelected:self];
+    [super setSelected:self ? YES : NO];
 
 	self.backgroundColor = selected ? [self selectedBacgroundColor] : [self deselectedBacgroundColor];
 }
