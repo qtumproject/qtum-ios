@@ -33,5 +33,6 @@
 #import "TableSourcesFactory.h"
 #import "QStoreManager.h"
 #import "WalletsFactory.h"
+#import "iOSSessionManager.h"
 
 #endif /* ServicesHeaders_h */

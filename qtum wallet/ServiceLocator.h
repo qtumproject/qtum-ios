@@ -35,6 +35,7 @@
 @property (strong, nonatomic) TableSourcesFactory* tableSourcesFactory;
 @property (strong, nonatomic) QStoreManager* qStoreManager;
 @property (strong, nonatomic) WalletsFactory* walletsFactory;
+@property (strong, nonatomic) iOSSessionManager* iOSSessionManager;
 
 
 + (instancetype)sharedInstance;

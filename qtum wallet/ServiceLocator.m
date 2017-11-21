@@ -104,6 +104,14 @@
     return _walletsFactory;
 }
 
+-(iOSSessionManager *)iOSSessionManager {
+    
+    if (!_iOSSessionManager) {
+        _iOSSessionManager = [iOSSessionManager new];
+    }
+    return _iOSSessionManager;
+}
+
 
 
 @end

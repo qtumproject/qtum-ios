@@ -24,18 +24,8 @@ NSString *kErrorKey = @"error";
 
 @implementation iOSSessionManager
 
-+ (instancetype)sharedInstance {
+- (instancetype)init {
     
-    static iOSSessionManager *manager;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        manager = [[super alloc] initUniqueInstance];
-    });
-    return manager;
-}
-
-- (instancetype)initUniqueInstance
-{
     self = [super init];
     
     if (self != nil) {

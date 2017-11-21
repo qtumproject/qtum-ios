@@ -147,7 +147,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 - (void)walletDidChange:(id)wallet {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kWalletDidChange object:nil userInfo:nil];
-    [[iOSSessionManager sharedInstance] updateWatch];
+    [SLocator.iOSSessionManager updateWatch];
     [self save];
 }
 

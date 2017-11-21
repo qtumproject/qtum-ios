@@ -21,7 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [iOSSessionManager sharedInstance];
+    SLocator.iOSSessionManager;
     [ServiceLocator sharedInstance];
     [SLocator.appSettings setup];
     [Appearance setUp];
