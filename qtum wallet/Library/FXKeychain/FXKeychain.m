@@ -101,7 +101,8 @@ static NSString *touchIDIdentifire = @"TouchID";
 	static dispatch_once_t onceToken;
 	dispatch_once (&onceToken, ^{
 
-		NSString *bundleID = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey];
+        NSString *bundleID = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey];
+        
 		sharedInstance = [[self alloc] initWithService:bundleID
 										   accessGroup:nil];
 	});
@@ -317,7 +318,7 @@ static NSString *touchIDIdentifire = @"TouchID";
 - (void)deleteTouchIdString {
 	NSDictionary *query = @{
 			(id)kSecClass: (id)kSecClassGenericPassword,
-			(id)kSecAttrService: [self.service stringByAppendingString:@"1"]
+			(id)kSecAttrService: [self.service stringByAppendingString:touchIDIdentifire]
 	};
 
 	dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

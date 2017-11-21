@@ -35,7 +35,7 @@
 
 - (void)start {
 
-	[[UIApplication sharedApplication] sendAction:@selector (resignFirstResponder) to:nil from:nil forEvent:nil];
+    [[UIApplication sharedApplication] sendAction:@selector (resignFirstResponder) to:nil from:nil forEvent:nil];
 
 	[self showSecurityLoginController];
 
@@ -43,7 +43,8 @@
 	BOOL shoodFingerprintShow = failedCount < 3;
 
 	if (SLocator.appSettings.isFingerprintEnabled && shoodFingerprintShow) {
-
+        
+        [self.loginOutput stopEditing];
 		[self showFingerprint];
 	} else {
 

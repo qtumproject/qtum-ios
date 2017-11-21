@@ -82,12 +82,14 @@ static NSInteger textfieldsWithButtonHeight = 250;
 - (void)startEditing {
 
 	self.editingStarted = YES;
+    self.shoudKeboardDismiss = NO;
 	[self.passwordView becameFirstResponder];
 }
 
 - (void)stopEditing {
 
 	self.editingStarted = NO;
+    self.shoudKeboardDismiss = YES;
 	[self.view endEditing:YES];
 }
 

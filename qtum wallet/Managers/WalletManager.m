@@ -254,7 +254,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (BOOL)isLongPin {
 
-	return [[[FXKeychain defaultKeychain] objectForKey:kIsLongPin] boolValue];
+    return [[[FXKeychain defaultKeychain] objectForKey:kIsLongPin] boolValue];
 }
 
 
