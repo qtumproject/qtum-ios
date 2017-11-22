@@ -149,7 +149,7 @@
 		B35130681E49DF910048A28C /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B35130671E49DF910048A28C /* ImageLoader.m */; };
 		B35497021F8BB9F500DEB004 /* WatchCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B35497011F8BB9F500DEB004 /* WatchCoordinator.m */; };
 		B354970A1F8CE68A00DEB004 /* WatchDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B35497091F8CE68A00DEB004 /* WatchDataOperation.m */; };
-		B35572C71F90E886001AE34A /* NewsDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C61F90E886001AE34A /* NewsDataProvider.m */; };
+		B35572C71F90E886001AE34A /* NewsFacedeService.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C61F90E886001AE34A /* NewsFacedeService.m */; };
 		B35572CA1F90EFDE001AE34A /* NetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C91F90EFDE001AE34A /* NetworkingService.m */; };
 		B35733271F97A69A00C64AAE /* ServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B35733261F97A69A00C64AAE /* ServiceLocator.m */; };
 		B35733301F97B2FE00C64AAE /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = B35733291F97ACCD00C64AAE /* TFHpple.m */; };
@@ -974,8 +974,8 @@
 		B35497041F8CE00C00DEB004 /* QTUM Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "QTUM Watch.entitlements"; sourceTree = "<group>"; };
 		B35497081F8CE68900DEB004 /* WatchDataOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchDataOperation.h; sourceTree = "<group>"; };
 		B35497091F8CE68A00DEB004 /* WatchDataOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchDataOperation.m; sourceTree = "<group>"; };
-		B35572C51F90E886001AE34A /* NewsDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsDataProvider.h; sourceTree = "<group>"; };
-		B35572C61F90E886001AE34A /* NewsDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsDataProvider.m; sourceTree = "<group>"; };
+		B35572C51F90E886001AE34A /* NewsFacedeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsFacedeService.h; sourceTree = "<group>"; };
+		B35572C61F90E886001AE34A /* NewsFacedeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsFacedeService.m; sourceTree = "<group>"; };
 		B35572C81F90EFDE001AE34A /* NetworkingService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingService.h; sourceTree = "<group>"; };
 		B35572C91F90EFDE001AE34A /* NetworkingService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkingService.m; sourceTree = "<group>"; };
 		B35733251F97A69A00C64AAE /* ServiceLocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceLocator.h; sourceTree = "<group>"; };
@@ -2925,8 +2925,8 @@
 			children = (
 				B35733281F97ACB900C64AAE /* HTTPParse */,
 				B3C8FAEB1F989354000168AB /* Models */,
-				B35572C51F90E886001AE34A /* NewsDataProvider.h */,
-				B35572C61F90E886001AE34A /* NewsDataProvider.m */,
+				B35572C51F90E886001AE34A /* NewsFacedeService.h */,
+				B35572C61F90E886001AE34A /* NewsFacedeService.m */,
 				B3C8FAEC1F98937A000168AB /* QTUMFeedParcer.h */,
 				B3C8FAED1F98937A000168AB /* QTUMFeedParcer.m */,
 				B3C8FAEF1F989DF3000168AB /* QTUMHtmlParcer.h */,
@@ -5552,7 +5552,7 @@
 				B3DC9D411F3323BC006B2E07 /* TokenAddressControlViewControllerLight.m in Sources */,
 				B3EA530E1F46DDF0002FD201 /* CustomSearchBarDark.m in Sources */,
 				B36EBC371F2F15DD00F4E2F2 /* PhotoLibraryPopUpViewControllerLight.m in Sources */,
-				B35572C71F90E886001AE34A /* NewsDataProvider.m in Sources */,
+				B35572C71F90E886001AE34A /* NewsFacedeService.m in Sources */,
 				B3C08B251ED467DA00713B15 /* TokenPropertyCell.m in Sources */,
 				B3D012D81FB445CB00A98770 /* ContractInfoFacade.m in Sources */,
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,

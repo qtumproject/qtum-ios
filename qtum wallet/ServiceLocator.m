@@ -36,7 +36,7 @@
 		_openURLManager = [OpenURLManager new];
 		_transactionManager = [TransactionManager new];
 		_appSettings = [AppSettings new];
-		_newsDataProvider = [NewsDataProvider new];
+		_newsFacedeService = [NewsFacedeService new];
 		_controllersFactory = [ControllersFactory new];
 		_requestManager = [[RequestManager alloc] initWithBaseUrl:_appSettings.baseURL];
 		_walletManager = [WalletManager new];

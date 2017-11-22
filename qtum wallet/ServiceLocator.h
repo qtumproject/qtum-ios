@@ -22,7 +22,7 @@
 @property (strong, nonatomic) OpenURLManager *openURLManager;
 @property (strong, nonatomic) TransactionManager *transactionManager;
 @property (strong, nonatomic) AppSettings *appSettings;
-@property (strong, nonatomic) NewsDataProvider *newsDataProvider;
+@property (strong, nonatomic) NewsFacedeService *newsFacedeService;
 @property (strong, nonatomic) id <Requestable> requestManager;
 @property (strong, nonatomic) ControllersFactory *controllersFactory;
 @property (strong, nonatomic) id <WalletManagering> walletManager;

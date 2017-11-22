@@ -20,7 +20,7 @@
 #import "OpenURLManager.h"
 #import "TransactionManager.h"
 #import "AppSettings.h"
-#import "NewsDataProvider.h"
+#import "NewsFacedeService.h"
 #import "Requestable.h"
 #import "ControllersFactory.h"
 #import "WalletManagering.h"

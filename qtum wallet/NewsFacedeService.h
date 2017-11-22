@@ -11,7 +11,7 @@
 #import "QTUMFeedParcer.h"
 #import "QTUMHtmlParcer.h"
 
-@interface NewsDataProvider : NSObject
+@interface NewsFacedeService : NSObject
 
 typedef void(^QTUMNewsItems)(NSArray <QTUMNewsItem *> *feeds);
 
@@ -24,6 +24,6 @@ typedef void(^gettingNewsFailedBlock)(void);
 
 - (NSArray <QTUMNewsItem *> *)obtainNewsItems;
 
-- (void)cancelAllOperations;
+- (void)stop;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  NewsDataProvider.m
+//  NewsFacedeService.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 13.10.17.
@@ -7,7 +7,7 @@
 //
 
 
-@interface NewsDataProvider ()
+@interface NewsFacedeService ()
 
 @property (strong, nonatomic) QTUMFeedParcer *parcer;
 @property (strong, nonatomic) QTUMHtmlParcer *htmlParcer;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation NewsDataProvider
+@implementation NewsFacedeService
 
 NSString *const kNewsCache = @"kArchivedNewsDict";
 
@@ -183,7 +183,7 @@ NSString *const kNewsCache = @"kArchivedNewsDict";
 
 #pragma mark - Cancelabe
 
-- (void)cancelAllOperations {
+- (void)stop {
 	[self.parcer cancel];
 	[self.htmlParcer cancel];
 }

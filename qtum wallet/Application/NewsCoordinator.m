@@ -40,13 +40,13 @@
 	self.newsController = newsOutput;
 	__weak __typeof (self) weakSelf = self;
 
-	NSArray <QTUMNewsItem *> *news = [SLocator.newsDataProvider obtainNewsItems];
+	NSArray <QTUMNewsItem *> *news = [SLocator.newsFacedeService obtainNewsItems];
 	if (news) {
 		newsOutput.news = news;
 		[newsOutput reloadTableView];
 	}
 
-	[SLocator.newsDataProvider getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
+	[SLocator.newsFacedeService getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
 		weakSelf.newsController.news = news;
 		[weakSelf.newsController reloadTableView];
 	}                                          andFailure:nil];
@@ -61,7 +61,7 @@
 	__weak __typeof (self) weakSelf = self;
 
 	[self.newsController startLoading];
-	[SLocator.newsDataProvider getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
+	[SLocator.newsFacedeService getNewsItemsWithCompletion:^(NSArray<QTUMNewsItem *> *news) {
 		weakSelf.newsController.news = news;
 		[weakSelf.newsController reloadTableView];
 		[weakSelf.newsController stopLoadingIfNeeded];
@@ -78,7 +78,7 @@
 #pragma mark NewsDetailOutputDelegate
 
 - (void)didBackPressed {
-	[SLocator.newsDataProvider cancelAllOperations];
+	[SLocator.newsFacedeService stop];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -88,7 +88,7 @@
 
 	if (!newsItem.tags) {
 		[self.newsDetailController startLoading];
-		[SLocator.newsDataProvider getTagsFromNews:newsItem withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
+		[SLocator.newsFacedeService getTagsFromNews:newsItem withCompletion:^(NSArray<QTUMHTMLTagItem *> *tags) {
 
 			weakSelf.newsDetailController.newsItem = newsItem;
 			[weakSelf.newsDetailController stopLoadingIfNeeded];
