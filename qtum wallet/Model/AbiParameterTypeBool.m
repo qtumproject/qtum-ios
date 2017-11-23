@@ -13,5 +13,8 @@
 	return 1;
 }
 
+-(ParameterTypeFromAbi)type {
+    return Bool;
+}
 
 @end

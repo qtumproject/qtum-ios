@@ -8,4 +8,10 @@
 
 @implementation AbiParameterTypeBytes
 
+@synthesize type;
+
+-(ParameterTypeFromAbi)type {
+    return Bytes;
+}
+
 @end

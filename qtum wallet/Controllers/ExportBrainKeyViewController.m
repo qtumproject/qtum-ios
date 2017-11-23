@@ -54,7 +54,7 @@
 	UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 	pasteboard.string = self.brandKey;
 
-	[SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForBrainCodeCopied] presenter:nil completion:nil];
+	[SLocator.popupService showInformationPopUp:self withContent:[PopUpContentGenerator contentForBrainCodeCopied] presenter:nil completion:nil];
 }
 
 - (IBAction)shareButtonWasPressed:(id) sender {
@@ -70,7 +70,7 @@
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
 
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 - (IBAction)actionBack:(id) sender {

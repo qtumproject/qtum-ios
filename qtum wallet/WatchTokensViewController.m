@@ -44,12 +44,12 @@
 	NSString *errorString;
 
 	if ([SLocator.contractManager addNewTokenWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text errorString:&errorString]) {
-		[SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForTokenAdded] presenter:nil completion:nil];
+		[SLocator.popupService showInformationPopUp:self withContent:[PopUpContentGenerator contentForTokenAdded] presenter:nil completion:nil];
 	} else {
 		PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
 		content.titleString = NSLocalizedString(@"Error", nil);
 		content.messageString = errorString;
-		ErrorPopUpViewController *vc = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
+		ErrorPopUpViewController *vc = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
 		[vc setOnlyCancelButton];
 	}
 }

@@ -97,3 +97,9 @@
 - (NSString *)shortFormatOfNumber;
 
 @end
+
+@interface QTUMBigNumber (Constants)
+
++ (QTUMBigNumber*)maxBigNumberWithPowerOfTwo:(NSInteger) power isUnsigned:(BOOL) isUnsigned;
+
+@end

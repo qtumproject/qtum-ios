@@ -21,6 +21,20 @@
 		B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */; };
 		B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */; };
 		B30960BB1F62EAF000BEF9D2 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = B30960BA1F62EACC00BEF9D2 /* Avenir.ttc */; };
+		B30B114D1FC581AE00E5ABBC /* ValidationRegexProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B114C1FC581AE00E5ABBC /* ValidationRegexProvider.m */; };
+		B30B11501FC58E6D00E5ABBC /* ValidationInputService.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B114F1FC58E6D00E5ABBC /* ValidationInputService.m */; };
+		B30B11531FC6CDC500E5ABBC /* PopupFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B11521FC6CDC500E5ABBC /* PopupFactory.m */; };
+		B30B11561FC6CDEC00E5ABBC /* ProfileStoryboardFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B11551FC6CDEC00E5ABBC /* ProfileStoryboardFactory.m */; };
+		B30B11591FC6CE0900E5ABBC /* SendStoryboardFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B11581FC6CE0900E5ABBC /* SendStoryboardFactory.m */; };
+		B30B115C1FC6CE1F00E5ABBC /* NewsStoryboardFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B115B1FC6CE1F00E5ABBC /* NewsStoryboardFactory.m */; };
+		B30B115F1FC6CE3700E5ABBC /* WalletStoryboadFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B115E1FC6CE3700E5ABBC /* WalletStoryboadFactory.m */; };
+		B30B11621FC6CE5000E5ABBC /* StartStoryboardFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B11611FC6CE5000E5ABBC /* StartStoryboardFactory.m */; };
+		B30B11651FC6CE6F00E5ABBC /* CreateStoryboardFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B11641FC6CE6F00E5ABBC /* CreateStoryboardFactory.m */; };
+		B30B11681FC6CE8700E5ABBC /* SubscribeTokenStoryboardFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B11671FC6CE8700E5ABBC /* SubscribeTokenStoryboardFactory.m */; };
+		B30B116B1FC6CE9B00E5ABBC /* SplashStoryboardFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B116A1FC6CE9B00E5ABBC /* SplashStoryboardFactory.m */; };
+		B30B116E1FC6CEC200E5ABBC /* BackupResoreStoryboardFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B116D1FC6CEC200E5ABBC /* BackupResoreStoryboardFactory.m */; };
+		B30B11711FC6CED500E5ABBC /* QStoreStoryboardFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B11701FC6CED500E5ABBC /* QStoreStoryboardFactory.m */; };
+		B30B11821FC6D05400E5ABBC /* DarkLightModeFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B30B11811FC6D05400E5ABBC /* DarkLightModeFactory.m */; };
 		B30BAE2E1E9E3AA600CA795F /* ContractManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BAE2D1E9E3AA600CA795F /* ContractManager.m */; };
 		B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E551F3090A60095E3DF /* AbiTextFieldWithLineLight.m */; };
 		B3141E5A1F3099110095E3DF /* ContractNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E591F3099110095E3DF /* ContractNameTextField.m */; };
@@ -602,7 +616,7 @@
 		E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EA2CBD1ED42DE100AFD5D0 /* LanguageTableSource.m */; };
 		E7FA0CB31ECD80AF00702C4E /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */; };
 		E7FA0CB61ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */; };
-		E7FA0CB91ECD914200702C4E /* PopUpsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB81ECD914200702C4E /* PopUpsManager.m */; };
+		E7FA0CB91ECD914200702C4E /* PopupService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CB81ECD914200702C4E /* PopupService.m */; };
 		E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */; };
 		E7FD363D1DC4D07E00748177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363C1DC4D07E00748177 /* main.m */; };
 		E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363F1DC4D07E00748177 /* AppDelegate.m */; };
@@ -718,6 +732,46 @@
 		B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConstructorFromAbiViewControllerLight.m; sourceTree = "<group>"; };
 		B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldViewsLight.xib; sourceTree = "<group>"; };
 		B30960BA1F62EACC00BEF9D2 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = SOURCE_ROOT; };
+		B30B114B1FC581AE00E5ABBC /* ValidationRegexProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidationRegexProvider.h; sourceTree = "<group>"; };
+		B30B114C1FC581AE00E5ABBC /* ValidationRegexProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidationRegexProvider.m; sourceTree = "<group>"; };
+		B30B114E1FC58E6D00E5ABBC /* ValidationInputService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidationInputService.h; sourceTree = "<group>"; };
+		B30B114F1FC58E6D00E5ABBC /* ValidationInputService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidationInputService.m; sourceTree = "<group>"; };
+		B30B11511FC6CDC500E5ABBC /* PopupFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopupFactory.h; sourceTree = "<group>"; };
+		B30B11521FC6CDC500E5ABBC /* PopupFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopupFactory.m; sourceTree = "<group>"; };
+		B30B11541FC6CDEC00E5ABBC /* ProfileStoryboardFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileStoryboardFactory.h; sourceTree = "<group>"; };
+		B30B11551FC6CDEC00E5ABBC /* ProfileStoryboardFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileStoryboardFactory.m; sourceTree = "<group>"; };
+		B30B11571FC6CE0900E5ABBC /* SendStoryboardFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendStoryboardFactory.h; sourceTree = "<group>"; };
+		B30B11581FC6CE0900E5ABBC /* SendStoryboardFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendStoryboardFactory.m; sourceTree = "<group>"; };
+		B30B115A1FC6CE1F00E5ABBC /* NewsStoryboardFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsStoryboardFactory.h; sourceTree = "<group>"; };
+		B30B115B1FC6CE1F00E5ABBC /* NewsStoryboardFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsStoryboardFactory.m; sourceTree = "<group>"; };
+		B30B115D1FC6CE3700E5ABBC /* WalletStoryboadFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletStoryboadFactory.h; sourceTree = "<group>"; };
+		B30B115E1FC6CE3700E5ABBC /* WalletStoryboadFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletStoryboadFactory.m; sourceTree = "<group>"; };
+		B30B11601FC6CE5000E5ABBC /* StartStoryboardFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartStoryboardFactory.h; sourceTree = "<group>"; };
+		B30B11611FC6CE5000E5ABBC /* StartStoryboardFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartStoryboardFactory.m; sourceTree = "<group>"; };
+		B30B11631FC6CE6F00E5ABBC /* CreateStoryboardFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateStoryboardFactory.h; sourceTree = "<group>"; };
+		B30B11641FC6CE6F00E5ABBC /* CreateStoryboardFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateStoryboardFactory.m; sourceTree = "<group>"; };
+		B30B11661FC6CE8700E5ABBC /* SubscribeTokenStoryboardFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenStoryboardFactory.h; sourceTree = "<group>"; };
+		B30B11671FC6CE8700E5ABBC /* SubscribeTokenStoryboardFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubscribeTokenStoryboardFactory.m; sourceTree = "<group>"; };
+		B30B11691FC6CE9B00E5ABBC /* SplashStoryboardFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashStoryboardFactory.h; sourceTree = "<group>"; };
+		B30B116A1FC6CE9B00E5ABBC /* SplashStoryboardFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashStoryboardFactory.m; sourceTree = "<group>"; };
+		B30B116C1FC6CEC200E5ABBC /* BackupResoreStoryboardFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackupResoreStoryboardFactory.h; sourceTree = "<group>"; };
+		B30B116D1FC6CEC200E5ABBC /* BackupResoreStoryboardFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackupResoreStoryboardFactory.m; sourceTree = "<group>"; };
+		B30B116F1FC6CED500E5ABBC /* QStoreStoryboardFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreStoryboardFactory.h; sourceTree = "<group>"; };
+		B30B11701FC6CED500E5ABBC /* QStoreStoryboardFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QStoreStoryboardFactory.m; sourceTree = "<group>"; };
+		B30B11731FC6CF3700E5ABBC /* PopupFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopupFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B11741FC6CF4A00E5ABBC /* WalletsFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletsFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B11751FC6CF5A00E5ABBC /* ProfileStoryboardFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileStoryboardFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B11761FC6CF6B00E5ABBC /* SendStoryboardFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendStoryboardFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B11771FC6CF8500E5ABBC /* NewsStoryboardFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsStoryboardFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B11781FC6CF9300E5ABBC /* WalletStoryboadFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletStoryboadFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B11791FC6CFA800E5ABBC /* StartStoryboardFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartStoryboardFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B117A1FC6CFB600E5ABBC /* CreateStoryboardFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateStoryboardFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B117B1FC6CFC400E5ABBC /* SubscribeTokenStoryboardFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscribeTokenStoryboardFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B117C1FC6CFDE00E5ABBC /* SplashStoryboardFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashStoryboardFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B117D1FC6D01100E5ABBC /* BackupResoreStoryboardFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackupResoreStoryboardFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B117E1FC6D02400E5ABBC /* QStoreStoryboardFactoryProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QStoreStoryboardFactoryProtocol.h; sourceTree = "<group>"; };
+		B30B11801FC6D05400E5ABBC /* DarkLightModeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DarkLightModeFactory.h; sourceTree = "<group>"; };
+		B30B11811FC6D05400E5ABBC /* DarkLightModeFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DarkLightModeFactory.m; sourceTree = "<group>"; };
 		B30BAE2C1E9E3AA600CA795F /* ContractManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractManager.h; sourceTree = "<group>"; };
 		B30BAE2D1E9E3AA600CA795F /* ContractManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContractManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B3141E541F3090A60095E3DF /* AbiTextFieldWithLineLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLineLight.h; sourceTree = "<group>"; };
@@ -1975,8 +2029,8 @@
 		E7FA0CB21ECD80AF00702C4E /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
 		E7FA0CB41ECD80E200702C4E /* NoInternetConnectionPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetConnectionPopUpViewController.h; sourceTree = "<group>"; };
 		E7FA0CB51ECD80E200702C4E /* NoInternetConnectionPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetConnectionPopUpViewController.m; sourceTree = "<group>"; };
-		E7FA0CB71ECD914200702C4E /* PopUpsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpsManager.h; sourceTree = "<group>"; };
-		E7FA0CB81ECD914200702C4E /* PopUpsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpsManager.m; sourceTree = "<group>"; };
+		E7FA0CB71ECD914200702C4E /* PopupService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupService.h; sourceTree = "<group>"; };
+		E7FA0CB81ECD914200702C4E /* PopupService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupService.m; sourceTree = "<group>"; };
 		E7FA0CBC1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryPopUpViewController.h; sourceTree = "<group>"; };
 		E7FA0CBD1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryPopUpViewController.m; sourceTree = "<group>"; };
 		E7FD36381DC4D07E00748177 /* qtum wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "qtum wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2103,6 +2157,34 @@
 				B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */,
 			);
 			name = Constructor;
+			sourceTree = "<group>";
+		};
+		B30B11721FC6CF1D00E5ABBC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B30B11731FC6CF3700E5ABBC /* PopupFactoryProtocol.h */,
+				B30B11741FC6CF4A00E5ABBC /* WalletsFactoryProtocol.h */,
+				B30B11751FC6CF5A00E5ABBC /* ProfileStoryboardFactoryProtocol.h */,
+				B30B11761FC6CF6B00E5ABBC /* SendStoryboardFactoryProtocol.h */,
+				B30B11771FC6CF8500E5ABBC /* NewsStoryboardFactoryProtocol.h */,
+				B30B11781FC6CF9300E5ABBC /* WalletStoryboadFactoryProtocol.h */,
+				B30B11791FC6CFA800E5ABBC /* StartStoryboardFactoryProtocol.h */,
+				B30B117A1FC6CFB600E5ABBC /* CreateStoryboardFactoryProtocol.h */,
+				B30B117B1FC6CFC400E5ABBC /* SubscribeTokenStoryboardFactoryProtocol.h */,
+				B30B117C1FC6CFDE00E5ABBC /* SplashStoryboardFactoryProtocol.h */,
+				B30B117D1FC6D01100E5ABBC /* BackupResoreStoryboardFactoryProtocol.h */,
+				B30B117E1FC6D02400E5ABBC /* QStoreStoryboardFactoryProtocol.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		B30B117F1FC6D03B00E5ABBC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B30B11801FC6D05400E5ABBC /* DarkLightModeFactory.h */,
+				B30B11811FC6D05400E5ABBC /* DarkLightModeFactory.m */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		B3141E5B1F3099180095E3DF /* ContractNameTextFiedl */ = {
@@ -2343,12 +2425,36 @@
 		B32C3CE61E111FD10094C82C /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				B30B117F1FC6D03B00E5ABBC /* Base */,
+				B30B11721FC6CF1D00E5ABBC /* Protocols */,
+				B30B11511FC6CDC500E5ABBC /* PopupFactory.h */,
+				B30B11521FC6CDC500E5ABBC /* PopupFactory.m */,
 				B32C3CF41E1129270094C82C /* ControllersFactory.h */,
 				B32C3CF51E1129270094C82C /* ControllersFactory.m */,
 				B365CA7A1EA77D590040A163 /* WalletsFactory.h */,
 				B365CA7B1EA77D590040A163 /* WalletsFactory.m */,
 				E798463E1F0D2F57002A516A /* TableSourcesFactory.h */,
 				E798463F1F0D2F57002A516A /* TableSourcesFactory.m */,
+				B30B11541FC6CDEC00E5ABBC /* ProfileStoryboardFactory.h */,
+				B30B11551FC6CDEC00E5ABBC /* ProfileStoryboardFactory.m */,
+				B30B11571FC6CE0900E5ABBC /* SendStoryboardFactory.h */,
+				B30B11581FC6CE0900E5ABBC /* SendStoryboardFactory.m */,
+				B30B115A1FC6CE1F00E5ABBC /* NewsStoryboardFactory.h */,
+				B30B115B1FC6CE1F00E5ABBC /* NewsStoryboardFactory.m */,
+				B30B115D1FC6CE3700E5ABBC /* WalletStoryboadFactory.h */,
+				B30B115E1FC6CE3700E5ABBC /* WalletStoryboadFactory.m */,
+				B30B11601FC6CE5000E5ABBC /* StartStoryboardFactory.h */,
+				B30B11611FC6CE5000E5ABBC /* StartStoryboardFactory.m */,
+				B30B11631FC6CE6F00E5ABBC /* CreateStoryboardFactory.h */,
+				B30B11641FC6CE6F00E5ABBC /* CreateStoryboardFactory.m */,
+				B30B11661FC6CE8700E5ABBC /* SubscribeTokenStoryboardFactory.h */,
+				B30B11671FC6CE8700E5ABBC /* SubscribeTokenStoryboardFactory.m */,
+				B30B11691FC6CE9B00E5ABBC /* SplashStoryboardFactory.h */,
+				B30B116A1FC6CE9B00E5ABBC /* SplashStoryboardFactory.m */,
+				B30B116C1FC6CEC200E5ABBC /* BackupResoreStoryboardFactory.h */,
+				B30B116D1FC6CEC200E5ABBC /* BackupResoreStoryboardFactory.m */,
+				B30B116F1FC6CED500E5ABBC /* QStoreStoryboardFactory.h */,
+				B30B11701FC6CED500E5ABBC /* QStoreStoryboardFactory.m */,
 			);
 			name = Factories;
 			sourceTree = "<group>";
@@ -3747,6 +3853,10 @@
 				B3D012D71FB445CB00A98770 /* ContractInfoFacade.m */,
 				B3D12F551FB989DB00DEE41E /* SourceCodeFormatService.h */,
 				B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */,
+				B30B114B1FC581AE00E5ABBC /* ValidationRegexProvider.h */,
+				B30B114C1FC581AE00E5ABBC /* ValidationRegexProvider.m */,
+				B30B114E1FC58E6D00E5ABBC /* ValidationInputService.h */,
+				B30B114F1FC58E6D00E5ABBC /* ValidationInputService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -4631,8 +4741,8 @@
 		E7FA0CB01ECD808200702C4E /* Pop Ups */ = {
 			isa = PBXGroup;
 			children = (
-				E7FA0CB71ECD914200702C4E /* PopUpsManager.h */,
-				E7FA0CB81ECD914200702C4E /* PopUpsManager.m */,
+				E7FA0CB71ECD914200702C4E /* PopupService.h */,
+				E7FA0CB81ECD914200702C4E /* PopupService.m */,
 				E73CF6CF1EE2D6FC0044DF78 /* PopUpContent.h */,
 				E73CF6D01EE2D6FC0044DF78 /* PopUpContent.m */,
 				E73CF6D21EE2E1230044DF78 /* PopUpContentGenerator.h */,
@@ -5466,6 +5576,7 @@
 				B3CBDF1C1F2B170800C80D4E /* SmartContractMenuViewControllerDark.m in Sources */,
 				B3DC9D0A1F31B6CF006B2E07 /* AddressControlListViewControllerDark.m in Sources */,
 				B3EA530A1F46D9DA002FD201 /* QStoreTableViewCellLight.m in Sources */,
+				B30B11681FC6CE8700E5ABBC /* SubscribeTokenStoryboardFactory.m in Sources */,
 				B3D5FE741F56F37B006A2BF2 /* AbiParameterTypeDynamicArrayString.m in Sources */,
 				B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */,
 				B371D8871E3A1D3B00A13EA3 /* NSObject+Associating.m in Sources */,
@@ -5508,10 +5619,12 @@
 				B3DB3E431F2F6D6700AA408F /* RestoreContractsPopUpViewControllerDark.m in Sources */,
 				B3141E631F30AD5F0095E3DF /* CreateTokenFinishViewControllerDark.m in Sources */,
 				E748579C1F13C02600DCF9A6 /* LanguageTableViewCellLight.m in Sources */,
+				B30B116E1FC6CEC200E5ABBC /* BackupResoreStoryboardFactory.m in Sources */,
 				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
 				B3427FCA1F54093B00182E95 /* AboutOutputViewController.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
+				B30B114D1FC581AE00E5ABBC /* ValidationRegexProvider.m in Sources */,
 				E789036C1EDDA980004243F0 /* ViewWithAnimatedLine.m in Sources */,
 				B3CBDF3A1F2B48B000C80D4E /* SmartContractListItemCellDark.m in Sources */,
 				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m in Sources */,
@@ -5523,6 +5636,7 @@
 				E74857961F13BA5300DCF9A6 /* LanguageViewControllerLight.m in Sources */,
 				B32C3CF01E11220E0094C82C /* UIViewController+Extension.m in Sources */,
 				B3014D691F2A1BCC007EAE7A /* WatchTokensViewControllerDark.m in Sources */,
+				B30B11531FC6CDC500E5ABBC /* PopupFactory.m in Sources */,
 				B3D5FE6A1F56F2B2006A2BF2 /* AbiParameterTypeDynamicArrayInt.m in Sources */,
 				B3DC9D111F31BEE8006B2E07 /* AddressControlCell.m in Sources */,
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
@@ -5533,6 +5647,7 @@
 				E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */,
 				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
 				B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */,
+				B30B11561FC6CDEC00E5ABBC /* ProfileStoryboardFactory.m in Sources */,
 				E7C101B81F13CBC700848526 /* BorderedLabelLight.m in Sources */,
 				E70353151F03AC6D004ECCC9 /* QStoreListTableViewCell.m in Sources */,
 				B33EAF171E5C7D45006125F3 /* FirstAuthViewController.m in Sources */,
@@ -5596,6 +5711,7 @@
 				B3EE8F2B1F0E10AB00131823 /* TabBarControllerDark.m in Sources */,
 				E798462A1F0D1E40002A516A /* HistoryTableViewCellDark.m in Sources */,
 				B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */,
+				B30B115F1FC6CE3700E5ABBC /* WalletStoryboadFactory.m in Sources */,
 				E7360EC11F18EBED003ED21D /* ShareTokenPopUpViewController.m in Sources */,
 				B3E8B7921F4B2AD300DD7904 /* ConfirmPurchasePopUpViewControllerDark.m in Sources */,
 				B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */,
@@ -5625,6 +5741,7 @@
 				B32BC4C11F29C9B600C2417C /* SubscribeTokenViewControllerLight.m in Sources */,
 				B3DC9D151F31BF1D006B2E07 /* AddressControlCellLight.m in Sources */,
 				B35DF63F1F262EB100316953 /* TokenDetailLightDisplayDataManager.m in Sources */,
+				B30B11711FC6CED500E5ABBC /* QStoreStoryboardFactory.m in Sources */,
 				B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
 				B3EA53111F46DE00002FD201 /* CustomSearchBarLight.m in Sources */,
@@ -5640,6 +5757,7 @@
 				B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */,
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
 				B3D5FE891F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m in Sources */,
+				B30B11501FC58E6D00E5ABBC /* ValidationInputService.m in Sources */,
 				B3CBDF2A1F2B41D900C80D4E /* SmartContractsListViewControllerDark.m in Sources */,
 				B3CBDF071F2A3E4A00C80D4E /* SubscribeTokenDataDisplayManager.m in Sources */,
 				B3EA52F41F45E087002FD201 /* QStoreContractViewControllerDark.m in Sources */,
@@ -5670,6 +5788,7 @@
 				E7881B771F0BC6E200BD6AB2 /* NewPaymentDarkViewController.m in Sources */,
 				B34B69641EC5993A006BE3B0 /* CustomPageControl.m in Sources */,
 				E78903631EDC678C004243F0 /* AddressesTokenView.m in Sources */,
+				B30B11821FC6D05400E5ABBC /* DarkLightModeFactory.m in Sources */,
 				B3DC9CE51F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.m in Sources */,
 				B3EA53031F45E200002FD201 /* QStoreListViewControllerLight.m in Sources */,
 				B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */,
@@ -5770,6 +5889,7 @@
 				B3487A211E8D2B2B00BC66F1 /* HistoryDataStorage.m in Sources */,
 				B3C8FAEA1F98922A000168AB /* QTUMFeedItem.m in Sources */,
 				B3210D261E0030DB00365FB6 /* Appearance.m in Sources */,
+				B30B11591FC6CE0900E5ABBC /* SendStoryboardFactory.m in Sources */,
 				B35DF6491F27329E00316953 /* TokenDetailTableViewLight.m in Sources */,
 				B36505AA1F16017300521603 /* ExportBrainKeyViewControllerLight.m in Sources */,
 				B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */,
@@ -5818,6 +5938,7 @@
 				E73D37011ECF1684009173BD /* ActivityTokenTableViewCell.m in Sources */,
 				B33579471F348F7E001A0275 /* SplashViewControllerDark.m in Sources */,
 				E784F8B81F015B7100A513BF /* QStoreViewController.m in Sources */,
+				B30B11651FC6CE6F00E5ABBC /* CreateStoryboardFactory.m in Sources */,
 				B36505A41F15F6C700521603 /* ExportBrandKeyCoordinator.m in Sources */,
 				B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */,
 				B3C08B0D1ED2FE3000713B15 /* NSString+SHA3.m in Sources */,
@@ -5825,7 +5946,7 @@
 				E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */,
 				B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */,
 				E730AB881EE6ACCA00132711 /* iOSSessionManager.m in Sources */,
-				E7FA0CB91ECD914200702C4E /* PopUpsManager.m in Sources */,
+				E7FA0CB91ECD914200702C4E /* PopupService.m in Sources */,
 				E73CF6D71EE2F0D90044DF78 /* NSError+NoInternet.m in Sources */,
 				B31E5FFF1F4EE806003B4FA5 /* QStoreTemplateDetailViewControllerDark.m in Sources */,
 				E7CE63621F027EC200C147B9 /* CustomSearchBar.m in Sources */,
@@ -5850,6 +5971,7 @@
 				E739104F1DE2E165008145A8 /* HistoryElement.m in Sources */,
 				B31E5FFC1F4EE7F6003B4FA5 /* QStoreTemplateDetailViewController.m in Sources */,
 				B365059E1F14B63600521603 /* EnableFingerprintViewControllerDark.m in Sources */,
+				B30B116B1FC6CE9B00E5ABBC /* SplashStoryboardFactory.m in Sources */,
 				E798462D1F0D1E50002A516A /* HistoryTableViewCellLight.m in Sources */,
 				E79846361F0D23CB002A516A /* WalletHeaderCellDark.m in Sources */,
 				B365058C1F14B12E00521603 /* WalletNameViewControllerLight.m in Sources */,
@@ -5865,6 +5987,7 @@
 				B32B32E61ECCC2FF0081260A /* AbiTextFieldWithLine.m in Sources */,
 				B3DD27601E681AA500BB0635 /* WalletCoordinator.m in Sources */,
 				B3E8B78F1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.m in Sources */,
+				B30B115C1FC6CE1F00E5ABBC /* NewsStoryboardFactory.m in Sources */,
 				B32C3CF31E1126200094C82C /* TabBarController.m in Sources */,
 				B387AB441EF04911001D2FF1 /* TemplateManager.m in Sources */,
 				B3EE93721F04E19100550C60 /* SecurityCoordinator.m in Sources */,
@@ -5899,6 +6022,7 @@
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,
 				B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */,
 				B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */,
+				B30B11621FC6CE5000E5ABBC /* StartStoryboardFactory.m in Sources */,
 				B326327D1F9602B6001FF038 /* PasswordView.m in Sources */,
 				B3CD78DD1F4DC24E00D79363 /* ChooseReciveAddressViewControllerLight.m in Sources */,
 				E79846241F0D0056002A516A /* WalletViewControllerDark.m in Sources */,

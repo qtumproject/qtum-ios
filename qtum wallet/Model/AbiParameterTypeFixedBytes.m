@@ -8,4 +8,10 @@
 
 @implementation AbiParameterTypeFixedBytes
 
+@synthesize type;
+
+-(ParameterTypeFromAbi)type {
+    return FixedBytes;
+}
+
 @end

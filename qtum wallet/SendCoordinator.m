@@ -72,7 +72,7 @@
 			self.token = nil;
 			break;
 		case SendInfoItemTypeInvalid:
-			[SLocator.popUpsManager showErrorPopUp:self withContent:[PopUpContentGenerator contentForInvalidQRCodeFormatPopUp] presenter:nil completion:nil];
+			[SLocator.popupService showErrorPopUp:self withContent:[PopUpContentGenerator contentForInvalidQRCodeFormatPopUp] presenter:nil completion:nil];
 			item = nil;
 			self.token = nil;
 			break;
@@ -89,7 +89,7 @@
 			}
 
 			if (!exist) {
-				[SLocator.popUpsManager showErrorPopUp:self withContent:[PopUpContentGenerator contentForRequestTokenPopUp] presenter:nil completion:nil];
+				[SLocator.popupService showErrorPopUp:self withContent:[PopUpContentGenerator contentForRequestTokenPopUp] presenter:nil completion:nil];
 				[self.paymentOutput setSendInfoItem:nil];
 				self.token = nil;
 				item = nil;
@@ -327,6 +327,12 @@
 
 - (void)didPresseSendActionWithAddress:(NSString *) address andAmount:(QTUMBigNumber *) amount fee:(QTUMBigNumber *) fee gasPrice:(QTUMBigNumber *) gasPrice gasLimit:(QTUMBigNumber *) gasLimit {
 
+    if (![SLocator.validationInputService isValidAddressString:address]) {
+        NSString *text = NSLocalizedString(@"Incorrect address", @"");
+        [self.paymentOutput showErrorPopUp:text];
+        return;
+    }
+    
 	__weak __typeof (self) weakSelf = self;
 	[[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
 		if (success) {
@@ -370,11 +376,11 @@
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *) sender {
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 	[self didPresseQRCodeScaner];
 }
 

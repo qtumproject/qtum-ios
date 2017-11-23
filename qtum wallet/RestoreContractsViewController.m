@@ -159,7 +159,7 @@
 	if (self.fileUrl) {
 
 		BOOL fileReaded = [SLocator.backupFileManager getQuickInfoFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(NSString *date, NSString *version, NSInteger contractCount, NSInteger templateCount, NSInteger tokenCount) {
-			RestoreContractsPopUpViewController *poUp = [SLocator.popUpsManager showRestoreContractsPopUp:self presenter:nil completion:nil];
+			RestoreContractsPopUpViewController *poUp = [SLocator.popupService showRestoreContractsPopUp:self presenter:nil completion:nil];
 			poUp.dateLabel.text = date;
 			poUp.versionLabel.text = version;
 			poUp.tokensCountLabel.text = [NSString stringWithFormat:@"%li", (long)tokenCount];
@@ -170,12 +170,12 @@
 		if (!fileReaded) {
 			PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
 			content.messageString = NSLocalizedString(@"Сonnection to selected file was timed out. Please select backup file again", nil);
-			ErrorPopUpViewController *popUp = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
+			ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
 			[popUp setOnlyCancelButton];
 		}
 	} else {
 		PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
-		ErrorPopUpViewController *popUp = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
+		ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
 		[popUp setOnlyCancelButton];
 	}
 }
@@ -223,16 +223,16 @@
 
 	if ([sender isKindOfClass:[ErrorPopUpViewController class]] || [sender isKindOfClass:[InformationPopUpViewController class]]) {
 
-		[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+		[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 
 	} else {
 		[SLocator.backupFileManager setBackupFileWithUrl:self.fileUrl andOption:[self checkRestoreButtonsStateForRestore] andCompletession:^(BOOL success) {
 
 			if (success) {
 				PopUpContent *content = [PopUpContentGenerator contentForRestoredContracts];
-				[SLocator.popUpsManager showInformationPopUp:self withContent:content presenter:nil completion:nil];
+				[SLocator.popupService showInformationPopUp:self withContent:content presenter:nil completion:nil];
 			} else {
-				[SLocator.popUpsManager showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
+				[SLocator.popupService showErrorPopUp:self withContent:[PopUpContentGenerator contentForOupsPopUp] presenter:nil completion:nil];
 			}
 		}];
 	}
@@ -240,7 +240,7 @@
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *) sender {
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - UIDocumentMenuDelegate, UIDocumentPickerDelegate

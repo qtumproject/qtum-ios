@@ -55,26 +55,9 @@
 
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string {
 
-	if ([self.item.type isKindOfClass:[AbiParameterTypeUInt class]] ||
-			[self.item.type isKindOfClass:[AbiParameterTypeInt class]] ||
-			[self.item.type isKindOfClass:[AbiParameterTypeBool class]]) {
-		NSCharacterSet *cset = [NSCharacterSet decimalDigitCharacterSet].invertedSet;
-		NSRange range = [string rangeOfCharacterFromSet:cset];
-
-		AbiParameterPrimitiveType *type = self.item.type;
-
-		if (type.size > 64) {
-			if (range.location != NSNotFound || textField.text.length > type.maxValueLenght) {
-				return NO;
-			}
-		} else {
-			if (range.location != NSNotFound || [[textField.text stringByAppendingString:string] integerValue] > type.maxValue) {
-				return NO;
-			}
-		}
-
-	}
-	return YES;
+    NSString* resultString = [textField.text stringByAppendingString:string];
+    BOOL isValid = [SLocator.validationInputService isValidSymbols:resultString forParameter:self.item.type];
+	return isValid;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *) textField {

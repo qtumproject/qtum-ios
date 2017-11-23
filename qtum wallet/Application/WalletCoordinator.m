@@ -174,7 +174,7 @@
 
 - (void)didShareTokenButtonPressed {
 
-	ShareTokenPopUpViewController *vc = [SLocator.popUpsManager showShareTokenPopUp:self presenter:nil completion:nil];
+	ShareTokenPopUpViewController *vc = [SLocator.popupService showShareTokenPopUp:self presenter:nil completion:nil];
 	vc.addressString = self.tokenDetailsViewController.token.contractAddress;
 	NSArray *arr = [SLocator.contractFileManager abiWithTemplate:self.tokenDetailsViewController.token.templateModel.path];
 	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
@@ -382,13 +382,13 @@
 
 - (void)copyAddressButtonPressed:(PopUpViewController *) sender {
 
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 	[self copyTextAndShowPopUp:self.tokenDetailsViewController.token.contractAddress isAbi:NO];
 }
 
 - (void)copyAbiButtonPressed:(PopUpViewController *) sender {
 
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 	[self copyTextAndShowPopUp:[SLocator.contractFileManager escapeAbiWithTemplate:self.tokenDetailsViewController.token.templateModel.path] isAbi:YES];
 }
 
@@ -399,11 +399,11 @@
 	[pb setString:keyString];
 
 	PopUpContent *content = isAbi ? [PopUpContentGenerator contentForAbiCopied] : [PopUpContentGenerator contentForAddressCopied];
-	[SLocator.popUpsManager showInformationPopUp:self withContent:content presenter:nil completion:nil];
+	[SLocator.popupService showInformationPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - RecieveOutputDelegate

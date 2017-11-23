@@ -97,12 +97,12 @@
 }
 
 - (void)startLoading {
-	LoaderPopUpViewController *loader = [SLocator.popUpsManager showLoaderPopUpInView:self.loaderPlaceholderView];
+	LoaderPopUpViewController *loader = [SLocator.popupService showLoaderPopUpInView:self.loaderPlaceholderView];
 	self.loader = loader;
 }
 
 - (void)stopLoadingIfNeeded {
-	[SLocator.popUpsManager dismissLoader:self.loader];
+	[SLocator.popupService dismissLoader:self.loader];
 	self.loader = nil;
 }
 

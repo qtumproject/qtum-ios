@@ -98,19 +98,19 @@
 
 	PopUpContent *content = [PopUpContentGenerator contentForSourceCode];
 	content.messageString = string;
-	[SLocator.popUpsManager showSourceCodePopUp:self withContent:content presenter:nil completion:nil];
+	[SLocator.popupService showSourceCodePopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (void)showAbiPopUpWithString:(NSString *) string {
 
 	PopUpContent *content = [PopUpContentGenerator contentForQStoreAbi];
 	content.messageString = string;
-	[SLocator.popUpsManager showSourceCodePopUp:self withContent:content presenter:nil completion:nil];
+	[SLocator.popupService showSourceCodePopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (IBAction)actionPurchase:(id) sender {
 
-	ConfirmPurchasePopUpViewController *vc = [SLocator.popUpsManager showConfirmPurchasePopUp:self presenter:nil completion:nil];
+	ConfirmPurchasePopUpViewController *vc = [SLocator.popupService showConfirmPurchasePopUp:self presenter:nil completion:nil];
 	vc.contractNameLabel.text = self.element.name;
 	vc.contractTypeLabel.text = [self.element.typeString capitalizedString];
 	vc.amountLabel.text = [NSString stringWithFormat:@"%@ %@", self.element.priceString, NSLocalizedString(@"QTUM", nil)];
@@ -126,7 +126,7 @@
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
 
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 
 	if ([sender isKindOfClass:[ConfirmPurchasePopUpViewController class]]) {
 		[self.delegate didSelectPurchaseContract:self.element];
@@ -140,7 +140,7 @@
 
 - (void)cancelButtonPressed:(PopUpViewController *) sender {
 
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 
 	if ([sender isKindOfClass:[ErrorPopUpViewController class]]) {
 		[self actionPurchase:self];;
@@ -151,13 +151,13 @@
 
 - (void)startLoading {
 	dispatch_async (dispatch_get_main_queue (), ^{
-		[SLocator.popUpsManager showLoaderPopUp];
+		[SLocator.popupService showLoaderPopUp];
 	});
 }
 
 - (void)stopLoading {
 	dispatch_async (dispatch_get_main_queue (), ^{
-		[SLocator.popUpsManager dismissLoader];
+		[SLocator.popupService dismissLoader];
 	});
 }
 
@@ -241,12 +241,12 @@
 	PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
 	content.messageString = message;
 
-	[SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
+	[SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (void)showContractBoughtPop {
 	PopUpContent *content = [PopUpContentGenerator contentForContractBought];
-	[SLocator.popUpsManager showInformationPopUp:self withContent:content presenter:nil completion:nil];
+	[SLocator.popupService showInformationPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 #pragma mark - UITextViewDelegate

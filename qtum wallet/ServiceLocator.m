@@ -7,6 +7,7 @@
 //
 
 #import "WalletManager.h"
+#import "PopupFactory.h"
 
 @implementation ServiceLocator
 
@@ -72,12 +73,12 @@
 	return _paymentValuesManager;
 }
 
-- (PopUpsManager *)popUpsManager {
+- (PopupService *)popupService {
 
-	if (!_popUpsManager) {
-		_popUpsManager = [PopUpsManager new];
+	if (!_popupService) {
+		_popupService = [PopupService new];
 	}
-	return _popUpsManager;
+	return _popupService;
 }
 
 - (TableSourcesFactory *)tableSourcesFactory {
@@ -110,6 +111,22 @@
 		_iOSSessionManager = [iOSSessionManager new];
 	}
 	return _iOSSessionManager;
+}
+
+- (ValidationInputService *)validationInputService {
+    
+    if (!_validationInputService) {
+        _validationInputService = [[ValidationInputService alloc] initWithRegexProvider:[ValidationRegexProvider new]];
+    }
+    return _validationInputService;
+}
+
+- (id <PopupFactoryProtocol>)popupFactory {
+    
+    if (!_popupFactory) {
+        _popupFactory = [PopupFactory new];
+    }
+    return _popupFactory;
 }
 
 

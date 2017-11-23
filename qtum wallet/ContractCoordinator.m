@@ -185,7 +185,7 @@
 	[self.navigationController pushViewController:controller animated:YES];
 
 	__weak typeof (self) weakSelf = self;
-	[SLocator.popUpsManager showLoaderPopUp];
+	[SLocator.popupService showLoaderPopUp];
 	[SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
 		QTUMBigNumber *minFee = feePerKb;
 		QTUMBigNumber *maxFee = SLocator.paymentValuesManager.maxFee;
@@ -193,7 +193,7 @@
 		[weakSelf.createFinishViewController setMinFee:minFee andMaxFee:maxFee];
 		[weakSelf.createFinishViewController setMinGasPrice:SLocator.paymentValuesManager.minGasPrice andMax:SLocator.paymentValuesManager.maxGasPrice step:GasPriceStep];
 		[weakSelf.createFinishViewController setMinGasLimit:SLocator.paymentValuesManager.minGasLimit andMax:SLocator.paymentValuesManager.maxGasLimit standart:SLocator.paymentValuesManager.standartGasLimitForCreateContract step:GasLimitStep];
-		[SLocator.popUpsManager dismissLoader];
+		[SLocator.popupService dismissLoader];
 	}];
 }
 
@@ -264,7 +264,7 @@
 - (void)finishStepFinishDidPressed:(QTUMBigNumber *) fee gasPrice:(QTUMBigNumber *) gasPrice gasLimit:(QTUMBigNumber *) gasLimit {
 
 	__weak __typeof (self) weakSelf = self;
-	[SLocator.popUpsManager showLoaderPopUp];
+	[SLocator.popupService showLoaderPopUp];
 
 	NSData *contractWithArgs = [SLocator.contractInterfaceManager tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
 
@@ -274,7 +274,7 @@
 													gasPrice:gasPrice
 													gasLimit:gasLimit
 												  andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedValue) {
-													  [SLocator.popUpsManager dismissLoader];
+													  [SLocator.popupService dismissLoader];
 													  if (errorType == TransactionManagerErrorTypeNone) {
 														  BTCTransactionInput *input = transaction.inputs[0];
 														  DLog(@"%@", input.runTimeAddress);

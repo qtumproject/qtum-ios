@@ -8,6 +8,8 @@
 
 @implementation AbiParameterTypeFixedArray
 
+@synthesize size = _size;
+
 - (instancetype)initWithSize:(NSUInteger) size {
 
 	self = [super init];

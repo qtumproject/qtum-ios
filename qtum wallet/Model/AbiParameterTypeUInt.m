@@ -8,6 +8,12 @@
 
 @implementation AbiParameterTypeUInt
 
+@synthesize type;
+
+-(ParameterTypeFromAbi)type {
+    return Uint;
+}
+
 - (NSInteger)maxValueLenght {
 
 	if (self.size == 256) {

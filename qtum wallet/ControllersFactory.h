@@ -202,34 +202,8 @@
 
 - (QRCodeViewController *)createQRCodeViewControllerForSubscribe;
 
-// Pop ups
-- (NoInternetConnectionPopUpViewController *)createNoInternetConnectionPopUpViewController;
-
-- (PhotoLibraryPopUpViewController *)createPhotoLibraryPopUpViewController;
-
-- (ErrorPopUpViewController *)createErrorPopUpViewController;
-
-- (InformationPopUpViewController *)createInformationPopUpViewController;
-
-- (ConfirmPopUpViewController *)createConfirmPopUpViewController;
-
-- (LoaderPopUpViewController *)createLoaderViewController;
-
-- (RestoreContractsPopUpViewController *)createRestoreContractsPopUpViewController;
-
-- (SecurityPopupViewController *)createSecurityPopupViewController;
-
-- (SourceCodePopUpViewController *)createSourceCodePopUpViewController;
-
-- (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUpViewController;
-
-- (ShareTokenPopUpViewController *)createShareTokenPopUpViewController;
-
-- (AddressTransferPopupViewController *)createAddressTransferPopupViewController;
-
 - (UIViewController *)createFlowNavigationCoordinator;
 
 - (UITabBarController <TabbarOutput> *)createTabFlow;
-
 
 @end

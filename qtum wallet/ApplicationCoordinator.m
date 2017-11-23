@@ -202,7 +202,7 @@
 	if (self.securityCoordinator) {
 		[self.securityCoordinator cancelPin];
 	} else {
-		[SLocator.popUpsManager hideCurrentPopUp:NO completion:nil];
+		[SLocator.popupService hideCurrentPopUp:NO completion:nil];
 	}
 
 	if (SLocator.walletManager.isSignedIn && !self.authFlowRunning && !self.loginFlowRunning && !self.securityFlowRunning) {

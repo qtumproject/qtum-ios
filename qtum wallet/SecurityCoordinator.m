@@ -40,7 +40,7 @@
 
 - (void)showSecurityPopup {
 
-	SecurityPopupViewController *controller = [SLocator.popUpsManager showSecurityPopup:self presenter:nil completion:nil];
+	SecurityPopupViewController *controller = [SLocator.popupService showSecurityPopup:self presenter:nil completion:nil];
 	controller.popupDelegate = self;
 	self.loginOutput = controller;
 }
