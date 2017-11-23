@@ -10,8 +10,6 @@
 
 @interface AbiParameterTypeFixedArray : AbiParameterTypeArray
 
-@property (assign, nonatomic) NSInteger size;
-
 - (instancetype)initWithSize:(NSUInteger) size;
 
 @end

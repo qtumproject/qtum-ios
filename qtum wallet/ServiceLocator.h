@@ -31,12 +31,13 @@
 @property (strong, nonatomic) ContractManager *contractManager;
 @property (strong, nonatomic) TouchIDService *touchIDService;
 @property (strong, nonatomic) PaymentValuesManager *paymentValuesManager;
-@property (strong, nonatomic) PopUpsManager *popUpsManager;
+@property (strong, nonatomic) PopupService *popupService;
 @property (strong, nonatomic) TableSourcesFactory *tableSourcesFactory;
 @property (strong, nonatomic) QStoreManager *qStoreManager;
 @property (strong, nonatomic) WalletsFactory *walletsFactory;
 @property (strong, nonatomic) iOSSessionManager *iOSSessionManager;
-
+@property (strong, nonatomic) ValidationInputService *validationInputService;
+@property (strong, nonatomic) id <PopupFactoryProtocol> popupFactory;
 
 + (instancetype)sharedInstance;
 

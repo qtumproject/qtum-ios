@@ -180,7 +180,7 @@
 		content.titleString = NSLocalizedString(@"Failed", nil);
 	}
 
-	ErrorPopUpViewController *popUp = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
+	ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
 	[popUp setOnlyCancelButton];
 }
 
@@ -206,19 +206,19 @@
 - (void)cancelButtonPressed:(PopUpViewController *) sender {
 
 	[self.loginOutput setInputsDisable:NO];
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)confirmButtonPressed:(PopUpViewController *) sender withPin:(NSString *) pin {
 
 	[self.loginOutput setInputsDisable:NO];
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
 
 	[self.loginOutput setInputsDisable:NO];
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 @end

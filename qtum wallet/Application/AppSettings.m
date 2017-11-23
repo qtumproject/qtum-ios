@@ -42,8 +42,6 @@
 	[NSUserDefaults saveIsRPCOnSetting:NO];
 	[NSUserDefaults saveIsMainnetSetting:NO];
 
-	SLocator.popUpsManager;
-	SLocator.paymentValuesManager;
 	[self setupFabric];
 	[self setupFingerpring];
 }

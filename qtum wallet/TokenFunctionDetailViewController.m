@@ -195,7 +195,7 @@
 
 - (void)showResultViewWithOutputs:(NSArray *) outputs {
 
-	[SLocator.popUpsManager dismissLoader];
+	[SLocator.popupService dismissLoader];
 
 	NSMutableString *result = [NSMutableString new];
 	for (id output in outputs) {
@@ -210,15 +210,15 @@
 }
 
 - (void)showLoader {
-	[SLocator.popUpsManager showLoaderPopUp];
+	[SLocator.popupService showLoaderPopUp];
 }
 
 - (void)hideLoader {
-	[SLocator.popUpsManager dismissLoader];
+	[SLocator.popupService dismissLoader];
 }
 
 - (void)showCompletedPopUp {
-	[SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
+	[SLocator.popupService showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp:(NSString *) message {
@@ -229,7 +229,7 @@
 		content.titleString = NSLocalizedString(@"Failed", nil);
 	}
 
-	ErrorPopUpViewController *popUp = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
+	ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
 	[popUp setOnlyCancelButton];
 }
 
@@ -290,6 +290,7 @@
 #pragma mark - TextFeild delegate
 
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string {
+    
 	if (textField == self.feeView.feeTextField) {
 		if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
 			return ![textField.text containsString:string] && !(textField.text.length == 0);
@@ -305,6 +306,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *) textField {
+    
 	if (textField == self.feeView.feeTextField) {
 		[self normalizeFee];
 	}
@@ -332,6 +334,7 @@
 #pragma mark - Actions
 
 - (IBAction)didPressedNextOnTextField:(id) sender {
+    
 	if (self.activeTextFieldTag < self.function.inputs.count - 1) {
 		TextFieldParameterView *parameter = [self.scrollView viewWithTag:self.activeTextFieldTag + 1];
 		UITextField *texField = parameter.textField;
@@ -350,7 +353,7 @@
 
 	[self didVoidTapAction:nil];
 	[self normalizeFee];
-	[SLocator.popUpsManager showLoaderPopUp];
+	[SLocator.popupService showLoaderPopUp];
 	[self.delegate didCallFunctionWithItem:self.function andParam:[self prepareInputsData] andToken:self.token andFee:self.FEE andGasPrice:self.gasPrice andGasLimit:self.gasLimit];
 }
 
@@ -361,7 +364,7 @@
 #pragma mark
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 @end

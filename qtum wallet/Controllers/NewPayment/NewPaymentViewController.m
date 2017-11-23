@@ -27,8 +27,12 @@
 @property (weak, nonatomic) IBOutlet UISlider *feeSlider;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
-@property (weak, nonatomic) IBOutlet UILabel *residueValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalance;
+@property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *balanceTitle;
+@property (weak, nonatomic) IBOutlet UILabel *balanceSymbolLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalanceTitle;
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalanceSymbolLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withoutTokensConstraint;
@@ -264,11 +268,6 @@ static NSInteger hidedGasTopForSend = -40;
 	return isFilled;
 }
 
-- (void)updateScrollsConstraints {
-	self.standartTopOffsetForSendButton = self.sendButtonTopConstraint.constant;
-	[self.view layoutIfNeeded];
-}
-
 - (void)showOrHideGas:(BOOL) willAppear {
 	BOOL hide = !self.isTokenChoosen;
 
@@ -284,16 +283,19 @@ static NSInteger hidedGasTopForSend = -40;
 	self.sendButtonTopConstraint.constant = hide ? hidedGasTopForSend : showedGasTopForSend;
 }
 
+
+- (void)updateScrollsConstraints {
+    
+    self.standartTopOffsetForSendButton = self.sendButtonTopConstraint.constant;
+    [self.view layoutIfNeeded];
+}
+
 #pragma mark - NewPaymentOutput
 
 - (void)updateControlsWithTokensExist:(BOOL) isExist
 					choosenTokenExist:(BOOL) choosenExist
 						walletBalance:(QTUMBigNumber *) walletBalance
 			   andUnconfimrmedBalance:(QTUMBigNumber *) walletUnconfirmedBalance {
-
-	//updating constraints and activity info
-	self.residueValueLabel.text = [NSString stringWithFormat:@"%@", [walletBalance.decimalNumber roundedNumberWithScale:3]];
-	self.unconfirmedBalance.text = [NSString stringWithFormat:@"%@", [walletUnconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
 
 	BOOL isTokensExists = isExist;
 	self.tokenTextField.hidden =
@@ -307,6 +309,9 @@ static NSInteger hidedGasTopForSend = -40;
 		self.isTokenChoosen = NO;
 		self.needUpdateTokenTexfFields = NO;
 		self.tokenNameString = nil;
+        
+        //updating constraints and activity info
+        [self updateQuickInfoOfWalletWithBalance:walletBalance andUnconfirmedBalance:walletUnconfirmedBalance];
 	}
 
 	[self.view setNeedsLayout];
@@ -316,12 +321,53 @@ static NSInteger hidedGasTopForSend = -40;
 	[self showOrHideGas:NO];
 }
 
+- (void)updateQuickInfoOfContractWithBalance:(NSString*)balance andShortBalance:(NSString*) shortBalance {
+    
+    CGSize size = [balance sizeWithAttributes:@{NSFontAttributeName: self.balanceLabel.font}];
+    if (size.width > self.balanceLabel.bounds.size.width) {
+        self.balanceLabel.text = shortBalance;
+    } else {
+        self.balanceLabel.text = balance;
+    }
+    self.unconfirmedBalanceLabel.hidden = YES;
+    self.unconfirmedBalanceTitle.hidden = YES;
+    self.unconfirmedBalanceSymbolLabel.hidden = YES;
+}
+
+- (void)updateContentWithContract:(Contract *) contract {
+    
+    if (self.tokenTextField) {
+        self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+        self.needUpdateTokenTexfFields = NO;
+        self.tokenNameString = nil;
+    } else {
+        self.needUpdateTokenTexfFields = YES;
+        self.tokenNameString = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+    }
+    
+    self.amountTextField.text = @"";
+    self.addressTextField.text = @"";
+    self.isTokenChoosen = contract ? YES : NO;
+    
+    [self updateQuickInfoOfContractWithBalance:contract.balanceString andShortBalance:contract.shortBalanceString];
+}
+
+- (void)updateQuickInfoOfWalletWithBalance:(QTUMBigNumber*) balance andUnconfirmedBalance:(QTUMBigNumber*) unconfirmedBalance {
+    
+    self.balanceLabel.text = [NSString stringWithFormat:@"%@", [balance.decimalNumber roundedNumberWithScale:3]];
+    self.unconfirmedBalanceLabel.text = [NSString stringWithFormat:@"%@", [unconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
+    
+    self.unconfirmedBalanceLabel.hidden = NO;
+    self.unconfirmedBalanceTitle.hidden = NO;
+    self.unconfirmedBalanceSymbolLabel.hidden = NO;
+}
+
 - (void)showLoaderPopUp {
-	[SLocator.popUpsManager showLoaderPopUp];
+	[SLocator.popupService showLoaderPopUp];
 }
 
 - (void)showCompletedPopUp {
-	[SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
+	[SLocator.popupService showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
 - (void)showErrorPopUp:(NSString *) message {
@@ -331,17 +377,17 @@ static NSInteger hidedGasTopForSend = -40;
 		content.titleString = NSLocalizedString(@"Failed", nil);
 	}
 
-	ErrorPopUpViewController *popUp = [SLocator.popUpsManager showErrorPopUp:self withContent:content presenter:nil completion:nil];
+	ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
 	[popUp setOnlyCancelButton];
 }
 
 - (void)hideLoaderPopUp {
-	[SLocator.popUpsManager dismissLoader];
+	[SLocator.popupService dismissLoader];
 }
 
 - (void)showConfirmChangesPopUp {
 	PopUpContent *content = [PopUpContentGenerator contentForConfirmChangesInSend];
-	[SLocator.popUpsManager showConfirmPopUp:self withContent:content presenter:nil completion:nil];
+	[SLocator.popupService showConfirmPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 - (void)clearFields {
@@ -352,20 +398,6 @@ static NSInteger hidedGasTopForSend = -40;
 	self.adress = nil;
 
 	[self updateSendButton];
-}
-
-- (void)updateContentWithContract:(Contract *) contract {
-
-	if (self.tokenTextField) {
-		self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
-		self.needUpdateTokenTexfFields = NO;
-		self.tokenNameString = nil;
-	} else {
-		self.needUpdateTokenTexfFields = YES;
-		self.tokenNameString = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
-	}
-
-	self.isTokenChoosen = contract ? YES : NO;
 }
 
 - (void)setMinFee:(QTUMBigNumber *) minFee andMaxFee:(QTUMBigNumber *) maxFee {
@@ -422,7 +454,7 @@ static NSInteger hidedGasTopForSend = -40;
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
 
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 	if ([sender isKindOfClass:[InformationPopUpViewController class]]) {
 		[self clearFields];
 	}
@@ -440,7 +472,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *) sender {
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 #pragma mark - iMessage
@@ -466,23 +498,30 @@ static NSInteger hidedGasTopForSend = -40;
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string {
+    
+    NSString* resultString = [textField.text stringByAppendingString:string];
+    BOOL isValid = YES;
+    
 	if (textField == self.amountTextField) {
-		if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
-			return ![textField.text containsString:string] && !(textField.text.length == 0);
-		}
+        
+        isValid = self.isTokenChoosen ? [SLocator.validationInputService isValidContractAmountString:resultString] : [SLocator.validationInputService isValidAmountString:resultString];
+        
 	} else if (textField == self.feeTextField) {
-		if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
+        
+        isValid = [SLocator.validationInputService isValidAmountString:resultString];
+        
+        if (isValid) {
+            
+            QTUMBigNumber *feeValue = [QTUMBigNumber decimalWithString:textField.text];
+            [self.feeSlider setValue:[feeValue decimalNumber].floatValue animated:YES];
+        }
 
-			return ![textField.text containsString:string] && !(textField.text.length == 0);
+    } else if (textField == self.addressTextField) {
+        
+        isValid = [SLocator.validationInputService isValidAddressSymbolsInString:resultString];
+    }
 
-		} else {
-
-			QTUMBigNumber *feeValue = [QTUMBigNumber decimalWithString:textField.text];
-			[self.feeSlider setValue:[feeValue decimalNumber].floatValue animated:YES];
-		}
-	}
-
-	return YES;
+    return isValid;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *) textField {

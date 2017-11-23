@@ -11,11 +11,6 @@
 
 @interface AbiParameterPrimitiveType : NSObject <AbiParameterProtocol>
 
-@property (assign, nonatomic) NSInteger size;
-@property (assign, nonatomic, readonly) NSInteger maxValue;
-@property (assign, nonatomic, readonly) NSInteger maxValueLenght;
-
-
 - (instancetype)initWithSize:(NSUInteger) size;
 
 @end

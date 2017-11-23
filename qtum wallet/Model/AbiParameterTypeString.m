@@ -8,4 +8,10 @@
 
 @implementation AbiParameterTypeString
 
+@synthesize type;
+
+-(ParameterTypeFromAbi)type {
+    return Sting;
+}
+
 @end

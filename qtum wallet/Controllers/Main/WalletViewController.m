@@ -81,7 +81,7 @@
 		[self reloadHeader:self.wallet];
 		self.historyLoaded = YES;
 		if (self.balanceLoaded && self.historyLoaded) {
-			[SLocator.popUpsManager dismissLoader];
+			[SLocator.popupService dismissLoader];
 		}
 	});
 }
@@ -102,13 +102,13 @@
 
 - (void)startLoading {
 	dispatch_async (dispatch_get_main_queue (), ^{
-		[SLocator.popUpsManager showLoaderPopUp];
+		[SLocator.popupService showLoaderPopUp];
 	});
 }
 
 - (void)stopLoading {
 	dispatch_async (dispatch_get_main_queue (), ^{
-		[SLocator.popUpsManager dismissLoader];
+		[SLocator.popupService dismissLoader];
 	});
 }
 

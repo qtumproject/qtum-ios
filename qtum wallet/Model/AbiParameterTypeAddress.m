@@ -8,4 +8,10 @@
 
 @implementation AbiParameterTypeAddress
 
+@synthesize type;
+
+-(ParameterTypeFromAbi)type {
+    return Address;
+}
+
 @end

@@ -33,7 +33,7 @@
 #pragma mark - Actions
 
 - (IBAction)createNewButtonWasPressed:(id) sender {
-	[SLocator.popUpsManager showLoaderPopUp];
+	[SLocator.popupService showLoaderPopUp];
 
 }
 

@@ -1,5 +1,5 @@
 //
-//  PopUpsManager.h
+//  PopupService.h
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 18.05.17.
@@ -19,7 +19,7 @@
 @class LoaderPopUpViewController;
 @class WalletBalancesObject;
 
-@interface PopUpsManager : NSObject
+@interface PopupService : NSObject
 
 // show methods
 - (void)dismissLoader:(LoaderPopUpViewController *) loader;

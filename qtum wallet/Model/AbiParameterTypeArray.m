@@ -8,4 +8,11 @@
 
 @implementation AbiParameterTypeArray
 
+@synthesize type;
+
+-(ParameterTypeFromAbi)type {
+    return Array;
+}
+
+
 @end

@@ -29,10 +29,14 @@
 #import "ContractManager.h"
 #import "TouchIDService.h"
 #import "PaymentValuesManager.h"
-#import "PopUpsManager.h"
+#import "PopupService.h"
 #import "TableSourcesFactory.h"
 #import "QStoreManager.h"
 #import "WalletsFactory.h"
 #import "iOSSessionManager.h"
+#import "ValidationInputService.h"
+#import "ValidationRegexProvider.h"
+#import "PopupFactoryProtocol.h"
+
 
 #endif /* ServicesHeaders_h */

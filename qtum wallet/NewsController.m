@@ -92,11 +92,11 @@
 }
 
 - (void)startLoading {
-	[SLocator.popUpsManager showLoaderPopUp];
+	[SLocator.popupService showLoaderPopUp];
 }
 
 - (void)stopLoadingIfNeeded {
-	[SLocator.popUpsManager dismissLoader];
+	[SLocator.popupService dismissLoader];
 }
 
 #pragma mark - Actions

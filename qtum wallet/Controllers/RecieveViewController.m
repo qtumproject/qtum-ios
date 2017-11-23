@@ -200,13 +200,13 @@
 	NSString *keyString = self.walletAddress;
 	[pb setString:keyString];
 
-	[SLocator.popUpsManager showInformationPopUp:self withContent:[PopUpContentGenerator contentForAddressCopied] presenter:nil completion:nil];
+	[SLocator.popupService showInformationPopUp:self withContent:[PopUpContentGenerator contentForAddressCopied] presenter:nil completion:nil];
 }
 
 #pragma mark - PopUpViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
-	[SLocator.popUpsManager hideCurrentPopUp:YES completion:nil];
+	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 @end

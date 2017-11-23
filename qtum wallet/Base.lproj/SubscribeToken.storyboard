@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -296,7 +296,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Lga-b5-dmK" secondAttribute="trailing" constant="15" id="DgL-tR-Lwm"/>
                                     <constraint firstItem="7CH-c2-QYM" firstAttribute="top" secondItem="Mp0-5z-Nmd" secondAttribute="bottom" constant="30" id="OZG-uw-RzA"/>
                                     <constraint firstItem="3G7-cO-lIJ" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="Wov-Ay-eYY"/>
-                                    <constraint firstItem="Lga-b5-dmK" firstAttribute="leading" secondItem="D4x-eT-4Qz" secondAttribute="leading" constant="15" id="dN2-Kk-jpo"/>
+                                    <constraint firstItem="Lga-b5-dmK" firstAttribute="left" secondItem="D4x-eT-4Qz" secondAttribute="left" constant="15" id="dN2-Kk-jpo"/>
                                     <constraint firstItem="7CH-c2-QYM" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="ehp-Ry-nSg"/>
                                     <constraint firstItem="Mp0-5z-Nmd" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="fW9-DL-nzR"/>
                                     <constraint firstItem="Lga-b5-dmK" firstAttribute="centerX" secondItem="D4x-eT-4Qz" secondAttribute="centerX" id="kXi-Er-dIg"/>
@@ -306,7 +306,7 @@
                                 <rect key="frame" x="68.5" y="577" width="238" height="50"/>
                                 <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="238" id="G2Q-nh-lTf"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="238" id="G2Q-nh-lTf"/>
                                     <constraint firstAttribute="height" constant="50" id="peh-h5-0Wm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>

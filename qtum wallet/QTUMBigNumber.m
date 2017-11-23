@@ -419,5 +419,50 @@ NSString *removeLastZerosInRealNumber(NSString *inputString) {
 	return [[[JKBigDecimal alloc] initWithString:@"10"] pow:string.intValue];
 }
 
+#pragma mark - Constants
+
++ (QTUMBigNumber*)maxBigNumberWithPowerOfTwo:(NSInteger) power isUnsigned:(BOOL) isUnsigned {
+    
+    NSString* value;
+    
+    switch (power) {
+        case 256:
+            value = isUnsigned ? @"115792089237316195423570985008687907853269984665640564039457584007913129639935" : @"57896044618658097711785492504343953926634992332820282019728792003956564819967";
+            break;
+        case 128:
+            value = isUnsigned ? @"340282366920938463463374607431768211455" : @"170141183460469231731687303715884105727";
+            break;
+        case 96:
+            value = isUnsigned ? @"79228162514264337593543950335" : @"39614081257132168796771975167";
+            break;
+        case 64:
+            value = isUnsigned ? @"18446744073709551615" : @"9223372036854775807";
+            break;
+        case 48:
+            value = isUnsigned ? @"281474976710655" : @"140737488355327";
+            break;
+        case 32:
+            value = isUnsigned ? @"4294967295" : @"2147483647";
+            break;
+        case 24:
+            value = isUnsigned ? @"16777215" : @"8388607";
+            break;
+        case 16:
+            value = isUnsigned ? @"65535" : @"32767";
+            break;
+        case 8:
+            value = isUnsigned ? @"255" : @"127";
+            break;
+        case 4:
+            value = isUnsigned ? @"15" : @"7";
+            break;
+        default:
+            value = isUnsigned ? @"18446744073709551615" : @"9223372036854775807";
+            break;
+    }
+    
+    return [QTUMBigNumber decimalWithString:value];
+}
+
 @end
 

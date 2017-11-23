@@ -1,5 +1,5 @@
 //
-//  PopUpsManager.m
+//  PopupService.m
 //  qtum wallet
 //
 //  Created by Sharaev Vladimir on 18.05.17.
@@ -19,13 +19,13 @@
 #import "ShareTokenPopUpViewController.h"
 #import "AddressTransferPopupViewController.h"
 
-@interface PopUpsManager () <PopUpViewControllerDelegate>
+@interface PopupService () <PopUpViewControllerDelegate>
 
 @property (nonatomic) PopUpViewController *currentPopUp;
 
 @end
 
-@implementation PopUpsManager
+@implementation PopupService
 
 #pragma mark - Instance
 
@@ -45,62 +45,63 @@
 #pragma mark - Creation of pop-up
 
 - (NoInternetConnectionPopUpViewController *)createNoInternetConnetion {
-	NoInternetConnectionPopUpViewController *controller = [SLocator.controllersFactory createNoInternetConnectionPopUpViewController];
+    
+	NoInternetConnectionPopUpViewController *controller = [SLocator.popupFactory createNoInternetConnectionPopUpViewController];
 	return controller;
 }
 
 - (PhotoLibraryPopUpViewController *)createPhotoLibrary {
-	PhotoLibraryPopUpViewController *controller = [SLocator.controllersFactory createPhotoLibraryPopUpViewController];
+	PhotoLibraryPopUpViewController *controller = [SLocator.popupFactory createPhotoLibraryPopUpViewController];
 	return controller;
 }
 
 - (ErrorPopUpViewController *)createErrorPopUp {
-	ErrorPopUpViewController *controller = [SLocator.controllersFactory createErrorPopUpViewController];
+	ErrorPopUpViewController *controller = [SLocator.popupFactory createErrorPopUpViewController];
 	return controller;
 }
 
 - (InformationPopUpViewController *)createInformationPopUp {
-	InformationPopUpViewController *controller = [SLocator.controllersFactory createInformationPopUpViewController];
+	InformationPopUpViewController *controller = [SLocator.popupFactory createInformationPopUpViewController];
 	return controller;
 }
 
 - (ConfirmPopUpViewController *)createConfirmPopUp {
-	ConfirmPopUpViewController *controller = [SLocator.controllersFactory createConfirmPopUpViewController];
+	ConfirmPopUpViewController *controller = [SLocator.popupFactory createConfirmPopUpViewController];
 	return controller;
 }
 
 - (SecurityPopupViewController *)createSecurityPopUp {
-	SecurityPopupViewController *controller = [SLocator.controllersFactory createSecurityPopupViewController];
+	SecurityPopupViewController *controller = [SLocator.popupFactory createSecurityPopupViewController];
 	return controller;
 }
 
 - (AddressTransferPopupViewController *)createAddressTransferPopUp {
-	AddressTransferPopupViewController *controller = [SLocator.controllersFactory createAddressTransferPopupViewController];
+	AddressTransferPopupViewController *controller = [SLocator.popupFactory createAddressTransferPopupViewController];
 	return controller;
 }
 
 - (LoaderPopUpViewController *)createLoaderPopUp {
-	LoaderPopUpViewController *controller = [SLocator.controllersFactory createLoaderViewController];
+	LoaderPopUpViewController *controller = [SLocator.popupFactory createLoaderViewController];
 	return controller;
 }
 
 - (RestoreContractsPopUpViewController *)createRestoreContractPopUp {
-	RestoreContractsPopUpViewController *controller = [SLocator.controllersFactory createRestoreContractsPopUpViewController];
+	RestoreContractsPopUpViewController *controller = [SLocator.popupFactory createRestoreContractsPopUpViewController];
 	return controller;
 }
 
 - (SourceCodePopUpViewController *)createSourceCodePopUp {
-	SourceCodePopUpViewController *controller = [SLocator.controllersFactory createSourceCodePopUpViewController];
+	SourceCodePopUpViewController *controller = [SLocator.popupFactory createSourceCodePopUpViewController];
 	return controller;
 }
 
 - (ConfirmPurchasePopUpViewController *)createConfirmPurchasePopUp {
-	ConfirmPurchasePopUpViewController *controller = [SLocator.controllersFactory createConfirmPurchasePopUpViewController];
+	ConfirmPurchasePopUpViewController *controller = [SLocator.popupFactory createConfirmPurchasePopUpViewController];
 	return controller;
 }
 
 - (ShareTokenPopUpViewController *)createShareTokenPopUp {
-	ShareTokenPopUpViewController *controller = [SLocator.controllersFactory createShareTokenPopUpViewController];
+	ShareTokenPopUpViewController *controller = [SLocator.popupFactory createShareTokenPopUpViewController];
 	return controller;
 }
 
