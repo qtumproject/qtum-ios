@@ -53,7 +53,7 @@
 	__weak __typeof (self) weakSelf = self;
 	[SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
 
-		QTUMBigNumber *minFee = feePerKb;
+		QTUMBigNumber *minFee = [feePerKb roundedNumberWithScale:5];
 		QTUMBigNumber *maxFee = SLocator.paymentValuesManager.maxFee;
 
 		[weakSelf.paymentOutput setMinFee:minFee andMaxFee:maxFee];

@@ -8,6 +8,7 @@
 
 #import "JKBigDecimal+Comparison.h"
 #import "JKBigDecimal+Format.h"
+#import "NSNumber+Comparison.h"
 
 @interface QTUMBigNumber ()
 
@@ -224,9 +225,12 @@
 	return [self.decimalContainer decimalNumber];
 }
 
-- (NSDecimalNumber *)roundedNumberWithScale:(NSInteger) scale {
-
-	return [self.decimalContainer roundedNumberWithScale:scale];
+- (QTUMBigNumber* )roundedNumberWithScale:(NSInteger) scale {
+    
+    NSDecimalNumber* number = [[NSDecimalNumber alloc] initWithString:self.stringValue];
+    number = [number roundedNumberWithScale:scale];
+    
+	return [QTUMBigNumber decimalWithString:number.stringValue];
 }
 
 @end

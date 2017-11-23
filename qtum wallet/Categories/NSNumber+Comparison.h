@@ -34,6 +34,6 @@
 
 - (NSDecimalNumber *)decimalNumber;
 
-- (NSNumber *)roundedNumberWithScale:(NSInteger) scale;
+- (NSDecimalNumber *)roundedNumberWithScale:(NSInteger) scale;
 
 @end
