@@ -76,7 +76,7 @@
 
 - (NSDecimalNumber *)decimalNumber;
 
-- (NSDecimalNumber *)roundedNumberWithScale:(NSInteger) scale;
+- (QTUMBigNumber *)roundedNumberWithScale:(NSInteger) scale;
 
 @end
 

@@ -187,7 +187,7 @@
 	__weak typeof (self) weakSelf = self;
 	[SLocator.popupService showLoaderPopUp];
 	[SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
-		QTUMBigNumber *minFee = feePerKb;
+		QTUMBigNumber *minFee = [feePerKb roundedNumberWithScale:5];
 		QTUMBigNumber *maxFee = SLocator.paymentValuesManager.maxFee;
 
 		[weakSelf.createFinishViewController setMinFee:minFee andMaxFee:maxFee];
@@ -328,7 +328,7 @@
 	[weakSelf.functionDetailController showLoader];
 	[SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
 
-		QTUMBigNumber *minFee = feePerKb;
+        QTUMBigNumber *minFee = [feePerKb roundedNumberWithScale:5];
 		QTUMBigNumber *maxFee = SLocator.paymentValuesManager.maxFee;
 
 		[weakSelf.functionDetailController setMinFee:minFee andMaxFee:maxFee];
