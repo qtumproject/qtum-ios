@@ -156,7 +156,7 @@ static NSInteger constantFee = 400000000;
 			[weakSelf.transactionBuilder regularTransactionWithUnspentOutputs:unspentOutputs
 																	   amount:(NSInteger)amount
 														   amountAndAddresses:preparedAmountAndAddreses
-																	  withFee:[self feeFromNumber:estimatedFee]
+																	  withFee:[self satoshiFromNumber:estimatedFee]
 																   walletKeys:walletKeys
 																   andHandler:^(TransactionManagerErrorType aErrorType, BTCTransaction *aTransaction) {
 
@@ -282,6 +282,7 @@ static NSInteger constantFee = 400000000;
 
 		[self callContractWithAddress:[NSString dataFromHexString:token.contractAddress]
 						   andBitcode:hashFuction
+                               amount:[QTUMBigNumber decimalWithInteger:0]
 						fromAddresses:@[addressWithAmountValue]
 							toAddress:nil
 						   walletKeys:SLocator.walletManager.wallet.allKeys
@@ -362,7 +363,7 @@ static NSInteger constantFee = 400000000;
 			BTCTransaction *tx = [weakSelf.transactionBuilder smartContractCreationTxWithUnspentOutputs:unspentOutputs
 																							 withAmount:0
 																							withBitcode:bitcode
-																								withFee:[self feeFromNumber:estimatedFee]
+																								withFee:[self satoshiFromNumber:estimatedFee]
 																						   withGasLimit:gasLimit
 																						   withGasprice:gasPrice
 																						 withWalletKeys:walletKeys];
@@ -408,6 +409,7 @@ static NSInteger constantFee = 400000000;
 
 - (void)callContractWithAddress:(NSData *) contractAddress
 					 andBitcode:(NSData *) bitcode
+                         amount:(QTUMBigNumber *) amount
 				  fromAddresses:(NSArray<NSString *> *) fromAddresses
 					  toAddress:(NSString *) toAddress
 					 walletKeys:(NSArray<BTCKey *> *) walletKeys
@@ -452,12 +454,12 @@ static NSInteger constantFee = 400000000;
 
 		dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
 
-		if ([aGasLimit isLessThan:gasLimitEstimate]) {
-			dispatch_async (dispatch_get_main_queue (), ^{
-				completion (TransactionManagerErrorTypeNotEnoughGasLimit, nil, nil, gasLimitEstimate);
-			});
-			return;
-		}
+//        if ([aGasLimit isLessThan:gasLimitEstimate]) {
+//            dispatch_async (dispatch_get_main_queue (), ^{
+//                completion (TransactionManagerErrorTypeNotEnoughGasLimit, nil, nil, gasLimitEstimate);
+//            });
+//            return;
+//        }
 
 		NSArray <BTCTransactionOutput *> *__block unspentOutputs = @[];
 
@@ -497,12 +499,12 @@ static NSInteger constantFee = 400000000;
 
 		do {
 			[weakSelf.transactionBuilder callContractTxWithUnspentOutputs:unspentOutputs
-																   amount:0
+                                                                   amount:[self satoshiFromNumber:amount]
 														  contractAddress:contractAddress
 																toAddress:toAddress
 															fromAddresses:fromAddresses
 																  bitcode:bitcode
-																  withFee:[self feeFromNumber:estimatedFee]
+																  withFee:[self satoshiFromNumber:estimatedFee]
 															 withGasLimit:aGasLimit
 															 withGasprice:gasPrice
 															   walletKeys:walletKeys
@@ -589,10 +591,10 @@ static NSInteger constantFee = 400000000;
 	return @{@"totalAmount": @(totalAmount), @"amountsAndAddresses": [mutArray copy]};
 }
 
-- (NSInteger)feeFromNumber:(QTUMBigNumber *) feeNumber {
+- (NSInteger)satoshiFromNumber:(QTUMBigNumber *) number {
 
-	if (feeNumber) {
-		return (NSInteger)feeNumber.satoshiAmountValue;
+	if (number) {
+		return (NSInteger)number.satoshiAmountValue;
 	} else {
 		return constantFee;
 	}

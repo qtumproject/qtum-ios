@@ -27,6 +27,7 @@
 
 - (void)callContractWithAddress:(NSData *) contractAddress
 					 andBitcode:(NSData *) bitcode
+                         amount:(QTUMBigNumber *) amount
 				  fromAddresses:(NSArray<NSString *> *) fromAddresses
 					  toAddress:(NSString *) toAddress
 					 walletKeys:(NSArray<BTCKey *> *) walletKeys

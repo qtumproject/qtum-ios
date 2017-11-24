@@ -352,6 +352,7 @@
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem *) item
 					   andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                      andAmount:(QTUMBigNumber*) amount
 					   andToken:(Contract *) contract
 						 andFee:(QTUMBigNumber *) fee
 					andGasPrice:(QTUMBigNumber *) gasPrice
@@ -360,13 +361,20 @@
     __weak __typeof(self) weakSelf = self;
     [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
         if (success) {
-            [weakSelf doCallContractFunctionWithItem:item andParam:inputs andToken:contract andFee:fee andGasPrice:gasPrice andGasLimit:gasLimit];
+            [weakSelf doCallContractFunctionWithItem:item
+                                            andParam:inputs
+                                           andAmount:amount
+                                            andToken:contract
+                                              andFee:fee
+                                         andGasPrice:gasPrice
+                                         andGasLimit:gasLimit];
         }
     }];
 }
 
 -(void)doCallContractFunctionWithItem:(AbiinterfaceItem *) item
                              andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                            andAmount:(QTUMBigNumber*) amount
                              andToken:(Contract *) contract
                                andFee:(QTUMBigNumber *) fee
                           andGasPrice:(QTUMBigNumber *) gasPrice
@@ -387,6 +395,7 @@
     
     [SLocator.transactionManager callContractWithAddress:[NSString dataFromHexString:contract.contractAddress]
                                               andBitcode:hashFuction
+                                                  amount:amount
                                            fromAddresses:addressWithTokensValue
                                                toAddress:nil
                                               walletKeys:SLocator.walletManager.wallet.allKeys

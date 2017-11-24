@@ -15,6 +15,7 @@
 @optional
 - (void)didCallFunctionWithItem:(AbiinterfaceItem *) item
 					   andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                         andAmount:(QTUMBigNumber *) amount
 					   andToken:(Contract *) token
 						 andFee:(QTUMBigNumber *) fee
 					andGasPrice:(QTUMBigNumber *) gasPrice
