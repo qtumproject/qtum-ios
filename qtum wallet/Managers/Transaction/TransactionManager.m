@@ -8,7 +8,6 @@
 
 #import "WalletManagerRequestAdapter.h"
 
-
 static NSString *op_exec = @"c1";
 
 @interface TransactionManager ()

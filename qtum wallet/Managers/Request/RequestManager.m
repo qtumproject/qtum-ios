@@ -105,7 +105,7 @@
 		id adaptiveResponse = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
 		success (adaptiveResponse);
 		DLog(@"Succes");
-	}                  andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
+	} andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
 		failure (error, message);
 		DLog(@"Failure");
 	}];

@@ -50,7 +50,7 @@
 		[weakSelf updateAddresesListWithResponse:responseObject];
 		[SLocator.popupService dismissLoader];
 
-	}                                  andFailureHandler:^(NSError *error, NSString *message) {
+	} andFailureHandler:^(NSError *error, NSString *message) {
 
 		[SLocator.popupService dismissLoader];
 	}];
@@ -73,6 +73,11 @@
 
 	for (NSDictionary *item in response) {
 
+        //filter only valid outputs
+        if (!(([item[@"confirmations"] unsignedIntegerValue] > 500 && [item[@"is_stake"] unsignedIntegerValue] > 0) || [item[@"is_stake"] unsignedIntegerValue] == 0)) {
+            continue;
+        }
+        
 		NSString *address = item[@"address"];
 		NSNumber *amountNumber = item[@"amount"];
 		double amountDouble = [amountNumber doubleValue];
