@@ -1,3 +1,4 @@
+
 //
 //  QTUMBigNumber.m
 //  qtum wallet
@@ -466,6 +467,13 @@ NSString *removeLastZerosInRealNumber(NSString *inputString) {
     }
     
     return [QTUMBigNumber decimalWithString:value];
+}
+
+#pragma mark - Description
+
+- (NSString *)description {
+    
+    return [self stringValue];
 }
 
 @end

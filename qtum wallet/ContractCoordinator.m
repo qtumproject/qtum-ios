@@ -360,40 +360,55 @@
 						 andFee:(QTUMBigNumber *) fee
 					andGasPrice:(QTUMBigNumber *) gasPrice
 					andGasLimit:(QTUMBigNumber *) gasLimit {
+    
+    __weak __typeof(self) weakSelf = self;
+    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
+        if (success) {
+            [weakSelf doCallContractFunctionWithItem:item andParam:inputs andToken:contract andFee:fee andGasPrice:gasPrice andGasLimit:gasLimit];
+        }
+    }];
+}
 
-	NSMutableArray *param = @[].mutableCopy;
-	for (int i = 0; i < inputs.count; i++) {
-		[param addObject:inputs[i].value];
-	}
-
-	NSArray<NSString *> *addressWithTokensValue = @[contract.contractCreationAddressAddress];
-
-	NSData *hashFuction = [SLocator.contractInterfaceManager hashOfFunction:item appendingParam:param];
-
-	[self.functionDetailController showLoader];
-
-	__weak __typeof (self) weakSelf = self;
-
-	[SLocator.transactionManager callContractWithAddress:[NSString dataFromHexString:contract.contractAddress]
-											  andBitcode:hashFuction
-										   fromAddresses:addressWithTokensValue
-											   toAddress:nil
-											  walletKeys:SLocator.walletManager.wallet.allKeys
-													 fee:fee
-												gasPrice:gasPrice
-												gasLimit:gasLimit
-											  andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedFee) {
-
-												  [weakSelf.functionDetailController hideLoader];
-												  if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
-													  [weakSelf showStatusOfPayment:errorType withEstimateFee:estimatedFee];
-												  } else if (errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
-													  [weakSelf showStatusOfPayment:errorType withEstimateGasLimit:estimatedFee];
-												  } else {
-													  [weakSelf showStatusOfPayment:errorType];
-												  }
-												  [weakSelf.functionDetailController showResultViewWithOutputs:nil];
-											  }];
+-(void)doCallContractFunctionWithItem:(AbiinterfaceItem *) item
+                             andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                             andToken:(Contract *) contract
+                               andFee:(QTUMBigNumber *) fee
+                          andGasPrice:(QTUMBigNumber *) gasPrice
+                          andGasLimit:(QTUMBigNumber *) gasLimit {
+    
+    NSMutableArray *param = @[].mutableCopy;
+    for (int i = 0; i < inputs.count; i++) {
+        [param addObject:inputs[i].value];
+    }
+    
+    NSArray<NSString *> *addressWithTokensValue = @[contract.contractCreationAddressAddress];
+    
+    NSData *hashFuction = [SLocator.contractInterfaceManager hashOfFunction:item appendingParam:param];
+    
+    [self.functionDetailController showLoader];
+    
+    __weak __typeof (self) weakSelf = self;
+    
+    [SLocator.transactionManager callContractWithAddress:[NSString dataFromHexString:contract.contractAddress]
+                                              andBitcode:hashFuction
+                                           fromAddresses:addressWithTokensValue
+                                               toAddress:nil
+                                              walletKeys:SLocator.walletManager.wallet.allKeys
+                                                     fee:fee
+                                                gasPrice:gasPrice
+                                                gasLimit:gasLimit
+                                              andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedFee) {
+                                                  
+                                                  [weakSelf.functionDetailController hideLoader];
+                                                  if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+                                                      [weakSelf showStatusOfPayment:errorType withEstimateFee:estimatedFee];
+                                                  } else if (errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
+                                                      [weakSelf showStatusOfPayment:errorType withEstimateGasLimit:estimatedFee];
+                                                  } else {
+                                                      [weakSelf showStatusOfPayment:errorType];
+                                                  }
+                                                  [weakSelf.functionDetailController showResultViewWithOutputs:nil];
+                                              }];
 }
 
 - (void)showStatusOfPayment:(TransactionManagerErrorType) errorType {

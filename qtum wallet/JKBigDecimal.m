@@ -14,6 +14,7 @@
 }
 
 - (id)initWithString:(NSString *) string {
+    
 	self = [super init];
 	if (self) {
 		figure = 0;
@@ -180,6 +181,7 @@
 }
 
 - (NSString *)stringValue {
+    
 	NSString *string = [bigInteger stringValue];
 	if (figure == 0) {
 		return string;

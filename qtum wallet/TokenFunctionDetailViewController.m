@@ -353,7 +353,6 @@
 
 	[self didVoidTapAction:nil];
 	[self normalizeFee];
-	[SLocator.popupService showLoaderPopUp];
 	[self.delegate didCallFunctionWithItem:self.function andParam:[self prepareInputsData] andToken:self.token andFee:self.FEE andGasPrice:self.gasPrice andGasLimit:self.gasLimit];
 }
 
