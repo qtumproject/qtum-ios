@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WatchContractViewController.h"
+#import "WatchTokenOutput.h"
 
-@interface WatchTokensViewController : WatchContractViewController
+@interface WatchTokensViewController : UIViewController <WatchTokenOutput>
 
 @end

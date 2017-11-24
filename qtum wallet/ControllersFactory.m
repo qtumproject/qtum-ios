@@ -314,8 +314,8 @@
 }
 
 
-- (NSObject <WatchContractOutput> *)createWatchTokensViewController {
-	NSObject <WatchContractOutput> *controller = (NSObject <WatchContractOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
+- (NSObject <WalletTokenOutput> *)createWatchTokensViewController {
+	NSObject <WalletTokenOutput> *controller = (NSObject <WalletTokenOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"WatchTokensViewController"];
 	return controller;
 }
 

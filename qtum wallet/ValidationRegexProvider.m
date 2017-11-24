@@ -115,4 +115,18 @@
     return regex;
 }
 
+- (NSRegularExpression*)contractAddressValidationRegex {
+    
+    NSString* pattern = [NSString stringWithFormat:@"^[1-9A-Za-z][^OIl]{39}$"];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
+    return regex;
+}
+
+- (NSRegularExpression*)contractAddressSymbolsValidationRegex {
+    
+    NSString* pattern = [NSString stringWithFormat:@"^[1-9A-Za-z][^OIl]{0,39}$"];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
+    return regex;
+}
+
 @end

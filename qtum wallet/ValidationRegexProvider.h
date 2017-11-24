@@ -32,5 +32,8 @@
 
 - (NSRegularExpression*)amountSymbolValidationRegex;
 - (NSRegularExpression*)contractAmountSymbolValidationRegex;
+- (NSRegularExpression*)contractAddressValidationRegex;
+- (NSRegularExpression*)contractAddressSymbolsValidationRegex;
+
 
 @end

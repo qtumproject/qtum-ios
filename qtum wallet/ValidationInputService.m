@@ -74,6 +74,22 @@
     return match;
 }
 
+- (BOOL)isValidContractAddressString:(NSString*)string {
+    
+    NSRegularExpression* regex = [self.regexProvider contractAddressValidationRegex];
+    NSArray<NSTextCheckingResult *> *matches = [regex matchesInString:string options:0 range:NSMakeRange (0, string.length)];
+    BOOL match = matches.count > 0;
+    return match;
+}
+
+- (BOOL)isValidSymbolsContractAddressString:(NSString*)string {
+    
+    NSRegularExpression* regex = [self.regexProvider contractAddressSymbolsValidationRegex];
+    NSArray<NSTextCheckingResult *> *matches = [regex matchesInString:string options:0 range:NSMakeRange (0, string.length)];
+    BOOL match = matches.count > 0;
+    return match;
+}
+
 
 #pragma mark - Regexes
 

@@ -398,6 +398,7 @@
 		B3EA531A1F47319D002FD201 /* QStoreListTableViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA53191F47319D002FD201 /* QStoreListTableViewCellLight.m */; };
 		B3EA531E1F473843002FD201 /* QStoreListTableSourceLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA531D1F473843002FD201 /* QStoreListTableSourceLight.m */; };
 		B3EA53221F473BDF002FD201 /* QStoreSearchTableViewCellLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3EA53211F473BDF002FD201 /* QStoreSearchTableViewCellLight.xib */; };
+		B3EC938B1FC8175A00752CD7 /* WatchTokensFacadeService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EC938A1FC8175A00752CD7 /* WatchTokensFacadeService.m */; };
 		B3EE8F281F0E109300131823 /* TabBarControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F271F0E109300131823 /* TabBarControllerLight.m */; };
 		B3EE8F2B1F0E10AB00131823 /* TabBarControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F2A1F0E10AB00131823 /* TabBarControllerDark.m */; };
 		B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EE8F301F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m */; };
@@ -1528,6 +1529,9 @@
 		B3EA531C1F473843002FD201 /* QStoreListTableSourceLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QStoreListTableSourceLight.h; sourceTree = "<group>"; };
 		B3EA531D1F473843002FD201 /* QStoreListTableSourceLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QStoreListTableSourceLight.m; sourceTree = "<group>"; };
 		B3EA53211F473BDF002FD201 /* QStoreSearchTableViewCellLight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QStoreSearchTableViewCellLight.xib; sourceTree = "<group>"; };
+		B3EC93881FC8145F00752CD7 /* WatchTokenOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchTokenOutput.h; sourceTree = "<group>"; };
+		B3EC93891FC8175A00752CD7 /* WatchTokensFacadeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchTokensFacadeService.h; sourceTree = "<group>"; };
+		B3EC938A1FC8175A00752CD7 /* WatchTokensFacadeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchTokensFacadeService.m; sourceTree = "<group>"; };
 		B3EE8F261F0E109300131823 /* TabBarControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarControllerLight.h; sourceTree = "<group>"; };
 		B3EE8F271F0E109300131823 /* TabBarControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarControllerLight.m; sourceTree = "<group>"; };
 		B3EE8F291F0E10AB00131823 /* TabBarControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarControllerDark.h; sourceTree = "<group>"; };
@@ -2950,6 +2954,7 @@
 		B387AB3B1EEE8584001D2FF1 /* Watch Tokens */ = {
 			isa = PBXGroup;
 			children = (
+				B3EC93881FC8145F00752CD7 /* WatchTokenOutput.h */,
 				B387AB3C1EEE85D2001D2FF1 /* WatchTokensViewController.h */,
 				B387AB3D1EEE85D2001D2FF1 /* WatchTokensViewController.m */,
 				B3014D641F2A1BBB007EAE7A /* WatchTokensViewControllerLight.h */,
@@ -3857,6 +3862,8 @@
 				B30B114C1FC581AE00E5ABBC /* ValidationRegexProvider.m */,
 				B30B114E1FC58E6D00E5ABBC /* ValidationInputService.h */,
 				B30B114F1FC58E6D00E5ABBC /* ValidationInputService.m */,
+				B3EC93891FC8175A00752CD7 /* WatchTokensFacadeService.h */,
+				B3EC938A1FC8175A00752CD7 /* WatchTokensFacadeService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -5924,6 +5931,7 @@
 				B3C8FAFA1F98A6E1000168AB /* QTUMTagsAttribute.m in Sources */,
 				B3D5FE8C1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m in Sources */,
 				B32B32D71ECCC2AC0081260A /* AbiinterfaceEntries.m in Sources */,
+				B3EC938B1FC8175A00752CD7 /* WatchTokensFacadeService.m in Sources */,
 				B33EAF231E5D6955006125F3 /* ExportWalletBrandKeyViewController.m in Sources */,
 				B3EE8F3C1F136A9A00131823 /* ChoseTokenPaymentViewControllerLight.m in Sources */,
 				B36EBC341F2F15CC00F4E2F2 /* PhotoLibraryPopUpViewControllerDark.m in Sources */,

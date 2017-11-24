@@ -52,7 +52,6 @@ extern NSString *const kLocalContractName;
 							  errorString:(NSString **) errorString;
 
 - (BOOL)addNewTokenWithContractAddress:(NSString *) contractAddress
-							   withAbi:(NSString *) abiStr
 						   andWithName:(NSString *) contractName
 						   errorString:(NSString **) errorString;
 
