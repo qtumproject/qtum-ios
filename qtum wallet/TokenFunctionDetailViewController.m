@@ -55,6 +55,31 @@
 	[self.view addConstraints:@[left, right, top, bottom]];
 
 	NSMutableArray *params = [NSMutableArray new];
+    
+    UIView* selectedTopItem = self.scrollView;
+    
+    if (self.function.payable) {
+        TextFieldWithLine *amount = (TextFieldWithLine *)[[[NSBundle mainBundle] loadNibNamed:@"TextFieldWithLineDarkSend" owner:self options:nil] lastObject];
+        amount.delegate = self;
+        [self.scrollView addSubview:amount];
+        amount.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
+        [self.scrollView addConstraint:center];
+
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:20.0f];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:20.0f];
+        
+        [self.scrollView addConstraint:left];
+        [self.scrollView addConstraint:right];
+
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:selectedTopItem attribute:NSLayoutAttributeTop multiplier:1.0f constant:40.0f];
+        [self.scrollView addConstraint:top];
+        
+        self.amountTextField = amount;
+        selectedTopItem = amount;
+    }
+    
 	for (int i = 0; i < self.function.inputs.count; i++) {
 		TextFieldParameterView *parameter = (TextFieldParameterView *)[[[NSBundle mainBundle] loadNibNamed:@"FieldsViews" owner:self options:nil] lastObject];
 		[params addObject:parameter];
@@ -70,7 +95,7 @@
 		UIView *topItem;
 		UIView *bottomItem;
 		if (i == 0) {
-			topItem = self.scrollView;
+			topItem = selectedTopItem;
 		} else {
 			topItem = [params objectAtIndex:i - 1];
 			if (i == self.function.inputs.count - 1 && self.fromQStore) {
@@ -78,13 +103,13 @@
 			}
 		}
 
-		if (i == 0) {
+		if (i == 0 && !self.function.payable) {
 			NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
 			[self.scrollView addConstraint:center];
 		}
 
 		NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:10.0f];
-		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:10.0f];
+		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:30.0f];
 
 		[self.scrollView addConstraint:left];
 		[self.scrollView addConstraint:right];
@@ -94,7 +119,7 @@
 			[self.scrollView addConstraint:bottom];
 		}
 
-		NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:topItem attribute:(i == 0) ? NSLayoutAttributeTop : NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+		NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:topItem attribute:(i == 0 && !self.function.payable) ? NSLayoutAttributeTop : NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
 		[self.scrollView addConstraint:top];
 	}
 
@@ -107,20 +132,25 @@
 		[self.scrollView addSubview:feeView];
 
 		NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
-		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:20.0f];
+		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:40.0f];
 
-		if (params.count == 0) {
+		if (params.count == 0 && !self.function.payable) {
 			NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
 
 			NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeTop multiplier:1.0f constant:30.0f];
 
 			[self.scrollView addConstraint:center];
 			[self.scrollView addConstraint:top];
-		} else {
-			NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:[params lastObject] attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
+		} else if (params.count == 0) {
+			NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.amountTextField attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
 
 			[self.scrollView addConstraint:top];
-		}
+        } else {
+            
+            NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:[params lastObject] attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
+            
+            [self.scrollView addConstraint:top];
+        }
 
 		[self.scrollView addConstraints:@[left, right]];
 
@@ -291,18 +321,23 @@
 
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string {
     
+    NSString* resultString = [textField.text stringByAppendingString:string];
+    BOOL isValid = YES;
+
 	if (textField == self.feeView.feeTextField) {
-		if ([string isEqualToString:@","] || [string isEqualToString:@"."]) {
-			return ![textField.text containsString:string] && !(textField.text.length == 0);
-		} else {
-			NSString *feeValueString = [[textField.text stringByAppendingString:string] stringByReplacingOccurrencesOfString:@"," withString:@"."];
-			NSDecimalNumber *feeValue = [NSDecimalNumber decimalNumberWithString:feeValueString];
+        
+        isValid = [SLocator.validationInputService isValidAmountString:resultString];
+        
+        if (isValid) {
+            
+            QTUMBigNumber *feeValue = [QTUMBigNumber decimalWithString:textField.text];
+            [self.feeView.slider setValue:[feeValue decimalNumber].floatValue animated:YES];
+        }
+    } else if ([textField isEqual:self.amountTextField]){
+        isValid = [SLocator.validationInputService isValidAmountString:resultString];
+    }
 
-			[self.feeView.slider setValue:feeValue.floatValue animated:YES];
-		}
-	}
-
-	return YES;
+	return isValid;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *) textField {
@@ -353,8 +388,21 @@
 
 	[self didVoidTapAction:nil];
 	[self normalizeFee];
-	[SLocator.popupService showLoaderPopUp];
-	[self.delegate didCallFunctionWithItem:self.function andParam:[self prepareInputsData] andToken:self.token andFee:self.FEE andGasPrice:self.gasPrice andGasLimit:self.gasLimit];
+    
+    QTUMBigNumber* amount;
+    if (self.amountTextField.text.length > 0) {
+        amount = [QTUMBigNumber decimalWithString:self.amountTextField.text];
+    } else {
+        amount = [QTUMBigNumber decimalWithInteger:0];
+    }
+    
+	[self.delegate didCallFunctionWithItem:self.function
+                                  andParam:[self prepareInputsData]
+                                 andAmount:amount
+                                  andToken:self.token
+                                    andFee:self.FEE
+                               andGasPrice:self.gasPrice
+                               andGasLimit:self.gasLimit];
 }
 
 - (IBAction)didVoidTapAction:(id) sender {

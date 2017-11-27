@@ -35,6 +35,29 @@
 	NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
 
 	[self.view addConstraints:@[left, right, top, bottom]];
+    
+    UIView* selectedTopItem = self.scrollView;
+
+    if (self.function.payable) {
+        TextFieldWithLine *amount = (TextFieldWithLine *)[[[NSBundle mainBundle] loadNibNamed:@"TextFieldWithLineLightSend" owner:self options:nil] lastObject];
+        amount.delegate = self;
+        [self.scrollView addSubview:amount];
+        amount.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
+        [self.scrollView addConstraint:center];
+        
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:20.0f];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:20.0f];
+        
+        [self.scrollView addConstraint:left];
+        [self.scrollView addConstraint:right];
+        
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:selectedTopItem attribute:NSLayoutAttributeTop multiplier:1.0f constant:40.0f];
+        [self.scrollView addConstraint:top];
+        self.amountTextField = amount;
+        selectedTopItem = amount;
+    }
 
 	NSMutableArray *params = [NSMutableArray new];
 	for (int i = 0; i < self.function.inputs.count; i++) {
@@ -53,7 +76,7 @@
 		UIView *topItem;
 		UIView *bottomItem;
 		if (i == 0) {
-			topItem = self.scrollView;
+			topItem = selectedTopItem;
 		} else {
 			topItem = [params objectAtIndex:i - 1];
 			if (i == self.function.inputs.count - 1 && self.fromQStore) {
@@ -61,13 +84,13 @@
 			}
 		}
 
-		if (i == 0) {
+		if (i == 0 && !self.function.payable) {
 			NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
 			[self.scrollView addConstraint:center];
 		}
 
 		NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:10.0f];
-		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:10.0f];
+		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:30.0f];
 
 		[self.scrollView addConstraint:left];
 		[self.scrollView addConstraint:right];
@@ -77,7 +100,7 @@
 			[self.scrollView addConstraint:bottom];
 		}
 
-		NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:topItem attribute:(i == 0) ? NSLayoutAttributeTop : NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+		NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:topItem attribute:(i == 0 && !self.function.payable) ? NSLayoutAttributeTop : NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
 		[self.scrollView addConstraint:top];
 	}
 
@@ -90,16 +113,20 @@
 		[self.scrollView addSubview:feeView];
 
 		NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
-		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:20.0f];
+		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:40.0f];
 
-		if (params.count == 0) {
+		if (params.count == 0 && !self.function.payable) {
 			NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
 
 			NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeTop multiplier:1.0f constant:30.0f];
 
 			[self.scrollView addConstraint:center];
 			[self.scrollView addConstraint:top];
-		} else {
+        } else if (params.count == 0) {
+            NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.amountTextField attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
+            
+            [self.scrollView addConstraint:top];
+        } else {
 			NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:[params lastObject] attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
 
 			[self.scrollView addConstraint:top];

@@ -85,6 +85,7 @@
 @protocol NewsOutput;
 @protocol NewsDetailOutput;
 @protocol SourceCodeOutput;
+@protocol WalletTokenOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -145,7 +146,7 @@
 
 - (NSObject <WatchContractOutput> *)createWatchContractViewController;
 
-- (NSObject <WatchContractOutput> *)createWatchTokensViewController;
+- (NSObject <WalletTokenOutput> *)createWatchTokensViewController;
 
 - (NSObject <NewPaymentOutput> *)createNewPaymentDarkViewController;
 

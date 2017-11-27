@@ -105,7 +105,7 @@
 		id adaptiveResponse = adaptive ? [weakSelf.adapter adaptiveDataForOutputs:responseObject] : responseObject;
 		success (adaptiveResponse);
 		DLog(@"Succes");
-	}                  andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
+	} andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
 		failure (error, message);
 		DLog(@"Failure");
 	}];
@@ -219,16 +219,18 @@
 	}];
 }
 
+
 #pragma mark - Token
 
-- (void)tokenInfoWithDict:(NSDictionary *) dict
+- (void)tokenInfoWithAddress:(NSString *) addressContract
 	   withSuccessHandler:(void (^)(id responseObject)) success
 		andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
-	NSString *path = [NSString stringWithFormat:@"contracts/%@/params?keys=symbol,decimals,name,totalSupply", dict[@"addressContract"]];
+    
+	NSString *path = [NSString stringWithFormat:@"contracts/%@/params?keys=symbol,decimals,name,totalSupply", addressContract];
 
 	[self.networkService requestWithType:GET path:path andParams:nil withSuccessHandler:^(id _Nonnull responseObject) {
 		success (responseObject);
-	}                  andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
+	} andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
 		failure (error, message);
 	}];
 }

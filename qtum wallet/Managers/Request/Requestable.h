@@ -92,7 +92,7 @@ failure;
 
 // Token info
 
-- (void)tokenInfoWithDict:(NSDictionary *) dict
+- (void)tokenInfoWithAddress:(NSString *) addressContract
 	   withSuccessHandler:(void (^)(id responseObject)) success
 		andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
 

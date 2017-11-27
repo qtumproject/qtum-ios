@@ -129,5 +129,13 @@
     return _popupFactory;
 }
 
+-(WatchTokensFacadeService*)watchTokensFacadeService {
+    
+    if (!_watchTokensFacadeService) {
+        _watchTokensFacadeService = [WatchTokensFacadeService new];
+    }
+    return _watchTokensFacadeService;
+}
+
 
 @end

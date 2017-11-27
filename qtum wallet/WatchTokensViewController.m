@@ -15,20 +15,13 @@
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractNameField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractAddressTextField;
-@property (weak, nonatomic) IBOutlet InputTextView *abiTextView;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonBottomConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectioViewTopConstraint;
 
 @end
 
 @implementation WatchTokensViewController
+
+@synthesize delegate = _delegate;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -38,20 +31,50 @@
 	[super viewDidLayoutSubviews];
 }
 
+#pragma mark - Output
 
-- (void)createSmartContract {
+- (void)setTokenName:(NSString*) tokenName {
+    
+    if (self.contractNameField.text.length == 0) {
+        self.contractNameField.text = tokenName;
+    }
+}
+#pragma mar - UITextFieldDelegate
 
-	NSString *errorString;
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    NSString* text = [textField.text stringByAppendingString:string];
+    BOOL isValid = YES;
+    if ([textField isEqual:self.contractAddressTextField]) {
+        isValid = [SLocator.validationInputService isValidSymbolsContractAddressString:text];
+        if (isValid) {
+            [self.delegate didEnterValidAddress:text];
+        }
+    }
+    return isValid;
+}
 
-	if ([SLocator.contractManager addNewTokenWithContractAddress:self.contractAddressTextField.text withAbi:self.abiTextView.text andWithName:self.contractNameField.text errorString:&errorString]) {
-		[SLocator.popupService showInformationPopUp:self withContent:[PopUpContentGenerator contentForTokenAdded] presenter:nil completion:nil];
-	} else {
-		PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
-		content.titleString = NSLocalizedString(@"Error", nil);
-		content.messageString = errorString;
-		ErrorPopUpViewController *vc = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
-		[vc setOnlyCancelButton];
-	}
+
+#pragma mark - Actions
+
+- (IBAction)actionVoidTap:(id)sender {
+    
+    [self.view endEditing:YES];
+}
+
+- (IBAction)didPressedBackAction:(id) sender {
+    
+    [self.delegate didPressedBack];
+}
+
+- (IBAction)didPressedOkAction:(id) sender {
+    
+    [self actionVoidTap:nil];
+    [self.delegate didPressedCreateTokenWithName:self.contractNameField.text andAddress:self.contractAddressTextField.text];
+}
+
+- (IBAction)didPressedCancelAction:(id) sender {
+    [self.delegate didPressedBack];
 }
 
 @end

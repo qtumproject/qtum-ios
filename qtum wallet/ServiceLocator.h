@@ -38,6 +38,7 @@
 @property (strong, nonatomic) iOSSessionManager *iOSSessionManager;
 @property (strong, nonatomic) ValidationInputService *validationInputService;
 @property (strong, nonatomic) id <PopupFactoryProtocol> popupFactory;
+@property (strong, nonatomic) WatchTokensFacadeService* watchTokensFacadeService;
 
 + (instancetype)sharedInstance;
 

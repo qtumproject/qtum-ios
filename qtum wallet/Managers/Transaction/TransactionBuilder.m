@@ -234,7 +234,6 @@
 		}
 
 		// Add required outputs - payment and change
-		BTCAmount amount = 0;
 		BTCTransactionOutput *paymentOutput;
 		paymentOutput = [[BTCTransactionOutput alloc] initWithValue:amount script:[self.scriptBuilder sendContractScriptWithBiteCode:bitcode andContractAddress:contractAddress andGasLimit:gasLimit andGasPrice:gasPrice]];
 		[tx addOutput:paymentOutput];

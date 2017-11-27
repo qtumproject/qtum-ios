@@ -22,4 +22,7 @@
 - (BOOL)isValidAmountString:(NSString*)string;
 - (BOOL)isValidContractAmountString:(NSString*)string;
 
+- (BOOL)isValidContractAddressString:(NSString*)string;
+- (BOOL)isValidSymbolsContractAddressString:(NSString*)string;
+
 @end

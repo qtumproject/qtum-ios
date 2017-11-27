@@ -19,10 +19,4 @@
 	[self setSelectedBackgroundView:bgColorView];
 }
 
-- (void)setupWithObject:(AbiinterfaceItem *) object {
-
-	self.functionName.text = object.name;
-}
-
-
 @end

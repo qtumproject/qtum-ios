@@ -15,6 +15,7 @@
 @interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput, SliderFeeViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) SliderFeeView *feeView;
+@property (weak, nonatomic) TextFieldWithLine* amountTextField;
 
 - (IBAction)didPressedNextOnTextField:(id) sender;
 

@@ -365,48 +365,28 @@ NSString *const kLocalContractName = @"kLocalContractName";
 }
 
 - (BOOL)addNewTokenWithContractAddress:(NSString *) contractAddress
-							   withAbi:(NSString *) abiStr
 						   andWithName:(NSString *) contractName
 						   errorString:(NSString **) errorString {
 
-	if (!contractName || contractName.length == 0) {
-
-		*errorString = NSLocalizedString(@"Invalid Token Name", nil);
-		return NO;
-	}
-
-	if (![self validateContractAddress:contractAddress]) {
-		*errorString = NSLocalizedString(@"Invalid Token Address", nil);
-		return NO;
-	}
-
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"contractAddress == %@", contractAddress];
 	NSArray *filteredArray = [self.allTokens filteredArrayUsingPredicate:predicate];
+    
 	if (filteredArray.count > 0) {
 		*errorString = NSLocalizedString(@"Token with same address already exists", nil);
-		return NO;
-	}
-
-	InterfaceInputFormModel *interfaceInput = [[InterfaceInputFormModel alloc] initWithAbi:[SLocator.contractInterfaceManager arrayFromAbiString:abiStr]];
-	InterfaceInputFormModel *qrc20interfaceInput = [SLocator.contractInterfaceManager tokenQRC20Interface];
-
-	if (![interfaceInput contains:qrc20interfaceInput]) {
-		*errorString = NSLocalizedString(@"ABI doesn't match QRC20 standard", nil);
 		return NO;
 	}
 
 	Contract *contract = [Contract new];
 	contract.contractAddress = contractAddress;
 	contract.creationDate = [NSDate date];
-	contract.localName = contractName;
+    contract.localName = contractName.length > 0 ? contractName : [contractAddress substringToIndex:contractAddress.length > 15 ? 15 : contractAddress.length];
 	contract.adresses = [[SLocator.walletManager hashTableOfKeys] allKeys];
 	contract.manager = self;
 	contract.isActive = YES;
 
-	TemplateModel *template = [SLocator.templateManager createNewTokenTemplateWithAbi:abiStr contractAddress:contractAddress andName:contractName];
+	TemplateModel *template = [SLocator.templateManager standartTokenTemplate];
 
 	if (template) {
-		[SLocator.templateManager saveTemplate:template];
 		contract.templateModel = template;
 		[self addNewToken:contract];
 		[SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Token Created", nil) andIdentifire:@"contract_created"];

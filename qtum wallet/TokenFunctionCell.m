@@ -10,8 +10,13 @@
 
 @implementation TokenFunctionCell
 
-- (void)setupWithObject:(id) object {
-
+- (void)setupWithObject:(AbiinterfaceItem *) object {
+    
+    if (object.type == Fallback) {
+        self.functionName.text = NSLocalizedString(@"Send to contract", @"");
+    } else {
+        self.functionName.text = object.name;
+    }
 }
 
 @end

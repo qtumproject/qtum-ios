@@ -19,6 +19,9 @@
 #import "WatchTokensViewController.h"
 #import "RestoreContractsViewController.h"
 #import "BackupContractsViewController.h"
+#import "WatchTokenOutput.h"
+#import "ErrorPopUpViewController.h"
+#import "InformationPopUpViewController.h"
 
 #import "QStoreCoordinator.h"
 
@@ -37,7 +40,9 @@
 		ConstructorAbiOutputDelegate,
 		ContractFunctionDetailOutputDelegate,
 		ContractFunctionsOutputDelegate,
-		ContractCreationEndOutputDelegate>
+		ContractCreationEndOutputDelegate,
+        WatchTokenOutputDelegate,
+        PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) UINavigationController *modalNavigationController;
@@ -51,7 +56,7 @@
 @property (weak, nonatomic) NSObject <WatchContractOutput> *wathContractsViewController;
 @property (nonatomic) NSObject <FavouriteTemplatesCollectionSourceOutput> *favouriteContractsCollectionSource;
 
-@property (weak, nonatomic) NSObject <WatchContractOutput> *wathTokensViewController;
+@property (weak, nonatomic) NSObject <WatchTokenOutput> *wathTokensViewController;
 @property (nonatomic) NSObject <FavouriteTemplatesCollectionSourceOutput> *favouriteTokensCollectionSource;
 
 @property (weak, nonatomic) NSObject <LibraryOutput> *libraryViewController;
@@ -135,16 +140,7 @@
 
 - (void)showWatchTokens {
 
-	self.activeTemplateForLibrary = nil;
-
-	self.wathTokensViewController = (NSObject <WatchContractOutput> *)[SLocator.controllersFactory createWatchTokensViewController];
-	self.favouriteTokensCollectionSource = [SLocator.tableSourcesFactory createFavouriteTemplatesSource];
-
-	self.favouriteTokensCollectionSource.templateModels = [SLocator.templateManager standartPackOfTokenTemplates];
-	self.favouriteTokensCollectionSource.delegate = self;
-	self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
-
-	self.wathTokensViewController.collectionSource = self.favouriteTokensCollectionSource;
+	self.wathTokensViewController = (NSObject <WatchTokenOutput> *)[SLocator.controllersFactory createWatchTokensViewController];
 	self.wathTokensViewController.delegate = self;
 
 	[self.navigationController pushViewController:[self.wathTokensViewController toPresent] animated:YES];
@@ -356,44 +352,68 @@
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem *) item
 					   andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                      andAmount:(QTUMBigNumber*) amount
 					   andToken:(Contract *) contract
 						 andFee:(QTUMBigNumber *) fee
 					andGasPrice:(QTUMBigNumber *) gasPrice
 					andGasLimit:(QTUMBigNumber *) gasLimit {
+    
+    __weak __typeof(self) weakSelf = self;
+    [[ApplicationCoordinator sharedInstance] startSecurityFlowWithType:SendVerification WithHandler:^(BOOL success) {
+        if (success) {
+            [weakSelf doCallContractFunctionWithItem:item
+                                            andParam:inputs
+                                           andAmount:amount
+                                            andToken:contract
+                                              andFee:fee
+                                         andGasPrice:gasPrice
+                                         andGasLimit:gasLimit];
+        }
+    }];
+}
 
-	NSMutableArray *param = @[].mutableCopy;
-	for (int i = 0; i < inputs.count; i++) {
-		[param addObject:inputs[i].value];
-	}
-
-	NSArray<NSString *> *addressWithTokensValue = @[contract.contractCreationAddressAddress];
-
-	NSData *hashFuction = [SLocator.contractInterfaceManager hashOfFunction:item appendingParam:param];
-
-	[self.functionDetailController showLoader];
-
-	__weak __typeof (self) weakSelf = self;
-
-	[SLocator.transactionManager callContractWithAddress:[NSString dataFromHexString:contract.contractAddress]
-											  andBitcode:hashFuction
-										   fromAddresses:addressWithTokensValue
-											   toAddress:nil
-											  walletKeys:SLocator.walletManager.wallet.allKeys
-													 fee:fee
-												gasPrice:gasPrice
-												gasLimit:gasLimit
-											  andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedFee) {
-
-												  [weakSelf.functionDetailController hideLoader];
-												  if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
-													  [weakSelf showStatusOfPayment:errorType withEstimateFee:estimatedFee];
-												  } else if (errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
-													  [weakSelf showStatusOfPayment:errorType withEstimateGasLimit:estimatedFee];
-												  } else {
-													  [weakSelf showStatusOfPayment:errorType];
-												  }
-												  [weakSelf.functionDetailController showResultViewWithOutputs:nil];
-											  }];
+-(void)doCallContractFunctionWithItem:(AbiinterfaceItem *) item
+                             andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                            andAmount:(QTUMBigNumber*) amount
+                             andToken:(Contract *) contract
+                               andFee:(QTUMBigNumber *) fee
+                          andGasPrice:(QTUMBigNumber *) gasPrice
+                          andGasLimit:(QTUMBigNumber *) gasLimit {
+    
+    NSMutableArray *param = @[].mutableCopy;
+    for (int i = 0; i < inputs.count; i++) {
+        [param addObject:inputs[i].value];
+    }
+    
+    NSArray<NSString *> *addressWithTokensValue = @[contract.contractCreationAddressAddress];
+    
+    NSData *hashFuction = [SLocator.contractInterfaceManager hashOfFunction:item appendingParam:param];
+    
+    [self.functionDetailController showLoader];
+    
+    __weak __typeof (self) weakSelf = self;
+    
+    [SLocator.transactionManager callContractWithAddress:[NSString dataFromHexString:contract.contractAddress]
+                                              andBitcode:hashFuction
+                                                  amount:amount
+                                           fromAddresses:addressWithTokensValue
+                                               toAddress:nil
+                                              walletKeys:SLocator.walletManager.wallet.allKeys
+                                                     fee:fee
+                                                gasPrice:gasPrice
+                                                gasLimit:gasLimit
+                                              andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedFee) {
+                                                  
+                                                  [weakSelf.functionDetailController hideLoader];
+                                                  if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+                                                      [weakSelf showStatusOfPayment:errorType withEstimateFee:estimatedFee];
+                                                  } else if (errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
+                                                      [weakSelf showStatusOfPayment:errorType withEstimateGasLimit:estimatedFee];
+                                                  } else {
+                                                      [weakSelf showStatusOfPayment:errorType];
+                                                  }
+                                                  [weakSelf.functionDetailController showResultViewWithOutputs:nil];
+                                              }];
 }
 
 - (void)showStatusOfPayment:(TransactionManagerErrorType) errorType {
@@ -485,6 +505,37 @@
 	self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
 }
 
+#pragma mark - WatchTokenOutputDelegate
+
+- (void)didEnterValidAddress:(NSString*) address {
+    
+    __weak __typeof(self)weakSelf = self;
+    [SLocator.watchTokensFacadeService getTokenNameWithAddress:address withHandler:^(NSString *name, NSError *error) {
+        if (!error) {
+            [weakSelf.wathTokensViewController setTokenName:name];
+        }
+    }];
+}
+
+- (void)didPressedCreateTokenWithName:(NSString*) tokenName andAddress:(NSString*) tokenAddress {
+    
+    [SLocator.popupService showLoaderPopUp];
+    NSString* errorString;
+    BOOL tokenAdded = [SLocator.watchTokensFacadeService createTokenWithTokenName:tokenName andAddress:tokenAddress andErrorString:&errorString];
+    
+    if (!tokenAdded) {
+        
+        PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+        content.titleString = NSLocalizedString(@"Error", nil);
+        content.messageString = errorString;
+        ErrorPopUpViewController *popup = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
+        [popup setOnlyCancelButton];
+        
+    } else {
+        [SLocator.popupService showInformationPopUp:self withContent:[PopUpContentGenerator contentForTokenAdded] presenter:nil completion:nil];
+    }
+}
+
 #pragma mark - SmartContractMenuOutputDelegate
 
 - (void)didSelectContractStore {
@@ -515,6 +566,19 @@
 	[self showBackupContract];
 }
 
+#pragma mark - PopUpWithTwoButtonsViewControllerDelegate
+
+- (void)cancelButtonPressed:(PopUpViewController *) sender {
+    [SLocator.popupService hideCurrentPopUp:YES completion:nil];
+}
+
+- (void)okButtonPressed:(PopUpViewController *)sender {
+    
+    if ([sender isKindOfClass:[InformationPopUpViewController class]]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    [SLocator.popupService hideCurrentPopUp:YES completion:nil];
+}
 
 #pragma mark - LibraryOutputDelegate, LibraryTableSourceOutputDelegate, FavouriteTemplatesCollectionSourceOutputDelegate, BackupContractOutputDelegate
 
@@ -528,19 +592,13 @@
 	self.activeTemplateForLibrary = template;
 
 	if ([sender isEqual:self.libraryTableSource]) {
-		if (self.isLibraryViewControllerOnlyForTokens) {
-			[self.wathTokensViewController changeStateForSelectedTemplate:template];
-		} else {
-			[self.wathContractsViewController changeStateForSelectedTemplate:template];
-		}
+        [self.wathContractsViewController changeStateForSelectedTemplate:template];
 		[self.navigationController popViewControllerAnimated:YES];
 
 		self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
 		self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
 	}
-	if ([sender isEqual:self.favouriteTokensCollectionSource]) {
-		[self.wathTokensViewController changeStateForSelectedTemplate:template];
-	}
+
 	if ([sender isEqual:self.favouriteContractsCollectionSource]) {
 		[self.wathContractsViewController changeStateForSelectedTemplate:template];
 	}
@@ -551,18 +609,11 @@
 	self.activeTemplateForLibrary = nil;
 
 	if ([sender isEqual:self.libraryTableSource]) {
-		if (self.isLibraryViewControllerOnlyForTokens) {
-			[self.wathTokensViewController changeStateForSelectedTemplate:nil];
-		} else {
-			[self.wathContractsViewController changeStateForSelectedTemplate:nil];
-		}
-
+        [self.wathContractsViewController changeStateForSelectedTemplate:nil];
 		self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
 		self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;
 	}
-	if ([sender isEqual:self.favouriteTokensCollectionSource]) {
-		[self.wathTokensViewController changeStateForSelectedTemplate:nil];
-	}
+
 	if ([sender isEqual:self.favouriteContractsCollectionSource]) {
 		[self.wathContractsViewController changeStateForSelectedTemplate:nil];
 	}

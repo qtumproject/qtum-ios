@@ -37,6 +37,7 @@
 #import "ValidationInputService.h"
 #import "ValidationRegexProvider.h"
 #import "PopupFactoryProtocol.h"
+#import "WatchTokensFacadeService.h"
 
 
 #endif /* ServicesHeaders_h */
