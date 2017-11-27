@@ -12,6 +12,7 @@
 #import "ErrorPopUpViewController.h"
 #import "ConfirmPopUpViewController.h"
 #import "NSNumber+Comparison.h"
+#import "NewPaymentOutputEntity.h"
 
 
 @interface NewPaymentViewController () <UITextFieldDelegate, PopUpWithTwoButtonsViewControllerDelegate>
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *feeTextField;
+@property (weak, nonatomic) IBOutlet TextFieldWithLine *fromAddressTextField;
 
 @property (weak, nonatomic) IBOutlet UIButton *tokenButton;
 @property (weak, nonatomic) IBOutlet UIImageView *tokenDisclousureImage;
@@ -59,14 +61,11 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstratinForEdit;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForGasSlidersContainer;
-
-@property (nonatomic) long gasPriceStep;
-@property (nonatomic) long gasLimitStep;
-@property (nonatomic) long gasPriceMin;
-@property (nonatomic) long gasLimitMin;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *reciveAddressTopConstraintToSuperview;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *reciveAddressTopConstraintToOptionalSenderAddress;
 
 // Properties
-
+@property (strong, nonatomic) NSString *fromAddressForToken;
 @property (strong, nonatomic) NSString *adress;
 @property (strong, nonatomic) NSString *amount;
 @property (strong, nonatomic) QTUMBigNumber *FEE;
@@ -75,14 +74,19 @@
 @property (strong, nonatomic) QTUMBigNumber *minFee;
 @property (strong, nonatomic) QTUMBigNumber *maxFee;
 
+
 @property (strong, nonatomic) NSNumberFormatter *localeFormatter;
 
 @property (nonatomic) CGFloat standartTopOffsetForSendButton;
 
 @property (nonatomic) BOOL needUpdateTexfFields;
 @property (nonatomic) BOOL isTokenChoosen;
-@property (nonatomic) NSString *tokenNameString;
 @property (nonatomic) BOOL needUpdateTokenTexfFields;
+
+@property (nonatomic) long gasPriceStep;
+@property (nonatomic) long gasLimitStep;
+@property (nonatomic) long gasPriceMin;
+@property (nonatomic) long gasLimitMin;
 
 @property (nonatomic, copy) void (^afterCheckingBlock)(void);
 
@@ -90,15 +94,14 @@
 
 @end
 
-static NSInteger withTokenOffset = 100;
-static NSInteger withoutTokenOffset = 40;
-
-static NSInteger heightGasSlidersContainerClose = 0;
-static NSInteger heightGasSlidersContainerOpen = 150;
-static NSInteger closeTopForEditButton = 0;
-static NSInteger openTopForEditButton = 15;
-static NSInteger showedGasTopForSend = 30;
-static NSInteger hidedGasTopForSend = -40;
+static const NSInteger withTokenOffset = 100;
+static const NSInteger withoutTokenOffset = 40;
+static const NSInteger heightGasSlidersContainerClose = 0;
+static const NSInteger heightGasSlidersContainerOpen = 150;
+static const NSInteger closeTopForEditButton = 0;
+static const NSInteger openTopForEditButton = 15;
+static const NSInteger showedGasTopForSend = 30;
+static const NSInteger hidedGasTopForSend = -40;
 
 @implementation NewPaymentViewController
 
@@ -126,6 +129,7 @@ static NSInteger hidedGasTopForSend = -40;
 	self.sendButtomBottomOffset = 27;
 	self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
 
+    [self configFromAddressView];
 	[self configFee];
 	[self configGasPrice];
 	[self configGasLimit];
@@ -134,6 +138,8 @@ static NSInteger hidedGasTopForSend = -40;
 
 	[self.amountTextField addTarget:self action:@selector (updateSendButton) forControlEvents:UIControlEventEditingChanged];
 	[self.addressTextField addTarget:self action:@selector (updateSendButton) forControlEvents:UIControlEventEditingChanged];
+    
+    [self.delegate didViewLoad];
 }
 
 - (void)viewWillAppear:(BOOL) animated {
@@ -141,7 +147,6 @@ static NSInteger hidedGasTopForSend = -40;
 	[super viewWillAppear:animated];
 
 	[self updateTextFields];
-	[self.delegate didViewLoad];
 	[self updateScrollsConstraints];
 	[self showOrHideGas:YES];
 	//[self updateFeeInputs];
@@ -164,6 +169,13 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 #pragma mark - Configuration
+
+- (void)configFromAddressView {
+    
+    self.fromAddressTextField.inputView = [self createPickerView];
+    self.fromAddressTextField.inputAccessoryView = [self createToolbar];
+    self.fromAddressTextField.delegate = self;
+}
 
 - (void)configFee {
 
@@ -221,17 +233,16 @@ static NSInteger hidedGasTopForSend = -40;
 
 - (void)updateTextFields {
 
-	if (self.needUpdateTexfFields && self.addressTextField && self.amountTextField) {
-		self.addressTextField.text = self.adress;
-		self.amountTextField.text = self.amount;
-		self.needUpdateTexfFields = NO;
-	}
-
-	if (self.needUpdateTokenTexfFields && self.isTokenChoosen && self.tokenTextField) {
-		self.tokenTextField.text = self.tokenNameString;
-		self.tokenNameString = nil;
-		self.needUpdateTokenTexfFields = NO;
-	}
+//    if (self.needUpdateTexfFields && self.addressTextField && self.amountTextField) {
+//        self.addressTextField.text = self.adress;
+//        self.amountTextField.text = self.amount;
+//        self.needUpdateTexfFields = NO;
+//    }
+//
+//    if (self.needUpdateTokenTexfFields && self.isTokenChoosen && self.tokenTextField) {
+//
+//        self.needUpdateTokenTexfFields = NO;
+//    }
 }
 
 - (void)updateSendButton {
@@ -292,36 +303,72 @@ static NSInteger hidedGasTopForSend = -40;
 
 #pragma mark - NewPaymentOutput
 
-- (void)updateControlsWithTokensExist:(BOOL) isExist
-					choosenTokenExist:(BOOL) choosenExist
-						walletBalance:(QTUMBigNumber *) walletBalance
-			   andUnconfimrmedBalance:(QTUMBigNumber *) walletUnconfirmedBalance {
-
-	BOOL isTokensExists = isExist;
-	self.tokenTextField.hidden =
-			self.tokenButton.hidden =
-					self.tokenDisclousureImage.hidden = !isTokensExists;
-	self.withoutTokensConstraint.constant = isTokensExists ? withTokenOffset : withoutTokenOffset;
-	self.tokenDisclousureImage.tintColor = customBlueColor ();
-
-	if (!choosenExist) {
-		self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", nil);
-		self.isTokenChoosen = NO;
-		self.needUpdateTokenTexfFields = NO;
-		self.tokenNameString = nil;
+- (void)updateWithEtity:(NewPaymentOutputEntity *) entity {
+    
+    self.tokenBalancesInfo = entity.tokenBalancesInfo;
+    
+    if (entity.amount) {
         
+        if (entity.amount && ![entity.amount isEqualToString:@""]) {
+            QTUMBigNumber *amount = [QTUMBigNumber decimalWithString:entity.amount];
+            self.amount = [self.localeFormatter stringFromNumber:[amount decimalNumber]];
+        }
+        self.amountTextField.text = self.amount;
+    }
+    
+    if (entity.receiverAddress) {
+        
+        self.addressTextField.text = entity.receiverAddress;
+    }
+    
+    if (entity.isTokensExists) {
+        
+        self.tokenTextField.hidden =
+        self.tokenButton.hidden =
+        self.tokenDisclousureImage.hidden = NO;
+        self.withoutTokensConstraint.constant = withTokenOffset;
+        self.tokenDisclousureImage.tintColor = customBlueColor ();
+        
+    } else {
+        
+        self.tokenTextField.hidden =
+        self.tokenButton.hidden =
+        self.tokenDisclousureImage.hidden = YES;
+        self.withoutTokensConstraint.constant = withoutTokenOffset;
+    }
+    
+    if (!entity.isTokenChoosen) {
+        
+        self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", nil);
+        self.isTokenChoosen = NO;
+        self.needUpdateTokenTexfFields = NO;
+        self.reciveAddressTopConstraintToOptionalSenderAddress.active = NO;
+        self.reciveAddressTopConstraintToSuperview.active = YES;
+        self.fromAddressTextField.hidden = YES;
         //updating constraints and activity info
-        [self updateQuickInfoOfWalletWithBalance:walletBalance andUnconfirmedBalance:walletUnconfirmedBalance];
-	}
-
-	[self.view setNeedsLayout];
-	[self.view layoutIfNeeded];
-
-	[self updateScrollsConstraints];
-	[self showOrHideGas:NO];
+        [self updateQuickInfoOfWalletWithBalance:entity.walletBalance andUnconfirmedBalance:entity.unconfirmedWalletBalance];
+    } else {
+        
+        self.reciveAddressTopConstraintToSuperview.active = NO;
+        self.reciveAddressTopConstraintToOptionalSenderAddress.active = YES;
+        self.fromAddressTextField.hidden = NO;
+        self.isTokenChoosen = YES;
+        [self updateQuickInfoOfContractWithBalanceObject:entity.choosenTokenBalance andTokenSymbol:entity.tokenSymbol];
+    }
+    
+    [self updateWithTokenChoosen:entity.isTokenChoosen andTokenName:entity.tokenName];
+    
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
+    
+    [self updateScrollsConstraints];
+    [self showOrHideGas:NO];
 }
 
-- (void)updateQuickInfoOfContractWithBalance:(NSString*)balance andShortBalance:(NSString*) shortBalance {
+- (void)updateQuickInfoOfContractWithBalanceObject:(ContracBalancesObject*) addressObject andTokenSymbol:(NSString*) tokenSymbol {
+    
+    NSString* balance = addressObject.longBalanceStringBalance;
+    NSString* shortBalance = addressObject.shortBalanceStringBalance;
     
     CGSize size = [balance sizeWithAttributes:@{NSFontAttributeName: self.balanceLabel.font}];
     if (size.width > self.balanceLabel.bounds.size.width) {
@@ -329,34 +376,50 @@ static NSInteger hidedGasTopForSend = -40;
     } else {
         self.balanceLabel.text = balance;
     }
+    
+    if (tokenSymbol) {
+        
+        self.balanceSymbolLabel.text = tokenSymbol;
+    }
+    
     self.unconfirmedBalanceLabel.hidden = YES;
     self.unconfirmedBalanceTitle.hidden = YES;
     self.unconfirmedBalanceSymbolLabel.hidden = YES;
+    
+    self.fromAddressForToken = addressObject.addressString;
+    self.fromAddressTextField.text = self.fromAddressForToken;
 }
 
-- (void)updateContentWithContract:(Contract *) contract {
+- (void)updateWithTokenChoosen:(BOOL) isChoosen andTokenName:(NSString*) tokenName {
     
     if (self.tokenTextField) {
-        self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+        self.tokenTextField.text = isChoosen ? tokenName: NSLocalizedString(@"QTUM (Default)", @"");
         self.needUpdateTokenTexfFields = NO;
-        self.tokenNameString = nil;
     } else {
         self.needUpdateTokenTexfFields = YES;
-        self.tokenNameString = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
     }
-    
-    self.amountTextField.text = @"";
-    self.addressTextField.text = @"";
-    self.isTokenChoosen = contract ? YES : NO;
-    
-    [self updateQuickInfoOfContractWithBalance:contract.balanceString andShortBalance:contract.shortBalanceString];
 }
+
+//- (void)updateContentWithContract:(Contract *) contract {
+//
+//    if (self.tokenTextField) {
+//        self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
+//        self.needUpdateTokenTexfFields = NO;
+//    } else {
+//        self.needUpdateTokenTexfFields = YES;
+//    }
+//
+//    self.amountTextField.text = @"";
+//    self.addressTextField.text = @"";
+//    self.isTokenChoosen = contract ? YES : NO;
+//}
 
 - (void)updateQuickInfoOfWalletWithBalance:(QTUMBigNumber*) balance andUnconfirmedBalance:(QTUMBigNumber*) unconfirmedBalance {
     
     self.balanceLabel.text = [NSString stringWithFormat:@"%@", [balance.decimalNumber roundedNumberWithScale:3]];
     self.unconfirmedBalanceLabel.text = [NSString stringWithFormat:@"%@", [unconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
     
+    self.balanceSymbolLabel.text = NSLocalizedString(@"QTUM", @"");
     self.unconfirmedBalanceLabel.hidden = NO;
     self.unconfirmedBalanceTitle.hidden = NO;
     self.unconfirmedBalanceSymbolLabel.hidden = NO;
@@ -625,6 +688,7 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (IBAction)actionEditPressed:(id) sender {
+    
 	CGFloat changeOffset;
 	if (self.heightForGasSlidersContainer.constant == heightGasSlidersContainerOpen) {
 		self.heightForGasSlidersContainer.constant = heightGasSlidersContainerClose;
@@ -681,8 +745,32 @@ static NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)keyboardWillHide:(NSNotification *) sender {
+    
 	[self.view layoutIfNeeded];
 }
 
+#pragma mark - Picker View
+
+- (UIPickerView *)createPickerView {
+    
+    UIPickerView *fromPicker = [[UIPickerView alloc] init];
+    return fromPicker;
+}
+
+- (UIToolbar *)createToolbar {
+    
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake (0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+    return toolbar;
+}
+
+- (void)pickerView:(UIPickerView *) pickerView didSelectRow:(NSInteger) row inComponent:(NSInteger) component {
+    
+    [self.delegate didSelectTokenAddress:self.tokenBalancesInfo[row]];
+    [self updateQuickInfoOfContractWithBalanceObject:self.tokenBalancesInfo[row] andTokenSymbol:nil];
+}
 
 @end
+
+
+
+

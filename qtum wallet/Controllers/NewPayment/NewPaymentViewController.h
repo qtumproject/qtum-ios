@@ -10,11 +10,13 @@
 #import "NewPaymentOutputDelegate.h"
 #import "NewPaymentOutput.h"
 
-@interface NewPaymentViewController : BaseViewController <NewPaymentOutput>
+@interface NewPaymentViewController : BaseViewController <NewPaymentOutput, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, copy) NSString *currentBalance;
 @property (nonatomic, copy) NSDictionary *dictionary;
 @property (assign, nonatomic) NSInteger sendButtomBottomOffset;
+@property (strong, nonatomic) NSArray <ContracBalancesObject *> *tokenBalancesInfo;
 
+- (IBAction)actionVoidTap:(id) sender;
 
 @end

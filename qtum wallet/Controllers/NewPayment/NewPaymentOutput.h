@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Presentable.h"
+#import "NewPaymentOutputEntity.h"
 
 @protocol NewPaymentOutputDelegate;
 
@@ -17,12 +18,9 @@
 
 - (void)setSendInfoItem:(SendInfoItem *) item;
 
-- (void)updateControlsWithTokensExist:(BOOL) isExist
-					choosenTokenExist:(BOOL) choosenExist
-						walletBalance:(QTUMBigNumber *) walletBalance
-			   andUnconfimrmedBalance:(QTUMBigNumber *) walletUnconfirmedBalance;
-
 - (void)updateContentWithContract:(Contract *) contract;
+
+- (void)updateWithEtity:(NewPaymentOutputEntity *) entity;
 
 - (void)clearFields;
 

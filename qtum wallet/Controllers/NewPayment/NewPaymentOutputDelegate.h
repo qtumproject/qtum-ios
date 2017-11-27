@@ -14,6 +14,8 @@
 
 - (void)didPresseChooseToken;
 
+- (void)didSelectTokenAddress:(ContracBalancesObject*) tokenAddress;
+
 - (void)didPresseSendActionWithAddress:(NSString *) address
 							 andAmount:(QTUMBigNumber *) amount
 								   fee:(QTUMBigNumber *) fee

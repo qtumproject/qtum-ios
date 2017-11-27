@@ -13,5 +13,6 @@
 @property (copy, nonatomic) NSString *shortBalanceStringBalance;
 @property (copy, nonatomic) NSString *longBalanceStringBalance;
 @property (copy, nonatomic) NSString *addressString;
+@property (strong, nonatomic) QTUMBigNumber *balance;
 
 @end

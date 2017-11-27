@@ -11,15 +11,20 @@
 #import "QRCodeViewController.h"
 #import "ChoseTokenPaymentViewController.h"
 #import "ChooseTokekPaymentDelegateDataSourceDelegate.h"
+#import "NewPaymentOutputEntity.h"
 
 
 @interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
+//oututs
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (weak, nonatomic) NSObject <NewPaymentOutput> *paymentOutput;
 @property (weak, nonatomic) QRCodeViewController *qrCodeOutput;
 @property (weak, nonatomic) NSObject <ChoseTokenPaymentOutput> *tokenPaymentOutput;
+
 @property (strong, nonatomic) Contract *token;
+@property (assign, nonatomic) BOOL hasTokens;
+@property (strong, nonatomic) ContracBalancesObject *choosenTokenAddressModal;
 
 @property (strong, nonatomic) NSString *fromAddressString;
 @property (strong, nonatomic) BTCKey *fromAddressKey;
@@ -39,6 +44,16 @@
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Custom Accessors
+
+-(void)setToken:(Contract *)token {
+    
+    if (!token) {
+        self.choosenTokenAddressModal = nil;
+    }
+    _token = token;
 }
 
 - (void)start {
@@ -77,6 +92,7 @@
 			self.token = nil;
 			break;
 		case SendInfoItemTypeToken: {
+            
 			NSArray <Contract *> *tokens = SLocator.contractManager.allActiveTokens;
 
 			BOOL exist = NO;
@@ -90,7 +106,7 @@
 
 			if (!exist) {
 				[SLocator.popupService showErrorPopUp:self withContent:[PopUpContentGenerator contentForRequestTokenPopUp] presenter:nil completion:nil];
-				[self.paymentOutput setSendInfoItem:nil];
+//                [self.paymentOutput setSendInfoItem:nil];
 				self.token = nil;
 				item = nil;
 			}
@@ -98,17 +114,30 @@
 		}
 	}
 
-	[self.paymentOutput updateContentWithContract:self.token];
-	[self.paymentOutput setSendInfoItem:item];
+//    [self.paymentOutput updateContentWithContract:self.token];
+//    [self.paymentOutput setSendInfoItem:item];
 
 	self.fromAddressKey = item.fromQtumAddressKey;
-	self.fromAddressString = item.fromQtumAddress;
-
+    
+    if (item.fromQtumAddress) {
+        self.fromAddressString = item.fromQtumAddress;
+        NSArray* tokenBalanceInfo = [SLocator.contractInfoFacade arrayOfStingValuesOfTokenBalanceWithToken:self.token];
+        for (ContracBalancesObject* info in tokenBalanceInfo) {
+            if ([info.addressString isEqualToString:item.fromQtumAddress]) {
+                self.choosenTokenAddressModal = info;
+                break;
+            }
+        }
+    }    
+    
 	//bail if we have open 2 qrcode scaners
 	if (self.qrCodeOutput) {
 		[self.navigationController popViewControllerAnimated:YES];
 	}
-	[self updateOutputs];
+    
+    [self checkTokens];
+    NewPaymentOutputEntity* entity = [self entityWithSendInfo:item];
+    [self updateOutputsWithEntity:entity];
 }
 
 - (void)setForToken:(Contract *) aToken withAddress:(NSString *) address andAmount:(NSString *) amount {
@@ -125,31 +154,81 @@
 
 - (void)tokensDidChange {
 
-	[self updateOutputs];
+    NewPaymentOutputEntity* entity = [self entityWithToken];
+	[self updateOutputsWithEntity:entity];
 }
 
 #pragma mark - Private Methods
 
-- (void)updateOutputs {
+-(NewPaymentOutputEntity*)entityWithSendInfo:(SendInfoItem*) item {
+    
+    NewPaymentOutputEntity* entity = [self entityWithToken];
+    
+    if (!item) {
+        return entity;
+    }
+    
+    entity.receiverAddress = item.qtumAddressKey ? item.qtumAddressKey.address.string : item.qtumAddress;
+    entity.amount = item.amountString;
+    
+    return entity;
+}
+
+-(NewPaymentOutputEntity*)defaultEntity {
+    
+    NewPaymentOutputEntity* entity = [NewPaymentOutputEntity new];
+    
+    BOOL tokenExists = self.token ? YES : NO;
+    
+    entity.walletBalance = SLocator.walletManager.wallet.balance;
+    entity.unconfirmedWalletBalance = SLocator.walletManager.wallet.unconfirmedBalance;
+    entity.tokensExists = self.hasTokens;
+    entity.tokenChoosen = tokenExists;
+    
+    return entity;
+}
+
+- (void)checkTokens {
+    
+    NSArray <Contract *> *tokens = SLocator.contractManager.allActiveTokens;
+
+    if (![tokens containsObject:self.token]) {
+        self.token = nil;
+    }
+    
+    self.hasTokens = tokens.count > 0 ? YES : NO;
+}
+
+- (NewPaymentOutputEntity*)entityWithToken {
+    
+    NewPaymentOutputEntity* entity = [self defaultEntity];
+    entity.tokenName = self.token.localName ?: @"";
+    entity.tokenSymbol = self.token.symbol;
+    
+    entity.tokenBalancesInfo = [SLocator.contractInfoFacade sortedArrayOfStingValuesOfTokenBalanceWithToken:self.token];
+    entity.contractBalanceString = self.token ? self.token.balanceString : @"";
+    entity.shortContractBalanceString = self.token ? self.token.shortBalanceString : @"";
+    
+    if (!self.choosenTokenAddressModal) {
+        self.choosenTokenAddressModal = self.token ? entity.tokenBalancesInfo[0] : nil;
+    }
+    entity.choosenTokenBalance = self.choosenTokenAddressModal;
+    
+    return entity;
+}
+
+- (void)updateOutputsWithEntity:(NewPaymentOutputEntity*) entity {
 
 	__weak __typeof (self) weakSelf = self;
-
+    
 	dispatch_async (dispatch_get_main_queue (), ^{
 
-		NSArray <Contract *> *tokens = SLocator.contractManager.allActiveTokens;
-		BOOL tokenExists = NO;
 
 		if (weakSelf.tokenPaymentOutput) {
-			[weakSelf.tokenPaymentOutput updateWithTokens:tokens];
+			[weakSelf.tokenPaymentOutput updateWithTokens:SLocator.contractManager.allActiveTokens];
 		}
 
-		if (self.token && [tokens containsObject:self.token]) {
-			tokenExists = YES;
-		} else {
-			self.token = nil;
-		}
-
-		[weakSelf.paymentOutput updateControlsWithTokensExist:tokens.count choosenTokenExist:tokenExists walletBalance:SLocator.walletManager.wallet.balance andUnconfimrmedBalance:SLocator.walletManager.wallet.unconfirmedBalance];
+		[weakSelf.paymentOutput updateWithEtity:entity];
 	});
 }
 
@@ -194,9 +273,9 @@
 	[self showLoaderPopUp];
 	__weak typeof (self) weakSelf = self;
 
-	if (self.fromAddressString) {
+	if (self.choosenTokenAddressModal) {
 		[SLocator.transactionManager sendToken:self.token
-								   fromAddress:self.fromAddressString
+								   fromAddress:self.choosenTokenAddressModal.addressString
 									 toAddress:address
 										amount:amounDivByDecimals
 										   fee:fee
@@ -300,9 +379,19 @@
 
 #pragma mark - NewPaymentViewControllerDelegate
 
+- (void)didSelectTokenAddress:(ContracBalancesObject*) tokenAddress {
+    
+    self.choosenTokenAddressModal = tokenAddress;
+    [self checkTokens];
+    NewPaymentOutputEntity* entity = [self entityWithToken];
+    [self updateOutputsWithEntity:entity];
+}
+
 - (void)didViewLoad {
 
-	[self updateOutputs];
+    [self checkTokens];
+    NewPaymentOutputEntity* entity = [self defaultEntity];
+    [self updateOutputsWithEntity:entity];
 }
 
 - (void)didPresseQRCodeScaner {
@@ -396,14 +485,19 @@
 - (void)didSelectTokenIndexPath:(NSIndexPath *) indexPath withItem:(Contract *) item {
 
 	self.token = item;
+    [self checkTokens];
 	[self.navigationController popViewControllerAnimated:YES];
-	[self.paymentOutput updateContentWithContract:item];
+    
+    NewPaymentOutputEntity* entity = [self entityWithToken];
+    [self updateOutputsWithEntity:entity];
 }
 
 - (void)didResetToDefaults {
 
-	[self.paymentOutput updateContentWithContract:nil];
-	self.token = nil;
+    self.token = nil;
+	[self checkTokens];
+    NewPaymentOutputEntity* entity = [self entityWithToken];
+    [self updateOutputsWithEntity:entity];
 }
 
 @end

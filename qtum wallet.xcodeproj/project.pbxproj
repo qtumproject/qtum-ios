@@ -17,6 +17,7 @@
 		B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */; };
 		B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */; };
 		B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */; };
+		B305A10C1FCC252A00FC4D2F /* NewPaymentOutputEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */; };
 		B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F2E1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m */; };
 		B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */; };
 		B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */; };
@@ -727,6 +728,8 @@
 		B3054E331F0BBB29001B1F63 /* NewPaymentOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutputDelegate.h; sourceTree = "<group>"; };
 		B3054E351F0BC037001B1F63 /* ChoseTokenPaymentOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentOutput.h; sourceTree = "<group>"; };
 		B3054E361F0BC045001B1F63 /* ChoseTokenPaymentOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentOutputDelegate.h; sourceTree = "<group>"; };
+		B305A10A1FCC252A00FC4D2F /* NewPaymentOutputEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutputEntity.h; sourceTree = "<group>"; };
+		B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPaymentOutputEntity.m; sourceTree = "<group>"; };
 		B3076F2B1F307D4900FB7D5A /* ConstructorAbiOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutput.h; sourceTree = "<group>"; };
 		B3076F2C1F307D7200FB7D5A /* ConstructorAbiOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutputDelegate.h; sourceTree = "<group>"; };
 		B3076F2D1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorFromAbiViewControllerDark.h; sourceTree = "<group>"; };
@@ -2150,6 +2153,15 @@
 				B3EE8F471F13708500131823 /* ChoseTokenPaymentViewControllerDark.m */,
 			);
 			name = ChoseTokenPaymentOutput;
+			sourceTree = "<group>";
+		};
+		B305A1091FCC24F400FC4D2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B305A10A1FCC252A00FC4D2F /* NewPaymentOutputEntity.h */,
+				B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		B3076F2A1F307D2500FB7D5A /* Constructor */ = {
@@ -4184,6 +4196,7 @@
 		E7396AF11DDEF81A0002CD47 /* NewPayment */ = {
 			isa = PBXGroup;
 			children = (
+				B305A1091FCC24F400FC4D2F /* Model */,
 				B3E159261ED6E39F00D70A87 /* Cell */,
 				B3054E311F0BBACD001B1F63 /* NewPaymentOutput */,
 				B3054E341F0BC011001B1F63 /* ChoseTokenPaymentOutput */,
@@ -5876,6 +5889,7 @@
 				B315D0351F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.m in Sources */,
 				B369DF321F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m in Sources */,
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
+				B305A10C1FCC252A00FC4D2F /* NewPaymentOutputEntity.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */,
 				E7C9FAE01F7908E0005D08AD /* ConfirmPopUpViewControllerLight.m in Sources */,

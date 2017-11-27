@@ -1,4 +1,3 @@
-
 //
 //  QTUMBigNumber.m
 //  qtum wallet
