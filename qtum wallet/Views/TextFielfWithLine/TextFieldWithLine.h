@@ -14,6 +14,8 @@
 
 @property (nonatomic, readonly) UILabel *placeholderLabel;
 
+@property (strong, nonatomic) NSString* appendingTextToPlaceHolder;
+
 - (void)setEnablePast:(BOOL) value;
 
 - (UIColor *)getUnderlineColorDeselected;

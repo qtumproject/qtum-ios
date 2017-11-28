@@ -16,6 +16,8 @@ CGFloat const kCenterYChanges = 20.0f;
 @property (nonatomic) UILabel *placeholderLabel;
 @property (nonatomic) BOOL pastEnabled;
 
+@property (strong, nonatomic) NSString* placeHolderText;
+
 @property (nonatomic) NSLayoutConstraint *centerYConstraintForLabel;
 @property (nonatomic) NSLayoutConstraint *centerXConstraintForLabel;
 @property (nonatomic) NSLayoutConstraint *leadingConstraintForLabel;
@@ -68,7 +70,8 @@ CGFloat const kCenterYChanges = 20.0f;
 	_placeholderLabel = [UILabel new];
 	_placeholderLabel.font = [self getPlaceholderFont];
 	_placeholderLabel.textColor = [self getPlaceholderColor];
-	_placeholderLabel.text = self.placeholder;
+	_placeholderLabel.text =
+    _placeHolderText = self.placeholder;
 	[super setPlaceholder:@""];
 	_placeholderLabel.translatesAutoresizingMaskIntoConstraints = NO;
 	[_placeholderLabel sizeToFit];
@@ -151,6 +154,7 @@ CGFloat const kCenterYChanges = 20.0f;
 
 - (void)setAttributedPlaceholder:(NSAttributedString *) attributedPlaceholder {
 
+    self.placeHolderText = attributedPlaceholder.string;
 	[self.placeholderLabel setText:attributedPlaceholder.string];
 	[self.placeholderLabel sizeToFit];
 
@@ -159,6 +163,7 @@ CGFloat const kCenterYChanges = 20.0f;
 
 - (void)setPlaceholder:(NSString *) placeholder {
 
+    self.placeHolderText = placeholder;
 	self.placeholderLabel.text = placeholder;
 
 	[super setPlaceholder:@""];
@@ -194,12 +199,22 @@ CGFloat const kCenterYChanges = 20.0f;
 #pragma mark - Animation
 
 - (void)moveLabelUp:(BOOL) animated {
+    
 	if (self.centerYConstraintForLabel.constant != 0) {
 		return;
 	}
 
+    NSString* placeholderText;
+    if (self.appendingTextToPlaceHolder) {
+        placeholderText = [NSString stringWithFormat:@"%@ (%@)", self.placeHolderText, self.appendingTextToPlaceHolder ?: @""];
+    } else {
+        placeholderText = self.placeHolderText;
+    }
+    
+    CGSize size = [placeholderText sizeWithAttributes:@{NSFontAttributeName: self.placeholderLabel.font}];
+    self.placeholderLabel.text = placeholderText;
 	self.centerYConstraintForLabel.constant = self.centerYConstraintForLabel.constant - kCenterYChanges;
-	self.leadingConstraintForLabel.constant = self.leadingConstraintForLabel.constant - (self.placeholderLabel.frame.size.width * 0.25f) / 2;
+    self.leadingConstraintForLabel.constant = self.leadingConstraintForLabel.constant - (size.width * 0.25f) / 2;
 
 	if (animated) {
 		[UIView animateWithDuration:0.2f animations:^{
@@ -213,6 +228,7 @@ CGFloat const kCenterYChanges = 20.0f;
 }
 
 - (void)moveLabelDown:(BOOL) animated {
+    
 	if (self.centerYConstraintForLabel.constant == 0) {
 		return;
 	}
@@ -223,10 +239,12 @@ CGFloat const kCenterYChanges = 20.0f;
 	if (animated) {
 		[UIView animateWithDuration:0.2f animations:^{
 			self.placeholderLabel.transform = CGAffineTransformScale (self.placeholderLabel.transform, 1.0f / 0.75f, 1.0f / 0.75f);
+            self.placeholderLabel.text = self.placeHolderText;
 			[self layoutIfNeeded];
 		}];
 	} else {
 		self.placeholderLabel.transform = CGAffineTransformScale (self.placeholderLabel.transform, 1.0f / 0.75f, 1.0f / 0.75f);
+        self.placeholderLabel.text = self.placeHolderText;
 		[self layoutIfNeeded];
 	}
 }

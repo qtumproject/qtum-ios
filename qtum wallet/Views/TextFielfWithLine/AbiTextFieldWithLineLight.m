@@ -47,6 +47,7 @@
 			[item.type isKindOfClass:[AbiParameterTypeInt class]] ||
 			[item.type isKindOfClass:[AbiParameterTypeBool class]]) ? UIKeyboardTypeDecimalPad : UIKeyboardTypeDefault;
 	self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:item.name];
+    self.appendingTextToPlaceHolder = item.typeAsString;
 	_item = item;
 }
 

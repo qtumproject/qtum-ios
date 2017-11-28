@@ -50,6 +50,7 @@
 			[item.type isKindOfClass:[AbiParameterTypeInt class]] ||
 			[item.type isKindOfClass:[AbiParameterTypeBool class]]) ? UIKeyboardTypeDecimalPad : UIKeyboardTypeDefault;
 	self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:item.name attributes:@{NSForegroundColorAttributeName: customBlueColor ()}];
+    self.appendingTextToPlaceHolder = item.typeAsString;
 	_item = item;
 }
 
