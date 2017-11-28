@@ -26,7 +26,7 @@
 #import "ChooseReciveAddressOutput.h"
 
 
-@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeViewControllerDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate, ChooseReciveAddressOutputDelegate>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeOutputDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate, ChooseReciveAddressOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 
@@ -68,7 +68,7 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - QRCodeViewControllerDelegate
+#pragma mark - QRCodeOutputDelegate
 
 - (void)didQRCodeScannedWithSendInfoItem:(SendInfoItem *) item {
 
@@ -431,9 +431,9 @@
 
 - (void)didShowQRCodeScan {
 
-	QRCodeViewController *vc = [SLocator.controllersFactory createQRCodeViewControllerForWallet];
-	vc.delegate = self;
-	[self.navigationController pushViewController:vc animated:YES];
+	NSObject <QRCodeOutput> *output = [SLocator.controllersFactory createQRCodeViewControllerForWallet];
+	output.delegate = self;
+	[self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
 - (void)didRefreshTableViewBalanceLocal:(BOOL) isLocal {

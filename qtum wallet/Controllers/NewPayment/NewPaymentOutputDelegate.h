@@ -24,7 +24,7 @@
 
 - (void)didViewLoad;
 
-- (BOOL)needCheckForChanges;
+- (BOOL)shoudStartEditingAddress;
 
 - (void)changeToStandartOperation;
 

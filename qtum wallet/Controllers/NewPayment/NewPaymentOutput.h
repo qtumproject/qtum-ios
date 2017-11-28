@@ -24,13 +24,7 @@
 
 - (void)clearFields;
 
-- (void)showErrorPopUp:(NSString *) message;
-
-- (void)showCompletedPopUp;
-
-- (void)showLoaderPopUp;
-
-- (void)hideLoaderPopUp;
+- (void)startEditingAddress;
 
 - (void)setMinFee:(QTUMBigNumber *) minFee andMaxFee:(QTUMBigNumber *) maxFee;
 

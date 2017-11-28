@@ -12,14 +12,16 @@
 #import "ChoseTokenPaymentViewController.h"
 #import "ChooseTokekPaymentDelegateDataSourceDelegate.h"
 #import "NewPaymentOutputEntity.h"
+#import "SendModuleRouter.h"
+#import "ErrorPopUpViewController.h"
+#import "ConfirmPopUpViewController.h"
 
 
-@interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeViewControllerDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate, PopUpWithTwoButtonsViewControllerDelegate>
+@interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeOutputDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 //oututs
-@property (strong, nonatomic) UINavigationController *navigationController;
 @property (weak, nonatomic) NSObject <NewPaymentOutput> *paymentOutput;
-@property (weak, nonatomic) QRCodeViewController *qrCodeOutput;
+@property (weak, nonatomic) NSObject <QRCodeOutput> *qrCodeOutput;
 @property (weak, nonatomic) NSObject <ChoseTokenPaymentOutput> *tokenPaymentOutput;
 
 @property (strong, nonatomic) Contract *token;
@@ -30,6 +32,10 @@
 @property (strong, nonatomic) BTCKey *fromAddressKey;
 @property (strong, nonatomic) NSOperationQueue *workingQueue;
 @property (strong, nonatomic) dispatch_semaphore_t updatingSemaphore;
+@property (assign, nonatomic) BOOL needProtectInputs;
+@property (strong, nonatomic) id <BaseRouterProtocol> router;
+
+@property (nonatomic, copy) void (^afterCheckingChangesBlock)(void);
 
 
 @end
@@ -41,10 +47,10 @@
 	self = [super init];
 	if (self) {
         
-		_navigationController = navigationController;
         _workingQueue = [NSOperationQueue new];
         _workingQueue.maxConcurrentOperationCount = 1;
         _updatingSemaphore = dispatch_semaphore_create (0);
+        _router = [[BaseRouter alloc] initWithNavigationController:navigationController];
 	}
 	return self;
 }
@@ -64,14 +70,17 @@
     _token = token;
 }
 
+#pragma mark - Coordinator
+
 - (void)start {
 
-	NSObject <NewPaymentOutput> *controller = [SLocator.controllersFactory createNewPaymentDarkViewController];
-	controller.delegate = self;
-	self.paymentOutput = controller;
-	[self.navigationController setViewControllers:@[[controller toPresent]]];
+	NSObject <NewPaymentOutput> *output = [SLocator.controllersFactory createNewPaymentDarkViewController];
+	output.delegate = self;
+	self.paymentOutput = output;
+    
+	[self.router setRootOutput:output];
 
-	[self.paymentOutput showLoaderPopUp];
+	[self showLoaderPopUp];
 
 	__weak __typeof (self) weakSelf = self;
 	[SLocator.transactionManager getFeePerKbWithHandler:^(QTUMBigNumber *feePerKb) {
@@ -82,7 +91,7 @@
 		[weakSelf.paymentOutput setMinFee:minFee andMaxFee:maxFee];
 		[weakSelf.paymentOutput setMinGasPrice:SLocator.paymentValuesManager.minGasPrice andMax:SLocator.paymentValuesManager.maxGasPrice step:GasPriceStep];
 		[weakSelf.paymentOutput setMinGasLimit:SLocator.paymentValuesManager.minGasLimit andMax:SLocator.paymentValuesManager.maxGasLimit standart:SLocator.paymentValuesManager.standartGasLimit step:GasLimitStep];
-		[weakSelf.paymentOutput hideLoaderPopUp];
+		[weakSelf hideLoaderPopUp];
 	}];
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (tokensDidChange) name:kTokenDidChange object:nil];
@@ -106,6 +115,8 @@
 
 
 - (void)setForSendSendInfoItem:(SendInfoItem *) item {
+    
+    self.needProtectInputs = YES;
     
 	switch (item.type) {
 		case SendInfoItemTypeQtum:
@@ -131,16 +142,12 @@
 
 			if (!exist) {
 				[SLocator.popupService showErrorPopUp:self withContent:[PopUpContentGenerator contentForRequestTokenPopUp] presenter:nil completion:nil];
-//                [self.paymentOutput setSendInfoItem:nil];
 				self.token = nil;
 				item = nil;
 			}
 			break;
 		}
 	}
-
-//    [self.paymentOutput updateContentWithContract:self.token];
-//    [self.paymentOutput setSendInfoItem:item];
 
 	self.fromAddressKey = item.fromQtumAddressKey;
     
@@ -157,7 +164,7 @@
     
 	//bail if we have open 2 qrcode scaners
 	if (self.qrCodeOutput) {
-		[self.navigationController popViewControllerAnimated:YES];
+		[self.router popOutputAnimated:YES];
 	}
     
     __weak __typeof (self) weakSelf = self;
@@ -186,9 +193,7 @@
 	[self setForSendSendInfoItem:item];
 }
 
-- (void)didSelectedFromTabbar {
-
-}
+- (void)didSelectedFromTabbar {}
 
 #pragma mark - Observing
 
@@ -414,22 +419,49 @@
 	return YES;
 }
 
-#pragma mark - Popup
-
-- (void)hideLoaderPopUp {
-	[self.paymentOutput hideLoaderPopUp];
+- (void)showChooseTokenOutput {
+    
+    NSObject <ChoseTokenPaymentOutput> *output = (NSObject <ChoseTokenPaymentOutput> *)[SLocator.controllersFactory createChoseTokenPaymentViewController];
+    output.delegate = self;
+    output.delegateDataSource = [SLocator.tableSourcesFactory createSendTokenPaymentSource];
+    output.delegateDataSource.activeToken = self.token;
+    output.delegateDataSource.delegate = self;
+    [output updateWithTokens:SLocator.contractManager.allActiveTokens];
+    self.tokenPaymentOutput = output;
+    [self.router pushOutput:output animated:YES];
 }
 
-- (void)showErrorPopUp:(NSString *) message {
-	[self.paymentOutput showErrorPopUp:message];
+#pragma mark - Popup
+
+- (void)showLoaderPopUp {
+    
+    [SLocator.popupService showLoaderPopUp];
 }
 
 - (void)showCompletedPopUp {
-	[self.paymentOutput showCompletedPopUp];
+    
+    [SLocator.popupService showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
 }
 
-- (void)showLoaderPopUp {
-	[self.paymentOutput showLoaderPopUp];
+- (void)showErrorPopUp:(NSString *) message {
+    PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+    if (message) {
+        content.messageString = message;
+        content.titleString = NSLocalizedString(@"Failed", nil);
+    }
+
+    ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [popUp setOnlyCancelButton];
+}
+
+- (void)hideLoaderPopUp {
+    [SLocator.popupService dismissLoader];
+}
+
+- (void)showConfirmChangesPopUp {
+    
+    PopUpContent *content = [PopUpContentGenerator contentForConfirmChangesInSend];
+    [SLocator.popupService showConfirmPopUp:self withContent:content presenter:nil completion:nil];
 }
 
 #pragma mark - NewPaymentViewControllerDelegate
@@ -484,29 +516,36 @@
 
 - (void)didPresseQRCodeScaner {
 
-	QRCodeViewController *controller = (QRCodeViewController *)[SLocator.controllersFactory createQRCodeViewControllerForSend];
-	controller.delegate = self;
-	self.qrCodeOutput = controller;
-	[self.navigationController pushViewController:controller animated:YES];
+	NSObject <QRCodeOutput> *output = [SLocator.controllersFactory createQRCodeViewControllerForSend];
+	output.delegate = self;
+	self.qrCodeOutput = output;
+	[self.router pushOutput:output animated:YES];
 }
 
 - (void)didPresseChooseToken {
-
-	NSObject <ChoseTokenPaymentOutput> *tokenController = (NSObject <ChoseTokenPaymentOutput> *)[SLocator.controllersFactory createChoseTokenPaymentViewController];
-	tokenController.delegate = self;
-	tokenController.delegateDataSource = [SLocator.tableSourcesFactory createSendTokenPaymentSource];
-	tokenController.delegateDataSource.activeToken = self.token;
-	tokenController.delegateDataSource.delegate = self;
-	[tokenController updateWithTokens:SLocator.contractManager.allActiveTokens];
-	self.tokenPaymentOutput = tokenController;
-	[self.navigationController pushViewController:[tokenController toPresent] animated:YES];
+    
+    __weak typeof(self)weakSelf = self;
+    
+    if ([self isInputsProtected]) {
+        [self showConfirmChangesPopUp];
+        
+        self.afterCheckingChangesBlock = ^{
+            
+            weakSelf.needProtectInputs = NO;
+            [weakSelf showChooseTokenOutput];
+        };
+        
+    } else {
+        
+        [self showChooseTokenOutput];
+    }
 }
 
 - (void)didPresseSendActionWithAddress:(NSString *) address andAmount:(QTUMBigNumber *) amount fee:(QTUMBigNumber *) fee gasPrice:(QTUMBigNumber *) gasPrice gasLimit:(QTUMBigNumber *) gasLimit {
 
     if (![SLocator.validationInputService isValidAddressString:address]) {
         NSString *text = NSLocalizedString(@"Incorrect address", @"");
-        [self.paymentOutput showErrorPopUp:text];
+        [self showErrorPopUp:text];
         return;
     }
     
@@ -527,32 +566,58 @@
 	}
 }
 
-- (BOOL)needCheckForChanges {
-	return self.fromAddressKey != nil || self.fromAddressString != nil;
+- (BOOL)shoudStartEditingAddress {
+    
+    BOOL shoudStartEdite = ![self isInputsProtected];
+    
+    if (!shoudStartEdite) {
+        
+        __weak __typeof (self) weakSelf = self;
+
+        [self showConfirmChangesPopUp];
+        self.afterCheckingChangesBlock = ^{
+            weakSelf.needProtectInputs = NO;
+            [weakSelf.paymentOutput startEditingAddress];
+        };
+    }
+    return shoudStartEdite;
 }
+
+- (BOOL)isInputsProtected {
+    
+    return (self.fromAddressKey != nil || self.fromAddressString != nil) && self.needProtectInputs;
+}
+
 
 - (void)changeToStandartOperation {
 	self.fromAddressKey = nil;
 	self.fromAddressString = nil;
 }
 
-#pragma mark - QRCodeViewControllerDelegate
+#pragma mark - QRCodeOutputDelegate
 
 - (void)didQRCodeScannedWithSendInfoItem:(SendInfoItem *) item {
 
-	[self.navigationController popViewControllerAnimated:YES];
-
+	[self.router popOutputAnimated:YES];
 	[self setForSendSendInfoItem:item];
 }
 
 - (void)didBackPressed {
 
-	[self.navigationController popViewControllerAnimated:YES];
+    [self.router popOutputAnimated:YES];
 }
 
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
+    
+    if ([sender isKindOfClass:[ConfirmPopUpViewController class]]) {
+        
+        if (self.afterCheckingChangesBlock) {
+            self.afterCheckingChangesBlock();
+            self.afterCheckingChangesBlock = nil;
+        }
+    }
     
 	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
@@ -567,7 +632,7 @@
 
 - (void)didPressedBackAction {
 
-	[self.navigationController popViewControllerAnimated:YES];
+    [self.router popOutputAnimated:YES];
 }
 
 #pragma mark - ChoseTokenPaymentOutputDelegate
@@ -593,7 +658,7 @@
     }];
     
     [self.workingQueue addOperation:operation];
-	[self.navigationController popViewControllerAnimated:YES];
+    [self.router popOutputAnimated:YES];
 }
 
 - (void)didResetToDefaults {

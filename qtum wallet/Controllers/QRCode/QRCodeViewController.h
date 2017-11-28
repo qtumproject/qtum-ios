@@ -7,18 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "QRCodeManager.h"
+#import "QRCodeOutput.h"
 
-@protocol QRCodeViewControllerDelegate <NSObject>
-
-- (void)didQRCodeScannedWithSendInfoItem:(SendInfoItem *) item;
-
-- (void)didBackPressed;
-
-@end
-
-@interface QRCodeViewController : BaseViewController
-
-@property (nonatomic, weak) id <QRCodeViewControllerDelegate> delegate;
+@interface QRCodeViewController : BaseViewController <QRCodeOutput>
 
 @end

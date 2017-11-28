@@ -6,10 +6,8 @@
 //  Copyright (c) 2014 Jānis Kiršteins. All rights reserved.
 //
 
-#import
-<XCTest/XCTest.h>
-#import
-"JKBigInteger.h"
+#import <XCTest/XCTest.h>
+#import "JKBigInteger.h"
 
 @interface JKBigInteger_iOSTests : XCTestCase
 
@@ -19,12 +17,12 @@
 
 - (void)setUp {
 
-[super setUp];
+    [super setUp];
 }
 
 - (void)tearDown {
 
-[super tearDown];
+    [super tearDown];
 }
 
 - (void)testExample {

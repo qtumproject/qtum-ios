@@ -66,7 +66,6 @@
 
 // Properties
 @property (strong, nonatomic) NSString *fromAddressForToken;
-@property (strong, nonatomic) NSString *adress;
 @property (strong, nonatomic) NSString *amount;
 @property (strong, nonatomic) QTUMBigNumber *FEE;
 @property (strong, nonatomic) QTUMBigNumber *gasPrice;
@@ -87,8 +86,6 @@
 @property (nonatomic) long gasLimitStep;
 @property (nonatomic) long gasPriceMin;
 @property (nonatomic) long gasLimitMin;
-
-@property (nonatomic, copy) void (^afterCheckingBlock)(void);
 
 - (IBAction)makePaymentButtonWasPressed:(id) sender;
 
@@ -146,10 +143,8 @@ static const NSInteger hidedGasTopForSend = -40;
 
 	[super viewWillAppear:animated];
 
-	[self updateTextFields];
 	[self updateScrollsConstraints];
 	[self showOrHideGas:YES];
-	//[self updateFeeInputs];
 }
 
 - (void)viewDidAppear:(BOOL) animated {
@@ -165,6 +160,7 @@ static const NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)dealloc {
+    
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -188,6 +184,7 @@ static const NSInteger hidedGasTopForSend = -40;
 }
 
 - (void)configGasPrice {
+    
 	self.gasPriceSlider.minimumValue = 40;
 	self.gasPriceSlider.maximumValue = 100;
 	self.gasPriceSlider.value = 40;
@@ -225,24 +222,11 @@ static const NSInteger hidedGasTopForSend = -40;
 
 
 - (void)updateFeeInputs {
+    
 	self.feeSlider.hidden = self.isTokenChoosen;
 	self.feeTextField.hidden = self.isTokenChoosen;
 	self.maxFeeLabel.hidden = self.isTokenChoosen;
 	self.minFeeLabel.hidden = self.isTokenChoosen;
-}
-
-- (void)updateTextFields {
-
-//    if (self.needUpdateTexfFields && self.addressTextField && self.amountTextField) {
-//        self.addressTextField.text = self.adress;
-//        self.amountTextField.text = self.amount;
-//        self.needUpdateTexfFields = NO;
-//    }
-//
-//    if (self.needUpdateTokenTexfFields && self.isTokenChoosen && self.tokenTextField) {
-//
-//        self.needUpdateTokenTexfFields = NO;
-//    }
 }
 
 - (void)updateSendButton {
@@ -402,19 +386,10 @@ static const NSInteger hidedGasTopForSend = -40;
     }
 }
 
-//- (void)updateContentWithContract:(Contract *) contract {
-//
-//    if (self.tokenTextField) {
-//        self.tokenTextField.text = contract ? contract.localName : NSLocalizedString(@"QTUM (Default)", @"");
-//        self.needUpdateTokenTexfFields = NO;
-//    } else {
-//        self.needUpdateTokenTexfFields = YES;
-//    }
-//
-//    self.amountTextField.text = @"";
-//    self.addressTextField.text = @"";
-//    self.isTokenChoosen = contract ? YES : NO;
-//}
+- (void)startEditingAddress {
+    
+    [self.addressTextField becomeFirstResponder];
+}
 
 - (void)updateQuickInfoOfWalletWithBalance:(QTUMBigNumber*) balance andUnconfirmedBalance:(QTUMBigNumber*) unconfirmedBalance {
     
@@ -427,40 +402,11 @@ static const NSInteger hidedGasTopForSend = -40;
     self.unconfirmedBalanceSymbolLabel.hidden = NO;
 }
 
-- (void)showLoaderPopUp {
-	[SLocator.popupService showLoaderPopUp];
-}
-
-- (void)showCompletedPopUp {
-	[SLocator.popupService showInformationPopUp:self withContent:[PopUpContentGenerator contentForSend] presenter:nil completion:nil];
-}
-
-- (void)showErrorPopUp:(NSString *) message {
-	PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
-	if (message) {
-		content.messageString = message;
-		content.titleString = NSLocalizedString(@"Failed", nil);
-	}
-
-	ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
-	[popUp setOnlyCancelButton];
-}
-
-- (void)hideLoaderPopUp {
-	[SLocator.popupService dismissLoader];
-}
-
-- (void)showConfirmChangesPopUp {
-	PopUpContent *content = [PopUpContentGenerator contentForConfirmChangesInSend];
-	[SLocator.popupService showConfirmPopUp:self withContent:content presenter:nil completion:nil];
-}
-
 - (void)clearFields {
 
 	self.addressTextField.text = @"";
 	self.amountTextField.text = @"";
 	self.amount = nil;
-	self.adress = nil;
 
 	[self updateSendButton];
 }
@@ -515,51 +461,6 @@ static const NSInteger hidedGasTopForSend = -40;
 	self.gasLimitMaxValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:[max decimalNumber]]];
 }
 
-#pragma mark - PopUpWithTwoButtonsViewControllerDelegate
-
-- (void)okButtonPressed:(PopUpViewController *) sender {
-
-	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
-	if ([sender isKindOfClass:[InformationPopUpViewController class]]) {
-		[self clearFields];
-	}
-
-	if ([sender isKindOfClass:[ConfirmPopUpViewController class]]) {
-		[self.delegate changeToStandartOperation];
-		if (self.afterCheckingBlock) {
-			self.afterCheckingBlock ();
-			self.afterCheckingBlock = nil;
-		}
-		return;
-	}
-
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)cancelButtonPressed:(PopUpViewController *) sender {
-	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
-}
-
-#pragma mark - iMessage
-
-- (void)setSendInfoItem:(SendInfoItem *) item {
-
-	if (item.qtumAddressKey) {
-		self.adress = item.qtumAddressKey.address.string;
-	} else {
-		self.adress = item.qtumAddress;
-	}
-
-	if (item.amountString && ![item.amountString isEqualToString:@""]) {
-		QTUMBigNumber *amount = [QTUMBigNumber decimalWithString:item.amountString];
-		self.amount = [self.localeFormatter stringFromNumber:[amount decimalNumber]];
-	}
-
-	self.needUpdateTexfFields = YES;
-
-	[self updateTextFields];
-}
-
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string {
@@ -591,13 +492,9 @@ static const NSInteger hidedGasTopForSend = -40;
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *) textField {
 
-	if (textField == self.addressTextField && [self.delegate needCheckForChanges]) {
-		[self showConfirmChangesPopUp];
-		__weak typeof (self) weakSelf = self;
-		self.afterCheckingBlock = ^{
-			[weakSelf.addressTextField becomeFirstResponder];
-		};
-		return NO;
+	if (textField == self.addressTextField) {
+        
+		return  [self.delegate shoudStartEditingAddress];
 	}
 	return YES;
 }
@@ -672,15 +569,6 @@ static const NSInteger hidedGasTopForSend = -40;
 }
 
 - (IBAction)didPressedChoseTokensAction:(id) sender {
-
-	if ([self.delegate needCheckForChanges]) {
-		[self showConfirmChangesPopUp];
-		__weak typeof (self) wealSelf = self;
-		self.afterCheckingBlock = ^{
-			[wealSelf.delegate didPresseChooseToken];
-		};
-		return;
-	}
 
 	[self.delegate didPresseChooseToken];
 }
@@ -772,7 +660,3 @@ static const NSInteger hidedGasTopForSend = -40;
 }
 
 @end
-
-
-
-

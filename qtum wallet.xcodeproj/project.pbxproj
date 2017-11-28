@@ -18,6 +18,8 @@
 		B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */; };
 		B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */; };
 		B305A10C1FCC252A00FC4D2F /* NewPaymentOutputEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */; };
+		B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1101FCD804E00FC4D2F /* BaseRouter.m */; };
+		B305A1141FCD85B600FC4D2F /* SendModuleRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */; };
 		B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F2E1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m */; };
 		B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */; };
 		B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */; };
@@ -730,6 +732,13 @@
 		B3054E361F0BC045001B1F63 /* ChoseTokenPaymentOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentOutputDelegate.h; sourceTree = "<group>"; };
 		B305A10A1FCC252A00FC4D2F /* NewPaymentOutputEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutputEntity.h; sourceTree = "<group>"; };
 		B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPaymentOutputEntity.m; sourceTree = "<group>"; };
+		B305A10E1FCD7DE700FC4D2F /* BaseRouterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRouterProtocol.h; sourceTree = "<group>"; };
+		B305A10F1FCD804E00FC4D2F /* BaseRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRouter.h; sourceTree = "<group>"; };
+		B305A1101FCD804E00FC4D2F /* BaseRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseRouter.m; sourceTree = "<group>"; };
+		B305A1121FCD85B600FC4D2F /* SendModuleRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendModuleRouter.h; sourceTree = "<group>"; };
+		B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendModuleRouter.m; sourceTree = "<group>"; };
+		B305A1171FCD85F600FC4D2F /* SendRouterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendRouterProtocol.h; sourceTree = "<group>"; };
+		B305A1181FCD87A300FC4D2F /* QRCodeOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCodeOutput.h; sourceTree = "<group>"; };
 		B3076F2B1F307D4900FB7D5A /* ConstructorAbiOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutput.h; sourceTree = "<group>"; };
 		B3076F2C1F307D7200FB7D5A /* ConstructorAbiOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutputDelegate.h; sourceTree = "<group>"; };
 		B3076F2D1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorFromAbiViewControllerDark.h; sourceTree = "<group>"; };
@@ -2164,6 +2173,26 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		B305A10D1FCD7DCA00FC4D2F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B305A10E1FCD7DE700FC4D2F /* BaseRouterProtocol.h */,
+				B305A10F1FCD804E00FC4D2F /* BaseRouter.h */,
+				B305A1101FCD804E00FC4D2F /* BaseRouter.m */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
+		B305A1151FCD85C000FC4D2F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B305A1171FCD85F600FC4D2F /* SendRouterProtocol.h */,
+				B305A1121FCD85B600FC4D2F /* SendModuleRouter.h */,
+				B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		B3076F2A1F307D2500FB7D5A /* Constructor */ = {
 			isa = PBXGroup;
 			children = (
@@ -2916,6 +2945,7 @@
 		B386F5AD1E1297FF004D231B /* Send Flow */ = {
 			isa = PBXGroup;
 			children = (
+				B305A1151FCD85C000FC4D2F /* Router */,
 				E7396AF11DDEF81A0002CD47 /* NewPayment */,
 				B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */,
 				B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */,
@@ -3839,6 +3869,7 @@
 		B3F5797E1F0D297900A13571 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B305A10D1FCD7DCA00FC4D2F /* Router */,
 				B32805491FA744C100748E7E /* BigNumber */,
 				B3C8FAE71F989206000168AB /* News */,
 				B35733251F97A69A00C64AAE /* ServiceLocator.h */,
@@ -4125,6 +4156,7 @@
 		E73910501DE30B91008145A8 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
+				B305A1181FCD87A300FC4D2F /* QRCodeOutput.h */,
 				E73910511DE30BA8008145A8 /* QRCodeViewController.h */,
 				E73910521DE30BA8008145A8 /* QRCodeViewController.m */,
 				B3EE8F491F13766C00131823 /* QRCodeViewControllerDark.h */,
@@ -5586,6 +5618,7 @@
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
+				B305A1141FCD85B600FC4D2F /* SendModuleRouter.m in Sources */,
 				B3CBDF191F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
@@ -5702,6 +5735,7 @@
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				B3D5FE6D1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
+				B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */,
 				D059BE7B1F84E4A70045ABA0 /* PaymentValuesManager.m in Sources */,
 				B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */,
 				B315D0321F9F43B000C7F4E4 /* QTUMImageTagCellLight.m in Sources */,

@@ -12,6 +12,7 @@
 
 @class Wallet;
 @class WalletManagerRequestAdapter;
+@class BTCKey;
 
 @protocol WalletManagering <Clearable, Managerable>
 
