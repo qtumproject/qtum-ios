@@ -105,6 +105,12 @@ NSString const *kIsLongPin = @"kIsLongPin";
 	return [hashTable copy];
 }
 
+- (NSString*)stringAddressFromBTCKey:(BTCKey*) key {
+    
+    NSString *keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
+    return keyString;
+}
+
 - (NSDictionary *)hashTableOfKeysForHistoryElement {
 
 	NSMutableDictionary *hashTable = [NSMutableDictionary new];

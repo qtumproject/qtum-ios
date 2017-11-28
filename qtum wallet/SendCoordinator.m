@@ -28,6 +28,9 @@
 
 @property (strong, nonatomic) NSString *fromAddressString;
 @property (strong, nonatomic) BTCKey *fromAddressKey;
+@property (strong, nonatomic) NSOperationQueue *workingQueue;
+@property (strong, nonatomic) dispatch_semaphore_t updatingSemaphore;
+
 
 @end
 
@@ -37,12 +40,17 @@
 
 	self = [super init];
 	if (self) {
+        
 		_navigationController = navigationController;
+        _workingQueue = [NSOperationQueue new];
+        _workingQueue.maxConcurrentOperationCount = 1;
+        _updatingSemaphore = dispatch_semaphore_create (0);
 	}
 	return self;
 }
 
 - (void)dealloc {
+    
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -78,10 +86,27 @@
 	}];
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (tokensDidChange) name:kTokenDidChange object:nil];
+    
+    [self pauseOperations];
 }
 
-- (void)setForSendSendInfoItem:(SendInfoItem *) item {
+- (void)pauseOperations {
+    
+    __weak __typeof(self)weakSelf = self;
+    [self.workingQueue addOperationWithBlock:^{
+        
+        dispatch_semaphore_wait (weakSelf.updatingSemaphore, DISPATCH_TIME_FOREVER);
+    }];
+}
 
+-(void)reusemeUpdatingOperations {
+    
+    dispatch_semaphore_signal(self.updatingSemaphore);
+}
+
+
+- (void)setForSendSendInfoItem:(SendInfoItem *) item {
+    
 	switch (item.type) {
 		case SendInfoItemTypeQtum:
 			self.token = nil;
@@ -135,9 +160,24 @@
 		[self.navigationController popViewControllerAnimated:YES];
 	}
     
-    [self checkTokens];
-    NewPaymentOutputEntity* entity = [self entityWithSendInfo:item];
-    [self updateOutputsWithEntity:entity];
+    __weak __typeof (self) weakSelf = self;
+    
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOperation = operation;
+    
+    [operation addExecutionBlock:^{
+        
+        if (weakOperation.isCancelled) {
+            return;
+        }
+        
+        [weakSelf checkTokens];
+        NewPaymentOutputEntity* entity = [weakSelf entityWithSendInfo:item];
+        [weakSelf updateOutputsWithEntity:entity];
+    }];
+    
+    [self.workingQueue addOperation:operation];
 }
 
 - (void)setForToken:(Contract *) aToken withAddress:(NSString *) address andAmount:(NSString *) amount {
@@ -154,8 +194,23 @@
 
 - (void)tokensDidChange {
 
-    NewPaymentOutputEntity* entity = [self entityWithToken];
-	[self updateOutputsWithEntity:entity];
+    __weak __typeof (self) weakSelf = self;
+    
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOperation = operation;
+    
+    [operation addExecutionBlock:^{
+        
+        if (weakOperation.isCancelled) {
+            return;
+        }
+        
+        NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
+        [weakSelf updateOutputsWithEntity:entity];
+    }];
+    
+    [self.workingQueue addOperation:operation];
 }
 
 #pragma mark - Private Methods
@@ -168,7 +223,7 @@
         return entity;
     }
     
-    entity.receiverAddress = item.qtumAddressKey ? item.qtumAddressKey.address.string : item.qtumAddress;
+    entity.receiverAddress = item.qtumAddressKey ? [SLocator.walletManager stringAddressFromBTCKey:item.qtumAddressKey] : item.qtumAddress;
     entity.amount = item.amountString;
     
     return entity;
@@ -381,17 +436,50 @@
 
 - (void)didSelectTokenAddress:(ContracBalancesObject*) tokenAddress {
     
-    self.choosenTokenAddressModal = tokenAddress;
-    [self checkTokens];
-    NewPaymentOutputEntity* entity = [self entityWithToken];
-    [self updateOutputsWithEntity:entity];
+    __weak __typeof (self) weakSelf = self;
+    
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOperation = operation;
+    
+    [operation addExecutionBlock:^{
+        
+        if (weakOperation.isCancelled) {
+            return;
+        }
+        
+        weakSelf.choosenTokenAddressModal = tokenAddress;
+        [weakSelf checkTokens];
+        NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
+        [weakSelf updateOutputsWithEntity:entity];
+    }];
+    
+    [self.workingQueue addOperation:operation];
 }
 
 - (void)didViewLoad {
 
-    [self checkTokens];
-    NewPaymentOutputEntity* entity = [self defaultEntity];
-    [self updateOutputsWithEntity:entity];
+    [self reusemeUpdatingOperations];
+    
+    __weak __typeof (self) weakSelf = self;
+    
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOperation = operation;
+    
+    [operation addExecutionBlock:^{
+        
+        if (weakOperation.isCancelled) {
+            return;
+        }
+        
+        [weakSelf checkTokens];
+        NewPaymentOutputEntity* entity = [weakSelf defaultEntity];
+        [weakSelf updateOutputsWithEntity:entity];
+    }];
+    
+    [self.workingQueue addOperation:operation];
+
 }
 
 - (void)didPresseQRCodeScaner {
@@ -465,10 +553,12 @@
 #pragma mark - PopUpWithTwoButtonsViewControllerDelegate
 
 - (void)okButtonPressed:(PopUpViewController *) sender {
+    
 	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
 
 - (void)cancelButtonPressed:(PopUpViewController *) sender {
+    
 	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 	[self didPresseQRCodeScaner];
 }
@@ -483,21 +573,49 @@
 #pragma mark - ChoseTokenPaymentOutputDelegate
 
 - (void)didSelectTokenIndexPath:(NSIndexPath *) indexPath withItem:(Contract *) item {
-
-	self.token = item;
-    [self checkTokens];
-	[self.navigationController popViewControllerAnimated:YES];
     
-    NewPaymentOutputEntity* entity = [self entityWithToken];
-    [self updateOutputsWithEntity:entity];
+    __weak __typeof (self) weakSelf = self;
+    
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOperation = operation;
+    
+    [operation addExecutionBlock:^{
+        
+        if (weakOperation.isCancelled) {
+            return;
+        }
+        
+        weakSelf.token = item;
+        [weakSelf checkTokens];
+        NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
+        [weakSelf updateOutputsWithEntity:entity];
+    }];
+    
+    [self.workingQueue addOperation:operation];
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didResetToDefaults {
 
-    self.token = nil;
-	[self checkTokens];
-    NewPaymentOutputEntity* entity = [self entityWithToken];
-    [self updateOutputsWithEntity:entity];
+    __weak __typeof (self) weakSelf = self;
+    
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOperation = operation;
+    
+    [operation addExecutionBlock:^{
+        
+        if (weakOperation.isCancelled) {
+            return;
+        }
+        weakSelf.token = nil;
+        [weakSelf checkTokens];
+        NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
+        [weakSelf updateOutputsWithEntity:entity];
+    }];
+    
+    [self.workingQueue addOperation:operation];
 }
 
 @end

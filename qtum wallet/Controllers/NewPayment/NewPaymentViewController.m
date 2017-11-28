@@ -271,11 +271,13 @@ static const NSInteger hidedGasTopForSend = -40;
 - (BOOL)isTextFieldsFilled {
 
 	BOOL isFilled = YES;
-	for (TextFieldWithLine *textField in self.scrollView.subviews) {
-		if ([textField isKindOfClass:[TextFieldWithLine class]] && textField.text.length == 0) {
-			isFilled = NO;
-		}
-	}
+    if (!(self.addressTextField.text.length > 0)) {
+        isFilled = NO;
+    }
+    if (!(self.amountTextField.text > 0)) {
+        isFilled = NO;
+    }
+
 	return isFilled;
 }
 

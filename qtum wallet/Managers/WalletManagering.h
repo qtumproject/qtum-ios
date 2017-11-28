@@ -42,6 +42,8 @@
 
 - (NSDictionary *)hashTableOfKeysForHistoryElement;
 
+- (NSString*)stringAddressFromBTCKey:(BTCKey*) key;
+
 - (BOOL)startWithPin:(NSString *) pin;
 
 - (NSString *)brandKeyWithPin:(NSString *) pin;
