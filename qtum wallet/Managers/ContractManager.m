@@ -122,6 +122,19 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	return [addressPredicate evaluateWithObject:contractAddress];
 }
 
+-(NSMutableDictionary <NSString *, QTUMBigNumber *> *)emptyTokenAddressBalancesDict {
+    
+    NSArray* addresses = SLocator.walletManager.wallet.addressesInRightOrder;
+    NSMutableDictionary <NSString *, QTUMBigNumber *> * emptyTokensBalances = @{}.mutableCopy;
+    
+    for (int i = 0; i < addresses.count; i++) {
+        QTUMBigNumber* zeroValue = [QTUMBigNumber decimalWithInteger:0];
+        [emptyTokensBalances setObject:zeroValue forKey:addresses];
+    }
+    
+    return emptyTokensBalances;
+}
+
 #pragma mark - Public Methods
 
 - (void)removeContract:(Contract *) contract {
@@ -181,7 +194,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	Contract *token = filteredArray.count ? filteredArray[0] : nil;
 	if (token) {
 
-		NSMutableDictionary *newAddressBalance = token.addressBalanceDictionary ? [token.addressBalanceDictionary mutableCopy] : @{}.mutableCopy;
+        NSMutableDictionary *newAddressBalance = token.addressBalanceDictionary ? [token.addressBalanceDictionary mutableCopy] : [self emptyTokenAddressBalancesDict];
 		for (NSDictionary *dict in addressBalance[@"balances"]) {
 
 			NSString *addressKey = dict[@"address"];
