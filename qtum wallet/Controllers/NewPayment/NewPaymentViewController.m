@@ -15,7 +15,7 @@
 #import "NewPaymentOutputEntity.h"
 
 
-@interface NewPaymentViewController () <UITextFieldDelegate, PopUpWithTwoButtonsViewControllerDelegate>
+@interface NewPaymentViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
@@ -468,11 +468,11 @@ static const NSInteger hidedGasTopForSend = -40;
     NSString* resultString = [textField.text stringByAppendingString:string];
     BOOL isValid = YES;
     
-	if (textField == self.amountTextField) {
+    if (textField == self.amountTextField) {
         
         isValid = self.isTokenChoosen ? [SLocator.validationInputService isValidContractAmountString:resultString] : [SLocator.validationInputService isValidAmountString:resultString];
         
-	} else if (textField == self.feeTextField) {
+    } else if (textField == self.feeTextField) {
         
         isValid = [SLocator.validationInputService isValidAmountString:resultString];
         
@@ -481,162 +481,162 @@ static const NSInteger hidedGasTopForSend = -40;
             QTUMBigNumber *feeValue = [QTUMBigNumber decimalWithString:textField.text];
             [self.feeSlider setValue:[feeValue decimalNumber].floatValue animated:YES];
         }
-
+        
     } else if (textField == self.addressTextField) {
         
         isValid = [SLocator.validationInputService isValidAddressSymbolsInString:resultString];
     }
-
+    
     return isValid;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *) textField {
-
-	if (textField == self.addressTextField) {
+    
+    if (textField == self.addressTextField) {
         
-		return  [self.delegate shoudStartEditingAddress];
-	}
-	return YES;
+        return  [self.delegate shoudStartEditingAddress];
+    }
+    return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *) textField {
-	if (textField == self.feeTextField) {
-		[self normalizeFee];
-	}
+    if (textField == self.feeTextField) {
+        [self normalizeFee];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *) textField {
-	[textField resignFirstResponder];
-	return YES;
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)addDoneButtonToAmountTextField {
-
-	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake (0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
-	toolbar.barStyle = UIBarStyleDefault;
-	toolbar.translucent = NO;
-	UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector (done:)];
-	toolbar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-			doneItem];
-	[toolbar sizeToFit];
-
-	self.amountTextField.inputAccessoryView = toolbar;
+    
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake (0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.translucent = NO;
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector (done:)];
+    toolbar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                      doneItem];
+    [toolbar sizeToFit];
+    
+    self.amountTextField.inputAccessoryView = toolbar;
 }
 
 - (void)done:(id) sender {
-	[self.amountTextField resignFirstResponder];
+    [self.amountTextField resignFirstResponder];
 }
 
 #pragma mark - Action
 
 - (IBAction)makePaymentButtonWasPressed:(id) sender {
-
-	QTUMBigNumber *amount = [QTUMBigNumber decimalWithString:self.amountTextField.text];
-
-	NSString *address = self.addressTextField.text;
-
-	[self normalizeFee];
-
-	[self.delegate didPresseSendActionWithAddress:address andAmount:amount fee:self.FEE gasPrice:self.gasPrice gasLimit:self.gasLimit];
+    
+    QTUMBigNumber *amount = [QTUMBigNumber decimalWithString:self.amountTextField.text];
+    
+    NSString *address = self.addressTextField.text;
+    
+    [self normalizeFee];
+    
+    [self.delegate didPresseSendActionWithAddress:address andAmount:amount fee:self.FEE gasPrice:self.gasPrice gasLimit:self.gasLimit];
 }
 
 - (IBAction)didChangeFeeSlider:(UISlider *) slider {
-
-	NSDecimalNumber *sliderValue = (NSDecimalNumber *)[[[NSDecimalNumber alloc] initWithFloat:slider.value] roundedNumberWithScale:5];
-	self.FEE = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
-
-	self.feeTextField.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:[self.FEE decimalNumber]]];
+    
+    NSDecimalNumber *sliderValue = (NSDecimalNumber *)[[[NSDecimalNumber alloc] initWithFloat:slider.value] roundedNumberWithScale:5];
+    self.FEE = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
+    
+    self.feeTextField.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:[self.FEE decimalNumber]]];
 }
 
 - (IBAction)didChangeGasPriceSlider:(UISlider *) slider {
-
-	unsigned long value = self.gasPriceMin + (NSInteger)slider.value * self.gasPriceStep;
-	NSDecimalNumber *sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
-	self.gasPrice = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
-	self.gasPriceValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:[self.gasPrice decimalNumber]]];
+    
+    unsigned long value = self.gasPriceMin + (NSInteger)slider.value * self.gasPriceStep;
+    NSDecimalNumber *sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
+    self.gasPrice = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
+    self.gasPriceValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:[self.gasPrice decimalNumber]]];
 }
 
 - (IBAction)didChangeGasLimitSlider:(UISlider *) slider {
-
-	unsigned long value = self.gasLimitMin + (NSInteger)slider.value * self.gasLimitStep;
-	NSDecimalNumber *sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
-	self.gasLimit = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
-	self.gasLimitValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:[self.gasLimit decimalNumber]]];
+    
+    unsigned long value = self.gasLimitMin + (NSInteger)slider.value * self.gasLimitStep;
+    NSDecimalNumber *sliderValue = [[NSDecimalNumber alloc] initWithUnsignedLong:value];
+    self.gasLimit = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
+    self.gasLimitValueLabel.text = [NSString stringWithFormat:@"%@", [self.localeFormatter stringFromNumber:[self.gasLimit decimalNumber]]];
 }
 
 - (IBAction)actionVoidTap:(id) sender {
-	[self.view endEditing:YES];
+    [self.view endEditing:YES];
 }
 
 - (IBAction)didPressedChoseTokensAction:(id) sender {
-
-	[self.delegate didPresseChooseToken];
+    
+    [self.delegate didPresseChooseToken];
 }
 
 - (IBAction)didPressedScanQRCode:(id) sender {
-	[self.delegate didPresseQRCodeScaner];
+    [self.delegate didPresseQRCodeScaner];
 }
 
 - (IBAction)actionEditPressed:(id) sender {
     
-	CGFloat changeOffset;
-	if (self.heightForGasSlidersContainer.constant == heightGasSlidersContainerOpen) {
-		self.heightForGasSlidersContainer.constant = heightGasSlidersContainerClose;
-		self.topConstratinForEdit.constant = closeTopForEditButton;
-
-		changeOffset = -heightGasSlidersContainerClose - closeTopForEditButton;
-
-		[self.editButton setTitle:NSLocalizedString(@"EDIT", nil) forState:UIControlStateNormal];
-	} else {
-		self.heightForGasSlidersContainer.constant = heightGasSlidersContainerOpen;
-		self.topConstratinForEdit.constant = openTopForEditButton;
-
-		changeOffset = heightGasSlidersContainerOpen + openTopForEditButton;
-
-		[self.editButton setTitle:NSLocalizedString(@"CLOSE", nil) forState:UIControlStateNormal];
-	}
-
-	CGPoint contentOffset = self.scrollView.contentOffset;
-
-	[UIView animateWithDuration:0.3f animations:^{
-		[self.scrollView setContentOffset:CGPointMake (contentOffset.x, contentOffset.y + changeOffset) animated:NO];
-		[self.view layoutIfNeeded];
-	}];
+    CGFloat changeOffset;
+    if (self.heightForGasSlidersContainer.constant == heightGasSlidersContainerOpen) {
+        self.heightForGasSlidersContainer.constant = heightGasSlidersContainerClose;
+        self.topConstratinForEdit.constant = closeTopForEditButton;
+        
+        changeOffset = -heightGasSlidersContainerClose - closeTopForEditButton;
+        
+        [self.editButton setTitle:NSLocalizedString(@"EDIT", nil) forState:UIControlStateNormal];
+    } else {
+        self.heightForGasSlidersContainer.constant = heightGasSlidersContainerOpen;
+        self.topConstratinForEdit.constant = openTopForEditButton;
+        
+        changeOffset = heightGasSlidersContainerOpen + openTopForEditButton;
+        
+        [self.editButton setTitle:NSLocalizedString(@"CLOSE", nil) forState:UIControlStateNormal];
+    }
+    
+    CGPoint contentOffset = self.scrollView.contentOffset;
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.scrollView setContentOffset:CGPointMake (contentOffset.x, contentOffset.y + changeOffset) animated:NO];
+        [self.view layoutIfNeeded];
+    }];
 }
 
 #pragma mark - Keyboard
 
 - (void)keyboardWillShow:(NSNotification *) sender {
-	[self.view layoutIfNeeded];
+    [self.view layoutIfNeeded];
 }
 
 - (void)keyboardDidShow:(NSNotification *) sender {
-	UITextField *highlightedTextField;
-
-	if ([self.amountTextField isFirstResponder]) {
-		highlightedTextField = self.amountTextField;
-	} else if ([self.feeTextField isFirstResponder]) {
-		highlightedTextField = self.feeTextField;
-	} else {
-		return;
-	}
-
-	NSDictionary *info = [sender userInfo];
-	CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-	CGFloat kbHeight = kbSize.height - 50.0f;
-	CGFloat topOfKeyboard = self.scrollView.frame.size.height - kbHeight;
-
-	CGFloat offset = highlightedTextField.frame.origin.y - topOfKeyboard;
-
-	if (offset > 0) {
-		CGPoint bottomOffset = CGPointMake (0, offset + 20);
-		[self.scrollView setContentOffset:bottomOffset animated:YES];
-	}
+    UITextField *highlightedTextField;
+    
+    if ([self.amountTextField isFirstResponder]) {
+        highlightedTextField = self.amountTextField;
+    } else if ([self.feeTextField isFirstResponder]) {
+        highlightedTextField = self.feeTextField;
+    } else {
+        return;
+    }
+    
+    NSDictionary *info = [sender userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGFloat kbHeight = kbSize.height - 50.0f;
+    CGFloat topOfKeyboard = self.scrollView.frame.size.height - kbHeight;
+    
+    CGFloat offset = highlightedTextField.frame.origin.y - topOfKeyboard;
+    
+    if (offset > 0) {
+        CGPoint bottomOffset = CGPointMake (0, offset + 20);
+        [self.scrollView setContentOffset:bottomOffset animated:YES];
+    }
 }
 
 - (void)keyboardWillHide:(NSNotification *) sender {
     
-	[self.view layoutIfNeeded];
+    [self.view layoutIfNeeded];
 }
 
 #pragma mark - Picker View
@@ -658,5 +658,14 @@ static const NSInteger hidedGasTopForSend = -40;
     [self.delegate didSelectTokenAddress:self.tokenBalancesInfo[row]];
     [self updateQuickInfoOfContractWithBalanceObject:self.tokenBalancesInfo[row] andTokenSymbol:nil];
 }
+
+- (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
+    return 0;
+}
+
+- (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 0;
+}
+
 
 @end

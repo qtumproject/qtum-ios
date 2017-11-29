@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "FXKeychain.h"
-
 @interface TemplateManager ()
 
 @property (strong, atomic) NSMutableArray <TemplateModel *> *templates;

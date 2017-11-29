@@ -6,7 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "FXKeychain.h"
 #import "NSData+Extension.h"
 #import "SocketManager.h"
 #import "InterfaceInputFormModel.h"

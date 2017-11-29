@@ -2,16 +2,18 @@
 //  KeychainService.m
 //  qtum wallet
 //
-//  Created by Fedorenko Nikita on 29.11.2017.
+//  Created by Vladimir Lebedevich on 29.11.2017.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
 #import "KeychainService.h"
-#import "FXKeychain.h"
+#import "KeychainKeyValueStorageProtocol.h"
+#import "KeychainStorage.h"
 
 @interface KeychainService ()
 
 @property (strong, nonatomic) NSString* service;
+@property (strong, nonatomic) id <KeychainKeyValueStorageProtocol> storage;
 
 @end
 
@@ -25,23 +27,24 @@ static NSString *touchIDIdentifire = @"TouchID";
     if (self) {
         NSString *bundleID = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey];
         _service = bundleID;
+        _storage = [[KeychainStorage alloc] initWithService:_service];
     }
     return self;
 }
 
 - (BOOL)setObject:(id) object forKey:(id) key {
     
-    return [[FXKeychain defaultKeychain] setObject:object forKey:key];
+    return [self.storage setObject:object forKey:key];
 }
 
 - (id)objectForKey:(id)key {
     
-    return [[FXKeychain defaultKeychain] objectForKey:key];
+    return [self.storage objectForKey:key];
 }
 
-- (void)removeObjectForKey:(id) key {
+- (BOOL)removeObjectForKey:(id) key {
     
-    [[FXKeychain defaultKeychain] removeObjectForKey:key];
+    return [self.storage removeObjectForKey:key];
 }
 
 - (void)deleteTouchIdString {
@@ -61,7 +64,6 @@ static NSString *touchIDIdentifire = @"TouchID";
         DLog(@"%@", message);
     });
 }
-
 
 - (void)addTouchIdString:(NSString *_Nonnull) touchIDString {
     

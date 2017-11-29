@@ -16,10 +16,6 @@
 
 @property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
 
-- (void)setSendInfoItem:(SendInfoItem *) item;
-
-- (void)updateContentWithContract:(Contract *) contract;
-
 - (void)updateWithEtity:(NewPaymentOutputEntity *) entity;
 
 - (void)clearFields;

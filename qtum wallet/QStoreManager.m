@@ -10,7 +10,6 @@
 #import "QStoreDataProvider.h"
 #import "QStoreContractElement.h"
 #import "SocketManager.h"
-#import "FXKeychain.h"
 #import "QStoreRequestManager.h"
 #import "QStoreContractDownloadManager.h"
 

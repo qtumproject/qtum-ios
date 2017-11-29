@@ -21,6 +21,7 @@
 		B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1101FCD804E00FC4D2F /* BaseRouter.m */; };
 		B305A1141FCD85B600FC4D2F /* SendModuleRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */; };
 		B305A11B1FCEAE1800FC4D2F /* KeychainService.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A11A1FCEAE1800FC4D2F /* KeychainService.m */; };
+		B305A11F1FCEC9DC00FC4D2F /* KeychainStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A11E1FCEC9DC00FC4D2F /* KeychainStorage.m */; };
 		B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F2E1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m */; };
 		B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */; };
 		B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */; };
@@ -629,7 +630,6 @@
 		E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363F1DC4D07E00748177 /* AppDelegate.m */; };
 		E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36471DC4D07E00748177 /* Assets.xcassets */; };
 		E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */; };
-		E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36591DC7308A00748177 /* FXKeychain.m */; };
 		E7FD365C1DC7360400748177 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
 		E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36651DC76EBC00748177 /* RequestManager.m */; };
 /* End PBXBuildFile section */
@@ -742,6 +742,9 @@
 		B305A1181FCD87A300FC4D2F /* QRCodeOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCodeOutput.h; sourceTree = "<group>"; };
 		B305A1191FCEAE1800FC4D2F /* KeychainService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainService.h; sourceTree = "<group>"; };
 		B305A11A1FCEAE1800FC4D2F /* KeychainService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainService.m; sourceTree = "<group>"; };
+		B305A11C1FCEC99D00FC4D2F /* KeychainKeyValueStorageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainKeyValueStorageProtocol.h; sourceTree = "<group>"; };
+		B305A11D1FCEC9DC00FC4D2F /* KeychainStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainStorage.h; sourceTree = "<group>"; };
+		B305A11E1FCEC9DC00FC4D2F /* KeychainStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainStorage.m; sourceTree = "<group>"; };
 		B3076F2B1F307D4900FB7D5A /* ConstructorAbiOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutput.h; sourceTree = "<group>"; };
 		B3076F2C1F307D7200FB7D5A /* ConstructorAbiOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutputDelegate.h; sourceTree = "<group>"; };
 		B3076F2D1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorFromAbiViewControllerDark.h; sourceTree = "<group>"; };
@@ -2063,8 +2066,6 @@
 		E7FD36471DC4D07E00748177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Application/Assets.xcassets; sourceTree = "<group>"; };
 		E7FD364A1DC4D07E00748177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7FD364C1DC4D07E00748177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Application/Info.plist; sourceTree = "<group>"; };
-		E7FD36581DC7308A00748177 /* FXKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXKeychain.h; sourceTree = "<group>"; };
-		E7FD36591DC7308A00748177 /* FXKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FXKeychain.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7FD365B1DC7360400748177 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E7FD36611DC73D4600748177 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = Application/PrefixHeader.pch; sourceTree = "<group>"; };
 		E7FD36641DC76EBC00748177 /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
@@ -3916,6 +3917,9 @@
 				B3EC938A1FC8175A00752CD7 /* WatchTokensFacadeService.m */,
 				B305A1191FCEAE1800FC4D2F /* KeychainService.h */,
 				B305A11A1FCEAE1800FC4D2F /* KeychainService.m */,
+				B305A11C1FCEC99D00FC4D2F /* KeychainKeyValueStorageProtocol.h */,
+				B305A11D1FCEC9DC00FC4D2F /* KeychainStorage.h */,
+				B305A11E1FCEC9DC00FC4D2F /* KeychainStorage.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -4954,22 +4958,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		E7FD36571DC7307100748177 /* FXKeychain */ = {
-			isa = PBXGroup;
-			children = (
-				E7FD36581DC7308A00748177 /* FXKeychain.h */,
-				E7FD36591DC7308A00748177 /* FXKeychain.m */,
-			);
-			path = FXKeychain;
-			sourceTree = "<group>";
-		};
 		E7FD365D1DC73ACB00748177 /* Library */ = {
 			isa = PBXGroup;
 			children = (
 				B3846DD31DFEFA0800D6872C /* Extensions */,
 				E73910581DE45386008145A8 /* Base */,
 				E73910541DE42457008145A8 /* Categories */,
-				E7FD36571DC7307100748177 /* FXKeychain */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -5483,6 +5477,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet-resources.sh",
+				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -5868,6 +5863,7 @@
 				E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */,
 				E7D7C09E1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				B3EA53171F47318C002FD201 /* QStoreListTableViewCellDark.m in Sources */,
+				B305A11F1FCEC9DC00FC4D2F /* KeychainStorage.m in Sources */,
 				E745BA241F21FC3600B2E216 /* NewsViewControllerLight.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
 				B3A4EA4F1F502C2D008115D1 /* NSNumber+Comparison.m in Sources */,
@@ -6075,7 +6071,6 @@
 				B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */,
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				B3CD78E81F4DD46300D79363 /* ChooseAddressReciveCellLight.m in Sources */,
-				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				E7847F791F3B1ACD004A2333 /* QStoreMainScreenCategory.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,

@@ -7,7 +7,6 @@
 //
 
 #import "WalletManager.h"
-#import "FXKeychain.h"
 #import "WalletManagerRequestAdapter.h"
 #import "SocketManager.h"
 #import "NSString+SHA3.h"
