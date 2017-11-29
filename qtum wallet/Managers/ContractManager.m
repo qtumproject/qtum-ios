@@ -92,23 +92,23 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 - (BOOL)save {
 
-	BOOL isSavedTokens = [[FXKeychain defaultKeychain] setObject:self.contracts forKey:kTokenKeys];
+	BOOL isSavedTokens = [SLocator.keychainService setObject:self.contracts forKey:kTokenKeys];
 
-	BOOL isSavedPretendents = [[FXKeychain defaultKeychain] setObject:[self.smartContractPretendents copy] forKey:kSmartContractPretendentsKey];
+	BOOL isSavedPretendents = [SLocator.keychainService setObject:[self.smartContractPretendents copy] forKey:kSmartContractPretendentsKey];
 	return isSavedTokens && isSavedPretendents;
 }
 
 - (void)load {
 
 	[NSKeyedUnarchiver setClass:[Contract class] forClassName:@"Token"];
-	NSMutableArray *savedTokens = [[[FXKeychain defaultKeychain] objectForKey:kTokenKeys] mutableCopy];
+	NSMutableArray *savedTokens = [[SLocator.keychainService objectForKey:kTokenKeys] mutableCopy];
 
 	for (Contract *token in savedTokens) {
 		token.delegate = self;
 		token.manager = self;
 		[token loadToMemory];
 	}
-	self.smartContractPretendents = [[[FXKeychain defaultKeychain] objectForKey:kSmartContractPretendentsKey] mutableCopy];
+	self.smartContractPretendents = [[SLocator.keychainService objectForKey:kSmartContractPretendentsKey] mutableCopy];
 	self.contracts = savedTokens;
 }
 

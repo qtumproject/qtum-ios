@@ -20,6 +20,7 @@
 		B305A10C1FCC252A00FC4D2F /* NewPaymentOutputEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */; };
 		B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1101FCD804E00FC4D2F /* BaseRouter.m */; };
 		B305A1141FCD85B600FC4D2F /* SendModuleRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */; };
+		B305A11B1FCEAE1800FC4D2F /* KeychainService.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A11A1FCEAE1800FC4D2F /* KeychainService.m */; };
 		B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F2E1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m */; };
 		B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */; };
 		B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */; };
@@ -739,6 +740,8 @@
 		B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendModuleRouter.m; sourceTree = "<group>"; };
 		B305A1171FCD85F600FC4D2F /* SendRouterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendRouterProtocol.h; sourceTree = "<group>"; };
 		B305A1181FCD87A300FC4D2F /* QRCodeOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCodeOutput.h; sourceTree = "<group>"; };
+		B305A1191FCEAE1800FC4D2F /* KeychainService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainService.h; sourceTree = "<group>"; };
+		B305A11A1FCEAE1800FC4D2F /* KeychainService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainService.m; sourceTree = "<group>"; };
 		B3076F2B1F307D4900FB7D5A /* ConstructorAbiOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutput.h; sourceTree = "<group>"; };
 		B3076F2C1F307D7200FB7D5A /* ConstructorAbiOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutputDelegate.h; sourceTree = "<group>"; };
 		B3076F2D1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorFromAbiViewControllerDark.h; sourceTree = "<group>"; };
@@ -3911,6 +3914,8 @@
 				B30B114F1FC58E6D00E5ABBC /* ValidationInputService.m */,
 				B3EC93891FC8175A00752CD7 /* WatchTokensFacadeService.h */,
 				B3EC938A1FC8175A00752CD7 /* WatchTokensFacadeService.m */,
+				B305A1191FCEAE1800FC4D2F /* KeychainService.h */,
+				B305A11A1FCEAE1800FC4D2F /* KeychainService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -5668,6 +5673,7 @@
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
 				B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */,
 				E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */,
+				B305A11B1FCEAE1800FC4D2F /* KeychainService.m in Sources */,
 				E7C101B51F13CBBE00848526 /* BorderedLabelDark.m in Sources */,
 				B36505A71F16015A00521603 /* ExportBrainKeyViewControllerDark.m in Sources */,
 				B3DC9CF21F30D428006B2E07 /* ShareTokenPopUpViewControllerDark.m in Sources */,

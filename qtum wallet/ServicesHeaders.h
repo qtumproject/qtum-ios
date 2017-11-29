@@ -38,6 +38,7 @@
 #import "ValidationRegexProvider.h"
 #import "PopupFactoryProtocol.h"
 #import "WatchTokensFacadeService.h"
+#import "KeychainService.h"
 
 
 #endif /* ServicesHeaders_h */

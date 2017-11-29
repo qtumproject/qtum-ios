@@ -166,7 +166,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (BOOL)save {
 
-	BOOL isSavedWallet = [[FXKeychain defaultKeychain] setObject:self.wallet forKey:kSingleWallet];
+	BOOL isSavedWallet = [SLocator.keychainService setObject:self.wallet forKey:kSingleWallet];
 	return isSavedWallet;
 }
 
@@ -174,7 +174,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 	[self migrateData];
 
-	Wallet *storedWallet = [[FXKeychain defaultKeychain] objectForKey:kSingleWallet];
+	Wallet *storedWallet = [SLocator.keychainService objectForKey:kSingleWallet];
 
 	if (storedWallet && [storedWallet isKindOfClass:[Wallet class]]) {
 		storedWallet.manager = self;
@@ -182,13 +182,13 @@ NSString const *kIsLongPin = @"kIsLongPin";
 	}
 
 	wallet = storedWallet;
-	_hashOfPin = [[FXKeychain defaultKeychain] objectForKey:kUserPinHash];
+	_hashOfPin = [SLocator.keychainService objectForKey:kUserPinHash];
 }
 
 - (void)migrateData {
 
-	NSArray *storedWallets = [[FXKeychain defaultKeychain] objectForKey:kWallets];
-	NSString *userPin = [[FXKeychain defaultKeychain] objectForKey:kUserPin];
+	NSArray *storedWallets = [SLocator.keychainService objectForKey:kWallets];
+	NSString *userPin = [SLocator.keychainService objectForKey:kUserPin];
 
 	if (storedWallets.count > 0 && [storedWallets.firstObject isKindOfClass:[Wallet class]] && userPin) {
 
@@ -198,8 +198,8 @@ NSString const *kIsLongPin = @"kIsLongPin";
 		if (storedWallet.seedWords) {
 			rebuildWallet = [[Wallet alloc] initWithName:storedWallet.name pin:userPin seedWords:storedWallet.seedWords];
 		}
-		[[FXKeychain defaultKeychain] setObject:rebuildWallet forKey:kSingleWallet];
-		[[FXKeychain defaultKeychain] removeObjectForKey:kWallets];
+		[SLocator.keychainService setObject:rebuildWallet forKey:kSingleWallet];
+		[SLocator.keychainService removeObjectForKey:kWallets];
 	}
 
 	if (userPin) {
@@ -232,9 +232,9 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (void)saveHashOPin:(NSString *) hashOfPin andPin:(NSString *) pin {
 
-	[[FXKeychain defaultKeychain] setObject:hashOfPin forKey:kUserPinHash];
-	[[FXKeychain defaultKeychain] addTouchIdString:pin];
-	[[FXKeychain defaultKeychain] setObject:pin.length > 4 ? @(YES) : @(NO) forKey:kIsLongPin];
+	[SLocator.keychainService setObject:hashOfPin forKey:kUserPinHash];
+	[SLocator.keychainService addTouchIdString:pin];
+	[SLocator.keychainService setObject:pin.length > 4 ? @(YES) : @(NO) forKey:kIsLongPin];
 
 	self.hashOfPin = hashOfPin;
 	[self save];
@@ -243,8 +243,8 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (void)removePin {
 
-	[[FXKeychain defaultKeychain] removeObjectForKey:kUserPinHash];
-	[[FXKeychain defaultKeychain] removeObjectForKey:kIsLongPin];
+	[SLocator.keychainService removeObjectForKey:kUserPinHash];
+	[SLocator.keychainService removeObjectForKey:kIsLongPin];
 	self.hashOfPin = nil;
 }
 
@@ -260,7 +260,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (BOOL)isLongPin {
 
-    return [[[FXKeychain defaultKeychain] objectForKey:kIsLongPin] boolValue];
+    return [[SLocator.keychainService objectForKey:kIsLongPin] boolValue];
 }
 
 
