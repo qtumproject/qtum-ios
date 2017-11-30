@@ -39,6 +39,7 @@
 #import "PopupFactoryProtocol.h"
 #import "WatchTokensFacadeService.h"
 #import "KeychainService.h"
+#import "CallContractFacadeService.h"
 
 
 #endif /* ServicesHeaders_h */

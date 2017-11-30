@@ -34,7 +34,7 @@
         
 		if (abiItem.type == Function && abiItem.constant && abiItem.inputs.count == 0) {
 			[self.propertyItems addObject:abiItem];
-		} else if (abiItem.type == Function || abiItem.type == Fallback) {
+		} else if (abiItem.type == Function || (abiItem.type == Fallback && abiItem.payable)) {
 			[self.functionItems addObject:abiItem];
 		} else if (abiItem.type == Constructor) {
 			self.constructorItem = abiItem;

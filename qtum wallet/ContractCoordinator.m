@@ -222,6 +222,52 @@
 	return tokensOnly ? [SLocator.templateManager availebaleTokenTemplates] : [SLocator.templateManager availebaleTemplates];
 }
 
+-(void)doCallContractFunctionWithItem:(AbiinterfaceItem *) item
+                             andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                            andAmount:(QTUMBigNumber*) amount
+                          fromAddress:(NSString*) fromAddress
+                             andToken:(Contract *) contract
+                               andFee:(QTUMBigNumber *) fee
+                          andGasPrice:(QTUMBigNumber *) gasPrice
+                          andGasLimit:(QTUMBigNumber *) gasLimit {
+    
+    [self.functionDetailController showLoader];
+    
+    __weak __typeof (self) weakSelf = self;
+    
+    [SLocator.callContractFacadeService callContractFunctionWithItem:item andParam:inputs
+                                                           andAmount:amount
+                                                         fromAddress:fromAddress
+                                                            andToken:contract
+                                                              andFee:fee andGasPrice:gasPrice
+                                                         andGasLimit:gasLimit
+                                                          andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedFee) {
+    
+            [weakSelf.functionDetailController hideLoader];
+            if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+                [weakSelf showStatusOfPayment:errorType withEstimateFee:estimatedFee];
+            } else if (errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
+                [weakSelf showStatusOfPayment:errorType withEstimateGasLimit:estimatedFee];
+            } else {
+                [weakSelf showStatusOfPayment:errorType];
+            }
+                                                              
+            [weakSelf.functionDetailController hideLoader];
+    }];
+}
+
+-(void)doQueryContractFunctionWithItem:(AbiinterfaceItem *) item
+                             andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                             andToken:(Contract *) contract {
+    
+    __weak __typeof(self)weakSelf = self;
+    [SLocator.callContractFacadeService queryContractFunctionWithItem:item andParam:inputs andToken:contract andHandler:^(NSString *result, NSError *error) {
+        if (result.length > 0) {
+            [weakSelf.functionDetailController setQueryResult:result];
+        }
+    }];
+}
+
 #pragma mark - Logic
 
 - (NSArray *)argsFromInputs {
@@ -262,51 +308,48 @@
 	__weak __typeof (self) weakSelf = self;
 	[SLocator.popupService showLoaderPopUp];
 
-	NSData *contractWithArgs = [SLocator.contractInterfaceManager tokenBitecodeWithTemplate:self.templateModel.path andArray:[self argsFromInputs]];
-
-	[SLocator.transactionManager createSmartContractWithKeys:SLocator.walletManager.wallet.allKeys
-												  andBitcode:contractWithArgs
-														 fee:fee
-													gasPrice:gasPrice
-													gasLimit:gasLimit
-												  andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedValue) {
-													  [SLocator.popupService dismissLoader];
-													  if (errorType == TransactionManagerErrorTypeNone) {
-														  BTCTransactionInput *input = transaction.inputs[0];
-														  DLog(@"%@", input.runTimeAddress);
-														  [SLocator.contractManager addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel andLocalContractName:self.localContractName];
-
-														  [weakSelf.createFinishViewController showCompletedPopUp];
-													  } else {
-														  NSString *errorString;
-														  if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
-															  errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedValue];
-														  }
-														  if (errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
-															  errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", estimatedValue];
-														  }
-														  switch (errorType) {
-															  case TransactionManagerErrorTypeNotEnoughMoney:
-																  [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction", nil)];
-																  break;
-															  case TransactionManagerErrorTypeInvalidAddress:
-																  [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"Invalid QTUM Address", nil)];
-																  break;
-															  case TransactionManagerErrorTypeNotEnoughMoneyOnAddress:
-																  [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction at this address", nil)];
-																  break;
-															  case TransactionManagerErrorTypeNotEnoughFee:
-																  [weakSelf.createFinishViewController showErrorPopUp:errorString];
-																  break;
-															  case TransactionManagerErrorTypeNotEnoughGasLimit:
-																  [weakSelf.createFinishViewController showErrorPopUp:errorString];
-																  break;
-															  default:
-																  [weakSelf.createFinishViewController showErrorPopUp:nil];
-																  break;
-														  }
-													  }
-												  }];
+    [SLocator.callContractFacadeService createSmartContractWithTemplate:self.templateModel.path
+                                                               andArray:[self argsFromInputs]
+                                                                    fee:fee gasPrice:gasPrice
+                                                               gasLimit:gasLimit
+                                                             andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedValue) {
+                                                                 [SLocator.popupService dismissLoader];
+                                                                 if (errorType == TransactionManagerErrorTypeNone) {
+                                                                     BTCTransactionInput *input = transaction.inputs[0];
+                                                                     DLog(@"%@", input.runTimeAddress);
+                                                                     [SLocator.contractManager addSmartContractPretendent:@[input.runTimeAddress] forKey:hashTransaction withTemplate:weakSelf.templateModel andLocalContractName:self.localContractName];
+                                                                     
+                                                                     [weakSelf.createFinishViewController showCompletedPopUp];
+                                                                 } else {
+                                                                     NSString *errorString;
+                                                                     if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
+                                                                         errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedValue];
+                                                                     }
+                                                                     if (errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
+                                                                         errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", estimatedValue];
+                                                                     }
+                                                                     switch (errorType) {
+                                                                         case TransactionManagerErrorTypeNotEnoughMoney:
+                                                                             [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction", nil)];
+                                                                             break;
+                                                                         case TransactionManagerErrorTypeInvalidAddress:
+                                                                             [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"Invalid QTUM Address", nil)];
+                                                                             break;
+                                                                         case TransactionManagerErrorTypeNotEnoughMoneyOnAddress:
+                                                                             [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction at this address", nil)];
+                                                                             break;
+                                                                         case TransactionManagerErrorTypeNotEnoughFee:
+                                                                             [weakSelf.createFinishViewController showErrorPopUp:errorString];
+                                                                             break;
+                                                                         case TransactionManagerErrorTypeNotEnoughGasLimit:
+                                                                             [weakSelf.createFinishViewController showErrorPopUp:errorString];
+                                                                             break;
+                                                                         default:
+                                                                             [weakSelf.createFinishViewController showErrorPopUp:nil];
+                                                                             break;
+                                                                     }
+                                                                 }
+    }];
 }
 
 - (void)didSelectFunctionIndexPath:(NSIndexPath *) indexPath withItem:(AbiinterfaceItem *) item andToken:(Contract *) token fromQStore:(BOOL) fromQStore {
@@ -316,6 +359,7 @@
 	output.delegate = self;
 	output.token = token;
 	output.fromQStore = fromQStore;
+    output.tokenBalancesInfo = [SLocator.contractInfoFacade sortedArrayOfStingValuesOfTokenBalanceWithToken:token];
 
 	__weak __typeof (self) weakSelf = self;
 	self.functionDetailController = output;
@@ -353,6 +397,7 @@
 - (void)didCallFunctionWithItem:(AbiinterfaceItem *) item
 					   andParam:(NSArray<ResultTokenInputsModel *> *) inputs
                       andAmount:(QTUMBigNumber*) amount
+                    fromAddress:(NSString*) fromAddress
 					   andToken:(Contract *) contract
 						 andFee:(QTUMBigNumber *) fee
 					andGasPrice:(QTUMBigNumber *) gasPrice
@@ -364,6 +409,7 @@
             [weakSelf doCallContractFunctionWithItem:item
                                             andParam:inputs
                                            andAmount:amount
+                                         fromAddress:fromAddress
                                             andToken:contract
                                               andFee:fee
                                          andGasPrice:gasPrice
@@ -372,48 +418,11 @@
     }];
 }
 
--(void)doCallContractFunctionWithItem:(AbiinterfaceItem *) item
-                             andParam:(NSArray<ResultTokenInputsModel *> *) inputs
-                            andAmount:(QTUMBigNumber*) amount
-                             andToken:(Contract *) contract
-                               andFee:(QTUMBigNumber *) fee
-                          andGasPrice:(QTUMBigNumber *) gasPrice
-                          andGasLimit:(QTUMBigNumber *) gasLimit {
+- (void)didQueryFunctionWithItem:(AbiinterfaceItem *) item
+                        andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                        andToken:(Contract *) token {
     
-    NSMutableArray *param = @[].mutableCopy;
-    for (int i = 0; i < inputs.count; i++) {
-        [param addObject:inputs[i].value];
-    }
-    
-    NSArray<NSString *> *addressWithTokensValue = @[contract.contractCreationAddressAddress];
-    
-    NSData *hashFuction = [SLocator.contractInterfaceManager hashOfFunction:item appendingParam:param];
-    
-    [self.functionDetailController showLoader];
-    
-    __weak __typeof (self) weakSelf = self;
-    
-    [SLocator.transactionManager callContractWithAddress:[NSString dataFromHexString:contract.contractAddress]
-                                              andBitcode:hashFuction
-                                                  amount:amount
-                                           fromAddresses:addressWithTokensValue
-                                               toAddress:nil
-                                              walletKeys:SLocator.walletManager.wallet.allKeys
-                                                     fee:fee
-                                                gasPrice:gasPrice
-                                                gasLimit:gasLimit
-                                              andHandler:^(TransactionManagerErrorType errorType, BTCTransaction *transaction, NSString *hashTransaction, QTUMBigNumber *estimatedFee) {
-                                                  
-                                                  [weakSelf.functionDetailController hideLoader];
-                                                  if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
-                                                      [weakSelf showStatusOfPayment:errorType withEstimateFee:estimatedFee];
-                                                  } else if (errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
-                                                      [weakSelf showStatusOfPayment:errorType withEstimateGasLimit:estimatedFee];
-                                                  } else {
-                                                      [weakSelf showStatusOfPayment:errorType];
-                                                  }
-                                                  [weakSelf.functionDetailController showResultViewWithOutputs:nil];
-                                              }];
+    [self doQueryContractFunctionWithItem:item andParam:inputs andToken:token];
 }
 
 - (void)showStatusOfPayment:(TransactionManagerErrorType) errorType {
@@ -500,6 +509,7 @@
 }
 
 - (void)didChangeAbiText {
+    
 	self.activeTemplateForLibrary = nil;
 	self.favouriteTokensCollectionSource.activeTemplate = self.activeTemplateForLibrary;
 	self.favouriteContractsCollectionSource.activeTemplate = self.activeTemplateForLibrary;

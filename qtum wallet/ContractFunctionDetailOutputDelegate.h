@@ -15,10 +15,15 @@
 @optional
 - (void)didCallFunctionWithItem:(AbiinterfaceItem *) item
 					   andParam:(NSArray<ResultTokenInputsModel *> *) inputs
-                         andAmount:(QTUMBigNumber *) amount
+                      andAmount:(QTUMBigNumber *) amount
+                    fromAddress:(NSString*) fromAddress
 					   andToken:(Contract *) token
 						 andFee:(QTUMBigNumber *) fee
 					andGasPrice:(QTUMBigNumber *) gasPrice
 					andGasLimit:(QTUMBigNumber *) gasLimit;
+
+- (void)didQueryFunctionWithItem:(AbiinterfaceItem *) item
+                        andParam:(NSArray<ResultTokenInputsModel *> *) inputs
+                        andToken:(Contract *) token;
 
 @end

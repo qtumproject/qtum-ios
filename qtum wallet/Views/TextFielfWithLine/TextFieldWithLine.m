@@ -29,6 +29,7 @@ CGFloat const kCenterYChanges = 20.0f;
 - (instancetype)initWithCoder:(NSCoder *) coder {
 	self = [super initWithCoder:coder];
 	if (self) {
+        self.autocorrectionType = UITextAutocorrectionTypeNo;
 		[self setup];
 	}
 	return self;
@@ -37,6 +38,7 @@ CGFloat const kCenterYChanges = 20.0f;
 - (instancetype)init {
 	self = [super init];
 	if (self) {
+        self.autocorrectionType = UITextAutocorrectionTypeNo;
 		[self setup];
 	}
 	return self;

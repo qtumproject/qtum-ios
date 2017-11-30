@@ -22,6 +22,12 @@
 		B305A1141FCD85B600FC4D2F /* SendModuleRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */; };
 		B305A11B1FCEAE1800FC4D2F /* KeychainService.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A11A1FCEAE1800FC4D2F /* KeychainService.m */; };
 		B305A11F1FCEC9DC00FC4D2F /* KeychainStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A11E1FCEC9DC00FC4D2F /* KeychainStorage.m */; };
+		B305A1221FCF33DC00FC4D2F /* CallContractFacadeService.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1211FCF33DC00FC4D2F /* CallContractFacadeService.m */; };
+		B305A1261FD005DB00FC4D2F /* QueryFunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1251FD005DB00FC4D2F /* QueryFunctionView.m */; };
+		B305A1291FD005F400FC4D2F /* QueryFunctionViewDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1281FD005F400FC4D2F /* QueryFunctionViewDark.m */; };
+		B305A12C1FD005FD00FC4D2F /* QueryFunctionViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A12B1FD005FD00FC4D2F /* QueryFunctionViewLight.m */; };
+		B305A12E1FD0060D00FC4D2F /* QueryFunctionViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B305A12D1FD0060D00FC4D2F /* QueryFunctionViewLight.xib */; };
+		B305A1301FD0061600FC4D2F /* QueryFunctionViewDark.xib in Resources */ = {isa = PBXBuildFile; fileRef = B305A12F1FD0061600FC4D2F /* QueryFunctionViewDark.xib */; };
 		B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F2E1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m */; };
 		B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */; };
 		B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */; };
@@ -745,6 +751,16 @@
 		B305A11C1FCEC99D00FC4D2F /* KeychainKeyValueStorageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainKeyValueStorageProtocol.h; sourceTree = "<group>"; };
 		B305A11D1FCEC9DC00FC4D2F /* KeychainStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainStorage.h; sourceTree = "<group>"; };
 		B305A11E1FCEC9DC00FC4D2F /* KeychainStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainStorage.m; sourceTree = "<group>"; };
+		B305A1201FCF33DC00FC4D2F /* CallContractFacadeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallContractFacadeService.h; sourceTree = "<group>"; };
+		B305A1211FCF33DC00FC4D2F /* CallContractFacadeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallContractFacadeService.m; sourceTree = "<group>"; };
+		B305A1241FD005DB00FC4D2F /* QueryFunctionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryFunctionView.h; sourceTree = "<group>"; };
+		B305A1251FD005DB00FC4D2F /* QueryFunctionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryFunctionView.m; sourceTree = "<group>"; };
+		B305A1271FD005F400FC4D2F /* QueryFunctionViewDark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryFunctionViewDark.h; sourceTree = "<group>"; };
+		B305A1281FD005F400FC4D2F /* QueryFunctionViewDark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryFunctionViewDark.m; sourceTree = "<group>"; };
+		B305A12A1FD005FD00FC4D2F /* QueryFunctionViewLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryFunctionViewLight.h; sourceTree = "<group>"; };
+		B305A12B1FD005FD00FC4D2F /* QueryFunctionViewLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryFunctionViewLight.m; sourceTree = "<group>"; };
+		B305A12D1FD0060D00FC4D2F /* QueryFunctionViewLight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryFunctionViewLight.xib; sourceTree = "<group>"; };
+		B305A12F1FD0061600FC4D2F /* QueryFunctionViewDark.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryFunctionViewDark.xib; sourceTree = "<group>"; };
 		B3076F2B1F307D4900FB7D5A /* ConstructorAbiOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutput.h; sourceTree = "<group>"; };
 		B3076F2C1F307D7200FB7D5A /* ConstructorAbiOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutputDelegate.h; sourceTree = "<group>"; };
 		B3076F2D1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorFromAbiViewControllerDark.h; sourceTree = "<group>"; };
@@ -2197,6 +2213,21 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		B305A1231FD005B600FC4D2F /* QueryButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				B305A1241FD005DB00FC4D2F /* QueryFunctionView.h */,
+				B305A1251FD005DB00FC4D2F /* QueryFunctionView.m */,
+				B305A1271FD005F400FC4D2F /* QueryFunctionViewDark.h */,
+				B305A1281FD005F400FC4D2F /* QueryFunctionViewDark.m */,
+				B305A12A1FD005FD00FC4D2F /* QueryFunctionViewLight.h */,
+				B305A12B1FD005FD00FC4D2F /* QueryFunctionViewLight.m */,
+				B305A12D1FD0060D00FC4D2F /* QueryFunctionViewLight.xib */,
+				B305A12F1FD0061600FC4D2F /* QueryFunctionViewDark.xib */,
+			);
+			name = QueryButtonView;
+			sourceTree = "<group>";
+		};
 		B3076F2A1F307D2500FB7D5A /* Constructor */ = {
 			isa = PBXGroup;
 			children = (
@@ -3387,6 +3418,7 @@
 		B3DC9CDD1F30C777006B2E07 /* Contract Function Detail */ = {
 			isa = PBXGroup;
 			children = (
+				B305A1231FD005B600FC4D2F /* QueryButtonView */,
 				B34228841F73CB2400C4C381 /* Slider View With Fee */,
 				B3DC9CDF1F30C7C3006B2E07 /* ContractFunctionDetailOutputDelegate.h */,
 				B3DC9CDE1F30C7B5006B2E07 /* ContractFunctionDetailOutput.h */,
@@ -3920,6 +3952,8 @@
 				B305A11C1FCEC99D00FC4D2F /* KeychainKeyValueStorageProtocol.h */,
 				B305A11D1FCEC9DC00FC4D2F /* KeychainStorage.h */,
 				B305A11E1FCEC9DC00FC4D2F /* KeychainStorage.m */,
+				B305A1201FCF33DC00FC4D2F /* CallContractFacadeService.h */,
+				B305A1211FCF33DC00FC4D2F /* CallContractFacadeService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -5330,6 +5364,7 @@
 				E70CFCFC1F1F63D300230C81 /* QStore.storyboard in Resources */,
 				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
 				B32EEC9B1EB356DA00512FED /* Localizable.strings in Resources */,
+				B305A1301FD0061600FC4D2F /* QueryFunctionViewDark.xib in Resources */,
 				E70CFD0A1F1F63ED00230C81 /* ErrorPopUp.storyboard in Resources */,
 				E70CFD341F1F647300230C81 /* SourceCodePopUp.storyboard in Resources */,
 				B31441091FB461E5004FE08C /* RemoveContractTrainingViewLight.xib in Resources */,
@@ -5352,6 +5387,7 @@
 				B3141E5D1F3099DA0095E3DF /* ContractNameTextFieldLight.xib in Resources */,
 				B3EC938F1FC844B800752CD7 /* TextFieldWithLineDarkSend.xib in Resources */,
 				E75220461F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib in Resources */,
+				B305A12E1FD0060D00FC4D2F /* QueryFunctionViewLight.xib in Resources */,
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
 				B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */,
 				B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */,
@@ -5619,6 +5655,7 @@
 				E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
 				B305A1141FCD85B600FC4D2F /* SendModuleRouter.m in Sources */,
+				B305A1291FD005F400FC4D2F /* QueryFunctionViewDark.m in Sources */,
 				B3CBDF191F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
@@ -5704,11 +5741,13 @@
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
 				B369DF351F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m in Sources */,
 				B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */,
+				B305A1261FD005DB00FC4D2F /* QueryFunctionView.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
 				E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */,
 				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
 				B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */,
+				B305A1221FCF33DC00FC4D2F /* CallContractFacadeService.m in Sources */,
 				B30B11561FC6CDEC00E5ABBC /* ProfileStoryboardFactory.m in Sources */,
 				E7C101B81F13CBC700848526 /* BorderedLabelLight.m in Sources */,
 				E70353151F03AC6D004ECCC9 /* QStoreListTableViewCell.m in Sources */,
@@ -6099,6 +6138,7 @@
 				B369DF2C1F5D5EF6008B81CB /* AbiParameterTypeDynamicArrayAddress.m in Sources */,
 				B3F1492C1F489BB80032FC63 /* QStoreSearchTableViewCellDark.m in Sources */,
 				B392206A1F99FA9C00E8F7D9 /* QTUMImageTagCell.m in Sources */,
+				B305A12C1FD005FD00FC4D2F /* QueryFunctionViewLight.m in Sources */,
 				B35DF6191F1F4A6000316953 /* RestoreWalletViewControllerDark.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
 				E73CF6CB1EE2CFA40044DF78 /* InformationPopUpViewController.m in Sources */,

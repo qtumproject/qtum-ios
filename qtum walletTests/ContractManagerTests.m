@@ -45,7 +45,7 @@
 - (void)test_Add_New_Token {
 
 	NSInteger tokensCount = self.contractManager.allContracts.count;
-	[self.contractManager addNewToken:[Contract new]];
+	[self.contractManager addNewContract:[Contract new]];
 	NSInteger newTokensCount = self.contractManager.allContracts.count;
 
 	XCTAssertTrue(tokensCount + 1 == newTokensCount);
@@ -69,7 +69,7 @@
 	XCTAssertTrue(tokensCount3 + 1 == newTokensCount3);
 
 	NSInteger tokensCount2 = self.contractManager.allContracts.count;
-	[self.contractManager addNewToken:nil];
+	[self.contractManager addNewContract:nil];
 	NSInteger newTokensCount2 = self.contractManager.allContracts.count;
 
 	XCTAssertTrue(tokensCount2 == newTokensCount2);

@@ -36,7 +36,7 @@
 @end
 
 static NSInteger heightGasSlidersContainerClose = 0;
-static NSInteger heightGasSlidersContainerOpen = 150;
+static NSInteger heightGasSlidersContainerOpen = 250;
 static NSInteger closeTopForEditButton = 0;
 static NSInteger openTopForEditButton = 15;
 

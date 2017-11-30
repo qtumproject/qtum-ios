@@ -17,6 +17,9 @@
 @property (strong, nonatomic) AbiinterfaceItem *function;
 @property (nonatomic) BOOL fromQStore;
 @property (weak, nonatomic) Contract *token;
+@property (strong, nonatomic) NSArray <ContracBalancesObject *> *tokenBalancesInfo;
+
+- (void)setQueryResult:(NSString *) result;
 
 - (void)showResultViewWithOutputs:(NSArray *) outputs;
 

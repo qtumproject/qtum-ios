@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *maxFeeLabel;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *feeTextField;
 @property (weak, nonatomic) id <SliderFeeViewDelegate> delegate;
+@property (weak, nonatomic) IBOutlet TextFieldWithLine *defaultAddressTextField;
+@property (weak, nonatomic) IBOutlet UILabel *defaultAddressLabel;
 
 - (void)setMinGasPrice:(QTUMBigNumber *) min andMax:(QTUMBigNumber *) max step:(long) step;
 

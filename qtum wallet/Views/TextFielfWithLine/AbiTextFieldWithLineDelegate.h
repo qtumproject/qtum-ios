@@ -11,6 +11,8 @@
 @protocol AbiTextFieldWithLineDelegate <NSObject>
 
 @optional
+- (void)textDidChange;
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *) textField;
 
 - (void)textFieldDidBeginEditing:(UITextField *) textField;

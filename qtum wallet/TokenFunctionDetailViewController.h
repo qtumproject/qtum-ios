@@ -11,11 +11,17 @@
 #import "SliderFeeView.h"
 
 @class Contract;
+@class QueryFunctionView;
+@class MASConstraint;
 
-@interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput, SliderFeeViewDelegate, UITextFieldDelegate>
+@interface TokenFunctionDetailViewController : BaseViewController <ScrollableContentViewController, ContractFunctionDetailOutput, SliderFeeViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (strong, nonatomic) SliderFeeView *feeView;
 @property (weak, nonatomic) TextFieldWithLine* amountTextField;
+
+@property (strong, nonatomic) UIView* lastViewInScroll;
+@property (nonatomic, strong) MASConstraint *lastViewInScrollBottomOffset;
+@property (weak, nonatomic) IBOutlet UIButton *callButton;
 
 - (IBAction)didPressedNextOnTextField:(id) sender;
 
@@ -23,5 +29,6 @@
 
 - (IBAction)didPressedCallAction:(id) sender;
 
+- (IBAction)didVoidTapAction:(id) sender;
 
 @end

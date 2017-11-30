@@ -16,6 +16,7 @@ target 'qtum wallet' do
 	pod 'Firebase/Messaging'
     pod 'MWFeedParser'
     pod 'SAMKeychain'
+    pod 'Masonry'
 
     target 'qtum walletTests' do
         inherit! :search_paths

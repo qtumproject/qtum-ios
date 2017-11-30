@@ -128,7 +128,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
     
     for (int i = 0; i < addresses.count; i++) {
         QTUMBigNumber* zeroValue = [QTUMBigNumber decimalWithInteger:0];
-        [emptyTokensBalances setObject:zeroValue forKey:addresses];
+        [emptyTokensBalances setObject:zeroValue forKey:addresses[i]];
     }
     
     return emptyTokensBalances;
@@ -174,7 +174,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	return [self.smartContractPretendents copy];
 }
 
-- (void)addNewToken:(Contract *) token {
+- (void)addNewContract:(Contract *) token {
 
 	if (!token) {
 		return;
@@ -287,21 +287,24 @@ NSString *const kLocalContractName = @"kLocalContractName";
 		NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:predicate];
 
 		if (tokenInfo && !filteredArray.count) {
-			Contract *token = [Contract new];
+			Contract *contract = [Contract new];
 			uint32_t vinIndex = 0;
 			[hashData appendBytes:&vinIndex length:4];
 			hashData = [[hashData BTCHash160] mutableCopy];
-			token.contractCreationAddressAddress = addresses.firstObject;
-			token.adresses = [[SLocator.walletManager hashTableOfKeys] allKeys];
-			token.contractAddress = [NSString hexadecimalString:hashData];
-			token.localName = localContractName ? : [token.contractAddress substringToIndex:15];
-			token.templateModel = templateModel;
-			token.creationDate = [NSDate date];
-			token.isActive = YES;
-			[self addNewToken:token];
-			token.manager = self;
+			contract.contractCreationAddressAddress = addresses.firstObject;
+			contract.adresses = [[SLocator.walletManager hashTableOfKeys] allKeys];
+			contract.contractAddress = [NSString hexadecimalString:hashData];
+			contract.localName = localContractName ? : [contract.contractAddress substringToIndex:15];
+			contract.templateModel = templateModel;
+            if (contract.templateModel.type == TokenType) {
+                contract.addressBalanceDictionary = [self emptyTokenAddressBalancesDict];
+            }
+			contract.creationDate = [NSDate date];
+			contract.isActive = YES;
+			[self addNewContract:contract];
+			contract.manager = self;
 			[SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
-			[self updateSpendableObject:token];
+			[self updateSpendableObject:contract];
 			[self deleteSmartContractPretendentWithKey:key];
 			[self save];
 		}
@@ -321,13 +324,20 @@ NSString *const kLocalContractName = @"kLocalContractName";
 		Contract *token = [Contract new];
 		token.contractAddress = contractAddress;
 		token.creationDate = [NSDate date];
+        
+        token.addressBalanceDictionary = [self emptyTokenAddressBalancesDict];
 		token.localName = [token.contractAddress substringToIndex:contractAddress.length > 15 ? 15 : contractAddress.length];
 		token.adresses = [[SLocator.walletManager hashTableOfKeys] allKeys];
 		token.manager = self;
-		[self addNewToken:token];
-		[SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
-		[self updateSpendableObject:token];
-		[self tokenDidChange:nil];
+        TemplateModel *template = [SLocator.templateManager standartTokenTemplate];
+
+        if (template) {
+            token.templateModel = template;
+            [self addNewContract:token];
+            [SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
+            [self updateSpendableObject:token];
+            [self tokenDidChange:nil];
+        }
 	}
 }
 
@@ -365,7 +375,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	if (template) {
 
 		contract.templateModel = template;
-		[self addNewToken:contract];
+		[self addNewContract:contract];
 		[SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
 		[self updateSpendableObject:contract];
 		[self tokenDidChange:nil];
@@ -388,21 +398,22 @@ NSString *const kLocalContractName = @"kLocalContractName";
 		return NO;
 	}
 
-	Contract *contract = [Contract new];
-	contract.contractAddress = contractAddress;
-	contract.creationDate = [NSDate date];
-    contract.localName = contractName.length > 0 ? contractName : [contractAddress substringToIndex:contractAddress.length > 15 ? 15 : contractAddress.length];
-	contract.adresses = [[SLocator.walletManager hashTableOfKeys] allKeys];
-	contract.manager = self;
-	contract.isActive = YES;
+	Contract *token = [Contract new];
+	token.contractAddress = contractAddress;
+	token.creationDate = [NSDate date];
+    token.localName = contractName.length > 0 ? contractName : [contractAddress substringToIndex:contractAddress.length > 15 ? 15 : contractAddress.length];
+	token.adresses = [[SLocator.walletManager hashTableOfKeys] allKeys];
+    token.addressBalanceDictionary = [self emptyTokenAddressBalancesDict];
+	token.manager = self;
+	token.isActive = YES;
 
 	TemplateModel *template = [SLocator.templateManager standartTokenTemplate];
 
 	if (template) {
-		contract.templateModel = template;
-		[self addNewToken:contract];
+		token.templateModel = template;
+		[self addNewContract:token];
 		[SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Token Created", nil) andIdentifire:@"contract_created"];
-		[self updateSpendableObject:contract];
+		[self updateSpendableObject:token];
 		[self tokenDidChange:nil];
 
 		return YES;
@@ -598,7 +609,7 @@ static NSString *kTemplateKey = @"template";
 
 		if (filteredTemplates.count > 0 && !filteredContractAddressArray.count) {
 			contract.templateModel = filteredTemplates[0];
-			[self addNewToken:contract];
+			[self addNewContract:contract];
 			[SLocator.notificationManager createLocalNotificationWithString:NSLocalizedString(@"Contract Created", nil) andIdentifire:@"contract_created"];
 			[self updateSpendableObject:contract];
 			[self save];

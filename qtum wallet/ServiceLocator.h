@@ -40,6 +40,8 @@
 @property (strong, nonatomic) id <PopupFactoryProtocol> popupFactory;
 @property (strong, nonatomic) WatchTokensFacadeService* watchTokensFacadeService;
 @property (strong, nonatomic) KeychainService* keychainService;
+@property (strong, nonatomic) CallContractFacadeService* callContractFacadeService;
+
 
 + (instancetype)sharedInstance;
 

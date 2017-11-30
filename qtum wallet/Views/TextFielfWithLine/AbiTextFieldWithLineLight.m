@@ -55,6 +55,10 @@
 
     NSString* resultString = [textField.text stringByAppendingString:string];
     BOOL isValid = [SLocator.validationInputService isValidSymbols:resultString forParameter:self.item.type];
+    
+    if (isValid && [self.customDelegate respondsToSelector:@selector(textDidChange)]) {
+        [self.customDelegate textDidChange];
+    }
     return isValid;
 }
 

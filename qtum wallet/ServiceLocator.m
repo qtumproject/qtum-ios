@@ -48,6 +48,14 @@
 #pragma mark - Lazy
 
 
+- (CallContractFacadeService *)callContractFacadeService {
+    
+    if (!_callContractFacadeService) {
+        _callContractFacadeService = [CallContractFacadeService new];
+    }
+    return _callContractFacadeService;
+}
+
 - (WalletManager *)walletManager {
     
     if (!_walletManager) {
