@@ -5556,7 +5556,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 41db5a1ea3ca62a26f56f41e07085664e42f9f95 1f0ea4bed2dacc368ad16cd4a824581fd7b8526917f01e88c15e720abc50f45d";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" $(/usr/libexec/PlistBuddy -c \"Print :FABRIC_API_KEY\" \"${PROJECT_DIR}/config/environments/environment.plist\") $(/usr/libexec/PlistBuddy -c \"Print :FABRIC_BUILD_SECRET\" \"${PROJECT_DIR}/config/environments/environment.plist\")";
 		};
 		EFC4163D6348EB02957DC3DD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6689,6 +6689,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENVIRONMENT = production;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -6747,6 +6748,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENVIRONMENT = production;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -6807,6 +6809,8 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "qtum wallet/Application/Info.plist";
+				INFOPLIST_PREFIX_HEADER = environment_preprocess.h;
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -6916,6 +6920,8 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "qtum wallet/Application/Info.plist";
+				INFOPLIST_PREFIX_HEADER = environment_preprocess.h;
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
