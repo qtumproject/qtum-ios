@@ -61,16 +61,16 @@
 
 	__weak __typeof (self) weakSelf = self;
 
-	[SLocator.keychainService touchIDString:^(NSString *_Nullable string, NSError *_Nullable error) {
+    [SLocator.keychainService touchIDString:^(NSString *_Nullable string, NSError *_Nullable error) {
 
-		dispatch_async (dispatch_get_main_queue (), ^{
-			if (string) {
-				[weakSelf enterPin:string];
-			} else {
-				[weakSelf.loginOutput startEditing];
-			}
-		});
-	}];
+        dispatch_async (dispatch_get_main_queue (), ^{
+            if (string) {
+                [weakSelf enterPin:string];
+            } else {
+                [weakSelf.loginOutput startEditing];
+            }
+        });
+    }];
 }
 
 #pragma mark - Actions

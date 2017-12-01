@@ -81,6 +81,7 @@
 		B3255C481E1CD3FC00CD610B /* DiagramView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C471E1CD3FC00CD610B /* DiagramView.m */; };
 		B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */; };
 		B326327D1F9602B6001FF038 /* PasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = B326327C1F9602B6001FF038 /* PasswordView.m */; };
+		B3267F561FD1919300545573 /* NSOperationQueue+Timeout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3267F551FD1919300545573 /* NSOperationQueue+Timeout.m */; };
 		B32805551FA7472200748E7E /* JKBigInteger_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B32805531FA7472200748E7E /* JKBigInteger_iOSTests.m */; };
 		B32805561FA7472200748E7E /* JKBigDecimal_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B32805541FA7472200748E7E /* JKBigDecimal_iOSTests.m */; };
 		B32805571FA7474B00748E7E /* JKBigInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = B328054C1FA744E200748E7E /* JKBigInteger.m */; };
@@ -874,6 +875,8 @@
 		B3255C4B1E1CDD6500CD610B /* GradientViewWithAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GradientViewWithAnimation.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B326327B1F9602B6001FF038 /* PasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordView.h; sourceTree = "<group>"; };
 		B326327C1F9602B6001FF038 /* PasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordView.m; sourceTree = "<group>"; };
+		B3267F541FD1919300545573 /* NSOperationQueue+Timeout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+Timeout.h"; sourceTree = "<group>"; };
+		B3267F551FD1919300545573 /* NSOperationQueue+Timeout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+Timeout.m"; sourceTree = "<group>"; };
 		B328054A1FA744E100748E7E /* JKBigDecimal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKBigDecimal.h; sourceTree = "<group>"; };
 		B328054B1FA744E100748E7E /* JKBigInteger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKBigInteger.h; sourceTree = "<group>"; };
 		B328054C1FA744E200748E7E /* JKBigInteger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKBigInteger.m; sourceTree = "<group>"; };
@@ -4792,6 +4795,8 @@
 				B328055B1FA74CDA00748E7E /* JKBigDecimal+Format.m */,
 				B328055D1FA7555000748E7E /* JKBigDecimal+Comparison.h */,
 				B328055E1FA7555000748E7E /* JKBigDecimal+Comparison.m */,
+				B3267F541FD1919300545573 /* NSOperationQueue+Timeout.h */,
+				B3267F551FD1919300545573 /* NSOperationQueue+Timeout.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -6006,6 +6011,7 @@
 				B3D5FE551F56AF1E006A2BF2 /* AbiParameterTypeInt.m in Sources */,
 				B35DF61C1F1F4A7400316953 /* RestoreWalletViewControllerLight.m in Sources */,
 				B3210D201E001EC200365FB6 /* PinViewController.m in Sources */,
+				B3267F561FD1919300545573 /* NSOperationQueue+Timeout.m in Sources */,
 				B39220671F99D9B300E8F7D9 /* NewsDetailViewControllerLight.m in Sources */,
 				B3487A2D1E92392000BC66F1 /* HistoryHeaderVIew.m in Sources */,
 				E703530A1F039297004ECCC9 /* QStoreSearchTableSource.m in Sources */,

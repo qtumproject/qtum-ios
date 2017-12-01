@@ -74,9 +74,9 @@ static NSInteger textfieldsWithButtonHeight = 250;
 
 - (void)keyboardWillHide:(NSNotification *) sender {
 	//when comes from imessage have problems with keyboard dissmisng
-	if (!self.shoudKeboardDismiss) {
-		[self.passwordView becameFirstResponder];
-	}
+//    if (!self.shoudKeboardDismiss) {
+//        [self.passwordView becameFirstResponder];
+//    }
 }
 
 - (void)startEditing {
