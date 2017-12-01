@@ -27,7 +27,7 @@ NSString *kErrorKey = @"error";
 
 	self = [super init];
 
-	if (self != nil) {
+	if (self) {
 		if ([WCSession isSupported]) {
 			WCSession *session = [WCSession defaultSession];
 			session.delegate = self;
@@ -131,8 +131,8 @@ NSString *kErrorKey = @"error";
 							return;
 						}
 
-						QTUMBigNumber *availableBalance = wallet.balance;
-						QTUMBigNumber *unconfirmedBalance = wallet.unconfirmedBalance;
+                        NSString *availableBalance = wallet.balance.stringValue;
+                        NSString *unconfirmedBalance = wallet.unconfirmedBalance.stringValue;
 						NSArray *history = wallet.historyStorage.historyPrivate;
 						NSMutableArray *historyDictionary = [NSMutableArray new];
 						for (HistoryElement *element in history) {
@@ -141,9 +141,9 @@ NSString *kErrorKey = @"error";
 
 						[QRCodeManager createQRCodeFromPublicAddress:address tokenAddress:nil andAmount:nil forSize:CGSizeMake (width, width) withCompletionBlock:^(UIImage *image) {
 							NSDictionary *dictionary = @{@"address": address,
-									@"availableBalance": availableBalance,
-									@"unconfirmedBalance": unconfirmedBalance,
-									@"history": historyDictionary,
+                                    @"availableBalance": availableBalance,
+                                    @"unconfirmedBalance": unconfirmedBalance,
+                                    @"history": historyDictionary,
 									@"image": UIImagePNGRepresentation (image)};
 
 							replyHandler (dictionary);
@@ -178,8 +178,8 @@ NSString *kErrorKey = @"error";
 		return dictionary;
 	}
 
-	QTUMBigNumber *availableBalance = wallet.balance;
-	QTUMBigNumber *unconfirmedBalance = wallet.unconfirmedBalance;
+	NSString *availableBalance = wallet.balance.stringValue;
+	NSString *unconfirmedBalance = wallet.unconfirmedBalance.stringValue;
 	NSArray *history = wallet.historyStorage.historyPrivate;
 	NSMutableArray *historyDictionary = [NSMutableArray new];
 
