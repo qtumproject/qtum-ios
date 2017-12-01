@@ -280,6 +280,7 @@
 
 	self.adress = address;
 	self.amount = amount;
+    [self removeAllDependencys];
 	[self start];
 }
 

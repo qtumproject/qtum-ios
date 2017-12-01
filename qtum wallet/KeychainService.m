@@ -9,11 +9,17 @@
 #import "KeychainService.h"
 #import "KeychainKeyValueStorageProtocol.h"
 #import "KeychainStorage.h"
+#import "NSOperationQueue+Timeout.h"
+
+typedef void(^TouchIdHandler)(NSString *string, NSError *error);
+
 
 @interface KeychainService ()
 
 @property (strong, nonatomic) NSString* service;
 @property (strong, nonatomic) id <KeychainKeyValueStorageProtocol> storage;
+@property (strong, nonatomic) NSOperationQueue* keychainOperationQueue;
+@property (copy, nonatomic) TouchIdHandler touchIdHandler;
 
 @end
 
@@ -28,6 +34,8 @@ static NSString *touchIDIdentifire = @"TouchID";
         NSString *bundleID = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey];
         _service = bundleID;
         _storage = [[KeychainStorage alloc] initWithService:_service];
+        _keychainOperationQueue = [NSOperationQueue new];
+        _keychainOperationQueue.maxConcurrentOperationCount = 1;
     }
     return self;
 }
@@ -131,7 +139,12 @@ static NSString *touchIDIdentifire = @"TouchID";
                             (id)kSecUseOperationPrompt: @"Authenticate to access service password",
                             };
     
-    dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    __weak __typeof (self) weakSelf = self;
+
+    self.touchIdHandler = handler;
+    
+    [self.keychainOperationQueue addOperationWithBlock:^(NSOperation *operation) {
+        
         CFTypeRef dataTypeRef = NULL;
         NSString *message;
         
@@ -142,11 +155,33 @@ static NSString *touchIDIdentifire = @"TouchID";
             NSString *result = [[NSString alloc] initWithData:resultData encoding:NSUTF8StringEncoding];
             
             message = [NSString stringWithFormat:@"Result: %@\n", result];
-            handler (result, nil);
+            
+            if (operation.isCancelled) {
+                return;
+            }
+            
+            if (weakSelf.touchIdHandler) {
+                weakSelf.touchIdHandler(result, nil);
+                weakSelf.touchIdHandler = nil;
+            }
         } else {
-            handler (nil, [NSError new]);
+            
+            if (operation.isCancelled) {
+                return;
+            }
+            if (weakSelf.touchIdHandler) {
+                weakSelf.touchIdHandler (nil, [NSError new]);
+                weakSelf.touchIdHandler = nil;
+            }
         }
-    });
+        
+    } timeout:1.0 timeoutBlock:^{
+
+        if (weakSelf.touchIdHandler) {
+            weakSelf.touchIdHandler (nil, [NSError new]);
+            weakSelf.touchIdHandler = nil;
+        }
+    }];
 }
 
 - (NSString *)keychainErrorToString:(OSStatus) error {

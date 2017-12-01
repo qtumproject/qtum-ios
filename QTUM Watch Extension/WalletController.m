@@ -46,8 +46,8 @@
 		BalanceCell *balance = [self.table rowControllerAtIndex:0];
 		balance.delegate = self;
 		[balance.address setTitle:wallet.address];
-		[balance.availableBalance setText:[wallet.availableBalance stringValue]];
-		[balance.notConfirmedBalance setText:[wallet.unconfirmedBalance stringValue]];
+		[balance.availableBalance setText:wallet.availableBalance];
+		[balance.notConfirmedBalance setText:wallet.unconfirmedBalance];
 		[balance.address setHidden:NO];
 		[balance.balanceGroup setHidden:NO];
 		[balance.uncBalanceGroup setHidden:NO];

@@ -12,8 +12,8 @@
 @interface WatchWallet : NSObject
 
 @property (nonatomic) NSString *address;
-@property (nonatomic) NSNumber *availableBalance;
-@property (nonatomic) NSNumber *unconfirmedBalance;
+@property (nonatomic) NSString *availableBalance;
+@property (nonatomic) NSString *unconfirmedBalance;
 @property (nonatomic) NSData *imageData;
 @property (nonatomic) NSArray<WatchHistoryElement *> *history;
 
