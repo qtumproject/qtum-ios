@@ -17,6 +17,17 @@
 		B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */; };
 		B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */; };
 		B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */; };
+		B305A10C1FCC252A00FC4D2F /* NewPaymentOutputEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */; };
+		B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1101FCD804E00FC4D2F /* BaseRouter.m */; };
+		B305A1141FCD85B600FC4D2F /* SendModuleRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */; };
+		B305A11B1FCEAE1800FC4D2F /* KeychainService.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A11A1FCEAE1800FC4D2F /* KeychainService.m */; };
+		B305A11F1FCEC9DC00FC4D2F /* KeychainStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A11E1FCEC9DC00FC4D2F /* KeychainStorage.m */; };
+		B305A1221FCF33DC00FC4D2F /* CallContractFacadeService.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1211FCF33DC00FC4D2F /* CallContractFacadeService.m */; };
+		B305A1261FD005DB00FC4D2F /* QueryFunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1251FD005DB00FC4D2F /* QueryFunctionView.m */; };
+		B305A1291FD005F400FC4D2F /* QueryFunctionViewDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1281FD005F400FC4D2F /* QueryFunctionViewDark.m */; };
+		B305A12C1FD005FD00FC4D2F /* QueryFunctionViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A12B1FD005FD00FC4D2F /* QueryFunctionViewLight.m */; };
+		B305A12E1FD0060D00FC4D2F /* QueryFunctionViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B305A12D1FD0060D00FC4D2F /* QueryFunctionViewLight.xib */; };
+		B305A1301FD0061600FC4D2F /* QueryFunctionViewDark.xib in Resources */ = {isa = PBXBuildFile; fileRef = B305A12F1FD0061600FC4D2F /* QueryFunctionViewDark.xib */; };
 		B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F2E1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m */; };
 		B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3076F311F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m */; };
 		B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3076F331F308AB000FB7D5A /* FieldViewsLight.xib */; };
@@ -625,7 +636,6 @@
 		E7FD36401DC4D07E00748177 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD363F1DC4D07E00748177 /* AppDelegate.m */; };
 		E7FD36481DC4D07E00748177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36471DC4D07E00748177 /* Assets.xcassets */; };
 		E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */; };
-		E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36591DC7308A00748177 /* FXKeychain.m */; };
 		E7FD365C1DC7360400748177 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
 		E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36651DC76EBC00748177 /* RequestManager.m */; };
 /* End PBXBuildFile section */
@@ -727,6 +737,30 @@
 		B3054E331F0BBB29001B1F63 /* NewPaymentOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutputDelegate.h; sourceTree = "<group>"; };
 		B3054E351F0BC037001B1F63 /* ChoseTokenPaymentOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentOutput.h; sourceTree = "<group>"; };
 		B3054E361F0BC045001B1F63 /* ChoseTokenPaymentOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseTokenPaymentOutputDelegate.h; sourceTree = "<group>"; };
+		B305A10A1FCC252A00FC4D2F /* NewPaymentOutputEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutputEntity.h; sourceTree = "<group>"; };
+		B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPaymentOutputEntity.m; sourceTree = "<group>"; };
+		B305A10E1FCD7DE700FC4D2F /* BaseRouterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRouterProtocol.h; sourceTree = "<group>"; };
+		B305A10F1FCD804E00FC4D2F /* BaseRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRouter.h; sourceTree = "<group>"; };
+		B305A1101FCD804E00FC4D2F /* BaseRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseRouter.m; sourceTree = "<group>"; };
+		B305A1121FCD85B600FC4D2F /* SendModuleRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendModuleRouter.h; sourceTree = "<group>"; };
+		B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendModuleRouter.m; sourceTree = "<group>"; };
+		B305A1171FCD85F600FC4D2F /* SendRouterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendRouterProtocol.h; sourceTree = "<group>"; };
+		B305A1181FCD87A300FC4D2F /* QRCodeOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCodeOutput.h; sourceTree = "<group>"; };
+		B305A1191FCEAE1800FC4D2F /* KeychainService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainService.h; sourceTree = "<group>"; };
+		B305A11A1FCEAE1800FC4D2F /* KeychainService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainService.m; sourceTree = "<group>"; };
+		B305A11C1FCEC99D00FC4D2F /* KeychainKeyValueStorageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainKeyValueStorageProtocol.h; sourceTree = "<group>"; };
+		B305A11D1FCEC9DC00FC4D2F /* KeychainStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainStorage.h; sourceTree = "<group>"; };
+		B305A11E1FCEC9DC00FC4D2F /* KeychainStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainStorage.m; sourceTree = "<group>"; };
+		B305A1201FCF33DC00FC4D2F /* CallContractFacadeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallContractFacadeService.h; sourceTree = "<group>"; };
+		B305A1211FCF33DC00FC4D2F /* CallContractFacadeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallContractFacadeService.m; sourceTree = "<group>"; };
+		B305A1241FD005DB00FC4D2F /* QueryFunctionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryFunctionView.h; sourceTree = "<group>"; };
+		B305A1251FD005DB00FC4D2F /* QueryFunctionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryFunctionView.m; sourceTree = "<group>"; };
+		B305A1271FD005F400FC4D2F /* QueryFunctionViewDark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryFunctionViewDark.h; sourceTree = "<group>"; };
+		B305A1281FD005F400FC4D2F /* QueryFunctionViewDark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryFunctionViewDark.m; sourceTree = "<group>"; };
+		B305A12A1FD005FD00FC4D2F /* QueryFunctionViewLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryFunctionViewLight.h; sourceTree = "<group>"; };
+		B305A12B1FD005FD00FC4D2F /* QueryFunctionViewLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryFunctionViewLight.m; sourceTree = "<group>"; };
+		B305A12D1FD0060D00FC4D2F /* QueryFunctionViewLight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryFunctionViewLight.xib; sourceTree = "<group>"; };
+		B305A12F1FD0061600FC4D2F /* QueryFunctionViewDark.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryFunctionViewDark.xib; sourceTree = "<group>"; };
 		B3076F2B1F307D4900FB7D5A /* ConstructorAbiOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutput.h; sourceTree = "<group>"; };
 		B3076F2C1F307D7200FB7D5A /* ConstructorAbiOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorAbiOutputDelegate.h; sourceTree = "<group>"; };
 		B3076F2D1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstructorFromAbiViewControllerDark.h; sourceTree = "<group>"; };
@@ -2048,8 +2082,6 @@
 		E7FD36471DC4D07E00748177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Application/Assets.xcassets; sourceTree = "<group>"; };
 		E7FD364A1DC4D07E00748177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7FD364C1DC4D07E00748177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Application/Info.plist; sourceTree = "<group>"; };
-		E7FD36581DC7308A00748177 /* FXKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXKeychain.h; sourceTree = "<group>"; };
-		E7FD36591DC7308A00748177 /* FXKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FXKeychain.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7FD365B1DC7360400748177 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E7FD36611DC73D4600748177 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = Application/PrefixHeader.pch; sourceTree = "<group>"; };
 		E7FD36641DC76EBC00748177 /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
@@ -2150,6 +2182,50 @@
 				B3EE8F471F13708500131823 /* ChoseTokenPaymentViewControllerDark.m */,
 			);
 			name = ChoseTokenPaymentOutput;
+			sourceTree = "<group>";
+		};
+		B305A1091FCC24F400FC4D2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B305A10A1FCC252A00FC4D2F /* NewPaymentOutputEntity.h */,
+				B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B305A10D1FCD7DCA00FC4D2F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B305A10E1FCD7DE700FC4D2F /* BaseRouterProtocol.h */,
+				B305A10F1FCD804E00FC4D2F /* BaseRouter.h */,
+				B305A1101FCD804E00FC4D2F /* BaseRouter.m */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
+		B305A1151FCD85C000FC4D2F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B305A1171FCD85F600FC4D2F /* SendRouterProtocol.h */,
+				B305A1121FCD85B600FC4D2F /* SendModuleRouter.h */,
+				B305A1131FCD85B600FC4D2F /* SendModuleRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B305A1231FD005B600FC4D2F /* QueryButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				B305A1241FD005DB00FC4D2F /* QueryFunctionView.h */,
+				B305A1251FD005DB00FC4D2F /* QueryFunctionView.m */,
+				B305A1271FD005F400FC4D2F /* QueryFunctionViewDark.h */,
+				B305A1281FD005F400FC4D2F /* QueryFunctionViewDark.m */,
+				B305A12A1FD005FD00FC4D2F /* QueryFunctionViewLight.h */,
+				B305A12B1FD005FD00FC4D2F /* QueryFunctionViewLight.m */,
+				B305A12D1FD0060D00FC4D2F /* QueryFunctionViewLight.xib */,
+				B305A12F1FD0061600FC4D2F /* QueryFunctionViewDark.xib */,
+			);
+			name = QueryButtonView;
 			sourceTree = "<group>";
 		};
 		B3076F2A1F307D2500FB7D5A /* Constructor */ = {
@@ -2904,6 +2980,7 @@
 		B386F5AD1E1297FF004D231B /* Send Flow */ = {
 			isa = PBXGroup;
 			children = (
+				B305A1151FCD85C000FC4D2F /* Router */,
 				E7396AF11DDEF81A0002CD47 /* NewPayment */,
 				B32C3D011E112A7F0094C82C /* SendNavigationCoordinator.m */,
 				B32C3D001E112A7F0094C82C /* SendNavigationCoordinator.h */,
@@ -3341,6 +3418,7 @@
 		B3DC9CDD1F30C777006B2E07 /* Contract Function Detail */ = {
 			isa = PBXGroup;
 			children = (
+				B305A1231FD005B600FC4D2F /* QueryButtonView */,
 				B34228841F73CB2400C4C381 /* Slider View With Fee */,
 				B3DC9CDF1F30C7C3006B2E07 /* ContractFunctionDetailOutputDelegate.h */,
 				B3DC9CDE1F30C7B5006B2E07 /* ContractFunctionDetailOutput.h */,
@@ -3827,6 +3905,7 @@
 		B3F5797E1F0D297900A13571 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B305A10D1FCD7DCA00FC4D2F /* Router */,
 				B32805491FA744C100748E7E /* BigNumber */,
 				B3C8FAE71F989206000168AB /* News */,
 				B35733251F97A69A00C64AAE /* ServiceLocator.h */,
@@ -3868,6 +3947,13 @@
 				B30B114F1FC58E6D00E5ABBC /* ValidationInputService.m */,
 				B3EC93891FC8175A00752CD7 /* WatchTokensFacadeService.h */,
 				B3EC938A1FC8175A00752CD7 /* WatchTokensFacadeService.m */,
+				B305A1191FCEAE1800FC4D2F /* KeychainService.h */,
+				B305A11A1FCEAE1800FC4D2F /* KeychainService.m */,
+				B305A11C1FCEC99D00FC4D2F /* KeychainKeyValueStorageProtocol.h */,
+				B305A11D1FCEC9DC00FC4D2F /* KeychainStorage.h */,
+				B305A11E1FCEC9DC00FC4D2F /* KeychainStorage.m */,
+				B305A1201FCF33DC00FC4D2F /* CallContractFacadeService.h */,
+				B305A1211FCF33DC00FC4D2F /* CallContractFacadeService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -4113,6 +4199,7 @@
 		E73910501DE30B91008145A8 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
+				B305A1181FCD87A300FC4D2F /* QRCodeOutput.h */,
 				E73910511DE30BA8008145A8 /* QRCodeViewController.h */,
 				E73910521DE30BA8008145A8 /* QRCodeViewController.m */,
 				B3EE8F491F13766C00131823 /* QRCodeViewControllerDark.h */,
@@ -4184,6 +4271,7 @@
 		E7396AF11DDEF81A0002CD47 /* NewPayment */ = {
 			isa = PBXGroup;
 			children = (
+				B305A1091FCC24F400FC4D2F /* Model */,
 				B3E159261ED6E39F00D70A87 /* Cell */,
 				B3054E311F0BBACD001B1F63 /* NewPaymentOutput */,
 				B3054E341F0BC011001B1F63 /* ChoseTokenPaymentOutput */,
@@ -4904,22 +4992,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		E7FD36571DC7307100748177 /* FXKeychain */ = {
-			isa = PBXGroup;
-			children = (
-				E7FD36581DC7308A00748177 /* FXKeychain.h */,
-				E7FD36591DC7308A00748177 /* FXKeychain.m */,
-			);
-			path = FXKeychain;
-			sourceTree = "<group>";
-		};
 		E7FD365D1DC73ACB00748177 /* Library */ = {
 			isa = PBXGroup;
 			children = (
 				B3846DD31DFEFA0800D6872C /* Extensions */,
 				E73910581DE45386008145A8 /* Base */,
 				E73910541DE42457008145A8 /* Categories */,
-				E7FD36571DC7307100748177 /* FXKeychain */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -5286,6 +5364,7 @@
 				E70CFCFC1F1F63D300230C81 /* QStore.storyboard in Resources */,
 				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
 				B32EEC9B1EB356DA00512FED /* Localizable.strings in Resources */,
+				B305A1301FD0061600FC4D2F /* QueryFunctionViewDark.xib in Resources */,
 				E70CFD0A1F1F63ED00230C81 /* ErrorPopUp.storyboard in Resources */,
 				E70CFD341F1F647300230C81 /* SourceCodePopUp.storyboard in Resources */,
 				B31441091FB461E5004FE08C /* RemoveContractTrainingViewLight.xib in Resources */,
@@ -5308,6 +5387,7 @@
 				B3141E5D1F3099DA0095E3DF /* ContractNameTextFieldLight.xib in Resources */,
 				B3EC938F1FC844B800752CD7 /* TextFieldWithLineDarkSend.xib in Resources */,
 				E75220461F0E3CBE0028D152 /* HistoryTableHeaderViewLight.xib in Resources */,
+				B305A12E1FD0060D00FC4D2F /* QueryFunctionViewLight.xib in Resources */,
 				B32EEC701EB3547600512FED /* Profile.storyboard in Resources */,
 				B32EEC841EB354B100512FED /* CreateToken.storyboard in Resources */,
 				B3076F341F308AB000FB7D5A /* FieldViewsLight.xib in Resources */,
@@ -5433,6 +5513,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet-resources.sh",
+				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -5573,6 +5654,8 @@
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
+				B305A1141FCD85B600FC4D2F /* SendModuleRouter.m in Sources */,
+				B305A1291FD005F400FC4D2F /* QueryFunctionViewDark.m in Sources */,
 				B3CBDF191F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
@@ -5622,6 +5705,7 @@
 				B33EAF1D1E5C9020006125F3 /* RepeateViewController.m in Sources */,
 				B32B32DA1ECCC2AC0081260A /* AbiInterfaceOutput.m in Sources */,
 				E7DE59931F0E882A006E0E1B /* PageControlDark.m in Sources */,
+				B305A11B1FCEAE1800FC4D2F /* KeychainService.m in Sources */,
 				E7C101B51F13CBBE00848526 /* BorderedLabelDark.m in Sources */,
 				B36505A71F16015A00521603 /* ExportBrainKeyViewControllerDark.m in Sources */,
 				B3DC9CF21F30D428006B2E07 /* ShareTokenPopUpViewControllerDark.m in Sources */,
@@ -5657,11 +5741,13 @@
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
 				B369DF351F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m in Sources */,
 				B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */,
+				B305A1261FD005DB00FC4D2F /* QueryFunctionView.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
 				E760F4A71F0F8F930056D042 /* TokenCellLight.m in Sources */,
 				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
 				B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */,
+				B305A1221FCF33DC00FC4D2F /* CallContractFacadeService.m in Sources */,
 				B30B11561FC6CDEC00E5ABBC /* ProfileStoryboardFactory.m in Sources */,
 				E7C101B81F13CBC700848526 /* BorderedLabelLight.m in Sources */,
 				E70353151F03AC6D004ECCC9 /* QStoreListTableViewCell.m in Sources */,
@@ -5689,6 +5775,7 @@
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				B3D5FE6D1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
+				B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */,
 				D059BE7B1F84E4A70045ABA0 /* PaymentValuesManager.m in Sources */,
 				B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */,
 				B315D0321F9F43B000C7F4E4 /* QTUMImageTagCellLight.m in Sources */,
@@ -5815,6 +5902,7 @@
 				E7C101BB1F14B5DB00848526 /* InnerShadowView.m in Sources */,
 				E7D7C09E1F1D0893009EBC04 /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				B3EA53171F47318C002FD201 /* QStoreListTableViewCellDark.m in Sources */,
+				B305A11F1FCEC9DC00FC4D2F /* KeychainStorage.m in Sources */,
 				E745BA241F21FC3600B2E216 /* NewsViewControllerLight.m in Sources */,
 				B33EAF131E5C70EF006125F3 /* LoginViewController.m in Sources */,
 				B3A4EA4F1F502C2D008115D1 /* NSNumber+Comparison.m in Sources */,
@@ -5876,6 +5964,7 @@
 				B315D0351F9F43BF00C7F4E4 /* QTUMParagrafTagCellLight.m in Sources */,
 				B369DF321F5D6187008B81CB /* AbiParameterTypeFixedElementaryArray.m in Sources */,
 				B365CA6F1EA600F30040A163 /* NSData+Extension.m in Sources */,
+				B305A10C1FCC252A00FC4D2F /* NewPaymentOutputEntity.m in Sources */,
 				B33EAF071E5C5D9A006125F3 /* AuthCoordinator.m in Sources */,
 				E789035A1EDC66D0004243F0 /* BalanceTokenView.m in Sources */,
 				E7C9FAE01F7908E0005D08AD /* ConfirmPopUpViewControllerLight.m in Sources */,
@@ -6021,7 +6110,6 @@
 				B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */,
 				B35DF6431F26378D00316953 /* TokenDetailInfoLightCell.m in Sources */,
 				B3CD78E81F4DD46300D79363 /* ChooseAddressReciveCellLight.m in Sources */,
-				E7FD365A1DC7308A00748177 /* FXKeychain.m in Sources */,
 				E7847F791F3B1ACD004A2333 /* QStoreMainScreenCategory.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
@@ -6050,6 +6138,7 @@
 				B369DF2C1F5D5EF6008B81CB /* AbiParameterTypeDynamicArrayAddress.m in Sources */,
 				B3F1492C1F489BB80032FC63 /* QStoreSearchTableViewCellDark.m in Sources */,
 				B392206A1F99FA9C00E8F7D9 /* QTUMImageTagCell.m in Sources */,
+				B305A12C1FD005FD00FC4D2F /* QueryFunctionViewLight.m in Sources */,
 				B35DF6191F1F4A6000316953 /* RestoreWalletViewControllerDark.m in Sources */,
 				E7DD00F21DC9E64300FD5335 /* BTCBlockchainInfo+QtumExplorer.m in Sources */,
 				E73CF6CB1EE2CFA40044DF78 /* InformationPopUpViewController.m in Sources */,

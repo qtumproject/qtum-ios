@@ -146,36 +146,52 @@
 
 #pragma  mark - NSCoder
 
+static NSString *kContractName = @"name";
+static NSString *kContractContractCreationAddressAddress = @"contractCreationAddressAddress";
+static NSString *kContractLocalName = @"localName";
+static NSString *kContractCreationDate = @"creationDate";
+static NSString *kContractTemplateModel = @"templateModel";
+static NSString *kContractAddress = @"contractAddress";
+static NSString *kContractAdresses = @"adresses";
+static NSString *kContractSymbol = @"symbol";
+static NSString *kContractDecimals = @"decimals";
+static NSString *kContractTotalSupply = @"totalSupply";
+static NSString *kContractBalance = @"balance";
+static NSString *kContractUnconfirmedBalance = @"unconfirmedBalance";
+static NSString *kContractIsActive = @"isActive";
+static NSString *kContractAddressWithBalanceDictionary = @"addressWithBalanceDictionary";
+
 - (void)encodeWithCoder:(NSCoder *) aCoder {
 
-	[aCoder encodeObject:self.name forKey:@"name"];
-	[aCoder encodeObject:self.contractCreationAddressAddress forKey:@"contractCreationAddressAddress"];
-	[aCoder encodeObject:self.localName forKey:@"localName"];
-	[aCoder encodeObject:self.creationDate forKey:@"creationDate"];
-	[aCoder encodeObject:self.templateModel forKey:@"templateModel"];
-	[aCoder encodeObject:self.contractAddress forKey:@"contractAddress"];
-	[aCoder encodeObject:self.adresses forKey:@"adresses"];
-	[aCoder encodeObject:self.symbol forKey:@"symbol"];
-	[aCoder encodeObject:self.decimals forKey:@"decimals"];
-	[aCoder encodeObject:self.totalSupply forKey:@"totalSupply"];
-	[aCoder encodeObject:self.balance.stringValue forKey:@"balance"];
-	[aCoder encodeObject:self.unconfirmedBalance.stringValue forKey:@"unconfirmedBalance"];
-	[aCoder encodeObject:@(self.isActive) forKey:@"isActive"];
+	[aCoder encodeObject:self.name forKey:kContractName];
+	[aCoder encodeObject:self.contractCreationAddressAddress forKey:kContractContractCreationAddressAddress];
+	[aCoder encodeObject:self.localName forKey:kContractLocalName];
+	[aCoder encodeObject:self.creationDate forKey:kContractCreationDate];
+	[aCoder encodeObject:self.templateModel forKey:kContractTemplateModel];
+	[aCoder encodeObject:self.contractAddress forKey:kContractAddress];
+	[aCoder encodeObject:self.adresses forKey:kContractAdresses];
+	[aCoder encodeObject:self.symbol forKey:kContractSymbol];
+	[aCoder encodeObject:self.decimals forKey:kContractDecimals];
+	[aCoder encodeObject:self.totalSupply forKey:kContractTotalSupply];
+	[aCoder encodeObject:self.unconfirmedBalance.stringValue forKey:kContractUnconfirmedBalance];
+	[aCoder encodeObject:@(self.isActive) forKey:kContractIsActive];
+    [aCoder encodeObject:self.addressBalanceDictionary forKey:kContractAddressWithBalanceDictionary];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *) aDecoder {
 
-	NSString *name = [aDecoder decodeObjectForKey:@"name"];
-	NSString *contractCreationAddressAddress = [aDecoder decodeObjectForKey:@"contractCreationAddressAddress"];
-	NSString *localName = [aDecoder decodeObjectForKey:@"localName"];
-	NSDate *creationDate = [aDecoder decodeObjectForKey:@"creationDate"];
-	TemplateModel *templateModel = [aDecoder decodeObjectForKey:@"templateModel"];
-	NSString *contractAddress = [aDecoder decodeObjectForKey:@"contractAddress"];
-	NSArray *adresses = [aDecoder decodeObjectForKey:@"adresses"];
-	NSString *symbol = [aDecoder decodeObjectForKey:@"symbol"];
-	QTUMBigNumber *decimals = [aDecoder decodeObjectForKey:@"decimals"];
-	QTUMBigNumber *totalSupply = [aDecoder decodeObjectForKey:@"totalSupply"];
-	BOOL isActive = [[aDecoder decodeObjectForKey:@"isActive"] boolValue];
+	NSString *name = [aDecoder decodeObjectForKey:kContractName];
+	NSString *contractCreationAddressAddress = [aDecoder decodeObjectForKey:kContractContractCreationAddressAddress];
+	NSString *localName = [aDecoder decodeObjectForKey:kContractLocalName];
+	NSDate *creationDate = [aDecoder decodeObjectForKey:kContractCreationDate];
+	TemplateModel *templateModel = [aDecoder decodeObjectForKey:kContractTemplateModel];
+	NSString *contractAddress = [aDecoder decodeObjectForKey:kContractAddress];
+	NSArray *adresses = [aDecoder decodeObjectForKey:kContractAdresses];
+	NSString *symbol = [aDecoder decodeObjectForKey:kContractSymbol];
+	QTUMBigNumber *decimals = [aDecoder decodeObjectForKey:kContractDecimals];
+	QTUMBigNumber *totalSupply = [aDecoder decodeObjectForKey:kContractTotalSupply];
+	BOOL isActive = [[aDecoder decodeObjectForKey:kContractIsActive] boolValue];
+    NSDictionary *addressBalanceDictionary = [aDecoder decodeObjectForKey:kContractAddressWithBalanceDictionary];
 
 	self = [super init];
 
@@ -192,6 +208,7 @@
 		_decimals = [decimals isKindOfClass:[NSNumber class]] ? [[QTUMBigNumber alloc] initWithString:[(NSNumber *)decimals stringValue]] : decimals;
 		_totalSupply = [totalSupply isKindOfClass:[NSNumber class]] ? [[QTUMBigNumber alloc] initWithString:[(NSNumber *)decimals stringValue]] : totalSupply;
 		_isActive = isActive;
+        _addressBalanceDictionary = addressBalanceDictionary;
 	}
 
 	return self;

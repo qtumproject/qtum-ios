@@ -10,7 +10,6 @@
 #import "QStoreDataProvider.h"
 #import "QStoreContractElement.h"
 #import "SocketManager.h"
-#import "FXKeychain.h"
 #import "QStoreRequestManager.h"
 #import "QStoreContractDownloadManager.h"
 
@@ -75,14 +74,14 @@ NSInteger const QStoreSearchCount = 20;
 
 - (BOOL)save {
 
-	BOOL isSaved = [[FXKeychain defaultKeychain] setObject:self.requestsManger forKey:kQStoreBuyRequestsManager];
+	BOOL isSaved = [SLocator.keychainService setObject:self.requestsManger forKey:kQStoreBuyRequestsManager];
 
 	return isSaved;
 }
 
 - (void)load {
 
-	QStoreRequestManager *requestManager = [[FXKeychain defaultKeychain] objectForKey:kQStoreBuyRequestsManager];
+	QStoreRequestManager *requestManager = [SLocator.keychainService objectForKey:kQStoreBuyRequestsManager];
 	self.requestsManger = requestManager ? : [QStoreRequestManager new];
 }
 

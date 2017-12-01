@@ -371,13 +371,25 @@
                                             <action selector="makePaymentButtonWasPressed:" destination="WZ6-tG-7Ii" eventType="touchUpInside" id="ZDF-co-sI1"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p0k-BE-eXk" customClass="TextFieldWithLine">
+                                        <rect key="frame" x="20" y="40" width="335" height="19"/>
+                                        <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="WZ6-tG-7Ii" id="XX9-h2-ieg"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="7Md-s8-YSL" firstAttribute="leading" secondItem="mXI-Up-p9y" secondAttribute="leading" constant="20" id="0sG-lY-UQH"/>
                                     <constraint firstItem="Ss7-mt-eh8" firstAttribute="top" secondItem="db5-ne-cDJ" secondAttribute="bottom" constant="30" id="3fI-MW-Sh4"/>
                                     <constraint firstItem="Acj-rW-ybZ" firstAttribute="top" secondItem="mXI-Up-p9y" secondAttribute="top" constant="40" id="9fR-KS-1k7"/>
                                     <constraint firstItem="7Md-s8-YSL" firstAttribute="top" secondItem="Acj-rW-ybZ" secondAttribute="bottom" constant="100" id="CJS-3x-tg6"/>
+                                    <constraint firstItem="Acj-rW-ybZ" firstAttribute="top" secondItem="p0k-BE-eXk" secondAttribute="bottom" constant="40" id="CZt-hs-Pvg"/>
                                     <constraint firstItem="57v-5Q-gqz" firstAttribute="leading" secondItem="mXI-Up-p9y" secondAttribute="leading" constant="20" id="GNS-H8-J5q"/>
+                                    <constraint firstItem="p0k-BE-eXk" firstAttribute="leading" secondItem="mXI-Up-p9y" secondAttribute="leading" constant="20" id="Jhp-bq-in2"/>
                                     <constraint firstItem="Acj-rW-ybZ" firstAttribute="centerX" secondItem="mXI-Up-p9y" secondAttribute="centerX" id="KdT-xy-JAJ"/>
                                     <constraint firstAttribute="trailing" secondItem="wiy-EJ-6js" secondAttribute="trailing" id="Kzs-f8-VsD"/>
                                     <constraint firstItem="gcC-xR-4e8" firstAttribute="top" secondItem="57v-5Q-gqz" secondAttribute="bottom" constant="40" id="LSI-Gr-FQH"/>
@@ -398,6 +410,8 @@
                                     <constraint firstAttribute="right" secondItem="55o-z3-dxc" secondAttribute="right" constant="30" id="cBn-4q-uwf"/>
                                     <constraint firstItem="u50-Ga-hFT" firstAttribute="centerY" secondItem="55o-z3-dxc" secondAttribute="centerY" id="d16-aS-DsK"/>
                                     <constraint firstItem="Ss7-mt-eh8" firstAttribute="centerX" secondItem="mXI-Up-p9y" secondAttribute="centerX" id="d9Z-SS-Mks"/>
+                                    <constraint firstItem="p0k-BE-eXk" firstAttribute="top" secondItem="mXI-Up-p9y" secondAttribute="top" constant="40" id="eiX-UH-Cc0"/>
+                                    <constraint firstItem="p0k-BE-eXk" firstAttribute="centerX" secondItem="mXI-Up-p9y" secondAttribute="centerX" id="gKk-iy-lfk"/>
                                     <constraint firstItem="57v-5Q-gqz" firstAttribute="top" secondItem="7Md-s8-YSL" secondAttribute="bottom" constant="60" id="hAJ-Cz-GwF"/>
                                     <constraint firstAttribute="trailing" secondItem="u50-Ga-hFT" secondAttribute="trailing" constant="20" id="iOd-F4-yzq"/>
                                     <constraint firstItem="Acj-rW-ybZ" firstAttribute="leading" secondItem="mXI-Up-p9y" secondAttribute="leading" constant="20" id="jjd-cW-RFL"/>
@@ -410,6 +424,11 @@
                                     <constraint firstItem="1nU-Ll-rlZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X7U-Af-UoV" secondAttribute="trailing" constant="10" id="yg3-CV-LEH"/>
                                     <constraint firstItem="57v-5Q-gqz" firstAttribute="top" secondItem="1nU-Ll-rlZ" secondAttribute="bottom" constant="8" id="yk0-Mf-dJU"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CZt-hs-Pvg"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -437,6 +456,7 @@
                         <outlet property="editButton" destination="db5-ne-cDJ" id="nDA-fP-Ieg"/>
                         <outlet property="feeSlider" destination="57v-5Q-gqz" id="DLy-aO-o7n"/>
                         <outlet property="feeTextField" destination="gcC-xR-4e8" id="e5b-O2-KIe"/>
+                        <outlet property="fromAddressTextField" destination="p0k-BE-eXk" id="e9h-YJ-19J"/>
                         <outlet property="gasLimitMaxValueLabel" destination="hx1-2E-Cac" id="78T-Mk-ffi"/>
                         <outlet property="gasLimitMinValueLabel" destination="wk1-AC-GDY" id="n55-pv-now"/>
                         <outlet property="gasLimitSlider" destination="eim-sz-ggf" id="Bew-2j-H6e"/>
@@ -450,6 +470,8 @@
                         <outlet property="heightForGasSlidersContainer" destination="ITV-lE-ZfB" id="XSK-kB-6db"/>
                         <outlet property="maxFeeLabel" destination="1nU-Ll-rlZ" id="iBg-b7-hHe"/>
                         <outlet property="minFeeLabel" destination="X7U-Af-UoV" id="i93-Co-Pnq"/>
+                        <outlet property="reciveAddressTopConstraintToOptionalSenderAddress" destination="CZt-hs-Pvg" id="JyP-rg-obq"/>
+                        <outlet property="reciveAddressTopConstraintToSuperview" destination="9fR-KS-1k7" id="VG5-D2-JZx"/>
                         <outlet property="scrollView" destination="mXI-Up-p9y" id="2ps-Sx-egA"/>
                         <outlet property="sendButton" destination="Ss7-mt-eh8" id="A19-WC-2zo"/>
                         <outlet property="sendButtonHeightConstraint" destination="nXY-XJ-KxX" id="cfb-qu-ahA"/>
@@ -837,6 +859,16 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SqX-5v-WoU">
                                 <rect key="frame" x="0.0" y="115" width="375" height="685"/>
                                 <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9hD-he-3B4" customClass="TextFieldWithLineLightSend">
+                                        <rect key="frame" x="20" y="40" width="335" height="21"/>
+                                        <color key="tintColor" red="0.0" green="1" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="bH6-xP-bzh" id="3Jo-KM-dyg"/>
+                                        </connections>
+                                    </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Receiver’s Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OZa-xy-yXs" customClass="TextFieldWithLineLightSend">
                                         <rect key="frame" x="20" y="40" width="335" height="21"/>
                                         <color key="tintColor" red="0.0" green="1" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1075,8 +1107,10 @@
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="9hD-he-3B4" firstAttribute="centerX" secondItem="SqX-5v-WoU" secondAttribute="centerX" id="0oj-Ih-vST"/>
                                     <constraint firstItem="OZa-xy-yXs" firstAttribute="top" secondItem="SqX-5v-WoU" secondAttribute="top" constant="40" id="1DF-qB-Hu8"/>
                                     <constraint firstItem="acM-3R-9dB" firstAttribute="top" secondItem="lfY-nt-slw" secondAttribute="bottom" constant="8" id="4Cb-oS-BvR"/>
+                                    <constraint firstItem="9hD-he-3B4" firstAttribute="leading" secondItem="SqX-5v-WoU" secondAttribute="leading" constant="20" id="4xv-xa-D8k"/>
                                     <constraint firstItem="tEl-OR-Wme" firstAttribute="centerX" secondItem="SqX-5v-WoU" secondAttribute="centerX" id="5w5-IZ-5MS"/>
                                     <constraint firstItem="dti-Bk-Z6y" firstAttribute="leading" secondItem="SqX-5v-WoU" secondAttribute="leading" id="7HG-QB-epP"/>
                                     <constraint firstItem="qOP-I7-7YX" firstAttribute="centerY" secondItem="tEl-OR-Wme" secondAttribute="centerY" id="7lD-ct-LrY"/>
@@ -1104,14 +1138,21 @@
                                     <constraint firstItem="acM-3R-9dB" firstAttribute="top" secondItem="92s-rm-sPV" secondAttribute="bottom" constant="8" id="bD6-dk-RW8"/>
                                     <constraint firstItem="OZa-xy-yXs" firstAttribute="centerX" secondItem="SqX-5v-WoU" secondAttribute="centerX" id="ea2-py-Izi"/>
                                     <constraint firstItem="Qdo-ZR-6ok" firstAttribute="leading" secondItem="SqX-5v-WoU" secondAttribute="leading" constant="20" id="fO4-py-soi"/>
+                                    <constraint firstItem="9hD-he-3B4" firstAttribute="top" secondItem="SqX-5v-WoU" secondAttribute="top" constant="40" id="hCL-eB-yvf"/>
                                     <constraint firstAttribute="trailing" secondItem="dti-Bk-Z6y" secondAttribute="trailing" id="j4h-wt-flP"/>
                                     <constraint firstAttribute="bottom" secondItem="6EO-ut-k6R" secondAttribute="bottom" constant="27" id="kax-vZ-6bb"/>
                                     <constraint firstItem="Qdo-ZR-6ok" firstAttribute="centerX" secondItem="SqX-5v-WoU" secondAttribute="centerX" id="o8e-zB-Mrw"/>
                                     <constraint firstItem="6EO-ut-k6R" firstAttribute="centerX" secondItem="SqX-5v-WoU" secondAttribute="centerX" id="paR-KJ-Jmk"/>
                                     <constraint firstItem="hwF-p1-9r8" firstAttribute="centerX" secondItem="SqX-5v-WoU" secondAttribute="centerX" id="pmb-fp-SQl"/>
                                     <constraint firstItem="92s-rm-sPV" firstAttribute="leading" secondItem="SqX-5v-WoU" secondAttribute="leading" constant="20" id="ytg-cS-SXf"/>
+                                    <constraint firstItem="OZa-xy-yXs" firstAttribute="top" secondItem="9hD-he-3B4" secondAttribute="bottom" constant="40" id="zDM-El-mAn"/>
                                     <constraint firstAttribute="right" secondItem="OZa-xy-yXs" secondAttribute="right" constant="20" id="zOi-12-uKt"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zDM-El-mAn"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1139,6 +1180,7 @@
                         <outlet property="editButton" destination="IvD-k6-NTz" id="00p-De-hEU"/>
                         <outlet property="feeSlider" destination="acM-3R-9dB" id="Lqg-H7-KUZ"/>
                         <outlet property="feeTextField" destination="Qdo-ZR-6ok" id="lp5-XL-ecr"/>
+                        <outlet property="fromAddressTextField" destination="9hD-he-3B4" id="4mK-b6-Ziz"/>
                         <outlet property="gasLimitMaxValueLabel" destination="InL-3e-M9e" id="sIX-TJ-DJq"/>
                         <outlet property="gasLimitMinValueLabel" destination="ffU-iF-rbt" id="Zlz-f6-4IK"/>
                         <outlet property="gasLimitSlider" destination="pBh-MY-qxC" id="sc0-jl-fOp"/>
@@ -1152,6 +1194,8 @@
                         <outlet property="heightForGasSlidersContainer" destination="SGl-jk-4iu" id="FZO-Bj-8gu"/>
                         <outlet property="maxFeeLabel" destination="lfY-nt-slw" id="0jk-aD-jy0"/>
                         <outlet property="minFeeLabel" destination="92s-rm-sPV" id="eg4-Gk-JIL"/>
+                        <outlet property="reciveAddressTopConstraintToOptionalSenderAddress" destination="zDM-El-mAn" id="tFh-Px-JnV"/>
+                        <outlet property="reciveAddressTopConstraintToSuperview" destination="1DF-qB-Hu8" id="L95-fI-FAB"/>
                         <outlet property="scrollView" destination="SqX-5v-WoU" id="udp-jy-1aZ"/>
                         <outlet property="sendButton" destination="6EO-ut-k6R" id="nz9-qg-Ihq"/>
                         <outlet property="sendButtonHeightConstraint" destination="MYi-bz-do2" id="jxx-od-opS"/>

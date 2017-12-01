@@ -27,7 +27,6 @@
 
 	if (self != nil) {
 		_backupFileManager = [BackupFileManager new];
-		_templateManager = [TemplateManager new];
 		_contractArgumentsInterpretator = [ContractArgumentsInterpretator new];
 		_contractFileManager = [ContractFileManager new];
 		_contractInterfaceManager = [ContractInterfaceManager new];
@@ -40,7 +39,6 @@
 		_newsFacedeService = [NewsFacedeService new];
 		_controllersFactory = [ControllersFactory new];
 		_requestManager = [[RequestManager alloc] initWithBaseUrl:_appSettings.baseURL];
-		_walletManager = [WalletManager new];
 		_contractInfoFacade = [ContractInfoFacade new];
 		_sourceCodeFormatService = [SourceCodeFormatService new];
 	}
@@ -48,6 +46,31 @@
 }
 
 #pragma mark - Lazy
+
+
+- (CallContractFacadeService *)callContractFacadeService {
+    
+    if (!_callContractFacadeService) {
+        _callContractFacadeService = [CallContractFacadeService new];
+    }
+    return _callContractFacadeService;
+}
+
+- (WalletManager *)walletManager {
+    
+    if (!_walletManager) {
+        _walletManager = [WalletManager new];
+    }
+    return _walletManager;
+}
+
+- (TemplateManager *)templateManager {
+    
+    if (!_templateManager) {
+        _templateManager = [TemplateManager new];
+    }
+    return _templateManager;
+}
 
 - (ContractManager *)contractManager {
 
@@ -137,5 +160,12 @@
     return _watchTokensFacadeService;
 }
 
+-(KeychainService*)keychainService {
+    
+    if (!_keychainService) {
+        _keychainService = [KeychainService new];
+    }
+    return _keychainService;
+}
 
 @end

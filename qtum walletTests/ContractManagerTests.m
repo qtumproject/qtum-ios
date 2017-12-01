@@ -13,26 +13,29 @@
 
 @interface ContractManagerTests : XCTestCase
 
+@property (strong, nonatomic) ContractManager* contractManager;
+
 @end
 
 @implementation ContractManagerTests
 
 - (void)setUp {
 	[super setUp];
+    self.contractManager = [ContractManager new];
 }
 
 - (void)tearDown {
 
 	[super tearDown];
-	[[ContractManager sharedInstance] clear];
+    [self.contractManager clear];
 }
 
 - (void)test_Clear {
 
-	[[ContractManager sharedInstance] clear];
-	NSInteger contractCount = [ContractManager sharedInstance].allContracts.count;
-	NSInteger tokensCount = [ContractManager sharedInstance].allTokens.count;
-	NSInteger activeTokensCount = [ContractManager sharedInstance].allActiveTokens.count;
+	[self.contractManager clear];
+	NSInteger contractCount = self.contractManager.allContracts.count;
+	NSInteger tokensCount = self.contractManager.allTokens.count;
+	NSInteger activeTokensCount = self.contractManager.allActiveTokens.count;
 
 	XCTAssertTrue(contractCount == 0);
 	XCTAssertTrue(tokensCount == 0);
@@ -41,33 +44,33 @@
 
 - (void)test_Add_New_Token {
 
-	NSInteger tokensCount = [ContractManager sharedInstance].allContracts.count;
-	[[ContractManager sharedInstance] addNewToken:[Contract new]];
-	NSInteger newTokensCount = [ContractManager sharedInstance].allContracts.count;
+	NSInteger tokensCount = self.contractManager.allContracts.count;
+	[self.contractManager addNewContract:[Contract new]];
+	NSInteger newTokensCount = self.contractManager.allContracts.count;
 
 	XCTAssertTrue(tokensCount + 1 == newTokensCount);
 
-	NSInteger tokensCount5 = [ContractManager sharedInstance].allContracts.count;
-	[[ContractManager sharedInstance] addNewTokenWithContractAddress:@"1234567890123456"];
-	NSInteger newTokensCount5 = [ContractManager sharedInstance].allContracts.count;
+	NSInteger tokensCount5 = self.contractManager.allContracts.count;
+	[self.contractManager addNewTokenWithContractAddress:@"1234567890123456"];
+	NSInteger newTokensCount5 = self.contractManager.allContracts.count;
 
 	XCTAssertTrue(tokensCount5 + 1 == newTokensCount5);
 
-	NSInteger tokensCount4 = [ContractManager sharedInstance].allContracts.count;
-	[[ContractManager sharedInstance] addNewTokenWithContractAddress:nil];
-	NSInteger newTokensCount4 = [ContractManager sharedInstance].allContracts.count;
+	NSInteger tokensCount4 = self.contractManager.allContracts.count;
+	[self.contractManager addNewTokenWithContractAddress:nil];
+	NSInteger newTokensCount4 = self.contractManager.allContracts.count;
 
 	XCTAssertTrue(tokensCount4 == newTokensCount4);
 
-	NSInteger tokensCount3 = [ContractManager sharedInstance].allContracts.count;
-	[[ContractManager sharedInstance] addNewTokenWithContractAddress:@"asdfasf"];
-	NSInteger newTokensCount3 = [ContractManager sharedInstance].allContracts.count;
+	NSInteger tokensCount3 = self.contractManager.allContracts.count;
+	[self.contractManager addNewTokenWithContractAddress:@"asdfasf"];
+	NSInteger newTokensCount3 = self.contractManager.allContracts.count;
 
 	XCTAssertTrue(tokensCount3 + 1 == newTokensCount3);
 
-	NSInteger tokensCount2 = [ContractManager sharedInstance].allContracts.count;
-	[[ContractManager sharedInstance] addNewToken:nil];
-	NSInteger newTokensCount2 = [ContractManager sharedInstance].allContracts.count;
+	NSInteger tokensCount2 = self.contractManager.allContracts.count;
+	[self.contractManager addNewContract:nil];
+	NSInteger newTokensCount2 = self.contractManager.allContracts.count;
 
 	XCTAssertTrue(tokensCount2 == newTokensCount2);
 }

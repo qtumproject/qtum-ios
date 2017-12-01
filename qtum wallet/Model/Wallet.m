@@ -87,6 +87,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 			[addresses addObject:keyString];
 		}
 	}
+    
 	[NSUserDefaults savePublicAddresses:addresses];
 }
 

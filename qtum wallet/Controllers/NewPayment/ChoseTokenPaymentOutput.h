@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Presentable.h"
 
 @protocol ChoseTokenPaymentOutputDelegate;
 @protocol ChooseTokenPaymentDelegateDataSourceProtocol;
 
 @class Contract;
 
-@protocol ChoseTokenPaymentOutput <NSObject>
+@protocol ChoseTokenPaymentOutput <Presentable>
 
 @property (weak, nonatomic) id <ChoseTokenPaymentOutputDelegate> delegate;
 @property (strong, nonatomic) id <ChooseTokenPaymentDelegateDataSourceProtocol> delegateDataSource;

@@ -1,4 +1,3 @@
-
 //
 //  QTUMBigNumber.m
 //  qtum wallet
@@ -273,7 +272,7 @@
 
 	NSString *value = self.stringValue;
 	NSInteger valueCount = self.decimalContainer.bigInteger.stringValue.length;
-	NSInteger reduceDigits = (power.integerValue - 1);
+	NSInteger reduceDigits = power.integerValue;
 
 	if ([self.stringValue isEqualToString:@"0"]) {
 		return self.stringValue;
@@ -305,7 +304,7 @@
 	} else {
 		NSString *zeroString = @"0.";
 
-		for (int i = 0; i < integerDigitsAfter * -1 + 1; i++) {
+		for (int i = 0; i < integerDigitsAfter * -1; i++) {
 			zeroString = [zeroString stringByAppendingString:@"0"];
 		}
 

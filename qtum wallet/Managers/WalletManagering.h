@@ -12,6 +12,7 @@
 
 @class Wallet;
 @class WalletManagerRequestAdapter;
+@class BTCKey;
 
 @protocol WalletManagering <Clearable, Managerable>
 
@@ -41,6 +42,8 @@
 - (NSDictionary *)hashTableOfKeys;
 
 - (NSDictionary *)hashTableOfKeysForHistoryElement;
+
+- (NSString*)stringAddressFromBTCKey:(BTCKey*) key;
 
 - (BOOL)startWithPin:(NSString *) pin;
 

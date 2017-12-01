@@ -8,7 +8,6 @@
 
 #import "LoginCoordinator.h"
 #import "LoginViewController.h"
-#import "FXKeychain.h"
 #import "NSUserDefaults+Settings.h"
 #import "ErrorPopUpViewController.h"
 #import "NSDate+Extension.h"
@@ -62,7 +61,7 @@
 
 	__weak __typeof (self) weakSelf = self;
 
-	[[FXKeychain defaultKeychain] touchIDString:^(NSString *_Nullable string, NSError *_Nullable error) {
+	[SLocator.keychainService touchIDString:^(NSString *_Nullable string, NSError *_Nullable error) {
 
 		dispatch_async (dispatch_get_main_queue (), ^{
 			if (string) {

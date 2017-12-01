@@ -9,7 +9,6 @@
 #import "ExportBrandKeyCoordinator.h"
 #import "ExportBrainKeyOutput.h"
 #import "LoginViewOutput.h"
-#import "FXKeychain.h"
 
 @interface ExportBrandKeyCoordinator () <ExportBrainKeyOutputDelegate, LoginViewOutputDelegate>
 
@@ -66,7 +65,7 @@
 
 	__weak __typeof (self) weakSelf = self;
 
-	[[FXKeychain defaultKeychain] touchIDString:^(NSString *_Nullable string, NSError *_Nullable error) {
+	[SLocator.keychainService touchIDString:^(NSString *_Nullable string, NSError *_Nullable error) {
 
 		dispatch_async (dispatch_get_main_queue (), ^{
 			if (string) {

@@ -6,8 +6,6 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "FXKeychain.h"
-
 @interface TemplateManager ()
 
 @property (strong, atomic) NSMutableArray <TemplateModel *> *templates;
@@ -45,7 +43,7 @@ static NSString *crowdsaleTokenUuid = @"crowdsale-token-identifire";
 
 - (void)load {
 
-	NSMutableArray *savedTemplates = [[[FXKeychain defaultKeychain] objectForKey:kAvailableTemplates] mutableCopy];
+	NSMutableArray *savedTemplates = [[SLocator.keychainService objectForKey:kAvailableTemplates] mutableCopy];
 	NSArray *standartTemplates = [self standartPackOfTemplates];
 
 	if (!savedTemplates.count) {
@@ -62,7 +60,7 @@ static NSString *crowdsaleTokenUuid = @"crowdsale-token-identifire";
 
 - (BOOL)save {
 
-	BOOL templatesSaved = [[FXKeychain defaultKeychain] setObject:self.templates forKey:kAvailableTemplates];
+	BOOL templatesSaved = [SLocator.keychainService setObject:self.templates forKey:kAvailableTemplates];
 	return templatesSaved;
 }
 

@@ -9,6 +9,7 @@
 #import "QRCodeViewController.h"
 #import "SpinnerView.h"
 #import <MTBBarcodeScanner.h>
+#import "QRCodeManager.h"
 
 @interface QRCodeViewController ()
 
@@ -22,6 +23,8 @@
 @end
 
 @implementation QRCodeViewController
+
+@synthesize delegate = _delegate;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];

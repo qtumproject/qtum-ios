@@ -86,6 +86,7 @@
 @protocol NewsDetailOutput;
 @protocol SourceCodeOutput;
 @protocol WalletTokenOutput;
+@protocol QRCodeOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -197,11 +198,11 @@
 
 - (NSObject <QStoreListOutput> *)createQStoreListViewController;
 
-- (QRCodeViewController *)createQRCodeViewControllerForWallet;
+- (NSObject <QRCodeOutput> *)createQRCodeViewControllerForWallet;
 
-- (QRCodeViewController *)createQRCodeViewControllerForSend;
+- (NSObject <QRCodeOutput> *)createQRCodeViewControllerForSend;
 
-- (QRCodeViewController *)createQRCodeViewControllerForSubscribe;
+- (NSObject <QRCodeOutput> *)createQRCodeViewControllerForSubscribe;
 
 - (UIViewController *)createFlowNavigationCoordinator;
 

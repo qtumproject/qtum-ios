@@ -40,6 +40,9 @@
 #import "TableSourcesFactory.h"
 #import "ServiceLocator.h"
 
+//constrain framework define
+#define MAS_SHORTHAND
+
 #define SLocator ((ServiceLocator*)[ServiceLocator sharedInstance])
 
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)

@@ -31,7 +31,7 @@ extern NSString *const kLocalContractName;
 
 - (NSDictionary *)smartContractPretendentsCopy;
 
-- (void)addNewToken:(Contract *) token;
+- (void)addNewContract:(Contract *) token;
 
 - (void)updateTokenWithContractAddress:(NSString *) address withAddressBalanceDictionary:(NSDictionary *) addressBalance;
 

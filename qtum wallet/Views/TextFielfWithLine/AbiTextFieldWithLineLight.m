@@ -47,6 +47,7 @@
 			[item.type isKindOfClass:[AbiParameterTypeInt class]] ||
 			[item.type isKindOfClass:[AbiParameterTypeBool class]]) ? UIKeyboardTypeDecimalPad : UIKeyboardTypeDefault;
 	self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:item.name];
+    self.appendingTextToPlaceHolder = item.typeAsString;
 	_item = item;
 }
 
@@ -54,6 +55,10 @@
 
     NSString* resultString = [textField.text stringByAppendingString:string];
     BOOL isValid = [SLocator.validationInputService isValidSymbols:resultString forParameter:self.item.type];
+    
+    if (isValid && [self.customDelegate respondsToSelector:@selector(textDidChange)]) {
+        [self.customDelegate textDidChange];
+    }
     return isValid;
 }
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Presentable.h"
+#import "NewPaymentOutputEntity.h"
 
 @protocol NewPaymentOutputDelegate;
 
@@ -15,24 +16,11 @@
 
 @property (weak, nonatomic) id <NewPaymentOutputDelegate> delegate;
 
-- (void)setSendInfoItem:(SendInfoItem *) item;
-
-- (void)updateControlsWithTokensExist:(BOOL) isExist
-					choosenTokenExist:(BOOL) choosenExist
-						walletBalance:(QTUMBigNumber *) walletBalance
-			   andUnconfimrmedBalance:(QTUMBigNumber *) walletUnconfirmedBalance;
-
-- (void)updateContentWithContract:(Contract *) contract;
+- (void)updateWithEtity:(NewPaymentOutputEntity *) entity;
 
 - (void)clearFields;
 
-- (void)showErrorPopUp:(NSString *) message;
-
-- (void)showCompletedPopUp;
-
-- (void)showLoaderPopUp;
-
-- (void)hideLoaderPopUp;
+- (void)startEditingAddress;
 
 - (void)setMinFee:(QTUMBigNumber *) minFee andMaxFee:(QTUMBigNumber *) maxFee;
 

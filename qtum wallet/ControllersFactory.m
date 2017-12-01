@@ -73,6 +73,7 @@
 #import "ChooseReciveAddressOutput.h"
 #import "NewsDetailOutput.h"
 #import "SourceCodeOutput.h"
+#import "QRCodeOutput.h"
 
 @implementation ControllersFactory
 
@@ -117,9 +118,9 @@
 	return controller;
 }
 
-- (QRCodeViewController *)createQRCodeViewControllerForSend {
+- (NSObject <QRCodeOutput> *)createQRCodeViewControllerForSend {
 
-	QRCodeViewController *controller = (QRCodeViewController *)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"QRCodeViewController"];
+	NSObject <QRCodeOutput> *controller = (NSObject <QRCodeOutput> *)[UIViewController controllerInStoryboard:@"Send" withIdentifire:@"QRCodeViewController"];
 	return controller;
 }
 
@@ -266,13 +267,13 @@
 	return controller;
 }
 
-- (QRCodeViewController *)createQRCodeViewControllerForSubscribe {
-	QRCodeViewController *controller = (QRCodeViewController *)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"QRCodeViewController"];
+- (NSObject <QRCodeOutput> *)createQRCodeViewControllerForSubscribe {
+	NSObject <QRCodeOutput> *controller = (NSObject <QRCodeOutput> *)[UIViewController controllerInStoryboard:@"SubscribeToken" withIdentifire:@"QRCodeViewController"];
 	return controller;
 }
 
-- (QRCodeViewController *)createQRCodeViewControllerForWallet {
-	QRCodeViewController *controller = (QRCodeViewController *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"QRCodeViewController"];
+- (NSObject <QRCodeOutput> *)createQRCodeViewControllerForWallet {
+	NSObject <QRCodeOutput> *controller = (NSObject <QRCodeOutput> *)[UIViewController controllerInStoryboard:@"Wallet" withIdentifire:@"QRCodeViewController"];
 	return controller;
 }
 

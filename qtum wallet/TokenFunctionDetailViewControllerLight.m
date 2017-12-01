@@ -8,156 +8,126 @@
 
 #import "TokenFunctionDetailViewControllerLight.h"
 #import "TextFieldParameterView.h"
+#import "Masonry.h"
+#import "QueryFunctionView.h"
 
 @interface TokenFunctionDetailViewControllerLight () <AbiTextFieldWithLineDelegate>
 
 @end
 
+static NSInteger callButtonTopOffset = 40;
+static NSInteger callButtonViewBottomOffset = 20;
+
 @implementation TokenFunctionDetailViewControllerLight
 
 #pragma mark - Configuration
 
-- (void)configTextFields {
-
-	NSInteger heighOfPrevElement = 0;
-	NSInteger heighOfElement = 60;
-	NSInteger scrollViewTopOffset = 64;
-	NSInteger scrollViewBottomOffset = 49;
-
-	self.scrollView = [UIScrollView new];
-	self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-	self.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-	[self.view addSubview:self.scrollView];
-
-	NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
-	NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0f constant:0.0f];
-	NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:scrollViewTopOffset];
-	NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
-
-	[self.view addConstraints:@[left, right, top, bottom]];
+- (UIPickerView *)createPickerView {
     
-    UIView* selectedTopItem = self.scrollView;
+    UIPickerView *fromPicker = [[UIPickerView alloc] init];
+    fromPicker.backgroundColor = [UIColor whiteColor];
+    fromPicker.delegate = self;
+    fromPicker.dataSource = self;
+    fromPicker.showsSelectionIndicator = YES;
+    return fromPicker;
+}
 
-    if (self.function.payable) {
-        TextFieldWithLine *amount = (TextFieldWithLine *)[[[NSBundle mainBundle] loadNibNamed:@"TextFieldWithLineLightSend" owner:self options:nil] lastObject];
-        amount.delegate = self;
-        [self.scrollView addSubview:amount];
-        amount.translatesAutoresizingMaskIntoConstraints = NO;
+- (UIToolbar *)createToolbar {
+    
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake (0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+    toolbar.barStyle = UIBarStyleDefault;
+    toolbar.translucent = NO;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", "") style:UIBarButtonItemStyleDone target:self action:@selector (didVoidTapAction:)];
+    toolbar.items = @[
+                      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                      doneButton];
+    [toolbar sizeToFit];
+    
+    return toolbar;
+}
+
+- (CGFloat)pickerView:(UIPickerView *) pickerView rowHeightForComponent:(NSInteger) component {
+    
+    return 40;
+}
+
+
+- (UIView *)pickerView:(UIPickerView *) pickerView
+            viewForRow:(NSInteger) row
+          forComponent:(NSInteger) component
+           reusingView:(UIView *) view {
+    
+    ContracBalancesObject *addressObject = (ContracBalancesObject*)self.tokenBalancesInfo[row];
+    NSString *amount = addressObject.longBalanceStringBalance;
+    
+    UIView *container;
+    UILabel *amountLabel;
+    UILabel *addressLabel;
+    
+    if (view == nil) {
+        container = [[UIView alloc] initWithFrame:CGRectMake (0, 0, pickerView.frame.size.width, 30)];
         
-        NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
-        [self.scrollView addConstraint:center];
+        addressLabel = [[UILabel alloc] initWithFrame:CGRectMake (20, 0, pickerView.frame.size.width * 0.65, 30)];
+        amountLabel = [[UILabel alloc] initWithFrame:CGRectMake (addressLabel.frame.size.width + 10 + 20,
+                                                                 0,
+                                                                 pickerView.frame.size.width - addressLabel.frame.size.width - 10 - 20,
+                                                                 30)];
         
-        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:20.0f];
-        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:20.0f];
+        addressLabel.backgroundColor = [UIColor clearColor];
+        addressLabel.text = addressObject.addressString;
+        addressLabel.font = [UIFont fontWithName:@"ProximaNova-Semibold" size:14];
+        addressLabel.textAlignment = NSTextAlignmentCenter;
+        addressLabel.textColor = lightBlackColor ();
         
-        [self.scrollView addConstraint:left];
-        [self.scrollView addConstraint:right];
+        amountLabel.backgroundColor = [UIColor clearColor];
+        amountLabel.text = amount;
+        amountLabel.font = [UIFont fontWithName:@"ProximaNova-Semibold" size:16];
+        amountLabel.textAlignment = NSTextAlignmentCenter;
+        amountLabel.textColor = lightBlackColor ();
         
-        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:amount attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:selectedTopItem attribute:NSLayoutAttributeTop multiplier:1.0f constant:40.0f];
-        [self.scrollView addConstraint:top];
-        self.amountTextField = amount;
-        selectedTopItem = amount;
+        CGSize size = [amountLabel.text sizeWithAttributes:@{NSFontAttributeName: amountLabel.font}];
+        if (size.width > amountLabel.bounds.size.width) {
+            amountLabel.text = addressObject.shortBalanceStringBalance;
+        }
+        
+        [container addSubview:amountLabel];
+        [container addSubview:addressLabel];
     }
+    
+    return container;
+}
 
-	NSMutableArray *params = [NSMutableArray new];
-	for (int i = 0; i < self.function.inputs.count; i++) {
-		TextFieldParameterView *parameter = (TextFieldParameterView *)[[[NSBundle mainBundle] loadNibNamed:@"FieldViewsLight" owner:self options:nil] lastObject];
-		[params addObject:parameter];
-		parameter.translatesAutoresizingMaskIntoConstraints = NO;
-		[parameter.textField setItem:self.function.inputs[i]];
-		[parameter.titleLabel setText:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Parameter", nil), i + 1]];
-		heighOfPrevElement = heighOfElement;
-		parameter.textField.inputAccessoryView = [self createToolBarInput];
-		parameter.textField.customDelegate = self;
-		parameter.tag = i;
+- (TextFieldWithLine*)amountInputView {
+    
+    TextFieldWithLine *amount = (TextFieldWithLine *)[[[NSBundle mainBundle] loadNibNamed:@"TextFieldWithLineLightSend" owner:self options:nil] lastObject];
+    return amount;
+}
 
-		[self.scrollView addSubview:parameter];
+- (TextFieldParameterView*)parametersInputView {
+    
+    TextFieldParameterView *parameter = (TextFieldParameterView *)[[[NSBundle mainBundle] loadNibNamed:@"FieldViewsLight" owner:self options:nil] lastObject];
+    return parameter;
+}
 
-		UIView *topItem;
-		UIView *bottomItem;
-		if (i == 0) {
-			topItem = selectedTopItem;
-		} else {
-			topItem = [params objectAtIndex:i - 1];
-			if (i == self.function.inputs.count - 1 && self.fromQStore) {
-				bottomItem = self.scrollView;
-			}
-		}
+-(SliderFeeView*)feeSliderView {
+    
+    SliderFeeView *feeView = (SliderFeeView *)[[[NSBundle mainBundle] loadNibNamed:@"SliderViewLight" owner:self options:nil] lastObject];
+    feeView.delegate = self;
+    feeView.feeTextField.delegate = self;
+    return feeView;
+}
 
-		if (i == 0 && !self.function.payable) {
-			NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
-			[self.scrollView addConstraint:center];
-		}
-
-		NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:10.0f];
-		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:30.0f];
-
-		[self.scrollView addConstraint:left];
-		[self.scrollView addConstraint:right];
-
-		if (bottomItem) {
-			NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:bottomItem attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
-			[self.scrollView addConstraint:bottom];
-		}
-
-		NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:parameter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:topItem attribute:(i == 0 && !self.function.payable) ? NSLayoutAttributeTop : NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
-		[self.scrollView addConstraint:top];
-	}
-
-	if (!self.fromQStore) {
-		SliderFeeView *feeView = (SliderFeeView *)[[[NSBundle mainBundle] loadNibNamed:@"SliderViewLight" owner:self options:nil] lastObject];
-		feeView.translatesAutoresizingMaskIntoConstraints = NO;
-		feeView.delegate = self;
-		feeView.feeTextField.delegate = self;
-		self.feeView = feeView;
-		[self.scrollView addSubview:feeView];
-
-		NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
-		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0f constant:40.0f];
-
-		if (params.count == 0 && !self.function.payable) {
-			NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
-
-			NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeTop multiplier:1.0f constant:30.0f];
-
-			[self.scrollView addConstraint:center];
-			[self.scrollView addConstraint:top];
-        } else if (params.count == 0) {
-            NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.amountTextField attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
-            
-            [self.scrollView addConstraint:top];
-        } else {
-			NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:feeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:[params lastObject] attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
-
-			[self.scrollView addConstraint:top];
-		}
-
-		[self.scrollView addConstraints:@[left, right]];
-
-		UIButton *callButton = [[UIButton alloc] init];
-		callButton.translatesAutoresizingMaskIntoConstraints = NO;
-		[callButton setTitle:NSLocalizedString(@"CALL", nil) forState:UIControlStateNormal];
-		callButton.layer.cornerRadius = 5;
-		callButton.layer.masksToBounds = YES;
-		callButton.titleLabel.font = [UIFont fontWithName:@"ProximaNova-Semibold" size:16];
-		[callButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-		[callButton setBackgroundColor:lightGreenColor ()];
-		[callButton addTarget:self action:@selector (didPressedCallAction:) forControlEvents:UIControlEventTouchUpInside];
-		[self.scrollView addSubview:callButton];
-
-		NSLayoutConstraint *topButton = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:feeView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:30.0f];
-		NSLayoutConstraint *bottomButton = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:20.0f];
-		NSLayoutConstraint *centerButton = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f];
-		NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:150.0f];
-		NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:callButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:50.0f];
-
-		[callButton addConstraint:width];
-		[callButton addConstraint:height];
-		[self.scrollView addConstraints:@[topButton, bottomButton, centerButton]];
-	}
-
-	self.scrollView.contentInset =
-			self.originInsets = UIEdgeInsetsMake (0, 0, scrollViewBottomOffset, 0);
+-(UIButton*)callButton {
+    
+    UIButton *callButton = [[UIButton alloc] init];
+    [callButton setTitle:NSLocalizedString(@"CALL", nil) forState:UIControlStateNormal];
+    callButton.layer.cornerRadius = 5;
+    callButton.layer.masksToBounds = YES;
+    callButton.titleLabel.font = [UIFont fontWithName:@"ProximaNova-Semibold" size:16];
+    [callButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [callButton setBackgroundColor:lightGreenColor ()];
+    [callButton addTarget:self action:@selector (didPressedCallAction:) forControlEvents:UIControlEventTouchUpInside];
+    return callButton;
 }
 
 - (UIToolbar *)createToolBarInput {
@@ -176,6 +146,36 @@
 			cancelButton];
 	[toolbar sizeToFit];
 	return toolbar;
+}
+
+-(QueryFunctionView*)queryView {
+    
+    QueryFunctionView *queryView = (QueryFunctionView *)[[[NSBundle mainBundle] loadNibNamed:@"QueryFunctionViewLight" owner:self options:nil] lastObject];
+    return queryView;
+}
+
+-(void)makeConstraintForCallButton {
+    
+    if (!self.lastViewInScroll) {
+        
+        self.lastViewInScroll = self.scrollView;
+    } else {
+        
+        [self.lastViewInScrollBottomOffset uninstall];
+    }
+    
+    UIButton *callButton = [self callButton];
+    [self.scrollView addSubview:callButton];
+    
+    [callButton makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(self.lastViewInScroll.bottom).with.offset(callButtonTopOffset);
+        make.size.equalTo(@(CGSizeMake(230, 50)));
+        make.centerX.equalTo(callButton.superview).priorityMedium();
+        self.lastViewInScrollBottomOffset = make.bottom.equalTo(callButton.superview.bottom).with.offset(-callButtonViewBottomOffset);
+    }];
+    
+    self.lastViewInScroll = callButton;
 }
 
 
