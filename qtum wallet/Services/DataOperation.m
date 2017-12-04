@@ -52,8 +52,10 @@ NSString *const newsCacheFileName = @"newsCashFile";
 	NSString *stringFile = [stringPath stringByAppendingPathComponent:fileName];
 
 	NSError *err;
-	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dataSource options:0 error:&err];
-	[jsonData writeToFile:stringFile atomically:YES];
+    if (dataSource) {
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dataSource options:0 error:&err];
+        [jsonData writeToFile:stringFile atomically:YES];
+    }
 
 	return stringFile;
 }
@@ -106,7 +108,7 @@ NSString *const newsCacheFileName = @"newsCashFile";
 	if (groupInfo) {
 		summ = [groupInfo mutableCopy];
 		[summ removeObjectForKey:key];
-	}
+    }
 
 	return [self saveGroupFileWithName:fileName dataSource:[summ copy]];
 }
