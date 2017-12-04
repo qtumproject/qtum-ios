@@ -5556,7 +5556,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" $(/usr/libexec/PlistBuddy -c \"Print :FABRIC_API_KEY\" \"${PROJECT_DIR}/config/environments/environment.plist\") $(/usr/libexec/PlistBuddy -c \"Print :FABRIC_BUILD_SECRET\" \"${PROJECT_DIR}/config/environments/environment.plist\")";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" $(/usr/libexec/PlistBuddy -c \"Print :FABRIC_API_KEY\" \"${PROJECT_DIR}/config/environments/Using/Info-environment.plist\") $(/usr/libexec/PlistBuddy -c \"Print :FABRIC_BUILD_SECRET\" \"${PROJECT_DIR}/config/environments/Using/Info-environment.plist\")";
 		};
 		EFC4163D6348EB02957DC3DD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

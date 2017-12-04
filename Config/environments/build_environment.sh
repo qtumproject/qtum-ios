@@ -15,50 +15,68 @@ echo "Host: " `hostname`
 
 # environment variable from value passed in to xcodebuild.
 # if not specified, we default to DEV
-env=${ENVIRONMENT}
-FILE=${PROJECT_DIR}/config/environments/$env.plist
+envMode=${ENVIRONMENT}
 
-if [ -z "$env" ] || [ ! -f $FILE ]
+infoEnv="Info-$envMode"
+FILE=${PROJECT_DIR}/config/environments/Environment/$infoEnv.plist
+
+if [ -z "$infoEnv" ] || [ ! -f $FILE ]
 then
-echo "NO FILE $env"
-env="default"
+echo "NO FILE $infoEnv"
+env="Info-default"
+fi
+
+googleEnv="GoogleService-Info-$envMode"
+
+FILE=${PROJECT_DIR}/config/environments/Environment/$googleEnv.plist
+
+if [ -z "$googleEnv" ] || [ ! -f $FILE ]
+then
+echo "NO GOOGLE FILE $googleEnv"
+googleEnv="GoogleService-Info-default"
 fi
 
 echo "Using $env environment"
+echo "Using $googleEnv google settings"
 
 # copy the environment-specific file
-cp $dir/$env.plist $dir/environment.plist
+cp $dir/Default/$env.plist $dir/Using/Info-environment.plist
+
+# copy the google environment-specific file
+cp $dir/Default/$googleEnv.plist $dir/Using/Google-environment.plist
 
 # Date and time that we are running this build
 buildDate=`date "+%F %H:%M:%S"`
 
-# app settings
-bundleName=`/usr/libexec/PlistBuddy -c "Print :CFBundleName" "$dir/environment.plist"`
-bundleIdentifier=`/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "$dir/environment.plist"`
-bundleVerions=`/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$dir/environment.plist"`
-bundleVerionsShortString=`/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$dir/environment.plist"`
-infoDictionaryVersion=`/usr/libexec/PlistBuddy -c "Print :CFBundleInfoDictionaryVersion" "$dir/environment.plist"`
-fabricAPIKey=`/usr/libexec/PlistBuddy -c "Print :FABRIC_API_KEY" "$dir/environment.plist"`
-fabricBuildSecret=`/usr/libexec/PlistBuddy -c "Print :FABRIC_BUILD_SECRET" "$dir/environment.plist"`
-serverUrl=`/usr/libexec/PlistBuddy -c "Print :Server_URL" "$dir/environment.plist"`
-isMainNetSetting=`/usr/libexec/PlistBuddy -c "Print :Is_Mainnet_setting" "$dir/environment.plist"`
-googleAdUnitIdForBannerTest=`/usr/libexec/PlistBuddy -c "Print :AD_UNIT_ID_FOR_BANNER_TEST" "$dir/environment.plist"`
-googleAdUnitIdForInterstitialTest=`/usr/libexec/PlistBuddy -c "Print :AD_UNIT_ID_FOR_INTERSTITIAL_TEST" "$dir/environment.plist"`
-googleClientId=`/usr/libexec/PlistBuddy -c "Print :CLIENT_ID" "$dir/environment.plist"`
-googleReversedClientId=`/usr/libexec/PlistBuddy -c "Print :REVERSED_CLIENT_ID" "$dir/environment.plist"`
-googleApiKey=`/usr/libexec/PlistBuddy -c "Print :API_KEY" "$dir/environment.plist"`
-googleGcmSenderId=`/usr/libexec/PlistBuddy -c "Print :GCM_SENDER_ID" "$dir/environment.plist"`
-googlePlistVersion=`/usr/libexec/PlistBuddy -c "Print :PLIST_VERSION" "$dir/environment.plist"`
-googleBundleId=`/usr/libexec/PlistBuddy -c "Print :BUNDLE_ID" "$dir/environment.plist"`
-googleProjectId=`/usr/libexec/PlistBuddy -c "Print :PROJECT_ID" "$dir/environment.plist"`
-googleStorageBucket=`/usr/libexec/PlistBuddy -c "Print :STORAGE_BUCKET" "$dir/environment.plist"`
-googleAppId=`/usr/libexec/PlistBuddy -c "Print :GOOGLE_APP_ID" "$dir/environment.plist"`
-googleDatabaseUrl=`/usr/libexec/PlistBuddy -c "Print :DATABASE_URL" "$dir/environment.plist"`
-googleIsAdsEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_ADS_ENABLED" "$dir/environment.plist"`
-googleIsAnalyticsEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_ANALYTICS_ENABLED" "$dir/environment.plist"`
-googleIsAppinviteEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_APPINVITE_ENABLED" "$dir/environment.plist"`
-googleIsGcmEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_GCM_ENABLED" "$dir/environment.plist"`
-googleIsSigninEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_SIGNIN_ENABLED" "$dir/environment.plist"`
+# app settings from Info.plist
+bundleName=`/usr/libexec/PlistBuddy -c "Print :CFBundleName" "$dir/Using/Info-environment.plist"`
+bundleIdentifier=`/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "$dir/Using/Info-environment.plist"`
+bundleVerions=`/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$dir/Using/Info-environment.plist"`
+bundleVerionsShortString=`/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$dir/Using/Info-environment.plist"`
+infoDictionaryVersion=`/usr/libexec/PlistBuddy -c "Print :CFBundleInfoDictionaryVersion" "$dir/Using/Info-environment.plist"`
+fabricAPIKey=`/usr/libexec/PlistBuddy -c "Print :FABRIC_API_KEY" "$dir/Using/Info-environment.plist"`
+fabricBuildSecret=`/usr/libexec/PlistBuddy -c "Print :FABRIC_BUILD_SECRET" "$dir/Using/Info-environment.plist"`
+serverUrl=`/usr/libexec/PlistBuddy -c "Print :Server_URL" "$dir/Using/Info-environment.plist"`
+isMainNetSetting=`/usr/libexec/PlistBuddy -c "Print :Is_Mainnet_setting" "$dir/Using/Info-environment.plist"`
+
+# app settings from GoogleService.plist
+googleAdUnitIdForBannerTest=`/usr/libexec/PlistBuddy -c "Print :AD_UNIT_ID_FOR_BANNER_TEST" "$dir/Using/Google-environment.plist"`
+googleAdUnitIdForInterstitialTest=`/usr/libexec/PlistBuddy -c "Print :AD_UNIT_ID_FOR_INTERSTITIAL_TEST" "$dir/Using/Google-environment.plist"`
+googleClientId=`/usr/libexec/PlistBuddy -c "Print :CLIENT_ID" "$dir/Using/Google-environment.plist"`
+googleReversedClientId=`/usr/libexec/PlistBuddy -c "Print :REVERSED_CLIENT_ID" "$dir/Using/Google-environment.plist"`
+googleApiKey=`/usr/libexec/PlistBuddy -c "Print :API_KEY" "$dir/Using/Google-environment.plist"`
+googleGcmSenderId=`/usr/libexec/PlistBuddy -c "Print :GCM_SENDER_ID" "$dir/Using/Google-environment.plist"`
+googlePlistVersion=`/usr/libexec/PlistBuddy -c "Print :PLIST_VERSION" "$dir/Using/Google-environment.plist"`
+googleBundleId=`/usr/libexec/PlistBuddy -c "Print :BUNDLE_ID" "$dir/Using/Google-environment.plist"`
+googleProjectId=`/usr/libexec/PlistBuddy -c "Print :PROJECT_ID" "$dir/Using/Google-environment.plist"`
+googleStorageBucket=`/usr/libexec/PlistBuddy -c "Print :STORAGE_BUCKET" "$dir/Using/Google-environment.plist"`
+googleAppId=`/usr/libexec/PlistBuddy -c "Print :GOOGLE_APP_ID" "$dir/Using/Google-environment.plist"`
+googleDatabaseUrl=`/usr/libexec/PlistBuddy -c "Print :DATABASE_URL" "$dir/Using/Google-environment.plist"`
+googleIsAdsEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_ADS_ENABLED" "$dir/Using/Google-environment.plist"`
+googleIsAnalyticsEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_ANALYTICS_ENABLED" "$dir/Using/Google-environment.plist"`
+googleIsAppinviteEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_APPINVITE_ENABLED" "$dir/Using/Google-environment.plist"`
+googleIsGcmEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_GCM_ENABLED" "$dir/Using/Google-environment.plist"`
+googleIsSigninEnabled=`/usr/libexec/PlistBuddy -c "Print :IS_SIGNIN_ENABLED" "$dir/Using/Google-environment.plist"`
 
 # Build the preprocess file
 cd "${PROJECT_DIR}"
