@@ -33,14 +33,17 @@
 
 - (void)setup {
 
-	if (![NSUserDefaults isNotFirstTimeLaunch]) {
-		[NSUserDefaults saveIsDarkSchemeSetting:YES];
-		[NSUserDefaults saveIsNotFirstTimeLaunch:YES];
-	}
-
-	[NSUserDefaults saveCurrentVersion:[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
-	[NSUserDefaults saveIsRPCOnSetting:NO];
-	[NSUserDefaults saveIsMainnetSetting:NO];
+    if (![NSUserDefaults isNotFirstTimeLaunch]) {
+        [NSUserDefaults saveIsDarkSchemeSetting:YES];
+        [NSUserDefaults saveIsNotFirstTimeLaunch:YES];
+    }
+    
+    [NSUserDefaults saveCurrentVersion:[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
+    [NSUserDefaults saveIsRPCOnSetting:NO];
+    
+    BOOL isMainNetSettings = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Is_Mainnet_Settings"] boolValue];
+    
+    [NSUserDefaults saveIsMainnetSetting:isMainNetSettings];
 
 	[self setupFabric];
 	[self setupFingerpring];
@@ -99,10 +102,11 @@
 	return [NSUserDefaults isRemovingContractTrainingPassed];
 }
 
-- (NSString *)baseURL {
+-(NSString*)baseURL {
+    
+    NSString* baseUrl = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Server URL"];
 
-	NSString *baseUrl = @"http://593-qtum-walletapi.pixelplex-test.by";
-	return baseUrl;
+    return baseUrl;
 }
 
 - (NSInteger)failedPinWaitingTime {

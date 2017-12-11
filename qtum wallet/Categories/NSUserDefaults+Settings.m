@@ -174,6 +174,7 @@ NSString *const kGroupIdentifire = @"group.org.qtum.qtum-wallet";
 // Public addresses
 
 + (void)savePublicAddresses:(NSArray *) addresses {
+    
 	[[NSUserDefaults standardUserDefaults] setObject:addresses forKey:kPublicAddresses];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
