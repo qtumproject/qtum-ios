@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -162,9 +162,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="abiCopyButton" destination="rFu-rf-Fht" id="Q0r-yO-FxV"/>
+                        <outlet property="abiInterfaceTextLabel" destination="wX5-Aa-ucb" id="cCC-M6-yCs"/>
                         <outlet property="abiTextView" destination="xXI-C7-XmK" id="MlW-01-pnq"/>
+                        <outlet property="addressCopyButton" destination="J4r-J1-iXv" id="xhv-aw-Zqk"/>
                         <outlet property="addressLabel" destination="fZ5-x7-u4H" id="a8e-Ja-eOF"/>
+                        <outlet property="contractAddressTextLabel" destination="dvI-vS-WRT" id="7rM-mV-Gba"/>
+                        <outlet property="okButton" destination="e2n-zY-v74" id="vuE-rY-1YV"/>
                         <outlet property="titleLabel" destination="NDi-Hi-I0f" id="vtN-dB-XhU"/>
+                        <outlet property="titleTextLabel" destination="NDi-Hi-I0f" id="QC1-dd-i8n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLW-yK-j96" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -338,9 +344,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="abiCopyButton" destination="RC7-J5-vlb" id="2oK-qN-sTo"/>
+                        <outlet property="abiInterfaceTextLabel" destination="L1k-tZ-SGJ" id="nmK-Xe-8wW"/>
                         <outlet property="abiTextView" destination="5iu-rH-0XU" id="lhO-jF-Vzy"/>
+                        <outlet property="addressCopyButton" destination="uVJ-YT-02B" id="7gx-at-7kw"/>
                         <outlet property="addressLabel" destination="SyU-J3-aSU" id="e9t-jN-gdM"/>
+                        <outlet property="contractAddressTextLabel" destination="fnT-Wi-xHx" id="FVW-Pf-E0O"/>
+                        <outlet property="okButton" destination="o5b-QM-VOd" id="KcD-Yh-AAC"/>
                         <outlet property="titleLabel" destination="DqK-Ch-0H1" id="BKk-0e-8aM"/>
+                        <outlet property="titleTextLabel" destination="DqK-Ch-0H1" id="nzb-T1-tZb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdg-wl-Thh" userLabel="First Responder" sceneMemberID="firstResponder"/>

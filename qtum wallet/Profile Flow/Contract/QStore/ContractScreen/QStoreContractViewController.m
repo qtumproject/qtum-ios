@@ -14,6 +14,14 @@
 #import "SourceCodePopUpViewController.h"
 
 @interface QStoreContractViewController () <PopUpWithTwoButtonsViewControllerDelegate, UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *descriptionTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagsTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *publishedDateTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sizeTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *compiledTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sourceCodeTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *publishedByTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *downloadsTextLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *viewAbiButton;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
@@ -57,8 +65,28 @@
 	self.tagsTextView.delegate = self;
 	self.tagsTextView.textContainerInset = UIEdgeInsetsZero;
 	self.tagsTextView.textContainer.lineFragmentPadding = 0;
+    
+    [self configLocalization];
 
 	[self.delegate didLoadViewWithFullContract:self.element];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+
+    self.descriptionTextLabel.text = NSLocalizedString(@"Description:", @"");
+    self.tagsTextLabel.text = NSLocalizedString(@"Tags:", @"");
+    self.publishedDateTextLabel.text = NSLocalizedString(@"Published Date:", @"");
+    self.sizeTextLabel.text = NSLocalizedString(@"Size:", @"");
+    self.compiledTextLabel.text = NSLocalizedString(@"Compiled On:", @"");
+    self.sourceCodeTextLabel.text = NSLocalizedString(@"Source Code:", @"");
+    self.publishedByTextLabel.text = NSLocalizedString(@"Published by:", @"");
+    self.downloadsTextLabel.text = NSLocalizedString(@"Downloads:", @"");
+    [self.detailsButton setTitle:NSLocalizedString(@"View Details", @"View Details Button") forState:UIControlStateNormal];
+    [self.viewAbiButton setTitle:NSLocalizedString(@"View Abi", @"View Abi Button") forState:UIControlStateNormal];
+    [self.purchaseButton setTitle:NSLocalizedString(@"PURCHASE", @"PURCHASE Button") forState:UIControlStateNormal];
+    [self.sourceCodeButton setTitle:NSLocalizedString(@"SOURCE", @"SOURCE Code Button") forState:UIControlStateNormal];
 }
 
 #pragma mark - Protected Getters
@@ -114,7 +142,7 @@
 	vc.contractNameLabel.text = self.element.name;
 	vc.contractTypeLabel.text = [self.element.typeString capitalizedString];
 	vc.amountLabel.text = [NSString stringWithFormat:@"%@ %@", self.element.priceString, NSLocalizedString(@"QTUM", nil)];
-	vc.minterAddressLabel.text = self.element.publisherAddress;
+	vc.minerAddressLabel.text = self.element.publisherAddress;
 	vc.feeLabel.text = [NSString stringWithFormat:@"%@ %@", @"0.1", NSLocalizedString(@"QTUM", nil)];
 }
 

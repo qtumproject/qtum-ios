@@ -236,7 +236,12 @@
 }
 
 - (BOOL)isValidBytesFromString:(NSString*) string withSize:(NSInteger) size withRegex:(NSRegularExpression*) regex {
-    return YES;
+    
+    BOOL isValid = NO;
+    if (string.length > 0) {
+        isValid = YES;
+    }
+    return isValid;
 }
 
 - (BOOL)isValidUnnownFromString:(NSString*) string withRegex:(NSRegularExpression*) regex {
@@ -260,7 +265,11 @@
 
 - (BOOL)isValidFixedBytesFromString:(NSString*) string withSize:(NSInteger) size withRegex:(NSRegularExpression*) regex {
     
-    return YES;
+    BOOL isValid = NO;
+    if (string.length > 0) {
+        isValid = YES;
+    }
+    return isValid;
 }
 
 - (BOOL)isValidAddressFromString:(NSString*) string withRegex:(NSRegularExpression*) regex {
@@ -272,7 +281,11 @@
 
 - (BOOL)isValidArrayFromString:(NSString*) string withSize:(NSInteger) size withRegex:(NSRegularExpression*) regex {
     
-    return YES;
+    BOOL isValid = NO;
+    if (string.length > 0) {
+        isValid = YES;
+    }
+    return isValid;
 }
 
 @end

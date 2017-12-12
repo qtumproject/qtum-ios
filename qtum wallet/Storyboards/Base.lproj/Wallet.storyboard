@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mEt-XV-9HF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mEt-XV-9HF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -54,25 +54,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6B-vc-ynF">
-                                        <rect key="frame" x="330.5" y="124.5" width="29.5" height="14"/>
+                                        <rect key="frame" x="323.5" y="124.5" width="36.5" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVd-Fi-2G9">
-                                        <rect key="frame" x="69" y="75" width="195" height="33"/>
+                                        <rect key="frame" x="46.5" y="75" width="238.5" height="34"/>
                                         <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="28"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1v-Dh-WHs">
-                                        <rect key="frame" x="274" y="87" width="47" height="19"/>
+                                        <rect key="frame" x="295" y="88" width="39" height="19"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wt6-Uf-rns">
-                                        <rect key="frame" x="72.5" y="115" width="230" height="25"/>
+                                        <rect key="frame" x="72.5" y="116" width="230" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed Transaction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tt5-C7-nex">
                                                 <rect key="frame" x="0.0" y="0.0" width="230" height="25"/>
@@ -93,7 +93,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uH-TB-FBZ">
-                                        <rect key="frame" x="10" y="124" width="83" height="14"/>
+                                        <rect key="frame" x="10" y="124" width="102.5" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXu-VK-uXJ">
-                                                <rect key="frame" x="141.5" y="11" width="93" height="21"/>
+                                                <rect key="frame" x="139.5" y="10" width="97.5" height="23"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -219,13 +219,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="3sdf567b122c24f5d5x3243vxfve5478dcg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Z0-n1-f7e" customClass="CopyLabel">
-                                                            <rect key="frame" x="10" y="14" width="245" height="17"/>
+                                                            <rect key="frame" x="10" y="14" width="235" height="17"/>
                                                             <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
                                                             <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="asdasdasdasda" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPp-Xj-OVo">
-                                                            <rect key="frame" x="275" y="11" width="85" height="22"/>
+                                                            <rect key="frame" x="265" y="11" width="95" height="22"/>
                                                             <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="12"/>
                                                             <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -267,13 +267,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="3sdf567b122c24f5d5x3243vxfve5478dcg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7Y-F7-P8X" customClass="CopyLabel">
-                                                            <rect key="frame" x="10" y="14" width="245" height="17"/>
+                                                            <rect key="frame" x="10" y="14" width="235" height="17"/>
                                                             <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
                                                             <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="asdasdasdasda" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hu-qy-bQ8">
-                                                            <rect key="frame" x="275" y="11" width="85" height="22"/>
+                                                            <rect key="frame" x="265" y="11" width="95" height="22"/>
                                                             <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="12"/>
                                                             <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -339,8 +339,10 @@
                         <outlet property="receivedTimeLabel" destination="R6B-vc-ynF" id="f4P-3H-wQb"/>
                         <outlet property="scrollView" destination="cca-rh-DmR" id="aUE-3e-Mod"/>
                         <outlet property="timeTextLabel" destination="2uH-TB-FBZ" id="Hkb-fh-LmT"/>
+                        <outlet property="titleTextLabel" destination="BXu-VK-uXJ" id="dfI-6C-nSE"/>
                         <outlet property="toTable" destination="S3E-P6-PFb" id="jiR-K6-UIM"/>
                         <outlet property="topBoardHeightConstraint" destination="ZS6-KM-dLg" id="bBg-tE-hey"/>
+                        <outlet property="unconfirmedTxLabel" destination="tt5-C7-nex" id="JF9-df-Orm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ety-pY-Uo2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,7 +383,7 @@
                                 <rect key="frame" x="0.0" y="276" width="375" height="391"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8Q-wR-ANq">
-                                        <rect key="frame" x="41" y="184.5" width="294" height="21"/>
+                                        <rect key="frame" x="41" y="183.5" width="294" height="23"/>
                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -412,7 +414,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="211.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfP-pe-Z6O">
-                                                            <rect key="frame" x="90.5" y="20" width="195" height="33"/>
+                                                            <rect key="frame" x="69" y="20" width="238.5" height="34"/>
                                                             <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="28"/>
                                                             <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -442,19 +444,19 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qdv-Gk-oJt">
-                                                            <rect key="frame" x="140.5" y="56" width="95" height="14"/>
+                                                            <rect key="frame" x="126" y="56" width="124.5" height="14"/>
                                                             <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                                             <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sO9-7I-q20">
-                                                            <rect key="frame" x="132" y="86" width="111.5" height="19"/>
+                                                            <rect key="frame" x="119.5" y="86" width="136.5" height="19"/>
                                                             <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                                             <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS4-QT-iHA">
-                                                            <rect key="frame" x="130" y="107" width="116.5" height="14"/>
+                                                            <rect key="frame" x="122.5" y="107" width="131.5" height="14"/>
                                                             <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                                             <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -558,7 +560,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6e-5O-Nik">
-                                                    <rect key="frame" x="46" y="30.5" width="29.5" height="14"/>
+                                                    <rect key="frame" x="46" y="30.5" width="36.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="12"/>
                                                     <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -570,13 +572,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBY-Cp-dJj">
-                                                    <rect key="frame" x="338" y="8" width="27" height="13"/>
+                                                    <rect key="frame" x="331.5" y="8" width="33.5" height="13"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                                     <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eq9-0b-0po">
-                                                    <rect key="frame" x="325.5" y="28" width="39.5" height="19"/>
+                                                    <rect key="frame" x="316" y="28" width="49" height="19"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="16"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -620,7 +622,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87b-mR-idc">
-                                                <rect key="frame" x="149" y="11" width="79" height="21"/>
+                                                <rect key="frame" x="147" y="10" width="81.5" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -662,19 +664,19 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iv7-z9-t2O">
-                                        <rect key="frame" x="306.5" y="9" width="58.5" height="17"/>
+                                        <rect key="frame" x="296.5" y="9" width="68.5" height="17"/>
                                         <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="14"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owV-Mm-9sn">
-                                        <rect key="frame" x="10" y="29" width="106.5" height="13"/>
+                                        <rect key="frame" x="10" y="29" width="120.5" height="13"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0m9-ga-s3w">
-                                        <rect key="frame" x="306.5" y="26" width="58.5" height="17"/>
+                                        <rect key="frame" x="296.5" y="26" width="68.5" height="17"/>
                                         <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="14"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -687,7 +689,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6R-GV-sUd">
-                                        <rect key="frame" x="10" y="11" width="87" height="13"/>
+                                        <rect key="frame" x="10" y="11" width="114" height="13"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -732,7 +734,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kR-xg-M7a">
-                                        <rect key="frame" x="10" y="10" width="39.5" height="14"/>
+                                        <rect key="frame" x="10" y="8.5" width="43" height="15.5"/>
                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -775,6 +777,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityTextLabel" destination="0kR-xg-M7a" id="la9-Uj-PSf"/>
                         <outlet property="availabelLabel" destination="iv7-z9-t2O" id="hdr-OC-e0o"/>
                         <outlet property="availableTextTopConstraint" destination="AyF-ZL-pRW" id="1tv-KN-z5H"/>
                         <outlet property="availableValueTopConstraint" destination="QCG-Bl-k7C" id="6vw-LC-ylB"/>
@@ -782,6 +785,7 @@
                         <outlet property="headerHeightConstraint" destination="ZxO-ay-UJg" id="1be-Mz-YpC"/>
                         <outlet property="headerView" destination="uc4-nK-6WR" id="xWA-Jt-8HU"/>
                         <outlet property="tableView" destination="wxm-c6-KId" id="1Bc-7E-dld"/>
+                        <outlet property="titleTextLabel" destination="87b-mR-idc" id="yxH-ZC-H86"/>
                         <outlet property="trailingForLineConstraint" destination="Cq9-PT-bH7" id="bsI-wV-bWW"/>
                         <outlet property="unconfirmedTextLabel" destination="owV-Mm-9sn" id="U15-nc-Cly"/>
                         <outlet property="uncorfirmedLabel" destination="0m9-ga-s3w" id="Owu-pK-9qP"/>
@@ -825,7 +829,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BN8-Bl-VYs">
-                                                <rect key="frame" x="150.5" y="12" width="75" height="21"/>
+                                                <rect key="frame" x="150.5" y="11" width="75" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -895,6 +899,7 @@
                     <connections>
                         <outlet property="cameraView" destination="3LO-mE-nBe" id="3JJ-xG-tKi"/>
                         <outlet property="spinnerView" destination="Lc9-3Y-xPL" id="bLa-eJ-JvY"/>
+                        <outlet property="titleTextLabel" destination="BN8-Bl-VYs" id="880-l7-HtQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3d-aj-mlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -934,7 +939,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXR-23-AE5">
-                                                <rect key="frame" x="156" y="12" width="64" height="21"/>
+                                                <rect key="frame" x="156" y="11" width="64" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -966,37 +971,37 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBh-lD-S79">
-                                        <rect key="frame" x="10" y="74" width="87" height="13"/>
+                                        <rect key="frame" x="10" y="74" width="114" height="13"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrM-6g-nNF">
-                                        <rect key="frame" x="10" y="92" width="64" height="13"/>
+                                        <rect key="frame" x="10" y="92" width="67" height="13"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viN-ya-iQ4">
-                                        <rect key="frame" x="332.5" y="75" width="32.5" height="13"/>
+                                        <rect key="frame" x="338" y="75" width="27" height="13"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no0-v7-v6v">
-                                        <rect key="frame" x="332.5" y="93" width="32.5" height="13"/>
+                                        <rect key="frame" x="338" y="93" width="27" height="13"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exQ-3S-Cmx">
-                                        <rect key="frame" x="231.5" y="72" width="97.5" height="17"/>
+                                        <rect key="frame" x="215" y="72" width="119.5" height="17"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGT-I7-UDj">
-                                        <rect key="frame" x="231.5" y="90" width="97.5" height="17"/>
+                                        <rect key="frame" x="215" y="90" width="119.5" height="17"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1028,7 +1033,7 @@
                                 <rect key="frame" x="0.0" y="115" width="375" height="635"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WHI-KE-qIy" customClass="TextFieldWithLine">
-                                        <rect key="frame" x="20" y="30" width="335" height="19"/>
+                                        <rect key="frame" x="20" y="30" width="335" height="20"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
@@ -1038,7 +1043,7 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fst-F0-5gj">
-                                        <rect key="frame" x="40" y="79" width="295" height="294.5"/>
+                                        <rect key="frame" x="40" y="80" width="295" height="294.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O54-jm-Oou">
                                                 <rect key="frame" x="10" y="10" width="274.5" height="274.5"/>
@@ -1056,13 +1061,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="фыва" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXX-ub-hQN">
-                                        <rect key="frame" x="20" y="393.5" width="335" height="14"/>
+                                        <rect key="frame" x="20" y="394.5" width="335" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfp-BO-X6d">
-                                        <rect key="frame" x="20" y="375.5" width="335" height="50"/>
+                                        <rect key="frame" x="20" y="376.5" width="335" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="dP6-xm-zQW"/>
                                         </constraints>
@@ -1071,7 +1076,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfO-lt-d8p">
-                                        <rect key="frame" x="47.5" y="427.5" width="280" height="44"/>
+                                        <rect key="frame" x="47.5" y="428.5" width="280" height="44"/>
                                         <color key="backgroundColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="OeI-xE-LwY"/>
@@ -1086,7 +1091,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZC-VX-h06">
-                                        <rect key="frame" x="47" y="491.5" width="280" height="44"/>
+                                        <rect key="frame" x="47" y="492.5" width="280" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="5WV-sr-cuz"/>
@@ -1139,6 +1144,7 @@
                     <size key="freeformSize" width="375" height="750"/>
                     <connections>
                         <outlet property="amountTextField" destination="WHI-KE-qIy" id="q18-tT-NOV"/>
+                        <outlet property="availableBalanceTextLabel" destination="eBh-lD-S79" id="hhN-Sp-6vL"/>
                         <outlet property="balanceCurrency" destination="viN-ya-iQ4" id="U7g-CX-mfI"/>
                         <outlet property="balanceLabel" destination="exQ-3S-Cmx" id="PsN-BQ-tF5"/>
                         <outlet property="chooseAddressButton" destination="cZC-VX-h06" id="UgI-5F-PMO"/>
@@ -1146,8 +1152,10 @@
                         <outlet property="qrCodeImageView" destination="O54-jm-Oou" id="kHY-C4-JrV"/>
                         <outlet property="shareButton" destination="weP-AK-5h9" id="uxy-bM-LMk"/>
                         <outlet property="shareLabelButton" destination="pfp-BO-X6d" id="hl3-Pk-CX2"/>
+                        <outlet property="titleTextLabel" destination="wXR-23-AE5" id="ZhW-96-QFN"/>
                         <outlet property="unconfirmedBalance" destination="YGT-I7-UDj" id="AmP-dZ-A6H"/>
                         <outlet property="unconfirmedBalanceCurrency" destination="no0-v7-v6v" id="T5u-17-705"/>
+                        <outlet property="unconfirmedBalanceTextLabel" destination="GrM-6g-nNF" id="dnH-cN-cKC"/>
                         <outlet property="walletAdressCopyButton" destination="IfO-lt-d8p" id="D6H-fU-832"/>
                         <outlet property="walletCopyButtonBottomOffsetConstraint" destination="4t7-b6-dME" id="tgg-Rx-RFH"/>
                     </connections>
@@ -1289,6 +1297,7 @@
                     <connections>
                         <outlet property="pageControl" destination="Qsh-0F-dAk" id="Cal-fq-m5z"/>
                         <outlet property="tableView" destination="UML-TT-QYP" id="6iY-2d-VYP"/>
+                        <outlet property="titleTextLabel" destination="cxX-WI-p4x" id="LGg-Dy-639"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7b-hr-yfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1311,7 +1320,7 @@
                                 <rect key="frame" x="0.0" y="314" width="375" height="353"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvP-uv-hWq">
-                                        <rect key="frame" x="41" y="165.5" width="294" height="21"/>
+                                        <rect key="frame" x="41" y="164.5" width="294" height="23"/>
                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1343,13 +1352,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmr-lt-g2J">
-                                                    <rect key="frame" x="141" y="45" width="95" height="14"/>
+                                                    <rect key="frame" x="125.5" y="45" width="124.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcE-lx-YXE">
-                                                    <rect key="frame" x="180.5" y="15" width="16" height="33"/>
+                                                    <rect key="frame" x="179" y="15" width="17.5" height="34"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="28"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1420,7 +1429,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNN-u2-Rru">
-                                                    <rect key="frame" x="38" y="9" width="73" height="13"/>
+                                                    <rect key="frame" x="38" y="9" width="87" height="13"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                                     <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1445,6 +1454,7 @@
                                         <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="addressLabel" destination="mWP-QP-g2y" id="H8l-FC-TBd"/>
+                                            <outlet property="tokenAddressTextLabel" destination="DNN-u2-Rru" id="wc4-Va-5Ua"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NubersTokenTableViewCell" rowHeight="51" id="2yq-mQ-Cu1" customClass="NubersTokenTableViewCell">
@@ -1462,25 +1472,25 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Supply:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgS-Eo-2qh">
-                                                    <rect key="frame" x="10" y="8" width="66.5" height="13"/>
+                                                    <rect key="frame" x="10" y="8" width="100.5" height="13"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decimal Units:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zmg-X3-8fI">
-                                                    <rect key="frame" x="10" y="29" width="71.5" height="13"/>
+                                                    <rect key="frame" x="10" y="29" width="94" height="13"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000000000000000000000000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IM3-2o-5BV">
-                                                    <rect key="frame" x="170" y="4.5" width="195" height="17"/>
+                                                    <rect key="frame" x="152" y="4.5" width="213" height="17"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEr-wi-Vjb">
-                                                    <rect key="frame" x="357" y="25.5" width="8" height="17"/>
+                                                    <rect key="frame" x="356" y="25.5" width="9" height="17"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1568,7 +1578,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4R-3f-Vfs">
-                                                    <rect key="frame" x="10" y="11" width="39.5" height="14"/>
+                                                    <rect key="frame" x="10" y="9.5" width="43" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1603,19 +1613,19 @@
                                                     <rect key="frame" x="10" y="20" width="29" height="18"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6L8-dx-P0f">
-                                                    <rect key="frame" x="49" y="22" width="29.5" height="14"/>
+                                                    <rect key="frame" x="49" y="22" width="36.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="12"/>
                                                     <color key="textColor" red="0.21176470589999999" green="0.6705882353" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQR-cL-smE">
-                                                    <rect key="frame" x="338" y="6" width="27" height="13"/>
+                                                    <rect key="frame" x="331.5" y="6" width="33.5" height="13"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ2-dR-KNY">
-                                                    <rect key="frame" x="325.5" y="19" width="39.5" height="19"/>
+                                                    <rect key="frame" x="316" y="19" width="49" height="19"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="16"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1661,7 +1671,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTZ-aa-mX3">
-                                        <rect key="frame" x="301.5" y="16" width="58.5" height="17"/>
+                                        <rect key="frame" x="291.5" y="16" width="68.5" height="17"/>
                                         <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="14"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1674,7 +1684,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tv-B3-gSn">
-                                        <rect key="frame" x="15" y="18" width="87" height="13"/>
+                                        <rect key="frame" x="15" y="18" width="114" height="13"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1714,7 +1724,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5g-7X-Agv">
-                                        <rect key="frame" x="10" y="10.5" width="39.5" height="14"/>
+                                        <rect key="frame" x="10" y="10" width="43" height="15.5"/>
                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                         <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1738,7 +1748,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgH-5f-VXF">
-                                                <rect key="frame" x="156" y="12" width="63" height="21"/>
+                                                <rect key="frame" x="158.5" y="11" width="58" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1819,10 +1829,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityTextLabel" destination="s5g-7X-Agv" id="DQU-8O-8a9"/>
                         <outlet property="activityView" destination="ANi-Bh-c2y" id="jcx-3g-9Ki"/>
                         <outlet property="availableBalanceLabel" destination="DTZ-aa-mX3" id="bFd-Me-dNv"/>
                         <outlet property="headerVIew" destination="5hS-pi-PfR" id="qsa-QV-bIJ"/>
                         <outlet property="heightConsctaintForHeaderView" destination="lTG-J4-dBs" id="aFm-n5-G0O"/>
+                        <outlet property="noTransactionTextLabel" destination="BvP-uv-hWq" id="Xm0-iS-NQJ"/>
                         <outlet property="tableView" destination="rZJ-eu-DGf" id="I7M-6y-ULq"/>
                         <outlet property="titleLabel" destination="pgH-5f-VXF" id="ntL-FU-EVQ"/>
                         <outlet property="trailingForLineConstraint" destination="Eam-wK-tE5" id="oJD-VV-xs4"/>
@@ -1848,7 +1860,7 @@
                                 <rect key="frame" x="0.0" y="200" width="375" height="467"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBw-W0-GcV">
-                                        <rect key="frame" x="41" y="222.5" width="294" height="21"/>
+                                        <rect key="frame" x="41" y="224" width="294" height="18"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                         <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1903,19 +1915,19 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.007" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bb-Lt-KOF">
-                                                            <rect key="frame" x="15" y="89" width="80.5" height="37.5"/>
+                                                            <rect key="frame" x="15" y="87" width="83" height="32"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="32"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrN-Al-Jkq" customClass="CopyLabel">
-                                                            <rect key="frame" x="48" y="190" width="317" height="15.5"/>
+                                                            <rect key="frame" x="48" y="192.5" width="317" height="13"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="13"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRV-4F-swN">
-                                                            <rect key="frame" x="48" y="175" width="282" height="14"/>
+                                                            <rect key="frame" x="48" y="179.5" width="282" height="12"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -1933,31 +1945,31 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5a-z7-IhK">
-                                                            <rect key="frame" x="15" y="70" width="95" height="14"/>
+                                                            <rect key="frame" x="15" y="70" width="93.5" height="12"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="071-iZ-8Ar">
-                                                            <rect key="frame" x="105.5" y="106" width="44" height="17.5"/>
+                                                            <rect key="frame" x="108" y="101" width="44" height="15"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wf-fK-kqT">
-                                                            <rect key="frame" x="144.5" y="159" width="44" height="17.5"/>
+                                                            <rect key="frame" x="147.5" y="149" width="44" height="15"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZY-1J-uzh">
-                                                            <rect key="frame" x="15" y="139.5" width="116.5" height="14"/>
+                                                            <rect key="frame" x="15" y="132" width="113.5" height="12"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4S-R5-bga">
-                                                            <rect key="frame" x="15" y="156.5" width="125.5" height="21"/>
+                                                            <rect key="frame" x="15" y="147" width="128.5" height="18"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -2030,25 +2042,25 @@
                                                     <color key="tintColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5Z-Sj-gRs">
-                                                    <rect key="frame" x="35" y="11" width="53.5" height="14"/>
+                                                    <rect key="frame" x="35" y="12" width="52.5" height="12"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e84-ls-Gxa" customClass="CopyLabel">
-                                                    <rect key="frame" x="10" y="32" width="355" height="16.5"/>
+                                                    <rect key="frame" x="10" y="34.5" width="355" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-7.450" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUl-4l-T4l">
-                                                    <rect key="frame" x="273" y="7.5" width="52.5" height="21"/>
+                                                    <rect key="frame" x="276.5" y="9" width="50.5" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaZ-Vi-4cT">
-                                                    <rect key="frame" x="329.5" y="12.5" width="35.5" height="14"/>
+                                                    <rect key="frame" x="331" y="13" width="34" height="12"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2091,7 +2103,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuf-et-HbM">
-                                                <rect key="frame" x="151" y="11.5" width="74.5" height="20"/>
+                                                <rect key="frame" x="151" y="13" width="74.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2148,25 +2160,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vg-6K-FLx">
-                                        <rect key="frame" x="314.5" y="28" width="50.5" height="14"/>
+                                        <rect key="frame" x="311.5" y="28" width="53.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAT-LQ-Ika">
-                                        <rect key="frame" x="10" y="42" width="116.5" height="14"/>
+                                        <rect key="frame" x="10" y="44" width="113.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHf-r1-T6c">
-                                        <rect key="frame" x="314.5" y="42" width="50.5" height="14"/>
+                                        <rect key="frame" x="311.5" y="44" width="53.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBW-S8-4OS">
-                                        <rect key="frame" x="10" y="28" width="95" height="14"/>
+                                        <rect key="frame" x="10" y="28" width="93.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -2191,7 +2203,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="32"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1u-3e-WJq">
-                                        <rect key="frame" x="10" y="9" width="40" height="14"/>
+                                        <rect key="frame" x="10" y="10" width="40" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" red="0.50196078430000002" green="0.67843137249999996" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2232,11 +2244,13 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityTextLabel" destination="H1u-3e-WJq" id="vVc-gG-u2J"/>
                         <outlet property="availabelLabel" destination="2Vg-6K-FLx" id="lY2-xH-Vh8"/>
                         <outlet property="availableTextTopConstraint" destination="kwM-IU-eI0" id="M9F-68-DTJ"/>
                         <outlet property="emptyPlaceholderView" destination="Zjs-7W-xQL" id="kM4-Dj-kNo"/>
                         <outlet property="headerView" destination="KCx-tj-N3n" id="kU6-7U-Tqv"/>
                         <outlet property="tableView" destination="r1n-5J-5cz" id="gxW-cg-Cym"/>
+                        <outlet property="titleTextLabel" destination="Vuf-et-HbM" id="8lJ-SY-hw3"/>
                         <outlet property="titleView" destination="wXh-oV-zUK" id="MdH-zQ-dHA"/>
                         <outlet property="unconfirmedTextLabel" destination="VAT-LQ-Ika" id="T5I-6N-5sH"/>
                         <outlet property="uncorfirmedLabel" destination="FHf-r1-T6c" id="qj6-8k-vLl"/>
@@ -2369,6 +2383,7 @@
                                             <outlet property="mainValue" destination="yhR-XP-hj0" id="zzd-yL-a3y"/>
                                             <outlet property="symbol" destination="SgT-Oe-paC" id="eDL-mv-Yi2"/>
                                             <outlet property="tokenName" destination="wRh-x7-9r9" id="Ft6-LW-kEF"/>
+                                            <outlet property="unconfirmedTextLabel" destination="ApJ-39-ktg" id="jkI-j1-ucg"/>
                                             <outlet property="value" destination="oD5-hF-poS" id="h7F-7D-9SP"/>
                                         </connections>
                                     </tableViewCell>
@@ -2392,6 +2407,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="flf-jj-M7V" id="uto-fj-EG5"/>
+                        <outlet property="titleTextLabel" destination="fsr-JB-Tpo" id="Qiw-B9-WPI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rAT-pz-m2V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2432,35 +2448,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntk-Yw-IyG">
-                                        <rect key="frame" x="330.5" y="129" width="29.5" height="14"/>
+                                        <rect key="frame" x="331.5" y="131" width="28.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIY-Gy-ls7">
-                                        <rect key="frame" x="55" y="75" width="222.5" height="37.5"/>
+                                        <rect key="frame" x="49.5" y="75" width="232" height="32"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ew-60-LS8">
-                                        <rect key="frame" x="287.5" y="93" width="44" height="17.5"/>
+                                        <rect key="frame" x="291.5" y="90" width="42.5" height="15"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ez-oj-rCk">
-                                        <rect key="frame" x="33" y="129" width="83" height="14"/>
+                                        <rect key="frame" x="33" y="131" width="80.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-time" translatesAutoresizingMaskIntoConstraints="NO" id="cVC-1c-13F">
-                                        <rect key="frame" x="312.5" y="129.5" width="13" height="13"/>
+                                        <rect key="frame" x="313.5" y="130.5" width="13" height="13"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="sIP-I0-idH">
-                                        <rect key="frame" x="15" y="129.5" width="13" height="13"/>
+                                        <rect key="frame" x="15" y="130.5" width="13" height="13"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
                                 </subviews>
@@ -2508,7 +2524,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxC-sQ-EX8">
-                                                <rect key="frame" x="144" y="11.5" width="88" height="20"/>
+                                                <rect key="frame" x="145.5" y="13" width="85.5" height="17"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2576,19 +2592,19 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" text="3sdf567b122c24f5d5x3243vxfve5478dcg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8J-nH-6Er" customClass="CopyLabel">
-                                                            <rect key="frame" x="10" y="14.5" width="168" height="16.5"/>
+                                                            <rect key="frame" x="10" y="15" width="172.5" height="14"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                             <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="asdasdasdasda" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rel-XV-FGK">
-                                                            <rect key="frame" x="198" y="11.5" width="127.5" height="21"/>
+                                                            <rect key="frame" x="202.5" y="13" width="124.5" height="18"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                                             <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="QTUM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dke-Sr-IXV">
-                                                            <rect key="frame" x="329.5" y="17.5" width="35.5" height="14"/>
+                                                            <rect key="frame" x="331" y="18" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                             <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2632,19 +2648,19 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" text="3sdf567b122c24f5d5x3243vxfve5478dcg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYf-6D-WLv" customClass="CopyLabel">
-                                                            <rect key="frame" x="10" y="14" width="168" height="16.5"/>
+                                                            <rect key="frame" x="10" y="15.5" width="172.5" height="14"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                             <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="asdasdasdasda" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTf-Kf-R5c">
-                                                            <rect key="frame" x="198" y="11.5" width="127.5" height="21"/>
+                                                            <rect key="frame" x="202.5" y="13" width="124.5" height="18"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                                             <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="QTUM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XkU-2i-upq">
-                                                            <rect key="frame" x="329.5" y="17.5" width="35.5" height="14"/>
+                                                            <rect key="frame" x="331" y="18" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                             <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2733,6 +2749,7 @@
                         <outlet property="pageControl" destination="3cE-6B-d2p" id="keX-t6-J6i"/>
                         <outlet property="receivedTimeLabel" destination="Ntk-Yw-IyG" id="FHt-i5-r4j"/>
                         <outlet property="scrollView" destination="ZuR-fz-TnO" id="e6g-ky-ebf"/>
+                        <outlet property="titleTextLabel" destination="pxC-sQ-EX8" id="Kj9-5C-EF1"/>
                         <outlet property="toTable" destination="1Cw-xB-Rtn" id="Td5-b8-cZ2"/>
                         <outlet property="topGradient" destination="F6i-Bc-Oaa" id="GnI-Eh-xku"/>
                     </connections>
@@ -2774,7 +2791,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0P-rJ-ZwH">
-                                                <rect key="frame" x="152.5" y="12.5" width="71" height="20"/>
+                                                <rect key="frame" x="154" y="14" width="68.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2844,6 +2861,7 @@
                     <connections>
                         <outlet property="cameraView" destination="g3J-Wb-vi6" id="2jy-dX-o1l"/>
                         <outlet property="spinnerView" destination="BpU-oc-vsh" id="tPP-bl-kFD"/>
+                        <outlet property="titleTextLabel" destination="Q0P-rJ-ZwH" id="Y8v-H5-nLa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dA-VE-iyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2883,7 +2901,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8v-aC-DST">
-                                                <rect key="frame" x="156" y="12" width="64" height="21"/>
+                                                <rect key="frame" x="156" y="11" width="64" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2915,37 +2933,37 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ks5-99-QYP">
-                                        <rect key="frame" x="10" y="74" width="95" height="14"/>
+                                        <rect key="frame" x="10" y="74" width="93.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yox-yp-YwO">
-                                        <rect key="frame" x="10" y="91" width="69.5" height="14"/>
+                                        <rect key="frame" x="10" y="93" width="68" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDw-4S-J05">
-                                        <rect key="frame" x="329.5" y="73.5" width="35.5" height="14"/>
+                                        <rect key="frame" x="330.5" y="73.5" width="34.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw1-cR-jKh">
-                                        <rect key="frame" x="329.5" y="91.5" width="35.5" height="14"/>
+                                        <rect key="frame" x="330.5" y="93.5" width="34.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjR-4l-WGi">
-                                        <rect key="frame" x="242.5" y="74" width="83.5" height="14"/>
+                                        <rect key="frame" x="240" y="74" width="87" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 700.000 027" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAb-h5-tTN">
-                                        <rect key="frame" x="242.5" y="91" width="83.5" height="14"/>
+                                        <rect key="frame" x="240" y="93" width="87" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -2977,7 +2995,7 @@
                                 <rect key="frame" x="0.0" y="115" width="375" height="635"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNy-bS-eBB" customClass="TextFieldWithLineLightSend">
-                                        <rect key="frame" x="15" y="25" width="345" height="21"/>
+                                        <rect key="frame" x="15" y="25" width="345" height="18"/>
                                         <color key="tintColor" red="0.0" green="1" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
@@ -2987,7 +3005,7 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPJ-is-Wqy">
-                                        <rect key="frame" x="35" y="66" width="305" height="325"/>
+                                        <rect key="frame" x="35" y="63" width="305" height="325"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yIo-nN-Won">
                                                 <rect key="frame" x="20" y="15" width="265" height="265"/>
@@ -2996,7 +3014,7 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PND-FO-dAG">
-                                                <rect key="frame" x="15" y="277" width="289" height="50"/>
+                                                <rect key="frame" x="15" y="278.5" width="289" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="vSA-LK-fEP"/>
                                                 </constraints>
@@ -3005,7 +3023,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdfasdf" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17X-bT-t0z">
-                                                <rect key="frame" x="15" y="293.5" width="275" height="16.5"/>
+                                                <rect key="frame" x="15" y="296" width="275" height="14"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
                                                 <color key="textColor" red="0.23529411764705882" green="0.52941176470588236" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3026,7 +3044,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2w6-tg-d4w">
-                                        <rect key="frame" x="67.5" y="411" width="240" height="50"/>
+                                        <rect key="frame" x="67.5" y="408" width="240" height="50"/>
                                         <color key="backgroundColor" red="0.21176470588235294" green="0.72549019607843135" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="8b9-Kz-SEH"/>
@@ -3046,7 +3064,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHB-Xn-ud0">
-                                        <rect key="frame" x="67" y="481" width="240" height="50"/>
+                                        <rect key="frame" x="67" y="478" width="240" height="50"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.94901960780000005" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="ggo-cE-Sam"/>
@@ -3097,6 +3115,7 @@
                     <size key="freeformSize" width="375" height="750"/>
                     <connections>
                         <outlet property="amountTextField" destination="ZNy-bS-eBB" id="a5A-nU-O6H"/>
+                        <outlet property="availableBalanceTextLabel" destination="Ks5-99-QYP" id="si9-s8-2CH"/>
                         <outlet property="balanceCurrency" destination="pDw-4S-J05" id="jgs-0g-HMO"/>
                         <outlet property="balanceLabel" destination="PjR-4l-WGi" id="Vry-i9-FNP"/>
                         <outlet property="chooseAddressButton" destination="bHB-Xn-ud0" id="HdY-Pa-mPe"/>
@@ -3106,6 +3125,7 @@
                         <outlet property="shareLabelButton" destination="PND-FO-dAG" id="ZVl-ht-hez"/>
                         <outlet property="unconfirmedBalance" destination="TAb-h5-tTN" id="4GZ-J0-5QZ"/>
                         <outlet property="unconfirmedBalanceCurrency" destination="gw1-cR-jKh" id="nyt-bS-NxA"/>
+                        <outlet property="unconfirmedBalanceTextLabel" destination="H8v-aC-DST" id="e7T-sT-hXT"/>
                         <outlet property="walletAdressCopyButton" destination="2w6-tg-d4w" id="M20-x3-QvW"/>
                         <outlet property="walletCopyButtonBottomOffsetConstraint" destination="1eD-kt-IGn" id="KHR-xP-8nE"/>
                     </connections>
@@ -3137,7 +3157,7 @@
                                 <rect key="frame" x="0.0" y="275" width="375" height="392"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPE-pT-Bpe">
-                                        <rect key="frame" x="41" y="185" width="294" height="21"/>
+                                        <rect key="frame" x="41" y="186.5" width="294" height="18"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                         <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3170,16 +3190,16 @@
                                                             <rect key="frame" x="187.5" y="0.0" width="187.5" height="105"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXG-1E-uZw" customClass="LightBlueGrayBorderView">
-                                                                    <rect key="frame" x="5" y="52.5" width="177.5" height="42.5"/>
+                                                                    <rect key="frame" x="5" y="48" width="177.5" height="47"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHl-AJ-ThP">
-                                                                            <rect key="frame" x="0.0" y="8" width="177.5" height="20"/>
+                                                                            <rect key="frame" x="0.0" y="8" width="177.5" height="17"/>
                                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                                             <color key="textColor" red="0.21176470588235294" green="0.72549019607843135" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decimal Units" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMR-vd-Je1">
-                                                                            <rect key="frame" x="0.0" y="20.5" width="177.5" height="14"/>
+                                                                            <rect key="frame" x="0.0" y="27" width="177.5" height="12"/>
                                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                                             <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -3207,28 +3227,28 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="105"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contract Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHn-l0-UyG">
-                                                                    <rect key="frame" x="15" y="10" width="94.5" height="14"/>
+                                                                    <rect key="frame" x="15" y="10" width="92" height="12"/>
                                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sender Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7W-aL-hIa" customClass="CopyLabel">
-                                                                    <rect key="frame" x="15" y="29" width="93" height="15.5"/>
+                                                                    <rect key="frame" x="15" y="27" width="93" height="13"/>
                                                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="13"/>
                                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjY-c7-cB8" customClass="LightBlueGrayBorderView">
-                                                                    <rect key="frame" x="5" y="52.5" width="177.5" height="42.5"/>
+                                                                    <rect key="frame" x="5" y="48" width="177.5" height="47"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHa-Sm-0Vv">
-                                                                            <rect key="frame" x="0.0" y="8" width="177.5" height="20"/>
+                                                                            <rect key="frame" x="0.0" y="8" width="177.5" height="17"/>
                                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                                             <color key="textColor" red="0.21176470589999999" green="0.72549019609999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Supply" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHc-iG-71f">
-                                                                            <rect key="frame" x="0.0" y="20.5" width="177.5" height="14"/>
+                                                                            <rect key="frame" x="0.0" y="27" width="177.5" height="12"/>
                                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                                             <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -3310,19 +3330,19 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61x-xF-fb4">
-                                                            <rect key="frame" x="15" y="89" width="231.5" height="37.5"/>
+                                                            <rect key="frame" x="15" y="87" width="257" height="32"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="32"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0k-IS-IyO" customClass="CopyLabel">
-                                                            <rect key="frame" x="48" y="151.5" width="317" height="15.5"/>
+                                                            <rect key="frame" x="48" y="154" width="317" height="13"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="13"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nB-ZU-CJn">
-                                                            <rect key="frame" x="48" y="136.5" width="282" height="14"/>
+                                                            <rect key="frame" x="48" y="141" width="282" height="12"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -3340,13 +3360,13 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYR-Bx-ORY">
-                                                            <rect key="frame" x="15" y="70" width="95" height="14"/>
+                                                            <rect key="frame" x="15" y="70" width="93.5" height="12"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyk-zG-PJL">
-                                                            <rect key="frame" x="256.5" y="106" width="44" height="17.5"/>
+                                                            <rect key="frame" x="282" y="101" width="44" height="15"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -3390,13 +3410,18 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressesInfoWidget" destination="iLk-qE-YHZ" id="sU6-Z2-NwH"/>
+                                            <outlet property="availabelTextLabel" destination="kYR-Bx-ORY" id="x0N-ZN-rJd"/>
                                             <outlet property="availableBalance" destination="61x-xF-fb4" id="D38-4X-V6T"/>
                                             <outlet property="balanceWidget" destination="v8R-BZ-9E0" id="9OY-lI-Eqs"/>
+                                            <outlet property="contractAddressTextLabel" destination="DHn-l0-UyG" id="shf-5V-idM"/>
                                             <outlet property="decimalUnits" destination="uHl-AJ-ThP" id="eRk-hq-aqJ"/>
+                                            <outlet property="decimalUnitsTextLabel" destination="NMR-vd-Je1" id="MNK-CM-rWV"/>
                                             <outlet property="initialSupply" destination="sHa-Sm-0Vv" id="31N-aO-cjw"/>
+                                            <outlet property="initialSupplyTextLabel" destination="BHc-iG-71f" id="sD1-3x-bNW"/>
                                             <outlet property="senderAddress" destination="n7W-aL-hIa" id="Ndu-GY-D0E"/>
                                             <outlet property="symbol" destination="wyk-zG-PJL" id="DFQ-sX-bF4"/>
                                             <outlet property="tokenAddress" destination="l0k-IS-IyO" id="uBn-SI-oSI"/>
+                                            <outlet property="tokenAddressTextLabel" destination="2nB-ZU-CJn" id="Ue2-rl-yXA"/>
                                             <outlet property="topConstraint" destination="eex-BO-OLH" id="rpi-3I-hUi"/>
                                         </connections>
                                     </tableViewCell>
@@ -3411,25 +3436,25 @@
                                                     <rect key="frame" x="10" y="10" width="17" height="15"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Lf-zp-87O">
-                                                    <rect key="frame" x="35" y="11" width="53.5" height="14"/>
+                                                    <rect key="frame" x="35" y="12" width="52.5" height="12"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgV-PT-ONj" customClass="CopyLabel">
-                                                    <rect key="frame" x="10" y="32" width="355" height="16.5"/>
+                                                    <rect key="frame" x="10" y="34.5" width="355" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-7.450" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2d-jZ-gQH">
-                                                    <rect key="frame" x="273" y="7.5" width="52.5" height="21"/>
+                                                    <rect key="frame" x="276.5" y="9" width="50.5" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQj-iD-OEe">
-                                                    <rect key="frame" x="329.5" y="12.5" width="35.5" height="14"/>
+                                                    <rect key="frame" x="331" y="13" width="34" height="12"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3468,7 +3493,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ly-BC-raF">
-                                                <rect key="frame" x="158.5" y="12.5" width="59.5" height="20"/>
+                                                <rect key="frame" x="159" y="14" width="57" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -3545,13 +3570,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOS-ev-kUy">
-                                        <rect key="frame" x="314.5" y="35" width="50.5" height="14"/>
+                                        <rect key="frame" x="311.5" y="36" width="53.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhZ-OM-sLH">
-                                        <rect key="frame" x="10" y="35" width="95" height="14"/>
+                                        <rect key="frame" x="10" y="36" width="93.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -3595,6 +3620,7 @@
                         <outlet property="availibleBalanceShortInfoLabel" destination="MOS-ev-kUy" id="NIb-6J-RRI"/>
                         <outlet property="heightForBlueView" destination="tXK-3V-XFA" id="5Dc-gP-vTQ"/>
                         <outlet property="navigationBarView" destination="ReJ-17-fwN" id="Crb-f3-cBN"/>
+                        <outlet property="noTransactionTextLabel" destination="MPE-pT-Bpe" id="xg4-2c-FTj"/>
                         <outlet property="shortInfoHeader" destination="PwE-ge-Jnp" id="0B6-bw-dc8"/>
                         <outlet property="tableView" destination="QPP-bV-3bO" id="mtI-xj-9Ha"/>
                         <outlet property="titleLabel" destination="4ly-BC-raF" id="MYR-UJ-Usm"/>
@@ -3623,7 +3649,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Addresses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlR-9b-EhV">
-                                                <rect key="frame" x="110" y="12" width="155.5" height="21"/>
+                                                <rect key="frame" x="108.5" y="11" width="159" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3691,7 +3717,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-AM-xfQ">
-                                                    <rect key="frame" x="324.5" y="17.5" width="35.5" height="14"/>
+                                                    <rect key="frame" x="330.5" y="17.5" width="29.5" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="Hw6-1r-RIH"/>
                                                     </constraints>
@@ -3707,7 +3733,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="00000000000000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYA-Rl-0W3">
-                                                    <rect key="frame" x="168" y="12.5" width="151.5" height="19"/>
+                                                    <rect key="frame" x="160" y="12.5" width="165.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="16"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3753,6 +3779,7 @@
                     </view>
                     <connections>
                         <outlet property="tableVew" destination="Rr8-5Q-YpO" id="MkW-iV-Qgv"/>
+                        <outlet property="titleTextLabel" destination="RlR-9b-EhV" id="8bX-cJ-R38"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDE-i8-fJ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3778,7 +3805,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Addresses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE3-Lw-ZVZ">
-                                                <rect key="frame" x="115" y="12.5" width="146" height="20"/>
+                                                <rect key="frame" x="115" y="14" width="146" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -3837,13 +3864,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vp6-MJ-VQb" customClass="CopyLabel">
-                                                    <rect key="frame" x="15" y="29" width="49" height="16.5"/>
+                                                    <rect key="frame" x="15" y="29.5" width="46" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0l-UM-47a">
-                                                    <rect key="frame" x="324.5" y="13.5" width="35.5" height="14"/>
+                                                    <rect key="frame" x="326.5" y="14.5" width="33.5" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="GDe-5v-l0H"/>
                                                     </constraints>
@@ -3859,13 +3886,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5V-eM-rdK">
-                                                    <rect key="frame" x="41" y="10.5" width="43" height="14"/>
+                                                    <rect key="frame" x="41" y="11.5" width="43" height="12"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOZ-uD-kuf">
-                                                    <rect key="frame" x="309" y="6.5" width="10.5" height="21"/>
+                                                    <rect key="frame" x="310" y="8.5" width="11.5" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3891,6 +3918,7 @@
                                         <connections>
                                             <outlet property="addressLabel" destination="vp6-MJ-VQb" id="EAK-lZ-cDO"/>
                                             <outlet property="symbolLabel" destination="K0l-UM-47a" id="Nxw-lm-OzV"/>
+                                            <outlet property="transferTextLabel" destination="F5V-eM-rdK" id="j0W-su-eos"/>
                                             <outlet property="valueLabel" destination="fOZ-uD-kuf" id="5cf-U9-NEd"/>
                                         </connections>
                                     </tableViewCell>
@@ -3914,6 +3942,7 @@
                     </view>
                     <connections>
                         <outlet property="tableVew" destination="BQH-Ag-Xh1" id="bV9-dg-3MC"/>
+                        <outlet property="titleTextLabel" destination="JE3-Lw-ZVZ" id="nRh-Gw-Kmh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Hb-mS-76c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3939,7 +3968,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Addresses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGe-vX-fS8">
-                                                <rect key="frame" x="110" y="12" width="155.5" height="21"/>
+                                                <rect key="frame" x="108.5" y="11" width="159" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -4007,7 +4036,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5p-db-ktn">
-                                                    <rect key="frame" x="324.5" y="14" width="35.5" height="14"/>
+                                                    <rect key="frame" x="330.5" y="14" width="29.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="12"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4020,7 +4049,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="00000000000000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eom-RN-T2t">
-                                                    <rect key="frame" x="168" y="9" width="151.5" height="19"/>
+                                                    <rect key="frame" x="160" y="9" width="165.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-medium" family="simplonmono" pointSize="16"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4066,6 +4095,7 @@
                     </view>
                     <connections>
                         <outlet property="tableVew" destination="Df3-Bk-UAI" id="xME-xJ-5V5"/>
+                        <outlet property="titleTextLabel" destination="TGe-vX-fS8" id="MuY-rz-Ig4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTI-3K-L0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4091,7 +4121,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Addresses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBZ-1Z-KVy">
-                                                <rect key="frame" x="115" y="12.5" width="146" height="20"/>
+                                                <rect key="frame" x="115" y="14" width="146" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -4150,13 +4180,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egV-y0-SOW" customClass="CopyLabel">
-                                                    <rect key="frame" x="15" y="29" width="49" height="16.5"/>
+                                                    <rect key="frame" x="15" y="29.5" width="46" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QTUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3X-w7-Frh">
-                                                    <rect key="frame" x="324.5" y="14" width="35.5" height="14"/>
+                                                    <rect key="frame" x="326.5" y="15" width="33.5" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="fob-tA-Tmy"/>
                                                     </constraints>
@@ -4172,13 +4202,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCG-bc-y0M">
-                                                    <rect key="frame" x="41" y="10.5" width="43" height="14"/>
+                                                    <rect key="frame" x="41" y="11.5" width="43" height="12"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xff-rZ-puL">
-                                                    <rect key="frame" x="184" y="7" width="136" height="21"/>
+                                                    <rect key="frame" x="184" y="9" width="138" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4227,6 +4257,7 @@
                     </view>
                     <connections>
                         <outlet property="tableVew" destination="aMl-J0-K0L" id="bko-Lq-mXm"/>
+                        <outlet property="titleTextLabel" destination="wBZ-1Z-KVy" id="kIe-2V-tTN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EaW-TR-wBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4252,7 +4283,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addresses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4g-3t-MSx">
-                                                <rect key="frame" x="145" y="12" width="85.5" height="21"/>
+                                                <rect key="frame" x="145" y="11" width="85.5" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -4359,6 +4390,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="vdH-76-Fc2" id="CUU-uO-V8s"/>
+                        <outlet property="titleTextLabel" destination="y4g-3t-MSx" id="wkg-br-938"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHa-qD-6f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4384,7 +4416,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addresses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCG-7S-hMt">
-                                                <rect key="frame" x="148" y="12.5" width="80.5" height="20"/>
+                                                <rect key="frame" x="148" y="14" width="80.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -4442,7 +4474,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyh-Nx-9ah">
-                                                    <rect key="frame" x="10" y="19.5" width="335" height="16.5"/>
+                                                    <rect key="frame" x="10" y="21" width="335" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4480,6 +4512,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="gu3-VW-SoQ" id="NnW-mC-cs7"/>
+                        <outlet property="titleTextLabel" destination="VCG-7S-hMt" id="gEZ-BF-CDQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5t-BA-qSa" userLabel="First Responder" sceneMemberID="firstResponder"/>

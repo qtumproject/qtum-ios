@@ -14,6 +14,8 @@
 
 @implementation AbiTextFieldWithLineLight
 
+@synthesize customDelegate, item = _item;
+
 - (instancetype)initWithCoder:(NSCoder *) aDecoder {
 
 	self = [super initWithCoder:aDecoder];
@@ -39,6 +41,13 @@
 	if (item) {
 		self.item = item;
 	}
+}
+
+- (BOOL)isValidParameterText {
+    
+    NSString* text = self.text;
+    BOOL isValid = [SLocator.validationInputService isValidString:text forParameter:self.item.type];
+    return isValid;
 }
 
 - (void)setItem:(AbiinterfaceInput *) item {

@@ -10,6 +10,9 @@
 
 @interface RepeateViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+
 @end
 
 @implementation RepeateViewController
@@ -20,6 +23,7 @@
 
 	[super viewDidLoad];
 	[self configPasswordView];
+    [self configLocalization];
 	[self.passwordView setEditingDisabled:YES];
 }
 
@@ -36,6 +40,12 @@
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel Button") forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Repeat PIN", @"Repeate PIN Controllers Title");
+}
 
 - (void)configPasswordView {
 	self.passwordView.delegate = self;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NMe-U2-LQD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NMe-U2-LQD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,7 +47,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6W-Wu-FcG">
-                                                <rect key="frame" x="162.5" y="12" width="51" height="21"/>
+                                                <rect key="frame" x="161.5" y="11" width="53" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znl-5E-De2">
-                                                    <rect key="frame" x="58" y="13.5" width="39.5" height="19"/>
+                                                    <rect key="frame" x="58" y="13.5" width="49" height="19"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                                     <color key="textColor" red="0.18823529411764706" green="0.60392156862745094" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -132,7 +132,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JT0-n1-vPl">
-                                                    <rect key="frame" x="58" y="13.5" width="39.5" height="19"/>
+                                                    <rect key="frame" x="58" y="13.5" width="49" height="19"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -190,7 +190,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAD-so-60f">
-                                                    <rect key="frame" x="58" y="13.5" width="39.5" height="19"/>
+                                                    <rect key="frame" x="58" y="13.5" width="49" height="19"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -264,6 +264,9 @@
                             <constraint firstItem="SpC-z7-jMP" firstAttribute="top" secondItem="Ohm-5n-IAA" secondAttribute="bottom" id="tMK-n9-4Lw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleTextLabel" destination="W6W-Wu-FcG" id="LXL-d0-1lV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lle-7r-mGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,7 +373,7 @@
                                     <action selector="actionCopy:" destination="k4c-yZ-wIZ" eventType="touchUpInside" id="8Sp-0h-S9V"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy the passphase to restore your wallet on another device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LB6-0K-SGS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy the passphrase to restore your wallet on another device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LB6-0K-SGS">
                                 <rect key="frame" x="30" y="240.5" width="315" height="35"/>
                                 <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="15"/>
                                 <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -396,6 +399,9 @@
                     </view>
                     <connections>
                         <outlet property="brainKeyView" destination="OH6-AZ-FfC" id="soY-Vy-myj"/>
+                        <outlet property="infoTextLabel" destination="LB6-0K-SGS" id="5DS-Ec-d3c"/>
+                        <outlet property="passphraseButton" destination="P8f-Sm-ZmN" id="WOD-0Z-bwo"/>
+                        <outlet property="titleTextLabel" destination="uKF-SE-wQA" id="f02-fg-Zup"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ap9-YZ-vxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -421,7 +427,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Old PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxO-lN-Wwu">
-                                                <rect key="frame" x="133" y="11" width="110.5" height="21"/>
+                                                <rect key="frame" x="132.5" y="11" width="110.5" height="21"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.1803921568627451" green="0.60392156860000001" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -503,9 +509,11 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="bottomForButtonsConstraint" destination="1zp-Rf-lbD" id="wkW-pH-2kT"/>
+                        <outlet property="cancelButton" destination="9te-aM-iLK" id="pan-sn-ljo"/>
                         <outlet property="cancelButtonBottomOffset" destination="1zp-Rf-lbD" id="cjA-xD-dnh"/>
                         <outlet property="controllerTitle" destination="AxO-lN-Wwu" id="ScO-Q6-QqL"/>
                         <outlet property="passwordView" destination="Szx-2p-HxI" id="7eX-oO-810"/>
+                        <outlet property="titleTextLabel" destination="AxO-lN-Wwu" id="NL3-46-ntj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFX-kN-hMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -531,7 +539,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieW-th-9BL">
-                                                <rect key="frame" x="148" y="12" width="80" height="21"/>
+                                                <rect key="frame" x="146" y="11" width="84.5" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -596,7 +604,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-nd-g6S">
-                                                    <rect key="frame" x="10" y="13" width="39.5" height="19"/>
+                                                    <rect key="frame" x="10" y="13" width="49" height="19"/>
                                                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                                     <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -634,6 +642,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="ghf-QU-pN9" id="5Mf-46-40v"/>
+                        <outlet property="titleTextLabel" destination="ieW-th-9BL" id="g3p-vy-Jej"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wka-jN-m5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -659,7 +668,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pR-ij-UuP">
-                                                <rect key="frame" x="163.5" y="12.5" width="48" height="20"/>
+                                                <rect key="frame" x="163" y="14" width="49" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -694,7 +703,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qv-39-6Bu">
-                                                    <rect key="frame" x="58" y="13.5" width="39.5" height="19"/>
+                                                    <rect key="frame" x="58" y="15" width="38" height="16"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -740,7 +749,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ks-d1-V9m">
-                                                    <rect key="frame" x="58" y="13.5" width="39.5" height="19"/>
+                                                    <rect key="frame" x="58" y="15" width="38" height="16"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -794,7 +803,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIT-Fy-FUy">
-                                                    <rect key="frame" x="58" y="13.5" width="39.5" height="19"/>
+                                                    <rect key="frame" x="58" y="15" width="38" height="16"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -868,6 +877,9 @@
                             <constraint firstItem="x47-bK-YZo" firstAttribute="top" secondItem="haY-8O-jlu" secondAttribute="top" id="nJA-pm-TvJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleTextLabel" destination="0pR-ij-UuP" id="W6K-8R-HjN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8s-dN-zt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -892,7 +904,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THB-N4-PvW">
-                                                <rect key="frame" x="150.5" y="12.5" width="75.5" height="20"/>
+                                                <rect key="frame" x="150.5" y="14" width="75.5" height="17"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -958,7 +970,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiT-lo-3mY">
-                                                    <rect key="frame" x="10" y="13" width="39.5" height="19"/>
+                                                    <rect key="frame" x="10" y="14.5" width="38" height="16"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                     <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -996,6 +1008,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Z69-WV-hsK" id="kGm-vf-WfS"/>
+                        <outlet property="titleTextLabel" destination="THB-N4-PvW" id="sJk-Jy-bNv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvb-hc-Rhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1036,7 +1049,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Passphrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-ch-yU0">
-                                                <rect key="frame" x="116" y="12.5" width="144" height="20"/>
+                                                <rect key="frame" x="117.5" y="14" width="141" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1078,7 +1091,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" asdasd asdasd asdasd asfd asdf gsdf hgja aqt rejdf цуквапы" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUA-BL-gt5" customClass="BorderedLabelLight">
-                                <rect key="frame" x="44" y="108" width="287" height="42"/>
+                                <rect key="frame" x="44" y="108" width="287" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1104,8 +1117,8 @@
                                     <action selector="actionCopy:" destination="BUo-ys-7FY" eventType="touchUpInside" id="rjK-Mz-ULh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy the passphase to restore your wallet on another device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9w-TB-oOB">
-                                <rect key="frame" x="30" y="250" width="315" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy the passphrase to restore your wallet on another device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9w-TB-oOB">
+                                <rect key="frame" x="30" y="244" width="315" height="30"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1130,6 +1143,8 @@
                     </view>
                     <connections>
                         <outlet property="brainKeyView" destination="sUA-BL-gt5" id="tTM-X3-EAm"/>
+                        <outlet property="infoTextLabel" destination="A9w-TB-oOB" id="Sib-UY-VDd"/>
+                        <outlet property="passphraseButton" destination="YdA-B1-Hci" id="Fyw-DW-026"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xz3-MA-qcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1171,7 +1186,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Old PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMu-AN-tU6">
-                                                <rect key="frame" x="136" y="11.5" width="104" height="20"/>
+                                                <rect key="frame" x="137.5" y="13" width="101" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1248,6 +1263,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="bottomForButtonsConstraint" destination="ph5-DS-vI9" id="21b-tc-a7F"/>
+                        <outlet property="cancelButton" destination="aUc-hH-xZa" id="2vj-03-YWY"/>
                         <outlet property="cancelButtonBottomOffset" destination="ph5-DS-vI9" id="f4E-ET-Uzx"/>
                         <outlet property="controllerTitle" destination="cMu-AN-tU6" id="SuB-vM-M2z"/>
                         <outlet property="passwordView" destination="hNO-zy-654" id="efj-33-tYl"/>
@@ -1596,7 +1612,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAz-V6-WxF">
-                                                <rect key="frame" x="164.5" y="12.5" width="46" height="20"/>
+                                                <rect key="frame" x="164.5" y="14" width="46" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1655,6 +1671,7 @@ Skynet Testnet Version</string>
                     <connections>
                         <outlet property="companyAndVersionText" destination="fgd-JG-wMS" id="Xa2-v6-lPe"/>
                         <outlet property="logoImage" destination="GBu-Su-6fF" id="Ep4-Oe-8g9"/>
+                        <outlet property="titleTextLabel" destination="hAz-V6-WxF" id="y65-Lv-4sn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slx-X4-1t1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1695,7 +1712,7 @@ Skynet Testnet Version</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tw-79-OC0">
-                                                <rect key="frame" x="163.5" y="12" width="48.5" height="21"/>
+                                                <rect key="frame" x="161" y="11" width="53.5" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1751,6 +1768,7 @@ Skynet Testnet Version</string>
                     </view>
                     <connections>
                         <outlet property="companyAndVersionText" destination="2qt-v8-uN3" id="ayZ-co-Nnf"/>
+                        <outlet property="titleTextLabel" destination="3tw-79-OC0" id="Fbg-2b-qs1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGF-Dj-ib4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1790,7 +1808,7 @@ Skynet Testnet Version</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIr-f0-Hea">
-                                                <rect key="frame" x="134.5" y="12" width="106" height="21"/>
+                                                <rect key="frame" x="134.5" y="11" width="106" height="23"/>
                                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                 <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>

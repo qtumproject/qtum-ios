@@ -11,6 +11,9 @@
 @interface ExportBrainKeyViewController () <PopUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *brainKeyView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *infoTextLabel;
+@property (weak, nonatomic) IBOutlet UIButton *passphraseButton;
 
 @end
 
@@ -18,13 +21,11 @@
 
 @synthesize delegate, brandKey;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self configurationBrainKeyLabel];
-}
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
 }
 
 #pragma mark - Private Methods
@@ -39,6 +40,13 @@
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    [self.passphraseButton setTitle:NSLocalizedString(@"COPY PASSPHRASE", @"COPY PASSPHRASE button") forState:UIControlStateNormal];
+    self.infoTextLabel.text = NSLocalizedString(@"Copy the passphrase to restore your wallet on another device", @"");
+    self.titleTextLabel.text = NSLocalizedString(@"Export Passphrase", @"Export Passphrase Controllers Title");
+}
 
 - (void)configurationBrainKeyLabel {
 

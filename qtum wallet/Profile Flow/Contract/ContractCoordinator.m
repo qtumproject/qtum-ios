@@ -110,6 +110,8 @@
 
 	output.contracts = sortedContracts;
 	output.smartContractPretendents = [SLocator.contractManager smartContractPretendentsCopy];
+    output.failedContractPretendents = [SLocator.contractManager failedContractPretendentsCopy];
+
 	if (SLocator.appSettings.isRemovingContractTrainingPassed == NO) {
 		[output setNeedShowingTrainingScreen];
 	}
@@ -460,6 +462,20 @@
 	[self.functionDetailController showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
+- (void)showErrorWithText:(NSString*) text {
+    
+    NSString *errorString = text;
+    
+    PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+    if (errorString) {
+        content.messageString = errorString;
+        content.titleString = NSLocalizedString(@"Failed", nil);
+    }
+    
+    ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [popUp setOnlyCancelButton];
+}
+
 #pragma mark - PublishedContractListOutputDelegate, LibraryOutputDelegate
 
 
@@ -472,6 +488,12 @@
 
 	[SLocator.contractManager removeContractPretendentWithTxHash:hexTransaction];
 }
+
+- (void)didUnsubscribeFromFailedContractPretendentWithTxHash:(NSString *) hexTransaction {
+    
+    [SLocator.contractManager removeFailedContractPretendentWithTxHash:hexTransaction];
+}
+
 
 - (void)didTrainingPass {
 	[SLocator.appSettings changeIsRemovingContractTrainingPassed:YES];

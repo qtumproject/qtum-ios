@@ -12,6 +12,7 @@
 
 @interface TokenListViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -21,8 +22,15 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self.tableView reloadData];
+    [self configLocalization];
 }
 
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"Other Tokens", @"Other Tokens Controllers Title");
+}
 
 #pragma mark - Coordinator invocation
 

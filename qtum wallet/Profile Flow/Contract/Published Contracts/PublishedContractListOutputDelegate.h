@@ -20,4 +20,7 @@
 
 - (void)didUnsubscribeFromContractPretendentWithTxHash:(NSString *) hexTransaction;
 
+- (void)didUnsubscribeFromFailedContractPretendentWithTxHash:(NSString *) hexTransaction;
+
+
 @end

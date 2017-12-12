@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -95,7 +95,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-UY-HJB">
-                    <rect key="frame" x="38" y="29" width="73" height="13"/>
+                    <rect key="frame" x="38" y="29" width="87" height="13"/>
                     <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
                     <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -131,6 +131,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="addressLabel" destination="6zp-1M-57K" id="KfW-q5-W2P"/>
+                <outlet property="tokenAddressTextLabel" destination="9HT-UY-HJB" id="9s1-9A-jM4"/>
             </connections>
             <point key="canvasLocation" x="418" y="-655"/>
         </view>
@@ -188,6 +189,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="decimalUnitsLabel" destination="lev-Gt-RUi" id="O8G-C5-NNs"/>
+                <outlet property="decimalUnitsTextLabel" destination="khj-ob-7gd" id="VDv-oe-PHL"/>
+                <outlet property="initialSupTextLabel" destination="0b6-LX-tgN" id="e4w-XR-jqg"/>
                 <outlet property="initialSupplyLabel" destination="kzb-zO-KRa" id="CIo-9c-HkR"/>
             </connections>
             <point key="canvasLocation" x="412.5" y="-549.5"/>

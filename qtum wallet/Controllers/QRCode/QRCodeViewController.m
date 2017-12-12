@@ -13,6 +13,8 @@
 
 @interface QRCodeViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+
 @property (nonatomic, strong) MTBBarcodeScanner *scanner;
 @property (nonatomic, copy) void (^scanningCompletion)(NSArray *codes);
 
@@ -20,11 +22,14 @@
 @property (weak, nonatomic) IBOutlet SpinnerView *spinnerView;
 
 - (IBAction)backButtonWasPressed:(id) sender;
+
 @end
 
 @implementation QRCodeViewController
 
 @synthesize delegate = _delegate;
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -41,6 +46,8 @@
 			[weakSelf.delegate didQRCodeScannedWithSendInfoItem:[QRCodeManager getNewPaymentDictionaryFromString:code.stringValue]];
 		}
 	};
+    
+    [self configLocalization];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +102,13 @@
 
 	self.cameraView.alpha = 0.0f;
 	[self.spinnerView startAnimating];
+}
+
+#pragma mark - Configuration
+
+- (void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"QR Code", @"QR Code Controller Title");
 }
 
 - (IBAction)backButtonWasPressed:(id) sender {

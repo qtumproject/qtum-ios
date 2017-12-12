@@ -8,6 +8,12 @@
 
 #import "AddressControlCellLight.h"
 
+@interface AddressControlCellLight ()
+
+@property (weak, nonatomic) IBOutlet UILabel *transferTextLabel;
+
+@end
+
 @implementation AddressControlCellLight
 
 - (void)awakeFromNib {
@@ -16,6 +22,8 @@
 	UIView *bgColorView = [[UIView alloc] init];
 	bgColorView.backgroundColor = lightBlueColor ();
 	[self setSelectedBackgroundView:bgColorView];
+    
+    self.transferTextLabel.text = NSLocalizedString(@"Transfer", @"");
 }
 
 

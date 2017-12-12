@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u6g-sj-8vw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u6g-sj-8vw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -92,6 +92,11 @@ settings</string>
                             <constraint firstItem="2Wa-Hq-K1B" firstAttribute="top" secondItem="BvD-YQ-B7y" secondAttribute="top" id="g8I-k0-7o0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="infoTextLabel" destination="nzo-DJ-Wfe" id="xCJ-zg-IRg"/>
+                        <outlet property="okButton" destination="o8a-Ou-1jd" id="UdS-m0-Wb5"/>
+                        <outlet property="titleTextLabel" destination="zrd-X7-7HQ" id="REQ-D3-5Ix"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Clu-UW-tp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,6 +187,11 @@ settings</string>
                             <constraint firstItem="5r2-Cc-76S" firstAttribute="top" secondItem="DUP-cF-Msy" secondAttribute="bottom" id="tid-U0-Uac"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="infoTextLabel" destination="ryL-aO-BNT" id="asU-z6-NtP"/>
+                        <outlet property="okButton" destination="1hr-RV-KIq" id="fhH-PX-5OT"/>
+                        <outlet property="titleTextLabel" destination="kZV-C4-Ug2" id="bx3-k6-qL4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAN-dR-I9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

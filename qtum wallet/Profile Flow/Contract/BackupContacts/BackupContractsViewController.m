@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fileSizeLabel;
 @property (weak, nonatomic) IBOutlet UIView *loaderView;
 @property (assign, nonatomic) BOOL isBackupCreated;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 
 @property (nonatomic) NSString *filePath;
@@ -40,12 +41,22 @@
 	__weak __typeof (self) weakSelf = self;
 	if (!self.isBackupCreated) {
 		[SLocator.backupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
-			DLog(@"%@", file);
-			[weakSelf fileWasCreatedWithURL:path andSize:size];
+
+            [weakSelf fileWasCreatedWithURL:path andSize:size];
 			weakSelf.isBackupCreated = YES;
 		}];
 	}
 }
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.fileNameLabel.text = NSLocalizedString(@"Tap to save the file", @"");
+    self.titleTextLabel.text = NSLocalizedString(@"Backup Contracts", @"Backup Contracts Controllers Title");
+}
+
+#pragma mark - Actions
 
 - (IBAction)actionBack:(id) sender {
 	[self.delegate didPressedBack];

@@ -16,10 +16,14 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *toTextFieldVIew;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *fromTextFieldView;
 @property (weak, nonatomic) IBOutlet UIButton *transferButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
 @implementation AddressTransferPopupViewController
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
 
@@ -30,11 +34,14 @@
 	[self updateControls];
 }
 
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-}
-
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    [self.transferButton setTitle:NSLocalizedString(@"TRANSFER", @"TRANSFER button") forState:UIControlStateNormal];
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel button") forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Transfer Balance", @"");
+}
 
 - (void)configToAddressView {
 

@@ -11,6 +11,7 @@
 
 @interface AddressControlListViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableVew;
 
 @end
@@ -21,6 +22,14 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    [self configLocalization];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"Manage Addresses", @"Manage Addresses Controllers Title");
 }
 
 - (void)reloadData {

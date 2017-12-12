@@ -25,6 +25,8 @@
 	self.adressValueLabel.text = wallet.mainAddress;
 	self.valueLabel.text = [NSString stringWithFormat:@"%@", [wallet.balance roundedNumberWithScale:3]];
 	self.unconfirmedValue.text = [NSString stringWithFormat:@"%@", [wallet.unconfirmedBalance roundedNumberWithScale:3]];
+    self.notConfirmedTitleLabel.text = NSLocalizedString(@"Unconfirmed Balance", "");
+    self.availableTitleLabel.text = NSLocalizedString(@"Available Balance", "");
 	self.spendable = wallet;
 
 	[self.pageControl setPagesCount:2];

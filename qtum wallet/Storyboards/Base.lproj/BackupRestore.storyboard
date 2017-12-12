@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -155,6 +155,7 @@
                         <outlet property="fileNameLabel" destination="zdJ-Zg-27P" id="GV7-b3-63z"/>
                         <outlet property="fileSizeLabel" destination="imG-8Q-k6h" id="uUR-8u-hVA"/>
                         <outlet property="loaderView" destination="Kov-FH-dTL" id="u38-Vd-l0n"/>
+                        <outlet property="titleTextLabel" destination="Hx5-g7-Swp" id="YTi-N5-YLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6GN-Lf-T4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,6 +308,7 @@
                         <outlet property="iconImageView" destination="KAr-hn-Tud" id="94c-5j-wX2"/>
                         <outlet property="restoreButton" destination="pBQ-z3-jJY" id="pZx-QV-Glo"/>
                         <outlet property="sizeLabel" destination="JKD-UN-d71" id="HFh-Hh-upx"/>
+                        <outlet property="titleTextLabel" destination="dYW-6w-Q0c" id="FYP-B9-6Ha"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ola-6u-mVP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,7 +334,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore Contracts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAe-fl-u8g">
-                                                <rect key="frame" x="118.5" y="12.5" width="138.5" height="20"/>
+                                                <rect key="frame" x="120" y="14" width="136" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -386,13 +388,13 @@
                                         <color key="tintColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select backup file" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noj-LZ-xLl">
-                                        <rect key="frame" x="16" y="95.5" width="343" height="21"/>
+                                        <rect key="frame" x="16" y="95.5" width="343" height="18"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                         <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.8 Mb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yC-0a-8Gn">
-                                        <rect key="frame" x="162.5" y="121.5" width="50.5" height="19"/>
+                                        <rect key="frame" x="163.5" y="118.5" width="49" height="16"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                         <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -474,6 +476,7 @@
                         <outlet property="iconImageView" destination="peA-B6-sam" id="vha-R6-08s"/>
                         <outlet property="restoreButton" destination="ad8-ha-END" id="BMM-Go-Ah1"/>
                         <outlet property="sizeLabel" destination="5yC-0a-8Gn" id="ZAQ-ze-bxd"/>
+                        <outlet property="titleTextLabel" destination="dAe-fl-u8g" id="OsE-lg-pcR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4X-4I-GcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -499,7 +502,7 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup Contracts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEu-Tj-Tme">
-                                                <rect key="frame" x="119" y="12.5" width="138" height="20"/>
+                                                <rect key="frame" x="120.5" y="14" width="135" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -562,17 +565,17 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-attach" translatesAutoresizingMaskIntoConstraints="NO" id="4AM-1r-YjH">
-                                        <rect key="frame" x="178.5" y="256" width="18" height="20"/>
+                                        <rect key="frame" x="178.5" y="257.5" width="18" height="20"/>
                                         <color key="tintColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to save the file" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysi-mq-Ib2">
-                                        <rect key="frame" x="16" y="291" width="343" height="21"/>
+                                        <rect key="frame" x="16" y="292.5" width="343" height="18"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                         <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.8 Mb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lJ-Z5-A2y">
-                                        <rect key="frame" x="162.5" y="317" width="50.5" height="19"/>
+                                        <rect key="frame" x="163.5" y="315.5" width="49" height="16"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                         <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -610,6 +613,7 @@
                         <outlet property="fileNameLabel" destination="ysi-mq-Ib2" id="PcK-7p-mTx"/>
                         <outlet property="fileSizeLabel" destination="0lJ-Z5-A2y" id="3mQ-NT-bOI"/>
                         <outlet property="loaderView" destination="1BU-za-HL7" id="abf-fS-b4Z"/>
+                        <outlet property="titleTextLabel" destination="aEu-Tj-Tme" id="QTC-xC-7wv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waK-CR-Dxt" userLabel="First Responder" sceneMemberID="firstResponder"/>

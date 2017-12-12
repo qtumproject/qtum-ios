@@ -127,7 +127,6 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *) scrollView {
-	DLog(@"scrollViewDidEndDecelerating");
 
 	if (!self.mainCell)
 		return;
@@ -136,7 +135,6 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *) scrollView willDecelerate:(BOOL) decelerate {
-	DLog(@"scrollViewDidEndDragging");
 
 	if (decelerate) {
 		return;
@@ -194,6 +192,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 	NSString *shortBalanceWithSymbol = [NSString stringWithFormat:@"%@ %@", self.token.shortBalanceString, self.token.symbol];
 
 	updatedView.balanceValueLabel.text = balanceWithSymbol;
+    updatedView.balanceTextLabel.text = NSLocalizedString(@"Available Balance", @"");
 	updatedView.shortBalance = shortBalanceWithSymbol;
 	updatedView.longBalance = balanceWithSymbol;
 	return updatedView;
@@ -205,6 +204,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 	if (!updatedView) {
 		updatedView = (QTUMAddressTokenView *)[self getViewFromXib:[QTUMAddressTokenView class]];
 	}
+    updatedView.tokenAddressTextLabel.text = NSLocalizedString(@"Token Address", @"");
 	updatedView.delegate = self;
 	updatedView.addressLabel.text = SLocator.walletManager.wallet.mainAddress;
 	return updatedView;
@@ -216,6 +216,8 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 	if (!updatedView) {
 		updatedView = (NubersTokenView *)[self getViewFromXib:[NubersTokenView class]];
 	}
+    updatedView.initialSupTextLabel.text = NSLocalizedString(@"Initial Supply:", @"");
+    updatedView.decimalUnitsTextLabel.text = NSLocalizedString(@"Decimal Units:", @"");
 	updatedView.initialSupplyLabel.text = self.token.totalSupplyString;
 	updatedView.decimalUnitsLabel.text = [NSString stringWithFormat:@"%@", self.token.decimals];
 	updatedView.shortTotalSupply = self.token.shortTotalSupplyString;

@@ -18,6 +18,8 @@
 
 @implementation ConfirmPopUpViewController
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
@@ -26,6 +28,10 @@
 	[self.okButton setTitle:content.okButtonTitle forState:UIControlStateNormal];
 	[self.cancelButton setTitle:content.cancelButtonTitle forState:UIControlStateNormal];
 }
+
+#pragma mark - Configuration
+
+#pragma mark - Actions
 
 - (IBAction)actionCancel:(id) sender {
 	if ([self.delegate respondsToSelector:@selector (cancelButtonPressed:)]) {

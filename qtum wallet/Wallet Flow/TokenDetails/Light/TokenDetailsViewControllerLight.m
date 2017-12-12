@@ -11,6 +11,7 @@
 
 @interface TokenDetailsViewControllerLight () <TokenDetailDisplayDataManagerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *noTransactionTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *shortInfoHeader;
@@ -33,6 +34,7 @@
 
 	[self configTableView];
 	[self configRefreshControl];
+    [self configLocalization];
 
 	self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
 
@@ -60,7 +62,11 @@
 	self.refreshControl.tintColor = [UIColor whiteColor];
 	[refreshView addSubview:self.refreshControl];
 	[self.refreshControl addTarget:self action:@selector (refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
+}
 
+-(void)configLocalization {
+    
+    self.noTransactionTextLabel.text = NSLocalizedString(@"No transactions available yet", @"");
 }
 
 - (void)refreshFromRefreshControl {

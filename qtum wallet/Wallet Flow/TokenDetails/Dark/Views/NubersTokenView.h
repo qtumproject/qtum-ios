@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *initialSupplyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *decimalUnitsLabel;
 @property (copy, nonatomic) NSString *shortTotalSupply;
+@property (weak, nonatomic) IBOutlet UILabel *initialSupTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *decimalUnitsTextLabel;
 
 
 @end

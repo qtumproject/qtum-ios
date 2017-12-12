@@ -17,6 +17,10 @@
 
 @interface NewPaymentViewController () <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *gasLimitTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *gasPriceTextLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *tokenTextField;
@@ -130,6 +134,7 @@ static const NSInteger hidedGasTopForSend = -40;
 	[self configFee];
 	[self configGasPrice];
 	[self configGasLimit];
+    [self configLocalization];
 
 	[self.amountTextField setEnablePast:NO];
 
@@ -165,6 +170,17 @@ static const NSInteger hidedGasTopForSend = -40;
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.balanceTitle.text = NSLocalizedString(@"Available Balance", @"");
+    self.unconfirmedBalanceTitle.text = NSLocalizedString(@"Unconfirmed", @"");
+    self.titleTextLabel.text = NSLocalizedString(@"Send", @"Send Controllers Title");
+    self.gasLimitTextLabel.text = NSLocalizedString(@"Gas Limit:", @"");
+    self.gasPriceTextLabel.text = NSLocalizedString(@"Gas Price:", @"");
+    [self.editButton setTitle:NSLocalizedString(@"EDITE", @"Edite button") forState:UIControlStateNormal];
+    [self.sendButton setTitle:NSLocalizedString(@"SEND", @"Send button") forState:UIControlStateNormal];
+}
 
 - (void)configFromAddressView {
     

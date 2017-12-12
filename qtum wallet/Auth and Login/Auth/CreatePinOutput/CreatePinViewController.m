@@ -11,6 +11,8 @@
 @interface CreatePinViewController () <CAAnimationDelegate>
 
 @property (assign, nonatomic, getter = isProcessing) BOOL processing;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
@@ -18,10 +20,13 @@
 
 @synthesize delegate;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
 	[self configPasswordView];
+    [self configLocalization];
 	[self.passwordView becameFirstResponder];
 }
 
@@ -32,6 +37,12 @@
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel Button") forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Create PIN", @"Create PIN Controllers Title");
+}
 
 - (void)configPasswordView {
 	self.passwordView.delegate = self;

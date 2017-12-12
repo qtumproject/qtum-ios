@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,7 +41,7 @@
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4Y-Uo-tx3" customClass="Rest">
-                                <rect key="frame" x="30" y="182" width="315" height="304"/>
+                                <rect key="frame" x="30" y="182.5" width="315" height="303"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore Contracts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5A-Zh-P5e">
                                         <rect key="frame" x="20" y="35" width="275" height="18"/>
@@ -50,7 +50,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZzD-fF-fT1">
-                                        <rect key="frame" x="157" y="252" width="157.5" height="32"/>
+                                        <rect key="frame" x="157" y="252" width="157.5" height="31"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <state key="normal" title="RESTORE">
                                             <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -60,7 +60,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRm-k9-KeV">
-                                        <rect key="frame" x="0.0" y="252" width="157.5" height="32"/>
+                                        <rect key="frame" x="0.0" y="252" width="157.5" height="31"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <state key="normal" title="BACK">
                                             <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,25 +70,25 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lly-w5-CNn">
-                                        <rect key="frame" x="25" y="73" width="80.5" height="14"/>
+                                        <rect key="frame" x="25" y="73" width="70" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07-Jun-2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afg-Az-dUu">
-                                        <rect key="frame" x="209.5" y="73" width="80.5" height="14"/>
+                                        <rect key="frame" x="221" y="73" width="69" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxT-0l-gIA">
-                                        <rect key="frame" x="268" y="96.5" width="22" height="14"/>
+                                        <rect key="frame" x="273" y="96.5" width="17" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup App Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V77-AW-MED">
-                                        <rect key="frame" x="25" y="96.5" width="131.5" height="14"/>
+                                        <rect key="frame" x="25" y="96.5" width="109.5" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -101,19 +101,19 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contracts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prI-Iu-dy3">
-                                        <rect key="frame" x="25" y="151" width="66" height="14"/>
+                                        <rect key="frame" x="25" y="151" width="53" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tokens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJ7-91-CDi">
-                                        <rect key="frame" x="25" y="174.5" width="44" height="14"/>
+                                        <rect key="frame" x="25" y="174.5" width="38" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Templates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfg-id-lMf">
-                                        <rect key="frame" x="25" y="198" width="66" height="14"/>
+                                        <rect key="frame" x="25" y="198" width="55" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -125,7 +125,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efg-D0-XK7">
-                                        <rect key="frame" x="275" y="197.5" width="15" height="14"/>
+                                        <rect key="frame" x="276.5" y="197.5" width="13.5" height="14"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -189,10 +189,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="LRm-k9-KeV" id="M6G-f5-Jv1"/>
+                        <outlet property="backupDateTextLabel" destination="Lly-w5-CNn" id="drl-Wn-IxU"/>
+                        <outlet property="backupVersionTextLabel" destination="V77-AW-MED" id="eZn-7u-6Ex"/>
                         <outlet property="contractsCountLabel" destination="cTM-ey-KHR" id="UBK-G0-0W6"/>
+                        <outlet property="contractsTextLabel" destination="prI-Iu-dy3" id="UZ3-1M-cPv"/>
                         <outlet property="dateLabel" destination="afg-Az-dUu" id="Qj4-Xs-7Ce"/>
+                        <outlet property="restoreButton" destination="ZzD-fF-fT1" id="sAX-pF-Pba"/>
+                        <outlet property="temlatesTextLabel" destination="bfg-id-lMf" id="kAA-zS-hgg"/>
                         <outlet property="templateCounLabel" destination="efg-D0-XK7" id="ne6-sj-4LZ"/>
+                        <outlet property="titleTextLabel" destination="N5A-Zh-P5e" id="DIT-Cw-Rsg"/>
                         <outlet property="tokensCountLabel" destination="Q3G-d1-660" id="kJV-oB-ThL"/>
+                        <outlet property="tokensTextLabel" destination="oJ7-91-CDi" id="QJC-pd-h8x"/>
                         <outlet property="versionLabel" destination="MxT-0l-gIA" id="R9E-u6-ycw"/>
                     </connections>
                 </viewController>
@@ -378,10 +386,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="Ymw-Jr-jQS" id="LDf-Zq-9LH"/>
+                        <outlet property="backupDateTextLabel" destination="CRd-Mj-quZ" id="gLb-Cl-nFF"/>
+                        <outlet property="backupVersionTextLabel" destination="DZe-lx-snl" id="Zpm-T3-L12"/>
                         <outlet property="contractsCountLabel" destination="2h7-DU-wDt" id="gKY-DD-aKz"/>
+                        <outlet property="contractsTextLabel" destination="bGN-lN-f8F" id="7MO-Nj-yMF"/>
                         <outlet property="dateLabel" destination="vX4-kC-UYL" id="kY3-fb-esn"/>
+                        <outlet property="restoreButton" destination="ePc-r4-OSL" id="Sjx-gC-dlw"/>
+                        <outlet property="temlatesTextLabel" destination="IT6-MU-3uU" id="01j-b4-cmr"/>
                         <outlet property="templateCounLabel" destination="DqC-It-WE5" id="a4q-Kn-Ny2"/>
                         <outlet property="tokensCountLabel" destination="Duh-Rz-6ii" id="GBB-6e-bgB"/>
+                        <outlet property="tokensTextLabel" destination="D8p-sL-Oht" id="Uph-UC-d4m"/>
                         <outlet property="versionLabel" destination="LZB-P6-Q8g" id="dGG-Nc-maZ"/>
                     </connections>
                 </viewController>

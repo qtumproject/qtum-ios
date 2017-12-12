@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *contractNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contractTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *minterAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minerAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *feeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;

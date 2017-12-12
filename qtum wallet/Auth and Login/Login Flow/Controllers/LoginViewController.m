@@ -14,6 +14,7 @@
 @property (assign, nonatomic) BOOL shoudKeboardDismiss;
 @property (assign, nonatomic) BOOL editingStarted;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @end
 
@@ -22,6 +23,8 @@ static NSInteger textfieldsWithButtonHeight = 250;
 @implementation LoginViewController
 
 @synthesize delegate;
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
 
@@ -58,6 +61,12 @@ static NSInteger textfieldsWithButtonHeight = 250;
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel Button") forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Confirm PIN", @"Confirm PIN Controllers Title");
+}
 
 - (void)configPasswordView {
 	self.passwordView.delegate = self;

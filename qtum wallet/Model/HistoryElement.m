@@ -194,7 +194,7 @@
 		self.dateNumber = ![object[@"block_time"] isKindOfClass:[NSNull class]] ? object[@"block_time"] : nil;
 		self.address = object[@"address"];
 		self.confirmed = [object[@"block_height"] floatValue] > 0;
-		self.txHash = object[@"tx_hash"];
+		self.txHash = ![object[@"tx_hash"] isKindOfClass:[NSNull class]] ? object[@"tx_hash"] : nil;
 		self.isSmartContractCreater = [object[@"contract_has_been_created"] boolValue];
 		[self calcAmountAndAdresses:object];
 	}

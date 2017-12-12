@@ -12,4 +12,6 @@ static NSString *tokenCellIdentifireLight = @"TokenCellLight";
 
 @interface TokenCellLight : TokenCell
 
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedTextLabel;
+
 @end

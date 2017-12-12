@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,21 +73,21 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lxe-Nf-tid" customClass="TextFieldWithLineDarkPopup">
-                                        <rect key="frame" x="15" y="81" width="231" height="20"/>
+                                        <rect key="frame" x="15" y="81" width="231" height="19"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n48-Nh-AYQ" customClass="TextFieldWithLineDarkPopup">
-                                        <rect key="frame" x="15" y="141" width="231" height="20"/>
+                                        <rect key="frame" x="15" y="140" width="231" height="19"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Epx-0c-l6J" customClass="TextFieldWithLineDarkPopup">
-                                        <rect key="frame" x="15" y="201" width="231" height="20"/>
+                                        <rect key="frame" x="15" y="199" width="231" height="19"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
@@ -133,7 +133,9 @@
                     </view>
                     <connections>
                         <outlet property="amountTextFieldView" destination="lxe-Nf-tid" id="aZY-z9-aLY"/>
+                        <outlet property="cancelButton" destination="la1-RH-3qO" id="LTw-Vg-rtI"/>
                         <outlet property="fromTextFieldView" destination="Epx-0c-l6J" id="jpP-O5-5sz"/>
+                        <outlet property="titleTextLabel" destination="5Hg-ck-iPE" id="K3a-ba-XzD"/>
                         <outlet property="toTextFieldVIew" destination="n48-Nh-AYQ" id="xGu-gq-KuZ"/>
                         <outlet property="transferButton" destination="q6U-Ee-xof" id="Etg-dR-DsD"/>
                     </connections>
@@ -273,7 +275,9 @@
                     </view>
                     <connections>
                         <outlet property="amountTextFieldView" destination="d82-63-oty" id="sbQ-AJ-zBu"/>
+                        <outlet property="cancelButton" destination="chH-b9-qpp" id="uZ5-va-DOW"/>
                         <outlet property="fromTextFieldView" destination="dMF-YO-Upd" id="iZ4-JB-44H"/>
+                        <outlet property="titleTextLabel" destination="qJS-Rf-ydk" id="zgx-zG-sUs"/>
                         <outlet property="toTextFieldVIew" destination="jY5-b9-2uN" id="dSO-xL-I13"/>
                         <outlet property="transferButton" destination="bCm-oX-BwO" id="SMf-dM-tg9"/>
                     </connections>

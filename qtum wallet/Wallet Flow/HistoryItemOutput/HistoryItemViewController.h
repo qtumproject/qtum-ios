@@ -16,5 +16,6 @@
 @property (weak, nonatomic) id <HistoryItemOutputDelegate> delegate;
 
 - (void)configWithItem;
+- (void)configLocalization;
 
 @end

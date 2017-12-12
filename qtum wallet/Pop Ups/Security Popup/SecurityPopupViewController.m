@@ -10,9 +10,14 @@
 
 @interface SecurityPopupViewController () <UITextFieldDelegate, CAAnimationDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+
 @end
 
 @implementation SecurityPopupViewController
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
 
@@ -28,6 +33,11 @@
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    self.titleTextLabel.text = NSLocalizedString(@"Confirm PIN", @"Confirm PIN Popoup Title");
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel button") forState:UIControlStateNormal];
+}
 
 - (void)configPasswordView {
 

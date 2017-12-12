@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractNameField;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractAddressTextField;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
@@ -25,10 +27,16 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    [self configLocalization];
 }
 
-- (void)viewDidLayoutSubviews {
-	[super viewDidLayoutSubviews];
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    [self.okButton setTitle:NSLocalizedString(@"OK", @"Ok button") forState:UIControlStateNormal];
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel button") forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Watch Token", @"Watch Token Controllers Title");
 }
 
 #pragma mark - Output

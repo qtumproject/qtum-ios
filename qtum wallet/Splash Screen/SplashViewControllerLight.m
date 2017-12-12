@@ -19,15 +19,18 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *animatedWaitLabelHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *animatedBacgroungViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet AnimatedLogoImageVIewLight *animatedLogoView;
+@property (weak, nonatomic) IBOutlet UILabel *waitLabel;
 
 @end
 
 @implementation SplashViewControllerLight
 
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
+    [self configLocalization];
 }
 
 - (void)viewWillAppear:(BOOL) animated {
@@ -66,6 +69,14 @@
 
 	weakSelf.animatedWaitLabelHeightConstraint.constant = 0;
 
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.waitLabel.text = NSLocalizedString(@"Please wait", @"");
+    self.animatedWaitingLabel.text = NSLocalizedString(@"Please wait", @"");
 }
 
 @end
