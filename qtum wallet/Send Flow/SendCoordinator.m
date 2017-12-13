@@ -15,7 +15,7 @@
 #import "SendModuleRouter.h"
 #import "ErrorPopUpViewController.h"
 #import "ConfirmPopUpViewController.h"
-
+#import "WalletManager.h"
 
 @interface SendCoordinator () <NewPaymentOutputDelegate, QRCodeOutputDelegate, ChoseTokenPaymentOutputDelegate, ChooseTokekPaymentDelegateDataSourceDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
@@ -94,7 +94,7 @@
 		[weakSelf hideLoaderPopUp];
 	}];
 
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (tokensDidChange) name:kTokenDidChange object:nil];
+    [self subscribeToEvents];
     
     [self pauseOperations];
 }
@@ -113,6 +113,12 @@
     dispatch_semaphore_signal(self.updatingSemaphore);
 }
 
+-(void)subscribeToEvents {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (tokensDidChange) name:kTokenDidChange object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (walletDidChange) name:kWalletDidChange object:nil];
+}
 
 - (void)setForSendSendInfoItem:(SendInfoItem *) item {
     
@@ -212,6 +218,27 @@
         }
         
         NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
+        [weakSelf updateOutputsWithEntity:entity];
+    }];
+    
+    [self.workingQueue addOperation:operation];
+}
+
+- (void)walletDidChange {
+    
+    __weak __typeof (self) weakSelf = self;
+    
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOperation = operation;
+    
+    [operation addExecutionBlock:^{
+        
+        if (weakOperation.isCancelled) {
+            return;
+        }
+        
+        NewPaymentOutputEntity* entity = [weakSelf defaultEntity];
         [weakSelf updateOutputsWithEntity:entity];
     }];
     
@@ -652,6 +679,7 @@
         }
         
         weakSelf.token = item;
+        weakSelf.choosenTokenAddressModal = nil;
         [weakSelf checkTokens];
         NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
         [weakSelf updateOutputsWithEntity:entity];
