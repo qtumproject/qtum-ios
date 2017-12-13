@@ -32,6 +32,8 @@
 
 - (void)configRefreshControl;
 
+- (void)configLocalization;
+
 - (void)refreshFromRefreshControl;
 
 @end

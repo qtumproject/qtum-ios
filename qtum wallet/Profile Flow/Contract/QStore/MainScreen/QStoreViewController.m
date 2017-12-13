@@ -14,6 +14,7 @@ CGFloat const KeyboardDuration = 0.25f;
 @interface QStoreViewController () <UISearchBarDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @property (nonatomic) BOOL wasSettedTag;
 @property (nonatomic) NSString *tagString;
@@ -23,6 +24,8 @@ CGFloat const KeyboardDuration = 0.25f;
 @implementation QStoreViewController
 
 @synthesize delegate;
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -78,6 +81,13 @@ CGFloat const KeyboardDuration = 0.25f;
 	[super viewDidDisappear:animated];
 
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"Qstore", @"Qstore Controller Title");
 }
 
 - (void)createContainer {

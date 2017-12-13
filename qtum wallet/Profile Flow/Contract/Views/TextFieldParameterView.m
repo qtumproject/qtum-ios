@@ -14,11 +14,9 @@
 
 @implementation TextFieldParameterView
 
-- (instancetype)initWithCoder:(NSCoder *) aDecoder {
-	self = [super initWithCoder:aDecoder];
-	if (self) {
-	}
-	return self;
+- (BOOL)isValidParameter {
+    
+    return [self.textField isValidParameterText];
 }
 
 @end

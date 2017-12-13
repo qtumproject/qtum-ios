@@ -22,10 +22,19 @@
 
 	[self setupTextView];
 	[self setupForContent];
+    [self configLocalization];
 }
 
 - (void)setupTextView {
 }
+
+#pragma mark - Configuration
+
+- (void)configLocalization {
+    self.titleLabel.text = NSLocalizedString(@"Source Code", @"");
+}
+
+#pragma mark - Actions
 
 - (IBAction)actionCancel:(id) sender {
 	if ([self.delegate respondsToSelector:@selector (cancelButtonPressed:)]) {

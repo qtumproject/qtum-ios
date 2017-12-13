@@ -9,12 +9,8 @@
 #import "TextFieldWithLineLightSend.h"
 #import "AbiinterfaceInput.h"
 #import "AbiTextFieldWithLineDelegate.h"
+#import "ParameterInputFieldProtocol.h"
 
-@interface AbiTextFieldWithLineLight : TextFieldWithLineLightSend
-
-- (instancetype)initWithFrame:(CGRect) frame andInterfaceItem:(AbiinterfaceInput *) item;
-
-@property (weak, nonatomic) id <AbiTextFieldWithLineDelegate> customDelegate;
-@property (strong, nonatomic) AbiinterfaceInput *item;
+@interface AbiTextFieldWithLineLight : TextFieldWithLineLightSend <ParameterInputFieldProtocol>
 
 @end

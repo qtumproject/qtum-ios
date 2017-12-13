@@ -15,6 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *contractAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contractAddressTextLabel;
 
 @end
 
@@ -22,15 +24,26 @@
 
 @synthesize token, delegate, formModel;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
+    [self configLocalization];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (reloadTable) name:kWalletDidChange object:nil];
 	self.contractAddressLabel.text = self.token.mainAddress;
 }
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.contractAddressTextLabel.text = NSLocalizedString(@"Contract Address", @"");
+    self.titleTextLabel.text = NSLocalizedString(@"Functions", @"Functions Controllers Title");
 }
 
 #pragma mark - Private Methods

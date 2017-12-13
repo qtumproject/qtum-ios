@@ -13,6 +13,7 @@
 @interface SmartContractMenuViewController () <Presentable>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @end
 
@@ -23,6 +24,7 @@
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
+    [self configLocalization];
 
 	self.contractTypes = @[NSLocalizedString(@"My Contract Templates", @""),
 			NSLocalizedString(@"My Published Contracts", @""),
@@ -33,6 +35,13 @@
 			NSLocalizedString(@"Restore Contracts", @"")];
 
 	[self.tableView reloadData];
+}
+
+#pragma mark Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"Smart Contracts", @"Smart Contracts Controllers Title");
 }
 
 #pragma mark - UITableViewDelegate

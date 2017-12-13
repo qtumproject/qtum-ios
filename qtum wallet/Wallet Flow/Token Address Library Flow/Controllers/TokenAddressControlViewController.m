@@ -11,6 +11,7 @@
 
 @interface TokenAddressControlViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableVew;
 
 @end
@@ -19,14 +20,24 @@
 
 @synthesize delegate, arrayWithAddressesAndBalances, symbol;
 
+
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    [self configLocalization];
 }
 
 - (void)viewDidAppear:(BOOL) animated {
 
 	[super viewDidAppear:animated];
 	[self.tableVew layoutSubviews];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    self.titleTextLabel.text = NSLocalizedString(@"Manage Addresses", @"Token Manage Addresses Controllers Title");
 }
 
 - (void)reloadData {

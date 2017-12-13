@@ -12,6 +12,10 @@
 @interface ExportWalletBrandKeyViewController () <PopUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet BorderedLabel *brainKeyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UIButton *skipButton;
+@property (weak, nonatomic) IBOutlet UIButton *buttonCopy;
+@property (weak, nonatomic) IBOutlet UILabel *infoTextLabel;
 
 @end
 
@@ -20,10 +24,13 @@
 
 @synthesize delegate, brandKey;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
 	[self configurationBrainKeyLabel];
+    [self configLocalization];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +49,14 @@
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.infoTextLabel.text = NSLocalizedString(@"You can skip this step and export your passphrase at any time", @"Skip Skip Info");
+    [self.skipButton setTitle:NSLocalizedString(@"SKIP", @"Skip Button") forState:UIControlStateNormal];
+    [self.buttonCopy setTitle:NSLocalizedString(@"COPY", @"Copy Button") forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Copy Passphrase", @"Copy Passphrase Controllers Title");
+}
 
 - (void)configurationBrainKeyLabel {
 

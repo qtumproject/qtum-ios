@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "AbiTextFieldWithLine.h"
+#import "ParameterInputFieldProtocol.h"
 
 @interface TextFieldParameterView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet AbiTextFieldWithLine *textField;
+@property (weak, nonatomic) UITextField <ParameterInputFieldProtocol> *textField;
+
+- (BOOL)isValidParameter;
 
 @end

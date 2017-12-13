@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -106,6 +106,10 @@ and share photos you choose.</string>
                             <constraint firstItem="wH0-Rw-I8U" firstAttribute="top" secondItem="VQq-d1-eZi" secondAttribute="top" id="vtG-RI-gxX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="infoTextLabel" destination="lMt-cb-j7M" id="HRN-Jk-bIb"/>
+                        <outlet property="titleTextLabel" destination="Si1-7A-g3F" id="Tw9-WN-0gU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lH7-a2-JYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -222,6 +226,10 @@ and share photos you choose.</string>
                             <constraint firstItem="Bsd-9J-FLU" firstAttribute="centerY" secondItem="wNg-jp-Jqm" secondAttribute="centerY" multiplier="0.7" id="shG-sl-UTJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="infoTextLabel" destination="b4Q-Vm-Nqu" id="82R-CO-rlG"/>
+                        <outlet property="titleTextLabel" destination="FuS-MI-64U" id="fvE-qU-Xwp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gJ-GL-mFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

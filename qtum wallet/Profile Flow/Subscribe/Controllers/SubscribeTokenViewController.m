@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @end
 
@@ -20,11 +21,14 @@
 
 @synthesize delegate, tokensArray, delegateDataSource;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
 	[self configTableView];
 	[self configSearchBar];
+    [self configLocalization];
 	[self updateTable];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (updateTable) name:kTokenDidChange object:nil];
 
@@ -37,6 +41,11 @@
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    self.emptyTableLabel.text = NSLocalizedString(@"No Tokens Found", @"Empty Tokens Tabel");
+    self.titleTextLabel.text = NSLocalizedString(@"Token Subscriptions", @"Token Subscriptions Controllers Title");
+}
 
 - (void)configTableView {
 

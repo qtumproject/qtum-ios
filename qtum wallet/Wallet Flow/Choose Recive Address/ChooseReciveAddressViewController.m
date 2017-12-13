@@ -10,7 +10,9 @@
 #import "ChooseAddressReciveCell.h"
 
 @interface ChooseReciveAddressViewController ()
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @end
 
@@ -18,8 +20,17 @@
 
 @synthesize addresses, delegate, prevAddress;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"Addresses", @"Choose Recive Address Controller Title");
 }
 
 #pragma mark - Actions

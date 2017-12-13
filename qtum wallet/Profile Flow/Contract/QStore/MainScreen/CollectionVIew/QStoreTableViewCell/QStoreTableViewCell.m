@@ -18,6 +18,7 @@
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
+    self.textLabel.text = NSLocalizedString(@"What’s New", @"Qstore Cell");
 }
 
 - (void)setSelected:(BOOL) selected animated:(BOOL) animated {

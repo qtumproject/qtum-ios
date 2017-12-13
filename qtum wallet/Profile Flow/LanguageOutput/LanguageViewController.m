@@ -12,6 +12,7 @@
 @interface LanguageViewController () <LanguageTableSourceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @property (nonatomic) LanguageTableSource *source;
 
@@ -19,12 +20,23 @@
 
 @implementation LanguageViewController
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
+#pragma mark - Lifecycle
 
+- (void)viewDidLoad {
+    
+	[super viewDidLoad];
 
 	self.tableView.dataSource = self.source;
 	self.tableView.delegate = self.source;
+    
+    [self configLocalization];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"Language", @"Language Controllers Title");
 }
 
 - (LanguageTableSource *)source {

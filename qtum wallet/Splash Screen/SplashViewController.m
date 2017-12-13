@@ -16,5 +16,7 @@
 
 @synthesize delegate;
 
+#pragma mark - Lifecycle
+
 
 @end

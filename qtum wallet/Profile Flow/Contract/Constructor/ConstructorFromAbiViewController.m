@@ -13,6 +13,8 @@
 
 @property (assign, nonatomic) NSInteger activeTextFieldTag;
 @property (assign, nonatomic) BOOL isTextFieldsFilled;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stepTextLabel;
 
 @end
 
@@ -20,12 +22,21 @@
 
 @synthesize originInsets, scrollView, delegate, formModel, contractTitle;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    [self configLocalization];
 	[self configTextFields];
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.stepTextLabel.text = NSLocalizedString(@"Step 2 of 2", @"");
+    self.titleTextLabel.text = NSLocalizedString(@"Smart Contract Parameters", @"Smart Contract Parameters Contollers Title");
+}
 
 - (void)confixHeaderFields {
 

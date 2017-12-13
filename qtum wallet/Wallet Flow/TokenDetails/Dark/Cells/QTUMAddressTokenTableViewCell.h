@@ -21,5 +21,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) id <QTUMAddressTokenTableViewCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UILabel *tokenAddressTextLabel;
 
 @end

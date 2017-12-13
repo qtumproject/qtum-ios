@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBO-v0-fiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -85,7 +85,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a wallet or restore a previous wallet key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApH-nQ-YF3">
-                                <rect key="frame" x="87.5" y="258.5" width="200" height="33"/>
+                                <rect key="frame" x="87.5" y="260.5" width="200" height="50.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="CCK-vf-XP6"/>
                                 </constraints>
@@ -94,7 +94,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have a wallet yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbP-bR-TcN">
-                                <rect key="frame" x="20" y="216" width="335" height="17.5"/>
+                                <rect key="frame" x="20" y="216" width="335" height="19.5"/>
                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="15"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -137,6 +137,7 @@
                     <connections>
                         <outlet property="bottomButtonsOffset" destination="iqd-Xv-QcW" id="DIa-l2-G81"/>
                         <outlet property="createButton" destination="FKx-bF-rYK" id="VLN-Gu-fpx"/>
+                        <outlet property="createNewWalletTextLabel" destination="ApH-nQ-YF3" id="biX-lp-fvX"/>
                         <outlet property="invitationTextLabel" destination="CbP-bR-TcN" id="n79-Iu-Fze"/>
                         <outlet property="loginButton" destination="bZ1-JG-7ln" id="KDS-sr-24E"/>
                         <outlet property="restoreButton" destination="KY1-s1-NTB" id="h8M-P6-WXv"/>
@@ -169,7 +170,7 @@
                                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Import Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hin-v8-TQi">
-                                                        <rect key="frame" x="131" y="11" width="114" height="23"/>
+                                                        <rect key="frame" x="134.5" y="12" width="107" height="21"/>
                                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -280,7 +281,9 @@
                     <connections>
                         <outlet property="bottomForButtonsConstraint" destination="ggG-II-NOw" id="Z80-ls-MqS"/>
                         <outlet property="brandKeyTextView" destination="RXe-A3-Ilq" id="IMD-UC-gXv"/>
+                        <outlet property="cancelButton" destination="Thv-I1-4Fs" id="kcJ-Ah-iN8"/>
                         <outlet property="importButton" destination="rDv-SM-SkJ" id="S4a-I8-Obi"/>
+                        <outlet property="titleTextLabel" destination="hin-v8-TQi" id="pA5-fR-cYT"/>
                         <segue destination="x3j-yi-Vzm" kind="show" identifier="createPin" id="c9Q-KI-ZIv"/>
                     </connections>
                 </viewController>
@@ -311,7 +314,7 @@
                                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mQ-n8-apV">
-                                                        <rect key="frame" x="134" y="11" width="108" height="23"/>
+                                                        <rect key="frame" x="137" y="12" width="102" height="21"/>
                                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -334,7 +337,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-oZ-gm9" customClass="TextFieldWithLine">
-                                        <rect key="frame" x="55" y="164" width="265" height="20"/>
+                                        <rect key="frame" x="55" y="164" width="265" height="19"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
@@ -521,6 +524,7 @@
                     <connections>
                         <outlet property="gradientViewBottomOffset" destination="oFR-oB-6Uj" id="T2n-d6-Cj3"/>
                         <outlet property="passwordView" destination="vmk-bD-QMm" id="v7H-2Y-C4D"/>
+                        <outlet property="titleTextLabel" destination="6f6-N4-UBG" id="SAW-JG-Kza"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFU-zE-LW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -587,7 +591,7 @@
                                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhP-cw-pCS">
-                                                        <rect key="frame" x="140.5" y="11" width="94" height="23"/>
+                                                        <rect key="frame" x="141.5" y="12" width="92" height="21"/>
                                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -644,8 +648,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="G3P-gM-yIC"/>
                     <connections>
+                        <outlet property="cancelButton" destination="YF2-4e-rIb" id="UZO-2x-4XX"/>
                         <outlet property="gradientViewBottomOffset" destination="TEg-gQ-9ej" id="JKL-5C-i0k"/>
                         <outlet property="passwordView" destination="XkI-Tm-2Zw" id="Eyt-Hy-rAI"/>
+                        <outlet property="titleTextLabel" destination="nhP-cw-pCS" id="Gvk-h1-NHp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VTB-a7-FAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -793,6 +799,10 @@
                     </view>
                     <connections>
                         <outlet property="brainKeyLabel" destination="kuU-1O-s5h" id="2CG-Aj-l3k"/>
+                        <outlet property="buttonCopy" destination="zy7-RT-Igl" id="jbL-Qq-fZH"/>
+                        <outlet property="infoTextLabel" destination="bqM-zM-reg" id="nN6-w4-Flg"/>
+                        <outlet property="skipButton" destination="ZGd-Wy-eQH" id="AdD-yC-YVV"/>
+                        <outlet property="titleTextLabel" destination="AXK-VV-DPE" id="9Pm-RZ-cAa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwg-qQ-y9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -861,7 +871,7 @@
                                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Veq-XE-LK4">
-                                                        <rect key="frame" x="138" y="11" width="100" height="23"/>
+                                                        <rect key="frame" x="139" y="12" width="98.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -931,6 +941,7 @@
                         <outlet property="bottomConstraintForCancelButton" destination="mit-LH-eTj" id="h8u-Ok-RrI"/>
                         <outlet property="cancelButton" destination="pa2-Ds-gwV" id="q01-6l-oOr"/>
                         <outlet property="passwordView" destination="N75-WR-baT" id="bJb-yr-CRq"/>
+                        <outlet property="titleTextLabel" destination="Veq-XE-LK4" id="SF2-Kt-tyd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcx-yG-nqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -992,7 +1003,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-aK-iup">
-                                <rect key="frame" x="133" y="257" width="110" height="37.5"/>
+                                <rect key="frame" x="132.5" y="257" width="110" height="37.5"/>
                                 <string key="text">Login to QTUM
 using Touch ID</string>
                                 <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
@@ -1045,6 +1056,12 @@ using Touch ID</string>
                             <constraint firstItem="Dte-nL-GFE" firstAttribute="leading" secondItem="cBE-E5-vDP" secondAttribute="leading" id="uWV-7t-vxL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="enableButton" destination="W1C-4D-HED" id="tHk-hT-pkV"/>
+                        <outlet property="infoTextLabel" destination="KQg-aK-iup" id="Wg6-hI-Uk6"/>
+                        <outlet property="skipButton" destination="b73-4W-Yxk" id="ScF-Yc-ZqO"/>
+                        <outlet property="titleTextLabel" destination="AN2-Zm-hCw" id="5Ag-HG-5tL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7yf-E9-dOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1182,6 +1199,7 @@ using Touch ID</string>
                         <outlet property="bottomConstraintForCancelButton" destination="Pft-3J-aGL" id="aYa-54-v1J"/>
                         <outlet property="cancelButton" destination="FGJ-l5-7TR" id="ZvW-Cc-RTW"/>
                         <outlet property="passwordView" destination="0vv-fr-6B0" id="bdf-UB-ccV"/>
+                        <outlet property="titleTextLabel" destination="BwS-El-Y7J" id="97j-JR-7eU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3LT-RL-yof" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1255,7 +1273,7 @@ using Touch ID</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a wallet or restore a previous wallet key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJ0-1t-5Er">
-                                <rect key="frame" x="87.5" y="269" width="200" height="37.5"/>
+                                <rect key="frame" x="87.5" y="266" width="200" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="wXH-Wf-9bX"/>
                                 </constraints>
@@ -1264,7 +1282,7 @@ using Touch ID</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have a wallet yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fa-wd-dBJ">
-                                <rect key="frame" x="20" y="223" width="335" height="21"/>
+                                <rect key="frame" x="20" y="223" width="335" height="18"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1312,6 +1330,7 @@ using Touch ID</string>
                     <connections>
                         <outlet property="bottomButtonsOffset" destination="5mu-6N-hAB" id="aKA-w3-Yln"/>
                         <outlet property="createButton" destination="8ND-r5-3lE" id="sH7-H9-GW8"/>
+                        <outlet property="createNewWalletTextLabel" destination="GJ0-1t-5Er" id="ECG-lq-zah"/>
                         <outlet property="invitationTextLabel" destination="5fa-wd-dBJ" id="JRe-RV-de9"/>
                         <outlet property="loginButton" destination="9Nw-dL-BwR" id="gCO-W0-xuw"/>
                         <outlet property="restoreButton" destination="H9l-hG-cKG" id="T5K-3A-9H2"/>
@@ -1613,8 +1632,10 @@ using Touch ID</string>
                     </view>
                     <navigationItem key="navigationItem" id="TQN-N0-Mf2"/>
                     <connections>
+                        <outlet property="cancelButton" destination="YGd-gE-95m" id="6gD-CV-sX7"/>
                         <outlet property="gradientViewBottomOffset" destination="LIQ-24-haY" id="0B0-T7-Cae"/>
                         <outlet property="passwordView" destination="3U6-3R-MFI" id="bnz-OM-YAj"/>
+                        <outlet property="titleTextLabel" destination="gIZ-yo-jnc" id="4vx-Sy-laI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zub-Wd-D9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1761,8 +1782,10 @@ using Touch ID</string>
                     </view>
                     <navigationItem key="navigationItem" id="ucg-Ua-Oqq"/>
                     <connections>
+                        <outlet property="cancelButton" destination="BYF-ca-p4Y" id="PlC-Lj-sEw"/>
                         <outlet property="gradientViewBottomOffset" destination="bpc-pO-jIu" id="5bG-Y8-NmX"/>
                         <outlet property="passwordView" destination="WCd-XG-WCu" id="Zs0-YG-hWK"/>
+                        <outlet property="titleTextLabel" destination="8Mr-vC-l5U" id="ba2-H0-1o0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qiO-kx-QsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1793,7 +1816,7 @@ using Touch ID</string>
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9y-9m-c2C">
-                                                <rect key="frame" x="154.5" y="12.5" width="67" height="20"/>
+                                                <rect key="frame" x="154.5" y="14" width="67" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1823,7 +1846,7 @@ using Touch ID</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4I-3I-l4S">
-                                <rect key="frame" x="132.5" y="280" width="110" height="37.5"/>
+                                <rect key="frame" x="135.5" y="280" width="104" height="32"/>
                                 <string key="text">Login to QTUM
 using Touch ID</string>
                                 <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="16"/>
@@ -1886,6 +1909,12 @@ using Touch ID</string>
                             <constraint firstItem="c4I-3I-l4S" firstAttribute="centerX" secondItem="ic0-E4-RwI" secondAttribute="centerX" id="rDk-tY-OG8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="enableButton" destination="bpX-TS-y2f" id="a15-WE-Wv1"/>
+                        <outlet property="infoTextLabel" destination="c4I-3I-l4S" id="lfz-b2-uyk"/>
+                        <outlet property="skipButton" destination="iO2-fM-LF8" id="drF-SR-Zx3"/>
+                        <outlet property="titleTextLabel" destination="T9y-9m-c2C" id="MCF-Kt-x60"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Un7-Yy-sha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2024,7 +2053,9 @@ using Touch ID</string>
                     <connections>
                         <outlet property="bottomForButtonsConstraint" destination="NiW-Ve-Fil" id="2Yc-Ur-nHM"/>
                         <outlet property="brandKeyTextView" destination="xfL-rC-vTe" id="804-K6-KBq"/>
+                        <outlet property="cancelButton" destination="HPs-Dw-vyP" id="yHO-zu-YZM"/>
                         <outlet property="importButton" destination="NgY-VJ-Sxi" id="cml-wf-WfD"/>
+                        <outlet property="titleTextLabel" destination="ZAD-YX-siU" id="TwM-CH-ZhR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tu8-sF-TXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2051,7 +2082,7 @@ using Touch ID</string>
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy Passphrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmO-lo-gnX">
-                                                <rect key="frame" x="120.5" y="12.5" width="134.5" height="20"/>
+                                                <rect key="frame" x="122" y="14" width="131.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -2113,7 +2144,7 @@ using Touch ID</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can skip this step and export your passphrase at any time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCL-oc-su9">
-                                <rect key="frame" x="37.5" y="261" width="300" height="35"/>
+                                <rect key="frame" x="37.5" y="255" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Hez-nW-Hk9"/>
                                 </constraints>
@@ -2143,7 +2174,7 @@ using Touch ID</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" asdasd asdasd asdasd asfd asdf gsdf hgja aqt rejdf цуквапы" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCr-YL-owg" customClass="BorderedLabelLight">
-                                <rect key="frame" x="45" y="109" width="285" height="42"/>
+                                <rect key="frame" x="45" y="109" width="285" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                 <color key="textColor" red="0.52549019610000003" green="0.56862745100000001" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2169,6 +2200,10 @@ using Touch ID</string>
                     </view>
                     <connections>
                         <outlet property="brainKeyLabel" destination="MCr-YL-owg" id="6wF-fy-2YW"/>
+                        <outlet property="buttonCopy" destination="1qA-hW-o0z" id="pog-dI-DAj"/>
+                        <outlet property="infoTextLabel" destination="VCL-oc-su9" id="LDf-nd-PLU"/>
+                        <outlet property="skipButton" destination="OPh-sJ-Q5B" id="gqd-Ja-9ot"/>
+                        <outlet property="titleTextLabel" destination="XmO-lo-gnX" id="WkN-yF-RLV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSz-9R-iSK" userLabel="First Responder" sceneMemberID="firstResponder"/>

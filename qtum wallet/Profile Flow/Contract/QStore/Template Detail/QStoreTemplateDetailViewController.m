@@ -13,6 +13,7 @@
 @interface QStoreTemplateDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @end
 
@@ -20,10 +21,20 @@
 
 @synthesize delegate, formModel;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
+    [self configLocalization];
 	[self reloadTable];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"Functions", @"Functions Controller Title");
 }
 
 #pragma mark - Private Methods

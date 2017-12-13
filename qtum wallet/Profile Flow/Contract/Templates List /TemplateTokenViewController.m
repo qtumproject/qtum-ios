@@ -12,6 +12,8 @@
 @interface TemplateTokenViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stepTextLabel;
 
 @end
 
@@ -19,10 +21,20 @@
 
 @synthesize delegate, templateModels;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
 	[self.tableView reloadData];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.stepTextLabel.text = NSLocalizedString(@"Step 1 of 2", @"");
+    self.titleTextLabel.text = NSLocalizedString(@"Templates", @"Templates Controllers Title");
 }
 
 #pragma mark - UITableViewDelegate

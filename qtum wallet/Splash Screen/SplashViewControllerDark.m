@@ -19,12 +19,21 @@
 
 @implementation SplashViewControllerDark
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
 
 	self.titleLabel.alpha = 0.0f;
 	self.textLabel.alpha = 0.0f;
+    [self configLocalization];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    self.textLabel.text = NSLocalizedString(@"Please wait", @"");
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

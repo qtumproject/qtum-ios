@@ -10,6 +10,9 @@
 
 @interface WalletViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *activityTextLabel;
+
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
 
 @property (assign, nonatomic) BOOL balanceLoaded;
@@ -30,6 +33,7 @@
 
 	[self configTableView];
 	[self configRefreshControl];
+    [self configLocalization];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,6 +60,12 @@
 }
 
 #pragma mark - Configuration
+
+- (void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"My Wallet", @"Wallet Controllers Title");
+    self.activityTextLabel.text = NSLocalizedString(@"Activity", @"Wallet Controllers Activity");
+}
 
 - (void)configRefreshControl {
 }

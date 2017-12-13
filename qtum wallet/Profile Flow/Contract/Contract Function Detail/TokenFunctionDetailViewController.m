@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UILabel *result;
+@property (weak, nonatomic) IBOutlet UIButton *functionActionButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @property (strong, nonatomic) QTUMBigNumber *FEE;
 @property (strong, nonatomic) QTUMBigNumber *gasPrice;
@@ -69,6 +71,14 @@ static NSInteger queryViewheight = 100;
     
 	[super viewDidLoad];
     
+    [self configLocalization];
+    [self buildView];
+    [self updateControls];
+}
+
+#pragma mark - Config view
+
+- (void)buildView {
     [self makeConstraintForScrollView];
     
     if (self.function.payable) {
@@ -79,7 +89,7 @@ static NSInteger queryViewheight = 100;
     if (self.function.inputs.count > 0) {
         [self makeConstraintForParameterInputs];
     }
-
+    
     if (!self.fromQStore && !self.function.constant) {
         [self makeConstraintForSettingsView];
         [self makeConstraintForCallButton];
@@ -88,6 +98,7 @@ static NSInteger queryViewheight = 100;
         [self makeConstraintForQueryView];
     }
 }
+
 
 -(void)makeConstraintForScrollView {
     
@@ -224,6 +235,7 @@ static NSInteger queryViewheight = 100;
     }
 
     UIButton *callButton = [self callButton];
+    self.functionActionButton = callButton;
     [self.scrollView addSubview:callButton];
     
     [callButton makeConstraints:^(MASConstraintMaker *make) {
@@ -248,6 +260,7 @@ static NSInteger queryViewheight = 100;
     }
     
     QueryFunctionView *queryView = [self queryView];
+    self.functionActionButton = queryView.queryButton;
     queryView.delegate = self;
     self.queryFunctionView = queryView;
     [self.scrollView addSubview:queryView];
@@ -303,6 +316,11 @@ static NSInteger queryViewheight = 100;
 
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"Function Detail", @"Function Detail Controllers Title");
+}
 
 - (void)configFromAddressView {
     
@@ -366,6 +384,31 @@ static NSInteger queryViewheight = 100;
 
 #pragma mark - Private Methods
 
+- (void)updateControls {
+    
+    BOOL isValidInputs = [self isValidInputs];
+    
+    if (isValidInputs) {
+        self.functionActionButton.alpha = 1;
+        self.functionActionButton.enabled = YES;
+    } else {
+        self.functionActionButton.alpha = 0.7;
+        self.functionActionButton.enabled = NO;
+    }
+}
+
+- (BOOL)isValidInputs {
+    
+    BOOL isValidInputs = YES;
+    
+    for (TextFieldParameterView *parameter in self.scrollView.subviews) {
+        if ([parameter isKindOfClass:[TextFieldParameterView class]] && ![parameter isValidParameter]) {
+            isValidInputs = NO;
+        }
+    }
+    return isValidInputs;
+}
+
 - (NSArray<ResultTokenInputsModel *> *)prepareInputsData {
 
 	NSMutableArray *inputsData = @[].mutableCopy;
@@ -392,22 +435,6 @@ static NSInteger queryViewheight = 100;
 - (void)setQueryResult:(NSString *) result {
     
     [self.queryFunctionView setResult:result];
-}
-
-- (void)showResultViewWithOutputs:(NSArray *) outputs {
-
-	[SLocator.popupService dismissLoader];
-
-	NSMutableString *result = [NSMutableString new];
-	for (id output in outputs) {
-		[result appendFormat:@"%@", output];
-	}
-
-	self.result.text = result.length > 0 ? result : NSLocalizedString(@"There is no output", nil);
-	self.result.hidden = NO;
-	self.scrollView.hidden = YES;
-	self.callButton.hidden = YES;
-	self.cancelButton.hidden = YES;
 }
 
 - (void)showLoader {
@@ -533,6 +560,8 @@ static NSInteger queryViewheight = 100;
 	if (textField == self.feeView.feeTextField) {
 		[self normalizeFee];
 	}
+    
+    [self updateControls];
 }
 
 - (void)normalizeFee {

@@ -13,6 +13,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 @interface TokenDetailsViewController () <TokenDetailDisplayDataManagerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *noTransactionTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *availableBalanceLabel;
@@ -41,6 +42,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 	self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
 
 	[self configRefreshControl];
+    [self configLocalization];
 }
 
 - (void)configRefreshControl {
@@ -55,6 +57,11 @@ CGFloat const HeightForHeaderView = 50.0f;
 	UIView *refreshBackgroundView = [[UIView alloc] initWithFrame:frame];
 	refreshBackgroundView.backgroundColor = customBlueColor ();
 	[self.tableView insertSubview:refreshBackgroundView atIndex:0];
+}
+
+-(void)configLocalization {
+    
+    self.noTransactionTextLabel.text = NSLocalizedString(@"No transactions available yet", @"");
 }
 
 #pragma mark - Actions

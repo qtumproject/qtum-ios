@@ -11,6 +11,7 @@
 @interface AboutOutputViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyAndVersionText;
 
 @end
@@ -19,14 +20,22 @@
 
 @synthesize delegate;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
 	[self configLogo];
 	[self configText];
+    [self configLocalization];
 }
 
 #pragma mark - Configuration
+
+- (void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"About", @"About Controllers Title");
+}
 
 - (void)configLogo {
 

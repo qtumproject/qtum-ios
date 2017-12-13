@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIRefreshControl *refresh;
 @property (strong, nonatomic) NSMutableArray <NewsCellModel *> *dataArray;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
@@ -23,33 +24,40 @@
 
 @synthesize news;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
 
 	[self configTableView];
 	[self configPullRefresh];
+    [self configLocalization];
 
 	if (!self.news) {
 		[self getData];
 	}
 }
 
+- (void)viewWillDisappear:(BOOL) animated {
+    
+    [super viewWillDisappear:animated];
+    [self endEditing:nil];
+}
+
 - (UIColor *)logoColor {
 	return lightDarkGrayColor ();
 }
-
-- (void)viewWillDisappear:(BOOL) animated {
-
-	[super viewWillDisappear:animated];
-	[self endEditing:nil];
-}
-
 
 #pragma mark - Getters
 
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"News", @"News Controllers Title");
+}
 
 - (void)configPullRefresh {
 

@@ -11,10 +11,12 @@
 
 @interface RestoreWalletViewController () <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextView *brandKeyTextView;
 @property (strong, nonatomic) NSString *brainKeyString;
 @property (weak, nonatomic) IBOutlet UIButton *importButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 - (IBAction)importButtonWasPressed:(id) sender;
 
@@ -23,6 +25,8 @@
 @implementation RestoreWalletViewController
 
 @synthesize delegate;
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -37,11 +41,22 @@
 	self.brandKeyTextView.text = NSLocalizedString(@"Your Passphrase", "");
 	[self.brandKeyTextView becomeFirstResponder];
 	[self setupImportButton];
+    [self configLocalization];
 }
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    [self.importButton setTitle:NSLocalizedString(@"IMPORT", @"Import Wallet IMPORT Button") forState:UIControlStateNormal];
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Import Wallet CANCEL Button") forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Import Wallet", @"Import Wallet Controllers Title");
+}
+
 
 #pragma mark - Notification
 

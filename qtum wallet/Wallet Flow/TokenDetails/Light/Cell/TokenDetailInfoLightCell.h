@@ -22,6 +22,11 @@ static NSString *tokenDetailInfoLightCellIdentifire = @"tokenDetailInfoLightCell
 @property (strong, nonatomic) NSString *shortTotalSupply;
 @property (strong, nonatomic) NSString *longBalance;
 @property (strong, nonatomic) NSString *longTotalSupply;
+@property (weak, nonatomic) IBOutlet UILabel *decimalUnitsTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contractAddressTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *initialSupplyTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *availabelTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tokenAddressTextLabel;
 
 
 

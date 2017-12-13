@@ -12,6 +12,9 @@
 
 @interface RecieveViewController () <UITextFieldDelegate, PopUpViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedBalanceTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *availableBalanceTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *qrCodeImageView;
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *amountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *publicAddressLabel;
@@ -37,10 +40,14 @@
 
 @synthesize delegate = _delegate, type = _type, balanceText = _balanceText, unconfirmedBalanceText = _unconfirmedBalanceText, walletAddress = _walletAddress, tokenAddress = _tokenAddress, currency = _currency, shortBalanceText = _shortBalanceText;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
 	[self addDoneButtonToAmountTextField];
+    [self configLocalization];
+    
 	self.shareButton.enabled = NO;
 }
 
@@ -82,6 +89,17 @@
 			self.balanceLabel.text = self.balanceText;
 		}
 	}
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.availableBalanceTextLabel.text = NSLocalizedString(@"Available Balance", @"");
+    self.unconfirmedBalanceTextLabel.text = NSLocalizedString(@"Unconfirmed", @"");
+    [self.walletAdressCopyButton setTitle:NSLocalizedString(@"COPY WALLET ADDRESS", @"") forState:UIControlStateNormal];
+    [self.chooseAddressButton setTitle:NSLocalizedString(@"CHOOSE ANOTHER ADDRESS", @"") forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Receive", @"Receive Controllers Title");
 }
 
 #pragma mark - Methods

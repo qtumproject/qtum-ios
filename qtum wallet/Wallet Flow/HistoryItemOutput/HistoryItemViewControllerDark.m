@@ -17,12 +17,23 @@ CGFloat notConfirmedConstant = 180.0f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBoardHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *timeTextLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *unconfirmedTxLabel;
+
 @end
 
 @implementation HistoryItemViewControllerDark
 
 - (void)viewDidLoad {
+    
 	[super viewDidLoad];
+}
+
+#pragma mark - Configuration
+
+- (void)configLocalization {
+    
+    [super configLocalization];
+    self.unconfirmedTxLabel.text = NSLocalizedString(@"Unconfirmed Transaction", @"Unconfirmed Transaction Label");
 }
 
 - (void)configWithItem {

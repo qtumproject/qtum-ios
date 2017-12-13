@@ -21,8 +21,6 @@
 
 - (void)setQueryResult:(NSString *) result;
 
-- (void)showResultViewWithOutputs:(NSArray *) outputs;
-
 - (void)showLoader;
 
 - (void)hideLoader;

@@ -10,17 +10,24 @@
 #import "ProfileTableViewCell.h"
 
 @interface ProfileViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @end
 
 @implementation ProfileViewController
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    [self configLocalization];
 }
 
-- (void)viewDidAppear:(BOOL) animated {
-	[super viewDidAppear:animated];
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.titleTextLabel.text = NSLocalizedString(@"Profile", @"Profile Controllers Title");
 }
 
 #pragma mark - Setters/Getters
@@ -112,7 +119,7 @@
 		} else if (indexPath.row == 1) {
 
 			image = [UIImage imageNamed:@"ic-themes"];
-			text = NSLocalizedString(@"Themes", "");
+			text = NSLocalizedString(@"Switch Application Theme", "");
 		} else if (indexPath.row == 2) {
 
 			image = [UIImage imageNamed:@"ic-logout"];

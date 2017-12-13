@@ -9,12 +9,8 @@
 #import "TextFieldWithLine.h"
 #import "AbiinterfaceInput.h"
 #import "AbiTextFieldWithLineDelegate.h"
+#import "ParameterInputFieldProtocol.h"
 
-@interface AbiTextFieldWithLine : TextFieldWithLine
-
-- (instancetype)initWithFrame:(CGRect) frame andInterfaceItem:(AbiinterfaceInput *) item;
-
-@property (weak, nonatomic) id <AbiTextFieldWithLineDelegate> customDelegate;
-@property (strong, nonatomic) AbiinterfaceInput *item;
+@interface AbiTextFieldWithLine : TextFieldWithLine <ParameterInputFieldProtocol>
 
 @end

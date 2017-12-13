@@ -16,6 +16,8 @@
 	UIView *bgColorView = [[UIView alloc] init];
 	bgColorView.backgroundColor = lightBlueColor ();
 	[self setSelectedBackgroundView:bgColorView];
+    
+    self.unconfirmedTextLabel.text = NSLocalizedString(@"Unconfirmed:", @"Token Cell Light Unconfirmed Balance");
 }
 
 @end

@@ -16,12 +16,16 @@ const float bottomOffset = 25;
 
 @property (weak, nonatomic) IBOutlet UILabel *controllerTitle;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelButtonBottomOffset;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
 @implementation PinViewController
 
 @synthesize delegate;
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -34,11 +38,12 @@ const float bottomOffset = 25;
 	[self.passwordView becameFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-}
-
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel button") forState:UIControlStateNormal];
+}
 
 - (void)configPasswordView {
 

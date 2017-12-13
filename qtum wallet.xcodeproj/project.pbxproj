@@ -257,6 +257,8 @@
 		B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB401EF04474001D2FF1 /* BackupFileManager.m */; };
 		B387AB441EF04911001D2FF1 /* TemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB431EF04911001D2FF1 /* TemplateManager.m */; };
 		B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B387AB461EF12FDA001D2FF1 /* DataOperation.m */; };
+		B39048671FDFEE6900D5F735 /* TemplatesHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B39048661FDFEE6900D5F735 /* TemplatesHeaderCell.m */; };
+		B390486A1FDFF13900D5F735 /* ContractsHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B39048691FDFF13900D5F735 /* ContractsHeaderCell.m */; };
 		B39220561F98E72A00E8F7D9 /* NewsDetailCellBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B39220551F98E72A00E8F7D9 /* NewsDetailCellBuilder.m */; };
 		B392205D1F99D82800E8F7D9 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B392205C1F99D82800E8F7D9 /* NewsDetailViewController.m */; };
 		B39220611F99D92E00E8F7D9 /* QTUMDefaultTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B39220601F99D92E00E8F7D9 /* QTUMDefaultTagCell.m */; };
@@ -813,6 +815,7 @@
 		B30B11811FC6D05400E5ABBC /* DarkLightModeFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DarkLightModeFactory.m; sourceTree = "<group>"; };
 		B30BAE2C1E9E3AA600CA795F /* ContractManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractManager.h; sourceTree = "<group>"; };
 		B30BAE2D1E9E3AA600CA795F /* ContractManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContractManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B3105A691FDE778E004BEC5D /* ParameterInputFieldProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterInputFieldProtocol.h; sourceTree = "<group>"; };
 		B3141E541F3090A60095E3DF /* AbiTextFieldWithLineLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLineLight.h; sourceTree = "<group>"; };
 		B3141E551F3090A60095E3DF /* AbiTextFieldWithLineLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiTextFieldWithLineLight.m; sourceTree = "<group>"; };
 		B3141E571F3090CB0095E3DF /* AbiTextFieldWithLineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLineDelegate.h; sourceTree = "<group>"; };
@@ -1244,6 +1247,10 @@
 		B387AB431EF04911001D2FF1 /* TemplateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateManager.m; sourceTree = "<group>"; };
 		B387AB451EF12FDA001D2FF1 /* DataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOperation.h; sourceTree = "<group>"; };
 		B387AB461EF12FDA001D2FF1 /* DataOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataOperation.m; sourceTree = "<group>"; };
+		B39048651FDFEE6900D5F735 /* TemplatesHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemplatesHeaderCell.h; sourceTree = "<group>"; };
+		B39048661FDFEE6900D5F735 /* TemplatesHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TemplatesHeaderCell.m; sourceTree = "<group>"; };
+		B39048681FDFF13900D5F735 /* ContractsHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractsHeaderCell.h; sourceTree = "<group>"; };
+		B39048691FDFF13900D5F735 /* ContractsHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractsHeaderCell.m; sourceTree = "<group>"; };
 		B39220541F98E72A00E8F7D9 /* NewsDetailCellBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsDetailCellBuilder.h; sourceTree = "<group>"; };
 		B39220551F98E72A00E8F7D9 /* NewsDetailCellBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsDetailCellBuilder.m; sourceTree = "<group>"; };
 		B39220581F99D1BD00E8F7D9 /* NewsDetailOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsDetailOutput.h; sourceTree = "<group>"; };
@@ -1263,6 +1270,60 @@
 		B3A4EA511F502C40008115D1 /* NSDecimalNumber+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+Comparison.m"; sourceTree = "<group>"; };
 		B3A4EA531F502CD1008115D1 /* NSDecimalNumberComparisonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDecimalNumberComparisonTests.m; sourceTree = "<group>"; };
 		B3A4EA591F502E65008115D1 /* qtum walletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "qtum walletTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3B454C81FDEBE4700FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/RestoreContractsPopUp.strings"; sourceTree = "<group>"; };
+		B3B454CA1FDEBE4900FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/RestoreContractsPopUp.strings; sourceTree = "<group>"; };
+		B3B454CC1FDEBE4F00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SecurityPopup.strings"; sourceTree = "<group>"; };
+		B3B454CE1FDEBE5700FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SecurityPopup.strings; sourceTree = "<group>"; };
+		B3B454D01FDEBE6100FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AddressTransferPopup.strings"; sourceTree = "<group>"; };
+		B3B454D21FDEBE6200FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddressTransferPopup.strings; sourceTree = "<group>"; };
+		B3B454D41FDEBE6700FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ConfirmPopUp.strings"; sourceTree = "<group>"; };
+		B3B454D61FDEBE6700FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ConfirmPopUp.strings; sourceTree = "<group>"; };
+		B3B454D81FDEBE6C00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ConfirmPurchasePopUp.strings"; sourceTree = "<group>"; };
+		B3B454DA1FDEBE6C00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ConfirmPurchasePopUp.strings; sourceTree = "<group>"; };
+		B3B454DC1FDEBE7000FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ErrorPopUp.strings"; sourceTree = "<group>"; };
+		B3B454DE1FDEBE7500FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ErrorPopUp.strings; sourceTree = "<group>"; };
+		B3B454E01FDEBE7E00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InformationPopUp.strings"; sourceTree = "<group>"; };
+		B3B454E21FDEBE7F00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InformationPopUp.strings; sourceTree = "<group>"; };
+		B3B454E41FDEBE8C00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/NoInternetConnectionPopUp.strings"; sourceTree = "<group>"; };
+		B3B454E61FDEBE8D00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NoInternetConnectionPopUp.strings; sourceTree = "<group>"; };
+		B3B454E81FDEBE9100FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PhotoLibraryPopUp.strings"; sourceTree = "<group>"; };
+		B3B454EA1FDEBE9600FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PhotoLibraryPopUp.strings; sourceTree = "<group>"; };
+		B3B454EC1FDEBEA700FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareTokenPopUp.strings; sourceTree = "<group>"; };
+		B3B454EE1FDEBEA800FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ShareTokenPopUp.strings"; sourceTree = "<group>"; };
+		B3B454F01FDEBEAF00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SourceCodePopUp.strings; sourceTree = "<group>"; };
+		B3B454F21FDEBEB200FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SourceCodePopUp.strings"; sourceTree = "<group>"; };
+		B3B454F41FDEBEEC00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BackupRestore.strings; sourceTree = "<group>"; };
+		B3B454F61FDEBEED00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/BackupRestore.strings"; sourceTree = "<group>"; };
+		B3B454F81FDEBEF700FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CreateToken.strings"; sourceTree = "<group>"; };
+		B3B454FA1FDEBEFB00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CreateToken.strings; sourceTree = "<group>"; };
+		B3B454FC1FDEBEFF00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/News.strings"; sourceTree = "<group>"; };
+		B3B454FE1FDEBF0400FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Pin.strings"; sourceTree = "<group>"; };
+		B3B455001FDEBF0500FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Pin.strings; sourceTree = "<group>"; };
+		B3B455021FDEBF0B00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Profile.strings"; sourceTree = "<group>"; };
+		B3B455041FDEBF1000FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Profile.strings; sourceTree = "<group>"; };
+		B3B455061FDEBF1500FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/QStore.strings"; sourceTree = "<group>"; };
+		B3B455081FDEBF1A00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/QStore.strings; sourceTree = "<group>"; };
+		B3B4550A1FDEBF1F00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Send.strings"; sourceTree = "<group>"; };
+		B3B4550C1FDEBF2300FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Send.strings; sourceTree = "<group>"; };
+		B3B4550E1FDEBF2600FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Splash.strings"; sourceTree = "<group>"; };
+		B3B455101FDEBF2700FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Splash.strings; sourceTree = "<group>"; };
+		B3B455121FDEBF3000FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Start.strings"; sourceTree = "<group>"; };
+		B3B455141FDEBF3400FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Start.strings; sourceTree = "<group>"; };
+		B3B455161FDEBF3700FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SubscribeToken.strings"; sourceTree = "<group>"; };
+		B3B455181FDEBF3700FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SubscribeToken.strings; sourceTree = "<group>"; };
+		B3B4551A1FDEBF4500FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Wallet.strings"; sourceTree = "<group>"; };
+		B3B4551C1FDEBF4B00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Wallet.strings; sourceTree = "<group>"; };
+		B3B4551E1FDEBF6200FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/News.strings; sourceTree = "<group>"; };
+		B3B455201FDEBFCF00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SelectSearchTypeView.strings"; sourceTree = "<group>"; };
+		B3B455221FDEBFD200FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SelectSearchTypeView.strings; sourceTree = "<group>"; };
+		B3B455241FDEBFF800FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/QStoreSearchTableViewCell.strings; sourceTree = "<group>"; };
+		B3B455261FDEBFFA00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/QStoreSearchTableViewCell.strings"; sourceTree = "<group>"; };
+		B3B455281FDEC01C00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B3B4552C1FDEC02600FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B3B4552E1FDEC05C00FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TokenDetailsViews.strings"; sourceTree = "<group>"; };
+		B3B455301FDEC05E00FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TokenDetailsViews.strings; sourceTree = "<group>"; };
+		B3B455341FDEC08700FB3E8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		B3B455361FDEC08900FB3E8C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		B3BA14741F6A7E03004078A5 /* iMessageDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iMessageDataOperation.h; sourceTree = "<group>"; };
 		B3BA14751F6A7E03004078A5 /* iMessageDataOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMessageDataOperation.m; sourceTree = "<group>"; };
 		B3C08B091ED2FE3000713B15 /* keccak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keccak.h; sourceTree = "<group>"; };
@@ -1695,14 +1756,8 @@
 		E70CFD3C1F1F647A00230C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConfirmPurchasePopUp.storyboard; sourceTree = "<group>"; };
 		E70CFD431F1F648400230C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ShareTokenPopUp.storyboard; sourceTree = "<group>"; };
 		E70CFD4A1F1F669D00230C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/QStoreSearchTableViewCell.xib; sourceTree = "<group>"; };
-		E70CFD4D1F1F669F00230C81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/QStoreSearchTableViewCell.xib; sourceTree = "<group>"; };
-		E70CFD4F1F1F66A000230C81 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/QStoreSearchTableViewCell.xib"; sourceTree = "<group>"; };
 		E70CFD511F1F66B200230C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TokenDetailsViews.xib; sourceTree = "<group>"; };
-		E70CFD541F1F66B400230C81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TokenDetailsViews.xib; sourceTree = "<group>"; };
-		E70CFD561F1F66B500230C81 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TokenDetailsViews.xib"; sourceTree = "<group>"; };
 		E70CFD581F1F66BF00230C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SelectSearchTypeView.xib; sourceTree = "<group>"; };
-		E70CFD5B1F1F66C100230C81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SelectSearchTypeView.xib; sourceTree = "<group>"; };
-		E70CFD5D1F1F66C400230C81 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SelectSearchTypeView.xib"; sourceTree = "<group>"; };
 		E71271901EE9925600A130A0 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		E71271911EE9925600A130A0 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		E71271931EE9AC5B00A130A0 /* LoaderPopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoaderPopUp.storyboard; sourceTree = "<group>"; };
@@ -1944,51 +1999,7 @@
 		E789036B1EDDA980004243F0 /* ViewWithAnimatedLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithAnimatedLine.m; sourceTree = "<group>"; };
 		E78D0C971ED2DF2E00CB91FF /* TokenDetailsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenDetailsTableView.h; sourceTree = "<group>"; };
 		E78D0C981ED2DF2E00CB91FF /* TokenDetailsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenDetailsTableView.m; sourceTree = "<group>"; };
-		E78DD73D1F4C2ADF00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NoInternetConnectionPopUp.storyboard; sourceTree = "<group>"; };
-		E78DD73F1F4C2AE100B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/NoInternetConnectionPopUp.storyboard"; sourceTree = "<group>"; };
-		E78DD7411F4C2AEC00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PhotoLibraryPopUp.storyboard; sourceTree = "<group>"; };
-		E78DD7431F4C2AEE00B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PhotoLibraryPopUp.storyboard"; sourceTree = "<group>"; };
-		E78DD7451F4C2AFC00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ErrorPopUp.storyboard; sourceTree = "<group>"; };
-		E78DD7471F4C2AFD00B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ErrorPopUp.storyboard"; sourceTree = "<group>"; };
-		E78DD7491F4C2B0900B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InformationPopUp.storyboard; sourceTree = "<group>"; };
-		E78DD74B1F4C2B0B00B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InformationPopUp.storyboard"; sourceTree = "<group>"; };
-		E78DD74D1F4C2B1700B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ConfirmPopUp.storyboard; sourceTree = "<group>"; };
-		E78DD74F1F4C2B1900B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ConfirmPopUp.storyboard"; sourceTree = "<group>"; };
-		E78DD7511F4C2B2600B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/RestoreContractsPopUp.storyboard; sourceTree = "<group>"; };
-		E78DD7531F4C2B2800B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/RestoreContractsPopUp.storyboard"; sourceTree = "<group>"; };
-		E78DD7551F4C2B3500B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SecurityPopup.storyboard; sourceTree = "<group>"; };
-		E78DD7571F4C2B3700B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SecurityPopup.storyboard"; sourceTree = "<group>"; };
-		E78DD7591F4C2B4300B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SourceCodePopUp.storyboard; sourceTree = "<group>"; };
-		E78DD75B1F4C2B4400B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SourceCodePopUp.storyboard"; sourceTree = "<group>"; };
-		E78DD75D1F4C2B5000B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ConfirmPurchasePopUp.storyboard; sourceTree = "<group>"; };
-		E78DD75F1F4C2B5100B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ConfirmPurchasePopUp.storyboard"; sourceTree = "<group>"; };
-		E78DD7611F4C2B5D00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareTokenPopUp.storyboard; sourceTree = "<group>"; };
-		E78DD7631F4C2B5E00B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ShareTokenPopUp.storyboard"; sourceTree = "<group>"; };
 		E78DD7651F4C2B6A00B25FB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddressTransferPopup.storyboard; sourceTree = "<group>"; };
-		E78DD7681F4C2B6B00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddressTransferPopup.storyboard; sourceTree = "<group>"; };
-		E78DD76A1F4C2B6D00B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AddressTransferPopup.storyboard"; sourceTree = "<group>"; };
-		E78DD76C1F4C2B7C00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Send.storyboard; sourceTree = "<group>"; };
-		E78DD76E1F4C2B7E00B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Send.storyboard"; sourceTree = "<group>"; };
-		E78DD7701F4C2B8A00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/News.storyboard; sourceTree = "<group>"; };
-		E78DD7721F4C2B8C00B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/News.storyboard"; sourceTree = "<group>"; };
-		E78DD7741F4C2B9F00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Profile.storyboard; sourceTree = "<group>"; };
-		E78DD7761F4C2BA200B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Profile.storyboard"; sourceTree = "<group>"; };
-		E78DD7781F4C2BBF00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Wallet.storyboard; sourceTree = "<group>"; };
-		E78DD77A1F4C2BC500B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Wallet.storyboard"; sourceTree = "<group>"; };
-		E78DD77C1F4C2BD200B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Pin.storyboard; sourceTree = "<group>"; };
-		E78DD77E1F4C2BD300B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Pin.storyboard"; sourceTree = "<group>"; };
-		E78DD7801F4C2BEC00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Start.storyboard; sourceTree = "<group>"; };
-		E78DD7821F4C2BF000B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Start.storyboard"; sourceTree = "<group>"; };
-		E78DD7841F4C2C0E00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CreateToken.storyboard; sourceTree = "<group>"; };
-		E78DD7861F4C2C1400B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CreateToken.storyboard"; sourceTree = "<group>"; };
-		E78DD7881F4C2C2200B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SubscribeToken.storyboard; sourceTree = "<group>"; };
-		E78DD78A1F4C2C2400B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SubscribeToken.storyboard"; sourceTree = "<group>"; };
-		E78DD78C1F4C2C3300B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Splash.storyboard; sourceTree = "<group>"; };
-		E78DD78E1F4C2C3700B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Splash.storyboard"; sourceTree = "<group>"; };
-		E78DD7901F4C2C5700B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BackupRestore.storyboard; sourceTree = "<group>"; };
-		E78DD7921F4C2C5A00B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/BackupRestore.storyboard"; sourceTree = "<group>"; };
-		E78DD7941F4C2C6B00B25FB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/QStore.storyboard; sourceTree = "<group>"; };
-		E78DD7961F4C2C6D00B25FB3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/QStore.storyboard"; sourceTree = "<group>"; };
 		E78FD6521F0CF425007BD355 /* WalletOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletOutput.h; sourceTree = "<group>"; };
 		E78FD6541F0CF5AA007BD355 /* WalletOutputDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletOutputDelegate.h; sourceTree = "<group>"; };
 		E79846221F0D0056002A516A /* WalletViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewControllerDark.h; sourceTree = "<group>"; };
@@ -2065,8 +2076,6 @@
 		E7DE598F1F0E8562006E0E1B /* PageControlItemDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlItemDark.m; sourceTree = "<group>"; };
 		E7DE59911F0E882A006E0E1B /* PageControlDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlDark.h; sourceTree = "<group>"; };
 		E7DE59921F0E882A006E0E1B /* PageControlDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlDark.m; sourceTree = "<group>"; };
-		E7EA2CA71ED4189A00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.storyboard"; sourceTree = "<group>"; };
-		E7EA2CA81ED4189B00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		E7EA2CB41ED4189C00AFD5D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E7EA2CB61ED42DB500AFD5D0 /* LanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageViewController.h; sourceTree = "<group>"; };
 		E7EA2CB71ED42DB500AFD5D0 /* LanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageViewController.m; sourceTree = "<group>"; };
@@ -2591,6 +2600,7 @@
 				B32EEC811EB3549F00512FED /* Start.storyboard */,
 				B32EEC8B1EB354C000512FED /* SubscribeToken.storyboard */,
 				B32EEC771EB3548600512FED /* Wallet.storyboard */,
+				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -3045,6 +3055,13 @@
 			path = "Watch Tokens";
 			sourceTree = "<group>";
 		};
+		B39048641FDFEE1F00D5F735 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		B39220571F99D18500E8F7D9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -3187,6 +3204,7 @@
 		B3CBDF251F2B3DE800C80D4E /* Published Contracts */ = {
 			isa = PBXGroup;
 			children = (
+				B39048641FDFEE1F00D5F735 /* New Group */,
 				B3CBDF371F2B489200C80D4E /* Cells */,
 				B3CBDF261F2B3E1E00C80D4E /* PublishedContractListOutput.h */,
 				B3CBDF271F2B3E2E00C80D4E /* PublishedContractListOutputDelegate.h */,
@@ -3227,6 +3245,8 @@
 				B3CBDF391F2B48B000C80D4E /* SmartContractListItemCellDark.m */,
 				B3CBDF3B1F2B48C300C80D4E /* SmartContractListItemCellLight.h */,
 				B3CBDF3C1F2B48C300C80D4E /* SmartContractListItemCellLight.m */,
+				B39048681FDFF13900D5F735 /* ContractsHeaderCell.h */,
+				B39048691FDFF13900D5F735 /* ContractsHeaderCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -3240,6 +3260,8 @@
 				B3CBDF401F2B496A00C80D4E /* TokenTemplateCellDark.m */,
 				B3CBDF421F2B497A00C80D4E /* TokenTemplateCellLight.h */,
 				B3CBDF431F2B497A00C80D4E /* TokenTemplateCellLight.m */,
+				B39048651FDFEE6900D5F735 /* TemplatesHeaderCell.h */,
+				B39048661FDFEE6900D5F735 /* TemplatesHeaderCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -4317,6 +4339,7 @@
 				B32BC4AF1F28D5BC00C2417C /* TextFieldWithLineLightSend.h */,
 				B32BC4B01F28D5BC00C2417C /* TextFieldWithLineLightSend.m */,
 				B3EC938C1FC844A900752CD7 /* TextFieldWithLineLightSend.xib */,
+				B3105A691FDE778E004BEC5D /* ParameterInputFieldProtocol.h */,
 			);
 			path = TextFielfWithLine;
 			sourceTree = "<group>";
@@ -4921,7 +4944,6 @@
 				B31CF71B1E1249F9000BCF41 /* Wallet Flow */,
 				E7FD36471DC4D07E00748177 /* Assets.xcassets */,
 				E7FD364C1DC4D07E00748177 /* Info.plist */,
-				E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */,
 				B3C856691FD56ABC00DAD5F4 /* GoogleService-Info.plist */,
 				E7FD36611DC73D4600748177 /* PrefixHeader.pch */,
 				E7FD363C1DC4D07E00748177 /* main.m */,
@@ -5964,6 +5986,7 @@
 				B3E0901F1FA9E097003F3B54 /* QTUMSwipableCellWithButtons.m in Sources */,
 				E74003C21F1E2AC7002CC587 /* SendInfoItem.m in Sources */,
 				B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */,
+				B39048671FDFEE6900D5F735 /* TemplatesHeaderCell.m in Sources */,
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
 				B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */,
 				B369DF381F5D672E008B81CB /* AbiParameterTypeElementaryArray.m in Sources */,
@@ -6072,6 +6095,7 @@
 				B3076F2F1F30859C00FB7D5A /* ConstructorFromAbiViewControllerDark.m in Sources */,
 				E777786C1EF3E54E00948682 /* BTCAddress+Extension.m in Sources */,
 				B3EFEAD51F4C0CD4003BA930 /* QStoreContractDownloadManager.m in Sources */,
+				B390486A1FDFF13900D5F735 /* ContractsHeaderCell.m in Sources */,
 				E798463A1F0D2899002A516A /* WalletTableSourceDark.m in Sources */,
 				E7396AFF1DDF394C0002CD47 /* TextFieldWithLine.m in Sources */,
 				B3EE8F3F1F136F6200131823 /* ChoseTokenPaymentCellDark.m in Sources */,
@@ -6206,8 +6230,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC691EB3545800512FED /* Base */,
-				E78DD76C1F4C2B7C00B25FB3 /* en */,
-				E78DD76E1F4C2B7E00B25FB3 /* zh-Hant */,
+				B3B4550A1FDEBF1F00FB3E8C /* zh-Hant */,
+				B3B4550C1FDEBF2300FB3E8C /* en */,
 			);
 			name = Send.storyboard;
 			path = .;
@@ -6217,8 +6241,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC6E1EB3546A00512FED /* Base */,
-				E78DD7701F4C2B8A00B25FB3 /* en */,
-				E78DD7721F4C2B8C00B25FB3 /* zh-Hant */,
+				B3B454FC1FDEBEFF00FB3E8C /* zh-Hant */,
+				B3B4551E1FDEBF6200FB3E8C /* en */,
 			);
 			name = News.storyboard;
 			path = .;
@@ -6228,8 +6252,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC731EB3547700512FED /* Base */,
-				E78DD7741F4C2B9F00B25FB3 /* en */,
-				E78DD7761F4C2BA200B25FB3 /* zh-Hant */,
+				B3B455021FDEBF0B00FB3E8C /* zh-Hant */,
+				B3B455041FDEBF1000FB3E8C /* en */,
 			);
 			name = Profile.storyboard;
 			path = .;
@@ -6239,8 +6263,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC781EB3548800512FED /* Base */,
-				E78DD7781F4C2BBF00B25FB3 /* en */,
-				E78DD77A1F4C2BC500B25FB3 /* zh-Hant */,
+				B3B4551A1FDEBF4500FB3E8C /* zh-Hant */,
+				B3B4551C1FDEBF4B00FB3E8C /* en */,
 			);
 			name = Wallet.storyboard;
 			path = .;
@@ -6250,8 +6274,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC7D1EB3549400512FED /* Base */,
-				E78DD77C1F4C2BD200B25FB3 /* en */,
-				E78DD77E1F4C2BD300B25FB3 /* zh-Hant */,
+				B3B454FE1FDEBF0400FB3E8C /* zh-Hant */,
+				B3B455001FDEBF0500FB3E8C /* en */,
 			);
 			name = Pin.storyboard;
 			path = .;
@@ -6261,8 +6285,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC821EB354A100512FED /* Base */,
-				E78DD7801F4C2BEC00B25FB3 /* en */,
-				E78DD7821F4C2BF000B25FB3 /* zh-Hant */,
+				B3B455121FDEBF3000FB3E8C /* zh-Hant */,
+				B3B455141FDEBF3400FB3E8C /* en */,
 			);
 			name = Start.storyboard;
 			path = .;
@@ -6272,8 +6296,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC871EB354B300512FED /* Base */,
-				E78DD7841F4C2C0E00B25FB3 /* en */,
-				E78DD7861F4C2C1400B25FB3 /* zh-Hant */,
+				B3B454F81FDEBEF700FB3E8C /* zh-Hant */,
+				B3B454FA1FDEBEFB00FB3E8C /* en */,
 			);
 			name = CreateToken.storyboard;
 			path = .;
@@ -6283,8 +6307,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B32EEC8C1EB354C200512FED /* Base */,
-				E78DD7881F4C2C2200B25FB3 /* en */,
-				E78DD78A1F4C2C2400B25FB3 /* zh-Hant */,
+				B3B455161FDEBF3700FB3E8C /* zh-Hant */,
+				B3B455181FDEBF3700FB3E8C /* en */,
 			);
 			name = SubscribeToken.storyboard;
 			path = .;
@@ -6305,7 +6329,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B33EAF901E5EC263006125F3 /* Base */,
-				E7EA2CA71ED4189A00AFD5D0 /* zh-Hant */,
+				B3B455341FDEC08700FB3E8C /* en */,
+				B3B455361FDEC08900FB3E8C /* zh-Hant */,
 			);
 			name = MainInterface.storyboard;
 			path = .;
@@ -6315,8 +6340,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFCF61F1F63C500230C81 /* Base */,
-				E78DD7901F4C2C5700B25FB3 /* en */,
-				E78DD7921F4C2C5A00B25FB3 /* zh-Hant */,
+				B3B454F41FDEBEEC00FB3E8C /* en */,
+				B3B454F61FDEBEED00FB3E8C /* zh-Hant */,
 			);
 			name = BackupRestore.storyboard;
 			path = .;
@@ -6326,8 +6351,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFCFD1F1F63D300230C81 /* Base */,
-				E78DD7941F4C2C6B00B25FB3 /* en */,
-				E78DD7961F4C2C6D00B25FB3 /* zh-Hant */,
+				B3B455061FDEBF1500FB3E8C /* zh-Hant */,
+				B3B455081FDEBF1A00FB3E8C /* en */,
 			);
 			name = QStore.storyboard;
 			path = .;
@@ -6337,8 +6362,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD041F1F63E500230C81 /* Base */,
-				E78DD7411F4C2AEC00B25FB3 /* en */,
-				E78DD7431F4C2AEE00B25FB3 /* zh-Hant */,
+				B3B454E81FDEBE9100FB3E8C /* zh-Hant */,
+				B3B454EA1FDEBE9600FB3E8C /* en */,
 			);
 			name = PhotoLibraryPopUp.storyboard;
 			path = .;
@@ -6348,8 +6373,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD0B1F1F63ED00230C81 /* Base */,
-				E78DD7451F4C2AFC00B25FB3 /* en */,
-				E78DD7471F4C2AFD00B25FB3 /* zh-Hant */,
+				B3B454DC1FDEBE7000FB3E8C /* zh-Hant */,
+				B3B454DE1FDEBE7500FB3E8C /* en */,
 			);
 			name = ErrorPopUp.storyboard;
 			path = .;
@@ -6359,8 +6384,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD121F1F63F400230C81 /* Base */,
-				E78DD7491F4C2B0900B25FB3 /* en */,
-				E78DD74B1F4C2B0B00B25FB3 /* zh-Hant */,
+				B3B454E01FDEBE7E00FB3E8C /* zh-Hant */,
+				B3B454E21FDEBE7F00FB3E8C /* en */,
 			);
 			name = InformationPopUp.storyboard;
 			path = .;
@@ -6370,8 +6395,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD191F1F63FB00230C81 /* Base */,
-				E78DD74D1F4C2B1700B25FB3 /* en */,
-				E78DD74F1F4C2B1900B25FB3 /* zh-Hant */,
+				B3B454D41FDEBE6700FB3E8C /* zh-Hant */,
+				B3B454D61FDEBE6700FB3E8C /* en */,
 			);
 			name = ConfirmPopUp.storyboard;
 			path = .;
@@ -6381,8 +6406,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD201F1F640700230C81 /* Base */,
-				E78DD7511F4C2B2600B25FB3 /* en */,
-				E78DD7531F4C2B2800B25FB3 /* zh-Hant */,
+				B3B454C81FDEBE4700FB3E8C /* zh-Hant */,
+				B3B454CA1FDEBE4900FB3E8C /* en */,
 			);
 			name = RestoreContractsPopUp.storyboard;
 			path = .;
@@ -6392,8 +6417,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD271F1F640E00230C81 /* Base */,
-				E78DD7551F4C2B3500B25FB3 /* en */,
-				E78DD7571F4C2B3700B25FB3 /* zh-Hant */,
+				B3B454CC1FDEBE4F00FB3E8C /* zh-Hant */,
+				B3B454CE1FDEBE5700FB3E8C /* en */,
 			);
 			name = SecurityPopup.storyboard;
 			path = .;
@@ -6403,8 +6428,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD351F1F647300230C81 /* Base */,
-				E78DD7591F4C2B4300B25FB3 /* en */,
-				E78DD75B1F4C2B4400B25FB3 /* zh-Hant */,
+				B3B454F01FDEBEAF00FB3E8C /* en */,
+				B3B454F21FDEBEB200FB3E8C /* zh-Hant */,
 			);
 			name = SourceCodePopUp.storyboard;
 			path = .;
@@ -6414,8 +6439,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD3C1F1F647A00230C81 /* Base */,
-				E78DD75D1F4C2B5000B25FB3 /* en */,
-				E78DD75F1F4C2B5100B25FB3 /* zh-Hant */,
+				B3B454D81FDEBE6C00FB3E8C /* zh-Hant */,
+				B3B454DA1FDEBE6C00FB3E8C /* en */,
 			);
 			name = ConfirmPurchasePopUp.storyboard;
 			path = .;
@@ -6425,8 +6450,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD431F1F648400230C81 /* Base */,
-				E78DD7611F4C2B5D00B25FB3 /* en */,
-				E78DD7631F4C2B5E00B25FB3 /* zh-Hant */,
+				B3B454EC1FDEBEA700FB3E8C /* en */,
+				B3B454EE1FDEBEA800FB3E8C /* zh-Hant */,
 			);
 			name = ShareTokenPopUp.storyboard;
 			path = .;
@@ -6436,8 +6461,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD4A1F1F669D00230C81 /* Base */,
-				E70CFD4D1F1F669F00230C81 /* en */,
-				E70CFD4F1F1F66A000230C81 /* zh-Hant */,
+				B3B455241FDEBFF800FB3E8C /* en */,
+				B3B455261FDEBFFA00FB3E8C /* zh-Hant */,
 			);
 			name = QStoreSearchTableViewCell.xib;
 			path = .;
@@ -6447,8 +6472,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD511F1F66B200230C81 /* Base */,
-				E70CFD541F1F66B400230C81 /* en */,
-				E70CFD561F1F66B500230C81 /* zh-Hant */,
+				B3B4552E1FDEC05C00FB3E8C /* zh-Hant */,
+				B3B455301FDEC05E00FB3E8C /* en */,
 			);
 			name = TokenDetailsViews.xib;
 			path = .;
@@ -6458,8 +6483,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E70CFD581F1F66BF00230C81 /* Base */,
-				E70CFD5B1F1F66C100230C81 /* en */,
-				E70CFD5D1F1F66C400230C81 /* zh-Hant */,
+				B3B455201FDEBFCF00FB3E8C /* zh-Hant */,
+				B3B455221FDEBFD200FB3E8C /* en */,
 			);
 			name = SelectSearchTypeView.xib;
 			path = .;
@@ -6478,8 +6503,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E73D9C841ECB0D0D00A09CFE /* Base */,
-				E78DD73D1F4C2ADF00B25FB3 /* en */,
-				E78DD73F1F4C2AE100B25FB3 /* zh-Hant */,
+				B3B454E41FDEBE8C00FB3E8C /* zh-Hant */,
+				B3B454E61FDEBE8D00FB3E8C /* en */,
 			);
 			name = NoInternetConnectionPopUp.storyboard;
 			path = .;
@@ -6489,8 +6514,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E73D9C881ECB18A200A09CFE /* Base */,
-				E78DD78C1F4C2C3300B25FB3 /* en */,
-				E78DD78E1F4C2C3700B25FB3 /* zh-Hant */,
+				B3B4550E1FDEBF2600FB3E8C /* zh-Hant */,
+				B3B455101FDEBF2700FB3E8C /* en */,
 			);
 			name = Splash.storyboard;
 			path = .;
@@ -6500,8 +6525,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E78DD7651F4C2B6A00B25FB3 /* Base */,
-				E78DD7681F4C2B6B00B25FB3 /* en */,
-				E78DD76A1F4C2B6D00B25FB3 /* zh-Hant */,
+				B3B454D01FDEBE6100FB3E8C /* zh-Hant */,
+				B3B454D21FDEBE6200FB3E8C /* en */,
 			);
 			name = AddressTransferPopup.storyboard;
 			path = .;
@@ -6511,7 +6536,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E7FD364A1DC4D07E00748177 /* Base */,
-				E7EA2CA81ED4189B00AFD5D0 /* zh-Hant */,
+				B3B455281FDEC01C00FB3E8C /* en */,
+				B3B4552C1FDEC02600FB3E8C /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			path = .;

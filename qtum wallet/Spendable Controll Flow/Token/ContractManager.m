@@ -17,6 +17,7 @@ NSString *const kTokenDidChange = @"kTokenDidChange";
 NSString *const kContractCreationFailed = @"kContractCreationFailed";
 
 NSString *const kSmartContractPretendentsKey = @"smartContractPretendentsKey";
+NSString *const kFailedContractPretendentsKey = @"failedContractPretendentsKey";
 NSString *const kTemplateModel = @"kTemplateModel";
 NSString *const kAddresses = @"kAddress";
 NSString *const kLocalContractName = @"kLocalContractName";
@@ -25,6 +26,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
 @interface ContractManager () <TokenDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *smartContractPretendents;
+@property (strong, nonatomic) NSMutableDictionary *failedContractPretendents;
 @property (nonatomic, strong) NSMutableArray<Contract *> *contracts;
 @property (assign, nonatomic) BOOL observingForSpendableFailed;
 @property (assign, nonatomic) BOOL observingForSpendableStopped;
@@ -79,6 +81,14 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	return _smartContractPretendents;
 }
 
+- (NSMutableDictionary *)failedContractPretendents {
+    
+    if (!_failedContractPretendents) {
+        _failedContractPretendents = @{}.mutableCopy;
+    }
+    return _failedContractPretendents;
+}
+
 - (NSMutableArray<Contract *> *)contracts {
 
 	if (!_contracts) {
@@ -94,7 +104,10 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	BOOL isSavedTokens = [SLocator.keychainService setObject:self.contracts forKey:kTokenKeys];
 
 	BOOL isSavedPretendents = [SLocator.keychainService setObject:[self.smartContractPretendents copy] forKey:kSmartContractPretendentsKey];
-	return isSavedTokens && isSavedPretendents;
+    
+    BOOL isSavedFailedPretendents = [SLocator.keychainService setObject:[self.failedContractPretendents copy] forKey:kFailedContractPretendentsKey];
+
+	return isSavedTokens && isSavedPretendents && isSavedFailedPretendents;
 }
 
 - (void)load {
@@ -108,6 +121,9 @@ NSString *const kLocalContractName = @"kLocalContractName";
 		[token loadToMemory];
 	}
 	self.smartContractPretendents = [[SLocator.keychainService objectForKey:kSmartContractPretendentsKey] mutableCopy];
+    
+    self.failedContractPretendents = [[SLocator.keychainService objectForKey:kFailedContractPretendentsKey] mutableCopy];
+
 	self.contracts = savedTokens;
 }
 
@@ -153,6 +169,12 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	[self save];
 }
 
+- (void)removeFailedContractPretendentWithTxHash:(NSString *) txHash {
+    
+    [self.failedContractPretendents removeObjectForKey:txHash];
+    [self save];
+}
+
 - (NSArray <Contract *> *)allTokens {
 
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i", TokenType];
@@ -172,6 +194,10 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 - (NSDictionary *)smartContractPretendentsCopy {
 	return [self.smartContractPretendents copy];
+}
+
+- (NSDictionary *)failedContractPretendentsCopy {
+    return [self.failedContractPretendents copy];
 }
 
 - (void)addNewContract:(Contract *) token {
@@ -217,6 +243,11 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	[self.contracts removeAllObjects];
 }
 
+- (void)removeAllFailedPretendents {
+    
+    [self.failedContractPretendents removeAllObjects];
+}
+
 - (void)removeAllPretendents {
 
 	[self.smartContractPretendents removeAllObjects];
@@ -239,6 +270,11 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	}
 
 	[self save];
+}
+
+- (void)addFailedContractPretendent:(NSDictionary*) failedPretendent forKey:(NSString*) key {
+    
+    [self.failedContractPretendents setObject:failedPretendent forKey:key];
 }
 
 - (void)deleteSmartContractPretendentWithKey:(NSString *) key {
@@ -272,10 +308,12 @@ NSString *const kLocalContractName = @"kLocalContractName";
 		return;
 	}
 
-	if (item.confirmed && item.isSmartContractCreater && [self.smartContractPretendents objectForKey:item.txHash]) {
+    NSString *key = item.txHash;
+    NSDictionary *tokenInfo = key ? self.smartContractPretendents[key] : @{};
+    
+	if (item.confirmed && item.isSmartContractCreater && [self.smartContractPretendents objectForKey:key]) {
 
-		NSString *key = item.txHash;
-		NSDictionary *tokenInfo = self.smartContractPretendents[key];
+
 		NSArray *addresses = tokenInfo[kAddresses];
 		NSString *localContractName = tokenInfo[kLocalContractName];
 
@@ -308,8 +346,11 @@ NSString *const kLocalContractName = @"kLocalContractName";
 			[self deleteSmartContractPretendentWithKey:key];
 			[self save];
 		}
-	} else if (item.confirmed && [self.smartContractPretendents objectForKey:item.txHash]) {
-
+	} else if (item.confirmed && [self.smartContractPretendents objectForKey:key]) {
+        
+        [self addFailedContractPretendent:self.smartContractPretendents[key] forKey:key];
+        [self deleteSmartContractPretendentWithKey:key];
+        [self save];
 		[[NSNotificationCenter defaultCenter] postNotificationName:kContractCreationFailed object:nil];
 	}
 }
@@ -556,6 +597,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 	[self removeAllTokens];
 	[self removeAllPretendents];
+    [self removeAllFailedPretendents];
 	[self save];
 }
 

@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fileNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UIView *fileView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @property (assign, nonatomic) BOOL haveFile;
 @property (strong, nonatomic) NSURL *fileUrl;
@@ -30,6 +31,8 @@
 
 @synthesize delegate;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
@@ -38,6 +41,15 @@
 
 	UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector (actionSelectFile)];
 	[self.fileView addGestureRecognizer:recognizer];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.fileNameLabel.text = NSLocalizedString(@"Select backup file", @"");
+    [self.restoreButton setTitle:NSLocalizedString(@"RESTORE", @"") forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Restore Contracts", @"Restore Contracts Controllers Title");
 }
 
 - (NSString *)getImageNameForStateWithFile:(BOOL) haveFile {

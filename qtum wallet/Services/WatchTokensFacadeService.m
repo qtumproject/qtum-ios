@@ -70,6 +70,12 @@
 
 - (BOOL)createTokenWithTokenName:(NSString*) name andAddress:(NSString*) address andErrorString:(NSString **) errorString {
     
+    if (![SLocator.validationInputService isValidContractAddressString:address]) {
+        
+        *errorString = NSLocalizedString(@"Invalid Token Address", nil);
+        return NO;
+    }
+    
     return [SLocator.contractManager addNewTokenWithContractAddress:address andWithName:name errorString:errorString];
 }
 

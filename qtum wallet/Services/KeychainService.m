@@ -156,10 +156,6 @@ static NSString *touchIDIdentifire = @"TouchID";
             
             message = [NSString stringWithFormat:@"Result: %@\n", result];
             
-            if (operation.isCancelled) {
-                return;
-            }
-            
             if (weakSelf.touchIdHandler) {
                 weakSelf.touchIdHandler(result, nil);
                 weakSelf.touchIdHandler = nil;
@@ -179,7 +175,6 @@ static NSString *touchIDIdentifire = @"TouchID";
 
         if (weakSelf.touchIdHandler) {
             weakSelf.touchIdHandler (nil, [NSError new]);
-            weakSelf.touchIdHandler = nil;
         }
     }];
 }

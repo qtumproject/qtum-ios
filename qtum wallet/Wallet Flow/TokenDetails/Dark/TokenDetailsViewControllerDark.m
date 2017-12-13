@@ -10,8 +10,15 @@
 
 @interface TokenDetailsViewControllerDark ()
 
+@property (weak, nonatomic) IBOutlet UILabel *activityTextLabel;
+
 @end
 
 @implementation TokenDetailsViewControllerDark
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.activityTextLabel.text = NSLocalizedString(@"Activity", @"");
+}
 
 @end

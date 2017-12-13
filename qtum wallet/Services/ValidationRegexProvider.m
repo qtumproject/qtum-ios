@@ -19,14 +19,14 @@
 
 - (NSRegularExpression*)uintParameterSymbolsValidationRegexWithSize:(NSInteger) size {
     
-    NSString* pattern = [NSString stringWithFormat:@"^[^0][0-9]{0,}$"];
+    NSString* pattern = [NSString stringWithFormat:@"(^[0]{0,1}$|^[1-9]{1}[0-9]{0,}$)"];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
     return regex;
 }
 
 - (NSRegularExpression*)intParameterSymbolsValidationRegexWithSize:(NSInteger) size {
     
-    NSString* pattern = [NSString stringWithFormat:@"^[-+]?[^0]\\d{0,}$"];
+    NSString* pattern = [NSString stringWithFormat:@"(^[0]{0,1}$|^[1-9]{1}[0-9]{0,}$)"];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
     return regex;
 }
@@ -63,21 +63,21 @@
 
 - (NSRegularExpression*)uintParameterValidationRegexWithSize:(NSInteger) size {
     
-    NSString* pattern = [NSString stringWithFormat:@"^[0-9]{0,}$"];
+    NSString* pattern = [NSString stringWithFormat:@"(^[0]{1}$|^[1-9]{1}[0-9]{0,}$)"];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
     return regex;
 }
 
 - (NSRegularExpression*)intParameterValidationRegexWithSize:(NSInteger) size {
     
-    NSString* pattern = [NSString stringWithFormat:@"^[-+]?\\d{0,}$"];
+    NSString* pattern = [NSString stringWithFormat:@"(^[0]{1}$|^[1-9]{1}[0-9]{0,}$)"];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
     return regex;
 }
 
 - (NSRegularExpression*)boolParameterValidationRegex {
     
-    NSString* pattern = [NSString stringWithFormat:@"^\\d{0,1}$"];
+    NSString* pattern = [NSString stringWithFormat:@"^\\d{1}$"];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
     return regex;
 }

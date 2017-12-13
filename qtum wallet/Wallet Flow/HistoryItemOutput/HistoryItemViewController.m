@@ -27,6 +27,8 @@
 @property (strong, nonatomic) HistoryItemDelegateDataSource *fromHistoryTableSource;
 @property (strong, nonatomic) HistoryItemDelegateDataSource *toHistoryTableSource;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
+
 @end
 
 @implementation HistoryItemViewController
@@ -37,11 +39,13 @@
 
 	[self configWithItem];
 	[self configTables];
+    [self configLocalization];
 
 	[self.pageControl setPagesCount:2];
 	[self.pageControl setSelectedPage:0];
 
 	self.scrollView.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +53,12 @@
 }
 
 #pragma mark - Private Methods
+
+- (void)configLocalization {
+    
+    self.fromToLabel.text = NSLocalizedString(@"From", @"");
+    self.titleTextLabel.text = NSLocalizedString(@"Transaction", @"Controllers Title");
+}
 
 - (void)configTables {
 

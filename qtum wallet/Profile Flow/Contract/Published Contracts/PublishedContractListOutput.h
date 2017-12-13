@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSArray <Contract *> *contracts;
 @property (strong, nonatomic) NSDictionary *smartContractPretendents;
+@property (strong, nonatomic) NSDictionary *failedContractPretendents;
 @property (weak, nonatomic) id <PublishedContractListOutputDelegate> delegate;
 
 - (void)setNeedShowingTrainingScreen;

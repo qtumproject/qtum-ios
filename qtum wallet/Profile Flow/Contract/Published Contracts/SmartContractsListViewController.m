@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
 
 @property (assign, nonatomic) BOOL needShowTrainingScreen;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @property (nonatomic, strong) NSMutableSet *cellsCurrentlyEditing;
 @property (weak, nonatomic) UITableViewCell *movingCell;
@@ -23,7 +24,7 @@
 
 @implementation SmartContractsListViewController
 
-@synthesize delegate, contracts, smartContractPretendents;
+@synthesize delegate, contracts, smartContractPretendents, failedContractPretendents;
 
 #pragma mark - Lifecycle
 
@@ -31,6 +32,7 @@
 	[super viewDidLoad];
 	self.cellsCurrentlyEditing = [NSMutableSet new];
 	[self configTableView];
+    [self configLocalization];
 }
 
 - (void)viewWillAppear:(BOOL) animated {
@@ -50,6 +52,12 @@
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    self.emptyTableLabel.text = NSLocalizedString(@"No Tokens Found", @"");
+    self.titleTextLabel.text = NSLocalizedString(@"Contracts", @"Contracts Controllers Title");
+}
 
 - (void)configTableView {
 
@@ -92,7 +100,7 @@
 
 - (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
 
-	if (indexPath.section != 0) {
+	if (indexPath.section != 0 && indexPath.section != 1) {
 
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 		[self.delegate didSelectContractWithIndexPath:indexPath withContract:self.contracts[indexPath.row]];
@@ -105,25 +113,33 @@
 - (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
 
 	if (section == 0) {
-		return self.smartContractPretendents.count;
-	} else {
-		return self.contracts.count;
-	}
+        
+        return self.failedContractPretendents.count;
+	} else if (section == 1) {
+        
+        return self.smartContractPretendents.count;
+    } else {
+        
+        return self.contracts.count;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *) tableView {
-	return 2;
+	return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
 
 	if (indexPath.section == 0) {
 
-		return [self configContractPretendentCellWithTableView:tableView ForRowAtIndexPath:indexPath];
-	} else {
+		return [self configFailedContractPretendentCellWithTableView:tableView ForRowAtIndexPath:indexPath];
+	} else if (indexPath.section == 1){
 
-		return [self configContractCellWithTableView:tableView ForRowAtIndexPath:indexPath];
-	}
+        return [self configContractPretendentCellWithTableView:tableView ForRowAtIndexPath:indexPath];
+    } else {
+        
+        return [self configContractCellWithTableView:tableView ForRowAtIndexPath:indexPath];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *) tableView heightForHeaderInSection:(NSInteger) section {
@@ -176,6 +192,21 @@
 	return cell;
 }
 
+- (SmartContractListItemCell *)configFailedContractPretendentCellWithTableView:(UITableView *) tableView ForRowAtIndexPath:(NSIndexPath *) indexPath {
+    
+    NSDictionary *pretendentDict = self.failedContractPretendents.allValues[indexPath.row];
+    TemplateModel *template = pretendentDict[kTemplateModel];
+    NSString *localName = pretendentDict[kLocalContractName];
+    SmartContractListItemCell *cell = [tableView dequeueReusableCellWithIdentifier:smartContractListItemCellIdentifire];
+    cell.contractName.text = localName;
+    cell.typeIdentifire.text = [template.templateTypeString uppercaseString];
+    cell.creationDate.text = NSLocalizedString(@"Failed", nil);
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate = self;
+    cell.indexPath = indexPath;
+    return cell;
+}
+
 #pragma mark - Actions
 
 - (IBAction)didPressedBackAction:(id) sender {
@@ -209,20 +240,29 @@
 
 	if (indexPath.section == 0) {
 
-		NSString *hexKey = self.smartContractPretendents.allKeys[indexPath.row];
-		NSMutableDictionary *smartContractsPretendents = [self.smartContractPretendents mutableCopy];
-		[smartContractsPretendents removeObjectForKey:hexKey];
-		self.smartContractPretendents = [smartContractsPretendents copy];
-		[self.delegate didUnsubscribeFromContractPretendentWithTxHash:hexKey];
+        NSString *hexKey = self.failedContractPretendents.allKeys[indexPath.row];
+        NSMutableDictionary *faildedPretendents = [self.failedContractPretendents mutableCopy];
+        [faildedPretendents removeObjectForKey:hexKey];
+        self.failedContractPretendents = [faildedPretendents copy];
+        [self.delegate didUnsubscribeFromFailedContractPretendentWithTxHash:hexKey];
+
 
 	} else if (indexPath.section == 1) {
-
-		Contract *contract = self.contracts[indexPath.row];
-		[self.delegate didUnsubscribeFromContract:contract];
-		NSMutableArray *contracts = [self.contracts mutableCopy];
-		[contracts removeObject:contract];
-		self.contracts = contracts;
-	}
+        
+        NSString *hexKey = self.smartContractPretendents.allKeys[indexPath.row];
+        NSMutableDictionary *smartContractsPretendents = [self.smartContractPretendents mutableCopy];
+        [smartContractsPretendents removeObjectForKey:hexKey];
+        self.smartContractPretendents = [smartContractsPretendents copy];
+        [self.delegate didUnsubscribeFromContractPretendentWithTxHash:hexKey];
+        
+    } else if (indexPath.section == 2){
+        
+        Contract *contract = self.contracts[indexPath.row];
+        [self.delegate didUnsubscribeFromContract:contract];
+        NSMutableArray *contracts = [self.contracts mutableCopy];
+        [contracts removeObject:contract];
+        self.contracts = contracts;
+    }
 
 	[self.tableView beginUpdates];
 	[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];

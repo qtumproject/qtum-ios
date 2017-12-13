@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet TextFieldWithLine *contractAddressTextField;
 @property (weak, nonatomic) IBOutlet InputTextView *abiTextView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonBottomConstraint;
@@ -26,6 +26,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectioViewTopConstraint;
+
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UIButton *choseFromLibButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *abiInterfaceTextLabel;
 
 @end
 
@@ -37,6 +43,7 @@
 
 	[super viewDidLoad];
 
+    [self configLocalization];
 	self.collectionView.dataSource = self.collectionSource;
 	self.collectionView.delegate = self.collectionSource;
 	self.collectionSource.collectionView = self.collectionView;
@@ -63,6 +70,16 @@
 	self.textViewHeightConstraint.constant = freeSpace;
 
 	[self.view layoutIfNeeded];
+}
+
+#pragma mark - Configuration
+
+-(void)configLocalization {
+    
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel button") forState:UIControlStateNormal];
+    [self.choseFromLibButton setTitle:NSLocalizedString(@"CHOOSE FROM LIBRARY", @"") forState:UIControlStateNormal];
+    self.abiInterfaceTextLabel.text = NSLocalizedString(@"ABI Interface", @"");
+    self.titleTextLabel.text = NSLocalizedString(@"Watch Contract", @"Watch Contract Controllers Title");
 }
 
 #pragma mark - Private Methods

@@ -31,6 +31,8 @@ extern NSString *const kLocalContractName;
 
 - (NSDictionary *)smartContractPretendentsCopy;
 
+- (NSDictionary *)failedContractPretendentsCopy;
+
 - (void)addNewContract:(Contract *) token;
 
 - (void)updateTokenWithContractAddress:(NSString *) address withAddressBalanceDictionary:(NSDictionary *) addressBalance;
@@ -59,6 +61,7 @@ extern NSString *const kLocalContractName;
 
 - (void)removeContractPretendentWithTxHash:(NSString *) txHash;
 
+- (void)removeFailedContractPretendentWithTxHash:(NSString *) txHash;
 
 - (NSArray<NSDictionary *> *)decodeDataForBackup;
 

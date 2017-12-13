@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) LoaderPopUpViewController *loader;
 @property (weak, nonatomic) IBOutlet UIView *loaderPlaceholderView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @end
 
@@ -22,10 +23,13 @@
 
 @synthesize delegate, newsItem, cellBuilder;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
 	[self configTableView];
+    [self configLocalization];
 
 	if (!self.newsItem.tags) {
 		[self getData];
@@ -54,6 +58,10 @@
 }
 
 #pragma mark - Configuration
+
+-(void)configLocalization {
+    self.titleTextLabel.text = NSLocalizedString(@"News Detail", @"News Detail Controllers Title");
+}
 
 - (void)configTableView {
 
