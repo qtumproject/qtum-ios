@@ -254,6 +254,7 @@ static NSInteger constantFee = 400000000;
 		dispatch_async (dispatch_get_main_queue (), ^{
 			completion (TransactionManagerErrorTypeInvalidAddress, nil, nil, nil);
 		});
+        return;
 	}
 
 	AbiinterfaceItem *transferMethod = [SLocator.contractInterfaceManager tokenStandartTransferMethodInterface];
