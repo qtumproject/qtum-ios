@@ -1,0 +1,154 @@
+fastlane_version "2.66.2"
+
+default_platform :ios
+
+platform :ios do
+
+  lane :configure do
+
+    UI.important "configure"
+
+    if !File.exist?("../config.xcconfig")
+      FileUtils.cp("../#{ENV['APP_CONFIG']}", "../config.xcconfig")
+    end
+
+    libraries()
+    
+  end
+
+  lane :tests do
+    
+    libraries()
+
+    scan(
+      scheme: ENV["APP_SCHEME"]
+    )
+  end
+
+  lane :beta_mainnet do
+    
+    libraries()
+
+    configuration = generate_fastlane_xcconfig(identifier:"org.qtum.qtum-wallet")
+
+    match(
+      app_identifier: [
+        ENV["MATCH_APP_IDENTIFIER"], 
+        ENV["MATCH_APP_IDENTIFIER_IMESSAGE"], 
+        ENV["MATCH_APP_IDENTIFIER_WATCH"], 
+        ENV["MATCH_APP_IDENTIFIER_WATCHEXTENSION"]
+      ], 
+      readonly: true, 
+      type: "appstore",
+      username: ENV["MATCH_USERNAME"],
+      git_url: ENV["MATCH_GIT_URL"],
+      team_id: ENV["MATCH_TEAM_ID"],
+      )
+
+    gym(
+      configuration: "Release",
+      scheme: ENV['APP_SCHEME'], 
+      xcconfig: "config.fastlane.xcconfig", 
+    )
+
+    slack_notification(configuration, "Successfully deployed new App Update (Mainnet)." );        
+
+  end
+
+  lane :beta_testnet do
+    
+    libraries()
+
+    configuration = generate_fastlane_xcconfig(identifier:"org.qtum.qtum-wallet", app_name:"QTUM-QA", testnet:true)
+  
+    match(
+      app_identifier: [
+        ENV["MATCH_APP_IDENTIFIER"], 
+        ENV["MATCH_APP_IDENTIFIER_IMESSAGE"], 
+        ENV["MATCH_APP_IDENTIFIER_WATCH"], 
+        ENV["MATCH_APP_IDENTIFIER_WATCHEXTENSION"]
+      ], 
+      readonly: true, 
+      type: "adhoc",
+      username: ENV["MATCH_USERNAME"],
+      git_url: ENV["MATCH_GIT_URL"],
+      team_id: ENV["MATCH_TEAM_ID"],
+      )
+
+    gym(
+      configuration: "Release",
+      scheme: ENV['APP_SCHEME'], 
+      xcconfig: "config.fastlane.xcconfig", 
+    )
+
+    crashlytics(
+      api_token: ENV["FABRIC_API_KEY"],
+      build_secret: ENV["FABRIC_BUILD_SECRET"]
+    )
+
+    slack_notification(configuration, "Successfully deployed new App Update (Testnet)." );    
+
+  end
+
+  private_lane :libraries do 
+
+    cocoapods
+
+    carthage(
+      platform: "iOS"
+    )
+
+  end
+
+  private_lane :generate_fastlane_xcconfig do |options|
+
+    configuration_file = "./../#{ENV['APP_CONFIG']}"
+
+    configuration = Xcodeproj::Config.new(configuration_file)
+
+    #APP
+    configuration.attributes['APP_BUNDLE_IDENTIFIER'] = options[:identifier]
+    configuration.attributes['APP_BUNDLE_VERSION_BUILD'] = number_of_commits
+
+    if options[:app_name] == nil
+      configuration.attributes['APP_NAME'] = options[:app_name]
+    end
+
+    #FABRIC
+    configuration.attributes['FABRIC_API_KEY'] = ENV['FABRIC_API_KEY']
+    configuration.attributes['FABRIC_BUILD_SECRET'] = ENV['FABRIC_BUILD_SECRET']
+
+    #TESTNET|MAINNET
+    if options[:testnet] != nil || options[:testnet]
+      configuration.attributes['APP_IS_MAINNET_SETTINGS'] = "NO"
+      configuration.attributes['APP_SERVER_HOST'] = "testnet-walletapi.qtum.org"
+    end
+
+    temp_configuration_path = "./../config.fastlane.xcconfig"
+
+    File.open(temp_configuration_path, "w") do |f|     
+      f.write(configuration.to_s())   
+    end
+
+    configuration
+
+  end
+
+  private_lane :slack_notification do |configuration, message|
+
+    version_name = configuration.attributes['APP_BUNDLE_VERSION']
+    version_build = configuration.attributes['APP_BUNDLE_VERSION_BUILD']
+
+    slack(
+      message: "#{message}: #{version_name}(#{version_build})"
+    )
+
+  end
+
+  error do |lane, exception|
+    slack(
+      message: exception.message,
+      success: false
+    )
+  end
+end

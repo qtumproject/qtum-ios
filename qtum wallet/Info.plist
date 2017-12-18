@@ -2,24 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Is_Mainnet_Settings</key>
-	<string>ENV_IS_MAINNET_SETTING</string>
-	<key>Server URL</key>
-	<string>ENV_SERVER_URL</string>
+	<key>APP_IS_MAINNET_SETTINGS</key>
+	<string>$(APP_IS_MAINNET_SETTINGS)</string>
+	<key>APP_SERVER_URL</key>
+	<string>$(APP_SERVER_SCHEME):/$()/$(APP_SERVER_HOST)</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>EN</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>$(APP_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
-	<string>ENV_INFO_DICTIONARY_VERSION</string>
+	<string>$(CFBundleInfoDictionaryVersion)</string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>$(APP_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>ENV_BUNDLE_VERSION_SHORT_STRING</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>$(APP_BUNDLE_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -30,11 +30,11 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>ENV_BUNDLE_VERSION</string>
+	<string>$(APP_BUNDLE_VERSION_BUILD)</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>ENV_FABRIC_API_KEY</string>
+		<string>$(FABRIC_API_KEY)</string>
 		<key>Kits</key>
 		<array>
 			<dict>
