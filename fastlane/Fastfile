@@ -7,9 +7,15 @@ platform :ios do
   lane :configure do
 
     UI.important "configure"
-
+    
     if !File.exist?("../config.xcconfig")
-      FileUtils.cp("../#{ENV['APP_CONFIG']}", "../config.xcconfig")
+
+      File.open("../config.xcconfig", 'w') do |fo|
+        fo.puts '#include "config.default.xcconfig"'
+        File.foreach("../#{ENV['APP_CONFIG']}") do |li|
+          fo.puts li
+        end
+      end
     end
 
     libraries()
