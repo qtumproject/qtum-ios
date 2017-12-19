@@ -41,7 +41,7 @@
     [NSUserDefaults saveCurrentVersion:[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]];
     [NSUserDefaults saveIsRPCOnSetting:NO];
     
-    BOOL isMainNetSettings = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Is_Mainnet_Settings"] boolValue];
+    BOOL isMainNetSettings = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"APP_IS_MAINNET_SETTINGS"] boolValue];
     
     [NSUserDefaults saveIsMainnetSetting:isMainNetSettings];
 
@@ -104,7 +104,7 @@
 
 -(NSString*)baseURL {
     
-    NSString* baseUrl = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Server URL"];
+    NSString* baseUrl = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"APP_SERVER_URL"];
 
     return baseUrl;
 }

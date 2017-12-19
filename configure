@@ -1,0 +1,8 @@
+#!/bin/bash
+
+CONFIG_TEMPLATE="config.local.xcconfig"     
+LOCAL_CONFIG="config.xcconfig"
+
+if [ ! -f $LOCAL_CONFIG ]; then
+  cp  $CONFIG_TEMPLATE $LOCAL_CONFIG
+fi
