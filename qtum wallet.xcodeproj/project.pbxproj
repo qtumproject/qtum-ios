@@ -448,6 +448,7 @@
 		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
 		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
 		B3F76A941EDDB81600108DE9 /* Contracts in Resources */ = {isa = PBXBuildFile; fileRef = B3F76A931EDDB81600108DE9 /* Contracts */; };
+		B3FD74C91FE9456C00B1E1EA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FD74C81FE9456C00B1E1EA /* libxml2.dylib */; };
 		D059BE7B1F84E4A70045ABA0 /* PaymentValuesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */; };
 		D08043581F838D6100B22606 /* WalletManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D08043571F838D6100B22606 /* WalletManagerTests.m */; };
 		D080435A1F839E0D00B22606 /* ContractManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D08043591F839E0D00B22606 /* ContractManagerTests.m */; };
@@ -1084,7 +1085,6 @@
 		B357332C1F97ACCD00C64AAE /* TFHppleElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
 		B357332D1F97ACCE00C64AAE /* TFHpple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		B357332E1F97ACCF00C64AAE /* XPathQuery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
-		B357332F1F97AF6600C64AAE /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libxml2.dylib; sourceTree = "<group>"; };
 		B35733331F97B3A700C64AAE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		B3597DF41E7FABF800EBF094 /* Requestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Requestable.h; sourceTree = "<group>"; };
 		B3597DF51E811D0500EBF094 /* RequestManagerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManagerAdapter.h; sourceTree = "<group>"; };
@@ -1717,6 +1717,7 @@
 		B3F76A7B1EDDABBE00108DE9 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		B3F76A931EDDB81600108DE9 /* Contracts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Contracts; sourceTree = "<group>"; };
+		B3FD74C81FE9456C00B1E1EA /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = "qtum wallet/libxml2.dylib"; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		D059BE791F84E4A70045ABA0 /* PaymentValuesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentValuesManager.h; sourceTree = "<group>"; };
 		D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentValuesManager.m; sourceTree = "<group>"; };
@@ -2141,6 +2142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B35733341F97B3A700C64AAE /* libxml2.tbd in Frameworks */,
+				B3FD74C91FE9456C00B1E1EA /* libxml2.dylib in Frameworks */,
 				E7FD365C1DC7360400748177 /* Security.framework in Frameworks */,
 				0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */,
 			);
@@ -4888,7 +4890,6 @@
 			isa = PBXGroup;
 			children = (
 				E7EB859B1FE7F30300FCA460 /* config.xcconfig */,
-				B3C856631FD5592000DAD5F4 /* Default-568h@2x.png */,
 				F94C279886F936AB7B4DA6F8 /* Frameworks */,
 				94DECCBC55E0AE7D7EF532E6 /* Pods */,
 				E7FD36391DC4D07E00748177 /* Products */,
@@ -4897,7 +4898,6 @@
 				B33EAF8B1E5EC262006125F3 /* iMessageExtension */,
 				E7FD363A1DC4D07E00748177 /* qtum wallet */,
 				E71AF2431E0177910068595B /* qtum walletTests */,
-				B357332F1F97AF6600C64AAE /* libxml2.dylib */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4955,6 +4955,7 @@
 		E7FD363B1DC4D07E00748177 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3C856631FD5592000DAD5F4 /* Default-568h@2x.png */,
 				B3210D271E00326B00365FB6 /* Fonts */,
 				E7881B0E1F0BB7A800BD6AB2 /* FontsLight */,
 			);
@@ -5100,6 +5101,7 @@
 		F94C279886F936AB7B4DA6F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3FD74C81FE9456C00B1E1EA /* libxml2.dylib */,
 				B35733331F97B3A700C64AAE /* libxml2.tbd */,
 				B3C4553D1E89596A00420D7C /* SocketIO.framework */,
 				E71AF24C1E0178C50068595B /* libCoreBitcoin.a */,
@@ -6872,6 +6874,10 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/qtum\\ wallet",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -6984,6 +6990,10 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/qtum\\ wallet",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
