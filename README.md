@@ -35,38 +35,33 @@ Using Terminal open project folder and enter following command to load and conne
 $ carthage update --platform iOS
 ```
 
+Using Terminal open project folder and enter following command to create configuration file
+```bash
+$ ./configure
+```
+
 ## Change API URLs
 
-Open file  ```${PROJECT_DIR}/config/Default/Info-default.plist```
 
-├── ...
-├── Config
-│   ├── Default
-│   │   ├── Info-default.plist
+Open the project and in the config.xcconfig file change APP_SERVER_HOST
 
-And change value for key ```Server_URL```
+
+## Switch network testnet/mainnet
+
+
+Open the project and in the config.xcconfig file change APP_IS_MAINNET_SETTINGS to YES/NO
+
+
+## You can set your own settings or use the following
+
 ```
-<key>Server_URL</key>
-<string>https:/$()/testnet-walletapi.qtum.org</string>
-```
-To use the ```//``` character in the ```Server_URL```, use the $ () character for escaping.
+//MAINNET
+APP_IS_MAINNET_SETTINGS = YES
+APP_SERVER_HOST = walletapi.qtum.org
 
-
-## Change network parameters
-
-#### Switch network testnet/mainnet
-
-Open file  ```${PROJECT_DIR}/config/Default/Info-default.plist```
-
-├── ...
-├── Config
-│   ├── Default
-│   │   ├── Info-default.plist
-
-And change value for key ```Is_Mainnet_setting```
-```
-<key>Is_Mainnet_setting</key>
-<false/>
+//TESTNET
+APP_IS_MAINNET_SETTINGS = NO
+APP_SERVER_HOST = testnet-walletapi.qtum.org
 ```
 
 #### Change network parameters
@@ -99,3 +94,4 @@ CoreBitcoin implements Bitcoin protocol in Objective-C and provides many additio
 CoreBitcoin deliberately implements as much as possible directly in Objective-C with limited dependency on OpenSSL. This gives everyone an opportunity to learn Bitcoin on a clean codebase and enables all Mac and iOS developers to extend and improve Bitcoin protocol.
 
 Link: https://github.com/oleganza/CoreBitcoin
+
