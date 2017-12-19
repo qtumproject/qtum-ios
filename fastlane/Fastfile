@@ -121,8 +121,10 @@ platform :ios do
     #APP
     configuration.attributes['APP_BUNDLE_IDENTIFIER'] = options[:identifier]
     configuration.attributes['APP_BUNDLE_VERSION_BUILD'] = number_of_commits
+    configuration.attributes['APP_BUNDLE_VERSION'] = ENV['APP_VERSION']
+    
 
-    if options[:app_name] == nil
+    if options[:app_name] != nil
       configuration.attributes['APP_NAME'] = options[:app_name]
     end
 

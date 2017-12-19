@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CONFIG_DEFAULT="config.default.xcconfig"     
-LOCAL_CONFIG_DEFAULT="config.xcconfig"
+CONFIG_TEMPLATE="config.local.xcconfig"     
+LOCAL_CONFIG="config.xcconfig"
 
-if [ ! -f $LOCAL_CONFIG_DEFAULT ]; then
-  echo '#include "config.default.xcconfig"' | cat - $CONFIG_DEFAULT > temp && mv temp $LOCAL_CONFIG_DEFAULT
+if [ ! -f $LOCAL_CONFIG ]; then
+  cp  $CONFIG_TEMPLATE $LOCAL_CONFIG
 fi
