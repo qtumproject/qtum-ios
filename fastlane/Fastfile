@@ -22,6 +22,24 @@ platform :ios do
     
   end
 
+  lane :match_development do
+
+    match(
+      app_identifier: [
+        ENV["MATCH_APP_IDENTIFIER"], 
+        ENV["MATCH_APP_IDENTIFIER_IMESSAGE"], 
+        ENV["MATCH_APP_IDENTIFIER_WATCH"], 
+        ENV["MATCH_APP_IDENTIFIER_WATCHEXTENSION"]
+      ], 
+      readonly: true, 
+      type: "development",
+      username: ENV["MATCH_USERNAME"],
+      git_url: ENV["MATCH_GIT_URL"],
+      team_id: ENV["MATCH_TEAM_ID"],
+    )
+
+  end
+
   lane :tests do
     
     libraries()
@@ -49,7 +67,7 @@ platform :ios do
       username: ENV["MATCH_USERNAME"],
       git_url: ENV["MATCH_GIT_URL"],
       team_id: ENV["MATCH_TEAM_ID"],
-      )
+    )
 
     gym(
       configuration: "Release",

@@ -35,6 +35,11 @@ xcode-select --install
 fastlane ios configure
 ```
 
+### ios match_dev
+```
+fastlane ios match_dev
+```
+
 ### ios tests
 ```
 fastlane ios tests
