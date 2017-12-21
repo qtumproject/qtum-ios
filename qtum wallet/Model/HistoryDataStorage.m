@@ -16,6 +16,10 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
 
 @implementation HistoryDataStorage
 
+@synthesize spendableOwner = _spendableOwner;
+
+@synthesize pageIndex = _pageIndex;
+
 
 #pragma mark - Private Methods
 
@@ -70,6 +74,5 @@ NSString *const HistoryUpdateEvent = @"HistoryUpdateEvent";
 	[self.historyPrivate addObjectsFromArray:[[elements reverseObjectEnumerator] allObjects]];
 	[self notificateChangeHistory];
 }
-
 
 @end

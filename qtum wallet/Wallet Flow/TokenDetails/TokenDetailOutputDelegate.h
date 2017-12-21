@@ -19,6 +19,8 @@
 
 - (void)didShowTokenAddressControlWith:(Contract *) contract;
 
+- (void)didSelectTokenHistoryItem:(id <HistoryElementProtocol>) item;
+
 - (void)didPullToUpdateToken:(Contract *) token;
 
 @end

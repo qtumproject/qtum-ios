@@ -9,6 +9,7 @@
 #import "TokenDetailLightDisplayDataManager.h"
 #import "HistoryHeaderVIew.h"
 #import "TokenDetailInfoLightCell.h"
+#import "HistoryTableViewCellLight.h"
 
 @interface TokenDetailLightDisplayDataManager ()
 
@@ -17,7 +18,7 @@
 @end
 
 static NSInteger fullInformationHeight = 211;
-static NSInteger standartHistoryCellHeight = 50;
+static NSInteger standartHistoryCellHeight = 55;
 
 
 @implementation TokenDetailLightDisplayDataManager
@@ -50,7 +51,8 @@ static NSInteger standartHistoryCellHeight = 50;
         cell.tokenAddressTextLabel.text = NSLocalizedString(@"Token Address", @"");
 		return cell;
 	} else {
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
+        HistoryTableViewCellLight* cell =  [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
+        cell.historyElement = token.historyArray[indexPath.row];
 		return cell;
 	}
 }
@@ -104,6 +106,13 @@ static NSInteger standartHistoryCellHeight = 50;
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
+    
+    if (indexPath.section == 1) {
+        if ([self.delegate respondsToSelector:@selector (didPressHistoryItemForToken:)]) {
+            [self.delegate didPressHistoryItemForToken:token.historyArray[indexPath.row]];
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
 

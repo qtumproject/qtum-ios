@@ -79,8 +79,9 @@
 
 - (void)configWithItem {
 
-	self.balanceLabel.text = [NSString stringWithFormat:@"%0.6f", self.item.amount.doubleValue];
+	self.balanceLabel.text = [self.item.amount roundedNumberWithScale:6].stringValue;
 	self.receivedTimeLabel.text = self.item.fullDateString ? : NSLocalizedString(@"Unconfirmed", nil);
+    self.cointType.text = self.item.currency;
 }
 
 - (void)changeCurrentIndex:(NSInteger) index {

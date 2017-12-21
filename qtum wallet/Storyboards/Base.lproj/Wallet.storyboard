@@ -1595,7 +1595,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ActivityTokenTableViewCell" rowHeight="69" id="bQS-ws-dTE" customClass="ActivityTokenTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityTokenTableViewCell" rowHeight="69" id="bQS-ws-dTE" customClass="ActivityTokenTableViewCell">
                                         <rect key="frame" x="0.0" y="295" width="375" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQS-ws-dTE" id="nQl-aF-Rrv">
@@ -1835,6 +1835,7 @@
                         <outlet property="headerVIew" destination="5hS-pi-PfR" id="qsa-QV-bIJ"/>
                         <outlet property="heightConsctaintForHeaderView" destination="lTG-J4-dBs" id="aFm-n5-G0O"/>
                         <outlet property="noTransactionTextLabel" destination="BvP-uv-hWq" id="Xm0-iS-NQJ"/>
+                        <outlet property="noTransactionView" destination="ARW-Gf-dUj" id="waT-mt-nsj"/>
                         <outlet property="tableView" destination="rZJ-eu-DGf" id="I7M-6y-ULq"/>
                         <outlet property="titleLabel" destination="pgH-5f-VXF" id="ntL-FU-EVQ"/>
                         <outlet property="trailingForLineConstraint" destination="Eam-wK-tE5" id="oJD-VV-xs4"/>
@@ -3621,6 +3622,7 @@
                         <outlet property="heightForBlueView" destination="tXK-3V-XFA" id="5Dc-gP-vTQ"/>
                         <outlet property="navigationBarView" destination="ReJ-17-fwN" id="Crb-f3-cBN"/>
                         <outlet property="noTransactionTextLabel" destination="MPE-pT-Bpe" id="xg4-2c-FTj"/>
+                        <outlet property="noTransactionView" destination="kEm-gC-Yi0" id="eQQ-sx-6M4"/>
                         <outlet property="shortInfoHeader" destination="PwE-ge-Jnp" id="0B6-bw-dc8"/>
                         <outlet property="tableView" destination="QPP-bV-3bO" id="mtI-xj-9Ha"/>
                         <outlet property="titleLabel" destination="4ly-BC-raF" id="MYR-UJ-Usm"/>

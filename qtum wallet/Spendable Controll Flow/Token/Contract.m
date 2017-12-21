@@ -19,6 +19,15 @@
 
 @implementation Contract
 
+@synthesize unconfirmedBalance = _unconfirmedBalance;
+@synthesize mainAddress = _mainAddress;
+@synthesize name = _name;
+@synthesize manager = _manager;
+@synthesize symbol = _symbol;
+@synthesize balance = _balance;
+@synthesize historyStorage = _historyStorage;
+@synthesize historyArray = _historyArray;
+
 - (instancetype)init {
 
 	self = [super init];
@@ -118,6 +127,11 @@
 	return _shortBalanceString;
 }
 
+- (NSArray <HistoryElementProtocol> *)historyArray {
+    
+    return [self.historyStorage.historyPrivate copy];
+}
+
 #pragma mark - Spendable
 
 - (void)updateBalanceWithHandler:(void (^)(BOOL)) complete {
@@ -141,7 +155,7 @@
 }
 
 - (void)updateWithHandler:(void (^)(BOOL success)) complete {
-	[self.manager updateSpendableObject:self];
+	[self.manager updateBalanceOfSpendableObject:self withHandler:complete];
 }
 
 #pragma  mark - NSCoder
@@ -213,5 +227,6 @@ static NSString *kContractAddressWithBalanceDictionary = @"addressWithBalanceDic
 
 	return self;
 }
+
 
 @end

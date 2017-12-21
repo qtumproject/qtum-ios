@@ -14,6 +14,7 @@
 #import "NubersTokenView.h"
 #import "AddressesTokenView.h"
 #import "MainTokenTableViewCell.h"
+#import "ActivityTokenTableViewCell.h"
 
 static NSInteger const NumberOfSections = 2;
 static NSInteger const NumberOfRowsForFirstSection = 1;
@@ -53,7 +54,9 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 	if (indexPath.section == 0) {
 		return [self getCellForFirstSection:tableView forRow:indexPath.row];
 	} else {
-		return [tableView dequeueReusableCellWithIdentifier:ActivityTokenIdentifier];
+        ActivityTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:ActivityTokenIdentifier];
+        cell.historyElement = token.historyArray[indexPath.row];
+		return cell;
 	}
 }
 
@@ -61,7 +64,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 	if (section == 0) {
 		return NumberOfRowsForFirstSection;
 	} else {
-		return 0;
+		return token.historyArray.count;
 	}
 }
 
@@ -95,6 +98,7 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 	}
 	return nil;
 }
+
 
 - (void)scrollViewDidScroll:(UIScrollView *) scrollView {
 
@@ -250,8 +254,34 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
+- (void)tableView:(UITableView *) tableView didHighlightRowAtIndexPath:(NSIndexPath *) indexPath {
+    
+    if (indexPath.section != 1) {
+        return;
+    }
+    
+    ActivityTokenTableViewCell *cell = (ActivityTokenTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:YES];
+}
 
+- (void)tableView:(UITableView *) tableView didUnhighlightRowAtIndexPath:(NSIndexPath *) indexPath {
+    
+    if (indexPath.section != 1) {
+        return;
+    }
+    
+    ActivityTokenTableViewCell *cell = (ActivityTokenTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell changeHighlight:NO];
+}
+
+- (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
+    
+    if (indexPath.section == 1) {
+        if ([self.delegate respondsToSelector:@selector (didPressHistoryItemForToken:)]) {
+            [self.delegate didPressHistoryItemForToken:token.historyArray[indexPath.row]];
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - QTUMAddressTokenTableViewCellDelegate

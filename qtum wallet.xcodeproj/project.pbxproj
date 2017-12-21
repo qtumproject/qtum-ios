@@ -184,6 +184,8 @@
 		B35733341F97B3A700C64AAE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B35733331F97B3A700C64AAE /* libxml2.tbd */; };
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
 		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
+		B35B06401FEBBB79007BB204 /* TokenHistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B35B063F1FEBBB79007BB204 /* TokenHistoryElement.m */; };
+		B35B06431FEBBC5E007BB204 /* ContractManagerRequestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B35B06421FEBBC5E007BB204 /* ContractManagerRequestAdapter.m */; };
 		B35DF6191F1F4A6000316953 /* RestoreWalletViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6181F1F4A6000316953 /* RestoreWalletViewControllerDark.m */; };
 		B35DF61C1F1F4A7400316953 /* RestoreWalletViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF61B1F1F4A7400316953 /* RestoreWalletViewControllerLight.m */; };
 		B35DF6201F1F569800316953 /* InputTextViewDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF61F1F1F569800316953 /* InputTextViewDark.m */; };
@@ -1092,6 +1094,11 @@
 		B3597DFA1E811D6500EBF094 /* ServerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerAdapter.m; sourceTree = "<group>"; };
 		B3597DFC1E81517200EBF094 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
 		B3597DFD1E81517200EBF094 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
+		B35B063D1FEBB669007BB204 /* HistoryStorageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryStorageProtocol.h; sourceTree = "<group>"; };
+		B35B063E1FEBBB79007BB204 /* TokenHistoryElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokenHistoryElement.h; sourceTree = "<group>"; };
+		B35B063F1FEBBB79007BB204 /* TokenHistoryElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TokenHistoryElement.m; sourceTree = "<group>"; };
+		B35B06411FEBBC5E007BB204 /* ContractManagerRequestAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractManagerRequestAdapter.h; sourceTree = "<group>"; };
+		B35B06421FEBBC5E007BB204 /* ContractManagerRequestAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractManagerRequestAdapter.m; sourceTree = "<group>"; };
 		B35DF6171F1F4A6000316953 /* RestoreWalletViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreWalletViewControllerDark.h; sourceTree = "<group>"; };
 		B35DF6181F1F4A6000316953 /* RestoreWalletViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreWalletViewControllerDark.m; sourceTree = "<group>"; };
 		B35DF61A1F1F4A7400316953 /* RestoreWalletViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreWalletViewControllerLight.h; sourceTree = "<group>"; };
@@ -2844,6 +2851,8 @@
 				B365CA621EA4ED540040A163 /* Contract.m */,
 				B30BAE2C1E9E3AA600CA795F /* ContractManager.h */,
 				B30BAE2D1E9E3AA600CA795F /* ContractManager.m */,
+				B35B06411FEBBC5E007BB204 /* ContractManagerRequestAdapter.h */,
+				B35B06421FEBBC5E007BB204 /* ContractManagerRequestAdapter.m */,
 			);
 			path = Token;
 			sourceTree = "<group>";
@@ -4994,6 +5003,9 @@
 				B3F76A751EDD6F6400108DE9 /* TemplateModel.m */,
 				B3D012DC1FB4542100A98770 /* WalletBalancesObject.h */,
 				B3D012DD1FB4542100A98770 /* WalletBalancesObject.m */,
+				B35B063D1FEBB669007BB204 /* HistoryStorageProtocol.h */,
+				B35B063E1FEBBB79007BB204 /* TokenHistoryElement.h */,
+				B35B063F1FEBBB79007BB204 /* TokenHistoryElement.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5277,6 +5289,7 @@
 					E7FD36371DC4D07E00748177 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = DEH7XV88GA;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -5772,6 +5785,7 @@
 				E745BA201F21E79B00B2E216 /* NewsTableCellLight.m in Sources */,
 				B369DF351F5D61A4008B81CB /* AbiParameterTypeDynamicElementaryArray.m in Sources */,
 				B3CBDF3D1F2B48C300C80D4E /* SmartContractListItemCellLight.m in Sources */,
+				B35B06401FEBBB79007BB204 /* TokenHistoryElement.m in Sources */,
 				B305A1261FD005DB00FC4D2F /* QueryFunctionView.m in Sources */,
 				B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */,
 				B33EAF1A1E5C84DF006125F3 /* RestoreWalletViewController.m in Sources */,
@@ -6133,6 +6147,7 @@
 				B3EE8F281F0E109300131823 /* TabBarControllerLight.m in Sources */,
 				B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
+				B35B06431FEBBC5E007BB204 /* ContractManagerRequestAdapter.m in Sources */,
 				B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */,
 				B35130611E49C9930048A28C /* NewsCellModel.m in Sources */,
 				B3EE8F4B1F13766C00131823 /* QRCodeViewControllerDark.m in Sources */,
@@ -6938,6 +6953,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5bdd07ba-89d2-4d59-a4a9-ec5c15ddf3fb";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development org.qtum.qtum-wallet";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -7054,6 +7071,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5bdd07ba-89d2-4d59-a4a9-ec5c15ddf3fb";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development org.qtum.qtum-wallet";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -22,6 +22,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
 @property (weak, nonatomic) IBOutlet UIView *activityView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIView *noTransactionView;
 
 @end
 
@@ -43,6 +44,7 @@ CGFloat const HeightForHeaderView = 50.0f;
 
 	[self configRefreshControl];
     [self configLocalization];
+    [self.delegate didPullToUpdateToken:self.token];
 }
 
 - (void)configRefreshControl {
@@ -96,6 +98,10 @@ CGFloat const HeightForHeaderView = 50.0f;
 	[self.delegate didShowTokenAddressControlWith:aToken];
 }
 
+- (void)didPressHistoryItemForToken:( id <HistoryElementProtocol>) item {
+    [self.delegate didSelectTokenHistoryItem:item];
+}
+
 - (void)needShowHeader {
 	if (self.heightConsctaintForHeaderView.constant == HeightForHeaderView) {
 		return;
@@ -129,9 +135,18 @@ CGFloat const HeightForHeaderView = 50.0f;
 }
 
 - (void)refreshTable {
+    
+    __weak __typeof(self)weakSelf = self;
 	dispatch_async (dispatch_get_main_queue (), ^{
-		[self.refreshControl endRefreshing];
-		[self.tableView reloadData];
+        
+        if (weakSelf.token.historyArray.count > 0) {
+            weakSelf.noTransactionView.hidden = YES;
+        } else {
+            weakSelf.noTransactionView.hidden = NO;
+        }
+        
+		[weakSelf.refreshControl endRefreshing];
+		[weakSelf.tableView reloadData];
 	});
 }
 

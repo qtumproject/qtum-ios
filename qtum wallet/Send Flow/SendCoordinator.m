@@ -652,7 +652,6 @@
 - (void)cancelButtonPressed:(PopUpViewController *) sender {
     
 	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
-	[self didPresseQRCodeScaner];
 }
 
 #pragma mark - ChoseTokenPaymentViewControllerDelegate

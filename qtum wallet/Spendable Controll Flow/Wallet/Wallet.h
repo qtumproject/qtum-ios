@@ -21,16 +21,8 @@ extern NSInteger const brandKeyWordsCount;
 
 - (instancetype)initWithName:(NSString *) name pin:(NSString *) pin seedWords:(NSArray *) seedWords;
 
-@property (copy, nonatomic) NSString *name;
-@property (strong, nonatomic) QTUMBigNumber *balance;
-@property (strong, nonatomic) QTUMBigNumber *unconfirmedBalance;
-@property (copy, nonatomic) NSArray <HistoryElementProtocol> *historyArray;
-@property (copy, nonatomic) NSString *mainAddress;
-@property (copy, nonatomic) NSString *symbol;
 @property (copy, nonatomic, readonly) NSArray *seedWords; //deprecated
-@property (weak, nonatomic) id <Managerable> manager;
 @property (nonatomic, readonly) NSInteger countOfUsedKeys;
-@property (strong, nonatomic) HistoryDataStorage *historyStorage;
 
 - (BOOL)configAddressesWithPin:(NSString *) pin;
 

@@ -65,6 +65,11 @@ failure;
 			 successHandler:(void (^)(id responseObject)) success
 		  andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
 
+- (void)getTokenHistoryWithParam:(NSDictionary *) param
+                    tokenAddress:(NSString *) tokenAddress
+                  successHandler:(void (^)(id responseObject)) success
+               andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
+
 - (void)infoAboutTransaction:(NSString *) txhash
 			  successHandler:(void (^)(id responseObject)) success
 		   andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
