@@ -20,10 +20,11 @@
 @property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) QTUMBigNumber *balance;
 @property (strong, nonatomic) QTUMBigNumber *unconfirmedBalance;
-@property (strong, nonatomic) HistoryDataStorage *historyStorage;
+@property (strong, nonatomic) id <HistoryStorageProtocol> historyStorage;
 @property (copy, nonatomic) NSString *mainAddress;
 @property (copy, nonatomic) NSString *symbol;
 @property (weak, nonatomic) id <Managerable> manager;
+@property (copy, nonatomic) NSArray <id <HistoryElementProtocol>> *historyArray;
 
 - (void)updateBalanceWithHandler:(void (^)(BOOL success)) complete;
 

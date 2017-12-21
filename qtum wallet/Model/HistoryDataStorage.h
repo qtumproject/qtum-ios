@@ -8,25 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "HistoryElement.h"
+#import "HistoryStorageProtocol.h"
 
 @protocol Spendable;
+@protocol HistoryElementProtocol;
 
 extern NSString *const HistoryUpdateEvent;
 
-@interface HistoryDataStorage : NSObject
+@interface HistoryDataStorage : NSObject <HistoryStorageProtocol>
 
-@property (strong, nonatomic, readonly) NSMutableArray<HistoryElement *> *historyPrivate;
-@property (assign, nonatomic) NSInteger pageIndex;
-@property (weak, nonatomic) id <Spendable> spendableOwner;
-
-- (void)addHistoryElements:(NSArray<HistoryElement *> *) elements;
-
-- (void)setHistoryItem:(HistoryElement *) item;
-
-- (void)deleteHistoryItem:(HistoryElement *) item;
-
-- (HistoryElement *)updateHistoryItem:(HistoryElement *) item;
-
-- (void)setHistory:(NSArray<HistoryElement *> *) history;
 
 @end

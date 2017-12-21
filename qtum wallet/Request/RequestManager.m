@@ -157,6 +157,27 @@
 	}];
 }
 
+- (void)getTokenHistoryWithParam:(NSDictionary *) param
+                    tokenAddress:(NSString *) tokenAddress
+                  successHandler:(void (^)(id responseObject)) success
+               andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
+    
+    NSString *pathString = [NSString stringWithFormat:@"qrc20/%@/transfers", tokenAddress];
+
+    [self.networkService requestWithType:GET path:pathString andParams:param withSuccessHandler:^(id _Nonnull responseObject) {
+        
+        __block id response = responseObject;
+        dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            success (response);
+            DLog(@"Succes");
+        });
+        
+    }                  andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
+        failure (error, message);
+        DLog(@"Failure");
+    }];
+}
+
 - (void)infoAboutTransaction:(NSString *) txhash
 			  successHandler:(void (^)(id responseObject)) success
 		   andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {

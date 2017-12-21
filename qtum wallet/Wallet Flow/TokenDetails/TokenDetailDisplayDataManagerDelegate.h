@@ -25,4 +25,6 @@
 
 - (void)didPressTokenAddressControlWithToken:(Contract *) token;
 
+- (void)didPressHistoryItemForToken:( id <HistoryElementProtocol>) item;
+
 @end

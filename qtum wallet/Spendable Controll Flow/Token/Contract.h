@@ -24,16 +24,8 @@
 
 @interface Contract : NSObject <Spendable>
 
-@property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *localName;
 @property (assign, nonatomic) BOOL isActive;
-@property (strong, nonatomic) QTUMBigNumber *balance;
-@property (strong, nonatomic) QTUMBigNumber *unconfirmedBalance;
-@property (copy, nonatomic) NSArray <HistoryElementProtocol> *historyArray;
-@property (copy, nonatomic) NSString *mainAddress;
-@property (copy, nonatomic) NSString *symbol;
-@property (weak, nonatomic) ContractManager *manager;
-@property (strong, nonatomic) HistoryDataStorage *historyStorage;
 
 @property (copy, nonatomic) NSString *contractAddress;
 @property (copy, nonatomic) NSString *contractCreationAddressAddress;

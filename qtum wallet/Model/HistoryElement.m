@@ -8,6 +8,20 @@
 
 @implementation HistoryElement
 
+@synthesize
+    address = _address,
+    amount = _amount,
+    amountString = _amountString,
+    txHash = _txHash,
+    dateNumber = _dateNumber,
+    shortDateString = _shortDateString,
+    fullDateString = _fullDateString,
+    send = _send,
+    confirmed = _confirmed,
+    isSmartContractCreater = _isSmartContractCreater,
+    fromAddreses = _fromAddreses,
+    toAddresses = _toAddresses,
+    currency = _currency;
 
 - (void)calcAmountAndAdresses:(NSDictionary *) dictionary {
 
@@ -38,13 +52,13 @@
 	}
 
 	CGFloat amount = outMoney - inMoney;
-	self.amount = @(amount);
+	self.amount = [QTUMBigNumber decimalWithString:[NSString stringWithFormat:@"%f", amount]];
 	self.send = amount < 0;
 }
 
 #pragma mark - Accessory Methods
 
-- (void)setAmount:(NSNumber *) amount {
+- (void)setAmount:(QTUMBigNumber *) amount {
 	_amount = amount;
 	[self createAmountString];
 }
@@ -61,6 +75,11 @@
 	return _fromAddreses;
 }
 
+- (NSString *)currency {
+
+    return @"QTUM";
+}
+
 - (NSMutableArray *)toAddresses {
 	if (!_toAddresses) {
 		_toAddresses = @[].mutableCopy;
@@ -71,7 +90,7 @@
 #pragma mark - Private Methods
 
 - (void)createAmountString {
-	self.amountString = [NSString stringWithFormat:@"%0.3f %@", [self.amount floatValue], NSLocalizedString(@"QTUM", nil)];
+	self.amountString = [NSString stringWithFormat:@"%@ %@", [self.amount roundedNumberWithScale:3].stringValue, NSLocalizedString(@"QTUM", nil)];
 }
 
 - (void)createDateString {
@@ -178,7 +197,6 @@
 	} else {
 		return self.shortDateString;
 	}
-
 }
 
 - (NSDictionary *)hashTableOfKeys {
@@ -218,7 +236,7 @@
 	if (self.address && object.address && ![self.address isEqualToString:object.address]) {
 		return NO;
 	}
-	if (self.amount && object.amount && ![self.amount isEqualToNumber:object.amount]) {
+	if (self.amount && object.amount && ![self.amount isEqualToDecimalNumber:object.amount]) {
 		return NO;
 	}
 	if (self.amountString && object.amountString && ![self.amountString isEqualToString:object.amountString]) {
@@ -235,5 +253,5 @@
 	}
 	return YES;
 }
-
+    
 @end

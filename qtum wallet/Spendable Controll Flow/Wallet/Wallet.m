@@ -23,6 +23,16 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 @implementation Wallet
 
+@synthesize symbol = _symbol;
+@synthesize balance = _balance;
+@synthesize unconfirmedBalance = _unconfirmedBalance;
+@synthesize historyStorage = _historyStorage;
+@synthesize name = _name;
+@synthesize historyArray = _historyArray;
+@synthesize manager = _manager;
+@synthesize mainAddress = _mainAddress;
+
+
 - (instancetype)initWithName:(NSString *) name pin:(NSString *) pin {
 
 	self = [super init];

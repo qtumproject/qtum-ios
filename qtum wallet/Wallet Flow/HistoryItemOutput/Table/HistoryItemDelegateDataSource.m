@@ -37,8 +37,10 @@
 	cell.addressLabel.text = [element objectForKey:@"address"];
 	cell.valueLabel.text = [NSString stringWithFormat:@"%@", [element objectForKey:@"value"]];
 	if (!cell.currencyLabel) {
-		cell.valueLabel.text = [NSString stringWithFormat:@"%@", cell.valueLabel.text, NSLocalizedString(@"QTUM", nil)];
-	}
+		cell.valueLabel.text = [NSString stringWithFormat:@"%@ %@", cell.valueLabel.text, self.item.currency];
+    } else {
+        cell.currencyLabel.text = _item.currency;
+    }
 
 	return cell;
 }

@@ -23,12 +23,12 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)setHistoryElement:(HistoryElement *) historyElement {
+- (void)setHistoryElement:(id<HistoryElementProtocol>) historyElement {
 
 	_historyElement = historyElement;
 
 	self.addressLabel.text = historyElement.address;
-	self.amountLabel.text = self.symbolLabel ? [NSString stringWithFormat:@"%0.3f", [self.historyElement.amount floatValue]] : historyElement.amountString;
+	self.amountLabel.text = self.symbolLabel ? [historyElement.amount roundedNumberWithScale:3].stringValue : historyElement.amountString;
 	self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0) ? [historyElement formattedDateStringSinceCome] : NSLocalizedString(@"Unconfirmed", nil);
 
 	self.addressLabel.text = historyElement.txHash;

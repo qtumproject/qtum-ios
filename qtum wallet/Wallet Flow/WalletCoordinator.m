@@ -189,9 +189,40 @@
 
 - (void)didPullToUpdateToken:(Contract *) token {
 
-	[token updateWithHandler:nil];
+    [SLocator.popupService showLoaderPopUp];
+    
+    __block BOOL infoUpdated = NO;
+    __block BOOL historyUpdated = NO;
+    
+    [token updateWithHandler:^(BOOL success) {
+        infoUpdated = YES;
+        
+        if (historyUpdated && infoUpdated) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SLocator.popupService dismissLoader];
+            });
+        }
+    }];
+    
+    [token updateHistoryWithHandler:^(BOOL success) {
+        
+        historyUpdated = YES;
+        
+        if (historyUpdated && infoUpdated) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SLocator.popupService dismissLoader];
+            });
+        }
+    } andPage:0];
 }
 
+- (void)didSelectTokenHistoryItem:(id <HistoryElementProtocol>) item {
+    
+    NSObject <HistoryItemOutput> *controller = [SLocator.controllersFactory createHistoryItem];
+    controller.item = item;
+    controller.delegate = self;
+    [self.navigationController pushViewController:[controller toPresent] animated:YES];
+}
 
 #pragma mark - Configuration
 
@@ -327,13 +358,13 @@
 
 	[self configWallet];
 	[self setWalletToDelegates];
-	[self updateControls];
 	[self updateTokenDetail];
 	__weak __typeof (self) weakSelf = self;
 
 	dispatch_async (dispatch_get_main_queue (), ^{
 
 		[weakSelf updateSpendables];
+        [weakSelf updateControls];
 	});
 }
 

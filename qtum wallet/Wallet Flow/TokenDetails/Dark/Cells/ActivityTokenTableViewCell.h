@@ -10,4 +10,14 @@
 
 @interface ActivityTokenTableViewCell : UITableViewCell
 
+@property (nonatomic) id<HistoryElementProtocol> historyElement;
+
+@property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *symbolLabel;
+
+- (void)changeHighlight:(BOOL) value;
 @end

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) UIView *refreshBackView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForBlueView;
+@property (weak, nonatomic) IBOutlet UIView *noTransactionView;
 
 
 @end
@@ -39,6 +40,7 @@
 	self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
 
 	[self updateControls];
+    [self.delegate didPullToUpdateToken:self.token];
 }
 
 #pragma mark - Configuration
@@ -51,6 +53,7 @@
 	[self.tableView reloadData];
 	UINib *sectionHeaderNib = [UINib nibWithNibName:@"HistoryTableHeaderViewLight" bundle:nil];
 	[self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
+    
 }
 
 - (void)configRefreshControl {
@@ -76,9 +79,17 @@
 
 - (void)refreshTable {
 
+    __weak __typeof(self)weakSelf = self;
 	dispatch_async (dispatch_get_main_queue (), ^{
-		[self.refreshControl endRefreshing];
-		[self.tableView reloadData];
+        
+        if (weakSelf.token.historyArray.count > 0) {
+            weakSelf.noTransactionView.hidden = YES;
+        } else {
+            weakSelf.noTransactionView.hidden = NO;
+        }
+        
+		[weakSelf.refreshControl endRefreshing];
+		[weakSelf.tableView reloadData];
 	});
 }
 
@@ -86,8 +97,11 @@
 
 - (void)updateControls {
 
-	self.availibleBalanceShortInfoLabel.text = [NSString stringWithFormat:@"%@ %@", token.balanceString ? : @"", token.symbol ? : @""];
-	[self refreshTable];
+    dispatch_async (dispatch_get_main_queue (), ^{
+        self.availibleBalanceShortInfoLabel.text = [NSString stringWithFormat:@"%@ %@", token.balanceString ? : @"", token.symbol ? : @""];
+        [self refreshTable];
+    });
+
 }
 
 #pragma mark - Actions
@@ -114,6 +128,10 @@
 
 	[self updateWithOffsetNavBarView:offset];
 	[self updateWithOffsetShortInfoView:offset];
+}
+
+- (void)didPressHistoryItemForToken:( id <HistoryElementProtocol>) item {
+    [self.delegate didSelectTokenHistoryItem:item];
 }
 
 #pragma mark - Updating depend on scroll

@@ -10,7 +10,7 @@
 #import "SocketManager.h"
 #import "InterfaceInputFormModel.h"
 #import "WalletManagerRequestAdapter.h"
-
+#import "ContractManagerRequestAdapter.h"
 
 NSString *const kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -32,6 +32,8 @@ NSString *const kLocalContractName = @"kLocalContractName";
 @property (assign, nonatomic) BOOL observingForSpendableStopped;
 @property (assign, nonatomic) BOOL haveAuthUser;
 
+@property (strong, nonatomic) ContractManagerRequestAdapter *requestAdapter;
+
 @end
 
 @implementation ContractManager
@@ -47,6 +49,8 @@ NSString *const kLocalContractName = @"kLocalContractName";
 		[[NSNotificationCenter defaultCenter] addObserver:self
 												 selector:@selector (didForceStopObservingForSpendable)
 													 name:kSocketDidDisconnect object:nil];
+        
+        _requestAdapter = [ContractManagerRequestAdapter new];
 	}
 	return self;
 }
@@ -476,72 +480,105 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 - (void)updateSpendableObject:(Contract *) token {
 
-	__weak __typeof (self) weakSelf = self;
-
-	if (token.templateModel.type == TokenType) {
-
-		AbiinterfaceItem *nameProperty = [SLocator.contractInterfaceManager tokenStandartNamePropertyInterface];
-		AbiinterfaceItem *totalSupplyProperty = [SLocator.contractInterfaceManager tokenStandartTotalSupplyPropertyInterface];
-		AbiinterfaceItem *symbolProperty = [SLocator.contractInterfaceManager tokenStandartSymbolPropertyInterface];
-		AbiinterfaceItem *decimalProperty = [SLocator.contractInterfaceManager tokenStandartDecimalPropertyInterface];
-
-		NSString *hashFuctionName = [SLocator.contractInterfaceManager stringHashOfFunction:nameProperty];
-		NSString *hashFuctionTotalSupply = [SLocator.contractInterfaceManager stringHashOfFunction:totalSupplyProperty];
-		NSString *hashFuctionSymbol = [SLocator.contractInterfaceManager stringHashOfFunction:symbolProperty];
-		NSString *hashFuctionDecimal = [SLocator.contractInterfaceManager stringHashOfFunction:decimalProperty];
-
-		[SLocator.requestManager callFunctionToContractAddress:token.contractAddress
-												  frommAddress:nil
-													withHashes:@[hashFuctionName, hashFuctionTotalSupply, hashFuctionSymbol, hashFuctionDecimal] withHandler:^(id responseObject) {
-
-					if (![responseObject isKindOfClass:[NSError class]] && [responseObject[@"items"] isKindOfClass:[NSArray class]]) {
-
-						for (NSDictionary *item in responseObject[@"items"]) {
-							NSString *hash = item[@"hash"];
-							NSString *output = item[@"output"];
-
-							if ([hash isEqualToString:hashFuctionName.uppercaseString]) {
-								NSArray *array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:nameProperty];
-								if (array.count > 0) {
-									token.name = array[0];
-								}
-							} else if ([hash isEqualToString:hashFuctionTotalSupply.uppercaseString]) {
-
-								NSArray *array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:totalSupplyProperty];
-								if (array.count > 0) {
-									token.totalSupply = array[0];
-								}
-
-							} else if ([hash isEqualToString:hashFuctionSymbol.uppercaseString]) {
-
-								NSArray *array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:symbolProperty];
-								if (array.count > 0) {
-									token.symbol = array[0];
-								}
-							} else if ([hash isEqualToString:hashFuctionDecimal.uppercaseString]) {
-
-								NSArray *array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:decimalProperty];
-								if (array.count > 0) {
-									token.decimals = array[0];
-								}
-							}
-						}
-					}
-					[weakSelf tokenDidChange:token];
-				}];
-	}
+    [self updateBalanceOfSpendableObject:token withHandler:nil];
 }
 
-- (void)updateBalanceOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL)) complete {
-	[complete copy];
-	complete (NO);
-	DLog(@"complete ->%@", complete);
+- (void)updateBalanceOfSpendableObject:(Contract*) token withHandler:(void (^)(BOOL)) complete {
+    
+
+    __weak __typeof (self) weakSelf = self;
+    
+    if (token.templateModel.type == TokenType) {
+        
+        AbiinterfaceItem *nameProperty = [SLocator.contractInterfaceManager tokenStandartNamePropertyInterface];
+        AbiinterfaceItem *totalSupplyProperty = [SLocator.contractInterfaceManager tokenStandartTotalSupplyPropertyInterface];
+        AbiinterfaceItem *symbolProperty = [SLocator.contractInterfaceManager tokenStandartSymbolPropertyInterface];
+        AbiinterfaceItem *decimalProperty = [SLocator.contractInterfaceManager tokenStandartDecimalPropertyInterface];
+        
+        NSString *hashFuctionName = [SLocator.contractInterfaceManager stringHashOfFunction:nameProperty];
+        NSString *hashFuctionTotalSupply = [SLocator.contractInterfaceManager stringHashOfFunction:totalSupplyProperty];
+        NSString *hashFuctionSymbol = [SLocator.contractInterfaceManager stringHashOfFunction:symbolProperty];
+        NSString *hashFuctionDecimal = [SLocator.contractInterfaceManager stringHashOfFunction:decimalProperty];
+        
+        [SLocator.requestManager callFunctionToContractAddress:token.contractAddress
+                                                  frommAddress:nil
+                                                    withHashes:@[hashFuctionName, hashFuctionTotalSupply, hashFuctionSymbol, hashFuctionDecimal] withHandler:^(id responseObject) {
+                                                        
+                                                        if (![responseObject isKindOfClass:[NSError class]] && [responseObject[@"items"] isKindOfClass:[NSArray class]]) {
+                                                            
+                                                            for (NSDictionary *item in responseObject[@"items"]) {
+                                                                NSString *hash = item[@"hash"];
+                                                                NSString *output = item[@"output"];
+                                                                
+                                                                if ([hash isEqualToString:hashFuctionName.uppercaseString]) {
+                                                                    NSArray *array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:nameProperty];
+                                                                    if (array.count > 0) {
+                                                                        token.name = array[0];
+                                                                    }
+                                                                } else if ([hash isEqualToString:hashFuctionTotalSupply.uppercaseString]) {
+                                                                    
+                                                                    NSArray *array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:totalSupplyProperty];
+                                                                    if (array.count > 0) {
+                                                                        token.totalSupply = array[0];
+                                                                    }
+                                                                    
+                                                                } else if ([hash isEqualToString:hashFuctionSymbol.uppercaseString]) {
+                                                                    
+                                                                    NSArray *array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:symbolProperty];
+                                                                    if (array.count > 0) {
+                                                                        token.symbol = array[0];
+                                                                    }
+                                                                } else if ([hash isEqualToString:hashFuctionDecimal.uppercaseString]) {
+                                                                    
+                                                                    NSArray *array = [SLocator.contractArgumentsInterpretator аrrayFromContractArguments:[NSString dataFromHexString:output] andInterface:decimalProperty];
+                                                                    if (array.count > 0) {
+                                                                        token.decimals = array[0];
+                                                                    }
+                                                                }
+                                                                
+                                                                if (complete) {
+                                                                    complete(YES);
+                                                                }
+                                                            }
+                                                        } else {
+                                                            if (complete) {
+                                                                complete(NO);
+                                                            }
+                                                        }
+                                                        
+                                                        [weakSelf tokenDidChange:token];
+                                                    }];
+    }
 }
 
 - (void)updateHistoryOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL)) complete andPage:(NSInteger) page {
-	[complete copy];
-	complete (NO);
-	object.historyStorage.pageIndex = page;
+    
+    static NSInteger batch = 25;
+    NSArray* allkeysAddresses = SLocator.walletManager.wallet.allKeysAdreeses;
+    
+    NSDictionary* param = @{@"limit": @(batch),
+                            @"offset": @(page * batch),
+                            @"addresses[]" : allkeysAddresses
+                            };
+    
+    [self.requestAdapter getHistoryForTokenAddress:object.mainAddress
+                                          andParam:param
+                                             token:object
+                                withSuccessHandler:^(NSArray <id <HistoryElementProtocol>> *history) {
+        if (page > object.historyStorage.pageIndex) {
+            [object.historyStorage addHistoryElements:history];
+        } else {
+            [object.historyStorage setHistory:history];
+        }
+        object.historyStorage.pageIndex = page;
+        if (complete) {
+            complete (YES);
+        }
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        if (complete) {
+            complete (NO);
+        }
+    }];
 	DLog(@"complete ->%@", complete);
 }
 
