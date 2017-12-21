@@ -17,7 +17,7 @@ unit_tests:
   stage: unit_tests
   artifacts:
     paths:
-      - fastlane/logs
+      - fastlane/test_output
   script:
     - fastlane tests
   tags:
