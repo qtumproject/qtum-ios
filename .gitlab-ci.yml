@@ -8,6 +8,7 @@ variables:
 
 before_script:
   - unlock_ci_keychain.sh
+  - get_ci_qtum_settings.sh
   - gem install bundler
   - bundle install
 
