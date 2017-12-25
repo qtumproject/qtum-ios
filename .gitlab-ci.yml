@@ -29,6 +29,7 @@ build:
   artifacts:
     paths:
       - fastlane/logs
+      - fastlane/build
   script:
     - fastlane beta_testnet
   tags:
