@@ -6,7 +6,7 @@ platform :ios do
 
   lane :configure do
  
-    libraries()
+    libraries
     
   end
 
@@ -30,7 +30,7 @@ platform :ios do
 
   lane :tests do
     
-    libraries()
+    libraries
 
     scan(
       scheme: ENV["APP_SCHEME"]
@@ -39,7 +39,7 @@ platform :ios do
 
   lane :beta_mainnet do
     
-    libraries()
+    libraries
 
     config = generate_fastlane_xcconfig(identifier:"org.qtum.qtum-wallet")
 
@@ -71,7 +71,7 @@ platform :ios do
 
   lane :beta_testnet do
     
-    libraries()
+    libraries
 
     config = generate_fastlane_xcconfig(identifier:"org.qtum.qtum-wallet", app_name:"QTUM-QA", testnet:true)
 
