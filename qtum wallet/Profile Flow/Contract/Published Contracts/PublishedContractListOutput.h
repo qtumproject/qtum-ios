@@ -18,5 +18,7 @@
 @property (weak, nonatomic) id <PublishedContractListOutputDelegate> delegate;
 
 - (void)setNeedShowingTrainingScreen;
+- (void)reloadData;
+
 
 @end

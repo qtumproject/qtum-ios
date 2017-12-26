@@ -101,6 +101,12 @@ failure;
 	   withSuccessHandler:(void (^)(id responseObject)) success
 		andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
 
+// Contracts info
+
+- (void)checkExistsContractWithAddress:(NSString *) addressContract
+                    withSuccessHandler:(void (^)(id responseObject)) success
+                     andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
+
 // Observing for events
 
 - (void)startObservingAdresses:(NSArray *) addresses;
@@ -176,6 +182,8 @@ failure;
 
 - (void)getCategories:(void (^)(id responseObject)) success
 	andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
+
+
 
 
 @end

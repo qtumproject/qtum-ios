@@ -234,6 +234,15 @@
 	self.needShowTrainingScreen = YES;
 }
 
+- (void)reloadData {
+    
+    __weak __typeof (self) weakSelf = self;
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.tableView reloadData];
+    });
+}
+
 #pragma mark - QTUMSwipableCellWithButtonsDelegate
 
 - (void)buttonOneActionForIndexPath:(NSIndexPath *) indexPath {

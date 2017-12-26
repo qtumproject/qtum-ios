@@ -21,6 +21,9 @@ typedef void(^CallFunctionHandler)(TransactionManagerErrorType errorType,
 typedef void(^QueryFunctionHandler)(NSString* result,
                                     NSError *error);
 
+typedef void(^ExistingContractHandler)(BOOL exist,
+                                    NSError *error);
+
 @interface CallContractFacadeService : NSObject
 
 - (void)createSmartContractWithTemplate:(NSString *) templatePath
@@ -44,5 +47,8 @@ typedef void(^QueryFunctionHandler)(NSString* result,
                             andParam:(NSArray<ResultTokenInputsModel *> *) inputs
                             andToken:(Contract *) contract
                           andHandler:(QueryFunctionHandler) completion;
+
+-(void)checkContractWithAddress:(NSString *) contractAddress
+                     andHandler:(ExistingContractHandler) completion;
 
 @end

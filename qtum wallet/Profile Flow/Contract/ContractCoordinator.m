@@ -64,6 +64,7 @@
 @property (nonatomic) TemplateModel *activeTemplateForLibrary;
 @property (nonatomic) BOOL isLibraryViewControllerOnlyForTokens;
 @property (copy, nonatomic) NSString *localContractName;
+@property (weak, nonatomic) NSObject <PublishedContractListOutput> *publisedContractsOutput;
 
 @property (strong, nonatomic) QStoreCoordinator *qStoreCoordinator;
 
@@ -99,10 +100,30 @@
 	[self.navigationController pushViewController:[output toPresent] animated:YES];
 }
 
+-(void)updatePublishedContracts {
+    
+    if (self.publisedContractsOutput) {
+        
+        __weak __typeof(self)weakSelf = self;
+        dispatch_async(dispatch_queue_create("com.example.qtum.contract.update", DISPATCH_QUEUE_CONCURRENT), ^{
+            
+            NSArray *sortedContracts = [[SLocator.contractManager allContracts] sortedArrayUsingComparator:^(Contract *t1, Contract *t2) {
+                return [t1.creationDate compare:t2.creationDate];
+            }];
+            
+            weakSelf.publisedContractsOutput.contracts = sortedContracts;
+            weakSelf.publisedContractsOutput.smartContractPretendents = [SLocator.contractManager smartContractPretendentsCopy];
+            weakSelf.publisedContractsOutput.failedContractPretendents = [SLocator.contractManager failedContractPretendentsCopy];
+            [weakSelf.publisedContractsOutput reloadData];
+        });
+    }
+}
+
 - (void)showMyPyblishedContract {
 
 	NSObject <PublishedContractListOutput> *output = [SLocator.controllersFactory createSmartContractsListViewController];
 	output.delegate = self;
+    self.publisedContractsOutput = output;
 
 	NSArray *sortedContracts = [[SLocator.contractManager allContracts] sortedArrayUsingComparator:^(Contract *t1, Contract *t2) {
 		return [t1.creationDate compare:t2.creationDate];
@@ -203,6 +224,17 @@
 		output.delegate = self;
 		output.token = contract;
 		[self.navigationController pushViewController:[output toPresent] animated:true];
+        
+        [SLocator.popupService showLoaderPopUp];
+        
+        __weak typeof (output) weakOutput = output;
+
+        [SLocator.callContractFacadeService checkContractWithAddress:contract.contractAddress andHandler:^(BOOL exist, NSError *error) {
+            if (!error && !exist) {
+                [weakOutput showUnsubscribeContractScreen];
+            }
+            [SLocator.popupService dismissLoader];
+        }];
 	}
 }
 
@@ -394,6 +426,13 @@
 
 }
 
+- (void)didUnsubscribeFromDeletedContract:(Contract *) token {
+    
+    [SLocator.contractManager removeContract:token];
+    [self.navigationController popViewControllerAnimated:YES];
+    [self updatePublishedContracts];
+}
+
 #pragma mark - ContractFunctionDetailOutputDelegate
 
 - (void)didCallFunctionWithItem:(AbiinterfaceItem *) item
@@ -482,6 +521,7 @@
 - (void)didUnsubscribeFromContract:(Contract *) contract {
 
 	[SLocator.contractManager removeContract:contract];
+    [self updatePublishedContracts];
 }
 
 - (void)didUnsubscribeFromContractPretendentWithTxHash:(NSString *) hexTransaction {

@@ -16,6 +16,9 @@
 		B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552C1F163C4D00E64E46 /* ConfirmPinForExportViewController.m */; };
 		B30355301F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */; };
 		B30355331F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */; };
+		B3045BED1FF2319A003089F1 /* NoContractView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3045BEC1FF2319A003089F1 /* NoContractView.xib */; };
+		B3045BF01FF231AC003089F1 /* NoContractView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3045BEF1FF231AC003089F1 /* NoContractView.m */; };
+		B3045BF21FF23A6E003089F1 /* NoContractViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3045BF11FF23A6E003089F1 /* NoContractViewLight.xib */; };
 		B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */; };
 		B305A10C1FCC252A00FC4D2F /* NewPaymentOutputEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A10B1FCC252A00FC4D2F /* NewPaymentOutputEntity.m */; };
 		B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B305A1101FCD804E00FC4D2F /* BaseRouter.m */; };
@@ -738,6 +741,10 @@
 		B303552F1F163E1900E64E46 /* ConfirmPinForExportViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinForExportViewControllerDark.m; sourceTree = "<group>"; };
 		B30355311F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinForExportViewControllerLight.h; sourceTree = "<group>"; };
 		B30355321F163E2800E64E46 /* ConfirmPinForExportViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinForExportViewControllerLight.m; sourceTree = "<group>"; };
+		B3045BEC1FF2319A003089F1 /* NoContractView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoContractView.xib; sourceTree = "<group>"; };
+		B3045BEE1FF231AC003089F1 /* NoContractView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContractView.h; sourceTree = "<group>"; };
+		B3045BEF1FF231AC003089F1 /* NoContractView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoContractView.m; sourceTree = "<group>"; };
+		B3045BF11FF23A6E003089F1 /* NoContractViewLight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoContractViewLight.xib; sourceTree = "<group>"; };
 		B3054E2E1F0B9EE4001B1F63 /* SendCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCoordinator.h; sourceTree = "<group>"; };
 		B3054E2F1F0B9EE4001B1F63 /* SendCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCoordinator.m; sourceTree = "<group>"; };
 		B3054E321F0BBAFE001B1F63 /* NewPaymentOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPaymentOutput.h; sourceTree = "<group>"; };
@@ -2171,6 +2178,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B3045BEB1FF23178003089F1 /* No Contract View */ = {
+			isa = PBXGroup;
+			children = (
+				B3045BEC1FF2319A003089F1 /* NoContractView.xib */,
+				B3045BEE1FF231AC003089F1 /* NoContractView.h */,
+				B3045BEF1FF231AC003089F1 /* NoContractView.m */,
+				B3045BF11FF23A6E003089F1 /* NoContractViewLight.xib */,
+			);
+			path = "No Contract View";
+			sourceTree = "<group>";
+		};
 		B3054E311F0BBACD001B1F63 /* NewPaymentOutput */ = {
 			isa = PBXGroup;
 			children = (
@@ -3066,13 +3084,6 @@
 			path = "Watch Tokens";
 			sourceTree = "<group>";
 		};
-		B39048641FDFEE1F00D5F735 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		B39220571F99D18500E8F7D9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -3215,7 +3226,6 @@
 		B3CBDF251F2B3DE800C80D4E /* Published Contracts */ = {
 			isa = PBXGroup;
 			children = (
-				B39048641FDFEE1F00D5F735 /* New Group */,
 				B3CBDF371F2B489200C80D4E /* Cells */,
 				B3CBDF261F2B3E1E00C80D4E /* PublishedContractListOutput.h */,
 				B3CBDF271F2B3E2E00C80D4E /* PublishedContractListOutputDelegate.h */,
@@ -5035,6 +5045,7 @@
 		E7FD365E1DC73B2400748177 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3045BEB1FF23178003089F1 /* No Contract View */,
 				E7C101B21F13CB9800848526 /* BorderedLabel */,
 				B3141E5B1F3099180095E3DF /* ContractNameTextFiedl */,
 				B3255C491E1CD40300CD610B /* Diagram animation */,
@@ -5378,6 +5389,7 @@
 				B3EE8F571F13BAE000131823 /* simplonmono-regular.ttf in Resources */,
 				E7EB859C1FE7F30300FCA460 /* config.xcconfig in Resources */,
 				E78DD7641F4C2B6A00B25FB3 /* AddressTransferPopup.storyboard in Resources */,
+				B3045BF21FF23A6E003089F1 /* NoContractViewLight.xib in Resources */,
 				E70CFD571F1F66BF00230C81 /* SelectSearchTypeView.xib in Resources */,
 				E70CFD111F1F63F400230C81 /* InformationPopUp.storyboard in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
@@ -5429,6 +5441,7 @@
 				E7881B421F0BB7C700BD6AB2 /* proximanova-regular.otf in Resources */,
 				E713A47B1EEE966100A2FA40 /* CheckButton.xib in Resources */,
 				B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */,
+				B3045BED1FF2319A003089F1 /* NoContractView.xib in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
 				E70CFD3B1F1F647A00230C81 /* ConfirmPurchasePopUp.storyboard in Resources */,
 				B32EEC6B1EB3546800512FED /* News.storyboard in Resources */,
@@ -5864,6 +5877,7 @@
 				B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */,
 				B3D5FE5B1F56AF3D006A2BF2 /* AbiParameterTypeBytes.m in Sources */,
 				E73D37071ECF19CC009173BD /* TokenDetailsTableSource.m in Sources */,
+				B3045BF01FF231AC003089F1 /* NoContractView.m in Sources */,
 				B3C503B51ED56E8A005B49C0 /* WalletHeaderCell.m in Sources */,
 				B3F76A701EDD667D00108DE9 /* SmartContractMenuViewController.m in Sources */,
 				E713A4861EEEB70100A2FA40 /* RestoreContractsPopUpViewController.m in Sources */,
