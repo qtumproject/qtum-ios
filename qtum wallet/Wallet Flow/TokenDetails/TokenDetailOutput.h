@@ -19,5 +19,6 @@
 @property (nonatomic, weak) id <TokenDetailDataDisplayManager> source;
 
 - (void)updateControls;
+- (void)showUnsubscribeContractScreen;
 
 @end

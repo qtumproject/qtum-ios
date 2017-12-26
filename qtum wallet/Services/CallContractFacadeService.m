@@ -124,6 +124,20 @@
                                                 }];
 }
 
+-(void)checkContractWithAddress:(NSString *) contractAddress
+                     andHandler:(ExistingContractHandler) completion {
+    
+    [SLocator.requestManager checkExistsContractWithAddress:contractAddress withSuccessHandler:^(id responseObject) {
+        
+        BOOL exist = [responseObject[@"exists"] boolValue];
+        completion(exist, nil);
+        
+    } andFailureHandler:^(NSError *error, NSString *message) {
+        
+        completion(nil, error);
+    }];
+}
+
 
 
 

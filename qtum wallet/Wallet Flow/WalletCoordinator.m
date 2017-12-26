@@ -132,6 +132,17 @@
 	output.delegate = self;
 	output.source = self.tokenDetailsTableSource;
 	[self.navigationController pushViewController:[output toPresent] animated:YES];
+    
+    [SLocator.popupService showLoaderPopUp];
+    
+    __weak typeof (output) weakOutput = output;
+    
+    [SLocator.callContractFacadeService checkContractWithAddress:item.contractAddress andHandler:^(BOOL exist, NSError *error) {
+        if (!error && !exist) {
+            [weakOutput showUnsubscribeContractScreen];
+        }
+        [SLocator.popupService dismissLoader];
+    }];
 }
 
 #pragma mark - TokenDetailOutputDelegate
@@ -224,6 +235,13 @@
     [self.navigationController pushViewController:[controller toPresent] animated:YES];
 }
 
+- (void)didUnsubscribeFromDeletedContract:(Contract *) token {
+    
+    [SLocator.contractManager removeContract:token];
+    [self.navigationController popViewControllerAnimated:YES];
+    [self updateTokensList];
+}
+
 #pragma mark - Configuration
 
 - (void)configWallet {
@@ -271,6 +289,14 @@
 			[weakSelf stopRefreshing];
 		}                                 andPage:0];
 	});
+}
+
+-(void)updateTokensList {
+    
+    if (self.tokenController) {
+        self.tokenController.tokens = [SLocator.contractManager allActiveTokens];
+        [self.tokenController reloadTable];
+    }
 }
 
 - (void)stopRefreshing {

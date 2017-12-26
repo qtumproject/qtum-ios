@@ -210,6 +210,23 @@
 	}];
 }
 
+- (void)checkExistsContractWithAddress:(NSString *) addressContract
+                    withSuccessHandler:(void (^)(id responseObject)) success
+                     andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
+    
+    NSString *pathString = [NSString stringWithFormat:@"contracts/%@/exists", addressContract];
+    
+    [self.networkService requestWithType:GET path:pathString andParams:nil withSuccessHandler:^(id _Nonnull responseObject) {
+        
+        success (responseObject);
+        DLog(@"Succes");
+        
+    } andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
+        failure (error, message);
+        DLog(@"Failure");
+    }];
+}
+
 #pragma mark - BitCode
 
 - (void)generateTokenBitcodeWithDict:(NSDictionary *) param

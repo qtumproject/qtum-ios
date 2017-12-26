@@ -23,4 +23,7 @@
 
 - (void)didPullToUpdateToken:(Contract *) token;
 
+- (void)didUnsubscribeFromDeletedContract:(Contract *) token;
+
+
 @end

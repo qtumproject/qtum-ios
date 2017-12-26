@@ -17,4 +17,6 @@
 @property (weak, nonatomic) id <ContractFunctionsOutputDelegate> delegate;
 @property (weak, nonatomic) Contract *token;
 
+-(void)showUnsubscribeContractScreen;
+
 @end

@@ -26,4 +26,5 @@
                         andParam:(NSArray<ResultTokenInputsModel *> *) inputs
                         andToken:(Contract *) token;
 
+
 @end

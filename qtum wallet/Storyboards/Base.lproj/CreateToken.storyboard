@@ -714,13 +714,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxN-pE-Q1E">
-                                                    <rect key="frame" x="10" y="8.5" width="26.5" height="15.5"/>
+                                                    <rect key="frame" x="10" y="7.5" width="26.5" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publish Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-Eu-hd4">
-                                                    <rect key="frame" x="294.5" y="8.5" width="70.5" height="15.5"/>
+                                                    <rect key="frame" x="294.5" y="7.5" width="70.5" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="12"/>
                                                     <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1598,6 +1598,7 @@
                     <connections>
                         <outlet property="contractAddressLabel" destination="sUZ-tb-tPm" id="KnE-7O-1UU"/>
                         <outlet property="contractAddressTextLabel" destination="aDo-6G-OkB" id="6yD-co-buR"/>
+                        <outlet property="navigationBarView" destination="ub7-8T-x6f" id="aQf-Gc-r6S"/>
                         <outlet property="tableView" destination="Ju8-e1-itP" id="AH8-Ax-lmq"/>
                         <outlet property="titleTextLabel" destination="gas-nb-ZEG" id="9EB-PG-Oey"/>
                     </connections>
@@ -4176,6 +4177,7 @@
                     <connections>
                         <outlet property="contractAddressLabel" destination="kYc-H2-bFJ" id="9Rb-y1-yyC"/>
                         <outlet property="contractAddressTextLabel" destination="Ong-E3-fa6" id="67R-HV-2wK"/>
+                        <outlet property="navigationBarView" destination="tNd-YR-0Ww" id="3Jc-Ax-iUC"/>
                         <outlet property="tableView" destination="5Ap-de-3gJ" id="izf-CI-toG"/>
                         <outlet property="titleTextLabel" destination="kpq-es-aca" id="ENY-u6-7Rj"/>
                     </connections>

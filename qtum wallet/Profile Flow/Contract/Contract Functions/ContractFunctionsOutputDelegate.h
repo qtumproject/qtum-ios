@@ -14,4 +14,6 @@
 
 - (void)didDeselectFunctionIndexPath:(NSIndexPath *) indexPath withItem:(AbiinterfaceItem *) item;
 
+- (void)didUnsubscribeFromDeletedContract:(Contract *) token;
+
 @end

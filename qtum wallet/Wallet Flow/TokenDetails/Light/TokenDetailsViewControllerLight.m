@@ -8,8 +8,10 @@
 
 #import "TokenDetailsViewControllerLight.h"
 #import "HistoryHeaderVIew.h"
+#import "NoContractView.h"
+#import "Masonry.h"
 
-@interface TokenDetailsViewControllerLight () <TokenDetailDisplayDataManagerDelegate>
+@interface TokenDetailsViewControllerLight () <TokenDetailDisplayDataManagerDelegate, NoContractViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *noTransactionTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -21,9 +23,16 @@
 @property (weak, nonatomic) UIView *refreshBackView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForBlueView;
 @property (weak, nonatomic) IBOutlet UIView *noTransactionView;
+@property (weak, nonatomic) IBOutlet UIButton *navigationShareButton;
+@property (weak, nonatomic) IBOutlet UIButton *navigationAddressesButton;
 
 
 @end
+
+static NSInteger noContractViewTopOffset = 0;
+static NSInteger noContractViewBottomOffset = 0;
+static NSInteger noContractViewLeading = 0;
+static NSInteger noContractViewTrailing = 0;
 
 @implementation TokenDetailsViewControllerLight
 
@@ -72,6 +81,14 @@
     self.noTransactionTextLabel.text = NSLocalizedString(@"No transactions available yet", @"");
 }
 
+#pragma mark - Pivate Methods
+
+- (NoContractView *)getNoContractView {
+    
+    NoContractView *noContractView = [[[NSBundle mainBundle] loadNibNamed:@"NoContractViewLight" owner:self options:nil] objectAtIndex:0];
+    return noContractView;
+}
+
 - (void)refreshFromRefreshControl {
 
 	[self.delegate didPullToUpdateToken:self.token];
@@ -93,7 +110,16 @@
 	});
 }
 
-#pragma mark - Update
+#pragma mark - NoContractViewDelegate
+
+-(void)didUnsubscribeToken {
+    
+    if ([self.delegate respondsToSelector:@selector(didUnsubscribeFromDeletedContract:)]) {
+        [self.delegate didUnsubscribeFromDeletedContract:self.token];
+    }
+}
+
+#pragma mark - TokenDetailOutput
 
 - (void)updateControls {
 
@@ -103,6 +129,27 @@
     });
 
 }
+
+-(void)showUnsubscribeContractScreen {
+    
+    NoContractView* noContractView = [self getNoContractView];
+    noContractView.delegate = self;
+    
+    [self.view addSubview:noContractView];
+    
+    UIEdgeInsets padding = UIEdgeInsetsMake(noContractViewTopOffset, noContractViewLeading, noContractViewBottomOffset, noContractViewTrailing);
+    
+    [noContractView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.navigationBarView.bottom).with.offset(padding.top);
+        make.left.equalTo(self.view).with.offset(padding.left);
+        make.bottom.equalTo(self.view).with.offset(padding.bottom);
+        make.right.equalTo(self.view).with.offset(padding.right);
+    }];
+    
+    self.navigationShareButton.hidden = YES;
+    self.navigationAddressesButton.hidden = YES;
+}
+
 
 #pragma mark - Actions
 

@@ -10,15 +10,23 @@
 #import "TokenFunctionCell.h"
 #import "TokenPropertyCell.h"
 #import "WalletManager.h"
+#import "NoContractView.h"
+#import "Masonry.h"
 
-@interface TokenFunctionViewController ()
+@interface TokenFunctionViewController () <NoContractViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *contractAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contractAddressTextLabel;
+@property (weak, nonatomic) IBOutlet UIView *navigationBarView;
 
 @end
+
+static NSInteger noContractViewTopOffset = 0;
+static NSInteger noContractViewBottomOffset = 0;
+static NSInteger noContractViewLeading = 0;
+static NSInteger noContractViewTrailing = 0;
 
 @implementation TokenFunctionViewController
 
@@ -55,6 +63,44 @@
 		weakSelf.contractAddressLabel.text = weakSelf.token.mainAddress;
 	});
 }
+
+- (NoContractView *)getNoContractView {
+    
+    NoContractView *noContractView = [[[NSBundle mainBundle] loadNibNamed:@"NoContractView" owner:self options:nil] objectAtIndex:0];
+    return noContractView;
+}
+
+
+#pragma mark - NoContractViewDelegate
+
+-(void)didUnsubscribeToken {
+    
+    if ([self.delegate respondsToSelector:@selector(didUnsubscribeFromDeletedContract:)]) {
+        [self.delegate didUnsubscribeFromDeletedContract:self.token];
+    }
+}
+
+#pragma mark - ContractFunctionsOutput
+
+-(void)showUnsubscribeContractScreen {
+    
+    
+    NoContractView* noContractView = [self getNoContractView];
+    noContractView.delegate = self;
+    
+    [self.view addSubview:noContractView];
+    
+    UIEdgeInsets padding = UIEdgeInsetsMake(noContractViewTopOffset, noContractViewLeading, noContractViewBottomOffset, noContractViewTrailing);
+    
+    [noContractView makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.navigationBarView.bottom).with.offset(padding.top);
+        make.left.equalTo(self.view).with.offset(padding.left);
+        make.bottom.equalTo(self.view).with.offset(padding.bottom);
+        make.right.equalTo(self.view).with.offset(padding.right);
+    }];
+}
+
+
 
 #pragma mark - UITableViewDelegate
 

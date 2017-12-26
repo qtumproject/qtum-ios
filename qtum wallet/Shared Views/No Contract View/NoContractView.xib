@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NoContractView">
+            <rect key="frame" x="0.0" y="0.0" width="377" height="588"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contract was deleted by its author and is no longer available. You can Unsubscribe to remove it from your wallet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72n-oc-qbi">
+                    <rect key="frame" x="30" y="206" width="317" height="77"/>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                    <color key="textColor" red="0.1803921568627451" green="0.60392156862745094" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9d-Hv-tdH">
+                    <rect key="frame" x="113" y="490" width="150" height="33"/>
+                    <color key="backgroundColor" red="0.90588235294117647" green="0.33725490196078434" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="CTe-Xn-aEg"/>
+                        <constraint firstAttribute="width" constant="150" id="mea-M5-hoe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                    <state key="normal" title="UNSUBSCRIBE">
+                        <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="actionUnsubscribe:" destination="iN0-l3-epB" eventType="touchUpInside" id="iI5-wM-Ikm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="72n-oc-qbi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-50" id="0jM-s4-gaY"/>
+                <constraint firstAttribute="bottom" secondItem="i9d-Hv-tdH" secondAttribute="bottom" constant="65" id="Cw1-hU-nkS"/>
+                <constraint firstItem="72n-oc-qbi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ddh-LW-59G"/>
+                <constraint firstItem="i9d-Hv-tdH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OHf-qO-JpZ"/>
+                <constraint firstAttribute="trailing" secondItem="72n-oc-qbi" secondAttribute="trailing" constant="30" id="bUY-Xn-RWC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="button" destination="i9d-Hv-tdH" id="WOc-0P-XKd"/>
+                <outlet property="label" destination="72n-oc-qbi" id="shN-JB-vcj"/>
+            </connections>
+            <point key="canvasLocation" x="-333.5" y="-85"/>
+        </view>
+    </objects>
+</document>
