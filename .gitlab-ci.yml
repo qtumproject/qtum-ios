@@ -26,6 +26,8 @@ unit_tests:
 build:
   dependencies: []
   stage: build
+  environment:
+   name: testnet
   artifacts:
     paths:
       - fastlane/logs
