@@ -31,7 +31,7 @@ build:
       - fastlane/logs
       - fastlane/build
   script:
-    - get_ci_qtum_settings_testnet
+    - get_ci_qtum_settings_testnet.sh
     - fastlane beta_testnet
   tags:
     - ios
