@@ -38,11 +38,26 @@
 
 	[self setupViewForFile];
 	[self createCheckButtons];
-
-	UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector (actionSelectFile)];
-	[self.fileView addGestureRecognizer:recognizer];
+    [self bindToNotifications];
+    [self addTapRecognizer];
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)bindToNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disappearToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+-(void)disappearToBackground {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addTapRecognizer {
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector (actionSelectFile)];
+    [self.fileView addGestureRecognizer:recognizer];
+}
 #pragma mark - Configuration
 
 -(void)configLocalization {

@@ -87,7 +87,7 @@
 
 - (NSDecimalNumber *)roundedNumberWithScale:(NSInteger) scale {
 
-	NSDecimalNumberHandler *behavior = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundUp
+	NSDecimalNumberHandler *behavior = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain
 																							  scale:scale
 																				   raiseOnExactness:NO
 																					raiseOnOverflow:NO

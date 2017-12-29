@@ -26,6 +26,19 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self configurationBrainKeyLabel];
+    [self bindToNotifications];
+}
+
+-(void)bindToNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disappearToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+-(void)disappearToBackground {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Private Methods
