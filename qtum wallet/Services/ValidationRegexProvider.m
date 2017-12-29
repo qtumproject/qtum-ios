@@ -42,7 +42,7 @@
     return nil;
 }
 
-- (NSRegularExpression*)bytesParameterSymbolsValidationRegexWithSize:(NSInteger) size {
+- (NSRegularExpression*)bytesParameterSymbolsValidationRegex {
     return nil;
 }
 
@@ -86,7 +86,7 @@
     return nil;
 }
 
-- (NSRegularExpression*)bytesParameterValidationRegexWithSize:(NSInteger) size {
+- (NSRegularExpression*)bytesParameterValidationRegex {
     return nil;
 }
 

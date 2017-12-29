@@ -16,7 +16,7 @@
 - (NSRegularExpression*)intParameterValidationRegexWithSize:(NSInteger) size;
 - (NSRegularExpression*)boolParameterValidationRegex;
 - (NSRegularExpression*)arrayParameterValidationRegex;
-- (NSRegularExpression*)bytesParameterValidationRegexWithSize:(NSInteger) size;
+- (NSRegularExpression*)bytesParameterValidationRegex;
 - (NSRegularExpression*)unnownParameterValidationRegex;
 - (NSRegularExpression*)fixedBytesParameterValidationRegex;
 
@@ -26,7 +26,7 @@
 - (NSRegularExpression*)intParameterSymbolsValidationRegexWithSize:(NSInteger) size;
 - (NSRegularExpression*)boolParameterSymbolsValidationRegex;
 - (NSRegularExpression*)arrayParameterSymbolsValidationRegex;
-- (NSRegularExpression*)bytesParameterSymbolsValidationRegexWithSize:(NSInteger) size;
+- (NSRegularExpression*)bytesParameterSymbolsValidationRegex;
 - (NSRegularExpression*)unnownParameterSymbolsValidationRegex;
 - (NSRegularExpression*)fixedBytesParameterSymbolsValidationRegex;
 
