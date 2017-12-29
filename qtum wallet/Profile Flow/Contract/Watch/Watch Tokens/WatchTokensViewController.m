@@ -51,7 +51,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
-    NSString* text = [textField.text stringByAppendingString:string];
+    NSString * text = [textField.text stringByReplacingCharactersInRange:range withString:string];
     BOOL isValid = YES;
     if ([textField isEqual:self.contractAddressTextField]) {
         isValid = [SLocator.validationInputService isValidSymbolsContractAddressString:text];

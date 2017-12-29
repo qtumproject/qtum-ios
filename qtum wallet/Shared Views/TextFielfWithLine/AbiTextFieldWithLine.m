@@ -65,7 +65,7 @@
 
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string {
 
-    NSString* resultString = [textField.text stringByAppendingString:string];
+    NSString * resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     BOOL isValid = [SLocator.validationInputService isValidSymbols:resultString forParameter:self.item.type];
     if (isValid && [self.customDelegate respondsToSelector:@selector(textDidChange)]) {
         [self.customDelegate textDidChange];

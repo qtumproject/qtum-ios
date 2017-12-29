@@ -103,7 +103,7 @@
 
 - (NSRegularExpression*)amountSymbolValidationRegex {
     
-    NSString* pattern = [NSString stringWithFormat:@"^\\d+[.,]{0,1}\\d{0,8}$"];
+    NSString* pattern = [NSString stringWithFormat:@"^\\d{0,}[.,]{0,1}\\d{0,8}$"];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
     return regex;
 }

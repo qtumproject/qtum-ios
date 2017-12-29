@@ -166,7 +166,7 @@ currency = _currency;
     
     NSString *formatString;
     
-    if (components.day >= 2) {
+    if (components.day >= 1 && components.hour > 12) {
         
         return self.shortDateString;
         
