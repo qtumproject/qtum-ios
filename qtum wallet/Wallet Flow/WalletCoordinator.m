@@ -315,15 +315,15 @@
 
 - (void)fireHistoryElementTimerUpdate {
 
-	self.firesTimerCount = 0;
-
-	if (self.historyElementsTimerUpdate) {
-		[self.historyElementsTimerUpdate invalidate];
-		self.historyElementsTimerUpdate = nil;
-	}
-
 	__weak __typeof (self) weakSelf = self;
 	dispatch_async (dispatch_get_main_queue (), ^{
+        
+        weakSelf.firesTimerCount = 0;
+        
+        if (weakSelf.historyElementsTimerUpdate) {
+            [weakSelf.historyElementsTimerUpdate invalidate];
+            weakSelf.historyElementsTimerUpdate = nil;
+        }
 
 		NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector (updatingTimerFire) userInfo:nil repeats:YES];
 		weakSelf.historyElementsTimerUpdate = timer;
