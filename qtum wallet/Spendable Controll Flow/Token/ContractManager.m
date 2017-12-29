@@ -336,7 +336,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
 			contract.contractCreationAddressAddress = addresses.firstObject;
 			contract.adresses = [[SLocator.walletManager hashTableOfKeys] allKeys];
 			contract.contractAddress = [NSString hexadecimalString:hashData];
-			contract.localName = localContractName ? : [contract.contractAddress substringToIndex:15];
+			contract.localName = (localContractName && [localContractName stringByReplacingOccurrencesOfString:@" " withString:@""].length > 0) ? localContractName : [contract.contractAddress substringToIndex:15];
 			contract.templateModel = templateModel;
             if (contract.templateModel.type == TokenType) {
                 contract.addressBalanceDictionary = [self emptyTokenAddressBalancesDict];
