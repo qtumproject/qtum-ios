@@ -8,6 +8,7 @@ variables:
 
 before_script:
   - unlock_ci_keychain.sh
+  - get_env_settings.sh $SETTINGS_URL $SETTINGS_BRANCH_MAINNET
   - gem install bundler
   - bundle install
 
@@ -18,7 +19,6 @@ unit_tests:
     paths:
       - fastlane/test_output
   script:
-    - get_ci_qtum_settings.sh
     - fastlane tests
   tags:
     - ios
@@ -33,7 +33,7 @@ build:
       - fastlane/logs
       - fastlane/build
   script:
-    - get_ci_qtum_settings_testnet.sh
+    - get_env_settings.sh $SETTINGS_URL $SETTINGS_BRANCH_TESTNET
     - fastlane beta_testnet
   tags:
     - ios
