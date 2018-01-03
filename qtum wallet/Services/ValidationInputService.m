@@ -99,7 +99,7 @@
     switch (parameter.type) {
             
         case Bytes:
-            regex = [self.regexProvider bytesParameterSymbolsValidationRegexWithSize:parameter.size];
+            regex = [self.regexProvider bytesParameterSymbolsValidationRegex];
             break;
             
         case Unknown:
@@ -143,7 +143,7 @@
     switch (parameter.type) {
             
         case Bytes:
-            regex = [self.regexProvider bytesParameterValidationRegexWithSize:parameter.size];
+            regex = [self.regexProvider bytesParameterValidationRegex];
             break;
             
         case Unknown:
@@ -189,7 +189,7 @@
     switch (parameter.type) {
             
         case Bytes:
-            isValid = [self isValidBytesFromString:string withSize:parameter.size withRegex:regex];
+            isValid = [self isValidBytesFromString:string withRegex:regex];
             break;
 
         case Unknown:
@@ -235,7 +235,7 @@
     return match && comparing;
 }
 
-- (BOOL)isValidBytesFromString:(NSString*) string withSize:(NSInteger) size withRegex:(NSRegularExpression*) regex {
+- (BOOL)isValidBytesFromString:(NSString*) string withRegex:(NSRegularExpression*) regex {
     
     BOOL isValid = NO;
     if (string.length > 0) {

@@ -42,7 +42,7 @@
     return nil;
 }
 
-- (NSRegularExpression*)bytesParameterSymbolsValidationRegexWithSize:(NSInteger) size {
+- (NSRegularExpression*)bytesParameterSymbolsValidationRegex {
     return nil;
 }
 
@@ -86,7 +86,7 @@
     return nil;
 }
 
-- (NSRegularExpression*)bytesParameterValidationRegexWithSize:(NSInteger) size {
+- (NSRegularExpression*)bytesParameterValidationRegex {
     return nil;
 }
 
@@ -103,7 +103,7 @@
 
 - (NSRegularExpression*)amountSymbolValidationRegex {
     
-    NSString* pattern = [NSString stringWithFormat:@"^\\d+[.,]{0,1}\\d{0,8}$"];
+    NSString* pattern = [NSString stringWithFormat:@"^\\d{0,}[.,]{0,1}\\d{0,8}$"];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
     return regex;
 }

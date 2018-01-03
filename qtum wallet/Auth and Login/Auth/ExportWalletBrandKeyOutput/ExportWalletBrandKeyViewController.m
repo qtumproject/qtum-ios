@@ -31,10 +31,19 @@
 	[super viewDidLoad];
 	[self configurationBrainKeyLabel];
     [self configLocalization];
+    [self bindToNotifications];
 }
 
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)bindToNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disappearToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+-(void)disappearToBackground {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Private Methods

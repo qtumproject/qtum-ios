@@ -481,7 +481,8 @@ static const NSInteger hidedGasTopForSend = -40;
 
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string {
     
-    NSString* resultString = [textField.text stringByAppendingString:string];
+    NSString * resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+
     BOOL isValid = YES;
     
     if (textField == self.amountTextField) {

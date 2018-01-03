@@ -178,7 +178,7 @@
 
 		formatString = NSLocalizedString(@"Yesterday", @"day at history cell");
 		return formatString;
-
+        
 	} else if (components.hour >= 1 && components.hour < 24) {
 
 		return self.shortDateString;

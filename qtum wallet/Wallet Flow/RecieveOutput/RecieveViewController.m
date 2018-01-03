@@ -46,50 +46,62 @@
 	[super viewDidLoad];
 
 	[self addDoneButtonToAmountTextField];
+    [self bindToNotifications];
     [self configLocalization];
     
 	self.shareButton.enabled = NO;
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewWillAppear:(BOOL) animated {
-	[super viewWillAppear:animated];
-
-	self.balanceLabel.text = self.balanceText;
-	self.unconfirmedBalance.text = self.unconfirmedBalanceText;
-	self.publicAddressLabel.text = self.walletAddress;
-	self.publicAddressLabel.hidden = YES;
-	if (self.currency) {
-		self.balanceCurrency.text =
-				self.unconfirmedBalanceCurrency.text = self.currency;
-	}
-
-	self.walletCopyButtonBottomOffsetConstraint.constant = 90;
-	self.chooseAddressButton.hidden = NO;
+    [super viewWillAppear:animated];
+    
+    self.balanceLabel.text = self.balanceText;
+    self.unconfirmedBalance.text = self.unconfirmedBalanceText;
+    self.publicAddressLabel.text = self.walletAddress;
+    self.publicAddressLabel.hidden = YES;
+    if (self.currency) {
+        self.balanceCurrency.text =
+        self.unconfirmedBalanceCurrency.text = self.currency;
+    }
+    
+    self.walletCopyButtonBottomOffsetConstraint.constant = 90;
+    self.chooseAddressButton.hidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL) animated {
-
-	[super viewDidAppear:animated];
-	[self createQRCode];
+    
+    [super viewDidAppear:animated];
+    [self createQRCode];
 }
 
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-}
 
 - (void)viewDidLayoutSubviews {
-
-	if (self.type == TokenType) {
-
-		CGSize size = [self.balanceText sizeWithAttributes:@{NSFontAttributeName: self.balanceLabel.font}];
-
-		if (size.width > self.balanceLabel.bounds.size.width) {
-			self.balanceLabel.text = self.shortBalanceText;
-		} else {
-			self.balanceLabel.text = self.balanceText;
-		}
-	}
+    
+    if (self.type == TokenType) {
+        
+        CGSize size = [self.balanceText sizeWithAttributes:@{NSFontAttributeName: self.balanceLabel.font}];
+        
+        if (size.width > self.balanceLabel.bounds.size.width) {
+            self.balanceLabel.text = self.shortBalanceText;
+        } else {
+            self.balanceLabel.text = self.balanceText;
+        }
+    }
 }
+
+-(void)bindToNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disappearToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+-(void)disappearToBackground {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 #pragma mark - Configuration
 

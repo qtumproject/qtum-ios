@@ -17,7 +17,6 @@
 @property (assign, nonatomic) BOOL isBackupCreated;
 @property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
-
 @property (nonatomic) NSString *filePath;
 
 @end
@@ -26,26 +25,50 @@
 
 @synthesize delegate;
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
 	self.centerView.alpha = 0.0f;
 
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector (actionUpload)];
-	[self.centerView addGestureRecognizer:tap];
+    [self addTapRecognizer];
+    [self bindToNotifications];
 }
 
 - (void)viewWillAppear:(BOOL) animated {
-	[super viewWillAppear:animated];
-
-	__weak __typeof (self) weakSelf = self;
-	if (!self.isBackupCreated) {
-		[SLocator.backupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
-
+    [super viewWillAppear:animated];
+    
+    __weak __typeof (self) weakSelf = self;
+    if (!self.isBackupCreated) {
+        [SLocator.backupFileManager getBackupFile:^(NSDictionary *file, NSString *path, NSInteger size) {
+            
             [weakSelf fileWasCreatedWithURL:path andSize:size];
-			weakSelf.isBackupCreated = YES;
-		}];
-	}
+            weakSelf.isBackupCreated = YES;
+        }];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+-(void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)addTapRecognizer {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector (actionUpload)];
+    [self.centerView addGestureRecognizer:tap];
+}
+
+-(void)bindToNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disappearToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+-(void)disappearToBackground {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Configuration
