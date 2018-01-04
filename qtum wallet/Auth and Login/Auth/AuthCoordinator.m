@@ -15,8 +15,10 @@
 #import "ExportWalletBrandKeyViewController.h"
 #import "EnableFingerprintViewController.h"
 #import "NSUserDefaults+Settings.h"
+#import "ConfirmPassphraseOutput.h"
+#import "NSArray+Shuffle.h"
 
-@interface AuthCoordinator () <FirstAuthOutputDelegate, WalletNameOutputDelegate, CreatePinOutputDelegate, RepeateOutputDelegate, ExportWalletBrandKeyOutputDelegate, RestoreWalletOutputDelegate, EnableFingerprintOutputDelegate>
+@interface AuthCoordinator () <FirstAuthOutputDelegate, WalletNameOutputDelegate, CreatePinOutputDelegate, RepeateOutputDelegate, ExportWalletBrandKeyOutputDelegate, RestoreWalletOutputDelegate, EnableFingerprintOutputDelegate, ConfirmPassphraseOutputDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) NSObject <FirstAuthOutput> *firstController;
@@ -25,6 +27,7 @@
 @property (nonatomic, weak) CreatePinViewController *createPinController;
 @property (nonatomic, weak) RepeateViewController *repeatePinController;
 @property (nonatomic, weak) NSObject <ExportWalletBrandKeyOutput> *exportWalletOutput;
+@property (nonatomic, weak) NSObject <ConfirmPassphraseOutput> *remindOutput;
 @property (copy, nonatomic) NSString *firstPin;
 @property (copy, nonatomic) NSString *walletName;
 @property (copy, nonatomic) NSString *walletPin;
@@ -47,11 +50,20 @@
 	[self resetToRootAnimated:NO];
 }
 
-- (void)finishFlow {
+- (void)createWalletAndFinish {
 
-	if ([self.delegate respondsToSelector:@selector (coordinatorDidAuth:)]) {
-		[self.delegate coordinatorDidAuth:self];
-	}
+    __weak __typeof (self) weakSelf = self;
+
+    [self createNewWalletWithSuccessHandler:^{
+        
+        if ([weakSelf.delegate respondsToSelector:@selector (coordinatorDidAuth:)]) {
+            [weakSelf.delegate coordinatorDidAuth:weakSelf];
+        }
+        
+    } andFailureHandler:^(NSError *error) {
+        
+        [weakSelf exit];
+    }];
 }
 
 - (void)resetToRootAnimated:(BOOL) animated {
@@ -103,7 +115,7 @@
 
 	NSObject <ExportWalletBrandKeyOutput> *output = (ExportWalletBrandKeyViewController *)[SLocator.controllersFactory createExportWalletBrandKeyViewController];
 	output.delegate = self;
-	output.brandKey = [SLocator.walletManager brandKeyWithPin:self.walletPin];
+	output.brandKey = self.walletBrainKey;
 	[self.navigationController pushViewController:[output toPresent] animated:YES];
 	self.exportWalletOutput = output;
 }
@@ -111,7 +123,7 @@
 - (void)goToFinishWalletCreation {
 
 	if (self.isWalletRestored) {
-		[self finishFlow];
+		[self createWalletAndFinish];
 	} else {
 		[self gotoExportWallet];
 	}
@@ -119,19 +131,37 @@
 
 - (void)gotoCreatePinAgain {
 
-	self.walletPin = nil;
-	[self resetToRootAnimated:YES];
+    [self exit];
 	[self gotoCreatePin];
 }
 
 #pragma mark - Private
 
-- (void)goToWalletFlow {
+- (void)createNewWalletWithSuccessHandler:(void (^)(void)) success
+                        andFailureHandler:(void (^)(NSError * error)) failure {
 
-	[SLocator.walletManager storePin:self.walletPin];
-	BOOL startingSuccess = [SLocator.walletManager startWithPin:self.walletPin];
-	NSError *error = startingSuccess ? nil : [NSError new];
-	[self.repeatePinController endCreateWalletWithError:error];
+    [[ApplicationCoordinator sharedInstance] clear];
+    
+    __weak __typeof (self) weakSelf = self;
+
+    [SLocator.walletManager createNewWalletWithName:self.walletName pin:self.walletPin seedWords:self.walletBrainKey withSuccessHandler:^(Wallet *newWallet) {
+        
+        [SLocator.walletManager storePin:weakSelf.walletPin];
+        BOOL startingSuccess = [SLocator.walletManager startWithPin:weakSelf.walletPin];
+        startingSuccess ? success() : failure([NSError new]);
+
+    } andFailureHandler:^{
+        
+        failure([NSError new]);
+    }];
+}
+
+-(void)exit {
+    
+    self.walletPin = nil;
+    self.walletRestored = NO;
+    self.walletBrainKey = nil;
+    [self resetToRootAnimated:YES];
 }
 
 #pragma mark - FirstAuthOutputDelegate
@@ -185,7 +215,7 @@
 
 - (void)didCreateWalletPressed {
 
-	[self didCreateWallet];
+	[self showFingerprint];
 }
 
 - (void)didCancelPressedOnRepeatePin {
@@ -197,27 +227,14 @@
 
 - (void)didEnteredSecondPin:(NSString *) pin {
 
-	__weak __typeof (self) weakSelf = self;
 	if ([self.walletPin isEqualToString:pin] && !self.walletRestored) {
 
-		[[ApplicationCoordinator sharedInstance] clear];
-		[SLocator.walletManager createNewWalletWithName:self.walletName pin:self.walletPin withSuccessHandler:^(Wallet *newWallet) {
+        self.walletBrainKey = [Wallet generateWordsArray];
+        [self showFingerprint];
 
-			[weakSelf goToWalletFlow];
-		}                             andFailureHandler:^{
-
-			[weakSelf.repeatePinController endCreateWalletWithError:[NSError new]];
-		}];
 	} else if ([self.walletPin isEqualToString:pin]) {
 
-		[[ApplicationCoordinator sharedInstance] clear];
-		[SLocator.walletManager createNewWalletWithName:self.walletName pin:self.walletPin seedWords:self.walletBrainKey withSuccessHandler:^(Wallet *newWallet) {
-
-			[weakSelf goToWalletFlow];
-		}                             andFailureHandler:^{
-
-			[weakSelf.repeatePinController endCreateWalletWithError:[NSError new]];
-		}];
+        [self showFingerprint];
 
 	} else {
 
@@ -225,13 +242,36 @@
 	}
 }
 
+#pragma mark - ConfirmPassphraseOutputDelegate
+
+
+-(void)didEnterWords:(NSArray<NSString*>*) words {
+    
+    if ([self.walletBrainKey isEqualToArray:words]) {
+        [self createWalletAndFinish];
+    } else {
+        [self.remindOutput failedRemindWords];
+    }
+}
+
+-(void)didBackPressed {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - ExportWalletBrandKeyOutputDelegate
 
-- (void)didExportWalletPressed {
+- (void)didContinueRepeateBrandKey {
+    
+    NSObject <ConfirmPassphraseOutput> *output = [SLocator.controllersFactory createConfirmBrandKeyViewController];
+    output.delegate = self;
+    output.bkWords = [self.walletBrainKey shuffledArray];
+    self.remindOutput = output;
+    [self.navigationController pushViewController:[output toPresent] animated:YES];
+}
 
-	if ([self.delegate respondsToSelector:@selector (coordinatorDidAuth:)]) {
-		[self.delegate coordinatorDidAuth:self];
-	}
+- (void)didExitPressed {
+    [self exit];
 }
 
 #pragma mark - RestoreWalletOutputDelegate
@@ -293,7 +333,7 @@
 	return array;
 }
 
-- (void)didCreateWallet {
+- (void)showFingerprint {
 
 	if ([NSUserDefaults isFingerprintAllowed]) {
 		[self gotoFingerpringOption];
@@ -310,7 +350,7 @@
 }
 
 - (void)didExportWallet {
-	[self finishFlow];
+	[self createWalletAndFinish];
 }
 
 @end
