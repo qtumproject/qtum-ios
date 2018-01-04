@@ -13,6 +13,6 @@
 @protocol ExportWalletBrandKeyOutput <Presentable>
 
 @property (weak, nonatomic) id <ExportWalletBrandKeyOutputDelegate> delegate;
-@property (nonatomic, copy) NSString *brandKey;
+@property (nonatomic, copy) NSArray<NSString*> *brandKey;
 
 @end

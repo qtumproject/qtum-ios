@@ -41,7 +41,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 		_balance = [QTUMBigNumber decimalWithInteger:0];
 		_unconfirmedBalance = [QTUMBigNumber decimalWithInteger:0];
 		_countOfUsedKeys = USERS_KEYS_COUNT;
-		_encriptedBrandKey = [NSString encryptString:[self stringFromWorldsArray:[self generateWordsArray]] withKey:pin];
+        _encriptedBrandKey = [NSString encryptString:[self stringFromWorldsArray:[[self class] generateWordsArray]] withKey:pin];
 		[_manager spendableDidChange:self];
 	}
 	return self;
@@ -265,7 +265,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 	return keyChain;
 }
 
-- (NSArray *)generateWordsArray {
++ (NSArray *)generateWordsArray {
 
 	NSMutableArray *randomWords = [NSMutableArray new];
 

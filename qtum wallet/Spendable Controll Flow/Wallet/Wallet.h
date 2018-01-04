@@ -48,4 +48,6 @@ extern NSInteger const brandKeyWordsCount;
 
 - (void)clearPublicAddresses;
 
++ (NSArray *)generateWordsArray;
+
 @end

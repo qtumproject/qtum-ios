@@ -87,6 +87,7 @@
 @protocol SourceCodeOutput;
 @protocol WalletTokenOutput;
 @protocol QRCodeOutput;
+@protocol ConfirmPassphraseOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -132,6 +133,8 @@
 - (AddNewTokensViewController *)createAddNewTokensViewController;
 
 - (ChoseTokenPaymentViewController *)createChoseTokenPaymentViewController;
+
+- (NSObject <ConfirmPassphraseOutput> *)createConfirmBrandKeyViewController;
 
 - (NSObject <SmartContractMenuOutput> *)createSmartContractMenuViewController;
 

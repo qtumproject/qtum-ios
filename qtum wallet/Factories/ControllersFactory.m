@@ -74,6 +74,7 @@
 #import "NewsDetailOutput.h"
 #import "SourceCodeOutput.h"
 #import "QRCodeOutput.h"
+#import "ConfirmPassphraseOutput.h"
 
 @implementation ControllersFactory
 
@@ -177,6 +178,12 @@
 - (ExportWalletBrandKeyViewController *)createExportWalletBrandKeyViewController {
 	ExportWalletBrandKeyViewController *controller = (ExportWalletBrandKeyViewController *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ExportWalletBrandKeyViewController"];
 	return controller;
+}
+
+- (NSObject <ConfirmPassphraseOutput> *)createConfirmBrandKeyViewController {
+    
+    NSObject <ConfirmPassphraseOutput> *output = (NSObject <ConfirmPassphraseOutput> *)[UIViewController controllerInStoryboard:@"Start" withIdentifire:@"ConfirmPassphraseViewController"];
+    return output;
 }
 
 - (NSObject <SubscribeTokenOutput> *)createSubscribeTokenViewController {
