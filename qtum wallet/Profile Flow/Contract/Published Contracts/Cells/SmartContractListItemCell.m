@@ -8,6 +8,15 @@
 
 #import "SmartContractListItemCell.h"
 
+@interface SmartContractListItemCell()
+
+@end
+
 @implementation SmartContractListItemCell
+
+- (IBAction)actionRename:(id)sender {
+    
+    [self.smartContractDelegate renameForIndexPath:self.indexPath];
+}
 
 @end

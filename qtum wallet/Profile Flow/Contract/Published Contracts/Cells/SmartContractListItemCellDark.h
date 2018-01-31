@@ -10,4 +10,6 @@
 
 @interface SmartContractListItemCellDark : SmartContractListItemCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *renameIcon;
+
 @end

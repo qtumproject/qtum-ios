@@ -88,6 +88,7 @@
 @protocol WalletTokenOutput;
 @protocol QRCodeOutput;
 @protocol ConfirmPassphraseOutput;
+@protocol ChangeContractLocatlNameOutput;
 
 @interface ControllersFactory : NSObject
 
@@ -193,6 +194,8 @@
 - (NSObject <NewsDetailOutput> *)createNewsDetailOutput;
 
 - (NSObject <SourceCodeOutput> *)createSourceCodeOutput;
+
+- (NSObject <ChangeContractLocatlNameOutput> *)createChangeContractLocatlNameOutput;
 
 // QStore
 - (NSObject <QStoreMainOutput> *)createQStoreMainViewController;

@@ -35,6 +35,8 @@ extern NSString *const kLocalContractName;
 
 - (void)addNewContract:(Contract *) token;
 
+- (void)changeContractName:(Contract *) contract withNewName:(NSString*) newName;
+
 - (void)updateTokenWithContractAddress:(NSString *) address withAddressBalanceDictionary:(NSDictionary *) addressBalance;
 
 - (void)checkSmartContract:(HistoryElement *) item;

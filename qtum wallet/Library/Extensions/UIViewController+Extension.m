@@ -78,7 +78,8 @@
 			[identifire isEqualToString:@"AboutOutputViewController"] ||
 			[identifire isEqualToString:@"ConfirmPopUpViewController"] ||
 			[identifire isEqualToString:@"NewsDetailViewController"] ||
-            [identifire isEqualToString:@"ConfirmPassphraseViewController"]) {
+            [identifire isEqualToString:@"ConfirmPassphraseViewController"] ||
+            [identifire isEqualToString:@"ChangeContractLocatlNameViewController"]) {
 
 		if ([NSUserDefaults isDarkSchemeSetting]) {
 
