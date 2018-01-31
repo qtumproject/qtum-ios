@@ -47,7 +47,7 @@
 
 		return cell;
 	} else {
-		HistoryTableViewCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellDark"];
+		HistoryTableViewCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellDarkLoading"];
 
 		HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
 		cell.historyElement = element;

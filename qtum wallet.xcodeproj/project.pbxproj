@@ -101,6 +101,9 @@
 		B328055C1FA74CDA00748E7E /* JKBigDecimal+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = B328055B1FA74CDA00748E7E /* JKBigDecimal+Format.m */; };
 		B328055F1FA7555000748E7E /* JKBigDecimal+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = B328055E1FA7555000748E7E /* JKBigDecimal+Comparison.m */; };
 		B32805621FA78A8B00748E7E /* QTUMBigNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = B32805611FA78A8B00748E7E /* QTUMBigNumber.m */; };
+		B32A52ED2021D3D100280D25 /* TransactionLinearLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B32A52EC2021D3D100280D25 /* TransactionLinearLoader.m */; };
+		B32A52F02021F2EC00280D25 /* TransactionLinearLoaderLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B32A52EF2021F2EC00280D25 /* TransactionLinearLoaderLight.m */; };
+		B32A52F32021F2FF00280D25 /* TransactionLinearLoaderDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B32A52F22021F2FF00280D25 /* TransactionLinearLoaderDark.m */; };
 		B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */; };
 		B32B32CB1ECCC2130081260A /* ResultTokenInputsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CA1ECCC2130081260A /* ResultTokenInputsModel.m */; };
 		B32B32CE1ECCC2330081260A /* ContractInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B32B32CD1ECCC2330081260A /* ContractInterfaceManager.m */; };
@@ -941,6 +944,12 @@
 		B328055E1FA7555000748E7E /* JKBigDecimal+Comparison.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JKBigDecimal+Comparison.m"; sourceTree = "<group>"; };
 		B32805601FA78A8B00748E7E /* QTUMBigNumber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMBigNumber.h; sourceTree = "<group>"; };
 		B32805611FA78A8B00748E7E /* QTUMBigNumber.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMBigNumber.m; sourceTree = "<group>"; };
+		B32A52EB2021D3D100280D25 /* TransactionLinearLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionLinearLoader.h; sourceTree = "<group>"; };
+		B32A52EC2021D3D100280D25 /* TransactionLinearLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionLinearLoader.m; sourceTree = "<group>"; };
+		B32A52EE2021F2EC00280D25 /* TransactionLinearLoaderLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionLinearLoaderLight.h; sourceTree = "<group>"; };
+		B32A52EF2021F2EC00280D25 /* TransactionLinearLoaderLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionLinearLoaderLight.m; sourceTree = "<group>"; };
+		B32A52F12021F2FF00280D25 /* TransactionLinearLoaderDark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionLinearLoaderDark.h; sourceTree = "<group>"; };
+		B32A52F22021F2FF00280D25 /* TransactionLinearLoaderDark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionLinearLoaderDark.m; sourceTree = "<group>"; };
 		B32B32C61ECCC1F90081260A /* InterfaceInputFormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceInputFormModel.h; sourceTree = "<group>"; };
 		B32B32C71ECCC1F90081260A /* InterfaceInputFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceInputFormModel.m; sourceTree = "<group>"; };
 		B32B32C91ECCC2130081260A /* ResultTokenInputsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultTokenInputsModel.h; sourceTree = "<group>"; };
@@ -2570,6 +2579,19 @@
 				B32805521FA744FF00748E7E /* tommath_superclass.h */,
 			);
 			path = LibTomMath;
+			sourceTree = "<group>";
+		};
+		B32A52EA2021D3A600280D25 /* TransactionLoader */ = {
+			isa = PBXGroup;
+			children = (
+				B32A52EB2021D3D100280D25 /* TransactionLinearLoader.h */,
+				B32A52EC2021D3D100280D25 /* TransactionLinearLoader.m */,
+				B32A52EE2021F2EC00280D25 /* TransactionLinearLoaderLight.h */,
+				B32A52EF2021F2EC00280D25 /* TransactionLinearLoaderLight.m */,
+				B32A52F12021F2FF00280D25 /* TransactionLinearLoaderDark.h */,
+				B32A52F22021F2FF00280D25 /* TransactionLinearLoaderDark.m */,
+			);
+			path = TransactionLoader;
 			sourceTree = "<group>";
 		};
 		B32BC4A51F28B39F00C2417C /* Table */ = {
@@ -5186,6 +5208,7 @@
 		E7FD365E1DC73B2400748177 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				B32A52EA2021D3A600280D25 /* TransactionLoader */,
 				B3C1362C1FFCD7FE00AC3EB1 /* Confirm Reset Button */,
 				B3C136221FFCC70100AC3EB1 /* Confirm BorderView */,
 				B3045BEB1FF23178003089F1 /* No Contract View */,
@@ -6066,6 +6089,7 @@
 				E760F4A41F0F8F890056D042 /* TokenCellDark.m in Sources */,
 				B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */,
 				E748578E1F13B26E00DCF9A6 /* TextFieldWithLineLight.m in Sources */,
+				B32A52F02021F2EC00280D25 /* TransactionLinearLoaderLight.m in Sources */,
 				B3D5FE891F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m in Sources */,
 				B30B11501FC58E6D00E5ABBC /* ValidationInputService.m in Sources */,
 				B3CBDF2A1F2B41D900C80D4E /* SmartContractsListViewControllerDark.m in Sources */,
@@ -6103,6 +6127,7 @@
 				B3DC9CE51F30C803006B2E07 /* TokenFunctionDetailViewControllerLight.m in Sources */,
 				B3C136251FFCC76A00AC3EB1 /* ConfirmBorderedViewLight.m in Sources */,
 				B3EA53031F45E200002FD201 /* QStoreListViewControllerLight.m in Sources */,
+				B32A52ED2021D3D100280D25 /* TransactionLinearLoader.m in Sources */,
 				B3014D661F2A1BBB007EAE7A /* WatchTokensViewControllerLight.m in Sources */,
 				E73CF6D41EE2E1230044DF78 /* PopUpContentGenerator.m in Sources */,
 				B3827DD91ECF28EE00E500DE /* TokenCell.m in Sources */,
@@ -6233,6 +6258,7 @@
 				B3D5FE671F56F2A0006A2BF2 /* AbiParameterTypeFixedArrayUInt.m in Sources */,
 				B33579501F34B5E5001A0275 /* AnimatedLogoImageVIewLight.m in Sources */,
 				B3CBDF441F2B497A00C80D4E /* TokenTemplateCellLight.m in Sources */,
+				B32A52F32021F2FF00280D25 /* TransactionLinearLoaderDark.m in Sources */,
 				B3F06CFE1E69883D006341F7 /* SubscribeTokenCoordinator.m in Sources */,
 				B3DC9D011F31B449006B2E07 /* AddressLibruaryCoordinator.m in Sources */,
 				B384F3DE1EB9BF4A0075F1E8 /* LanguageManager.m in Sources */,

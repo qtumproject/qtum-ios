@@ -74,6 +74,10 @@ failure;
 			  successHandler:(void (^)(id responseObject)) success
 		   andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
 
+- (void)getTransactionReceipt:(NSString *) txhash
+               successHandler:(void (^)(id responseObject)) success
+            andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
+
 // Some RPC help methods
 
 - (void)sendToAddress:(NSString *) key

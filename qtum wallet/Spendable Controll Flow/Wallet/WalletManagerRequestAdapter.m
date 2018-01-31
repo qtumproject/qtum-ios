@@ -28,7 +28,7 @@
 	__weak typeof (self) weakSelf = self;
 	[SLocator.requestManager getHistoryWithParam:param andAddresses:keyAddreses successHandler:^(id responseObject) {
 		NSArray <HistoryElement *> *history = [weakSelf createHistoryElements:responseObject];
-
+        [weakSelf checkRecieptForHistory:history];
 		success (history);
 	}                          andFailureHandler:^(NSError *error, NSString *message) {
 		failure (error, message);
@@ -114,6 +114,17 @@
 	[SLocator.contractManager checkSmartContractPretendents];
 
 	return array;
+}
+
+- (void)checkRecieptForHistory:(NSArray <HistoryElement *> *) history {
+    
+    for (HistoryElement* element in history) {
+        [SLocator.requestManager getTransactionReceipt:element.txHash successHandler:^(id responseObject) {
+            
+        } andFailureHandler:^(NSError *error, NSString *message) {
+            
+        }];
+    }
 }
 
 - (HistoryElement *)createHistoryElement:(NSDictionary *) dictionary {

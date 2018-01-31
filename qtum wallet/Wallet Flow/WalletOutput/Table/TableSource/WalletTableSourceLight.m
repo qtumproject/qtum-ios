@@ -44,7 +44,7 @@
 
 		return cell;
 	} else {
-		HistoryTableViewCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
+		HistoryTableViewCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLightLoading"];
 
 		HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
 		cell.historyElement = element;
