@@ -22,6 +22,7 @@
 #import "WatchTokenOutput.h"
 #import "ErrorPopUpViewController.h"
 #import "InformationPopUpViewController.h"
+#import "ChangeContractLocatlNameOutput.h"
 
 #import "QStoreCoordinator.h"
 
@@ -42,7 +43,7 @@
 		ContractFunctionsOutputDelegate,
 		ContractCreationEndOutputDelegate,
         WatchTokenOutputDelegate,
-        PopUpWithTwoButtonsViewControllerDelegate>
+        PopUpWithTwoButtonsViewControllerDelegate, ChangeContractLocatlNameOutputDelegate>
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) UINavigationController *modalNavigationController;
@@ -515,8 +516,25 @@
     [popUp setOnlyCancelButton];
 }
 
+#pragma mark - ChangeContractLocatlNameOutputDelegate
+
+-(void)didChangeName:(NSString*) newLocalName withContract:(Contract*) contract {
+    
+    [SLocator.contractManager changeContractName:contract withNewName:newLocalName];
+    [self.navigationController popViewControllerAnimated:YES];
+    [self updatePublishedContracts];
+}
+
 #pragma mark - PublishedContractListOutputDelegate, LibraryOutputDelegate
 
+- (void)didChooseRenameContract:(Contract *) contract {
+    
+    NSObject <ChangeContractLocatlNameOutput> *output = [SLocator.controllersFactory createChangeContractLocatlNameOutput];
+    output.delegate = self;
+    output.contract = contract;
+    
+    [self.navigationController pushViewController:[output toPresent] animated:true];
+}
 
 - (void)didUnsubscribeFromContract:(Contract *) contract {
 

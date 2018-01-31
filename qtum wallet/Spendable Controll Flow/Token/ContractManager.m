@@ -204,6 +204,14 @@ NSString *const kLocalContractName = @"kLocalContractName";
     return [self.failedContractPretendents copy];
 }
 
+- (void)changeContractName:(Contract *) contract withNewName:(NSString*) newName {
+    
+    if (newName.length > 0) {
+        contract.localName = newName;
+        [self save];
+    }
+}
+
 - (void)addNewContract:(Contract *) token {
 
 	if (!token) {

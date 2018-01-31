@@ -75,6 +75,7 @@
 #import "SourceCodeOutput.h"
 #import "QRCodeOutput.h"
 #import "ConfirmPassphraseOutput.h"
+#import "ChangeContractLocatlNameOutput.h"
 
 @implementation ControllersFactory
 
@@ -267,6 +268,12 @@
 
 	NSObject <TemplatesListOutput> *output = (NSObject <TemplatesListOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"TemplateTokenViewController"];
 	return output;
+}
+
+- (NSObject <ChangeContractLocatlNameOutput> *)createChangeContractLocatlNameOutput {
+    
+    NSObject <ChangeContractLocatlNameOutput> *output = (NSObject <ChangeContractLocatlNameOutput> *)[UIViewController controllerInStoryboard:@"CreateToken" withIdentifire:@"ChangeContractLocatlNameViewController"];
+    return output;
 }
 
 - (AddNewTokensViewController *)createAddNewTokensViewController {

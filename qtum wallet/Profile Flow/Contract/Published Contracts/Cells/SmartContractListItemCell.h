@@ -11,8 +11,15 @@
 
 static NSString *smartContractListItemCellIdentifire = @"SmartContractListItemCellIdentifire";
 
+@protocol SmartContractListItemCellDelegate <NSObject>
+
+- (void)renameForIndexPath:(NSIndexPath *) indexPath;
+
+@end
+
 @interface SmartContractListItemCell : QTUMSwipableCellWithButtons
 
+@property (weak, nonatomic) id <SmartContractListItemCellDelegate> smartContractDelegate;
 @property (weak, nonatomic) IBOutlet UILabel *contractName;
 @property (weak, nonatomic) IBOutlet UILabel *typeIdentifire;
 @property (weak, nonatomic) IBOutlet UILabel *creationDate;

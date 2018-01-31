@@ -9,7 +9,7 @@
 #import "SmartContractsListViewController.h"
 #import "SmartContractListItemCell.h"
 
-@interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource, QTUMSwipableCellWithButtonsDelegate, UIGestureRecognizerDelegate, RemoveContractTrainigViewDelegate>
+@interface SmartContractsListViewController () <UITableViewDelegate, UITableViewDataSource, QTUMSwipableCellWithButtonsDelegate, UIGestureRecognizerDelegate, RemoveContractTrainigViewDelegate, SmartContractListItemCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
@@ -173,6 +173,7 @@
 	cell.typeIdentifire.text = [contract.templateModel.templateTypeString uppercaseString];
 	cell.creationDate.text = contract.creationDateString;
 	cell.delegate = self;
+    cell.smartContractDelegate = self;
 	cell.indexPath = indexPath;
 	return cell;
 }
@@ -186,6 +187,7 @@
 	cell.contractName.text = localName;
 	cell.typeIdentifire.text = [template.templateTypeString uppercaseString];
 	cell.creationDate.text = NSLocalizedString(@"Unconfirmed", nil);
+    cell.smartContractDelegate = self;
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	cell.delegate = self;
 	cell.indexPath = indexPath;
@@ -203,6 +205,7 @@
     cell.creationDate.text = NSLocalizedString(@"Failed", nil);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
+    cell.smartContractDelegate = self;
     cell.indexPath = indexPath;
     return cell;
 }
@@ -241,6 +244,17 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf.tableView reloadData];
     });
+}
+
+#pragma mark - SmartContractListItemCellDelegate
+
+- (void)renameForIndexPath:(NSIndexPath *) indexPath {
+    
+    if (indexPath.section == 2){
+        
+        Contract *contract = self.contracts[indexPath.row];
+        [self.delegate didChooseRenameContract:contract];
+    }
 }
 
 #pragma mark - QTUMSwipableCellWithButtonsDelegate

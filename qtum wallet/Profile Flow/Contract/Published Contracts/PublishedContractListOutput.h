@@ -20,5 +20,4 @@
 - (void)setNeedShowingTrainingScreen;
 - (void)reloadData;
 
-
 @end
