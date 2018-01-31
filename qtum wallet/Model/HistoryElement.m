@@ -21,13 +21,18 @@
     isSmartContractCreater = _isSmartContractCreater,
     fromAddreses = _fromAddreses,
     toAddresses = _toAddresses,
-    currency = _currency;
+    currency = _currency,
+    fee = _fee;
 
 - (void)calcAmountAndAdresses:(NSDictionary *) dictionary {
 
 	NSDictionary *hashTableAdresses = [self hashTableOfKeys];
-	CGFloat outMoney = 0;
-	CGFloat inMoney = 0;
+    
+    BOOL isPaidByMe = NO;
+	CGFloat outMyMoney = 0;
+	CGFloat inMyMoney = 0;
+    CGFloat outAllMoney = 0;
+    CGFloat inAllMoney = 0;
 
 	//if hashTable of adresses constain object, add this value to inValue
 	for (NSDictionary *inObject in dictionary[@"vin"]) {
@@ -36,8 +41,11 @@
 				@"value": inObject[@"value"]}];
 		NSString *address = hashTableAdresses[inObject[@"address"]];
 		if (address) {
-			inMoney += [inObject[@"value"] doubleValue];
+			inMyMoney += [inObject[@"value"] doubleValue];
+            isPaidByMe = YES;
 		}
+        
+        inAllMoney += [inObject[@"value"] doubleValue];
 	}
 
 	//if hashTable of adresses constain object, add this value to ouyValue
@@ -47,13 +55,20 @@
 
 		NSString *address = hashTableAdresses[outObject[@"address"]];
 		if (address) {
-			outMoney += [outObject[@"value"] doubleValue];
+			outMyMoney += [outObject[@"value"] doubleValue];
 		}
+        
+        outAllMoney += [outObject[@"value"] doubleValue];
 	}
 
-	CGFloat amount = outMoney - inMoney;
+    CGFloat fee = outAllMoney - inAllMoney;
+	CGFloat mineDiff = outMyMoney - inMyMoney;
+    CGFloat amount = isPaidByMe ? mineDiff - fee : mineDiff;
+
 	self.amount = [QTUMBigNumber decimalWithString:[NSString stringWithFormat:@"%f", amount]];
-	self.send = amount < 0;
+    self.fee = [QTUMBigNumber decimalWithString:[NSString stringWithFormat:@"%f", fee]];
+
+	self.send = isPaidByMe;
 }
 
 #pragma mark - Accessory Methods

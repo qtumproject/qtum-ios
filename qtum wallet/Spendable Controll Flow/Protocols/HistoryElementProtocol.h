@@ -32,5 +32,6 @@
     
 @optional
 @property (assign, nonatomic) BOOL isSmartContractCreater;
+@property (strong, nonatomic) QTUMBigNumber *fee;
 
 @end

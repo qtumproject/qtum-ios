@@ -8,8 +8,8 @@
 
 #import "HistoryItemViewControllerDark.h"
 
-CGFloat confirmedConstant = 150.0f;
-CGFloat notConfirmedConstant = 180.0f;
+CGFloat confirmedConstant = 165.0f;
+CGFloat notConfirmedConstant = 195.0f;
 
 @interface HistoryItemViewControllerDark ()
 

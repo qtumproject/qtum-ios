@@ -16,6 +16,8 @@
 
 - (void)didTrainingPass;
 
+- (void)didChooseRenameContract:(Contract *) contract;
+
 - (void)didUnsubscribeFromContract:(Contract *) contract;
 
 - (void)didUnsubscribeFromContractPretendentWithTxHash:(NSString *) hexTransaction;
