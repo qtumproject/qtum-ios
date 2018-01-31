@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cointType;
 @property (weak, nonatomic) IBOutlet UILabel *receivedTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *feeLabel;
 
 @property (weak, nonatomic) IBOutlet UITableView *fromTable;
 @property (weak, nonatomic) IBOutlet UITableView *toTable;
@@ -82,6 +83,16 @@
 	self.balanceLabel.text = [self.item.amount roundedNumberWithScale:6].stringValue;
 	self.receivedTimeLabel.text = self.item.fullDateString ? : NSLocalizedString(@"Unconfirmed", nil);
     self.cointType.text = self.item.currency;
+    
+    if ([self.item respondsToSelector:@selector(fee)]) {
+        NSString* feeText = NSLocalizedString(@"Fee", "Fee text");
+        NSString* feeString = self.item.fee.stringValue;
+        NSString* curencyString = self.item.currency;
+        NSString* resultString = [NSString stringWithFormat:@"%@: %@ %@", feeText, feeString, curencyString];
+        self.feeLabel.text = resultString;
+    } else {
+        self.feeLabel.hidden = YES;
+    }
 }
 
 - (void)changeCurrentIndex:(NSInteger) index {
