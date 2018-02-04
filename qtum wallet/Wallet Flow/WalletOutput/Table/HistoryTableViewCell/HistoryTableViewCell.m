@@ -27,6 +27,8 @@
 
 	_historyElement = historyElement;
 
+    NSLog(@"%@", historyElement.amountString);
+    
 	self.addressLabel.text = historyElement.address;
 	self.amountLabel.text = self.symbolLabel ? [historyElement.amount roundedNumberWithScale:3].stringValue : historyElement.amountString;
 	self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0) ? [historyElement formattedDateStringSinceCome] : NSLocalizedString(@"Unconfirmed", nil);

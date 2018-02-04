@@ -135,7 +135,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 	if (self.observingForSpendableFailed && !self.observingForSpendableStopped) {
 		[self startObservingForAllSpendable];
-		[self updateHistoryOfSpendableObject:self.wallet withHandler:nil andPage:0];
+		//[self updateHistoryOfSpendableObject:self.wallet withHandler:nil andPage:0];
 	}
 	self.observingForSpendableFailed = NO;
 }
@@ -313,24 +313,9 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (void)updateHistoryOfSpendableObject:(Wallet <Spendable> *) object withHandler:(void (^)(BOOL success)) complete andPage:(NSInteger) page {
 
-	static NSInteger batch = 25;
-	[self.requestAdapter getHistoryForAddresses:[object allKeysAdreeses] andParam:@{@"limit": @(batch), @"offset": @(page * batch)} withSuccessHandler:^(NSArray <HistoryElement *> *history) {
-
-		if (page > object.historyStorage.pageIndex) {
-			[object.historyStorage addHistoryElements:history];
-		} else {
-			[object.historyStorage setHistory:history];
-		}
-		object.historyStorage.pageIndex = page;
-		if (complete) {
-			complete (YES);
-		}
-	}                         andFailureHandler:^(NSError *error, NSString *message) {
-
-		if (complete) {
-			complete (NO);
-		}
-	}];
+    [SLocator.historyFacadeService updateHistroyForAddresses:[object allKeysAdreeses] withPage:page withHandler:^(BOOL succes) {
+        complete (succes);
+    }];
 }
 
 - (void)loadSpendableObjects {

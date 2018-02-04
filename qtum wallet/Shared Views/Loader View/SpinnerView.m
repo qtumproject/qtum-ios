@@ -160,6 +160,7 @@ NSString *RotationAnimationKey = @"rotationAnimation";
 		[self startContentAnimation];
 	} else {
 		self.isAnimating = NO;
+        [self startAnimating];
 	}
 }
 

@@ -682,6 +682,34 @@
                                             <outlet property="typeLabel" destination="B6e-5O-Nik" id="dpO-rO-bhP"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadingFooterCell" rowHeight="75" id="i99-uB-7U6" customClass="LoadingFooterCell">
+                                        <rect key="frame" x="0.0" y="390" width="375" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i99-uB-7U6" id="ZCR-yM-2Ne">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJE-FA-l8v" customClass="SpinnerView">
+                                                    <rect key="frame" x="163" y="12.5" width="50" height="50"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="eJE-FA-l8v" secondAttribute="height" multiplier="1:1" id="IYp-EG-UaS"/>
+                                                        <constraint firstAttribute="height" constant="50" id="uli-35-cBk"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="eJE-FA-l8v" firstAttribute="centerX" secondItem="ZCR-yM-2Ne" secondAttribute="centerX" id="21U-KF-hQX"/>
+                                                <constraint firstItem="eJE-FA-l8v" firstAttribute="centerY" secondItem="ZCR-yM-2Ne" secondAttribute="centerY" id="XHs-yf-wTJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="loaderView" destination="eJE-FA-l8v" id="PFr-1E-upu"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="delegate" destination="mEt-XV-9HF" id="pat-8n-ArN"/>
@@ -2226,6 +2254,34 @@
                                             <outlet property="addressLabel" destination="e84-ls-Gxa" id="SFt-Sz-Pt8"/>
                                             <outlet property="amountLabel" destination="KUl-4l-T4l" id="VXU-jp-R4j"/>
                                             <outlet property="symbolLabel" destination="DaZ-Vi-4cT" id="ISD-vq-9iJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadingFooterCell" rowHeight="55" id="9U0-1y-KDp" customClass="LoadingFooterCell">
+                                        <rect key="frame" x="0.0" y="352" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9U0-1y-KDp" id="184-3f-z3h">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vs-Xb-ser" customClass="SpinnerViewLight">
+                                                    <rect key="frame" x="175" y="15" width="25" height="25"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" red="0.21176470589999999" green="0.72549019609999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="3Vs-Xb-ser" secondAttribute="height" multiplier="1:1" id="JuZ-wK-YlN"/>
+                                                        <constraint firstAttribute="height" constant="25" id="vbM-rK-CgI"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="3Vs-Xb-ser" firstAttribute="centerY" secondItem="184-3f-z3h" secondAttribute="centerY" id="7WD-gL-7tX"/>
+                                                <constraint firstItem="3Vs-Xb-ser" firstAttribute="centerX" secondItem="184-3f-z3h" secondAttribute="centerX" id="tCx-Q1-ZfJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="loaderView" destination="3Vs-Xb-ser" id="rzS-LU-SAn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

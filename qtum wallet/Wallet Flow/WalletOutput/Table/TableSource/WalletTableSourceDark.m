@@ -9,6 +9,7 @@
 #import "WalletTableSourceDark.h"
 #import "HistoryTableViewCellDark.h"
 #import "WalletHeaderCellDark.h"
+#import "LoadingFooterCell.h"
 
 @implementation WalletTableSourceDark
 
@@ -33,8 +34,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
 
-	[self updateEmptyPlaceholderView];
-
 	if (indexPath.section == 0) {
 		WalletHeaderCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"WalletHeaderCellDark"];
 
@@ -46,15 +45,26 @@
 		self.mainCell = cell;
 
 		return cell;
-	} else {
-		HistoryTableViewCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellDarkLoading"];
-
-		HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
-		cell.historyElement = element;
-		[cell changeHighlight:NO];
-
+	} else if ([self isLoadingIndex:indexPath]) {
+		LoadingFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingFooterCell"];
 		return cell;
-	}
+    } else {
+        
+        HistoryTableViewCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellDark"];
+        NSIndexPath* path = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1 >= 0 ? indexPath.section - 1 : 0];
+        
+        [self configureCell:cell atIndexPath:path];
+        
+        return cell;
+    }
+}
+
+- (void)configureCell:(HistoryTableViewCellDark*)cell atIndexPath:(NSIndexPath*)indexPath {
+    
+    WalletHistoryEntity *entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    cell.historyElement = entity;
+    [cell changeHighlight:NO];
 }
 
 @end

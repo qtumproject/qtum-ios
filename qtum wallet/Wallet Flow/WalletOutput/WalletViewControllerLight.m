@@ -34,15 +34,7 @@
 	[self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
 }
 
-- (void)configRefreshControl {
-
-	UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake (0, 64, 0, 0)];
-	[self.tableView addSubview:refreshView];
-
-	self.refreshControl = [[UIRefreshControl alloc] init];
-	self.refreshControl.tintColor = [UIColor whiteColor];
-	[refreshView addSubview:self.refreshControl];
-	[self.refreshControl addTarget:self action:@selector (refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
+- (void)configHeaderBacground {
 
 	CGRect frame = self.view.bounds;
 	frame.origin.y = -frame.size.height;

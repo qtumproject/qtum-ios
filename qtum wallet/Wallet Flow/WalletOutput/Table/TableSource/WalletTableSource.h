@@ -10,6 +10,8 @@
 #import "WalletCoordinator.h"
 #import "WalletHeaderCell.h"
 #import "HistoryHeaderVIew.h"
+#import "WalletHistoryEntity+Extension.h"
+
 
 @class HistoryElement;
 
@@ -29,7 +31,7 @@
 @interface WalletTableSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) UITableView *tableView;
-
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) id <Spendable> wallet;
 @property (weak, nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak, nonatomic) id <ControllerDelegate> controllerDelegate;
@@ -45,7 +47,8 @@
 - (HeaderCellType)headerCellType;
 
 - (void)didScrollForheaderCell:(UIScrollView *) scrollView;
-
-- (void)updateEmptyPlaceholderView;
+- (BOOL)isLoadingIndex:(NSIndexPath*) indexpath;
+- (void)setupFething;
+- (void)reloadWithFeching;
 
 @end

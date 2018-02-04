@@ -62,7 +62,7 @@ failure;
 
 - (void)getHistoryWithParam:(NSDictionary *) param
 			   andAddresses:(NSArray *) addresses
-			 successHandler:(void (^)(id responseObject)) success
+			 successHandler:(void (^)(id responseObject, NSInteger totalCount)) success
 		  andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
 
 - (void)getTokenHistoryWithParam:(NSDictionary *) param

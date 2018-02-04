@@ -30,7 +30,7 @@
 
 - (void)configTableView;
 
-- (void)configRefreshControl;
+- (void)configHeaderBacground;
 
 - (void)configLocalization;
 

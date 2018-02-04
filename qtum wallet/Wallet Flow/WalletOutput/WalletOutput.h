@@ -18,16 +18,13 @@
 
 - (void)setWallet:(id <Spendable>) wallet;
 
-- (void)reloadTableView;
-
-- (void)failedToGetData;
-
-- (void)failedToGetBalance;
+- (void)failedToUpdateHistory;
 
 - (void)startLoading;
 
 - (void)stopLoading;
 
 - (void)reloadHeader:(id <Spendable>) wallet;
+- (void)reloadHistorySource;
 
 @end

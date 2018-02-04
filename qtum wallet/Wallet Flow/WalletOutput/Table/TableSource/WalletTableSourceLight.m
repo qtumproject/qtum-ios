@@ -9,6 +9,7 @@
 #import "WalletTableSourceLight.h"
 #import "WalletHeaderCellLight.h"
 #import "HistoryTableViewCellLight.h"
+#import "LoadingFooterCell.h"
 
 @implementation WalletTableSourceLight
 
@@ -32,8 +33,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
 
-	[self updateEmptyPlaceholderView];
-
 	if (indexPath.section == 0) {
 		WalletHeaderCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"WalletHeaderCellLight"];
 
@@ -43,15 +42,27 @@
 		[self didScrollForheaderCell:tableView];
 
 		return cell;
-	} else {
-		HistoryTableViewCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLightLoading"];
+	} else if ([self isLoadingIndex:indexPath]){
 
-		HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
-		cell.historyElement = element;
-		[cell changeHighlight:NO];
-
+		LoadingFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingFooterCell"];
 		return cell;
-	}
+    } else {
+        
+        HistoryTableViewCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
+        NSIndexPath* path = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1 >= 0 ? indexPath.section - 1 : 0];
+        
+        [self configureCell:cell atIndexPath:path];
+        
+        return cell;
+    }
+}
+
+- (void)configureCell:(HistoryTableViewCellLight*)cell atIndexPath:(NSIndexPath*)indexPath {
+    
+    WalletHistoryEntity *entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    cell.historyElement = entity;
+    [cell changeHighlight:NO];
 }
 
 @end

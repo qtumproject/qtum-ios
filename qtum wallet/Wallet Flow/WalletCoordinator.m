@@ -105,11 +105,17 @@
 
 #pragma mark - WalletCoordinatorDelegate
 
-- (void)refreshTableViewData {
+- (void)refreshTableViewDataWithPage:(NSInteger) page {
 
 	if (self.isNewDataLoaded) {
-		[self refreshHistory];
+        [self refreshHistoryWithPage:page];
 	}
+}
+
+-(void)refreshTableViewDataFromStart {
+    
+    [self fireHistoryElementTimerUpdate];
+    [self reloadHistory];
 }
 
 - (void)didSelectHistoryItemIndexPath:(NSIndexPath *) indexPath withItem:(HistoryElement *) item {
@@ -257,21 +263,18 @@
 
 #pragma mark - Private Methods
 
-- (void)refreshHistory {
+- (void)refreshHistoryWithPage:(NSInteger) page {
 
 	__weak __typeof (self) weakSelf = self;
 	dispatch_async (_requestQueue, ^{
-		[weakSelf.walletViewController startLoading];
 		weakSelf.isHistoryLoaded = NO;
-		id <Spendable> spendable = (id <Spendable>)(weakSelf.wallet);
-		NSInteger index = spendable.historyStorage.pageIndex + 1; //next page
+		NSInteger index = page; //next page
 		[weakSelf.wallet updateHistoryWithHandler:^(BOOL success) {
 			weakSelf.isHistoryLoaded = YES;
 			if (success) {
-				[weakSelf.walletViewController reloadTableView];
+				[weakSelf.walletViewController reloadHistorySource];
 			}
-			[weakSelf stopRefreshing];
-		}                                 andPage:index];
+		} andPage:index];
 	});
 }
 
@@ -279,15 +282,17 @@
 
 	__weak __typeof (self) weakSelf = self;
 	dispatch_async (_requestQueue, ^{
+        
 		[weakSelf.walletViewController startLoading];
 		weakSelf.isHistoryLoaded = NO;
+        
 		[weakSelf.wallet updateHistoryWithHandler:^(BOOL success) {
 			weakSelf.isHistoryLoaded = YES;
 			if (success) {
-				[weakSelf.walletViewController reloadTableView];
+				[weakSelf.walletViewController reloadHistorySource];
 			}
-			[weakSelf stopRefreshing];
-		}                                 andPage:0];
+            [weakSelf.walletViewController stopLoading];
+		} andPage:0];
 	});
 }
 
@@ -356,14 +361,12 @@
 
 - (void)updateSpendableHistory {
 	[self updateSpendables];
-	[self fireHistoryElementTimerUpdate];
 }
 
 - (void)updateSpendables {
 
 	NSArray *tokensArray = [SLocator.contractManager allActiveTokens];
 	self.delegateDataSource.haveTokens = tokensArray.count > 0;
-	[self.walletViewController reloadTableView];
 	self.tokenController.tokens = tokensArray;
 	[self.tokenController reloadTable];
 
@@ -491,23 +494,6 @@
 	NSObject <QRCodeOutput> *output = [SLocator.controllersFactory createQRCodeViewControllerForWallet];
 	output.delegate = self;
 	[self.navigationController pushViewController:[output toPresent] animated:YES];
-}
-
-- (void)didRefreshTableViewBalanceLocal:(BOOL) isLocal {
-
-	__weak __typeof (self) weakSelf = self;
-	dispatch_async (_requestQueue, ^{
-		weakSelf.isBalanceLoaded = NO;
-		[weakSelf.walletViewController startLoading];
-		[weakSelf.wallet updateBalanceWithHandler:^(BOOL success) {
-
-			weakSelf.isBalanceLoaded = YES;
-			if (success) {
-				[weakSelf.walletViewController reloadTableView];
-			}
-			[weakSelf stopRefreshing];
-		}];
-	});
 }
 
 - (void)didReloadTableViewData {
