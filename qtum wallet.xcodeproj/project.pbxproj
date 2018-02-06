@@ -55,6 +55,12 @@
 		B30FE5FD1FFE2E25001636AE /* ConfirmWordCollectionViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B30FE5FC1FFE2E25001636AE /* ConfirmWordCollectionViewCellDark.m */; };
 		B30FE5FF1FFE2EEC001636AE /* ExampleWordCollectionViewCellDark.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30FE5FE1FFE2EEC001636AE /* ExampleWordCollectionViewCellDark.xib */; };
 		B30FE6021FFE2EF8001636AE /* ExampleWordCollectionViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B30FE6011FFE2EF8001636AE /* ExampleWordCollectionViewCellDark.m */; };
+		B3113C5C2029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C522029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.m */; };
+		B3113C5D2029C2A900945F01 /* WalletHistoryEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C532029C2A900945F01 /* WalletHistoryEntity+CoreDataProperties.m */; };
+		B3113C5E2029C2A900945F01 /* Log+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C562029C2A900945F01 /* Log+CoreDataClass.m */; };
+		B3113C5F2029C2A900945F01 /* Log+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C572029C2A900945F01 /* Log+CoreDataProperties.m */; };
+		B3113C602029C2A900945F01 /* TransactionReceipt+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C5A2029C2A900945F01 /* TransactionReceipt+CoreDataClass.m */; };
+		B3113C612029C2A900945F01 /* TransactionReceipt+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C5B2029C2A900945F01 /* TransactionReceipt+CoreDataProperties.m */; };
 		B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E551F3090A60095E3DF /* AbiTextFieldWithLineLight.m */; };
 		B3141E5A1F3099110095E3DF /* ContractNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E591F3099110095E3DF /* ContractNameTextField.m */; };
 		B3141E5D1F3099DA0095E3DF /* ContractNameTextFieldLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3141E5C1F3099DA0095E3DF /* ContractNameTextFieldLight.xib */; };
@@ -862,6 +868,18 @@
 		B30FE6001FFE2EF8001636AE /* ExampleWordCollectionViewCellDark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleWordCollectionViewCellDark.h; sourceTree = "<group>"; };
 		B30FE6011FFE2EF8001636AE /* ExampleWordCollectionViewCellDark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleWordCollectionViewCellDark.m; sourceTree = "<group>"; };
 		B3105A691FDE778E004BEC5D /* ParameterInputFieldProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterInputFieldProtocol.h; sourceTree = "<group>"; };
+		B3113C502029C2A900945F01 /* WalletHistoryEntity+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalletHistoryEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B3113C512029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalletHistoryEntity+CoreDataClass.h"; sourceTree = "<group>"; };
+		B3113C522029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WalletHistoryEntity+CoreDataClass.m"; sourceTree = "<group>"; };
+		B3113C532029C2A900945F01 /* WalletHistoryEntity+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WalletHistoryEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B3113C542029C2A900945F01 /* Log+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Log+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B3113C552029C2A900945F01 /* Log+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Log+CoreDataClass.h"; sourceTree = "<group>"; };
+		B3113C562029C2A900945F01 /* Log+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Log+CoreDataClass.m"; sourceTree = "<group>"; };
+		B3113C572029C2A900945F01 /* Log+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Log+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B3113C582029C2A900945F01 /* TransactionReceipt+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TransactionReceipt+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B3113C592029C2A900945F01 /* TransactionReceipt+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TransactionReceipt+CoreDataClass.h"; sourceTree = "<group>"; };
+		B3113C5A2029C2A900945F01 /* TransactionReceipt+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TransactionReceipt+CoreDataClass.m"; sourceTree = "<group>"; };
+		B3113C5B2029C2A900945F01 /* TransactionReceipt+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TransactionReceipt+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B3141E541F3090A60095E3DF /* AbiTextFieldWithLineLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLineLight.h; sourceTree = "<group>"; };
 		B3141E551F3090A60095E3DF /* AbiTextFieldWithLineLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiTextFieldWithLineLight.m; sourceTree = "<group>"; };
 		B3141E571F3090CB0095E3DF /* AbiTextFieldWithLineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLineDelegate.h; sourceTree = "<group>"; };
@@ -2614,6 +2632,18 @@
 		B32A52F42022162F00280D25 /* Data Base */ = {
 			isa = PBXGroup;
 			children = (
+				B3113C502029C2A900945F01 /* WalletHistoryEntity+CoreDataProperties.h */,
+				B3113C512029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.h */,
+				B3113C522029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.m */,
+				B3113C532029C2A900945F01 /* WalletHistoryEntity+CoreDataProperties.m */,
+				B3113C542029C2A900945F01 /* Log+CoreDataProperties.h */,
+				B3113C552029C2A900945F01 /* Log+CoreDataClass.h */,
+				B3113C562029C2A900945F01 /* Log+CoreDataClass.m */,
+				B3113C572029C2A900945F01 /* Log+CoreDataProperties.m */,
+				B3113C582029C2A900945F01 /* TransactionReceipt+CoreDataProperties.h */,
+				B3113C592029C2A900945F01 /* TransactionReceipt+CoreDataClass.h */,
+				B3113C5A2029C2A900945F01 /* TransactionReceipt+CoreDataClass.m */,
+				B3113C5B2029C2A900945F01 /* TransactionReceipt+CoreDataProperties.m */,
 				B32A52F82022168600280D25 /* TransactionHistory.xcdatamodeld */,
 				B31E0974202339860001F57F /* WalletHistoryEntity+Extension.h */,
 				B31E0975202339860001F57F /* WalletHistoryEntity+Extension.m */,
@@ -5906,6 +5936,7 @@
 				B32805591FA7477D00748E7E /* tommath.c in Sources */,
 				B32805571FA7474B00748E7E /* JKBigInteger.m in Sources */,
 				B32805581FA7474B00748E7E /* JKBigDecimal.m in Sources */,
+				B3113C5E2029C2A900945F01 /* Log+CoreDataClass.m in Sources */,
 				B35733311F97B32900C64AAE /* TFHppleElement.m in Sources */,
 				B328055F1FA7555000748E7E /* JKBigDecimal+Comparison.m in Sources */,
 				B35733321F97B32900C64AAE /* XPathQuery.m in Sources */,
@@ -6046,6 +6077,7 @@
 				B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */,
 				D059BE7B1F84E4A70045ABA0 /* PaymentValuesManager.m in Sources */,
 				B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */,
+				B3113C5F2029C2A900945F01 /* Log+CoreDataProperties.m in Sources */,
 				B315D0321F9F43B000C7F4E4 /* QTUMImageTagCellLight.m in Sources */,
 				B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */,
 				B3E3A1651E850572002A488F /* AppSettings.m in Sources */,
@@ -6117,9 +6149,11 @@
 				B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
 				B3EA53111F46DE00002FD201 /* CustomSearchBarLight.m in Sources */,
+				B3113C5C2029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.m in Sources */,
 				B3D5FE801F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.m in Sources */,
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				B3141E661F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m in Sources */,
+				B3113C602029C2A900945F01 /* TransactionReceipt+CoreDataClass.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B342288B1F73CF6400C4C381 /* SliderFeeView.m in Sources */,
 				B3210D231E002E2900365FB6 /* ApplicationCoordinator.m in Sources */,
@@ -6254,6 +6288,7 @@
 				B35DF62C1F2084CA00316953 /* TouchIDService.m in Sources */,
 				B3CB56AE1ECEE8B300B23AE9 /* BalancePageViewController.m in Sources */,
 				B3827DE71ECF673900E500DE /* TokenFunctionViewController.m in Sources */,
+				B3113C5D2029C2A900945F01 /* WalletHistoryEntity+CoreDataProperties.m in Sources */,
 				B32C3CFF1E112A470094C82C /* NewsNavigationController.m in Sources */,
 				E71F1C7F1F1CA1E400961B19 /* LibraryTableViewCell.m in Sources */,
 				B3E090251FAB4DD1003F3B54 /* QTUMContractLableWithMargins.m in Sources */,
@@ -6281,6 +6316,7 @@
 				B3EE8F541F13B4DF00131823 /* LoginViewControllerLight.m in Sources */,
 				B3D5FE8F1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m in Sources */,
 				B3DC9D071F31B6B7006B2E07 /* AddressControlListViewControllerLight.m in Sources */,
+				B3113C612029C2A900945F01 /* TransactionReceipt+CoreDataProperties.m in Sources */,
 				B303552D1F163C4D00E64E46 /* ConfirmPinForExportViewController.m in Sources */,
 				B3D12F541FB9884400DEE41E /* SourceCodeViewController.m in Sources */,
 				B315D02C1F9E100100C7F4E4 /* QTUMParagrafTagCell.m in Sources */,

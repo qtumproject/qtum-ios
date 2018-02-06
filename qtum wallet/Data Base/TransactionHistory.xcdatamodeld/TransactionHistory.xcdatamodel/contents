@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="Log" representedClassName="Log" syncable="YES" codeGenerationType="class">
+    <entity name="Log" representedClassName="Log" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="topics" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
     </entity>
-    <entity name="TransactionReceipt" representedClassName="TransactionReceipt" syncable="YES" codeGenerationType="class">
+    <entity name="TransactionReceipt" representedClassName="TransactionReceipt" syncable="YES">
         <attribute name="blockHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="blockNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="contractAddress" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,7 +23,7 @@
             <entry key="relatedByAttribute" value="transactionHash"/>
         </userInfo>
     </entity>
-    <entity name="WalletHistoryEntity" representedClassName="WalletHistoryEntity" syncable="YES" codeGenerationType="class">
+    <entity name="WalletHistoryEntity" representedClassName="WalletHistoryEntity" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="amountString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="confirmed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
@@ -45,7 +45,7 @@
     </entity>
     <elements>
         <element name="Log" positionX="18" positionY="-162" width="128" height="90"/>
-        <element name="TransactionReceipt" positionX="-209" positionY="-441" width="128" height="30"/>
+        <element name="TransactionReceipt" positionX="-209" positionY="-441" width="128" height="195"/>
         <element name="WalletHistoryEntity" positionX="-396" positionY="-250" width="128" height="225"/>
     </elements>
 </model>
