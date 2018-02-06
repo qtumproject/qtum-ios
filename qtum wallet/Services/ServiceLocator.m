@@ -41,6 +41,7 @@
 		_requestManager = [[RequestManager alloc] initWithBaseUrl:_appSettings.baseURL];
 		_contractInfoFacade = [ContractInfoFacade new];
 		_sourceCodeFormatService = [SourceCodeFormatService new];
+        _coreDataService = [CoreDataService new];
 	}
 	return self;
 }
@@ -166,6 +167,14 @@
         _keychainService = [KeychainService new];
     }
     return _keychainService;
+}
+
+-(HistoryFacadeService*)historyFacadeService {
+    
+    if (!_historyFacadeService) {
+        _historyFacadeService = [[HistoryFacadeService alloc] initWithRequestService:self.requestManager andStorageService:self.coreDataService];
+    }
+    return _historyFacadeService;
 }
 
 @end

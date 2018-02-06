@@ -18,7 +18,9 @@
 @required
 
 // Table reload
-- (void)refreshTableViewData;
+- (void)refreshTableViewDataWithPage:(NSInteger) page;
+- (void)refreshTableViewDataFromStart;
+
 
 // Show
 - (void)showAddressInfoWithSpendable:(id <Spendable>) spendable;

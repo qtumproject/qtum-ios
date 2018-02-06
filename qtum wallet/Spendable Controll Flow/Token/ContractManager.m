@@ -301,13 +301,13 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 	for (NSString *txHash in self.smartContractPretendents) {
 
-		[SLocator.walletManager.requestAdapter updateHistoryElementWithTxHash:txHash withSuccessHandler:^(HistoryElement *historyItem) {
+		[SLocator.historyFacadeService updateHistoryElementWithTxHash:txHash withSuccessHandler:^(HistoryElement *historyItem) {
 
 			if (historyItem) {
 				[self checkSmartContract:historyItem];
 			}
 
-		}                                                   andFailureHandler:^(NSError *error, NSString *message) {
+		} andFailureHandler:^(NSError *error, NSString *message) {
 
 			DLog(@"Invalid hisory response");
 		}];
@@ -320,7 +320,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
 		return;
 	}
 
-    NSString *key = item.txHash;
+    NSString *key = item.transactionHash;
     NSDictionary *tokenInfo = key ? self.smartContractPretendents[key] : @{};
     
 	if (item.confirmed && item.isSmartContractCreater && [self.smartContractPretendents objectForKey:key]) {

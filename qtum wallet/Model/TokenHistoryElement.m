@@ -14,14 +14,14 @@
 address = _address,
 amount = _amount,
 amountString = _amountString,
-txHash = _txHash,
+transactionHash = _transactionHash,
 dateNumber = _dateNumber,
 shortDateString = _shortDateString,
 fullDateString = _fullDateString,
 send = _send,
 confirmed = _confirmed,
 isSmartContractCreater = _isSmartContractCreater,
-fromAddreses = _fromAddreses,
+fromAddresses = _fromAddresses,
 toAddresses = _toAddresses,
 currency = _currency;
 
@@ -44,7 +44,7 @@ currency = _currency;
         return NO;
     }
 
-    if (self.txHash && object.txHash && ![self.txHash isEqualToString:object.txHash]) {
+    if (self.transactionHash && object.transactionHash && ![self.transactionHash isEqualToString:object.transactionHash]) {
         return NO;
     }
     return YES;
@@ -54,32 +54,37 @@ currency = _currency;
     
     if ([object isKindOfClass:[NSDictionary class]]) {
         
-        [self.fromAddreses addObject:@{@"address": object[@"from"],
+        NSMutableArray* fromAddresses = self.fromAddresses.mutableCopy;
+        NSMutableArray* toAddresses = self.toAddresses.mutableCopy;
+        
+        [fromAddresses addObject:@{@"address": object[@"from"],
                                        @"value": object[@"amount"]}];
-        [self.toAddresses addObject:@{@"address": object[@"to"],
+        [toAddresses addObject:@{@"address": object[@"to"],
                                        @"value": object[@"amount"]}];
         self.amount = object[@"amount"] ? [QTUMBigNumber decimalWithString:object[@"amount"]] : [QTUMBigNumber decimalWithString:@"0"];
         self.address = object[@"contract_address"] ? object[@"contract_address"] : @"";
         self.amountString = self.amount.stringValue;
-        self.txHash = ![object[@"tx_hash"] isKindOfClass:[NSNull class]] ? object[@"tx_hash"] : nil;
+        self.transactionHash = ![object[@"tx_hash"] isKindOfClass:[NSNull class]] ? object[@"tx_hash"] : nil;
         self.dateNumber = ![object[@"tx_time"] isKindOfClass:[NSNull class]] ? object[@"tx_time"] : nil;
         NSDictionary* addresses = [SLocator.walletManager.wallet addressKeyHashTable];
 
         self.send = addresses[object[@"from"] ?: @""] ? YES : NO;
         self.confirmed = YES;
+        self.fromAddresses = [fromAddresses copy];
+        self.toAddresses = [toAddresses copy];
     }
 }
 
-- (NSMutableArray *)fromAddreses {
-    if (!_fromAddreses) {
-        _fromAddreses = @[].mutableCopy;
+- (NSArray *)fromAddresses {
+    if (!_fromAddresses) {
+        _fromAddresses = @[];
     }
-    return _fromAddreses;
+    return _fromAddresses;
 }
 
-- (NSMutableArray *)toAddresses {
+- (NSArray *)toAddresses {
     if (!_toAddresses) {
-        _toAddresses = @[].mutableCopy;
+        _toAddresses = @[];
     }
     return _toAddresses;
 }

@@ -11,7 +11,7 @@
 
 @interface HistoryTableViewCell : UITableViewCell
 
-@property (nonatomic) id<HistoryElementProtocol> historyElement;
+@property (weak, nonatomic) id<HistoryElementProtocol> historyElement;
 
 - (void)changeHighlight:(BOOL) value;
 

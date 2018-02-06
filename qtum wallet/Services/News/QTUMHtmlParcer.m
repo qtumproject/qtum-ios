@@ -36,7 +36,6 @@
 
 	NSBlockOperation *operation = [[NSBlockOperation alloc] init];
 
-	// Make a weak reference to avoid a retain cycle
 	__weak NSBlockOperation *weakOperation = operation;
 
 	[operation addExecutionBlock:^{

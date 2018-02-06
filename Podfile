@@ -17,6 +17,7 @@ target 'qtum wallet' do
     pod 'MWFeedParser'
     pod 'SAMKeychain'
     pod 'Masonry'
+    pod 'MagicalRecord'
 
     target 'qtum walletTests' do
         inherit! :search_paths

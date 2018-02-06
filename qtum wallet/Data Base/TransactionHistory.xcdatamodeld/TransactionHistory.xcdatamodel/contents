@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Log" representedClassName="Log" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="topics" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
+    </entity>
+    <entity name="TransactionReceipt" representedClassName="TransactionReceipt" syncable="YES">
+        <attribute name="blockHash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="blockNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="contractAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cumulativeGasUsed" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="from" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gasUsed" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="to" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transactionHash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transactionIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="logs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Log" syncable="YES"/>
+        <fetchIndex name="transactionHash">
+            <fetchIndexElement property="transactionHash" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <userInfo>
+            <entry key="relatedByAttribute" value="transactionHash"/>
+        </userInfo>
+    </entity>
+    <entity name="WalletHistoryEntity" representedClassName="WalletHistoryEntity" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="amountString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="confirmed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="contracted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateInerval" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fromAddresses" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
+        <attribute name="hasReceipt" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="internal" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="send" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="toAddresses" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
+        <attribute name="transactionHash" optional="YES" attributeType="String" syncable="YES"/>
+        <fetchIndex name="transactionHash">
+            <fetchIndexElement property="transactionHash" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <userInfo>
+            <entry key="relatedByAttribute" value="txHash"/>
+        </userInfo>
+    </entity>
+    <elements>
+        <element name="Log" positionX="18" positionY="-162" width="128" height="90"/>
+        <element name="TransactionReceipt" positionX="-209" positionY="-441" width="128" height="195"/>
+        <element name="WalletHistoryEntity" positionX="-396" positionY="-250" width="128" height="225"/>
+    </elements>
+</model>

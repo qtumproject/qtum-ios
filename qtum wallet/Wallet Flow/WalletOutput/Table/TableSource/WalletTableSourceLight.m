@@ -9,6 +9,7 @@
 #import "WalletTableSourceLight.h"
 #import "WalletHeaderCellLight.h"
 #import "HistoryTableViewCellLight.h"
+#import "LoadingFooterCell.h"
 
 @implementation WalletTableSourceLight
 
@@ -27,30 +28,6 @@
 		}
 	} else {
 		return 55;
-	}
-}
-
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	[self updateEmptyPlaceholderView];
-
-	if (indexPath.section == 0) {
-		WalletHeaderCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"WalletHeaderCellLight"];
-
-		cell.delegate = self.delegate;
-		[cell setCellType:[self headerCellType]];
-		[cell setData:self.wallet];
-		[self didScrollForheaderCell:tableView];
-
-		return cell;
-	} else {
-		HistoryTableViewCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
-
-		HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
-		cell.historyElement = element;
-		[cell changeHighlight:NO];
-
-		return cell;
 	}
 }
 

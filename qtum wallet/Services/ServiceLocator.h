@@ -41,7 +41,8 @@
 @property (strong, nonatomic) WatchTokensFacadeService* watchTokensFacadeService;
 @property (strong, nonatomic) KeychainService* keychainService;
 @property (strong, nonatomic) CallContractFacadeService* callContractFacadeService;
-
+@property (strong, nonatomic) CoreDataService* coreDataService;
+@property (strong, nonatomic) HistoryFacadeService* historyFacadeService;
 
 + (instancetype)sharedInstance;
 

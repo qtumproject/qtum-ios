@@ -129,7 +129,7 @@
 
 - (void)getHistoryWithParam:(NSDictionary *) param
 			   andAddresses:(NSArray *) addresses
-			 successHandler:(void (^)(id responseObject)) success
+			 successHandler:(void (^)(id responseObject, NSInteger totalCount)) success
 		  andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
 
 	NSMutableDictionary *adressesForParam;
@@ -144,14 +144,17 @@
 	}
 
 	[self.networkService requestWithType:GET path:pathString andParams:adressesForParam withSuccessHandler:^(id _Nonnull responseObject) {
+        
 		__block id response = responseObject;
 		dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            
+            NSInteger total = [responseObject[@"totalItems"] integerValue];
 			response = [weakSelf.adapter adaptiveDataForHistory:response];
-			success (response);
+			success (response, total);
 			DLog(@"Succes");
 		});
 
-	}                  andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
+	} andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
 		failure (error, message);
 		DLog(@"Failure");
 	}];
@@ -197,6 +200,24 @@
 	}];
 }
 
+- (void)getTransactionReceipt:(NSString *) txhash
+               successHandler:(void (^)(id responseObject)) success
+            andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
+    
+    NSString *pathString = [NSString stringWithFormat:@"%@/%@/receipt", @"transactions", txhash];
+    
+    [self.networkService requestWithType:GET path:pathString andParams:nil withSuccessHandler:^(id _Nonnull responseObject) {
+        __block id response = responseObject;
+        dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            success (response);
+            DLog(@"Succes");
+        });
+        
+    }                  andFailureHandler:^(NSError *_Nonnull error, NSString *message) {
+        failure (error, message);
+        DLog(@"Failure");
+    }];
+}
 
 #pragma mark - Info
 

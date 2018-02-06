@@ -14,15 +14,17 @@
 @property (copy, nonatomic) NSString *address;
 @property (strong, nonatomic) QTUMBigNumber *amount;
 @property (copy, nonatomic) NSString *amountString;
-@property (copy, nonatomic) NSString *txHash;
+@property (copy, nonatomic) NSString *transactionHash;
 @property (strong, nonatomic) NSNumber *dateNumber;
 @property (copy, nonatomic) NSString *shortDateString;
 @property (copy, nonatomic) NSString *fullDateString;
-
-@property (strong, nonatomic) NSMutableArray *fromAddreses;
-@property (strong, nonatomic) NSMutableArray *toAddresses;
+@property (assign, nonatomic) BOOL hasReceipt;
+@property (strong, nonatomic) NSArray *fromAddresses;
+@property (strong, nonatomic) NSArray *toAddresses;
 @property (assign, nonatomic) BOOL send;
 @property (assign, nonatomic) BOOL confirmed;
+@property (assign, nonatomic) BOOL internal;
+@property (assign, nonatomic) BOOL contracted;
 @property (copy, nonatomic) NSString* currency;
 
 - (BOOL)isEqualElementWithoutConfimation:(id <HistoryElementProtocol>) object;

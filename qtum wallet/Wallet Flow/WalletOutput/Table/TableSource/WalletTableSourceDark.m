@@ -9,6 +9,7 @@
 #import "WalletTableSourceDark.h"
 #import "HistoryTableViewCellDark.h"
 #import "WalletHeaderCellDark.h"
+#import "LoadingFooterCell.h"
 
 @implementation WalletTableSourceDark
 
@@ -31,30 +32,5 @@
 	}
 }
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	[self updateEmptyPlaceholderView];
-
-	if (indexPath.section == 0) {
-		WalletHeaderCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"WalletHeaderCellDark"];
-
-		cell.delegate = self.delegate;
-		[cell setCellType:[self headerCellType]];
-		[cell setData:self.wallet];
-		[self didScrollForheaderCell:tableView];
-
-		self.mainCell = cell;
-
-		return cell;
-	} else {
-		HistoryTableViewCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellDark"];
-
-		HistoryElement *element = self.wallet.historyStorage.historyPrivate[indexPath.row];
-		cell.historyElement = element;
-		[cell changeHighlight:NO];
-
-		return cell;
-	}
-}
 
 @end

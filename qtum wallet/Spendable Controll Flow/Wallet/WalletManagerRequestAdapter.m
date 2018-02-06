@@ -24,30 +24,6 @@
 	}];
 }
 
-- (void)getHistoryForAddresses:(NSArray *) keyAddreses andParam:(NSDictionary *) param withSuccessHandler:(void (^)(NSArray *responseObject)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
-	__weak typeof (self) weakSelf = self;
-	[SLocator.requestManager getHistoryWithParam:param andAddresses:keyAddreses successHandler:^(id responseObject) {
-		NSArray <HistoryElement *> *history = [weakSelf createHistoryElements:responseObject];
-
-		success (history);
-	}                          andFailureHandler:^(NSError *error, NSString *message) {
-		failure (error, message);
-	}];
-}
-
-- (void)updateHistoryElementWithTxHash:(NSString *) txHash withSuccessHandler:(void (^)(HistoryElement *historyItem)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
-
-	__weak typeof (self) weakSelf = self;
-
-	[SLocator.requestManager infoAboutTransaction:txHash successHandler:^(id responseObject) {
-		if ([responseObject isKindOfClass:[NSDictionary class]]) {
-			success ([weakSelf createHistoryElement:responseObject]);
-		}
-	}                           andFailureHandler:^(NSError *error, NSString *message) {
-		failure (error, message);
-	}];
-}
-
 #pragma mark - Outputs
 
 - (void)getunspentOutputs:(NSArray *) keyAddreses withSuccessHandler:(void (^)(NSArray *responseObject)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
@@ -58,7 +34,6 @@
 		failure (error, message);
 	}];
 }
-
 
 #pragma mark - Adapters Methods
 
@@ -98,30 +73,6 @@
 	}
 
 	return [stringValue doubleValue] * BTCCoin;
-}
-
-
-- (NSArray *)createHistoryElements:(NSArray *) responseObject {
-
-	NSArray *responseObjectLocal = [[responseObject reverseObjectEnumerator] allObjects];
-	NSMutableArray<HistoryElement *> *array = [NSMutableArray new];
-
-	for (NSDictionary *dictionary in responseObjectLocal) {
-		HistoryElement *element = [self createHistoryElement:dictionary];
-		[array addObject:element];
-	}
-
-	[SLocator.contractManager checkSmartContractPretendents];
-
-	return array;
-}
-
-- (HistoryElement *)createHistoryElement:(NSDictionary *) dictionary {
-
-	HistoryElement *element = [HistoryElement new];
-	[element setupWithObject:dictionary];
-	[SLocator.contractManager checkSmartContract:element];
-	return element;
 }
 
 - (QTUMBigNumber *)calculateBalance:(NSArray *) responseObject {

@@ -8,24 +8,143 @@
 
 #import "WalletTableSource.h"
 #import "HistoryTableViewCell.h"
+#import "LoadingFooterCell.h"
 
-@interface WalletTableSource ()
+@interface WalletTableSource () <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, assign) CGFloat lastContentOffset;
 @property (nonatomic, weak) HistoryHeaderVIew *sectionHeaderView;
+@property (nonatomic, assign) NSInteger currentPage;
 
 @property (nonatomic) BOOL isScrollingAnimation;
+@property (nonatomic) BOOL shouldShowLoadingCell;
+@property (nonatomic) BOOL isLoadingNow;
 
 @end
 
-static NSInteger countOfSections = 2;
+static NSInteger batchSize = 25;
+static NSString* historyCellReuseIdentifire = @"HistoryTableViewCell";
+static NSString* historyCellLoadingReuseIdentifire = @"HistoryTableViewCellLoading";
+static NSString* historyContractedCellReuseIdentifire = @"HistoryTableViewCellContracted";
+static NSString* historyInternalCellReuseIdentifire = @"HistoryTableViewCellInternal";
+static NSString* footerLoaderReuseIdentifire = @"LoadingFooterCell";
+static NSString* headerReuseIdentifire = @"WalletHeaderCell";
+static NSString* fetchedEntity = @"WalletHistoryEntity";
+static NSString* fetchedSortingProperty = @"dateInerval";
+
 
 @implementation WalletTableSource
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:fetchedEntity inManagedObjectContext:[NSManagedObjectContext MR_defaultContext]];
+    [fetchRequest setEntity:entity];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:fetchedSortingProperty ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    fetchRequest.fetchLimit = batchSize;
+    fetchRequest.fetchBatchSize = batchSize;
+    fetchRequest.fetchOffset = 0;
+
+    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = theFetchedResultsController;
+    self.fetchedResultsController.delegate = self;
+    return _fetchedResultsController;
+}
+
+- (void)setupFething {
+    
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    [self fethcFromStart];
+}
+
+-(void)fethcFromStart {
+    
+    self.currentPage = 0;
+    [self.delegate refreshTableViewDataFromStart];
+    self.isLoadingNow = YES;
+}
+
+- (void)refreshDatas:(NSNotification*)notification {
+    
+    if ([notification object] == SLocator.coreDataService.managedObjectContext) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.fetchedResultsController.fetchRequest setFetchLimit:6];
+            [self.fetchedResultsController performFetch:nil];
+            [self.tableView reloadData];
+        });
+    }
+}
+
+- (void)reloadWithFeching {
+
+    self.currentPage += 1;
+    NSInteger itemsToShow = self.currentPage * batchSize;
+    [self.fetchedResultsController.fetchRequest setFetchLimit:itemsToShow];
+    self.shouldShowLoadingCell = itemsToShow < SLocator.historyFacadeService.totalItems;
+    [self.fetchedResultsController performFetch:nil];
+    self.isLoadingNow = NO;
+    [self.tableView reloadData];
+}
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-	return nil;
+    
+    if (indexPath.section == 0) {
+        WalletHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerReuseIdentifire];
+        
+        cell.delegate = self.delegate;
+        [cell setCellType:[self headerCellType]];
+        [cell setData:self.wallet];
+        [self didScrollForheaderCell:tableView];
+        
+        self.mainCell = cell;
+        
+        return cell;
+    } else if ([self isLoadingIndex:indexPath]) {
+        LoadingFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:footerLoaderReuseIdentifire];
+        return cell;
+    } else {
+        
+        NSIndexPath* path = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1 >= 0 ? indexPath.section - 1 : 0];
+        WalletHistoryEntity *entity = [self.fetchedResultsController objectAtIndexPath:path];
+        HistoryTableViewCell *cell;
+        
+        if (!entity.confirmed) {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyCellReuseIdentifire];
+        }else if (!entity.hasReceipt) {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyCellLoadingReuseIdentifire];
+        } else if (entity.internal) {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyInternalCellReuseIdentifire];
+        } else if (entity.contracted) {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyContractedCellReuseIdentifire];
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyCellReuseIdentifire];
+        }
+        
+        [self configureCell:cell atIndexPath:path withEntity:entity];
+        
+        return cell;
+    }
+}
+
+- (void)configureCell:(HistoryTableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath withEntity:(WalletHistoryEntity*) entity {
+    
+    cell.historyElement = entity;
+    [cell changeHighlight:NO];
 }
 
 - (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
@@ -33,7 +152,8 @@ static NSInteger countOfSections = 2;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *) tableView {
-	return countOfSections;
+    
+    return self.fetchedResultsController.sections.count + 1;
 }
 
 - (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
@@ -41,7 +161,9 @@ static NSInteger countOfSections = 2;
 	if (section == 0) {
 		return 1;
 	} else {
-		return self.wallet.historyStorage.historyPrivate.count;
+        NSInteger numberOfStorageObjects = [[[self fetchedResultsController] sections][section - 1] numberOfObjects];
+        self.emptyPlacehodlerView.hidden = numberOfStorageObjects > 0 ? YES : NO;
+        return self.shouldShowLoadingCell && numberOfStorageObjects > 0 ? numberOfStorageObjects + 1 : numberOfStorageObjects;
 	}
 }
 
@@ -70,8 +192,10 @@ static NSInteger countOfSections = 2;
 		return;
 	}
 
-	HistoryTableViewCell *cell = (HistoryTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-	[cell changeHighlight:YES];
+    if (![self isLoadingIndex:indexPath]) {
+        HistoryTableViewCell *cell = (HistoryTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+        [cell changeHighlight:YES];
+    }
 }
 
 - (void)tableView:(UITableView *) tableView didUnhighlightRowAtIndexPath:(NSIndexPath *) indexPath {
@@ -79,11 +203,27 @@ static NSInteger countOfSections = 2;
 	if (indexPath.section != 1) {
 		return;
 	}
-
-	HistoryTableViewCell *cell = (HistoryTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-	[cell changeHighlight:NO];
+    
+    if (![self isLoadingIndex:indexPath]) {
+        HistoryTableViewCell *cell = (HistoryTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+        [cell changeHighlight:NO];
+    }
 }
 
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+
+    UITableView *tableView = self.tableView;
+    NSIndexPath* updatedAtIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section + 1 >= 0 ? indexPath.section + 1 : 0];
+    
+    if (type == NSFetchedResultsChangeUpdate || type == NSFetchedResultsChangeMove) {
+//        WalletHistoryEntity *entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//        [self configureCell:[tableView cellForRowAtIndexPath:updatedAtIndexPath] atIndexPath:updatedAtIndexPath withEntity:entity];
+        [self.tableView reloadData];
+    }
+}
 
 #pragma mark - UIScrollViewDelegate
 
@@ -102,26 +242,10 @@ static NSInteger countOfSections = 2;
 - (void)scrollViewDidScroll:(UIScrollView *) scrollView {
 
 	self.lastContentOffset = scrollView.contentOffset.y;
-
 	[self didScrollForheaderCell:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *) aScrollView willDecelerate:(BOOL) decelerate {
-	CGPoint offset = aScrollView.contentOffset;
-	CGRect bounds = aScrollView.bounds;
-	CGSize size = aScrollView.contentSize;
-	UIEdgeInsets inset = aScrollView.contentInset;
-	float y = offset.y + bounds.size.height - inset.bottom;
-	float h = size.height;
-
-	float reload_distance = 50;
-	if (y > h + reload_distance && offset.y > 0) {
-		[self.delegate refreshTableViewData];
-	}
-
-	if (decelerate) {
-		return;
-	}
 
 	BOOL isTopAutoScroll = aScrollView.contentOffset.y < 0;
 	BOOL isBottomAutoScroll = aScrollView.contentOffset.y + aScrollView.bounds.size.height - aScrollView.contentInset.bottom > aScrollView.contentSize.height;
@@ -140,9 +264,22 @@ static NSInteger countOfSections = 2;
 
 - (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	if (indexPath.section) {
+    if (indexPath.section && ![self isLoadingIndex:indexPath]) {
 		[self.delegate didSelectHistoryItemIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
 	}
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([self isLoadingIndex:indexPath]) {
+        LoadingFooterCell* loadingCell = (LoadingFooterCell*)cell;
+        [loadingCell startAnimation];
+        
+        if (!self.isLoadingNow) {
+            [self.delegate refreshTableViewDataWithPage:self.currentPage];
+            self.isLoadingNow = YES;
+        }
+    }
 }
 
 #pragma mark - Private
@@ -162,6 +299,15 @@ static NSInteger countOfSections = 2;
 	}
 
 	return HeaderCellTypeAllVisible;
+}
+
+- (BOOL)isLoadingIndex:(NSIndexPath*) indexpath {
+    
+    if (self.shouldShowLoadingCell) {
+        return [self.fetchedResultsController fetchedObjects].count == indexpath.row && indexpath.row != 0;
+    }
+    
+    return NO;
 }
 
 #pragma mark - Public
@@ -202,11 +348,6 @@ static NSInteger countOfSections = 2;
 			[self.controllerDelegate needHideHeader:[headerCell percentForShowHideHeader:position]];
 		}
 	}
-}
-
-- (void)updateEmptyPlaceholderView {
-
-	self.emptyPlacehodlerView.hidden = self.wallet.historyStorage.historyPrivate.count;
 }
 
 @end

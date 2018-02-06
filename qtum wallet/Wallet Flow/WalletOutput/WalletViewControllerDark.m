@@ -38,12 +38,7 @@ CGFloat const WalletHeaderHeightShowedDark = 50.0f;
 	[self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
 }
 
-- (void)configRefreshControl {
-
-	self.refreshControl = [[UIRefreshControl alloc] init];
-	self.refreshControl.tintColor = customBlackColor ();
-	[self.tableView addSubview:self.refreshControl];
-	[self.refreshControl addTarget:self action:@selector (refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
+- (void)configHeaderBacground {
 
 	CGRect frame = self.view.bounds;
 	frame.origin.y = -frame.size.height;
