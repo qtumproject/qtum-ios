@@ -23,6 +23,15 @@
 @end
 
 static NSInteger batchSize = 25;
+static NSString* historyCellReuseIdentifire = @"HistoryTableViewCell";
+static NSString* historyCellLoadingReuseIdentifire = @"HistoryTableViewCellLoading";
+static NSString* historyContractedCellReuseIdentifire = @"HistoryTableViewCellContracted";
+static NSString* historyInternalCellReuseIdentifire = @"HistoryTableViewCellInternal";
+static NSString* footerLoaderReuseIdentifire = @"LoadingFooterCell";
+static NSString* headerReuseIdentifire = @"WalletHeaderCell";
+static NSString* fetchedEntity = @"WalletHistoryEntity";
+static NSString* fetchedSortingProperty = @"dateInerval";
+
 
 @implementation WalletTableSource
 
@@ -33,9 +42,9 @@ static NSInteger batchSize = 25;
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"WalletHistoryEntity" inManagedObjectContext:[NSManagedObjectContext MR_defaultContext]];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:fetchedEntity inManagedObjectContext:[NSManagedObjectContext MR_defaultContext]];
     [fetchRequest setEntity:entity];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"address" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:fetchedSortingProperty ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -93,11 +102,49 @@ static NSInteger batchSize = 25;
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-	return nil;
+    
+    if (indexPath.section == 0) {
+        WalletHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:headerReuseIdentifire];
+        
+        cell.delegate = self.delegate;
+        [cell setCellType:[self headerCellType]];
+        [cell setData:self.wallet];
+        [self didScrollForheaderCell:tableView];
+        
+        self.mainCell = cell;
+        
+        return cell;
+    } else if ([self isLoadingIndex:indexPath]) {
+        LoadingFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:footerLoaderReuseIdentifire];
+        return cell;
+    } else {
+        
+        NSIndexPath* path = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1 >= 0 ? indexPath.section - 1 : 0];
+        WalletHistoryEntity *entity = [self.fetchedResultsController objectAtIndexPath:path];
+        HistoryTableViewCell *cell;
+        
+        if (!entity.confirmed) {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyCellReuseIdentifire];
+        }else if (!entity.hasReceipt) {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyCellLoadingReuseIdentifire];
+        } else if (entity.internal) {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyInternalCellReuseIdentifire];
+        } else if (entity.contracted) {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyContractedCellReuseIdentifire];
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyCellReuseIdentifire];
+        }
+        
+        [self configureCell:cell atIndexPath:path withEntity:entity];
+        
+        return cell;
+    }
 }
 
-- (void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath {
-
+- (void)configureCell:(HistoryTableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath withEntity:(WalletHistoryEntity*) entity {
+    
+    cell.historyElement = entity;
+    [cell changeHighlight:NO];
 }
 
 - (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
@@ -171,32 +218,12 @@ static NSInteger batchSize = 25;
     UITableView *tableView = self.tableView;
     NSIndexPath* updatedAtIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section + 1 >= 0 ? indexPath.section + 1 : 0];
     
-    switch(type) {
-
-//        case NSFetchedResultsChangeInsert:
-//            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:updatedNewIndexPath]
-//                             withRowAnimation:UITableViewRowAnimationFade];
-//            break;
-//
-//        case NSFetchedResultsChangeDelete:
-//            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:updatedAtIndexPath]
-//                             withRowAnimation:UITableViewRowAnimationFade];
-//            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:updatedAtIndexPath]
-                    atIndexPath:updatedAtIndexPath];
-            break;
-
-//        case NSFetchedResultsChangeMove:
-//            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:updatedAtIndexPath]
-//                             withRowAnimation:UITableViewRowAnimationFade];
-//            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:updatedNewIndexPath]
-//                             withRowAnimation:UITableViewRowAnimationFade];
-//            break;
+    if (type == NSFetchedResultsChangeUpdate || type == NSFetchedResultsChangeMove) {
+//        WalletHistoryEntity *entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//        [self configureCell:[tableView cellForRowAtIndexPath:updatedAtIndexPath] atIndexPath:updatedAtIndexPath withEntity:entity];
+        [self.tableView reloadData];
     }
 }
-
 
 #pragma mark - UIScrollViewDelegate
 

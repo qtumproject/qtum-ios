@@ -46,7 +46,7 @@
     self.amountLabel.text = self.symbolLabel ? [historyElement.amount roundedNumberWithScale:3].stringValue : historyElement.amountString;
     self.dateLabel.text = [self.historyElement formattedDateStringSinceCome];
     
-    self.addressLabel.text = historyElement.txHash;
+    self.addressLabel.text = historyElement.transactionHash;
 }
 
 - (void)updateTime {

@@ -12,32 +12,39 @@
     address = _address,
     amount = _amount,
     amountString = _amountString,
-    txHash = _txHash,
+    transactionHash = _transactionHash,
     dateNumber = _dateNumber,
     shortDateString = _shortDateString,
     fullDateString = _fullDateString,
     send = _send,
     confirmed = _confirmed,
     isSmartContractCreater = _isSmartContractCreater,
-    fromAddreses = _fromAddreses,
+    fromAddresses = _fromAddresses,
     toAddresses = _toAddresses,
     currency = _currency,
-    fee = _fee;
+    fee = _fee,
+    internal = _internal;
 
 - (void)calcAmountAndAdresses:(NSDictionary *) dictionary {
 
 	NSDictionary *hashTableAdresses = [self hashTableOfKeys];
     
     BOOL isPaidByMe = NO;
+    BOOL isReceivedByMe = NO;
+    BOOL hasOtherRecievers = NO;
+
 	CGFloat outMyMoney = 0;
 	CGFloat inMyMoney = 0;
     CGFloat outAllMoney = 0;
     CGFloat inAllMoney = 0;
-
+    
+    NSMutableArray* fromAddresses = [self.fromAddresses mutableCopy];
+    NSMutableArray* toAddresses = [self.toAddresses mutableCopy];
+    
 	//if hashTable of adresses constain object, add this value to inValue
 	for (NSDictionary *inObject in dictionary[@"vin"]) {
 
-		[self.fromAddreses addObject:@{@"address": inObject[@"address"],
+		[fromAddresses addObject:@{@"address": inObject[@"address"],
 				@"value": inObject[@"value"]}];
 		NSString *address = hashTableAdresses[inObject[@"address"]];
 		if (address) {
@@ -50,13 +57,17 @@
 
 	//if hashTable of adresses constain object, add this value to ouyValue
 	for (NSDictionary *outObject in dictionary[@"vout"]) {
-		[self.toAddresses addObject:@{@"address": outObject[@"address"],
+        
+		[toAddresses addObject:@{@"address": outObject[@"address"],
 				@"value": outObject[@"value"]}];
 
 		NSString *address = hashTableAdresses[outObject[@"address"]];
 		if (address) {
 			outMyMoney += [outObject[@"value"] doubleValue];
-		}
+            isReceivedByMe = YES;
+        } else {
+            hasOtherRecievers = YES;
+        }
         
         outAllMoney += [outObject[@"value"] doubleValue];
 	}
@@ -69,6 +80,9 @@
     self.fee = [QTUMBigNumber decimalWithString:[NSString stringWithFormat:@"%f", fee]];
 
 	self.send = isPaidByMe;
+    self.fromAddresses = [fromAddresses copy];
+    self.toAddresses = [toAddresses copy];
+    self.internal = isPaidByMe && isReceivedByMe && !hasOtherRecievers;
 }
 
 #pragma mark - Accessory Methods
@@ -83,11 +97,11 @@
 	[self createDateString];
 }
 
-- (NSMutableArray *)fromAddreses {
-	if (!_fromAddreses) {
-		_fromAddreses = @[].mutableCopy;
+- (NSArray *)fromAddresses {
+	if (!_fromAddresses) {
+		_fromAddresses = @[];
 	}
-	return _fromAddreses;
+	return _fromAddresses;
 }
 
 - (NSString *)currency {
@@ -95,9 +109,9 @@
     return @"QTUM";
 }
 
-- (NSMutableArray *)toAddresses {
+- (NSArray *)toAddresses {
 	if (!_toAddresses) {
-		_toAddresses = @[].mutableCopy;
+		_toAddresses = @[];
 	}
 	return _toAddresses;
 }
@@ -227,14 +241,14 @@
 		self.dateNumber = ![object[@"block_time"] isKindOfClass:[NSNull class]] ? object[@"block_time"] : nil;
 		self.address = object[@"address"];
 		self.confirmed = [object[@"block_height"] floatValue] > 0;
-		self.txHash = ![object[@"tx_hash"] isKindOfClass:[NSNull class]] ? object[@"tx_hash"] : nil;
+		self.transactionHash = ![object[@"tx_hash"] isKindOfClass:[NSNull class]] ? object[@"tx_hash"] : nil;
 		self.isSmartContractCreater = [object[@"contract_has_been_created"] boolValue];
 		[self calcAmountAndAdresses:object];
 	}
 }
 
 - (NSDictionary *)dictionaryFromElementForWatch {
-	NSString *address = self.send ? [self.toAddresses firstObject][@"address"] : [self.fromAddreses firstObject][@"address"];
+	NSString *address = self.send ? [self.toAddresses firstObject][@"address"] : [self.fromAddresses firstObject][@"address"];
 
 	NSDictionary *dictionary = @{@"address": address ? : @"",
 			@"date": self.shortDateString ? : @"",
@@ -263,7 +277,7 @@
 	if (self.send != object.send) {
 		return NO;
 	}
-	if (self.txHash && object.txHash && ![self.txHash isEqualToString:object.txHash]) {
+	if (self.transactionHash && object.transactionHash && ![self.transactionHash isEqualToString:object.transactionHash]) {
 		return NO;
 	}
 	return YES;

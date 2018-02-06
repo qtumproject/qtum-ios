@@ -31,38 +31,4 @@
 	}
 }
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	if (indexPath.section == 0) {
-		WalletHeaderCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"WalletHeaderCellLight"];
-
-		cell.delegate = self.delegate;
-		[cell setCellType:[self headerCellType]];
-		[cell setData:self.wallet];
-		[self didScrollForheaderCell:tableView];
-
-		return cell;
-	} else if ([self isLoadingIndex:indexPath]){
-
-		LoadingFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingFooterCell"];
-		return cell;
-    } else {
-        
-        HistoryTableViewCellLight *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
-        NSIndexPath* path = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1 >= 0 ? indexPath.section - 1 : 0];
-        
-        [self configureCell:cell atIndexPath:path];
-        
-        return cell;
-    }
-}
-
-- (void)configureCell:(HistoryTableViewCellLight*)cell atIndexPath:(NSIndexPath*)indexPath {
-    
-    WalletHistoryEntity *entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    cell.historyElement = entity;
-    [cell changeHighlight:NO];
-}
-
 @end

@@ -21,13 +21,20 @@
 - (void)setHistoryElement:(HistoryElement *) historyElement {
 	[super setHistoryElement:historyElement];
 
-	if (historyElement.send) {
-		self.typeImage.image = [UIImage imageNamed:@"history_send"];
-		self.typeLabel.text = NSLocalizedString(@"Sent", nil);
-	} else {
-		self.typeImage.image = [UIImage imageNamed:@"history_receive"];
-		self.typeLabel.text = NSLocalizedString(@"Received", nil);
-	}
+    if (historyElement.internal) {
+        self.typeImage.image = [UIImage imageNamed:@"ic-sent_to_myself"];
+        self.typeLabel.text = NSLocalizedString(@"Internal\ntransaction", nil);
+    } else if (historyElement.contracted && historyElement.confirmed){
+        self.typeImage.image = [UIImage imageNamed:@"ic-sent_smartContract"];
+        self.typeLabel.text = NSLocalizedString(@"Sent\ncontract", nil);
+    } else if (historyElement.send) {
+        self.typeImage.image = [UIImage imageNamed:@"history_send"];
+        self.typeLabel.text = NSLocalizedString(@"Sent", nil);
+    } else {
+        self.typeImage.image = [UIImage imageNamed:@"history_receive"];
+        self.typeLabel.text = NSLocalizedString(@"Received", nil);
+    }
+
 	self.typeImage.tintColor = customBlueColor ();
 }
 

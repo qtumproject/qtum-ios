@@ -31,13 +31,14 @@
     
 	self.addressLabel.text = historyElement.address;
 	self.amountLabel.text = self.symbolLabel ? [historyElement.amount roundedNumberWithScale:3].stringValue : historyElement.amountString;
-	self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0) ? [historyElement formattedDateStringSinceCome] : NSLocalizedString(@"Unconfirmed", nil);
+	self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0 && historyElement.confirmed) ? [historyElement formattedDateStringSinceCome] : NSLocalizedString(@"Unconfirmed", nil);
 
-	self.addressLabel.text = historyElement.txHash;
+	self.addressLabel.text = historyElement.transactionHash;
 }
 
 - (void)updateTime {
-	self.dateLabel.text = (self.historyElement.shortDateString && self.historyElement.shortDateString.length > 0) ? [self.historyElement formattedDateStringSinceCome] : NSLocalizedString(@"Unconfirmed", nil);
+    
+	self.dateLabel.text = (self.historyElement.shortDateString && self.historyElement.shortDateString.length > 0 && self.historyElement.confirmed) ? [self.historyElement formattedDateStringSinceCome] : NSLocalizedString(@"Unconfirmed", nil);
 }
 
 - (void)changeHighlight:(BOOL) value {

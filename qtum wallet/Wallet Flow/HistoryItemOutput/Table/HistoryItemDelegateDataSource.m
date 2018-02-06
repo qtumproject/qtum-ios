@@ -17,7 +17,7 @@
 
 - (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
 	if (self.mode == From) {
-		return self.item.fromAddreses.count;
+		return self.item.fromAddresses.count;
 	} else {
 		return self.item.toAddresses.count;
 	}
@@ -29,7 +29,7 @@
 
 	NSDictionary *element;
 	if (self.mode == From) {
-		element = self.item.fromAddreses[indexPath.row];
+		element = self.item.fromAddresses[indexPath.row];
 	} else {
 		element = self.item.toAddresses[indexPath.row];
 	}

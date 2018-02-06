@@ -3,10 +3,7 @@
     <entity name="Log" representedClassName="Log" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="topics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topics" syncable="YES"/>
-    </entity>
-    <entity name="Topics" representedClassName="Topics" syncable="YES" codeGenerationType="class">
-        <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="topics" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
     </entity>
     <entity name="TransactionReceipt" representedClassName="TransactionReceipt" syncable="YES" codeGenerationType="class">
         <attribute name="blockHash" optional="YES" attributeType="String" syncable="YES"/>
@@ -19,6 +16,9 @@
         <attribute name="transactionHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="transactionIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="logs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Log" syncable="YES"/>
+        <fetchIndex name="transactionHash">
+            <fetchIndexElement property="transactionHash" type="Binary" order="ascending"/>
+        </fetchIndex>
         <userInfo>
             <entry key="relatedByAttribute" value="transactionHash"/>
         </userInfo>
@@ -26,19 +26,26 @@
     <entity name="WalletHistoryEntity" representedClassName="WalletHistoryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="amountString" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="confirmed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="confirmed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="contracted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dateNumber" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="send" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="txHash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateInerval" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fromAddresses" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
+        <attribute name="hasReceipt" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="internal" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="send" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="toAddresses" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
+        <attribute name="transactionHash" optional="YES" attributeType="String" syncable="YES"/>
+        <fetchIndex name="transactionHash">
+            <fetchIndexElement property="transactionHash" type="Binary" order="ascending"/>
+        </fetchIndex>
         <userInfo>
             <entry key="relatedByAttribute" value="txHash"/>
         </userInfo>
     </entity>
     <elements>
-        <element name="Log" positionX="18" positionY="-162" width="128" height="88"/>
-        <element name="Topics" positionX="36" positionY="5" width="128" height="58"/>
-        <element name="TransactionReceipt" positionX="-209" positionY="-441" width="128" height="193"/>
-        <element name="WalletHistoryEntity" positionX="-396" positionY="-250" width="128" height="148"/>
+        <element name="Log" positionX="18" positionY="-162" width="128" height="90"/>
+        <element name="TransactionReceipt" positionX="-209" positionY="-441" width="128" height="30"/>
+        <element name="WalletHistoryEntity" positionX="-396" positionY="-250" width="128" height="225"/>
     </elements>
 </model>

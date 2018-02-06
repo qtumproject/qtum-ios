@@ -346,8 +346,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (void)updateSpendablesHistoriesWithObject:(NSDictionary *) dict {
 
-	HistoryElement *item = [self.requestAdapter createHistoryElement:dict];
-	[self.wallet.historyStorage setHistoryItem:item];
+    [SLocator.historyFacadeService updateHistoryElementWithDict:dict];
 }
 
 - (void)historyOfSpendableDidChange:(id <Spendable>) object {

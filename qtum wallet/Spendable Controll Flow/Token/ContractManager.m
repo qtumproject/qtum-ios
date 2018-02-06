@@ -320,7 +320,7 @@ NSString *const kLocalContractName = @"kLocalContractName";
 		return;
 	}
 
-    NSString *key = item.txHash;
+    NSString *key = item.transactionHash;
     NSDictionary *tokenInfo = key ? self.smartContractPretendents[key] : @{};
     
 	if (item.confirmed && item.isSmartContractCreater && [self.smartContractPretendents objectForKey:key]) {

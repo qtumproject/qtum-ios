@@ -35,7 +35,6 @@
 	}];
 }
 
-
 #pragma mark - Adapters Methods
 
 - (NSArray <BTCTransactionOutput *> *)createArray:(NSArray *) responseObject {

@@ -2,7 +2,7 @@
 //  HistoryFacadeService.h
 //  qtum wallet
 //
-//  Created by Fedorenko Nikita on 01.02.2018.
+//  Created by Vladimir Lebedevich on 01.02.2018.
 //  Copyright © 2018 QTUM. All rights reserved.
 //
 
@@ -11,12 +11,15 @@
 
 typedef void(^HistoryHendler)(BOOL succes);
 
-@interface HistoryFacadeService : NSObject
+@interface HistoryFacadeService : NSObject <Clearable>
 
 @property (assign, nonatomic, readonly) NSInteger totalItems;
 
 - (instancetype)initWithRequestService:(id <Requestable>) requestManager andStorageService:(CoreDataService*) storageService;
 - (void)updateHistroyForAddresses:(NSArray *) keyAddreses withPage:(NSInteger) page withHandler:(HistoryHendler) handler;
 - (void)updateHistoryElementWithTxHash:(NSString *) txHash withSuccessHandler:(void (^)(HistoryElement *historyItem)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
+
+- (void)updateHistoryElementWithDict:(NSDictionary *) dataDictionary;
+- (void)cancelOperations;
 
 @end

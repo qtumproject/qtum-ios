@@ -345,6 +345,7 @@
 		B3D12F541FB9884400DEE41E /* SourceCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F531FB9884400DEE41E /* SourceCodeViewController.m */; };
 		B3D12F571FB989DB00DEE41E /* SourceCodeFormatService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */; };
 		B3D12F5E1FBB31A100DEE41E /* SourceCodeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D12F5D1FBB31A100DEE41E /* SourceCodeTextView.m */; };
+		B3D4D80220287CC500E59791 /* TransactionReceipt+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4D80120287CC500E59791 /* TransactionReceipt+Extension.m */; };
 		B3D555E81EDE00BE00CBDFCF /* SmartContractsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */; };
 		B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D555EA1EDE00F900CBDFCF /* SmartContractListItemCell.m */; };
 		B3D5FE3F1F569FEB006A2BF2 /* NSString+AbiRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE3E1F569FEB006A2BF2 /* NSString+AbiRegex.m */; };
@@ -1517,6 +1518,8 @@
 		B3D12F561FB989DB00DEE41E /* SourceCodeFormatService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeFormatService.m; sourceTree = "<group>"; };
 		B3D12F5C1FBB31A100DEE41E /* SourceCodeTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceCodeTextView.h; sourceTree = "<group>"; };
 		B3D12F5D1FBB31A100DEE41E /* SourceCodeTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceCodeTextView.m; sourceTree = "<group>"; };
+		B3D4D80020287CC500E59791 /* TransactionReceipt+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TransactionReceipt+Extension.h"; sourceTree = "<group>"; };
+		B3D4D80120287CC500E59791 /* TransactionReceipt+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TransactionReceipt+Extension.m"; sourceTree = "<group>"; };
 		B3D555E61EDE00BE00CBDFCF /* SmartContractsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractsListViewController.h; sourceTree = "<group>"; };
 		B3D555E71EDE00BE00CBDFCF /* SmartContractsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartContractsListViewController.m; sourceTree = "<group>"; };
 		B3D555E91EDE00F900CBDFCF /* SmartContractListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartContractListItemCell.h; sourceTree = "<group>"; };
@@ -2614,6 +2617,8 @@
 				B32A52F82022168600280D25 /* TransactionHistory.xcdatamodeld */,
 				B31E0974202339860001F57F /* WalletHistoryEntity+Extension.h */,
 				B31E0975202339860001F57F /* WalletHistoryEntity+Extension.m */,
+				B3D4D80020287CC500E59791 /* TransactionReceipt+Extension.h */,
+				B3D4D80120287CC500E59791 /* TransactionReceipt+Extension.m */,
 			);
 			path = "Data Base";
 			sourceTree = "<group>";
@@ -6401,6 +6406,7 @@
 				E7847F791F3B1ACD004A2333 /* QStoreMainScreenCategory.m in Sources */,
 				B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */,
 				B3014D601F2A1B8D007EAE7A /* WatchContractViewControllerDark.m in Sources */,
+				B3D4D80220287CC500E59791 /* TransactionReceipt+Extension.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				B3EA52F71F45E0A0002FD201 /* QStoreContractViewControllerLight.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,

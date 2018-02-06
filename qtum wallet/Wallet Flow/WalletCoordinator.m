@@ -283,6 +283,7 @@
 	__weak __typeof (self) weakSelf = self;
 	dispatch_async (_requestQueue, ^{
         
+        [SLocator.historyFacadeService cancelOperations];
 		[weakSelf.walletViewController startLoading];
 		weakSelf.isHistoryLoaded = NO;
         

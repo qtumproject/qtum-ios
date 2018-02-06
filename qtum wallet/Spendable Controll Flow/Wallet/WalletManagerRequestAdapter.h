@@ -14,6 +14,4 @@
 
 - (void)getunspentOutputs:(NSArray *) keyAddreses withSuccessHandler:(void (^)(NSArray *responseObject)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
 
-- (HistoryElement *)createHistoryElement:(NSDictionary *) dictionary;
-
 @end

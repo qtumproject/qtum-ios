@@ -186,6 +186,7 @@
 
 - (void)clear {
 
+    [SLocator.historyFacadeService clear];
 	[SLocator.walletManager stopObservingForAllSpendable];
 	[SLocator.contractManager stopObservingForAllSpendable];
 	[SLocator.notificationManager clear];

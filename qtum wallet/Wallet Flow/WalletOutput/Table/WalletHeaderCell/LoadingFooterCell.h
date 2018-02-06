@@ -2,7 +2,7 @@
 //  LoadingFooterCell.h
 //  qtum wallet
 //
-//  Created by Fedorenko Nikita on 02.02.2018.
+//  Created by Vladimir Lebedevich on 02.02.2018.
 //  Copyright © 2018 QTUM. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  TransactionLinearLoader.m
 //  qtum wallet
 //
-//  Created by Fedorenko Nikita on 31.01.2018.
+//  Created by Vladimir Lebedevich on 31.01.2018.
 //  Copyright © 2018 QTUM. All rights reserved.
 //
 
@@ -18,7 +18,7 @@
 CGFloat const offset = 200;
 CGFloat const loaderLineWidth = 4;
 CGFloat const loaderHeight = 4;
-CGFloat const animationDuration = 2;
+CGFloat const animationDuration = 4;
 
 
 @implementation TransactionLinearLoader
