@@ -9,6 +9,7 @@
 #import "HistoryFacadeService.h"
 #import "WalletHistoryEntity+Extension.h"
 #import "TransactionReceipt+Extension.h"
+#import "RecieptLogDTO.h"
 
 @interface HistoryFacadeService ()
 
@@ -226,7 +227,7 @@ static NSInteger batch = 25;
 
     for (HistoryElement* element in history) {
         
-        if (![weakSelf.storageService findHistoryReceiptEntityWithTxHash:element.transactionHash].count && element.confirmed) {
+        if (![weakSelf.storageService findAllHistoryReceiptEntityWithTxHash:element.transactionHash].count && element.confirmed) {
             
             NSBlockOperation* operation = [NSBlockOperation new];
             
@@ -278,8 +279,22 @@ static NSInteger batch = 25;
     return element;
 }
 
--(void)clear {
+- (NSArray<RecieptLogDTO*>*)getLogsDTOSWithReceit:(TransactionReceipt *) receipt {
+
+    NSMutableArray<RecieptLogDTO*>* dtos = @[].mutableCopy;
     
+    for (Log* log in receipt.logs.allObjects) {
+        RecieptLogDTO* dto = [[RecieptLogDTO alloc] initWithLog:log];
+        [dtos addObject:dto];
+    }
+    
+    return dtos;
+}
+
+- (TransactionReceipt*)getRecieptWithTxHash:(NSString *) txHash {
+    return [self.storageService findHistoryRecieptEntityWithTxHash:txHash];
+}
+-(void)clear {
     [self.storageService clear];
 }
 

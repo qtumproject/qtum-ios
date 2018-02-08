@@ -9,10 +9,13 @@
 #import "HistoryItemOutputDelegate.h"
 
 @class HistoryElement;
+@class TransactionReceipt;
 
 @protocol HistoryItemOutput <NSObject>
 
-@property (strong, nonatomic) HistoryElement *item;
+@property (strong, nonatomic) id <HistoryElementProtocol> item;
+@property (strong, nonatomic) TransactionReceipt* receipt;
+@property (strong, nonatomic) NSArray<RecieptLogDTO*>* logs;
 @property (weak, nonatomic) id <HistoryItemOutputDelegate> delegate;
 
 @end

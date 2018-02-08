@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="proximanova-semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Dsr-Am-I99" customClass="ChooseConverterViewLight">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wsd-dd-n9B">
+                    <rect key="frame" x="45" y="310" width="107" height="127"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKM-cT-Eyq">
+                            <rect key="frame" x="0.0" y="0.0" width="107" height="28"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionChooseType:" destination="Dsr-Am-I99" eventType="touchUpInside" id="fNs-FU-IqW"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3C6-Fk-NLL">
+                            <rect key="frame" x="0.0" y="28" width="107" height="43"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionChooseType:" destination="Dsr-Am-I99" eventType="touchUpInside" id="pFH-iF-ZgM"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHe-WN-9VS">
+                            <rect key="frame" x="0.0" y="71" width="107" height="28"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionChooseType:" destination="Dsr-Am-I99" eventType="touchUpInside" id="Cmq-My-X6m"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6n-eg-QXT">
+                            <rect key="frame" x="0.0" y="99" width="107" height="28"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionChooseType:" destination="Dsr-Am-I99" eventType="touchUpInside" id="lyY-o4-Z2r"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="J6n-eg-QXT" secondAttribute="trailing" id="1uS-29-p35"/>
+                        <constraint firstItem="iHe-WN-9VS" firstAttribute="width" secondItem="J6n-eg-QXT" secondAttribute="width" id="3OU-fV-iQm"/>
+                        <constraint firstItem="sKM-cT-Eyq" firstAttribute="leading" secondItem="Wsd-dd-n9B" secondAttribute="leading" id="6DF-Ps-vBi"/>
+                        <constraint firstItem="J6n-eg-QXT" firstAttribute="top" secondItem="iHe-WN-9VS" secondAttribute="bottom" id="A8W-6k-EXS"/>
+                        <constraint firstItem="J6n-eg-QXT" firstAttribute="leading" secondItem="Wsd-dd-n9B" secondAttribute="leading" id="AJM-HZ-gaH"/>
+                        <constraint firstItem="3C6-Fk-NLL" firstAttribute="width" secondItem="iHe-WN-9VS" secondAttribute="width" id="E97-5r-eQk"/>
+                        <constraint firstAttribute="height" constant="127" id="GeZ-Rx-VuK"/>
+                        <constraint firstItem="3C6-Fk-NLL" firstAttribute="top" secondItem="sKM-cT-Eyq" secondAttribute="bottom" id="IEA-Of-QUd"/>
+                        <constraint firstAttribute="trailing" secondItem="sKM-cT-Eyq" secondAttribute="trailing" id="Ljy-GL-RZa"/>
+                        <constraint firstItem="3C6-Fk-NLL" firstAttribute="leading" secondItem="Wsd-dd-n9B" secondAttribute="leading" id="Qi4-1F-82V"/>
+                        <constraint firstItem="sKM-cT-Eyq" firstAttribute="top" secondItem="Wsd-dd-n9B" secondAttribute="top" id="TSS-u7-sPu"/>
+                        <constraint firstAttribute="trailing" secondItem="iHe-WN-9VS" secondAttribute="trailing" id="W9m-3D-h92"/>
+                        <constraint firstItem="iHe-WN-9VS" firstAttribute="top" secondItem="3C6-Fk-NLL" secondAttribute="bottom" id="cFS-Xm-n34"/>
+                        <constraint firstAttribute="bottom" secondItem="J6n-eg-QXT" secondAttribute="bottom" id="irA-Qw-Xdo"/>
+                        <constraint firstItem="sKM-cT-Eyq" firstAttribute="width" secondItem="3C6-Fk-NLL" secondAttribute="width" id="k6H-iC-9ce"/>
+                        <constraint firstAttribute="trailing" secondItem="3C6-Fk-NLL" secondAttribute="trailing" id="m0G-zS-mrp"/>
+                        <constraint firstAttribute="width" constant="107" id="nTa-O6-8f0"/>
+                        <constraint firstItem="iHe-WN-9VS" firstAttribute="leading" secondItem="Wsd-dd-n9B" secondAttribute="leading" id="uQ1-NK-b00"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="Wsd-dd-n9B" firstAttribute="leading" secondItem="Dsr-Am-I99" secondAttribute="leading" constant="45" id="EnU-2r-53n"/>
+                <constraint firstItem="Wsd-dd-n9B" firstAttribute="top" secondItem="Dsr-Am-I99" secondAttribute="top" constant="310" id="b9G-NM-xB5"/>
+            </constraints>
+            <connections>
+                <outlet property="addressButton" destination="J6n-eg-QXT" id="JQZ-DM-e1Q"/>
+                <outlet property="dropListView" destination="Wsd-dd-n9B" id="8Ex-CJ-Pve"/>
+                <outlet property="hexButton" destination="sKM-cT-Eyq" id="e4p-gT-fBa"/>
+                <outlet property="leading" destination="EnU-2r-53n" id="1Rm-bV-17s"/>
+                <outlet property="numberButton" destination="3C6-Fk-NLL" id="Oqs-O2-fgy"/>
+                <outlet property="textButton" destination="iHe-WN-9VS" id="cTA-8L-1P9"/>
+                <outlet property="topOffset" destination="b9G-NM-xB5" id="SOf-M8-mFv"/>
+                <outletCollection property="gestureRecognizers" destination="ra3-cM-vLH" appends="YES" id="Kqq-H2-2bx"/>
+                <outletCollection property="gestureRecognizers" destination="4LW-a9-TU2" appends="YES" id="NHs-S2-M66"/>
+                <outletCollection property="gestureRecognizers" destination="0zG-gE-I4c" appends="YES" id="aIJ-Ra-z41"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+        <tapGestureRecognizer id="ra3-cM-vLH">
+            <connections>
+                <action selector="didTapOnView:" destination="Dsr-Am-I99" id="0Jz-Ai-55D"/>
+            </connections>
+        </tapGestureRecognizer>
+        <swipeGestureRecognizer direction="left" id="4LW-a9-TU2">
+            <connections>
+                <action selector="didTapOnView:" destination="Dsr-Am-I99" id="6pO-IU-mmZ"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="right" id="0zG-gE-I4c">
+            <connections>
+                <action selector="didTapOnView:" destination="Dsr-Am-I99" id="HR3-38-XjH"/>
+            </connections>
+        </swipeGestureRecognizer>
+    </objects>
+</document>

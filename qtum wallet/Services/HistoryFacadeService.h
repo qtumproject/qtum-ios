@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @protocol Requestable;
+@class RecieptLogDTO;
 
 typedef void(^HistoryHendler)(BOOL succes);
 
@@ -18,8 +19,11 @@ typedef void(^HistoryHendler)(BOOL succes);
 - (instancetype)initWithRequestService:(id <Requestable>) requestManager andStorageService:(CoreDataService*) storageService;
 - (void)updateHistroyForAddresses:(NSArray *) keyAddreses withPage:(NSInteger) page withHandler:(HistoryHendler) handler;
 - (void)updateHistoryElementWithTxHash:(NSString *) txHash withSuccessHandler:(void (^)(HistoryElement *historyItem)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure;
-
 - (void)updateHistoryElementWithDict:(NSDictionary *) dataDictionary;
+
+- (NSArray<RecieptLogDTO*>*)getLogsDTOSWithReceit:(TransactionReceipt *) receipt;
+
+- (TransactionReceipt*)getRecieptWithTxHash:(NSString *) txHash;
 - (void)cancelOperations;
 
 @end

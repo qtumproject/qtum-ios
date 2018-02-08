@@ -26,10 +26,13 @@
     <entity name="WalletHistoryEntity" representedClassName="WalletHistoryEntity" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="amountString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="blockHash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="blockNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="confirmed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="contracted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateInerval" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="feeString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fromAddresses" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
         <attribute name="hasReceipt" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="internal" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
@@ -46,6 +49,6 @@
     <elements>
         <element name="Log" positionX="18" positionY="-162" width="128" height="90"/>
         <element name="TransactionReceipt" positionX="-209" positionY="-441" width="128" height="195"/>
-        <element name="WalletHistoryEntity" positionX="-396" positionY="-250" width="128" height="225"/>
+        <element name="WalletHistoryEntity" positionX="-396" positionY="-250" width="128" height="270"/>
     </elements>
 </model>

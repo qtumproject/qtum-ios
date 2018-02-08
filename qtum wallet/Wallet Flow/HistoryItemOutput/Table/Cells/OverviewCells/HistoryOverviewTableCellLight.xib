@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="proximanova-semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryOverviewTableCellIdentifire" rowHeight="155" id="rhe-NT-1IV" customClass="HistoryOverviewTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="409" height="155"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rhe-NT-1IV" id="A3v-94-teM">
+                <rect key="frame" x="0.0" y="0.0" width="409" height="154.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MK0-zj-Hj1">
+                        <rect key="frame" x="10" y="10" width="389" height="100"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                        <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="0.80125440140845072" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GlJ-MS-O4w">
+                        <rect key="frame" x="365" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="hi1-gR-ePO"/>
+                            <constraint firstAttribute="width" constant="44" id="zYB-xg-y9D"/>
+                        </constraints>
+                        <state key="normal" image="ic-copy-history-light"/>
+                        <connections>
+                            <action selector="actionCopy:" destination="rhe-NT-1IV" eventType="touchUpInside" id="ss0-yB-GWp"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rq-qG-byX">
+                        <rect key="frame" x="10" y="128.5" width="389" height="16"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                        <color key="textColor" red="0.30588235294117649" green="0.36470588235294116" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="8rq-qG-byX" secondAttribute="trailing" constant="10" id="9rC-Rz-Mbo"/>
+                    <constraint firstItem="MK0-zj-Hj1" firstAttribute="top" secondItem="A3v-94-teM" secondAttribute="top" constant="10" id="ADB-Io-1Yr"/>
+                    <constraint firstItem="MK0-zj-Hj1" firstAttribute="leading" secondItem="A3v-94-teM" secondAttribute="leading" constant="10" id="Pld-e6-YLn"/>
+                    <constraint firstAttribute="trailing" secondItem="MK0-zj-Hj1" secondAttribute="trailing" constant="10" id="XxA-kk-Scz"/>
+                    <constraint firstItem="GlJ-MS-O4w" firstAttribute="top" secondItem="A3v-94-teM" secondAttribute="top" id="cIk-2Y-ch5"/>
+                    <constraint firstAttribute="trailing" secondItem="GlJ-MS-O4w" secondAttribute="trailing" id="hao-fF-bWG"/>
+                    <constraint firstItem="8rq-qG-byX" firstAttribute="top" secondItem="MK0-zj-Hj1" secondAttribute="bottom" constant="18.5" id="jjc-ji-gqC"/>
+                    <constraint firstItem="8rq-qG-byX" firstAttribute="leading" secondItem="A3v-94-teM" secondAttribute="leading" constant="10" id="uxc-d4-b1T"/>
+                    <constraint firstAttribute="bottom" secondItem="8rq-qG-byX" secondAttribute="bottom" constant="10" id="uyn-2I-5G0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="button" destination="GlJ-MS-O4w" id="shL-jj-Yky"/>
+                <outlet property="titleTextLabel" destination="MK0-zj-Hj1" id="UUL-LY-lK5"/>
+                <outlet property="valueTextLabel" destination="8rq-qG-byX" id="0L4-IG-gIO"/>
+            </connections>
+            <point key="canvasLocation" x="80.5" y="92.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic-copy-history-light" width="13" height="13"/>
+    </resources>
+</document>

@@ -16,8 +16,10 @@
 
 - (void)saveWithcompletion:(void (^_Nullable)(BOOL contextDidSave, NSError *_Nullable error))complete;
 - (WalletHistoryEntity *_Nonnull)createWalletHistoryEntityWith:(HistoryElement*_Nonnull) element;
-- (NSArray<TransactionReceipt*>*_Nonnull)findHistoryReceiptEntityWithTxHash:(NSString *_Nonnull)txHash;
+- (NSArray<TransactionReceipt*>*_Nonnull)findAllHistoryReceiptEntityWithTxHash:(NSString *_Nonnull)txHash;
 - (TransactionReceipt *_Nonnull)createReceiptEntityWith:(NSArray*_Nonnull) dataDictionary withTxHash:(NSString*_Nonnull) historyTransactionHash;
 - (NSArray<WalletHistoryEntity*>*_Nonnull)findWalletHistoryEntityWithTxHash:(NSString *_Nonnull)txHash;
+- (TransactionReceipt*_Nullable)findHistoryRecieptEntityWithTxHash:(NSString *_Nonnull)txHash;
+
 
 @end

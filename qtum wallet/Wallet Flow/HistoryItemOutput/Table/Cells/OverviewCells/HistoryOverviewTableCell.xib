@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryOverviewTableCellIdentifire" rowHeight="155" id="KGk-i7-Jjw" customClass="HistoryOverviewTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="409" height="155"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="409" height="154.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGa-1k-0T2">
+                        <rect key="frame" x="10" y="10" width="389" height="14.5"/>
+                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="12"/>
+                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pm-CD-Lqq">
+                        <rect key="frame" x="10" y="43" width="389" height="102"/>
+                        <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                        <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tq1-WE-Bd0">
+                        <rect key="frame" x="365" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="5ll-Iz-46N"/>
+                            <constraint firstAttribute="width" constant="44" id="JlA-im-QMO"/>
+                        </constraints>
+                        <state key="normal" image="ic-copy-history-dark"/>
+                        <connections>
+                            <action selector="actionCopy:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VMf-al-yzE"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBQ-wR-kLu">
+                        <rect key="frame" x="0.0" y="153.5" width="409" height="1"/>
+                        <color key="backgroundColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Ds6-bk-sXD"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="2pm-CD-Lqq" secondAttribute="trailing" constant="10" id="0Oy-Su-34W"/>
+                    <constraint firstItem="2pm-CD-Lqq" firstAttribute="top" secondItem="UGa-1k-0T2" secondAttribute="bottom" constant="18.5" id="Irh-E8-HYg"/>
+                    <constraint firstItem="2pm-CD-Lqq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Je9-Ng-PDj"/>
+                    <constraint firstAttribute="trailing" secondItem="IBQ-wR-kLu" secondAttribute="trailing" id="LWP-0S-mkS"/>
+                    <constraint firstAttribute="trailing" secondItem="tq1-WE-Bd0" secondAttribute="trailing" id="Nei-Uz-V3s"/>
+                    <constraint firstItem="tq1-WE-Bd0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="P0z-Ym-Yiy"/>
+                    <constraint firstAttribute="bottom" secondItem="IBQ-wR-kLu" secondAttribute="bottom" id="Zry-Nj-wEM"/>
+                    <constraint firstItem="IBQ-wR-kLu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="adb-yq-VX6"/>
+                    <constraint firstItem="UGa-1k-0T2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="hfW-7e-55H"/>
+                    <constraint firstAttribute="bottom" secondItem="2pm-CD-Lqq" secondAttribute="bottom" constant="10" id="pIE-7d-7wZ"/>
+                    <constraint firstItem="UGa-1k-0T2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="q5o-rB-Art"/>
+                    <constraint firstAttribute="trailing" secondItem="UGa-1k-0T2" secondAttribute="trailing" constant="10" id="vSd-3A-Kh5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="button" destination="tq1-WE-Bd0" id="bb4-SZ-o87"/>
+                <outlet property="titleTextLabel" destination="UGa-1k-0T2" id="Q0k-OB-NPf"/>
+                <outlet property="valueTextLabel" destination="2pm-CD-Lqq" id="Gah-SE-cNy"/>
+            </connections>
+            <point key="canvasLocation" x="80.5" y="92.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic-copy-history-dark" width="17" height="17"/>
+    </resources>
+</document>

@@ -42,6 +42,7 @@
 #import "CallContractFacadeService.h"
 #import "CoreDataService.h"
 #import "HistoryFacadeService.h"
+#import "SocketManager.h"
 
 
 #endif /* ServicesHeaders_h */

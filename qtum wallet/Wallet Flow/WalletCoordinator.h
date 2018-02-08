@@ -28,7 +28,7 @@
 // Some actions
 - (void)didBackPressed;
 
-- (void)didSelectHistoryItemIndexPath:(NSIndexPath *) indexPath withItem:(HistoryElement *) item;
+- (void)didSelectHistoryItemIndexPath:(NSIndexPath *) indexPath withItem:(id <HistoryElementProtocol>) item;
 
 - (void)didShareTokenButtonPressed;
 

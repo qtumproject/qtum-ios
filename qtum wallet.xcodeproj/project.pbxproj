@@ -61,6 +61,23 @@
 		B3113C5F2029C2A900945F01 /* Log+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C572029C2A900945F01 /* Log+CoreDataProperties.m */; };
 		B3113C602029C2A900945F01 /* TransactionReceipt+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C5A2029C2A900945F01 /* TransactionReceipt+CoreDataClass.m */; };
 		B3113C612029C2A900945F01 /* TransactionReceipt+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C5B2029C2A900945F01 /* TransactionReceipt+CoreDataProperties.m */; };
+		B3113C642029EE8100945F01 /* HistoryItemOverviewSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C632029EE8100945F01 /* HistoryItemOverviewSource.m */; };
+		B3113C672029EE9200945F01 /* HistoryItemEventLogSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C662029EE9200945F01 /* HistoryItemEventLogSource.m */; };
+		B3113C6B2029F89000945F01 /* HistoryAddressesHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C6A2029F89000945F01 /* HistoryAddressesHeaderCell.m */; };
+		B3113C71202AF10A00945F01 /* HistoryOverviewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C6F202AF10A00945F01 /* HistoryOverviewTableCell.m */; };
+		B3113C72202AF10A00945F01 /* HistoryOverviewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3113C70202AF10A00945F01 /* HistoryOverviewTableCell.xib */; };
+		B3113C74202AF51D00945F01 /* HistoryOverviewTableCellLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3113C73202AF51D00945F01 /* HistoryOverviewTableCellLight.xib */; };
+		B3113C7B202B27D400945F01 /* HistoryEventLogAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C79202B27D400945F01 /* HistoryEventLogAddressCell.m */; };
+		B3113C7C202B27D400945F01 /* HistoryEventLogAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3113C7A202B27D400945F01 /* HistoryEventLogAddressCell.xib */; };
+		B3113C7E202B27E300945F01 /* HistoryEventLogAddressCellLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3113C7D202B27E300945F01 /* HistoryEventLogAddressCellLight.xib */; };
+		B3113C82202B329C00945F01 /* HistoryEventLogsConvertableDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C80202B329C00945F01 /* HistoryEventLogsConvertableDataCell.m */; };
+		B3113C83202B329C00945F01 /* HistoryEventLogsConvertableDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3113C81202B329C00945F01 /* HistoryEventLogsConvertableDataCell.xib */; };
+		B3113C85202B4E6B00945F01 /* HistoryEventLogsConvertableDataCellLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3113C84202B4E6B00945F01 /* HistoryEventLogsConvertableDataCellLight.xib */; };
+		B3113C88202B4F4400945F01 /* HistoryEventLogsConvertableDataCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C87202B4F4400945F01 /* HistoryEventLogsConvertableDataCellLight.m */; };
+		B3113C8C202C3F9300945F01 /* ChooseConverterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C8B202C3F9300945F01 /* ChooseConverterView.m */; };
+		B3113C8E202C3FB400945F01 /* ChooseConverterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3113C8D202C3FB400945F01 /* ChooseConverterView.xib */; };
+		B3113C90202C413200945F01 /* ChooseConverterViewLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3113C8F202C413200945F01 /* ChooseConverterViewLight.xib */; };
+		B3113C94202C4A7600945F01 /* ChooseConverterViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3113C93202C4A7600945F01 /* ChooseConverterViewLight.m */; };
 		B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E551F3090A60095E3DF /* AbiTextFieldWithLineLight.m */; };
 		B3141E5A1F3099110095E3DF /* ContractNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3141E591F3099110095E3DF /* ContractNameTextField.m */; };
 		B3141E5D1F3099DA0095E3DF /* ContractNameTextFieldLight.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3141E5C1F3099DA0095E3DF /* ContractNameTextFieldLight.xib */; };
@@ -199,6 +216,8 @@
 		B354970A1F8CE68A00DEB004 /* WatchDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B35497091F8CE68A00DEB004 /* WatchDataOperation.m */; };
 		B35572C71F90E886001AE34A /* NewsFacedeService.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C61F90E886001AE34A /* NewsFacedeService.m */; };
 		B35572CA1F90EFDE001AE34A /* NetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = B35572C91F90EFDE001AE34A /* NetworkingService.m */; };
+		B355B1D1202C5BF200B98944 /* RecieptLogDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = B355B1D0202C5BF200B98944 /* RecieptLogDTO.m */; };
+		B355B1D4202C605800B98944 /* ValueRepresentationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B355B1D3202C605800B98944 /* ValueRepresentationEntity.m */; };
 		B35733271F97A69A00C64AAE /* ServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B35733261F97A69A00C64AAE /* ServiceLocator.m */; };
 		B35733301F97B2FE00C64AAE /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = B35733291F97ACCD00C64AAE /* TFHpple.m */; };
 		B35733311F97B32900C64AAE /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B357332C1F97ACCD00C64AAE /* TFHppleElement.m */; };
@@ -880,6 +899,33 @@
 		B3113C592029C2A900945F01 /* TransactionReceipt+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TransactionReceipt+CoreDataClass.h"; sourceTree = "<group>"; };
 		B3113C5A2029C2A900945F01 /* TransactionReceipt+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TransactionReceipt+CoreDataClass.m"; sourceTree = "<group>"; };
 		B3113C5B2029C2A900945F01 /* TransactionReceipt+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TransactionReceipt+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B3113C622029EE8100945F01 /* HistoryItemOverviewSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryItemOverviewSource.h; sourceTree = "<group>"; };
+		B3113C632029EE8100945F01 /* HistoryItemOverviewSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryItemOverviewSource.m; sourceTree = "<group>"; };
+		B3113C652029EE9200945F01 /* HistoryItemEventLogSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryItemEventLogSource.h; sourceTree = "<group>"; };
+		B3113C662029EE9200945F01 /* HistoryItemEventLogSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryItemEventLogSource.m; sourceTree = "<group>"; };
+		B3113C692029F89000945F01 /* HistoryAddressesHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryAddressesHeaderCell.h; sourceTree = "<group>"; };
+		B3113C6A2029F89000945F01 /* HistoryAddressesHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryAddressesHeaderCell.m; sourceTree = "<group>"; };
+		B3113C6E202AF10A00945F01 /* HistoryOverviewTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryOverviewTableCell.h; sourceTree = "<group>"; };
+		B3113C6F202AF10A00945F01 /* HistoryOverviewTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryOverviewTableCell.m; sourceTree = "<group>"; };
+		B3113C70202AF10A00945F01 /* HistoryOverviewTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryOverviewTableCell.xib; sourceTree = "<group>"; };
+		B3113C73202AF51D00945F01 /* HistoryOverviewTableCellLight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryOverviewTableCellLight.xib; sourceTree = "<group>"; };
+		B3113C78202B27D400945F01 /* HistoryEventLogAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryEventLogAddressCell.h; sourceTree = "<group>"; };
+		B3113C79202B27D400945F01 /* HistoryEventLogAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryEventLogAddressCell.m; sourceTree = "<group>"; };
+		B3113C7A202B27D400945F01 /* HistoryEventLogAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryEventLogAddressCell.xib; sourceTree = "<group>"; };
+		B3113C7D202B27E300945F01 /* HistoryEventLogAddressCellLight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryEventLogAddressCellLight.xib; sourceTree = "<group>"; };
+		B3113C7F202B329C00945F01 /* HistoryEventLogsConvertableDataCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryEventLogsConvertableDataCell.h; sourceTree = "<group>"; };
+		B3113C80202B329C00945F01 /* HistoryEventLogsConvertableDataCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryEventLogsConvertableDataCell.m; sourceTree = "<group>"; };
+		B3113C81202B329C00945F01 /* HistoryEventLogsConvertableDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryEventLogsConvertableDataCell.xib; sourceTree = "<group>"; };
+		B3113C84202B4E6B00945F01 /* HistoryEventLogsConvertableDataCellLight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryEventLogsConvertableDataCellLight.xib; sourceTree = "<group>"; };
+		B3113C86202B4F4400945F01 /* HistoryEventLogsConvertableDataCellLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryEventLogsConvertableDataCellLight.h; sourceTree = "<group>"; };
+		B3113C87202B4F4400945F01 /* HistoryEventLogsConvertableDataCellLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryEventLogsConvertableDataCellLight.m; sourceTree = "<group>"; };
+		B3113C8A202C3F9300945F01 /* ChooseConverterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseConverterView.h; sourceTree = "<group>"; };
+		B3113C8B202C3F9300945F01 /* ChooseConverterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseConverterView.m; sourceTree = "<group>"; };
+		B3113C8D202C3FB400945F01 /* ChooseConverterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseConverterView.xib; sourceTree = "<group>"; };
+		B3113C8F202C413200945F01 /* ChooseConverterViewLight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseConverterViewLight.xib; sourceTree = "<group>"; };
+		B3113C91202C47FF00945F01 /* EventLogHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventLogHeader.h; sourceTree = "<group>"; };
+		B3113C92202C4A7600945F01 /* ChooseConverterViewLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseConverterViewLight.h; sourceTree = "<group>"; };
+		B3113C93202C4A7600945F01 /* ChooseConverterViewLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseConverterViewLight.m; sourceTree = "<group>"; };
 		B3141E541F3090A60095E3DF /* AbiTextFieldWithLineLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLineLight.h; sourceTree = "<group>"; };
 		B3141E551F3090A60095E3DF /* AbiTextFieldWithLineLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiTextFieldWithLineLight.m; sourceTree = "<group>"; };
 		B3141E571F3090CB0095E3DF /* AbiTextFieldWithLineDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiTextFieldWithLineDelegate.h; sourceTree = "<group>"; };
@@ -1156,6 +1202,10 @@
 		B35572C61F90E886001AE34A /* NewsFacedeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsFacedeService.m; sourceTree = "<group>"; };
 		B35572C81F90EFDE001AE34A /* NetworkingService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingService.h; sourceTree = "<group>"; };
 		B35572C91F90EFDE001AE34A /* NetworkingService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkingService.m; sourceTree = "<group>"; };
+		B355B1CF202C5BF200B98944 /* RecieptLogDTO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecieptLogDTO.h; sourceTree = "<group>"; };
+		B355B1D0202C5BF200B98944 /* RecieptLogDTO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecieptLogDTO.m; sourceTree = "<group>"; };
+		B355B1D2202C605800B98944 /* ValueRepresentationEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValueRepresentationEntity.h; sourceTree = "<group>"; };
+		B355B1D3202C605800B98944 /* ValueRepresentationEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValueRepresentationEntity.m; sourceTree = "<group>"; };
 		B35733251F97A69A00C64AAE /* ServiceLocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceLocator.h; sourceTree = "<group>"; };
 		B35733261F97A69A00C64AAE /* ServiceLocator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceLocator.m; sourceTree = "<group>"; };
 		B35733291F97ACCD00C64AAE /* TFHpple.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
@@ -2415,6 +2465,96 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		B3113C682029F87500945F01 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B336017B1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.h */,
+				B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */,
+				B3113C76202B278C00945F01 /* AddressCells */,
+				B3113C77202B279E00945F01 /* EventLogCells */,
+				B3113C75202B277A00945F01 /* OverviewCells */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B3113C6C202AF08A00945F01 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B33601871E96546C00243A21 /* HistoryItemDelegateDataSource.h */,
+				B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */,
+				B3113C622029EE8100945F01 /* HistoryItemOverviewSource.h */,
+				B3113C632029EE8100945F01 /* HistoryItemOverviewSource.m */,
+				B3113C652029EE9200945F01 /* HistoryItemEventLogSource.h */,
+				B3113C662029EE9200945F01 /* HistoryItemEventLogSource.m */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B3113C6D202AF0A300945F01 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				E7C101C51F15086100848526 /* HistoryItemOutput.h */,
+				E7C101C61F15086A00848526 /* HistoryItemOutputDelegate.h */,
+				B33601841E963EC800243A21 /* HistoryItemViewController.h */,
+				B33601851E963EC800243A21 /* HistoryItemViewController.m */,
+				E7C101BF1F15073800848526 /* HistoryItemViewControllerDark.h */,
+				E7C101C01F15073800848526 /* HistoryItemViewControllerDark.m */,
+				E7C101C21F15074A00848526 /* HistoryItemViewControllerLight.h */,
+				E7C101C31F15074A00848526 /* HistoryItemViewControllerLight.m */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
+		B3113C75202B277A00945F01 /* OverviewCells */ = {
+			isa = PBXGroup;
+			children = (
+				B3113C6E202AF10A00945F01 /* HistoryOverviewTableCell.h */,
+				B3113C6F202AF10A00945F01 /* HistoryOverviewTableCell.m */,
+				B3113C70202AF10A00945F01 /* HistoryOverviewTableCell.xib */,
+				B3113C73202AF51D00945F01 /* HistoryOverviewTableCellLight.xib */,
+			);
+			path = OverviewCells;
+			sourceTree = "<group>";
+		};
+		B3113C76202B278C00945F01 /* AddressCells */ = {
+			isa = PBXGroup;
+			children = (
+				B3113C692029F89000945F01 /* HistoryAddressesHeaderCell.h */,
+				B3113C6A2029F89000945F01 /* HistoryAddressesHeaderCell.m */,
+			);
+			path = AddressCells;
+			sourceTree = "<group>";
+		};
+		B3113C77202B279E00945F01 /* EventLogCells */ = {
+			isa = PBXGroup;
+			children = (
+				B3113C78202B27D400945F01 /* HistoryEventLogAddressCell.h */,
+				B3113C79202B27D400945F01 /* HistoryEventLogAddressCell.m */,
+				B3113C7A202B27D400945F01 /* HistoryEventLogAddressCell.xib */,
+				B3113C7D202B27E300945F01 /* HistoryEventLogAddressCellLight.xib */,
+				B3113C7F202B329C00945F01 /* HistoryEventLogsConvertableDataCell.h */,
+				B3113C80202B329C00945F01 /* HistoryEventLogsConvertableDataCell.m */,
+				B3113C81202B329C00945F01 /* HistoryEventLogsConvertableDataCell.xib */,
+				B3113C84202B4E6B00945F01 /* HistoryEventLogsConvertableDataCellLight.xib */,
+				B3113C86202B4F4400945F01 /* HistoryEventLogsConvertableDataCellLight.h */,
+				B3113C87202B4F4400945F01 /* HistoryEventLogsConvertableDataCellLight.m */,
+			);
+			path = EventLogCells;
+			sourceTree = "<group>";
+		};
+		B3113C89202C3F7800945F01 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				B3113C8A202C3F9300945F01 /* ChooseConverterView.h */,
+				B3113C8B202C3F9300945F01 /* ChooseConverterView.m */,
+				B3113C8D202C3FB400945F01 /* ChooseConverterView.xib */,
+				B3113C8F202C413200945F01 /* ChooseConverterViewLight.xib */,
+				B3113C92202C4A7600945F01 /* ChooseConverterViewLight.h */,
+				B3113C93202C4A7600945F01 /* ChooseConverterViewLight.m */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		B3141E5B1F3099180095E3DF /* ContractNameTextFiedl */ = {
 			isa = PBXGroup;
 			children = (
@@ -2740,14 +2880,7 @@
 			isa = PBXGroup;
 			children = (
 				B336017A1E963A2200243A21 /* Table */,
-				E7C101C51F15086100848526 /* HistoryItemOutput.h */,
-				E7C101C61F15086A00848526 /* HistoryItemOutputDelegate.h */,
-				B33601841E963EC800243A21 /* HistoryItemViewController.h */,
-				B33601851E963EC800243A21 /* HistoryItemViewController.m */,
-				E7C101BF1F15073800848526 /* HistoryItemViewControllerDark.h */,
-				E7C101C01F15073800848526 /* HistoryItemViewControllerDark.m */,
-				E7C101C21F15074A00848526 /* HistoryItemViewControllerLight.h */,
-				E7C101C31F15074A00848526 /* HistoryItemViewControllerLight.m */,
+				B3113C6D202AF0A300945F01 /* Output */,
 			);
 			path = HistoryItemOutput;
 			sourceTree = "<group>";
@@ -2755,10 +2888,9 @@
 		B336017A1E963A2200243A21 /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				B336017B1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.h */,
-				B336017C1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m */,
-				B33601871E96546C00243A21 /* HistoryItemDelegateDataSource.h */,
-				B33601881E96546C00243A21 /* HistoryItemDelegateDataSource.m */,
+				B3113C682029F87500945F01 /* Cells */,
+				B3113C6C202AF08A00945F01 /* Sources */,
+				B3113C91202C47FF00945F01 /* EventLogHeader.h */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -5245,6 +5377,10 @@
 				B35B063D1FEBB669007BB204 /* HistoryStorageProtocol.h */,
 				B35B063E1FEBBB79007BB204 /* TokenHistoryElement.h */,
 				B35B063F1FEBBB79007BB204 /* TokenHistoryElement.m */,
+				B355B1CF202C5BF200B98944 /* RecieptLogDTO.h */,
+				B355B1D0202C5BF200B98944 /* RecieptLogDTO.m */,
+				B355B1D2202C605800B98944 /* ValueRepresentationEntity.h */,
+				B355B1D3202C605800B98944 /* ValueRepresentationEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5274,6 +5410,7 @@
 		E7FD365E1DC73B2400748177 /* Shared Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3113C89202C3F7800945F01 /* New Group */,
 				B32A52EA2021D3A600280D25 /* TransactionLoader */,
 				B3C1362C1FFCD7FE00AC3EB1 /* Confirm Reset Button */,
 				B3C136221FFCC70100AC3EB1 /* Confirm BorderView */,
@@ -5622,12 +5759,15 @@
 				E78DD7641F4C2B6A00B25FB3 /* AddressTransferPopup.storyboard in Resources */,
 				B3045BF21FF23A6E003089F1 /* NoContractViewLight.xib in Resources */,
 				E70CFD571F1F66BF00230C81 /* SelectSearchTypeView.xib in Resources */,
+				B3113C90202C413200945F01 /* ChooseConverterViewLight.xib in Resources */,
 				E70CFD111F1F63F400230C81 /* InformationPopUp.storyboard in Resources */,
 				B321F2DC1EBB646100C813D0 /* euclidflexmedium.ttf in Resources */,
 				B3EA53131F471DBF002FD201 /* SelectSearchTypeViewLight.xib in Resources */,
+				B3113C72202AF10A00945F01 /* HistoryOverviewTableCell.xib in Resources */,
 				B321F2DD1EBB646100C813D0 /* simplonmono-medium.ttf in Resources */,
 				B34228861F73CEAE00C4C381 /* SliderFeeView.xib in Resources */,
 				B3487A2A1E92383500BC66F1 /* HistoryTableHeaderViewDark.xib in Resources */,
+				B3113C7E202B27E300945F01 /* HistoryEventLogAddressCellLight.xib in Resources */,
 				E72631241EEAA806005AED8F /* FieldsViews.xib in Resources */,
 				E70CFD031F1F63E500230C81 /* PhotoLibraryPopUp.storyboard in Resources */,
 				B3C1363C1FFD047300AC3EB1 /* ConfirmWordCollectionViewCell.xib in Resources */,
@@ -5637,9 +5777,13 @@
 				B3F06D001E698F8D006341F7 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				E7881B0D1F0BB63400BD6AB2 /* SplashLight.storyboard in Resources */,
 				E70CFCFC1F1F63D300230C81 /* QStore.storyboard in Resources */,
+				B3113C74202AF51D00945F01 /* HistoryOverviewTableCellLight.xib in Resources */,
 				B386F5E61E163F41004D231B /* SF-UI-DISPLAY-THIN.OTF in Resources */,
+				B3113C83202B329C00945F01 /* HistoryEventLogsConvertableDataCell.xib in Resources */,
 				B32EEC9B1EB356DA00512FED /* Localizable.strings in Resources */,
 				B305A1301FD0061600FC4D2F /* QueryFunctionViewDark.xib in Resources */,
+				B3113C85202B4E6B00945F01 /* HistoryEventLogsConvertableDataCellLight.xib in Resources */,
+				B3113C7C202B27D400945F01 /* HistoryEventLogAddressCell.xib in Resources */,
 				E70CFD0A1F1F63ED00230C81 /* ErrorPopUp.storyboard in Resources */,
 				E70CFD341F1F647300230C81 /* SourceCodePopUp.storyboard in Resources */,
 				B31441091FB461E5004FE08C /* RemoveContractTrainingViewLight.xib in Resources */,
@@ -5677,6 +5821,7 @@
 				B32EEC891EB354C000512FED /* SubscribeToken.storyboard in Resources */,
 				B3045BED1FF2319A003089F1 /* NoContractView.xib in Resources */,
 				E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */,
+				B3113C8E202C3FB400945F01 /* ChooseConverterView.xib in Resources */,
 				B30FE5FA1FFE2DC3001636AE /* ConfirmWordCollectionViewCellDark.xib in Resources */,
 				E70CFD3B1F1F647A00230C81 /* ConfirmPurchasePopUp.storyboard in Resources */,
 				B32EEC6B1EB3546800512FED /* News.storyboard in Resources */,
@@ -5950,12 +6095,14 @@
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
 				B305A1141FCD85B600FC4D2F /* SendModuleRouter.m in Sources */,
 				B305A1291FD005F400FC4D2F /* QueryFunctionViewDark.m in Sources */,
+				B3113C7B202B27D400945F01 /* HistoryEventLogAddressCell.m in Sources */,
 				B3CBDF191F2B16FC00C80D4E /* SmartContractMenuViewControllerLight.m in Sources */,
 				E71AF2511E017D250068595B /* WordsArray.m in Sources */,
 				B3EE8F4E1F13767900131823 /* QRCodeViewControllerLight.m in Sources */,
 				B3DC9D271F31E9BB006B2E07 /* AddressTransferPopupViewControllerLight.m in Sources */,
 				B3EE8F421F136FAA00131823 /* ChooseTokenPaymentCellLight.m in Sources */,
 				B314410E1FB4624F004FE08C /* RemoveContractTrainigView.m in Sources */,
+				B3113C94202C4A7600945F01 /* ChooseConverterViewLight.m in Sources */,
 				B3D5FE7A1F56F3B6006A2BF2 /* AbiParameterTypeDynamicArrayBool.m in Sources */,
 				B3054E301F0B9EE4001B1F63 /* SendCoordinator.m in Sources */,
 				B3827DE01ECF292E00E500DE /* TokenListViewController.m in Sources */,
@@ -5993,6 +6140,7 @@
 				B3DB3E571F2F9A8B00AA408F /* FavouriteTemplateCollectionViewCellDark.m in Sources */,
 				B387AB3A1EEAD8C5001D2FF1 /* WatchContractViewController.m in Sources */,
 				E71F1C7A1F1C9B0200961B19 /* LibraryTableSource.m in Sources */,
+				B3113C672029EE9200945F01 /* HistoryItemEventLogSource.m in Sources */,
 				B365CA5A1EA4D8E30040A163 /* BTCTransactionInput+Extension.m in Sources */,
 				B3DC9D241F31E9A8006B2E07 /* AddressTransferPopupViewControllerDark.m in Sources */,
 				E7EA2CBE1ED42DE100AFD5D0 /* LanguageTableSource.m in Sources */,
@@ -6006,6 +6154,7 @@
 				B3DC9CF21F30D428006B2E07 /* ShareTokenPopUpViewControllerDark.m in Sources */,
 				E745BA271F21FC4800B2E216 /* NewsViewControllerDark.m in Sources */,
 				E7CE636C1F029EEF00C147B9 /* QStoreSearchTableViewCell.m in Sources */,
+				B3113C88202B4F4400945F01 /* HistoryEventLogsConvertableDataCellLight.m in Sources */,
 				B35DF6231F1F56A700316953 /* InputTextViewLight.m in Sources */,
 				B3D5FE481F56AE83006A2BF2 /* AbiParameterTypeArray.m in Sources */,
 				E703530F1F03AC41004ECCC9 /* QStoreListViewController.m in Sources */,
@@ -6023,6 +6172,7 @@
 				B3CBDF3A1F2B48B000C80D4E /* SmartContractListItemCellDark.m in Sources */,
 				B3F06D0A1E6993AC006341F7 /* SubscribeTokenDataDisplayManagerDark.m in Sources */,
 				B3C136421FFD1A4900AC3EB1 /* ExampleWordCollectionViewCell.m in Sources */,
+				B3113C6B2029F89000945F01 /* HistoryAddressesHeaderCell.m in Sources */,
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B3CD78E51F4DD45700D79363 /* ChooseAddressReciveCellDark.m in Sources */,
 				B31E0976202339860001F57F /* WalletHistoryEntity+Extension.m in Sources */,
@@ -6055,6 +6205,7 @@
 				B3DB3E4E1F2F706800AA408F /* RestoreContractsViewControllerLight.m in Sources */,
 				D09F83991F7BB2DB002F3098 /* CopyLabel.m in Sources */,
 				E7FA0CBE1ECD9F2F00702C4E /* PhotoLibraryPopUpViewController.m in Sources */,
+				B3113C71202AF10A00945F01 /* HistoryOverviewTableCell.m in Sources */,
 				B3DD27541E68025200BB0635 /* TabBarCoordinator.m in Sources */,
 				E78903691EDD57D2004243F0 /* AnimatedLabelTableViewCell.m in Sources */,
 				B3DC9D3A1F331FD6006B2E07 /* TokenAddressControlViewController.m in Sources */,
@@ -6073,6 +6224,7 @@
 				E7C101C41F15074A00848526 /* HistoryItemViewControllerLight.m in Sources */,
 				B3F06D031E699244006341F7 /* TokenCellSubscribe.m in Sources */,
 				B3D5FE6D1F56F2C3006A2BF2 /* AbiParameterTypeFixedArrayInt.m in Sources */,
+				B3113C82202B329C00945F01 /* HistoryEventLogsConvertableDataCell.m in Sources */,
 				E726312A1EEAAC5B005AED8F /* TextFieldParameterView.m in Sources */,
 				B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */,
 				D059BE7B1F84E4A70045ABA0 /* PaymentValuesManager.m in Sources */,
@@ -6135,6 +6287,7 @@
 				B3DC9CEB1F30CB56006B2E07 /* TokenFunctionViewControllerDark.m in Sources */,
 				B365CA601EA4DBC10040A163 /* BTCTransactionOutput+Address.m in Sources */,
 				B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */,
+				B3113C642029EE8100945F01 /* HistoryItemOverviewSource.m in Sources */,
 				B3D12F5E1FBB31A100DEE41E /* SourceCodeTextView.m in Sources */,
 				B3EE8F481F13708500131823 /* ChoseTokenPaymentViewControllerDark.m in Sources */,
 				B365058F1F14B17300521603 /* WalletNameViewControllerDark.m in Sources */,
@@ -6148,6 +6301,7 @@
 				B30B11711FC6CED500E5ABBC /* QStoreStoryboardFactory.m in Sources */,
 				B36EBC491F2F4F8C00F4E2F2 /* InformationPopUpViewControllerDark.m in Sources */,
 				B32B32D81ECCC2AC0081260A /* AbiinterfaceInput.m in Sources */,
+				B3113C8C202C3F9300945F01 /* ChooseConverterView.m in Sources */,
 				B3EA53111F46DE00002FD201 /* CustomSearchBarLight.m in Sources */,
 				B3113C5C2029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.m in Sources */,
 				B3D5FE801F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.m in Sources */,
@@ -6250,6 +6404,7 @@
 				B32B32C81ECCC1F90081260A /* InterfaceInputFormModel.m in Sources */,
 				B3DC9D311F331EC5006B2E07 /* TokenAddressContolCell.m in Sources */,
 				B36505951F14B3BA00521603 /* CreatePinViewControllerLight.m in Sources */,
+				B355B1D1202C5BF200B98944 /* RecieptLogDTO.m in Sources */,
 				B3255C4C1E1CDD6500CD610B /* GradientViewWithAnimation.m in Sources */,
 				E739105F1DE5E131008145A8 /* KeyViewController.m in Sources */,
 				B30FE5F81FFE0F46001636AE /* NSArray+Shuffle.m in Sources */,
@@ -6260,6 +6415,7 @@
 				B346AE1E1EFD57BC00241C61 /* ConfirmPinCoordinator.m in Sources */,
 				B3C5567E2023215B008B3052 /* HistoryFacadeService.m in Sources */,
 				B32BC4AB1F28C6F600C2417C /* PinViewControllerDark.m in Sources */,
+				B355B1D4202C605800B98944 /* ValueRepresentationEntity.m in Sources */,
 				E739105B1DE45398008145A8 /* BaseViewController.m in Sources */,
 				B3CBDF131F2A47F900C80D4E /* LibraryTableViewCellDark.m in Sources */,
 				B3DC9D041F31B6A3006B2E07 /* AddressControlListViewController.m in Sources */,

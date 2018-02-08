@@ -118,11 +118,14 @@
     [self reloadHistory];
 }
 
-- (void)didSelectHistoryItemIndexPath:(NSIndexPath *) indexPath withItem:(HistoryElement *) item {
+- (void)didSelectHistoryItemIndexPath:(NSIndexPath *) indexPath withItem:(id <HistoryElementProtocol> ) item {
 
 	NSObject <HistoryItemOutput> *controller = [SLocator.controllersFactory createHistoryItem];
+    TransactionReceipt* reciept = [SLocator.historyFacadeService getRecieptWithTxHash:item.transactionHash];
 	controller.item = item;
+    controller.receipt = reciept;
 	controller.delegate = self;
+    controller.logs = [SLocator.historyFacadeService getLogsDTOSWithReceit:reciept];
 	[self.navigationController pushViewController:[controller toPresent] animated:YES];
 }
 
@@ -317,6 +320,8 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (updateSpendables) name:kWalletDidChange object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (fireHistoryElementTimerUpdate) name:kWalletHistoryDidChange object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (updateTokens) name:kTokenDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (didConnectToSocket) name:kSocketDidConnect object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (didDisconnectFromSocket) name:kSocketDidDisconnect object:nil];
 }
 
 - (void)fireHistoryElementTimerUpdate {
@@ -426,6 +431,13 @@
 	[self addDependency:coordinator];
 }
 
+-(void)didConnectToSocket {
+    [self.walletViewController conndectionSuccess];
+}
+
+- (void)didDisconnectFromSocket {
+    [self.walletViewController conndectionFailed];
+}
 
 #pragma mark - AddressLibruaryCoordinator, TokenAddressLibraryCoordinatorDelegate
 
@@ -466,6 +478,19 @@
 - (void)okButtonPressed:(PopUpViewController *) sender {
 	[SLocator.popupService hideCurrentPopUp:YES completion:nil];
 }
+
+#pragma mark - HistoryItemOutputDelegate
+
+- (void)didPressedCopyWithValue:(NSString*) value {
+    
+    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    NSString *keyString = value;
+    [pb setString:keyString];
+    
+    PopUpContent *content = [PopUpContentGenerator contentForCopied];
+    [SLocator.popupService showInformationPopUp:self withContent:content presenter:nil completion:nil];
+}
+
 
 #pragma mark - RecieveOutputDelegate
 
