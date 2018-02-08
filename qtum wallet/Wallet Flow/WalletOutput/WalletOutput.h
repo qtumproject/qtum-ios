@@ -17,11 +17,12 @@
 @property (weak, nonatomic) id <WalletOutputDelegate> delegate;
 
 - (void)setWallet:(id <Spendable>) wallet;
-
 - (void)failedToUpdateHistory;
 
-- (void)startLoading;
+- (void)conndectionFailed;
+- (void)conndectionSuccess;
 
+- (void)startLoading;
 - (void)stopLoading;
 
 - (void)reloadHeader:(id <Spendable>) wallet;

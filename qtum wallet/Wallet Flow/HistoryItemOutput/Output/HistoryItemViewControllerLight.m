@@ -8,6 +8,10 @@
 
 #import "HistoryItemViewControllerLight.h"
 #import "GradientView.h"
+#import "HistoryOverviewTableCell.h"
+#import "HistoryEventLogAddressCell.h"
+#import "HistoryEventLogsConvertableDataCell.h"
+#import "ChooseConverterView.h"
 
 @interface HistoryItemViewControllerLight ()
 
@@ -26,6 +30,13 @@
 	self.bottomGradient.colorType = White;
 }
 
+- (void)configCellRegistration {
+    
+    [self.owerviewTableView registerNib:[UINib nibWithNibName:@"HistoryOverviewTableCellLight" bundle:nil] forCellReuseIdentifier:historyOverviewTableCellIdentifier];
+    [self.eventLogTableView registerNib:[UINib nibWithNibName:@"HistoryEventLogAddressCellLight" bundle:nil] forCellReuseIdentifier:historyEventLogAddressCellIdentifier];
+    [self.eventLogTableView registerNib:[UINib nibWithNibName:@"HistoryEventLogsConvertableDataCellLight" bundle:nil] forCellReuseIdentifier:historyEventLogsConvertableDataCellIdentifier];
+}
+
 - (void)configWithItem {
 
 	[super configWithItem];
@@ -34,6 +45,12 @@
 	self.confirmedLabel.text = self.item.confirmed ? NSLocalizedString(@"Confirmed", nil) : NSLocalizedString(@"Unconfirmed Yet...", nil);
 	NSString *imageName = self.item.confirmed ? @"ic-confirmed" : @"ic-confirmation_loader";
 	self.confirmedImageView.image = [UIImage imageNamed:imageName];
+}
+
+-(ChooseConverterView*)dropListView {
+    
+    ChooseConverterView* view = [[[NSBundle mainBundle] loadNibNamed:@"ChooseConverterViewLight" owner:self options:nil] objectAtIndex:0];
+    return view;
 }
 
 @end

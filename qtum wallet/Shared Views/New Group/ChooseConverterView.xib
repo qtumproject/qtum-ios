@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3jr-DP-Gv3" customClass="ChooseConverterView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PnQ-Zz-asi">
+                    <rect key="frame" x="45" y="310" width="107" height="127"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Yu-vo-mpJ">
+                            <rect key="frame" x="0.0" y="0.0" width="107" height="32"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionChooseType:" destination="3jr-DP-Gv3" eventType="touchUpInside" id="e0y-aD-YbI"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnw-Sz-qQ0">
+                            <rect key="frame" x="0.0" y="32" width="107" height="32"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionChooseType:" destination="3jr-DP-Gv3" eventType="touchUpInside" id="vlU-dW-vtx"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcf-yo-FRn">
+                            <rect key="frame" x="0.0" y="64" width="107" height="32"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionChooseType:" destination="3jr-DP-Gv3" eventType="touchUpInside" id="ynV-uE-mB2"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIO-OD-oCa">
+                            <rect key="frame" x="0.0" y="96" width="107" height="31"/>
+                            <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionChooseType:" destination="3jr-DP-Gv3" eventType="touchUpInside" id="O1N-VF-xGV"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.90588235294117647" green="0.33725490196078434" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="jcf-yo-FRn" firstAttribute="top" secondItem="xnw-Sz-qQ0" secondAttribute="bottom" id="0y8-EV-QLI"/>
+                        <constraint firstItem="jcf-yo-FRn" firstAttribute="leading" secondItem="PnQ-Zz-asi" secondAttribute="leading" id="1RK-pf-VoP"/>
+                        <constraint firstAttribute="trailing" secondItem="jcf-yo-FRn" secondAttribute="trailing" id="3Fv-8U-t6F"/>
+                        <constraint firstItem="xnw-Sz-qQ0" firstAttribute="width" secondItem="jcf-yo-FRn" secondAttribute="width" id="79Y-Cv-I0d"/>
+                        <constraint firstAttribute="trailing" secondItem="HIO-OD-oCa" secondAttribute="trailing" id="9LX-CN-wJN"/>
+                        <constraint firstAttribute="width" constant="107" id="9g5-FB-p1W"/>
+                        <constraint firstItem="6Yu-vo-mpJ" firstAttribute="top" secondItem="PnQ-Zz-asi" secondAttribute="top" id="CMK-H2-hhR"/>
+                        <constraint firstItem="6Yu-vo-mpJ" firstAttribute="leading" secondItem="PnQ-Zz-asi" secondAttribute="leading" id="Epp-2c-f80"/>
+                        <constraint firstAttribute="height" constant="127" id="Gbn-Jp-xXv"/>
+                        <constraint firstItem="xnw-Sz-qQ0" firstAttribute="leading" secondItem="PnQ-Zz-asi" secondAttribute="leading" id="HtI-bX-dBf"/>
+                        <constraint firstItem="HIO-OD-oCa" firstAttribute="leading" secondItem="PnQ-Zz-asi" secondAttribute="leading" id="Oc6-oh-Q0h"/>
+                        <constraint firstAttribute="trailing" secondItem="xnw-Sz-qQ0" secondAttribute="trailing" id="Qv3-dY-Sy2"/>
+                        <constraint firstAttribute="trailing" secondItem="6Yu-vo-mpJ" secondAttribute="trailing" id="VTc-ax-2Qe"/>
+                        <constraint firstAttribute="bottom" secondItem="HIO-OD-oCa" secondAttribute="bottom" id="XdQ-x3-2Mc"/>
+                        <constraint firstItem="jcf-yo-FRn" firstAttribute="width" secondItem="HIO-OD-oCa" secondAttribute="width" id="YCq-95-0hU"/>
+                        <constraint firstItem="6Yu-vo-mpJ" firstAttribute="width" secondItem="xnw-Sz-qQ0" secondAttribute="width" id="ibk-9t-69K"/>
+                        <constraint firstItem="HIO-OD-oCa" firstAttribute="top" secondItem="jcf-yo-FRn" secondAttribute="bottom" id="nY2-Al-w4X"/>
+                        <constraint firstItem="xnw-Sz-qQ0" firstAttribute="top" secondItem="6Yu-vo-mpJ" secondAttribute="bottom" id="v6O-qz-4v8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="0.75465539380000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="PnQ-Zz-asi" firstAttribute="leading" secondItem="3jr-DP-Gv3" secondAttribute="leading" constant="45" id="Ilh-Hm-ez2"/>
+                <constraint firstItem="PnQ-Zz-asi" firstAttribute="top" secondItem="3jr-DP-Gv3" secondAttribute="top" constant="310" id="cit-QS-aL8"/>
+            </constraints>
+            <connections>
+                <outlet property="addressButton" destination="HIO-OD-oCa" id="ifp-0R-Kzw"/>
+                <outlet property="dropListView" destination="PnQ-Zz-asi" id="lhM-bN-Psd"/>
+                <outlet property="hexButton" destination="6Yu-vo-mpJ" id="Kya-aY-qyI"/>
+                <outlet property="leading" destination="Ilh-Hm-ez2" id="mBh-5a-lVk"/>
+                <outlet property="numberButton" destination="xnw-Sz-qQ0" id="P1u-OH-reA"/>
+                <outlet property="textButton" destination="jcf-yo-FRn" id="zEW-1k-dab"/>
+                <outlet property="topOffset" destination="cit-QS-aL8" id="HoR-mw-MGE"/>
+                <outletCollection property="gestureRecognizers" destination="1iR-GN-Qcw" appends="YES" id="eJd-Ej-iog"/>
+                <outletCollection property="gestureRecognizers" destination="Uuq-2f-BVB" appends="YES" id="j5f-Nb-tMb"/>
+                <outletCollection property="gestureRecognizers" destination="p37-YR-n9m" appends="YES" id="3cb-CQ-xxw"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+        <tapGestureRecognizer id="1iR-GN-Qcw">
+            <connections>
+                <action selector="didTapOnView:" destination="3jr-DP-Gv3" id="JMB-Qe-ERN"/>
+            </connections>
+        </tapGestureRecognizer>
+        <swipeGestureRecognizer direction="right" id="Uuq-2f-BVB">
+            <connections>
+                <action selector="didTapOnView:" destination="3jr-DP-Gv3" id="6Ur-vA-S0v"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="left" id="p37-YR-n9m">
+            <connections>
+                <action selector="didTapOnView:" destination="3jr-DP-Gv3" id="Fv2-t5-vyW"/>
+            </connections>
+        </swipeGestureRecognizer>
+    </objects>
+</document>

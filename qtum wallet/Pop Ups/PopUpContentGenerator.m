@@ -48,6 +48,11 @@
 	return content;
 }
 
++ (PopUpContent *)contentForCopied {
+    PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"Copied", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
+    return content;
+}
+
 + (PopUpContent *)contentForAbiCopied {
 	PopUpContent *content = [[PopUpContent alloc] initWithTitle:NSLocalizedString(@"ABI copied", nil) message:nil okTitle:NSLocalizedString(@"OK", nil) cancelTitle:nil];
 	return content;

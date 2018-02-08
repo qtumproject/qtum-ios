@@ -69,23 +69,28 @@ static NSString* fetchedSortingProperty = @"dateInerval";
     [self fethcFromStart];
 }
 
+- (void)failedConnection {
+    
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.fetchedResultsController.fetchRequest setFetchLimit:0];
+        [weakSelf.fetchedResultsController performFetch:nil];
+        weakSelf.shouldShowLoadingCell = NO;
+        weakSelf.isLoadingNow = NO;
+        [weakSelf.tableView reloadData];
+    });
+}
+
+- (void)reconnect {
+    
+    [self fethcFromStart];
+}
+
 -(void)fethcFromStart {
     
     self.currentPage = 0;
     [self.delegate refreshTableViewDataFromStart];
     self.isLoadingNow = YES;
-}
-
-- (void)refreshDatas:(NSNotification*)notification {
-    
-    if ([notification object] == SLocator.coreDataService.managedObjectContext) {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.fetchedResultsController.fetchRequest setFetchLimit:6];
-            [self.fetchedResultsController performFetch:nil];
-            [self.tableView reloadData];
-        });
-    }
 }
 
 - (void)reloadWithFeching {
@@ -127,10 +132,10 @@ static NSString* fetchedSortingProperty = @"dateInerval";
             cell = [tableView dequeueReusableCellWithIdentifier:historyCellReuseIdentifire];
         }else if (!entity.hasReceipt) {
             cell = [tableView dequeueReusableCellWithIdentifier:historyCellLoadingReuseIdentifire];
-        } else if (entity.internal) {
-            cell = [tableView dequeueReusableCellWithIdentifier:historyInternalCellReuseIdentifire];
         } else if (entity.contracted) {
             cell = [tableView dequeueReusableCellWithIdentifier:historyContractedCellReuseIdentifire];
+        } else if (entity.internal) {
+            cell = [tableView dequeueReusableCellWithIdentifier:historyInternalCellReuseIdentifire];
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:historyCellReuseIdentifire];
         }
@@ -214,13 +219,8 @@ static NSString* fetchedSortingProperty = @"dateInerval";
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
-
-    UITableView *tableView = self.tableView;
-    NSIndexPath* updatedAtIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section + 1 >= 0 ? indexPath.section + 1 : 0];
     
     if (type == NSFetchedResultsChangeUpdate || type == NSFetchedResultsChangeMove) {
-//        WalletHistoryEntity *entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//        [self configureCell:[tableView cellForRowAtIndexPath:updatedAtIndexPath] atIndexPath:updatedAtIndexPath withEntity:entity];
         [self.tableView reloadData];
     }
 }
@@ -263,9 +263,13 @@ static NSString* fetchedSortingProperty = @"dateInerval";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
+    
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section && ![self isLoadingIndex:indexPath]) {
-		[self.delegate didSelectHistoryItemIndexPath:indexPath withItem:self.wallet.historyStorage.historyPrivate[indexPath.row]];
+        
+        NSIndexPath* path = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1 >= 0 ? indexPath.section - 1 : 0];
+        WalletHistoryEntity *entity = [self.fetchedResultsController objectAtIndexPath:path];
+		[self.delegate didSelectHistoryItemIndexPath:indexPath withItem:entity];
 	}
 }
 

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, copy) NSString *address;
 @property (nullable, nonatomic, copy) NSString *amountString;
+@property (nullable, nonatomic, copy) NSString *feeString;
 @property (nonatomic) BOOL confirmed;
 @property (nonatomic) BOOL contracted;
 @property (nullable, nonatomic, copy) NSString *currency;
@@ -28,6 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL send;
 @property (nullable, nonatomic, retain) NSArray *toAddresses;
 @property (nullable, nonatomic, copy) NSString *transactionHash;
+@property (nonatomic) int64_t blockNumber;
+@property (nullable, nonatomic, copy) NSString *blockHash;
+
+
 
 @end
 

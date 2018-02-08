@@ -49,6 +49,11 @@
 - (void)didScrollForheaderCell:(UIScrollView *) scrollView;
 - (BOOL)isLoadingIndex:(NSIndexPath*) indexpath;
 - (void)setupFething;
+
 - (void)reloadWithFeching;
+
+- (void)failedConnection;
+- (void)reconnect;
+
 
 @end

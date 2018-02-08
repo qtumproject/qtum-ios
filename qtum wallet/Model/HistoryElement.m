@@ -23,7 +23,11 @@
     toAddresses = _toAddresses,
     currency = _currency,
     fee = _fee,
-    internal = _internal;
+    internal = _internal,
+    hasReceipt,
+    contracted,
+    blockHash,
+    blockNumber;
 
 - (void)calcAmountAndAdresses:(NSDictionary *) dictionary {
 
@@ -240,6 +244,8 @@
 		//u shoud not use setter at initionalize
 		self.dateNumber = ![object[@"block_time"] isKindOfClass:[NSNull class]] ? object[@"block_time"] : nil;
 		self.address = object[@"address"];
+        self.blockHash = object[@"block_hash"];
+        self.blockNumber = [object[@"block_height"] integerValue];
 		self.confirmed = [object[@"block_height"] floatValue] > 0;
 		self.transactionHash = ![object[@"tx_hash"] isKindOfClass:[NSNull class]] ? object[@"tx_hash"] : nil;
 		self.isSmartContractCreater = [object[@"contract_has_been_created"] boolValue];

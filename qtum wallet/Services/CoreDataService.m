@@ -49,8 +49,10 @@
     historyEntity.fromAddresses = element.fromAddresses;
     historyEntity.toAddresses = element.toAddresses;
     historyEntity.send = element.send;
+    historyEntity.feeString = element.fee.stringValue;
     historyEntity.transactionHash = element.transactionHash;
-    
+    historyEntity.blockHash = element.blockHash;
+    historyEntity.blockNumber = element.blockNumber;
     
     if (element.dateNumber) {
         historyEntity.dateInerval = element.dateNumber.integerValue;
@@ -58,7 +60,7 @@
         historyEntity.dateInerval = [[NSDate date] timeIntervalSince1970];
     }
     
-    NSArray<TransactionReceipt*>* reciepts = [self findHistoryReceiptEntityWithTxHash:element.transactionHash];
+    NSArray<TransactionReceipt*>* reciepts = [self findAllHistoryReceiptEntityWithTxHash:element.transactionHash];
     
     if (reciepts.count > 0) {
         
@@ -183,7 +185,7 @@
         
         Log* log =  [Log MR_createEntityInContext:self.managedObjectContext];
         
-        id address = dataDictionary[@"transactionIndex"];
+        id address = dataDictionary[@"address"];
         id data = dataDictionary[@"data"];
         id topics = dataDictionary[@"topics"];
         
@@ -219,7 +221,7 @@
 
 -(void)removeAllReceiptWithTxHash:(NSString*) txHash {
     
-    NSArray<TransactionReceipt*>* sameHistories = [self findHistoryReceiptEntityWithTxHash:txHash];
+    NSArray<TransactionReceipt*>* sameHistories = [self findAllHistoryReceiptEntityWithTxHash:txHash];
     
     for (WalletHistoryEntity* entity in sameHistories) {
         [entity MR_deleteEntityInContext:self.managedObjectContext];
@@ -231,7 +233,17 @@
     return [WalletHistoryEntity MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"transactionHash like %@", txHash] inContext:self.managedObjectContext];
 }
 
-- (NSArray<TransactionReceipt*>*)findHistoryReceiptEntityWithTxHash:(NSString *)txHash {
+- (TransactionReceipt*_Nullable)findHistoryRecieptEntityWithTxHash:(NSString *_Nonnull)txHash {
+    
+    NSArray<TransactionReceipt*>* reciepts = [self findAllHistoryReceiptEntityWithTxHash:txHash];
+    if (reciepts.count > 0) {
+        return reciepts.firstObject;
+    } else {
+        return nil;
+    }
+}
+
+- (NSArray<TransactionReceipt*>*)findAllHistoryReceiptEntityWithTxHash:(NSString *)txHash {
     
     return [TransactionReceipt MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"transactionHash like %@", txHash] inContext:self.managedObjectContext];
 }

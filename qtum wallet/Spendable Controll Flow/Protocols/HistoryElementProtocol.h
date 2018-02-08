@@ -26,6 +26,9 @@
 @property (assign, nonatomic) BOOL internal;
 @property (assign, nonatomic) BOOL contracted;
 @property (copy, nonatomic) NSString* currency;
+@property (assign, nonatomic) NSInteger blockNumber;
+@property (copy, nonatomic) NSString* blockHash;
+
 
 - (BOOL)isEqualElementWithoutConfimation:(id <HistoryElementProtocol>) object;
 - (void)setupWithObject:(id) object;

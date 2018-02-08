@@ -48,4 +48,6 @@
 
 + (PopUpContent *)contentForConfirmChangesInSend;
 
++ (PopUpContent *)contentForCopied;
+
 @end

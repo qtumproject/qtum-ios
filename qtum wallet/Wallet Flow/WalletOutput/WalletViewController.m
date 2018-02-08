@@ -110,6 +110,13 @@
     
 }
 
+- (void)conndectionFailed {
+    [self.tableSource failedConnection];
+}
+
+- (void)conndectionSuccess {
+    [self.tableSource reconnect];
+}
 
 - (void)reloadHistorySource {
     [self.tableSource reloadWithFeching];

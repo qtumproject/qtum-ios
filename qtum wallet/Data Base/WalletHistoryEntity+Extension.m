@@ -32,6 +32,10 @@
     return [QTUMBigNumber decimalWithString:self.amountString];
 }
 
+-(QTUMBigNumber*)fee {
+    return [QTUMBigNumber decimalWithString:self.feeString];
+}
+
 -(NSString*)fullDateString {
     
     CGFloat dateNumber = self.dateInerval;

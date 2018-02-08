@@ -9,5 +9,7 @@
 @protocol HistoryItemOutputDelegate <NSObject>
 
 - (void)didBackPressed;
+- (void)didPressedCopyWithValue:(NSString*) value;
+
 
 @end
