@@ -13,9 +13,14 @@
 
 typedef enum {
 	HeaderCellTypeAllVisible,
+    HeaderCellTypeAllVisibleWithLastTime,
 	HeaderCellTypeWithoutNotCorfirmedBalance,
+    HeaderCellTypeWithoutNotCorfirmedBalanceWithLastTime,
 	HeaderCellTypeWithoutPageControl,
-	HeaderCellTypeWithoutAll
+    HeaderCellTypeWithoutPageControlWithLastTime,
+	HeaderCellTypeWithoutAll,
+    HeaderCellTypeWithoutAllWithLastTime
+
 } HeaderCellType;
 
 @interface WalletHeaderCell : AnimatedLabelTableViewCell
@@ -29,6 +34,8 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *notConfirmedTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *separatorView;
 @property (weak, nonatomic) IBOutlet UILabel *availableTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noInternetConnectionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastBalanceUpdateLabel;
 
 @property (weak, nonatomic) id <WalletCoordinatorDelegate> delegate;
 @property (weak, nonatomic) id <Spendable> spendable;

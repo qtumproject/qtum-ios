@@ -150,6 +150,14 @@ NSInteger const USERS_KEYS_COUNT = 10;
 	return _mainAddress;
 }
 
+-(QTUMBigNumber *)balance {
+    return _balance;
+}
+
+-(QTUMBigNumber *)unconfirmedBalance {
+    return _unconfirmedBalance;
+}
+
 - (void)changeMainAddress:(NSString *) mainAddress {
 
 	self.mainAddress = mainAddress;

@@ -12,18 +12,6 @@
 
 @implementation WalletManagerRequestAdapter
 
-- (void)getBalanceForAddreses:(NSArray *) keyAddreses
-		   withSuccessHandler:(void (^)(QTUMBigNumber *balance)) success
-			andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
-
-	__weak __typeof (self) weakSelf = self;
-	[SLocator.requestManager getUnspentOutputsForAdreses:keyAddreses isAdaptive:YES successHandler:^(id responseObject) {
-		success ([weakSelf calculateBalance:responseObject]);
-	}                                  andFailureHandler:^(NSError *error, NSString *message) {
-		failure (error, message);
-	}];
-}
-
 #pragma mark - Outputs
 
 - (void)getunspentOutputs:(NSArray *) keyAddreses withSuccessHandler:(void (^)(NSArray *responseObject)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
@@ -73,21 +61,6 @@
 	}
 
 	return [stringValue doubleValue] * BTCCoin;
-}
-
-- (QTUMBigNumber *)calculateBalance:(NSArray *) responseObject {
-
-	QTUMBigNumber *balance = [QTUMBigNumber decimalWithInteger:0];
-
-	for (NSDictionary *dictionary in responseObject) {
-
-		NSNumber *amount = dictionary[@"amount"];
-		if ([amount isKindOfClass:[NSNumber class]]) {
-			balance = [balance add:[QTUMBigNumber decimalWithString:amount.stringValue]];
-		}
-	}
-
-	return balance;
 }
 
 @end

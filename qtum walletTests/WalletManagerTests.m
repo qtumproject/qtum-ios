@@ -126,7 +126,7 @@
 
 		BOOL nilVerify = [walletManager verifyPin:nilPin];
 		XCTAssertTrue(nilVerify == NO);
-	}                    andFailureHandler:^{
+	} andFailureHandler:^{
 		XCTAssertTrue(NO);
 	}];
 }

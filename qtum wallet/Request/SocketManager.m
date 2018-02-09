@@ -11,6 +11,8 @@
 
 NSString *const kSocketDidConnect = @"kSocketDidConnect";
 NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
+NSString *const kSocketConnectionFailed = @"kSocketConnectionFailed";
+
 
 @import SocketIO;
 
@@ -24,6 +26,8 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
 @end
 
 @implementation SocketManager
+
+static NSInteger timeoutDelay = 10;
 
 - (instancetype)init {
 
@@ -52,6 +56,8 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
 		case Reconnecting:
 			[[NSNotificationCenter defaultCenter] postNotificationName:kSocketDidDisconnect object:nil];
 			break;
+        case ConnectionFailed:
+            [[NSNotificationCenter defaultCenter] postNotificationName:kSocketConnectionFailed object:nil];
 		default:
 			break;
 	}
@@ -90,7 +96,20 @@ NSString *const kSocketDidDisconnect = @"kSocketDidDisconnect";
 			}
 		}];
 
-		[weakSelf.currentSocket connect];
+        [weakSelf.currentSocket connectWithTimeoutAfter:timeoutDelay withHandler:^{
+            
+            if (weakSelf.status == NotConnected) {
+                weakSelf.status = ConnectionFailed;
+            }
+        }];
+        
+        
+        [weakSelf.currentSocket on:@"error" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull event) {
+            
+            if (weakSelf.status == NotConnected) {
+                weakSelf.status = ConnectionFailed;
+            }
+        }];
 
 		dispatch_semaphore_wait (semaphore, DISPATCH_TIME_FOREVER);
 	};

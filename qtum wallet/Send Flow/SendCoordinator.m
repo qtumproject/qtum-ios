@@ -267,8 +267,8 @@
     
     BOOL tokenExists = self.token ? YES : NO;
     
-    entity.walletBalance = SLocator.walletManager.wallet.balance;
-    entity.unconfirmedWalletBalance = SLocator.walletManager.wallet.unconfirmedBalance;
+    entity.walletBalance = [SLocator.walletBalanceFacadeService lastBalance];
+    entity.unconfirmedWalletBalance = [SLocator.walletBalanceFacadeService lastUnconfirmedBalance];
     entity.tokensExists = self.hasTokens;
     entity.tokenChoosen = tokenExists;
     

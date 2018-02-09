@@ -10,6 +10,7 @@
 #import "WalletHistoryEntity+Extension.h"
 #import "TransactionReceipt+CoreDataClass.h"
 #import "Log+CoreDataProperties.h"
+#import "WalletBalanceEntity+Extension.h"
 
 @interface CoreDataService()
 
@@ -210,6 +211,16 @@
     return logs;
 }
 
+- (WalletBalanceEntity*)walletBalanceEntity {
+    
+    NSArray<WalletBalanceEntity*>* balances = [WalletBalanceEntity MR_findAllInContext:self.managedObjectContext];
+    if (balances.count > 0) {
+        return balances.firstObject;
+    } else {
+        return [WalletBalanceEntity MR_createEntityInContext:self.managedObjectContext];;
+    }
+}
+
 -(void)removeAllWalletsHistoryWithTxHash:(NSString*) txHash {
     
     NSArray<WalletHistoryEntity*>* sameHistories = [self findWalletHistoryEntityWithTxHash:txHash];
@@ -258,8 +269,11 @@
 }
 
 -(void)clear {
+    
     [WalletHistoryEntity MR_truncateAllInContext:self.managedObjectContext];
+    [WalletBalanceEntity MR_truncateAllInContext:self.managedObjectContext];
     [TransactionReceipt MR_truncateAllInContext:self.managedObjectContext];
+    
     [self saveWithcompletion:nil];
 }
 

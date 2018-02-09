@@ -36,14 +36,20 @@ CGFloat const WalletHeaderCellLightHeaderHeight = 64.0f;
 
 	switch (type) {
 		case HeaderCellTypeAllVisible:
+        case HeaderCellTypeAllVisibleWithLastTime:
 		case HeaderCellTypeWithoutPageControl:
+        case HeaderCellTypeWithoutPageControlWithLastTime:
 			self.notConfirmerCurrencyLabel.hidden = NO;
 			break;
 		case HeaderCellTypeWithoutNotCorfirmedBalance:
+        case HeaderCellTypeWithoutNotCorfirmedBalanceWithLastTime:
+        case HeaderCellTypeWithoutAllWithLastTime:
 		case HeaderCellTypeWithoutAll:
 			self.notConfirmerCurrencyLabel.hidden = YES;
 			break;
-	}
+            
+            break;
+    }
 }
 
 - (void)cellYPositionChanged:(CGFloat) yPosition {
@@ -62,6 +68,7 @@ CGFloat const WalletHeaderCellLightHeaderHeight = 64.0f;
 }
 
 - (CGFloat)percentForShowHideHeader:(CGFloat) yPosition {
+    
 	CGFloat full = self.frame.size.height - WalletHeaderCellLightHeaderHeight;
 	CGFloat notFull = yPosition + self.frame.size.height - WalletHeaderCellLightHeaderHeight;
 	return notFull / full;

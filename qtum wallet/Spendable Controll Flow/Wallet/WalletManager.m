@@ -302,13 +302,9 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (void)updateBalanceOfSpendableObject:(Wallet <Spendable> *) object withHandler:(void (^)(BOOL success)) complete {
 
-	[self.requestAdapter getBalanceForAddreses:[object allKeysAdreeses] withSuccessHandler:^(QTUMBigNumber *balance) {
-
-		object.balance = balance;
-		complete (YES);
-	} andFailureHandler:^(NSError *error, NSString *message) {
-		complete (NO);
-	}];
+    [SLocator.walletBalanceFacadeService updateForAddreses:[object allKeysAdreeses] withHandler:^(BOOL succes) {
+        complete (succes);
+    }];
 }
 
 - (void)updateHistoryOfSpendableObject:(Wallet <Spendable> *) object withHandler:(void (^)(BOOL success)) complete andPage:(NSInteger) page {
@@ -330,18 +326,10 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (void)updateSpendablesBalansesWithObject:(NSDictionary *) balances {
 
-	NSNumber *balance = balances[@"balance"];
-	NSNumber *unconfirmedBalance = balances[@"unconfirmedBalance"];
-
-	if ([balance isKindOfClass:[NSNumber class]]) {
-		self.wallet.balance = [QTUMBigNumber decimalWithString:balance.stringValue];
-	}
-
-	if ([unconfirmedBalance isKindOfClass:[NSNumber class]]) {
-		self.wallet.unconfirmedBalance = [QTUMBigNumber decimalWithString:unconfirmedBalance.stringValue];
-	}
-
-	[self spendableDidChange:self.wallet];
+    __weak __typeof(self) weakSelf = self;
+    [SLocator.walletBalanceFacadeService updateBalansesWithObject:balances withHandler:^(BOOL succes) {
+        [weakSelf spendableDidChange:weakSelf.wallet];
+    }];
 }
 
 - (void)updateSpendablesHistoriesWithObject:(NSDictionary *) dict {

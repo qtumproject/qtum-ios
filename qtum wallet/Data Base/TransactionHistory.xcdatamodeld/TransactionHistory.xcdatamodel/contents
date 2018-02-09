@@ -23,6 +23,11 @@
             <entry key="relatedByAttribute" value="transactionHash"/>
         </userInfo>
     </entity>
+    <entity name="WalletBalanceEntity" representedClassName="WalletBalanceEntity" syncable="YES">
+        <attribute name="balanceString" optional="YES" attributeType="String" defaultValueString="0" syncable="YES"/>
+        <attribute name="dateInterval" optional="YES" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unconfirmedBalanceString" optional="YES" attributeType="String" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="WalletHistoryEntity" representedClassName="WalletHistoryEntity" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="amountString" optional="YES" attributeType="String" syncable="YES"/>
@@ -50,5 +55,6 @@
         <element name="Log" positionX="18" positionY="-162" width="128" height="90"/>
         <element name="TransactionReceipt" positionX="-209" positionY="-441" width="128" height="195"/>
         <element name="WalletHistoryEntity" positionX="-396" positionY="-250" width="128" height="270"/>
+        <element name="WalletBalanceEntity" positionX="-189" positionY="-288" width="128" height="90"/>
     </elements>
 </model>

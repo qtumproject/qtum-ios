@@ -177,4 +177,14 @@
     return _historyFacadeService;
 }
 
+-(WalletBalanceFacadeService*)walletBalanceFacadeService {
+    
+    if (!_walletBalanceFacadeService) {
+        _walletBalanceFacadeService = [[WalletBalanceFacadeService alloc] initWithRequestService:self.requestManager andStorageService:self.coreDataService];
+    }
+    return _walletBalanceFacadeService;
+}
+
+
+
 @end
