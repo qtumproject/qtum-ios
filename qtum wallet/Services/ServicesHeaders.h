@@ -43,6 +43,7 @@
 #import "CoreDataService.h"
 #import "HistoryFacadeService.h"
 #import "SocketManager.h"
+#import "WalletBalanceFacadeService.h"
 
 
 #endif /* ServicesHeaders_h */

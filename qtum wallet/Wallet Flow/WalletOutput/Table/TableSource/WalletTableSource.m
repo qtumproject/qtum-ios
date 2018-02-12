@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL isScrollingAnimation;
 @property (nonatomic) BOOL shouldShowLoadingCell;
 @property (nonatomic) BOOL isLoadingNow;
+@property (nonatomic) BOOL isValidDataState;
 
 @end
 
@@ -77,6 +78,7 @@ static NSString* fetchedSortingProperty = @"dateInerval";
         [weakSelf.fetchedResultsController performFetch:nil];
         weakSelf.shouldShowLoadingCell = NO;
         weakSelf.isLoadingNow = NO;
+        weakSelf.isValidDataState = NO;
         [weakSelf.tableView reloadData];
     });
 }
@@ -89,6 +91,7 @@ static NSString* fetchedSortingProperty = @"dateInerval";
 -(void)fethcFromStart {
     
     self.currentPage = 0;
+    self.isValidDataState = NO;
     [self.delegate refreshTableViewDataFromStart];
     self.isLoadingNow = YES;
 }
@@ -101,6 +104,7 @@ static NSString* fetchedSortingProperty = @"dateInerval";
     self.shouldShowLoadingCell = itemsToShow < SLocator.historyFacadeService.totalItems;
     [self.fetchedResultsController performFetch:nil];
     self.isLoadingNow = NO;
+    self.isValidDataState = YES;
     [self.tableView reloadData];
 }
 
@@ -290,19 +294,36 @@ static NSString* fetchedSortingProperty = @"dateInerval";
 
 - (HeaderCellType)headerCellType {
 
-	if ([self.wallet.unconfirmedBalance isEqualToInt:0] && !self.haveTokens) {
-		return HeaderCellTypeWithoutAll;
+	if ([[SLocator.walletBalanceFacadeService lastUnconfirmedBalance] isEqualToInt:0] && !self.haveTokens) {
+        if (self.isValidDataState) {
+            return HeaderCellTypeWithoutAll;
+        } else {
+            return HeaderCellTypeWithoutAllWithLastTime;
+        }
 	}
 
-	if ([self.wallet.unconfirmedBalance isEqualToInt:0]) {
-		return HeaderCellTypeWithoutNotCorfirmedBalance;
+	if ([[SLocator.walletBalanceFacadeService lastUnconfirmedBalance] isEqualToInt:0]) {
+        if (self.isValidDataState) {
+            return HeaderCellTypeWithoutNotCorfirmedBalance;
+        } else {
+            return HeaderCellTypeWithoutNotCorfirmedBalanceWithLastTime;
+        }
 	}
 
 	if (!self.haveTokens) {
-		return HeaderCellTypeWithoutPageControl;
+        if (self.isValidDataState) {
+            return HeaderCellTypeWithoutPageControl;
+        } else {
+            return HeaderCellTypeWithoutPageControlWithLastTime;
+        }
 	}
+    
+    if (self.isValidDataState) {
+        return HeaderCellTypeAllVisible;
+    } else {
+        return HeaderCellTypeAllVisibleWithLastTime;
+    }
 
-	return HeaderCellTypeAllVisible;
 }
 
 - (BOOL)isLoadingIndex:(NSIndexPath*) indexpath {

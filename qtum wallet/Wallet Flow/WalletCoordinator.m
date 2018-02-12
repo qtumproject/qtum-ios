@@ -39,6 +39,7 @@
 @property (assign, nonatomic) BOOL isNewDataLoaded;
 @property (assign, nonatomic) BOOL isBalanceLoaded;
 @property (assign, nonatomic) BOOL isHistoryLoaded;
+@property (assign, nonatomic) BOOL isFailedConnection;
 
 @property (strong, nonatomic) id <Spendable> wallet;
 @property (strong, nonatomic) dispatch_queue_t requestQueue;
@@ -287,6 +288,11 @@
 	dispatch_async (_requestQueue, ^{
         
         [SLocator.historyFacadeService cancelOperations];
+        
+        if (weakSelf.isFailedConnection) {
+            [weakSelf.walletViewController conndectionFailed];
+        }
+        
 		[weakSelf.walletViewController startLoading];
 		weakSelf.isHistoryLoaded = NO;
         
@@ -322,6 +328,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (updateTokens) name:kTokenDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (didConnectToSocket) name:kSocketDidConnect object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (didDisconnectFromSocket) name:kSocketDidDisconnect object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (didDisconnectFromSocket) name:kSocketConnectionFailed object:nil];
 }
 
 - (void)fireHistoryElementTimerUpdate {
@@ -432,10 +439,12 @@
 }
 
 -(void)didConnectToSocket {
+    self.isFailedConnection = NO;
     [self.walletViewController conndectionSuccess];
 }
 
 - (void)didDisconnectFromSocket {
+    self.isFailedConnection = YES;
     [self.walletViewController conndectionFailed];
 }
 

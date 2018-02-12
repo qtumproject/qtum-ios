@@ -26,14 +26,10 @@
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIView *viewForHeaderInSecondSection;
 
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
-
 - (void)configTableView;
 
 - (void)configHeaderBacground;
 
 - (void)configLocalization;
-
-- (void)refreshFromRefreshControl;
 
 @end

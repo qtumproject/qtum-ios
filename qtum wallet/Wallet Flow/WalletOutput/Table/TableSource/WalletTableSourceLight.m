@@ -20,9 +20,15 @@
 			case HeaderCellTypeWithoutNotCorfirmedBalance:
 			case HeaderCellTypeWithoutAll:
 				return 164;
+            case HeaderCellTypeWithoutNotCorfirmedBalanceWithLastTime:
+            case HeaderCellTypeWithoutAllWithLastTime:
+                return 214;
 			case HeaderCellTypeWithoutPageControl:
 			case HeaderCellTypeAllVisible:
 				return 214;
+            case HeaderCellTypeWithoutPageControlWithLastTime:
+            case HeaderCellTypeAllVisibleWithLastTime:
+                return 264;
 			default:
 				return 214;
 		}

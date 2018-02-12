@@ -399,6 +399,10 @@
 		B3D5FE891F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE881F57014B006A2BF2 /* AbiParameterTypeDynamicArray.m */; };
 		B3D5FE8C1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE8B1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m */; };
 		B3D5FE8F1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5FE8E1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m */; };
+		B3D7C071202C962A0058BB1D /* WalletBalanceFacadeService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C070202C962A0058BB1D /* WalletBalanceFacadeService.m */; };
+		B3D7C07A202C998F0058BB1D /* WalletBalanceEntity+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C079202C998F0058BB1D /* WalletBalanceEntity+Extension.m */; };
+		B3D7C07F202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C07D202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.m */; };
+		B3D7C080202CA1F50058BB1D /* WalletBalanceEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D7C07E202CA1F50058BB1D /* WalletBalanceEntity+CoreDataProperties.m */; };
 		B3DB3E381F2F513E00AA408F /* SpinnerViewLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */; };
 		B3DB3E3C1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3B1F2F55A500AA408F /* LoaderPopUpViewControllerLight.m */; };
 		B3DB3E3F1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DB3E3E1F2F55BC00AA408F /* LoaderPopUpViewControllerDark.m */; };
@@ -1644,6 +1648,14 @@
 		B3D5FE8B1F57F72B006A2BF2 /* AbiParameterTypeFixedArrayBytes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeFixedArrayBytes.m; sourceTree = "<group>"; };
 		B3D5FE8D1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbiParameterTypeDynamicArrayBytes.h; sourceTree = "<group>"; };
 		B3D5FE8E1F57F742006A2BF2 /* AbiParameterTypeDynamicArrayBytes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbiParameterTypeDynamicArrayBytes.m; sourceTree = "<group>"; };
+		B3D7C06F202C962A0058BB1D /* WalletBalanceFacadeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletBalanceFacadeService.h; sourceTree = "<group>"; };
+		B3D7C070202C962A0058BB1D /* WalletBalanceFacadeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletBalanceFacadeService.m; sourceTree = "<group>"; };
+		B3D7C078202C998F0058BB1D /* WalletBalanceEntity+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalletBalanceEntity+Extension.h"; sourceTree = "<group>"; };
+		B3D7C079202C998F0058BB1D /* WalletBalanceEntity+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WalletBalanceEntity+Extension.m"; sourceTree = "<group>"; };
+		B3D7C07B202CA1F50058BB1D /* WalletBalanceEntity+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalletBalanceEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B3D7C07C202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalletBalanceEntity+CoreDataClass.h"; sourceTree = "<group>"; };
+		B3D7C07D202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WalletBalanceEntity+CoreDataClass.m"; sourceTree = "<group>"; };
+		B3D7C07E202CA1F50058BB1D /* WalletBalanceEntity+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WalletBalanceEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B3DB3E361F2F513E00AA408F /* SpinnerViewLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerViewLight.h; sourceTree = "<group>"; };
 		B3DB3E371F2F513E00AA408F /* SpinnerViewLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerViewLight.m; sourceTree = "<group>"; };
 		B3DB3E3A1F2F55A500AA408F /* LoaderPopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderPopUpViewControllerLight.h; sourceTree = "<group>"; };
@@ -2772,6 +2784,10 @@
 		B32A52F42022162F00280D25 /* Data Base */ = {
 			isa = PBXGroup;
 			children = (
+				B3D7C07B202CA1F50058BB1D /* WalletBalanceEntity+CoreDataProperties.h */,
+				B3D7C07C202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.h */,
+				B3D7C07D202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.m */,
+				B3D7C07E202CA1F50058BB1D /* WalletBalanceEntity+CoreDataProperties.m */,
 				B3113C502029C2A900945F01 /* WalletHistoryEntity+CoreDataProperties.h */,
 				B3113C512029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.h */,
 				B3113C522029C2A900945F01 /* WalletHistoryEntity+CoreDataClass.m */,
@@ -2789,6 +2805,8 @@
 				B31E0975202339860001F57F /* WalletHistoryEntity+Extension.m */,
 				B3D4D80020287CC500E59791 /* TransactionReceipt+Extension.h */,
 				B3D4D80120287CC500E59791 /* TransactionReceipt+Extension.m */,
+				B3D7C078202C998F0058BB1D /* WalletBalanceEntity+Extension.h */,
+				B3D7C079202C998F0058BB1D /* WalletBalanceEntity+Extension.m */,
 			);
 			path = "Data Base";
 			sourceTree = "<group>";
@@ -4352,6 +4370,8 @@
 				B39450392022F126004AAA40 /* CoreDataService.m */,
 				B3C5567C2023215B008B3052 /* HistoryFacadeService.h */,
 				B3C5567D2023215B008B3052 /* HistoryFacadeService.m */,
+				B3D7C06F202C962A0058BB1D /* WalletBalanceFacadeService.h */,
+				B3D7C070202C962A0058BB1D /* WalletBalanceFacadeService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -6229,6 +6249,7 @@
 				B305A1111FCD804E00FC4D2F /* BaseRouter.m in Sources */,
 				D059BE7B1F84E4A70045ABA0 /* PaymentValuesManager.m in Sources */,
 				B3DB3E4B1F2F705700AA408F /* RestoreContractsViewControllerDark.m in Sources */,
+				B3D7C07A202C998F0058BB1D /* WalletBalanceEntity+Extension.m in Sources */,
 				B3113C5F2029C2A900945F01 /* Log+CoreDataProperties.m in Sources */,
 				B315D0321F9F43B000C7F4E4 /* QTUMImageTagCellLight.m in Sources */,
 				B3076F321F3085AD00FB7D5A /* ConstructorFromAbiViewControllerLight.m in Sources */,
@@ -6427,6 +6448,7 @@
 				B3E0901F1FA9E097003F3B54 /* QTUMSwipableCellWithButtons.m in Sources */,
 				E74003C21F1E2AC7002CC587 /* SendInfoItem.m in Sources */,
 				B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */,
+				B3D7C07F202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.m in Sources */,
 				B39048671FDFEE6900D5F735 /* TemplatesHeaderCell.m in Sources */,
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
 				B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */,
@@ -6601,6 +6623,7 @@
 				B3D4D80220287CC500E59791 /* TransactionReceipt+Extension.m in Sources */,
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				B3EA52F71F45E0A0002FD201 /* QStoreContractViewControllerLight.m in Sources */,
+				B3D7C080202CA1F50058BB1D /* WalletBalanceEntity+CoreDataProperties.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
 				B3CBDF0D1F2A463700C80D4E /* LibraryViewControllerLight.m in Sources */,
 				B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */,
@@ -6611,6 +6634,7 @@
 				B371D8851E3A1D3B00A13EA3 /* NSBundle+StyleProvider.m in Sources */,
 				E703531E1F03FB91004ECCC9 /* ConfirmPurchasePopUpViewController.m in Sources */,
 				B387AB411EF04474001D2FF1 /* BackupFileManager.m in Sources */,
+				B3D7C071202C962A0058BB1D /* WalletBalanceFacadeService.m in Sources */,
 				B387AB471EF12FDA001D2FF1 /* DataOperation.m in Sources */,
 				B30B11621FC6CE5000E5ABBC /* StartStoryboardFactory.m in Sources */,
 				B326327D1F9602B6001FF038 /* PasswordView.m in Sources */,

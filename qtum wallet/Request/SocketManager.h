@@ -12,13 +12,15 @@
 
 extern NSString *const kSocketDidConnect;
 extern NSString *const kSocketDidDisconnect;
+extern NSString *const kSocketConnectionFailed;
 
 typedef NS_ENUM(NSInteger, ConnectionStatus) {
 	NotConnected,
 	Connected,
 	Connecting,
 	Reconnecting,
-	Disconnected
+	Disconnected,
+    ConnectionFailed
 };
 
 @interface SocketManager : NSObject

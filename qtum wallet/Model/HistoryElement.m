@@ -244,8 +244,8 @@
 		//u shoud not use setter at initionalize
 		self.dateNumber = ![object[@"block_time"] isKindOfClass:[NSNull class]] ? object[@"block_time"] : nil;
 		self.address = object[@"address"];
-        self.blockHash = object[@"block_hash"];
-        self.blockNumber = [object[@"block_height"] integerValue];
+        self.blockHash = ![object[@"block_hash"] isKindOfClass:[NSNull class]] ? object[@"block_hash"] : @"";
+        self.blockNumber = ![object[@"block_height"] isKindOfClass:[NSNull class]] ? [object[@"block_height"] integerValue] : 0;
 		self.confirmed = [object[@"block_height"] floatValue] > 0;
 		self.transactionHash = ![object[@"tx_hash"] isKindOfClass:[NSNull class]] ? object[@"tx_hash"] : nil;
 		self.isSmartContractCreater = [object[@"contract_has_been_created"] boolValue];

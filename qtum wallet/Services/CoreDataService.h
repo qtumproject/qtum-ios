@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 @class WalletHistoryEntity;
 @class TransactionReceipt;
+@class WalletBalanceEntity;
 
 @interface CoreDataService : NSObject <Clearable>
 
@@ -21,5 +22,6 @@
 - (NSArray<WalletHistoryEntity*>*_Nonnull)findWalletHistoryEntityWithTxHash:(NSString *_Nonnull)txHash;
 - (TransactionReceipt*_Nullable)findHistoryRecieptEntityWithTxHash:(NSString *_Nonnull)txHash;
 
+- (WalletBalanceEntity*_Nonnull)walletBalanceEntity;
 
 @end

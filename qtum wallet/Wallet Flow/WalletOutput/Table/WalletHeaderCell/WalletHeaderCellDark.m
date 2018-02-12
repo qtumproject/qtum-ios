@@ -21,6 +21,8 @@ CGFloat const WalletHeaderCellDarkHeaderHeight = 50.0f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *availableTextCenterConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *unconfirmedCenterConsctraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *unconfirmedTextCenterConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *noInternetUnconfirmedBalanceTopOffset;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *noInternetBalanceTopOffset;
 
 @end
 
@@ -67,10 +69,56 @@ CGFloat const WalletHeaderCellDarkHeaderHeight = 50.0f;
 	[self changeAlphaByPercent:percentOfPosition];
 }
 
+- (void)setCellType:(HeaderCellType) type {
+    
+    switch (type) {
+            
+        case HeaderCellTypeAllVisible:
+            self.noInternetUnconfirmedBalanceTopOffset.active = YES;
+            self.noInternetBalanceTopOffset.active = NO;
+            break;
+        case HeaderCellTypeWithoutPageControl:
+            self.noInternetUnconfirmedBalanceTopOffset.active = YES;
+            self.noInternetBalanceTopOffset.active = NO;
+            break;
+        case HeaderCellTypeWithoutNotCorfirmedBalance:
+            self.noInternetUnconfirmedBalanceTopOffset.active = YES;
+            self.noInternetBalanceTopOffset.active = NO;
+            break;
+        case HeaderCellTypeWithoutAll:
+            self.noInternetUnconfirmedBalanceTopOffset.active = NO;
+            self.noInternetBalanceTopOffset.active = YES;
+            break;
+        case HeaderCellTypeWithoutAllWithLastTime:
+            self.noInternetUnconfirmedBalanceTopOffset.active = NO;
+            self.noInternetBalanceTopOffset.active = YES;
+            break;
+        case HeaderCellTypeAllVisibleWithLastTime:
+            self.noInternetUnconfirmedBalanceTopOffset.active = YES;
+            self.noInternetBalanceTopOffset.active = NO;
+            break;
+        case HeaderCellTypeWithoutNotCorfirmedBalanceWithLastTime:
+            self.noInternetUnconfirmedBalanceTopOffset.active = NO;
+            self.noInternetBalanceTopOffset.active = YES;
+            break;
+        case HeaderCellTypeWithoutPageControlWithLastTime:
+            self.noInternetUnconfirmedBalanceTopOffset.active = YES;
+            self.noInternetBalanceTopOffset.active = NO;
+            break;
+    }
+    [super setCellType:type];
+}
+
 - (void)changeAlphaByPercent:(CGFloat) percent {
+    
 	CGFloat minAlphaForPage = 0.0f;
 	CGFloat maxAlphaForPage = 1.0f;
+    
+    CGFloat minAlphaForLabels = -1.0f;
+    CGFloat maxAlphaForLabels = 1.0f;
 
+    self.lastBalanceUpdateLabel.alpha = maxAlphaForLabels - (maxAlphaForLabels - minAlphaForLabels) * percent;
+    self.noInternetConnectionLabel.alpha = maxAlphaForLabels - (maxAlphaForLabels - minAlphaForLabels) * percent;
 	self.pageControl.alpha = maxAlphaForPage - (maxAlphaForPage - minAlphaForPage) * percent;
 }
 
