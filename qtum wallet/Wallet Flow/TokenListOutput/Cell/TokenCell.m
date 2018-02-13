@@ -10,7 +10,6 @@
 
 @interface TokenCell ()
 
-@property (weak, nonatomic) Contract *token;
 
 @end
 

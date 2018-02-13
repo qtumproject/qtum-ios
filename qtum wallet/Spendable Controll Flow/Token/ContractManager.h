@@ -29,6 +29,8 @@ extern NSString *const kLocalContractName;
 
 - (NSArray <Contract *> *)allActiveTokens;
 
+- (NSArray <Contract *> *)allActiveAndSupportedTokens;
+
 - (NSDictionary *)smartContractPretendentsCopy;
 
 - (NSDictionary *)failedContractPretendentsCopy;

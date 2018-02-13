@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, TokenCellType) {
 @property (weak, nonatomic) IBOutlet UILabel *symbol;
 @property (weak, nonatomic) IBOutlet UILabel *mainValue;
 @property (weak, nonatomic) IBOutlet UILabel *value;
+@property (weak, nonatomic) Contract *token;
 @property (assign, nonatomic) TokenCellType type;
 
 - (void)setupWithObject:(id) object;

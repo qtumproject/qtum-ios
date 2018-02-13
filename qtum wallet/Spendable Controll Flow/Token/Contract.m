@@ -169,6 +169,7 @@ static NSString *kContractUnconfirmedBalance = @"unconfirmedBalance";
 static NSString *kContractIsActive = @"isActive";
 static NSString *kContractAddressWithBalanceDictionary = @"addressWithBalanceDictionary";
 
+
 - (void)encodeWithCoder:(NSCoder *) aCoder {
 
 	[aCoder encodeObject:self.name forKey:kContractName];

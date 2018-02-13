@@ -49,7 +49,13 @@ static const NSInteger unsuportedMaxDecimal = 128;
 
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-	[self.delegate didSelectTokenIndexPath:indexPath withItem:self.tokens[indexPath.row]];
+    TokenCell *cell = (TokenCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    if (cell.type == Unsupported) {
+        [self.delegate didSelectUnsupportedTokenTokenIndexPath:indexPath withItem:self.tokens[indexPath.row]];
+    } else {
+        [self.delegate didSelectTokenIndexPath:indexPath withItem:self.tokens[indexPath.row]];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
@@ -59,13 +65,18 @@ static const NSInteger unsuportedMaxDecimal = 128;
 - (void)tableView:(UITableView *) tableView didHighlightRowAtIndexPath:(NSIndexPath *) indexPath {
 
 	TokenCell *cell = (TokenCell *)[tableView cellForRowAtIndexPath:indexPath];
-	[cell changeHighlight:YES];
+    if (cell.type != Unsupported) {
+        [cell changeHighlight:YES];
+    }
 }
 
 - (void)tableView:(UITableView *) tableView didUnhighlightRowAtIndexPath:(NSIndexPath *) indexPath {
 
 	TokenCell *cell = (TokenCell *)[tableView cellForRowAtIndexPath:indexPath];
-	[cell changeHighlight:NO];
+    
+    if (cell.type != Unsupported) {
+        [cell changeHighlight:NO];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -84,6 +95,7 @@ static const NSInteger unsuportedMaxDecimal = 128;
         cell.tokenName.text = token.localName;
         cell.mainValue.text = NSLocalizedString(@"Unsupported", @"Unsupported token text");
         cell.type = Unsupported;
+        cell.token = token;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
         [cell setupWithObject:self.tokens[indexPath.row]];

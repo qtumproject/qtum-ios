@@ -12,5 +12,6 @@
 
 @required
 - (void)didSelectTokenIndexPath:(NSIndexPath *) indexPath withItem:(Contract *) item;
+- (void)didSelectUnsupportedTokenTokenIndexPath:(NSIndexPath *) indexPath withItem:(Contract *) item;
 
 @end

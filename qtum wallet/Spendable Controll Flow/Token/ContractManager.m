@@ -33,6 +33,8 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 @end
 
+static const NSInteger maxSuportDecimalValue = 128;
+
 @implementation ContractManager
 
 - (instancetype)init {
@@ -184,6 +186,15 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i && isActive == YES", TokenType];
 	return [self.contracts filteredArrayUsingPredicate:predicate];
+}
+
+- (NSArray <Contract *> *)allActiveAndSupportedTokens {
+    
+    NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Contract* contract, NSDictionary *bindings) {
+        return contract.templateModel.type == TokenType && contract.isActive && [contract.decimals isLessThanInt:maxSuportDecimalValue];
+    }]];
+
+    return filteredArray;
 }
 
 - (NSArray <Contract *> *)allContracts {

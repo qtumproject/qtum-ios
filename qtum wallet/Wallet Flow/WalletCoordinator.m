@@ -24,9 +24,10 @@
 #import "AddressLibruaryCoordinator.h"
 #import "TokenAddressLibraryCoordinator.h"
 #import "ChooseReciveAddressOutput.h"
+#import "ErrorPopUpViewController.h"
 
 
-@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeOutputDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate, ChooseReciveAddressOutputDelegate>
+@interface WalletCoordinator () <TokenListOutputDelegate, QRCodeOutputDelegate, WalletOutputDelegate, HistoryItemOutputDelegate, RecieveOutputDelegate, ShareTokenPopupViewControllerDelegate, PopUpViewControllerDelegate, TokenDetailOutputDelegate, AddressLibruaryCoordinatorDelegate, TokenAddressLibraryCoordinatorDelegate, ChooseReciveAddressOutputDelegate, PopUpWithTwoButtonsViewControllerDelegate>
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 
@@ -153,6 +154,17 @@
         }
         [SLocator.popupService dismissLoader];
     }];
+}
+
+- (void)didSelectUnsupportedTokenTokenIndexPath:(NSIndexPath *) indexPath withItem:(Contract *) item {
+    
+    PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
+    
+    content.messageString = NSLocalizedString(@"Sorry, this token exceeds the limit of 128 decimals. So it can not be supported in QTUM app", @"Unsupported token message");
+    content.titleString = NSLocalizedString(@"Failed", nil);
+    
+    ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];
+    [popUp setOnlyCancelButton];
 }
 
 #pragma mark - TokenDetailOutputDelegate
@@ -308,8 +320,6 @@
             [weakSelf.walletViewController stopLoading];
 		} andPage:0];
 	});
-    
-    
 }
 
 - (void)refreshContractHistoryOfToken:(Contract *) token withPage:(NSInteger) page {
@@ -587,6 +597,11 @@
 	[self.reciveOutput updateControls];
 }
 
+#pragma mark - PopUpWithTwoButtonsViewControllerDelegate
+
+- (void)cancelButtonPressed:(PopUpViewController *) sender {
+    [SLocator.popupService hideCurrentPopUp:YES completion:nil];
+}
 
 #pragma mark - WalletOutputDelegate
 
