@@ -17,6 +17,8 @@
 
 @end
 
+static const NSInteger unsuportedMaxDecimal = 128;
+
 @implementation TokenListViewController
 
 - (void)viewDidLoad {
@@ -73,7 +75,22 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-	return nil;
+    
+    Contract* token = self.tokens[indexPath.row];
+    TokenCell *cell;
+    
+    if ([token.decimals isGreaterThanInt:unsuportedMaxDecimal]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:tokenCellUnsupportedIdentifire];
+        cell.tokenName.text = token.localName;
+        cell.mainValue.text = NSLocalizedString(@"Unsupported", @"Unsupported token text");
+        cell.type = Unsupported;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifire];
+        [cell setupWithObject:self.tokens[indexPath.row]];
+        [cell changeHighlight:NO];
+    }
+
+    return cell;
 }
 
 #pragma mark - Actions

@@ -1651,12 +1651,12 @@ at 4:42:15 PM, July 12</string>
                                 <color key="separatorColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="rbY-YB-wAn">
-                                    <rect key="frame" x="0.0" y="72" width="375" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="116" width="375" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TokenCellDark" id="E2M-mn-0Vs" customClass="TokenCellDark">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tokenCellIdentifire" id="E2M-mn-0Vs" customClass="TokenCellDark">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E2M-mn-0Vs" id="UfE-Ey-yp7">
@@ -1704,6 +1704,49 @@ at 4:42:15 PM, July 12</string>
                                             <outlet property="mainSymbol" destination="Rr9-t9-iS9" id="aSj-6N-PAQ"/>
                                             <outlet property="mainValue" destination="6hK-xw-llv" id="pNI-ma-86a"/>
                                             <outlet property="tokenName" destination="oV0-O4-YDG" id="n5Z-Wa-A8X"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tokenCellIdentifireUnsupported" id="sVM-uX-GVB" customClass="TokenCellDark">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sVM-uX-GVB" id="yLR-pa-6u4">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Unsupported" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPz-sp-p7n">
+                                                    <rect key="frame" x="286" y="15" width="74" height="13.5"/>
+                                                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="11"/>
+                                                    <color key="textColor" red="0.90588235289999997" green="0.33725490200000002" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic-token_unsupported" translatesAutoresizingMaskIntoConstraints="NO" id="nlD-3v-0ro">
+                                                    <rect key="frame" x="20" y="12.5" width="19" height="17"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEy-nq-rqi">
+                                                    <rect key="frame" x="52" y="12" width="100" height="19"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ImK-8L-aN2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="simplonmono-regular" family="simplonmono" pointSize="16"/>
+                                                    <color key="textColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="nlD-3v-0ro" firstAttribute="leading" secondItem="yLR-pa-6u4" secondAttribute="leading" constant="20" id="8zs-Mf-w1g"/>
+                                                <constraint firstAttribute="trailing" secondItem="wPz-sp-p7n" secondAttribute="trailing" constant="15" id="9qC-bv-roF"/>
+                                                <constraint firstItem="nlD-3v-0ro" firstAttribute="centerY" secondItem="yLR-pa-6u4" secondAttribute="centerY" id="IhR-cy-l6x"/>
+                                                <constraint firstItem="wPz-sp-p7n" firstAttribute="centerY" secondItem="uEy-nq-rqi" secondAttribute="centerY" id="Ke5-Og-gum"/>
+                                                <constraint firstItem="wPz-sp-p7n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uEy-nq-rqi" secondAttribute="trailing" constant="15" id="c87-Sc-8Ne"/>
+                                                <constraint firstItem="uEy-nq-rqi" firstAttribute="leading" secondItem="nlD-3v-0ro" secondAttribute="trailing" constant="13" id="lEe-S5-pZ1"/>
+                                                <constraint firstItem="uEy-nq-rqi" firstAttribute="centerY" secondItem="yLR-pa-6u4" secondAttribute="centerY" id="wt4-In-rY0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="mainValue" destination="wPz-sp-p7n" id="oog-vD-lJz"/>
+                                            <outlet property="tokenName" destination="uEy-nq-rqi" id="gcq-oq-Dj3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3141,12 +3184,12 @@ at 4:42:15 PM, July 12</string>
                                 <color key="separatorColor" red="0.92941176470588238" green="0.96470588235294119" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="GJB-C1-5XZ">
-                                    <rect key="frame" x="0.0" y="83" width="375" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="138" width="375" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TokenCellLight" rowHeight="55" id="Wzk-bS-rl9" customClass="TokenCellLight">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tokenCellIdentifire" rowHeight="55" id="Wzk-bS-rl9" customClass="TokenCellLight">
                                         <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wzk-bS-rl9" id="jsb-Bs-bby">
@@ -3218,6 +3261,48 @@ at 4:42:15 PM, July 12</string>
                                             <outlet property="tokenName" destination="wRh-x7-9r9" id="Ft6-LW-kEF"/>
                                             <outlet property="unconfirmedTextLabel" destination="ApJ-39-ktg" id="jkI-j1-ucg"/>
                                             <outlet property="value" destination="oD5-hF-poS" id="h7F-7D-9SP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tokenCellIdentifireUnsupported" rowHeight="55" id="V6Z-Fr-bhb" customClass="TokenCellLight">
+                                        <rect key="frame" x="0.0" y="83" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V6Z-Fr-bhb" id="Qqc-Vd-PMI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Unsupported" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWe-W0-Lkg">
+                                                    <rect key="frame" x="296" y="21.5" width="69" height="12"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                                    <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-token_unsupported-light" translatesAutoresizingMaskIntoConstraints="NO" id="OHQ-b8-dq4">
+                                                    <rect key="frame" x="12" y="18.5" width="19" height="17"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UB9-ND-Vrn">
+                                                    <rect key="frame" x="39" y="20" width="46" height="14"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                                    <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="OHQ-b8-dq4" firstAttribute="leading" secondItem="Qqc-Vd-PMI" secondAttribute="leading" constant="12" id="2aj-h4-m0n"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="UB9-ND-Vrn" secondAttribute="trailing" constant="175" id="DkF-es-32I"/>
+                                                <constraint firstItem="BWe-W0-Lkg" firstAttribute="centerY" secondItem="Qqc-Vd-PMI" secondAttribute="centerY" id="Dkv-Ty-OKe"/>
+                                                <constraint firstItem="OHQ-b8-dq4" firstAttribute="centerY" secondItem="Qqc-Vd-PMI" secondAttribute="centerY" id="JHr-oJ-RLy"/>
+                                                <constraint firstAttribute="trailing" secondItem="BWe-W0-Lkg" secondAttribute="trailing" constant="10" id="dSq-f6-t2P"/>
+                                                <constraint firstItem="BWe-W0-Lkg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UB9-ND-Vrn" secondAttribute="trailing" priority="900" constant="10" id="gel-Hb-qG0"/>
+                                                <constraint firstItem="UB9-ND-Vrn" firstAttribute="leading" secondItem="OHQ-b8-dq4" secondAttribute="trailing" constant="8" id="hlF-dO-MtA"/>
+                                                <constraint firstItem="UB9-ND-Vrn" firstAttribute="centerY" secondItem="Qqc-Vd-PMI" secondAttribute="centerY" id="mmc-dO-SRq"/>
+                                                <constraint firstItem="BWe-W0-Lkg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qqc-Vd-PMI" secondAttribute="leadingMargin" constant="150" id="u70-KY-nBA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="mainValue" destination="BWe-W0-Lkg" id="Dd3-uM-WVj"/>
+                                            <outlet property="tokenName" destination="UB9-ND-Vrn" id="hcY-7w-Fsd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -5675,6 +5760,8 @@ at 4:42:15 PM, July 12</string>
         <image name="ic-sent_smartContract" width="25" height="16"/>
         <image name="ic-sent_to_myself" width="24" height="18"/>
         <image name="ic-time" width="13" height="13"/>
+        <image name="ic-token_unsupported" width="19" height="17"/>
+        <image name="ic-token_unsupported-light" width="19" height="17"/>
         <image name="ic-transfer-address" width="17" height="17"/>
         <image name="ic-transfer-light" width="17" height="17"/>
         <image name="qrcode" width="20" height="20"/>

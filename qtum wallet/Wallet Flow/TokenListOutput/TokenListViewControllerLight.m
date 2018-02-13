@@ -15,14 +15,6 @@
 
 @implementation TokenListViewControllerLight
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	TokenCellLight *cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifireLight];
-	[cell setupWithObject:self.tokens[indexPath.row]];
-	[cell changeHighlight:NO];
-	return cell;
-}
-
 - (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
 	return 55;
 }
