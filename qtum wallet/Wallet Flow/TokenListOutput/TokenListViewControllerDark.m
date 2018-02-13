@@ -25,14 +25,6 @@
 	[self.pageControl setSelectedPage:1];
 }
 
-- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-
-	TokenCellDark *cell = [tableView dequeueReusableCellWithIdentifier:tokenCellIdentifireDark];
-	[cell setupWithObject:self.tokens[indexPath.row]];
-	[cell changeHighlight:NO];
-	return cell;
-}
-
 - (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
 	return 46;
 }

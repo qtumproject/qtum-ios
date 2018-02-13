@@ -41,11 +41,15 @@
 
 	[super viewWillAppear:animated];
 
-	[self.tableView reloadData];
 	[self reloadHeader:self.wallet];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
     
+    [super viewDidAppear:animated];
     if (self.isFirstTimeUpdate) {
         [self.tableSource setupFething];
+        [self.tableView reloadData];
         self.isFirstTimeUpdate = NO;
     }
 }

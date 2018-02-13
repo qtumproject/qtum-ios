@@ -32,8 +32,6 @@
 
 - (void)updateHistoryWithHandler:(void (^)(BOOL success)) complete andPage:(NSInteger) page;
 
-- (void)loadToMemory;
-
 - (void)historyDidChange;
 
 @end

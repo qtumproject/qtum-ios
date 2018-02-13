@@ -162,16 +162,18 @@
 
 - (void)getTokenHistoryWithParam:(NSDictionary *) param
                     tokenAddress:(NSString *) tokenAddress
-                  successHandler:(void (^)(id responseObject)) success
+                  successHandler:(void (^)(id responseObject, NSInteger totalCount)) success
                andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
     
     NSString *pathString = [NSString stringWithFormat:@"qrc20/%@/transfers", tokenAddress];
 
     [self.networkService requestWithType:GET path:pathString andParams:param withSuccessHandler:^(id _Nonnull responseObject) {
         
-        __block id response = responseObject;
         dispatch_async (dispatch_get_global_queue (DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            success (response);
+            NSInteger total = [responseObject[@"count"] integerValue];
+            id items = responseObject[@"items"];
+
+            success (items, total);
             DLog(@"Succes");
         });
         

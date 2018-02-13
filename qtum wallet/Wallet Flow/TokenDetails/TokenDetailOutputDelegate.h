@@ -21,6 +21,10 @@
 
 - (void)didSelectTokenHistoryItem:(id <HistoryElementProtocol>) item;
 
+- (void)reloadContractHistoryOfToken:(Contract *) token;
+
+- (void)refreshContractHistoryOfToken:(Contract *) token withPage:(NSInteger) page;
+
 - (void)didPullToUpdateToken:(Contract *) token;
 
 - (void)didUnsubscribeFromDeletedContract:(Contract *) token;

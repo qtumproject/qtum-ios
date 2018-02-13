@@ -170,7 +170,7 @@ static NSString* fetchedSortingProperty = @"dateInerval";
 	if (section == 0) {
 		return 1;
 	} else {
-        NSInteger numberOfStorageObjects = [[[self fetchedResultsController] sections][section - 1] numberOfObjects];
+        NSInteger numberOfStorageObjects = self.fetchedResultsController.fetchedObjects.count;
         self.emptyPlacehodlerView.hidden = numberOfStorageObjects > 0 ? YES : NO;
         return self.shouldShowLoadingCell && numberOfStorageObjects > 0 ? numberOfStorageObjects + 1 : numberOfStorageObjects;
 	}
@@ -232,7 +232,6 @@ static NSString* fetchedSortingProperty = @"dateInerval";
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *) scrollView {
-	DLog(@"scrollViewDidEndDecelerating");
 
 	BOOL isTopAutoScroll = scrollView.contentOffset.y < 0;
 	BOOL isBottomAutoScroll = scrollView.contentOffset.y + scrollView.bounds.size.height - scrollView.contentInset.bottom > scrollView.contentSize.height;
@@ -277,7 +276,7 @@ static NSString* fetchedSortingProperty = @"dateInerval";
 	}
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([self isLoadingIndex:indexPath]) {
         LoadingFooterCell* loadingCell = (LoadingFooterCell*)cell;

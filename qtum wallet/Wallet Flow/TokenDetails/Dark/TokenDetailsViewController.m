@@ -23,10 +23,10 @@ CGFloat const HeightForHeaderView = 50.0f;
 @property (weak, nonatomic) IBOutlet ViewWithAnimatedLine *headerVIew;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingForLineConstraint;
 @property (weak, nonatomic) IBOutlet UIView *activityView;
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIView *noTransactionView;
 @property (weak, nonatomic) IBOutlet UIView *navigationBarView;
 @property (weak, nonatomic) IBOutlet UIButton *navigationShareButton;
+@property (assign, nonatomic) BOOL isFirstTimeUpdate;
 
 @end
 
@@ -43,26 +43,32 @@ static NSInteger noContractViewTrailing = 0;
 	[super viewDidLoad];
 
 	self.source.delegate = self;
+    self.source.tableView = self.tableView;
 	self.tableView.dataSource = self.source;
 	self.tableView.delegate = self.source;
-
+    self.source.emptyPlaceholderView = self.noTransactionView;
+    self.isFirstTimeUpdate = YES;
 	[self.headerVIew setRightConstraint:self.trailingForLineConstraint];
 	[self updateHeader:self.token];
 
 	self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
 
-	[self configRefreshControl];
+	[self configBackView];
     [self configLocalization];
-    [self.delegate didPullToUpdateToken:self.token];
 }
 
-- (void)configRefreshControl {
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    if (self.isFirstTimeUpdate) {
+        [self.source setupFething];
+        self.isFirstTimeUpdate = NO;
+    }
+}
 
-	self.refreshControl = [[UIRefreshControl alloc] init];
-	self.refreshControl.tintColor = customBlackColor ();
-	[self.tableView addSubview:self.refreshControl];
-	[self.refreshControl addTarget:self action:@selector (refreshFromRefreshControl) forControlEvents:UIControlEventValueChanged];
-
+- (void)configBackView {
+    
 	CGRect frame = self.view.bounds;
 	frame.origin.y = -frame.size.height;
 	UIView *refreshBackgroundView = [[UIView alloc] initWithFrame:frame];
@@ -125,26 +131,46 @@ static NSInteger noContractViewTrailing = 0;
 	[self.delegate didBackPressed];
 }
 
-- (void)refreshFromRefreshControl {
-
-	[self.delegate didPullToUpdateToken:self.token];
-}
 
 #pragma mark - Output
 
-- (void)updateControls {
+- (void)reloadHistorySource {
 
 	[self refreshTable];
 }
 
+- (void)reloadTokenInfo {
+    
+    __weak __typeof(self)weakSelf = self;
+    dispatch_async (dispatch_get_main_queue (), ^{
+        
+        [weakSelf.tableView reloadData];
+    });
+}
+
+- (void)conndectionFailed {
+    
+}
+
+
+- (void)conndectionSuccess {
+    
+}
+
+
+- (void)failedToUpdateHistory {
+    
+}
+
+
 #pragma mark - TokenDetailDisplayDataManagerDelegate
 
 - (void)didPressedInfoActionWithToken:(Contract *) aToken {
-	[self.delegate showAddressInfoWithSpendable:aToken];
+    [self.delegate showAddressInfoWithSpendable:aToken];
 }
 
 - (void)didPressTokenAddressControlWithToken:(Contract *) aToken {
-	[self.delegate didShowTokenAddressControlWith:aToken];
+    [self.delegate didShowTokenAddressControlWith:aToken];
 }
 
 - (void)didPressHistoryItemForToken:( id <HistoryElementProtocol>) item {
@@ -152,51 +178,53 @@ static NSInteger noContractViewTrailing = 0;
 }
 
 - (void)needShowHeader {
-	if (self.heightConsctaintForHeaderView.constant == HeightForHeaderView) {
-		return;
-	}
-
-	self.heightConsctaintForHeaderView.constant = HeightForHeaderView;
-	[self.headerVIew showAnimation];
+    if (self.heightConsctaintForHeaderView.constant == HeightForHeaderView) {
+        return;
+    }
+    
+    self.heightConsctaintForHeaderView.constant = HeightForHeaderView;
+    [self.headerVIew showAnimation];
 }
 
 - (void)needHideHeader {
-	if (self.heightConsctaintForHeaderView.constant == 0.0f) {
-		return;
-	}
-
-	self.heightConsctaintForHeaderView.constant = 0;
+    if (self.heightConsctaintForHeaderView.constant == 0.0f) {
+        return;
+    }
+    
+    self.heightConsctaintForHeaderView.constant = 0;
 }
 
 - (void)needShowHeaderForSecondSeciton {
-	self.activityView.hidden = NO;
+    self.activityView.hidden = NO;
 }
 
 - (void)needHideHeaderForSecondSeciton {
-	self.activityView.hidden = YES;
+    self.activityView.hidden = YES;
+}
+
+- (void)refreshTableViewDataFromStart {
+    [self.delegate reloadContractHistoryOfToken:self.token];
+}
+
+- (void)refreshTableViewDataWithPage:(NSInteger) page {
+    [self.delegate refreshContractHistoryOfToken:self.token withPage:page];
 }
 
 #pragma mark - Methods
 
 - (void)updateHeader:(Contract *) token {
-
-	self.availableBalanceLabel.text = [NSString stringWithFormat:@"%@ %@", token.balanceString ? : @"", token.symbol ? : @""];
+    
+    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%@ %@", token.balanceString ? : @"", token.symbol ? : @""];
 }
 
 - (void)refreshTable {
     
     __weak __typeof(self)weakSelf = self;
-	dispatch_async (dispatch_get_main_queue (), ^{
+    dispatch_async (dispatch_get_main_queue (), ^{
         
-        if (weakSelf.token.historyArray.count > 0) {
-            weakSelf.noTransactionView.hidden = YES;
-        } else {
-            weakSelf.noTransactionView.hidden = NO;
-        }
-        
-		[weakSelf.refreshControl endRefreshing];
-		[weakSelf.tableView reloadData];
-	});
+        [weakSelf.source reloadWithFeching];
+        [weakSelf.tableView reloadData];
+    });
 }
 
 @end

@@ -10,7 +10,6 @@
 
 @interface TokenCell ()
 
-@property (weak, nonatomic) Contract *token;
 
 @end
 
@@ -32,12 +31,15 @@
 
 	[super layoutSubviews];
 
-	CGSize size = [self.token.balanceString sizeWithAttributes:@{NSFontAttributeName: self.mainValue.font}];
-	if (size.width > self.mainValue.bounds.size.width) {
-		self.mainValue.text = [self.token shortBalanceString];
-	} else {
-		self.mainValue.text = [self.token balanceString];
-	}
+    if (self.type != Unsupported) {
+        
+        CGSize size = [self.token.balanceString sizeWithAttributes:@{NSFontAttributeName: self.mainValue.font}];
+        if (size.width > self.mainValue.bounds.size.width) {
+            self.mainValue.text = [self.token shortBalanceString];
+        } else {
+            self.mainValue.text = [self.token balanceString];
+        }
+    }
 }
 
 - (void)prepareForReuse {

@@ -44,6 +44,7 @@
 #import "HistoryFacadeService.h"
 #import "SocketManager.h"
 #import "WalletBalanceFacadeService.h"
+#import "ContractHistoryFacadeService.h"
 
 
 #endif /* ServicesHeaders_h */

@@ -29,8 +29,11 @@ typedef NS_ENUM(NSUInteger, OverviewCellsType) {
     
     if (self.reciept.contractAddress) {
         return 6;
+    } else if (self.item.blockHash && self.item.blockNumber){
+        return 3;
+    } else {
+        return 1;
     }
-    return 3;
 }
 
 

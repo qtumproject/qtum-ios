@@ -254,6 +254,7 @@
 }
 
 - (NSDictionary *)dictionaryFromElementForWatch {
+    
 	NSString *address = self.send ? [self.toAddresses firstObject][@"address"] : [self.fromAddresses firstObject][@"address"];
 
 	NSDictionary *dictionary = @{@"address": address ? : @"",

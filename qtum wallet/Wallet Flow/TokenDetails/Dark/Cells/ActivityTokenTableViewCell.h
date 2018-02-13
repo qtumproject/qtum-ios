@@ -20,4 +20,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *symbolLabel;
 
 - (void)changeHighlight:(BOOL) value;
+
 @end

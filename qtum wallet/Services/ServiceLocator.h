@@ -44,6 +44,7 @@
 @property (strong, nonatomic) CoreDataService* coreDataService;
 @property (strong, nonatomic) HistoryFacadeService* historyFacadeService;
 @property (strong, nonatomic) WalletBalanceFacadeService* walletBalanceFacadeService;
+@property (strong, nonatomic) ContractHistoryFacadeService* contractHistoryFacadeService;
 
 + (instancetype)sharedInstance;
 

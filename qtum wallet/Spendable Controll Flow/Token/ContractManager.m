@@ -10,7 +10,6 @@
 #import "SocketManager.h"
 #import "InterfaceInputFormModel.h"
 #import "WalletManagerRequestAdapter.h"
-#import "ContractManagerRequestAdapter.h"
 
 NSString *const kTokenKeys = @"qtum_token_tokens_keys";
 NSString *const kTokenDidChange = @"kTokenDidChange";
@@ -32,9 +31,9 @@ NSString *const kLocalContractName = @"kLocalContractName";
 @property (assign, nonatomic) BOOL observingForSpendableStopped;
 @property (assign, nonatomic) BOOL haveAuthUser;
 
-@property (strong, nonatomic) ContractManagerRequestAdapter *requestAdapter;
-
 @end
+
+static const NSInteger maxSuportDecimalValue = 128;
 
 @implementation ContractManager
 
@@ -50,7 +49,6 @@ NSString *const kLocalContractName = @"kLocalContractName";
 												 selector:@selector (didForceStopObservingForSpendable)
 													 name:kSocketDidDisconnect object:nil];
         
-        _requestAdapter = [ContractManagerRequestAdapter new];
 	}
 	return self;
 }
@@ -122,7 +120,6 @@ NSString *const kLocalContractName = @"kLocalContractName";
 	for (Contract *token in savedTokens) {
 		token.delegate = self;
 		token.manager = self;
-		[token loadToMemory];
 	}
 	self.smartContractPretendents = [[SLocator.keychainService objectForKey:kSmartContractPretendentsKey] mutableCopy];
     
@@ -189,6 +186,15 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateModel.type == %i && isActive == YES", TokenType];
 	return [self.contracts filteredArrayUsingPredicate:predicate];
+}
+
+- (NSArray <Contract *> *)allActiveAndSupportedTokens {
+    
+    NSArray *filteredArray = [self.contracts filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Contract* contract, NSDictionary *bindings) {
+        return contract.templateModel.type == TokenType && contract.isActive && [contract.decimals isLessThanInt:maxSuportDecimalValue];
+    }]];
+
+    return filteredArray;
 }
 
 - (NSArray <Contract *> *)allContracts {
@@ -561,33 +567,14 @@ NSString *const kLocalContractName = @"kLocalContractName";
 
 - (void)updateHistoryOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL)) complete andPage:(NSInteger) page {
     
-    static NSInteger batch = 25;
     NSArray* allkeysAddresses = SLocator.walletManager.wallet.allKeysAdreeses;
     
-    NSDictionary* param = @{@"limit": @(batch),
-                            @"offset": @(page * batch),
-                            @"addresses[]" : allkeysAddresses
-                            };
-    
-    [self.requestAdapter getHistoryForTokenAddress:object.mainAddress
-                                          andParam:param
-                                             token:object
-                                withSuccessHandler:^(NSArray <id <HistoryElementProtocol>> *history) {
-        if (page > object.historyStorage.pageIndex) {
-            [object.historyStorage addHistoryElements:history];
-        } else {
-            [object.historyStorage setHistory:history];
-        }
-        object.historyStorage.pageIndex = page;
+    [SLocator.contractHistoryFacadeService updateHistroyForAddresses:allkeysAddresses withPage:page withContractAddress:object.mainAddress withCurrency:object.symbol withHandler:^(BOOL succes) {
+        
         if (complete) {
-            complete (YES);
-        }
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        if (complete) {
-            complete (NO);
+            complete (succes);
         }
     }];
-	DLog(@"complete ->%@", complete);
 }
 
 - (void)startObservingForSpendable:(id <Spendable>) spendable {

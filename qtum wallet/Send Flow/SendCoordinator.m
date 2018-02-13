@@ -135,7 +135,7 @@
 			break;
 		case SendInfoItemTypeToken: {
             
-			NSArray <Contract *> *tokens = SLocator.contractManager.allActiveTokens;
+			NSArray <Contract *> *tokens = SLocator.contractManager.allActiveAndSupportedTokens;
 
 			BOOL exist = NO;
 			for (Contract *token in tokens) {
@@ -277,7 +277,7 @@
 
 - (void)checkTokens {
     
-    NSArray <Contract *> *tokens = SLocator.contractManager.allActiveTokens;
+    NSArray <Contract *> *tokens = SLocator.contractManager.allActiveAndSupportedTokens;
 
     if (![tokens containsObject:self.token]) {
         self.token = nil;
@@ -312,7 +312,7 @@
 
 
 		if (weakSelf.tokenPaymentOutput) {
-			[weakSelf.tokenPaymentOutput updateWithTokens:SLocator.contractManager.allActiveTokens];
+			[weakSelf.tokenPaymentOutput updateWithTokens:SLocator.contractManager.allActiveAndSupportedTokens];
 		}
 
 		[weakSelf.paymentOutput updateWithEtity:entity];
@@ -453,7 +453,7 @@
     output.delegateDataSource = [SLocator.tableSourcesFactory createSendTokenPaymentSource];
     output.delegateDataSource.activeToken = self.token;
     output.delegateDataSource.delegate = self;
-    [output updateWithTokens:SLocator.contractManager.allActiveTokens];
+    [output updateWithTokens:SLocator.contractManager.allActiveAndSupportedTokens];
     self.tokenPaymentOutput = output;
     [self.router pushOutput:output animated:YES];
 }

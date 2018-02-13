@@ -60,7 +60,6 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 	Wallet *newWallet = [SLocator.walletsFactory createNewWalletWithName:name pin:pin];
 	newWallet.manager = self;
-	[newWallet loadToMemory];
 	self.wallet = newWallet;
 	[self save];
 
@@ -80,7 +79,6 @@ NSString const *kIsLongPin = @"kIsLongPin";
 	Wallet *newWallet = [SLocator.walletsFactory createNewWalletWithName:name pin:pin seedWords:seedWords];
 
 	newWallet.manager = self;
-	[newWallet loadToMemory];
 
 	self.wallet = newWallet;
 	[self save];
@@ -177,7 +175,6 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 	if (storedWallet && [storedWallet isKindOfClass:[Wallet class]]) {
 		storedWallet.manager = self;
-		[storedWallet loadToMemory];
 	}
 
 	wallet = storedWallet;

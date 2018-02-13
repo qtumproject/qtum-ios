@@ -93,12 +93,14 @@
     } andFailureHandler:^(NSError *error, NSString *message) {
         handler(NO);
     }];
+    
 }
 
-- (QTUMBigNumber *)updateWithBalance:(NSArray *) responseObject {
+- (void)updateWithBalance:(NSArray *) responseObject {
     
     QTUMBigNumber *balance = [QTUMBigNumber decimalWithInteger:0];
-    
+    __weak __typeof (self) weakSelf = self;
+
     for (NSDictionary *dictionary in responseObject) {
         
         NSNumber *amount = dictionary[@"amount"];
@@ -107,7 +109,19 @@
         }
     }
     
-    return balance;
+    self.balances.balanceString = balance.stringValue;
+    
+    [self.storageService saveWithcompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
+        
+        if (weakSelf.delegateHandler) {
+            weakSelf.delegateHandler(YES);
+        }
+    }];
+}
+
+-(void)clear {
+    self.balances = nil;
+    self.delegateHandler = nil;
 }
 
 @end

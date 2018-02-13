@@ -27,4 +27,8 @@
 
 - (void)didPressHistoryItemForToken:( id <HistoryElementProtocol>) item;
 
+- (void)refreshTableViewDataFromStart;
+- (void)refreshTableViewDataWithPage:(NSInteger) page;
+
+
 @end

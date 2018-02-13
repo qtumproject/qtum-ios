@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Contract.h"
-#import "TokenDetailDataDisplayManager.h"
+#import "TokenDetailDataDisplayManagerImp.h"
 
-@interface TokenDetailLightDisplayDataManager : NSObject <TokenDetailDataDisplayManager>
+@interface TokenDetailLightDisplayDataManager : TokenDetailDataDisplayManagerImp
 
 @end
