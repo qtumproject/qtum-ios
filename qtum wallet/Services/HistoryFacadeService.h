@@ -22,6 +22,8 @@ typedef void(^HistoryHendler)(BOOL succes);
 - (void)updateHistoryElementWithDict:(NSDictionary *) dataDictionary;
 
 - (NSArray<RecieptLogDTO*>*)getLogsDTOSWithReceit:(TransactionReceipt *) receipt;
+- (NSArray<WalletHistoryEntity*>*)historyForWatch;
+
 
 - (TransactionReceipt*)getRecieptWithTxHash:(NSString *) txHash;
 - (void)cancelOperations;

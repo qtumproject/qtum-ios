@@ -8,6 +8,7 @@
 
 #import <WatchConnectivity/WatchConnectivity.h>
 #import "QRCodeManager.h"
+#import "WalletHistoryEntity+Extension.h"
 
 NSString *MainMessageKey = @"message_key";
 NSString *GetQRCodeMessageKey = @"get_qr_code";
@@ -131,11 +132,12 @@ NSString *kErrorKey = @"error";
 							return;
 						}
 
-                        NSString *availableBalance = wallet.balance.stringValue;
-                        NSString *unconfirmedBalance = wallet.unconfirmedBalance.stringValue;
-						NSArray *history = wallet.historyStorage.historyPrivate;
+                        NSString *availableBalance = SLocator.walletBalanceFacadeService.lastBalance.stringValue;
+                        NSString *unconfirmedBalance = SLocator.walletBalanceFacadeService.lastUnconfirmedBalance.stringValue;
+                        NSArray *history = [SLocator.historyFacadeService historyForWatch];
 						NSMutableArray *historyDictionary = [NSMutableArray new];
-						for (HistoryElement *element in history) {
+                        
+						for (WalletHistoryEntity *element in history) {
 							[historyDictionary addObject:[element dictionaryFromElementForWatch]];
 						}
 
@@ -152,7 +154,7 @@ NSString *kErrorKey = @"error";
 						NSDictionary *dictionary = @{StatusKey: @(NO)};
 						replyHandler (dictionary);
 					}
-				}                                               andPage:0];
+				} andPage:0];
 			} else {
 				NSDictionary *dictionary = @{StatusKey: @(NO)};
 				replyHandler (dictionary);
@@ -178,14 +180,14 @@ NSString *kErrorKey = @"error";
 		return dictionary;
 	}
 
-	NSString *availableBalance = wallet.balance.stringValue;
-	NSString *unconfirmedBalance = wallet.unconfirmedBalance.stringValue;
-	NSArray *history = wallet.historyStorage.historyPrivate;
-	NSMutableArray *historyDictionary = [NSMutableArray new];
-
-	for (HistoryElement *element in history) {
-		[historyDictionary addObject:[element dictionaryFromElementForWatch]];
-	}
+    NSString *availableBalance = SLocator.walletBalanceFacadeService.lastBalance.stringValue;
+    NSString *unconfirmedBalance = SLocator.walletBalanceFacadeService.lastUnconfirmedBalance.stringValue;
+    NSArray *history = [SLocator.historyFacadeService historyForWatch];
+    NSMutableArray *historyDictionary = [NSMutableArray new];
+    
+    for (WalletHistoryEntity *element in history) {
+        [historyDictionary addObject:[element dictionaryFromElementForWatch]];
+    }
 
 	NSDictionary *dictionary = @{@"address": address,
 			@"availableBalance": availableBalance,

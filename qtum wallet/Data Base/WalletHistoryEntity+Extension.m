@@ -16,10 +16,6 @@
 
 @dynamic amount, fullDateString, shortDateString, dateNumber;
 
-- (NSDictionary *)dictionaryFromElementForWatch {
-    return nil;
-}
-
 - (BOOL)isEqualElementWithoutConfimation:(id<HistoryElementProtocol>)object {
     return NO;
 }
@@ -142,6 +138,18 @@
     } else {
         return self.shortDateString;
     }
+}
+
+- (NSDictionary *)dictionaryFromElementForWatch {
+    
+    NSString *address = self.send ? [self.toAddresses firstObject][@"address"] : [self.fromAddresses firstObject][@"address"];
+    
+    NSDictionary *dictionary = @{@"address": address ? : @"",
+                                 @"date": self.shortDateString ? : @"",
+                                 @"amount": self.amountString ? : @"",
+                                 @"send": @(self.send)};
+    
+    return dictionary;
 }
 
 

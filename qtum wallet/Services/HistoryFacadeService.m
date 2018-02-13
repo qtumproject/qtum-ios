@@ -168,6 +168,15 @@ static NSInteger batch = 25;
             [weakSelf.storageService createWalletHistoryEntityWith:element];
         }
         
+        if (history.count == 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (weakSelf.delegateHandler) {
+                    weakSelf.delegateHandler(YES);
+                }
+            });
+            return;
+        }
+        
         [weakSelf.storageService saveWithcompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
             
             if (weakOperation.isCancelled) {
@@ -282,6 +291,10 @@ static NSInteger batch = 25;
 
 - (TransactionReceipt*)getRecieptWithTxHash:(NSString *) txHash {
     return [self.storageService findHistoryRecieptEntityWithTxHash:txHash];
+}
+
+- (NSArray<WalletHistoryEntity*>*)historyForWatch {
+    return [self.storageService allWalletHistoryEntitysWithLimit:batch];
 }
 
 -(void)clear {

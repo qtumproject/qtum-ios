@@ -26,5 +26,7 @@
 - (WalletContractHistoryEntity *_Nonnull)createWalletContractHistoryEntityWith:(HistoryElement*_Nonnull) element;
 - (WalletBalanceEntity*_Nonnull)walletBalanceEntity;
 - (void)updateHistoryEntityWithReceiptTxHash:(NSString *_Nonnull) txHash contracted:(BOOL) contracted;
+- (NSArray<WalletHistoryEntity*>*_Nonnull)allWalletHistoryEntitysWithLimit:(NSInteger) limit;
+
 
 @end

@@ -22,6 +22,8 @@
 @implementation CoreDataService
 
 static NSString* storageName = @"TransactionHistory";
+static NSString* dateSortingField = @"dateInerval";
+
 
 - (instancetype)init {
     
@@ -316,6 +318,15 @@ static NSString* storageName = @"TransactionHistory";
 - (NSArray<TransactionReceipt*>*)findAllHistoryReceiptEntityWithTxHash:(NSString *)txHash {
     
     return [TransactionReceipt MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"transactionHash like %@", txHash] inContext:self.managedObjectContext];
+}
+
+- (NSArray<WalletHistoryEntity*>*_Nonnull)allWalletHistoryEntitysWithLimit:(NSInteger) limit {
+    
+    NSArray<WalletHistoryEntity*>* allHistory = [WalletHistoryEntity MR_findAllSortedBy:dateSortingField ascending:NO inContext:self.managedObjectContext];
+    if (allHistory.count > limit) {
+        return [allHistory subarrayWithRange:NSMakeRange(0, limit)];
+    }
+    return allHistory;
 }
 
 - (void)saveWithcompletion:(void (^)(BOOL contextDidSave, NSError *_Nullable error))complete {
