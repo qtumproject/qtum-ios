@@ -331,11 +331,13 @@ static NSString* dateSortingField = @"dateInerval";
 
 - (void)saveWithcompletion:(void (^)(BOOL contextDidSave, NSError *_Nullable error))complete {
 
-    [self.managedObjectContext MR_saveWithOptions:MRSaveParentContexts completion:^(BOOL contextDidSave, NSError *_Nullable error) {
-        if (complete) {
-            complete(contextDidSave,error);
-        }
-    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.managedObjectContext MR_saveWithOptions:MRSaveParentContexts completion:^(BOOL contextDidSave, NSError *_Nullable error) {
+            if (complete) {
+                complete(contextDidSave,error);
+            }
+        }];
+    });
 }
 
 -(void)clear {
