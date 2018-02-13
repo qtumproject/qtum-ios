@@ -66,7 +66,7 @@
 	NSInteger yoffsetFirstElement = 30;
 	NSInteger heighOfPrevElement = 0;
 	NSInteger heighOfElement = 60;
-	NSInteger scrollViewTopOffset = 88;
+	NSInteger scrollViewTopOffset = 100;
 	NSInteger scrollViewBottomInset = 49;
 
 
