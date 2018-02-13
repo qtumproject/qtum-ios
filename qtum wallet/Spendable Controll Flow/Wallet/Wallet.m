@@ -303,12 +303,6 @@ NSInteger const USERS_KEYS_COUNT = 10;
 	[self.manager updateHistoryOfSpendableObject:self withHandler:complete andPage:page];
 }
 
-- (void)loadToMemory {
-
-	_historyStorage = [HistoryDataStorage new];
-	_historyStorage.spendableOwner = self;
-}
-
 - (void)updateWithHandler:(void (^)(BOOL success)) complete {
 	complete (NO);
 }

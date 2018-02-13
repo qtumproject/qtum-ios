@@ -25,8 +25,8 @@ static NSInteger standartHistoryCellHeight = 55;
 
 @synthesize token, delegate;
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *) tableView {
-	return 2;
+- (NSInteger)realNumberOfSections {
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
@@ -51,9 +51,7 @@ static NSInteger standartHistoryCellHeight = 55;
         cell.tokenAddressTextLabel.text = NSLocalizedString(@"Token Address", @"");
 		return cell;
 	} else {
-        HistoryTableViewCellLight* cell =  [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCellLight"];
-        cell.historyElement = token.historyArray[indexPath.row];
-		return cell;
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 	}
 }
 
@@ -62,7 +60,7 @@ static NSInteger standartHistoryCellHeight = 55;
 	if (section == 0) {
 		return 1;
 	} else {
-		return token.historyArray.count;
+		return [self countOfHistoryElement];
 	}
 }
 
@@ -108,12 +106,9 @@ static NSInteger standartHistoryCellHeight = 55;
 - (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
     
     if (indexPath.section == 1) {
-        if ([self.delegate respondsToSelector:@selector (didPressHistoryItemForToken:)]) {
-            [self.delegate didPressHistoryItemForToken:token.historyArray[indexPath.row]];
-        }
+        [self didPressedHistoryElementAtIndexPath:indexPath];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
 }
 
 #pragma mark - QTUMAddressTokenTableViewCellDelegate

@@ -14,5 +14,12 @@
 
 @property (nonatomic, weak) id <TokenDetailDisplayDataManagerDelegate> delegate;
 @property (nonatomic, strong) Contract *token;
+@property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, weak) UIView *emptyPlaceholderView;
+
+- (void)setupFething;
+- (void)reloadWithFeching;
+- (void)failedConnection;
+- (void)reconnect;
 
 @end

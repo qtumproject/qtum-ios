@@ -110,4 +110,9 @@
     return balance;
 }
 
+-(void)clear {
+    self.balances = nil;
+    self.delegateHandler = nil;
+}
+
 @end

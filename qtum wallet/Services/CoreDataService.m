@@ -11,6 +11,7 @@
 #import "TransactionReceipt+CoreDataClass.h"
 #import "Log+CoreDataProperties.h"
 #import "WalletBalanceEntity+Extension.h"
+#import "WalletContractHistoryEntity+CoreDataProperties.h"
 
 @interface CoreDataService()
 
@@ -19,6 +20,8 @@
 @end
 
 @implementation CoreDataService
+
+static NSString* storageName = @"TransactionHistory";
 
 - (instancetype)init {
     
@@ -33,7 +36,7 @@
 }
 
 -(void)setupInitialState {
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"TransactionHistory"];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:storageName];
 }
 
 - (WalletHistoryEntity *)createWalletHistoryEntityWith:(HistoryElement*) element {
@@ -74,6 +77,43 @@
         historyEntity.contracted = NO;
         historyEntity.hasReceipt = NO;
     }
+    
+    return historyEntity;
+}
+
+- (WalletContractHistoryEntity *)createWalletContractHistoryEntityWith:(HistoryElement*) element {
+    
+    [self removeAllWalletContractHistoryWithTxHash:element.transactionHash];
+    
+    WalletContractHistoryEntity* historyEntity =  [WalletContractHistoryEntity MR_createEntityInContext:self.managedObjectContext];
+    
+    historyEntity.contractAddress = element.address;
+    historyEntity.amountString = element.amountString;
+    historyEntity.fromAddresses = element.fromAddresses;
+    historyEntity.toAddresses = element.toAddresses;
+    historyEntity.transactionHash = element.transactionHash;
+    historyEntity.send = element.send;
+    historyEntity.internal = element.internal;
+    historyEntity.contracted = element.contracted;
+    historyEntity.confirmed = element.confirmed;
+    historyEntity.currency = element.currency;
+    
+    if (element.dateNumber) {
+        historyEntity.dateInerval = element.dateNumber.integerValue;
+    } else {
+        historyEntity.dateInerval = [[NSDate date] timeIntervalSince1970];
+    }
+    
+    NSArray<TransactionReceipt*>* reciepts = [self findAllHistoryReceiptEntityWithTxHash:element.transactionHash];
+
+    if (reciepts.count > 0) {
+
+        historyEntity.hasReceipt = YES;
+
+    } else {
+        historyEntity.hasReceipt = NO;
+    }
+
     
     return historyEntity;
 }
@@ -221,27 +261,46 @@
     }
 }
 
+- (void)updateHistoryEntityWithReceiptTxHash:(NSString *_Nonnull) txHash contracted:(BOOL) contracted {
+    
+    NSArray<WalletHistoryEntity*>* walletHistroy = [self findWalletHistoryEntityWithTxHash:txHash];
+    
+    for (WalletHistoryEntity* entity in walletHistroy) {
+        entity.hasReceipt = YES;
+        entity.contracted = contracted;
+    }
+    
+    NSArray<WalletContractHistoryEntity*>* walletContractHistroy = [self findWalletContractHistoryEntityWithTxHash:txHash];
+    
+    for (WalletContractHistoryEntity* entity in walletContractHistroy) {
+        entity.hasReceipt = YES;
+        entity.contracted = contracted;
+    }
+}
+
 -(void)removeAllWalletsHistoryWithTxHash:(NSString*) txHash {
     
-    NSArray<WalletHistoryEntity*>* sameHistories = [self findWalletHistoryEntityWithTxHash:txHash];
+    [WalletHistoryEntity MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"transactionHash like %@", txHash] inContext:self.managedObjectContext];
+}
+
+-(void)removeAllWalletContractHistoryWithTxHash:(NSString*) txHash {
     
-    for (WalletHistoryEntity* entity in sameHistories) {
-        [entity MR_deleteEntityInContext:self.managedObjectContext];
-    }
+    [WalletContractHistoryEntity MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"transactionHash like %@", txHash] inContext:self.managedObjectContext];
 }
 
 -(void)removeAllReceiptWithTxHash:(NSString*) txHash {
     
-    NSArray<TransactionReceipt*>* sameHistories = [self findAllHistoryReceiptEntityWithTxHash:txHash];
-    
-    for (WalletHistoryEntity* entity in sameHistories) {
-        [entity MR_deleteEntityInContext:self.managedObjectContext];
-    }
+    [TransactionReceipt MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"transactionHash like %@", txHash] inContext:self.managedObjectContext];
 }
 
 - (NSArray<WalletHistoryEntity*>*)findWalletHistoryEntityWithTxHash:(NSString *)txHash {
     
     return [WalletHistoryEntity MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"transactionHash like %@", txHash] inContext:self.managedObjectContext];
+}
+
+- (NSArray<WalletContractHistoryEntity*>*)findWalletContractHistoryEntityWithTxHash:(NSString *)txHash {
+    
+    return [WalletContractHistoryEntity MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"transactionHash like %@", txHash] inContext:self.managedObjectContext];
 }
 
 - (TransactionReceipt*_Nullable)findHistoryRecieptEntityWithTxHash:(NSString *_Nonnull)txHash {

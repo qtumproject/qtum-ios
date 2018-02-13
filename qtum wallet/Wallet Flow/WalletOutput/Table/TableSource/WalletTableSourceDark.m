@@ -18,15 +18,15 @@
 	if (indexPath.section == 0) {
 		switch ([self headerCellType]) {
 			case HeaderCellTypeWithoutPageControl:
-				return 192;
+                return 200;
 			case HeaderCellTypeWithoutNotCorfirmedBalance:
                 return 161;
 			case HeaderCellTypeWithoutAll:
                 return 152;
             case HeaderCellTypeWithoutAllWithLastTime:
-                return 192;
+                return 200;
 			case HeaderCellTypeAllVisible:
-                return 192;
+                return 200;
             case HeaderCellTypeAllVisibleWithLastTime:
                 return 257;
             case HeaderCellTypeWithoutPageControlWithLastTime:

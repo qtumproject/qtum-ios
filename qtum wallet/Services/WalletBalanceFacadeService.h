@@ -10,7 +10,7 @@
 
 typedef void(^WalletBalanceHendler)(BOOL succes);
 
-@interface WalletBalanceFacadeService : NSObject
+@interface WalletBalanceFacadeService : NSObject <Clearable>
 
 - (instancetype)initWithRequestService:(id <Requestable>) requestManager andStorageService:(CoreDataService*) storageService;
 

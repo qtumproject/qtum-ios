@@ -144,12 +144,6 @@
 	[self.manager updateHistoryOfSpendableObject:self withHandler:complete andPage:page];
 }
 
-- (void)loadToMemory {
-
-	_historyStorage = [HistoryDataStorage new];
-	_historyStorage.spendableOwner = self;
-}
-
 - (void)historyDidChange {
 	[self.manager spendableDidChange:self];
 }

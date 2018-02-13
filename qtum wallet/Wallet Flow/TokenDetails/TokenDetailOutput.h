@@ -18,7 +18,13 @@
 @property (nonatomic, strong) Contract *token;
 @property (nonatomic, weak) id <TokenDetailDataDisplayManager> source;
 
-- (void)updateControls;
+- (void)reloadHistorySource;
+- (void)reloadTokenInfo;
+
+- (void)conndectionFailed;
+- (void)conndectionSuccess;
+
 - (void)showUnsubscribeContractScreen;
+- (void)failedToUpdateHistory;
 
 @end

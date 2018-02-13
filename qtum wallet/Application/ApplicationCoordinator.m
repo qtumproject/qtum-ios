@@ -186,7 +186,10 @@
 
 - (void)clear {
 
+    [SLocator.coreDataService clear];
     [SLocator.historyFacadeService clear];
+    [SLocator.contractHistoryFacadeService clear];
+    [SLocator.walletBalanceFacadeService clear];
 	[SLocator.walletManager stopObservingForAllSpendable];
 	[SLocator.contractManager stopObservingForAllSpendable];
 	[SLocator.notificationManager clear];

@@ -23,7 +23,12 @@ confirmed = _confirmed,
 isSmartContractCreater = _isSmartContractCreater,
 fromAddresses = _fromAddresses,
 toAddresses = _toAddresses,
-currency = _currency;
+currency = _currency,
+hasReceipt = _hasReceipt,
+blockHash = blockHash,
+internal = _internal,
+blockNumber = _blockNumber,
+contracted = _contracted;
 
 
 - (BOOL)isEqualElementWithoutConfimation:(id <HistoryElementProtocol>) object {
@@ -69,7 +74,9 @@ currency = _currency;
         NSDictionary* addresses = [SLocator.walletManager.wallet addressKeyHashTable];
 
         self.send = addresses[object[@"from"] ?: @""] ? YES : NO;
+        self.internal = addresses[object[@"from"] ?: @""] && addresses[object[@"to"] ?: @""];
         self.confirmed = YES;
+        self.contracted = YES;
         self.fromAddresses = [fromAddresses copy];
         self.toAddresses = [toAddresses copy];
     }
@@ -203,5 +210,7 @@ currency = _currency;
 - (NSDictionary *)dictionaryFromElementForWatch {
     return @{};
 }
+
+
 
 @end

@@ -24,14 +24,13 @@ static CGFloat const BalanceTokenHeight = 84;
 static CGFloat const QTUMAddressTokenHeight = 47;
 static CGFloat const NubersTokenHeight = 51;
 static CGFloat const AddressesTokenHeight = 51;
-static CGFloat const ActivityTokenHeight = 69;
+static CGFloat const ActivityTokenHeight = 75;
 
 static NSString *const ActivityHeaderIdentifier = @"ActivityHeaderTokenTableViewCell";
 static NSString *const BalanceTokenIdentifier = @"BalanceTokenTableViewCell";
 static NSString *const QTUMAddressTokenIdentifier = @"QTUMAddressTokenTableViewCell";
 static NSString *const NubersTokenIdentifier = @"NubersTokenTableViewCell";
 static NSString *const AddressesTokenIdentifier = @"AddressesTokenTableViewCell";
-static NSString *const ActivityTokenIdentifier = @"ActivityTokenTableViewCell";
 static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 
 @interface TokenDetailsTableSource () <QTUMAddressTokenTableViewCellDelegate, QTUMAddressTokenViewDelegate>
@@ -46,29 +45,30 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 
 @synthesize token, delegate;
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *) tableView {
-	return NumberOfSections;
+- (NSInteger)realNumberOfSections {
+    return NumberOfSections;
 }
 
 - (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
+    
 	if (indexPath.section == 0) {
 		return [self getCellForFirstSection:tableView forRow:indexPath.row];
 	} else {
-        ActivityTokenTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:ActivityTokenIdentifier];
-        cell.historyElement = token.historyArray[indexPath.row];
-		return cell;
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 	}
 }
 
 - (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
+    
 	if (section == 0) {
 		return NumberOfRowsForFirstSection;
 	} else {
-		return token.historyArray.count;
+		return [self countOfHistoryElement];
 	}
 }
 
 - (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
+    
 	if (indexPath.section == 0) {
 		CGFloat height = 0.0f;
 
@@ -277,10 +277,9 @@ static NSString *const MainTokenIdentifier = @"MainTokenTableViewCell";
 - (void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
     
     if (indexPath.section == 1) {
-        if ([self.delegate respondsToSelector:@selector (didPressHistoryItemForToken:)]) {
-            [self.delegate didPressHistoryItemForToken:token.historyArray[indexPath.row]];
-        }
+        [self didPressedHistoryElementAtIndexPath:indexPath];
     }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

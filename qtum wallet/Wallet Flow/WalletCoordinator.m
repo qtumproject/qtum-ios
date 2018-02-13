@@ -234,6 +234,7 @@
                 [SLocator.popupService dismissLoader];
             });
         }
+        
     } andPage:0];
 }
 
@@ -242,6 +243,9 @@
     NSObject <HistoryItemOutput> *controller = [SLocator.controllersFactory createHistoryItem];
     controller.item = item;
     controller.delegate = self;
+    TransactionReceipt* reciept = [SLocator.historyFacadeService getRecieptWithTxHash:item.transactionHash];
+    controller.receipt = reciept;
+    controller.logs = [SLocator.historyFacadeService getLogsDTOSWithReceit:reciept];
     [self.navigationController pushViewController:[controller toPresent] animated:YES];
 }
 
@@ -287,10 +291,10 @@
 	__weak __typeof (self) weakSelf = self;
 	dispatch_async (_requestQueue, ^{
         
-        [SLocator.historyFacadeService cancelOperations];
+        [SLocator.contractHistoryFacadeService cancelOperations];
         
         if (weakSelf.isFailedConnection) {
-            [weakSelf.walletViewController conndectionFailed];
+            [weakSelf.tokenDetailsViewController conndectionFailed];
         }
         
 		[weakSelf.walletViewController startLoading];
@@ -304,6 +308,67 @@
             [weakSelf.walletViewController stopLoading];
 		} andPage:0];
 	});
+    
+    
+}
+
+- (void)refreshContractHistoryOfToken:(Contract *) token withPage:(NSInteger) page {
+    
+    __weak __typeof (self) weakSelf = self;
+    
+    dispatch_async (_requestQueue, ^{
+        
+        [token updateHistoryWithHandler:^(BOOL success) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.walletViewController reloadHistorySource];
+                [SLocator.popupService dismissLoader];
+            });
+            
+        } andPage:0];
+    });
+}
+
+- (void)reloadContractHistoryOfToken:(Contract *) token {
+    
+    __weak __typeof (self) weakSelf = self;
+    __block BOOL infoUpdated = NO;
+    __block BOOL historyUpdated = NO;
+    
+    dispatch_async (_requestQueue, ^{
+        
+        [SLocator.historyFacadeService cancelOperations];
+        
+        if (weakSelf.isFailedConnection) {
+            [weakSelf.walletViewController conndectionFailed];
+        }
+        
+        [SLocator.popupService showLoaderPopUp];
+        
+        [token updateWithHandler:^(BOOL success) {
+            infoUpdated = YES;
+            
+            if (historyUpdated && infoUpdated) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.tokenDetailsViewController reloadHistorySource];
+                    [SLocator.popupService dismissLoader];
+                });
+            }
+        }];
+        
+        [token updateHistoryWithHandler:^(BOOL success) {
+            
+            historyUpdated = YES;
+            
+            if (historyUpdated && infoUpdated) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.tokenDetailsViewController reloadHistorySource];
+                    [SLocator.popupService dismissLoader];
+                });
+            }
+            
+        } andPage:0];
+    });
 }
 
 -(void)updateTokensList {
@@ -401,6 +466,7 @@
 	[self configWallet];
 	[self setWalletToDelegates];
 	[self updateTokenDetail];
+    
 	__weak __typeof (self) weakSelf = self;
 
 	dispatch_async (dispatch_get_main_queue (), ^{
@@ -418,7 +484,7 @@
 
 - (void)updateTokenDetail {
 
-	[self.tokenDetailsViewController updateControls];
+	[self.tokenDetailsViewController reloadTokenInfo];
 }
 
 - (void)showAddressControlFlow {

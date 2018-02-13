@@ -1,17 +1,16 @@
 //
-//  HistoryFacadeService.m
+//  ContractHistoryFacadeService.m
 //  qtum wallet
 //
-//  Created by Vladimir Lebedevich on 01.02.2018.
+//  Created by Vladimir Lebedevich on 12.02.2018.
 //  Copyright © 2018 QTUM. All rights reserved.
 //
 
-#import "HistoryFacadeService.h"
-#import "WalletHistoryEntity+Extension.h"
+#import "ContractHistoryFacadeService.h"
+#import "TokenHistoryElement.h"
 #import "TransactionReceipt+Extension.h"
-#import "RecieptLogDTO.h"
 
-@interface HistoryFacadeService ()
+@interface ContractHistoryFacadeService ()
 
 @property (strong, nonatomic) id <Requestable> requestManager;
 @property (strong, nonatomic) CoreDataService* storageService;
@@ -24,7 +23,7 @@
 
 static NSInteger batch = 25;
 
-@implementation HistoryFacadeService
+@implementation ContractHistoryFacadeService
 
 - (instancetype)initWithRequestService:(id <Requestable>) requestManager andStorageService:(CoreDataService*) storageService {
     
@@ -41,12 +40,10 @@ static NSInteger batch = 25;
     return self;
 }
 
-#pragma mark - Publick
-
-- (void)updateHistroyForAddresses:(NSArray *) keyAddreses withPage:(NSInteger) page withHandler:(HistoryHendler) handler {
-
+- (void)updateHistroyForAddresses:(NSArray *) keyAddreses withPage:(NSInteger) page withContractAddress:(NSString*) contractAddress withCurrency:(NSString*) currency withHandler:(HistoryHendler) handler {
+    
     __weak __typeof (self) weakSelf = self;
-
+    
     NSBlockOperation* operation = [NSBlockOperation new];
     
     __weak NSBlockOperation *weakOperation = operation;
@@ -57,47 +54,42 @@ static NSInteger batch = 25;
             return;
         }
         
-        NSDictionary* param = @{@"limit": @(batch), @"offset": @(page * batch)};
+        NSDictionary* param = @{@"limit": @(batch),
+                                @"offset": @(page * batch),
+                                @"addresses[]" : keyAddreses
+                                };
+        
         weakSelf.delegateHandler = handler;
         
-        [weakSelf.requestManager getHistoryWithParam:param andAddresses:keyAddreses successHandler:^(id responseObject, NSInteger totalCount) {
-            
-            if (weakOperation.isCancelled) {
-                return;
-            }
-            
-            weakSelf.totalItems = totalCount;
-            [weakSelf createHistoryElements:responseObject];
-            
-        } andFailureHandler:^(NSError *error, NSString *message) {
-            
-            if (weakOperation.isCancelled) {
-                return;
-            }
-            
-            if (weakSelf.delegateHandler) {
-                weakSelf.delegateHandler(NO);
-            }
-        }];
+        [SLocator.requestManager getTokenHistoryWithParam:param
+                                             tokenAddress:contractAddress
+                                           successHandler:^(id responseObject, NSInteger totalCount) {
+                                               
+                                               if (weakOperation.isCancelled) {
+                                                   return;
+                                               }
+                                               
+                                               weakSelf.totalItems = totalCount;
+                                               
+                                               [weakSelf createHistoryElements:responseObject withCurrency:currency];
+                                               
+                                           } andFailureHandler:^(NSError *error, NSString *message) {
+                                               
+                                               if (weakOperation.isCancelled) {
+                                                   return;
+                                               }
+                                               
+                                               if (weakSelf.delegateHandler) {
+                                                   weakSelf.delegateHandler(NO);
+                                               }
+                                           }];
+
     }];
     
     [self.workingQueue addOperation:operation];
 }
 
-- (void)updateHistoryElementWithTxHash:(NSString *) txHash withSuccessHandler:(void (^)(HistoryElement *historyItem)) success andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
-    
-    __weak typeof (self) weakSelf = self;
-    
-    [SLocator.requestManager infoAboutTransaction:txHash successHandler:^(id responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            success ([weakSelf createHistoryElement:responseObject]);
-        }
-    } andFailureHandler:^(NSError *error, NSString *message) {
-        failure (error, message);
-    }];
-}
-
-- (void)updateHistoryElementWithDict:(NSDictionary *) dataDictionary {
+- (void)createHistoryElements:(NSDictionary *) responseObject withCurrency:(NSString*) currency {
     
     NSBlockOperation* operation = [NSBlockOperation new];
     
@@ -111,61 +103,13 @@ static NSInteger batch = 25;
             return;
         }
         
-        HistoryElement *element = [weakSelf createHistoryElement:dataDictionary];
-        
-        [weakSelf.storageService createWalletHistoryEntityWith:element];
-        
-        [weakSelf.storageService saveWithcompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
-            
-            if (weakOperation.isCancelled) {
-                return;
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (weakSelf.delegateHandler) {
-                    weakSelf.delegateHandler(contextDidSave);
-                }
-            });
-        }];
-        
-        if (weakOperation.isCancelled) {
-            return;
-        }
-        
-        [weakSelf checkRecieptForHistory:@[element]];
-        [SLocator.contractManager checkSmartContractPretendents];
-    }];
-    
-    [self.workingQueue addOperation:operation];
-}
-
-- (void)createHistoryElements:(NSArray *) responseObject {
-    
-    NSBlockOperation* operation = [NSBlockOperation new];
-    
-    __weak __typeof (self) weakSelf = self;
-
-    __weak NSBlockOperation *weakOperation = operation;
-    
-    [operation addExecutionBlock:^{
-        
-        if (weakOperation.isCancelled) {
-            return;
-        }
-        
-        NSArray *responseObjectLocal = [[responseObject reverseObjectEnumerator] allObjects];
         NSMutableArray* history = @[].mutableCopy;
-        
-        for (NSDictionary *dictionary in responseObjectLocal) {
-            
-            if (weakOperation.isCancelled) {
-                return;
-            }
-            
-            HistoryElement *element = [weakSelf createHistoryElement:dictionary];
+
+        for (NSDictionary *dictionary in responseObject) {
+            id <HistoryElementProtocol> element = [self createHistoryElement:dictionary];
             [history addObject:element];
-            
-            [weakSelf.storageService createWalletHistoryEntityWith:element];
+            element.currency = currency;
+            [weakSelf.storageService createWalletContractHistoryEntityWith:element];
         }
         
         [weakSelf.storageService saveWithcompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
@@ -180,13 +124,9 @@ static NSInteger batch = 25;
                 }
             });
         }];
-        
-        if (weakOperation.isCancelled) {
-            return;
-        }
         
         [weakSelf checkRecieptForHistory:history];
-        [SLocator.contractManager checkSmartContractPretendents];
+
     }];
     
     [self.workingQueue addOperation:operation];
@@ -213,7 +153,7 @@ static NSInteger batch = 25;
             return;
         }
         
-        [weakSelf.storageService updateHistoryEntityWithReceiptTxHash:receipt.transactionHash contracted:receipt.contractAddress ? YES : NO];
+        [weakSelf.storageService updateHistoryEntityWithReceiptTxHash:receipt.transactionHash contracted:YES];
         [weakSelf.storageService saveWithcompletion:nil];
     }];
     
@@ -223,7 +163,7 @@ static NSInteger batch = 25;
 - (void)checkRecieptForHistory:(NSArray <HistoryElement *> *) history {
     
     __weak __typeof (self) weakSelf = self;
-
+    
     for (HistoryElement* element in history) {
         
         if (![weakSelf.storageService findAllHistoryReceiptEntityWithTxHash:element.transactionHash].count && element.confirmed) {
@@ -237,6 +177,7 @@ static NSInteger batch = 25;
                 if (weakOperation.isCancelled) {
                     return;
                 }
+                
                 NSString* transactionHash = element.transactionHash;
                 [SLocator.requestManager getTransactionReceipt:transactionHash successHandler:^(id responseObject) {
                     
@@ -259,25 +200,11 @@ static NSInteger batch = 25;
     }
 }
 
-- (HistoryElement *)createHistoryElement:(NSDictionary *) dictionary {
+- (id <HistoryElementProtocol> )createHistoryElement:(NSDictionary *) dictionary {
     
-    
-    HistoryElement *element = [HistoryElement new];
+    TokenHistoryElement *element = [TokenHistoryElement new];
     [element setupWithObject:dictionary];
-    [SLocator.contractManager checkSmartContract:element];
     return element;
-}
-
-- (NSArray<RecieptLogDTO*>*)getLogsDTOSWithReceit:(TransactionReceipt *) receipt {
-
-    NSMutableArray<RecieptLogDTO*>* dtos = @[].mutableCopy;
-    
-    for (Log* log in receipt.logs.allObjects) {
-        RecieptLogDTO* dto = [[RecieptLogDTO alloc] initWithLog:log];
-        [dtos addObject:dto];
-    }
-    
-    return dtos;
 }
 
 - (TransactionReceipt*)getRecieptWithTxHash:(NSString *) txHash {

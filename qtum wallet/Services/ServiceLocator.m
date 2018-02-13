@@ -185,6 +185,14 @@
     return _walletBalanceFacadeService;
 }
 
+-(ContractHistoryFacadeService*)contractHistoryFacadeService {
+    
+    if (!_contractHistoryFacadeService) {
+        _contractHistoryFacadeService = [[ContractHistoryFacadeService alloc] initWithRequestService:self.requestManager andStorageService:self.coreDataService];
+    }
+    return _contractHistoryFacadeService;
+}
+
 
 
 @end

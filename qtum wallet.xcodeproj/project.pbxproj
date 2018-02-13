@@ -90,6 +90,11 @@
 		B31441101FB4823D004FE08C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B35EE8891E4C66D0008F4403 /* Roboto-Regular.ttf */; };
 		B31441131FB49A7A004FE08C /* QTUMTitleTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B31441121FB49A7A004FE08C /* QTUMTitleTagCell.m */; };
 		B31441161FB49A8C004FE08C /* QTUMTitleTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B31441151FB49A8C004FE08C /* QTUMTitleTagCellLight.m */; };
+		B31584AA20317D05005483C9 /* TokenDetailDataDisplayManagerImp.m in Sources */ = {isa = PBXBuildFile; fileRef = B31584A920317D05005483C9 /* TokenDetailDataDisplayManagerImp.m */; };
+		B31584AD203186E5005483C9 /* ContractHistoryFacadeService.m in Sources */ = {isa = PBXBuildFile; fileRef = B31584AC203186E5005483C9 /* ContractHistoryFacadeService.m */; };
+		B31584B9203198D4005483C9 /* WalletContractHistoryEntity+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B31584B8203198D4005483C9 /* WalletContractHistoryEntity+Extension.m */; };
+		B31584C42031B2F8005483C9 /* WalletContractHistoryEntity+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B31584C22031B2F7005483C9 /* WalletContractHistoryEntity+CoreDataClass.m */; };
+		B31584C52031B2F8005483C9 /* WalletContractHistoryEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B31584C32031B2F8005483C9 /* WalletContractHistoryEntity+CoreDataProperties.m */; };
 		B315D02C1F9E100100C7F4E4 /* QTUMParagrafTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D02B1F9E100100C7F4E4 /* QTUMParagrafTagCell.m */; };
 		B315D02F1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D02E1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.m */; };
 		B315D0321F9F43B000C7F4E4 /* QTUMImageTagCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B315D0311F9F43B000C7F4E4 /* QTUMImageTagCellLight.m */; };
@@ -226,7 +231,6 @@
 		B3597DFB1E811D6500EBF094 /* ServerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFA1E811D6500EBF094 /* ServerAdapter.m */; };
 		B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3597DFD1E81517200EBF094 /* NotificationManager.m */; };
 		B35B06401FEBBB79007BB204 /* TokenHistoryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B35B063F1FEBBB79007BB204 /* TokenHistoryElement.m */; };
-		B35B06431FEBBC5E007BB204 /* ContractManagerRequestAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B35B06421FEBBC5E007BB204 /* ContractManagerRequestAdapter.m */; };
 		B35DF6191F1F4A6000316953 /* RestoreWalletViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF6181F1F4A6000316953 /* RestoreWalletViewControllerDark.m */; };
 		B35DF61C1F1F4A7400316953 /* RestoreWalletViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF61B1F1F4A7400316953 /* RestoreWalletViewControllerLight.m */; };
 		B35DF6201F1F569800316953 /* InputTextViewDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B35DF61F1F1F569800316953 /* InputTextViewDark.m */; };
@@ -950,6 +954,16 @@
 		B31441121FB49A7A004FE08C /* QTUMTitleTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMTitleTagCell.m; sourceTree = "<group>"; };
 		B31441141FB49A8C004FE08C /* QTUMTitleTagCellLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMTitleTagCellLight.h; sourceTree = "<group>"; };
 		B31441151FB49A8C004FE08C /* QTUMTitleTagCellLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMTitleTagCellLight.m; sourceTree = "<group>"; };
+		B31584A820317D05005483C9 /* TokenDetailDataDisplayManagerImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokenDetailDataDisplayManagerImp.h; sourceTree = "<group>"; };
+		B31584A920317D05005483C9 /* TokenDetailDataDisplayManagerImp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TokenDetailDataDisplayManagerImp.m; sourceTree = "<group>"; };
+		B31584AB203186E5005483C9 /* ContractHistoryFacadeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractHistoryFacadeService.h; sourceTree = "<group>"; };
+		B31584AC203186E5005483C9 /* ContractHistoryFacadeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractHistoryFacadeService.m; sourceTree = "<group>"; };
+		B31584B7203198D4005483C9 /* WalletContractHistoryEntity+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalletContractHistoryEntity+Extension.h"; sourceTree = "<group>"; };
+		B31584B8203198D4005483C9 /* WalletContractHistoryEntity+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WalletContractHistoryEntity+Extension.m"; sourceTree = "<group>"; };
+		B31584C02031B2F7005483C9 /* WalletContractHistoryEntity+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalletContractHistoryEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B31584C12031B2F7005483C9 /* WalletContractHistoryEntity+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalletContractHistoryEntity+CoreDataClass.h"; sourceTree = "<group>"; };
+		B31584C22031B2F7005483C9 /* WalletContractHistoryEntity+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WalletContractHistoryEntity+CoreDataClass.m"; sourceTree = "<group>"; };
+		B31584C32031B2F8005483C9 /* WalletContractHistoryEntity+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WalletContractHistoryEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B315D02A1F9E100100C7F4E4 /* QTUMParagrafTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMParagrafTagCell.h; sourceTree = "<group>"; };
 		B315D02B1F9E100100C7F4E4 /* QTUMParagrafTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTUMParagrafTagCell.m; sourceTree = "<group>"; };
 		B315D02D1F9F439E00C7F4E4 /* QTUMDefaultTagCellLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTUMDefaultTagCellLight.h; sourceTree = "<group>"; };
@@ -1228,8 +1242,6 @@
 		B35B063D1FEBB669007BB204 /* HistoryStorageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryStorageProtocol.h; sourceTree = "<group>"; };
 		B35B063E1FEBBB79007BB204 /* TokenHistoryElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokenHistoryElement.h; sourceTree = "<group>"; };
 		B35B063F1FEBBB79007BB204 /* TokenHistoryElement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TokenHistoryElement.m; sourceTree = "<group>"; };
-		B35B06411FEBBC5E007BB204 /* ContractManagerRequestAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContractManagerRequestAdapter.h; sourceTree = "<group>"; };
-		B35B06421FEBBC5E007BB204 /* ContractManagerRequestAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContractManagerRequestAdapter.m; sourceTree = "<group>"; };
 		B35DF6171F1F4A6000316953 /* RestoreWalletViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreWalletViewControllerDark.h; sourceTree = "<group>"; };
 		B35DF6181F1F4A6000316953 /* RestoreWalletViewControllerDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestoreWalletViewControllerDark.m; sourceTree = "<group>"; };
 		B35DF61A1F1F4A7400316953 /* RestoreWalletViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestoreWalletViewControllerLight.h; sourceTree = "<group>"; };
@@ -2784,6 +2796,10 @@
 		B32A52F42022162F00280D25 /* Data Base */ = {
 			isa = PBXGroup;
 			children = (
+				B31584C02031B2F7005483C9 /* WalletContractHistoryEntity+CoreDataProperties.h */,
+				B31584C12031B2F7005483C9 /* WalletContractHistoryEntity+CoreDataClass.h */,
+				B31584C22031B2F7005483C9 /* WalletContractHistoryEntity+CoreDataClass.m */,
+				B31584C32031B2F8005483C9 /* WalletContractHistoryEntity+CoreDataProperties.m */,
 				B3D7C07B202CA1F50058BB1D /* WalletBalanceEntity+CoreDataProperties.h */,
 				B3D7C07C202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.h */,
 				B3D7C07D202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.m */,
@@ -2807,6 +2823,8 @@
 				B3D4D80120287CC500E59791 /* TransactionReceipt+Extension.m */,
 				B3D7C078202C998F0058BB1D /* WalletBalanceEntity+Extension.h */,
 				B3D7C079202C998F0058BB1D /* WalletBalanceEntity+Extension.m */,
+				B31584B7203198D4005483C9 /* WalletContractHistoryEntity+Extension.h */,
+				B31584B8203198D4005483C9 /* WalletContractHistoryEntity+Extension.m */,
 			);
 			path = "Data Base";
 			sourceTree = "<group>";
@@ -3172,8 +3190,6 @@
 				B365CA621EA4ED540040A163 /* Contract.m */,
 				B30BAE2C1E9E3AA600CA795F /* ContractManager.h */,
 				B30BAE2D1E9E3AA600CA795F /* ContractManager.m */,
-				B35B06411FEBBC5E007BB204 /* ContractManagerRequestAdapter.h */,
-				B35B06421FEBBC5E007BB204 /* ContractManagerRequestAdapter.m */,
 			);
 			path = Token;
 			sourceTree = "<group>";
@@ -4372,6 +4388,8 @@
 				B3C5567D2023215B008B3052 /* HistoryFacadeService.m */,
 				B3D7C06F202C962A0058BB1D /* WalletBalanceFacadeService.h */,
 				B3D7C070202C962A0058BB1D /* WalletBalanceFacadeService.m */,
+				B31584AB203186E5005483C9 /* ContractHistoryFacadeService.h */,
+				B31584AC203186E5005483C9 /* ContractHistoryFacadeService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -4750,6 +4768,8 @@
 				B35DF6361F26233000316953 /* TokenDetailDisplayDataManagerDelegate.h */,
 				B35DF6331F26225800316953 /* TokenDetailOutput.h */,
 				B35DF6341F26227E00316953 /* TokenDetailOutputDelegate.h */,
+				B31584A820317D05005483C9 /* TokenDetailDataDisplayManagerImp.h */,
+				B31584A920317D05005483C9 /* TokenDetailDataDisplayManagerImp.m */,
 			);
 			path = TokenDetails;
 			sourceTree = "<group>";
@@ -6142,6 +6162,7 @@
 				B3CD78DA1F4DC1F400D79363 /* ChooseReciveAddressViewControllerDark.m in Sources */,
 				B30FE6021FFE2EF8001636AE /* ExampleWordCollectionViewCellDark.m in Sources */,
 				E7396AF01DDEF8030002CD47 /* AddressListViewController.m in Sources */,
+				B31584C42031B2F8005483C9 /* WalletContractHistoryEntity+CoreDataClass.m in Sources */,
 				B35DF6291F1F638E00316953 /* ExportWalletBrandKeyViewControllerLight.m in Sources */,
 				B32BC4A81F28B49C00C2417C /* ChangePinCoordinator.m in Sources */,
 				B3CBDF411F2B496A00C80D4E /* TokenTemplateCellDark.m in Sources */,
@@ -6216,6 +6237,7 @@
 				B3597DFE1E81517200EBF094 /* NotificationManager.m in Sources */,
 				B3E159221ED6B1A200D70A87 /* AddNewTokensViewController.m in Sources */,
 				B305A1221FCF33DC00FC4D2F /* CallContractFacadeService.m in Sources */,
+				B31584B9203198D4005483C9 /* WalletContractHistoryEntity+Extension.m in Sources */,
 				B30B11561FC6CDEC00E5ABBC /* ProfileStoryboardFactory.m in Sources */,
 				B394503A2022F126004AAA40 /* CoreDataService.m in Sources */,
 				E7C101B81F13CBC700848526 /* BorderedLabelLight.m in Sources */,
@@ -6268,6 +6290,7 @@
 				B381CBE51F0291CB00142252 /* SecurityPopupViewController.m in Sources */,
 				B30BAE2E1E9E3AA600CA795F /* ContractManager.m in Sources */,
 				E71B72F01F0E9137004BECEA /* PageControlItemLight.m in Sources */,
+				B31584C52031B2F8005483C9 /* WalletContractHistoryEntity+CoreDataProperties.m in Sources */,
 				B32C3CF61E1129270094C82C /* ControllersFactory.m in Sources */,
 				E7EA2CB81ED42DB500AFD5D0 /* LanguageViewController.m in Sources */,
 				B36505921F14B3A900521603 /* CreatePinViewControllerDark.m in Sources */,
@@ -6328,6 +6351,7 @@
 				B3D5FE801F56F400006A2BF2 /* AbiParameterTypeDynamicArrayFixedBytes.m in Sources */,
 				E752204B1F0E70E60028D152 /* PageControl.m in Sources */,
 				B3141E661F30AD740095E3DF /* CreateTokenFinishViewControllerLight.m in Sources */,
+				B31584AA20317D05005483C9 /* TokenDetailDataDisplayManagerImp.m in Sources */,
 				B3113C602029C2A900945F01 /* TransactionReceipt+CoreDataClass.m in Sources */,
 				E73910571DE424DD008145A8 /* BTCTransaction+Extensions.m in Sources */,
 				B342288B1F73CF6400C4C381 /* SliderFeeView.m in Sources */,
@@ -6450,6 +6474,7 @@
 				B3EE8F311F13529600131823 /* ChooseTokenPaymentDelegateDataSourceDark.m in Sources */,
 				B3D7C07F202CA1F50058BB1D /* WalletBalanceEntity+CoreDataClass.m in Sources */,
 				B39048671FDFEE6900D5F735 /* TemplatesHeaderCell.m in Sources */,
+				B31584AD203186E5005483C9 /* ContractHistoryFacadeService.m in Sources */,
 				E784F8CA1F025DDB00A513BF /* SourceCodePopUpViewController.m in Sources */,
 				B3141E561F3090A60095E3DF /* AbiTextFieldWithLineLight.m in Sources */,
 				B369DF381F5D672E008B81CB /* AbiParameterTypeElementaryArray.m in Sources */,
@@ -6603,7 +6628,6 @@
 				B3EE8F281F0E109300131823 /* TabBarControllerLight.m in Sources */,
 				B33601861E963EC800243A21 /* HistoryItemViewController.m in Sources */,
 				E7FD363D1DC4D07E00748177 /* main.m in Sources */,
-				B35B06431FEBBC5E007BB204 /* ContractManagerRequestAdapter.m in Sources */,
 				B365CA821EA8AA070040A163 /* WalletManagerRequestAdapter.m in Sources */,
 				B3C136321FFCF95600AC3EB1 /* CustomWordsLayout.m in Sources */,
 				B35130611E49C9930048A28C /* NewsCellModel.m in Sources */,

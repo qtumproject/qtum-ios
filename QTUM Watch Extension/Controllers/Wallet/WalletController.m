@@ -25,7 +25,7 @@
 
 	[super awakeWithContext:context];
 	[self updateControls];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (updateControls) name:@"kWalletDidUpdate" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (reloadHistorySourcereloadHistorySourcereloadHistorySource) name:@"kWalletDidUpdate" object:nil];
 }
 
 - (void)updateControls {

@@ -21,6 +21,7 @@
 }
 
 - (void)setData:(Wallet *) wallet {
+    
 	self.adressLabel.text = ([wallet isKindOfClass:[Contract class]]) ? NSLocalizedString(@"Contract Address", "") : NSLocalizedString(@"QTUM Address", "");
 	self.adressValueLabel.text = wallet.mainAddress;
 	self.valueLabel.text = [NSString stringWithFormat:@"%@", [[SLocator.walletBalanceFacadeService lastBalance] roundedNumberWithScale:3]];
@@ -76,9 +77,9 @@
             self.lastBalanceUpdateLabel.hidden = NO;
             break;
         case HeaderCellTypeAllVisibleWithLastTime:
-            self.pageControl.hidden = YES;
-            self.unconfirmedValue.hidden = YES;
-            self.notConfirmedTitleLabel.hidden = YES;
+            self.pageControl.hidden = NO;
+            self.unconfirmedValue.hidden = NO;
+            self.notConfirmedTitleLabel.hidden = NO;
             self.noInternetConnectionLabel.hidden = NO;
             self.lastBalanceUpdateLabel.hidden = NO;
             break;
