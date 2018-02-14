@@ -53,6 +53,9 @@
 
 @end
 
+static const CGFloat blanceRoundingCount = 8;
+
+
 @implementation WalletCoordinator
 
 - (instancetype)initWithNavigationController:(UINavigationController *) navigationController {
@@ -192,8 +195,8 @@
 		vc.type = ReciveWalletOutput;
 		vc.tokenAddress = nil;
 
-		vc.balanceText = [NSString stringWithFormat:@"%@", [spendable.balance roundedNumberWithScale:3]];
-		vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [spendable.unconfirmedBalance roundedNumberWithScale:3]];
+		vc.balanceText = [NSString stringWithFormat:@"%@", [SLocator.walletBalanceFacadeService.lastBalance roundedNumberWithScale:blanceRoundingCount]];
+		vc.unconfirmedBalanceText = [NSString stringWithFormat:@"%@", [SLocator.walletBalanceFacadeService.lastUnconfirmedBalance roundedNumberWithScale:blanceRoundingCount]];
 	}
 
 	vc.delegate = self;
