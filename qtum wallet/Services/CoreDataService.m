@@ -83,7 +83,7 @@ static NSString* dateSortingField = @"dateInerval";
     return historyEntity;
 }
 
-- (WalletContractHistoryEntity *)createWalletContractHistoryEntityWith:(HistoryElement*) element {
+- (WalletContractHistoryEntity *)createWalletContractHistoryEntityWith:(HistoryElement*) element andDecimals:(NSString*) decimals {
     
     [self removeAllWalletContractHistoryWithTxHash:element.transactionHash];
     
@@ -99,6 +99,7 @@ static NSString* dateSortingField = @"dateInerval";
     historyEntity.contracted = element.contracted;
     historyEntity.confirmed = element.confirmed;
     historyEntity.currency = element.currency;
+    historyEntity.decimalString = decimals;
     
     if (element.dateNumber) {
         historyEntity.dateInerval = element.dateNumber.integerValue;

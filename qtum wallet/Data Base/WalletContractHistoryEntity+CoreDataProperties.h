@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSObject *toAddresses;
 @property (nullable, nonatomic, copy) NSString *transactionHash;
 @property (nullable, nonatomic, copy) NSString *txTime;
+@property (nullable, nonatomic, copy) NSString *decimalString;
 @property (nonatomic) int64_t dateInerval;
 @property (nonatomic) BOOL hasReceipt;
 @property (nullable, nonatomic, copy) NSString *currency;

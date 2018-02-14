@@ -565,11 +565,11 @@ static const NSInteger maxSuportDecimalValue = 128;
     }
 }
 
-- (void)updateHistoryOfSpendableObject:(id <Spendable>) object withHandler:(void (^)(BOOL)) complete andPage:(NSInteger) page {
+- (void)updateHistoryOfSpendableObject:(Contract*) object withHandler:(void (^)(BOOL)) complete andPage:(NSInteger) page {
     
     NSArray* allkeysAddresses = SLocator.walletManager.wallet.allKeysAdreeses;
     
-    [SLocator.contractHistoryFacadeService updateHistroyForAddresses:allkeysAddresses withPage:page withContractAddress:object.mainAddress withCurrency:object.symbol withHandler:^(BOOL succes) {
+    [SLocator.contractHistoryFacadeService updateHistroyForAddresses:allkeysAddresses withPage:page withContractAddress:object.mainAddress withCurrency:object.symbol withDecimals:object.decimals.stringValue withHandler:^(BOOL succes) {
         
         if (complete) {
             complete (succes);

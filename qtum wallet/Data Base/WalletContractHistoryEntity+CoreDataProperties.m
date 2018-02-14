@@ -26,6 +26,7 @@
 @dynamic currency;
 @dynamic confirmed;
 @dynamic contracted;
+@dynamic decimalString;
 @dynamic internal;
 @dynamic send;
 

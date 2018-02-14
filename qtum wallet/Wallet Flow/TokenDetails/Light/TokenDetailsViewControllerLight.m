@@ -44,7 +44,7 @@ static NSInteger noContractViewTrailing = 0;
 
 	[self configTableView];
     [self configLocalization];
-
+    self.isFirstTimeUpdate = YES;
 	self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
     [self updateHeader:token];
 	[self reloadHistorySource];
