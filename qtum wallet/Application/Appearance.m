@@ -29,7 +29,8 @@
 	[[SVProgressHUD appearance] setForegroundColor:customBlackColor ()];
 	[[SVProgressHUD appearance] setBackgroundColor:customRedColor ()];
 	[[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-	[[SVProgressHUD appearance] setMinimumDismissTimeInterval:1];
+	[[SVProgressHUD appearance] setMinimumDismissTimeInterval:0.5];
+    [[SVProgressHUD appearance] setMaximumDismissTimeInterval:1];
 	[[SVProgressHUD appearance] setCornerRadius:0];
 
 	[[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: customBlueColor (),
@@ -95,7 +96,8 @@
 	[[SVProgressHUD appearance] setForegroundColor:lightGreenColor ()];
 	[[SVProgressHUD appearance] setBackgroundColor:[UIColor whiteColor]];
 	[[SVProgressHUD appearance] setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-	[[SVProgressHUD appearance] setMinimumDismissTimeInterval:1];
+	[[SVProgressHUD appearance] setMinimumDismissTimeInterval:0.5];
+    [[SVProgressHUD appearance] setMaximumDismissTimeInterval:1];
 	[[SVProgressHUD appearance] setCornerRadius:5];
 
 	[[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: lightGrayColor (),
