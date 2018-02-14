@@ -23,7 +23,7 @@
 - (TransactionReceipt *_Nonnull)createReceiptEntityWith:(NSArray*_Nonnull) dataDictionary withTxHash:(NSString*_Nonnull) historyTransactionHash;
 - (NSArray<WalletHistoryEntity*>*_Nonnull)findWalletHistoryEntityWithTxHash:(NSString *_Nonnull)txHash;
 - (TransactionReceipt*_Nullable)findHistoryRecieptEntityWithTxHash:(NSString *_Nonnull)txHash;
-- (WalletContractHistoryEntity *_Nonnull)createWalletContractHistoryEntityWith:(HistoryElement*_Nonnull) element;
+- (WalletContractHistoryEntity *_Nonnull)createWalletContractHistoryEntityWith:(HistoryElement*_Nonnull) element andDecimals:(NSString*_Nonnull) decimals;
 - (WalletBalanceEntity*_Nonnull)walletBalanceEntity;
 - (void)updateHistoryEntityWithReceiptTxHash:(NSString *_Nonnull) txHash contracted:(BOOL) contracted;
 - (NSArray<WalletHistoryEntity*>*_Nonnull)allWalletHistoryEntitysWithLimit:(NSInteger) limit;

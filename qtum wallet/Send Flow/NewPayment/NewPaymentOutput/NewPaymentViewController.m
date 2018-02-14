@@ -103,6 +103,7 @@ static const NSInteger closeTopForEditButton = 0;
 static const NSInteger openTopForEditButton = 15;
 static const NSInteger showedGasTopForSend = 30;
 static const NSInteger hidedGasTopForSend = -40;
+static const CGFloat blanceRoundingCount = 8;
 
 @implementation NewPaymentViewController
 
@@ -409,8 +410,8 @@ static const NSInteger hidedGasTopForSend = -40;
 
 - (void)updateQuickInfoOfWalletWithBalance:(QTUMBigNumber*) balance andUnconfirmedBalance:(QTUMBigNumber*) unconfirmedBalance {
     
-    self.balanceLabel.text = [NSString stringWithFormat:@"%@", [balance.decimalNumber roundedNumberWithScale:3]];
-    self.unconfirmedBalanceLabel.text = [NSString stringWithFormat:@"%@", [unconfirmedBalance.decimalNumber roundedNumberWithScale:3]];
+    self.balanceLabel.text = [NSString stringWithFormat:@"%@", [balance.decimalNumber roundedNumberWithScale:blanceRoundingCount]];
+    self.unconfirmedBalanceLabel.text = [NSString stringWithFormat:@"%@", [unconfirmedBalance.decimalNumber roundedNumberWithScale:blanceRoundingCount]];
     
     self.balanceSymbolLabel.text = NSLocalizedString(@"QTUM", @"");
     self.unconfirmedBalanceLabel.hidden = NO;

@@ -38,7 +38,7 @@
 					(id)[[UIColor colorWithRed:56 / 255.0f green:176 / 255.0f blue:197 / 255.0f alpha:1.0f] CGColor]];
 			break;
 		case Blue:
-			gradient.colors = @[(id)[[UIColor colorWithRed:63 / 255.0f green:56 / 255.0f blue:196 / 255.0f alpha:1.0f] CGColor],
+			gradient.colors = @[(id)[[UIColor colorWithRed:65 / 255.0f green:85 / 255.0f blue:200 / 255.0f alpha:1.0f] CGColor],
 					(id)[[UIColor colorWithRed:56 / 255.0f green:176 / 255.0f blue:197 / 255.0f alpha:1.0f] CGColor]];
 			break;
 		case Green:

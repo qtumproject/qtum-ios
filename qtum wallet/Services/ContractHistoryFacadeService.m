@@ -40,7 +40,8 @@ static NSInteger batch = 25;
     return self;
 }
 
-- (void)updateHistroyForAddresses:(NSArray *) keyAddreses withPage:(NSInteger) page withContractAddress:(NSString*) contractAddress withCurrency:(NSString*) currency withHandler:(HistoryHendler) handler {
+- (void)updateHistroyForAddresses:(NSArray *) keyAddreses withPage:(NSInteger) page withContractAddress:(NSString*) contractAddress withCurrency:(NSString*) currency withDecimals:(NSString*) decimals withHandler:(HistoryHendler) handler {
+    
     
     __weak __typeof (self) weakSelf = self;
     
@@ -71,7 +72,7 @@ static NSInteger batch = 25;
                                                
                                                weakSelf.totalItems = totalCount;
                                                
-                                               [weakSelf createHistoryElements:responseObject withCurrency:currency];
+                                               [weakSelf createHistoryElements:responseObject withCurrency:currency withDecimals:decimals];
                                                
                                            } andFailureHandler:^(NSError *error, NSString *message) {
                                                
@@ -89,7 +90,7 @@ static NSInteger batch = 25;
     [self.workingQueue addOperation:operation];
 }
 
-- (void)createHistoryElements:(NSDictionary *) responseObject withCurrency:(NSString*) currency {
+- (void)createHistoryElements:(NSDictionary *) responseObject withCurrency:(NSString*) currency withDecimals:(NSString*) decimals {
     
     NSBlockOperation* operation = [NSBlockOperation new];
     
@@ -109,7 +110,7 @@ static NSInteger batch = 25;
             id <HistoryElementProtocol> element = [self createHistoryElement:dictionary];
             [history addObject:element];
             element.currency = currency;
-            [weakSelf.storageService createWalletContractHistoryEntityWith:element];
+            [weakSelf.storageService createWalletContractHistoryEntityWith:element andDecimals:decimals];
         }
         
         [weakSelf.storageService saveWithcompletion:^(BOOL contextDidSave, NSError * _Nullable error) {

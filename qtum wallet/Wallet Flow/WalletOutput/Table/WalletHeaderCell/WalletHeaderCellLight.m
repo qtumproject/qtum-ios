@@ -10,7 +10,7 @@
 #import "DiagramView.h"
 #import "GradientView.h"
 
-CGFloat const WalletHeaderCellLightHeaderHeight = 64.0f;
+CGFloat const WalletHeaderCellLightHeaderHeight = 84.0f;
 
 @interface WalletHeaderCellLight ()
 

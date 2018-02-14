@@ -24,6 +24,8 @@
 
 @end
 
+static const CGFloat blanceRoundingCount = 8;
+
 @implementation WalletViewController
 
 - (void)viewDidLoad {
@@ -85,7 +87,7 @@
     __weak __typeof(self) weakSelf = self;
     dispatch_async (dispatch_get_main_queue (), ^{
         
-        BOOL haveUncorfirmed = ![wallet.unconfirmedBalance isEqualToInt:0];
+        BOOL haveUncorfirmed = ![SLocator.walletBalanceFacadeService.lastUnconfirmedBalance isEqualToInt:0];
         
         weakSelf.availableTextTopConstraint.constant = haveUncorfirmed ? 10.0f : 17.0f;
         weakSelf.availableValueTopConstraint.constant = haveUncorfirmed ? 8.0f : 15.0f;
@@ -93,8 +95,8 @@
         weakSelf.unconfirmedTextLabel.hidden =
         weakSelf.uncorfirmedLabel.hidden = !haveUncorfirmed;
         
-        weakSelf.uncorfirmedLabel.text = [NSString stringWithFormat:@"%@ %@", [wallet.unconfirmedBalance roundedNumberWithScale:3], NSLocalizedString(@"QTUM", nil)];
-        weakSelf.availabelLabel.text = [NSString stringWithFormat:@"%@ %@", [wallet.balance roundedNumberWithScale:3], NSLocalizedString(@"QTUM", nil)];
+        weakSelf.uncorfirmedLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastUnconfirmedBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"QTUM", nil)];
+        weakSelf.availabelLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"QTUM", nil)];
     });
 }
 

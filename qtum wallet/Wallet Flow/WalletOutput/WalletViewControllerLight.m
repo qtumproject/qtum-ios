@@ -11,6 +11,7 @@
 @interface WalletViewControllerLight ()
 
 @property (weak, nonatomic) IBOutlet UIView *titleView;
+@property (weak, nonatomic) IBOutlet UIView *statusBarView;
 
 @end
 
@@ -39,8 +40,8 @@
 	CGRect frame = self.view.bounds;
 	frame.origin.y = -frame.size.height;
 	UIView *refreshBackgroundView = [[UIView alloc] initWithFrame:frame];
-	refreshBackgroundView.backgroundColor = lightDarkBlueColorForGradient ();
-	[self.tableView insertSubview:refreshBackgroundView atIndex:0];
+	refreshBackgroundView.backgroundColor = lightDarkBlueColor ();
+	//[self.tableView insertSubview:refreshBackgroundView atIndex:0];
 }
 
 - (void)reloadHeader:(id <Spendable>) wallet {
@@ -68,6 +69,7 @@
 
 	[super needHideHeaderForSecondSeciton];
 
+    self.statusBarView.backgroundColor = [UIColor clearColor];
 	self.headerView.backgroundColor = [UIColor clearColor];
 }
 
@@ -75,6 +77,7 @@
 
 	[super needShowHeaderForSecondSeciton];
 
+    self.statusBarView.backgroundColor = lightDarkBlueColor ();
 	self.headerView.backgroundColor = lightDarkBlueColor ();
 }
 

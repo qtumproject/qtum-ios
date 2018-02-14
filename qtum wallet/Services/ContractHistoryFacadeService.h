@@ -15,7 +15,7 @@
 
 - (instancetype)initWithRequestService:(id <Requestable>) requestManager andStorageService:(CoreDataService*) storageService;
 
-- (void)updateHistroyForAddresses:(NSArray *) keyAddreses withPage:(NSInteger) page withContractAddress:(NSString*) contractAddress withCurrency:(NSString*) currency withHandler:(HistoryHendler) handler;
+- (void)updateHistroyForAddresses:(NSArray *) keyAddreses withPage:(NSInteger) page withContractAddress:(NSString*) contractAddress withCurrency:(NSString*) currency withDecimals:(NSString*) decimals withHandler:(HistoryHendler) handler;
 - (TransactionReceipt*)getRecieptWithTxHash:(NSString *) txHash;
 - (void)cancelOperations;
 

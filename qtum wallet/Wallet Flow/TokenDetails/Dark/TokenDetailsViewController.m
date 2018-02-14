@@ -214,7 +214,7 @@ static NSInteger noContractViewTrailing = 0;
 
 - (void)updateHeader:(Contract *) token {
     
-    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%@ %@", token.balanceString ? : @"", token.symbol ? : @""];
+    self.availableBalanceLabel.text = [NSString stringWithFormat:@"%@ %@", token.shortBalanceString ? : @"", token.symbol ? : @""];
 }
 
 - (void)refreshTable {

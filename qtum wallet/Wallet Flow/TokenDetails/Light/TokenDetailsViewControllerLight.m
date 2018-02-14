@@ -44,9 +44,9 @@ static NSInteger noContractViewTrailing = 0;
 
 	[self configTableView];
     [self configLocalization];
-
+    self.isFirstTimeUpdate = YES;
 	self.titleLabel.text = (self.token.name && self.token.name.length > 0) ? self.token.name : NSLocalizedString(@"Token Details", nil);
-
+    [self updateHeader:token];
 	[self reloadHistorySource];
 }
 
@@ -60,6 +60,10 @@ static NSInteger noContractViewTrailing = 0;
     }
 }
 
+- (void)updateHeader:(Contract *) token {
+    
+    self.availibleBalanceShortInfoLabel.text = [NSString stringWithFormat:@"%@ %@", token.shortBalanceString ? : @"", token.symbol ? : @""];
+}
 #pragma mark - Configuration
 
 - (void)configTableView {
@@ -143,7 +147,7 @@ static NSInteger noContractViewTrailing = 0;
     
     __weak __typeof(self)weakSelf = self;
     dispatch_async (dispatch_get_main_queue (), ^{
-        
+        [weakSelf updateHeader:weakSelf.token];
         [weakSelf.tableView reloadData];
     });
 }

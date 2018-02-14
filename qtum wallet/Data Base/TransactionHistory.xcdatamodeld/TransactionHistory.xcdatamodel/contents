@@ -35,6 +35,7 @@
         <attribute name="contracted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateInerval" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="decimalString" optional="YES" attributeType="String" defaultValueString="0" syncable="YES"/>
         <attribute name="fromAddresses" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="hasReceipt" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="internal" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
@@ -70,7 +71,7 @@
         <element name="Log" positionX="18" positionY="-162" width="128" height="90"/>
         <element name="TransactionReceipt" positionX="-209" positionY="-441" width="128" height="195"/>
         <element name="WalletBalanceEntity" positionX="-189" positionY="-288" width="128" height="90"/>
+        <element name="WalletContractHistoryEntity" positionX="-189" positionY="-288" width="128" height="255"/>
         <element name="WalletHistoryEntity" positionX="-396" positionY="-250" width="128" height="270"/>
-        <element name="WalletContractHistoryEntity" positionX="-189" positionY="-288" width="128" height="240"/>
     </elements>
 </model>
