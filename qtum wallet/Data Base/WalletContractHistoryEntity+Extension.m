@@ -15,13 +15,6 @@
 
 -(QTUMBigNumber*)amount {
     
-    QTUMBigNumber* amount = [QTUMBigNumber decimalWithString:self.amountString];
-    QTUMBigNumber* decimal = [QTUMBigNumber decimalWithString:self.decimalString];
-    
-    return [amount numberWithPowerOfMinus10:decimal];
-}
-
--(QTUMBigNumber*)amountWithoutDecimals {
     return [QTUMBigNumber decimalWithString:self.amountString];
 }
 

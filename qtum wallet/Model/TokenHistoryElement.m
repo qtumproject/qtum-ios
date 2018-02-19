@@ -28,7 +28,8 @@ hasReceipt = _hasReceipt,
 blockHash = blockHash,
 internal = _internal,
 blockNumber = _blockNumber,
-contracted = _contracted;
+contracted = _contracted,
+decimals = _decimals;
 
 
 - (BOOL)isEqualElementWithoutConfimation:(id <HistoryElementProtocol>) object {
@@ -62,13 +63,17 @@ contracted = _contracted;
         NSMutableArray* fromAddresses = self.fromAddresses.mutableCopy;
         NSMutableArray* toAddresses = self.toAddresses.mutableCopy;
         
+        QTUMBigNumber* decimalsNumber = self.decimals.length > 0 ? [QTUMBigNumber decimalWithString:self.decimals] : [QTUMBigNumber decimalWithString:@"0"];
+        QTUMBigNumber* amountNumber = object[@"amount"] ? [QTUMBigNumber decimalWithString:object[@"amount"]] : [QTUMBigNumber decimalWithString:@"0"];
+        QTUMBigNumber* amountWithDecimal = [amountNumber numberWithPowerOfMinus10:decimalsNumber];
+        NSString* amountString = amountWithDecimal.stringValue;
         [fromAddresses addObject:@{@"address": object[@"from"],
-                                       @"value": object[@"amount"]}];
+                                       @"value": amountString}];
         [toAddresses addObject:@{@"address": object[@"to"],
-                                       @"value": object[@"amount"]}];
-        self.amount = object[@"amount"] ? [QTUMBigNumber decimalWithString:object[@"amount"]] : [QTUMBigNumber decimalWithString:@"0"];
+                                       @"value": amountString}];
+        self.amount = amountWithDecimal;
         self.address = object[@"contract_address"] ? object[@"contract_address"] : @"";
-        self.amountString = self.amount.stringValue;
+        self.amountString = amountString;
         self.transactionHash = ![object[@"tx_hash"] isKindOfClass:[NSNull class]] ? object[@"tx_hash"] : nil;
         self.dateNumber = ![object[@"tx_time"] isKindOfClass:[NSNull class]] ? object[@"tx_time"] : nil;
         NSDictionary* addresses = [SLocator.walletManager.wallet addressKeyHashTable];

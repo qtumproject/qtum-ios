@@ -44,11 +44,6 @@
 -(void)setupWalletBalance {
     
     WalletBalanceEntity* balance = [self.storageService walletBalanceEntity];
-    
-    if (!balance.dateInterval) {
-        balance.dateInterval = [[NSDate new] timeIntervalSince1970];
-    }
-    
     self.balances = balance;
 }
 

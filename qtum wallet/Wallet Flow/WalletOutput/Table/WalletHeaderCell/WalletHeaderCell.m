@@ -29,8 +29,10 @@
     self.notConfirmedTitleLabel.text = NSLocalizedString(@"Unconfirmed Balance", "");
     self.availableTitleLabel.text = NSLocalizedString(@"Available Balance", "");
     self.noInternetConnectionLabel.text = NSLocalizedString(@"No Internet connection found", @"");
-    NSString* lastUpdateTimeString = NSLocalizedString(@"Your balance was last updated at", @"");
-    self.lastBalanceUpdateLabel.text = [NSString stringWithFormat:@"%@ %@",lastUpdateTimeString, [SLocator.walletBalanceFacadeService lastUpdateDateSring]];
+    NSString* lastUpdateTimeTextString = NSLocalizedString(@"Your balance was last updated at", @"");
+    NSString* lastUpdateTimeString = [SLocator.walletBalanceFacadeService lastUpdateDateSring];
+
+    self.lastBalanceUpdateLabel.text = lastUpdateTimeString ? [NSString stringWithFormat:@"%@ %@",lastUpdateTimeTextString, [SLocator.walletBalanceFacadeService lastUpdateDateSring]] : @"";
 
 	self.spendable = wallet;
 

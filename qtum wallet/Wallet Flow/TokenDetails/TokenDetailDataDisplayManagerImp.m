@@ -48,6 +48,11 @@ static NSString* footerLoaderReuseIdentifire = @"LoadingFooterCell";
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:fetchedSortingProperty ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
+    if (self.token.contractAddress.length > 0) {
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"contractAddress like %@", self.token.contractAddress];
+        [fetchRequest setPredicate:predicate];
+    }
+
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     fetchRequest.fetchLimit = batchSize;
@@ -181,7 +186,7 @@ static NSString* footerLoaderReuseIdentifire = @"LoadingFooterCell";
 - (NSInteger)countOfHistoryElement {
     
     NSInteger numberOfStorageObjects = self.fetchedResultsController.fetchedObjects.count;
-    self.emptyPlaceholderView.hidden = numberOfStorageObjects > 0 ? YES : NO;
+    self.emptyPlaceholderView.hidden = numberOfStorageObjects && numberOfStorageObjects > 0 ? YES : NO;
     return self.shouldShowLoadingCell && numberOfStorageObjects > 0 ? numberOfStorageObjects + 1 : numberOfStorageObjects;
 }
 

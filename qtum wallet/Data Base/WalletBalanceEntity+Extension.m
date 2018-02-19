@@ -27,7 +27,7 @@
     CGFloat dateNumber = self.dateInterval;
     
     if (!dateNumber) {
-        return @"";
+        return nil;
     }
     
     NSTimeInterval dateTimeInterval = dateNumber;

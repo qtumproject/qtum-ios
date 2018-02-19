@@ -107,7 +107,7 @@ static NSInteger batch = 25;
         NSMutableArray* history = @[].mutableCopy;
 
         for (NSDictionary *dictionary in responseObject) {
-            id <HistoryElementProtocol> element = [self createHistoryElement:dictionary];
+            id <HistoryElementProtocol> element = [self createHistoryElement:dictionary withDecimal:decimals];
             [history addObject:element];
             element.currency = currency;
             [weakSelf.storageService createWalletContractHistoryEntityWith:element andDecimals:decimals];
@@ -201,9 +201,10 @@ static NSInteger batch = 25;
     }
 }
 
-- (id <HistoryElementProtocol> )createHistoryElement:(NSDictionary *) dictionary {
+- (id <HistoryElementProtocol> )createHistoryElement:(NSDictionary *) dictionary withDecimal:(NSString*) decimals {
     
     TokenHistoryElement *element = [TokenHistoryElement new];
+    element.decimals = decimals;
     [element setupWithObject:dictionary];
     return element;
 }
