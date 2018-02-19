@@ -48,6 +48,11 @@ static NSString* footerLoaderReuseIdentifire = @"LoadingFooterCell";
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:fetchedSortingProperty ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
+    if (self.token.contractAddress.length > 0) {
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"contractAddress like %@", self.token.contractAddress];
+        [fetchRequest setPredicate:predicate];
+    }
+
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     fetchRequest.fetchLimit = batchSize;
