@@ -547,7 +547,7 @@
                                     <constraint firstItem="U8Q-wR-ANq" firstAttribute="centerY" secondItem="M43-Kb-ywq" secondAttribute="centerY" id="frp-Yb-PtH"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wxm-c6-KId">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wxm-c6-KId">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1776,24 +1776,7 @@ at 4:42:15 PM, July 12</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARW-Gf-dUj">
-                                <rect key="frame" x="0.0" y="314" width="375" height="353"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvP-uv-hWq">
-                                        <rect key="frame" x="41" y="164.5" width="294" height="23"/>
-                                        <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
-                                        <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="BvP-uv-hWq" firstAttribute="centerX" secondItem="ARW-Gf-dUj" secondAttribute="centerX" id="1S6-xH-bux"/>
-                                    <constraint firstAttribute="trailing" secondItem="BvP-uv-hWq" secondAttribute="trailing" constant="40" id="54b-ho-uuY"/>
-                                    <constraint firstItem="BvP-uv-hWq" firstAttribute="centerY" secondItem="ARW-Gf-dUj" secondAttribute="centerY" id="flU-IQ-dFC"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="105" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rZJ-eu-DGf" customClass="TokenDetailsTableView">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" rowHeight="105" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rZJ-eu-DGf" customClass="TokenDetailsTableView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.18823529410000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2061,6 +2044,7 @@ at 4:42:15 PM, July 12</string>
                                                 <constraint firstAttribute="trailing" secondItem="w5q-ng-D0G" secondAttribute="trailing" id="udL-Jo-Yjv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCellLoading" rowHeight="75" id="RAX-Jr-oQH" customClass="HistoryTableViewCellDark">
                                         <rect key="frame" x="0.0" y="295" width="375" height="75"/>
@@ -2422,6 +2406,23 @@ at 4:42:15 PM, July 12</string>
                                     <constraint firstAttribute="trailing" secondItem="40k-o9-LtX" secondAttribute="trailing" id="krn-Pg-Kzd"/>
                                     <constraint firstAttribute="bottom" secondItem="40k-o9-LtX" secondAttribute="bottom" id="xSL-6K-hRd"/>
                                     <constraint firstAttribute="height" constant="64" id="z5p-Nw-uLx"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARW-Gf-dUj">
+                                <rect key="frame" x="0.0" y="314" width="375" height="353"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvP-uv-hWq">
+                                        <rect key="frame" x="41" y="164.5" width="294" height="23"/>
+                                        <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                                        <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BvP-uv-hWq" firstAttribute="centerX" secondItem="ARW-Gf-dUj" secondAttribute="centerX" id="1S6-xH-bux"/>
+                                    <constraint firstAttribute="trailing" secondItem="BvP-uv-hWq" secondAttribute="trailing" constant="40" id="54b-ho-uuY"/>
+                                    <constraint firstItem="BvP-uv-hWq" firstAttribute="centerY" secondItem="ARW-Gf-dUj" secondAttribute="centerY" id="flU-IQ-dFC"/>
                                 </constraints>
                             </view>
                         </subviews>

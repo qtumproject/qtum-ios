@@ -186,7 +186,7 @@ static NSString* footerLoaderReuseIdentifire = @"LoadingFooterCell";
 - (NSInteger)countOfHistoryElement {
     
     NSInteger numberOfStorageObjects = self.fetchedResultsController.fetchedObjects.count;
-    self.emptyPlaceholderView.hidden = numberOfStorageObjects > 0 ? YES : NO;
+    self.emptyPlaceholderView.hidden = numberOfStorageObjects && numberOfStorageObjects > 0 ? YES : NO;
     return self.shouldShowLoadingCell && numberOfStorageObjects > 0 ? numberOfStorageObjects + 1 : numberOfStorageObjects;
 }
 
