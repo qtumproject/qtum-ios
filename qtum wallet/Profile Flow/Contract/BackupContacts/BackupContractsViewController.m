@@ -34,6 +34,7 @@
 
     [self addTapRecognizer];
     [self bindToNotifications];
+    [self configLocalization];
 }
 
 - (void)viewWillAppear:(BOOL) animated {

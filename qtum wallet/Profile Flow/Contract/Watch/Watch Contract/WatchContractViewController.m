@@ -80,6 +80,8 @@
     [self.choseFromLibButton setTitle:NSLocalizedString(@"CHOOSE FROM LIBRARY", @"") forState:UIControlStateNormal];
     self.abiInterfaceTextLabel.text = NSLocalizedString(@"ABI Interface", @"");
     self.titleTextLabel.text = NSLocalizedString(@"Watch Contract", @"Watch Contract Controllers Title");
+    self.contractNameField.placeholderLabel.text = NSLocalizedString(@"Contract name", @"Contract name placeholder");
+    self.contractAddressTextField.placeholderLabel.text = NSLocalizedString(@"Contract Address", @"");
 }
 
 #pragma mark - Private Methods

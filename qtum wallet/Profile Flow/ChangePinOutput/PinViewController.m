@@ -30,6 +30,7 @@ const float bottomOffset = 25;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self configPasswordView];
+    [self configLocalization];
 }
 
 - (void)viewDidAppear:(BOOL) animated {
@@ -43,6 +44,7 @@ const float bottomOffset = 25;
 -(void)configLocalization {
     
     [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel button") forState:UIControlStateNormal];
+    self.controllerTitle.text = NSLocalizedString(@"Enter Old PIN", "");
 }
 
 - (void)configPasswordView {

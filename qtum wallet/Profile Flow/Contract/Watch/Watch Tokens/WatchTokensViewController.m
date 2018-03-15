@@ -37,6 +37,8 @@
     [self.okButton setTitle:NSLocalizedString(@"OK", @"Ok button") forState:UIControlStateNormal];
     [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel button") forState:UIControlStateNormal];
     self.titleTextLabel.text = NSLocalizedString(@"Watch Token", @"Watch Token Controllers Title");
+    self.contractNameField.placeholderLabel.text = NSLocalizedString(@"Token Name", @"Contract name placeholder");
+    self.contractAddressTextField.placeholderLabel.text = NSLocalizedString(@"Token Address", @"");
 }
 
 #pragma mark - Output
