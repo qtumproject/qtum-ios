@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    [self configLocalization];
 }
 
 #pragma mark - Configuration

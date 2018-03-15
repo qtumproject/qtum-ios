@@ -32,6 +32,7 @@
 	[self configFromAddressesView];
 	[self configAmountView];
 	[self updateControls];
+    [self configLocalization];
 }
 
 #pragma mark - Configuration
@@ -41,6 +42,8 @@
     [self.transferButton setTitle:NSLocalizedString(@"TRANSFER", @"TRANSFER button") forState:UIControlStateNormal];
     [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"Cancel button") forState:UIControlStateNormal];
     self.titleTextLabel.text = NSLocalizedString(@"Transfer Balance", @"");
+    self.toTextFieldVIew.placeholderLabel.text = NSLocalizedString(@"To", @"");
+    self.fromTextFieldView.placeholderLabel.text = NSLocalizedString(@"From", @"");
 }
 
 - (void)configToAddressView {

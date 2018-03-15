@@ -33,10 +33,12 @@ static NSInteger textfieldsWithButtonHeight = 250;
 	self.bottomConstraintForCancelButton.constant = self.view.frame.size.height / 2. - textfieldsWithButtonHeight / 2.;
 
 	[self configPasswordView];
-
+    [self configLocalization];
+    
 	if (self.editingStarted) {
 		[self startEditing];
 	}
+    
 }
 
 - (void)didMoveToParentViewController:(UIViewController *) parent {

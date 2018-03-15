@@ -181,6 +181,7 @@ static const CGFloat blanceRoundingCount = 8;
     self.gasPriceTextLabel.text = NSLocalizedString(@"Gas Price:", @"");
     [self.editButton setTitle:NSLocalizedString(@"EDITE", @"Edite button") forState:UIControlStateNormal];
     [self.sendButton setTitle:NSLocalizedString(@"SEND", @"Send button") forState:UIControlStateNormal];
+    self.tokenTextField.placeholderLabel.text = NSLocalizedString(@"Choose Token", nil);
 }
 
 - (void)configFromAddressView {

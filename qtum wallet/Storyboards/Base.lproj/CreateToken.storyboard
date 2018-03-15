@@ -568,16 +568,20 @@
                     </view>
                     <connections>
                         <outlet property="bottomGradientView" destination="BQY-Ob-lHk" id="9cq-1o-vKg"/>
+                        <outlet property="cancelButton" destination="dyU-wp-gG7" id="qOg-ir-3rd"/>
                         <outlet property="editButton" destination="hc6-PC-Rd6" id="eXr-rx-pSp"/>
                         <outlet property="feeSlider" destination="t7B-U1-B5b" id="nAc-IR-mho"/>
                         <outlet property="feeTextField" destination="jtb-sI-fQF" id="DHS-ec-fra"/>
+                        <outlet property="finishButton" destination="Ios-8e-mIP" id="Poo-ID-s6U"/>
                         <outlet property="gasLimitMaxValueLabel" destination="vY1-O4-BhA" id="gkt-Bg-NcZ"/>
                         <outlet property="gasLimitMinValueLabel" destination="O7b-BD-dXI" id="5ao-R9-zk5"/>
                         <outlet property="gasLimitSlider" destination="jtq-Id-CK4" id="R3Q-x4-CGq"/>
+                        <outlet property="gasLimitTextLabel" destination="hzC-9p-zoo" id="3Af-nn-UqY"/>
                         <outlet property="gasLimitValueLabel" destination="KrK-EP-6jM" id="idy-n0-IAn"/>
                         <outlet property="gasPriceMaxValueLabel" destination="7zd-uI-YvM" id="Aoq-ow-A6B"/>
                         <outlet property="gasPriceMinValueLabel" destination="6gW-Xq-EIm" id="8hx-Xv-j1s"/>
                         <outlet property="gasPriceSlider" destination="h8r-Ym-E4G" id="4H6-UB-mtg"/>
+                        <outlet property="gasPriceTextLabel" destination="nua-yl-e83" id="tkW-M5-bxH"/>
                         <outlet property="gasPriceValueLabel" destination="LtY-KF-OXC" id="b7X-jy-3O9"/>
                         <outlet property="gasSlidersContainer" destination="Efq-rq-Rpm" id="skA-MI-rVT"/>
                         <outlet property="gasValuesContainer" destination="lUS-Zd-E18" id="KOb-0P-L58"/>
@@ -585,6 +589,7 @@
                         <outlet property="maxFeeLabel" destination="HOI-Ho-dhk" id="XZZ-Pp-EY5"/>
                         <outlet property="minFeeLabel" destination="mp7-ja-edN" id="0F3-4k-39d"/>
                         <outlet property="tableView" destination="0md-gJ-7ap" id="LnF-tE-hCO"/>
+                        <outlet property="titleTextLabel" destination="dFH-rD-Fwq" id="TLd-6j-ewm"/>
                         <outlet property="topConstratinForEdit" destination="BF0-EW-0f9" id="5QR-RM-H3y"/>
                     </connections>
                 </viewController>
@@ -3939,16 +3944,20 @@
                     </view>
                     <connections>
                         <outlet property="bottomGradientView" destination="Ldr-G1-2cD" id="Oae-cc-Rf9"/>
+                        <outlet property="cancelButton" destination="ImH-R6-JgC" id="xC7-jQ-wgS"/>
                         <outlet property="editButton" destination="Nht-DO-4e9" id="aQv-30-heM"/>
                         <outlet property="feeSlider" destination="Vqh-5B-ycY" id="swH-Po-3eR"/>
                         <outlet property="feeTextField" destination="6ez-Tn-dVz" id="JEQ-ff-5n6"/>
+                        <outlet property="finishButton" destination="L5k-gG-jBJ" id="Zaj-yw-JQZ"/>
                         <outlet property="gasLimitMaxValueLabel" destination="PXw-Su-JMF" id="08y-vV-hT7"/>
                         <outlet property="gasLimitMinValueLabel" destination="etF-e8-EGo" id="ZnH-rY-VWv"/>
                         <outlet property="gasLimitSlider" destination="OuK-3L-0RV" id="Ks9-i2-0bz"/>
+                        <outlet property="gasLimitTextLabel" destination="5tp-PJ-OS8" id="F9V-4T-OPw"/>
                         <outlet property="gasLimitValueLabel" destination="eh0-ye-CTQ" id="DcJ-Zp-GXG"/>
                         <outlet property="gasPriceMaxValueLabel" destination="aDr-p0-Nbk" id="01t-Qb-d4c"/>
                         <outlet property="gasPriceMinValueLabel" destination="Qd5-8j-MDl" id="aJt-1w-CZ5"/>
                         <outlet property="gasPriceSlider" destination="wOU-V3-fhA" id="moL-qr-lCq"/>
+                        <outlet property="gasPriceTextLabel" destination="aVd-sZ-ilG" id="53i-2I-Msf"/>
                         <outlet property="gasPriceValueLabel" destination="Lpb-xL-IbI" id="qWj-VL-Q7y"/>
                         <outlet property="gasSlidersContainer" destination="pak-Yt-fgd" id="j0u-wi-681"/>
                         <outlet property="gasValuesContainer" destination="VTi-QT-vWg" id="ZBF-gZ-x3u"/>
@@ -3956,6 +3965,7 @@
                         <outlet property="maxFeeLabel" destination="pw8-FG-Hrg" id="tbe-Pt-v0I"/>
                         <outlet property="minFeeLabel" destination="UBw-BM-y1C" id="vys-0c-dip"/>
                         <outlet property="tableView" destination="Coh-Sh-hir" id="Z5a-AQ-5V7"/>
+                        <outlet property="titleTextLabel" destination="Pos-bh-QAB" id="Kio-TV-aul"/>
                         <outlet property="topConstratinForEdit" destination="MIe-9d-JfU" id="xYN-BI-0lt"/>
                     </connections>
                 </viewController>

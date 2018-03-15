@@ -13,8 +13,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *activityTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *availableTextLabel;
 
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
+@property (weak, nonatomic) IBOutlet UILabel *noTransactionTextLabel;
 
 @property (assign, nonatomic) BOOL balanceLoaded;
 @property (assign, nonatomic) BOOL historyLoaded;
@@ -66,6 +68,7 @@ static const CGFloat blanceRoundingCount = 8;
     
     self.titleTextLabel.text = NSLocalizedString(@"My Wallet", @"Wallet Controllers Title");
     self.activityTextLabel.text = NSLocalizedString(@"Activity", @"Wallet Controllers Activity");
+    self.noTransactionTextLabel.text = NSLocalizedString(@"No transactions available yet", nil);
 }
 
 - (void)configHeaderBacground {
@@ -101,6 +104,8 @@ static const CGFloat blanceRoundingCount = 8;
         
         weakSelf.uncorfirmedLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastUnconfirmedBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"QTUM", nil)];
         weakSelf.availabelLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"QTUM", nil)];
+        weakSelf.availableTextLabel.text = NSLocalizedString(@"Available Balance", nil);
+        weakSelf.unconfirmedTextLabel.text = NSLocalizedString(@"Unconfirmed Balance", nil);
     });
 }
 
