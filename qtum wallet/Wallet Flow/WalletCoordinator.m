@@ -319,7 +319,9 @@ static const CGFloat blanceRoundingCount = 8;
 			weakSelf.isHistoryLoaded = YES;
 			if (success) {
 				[weakSelf.walletViewController reloadHistorySource];
-			}
+            } else {
+                [weakSelf.walletViewController conndectionFailed];
+            }
             [weakSelf.walletViewController stopLoading];
 		} andPage:0];
         

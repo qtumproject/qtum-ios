@@ -7,6 +7,7 @@
 //
 
 #import "WalletViewController.h"
+#import "LoaderPopUpViewController.h"
 
 @interface WalletViewController ()
 
@@ -20,6 +21,7 @@
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 @property (weak, nonatomic) IBOutlet UIView *emptyPlaceholderView;
 @property (weak, nonatomic) LoaderPopUpViewController* loader;
+@property (assign, nonatomic) BOOL isLoading;
 
 @property (nonatomic) id <Spendable> wallet;
 
@@ -55,6 +57,7 @@ static const CGFloat blanceRoundingCount = 8;
         [self.tableView reloadData];
         self.isFirstTimeUpdate = NO;
     }
+    [self.loader reloadLoaderAnimation];
 }
 
 #pragma mark - Configuration
@@ -103,13 +106,16 @@ static const CGFloat blanceRoundingCount = 8;
 
 - (void)startLoading {
 
+    [self stopLoading];
+    
     __weak __typeof(self)weakSelf = self;
     
 	dispatch_async (dispatch_get_main_queue (), ^{
         
-        if (!weakSelf.loader) {
+        if (!weakSelf.isLoading) {
             LoaderPopUpViewController *loader = [SLocator.popupService showLoaderPopUpInView:self.view];
             weakSelf.loader = loader;
+            weakSelf.isLoading = YES;
         }
 	});
 }
@@ -119,10 +125,12 @@ static const CGFloat blanceRoundingCount = 8;
     __weak __typeof(self)weakSelf = self;
 
     dispatch_async (dispatch_get_main_queue (), ^{
-        [SLocator.popupService dismissLoader:weakSelf.loader];
-        weakSelf.loader = nil;
+        if (weakSelf.isLoading) {
+            [SLocator.popupService dismissLoader:weakSelf.loader completion:^{
+                weakSelf.isLoading = NO;
+            }];
+        }
     });
-
 }
 
 - (void)failedToUpdateHistory {

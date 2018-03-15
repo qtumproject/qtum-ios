@@ -22,7 +22,9 @@
 @interface PopupService : NSObject
 
 // show methods
-- (void)dismissLoader:(LoaderPopUpViewController *) loader;
+- (void)dismissLoader:(LoaderPopUpViewController *) loader
+           completion:(void (^)(void)) completion;
+
 
 - (LoaderPopUpViewController *)showLoaderPopUpInView:(UIView *) view;
 

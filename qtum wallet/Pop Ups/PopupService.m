@@ -134,9 +134,9 @@
 	}
 }
 
-- (void)dismissLoader:(LoaderPopUpViewController *) loader {
+- (void)dismissLoader:(LoaderPopUpViewController *) loader completion:(void (^)(void)) completion {
 
-	[loader hide:YES completion:nil];
+	[loader hide:YES completion:completion];
 }
 
 - (void)showNoIntenterConnetionsPopUp:(id <PopUpViewControllerDelegate>) delegate presenter:(UIViewController *) presenter completion:(void (^)(void)) completion {

@@ -110,7 +110,7 @@
 }
 
 - (void)stopLoadingIfNeeded {
-	[SLocator.popupService dismissLoader:self.loader];
+	[SLocator.popupService dismissLoader:self.loader completion:nil];
 	self.loader = nil;
 }
 
