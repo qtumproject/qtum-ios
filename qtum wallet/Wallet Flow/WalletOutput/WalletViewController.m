@@ -19,6 +19,7 @@
 @property (assign, nonatomic) BOOL historyLoaded;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 @property (weak, nonatomic) IBOutlet UIView *emptyPlaceholderView;
+@property (weak, nonatomic) LoaderPopUpViewController* loader;
 
 @property (nonatomic) id <Spendable> wallet;
 
@@ -101,15 +102,27 @@ static const CGFloat blanceRoundingCount = 8;
 }
 
 - (void)startLoading {
+
+    __weak __typeof(self)weakSelf = self;
+    
 	dispatch_async (dispatch_get_main_queue (), ^{
-		[SLocator.popupService showLoaderPopUp];
+        
+        if (!weakSelf.loader) {
+            LoaderPopUpViewController *loader = [SLocator.popupService showLoaderPopUpInView:self.view];
+            weakSelf.loader = loader;
+        }
 	});
 }
 
 - (void)stopLoading {
-	dispatch_async (dispatch_get_main_queue (), ^{
-		[SLocator.popupService dismissLoader];
-	});
+    
+    __weak __typeof(self)weakSelf = self;
+
+    dispatch_async (dispatch_get_main_queue (), ^{
+        [SLocator.popupService dismissLoader:weakSelf.loader];
+        weakSelf.loader = nil;
+    });
+
 }
 
 - (void)failedToUpdateHistory {

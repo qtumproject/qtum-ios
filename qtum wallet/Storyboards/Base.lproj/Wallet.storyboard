@@ -530,23 +530,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M43-Kb-ywq">
-                                <rect key="frame" x="0.0" y="276" width="375" height="391"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8Q-wR-ANq">
-                                        <rect key="frame" x="41" y="183.5" width="294" height="23"/>
-                                        <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
-                                        <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="U8Q-wR-ANq" firstAttribute="centerX" secondItem="M43-Kb-ywq" secondAttribute="centerX" id="CJK-Xy-1bq"/>
-                                    <constraint firstAttribute="trailing" secondItem="U8Q-wR-ANq" secondAttribute="trailing" constant="40" id="Vv0-2B-tcx"/>
-                                    <constraint firstItem="U8Q-wR-ANq" firstAttribute="centerY" secondItem="M43-Kb-ywq" secondAttribute="centerY" id="frp-Yb-PtH"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wxm-c6-KId">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1035,6 +1018,23 @@ at 4:42:15 PM, July 12</string>
                                     <outlet property="delegate" destination="mEt-XV-9HF" id="pat-8n-ArN"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M43-Kb-ywq">
+                                <rect key="frame" x="0.0" y="276" width="375" height="391"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8Q-wR-ANq">
+                                        <rect key="frame" x="41" y="183.5" width="294" height="23"/>
+                                        <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                                        <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="U8Q-wR-ANq" firstAttribute="centerX" secondItem="M43-Kb-ywq" secondAttribute="centerX" id="CJK-Xy-1bq"/>
+                                    <constraint firstAttribute="trailing" secondItem="U8Q-wR-ANq" secondAttribute="trailing" constant="40" id="Vv0-2B-tcx"/>
+                                    <constraint firstItem="U8Q-wR-ANq" firstAttribute="centerY" secondItem="M43-Kb-ywq" secondAttribute="centerY" id="frp-Yb-PtH"/>
+                                </constraints>
+                            </view>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YP6-GK-BMP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
@@ -2475,23 +2475,6 @@ at 4:42:15 PM, July 12</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zjs-7W-xQL">
-                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBw-W0-GcV">
-                                        <rect key="frame" x="41" y="224" width="294" height="18"/>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
-                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="nBw-W0-GcV" firstAttribute="centerY" secondItem="Zjs-7W-xQL" secondAttribute="centerY" id="Hle-1v-jEa"/>
-                                    <constraint firstItem="nBw-W0-GcV" firstAttribute="centerX" secondItem="Zjs-7W-xQL" secondAttribute="centerX" id="Vuh-Yq-GaF"/>
-                                    <constraint firstAttribute="trailing" secondItem="nBw-W0-GcV" secondAttribute="trailing" constant="40" id="xJI-Yn-wU6"/>
-                                </constraints>
-                            </view>
                             <tableView contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r1n-5J-5cz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2957,6 +2940,23 @@ at 4:42:15 PM, July 12</string>
                                     <outlet property="delegate" destination="Ffy-eC-Uc4" id="Fqq-ec-y2T"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zjs-7W-xQL">
+                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBw-W0-GcV">
+                                        <rect key="frame" x="41" y="224" width="294" height="18"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="nBw-W0-GcV" firstAttribute="centerY" secondItem="Zjs-7W-xQL" secondAttribute="centerY" id="Hle-1v-jEa"/>
+                                    <constraint firstItem="nBw-W0-GcV" firstAttribute="centerX" secondItem="Zjs-7W-xQL" secondAttribute="centerX" id="Vuh-Yq-GaF"/>
+                                    <constraint firstAttribute="trailing" secondItem="nBw-W0-GcV" secondAttribute="trailing" constant="40" id="xJI-Yn-wU6"/>
+                                </constraints>
+                            </view>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXh-oV-zUK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
