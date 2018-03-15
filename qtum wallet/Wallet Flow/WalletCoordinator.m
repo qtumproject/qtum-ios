@@ -325,7 +325,9 @@ static const CGFloat blanceRoundingCount = 8;
             [weakSelf.walletViewController stopLoading];
 		} andPage:0];
         
-        [weakSelf updateControls];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf updateControls];
+        });
 	});
 }
 
@@ -340,7 +342,6 @@ static const CGFloat blanceRoundingCount = 8;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf.walletViewController reloadHistorySource];
                 [SLocator.popupService dismissLoader];
-                [weakSelf updateControls];
             });
             
         } andPage:0];
