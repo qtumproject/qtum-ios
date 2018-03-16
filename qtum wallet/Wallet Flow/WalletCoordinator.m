@@ -312,7 +312,7 @@ static const CGFloat blanceRoundingCount = 8;
             [weakSelf.tokenDetailsViewController conndectionFailed];
         }
         
-		[weakSelf.walletViewController startLoading];
+		[weakSelf.walletViewController startLoadingIfNeeded];
 		weakSelf.isHistoryLoaded = NO;
         
 		[weakSelf.wallet updateHistoryWithHandler:^(BOOL success) {

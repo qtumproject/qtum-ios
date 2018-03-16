@@ -22,7 +22,7 @@
 - (void)conndectionFailed;
 - (void)conndectionSuccess;
 
-- (void)startLoading;
+- (void)startLoadingIfNeeded;
 - (void)stopLoading;
 
 - (void)reloadHeader:(id <Spendable>) wallet;
