@@ -40,6 +40,7 @@
 	[self createCheckButtons];
     [self bindToNotifications];
     [self addTapRecognizer];
+    [self configLocalization];
 }
 
 -(void)dealloc {

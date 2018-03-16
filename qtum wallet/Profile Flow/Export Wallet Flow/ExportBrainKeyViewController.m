@@ -27,6 +27,7 @@
 	[super viewDidLoad];
 	[self configurationBrainKeyLabel];
     [self bindToNotifications];
+    [self configLocalization];
 }
 
 -(void)bindToNotifications {

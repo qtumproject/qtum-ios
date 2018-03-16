@@ -52,7 +52,7 @@
 	if (!_cellDateFormatter) {
 		NSDateFormatter *formatter = [NSDateFormatter new];
 		[formatter setDateFormat:@"EEEE, MMMM dd, YYYY"];
-		[formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[LanguageManager currentLanguageCode]]];
+        [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[LanguageManager currentLanguageCode]]];
 		_cellDateFormatter = formatter;
 	}
 	return _cellDateFormatter;
@@ -63,7 +63,7 @@
 	if (!_cellTimeFormatter) {
 		NSDateFormatter *formatter = [NSDateFormatter new];
 		[formatter setDateFormat:@"h:mm aa"];
-		[formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[LanguageManager currentLanguageCode]]];
+        [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[LanguageManager currentLanguageCode]]];
 		_cellTimeFormatter = formatter;
 	}
 	return _cellTimeFormatter;

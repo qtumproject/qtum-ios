@@ -60,7 +60,7 @@
 #pragma mark - Configuration
 
 -(void)configLocalization {
-    self.titleTextLabel.text = NSLocalizedString(@"News Detail", @"News Detail Controllers Title");
+    self.titleTextLabel.text = NSLocalizedString(@"News Details", @"News Details Controllers Title");
 }
 
 - (void)configTableView {
@@ -110,7 +110,7 @@
 }
 
 - (void)stopLoadingIfNeeded {
-	[SLocator.popupService dismissLoader:self.loader];
+	[SLocator.popupService dismissLoader:self.loader completion:nil];
 	self.loader = nil;
 }
 

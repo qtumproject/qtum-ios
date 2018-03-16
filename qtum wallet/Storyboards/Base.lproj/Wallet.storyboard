@@ -530,23 +530,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M43-Kb-ywq">
-                                <rect key="frame" x="0.0" y="276" width="375" height="391"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8Q-wR-ANq">
-                                        <rect key="frame" x="41" y="183.5" width="294" height="23"/>
-                                        <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
-                                        <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="U8Q-wR-ANq" firstAttribute="centerX" secondItem="M43-Kb-ywq" secondAttribute="centerX" id="CJK-Xy-1bq"/>
-                                    <constraint firstAttribute="trailing" secondItem="U8Q-wR-ANq" secondAttribute="trailing" constant="40" id="Vv0-2B-tcx"/>
-                                    <constraint firstItem="U8Q-wR-ANq" firstAttribute="centerY" secondItem="M43-Kb-ywq" secondAttribute="centerY" id="frp-Yb-PtH"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wxm-c6-KId">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1035,6 +1018,23 @@ at 4:42:15 PM, July 12</string>
                                     <outlet property="delegate" destination="mEt-XV-9HF" id="pat-8n-ArN"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M43-Kb-ywq">
+                                <rect key="frame" x="0.0" y="276" width="375" height="391"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8Q-wR-ANq">
+                                        <rect key="frame" x="41" y="183.5" width="294" height="23"/>
+                                        <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="18"/>
+                                        <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="U8Q-wR-ANq" firstAttribute="centerX" secondItem="M43-Kb-ywq" secondAttribute="centerX" id="CJK-Xy-1bq"/>
+                                    <constraint firstAttribute="trailing" secondItem="U8Q-wR-ANq" secondAttribute="trailing" constant="40" id="Vv0-2B-tcx"/>
+                                    <constraint firstItem="U8Q-wR-ANq" firstAttribute="centerY" secondItem="M43-Kb-ywq" secondAttribute="centerY" id="frp-Yb-PtH"/>
+                                </constraints>
+                            </view>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YP6-GK-BMP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
@@ -1200,11 +1200,13 @@ at 4:42:15 PM, July 12</string>
                     <connections>
                         <outlet property="activityTextLabel" destination="0kR-xg-M7a" id="la9-Uj-PSf"/>
                         <outlet property="availabelLabel" destination="iv7-z9-t2O" id="hdr-OC-e0o"/>
+                        <outlet property="availableTextLabel" destination="J6R-GV-sUd" id="V9P-DB-rfs"/>
                         <outlet property="availableTextTopConstraint" destination="AyF-ZL-pRW" id="1tv-KN-z5H"/>
                         <outlet property="availableValueTopConstraint" destination="QCG-Bl-k7C" id="6vw-LC-ylB"/>
                         <outlet property="emptyPlaceholderView" destination="M43-Kb-ywq" id="sS8-cn-1I1"/>
                         <outlet property="headerHeightConstraint" destination="ZxO-ay-UJg" id="1be-Mz-YpC"/>
                         <outlet property="headerView" destination="uc4-nK-6WR" id="xWA-Jt-8HU"/>
+                        <outlet property="noTransactionTextLabel" destination="U8Q-wR-ANq" id="EKb-Eg-xQJ"/>
                         <outlet property="tableView" destination="wxm-c6-KId" id="1Bc-7E-dld"/>
                         <outlet property="titleTextLabel" destination="87b-mR-idc" id="yxH-ZC-H86"/>
                         <outlet property="trailingForLineConstraint" destination="Cq9-PT-bH7" id="bsI-wV-bWW"/>
@@ -1629,9 +1631,9 @@ at 4:42:15 PM, July 12</string>
                                 <constraints>
                                     <constraint firstItem="Qsh-0F-dAk" firstAttribute="centerX" secondItem="gF8-m2-1HC" secondAttribute="centerX" id="0Dw-MJ-Ouv"/>
                                     <constraint firstAttribute="trailing" secondItem="OJZ-Gd-I6M" secondAttribute="trailing" id="4Xl-qo-zZR"/>
+                                    <constraint firstItem="OJZ-Gd-I6M" firstAttribute="top" secondItem="gF8-m2-1HC" secondAttribute="top" constant="20" id="FRZ-0K-G4B"/>
                                     <constraint firstAttribute="bottom" secondItem="Qsh-0F-dAk" secondAttribute="bottom" constant="13" id="FaC-Yb-oWp"/>
                                     <constraint firstItem="OJZ-Gd-I6M" firstAttribute="leading" secondItem="gF8-m2-1HC" secondAttribute="leading" id="eQb-S3-Mc2"/>
-                                    <constraint firstAttribute="bottom" secondItem="OJZ-Gd-I6M" secondAttribute="bottom" constant="20" id="gdr-l3-UIq"/>
                                     <constraint firstAttribute="height" constant="84" id="h4n-0d-DGb"/>
                                 </constraints>
                             </view>
@@ -1751,7 +1753,7 @@ at 4:42:15 PM, July 12</string>
                             <constraint firstItem="UML-TT-QYP" firstAttribute="leading" secondItem="T7x-aa-HtE" secondAttribute="leading" id="1OU-3m-8ge"/>
                             <constraint firstAttribute="bottom" secondItem="UML-TT-QYP" secondAttribute="bottom" id="2cP-86-RQI"/>
                             <constraint firstItem="UML-TT-QYP" firstAttribute="top" secondItem="gF8-m2-1HC" secondAttribute="bottom" id="Gkf-aw-AlP"/>
-                            <constraint firstItem="gF8-m2-1HC" firstAttribute="top" secondItem="T7x-aa-HtE" secondAttribute="top" constant="-20" id="NfU-eJ-QAg"/>
+                            <constraint firstItem="gF8-m2-1HC" firstAttribute="top" secondItem="YpA-8H-18E" secondAttribute="top" id="NfU-eJ-QAg"/>
                             <constraint firstItem="gF8-m2-1HC" firstAttribute="leading" secondItem="T7x-aa-HtE" secondAttribute="leading" id="SKy-68-pTi"/>
                             <constraint firstItem="T7x-aa-HtE" firstAttribute="trailing" secondItem="gF8-m2-1HC" secondAttribute="trailing" id="SU4-6D-hkS"/>
                             <constraint firstItem="T7x-aa-HtE" firstAttribute="trailing" secondItem="UML-TT-QYP" secondAttribute="trailing" id="ZWg-KM-1ep"/>
@@ -1762,6 +1764,7 @@ at 4:42:15 PM, July 12</string>
                         <outlet property="pageControl" destination="Qsh-0F-dAk" id="Cal-fq-m5z"/>
                         <outlet property="tableView" destination="UML-TT-QYP" id="6iY-2d-VYP"/>
                         <outlet property="titleTextLabel" destination="cxX-WI-p4x" id="LGg-Dy-639"/>
+                        <outlet property="topOffsetConstraint" destination="NfU-eJ-QAg" id="7mq-eV-rOZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7b-hr-yfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2475,23 +2478,6 @@ at 4:42:15 PM, July 12</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zjs-7W-xQL">
-                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBw-W0-GcV">
-                                        <rect key="frame" x="41" y="224" width="294" height="18"/>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
-                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="nBw-W0-GcV" firstAttribute="centerY" secondItem="Zjs-7W-xQL" secondAttribute="centerY" id="Hle-1v-jEa"/>
-                                    <constraint firstItem="nBw-W0-GcV" firstAttribute="centerX" secondItem="Zjs-7W-xQL" secondAttribute="centerX" id="Vuh-Yq-GaF"/>
-                                    <constraint firstAttribute="trailing" secondItem="nBw-W0-GcV" secondAttribute="trailing" constant="40" id="xJI-Yn-wU6"/>
-                                </constraints>
-                            </view>
                             <tableView contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r1n-5J-5cz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2957,6 +2943,23 @@ at 4:42:15 PM, July 12</string>
                                     <outlet property="delegate" destination="Ffy-eC-Uc4" id="Fqq-ec-y2T"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zjs-7W-xQL">
+                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions available yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBw-W0-GcV">
+                                        <rect key="frame" x="41" y="224" width="294" height="18"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
+                                        <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="nBw-W0-GcV" firstAttribute="centerY" secondItem="Zjs-7W-xQL" secondAttribute="centerY" id="Hle-1v-jEa"/>
+                                    <constraint firstItem="nBw-W0-GcV" firstAttribute="centerX" secondItem="Zjs-7W-xQL" secondAttribute="centerX" id="Vuh-Yq-GaF"/>
+                                    <constraint firstAttribute="trailing" secondItem="nBw-W0-GcV" secondAttribute="trailing" constant="40" id="xJI-Yn-wU6"/>
+                                </constraints>
+                            </view>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXh-oV-zUK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
@@ -3017,7 +3020,7 @@ at 4:42:15 PM, July 12</string>
                                     <constraint firstAttribute="bottom" secondItem="goZ-le-3Na" secondAttribute="bottom" id="SiP-pk-ki6"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2VN-tv-h85">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2VN-tv-h85">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -3027,25 +3030,25 @@ at 4:42:15 PM, July 12</string>
                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCx-tj-N3n">
                                 <rect key="frame" x="0.0" y="20" width="375" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vg-6K-FLx">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vg-6K-FLx">
                                         <rect key="frame" x="311.5" y="28" width="53.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAT-LQ-Ika">
+                                    <label opaque="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unconfirmed Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAT-LQ-Ika">
                                         <rect key="frame" x="10" y="44" width="113.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHf-r1-T6c">
+                                    <label opaque="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHf-r1-T6c">
                                         <rect key="frame" x="311.5" y="44" width="53.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBW-S8-4OS">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBW-S8-4OS">
                                         <rect key="frame" x="10" y="28" width="93.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3118,9 +3121,11 @@ at 4:42:15 PM, July 12</string>
                     <connections>
                         <outlet property="activityTextLabel" destination="H1u-3e-WJq" id="vVc-gG-u2J"/>
                         <outlet property="availabelLabel" destination="2Vg-6K-FLx" id="lY2-xH-Vh8"/>
+                        <outlet property="availableTextLabel" destination="eBW-S8-4OS" id="D1P-53-wFm"/>
                         <outlet property="availableTextTopConstraint" destination="kwM-IU-eI0" id="M9F-68-DTJ"/>
                         <outlet property="emptyPlaceholderView" destination="Zjs-7W-xQL" id="kM4-Dj-kNo"/>
                         <outlet property="headerView" destination="KCx-tj-N3n" id="kU6-7U-Tqv"/>
+                        <outlet property="noTransactionTextLabel" destination="nBw-W0-GcV" id="XIF-E3-KOM"/>
                         <outlet property="statusBarView" destination="2VN-tv-h85" id="s3e-Gf-rR0"/>
                         <outlet property="tableView" destination="r1n-5J-5cz" id="gxW-cg-Cym"/>
                         <outlet property="titleTextLabel" destination="Vuf-et-HbM" id="8lJ-SY-hw3"/>
@@ -3165,7 +3170,7 @@ at 4:42:15 PM, July 12</string>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21176470588235294" green="0.33333333333333331" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="0LF-a7-Rxw" secondAttribute="bottom" id="8gF-o6-j5z"/>
+                                    <constraint firstItem="0LF-a7-Rxw" firstAttribute="top" secondItem="fMB-M8-03h" secondAttribute="top" constant="20" id="GW3-Ek-f5k"/>
                                     <constraint firstAttribute="height" constant="64" id="ZRY-s5-ejP"/>
                                     <constraint firstAttribute="trailing" secondItem="0LF-a7-Rxw" secondAttribute="trailing" id="mYS-nH-cTr"/>
                                     <constraint firstItem="0LF-a7-Rxw" firstAttribute="leading" secondItem="fMB-M8-03h" secondAttribute="leading" id="mgu-M9-Oaq"/>
@@ -3307,7 +3312,7 @@ at 4:42:15 PM, July 12</string>
                         </subviews>
                         <color key="backgroundColor" red="0.21176470589999999" green="0.33333333329999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fMB-M8-03h" firstAttribute="top" secondItem="jhh-eI-Iay" secondAttribute="top" constant="-20" id="EaS-aZ-NCm"/>
+                            <constraint firstItem="fMB-M8-03h" firstAttribute="top" secondItem="Aaj-9J-Rsm" secondAttribute="top" id="EaS-aZ-NCm"/>
                             <constraint firstItem="flf-jj-M7V" firstAttribute="top" secondItem="fMB-M8-03h" secondAttribute="bottom" id="bFl-cY-GhS"/>
                             <constraint firstItem="flf-jj-M7V" firstAttribute="leading" secondItem="jhh-eI-Iay" secondAttribute="leading" id="cKA-oK-ih7"/>
                             <constraint firstItem="fMB-M8-03h" firstAttribute="leading" secondItem="jhh-eI-Iay" secondAttribute="leading" id="h5W-e7-FkF"/>
@@ -3320,6 +3325,7 @@ at 4:42:15 PM, July 12</string>
                     <connections>
                         <outlet property="tableView" destination="flf-jj-M7V" id="uto-fj-EG5"/>
                         <outlet property="titleTextLabel" destination="fsr-JB-Tpo" id="Qiw-B9-WPI"/>
+                        <outlet property="topOffsetConstraint" destination="EaS-aZ-NCm" id="ttD-CG-vHb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rAT-pz-m2V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3865,7 +3871,7 @@ at 4:42:15 PM, July 12</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.24705882352941178" green="0.22352941176470587" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.33333333329999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="6o4-zh-okt" firstAttribute="leading" secondItem="GOM-Uz-1Vu" secondAttribute="leading" id="RN6-Yb-RX4"/>
                                     <constraint firstAttribute="height" constant="64" id="VUl-Mg-ufy"/>
@@ -4031,7 +4037,7 @@ at 4:42:15 PM, July 12</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.2470588235" green="0.22352941179999999" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.33333333329999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="gw1-cR-jKh" firstAttribute="leading" secondItem="TAb-h5-tTN" secondAttribute="trailing" constant="4" id="16B-c7-3B3"/>
                                     <constraint firstItem="TAb-h5-tTN" firstAttribute="centerY" secondItem="Yox-yp-YwO" secondAttribute="centerY" id="2ZM-Uv-R1T"/>
@@ -4187,9 +4193,10 @@ at 4:42:15 PM, July 12</string>
                         <outlet property="qrCodeImageView" destination="yIo-nN-Won" id="X2i-FI-eTW"/>
                         <outlet property="shareButton" destination="SnH-Ft-8JF" id="R5a-rK-2Ew"/>
                         <outlet property="shareLabelButton" destination="PND-FO-dAG" id="ZVl-ht-hez"/>
+                        <outlet property="titleTextLabel" destination="H8v-aC-DST" id="KsG-md-pHr"/>
                         <outlet property="unconfirmedBalance" destination="TAb-h5-tTN" id="4GZ-J0-5QZ"/>
                         <outlet property="unconfirmedBalanceCurrency" destination="gw1-cR-jKh" id="nyt-bS-NxA"/>
-                        <outlet property="unconfirmedBalanceTextLabel" destination="H8v-aC-DST" id="e7T-sT-hXT"/>
+                        <outlet property="unconfirmedBalanceTextLabel" destination="Yox-yp-YwO" id="fqF-Io-yiB"/>
                         <outlet property="walletAdressCopyButton" destination="2w6-tg-d4w" id="M20-x3-QvW"/>
                         <outlet property="walletCopyButtonBottomOffsetConstraint" destination="1eD-kt-IGn" id="KHR-xP-8nE"/>
                     </connections>
@@ -5086,7 +5093,7 @@ at 4:42:15 PM, July 12</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vp6-MJ-VQb" customClass="CopyLabel">
-                                                    <rect key="frame" x="15" y="29.5" width="46" height="14"/>
+                                                    <rect key="frame" x="15" y="30" width="46" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36470588240000001" blue="0.43529411759999997" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

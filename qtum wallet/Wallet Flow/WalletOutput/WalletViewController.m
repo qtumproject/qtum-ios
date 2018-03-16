@@ -7,18 +7,22 @@
 //
 
 #import "WalletViewController.h"
+#import "LoaderPopUpViewController.h"
 
 @interface WalletViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *activityTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *availableTextLabel;
 
 @property (nonatomic) NSDictionary *dictionaryForNewPayment;
+@property (weak, nonatomic) IBOutlet UILabel *noTransactionTextLabel;
 
 @property (assign, nonatomic) BOOL balanceLoaded;
 @property (assign, nonatomic) BOOL historyLoaded;
 @property (assign, nonatomic) BOOL isFirstTimeUpdate;
 @property (weak, nonatomic) IBOutlet UIView *emptyPlaceholderView;
+@property (assign, nonatomic) BOOL isLoading;
 
 @property (nonatomic) id <Spendable> wallet;
 
@@ -44,6 +48,7 @@ static const CGFloat blanceRoundingCount = 8;
 	[super viewWillAppear:animated];
 
 	[self reloadHeader:self.wallet];
+    [self.tableView reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -62,6 +67,7 @@ static const CGFloat blanceRoundingCount = 8;
     
     self.titleTextLabel.text = NSLocalizedString(@"My Wallet", @"Wallet Controllers Title");
     self.activityTextLabel.text = NSLocalizedString(@"Activity", @"Wallet Controllers Activity");
+    self.noTransactionTextLabel.text = NSLocalizedString(@"No transactions available yet", nil);
 }
 
 - (void)configHeaderBacground {
@@ -97,19 +103,28 @@ static const CGFloat blanceRoundingCount = 8;
         
         weakSelf.uncorfirmedLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastUnconfirmedBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"QTUM", nil)];
         weakSelf.availabelLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"QTUM", nil)];
+        weakSelf.availableTextLabel.text = NSLocalizedString(@"Available Balance", nil);
+        weakSelf.unconfirmedTextLabel.text = NSLocalizedString(@"Unconfirmed Balance", nil);
     });
 }
 
-- (void)startLoading {
-	dispatch_async (dispatch_get_main_queue (), ^{
-		[SLocator.popupService showLoaderPopUp];
-	});
+- (void)startLoadingIfNeeded {
+
+    __weak __typeof(self)weakSelf = self;
+
+    dispatch_async (dispatch_get_main_queue (), ^{
+        
+        if (weakSelf.isViewLoaded && weakSelf.view.window) {
+            [SLocator.popupService showLoaderPopUp];
+        }
+    });
 }
 
 - (void)stopLoading {
-	dispatch_async (dispatch_get_main_queue (), ^{
-		[SLocator.popupService dismissLoader];
-	});
+    
+    dispatch_async (dispatch_get_main_queue (), ^{
+        [SLocator.popupService dismissLoader];
+    });
 }
 
 - (void)failedToUpdateHistory {

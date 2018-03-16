@@ -16,6 +16,10 @@
 
 // Gas price and gas limit
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *finishButton;
+@property (weak, nonatomic) IBOutlet UILabel *gasPriceTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *gasLimitTextLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *gasValuesContainer;
 @property (weak, nonatomic) IBOutlet UIView *gasSlidersContainer;
@@ -26,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *gasPriceMaxValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *gasLimitMinValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *gasLimitMaxValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 
 @property (weak, nonatomic) IBOutlet UISlider *gasPriceSlider;
 @property (weak, nonatomic) IBOutlet UISlider *gasLimitSlider;
@@ -68,6 +73,7 @@ static NSInteger openTopForEditButton = 15;
 	[super viewDidLoad];
 	self.tableView.contentInset = UIEdgeInsetsMake (0, 0, -50, 0);
 	[self configBottomGradientView];
+    [self configLocalization];
 }
 
 #pragma mark - UITableViewDelegate
@@ -80,6 +86,17 @@ static NSInteger openTopForEditButton = 15;
 
 - (void)configBottomGradientView {
 	self.bottomGradientView.colorType = DarkLong;
+}
+
+- (void)configLocalization {
+    [self.editButton setTitle:NSLocalizedString(@"EDIT", nil) forState:UIControlStateNormal];
+    self.titleTextLabel.text = NSLocalizedString(@"Confirm", nil);
+    
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", nil) forState:UIControlStateNormal];
+    [self.finishButton setTitle:NSLocalizedString(@"FINISH", nil) forState:UIControlStateNormal];
+    self.gasLimitTextLabel.text = NSLocalizedString(@"Gas Limit:", nil);
+    self.gasPriceTextLabel.text = NSLocalizedString(@"Gas Price:", nil);
+
 }
 
 #pragma mark - UITableViewDataSource

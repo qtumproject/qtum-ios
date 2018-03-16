@@ -91,7 +91,7 @@ static NSString* fetchedSortingProperty = @"dateInerval";
 -(void)fethcFromStart {
     
     self.currentPage = 0;
-    self.isValidDataState = NO;
+    self.isValidDataState = YES;
     [self.delegate refreshTableViewDataFromStart];
     self.isLoadingNow = YES;
 }

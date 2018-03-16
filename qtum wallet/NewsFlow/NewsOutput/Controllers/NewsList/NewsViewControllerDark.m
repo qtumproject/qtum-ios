@@ -43,8 +43,8 @@
 
 	NewsTableCellDark *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsTableCellDark"];
 	QTUMNewsItem *newsItem = self.news[indexPath.row];
-	cell.descriptionLabel.text = newsItem.feed.title;
-	cell.titleLabel.text = newsItem.feed.author;
+	cell.descriptionLabel.text = newsItem.feed.firstParagraph;
+	cell.titleLabel.text = newsItem.feed.title;
 	cell.dateLabel.text = [NSString stringWithFormat:@"%@", [self.cellFormatter stringFromDate:[newsItem.feed.date dateInLocalTimezoneFromUTCDate]]];
 
 	return cell;

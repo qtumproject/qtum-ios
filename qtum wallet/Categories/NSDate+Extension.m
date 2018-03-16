@@ -76,6 +76,7 @@
 	NSDate *someDateInUTC = self;
 	NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
 	NSDate *dateInLocalTimezone = [someDateInUTC dateByAddingTimeInterval:timeZoneSeconds];
+    return self;
 	return dateInLocalTimezone;
 }
 

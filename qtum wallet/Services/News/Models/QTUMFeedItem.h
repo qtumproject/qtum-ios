@@ -20,6 +20,7 @@
 @property (nonatomic, copy, readonly) NSString *content;
 @property (nonatomic, copy, readonly) NSString *author;
 @property (nonatomic, copy, readonly) NSArray *enclosures;
+@property (nonatomic, copy) NSString *firstParagraph;
 
 - (instancetype)initWithItem:(MWFeedItem *) feedItem;
 

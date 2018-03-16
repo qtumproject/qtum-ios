@@ -14,6 +14,7 @@
 @property (assign, nonatomic) BOOL shoudKeboardDismiss;
 @property (assign, nonatomic) BOOL editingStarted;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -31,6 +32,7 @@
 	self.bottomConstraintForCancelButton.constant = self.view.frame.size.height / 2. - textfieldsWithButtonHeight / 2.;
 
 	[self configPasswordView];
+    [self configLocalization];
 }
 
 - (void)willMoveToParentViewController:(UIViewController *) parent {
@@ -56,6 +58,11 @@
 - (void)configPasswordView {
 
 	self.passwordView.delegate = self;
+}
+
+- (void)configLocalization {
+    self.titleLabel.text = NSLocalizedString(@"Confirm PIN", @"Export Passphrase Controllers Title");
+    [self.cancelButton setTitle:NSLocalizedString(@"CANCEL", @"CANCEL button") forState:UIControlStateNormal];
 }
 
 #pragma mark - Keyboard

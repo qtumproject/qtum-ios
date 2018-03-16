@@ -297,7 +297,7 @@ static const CGFloat blanceRoundingCount = 8;
 			if (success) {
 				[weakSelf.walletViewController reloadHistorySource];
 			}
-		} andPage:index];
+		} andPage:index];        
 	});
 }
 
@@ -312,16 +312,22 @@ static const CGFloat blanceRoundingCount = 8;
             [weakSelf.tokenDetailsViewController conndectionFailed];
         }
         
-		[weakSelf.walletViewController startLoading];
+		[weakSelf.walletViewController startLoadingIfNeeded];
 		weakSelf.isHistoryLoaded = NO;
         
 		[weakSelf.wallet updateHistoryWithHandler:^(BOOL success) {
 			weakSelf.isHistoryLoaded = YES;
 			if (success) {
 				[weakSelf.walletViewController reloadHistorySource];
-			}
+            } else {
+                [weakSelf.walletViewController conndectionFailed];
+            }
             [weakSelf.walletViewController stopLoading];
 		} andPage:0];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf updateControls];
+        });
 	});
 }
 
@@ -339,6 +345,7 @@ static const CGFloat blanceRoundingCount = 8;
             });
             
         } andPage:0];
+        
     });
 }
 
@@ -517,7 +524,7 @@ static const CGFloat blanceRoundingCount = 8;
 	[self addDependency:coordinator];
 }
 
--(void)didConnectToSocket {
+- (void)didConnectToSocket {
     self.isFailedConnection = NO;
     [self.walletViewController conndectionSuccess];
 }

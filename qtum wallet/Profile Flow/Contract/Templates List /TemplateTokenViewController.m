@@ -27,6 +27,7 @@
 
 	[super viewDidLoad];
 	[self.tableView reloadData];
+    [self configLocalization];
 }
 
 #pragma mark - Configuration

@@ -7,6 +7,7 @@
 //
 
 #import "MWFeedParser.h"
+#import "NSString+AbiRegex.h"
 
 @interface QTUMFeedParcer () <MWFeedParserDelegate>
 

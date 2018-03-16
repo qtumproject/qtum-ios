@@ -26,7 +26,6 @@
             attributes.frame = newLeftAlignedFrame;
         }
         
-        
         leftMargin+= attributes.frame.size.width;
         
         [newAttributesForElementsInRect addObject:attributes];

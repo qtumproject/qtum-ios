@@ -493,6 +493,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFC-lx-28g">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.33333333329999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gv1-1U-G56"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nsy-De-5SA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
@@ -591,17 +598,20 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.21176470589999999" green="0.33333333329999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Kxa-Jn-645" firstAttribute="bottom" secondItem="v7H-LY-Tqb" secondAttribute="bottom" id="5h0-0m-urC"/>
                             <constraint firstItem="Nsy-De-5SA" firstAttribute="leading" secondItem="Kxa-Jn-645" secondAttribute="leading" id="89X-F4-MZM"/>
                             <constraint firstItem="Kxa-Jn-645" firstAttribute="bottom" secondItem="1BU-za-HL7" secondAttribute="bottom" id="AS9-Kk-PcH"/>
                             <constraint firstItem="Kxa-Jn-645" firstAttribute="trailing" secondItem="v7H-LY-Tqb" secondAttribute="trailing" id="BxZ-ha-eBe"/>
+                            <constraint firstItem="zFC-lx-28g" firstAttribute="top" secondItem="Vbu-Ag-sLq" secondAttribute="top" id="Jah-uJ-zIJ"/>
                             <constraint firstItem="Kxa-Jn-645" firstAttribute="trailing" secondItem="Nsy-De-5SA" secondAttribute="trailing" id="WXq-Nv-WY4"/>
+                            <constraint firstItem="Kxa-Jn-645" firstAttribute="trailing" secondItem="zFC-lx-28g" secondAttribute="trailing" id="XzV-xZ-TRR"/>
                             <constraint firstItem="Nsy-De-5SA" firstAttribute="top" secondItem="Kxa-Jn-645" secondAttribute="top" constant="-20" id="Y1i-dC-hSU"/>
                             <constraint firstItem="1BU-za-HL7" firstAttribute="top" secondItem="Nsy-De-5SA" secondAttribute="bottom" id="aVy-yn-ghG"/>
                             <constraint firstItem="v7H-LY-Tqb" firstAttribute="leading" secondItem="Kxa-Jn-645" secondAttribute="leading" id="lu3-L6-I5z"/>
                             <constraint firstItem="1BU-za-HL7" firstAttribute="leading" secondItem="Kxa-Jn-645" secondAttribute="leading" id="rck-mm-Mkc"/>
+                            <constraint firstItem="zFC-lx-28g" firstAttribute="leading" secondItem="Kxa-Jn-645" secondAttribute="leading" id="uUw-ld-s9r"/>
                             <constraint firstItem="Kxa-Jn-645" firstAttribute="trailing" secondItem="1BU-za-HL7" secondAttribute="trailing" id="w8y-Vi-Kl2"/>
                             <constraint firstItem="v7H-LY-Tqb" firstAttribute="top" secondItem="Nsy-De-5SA" secondAttribute="bottom" id="x9P-u6-wHY"/>
                         </constraints>
