@@ -11,6 +11,7 @@
 #import "ErrorPopUpViewController.h"
 #import "Masonry.h"
 #import "QueryFunctionView.h"
+#import "NSNumber+Comparison.h"
 
 @interface TokenFunctionDetailViewController () <AbiTextFieldWithLineDelegate, PopUpViewControllerDelegate, PopUpWithTwoButtonsViewControllerDelegate, QueryFunctionViewDelegate>
 
@@ -509,7 +510,7 @@ static NSInteger queryViewheight = 100;
 
 - (void)didChangeFeeSlider:(UISlider *) slider {
 
-	NSDecimalNumber *sliderValue = [[NSDecimalNumber alloc] initWithFloat:slider.value];
+    NSDecimalNumber *sliderValue = (NSDecimalNumber *)[[[NSDecimalNumber alloc] initWithFloat:slider.value] roundedNumberWithScale:5];
 	QTUMBigNumber *bigNumber = [QTUMBigNumber decimalWithString:sliderValue.stringValue];
 	self.FEE = bigNumber;
 	self.feeView.feeTextField.text = self.FEE.stringValue;

@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleTextLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topOffsetConstraint;
 
 @end
 
@@ -25,6 +26,7 @@ static const NSInteger unsuportedMaxDecimal = 128;
 	[super viewDidLoad];
 	[self.tableView reloadData];
     [self configLocalization];
+    [self configTopOffset];
 }
 
 #pragma mark - Configuration
@@ -32,6 +34,15 @@ static const NSInteger unsuportedMaxDecimal = 128;
 -(void)configLocalization {
     
     self.titleTextLabel.text = NSLocalizedString(@"Other Tokens", @"Other Tokens Controllers Title");
+}
+
+-(void)configTopOffset {
+    
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    
+    if (screenSize.height == 812.0f) {
+        self.topOffsetConstraint.constant = 20;
+    }
 }
 
 #pragma mark - Coordinator invocation

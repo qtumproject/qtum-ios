@@ -15,4 +15,11 @@
 	self.indicator.tintColor = customBlueColor ();
 }
 
+-(void)prepareForReuse {
+    [super prepareForReuse];
+    self.topSeparator.backgroundColor = customBlueColor ();
+    self.label.textColor = customBlueColor ();
+    self.indicator.tintColor = customBlueColor ();
+}
+
 @end
