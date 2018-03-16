@@ -86,6 +86,24 @@
 	return newStr.capitalizedString;
 }
 
+- (NSString*)firstMatchedStringWithPattern:(NSString*) pattern {
+    
+    NSRegularExpression *functionRegex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:NULL];
+    NSArray<NSTextCheckingResult *> *matches = [functionRegex matchesInString:self options:0 range:NSMakeRange (0, self.length)];
+    
+    for (NSTextCheckingResult *match in matches) {
+        
+        if (match.numberOfRanges > 1) {
+            NSRange range = [match rangeAtIndex:1];
+            return [self substringWithRange:range];
+        } else {
+            break;
+        }
+    }
+    
+    return @"";
+}
+
 + (NSString *)randomStringWithLength:(int) len {
 
 	NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

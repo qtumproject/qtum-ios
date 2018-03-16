@@ -6,7 +6,11 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
+#import "MWFeedParser.h"
+#import "NSString+HTML.h"
+
 @interface QTUMFeedItem ()
+
 
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *title;
@@ -41,6 +45,16 @@
 	return self;
 }
 
+-(NSString*)firstParagraph {
+    
+    if (!_firstParagraph) {
+        _firstParagraph = [[self.summary firstMatchedStringWithPattern:@"<p>(.*?)</p>"] stringByConvertingHTMLToPlainText];
+    }
+
+    return _firstParagraph;
+}
+
+
 - (instancetype)initWithCoder:(NSCoder *) decoder {
 
 	self = [super init];
@@ -56,6 +70,7 @@
 		self.content = [decoder decodeObjectForKey:@"content"];
 		self.author = [decoder decodeObjectForKey:@"author"];
 		self.enclosures = [decoder decodeObjectForKey:@"enclosures"];
+        self.firstParagraph = [decoder decodeObjectForKey:@"firstParagraph"];
 
 	}
 
@@ -73,6 +88,7 @@
 	[encoder encodeObject:self.content forKey:@"content"];
 	[encoder encodeObject:self.author forKey:@"author"];
 	[encoder encodeObject:self.enclosures forKey:@"enclosures"];
+    [encoder encodeObject:self.firstParagraph forKey:@"firstParagraph"];
 }
 
 #pragma mark - Equality

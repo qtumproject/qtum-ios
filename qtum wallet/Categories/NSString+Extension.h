@@ -26,5 +26,6 @@
 
 - (BOOL)isDecimalString;
 
+- (NSString*)firstMatchedStringWithPattern:(NSString*) pattern;
 
 @end
