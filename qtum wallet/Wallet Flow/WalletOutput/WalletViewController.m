@@ -48,6 +48,7 @@ static const CGFloat blanceRoundingCount = 8;
 	[super viewWillAppear:animated];
 
 	[self reloadHeader:self.wallet];
+    [self.tableView reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated {

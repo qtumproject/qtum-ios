@@ -60,7 +60,7 @@
 #pragma mark - Configuration
 
 -(void)configLocalization {
-    self.titleTextLabel.text = NSLocalizedString(@"News Detail", @"News Detail Controllers Title");
+    self.titleTextLabel.text = NSLocalizedString(@"News Details", @"News Details Controllers Title");
 }
 
 - (void)configTableView {
