@@ -110,34 +110,36 @@
                                                 options:0];
 
     NSString *formatString;
+    
+    BOOL isYesterday = [calendar isDateInYesterday:date];
+    BOOL isToday = [calendar isDateInToday:date];
 
-    if (components.day >= 2) {
-
-        return self.shortDateString;
-
-    } else if (components.day == 1) {
+    if (isYesterday) {
 
         formatString = NSLocalizedString(@"Yesterday", @"day at history cell");
         return formatString;
 
-    } else if (components.hour >= 1 && components.hour < 24) {
-
-        return self.shortDateString;
-
-    } else if (components.minute >= 1 && components.minute < 60) {
-
-        NSString *minutsString = NSLocalizedString(@"minuts ago", @"time ago");
-        NSString *minutString = NSLocalizedString(@"minut ago", @"time ago");
-
-        return [NSString stringWithFormat:@"%li %@", (long)components.minute, components.minute > 1 ? minutsString : minutString];
-
-    } else if (components.second > 0 && components.second < 60) {
-
-        formatString = NSLocalizedString(@"few seconds ago", @"few seconds ago");
-        return formatString;
-    } else {
-        return self.shortDateString;
+    } else if (isToday) {
+        
+        if (components.hour >= 1) {
+            
+            return self.shortDateString;
+            
+        } else if (components.minute >= 1 && components.minute < 60) {
+            
+            NSString *minutsString = NSLocalizedString(@"minuts ago", @"time ago");
+            NSString *minutString = NSLocalizedString(@"minut ago", @"time ago");
+            
+            return [NSString stringWithFormat:@"%li %@", (long)components.minute, components.minute > 1 ? minutsString : minutString];
+            
+        } else if (components.second > 0 && components.second < 60) {
+            
+            formatString = NSLocalizedString(@"few seconds ago", @"few seconds ago");
+            return formatString;
+        }
     }
+    
+    return self.shortDateString;
 }
 
 - (NSDictionary *)dictionaryFromElementForWatch {
