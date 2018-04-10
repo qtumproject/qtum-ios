@@ -110,7 +110,7 @@
 
 - (NSRegularExpression*)contractAmountSymbolValidationRegex {
     
-    NSString* pattern = [NSString stringWithFormat:@"^[^.,]\\d*[.,]{0,1}\\d*$"];
+    NSString* pattern = [NSString stringWithFormat:@"^$|^[^.,]\\d*[.,]{0,1}\\d*$"];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
     return regex;
 }
