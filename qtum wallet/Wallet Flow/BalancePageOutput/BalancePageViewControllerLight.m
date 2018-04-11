@@ -31,7 +31,9 @@
 	self.pageControl = [PageControlLight new];
 	self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
     self.pageControl.hidden = YES;
+    self.pageControl.userInteractionEnabled = NO;
 	[self.gradientView addSubview:self.pageControl];
+    self.gradientView.userInteractionEnabled = NO;
 	[self setupConstraintsForPageControl];
 	[self.pageControl setPagesCount:self.controllers.count];
 }

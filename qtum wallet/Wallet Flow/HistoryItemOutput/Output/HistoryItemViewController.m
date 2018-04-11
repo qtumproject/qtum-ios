@@ -129,7 +129,7 @@ static CGFloat buttonAlphaSelected = 1;
 - (void)configWithItem {
 
 	self.balanceLabel.text = [self.item.amount roundedNumberWithScale:6].stringValue;
-	self.receivedTimeLabel.text = self.item.fullDateString ? : NSLocalizedString(@"Unconfirmed", nil);
+    self.receivedTimeLabel.text = self.item.fullDateString && self.item.confirmed ? self.item.fullDateString : NSLocalizedString(@"Unconfirmed", nil);
     self.cointType.text = self.item.currency;
     
     if ([self.item respondsToSelector:@selector(fee)]) {

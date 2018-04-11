@@ -579,7 +579,7 @@ static const CGFloat blanceRoundingCount = 8;
 - (void)didPressedCopyWithValue:(NSString*) value {
     
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    NSString *keyString = value;
+    NSString *keyString = value ?: @"";
     [pb setString:keyString];
     
     PopUpContent *content = [PopUpContentGenerator contentForCopied];
