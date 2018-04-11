@@ -367,6 +367,7 @@ static const CGFloat blanceRoundingCount = 8;
     
     [self updateScrollsConstraints];
     [self showOrHideGas:NO];
+    [self updateSendButton];
 }
 
 - (void)updateQuickInfoOfContractWithBalanceObject:(ContracBalancesObject*) addressObject andTokenSymbol:(NSString*) tokenSymbol {
