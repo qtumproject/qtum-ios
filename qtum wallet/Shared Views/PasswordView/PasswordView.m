@@ -312,7 +312,9 @@
 	if (reversed) {
 
 		if (index > 0) {
-			[self.textFieldsArray[index - 1] becomeFirstResponder];
+            UITextField* textField = self.textFieldsArray[index - 1];
+            textField.text = @"";
+			[textField becomeFirstResponder];
 		}
 	} else {
 
