@@ -367,6 +367,7 @@ static const CGFloat blanceRoundingCount = 8;
     
     [self updateScrollsConstraints];
     [self showOrHideGas:NO];
+    [self updateSendButton];
 }
 
 - (void)updateQuickInfoOfContractWithBalanceObject:(ContracBalancesObject*) addressObject andTokenSymbol:(NSString*) tokenSymbol {
@@ -497,7 +498,7 @@ static const CGFloat blanceRoundingCount = 8;
         
         if (isValid) {
             
-            QTUMBigNumber *feeValue = [QTUMBigNumber decimalWithString:textField.text];
+            QTUMBigNumber *feeValue = [QTUMBigNumber decimalWithString:resultString];
             [self.feeSlider setValue:[feeValue decimalNumber].floatValue animated:YES];
         }
         

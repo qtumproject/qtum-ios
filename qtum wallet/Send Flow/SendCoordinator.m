@@ -313,6 +313,7 @@
 
 		if (weakSelf.tokenPaymentOutput) {
 			[weakSelf.tokenPaymentOutput updateWithTokens:SLocator.contractManager.allActiveAndSupportedTokens];
+            [weakSelf.router popOutputAnimated:YES];
 		}
 
 		[weakSelf.paymentOutput updateWithEtity:entity];
