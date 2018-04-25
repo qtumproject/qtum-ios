@@ -101,7 +101,7 @@ static const NSInteger unsuportedMaxDecimal = 128;
     Contract* token = self.tokens[indexPath.row];
     TokenCell *cell;
     
-    if ([token.decimals isGreaterThanInt:unsuportedMaxDecimal]) {
+    if ([token.decimals isGreaterThanOrEqualToInt:unsuportedMaxDecimal]) {
         cell = [tableView dequeueReusableCellWithIdentifier:tokenCellUnsupportedIdentifire];
         cell.tokenName.text = token.localName;
         cell.mainValue.text = NSLocalizedString(@"Unsupported", @"Unsupported token text");
