@@ -81,7 +81,8 @@
 		NSString *address = item[@"address"];
 		NSNumber *amountNumber = item[@"amount"];
 		double amountDouble = [amountNumber doubleValue];
-		QTUMBigNumber *bigAmount = [QTUMBigNumber decimalWithString:amountNumber.stringValue];
+        NSDecimalNumber* decimal = [NSDecimalNumber decimalNumberWithDecimal:[amountNumber decimalValue]];
+		QTUMBigNumber *bigAmount = [QTUMBigNumber decimalWithString:decimal.stringValue];
 
 		if (address && amountDouble > 0) {
 
