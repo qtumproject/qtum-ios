@@ -515,6 +515,9 @@
 		B3F76A761EDD6F6400108DE9 /* TemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A751EDD6F6400108DE9 /* TemplateModel.m */; };
 		B3F76A7D1EDDABBE00108DE9 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */; };
 		B3F76A941EDDB81600108DE9 /* Contracts in Resources */ = {isa = PBXBuildFile; fileRef = B3F76A931EDDB81600108DE9 /* Contracts */; };
+		B3F941D02091AEF600933849 /* ContractHistoryTableViewCellLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F941CC2091AEF600933849 /* ContractHistoryTableViewCellLight.m */; };
+		B3F941D12091AEF600933849 /* ContractHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F941CE2091AEF600933849 /* ContractHistoryTableViewCell.m */; };
+		B3F941D22091AEF600933849 /* ContractHistoryTableViewCellDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F941CF2091AEF600933849 /* ContractHistoryTableViewCellDark.m */; };
 		B3FD74C91FE9456C00B1E1EA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FD74C81FE9456C00B1E1EA /* libxml2.dylib */; };
 		D059BE7B1F84E4A70045ABA0 /* PaymentValuesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D059BE7A1F84E4A70045ABA0 /* PaymentValuesManager.m */; };
 		D08043581F838D6100B22606 /* WalletManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D08043571F838D6100B22606 /* WalletManagerTests.m */; };
@@ -1906,6 +1909,12 @@
 		B3F76A7B1EDDABBE00108DE9 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		B3F76A7C1EDDABBE00108DE9 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		B3F76A931EDDB81600108DE9 /* Contracts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Contracts; sourceTree = "<group>"; };
+		B3F941CA2091AEF600933849 /* ContractHistoryTableViewCellDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractHistoryTableViewCellDark.h; sourceTree = "<group>"; };
+		B3F941CB2091AEF600933849 /* ContractHistoryTableViewCellLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractHistoryTableViewCellLight.h; sourceTree = "<group>"; };
+		B3F941CC2091AEF600933849 /* ContractHistoryTableViewCellLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractHistoryTableViewCellLight.m; sourceTree = "<group>"; };
+		B3F941CD2091AEF600933849 /* ContractHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractHistoryTableViewCell.h; sourceTree = "<group>"; };
+		B3F941CE2091AEF600933849 /* ContractHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractHistoryTableViewCell.m; sourceTree = "<group>"; };
+		B3F941CF2091AEF600933849 /* ContractHistoryTableViewCellDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractHistoryTableViewCellDark.m; sourceTree = "<group>"; };
 		B3FD74C81FE9456C00B1E1EA /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = "qtum wallet/libxml2.dylib"; sourceTree = "<group>"; };
 		C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qtum wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-qtum wallet/Pods-qtum wallet.release.xcconfig"; sourceTree = "<group>"; };
 		D059BE791F84E4A70045ABA0 /* PaymentValuesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentValuesManager.h; sourceTree = "<group>"; };
@@ -4394,6 +4403,19 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		B3F941C92091AED600933849 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B3F941CD2091AEF600933849 /* ContractHistoryTableViewCell.h */,
+				B3F941CE2091AEF600933849 /* ContractHistoryTableViewCell.m */,
+				B3F941CA2091AEF600933849 /* ContractHistoryTableViewCellDark.h */,
+				B3F941CF2091AEF600933849 /* ContractHistoryTableViewCellDark.m */,
+				B3F941CB2091AEF600933849 /* ContractHistoryTableViewCellLight.h */,
+				B3F941CC2091AEF600933849 /* ContractHistoryTableViewCellLight.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E70353071F039262004ECCC9 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -4762,6 +4784,7 @@
 		E73D36EE1ECF14AA009173BD /* TokenDetails */ = {
 			isa = PBXGroup;
 			children = (
+				B3F941C92091AED600933849 /* Cells */,
 				B35DF6311F260F3500316953 /* Dark */,
 				B35DF6321F260F3C00316953 /* Light */,
 				B35DF6351F2622E500316953 /* TokenDetailDataDisplayManager.h */,
@@ -6130,6 +6153,7 @@
 				E789035D1EDC674C004243F0 /* QTUMAddressTokenView.m in Sources */,
 				B3D555EB1EDE00F900CBDFCF /* SmartContractListItemCell.m in Sources */,
 				B335794A1F348F8F001A0275 /* SplashViewControllerLight.m in Sources */,
+				B3F941D22091AEF600933849 /* ContractHistoryTableViewCellDark.m in Sources */,
 				E7D241D91DE6D6B1003E507B /* QRCodeManager.m in Sources */,
 				E760F49A1F0F89610056D042 /* TokenListViewControllerDark.m in Sources */,
 				E7DD00EA1DC9BF9D00FD5335 /* TransactionManager.m in Sources */,
@@ -6205,6 +6229,7 @@
 				E748579C1F13C02600DCF9A6 /* LanguageTableViewCellLight.m in Sources */,
 				B30B116E1FC6CEC200E5ABBC /* BackupResoreStoryboardFactory.m in Sources */,
 				B336017D1E963A4B00243A21 /* HistoryItemAddressCellTableViewCell.m in Sources */,
+				B3F941D02091AEF600933849 /* ContractHistoryTableViewCellLight.m in Sources */,
 				B3427FCA1F54093B00182E95 /* AboutOutputViewController.m in Sources */,
 				E7396AE11DDDEA2E0002CD47 /* GradientView.m in Sources */,
 				B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */,
@@ -6648,6 +6673,7 @@
 				E7360EC51F1918E7003ED21D /* LibraryViewController.m in Sources */,
 				B3EA52F71F45E0A0002FD201 /* QStoreContractViewControllerLight.m in Sources */,
 				B3D7C080202CA1F50058BB1D /* WalletBalanceEntity+CoreDataProperties.m in Sources */,
+				B3F941D12091AEF600933849 /* ContractHistoryTableViewCell.m in Sources */,
 				E760F4AA1F0FA23D0056D042 /* ProfileCoordinator.m in Sources */,
 				B3CBDF0D1F2A463700C80D4E /* LibraryViewControllerLight.m in Sources */,
 				B32BC4CC1F29EF7200C2417C /* TokenCellSubscribeDark.m in Sources */,
