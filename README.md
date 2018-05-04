@@ -95,3 +95,7 @@ CoreBitcoin deliberately implements as much as possible directly in Objective-C 
 
 Link: https://github.com/oleganza/CoreBitcoin
 
+## License
+Qtum is GPLv3 licensed.
+
+
