@@ -9,6 +9,7 @@ variables:
 before_script:
   - unlock_ci_keychain.sh
   - echo $SETTINGS_URL
+  - echo $SETTINGS_BRANCH_MAINNET
   - get_env_settings.sh $SETTINGS_URL $SETTINGS_BRANCH_MAINNET
   - gem install bundler
   - bundle install
