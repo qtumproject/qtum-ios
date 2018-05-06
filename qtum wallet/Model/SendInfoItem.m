@@ -115,7 +115,10 @@ NSString *const TokenAddressKey = @"tokenAddress";
 
 	NSArray *array = [string componentsSeparatedByString:@":"];
 
-	if (array.count != 2) {
+    if (array.count == 1) {
+        _qtumAddress = [array firstObject];
+        return YES;
+    } else if (array.count != 2) {
 		return NO;
 	}
 
@@ -138,7 +141,7 @@ NSString *const TokenAddressKey = @"tokenAddress";
 		if (paramArray.count != 2) {
 			return NO;
 		}
-
+        
 		if ([[paramArray firstObject] isEqualToString:AmountKey]) {
 			_amountString = [paramArray lastObject];
 		}

@@ -105,7 +105,7 @@ static const CGFloat blanceRoundingCount = 8;
 
 	self.pageViewController = (NSObject <BalancePageOutput> *)self.navigationController.viewControllers[0];
 	self.pageViewController.controllers = @[controller, tokenController];
-	[self.pageViewController setScrollEnable:[SLocator.contractManager allTokens].count > 0];
+	[self.pageViewController setScrollEnable:[SLocator.contractManager allActiveTokens].count > 0];
 }
 
 #pragma mark - WalletCoordinatorDelegate

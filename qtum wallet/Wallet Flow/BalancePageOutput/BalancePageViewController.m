@@ -190,6 +190,7 @@
 }
 
 - (void)setScrollingToTokensAvailableIfNeeded {
+    self.needSwipeBack = NO;
 	[self setScrollEnable:YES];
 }
 

@@ -12,6 +12,32 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="euclidflexmedium.ttf">
+            <string>euclidflexmedium</string>
+        </array>
+        <array key="proximanova-bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+        <array key="proximanova-light.otf">
+            <string>ProximaNova-Light</string>
+        </array>
+        <array key="proximanova-regitalic.otf">
+            <string>ProximaNova-RegularIt</string>
+        </array>
+        <array key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="proximanova-semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+        <array key="simplonmono-medium.ttf">
+            <string>simplonmono-medium</string>
+        </array>
+        <array key="simplonmono-regular.ttf">
+            <string>simplonmono-regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--History Item View Controller Dark-->
         <scene sceneID="IM3-6z-ie6">
@@ -2023,7 +2049,7 @@ at 4:42:15 PM, July 12</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCellLoading" rowHeight="75" id="RAX-Jr-oQH" customClass="HistoryTableViewCellDark">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCellLoading" rowHeight="75" id="RAX-Jr-oQH" customClass="ContractHistoryTableViewCellDark">
                                         <rect key="frame" x="0.0" y="295" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RAX-Jr-oQH" id="s2B-53-2GA">
@@ -2086,7 +2112,7 @@ at 4:42:15 PM, July 12</string>
                                             <outlet property="dateLabel" destination="l06-ez-ONf" id="8Qt-IQ-HC8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" rowHeight="75" id="FJm-nM-BJv" customClass="HistoryTableViewCellDark">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" rowHeight="75" id="FJm-nM-BJv" customClass="ContractHistoryTableViewCellDark">
                                         <rect key="frame" x="0.0" y="370" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FJm-nM-BJv" id="kRh-Du-7nE">
@@ -2151,7 +2177,7 @@ at 4:42:15 PM, July 12</string>
                                             <outlet property="typeLabel" destination="k6z-g4-7Xa" id="VrD-fa-jgg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCellInternal" rowHeight="75" id="U8X-uU-IHV" customClass="HistoryTableViewCellDark">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCellInternal" rowHeight="75" id="U8X-uU-IHV" customClass="ContractHistoryTableViewCellDark">
                                         <rect key="frame" x="0.0" y="445" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U8X-uU-IHV" id="30l-ES-pvf">
@@ -4475,7 +4501,7 @@ at 4:42:15 PM, July 12</string>
                                             <outlet property="topConstraint" destination="eex-BO-OLH" id="rpi-3I-hUi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" rowHeight="55" id="Sjj-DY-1Ib" customClass="HistoryTableViewCellLight">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" rowHeight="55" id="Sjj-DY-1Ib" customClass="ContractHistoryTableViewCellLight">
                                         <rect key="frame" x="0.0" y="239" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sjj-DY-1Ib" id="Wgg-q0-yo4">
@@ -4536,7 +4562,7 @@ at 4:42:15 PM, July 12</string>
                                             <outlet property="typeImage" destination="IHD-eD-bhq" id="sOl-Z1-J71"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCellInternal" rowHeight="55" id="stf-hI-fYY" customClass="HistoryTableViewCellLight">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCellInternal" rowHeight="55" id="stf-hI-fYY" customClass="ContractHistoryTableViewCellLight">
                                         <rect key="frame" x="0.0" y="294" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="stf-hI-fYY" id="gKB-cg-X4B">
@@ -4597,7 +4623,7 @@ at 4:42:15 PM, July 12</string>
                                             <outlet property="typeImage" destination="Fp1-ma-JJI" id="raf-MN-ezu"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HistoryTableViewCellLoading" rowHeight="55" id="b8u-k8-V8g" customClass="HistoryTableViewCellLight">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HistoryTableViewCellLoading" rowHeight="55" id="b8u-k8-V8g" customClass="ContractHistoryTableViewCellLight">
                                         <rect key="frame" x="0.0" y="349" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8u-k8-V8g" id="Dc2-WM-Ufi">

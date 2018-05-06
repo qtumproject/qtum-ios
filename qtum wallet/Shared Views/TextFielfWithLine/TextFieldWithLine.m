@@ -131,13 +131,27 @@ CGFloat const kCenterYChanges = 20.0f;
 
 - (void)setText:(NSString *) text {
 
-	if (text && ![text isEqualToString:@""]) {
-		[self moveLabelUp:NO];
-	} else {
-		[self moveLabelDown:NO];
-	}
+    BOOL shoudChangeText = NO;
+    
+    if ([self.delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)]) {
+        
+        if ([self.delegate textField:self shouldChangeCharactersInRange:NSMakeRange(0, self.text.length) replacementString:text]) {
+            [super setText:text];
+            shoudChangeText = YES;
+        }
 
-	[super setText:text];
+    } else {
+        [super setText:text];
+        shoudChangeText = YES;
+    }
+    
+    if (shoudChangeText) {
+        if (text && ![text isEqualToString:@""]) {
+            [self moveLabelUp:NO];
+        } else {
+            [self moveLabelDown:NO];
+        }
+    }
 }
 
 - (BOOL)canPerformAction:(SEL) action withSender:(id) sender {

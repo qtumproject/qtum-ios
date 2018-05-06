@@ -14,7 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIView *underline;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonTextLeading;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonTextTrailing;
-
+@property (weak, nonatomic) IBOutlet UILabel *buttonTeztLabel;
+    
 @end
 
 @implementation HistoryEventLogsConvertableDataCell
@@ -76,7 +77,8 @@
 
 -(void)setButtonText:(NSString*) buttonTitle {
     
-    [self.convertButton setTitle:buttonTitle forState:UIControlStateNormal];
+    self.buttonTeztLabel.text = buttonTitle;
+    [self.buttonTeztLabel sizeToFit];
 }
 
 -(void)updateWithValuesModel {
