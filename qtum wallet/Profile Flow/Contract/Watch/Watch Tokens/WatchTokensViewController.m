@@ -57,10 +57,6 @@
     
     NSString * text = [textField.text stringByReplacingCharactersInRange:range withString:string];
     BOOL isValid = YES;
-    NSLog(@"%lu",[textField.text length]);
-    if ([textField.text length] == 1) {
-        return true;
-    }
     if ([textField isEqual:self.contractAddressTextField]) {
         isValid = [SLocator.validationInputService isValidSymbolsContractAddressString:text];
         if (isValid) {
