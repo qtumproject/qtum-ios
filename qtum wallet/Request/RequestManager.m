@@ -288,6 +288,7 @@
 		andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
     
 	NSString *path = [NSString stringWithFormat:@"contracts/%@/params?keys=symbol,decimals,name,totalSupply", addressContract];
+    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 
 	[self.networkService requestWithType:GET path:path andParams:nil withSuccessHandler:^(id _Nonnull responseObject) {
 		success (responseObject);
