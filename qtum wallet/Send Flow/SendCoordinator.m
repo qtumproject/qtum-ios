@@ -326,7 +326,7 @@
             [weakSelf.router popOutputAnimated:YES];
 		}
         
-		[weakSelf.paymentOutput updateWithEtity:entity]; //Go to che-to
+		[weakSelf.paymentOutput updateWithEtity:entity];
 	});
 }
 
