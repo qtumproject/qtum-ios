@@ -189,7 +189,7 @@
         
         [weakSelf checkTokens];
         _outputEntity = [weakSelf entityWithSendInfo:item];
-        [weakSelf updateOutputsWithEntity:_outputEntity];
+        [weakSelf updateOutputsWithEntity:self.outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -220,7 +220,7 @@
         }
         
         _outputEntity = [weakSelf entityWithToken];
-        [weakSelf updateOutputsWithEntity:_outputEntity];
+        [weakSelf updateOutputsWithEntity:self.outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -240,7 +240,7 @@
             return;
         }
         
-        [weakSelf updateOutputsWithEntity:_outputEntity];
+        [weakSelf updateOutputsWithEntity:self.outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -521,7 +521,7 @@
         weakSelf.choosenTokenAddressModal = tokenAddress;
         [weakSelf checkTokens];
         _outputEntity = [weakSelf entityWithToken];
-        [weakSelf updateOutputsWithEntity:_outputEntity];
+        [weakSelf updateOutputsWithEntity:self.outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -544,7 +544,7 @@
         }
         
         [weakSelf checkTokens];
-            [weakSelf updateOutputsWithEntity:_outputEntity];
+            [weakSelf updateOutputsWithEntity:self.outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -691,7 +691,7 @@
         weakSelf.choosenTokenAddressModal = nil;
         [weakSelf checkTokens];
         _outputEntity = [weakSelf entityWithToken];
-        [weakSelf updateOutputsWithEntity:_outputEntity];
+        [weakSelf updateOutputsWithEntity:self.outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -714,7 +714,7 @@
         weakSelf.token = nil;
         [weakSelf checkTokens];
         _outputEntity = [weakSelf entityWithToken];
-        [weakSelf updateOutputsWithEntity:_outputEntity];
+        [weakSelf updateOutputsWithEntity:self.outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
