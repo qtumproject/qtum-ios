@@ -35,6 +35,8 @@
 @property (assign, nonatomic) BOOL needProtectInputs;
 @property (strong, nonatomic) id <BaseRouterProtocol> router;
 
+@property (strong, nonatomic) NewPaymentOutputEntity *outputEntity;
+
 @property (nonatomic, copy) void (^afterCheckingChangesBlock)(void);
 
 
@@ -186,8 +188,8 @@
         }
         
         [weakSelf checkTokens];
-        NewPaymentOutputEntity* entity = [weakSelf entityWithSendInfo:item];
-        [weakSelf updateOutputsWithEntity:entity];
+        _outputEntity = [weakSelf entityWithSendInfo:item];
+        [weakSelf updateOutputsWithEntity:_outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -217,8 +219,8 @@
             return;
         }
         
-        NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
-        [weakSelf updateOutputsWithEntity:entity];
+        _outputEntity = [weakSelf entityWithToken];
+        [weakSelf updateOutputsWithEntity:_outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -238,8 +240,7 @@
             return;
         }
         
-        NewPaymentOutputEntity* entity = [weakSelf defaultEntity];
-        [weakSelf updateOutputsWithEntity:entity];
+        [weakSelf updateOutputsWithEntity:_outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -259,6 +260,15 @@
     entity.amount = item.amountString;
     
     return entity;
+}
+
+-(NewPaymentOutputEntity*)outputEntity {
+
+    if (!_outputEntity) {
+        _outputEntity = [self defaultEntity];
+    }
+    
+    return _outputEntity;
 }
 
 -(NewPaymentOutputEntity*)defaultEntity {
@@ -315,8 +325,8 @@
 			[weakSelf.tokenPaymentOutput updateWithTokens:SLocator.contractManager.allActiveAndSupportedTokens];
             [weakSelf.router popOutputAnimated:YES];
 		}
-
-		[weakSelf.paymentOutput updateWithEtity:entity];
+        
+		[weakSelf.paymentOutput updateWithEtity:entity]; //Go to che-to
 	});
 }
 
@@ -510,8 +520,8 @@
         
         weakSelf.choosenTokenAddressModal = tokenAddress;
         [weakSelf checkTokens];
-        NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
-        [weakSelf updateOutputsWithEntity:entity];
+        _outputEntity = [weakSelf entityWithToken];
+        [weakSelf updateOutputsWithEntity:_outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -534,8 +544,7 @@
         }
         
         [weakSelf checkTokens];
-        NewPaymentOutputEntity* entity = [weakSelf defaultEntity];
-        [weakSelf updateOutputsWithEntity:entity];
+            [weakSelf updateOutputsWithEntity:_outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -681,8 +690,8 @@
         weakSelf.token = item;
         weakSelf.choosenTokenAddressModal = nil;
         [weakSelf checkTokens];
-        NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
-        [weakSelf updateOutputsWithEntity:entity];
+        _outputEntity = [weakSelf entityWithToken];
+        [weakSelf updateOutputsWithEntity:_outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
@@ -704,8 +713,8 @@
         }
         weakSelf.token = nil;
         [weakSelf checkTokens];
-        NewPaymentOutputEntity* entity = [weakSelf entityWithToken];
-        [weakSelf updateOutputsWithEntity:entity];
+        _outputEntity = [weakSelf entityWithToken];
+        [weakSelf updateOutputsWithEntity:_outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
