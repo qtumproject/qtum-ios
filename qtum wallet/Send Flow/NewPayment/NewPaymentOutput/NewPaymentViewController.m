@@ -483,8 +483,12 @@ static const CGFloat blanceRoundingCount = 8;
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string {
-    
-    NSString * resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    NSString * resultString;
+    if (string) {
+        resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    } else {
+        resultString = @"";
+    }
 
     BOOL isValid = YES;
     
