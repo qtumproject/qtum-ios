@@ -11,7 +11,7 @@
 @interface NewPaymentOutputEntity : NSObject
 
 @property (assign, nonatomic, getter=isTokenChoosen) BOOL tokenChoosen;
-@property (assign, nonatomic, getter=isTokensExists) BOOL tokensExists;
+@property (assign, nonatomic, getter=isTokensExists, setter=TokensExists:) BOOL tokensExists;
 @property (copy, nonatomic) NSString* tokenName;
 @property (copy, nonatomic) NSString* tokenSymbol;
 @property (copy, nonatomic) NSString* amount;
