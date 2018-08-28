@@ -544,11 +544,37 @@
         }
         
         [weakSelf checkTokens];
-            [weakSelf updateOutputsWithEntity:self.outputEntity];
+        [weakSelf updateOutputsWithEntity:self.outputEntity];
     }];
     
     [self.workingQueue addOperation:operation];
 
+}
+
+- (void)didViewAppear {
+    [self reusemeUpdatingOperations];
+    
+    __weak __typeof (self) weakSelf = self;
+    
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOperation = operation;
+    
+    [operation addExecutionBlock:^{
+        
+        if (weakOperation.isCancelled) {
+            return;
+        }
+        
+        [weakSelf checkTokens];
+        if (weakSelf.outputEntity.isTokensExists != weakSelf.hasTokens) {
+            self.outputEntity.tokensExists = self.hasTokens;
+            [weakSelf.paymentOutput updateWithEtity:weakSelf.outputEntity];
+        }
+    }];
+    
+    [self.workingQueue addOperation:operation];
+    
 }
 
 - (void)didPresseQRCodeScaner {
