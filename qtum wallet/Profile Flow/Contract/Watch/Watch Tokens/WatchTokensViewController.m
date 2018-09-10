@@ -44,12 +44,14 @@
 #pragma mark - Output
 
 - (void)setTokenName:(NSString*) tokenName {
-    
+
     if (self.contractNameField.text.length == 0) {
-        self.contractNameField.text = tokenName;
+        if (tokenName != nil) {
+            self.contractNameField.text = tokenName;
+        }
     }
 }
-#pragma mar - UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
