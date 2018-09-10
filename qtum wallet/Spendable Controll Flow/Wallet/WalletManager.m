@@ -92,14 +92,13 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (NSDictionary *)hashTableOfKeys {
 
-	NSMutableDictionary *hashTable = [NSMutableDictionary new];
-	for (BTCKey *key in [[self wallet] allKeys]) {
-		NSString *keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
-		if (keyString) {
-			hashTable[keyString] = [NSNull null];
-		}
-	}
-	return [hashTable copy];
+    NSMutableDictionary *hashTable = [NSMutableDictionary new];
+    for (NSString *keyString in [[self wallet] allKeysAdreeses]) {
+        if (keyString) {
+            hashTable[keyString] = [NSNull null];
+        }
+    }
+    return [hashTable copy];
 }
 
 - (NSString*)stringAddressFromBTCKey:(BTCKey*) key {
@@ -110,13 +109,7 @@ NSString const *kIsLongPin = @"kIsLongPin";
 
 - (NSDictionary *)hashTableOfKeysForHistoryElement {
 
-	NSMutableDictionary *hashTable = [NSMutableDictionary new];
-	for (NSString *keyString in [[self wallet] allKeysAdreeses]) {
-		if (keyString) {
-			hashTable[keyString] = [NSNull null];
-		}
-	}
-	return [hashTable copy];
+    return [self hashTableOfKeys];
 }
 
 - (void)clear {

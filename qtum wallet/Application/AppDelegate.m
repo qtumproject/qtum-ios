@@ -44,10 +44,9 @@
 	return YES;
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *) application {
-
-	[SLocator.popupService dismissLoader];
-	[[ApplicationCoordinator sharedInstance] startConfirmPinFlowWithHandler:nil];
+-(void)applicationWillResignActive:(UIApplication *)application {
+    [SLocator.popupService dismissLoader];
+    [[ApplicationCoordinator sharedInstance] startConfirmPinFlowWithHandler:nil];
 }
 
 #pragma mark - Notifications

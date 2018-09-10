@@ -28,9 +28,11 @@ extern NSInteger const brandKeyWordsCount;
 
 - (BOOL)changeBrandKeyPinWithOldPin:(NSString *) pin toNewPin:(NSString *) newPin;
 
-- (BTCKey *)lastRandomKeyOrRandomKey;
 
-- (BTCKey *)randomKey;
+
+- (NSString *)lastRandomKeyOrRandomKey;
+
+- (NSString *)randomKey;
 
 - (BTCKey *)keyAtIndex:(NSUInteger) index;
 
@@ -49,5 +51,7 @@ extern NSInteger const brandKeyWordsCount;
 - (void)clearPublicAddresses;
 
 + (NSArray *)generateWordsArray;
+
+- (void)clearKeychain;
 
 @end

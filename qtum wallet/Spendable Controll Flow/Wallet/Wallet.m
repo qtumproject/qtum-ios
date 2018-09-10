@@ -16,8 +16,9 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 @property (assign, nonatomic) NSInteger countOfUsedKeys;
 @property (copy, nonatomic) NSString *encriptedBrandKey;
-@property (strong, nonatomic) BTCKey *lastRandomKey;
+@property (strong, nonatomic) NSString *lastRandomKey;
 @property (strong, nonatomic) BTCKeychain *keyChain;
+@property (strong, nonatomic) NSArray <NSString*>* addresses;
 
 @end
 
@@ -97,12 +98,13 @@ NSInteger const USERS_KEYS_COUNT = 10;
 			[addresses addObject:keyString];
 		}
 	}
-    
+    self.addresses = addresses;
 	[NSUserDefaults savePublicAddresses:addresses];
 }
 
 - (void)clearPublicAddresses {
 
+    self.addresses = nil;
 	[NSUserDefaults savePublicAddresses:nil];
 	[SLocator.dataOperation deleteGroupFileWithName:groupFileName valueForKey:@"kWalletAddressKey"];
 }
@@ -140,9 +142,9 @@ NSInteger const USERS_KEYS_COUNT = 10;
 	if (!_mainAddress) {
 
 		NSString *mainAddress = [self getStoredLastAddressKey];
-		if (!mainAddress || ![self.addressKeyHashTable objectForKey:mainAddress]) {
-			BTCKey *key = [self lastRandomKeyOrRandomKey];
-			mainAddress = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
+		if (!mainAddress || ![self.addresses containsObject:mainAddress]) {
+			NSString *key = [self lastRandomKeyOrRandomKey];
+            mainAddress = key;
 		}
 		_mainAddress = mainAddress;
 	}
@@ -171,33 +173,32 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 #pragma mark - Public Methods
 
-- (BTCKey *)randomKey {
+- (NSString *)randomKey {
 
 	uint randomedIndex = arc4random () % self.countOfUsedKeys;
-	BTCKey *newKey = [self.keyChain keyAtIndex:randomedIndex hardened:YES];
-	[self storeLastAdreesKey:newKey];
+    NSString *newKey = self.addresses[randomedIndex];
+	[self storeLastAdrees:newKey];
 	self.lastRandomKey = newKey;
 	return newKey;
 }
 
-- (BTCKey *)lastRandomKeyOrRandomKey {
+- (NSString *)lastRandomKeyOrRandomKey {
 
 	if (!self.lastRandomKey) {
 
-		BTCKey *key = [self randomKey];
-		[self storeLastAdreesKey:key];
+		NSString *key = [self randomKey];
+		[self storeLastAdrees:key];
 		return key;
 	} else {
 		return self.lastRandomKey;
 	}
 }
 
-- (void)storeLastAdreesKey:(BTCKey *) btcKey {
+- (void)storeLastAdrees:(NSString *) keyString {
 
-	if (!btcKey) {
+	if (!keyString) {
 		return;
 	}
-	NSString *keyString = SLocator.appSettings.isMainNet ? btcKey.address.string : btcKey.addressTestnet.string;
 	[SLocator.dataOperation addGropFileWithName:groupFileName dataSource:@{@"kWalletAddressKey": keyString}];
 }
 
@@ -249,18 +250,11 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 - (NSArray *)addressesInRightOrder {
 
-	if (!self.keyChain) {
+	if (!self.addresses) {
 		return nil;
 	}
-
-	NSMutableArray *array = @[].mutableCopy;
-
-	for (NSInteger i = 0; i < self.countOfUsedKeys; i++) {
-		BTCKey *key = [self.keyChain keyAtIndex:(uint)i hardened:YES];
-		NSString *keyString = SLocator.appSettings.isMainNet ? key.address.string : key.addressTestnet.string;
-		[array addObject:keyString];
-	}
-	return [array copy];
+    
+	return [self.addresses copy];
 }
 
 #pragma mark - Private Methods
@@ -291,6 +285,12 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 	return randomWords;
 }
+
+- (void)clearKeychain {
+    [self.keyChain clear];
+    self.keyChain = nil;
+}
+
 
 
 #pragma mark - Spendable
