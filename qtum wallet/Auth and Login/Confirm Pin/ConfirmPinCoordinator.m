@@ -38,6 +38,7 @@
     [[UIApplication sharedApplication] sendAction:@selector (resignFirstResponder) to:nil from:nil forEvent:nil];
 
 	[self showSecurityLoginController];
+    [SLocator.walletManager.wallet clearKeychain];
 
 	NSInteger failedCount = [NSUserDefaults getCountOfPinFailed];
 	BOOL shoodFingerprintShow = failedCount < 3;
@@ -65,24 +66,19 @@
 }
 
 - (void)showFingerprint {
-
-	__weak __typeof (self) weakSelf = self;
-
-	[SLocator.touchIDService checkTouchIdWithText:NSLocalizedString(@"Login", nil) andCopmletion:^(TouchIDCompletionType type) {
-		switch (type) {
-
-			case TouchIDSuccessed:
-
-				[weakSelf loginUser];
-				break;
-
-			case TouchIDDenied:
-			case TouchIDCanceled:
-
-				[weakSelf.loginOutput startEditing];
-				break;
-		}
-	}];
+    
+    __weak __typeof (self) weakSelf = self;
+    
+    [SLocator.keychainService touchIDString:^(NSString *_Nullable string, NSError *_Nullable error) {
+        
+        dispatch_async (dispatch_get_main_queue (), ^{
+            if (string) {
+                [weakSelf enterPin:string];
+            } else {
+                [weakSelf.loginOutput startEditing];
+            }
+        });
+    }];
 }
 
 #pragma mark - Actions
@@ -124,6 +120,7 @@
 
 		if ([SLocator.walletManager verifyPin:pin]) {
 
+            [SLocator.walletManager.wallet configAddressesWithPin:pin];
 			[NSUserDefaults saveFailedPinCount:0];
 			[self loginUser];
 		} else {
