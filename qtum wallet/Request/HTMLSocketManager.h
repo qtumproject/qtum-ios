@@ -1,5 +1,5 @@
 //
-//  SocketManager.h
+//  HTMLSocketManager.h
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 24.03.17.
@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, ConnectionStatus) {
     ConnectionFailed
 };
 
-@interface SocketManager : NSObject
+@interface HTMLSocketManager : NSObject
 
 @property (assign, nonatomic, readonly) ConnectionStatus status;
 @property (nonatomic, weak) id <Requestable> delegate;

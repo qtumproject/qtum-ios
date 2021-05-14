@@ -7,13 +7,13 @@
 //
 
 #import "ServerAdapter.h"
-#import "SocketManager.h"
+#import "HTMLSocketManager.h"
 #import "NetworkingService.h"
 
 @interface RequestManager ()
 
 @property (strong, nonatomic) id <RequestManagerAdapter> adapter;
-@property (strong, nonatomic) SocketManager *socketManager;
+@property (strong, nonatomic) HTMLSocketManager *socketManager;
 @property (strong, nonatomic) NetworkingService *networkService;
 
 @end
@@ -36,10 +36,10 @@
 
 #pragma mark - Setup and Privat Methods
 
-- (SocketManager *)socketManager {
+- (HTMLSocketManager *)socketManager {
 
 	if (!_socketManager) {
-		_socketManager = [SocketManager new];
+		_socketManager = [HTMLSocketManager new];
 		_socketManager.delegate = self;
 	}
 	return _socketManager;

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -459,7 +459,7 @@
 		B3E159291ED6E3C500D70A87 /* ChoseTokenPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E159281ED6E3C500D70A87 /* ChoseTokenPaymentCell.m */; };
 		B3E3A1651E850572002A488F /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1641E850572002A488F /* AppSettings.m */; };
 		B3E3A1691E8505EC002A488F /* NSUserDefaults+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */; };
-		B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A18A1E852F27002A488F /* SocketManager.m */; };
+		B3E3A18B1E852F27002A488F /* HTMLSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E3A18A1E852F27002A488F /* HTMLSocketManager.m */; };
 		B3E8B7881F4AC5D300DD7904 /* SourceCodePopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E8B7871F4AC5D300DD7904 /* SourceCodePopUpViewControllerLight.m */; };
 		B3E8B78B1F4AC5E300DD7904 /* SourceCodePopUpViewControllerDark.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E8B78A1F4AC5E300DD7904 /* SourceCodePopUpViewControllerDark.m */; };
 		B3E8B78F1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E8B78E1F4B2AC400DD7904 /* ConfirmPurchasePopUpViewControllerLight.m */; };
@@ -712,6 +712,7 @@
 		E7FD364B1DC4D07E00748177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD36491DC4D07E00748177 /* LaunchScreen.storyboard */; };
 		E7FD365C1DC7360400748177 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FD365B1DC7360400748177 /* Security.framework */; };
 		E7FD36661DC76EBC00748177 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD36651DC76EBC00748177 /* RequestManager.m */; };
+		E867C9D5264E317C001739D9 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = E867C9D4264E317C001739D9 /* SocketIO */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1785,8 +1786,8 @@
 		B3E3A1641E850572002A488F /* AppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettings.m; sourceTree = "<group>"; };
 		B3E3A1671E8505EC002A488F /* NSUserDefaults+Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Settings.h"; sourceTree = "<group>"; };
 		B3E3A1681E8505EC002A488F /* NSUserDefaults+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Settings.m"; sourceTree = "<group>"; };
-		B3E3A1891E852F27002A488F /* SocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketManager.h; sourceTree = "<group>"; };
-		B3E3A18A1E852F27002A488F /* SocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketManager.m; sourceTree = "<group>"; };
+		B3E3A1891E852F27002A488F /* HTMLSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLSocketManager.h; sourceTree = "<group>"; };
+		B3E3A18A1E852F27002A488F /* HTMLSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLSocketManager.m; sourceTree = "<group>"; };
 		B3E8B7861F4AC5D300DD7904 /* SourceCodePopUpViewControllerLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceCodePopUpViewControllerLight.h; sourceTree = "<group>"; };
 		B3E8B7871F4AC5D300DD7904 /* SourceCodePopUpViewControllerLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceCodePopUpViewControllerLight.m; sourceTree = "<group>"; };
 		B3E8B7891F4AC5E300DD7904 /* SourceCodePopUpViewControllerDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceCodePopUpViewControllerDark.h; sourceTree = "<group>"; };
@@ -2342,6 +2343,7 @@
 				B35733341F97B3A700C64AAE /* libxml2.tbd in Frameworks */,
 				B3FD74C91FE9456C00B1E1EA /* libxml2.dylib in Frameworks */,
 				E7FD365C1DC7360400748177 /* Security.framework in Frameworks */,
+				E867C9D5264E317C001739D9 /* SocketIO in Frameworks */,
 				0C779EBBB0780FE8BF137970 /* libPods-qtum wallet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5547,8 +5549,8 @@
 				B3597DF41E7FABF800EBF094 /* Requestable.h */,
 				B3597DF91E811D6500EBF094 /* ServerAdapter.h */,
 				B3597DFA1E811D6500EBF094 /* ServerAdapter.m */,
-				B3E3A1891E852F27002A488F /* SocketManager.h */,
-				B3E3A18A1E852F27002A488F /* SocketManager.m */,
+				B3E3A1891E852F27002A488F /* HTMLSocketManager.h */,
+				B3E3A18A1E852F27002A488F /* HTMLSocketManager.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -5660,7 +5662,6 @@
 				094AC2E300B2D4BEF04A6420 /* [CP] Embed Pods Frameworks */,
 				BBDAA643D3F5A61C3D80AB51 /* [CP] Copy Pods Resources */,
 				B33EAF9B1E5EC263006125F3 /* Embed App Extensions */,
-				B3C4553C1E8958D900420D7C /* ShellScript */,
 				E78D0C9A1ED2F02800CB91FF /* ShellScript */,
 				B3C8566C1FD577E900DAD5F4 /* ShellScript */,
 				E730AB801EE6A5D200132711 /* Embed Watch Content */,
@@ -5672,6 +5673,9 @@
 				E730AB771EE6A5D200132711 /* PBXTargetDependency */,
 			);
 			name = "qtum wallet";
+			packageProductDependencies = (
+				E867C9D4264E317C001739D9 /* SocketIO */,
+			);
 			productName = "qtum wallet";
 			productReference = E7FD36381DC4D07E00748177 /* qtum wallet.app */;
 			productType = "com.apple.product-type.application";
@@ -5762,6 +5766,9 @@
 				"zh-Hant",
 			);
 			mainGroup = E7FD362F1DC4D07E00748177;
+			packageReferences = (
+				E867C9D3264E317C001739D9 /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			productRefGroup = E7FD36391DC4D07E00748177 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -5980,20 +5987,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B3C4553C1E8958D900420D7C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SocketIO.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		B3C8566C1FD577E900DAD5F4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -6005,7 +5998,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp \"${APP_GOOGLE_SERVICE_PLIST}\" \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleService-Info.plist\"";
+			shellScript = "cp \"${APP_GOOGLE_SERVICE_PLIST}\" \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleService-Info.plist\"\n";
 		};
 		BBDAA643D3F5A61C3D80AB51 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6053,7 +6046,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"$(FABRIC_API_KEY)\" = \"<FABRIC_API_KEY>\"]\nthen\necho \"${PODS_ROOT}/Fabric/run\" $(FABRIC_API_KEY) $(FABRIC_BUILD_SECRET)\nelse\necho \"fabric not initialized\"\nfi";
+			shellScript = "if [ \"$(FABRIC_API_KEY)\" = \"<FABRIC_API_KEY>\"]\nthen\necho \"${PODS_ROOT}/Fabric/run\" $(FABRIC_API_KEY) $(FABRIC_BUILD_SECRET)\nelse\necho \"fabric not initialized\"\nfi\n";
 		};
 		EFC4163D6348EB02957DC3DD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6243,7 +6236,7 @@
 				B32C3CED1E1120C50094C82C /* NSObject+Extension.m in Sources */,
 				B3CD78E51F4DD45700D79363 /* ChooseAddressReciveCellDark.m in Sources */,
 				B31E0976202339860001F57F /* WalletHistoryEntity+Extension.m in Sources */,
-				B3E3A18B1E852F27002A488F /* SocketManager.m in Sources */,
+				B3E3A18B1E852F27002A488F /* HTMLSocketManager.m in Sources */,
 				B342DB651F60443B0052A367 /* TransactionScriptBuilder.m in Sources */,
 				B32EBFEE1E1E4380003AA578 /* PinController.m in Sources */,
 				E74857961F13BA5300DCF9A6 /* LanguageViewControllerLight.m in Sources */,
@@ -7087,7 +7080,11 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.iMessageExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "fd5e8146-98b9-4000-a829-6b7bada50011";
@@ -7108,7 +7105,11 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.iMessageExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "fd5e8146-98b9-4000-a829-6b7bada50011";
@@ -7126,7 +7127,11 @@
 				DEVELOPMENT_TEAM = W36NVXCL48;
 				INFOPLIST_FILE = "qtum walletTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-walletTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qtum wallet.app/qtum wallet";
@@ -7142,7 +7147,11 @@
 				DEVELOPMENT_TEAM = W36NVXCL48;
 				INFOPLIST_FILE = "qtum walletTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qtum.qtum-walletTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qtum wallet.app/qtum wallet";
@@ -7208,7 +7217,11 @@
 				DEVELOPMENT_TEAM = W36NVXCL48;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "QTUM Watch Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "db76982e-30fb-496e-98c7-e58a905007f5";
@@ -7233,7 +7246,11 @@
 				DEVELOPMENT_TEAM = W36NVXCL48;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "QTUM Watch Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "db76982e-30fb-496e-98c7-e58a905007f5";
@@ -7416,7 +7433,10 @@
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/qtum\\ wallet",
@@ -7536,7 +7556,10 @@
 				INFOPLIST_PREFIX_HEADER = "";
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/qtum\\ wallet",
@@ -7663,6 +7686,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E867C9D3264E317C001739D9 /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 13.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E867C9D4264E317C001739D9 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E867C9D3264E317C001739D9 /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B32A52F82022168600280D25 /* TransactionHistory.xcdatamodeld */ = {
