@@ -26,10 +26,10 @@ return c;
 }
 }
 /**
-* @title QRC20Basic
-* @dev Implements QRC20 Token Standard
+* @title HRC20Basic
+* @dev Implements HRC20 Token Standard
 */
-contract QRC20Basic {
+contract HRC20Basic {
 string public name;                   //fancy name: eg Simon Bucks
 uint8 public decimals;                //How many decimals to show. ie. There could 1000 base units with 3 decimals. Meaning 0.980 SBX = 980 base units. It's like comparing 1 satoshi to 1 qtum.
 string public symbol;                 //An identifier: eg SBX
@@ -43,12 +43,12 @@ function allowance(address _owner, address _spender) constant returns (uint256 r
 event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 }
 /**
-* @title Standard QRC20 token
+* @title Standard HRC20 token
 *
 * @dev Implementation of the basic standard token.
 * @dev Based on code by FirstBlood: https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol
 */
-contract StandardToken is QRC20Basic {
+contract StandardToken is HRC20Basic {
 using SafeMath for uint256;
 mapping (address => uint256) balances;
 mapping (address => mapping (address => uint256)) allowed;

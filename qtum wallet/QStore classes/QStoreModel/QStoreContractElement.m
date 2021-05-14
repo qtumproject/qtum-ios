@@ -129,7 +129,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 		return CrowdsaleType;
 	}
 
-	if ([stringType isEqualToString:@"QRC20 Token"]) {
+	if ([stringType isEqualToString:@"HRC20 Token"]) {
 		return TokenType;
 	}
 
@@ -141,7 +141,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 	if ([NSUserDefaults isDarkSchemeSetting]) {
 		switch (self.type) {
 			case TokenType:
-				return @"QRC20 Token";
+				return @"HRC20 Token";
 			case CrowdsaleType:
 				return @"Crowdsale";
 			default:
@@ -150,7 +150,7 @@ NSString *const QStoreContractElementWithSourseCodeKey = @"with_source_code";
 	} else {
 		switch (self.type) {
 			case TokenType:
-				return @"QRC20 Token-light";
+				return @"HRC20 Token-light";
 			case CrowdsaleType:
 				return @"Crowdsale-light";
 			default:
