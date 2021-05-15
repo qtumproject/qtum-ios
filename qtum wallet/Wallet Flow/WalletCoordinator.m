@@ -301,17 +301,6 @@ static const CGFloat blanceRoundingCount = 8;
 	});
 }
 
-- (void)reloadBalance {
-    __weak __typeof (self) weakSelf = self;
-    dispatch_async (_requestQueue, ^{
-        weakSelf.isBalanceLoaded = NO;
-        
-        [weakSelf.wallet updateBalanceWithHandler:^(BOOL success) {
-            weakSelf.isBalanceLoaded = YES;
-        }];
-    });
-}
-
 - (void)reloadHistory {
 
 	__weak __typeof (self) weakSelf = self;
@@ -638,7 +627,7 @@ static const CGFloat blanceRoundingCount = 8;
 	[self updateControls];
 
 	if (self.isNewDataLoaded) {
-        [self reloadBalance];
+        self.isBalanceLoaded = YES;
 		[self reloadHistory];
 	}
 }

@@ -76,9 +76,9 @@
         outAllMoney += [outObject[@"value"] doubleValue];
 	}
 
-    double fee = outAllMoney - inAllMoney;
-    double mineDiff = outMyMoney - inMyMoney;
-    double amount = isPaidByMe ? fee : mineDiff;
+    CGFloat fee = outAllMoney - inAllMoney;
+    CGFloat mineDiff = outMyMoney - inMyMoney;
+    CGFloat amount = isPaidByMe ? mineDiff - fee : mineDiff;
 
 	self.amount = [QTUMBigNumber decimalWithString:[NSString stringWithFormat:@"%f", amount]];
     self.fee = [QTUMBigNumber decimalWithString:[NSString stringWithFormat:@"%f", fee]];
@@ -123,7 +123,7 @@
 #pragma mark - Private Methods
 
 - (void)createAmountString {
-	self.amountString = [NSString stringWithFormat:@"%@ %@", [self.amount roundedNumberWithScale:3].stringValue, NSLocalizedString(@"HTMLCOIN", nil)];
+	self.amountString = [NSString stringWithFormat:@"%@ %@", [self.amount roundedNumberWithScale:3].stringValue, NSLocalizedString(@"HTML", nil)];
 }
 
 - (void)createDateString {

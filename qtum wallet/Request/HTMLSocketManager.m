@@ -19,6 +19,7 @@ NSString *const kSocketConnectionFailed = @"kSocketConnectionFailed";
 @interface HTMLSocketManager ()
 
 @property (strong, nonatomic) SocketIOClient *currentSocket;
+@property (strong, nonatomic) SocketManager *manager;
 @property (assign, nonatomic) ConnectionStatus status;
 @property (nonatomic, copy) void (^onConnected)(void);
 @property (nonatomic, strong) NSOperationQueue *requestQueue;
@@ -35,6 +36,10 @@ static NSInteger timeoutDelay = 10;
 	if (self) {
 		_requestQueue = [[NSOperationQueue alloc] init];
 		_requestQueue.maxConcurrentOperationCount = 1;
+        
+        NSURL *url = [[NSURL alloc] initWithString:[self baseURL]];
+        _manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
+
 		[self startAndSubscribeWithHandler:nil];
 	}
 	return self;
@@ -69,15 +74,11 @@ static NSInteger timeoutDelay = 10;
 }
 
 - (void)startAndSubscribeWithHandler:(void (^)(void)) handler {
-
 	__weak __typeof (self) weakSelf = self;
 
 	dispatch_block_t block = ^{
 
-		NSURL *url = [[NSURL alloc] initWithString:[self baseURL]];
-        SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
-        
-        weakSelf.currentSocket = [manager defaultSocket];
+        weakSelf.currentSocket = [weakSelf.manager defaultSocket];
 		weakSelf.onConnected = handler;
 
 		dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
