@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -39,17 +40,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Z45-n1-5DC">
-                                <rect key="frame" x="130" y="66" width="115" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Z45-n1-5DC">
+                                <rect key="frame" x="112.5" y="66" width="150" height="150"/>
                                 <color key="tintColor" red="0.1803921568627451" green="0.60392156862745094" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="496-xL-He9"/>
-                                    <constraint firstAttribute="width" constant="115" id="rd9-IJ-xxe"/>
+                                    <constraint firstAttribute="height" constant="150" id="496-xL-He9"/>
+                                    <constraint firstAttribute="width" constant="150" id="rd9-IJ-xxe"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KY1-s1-NTB">
                                 <rect key="frame" x="112.5" y="577" width="150" height="50"/>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="sJW-Q7-1Qh"/>
                                     <constraint firstAttribute="width" constant="150" id="wDw-9b-amn"/>
@@ -78,7 +79,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a wallet or restore a previous wallet key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApH-nQ-YF3">
-                                <rect key="frame" x="87.5" y="258.5" width="200" height="33"/>
+                                <rect key="frame" x="87.5" y="308.5" width="200" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="CCK-vf-XP6"/>
                                 </constraints>
@@ -87,7 +88,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have a wallet yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbP-bR-TcN">
-                                <rect key="frame" x="20" y="216" width="335" height="17.5"/>
+                                <rect key="frame" x="20" y="266" width="335" height="17.5"/>
                                 <fontDescription key="fontDescription" name="euclidflexmedium" family="euclidflexmedium" pointSize="15"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1200,24 +1201,24 @@ using Touch ID</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="f9k-If-i8y">
-                                <rect key="frame" x="125" y="66" width="125" height="107"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="f9k-If-i8y">
+                                <rect key="frame" x="112.5" y="66" width="150" height="150"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="107" id="d5v-3z-SmG"/>
-                                    <constraint firstAttribute="width" constant="125" id="xuc-Pr-9dI"/>
+                                    <constraint firstAttribute="height" constant="150" id="d5v-3z-SmG"/>
+                                    <constraint firstAttribute="width" constant="150" id="xuc-Pr-9dI"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9l-hG-cKG">
                                 <rect key="frame" x="67.5" y="577" width="240" height="50"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9hF-Qj-V2r"/>
                                     <constraint firstAttribute="width" constant="240" id="O0w-ct-fwf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="IMPORT WALLET">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.96078431369999995" green="0.76078431369999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1230,14 +1231,14 @@ using Touch ID</string>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ND-r5-3lE">
                                 <rect key="frame" x="67.5" y="516" width="240" height="50"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.76078431369999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="D79-q7-bqz"/>
                                     <constraint firstAttribute="height" constant="50" id="cIA-j2-gpV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="CREATE NEW">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1249,7 +1250,7 @@ using Touch ID</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a wallet or restore a previous wallet key." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJ0-1t-5Er">
-                                <rect key="frame" x="87.5" y="269" width="200" height="37.5"/>
+                                <rect key="frame" x="87.5" y="312" width="200" height="37.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="wXH-Wf-9bX"/>
                                 </constraints>
@@ -1258,21 +1259,21 @@ using Touch ID</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have a wallet yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fa-wd-dBJ">
-                                <rect key="frame" x="20" y="223" width="335" height="21"/>
+                                <rect key="frame" x="20" y="266" width="335" height="21"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nw-dL-BwR">
                                 <rect key="frame" x="67.5" y="455" width="240" height="50"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.76078431369999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Bij-8P-MPP"/>
                                     <constraint firstAttribute="height" constant="50" id="RRt-wD-S0S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
                                 <state key="normal" title="LOGIN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1375,7 +1376,7 @@ using Touch ID</string>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tKp-52-N9u" customClass="TextFieldWithLineLight">
-                                        <rect key="frame" x="55" y="194" width="265" height="19"/>
+                                        <rect key="frame" x="55" y="194" width="265" height="20.5"/>
                                         <color key="tintColor" red="0.0" green="1" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
@@ -2588,7 +2589,10 @@ using Touch ID</string>
         <image name="ic-fingerprint" width="106" height="106"/>
         <image name="ic-resetButton-" width="8" height="8"/>
         <image name="ic-touch-auth-light" width="101" height="101"/>
-        <image name="logo" width="115.5" height="115.5"/>
+        <image name="logo" width="128" height="128"/>
         <image name="share" width="20.5" height="21"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

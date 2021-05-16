@@ -20,16 +20,25 @@ UIColor *customBlueColor() {
 	return [UIColor colorWithRed:46 / 255.0f green:154 / 255.0f blue:208 / 255.0f alpha:1.0f];
 }
 
+UIColor *primaryColorYellow() {
+    return [UIColor colorWithRed:245/255.0f green:194/255.0f blue:22/255.0f alpha:1.0f];
+}
+
+UIColor *primaryColorOrange() {
+    return [UIColor colorWithRed:237/255.0f green:172/255.0f blue:32/255.0f alpha:1.0f];
+}
+
 UIColor *customRedColor() {
 	return [UIColor colorWithRed:231 / 255.0f green:86 / 255.0f blue:71 / 255.0f alpha:1.0f];
 }
 
 UIColor *customBlackColor() {
-	return [UIColor colorWithRed:35 / 255.0f green:35 / 255.0f blue:40 / 255.0f alpha:1.0f];
+    return [UIColor colorWithRed:35 / 255.0f green:31 / 255.0f blue:32 / 255.0f alpha:1.0f];
 }
 
 UIColor *historyGreenColor() {
-	return [UIColor colorWithRed:83 / 255.0f green:205 / 255.0f blue:204 / 255.0f alpha:1.0f];
+//	return [UIColor colorWithRed:83 / 255.0f green:205 / 255.0f blue:204 / 255.0f alpha:1.0f];
+    return [UIColor colorWithRed:83 / 255.0f green:205 / 255.0f blue:163 / 255.0f alpha:1.0f];
 }
 
 UIColor *historyGrayColor() {
@@ -104,6 +113,8 @@ UIColor *getQRCodeBackroundColor() {
 
 UIColor *getQRCodeMainColor() {
 
-	UIColor *color = [NSUserDefaults isDarkSchemeSetting] ? customBlackColor () : [UIColor colorWithRed:60 / 255.0f green:135 / 255.0f blue:185 / 255.0f alpha:1.0f];
+    UIColor *color = [NSUserDefaults isDarkSchemeSetting] ? customBlackColor() : customBlackColor();
+    
+//    [NSUserDefaults isDarkSchemeSetting] ? customBlackColor () : [UIColor colorWithRed:60 / 255.0f green:135 / 255.0f blue:185 / 255.0f alpha:1.0f];
 	return color;
 }
