@@ -42,7 +42,7 @@
 #import "CallContractFacadeService.h"
 #import "CoreDataService.h"
 #import "HistoryFacadeService.h"
-#import "SocketManager.h"
+#import "HTMLSocketManager.h"
 #import "WalletBalanceFacadeService.h"
 #import "ContractHistoryFacadeService.h"
 

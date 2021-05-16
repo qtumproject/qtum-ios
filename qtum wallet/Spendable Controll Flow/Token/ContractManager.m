@@ -7,7 +7,7 @@
 //
 
 #import "NSData+Extension.h"
-#import "SocketManager.h"
+#import "HTMLSocketManager.h"
 #import "InterfaceInputFormModel.h"
 #import "WalletManagerRequestAdapter.h"
 

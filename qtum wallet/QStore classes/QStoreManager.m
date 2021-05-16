@@ -9,7 +9,7 @@
 #import "QStoreMainScreenCategory.h"
 #import "QStoreDataProvider.h"
 #import "QStoreContractElement.h"
-#import "SocketManager.h"
+#import "HTMLSocketManager.h"
 #import "QStoreRequestManager.h"
 #import "QStoreContractDownloadManager.h"
 

@@ -8,7 +8,7 @@
 
 #import "WalletManager.h"
 #import "WalletManagerRequestAdapter.h"
-#import "SocketManager.h"
+#import "HTMLSocketManager.h"
 #import "NSString+SHA3.h"
 #import "NSNumber+Comparison.h"
 

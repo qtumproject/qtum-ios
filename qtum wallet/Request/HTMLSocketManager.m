@@ -1,12 +1,12 @@
 //
-//  SocketManager.m
+//  HTMLSocketManager.m
 //  qtum wallet
 //
 //  Created by Vladimir Lebedevich on 24.03.17.
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-#import "SocketManager.h"
+#import "HTMLSocketManager.h"
 #import "QStoreManager.h"
 
 NSString *const kSocketDidConnect = @"kSocketDidConnect";
@@ -16,7 +16,7 @@ NSString *const kSocketConnectionFailed = @"kSocketConnectionFailed";
 
 @import SocketIO;
 
-@interface SocketManager ()
+@interface HTMLSocketManager ()
 
 @property (strong, nonatomic) SocketIOClient *currentSocket;
 @property (assign, nonatomic) ConnectionStatus status;
@@ -25,7 +25,7 @@ NSString *const kSocketConnectionFailed = @"kSocketConnectionFailed";
 
 @end
 
-@implementation SocketManager
+@implementation HTMLSocketManager
 
 static NSInteger timeoutDelay = 10;
 
@@ -75,7 +75,9 @@ static NSInteger timeoutDelay = 10;
 	dispatch_block_t block = ^{
 
 		NSURL *url = [[NSURL alloc] initWithString:[self baseURL]];
-		weakSelf.currentSocket = [[SocketIOClient alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
+        SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"forcePolling": @YES}];
+        
+        weakSelf.currentSocket = [manager defaultSocket];
 		weakSelf.onConnected = handler;
 
 		dispatch_semaphore_t semaphore = dispatch_semaphore_create (0);
