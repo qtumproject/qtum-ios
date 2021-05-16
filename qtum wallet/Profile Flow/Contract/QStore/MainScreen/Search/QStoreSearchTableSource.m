@@ -29,7 +29,7 @@
 
 	cell.nameLabel.text = element.name;
 	cell.amountLabel.text = element.priceString;
-	cell.currencyLabel.text = NSLocalizedString(@"QTUM", nil);
+	cell.currencyLabel.text = NSLocalizedString(@"HTML", nil);
 	cell.categoryImageView.image = [self getImgeByCategoryType:element.typeString isLight:[cell isLight]];
 
 	if (indexPath.row == self.elements.count - 1) {

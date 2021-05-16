@@ -110,7 +110,7 @@
 
 - (NSString *)currency {
 
-    return @"HTMLCOIN";
+    return @"HTML";
 }
 
 - (NSArray *)toAddresses {

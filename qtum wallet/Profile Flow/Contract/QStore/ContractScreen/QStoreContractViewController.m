@@ -141,9 +141,9 @@
 	ConfirmPurchasePopUpViewController *vc = [SLocator.popupService showConfirmPurchasePopUp:self presenter:nil completion:nil];
 	vc.contractNameLabel.text = self.element.name;
 	vc.contractTypeLabel.text = [self.element.typeString capitalizedString];
-	vc.amountLabel.text = [NSString stringWithFormat:@"%@ %@", self.element.priceString, NSLocalizedString(@"QTUM", nil)];
+	vc.amountLabel.text = [NSString stringWithFormat:@"%@ %@", self.element.priceString, NSLocalizedString(@"HTML", nil)];
 	vc.minerAddressLabel.text = self.element.publisherAddress;
-	vc.feeLabel.text = [NSString stringWithFormat:@"%@ %@", @"0.1", NSLocalizedString(@"QTUM", nil)];
+	vc.feeLabel.text = [NSString stringWithFormat:@"%@ %@", @"0.1", NSLocalizedString(@"HTML", nil)];
 }
 
 - (IBAction)actionBack:(id) sender {

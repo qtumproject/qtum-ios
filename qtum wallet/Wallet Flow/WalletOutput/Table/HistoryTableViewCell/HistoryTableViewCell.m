@@ -29,8 +29,17 @@
 
     NSLog(@"%@", historyElement.amountString);
     
+    NSString *amount;
+    
+    if (historyElement.send) {
+        amount = self.symbolLabel ? [historyElement.fee roundedNumberWithScale:3].stringValue : historyElement.fee.stringValue;
+    } else {
+        amount = self.symbolLabel ? [historyElement.amount roundedNumberWithScale:3].stringValue : historyElement.amountString;
+    }
+    
 	self.addressLabel.text = historyElement.address;
-	self.amountLabel.text = self.symbolLabel ? [historyElement.amount roundedNumberWithScale:3].stringValue : historyElement.amountString;
+    self.amountLabel.text = amount;
+    self.amountLabel.textColor = historyElement.send ?  UIColor.redColor : UIColor.blackColor;
 	self.dateLabel.text = (historyElement.shortDateString && historyElement.shortDateString.length > 0 && historyElement.confirmed) ? [historyElement formattedDateStringSinceCome] : NSLocalizedString(@"Unconfirmed", nil);
 
 	self.addressLabel.text = historyElement.transactionHash;

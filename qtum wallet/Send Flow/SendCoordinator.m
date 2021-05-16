@@ -424,7 +424,7 @@
 			[self showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction", nil)];
 			break;
 		case TransactionManagerErrorTypeInvalidAddress:
-			[self showErrorPopUp:NSLocalizedString(@"Invalid QTUM Address", nil)];
+			[self showErrorPopUp:NSLocalizedString(@"Invalid Coin Address", nil)];
 			break;
 		case TransactionManagerErrorTypeNotEnoughMoneyOnAddress:
 			[self showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction at this address", nil)];
@@ -437,13 +437,13 @@
 
 - (void)showNotEnoughFeeAlertWithEstimatedFee:(QTUMBigNumber *) estimatedFee {
 
-	NSString *errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee.stringValue];
+	NSString *errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ HTML", estimatedFee.stringValue];
 	[self showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
 - (void)showStatusOfPayment:(TransactionManagerErrorType) errorType withEstimateGasLimit:(QTUMBigNumber *) gasLimit {
 
-	NSString *errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", gasLimit.stringValue];
+	NSString *errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ HTML", gasLimit.stringValue];
 	[self showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 

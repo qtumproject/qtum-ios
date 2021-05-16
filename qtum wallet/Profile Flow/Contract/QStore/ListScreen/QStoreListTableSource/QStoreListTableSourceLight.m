@@ -26,7 +26,7 @@
 	} else {
 		QStoreContractElement *el = (QStoreContractElement *)element;
 		cell.nameLabel.text = el.name;
-		cell.amount.text = [NSString stringWithFormat:@"%@ %@", el.priceString, NSLocalizedString(@"QTUM", nil)];
+		cell.amount.text = [NSString stringWithFormat:@"%@ %@", el.priceString, NSLocalizedString(@"HTML", nil)];
 		cell.imageIcon.image = [UIImage imageNamed:[el getImageNameByType]];
 	}
 

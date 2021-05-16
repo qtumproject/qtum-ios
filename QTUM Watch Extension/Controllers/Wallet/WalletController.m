@@ -52,7 +52,7 @@
 		[balance.balanceGroup setHidden:NO];
 		[balance.uncBalanceGroup setHidden:NO];
 		[balance.unconfirmedSymbol setHidden:NO];
-		[balance.confirmedSymbol setText:@"QTUM"];
+		[balance.confirmedSymbol setText:@"HTMLCOIN"];
 
 		for (NSInteger i = 0; i < wallet.history.count; i++) {
 			WatchHistoryElement *element = [wallet.history objectAtIndex:i];

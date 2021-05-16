@@ -39,15 +39,15 @@
 
 - (void)configLogo {
 
-	UIImage *originalImage = [UIImage imageNamed:@"new-logo.png"];
-	UIImage *tintedImage = [originalImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-	self.logoImage.tintColor = [self logoColor];
-	self.logoImage.image = tintedImage;
+//	UIImage *originalImage = [UIImage imageNamed:@"logo.png"];
+//	UIImage *tintedImage = [originalImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+//	self.logoImage.tintColor = [self logoColor];
+//	self.logoImage.image = originalImage;
 }
 
 - (void)configText {
 
-	NSString *text = [NSString stringWithFormat:@"© 2017 Qtum\nVersion %@ (%@)", [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
+	NSString *text = [NSString stringWithFormat:@"© 2021 HTMLCOIN\nVersion %@ (%@)", [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"], [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
 	self.companyAndVersionText.text = NSLocalizedString(text, @"");
 }
 
