@@ -24,9 +24,12 @@
 - (void)configurateButtons {
 
 	if (SLocator.walletManager.isSignedIn) {
-		self.createButton.backgroundColor = [UIColor clearColor];
+		self.createButton.backgroundColor = primaryColorYellow ();
+        [self.createButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
 		[self.createButton setTitleColor:customBlueColor () forState:UIControlStateNormal];
 		self.loginButton.hidden = NO;
+        self.loginButton.backgroundColor = primaryColorYellow();
+        [self.loginButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
 		self.invitationTextLabel.text = NSLocalizedString(@"Login to HTMLCOIN \nDon't have a wallet yet?", @"");
 	} else {
 		self.createButton.backgroundColor = customRedColor ();
