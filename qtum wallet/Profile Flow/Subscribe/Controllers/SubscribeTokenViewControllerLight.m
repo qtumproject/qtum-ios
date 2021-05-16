@@ -17,11 +17,18 @@
 
 - (void)configSearchBar {
 
-	UITextField *searchTextField = [self.searchBar valueForKey:@"_searchField"];
-	if ([searchTextField respondsToSelector:@selector (setAttributedPlaceholder:)]) {
-		UIColor *color = [UIColor colorWithRed:255 / 255. green:255 / 255. blue:255 / 255. alpha:0.5];
-		[searchTextField setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:NSLocalizedString(@"Search", @"Search placeholder") attributes:@{NSForegroundColorAttributeName: color}]];
-	}
+    if (@available(iOS 13.0, *)) {
+        UITextField *searchTextField = self.searchBar.searchTextField;
+        if ([searchTextField respondsToSelector:@selector (setAttributedPlaceholder:)]) {
+            UIColor *color = [UIColor colorWithRed:255 / 255. green:255 / 255. blue:255 / 255. alpha:0.5];
+            [searchTextField setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:NSLocalizedString(@"Search", @"Search placeholder") attributes:@{NSForegroundColorAttributeName: color}]];
+        }
+    } else {
+        UITextField *searchTextField = [self.searchBar valueForKey:@"_searchField"];
+        if ([searchTextField respondsToSelector:@selector (setAttributedPlaceholder:)]) {
+            UIColor *color = [UIColor colorWithRed:255 / 255. green:255 / 255. blue:255 / 255. alpha:0.5];
+            [searchTextField setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:NSLocalizedString(@"Search", @"Search placeholder") attributes:@{NSForegroundColorAttributeName: color}]];
+        }    }
 
 	[self.searchBar setImage:[UIImage imageNamed:@"ic-search-clear-light"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateNormal];
 	[self.searchBar setImage:[UIImage imageNamed:@"ic-search-clear-light"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateSelected];
