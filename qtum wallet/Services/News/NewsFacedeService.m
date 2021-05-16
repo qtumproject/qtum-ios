@@ -53,7 +53,7 @@ NSString *const kNewsCache = @"kArchivedNewsDict";
 
 	//1 parcing feed from medium
 
-	[parcer parceFeedFromUrl:@"https://medium.com/feed/@Qtum" withCompletion:^(NSArray<QTUMFeedItem *> *feeds) {
+	[parcer parceFeedFromUrl:@"https://medium.com/feed/@HTMLCOIN" withCompletion:^(NSArray<QTUMFeedItem *> *feeds) {
 
 		for (QTUMFeedItem *feedItem in feeds) {
 

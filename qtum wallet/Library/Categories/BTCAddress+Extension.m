@@ -9,12 +9,12 @@
 #import "BTCAddress+Extension.h"
 
 enum {
-	CustomBTCPublicKeyAddressVersion = 58,
-	CustomBTCPrivateKeyAddressVersion = 128,
-	CustomBTCScriptHashAddressVersion = 50,
-	CustomBTCPublicKeyAddressVersionTestnet = 120,
-	CustomBTCPrivateKeyAddressVersionTestnet = 239,
-	CustomBTCScriptHashAddressVersionTestnet = 110,
+    CustomBTCPublicKeyAddressVersion         = 41,
+    CustomBTCPrivateKeyAddressVersion        = 169,
+    CustomBTCScriptHashAddressVersion        = 100,
+    CustomBTCPublicKeyAddressVersionTestnet  = 120,
+    CustomBTCPrivateKeyAddressVersionTestnet = 239,
+    CustomBTCScriptHashAddressVersionTestnet = 110,
 };
 
 @implementation BTCPublicKeyAddress (Extension)

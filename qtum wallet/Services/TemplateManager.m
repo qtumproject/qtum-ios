@@ -22,7 +22,7 @@ static NSString *kAbiKey = @"abi";
 static NSString *kBitecode = @"bytecode";
 static int templatePathStringLengh = 10;
 static NSString *standartTokenPath = @"StandardPath";
-static NSString *qrc20TokenUuid = @"qrc20-token-identifire";
+static NSString *hrc20TokenUuid = @"hrc20-token-identifire";
 static NSString *humanTokenUuid = @"human-standard-token-identifire";
 static NSString *crowdsaleUuid = @"crowdsale-identifire";
 static NSString *crowdsaleTokenUuid = @"crowdsale-token-identifire";
@@ -66,19 +66,17 @@ static NSString *crowdsaleTokenUuid = @"crowdsale-token-identifire";
 
 - (TemplateModel *)standartTokenTemplate {
 
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateName == %@ && path == %@", @"QRC20 Standard Token", @"QRC20TokenStandard"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"templateName == %@ && path == %@", @"HRC20 Standard Token", @"HRC20TokenStandard"];
 	NSArray *tepmlates = [self.templates filteredArrayUsingPredicate:predicate];
 	return tepmlates.firstObject;
 }
 
 - (NSArray<TemplateModel *> *)standartPackOfTemplates {
 
-	TemplateModel *qrc20 = [[TemplateModel alloc] initWithTemplateName:@"QRC20 Standard Token" andType:TokenType withuuid:qrc20TokenUuid path:@"QRC20TokenStandard" isFull:YES];
+	TemplateModel *hrc20 = [[TemplateModel alloc] initWithTemplateName:@"HRC20 Standard Token" andType:TokenType withuuid:hrc20TokenUuid path:@"HRC20TokenStandard" isFull:YES];
 	TemplateModel *human = [[TemplateModel alloc] initWithTemplateName:@"Human Standard Token" andType:TokenType withuuid:humanTokenUuid path:@"HumanStandardToken" isFull:YES];
 
-	TemplateModel *crowdsale = [[TemplateModel alloc] initWithTemplateName:@"Crowdsale" andType:TokenType withuuid:crowdsaleTokenUuid path:@"CrowdsaleAsToken" isFull:YES];
-
-	return @[qrc20, human, crowdsale];
+	return @[hrc20, human];
 }
 
 - (NSArray<TemplateModel *> *)standartPackOfTokenTemplates {

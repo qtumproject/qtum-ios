@@ -83,7 +83,7 @@ NSString *const TokenAddressKey = @"tokenAddress";
 }
 
 - (void)emptySetup {
-	_label = NSLocalizedString(@"QTUM Mobile Wallet", nil);
+	_label = NSLocalizedString(@"HTMLCOIN Mobile Wallet", nil);
 	_message = NSLocalizedString(@"Payment Request", nil);
 }
 

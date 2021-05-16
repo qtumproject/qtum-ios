@@ -165,7 +165,7 @@
                   successHandler:(void (^)(id responseObject, NSInteger totalCount)) success
                andFailureHandler:(void (^)(NSError *error, NSString *message)) failure {
     
-    NSString *pathString = [NSString stringWithFormat:@"qrc20/%@/transfers", tokenAddress];
+    NSString *pathString = [NSString stringWithFormat:@"hrc20/%@/transfers", tokenAddress];
 
     [self.networkService requestWithType:GET path:pathString andParams:param withSuccessHandler:^(id _Nonnull responseObject) {
         

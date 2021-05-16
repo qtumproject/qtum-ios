@@ -26,11 +26,11 @@ library SafeMath {
     }
 }
 /**
- * @title QRC20Basic
- * @dev Simpler version of QRC20 interface
+ * @title HRC20Basic
+ * @dev Simpler version of HRC20 interface
  * @dev see https://github.com/ethereum/EIPs/issues/179
  */
-contract QRC20Basic {
+contract HRC20Basic {
     uint256 public totalSupply;
     function balanceOf(address _owner) constant returns (uint256 balance);
     function transfer(address _to, uint256 _value) returns (bool success);
@@ -40,7 +40,7 @@ contract QRC20Basic {
  * @title Basic token
  * @dev Basic version of StandardToken, with no allowances.
  */
-contract BasicToken is QRC20Basic {
+contract BasicToken is HRC20Basic {
     using SafeMath for uint256;
     mapping(address => uint256) balances;
     /**
@@ -66,23 +66,23 @@ contract BasicToken is QRC20Basic {
     }
 }
 /**
- * @title QRC20 interface
- * @dev Implements QRC20 Token Standard: https://github.com/ethereum/EIPs/issues/20
+ * @title HRC20 interface
+ * @dev Implements HRC20 Token Standard: https://github.com/ethereum/EIPs/issues/20
  */
-contract QRC20 is QRC20Basic {
+contract HRC20 is HRC20Basic {
     function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
     function approve(address _spender, uint256 _value) returns (bool success);
     function allowance(address _owner, address _spender) constant returns (uint256 remaining);
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 }
 /**
- * @title Standard QRC20 token
+ * @title Standard HRC20 token
  *
  * @dev Implementation of the basic standard token.
  * @dev https://github.com/ethereum/EIPs/issues/20
  * @dev Based on code by FirstBlood: https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol
  */
-contract StandardToken is QRC20, BasicToken {
+contract StandardToken is HRC20, BasicToken {
     mapping (address => mapping (address => uint256)) allowed;
     /**
      * @dev Transfer tokens from one address to another

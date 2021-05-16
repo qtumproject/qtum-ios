@@ -110,7 +110,7 @@
 
 - (NSString *)currency {
 
-    return @"QTUM";
+    return @"HTMLCOIN";
 }
 
 - (NSArray *)toAddresses {
@@ -123,7 +123,7 @@
 #pragma mark - Private Methods
 
 - (void)createAmountString {
-	self.amountString = [NSString stringWithFormat:@"%@ %@", [self.amount roundedNumberWithScale:3].stringValue, NSLocalizedString(@"QTUM", nil)];
+	self.amountString = [NSString stringWithFormat:@"%@ %@", [self.amount roundedNumberWithScale:3].stringValue, NSLocalizedString(@"HTMLCOIN", nil)];
 }
 
 - (void)createDateString {
