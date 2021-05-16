@@ -12,7 +12,7 @@ enum {
     CustomBTCPublicKeyAddressVersion         = 41,
     CustomBTCPrivateKeyAddressVersion        = 169,
     CustomBTCScriptHashAddressVersion        = 100,
-    CustomBTCPublicKeyAddressVersionTestnet  = 120,
+    CustomBTCPublicKeyAddressVersionTestnet  = 100,
     CustomBTCPrivateKeyAddressVersionTestnet = 239,
     CustomBTCScriptHashAddressVersionTestnet = 110,
 };
