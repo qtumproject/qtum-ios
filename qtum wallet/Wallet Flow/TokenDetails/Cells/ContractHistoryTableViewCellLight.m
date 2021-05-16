@@ -21,6 +21,7 @@
 - (void)setHistoryElement:(HistoryElement *) historyElement {
 	[super setHistoryElement:historyElement];
 
+    self.symbolLabel.text = historyElement.currency;
     
     if (!historyElement.confirmed) {
         self.typeImage.image = [UIImage imageNamed:@"ic-confirmation_loader"];
