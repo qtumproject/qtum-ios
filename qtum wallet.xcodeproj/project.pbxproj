@@ -5733,9 +5733,7 @@
 					};
 					E7FD36371DC4D07E00748177 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = W36NVXCL48;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -7264,6 +7262,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APP_BUNDLE_IDENTIFIER = com.htmlcoin.wallet.app;
+				APP_BUNDLE_VERSION = 1.0;
+				APP_BUNDLE_VERSION_BUILD = 110;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -7296,6 +7297,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = W36NVXCL48;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -7327,6 +7329,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APP_BUNDLE_IDENTIFIER = com.htmlcoin.wallet.app;
+				APP_BUNDLE_VERSION = 1.0;
+				APP_BUNDLE_VERSION_BUILD = 110;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -7359,6 +7364,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = W36NVXCL48;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -7383,6 +7389,9 @@
 			baseConfigurationReference = 413D88732039B4AB52E1927C /* Pods-qtum wallet.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APP_BUNDLE_IDENTIFIER = com.htmlcoin.wallet.app;
+				APP_BUNDLE_VERSION = 1.0;
+				APP_BUNDLE_VERSION_BUILD = 110;
 				APP_NAME = AltHash;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
@@ -7391,6 +7400,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 110;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W36NVXCL48;
 				ENABLE_BITCODE = NO;
@@ -7438,6 +7448,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/qtum\\ wallet",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -7494,9 +7505,9 @@
 					"\"UIKit\"",
 					"-w",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet";
+				PRODUCT_BUNDLE_IDENTIFIER = com.htmlcoin.wallet.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5bdd07ba-89d2-4d59-a4a9-ec5c15ddf3fb";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -7508,6 +7519,9 @@
 			baseConfigurationReference = C868A7ACCCAB41BA143599EE /* Pods-qtum wallet.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APP_BUNDLE_IDENTIFIER = com.htmlcoin.wallet.app;
+				APP_BUNDLE_VERSION = 1.0;
+				APP_BUNDLE_VERSION_BUILD = 110;
 				APP_NAME = AltHash;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
@@ -7516,6 +7530,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 110;
 				DEVELOPMENT_TEAM = W36NVXCL48;
 				ENABLE_BITCODE = NO;
 				ENVIRONMENT = "";
@@ -7562,6 +7577,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/qtum\\ wallet",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -7618,9 +7634,9 @@
 					"\"UIKit\"",
 					"-w",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.qtum.qtum-wallet";
+				PRODUCT_BUNDLE_IDENTIFIER = com.htmlcoin.wallet.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5bdd07ba-89d2-4d59-a4a9-ec5c15ddf3fb";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
