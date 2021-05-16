@@ -168,7 +168,7 @@ NSInteger const USERS_KEYS_COUNT = 10;
 
 - (NSString *)symbol {
 
-	return NSLocalizedString(@"QTUM", @"QTUM sybmol");
+	return NSLocalizedString(@"HTML", @"HTML sybmol");
 }
 
 #pragma mark - Public Methods

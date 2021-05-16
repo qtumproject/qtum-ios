@@ -15,7 +15,7 @@ NSString *const QTUMParagrafTagCellReuseIdentifire = @"QTUMParagrafTagCellReuseI
 
 - (UIFont *)boldFont {
 
-	return [UIFont fontWithName:@"simplonmono-medium" size:18];
+	return [UIFont fontWithName:@"simplonmonomedium" size:18];
 }
 
 - (UIFont *)regularFont {

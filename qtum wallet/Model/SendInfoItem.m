@@ -6,7 +6,7 @@
 //  Copyright © 2017 QTUM. All rights reserved.
 //
 
-NSString *const QtumAddressKey = @"qtum";
+NSString *const QtumAddressKey = @"htmlcoin";
 NSString *const AmountKey = @"amount";
 NSString *const LabelKey = @"label";
 NSString *const MessageKey = @"message";

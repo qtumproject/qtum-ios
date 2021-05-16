@@ -23,7 +23,7 @@
 	cell.nameLabel.text = element.name;
 	cell.typeLabel.text = [element.typeString capitalizedString];
 	cell.amountLabel.text = element.priceString;
-	cell.currencyLabel.text = NSLocalizedString(@"QTUM", nil);
+	cell.currencyLabel.text = NSLocalizedString(@"HTML", nil);
 	cell.iconImageView.image = [UIImage imageNamed:[element getImageNameByType]];
 
 	return cell;

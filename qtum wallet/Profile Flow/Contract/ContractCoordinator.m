@@ -358,17 +358,17 @@
                                                                  } else {
                                                                      NSString *errorString;
                                                                      if (errorType == TransactionManagerErrorTypeNotEnoughFee) {
-                                                                         errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedValue];
+                                                                         errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ HTMLCOIN", estimatedValue];
                                                                      }
                                                                      if (errorType == TransactionManagerErrorTypeNotEnoughGasLimit) {
-                                                                         errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", estimatedValue];
+                                                                         errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ HTMLCOIN", estimatedValue];
                                                                      }
                                                                      switch (errorType) {
                                                                          case TransactionManagerErrorTypeNotEnoughMoney:
                                                                              [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction", nil)];
                                                                              break;
                                                                          case TransactionManagerErrorTypeInvalidAddress:
-                                                                             [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"Invalid QTUM Address", nil)];
+                                                                             [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"Invalid HTMLCOIN Address", nil)];
                                                                              break;
                                                                          case TransactionManagerErrorTypeNotEnoughMoneyOnAddress:
                                                                              [weakSelf.createFinishViewController showErrorPopUp:NSLocalizedString(@"You have insufficient funds for this transaction at this address", nil)];
@@ -492,13 +492,13 @@
 
 - (void)showStatusOfPayment:(TransactionManagerErrorType) errorType withEstimateFee:(QTUMBigNumber *) estimatedFee {
 
-	NSString *errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee.stringValue];
+	NSString *errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ HTMLCOIN", estimatedFee.stringValue];
 	[self.functionDetailController showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 
 - (void)showStatusOfPayment:(TransactionManagerErrorType) errorType withEstimateGasLimit:(QTUMBigNumber *) gasLimit {
 
-	NSString *errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ QTUM", gasLimit.stringValue];
+	NSString *errorString = [NSString stringWithFormat:@"Insufficient gas limit. Please use minimum of %@ HTMLCOIN", gasLimit.stringValue];
 	[self.functionDetailController showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 

@@ -65,7 +65,7 @@
 	ChoseTokenPaymentCell *cell = [tableView dequeueReusableCellWithIdentifier:choseTokenPaymentCellIdentifire];
 
 	if (indexPath.row == 0) {
-		cell.tokenName.text = NSLocalizedString(@"QTUM (Default)", nil);
+		cell.tokenName.text = NSLocalizedString(@"HTML (Default)", nil);
 		cell.mainBalance.text =
 				cell.balance.text =
 						cell.balanceSymbol.text =

@@ -163,7 +163,7 @@ static const CGFloat blanceRoundingCount = 8;
     
     PopUpContent *content = [PopUpContentGenerator contentForOupsPopUp];
     
-    content.messageString = NSLocalizedString(@"Sorry, this token exceeds the limit of 128 decimals. So it can not be supported in QTUM app", @"Unsupported token message");
+    content.messageString = NSLocalizedString(@"Sorry, this token exceeds the limit of 128 decimals. So it can not be supported in HTMLCOIN app", @"Unsupported token message");
     content.titleString = NSLocalizedString(@"Failed", nil);
     
     ErrorPopUpViewController *popUp = [SLocator.popupService showErrorPopUp:self withContent:content presenter:nil completion:nil];

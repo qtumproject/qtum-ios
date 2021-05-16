@@ -31,7 +31,7 @@
     [self.enableButton setTitle:NSLocalizedString(@"ENABLE TOUCH ID", @"ENABLE TOUCH ID Button") forState:UIControlStateNormal];
     [self.skipButton setTitle:NSLocalizedString(@"NOT NOW", @"NOT NOW Button") forState:UIControlStateNormal];
     self.titleTextLabel.text = NSLocalizedString(@"Touch ID", @"Touch ID Controllers Title");
-    self.infoTextLabel.text = NSLocalizedString(@"Login to QTUM \nusing Touch ID", @"");
+    self.infoTextLabel.text = NSLocalizedString(@"Login to HTMLCOIN \nusing Touch ID", @"");
 }
 
 #pragma mark - Actions

@@ -124,7 +124,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult)) completionHandler {
 	if (SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")) {
 
 		UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-		content.subtitle = NSLocalizedString(@"QTUM", nil);
+		content.subtitle = NSLocalizedString(@"HTML", nil);
 		content.body = text;
 
 		UNTimeIntervalNotificationTrigger *triger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];

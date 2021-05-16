@@ -34,7 +34,7 @@
 - (void)setup {
 
     if (![NSUserDefaults isNotFirstTimeLaunch]) {
-        [NSUserDefaults saveIsDarkSchemeSetting:YES];
+        [NSUserDefaults saveIsDarkSchemeSetting:NO];
         [NSUserDefaults saveIsNotFirstTimeLaunch:YES];
     }
     

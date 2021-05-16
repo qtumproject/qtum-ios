@@ -129,7 +129,7 @@ static const CGFloat blanceRoundingCount = 8;
 											   object:nil];
 
 	self.sendButtomBottomOffset = 27;
-	self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", @"");
+	self.tokenTextField.text = NSLocalizedString(@"HTML (Default)", @"");
 
     [self configFromAddressView];
 	[self configFee];
@@ -343,7 +343,7 @@ static const CGFloat blanceRoundingCount = 8;
     
     if (!entity.isTokenChoosen) {
         
-        self.tokenTextField.text = NSLocalizedString(@"QTUM (Default)", nil);
+        self.tokenTextField.text = NSLocalizedString(@"HTML (Default)", nil);
         self.isTokenChoosen = NO;
         self.needUpdateTokenTexfFields = NO;
         self.reciveAddressTopConstraintToOptionalSenderAddress.active = NO;
@@ -398,7 +398,7 @@ static const CGFloat blanceRoundingCount = 8;
 - (void)updateWithTokenChoosen:(BOOL) isChoosen andTokenName:(NSString*) tokenName {
     
     if (self.tokenTextField) {
-        self.tokenTextField.text = isChoosen ? tokenName: NSLocalizedString(@"QTUM (Default)", @"");
+        self.tokenTextField.text = isChoosen ? tokenName: NSLocalizedString(@"HTML (Default)", @"");
         self.needUpdateTokenTexfFields = NO;
     } else {
         self.needUpdateTokenTexfFields = YES;
@@ -415,7 +415,7 @@ static const CGFloat blanceRoundingCount = 8;
     self.balanceLabel.text = [NSString stringWithFormat:@"%@", [balance.decimalNumber roundedNumberWithScale:blanceRoundingCount]];
     self.unconfirmedBalanceLabel.text = [NSString stringWithFormat:@"%@", [unconfirmedBalance.decimalNumber roundedNumberWithScale:blanceRoundingCount]];
     
-    self.balanceSymbolLabel.text = NSLocalizedString(@"QTUM", @"");
+    self.balanceSymbolLabel.text = NSLocalizedString(@"HTML", @"");
     self.unconfirmedBalanceLabel.hidden = NO;
     self.unconfirmedBalanceTitle.hidden = NO;
     self.unconfirmedBalanceSymbolLabel.hidden = NO;

@@ -494,7 +494,7 @@ static NSInteger queryViewheight = 100;
 
 - (void)showNotEnoughFeeAlertWithEstimatedFee:(NSDecimalNumber *) estimatedFee {
 
-	NSString *errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ QTUM", estimatedFee];
+	NSString *errorString = [NSString stringWithFormat:@"Insufficient fee. Please use minimum of %@ HTML", estimatedFee];
 	[self showErrorPopUp:NSLocalizedString(errorString, nil)];
 }
 

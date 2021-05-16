@@ -27,7 +27,7 @@
 		self.createButton.backgroundColor = [UIColor clearColor];
 		[self.createButton setTitleColor:customBlueColor () forState:UIControlStateNormal];
 		self.loginButton.hidden = NO;
-		self.invitationTextLabel.text = NSLocalizedString(@"Login to QTUM \nDon't have a wallet yet?", @"");
+		self.invitationTextLabel.text = NSLocalizedString(@"Login to HTMLCOIN \nDon't have a wallet yet?", @"");
 	} else {
 		self.createButton.backgroundColor = customRedColor ();
 		[self.createButton setTitleColor:customBlackColor () forState:UIControlStateNormal];

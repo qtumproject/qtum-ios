@@ -101,8 +101,8 @@ static const CGFloat blanceRoundingCount = 8;
         weakSelf.unconfirmedTextLabel.hidden =
         weakSelf.uncorfirmedLabel.hidden = !haveUncorfirmed;
         
-        weakSelf.uncorfirmedLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastUnconfirmedBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"QTUM", nil)];
-        weakSelf.availabelLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"QTUM", nil)];
+        weakSelf.uncorfirmedLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastUnconfirmedBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"HTML", nil)];
+        weakSelf.availabelLabel.text = [NSString stringWithFormat:@"%@ %@", [SLocator.walletBalanceFacadeService.lastBalance roundedNumberWithScale:blanceRoundingCount], NSLocalizedString(@"HTML", nil)];
         weakSelf.availableTextLabel.text = NSLocalizedString(@"Available Balance", nil);
         weakSelf.unconfirmedTextLabel.text = NSLocalizedString(@"Unconfirmed Balance", nil);
     });
