@@ -76,9 +76,9 @@
         outAllMoney += [outObject[@"value"] doubleValue];
 	}
 
-    CGFloat fee = outAllMoney - inAllMoney;
-	CGFloat mineDiff = outMyMoney - inMyMoney;
-    CGFloat amount = isPaidByMe ? mineDiff - fee : mineDiff;
+    double fee = outAllMoney - inAllMoney;
+    double mineDiff = outMyMoney - inMyMoney;
+    double amount = isPaidByMe ? fee : mineDiff;
 
 	self.amount = [QTUMBigNumber decimalWithString:[NSString stringWithFormat:@"%f", amount]];
     self.fee = [QTUMBigNumber decimalWithString:[NSString stringWithFormat:@"%f", fee]];
