@@ -54,8 +54,8 @@
 		feedParser.delegate = weakSelf;
 		feedParser.feedParseType = ParseTypeFull;
 		feedParser.connectionType = ConnectionTypeSynchronously;
-		[feedParser parse];
 		weakSelf.feedParcer = feedParser;
+        [weakSelf.feedParcer parse];
 	};
 
 	self.completion = completion;
