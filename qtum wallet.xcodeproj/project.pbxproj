@@ -190,7 +190,6 @@
 		B33EAF8E1E5EC262006125F3 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF8D1E5EC262006125F3 /* MessagesViewController.m */; };
 		B33EAF911E5EC263006125F3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B33EAF8F1E5EC263006125F3 /* MainInterface.storyboard */; };
 		B33EAF931E5EC263006125F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33EAF921E5EC263006125F3 /* Assets.xcassets */; };
-		B33EAF971E5EC263006125F3 /* iMessageExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B33EAF881E5EC262006125F3 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B33EAF9F1E5EE1EE006125F3 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAF9E1E5EE1EE006125F3 /* NSString+Extension.m */; };
 		B33EAFA21E5F20F9006125F3 /* iMessageGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33EAFA11E5F20F9006125F3 /* iMessageGradientView.m */; };
 		B34228861F73CEAE00C4C381 /* SliderFeeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34228851F73CEAE00C4C381 /* SliderFeeView.xib */; };
@@ -569,7 +568,6 @@
 		E730AB6F1EE6A5D200132711 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB6E1EE6A5D200132711 /* NotificationController.m */; };
 		E730AB721EE6A5D200132711 /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB711EE6A5D200132711 /* ComplicationController.m */; };
 		E730AB741EE6A5D200132711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E730AB731EE6A5D200132711 /* Assets.xcassets */; };
-		E730AB781EE6A5D200132711 /* HTMLCOIN Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E730AB541EE6A5D100132711 /* HTMLCOIN Watch.app */; };
 		E730AB851EE6A64700132711 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB841EE6A64700132711 /* SessionManager.m */; };
 		E730AB881EE6ACCA00132711 /* iOSSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E730AB871EE6ACCA00132711 /* iOSSessionManager.m */; };
 		E73357091F3D897700EE0D8B /* QStoreContractElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E73357081F3D897700EE0D8B /* QStoreContractElement.m */; };
@@ -715,13 +713,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B33EAF951E5EC263006125F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7FD36301DC4D07E00748177 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B33EAF871E5EC262006125F3;
-			remoteInfo = iMessageExtension;
-		};
 		B3A4EA5E1F502E66008115D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7FD36301DC4D07E00748177 /* Project object */;
@@ -736,27 +727,9 @@
 			remoteGlobalIDString = E730AB5F1EE6A5D100132711;
 			remoteInfo = "QTUM Watch Extension";
 		};
-		E730AB761EE6A5D200132711 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7FD36301DC4D07E00748177 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E730AB531EE6A5D100132711;
-			remoteInfo = "QTUM Watch";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B33EAF9B1E5EC263006125F3 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				B33EAF971E5EC263006125F3 /* iMessageExtension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E730AB7E1EE6A5D200132711 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -766,17 +739,6 @@
 				E730AB611EE6A5D100132711 /* HTMLCOIN Watch Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E730AB801EE6A5D200132711 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				E730AB781EE6A5D200132711 /* HTMLCOIN Watch.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -5687,16 +5649,12 @@
 				E7FD36361DC4D07E00748177 /* Resources */,
 				094AC2E300B2D4BEF04A6420 /* [CP] Embed Pods Frameworks */,
 				BBDAA643D3F5A61C3D80AB51 /* [CP] Copy Pods Resources */,
-				B33EAF9B1E5EC263006125F3 /* Embed App Extensions */,
 				E78D0C9A1ED2F02800CB91FF /* ShellScript */,
 				B3C8566C1FD577E900DAD5F4 /* ShellScript */,
-				E730AB801EE6A5D200132711 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B33EAF961E5EC263006125F3 /* PBXTargetDependency */,
-				E730AB771EE6A5D200132711 /* PBXTargetDependency */,
 			);
 			name = "htmlcoin wallet";
 			packageProductDependencies = (
@@ -6749,11 +6707,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B33EAF961E5EC263006125F3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B33EAF871E5EC262006125F3 /* iMessageExtension */;
-			targetProxy = B33EAF951E5EC263006125F3 /* PBXContainerItemProxy */;
-		};
 		B3A4EA5F1F502E66008115D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E7FD36371DC4D07E00748177 /* htmlcoin wallet */;
@@ -6763,11 +6716,6 @@
 			isa = PBXTargetDependency;
 			target = E730AB5F1EE6A5D100132711 /* HTMLCOIN Watch Extension */;
 			targetProxy = E730AB621EE6A5D100132711 /* PBXContainerItemProxy */;
-		};
-		E730AB771EE6A5D200132711 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E730AB531EE6A5D100132711 /* HTMLCOIN Watch */;
-			targetProxy = E730AB761EE6A5D200132711 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -7461,7 +7409,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 110;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = W36NVXCL48;
+				DEVELOPMENT_TEAM = L9J23KXGMP;
 				ENABLE_BITCODE = NO;
 				ENVIRONMENT = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7564,7 +7512,7 @@
 					"\"UIKit\"",
 					"-w",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.htmlcoin.wallet.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.htmlcoin.wallet.app-foundation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7590,7 +7538,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 110;
-				DEVELOPMENT_TEAM = W36NVXCL48;
+				DEVELOPMENT_TEAM = L9J23KXGMP;
 				ENABLE_BITCODE = NO;
 				ENVIRONMENT = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7693,7 +7641,7 @@
 					"\"UIKit\"",
 					"-w",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.htmlcoin.wallet.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.htmlcoin.wallet.app-foundation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
