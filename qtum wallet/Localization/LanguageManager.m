@@ -9,8 +9,8 @@
 #import "NSBundle+Language.h"
 #import "NSUserDefaults+Settings.h"
 
-static NSString *const LanguageCodes[] = {@"en", @"zh-Hant"};
-static NSString *const LanguageStrings[] = {@"English", @"Chinese"};
+static NSString *const LanguageCodes[] = {@"en", @"zh-Hant", @"ko"};
+static NSString *const LanguageStrings[] = {@"English", @"Chinese", @"Korean"};
 static NSString *const LanguageSaveKey = @"currentLanguageKey";
 
 @implementation LanguageManager
