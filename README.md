@@ -1,6 +1,6 @@
 ##  About
-Combining a modified Bitcoin Core infrastructure with an intercompatible version of the Ethereum Virtual Machine (EVM), Qtum merges the reliability of Bitcoin’s unfailing blockchain with the endless possibilities provided by smart contracts.
-Designed with stability, modularity and interoperability in mind, Qtum is the foremost toolkit for building trusted decentralized applications, suited for real-world, business oriented use cases. Its hybrid nature, in combination with a first-of-its-kind PoS consensus protocol, allow Qtum applications to be compatible with major blockchain ecosystems, while providing native support for mobile devices and IoT appliances.
+Combining a modified Bitcoin Core infrastructure with an intercompatible version of the Ethereum Virtual Machine (EVM), HTMLCOIN merges the reliability of Bitcoin’s unfailing blockchain with the endless possibilities provided by smart contracts.
+Designed with stability, modularity and interoperability in mind, HTMLCOIN is the foremost toolkit for building trusted decentralized applications, suited for real-world, business oriented use cases. Its hybrid nature, in combination with a first-of-its-kind PoS consensus protocol, allow AltHash applications to be compatible with major blockchain ecosystems, while providing native support for mobile devices and IoT appliances.
 
 ## Getting Started
 
@@ -57,11 +57,7 @@ Open the project and in the config.xcconfig file change APP_IS_MAINNET_SETTINGS 
 ```
 //MAINNET
 APP_IS_MAINNET_SETTINGS = YES
-APP_SERVER_HOST = walletapi.qtum.org
-
-//TESTNET
-APP_IS_MAINNET_SETTINGS = NO
-APP_SERVER_HOST = testnet-walletapi.qtum.org
+APP_SERVER_HOST = mobileapi.htmlcoin.com
 ```
 
 #### Change network parameters
@@ -71,10 +67,10 @@ In BTCAddress+Extension.m file set required enum value
 ```objective-c
 enum
 {
-CustomBTCPublicKeyAddressVersion         = 58,
-CustomBTCPrivateKeyAddressVersion        = 128,
-CustomBTCScriptHashAddressVersion        = 50,
-CustomBTCPublicKeyAddressVersionTestnet  = 120,
+CustomBTCPublicKeyAddressVersion         = 41,
+CustomBTCPrivateKeyAddressVersion        = 169,
+CustomBTCScriptHashAddressVersion        = 100,
+CustomBTCPublicKeyAddressVersionTestnet  = 100,
 CustomBTCPrivateKeyAddressVersionTestnet = 239,
 CustomBTCScriptHashAddressVersionTestnet = 110,
 };
@@ -96,6 +92,6 @@ CoreBitcoin deliberately implements as much as possible directly in Objective-C 
 Link: https://github.com/oleganza/CoreBitcoin
 
 ## License
-Qtum is GPLv3 licensed.
+HTMLCOIN is GPLv3 licensed.
 
 
