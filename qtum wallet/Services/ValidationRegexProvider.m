@@ -56,7 +56,7 @@
 
 - (NSRegularExpression*)addressParameterValidationRegex {
     
-    NSString* pattern = [NSString stringWithFormat:@"^[qQ][a-km-zA-HJ-NP-Z1-9]{24,33}$"];
+    NSString* pattern = [NSString stringWithFormat:@"^[hH][a-km-zA-HJ-NP-Z1-9]{24,33}$"];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:NULL];
     return regex;
 }
