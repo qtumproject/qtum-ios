@@ -32,7 +32,8 @@
     NSString *amount;
     
     if (historyElement.send) {
-        amount = self.symbolLabel ? [historyElement.fee roundedNumberWithScale:3].stringValue : historyElement.fee.stringValue;
+        QTUMBigNumber *totalAmountDeducted = [historyElement.fee add:historyElement.amount];
+        amount = self.symbolLabel ? [totalAmountDeducted roundedNumberWithScale:3].stringValue : totalAmountDeducted.stringValue;
     } else {
         amount = self.symbolLabel ? [historyElement.amount roundedNumberWithScale:3].stringValue : historyElement.amountString;
     }
